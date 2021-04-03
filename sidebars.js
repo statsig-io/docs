@@ -2,15 +2,28 @@ module.exports = {
   docs: [
     {
       type: 'category',
-      label: 'Docusaurus Tutorial',
+      label: 'Statsig Developer Docs',
       items: [
         'getting-started',
-        'create-a-page',
-        'create-a-document',
-        'create-a-blog-post',
-        'markdown-features',
-        'thank-you',
+        {
+          type: 'category',
+          label: 'Client SDKs',
+          items: [
+            'client/jsClientSDK',
+            'client/swiftClientSDK',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Server SDKs',
+          items: [
+            'server/nodejsServerSDK'
+          ]
+        },
+        
+        'restful-api',
       ],
     },
   ],
 };
+
