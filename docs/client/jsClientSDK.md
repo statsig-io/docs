@@ -30,7 +30,7 @@ You can install the statsig SDK via npm or jsdelivr.
 
 **via npm:**
 
-```
+```shell
 $ npm i --save statsig-js-client-sdk
 ```
 
@@ -57,7 +57,7 @@ These Client SDK Keys are intended to be embedded in client side applications. I
 | ⚠️⚠️⚠️ Do NOT embed your Server Secret Key in client side applications ⚠️⚠️⚠️ |
 | ----------------------------------------------------------------------------- |
 
-```js {2}
+```jsx
 const statsig = require('statsig-js-client-sdk');
 
 await statsig.initialize(<STATSIG_CLIENT_SDK_KEY>, { userID: <USER_IDENTIFIER> });
@@ -69,7 +69,7 @@ await statsig.initialize(<STATSIG_CLIENT_SDK_KEY>, { userID: <USER_IDENTIFIER> }
 
 Now that your SDK is initialized, let's fetch a Feature Gate. Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
 
-```
+```jsx
 if (statsig.checkGate(<YOUR_GATE_NAME_HERE>)) {
   // Gate is on
 } else {
@@ -79,44 +79,44 @@ if (statsig.checkGate(<YOUR_GATE_NAME_HERE>)) {
 
 Feature Gates can be very useful for simple on/off switches, or more advanced user targeting. But what if you want to return an entirely different configuration to different users? What if you want to be able to send a different set of strings to your client for different locales? Or a different list of products for a new market (or new user)? Enter Dynamic Configs. The API is very similar to Feature Gates, but you get an entire json object you can configure on the server. For example:
 
-```
+```jsx
 const config = statsig.getConfig(<CONFIG_NAME>);
 ```
 
 You can then fetch typed Dynamic Config parameters:
 
-```
-const itemName = config.getString('name', 'Awesome Product!');
-const price = config.getNumber('price', 10.00);
-const shouldDiscount = config.getBool('discount', false);
+```jsx
+const itemName = config.getString("name", "Awesome Product!");
+const price = config.getNumber("price", 10.0);
+const shouldDiscount = config.getBool("discount", false);
 ```
 
 ## Advanced Setup
 
 You should provide a user object whenever possible to your `initialize()` call, passing as much information as possible in order to take advantage of advanced gate and config conditions (like country or OS/browser level checks). If the user is not known at SDK init time, you can still fetch values for logged out users until the user is known. At that point, update the gates and configs for the user using:
 
-```
+```jsx
 await statsig.switchUser({ userID: <USER_IDENTIFIER>});
 ```
 
 The User Object can be populated with a number of schematized attributes, or your own custom fields:
 
-```
+```jsx
 type StatsigUser = {
-  userID?: string | number;
-  email?: string;
-  ip?: string;
-  userAgent?: string;
-  country?: string;
-  locale?: string;
-  clientVersion?: string;
-  custom?: Record<string, any>;
+  userID?: string | number,
+  email?: string,
+  ip?: string,
+  userAgent?: string,
+  country?: string,
+  locale?: string,
+  clientVersion?: string,
+  custom?: Record<string, any>,
 };
 ```
 
 You can use the SDK to log events associated with the user. These events will be used to power A/B testing metrics in the future, and will show up in the Statsig console under the "Dashboard" tab (coming soon!)
 
-```
+```jsx
 statsig.logEvent(<EVENT_NAME>, <EVENT_VALUE>, <EVENT_METADATA>);
 ```
 

@@ -18,7 +18,7 @@ module.exports = {
       },
       items: [
         {
-          to: 'docs/',
+          to: '/',
           activeBasePath: 'docs',
           label: 'Docs',
           position: 'left',
@@ -29,7 +29,7 @@ module.exports = {
           position: 'left'
         },
         {
-          href: 'https://github.com/statsig-io/docs',
+          href: 'https://github.com/statsig-io/',
           label: 'Code',
           position: 'left',
         },
@@ -43,7 +43,7 @@ module.exports = {
           items: [
             {
               label: 'Getting Started',
-              to: 'docs/',
+              to: '/',
             },
           ],
         },
@@ -63,6 +63,9 @@ module.exports = {
       ],
       copyright: `Copyright (c) ${new Date().getFullYear()} Statsig, Inc. | Thanks Docusaurus`,
     },
+    prism: {
+      additionalLanguages: ['swift'],
+    }
   },
   presets: [
     [
@@ -70,16 +73,12 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          routeBasePath: '/',
           // Please change this to your repo.
           editUrl:
             'https://github.com/statsig-io/docs/edit/main/',
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/statsig-io/docs/edit/main/',
-        },
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
