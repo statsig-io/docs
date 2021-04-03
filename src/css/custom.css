@@ -51,7 +51,7 @@ html[data-theme="dark"] {
 }
 
 .docusaurus-highlight-code-line {
-  background-color: #004f6d;
+  background-color: #000;
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);

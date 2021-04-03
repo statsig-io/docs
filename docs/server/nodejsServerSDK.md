@@ -28,7 +28,7 @@ You could skip this for now, but you will need an SDK Key and some Feature Gates
 
 Install the sdk using npm:
 
-```
+```shell
 $ npm i --save statsig-node-js-server-sdk
 ```
 
@@ -38,7 +38,7 @@ $ npm i --save statsig-node-js-server-sdk
 
 Initialize the SDK using a [Server Secret Key from the statsig console](https://console.statsig.com/api_keys):
 
-```js {2}
+```jsx
 const statsig = require('statsig-node-js-server-sdk');
 
 statsig.initialize(<STATSIG_SECRET>);
@@ -52,7 +52,7 @@ Now that your SDK is initialized, let's fetch a Feature Gate. Feature Gates can 
 
 From this point on, all APIs will require you to specify the user associated with the request. For example, check a gate for a certain user like this:
 
-```
+```jsx
 const isGateOn = await statsig.checkGate({ userID: <USER_IDENTIFIER> }, <GATE_NAME>, );
 if (isGateOn) {
   // New code branch
@@ -65,23 +65,23 @@ Feature Gates can be very useful for simple on/off switches, or more advanced us
 
 Checking a Dynamic Config is nearly identical to checking a gate:
 
-```
+```jsx
 const config = await statsig.getConfig({ userID: <USER_IDENTIFIER> }, <CONFIG_NAME>);
 ```
 
 You can then fetch typed Dynamic Config parameters:
 
-```
-const itemName = config.getString('name', 'Awesome Product!');
-const price = config.getNumber('price', 10.00);
-const shouldDiscount = config.getBool('discount', false);
+```jsx
+const itemName = config.getString("name", "Awesome Product!");
+const price = config.getNumber("price", 10.0);
+const shouldDiscount = config.getBool("discount", false);
 ```
 
 ## Advanced Setup
 
 If you have a logged in user, or a deterministic way to identify users, pass a userID with each sdk call. You should pass as much information as possible with each check: this will enable you to use more advanced gate and config conditions, like country level or OS/browser level checks.
 
-```
+```ts
 type StatsigUser = {
   userID?: string | number;
   email?: string;
@@ -96,7 +96,7 @@ type StatsigUser = {
 
 You can use the SDK to log events associated with the user. These events will be used to power A/B testing metrics in the future, and will show up in the Statsig console under the "Dashboard" tab (coming soon!)
 
-```
+```jsx
 statsig.logEvent({userID: <USER_IDENTIFIER>}, <EVENT_NAME>, <EVENT_VALUE>, <EVENT_METADATA>);
 ```
 
