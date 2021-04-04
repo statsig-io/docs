@@ -8,18 +8,18 @@ data-driven development is made possible by integrating one of our SDKs.
 
 For single-user, client-side applications, we have:
 
-- [Javascript client SDK](/docs/js-client)
-- [Swift client SDK](/docs/swift-client)
+- [Javascript client SDK](/client/jsClientSDK)
+- [Swift client SDK](/client/swiftClientSDK)
 
 For multi-user, server-side applications:
 
-- [Node.js server SDK](/docs/js-server)
+- [Node.js server SDK](/server/nodejsServerSDK)
 
 We also provide a RESTful API. Our API is a great choice if an SDK isn't
 available for your environment yet, as you can use it in any type of
 application:
 
-- [RESTful API](/docs/restful-api)
+- [RESTful API](/restful-api)
 
 ## Account sign up and API key
 

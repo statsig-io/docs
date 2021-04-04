@@ -3,7 +3,7 @@ title: Javascript Client SDK
 ---
 
 :::info
-These docs are for using our javascript SDK in a single-user, client side context. For server side javascript and multi-user contexts, try our [node js server sdk](js-server)
+These docs are for using our javascript SDK in a single-user, client side context. For server side javascript and multi-user contexts, try our [node js server sdk](server/nodejsServerSDK)
 :::
 
 The js-client-sdk and the accompanying docs are [open source and hosted on github](https://github.com/statsig-io/js-client-sdk/tree/main/docs).
