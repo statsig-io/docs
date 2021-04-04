@@ -2,8 +2,9 @@
 title: Javascript Client SDK
 ---
 
-| ❗ These docs are for using our javascript SDK in a single-user, client side context. For server side javascript and multi-user contexts, try our [node js server sdk](js-server) |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+:::info
+These docs are for using our javascript SDK in a single-user, client side context. For server side javascript and multi-user contexts, try our [node js server sdk](js-server)
+:::
 
 The js-client-sdk and the accompanying docs are [open source and hosted on github](https://github.com/statsig-io/js-client-sdk/tree/main/docs).
 
@@ -54,8 +55,9 @@ After installation, you will need to initialize the SDK using a Client SDK key f
 
 These Client SDK Keys are intended to be embedded in client side applications. If need be, you can invalidate or create new SDK Keys for other applications/SDK integrations.
 
-| ⚠️⚠️⚠️ Do NOT embed your Server Secret Key in client side applications ⚠️⚠️⚠️ |
-| ----------------------------------------------------------------------------- |
+:::info
+Do NOT embed your Server Secret Key in client side applications
+:::
 
 ```jsx
 const statsig = require('statsig-js-client-sdk');
@@ -126,5 +128,6 @@ For more information, see our [SDK documentation on github](https://github.com/s
 
 ## FAQ
 
-**What kind of browser support can I expect from the SDK?**
+#### What kind of browser support can I expect from the SDK?
+
 We strive to keep the sdk as lightweight as possible, while supporting as many browsers as possible. The primary feature that our SDK relies on which may not be supported by all browsers is a javascript Promise. You may wish to [polyfill](https://developer.mozilla.org/en-US/docs/Glossary/Polyfill) a Promise library to ensure maximum browser compatibility. We recommend [taylorhakes/promise-polyfill](https://github.com/taylorhakes/promise-polyfill) for its small size and compatibility.

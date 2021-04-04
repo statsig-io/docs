@@ -55,7 +55,7 @@ module.exports = {
               href: 'https://blog.statsig.com',
             },
             {
-              label: 'GitHub',
+              label: 'Code',
               href: 'https://github.com/statsig-io',
             },
           ],

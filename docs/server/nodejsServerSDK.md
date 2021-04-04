@@ -2,8 +2,9 @@
 title: Node.js Server SDK
 ---
 
-| ❗ These docs are for using our javascript SDK in a multi-user, server side context. For client side javascript and single-user contexts, try our [client js sdk](js-client) |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+:::info Client vs. Server
+These docs are for using our javascript SDK in a multi-user, server side context. For client side javascript and single-user contexts, try our [client js sdk](js-client)
+:::
 
 The node-js-server-sdk and the accompanying docs are [open source and hosted on github](https://github.com/statsig-io/node-js-server-sdk/tree/main/docs).
 
