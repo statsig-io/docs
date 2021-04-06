@@ -15,6 +15,7 @@ module.exports = {
       logo: {
         alt: 'Statsig',
         src: 'img/logo.svg',
+        href: 'https://statsig.com',
       },
       items: [
         {
@@ -50,6 +51,10 @@ module.exports = {
         {
           title: 'More',
           items: [
+            {
+              label: 'Statsig Home',
+              href: 'https://statsig.com',
+            },
             {
               label: 'Blog',
               href: 'https://blog.statsig.com',
