@@ -130,4 +130,4 @@ For more information, see our [SDK documentation on github](https://github.com/s
 
 #### What kind of browser support can I expect from the SDK?
 
-We strive to keep the sdk as lightweight as possible, while supporting as many browsers as possible. The primary feature that our SDK relies on which may not be supported by all browsers is a javascript Promise. You may wish to [polyfill](https://developer.mozilla.org/en-US/docs/Glossary/Polyfill) a Promise library to ensure maximum browser compatibility. We recommend [taylorhakes/promise-polyfill](https://github.com/taylorhakes/promise-polyfill) for its small size and compatibility.
+We strive to keep the SDK as lightweight as possible, while supporting as many browsers as possible. The primary feature that our SDK relies on which may not be supported by all browsers is a javascript Promise. You may wish to [polyfill](https://developer.mozilla.org/en-US/docs/Glossary/Polyfill) a Promise library to ensure maximum browser compatibility. We recommend [taylorhakes/promise-polyfill](https://github.com/taylorhakes/promise-polyfill) for its small size and compatibility.
