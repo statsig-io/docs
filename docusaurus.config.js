@@ -15,6 +15,7 @@ module.exports = {
       logo: {
         alt: 'Statsig',
         src: 'img/logo.svg',
+        srcDark: 'img/logo_white.svg',
         href: 'https://statsig.com',
       },
       items: [
