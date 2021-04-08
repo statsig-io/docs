@@ -93,7 +93,7 @@ h5 {
   --ifm-color-primary-lightest: #129dff;
   --ifm-code-font-size: 95%;
   --ifm-font-family-base: "nunito";
-  --ifm-font-size-base: 1.2em;
+  --ifm-font-size-base: 1em;
 }
 
 html[data-theme="dark"] {
