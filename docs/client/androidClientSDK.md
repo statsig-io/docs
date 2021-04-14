@@ -1,4 +1,6 @@
-# Statsig Android SDK
+---
+title: Android SDK
+---
 
 The Statsig Android SDK is written in Kotlin, but can be used by Android Apps written in either Java OR Kotlin.
 The SDK is [open source and hosted on github](https://github.com/statsig-io/android-sdk).
@@ -32,7 +34,7 @@ For more information on including a jitpack library as a dependency, see https:/
 ## Java
 
     Statsig.initialize(  
-        app,  
+        application,  
         "<CLIENT_SDK_KEY>",  
          this::onStatsigReady,  
          new StatsigUser("<USER_ID_OR_NULL>")
@@ -54,7 +56,7 @@ where `onStatsigReady` is a callback, defined like this:
 ## Kotlin
 
 	Statsig.initialize(  
-	    this.application,  
+	    application,  
 	    "<CLIENT_SDK_KEY>",  
 	    StatsigUser("<USER_ID_OR_NULL>"),  
 	    ::onStatsigInitialized,  
