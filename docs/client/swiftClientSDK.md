@@ -1,5 +1,5 @@
 ---
-title: Swift iOS client SDK
+title: iOS Swift SDK
 ---
 
 Statsig client side SDK for iOS applications. Pre-release version. This SDK is [open source and hosted on github](https://github.com/statsig-io/ios-sdk).
