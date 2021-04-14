@@ -7,6 +7,7 @@ module.exports = {
       items: [
         'client/jsClientSDK',
         'client/swiftClientSDK',
+        'client/androidClientSDK',
       ]
     },
     {
