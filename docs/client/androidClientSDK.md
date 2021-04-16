@@ -60,22 +60,15 @@ where `onStatsigReady` is a callback, defined like this:
     
 ## Kotlin
 
+    val callback = object : StatsigCallback {
+        override fun onStatsigReady() {
+            // check gates/configs and log events
+        }
+    }
+
     Statsig.initialize(  
-        application,  
+        this.application,  
         "<CLIENT_SDK_KEY>",  
         StatsigUser("<USER_ID_OR_NULL>"),  
-        ::onStatsigReady,  
+        callback,
     )
-
-where `onStatsigReady` is a callback, defined like this:
-
-    private fun onStatsigReady() {
-        String title = Statsig.getConfig("android_config")?.getValue("title", "Fallback Title")
-        if (title != null && title.isNotEmpty()) {
-            // use your title
-        }
-        
-        String usingGate = if (Statsig.checkGate("my_gk1")) "true" else "false"
-        
-        Statsig.logEvent("test_event")
-    }
