@@ -10,6 +10,7 @@ For single-user, client-side applications, we have:
 
 - [Javascript client SDK](/client/jsClientSDK)
 - [Swift client SDK](/client/swiftClientSDK)
+- [Objective-C client SDK](/client/objcClientSDK)
 
 For multi-user, server-side applications:
 
