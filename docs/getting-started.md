@@ -10,6 +10,7 @@ For single-user, client-side applications, we have:
 
 - [Javascript client SDK](/client/jsClientSDK)
 - [React Native SDK](/client/reactNativeSDK)
+- [React Native Expo SDK](/client/reactNativeExpoSDK)
 - [Swift client SDK](/client/swiftClientSDK)
 - [Objective-C client SDK](/client/objcClientSDK)
 - [Android SDK](/client/androidClientSDK)
