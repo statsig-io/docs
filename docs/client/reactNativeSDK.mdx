@@ -1,0 +1,59 @@
+---
+title: React Native SDK
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Statsig client side SDK for applications in React Native not using Expo. If you are using Expo, check out our [Expo SDK](./reactNativeExpoSDK). This SDK is based on our [JavaScript client SDK](https://github.com/statsig-io/js-client).
+
+## Installation {#installation}
+
+You can install the SDK via npm or yarn. In your project directory, run:
+
+<Tabs
+  defaultValue="npm"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+  ]}>
+  <TabItem value="npm">
+```shell
+$ npm install statsig-react-native
+```
+  </TabItem>
+  <TabItem value="yarn">
+```shell
+$ yarn add statsig-react-native
+```
+  </TabItem>
+</Tabs>;
+
+Next, let's install the dependencies we need for the SDK to work:
+
+<Tabs
+  defaultValue="npm"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+  ]}>
+  <TabItem value="npm">
+```shell
+$ npm install @react-native-async-storage/async-storage react-native-device-info react-native-get-random-values
+```
+  </TabItem>
+  <TabItem value="yarn">
+```shell
+$ yarn add @react-native-async-storage/async-storage react-native-device-info react-native-get-random-values
+```
+  </TabItem>
+</Tabs>;
+
+Lastly, if you are on a Mac and developing for iOS, you need to install the pods to complete the linking:
+```
+$ npx pod-install ios // or pod install, in your /ios folder
+```
+
+## Usage {#usage}
+
+Because our React Native SDK is based on our [JavaScript client SDK](./jsClientSDK), you can use them exactly the same way. Check out the [usage guide](./jsClientSDK#step-3---initialize-the-sdk) to learn about how to initialize Statsig and use Feature Gates or Dynamic Configs.
