@@ -2,6 +2,9 @@
 title: Node.js Server SDK
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 :::info Client vs. Server
 These docs are for using our javascript SDK in a multi-user, server side context. For client side javascript and single-user contexts, try our [client js sdk](client/jsClientSDK)
 :::
@@ -27,11 +30,29 @@ You could skip this for now, but you will need an SDK Key and some Feature Gates
 
 #### Step 2 - Install the SDK {#step-2---install-the-sdk}
 
-Install the sdk using npm:
+Install the sdk using npm or yarn:
+
+<Tabs
+  defaultValue="npm"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+  ]}>
+  <TabItem value="npm">
 
 ```shell
-$ npm i --save statsig-node-js-server-sdk
+npm install statsig-node
 ```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```shell
+yarn add statsig-node
+```
+
+  </TabItem>
+</Tabs>
 
 <a name="step3"></a>
 
@@ -40,7 +61,7 @@ $ npm i --save statsig-node-js-server-sdk
 Initialize the SDK using a [Server Secret Key from the statsig console](https://console.statsig.com/api_keys):
 
 ```jsx
-const statsig = require('statsig-node-js-server-sdk');
+const statsig = require('statsig-node');
 
 statsig.initialize(<STATSIG_SECRET>);
 ```
@@ -73,9 +94,9 @@ const config = await statsig.getConfig({ userID: <USER_IDENTIFIER> }, <CONFIG_NA
 You can then fetch typed Dynamic Config parameters:
 
 ```jsx
-const itemName = config.getString("name", "Awesome Product!");
-const price = config.getNumber("price", 10.0);
-const shouldDiscount = config.getBool("discount", false);
+const itemName = config.getString('name', 'Awesome Product!');
+const price = config.getNumber('price', 10.0);
+const shouldDiscount = config.getBool('discount', false);
 ```
 
 ## Advanced Setup {#advanced-setup}
