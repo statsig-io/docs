@@ -2,23 +2,36 @@
 title: React Native Expo SDK
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Statsig client side SDK for applications in React Native using Expo. If you are not using Expo, check out our plain [React Native SDK](./reactNativeSDK). This SDK is based on our [JavaScript client SDK](https://github.com/statsig-io/js-client).
 
 ## Installation {#installation}
 
-You can install the SDK via npm or yarn.
+You can install the SDK via npm or yarn. In your project directory, run:
 
-**via npm:**
+<Tabs
+  defaultValue="npm"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+  ]}>
+  <TabItem value="npm">
 
 ```shell
-$ npm i --save statsig-react-native-expo
+$ npm install statsig-react-native-expo
 ```
 
-**via yarn:**
+  </TabItem>
+  <TabItem value="yarn">
 
 ```shell
 $ yarn add statsig-react-native-expo
 ```
+
+  </TabItem>
+</Tabs>;
 
 ## Usage {#usage}
 
