@@ -31,7 +31,7 @@ For more information on including a jitpack library as a dependency, see https:/
 1. Initialize the SDK.  Statsig is a singleton class which you can initialize with Statsig.initialize().
 2. Check Gates, Get Dynamic Configs, or Log Events using the Statsig class
 
-## Java
+## Java - Initializing the SDK
 
     Statsig.initialize(  
         application,  
@@ -58,7 +58,7 @@ where `onStatsigReady` is a callback, defined like this:
         Statsig.logEvent("test_event", 10.0);
     }
     
-## Kotlin
+## Kotlin - Initializing the SDK
 
     val callback = object : StatsigCallback {
         override fun onStatsigReady() {
@@ -72,3 +72,41 @@ where `onStatsigReady` is a callback, defined like this:
         StatsigUser("<USER_ID_OR_NULL>"),  
         callback,
     )
+    
+    
+ ## Using Gates/Configs
+ 
+Using Feature Gates
+
+    if (Statsig.checkGate("feature_on")) { // returns false by default, else, returns the gate value for the initialized user
+        // feature on
+    } else {
+        // feature off - show fallback/default
+    }
+     
+ Using Dynamic Configs (in Java)
+ 
+    DynamicConfig pricingInfo = Statsig.getConfig("pricing_info");
+    if (pricingInfo == null) {
+     	 // fallback
+	 return;
+    }
+    String priceStr = pricingInfo.getString("price_string", "$7.99");
+    Double percentDiscount = pricingInfo.getDouble("percent_discount", 10.0); 
+    this.showPrice(priceStr, discount);
+    
+... and in Kotlin
+
+    val pricingInfo : DynamicConfig? = Statsig.getConfig("pricing_info")
+    if (pricingInfo == null) {
+        return
+    }
+    this.showPrice(pricingInfo.getString("price_string", "$7.99"), pricingInfo.getDouble("percent_discount", 10.0))
+    
+
+## Event Logging
+
+Event logging will reflect in the statsig dashboard, where you can aggregate events by their values.  Events are also used to power Pulse and understand the results of A/B tests
+
+    Statsig.logEvent("event_name", <VALUE>, <METADATA>)
+     
