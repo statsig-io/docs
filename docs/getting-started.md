@@ -9,8 +9,10 @@ data-driven development is made possible by integrating one of our SDKs.
 For single-user, client-side applications, we have:
 
 - [Javascript client SDK](/client/jsClientSDK)
+- [React Native SDK](/client/reactNativeSDK)
 - [Swift client SDK](/client/swiftClientSDK)
 - [Objective-C client SDK](/client/objcClientSDK)
+- [Android SDK](/client/androidClientSDK)
 
 For multi-user, server-side applications:
 
