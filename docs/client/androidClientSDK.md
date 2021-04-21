@@ -5,7 +5,7 @@ title: Android SDK
 The Statsig Android SDK is written in Kotlin, but can be used by Android Apps written in either Java OR Kotlin.
 The SDK is [open source and hosted on github](https://github.com/statsig-io/android-sdk).
 
-## Getting Started
+## Getting Started {#getting-started}
 
 In `build.gradle` include the statsig dependency, directly from the github source (via jitpack).
 
@@ -26,12 +26,12 @@ Finally, run a gradle sync so Intellij/Android Studio recognizes the Statsig lib
 
 For more information on including a jitpack library as a dependency, see https://jitpack.io/
 
-## Structure
+## Structure {#structure}
 
 1. Initialize the SDK.  Statsig is a singleton class which you can initialize with Statsig.initialize().
 2. Check Gates, Get Dynamic Configs, or Log Events using the Statsig class
 
-## Java - Initializing the SDK
+## Java - Initializing the SDK {#java---initializing-the-sdk}
 
     Statsig.initialize(  
         application,  
@@ -58,7 +58,7 @@ where `onStatsigReady` is a callback, defined like this:
         Statsig.logEvent("test_event", 10.0);
     }
     
-## Kotlin - Initializing the SDK
+## Kotlin - Initializing the SDK {#kotlin---initializing-the-sdk}
 
     val callback = object : StatsigCallback {
         override fun onStatsigReady() {
@@ -104,7 +104,7 @@ Using Feature Gates
     this.showPrice(pricingInfo.getString("price_string", "$7.99"), pricingInfo.getDouble("percent_discount", 10.0))
     
 
-## Event Logging
+## Event Logging {#event-logging}
 
 Event logging will reflect in the statsig dashboard, where you can aggregate events by their values.  Events are also used to power Pulse and understand the results of A/B tests
 
