@@ -6,6 +6,7 @@ module.exports = {
       label: 'Client SDKs',
       items: [
         'client/jsClientSDK',
+        'client/reactNativeSDK',
         'client/swiftClientSDK',
         'client/objcClientSDK',
         'client/androidClientSDK',
