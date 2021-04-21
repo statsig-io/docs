@@ -8,7 +8,7 @@ These docs are for using our javascript SDK in a single-user, client side contex
 
 The js-client-sdk and the accompanying docs are [open source and hosted on github](https://github.com/statsig-io/js-client-sdk/tree/main/docs).
 
-## The Basics
+## The Basics {#basics}
 
 Get started in a few quick steps.
 
@@ -19,13 +19,13 @@ Get started in a few quick steps.
 
 <a name="step1"></a>
 
-#### Step 1 - Create a free account on [www.statsig.com](https://console.statsig.com/sign_up)
+#### Step 1 - Create a free account on [www.statsig.com](https://console.statsig.com/sign_up) {#register}
 
 You could skip this for now, but you will need an SDK Key and some Feature Gates or Dynamic Configs to use with the SDK in just a minute.
 
 <a name="step2"></a>
 
-#### Step 2 - Install the SDK
+#### Step 2 - Install the SDK {#install}
 
 You can install the statsig SDK via npm, yarn or jsdelivr.
 
@@ -55,7 +55,7 @@ To access specific files/versions:
 
 <a name="step3"></a>
 
-#### Step 3 - Initialize the SDK
+#### Step 3 - Initialize the SDK {#initialize}
 
 After installation, you will need to initialize the SDK using a Client SDK key from the ["API Keys" tab on the Statsig console](https://console.statsig.com/api_keys).
 
@@ -73,7 +73,7 @@ await statsig.initialize(<STATSIG_CLIENT_SDK_KEY>, { userID: <USER_IDENTIFIER> }
 
 <a name="step4"></a>
 
-#### Step 4 - Fetch Feature Gates or Dynamic Configs
+#### Step 4 - Fetch Feature Gates or Dynamic Configs {#usage}
 
 Now that your SDK is initialized, let's fetch a Feature Gate. Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
 
@@ -99,7 +99,7 @@ const price = config.getNumber("price", 10.0);
 const shouldDiscount = config.getBool("discount", false);
 ```
 
-## Advanced Setup
+## Advanced Setup {#advanced}
 
 You should provide a user object whenever possible to your `initialize()` call, passing as much information as possible in order to take advantage of advanced gate and config conditions (like country or OS/browser level checks). If the user is not known at SDK init time, you can still fetch values for logged out users until the user is known. At that point, update the gates and configs for the user using:
 
@@ -132,7 +132,7 @@ statsig.logEvent(<EVENT_NAME>, <EVENT_VALUE>, <EVENT_METADATA>);
 
 For more information, see our [SDK documentation on github](https://github.com/statsig-io/js-client-sdk/tree/main/docs).
 
-## FAQ
+## FAQ {#faq}
 
 #### What kind of browser support can I expect from the SDK?
 
