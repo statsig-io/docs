@@ -10,7 +10,7 @@ Before you can start calling the server APIs you need to take care of the follow
 
 <a name="step1"></a>
 
-#### Step 1 - Create a free account on [statsig.com](https://console.statsig.com/sign_up)
+#### Step 1 - Create a free account on [statsig.com](https://console.statsig.com/sign_up) {#step-1---create-a-free-account-on-statsigcom}
 
 An account will let you use the Statsig Console, where you can manage all of
 your Feature Gates and Dynamic Configs. Note that you will be able to invite
@@ -19,7 +19,7 @@ configs.
 
 <a name="step2"></a>
 
-#### Step 2 - Get an API key from [statsig.com](https://console.statsig.com/)
+#### Step 2 - Get an API key from [statsig.com](https://console.statsig.com/) {#step-2---get-an-api-key-from-statsigcom}
 
 An API key is required in every API request. There are two different types of API keys:
 
@@ -30,13 +30,13 @@ If you are in doubt, use the Client-SDK key.
 
 <a name="step3"></a>
 
-#### Step 3 - Issue API request
+#### Step 3 - Issue API request {#step-3---issue-api-request}
 
 Our API is built on top of HTTPS. You can authenticate via header
 `statsig-api-key`. All of our APIs use method `POST`, and you can set parameters
 by using a JSON object as the request data.
 
-##### Check a Feature Gate
+##### Check a Feature Gate {#check-a-feature-gate}
 
 ```bash
 curl \
@@ -50,7 +50,7 @@ curl \
 Response:
 `{"name":"YOUR-GATE-NAME","value":false}`
 
-##### Get a Dynamic Config value
+##### Get a Dynamic Config value {#get-a-dynamic-config-value}
 
 ```bash
 curl \
@@ -64,7 +64,7 @@ curl \
 Response:
 `{"name":"YOUR-CONFIG-NAME","value":{"a":1,"b":2},"group":"default"}`
 
-##### Log an event
+##### Log an event {#log-an-event}
 
 ```bash
 curl \

@@ -25,7 +25,7 @@ application:
 
 - [RESTful API](/restful-api)
 
-## Account sign up and API key
+## Account sign up and API key {#account-sign-up-and-api-key}
 
 ![Statsig console](./assets/feature_gates.png)
 
@@ -56,16 +56,16 @@ SDK into your application, you can update Feature Gate conditions or Dynamic
 Config values directly in the console, with your application responding
 immediately to the new values!
 
-## FAQ
+## FAQ {#faq}
 
-#### I don't see my language listed, can I still use Statsig?
+#### I don't see my language listed, can I still use Statsig? {#i-dont-see-my-language-listed-can-i-still-use-statsig}
 
 We just released our beta, which includes a few SDKs, as well as an HTTPS API.
 If neither of these fit your needs, let us know! Email tore [at] statsig [dot]
 com. We're working hard to bring the power of Statsig to your client or server,
 and Android/React Native SDKs are next.
 
-#### I want to run an A/B test, can I use Statsig for that?
+#### I want to run an A/B test, can I use Statsig for that? {#i-want-to-run-an-ab-test-can-i-use-statsig-for-that}
 
 You can run A/B tests by opening up partial exposures on your Feature Gates and
 Mobile Configs. These allow you to test the effect of a new feature. However in

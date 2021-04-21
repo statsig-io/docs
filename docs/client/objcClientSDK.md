@@ -4,7 +4,7 @@ title: iOS Objective-C SDK
 
 Statsig client side SDK for iOS applications in Objective-C. This SDK is written in Swift, [open source and hosted on github](https://github.com/statsig-io/ios-sdk).
 
-## Getting started
+## Getting started {#getting-started}
 
 Statsig is a singleton class which you can initialize with Statsig.start() function:
 
@@ -55,14 +55,14 @@ StatsigUser *newUser = [[StatsigUser alloc] initWithUserID:@"new_user_id" email:
 
 You can also use the same optional completion block to be notified when Statsig is done fetching values for the new user, just like in start().
 
-## StatsigUser
+## StatsigUser {#statsiguser}
 
 The StatsigUser class is what we use to help you with targeting. You can provide _userID_, _email_, _ip_, _country_, and even _custom_, which
 is a dictionary of String values for your own choices of targeting criteria. _userID_ is highly recommended, and we will try to use device ID
 to identify the same user in the absence of a _userID_. You are also encouraged to provide as much _custom_ info as you know about the
 user, all of which can be used by you in our console for feature gating and Dynamic Config's targeting.
 
-## Logging custom events
+## Logging custom events {#logging-custom-events}
 
 The logEvent() API can be used to log custom events for your application, which will be shown in your Statsig dashboard and used for
 metrics calculation for A/B testing:
@@ -71,7 +71,7 @@ metrics calculation for A/B testing:
 [Statsig logEvent:@"purchase" doubleValue:2.99 metadata:@{@"item_name" : @"remove_ads"}];
 ```
 
-## Shut down
+## Shut down {#shut-down}
 
 When your application is shutting down, call shutdown() so we can make sure any event logs are being sent for logging properly and all resources are released.
 
