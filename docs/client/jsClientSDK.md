@@ -27,12 +27,18 @@ You could skip this for now, but you will need an SDK Key and some Feature Gates
 
 #### Step 2 - Install the SDK
 
-You can install the statsig SDK via npm or jsdelivr.
+You can install the statsig SDK via npm, yarn or jsdelivr.
 
 **via npm:**
 
 ```shell
 $ npm i --save statsig-js-client-sdk
+```
+
+**via yarn:**
+
+```shell
+$ yarn add statsig-js-client-sdk
 ```
 
 **via jsdelivr:**
