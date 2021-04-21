@@ -2,11 +2,14 @@
 title: Javascript Client SDK
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 :::info
 These docs are for using our javascript SDK in a single-user, client side context. For server side javascript and multi-user contexts, try our [node js server sdk](server/nodejsServerSDK)
 :::
 
-The js-client-sdk and the accompanying docs are [open source and hosted on github](https://github.com/statsig-io/js-client-sdk/tree/main/docs).
+The js-client-sdk and the accompanying docs are [open source and hosted on github](https://github.com/statsig-io/js-client/tree/main/docs).
 
 ## The Basics {#the-basics}
 
@@ -29,17 +32,27 @@ You could skip this for now, but you will need an SDK Key and some Feature Gates
 
 You can install the statsig SDK via npm, yarn or jsdelivr.
 
-**via npm:**
+<Tabs
+  defaultValue="npm"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+  ]}>
+  <TabItem value="npm">
 
 ```shell
-$ npm i --save statsig-js-client-sdk
+$ npm install statsig-js
 ```
 
-**via yarn:**
+  </TabItem>
+  <TabItem value="yarn">
 
 ```shell
-$ yarn add statsig-js-client-sdk
+$ yarn add statsig-js
 ```
+
+  </TabItem>
+</Tabs>
 
 **via jsdelivr:**
 
@@ -47,11 +60,11 @@ Statsig is available from [jsdelivr](http://www.jsdelivr.com/), an open source C
 
 To access the current primary JavaScript bundle, use:
 
-`https://cdn.jsdelivr.net/npm/statsig-js-client-sdk@1.0.19/dist/statsig-prod-web-sdk.js`
+`https://cdn.jsdelivr.net/npm/statsig-js@1.1.0/dist/statsig-prod-web-sdk.js`
 
 To access specific files/versions:
 
-`http://cdn.jsdelivr.net/npm/statsig-js-client-sdk@{version}/{file}`
+`http://cdn.jsdelivr.net/npm/statsig-js@{version}/{file}`
 
 <a name="step3"></a>
 
@@ -66,7 +79,7 @@ Do NOT embed your Server Secret Key in client side applications
 :::
 
 ```jsx
-const statsig = require('statsig-js-client-sdk');
+const statsig = require('statsig-js');
 
 await statsig.initialize(<STATSIG_CLIENT_SDK_KEY>, { userID: <USER_IDENTIFIER> });
 ```
