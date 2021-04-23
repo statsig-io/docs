@@ -36,8 +36,8 @@ For more information on including a jitpack library as a dependency, see https:/
     Statsig.initialize(  
         application,  
         "<CLIENT_SDK_KEY>",  
-        this::onStatsigReady,  
-        new StatsigUser("<USER_ID_OR_NULL>")
+        new StatsigUser("<USER_ID_OR_NULL>"),
+	this::onStatsigReady, 
     )
 
 where `onStatsigReady` is a callback, defined like this:
