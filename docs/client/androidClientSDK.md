@@ -20,7 +20,7 @@ In your root build.gradle, at the end of repositories, add:
 
 Then, add the dependency:
 
-    implementation 'com.github.statsig-io:android-sdk:v1.0.1'
+    implementation 'com.github.statsig-io:android-sdk:1.1.0'
 
 Finally, run a gradle sync so Intellij/Android Studio recognizes the Statsig library.
 
