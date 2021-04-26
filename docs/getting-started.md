@@ -62,6 +62,6 @@ and Android/React Native SDKs are next.
 #### I want to run an A/B test, can I use Statsig for that? {#i-want-to-run-an-ab-test-can-i-use-statsig-for-that}
 
 You can run A/B tests by opening up partial exposures on your Feature Gates and
-Mobile Configs. These allow you to test the effect of a new feature. However in
+Dynamic Configs. These allow you to test the effect of a new feature. However, in
 order to run a proper A/B test, you will need to create the right sample size
-buckets and those features are coming soon!
+buckets.  These types of features are coming soon!
