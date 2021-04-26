@@ -3,6 +3,16 @@ module.exports = {
     'getting-started',
     {
       type: 'category',
+      label: 'Statsig Console',
+      items: [
+        'console/overview',
+        'console/featureGates',
+        'console/dynamicConfig',
+        'console/pulse',
+      ]
+    },
+    {
+      type: 'category',
       label: 'Client SDKs',
       items: [
         'client/jsClientSDK',
