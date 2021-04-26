@@ -32,7 +32,7 @@ For more information on including a jitpack library as a dependency, see https:/
 ## Structure {#structure}
 
 1. Initialize the SDK.  Statsig is a singleton class which you can initialize with Statsig.initialize().
-2. Check Gates, Get Dynamic Configs, or Log Events using the Statsig class
+2. Check gates, get dynamic configs, or log events
 
 <Tabs
   defaultValue="java"
@@ -43,56 +43,56 @@ For more information on including a jitpack library as a dependency, see https:/
   <TabItem value="java">
 
 ```java
-    import com.statsig.androidsdk.*;
+import com.statsig.androidsdk.*;
     
-    ...
+...
 
-    Statsig.initialize(  
-        application,  
-        "<CLIENT_SDK_KEY>",  
-        new StatsigUser("<USER_ID_OR_NULL>"),
-        this::onStatsigReady, 
-    );
+Statsig.initialize(  
+    application,  
+    "<CLIENT_SDK_KEY>",  
+    new StatsigUser("<USER_ID_OR_NULL>"),
+    this::onStatsigReady, 
+);
     
-    ...
+...
     
-    private void onStatsigReady() {
-        // use your gates and feature configs now!
-        DynamicConfig androidConfig = Statsig.getConfig("android_config");
-        if (androidConfig == null) {  
-            return;  
-        }
-        String title androidConfig.getValue("title", "Fallback Title");
-	
-        String usingGate = "false"
-        if (Statsig.checkGate("my_gk1")) {
-            usingGate = "true";
-        }
-        
-        Statsig.logEvent("test_event", 10.0);
+private void onStatsigReady() {
+    // use your gates and feature configs now!
+    DynamicConfig androidConfig = Statsig.getConfig("android_config");
+    if (androidConfig == null) {  
+        return;  
     }
+    String title = androidConfig.getValue("title", "Fallback Title");
+	
+    String usingGate = "false";
+    if (Statsig.checkGate("my_gk1")) {
+        usingGate = "true";
+    }
+        
+    Statsig.logEvent("test_event", 10.0);
+}
 ```
 
   </TabItem>
   <TabItem value="kotlin">
 
 ```kotlin
-    import com.statsig.androidsdk.*
+import com.statsig.androidsdk.*
     
-    ...
+...
     
-    val callback = object : StatsigCallback {
-        override fun onStatsigReady() {
-            // check gates/configs and log events
-        }
+val callback = object : StatsigCallback {
+    override fun onStatsigReady() {
+        // check gates/configs and log events
     }
+}
 
-    Statsig.initialize(  
-        this.application,  
-        "<CLIENT_SDK_KEY>",  
-        StatsigUser("<USER_ID_OR_NULL>"),  
-        callback,
-    )
+Statsig.initialize(  
+    this.application,  
+    "<CLIENT_SDK_KEY>",  
+    StatsigUser("<USER_ID_OR_NULL>"),  
+    callback,
+)
 ```
 
   </TabItem>
@@ -111,22 +111,22 @@ Using Feature Gates:
   <TabItem value="java">
 
 ```java
-    if (Statsig.checkGate("feature_on")) { // returns false by default, else, returns the gate value for the initialized user
-        // feature on
-    } else {
-        // feature off - show fallback/default
-    }
+if (Statsig.checkGate("feature_on")) { // returns false by default, else, returns the gate value for the initialized user
+    // feature on
+} else {
+    // feature off - show fallback/default
+}
 ```
 
   </TabItem>
   <TabItem value="kotlin">
 
 ```kotlin
-    if (Statsig.checkGate("feature_on")) { // returns false by default, else, returns the gate value for the initialized user
-        // feature on
-    } else {
-        // feature off - show fallback/default
-    }
+if (Statsig.checkGate("feature_on")) { // returns false by default, else, returns the gate value for the initialized user
+    // feature on
+} else {
+    // feature off - show fallback/default
+}
 ```
 
   </TabItem>
@@ -143,25 +143,25 @@ Using Feature Gates:
   <TabItem value="java">
 
 ```java
-    @Nullable DynamicConfig pricingInfo = Statsig.getConfig("pricing_info");
-    if (pricingInfo == null) {
-     	 // fallback
-	 return;
-    }
-    String priceStr = pricingInfo.getString("price_string", "$7.99");
-    Double percentDiscount = pricingInfo.getDouble("percent_discount", 10.0); 
-    this.showPrice(priceStr, discount);
+@Nullable DynamicConfig pricingInfo = Statsig.getConfig("pricing_info");
+if (pricingInfo == null) {
+    // fallback
+    return;
+}
+String priceStr = pricingInfo.getString("price_string", "$7.99");
+Double percentDiscount = pricingInfo.getDouble("percent_discount", 10.0); 
+this.showPrice(priceStr, discount);
 ```
 
   </TabItem>
   <TabItem value="kotlin">
 
 ```kotlin
-    val pricingInfo : DynamicConfig? = Statsig.getConfig("pricing_info")
-    if (pricingInfo == null) {
-        return
-    }
-    this.showPrice(pricingInfo.getString("price_string", "$7.99"), pricingInfo.getDouble("percent_discount", 10.0))
+val pricingInfo : DynamicConfig? = Statsig.getConfig("pricing_info")
+if (pricingInfo == null) {
+    return
+}
+this.showPrice(pricingInfo.getString("price_string", "$7.99"), pricingInfo.getDouble("percent_discount", 10.0))
 ```
 
   </TabItem>
@@ -181,14 +181,14 @@ Event logging will reflect in the statsig dashboard, where you can aggregate eve
   <TabItem value="java">
 
 ```java
-    Statsig.logEvent("event_name", <VALUE>, <METADATA>);
+Statsig.logEvent("event_name", <VALUE>, <METADATA>);
 ```
 
   </TabItem>
   <TabItem value="kotlin">
 
 ```kotlin
-    Statsig.logEvent("event_name", <VALUE>, <METADATA>)
+Statsig.logEvent("event_name", <VALUE>, <METADATA>)
 ```
 
   </TabItem>
