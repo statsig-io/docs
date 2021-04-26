@@ -1,5 +1,5 @@
 ---
-title: Statsig Console Overview
+title: Overview
 ---
 
 The Statsig Console is a hosted environment for configuring Feature Gates and Dynamic Configs, as well as running A/B tests and anylzing results of those tests.
