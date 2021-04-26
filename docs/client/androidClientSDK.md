@@ -2,6 +2,9 @@
 title: Android SDK
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 The Statsig Android SDK is written in Kotlin, but can be used by Android Apps written in either Java OR Kotlin.
 The SDK is [open source and hosted on github](https://github.com/statsig-io/android-sdk).
 
@@ -31,17 +34,28 @@ For more information on including a jitpack library as a dependency, see https:/
 1. Initialize the SDK.  Statsig is a singleton class which you can initialize with Statsig.initialize().
 2. Check Gates, Get Dynamic Configs, or Log Events using the Statsig class
 
-## Java - Initializing the SDK {#java---initializing-the-sdk}
+<Tabs
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
+    import com.statsig.androidsdk.*;
+    
+    ...
 
     Statsig.initialize(  
         application,  
         "<CLIENT_SDK_KEY>",  
         new StatsigUser("<USER_ID_OR_NULL>"),
         this::onStatsigReady, 
-    )
-
-where `onStatsigReady` is a callback, defined like this:
-
+    );
+    
+    ...
+    
     private void onStatsigReady() {
         // use your gates and feature configs now!
         DynamicConfig androidConfig = Statsig.getConfig("android_config");
@@ -57,9 +71,16 @@ where `onStatsigReady` is a callback, defined like this:
         
         Statsig.logEvent("test_event", 10.0);
     }
-    
-## Kotlin - Initializing the SDK {#kotlin---initializing-the-sdk}
+```
 
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+    import com.statsig.androidsdk.*
+    
+    ...
+    
     val callback = object : StatsigCallback {
         override fun onStatsigReady() {
             // check gates/configs and log events
@@ -72,21 +93,57 @@ where `onStatsigReady` is a callback, defined like this:
         StatsigUser("<USER_ID_OR_NULL>"),  
         callback,
     )
-    
-    
+```
+
+  </TabItem>
+</Tabs>
+
  ## Using Gates/Configs
  
-Using Feature Gates
+Using Feature Gates:
 
+<Tabs
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
     if (Statsig.checkGate("feature_on")) { // returns false by default, else, returns the gate value for the initialized user
         // feature on
     } else {
         // feature off - show fallback/default
     }
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+    if (Statsig.checkGate("feature_on")) { // returns false by default, else, returns the gate value for the initialized user
+        // feature on
+    } else {
+        // feature off - show fallback/default
+    }
+```
+
+  </TabItem>
+</Tabs>
      
- Using Dynamic Configs (in Java)
+ Using Dynamic Configs:
  
-    DynamicConfig pricingInfo = Statsig.getConfig("pricing_info");
+ <Tabs
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
+    @Nullable DynamicConfig pricingInfo = Statsig.getConfig("pricing_info");
     if (pricingInfo == null) {
      	 // fallback
 	 return;
@@ -94,19 +151,47 @@ Using Feature Gates
     String priceStr = pricingInfo.getString("price_string", "$7.99");
     Double percentDiscount = pricingInfo.getDouble("percent_discount", 10.0); 
     this.showPrice(priceStr, discount);
-    
-... and in Kotlin
+```
 
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
     val pricingInfo : DynamicConfig? = Statsig.getConfig("pricing_info")
     if (pricingInfo == null) {
         return
     }
     this.showPrice(pricingInfo.getString("price_string", "$7.99"), pricingInfo.getDouble("percent_discount", 10.0))
-    
+```
+
+  </TabItem>
+</Tabs>
 
 ## Event Logging {#event-logging}
 
 Event logging will reflect in the statsig dashboard, where you can aggregate events by their values.  Events are also used to power Pulse and understand the results of A/B tests
 
+
+<Tabs
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
+    Statsig.logEvent("event_name", <VALUE>, <METADATA>);
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
     Statsig.logEvent("event_name", <VALUE>, <METADATA>)
+```
+
+  </TabItem>
+</Tabs>
+    
      
