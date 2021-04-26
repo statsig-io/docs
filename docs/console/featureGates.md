@@ -4,7 +4,7 @@ title: Feature Gates
 
 Feature Gates are Statsig's take on Feature Flags/Toggles/Switches/etc. [Wikipedia](https://en.wikipedia.org/wiki/Feature_toggle) defines it as "a technique in software development that attempts to provide an alternative to maintaining multiple branches in source code (known as feature branches), such that a software feature can be tested even before it is completed and ready for release."
 
-Feature Gates as implemented by Statsig are only (and will only ever be) a boolean value. Gates are closed/off (think `return false`) by default. With this in mind, typical callsites using Feature Gates will look something like this:
+Feature Gates as implemented by Statsig are only a boolean value. Gates are closed/off (think `return false`) by default. With this in mind, typical callsites using Feature Gates will look something like this:
 
 ```
 if (Statsig.checkGate('<FEATURE_GATE_NAME>')) {
