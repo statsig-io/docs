@@ -6,6 +6,15 @@ slug: /
 Statsig helps you ship code faster on mobile, web and server side. Iterative
 data-driven development is made possible by integrating one of our SDKs.
 
+Each of our technical integration guides assumes some knowledge of the core statsig product: Feature Gates, Dynamic Configs, and Pulse.  To learn more about each of those before learning how to integrate them with your client or server, check out:
+
+- [Overview](/console/overview)
+- [Feature Gates](/console/featureGates)
+- [Dynamic Config](/console/dynamicConfig)
+- [Pulse](/console/pulse)
+
+If you're ready to dive right into our SDK integration guides, read on.
+
 For single-user, client-side applications, we have:
 
 - [Javascript client SDK](/client/jsClientSDK)
@@ -33,21 +42,6 @@ Regardless of the SDK you pick, you will need to [create a free Statsig
 account](https://console.statsig.com/sign_up) or be invited to join an existing
 project. This will give you access to the Statsig console, where you can
 generate an API key.
-
-The Statsig console currently offers a few different tools - Feature Gates and
-Dynamic Configs.
-
-[Feature Gates](https://en.wikipedia.org/wiki/Feature_toggle) (aka Feature
-Switches, Feature Toggles, or Feature Flags, etc.) allow you to introduce
-conditional branches in code that can be switched on and off for specific set of
-users, in realtime.
-
-Dynamic Configs expand on that - while Feature Gates return a boolean
-(true/false) value, Dynamic Configs can fetch and return a structured record
-that is configurable as JSON in the admin console.
-
-Both **Feature Gates** and **Dynamic Config** allow you to modify the behavior of
-production applications for different users without having to push updated code.
 
 To get started, we recommend taking a quick tour around the console, and setting
 up a Gate or Dynamic Config to use when you start integrating with an SDK. Our
