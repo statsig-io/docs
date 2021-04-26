@@ -9,5 +9,3 @@ To learn more about each of these products, or to walk through how to use each o
 - [Feature Gates](/console/featureGates)
 - [Dynamic Configs](/console/dynamicConfig)
 - [Pulse](/console/pulse)
-
-## Getting Started {#getting-started}
