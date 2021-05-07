@@ -2,7 +2,7 @@
 title: Build your first Feature
 ---
 
-Now that you have createdddssdfsdfdd your [Statsig account](/#account-sign-up-and-api-key), let's get started on building and shipping your first feature using Statsig.
+Now that you have created your [Statsig account](/#account-sign-up-and-api-key), let's get started on building and shipping your first feature using Statsig.
 
 ### Step 1 - Create a new Feature Gate
 
@@ -12,87 +12,140 @@ It's also a good practice to write in a good description that is easy for people
 ![image](https://user-images.githubusercontent.com/74588208/117380103-e0331d00-ae8d-11eb-9a6d-38b839da053e.png)
 
 Once you create a new Feature Gate, you will see a screen like this:
-![image](https://user-images.githubusercontent.com/74588208/117380209-0f498e80-ae8e-11eb-891e-1e1a25e4866f.png)
+![image](https://user-images.githubusercontent.com/74588208/117382166-bc260a80-ae92-11eb-940c-bcb09b495a09.png)
 
 The Feature Gate is turned on by default.  You can turn it off if you want by clicking on the toggle button.
+
 ![image](https://user-images.githubusercontent.com/74588208/117380238-1c667d80-ae8e-11eb-89ff-bb53fc64928c.png)
 
 ### Step 2 - Create a new Rule
 
+By default, your new Feature Gate will not pass any rule and hence will be returning 'false' for all checks on the client side.  In order to turn on this feature, you will need to target this feature to a specific set of folks.  You do that by clicking on **Add Rule**
 
+![image](https://user-images.githubusercontent.com/74588208/117382198-d52ebb80-ae92-11eb-9afd-fa0180afe47a.png)
 
-Before you can start calling the server APIs you need to take care of the following steps first:
+You can choose from a list of targeting criteria like user ID, Country, Browser, Operating System, etc.
 
-1. [Create a free account on statsig.com](#step1)
-2. Get an API key from the admin console
-3. Issue API requests
+![image](https://user-images.githubusercontent.com/74588208/117383496-c3024c80-ae95-11eb-9550-b1f20e835f40.png)
 
-<a name="step1"></a>
+Let's go ahead and choose **Operating System** is **Any of** and pick **Android** and **iOS** for our Mobile only targeting.
 
-#### Step 1 - Create a free account on [statsig.com](https://console.statsig.com/sign_up) {#step-1---create-a-free-account-on-statsigcom}
+![image](https://user-images.githubusercontent.com/74588208/117383571-f04efa80-ae95-11eb-99a8-b420446409c2.png)
 
-An account will let you use the Statsig Console, where you can manage all of
-your Feature Gates and Dynamic Configs. Note that you will be able to invite
-others to your Statsig Projects, so they can also interact with your gates and
-configs.
+Now hit the "Add Rule" button and you should now see the new rule in the Feature Gate details page.
 
-<a name="step2"></a>
+![image](https://user-images.githubusercontent.com/74588208/117383781-694e5200-ae96-11eb-99a9-7ae71265abb1.png)
 
-#### Step 2 - Get an API key from [statsig.com](https://console.statsig.com/) {#step-2---get-an-api-key-from-statsigcom}
+Go ahead and hit 'Save changes' button on the top right to commit these changes.
 
-An API key is required in every API request. There are two different types of API keys:
+![image](https://user-images.githubusercontent.com/74588208/117383852-897e1100-ae96-11eb-95a9-fc3dfca03ca4.png)
 
-- **Server-side secret Key** which should only be used from a secure server and never shipped on clients.
-- **Client-SDK Key** which can be embedded inside mobile apps and front-end client web apps.
+You can now test this feature gate by configuring the User object in the "Test Gate" section.
 
-If you are in doubt, use the Client-SDK key.
+### Step 3 - Adding additional conditions
 
-<a name="step3"></a>
+Let's add one more condition to our Feature Gate, one that allows us to test the new feature - say, for dogfooding purposes.
 
-#### Step 3 - Issue API request {#step-3---issue-api-request}
+This time, let's pick **Email** **Contains any of** and choose a domain.  Like this:
 
-Our API is built on top of HTTPS. You can authenticate via header
-`statsig-api-key`. All of our APIs use method `POST`, and you can set parameters
-by using a JSON object as the request data.
+![image](https://user-images.githubusercontent.com/74588208/117421030-ff07d280-aed2-11eb-8135-69b9a31c0ceb.png)
 
-##### Check a Feature Gate {#check-a-feature-gate}
+Hit 'Add Rule' and don't forget to 'Save Changes'.
 
-```bash
-curl \
-  --header "statsig-api-key: <YOUR-SDK-KEY>" \
-  --header "Content-Type: application/json" \
-  --request POST \
-  --data '{"user": { "userID": "42" },"gateName":"<YOUR-GATE-NAME>"}' \
-  "https://api.statsig.com/v1/check_gate"
+### Step 4 - Create a new Client API key
+
+Navigate to the **API Keys** section of the Statsig console.  Here you would see different types of API keys you can generate.
+
+![image](https://user-images.githubusercontent.com/74588208/117417634-67ed4b80-aecf-11eb-87b0-97c012368815.png)
+
+**Server Secret Keys** are used only for server side integration.  These keys are secrets that you want to safe-guard and that means not using it on clients.
+
+**Client SDK Keys** are used in product apps or websites to access Statsig features.  It's okay to embed these keys in apps or website.
+
+**Test SDK Keys** are used to validate features without the events that you log messing with the production data.
+
+For the purposes of this exercise, let's go ahead and create a new Test SDK Key.
+
+![image](https://user-images.githubusercontent.com/74588208/117417939-b569b880-aecf-11eb-95ad-f02b0e020f12.png)
+
+Copy this newly created SDK key.  We're going to use this in the next step.
+
+### Step 5 - Get the client side ready
+
+Now that we have configured this feature gate, let's go ahead and implement the feature behind this feature gate.  For this exercise, let's pick a website that uses our JS SDK.
+
+:::info Statsig supports many different SDKs.  Please checkout [Getting Started](/) for the full list of Client side SDKs :::
+
+Statsig is available from [jsdelivr](http://www.jsdelivr.com/), an open source CDN. So let's open the Console Window of a new Chrome browser window for the next set of steps.
+
+The current version at this writing is 2.0.3, but using this link https://cdn.jsdelivr.net/npm/statsig-js/dist/statsig-prod-web-sdk.min.js will get you the latest SDK version that's available.
+
+Copy and paste the following code in your console:
+
+```js
+var scrpt = document.createElement('script');
+scrpt.src = 'https://cdn.jsdelivr.net/npm/statsig-js/dist/statsig-prod-web-sdk.min.js';
+document.getElementsByTagName('head')[0].appendChild(scrpt);
 ```
 
-Response:
-`{"name":"YOUR-GATE-NAME","value":false}`
+![image](https://user-images.githubusercontent.com/74588208/117419141-16de5700-aed1-11eb-8b5f-3af93270ed1b.png)
 
-##### Get a Dynamic Config value {#get-a-dynamic-config-value}
+### Step 6 - Check gates using the SDK
 
-```bash
-curl \
-  --header "statsig-api-key: <YOUR-SDK-KEY>" \
-  --header "Content-Type: application/json" \
-  --request POST \
-  --data '{"user": { "userID": "42" },"configName":"<YOUR-CONFIG-NAME>"}' \
-  "https://api.statsig.com/v1/get_config"
+Copy and paste the following code in your console:
+
+```js
+await statsig.initialize('YOUR_SDK_KEY', {  });
 ```
 
-Response:
-`{"name":"YOUR-CONFIG-NAME","value":{"a":1,"b":2},"group":"default"}`
+![image](https://user-images.githubusercontent.com/74588208/117421542-79d0ed80-aed3-11eb-906f-1564b082b707.png)
 
-##### Log an event {#log-an-event}
+Now that we have initialized Statsig, we can go ahead and make a call to our newly created Feature Gate.  Copy and paste the following code in the console.
 
-```bash
-curl \
-  --header "statsig-api-key: <YOUR-SDK-KEY>" \
-  --header "Content-Type: application/json" \
-  --request POST \
-  --data '{"events": [{"user": { "userID": "42" }, "time": 1616826986211, "eventName": "test_api_event"}]}' \
-  "https://api.statsig.com/v1/log_event"
+```js
+statsig.checkGate('mobile_registration');
 ```
 
-Response:
-`{"success":true}`
+You should get a response 'false' back from the server.
+
+![image](https://user-images.githubusercontent.com/74588208/117421778-b270c700-aed3-11eb-8574-af05119b9b22.png)
+
+This is because we are not running this code on iOS or Android.  And the way we configured our Feature Gate, the feature is only available on mobile.  
+
+### Step 6 - Let's try a different check
+
+Now, let's update the user to include an employee email address, and see if the feature is available.
+
+Type the following code in your console:
+
+```js
+await statsig.updateUser({ email: 'vijaye@statsig.com' });
+```
+
+![image](https://user-images.githubusercontent.com/74588208/117422032-04195180-aed4-11eb-9ad5-0b00f45c74f1.png)
+
+And let's try the same checkGate once more
+
+```js
+statsig.checkGate('mobile_registration');
+```
+
+This time, you should get back a 'true' indicating that this feature is available for this user.
+
+![image](https://user-images.githubusercontent.com/74588208/117422203-30cd6900-aed4-11eb-85ce-69761a90d59a.png)
+
+### Step 7 - How to use these gates in production
+
+The psuedocode for feature gates would look something like this:
+
+```js
+if (statsig.checkGate('mobile_registration')) {
+  // Show mobile registration UI
+  show(mobileRegistrationPage);
+} else {
+  // Use the default path
+  show(oldRegistrationPage);
+}
+```
+
+## Happy Feature Gating!
