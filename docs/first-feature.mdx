@@ -117,9 +117,32 @@ You should get a response 'false' back from the server.
 
 This is because we are not running this code on iOS or Android.  And the way we configured our Feature Gate, the feature is only available on mobile.  
 
-### Step 6 - Let's try a different check
+### Step 7 - Change the environment to Mobile
 
-Now, let's update the user to include an employee email address, and see if the feature is available.
+Now, Chrome DevTools allows us to change our Device type to mobile.  Let's use that feature to simulate the request coming from a mobile device.  First, go ahead and toggle the Mobile Device toolbar to ON by clicking on this icon at the top left corner:
+
+![image](https://user-images.githubusercontent.com/74588208/117494211-de6a6780-af28-11eb-8d99-c2f557d4ccde.png)
+
+Since the environment has changed, we need to call updateUser on Statsig.  Copy and paste the following code in the console.
+
+```js
+await statsig.updateUser({});
+```
+
+Now, let's rerun the gate check again.
+
+```js
+statsig.checkGate('mobile_registration');
+```
+
+This time, you should see 'true', meaning that this feature is now available on this 'mobile' device.  This is good!
+
+![image](https://user-images.githubusercontent.com/74588208/117494418-25f0f380-af29-11eb-881a-97ea6aae6bf3.png)
+
+
+### Step 7 - Let's try a different check
+
+Let's toggle the mobile device to off, so we're now back to Desktop device. This time let's try a different check - one that uses user email as the condition.  Once again, let's update the user, now to include an employee email address, and see if the feature is available.
 
 Type the following code in your console:
 
@@ -139,7 +162,7 @@ This time, you should get back a 'true' indicating that this feature is availabl
 
 ![image](https://user-images.githubusercontent.com/74588208/117422203-30cd6900-aed4-11eb-85ce-69761a90d59a.png)
 
-### Step 7 - How to use these gates in production
+### Step 8 - How to use these gates in production
 
 The psuedocode for feature gates would look something like this:
 
