@@ -30,8 +30,8 @@ module.exports = {
         'server/nodejsServerSDK'
       ]
     },
-    
     'restful-api',
+    'first-feature'
   ],
 };
 
