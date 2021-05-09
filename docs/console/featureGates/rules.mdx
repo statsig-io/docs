@@ -1,0 +1,70 @@
+---
+sidebar_label: Rules
+title: Creating Rules in Feature Gates
+---
+
+One of the first things you'd want to do with your feature gates is to create a set of rules. These rules will determine the targeting on who gets to see the new feature and who doesn't.
+
+Statsig allows you to create these rules with a rich set of targeting conditions. You can choose to test your new feature to a small set of users sliced by targeting conditions like: User ID, Email, Country, Operating System, Browser, and more.
+
+When you create a new Feature Gate, you will see an empty rules section like this:
+
+![image](https://user-images.githubusercontent.com/74588208/117565856-5e4b1b80-b068-11eb-86ef-3b6acbbaff00.png)
+
+By default, this gate will always return false, meaning the feature will be off because there are no rules that are passing. Let's go ahead and add our first rule by clicking on the **"+ Add Rule"** button.
+
+### Conditions & Operators
+
+You will see a 'Add New Rule' dialog where you an see a list of conditions to choose from:
+
+![image](https://user-images.githubusercontent.com/74588208/117565952-dc0f2700-b068-11eb-95a2-8c4f448c035d.png)
+
+Go ahead and check out all the conditions. For this exercise, let's pick "Email" as our condition. Now you'll notice that we have a set of 'operators' like Any of, None of, Contains any of, etc.
+
+![image](https://user-images.githubusercontent.com/74588208/117566007-18428780-b069-11eb-80c4-909bad66cf21.png)
+
+These operators allow us to specify how the condition should be evaluated.
+
+Let's say we want to launch this feature to only employees of your company. Usually employees will have a domain email address, so let's assume they all happen to have email domain example.com.
+
+Now select "Contains any of" in the operator field, and type "@example.com" in the Values textbox and hit tab to create the new token.
+
+Let's also give a short name for this rule. The filled out form should look like this:
+
+![image](https://user-images.githubusercontent.com/74588208/117566133-afa7da80-b069-11eb-93e8-eab1011031d8.png)
+
+Now hit 'Add Rule' button and make sure you save these updates by hitting the 'Save Changes' button at the top right of the rules section.
+
+![image](https://user-images.githubusercontent.com/74588208/117566159-e2ea6980-b069-11eb-9b99-4c5d001c63e5.png)
+
+:::info
+Any time you make changes to the Rules section, you will need to commit the changes by hitting the 'Save Changes' button.
+:::
+
+Congratulations you have now declared that this new feature is only visible to your employees.
+
+## Testing
+
+Let's verify that the rules are actually working. To do that we conveniently put a "Test Gate" console at the bottom of the Rules.
+
+You should see something like this:
+
+![image](https://user-images.githubusercontent.com/74588208/117566384-3a3d0980-b06b-11eb-80d1-a629ce761ceb.png)
+
+The object that you can edit in the console represents a user with a set of properties. In this case, the system has automatically filled out 'email'.
+
+Let's go ahead and set a value for the email field in the user object. Try typing 'jdoe@example.com' for the email value, like this:
+
+```js
+{
+  email: "jdoe@example.com";
+}
+```
+
+The console should now indicate that the gate is passing, which means the feature is available for jdoe@example.com.
+
+You can try any other email. As long as the domain matches 'example.com', the feature will be available (PASS), and not otherwise (FAIL).
+
+![image](https://user-images.githubusercontent.com/74588208/117566331-f813c800-b06a-11eb-8aa3-2b2d7f6d2d99.png)
+
+Feel free to add more rules and test them using the console. Happy Feature Gating!
