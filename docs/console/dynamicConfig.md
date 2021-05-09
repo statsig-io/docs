@@ -6,7 +6,7 @@ Dynamic Config is a tool that abstracts otherwise hard-coded values into a confi
 
 Many technology companies use tools like this to make the server the source of truth for configurable properties. For example, [Spotify uses their "Remote Configuration"](https://engineering.atspotify.com/2020/10/29/spotifys-new-experimentation-platform-part-1/) to dynamically update properties of their clients or backend services.
 
-Dynamic Configs can be simple static configurations, or return different results to different users, based on their location/browser/app version/language/etc. Dynamic Configs use the same tageting conditions as Statsig [Feature Gates](/console/featureGates) to power this, but unlike Feature Gates, you can configure an entirely different JSON blob to be used at runtime (rather than just a boolean value).
+Dynamic Configs can be simple static configurations, or return different results to different users, based on their location/browser/app version/language/etc. Dynamic Configs use the same tageting conditions as Statsig [Feature Gates](/console/featureGates/introduction) to power this, but unlike Feature Gates, you can configure an entirely different JSON blob to be used at runtime (rather than just a boolean value).
 
 For example, you could use a Dynamic Config to determine the product to promote in the hero banner on your webpage:
 

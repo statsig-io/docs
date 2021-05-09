@@ -6,10 +6,10 @@ slug: /
 Statsig helps you ship code faster on mobile, web and server side. Iterative
 data-driven development is made possible by integrating one of our SDKs.
 
-Each of our technical integration guides assumes some knowledge of the core statsig product: Feature Gates, Dynamic Configs, and Pulse.  To learn more about each of those before learning how to integrate them with your client or server, check out:
+Each of our technical integration guides assumes some knowledge of the core statsig product: Feature Gates, Dynamic Configs, and Pulse. To learn more about each of those before learning how to integrate them with your client or server, check out:
 
 - [Overview](/console/overview)
-- [Feature Gates](/console/featureGates)
+- [Feature Gates](/console/featureGates/introduction)
 - [Dynamic Config](/console/dynamicConfig)
 - [Pulse](/console/pulse)
 
@@ -64,4 +64,4 @@ and Android/React Native SDKs are next.
 You can run A/B tests by opening up partial exposures on your Feature Gates and
 Dynamic Configs. These allow you to test the effect of a new feature. However, in
 order to run a proper A/B test, you will need to create the right sample size
-buckets.  These types of features are coming soon!
+buckets. These types of features are coming soon!
