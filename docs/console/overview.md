@@ -6,6 +6,6 @@ The Statsig Console is a hosted environment for configuring Feature Gates and Dy
 
 To learn more about each of these products, or to walk through how to use each of these features in the console, see the following guides:
 
-- [Feature Gates](/console/featureGates)
+- [Feature Gates](/console/featureGates/introduction)
 - [Dynamic Configs](/console/dynamicConfig)
 - [Pulse](/console/pulse)
