@@ -1,9 +1,10 @@
 ---
-title: Android SDK
+sidebar_label: Android
+title: Android SDK for Statsig
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 The Statsig Android SDK is written in Kotlin, but can be used by Android Apps written in either Java OR Kotlin.
 The SDK is [open source and hosted on github](https://github.com/statsig-io/android-sdk).
@@ -31,7 +32,7 @@ For more information on including a jitpack library as a dependency, see https:/
 
 ## Structure {#structure}
 
-1. Initialize the SDK.  Statsig is a singleton class which you can initialize with Statsig.initialize().
+1. Initialize the SDK. Statsig is a singleton class which you can initialize with Statsig.initialize().
 2. Check gates, get dynamic configs, or log events
 
 <Tabs
@@ -44,31 +45,31 @@ For more information on including a jitpack library as a dependency, see https:/
 
 ```java
 import com.statsig.androidsdk.*;
-    
+
 ...
 
-Statsig.initialize(  
-    application,  
-    "<CLIENT_SDK_KEY>",  
+Statsig.initialize(
+    application,
+    "<CLIENT_SDK_KEY>",
     new StatsigUser("<USER_ID_OR_NULL>"),
-    this::onStatsigReady, 
+    this::onStatsigReady,
 );
-    
+
 ...
-    
+
 private void onStatsigReady() {
     // use your gates and feature configs now!
     DynamicConfig androidConfig = Statsig.getConfig("android_config");
-    if (androidConfig == null) {  
-        return;  
+    if (androidConfig == null) {
+        return;
     }
     String title = androidConfig.getValue("title", "Fallback Title");
-	
+
     String usingGate = "false";
     if (Statsig.checkGate("my_gk1")) {
         usingGate = "true";
     }
-        
+
     Statsig.logEvent("test_event", 10.0);
 }
 ```
@@ -78,19 +79,19 @@ private void onStatsigReady() {
 
 ```kotlin
 import com.statsig.androidsdk.*
-    
+
 ...
-    
+
 val callback = object : StatsigCallback {
     override fun onStatsigReady() {
         // check gates/configs and log events
     }
 }
 
-Statsig.initialize(  
-    this.application,  
-    "<CLIENT_SDK_KEY>",  
-    StatsigUser("<USER_ID_OR_NULL>"),  
+Statsig.initialize(
+    this.application,
+    "<CLIENT_SDK_KEY>",
+    StatsigUser("<USER_ID_OR_NULL>"),
     callback,
 )
 ```
@@ -98,8 +99,8 @@ Statsig.initialize(
   </TabItem>
 </Tabs>
 
- ## Using Gates/Configs
- 
+## Using Gates/Configs
+
 Using Feature Gates:
 
 <Tabs
@@ -149,7 +150,7 @@ if (pricingInfo == null) {
     return;
 }
 String priceStr = pricingInfo.getString("price_string", "$7.99");
-Double percentDiscount = pricingInfo.getDouble("percent_discount", 10.0); 
+Double percentDiscount = pricingInfo.getDouble("percent_discount", 10.0);
 this.showPrice(priceStr, discount);
 ```
 
@@ -169,8 +170,7 @@ this.showPrice(pricingInfo.getString("price_string", "$7.99"), pricingInfo.getDo
 
 ## Event Logging {#event-logging}
 
-Event logging will reflect in the statsig dashboard, where you can aggregate events by their values.  Events are also used to power Pulse and understand the results of A/B tests
-
+Event logging will reflect in the statsig dashboard, where you can aggregate events by their values. Events are also used to power Pulse and understand the results of A/B tests
 
 <Tabs
   defaultValue="java"

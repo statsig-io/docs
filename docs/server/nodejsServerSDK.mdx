@@ -1,9 +1,10 @@
 ---
-title: Node.js Server SDK
+sidebar_label: Node.js
+title: Node.js Server SDK for Statsig
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 :::info Client vs. Server
 These docs are for using our javascript SDK in a multi-user, server side context. For client side javascript and single-user contexts, try our [client js sdk](client/jsClientSDK)
@@ -94,9 +95,9 @@ const config = await statsig.getConfig({ userID: <USER_IDENTIFIER> }, <CONFIG_NA
 You can then fetch typed Dynamic Config parameters:
 
 ```jsx
-const itemName = config.getString('name', 'Awesome Product!');
-const price = config.getNumber('price', 10.0);
-const shouldDiscount = config.getBool('discount', false);
+const itemName = config.getString("name", "Awesome Product!");
+const price = config.getNumber("price", 10.0);
+const shouldDiscount = config.getBool("discount", false);
 ```
 
 ## Advanced Setup {#advanced-setup}

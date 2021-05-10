@@ -1,5 +1,6 @@
 ---
-title: iOS Objective-C SDK
+sidebar_label: iOS ObjC
+title: iOS Objective-C SDK for Statsig
 ---
 
 Statsig client side SDK for iOS applications in Objective-C. This SDK is written in Swift, [open source and hosted on github](https://github.com/statsig-io/ios-sdk).
@@ -19,7 +20,7 @@ You can also optionally use a completion block to wait for it to finish initiali
 StatsigUser *user = [[StatsigUser alloc] initWithUserID:@"my_user_id"];
 [Statsig startWithSDKKey:@"my_client_sdk_key", user:user, completion:^(NSString * errorMessage) {
   // Statsig client is ready
-  
+
   // errorMessage can be used for debugging purposes. Statsig client still functions when errorMessage
   // is present, e.g. when device is offline, either cached or default values will be returned by Statsig APIs.
 }];

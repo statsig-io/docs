@@ -1,4 +1,5 @@
 ---
+sidebar_label: Your First Feature
 title: Build your first Feature
 ---
 
@@ -6,7 +7,7 @@ Now that you have created your [Statsig account](/#account-sign-up-and-api-key),
 
 ### Step 1 - Create a new Feature Gate
 
-Start by creating a new Feature Gate.  Pick a name related to the product feature you're building.  As an example, if you are building a new mobile registration UI flow, "Mobile Registration" is a good name.
+Start by creating a new Feature Gate. Pick a name related to the product feature you're building. As an example, if you are building a new mobile registration UI flow, "Mobile Registration" is a good name.
 
 It's also a good practice to write in a good description that is easy for people other than you to understand what this feature is about.
 ![image](https://user-images.githubusercontent.com/74588208/117380103-e0331d00-ae8d-11eb-9a6d-38b839da053e.png)
@@ -14,13 +15,13 @@ It's also a good practice to write in a good description that is easy for people
 Once you create a new Feature Gate, you will see a screen like this:
 ![image](https://user-images.githubusercontent.com/74588208/117382166-bc260a80-ae92-11eb-940c-bcb09b495a09.png)
 
-The Feature Gate is turned on by default.  You can turn it off if you want by clicking on the toggle button.
+The Feature Gate is turned on by default. You can turn it off if you want by clicking on the toggle button.
 
 ![image](https://user-images.githubusercontent.com/74588208/117380238-1c667d80-ae8e-11eb-89ff-bb53fc64928c.png)
 
 ### Step 2 - Create a new Rule
 
-By default, your new Feature Gate will not pass any rule and hence will be returning 'false' for all checks on the client side.  In order to turn on this feature, you will need to target this feature to a specific set of folks.  You do that by clicking on **Add Rule**
+By default, your new Feature Gate will not pass any rule and hence will be returning 'false' for all checks on the client side. In order to turn on this feature, you will need to target this feature to a specific set of folks. You do that by clicking on **Add Rule**
 
 ![image](https://user-images.githubusercontent.com/74588208/117382198-d52ebb80-ae92-11eb-9afd-fa0180afe47a.png)
 
@@ -46,7 +47,7 @@ You can now test this feature gate by configuring the User object in the "Test G
 
 Let's add one more condition to our Feature Gate, one that allows us to test the new feature - say, for dogfooding purposes.
 
-This time, let's pick **Email** **Contains any of** and choose a domain.  Like this:
+This time, let's pick **Email** **Contains any of** and choose a domain. Like this:
 
 ![image](https://user-images.githubusercontent.com/74588208/117421030-ff07d280-aed2-11eb-8135-69b9a31c0ceb.png)
 
@@ -54,16 +55,15 @@ Hit 'Add Rule' and don't forget to 'Save Changes'.
 
 ![image](https://user-images.githubusercontent.com/74588208/117493561-ff7e8880-af27-11eb-8b2f-82aab882bf86.png)
 
-
 ### Step 4 - Create a new Client API key
 
-Navigate to the **API Keys** section of the Statsig console.  Here you would see different types of API keys you can generate.
+Navigate to the **API Keys** section of the Statsig console. Here you would see different types of API keys you can generate.
 
 ![image](https://user-images.githubusercontent.com/74588208/117417634-67ed4b80-aecf-11eb-87b0-97c012368815.png)
 
-**Server Secret Keys** are used only for server side integration.  These keys are secrets that you want to safe-guard and that means not using it on clients.
+**Server Secret Keys** are used only for server side integration. These keys are secrets that you want to safe-guard and that means not using it on clients.
 
-**Client SDK Keys** are used in product apps or websites to access Statsig features.  It's okay to embed these keys in apps or website.
+**Client SDK Keys** are used in product apps or websites to access Statsig features. It's okay to embed these keys in apps or website.
 
 **Test SDK Keys** are used to validate features without the events that you log messing with the production data.
 
@@ -71,14 +71,14 @@ For the purposes of this exercise, let's go ahead and create a new Test SDK Key.
 
 ![image](https://user-images.githubusercontent.com/74588208/117417939-b569b880-aecf-11eb-95ad-f02b0e020f12.png)
 
-Copy this newly created SDK key.  We're going to use this in the next step.
+Copy this newly created SDK key. We're going to use this in the next step.
 
 ### Step 5 - Get the client side ready
 
-Now that we have configured this feature gate, let's go ahead and implement the feature behind this feature gate.  For this exercise, let's pick a website that uses our JS SDK.
+Now that we have configured this feature gate, let's go ahead and implement the feature behind this feature gate. For this exercise, let's pick a website that uses our JS SDK.
 
 :::info Other SDKs
-Statsig supports many different SDKs.  Please checkout [Getting Started](/) for the full list of Client side SDKs 
+Statsig supports many different SDKs. Please checkout [Getting Started](/) for the full list of Client side SDKs
 :::
 
 Statsig is available from [jsdelivr](http://www.jsdelivr.com/), an open source CDN. So let's open the Console Window of a new Chrome browser window for the next set of steps.
@@ -88,9 +88,10 @@ The current version at this writing is 2.0.3, but using this link https://cdn.js
 Copy and paste the following code in your console:
 
 ```js
-var scrpt = document.createElement('script');
-scrpt.src = 'https://cdn.jsdelivr.net/npm/statsig-js/dist/statsig-prod-web-sdk.min.js';
-document.getElementsByTagName('head')[0].appendChild(scrpt);
+var scrpt = document.createElement("script");
+scrpt.src =
+  "https://cdn.jsdelivr.net/npm/statsig-js/dist/statsig-prod-web-sdk.min.js";
+document.getElementsByTagName("head")[0].appendChild(scrpt);
 ```
 
 ![image](https://user-images.githubusercontent.com/74588208/117419141-16de5700-aed1-11eb-8b5f-3af93270ed1b.png)
@@ -100,30 +101,30 @@ document.getElementsByTagName('head')[0].appendChild(scrpt);
 Copy and paste the following code in your console:
 
 ```js
-await statsig.initialize('YOUR_SDK_KEY', {  });
+await statsig.initialize("YOUR_SDK_KEY", {});
 ```
 
 ![image](https://user-images.githubusercontent.com/74588208/117421542-79d0ed80-aed3-11eb-906f-1564b082b707.png)
 
-Now that we have initialized Statsig, we can go ahead and make a call to our newly created Feature Gate.  Copy and paste the following code in the console.
+Now that we have initialized Statsig, we can go ahead and make a call to our newly created Feature Gate. Copy and paste the following code in the console.
 
 ```js
-statsig.checkGate('mobile_registration');
+statsig.checkGate("mobile_registration");
 ```
 
 You should get a response 'false' back from the server.
 
 ![image](https://user-images.githubusercontent.com/74588208/117421778-b270c700-aed3-11eb-8574-af05119b9b22.png)
 
-This is because we are not running this code on iOS or Android.  And the way we configured our Feature Gate, the feature is only available on mobile.  
+This is because we are not running this code on iOS or Android. And the way we configured our Feature Gate, the feature is only available on mobile.
 
 ### Step 7 - Change the environment to Mobile
 
-Now, Chrome DevTools allows us to change our Device type to mobile.  Let's use that feature to simulate the request coming from a mobile device.  First, go ahead and toggle the Mobile Device toolbar to ON by clicking on this icon at the top left corner:
+Now, Chrome DevTools allows us to change our Device type to mobile. Let's use that feature to simulate the request coming from a mobile device. First, go ahead and toggle the Mobile Device toolbar to ON by clicking on this icon at the top left corner:
 
 ![image](https://user-images.githubusercontent.com/74588208/117494211-de6a6780-af28-11eb-8d99-c2f557d4ccde.png)
 
-Since the environment has changed, we need to call updateUser on Statsig.  Copy and paste the following code in the console.
+Since the environment has changed, we need to call updateUser on Statsig. Copy and paste the following code in the console.
 
 ```js
 await statsig.updateUser({});
@@ -132,22 +133,21 @@ await statsig.updateUser({});
 Now, let's rerun the gate check again.
 
 ```js
-statsig.checkGate('mobile_registration');
+statsig.checkGate("mobile_registration");
 ```
 
-This time, you should see 'true', meaning that this feature is now available on this 'mobile' device.  This is good!
+This time, you should see 'true', meaning that this feature is now available on this 'mobile' device. This is good!
 
 ![image](https://user-images.githubusercontent.com/74588208/117494418-25f0f380-af29-11eb-881a-97ea6aae6bf3.png)
 
-
 ### Step 7 - Let's try a different check
 
-Let's toggle the mobile device to off, so we're now back to Desktop device. This time let's try a different check - one that uses user email as the condition.  Once again, let's update the user, now to include an employee email address, and see if the feature is available.
+Let's toggle the mobile device to off, so we're now back to Desktop device. This time let's try a different check - one that uses user email as the condition. Once again, let's update the user, now to include an employee email address, and see if the feature is available.
 
 Type the following code in your console:
 
 ```js
-await statsig.updateUser({ email: 'vijaye@statsig.com' });
+await statsig.updateUser({ email: "vijaye@statsig.com" });
 ```
 
 ![image](https://user-images.githubusercontent.com/74588208/117422032-04195180-aed4-11eb-9ad5-0b00f45c74f1.png)
@@ -155,7 +155,7 @@ await statsig.updateUser({ email: 'vijaye@statsig.com' });
 And let's try the same checkGate once more
 
 ```js
-statsig.checkGate('mobile_registration');
+statsig.checkGate("mobile_registration");
 ```
 
 This time, you should get back a 'true' indicating that this feature is available for this user.
@@ -167,7 +167,7 @@ This time, you should get back a 'true' indicating that this feature is availabl
 The psuedocode for feature gates would look something like this:
 
 ```js
-if (statsig.checkGate('mobile_registration')) {
+if (statsig.checkGate("mobile_registration")) {
   // Show mobile registration UI
   show(mobileRegistrationPage);
 } else {
