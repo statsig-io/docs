@@ -6,7 +6,7 @@ slug: /
 Statsig helps you ship code faster on mobile, web and server side. Iterative
 data-driven development is made possible by integrating one of our SDKs.
 
-Each of our technical integration guides assumes some knowledge of the core statsig product: Feature Gates, Dynamic Configs, and Pulse. To learn more about each of those before learning how to integrate them with your client or server, check out:
+Each of our technical integration guides assumes some knowledge of the core statsig product: Feature Gates (our take on Feature Flags), Dynamic Configs, and Pulse (an A/B test analysis tool). To learn more about each of those before learning how to integrate them with your client or server, check out:
 
 - [Overview](/console/overview)
 - [Feature Gates](/console/featureGates/introduction)
