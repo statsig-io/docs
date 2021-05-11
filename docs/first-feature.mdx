@@ -7,7 +7,15 @@ Now that you have created your [Statsig account](/#account-sign-up-and-api-key),
 
 ### Step 1 - Create a new Feature Gate
 
-Start by creating a new Feature Gate. Pick a name related to the product feature you're building. As an example, if you are building a new mobile registration UI flow, "Mobile Registration" is a good name.
+Start by creating a new Feature Gate. Pick a name related to the product feature you're building. As an example, if you are building a new mobile registration UI flow, "Mobile Registration" is a good name.  If you want, you can copy the name and description below:
+
+```
+Mobile Registration
+```
+
+```
+This feature enables a new mobile optimized registration flow which we will be launching on iOS and Android as part of the V2 refresh.
+```
 
 It's also a good practice to write in a good description that is easy for people other than you to understand what this feature is about.
 ![image](https://user-images.githubusercontent.com/74588208/117380103-e0331d00-ae8d-11eb-9a6d-38b839da053e.png)
@@ -15,17 +23,17 @@ It's also a good practice to write in a good description that is easy for people
 Once you create a new Feature Gate, you will see a screen like this:
 ![image](https://user-images.githubusercontent.com/74588208/117382166-bc260a80-ae92-11eb-940c-bcb09b495a09.png)
 
-The Feature Gate is turned on by default. You can turn it off if you want by clicking on the toggle button.
+The Feature Gate is enabled by default (meaning calls to this gate will evaluate the rules and conditions you specify next). You can disable gates by clicking on the toggle button (this stops the gate from evaluating rules and conditions and instead just returns `false`).  Let's leave it on for now.
 
 ![image](https://user-images.githubusercontent.com/74588208/117380238-1c667d80-ae8e-11eb-89ff-bb53fc64928c.png)
 
 ### Step 2 - Create a new Rule
 
-By default, your new Feature Gate will not pass any rule and hence will be returning 'false' for all checks on the client side. In order to turn on this feature, you will need to target this feature to a specific set of folks. You do that by clicking on **Add Rule**
+By default, your new Feature Gate will not pass any rule and hence will be returning `false` for all checks on the client side. In order to turn on this feature, you will need to target this feature to a specific set of folks. You do that by clicking on **Add Rule**
 
 ![image](https://user-images.githubusercontent.com/74588208/117382198-d52ebb80-ae92-11eb-9afd-fa0180afe47a.png)
 
-You can choose from a list of targeting criteria like user ID, Country, Browser, Operating System, etc.
+You can choose from a list of targeting criteria like User ID, Country, Browser, Operating System, etc.
 
 ![image](https://user-images.githubusercontent.com/74588208/117383496-c3024c80-ae95-11eb-9550-b1f20e835f40.png)
 
@@ -33,25 +41,25 @@ Let's go ahead and choose **Operating System** is **Any of** and pick **Android*
 
 ![image](https://user-images.githubusercontent.com/74588208/117383571-f04efa80-ae95-11eb-99a8-b420446409c2.png)
 
-Now hit the "Add Rule" button and you should now see the new rule in the Feature Gate details page.
+Now hit the **Add Rule** button and you should now see the new rule in the Feature Gate details page.
 
 ![image](https://user-images.githubusercontent.com/74588208/117383781-694e5200-ae96-11eb-99a9-7ae71265abb1.png)
 
-Go ahead and hit 'Save changes' button on the top right to commit these changes.
+Go ahead and hit **Save Changes** on the top right to commit these changes.  New rules and conditions are staged at first, and the changes are only commited when you finalize them by clicking "Save Changes"
 
 ![image](https://user-images.githubusercontent.com/74588208/117383852-897e1100-ae96-11eb-95a9-fc3dfca03ca4.png)
 
 You can now test this feature gate by configuring the User object in the "Test Gate" section.
 
-### Step 3 - Adding additional conditions
+### Step 3 - Adding additional rules
 
-Let's add one more condition to our Feature Gate, one that allows us to test the new feature - say, for dogfooding purposes.
+Let's add one more rule to our Feature Gate, one that allows us to test the new feature - say, for dogfooding purposes.
 
 This time, let's pick **Email** **Contains any of** and choose a domain. Like this:
 
 ![image](https://user-images.githubusercontent.com/74588208/117421030-ff07d280-aed2-11eb-8135-69b9a31c0ceb.png)
 
-Hit 'Add Rule' and don't forget to 'Save Changes'.
+Hit **Add Rule** and don't forget to  **Save Changes**.
 
 ![image](https://user-images.githubusercontent.com/74588208/117493561-ff7e8880-af27-11eb-8b2f-82aab882bf86.png)
 
@@ -61,11 +69,11 @@ Navigate to the **API Keys** section of the Statsig console. Here you would see 
 
 ![image](https://user-images.githubusercontent.com/74588208/117417634-67ed4b80-aecf-11eb-87b0-97c012368815.png)
 
-**Server Secret Keys** are used only for server side integration. These keys are secrets that you want to safe-guard and that means not using it on clients.
+**Server Secret Keys** are used only for server side integrations. These keys are secrets that you want to safe-guard and that means not using it on clients.
 
 **Client SDK Keys** are used in product apps or websites to access Statsig features. It's okay to embed these keys in apps or website.
 
-**Test SDK Keys** are used to validate features without the events that you log messing with the production data.
+**Test SDK Keys** are used to validate features without the events that you log messing with production data.
 
 For the purposes of this exercise, let's go ahead and create a new Test SDK Key.
 
@@ -73,7 +81,7 @@ For the purposes of this exercise, let's go ahead and create a new Test SDK Key.
 
 Copy this newly created SDK key. We're going to use this in the next step.
 
-### Step 5 - Get the client side ready
+### Step 5 - Using your new Gate via the Statsig SDK
 
 Now that we have configured this feature gate, let's go ahead and implement the feature behind this feature gate. For this exercise, let's pick a website that uses our JS SDK.
 
@@ -118,9 +126,9 @@ You should get a response 'false' back from the server.
 
 This is because we are not running this code on iOS or Android. And the way we configured our Feature Gate, the feature is only available on mobile.
 
-### Step 7 - Change the environment to Mobile
+### Step 7 - Change the Environment to Mobile
 
-Now, Chrome DevTools allows us to change our Device type to mobile. Let's use that feature to simulate the request coming from a mobile device. First, go ahead and toggle the Mobile Device toolbar to ON by clicking on this icon at the top left corner:
+Chrome DevTools allows us to change our Device type to mobile. Let's use that feature to simulate the request coming from a mobile device. First, go ahead and toggle the Mobile Device toolbar to ON by clicking on this icon at the top left corner:
 
 ![image](https://user-images.githubusercontent.com/74588208/117494211-de6a6780-af28-11eb-8d99-c2f557d4ccde.png)
 
@@ -136,13 +144,13 @@ Now, let's rerun the gate check again.
 statsig.checkGate("mobile_registration");
 ```
 
-This time, you should see 'true', meaning that this feature is now available on this 'mobile' device. This is good!
+This time, you should see `true`, meaning that this feature is now available on this 'mobile' device!
 
 ![image](https://user-images.githubusercontent.com/74588208/117494418-25f0f380-af29-11eb-881a-97ea6aae6bf3.png)
 
 ### Step 7 - Let's try a different check
 
-Let's toggle the mobile device to off, so we're now back to Desktop device. This time let's try a different check - one that uses user email as the condition. Once again, let's update the user, now to include an employee email address, and see if the feature is available.
+Let's toggle the mobile device to off, so we're now back to Desktop device. This time let's try a different check - one that uses the user email as the condition. When we update the user this time, we will prodive an employee email address.
 
 Type the following code in your console:
 
@@ -158,7 +166,7 @@ And let's try the same checkGate once more
 statsig.checkGate("mobile_registration");
 ```
 
-This time, you should get back a 'true' indicating that this feature is available for this user.
+This time, you should get back a `true` indicating that this feature is available for this user.
 
 ![image](https://user-images.githubusercontent.com/74588208/117422203-30cd6900-aed4-11eb-85ce-69761a90d59a.png)
 
