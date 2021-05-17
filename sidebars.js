@@ -1,6 +1,8 @@
 module.exports = {
   docs: [
     'getting-started',
+    'first-feature',
+    'first-dynamic-config',
     {
       'Statsig Console': [
         'console/overview',
@@ -30,8 +32,6 @@ module.exports = {
       ]
     },
     'restful-api',
-    'first-feature',
-    'first-dynamic-config'
   ],
 };
 
