@@ -30,7 +30,8 @@ module.exports = {
       ]
     },
     'restful-api',
-    'first-feature'
+    'first-feature',
+    'first-dynamic-config'
   ],
 };
 
