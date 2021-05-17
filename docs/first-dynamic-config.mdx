@@ -4,8 +4,7 @@ title: Making Your Code More Flexible with Dynamic Config
 ---
 
 
-Now that you have created your [Statsig account](/#account-sign-up-and-api-key), and perhaps even your [first feature](/first-feature), make our app
-a bit more configurable with Dynamic Config.
+Now that you have created your [Statsig account](/#account-sign-up-and-api-key), and perhaps even your [first feature](/first-feature), this guide will help you make your app a bit more flexible with Dynamic Config.
 
 :::infoNOTE: This guide focuses on a client-side example, as it is easier to illustrate how Dynamic Configs work and can be used.  You can and still should use
 Dynamic Config on the server side as well, for any constants you may have, or confurations for ranking systems, algorithms, etc that may need to be updated on the fly.
@@ -21,3 +20,103 @@ all the code from this example (and the corresponding screenshots) come from her
 
 Start by creating a new Dynamic Config. Pick a name related to the set of variables this config will hold. For this example, we are building a homepage banner.
 Lets call it "Banner Config"
+
+![create config](https://user-images.githubusercontent.com/74584483/118543196-d4a2ea00-b708-11eb-85b2-78251d9fb70f.png)
+
+Now that we have created our Dynamic Config, we need to set up the rules and data associated with this config.  There are two main steps here:
+
+1. Create the targeting rule(s) and their conditions
+2. Update the return value for users matching each rule
+
+Though Feature Gates and Dynamic Config share the same powerful user segmentation and targeting tools, they differ in what you return for those different sets of users.  Feature Gates are intended to be super lightweight, and only return a boolean indicating the user matched one of the rules.  Dynamic Configs, on the other hand, can return a different JSON blob of data for each rule!
+
+For now, you can see that our config doesn't have any rules, and returns the default value at the bottom - an empty JSON object.  Applying this back to our banner, we want to promote our latest SDKs to the proper developers.  We have a general set of data we want to return back to our site to populate the banner:
+
+```js
+{
+  text,
+  backgroundColor,
+  color,
+  fontSize,
+  isCloseable,
+}
+```
+
+Now we just need some targeting conditions to create some different variants!  In our case, we want to promote the new .NET SDK to anyone that is browsing our site on the Windows operating system, and the new Swift SDK to anyone browsing on MacOS.
+
+First, let's add the Window's rule:
+
+![Adding windows rule CROPPED](https://user-images.githubusercontent.com/74584483/118543443-20559380-b709-11eb-8f4d-d39fe910576e.jpg)
+
+Next, lets update the return value for those users:
+
+```js
+{
+  text: 'New!  Introducing the Statsig .NET SDK',
+  backgroundColor: '#194b7d',
+  color: 'white',
+  fontSize: 14,
+  isCloseable: false,
+}
+```
+
+![Windows return value](https://user-images.githubusercontent.com/74584483/118543529-36fbea80-b709-11eb-805a-84242c0d2721.png)
+
+Let's repeat this process for people using Mac OS.  Adding the rule:
+
+![Mac OS Rule](https://user-images.githubusercontent.com/74584483/118543604-56931300-b709-11eb-8df1-dc3fc0852b37.png)
+
+Updating the return value:
+
+```js
+{
+  text: 'New!  Introducing the Statsig Swift SDK',
+  backgroundColor: '#197d4b',
+  color: 'white',
+  fontSize: 16,
+}
+```
+
+![Add macos value](https://user-images.githubusercontent.com/74584483/118543634-601c7b00-b709-11eb-8f91-b176e33811eb.png)
+
+Don't forget to click "Save Changes" to apply these new rules to your config.  Your Dynamic Config should now look something like this:
+
+![complete banner config](https://user-images.githubusercontent.com/74584483/118544807-ab835900-b70a-11eb-9a8c-25ed80f39ba4.png)
+
+Now let's use this Dynamic Config to create a different landing page experience for different sets of developers.  Check out this [codepen](https://codepen.io/tore-statsig/pen/mdWEajo) to follow along.  When you open it up, you should see the proper banner based on the operating system you are currently using - and the code powering it.
+
+After adding the SDK to the webpage via the [jsdelivr cdn](https://www.jsdelivr.com/package/npm/statsig-js), we initialize the SDK:
+
+```js
+await statsig.initialize("<CLIENT-SDK-KEY>");
+```
+
+Now, lets fetch our config and construct the banner:
+
+```
+const bannerConfig = statsig.getConfig("banner_config");
+const text = bannerConfig.get("text", null);
+const backgroundColor = bannerConfig.get("backgroundColor", "black");
+const color = bannerConfig.get("color", "white");
+if (text == null) {
+  return;
+}
+const banner = document.getElementById("homepageBanner");
+const bannerText = document.createElement("h4");
+banner.style.display = 'block';
+bannerText.innerHTML = text;
+banner.style.color = color;
+banner.style.backgroundColor = backgroundColor;
+banner.appendChild(bannerText);
+```
+
+Note that this js relies on the html page having the homepageBanner div:
+
+```html
+<div id="homepageBanner">
+</div>
+```
+
+And that's it!   With just a handful of javascript, we integrated with the Statsig SDK and started using the Dynamic Config we created.  Now, without updating our website, we can add a new rule to the Dynamic Config and return a completely new banner to a different set of people!
+
+We hope this inspires some ideas of what you could do with your app/website/backend service, and we can't wait to see what you build.
