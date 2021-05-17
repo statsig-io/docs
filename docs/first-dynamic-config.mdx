@@ -1,0 +1,23 @@
+---
+sidebar_label: Make Your Code Dynamic
+title: Making Your Code More Flexible with Dynamic Config
+---
+
+
+Now that you have created your [Statsig account](/#account-sign-up-and-api-key), and perhaps even your [first feature](/first-feature), make our app
+a bit more configurable with Dynamic Config.
+
+:::infoNOTE: This guide focuses on a client-side example, as it is easier to illustrate how Dynamic Configs work and can be used.  You can and still should use
+Dynamic Config on the server side as well, for any constants you may have, or confurations for ranking systems, algorithms, etc that may need to be updated on the fly.
+:::
+
+In this guide we will be building a front page banner - something that may show up on an ecommerce site to advertise an upcoming sale, for instance.
+Here, I will apply it to a stripped down version of the Statsig homepage.
+
+If you want to follow along with a simple js repl, check out [this codepen](https://codepen.io/tore-statsig/pen/mdWEajo) -
+all the code from this example (and the corresponding screenshots) come from here.
+
+### Step 1 - Create a new Dynamic Config
+
+Start by creating a new Dynamic Config. Pick a name related to the set of variables this config will hold. For this example, we are building a homepage banner.
+Lets call it "Banner Config"
