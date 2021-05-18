@@ -3,6 +3,7 @@ module.exports = {
     'getting-started',
     'first-feature',
     'first-dynamic-config',
+    'first-experiment',
     {
       'Statsig Console': [
         'console/overview',
