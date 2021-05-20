@@ -61,7 +61,7 @@ Statsig is available from [jsdelivr](http://www.jsdelivr.com/), an open source C
 
 To access the current primary JavaScript bundle, use:
 
-`https://cdn.jsdelivr.net/npm/statsig-js@1.1.0/dist/statsig-prod-web-sdk.js`
+`https://cdn.jsdelivr.net/npm/statsig-js@2.0.3/dist/statsig-prod-web-sdk.js`
 
 To access specific files/versions:
 
@@ -105,12 +105,12 @@ Feature Gates can be very useful for simple on/off switches, or more advanced us
 const config = statsig.getConfig(<CONFIG_NAME>);
 ```
 
-You can then fetch typed Dynamic Config parameters:
+You can then fetch typed Dynamic Config parameters and provide a default value as a fallback:
 
 ```jsx
-const itemName = config.getString("name", "Awesome Product!");
-const price = config.getNumber("price", 10.0);
-const shouldDiscount = config.getBool("discount", false);
+const itemName = config.get("name", "Awesome Product!");
+const price = config.get("price", 10.0);
+const shouldDiscount = config.get("discount", false);
 ```
 
 ## Advanced Setup {#advanced-setup}
