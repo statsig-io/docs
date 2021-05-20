@@ -118,3 +118,8 @@ html[data-theme="dark"] {
 .footer {
   padding-bottom: 1em;
 }
+
+.menu {
+  text-transform: uppercase;
+  font-size: 14px;
+}
