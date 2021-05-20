@@ -13,7 +13,9 @@ Here, I will apply it to a stripped down version of the Statsig homepage. It wil
 
 ![ui for windows users CROPPED](https://user-images.githubusercontent.com/74584483/118710635-67a85680-b7d3-11eb-9211-897a9dacb0c3.jpg)
 
-This example is implemented in [a codepen](https://codepen.io/tore-statsig/pen/mdWEajo) so you can see the actual code, or fork it to quickly test your own Dynamic Configs.
+:::info Codepen Example
+This example is implemented in [a codepen](https://codepen.io/tore-statsig/pen/mdWEajo) where you can see the actual code, or fork it to quickly test your own Dynamic Configs.
+:::
 
 ### Step 1 - Create a new Dynamic Config
 
@@ -92,7 +94,7 @@ await statsig.initialize("<CLIENT-SDK-KEY>");
 
 Now, lets fetch our config and construct the banner:
 
-```
+```js
 const bannerConfig = statsig.getConfig("banner_config");
 const text = bannerConfig.get("text", null);
 const backgroundColor = bannerConfig.get("backgroundColor", "black");
