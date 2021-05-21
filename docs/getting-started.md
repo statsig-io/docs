@@ -36,7 +36,7 @@ application:
 
 ## Account sign up and API key {#account-sign-up-and-api-key}
 
-![Statsig console](./assets/feature_gates.png)
+![Screen Shot 2021-05-20 at 4 59 31 PM](https://user-images.githubusercontent.com/74584483/119062956-cd8c0e00-b98c-11eb-8565-bd8287c18a73.png)
 
 Regardless of the SDK you pick, you will need to [create a free Statsig
 account](https://console.statsig.com/sign_up) or be invited to join an existing
