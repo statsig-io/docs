@@ -150,7 +150,7 @@ this.showPrice(priceStr, discount);
   <TabItem value="kotlin">
 
 ```kotlin
-val pricingInfo : DynamicConfig? = Statsig.getConfig("pricing_info")
+val pricingInfo : DynamicConfig = Statsig.getConfig("pricing_info")
 this.showPrice(pricingInfo.getString("price_string", "$7.99"), pricingInfo.getDouble("percent_discount", 10.0))
 ```
 
