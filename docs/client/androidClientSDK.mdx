@@ -1,6 +1,8 @@
 ---
-title: Android SDK for Statsig
+sidebar_label: Android
+title: Android Client SDK
 ---
+
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
@@ -23,7 +25,7 @@ In your root build.gradle, at the end of repositories, add:
 
 Then, add the dependency:
 
-    implementation 'com.github.statsig-io:android-sdk:v1.1.0'
+    implementation 'com.github.statsig-io:android-sdk:v2.0.0'
 
 Finally, run a gradle sync so Intellij/Android Studio recognizes the Statsig library.
 
@@ -46,22 +48,17 @@ For more information on including a jitpack library as a dependency, see https:/
 import com.statsig.androidsdk.*;
 
 ...
+...
 
-Statsig.initialize(
-    application,
-    "<CLIENT_SDK_KEY>",
-    new StatsigUser("<USER_ID_OR_NULL>"),
-    this::onStatsigReady,
-);
+Application app = getApplication();
+CompletableFuture future = Statsig.initializeAsync(app, "<CLIENT_SDK_KEY>");
+future.thenApply(this::onStatsigReady);
 
 ...
 
-private void onStatsigReady() {
+private Object onStatsigReady(Object empty) {
     // use your gates and feature configs now!
     DynamicConfig androidConfig = Statsig.getConfig("android_config");
-    if (androidConfig == null) {
-        return;
-    }
     String title = androidConfig.getValue("title", "Fallback Title");
 
     String usingGate = "false";
@@ -143,11 +140,7 @@ if (Statsig.checkGate("feature_on")) { // returns false by default, else, return
   <TabItem value="java">
 
 ```java
-@Nullable DynamicConfig pricingInfo = Statsig.getConfig("pricing_info");
-if (pricingInfo == null) {
-    // fallback
-    return;
-}
+DynamicConfig pricingInfo = Statsig.getConfig("pricing_info");
 String priceStr = pricingInfo.getString("price_string", "$7.99");
 Double percentDiscount = pricingInfo.getDouble("percent_discount", 10.0);
 this.showPrice(priceStr, discount);
@@ -158,9 +151,6 @@ this.showPrice(priceStr, discount);
 
 ```kotlin
 val pricingInfo : DynamicConfig? = Statsig.getConfig("pricing_info")
-if (pricingInfo == null) {
-    return
-}
 this.showPrice(pricingInfo.getString("price_string", "$7.99"), pricingInfo.getDouble("percent_discount", 10.0))
 ```
 
