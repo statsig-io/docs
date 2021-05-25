@@ -1,9 +1,14 @@
 module.exports = {
   docs: [
     'getting-started',
-    'first-feature',
-    'first-dynamic-config',
-    'first-experiment',
+    {
+      'Walkthrough Guides': [
+        'first-feature',
+        'first-dynamic-config',
+        'first-experiment',
+        'first-holdout',
+      ]
+    },
     {
       'Statsig Console': [
         'console/overview',
