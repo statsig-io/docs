@@ -1,0 +1,62 @@
+---
+sidebar_label: Creating Holdouts
+title: Creating your First Holdout
+---
+
+## What is a holdout?
+A holdout is a group of users that are _held out_ of one or more experiments to measure the combined impact of that set of experiments.  You can think of it
+as a "global control group" - while each experiment you run will compare the control and test groups for that feature, a holdout will compare the "global control"
+(users who never got ANY experiment) with users who may have been in one or more experiments.
+
+Want to measure the combined impact of a number of different experiments easily?  Perhaps you want to measure the combined impact of your team's work on
+your company's KPIs over the course of a quarter, or even a year.  But with new features shipping every week, maintaining a holdout over the course of a
+long period can seem difficult and add cognitive load to setting up experiments.
+
+With Statsig, creating and managing a holdout is _nearly_ automatic.  With just a few clicks, you can create a new holdout, update existing experiments
+to respect this holdout, and ensure all new feautures hold out the same set of users!  Let's take a look.
+
+## How do I create a Holdout with Statsig?
+Statsig has a separate tool just for this called "Holdouts" (what a name!).  Start by navigating there.
+
+![Screen Shot 2021-05-25 at 12 58 46 PM](https://user-images.githubusercontent.com/74584483/119560591-f891ab80-bd58-11eb-9101-86967302d95c.png)
+
+Next, click "Create"
+
+![Screen Shot 2021-05-25 at 1 00 02 PM](https://user-images.githubusercontent.com/74584483/119560729-24149600-bd59-11eb-9a73-e4a743f37eda.png)
+
+Fill out the resulting form.
+
+- If you want all future gates to respect this holdout, make sure you mark it as a "global" holdout.
+- Select a Holdout size in terms of a percentage of all users.  Depending on how many users you have, how long you are keeping this holdout, 
+  and how many experiments you are running, you may choose to make this a bit bigger, but generally its quite small (1-5%).
+- If there are any existing features that are already gated, you can select those gates at the bottom to make sure they respect the holdout moving forward.
+
+Click create, and you are DONE!  Now, when you look at a Feature Gate that has a holdout applied to it, the holdout will show at the top like this
+
+![Screen Shot 2021-05-25 at 1 10 28 PM](https://user-images.githubusercontent.com/74584483/119561934-a3ef3000-bd5a-11eb-8198-77a377bd5d17.png)
+
+## How can I analyze my holdout group?
+In order to actually analyze a holdout, you would need to collect data over a long period of time.  Don't worry - we have some demo companies set up
+which have been using Statsig for some time.  Let's take a look at one of their holdouts.
+
+Step 1.  Log in to the demo account
+Go to statsig.com/demo and complete the captcha
+
+Step 2. Switch to the "Swagger Exclusive Retail" demo company
+
+![Screen Shot 2021-05-25 at 12 36 19 PM](https://user-images.githubusercontent.com/74584483/119558656-85873580-bd56-11eb-81dd-df1aaf675b47.png)
+
+Step 3. Navigate to Pulse
+Analyzing a holdout is no different that analyzing an experiment - we always start from the Pulse page!
+
+![Screen Shot 2021-05-25 at 12 32 10 PM](https://user-images.githubusercontent.com/74584483/119558720-9d5eb980-bd56-11eb-8103-80eed6dde3de.png)
+
+Step 4. Select the "2021_h1_product_holdout" Holdout
+
+![Screen Shot 2021-05-25 at 12 32 56 PM](https://user-images.githubusercontent.com/74584483/119558790-b7989780-bd56-11eb-91e0-d0605570d997.png)
+
+Step 5. Interpret the results!
+Pulse will pull all the same metrics comparisons as your experiments, only for the holdout group.  If you need help interpreting Pulse results, 
+check out our [Getting Started with Experiments guide](/first-experiment/#checkmetrics)
+
+
