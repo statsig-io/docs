@@ -22,8 +22,7 @@ module.exports = {
         'client/jsClientSDK',
         'client/reactNativeSDK',
         'client/reactNativeExpoSDK',
-        'client/swiftClientSDK',
-        'client/objcClientSDK',
+        'client/iosClientSDK',
         'client/androidClientSDK',
       ]
     },
