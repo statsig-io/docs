@@ -19,22 +19,6 @@ module.exports = {
         href: 'https://statsig.com',
       },
       items: [
-        {
-          to: '/',
-          activeBasePath: 'docs',
-          label: 'Docs',
-          position: 'left',
-        },
-        {
-          href: 'https://blog.statsig.com', 
-          label: 'Blog', 
-          position: 'left'
-        },
-        {
-          href: 'https://github.com/statsig-io/',
-          label: 'Code',
-          position: 'left',
-        },
       ],
     },
     footer: {
