@@ -5,101 +5,69 @@
  * work well for content-centric websites.
  */
 
-/* latin */
-@font-face {
-  font-family: "Nunito";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/nunito/v16/XRXV3I6Li01BKofINeaBTMnFcQ.woff2)
-    format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-    U+FEFF, U+FFFD;
-}
-
-/* latin */
-@font-face {
-  font-family: "Nunito";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/nunito/v16/XRXW3I6Li01BKofAjsOUYevIWzgPDA.woff2)
-    format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-    U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_dJE3gnD_vx3rCs.woff2)
-    format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-    U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_ZpC3gnD_vx3rCs.woff2)
-    format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-    U+FEFF, U+FFFD;
-}
-
 h1,
 h2,
 h3,
 h4,
 h5 {
-  font-family: "Montserrat";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Helvetica Neue", "Ubuntu", sans-serif;
   font-weight: 700;
 }
 article header h1 {
-  font-size: 2.5rem !important;
+  font-size: 2rem !important;
 }
 h1 {
-  font-size: 2rem;
+  font-size: 1.7rem;
 }
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 h3 {
   font-size: 1.25rem;
 }
 h4 {
-  font-size: 1.1rem;
+  font-size: 1rem;
+  margin-bottom: 0.5rem !important;
 }
 h5 {
   font-size: 1rem;
 }
+a {
+  font-weight: 500;
+}
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #007bd2;
+  --ifm-color-primary: #194b7d;
   --ifm-color-primary-dark: #005693;
   --ifm-color-primary-darker: #0069b3;
   --ifm-color-primary-darkest: #006fbd;
   --ifm-color-primary-light: #0087e7;
   --ifm-color-primary-lighter: #008df1;
   --ifm-color-primary-lightest: #129dff;
+  --ifm-link-color: #194b7d;
   --ifm-code-font-size: 95%;
-  --ifm-font-family-base: "nunito";
+  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Helvetica Neue", "Ubuntu", sans-serif;
   --ifm-font-size-base: 1em;
+
+  --ifm-menu-color-active: #194b7d;
+  --ifm-menu-color-background-active: #194b7d33;
+  --ifm-navbar-background-color: #f7f7f7;
 }
 
 html[data-theme="dark"] {
-  --ifm-color-primary: #129dff;
+  --ifm-color-primary: #2196f3;
   --ifm-color-primary-dark: #007bd2;
   /* any other colors you wish to overwrite */
+
+  --ifm-link-color: #2196f3;
+  --ifm-menu-color: #aaa;
+  --ifm-menu-color-active: #fff;
+  --ifm-menu-color-background-active: #194b7d99;
+
+  --ifm-navbar-background-color: #242526;
 }
 
 .docusaurus-highlight-code-line {
@@ -120,6 +88,39 @@ html[data-theme="dark"] {
 }
 
 .menu {
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 14px;
+}
+
+.menu__link--sublist {
+  text-transform: uppercase;
+}
+
+.menu__link--active {
+  font-weight: 600;
+}
+
+.menu__link--sublist:after {
+  background: var(--ifm-menu-link-sublist-icon) 50% / 1rem 1rem;
+}
+
+.alert--info {
+  --ifm-alert-background-color: #2196f333;
+  --ifm-alert-border-color: #2196f3;
+  --ifm-alert-color: #2196f3;
+  --ra-admonition-icon-color: #2196f3;
+}
+
+.alert--warning {
+  --ifm-alert-background-color: #ff980033;
+  --ifm-alert-border-color: #ff9800;
+  --ifm-alert-color: #ff9800;
+  --ra-admonition-icon-color: #ff9800;
+}
+
+.alert--danger {
+  --ifm-alert-background-color: #f4433633;
+  --ifm-alert-border-color: #f44336;
+  --ifm-alert-color: #f44336;
+  --ra-admonition-icon-color: #f44336;
 }
