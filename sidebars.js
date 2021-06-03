@@ -33,7 +33,8 @@ module.exports = {
     },
     {
       'Server SDKs': [
-        'server/nodejsServerSDK'
+        'server/nodejsServerSDK',
+        'server/javaSdk',
       ]
     },
     'restful-api',
