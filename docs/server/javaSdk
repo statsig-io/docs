@@ -1,0 +1,82 @@
+---
+sidebar_label: Java/Kotlin
+title: Java/Kotlin Server SDK
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+:::info Client vs. Server
+These docs are for using our SDK in a multi-user, server side context. For client-side android applicaitons, try our [android sdk](client/androidClientSDK).
+For non-android java or kotlin client side applications, feel free to [request an sdk](https://www.statsig.com/contact).
+:::
+
+This SDK is written in Kotlin, but exposes methods and overrides to Java based applications.  It is [open source and hosted on github](https://github.com/statsig-io/java-server-sdk).
+
+## The Basics {#the-basics}
+
+Get started in a few quick steps.
+
+1. [Create a free account on statsig.com](#step1)
+2. [Install the SDK](#step2)
+3. [Initialize and use the SDK](#step3)
+
+<a name="step1"></a>
+
+#### Step 1 - Create a free account on [www.statsig.com](https://console.statsig.com/sign_up) {#step-1---create-a-free-account-on-wwwstatsigcom}
+
+You could skip this for now, but you will need an SDK Key and some Feature Gates or Dynamic Configs to use with the SDK in just a minute.
+
+<a name="step2"></a>
+
+#### Step 2 - Install the SDK {#step-2---install-the-sdk}
+
+Install the sdk using jitpack
+
+https://jitpack.io/#statsig-io/java-server-sdk
+
+#### Step 3 - Initialize and use the SDK {#step-3---initialize-the-sdk}
+
+Initialize the SDK using a [Server Secret Key from the statsig console](https://console.statsig.com/api_keys):
+
+<Tabs
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
+Future initFuture = StatsigServer.initializeAsync("<server_secret>");
+initFuture.get();
+// Now you can check gates, get configs, log events
+
+StatsigUser user = new StatsigUser();
+user.email = "address@domain.com"
+Future<Boolean> featureOn = StatsigServer.checkGateAsync(user, "<gate_name>");
+Boolean isFeatureOn = featureOn.get()
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+val initialize = CoroutineScope(Dispatchers.Default).async {
+    StatsigServer.initialize("<server_secret>")
+    val featureOn = StatsigServer.checkGate(StatsigUser(), "<gate_name>")
+}
+initialize.await()
+
+// Now you can check gates, get configs, log events
+
+StatsigServer.logEvent(null, "eventName", 1.0, mapOf("test" to "test2"))
+```
+
+  </TabItem>
+</Tabs>
+
+
+## More Information {#more-information}
+
+For more information, see our [SDK documentation on github](https://github.com/statsig-io/java-server-sdk).
