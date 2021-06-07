@@ -10,4 +10,4 @@ Statsig's Pulse, which measures the impact of features rolled out behind Feature
 
 Here is an example of pulse showing the impact of an experiment on an ecommerce website. Here, you can see the new feature improved the usage of the shopping cart, at the expense of daily active users (DAU) and product details views.  These sorts of tradeoffs might make sense (say, adding an item to the cart takes you to the cart, instead of to browse additional product details), and you will have to decide if these tradeoffs are worth it before shipping the feature more broadly.
 
-![Pulse - Experiment Details](https://user-images.githubusercontent.com/74584483/118177206-369ce000-b3e7-11eb-8b2e-19e554db0043.png)
+![Screen Shot 2021-06-07 at 1 08 36 PM](https://user-images.githubusercontent.com/74584483/121081381-83c76400-c791-11eb-815d-4aed38de5d4e.png)
