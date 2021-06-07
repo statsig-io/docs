@@ -29,12 +29,15 @@ module.exports = {
         'client/reactNativeExpoSDK',
         'client/iosClientSDK',
         'client/androidClientSDK',
+        'client/dotnetSDK',
       ]
     },
     {
       'Server SDKs': [
         'server/nodejsServerSDK',
         'server/javaSdk',
+        'server/dotnetSDK',
+        'server/rubySDK',
       ]
     },
     'restful-api',
