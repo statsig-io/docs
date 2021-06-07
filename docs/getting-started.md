@@ -17,7 +17,7 @@ If you're ready to dive right into our SDK integration guides, read on.
 
 For single-user, client-side applications, we have:
 
-- [Javascript client SDK](/client/jsClientSDK)
+- [Javascript SDK](/client/jsClientSDK)
 - [React Native SDK](/client/reactNativeSDK)
 - [React Native Expo SDK](/client/reactNativeExpoSDK)
 - [iOS SDK](/client/iosClientSDK)
@@ -26,6 +26,9 @@ For single-user, client-side applications, we have:
 For multi-user, server-side applications:
 
 - [Node.js server SDK](/server/nodejsServerSDK)
+- New! [Java/Kotlin SDK](/server/javaSdk)
+- New! [Ruby server SDK](https://github.com/statsig-io/ruby-sdk)
+- New! [Dotnet server SDK](https://github.com/statsig-io/dotnet-sdk)
 
 We also provide a RESTful API. Our API is a great choice if an SDK isn't
 available for your environment yet, as you can use it in any type of
@@ -35,15 +38,17 @@ application:
 
 ## Account sign up and API key {#account-sign-up-and-api-key}
 
-![Screen Shot 2021-05-20 at 4 59 31 PM](https://user-images.githubusercontent.com/74584483/119062956-cd8c0e00-b98c-11eb-8565-bd8287c18a73.png)
-
 Regardless of the SDK you pick, you will need to [create a free Statsig
 account](https://console.statsig.com/sign_up) or be invited to join an existing
 project. This will give you access to the Statsig console, where you can
 generate an API key.
 
-To get started, we recommend taking a quick tour around the console, and setting
-up a Gate or Dynamic Config to use when you start integrating with an SDK. Our
+![Screen Shot 2021-06-07 at 12 55 44 PM](https://user-images.githubusercontent.com/74584483/121080104-d99b0c80-c78f-11eb-957b-4dc3da51057d.png)
+
+To get started, check out one of our guides, like [building your first feature](/first-feature).
+
+Or, if you want to poke around on your own, we recommend taking a quick tour around the console, and setting
+up a Feature Gate or Dynamic Config to use when you start integrating with an SDK. Our
 SDKs function as a bridge to your Statsig console -- once you have integrated an
 SDK into your application, you can update Feature Gate conditions or Dynamic
 Config values directly in the console, with your application responding
@@ -54,13 +59,13 @@ immediately to the new values!
 #### I don't see my language listed, can I still use Statsig? {#i-dont-see-my-language-listed-can-i-still-use-statsig}
 
 We just released our beta, which includes a few SDKs, as well as an HTTPS API.
-If neither of these fit your needs, let us know! Email tore [at] statsig [dot]
-com. We're working hard to bring the power of Statsig to your client or server,
-and Android/React Native SDKs are next.
+If none of these fit your needs, let us know! Email tore [at] statsig [dot]
+com. We're working hard to bring the power of Statsig to your client or server
+with more SDKs coming every week.
 
 #### I want to run an A/B test, can I use Statsig for that? {#i-want-to-run-an-ab-test-can-i-use-statsig-for-that}
 
-You can run A/B tests by opening up partial exposures on your Feature Gates and
-Dynamic Configs. These allow you to test the effect of a new feature. However, in
-order to run a proper A/B test, you will need to create the right sample size
-buckets. These types of features are coming soon!
+You can run A/B tests by opening up a partial rollout on any Feature Gates.
+You then analyze the results of the experiment in the "Pulse" tab of the console.
+We're actively working on support for multivariate experiments (A/B/...N tests), mutual exclusivity for experiments, and much more.
+Keep checking back or follow our blog for updates!
