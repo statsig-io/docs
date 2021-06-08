@@ -54,7 +54,7 @@ module.exports = {
       copyright: `Copyright (c) ${new Date().getFullYear()} Statsig, Inc. | Thanks Docusaurus`,
     },
     prism: {
-      additionalLanguages: ['swift'],
+      additionalLanguages: ['swift', 'java', 'ruby'],
     }
   },
   presets: [
