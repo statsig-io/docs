@@ -22,13 +22,14 @@ For single-user, client-side applications, we have:
 - [React Native Expo SDK](/client/reactNativeExpoSDK)
 - [iOS SDK](/client/iosClientSDK)
 - [Android SDK](/client/androidClientSDK)
+- [.Net Client SDK](/client/dotnetSDK)
 
 For multi-user, server-side applications:
 
 - [Node.js server SDK](/server/nodejsServerSDK)
 - New! [Java/Kotlin SDK](/server/javaSdk)
-- New! [Ruby server SDK](https://github.com/statsig-io/ruby-sdk)
-- New! [Dotnet server SDK](https://github.com/statsig-io/dotnet-sdk)
+- New! [Ruby server SDK](/server/rubySDK)
+- New! [Dotnet server SDK](/server/dotnetSDK)
 
 We also provide a RESTful API. Our API is a great choice if an SDK isn't
 available for your environment yet, as you can use it in any type of
