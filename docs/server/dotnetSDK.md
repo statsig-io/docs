@@ -41,19 +41,19 @@ private double _subPrice
 
 await Statsig.initialize('<secret>')
 
-# Now you can check gates, get configs, log events for your users.
-# e.g. if you are running a promotion that offers all users with a @statsig.com email a discounted price on your monthly subscription service,
-# 1. you can first use check_gate to see if they are eligible
+// Now you can check gates, get configs, log events for your users.
+// e.g. if you are running a promotion that offers all users with a @statsig.com email a discounted price on your monthly subscription service,
+// 1. you can first use check_gate to see if they are eligible
 var user = new StatsigUser {'email' => 'jkw@statsig.com'};
 if (Statsig.check_gate(user, 'has_statsig_email'))
 {
-  # 2. then get the discounted price from dynamic config
+  // 2. then get the discounted price from dynamic config
   var priceConfigs = await Statsig.GetConfig(user, "special_item_prices");
   _subPrice = priceConfigs.Get<double>("monthly_sub_price", 0.99);
 }
 
 ...
-# 3. log the conversion event - 'purchase_made' - once they make the purchase
+// 3. log the conversion event - 'purchase_made' - once they make the purchase
 StatsigServer.LogEvent(user, "purchase_made", 1, new Dictionary<string, string>(){ { "price", _subPrice.ToString() } });
 ```
 
