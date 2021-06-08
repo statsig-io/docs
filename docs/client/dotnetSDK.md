@@ -33,7 +33,7 @@ You could skip this for now, but you will need an SDK Key and some Feature Gates
 
 The package is hosted on [Nuget](https://www.nuget.org/packages/Statsig/). You can either install it from your Visual Studio's Nuget package manager, or through .NET CLI:
 
-```
+```shell
 dotnet add package Statsig --version 0.1.2
 ```
 
@@ -43,7 +43,7 @@ dotnet add package Statsig --version 0.1.2
 
 Initialize the SDK using a [Client SDK Key from the statsig console](https://console.statsig.com/api_keys) (you may need to generate a new one if this is your first time using Statsig):
 
-```cs
+```csharp
 using Statsig;
 using Statsig.Client;
 
@@ -59,7 +59,7 @@ StatsigClient is a singleton class that you just need to call initialize() where
 
 Now that your SDK is initialized for your user, you can check feature gates, get configs and log events for the user. Let's say you are running a promotion that offers all users with a @statsig.com email a discounted price on your monthly subscription serivce, you can apply the discounted price for your user dynamically like this:
 
-```cs
+```csharp
 private double _subPrice = 1.99;
 
 // 1. check if the user pass the feature gate named "has_statsig_email" - you can configure the gate in Statsig console to only pass if user's email ends with "@statsig.com"
