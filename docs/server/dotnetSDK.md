@@ -29,7 +29,7 @@ You could skip this for now, but you will need an SDK Key and some Feature Gates
 
 The package is hosted on [Nuget](https://www.nuget.org/packages/Statsig/). You can either install it from your Visual Studio's Nuget package manager, or through .NET CLI:
 
-```
+```shell
 dotnet add package Statsig --version 0.1.2
 ```
 
@@ -39,7 +39,7 @@ dotnet add package Statsig --version 0.1.2
 
 Initialize the SDK using a [Server Secret Key from the statsig console](https://console.statsig.com/api_keys):
 
-```cs
+```csharp
 using Statsig;
 using Statsig.Server;
 
