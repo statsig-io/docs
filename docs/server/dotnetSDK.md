@@ -34,6 +34,7 @@ dotnet add package Statsig --version 0.1.0
 ```
 
 <a name="step3"></a>
+
 #### Step 3 - Initialize and use the SDK {#step-3---initialize-the-sdk}
 
 Initialize the SDK using a [Server Secret Key from the statsig console](https://console.statsig.com/api_keys):
