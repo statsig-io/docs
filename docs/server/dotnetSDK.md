@@ -55,6 +55,10 @@ if (Statsig.check_gate(user, 'has_statsig_email'))
 ...
 // 3. log the conversion event - 'purchase_made' - once they make the purchase
 StatsigServer.LogEvent(user, "purchase_made", 1, new Dictionary<string, string>(){ { "price", _subPrice.ToString() } });
+
+
+// 4. shut down the SDK when your application is closing
+StatsigServer.Shutdown();
 ```
 
 
