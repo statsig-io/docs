@@ -37,6 +37,7 @@ The package is hosted on [Nuget](https://www.nuget.org/packages/Statsig/). You c
 dotnet add package Statsig --version 0.1.0
 ```
 
+<a name="step3"></a>
 #### Step 3 - Initialize the SDK {#step-3---initialize-the-sdk}
 
 Initialize the SDK using a [Client SDK Key from the statsig console](https://console.statsig.com/api_keys) (you may need to generate a new one if this is your first time using Statsig):
