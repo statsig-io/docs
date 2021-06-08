@@ -60,4 +60,4 @@ StatsigServer.LogEvent(user, "purchase_made", 1, new Dictionary<string, string>(
 
 ## More Information {#more-information}
 
-For more information, see our [SDK documentation on github](https://github.com/statsig-io/ruby-sdk).
+For more information, see our [SDK documentation on github](https://github.com/statsig-io/dotnet-sdk).
