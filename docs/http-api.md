@@ -1,5 +1,5 @@
 ---
-title: RESTful API
+title: HTTP API
 ---
 
 Before you can start calling the server APIs you need to take care of the following steps first:

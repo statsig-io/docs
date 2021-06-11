@@ -1,6 +1,6 @@
 ---
-sidebar_label: .Net
-title: .Net Server SDK
+sidebar_label: .NET
+title: .NET Server SDK
 ---
 
 :::info Client vs. Server
@@ -66,7 +66,6 @@ StatsigServer.LogEvent(user, "purchase_made", 1, new Dictionary<string, string>(
 // 4. shut down the SDK when your application is closing
 StatsigServer.Shutdown();
 ```
-
 
 ## More Information {#more-information}
 

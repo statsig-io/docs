@@ -7,7 +7,7 @@ module.exports = {
         'first-dynamic-config',
         'first-experiment',
         'first-holdout',
-      ]
+      ],
     },
     {
       'Statsig Console': [
@@ -15,12 +15,12 @@ module.exports = {
         {
           'Feature Gates': [
             'console/featureGates/introduction',
-            'console/featureGates/rules'
+            'console/featureGates/rules',
           ],
         },
         'console/dynamicConfig',
         'console/pulse',
-      ]
+      ],
     },
     {
       'Client SDKs': [
@@ -30,7 +30,7 @@ module.exports = {
         'client/iosClientSDK',
         'client/androidClientSDK',
         'client/dotnetSDK',
-      ]
+      ],
     },
     {
       'Server SDKs': [
@@ -38,9 +38,8 @@ module.exports = {
         'server/javaSdk',
         'server/dotnetSDK',
         'server/rubySDK',
-      ]
+      ],
     },
-    'restful-api',
+    'http-api',
   ],
 };
-

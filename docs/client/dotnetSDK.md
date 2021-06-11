@@ -1,6 +1,6 @@
 ---
-sidebar_label: .Net
-title: .Net Client SDK
+sidebar_label: .NET
+title: .NET Client SDK
 ---
 
 import Tabs from "@theme/Tabs";
