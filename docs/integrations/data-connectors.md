@@ -1,5 +1,5 @@
 ---
-title: Data connectors
+title: Data Connectors
 ---
 
 The following data connectors are available for use now, and we're adding more every week:
