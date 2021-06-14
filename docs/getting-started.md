@@ -44,7 +44,7 @@ account](https://console.statsig.com/sign_up) or be invited to join an existing
 project. This will give you access to the Statsig console, where you can
 generate an API key.
 
-![Screen Shot 2021-06-07 at 12 55 44 PM](https://user-images.githubusercontent.com/74584483/121080104-d99b0c80-c78f-11eb-957b-4dc3da51057d.png)
+<img width="1433" alt="Screen Shot 2021-06-14 at 4 42 44 PM" src="https://user-images.githubusercontent.com/82126616/121972297-901e6480-cd2f-11eb-8531-49d069434ac3.png">
 
 To get started, check out one of our guides, like [building your first feature](/guides/first-feature).
 
