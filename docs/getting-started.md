@@ -46,7 +46,7 @@ generate an API key.
 
 ![Screen Shot 2021-06-07 at 12 55 44 PM](https://user-images.githubusercontent.com/74584483/121080104-d99b0c80-c78f-11eb-957b-4dc3da51057d.png)
 
-To get started, check out one of our guides, like [building your first feature](/first-feature).
+To get started, check out one of our guides, like [building your first feature](/guides/first-feature).
 
 Or, if you want to poke around on your own, we recommend taking a quick tour around the console, and setting
 up a Feature Gate or Dynamic Config to use when you start integrating with an SDK. Our

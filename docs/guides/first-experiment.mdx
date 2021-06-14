@@ -4,11 +4,11 @@ title: Using Pulse - Analyzing Your First A/B Test
 ---
 
 Running an A/B Test with Statsig is seamless - just build your features as you always would, using Feature Gates to disable them until you are ready to start
-rolling them out.  Then, instead of releasing your feature to the world all at once, start gradually rolling it out.  Check out the
-[Your First Feature guide](/first-feature) if you want to learn more about that process.
+rolling them out. Then, instead of releasing your feature to the world all at once, start gradually rolling it out. Check out the
+[Your First Feature guide](/guides/first-feature) if you want to learn more about that process.
 
-The best way to experience pulse is with an existing experiment.  Its not possible for us to set up, launch, and get data for a new experiment to quickly give you
-a feel for Pulse in just a short guide.  Instead, we will use an existing Statsig project that already has experiments running!
+The best way to experience pulse is with an existing experiment. Its not possible for us to set up, launch, and get data for a new experiment to quickly give you
+a feel for Pulse in just a short guide. Instead, we will use an existing Statsig project that already has experiments running!
 
 ### Step 1: Log in to the Statsig Demo account
 
@@ -22,46 +22,46 @@ Notice that this account already has a few Feature Gates which are actively bein
 
 ### Step 2: Navigate to Pulse
 
-Go to the [Pulse tab](https://console.statsig.com/pulse).  Pulse shows the impact different experiments have on your product metrics.  Experiments are backed by a Feature Gate with a partial rollout.
+Go to the [Pulse tab](https://console.statsig.com/pulse). Pulse shows the impact different experiments have on your product metrics. Experiments are backed by a Feature Gate with a partial rollout.
 So, once you get to Pulse, select the Feature Gate corresponding to the Feature you want to analyze. For this example, let's take a look at our experiment to give user's 25% more green gems
-(Mango Tycoon 2's in-game currency) when they make a purchase.  Go ahead and select the bonus_green_gems_promo.
+(Mango Tycoon 2's in-game currency) when they make a purchase. Go ahead and select the bonus_green_gems_promo.
 
 Once it loads, you should see something like this:
 ![Screen Shot 2021-05-18 at 1 34 45 PM](https://user-images.githubusercontent.com/74584483/118719937-e4403280-b7dd-11eb-9840-e09054207919.png)
 
-
 ### Step 3: Check Experiment Exposures
+
 Lets focus on the top pieces first: the exposure chart and graph and chart.
 
-An "exposure" is just a user being segmented into an experiment group: in this case, "test" or "control."  "Test" here means the gate is "on" (returns true) for this user.
+An "exposure" is just a user being segmented into an experiment group: in this case, "test" or "control." "Test" here means the gate is "on" (returns true) for this user.
 "Control" means the gate is "off" (returns false), so the user has the existing experience.
 
-The "Cumulative Exposures" graph is useful to see the rollout of your feature over time.  This can show you how many people out in the wild are seeing this experience.
+The "Cumulative Exposures" graph is useful to see the rollout of your feature over time. This can show you how many people out in the wild are seeing this experience.
 If your new feature requires users to update their mobile app, it may be more gradual to ramp up with exposures after your new app version is approved for the app store.
 If your experiment is running on your server, or in a webpage, it should ramp up much more quickly.
 
-You can also use the Exposure chart on the right to see how many people are in each experiment group.  In this case, it looks like we have a roughly 25% rollout of this experiment.
+You can also use the Exposure chart on the right to see how many people are in each experiment group. In this case, it looks like we have a roughly 25% rollout of this experiment.
 If you want to double check, you can go to the Feature Gate tab, click on bonus_green_gems_promo, and see what the gate rollout looks like:
 
 You should see that the experiment group indeed has a 25% rollout, with some specific high value countries excluded at the top:
 
 ![Screen Shot 2021-05-18 at 1 44 13 PM](https://user-images.githubusercontent.com/74584483/118721033-32096a80-b7df-11eb-9d69-47e03be1c33d.png)
 
-
 ### Step 4: Check Metrics Impact! {#checkmetrics}
-Let's dive into the experiment results.  Scrolling past the exposure information, it looks like this:
+
+Let's dive into the experiment results. Scrolling past the exposure information, it looks like this:
 
 ![Screen Shot 2021-05-18 at 1 34 58 PM](https://user-images.githubusercontent.com/74584483/118721109-4cdbdf00-b7df-11eb-87dc-b98c804a078a.png)
 
-This visualization compares the performance of the test and control groups on different metrics.  Green bars indicate a statistically significant positive effect
+This visualization compares the performance of the test and control groups on different metrics. Green bars indicate a statistically significant positive effect
 on the metric, red bars indicate a statistically significant negative effect on the metric, and grey bars straddle the 0% (no change) axis, indicating either no
 impact on the metric, or simply not enough data to say either way.
 
-Since our experiment is running on purchases of in game currency, we would expect to see some impact on the purchases made in the game.  Here, its a significant
-decrease in the total payment volument of players exposed to the test.  Why might this be?
+Since our experiment is running on purchases of in game currency, we would expect to see some impact on the purchases made in the game. Here, its a significant
+decrease in the total payment volument of players exposed to the test. Why might this be?
 
 Pulse can tell you the statistical impact of your test, but it's up to you to figure out why. In this case, you might hypothesize that people playing Mango Tycoon 2
-are more easily able to purchase everything they need with the additional gems, so they ended up purchasing fewer gem packs overall.  Seems reasonable.
+are more easily able to purchase everything they need with the additional gems, so they ended up purchasing fewer gem packs overall. Seems reasonable.
 
 Now we might want to decide to shut this experiment off by toggling the Feature Gate to a 0% rollout, before our main revenue stream disappears!
 
@@ -70,5 +70,5 @@ and make them confident, with data to back it up.
 
 ### Planning Your Own Experiment
 
-Now that you know how to analyze an existing experiment, there are a few more tools to help you set one up properly.  You can use the [Statsig
+Now that you know how to analyze an existing experiment, there are a few more tools to help you set one up properly. You can use the [Statsig
 A/B Test calculator](https://statsig.com/calculator) if you want to get a feel for what percentage of your users you should open up your Feature Gate to.
