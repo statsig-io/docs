@@ -116,7 +116,8 @@ banner.appendChild(bannerText);
 Note that this js relies on the html page having the homepageBanner div:
 
 ```html
-<div id="homepageBanner"></div>
+<div id="homepageBanner">
+</div>
 ```
 
 And that's it! With just a handful of javascript, we integrated with the Statsig SDK and started using the Dynamic Config we created. Now, without updating our website, we can add a new rule to the Dynamic Config and return a completely new banner to a different set of people!
