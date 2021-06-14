@@ -3,10 +3,10 @@ module.exports = {
     'getting-started',
     {
       'Walkthrough Guides': [
-        'first-feature',
-        'first-dynamic-config',
-        'first-experiment',
-        'first-holdout',
+        'guides/first-feature',
+        'guides/first-dynamic-config',
+        'guides/first-experiment',
+        'guides/first-holdout',
       ],
     },
     {
@@ -41,5 +41,10 @@ module.exports = {
       ],
     },
     'http-api',
+    {
+      'Integrations': [
+        'integrations/data-connectors'
+      ]
+    }
   ],
 };
