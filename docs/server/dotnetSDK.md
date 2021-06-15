@@ -51,7 +51,7 @@ await Statsig.initialize('<secret>')
 // e.g. if you are running a promotion that offers all users with a @statsig.com email a discounted price on your monthly subscription service,
 // 1. you can first use check_gate to see if they are eligible
 var user = new StatsigUser {'email' => 'jkw@statsig.com'};
-if (Statsig.check_gate(user, 'has_statsig_email'))
+if (await Statsig.CheckGate(user, 'has_statsig_email'))
 {
   // 2. then get the discounted price from dynamic config
   var priceConfigs = await Statsig.GetConfig(user, "special_item_prices");
@@ -66,6 +66,14 @@ StatsigServer.LogEvent(user, "purchase_made", 1, new Dictionary<string, string>(
 // 4. shut down the SDK when your application is closing
 StatsigServer.Shutdown();
 ```
+
+:::info Asynchronous APIs
+Most SDK APIs run synchronously, so why are `GetConfig` and `CheckGate` asynchronous?
+
+The main reason is that older versions of the SDK _might_ not know how to interpret new types of gate conditions. In such cases the SDK will make an asynchronous call to our servers to fetch the result of a check. This can be resolved by upgrading the SDK, and we will warn you if this happens.
+
+For more details, read our [blog post about SDK evaluations](https://blog.statsig.com/evaluating-feature-gates-in-the-statsig-sdk-a6f8881a1ad8). If you have any questions, please ask them in our [Feedback Repository](https://github.com/statsig-io/statsig-feedback/issues).
+:::
 
 ## More Information {#more-information}
 

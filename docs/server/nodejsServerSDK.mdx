@@ -67,7 +67,7 @@ const statsig = require('statsig-node');
 await statsig.initialize(<STATSIG_SECRET>);
 ```
 
-Initialize will perform a network request, so we recommend `await`ing it during your application's startup. After initialize completes, virtually all SDK operations will be synchronous[^1]--the SDK will fetch updates from Statsig in the background, independently of your API calls.
+`initialize` will perform a network request. After `initialize` completes, virtually all SDK operations will be synchronous[^1]--the SDK will fetch updates from Statsig in the background, independently of your API calls.
 
 [^1]: [Blog Post: Evaluating Feature Gates in the Statsig SDK](https://blog.statsig.com/evaluating-feature-gates-in-the-statsig-sdk-a6f8881a1ad8)
 
@@ -108,12 +108,11 @@ const configJson = config.getValue();
 ```
 
 :::info Asynchronous APIs
-We mentioned earlier that after calling `initialize` most SDK APIs would be synchronous, so you might wonder why `getConfig` and `checkGate` are asynchronous. There are 2 reasons:
+We mentioned earlier that after calling `initialize` most SDK APIs would run synchronously, so why are `getConfig` and `checkGate` asynchronous?
 
-1. We regularly add new types of conditions that can be applied to Feature Gates. Older versions of the SDK might not know how to interpret new conditions, in such cases the SDK will make an asynchronous call to our servers to fetch the result of a check. This can be resolved by upgrading the SDK. We are building mechanisms to warn you on the Statsig Console if you select a condition that would trigger this scenario for your apps.
-2. We will only resolve `checkGate` and `getConfig` once `initialize` completes. This is to prevent race conditions, and won't happen if you await `initialize`.
+The main reason is that older versions of the SDK _might_ not know how to interpret new types of gate conditions. In such cases the SDK will make an asynchronous call to our servers to fetch the result of a check. This can be resolved by upgrading the SDK, and we will warn you if this happens.
 
-Note that performance is one of our top priorities, so we minimize the number of times our APIs run asynchronously, regardless of their signature. For more details on this, read our [blog post on how the SDK performs evaluations](https://blog.statsig.com/evaluating-feature-gates-in-the-statsig-sdk-a6f8881a1ad8).
+For more details, read our [blog post about SDK evaluations](https://blog.statsig.com/evaluating-feature-gates-in-the-statsig-sdk-a6f8881a1ad8). If you have any questions, please ask them in our [Feedback Repository](https://github.com/statsig-io/statsig-feedback/issues).
 :::
 
 ## Advanced Setup {#advanced-setup}

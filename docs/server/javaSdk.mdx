@@ -11,7 +11,7 @@ These docs are for using the java SDK in a multi-user, server side context. For 
 For non-android java or kotlin client side applications, feel free to [request an sdk](https://www.statsig.com/contact).
 :::
 
-This SDK is written in Kotlin, but exposes methods and overrides to Java based applications.  It is [open source and hosted on github](https://github.com/statsig-io/java-server-sdk).
+This SDK is written in Kotlin, but exposes methods and overrides to Java based applications. It is [open source and hosted on github](https://github.com/statsig-io/java-server-sdk).
 
 ## The Basics {#the-basics}
 
@@ -76,6 +76,13 @@ StatsigServer.logEvent(null, "eventName", 1.0, mapOf("test" to "test2"))
   </TabItem>
 </Tabs>
 
+:::info Asynchronous APIs
+Most SDK APIs run synchronously, so why are `getConfig` and `checkGate` asynchronous?
+
+The main reason is that older versions of the SDK _might_ not know how to interpret new types of gate conditions. In such cases the SDK will make an asynchronous call to our servers to fetch the result of a check. This can be resolved by upgrading the SDK, and we will warn you if this happens.
+
+For more details, read our [blog post about SDK evaluations](https://blog.statsig.com/evaluating-feature-gates-in-the-statsig-sdk-a6f8881a1ad8). If you have any questions, please ask them in our [Feedback Repository](https://github.com/statsig-io/statsig-feedback/issues).
+:::
 
 ## More Information {#more-information}
 
