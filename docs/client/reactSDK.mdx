@@ -86,6 +86,10 @@ export default function MyComponent(): JSX.Element {
 To logEvents, get the underlying StatsigSDK
 
 ```react
+import { useStatsig } from 'statsig-react';
+
+...
+
 export default function MyComponent(): JSX.Element {
   const statsig = useStatsig();
   
