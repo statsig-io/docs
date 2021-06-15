@@ -23,33 +23,33 @@ we will be launching on iOS and Android as part of the V2 refresh.
 ![Screen Shot 2021-06-14 at 4 59 29 PM](https://user-images.githubusercontent.com/82126616/121973406-015f1700-cd32-11eb-9dcf-5f05ea78038b.png)
 
 Once you create a new Feature Gate, you will see a screen like this:
-![image](https://user-images.githubusercontent.com/74588208/117382166-bc260a80-ae92-11eb-940c-bcb09b495a09.png)
+![Screen Shot 2021-06-14 at 5 02 47 PM](https://user-images.githubusercontent.com/82126616/121973756-d0cbad00-cd32-11eb-89d3-8d7dd18af866.png)
 
 The Feature Gate is enabled by default (meaning calls to this gate will evaluate the rules and conditions you specify next). You can disable gates by clicking on the toggle button (this stops the gate from evaluating rules and conditions and instead just returns `false`).  Let's leave it on for now.
 
-![image](https://user-images.githubusercontent.com/74588208/117380238-1c667d80-ae8e-11eb-89ff-bb53fc64928c.png)
+![Screen Shot 2021-06-14 at 5 03 11 PM](https://user-images.githubusercontent.com/82126616/121973775-da551500-cd32-11eb-9daa-ce56f295b59f.png)
 
 ### Step 2 - Create a new Rule
 
 By default, your new Feature Gate will not pass any rule and hence will be returning `false` for all checks on the client side. In order to turn on this feature, you will need to target this feature to a specific set of folks. You do that by clicking on **Add Rule**
 
-![image](https://user-images.githubusercontent.com/74588208/117382198-d52ebb80-ae92-11eb-9afd-fa0180afe47a.png)
+![Screen Shot 2021-06-14 at 5 03 23 PM](https://user-images.githubusercontent.com/82126616/121973783-df19c900-cd32-11eb-8f9a-721eab4f0bfe.png)
 
 You can choose from a list of targeting criteria like User ID, Country, Browser, Operating System, etc.
 
-![image](https://user-images.githubusercontent.com/74588208/117383496-c3024c80-ae95-11eb-9550-b1f20e835f40.png)
+![Screen Shot 2021-06-14 at 5 03 36 PM](https://user-images.githubusercontent.com/82126616/121973790-e345e680-cd32-11eb-8d42-303f3064b931.png)
 
 Let's go ahead and choose **Operating System** is **Any of** and pick **Android** and **iOS** for our Mobile only targeting.
 
-![image](https://user-images.githubusercontent.com/74588208/117383571-f04efa80-ae95-11eb-99a8-b420446409c2.png)
+![Screen Shot 2021-06-14 at 5 03 59 PM](https://user-images.githubusercontent.com/82126616/121973803-e7720400-cd32-11eb-9c75-7a03c098b3a6.png)
 
 Now hit the **Add Rule** button and you should now see the new rule in the Feature Gate details page.
 
-![image](https://user-images.githubusercontent.com/74588208/117383781-694e5200-ae96-11eb-99a9-7ae71265abb1.png)
+
 
 Go ahead and hit **Save Changes** on the top right to commit these changes.  New rules and conditions are staged at first, and the changes are only commited when you finalize them by clicking "Save Changes"
 
-![image](https://user-images.githubusercontent.com/74588208/117383852-897e1100-ae96-11eb-95a9-fc3dfca03ca4.png)
+![Screen Shot 2021-06-14 at 5 04 26 PM](https://user-images.githubusercontent.com/82126616/121974079-7ed75700-cd33-11eb-98b3-cbadb34eaecf.png)
 
 You can now test this feature gate by configuring the User object in the "Test Gate" section.
 
@@ -59,17 +59,18 @@ Let's add one more rule to our Feature Gate, one that allows us to test the new 
 
 This time, let's pick **Email** **Contains any of** and choose a domain. Like this:
 
-![image](https://user-images.githubusercontent.com/74588208/117421030-ff07d280-aed2-11eb-8135-69b9a31c0ceb.png)
+![Screen Shot 2021-06-14 at 5 04 49 PM](https://user-images.githubusercontent.com/82126616/121973828-f9ec3d80-cd32-11eb-9ca4-4b25fa17fb75.png)
 
 Hit **Add Rule** and don't forget to  **Save Changes**.
 
-![image](https://user-images.githubusercontent.com/74588208/117493561-ff7e8880-af27-11eb-8b2f-82aab882bf86.png)
+![Screen Shot 2021-06-14 at 5 04 59 PM](https://user-images.githubusercontent.com/82126616/121973836-fd7fc480-cd32-11eb-9090-cc6e736def06.png)
+
 
 ### Step 4 - Create a new Client API key
 
 Navigate to the **API Keys** section of the Statsig console. Here you would see different types of API keys you can generate.
 
-![Screen Shot 2021-06-07 at 12 34 25 PM](https://user-images.githubusercontent.com/74584483/121077844-fc77f180-c78c-11eb-8cd7-fcfc7d01dbb8.png)
+![Screen Shot 2021-06-14 at 5 05 20 PM](https://user-images.githubusercontent.com/82126616/121973844-02dd0f00-cd33-11eb-8f07-9c1210c853a1.png)
 
 **Server Secret Keys** are used only for server side integrations. These keys are secrets that you want to safe-guard and that means not using it on clients.
 
