@@ -21,7 +21,9 @@ This example is implemented in [a codepen](https://codepen.io/tore-statsig/pen/m
 
 Start by creating a new Dynamic Config. Pick a name related to the set of variables this config will hold. Since we are building a homepage banner, let's call it "Banner Config":
 
-![create config](https://user-images.githubusercontent.com/74584483/118543196-d4a2ea00-b708-11eb-85b2-78251d9fb70f.png)
+![Screen Shot 2021-06-14 at 5 14 16 PM](https://user-images.githubusercontent.com/82126616/121974504-61ef5380-cd34-11eb-84af-a275167681ab.png)
+
+![Screen Shot 2021-06-14 at 5 14 37 PM](https://user-images.githubusercontent.com/82126616/121974573-877c5d00-cd34-11eb-93fd-9cc2164f9733.png)
 
 Great! We have created an (empty) Dynamic Config. It returns the default value (an empty JSON object) whenever it is evaluated. For our example, we are going to add some options to populate a homepage banner. The end goal is to show a targeted banner to a few different sets of developers: those likely to use a .NET SDK, and those more likely to use a Swift SDK. Let's keep our targeting simple here: we want to promote the new .NET SDK to anyone that is browsing our site on the Windows operating system, and the new Swift SDK to anyone browsing on MacOS. That takes us to steps 2 and 3.
 
@@ -29,7 +31,7 @@ Great! We have created an (empty) Dynamic Config. It returns the default value (
 
 First, let's add the Window's rule:
 
-![Adding windows rule CROPPED](https://user-images.githubusercontent.com/74584483/118543443-20559380-b709-11eb-8f4d-d39fe910576e.jpg)
+![Screen Shot 2021-06-14 at 5 14 55 PM](https://user-images.githubusercontent.com/82126616/121974560-80554f00-cd34-11eb-8215-c3f2fbc455da.png)
 
 Though Feature Gates and Dynamic Config share the same powerful user segmentation and targeting tools, they differ in what you return for those different sets of users. Feature Gates are intended to be super lightweight, and only return a boolean indicating the user matched one of the rules. Dynamic Configs, on the other hand, can return a different JSON blob of data for each rule!
 
@@ -59,11 +61,11 @@ Let's edit the return value for the windows rule, and fill it in:
 }
 ```
 
-![Windows return value](https://user-images.githubusercontent.com/74584483/118543529-36fbea80-b709-11eb-805a-84242c0d2721.png)
+![Screen Shot 2021-06-14 at 5 15 26 PM](https://user-images.githubusercontent.com/82126616/121974686-c9a59e80-cd34-11eb-935d-4fedec488952.png)
 
 Let's repeat this process for people using Mac OS. Adding the rule:
 
-![Mac OS Rule](https://user-images.githubusercontent.com/74584483/118543604-56931300-b709-11eb-8df1-dc3fc0852b37.png)
+![Screen Shot 2021-06-14 at 5 15 52 PM](https://user-images.githubusercontent.com/82126616/121974697-cd392580-cd34-11eb-910a-79088e0bb439.png)
 
 Updating the return value:
 
@@ -76,11 +78,11 @@ Updating the return value:
 }
 ```
 
-![Add macos value](https://user-images.githubusercontent.com/74584483/118543634-601c7b00-b709-11eb-8f91-b176e33811eb.png)
+![Screen Shot 2021-06-14 at 5 16 07 PM](https://user-images.githubusercontent.com/82126616/121974667-beeb0980-cd34-11eb-9b1a-41ca1ff32d46.png)
 
 Don't forget to click "Save Changes" to apply these new rules to your config. Your Dynamic Config should now look something like this:
 
-![complete banner config](https://user-images.githubusercontent.com/74584483/118544807-ab835900-b70a-11eb-9a8c-25ed80f39ba4.png)
+![Screen Shot 2021-06-14 at 5 16 50 PM](https://user-images.githubusercontent.com/82126616/121974629-a7ac1c00-cd34-11eb-91fa-858f8d73e9c7.png)
 
 ### Step 4 - Call getConfig In Your App
 
