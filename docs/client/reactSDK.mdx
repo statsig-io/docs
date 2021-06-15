@@ -1,0 +1,107 @@
+---
+sidebar_label: React
+title: React Client SDK for Statsig
+---
+
+:::info
+These docs are for using our react SDK in a single-user, client side context. For react native mobile clients, try our [react native sdk](client/reactNativeSDK)
+:::
+
+## Background
+The Statsig React SDK builds on top of the React Context and Hooks APIs, which are only supported in React v16.8.0+.
+If this requirement prevents you from using the SDK, please [let us know](https://github.com/statsig-io/statsig-feedback/issues).
+
+Also note that this SDK wraps the [statsig-js](client/jsClientSDK) sdk, and reuses a number of concepts introduced in that SDK.
+This includes:
+- initialization options have the same set of parameters, with additional react-specific parameters.
+- hooks for DynamicConfigs return the same `DynamicConfig` object
+- the `useStatsig` hook returns the internal `statsig-js` sdk, with all the functionality.
+
+Refer to the `statsig-js` documentation for more information.
+
+#### Installing the SDK
+
+You can install the statsig SDK via npm or yarn.
+
+<Tabs
+  defaultValue="npm"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+  ]}>
+  <TabItem value="npm">
+
+```shell
+npm install statsig-react
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```shell
+yarn add statsig-react
+```
+
+  </TabItem>
+</Tabs>
+
+
+#### Usage
+How we at Statsig use the SDK, and suggested usage.
+
+At the root of your component tree, wrap your app in a `StatsigProvider` and set `waitForInitialization=true`
+
+```react
+
+import { StatsigProvider } from 'statsig-react';
+
+...
+
+<StatsigProvider 
+    sdkKey="<CLIENT_SDK_KEY>"
+    user={{
+      userID: <LOGGED_IN_USER_ID>,
+      email: session?.user?.email ?? undefined,
+      ... // other user parameters
+    }}
+    waitForInitialization={true}>
+    <Component />
+</StatsigProvider>
+```
+
+Then, in your app, the `useGate`, `useConfig`, and `useExperiment` hooks will provide the up to date values of Feature Gates, DynamicConfigs, and Experiments (respectively) for the initialized user.
+
+```react
+import { useGate } from 'statsig-react';
+
+...
+
+export default function MyComponent(): JSX.Element {
+  const featureOn = useGate(<MY_FEATURE_GATE>).value;
+  
+  return {featureOn ? <MyComponent /> : null;
+}
+```
+
+To logEvents, get the underlying StatsigSDK
+
+```react
+import { useStatsig } from 'statsig-react';
+
+...
+
+export default function MyComponent(): JSX.Element {
+  const statsig = useStatsig();
+  
+  return
+    <Button
+      onClick={() => {
+        statsig.logEvent('button_clicked);
+      }}
+    />;
+}
+```
+
+If you need to check gates/configs in a loop, you can use this same `useStatsig` hook to avoid using the Feature Gate and Config hooks improperly in a loop.
+
+
