@@ -44,7 +44,7 @@ account](https://console.statsig.com/sign_up) or be invited to join an existing
 project. This will give you access to the Statsig console, where you can
 generate an API key.
 
-![Screenshot of API Keys in the Statsig console](https://user-images.githubusercontent.com/82126616/121972297-901e6480-cd2f-11eb-8531-49d069434ac3.png)
+![Screen Shot 2021-06-14 at 5 01 18 PM](https://user-images.githubusercontent.com/82126616/121973468-26ec2080-cd32-11eb-9e39-e48b42b656d4.png)
 
 To get started, check out one of our guides, like [building your first feature](/guides/first-feature).
 
