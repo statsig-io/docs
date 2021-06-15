@@ -18,6 +18,7 @@ If you're ready to dive right into our SDK integration guides, read on.
 For single-user, client-side applications, we have:
 
 - [Javascript SDK](/client/jsClientSDK)
+- NEW! [React SDK](/client/reactSDK)
 - [React Native SDK](/client/reactNativeSDK)
 - [React Native Expo SDK](/client/reactNativeExpoSDK)
 - [iOS SDK](/client/iosClientSDK)
@@ -27,9 +28,9 @@ For single-user, client-side applications, we have:
 For multi-user, server-side applications:
 
 - [Node.js Server SDK](/server/nodejsServerSDK)
-- New! [Java/Kotlin SDK](/server/javaSdk)
-- New! [Ruby Server SDK](/server/rubySDK)
-- New! [.NET Server SDK](/server/dotnetSDK)
+- NEW! [Java/Kotlin SDK](/server/javaSdk)
+- NEW! [Ruby Server SDK](/server/rubySDK)
+- NEW! [.NET Server SDK](/server/dotnetSDK)
 
 We also provide an HTTP API. Our API is a great choice if an SDK isn't
 available for your environment yet, as you can use it in any type of
