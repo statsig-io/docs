@@ -183,6 +183,18 @@ is a dictionary of String values for your own choices of targeting criteria. _us
 to identify the same user in the absence of a _userID_. You are also encouraged to provide as much _custom_ info as you know about the
 user, all of which can be used by you in our console for feature gating and Dynamic Config's targeting.
 
+## StatsigOptions {#statsigoptions}
+
+`Statsig.start()` takes an optional 3rd parameter `options` in addition to `sdkKey` and `user` that you can provide to customize the Statsig client. Currently there are 3 options:
+1. **initTimeout**: double, default 3.0
+    - used to decide how long the Statsig client waits for the initial network request to respond before calling the completion block. The Statsig client will return either cached values (if any) or default values if checkGate/getConfig/getExperiment is called before the initial network request completes.
+    - If you always want to wait for the latest values fetched from Statsig server, you should set this to 0 so we do not timeout the network request.
+2. **disableCurrentVCLogging**: boolean, default false
+    - by default, any custom event your application logs with `Statsig.logEvent()` includes the current root View Controller. This is so we can generate user journey funnels for your users. You can set this parameter to true to disable this behavior.
+3. **environment**: StatsigEnvironment, default nil
+    - StatsigEnvironment is a class for you to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
+    - e.g. passing in a value of `StatsigEnvironment(tier: .Staging)` will allow your users to pass any condition that pass for the staging environment tier, and fail any condition that only passes for other environment tiers.
+
 ## Logging custom events {#logging-custom-events}
 
 The logEvent() API can be used to log custom events for your application, which will be shown in your Statsig dashboard and used for
