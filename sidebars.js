@@ -7,6 +7,7 @@ module.exports = {
         'guides/first-dynamic-config',
         'guides/first-experiment',
         'guides/first-holdout',
+        'guides/usingEnvironments",
       ],
     },
     {
