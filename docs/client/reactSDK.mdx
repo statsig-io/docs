@@ -11,11 +11,13 @@ These docs are for using our react SDK in a single-user, client side context. Fo
 :::
 
 ## Background
+
 The Statsig React SDK builds on top of the React Context and Hooks APIs, which are only supported in React v16.8.0+.
 If this requirement prevents you from using the SDK, please [let us know](https://github.com/statsig-io/statsig-feedback/issues).
 
 Also note that this SDK wraps the [statsig-js](client/jsClientSDK) sdk, and reuses a number of concepts introduced in that SDK.
 This includes:
+
 - initialization options have the same set of parameters, with additional react-specific parameters.
 - hooks for DynamicConfigs return the same `DynamicConfig` object
 - the `useStatsig` hook returns the internal `statsig-js` sdk, with all the functionality.
@@ -48,8 +50,8 @@ yarn add statsig-react
   </TabItem>
 </Tabs>
 
-
 #### Usage
+
 How we at Statsig use the SDK, and suggested usage.
 
 At the root of your component tree, wrap your app in a `StatsigProvider` and set `waitForInitialization=true`
@@ -60,7 +62,7 @@ import { StatsigProvider } from 'statsig-react';
 
 ...
 
-<StatsigProvider 
+<StatsigProvider
     sdkKey="<CLIENT_SDK_KEY>"
     user={{
       userID: <LOGGED_IN_USER_ID>,
@@ -81,7 +83,7 @@ import { useGate } from 'statsig-react';
 
 export default function MyComponent(): JSX.Element {
   const featureOn = useGate(<MY_FEATURE_GATE>).value;
-  
+
   return {featureOn ? <MyComponent /> : null;
 }
 ```
@@ -95,7 +97,7 @@ import { useStatsig } from 'statsig-react';
 
 export default function MyComponent(): JSX.Element {
   const statsig = useStatsig();
-  
+
   return
     <Button
       onClick={() => {
@@ -106,5 +108,3 @@ export default function MyComponent(): JSX.Element {
 ```
 
 If you need to check gates/configs in a loop, you can use this same `useStatsig` hook to avoid using the Feature Gate and Config hooks improperly in a loop.
-
-
