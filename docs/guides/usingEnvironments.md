@@ -18,8 +18,8 @@ Server:
 
 ## SDK Usage
 
-When initializing the SDK, set the environment via the StatsigOptions parameter.  All SDKs accept an SDK key and an (optional) StatsigOptions dictionary of parameters.
-One of those options is the "environment" parameter, which has a "tier" field. The "tier" can be either "production"/"development"/"staging".
+When initializing the SDK, set the environment via the `StatsigOptions` parameter.  All SDKs accept an SDK key and an (optional) `StatsigOptions` dictionary of parameters.
+One of those options is the `environment` parameter, which has a `tier` field. The `tier` can be one of: "production"/"development"/"staging".
 
 For this example, lets say we are setting the parameter for our development environment/app.
 
