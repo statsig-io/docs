@@ -160,7 +160,11 @@ you can call the updateUser() function to notify Statsig so it can retrieve the 
 ```swift
 let newUser = StatsigUser(userID: "new_user_id", email: "newUser@gmail.com", country: "US")
 
-Statsig.updateUser(newUser)
+Statsig.updateUser(newUser) { errorMessage in
+
+  // Statsig has fetched the values for the new user
+
+}
 ```
 
   </TabItem>
@@ -168,7 +172,9 @@ Statsig.updateUser(newUser)
 
 ```objectivec
 StatsigUser *newUser = [[StatsigUser alloc] initWithUserID:@"new_user_id" email:@"newUser@gmail.com" ip:nil country:@"US" custom:custom:@{@"is_new_user": @YES}];
-[Statsig updateUserWithNewUser:user completion:nil];
+[Statsig updateUserWithNewUser:user completion:^(NSString * errorMessage) {
+  // Statsig has fetched the values for the new user
+}];
 ```
 
   </TabItem>
