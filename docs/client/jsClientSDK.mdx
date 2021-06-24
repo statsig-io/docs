@@ -118,7 +118,7 @@ const shouldDiscount = config.get("discount", false);
 You should provide a user object whenever possible to your `initialize()` call, passing as much information as possible in order to take advantage of advanced gate and config conditions (like country or OS/browser level checks). If the user is not known at SDK init time, you can still fetch values for logged out users until the user is known. At that point, update the gates and configs for the user using:
 
 ```jsx
-await statsig.switchUser({ userID: <USER_IDENTIFIER>});
+await statsig.updateUser({ userID: <USER_IDENTIFIER>});
 ```
 
 The User Object can be populated with a number of schematized attributes, or your own custom fields:
