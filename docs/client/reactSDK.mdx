@@ -56,6 +56,10 @@ How we at Statsig use the SDK, and suggested usage.
 
 At the root of your component tree, wrap your app in a `StatsigProvider` and set `waitForInitialization=true`
 
+:::info
+We have discovered an issue with child components if you do not specify `waitForInitialization=true` and are actively working on it.  See the [github issue](https://github.com/statsig-io/react-sdk/issues/1) for more information.  
+:::
+
 ```react
 
 import { StatsigProvider } from 'statsig-react';
