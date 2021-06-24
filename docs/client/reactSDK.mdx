@@ -54,11 +54,9 @@ yarn add statsig-react
 
 How we at Statsig use the SDK, and suggested usage.
 
-At the root of your component tree, wrap your app in a `StatsigProvider` and set `waitForInitialization=true`
+At the root of your component tree, wrap your app in a `StatsigProvider` and set `waitForInitialization=true` (if you do not wait for initialization, `useGate` hooks will return false on the first render, and will only update to the actual gate value once SDK initialization completes and Gates are fetched for the passed in user.  Similarly, `useConfig` and `useExperiment` will return empty dynamic configs).
 
-:::info
-We have discovered an issue with child components if you do not specify `waitForInitialization=true` and are actively working on it.  See the [github issue](https://github.com/statsig-io/react-sdk/issues/1) for more information.  
-:::
+
 
 ```react
 
