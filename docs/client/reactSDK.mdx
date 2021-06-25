@@ -116,4 +116,29 @@ If you need to check gates/configs in a loop, you can use this same `useStatsig`
 
 Internally at Statsig, we use this jest mock to test our components:
 
-<script src="https://gist.github.com/tore-statsig/f46cb48296372aa074e67426dc4fd8c7.js"></script>
+```js
+jest.mock('statsig-react', () => {
+  return {
+    StatsigProvider: ({ children }: { children: React.ReactNode }) => children,
+    useGate: () => {
+      return false;
+    },
+    useConfig: () => {
+      return {};
+    },
+    useExperiment: () => {},
+    useStatsig: () => {
+      return {
+        logEvent: () => {},
+        checkGate: () => false,
+        getConfig: () => {
+          return {
+            get: (name: string, fallback: any) => fallback,
+            getValue: (name: string, fallback: any) => fallback,
+          };
+        },
+      };
+    },
+  };
+});
+```
