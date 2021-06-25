@@ -110,3 +110,10 @@ export default function MyComponent(): JSX.Element {
 ```
 
 If you need to check gates/configs in a loop, you can use this same `useStatsig` hook to avoid using the Feature Gate and Config hooks improperly in a loop.
+
+
+#### Testing
+
+Internally at Statsig, we use this jest mock to test our components:
+
+<script src="https://gist.github.com/tore-statsig/f46cb48296372aa074e67426dc4fd8c7.js"></script>
