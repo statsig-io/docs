@@ -15,6 +15,8 @@ These docs are for using our react SDK in a single-user, client side context. Fo
 The Statsig React SDK builds on top of the React Context and Hooks APIs, which are only supported in React v16.8.0+.
 If this requirement prevents you from using the SDK, please [let us know](https://github.com/statsig-io/statsig-feedback/issues).
 
+If you are unfamiliar with using React Hooks, be sure to read the [rules of hooks](https://reactjs.org/docs/hooks-rules.html).
+
 Also note that this SDK wraps the [statsig-js](client/jsClientSDK) sdk, and reuses a number of concepts introduced in that SDK.
 This includes:
 
@@ -84,6 +86,7 @@ import { useGate } from 'statsig-react';
 ...
 
 export default function MyComponent(): JSX.Element {
+  // only call hooks at the top level of a functional component
   const featureOn = useGate(<MY_FEATURE_GATE>).value;
 
   return {featureOn ? <MyComponent /> : null;
