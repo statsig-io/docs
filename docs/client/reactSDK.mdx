@@ -17,14 +17,14 @@ If this requirement prevents you from using the SDK, please [let us know](https:
 
 If you are unfamiliar with using React Hooks, be sure to read the [rules of hooks](https://reactjs.org/docs/hooks-rules.html).
 
-Also note that this SDK wraps the [statsig-js](client/jsClientSDK) sdk, and reuses a number of concepts introduced in that SDK.
+Also note that this SDK wraps the [statsig-js](jsClientSDK) sdk, and reuses a number of concepts introduced in that SDK.
 This includes:
 
 - initialization options have the same set of parameters, with additional react-specific parameters.
 - hooks for DynamicConfigs return the same `DynamicConfig` object
 - the `useStatsig` hook returns the internal `statsig-js` sdk, with all the functionality.
 
-Refer to the `statsig-js` documentation for more information.
+Refer to the [statsig-js](jsClientSDK) documentation for more information.
 
 #### Installing the SDK
 
@@ -129,7 +129,7 @@ StatsigProvider is a [react context provider](https://reactjs.org/docs/context.h
 - `waitForInitialization?: boolean;` - Waits for the SDK to initialize with updated values before rendering child components
 
 #### Hooks
-The SDK exposes Feature Gates, Dynamic Configs, Experiments, and the underlying statsig-js sdk.  If you are unfamiliar with hooks, be sure to check out the [rules of hooks](https://reactjs.org/docs/hooks-rules.html)
+The SDK exposes Feature Gates, Dynamic Configs, Experiments, and the underlying [statsig-js](jsClientSDK).  If you are unfamiliar with hooks, be sure to check out the [rules of hooks](https://reactjs.org/docs/hooks-rules.html)
 
 ##### `useGate`
 A react hook to get a Statsig Feature Gate.
@@ -149,7 +149,7 @@ Parameters:
 Returns:
 - `ConfigResult`
 -   `isLoading: boolean;` - the loading/initializing state of the SDK
--   `config: DynamicConfig` - the backing `DynamicConfig` (see the statsig-js sdk docs for more information)
+-   `config: DynamicConfig` - the backing `DynamicConfig` (see the [statsig-js sdk docs](jsClientSDK) for more information)
 
 ##### `useExperiment`
 A react hook to get a Statsig Experiment, represented as a DynamicConfig.
@@ -159,10 +159,10 @@ Parameters:
 Returns:
 - `ConfigResult`
 -   `isLoading: boolean;` - the loading/initializing state of the SDK
--   `config: DynamicConfig` - the backing `DynamicConfig` (see the statsig-js sdk docs for more information)
+-   `config: DynamicConfig` - the backing `DynamicConfig` (see the [statsig-js sdk docs](jsClientSDK) for more information)
 
 ##### `useStatsig`
-A react hook to get an initialized reference to the statsig-js sdk, or undefined if not initialized.  Use this to log events or instead of `useGate`/`useConfig`/`useExperiment` if you are violating the [rules of hooks](https://reactjs.org/docs/hooks-rules.html).  For example, to check gates in a loop, `useStatsig` to get a reference to the sdk, and call `checkGate` in the loop.
+A react hook to get an initialized reference to the [statsig-js sdk](jsClientSDK), or undefined if not initialized.  Use this to log events or instead of `useGate`/`useConfig`/`useExperiment` if you are violating the [rules of hooks](https://reactjs.org/docs/hooks-rules.html).  For example, to check gates in a loop, `useStatsig` to get a reference to the sdk, and call `checkGate` in the loop.
 
 Parameters: none
 Returns:
