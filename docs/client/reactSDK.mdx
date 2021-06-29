@@ -78,7 +78,7 @@ import { StatsigProvider } from 'statsig-react';
 </StatsigProvider>
 ```
 
-Then, in your app, the `useGate`, `useConfig`, and `useExperiment` hooks will provide the up to date values of Feature Gates, DynamicConfigs, and Experiments (respectively) for the initialized user.
+Then, in your app, the `useGate`, `useConfig`, and `useExperiment` hooks will provide the up to date values of Feature Gates, DynamicConfigs, and Experiments (respectively) for the initialized user.  If you are unfamiliar with React Hooks, see the [rules of hooks](https://reactjs.org/docs/hooks-rules.html).
 
 ```react
 import { useGate } from 'statsig-react';
@@ -113,6 +113,67 @@ export default function MyComponent(): JSX.Element {
 ```
 
 If you need to check gates/configs in a loop, you can use this same `useStatsig` hook to avoid using the Feature Gate and Config hooks improperly in a loop.
+
+
+#### More Details
+
+The `statsig-react` sdk exports the following components:
+
+##### `StatsigProvider`
+StatsigProvider is a [react context provider](https://reactjs.org/docs/context.html#contextprovider) which initializes the SDK, and passes down its state to the rest of the react application via a `StatsigContext`.  It takes the following properties:
+
+`children: React.ReactNode | React.ReactNode[];` - One or more child components
+`sdkKey: string;` - A client SDK key from the Statsig Console
+`user: statsig.StatsigUser;` - A Statsig User object.  Changing this will update the user and Gate values, causing a re-initialization
+`options?: statsig.StatsigOptions;` - An optional bag of initialization properties (shared with the statsig-js sdk) for advanced configuration
+`waitForInitialization?: boolean;` - Waits for the SDK to initialize with updated values before rendering child components
+
+#### Hooks
+The SDK exposes Feature Gates, Dynamic Configs, Experiments, and the underlying statsig-js sdk.  If you are unfamiliar with hooks, be sure to check out the [rules of hooks](https://reactjs.org/docs/hooks-rules.html)
+
+##### `useGate`
+A react hook to get a Statsig Feature Gate.
+
+Parameters:
+`gateName: string` - the name of the gate to check
+Returns:
+`GateResult`
+  `isLoading: boolean;` - the loading/initializing state of the SDK
+  `value: boolean` - the value of the feature gate (false by default)
+
+##### `useConfig`
+A react hook to get a Statsig Dynamic Config.
+
+Parameters:
+`configName: string` - the name of the config to get
+Returns:
+`ConfigResult`
+  `isLoading: boolean;` - the loading/initializing state of the SDK
+  `config: DynamicConfig` - the backing `DynamicConfig` (see the statsig-js sdk docs for more information)
+
+##### `useExperiment`
+A react hook to get a Statsig Experiment, represented as a DynamicConfig.
+
+Parameters:
+`experimentName: string` - the name of the experiment to get
+Returns:
+`ConfigResult`
+  `isLoading: boolean;` - the loading/initializing state of the SDK
+  `config: DynamicConfig` - the backing `DynamicConfig` (see the statsig-js sdk docs for more information)
+
+##### `useStatsig`
+A react hook to get an initialized reference to the statsig-js sdk, or undefined if not initialized.  Use this to log events or instead of `useGate`/`useConfig`/`useExperiment` if you are violating the [rules of hooks](https://reactjs.org/docs/hooks-rules.html).  For example, to check gates in a loop, `useStatsig` to get a reference to the sdk, and call `checkGate` in the loop.
+
+Parameters: none
+Returns:
+`statsig | undefined` - a reference to the initialized statsig-js sdk, or undefined if not initialized
+
+##### `StatsigContext`
+StatsigContext is a [react context](https://reactjs.org/docs/context.html) used internally by the SDK to manage internal state.  You should not need to use the `StatsigContext` directly, as the Provider and Hooks interface with it for you.  It tracks the following state:
+
+`initialized: boolean;` the initialization state of the SDK
+`statsigPromise: React.MutableRefObject<Promise<void>> | null;` a reference to a promise which resolves once SDK initialization is complete
+`statsig: typeof statsig | undefined;` the statsig-js SDK, or undefined if uninitialized
 
 
 #### Testing
