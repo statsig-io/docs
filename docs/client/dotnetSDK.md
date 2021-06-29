@@ -7,7 +7,7 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
 :::info Client vs. Server
-These docs are for using our .NET SDK in a single-user, client side context. For server side and multi-user contexts, try our [server .NET SDK](server/dotnetSDK)
+These docs are for using our .NET SDK in a single-user, client side context. For server side and multi-user contexts, try our [server .NET SDK](/server/dotnetSDK)
 :::
 
 The client .NET SDK is written in C#, and is [open source and hosted on github](https://github.com/statsig-io/dotnet-sdk).
