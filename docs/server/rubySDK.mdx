@@ -26,13 +26,13 @@ You could skip this for now, but you will need an SDK Key and some Feature Gates
 If you are using Bundler, add the [gem](https://rubygems.org/gems/statsig) to your Gemfile from command line:
 
 ```shell
-bundle add statsig --version ">= 0.1.5"
+bundle add statsig --version ">= 1.0.0"
 ```
 
 or directly include it in your Gemfile and run `bundle install`:
 
 ```shell
-gem "statsig", ">= 0.1.5"
+gem "statsig", ">= 1.0.0"
 ```
 
 <a name="step3"></a>
@@ -60,7 +60,3 @@ end
 # 3. log the conversion event - 'purchase_made' - once they make the purchase
 Statsig.log_event(user, 'purchase_made', 1, {'price' => @sub_price})
 ```
-
-## More Information {#more-information}
-
-For more information, see our [SDK documentation on github](https://github.com/statsig-io/ruby-sdk).
