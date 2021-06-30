@@ -4,7 +4,7 @@ title: .NET Server SDK
 ---
 
 :::info Client vs. Server
-These docs are for using our .NET SDK in a multi-user, server side context. For client side and single-user contexts, try our [server .NET SDK](client/dotnetSDK)
+These docs are for using our .NET SDK in a multi-user, server side context. For client side and single-user contexts, try our [client .NET SDK](/client/dotnetSDK)
 :::
 
 This SDK is written in C#, and is [open source and hosted on github](https://github.com/statsig-io/dotnet-sdk).
