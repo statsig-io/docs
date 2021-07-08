@@ -45,13 +45,13 @@ using Statsig.Server;
 
 private double _subPrice
 
-await Statsig.initialize('<secret>')
+await StatsigServer.Initialize('<secret>')
 
 // Now you can check gates, get configs, log events for your users.
 // e.g. if you are running a promotion that offers all users with a @statsig.com email a discounted price on your monthly subscription service,
 // 1. you can first use check_gate to see if they are eligible
 var user = new StatsigUser {'email' => 'jkw@statsig.com'};
-if (await Statsig.CheckGate(user, 'has_statsig_email'))
+if (await StatsigServer.CheckGate(user, 'has_statsig_email'))
 {
   // 2. then get the discounted price from dynamic config
   var priceConfigs = await Statsig.GetConfig(user, "special_item_prices");
