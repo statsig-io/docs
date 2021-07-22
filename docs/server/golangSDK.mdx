@@ -1,5 +1,5 @@
 ---
-sidebar_label: Go SDK
+sidebar_label: Go
 title: Go Server SDK for Statsig
 ---
 
@@ -49,7 +49,7 @@ import (
 	statsig.Initialize("<SERVER_SECRET_KEY>")
 ```
 
-`Initialize` will perform a network request. After `Initialize` completes, virtually all SDK operations will be synchronous[^1]--the SDK will fetch updates from Statsig in the background, independently of your API calls.
+`Initialize` will perform a network request. After `Initialize` completes, virtually all SDK operations will be evaluated locally[^1]--the SDK will fetch updates from Statsig in the background, independently of your API calls.
 
 [^1]: [Blog Post: Evaluating Feature Gates in the Statsig SDK](https://blog.statsig.com/evaluating-feature-gates-in-the-statsig-sdk-a6f8881a1ad8)
 
@@ -89,9 +89,9 @@ json := config.Value
 ```
 
 :::info Asynchronous APIs
-We mentioned earlier that after calling `initialize` most SDK APIs would run synchronously.  What is a case where they won't?
+We mentioned earlier that after calling `initialize` most SDK APIs would run locally, without network requests to statsig servers.  What is a case where they won't?
 
-The main reason is that older versions of the SDK _might_ not know how to interpret new types of gate conditions. In such cases the SDK will make an asynchronous call to our servers to fetch the result of a check. This can be resolved by upgrading the SDK, and we will warn you if this happens.
+The main reason is that older versions of the SDK _might_ not know how to interpret new types of gate conditions. In such cases the SDK will make a call to our servers to fetch the result of a check. This can be resolved by upgrading the SDK, and we will warn you if this happens.
 
 For more details, read our [blog post about SDK evaluations](https://blog.statsig.com/evaluating-feature-gates-in-the-statsig-sdk-a6f8881a1ad8). If you have any questions, please ask them in our [Feedback Repository](https://github.com/statsig-io/statsig-feedback/issues).
 :::
