@@ -31,6 +31,7 @@ For multi-user, server-side applications:
 - [Java/Kotlin SDK](/server/javaSdk)
 - [Ruby Server SDK](/server/rubySDK)
 - [.NET Server SDK](/server/dotnetSDK)
+- New! [Go SDK](/server/golangSDK)
 
 We also provide an HTTP API. Our API is a great choice if an SDK isn't
 available for your environment yet, as you can use it in any type of
