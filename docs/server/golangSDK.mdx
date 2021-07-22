@@ -1,0 +1,141 @@
+---
+sidebar_label: Go SDK
+title: Go Server SDK for Statsig
+---
+
+The go-sdk and the accompanying docs are [open source and hosted on github](https://github.com/statsig-io/go-sdk).
+
+## The Basics {#the-basics}
+
+Get started in a few quick steps.
+
+1. [Create a free account on statsig.com](#step1)
+2. [Install the SDK](#step2)
+3. [Initialize the SDK](#step3)
+4. [Fetch Feature Gates or Dynamic Configs](#step4)
+
+<a name="step1"></a>
+
+#### Step 1 - Create a free account on [www.statsig.com](https://console.statsig.com/sign_up) {#step-1---create-a-free-account-on-wwwstatsigcom}
+
+You could skip this for now, but you will need an SDK Key and some Feature Gates or Dynamic Configs to use with the SDK in just a minute.
+
+<a name="step2"></a>
+
+#### Step 2 - Install the SDK {#step-2}
+
+In your go.mod, add a dependency on the most recent version of the SDK.  See the [Releases tab in github](https://github.com/statsig-io/ip3country-go/releases) for all versions
+```
+require (
+  github.com/statsig-io/go-sdk v0.1.0
+)
+```
+
+<a name="step3"></a>
+
+#### Step 3 - Initialize the SDK {#step-3}
+
+Initialize the SDK using a [Server Secret Key from the statsig console](https://console.statsig.com/api_keys):
+
+```go
+import (
+	"statsig"
+	"statsig/types"
+)
+
+...
+
+// https://console.statsig.com/api_keys
+	statsig.Initialize("<SERVER_SECRET_KEY>")
+```
+
+`Initialize` will perform a network request. After `Initialize` completes, virtually all SDK operations will be synchronous[^1]--the SDK will fetch updates from Statsig in the background, independently of your API calls.
+
+[^1]: [Blog Post: Evaluating Feature Gates in the Statsig SDK](https://blog.statsig.com/evaluating-feature-gates-in-the-statsig-sdk-a6f8881a1ad8)
+
+<a name="step4"></a>
+
+#### Step 4 - Fetch Feature Gates or Dynamic Configs {#step-4---fetch-feature-gates-or-dynamic-configs}
+
+Now that your SDK is initialized, let's fetch a Feature Gate. Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
+
+From this point on, all APIs will require you to specify the user associated with the request. For example, check a gate for a certain user like this:
+
+```go
+feature := statsig.CheckGate(types.StatsigUser{UserID: "<USER_ID>"}, "<GATE_NAME>")
+if feature {
+  // New code branch
+} else {
+  // Fallback, default behavior
+}
+```
+
+Feature Gates can be very useful for simple on/off switches, or more advanced user targeting. But what if you want to return an entirely different configuration to different users? What if you want to be able to send a different set of strings to your client for different locales? Or a different list of products for a new market (or new user)? Enter Dynamic Configs. The API is very similar to Feature Gates, but you get an entire json object you can configure in the console. For example:
+
+Checking a Dynamic Config is nearly identical to checking a gate:
+
+```go
+config := statsig.GetConfig(types.StatsigUser{UserID: "<USER_ID>"}, "<CONFIG_NAME>")
+```
+
+You can then fetch typed Dynamic Config parameters (and provide a default value as a fallback):
+
+```go
+productName := config.GetString("name", "Awesome Product");
+price := config.GetNumber("price", 10.0);
+
+// Or just get the whole json object backing this config
+json := config.Value
+```
+
+:::info Asynchronous APIs
+We mentioned earlier that after calling `initialize` most SDK APIs would run synchronously.  What is a case where they won't?
+
+The main reason is that older versions of the SDK _might_ not know how to interpret new types of gate conditions. In such cases the SDK will make an asynchronous call to our servers to fetch the result of a check. This can be resolved by upgrading the SDK, and we will warn you if this happens.
+
+For more details, read our [blog post about SDK evaluations](https://blog.statsig.com/evaluating-feature-gates-in-the-statsig-sdk-a6f8881a1ad8). If you have any questions, please ask them in our [Feedback Repository](https://github.com/statsig-io/statsig-feedback/issues).
+:::
+
+## Advanced Setup {#advanced-setup}
+
+If you have a logged in user, or a deterministic way to identify users, pass a userID with each sdk call. You should pass as much information as possible with each check: this will enable you to use more advanced gate and config conditions, like country level or OS/browser level checks.
+
+```go
+// types/StatsigUser.go
+
+// User specific attributes for evaluating Feature Gates, Experiments, and DyanmicConfigs
+// NOTE: UserID is **required** - see https://docs.statsig.com/messages/serverRequiredUserID
+type StatsigUser struct {
+	UserID             string                 `json:"userID"`
+	Email              string                 `json:"email"`
+	IpAddress          string                 `json:"ip"`
+	UserAgent          string                 `json:"userAgent"`
+	Country            string                 `json:"country"`
+	Locale             string                 `json:"locale"`
+	AppVersion         string                 `json:"appVersion"`
+	Custom             map[string]interface{} `json:"custom"`
+	StatsigEnvironment map[string]string      `json:"statsigEnvironment"`
+}
+
+```
+
+You can use the SDK to log events associated with the user. These events will be used to power A/B testing metrics in the future, and will show up in the Statsig console under the "Dashboard" tab (coming soon!)
+
+```go
+statsig.LogEvent(types.StatsigEvent{
+		User: types.StatsigUser{UserID: "<USER_ID>"},
+		EventName: "purchase",
+		Metadata: map[string]string{"name": "Shirt","size": "XL"},
+	})
+```
+
+### Instance of Statsig
+If you want to get an instance of a StatsigClient rather than using the global statsig singleton:
+
+```go
+s := statsig.New("<SERVER_SECRET_KEY>")
+
+s.CheckGate(types.StatsigUser{UserID: "<USER_ID>"}, "<GATE_NAME>")
+...
+// The API definition should be the same
+```
