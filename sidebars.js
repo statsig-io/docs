@@ -40,6 +40,7 @@ module.exports = {
         'server/javaSdk',
         'server/dotnetSDK',
         'server/rubySDK',
+        'server/golangSDK',
       ],
     },
     'http-api',
