@@ -8,6 +8,7 @@ module.exports = {
         'guides/first-experiment',
         'guides/first-holdout',
         'guides/usingEnvironments',
+        'guides/first-segment,
       ],
     },
     {
