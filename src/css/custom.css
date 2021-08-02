@@ -92,10 +92,6 @@ html[data-theme="dark"] {
   font-size: 14px;
 }
 
-.menu__link--sublist {
-  text-transform: uppercase;
-}
-
 .menu__link--active {
   font-weight: 600;
 }
