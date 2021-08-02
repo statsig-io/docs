@@ -10,20 +10,20 @@ Dynamic Configs can be simple static configurations, or return different results
 
 For example, you could use a Dynamic Config to determine the product to promote in the hero banner on your webpage:
 
-```
-config = Statsig.getConfig("hero_product")
+```js
+config = Statsig.getConfig("hero_product");
 if (config == null) {
-    hideHero()
-    return
+  hideHero();
+  return;
 }
-title = config.get("title")
-price = config.get("price")
-renderHero(title, price)
+title = config.get("title");
+price = config.get("price");
+renderHero(title, price);
 ```
 
 In the Statsig Console, the configuration used above would look like this:
 
-```
+```js
 {
     "title": "Hoverboard",
     "price": 999.00
@@ -33,7 +33,7 @@ In the Statsig Console, the configuration used above would look like this:
 
 But you could return a different one, say for users in Europe, that looks like this:
 
-```
+```js
 {
     "title": "Hoverboard",
     "price": 800.00

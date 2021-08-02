@@ -21,7 +21,11 @@ module.exports = {
           ],
         },
         'console/dynamicConfig',
+        'console/experimentsPlus',
+        'console/metrics',
         'console/pulse',
+        'console/holdouts',
+        'console/autotune',
       ],
     },
     {
