@@ -12,7 +12,7 @@ Each of our technical integration guides assumes some knowledge of the core stat
 - [Feature Gates](/console/featureGates/introduction)
 - [Dynamic Config](/console/dynamicConfig)
 - [Pulse](/console/pulse)
-- [Experiments+](/console/experimentPlus)
+- [Experiments+](/console/experimentsPlus)
 - [Holdouts](/console/holdouts)
 - [Metrics](/console/metrics)
 - [Ultrasound](/console/ultrasound)
