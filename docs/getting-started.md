@@ -12,6 +12,11 @@ Each of our technical integration guides assumes some knowledge of the core stat
 - [Feature Gates](/console/featureGates/introduction)
 - [Dynamic Config](/console/dynamicConfig)
 - [Pulse](/console/pulse)
+- [Experiments+](/console/experimentPlus)
+- [Holdouts](/console/holdouts)
+- [Metrics](/console/metrics)
+- [Ultrasound](/console/ultrasound)
+- [Autotune](/console/autotune)
 
 If you're ready to dive right into our SDK integration guides, read on.
 
