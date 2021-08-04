@@ -3,9 +3,9 @@ sidebar_label: Reusable Targeting (Segments)
 title: Reusable Targeting with User Segments
 ---
 
-User Segments allow you to predefine targeting groups for re-use in Feature Gates and Dynamic Configs.  Think of it as a reusable macro for a set of users.
-Need an easy way to roll things out to just your team/org/company?  Create a segment, and use a "User is in Segment" or "User is not in Segment" condition
-in a Feature Gate or Dynamic Config.  Let's go through an example.  This guide will walk through creating an example segment to identify our internal users, and then using that segment in a new feature we are building.
+User Segments allow you to predefine targeting groups for re-use in Feature Gates and Dynamic Configs. Think of it as a reusable macro for a set of users.
+Need an easy way to roll things out to just your team/org/company? Create a segment, and use a "User is in Segment" or "User is not in Segment" condition
+in a Feature Gate or Dynamic Config. Let's go through an example. This guide will walk through creating an example segment to identify our internal users, and then using that segment in a new feature we are building.
 
 ## Step 1: Creating a Segment
 
@@ -13,27 +13,27 @@ Start by navigating to the "Segments" tab in the console:
 
 ![Screen Shot 2021-07-30 at 12 49 38 PM](https://user-images.githubusercontent.com/74584483/127704732-cb5e80c2-30a4-4f24-aaf3-5628e1a68cf9.png)
 
-Then click "Create New."  Lets call it "Internal Stakeholders:"
+Then click "Create New." Lets call it "Internal Stakeholders:"
 
 ![Screen Shot 2021-07-30 at 12 51 10 PM](https://user-images.githubusercontent.com/74584483/127704901-10a78123-2f50-49ce-8d69-320ad94f6d95.png)
 
 Now, lets add some rules to identify those users.
 
-First, lets target people on our internal environments (see our [environments guide](https://docs.statsig.com/guides/usingEnvironments) for more info):
+First, lets target people on our internal environments (see our [environments guide](/guides/using-environments) for more info):
 
 ![Screen Shot 2021-07-30 at 12 52 44 PM](https://user-images.githubusercontent.com/74584483/127705025-6a7512b0-5d32-4f2f-9e65-5fa07360406a.png)
 
-Next, lets add another condition to that same rule.  Click "Add more conditions", and then use an "email" "contains any of" condition to target internal employees:
+Next, lets add another condition to that same rule. Click "Add more conditions", and then use an "email" "contains any of" condition to target internal employees:
 
 ![Screen Shot 2021-07-30 at 12 55 12 PM](https://user-images.githubusercontent.com/74584483/127705234-a39c062e-66d0-469b-9196-10437d6a35f2.png)
 
-Don't forget to "Save Changes" after adding those!  Your Segment should look like this:
+Don't forget to "Save Changes" after adding those! Your Segment should look like this:
 
 ![Screen Shot 2021-07-30 at 12 56 11 PM](https://user-images.githubusercontent.com/74584483/127705342-a3cc801a-8f5d-453a-8980-9205406e5c80.png)
 
 ## Step 2: Using a segment
 
-Now, lets make a gate for our new feature, "Landing Page Redesign".  Navigate to "Feature Gates" and click "Create New"
+Now, lets make a gate for our new feature, "Landing Page Redesign". Navigate to "Feature Gates" and click "Create New"
 
 ![Screen Shot 2021-07-30 at 12 58 22 PM](https://user-images.githubusercontent.com/74584483/127705559-310834b8-caa8-4f74-b105-e8736cd3ae4a.png)
 
@@ -48,7 +48,8 @@ Again, remember to "Save Changes"
 ![Screen Shot 2021-07-30 at 1 00 30 PM](https://user-images.githubusercontent.com/74584483/127705791-8fd7c490-2d7c-4402-9942-2af8c5865903.png)
 
 ## Step 3: Test it!
-Fill in the test gate console with any random user input.  You won't be able to get this gate to pass until you pass in a user with an email ending
+
+Fill in the test gate console with any random user input. You won't be able to get this gate to pass until you pass in a user with an email ending
 in `statsig.com` or `statsig.io` AND a development or staging environment like this:
 
 ```
@@ -62,4 +63,4 @@ in `statsig.com` or `statsig.io` AND a development or staging environment like t
 
 ![Screen Shot 2021-07-30 at 1 01 21 PM](https://user-images.githubusercontent.com/74584483/127705951-6813bb6e-0ae7-44a2-8db3-421e11e54c5c.png)
 
-There you have it!  You can reuse this Segment in as many Feature Gates or Dynamic Configs as you want to gate your internal features while they are under development.
+There you have it! You can reuse this Segment in as many Feature Gates or Dynamic Configs as you want to gate your internal features while they are under development.

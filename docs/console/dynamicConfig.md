@@ -42,3 +42,15 @@ But you could return a different one, say for users in Europe, that looks like t
 ```
 
 Notice that although the configuration values changed in the console, the code remains the same! You can use Dynamic Configs to change values without having to update code, or push a new mobile app version.
+
+### Targeting specific config
+
+Dynamic Config allows you to target a different set of configuration for different sets of people. The same powerful [targeting workflow that are used in Feature Gates](/console/featureGates/rules) is available in Dynamic Config as well.
+
+In the screenshot below, we have an example that targets different strings for people from different countries. Specifically, people from Spanish speaking countries will get a Spanish strings, while people from French and Korean speaking countries will get French and Korean strings respectively. This helps control the behavior of your application dynamically in real-time.
+
+![image](https://user-images.githubusercontent.com/74588208/128144812-52e4b436-1c94-4f96-b493-68acaacdc3f0.png)
+
+And a sample JSON payload would look like this:
+
+![image](https://user-images.githubusercontent.com/74588208/128145124-149cf3da-4c53-4eb3-9f16-9513a7d63f2a.png)

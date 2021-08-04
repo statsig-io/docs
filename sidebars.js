@@ -4,10 +4,11 @@ module.exports = {
     {
       'Walkthrough Guides': [
         'guides/first-feature',
+        'guides/logging-events',
         'guides/first-dynamic-config',
         'guides/first-experiment',
         'guides/first-holdout',
-        'guides/usingEnvironments',
+        'guides/using-environments',
         'guides/first-segment',
       ],
     },

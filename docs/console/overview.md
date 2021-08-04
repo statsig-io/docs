@@ -12,3 +12,8 @@ To learn more about each of these products, or to walk through how to use each o
 - [Feature Gates](/console/featureGates/introduction)
 - [Dynamic Configs](/console/dynamicConfig)
 - [Pulse](/console/pulse)
+- [Experiments+](/console/experimentsPlus)
+- [Holdouts](/console/holdouts)
+- [Metrics](/console/metrics)
+- [Ultrasound](/console/ultrasound)
+- [Autotune](/console/autotune)

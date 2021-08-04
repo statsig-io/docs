@@ -1,0 +1,67 @@
+---
+sidebar_label: Logging Events
+title: Logging Events
+---
+
+After creating your first gate, you want to start logging events in order for the system to understand what you care about. These events are then automatically derived into metrics and used to quantify the impact of your features on the health of the overall product.
+
+### How to log events
+
+There are two ways Statsig can ingest events. The simplest method is to use one of our many Server/Client SDKs, or use one of the many [Data Connectors](/integrations/data-connectors) available in the Integrations setting.
+
+#### Logging events via SDKs
+
+All our SDKs provide a very simple API to log events. They look like this:
+
+```js
+statsig.logEvent(
+  event_name, 
+  optional_event_value, 
+  optional_event_metadata
+);
+```
+
+Where event name describes a notable event in your product, like `sign_up`, `achievement_unlocked`, `add_to_cart`, `check_out`, etc.
+
+These events can optionally take an event value.  For instance, you can use this field to specify the type of achievement that was unlocked, or the name of the product that was added to cart, or the price of the item that was purchased.  
+
+And finally, the metadata field allows you to specify even more details about the event.  Here's an couple examples of how a ```logEvent``` call looks like:
+
+```js
+statsig.logEvent(
+  'add_to_cart', // Name
+  19.99, // Price
+  { 
+    item_id: 'BC22010', 
+    cart_size: 2,
+    user_segment: 'first_time_purchaser',
+  }
+);
+```
+
+An example in CSharp
+
+```csharp
+StatsigClient.LogEvent(
+  "level_completed", // Event Name
+  11, // Level number
+  new Dictionary<string, string>()
+  { 
+    { "score", "452" } 
+  }
+);
+```
+
+:::info Log as much as you want
+We encourage you to log as many events as you can and want. The more events there are, the more holistic picture you will get when you are building and releasing new features.
+:::
+
+### Where do these events end up?
+
+The events you log is aggregated and analyzed by Statsig to give you useful metrics.  These can be viewed in the [Metrics Tab](/console/metrics).
+
+![image](https://user-images.githubusercontent.com/74588208/127933988-c981bf83-f20c-4404-8194-004017cf96ef.png)
+
+Statsig also provides a view into a set of derived user metrics like DAU, WAU, Stickiness, etc. just based on the events you log.  Here's a view of those metrics available in the **Users** page in Metrics Tab.
+
+![image](https://user-images.githubusercontent.com/74588208/127933909-a51c5587-992b-4fc7-8dd4-147c149772cb.png)
