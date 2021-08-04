@@ -1,0 +1,174 @@
+---
+title: Getting Started
+slug: /wip
+---
+
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
+import Icon from "@material-ui/core/Icon";
+import Typography from '@material-ui/core/Typography';
+
+const useStyles = makeStyles({
+  root: {
+    width: 160,
+  },
+});
+
+Statsig helps you ship code faster on mobile, web and server side. Iterative
+data-driven development is made possible by integrating one of our SDKs.
+
+Each of our technical integration guides assumes some knowledge of the core statsig product: Feature Gates (our take on Feature Flags), Dynamic Configs, and Pulse (an A/B test analysis tool). To learn more about each of those before learning how to integrate them with your client or server, check out:
+
+
+export const OutlinedCard = ({title, description, icon}) => (
+    <Card
+        style={{
+            width: '240px',
+            margin: '8px',
+            flex: '1 0 30%',
+        }}
+        variant="outlined">
+            <div
+                style={{
+                    padding: '8px 8px 0 8px',
+                    "font-weight": 'bold',
+                    "display": "flex",
+                    "flex-direction": 'row',
+                    "justify-content": 'flex-start',
+                }}>
+                <Icon style={{color: "#194b7d"}}>{icon}</Icon>
+                <Typography variant="subtitle1" style={{display: "inline", "padding-left": '8px'}}>
+                    {title}
+                </Typography>
+            </div>
+        <CardContent style={{
+            padding: '0 8px 0 8px',
+        }}>
+            <Typography variant="subtitle2" color="textSecondary">
+                {description}
+            </Typography>
+            <CardActions style={{
+                display: 'flex',
+                "flex-direction": 'row',
+                "justify-content": 'flex-end',
+            }}>
+            <Icon
+                style={{
+                    color: "#194b7d",
+                    border: "1px solid rgba(0, 0, 0, 0.12)",
+                    'border-radius': '16px',
+                }}>arrow_forward</Icon>
+            </CardActions>
+        </CardContent>
+    </Card>
+);
+
+<div style={{
+    display: "flex",
+    "flex-wrap": 'wrap',
+}}>
+    <OutlinedCard
+        title="Feature Gates"
+        icon="tune"
+        description="Feature Gates are Statsig's take on Feature flags">
+    </OutlinedCard>
+    <OutlinedCard
+        title="Dynamic Configs"
+        icon="dns"
+        description="Dynamic Configs store complex configurations and allow realtime updating and targeting to update otherwise hardcoded constants">
+    </OutlinedCard>
+    <OutlinedCard
+        title="Segments"
+        icon="donut_small"
+        description="Define a set of users to target and reuse that segment in Feature Gate, Dyanmic Config, and Experiment targeting">
+    </OutlinedCard>
+    <OutlinedCard
+        title="Feature Gates"
+        icon="tune"
+        description="Feature Gates are Statsig's take on Feature flags">
+    </OutlinedCard>
+    <OutlinedCard
+        title="Dynamic Configs"
+        icon="dns"
+        description="Dynamic Configs store complex configurations and allow realtime updating and targeting to update otherwise hardcoded constants">
+    </OutlinedCard>
+    <OutlinedCard
+        title="Segments"
+        icon="donut_small"
+        description="Define a set of users to target and reuse that segment in Feature Gate, Dyanmic Config, and Experiment targeting">
+    </OutlinedCard>
+</div>
+
+- [Overview](/console/overview)
+- [Feature Gates](/console/featureGates/introduction)
+- [Dynamic Config](/console/dynamicConfig)
+- [Pulse](/console/pulse)
+- [Experiments+](/console/experimentsPlus)
+- [Holdouts](/console/holdouts)
+- [Metrics](/console/metrics)
+- [Ultrasound](/console/ultrasound)
+- [Autotune](/console/autotune)
+
+If you're ready to dive right into our SDK integration guides, read on.
+
+For single-user, client-side applications, we have:
+
+- [Javascript SDK](/client/jsClientSDK)
+- [React SDK](/client/reactSDK)
+- [React Native SDK](/client/reactNativeSDK)
+- [React Native Expo SDK](/client/reactNativeExpoSDK)
+- [iOS SDK](/client/iosClientSDK)
+- [Android SDK](/client/androidClientSDK)
+- [.NET Client SDK](/client/dotnetSDK)
+
+For multi-user, server-side applications:
+
+- [Node.js Server SDK](/server/nodejsServerSDK)
+- [Java/Kotlin SDK](/server/javaSdk)
+- [Ruby Server SDK](/server/rubySDK)
+- [.NET Server SDK](/server/dotnetSDK)
+- New! [Go SDK](/server/golangSDK)
+
+We also provide an HTTP API. Our API is a great choice if an SDK isn't
+available for your environment yet, as you can use it in any type of
+application:
+
+- [HTTP API](/http-api)
+
+## Account sign up and API key {#account-sign-up-and-api-key}
+
+Regardless of the SDK you pick, you will need to [create a free Statsig
+account](https://console.statsig.com/sign_up) or be invited to join an existing
+project. This will give you access to the Statsig console, where you can
+generate an API key.
+
+![Screen Shot 2021-06-14 at 5 01 18 PM](https://user-images.githubusercontent.com/82126616/121973468-26ec2080-cd32-11eb-9e39-e48b42b656d4.png)
+
+To get started, check out one of our guides, like [building your first feature](/guides/first-feature).
+
+Or, if you want to poke around on your own, we recommend taking a quick tour around the console, and setting
+up a Feature Gate or Dynamic Config to use when you start integrating with an SDK. Our
+SDKs function as a bridge to your Statsig console -- once you have integrated an
+SDK into your application, you can update Feature Gate conditions or Dynamic
+Config values directly in the console, with your application responding
+immediately to the new values!
+
+## FAQ {#faq}
+
+#### I don't see my language listed, can I still use Statsig? {#i-dont-see-my-language-listed-can-i-still-use-statsig}
+
+We just released our beta, which includes a few SDKs, as well as an HTTPS API.
+If none of these fit your needs, let us know! Email tore [at] statsig [dot]
+com. We're working hard to bring the power of Statsig to your client or server
+with more SDKs coming every week.
+
+#### I want to run an A/B test, can I use Statsig for that? {#i-want-to-run-an-ab-test-can-i-use-statsig-for-that}
+
+You can run A/B tests by opening up a partial rollout on any Feature Gates.
+You then analyze the results of the experiment in the "Pulse" tab of the console.
+We're actively working on support for multivariate experiments (A/B/...N tests), mutual exclusivity for experiments, and much more.
+Keep checking back or follow our blog for updates!
