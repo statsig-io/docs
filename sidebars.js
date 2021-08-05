@@ -27,6 +27,7 @@ module.exports = {
         'console/experimentsPlus',
         'console/holdouts',
         'console/metrics',
+        'console/users',
         'console/ultrasound',
         'console/autotune',
       ],
