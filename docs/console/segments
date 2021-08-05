@@ -1,0 +1,7 @@
+---
+sidebar_label: Segments
+title: Segments
+---
+
+Segments allow you to predefine and name a set of users.  You can then target these sets of users by their Segment name in Feature Gates and Dynamic Configs
+
