@@ -10,13 +10,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import Icon from "@material-ui/core/Icon";
+import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
-
-const useStyles = makeStyles({
-  root: {
-    width: 160,
-  },
-});
 
 Statsig helps you ship code faster on mobile, web and server side. Iterative
 data-driven development is made possible by integrating one of our SDKs.
@@ -24,12 +19,15 @@ data-driven development is made possible by integrating one of our SDKs.
 Each of our technical integration guides assumes some knowledge of the core statsig product: Feature Gates (our take on Feature Flags), Dynamic Configs, and Pulse (an A/B test analysis tool). To learn more about each of those before learning how to integrate them with your client or server, check out:
 
 
-export const OutlinedCard = ({title, description, icon}) => (
+export const OutlinedCard = ({title, description, icon, link}) => (
     <Card
         style={{
-            width: '240px',
+            minWidth: '240px',
+            maxWidth: '240px',
             margin: '8px',
-            flex: '1 0 30%',
+            flex: '1 1 30%',
+            display: 'flex',
+            'flex-direction': 'column',
         }}
         variant="outlined">
             <div
@@ -39,6 +37,7 @@ export const OutlinedCard = ({title, description, icon}) => (
                     "display": "flex",
                     "flex-direction": 'row',
                     "justify-content": 'flex-start',
+                    "align-content": "space-between",
                 }}>
                 <Icon style={{color: "#194b7d"}}>{icon}</Icon>
                 <Typography variant="subtitle1" style={{display: "inline", "padding-left": '8px'}}>
@@ -47,6 +46,10 @@ export const OutlinedCard = ({title, description, icon}) => (
             </div>
         <CardContent style={{
             padding: '0 8px 0 8px',
+            display: 'flex',
+            flex: 1,
+            'flex-direction': 'column',
+            'justify-content': 'space-between',
         }}>
             <Typography variant="subtitle2" color="textSecondary">
                 {description}
@@ -56,12 +59,14 @@ export const OutlinedCard = ({title, description, icon}) => (
                 "flex-direction": 'row',
                 "justify-content": 'flex-end',
             }}>
-            <Icon
-                style={{
-                    color: "#194b7d",
-                    border: "1px solid rgba(0, 0, 0, 0.12)",
-                    'border-radius': '16px',
-                }}>arrow_forward</Icon>
+                <Link href={link}>
+                    <Icon
+                        style={{
+                            color: "#194b7d",
+                            border: "1px solid rgba(0, 0, 0, 0.12)",
+                            'border-radius': '16px',
+                        }}>arrow_forward</Icon>
+                </Link>
             </CardActions>
         </CardContent>
     </Card>
@@ -74,44 +79,66 @@ export const OutlinedCard = ({title, description, icon}) => (
     <OutlinedCard
         title="Feature Gates"
         icon="tune"
-        description="Feature Gates are Statsig's take on Feature flags">
+        description="Control access to features and confidently roll out the best variants"
+        link="https://docs.statsig.com/console/featureGates/introduction">
     </OutlinedCard>
     <OutlinedCard
         title="Dynamic Configs"
         icon="dns"
-        description="Dynamic Configs store complex configurations and allow realtime updating and targeting to update otherwise hardcoded constants">
+        description="Store complex configurations and allow realtime updating and targeting to control otherwise hardcoded constants"
+        link="https://docs.statsig.com/console/dynamicConfig">
     </OutlinedCard>
     <OutlinedCard
         title="Segments"
         icon="donut_small"
-        description="Define a set of users to target and reuse that segment in Feature Gate, Dyanmic Config, and Experiment targeting">
+        description="Define a set of users to target and reuse that segment in Feature Gate, Dynamic Config, and Experiment targeting"
+        link="https://docs.statsig.com/console/segments">
     </OutlinedCard>
     <OutlinedCard
-        title="Feature Gates"
-        icon="tune"
-        description="Feature Gates are Statsig's take on Feature flags">
+        title="Experiments+"
+        icon="science"
+        description="Run mutually exclusing A/B/n tests with ease"
+        link="https://docs.statsig.com/console/experimentsPlus">
     </OutlinedCard>
     <OutlinedCard
-        title="Dynamic Configs"
-        icon="dns"
-        description="Dynamic Configs store complex configurations and allow realtime updating and targeting to update otherwise hardcoded constants">
+        title="Autotune"
+        icon="model_training"
+        description="Greedily optimize multiple variations for a single metric using Statsig's Bayesian Engine"
+        link="https://docs.statsig.com/console/autotune">
     </OutlinedCard>
     <OutlinedCard
-        title="Segments"
+        title="Metrics"
+        icon="speed"
+        description="Track your DAU/WAU/MAU, retention, and event logging from the Statsig console"
+        link="https://docs.statsig.com/console/metrics">
+    </OutlinedCard>
+    <OutlinedCard
+        title="Users"
+        icon="people"
+        description="A collection of your user's as seen by Statsig, including event logs, gate checks, and experiments"
+        link="https://docs.statsig.com/console/users">
+    </OutlinedCard>
+    <OutlinedCard
+        title="Pulse"
+        icon="assessment"
+        description="A daily view of metric level impact differences between test and control for Feature Gates and Experiments"
+        link="https://docs.statsig.com/console/pulse">
+    </OutlinedCard>
+    <OutlinedCard
+        title="Ultrasound"
         icon="donut_small"
-        description="Define a set of users to target and reuse that segment in Feature Gate, Dyanmic Config, and Experiment targeting">
+        description="Given a metric, quickly see which Features or Experiments have caused changes in that metric"
+        link="https://docs.statsig.com/console/ultrasound">
     </OutlinedCard>
+    <OutlinedCard
+        title="Holdouts"
+        icon="flaky"
+        description="Measure the collective impact of multiple features launched over a period of time"
+        link="https://docs.statsig.com/console/holdouts">
+    </OutlinedCard>
+    <div></div>
+    <div></div>
 </div>
-
-- [Overview](/console/overview)
-- [Feature Gates](/console/featureGates/introduction)
-- [Dynamic Config](/console/dynamicConfig)
-- [Pulse](/console/pulse)
-- [Experiments+](/console/experimentsPlus)
-- [Holdouts](/console/holdouts)
-- [Metrics](/console/metrics)
-- [Ultrasound](/console/ultrasound)
-- [Autotune](/console/autotune)
 
 If you're ready to dive right into our SDK integration guides, read on.
 
