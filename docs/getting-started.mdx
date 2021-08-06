@@ -9,8 +9,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import Icon from "@material-ui/core/Icon";
+import IconButton from "@material-ui/core/IconButton";
 import Link from '@material-ui/core/Link';
-import Typography from '@material-ui/core/Typography';
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
@@ -19,54 +19,62 @@ Statsig is an experimentation platform that enables you to quickly assess the im
 
 ## Tools
 
+export const ArrowButton = ({link}) => (
+    <IconButton
+        style={{
+            color: "#194b7d",
+            border: "1px solid rgba(0, 0, 0, 0.12)",
+            'border-radius': '16px',
+            padding: '4px',
+        }}
+        href={link}>
+        <Icon
+            style={{
+                color: "#194b7d",
+            }}>arrow_forward</Icon>
+    </IconButton>
+)
+
 export const OutlinedCard = ({title, description, icon, link}) => (
     <Card
         style={{
             minWidth: '240px',
-            maxWidth: '240px',
-            margin: '8px',
-            flex: '1 1 30%',
+            margin: '16px',
+            flex: '0 0 28%',
             display: 'flex',
             'flex-direction': 'column',
-        }}
-        variant="outlined">
+            padding: '16px',
+            'box-shadow': '0 6px 16px rgba(0, 0, 0, 0.06)',
+            border: 0,
+        }}>
             <div
                 style={{
-                    padding: '8px 8px 0 8px',
                     "font-weight": 'bold',
                     "display": "flex",
                     "flex-direction": 'row',
                     "justify-content": 'flex-start',
                     "align-content": "space-between",
+                    "align-items": "center",
                 }}>
                 <Icon style={{color: "#194b7d"}}>{icon}</Icon>
-                <Typography variant="subtitle1" style={{display: "inline", "padding-left": '8px'}}>
-                    {title}
-                </Typography>
+                <div style={{"padding-left": "8px"}}>{title}</div>
             </div>
         <CardContent style={{
-            padding: '0 8px 0 8px',
+            'padding': 0,
+            'padding-top': '4px',
             display: 'flex',
             flex: 1,
             'flex-direction': 'column',
             'justify-content': 'space-between',
         }}>
-            <Typography variant="subtitle2" color="textSecondary">
-                {description}
-            </Typography>
+            <p>{description}</p>
             <CardActions style={{
+                padding: 0,
                 display: 'flex',
                 "flex-direction": 'row',
                 "justify-content": 'flex-end',
             }}>
-                <Link href={link}>
-                    <Icon
-                        style={{
-                            color: "#194b7d",
-                            border: "1px solid rgba(0, 0, 0, 0.12)",
-                            'border-radius': '16px',
-                        }}>arrow_forward</Icon>
-                </Link>
+                <ArrowButton link={link} />
             </CardActions>
         </CardContent>
     </Card>
@@ -136,8 +144,6 @@ export const OutlinedCard = ({title, description, icon, link}) => (
         description="Measure the cumulative impact of all features shipped over a period of time"
         link="https://docs.statsig.com/console/holdouts">
     </OutlinedCard>
-    <div></div>
-    <div></div>
 </div>
 
 ## SDKs
@@ -146,25 +152,23 @@ export const SDKCard = ({language, image, link}) => (
     <Card
         style={{
             minWidth: '240px',
-            maxWidth: '240px',
-            margin: '8px',
-            flex: '1 1 30%',
+            margin: '16px',
+            flex: '0 0 28%',
             display: 'flex',
             'flex-direction': 'column',
-        }}
-        variant="outlined">
+            padding: '16px',
+            'box-shadow': '0 6px 16px rgba(0, 0, 0, 0.06)',
+            border: 0,
+        }}>
             <div
                 style={{
-                    padding: '8px 8px 0 8px',
                     "font-weight": 'bold',
                     "display": "flex",
                     "flex-direction": 'row',
                     "justify-content": 'flex-start',
                     "align-content": "space-between",
                 }}>
-                <Typography variant="subtitle1" style={{display: "inline", "padding-left": '8px'}}>
-                    {language}
-                </Typography>
+                {language}
             </div>
         <CardActions
             style={{
@@ -174,14 +178,7 @@ export const SDKCard = ({language, image, link}) => (
                 "align-items": "flex-end",
             }}>
             <img height="80px" src={image} />
-            <Link href={link}>
-                <Icon
-                    style={{
-                        color: "#194b7d",
-                        border: "1px solid rgba(0, 0, 0, 0.12)",
-                        'border-radius': '16px',
-                    }}>arrow_forward</Icon>
-            </Link>
+            <ArrowButton link={link} />
         </CardActions>
     </Card>
 );
@@ -290,21 +287,17 @@ export const SlackCard = () => (
         }}
         variant="outlined">
             <div style={{flex: 1}}>
-                <Typography variant="h4">
-                    Join Our Community
-                </Typography>
+                <h2>Join Our Community</h2>
                 <br />
-                <Typography variant="h6">
+                <h6>
                     Connect with our data scientists and engineers, and ask questions or just hang out with other cool folks that believe in product-led growth!
-                </Typography>
+                </h6>
                 <br />
                 <Button
                     target="_blank"
                     href="https://join.slack.com/t/statsigcommunity/shared_invite/zt-pbp005hg-VFQOutZhMw5Vu9eWvCro9g"
                     style={{color: '#194b7d', 'background-color': 'white'}} >
-                    <Typography variant="subtitle2">
-                        Chat with us
-                    </Typography>
+                    Chat with us
                 </Button>
             </div>
             <div style={{'padding-left': '16px'}}>
