@@ -16,10 +16,7 @@ import Typography from '@material-ui/core/Typography';
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-Statsig helps you ship code faster on mobile, web and server side. Iterative
-data-driven development is made possible by integrating one of our SDKs.
-
-Each of our technical integration guides assumes some knowledge of the core statsig product: Feature Gates (our take on Feature Flags), Dynamic Configs, and Pulse (an A/B test analysis tool). To learn more about each of those before learning how to integrate them with your client or server, check out:
+Statsig is an experimentation platform that enables you to quickly assess the impact of new functionality and deliver products that your customers love. Start shipping faster with Statsig’s getting started guides, code samples, and documentation. 
 
 ## Tools
 
@@ -83,61 +80,61 @@ export const OutlinedCard = ({title, description, icon, link}) => (
     <OutlinedCard
         title="Feature Gates"
         icon="tune"
-        description="Control access to features and confidently roll out the best variants"
+        description="Control access to new functionality and automatically measure how it’s performing with an A/B test before you ship"
         link="https://docs.statsig.com/console/featureGates/introduction">
     </OutlinedCard>
     <OutlinedCard
         title="Dynamic Configs"
         icon="dns"
-        description="Store complex configurations and allow realtime updating and targeting to control otherwise hardcoded constants"
+        description="Dynamically configure user experience with configuration parameters instead of hard-coded constants"
         link="https://docs.statsig.com/console/dynamicConfig">
     </OutlinedCard>
     <OutlinedCard
         title="Segments"
         icon="donut_small"
-        description="Define a set of users to target and reuse that segment in Feature Gate, Dynamic Config, and Experiment targeting"
+        description="Define a reusable set of rules to target a group of users"
         link="https://docs.statsig.com/console/segments">
     </OutlinedCard>
     <OutlinedCard
         title="Experiments+"
         icon="science"
-        description="Run mutually exclusing A/B/n tests with ease"
+        description="Run sophisticated experiments with multiple variants (A/B/n tests) or mutual exclusion"
         link="https://docs.statsig.com/console/experimentsPlus">
     </OutlinedCard>
     <OutlinedCard
         title="Autotune"
         icon="model_training"
-        description="Greedily optimize multiple variations for a single metric using Statsig's Bayesian Engine"
+        description="Automatically optimize for a single metric by testing a number of variants"
         link="https://docs.statsig.com/console/autotune">
     </OutlinedCard>
     <OutlinedCard
         title="Metrics"
         icon="speed"
-        description="Track your DAU/WAU/MAU, retention, and event logging from the Statsig console"
+        description="View metrics automatically derived from all gate checks and events logged with Statsig"
         link="https://docs.statsig.com/console/metrics">
     </OutlinedCard>
     <OutlinedCard
         title="Users"
         icon="people"
-        description="A collection of your user's as seen by Statsig, including event logs, gate checks, and experiments"
+        description="View users exposed to all gate checks and events logged with Statsig"
         link="https://docs.statsig.com/console/users">
     </OutlinedCard>
     <OutlinedCard
         title="Pulse"
         icon="assessment"
-        description="A daily view of metric level impact differences between test and control for Feature Gates and Experiments"
+        description="View how your experiments impact your metrics"
         link="https://docs.statsig.com/console/pulse">
     </OutlinedCard>
     <OutlinedCard
         title="Ultrasound"
         icon="donut_small"
-        description="Given a metric, quickly see which Features or Experiments have caused changes in that metric"
+        description="View all experiments that have impacted a metric"
         link="https://docs.statsig.com/console/ultrasound">
     </OutlinedCard>
     <OutlinedCard
         title="Holdouts"
         icon="flaky"
-        description="Measure the collective impact of multiple features launched over a period of time"
+        description="Measure the cumulative impact of all features shipped over a period of time"
         link="https://docs.statsig.com/console/holdouts">
     </OutlinedCard>
     <div></div>
