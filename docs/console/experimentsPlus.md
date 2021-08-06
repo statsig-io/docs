@@ -45,12 +45,18 @@ To create a controlled experiment in Experiments+,
 2.  Navigate to Experiments+ in the left-hand navigation panel.  
 3. Click on the Create button. The Create New Experiment wizard leads you to three steps:
     * Enter the name of your experiment with a description and the hypothesis you want to validate. You can also optionally select the Targeting Gate that allows you to constrain the users who are exposed to the experiment.
-    ![image001](https://user-images.githubusercontent.com/74584483/128553438-e23b94b1-234b-49f3-926d-ec4fd65b2db5.png)
+
+    ![Screen Shot 2021-08-06 at 11 16 44 AM](https://user-images.githubusercontent.com/74584483/128554773-98b2ac76-b7ac-40ab-94ba-b66fa7b17e19.png)
+
     * If you’re running multiple experiments in parallel, select a *Layer* to ensure that users selected for this experiment are not included in other experiments running in the same layer. The size of the experiment is limited by the number of users available in the layer where your experiment runs.
     * You must create as many user groups as the number of test variants in your experiment in addition to a user group for the control. You must also enter the allocation of users in the test variants and control groups. You can also dynamically customize the user experience for each variant using configuration variables that can you include in JSON format alongside each variant.
-    ![image002](https://user-images.githubusercontent.com/74584483/128553486-70077993-2268-4af3-9a29-64a305d8e56e.png)
+
+    ![Screen Shot 2021-08-06 at 11 17 24 AM](https://user-images.githubusercontent.com/74584483/128554830-6af4cc36-51cf-4208-a675-82ce4401d736.png)
+    
     * You can optionally select Key Metrics that you expect to change as part of your hypothesis.
-    ![image003](https://user-images.githubusercontent.com/74584483/128553522-db9a01ca-0705-47d0-b712-e8d323bd59f6.png)
+
+    ![Screen Shot 2021-08-06 at 11 17 32 AM](https://user-images.githubusercontent.com/74584483/128554870-2dbc74c3-b304-406e-9cbf-031ce56c0641.png)
+
     * To complete the wizard, click the Create button. 
 4. To deploy your experiment, your application must pull the experiment configuration from Statsig and log the required events for Statsig to calculate your metrics.  See the relevant documentation for your SDK of choice.  Your experiment starts running once you deploy this code to production.
 5. To monitor the status of your experiment, navigate to Experiments+ in the left-hand navigation panel and select the experiment you created in Step 3. In the experiment details page, you can view the number Cumulative Exposures for feature variants and control groups.  This will be updated daily.
