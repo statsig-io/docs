@@ -274,6 +274,53 @@ application:
 
 - [HTTP API](/http-api)
 
+## Getting Help 
+
+export const SlackCard = () => (
+    <Card
+        style={{
+            padding: '32px',
+            flex: '1',
+            display: 'flex',
+            'flex-direction': 'row',
+            'align-items': 'center',
+            'background-color': '#194b7d',
+            'color': 'white',
+            'border-radius': '4px',
+        }}
+        variant="outlined">
+            <div style={{flex: 1}}>
+                <Typography variant="h4">
+                    Join Our Community
+                </Typography>
+                <br />
+                <Typography variant="h6">
+                    Connect with our data scientists and engineers, and ask questions or just hang out with other cool folks that believe in product-led growth!
+                </Typography>
+                <br />
+                <Button
+                    target="_blank"
+                    href="https://join.slack.com/t/statsigcommunity/shared_invite/zt-pbp005hg-VFQOutZhMw5Vu9eWvCro9g"
+                    style={{color: '#194b7d', 'background-color': 'white'}} >
+                    <Typography variant="subtitle2">
+                        Chat with us
+                    </Typography>
+                </Button>
+            </div>
+            <div style={{'padding-left': '16px'}}>
+                <img width="160px" src="https://www.statsig.com/images/community_slack.png" />
+            </div>
+    </Card>
+);
+
+<SlackCard />
+
+<br />
+
+You can also file bug reports or feature requests via github issues in our [Statsig Feedback repository](https://github.com/statsig-io/statsig-feedback/issues).
+
+
+
 ## Account sign up and API key {#account-sign-up-and-api-key}
 
 Regardless of the SDK you pick, you will need to [create a free Statsig
