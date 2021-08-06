@@ -44,16 +44,24 @@ To create a controlled experiment in Experiments+,
 1. Log into the Statsig console at https://console.statsig.com/.   
 2.  Navigate to Experiments+ in the left-hand navigation panel.  
 3. Click on the Create button. The Create New Experiment wizard leads you to three steps:
-    * Enter the name of your experiment with a description and the hypothesis you want to validate. You can also optionally select the Targeting Gate that allows you to constrain the users who are exposed to the experiment. 
+    * Enter the name of your experiment with a description and the hypothesis you want to validate. You can also optionally select the Targeting Gate that allows you to constrain the users who are exposed to the experiment.
+    ![image001](https://user-images.githubusercontent.com/74584483/128553438-e23b94b1-234b-49f3-926d-ec4fd65b2db5.png)
     * If you’re running multiple experiments in parallel, select a *Layer* to ensure that users selected for this experiment are not included in other experiments running in the same layer. The size of the experiment is limited by the number of users available in the layer where your experiment runs.
     * You must create as many user groups as the number of test variants in your experiment in addition to a user group for the control. You must also enter the allocation of users in the test variants and control groups. You can also dynamically customize the user experience for each variant using configuration variables that can you include in JSON format alongside each variant.
+    ![image002](https://user-images.githubusercontent.com/74584483/128553486-70077993-2268-4af3-9a29-64a305d8e56e.png)
     * You can optionally select Key Metrics that you expect to change as part of your hypothesis.
+    ![image003](https://user-images.githubusercontent.com/74584483/128553522-db9a01ca-0705-47d0-b712-e8d323bd59f6.png)
     * To complete the wizard, click the Create button. 
 4. To deploy your experiment, your application must pull the experiment configuration from Statsig and log the required events for Statsig to calculate your metrics.  See the relevant documentation for your SDK of choice.  Your experiment starts running once you deploy this code to production.
 5. To monitor the status of your experiment, navigate to Experiments+ in the left-hand navigation panel and select the experiment you created in Step 3. In the experiment details page, you can view the number Cumulative Exposures for feature variants and control groups.  This will be updated daily.
+
+![image004](https://user-images.githubusercontent.com/74584483/128553541-7a8e8185-7c93-4fb9-b636-9499ca44733c.png)
+
 6. To view the results of the experiment, navigate to Experiments+ in the left-hand navigation panel and select the experiment you created in Step 3. In the experiment details page, 
     * You can view the overall lift and p-value of the lift for your key metrics under **Key Results.**
+    ![image005](https://user-images.githubusercontent.com/74584483/128553585-a75caffd-eeb4-4a83-955f-09db2089c40b.png)
     * The **Metrics Lifts** panel shows the lifts for all your business and operational metrics, highlighting the metric lifts that have achieved statistical significance
+    ![image006](https://user-images.githubusercontent.com/74584483/128553600-45a53f11-2b18-47b0-915c-ff11161d72d7.png)
 
 ### Why Experiment?
 Controlled experiments are the best scientific way to establish causality between your product features and customer impact. Establishing such causality allows you to only ship features that improve customer experience. This can make experiments the driving force behind your pace of innovation.   
