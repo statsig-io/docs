@@ -15,6 +15,7 @@ module.exports = {
     {
       'Statsig Console': [
         'console/overview',
+        'console/accessManagement',
         {
           'Feature Gates': [
             'console/featureGates/introduction',
@@ -54,9 +55,7 @@ module.exports = {
     },
     'http-api',
     {
-      'Integrations': [
-        'integrations/data-connectors'
-      ]
-    }
+      Integrations: ['integrations/data-connectors'],
+    },
   ],
 };
