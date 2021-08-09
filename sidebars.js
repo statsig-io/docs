@@ -51,6 +51,7 @@ module.exports = {
         'server/dotnetSDK',
         'server/rubySDK',
         'server/golangSDK',
+        'server/pythonSDK',
       ],
     },
     'http-api',
