@@ -36,6 +36,22 @@ Our API is built on top of HTTPS. You can authenticate via header
 `statsig-api-key`. All of our APIs use method `POST`, and you can set parameters
 by using a JSON object as the request data.
 
+There are just a few primitives that you need to get going on your way. The APIs automatically log exposure whenever you call them and Statsig will use these exposure events to attribute downstream events to compute analytics lift.
+
+##### Log an event {#log-an-event}
+
+```bash
+curl \
+  --header "statsig-api-key: <YOUR-SDK-KEY>" \
+  --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"events": [{"user": { "userID": "42" }, "time": 1616826986211, "eventName": "test_api_event"}]}' \
+  "https://api.statsig.com/v1/log_event"
+```
+
+Response:
+`{"success":true}`
+
 ##### Check a Feature Gate {#check-a-feature-gate}
 
 ```bash
@@ -64,16 +80,18 @@ curl \
 Response:
 `{"name":"YOUR-CONFIG-NAME","value":{"a":1,"b":2},"group":"default"}`
 
-##### Log an event {#log-an-event}
+##### Fetch Experiment Config {#fetch-experiment-config}
+
+Getting an experiment config is similar to fetching a dynamic configuration. The system will automatically log the right exposure based on the name of the config.
 
 ```bash
 curl \
   --header "statsig-api-key: <YOUR-SDK-KEY>" \
   --header "Content-Type: application/json" \
   --request POST \
-  --data '{"events": [{"user": { "userID": "42" }, "time": 1616826986211, "eventName": "test_api_event"}]}' \
-  "https://api.statsig.com/v1/log_event"
+  --data '{"user": { "userID": "42" },"configName":"<YOUR-EXPERIMENT-NAME>"}' \
+  "https://api.statsig.com/v1/get_config"
 ```
 
 Response:
-`{"success":true}`
+`{"name":"YOUR-EXPERIMENT-NAME","value":{"color":"blue","shape":"circle"},"group":"default"}`
