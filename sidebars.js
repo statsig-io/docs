@@ -15,7 +15,12 @@ module.exports = {
     {
       'Statsig Console': [
         'console/overview',
-        'console/accessManagement',
+        {
+          'Access Management': [
+            'console/accessManagement/overview',
+            'console/accessManagement/sso',
+          ]
+        },
         {
           'Feature Gates': [
             'console/featureGates/introduction',

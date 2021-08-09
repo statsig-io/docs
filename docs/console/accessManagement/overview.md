@@ -1,9 +1,8 @@
 ---
-sidebar_label: Access Management
+sidebar_label: Overview
 title: Project Access Management
 ---
 
-## Overview 
 In the [Basic Settings page](https://console.statsig.com/24vDD6KOtLJqjrw1Y6oj4C/settings) you are able to configure who has access to your project. Each person invited to a project is assigned a Role that specifies their level of access.
 
 ## Roles 
