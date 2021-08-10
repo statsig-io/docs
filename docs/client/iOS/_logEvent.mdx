@@ -1,0 +1,24 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  defaultValue="swift"
+  values={[
+    {label: 'Swift', value: 'swift'},
+    {label: 'Objective-C', value: 'objectivec'},
+  ]}>
+  <TabItem value="swift">
+
+```swift
+Statsig.logEvent(withName: "purchase", value: 2.99, metadata: ["item_name": "remove_ads"])
+```
+
+  </TabItem>
+  <TabItem value="objectivec">
+
+```objectivec
+[Statsig logEvent:@"purchase" doubleValue:2.99 metadata:@{@"item_name" : @"remove_ads"}];
+```
+
+  </TabItem>
+</Tabs>

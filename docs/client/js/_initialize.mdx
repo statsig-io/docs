@@ -1,0 +1,9 @@
+```jsx
+const statsig = require('statsig-js');
+
+await statsig.initialize(
+    'client-sdk-key',
+    { userID: 'some_user_id' },
+    { environment: { tier: 'staging' } }, // optional, pass options here if needed
+);
+```

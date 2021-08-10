@@ -1,0 +1,38 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  defaultValue="swift"
+  values={[
+    {label: 'Swift', value: 'swift'},
+    {label: 'Objective-C', value: 'objectivec'},
+  ]}>
+  <TabItem value="swift">
+
+```swift
+let config = Statsig.getConfig("awesome_product_details")
+
+// The 2nd parameter is the default value to be used in case the given parameter name does not exist on
+// the Dynamic Config object. This can happen when there is a typo, or when the user is offline and the
+// value has not been cached on the client.
+let itemName = config.getValue(forKey: "product_name", defaultValue: "Awesome Product v1")
+let price = config.getValue(forKey: "price", defaultValue: 10.0)
+let shouldDiscount = config.getValue(forKey: "discount", defaultValue: false)
+```
+
+  </TabItem>
+  <TabItem value="objectivec">
+
+```objectivec
+DynamicConfig *config = [Statsig getConfigForName:@"awesome_product_details"];
+
+// The 2nd parameter is the default value to be used in case the given parameter name does not exist on
+// the Dynamic Config object. This can happen when there is a typo, or when the user is offline and the
+// value has not been cached on the client.
+NSString *itemName = [config.getStringForKey:@"product_name" defaultValue:@"Awesome Product v1"];
+double price = [config getDoubleForKey:@"price" defaultValue:10.0];
+BOOL shouldDiscount = [config getBoolForKey:@"discount" defaultValue:false];
+```
+
+  </TabItem>
+</Tabs>

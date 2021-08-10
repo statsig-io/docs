@@ -1,0 +1,14 @@
+```jsx
+const user = {
+  userID: '12345',
+  email: '12345@gmail.com',
+  ...
+};
+
+const showNewDesign = await statsig.checkGate(user, 'new_homepage_design');
+if (showNewDesign) {
+  // show new design here
+} else {
+  // show old design here
+}
+```

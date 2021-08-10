@@ -1,0 +1,38 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
+DynamicConfig config = Statsig.getConfig("new_user_promo");
+
+String promoTitle = config.getString("title", "Welcome to Statsig! Use discount code WELCOME10OFF for 10% off your first purchase!");
+Double discount = config.getDouble("discount", 0.1);
+
+...
+
+Double price = msrp * (1 - discount);
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+val config = Statsig.getConfig("new_user_promo")
+
+val promoTitle = config.getString("title", "Welcome to Statsig! Use discount code WELCOME10OFF for 10% off your first purchase!")
+val discount = config.getDouble("discount", 0.1)
+
+...
+
+val price = msrp * (1 - discount);
+```
+
+  </TabItem>
+</Tabs>

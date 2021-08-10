@@ -1,0 +1,36 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  defaultValue="swift"
+  values={[
+    {label: 'Swift', value: 'swift'},
+    {label: 'Objective-C', value: 'objectivec'},
+  ]}>
+  <TabItem value="swift">
+
+```swift
+let config = Statsig.getConfig("new_user_promo")
+
+let promoTitle = config.getValue(forKey: "title", defaultValue: "Welcome to Statsig! Use discount code WELCOME10OFF for 10% off your first purchase!")
+let discount = config.getValue(forKey: "discount", defaultValue: 0.1)
+
+...
+
+let price = msrp * (1 - discount);
+```
+
+  </TabItem>
+  <TabItem value="objectivec">
+
+```objectivec
+DynamicConfig *config = [Statsig getConfigForName:@"new_user_promo"];
+
+NSString *promoTitle = [config.getStringForKey:@"title" defaultValue:@"Welcome to Statsig! Use discount code WELCOME10OFF for 10% off your first purchase!"];
+double discount = [config getDoubleForKey:@"discount" defaultValue:0.1];
+
+double price = msrp * (1 - discount);
+```
+
+  </TabItem>
+</Tabs>

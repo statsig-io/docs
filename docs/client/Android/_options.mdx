@@ -1,0 +1,11 @@
+`initialize()` takes an optional parameter `options` in addition to `sdkKey` and `user` that you can provide to customize the Statsig client. Here are the current options and we are always adding more to the list:
+
+1. **initTimeoutMs**: double, default 3000
+   - used to decide how long the Statsig client waits for the initial network request to respond before calling the completion block. The Statsig client will return either cached values (if any) or default values if checkGate/getConfig/getExperiment is called before the initial network request completes.
+   - if you always want to wait for the latest values fetched from Statsig server, you should set this to 0 so we do not timeout the network request.
+   - unit is milliseconds.
+2. **disableCurrentVCLogging**: boolean, default false
+   - by default, any custom event your application logs with `Statsig.logEvent()` includes the current root View Controller. This is so we can generate user journey funnels for your users. You can set this parameter to true to disable this behavior.
+3. **environment tier**: Tier (enum), default nil
+   - used to signal the environment tier the user is currently in, and can be PRODUCTION, STAGING or DEVELOPMENT;
+   - e.g. passing in a value of `Tier.Staging` will allow your users to pass any condition that pass for the staging environment tier, and fail any condition that only passes for other environment tiers.

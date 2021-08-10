@@ -1,0 +1,29 @@
+You can also add Statsig as a dependency through Swift Package Manager, in your Xcode, select File > Swift Packages > Add Package Dependency
+and enter the URL https://github.com/statsig-io/ios-sdk.git.
+
+You can also include it directly in your project's Package.swift:
+
+```
+//...
+dependencies: [
+    .package(url: "https://github.com/statsig-io/ios-sdk.git", .upToNextMinor("1.3.0")),
+],
+//...
+targets: [
+    .target(
+        name: "YOUR_TARGET",
+        dependencies: ["Statsig"]
+    )
+],
+//...
+```
+
+If you are using CocoaPods, our pod name is 'Statsig', and you can include the following line to your Podfile:
+
+```
+use_frameworks!
+target 'TargetName' do
+  //...
+  pod 'Statsig', '~> 1.3.0' // Add this line
+end
+```

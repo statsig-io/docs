@@ -1,0 +1,33 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  defaultValue="swift"
+  values={[
+    {label: 'Swift', value: 'swift'},
+    {label: 'Objective-C', value: 'objectivec'},
+  ]}>
+  <TabItem value="swift">
+
+```swift
+let newUser = StatsigUser(userID: "new_user_id", email: "newUser@gmail.com", country: "US")
+
+Statsig.updateUser(newUser) { errorMessage in
+
+  // Statsig has fetched the values for the new user
+
+}
+```
+
+  </TabItem>
+  <TabItem value="objectivec">
+
+```objectivec
+StatsigUser *newUser = [[StatsigUser alloc] initWithUserID:@"new_user_id" email:@"newUser@gmail.com" ip:nil country:@"US" custom:custom:@{@"is_new_user": @YES}];
+[Statsig updateUserWithNewUser:user completion:^(NSString * errorMessage) {
+  // Statsig has fetched the values for the new user
+}];
+```
+
+  </TabItem>
+</Tabs>

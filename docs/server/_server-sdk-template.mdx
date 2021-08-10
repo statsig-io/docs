@@ -1,0 +1,109 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+:::info
+These docs are for using our SDK in a multi-user, server side context. For client side and single-user contexts, try one of our client SDKs.
+:::
+
+<span>
+  Statsig server SDK for {props.sdkType} applications. This SDK is{' '}
+  <a href={props.github}>open source and hosted on github</a>.
+</span>
+
+## The Basics {#the-basics}
+
+Get started in a few quick steps.
+
+1. [Create a free account on statsig.com](#step1)
+2. [Install the SDK](#step2)
+3. [Initialize the SDK](#step3)
+4. [Fetch Feature Gates, Dynamic Configs, or Experiments](#step4)
+5. [Log a custom event](#step5)
+
+<a name="step1"></a>
+
+#### Step 1 - Create a free account on [www.statsig.com](https://console.statsig.com/sign_up) {#step-1---create-a-free-account-on-wwwstatsigcom}
+
+You could skip this for now, but you will need an SDK Key and some Feature Gates or Dynamic Configs to use with the SDK in just a minute.
+
+<a name="step2"></a>
+
+#### Step 2 - Install the SDK {#step-2---install-the-sdk}
+
+<div>{props.install}</div>
+
+<a name="step3"></a>
+
+#### Step 3 - Initialize the SDK {#step-3---initialize-the-sdk}
+
+After installation, you will need to initialize the SDK using a [Server Secret Key from the statsig console](https://console.statsig.com/api_keys).
+
+:::info
+Do NOT embed your Server Secret Key in client side applications, or expose it in any external facing documents. However, if you accidentally exposed it, you can create a new one in Statsig console.
+:::
+
+There is also an optional parameter `options` that allows you to pass in a [StatsigOptions](#statsig-options) to customize the SDK.
+
+<div>{props.initialize}</div>
+
+`initialize` will perform a network request. After `initialize` completes, virtually all SDK operations will be synchronous[^1]--the SDK will fetch updates from Statsig in the background, independently of your API calls.
+
+[^1]: [Blog Post: Evaluating Feature Gates in the Statsig SDK](https://blog.statsig.com/evaluating-feature-gates-in-the-statsig-sdk-a6f8881a1ad8)
+
+<a name="step4"></a>
+
+#### Step 4 - Fetch Feature Gates, Dynamic Configs, or Experiments {#step-4---fetch-values}
+
+Now that your SDK is initialized, let's fetch a [**Feature Gate**](/console/featureGates/introduction). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates always **CLOSED** or **OFF** (think `return false;`) by default.
+
+From this point on, all APIs will require you to specify the user (see [Statsig user](#statsig-user)) associated with the request. For example, check a gate for a certain user like this:
+
+<div>{props.checkGate}</div>
+
+Feature Gates can be very useful for simple on/off switches, with optional but advanced user targeting. However, if you want to be able send a different set of values (strings, numbers, and etc.) to your clients based on specific user attributes, e.g. country, [**Dynamic Configs**](/console/dynamicConfig) can help you with that. The API is very similar to Feature Gates, but you get an entire json object you can configure on the server and you can fetch typed parameters from it. For example:
+
+<div>{props.getConfig}</div>
+
+Then we have [**Experiments**](/console/experimentsPlus), which you can use to run A/B/n experiments and use advanced features like layers (coming soon) to avoid collision and enable quicker iterations with parameter reuse.
+
+<div>{props.getExperiment}</div>
+
+:::info Asynchronous APIs
+We mentioned earlier that after calling `initialize` most SDK APIs would run synchronously, so why are `getConfig` and `checkGate` asynchronous?
+
+The main reason is that older versions of the SDK _might_ not know how to interpret new types of gate conditions. In such cases the SDK will make an asynchronous call to our servers to fetch the result of a check. This can be resolved by upgrading the SDK, and we will warn you if this happens.
+
+For more details, read our [blog post about SDK evaluations](https://blog.statsig.com/evaluating-feature-gates-in-the-statsig-sdk-a6f8881a1ad8). If you have any questions, please ask them in our [Feedback Repository](https://github.com/statsig-io/statsig-feedback/issues).
+:::
+
+<a name="step5"></a>
+
+#### Step 5 - Log a custom event {#step-5---log-event}
+
+Now that you have a Feature Gate or an Experiment set up, you may want to track some custom events and see how your new features or different experiment groups affect these events. This is super easy with Statsig - simply call the Log Event API and specify the user and event name to log; you additionally provide some value and/or an object of metadata to be logged together with the event:
+
+<div>{props.logEvent}</div>
+
+## Statsig User {#statsig-user}
+
+You should provide a Statsig user object whenever possible to your `initialize()` call, passing as much information as possible in order to take advantage of advanced gate and config conditions (like country or OS/browser level checks). Most of the time, the `userID` field is needed in order to provide a consistent experience for a given user (see [logged-out experiments](#logged-out-experiments) to understand how to correctly run experiments for logged-out users). If the user is logged out at the SDK init time, you can leave the `userID` out for now, and we will use a stable device ID that we create and store in the local storage for targeting purposes. Once the user logs in, make sure to call `updateUser` with the updated `userID` and any other updated user attributes:
+
+<div>{props.user}</div>
+
+## Statsig Options {#statsig-options}
+
+<div>{props.options ?? '(Coming soon)'}</div>
+
+## Shutting down Statsig
+
+Because we batch and periodically flush events, some events may not have been sent when your app/server shuts down. To make sure all logged events are properly flushed, you should tell Statsig to shutdown when your app/server is closing:
+
+<div>{props.shutdown}</div>
+
+## FAQ {#faq}
+
+#### How do I run experiments for logged out users? {#logged-out-experiments}
+
+(Coming soon)
+
+<div>{props.faqs}</div>

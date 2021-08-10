@@ -1,0 +1,9 @@
+```csharp
+using Statsig;
+using Statsig.Server;
+
+await StatsigServer.Initialize(
+    "server-secret-key",
+    new StatsigOptions(new StatsigEnvironment(EnvironmentTier.Development)) // optional, use when needed to customize certain behaviors
+);
+```
