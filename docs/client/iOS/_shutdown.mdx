@@ -1,0 +1,24 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  defaultValue="swift"
+  values={[
+    {label: 'Swift', value: 'swift'},
+    {label: 'Objective-C', value: 'objectivec'},
+  ]}>
+  <TabItem value="swift">
+
+```swift
+Statsig.shutdown()
+```
+
+  </TabItem>
+  <TabItem value="objectivec">
+
+```objectivec
+[Statsig shutdown];
+```
+
+  </TabItem>
+</Tabs>

@@ -1,0 +1,25 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
+StatsigUser newUser = new StatsigUser("new_user_id");
+CompletableFuture future = Statsig.updateUserAsync(newUser);
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+Statsig.updateUser(StatsigUser("new_user_id"))
+```
+
+  </TabItem>
+</Tabs>

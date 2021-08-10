@@ -1,0 +1,18 @@
+```jsx
+const user = {
+    userID: currentUserID,
+    ip: currentIP,
+    custom: {
+        new_user: true,
+        level: 2
+    }
+};
+
+await statsig.initialize('client-sdk-key', user);
+
+...
+// if you want to update the existing user, or change to a different user, call updateUser
+
+const newUser = { ... };
+await statsig.updateUser(newUser);
+```

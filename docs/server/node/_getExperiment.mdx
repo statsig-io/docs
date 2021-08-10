@@ -1,0 +1,10 @@
+```jsx
+const expConfig = await statsig.getExperiment(user, "new_user_promo");
+
+const promoTitle = expConfig.get("title", "Welcome to Statsig! Use discount code WELCOME10OFF for 10% off your first purchase!");
+const discount = config.get("discount", 0.1);
+
+...
+
+const price = msrp * (1 - discount);
+```

@@ -1,0 +1,50 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
+import com.statsig.androidsdk.*;
+...
+
+Application app = getApplication();
+StatsigUser user = new StatsigUser("user_id");
+CompletableFuture future = Statsig.initializeAsync(app, "my_client_sdk_key", user);
+future.thenApply(this::onStatsigReady);
+...
+
+private Object onStatsigReady(Object empty) {
+    // use your gates and feature configs now
+}
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+import com.statsig.androidsdk.*
+
+...
+
+val callback = object : StatsigCallback {
+    override fun onStatsigReady() {
+        // check gates/configs and log events
+    }
+}
+
+Statsig.initialize(
+    this.application,
+    "my_client_sdk_key",
+    StatsigUser("user_id"),
+    callback,
+)
+```
+
+  </TabItem>
+</Tabs>

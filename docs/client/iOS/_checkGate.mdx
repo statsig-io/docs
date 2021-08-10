@@ -1,0 +1,32 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  defaultValue="swift"
+  values={[
+    {label: 'Swift', value: 'swift'},
+    {label: 'Objective-C', value: 'objectivec'},
+  ]}>
+  <TabItem value="swift">
+
+```swift
+if Statsig.checkGate("new_homepage_design") {
+  // Gate is on, show new home page
+} else {
+  // Gate is off, show old home page
+}
+```
+
+  </TabItem>
+  <TabItem value="objectivec">
+
+```objectivec
+if ([Statsig checkGateForName:@"new_homepage_design"]) {
+// Gate is on, show new home page
+} else {
+  // Gate is off, show old home page
+}
+```
+
+  </TabItem>
+</Tabs>
