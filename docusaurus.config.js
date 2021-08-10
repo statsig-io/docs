@@ -75,6 +75,12 @@ module.exports = {
       },
     ],
   ],
+  scripts: [
+    {
+      src: 'https://cdn.jsdelivr.net/npm/statsig-js@3.0.2/dist/statsig-prod-web-sdk.min.js',
+      onload: "(() => {statsig.initialize('client-oJY6hTJeduhEN2bf6fh6unHvxIk9UsjS99BlO4owh0r').then(() => {statsig.logEvent('page_load', window.location.pathname)})})()",
+    }
+  ],
   stylesheets: [
     "https://fonts.googleapis.com/icon?family=Material+Icons",
   ],
