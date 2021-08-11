@@ -1,0 +1,11 @@
+```go
+import (
+  statsig "github.com/statsig-io/go-sdk"
+  "github.com/statsig-io/go-sdk/types"
+)
+
+statsig.Initialize("server-secret-key")
+
+// Or, if you want to initialize with certain options
+statsig.InitializeWithOptions("server-secret-key", &types.StatsigOptions{Environment: types.StatsigEnvironment{Tier: "staging"}})
+```

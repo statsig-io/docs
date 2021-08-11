@@ -1,0 +1,10 @@
+```go
+expConfig := statsig.GetExperiment(user, "new_user_promo");
+
+promoTitle := expConfig.GetString("title", "Welcome to Statsig! Use discount code WELCOME10OFF for 10% off your first purchase!");
+discount := expConfig.GetNumber("discount", 0.1);
+
+...
+
+price := msrp * (1 - discount);
+```
