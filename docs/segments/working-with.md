@@ -1,4 +1,4 @@
-# Working with Segments
+# Working with segments
 
 The following tutorials show how you can perform common tasks with segments.
 
