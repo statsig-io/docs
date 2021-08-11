@@ -1,3 +1,5 @@
+### Create rules for a feature gate
+
 By default, a feature gate check returns **false** when there are no rules configured to target a set of users. You can add a rule to a feature gate as follows: 
 - Log into the Statsig console at https://console.statsig.com 
 - On the left-hand navigation panel, select **Feature Gates**
