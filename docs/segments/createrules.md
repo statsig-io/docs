@@ -1,4 +1,4 @@
-### Create rules for a segment
+### Create a rule for a segment
 
 A rules defines the criteria for which users are included in a segment. To add a rule to a segment, 
 - Log into the Statsig console at https://console.statsig.com 
@@ -10,7 +10,7 @@ A rules defines the criteria for which users are included in a segment. To add a
 ![image](https://user-images.githubusercontent.com/1315028/129094975-a78b8caf-ac0d-4b14-96f7-adba2fe73f1f.png)
 
 - Click the **Add Rule** button
-- Click **Save Changes** button at the top right corner of the **Rules** section
+- Click **Save Changes** button at the top right of the **Rules** section
 
 
 
