@@ -1,10 +1,6 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-:::info
-These docs are for using our SDK in a multi-user, server side context. For client side and single-user contexts, try one of our client SDKs.
-:::
-
 <span>
   Statsig server SDK for {props.sdkType} applications. This SDK is{' '}
   <a href={props.github}>open source and hosted on github</a>.
@@ -86,9 +82,9 @@ Now that you have a Feature Gate or an Experiment set up, you may want to track 
 
 ## Statsig User {#statsig-user}
 
-You should provide a Statsig user object whenever possible to your `initialize()` call, passing as much information as possible in order to take advantage of advanced gate and config conditions (like country or OS/browser level checks). Most of the time, the `userID` field is needed in order to provide a consistent experience for a given user (see [logged-out experiments](#logged-out-experiments) to understand how to correctly run experiments for logged-out users). If the user is logged out at the SDK init time, you can leave the `userID` out for now, and we will use a stable device ID that we create and store in the local storage for targeting purposes. Once the user logs in, make sure to call `updateUser` with the updated `userID` and any other updated user attributes:
+When calling APIs that require a user, you should pass as much information as possible in order to take advantage of advanced gate and config conditions (like country or OS/browser level checks), and correctly measure impact of your experiments on your metrics/events. The `userID` field is required because it's needed to provide a consistent experience for a given user (click [here](/messages/serverRequiredUserID) to understand further why it's important to always provide a userID).
 
-<div>{props.user}</div>
+Besides `userID`, we also have `email`, `ip`, `userAgent`, `country`, `locale` and `clientVersion` as top-level fields on StatsigUser. In addition, you can pass any key-value pairs in an object/dictionary to the `custom` field and be able to create targeting based on them.
 
 ## Statsig Options {#statsig-options}
 

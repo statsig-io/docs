@@ -1,0 +1,5 @@
+You can specify optional parameters with `options` when initializing using `InitializeWithOptions()`. Here are the current options and we are always adding more to the list:
+
+- **Environment**: StatsigEnvironment, default nil
+  - An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
+  - The most common usage is to set the environment tier (string), and have feature gates pass/fail for specific environments. The accepted values are "production", "staging" and "development".

@@ -1,0 +1,8 @@
+```go
+statsig.LogEvent(types.StatsigEvent{
+		User: user,
+		EventName: "add_to_cart",
+        Value: "SKU_12345",
+		Metadata: map[string]string{"price": "9.99","item_name": "diet_coke_48_pack"},
+	})
+```
