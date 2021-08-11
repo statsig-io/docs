@@ -8,8 +8,8 @@ By default, a feature gate check returns **false** when there are no rules confi
 
 ![image](https://user-images.githubusercontent.com/1315028/129073615-5450677f-7722-49f5-827b-d21b5711c3e5.png)
 
-- Select the criteria for identifying the users you want to target:
-  - You can target users based on common application properties such as the operating system it is running on as shown below 
+- You can select the criteria for identifying your target users in several ways:
+  - You can target users based on common application properties such as the operating system that the application is running on as shown below 
 
     ![image](https://user-images.githubusercontent.com/1315028/129112226-51978083-d007-4697-88b5-f3a080eabf48.png)
 
@@ -17,11 +17,11 @@ By default, a feature gate check returns **false** when there are no rules confi
 
     ![image](https://user-images.githubusercontent.com/1315028/129113738-ec99c4f0-dbdd-4d14-a88a-b3343d4d12da.png)
 
-  - You can target users in a defined [segment]() as shown below
+  - You can target users in a defined [segment](https://docs.statsig.com/segments) as shown below
   
     ![image](https://user-images.githubusercontent.com/1315028/129112427-27351aaf-074e-4997-91d8-6e1e7941b991.png)
 
-  - You can target users who are eligible for another feature gate as shown below; this ensures that this feature gate is activated only for users who're pass or fail the parent target gate check  
+  - You can target users who are eligible for another feature gate as shown below; this ensures that this feature gate is activated only for users who pass (or fail) the selected target gate check  
 
     ![image](https://user-images.githubusercontent.com/1315028/129112612-d881981c-4fc6-4e95-a9c5-18319c02d6f2.png)
 
