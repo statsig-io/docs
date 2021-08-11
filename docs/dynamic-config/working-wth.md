@@ -13,6 +13,7 @@ A sample JSON payload for French speakers is also shown below.
 
 ![image](https://user-images.githubusercontent.com/1315028/129111399-c3f0354e-f55d-43fc-b49c-f74eac89bc11.png)
 
+
 The following tutorials show you how to perform common tasks with feature gates.
 
 #### Tutorials
