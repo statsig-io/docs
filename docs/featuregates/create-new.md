@@ -9,7 +9,7 @@ To create a new feature gate,
 
  ![image](https://user-images.githubusercontent.com/1315028/129071275-d8e2a0da-c71d-4d96-8cbb-b83113597367.png)
  
-When you create a feature gate, it is enabled by default as shown below. This means that any call to check this feature gate for a user evaluates the rules that you define for this feature gate. This check returns a **true** or **false** depending on whether that user matches these rules. 
+When you create a feature gate, it is enabled by default as shown below. This means that any call to check this feature gate for a user evaluates the rules that you define for this feature gate. This check returns a **true** or **false** depending on whether that user matches these rules. If no rules are defined, the gate check returns **false** by default.
  
 ![image](https://user-images.githubusercontent.com/1315028/129071741-8bace745-f9e1-49c5-b563-7d4241bf8704.png)
 
