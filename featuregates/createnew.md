@@ -1,3 +1,5 @@
+### Create a feature gate
+
 To create a new feature gate, 
 - Log into the Statsig console at https://console.statsig.com 
 - On the left-hand navigation panel, select **Feature Gates**
