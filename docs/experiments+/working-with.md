@@ -13,4 +13,9 @@ Experiments+ offers additional features to accelerate and scale your experimenta
  - Select the key metrics that you want to prioritize for your hypothesis 
  - Define layers to exclude the users participating in one experiment from other related experiments
 
-To learn about all that you can do with Experiments+, see the Statsig tutorial on [working with Experiments+](https://docs.statsig.com/experiments/working-with).
+#### Tutorials
+- [Create an experiment](https://docs.statsig.com/experiments/create-new)
+- [Use a language specific Statsig SDK to implement an experiment in your application](https://docs.statsig.com/experiments/implement)
+- [Monitor an experiment](https://docs.statsig.com/experiments/monitor)
+
+
