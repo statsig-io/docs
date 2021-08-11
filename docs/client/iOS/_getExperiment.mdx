@@ -10,7 +10,7 @@ import TabItem from "@theme/TabItem";
   <TabItem value="swift">
 
 ```swift
-let expConfig = Statsig.getConfig("new_user_promo")
+let expConfig = Statsig.getExperiment("new_user_promo")
 
 let promoTitle = expConfig.getValue(forKey: "title", defaultValue: "Welcome to Statsig! Use discount code WELCOME10OFF for 10% off your first purchase!")
 let discount = expConfig.getValue(forKey: "discount", defaultValue: 0.1)
@@ -24,7 +24,7 @@ let price = msrp * (1 - discount);
   <TabItem value="objectivec">
 
 ```objectivec
-DynamicConfig *expConfig = [Statsig getConfigForName:@"new_user_promo"];
+DynamicConfig *expConfig = [Statsig getExperimentForName:@"new_user_promo"];
 
 NSString *promoTitle = [expConfig.getStringForKey:@"title" defaultValue:@"Welcome to Statsig! Use discount code WELCOME10OFF for 10% off your first purchase!"];
 double discount = [expConfig getDoubleForKey:@"discount" defaultValue:0.1];

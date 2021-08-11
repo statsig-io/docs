@@ -1,0 +1,31 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
+import server.StatsigServer;
+
+Future initFuture = StatsigServer.initializeAsync("server-secret-key");
+initFuture.get();
+
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+import server.StatsigServer
+
+async { StatsigServer.initialize("server-secret-key") }.await()
+
+```
+
+  </TabItem>
+</Tabs>

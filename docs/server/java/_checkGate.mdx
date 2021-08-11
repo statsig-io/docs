@@ -1,0 +1,43 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
+
+StatsigUser user = new StatsigUser("user_id");
+Future<Boolean> featureOn = StatsigServer.checkGateAsync(user, "use_new_feature");
+Boolean isFeatureOn = featureOn.get()
+
+if (isFeatureOn) {
+  // Gate is on, use new feature
+} else {
+  // Gate is off
+}
+
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+
+val user = StatsigUser("user_id");
+val featureOn = async { StatsigServer.checkGate(user, "use_new_feature") }.await()
+
+if (featureOn) {
+  // Gate is on, use new feature
+} else {
+  // Gate is off
+}
+
+```
+
+  </TabItem>
+</Tabs>
