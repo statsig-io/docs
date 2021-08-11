@@ -6,5 +6,5 @@ Feature gates are commonly used as on/off switches to turn a certain system beha
 
 To get started, see the Statsig guide to [build your first feature gate](https://docs.statsig.com/guides/first-feature).
 
-To learn about all that you can do with feature gates, see the Statsig guide to [working with feature gates](https://docs.statsig.com/featuregates/working-with).
+To learn about all that you can do with feature gates, see the Statsig tutorial to [working with feature gates](https://docs.statsig.com/featuregates/working-with).
 
