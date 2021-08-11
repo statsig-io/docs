@@ -11,9 +11,9 @@ Statsig offers several built-in capabilities with feature gate:
 The following tutorials show you how to perform common tasks with feature gates.
 
 #### Tutorials
-- [Create a feature gate]()
-- [Create rules for a feature gate]()
-- [Test a feature gate]()
-- [Use a language specific Statsig SDK to implement a feature gate in your application]()
-- [View exposures to a feature gate]()
+- [Create a feature gate](https://docs.statsig.com/featuregates/createnew)
+- [Create rules for a feature gate](https://docs.statsig.com/featuregates/createrules)
+- [Test a feature gate](https://docs.statsig.com/featuregates/testfeaturegate)
+- [Use a language specific Statsig SDK to implement a feature gate in your application](https://docs.statsig.com/featuregates/implement)
+- [View exposures to a feature gate](https://docs.statsig.com/featuregates/viewexposures)
 
