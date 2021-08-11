@@ -18,4 +18,10 @@ To add new user targeting rules to a dynamic config,
   - You can target users who are eligible for a specific feature gate as shown below; this ensures that the dynamic config is activated only for users who're exposed to the target feature gate  
 
   ![image](https://user-images.githubusercontent.com/1315028/129112612-d881981c-4fc6-4e95-a9c5-18319c02d6f2.png)
+    
+- To complete the dynamic config, click on the **Edit** link to open the JSON configuration editor. In the editor, type the configuration parameters and values that your application should receive and click **Confirm**
+
+![image](https://user-images.githubusercontent.com/1315028/129113189-30e7e7da-7559-4d3a-8bd3-74a6ccb7afe2.png)
+
+
 
