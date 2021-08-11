@@ -7,4 +7,4 @@ Segments are ideal for targeting a commonly identified set of users who are targ
 
 To get started, see the Statsig guide to [create your first segment](https://docs.statsig.com/guides/first-segment).
 
-To learn about all that you can do with segments, see the Statsig tutorial on [working with segments]().
+To learn about all that you can do with segments, see the Statsig tutorial on [working with segments](https://docs.statsig.com/segments/working-with).
