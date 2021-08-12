@@ -55,6 +55,20 @@ To initialize the SDK, copy the following in your client application:
     { environment: { tier: 'staging' } }, // optional, pass options here if needed
 );
 ```
+You must pass a user ID at a minimum to initialize the SDK. Statsig also provides built-in user attributes such as email, IP address, user agent, country, locale, and client version that you can also pass as part of a user object to create targeting rules based on any of these dimensions.
+
+```jsx
+const user = {
+    userID: currentUserID,
+    ip: currentIP,
+    custom: {
+        new_user: true,
+        level: 2
+    }
+};
+
+await statsig.initialize('client-sdk-key', user);
+```
 
 
 #### Step 4: Check the feature gate
