@@ -35,7 +35,7 @@ You can install the statsig SDK via npm or yarn:
     {label: '.NET', value: 'net'},
   ]}>
   <TabItem value="js">
-     ```shell
+    ```shell
     npm install statsig-js // using npm
     
     yarn add statsig-js //using yarn
