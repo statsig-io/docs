@@ -17,3 +17,4 @@ Experiments+ offers additional features to accelerate and scale your experimenta
 - [Create an experiment](https://docs.statsig.com/experimentsPlus/create-new)
 - [Use a language specific Statsig SDK to implement an experiment in your application](https://docs.statsig.com/experimentsPlus/implement)
 - [Monitor an experiment](https://docs.statsig.com/experimentsPlus/monitor)
+- [Ensure consistent user experience](https://docs.statsig.com/experimentsPlus/consistent-exp)
