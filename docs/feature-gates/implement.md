@@ -4,7 +4,8 @@ Statsig provides client and server SDKs as well as HTTP APIs to implement your f
 
 - [Using client SDK](https://docs.statsig.com/feature-gates/implement/client)
 - [Using server SDK](https://docs.statsig.com/feature-gates/implement/server)
-- [Using HTTP API]((https://docs.statsig.com/feature-gates/implement/http-api)
+- [Using HTTP API](https://docs.statsig.com/feature-gates/implement/http-api)
+
 
 
 
