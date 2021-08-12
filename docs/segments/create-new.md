@@ -9,7 +9,3 @@ To create a segment,
 ![image](https://user-images.githubusercontent.com/1315028/129094428-5caf6533-1c5d-483f-88dd-5c419b41dfb6.png)
 
 - Click **Create**
-
-
-
-
