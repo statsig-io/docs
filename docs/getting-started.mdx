@@ -24,7 +24,7 @@ export const ArrowButton = ({link}) => (
         style={{
             color: "#194b7d",
             border: "1px solid rgba(0, 0, 0, 0.12)",
-            'border-radius': '16px',
+            borderRadius: '16px',
             padding: '4px',
         }}
         href={link}>
@@ -42,37 +42,37 @@ export const OutlinedCard = ({title, description, icon, link}) => (
             margin: '16px',
             flex: '0 0 28%',
             display: 'flex',
-            'flex-direction': 'column',
+            flexDirection: 'column',
             padding: '16px',
-            'box-shadow': '0 6px 16px rgba(0, 0, 0, 0.06)',
+            boxShadow: '0 6px 16px rgba(0, 0, 0, 0.06)',
             border: 0,
         }}>
             <div
                 style={{
-                    "font-weight": 'bold',
-                    "display": "flex",
-                    "flex-direction": 'row',
-                    "justify-content": 'flex-start',
-                    "align-content": "space-between",
-                    "align-items": "center",
+                    fontWeight: 'bold',
+                    display: "flex",
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    alignContent: "space-between",
+                    alignItems: "center",
                 }}>
                 <Icon style={{color: "#194b7d"}}>{icon}</Icon>
-                <div style={{"padding-left": "8px"}}>{title}</div>
+                <div style={{"paddingLeft": "8px"}}>{title}</div>
             </div>
         <CardContent style={{
-            'padding': 0,
-            'padding-top': '4px',
+            padding: 0,
+            paddingTop: '4px',
             display: 'flex',
             flex: 1,
-            'flex-direction': 'column',
-            'justify-content': 'space-between',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
         }}>
             <p>{description}</p>
             <CardActions style={{
                 padding: 0,
                 display: 'flex',
-                "flex-direction": 'row',
-                "justify-content": 'flex-end',
+                flexDirection: 'row',
+                justifyContent: 'flex-end',
             }}>
                 <ArrowButton link={link} />
             </CardActions>
@@ -81,8 +81,8 @@ export const OutlinedCard = ({title, description, icon, link}) => (
 );
 
 <div style={{
-    display: "flex",
-    "flex-wrap": 'wrap',
+    display: 'flex',
+    flexWrap: 'wrap',
 }}>
     <OutlinedCard
         title="Feature Gates"
@@ -155,27 +155,27 @@ export const SDKCard = ({language, image, link}) => (
             margin: '16px',
             flex: '0 0 28%',
             display: 'flex',
-            'flex-direction': 'column',
+            flexDirection: 'column',
             padding: '16px',
-            'box-shadow': '0 6px 16px rgba(0, 0, 0, 0.06)',
+            boxShadow: '0 6px 16px rgba(0, 0, 0, 0.06)',
             border: 0,
         }}>
             <div
                 style={{
-                    "font-weight": 'bold',
-                    "display": "flex",
-                    "flex-direction": 'row',
-                    "justify-content": 'flex-start',
-                    "align-content": "space-between",
+                    fontWeight: 'bold',
+                    display: "flex",
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    alignContent: "space-between",
                 }}>
                 {language}
             </div>
         <CardActions
             style={{
                 display: 'flex',
-                "flex-direction": 'row',
-                "justify-content": 'space-between',
-                "align-items": "flex-end",
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: "flex-end",
             }}>
             <img height="80px" src={image} />
             <ArrowButton link={link} />
@@ -192,7 +192,7 @@ export const SDKCard = ({language, image, link}) => (
   <TabItem value="client">
     <div style={{
         display: "flex",
-        "flex-wrap": 'wrap',
+        "flexWrap": 'wrap',
     }}>
         <SDKCard
             language="Javascript"
@@ -234,7 +234,7 @@ export const SDKCard = ({language, image, link}) => (
   <TabItem value="server">
     <div style={{
         display: "flex",
-        "flex-wrap": 'wrap',
+        flexWrap: 'wrap',
     }}>
         <SDKCard
             language="Node js"
@@ -279,11 +279,11 @@ export const SlackCard = () => (
             padding: '32px',
             flex: '1',
             display: 'flex',
-            'flex-direction': 'row',
-            'align-items': 'center',
-            'background-color': '#194b7d',
-            'color': 'white',
-            'border-radius': '4px',
+            flexDirection: 'row',
+            alignItems: 'center',
+            backgroundColor: '#194b7d',
+            color: 'white',
+            borderRadius: '4px',
         }}
         variant="outlined">
             <div style={{flex: 1}}>
@@ -296,11 +296,11 @@ export const SlackCard = () => (
                 <Button
                     target="_blank"
                     href="https://join.slack.com/t/statsigcommunity/shared_invite/zt-pbp005hg-VFQOutZhMw5Vu9eWvCro9g"
-                    style={{color: '#194b7d', 'background-color': 'white'}} >
+                    style={{color: '#194b7d', 'backgroundColor': 'white'}} >
                     Chat with us
                 </Button>
             </div>
-            <div style={{'padding-left': '16px'}}>
+            <div style={{ paddingLeft: '16px'}}>
                 <img width="160px" src="https://www.statsig.com/images/community_slack.png" />
             </div>
     </Card>
