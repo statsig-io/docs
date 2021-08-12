@@ -30,15 +30,19 @@ You can install the statsig SDK via npm or yarn:
     {label: '.NET', value: 'net'},
   ]}>
   <TabItem value="ruby">
-    ```ruby
-    require 'statsig'
+    If you are using Bundler, add the Statsig [gem](https://rubygems.org/gems/statsig) to your Gemfile from command line:
 
-    Statsig.initialize('server-secret-key')
-
-    // Or, if you want to initialize with certain options
-    options = StatsigOptions.new({'tier' => 'staging'})
-    Statsig.initialize('server-secret-key', options)
+    ```shell
+    bundle add statsig --version ">= 1.2.0" 
     ```
+
+    Or directly include it in your Gemfile and do a bundle install:
+
+    ```shell
+    gem "statsig", ">= 1.2.0"
+    bundle install
+    ```
+    
   </TabItem>
   <TabItem value="node">
     ```shell
@@ -94,11 +98,11 @@ To initialize the SDK, copy the following in your server side application code:
     ```ruby
     require 'statsig'
 
-    Statsig.initialize('server-secret-key')
+    Statsig.initialize('<SERVER_SECRET_KEY>')
 
     // Or, if you want to initialize with certain options
     options = StatsigOptions.new({'tier' => 'staging'})
-    Statsig.initialize('server-secret-key', options)
+    Statsig.initialize('<SERVER_SECRET_KEY>', options)
     ```
   </TabItem>
   <TabItem value="node">
@@ -106,7 +110,7 @@ To initialize the SDK, copy the following in your server side application code:
     const statsig = require('statsig-node');
 
     await statsig.initialize(
-        'server-secret-key',
+        '<SERVER_SECRET_KEY>',
         { environment: { tier: 'staging' } }, // optional, pass options here if needed
     });
     ```
@@ -114,14 +118,8 @@ To initialize the SDK, copy the following in your server side application code:
   
   <TabItem value="java">
     ```java
-    Future initFuture = StatsigServer.initializeAsync("<server_secret>");
+    Future initFuture = StatsigServer.initializeAsync("<SERVER_SECRET_KEY>");
     initFuture.get();
-    // Now you can check gates, get configs, log events
-
-    StatsigUser user = new StatsigUser();
-    user.email = "address@domain.com"
-    Future<Boolean> featureOn = StatsigServer.checkGateAsync(user, "<gate_name>");
-    Boolean isFeatureOn = featureOn.get()
     ```
 
   </TabItem>
@@ -132,10 +130,10 @@ To initialize the SDK, copy the following in your server side application code:
       "github.com/statsig-io/go-sdk/types"
     )
 
-    statsig.Initialize("server-secret-key")
+    statsig.Initialize("<SERVER_SECRET_KEY>")
 
-    // Or, if you want to initialize with certain options
-    statsig.InitializeWithOptions("server-secret-key", &types.StatsigOptions{Environment: types.StatsigEnvironment{Tier: "staging"}})
+    // Or if you want to initialize with certain options
+    statsig.InitializeWithOptions("<SERVER_SECRET_KEY>", &types.StatsigOptions{Environment: types.StatsigEnvironment{Tier: "staging"}})
     ```
   </TabItem>
 
@@ -146,7 +144,7 @@ To initialize the SDK, copy the following in your server side application code:
     using Statsig.Server;
 
     await StatsigServer.Initialize(
-        "server-secret-key",
+        "<SERVER_SECRET_KEY>",
         new StatsigOptions(new StatsigEnvironment(EnvironmentTier.Development)) // optional, use when needed to customize certain behaviors
     );
     ```
@@ -172,8 +170,8 @@ A feature gate check returns a Boolean value. A feature gate is closed/off and a
   ]}>
   <TabItem value="ruby">
    ```ruby
-    user = StatsigUser.new({'userID' => 'some_user_id'})
-    if Statsig.check_gate(user, 'use_new_feature')
+    user = StatsigUser.new({'userID' => '<LOGGED_IN_USER_ID>'})
+    if Statsig.check_gate(user, '<FEATURE_GATE_NAME>')
       // Gate is on, enable new feature
     else
       // Gate is off
@@ -183,12 +181,12 @@ A feature gate check returns a Boolean value. A feature gate is closed/off and a
   <TabItem value="node">
     ```jsx
     const user = {
-      userID: '12345',
-      email: '12345@gmail.com',
+      userID: '<LOGGED_IN_USER_ID>',
+      email: '<LOGGED_IN_USER_EMAIL>',
       ...
     };
 
-    const showNewDesign = await statsig.checkGate(user, 'new_homepage_design');
+    const showNewDesign = await statsig.checkGate(user, '<FEATURE_GATE_NAME>');
     if (showNewDesign) {
       // show new design here
     } else {
@@ -199,21 +197,17 @@ A feature gate check returns a Boolean value. A feature gate is closed/off and a
   
   <TabItem value="java">
     ```java
-    Future initFuture = StatsigServer.initializeAsync("<server_secret>");
-    initFuture.get();
-    // Now you can check gates, get configs, log events
-
     StatsigUser user = new StatsigUser();
-    user.email = "address@domain.com"
-    Future<Boolean> featureOn = StatsigServer.checkGateAsync(user, "<gate_name>");
+    user.email = "<LOGGED_IN_USER_EMAIL>"
+    Future<Boolean> featureOn = StatsigServer.checkGateAsync(user, "<FEATURE_GATE_NAME>");
     Boolean isFeatureOn = featureOn.get()
     ```
 
   </TabItem>
   <TabItem value="go">
      ```go
-    user := types.StatsigUser{UserID: "some_user_id"}
-    feature := statsig.CheckGate(user, "use_new_feature")
+    user := types.StatsigUser{UserID: "<LOGGED_IN_USER_ID>"}
+    feature := statsig.CheckGate(user, "<FEATURE_GATE_NAME>")
     if feature {
       // Gate is on, enable new feature
     } else {
@@ -225,8 +219,8 @@ A feature gate check returns a Boolean value. A feature gate is closed/off and a
   
   <TabItem value="net">
     ```csharp
-    var user = new StatsigUser { UserID = "some_user_id", Email = "user@email.com" };
-    var useNewFeature = await StatsigServer.CheckGate(user, "use_new_feature");
+    var user = new StatsigUser { UserID = "<LOGGED_IN_USER_ID>", Email = "<LOGGED_IN_USER_EMAIL>" };
+    var useNewFeature = await StatsigServer.CheckGate(user, "<FEATURE_GATE_NAME>");
     if (useNewFeature)
     {
       // Gate is on, enable new feature
@@ -254,19 +248,19 @@ You can optionally log an event to capture any metrics that show the impact of y
   ]}>
   <TabItem value="ruby">
     ```ruby
-    Statsig.log_event(user, 'add_to_cart', 'SKU_12345', { 'price' => '9.99', 'item_name' => 'diet_coke_48_pack' })
+    Statsig.log_event(user, '<EVENT_NAME>', '<EVENT_VALUE>', { 'price' => '9.99', 'item_name' => 'diet_coke_48_pack' })
     ```
   </TabItem>
   <TabItem value="node">
     ```jsx
-    statsig.logEvent(user, 'add_to_cart', 'SKU_12345', {'price': '9.99', 'item_name': 'diet_coke_48_pack'});
+    statsig.logEvent(user, '<EVENT_NAME>', '<EVENT_VALUE>', {'price': '9.99', 'item_name': 'diet_coke_48_pack'});
     ```
 
   </TabItem>
   
   <TabItem value="java">
     ```java
-    StatsigServer.logEvent(null, "eventName", 1.0, mapOf("test" to "test2"))
+    StatsigServer.logEvent(null, "<EVENT_NAME>", "<EVENT_VALUE>", mapOf("test" to "test2"))
     ```
 
   </TabItem>
@@ -274,8 +268,8 @@ You can optionally log an event to capture any metrics that show the impact of y
      ```go
       statsig.LogEvent(types.StatsigEvent{
           User: user,
-          EventName: "add_to_cart",
-              Value: "SKU_12345",
+          EventName: "<EVENT_NAME>",
+              Value: "<EVENT_VALUE>",
           Metadata: map[string]string{"price": "9.99","item_name": "diet_coke_48_pack"},
         })
       ```
@@ -285,7 +279,7 @@ You can optionally log an event to capture any metrics that show the impact of y
   
   <TabItem value="net">
     ```csharp
-    StatsigServer.LogEvent(user, "add_to_cart", "SKU_12345", new Dictionary<string, string>() { { "price", "9.99" }, { "item_name", "diet_coke_48_pack" } });
+    StatsigServer.LogEvent(user, "<EVENT_NAME>", "<EVENT_VALUE>", new Dictionary<string, string>() { { "price", "9.99" }, { "item_name", "diet_coke_48_pack" } });
     ```
   </TabItem>
 </Tabs>
