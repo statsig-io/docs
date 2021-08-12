@@ -1,6 +1,6 @@
 ## Use a language-specific Statsig SDK to implement a feature gate in your application
 
-Statsig provides client and server SDKs so you can choose where to implement your feature gate check.
+Statsig provides client and server SDKs so you can choose where to implement your feature gate check. You can also use an SDK for the language of your choice. Select a language below and follow four simple steps to instrument your application. 
 
 ### Using the Client SDK 
 
