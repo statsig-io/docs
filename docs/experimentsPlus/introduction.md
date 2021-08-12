@@ -10,5 +10,5 @@ To learn more about experimentation, see related topics:
  - [Why experiment?](https://docs.statsig.com/experimentsPlus/why-experiment)
  - [Common Terms](https://docs.statsig.com/experimentsPlus/common-terms)
  - [Best Practices](https://docs.statsig.com/experimentsPlus/best-practices)
- - [Experimentation Scenarios](https://docs.statsig.com/experimentsPlus/scenarios)
+ - [Scenarios](https://docs.statsig.com/experimentsPlus/scenarios)
  
