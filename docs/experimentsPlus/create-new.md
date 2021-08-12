@@ -22,9 +22,3 @@ To create an experiment using Experiments+,
   
  - Click the **Create** button
  
- 
-   
-  
-
-
-
