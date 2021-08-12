@@ -8,6 +8,7 @@ To get started, see the Statsig guides to:
  - [Build your first feature gate](https://docs.statsig.com/guides/first-feature)
  - [Analyzing your first A/B test](https://docs.statsig.com/guides/first-experiment)
  - [Log events with Statsig](https://docs.statsig.com/guides/logging-events)
+ - [Use environments](https://docs.statsig.com/guides/using-environments)
  - [Create your first Holdout](https://docs.statsig.com/guides/first-holdout)
 
 To learn about all that you can do with feature gates, see the Statsig tutorial to [working with feature gates](https://docs.statsig.com/feature-gates/working-with).
