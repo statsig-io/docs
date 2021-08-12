@@ -2,9 +2,9 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
 
-### Using the Server SDK
+## Using the Server SDK
 
-#### Step 1: Get the Statsig server secret key
+### Step 1: Get the Statsig server secret key
 
 To get the Statsig server secret key, 
 - Log into the Statsig console at https://console.statsig.com 
@@ -15,7 +15,7 @@ To get the Statsig server secret key,
 - Click on the **API Keys** tab
 - Copy the active **Server Secret Key**
 
-#### Step 2: Install the SDK
+### Step 2: Install the SDK
 
 You can install the statsig SDK via npm or yarn:
 
@@ -81,7 +81,7 @@ You can install the statsig SDK via npm or yarn:
   </TabItem>
 </Tabs>
 
-#### Step 3: Initialize the SDK
+### Step 3: Initialize the SDK
 
 To initialize the SDK, copy the following in your server side application code:
   
@@ -152,7 +152,7 @@ To initialize the SDK, copy the following in your server side application code:
 </Tabs>
 
 
-#### Step 4: Check the feature gate
+### Step 4: Check the feature gate
 
 
 To implement a feature gate, you must include a feature gate check in your application code. 
@@ -233,7 +233,7 @@ A feature gate check returns a Boolean value. A feature gate is closed/off and a
   </TabItem>
 </Tabs>
     
-#### Step 5 (Optional): Log an event
+### Step 5 (Optional): Log an event
 
 You can optionally log an event to capture any metrics that show the impact of your feature. 
 
