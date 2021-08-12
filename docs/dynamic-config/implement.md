@@ -1,10 +1,10 @@
 ### Use a language-specific Statsig SDK to implement a dynamic config in your application
 
- - To retrieve the JSON parameters you saved above in your application, initialize the Statsig SDK as shown below
+ - To retrieve the dynamic config, initialize the Statsig SDK as shown below
    ```js
    await statsig.initialize("<CLIENT-SDK-KEY>");
    ```
- - To fetch the dynamic config values and construct the user experience, use the **getConfig** to retrieve the dynamic config object as shown below
+ - To fetch the JSON parameters in your dynamic config, use the **getConfig** call to retrieve the dynamic config object as shown below
     ```js 
     const localConfig = statsig.getConfig("localization");
     const likeText = localConfig.get("like_us", null);
