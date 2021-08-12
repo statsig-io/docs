@@ -13,7 +13,6 @@ module.exports = {
     algolia: {
       apiKey: 'ab2fd4c2fac5543073ae41e1c65427c3',
       indexName: 'statsig',
-      contextualSearch: true,
       appId: '5SVRQWLBXL',
     },
     navbar: {
