@@ -10,6 +10,7 @@ module.exports = {
         'guides/first-holdout',
         'guides/using-environments',
         'guides/first-segment',
+        'guides/abn-tests',
       ],
     },
     {
