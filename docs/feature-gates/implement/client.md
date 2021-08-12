@@ -88,22 +88,10 @@ To access specific versions and files, use the following format:
     end
     ```
   
-  
-  ```swift
-      Statsig.start(
-          sdkKey: "<CLIENT_SDK_KEY>",
-          user: StatsigUser(userID: "<LOGGED_IN_USER_ID>"),
-          options: StatsigOptions(environment: StatsigEnvironment(tier: .Staging)))
-      { errorMessage in
-
-        // Statsig client is ready; you can also check errorMessage for any debugging information.
-
-      }
-      ```
   </TabItem>
   
   <TabItem value="android">
-    In `build.gradle` include the statsig dependency, directly from the github source (via jitpack).
+    In `build.gradle` include the Statsig dependency directly from the github source (via jitpack) as follows.
 
     In your root build.gradle, at the end of repositories, add:
 
@@ -122,7 +110,7 @@ To access specific versions and files, use the following format:
         implementation 'com.github.statsig-io:android-sdk:v2.0.0'
     ```
 
-    Finally, run a gradle sync so Intellij/Android Studio recognizes the Statsig library.
+    Finally, run a gradle sync so that the Intellij/Android Studio recognizes the Statsig library.
 
     For more information on including a jitpack library as a dependency, see https://jitpack.io/
 
@@ -269,7 +257,7 @@ To initialize the SDK, copy the following in your client application:
 </Tabs>
   
   
-You must pass a user ID at a minimum to initialize the SDK. Statsig also provides built-in user attributes such as email, IP address, user agent, country, locale, and client version that you can also pass as part of a user object to create targeting rules based on any of these dimensions.
+You must provide a user ID at a minimum to initialize the SDK. Statsig also provides built-in user attributes such as email, IP address, user agent, country, locale, and client version that you can also pass as part of a user object to create targeting rules based on any of these dimensions.
 
 <Tabs
   defaultValue="js"
@@ -341,7 +329,7 @@ A feature gate check returns a Boolean value. A feature gate is closed/off and a
   ]}>
   <TabItem value="js">
     ```jsx
-    if (statsig.checkGate('new_homepage_design')) {
+    if (statsig.checkGate('<FEATURE_GATE_NAME>')) {
       // Gate is on, show new home page
     } else {
       // Gate is off, show old home page
@@ -357,7 +345,7 @@ A feature gate check returns a Boolean value. A feature gate is closed/off and a
 
     export default function MyComponent(): JSX.Element {
       // only call hooks at the top level of a functional component
-      const featureOn = useGate(<MY_FEATURE_GATE>).value;
+      const featureOn = useGate(<FEATURE_GATE_NAME>).value;
 
       return {featureOn ? <MyComponent /> : null;
     }
@@ -366,7 +354,7 @@ A feature gate check returns a Boolean value. A feature gate is closed/off and a
   </TabItem>
   <TabItem value="ios-swift">
     ```swift
-    if Statsig.checkGate("new_homepage_design") {
+    if Statsig.checkGate("<FEATURE_GATE_NAME>") {
       // Gate is on, show new home page
     } else {
       // Gate is off, show old home page
@@ -376,7 +364,7 @@ A feature gate check returns a Boolean value. A feature gate is closed/off and a
       </TabItem>
       <TabItem value="ios-objectivec">
     ```objectivec
-    if ([Statsig checkGateForName:@"new_homepage_design"]) {
+    if ([Statsig checkGateForName:@"<FEATURE_GATE_NAME>"]) {
     // Gate is on, show new home page
     } else {
       // Gate is off, show old home page
@@ -386,7 +374,7 @@ A feature gate check returns a Boolean value. A feature gate is closed/off and a
   </TabItem>
   <TabItem value="android-java">
     ```java
-    if (Statsig.checkGate("new_homepage_design")) {
+    if (Statsig.checkGate("<FEATURE_GATE_NAME>")) {
       // Gate is on, show new home page
     } else {
       // Gate is off, show old home page
@@ -396,7 +384,7 @@ A feature gate check returns a Boolean value. A feature gate is closed/off and a
   </TabItem>
   <TabItem value="android-kotlin">
     ```kotlin
-    if (Statsig.checkGate("new_homepage_design")) {
+    if (Statsig.checkGate("<FEATURE_GATE_NAME>")) {
       // Gate is on, show new home page
     } else {
       // Gate is off, show old home page
@@ -406,7 +394,7 @@ A feature gate check returns a Boolean value. A feature gate is closed/off and a
   </TabItem>
   <TabItem value="net">
     ```csharp
-    if (StatsigClient.CheckGate("new_homepage_design"))
+    if (StatsigClient.CheckGate("<FEATURE_GATE_NAME>"))
     {
       // Gate is on, show new home page
     }
@@ -440,7 +428,7 @@ You can optionally log an event to capture any metrics that show the impact of y
   <TabItem value="js">
 
     ```jsx
-    statsig.logEvent('add_to_cart', 'SKU_12345', {'price': '9.99', 'item_name': 'diet_coke_48_pack'});
+    statsig.logEvent('<EVENT_NAME>', '<EVENT_VALUE>', {'price': '<KEY>', 'item_name': '<VALUE>'});
     ```
 
 
@@ -453,7 +441,7 @@ You can optionally log an event to capture any metrics that show the impact of y
       return
         <Button
           onClick={() => {
-            statsig.logEvent('button_clicked');
+            statsig.logEvent('<EVENT_NAME>');
           }}
         />;
     }
@@ -462,7 +450,7 @@ You can optionally log an event to capture any metrics that show the impact of y
   </TabItem>
   <TabItem value="ios-swift">
     ```swift
-    Statsig.logEvent(withName: "purchase", value: 2.99, metadata: ["item_name": "remove_ads"])
+    Statsig.logEvent(withName: "<EVENT_NAME>", value: "<EVENT_VALUE>", metadata: ["<KEY>": "<VALUE>"])
     ```
 
 
@@ -470,27 +458,27 @@ You can optionally log an event to capture any metrics that show the impact of y
   <TabItem value="ios-objectivec">
 
     ```objectivec
-    [Statsig logEvent:@"purchase" doubleValue:2.99 metadata:@{@"item_name" : @"remove_ads"}];
+    [Statsig logEvent:@"<EVENT_NAME>" doubleValue:<EVENT_VALUE> metadata:@{@"<KEY>" : @"<VALUE>"}];
     ```
   </TabItem>
 
   <TabItem value="android-java">
 
     ```java
-    Statsig.logEvent("purchase", 2.99, Map.of("item_name", "remove_ads"));
+    Statsig.logEvent("<EVENT_NAME>", "<EVENT_VALUE>", Map.of("<KEY>", "<VALUE>"));
     ```
 
   </TabItem>
   <TabItem value="android-kotlin">
 
     ```kotlin
-    Statsig.logEvent("purchase", 2.99, Map.of("item_name" to "remove_ads"))
+    Statsig.logEvent("<EVENT_NAME>", "<EVENT_VALUE>", Map.of("<KEY>" to "<VALUE>"))
     ```
   </TabItem>
 
   <TabItem value="net">
     ```csharp
-    StatsigClient.LogEvent("add_to_cart", "SKU_12345", new Dictionary<string, string>() { { "price", "9.99" }, { "item_name", "diet_coke_48_pack" } });
+    StatsigClient.LogEvent("<EVENT_NAME>", "<EVENT_VALUE>", new Dictionary<string, string>() { { "<KEY>", "<VALUE>" } });
     ```
 
 
