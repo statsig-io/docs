@@ -10,6 +10,12 @@ module.exports = {
   organizationName: 'statsig', // Usually your GitHub org/user name.
   projectName: 'statsig-io/docs', // Usually your repo name.
   themeConfig: {
+    algolia: {
+      apiKey: 'ab2fd4c2fac5543073ae41e1c65427c3',
+      indexName: 'statsig',
+      contextualSearch: true,
+      appId: '5SVRQWLBXL',
+    },
     navbar: {
       title: '',
       logo: {
