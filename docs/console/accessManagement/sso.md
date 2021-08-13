@@ -28,10 +28,12 @@ Once you have obtained all of the information mentioned above:
 
 2. Provide the information acquired from your OIDC Provider into the fields in the dialog and click `Enable`.
 
-![image](https://user-images.githubusercontent.com/75151332/128761073-72c6f405-a167-40fa-9be2-b1ef1a476a0f.png)
+![image](https://user-images.githubusercontent.com/75151332/129312057-c6330f5d-7d8a-4d01-b8df-78500cdabf66.png)
 
 3. After clicking `Enable`, an SSO link will be shown that can be sent to your team to allow them to login to Statsig through your OIDC Provider.
 
 ![image](https://user-images.githubusercontent.com/75151332/128761399-0cd83086-2f7b-4861-a463-da596c327f17.png)
 
-Users that sign in through an SSO link will automatically join any Projects that have SSO enabled with the same OIDC Provider, and have access only to those Projects. Users that sign in through an SSO link will also not be able to edit or view any of their account settings.
+Users that sign in through an SSO link will automatically join any Projects that have SSO enabled with the same OIDC Provider, and have access only to those Projects. Users that sign in through an SSO link will also not be able to edit or view any of their personal account settings.
+
+Enabling `Strict SSO` will require that all members of a Project besides the `Owner` must log in to the Statsig Console through SSO with the configured provider to access the Project.
