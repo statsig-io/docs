@@ -19,7 +19,7 @@ To get the Statsig server secret key,
   
 <Tabs
   defaultValue="node"
-  groupID="statsigserver"
+  groupId="statsigserver"
   values={[
     {label: 'Node', value: 'node'},
     {label: 'Java', value: 'java'},
@@ -28,16 +28,17 @@ To get the Statsig server secret key,
     {label: '.NET', value: 'net'},
 ]}>
 <TabItem value="ruby">
-If you are using Bundler, add the Statsig [gem](https://rubygems.org/gems/statsig) to your Gemfile from command line:
+
+If you are using Bundler, add the [Statsig gem](https://rubygems.org/gems/statsig) to your Gemfile from command line:
 
 ```shell
-bundle add statsig --version ">= 1.2.0" 
+bundle add statsig --version ">= 1.4.0" 
 ```
 
 Or directly include it in your Gemfile and do a bundle install:
 
 ```shell
-gem "statsig", ">= 1.2.0"
+gem "statsig", ">= 1.4.0"
 bundle install
 ```
 
@@ -56,15 +57,17 @@ yarn add statsig-node //using yarn
 </TabItem>
 
 <TabItem value="java">
-Install the Statsig Server SDK using jitpack from https://jitpack.io/#statsig-io/java-server-sdk.
+
+Install the Statsig Server SDK using [jitpack](https://jitpack.io/#statsig-io/java-server-sdk).
 
 </TabItem>
 <TabItem value="go">
+
 In your go.mod, add a dependency on the most recent version of the SDK. See the [Releases tab in github](https://github.com/statsig-io/go-sdk/releases) for all versions.
 
 ```
 require (
-  github.com/statsig-io/go-sdk v0.1.4
+  github.com/statsig-io/go-sdk v0.2.0
 )
 ```
 
@@ -72,6 +75,7 @@ require (
 
 
 <TabItem value="net">
+
 The Statsig SDK package is hosted on [Nuget](https://www.nuget.org/packages/Statsig/). You can either install it from your Visual Studio's Nuget package manager, or through .NET CLI as shown below:
 
 ```shell
@@ -87,7 +91,7 @@ To initialize the SDK, copy the following in your server side application code:
   
 <Tabs
   defaultValue="node"
-  groupID="statsigserver"
+  groupId="statsigserver"
   values={[
     {label: 'Node', value: 'node'},
     {label: 'Java', value: 'java'},
@@ -168,7 +172,7 @@ A feature gate check returns a Boolean value. A feature gate is closed/off and a
 
 <Tabs
   defaultValue="node"
-  groupID="statsigserver"
+  groupId="statsigserver"
   values={[
     {label: 'Node', value: 'node'},
     {label: 'Java', value: 'java'},
@@ -253,7 +257,7 @@ You can optionally log an event to capture any metrics that show the impact of y
 
 <Tabs
   defaultValue="node"
-  groupID="statsigserver"
+  groupId="statsigserver"
   values={[
     {label: 'Node', value: 'node'},
     {label: 'Java', value: 'java'},
