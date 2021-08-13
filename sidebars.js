@@ -14,6 +14,28 @@ module.exports = {
       ],
     },
     {
+      'Feature Gates' :[
+        'feature-gates/introduction',
+        {
+          'Working With': [
+            'feature-gates/working-with',
+            'feature-gates/create-new',
+            'feature-gates/add-rule',
+            'feature-gates/test-gate',
+            {
+              'Implement': [
+                'feature-gates/implement',
+                'feature-gates/implement/client',
+                'feature-gates/implement/server',
+                'feature-gates/implement/http-api',
+              ],
+            },
+            'feature-gates/view-exposures',
+          ],
+        },
+      ]
+    },
+    {
       'Statsig Console': [
         'console/overview',
         {

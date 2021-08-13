@@ -1,3 +1,8 @@
+---
+title: Adding Rules
+sidebar_label: Add rule
+slug: /feature-gates/add-rule
+---
 ### Create a rule for a feature gate
 
 By default, a feature gate check returns **false** when there are no rules configured to target a set of users. You can add a rule to a feature gate as follows: 
