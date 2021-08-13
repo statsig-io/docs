@@ -1,4 +1,10 @@
-### View feature gate exposures
+---
+title: Exposures
+sidebar_label: Exposures
+slug: /feature-gates/view-exposures
+---
+
+## View feature gate exposures
 
 To see the number of users who are being exposed to a feature gate, 
 - Log into the Statsig console at https://console.statsig.com 

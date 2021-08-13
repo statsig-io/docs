@@ -1,5 +1,8 @@
-# Working with feature gates
-
+---
+title: Working with feature gates
+sidebar_label: Overview
+slug: /feature-gates/working-with
+---
 Statsig offers several built-in capabilities with feature gate:  
  - A feature gate can be a simple *kill switch* that you can use to turn off a particular code branch for all your users
  - You can use a feature gate to target newly coded system behavior to a specific set of users to implement *whitelisting*
@@ -11,11 +14,11 @@ Statsig offers several built-in capabilities with feature gate:
   
 The following tutorials show how you can perform common tasks with feature gates.
 
-- [Create a feature gate](https://docs.statsig.com/feature-gates/create-new)
-- [Create a rules for a feature gate](https://docs.statsig.com/feature-gates/add-rule)
-- [Use a language-specific Statsig SDK to implement a feature gate in your application](https://docs.statsig.com/feature-gates/implement)
-- [Test a feature gate](https://docs.statsig.com/feature-gates/test-gate)
-- [View feature gate exposures](https://docs.statsig.com/feature-gates/view-exposures)
+- [Create a feature gate](/feature-gates/create-new)
+- [Create a rules for a feature gate](/feature-gates/add-rule)
+- [Use a language-specific Statsig SDK to implement a feature gate in your application](/feature-gates/implement)
+- [Test a feature gate](/feature-gates/test-gate)
+- [View feature gate exposures](/feature-gates/view-exposures)
 
 
 

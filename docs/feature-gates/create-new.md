@@ -1,4 +1,8 @@
-### Create a feature gate
+---
+title: Create a feature gate
+sidebar_label: Create
+slug: /feature-gates/create-new
+---
 
 To create a new feature gate, 
 - Log into the Statsig console at https://console.statsig.com 

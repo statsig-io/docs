@@ -1,4 +1,10 @@
-### Test a feature gate
+---
+title: Testing
+sidebar_label: Test
+slug: /feature-gates/test-gate
+---
+
+## Test a feature gate
 
 To validate that your feature gate is working as expected with the rules you have created, 
 - Log into the Statsig console at https://console.statsig.com 

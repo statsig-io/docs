@@ -1,3 +1,9 @@
+---
+title: Feature gates
+sidebar_label: Introduction
+slug: /feature-gates
+---
+
 # What is a feature gate?
 A feature gate is a mechanism for teams to configure what system behavior is visible to users without changing application code. Feature gates are also commonly called feature flags or feature toggles. 
 

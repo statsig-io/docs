@@ -1,6 +1,12 @@
-### Using the HTTP API
+---
+title: Feature gating with http api
+sidebar_label: HTTP API
+slug: /feature-gates/implement/http-api
+---
 
-#### Step 1: Get the Statsig client SDK key
+## Using the HTTP API
+
+### Step 1: Get the Statsig client SDK key
 
 To get the Statsig client SDK key, 
 - Log into the Statsig console at https://console.statsig.com 
@@ -11,7 +17,7 @@ To get the Statsig client SDK key,
 - Click on the **API Keys** tab
 - Copy the active **Client API Key**
   
-#### Step 2: Post a check gate request with Statsig
+### Step 2: Post a check gate request with Statsig
   
 ```bash
 curl \
@@ -25,7 +31,7 @@ Response:
 `{"name":"YOUR-GATE-NAME","value":false}`
 
   
-#### Step 3 (Optional): Post a log event request with Statsig
+### Step 3 (Optional): Post a log event request with Statsig
 
 ```bash
 curl \
