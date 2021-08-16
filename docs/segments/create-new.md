@@ -1,4 +1,8 @@
-### Create a segment
+---
+title: Create a segment
+sidebar_label: Create
+slug: /segments/create-new
+---
 
 To create a segment, 
 - Log into the Statsig console at https://console.statsig.com 

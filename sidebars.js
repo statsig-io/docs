@@ -49,6 +49,19 @@ module.exports = {
       ]
     },
     {
+      'Segments' :[
+        'segments/introduction',
+        {
+          'Working With': [
+            'segments/working-with',
+            'segments/create-new',
+            'segments/add-rule',
+            'segments/use-segment',
+          ],
+        },
+      ]
+    },
+    {
       'Statsig Console': [
         'console/overview',
         {
