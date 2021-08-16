@@ -1,7 +1,11 @@
-### Create an experiment
+---
+title: Create an experiment
+sidebar_label: Create
+slug: /experiments-plus/create-new
+---
 
 To create an experiment using Experiments+,
- - Log into the Statsig console at https://console.statsig.com/  
+ - Log into the Statsig console at [https://console.statsig.com/](https://console.statsig.com/)
  - Navigate to **Experiments+** in the left-hand navigation panel
  - Click on the **Create** button
  - Enter the name, description, and hypothesis for your experiment; also select the feature gate associated 

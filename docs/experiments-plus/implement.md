@@ -1,3 +1,8 @@
+---
+title: Implement an experiment
+sidebar_label: Implement
+slug: /experiments-plus/implement
+---
 ### Use a language-specific Statsig SDK to implement the experiment in your application
 
 To deploy your experiment, your application must pull the experiment configuration from Statsig and log the required events with Statsig. 

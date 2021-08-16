@@ -1,4 +1,8 @@
-### Monitor an experiment
+---
+title: Monitor an experiment
+sidebar_label: Monitor
+slug: /experiments-plus/monitor
+---
 
 To monitor the status of your experiment, 
  - Navigate to **Experiments+** in the left-hand navigation panel in the Statsig console
