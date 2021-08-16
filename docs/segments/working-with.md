@@ -1,4 +1,8 @@
-# Working with segments
+---
+title: Working with segments
+sidebar_label: Working with
+slug: /segments/working-with
+---
 
 The following tutorials show how you can perform common tasks with segments.
 

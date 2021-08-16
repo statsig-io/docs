@@ -1,4 +1,8 @@
-### Use a segment
+---
+title: Using a segment
+sidebar_label: Usage
+slug: /segments/implement
+---
 
 You can use a segment to target a set of users in a feature gate or a dynamic config as follows:
 - Select the feature gate or dynamic config where you want to target a set of users
