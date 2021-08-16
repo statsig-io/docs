@@ -1,4 +1,8 @@
-# Why experiment?
+---
+title: Why Experiment
+sidebar_label: Why Experiment
+slug: /experiments-plus/experimentation/why-experiment
+---
 
 Controlled experiments are the best scientific way to establish causality between your product features and customer impact. Establishing such causality allows you to only ship features that improve customer experience. This can make experiments the driving force behind your **pace of innovation**.  
 

@@ -1,4 +1,8 @@
-# Scenarios for Experimentation 
+---
+title: Scenarios
+sidebar_label: Scenarios
+slug: /experiments-plus/experimentation/scenarios
+---
 
 Statsig sees two broad scenarios for experimentation. 
 

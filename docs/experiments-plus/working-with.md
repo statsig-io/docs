@@ -1,4 +1,8 @@
-# Working with Experiments+
+---
+title: Working with experiments+
+sidebar_label: Overview
+slug: /experiments-plus/working-with
+---
 
 Similar to A/B tests, Experiments+ provides the following features to run and analyze experiments with ease:
  - Automatically compute the sample size required to achieve statistical significance for a given experiment  
@@ -13,8 +17,7 @@ Experiments+ offers additional features to accelerate and scale your experimenta
  - Select the key metrics that you want to prioritize for your hypothesis 
  - Define layers to exclude the users participating in one experiment from other related experiments
 
-#### Tutorials
-- [Create an experiment](https://docs.statsig.com/experimentsPlus/create-new)
-- [Use a language specific Statsig SDK to implement an experiment in your application](https://docs.statsig.com/experimentsPlus/implement)
-- [Monitor an experiment](https://docs.statsig.com/experimentsPlus/monitor)
-- [Ensure consistent user experience](https://docs.statsig.com/experimentsPlus/consistent-exp)
+## Tutorials
+- [Create an experiment](/experiments-plus/create-new)
+- [Use a language specific Statsig SDK to implement an experiment in your application](/experiments-plus/implement)
+- [Monitor an experiment](/experiments-plus/monitor)

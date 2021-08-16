@@ -1,4 +1,8 @@
-# Best Practices
+---
+title: Best Practices
+sidebar_label: Best Practices
+slug: /experiments-plus/experimentation/best-practices
+---
 
 ## Metrics
  - **Key Metrics** - Choosing key metrics for your experiments enables you to reach decisive results through your experiments. Key metrics that are ideal for experiments typically are:

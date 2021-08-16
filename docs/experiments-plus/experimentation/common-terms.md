@@ -1,4 +1,8 @@
-# Common Terms 
+---
+title: Common Terms
+sidebar_label: Common Terms
+slug: /experiments-plus/experimentation/common-terms
+---
 
 - A **Control Variable** is an experimental variable that is thought to influence the key metrics of interest. In simple A/B experiments, a single control variable is assigned two values. It is more common to assign multiple values such as A,B,C, or D to a single control variable. Multivariate experiments evaluate multiple control variables that allow experimenters to discover a global optimum when multiple variables interact. 
 - A **Variant** is a product or feature experience being tested, often by assigning values to control variables. In a simple A/B experiments, A and B are two variants, usually called Control and Treatment.  

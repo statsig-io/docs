@@ -62,6 +62,27 @@ module.exports = {
       ]
     },
     {
+      'Experiments Plus' :[
+        'experiments-plus/introduction',
+        {
+          'Working With': [
+            'experiments-plus/working-with',
+            'experiments-plus/create-new',
+            'experiments-plus/implement',
+            'experiments-plus/monitor',
+          ],
+        },
+        {
+          'Experimentation': [
+            'experiments-plus/experimentation/why-experiment',
+            'experiments-plus/experimentation/scenarios',
+            'experiments-plus/experimentation/best-practices',
+            'experiments-plus/experimentation/common-terms',
+          ],
+        },
+      ]
+    },
+    {
       'Statsig Console': [
         'console/overview',
         {
