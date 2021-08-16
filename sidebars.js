@@ -62,7 +62,7 @@ module.exports = {
       ]
     },
     {
-      'Experiments Plus' :[
+      'Experiments+' :[
         'experiments-plus/introduction',
         {
           'Working With': [
