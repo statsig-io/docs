@@ -131,7 +131,7 @@ module.exports = {
     },
     'http-api',
     {
-      Integrations: ['integrations/data-connectors'],
+      Integrations: ['integrations/data-connectors', 'integrations/event_webhook'],
     },
   ],
 };
