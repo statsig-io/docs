@@ -1,4 +1,8 @@
-### Create a dynamic config
+---
+title: Create a dynamic config
+sidebar_label: Create
+slug: /dynamic-config/create-new
+---
 
 To create a dynamic config, 
 - Log into the Statsig console at https://console.statsig.com 

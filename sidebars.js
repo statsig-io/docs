@@ -36,6 +36,19 @@ module.exports = {
       ]
     },
     {
+      'Dynamic Config' :[
+        'dynamic-config/introduction',
+        {
+          'Working With': [
+            'dynamic-config/working-with',
+            'dynamic-config/create-new',
+            'dynamic-config/add-rule',
+            'dynamic-config/implement',
+          ],
+        },
+      ]
+    },
+    {
       'Statsig Console': [
         'console/overview',
         {

@@ -1,4 +1,9 @@
-# What is dynamic config?
+---
+title: Dynamic Config
+sidebar_label: Introduction
+slug: /dynamic-config
+---
+## What is dynamic config?
 Dynamic config is a tool that replaces hard-coded values in your application with configuration parameters defined on the server. These configuration parameters can include any property across your client-side or server-side application code, from button colors to ranking configurations. This enables you to control the behavior of your application dynamically in near real-time.
 
 ## When to use dynamic config

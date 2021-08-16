@@ -1,4 +1,8 @@
-## Working with dynamic config
+---
+title: Working with dynamic config
+sidebar_label: Working with
+slug: /dynamic-config/working-with
+---
 A dynamic config allows you to use configuration parameters to control the behavior of your application in near real-time. 
 
 In the example below, 

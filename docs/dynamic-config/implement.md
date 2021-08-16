@@ -1,4 +1,9 @@
-### Use a language-specific Statsig SDK to implement a dynamic config in your application
+---
+title: Implementing Dynamic Configs
+sidebar_label: Implement
+slug: /dynamic-config/implement
+---
+## Use a language-specific Statsig SDK to implement a dynamic config in your application
 
  - To retrieve the dynamic config, initialize the Statsig SDK as shown below
    ```js

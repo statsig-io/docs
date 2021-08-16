@@ -1,4 +1,9 @@
-### Add a rule to a dynamic config
+---
+title: Adding Rules
+sidebar_label: Add rule
+slug: /dynamic-config/add-rule
+---
+## Add a rule to a dynamic config
 
 To add new user targeting rules to a dynamic config,
 - Log into the Statsig console at https://console.statsig.com 
