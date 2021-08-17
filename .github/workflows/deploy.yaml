@@ -43,7 +43,7 @@ jobs:
         env:
           aws_access_key_id: ${{ secrets.LATEST_AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.LATEST_AWS_SECRET_ACCESS_KEY }}
-          region: us-west-1
+          region: us-east-1
           cluster: ${{ secrets.LATEST_CLUSTER_NAME }}
         with:
           args: rollout restart deployment/docs
@@ -52,7 +52,7 @@ jobs:
         env:
           aws_access_key_id: ${{ secrets.LATEST_AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.LATEST_AWS_SECRET_ACCESS_KEY }}
-          region: us-west-1
+          region: us-east-1
           cluster: ${{ secrets.LATEST_CLUSTER_NAME }}
         with:
           args: rollout status deployment/docs
