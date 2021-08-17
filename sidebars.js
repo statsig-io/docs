@@ -90,8 +90,8 @@ module.exports = {
             'console/accessManagement/overview',
             {
             'Single Sign-On': [
-            'console/accessManagement/sso/overview',
-            'console/accessManagement/sso/okta_sso',
+              'console/accessManagement/sso/overview',
+              'console/accessManagement/sso/okta_sso',
             ] 
           }
           ]
