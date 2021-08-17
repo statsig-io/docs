@@ -95,4 +95,3 @@ curl \
 
 Response:
 `{"name":"YOUR-EXPERIMENT-NAME","value":{"color":"blue","shape":"circle"},"group":"default"}`
-
