@@ -1,5 +1,5 @@
 ---
-sidebar_label: SSO with OIDC
+sidebar_label: Overview
 title: Single Sign-On With OIDC
 ---
 
@@ -22,7 +22,7 @@ To enable SSO on Statsig, you will need the following from your OIDC Provider:
 
 Once you have obtained all of the information mentioned above:
 
-1. Navigate to your Project's [`Basic Settings` page](https://console.statsig.com/settings) and click the `Enable` button for Single Sign_on.
+1. Navigate to your Project's [`Basic Settings` page](https://console.statsig.com/settings) and click the `Enable` button for Single Sign-on.
 
 ![image](https://user-images.githubusercontent.com/75151332/128761218-e52c09a0-a51a-4e6d-870a-07359867be5b.png)
 
