@@ -1,0 +1,6 @@
+`statsig.initialize()` takes an optional parameter `options` in addition to the secret key that you can provide to customize the Statsig client. Here are the current options and we are always adding more to the list:
+
+- **environment**: StatsigEnvironment, default nil
+
+  - An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
+  - The most common usage is to set the environment tier ('production', 'staging' or 'development'), e.g. `{ tier: 'staging' }`, and have feature gates pass/fail for specific environments.
