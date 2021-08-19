@@ -1,5 +1,6 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import AsyncDisclaimer from './async_disclaimer.mdx'
 
 <span>
   Statsig server SDK for {props.sdkType} applications. This SDK is{' '}
@@ -64,13 +65,11 @@ Then we have [**Experiments**](/console/experimentsPlus), which you can use to r
 
 <div>{props.getExperiment}</div>
 
-:::info Asynchronous APIs
-We mentioned earlier that after calling `initialize` most SDK APIs would run synchronously, so why are `getConfig` and `checkGate` asynchronous?
-
-The main reason is that older versions of the SDK _might_ not know how to interpret new types of gate conditions. In such cases the SDK will make an asynchronous call to our servers to fetch the result of a check. This can be resolved by upgrading the SDK, and we will warn you if this happens.
-
-For more details, read our [blog post about SDK evaluations](https://blog.statsig.com/evaluating-feature-gates-in-the-statsig-sdk-a6f8881a1ad8). If you have any questions, please ask them in our [Feedback Repository](https://github.com/statsig-io/statsig-feedback/issues).
-:::
+<div>
+{props.hideAsyncDisclaimer ? 
+<div />
+: <AsyncDisclaimer />}
+</div>
 
 <a name="step5"></a>
 
