@@ -14,7 +14,7 @@ module.exports = {
       ],
     },
     {
-      'Feature Gates' :[
+      'Feature Gates': [
         'feature-gates/introduction',
         {
           'Working With': [
@@ -23,7 +23,7 @@ module.exports = {
             'feature-gates/add-rule',
             'feature-gates/test-gate',
             {
-              'Implement': [
+              Implement: [
                 'feature-gates/implement',
                 'feature-gates/implement/client',
                 'feature-gates/implement/server',
@@ -33,10 +33,10 @@ module.exports = {
             'feature-gates/view-exposures',
           ],
         },
-      ]
+      ],
     },
     {
-      'Dynamic Config' :[
+      'Dynamic Config': [
         'dynamic-config/introduction',
         {
           'Working With': [
@@ -46,10 +46,10 @@ module.exports = {
             'dynamic-config/implement',
           ],
         },
-      ]
+      ],
     },
     {
-      'Segments' :[
+      Segments: [
         'segments/introduction',
         {
           'Working With': [
@@ -59,10 +59,10 @@ module.exports = {
             'segments/use-segment',
           ],
         },
-      ]
+      ],
     },
     {
-      'Experiments+' :[
+      'Experiments+': [
         'experiments-plus/introduction',
         {
           'Working With': [
@@ -73,14 +73,14 @@ module.exports = {
           ],
         },
         {
-          'Experimentation': [
+          Experimentation: [
             'experiments-plus/experimentation/why-experiment',
             'experiments-plus/experimentation/scenarios',
             'experiments-plus/experimentation/best-practices',
             'experiments-plus/experimentation/common-terms',
           ],
         },
-      ]
+      ],
     },
     {
       'Statsig Console': [
@@ -89,12 +89,12 @@ module.exports = {
           'Access Management': [
             'console/accessManagement/overview',
             {
-            'Single Sign-On': [
-              'console/accessManagement/sso/overview',
-              'console/accessManagement/sso/okta_sso',
-            ] 
-          }
-          ]
+              'Single Sign-On': [
+                'console/accessManagement/sso/overview',
+                'console/accessManagement/sso/okta_sso',
+              ],
+            },
+          ],
         },
         {
           'Feature Gates': [
@@ -136,7 +136,15 @@ module.exports = {
     },
     'http-api',
     {
-      Integrations: ['integrations/data-connectors', 'integrations/event_webhook'],
+      Integrations: [
+        {
+          'Data Connectors': [
+            'integrations/data-connectors/overview',
+            'integrations/data-connectors/revenuecat',
+          ],
+        },
+        'integrations/event_webhook',
+      ],
     },
   ],
 };
