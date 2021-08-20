@@ -1,5 +1,6 @@
 ---
 title: Data Connectors
+sidebar_label: Overview
 ---
 
 The following data connectors are available for use now, and we're adding more every week:

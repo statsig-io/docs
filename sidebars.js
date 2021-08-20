@@ -139,7 +139,7 @@ module.exports = {
       Integrations: [
         {
           'Data Connectors': [
-            'integrations/data-connectors/overview',
+            'integrations/data-connectors',
             'integrations/data-connectors/revenuecat',
           ],
         },
