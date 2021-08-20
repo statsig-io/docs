@@ -140,6 +140,7 @@ module.exports = {
         {
           'Data Connectors': [
             'integrations/data-connectors',
+            'integrations/data-connectors/heap',
             'integrations/data-connectors/revenuecat',
           ],
         },
