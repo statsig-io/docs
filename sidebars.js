@@ -145,6 +145,7 @@ module.exports = {
           ],
         },
         'integrations/event_webhook',
+        'integrations/jira',
         'integrations/vscode'
       ],
     },
