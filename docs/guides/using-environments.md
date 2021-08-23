@@ -3,18 +3,7 @@ sidebar_label: Using Environments
 title: Using Environments for Conditional Evaluation outside of Production
 ---
 
-## Prerequisites
-
-The following SDK/versions support environments:
-
-Client:
-- js: v2.3.2+
-- react: v0.1.0+
-- ios: v1.1.0+
-
-
-Server:
-- statsig-node v3.2.0+
+All of our SDKs allow you to set the environment tier your app is currently in during initialization. If you'd like to evaluate feature gates, dynamic configs, and/or experiments to different values in development/staging environment vs. production, you simply need to set the correct environment in your code when initializing and configure the corresponding features in Statsig console to evaluate differently for an environment tier. The sections below goes into details on how to do these.
 
 ## SDK Usage
 
