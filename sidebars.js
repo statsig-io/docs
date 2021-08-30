@@ -11,6 +11,17 @@ module.exports = {
         'guides/using-environments',
         'guides/first-segment',
         'guides/abn-tests',
+        {
+          'Access Management': [
+            'console/accessManagement/overview',
+            {
+              'Single Sign-On': [
+                'console/accessManagement/sso/overview',
+                'console/accessManagement/sso/okta_sso',
+              ],
+            },
+          ],
+        }
       ],
     },
     {
@@ -83,34 +94,25 @@ module.exports = {
       ],
     },
     {
+      'Pulse': [
+        'pulse/introduction',
+      ],
+    },
+    {
+      'Autotune': [
+        'autotune/introduction',
+      ],
+    },
+    {
       'Statsig Console': [
         'console/overview',
         {
-          'Access Management': [
-            'console/accessManagement/overview',
-            {
-              'Single Sign-On': [
-                'console/accessManagement/sso/overview',
-                'console/accessManagement/sso/okta_sso',
-              ],
-            },
-          ],
+          
         },
-        {
-          'Feature Gates': [
-            'console/featureGates/introduction',
-            'console/featureGates/rules',
-          ],
-        },
-        'console/dynamicConfig',
-        'console/segments',
-        'console/pulse',
-        'console/experimentsPlus',
         'console/holdouts',
         'console/metrics',
         'console/users',
         'console/ultrasound',
-        'console/autotune',
       ],
     },
     {
