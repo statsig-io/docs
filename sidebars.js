@@ -104,6 +104,11 @@ module.exports = {
       ],
     },
     {
+      'Users': [
+        'users/introduction',
+      ],
+    },
+    {
       'Statsig Console': [
         'console/overview',
         {
