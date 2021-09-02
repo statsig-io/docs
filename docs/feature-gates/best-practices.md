@@ -13,14 +13,14 @@ Statsig classifies the best practices for using feature gates into four categori
 2. **Always be testing** - Use feature gates to ensure that in-development features remain inactive in production while continuing to test new functionality in staging or pre-prod environments.  
 3. **Progressive delivery** – Ship code for in-development features early and often. Shipping code as part of the main branch that can be deployed to production at any time avoids painful merging of long-lived branches at a later point.   
 4. **Validate functionality with trusted users** – Use features gates to only expose new functionality to trusted and friendly users such as teammates, company employees, and beta customers before launching publicly. Verify that the new functionality is working as expected. 
-5. **Set up a phased canary release** – Use feature gates to progressively expose new functionality to a small percentage of users, validate user experience, and monitor production system health before launching broadly. In the initial stages, scale up slowly (e.g. 0% -> 1% -> 5% -> 10%). 
+5. **Set up a phased canary release** – Use feature gates to progressively expose new functionality to a small percentage of users, validate user experience, and monitor production system health before launching broadly. In the initial stages, scale up slowly.  We recommend the following rollout strategy, which increases by the same multiplier each time, increasing the bucket of new users exposed to the experiment by a larger margin each time: 0% -> 2% -> 10% -> 50% -> 100%
 6. **Validate user and system impact** - Compare key user and system metrics against the default behavior. Common user metrics to test include daily and weekly active users, weekly retention, and conversion rates for key user actions. Common system metrics include error response rates, application crash rates, p50/p90/p99 request-response latency, and CPU utilization. You can create a metric for any key user or system behavior by logging the event that best proxies that behavior with Statsig. 
 7. **Ramp up or roll back** – Identify issues, and negative impact on users early. Use metric-based evidence to decide whether to release the feature more broadly. If you decide to launch, ramp up deployment (e.g. 10% -> 50% -> 100%).
-8. **Clean-up after releases** – Once the release is complete, turn off feature gates that are no longer in use. Remove any gate checks in application code for feature gates that’ve been deactivated. 
+8. **Clean-up after releases** – Once the release is complete, remove unnecessary gates from code.  Once they are no longer checked, you are free to turn them off/delete them.
 
 ## Collaboration
 
-1. Scoped Access - Invite verified teammates to invite, review, and approve feature gates for a specific project.
+1. Scoped Access - Invite verified teammates to create, review, and approve feature gates for a specific project.
 2. Role-based Access Control (RBAC) - Ensure that only project members with the appropriate privileges can create and edit feature gate configurations with role-based access control. 
 
 ## Governance
