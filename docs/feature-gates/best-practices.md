@@ -3,7 +3,7 @@
 Statsig classifies the best practices for using feature gates into four categories: implementation, development, collaboration, and governance.  
 
 ## Implementation
-1. **Manage for ease and maintainability** – Use simple if/else gate checks for short lived gates that you can quickly clean up after the release. Use configuration parameters for longer lived gates to avoid growing complexity in your code over time. 
+1. **Manage for ease and maintainability** – Use simple if/else gate checks for short lived gates that you can quickly clean up after the release. Use configuration parameters for longer lived gates to avoid nesting multiple gates and growing complexity in your code over time. 
 2. **Select the gating decision point** – Implement client-side feature gates to select users where most context is available and/or when the feature is primarily developed in the presentation layer (e.g. user registration flow). Implement server-side feature gates when most context is available with the application server and/or when the feature is primarily related to backend system behavior (e.g. new cache layer for better performance). Localizing these gating decisions within the service whose behavior is being changed is the best option in these cases.
 3. **Focus on one feature** – Using one feature gate to control multiple features at a time can be confusing and can make troubleshooting issues difficult. If there are multiple parts of a feature that must work together, create a master feature gate to control child feature gates for these individual parts. 
 
