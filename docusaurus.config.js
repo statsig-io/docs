@@ -59,9 +59,21 @@ module.exports = {
   },
   plugins: [
     [
-      require.resolve('@cmfcmf/docusaurus-search-local'),
+      require.resolve('docusaurus-lunr-search'),
       {
-        docsRouteBasePath: '/',
+        baseUrl: '/',
+        excludeRoutes: [
+          'docs/client/iOS/**/*',
+          'docs/client/Android/**/*',
+          'docs/client/dotnet/**/*',
+          'docs/client/js/**/*',
+          'docs/server/ruby/**/*',
+          'docs/server/python/**/*',
+          'docs/server/node/**/*',
+          'docs/server/java/**/*',
+          'docs/server/go/**/*',
+          'docs/server/dotnet/**/*',
+        ],
       },
     ],
   ],
