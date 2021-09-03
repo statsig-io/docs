@@ -42,6 +42,7 @@ module.exports = {
               ],
             },
             'feature-gates/view-exposures',
+            'feature-gates/best-practices',
           ],
         },
       ],
@@ -109,11 +110,13 @@ module.exports = {
       ],
     },
     {
+      'Holdouts': [
+        'holdouts/introduction',
+      ],
+    },
+    {
       'Statsig Console': [
         'console/overview',
-        {
-          
-        },
         'console/holdouts',
         'console/metrics',
         'console/users',

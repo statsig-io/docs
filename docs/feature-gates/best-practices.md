@@ -1,4 +1,8 @@
-# Best Practices for Feature Gates
+---
+title: Best Practices for feature gates
+sidebar_label: Best Practices
+slug: /feature-gates/best-practices
+---
 
 Statsig classifies the best practices for using feature gates into four categories: implementation, development, collaboration, and governance.  
 
