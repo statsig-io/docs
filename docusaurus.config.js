@@ -57,9 +57,9 @@ module.exports = {
       additionalLanguages: ['swift', 'java', 'ruby', 'csharp', 'jsx', 'go', 'python', 'kotlin'],
     }
   },
-  plugins: [
-    require.resolve('@cmfcmf/docusaurus-search-local')
-  ],
+  plugins: [require.resolve('@cmfcmf/docusaurus-search-local'), {
+    docsRouteBasePath: '/',
+  }],
   presets: [
     [
       '@docusaurus/preset-classic',
