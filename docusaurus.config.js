@@ -92,7 +92,7 @@ module.exports = {
               {
                 tagName: 'script',
                 attributes: {
-                  src: 'https://cdn.jsdelivr.net/npm/statsig-js@3.0.2/dist/statsig-prod-web-sdk.min.js'
+                  src: 'https://cdn.jsdelivr.net/npm/statsig-js@3.0.3-beta.8/build/statsig-prod-web-sdk.min.js'
                 },
               },
               {
