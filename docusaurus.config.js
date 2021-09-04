@@ -1,3 +1,5 @@
+const path = require('path');
+
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Statsig Docs',
@@ -76,6 +78,38 @@ module.exports = {
         ],
       },
     ],
+    function statsig() {
+      const isProd = process.env.NODE_ENV === 'production';
+      const tier = isProd ? 'production' : 'development';
+      return {
+        name: 'docusaurus-plugin-statsig',
+        getClientModules() {
+          return [path.resolve(__dirname, './statsig')];
+        },
+        injectHtmlTags() {
+          return {
+            headTags: [
+              {
+                tagName: 'script',
+                attributes: {
+                  src: 'https://cdn.jsdelivr.net/npm/statsig-js@3.0.2/dist/statsig-prod-web-sdk.min.js'
+                },
+              },
+              {
+                tagName: 'script',
+                innerHTML: `
+                  console.log('testing');
+                  statsig.initialize('client-oJY6hTJeduhEN2bf6fh6unHvxIk9UsjS99BlO4owh0r', null, {environment: {tier: "${tier}"}})
+                    .then(() => {
+                      statsig.logEvent('page_view', window.location.pathname);
+                    });
+                `,
+              },
+            ],
+          }
+        }
+      };
+    },
   ],
   presets: [
     [
@@ -94,12 +128,6 @@ module.exports = {
         },
       },
     ],
-  ],
-  scripts: [
-    {
-      src: 'https://cdn.jsdelivr.net/npm/statsig-js@3.0.2/dist/statsig-prod-web-sdk.min.js',
-      onload: "(() => {statsig.initialize('client-oJY6hTJeduhEN2bf6fh6unHvxIk9UsjS99BlO4owh0r').then(() => {statsig.logEvent('page_load', window.location.pathname)})})()",
-    }
   ],
   stylesheets: [
     "https://fonts.googleapis.com/icon?family=Material+Icons",
