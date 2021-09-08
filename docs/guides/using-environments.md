@@ -8,7 +8,7 @@ All of our SDKs allow you to set the environment tier your app is currently in d
 ## SDK Usage
 
 When initializing the SDK, set the environment via the `StatsigOptions` parameter.  All SDKs accept an SDK key and an (optional) `StatsigOptions` dictionary of parameters.
-One of those options is the `environment` parameter, which has a `tier` field. The `tier` can be one of: "production"/"development"/"staging".
+One of those options is the `environment` parameter, which has a `tier` field. The `tier` can be one of: "production"/"development"/"staging".  If the environment tier is unset, all checks and event logs are considered "production" data.
 
 For this example, lets say we are setting the parameter for our development environment/app.
 
