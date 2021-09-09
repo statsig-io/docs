@@ -98,7 +98,6 @@ module.exports = {
               {
                 tagName: 'script',
                 innerHTML: `
-                  console.log('testing');
                   statsig.initialize('client-oJY6hTJeduhEN2bf6fh6unHvxIk9UsjS99BlO4owh0r', null, {environment: {tier: "${tier}"}})
                     .then(() => {
                       statsig.logEvent('page_view', window.location.pathname);
