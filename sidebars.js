@@ -152,6 +152,7 @@ module.exports = {
             'integrations/data-connectors',
             'integrations/data-connectors/heap',
             'integrations/data-connectors/revenuecat',
+            'integrations/data-connectors/segment'
           ],
         },
         'integrations/event_webhook',
