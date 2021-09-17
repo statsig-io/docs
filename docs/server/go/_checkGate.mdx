@@ -1,5 +1,8 @@
 ```go
+// pre v1.0.0
 user := types.StatsigUser{UserID: "some_user_id"}
+// starting from v1.0.0-beta.1, use
+user := User{UserID: "some_user_id"}
 feature := statsig.CheckGate(user, "use_new_feature")
 if feature {
   // Gate is on, enable new feature
