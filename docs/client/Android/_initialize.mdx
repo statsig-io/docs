@@ -32,18 +32,13 @@ import com.statsig.androidsdk.*
 
 ...
 
-val callback = object : StatsigCallback {
-    override fun onStatsigReady() {
-        // check gates/configs and log events
-    }
+myScope.launch {
+    Statsig.initialize(
+        this.application,
+        "my_client_sdk_key",
+        StatsigUser("user_id"),
+    )
 }
-
-Statsig.initialize(
-    this.application,
-    "my_client_sdk_key",
-    StatsigUser("user_id"),
-    callback,
-)
 ```
 
   </TabItem>
