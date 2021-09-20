@@ -9,3 +9,5 @@ You can pass in an optional parameter `options` in addition to `sdkKey` and `use
 3. **environment tier**: Tier (enum), default null
    - used to signal the environment tier the user is currently in, and can be PRODUCTION, STAGING or DEVELOPMENT;
    - e.g. passing in a value of `Tier.Staging` will allow your users to pass any condition that pass for the staging environment tier, and fail any condition that only passes for other environment tiers.
+4. **enableAutoValueUpdate**: boolean, default false
+   - by default, Statsig will only fetch the gates/configs for the user when initialize() is called. This ensures a consistent experience for the duration of a session.  If you want to override this behavior and have flags/configs update in near real time, pass `true` instead.
