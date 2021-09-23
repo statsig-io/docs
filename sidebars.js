@@ -115,12 +115,8 @@ module.exports = {
       ],
     },
     {
-      'Statsig Console': [
-        'console/overview',
-        'console/holdouts',
-        'console/metrics',
-        'console/users',
-        'console/ultrasound',
+      'Ultrasound': [
+        'ultrasound/introduction',
       ],
     },
     {

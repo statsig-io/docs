@@ -18,7 +18,3 @@ Ultrasound presents a reverse perspective of the [Pulse](https://docs.statsig.co
 In the example below, the **twenty_five_percent_off_items** feature has resulted in average 237 more **add_to_cart** events per day over the last 30 days. This is about 0.11% of 215K **add_to_cart** events from users who didn't see the **twenty_five_percent_off_items** feature.
 
 ![image](https://user-images.githubusercontent.com/1315028/134554987-8432f407-e317-416f-bd36-ec3ecf3a95a2.png)
-
-
-
-
