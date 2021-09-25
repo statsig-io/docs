@@ -1,11 +1,9 @@
 ```go
-// Pre v1.0.0
-statsig.LogEvent(types.StatsigEvent{
+statsig.LogEvent(Event{
 		User: user,
 		EventName: "add_to_cart",
-        Value: "SKU_12345",
+                Value: "SKU_12345",
 		Metadata: map[string]string{"price": "9.99","item_name": "diet_coke_48_pack"},
 	})
 
-// starting from v1.0.0-beta.1, use Event instead of types.StatsigEvent
 ```
