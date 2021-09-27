@@ -11,3 +11,6 @@ The data in the Users tab is populated automatically when users are evaluated by
 - For user metadata such as email address, IP, etc we show the most commonly occuring value in cases where the user has had events with multiple different values
 - We only show events from the last 3 days (capped at a max of 10 events per users) - we will be adding support for pulling more data for a user shortly!
 - The list of Feature Gates, Experiments, and Dynamic Configs for a user reflects those that the user has had at least one exposure to - it does not guarantee that the user will continue to be a part of those in subsequent visits to your product, since the rules for your Feature Gates and Experiments can change, and the user attributes that those depend on could also change.
+
+![Users tab overview](https://user-images.githubusercontent.com/31516123/134972013-de7d47c2-2d81-4494-90ac-c4929007b7a9.png)
+![User detail view](https://user-images.githubusercontent.com/31516123/134972152-a3eb61f8-6f0b-49b7-9f37-fa56dc90552b.png)
