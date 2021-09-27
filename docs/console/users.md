@@ -3,8 +3,10 @@ sidebar_label: Users
 title: Users
 ---
 
-[Coming Soon]
 
-The User's tab gives a high level overview of the people using your service.  It will aggregate everything Statsig knows about users: log events, gate checks, experiments, and dynamic configs.
+The User's tab gives a high level overview of the people using your service.  It will aggregate everything Statsig knows about users: log events, gate checks, experiments, and dynamic configs. This is primarily a debugging/validation tool  - it is sampled and updated once a day.
 
-![Screen Shot 2021-08-05 at 11 37 23 AM](https://user-images.githubusercontent.com/74584483/128403378-1bc23074-3723-4b55-990a-18660497222a.png)
+![image](https://user-images.githubusercontent.com/31516123/134972013-de7d47c2-2d81-4494-90ac-c4929007b7a9.png)
+![image](https://user-images.githubusercontent.com/31516123/134972152-a3eb61f8-6f0b-49b7-9f37-fa56dc90552b.png)
+
+
