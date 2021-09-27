@@ -13,7 +13,7 @@ As the new functionality is exposed to new customers, Pulse uncovers how each of
 
 To get your hands on Pulse, see the Statsig demo at www.statsig.com/demo. 
 
-## Terms
+## Terminlogy
 Hovering over a metric in Pulse renders a tool tip with key statistics for the control and treatment groups as shown and listed below.
 
 ![image](https://user-images.githubusercontent.com/1315028/131383593-384225bc-abbd-483f-a45a-3280d8bf5941.png)
@@ -24,3 +24,9 @@ Hovering over a metric in Pulse renders a tool tip with key statistics for the c
  - **Delta %**: Relative difference of the Mean i.e. (Pass mean – Fail mean) / Fail mean - 100%
  - **P-Value**: The p-value is the (two-sided) probability of achieving the observed (or more extreme) difference assuming that there is no difference between the test groups (or the new feature has no impact). A low p-value means that this assumption that there’s no difference is incorrect.  
 
+## Metric Dimensions
+If you want to see Pulse results for a metric further broken down by categories, use the **value** attribute to specify a category when you log the event. For example, when you log a click event on your web or mobile application, you may also log the target category using the **value** attribute as shown below. Pulse will automatically generate results for each category in addition to the top level metric. To see the Pulse results for all categories within a metric, click on the (+) sign next to the metric. 
+
+![image](https://user-images.githubusercontent.com/1315028/134992035-1bfa67f2-73a0-4b88-ac1d-688fa6ef0b33.png)
+
+ 
