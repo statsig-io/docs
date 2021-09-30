@@ -31,9 +31,9 @@ If you want to see Pulse results for a metric further broken down by categories,
 
 ## Export Report
  
-You can export Pulse results for a specific Rule and Rollout.  Exporting results can take up to 10 minutes.  When it's ready, a link will be available under under Project Settings -> Reports.  Inside you will find two files:
-1. <experiment>_pulse_summary.csv - contains Pulse aggregate metrics computed over the duration of the experiment.
-2. <experiment>_pulse_daily.csv - contains Pulse aggregate metrics computed on a daily basis.
+You can export Pulse results for a specific Rule and Rollout.  Exporting results can take up to 10 minutes.  When it's ready, a link will be available under under Project Settings -> Reports.  Inside you will find two files (where "experiment" is the experiment name):
+1. experiment_pulse_summary.csv - contains Pulse aggregate metrics computed over the duration of the experiment.
+2. experiment_pulse_daily.csv - contains Pulse aggregate metrics computed on a daily basis.
  
 Definitions:
 - Date - The date of the data.  Statsig uses date stamps anchored to PST (Pacific Standard Time, GMT-8).
