@@ -29,4 +29,23 @@ If you want to see Pulse results for a metric further broken down by categories,
 
 ![image](https://user-images.githubusercontent.com/1315028/134992035-1bfa67f2-73a0-4b88-ac1d-688fa6ef0b33.png)
 
+## Export Report
+ 
+You can export Pulse results for a specific Rule and Rollout.  Exporting results can take up to 10 minutes.  When it's ready, a link will be available under under Project Settings -> Reports.  Inside you will find two files:
+1. <experiment>_pulse_summary.csv - contains Pulse aggregate metrics computed over the duration of the experiment.
+2. <experiment>_pulse_daily.csv - contains Pulse aggregate metrics computed on a daily basis.
+ 
+Definitions:
+- Date - The date of the data.  Statsig uses date stamps anchored to PST (Pacific Standard Time, GMT-8).
+- name - Name of the Experiment or Feature Gate
+- rule_id - Name of the Feature Gate Rule.
+- group - The group of users for which this metric is computed for.  For a feature gate, this is pass/fail.  For an experiment, this is the variant name.
+- metric_type - Category of the metric.  Different metric_types are computed differently, including how they're computed in Pulse.
+- metric_name - The name of the metric.  For event metrics, this is the name of the event.
+- dimension - The subcategory of the metric.  For example, if you log value in LogEvent, then value will show up as a subdimension.  dimension = !statsig_topline indicates that this row reflects an aggregate across all dimensions.
+- units - The number of observations included in this metric.  For most metrics, this is the sum of daily exposed users across the duration of the experiment.  A user who was exposed 5 days ago will count as 5 units, regardless of their activity.
+- participating_units - The number of units that have a recorded value.
+- mean - The average value of this metric across units (or participating units when applicable)
+- total - The aggregate value of this metric.  For metrics like DAU, this represents the average DAU across days.
+- stddev - The standard deviation of the metric across units.  This is used to compute standard error and confidence intervals.
  
