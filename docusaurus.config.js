@@ -91,7 +91,7 @@ module.exports = {
               },
               {
                 tagName: 'script',
-                innerHTML: `window.statsigTier = ${tier}`,
+                innerHTML: `window.statsigTier="${tier}"`,
               },
               {
                 tagName: 'script',
