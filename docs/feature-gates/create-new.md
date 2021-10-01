@@ -19,4 +19,4 @@ When you create a feature gate, it is enabled by default as shown below. This me
 
 You can disable the feature gate by clicking on the toggle button next to the name of the feature gate. Statsig always returns **false** when you check a feature gate that’s disabled. 
 
-When you need more than a Boolean value returned for different groups of users, say to customize the user experience, set up a [dynamic config](https://docs.statsig.com/dynamic-config). 
+When you need more than a Boolean value returned for different groups of users, say to customize the user experience, set up a [dynamic config](/dynamic-config). 

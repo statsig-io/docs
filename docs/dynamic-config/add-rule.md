@@ -16,7 +16,7 @@ To add new user targeting rules to a dynamic config,
 
   ![image](https://user-images.githubusercontent.com/1315028/129112226-51978083-d007-4697-88b5-f3a080eabf48.png)
 
-  - You can target users in a defined [segment](https://docs.statsig.com/segments/introduction) as shown below
+  - You can target users in a defined [segment](/segments/introduction) as shown below
   
   ![image](https://user-images.githubusercontent.com/1315028/129112427-27351aaf-074e-4997-91d8-6e1e7941b991.png)
 
