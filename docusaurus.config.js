@@ -91,12 +91,13 @@ module.exports = {
               },
               {
                 tagName: 'script',
-                innerHTML: `
-                  statsig.initialize('client-oJY6hTJeduhEN2bf6fh6unHvxIk9UsjS99BlO4owh0r', null, {environment: {tier: "${tier}"}})
-                    .then(() => {
-                      statsig.logEvent('page_view', window.location.pathname, {referrer: document && document.referrer});
-                    });
-                `,
+                innerHTML: `window.statsigTier = ${tier}`,
+              },
+              {
+                tagName: 'script',
+                attributes: {
+                  src: '/js/statsig_docs.js',
+                },
               },
             ],
           }
