@@ -6,7 +6,7 @@ slug: /ultrasound
 
 Ultrasound identifies the combined impact of multiple features on a given metric. In particular, Ultrasound enables you to to recognize which features have had the most impact on a given metric and to root cause what is causing a certain metric to trend up or down. 
 
-Ultrasound presents a reverse perspective of the [Pulse](https://docs.statsig.com/pulse) view. While Pulse measures the impact of a new feature on all your metrics, Ultrasound measures the impact of all features on a specific metric. 
+Ultrasound presents a reverse perspective of the [Pulse](/pulse) view. While Pulse measures the impact of a new feature on all your metrics, Ultrasound measures the impact of all features on a specific metric. 
 
 
 ## How to read Ultrasound

@@ -21,6 +21,6 @@ A sample JSON payload for French speakers is also shown below.
 The following tutorials show you how to perform common tasks with dynamic configs.
 
 #### Tutorials
-- [Create a dynamic config](https://docs.statsig.com/dynamic-config/create-new)
-- [Create a rule for a dynamic config](https://docs.statsig.com/dynamic-config/add-rule)
-- [Use a language specific Statsig SDK to implement a dynamic config in your application](https://docs.statsig.com/dynamic-config/implement)
+- [Create a dynamic config](/dynamic-config/create-new)
+- [Create a rule for a dynamic config](/dynamic-config/add-rule)
+- [Use a language specific Statsig SDK to implement a dynamic config in your application](/dynamic-config/implement)

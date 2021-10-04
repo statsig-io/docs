@@ -10,7 +10,7 @@ Experiments+ is an experimentation platform that enables you to run randomized c
 Randomized controlled experiments are the gold standard for establishing causality between the product features and functionality you build and the user impact you observe. Experiments+ automatically computes the causal impact of a feature variant when the variant is exposed to a randomly selected group of users in comparison to a control group of users who aren’t exposed to the variant.   
 
 ## When to use Experiments+
-Experiments+ is ideal for running experiments with multiple variants (also known as A/B/n tests) and/or when you want to run multiple, mutually exclusive experiments in parallel. To run a simple A/B test, simply [set up a feature gate](https://docs.statsig.com/guides/first-feature). Statsig automatically deploys an A/B test for each feature gate you create and computes the results without requiring any additional configuration.  
+Experiments+ is ideal for running experiments with multiple variants (also known as A/B/n tests) and/or when you want to run multiple, mutually exclusive experiments in parallel. To run a simple A/B test, simply [set up a feature gate](/guides/first-feature). Statsig automatically deploys an A/B test for each feature gate you create and computes the results without requiring any additional configuration.  
 
 ## Features
 Similar to A/B tests, Experiments+ provides the following features to run and analyze experiments with ease: 

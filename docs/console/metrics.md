@@ -3,7 +3,7 @@ sidebar_label: Metrics
 title: Metrics
 ---
 
-The Metrics tab allows you to visualize all the [events that you have logged](https://docs.statsig.com/guides/logging-events) in Statsig. The **Events** page shows all the events, including a real-time stream of events as they come in.
+The Metrics tab allows you to visualize all the [events that you have logged](/guides/logging-events) in Statsig. The **Events** page shows all the events, including a real-time stream of events as they come in.
 
 ![image](https://user-images.githubusercontent.com/74588208/127933988-c981bf83-f20c-4404-8194-004017cf96ef.png)
 
