@@ -8,7 +8,4 @@ The following tutorials show how you can perform common tasks with segments.
 
 - [Create a segment](/segments/create-new)
 - [Create rules for a segment](/segments/add-rule)
-- [Use a segment](/segments/use-segment)
-
-
-
+- [Use a segment](/segments/implement)
