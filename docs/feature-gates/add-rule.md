@@ -22,7 +22,7 @@ By default, a feature gate check returns **false** when there are no rules confi
 
     ![image](https://user-images.githubusercontent.com/1315028/129113738-ec99c4f0-dbdd-4d14-a88a-b3343d4d12da.png)
 
-  - You can target users in a defined [segment](/segments/introduction) as shown below
+  - You can target users in a defined [segment](/segments) as shown below
   
     ![image](https://user-images.githubusercontent.com/1315028/129112427-27351aaf-074e-4997-91d8-6e1e7941b991.png)
 
