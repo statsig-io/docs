@@ -1,6 +1,6 @@
 ---
-sidebar_label: Introductions
-title: Metrics
+sidebar_label: Metrics
+title: Introduction
 slug: /metrics
 ---
 
