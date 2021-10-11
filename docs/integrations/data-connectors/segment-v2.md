@@ -6,6 +6,8 @@ title: Segment
 
 Enabling the Segment integration for Statsig will allow Statsig to pull in your Segment events. This allows you to run experimentation using Statsig with all of your pre-existing events without requiring any additional logging.
 
+Events received from Segment will be visible and aggregated within the [Metrics](/metrics) tab in the Statsig Console. Events will also be included in any [Pulse](/pulse) and [Experiment](/experiments-plus/monitor) results you have.
+
 ## Configuration
 
 1. From the Destinations catalog page in the Segment App, click **Add Destination**.

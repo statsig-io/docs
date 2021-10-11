@@ -21,7 +21,7 @@ module.exports = {
               ],
             },
           ],
-        }
+        },
       ],
     },
     {
@@ -95,29 +95,22 @@ module.exports = {
       ],
     },
     {
-      'Pulse': [
-        'pulse/introduction',
-      ],
+      Pulse: ['pulse/introduction'],
     },
     {
-      'Autotune': [
-        'autotune/introduction',
-      ],
+      Autotune: ['autotune/introduction'],
     },
     {
-      'Users': [
-        'users/introduction',
-      ],
+      Users: ['users/introduction'],
     },
     {
-      'Holdouts': [
-        'holdouts/introduction',
-      ],
+      Holdouts: ['holdouts/introduction'],
     },
     {
-      'Ultrasound': [
-        'ultrasound/introduction',
-      ],
+      Ultrasound: ['ultrasound/introduction'],
+    },
+    {
+      Metrics: ['metrics/introduction'],
     },
     {
       'Client SDKs': [
@@ -148,12 +141,12 @@ module.exports = {
             'integrations/data-connectors',
             'integrations/data-connectors/heap',
             'integrations/data-connectors/revenuecat',
-            'integrations/data-connectors/segment'
+            'integrations/data-connectors/segment',
           ],
         },
         'integrations/event_webhook',
         'integrations/jira',
-        'integrations/vscode'
+        'integrations/vscode',
       ],
     },
   ],
