@@ -17,11 +17,7 @@ We divide our key products and features into two main categories: tools to Build
 - [Autotune](/autotune)
 
 ## Analyze
-- [Metrics](/console/metrics)
+- [Metrics](/metrics)
 - [Users](/users)
-- [Pulse](/pulse)
 - [Holdouts](/holdouts)
-
-## Coming soon
-- [Ultrasound](/console/ultrasound)
-
+- [Ultrasound](/ultrasound)
