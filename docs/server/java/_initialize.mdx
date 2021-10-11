@@ -10,9 +10,9 @@ import TabItem from "@theme/TabItem";
   <TabItem value="java">
 
 ```java
-import com.statsig.sdk.StatsigServer;
+import com.statsig.sdk.Statsig;
 
-Future initFuture = StatsigServer.initializeAsync("server-secret-key");
+Future initFuture = Statsig.initializeAsync("server-secret-key");
 initFuture.get();
 
 ```
@@ -21,9 +21,9 @@ initFuture.get();
   <TabItem value="kotlin">
 
 ```kotlin
-import com.statsig.sdk.StatsigServer
+import com.statsig.sdk.Statsig
 
-async { StatsigServer.initialize("server-secret-key") }.await()
+async { Statsig.initialize("server-secret-key") }.await()
 
 ```
 
