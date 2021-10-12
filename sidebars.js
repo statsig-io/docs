@@ -114,6 +114,7 @@ module.exports = {
     },
     {
       'Client SDKs': [
+        { Concepts: ['client/concepts/user'] },
         'client/jsClientSDK',
         'client/reactSDK',
         'client/reactNativeSDK',
