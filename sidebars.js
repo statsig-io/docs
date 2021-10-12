@@ -119,6 +119,7 @@ module.exports = {
     },
     {
       'Client SDKs': [
+        { Concepts: ['client/concepts/user'] },
         'client/jsClientSDK',
         'client/reactSDK',
         'client/reactNativeSDK',
@@ -130,6 +131,7 @@ module.exports = {
     },
     {
       'Server SDKs': [
+        { Concepts: ['server/concepts/user'] },
         'server/nodejsServerSDK',
         'server/javaSdk',
         'server/dotnetSDK',
