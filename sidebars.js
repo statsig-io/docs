@@ -110,7 +110,12 @@ module.exports = {
       Ultrasound: ['ultrasound/introduction'],
     },
     {
-      Metrics: ['metrics/introduction'],
+      Metrics: [
+        'metrics/introduction',
+        'metrics/create',
+        'metrics/user',
+        'metrics/console',
+      ],
     },
     {
       'Client SDKs': [
