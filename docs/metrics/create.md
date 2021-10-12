@@ -1,10 +1,8 @@
 ---
-title: Metrics
-sidebar_label: Creating Metrics
-slug: /metrics
+title: Creating Metrics
+sidebar_label: Creation
+slug: /metrics/create
 ---
-
-# Creating Metrics
 
 ## Automatic Metrics Derived from Events
 

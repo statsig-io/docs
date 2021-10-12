@@ -1,17 +1,20 @@
 ---
-title: Metrics
-sidebar_label: User Accounting Metrics
-slug: /metrics
+title: User Accounting Metrics
+sidebar_label: User Accounting
+slug: /metrics/user
 ---
 
-# Statsig's Standard User Accounting Metrics
+## Definition of a Daily Active User
 
-From the simple definition of a daily active user, we can create an array of other user accounting metrics.  
+Statsig automatically creates a standard set of user accounting metrics to track common product-wide engagement metrics like daily active users, new users, and retention.  We also track more sophisticated metrics like L-ness, retention and stickiness metrics.  All of these rely on a company-wide definition of a daily active user.  By default, any Statsig SDK event/request (check_gate, get_config, log_event) associated with a user will automatically designate that user as being active for that day.  You can customize this set of events.
 
-Notation and Conventions:
+### Notation and Conventions
+
 - It's common to denote the first day a (new) user was active as Day Zero (D0), and the subsequent days as D1, D2, D3...etc.
 - A weekly active user is someone who has been active within the last 7 days (0-6 days).  This includes users who were active on each of the 7 days, and users who have only been active on a single day.  The same definition applies to a monthly active user.
 - A user with a single session that spans midnight with qualifying events at 11:59p and 12:01a will qualify a user as being a daily active user on both days.
+
+# Statsig's Standard User Accounting Metrics
 
 | Metric Name            | Type       | Description                    |
 |------------------------|------------|--------------------------------|
