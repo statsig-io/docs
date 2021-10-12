@@ -1,6 +1,6 @@
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-import AsyncDisclaimer from './async_disclaimer.mdx'
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import AsyncDisclaimer from './async_disclaimer.mdx';
 
 <span>
   Statsig server SDK for {props.sdkType} applications. This SDK is{' '}
@@ -17,19 +17,19 @@ Get started in a few quick steps.
 4. [Fetch Feature Gates, Dynamic Configs, or Experiments](#step4)
 5. [Log a custom event](#step5)
 
-<a name="step1"></a>
+<a name='step1'></a>
 
 #### Step 1 - Create a free account on [www.statsig.com](https://console.statsig.com/sign_up) {#step-1---create-a-free-account-on-wwwstatsigcom}
 
 You could skip this for now, but you will need an SDK Key and some Feature Gates or Dynamic Configs to use with the SDK in just a minute.
 
-<a name="step2"></a>
+<a name='step2'></a>
 
 #### Step 2 - Install the SDK {#step-2---install-the-sdk}
 
 <div>{props.install}</div>
 
-<a name="step3"></a>
+<a name='step3'></a>
 
 #### Step 3 - Initialize the SDK {#step-3---initialize-the-sdk}
 
@@ -47,7 +47,7 @@ There is also an optional parameter `options` that allows you to pass in a [Stat
 
 [^1]: [Blog Post: Evaluating Feature Gates in the Statsig SDK](https://blog.statsig.com/evaluating-feature-gates-in-the-statsig-sdk-a6f8881a1ad8)
 
-<a name="step4"></a>
+<a name='step4'></a>
 
 #### Step 4 - Fetch Feature Gates, Dynamic Configs, or Experiments {#step-4---fetch-values}
 
@@ -67,7 +67,7 @@ Then we have [**Experiments**](/console/experimentsPlus), which you can use to r
 
 <div>{props.hideAsyncDisclaimer ? <div /> : <AsyncDisclaimer />}</div>
 
-<a name="step5"></a>
+<a name='step5'></a>
 
 #### Step 5 - Log a custom event {#step-5---log-event}
 
@@ -77,7 +77,7 @@ Now that you have a Feature Gate or an Experiment set up, you may want to track 
 
 ## Statsig User {#statsig-user}
 
-When calling APIs that require a user, you should pass as much information as possible in order to take advantage of advanced gate and config conditions (like country or OS/browser level checks), and correctly measure impact of your experiments on your metrics/events. The `userID` field is required because it's needed to provide a consistent experience for a given user (click [here](/messages/serverRequiredUserID) to understand further why it's important to always provide a userID).
+When calling APIs that require a user, you should pass as much information as possible in order to take advantage of advanced gate and config conditions (like country or OS/browser level checks), and correctly measure impact of your experiments on your metrics/events. The `userID` field is required because it's needed to provide a consistent experience for a given user (click [here](/server/concepts/user#why-is-statsiguser-with-a-userid-required-for-server-sdks) to understand further why it's important to always provide a userID).
 
 Besides `userID`, we also have `email`, `ip`, `userAgent`, `country`, `locale` and `appVersion` as top-level fields on StatsigUser. In addition, you can pass any key-value pairs in an object/dictionary to the `custom` field and be able to create targeting based on them.
 
