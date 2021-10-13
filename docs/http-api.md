@@ -52,6 +52,22 @@ curl \
 Response:
 `{"success":true}`
 
+##### Log an event with custom environment {#log-an-event-with-environment}
+
+Useful when you are operating in multiple environments like dev, staging, production.
+
+```bash
+curl \
+  --header "statsig-api-key: <YOUR-SDK-KEY>" \
+  --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"events": [{"user": { "userID": "42", "statsigEnvironment": {"tier": "staging"} }, "time": 1616826986211, "eventName": "test_api_event"}]}' \
+  "https://api.statsig.com/v1/log_event"
+```
+
+Response:
+`{"success":true}`
+
 ##### Check a Feature Gate {#check-a-feature-gate}
 
 ```bash
