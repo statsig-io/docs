@@ -4,11 +4,20 @@ import TabItem from "@theme/TabItem";
 You can install the statsig SDK via npm, yarn or jsdelivr:
 
 <Tabs
-  defaultValue="npm"
+  defaultValue="script"
   values={[
+    {label: 'Script', value: 'script'}, 
     {label: 'NPM', value: 'npm'},
     {label: 'Yarn', value: 'yarn'},
   ]}>
+
+  <TabItem value="script">
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/statsig-js/dist/statsig-prod-web-sdk.min.js"></script>
+```
+
+  </TabItem>
   <TabItem value="npm">
 
 ```shell
