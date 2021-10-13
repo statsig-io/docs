@@ -43,7 +43,7 @@ You can customize the definition of DAU within the Statsig Console and specify o
 ![edit_active_user_definition](https://user-images.githubusercontent.com/77478319/137034274-e41b2117-fe7e-4809-82a8-5e9be4be183f.png)
 
 There are several options:
-1. Include or Exclude Statsig Events - Two Statsig events can be included or excluded from the current active user definition.  By default, they are included.
+1. Include or Exclude Statsig Events - check_gate() and get_config() can be included or excluded from the current active user definition.  By default, they are included.
 2. Log Events - You can specify the set of events which will qualify a user as a daily active user.  By default, all events are included.
   i. Excluding specific events - Some companies may want to exclude specific events (eg. events that aren't considered significant user interactions, homepage_visit or notification_sent).  You can Expand and uncheck events you do not want to include.  You can also toggle whether future events (not shown on the list) should be included or excluded.
   ii. Include specific events - Some companies prefer to have a very narrow definition of an active user (eg. event = login).  This can be accomplished by selecting the set of events, and turning off "Include New Events by Default".
