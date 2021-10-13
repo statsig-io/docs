@@ -38,8 +38,14 @@ These user metrics can be very useful in understanding the long-term behavior of
 
 # Customizing the DAU Definition
 
-You can customize the definition of DAU within the Statsig Console and specify or exclude a set of Statsig and custom events.  This can be used in multiple ways.
-1. You can exclude a set of events which may not qualify a user as a daily active user.  Some companies will want to exclude light website browsing behavior (eg. homepage visit), or exclude non-user-triggered events (eg. notification sent).
-2. You can include a specific set of events that most of your users will trigger (eg. Login).
+You can customize the definition of DAU within the Statsig Console and specify or exclude a set of Statsig and custom events.  You can find this in Metrics > Users at the top of the page (Current Active User Definition).  If you have priviliges, you can edit this.
 
-Changes to the DAU definition will start to be reflected for the current day.  We do not currently support the ability to backfill.
+![edit_active_user_definition](https://user-images.githubusercontent.com/77478319/137034274-e41b2117-fe7e-4809-82a8-5e9be4be183f.png)
+
+There are several options:
+1. Include or Exclude Statsig Events - check_gate() and get_config() can be included or excluded from the current active user definition.  By default, they are included.
+2. Log Events - You can specify the set of events which will qualify a user as a daily active user.  By default, all events are included.
+  i. Excluding specific events - Some companies may want to exclude specific events (eg. events that aren't considered significant user interactions, homepage_visit or notification_sent).  You can Expand and uncheck events you do not want to include.  You can also toggle whether future events (not shown on the list) should be included or excluded.
+  ii. Include specific events - Some companies prefer to have a very narrow definition of an active user (eg. event = login).  This can be accomplished by selecting the set of events, and turning off "Include New Events by Default".
+
+Changes to the DAU definition will go in place on the date of the change.  Historic data will remain unchanged.  We do not currently support the ability to backfill.  We do recommend setting your DAU definition before running any experiments or rolling out any features.
