@@ -1,0 +1,214 @@
+---
+title: Conditions
+sidebar_label: Conditions
+slug: /feature-gates/conditions
+---
+
+## Terminology
+
+Statsig feature gates contain a list of **rules**, which are evaluated in order from top to bottom.
+As soon as a user passes the **condition(s)** in a given rule, subsequent rules will be ignored.
+The user is then evaluated against the percentage rollout of that rule, passing if they meet the threshold and failing otherwise.
+
+WARNING - order matters for rules!  If a user meets a condition at the top, evaluation stops (regardless of if they pass or fail the rollout percentage).
+Another way to think of it, using boolean logic: rules are combined with an OR (short circtuiting when one is true), while conditions are combined with AND.
+
+If the user passes condition 1 and 2, condition 3 is never evaluated.  The rollout percentage of rule 1 would then be evaluated against the userID and salt of the gate.
+
+This document defines all of the currently supported **conditions**.
+
+### Client vs Server SDKs
+All of the following conditions work on both client and server SDKs.  Client SDKs handle a bit more automatically for you - if you do not provide a userID, client SDKs rely on a generated "stable identifier" which is persisted to local storage.
+In addition, if you do not automatically set an IP or User Agent, it will infer it from the request IP and UA. Similarly, on mobile, the SDK will automatically pass your app version and locale to the server so those conditions can be evaluated without having to set them explicitly.
+
+### Stability
+Evaluations at a given percentage are *stable* with respect to the userID.  If userID = 4 passes a condition at a 50% rollout, they will always pass at that 50% rollout.  Want to reset that stability?  See "resalting"
+
+### Resalting
+Gate evaluations are stable for a given gate, percentage rollout, and user ID.  This is made possible by the salt associated with a feature gate. If you want to reset a gate, reshuffling users randomly, you can "resalt" a gate from the dropdown menu in the top right of the feature gate details page.
+
+![Resalt UI](https://user-images.githubusercontent.com/74584483/137390888-3dd5795a-fa33-4e91-ae5b-738ef5e2197d.png)
+
+### Partial Rollouts
+0% or 100% rollouts for gates are simply "on for users matching this rule"/"off for users matching this rule".  But each rule allows you to specify a percentage of matching users who should pass.
+If you want to get [pulse results](/pulse) (metric movements caused by a feautre), simply specifying a number between 0 and 100 will create a random allocation of users in "test"/"control" groups for a simple A/B test.
+You can use this to validate a new feature does not regress existing metrics as you roll it out to everyone.  Statsig suggests a 2% -> 10% -> 50% -> 100% Rollout strategy, which will generate a pulse view for each rollout percentage.
+
+### User ID {#userid}
+Usage: Simple lists of User IDs to explicitly target or exclude from a gate.
+
+Supported Operators: Any of, none of
+
+Example usage: Add yourself (or a small group like your team) when you just start building a new feature.  Or exclude your designer until its ready for their eyes.
+
+![Small user id allowlist example](https://user-images.githubusercontent.com/74584483/137389819-d2f20bb5-235b-4d86-b2f4-a73f515909d9.png)
+
+### Email {#email}
+Usage: Target based on the email of the user
+
+Supported Operators: any of, none of, contains any of, contains none of
+
+Example: Show new feature to people in the Statsig company with an authenticated @statsig.com email address
+
+![Email condition example](https://user-images.githubusercontent.com/74584483/137401967-333d51a4-d358-4ac5-8055-a50dc108864a.png)
+
+### Everyone {#everyone}
+Usage: Percentage rollout on the remainder of users that reach this condition.  Think of it as "everybody else" - there could be a dozen other rules/conditions above it, but for everyone else, what percentage do you want to pass?
+
+Supported Operators: None. Percentage based only.
+
+Example usage: 50/50 rollout to A/B test a new feature.  Or 0% to hide the feature for all people not matching a set of rules. Or 100% to show the feature to the remaining users who did not meet a condition above.
+
+![Everyone 50/50 condition example](https://user-images.githubusercontent.com/74584483/137390172-a73fd908-e23c-489e-8c2e-92f01e3b43a5.png)
+
+### App Version {#app-version}
+Usage: User's on a particular version of your app/website will pass.  Particularly useful for mobile app development, where a feature may not be fully ready (or maybe be broken) in a particular app version.
+
+Supported Operators: >=, >, <, <=, any of, none of
+
+Example: Turn off a feature for all users on app versions 3.0.0 through 3.1.0 as it was broken.
+
+![App version Example](https://user-images.githubusercontent.com/74584483/137393710-f93b4fda-d7ae-40d8-bd5d-4703d9b136d1.png)
+
+### Browser Version {#browser-version}
+Usage: A particular version of a browser, parsed from the user agent.  Should likely be combined with the browser name condition.
+
+Supported Operators: >=, >, <, <=, any of, none of
+
+Example: Turn off a feature for old verisons of chrome which don't support a certain API
+
+![Browser Name and Version example](https://user-images.githubusercontent.com/74584483/137394148-cb84ce40-0478-4f1b-a40e-bec5af8c5e08.png)
+
+### Browser Name {#browser}
+Usage: A particular browser, parsed from the user agent:
+    ('Chrome',
+    'Chrome Mobile',
+    'Edge',
+    'Edge Mobile',
+    'IE',
+    'IE Mobile',
+    'Opera',
+    'Opera Mobile',
+    'Firefox',
+    'Firefox Mobile',
+    'Mobile Safari',
+    'Safari').
+Often combined with the Browser Version condition.
+
+Supported Operators: >=, >, <, <=, any of, none of
+
+Example: Turn off a feature for old verisons of chrome which don't support a certain API
+
+![Browser Name and Version example](https://user-images.githubusercontent.com/74584483/137394148-cb84ce40-0478-4f1b-a40e-bec5af8c5e08.png)
+
+### OS Version {#os-version}
+Usage: A particular os version the user is on, parsed from the user agent.  Should likely be combined with the Operating System condition.
+
+Supported Operators: >=, >, <, <=, any of, none of
+
+Example: Turn off a feature for verisons of macOS which don't support a certain API
+
+![Operating System example](https://user-images.githubusercontent.com/74584483/137398532-bac9b55b-07f1-48b2-a0c9-edcaec55d528.png)
+
+### Operating System {#os}
+Usage: A particular operating system, parsed from the user agent:
+    ('Android', 'iOS', 'Linux', 'Mac OS X', 'Windows').
+Often combined with the OS Version condition.
+
+Supported Operators: any of, none of
+
+Example: Turn off a feature for verisons of macOS which don't support a certain API
+
+![Operating System example](https://user-images.githubusercontent.com/74584483/137398532-bac9b55b-07f1-48b2-a0c9-edcaec55d528.png)
+
+### Country  {#country}
+Usage: A 2 letter country code, either passed as the user's country or determined by the IP address.
+
+Supported Operators: any of, none of
+
+Example: Show a cookie consent banner for users accessing your service from the EU.
+
+![EU Countries example](https://user-images.githubusercontent.com/74584483/137398748-59fead56-324f-42c2-9673-046f56ed8cfd.png)
+
+### IP address  {#ip}
+Usage: An IP address string
+
+Supported Operators: any of, none of
+
+Example: Show a different about us page on www.statsig.com to people in a certain IP address range
+
+![Matching IP Addresses example](https://user-images.githubusercontent.com/74584483/137399001-e856f867-1d5e-4791-9e22-bd113e647a42.png)
+
+### Passes Target gate {#gate}
+Usage: The condition passes if the referenced gate passes for the given user
+
+Supported Operators: gate_id
+
+Example: Only show feature X to people who also see feature Y: Only show a toggle to turn off ranking to people who also pass the new ranking algorithm gate.
+
+![Passes target gate example](https://user-images.githubusercontent.com/74584483/137400867-d5b33c55-2f1e-4799-9ce9-80432cb38dae.png)
+
+### Fails Target gate
+Usage: Inverse of passes target gate: the condition passes if the referenced gate returns false for the given user
+
+Supported Operators: gate_id
+
+Example: Only show a new UI element to people who are not using the redesigned UI.
+
+![Fails target gate example](https://user-images.githubusercontent.com/74584483/137401064-31ce8a70-d2d1-4ba5-b152-f442fe914740.png)
+
+### User in Segment {#segment}
+Usage: The condition passes if the user passes the rules defining the referenced segment. See the [segments guide](/guides/using-environments) for more information on segments.
+
+Supported Operators: segment_id
+
+Example: Only show a new UI element to people who are not using the redesigned UI.
+
+![In segment example](https://user-images.githubusercontent.com/74584483/137401647-c5464109-390c-46ba-b593-cde8baffe409.png)
+
+### User not in Segment
+Usage: The condition passes if the user fails the rules defining the referenced segment. See the [segments guide](/guides/using-environments) for more information on segments.
+
+Supported Operators: segment_id
+
+Example: Only show a feature to people who are not in the premium/paid tier.
+
+![Not in segment example](https://user-images.githubusercontent.com/74584483/137401792-2f518d45-0b9d-40cc-9b50-f01424462ca6.png)
+
+### Environment Tier {#environment}
+Usage: The condition passes if the evaluation is happening in the given environment tier (development/staging/prod). See the [environments guide](/guides/using-environments) for more information on environments.
+
+Supported Operators: development/staging/prod/(other)
+
+Example: Only show a feature on development builds
+
+![Environment tier example](https://user-images.githubusercontent.com/74584483/137402331-c9f9eb46-de8b-49b6-8abc-f480d9334c95.png)
+
+### Custom {#custom}
+Usage: Specify the key in the custom object to fetch the value use on the left hand side of a comparison
+
+Supported Operators: any of, none of
+
+Example: Only show a feature to user's who have turned on dark mode, as marked by the custom object having "darkmode": true.
+
+![Custom example](https://user-images.githubusercontent.com/74584483/137402870-092830df-96a3-4842-bb5a-bd36e416b8cb.png)
+
+### Time
+Usage: Evaluate a gate relative to the current time (in PST for client SDKs, or your server time for server SDKs)
+
+Supported Operators: after time, before time, on date
+
+Example: Show the black friday sale banner on black friday
+
+![Time example](https://user-images.githubusercontent.com/74584483/137403991-a2a2fe50-c912-42fc-bc11-6aa1eb5097c2.png)
+
+### Private Attributes
+Usage: Any user field conditions, or custom field conditions, can be used via a private attribute.  If you are targeting an email, but don't want it to be logged, 
+create an email condition, but put "email": "xyz@email.com" in the privateAttributes dictionary.  For custom fields, create a custom field condition, but put the key/value pair in privateAttributes instead.
+Remember that privateAttributes are used for evaluation only, and are not stored or kept on logEvents.
+
+Supported Operators: dependent on the condition
+
+Example: Only show a feature to 20 somethings, as marked by the privateAttributes object having "age": "20-29".
+
+![Private attributes example](https://user-images.githubusercontent.com/74584483/137403635-33b46da3-5508-432e-b3b4-4ed9990edf0f.png)
