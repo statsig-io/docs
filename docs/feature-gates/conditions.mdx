@@ -4,7 +4,7 @@ sidebar_label: Conditions
 slug: /feature-gates/conditions
 ---
 
-## Terminology
+## Introduction
 
 Statsig feature gates contain a list of **rules**, which are evaluated in order from top to bottom.
 As soon as a user passes the **condition(s)** in a given rule, subsequent rules will be ignored.
@@ -33,6 +33,8 @@ Gate evaluations are stable for a given gate, percentage rollout, and user ID.  
 0% or 100% rollouts for gates are simply "on for users matching this rule"/"off for users matching this rule".  But each rule allows you to specify a percentage of matching users who should pass.
 If you want to get [pulse results](/pulse) (metric movements caused by a feautre), simply specifying a number between 0 and 100 will create a random allocation of users in "test"/"control" groups for a simple A/B test.
 You can use this to validate a new feature does not regress existing metrics as you roll it out to everyone.  Statsig suggests a 2% -> 10% -> 50% -> 100% Rollout strategy, which will generate a pulse view for each rollout percentage.
+
+## Supported Conditions
 
 ### User ID {#userid}
 Usage: Simple lists of User IDs to explicitly target or exclude from a gate.
