@@ -1,0 +1,46 @@
+---
+sidebar_label: Private Attributes
+title: Using Private Attributes
+---
+
+## Evaluating feature gates, dynamic configs, and experiments without logging user data to Statsig
+We take privacy, and the privacy of your user data, very seriously.  If you have legal requirements that prevent you from sending PII to third parties, or you are just uncomfortable sending PII to a third party service, it is still possible to use Statsig for feature gating, configs, or experiments.
+
+## How It Works
+Any field you wish to evaluate on can be made private.  Note that if you make the userID field private, your experience in the Statsig console will be broken (the user's tab, metrics charts, event logs, and pulse metrics will be unable to populate accurately).  If you wish to hide the UserID, we recommend you use a stable, one-way hash to maintain the ability to analyze user behavior.
+
+For example, let's say you want to use an email condition:
+
+1. Create a feature gate with a condition that passes on certain emails or domains
+2. Pass `email: email@domain.com` in `privateAttributes` rather than in the top level `email` field
+3. Test it out in the `Test Gate` console after saving changes
+
+![Example email condition with privateAttributes](https://user-images.githubusercontent.com/74584483/137523844-41720c7a-b006-48ab-a5b2-53c833c3de80.png)
+
+When evaluating rules and conditions, Statsig first checks for fields at the top level, then in the custom attributes, and finally, in the private attributes.  By simply not passing email at the top level, the evaluator will keep looking in other possible places before evaluating the condition (`custom`, and then `privateAttributes`).
+So if you want to keep the ip address and user agent private, but still use browser or IP checks in the console, simply put them in the `privateAttributes` dictionary instead of at the top level of the user.  The same goes for country, locale, custom fields, and so on.
+
+Our statsig-node SDK illustrates how this works (and is exactly how we evaluate gates on our servers as well): https://github.com/statsig-io/node-js-server-sdk/blob/d1cb9431fb68b40f840254fce70363de1dc51aa5/src/Evaluator.js#L374
+
+:::warning
+Do not provide a `privateAttribute` key anywhere else in the `user` object.  The entire `privateAttributes` dictionary is dropped, but any duplicate fields at the top level or in the custom object will still be logged (and evaluated against)
+:::
+
+## Client vs Server SDKs
+Client/single user environment SDKs send the user object with the `initialize` call to evaluate the user against every gate in your Statsig project.
+*privateAttributes will be sent with this call but will not be stored or logged on Statsig servers*.  In order to evaluate the conditions and rules for a gate, config, or experiment, Statsig servers need to know the privateAttributes field.  It will be stripped from the users for any logging on Statsig servers.
+Client SDKs will remove privateAttributes before any events are logged - they are only needed for gate evaluation.
+
+Example with the `statsig-js` SDK: https://github.com/statsig-io/js-client/blob/1ad8a553c6be090e75f0e4c2478b75ac5edbef66/src/LogEvent.ts#L38
+
+If this does not meet your needs, our Server SDKs are able to make a stronger guarantee - `privateAttributes` will never leave your server.  Statsig server SDKs
+download the definition of each gate/config/experiment and evaluate them locally.
+
+`privateAttributes` stripped from event logs with the `statsig-node` SDK: https://github.com/statsig-io/node-js-server-sdk/blob/d1cb9431fb68b40f840254fce70363de1dc51aa5/src/LogEvent.js#L21
+
+Evaluation happening locally to the server on `privateAttributes` in the `statsig-node` SDK: https://github.com/statsig-io/node-js-server-sdk/blob/d1cb9431fb68b40f840254fce70363de1dc51aa5/src/Evaluator.js#L374
+
+Don't just take our word for it - all of our SDKs are open source and [available on github](https://github.com/statsig-io).  Feel free to dive in to the implementation of `privateAttributes` in the SDK you are using, or reach out to us on [slack](www.statsig.com/slack) and we can point you in the right direction.
+
+## Event Logging
+The privateAttributes field will be stripped from the user object for any `logEvent` calls on client or server SDKs.  On server SDKs, you can simply not provide that field for `logEvent` calls if you wish - no evaluation is happening, so they are not necessary.  If you are using the same user everywhere, the SDK will handle dropping the `privateAttributes` for you.
