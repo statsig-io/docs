@@ -40,20 +40,23 @@ jobs:
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
       - name: Deploy to Latest Cluster
-        uses: roim/kubectl-via-eksctl@main
+        uses: statsig-io/kubectl-via-akscli@main
         env:
-          aws_access_key_id: ${{ secrets.LATEST_AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.LATEST_AWS_SECRET_ACCESS_KEY }}
-          region: us-east-1
-          cluster: ${{ secrets.LATEST_CLUSTER_NAME }}
+          app_id: ${{ secrets.AZ_LATEST_SERVICE_PRINCIPLE_APP_ID }}
+          password: ${{ secrets.AZ_LATEST_SERVICE_PRINCIPLE_PASSWORD }}
+          tenant: ${{ secrets.AZ_LATEST_SERVICE_PRINCIPLE_TENANT }}
+          region: az-westus-2
+          tier: latest
         with:
           args: rollout restart deployment/docs
       - name: Validate Deployment
-        uses: roim/kubectl-via-eksctl@main
+        uses: statsig-io/kubectl-via-akscli@main
         env:
-          aws_access_key_id: ${{ secrets.LATEST_AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.LATEST_AWS_SECRET_ACCESS_KEY }}
-          region: us-east-1
-          cluster: ${{ secrets.LATEST_CLUSTER_NAME }}
+          app_id: ${{ secrets.AZ_LATEST_SERVICE_PRINCIPLE_APP_ID }}
+          password: ${{ secrets.AZ_LATEST_SERVICE_PRINCIPLE_PASSWORD }}
+          tenant: ${{ secrets.AZ_LATEST_SERVICE_PRINCIPLE_TENANT }}
+          region: az-westus-2
+          tier: latest
         with:
           args: rollout status deployment/docs
+        
