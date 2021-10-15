@@ -11,6 +11,7 @@ module.exports = {
         'guides/using-environments',
         'guides/first-segment',
         'guides/abn-tests',
+        'guides/private-attributes',
         {
           'Access Management': [
             'console/accessManagement/overview',
