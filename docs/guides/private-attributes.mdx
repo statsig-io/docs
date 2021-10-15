@@ -40,7 +40,7 @@ download the definition of each gate/config/experiment and evaluate them locally
 
 Evaluation happening locally to the server on `privateAttributes` in the `statsig-node` SDK: https://github.com/statsig-io/node-js-server-sdk/blob/d1cb9431fb68b40f840254fce70363de1dc51aa5/src/Evaluator.js#L374
 
-Don't just take our word for it - all of our SDKs are open source and [available on github](https://github.com/statsig-io).  Feel free to dive in to the implementation of `privateAttributes` in the SDK you are using, or reach out to us on [slack](www.statsig.com/slack) and we can point you in the right direction.
+Don't just take our word for it - all of our SDKs are open source and [available on github](https://github.com/statsig-io).  Feel free to dive in to the implementation of `privateAttributes` in the SDK you are using, or reach out to us on [slack](https://www.statsig.com/slack) and we can point you in the right direction.
 
 ## Event Logging
 The privateAttributes field will be stripped from the user object for any `logEvent` calls on client or server SDKs.  On server SDKs, you can simply not provide that field for `logEvent` calls if you wish - no evaluation is happening, so they are not necessary.  If you are using the same user everywhere, the SDK will handle dropping the `privateAttributes` for you.
