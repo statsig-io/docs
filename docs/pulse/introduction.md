@@ -4,30 +4,67 @@ sidebar_label: Introduction
 slug: /pulse
 ---
 
-Pulse measures the impact of a new functionality as compared to a control experience.  The comparison could either be created via a partially rolled out feature gate or an A/B/n test from Experiments+. Connecting new functionality to its impact on your customers and business is a powerful mechanism to understand customer behavior. Pulse automatically surfaces this impact on the Statsig console with no additional effort from you. 
+Pulse is Statsig's powerful visualization that shows an experiment's impact across a wide range of metrics.  It allows you to quickly assess which metrics you need to pay attention to, while finding trends across metrics, allowing you to validate existing hypotheses or devise alternative explanations. Pulse is currently available on partially rolled out feature gates and Experiments+.
+
+Statsig believes that experimentation should never be reduced to a single metric and that it's critical to understand the effect of changes and experiments across a suite of your company's metrics.  Examining more than one metric allows you to find corroborating data about how and why an experiment works.  It can also help you identify potential issues, tradeoffs, and unintended consequences.  This powerful approach to experimentation was pioneered and proven by some of the largest tech companies.
 
 ## How to read Pulse
-As the new functionality is exposed to new customers, Pulse uncovers how each of your metrics shift and if this shift is statistically significant. In the example below, Pulse is showing the impact of promotional campaign on an ecommerce website. The campaign has improved conversion rate for the shopping cart but also reduces daily active users (DAU) and product views. In this case, we may find that adding an item to the cart takes you to the checkout instead of browsing more products. Pulse highlights these trade-offs to ensure that you can make better decisions in shipping new functionality to more users.
 
-![image](https://user-images.githubusercontent.com/1315028/131383108-4fca1a3e-8adb-4f5e-9adb-081c891ef15f.png)
+### Exposures
 
-To get your hands on Pulse, see the Statsig demo at www.statsig.com/demo. 
+![Exposures Chart](https://user-images.githubusercontent.com/77478319/137816780-c0af4967-3903-45bf-88d9-ff3d3236632e.png)
 
-## Terminlogy
-Hovering over a metric in Pulse renders a tool tip with key statistics for the control and treatment groups as shown and listed below.
+At the top of Pulse is the Exposures Chart.  Exposures are the unique experimental units enrolled in the experiment.  This is typically the number of unique users, and for device-level experimentation, this is the number of devices.  The timeline shows you when the experiment was started, and how many exposures were enrolled as of any given day.  You can see the rate at which users were added into each group of the experiment, how many total users were exposed, and confirm the target ratio.
 
-![image](https://user-images.githubusercontent.com/1315028/131383593-384225bc-abbd-483f-a45a-3280d8bf5941.png)
+### Metrics Overview
 
- - **Mean**: Average of the metric over the observed distribution 
- - **Std**: Standard deviation of this metric
- - **Abs Delta**: Absolute difference of the Mean between test groups i.e. Pass Mean - Fail Mean
- - **Delta %**: Relative difference of the Mean i.e. (Pass mean – Fail mean) / Fail mean - 100%
- - **P-Value**: The p-value is the (two-sided) probability of achieving the observed (or more extreme) difference assuming that there is no difference between the test groups (or the new feature has no impact). A low p-value means that this assumption that there’s no difference is incorrect.  
+![Pulse Metrics](https://user-images.githubusercontent.com/77478319/137816794-3df2de31-9a44-4835-98ad-bc14db175dbe.png)
 
-## Metric Dimensions
+Pulse calculates the difference between the comparable randomization groups (eg. test and control) across your company's suite of metrics, and applies a statistical test to the results.  For every metric, we will show you:
+- The calculated relative difference (Delta %)
+- The confidence interval
+- Whether the result is statistically significant
+   - Positive lifts are green
+   - Negative lifts are red
+   - Non-significant results are grey.
+
+The formula for calculating lift is:
+
+Delta(%) = (Test - Control) / Control
+
+Confidence intervals are reported at the selected significance level (95% by default).  In a typical Z-test, we show the confidence interval as +/- 1.96 * standard error.
+
+### Metric Dimensions
+
 If you want to see Pulse results for a metric further broken down by categories, use the **value** attribute to specify a category when you log the event. For example, when you log a click event on your web or mobile application, you may also log the target category using the **value** attribute as shown below. Pulse will automatically generate results for each category in addition to the top level metric. To see the Pulse results for all categories within a metric, click on the (+) sign next to the metric. 
 
 ![image](https://user-images.githubusercontent.com/1315028/134992035-1bfa67f2-73a0-4b88-ac1d-688fa6ef0b33.png)
+
+### Metrics Drill-Down
+
+A tooltip with key statistics and deeper information is shown if you hover over a metric in Pulse.
+
+![image](https://user-images.githubusercontent.com/1315028/131383593-384225bc-abbd-483f-a45a-3280d8bf5941.png)
+
+ - **Group**: The name of the group of users.  For Feature Gates, the "Pass" group is considered the test group while the "Fail" group is the control.  In experiments, these will be the variant names.
+ - **Units**: The number of observations included in the metric.  Most metrics report a value for each exposed user on a daily basis.  A user who has been in the experiment for 7 days will produce 7 observations (units).
+ - **Mean**: Average of the metric across the units (observations).
+ - **Std**: Standard error of the mean estimate for this metric.
+ - **Abs Delta**: The absolute difference of the Mean between test groups i.e. Test Mean - Fail Mean.
+ - **Delta %**: Relative difference of the Mean i.e. 100% x (Pass mean – Fail mean) / Fail mean
+ - **P-Value**: The (two-sided) probability of achieving the observed difference (or one more extreme) assuming there is no difference and the experiment has no effect (groups are equivalent). In classical hypothesis testing, a low p-value means that the chance of obtaining such a result is rare and if it's below a preset threshold, we can conclude that there must be a difference or real effect.
+
+## Best Practices and Avoiding False Positives
+
+We have some suggestions on how to interpret Pulse in a scientifically-sound way:
+1. Have a hypothesis in mind before viewing Pulse.  What are the metric(s) you expect to shift due to the change you made?  What else could have happened?  What are signs it has gone wrong?
+2. Establish a small set of key metrics that are directly related to your hypothesis and would most directly establish that the experiment worked.  Having more than a handful of key metrics is usually a sign of an ill-defined hypothesis or shotgun experimentation.  Examining too many metrics will lead to a higher false positive rate (seeing results when only statistical noise exists).
+3. Avoid cherry-picking results.  For example, don't selectely pick three metrics that look good, but ignore the two that don't.  Also avoid picking "good" or "bad" numbers that have no connection to your hypothesis.  Context matters a lot, and statistically-significant results should have a plausible explanation (false positive can be a plausible explanation).
+5. Seeing multiple (independent) effects that are consistent with a plausible story lends credibility that the observed effects are real, even with borderline p-values.
+6. Expect to see false positives and be suspicious of statistically significant results with borderline p-values.  For example, a 95% confidence interval (5% significance level) is expected to turn up one statistically significant metric out of twenty due purely to random chance.  This number goes up if you start to include borderline metrics (eg. p = 0.06).
+7. Look beyond your hypothesis.  What other effects can you find?  Are there tradeoffs?  Are there unexpected behaviors?  These can reveal information about your users and how they interact with your product.  They are often the source of follow-up experiments and new ideas.
+
+![image](https://user-images.githubusercontent.com/1315028/131383108-4fca1a3e-8adb-4f5e-9adb-081c891ef15f.png)
 
 ## Export Report
  
