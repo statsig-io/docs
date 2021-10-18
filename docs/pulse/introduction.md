@@ -64,7 +64,6 @@ We have some suggestions on how to interpret Pulse in a scientifically-sound way
 6. Expect to see false positives and be suspicious of statistically significant results with borderline p-values.  For example, a 95% confidence interval (5% significance level) is expected to turn up one statistically significant metric out of twenty due purely to random chance.  This number goes up if you start to include borderline metrics (eg. p = 0.06).
 7. Look beyond your hypothesis.  What other effects can you find?  Are there tradeoffs?  Are there unexpected behaviors?  These can reveal information about your users and how they interact with your product.  They are often the source of follow-up experiments and new ideas.
 
-![image](https://user-images.githubusercontent.com/1315028/131383108-4fca1a3e-8adb-4f5e-9adb-081c891ef15f.png)
 
 ## Export Report
  
