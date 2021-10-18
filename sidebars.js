@@ -42,6 +42,7 @@ module.exports = {
                 'feature-gates/implement/http-api',
               ],
             },
+            'feature-gates/conditions',
             'feature-gates/view-exposures',
             'feature-gates/best-practices',
           ],
