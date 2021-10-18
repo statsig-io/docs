@@ -8,25 +8,25 @@ Pulse is Statsig's powerful visualization that shows an experiment's impact acro
 
 Statsig believes that experimentation should never be reduced to a single metric and that it's critical to understand the effect of changes and experiments across a suite of your company's metrics.  Examining more than one metric allows you to find corroborating data about how and why an experiment works.  It can also help you identify potential issues, tradeoffs, and unintended consequences.  This powerful approach to experimentation was pioneered and proven by some of the largest tech companies.
 
-# How to read Pulse
+## How to read Pulse
 
-## Exposures
+### Exposures
 
 ![Exposures Chart](https://user-images.githubusercontent.com/77478319/137816780-c0af4967-3903-45bf-88d9-ff3d3236632e.png)
 
 At the top of Pulse is the Exposures Chart.  Exposures are the unique experimental units enrolled in the experiment.  This is typically the number of unique users, and for device-level experimentation, this is the number of devices.  The timeline shows you when the experiment was started, and how many exposures were enrolled as of any given day.  You can see the rate at which users were added into each group of the experiment, how many total users were exposed, and confirm the target ratio.
 
-## Metrics Overview
+### Metrics Overview
 
 ![Pulse Metrics](https://user-images.githubusercontent.com/77478319/137816794-3df2de31-9a44-4835-98ad-bc14db175dbe.png)
 
-Pulse calculates the differences between the comparable randomization groups (eg. test and control) across your company's suite of metrics, and applies a statistical test to the results.  For every metric, we will show you:
-1. The calculated different (Delta %)
-2. The confidence interval
-3. Whether the result is statistically significant
-   1. Positive lifts are green
-   2. Negative lifts are red
-   3. Non-significant results are grey.
+Pulse calculates the difference between the comparable randomization groups (eg. test and control) across your company's suite of metrics, and applies a statistical test to the results.  For every metric, we will show you:
+- The calculated relative difference (Delta %)
+- The confidence interval
+- Whether the result is statistically significant
+   - Positive lifts are green
+   - Negative lifts are red
+   - Non-significant results are grey.
 
 The formula for calculating lift is:
 
@@ -34,13 +34,13 @@ Delta(%) = (Test - Control) / Control
 
 Confidence intervals are reported at the selected significance level (95% by default).  In a typical Z-test, we show the confidence interval as +/- 1.96 * standard error.
 
-## Metric Dimensions
+### Metric Dimensions
 
 If you want to see Pulse results for a metric further broken down by categories, use the **value** attribute to specify a category when you log the event. For example, when you log a click event on your web or mobile application, you may also log the target category using the **value** attribute as shown below. Pulse will automatically generate results for each category in addition to the top level metric. To see the Pulse results for all categories within a metric, click on the (+) sign next to the metric. 
 
 ![image](https://user-images.githubusercontent.com/1315028/134992035-1bfa67f2-73a0-4b88-ac1d-688fa6ef0b33.png)
 
-## Metrics Drill-Down
+### Metrics Drill-Down
 
 A tooltip with key statistics and deeper information is shown if you hover over a metric in Pulse.
 
@@ -54,19 +54,19 @@ A tooltip with key statistics and deeper information is shown if you hover over 
  - **Delta %**: Relative difference of the Mean i.e. 100% x (Pass mean – Fail mean) / Fail mean
  - **P-Value**: The (two-sided) probability of achieving the observed difference (or one more extreme) assuming there is no difference and the experiment has no effect (groups are equivalent). In classical hypothesis testing, a low p-value means that the chance of obtaining such a result is rare and if it's below a preset threshold, we can conclude that there must be a difference or real effect.
 
-# Best Practices and Avoiding False Positives
+## Best Practices and Avoiding False Positives
 
 We have some suggestions on how to interpret Pulse in a scientifically-sound way:
-1. Metrics shouldn't be cherry picked and evaluated as "good" or "bad" without context.  Context matters a lot, and any statistically-significant result needs to have a plausible explanation.
-2. Any statistically-significant result should ideally be backed by either a really low p-value, or by corroborating (ideally independent) metrics.
-3. You should have a hypothesis in mind before viewing Pulse.  What are the metric(s) you expect to shift due to the change you made?  What else could have happened?  What are signs it has gone wrong?
-4. Seeing multiple effects, with low p-values that are consistent with a plausible story lends credibility that the observed effects are real.
-5. Expect to see false positives and be suspicious of statistically significant results.  Especially those with borderline p-values.
-6. Look beyond your hypothesis.  What other effects can you find?  Are there tradeoffs?  Are there unexpected behaviors?  These can reveal information about your users and how they interact with your product.  They are often the source of follow-up experiments and new ideas.
+1. Have a hypothesis in mind before viewing Pulse.  What are the metric(s) you expect to shift due to the change you made?  What else could have happened?  What are signs it has gone wrong?
+2. Establish a small set of key metrics that are directly related to your hypothesis and would most directly establish that the experiment worked.  Having more than a handful of key metrics is usually a sign of an ill-defined hypothesis or shotgun experimentation.  Examining too many metrics will lead to a higher false positive rate (seeing results when only statistical noise exists).
+3. Avoid cherry-picking results.  For example, don't selectely pick three metrics that look good, but ignore the two that don't.  Also avoid picking "good" or "bad" numbers that have no connection to your hypothesis.  Context matters a lot, and statistically-significant results should have a plausible explanation (false positive can be a plausible explanation).
+5. Seeing multiple (independent) effects that are consistent with a plausible story lends credibility that the observed effects are real, even with borderline p-values.
+6. Expect to see false positives and be suspicious of statistically significant results with borderline p-values.  For example, a 95% confidence interval (5% significance level) is expected to turn up one statistically significant metric out of twenty due purely to random chance.  This number goes up if you start to include borderline metrics (eg. p = 0.06).
+7. Look beyond your hypothesis.  What other effects can you find?  Are there tradeoffs?  Are there unexpected behaviors?  These can reveal information about your users and how they interact with your product.  They are often the source of follow-up experiments and new ideas.
 
 ![image](https://user-images.githubusercontent.com/1315028/131383108-4fca1a3e-8adb-4f5e-9adb-081c891ef15f.png)
 
-# Export Report
+## Export Report
  
 You can export Pulse results for a specific Rule and Rollout.  Exporting results can take up to 10 minutes.  When it's ready, a link will be available under under Project Settings -> Reports.  Inside you will find two files (where "experiment" is the experiment name):
 1. experiment_pulse_summary.csv - contains Pulse aggregate metrics computed over the duration of the experiment.
