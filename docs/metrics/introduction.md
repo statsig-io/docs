@@ -31,7 +31,7 @@ Event counts are the simplest metric.  For every event we receive, we automatica
 
 Every unique event you send us creates an event_count metric.  The name of this metric will match the name of the event, and be denoted with a metric_type = event_count.
 
-## Event Daily Active Users
+## 2. Event Daily Active Users
 
 `metric_type = event_dau`
 
@@ -39,7 +39,7 @@ Event DAU measures the number of unique users that have triggered a specific eve
 
 Every unique event you send us creates an event_dau metric.  The name of this metric will match the name of the event, and be denoted with a metric_type = event_dau.
 
-## User Accounting Metrics
+## 3. User Accounting Metrics
 
 `metric_type = user`
 
@@ -47,13 +47,15 @@ User metrics start with a definition of a daily active user (DAU).  By default, 
 
 User metrics are a standard set of 15 metrics (as of October 2021) that are created for each company.  Companies can customize their definition of DAU to exclude or include specific events.
 
-## Sum Metrics
+More information on specific metrics and their defintions can be found at (User Accounting Metrics)[/metrics/user].
+
+## 4. Sum Metrics
 
 `metric_type = sum`
 
 Sum metrics are a custom metric that tallies either the `value` field or a `metadata` field (recommended) for a given event.  This metric is useful when you want to calculate metrics that have different weights.  For example, a total timespent metric can be generated if you logged an event called  `timespent`, and logged the timespent in seconds as metadata, eg. `time_s = 50.2`.  This metric can also be used for monetary amounts however we recommend logging all numeric values in the same currency (eg. US dollars).
 
-## Ratio Metrics
+## 5. Ratio Metrics
 
 `metric_type = ratio`
 
