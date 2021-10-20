@@ -6,7 +6,13 @@ slug: /feature-gates/test-gate
 
 ## Test a feature gate
 
-To validate that your feature gate is working as expected with the rules you have created, 
+There are three ways to test your feature gate and to validate that it's working as expected with the rules you have created:
+1. Using the built-in **Test Gate** tool in the Statsig console
+2. Using the prototype Javascript **Test App** available in the Statsig console
+3. Using the **Diagnostics** tab in the Statsig console  
+
+### 1. Using Test Gate
+To validate that your feature gate using the built-in Test Gate tool, 
 - Log into the Statsig console at https://console.statsig.com 
 - On the left-hand navigation panel, select **Feature Gates**
 - Select the feature gate that you want to validate
@@ -14,6 +20,28 @@ To validate that your feature gate is working as expected with the rules you hav
 
 ![image](https://user-images.githubusercontent.com/1315028/129104501-9e7349ae-31fe-47ea-97da-0520fd3d7e1b.png)
 
-- Click in the window and edit the value of the Email property to include the users that you want to target. For example, type jdoe@example.com as shown below. When email domain matches “@example.com”, the feature gate check succeeds and the window shows a PASS. Otherwise, it fails and the window shows a FAIL.![image](https://user-images.githubusercontent.com/1315028/129076094-5be27a59-213a-4218-a8e3-48aa8e619841.png)
+- Click in the window and edit the value of the Email property to include the users that you want to target. For example, type jdoe@example.com as shown below. When email domain matches “@example.com”, the feature gate check succeeds and the window shows a PASS. Otherwise, it fails and the window shows a FAIL.
 
 ![image](https://user-images.githubusercontent.com/1315028/129104434-0f09087d-80da-4a62-84ac-c51e607e72a1.png)
+
+### 2. Using Test App
+To validate that your feature gate using the Test App, 
+- Log into the Statsig console at https://console.statsig.com 
+- On the left-hand navigation panel, select **Feature Gates**
+- Select the feature gate that you want to validate
+- At the bottom of the page, click on **Check Gate in Test App** at the top right of the Test Gate window as shown below by the red arrow; this will open a new browser window with a prototype Javascript client that initializes and calls the Statsig `checkGate` API. 
+
+![image](https://user-images.githubusercontent.com/1315028/138148684-581bb8d5-86ba-4aef-b24d-44e540fa91f1.png)
+
+### 3. Using Diagnostics Tab
+To validate that your feature gate using the Diagnostics tab, 
+- Log into the Statsig console at https://console.statsig.com 
+- On the left-hand navigation panel, select **Feature Gates**
+- Select the feature gate that you want to validate
+- Click on the **Diagnostics** tab (next to the Setup tab)
+- Scroll down to the **Exposure Stream** panel, where you will see a live stream of gate check events as they happen as shown below
+
+![image](https://user-images.githubusercontent.com/1315028/138149819-5082d7e5-f7ee-42e8-b1ac-f57d9732e68f.png)
+
+
+
