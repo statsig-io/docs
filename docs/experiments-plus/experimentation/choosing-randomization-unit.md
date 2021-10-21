@@ -37,7 +37,7 @@ As a variant of this approach, some applications may choose identify anonymous u
 **Learn More**
 
 - Read more about [User-level vs. Device-level experiments](https://blog.statsig.com/user-level-vs-device-level-experiments-with-statsig-338d48a81778) and how these identifiers are used to report the right experiment results. 
-- Statsig automatically generates **Device IDs** when you choose to run a device-level experiment. See the [Statsig Guide for Device Experiments]() to learn more about how to use device IDs for experiments involving anonymous users. 
+- Statsig client SDKs automatically generate **Stable IDs** for your users when you choose to run a device-level experiment. See the [Statsig Guide for Device Experiments]() to learn more about how to use stable IDs for experiments involving anonymous users. 
 
 ---
 
