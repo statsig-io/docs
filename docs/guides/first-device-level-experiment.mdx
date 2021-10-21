@@ -1,0 +1,52 @@
+import GetExperiment from '../../client/js/_getExperiment.mdx'
+
+---
+sidebar_label: Your First Device-level Experiment
+title: Build your first Device-level Experiment
+---
+
+In cases where you're unable to establish the user's identity and are unable to leverage a user ID as the unit of randomization for your experiment,
+Statsig's *device-level* experiments enable you to design experiments using a Statsig-generated stable ID, called the **Device ID**, based on the user's device. 
+
+Setting up a *device-level* experiment is the same as creating a traditional *user-level* experiment except that you simply have to click the **Device ID** check box when you create the experiment and **not** pass the user ID when initializing the client SDK in your application. 
+
+
+### Step 1 - Create a new experiment in the Statsig console
+
+Log into the Statsig console at https://console.statsig.com/ and navigate to Experiments+ in the left-hand navigation panel.
+
+Click on the Create button and enter the name, description, and hypothesis for your experiment. 
+You may optionally select a targeting gate if you wish to limit eligibility for the experiment using an existing feature gate.
+
+Click the **Use Device ID** check box at the bottom and click Next.
+
+![image](https://user-images.githubusercontent.com/1315028/138311621-e3022e63-d767-4456-bbcb-29f5e87f3370.png)
+
+Enter the parameters that will change between control and treatment groups and click Next.
+
+![image](https://user-images.githubusercontent.com/1315028/138311303-ba57bcac-1913-4bf7-a5bd-d3c14b85005b.png)
+
+By default, each experiment runs in its own layer. You can choose to select a specific layer or leave the experiment in the default layer.  
+Set the paramter values for the control and treatment groups in the experiment, add more groups if necessary, and click Next. 
+
+![image](https://user-images.githubusercontent.com/1315028/138312005-4c987b00-d952-45d3-bbc2-499cfcaf5ceb.png)
+
+Select the key metrics that you want to use to validate your hypothesis, and click Create.
+
+![image](https://user-images.githubusercontent.com/1315028/138312097-cc064abf-8fb1-44c8-830c-6fb02d7f3cdc.png)
+
+### Step 2 - Use your experiment configuration in the client-side of your application
+
+Once you have installed a client SDK of your choice (see [Javascript example](https://docs.statsig.com/client/jsClientSDK)), 
+you must ``initialize`` the SDK using your client SDK key as shown below. 
+For device-level experiments, you do **not** have to include the user ID as you would with more traditional experiments.
+
+{<Initialize />}
+
+### Step 3 (Optional) - Add user identifiers for other experiments involving signed-in users
+
+Once the user creates an account or logs into your application, you can also call the ``updateUser`` API with user ID and any other user attributes as shown below.
+
+{<UpdateUser />}
+
+
