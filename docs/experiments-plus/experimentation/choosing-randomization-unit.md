@@ -1,3 +1,9 @@
+---
+title: Choosing the Randomization Unit
+sidebar_label: Choosing the Randomization Unit
+slug: /experiments-plus/experimentation/choosing-randomization-unit
+---
+
 # Choosing the Unit of Randomization 
 When designing an experiment, you will pick a **unit of randomization** to decide *who* or *what* is randomly allocated to your control and treatment groups. 
 The choice of the randomization unit is critical in experiment design as it impacts your user experience as well as the accuracy of your experiment's results. 
@@ -30,14 +36,14 @@ As a variant of this approach, some applications may choose identify anonymous u
   While these identifiers offer a stable tracking mechanism, they do have certain drawbacks. 
   - The main drawback is that you won't have access to this identifier if the same user engages with your application on a different device.
   - A less common drawback arises when multiple users may use the same device. In this case, you will end up including their combined engagement in the metrics you use to evaluate experiments.
-  - As these identifiers are device-specific, they are available only with client SDKs to help you instrument the client-side of your application. These identifiers are not available with server SDKs.   
+  - As these identifiers are device-specific, they are available only with client SDKs to help you instrument the client-side of your application. These identifiers are not available with server SDKs.
 
 
 ---
 **Learn More**
 
 - Read more about [User-level vs. Device-level experiments](https://blog.statsig.com/user-level-vs-device-level-experiments-with-statsig-338d48a81778) and how these identifiers are used to report the right experiment results. 
-- Statsig client SDKs automatically generate **Stable IDs** for your users when you choose to run a device-level experiment. See the [Statsig Guide for Device Experiments]() to learn more about how to use stable IDs for experiments involving anonymous users. 
+- Statsig client SDKs automatically generate **Stable IDs** for your users when you choose to run a device-level experiment. See the [Statsig Guide for Device Experiments](../../guides/first-device-level-experiment) to learn more about how to use stable IDs for experiments involving anonymous users. 
 
 ---
 
