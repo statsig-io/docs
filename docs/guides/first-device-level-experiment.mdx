@@ -12,25 +12,34 @@ Setting up a _device-level_ experiment is the same as creating a traditional _us
 
 Log into the Statsig console at https://console.statsig.com/ and navigate to Experiments+ in the left-hand navigation panel.
 
-Click on the Create button and enter the name, description, and hypothesis for your experiment.
-You may optionally select a targeting gate if you wish to limit eligibility for the experiment using an existing feature gate.
+Click on the Create button and enter the name and description for your experiment. Click the checkbox for **Use Stable ID** check box and click **Create**.
 
-Click the **Use Device ID** check box at the bottom and click Next.
+![Screen Shot 2021-10-26 at 3 38 33 PM](https://user-images.githubusercontent.com/1315028/139102631-428ff5fa-d8de-4b96-ab61-f0a528fe28c8.png)
 
-![image](https://user-images.githubusercontent.com/1315028/138311621-e3022e63-d767-4456-bbcb-29f5e87f3370.png)
+By default, each experiment runs in its own layer. When you want to create an experiment that excludes any users exposed to other experiments, you will also want to click the checkbox for **Add Layer**. As this is our first experiment, enabling this isolation isn't relevant for us at this stage. 
 
-Enter the parameters that will change between control and treatment groups and click Next.
+In the experiment **Setup** tab, under the **Allocation** panel enter the percentage of users that you want to allocate to this experiment. As this experiment will run in its own layer and you can enter a value up to 100%.
 
-![image](https://user-images.githubusercontent.com/1315028/138311303-ba57bcac-1913-4bf7-a5bd-d3c14b85005b.png)
+![image](https://user-images.githubusercontent.com/1315028/138972419-b7c42f97-29ec-407e-851f-3301130a21c5.png)
 
-By default, each experiment runs in its own layer. You can choose to select a specific layer or leave the experiment in the default layer.  
-Set the paramter values for the control and treatment groups in the experiment, add more groups if necessary, and click Next.
+Staying in the experiment **Setup** tab, under the **Variations** panel, enter the variant names and click on **Add Another Variant** to enter more variants. You'll find that the split percentages between these variants automatically change to evenly distribute users between these variants.
 
-![image](https://user-images.githubusercontent.com/1315028/138312005-4c987b00-d952-45d3-bbc2-499cfcaf5ceb.png)
+   ![image](https://user-images.githubusercontent.com/1315028/139104398-bf46b591-e3e7-4c6a-bde1-508898229660.png)
 
-Select the key metrics that you want to use to validate your hypothesis, and click Create.
+Staying in the **Variations** panel, click on the pencil icon next the _sample_parameter_ and enter the name of your experiment parameter and the type, and click **Confirm**
 
-![image](https://user-images.githubusercontent.com/1315028/138312097-cc064abf-8fb1-44c8-830c-6fb02d7f3cdc.png)
+   ![image](https://user-images.githubusercontent.com/1315028/138972604-3bb43962-6991-4eac-9fba-a9ab165ea1d2.png)
+
+Enter the values that the experiment parameter will take for the control and treatment groups.
+
+![image](https://user-images.githubusercontent.com/1315028/138973003-66f3879c-14f2-44f2-9a3a-ee2be0b18162.png)
+
+Enter the key metrics you want to track in this experiment
+
+   ![image](https://user-images.githubusercontent.com/1315028/138973362-69b53d48-745a-462f-a275-b0a3720d4d90.png)
+
+Don't forget to click on the **Save** button at the top right hand side of the page to complete your experiment setup.
+
 
 ### Step 2 - Use your experiment configuration in the client-side of your application
 
