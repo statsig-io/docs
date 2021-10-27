@@ -3,9 +3,103 @@ sidebar_label: A/B/n Tests
 title: Running A/B/n tests
 ---
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import Template from '../client/_client-sdk-template.mdx'
+import Install from './_install.mdx' 
+import Initialize from './_initialize.mdx' 
+import GetExperiment from './_getExperiment.mdx' 
+import LogEvent from './_logEvent.mdx' 
+
+
 :::info Do I need a large sample size?
 This is a common question that comes up in the context of A/B tests. Most assume (incorrectly) that they can't get statistically significant results with small sample sizes. Here's a good article that clears this up:
 
 ### [You don't need large sample sizes to run A/B Tests](https://blog.statsig.com/you-dont-need-large-sample-sizes-to-run-a-b-tests-6044823e9992)
 
 :::
+
+While you can use Statsig's [Feature Gates](https://docs.statsig.com/guides/first-experiment) to run a simple A/B test, Statsig's Experiments+ enables you to run multi-variant (A/B/n) tests.
+
+In this guide, you will create and implement your first **user-level** A/B/n test. To create a **device-level** A/B/n test, see [Your First Device-level Experiment](https://docs.statsig.com/guides/first-device-level-experiment).
+
+## Step 1 - Create a new experiment in the Statsig console
+
+Log into the Statsig console at https://console.statsig.com/ and navigate to Experiments+ in the left-hand navigation panel. 
+
+Click on the **Create** button and enter the name and description for your experiment. Click **Create**.
+
+![image](https://user-images.githubusercontent.com/1315028/138970611-1e46fe5a-6119-4be3-8cc1-0b296477d6c8.png)
+
+In the **Allocation** panel, enter the percentage of users that you want to allocate to this experiment. By default, each experiment runs in its own layer. When you want to create an experiment that excludes any users exposed to other experiments, you will also want to click the checkbox for **Add Layer**. As this is our first experiment, enabling this isolation isn't relevant for us at this stage.
+
+![image](https://user-images.githubusercontent.com/1315028/138972419-b7c42f97-29ec-407e-851f-3301130a21c5.png)
+
+Staying in the experiment **Setup** tab, under the **Variations** panel, enter the variant names and click on **Add Another Variant** to enter more variants. You'll find that the split percentages between these variants automatically change to evenly distribute users between these variants.
+
+![image](https://user-images.githubusercontent.com/1315028/139104398-bf46b591-e3e7-4c6a-bde1-508898229660.png)
+
+Staying in the **Variations** panel, click on the pencil icon next the _sample_parameter_ and enter the name of your experiment parameter and the type, and click **Confirm**
+
+![image](https://user-images.githubusercontent.com/1315028/138972604-3bb43962-6991-4eac-9fba-a9ab165ea1d2.png)
+
+Enter the values that the experiment parameter will take for the control and treatment groups.
+
+![image](https://user-images.githubusercontent.com/1315028/138973003-66f3879c-14f2-44f2-9a3a-ee2be0b18162.png)
+
+Enter the key metrics you want to track in this experiment. Finally, don't forget to click on the **Save** button at the top right hand side of the page to complete your experiment setup.
+
+![image](https://user-images.githubusercontent.com/1315028/138973362-69b53d48-745a-462f-a275-b0a3720d4d90.png)
+
+## Step 2: Install the Statsig SDK 
+
+In this guide, we use the Statsig Javascript client SDK. See the Statsig [client or server SDKs docs](https://docs.statsig.com/#sdks) for your desired programming language and technology. 
+
+<Template sdkType="js" github="https://github.com/statsig-io/js-client" install={} />
+
+
+## Step 3: Initialize the SDK
+
+After you install the SDK, you must initialize the SDK using an active **Client API Key** from the **API Keys** tab under **[Settings](https://console.statsig.com/settings)** in the Statsig console.
+
+In addition to the Client API key, you must also pass in a `Statsig User ID` to ensure users can be assigned and tracked for different variants of the experiment.
+
+<Template sdkType="js" github="https://github.com/statsig-io/js-client" initialize={} />
+
+## Step 4: Check the new experiment in your application
+
+Get your experiment's configuration parameters to enable the user to see the experience you want to create with each variant. In this case, we fetch the value of the shape parameter that we had created earlier.
+ 
+<Template sdkType="js" github="https://github.com/statsig-io/js-client" getExperiment={} />
+
+Now when a user renders this page in their client application, you will automatically start to see a live log stream in the Statsig console when you navigate to your experiment and select the **Diagnostics** tab. 
+
+![image](https://user-images.githubusercontent.com/1315028/139113152-7d19afa1-733f-4ee4-b788-3d39cecedae1.png)
+
+## Step 5: Log an event
+
+After you have set up the experiment, you may want to track downstream events to measure how your users are responding to different variants of the experiment. To do this, you can call the `LogEvent` API with the key measure that you may want to aggregate as well as other metadata that you may use as additional dimensions to breakdown the aggregate results.
+
+<Template sdkType="js" github="https://github.com/statsig-io/js-client" logEvent={}/>
+
+## Step 6: Review experiment results
+
+As experiment progresses, you will see how many experiment checks have been performed on a daily basis in the **Diagnostics** tab.
+
+![image](https://user-images.githubusercontent.com/1315028/139113282-e48d8ede-4f51-4a04-ab34-49ea6978040c.png)
+
+You will also start to see the cumulative exposures as well as the allocation share of each variant over time in the **Diagnostics** tab..
+
+![image](https://user-images.githubusercontent.com/1315028/139113413-87c9a812-679e-4bb5-af43-52a71a35280b.png)
+
+You will also start to see the key results of how each variant is performing with respect to the control in the **Results** tab. You can also review results to compare one variant against another variant.
+
+![image](https://user-images.githubusercontent.com/1315028/139113712-cd0d01c2-39eb-4243-b5c4-927e6c1a0051.png)
+
+In the **Metric Lifts** panel, you will also see whether any of the metric shifts are statistically significant.
+
+![image](https://user-images.githubusercontent.com/1315028/139113941-adbe0412-035a-4b57-b4df-115ade3b55d3.png)
+
+At this point, you're ready to make a decision about whether to ship a given variant. Alternatively, you can choose to ramp up the experiment to a larger user base by increasing the allocation in the **Setup** tab. This can help you get more data and build more confidence before you decide.  
+
+
