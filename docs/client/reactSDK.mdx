@@ -58,6 +58,7 @@ Migrates the `statsig-react` sdk to v4.0 of the `statsig-js` SDK.  This introduc
 
 Breaking Changes:
 - Removed the `useStatsig` hook.  Instead, use `import Statsig from 'statsig-react'` to use the `statsig-js` sdk for event logging, or gate checks/event logging outside of a component tree.
+- Removed the separate `DynamicConfig` type, instead directly exporting the same type from the `statsig-js` sdk.
 
 Enhancements and Bug Fixes:
 - Unify the type of `DynamicConfig` to be a single type across this SDK and the `statsig-js` sdk.
@@ -69,7 +70,7 @@ Enhancements and Bug Fixes:
 Additional features (inherited from `statsig-js`).  See the [releases](https://github.com/statsig-io/js-client/releases) for more details:
 - `DynamicConfig` overrides
 - Ability to `checkGate` and `getConfig` without overrides
-- Improved support for browsers + event logging, SSR, and configurations for event batch sizes and event flush intervals.
+- Improved support for browsers + event logging, SSR logging bug fix, and configurations for event batch sizes and event flush intervals.
 
 :::info
 If you are calling methods on the global `Statsig` like `initialize` or `updateUser`, the user object tracked by the provider and the user object used outside the component tree can get out of sync.  You are responsible for maintaining the state of the `user` and keeping it consistent with the `StatsigProvider` in these cases.  The `statsig-react` SDK uses the global `Statsig` class to serve gate/config/experiment checks, but these are memoized in the hooks the SDK provides.  Updates to the user which impact flag values that are made outside the context of the react component tree will not be reflected in your app unless the updated user is passed in to the `StatsigProvider`.
