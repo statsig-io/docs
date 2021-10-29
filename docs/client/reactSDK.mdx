@@ -52,7 +52,7 @@ yarn add statsig-react
   </TabItem>
 </Tabs>
 
-#### v0.6.0 Update
+#### v1.0.0 Update
 
 Migrates the `statsig-react` sdk to v4.0 of the `statsig-js` SDK.  This introduces a number of breaking changes and enhancements.
 
@@ -65,6 +65,11 @@ Enhancements and Bug Fixes:
 - Adds `initializationComponent` to render while initializing if `waitForInitialization` is `true`
 - Fetches cached flag values from local storage while initialize is pending if `waitForInitialization` is `false`
 - Fixes an issue where changing the user object could trigger an `updateUser` while the SDK was initializing, which would throw an exception
+
+Additional features (inherited from `statsig-js`).  See the [releases](https://github.com/statsig-io/js-client/releases) for more details:
+- `DynamicConfig` overrides
+- Ability to `checkGate` and `getConfig` without overrides
+- Improved support for browsers + event logging, SSR, and configurations for event batch sizes and event flush intervals.
 
 :::info
 If you are calling methods on the global `Statsig` like `initialize` or `updateUser`, the user object tracked by the provider and the user object used outside the component tree can get out of sync.  You are responsible for maintaining the state of the `user` and keeping it consistent with the `StatsigProvider` in these cases.  The `statsig-react` SDK uses the global `Statsig` class to serve gate/config/experiment checks, but these are memoized in the hooks the SDK provides.  Updates to the user which impact flag values that are made outside the context of the react component tree will not be reflected in your app unless the updated user is passed in to the `StatsigProvider`.
