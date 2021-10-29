@@ -67,21 +67,55 @@ We have some suggestions on how to interpret Pulse in a scientifically-sound way
 
 ## Export Report
  
-You can export Pulse results for a specific Rule and Rollout.  Exporting results can take up to 10 minutes.  When it's ready, a link will be available under under Project Settings -> Reports.  Inside you will find two files (where "experiment" is the experiment name):
-1. experiment_pulse_summary.csv - contains Pulse aggregate metrics computed over the duration of the experiment.
-2. experiment_pulse_daily.csv - contains Pulse aggregate metrics computed on a daily basis.
- 
-Definitions:
-- Date - The date of the data.  Statsig uses date stamps anchored to PST (Pacific Standard Time, GMT-8).
-- name - Name of the Experiment or Feature Gate
-- rule_id - Name of the Feature Gate Rule.
-- group - The group of users for which this metric is computed for.  For a feature gate, this is pass/fail.  For an experiment, this is the variant name.
-- metric_type - Category of the metric.  Different metric_types are computed differently, including how they're computed in Pulse.
-- metric_name - The name of the metric.  For event metrics, this is the name of the event.
-- dimension - The subcategory of the metric.  For example, if you log value in LogEvent, then value will show up as a subdimension.  dimension = !statsig_topline indicates that this row reflects an aggregate across all dimensions.
-- units - The number of observations included in this metric.  For most metrics, this is the sum of daily exposed users across the duration of the experiment.  A user who was exposed 5 days ago will count as 5 units, regardless of their activity.
-- participating_units - The number of units that have a recorded value.
-- mean - The average value of this metric across units (or participating units when applicable)
-- total - The aggregate value of this metric.  For metrics like DAU, this represents the average DAU across days.
-- stddev - The standard deviation of the metric across units.  This is used to compute standard error and confidence intervals.
- 
+You can export Pulse results for Feature Gates and Experiments+.  Exporting results can take up to 10 minutes.  When it's ready, a link will be available under under Project Settings -> Reports.  
+
+There are two types of export:
+1. Pulse Summary - This provides precomputed summary experimental data for all metrics and test groups including everything that's visible on Pulse. Two files are provided, daily and overall (**around 10-100 kb**).  This will contain:
+   1. \<experiment\>_pulse_summary.csv - contains Pulse aggregate metrics computed over the duration of the experiment.
+   2. \<experiment\>_pulse_daily.csv - contains Pulse aggregate metrics computed on a daily basis.
+
+2. Raw Data - This provides raw exposures and metrics data at the user-day level. This is best used for manually inspecting data, or recomputing your own statistics (**around 10-1000MB**).  This will contain:
+   1. \<experiment\>_.csv - contains a list of users and their first exposure to the experiment.
+   2. \<experiment\>_.csv - contains a list of experimental users, and their calculated metrics for each day they were enrolled in the experiment.
+
+### Pulse Summary and Daily File Description
+
+| Column Name | Description |
+|-------------|-------------|
+| Date | The date of the data.  Statsig uses date stamps anchored to PST (Pacific Standard Time, GMT-8). |
+| name | Name of the Experiment or Feature Gate |
+| rule_id | Name of the Feature Gate Rule.
+| group | The group of users for which this metric is computed for.  For a feature gate, this is pass/fail.  For an experiment, this is the variant name.
+| metric_type | Category of the metric.  Different metric_types are computed differently, including how they're computed in Pulse.
+| metric_name | The name of the metric.  For event metrics, this is the name of the event.
+| dimension | The subcategory of the metric.  For example, if you log value in LogEvent, then value will show up as a subdimension.  dimension = !statsig_topline indicates that this row reflects an aggregate across all dimensions.
+| units | The number of observations included in this metric.  For most metrics, this is the sum of daily exposed users across the duration of the experiment.  A user who was exposed 5 days ago will count as 5 units, regardless of their activity.
+| participating_units | The number of units that have a recorded value.
+| mean | The average value of this metric across units (or participating units when applicable)
+| total | The aggregate value of this metric.  For metrics like DAU, this represents the average DAU across days.
+| stddev | The standard deviation of the metric across units.  This is used to compute standard error and confidence intervals.
+
+### First Exposures File Description
+
+| Column Name | Description |
+|-------------|-------------|
+| user_id / stable_id | Refers to the unit identifier used in the experiment |
+| name | The name of the gate/experiment |
+| rule | For gates, this refers to the rule name |
+| group | The group the user was assigned to |
+| first_exposure_utc | The UTC timestamp when the user was first assigned to the experiment |
+| first_exposure_pst_date | The date in PST when the user was first assigned to the experiment |
+| as_of_pst_date | The date this data was generated |
+
+### Unit Metrics File Description
+
+| Column Name | Description |
+|-------------|-------------|
+| pst_ds | The 24hr window the the data refers to.  All dates are anchored from 12:00a -> 11:59p PST. |
+| user_id / stable_id | Refers to the unit identifier used in the experiment |
+| metric_type | The category of the metric |
+| metric_name | The name of the metric |
+| metric_dimension | The name of the metric dimension.  '!statsig_topline' is the overall metric with no slicing. |
+| metric_value | The numeric value of the metric |
+| numerator | For some metrics, we track the numerator |
+| denominator | For some metrics, we track the denominator |
