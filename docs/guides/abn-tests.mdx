@@ -1,6 +1,6 @@
 ---
-sidebar_label: A/B/n Tests
-title: Running A/B/n tests
+sidebar_label: Your First A/B/n Test
+title: Your First A/B/n Test
 ---
 
 import Install from '../client/js/_install.mdx' 
@@ -17,7 +17,9 @@ This is a common question that comes up in the context of A/B tests. Most assume
 
 While you can use Statsig's [Feature Gates](https://docs.statsig.com/guides/first-experiment) to run a simple A/B test, Statsig's Experiments+ enables you to run multi-variant (A/B/n) tests.
 
-In this guide, you will create and implement your first **user-level** A/B/n test. To create a **device-level** A/B/n test, see [Your First Device-level Experiment](https://docs.statsig.com/guides/first-device-level-experiment).
+In this guide, you will create and implement your first A/B/n test. This is a **user-level** experiment,
+the most common type of experiment that teams use for product improvements. To create a **device-level** A/B/n test, see [Your First Device-level Experiment](https://docs.statsig.com/guides/first-device-level-experiment).
+
 
 ## Step 1 - Create a new experiment in the Statsig console
 
@@ -43,7 +45,11 @@ Enter the values that the experiment parameter will take for the control and tre
 
 ![image](https://user-images.githubusercontent.com/1315028/138973003-66f3879c-14f2-44f2-9a3a-ee2be0b18162.png)
 
-Enter the key metrics you want to track in this experiment. Finally, don't forget to click on the **Save** button at the top right hand side of the page to complete your experiment setup.
+Enter the key metrics you want to track in this experiment. While Statsig will show you experiment results 
+for all your metrics, these key metrics represent your hypothesis for the experiment. Establishing a hypothesis
+upfront ensures that the experiment serves to improve your understanding of users rather than
+simply serving data points to bolster the case for shipping or not shipping your experiment.   
+Finally, don't forget to click on the **Save** button at the top right hand side of the page to complete your experiment setup.
 
 ![image](https://user-images.githubusercontent.com/1315028/138973362-69b53d48-745a-462f-a275-b0a3720d4d90.png)
 
@@ -65,7 +71,12 @@ In addition to the Client API key, you must also pass in a `Statsig User ID` to 
 
 Get your experiment's configuration parameters to enable the user to see the experience you want to create with each variant. In this case, we fetch the value of the shape parameter that we had created earlier.
 
-<GetExperiment />
+```jsx
+const expConfig = statsig.getExperiment("product_logo_icon_shapes");
+
+const buttonShape = expConfig.get("shape", "rounded_square");
+ 
+```
 
 Now when a user renders this page in their client application, you will automatically start to see a live log stream in the Statsig console when you navigate to your experiment and select the **Diagnostics** tab.
 
@@ -75,7 +86,9 @@ Now when a user renders this page in their client application, you will automati
 
 After you have set up the experiment, you may want to track downstream events to measure how your users are responding to different variants of the experiment. To do this, you can call the `LogEvent` API with the key measure that you may want to aggregate as well as other metadata that you may use as additional dimensions to breakdown the aggregate results.
 
-<LogEvent />
+```jsx
+statsig.logEvent('add_to_cart', 'groceries', {'price': '9.99', 'SKU_ID': 'SKU-123'});
+```
 
 ## Step 6: Review experiment results
 
