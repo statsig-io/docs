@@ -5,8 +5,8 @@ function wireClickHandlers(tagName) {
     el.addEventListener('click', () => {
       statsig.logEvent(
         'link_click', 
-        el.href, 
-        { page : window.location.href }
+        el.pathname, 
+        { page : window.location.href, referrer: document && document.referrer }
       );
     });
   }
@@ -20,8 +20,8 @@ function initStatsig() {
   ).then((err) => {
     statsig.logEvent(
       'page_view', 
-      window.location.href, 
-      { referrer: document && document.referrer }
+      window.location.pathname, 
+      { page : window.location.href, referrer: document && document.referrer }
     );
   });
 }
