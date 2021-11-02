@@ -52,6 +52,30 @@ yarn add statsig-react
   </TabItem>
 </Tabs>
 
+#### v1.0.0 Update
+
+Migrates the `statsig-react` sdk to v4.0 of the `statsig-js` SDK.  This introduces a number of breaking changes and enhancements.
+
+Breaking Changes:
+- Removed the `useStatsig` hook.  Instead, use `import Statsig from 'statsig-react'` to use the `statsig-js` sdk for event logging, or gate checks/event logging outside of a component tree.  NOTE: SDK methods like `checkGate` and `logEvent` will throw if called before `initialize()` - to avoid errors in your component tree, check `initStarted` from the `StatsigContext`, or globally, check `Statsig.initializedCalled()`
+- Removed the separate `DynamicConfig` type, instead directly exporting the same type from the `statsig-js` sdk.
+
+Enhancements and Bug Fixes:
+- Unify the type of `DynamicConfig` to be a single type across this SDK and the `statsig-js` sdk.
+- Memoizes the result of gate/config checks for a given user for enhanced performance and to reduce duplicate exposures.
+- Adds `initializationComponent` to render while initializing if `waitForInitialization` is `true`
+- Fetches cached flag values from local storage while initialize is pending if `waitForInitialization` is `false`
+- Fixes an issue where changing the user object could trigger an `updateUser` while the SDK was initializing, which would throw an exception
+
+Additional features (inherited from `statsig-js`).  See the [releases](https://github.com/statsig-io/js-client/releases) for more details:
+- `DynamicConfig` overrides
+- Ability to `checkGate` and `getConfig` without overrides
+- Improved support for browsers + event logging, SSR logging bug fix, and configurations for event batch sizes and event flush intervals.
+
+:::info
+If you are calling methods on the global `Statsig` like `initialize` or `updateUser`, the user object tracked by the provider and the user object used outside the component tree can get out of sync.  You are responsible for maintaining the state of the `user` and keeping it consistent with the `StatsigProvider` in these cases.  The `statsig-react` SDK uses the global `Statsig` class to serve gate/config/experiment checks, but these are memoized in the hooks the SDK provides.  Updates to the user which impact flag values that are made outside the context of the react component tree will not be reflected in the component tree unless the updated user is passed in to the `StatsigProvider`.
+:::
+
 #### Usage
 
 How we at Statsig use the SDK, and suggested usage.
@@ -93,26 +117,25 @@ export default function MyComponent(): JSX.Element {
 }
 ```
 
-To logEvents, get the underlying StatsigSDK
+To logEvents, get the global javascript SDK
 
 ```react
-import { useStatsig } from 'statsig-react';
+import { Statsig } from 'statsig-react';
 
 ...
 
 export default function MyComponent(): JSX.Element {
-  const statsig = useStatsig();
 
   return
     <Button
       onClick={() => {
-        statsig.logEvent('button_clicked');
+        Statsig.logEvent('button_clicked');
       }}
     />;
 }
 ```
 
-If you need to check gates/configs in a loop, you can use this same `useStatsig` hook to avoid using the Feature Gate and Config hooks improperly in a loop.
+If you need to check gates/configs in a loop, you can use this same import to avoid using the Feature Gate and Config hooks improperly in a loop.
 
 
 #### More Details
@@ -167,14 +190,14 @@ Returns:
 -   `isLoading: boolean;` - the loading/initializing state of the SDK
 -   `config: DynamicConfig` - the backing `DynamicConfig` (see the [statsig-js sdk docs](/client/jsClientSDK) for more information)
 
-##### `useStatsig`
-A react hook to get an initialized reference to the [statsig-js sdk](/client/jsClientSDK), or undefined if not initialized.  Use this to log events or instead of `useGate`/`useConfig`/`useExperiment` if you are violating the [rules of hooks](https://reactjs.org/docs/hooks-rules.html).  For example, to check gates in a loop, `useStatsig` to get a reference to the sdk, and call `checkGate` in the loop.
+##### `useStatsigLogEffect`
+A react hook to simplify top level logEvents into an effect which will only log and event once the SDK is ready
 
 Parameters: none
+- `eventName: string`
+- `value?: string | number | null`
+- `metadata?: Record<string, string> | null`
 
-
-Returns:
-- `statsig | undefined` - a reference to the initialized statsig-js sdk, or undefined if not initialized
 
 ##### `StatsigContext`
 StatsigContext is a [react context](https://reactjs.org/docs/context.html) used internally by the SDK to manage internal state.  You should not need to use the `StatsigContext` directly, as the Provider and Hooks interface with it for you.  It tracks the following state:
@@ -182,6 +205,14 @@ StatsigContext is a [react context](https://reactjs.org/docs/context.html) used 
 - `initialized: boolean;` the initialization state of the SDK
 - `statsigPromise: React.MutableRefObject<Promise<void>> | null;` a reference to a promise which resolves once SDK initialization is complete
 - `statsig: typeof statsig | undefined;` the statsig-js SDK, or undefined if uninitialized
+- `userVersion` used interally by the SDK to memoize SDK functions based on the user
+
+##### `Statsig`
+You can import the global `Statsig` singleton to call SDK functions outside of a component tree or in callbacks/loops/or wherever else you are unable to use hooks.  For all SDK functions, see the [statsig-js sdk docs](/client/jsClientSDK).
+
+:::info
+If you are calling methods on the global `Statsig` like `initialize` or `updateUser`, the user object tracked by the provider and the user object used outside the component tree can get out of sync.  You are responsible for maintaining the state of the `user` and keeping it consistent with the `StatsigProvider` in these cases.  The `statsig-react` SDK uses the global `Statsig` class to serve gate/config/experiment checks, but these are memoized in the hooks the SDK provides.  Updates to the user which impact flag values that are made outside the context of the react component tree will not be reflected in the component tree unless the updated user is passed in to the `StatsigProvider`.
+:::
 
 #### Testing
 
