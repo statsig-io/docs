@@ -37,15 +37,21 @@ yarn add statsig-react-native-expo
 Next you can import Statsig in your code and use it away!
 
 ```jsx
-import Statsig from "statsig-react-native-expo";
+import { StatsigProvider, useGate, useExperiment, useConfig, Statsig } from "statsig-react-native-expo";
 ```
 
 ## Usage {#usage}
 
-### v3.X.X+
+### v4.X.X+
 
-v3.X.X of our react-native-expo SDK wraps the [statsig-react](./reactSDK) sdk. It contains the same React Context, Providers, and Hooks, used in the same way. Get started with our [suggested usage](./reactSDK#usage) or the [Provider and Hooks](/client/reactSDK#more-details) details.
+v4.X.X of our react-native-expo SDK wraps the [statsig-react](./reactSDK) sdk. It contains the same React Context, Providers, and Hooks, used in the same way. Get started with our [suggested usage](./reactSDK#usage) or the [Provider and Hooks](/client/reactSDK#more-details) details.
 
-### Older versions
+It also exposes a global `Statsig` class that you can import outside your component tree to check gates/log events/etc.
 
-Because our React Native Expo SDK is based on our [JavaScript client SDK](/client/jsClientSDK), you can use them exactly the same way. Check out the [usage guide](./jsClientSDK#step-3---initialize-the-sdk) to learn about how to initialize Statsig and use Feature Gates or Dynamic Configs.
+```jsx
+import { Statsig } from "statsig-react-native-expo";
+
+...
+
+Statsig.checkGate("gate_name");
+```
