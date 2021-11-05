@@ -22,7 +22,7 @@ This includes:
 
 - initialization options have the same set of parameters, with additional react-specific parameters.
 - hooks for DynamicConfigs return the same `DynamicConfig` object
-- the `useStatsig` hook returns the internal `statsig-js` sdk, with all the functionality.
+- the `Statsig` singleton mirrors the `statsig-js` sdk
 
 Refer to the [statsig-js](jsClientSDK) documentation for more information.
 
@@ -204,8 +204,8 @@ StatsigContext is a [react context](https://reactjs.org/docs/context.html) used 
 
 - `initialized: boolean;` the initialization state of the SDK
 - `statsigPromise: React.MutableRefObject<Promise<void>> | null;` a reference to a promise which resolves once SDK initialization is complete
-- `statsig: typeof statsig | undefined;` the statsig-js SDK, or undefined if uninitialized
-- `userVersion` used interally by the SDK to memoize SDK functions based on the user
+- `initStarted: boolean` whether the singleton `Statsig` has had `initialize` called on it, meaning the SDK is now usable and can serve checks from cache and queue log events
+- `userVersion: number` used interally by the SDK to memoize SDK functions based on the user. Increments when the user object is changed and updateUser is called.
 
 ##### `Statsig`
 You can import the global `Statsig` singleton to call SDK functions outside of a component tree or in callbacks/loops/or wherever else you are unable to use hooks.  For all SDK functions, see the [statsig-js sdk docs](/client/jsClientSDK).
@@ -219,28 +219,32 @@ If you are calling methods on the global `Statsig` like `initialize` or `updateU
 Internally at Statsig, we use this jest mock to test our components:
 
 ```js
+let mockGates: Record<string, boolean> = {};
 jest.mock('statsig-react', () => {
   return {
-    StatsigProvider: ({ children }: { children: React.ReactNode }) => children,
-    useGate: () => {
-      return false;
+    useGate: (gateName: string) => {
+      return {
+        isLoading: false,
+        value: mockGates[gateName] ?? false,
+      };
     },
     useConfig: () => {
       return {};
     },
     useExperiment: () => {},
-    useStatsig: () => {
-      return {
-        logEvent: () => {},
-        checkGate: () => false,
-        getConfig: () => {
-          return {
-            get: (name: string, fallback: any) => fallback,
-            getValue: (name: string, fallback: any) => fallback,
-          };
-        },
-      };
+    Statsig: {
+      logEvent: () => {},
+      checkGate: (gateName: string) => mockGates[gateName] ?? false,
+      getConfig: () => {
+        return {
+          /* eslint-disable @typescript-eslint/no-explicit-any */
+          /* eslint-disable @typescript-eslint/no-unsafe-return */
+          get: (name: string, fallback: any) => fallback,
+          /* eslint-disable @typescript-eslint/no-explicit-any */
+          /* eslint-disable @typescript-eslint/no-unsafe-return */
+          getValue: (name: string, fallback: any) => fallback,
+        };
+      },
     },
   };
-});
 ```
