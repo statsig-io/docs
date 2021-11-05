@@ -66,9 +66,22 @@ npx pod-install ios # or pod install, in your /ios folder
 
 ## Usage {#usage}
 
-### v3.0.2+
-v3.X.X of our react-native-expo SDK wraps the [statsig-react](./reactSDK) sdk.  It contains the same React Context, Providers, and Hooks, used in the same way.  Get started with our [suggested usage](./reactSDK#usage) or the [Provider and Hooks](/client/reactSDK#more-details) details.
 
-### Older versions
+```jsx
+import { StatsigProvider, useGate, useExperiment, useConfig, Statsig } from "statsig-react-native";
+```
 
-Because our React Native SDK is based on our [JavaScript client SDK](/client/jsClientSDK), you can use them exactly the same way. Check out the [usage guide](./jsClientSDK#step-3---initialize-the-sdk) to learn about how to initialize Statsig and use Feature Gates or Dynamic Configs.
+### v4.X.X+
+
+v4.X.X of our react-native SDK wraps the [statsig-react](./reactSDK) sdk. It contains the same React Context, Providers, and Hooks, used in the same way. Get started with our [suggested usage](./reactSDK#usage) or the [Provider and Hooks](/client/reactSDK#more-details) details.
+
+It also exposes a global `Statsig` class that you can import outside your component tree to check gates/log events/etc.
+
+```jsx
+import { Statsig } from "statsig-react-native";
+
+...
+
+Statsig.checkGate("gate_name");
+```
+
