@@ -10,22 +10,17 @@ Statsig integrates with RevenueCat through a Webhook and receives data as mentio
 
 ## Configuration
 
-1. Navigate to the Webhooks tab in your [RevenueCat dashboard](https://app.revenuecat.com/overview)
+1. Navigate to your app in the RevenueCat dashboard and choose `Statsig` from the integrations menu
 
-   ![img](https://console.statsig.com/img/integrations/revenue_cat_integration_steps/dashboard.png)
+2. Provde your `statsig-server-secret` and select `Save`
+   ![img](https://files.readme.io/f8b5f66-Screen_Shot_2021-11-05_at_9.20.40_AM.png)
 
-2. Provide `https://api.statsig.com/v1/webhooks/revenuecat_webhook` as the WebhookURL.
-
-   ![img](https://console.statsig.com/img/integrations/revenue_cat_integration_steps/webhook.png)
-
-3. Provide `Bearer {'{statsig-server-secret}'}` as the Authorization header value, where statsig-server secret is replaced, with the Statsig Server Secret for your Project.
-
-   ![img](https://console.statsig.com/img/integrations/revenue_cat_integration_steps/authorization.png)
-
-4. On the Statsig [Integration page](https://console.statsig.com/integrations) enable the RevenueCat integration.
+3. On the Statsig [Integration page](https://console.statsig.com/integrations) enable the RevenueCat integration.
 
 ## Matching RevenueCat Users with Statsig Users
+
 In order to associate RevenueCat data with your Statsig experiments, you must ensure that the RevenueCat `App User ID` matches the Statsig `User ID` provided when checking a Statsig feature gate or experiment. You can set up `App User ID` in RevenueCat by following the instructions [here](https://docs.revenuecat.com/docs/user-ids#provided-app-user-id)
 
 ## Sandbox Events
+
 By default, [Sandbox events](https://docs.revenuecat.com/docs/webhooks#testing) will not be ingested into Statsig to reduce noise from test events sent from RevenueCat. However, ingesting `Sandbox events` into Statsig can be enabled in the RevenueCat configuration on the Statsig [Integration page](https://console.statsig.com/integrations) for debugging purposes.
