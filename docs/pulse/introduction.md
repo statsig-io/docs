@@ -44,15 +44,21 @@ If you want to see Pulse results for a metric further broken down by categories,
 
 A tooltip with key statistics and deeper information is shown if you hover over a metric in Pulse.
 
-![image](https://user-images.githubusercontent.com/1315028/131383593-384225bc-abbd-483f-a45a-3280d8bf5941.png)
+![image](https://user-images.githubusercontent.com/1315028/140843461-d874a26a-056c-45b6-9ce7-a6df4909711d.png)
 
- - **Group**: The name of the group of users.  For Feature Gates, the "Pass" group is considered the test group while the "Fail" group is the control.  In experiments, these will be the variant names.
- - **Units**: The number of observations included in the metric.  Most metrics report a value for each exposed user on a daily basis.  A user who has been in the experiment for 7 days will produce 7 observations (units).
+ - **Group**: The name of the group of users. For Feature Gates, the "Pass" group is considered the test group while the "Fail" group is the control. In Experiments, these will be the variant names.
+ - **Units**: The number of observations included in the metric. Most metrics report a value for each exposed user on a daily basis. A user who has been in the experiment for 7 days will produce 7 observations (units).
  - **Mean**: Average of the metric across the units (observations).
  - **Std**: Standard error of the mean estimate for this metric.
  - **Abs Delta**: The absolute difference of the Mean between test groups i.e. Test Mean - Fail Mean.
  - **Delta %**: Relative difference of the Mean i.e. 100% x (Pass mean – Fail mean) / Fail mean
  - **P-Value**: The (two-sided) probability of achieving the observed difference (or one more extreme) assuming there is no difference and the experiment has no effect (groups are equivalent). In classical hypothesis testing, a low p-value means that the chance of obtaining such a result is rare and if it's below a preset threshold, we can conclude that there must be a difference or real effect.
+ - **Time Series**: A view of how the metric has evolved over a given period of time (shown below). 
+ 
+   ![image](https://user-images.githubusercontent.com/1315028/140843916-73bb885e-4cc5-40a9-a587-36d9616f16ed.png)
+
+
+
 
 ## Best Practices and Avoiding False Positives
 
