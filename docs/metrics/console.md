@@ -1,6 +1,6 @@
 ---
-title: Metrics Overview
-sidebar_label: Overview
+title: Metrics Dashboard
+sidebar_label: Metrics Dashboard
 slug: /metrics/console
 ---
 
@@ -24,5 +24,6 @@ The **Custom** tab allows you to create new metrics based on the ones you have l
 ![image](https://user-images.githubusercontent.com/74588208/127936616-ee236410-a324-4990-a4eb-2e0d7a6829e1.png)
 
 ## Charts
-The **Charts** tab enables you to visualize customer journeys, or **User Flows**, through your application. **User Flows** can be a great source of new hypotheses about customer behavior. A common practice is to turn these hypotheses into new features and experiments that validate your understanding of customer behavior.
+The **Charts** tab enables you to visualize customer journeys through your application. These **User Flows** can be a great source of new hypotheses about customer behavior and you could turn these hypotheses into new features and experiments to validate your understanding of customer behavior.
 
+![image](https://user-images.githubusercontent.com/1315028/141157888-ea748571-b049-41fd-b121-56d7894b5ab7.png)
