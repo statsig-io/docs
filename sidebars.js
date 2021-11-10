@@ -120,6 +120,7 @@ module.exports = {
         'metrics/create',
         'metrics/user',
         'metrics/console',
+        'metrics/create-user-flows',
       ],
     },
     {
