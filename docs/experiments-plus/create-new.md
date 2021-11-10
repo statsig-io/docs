@@ -39,12 +39,12 @@ To create a user-level experiment,
 11. Click on the **Save** button at the top right hand side of the page to complete your experiment setup.
 
 
-### Device-level Experiments
-To create a device-level experiment, follow steps 1 - 4 above. Then,
- 1. Click the checkbox for **Use Stable ID**
+### Device-level and Custom ID Experiments
+The default randomization unit for experiments is User ID.  To create an experiment with a different unit ID type, follow steps 1 - 4 above. Then,
+ 1. Click the **ID Type** drop down menu and make a selection.
  2. Click **Create**
  
-    ![image](https://user-images.githubusercontent.com/1315028/138970906-643c9178-7121-4658-834e-8c5823644fad.png)
+    ![customID_experiment](https://user-images.githubusercontent.com/90343952/140976464-1dc14853-5aa1-4a6d-853d-317e06bc6d04.png)
 
 Now follow the remaining steps as described in the previous section to complete your experiment setup. 
 
