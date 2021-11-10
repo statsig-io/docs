@@ -16,4 +16,4 @@ Statsig's **User Flows** enable you to visualize customer journeys through your 
 
   ![image](https://user-images.githubusercontent.com/1315028/141128226-097e2441-e5ee-4e8d-8725-6d57d3fdeb83.png)
 
-Assuming there's sufficient data for the User Flow, you'll see the chart appear in the console within a few hours. 
+Assuming there's sufficient data for the User Flow, you'll see the chart appear in the console within a few minutes. 
