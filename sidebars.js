@@ -8,6 +8,7 @@ module.exports = {
         'guides/first-dynamic-config',
         'guides/first-experiment',
         'guides/first-device-level-experiment',
+        'guides/experiment-on-custom-id-types',
         'guides/first-holdout',
         'guides/using-environments',
         'guides/first-segment',
