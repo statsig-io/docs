@@ -7,18 +7,17 @@ slug: /feature-gates/implement/client
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-
 ## Step 1: Get the Statsig client SDK key
 
-To get the Statsig client SDK key, 
-- Log into the Statsig console at https://console.statsig.com 
+To get the Statsig client SDK key,
+
+- Log into the Statsig console at https://console.statsig.com
 - Click on the **Project Settings** gear icon next to your account settings at the top right corner of the page as shown below
 
   ![image](https://user-images.githubusercontent.com/1315028/129190279-60ab338f-02da-4b9a-86ee-e81cb6ac8940.png)
 
 - Click on the **API Keys** tab
 - Copy the active **Client API Key**
-
 
 ## Step 2: Install the SDK
 
@@ -49,7 +48,7 @@ yarn add statsig-js
 
 You can also use [jsdelivr](https://www.jsdelivr.com/package/npm/statsig-js), an open source CDN that we use on www.statsig.com. To access the current primary JavaScript bundle, include the following in your client application:
 
-`https://cdn.jsdelivr.net/npm/statsig-js/dist/statsig-prod-web-sdk.min.js`
+`https://cdn.jsdelivr.net/npm/statsig-js/build/statsig-prod-web-sdk.min.js`
 
 To access specific versions and files, use the following format:
 
@@ -152,11 +151,10 @@ dotnet add package Statsig --version 1.1.0
 </TabItem>
 </Tabs>
 
-
 ## Step 3: Initialize the SDK
 
 To initialize the SDK, copy the following in your client application:
-  
+
 <Tabs
   defaultValue="js"
   groupId="statsigclient"
@@ -271,7 +269,6 @@ Statsig.initialize(
 
 </TabItem>
 
-
 <TabItem value="net">
 
 ```csharp
@@ -341,11 +338,9 @@ import { StatsigProvider } from 'statsig-react';
 
 ## Step 4: Check the feature gate
 
-
-To implement a feature gate, you must include a feature gate check in your application code. 
+To implement a feature gate, you must include a feature gate check in your application code.
 
 A feature gate check returns a Boolean value. A feature gate is closed/off and a gate check returns **false** by default. After you have created a rule to target a set of users, the feature gate check returns **true** when you perform a check for an eligible user. You can use this return value to expose the eligible user to the feature as shown below.
-
 
 <Tabs
   defaultValue="js"
@@ -448,8 +443,8 @@ else
 
 ## Step 5 (Optional): Log an event
 
-You can optionally log an event to capture any metrics that show the impact of your feature. 
-  
+You can optionally log an event to capture any metrics that show the impact of your feature.
+
 <Tabs
   defaultValue="js"
   groupId="statsigclient"
@@ -491,7 +486,6 @@ export default function MyComponent(): JSX.Element {
 Statsig.logEvent(withName: "<EVENT_NAME>", value: "<EVENT_VALUE>", metadata: ["<KEY>": "<VALUE>"])
 ```
 
-
 </TabItem>
 <TabItem value="ios-objectivec">
 
@@ -523,4 +517,4 @@ StatsigClient.LogEvent("<EVENT_NAME>", "<EVENT_VALUE>", new Dictionary<string, s
 ```
 
 </TabItem>
-</Tabs>  
+</Tabs>
