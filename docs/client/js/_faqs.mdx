@@ -2,8 +2,8 @@
 
 We strive to keep the SDK as lightweight as possible, while supporting as many browsers as possible. The primary feature that our SDK relies on which may not be supported by all browsers is a javascript Promise. You may wish to [polyfill](https://developer.mozilla.org/en-US/docs/Glossary/Polyfill) a Promise library to ensure maximum browser compatibility. We recommend [taylorhakes/promise-polyfill](https://github.com/taylorhakes/promise-polyfill) for its small size and compatibility.
 
-#### Does the SDK use the browser local storage? If so, for what purposes?
+#### Does the SDK use the browser local storage or cookies? If so, for what purposes?
 
-Yes, the SDK does use the local storage. It's used to cache values for feature gates, dynamic configs and experiments, which are used as a backup in the event that your website/app cannot reach the Statsig server to fetch the latest values. If any events were logged but could not be sent to Statsig server due to issues like network failure, we also save them in the local storage to be sent again when network restores.
+The SDK does not use any cookies.
 
-All of these in the local storage are used for feature targeting and experimentation purposes only.
+It does use the local storage for feature targeting and experimentation purposes only. Values for feature gates, dynamic configs and experiments are cached in the local storage, which are used as a backup in the event that your website/app cannot reach the Statsig server to fetch the latest values. If any events were logged but could not be sent to Statsig server due to issues like network failure, we also save them in the local storage to be sent again when network restores.
