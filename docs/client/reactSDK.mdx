@@ -147,9 +147,10 @@ StatsigProvider is a [react context provider](https://reactjs.org/docs/context.h
 
 - `children: React.ReactNode | React.ReactNode[];` - One or more child components
 - `sdkKey: string;` - A client SDK key from the Statsig Console
-- `user: statsig.StatsigUser;` - A Statsig User object.  Changing this will update the user and Gate values, causing a re-initialization
-- `options?: statsig.StatsigOptions;` - An optional bag of initialization properties (shared with the statsig-js sdk) for advanced configuration
+- `user: StatsigUser;` - A [Statsig User](/client/concepts/user) object.  Changing this will update the user and Gate values, causing a re-initialization
+- `options?: StatsigOptions;` - See [StatsigOptions](/client/jsClientSDK#statsig-options).  An optional bag of initialization properties (shared with the statsig-js sdk) for advanced configuration.  
 - `waitForInitialization?: boolean;` - Waits for the SDK to initialize with updated values before rendering child components
+- `initializingComponent?: React.ReactNode | React.ReactNode[];` - A loading component to render iff waitForInitialization is set to true and the SDK is initializing
 
 #### Hooks
 The SDK exposes Feature Gates, Dynamic Configs, Experiments, and the underlying [statsig-js](/client/jsClientSDK).  If you are unfamiliar with hooks, be sure to check out the [rules of hooks](https://reactjs.org/docs/hooks-rules.html)
