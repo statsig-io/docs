@@ -68,7 +68,7 @@ In this scenario, experiment A will require an identifier that you can use over 
 For experiment B, you may prefer to use the user ID that forms the basis for most of your existing business metrics such as the rate of conversion to your subscription products.  
 
 
-![image](https://user-images.githubusercontent.com/1315028/138306642-159d23e3-5195-4f71-ab6f-b35cea2f0246.png)
+![Device Level Experiments](https://user-images.githubusercontent.com/74588208/141707011-95c0c859-c60f-45f8-a6da-d31664f05e06.png)
 
 
 
