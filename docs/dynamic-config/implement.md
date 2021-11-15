@@ -12,9 +12,7 @@ slug: /dynamic-config/implement
  - To fetch the JSON parameters in your dynamic config, use the **getConfig** call to retrieve the dynamic config object as shown below
     ```js 
     const localConfig = statsig.getConfig("localization");
-    const likeText = localConfig.get("like_us", null);
-    const followText = localConfig.get("follow_us", null);
-    const shareText = localConfig.get("share", null);
-    const twitterText = localConfig.get("post_twitter", null);
-    const inviteText = localConfig.get("invite_friend", null);
+    const likeText = localConfig.get("like_us", "Like Us");
+    const twitterText = localConfig.get("post_twitter", "Share on Twitter");
+    const inviteText = localConfig.get("invite_friend", "Invite a friend");
     ```
