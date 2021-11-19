@@ -138,7 +138,8 @@ module.exports = {
     'http-api',
     {
       'Access Management': [
-        'access-management/overview',
+        'access-management/projects',
+        'access-management/organizations',
         {
           'Single Sign-On': [
             'access-management/sso/overview',
