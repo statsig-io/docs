@@ -1,5 +1,5 @@
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 <div>
   Statsig client SDK for {props.sdkType} applications. This SDK is{' '}
@@ -16,19 +16,19 @@ Get started in a few quick steps.
 4. [Fetch Feature Gates, Dynamic Configs, or Experiments](#step4)
 5. [Log a custom event](#step5)
 
-<a name="step1"></a>
+<a name='step1'></a>
 
 #### Step 1 - Create a free account on [www.statsig.com](https://console.statsig.com/sign_up) {#step-1---create-a-free-account-on-wwwstatsigcom}
 
 You could skip this for now, but you will need an SDK Key and some Feature Gates or Dynamic Configs to use with the SDK in just a minute.
 
-<a name="step2"></a>
+<a name='step2'></a>
 
 #### Step 2 - Install the SDK {#step-2---install-the-sdk}
 
 <div>{props.install}</div>
 
-<a name="step3"></a>
+<a name='step3'></a>
 
 #### Step 3 - Initialize the SDK {#step-3---initialize-the-sdk}
 
@@ -46,11 +46,11 @@ The 3rd parameter is optional and allows you to pass in a [StatsigOptions](#stat
 
 <div>{props.initialize}</div>
 
-<a name="step4"></a>
+<a name='step4'></a>
 
 #### Step 4 - Fetch Feature Gates, Dynamic Configs, or Experiments {#step-4---fetch-values}
 
-Now that your SDK is initialized, let's fetch a [**Feature Gate**](/console/featureGates/introduction). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates always **CLOSED** or **OFF** (think `return false;`) by default.
+Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-gates). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates always **CLOSED** or **OFF** (think `return false;`) by default.
 
 <div>{props.checkGate}</div>
 
@@ -62,7 +62,7 @@ Then we have **Experiments**, which you can use to run A/B/n experiments and use
 
 <div>{props.getExperiment}</div>
 
-<a name="step5"></a>
+<a name='step5'></a>
 
 #### Step 5 - Log a custom event {#step-5---log-event}
 
