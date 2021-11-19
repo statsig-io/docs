@@ -14,17 +14,6 @@ module.exports = {
         'guides/first-segment',
         'guides/abn-tests',
         'guides/private-attributes',
-        {
-          'Access Management': [
-            'console/accessManagement/overview',
-            {
-              'Single Sign-On': [
-                'console/accessManagement/sso/overview',
-                'console/accessManagement/sso/okta_sso',
-              ],
-            },
-          ],
-        },
       ],
     },
     {
@@ -147,6 +136,17 @@ module.exports = {
       ],
     },
     'http-api',
+    {
+      'Access Management': [
+        'access-management/overview',
+        {
+          'Single Sign-On': [
+            'access-management/sso/overview',
+            'access-management/sso/okta_sso',
+          ],
+        },
+      ],
+    },
     {
       Integrations: [
         {
