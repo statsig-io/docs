@@ -51,17 +51,17 @@ There is also an optional parameter `options` that allows you to pass in a [Stat
 
 #### Step 4 - Fetch Feature Gates, Dynamic Configs, or Experiments {#step-4---fetch-values}
 
-Now that your SDK is initialized, let's fetch a [**Feature Gate**](/console/featureGates/introduction). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates always **CLOSED** or **OFF** (think `return false;`) by default.
+Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-gates). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates always **CLOSED** or **OFF** (think `return false;`) by default.
 
 From this point on, all APIs will require you to specify the user (see [Statsig user](#statsig-user)) associated with the request. For example, check a gate for a certain user like this:
 
 <div>{props.checkGate}</div>
 
-Feature Gates can be very useful for simple on/off switches, with optional but advanced user targeting. However, if you want to be able send a different set of values (strings, numbers, and etc.) to your clients based on specific user attributes, e.g. country, [**Dynamic Configs**](/console/dynamicConfig) can help you with that. The API is very similar to Feature Gates, but you get an entire json object you can configure on the server and you can fetch typed parameters from it. For example:
+Feature Gates can be very useful for simple on/off switches, with optional but advanced user targeting. However, if you want to be able send a different set of values (strings, numbers, and etc.) to your clients based on specific user attributes, e.g. country, [**Dynamic Configs**](/dynamic-config) can help you with that. The API is very similar to Feature Gates, but you get an entire json object you can configure on the server and you can fetch typed parameters from it. For example:
 
 <div>{props.getConfig}</div>
 
-Then we have [**Experiments**](/console/experimentsPlus), which you can use to run A/B/n experiments and use advanced features like layers (coming soon) to avoid collision and enable quicker iterations with parameter reuse.
+Then we have [**Experiments**](/experiments-plus), which you can use to run A/B/n experiments and use advanced features like layers (coming soon) to avoid collision and enable quicker iterations with parameter reuse.
 
 <div>{props.getExperiment}</div>
 
