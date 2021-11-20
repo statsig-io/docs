@@ -24,12 +24,20 @@ If you don't move a project to the organization, you may lose access to it as it
 ## Managing Organizations
 
 Creating an organization will automatically make you the organization's **Owner** and **Admin**. 
-You can view basic information and the projects in your organization by navigating to [Account Settings](https://console.statsig.com/settings)
-and clicking on **Manage** next to your organization. 
+
+You can view your Organization page by navigating to [Account Settings](https://console.statsig.com/account_settings)
+and clicking on **Manage** next to your organization.
+
+![image](https://user-images.githubusercontent.com/1315028/142705869-ce1b5f35-915a-481b-8772-532cfbda9427.png)
+
+
+You can also navigate to the Organization page by clicking on your name/email at the top right of the console, and clicking on **Your Organization** from the drop down. 
+
+![image](https://user-images.githubusercontent.com/1315028/142705788-4d1a647b-54ab-4b02-b5b8-1017b4b5496b.png)
 
 
 ### Basic Information
-In **Basic Information** tab, you can view your organization's information and manage membership in your organization.
+In **Basic Information** tab on the **Organization** page, you can view your organization's information and manage membership in your organization.
 
 #### Organization Information
 Your organization's information includes the organization's name, current payment tier, and SSO configuration. 
