@@ -133,6 +133,7 @@ module.exports = {
         'server/rubySDK',
         'server/golangSDK',
         'server/pythonSDK',
+        'server/phpSDK',
       ],
     },
     'http-api',
