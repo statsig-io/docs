@@ -1,0 +1,12 @@
+---
+sidebar_label: Php
+title: PHP SDK for Statsig
+---
+
+If you are using php or wordpress, we are still working on a native SDK for multi-user/server environments.  We will also work on a wordpress specific plugin.
+
+For now, you may find the following gist useful, which creates a lightweight wrapper around the httpAPI for php clients. It exposes functions to `checkGate`, `getConfig`, `getExperiment`, and `logEvent`.
+
+Note that the `user` parameter to each of these functions follows the [Statsig User](/server/concepts/user) definition for Server SDKs.
+
+<script src="https://gist.github.com/tore-statsig/c27fb9de65c7a1d1591d161570ae807a.js"></script>
