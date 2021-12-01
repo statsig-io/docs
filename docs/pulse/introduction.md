@@ -91,7 +91,7 @@ There are two types of export:
 | Date | The date of the data.  Statsig uses date stamps anchored to PST (Pacific Standard Time, GMT-8). |
 | name | Name of the Experiment or Feature Gate |
 | rule_id | Name of the Feature Gate Rule.
-| group | The group of users for which this metric is computed for.  For a feature gate, this is pass/fail.  For an experiment, this is the variant name.
+| experiment_group | The group of users for which this metric is computed for.  For a feature gate, this is pass/fail.  For an experiment, this is the variant name.
 | metric_type | Category of the metric.  Different metric_types are computed differently, including how they're computed in Pulse.
 | metric_name | The name of the metric.  For event metrics, this is the name of the event.
 | dimension | The subcategory of the metric.  For example, if you log value in LogEvent, then value will show up as a subdimension.  dimension = !statsig_topline indicates that this row reflects an aggregate across all dimensions.
