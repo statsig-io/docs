@@ -108,7 +108,7 @@ There are two types of export:
 | user_id / stable_id | Refers to the unit identifier used in the experiment |
 | name | The name of the gate/experiment |
 | rule | For gates, this refers to the rule name |
-| group | The group the user was assigned to |
+| experiment_group | The group the user was assigned to |
 | first_exposure_utc | The UTC timestamp when the user was first assigned to the experiment |
 | first_exposure_pst_date | The date in PST when the user was first assigned to the experiment |
 | as_of_pst_date | The date this data was generated |
