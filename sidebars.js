@@ -14,6 +14,7 @@ module.exports = {
         'guides/first-segment',
         'guides/abn-tests',
         'guides/private-attributes',
+        'guides/synchronized-launch',
       ],
     },
     {
