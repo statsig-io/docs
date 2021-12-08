@@ -74,6 +74,7 @@ module.exports = {
           'Working With': [
             'experiments-plus/working-with',
             'experiments-plus/create-new',
+            'experiments-plus/power-analysis',
             'experiments-plus/implement',
             'experiments-plus/monitor',
           ],
