@@ -20,6 +20,7 @@ Statsig automatically generates metrics and allows creation of custom metrics.  
 | user        | Yes | No  | Depends on specific metric | Daily Active Users |
 | sum         | No  | Yes | Float | Total Revenue |
 | ratio       | No  | No  | Float | Purchase Conversion Rate |
+| funnel      | No  | No  | Float | Purchase Conversion Funnel |
 
 All metrics are computed for each day.
 
@@ -58,6 +59,15 @@ Sum metrics are a custom metric that tallies either the `value` field or a `meta
 ## 5. Ratio Metrics
 
 `metric_type = ratio`
+
+## 6. Funnel Metrics
+
+`metric_type = funnel`
+
+A suite of funnel metrics for Pulse is automatically produced when a User Funnel is created in the metrics tab.  Funnel metrics have a few components:
+* Overall funnel conversion rate: Of the users that start the funnel (trigger the starting event), the percentage that complete it (trigger the end event).
+* Start DAU and End DAU: The number of user in the funnel that triggered the starting event and the ending event, respectively.  When there are changes in funnel conversion rates, it's important to also check the absolute number of users to understand if there's a net gain at the end of the funnel.
+* Conversion rate between stages: Of the users that triggered event N in the funnel, the percentage that also had event N+1.
 
 # Dimensions
 
