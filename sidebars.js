@@ -112,6 +112,7 @@ module.exports = {
         'metrics/user',
         'metrics/console',
         'metrics/create-user-flows',
+        'metrics/create-user-funnels',
       ],
     },
     {
