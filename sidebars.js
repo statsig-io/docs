@@ -125,6 +125,7 @@ module.exports = {
         'client/iosClientSDK',
         'client/androidClientSDK',
         'client/dotnetSDK',
+        'client/rokuSDK',
       ],
     },
     {
