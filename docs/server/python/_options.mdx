@@ -7,8 +7,7 @@
 Example:
 
 ```python
-from statsig import statsig, StatsigEnvironmentTier
-from statsig.statsig_options import StatsigOptions
+from statsig import statsig, StatsigEnvironmentTier, StatsigOptions
 
 options = StatsigOptions(None, StatsigEnvironmentTier.development)
 statsig.initialize("secret-key", options)
@@ -17,8 +16,7 @@ statsig.initialize("secret-key", options)
 You can also use the `set_environment_parameter` function, but that takes in string values only:
 
 ```python
-from statsig import statsig, StatsigEnvironmentTier
-from statsig.statsig_options import StatsigOptions
+from statsig import statsig, StatsigEnvironmentTier, StatsigOptions
 
 options = StatsigOptions()
 options.set_evironment_parameter("tier", StatsigEnvironmentTier.development.value)
