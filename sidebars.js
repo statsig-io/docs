@@ -62,6 +62,7 @@ module.exports = {
             'segments/working-with',
             'segments/create-new',
             'segments/add-rule',
+            'segments/add-id-list',
             'segments/use-segment',
           ],
         },

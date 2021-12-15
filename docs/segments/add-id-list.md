@@ -1,0 +1,19 @@
+---
+title: Adding ID Lists
+sidebar_label: Add ID List
+slug: /segments/add-id-list
+---
+
+## Create an ID list for a segment
+
+An ID list enables you specify the user IDs or stable IDs that you want to target as a reusable segment.
+
+Assuming you have created a segment of type ID List,
+ - If you're not already there, navigate to the segment page on https://console.statsig.com
+ - Click the **Edit** button in the ID List panel 
+ - Enter the list of identifers and click **Confirm**
+ 
+![image](https://user-images.githubusercontent.com/1315028/146095989-f0633201-1051-42f4-a1fb-4a8a7e55fcb7.png)
+
+You can add thousands of identifiers using this page in the Statsig console. 
+
