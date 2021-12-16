@@ -4,6 +4,9 @@ sidebar_label: Monitor
 slug: /experiments-plus/monitor
 ---
 
+Once you turn on your experiment, you can monitor the health of your experiment and view the exposures for the control and variants groups.
+
+### Monitoring experiment health
 To monitor the status of your experiment, 
  - Navigate to **Experiments+** in the left-hand navigation panel in the Statsig console
  - Select the experiment you want to monitor 
@@ -17,3 +20,12 @@ To monitor the status of your experiment,
     - **Pulse metrics available** monitors availability of Pulse results, which are expected on the day after the experiment starts.  
     - **Exposures are balanced** checks that the number of units exposed in each group matches the expected allocation.  The Sample Ratio Mismatch check is performed using a Chi-Squared test of independence. A p-value < 0.01 triggers a warning for possible imbalance that should be monitored, check again the following day. P-value < 0.001 means there is likley a problem with the experiment exposures.       
  
+### Monitoring exposures
+
+To monitor the exposures for all variants and control groups,
+ -  Navigate to **Experiments+** in the left-hand navigation panel in the Statsig console
+ -  Select the experiment that you want to monitor
+ -  Click the **Results** tab and  
+ -  The **Cumulative Exposures** panel shows the exposures for each variant in your experiment over time (as shown below)
+   
+   ![image](https://user-images.githubusercontent.com/1315028/129122046-6d61f5fb-ed26-49d7-a774-52604c1aaa3a.png)
