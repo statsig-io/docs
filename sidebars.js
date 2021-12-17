@@ -78,6 +78,7 @@ module.exports = {
             'experiments-plus/power-analysis',
             'experiments-plus/implement',
             'experiments-plus/monitor',
+            'experiments-plus/read-results',
           ],
         },
         {
