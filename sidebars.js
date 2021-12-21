@@ -11,6 +11,7 @@ module.exports = {
         'guides/experiment-on-custom-id-types',
         'guides/first-holdout',
         'guides/using-environments',
+        'guides/setting-up-reviews',
         'guides/first-segment',
         'guides/abn-tests',
         'guides/private-attributes',
@@ -78,6 +79,7 @@ module.exports = {
             'experiments-plus/power-analysis',
             'experiments-plus/implement',
             'experiments-plus/monitor',
+            'experiments-plus/read-results',
           ],
         },
         {
