@@ -5,7 +5,7 @@ sidebar_label: Overview
 
 The following data connectors are available for use now, and we're adding more every week:
 
-# Events
+### Events
 Forward any events logged via Statsig APIs or SDKs to the following providers:
 - Amplitude
 - Fivetran
@@ -15,7 +15,7 @@ Forward any events logged via Statsig APIs or SDKs to the following providers:
 - RevenueCat
 - Segment
 
-# Changelog
+### Changelog
 Update the following places when Feature Gates/Experiments/Dynamic Configs change:
 - Datadog
 - Discord
@@ -23,7 +23,7 @@ Update the following places when Feature Gates/Experiments/Dynamic Configs chang
 - Microsoft Teams
 - Slack
 
-# Other
+### Other
 - Jira: track Statsig gate rollout status and A/B test results from Jira issues
 - Visual Studio Code: bring Statsig gates and experiments into your VSCode development environment
 
