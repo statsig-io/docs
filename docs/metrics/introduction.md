@@ -69,6 +69,13 @@ A suite of funnel metrics for Pulse is automatically produced when a User Funnel
 * Start DAU and End DAU: The number of user in the funnel that triggered the starting event and the ending event, respectively.  When there are changes in funnel conversion rates, it's important to also check the absolute number of users to understand if there's a net gain at the end of the funnel.
 * Conversion rate between stages: Of the users that triggered event N in the funnel, the percentage that also had event N+1.
 
+In the example below, the Square variant shows a lift in overall funnel conversion rate.  Upon expanding the metrics to examine all the funnel stages we see the follwing:
+* Both variants have a lift in top-of-funnel DAU, but only Square has high enough conversion rates to deliver a stat-sig increase in end-of-funnel DAU (users with Purchase Event).
+* The conversion rate improvement for Square comes primarily from the Checkout Event >> Purchase Event stage.  
+
+![image](https://user-images.githubusercontent.com/90343952/148440643-8e8a24bd-934d-4100-a15a-abcbcc4bb11c.png)
+
+
 # Dimensions
 
 Statsig allows metrics to be broken down into a single set of non-overlapping dimensions.  For example, and event called `purchase` could be broken down into product categories like `jewelry`, `clothing`, `shoes`, and `watches`.  To accomplish this, you would simply log a `purchase` event, and provide the category as the `value`.  Logging in this manner will allow you to see total purchases metric like event_count and event_dau across all products, while also allowing you to see each metric broken down by category.  Each event can only be assigned to one dimension value, but nulls are accepted.
