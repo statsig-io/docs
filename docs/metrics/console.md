@@ -4,6 +4,10 @@ sidebar_label: Metrics Dashboard
 slug: /metrics/console
 ---
 
+Metrics are available for all unit types enabled in the project.  User ID and Stable ID are provided by default and others can be added following [these steps](https://docs.statsig.com/guides/experiment-on-custom-id-types#step-1---add-companyid-as-a-new-id-type-in-your-project-settings).  Make a selection from the drop down to view event DAU and user accounting metrics calculated based on the desired unit type.
+
+![Screen Shot 2022-01-06 at 2 55 39 PM](https://user-images.githubusercontent.com/90343952/148464170-d3edd74a-8bab-43f0-a9a6-7a72286ef029.png)
+
 ## Events
 The Metrics console allows you to visualize all the [events that you have logged](/guides/logging-events) in Statsig. The **Events** tab shows all the events, including a real-time stream of events as they come in.
 
