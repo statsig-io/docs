@@ -36,7 +36,9 @@ Every unique event you send us creates an event_count metric.  The name of this 
 
 `metric_type = event_dau`
 
-Event DAU measures the number of unique users that have triggered a specific event on a given day.  Like event_count, these are automatically generated.  Users can have a value of 1 or 0 corresponding to active or inactive.  This metric works great in experimentation as it minimizes outliers, has tighter confidence intervals while being a simple metric that describes a user's breadth of activity across different events.
+Event DAU measures the number of unique units that have triggered a specific event on a given day.  Like event_count, these are automatically generated.  Users can have a value of 1 or 0 corresponding to active or inactive.  This metric works great in experimentation as it minimizes outliers, has tighter confidence intervals while being a simple metric that describes a user's breadth of activity across different events.
+
+These metrics are computed separately for each unit type available in the project.  For example, User ID event DAU counts the number of distinct users that triggered the event and Stable ID event DAU counts distinct devices.   
 
 Every unique event you send us creates an event_dau metric.  The name of this metric will match the name of the event, and be denoted with a metric_type = event_dau.
 
@@ -47,6 +49,8 @@ Every unique event you send us creates an event_dau metric.  The name of this me
 User metrics start with a definition of a daily active user (DAU).  By default, Statsig will consider a user as a daily active user if they've triggered any event, gate check, or config check on a given day.  A daily active user is a binary designation that's assigned to every user; A user can be either a daily active user for a given day, or not (ie. inactive).  Statsig's default day starts at GMT-8 (Pacific Standard Time), and does not follow daylight savings time.
 
 User metrics are a standard set of 15 metrics (as of October 2021) that are created for each company.  Companies can customize their definition of DAU to exclude or include specific events.
+
+These metrics are computed separately for each unit type.  For example, when Stable ID is selected, DAU represents the number of distinct devices seen that day.
 
 More information on specific metrics and their defintions can be found at (User Accounting Metrics)[/metrics/user].
 
