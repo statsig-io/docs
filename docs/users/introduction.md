@@ -14,3 +14,8 @@ The data in the Users tab is populated automatically when users are evaluated by
 
 ![Users tab overview](https://user-images.githubusercontent.com/31516123/134972013-de7d47c2-2d81-4494-90ac-c4929007b7a9.png)
 ![User detail view](https://user-images.githubusercontent.com/31516123/134972152-a3eb61f8-6f0b-49b7-9f37-fa56dc90552b.png)
+
+## Unit Types
+The Users Tab is filtered by unit type.  Use the drop down selector to view users or units based on each of the unit types availalbe for the project.
+
+![image](https://user-images.githubusercontent.com/90343952/148592563-da1c3d41-4df8-4953-840f-f5baf8b0b94c.png)
