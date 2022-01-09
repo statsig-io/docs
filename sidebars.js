@@ -162,6 +162,8 @@ module.exports = {
         {
           "Data Connectors": [
             "integrations/data-connectors",
+            "integrations/data-connectors/census",
+            "integrations/data-connectors/fivetran",
             "integrations/data-connectors/heap",
             "integrations/data-connectors/revenuecat",
             "integrations/data-connectors/segment",
@@ -169,6 +171,7 @@ module.exports = {
         },
         "integrations/event_webhook",
         "integrations/jira",
+        "integrations/snowflake",
         "integrations/vscode",
       ],
     },
