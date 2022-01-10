@@ -1,0 +1,10 @@
+```csharp
+var expConfig = Statsig.GetExperiment("new_player_promo");
+
+string promoTitle = expConfig.Get<string>("title", "Welcome to Statsig! Use discount code WELCOME10OFF for 10% off your first purchase!");
+double discount = expConfig.Get<double>("discount", 0.1);
+
+...
+
+double price = msrp * (1 - discount);
+```

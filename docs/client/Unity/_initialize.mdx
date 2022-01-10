@@ -1,0 +1,15 @@
+It is important to **make sure API calls to `Statsig` are made from the main thread** to ensure everything functions correctly. Operations that take longer like network requests are made asynchronously so they will not block the main thread.
+
+```csharp
+using StatsigUnity;
+
+await Statsig.Initialize(
+    "client-sdk-key",
+    new StatsigUser { UserID = "some_user_id", Email = "user@email.com" },
+    new StatsigOptions // optional parameters to customize your Statsig client, see "Statsig Options" section below to see details on available options
+    {
+        EnvironmentTier = EnvironmentTier.Development,
+        InitializeTimeoutMs = 5000,
+    }
+);
+```

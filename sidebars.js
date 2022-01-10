@@ -130,6 +130,7 @@ module.exports = {
         "client/androidClientSDK",
         "client/dotnetSDK",
         "client/rokuSDK",
+        "client/unitySDK",
       ],
     },
     {
