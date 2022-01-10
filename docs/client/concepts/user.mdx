@@ -19,7 +19,9 @@ You should provide a StatsigUser object whenever possible when initializing the 
 | Locale | Locale of the user. When using the Android or iOS SDK, will be inferred if not provided | `locale` | `en_US` |
 | App Version | Version of the app the user is using. When using the Android or iOS SDK, will be inferred if not provided | `appVersion` | `1.0.1` |
 | Operating System | You can provide an explicit operating system to override | `systemName` | `Android` |
-| Operating System Version | You can provide an explicit OS version to override | `systemVersion` | `15.0` |
+| Operating System Version | You can provide an explicit OS version to override | `systemVersion` | `15.4` |
+| Browser Name | You can provide an explicit Browser Name to override | `browserName` | `Chrome` |
+| Browser Verson | You can provide an explicit Browser Version to override | `browserVersion` | `45.0` |
 | Custom | Dictionary that can contain key/value pairs that can be used for Feature Gate targeting. The content of this dictionary will be stored and available after targeting | `custom` | `{current_page: "/homepage", ...}` |
 | Private Attibutes | Dictionary that can contain key/value pairs that can be used for Feature Gate targeting. The content of this dictionary will **not** be stored after used for targeting and will be removed from any log_event calls | `privateAttributes` | `{sensitive_field: "sensitive_information", ...}` |
 | Custom IDs | Dictionary that can contain key/value pairs used as the randomization unit ID for experiments that are set up using these IDs instead of the `User ID` | `customIDs` | `{account_id: "23456555", company_id: "company_xyz"}` |
