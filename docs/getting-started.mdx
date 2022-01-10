@@ -60,8 +60,6 @@ export const SlackCard = () => (
 
 <SlackCard />
 
-## Tools
-
 export const ArrowButton = ({ link }) => (
   <IconButton
     style={{
@@ -133,6 +131,8 @@ export const OutlinedCard = ({ title, description, icon, link }) => (
   </Card>
 );
 
+## Walkthrough Guides
+
 <div
   style={{
     display: "flex",
@@ -140,64 +140,34 @@ export const OutlinedCard = ({ title, description, icon, link }) => (
   }}
 >
   <OutlinedCard
-    title="Feature Gates"
-    icon="tune"
-    description="Control access to new functionality and automatically measure how it’s performing with an A/B test before you ship"
-    link="/feature-gates"
+    title="Your First Feature"
+    icon="filter_list"
+    description="Let's build a new feature with Feature Gates, targeting and rollout."
+    link="/guides/first-feature"
   ></OutlinedCard>
   <OutlinedCard
-    title="Dynamic Configs"
-    icon="dns"
-    description="Dynamically configure user experience with configuration parameters instead of hard-coded constants"
-    link="/dynamic-config"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Segments"
-    icon="donut_small"
-    description="Define a reusable set of rules to target a group of users"
-    link="/segments"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Experiments+"
+    title="Your First A/B Test"
     icon="science"
-    description="Run sophisticated experiments with multiple variants (A/B/n tests) or mutual exclusion"
-    link="/experiments-plus"
+    description="Running an A/B experiment should not be difficult. Let's set one up in minutes."
+    link="/guides/first-experiment"
   ></OutlinedCard>
   <OutlinedCard
-    title="Autotune"
-    icon="model_training"
-    description="Automatically optimize for a single metric by testing a number of variants"
-    link="autotune"
+    title="Logging Events"
+    icon="filter_list"
+    description="Useful product metrics are computed from discrete events that you log.  Let's get started on logging events."
+    link="/guides/logging-events"
   ></OutlinedCard>
   <OutlinedCard
-    title="Metrics"
-    icon="speed"
-    description="View metrics automatically derived from all gate checks and events logged with Statsig"
-    link="/metrics"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Users"
-    icon="people"
-    description="View users exposed to all gate checks and events logged with Statsig"
-    link="/users"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Pulse"
-    icon="assessment"
-    description="View how your experiments impact your metrics"
-    link="/pulse"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Ultrasound"
-    icon="donut_small"
-    description="View all experiments that have impacted a metric"
-    link="/console/ultrasound"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Holdouts"
+    title="Your first Holdout"
     icon="flaky"
-    description="Measure the cumulative impact of all features shipped over a period of time"
-    link="/holdouts"
+    description="Sometimes it helps to measure cumulative impact of a set of features.  Let's set up a Holdout to do that."
+    link="/guides/first-holdout"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Making Code Dynamic"
+    icon="dynamic_form"
+    description="You don't always have to ship new code for customizing your experience, or even shipping new features.  Let's learn about dynamic configs."
+    link="/guides/first-dynamic-config"
   ></OutlinedCard>
 </div>
 
@@ -338,6 +308,76 @@ available for your environment yet, as you can use it in any type of
 application:
 
 - [HTTP API](/http-api)
+
+## Tools
+
+<div
+  style={{
+    display: "flex",
+    flexWrap: "wrap",
+  }}
+>
+  <OutlinedCard
+    title="Feature Gates"
+    icon="tune"
+    description="Control access to new functionality and automatically measure how it’s performing with an A/B test before you ship"
+    link="/feature-gates"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Dynamic Configs"
+    icon="dns"
+    description="Dynamically configure user experience with configuration parameters instead of hard-coded constants"
+    link="/dynamic-config"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Segments"
+    icon="donut_small"
+    description="Define a reusable set of rules to target a group of users"
+    link="/segments"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Experiments+"
+    icon="science"
+    description="Run sophisticated experiments with multiple variants (A/B/n tests) or mutual exclusion"
+    link="/experiments-plus"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Autotune"
+    icon="model_training"
+    description="Automatically optimize for a single metric by testing a number of variants"
+    link="autotune"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Metrics"
+    icon="speed"
+    description="View metrics automatically derived from all gate checks and events logged with Statsig"
+    link="/metrics"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Users"
+    icon="people"
+    description="View users exposed to all gate checks and events logged with Statsig"
+    link="/users"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Pulse"
+    icon="assessment"
+    description="View how your experiments impact your metrics"
+    link="/pulse"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Ultrasound"
+    icon="donut_small"
+    description="View all experiments that have impacted a metric"
+    link="/console/ultrasound"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Holdouts"
+    icon="flaky"
+    description="Measure the cumulative impact of all features shipped over a period of time"
+    link="/holdouts"
+  ></OutlinedCard>
+</div>
 
 ## Filing bugs
 
