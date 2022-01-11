@@ -1,0 +1,27 @@
+### How can I mock Statsig for testing?
+
+The Node server SDK, starting in version 4.8.0+, supports a few features to make testing easier.
+
+First, there is a new `StatsigOption` paramter called `localMode`.  Setting `localMode` to true will cause the SDK to never hit the network, and only return default values.  This is perfect for dummy environments or test environments that should not access the network.
+
+Next, there are the `overrideGate` and `overrideConfig` APIs on the global `statsig` instance:
+
+```
+function overrideGate(
+    gateName: string,
+    value: boolean,
+    userID?: string,
+): void;
+```
+
+```
+function overrideConfig(
+    gateName: string,
+    value: object,
+    userID?: string,
+): void
+```
+
+These can be used to set a gate or config override for a specific user, or for all users (by not providing a specific user ID).  Experiments/Autotune are overridden with the `overrideConfig` API.
+
+We suggest you enable `localMode` and then override gates/configs/experiments to specific values to test the various code flows you are building.
