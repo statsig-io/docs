@@ -17,4 +17,6 @@ To see the number of users who are being exposed to a feature gate,
 
 - The **Metrics Lifts** panel shows how your feature is performing based on lifts in your business metrics. In the example below, the rises in *purchase event count* and *purchase event count from daily active users* are statistically significant, suggesting a positive result for the new feature. 
 
-  ![image](https://user-images.githubusercontent.com/1315028/129078877-18dfed73-be72-48f1-90e4-4ad6cc138a07.png)
+![image](https://user-images.githubusercontent.com/1315028/148865500-1774b852-20be-41e9-a440-c363d8651dc5.png)
+
+
