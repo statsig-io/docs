@@ -1,0 +1,19 @@
+#### How can I mock Statsig for testing?
+
+The python server SDK, starting in version 0.5.1+, supports a few features to make testing easier.
+
+First, there is a new `StatsigOption` parameter called `localMode`.  Setting `localMode` to true will cause the SDK to never hit the network, and only return default values.  This is perfect for dummy environments or test environments that should not access the network.
+
+Next, there are the `overrideGate` and `overrideConfig` APIs on the global `statsig` instance:
+
+```
+override_gate(gate:str, value:bool, user_id:str = None)
+
+override_config(config:str, value:object, user_id:str = None)
+
+override_experiment(experiment:str, value:object, user_id:str = None)
+```
+
+These can be used to set a gate or config override for a specific user, or for all users (by not providing a specific user ID).
+
+We suggest you enable `localMode` and then override gates/configs/experiments to specific values to test the various code flows you are building.
