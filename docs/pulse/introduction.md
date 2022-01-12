@@ -18,7 +18,7 @@ At the top of Pulse is the Exposures Chart.  Exposures are the unique experiment
 
 ### Metrics Overview
 
-![Pulse Metrics](https://user-images.githubusercontent.com/77478319/137816794-3df2de31-9a44-4835-98ad-bc14db175dbe.png)
+![Pulse Metrics](https://user-images.githubusercontent.com/1315028/148865111-6bffe795-901c-4489-b9b1-36c6b97d9d13.png)
 
 Pulse calculates the difference between the comparable randomization groups (eg. test and control) across your company's suite of metrics, and applies a statistical test to the results.  For every metric, we will show you:
 - The calculated relative difference (Delta %)
