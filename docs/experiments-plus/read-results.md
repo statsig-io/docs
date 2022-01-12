@@ -24,5 +24,16 @@ The **Metrics Lifts** panel shows how your *favorited* metrics compare against t
 
 ![image](https://user-images.githubusercontent.com/1315028/148863304-7fed87d0-b9e5-43de-84b3-b70cc08c2d62.png)
 
+### Significance Level Settings
+
+These settings can be adjusted at any time to view Pulse results with different significance levels.  
+
+* **Apply Bonferroni Correction**: Select this option to apply the correction in experiments with more than one test group. This reduces the probability of Type I errors (false positives) by adjusting the significance level alpha, which will be divided by the number of test variants in the experiment.
+* **Confidence Interval**: Changes the confidence interval displayed with the metric deltas.  Choose lower confidence intervals (e.g.: 80%) when there's higher tolerance for false positives and fast iteration with directional results is preferred over longer/larger experiments with increased certainty.
+
+
+![image](https://user-images.githubusercontent.com/90343952/149221247-f78d382d-49e1-4a52-bcb5-02e8ad2121d8.png)
+
+
    
 
