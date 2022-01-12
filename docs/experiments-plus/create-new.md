@@ -57,3 +57,12 @@ By default, each experiment runs in its own layer. When you want to create an ex
 ![image](https://user-images.githubusercontent.com/1315028/138971433-98c6e385-a95b-4e9c-a3d8-d9d291b6cac6.png)
 
 Now follow the remaining steps as described in the top section on this page to complete your experiment setup.
+
+### Significance Level Adjustments
+
+![image](https://user-images.githubusercontent.com/90343952/149187492-2e8b6df9-59cd-424c-aac8-4f3e690c2b39.png)
+
+By default, Pulse results are displayed with 95% confidence intervals and without Bonferroni correction.  This default can be changed during the experiment creation and can also be adjusted in the settings when viewing the results. 
+
+* **Bonferroni Correction**: Select this option to automatically apply the correction in experiments with more than one test group.  This reduces the probability of Type I errors (false positives) by adjusting the significance level alpha, which will be divided by the number of test variants in the experiment.
+* **Default Confidence Interval**: The selection will be used by default every time Pulse results are shown for this experiment.  Choose lower confidence intervals (e.g.: 80%) when there's higher tolerance for false positives and fast iteration with directional results is preferred over longer/larger experiments with increased certainty.   
