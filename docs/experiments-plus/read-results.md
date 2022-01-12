@@ -19,7 +19,7 @@ In the example below, the **Square** variant is performing better than the **Rou
 
 
 #### Metrics Lifts
-The **Metrics Lifts** panel shows how your *favorited* metrics compare against the control. You can also see how *all* your other metrics compare against the control in the **All Other Metrics** below the **Favorited Metrics** section as shown below.
+The **Metrics Lifts** panel shows how your *favorited* metrics compare against the control. You can also see how *all* your other metrics compare against the control in the **All Other Metrics** section as shown below.
  
 
 ![image](https://user-images.githubusercontent.com/1315028/148863304-7fed87d0-b9e5-43de-84b3-b70cc08c2d62.png)
