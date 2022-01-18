@@ -6,7 +6,7 @@ slug: /autotune/setup
 
 ## How to set up Autotune
 
-1. To create a new Autotune experiment, navigate to the Autotune section on the Statsig console: https://console.statsig.com/ 
+1. To create a new Autotune experiment, navigate to the [Autotune section on the Statsig console](https://console.statsig.com/autotune).
 2. Click the Create button and enter the name and description of the Autotune experiment that you want to create. 
 3. Provide the variants that you want to test in the Autotune experiment.  Each variant needs a name, and a corresponding JSON value.  The variant that's listed as Control/Default will be returned when the Autotune experiment is not running.
 
@@ -19,7 +19,7 @@ slug: /autotune/setup
 There are a few parameters you can specify:
 - Exploration Window - The initial time period where Autotune will equally split the traffic.  This is useful for noisy or temporal metrics where hourly swings in data can bias Autotune's initial measurements.
 - Attribution Window - The maximum duration between the exposure and success event that counts as a success.  We recommend 1 hr for most applications, but adjust accordingly if you expect the success event to lag the exposure event by several hours.
-- Winner Threshold - The threshold at for when Autotune will declare a winner and stop collecting data.  Setting a lower number will result in faster decisions but increases the probability of making suboptimal decisions (picking the wrong winner).
+- Winner Threshold - The "probability of best" threshold a variant needs to achieve for Autotune to declare it the winner, stop collecting data, and direct all traffic.  Setting a lower number will result in faster decisions but increases the probability of making suboptimal decisions (picking the wrong winner).
 
 Click "Create" to finalize the setup.
 

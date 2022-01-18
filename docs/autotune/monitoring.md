@@ -6,7 +6,9 @@ slug: /autotune/monitoring
 
 ## How to monitor your Autotune Test
 
-The results tab within Autotune provides a view of your ongoing and completed Autotune tests.
+### Computations and Traffic Allocation Updating
+
+The results tab within Autotune provides a view of your ongoing and completed Autotune tests.  Autotune is computed hourly with metrics and traffic allocation updated throughout the day.  Results from exposures are ingested once the attribution window is complete.  For example, an exposure at 1pm with a 6 hr attribution window is not counted until 7 pm.
 
 ### Result
 
