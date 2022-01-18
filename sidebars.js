@@ -98,7 +98,11 @@ module.exports = {
       Pulse: ["pulse/introduction"],
     },
     {
-      Autotune: ["autotune/introduction"],
+      Autotune: [
+        "autotune/introduction",
+        "autotune/setup",
+        "autotune/monitoring",
+      ],
     },
     {
       Users: ["users/introduction"],
