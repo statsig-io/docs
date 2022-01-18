@@ -4,19 +4,30 @@ sidebar_label: Introduction
 slug: /autotune
 ---
 
-Autotune automatically finds the winning variant for you among a group of candidates, optimized for a metric of your choice.   
+Autotune automatically finds the winning variant for you among a group of candidates, and dynamically allocates traffic to optimize for a single target metric.
 
-## How Autotune works 
-Autotune executes a Bayesian multi-armed bandit algorithm to find a winning variant that optimizes for a target metric. At a high level, the multi-armed bandit algorithm works by adding more users to a treatment as soon as it recognizes that it is clearly better in maximizing the reward (the target metric). Throughout the process, higher performing treatments are allocated more traffic whereas underperforming treatments are allocated less traffic. When the winning treatment beats the second best treatment by enough margin, the process terminates. 
+## How Autotune works
+
+Autotune is Statsig's [Bayesian Multi-Armed Bandit](https://en.wikipedia.org/wiki/Multi-armed_bandit).  Autotune will test the variants you provide and measure their effect on a target metric.  As it learns, it will adjust the traffic towards the variations that perform the best until it ultimately settles on the "best" variation and divert 100% of traffic to the winner.  On the backend, we use a Thompson Sampling (Bayesian) algorithm that estimates each variant's probability of being the best variant, and allocates it that proportion of traffic.  For example, if a given variant has a 60% probability of being the best, Autotune will provide it 60% of the traffic.  At a high level, the multi-armed bandit algorithm works by adding more users to a treatment as soon as it recognizes that it is clearly better in maximizing the reward (the target metric).  Throughout the process, higher performing treatments are allocated more traffic whereas underperforming treatments are allocated less traffic. When the winning treatment beats the second best treatment by enough margin, the process terminates.
 
 ## When to use Autotune
-The main advantage of using Autotune over a regular A/B test is that Autotune generally terminates earlier than an A/B test because it requires a much smaller sample size. Autotune also suffers from fewer mistakes than A/B testing. A balanced A/B test sends 50% of traffic to each group whereas Autotune sends lesser and lesser traffic to the losing treatment. However, you want to weight the advantage of using a smaller sample size against a possibly higher false positive rate with Autotune. 
-Statsig recommends using Autotune in the following scenarios:
-1. The cost of exposing users to a losing treatment is high. For example, sending users to a landing page that is inferior may result in lost revenue. While this may be a one-time loss, testing two user registration flows may result in users that never sign up. In this case, Autotune avoids permanently losing users.  
-2. When the product has limited user traffic, Autotune works better as it requires a smaller sample size and terminates earlier. In this case, Autotune is a faster and simpler option than an A/B test. 
-3. Autotune is ideal when there are more than two variants to test. It’s common to use Autotune to test 4-8 variants at a time whereas A/B tests are limited to two variants per test.
 
-## How to use Autotune	
+Unlike A/B testing (Statsig Experiments), the traffic split isn't fixed over the duration of the test.  Instead, Autotune diverts more traffic to the winner and making fewer mistakes.  This is ideal when there are 4+ variations as it usually can rule out the worst performers and focus traffic on the best variants.  The downside is that users users are not guaranteed a consistent experience upon return visits.
+
+Statsig recommends using Autotune in any of the following scenarios:
+1. The cost of exposing users to a losing treatment is high. For example, sending users to a landing page that is inferior may result in lost revenue. While this may be a one-time loss, testing two user registration flows may result in users that never sign up. In this case, Autotune avoids permanently losing users.  
+2. You want the decision to be automated.  Because Autotune automatically selects the winner, it requires no human decision-making.  This is great for launching dozens of simultaneous tests, or for running a long-term unmonitored test.
+3. When it's okay for users to be exposed to different experiences upon return visits.  For example, changing text or recommendation algorithm.
+4. When you have one single and simple metric to optimize for (eg. click-through rate).
+
+Autotune does not work well in the following scenarios:
+1. When you have a complex ecosystem and want to understand secondary effects, tradeoffs between variants, and user behavior.
+2. When you are optimizing for long-term or complex and indirect effects.
+
+In the above cases, we recommend A/B testing.
+
+## How to use Autotune
+
 1. To create a new Autotune experiment, navigate to the Autotune section on the Statsig console: https://console.statsig.com/ 
 2. Click the Create New button and enter the name and description of the Autotune experiment that you want to create. 
 3. Enter the variants that you want to test in the Autotune experiment as shown below.
