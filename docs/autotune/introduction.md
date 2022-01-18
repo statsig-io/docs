@@ -29,15 +29,42 @@ In the above cases, we recommend A/B testing.
 ## How to use Autotune
 
 1. To create a new Autotune experiment, navigate to the Autotune section on the Statsig console: https://console.statsig.com/ 
-2. Click the Create New button and enter the name and description of the Autotune experiment that you want to create. 
-3. Enter the variants that you want to test in the Autotune experiment as shown below.
+2. Click the Create button and enter the name and description of the Autotune experiment that you want to create. 
+3. Provide the variants that you want to test in the Autotune experiment.  Each variant needs a name, and a corresponding JSON value.  The variant that's listed as Control/Default will be returned when the Autotune experiment is not running.
 
 ![image](https://user-images.githubusercontent.com/1315028/131385189-5f0c1d93-ba87-4159-8995-3c30991587a0.png)
 
-4. Select the success metric that you want to optimize in the Autotune experiment as shown below.
+4. Select the success event to optimize for as shown below.  You can further specify an optional [event value](/guides/logging-events).
 
 ![image](https://user-images.githubusercontent.com/1315028/131385239-5a76d253-022b-457e-a370-f9ee7ce566a1.png)
 
-5. As the Autotune experiment runs, it automatically converges on the winning variant as shown below.
+There are a few parameters you can specify:
+- Exploration Window - The initial time period where Autotune will equally split the traffic.  This is useful for noisy or temporal metrics where hourly swings in data can bias Autotune's initial measurements.
+- Attribution Window - The maximum duration between the exposure and success event that counts as a success.  We recommend 1 hr for most applications, but adjust accordingly if you expect the success event to lag the exposure event by several hours.
+- Winner Threshold - The threshold at for when Autotune will declare a winner and stop collecting data.  Setting a lower number will result in faster decisions but increases the probability of making suboptimal decisions (picking the wrong winner).
+
+Click "Create" to finalize the setup.
+
+6. Similar to Feature Gates and Experiments, you can find a code snippet for the exposure check event to add to your code.  Don't forget to click "Start" when you're ready to launch your Autotune test.
 
 ![image](https://user-images.githubusercontent.com/1315028/131384977-144dd868-787b-45ad-9ff1-fc9afbd4c769.png)
+
+## How to monitor your Autotune Test
+
+The results tab within Autotune provides a view of your ongoing and completed Autotune tests.
+
+### Result
+
+![image](https://user-images.githubusercontent.com/77478319/150008289-2119f756-ff71-4634-af85-fca840cf1e4c.png)
+
+This section shows you a summary of your Autotune test.  The top bars show a 95% Bayesian Credible interval for the estimated conversion rate (exposure -> success event).  There is a 95% chance that the real value is within this interval.  The table shows the number of exposures, success events, and overall success rate for each variation across the duration of the test.  We also provide a plain English text to describe the current state of the test.
+
+### Details
+
+![image](https://user-images.githubusercontent.com/77478319/150009034-74a9f2b9-42ee-4d24-9c95-5fe6dff35334.png)
+
+There are several charts provided:
+1. Probability of Best - shows the progress of the Autotune test, and which variant is currently winning.
+2. Cumulative Success Rate - Shows the overall success rate (exposure -> success) to date.
+3. Daily Success Rate - Shows the success rate for each variation per day.
+4. Traffic Allocation - Shows the daily number of exposures allocated to each variation on a given day.
