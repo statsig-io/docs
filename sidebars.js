@@ -16,6 +16,7 @@ module.exports = {
         "guides/abn-tests",
         "guides/private-attributes",
         "guides/synchronized-launch",
+        "guides/first-shopify-abtest",
       ],
     },
     {
