@@ -4,7 +4,7 @@ sidebar_label: Introduction
 slug: /autotune
 ---
 
-Autotune automatically finds the winning variant for you among a group of candidates, and dynamically allocates traffic to optimize for a single target metric.
+Autotune automatically finds the best variant among a group of candidates, while dynamically allocating traffic to optimize for a single target metric.
 
 ## How Autotune works
 
