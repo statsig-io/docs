@@ -7,3 +7,39 @@ Statsig.initialize('server-secret-key')
 options = StatsigOptions.new({'tier' => 'staging'})
 Statsig.initialize('server-secret-key', options)
 ```
+
+### Initializing Statsig in a Rails Application
+
+If your application is using Rails, you should initialize Statsig in `config/initializers/statsig.rb`:
+
+```ruby
+Statsig.initialize('server-secret-key', options)
+```
+
+### Initializing Statsig when using Unicorn, Puma, or Passenger web server
+
+For **Unicorn**, you should initialize Statsig within an `after_fork` hook in your `unicorn.rb` config file:
+
+```ruby
+after_fork do |server,worker|
+  Statsig.initialize('server-secret-key', options)
+end
+```
+
+For **Puma**, you should initialize Statsig within an `on_worker_boot` hook in your `puma.rb` config file:
+
+```ruby
+on_worker_boot do
+  Statsig.initialize('server-secret-key', options)
+end
+```
+
+For **Passenger**, you should initialize Statsig in your `config.ru` config file:
+
+```ruby
+if defined?(PhusionPassenger)
+  PhusionPassenger.on_event(:starting_worker_process) do |forked|
+    Statsig.initialize('server-secret-key', options)
+  end
+end
+```
