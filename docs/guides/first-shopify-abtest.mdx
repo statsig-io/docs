@@ -51,7 +51,7 @@ To create an experiment on Statsig,
 - In the experiment **Setup** tab, enter the names of the variants that you want to test in the **Groups** panel; in this case I'm just calling them Control and Test. 
 - Staying in the **Groups** panel, click on **sample_parameter** and enter a parameter name of your choice; in this case, I'm calling the parameter **image_selector**. Enter the parameter values that you want to use; in this case, I simply want to toggle between the two images that we've already uploaded to the store in the previous step
 
-![image](https://user-images.githubusercontent.com/1315028/150181235-068a1cf3-00ef-48f8-b2fa-51c0338e5e6d.png)
+![image](https://user-images.githubusercontent.com/1315028/150398282-95fe2988-2a77-4fad-9dc4-95f44e3afc80.png)
 
 
 ### Step 3: Customize your theme
@@ -83,10 +83,10 @@ Then,
             heroImages[1].classList.remove("banner__media-half");
             
             //get experiment config, control (default) is 0
-            const config = statsig.getExperiment("shopify_hero_image_abtest").get("image_selector", 0)
+            const switchImage = statsig.getExperiment("shopify_hero_image_abtest").get("image_selector", false)
 
             // swap the images if the user is assigned to treatment  
-            if (config == 1){
+            if (switchImage){
               const primaryHTML = heroImages[0].innerHTML;
               const primaryOuter = heroImages[0].outerHTML;
               
