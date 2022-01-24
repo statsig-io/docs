@@ -36,19 +36,6 @@ If you're using a [custom ID](https://docs.statsig.com/guides/experiment-on-cust
 The `statsigCustomIDs` field in properties should be an array, where the even index is the name of the user ID type and the odd index is the value of the previous element in the array. Assuming you've created this custom ID type on Statsig (under **ID Type Settings** in your [Project Settings](https://console.statsig.com/settings)), Statsig will automatically recognize these custom identifiers to compute your experiment results appropriately. 
 
 
-### Filtering Incoming Events
-
-Once you've enabled incoming events from **Segment**, you can select specific Segment events that you want to ingest into Statsig by clicking on the **Event Filtering** button.
-
-![image](https://user-images.githubusercontent.com/1315028/150829446-149dc7c5-0025-451a-8fae-09760b4f0566.png)
-
-You can now search for specific events and select or deselect the events that you want Statsig to ingest.  
-
-![image](https://user-images.githubusercontent.com/1315028/150829346-e2f29d7e-bca3-4427-8d54-02e96f37951d.png)
-
-
-
-
 
 ## Configuring Outbound Events
 To export your Statsig events to Segment,
@@ -57,8 +44,19 @@ To export your Statsig events to Segment,
 
 ![image](https://user-images.githubusercontent.com/1315028/150827399-333d9064-de1c-4f4e-bc33-51a46a83531d.png)
 
+## Filtering Events
 
+Once you've enabled incoming events from **Segment**, you can select specific Segment events that you want to ingest by clicking on the **Event Filtering** button.
 
+![image](https://user-images.githubusercontent.com/1315028/150829446-149dc7c5-0025-451a-8fae-09760b4f0566.png)
+
+You can now search for specific events and select or deselect the events that you want Statsig to ingest.  
+
+![image](https://user-images.githubusercontent.com/1315028/150829346-e2f29d7e-bca3-4427-8d54-02e96f37951d.png)
+
+Similarly, once you've enabled outbound events to **Segment**, you can select which categories of Statsig events you want to export. 
+
+![image](https://user-images.githubusercontent.com/1315028/150853774-6112c939-d101-4e15-9f74-3d872e6ba6f3.png)
 
 
 
