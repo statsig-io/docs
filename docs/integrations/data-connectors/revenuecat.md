@@ -4,23 +4,21 @@ title: RevenueCat
 
 ## Overview
 
-Enabling the RevenueCat integration for Statsig will allow Statsig to pull billing, subscription, and revenue metrics into your Statsig projects. This provides easy mechanisms to optimize purchases and revenue by using Statsig's feature gates or experimentation tools without any additional logging.
+Enabling the RevenueCat integration allows Statsig to pull billing, subscription, and revenue metrics into your Statsig projects. This provides easy mechanisms to optimize purchases and revenue by using Statsig's feature gates or experimentation tools without any additional logging.
 
 Statsig integrates with RevenueCat through a Webhook and receives data as mentioned [in the RevenueCat documentation](https://docs.revenuecat.com/docs/webhooks)
 
-## Configuration
+## Configuring Incoming Metrics
 
-1. Navigate to your app in the RevenueCat dashboard and choose `Statsig` from the integrations menu
+1. Copy your **Statsig Server Secret Key** from the [API Keys](https://console.statsig.com/api_keys) tab in the Statsig console. 
+2. Navigate to your app in the RevenueCat dashboard and choose **Statsig** from the Integrations menu.
+3. Enter your **Statsig Server Secret** and click **Save**.
 
-2. Provde your `statsig-server-secret` and select `Save`
    ![img](https://files.readme.io/f8b5f66-Screen_Shot_2021-11-05_at_9.20.40_AM.png)
 
-3. On the Statsig [Integration page](https://console.statsig.com/integrations) enable the RevenueCat integration.
+4. On the Statsig [Integrations](https://console.statsig.com/integrations) page, enable the RevenueCat integration.
 
-## Matching RevenueCat Users with Statsig Users
 
-In order to associate RevenueCat data with your Statsig experiments, you must ensure that the RevenueCat `App User ID` matches the Statsig `User ID` provided when checking a Statsig feature gate or experiment. You can set up `App User ID` in RevenueCat by following the instructions [here](https://docs.revenuecat.com/docs/user-ids#provided-app-user-id)
+If you're running an experiment with the user as your unit type, you must set the RevenueCat `appUserID` to match the `userID` that you log with the Statsig SDK, for example, when you expose the the user to a Statsig feature gate or experiment. Check out how to set the `appUserID` on RevenueCat [here](https://docs.revenuecat.com/docs/user-ids#provided-app-user-id). 
 
-## Sandbox Events
-
-By default, [Sandbox events](https://docs.revenuecat.com/docs/webhooks#testing) will not be ingested into Statsig to reduce noise from test events sent from RevenueCat. However, ingesting `Sandbox events` into Statsig can be enabled in the RevenueCat configuration on the Statsig [Integration page](https://console.statsig.com/integrations) for debugging purposes.
+By default, Statsig will not ingest [Sandbox events](https://docs.revenuecat.com/docs/webhooks#testing) from RevenueCat to reduce noise from test events. However, you can explicitly enable ingestion of Sandbox events into Statsig using the Statsig [Integrations](https://console.statsig.com/integrations) page while debugging. 
