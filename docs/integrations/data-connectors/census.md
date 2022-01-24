@@ -11,7 +11,7 @@ You can find all events that Statsig receives from Census in the [Metrics](/metr
 ## Configuring Incoming Events
 
 1. From the [API Keys](https://console.statsig.com/api_keys) tab in the Statsig console, copy the Statsig "Server Secret Key”.
-2. Follow the steps in the [Census Webhook Guide](https://docs.getcensus.com/destinations/webhook) to create a new Webhook Destination. Enter `https://api.statsig.com/v1/webhooks/census_webhook?statsig_api_key={<SERVER_SECRET_KEY}` as the Webhook URL.
+2. Follow the steps in the [Census Webhook Guide](https://docs.getcensus.com/destinations/webhook) to create a new Webhook Destination. Enter `https://api.statsig.com/v1/webhooks/census_webhook?statsig_api_key={<SERVER_SECRET_KEY>}` as the Webhook URL.
 3. Map the fields that Statsig will receive from Census. [See below](#mapping-configuration) for configuration options.
 6. On the Statsig [Integrations](https://console.statsig.com/integrations) page, enable the Census integration.
 
