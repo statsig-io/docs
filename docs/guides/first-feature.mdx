@@ -73,6 +73,8 @@ Navigate to the **API Keys** section of the Statsig console. Here you would see 
 
 **Client SDK Keys** are used in product apps or websites to access Statsig features. It's okay to embed these keys in apps or website.
 
+The main differences between client and server keys are that client keys are only able to fetch feature gates and experiments with hashed names (so your unreleased features won't be leaked), and client keys don't have permission to call into certain server SDK only endpoints and CRUD APIs.
+
 For the purposes of this exercise, let's go ahead and create a new Client SDK Key.
 
 ![Screen Shot 2021-06-07 at 12 34 57 PM](https://user-images.githubusercontent.com/74584483/121077828-f550e380-c78c-11eb-8e57-05094699b2e4.png)
