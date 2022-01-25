@@ -152,6 +152,9 @@ module.exports = {
     },
     "http-api",
     {
+      "Console API": ["console-api/gates"],
+    },
+    {
       "Access Management": [
         "access-management/projects",
         "access-management/organizations",
