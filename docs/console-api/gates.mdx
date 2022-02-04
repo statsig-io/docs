@@ -12,12 +12,15 @@ All requests must include the **STATSIG-API-KEY** field in the header. The value
 
 # Responses
 
-All responses will contain a **message** field and a **data** field. **message** is a simple string explaining the result of the operation. **data** will either be a [Gate](#gate-object) object or an array of [Gate](#gate-object) objects, depending on the request you made.
+All responses will contain a **message** field and a **data** field.
+
+- **message** is a simple string explaining the result of the operation.
+- **data** will either be a [Gate](#gate-object) object or an array of [Gate](#gate-object) objects, depending on the request you made.
 
 ## Create a Gate
 
 ```bash
-curl --location --request POST 'https://api.statsig.com/console/v1/gates' \
+curl --request POST 'https://api.statsig.com/console/v1/gates' \
 --header 'STASIG-API-KEY: console-xxXxxXXXXxxxxXxx' \
 --data-raw '{
     "name": "a gate",
@@ -42,7 +45,8 @@ curl --location --request POST 'https://api.statsig.com/console/v1/gates' \
 ## Reading All Gates
 
 ```bash
-curl --location --request GET 'https://api.statsig.com/console/v1/gates'
+curl --request GET 'https://api.statsig.com/console/v1/gates' \
+--header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx'
 ```
 
 **Reponse JSON** : An array of [Gate](#gate-object) objects
@@ -70,7 +74,8 @@ curl --location --request GET 'https://api.statsig.com/console/v1/gates'
 ## Reading a Single Gate
 
 ```bash
-curl --location --request GET 'https://api.statsig.com/console/v1/gates/a_gate'
+curl --request GET 'https://api.statsig.com/console/v1/gates/a_gate' \
+--header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx'
 ```
 
 **Reponse JSON** : A single [Gate](#gate-object) object
@@ -90,7 +95,7 @@ curl --location --request GET 'https://api.statsig.com/console/v1/gates/a_gate'
 ## Updating a Gate
 
 ```bash
-curl --location --request PUT 'https://api.statsig.com/console/v1/gates/a_gate' \
+curl --request PUT 'https://api.statsig.com/console/v1/gates/a_gate' \
 --data-raw '{
   "isEnabled": false,
   "description": "helpful summary of what this gate does",
@@ -125,7 +130,8 @@ curl --location --request PUT 'https://api.statsig.com/console/v1/gates/a_gate' 
 ## Deleting a Gate
 
 ```bash
-curl --location --request DELETE 'https://api.statsig.com/console/v1/gates/a_gate'
+curl --request DELETE 'https://api.statsig.com/console/v1/gates/a_gate' \
+--header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx'
 ```
 
 **Reponse JSON** : Only a message is returned for this request
@@ -145,7 +151,7 @@ curl --location --request DELETE 'https://api.statsig.com/console/v1/gates/a_gat
 ### Gate
 
 - **id** | The name that was originally given to the gate on creation but formatted as an ID ("A Gate" -> "a_gate").
-- **isEnabled** | Is the gate enabled. Disabled gates default to false.
+- **isEnabled** | Is the gate enabled.
 - **description** | A brief summary of what the gate is being used for.
 - **lastModifierName** | The Statsig Username of the last modifier of this gate.
 - **lastModifierID** | The Statsig UserID of the last modifier of this gate.
@@ -153,102 +159,99 @@ curl --location --request DELETE 'https://api.statsig.com/console/v1/gates/a_gat
 
 ```json
 {
-  "message": "Gate updated successfully.",
-  "data": {
-    "id": "my_gate",
-    "isEnabled": true,
-    "description": "helpful summary of what this gate does",
-    "lastModifierName": "CONSOLE API",
-    "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
-    "rules": [
-      {
-        "name": "All Conditions",
-        "passPercentage": 10,
-        "conditions": [
-          {
-            "type": "public"
-          },
-          {
-            "type": "user_id",
-            "targetValue": ["111", "222"],
-            "operator": "any"
-          },
-          {
-            "type": "email",
-            "targetValue": ["@outlook.com", "@gmail.com"],
-            "operator": "str_contains_any"
-          },
-          {
-            "type": "custom_field",
-            "targetValue": ["31"],
-            "operator": "any",
-            "field": "age"
-          },
-          {
-            "type": "app_version",
-            "targetValue": "1.1.1",
-            "operator": "version_gt"
-          },
-          {
-            "type": "browser_name",
-            "targetValue": ["Android", "Chrome"],
-            "operator": "any"
-          },
-          {
-            "type": "browser_version",
-            "targetValue": ["94.0.4606.81", "94.0.4606.92"],
-            "operator": "any"
-          },
-          {
-            "type": "os_name",
-            "targetValue": ["Android", "Windows"],
-            "operator": "none"
-          },
-          {
-            "type": "os_version",
-            "targetValue": "11.0.0",
-            "operator": "version_lte"
-          },
-          {
-            "type": "country",
-            "targetValue": ["NZ", "US"],
-            "operator": "any"
-          },
-          {
-            "type": "passes_gate",
-            "targetValue": "a_gate"
-          },
-          {
-            "type": "fails_gate",
-            "targetValue": "a_gate"
-          },
-          {
-            "type": "time",
-            "targetValue": 1643070357193,
-            "operator": "after"
-          },
-          {
-            "type": "environment_tier",
-            "targetValue": ["production"],
-            "operator": "any"
-          },
-          {
-            "type": "passes_segment",
-            "targetValue": "growth_org"
-          },
-          {
-            "type": "fails_segment",
-            "targetValue": "growth_org"
-          },
-          {
-            "type": "ip_address",
-            "targetValue": ["1.1.1.1", "8.8.8.8"],
-            "operator": "any"
-          }
-        ]
-      }
-    ]
-  }
+  "id": "my_gate",
+  "isEnabled": true,
+  "description": "helpful summary of what this gate does",
+  "lastModifierName": "CONSOLE API",
+  "lastModifierID": "x45r10nNlsdfJCs",
+  "rules": [
+    {
+      "name": "All Conditions",
+      "passPercentage": 10,
+      "conditions": [
+        {
+          "type": "public"
+        },
+        {
+          "type": "user_id",
+          "targetValue": ["111", "222"],
+          "operator": "any"
+        },
+        {
+          "type": "email",
+          "targetValue": ["@outlook.com", "@gmail.com"],
+          "operator": "str_contains_any"
+        },
+        {
+          "type": "custom_field",
+          "targetValue": ["31"],
+          "operator": "any",
+          "field": "age"
+        },
+        {
+          "type": "app_version",
+          "targetValue": "1.1.1",
+          "operator": "version_gt"
+        },
+        {
+          "type": "browser_name",
+          "targetValue": ["Android", "Chrome"],
+          "operator": "any"
+        },
+        {
+          "type": "browser_version",
+          "targetValue": ["94.0.4606.81", "94.0.4606.92"],
+          "operator": "any"
+        },
+        {
+          "type": "os_name",
+          "targetValue": ["Android", "Windows"],
+          "operator": "none"
+        },
+        {
+          "type": "os_version",
+          "targetValue": "11.0.0",
+          "operator": "version_lte"
+        },
+        {
+          "type": "country",
+          "targetValue": ["NZ", "US"],
+          "operator": "any"
+        },
+        {
+          "type": "passes_gate",
+          "targetValue": "a_gate"
+        },
+        {
+          "type": "fails_gate",
+          "targetValue": "a_gate"
+        },
+        {
+          "type": "time",
+          "targetValue": 1643070357193,
+          "operator": "after"
+        },
+        {
+          "type": "environment_tier",
+          "targetValue": ["production"],
+          "operator": "any"
+        },
+        {
+          "type": "passes_segment",
+          "targetValue": "growth_org"
+        },
+        {
+          "type": "fails_segment",
+          "targetValue": "growth_org"
+        },
+        {
+          "type": "ip_address",
+          "targetValue": ["1.1.1.1", "8.8.8.8"],
+          "operator": "any"
+        }
+      ]
+    }
+  ]
 }
 ```
 

@@ -152,7 +152,11 @@ module.exports = {
     },
     "http-api",
     {
-      "Console API": ["console-api/gates"],
+      "Console API": [
+        "console-api/autotunes",
+        "console-api/gates",
+        "console-api/segments",
+      ],
     },
     {
       "Access Management": [
