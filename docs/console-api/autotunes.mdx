@@ -22,11 +22,22 @@ All responses will contain a **message** field and a **data** field.
 ```bash
 curl --request POST 'https://api.statsig.com/console/v1/autotunes' \
 --header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx' \
+--header 'Content-Type: application/json' \
 --data-raw '{
-    "name": "Button Color Test",
-    "description": "Which color button gets the most clicks.",
-    "variants": [],
-    ...
+  "name": "Button Color Test",
+  "description": "Which color button gets the most clicks.",
+  "variants": [
+    {
+      "name": "blue",
+      "json": {
+        "value": "#00F"
+      }
+    }
+  ],
+  "successEvent": "purchase_item",
+  "explorationWindow": "1hr",
+  "attributionWindow": "2hr",
+  "winnerThreshold": "99%"
 }'
 ```
 
@@ -94,6 +105,42 @@ curl --request GET 'https://api.statsig.com/console/v1/autotunes/button_color_te
 }
 ```
 
+## Updating a Gate
+
+```bash
+curl --request POST 'https://latest.api.statsig.com/console/v1/autotunes/button_color_test' \
+--header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "description": "Which color button gets the most clicks.",
+    "variants": [{
+        "name": "red",
+        "json": {"color": "red"}
+    }, {
+        "name": "blue",
+        "json": {"color": "blue"}
+    }],
+    "successEvent": "purchase_item",
+    "explorationWindow": "1hr",
+    "attributionWindow": "2hr",
+    "winnerThreshold": "99%"
+}'
+```
+
+**Reponse JSON** : A single [Autotune](#autotune-object) object
+
+```json
+{
+  "message": "Autotune Experiment updated successfully.",
+  "data": {
+    "id": "button_color_test",
+    "description": "Which color button gets the most clicks.",
+    "isStarted": false,
+    ...
+  }
+}
+```
+
 ## Deleting an Autotune
 
 ```bash
@@ -126,8 +173,11 @@ curl --request DELETE 'https://api.statsig.com/console/v1/autotunes/button_color
 - **successEvent** | The event you are trying to optimize for.
 - **successEventValue** | **(Optional)** The value that should come with the event for it to be consider successful.
 - **explorationWindow** | The initial time period where Autotune will equally split the traffic.
+  - string | "1" or "24" or "48"
 - **attributionWindow** | The maximum duration between the exposure and success event that counts as a success.
+  - string | "1" or "2" or "4" or "24"
 - **winnerThreshold** | The "probability of best" threshold a variant needs to achieve for Autotune to declare it the winner, stop collecting data, and direct all traffic.
+  - string | "80%" or "90%" or "95%" or "98%" or "99%"
 - [Learn more](/autotune) at Autotune > Introduction
 
 ```json
@@ -164,6 +214,7 @@ curl --request DELETE 'https://api.statsig.com/console/v1/autotunes/button_color
 
 - **name** | The name given to this variant.
 - **json** | The JSON value returned for this variant.
+  - Must be a JSON object
 
 ```json
 {

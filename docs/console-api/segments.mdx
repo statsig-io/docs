@@ -22,6 +22,7 @@ All responses will contain a **message** field and a **data** field.
 ```bash
 curl --request POST 'https://api.statsig.com/console/v1/segments' \
 --header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx' \
+--header 'Content-Type: application/json' \
 --data-raw '{
     "name": "Paid Users",
     "description": "Users that have paid.",

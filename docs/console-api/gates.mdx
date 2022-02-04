@@ -22,6 +22,7 @@ All responses will contain a **message** field and a **data** field.
 ```bash
 curl --request POST 'https://api.statsig.com/console/v1/gates' \
 --header 'STASIG-API-KEY: console-xxXxxXXXXxxxxXxx' \
+--header 'Content-Type: application/json' \
 --data-raw '{
     "name": "a gate",
     "description": "helpful summary of what this gate does"
@@ -96,6 +97,8 @@ curl --request GET 'https://api.statsig.com/console/v1/gates/a_gate' \
 
 ```bash
 curl --request PUT 'https://api.statsig.com/console/v1/gates/a_gate' \
+--header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx' \
+--header 'Content-Type: application/json' \
 --data-raw '{
   "isEnabled": false,
   "description": "helpful summary of what this gate does",
