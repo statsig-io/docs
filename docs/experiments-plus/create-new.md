@@ -16,7 +16,7 @@ To create a user-level experiment,
    
 6. In the **Allocation** panel, enter the percentage of users that you want to allocate to this experiment. By default, each experiment runs in its own layer and you can enter a value up to 100%
 
-   ![image](https://user-images.githubusercontent.com/1315028/138972419-b7c42f97-29ec-407e-851f-3301130a21c5.png)
+   ![allocation image](https://user-images.githubusercontent.com/74584483/152994031-8aff75dc-5e7b-4381-9a26-c778ec35d5c9.png)
 
 7. In the **Variations** panel, enter the variant names and click on **Add Another Variant** to enter more variants
 
@@ -66,3 +66,7 @@ By default, Pulse results are displayed with 95% confidence intervals and withou
 
 * **Bonferroni Correction**: Select this option to automatically apply the correction in experiments with more than one test group.  This reduces the probability of Type I errors (false positives) by adjusting the significance level alpha, which will be divided by the number of test variants in the experiment.
 * **Default Confidence Interval**: The selection will be used by default every time Pulse results are shown for this experiment.  Choose lower confidence intervals (e.g.: 80%) when there's higher tolerance for false positives and fast iteration with directional results is preferred over longer/larger experiments with increased certainty.   
+
+### Targeting Gates
+
+By default, this is hidden under the advanced configuration of an experiment (at the bottom of the experiment setup page).  A targeting gate will restrict the users elegible for the experiment to those who pass the list of conditions definied in the linked Feature Gate.  This continues to apply after making a decision on an experiment in the Statsig UI.
