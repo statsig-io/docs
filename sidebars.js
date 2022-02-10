@@ -178,6 +178,7 @@ module.exports = {
             "integrations/data-connectors/census",
             "integrations/data-connectors/fivetran",
             "integrations/data-connectors/heap",
+            "integrations/data-connectors/mparticle",
             "integrations/data-connectors/revenuecat",
             "integrations/data-connectors/segment",
           ],

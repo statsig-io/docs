@@ -2,11 +2,158 @@
 sidebar_label: Php
 title: PHP SDK for Statsig
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import AsyncDisclaimer from './async_disclaimer.mdx';
+
+## The Basics {#the-basics}
+
+Get started in a few quick steps.
+
+1. [Create a free account on statsig.com](#step1)
+2. [Install the SDK](#step2)
+3. [Initialize the SDK](#step3)
+4. [Check Feature Gates, Dynamic Configs, or Experiments](#step4)
+5. [Send logs to Statsig](#step5)
+6. [Log a custom event](#step6)
+
+<a name='step1'></a>
+
+#### Step 1 - Create a free account on [www.statsig.com](https://console.statsig.com/sign_up) {#step-1---create-a-free-account-on-wwwstatsigcom}
+
+You could skip this for now, but you will need an SDK Key and some Feature Gates or Dynamic Configs to use with the SDK in just a minute.
+
+<a name='step2'></a>
+
+#### Step 2 - Install the SDK {#step-2---install-the-sdk}
+
+You can install the SDK using composer
+
+```php
+composer require statsig/statsigsdk
+```
+
+The SDK is also [open source and hosted on github](https://github.com/statsig-io/php-sdk).  The package is published to [packagist](https://packagist.org/packages/statsig/statsigsdk).
+
+<a name='step3'></a>
+
+#### Step 3 - Initialize the SDK {#step-3---initialize-the-sdk}
+
+After installation, you will need to initialize the SDK using a [Server Secret Key from the statsig console](https://console.statsig.com/api_keys).
+
+There is also a parameter `options` that requires you to pass in a file name for saving configurations and another for writing log events.
+
+```php
+use Statsig\StatsigServer;
+use Statsig\StatsigOptions;
+
+$this->statsig = new StatsigServer($key, new StatsigOptions("/tmp/statsig.config", "/tmp/statsig.log"));
+```
+
+To keep your configurations up to date, and send event data to Statsig, you must create two cron jobs.
+
+The first runs `sync.php` to download the latest definition of gates/configs/experiments from statsig, and save it to a config file locally.
+If you do not update this file, your gate/config/experiment values will never change, and you will be unable to roll out or roll back features.
+
+```sh
+# Run once
+php sync.php --secret <STATSIG_SECRET_KEY> --output /tmp/statsig.config
+```
+```sh
+# Create a cron job that runs as statsigsync every minute
+echo '*/1 * * * * statsigsync php /my/path/to/statsig/sync.php --secret <STATSIG_SECRET_KEY> --output /tmp/statsig.config > /dev/null' | sudo tee /etc/cron.d/statsigsync
+sudo service cron reload    # reload the cron daemon
+```
+
+The second runs `send.php` to send the exposure data and log events to statsig.  Without this data, you will get no realtime insights (nor A/B test results).
+
+```sh
+# Run once
+php send.php --secret <STATSIG_SECRET_KEY> --file /tmp/statsig.log
+```
+```sh
+# Create a cron job that runs as statsigsync every minute
+echo '*/1 * * * * statsigdata php /my/path/to/statsig/send.php --secret <STATSIG_SECRET_KEY> --file /tmp/statsig.log > /dev/null' | sudo tee /etc/cron.d/statsigdata
+sudo service cron reload    # reload the cron daemon
+```
+
+<a name='step4'></a>
+
+#### Step 4 - Fetch Feature Gates, Dynamic Configs, or Experiments {#step-4---fetch-values}
+
+Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-gates). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates always **CLOSED** or **OFF** (think `return false;`) by default.
+
+From this point on, all APIs will require you to specify the user (see [Statsig user](#statsig-user)) associated with the request. For example, check a gate for a certain user like this:
+
+```php
+use Statsig\StatsigUser;
+
+$user = new StatsigUser("123");
+$user->setEmail("testuser@statsig.com");
+
+$this->statsig->checkGate($user, "<gate_name>");
+```
+
+Feature Gates can be very useful for simple on/off switches, with optional but advanced user targeting. However, if you want to be able send a different set of values (strings, numbers, and etc.) to your clients based on specific user attributes, e.g. country, [**Dynamic Configs**](/dynamic-config) can help you with that. The API is very similar to Feature Gates, but you get an entire json object you can configure on the server and you can fetch typed parameters from it. For example:
+
+```php
+$this->statsig->getConfig($user, "<config_name>");
+```
+
+Then we have [**Experiments**](/experiments-plus), which you can use to run A/B/n experiments and use advanced features like layers (coming soon) to avoid collision and enable quicker iterations with parameter reuse.
+
+```php
+$this->statsig->getExperiment($this->statsigUser, "test_config");
+```
+
+
+<a name='step5'></a>
+
+#### Step 5 - Log a custom event {#step-5---log-event}
+
+Now that you have a Feature Gate or an Experiment set up, you may want to track some custom events and see how your new features or different experiment groups affect these events. This is super easy with Statsig - simply call the Log Event API and specify the user and event name to log; you additionally provide some value and/or an object of metadata to be logged together with the event:
+
+```php
+use Statsig\StatsigEvent;
+
+$event = new StatsigEvent("purchase");
+$event->setUser($user);
+$event->setValue("subscription");
+$event->setMetadata(array("promotion" => "2022 deals"));
+$this->statsig->logEvent($event);
+```
+
+At the end of the request, you can flush events to the log file using:
+
+```php
+$this->statsig->flush();
+```
+
+
+## Statsig User {#statsig-user}
+
+When calling APIs that require a user, you should pass as much information as possible in order to take advantage of advanced gate and config conditions (like country or OS/browser level checks), and correctly measure impact of your experiments on your metrics/events. The `userID` field is required because it's needed to provide a consistent experience for a given user (click [here](/server/concepts/user#why-is-statsiguser-with-a-userid-required-for-server-sdks) to understand further why it's important to always provide a userID).
+
+Besides `userID`, we also have `email`, `ip`, `userAgent`, `country`, `locale` and `appVersion` as top-level fields on StatsigUser. In addition, you can pass any key-value pairs in an object/dictionary to the `custom` field and be able to create targeting based on them.
+
+#### Have sensitive user PII data that should not be logged? {#private-attributes}
+
+No problem, we have a solution for it! On the StatsigUser object we also have a field called `privateAttributes`, which is a simple object/dictionary that you can use to set private user attributes. Any attribute set in `privateAttributes` will only be used for evaluation/targeting, and removed from any logs before they are sent to Statsig server.
+
+For example, if you have feature gates that should only pass for users with emails ending in "@statsig.com", but do not want to log your users' email addresses to Statsig, you can simply add the key-value pair `{ email: "my_user@statsig.com" }` to `privateAttributes` on the user and that's it!
+
+## FAQ {#faq}
+
+#### How do I run experiments for logged out users? {#logged-out-experiments}
+
+You can run experiments for arbitrary unit IDs (sessionID, groupID, etc), rather than at the userID level, if you choose. These custom unit IDs must be predefined in your Statsig project, and then selected in the Experiment creation flow.  For more information, see our guide on [experimenting on custom ID types](/guides/experiment-on-custom-id-types)
+
+<div>{props.faqs}</div>
+
+#### Using the httpAPI instead
 import Gist from 'react-gist';
 
-If you are using php or wordpress, we are still working on a native SDK for multi-user/server environments.  We will also work on a wordpress specific plugin.
-
-For now, you may find the [following gist](https://gist.github.com/tore-statsig/c27fb9de65c7a1d1591d161570ae807a) useful, which creates a lightweight wrapper around the httpAPI for php clients. It exposes functions to `checkGate`, `getConfig`, `getExperiment`, and `logEvent`.
+If you want a simple snippet for using the http api in php, you may find the [following gist](https://gist.github.com/tore-statsig/c27fb9de65c7a1d1591d161570ae807a) useful.  It exposes functions to `checkGate`, `getConfig`, `getExperiment`, and `logEvent`.
 
 Note that the `user` parameter to each of these functions follows the [Statsig User](/server/concepts/user) definition for Server SDKs.
 

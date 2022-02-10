@@ -52,7 +52,7 @@ A tooltip with key statistics and deeper information is shown if you hover over 
  - **Std**: Standard error of the mean estimate for this metric.
  - **Abs Delta**: The absolute difference of the Mean between test groups i.e. Test Mean - Fail Mean.
  - **Delta %**: Relative difference of the Mean i.e. 100% x (Pass mean – Fail mean) / Fail mean
- - **P-Value**: The (two-sided) probability of achieving the observed difference (or one more extreme) assuming there is no difference and the experiment has no effect (groups are equivalent). In classical hypothesis testing, a low p-value means that the chance of obtaining such a result is rare and if it's below a preset threshold, we can conclude that there must be a difference or real effect.
+ - **p-Value**: The probability that such an extreme difference can arise by random chance when the experiment or test actually has no effect.  A low p-value implies the observed difference is unlikely due to random chance.  In hypothesis testing, a p-value threshold is used to determine which results are due to a real effect and which are plausibly due to random chance.
  - **Time Series**: A daily view of how the metric has evolved over a given period of time (shown below). 
  
    ![image](https://user-images.githubusercontent.com/1315028/140843916-73bb885e-4cc5-40a9-a587-36d9616f16ed.png)

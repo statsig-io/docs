@@ -114,7 +114,7 @@ Response:
 
 ##### Export Report {#export-report}
 
-You can [export your Pulse data](https://docs.statsig.com/pulse#export-report) via the console or using the following API. In addition to the [`first_exposures`](https://docs.statsig.com/pulse#first-exposures-file-description) report type as shown below, you can also request a [`pulse_daily`](https://docs.statsig.com/pulse#pulse-summary-and-daily-file-description) or [`unit_metrics_daily`](https://docs.statsig.com/pulse#unit-metrics-file-description) report types. 
+You can [export your Pulse data](https://docs.statsig.com/pulse#export-report) via the console or using the following API. In addition to the [`first_exposures`](https://docs.statsig.com/pulse#first-exposures-file-description) report type as shown below, you can also request a [`pulse_daily`](https://docs.statsig.com/pulse#pulse-summary-and-daily-file-description) or [`unit_metrics_daily`](https://docs.statsig.com/pulse#unit-metrics-file-description) report types.
 
 ```bash
 curl \
@@ -126,9 +126,17 @@ curl \
 ```
 
 Response:
-`{
-    date: {date in PST of data}
-    url: {url to download CSV for the specified type}
-}`
+`{ date: {date in PST of data} url: {url to download CSV for the specified type} }`
 
+#### Update ID List {#update-id-list}
 
+You can dynamically modify users in your [ID List Segments](https://docs.statsig.com/segments/create-new) via the console or using the following API.
+
+```bash
+curl \
+  --header "statsig-api-key: <YOUR-SDK-KEY>" \
+  --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"idListName": <YOUR ID LIST NAME>, "usersToAdd": [<user_id_1>, <user_id_2>, ...], "usersToRemove": [<user_id_3>, <user_id_4>, ...] }' \
+  "https://api.statsig.com/v1/update_id_list"
+```
