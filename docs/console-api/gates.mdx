@@ -1,0 +1,553 @@
+---
+title: Gates
+sidebar_label: Gates
+slug: /console-api/gates
+---
+
+# console/v1/gates
+
+# Authorization
+
+All requests must include the **STATSIG-API-KEY** field in the header. The value should be a **Console API Key** which can be created in the Project Settings on [console.statsig.com/api_keys](https://console.statsig.com/api_keys)
+
+# Responses
+
+All responses will contain a **message** field and a **data** field.
+
+- **message** is a simple string explaining the result of the operation.
+- **data** will either be a [Gate](#gate-object) object or an array of [Gate](#gate-object) objects, depending on the request you made.
+
+## Create a Gate
+
+```bash
+curl --request POST 'https://api.statsig.com/console/v1/gates' \
+--header 'STASIG-API-KEY: console-xxXxxXXXXxxxxXxx' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "a gate",
+    "description": "helpful summary of what this gate does"
+}'
+```
+
+**Reponse JSON** : A single [Gate](#gate-object) object
+
+```json
+{
+  "message": "Gate created successfully.",
+  "data": {
+    "id": "a_gate",
+    "isEnabled": true,
+    "description": "helpful summary of what this gate does",
+    ...
+  }
+}
+```
+
+## Reading All Gates
+
+```bash
+curl --request GET 'https://api.statsig.com/console/v1/gates' \
+--header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx'
+```
+
+**Reponse JSON** : An array of [Gate](#gate-object) objects
+
+```json
+{
+  "message": "Gates listed successfully.",
+  "data": [
+    {
+      "id": "a_gate",
+      "isEnabled": true,
+      "description": "helpful summary of what this gate does"
+      ...
+    },
+    {
+      "id": "b_gate",
+      "isEnabled": true,
+      "description": "similar to gate_a but it has a b instead"
+      ...
+    }
+  ]
+}
+```
+
+## Reading a Single Gate
+
+```bash
+curl --request GET 'https://api.statsig.com/console/v1/gates/a_gate' \
+--header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx'
+```
+
+**Reponse JSON** : A single [Gate](#gate-object) object
+
+```json
+{
+  "message": "Gate read successfully.",
+  "data": {
+    "id": "a_gate",
+    "isEnabled": true,
+    "description": "helpful summary of what this gate does",
+    ...
+  }
+}
+```
+
+## Updating a Gate
+
+```bash
+curl --request PUT 'https://api.statsig.com/console/v1/gates/a_gate' \
+--header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "isEnabled": false,
+  "description": "helpful summary of what this gate does",
+  "rules": [
+    {
+      "name": "Public",
+      "passPercentage": 100,
+      "conditions": [
+        {
+          "type": "public"
+        }
+      ]
+    }
+  ]
+}'
+```
+
+**Reponse JSON** : A single [Gate](#gate-object) object
+
+```json
+{
+  "message": "Gate updated successfully.",
+  "data": {
+    "id": "a_gate",
+    "isEnabled": false,
+    "description": "helpful summary of what this gate does",
+    ...
+  }
+}
+```
+
+## Deleting a Gate
+
+```bash
+curl --request DELETE 'https://api.statsig.com/console/v1/gates/a_gate' \
+--header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx'
+```
+
+**Reponse JSON** : Only a message is returned for this request
+
+```json
+{
+  "message": "Gate deleted successfully."
+}
+```
+
+## ----
+
+## Objects
+
+<a name="gate-object"></a>
+
+### Gate
+
+- **id** | The name that was originally given to the gate on creation but formatted as an ID ("A Gate" -> "a_gate").
+- **isEnabled** | Is the gate enabled.
+- **description** | A brief summary of what the gate is being used for.
+- **lastModifierName** | The Statsig Username of the last modifier of this gate.
+- **lastModifierID** | The Statsig UserID of the last modifier of this gate.
+- **rules** | An array of [Rule](#rule-object) objects.
+
+```json
+{
+  "id": "my_gate",
+  "isEnabled": true,
+  "description": "helpful summary of what this gate does",
+  "lastModifierName": "CONSOLE API",
+  "lastModifierID": "x45r10nNlsdfJCs",
+  "rules": [
+    {
+      "name": "All Conditions",
+      "passPercentage": 10,
+      "conditions": [
+        {
+          "type": "public"
+        },
+        {
+          "type": "user_id",
+          "targetValue": ["111", "222"],
+          "operator": "any"
+        },
+        {
+          "type": "email",
+          "targetValue": ["@outlook.com", "@gmail.com"],
+          "operator": "str_contains_any"
+        },
+        {
+          "type": "custom_field",
+          "targetValue": ["31"],
+          "operator": "any",
+          "field": "age"
+        },
+        {
+          "type": "app_version",
+          "targetValue": "1.1.1",
+          "operator": "version_gt"
+        },
+        {
+          "type": "browser_name",
+          "targetValue": ["Android", "Chrome"],
+          "operator": "any"
+        },
+        {
+          "type": "browser_version",
+          "targetValue": ["94.0.4606.81", "94.0.4606.92"],
+          "operator": "any"
+        },
+        {
+          "type": "os_name",
+          "targetValue": ["Android", "Windows"],
+          "operator": "none"
+        },
+        {
+          "type": "os_version",
+          "targetValue": "11.0.0",
+          "operator": "version_lte"
+        },
+        {
+          "type": "country",
+          "targetValue": ["NZ", "US"],
+          "operator": "any"
+        },
+        {
+          "type": "passes_gate",
+          "targetValue": "a_gate"
+        },
+        {
+          "type": "fails_gate",
+          "targetValue": "a_gate"
+        },
+        {
+          "type": "time",
+          "targetValue": 1643070357193,
+          "operator": "after"
+        },
+        {
+          "type": "environment_tier",
+          "targetValue": ["production"],
+          "operator": "any"
+        },
+        {
+          "type": "passes_segment",
+          "targetValue": "growth_org"
+        },
+        {
+          "type": "fails_segment",
+          "targetValue": "growth_org"
+        },
+        {
+          "type": "ip_address",
+          "targetValue": ["1.1.1.1", "8.8.8.8"],
+          "operator": "any"
+        }
+      ]
+    }
+  ]
+}
+```
+
+<a name="rule-object"></a>
+
+### Rule
+
+- **name** | The name of this rule.
+- **passPercentage** | Of the users that meet the conditions of this rule, what percent should return true.
+- **conditions** | An array of [Condition](#condition-object) objects.
+
+```json
+{
+  "name": "Public",
+  "passPercentage": 10,
+  "conditions": [
+    {
+      "type": "public"
+    }
+  ]
+}
+```
+
+<a name="condition-object"></a>
+
+### Condition
+
+- **type** | The type of condition it is. A full list of conditions can be found [here](#).
+- **operator** | What form of evaluation should be run against the **targetValue**.
+- **targetValue** | The value or values you wish to evaluate.
+
+```json
+{
+  "type": "user_id",
+  "operator": "any",
+  "targetValue": ["111", "222"]
+}
+```
+
+## ----
+
+## All Gate Conditions
+
+#### Everyone
+
+- type: **public**
+- operator: **null**
+- targetValue: **null**
+- [Learn more](/feature-gates/conditions#everyone) at Feature Gates > Conditions > Everyone
+
+```json
+{
+  "type": "public"
+}
+```
+
+#### User ID
+
+- type: **user_id**
+- operator: **any** | **none**
+- targetValue: **string** | **number** | **string[]** | **number[]**
+- [Learn more](/feature-gates/conditions#userid) at Feature Gates > Conditions > User ID
+
+```json
+{
+  "type": "user_id",
+  "operator": "any",
+  "targetValue": ["111", "222"]
+}
+```
+
+#### Email
+
+- type: **email**
+- operator: **any** | **none** | **str_contains_any** | **str_contains_none**
+- targetValue: **string** | **string[]**
+- [Learn more](/feature-gates/conditions#email) at Feature Gates > Conditions > Email
+
+```json
+{
+  "type": "email",
+  "operator": "str_contains_any",
+  "targetValue": ["@outlook.com", "@gmail.com"]
+}
+```
+
+#### Custom Field
+
+- type: **custom_field**
+- operator:
+  - string: **any** | **none** | **str_contains_any** | **str_contains_none**
+  - number: **any** | **none** | **lt** | **gt**
+  - version: **any** | **none**| **version_lt** | **version_gt** | **version_lte** | **version_gte**
+  - date: **before** | **after** | **on**
+- targetValue: **string** | **number** | **string[]** | **number[]**
+- field: **{field_name}**
+- [Learn more](/feature-gates/conditions#custom) at Feature Gates > Conditions > Custom
+
+```json
+{
+  "type": "custom_field",
+  "operator": "gt",
+  "targetValue": 31,
+  "field": "age"
+}
+```
+
+#### App Version
+
+- type: **app_version**
+- operator: **any** | **none** | **version_lt** | **version_gt** | **version_lte** | **version_gte**
+- targetValue: **string** | **number** | **string[]** | **number[]**
+- [Learn more](/feature-gates/conditions#app-version) at Feature Gates > Conditions > App Version
+
+```json
+{
+  "type": "app_version",
+  "operator": "version_gt",
+  "targetValue": "1.1.1"
+}
+```
+
+#### Browser Name
+
+- type: **browser_name**
+- operator: **any** | **none**
+- targetValue: **Android** | **Chrome** | **Chrome Mobile** | **Edge** | **Edge Mobile** | **IE** | **IE Mobile** | **Opera** | **Opera Mobile** | **Firefox** | **Firefox Mobile** | **Mobile Safari** | **Safari**
+- [Learn more](/feature-gates/conditions#browser) at Feature Gates > Conditions > Browser
+
+```json
+{
+  "type": "browser_name",
+  "operator": "any",
+  "targetValue": ["Android", "Chrome"]
+}
+```
+
+#### Browser Version
+
+- type: **browser_version**
+- operator: **any** | **none** | **version_lt** | **version_gt** | **version_lte** | **version_gte**
+- targetValue: **string** | **number** | **string[]** | **number[]**
+- [Learn more](/feature-gates/conditions#browser-version) at Feature Gates > Conditions > Browser Version
+
+```json
+{
+  "type": "browser_version",
+  "operator": "any",
+  "targetValue": ["94.0.4606.81", "94.0.4606.92"]
+}
+```
+
+#### Operating System
+
+- type: **os_name**
+- operator: **any** | **none**
+- targetValue: **Android** | **iOS** | **Linux** | **Mac OS X** | **Windows**
+- [Learn more](/feature-gates/conditions#os_name) at Feature Gates > Conditions > Operating System
+
+```json
+{
+  "type": "os_name",
+  "operator": "none",
+  "targetValue": ["Android", "Windows"]
+}
+```
+
+#### OS Version
+
+- type: **os_version**
+- operator: **any** | **none** | **version_lt** | **version_gt** | **version_lte** | **version_gte**
+- targetValue: **string** | **number** | **string[]** | **number[]**
+- [Learn more](/feature-gates/conditions#os-version) at Feature Gates > Conditions > OS Version
+
+```json
+{
+  "type": "os_version",
+  "operator": "version_lte",
+  "targetValue": ["11.0.0"]
+}
+```
+
+#### Country
+
+- type: **country**
+- operator: **any** | **none**
+- targetValue: **2 Letter Country Code**
+- [Learn more](/feature-gates/conditions#country) at Feature Gates > Conditions > Country
+
+```json
+{
+  "type": "country",
+  "operator": "any",
+  "targetValue": ["NZ", "US"]
+}
+```
+
+#### Passes Gate
+
+- type: **passes_gate**
+- operator: **null**
+- targetValue: **gate_id**
+- [Learn more](/feature-gates/conditions#gate) at Feature Gates > Conditions > Passes Target gate
+
+```json
+{
+  "type": "passes_gate",
+  "targetValue": "a_gate"
+}
+```
+
+#### Fails Gate
+
+- type: **fails_gate**
+- operator: **null**
+- targetValue: **gate_id**
+- [Learn more](/feature-gates/conditions#fails-target-gate) at Feature Gates > Conditions > Fails Target gate
+
+```json
+{
+  "type": "fails_gate",
+  "targetValue": "a_gate"
+}
+```
+
+#### Time
+
+- type: **time**
+- operator: **any** | **none** | **lt** | **gt**
+- targetValue: **string** | **number** | **string[]** | **number[]**
+- [Learn more](/feature-gates/conditions#time) at Feature Gates > Conditions > Time
+
+```json
+{
+  "type": "time",
+  "operator": "after",
+  "targetValue": 1643070357193
+}
+```
+
+#### Environment Tier
+
+- type: **environment_tier**
+- operator: **any** | **none**
+- targetValue: **development** | **staging** | **production**
+- [Learn more](/feature-gates/conditions#environment) at Feature Gates > Conditions > Environment Tier
+
+```json
+{
+  "type": "environment_tier",
+  "targetValue": "production"
+}
+```
+
+#### User in Segment
+
+- type: **passes_segment**
+- operator: **null**
+- targetValue: **segment_id**
+- [Learn more](/feature-gates/conditions#segment) at Feature Gates > Conditions > User in Segment
+
+```json
+{
+  "type": "passes_segment",
+  "targetValue": "growth_org"
+}
+```
+
+#### User not in Segment
+
+- type: **fails_segment**
+- operator: **null**
+- targetValue: **segment_id**
+- [Learn more](/feature-gates/conditions#user-not-in-segment) at Feature Gates > Conditions > User not in Segment
+
+```json
+{
+  "type": "fails_segment",
+  "targetValue": "growth_org"
+}
+```
+
+#### IP Address
+
+- type: **ip_address**
+- operator: **any** | **none**
+- targetValue: **string** | **string[]**
+- [Learn more](/feature-gates/conditions#ip) at Feature Gates > Conditions > IP address
+
+```json
+{
+  "type": "ip_address",
+  "operator": "any",
+  "targetValue": ["1.1.1.1", "8.8.8.8"]
+}
+```
