@@ -5,7 +5,7 @@ slug: /feature-gates/add-rule
 ---
 ## Create a rule for a feature gate
 
-By default, a feature gate check returns **false** when there are no rules configured to target a set of users. You can add a rule to a feature gate as follows: 
+By default, a feature gate check returns **false** when there are no rules configured to target a set of users. You can add a rule to a feature gate to expose the new feature to a targeted set of users as follows: 
 - Log into the Statsig console at https://console.statsig.com 
 - On the left-hand navigation panel, select **Feature Gates**
 - Select the feature gate where you want to add a targeting rule
@@ -36,3 +36,13 @@ By default, a feature gate check returns **false** when there are no rules confi
 ![image](https://user-images.githubusercontent.com/1315028/129114141-1af7d5a5-21bb-4b37-86e9-99d4e39134fe.png)
 
 - Click the **Save Changes** button at the top right corner of the **Rules** section
+
+
+## Rule Evaluation
+
+The rules that you create are evaluated in the order you create them. For each rule, the condition determines which users qualify for the Pass/Fail filter. The Pass filter percentage further determines the percentage of qualifying users that will be exposed to the new feature. Suppose you set up your rules as shown below, the following flow chart illustrates how Statsig will evaluate these rules. 
+
+![image](https://user-images.githubusercontent.com/1315028/154173697-e7c648b3-58f2-4b16-ba64-7222d152647e.png)
+
+![image](https://user-images.githubusercontent.com/1315028/154177120-2f4db628-9899-4435-879c-9b1a4783024e.png)
+
