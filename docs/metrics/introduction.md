@@ -9,7 +9,7 @@ Metrics are critical to monitoring your product and providing experimental resul
 1. Statsig's default day starts at GMT-8 (Pacific Standard Time), and does not change with daylight savings time.  This prevents some days from having 23 and 25 hours which can cause a +/-4% change to some metrics on a biannual basis.
 2. We track and report events with and without user_id wherever possible.  We require user_id to track users across events and sessions and some Statsig features (like Experiments, Pulse and Autotune) will not work without it.  If you do not have a user_id, we recommend creating your own identifier to at least be able to track users at a session or device-level.
 
-# Metric Types
+## Metric Types
 
 Statsig automatically generates metrics and allows creation of custom metrics.  We currently support the following metric types.
 
@@ -24,7 +24,7 @@ Statsig automatically generates metrics and allows creation of custom metrics.  
 
 All metrics are computed for each day.
 
-## 1. Event Count
+### 1. Event Count
 
 `metric_type = event_count`
 
@@ -32,7 +32,7 @@ Event counts are the simplest metric.  For every event we receive, we automatica
 
 Every unique event you send us creates an event_count metric.  The name of this metric will match the name of the event, and be denoted with a metric_type = event_count.
 
-## 2. Event Daily Active Users
+### 2. Event Daily Active Users
 
 `metric_type = event_dau`
 
@@ -42,7 +42,7 @@ These metrics are computed separately for each unit type available in the projec
 
 Every unique event you send us creates an event_dau metric.  The name of this metric will match the name of the event, and be denoted with a metric_type = event_dau.
 
-## 3. User Accounting Metrics
+### 3. User Accounting Metrics
 
 `metric_type = user`
 
@@ -54,17 +54,17 @@ These metrics are computed separately for each unit type.  For example, when Sta
 
 More information on specific metrics and their defintions can be found at (User Accounting Metrics)[/metrics/user].
 
-## 4. Sum Metrics
+### 4. Sum Metrics
 
 `metric_type = sum`
 
 Sum metrics are a custom metric that tallies either the `value` field or a `metadata` field (recommended) for a given event.  This metric is useful when you want to calculate metrics that have different weights.  For example, a total timespent metric can be generated if you logged an event called  `timespent`, and logged the timespent in seconds as metadata, eg. `time_s = 50.2`.  This metric can also be used for monetary amounts however we recommend logging all numeric values in the same currency (eg. US dollars).
 
-## 5. Ratio Metrics
+### 5. Ratio Metrics
 
 `metric_type = ratio`
 
-## 6. Funnel Metrics
+### 6. Funnel Metrics
 
 `metric_type = funnel`
 
@@ -80,10 +80,16 @@ In the example below, the Square variant shows a lift in overall funnel conversi
 ![image](https://user-images.githubusercontent.com/90343952/148440643-8e8a24bd-934d-4100-a15a-abcbcc4bb11c.png)
 
 
-# Dimensions
+## Dimensions
 
 Statsig allows metrics to be broken down into a single set of non-overlapping dimensions.  For example, and event called `purchase` could be broken down into product categories like `jewelry`, `clothing`, `shoes`, and `watches`.  To accomplish this, you would simply log a `purchase` event, and provide the category as the `value`.  Logging in this manner will allow you to see total purchases metric like event_count and event_dau across all products, while also allowing you to see each metric broken down by category.  Each event can only be assigned to one dimension value, but nulls are accepted.
 
 We recommend keeping this to less than 20 unique categories, although Statsig can handle more.  If you reach our tracking limit, we will prioritize tracking of the most common dimensions and overflow less values into an "other" bucket.
 
 Dimensions are supported for custom sum metrics.  To set this up, log your dimension as a `value` and the number to be tallied as a metadata field.
+
+## Tags
+
+Statsig allows you organize your metrics using tags. With tags, you can create a collection of metrics for associated in some way, such as a product area, business function, business objective, and so on. You can also create a loose collection of _guardrail metrics_ that teams check in every experiment to ensure there are causing no unexpected effects in other parts of the business. Once you create a tagged collection of metrics, you can easily pull up this set of metrics when viewing your experiment results and zoom into the context that you want to focus on. 
+
+You can create a tag in the [Metrics Catalog](https://console.statsig.com/4TLCtqzctSqusYcQljJLJE/metrics/metrics_catalog), and then add the tag to all the metrics that you want to add to the collection. To learn more, visit [Creating Metric Tags](https://docs.statsig.com/metrics/create-metric-tags).   
