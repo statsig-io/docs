@@ -31,3 +31,11 @@ The **Custom** tab allows you to create new metrics based on the ones you have l
 The **Charts** tab enables you to visualize customer journeys through your application. These **User Flows** can be a great source of new hypotheses about customer behavior and you could turn these hypotheses into new features and experiments to validate your understanding of customer behavior.
 
 ![image](https://user-images.githubusercontent.com/1315028/141157888-ea748571-b049-41fd-b121-56d7894b5ab7.png)
+
+## Metrics Catalog
+
+The **Metrics Catalog** tab allows you to search and tag your metrics. Tags enable you organize your metrics and create collections of metrics that are associated in some way. For example, you could tag a set of metrics focused on a product area, business function, business objective, and so on. You can also create a loose collection of guardrail metrics that teams check in every experiment to ensure there are causing no unexpected effects in other parts of the business. Once you create a tagged collection of metrics, you can easily pull up this set of metrics when viewing your experiment results and zoom into the context that you want to focus on. 
+
+![image](https://user-images.githubusercontent.com/1315028/154570829-7cc258e7-d4b4-49a3-b0b4-b7023e589f23.png)
+
+
