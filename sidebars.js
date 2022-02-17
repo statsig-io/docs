@@ -120,6 +120,7 @@ module.exports = {
         "metrics/create",
         "metrics/user",
         "metrics/console",
+        "metrics/create-metric-tags",
         "metrics/create-user-flows",
         "metrics/create-user-funnels",
       ],
