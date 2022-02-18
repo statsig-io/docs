@@ -35,10 +35,9 @@ In the Setup tab, define the test groups for this experiment. You can define wha
 
 ![image](https://user-images.githubusercontent.com/1315028/154576194-0b38bbe6-feb8-47a1-b460-3c0c2e9e58c6.png)
 
-In the **Allocation** panel, enter the percentage of users that you want to allocate to this experiment. By default, each experiment runs in its own layer. When you want to create an experiment that excludes any users exposed to other experiments, you will also want to click the checkbox for **Add Layer**. As this is our first experiment, enabling this isolation isn't relevant for us at this stage.
+In the **Allocation** panel, enter the percentage of users that you want to allocate to this experiment. 
 
 ![image](https://user-images.githubusercontent.com/1315028/138972419-b7c42f97-29ec-407e-851f-3301130a21c5.png)
-
 
 Enter the key metrics you want to track in this experiment. While Statsig will show you experiment results 
 for all your metrics, these key metrics represent your hypothesis for the experiment. Establishing a hypothesis
@@ -100,4 +99,4 @@ In the **Metric Lifts** panel, you can see the full picture of how all your tagg
 
 Once you start to see statistically significant results, either green (positive) or red (negative), you're getting ready to make a decision about whether to ship the test variant. 
 
-Alternatively, you can choose to ramp up the experiment to a larger user base by increasing the allocation in the **Setup** tab. This could help you get more data and build more confidence before you decide to ship. 
+Alternatively, you can choose to ramp up the experiment to a larger user base by increasing the allocation in the **Setup** tab. We recommend scaling up allocation slowly in the initial stages, and then by a larger margin in later stages, say 0% -> 2% -> 10% -> 50% -> 100%. This helps you get more data and build more confidence before you decide to ship the experiment. 
