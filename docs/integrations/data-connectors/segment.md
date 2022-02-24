@@ -32,7 +32,7 @@ If you're using a [custom ID](https://docs.statsig.com/guides/experiment-on-cust
 {
   ...
   properties: {
-    "statsigCustomIDs": [ "companyID", "<this_company_id>", ...]
+    "statsigCustomIDs": [ "companyID", "<this_company_id>", "stableID", "<this_stable_id>",]
   }
 }
 ```
