@@ -4,8 +4,9 @@ FROM node:15-alpine as builder
 WORKDIR /usr/app
 
 COPY ./ ./
-RUN npm ci
-RUN npm run build
+RUN npm install -g pnpm
+RUN pnpm install --frozen-lockfile
+RUN pnpm run build
 
 ## production environment
 FROM nginx:1-alpine
