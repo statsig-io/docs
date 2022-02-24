@@ -1,7 +1,6 @@
 ---
 title: Getting Started
 slug: /
-hide_table_of_contents: true
 ---
 
 import Button from "@material-ui/core/Button";
@@ -17,47 +16,6 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
 Statsig is an experimentation platform that enables you to quickly assess the impact of new functionality and deliver products that your customers love. Start shipping faster with Statsig’s getting started guides, code samples, and documentation.
-
-## Getting Help
-
-export const SlackCard = () => (
-  <Card
-    style={{
-      padding: "32px",
-      flex: "1",
-      display: "flex",
-      flexDirection: "row",
-      alignItems: "center",
-      backgroundColor: "#194b7d",
-      color: "white",
-      borderRadius: "4px",
-    }}
-    variant="outlined"
-  >
-    <div style={{ flex: 1 }}>
-      <h2>Stuck at any point?</h2>
-      <h6>
-        Connect with our data scientists and engineers, or hang out with other
-        folks like you in our Experimentation Community.
-      </h6>
-      <Button
-        target="_blank"
-        href="https://statsig.com/slack"
-        style={{ color: "#194b7d", backgroundColor: "white" }}
-      >
-        Join us on Slack
-      </Button>
-    </div>
-    <div style={{ paddingLeft: "16px" }}>
-      <img
-        width="160px"
-        src="https://www.statsig.com/images/community_slack.png"
-      />
-    </div>
-  </Card>
-);
-
-<SlackCard />
 
 export const ArrowButton = ({ link }) => (
   <IconButton
