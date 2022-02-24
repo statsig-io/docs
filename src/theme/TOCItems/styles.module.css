@@ -35,6 +35,10 @@
   vertical-align: middle;
 }
 
+.slackUpsell a .button {
+  white-space: normal;
+}
+
 @media (max-width: 996px) {
   .tableOfContents {
     display: none;
