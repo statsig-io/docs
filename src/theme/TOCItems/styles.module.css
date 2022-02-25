@@ -28,15 +28,12 @@
 
 .slackUpsell a {
   color: #194b7d;
+  white-space: normal;
 }
 
 .slackUpsell a img {
   height: 20px;
   vertical-align: middle;
-}
-
-.slackUpsell a .button {
-  white-space: normal;
 }
 
 @media (max-width: 996px) {
