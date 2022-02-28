@@ -50,15 +50,10 @@ module.exports = {
     {
       Segments: [
         "segments/introduction",
-        {
-          "Working With": [
-            "segments/working-with",
-            "segments/create-new",
-            "segments/add-rule",
-            "segments/add-id-list",
-            "segments/use-segment",
-          ],
-        },
+        "segments/create-new",
+        "segments/add-rule",
+        "segments/add-id-list",
+        "segments/use-segment",
       ],
     },
     {

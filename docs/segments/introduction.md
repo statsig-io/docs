@@ -12,4 +12,8 @@ Segments are ideal for targeting a commonly identified set of users across featu
 
 To get started, see the Statsig guide to [create your first segment](/guides/first-segment).
 
-To learn about all that you can do with segments, see the Statsig tutorial on [working with segments](/segments/working-with).
+The following tutorials show how you can perform common tasks with segments.
+
+- [Create a segment](/segments/create-new)
+- [Create rules for a segment](/segments/add-rule)
+- [Use a segment](/segments/implement)
