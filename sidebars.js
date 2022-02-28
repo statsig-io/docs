@@ -20,27 +20,22 @@ module.exports = {
     },
     {
       "Feature Gates": [
-        "feature-gates/introduction",
+        "feature-gates/working-with",
+        "feature-gates/create-new",
+        "feature-gates/add-rule",
+        "feature-gates/test-gate",
+        "feature-gates/overrides",
         {
-          "Working With": [
-            "feature-gates/working-with",
-            "feature-gates/create-new",
-            "feature-gates/add-rule",
-            "feature-gates/test-gate",
-            "feature-gates/overrides",
-            {
-              Implement: [
-                "feature-gates/implement",
-                "feature-gates/implement/client",
-                "feature-gates/implement/server",
-                "feature-gates/implement/http-api",
-              ],
-            },
-            "feature-gates/conditions",
-            "feature-gates/view-exposures",
-            "feature-gates/best-practices",
+          Implement: [
+            "feature-gates/implement",
+            "feature-gates/implement/client",
+            "feature-gates/implement/server",
+            "feature-gates/implement/http-api",
           ],
         },
+        "feature-gates/conditions",
+        "feature-gates/view-exposures",
+        "feature-gates/best-practices",
       ],
     },
     {
