@@ -215,6 +215,21 @@ You can import the global `Statsig` singleton to call SDK functions outside of a
 If you are calling methods on the global `Statsig` like `initialize` or `updateUser`, the user object tracked by the provider and the user object used outside the component tree can get out of sync.  You are responsible for maintaining the state of the `user` and keeping it consistent with the `StatsigProvider` in these cases.  The `statsig-react` SDK uses the global `Statsig` class to serve gate/config/experiment checks, but these are memoized in the hooks the SDK provides.  Updates to the user which impact flag values that are made outside the context of the react component tree will not be reflected in the component tree unless the updated user is passed in to the `StatsigProvider`.
 :::
 
+#### Custom Initialization
+import Gist from 'react-gist';
+If you wish to use the React SDK but customize the initialization logic beyond what the `StatsigProvider` offers, you can write your own provider.  See the above warning on using the global `Statsig` singleton before proceeding.
+
+An example provider with custom initialization logic might look something like this:
+
+<Gist id="0bb12b2eb847847af62d547731d2dca9" />
+
+Feel free to reach out to us in the [Statsig Slack channel](www.statsig.com/slack) if you are having difficulty setting this up!
+
+#### Silencing "Call and wait for initialize() to finish first"
+
+Starting in `v1.6.0`, setting the environment variable `REACT_APP_STATSIG_SDK_MODE=silent` will swallow the `Call and wait for initialize() to finish first` exception.  For more information, see the [release notes for v1.6.0](https://github.com/statsig-io/react-sdk/releases/tag/v1.6.0)
+
+
 #### Testing
 
 Internally at Statsig, we use this jest mock to test our components:
