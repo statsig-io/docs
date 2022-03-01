@@ -2,7 +2,13 @@ module.exports = {
   docs: [
     "getting-started",
     {
-      "Walkthrough Guides": [
+      type: "category",
+      label: "Walkthrough Guides",
+      link: {
+        type: "generated-index",
+        title: "Walkthrough Guides"
+      },
+      items: [
         "guides/first-feature",
         "guides/logging-events",
         "guides/first-dynamic-config",
@@ -19,8 +25,10 @@ module.exports = {
       ],
     },
     {
-      "Feature Gates": [
-        "feature-gates/working-with",
+      type: "category",
+      label: "Feature Gates",
+      link: "feature-gates/working-with",
+      items: [
         "feature-gates/create-new",
         "feature-gates/add-rule",
         "feature-gates/test-gate",
