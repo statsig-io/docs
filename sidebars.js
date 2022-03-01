@@ -126,7 +126,7 @@ module.exports = {
     },
     {
       "Server SDKs": [
-        { Concepts: ["server/concepts/user"] },
+        { Concepts: ["server/concepts/user", "messages/serverRequiredUserID"] },
         "server/nodejsServerSDK",
         "server/javaSdk",
         "server/dotnetSDK",
