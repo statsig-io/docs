@@ -1,6 +1,6 @@
 ---
 title: Ultrasound
-sidebar_label: Introduction
+sidebar_label: Ultrasound
 slug: /ultrasound
 ---
 

@@ -27,7 +27,10 @@ module.exports = {
     {
       type: "category",
       label: "Feature Gates",
-      link: "feature-gates/working-with",
+      link: {
+        type: "doc",
+        id: "feature-gates/working-with",
+      },
       items: [
         "feature-gates/create-new",
         "feature-gates/add-rule",
@@ -47,17 +50,27 @@ module.exports = {
       ],
     },
     {
-      "Dynamic Config": [
-        "dynamic-config/introduction",
+      type: "category",
+      label: "Dynamic Config",
+      link: {
+        type: "doc",
+        id: "dynamic-config/introduction",
+      },
+      items: [
         "dynamic-config/working-with",
         "dynamic-config/create-new",
         "dynamic-config/add-rule",
         "dynamic-config/implement",
-      ],
+      ]
     },
     {
-      Segments: [
-        "segments/introduction",
+      type: "category",
+      label: "Segments",
+      link: {
+        type: "doc",
+        id: "segments/introduction",
+      },
+      items: [
         "segments/create-new",
         "segments/add-rule",
         "segments/add-id-list",
@@ -65,18 +78,19 @@ module.exports = {
       ],
     },
     {
-      "Experiments+": [
-        "experiments-plus/introduction",
-        {
-          "Working With": [
-            "experiments-plus/working-with",
-            "experiments-plus/create-new",
-            "experiments-plus/power-analysis",
-            "experiments-plus/implement",
-            "experiments-plus/monitor",
-            "experiments-plus/read-results",
-          ],
-        },
+      type: "category",
+      label: "Experiments",
+      link: {
+        type: "doc",
+        id: "experiments-plus/introduction",
+      },
+      items: [
+        "experiments-plus/working-with",
+        "experiments-plus/create-new",
+        "experiments-plus/power-analysis",
+        "experiments-plus/implement",
+        "experiments-plus/monitor",
+        "experiments-plus/read-results",
         {
           Experimentation: [
             "experiments-plus/experimentation/why-experiment",
@@ -89,27 +103,25 @@ module.exports = {
       ],
     },
     {
-      Pulse: ["pulse/introduction"],
-    },
-    {
-      Autotune: [
-        "autotune/introduction",
+      type: "category",
+      label: "Autotune",
+      link: {
+        type: "doc",
+        id: "autotune/introduction",
+      },
+      items: [
         "autotune/setup",
         "autotune/monitoring",
       ],
     },
     {
-      Users: ["users/introduction"],
-    },
-    {
-      Holdouts: ["holdouts/introduction"],
-    },
-    {
-      Ultrasound: ["ultrasound/introduction"],
-    },
-    {
-      Metrics: [
-        "metrics/introduction",
+      type: "category",
+      label: "Metrics",
+      link: {
+        type: "doc",
+        id: "metrics/introduction",
+      },
+      items: [
         "metrics/create",
         "metrics/user",
         "metrics/console",
@@ -117,6 +129,26 @@ module.exports = {
         "metrics/create-user-flows",
         "metrics/create-user-funnels",
       ],
+    },
+    {
+      type: "doc",
+      label: "Pulse",
+      id: "pulse/introduction",
+    },
+    {
+      type: "doc",
+      label: "Users",
+      id: "users/introduction",
+    },
+    {
+      type: "doc",
+      label: "Holdouts",
+      id: "holdouts/introduction",
+    },
+    {
+      type: "doc",
+      label: "Ultrasound",
+      id: "ultrasound/introduction",
     },
     {
       "Client SDKs": [

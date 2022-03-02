@@ -1,6 +1,6 @@
 ---
 title: Users
-sidebar_label: Introduction
+sidebar_label: Users
 slug: /users
 ---
 
