@@ -1,6 +1,6 @@
 ---
 title: Pulse
-sidebar_label: Introduction
+sidebar_label: Pulse
 slug: /pulse
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Holdouts
-sidebar_label: Introduction
+sidebar_label: Holdouts
 slug: /holdouts
 ---
 
