@@ -192,6 +192,8 @@ module.exports = {
           "Single Sign-On": [
             "access-management/sso/overview",
             "access-management/sso/okta_sso",
+            "access-management/sso/azuread",
+            
           ],
         },
       ],
