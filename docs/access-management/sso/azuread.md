@@ -24,5 +24,5 @@ You will need to enter three items in the Statsig SSO configuration -
 2. Get the client ID for this app from Overview -> Application (client) ID.
 3. Get the client secret value for when you saved this after creating a new client secret. 
 
-Once these steps have been completed, the Statsig OIDC Application in Okta has been successfully configured. Following this, you will need to follow the steps [here to enable configuration of SSO on your Statsig Project](/access-management/sso/overview#configuration).
+Once these steps have been completed, the prep on Azure AD is complete. Following this, you will need to follow the steps [here to enable configuration of SSO on your Statsig Project](/access-management/sso/overview#configuration).
 
