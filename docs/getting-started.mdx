@@ -351,7 +351,7 @@ generate an API key.
 
 To get started, check out one of our guides, like [building your first feature](/guides/first-feature).
 
-Or, if you want to poke around on your own, we recommend taking a quick tour around the console, and setting
+Or, if you want to poke around on your own, we recommend taking a quick tour around the console and setting
 up a Feature Gate or Dynamic Config to use when you start integrating with an SDK. Our
 SDKs function as a bridge to your Statsig console -- once you have integrated an
 SDK into your application, you can update Feature Gate conditions or Dynamic
@@ -366,10 +366,8 @@ If none of our current SDKs fit your needs, let us know! Email jkw [at] statsig 
 com. We're working hard to bring the power of Statsig to your client or server
 with more SDKs, plugins, and integrations shipping all the time.
 
-#### I want to run an A/B test, can I use Statsig for that? {#i-want-to-run-an-ab-test-can-i-use-statsig-for-that}
+#### How can I get started running an A/B Test?
 
-Statsig has two main ways to experiment.
+You can run simple A/B tests by opening up a partial rollout on any feature gate. You then analyze the results of the experiment in the "Pulse" tab of the gate.  This is available to all projects, from the Free tier up through Enterprise contracts.  To get started, follow the [your first feature guide](/guides/first-feature).  When your feature is ready, just be sure to include a partial rollout rather than a 100% release.  This will create test/control groups to compare your metrics.
 
-You can run simple A/B tests by opening up a partial rollout on any feature gate. You then analyze the results of the experiment in the "Pulse" tab of the gate.
-
-If you're looking for multivariate experiments (A/B/...N tests) and mutual exclusivity, check out [Experiments+](/experiments-plus/).
+If you're looking for multivariate experiments (A/B/...N tests) and mutual exclusivity, check out our flagship [Experiments](/experiments-plus/) product. You can also [follow this guide to set up and run your first A/B test on Statsig](/guides/abn-tests).  Note that the "Experiments" feature is only available to the Pro tier and above.
