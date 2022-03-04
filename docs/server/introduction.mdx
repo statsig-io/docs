@@ -1,0 +1,29 @@
+---
+title: Server SDKs
+slug: /server/introduction
+---
+
+Statsig Server SDKs evaluate gate, config, experiment checks locally, on your server.
+
+In general, Server SDKs follow the same pattern:
+
+1. Initialize the SDK.  The SDK will reach out to Statsig for the most up to date definition of all of your feature gates, dynamic configs, experiments, autotunes, and layers
+2. Evaluate `checkGate`/ `getConfig` / `getExperiment` calls locally
+3. Batch exposure logs with calls to `logEvent` and periodically flush logs to Statsig servers
+
+![Server SDKs](https://user-images.githubusercontent.com/74584483/156812577-bf9af089-eec0-495e-a392-1c4cfe8a2367.png)
+
+There are a few key concepts that may be helpful to review before integrating an SDK:
+
+- [StatsigUser](/server/concepts/user)
+- [UserID Requirements](/messages/serverRequiredUserID)
+
+Or, you can jump right in to the technical docs, by language, on the sidebar or below:
+
+- [node js](server/nodejsServerSDK)
+- [java](server/javaSdk)
+- [python](server/pythonSDK)
+- [go](server/golangSDK)
+- [ruby](server/rubySDK)
+- [dotnet](server/dotnetSDK)
+- [php](server/phpSDK)
