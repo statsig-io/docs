@@ -1,0 +1,30 @@
+---
+title: Client SDKs
+slug: /client/introduction
+---
+
+Statsig Client SDKs evaluate gate, config, experiment checks up front for a particular user, and then serve all checks synchronously from this evaluation.
+
+In general, Client SDKs follow the same pattern:
+
+1. Initialize the SDK.  The SDK will reach out to Statsig and evaluate all feature gates, dynamic configs, experiments, autotunes, and layers for the given user
+2. Evaluate `checkGate`/ `getConfig` / `getExperiment` calls from the values fetched in (1)
+3. Batch exposure logs with calls to `logEvent` and periodically flush logs to Statsig servers
+
+![Client SDKs](https://user-images.githubusercontent.com/74584483/156815263-851a0320-8501-4ad0-827d-3239d7612cf9.png)
+
+It may be helpful to review our documentation on a `StatsigUser` before integrating an SDK:
+
+- [StatsigUser](/client/concepts/user)
+
+Or, you can jump right in to the technical docs, by language, on the sidebar or below:
+
+- [Javascript](client/jsClientSDK)
+- [React](client/reactSDK)
+- [React Native](client/reactNativeSDK)
+- [React Native Expo](client/reactNativeExpoSDK)
+- [iOS](client/iosClientSDK)
+- [Android](client/androidClientSDK)
+- [Dotnet](client/dotnetSDK)
+- [Roku](client/rokuSDK)
+- [Unity](client/unitySDK)

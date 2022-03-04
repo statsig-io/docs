@@ -151,7 +151,13 @@ module.exports = {
       id: "ultrasound/introduction",
     },
     {
-      "Client SDKs": [
+      type: "category",
+      label: "Client SDKs",
+      link: {
+        type: "doc",
+        id: "client/introduction",
+      },
+      items: [
         { Concepts: ["client/concepts/user"] },
         "client/jsClientSDK",
         "client/reactSDK",
@@ -165,14 +171,20 @@ module.exports = {
       ],
     },
     {
-      "Server SDKs": [
+      type: "category",
+      label: "Server SDKs",
+      link: {
+        type: "doc",
+        id: "server/introduction",
+      },
+      items: [
         { Concepts: ["server/concepts/user", "messages/serverRequiredUserID"] },
         "server/nodejsServerSDK",
         "server/javaSdk",
-        "server/dotnetSDK",
-        "server/rubySDK",
-        "server/golangSDK",
         "server/pythonSDK",
+        "server/golangSDK",
+        "server/rubySDK",
+        "server/dotnetSDK",
         "server/phpSDK",
       ],
     },
