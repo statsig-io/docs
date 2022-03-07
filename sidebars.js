@@ -190,7 +190,13 @@ module.exports = {
     },
     "http-api",
     {
-      "Console API": [
+      type: "category",
+      label: "Console API",
+      link: {
+        type: "doc",
+        id: "console-api/introduction",
+      },
+      items: [
         "console-api/autotunes",
         "console-api/gates",
         "console-api/segments",
