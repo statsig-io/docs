@@ -203,7 +203,13 @@ module.exports = {
       ],
     },
     {
-      "Access Management": [
+      type: "category",
+      label: "Access Management",
+      link: {
+        type: "doc",
+        id: "access-management/introduction",
+      },
+      items: [
         "access-management/projects",
         "access-management/organizations",
         {
@@ -217,10 +223,15 @@ module.exports = {
       ],
     },
     {
-      Integrations: [
+      type: "category",
+      label: "Integrations",
+      link: {
+        type: "doc",
+        id: "integrations/introduction",
+      },
+      items: [
         {
           "Data Connectors": [
-            "integrations/data-connectors",
             "integrations/data-connectors/census",
             "integrations/data-connectors/fivetran",
             "integrations/data-connectors/heap",
