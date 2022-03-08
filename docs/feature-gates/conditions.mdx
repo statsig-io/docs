@@ -10,8 +10,10 @@ Statsig feature gates contain a list of **rules**, which are evaluated in order 
 As soon as a user passes the **condition(s)** in a given rule, subsequent rules will be ignored.
 The user is then evaluated against the percentage rollout of that rule, passing if they meet the threshold and failing otherwise.
 
+:::warn
 WARNING - order matters for rules!  If a user meets a condition at the top, evaluation stops (regardless of if they pass or fail the rollout percentage).
 Another way to think of it, using boolean logic: rules are combined with an OR (short circtuiting when one is true), while conditions are combined with AND.
+:::
 
 If the user passes condition 1 and 2, condition 3 is never evaluated.  The rollout percentage of rule 1 would then be evaluated against the userID and salt of the gate.
 
