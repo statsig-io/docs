@@ -4,20 +4,24 @@ sidebar_label: Conditions
 slug: /feature-gates/conditions
 ---
 
-## Introduction
+## Introduction 
 
-Statsig feature gates contain a list of **rules**, which are evaluated in order from top to bottom.
-As soon as a user passes the **condition(s)** in a given rule, subsequent rules will be ignored.
-The user is then evaluated against the percentage rollout of that rule, passing if they meet the threshold and failing otherwise.
+Statsig feature gates contain a list of rules that are evaluated in order from top to bottom. The page describes in more detail how these rules are evaluated and lists all currently supported conditions.
 
-:::warn
-WARNING - order matters for rules!  If a user meets a condition at the top, evaluation stops (regardless of if they pass or fail the rollout percentage).
-Another way to think of it, using boolean logic: rules are combined with an OR (short circtuiting when one is true), while conditions are combined with AND.
-:::
+### Rule Evaluation
 
-If the user passes condition 1 and 2, condition 3 is never evaluated.  The rollout percentage of rule 1 would then be evaluated against the userID and salt of the gate.
+The rules that you create are evaluated in the order you create them. For each rule, the **criteria** or **conditions** determine which users _qualify_ for the Pass/Fail treatments. The Pass filter percentage further determines the percentage of _qualifying_ users that will be exposed to the new feature. 
 
-This document defines all of the currently supported **conditions**.
+Suppose you set up your rules as shown below, the following flow chart illustrates how Statsig evaluates these rules. 
+
+![image](https://user-images.githubusercontent.com/1315028/154173697-e7c648b3-58f2-4b16-ba64-7222d152647e.png)
+
+![image](https://user-images.githubusercontent.com/1315028/154177120-2f4db628-9899-4435-879c-9b1a4783024e.png)
+
+Note that as soon as a user qualifies based on the condition in a given rule, Statsig doesn't evaluate subsequent rules for this user. Statsig then picks the qualifying user to be in either the Pass or Fail group of that rule.  
+
+Also note that in the example, the third rule for **Remaining Folks** captures all users who don't qualify for previous two rules. If we were to remove this third rule, then only a subset of your users (users in pools 1 and 2) would qualify for this feature gate and for further analysis, not your total user base.
+
 
 ### Client vs Server SDKs
 All of the following conditions work on both client and server SDKs.  Client SDKs handle a bit more automatically for you - if you do not provide a userID, client SDKs rely on a generated "stable identifier" which is persisted to local storage.
@@ -216,3 +220,11 @@ Supported Operators: dependent on the condition
 Example: Only show a feature to 20 somethings, as marked by the privateAttributes object having "age": "20-29".
 
 ![Private attributes example](https://user-images.githubusercontent.com/74584483/137403635-33b46da3-5508-432e-b3b4-4ed9990edf0f.png)
+
+## FAQs
+**1. Could users switch between control (fail) and test (pass) groups?** 
+Once a user is exposed, they will be included in the analysis going forward. They saw the new feature and were affected. If the feature gate rules are modified or the user's attributes change in a way that the user no longer qualifies, they will stop receiving the new feature. However, they will continue to be counted for analysis. Once you roll out the feature, all users will see the new feature; alternatively, if you turn off the feature gate, all users will see the control (feature disabled). In either case (roll out or turn off), Statsig performs no further analysis.
+
+**2. How do overrides work? Are users included in overrides also included in the analysis?**
+When you add user IDs in the **Pass** or **Fail** lists of your feature gate, these users will see the appropriate treatment but will not be included in the analysis. 
+
