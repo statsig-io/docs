@@ -9,7 +9,7 @@ description: Download daily reports
 
 ## Authorization
 
-All requests must include the **Server-Side Secret Key** field in the header. This can can be created in the Project Settings on [console.statsig.com/api_keys](https://console.statsig.com/api_keys)
+All requests must include the **Server-Side Secret Key** field in the header. This can can be created in the Project Settings on [console.statsig.com/api_keys](https://console.statsig.com/api_keys).  This feature requires Pro or Enterprise Tier.
 
 ## Responses
 
@@ -29,7 +29,7 @@ This feature is available to Pro and Enterprise tier customers.
 
 ```bash
 curl --request POST 'https://api.statsig.com/v1/get_daily_reports' \
---header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx' \
+--header 'STATSIG-API-KEY: server-side Secret Key' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "type": "<daily_report_type>",
