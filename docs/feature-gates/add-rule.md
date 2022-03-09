@@ -46,3 +46,8 @@ The rules that you create are evaluated in the order you create them. For each r
 
 ![image](https://user-images.githubusercontent.com/1315028/154177120-2f4db628-9899-4435-879c-9b1a4783024e.png)
 
+In this example, the third rule for **Remaining Folks** captures all users who don't qualify for previous two rules. If we were to remove this third rule, then the subsequent analysis and Pulse results will only include users who qualify the previous two rules (users in pools 1 and 2), not your total user base.
+
+
+
+
