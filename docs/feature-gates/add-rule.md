@@ -52,5 +52,10 @@ In this example, the third rule for **Remaining Folks** captures all users who d
 **1. Could users switch between control (fail) and test (pass) groups?** 
 Once a user is exposed, they will be included in the analysis going forward. They saw the new feature and were affected. If the feature gate rules are modified or the user's attributes change in a way that the user no longer qualifies, they will stop receiving the new feature. However, they will continue to be counted for analysis. Once you roll out the feature, all users will see the new feature; alternatively, if you turn off the feature gate, all users will see the control (feature disabled). In either case (roll out or turn off), Statsig performs no further analysis.
 
+**2. How do overrides work? Are users included in overrides also included in the analysis?**
+When you add user IDs in the **Pass** or **Fail** lists of your feature gate, these users will see the appropriate treatment but will not be included in the analysis. 
+
+
+
 
 
