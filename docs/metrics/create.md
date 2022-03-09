@@ -23,7 +23,7 @@ We also support the ability to create custom metrics.  You can find this under M
 
 ### Custom Sum
 
-![custom_sum](https://user-images.githubusercontent.com/77478319/137035239-67965170-c2b2-45d4-86d0-7b4f1ff21afb.png)
+![image](https://user-images.githubusercontent.com/31516123/157346324-e84188a2-9143-4a41-94c3-2b4246eb28af.png)
 
 Sum metrics can be created in 3 easy steps:
 1. Provide a Metric Name - It's generally best practice to make sure the name reflects the calculation (eg. total_timespent, total_revenue, sum_of_message_sends).
