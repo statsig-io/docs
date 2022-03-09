@@ -10,7 +10,7 @@ Statsig feature gates contain a list of rules that are evaluated in order from t
 
 ### Rule Evaluation
 
-The rules that you create are evaluated in the order you create them. For each rule, the **criteria** or **conditions** determine which users _qualify_ for the Pass/Fail treatments. The Pass filter percentage further determines the percentage of _qualifying_ users that will be exposed to the new feature. 
+The rules that you create are evaluated in the order they're listed. For each rule, the **criteria** or **conditions** determine which users _qualify_ for the Pass/Fail treatments. The Pass percentage further determines the percentage of _qualifying_ users that will be exposed to the new feature. The remaining _qualifying_ users will see the feature disabled.
 
 Suppose you set up your rules as shown below, the following flow chart illustrates how Statsig evaluates these rules. 
 
@@ -21,7 +21,6 @@ Suppose you set up your rules as shown below, the following flow chart illustrat
 Note that as soon as a user qualifies based on the condition in a given rule, Statsig doesn't evaluate subsequent rules for this user. Statsig then picks the qualifying user to be in either the Pass or Fail group of that rule.  
 
 Also note that in the example, the third rule for **Remaining Folks** captures all users who don't qualify for previous two rules. If we were to remove this third rule, then only a subset of your users (users in pools 1 and 2) would qualify for this feature gate and for further analysis, not your total user base.
-
 
 ### Client vs Server SDKs
 All of the following conditions work on both client and server SDKs.  Client SDKs handle these conditions a bit more automatically for you - if you do not provide a userID, client SDKs rely on an auto-generated "stable identifier" which is persisted to local storage.
