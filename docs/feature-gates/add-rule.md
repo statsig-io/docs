@@ -38,22 +38,7 @@ By default, a feature gate check returns **false** when there are no rules confi
 - Click the **Save Changes** button at the top right corner of the **Rules** section
 
 
-## Rule Evaluation
 
-The rules that you create are evaluated in the order you create them. For each rule, the condition determines which users qualify for the Pass/Fail filter. The Pass filter percentage further determines the percentage of qualifying users that will be exposed to the new feature. Suppose you set up your rules as shown below, the following flow chart illustrates how Statsig will evaluate these rules. 
-
-![image](https://user-images.githubusercontent.com/1315028/154173697-e7c648b3-58f2-4b16-ba64-7222d152647e.png)
-
-![image](https://user-images.githubusercontent.com/1315028/154177120-2f4db628-9899-4435-879c-9b1a4783024e.png)
-
-In this example, the third rule for **Remaining Folks** captures all users who don't qualify for previous two rules. If we were to remove this third rule, then the subsequent analysis and Pulse results will only include users who qualify the previous two rules (users in pools 1 and 2), not your total user base.
-
-### FAQs
-**1. Could users switch between control (fail) and test (pass) groups?** 
-Once a user is exposed, they will be included in the analysis going forward. They saw the new feature and were affected. If the feature gate rules are modified or the user's attributes change in a way that the user no longer qualifies, they will stop receiving the new feature. However, they will continue to be counted for analysis. Once you roll out the feature, all users will see the new feature; alternatively, if you turn off the feature gate, all users will see the control (feature disabled). In either case (roll out or turn off), Statsig performs no further analysis.
-
-**2. How do overrides work? Are users included in overrides also included in the analysis?**
-When you add user IDs in the **Pass** or **Fail** lists of your feature gate, these users will see the appropriate treatment but will not be included in the analysis. 
 
 
 
