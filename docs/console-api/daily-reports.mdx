@@ -1,0 +1,46 @@
+---
+title: Daily Reports
+sidebar_label: Daily Reports
+slug: /console-api/daily-reports
+description: Download daily reports
+---
+
+# v1/get_daily_reports
+
+## Authorization
+
+All requests must include the **Server-Side Secret Key** field in the header. This can can be created in the Project Settings on [console.statsig.com/api_keys](https://console.statsig.com/api_keys).  This feature requires Pro or Enterprise Tier.
+
+## Responses
+
+All responses will contain a **url** field and a **date** field.
+
+- **url** is the URL containing the daily report.
+- **date** is the date of the currentlyavailable report.
+
+## Get Daily Reports
+
+This API supports three types of daily reports:
+1. type=first_exposures - Provides a link to download your company's full set of "first exposures" across feature gates and experiments.
+2. type=pulse_daily - Provides a link to download your company's daily experimental results.  This data is a single day's results and a full experimental analysis requires the entire duration of the experiment.
+3. type=unit_metrics_daily - Provides a link to download your company's daily user metrics (as computed by Statsig).  This data has one row for every user/metric pair for the most recent date.
+
+This feature is available to Pro and Enterprise tier customers.
+
+```bash
+curl --request POST 'https://api.statsig.com/v1/get_daily_reports' \
+--header 'STATSIG-API-KEY: server-side Secret Key' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "type": "<daily_report_type>",
+}'
+```
+
+**Reponse JSON** : 
+
+```json
+{
+  "url": <url>,
+  "date": <DS>,
+}
+```
