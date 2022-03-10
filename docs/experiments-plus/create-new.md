@@ -7,7 +7,7 @@ slug: /experiments-plus/create-new
 ### User-level Experiments
 To create a user-level experiment,
 1. Log into the Statsig console at [https://console.statsig.com/](https://console.statsig.com/)
-2. Navigate to **Experiments+** in the left-hand navigation panel
+2. Navigate to **Experiments** in the left-hand navigation panel
 3. Click on the **Create** button
 4. Enter the name and description for your experiment as shown in the figure below
 5. Click **Create** 
