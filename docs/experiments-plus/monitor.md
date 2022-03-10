@@ -8,7 +8,7 @@ Once you turn on your experiment, you can monitor the health of your experiment 
 
 ### Monitoring experiment health
 To monitor the status of your experiment, 
- - Navigate to **Experiments+** in the left-hand navigation panel in the Statsig console
+ - Navigate to **Experiments** in the left-hand navigation panel in the Statsig console
  - Select the experiment you want to monitor 
  - **Experiment Health Checks** show alerts for problems with the experiment setup.  Hover over the icon and click on a check for more details.
    
@@ -23,7 +23,7 @@ To monitor the status of your experiment,
 ### Monitoring exposures
 
 To monitor the exposures for all variants and control groups,
- -  Navigate to **Experiments+** in the left-hand navigation panel in the Statsig console
+ -  Navigate to **Experiments** in the left-hand navigation panel in the Statsig console
  -  Select the experiment that you want to monitor
  -  Click the **Results** tab and  
  -  The **Cumulative Exposures** panel shows the exposures for each variant in your experiment over time (as shown below)
