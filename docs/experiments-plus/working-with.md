@@ -1,5 +1,5 @@
 ---
-title: Working with experiments+
+title: Working with experiments
 sidebar_label: Working With
 slug: /experiments-plus/working-with
 ---
