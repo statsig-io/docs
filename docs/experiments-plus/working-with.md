@@ -4,7 +4,7 @@ sidebar_label: Working With
 slug: /experiments-plus/working-with
 ---
 
-Similar to A/B tests, Experiments+ provides the following features to run and analyze experiments with ease:
+Similar to A/B tests, Experiments provides the following features to run and analyze experiments with ease:
  - Automatically compute the sample size required to achieve statistical significance for a given experiment  
  - Configure allocations to define what proportion of eligible users are exposed to each variant in the experiment
  - Review the **Metrics Lifts** and confidence intervals for all your business metrics
@@ -12,7 +12,7 @@ Similar to A/B tests, Experiments+ provides the following features to run and an
  - Analyze **Metrics Lifts** for different segments by filtering for dimensions such as operating system and browser version
  - Use the Statsig client or server SDK of your choice to implement the experiment in your application
 
-Experiments+ offers additional features to accelerate and scale your experimentats:
+Experiments offers additional features to accelerate and scale your experimentats:
  - Create multiple variants as part of the same experiment (A/B/n tests)
  - Select the key metrics that you want to prioritize for your hypothesis 
  - Define layers to exclude the users participating in one experiment from other related experiments
