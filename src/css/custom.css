@@ -120,3 +120,9 @@ html[data-theme="dark"] {
   --ifm-alert-color: #f44336;
   --ra-admonition-icon-color: #f44336;
 }
+
+@media screen and (max-width: 800px) {
+  .navbar__search, .navbar-sidebar__brand > div {
+    display: none;
+  }
+}
