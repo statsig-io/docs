@@ -22,6 +22,7 @@ module.exports = {
         "guides/private-attributes",
         "guides/synchronized-launch",
         "guides/first-shopify-abtest",
+        "guides/use-statsig-for-analytics-only",
       ],
     },
     {
@@ -199,7 +200,7 @@ module.exports = {
       items: [
         "console-api/autotunes",
         "console-api/gates",
-        "console-api/daily-reports"
+        "console-api/daily-reports",
         "console-api/segments",
       ],
     },
