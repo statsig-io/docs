@@ -140,3 +140,16 @@ curl \
   --data '{"idListName": <YOUR ID LIST NAME>, "usersToAdd": [<user_id_1>, <user_id_2>, ...], "usersToRemove": [<user_id_3>, <user_id_4>, ...] }' \
   "https://api.statsig.com/v1/update_id_list"
 ```
+
+#### Log an exposure event {#log-exposure-event}
+
+You can log one or more exposure events with this API. For each exposure object, the "group" parameter should match the "Group Name" in your experiment.
+
+```bash
+curl \
+  --header "statsig-api-key: <YOUR-SDK-KEY>" \
+  --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"exposures": [{"user": {"userID": "user_id_12345"}, "experimentName": "analytics_only_experiment", "group": "Control"}]}' \
+  "https://api.statsig.com/v1/log_custom_exposure"
+```
