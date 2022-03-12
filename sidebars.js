@@ -23,6 +23,7 @@ module.exports = {
         "guides/synchronized-launch",
         "guides/first-shopify-abtest",
         "guides/use-statsig-for-analytics-only",
+        "guides/featuregates-or-experiments",
       ],
     },
     {
