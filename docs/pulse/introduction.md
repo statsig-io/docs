@@ -16,6 +16,7 @@ Statsig believes that experimentation should never be reduced to a single metric
 
 At the top of Pulse is the Exposures Chart.  Exposures are the unique experimental units enrolled in the experiment.  This is typically the number of unique users, and for device-level experimentation, this is the number of devices.  The timeline shows you when the experiment was started, and how many exposures were enrolled as of any given day.  You can see the rate at which users were added into each group of the experiment, how many total users were exposed, and confirm the target ratio.
 
+
 ### Metrics Overview
 
 ![Pulse Metrics](https://user-images.githubusercontent.com/1315028/148865111-6bffe795-901c-4489-b9b1-36c6b97d9d13.png)
@@ -39,6 +40,8 @@ Confidence intervals are reported at the selected significance level (95% by def
 There are two ways in which we can breakdown a given Pulse metric - one is by user dimension, the other is by value dimension.
 
 **User dimensions** refer to user level attributes that are either part of the user object you log, or additional metadata that Statsig extracts. Examples of these attributes are operating system, country, and region. Clicking on the "Settings" button in the Pulse metrics view will show you the option to add a filter on a single user dimension through the drop down. If you would like to view a more complex breakdown, either by including multiple values for a single user dimension (e.g. see metrics for users who are either in the United States or Canada) or including filters on multiple user dimensions (e.g. see metrics for users in the United States and using iOS devices), you can create a Custom Query by clicking on the "Create Custom Query" button located in the same "Settings" menu, or by navigating to the "Custom Query" tab within the Experiment or Feature Gate you want to create the query for.
+
+![image](https://user-images.githubusercontent.com/88338316/158214265-8bf7f7a5-aff3-40fd-8a47-dd3a4e11d8a7.png)
 
 **Value dimensions** refer to the set of distinct values logged alongside a given metric. If you want to see Pulse results for a metric further broken down by categories that are specific to that metric, specify that category in in **value** attribute when you log the event. For example, when you log a click event on your web or mobile application, you may also log the target category using the **value** attribute as shown below. Pulse will automatically generate results for each category in addition to the top level metric. To see the Pulse results for all categories within a metric, click on the (+) sign next to the metric. 
 
