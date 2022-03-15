@@ -250,5 +250,5 @@ module.exports = {
       ],
     },
   ],
-  "FAQ",
+  "faq",
 };
