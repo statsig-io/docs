@@ -249,6 +249,6 @@ module.exports = {
         "integrations/vscode",
       ],
     },
+    "faq",
   ],
-  "faq",
 };
