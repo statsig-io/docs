@@ -16,6 +16,8 @@ Statsig believes that experimentation should never be reduced to a single metric
 
 At the top of Pulse is the Exposures Chart.  Exposures are the unique experimental units enrolled in the experiment.  This is typically the number of unique users, and for device-level experimentation, this is the number of devices.  The timeline shows you when the experiment was started, and how many exposures were enrolled as of any given day.  You can see the rate at which users were added into each group of the experiment, how many total users were exposed, and confirm the target ratio.
 
+![image](https://user-images.githubusercontent.com/88338316/158862710-042a4440-e17a-44ab-96cb-0af6a8597eb3.png)
+![image](https://user-images.githubusercontent.com/88338316/158862836-381dafe2-8140-4b7d-9a28-b59a0ebcbd4c.png)
 
 ### Metrics Overview
 
