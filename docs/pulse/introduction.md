@@ -42,6 +42,8 @@ There are two ways in which we can breakdown a given Pulse metric - one is by us
 
 ![image](https://user-images.githubusercontent.com/88338316/158862710-042a4440-e17a-44ab-96cb-0af6a8597eb3.png)
 ![image](https://user-images.githubusercontent.com/88338316/158862836-381dafe2-8140-4b7d-9a28-b59a0ebcbd4c.png)
+![image](https://user-images.githubusercontent.com/88338316/158864531-be7f4527-6f83-4f9c-9b9d-2de4f34ec77f.png)
+
 
 **Value dimensions** refer to the set of distinct values logged alongside a given metric. If you want to see Pulse results for a metric further broken down by categories that are specific to that metric, specify that category in in **value** attribute when you log the event. For example, when you log a click event on your web or mobile application, you may also log the target category using the **value** attribute as shown below. Pulse will automatically generate results for each category in addition to the top level metric. To see the Pulse results for all categories within a metric, click on the (+) sign next to the metric. 
 
