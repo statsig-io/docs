@@ -1,0 +1,71 @@
+---
+title: Tutorial
+sidebar_label: Example in Javascript
+slug: /layers/js-tutorial
+---
+
+# Using a Layer in Javascript
+
+This example shows how to setup a Layer with multiple parameters and then run multiple experiments with different combinations of those parameters.
+
+## Create a Layer
+
+First, create a new layer by logging into the [Statsig Console](https://console.statsig.com), navigate to Experiments, select the Layers tab and then select Create New.
+
+![Screen Shot 2022-03-21 at 8 33 56 AM](https://user-images.githubusercontent.com/95646168/159297814-db7a8423-ecc5-4370-8b41-733e97954a55.png)
+
+In the dialog that appears, give your new Layer a name and then select Create. 
+
+![Screen Shot 2022-03-21 at 8 46 15 AM](https://user-images.githubusercontent.com/95646168/159298510-ef27ef28-fc2b-4301-8156-df6fb6703586.png)
+
+
+With this Layer created, you can now add parameters that can be shared across experiments.
+
+
+## Add Parameters
+
+On the Layer page, select Add Parameter. 
+
+![Screen Shot 2022-03-21 at 10 13 30 AM](https://user-images.githubusercontent.com/95646168/159327580-837ab0ef-5449-4cb7-b09b-41f3bfa93e63.png)
+
+
+In the dialog that appears, you can enter the Name, Type and Default Value for your parameter.
+
+![Screen Shot 2022-03-21 at 10 13 51 AM](https://user-images.githubusercontent.com/95646168/159327612-b0f09c4c-9d47-48d0-972b-e1d27bc3d3f2.png)
+
+
+## Setup Experiments
+
+We can now reference our Layer during Experiment creation, allowing us to pull in these parameters and share them across Experiments.
+
+When creating and Experiment, expand the Advanced options, check Add Layer, and select your Layer from the layer dropdown.
+
+![Screen Shot 2022-03-21 at 10 17 48 AM](https://user-images.githubusercontent.com/95646168/159328392-b6890759-2356-4a97-ab0f-61643c7d5118.png)
+
+
+On the Experiment page, add your Layer parameters to the Experiment groups by selecting Add Parameter.
+
+![Screen Shot 2022-03-21 at 10 23 31 AM](https://user-images.githubusercontent.com/95646168/159329356-97787500-ac38-4a66-ad88-e5980ed2d992.png)
+
+In the dialog that appears, select your existing Layer parameter from the dropdown menu.
+
+![Screen Shot 2022-03-21 at 10 20 10 AM](https://user-images.githubusercontent.com/95646168/159328907-aa825add-e328-4407-b6d9-f2c269abfc2d.png)
+
+Now, when this Experiment is running, Users that are put into these groups will get the associated values.
+
+## Implement the Code
+
+Here is a Javascript example of how you can reference your parameters in code. Note that we are using **getLayer, not getExperiment**, to get our parameters. This will allow us to run multiple experiments without needing to continually update the client code. Statsig will automatically override the default Layer values with Experiment values if a user is in an Experiment group.
+
+```js
+await statsig.initialize(
+  "<CLIENT_SDK_KEY>",
+  { userID: 'user_a' },
+);
+
+const layer = statsig.getLayer('my_first_layer');
+
+layer.getValue('test_string', ''));
+layer.getValue('test_array', []);
+layer.getValue('test_object', {});
+```
