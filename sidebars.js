@@ -81,6 +81,17 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Layers",
+      link: {
+        type: "doc",
+        id: "layers/introduction",
+      },
+      items: [
+        "layers/js-tutorial",
+      ],
+    },
+    {
+      type: "category",
       label: "Experiments",
       link: {
         type: "doc",
