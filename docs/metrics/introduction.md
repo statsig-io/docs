@@ -11,16 +11,15 @@ Metrics are critical to monitoring your product and providing experimental resul
 
 ## Metric Types
 
-Statsig automatically generates metrics and allows creation of custom metrics.  We currently support the following metric types.
+Statsig automatically generates three types of metrics: 
 
 | Metric Type | Automatic | Dimensions | Possible Values | Example |
-|-------------|-----------------------|-----------------|---------|
-| event_count | Yes | Yes | 0, 1, 2, ... | Number of times a page was viewed |
-| event_dau   | Yes | Yes | 0, 1 | Number of users who've viewed the page |
+|-------------|-----------|----------- |-----------------|---------|
+| event_count | Yes | Yes | 0, 1, 2,...| Number of page views |
+| event_dau   | Yes | Yes | 0, 1       | Unique users who viewed a page |
 | user        | Yes | No  | Depends on specific metric | Daily Active Users |
-| sum         | No  | Yes | Float | Total Revenue |
-| ratio       | No  | No  | Float | Purchase Conversion Rate |
-| funnel      | No  | No  | Float | Purchase Conversion Funnel |
+
+See [Creating Custom Metrics](create) to learn how to create custom metrics for product and business. 
 
 All metrics are computed for each day.
 
@@ -53,31 +52,6 @@ User metrics are a standard set of 15 metrics (as of October 2021) that are crea
 These metrics are computed separately for each unit type.  For example, when Stable ID is selected, DAU represents the number of distinct devices seen that day.
 
 More information on specific metrics and their defintions can be found at (User Accounting Metrics)[/metrics/user].
-
-### 4. Sum Metrics
-
-`metric_type = sum`
-
-Sum metrics are a custom metric that tallies either the `value` field or a `metadata` field (recommended) for a given event.  This metric is useful when you want to calculate metrics that have different weights.  For example, a total timespent metric can be generated if you logged an event called  `timespent`, and logged the timespent in seconds as metadata, eg. `time_s = 50.2`.  This metric can also be used for monetary amounts however we recommend logging all numeric values in the same currency (eg. US dollars).
-
-### 5. Ratio Metrics
-
-`metric_type = ratio`
-
-### 6. Funnel Metrics
-
-`metric_type = funnel`
-
-A suite of funnel metrics for Pulse is automatically produced when a User Funnel is created in the metrics tab.  Funnel metrics have a few components:
-* Overall funnel conversion rate: Of the users that start the funnel (trigger the starting event), the percentage that complete it (trigger the end event).
-* Start DAU and End DAU: The number of user in the funnel that triggered the starting event and the ending event, respectively.  When there are changes in funnel conversion rates, it's important to also check the absolute number of users to understand if there's a net gain at the end of the funnel.
-* Conversion rate between stages: Of the users that triggered event N in the funnel, the percentage that also had event N+1.
-
-In the example below, the Square variant shows a lift in overall funnel conversion rate.  Upon expanding the metrics to examine all the funnel stages we see the follwing:
-* Both variants have a lift in top-of-funnel DAU, but only Square has high enough conversion rates to deliver a stat-sig increase in end-of-funnel DAU (users with Purchase Event).
-* The conversion rate improvement for Square comes primarily from the Checkout Event >> Purchase Event stage.  
-
-![image](https://user-images.githubusercontent.com/90343952/148440643-8e8a24bd-934d-4100-a15a-abcbcc4bb11c.png)
 
 
 ## Dimensions
