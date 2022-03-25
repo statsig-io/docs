@@ -19,7 +19,7 @@ Statsig automatically generates three types of metrics:
 | event_dau   | Yes | Yes | 0, 1       | Unique users who viewed a page |
 | user        | Yes | No  | Depends on specific metric | Daily Active Users |
 
-See [Creating Custom Metrics](create) to learn how to create custom metrics for product and business. 
+See [Creating Custom Metrics](/create) to learn how to create custom metrics for product and business. 
 
 All metrics are computed for each day.
 
