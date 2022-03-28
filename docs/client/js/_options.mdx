@@ -21,3 +21,9 @@
 - **initTimeoutMs** - number, default 3000
   - This option configures the maximum time (in milliseconds) the SDK would wait for the network request made by `initialize()` to respond before it resolves.
   - If the SDK resolves before the network request has completed due to the timeout, it will continue work with local overrides, cached values, and then default values set in code.
+- **disableErrorLogging** - boolean, default false (added in `v4.11.0`)
+  - By default, the SDK auto logs javascript errors to Statsig. This will be connected with the metrics and pulse views to show the impact of new features on key error metrics
+- **disableAutoMetricsLogging** - boolean, default false (added in `v4.13.0`)
+  - By default, the SDK auto logs javascript performance metrics to Statsig. This will be connected with the metrics and pulse views to show the impact of new features on key performance metrics
+- **initializeValues?** Record<string, any> | null, default null (supported in `v4.13.0+`)
+  - Provide the `initializeResponse` values directly to the javascript SDK to synchronously initialize the client.  You can generate these values from the [node js server SDK](https://github.com/statsig-io/node-js-server-sdk/releases/tag/v4.13.0) starting in `statsig-node@4.13.0` NOTE: for the `statsig-react` SDK, this is done via a separate provider, rather than via this option. 
