@@ -1,3 +1,17 @@
+#### How can I use the node SDK for server side rendering? {#ssr}
+
+The Node server SDK, starting in `v4.13.0+` supports generating the `initializeValues` needed to bootstrap a `statsig-js` or `statsig-react` SDK and render it on the server/use the SDK without a round trip to Statsig servers.
+
+```
+const values = statsig.getClientInitializeValues(user); // Record<string, unknown> | null
+if (values != null) {
+  // boostrap your client SDK
+  return <StatsigSynchronousProvider initializeValues={values} ... />;
+}
+```
+
+NOTE: This will not use the `stableID` for gate evaluation as statsig servers would, since there is no request from the client SDK specifying this generated ID.  If you want to use this in conjuction with logged out experimentation, we recommend you use your own identifier, and set it in the `customIDs` field in the `StatsigUser` object.  See [experimenting on custom IDs](/guides/experiment-on-custom-id-types) for more information.
+
 #### How can I mock Statsig for testing?
 
 The Node server SDK, starting in version 4.8.0+, supports a few features to make testing easier.
