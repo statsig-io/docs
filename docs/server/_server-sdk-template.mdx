@@ -1,9 +1,9 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import AsyncDisclaimer from './async_disclaimer.mdx';
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import AsyncDisclaimer from "./async_disclaimer.mdx";
 
 <span>
-  Statsig server SDK for {props.sdkType} applications. This SDK is{' '}
+  Statsig server SDK for {props.sdkType} applications. This SDK is{" "}
   <a href={props.github}>open source and hosted on github</a>.
 </span>
 
@@ -81,7 +81,7 @@ When calling APIs that require a user, you should pass as much information as po
 
 Besides `userID`, we also have `email`, `ip`, `userAgent`, `country`, `locale` and `appVersion` as top-level fields on StatsigUser. In addition, you can pass any key-value pairs in an object/dictionary to the `custom` field and be able to create targeting based on them.
 
-<div>{props.statsigUser ?? ''}</div>
+<div>{props.statsigUser ?? ""}</div>
 
 #### Have sensitive user PII data that should not be logged? {#private-attributes}
 
@@ -91,13 +91,17 @@ For example, if you have feature gates that should only pass for users with emai
 
 ## Statsig Options {#statsig-options}
 
-<div>{props.options ?? '(Coming soon)'}</div>
+<div>{props.options ?? "(Coming soon)"}</div>
 
 ## Shutting down Statsig
 
 Because we batch and periodically flush events, some events may not have been sent when your app/server shuts down. To make sure all logged events are properly flushed, you should tell Statsig to shutdown when your app/server is closing:
 
 <div>{props.shutdown}</div>
+
+## Reference
+
+<div>{props.reference ?? "(Coming soon)"}</div>
 
 ## FAQ {#faq}
 
