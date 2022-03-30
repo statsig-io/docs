@@ -1,0 +1,45 @@
+### Type StatsigUser
+
+```typescript
+export type StatsigUser = {
+  userID: string;
+  email?: string;
+  ip?: string;
+  userAgent?: string;
+  country?: string;
+  locale?: string;
+  appVersion?: string;
+  custom?: Record<
+    string,
+    string | number | boolean | Array<string> | undefined
+  >;
+  privateAttributes?: Record<
+    string,
+    string | number | boolean | Array<string> | undefined
+  >;
+  customIDs?: Record<string, string>;
+};
+```
+
+### Type StatsigOptions
+
+```typescript
+export type StatsigOptions = {
+  api?: string;
+  bootstrapValues?: string;
+  environment?: StatsigEnvironment;
+  localMode?: boolean;
+  rulesUpdatedCallback?: { (rulesJSON: string, time: number): void };
+  initTimeoutMs?: number;
+};
+```
+
+### Type StatsigEnvironment
+
+```typescript
+export type StatsigEnvironment = {
+  tier?: "production" | "staging" | "development";
+  bootstrapValues: string;
+  rulesUpdatedCallback: function;
+};
+```
