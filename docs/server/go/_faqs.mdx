@@ -1,0 +1,26 @@
+#### How can I mock Statsig in tests
+
+We recommend using the override apis in v1.3.0+, in combination with the `LocalMode` option in `StatsigOptions` to force gate/config values in test environments and remove network access to statsig servers.
+
+```go
+func OverrideGate(gate string, val bool)
+
+func OverrideConfig(config string, val map[string]interface{})
+```
+
+For example:
+
+```go
+c := NewClientWithOptions(secret, &Options{LocalMode: true})
+
+user := User{
+    UserID: "123",
+}
+gateDefault := c.CheckGate(user, "any_gate")
+// "any_gate" is false by default
+
+c.OverrideGate("any_gate", true)
+// "any_gate" is now true
+```
+
+See also [https://github.com/statsig-io/go-sdk/blob/main/overrides_test.go](https://github.com/statsig-io/go-sdk/blob/main/overrides_test.go)
