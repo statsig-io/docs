@@ -7,19 +7,24 @@ slug: /experiments-plus/read-results
 
 ### Reading experiment results
 
-To read the results of your experiment, you can zoom straight into your key metrics as well as your starred metrics that are relevant for your experiment. 
+To read the results of your experiment, you can zoom straight into your key metrics as well as starred metrics and metric tags that are relevant for your experiment. 
 You can also deep dive into how all your metrics shifted with the experiment.   
 
-#### Key Results
-The **Key Results** panel shows how your primary metrics compare against the control for each variant.
+#### Key Metrics
+The **Key Metrics** panel shows how your primary experiment metrics for each variant compare against the control.
 
-In the example below, the **Square** variant is performing better than the **Rounded Square (control)** and **Circle** variant on all Key Metrics. 
+In the example below, neither the **Square** nor the **Circle** variant have statistically significant changes in any key metrics compared to **Rounded Square (control)**. This is represneted by the gray Overall Lift symbols and large P-Values.
+
+Other information displayed for key metrics includes:
+* Overall Value: The total value of the metric aggregated over the entire analysis time period. Example: Total purchase events logged for each group.
+* Average per User: The average metric value per user for each group.  Example: Average number of purchase events per user during the course of the experiment. 
+More details on the values presented for each metric type are available in the [Metrics Docs](https://docs.statsig.com/metrics)
    
-![image](https://user-images.githubusercontent.com/1315028/148863280-3e7baf63-e184-466b-a0c2-8828e0f706df.png)
+![image](https://user-images.githubusercontent.com/90343952/160920867-d77173f7-1996-41ad-a1ae-c506423bb70b.png)
 
 
 #### Metrics Lifts
-The **Metrics Lifts** panel shows how your *favorited* metrics compare against the control. You can also see how *all* your other metrics compare against the control in the **All Other Metrics** section as shown below.
+The **Metrics Lifts** panel shows how your *starred* or *tagged* metrics compare against the control. You can also see how *all* your other metrics compare against the control in the **All Metrics** section as shown below.
  
 
 ![image](https://user-images.githubusercontent.com/1315028/148863304-7fed87d0-b9e5-43de-84b3-b70cc08c2d62.png)
