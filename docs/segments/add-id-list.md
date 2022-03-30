@@ -17,3 +17,4 @@ Assuming you have created a segment of type ID List,
 
 You can add thousands of identifiers using this page in the Statsig console. 
 
+You can also sync in an ID list Segment from sources like an [Amplitude Cohorts](https://help.amplitude.com/hc/en-us/articles/4789303290011) or [Segment Audiences](https://docs.statsig.com/integrations/data-connectors/segment#syncing-statsig-segment-id-lists-with-segment-personas-audiences) or from a custom source using the [Console API](/console-api/segments)
