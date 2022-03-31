@@ -137,6 +137,7 @@ module.exports = {
       items: [
         "metrics/create",
         "metrics/user",
+        "metrics/pulse",
         "metrics/console",
         "metrics/create-metric-tags",
         "metrics/create-user-flows",
