@@ -1,3 +1,29 @@
+#### How can I mock the SDK/override gates in tests?
+
+The SDK has a few key features to make testing easier:
+
+1. `localMode` - a parameter in `StatsigOptions` which disables all network requests to Statsig servers.  This makes the SDK operate only locally, so your tests don't need network access
+2. Overrides.  You can override gates, configs, experiments (experiments ARE configs), remove overrides, or get a list of all overrides using the following methods:
+
+```
+overrideGate(gateName: string, value: boolean): void
+
+overrideConfig(configName: string, value: object): void
+
+removeGateOverride(name?: string): void
+
+removeConfigOverride(name?: string): void
+
+getAllOverrides(): StatsigOverrides
+
+type StatsigOverrides = {
+  gates: Record<string, boolean>;
+  configs: Record<string, Record<string, any>>;
+};
+```
+
+Taken together, `localMode` and override APIs will help you mock the exact values you want to test.
+
 #### What kind of browser support can I expect from the SDK? {#what-kind-of-browser-support-can-i-expect-from-the-sdk}
 
 We strive to keep the SDK as lightweight as possible, while supporting as many browsers as possible. The primary feature that our SDK relies on which may not be supported by all browsers is a javascript Promise. You may wish to [polyfill](https://developer.mozilla.org/en-US/docs/Glossary/Polyfill) a Promise library to ensure maximum browser compatibility. We recommend [taylorhakes/promise-polyfill](https://github.com/taylorhakes/promise-polyfill) for its small size and compatibility.
