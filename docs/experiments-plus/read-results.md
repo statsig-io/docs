@@ -11,9 +11,9 @@ To read the results of your experiment, you can zoom straight into your key metr
 You can also deep dive into how all your metrics shifted with the experiment.   
 
 #### Key Metrics
-The **Key Metrics** panel shows how your primary experiment metrics for each variant compare against the control.
+The **Key Metrics** panel shows how your primary experiment metrics for each variant compared against the control.
 
-In the example below, neither the **Square** nor the **Circle** variant have statistically significant changes in any key metrics compared to **Rounded Square (control)**. This is represneted by the gray Overall Lift symbols and large P-Values.
+In the example below, neither the **Square** nor the **Circle** variant have statistically significant changes in any key metrics compared to **Rounded Square (control)**. This is represented by the gray Overall Lift symbols and large p-values.
 
 Other information displayed for key metrics includes:
 * Overall Value: The total value of the metric aggregated over the entire analysis time period. Example: Total purchase events logged for each group.
