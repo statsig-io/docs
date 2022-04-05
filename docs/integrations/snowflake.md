@@ -77,7 +77,7 @@ Your data should follow these rules and definitions to avoid errors or delays:
 
 | Column         | Description                         | Rules                                                          |
 |----------------|-------------------------------------|----------------------------------------------------------------|
-| time           | The time your event was logged at   | Not null                                                       |
+| time           | The UTC time your event was logged at   | Not null                                                       |
 | timeuuid       | A unique timeuuid for the event     | This should be a timeuuid, but using a unique id will suffice. |
 | user           | A user json object.                 | See below                                                      |
 | event_name     | The name of the event               | Not null. Length < 128 characters                              |
