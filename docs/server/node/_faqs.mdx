@@ -3,7 +3,7 @@
 The Node server SDK, starting in `v4.13.0+` supports generating the `initializeValues` needed to bootstrap a `statsig-js` or `statsig-react` SDK and render it on the server/use the SDK without a round trip to Statsig servers.
 
 ```
-const values = statsig.getClientInitializeValues(user); // Record<string, unknown> | null
+const values = statsig.getClientInitializeResponse(user); // Record<string, unknown> | null
 if (values != null) {
   // boostrap your client SDK
   return <StatsigSynchronousProvider initializeValues={values} ... />;
