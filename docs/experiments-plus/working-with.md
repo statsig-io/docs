@@ -18,6 +18,8 @@ Experiments offers additional features to accelerate and scale your experimentat
  - Define layers to exclude the users participating in one experiment from other related experiments
 
 ## Tutorials
-- [Create an experiment](/experiments-plus/create-new)
+- [Create an experiment using a userID](/experiments-plus/create-new)
+- [Create an experiment using a customID](/guides/experiment-on-custom-id-types)
 - [Use a language specific Statsig SDK to implement an experiment in your application](/experiments-plus/implement)
 - [Monitor an experiment](/experiments-plus/monitor)
+ 
