@@ -24,6 +24,7 @@ module.exports = {
         "guides/first-shopify-abtest",
         "guides/use-statsig-for-analytics-only",
         "guides/featuregates-or-experiments",
+        "guides/experimentation-program",
       ],
     },
     {
