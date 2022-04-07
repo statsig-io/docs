@@ -18,6 +18,8 @@ In the dialog that appears, enter the url of you destination webhook and then hi
 
 ![integration-dialog](https://user-images.githubusercontent.com/95646168/162327234-c9a683af-3c36-4da9-a66d-d16bf0ad09bc.png)
 
+You can then set which events you want forwarded to your webhook.
+
 ## Payload Format
 
 The payload that we send is an array of Event objects.
