@@ -16,7 +16,7 @@ In your Project Settings, under the Integrations tab. Enable the Generic Webhook
 
 In the dialog that appears, enter the url of you destination webhook and then hit Enable to save the url and enable this integration.
 
-![integration-dialog](https://user-images.githubusercontent.com/95646168/162288664-a366293d-f8c3-4053-879d-19745c7c4fc4.png)
+![integration-dialog](https://user-images.githubusercontent.com/95646168/162327234-c9a683af-3c36-4da9-a66d-d16bf0ad09bc.png)
 
 ## Payload Format
 
