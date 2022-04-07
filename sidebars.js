@@ -6,7 +6,7 @@ module.exports = {
       label: "Walkthrough Guides",
       link: {
         type: "generated-index",
-        title: "Walkthrough Guides"
+        title: "Walkthrough Guides",
       },
       items: [
         "guides/first-feature",
@@ -64,7 +64,7 @@ module.exports = {
         "dynamic-config/create-new",
         "dynamic-config/add-rule",
         "dynamic-config/implement",
-      ]
+      ],
     },
     {
       type: "category",
@@ -87,9 +87,7 @@ module.exports = {
         type: "doc",
         id: "layers/introduction",
       },
-      items: [
-        "layers/js-tutorial",
-      ],
+      items: ["layers/js-tutorial"],
     },
     {
       type: "category",
@@ -124,10 +122,7 @@ module.exports = {
         type: "doc",
         id: "autotune/introduction",
       },
-      items: [
-        "autotune/setup",
-        "autotune/monitoring",
-      ],
+      items: ["autotune/setup", "autotune/monitoring"],
     },
     {
       type: "category",
@@ -234,7 +229,6 @@ module.exports = {
             "access-management/sso/overview",
             "access-management/sso/okta_sso",
             "access-management/sso/azuread",
-            
           ],
         },
       ],
@@ -258,6 +252,7 @@ module.exports = {
           ],
         },
         "integrations/event_webhook",
+        "integrations/outgoing_generic_webhook",
         "integrations/jira",
         "integrations/snowflake",
         "integrations/vscode",

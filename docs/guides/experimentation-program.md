@@ -96,7 +96,7 @@ Getting a few successful experiments under your belt will help you build a sense
 
 **Cement the value of experimentation**
 
-As you pick ideas for new experiments, start to incorporate a balance of ideas where the outcomes are more vs. less certain. Choosing a few controversial and higher-impact ideas can help you cement the value of experimentation in your organization. The more counterintuitive the results, the more memorable the experiments will be. To increase the chances of counterintuitive results, choose experiments where the outcome is uncertain. <example> 
+As you pick ideas for new experiments, start to incorporate a balance of ideas where the outcomes are more vs. less certain. Choosing a few controversial and higher-impact ideas can help you cement the value of experimentation in your organization. The more counterintuitive the results, the more memorable the experiments will be. To increase the chances of counterintuitive results, choose experiments where the outcome is uncertain.
 
 **Increase the pace of experimentation with self-serve experiments**
 
