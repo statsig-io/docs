@@ -53,13 +53,22 @@ These metrics are computed separately for each unit type. For example, when Stab
 
 More information on specific metrics and their defintions can be found at (User Accounting Metrics)[/metrics/user].
 
-## Dimensions
+## Metric Dimensions
 
-Statsig allows metrics to be broken down into a single set of non-overlapping dimensions. For example, and event called `purchase` could be broken down into product categories like `jewelry`, `clothing`, `shoes`, and `watches`. To accomplish this, you would simply log a `purchase` event, and provide the category as the `value`. Logging in this manner will allow you to see total purchases metric like event_count and event_dau across all products, while also allowing you to see each metric broken down by category. Each event can only be assigned to one dimension value, but nulls are accepted.
+Statsig allows metrics to be broken down into a single set of non-overlapping dimensions. For example, an event like **add-to-cart** could be broken down into product categories like _sports_, _toys_, _appliances_, _electronics_. To accomplish this, you would simply log a **add-to-cart** event, and provide the category as the event's **value** as shown below.
 
-We recommend keeping this to less than 20 unique categories, although Statsig can handle more. If you reach our tracking limit, we will prioritize tracking of the most common dimensions and overflow less values into an "other" bucket.
+```
+statsig.logEvent('add_to_cart', 'sports', {'price': '9.99', 'item_name': 'tennis_balls'});
+```
 
-Dimensions are supported for custom sum metrics. To set this up, log your dimension as a `value` and the number to be tallied as a metadata field.
+Logging an event this way allows you to break down the impact on the total **add-to-cart** events by category as shown below. This enables you to zero in on the category that's most impacted by your experiment. 
+
+![image](https://user-images.githubusercontent.com/1315028/162332284-259ea614-8cb6-4c9d-aebd-3e41f9092a64.png)
+
+
+Statsig recommends keeping this **value** to less than 20 unique options, though we can handle more. If you reach our tracking limit, we will prioritize tracking of the most common dimensions, and consolidate less frequent values into an "other" bucket.
+
+Metric dimensions are also supported for custom **Aggregation** metrics. To set this up, log your dimension as a **value** and the number to be tallied as a metadata field.
 
 ## Tags
 
