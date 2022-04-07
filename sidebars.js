@@ -252,7 +252,6 @@ module.exports = {
           ],
         },
         "integrations/event_webhook",
-        "integrations/outgoing_generic_webhook",
         "integrations/jira",
         "integrations/snowflake",
         "integrations/vscode",
