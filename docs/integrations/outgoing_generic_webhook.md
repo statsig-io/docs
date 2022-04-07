@@ -34,7 +34,7 @@ The payload that we send is an array of Event objects.
       },
       "timeUUID": "a",
       "timestamp": "123",
-      "eventName": "foo-event",
+      "eventName": "my_custom_event",
       "metadata": {
         "gate": "gate_no_rule"
       },
@@ -43,7 +43,8 @@ The payload that we send is an array of Event objects.
         "sdkVersion": "1.0.0",
         "sdkType": "an-sdk"
       }
-    }
+    },
+    
     // •••
   ]
 }
