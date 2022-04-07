@@ -4,39 +4,34 @@ title: Snowflake
 
 ## Overview
 
-Statsig enables you to integrate with Snowflake using:
- - [Census](/integrations/data-connectors/census) to ingest event data from Snowflake
- - [Fivetran](/integrations/data-connectors/fivetran) to export event data to Snowflake  
+There are 2 ways to integrate with Snowflake: using a data connector, or through direct ingestion from Snowflake.
 
-We also support ingesting data directly from your Snowflake instance to Statsig. Once this 
-is set up, Statsig will automatically pull events
-and/or metrics from Snowflake after you generate or compute them.
+## Using a Data Connector
 
-To enable data ingestion, you will need to:
-- Transform and load your data into Snowflake tables in a specific schema 
-- Create a Statsig user with select permissions on that table
-- Go to the integrations page in your project settings and follow the instructions to
-give Statsig credentials for the Statsig user
-- Mark dates in the appropriate staging tables when you are done loading data for a day. 
-Read the instructions below for notes on this.
+To **ingest** events from Snowflake, you can use our [Census integration](/integrations/data-connectors/census).
 
-## Direct connection
+To **export** events to Snowflake, you can use our [Fivetran integration](/integrations/data-connectors/fivetran).
 
-### Setup 
+## Direct ingestion from Snowflake
+
+We also support direct data ingestion from Snowflake, through which Statsig will automatically pull data from Snowflake into your events. 
+You will need to do the following steps.
+
+### 1. Set up your Snowflake data warehouse and user for Statsig integration {#setup}
 Insert `USER` and `PASSWORD` values to the below and run it in a Snowflake worksheet
 on an account which has sysadmin and securityadmin roles. 
 
 This will create the table schemas and setup that Statsig's ingestion will use. 
-Statsig will use the user you create to access tables in the new Statsig schema.
+Statsig will use the user you create to access tables in the new Statsig schema. Make sure to use a unique and secure username and password and replace the placeholder values in the first 2 statements. 
 
-```
-begin;
+```sql
+BEGIN;
 
   -- set up variable values to be used in statements later
   -- make sure to configure user_name and user_password with your own values
-  set user_name = '<USER>';
-  set user_password = '<PASSWORD>';
-  set role_name = 'STATSIG_ROLE';
+  SET user_name = '<USER>'; -- REPLACE WITH YOUR OWN VALUE
+  SET user_password = '<PASSWORD>'; -- REPLACE WITH YOUR OWN VALUE
+  SET role_name = 'STATSIG_ROLE';
   
   -- change role to sysadmin for warehouse / database steps
   USE ROLE sysadmin;
@@ -102,33 +97,37 @@ begin;
   GRANT SELECT ON statsig.statsig.statsig_events_signal TO ROLE identifier($role_name);
   GRANT SELECT ON statsig.statsig.statsig_user_metrics_signal TO ROLE identifier($role_name);
 
-commit;
+COMMIT;
 ```
 
-### Sharing Credentials
+Make sure all the statements ran successfully. This will create the schema and user that Statsig's ingestion expects.
+
+### 2. Provide the credentials to Statsig {#provide-credentials}
 - Go to [console.statsig.com](https://console.statsig.com/) and log in
 - Go to the settings page and navigate to the integrations tab. 
-- Find Snowflake in the integrations list and provide the requested credentials. 
-  - This should the user you created above, which has
-its access limited to reading the tables you just created.
+- Find Snowflake in the integrations list and provide the requested credentials for the user you just created in step 1.
+- You can use the "Test Connection" button to make sure we can establish a connection to the table using the credentials provided.
 
-### Scheduling
-Because you may be streaming events to your tables or have multiple ETLs pointing to your metrics table, Statsig relies on you
-signalling that your metric/events for a given day are done. 
+![image](https://user-images.githubusercontent.com/77478330/162287996-5f2e02f8-c461-4d69-8a36-fa1d79d913a3.png)
 
-When a day is fully loaded, insert that date (UTC-formatted) as a row in the appropriate signal_table - `statsig_user_metrics_signal` for metrics
-or `statsig_events_signal` for events. 
 
-Statsig expects you to load data in order. For example, if you have loaded up to `2022-04-01` and signal that 2022-04-03 has landed,
-we will wait for you to signal that 2022-04-02 has landed, and load that data before we ingest data from `2022-04-03`
+### 3. Load data into the new Statsig tables {#load-data}
 
-*NOTE: this ingestion pipeline is in beta, and does not currently support automatic backfills or updates to data. Land these tables
-after you've run data quality checks!*
+In step 1 we created 2 data tables and 2 signal tables. To load data into statsig, you
+will load data into the data tables, and mark a day as completed in the corresponding signal
+table once all of the data for that day is loaded. 
 
-### Data Format and Loading
-Your data should follow these definitions and rules to avoid errors or delays:
+The `statsig_events` table is for sending Statsig raw events which were not logged to Statsig through the API. Once loaded, 
+these events will be processed as though they were logged directly.
 
-#### Events
+The `statsig_user_metrics` table is for sending pre-computed metrics from your data warehouse. These metrics will be surfaced in 
+the statsig console and in your test results.
+
+You may only need one of these use cases - that's fine! Just follow the steps for the relevant table and ignore the other one.
+
+Your data should conform to these definitions and rules to avoid errors or delays:
+
+#### Events (statsig_events)
 
 | Column         | Description                         | Rules                                                          |
 |----------------|-------------------------------------|----------------------------------------------------------------|
@@ -141,7 +140,7 @@ Your data should follow these definitions and rules to avoid errors or delays:
 | event_version  | The version of this event           |                                                                |
 
 The user object is a stringified JSON representation. An example might look like:
-```
+```json
 {
     "os":"Mac OS X",
     "os_version":"10.15.7",
@@ -162,12 +161,12 @@ The user object is a stringified JSON representation. An example might look like
     },
 }
 ```
+Key components of the user object are the `userID`, `custom` fields, and the `customIDs` object (notably `stableID`) if you are using any custom identifiers.
 
-Key components of the user object are the `userID`, `custom` fields, and the `stableID` if it exists. 
-Make sure these fields are provided where they exist, and that the names of the fields capitalized correctly. Not providing an
-ID will limit the utility of your events, as we won't be able to use them to build metrics like daily event users.
+Make sure these fields are provided where they exist, and that the names of the fields capitalized correctly. Not providing a
+unit identifier will limit the utility of your events, as we won't be able to use them to build metrics like daily event users.
 
-#### Metrics
+#### Metrics (statsig_user_metrics)
 
 | Column       | Description                                          | Rules                                                                                                                |
 |--------------|------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
@@ -182,3 +181,16 @@ ID will limit the utility of your events, as we won't be able to use them to bui
 
 Metric ingestion is for user-day metric pairs. This is useful for measuring experimental results on complex business logic (e.g. LTV estimates) that you generate in your data warehouse.
 
+
+#### Scheduling
+Because you may be streaming events to your tables or have multiple ETLs pointing to your metrics table, Statsig relies on you
+signalling that your metric/events for a given day are done. 
+
+When a day is fully loaded, insert that date (UTC-formatted) as a row in the appropriate signal_table - `statsig_user_metrics_signal` for metrics
+or `statsig_events_signal` for events. 
+
+Statsig expects you to load data in order. For example, if you have loaded up to `2022-04-01` and signal that `2022-04-03` has landed,
+we will wait for you to signal that `2022-04-02` has landed, and load that data before we ingest data from `2022-04-03`
+
+*NOTE: this ingestion pipeline is in beta, and does not currently support automatic backfills or updates to data once it's been ingested. Only signal these tables
+are loaded after you've run data quality checks!*
