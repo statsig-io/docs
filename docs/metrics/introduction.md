@@ -57,7 +57,7 @@ More information on specific metrics and their defintions can be found at (User 
 
 Statsig allows metrics to be broken down into a single set of non-overlapping dimensions. For example, an event like **add-to-cart** could be broken down into product categories like _sports_, _toys_, _appliances_, _electronics_. To accomplish this, you would simply log a **add-to-cart** event, and provide the category as the event's **value** as shown below.
 
-```
+```js
 statsig.logEvent('add_to_cart', 'sports', {'price': '9.99', 'item_name': 'tennis_balls'});
 ```
 
