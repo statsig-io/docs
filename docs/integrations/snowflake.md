@@ -43,7 +43,7 @@ BEGIN;
 
   -- a table for ingestion of raw events
   CREATE TABLE IF NOT EXISTS statsig.statsig.statsig_events(
-      time TIMESTAMP NOT NULL,
+      time BIGINT NOT NULL, -- unix time
       timeuuid STRING NOT NULL DEFAULT UUID_STRING(), --generated unique timeuuid
       user STRING NOT NULL, --json user object
       event_name STRING NOT NULL, 
@@ -57,7 +57,7 @@ BEGIN;
   CREATE TABLE IF NOT EXISTS statsig.statsig.statsig_user_metrics(
       user_id STRING NOT NULL, 
       id_type STRING NOT NULL, -- stable_id, user_id, etc.
-      time TIMESTAMP NOT NULL, -- this can be a date for daily metrics
+      time BIGINT NOT NULL, -- unix time
       timeuuid STRING NOT NULL DEFAULT UUID_STRING(),
       metric_name STRING NOT NULL, 
       metric_value NUMBER,
@@ -131,7 +131,7 @@ Your data should conform to these definitions and rules to avoid errors or delay
 
 | Column         | Description                         | Rules                                                          |
 |----------------|-------------------------------------|----------------------------------------------------------------|
-| time           | The UTC time your event was logged at   | Not null                                                       |
+| time           | The unix time your event was logged at   | Not null                                                       |
 | timeuuid       | A unique timeuuid for the event     | This should be a timeuuid, but using a unique id will suffice. If not provided, the table defaults to generating a UUID. |
 | user           | A user json object.                 | See below                                                      |
 | event_name     | The name of the event               | Not null. Length < 128 characters                              |
@@ -172,7 +172,7 @@ unit identifier will limit the utility of your events, as we won't be able to us
 |--------------|------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
 | user_id      | The unique user identifier this metric is for        |                                                                                                                      |
 | id_type      | The id_type the user_id represents.                  | Must be a valid id_type. The default Statsig types are user_id/stable_id, but you may have generated custom id_types |
-| time         | The time for the metric - usually a date for metrics | UTC time                                                                                                             |
+| time         | The unix time for the metric.  | Use +8:00 for the hour for daily metrics since we convert to GMT-8 for date boundaries                                                                                                            |
 | timeuuid     | A unique timeuuid for the event                      | This should be a timeuuid, but using a unique id will suffice. If not provided, the table defaults to generating a UUID.           |
 | metric_name  | The name of the metric                               | Not null. Length < 128 characters                                                                                    |
 | metric_value | A numeric value for the metric                       | Metric value, or both of numerator/denominator need to be provided for Statsig to process the metric                 |
