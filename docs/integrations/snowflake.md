@@ -136,7 +136,7 @@ Your data should conform to these definitions and rules to avoid errors or delay
 | user           | A user json object.                 | See below                                                      |
 | event_name     | The name of the event               | Not null. Length < 128 characters                              |
 | event_value    | The value of the event              | Length < 128 characters                                        |
-| event_metadata | Metadata about the event            | Not null. Length < 16384 characters                            |
+| event_metadata | Metadata about the event            | Not null. Length < 16384 characters. Json-formatted - leave empty if none                            |
 | event_version  | The version of this event           |                                                                |
 
 The user object is a stringified JSON representation. An example might look like:
