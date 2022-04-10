@@ -103,6 +103,7 @@ module.exports = {
         "experiments-plus/implement",
         "experiments-plus/monitor",
         "experiments-plus/read-results",
+        "experiments-plus/make-decision",
         "experiments-plus/overrides",
         {
           Experimentation: [
