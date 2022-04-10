@@ -49,7 +49,7 @@ User metrics are a standard set of 15 metrics (as of October 2021) that are crea
 
 These metrics are computed separately for each unit type. For example, when Stable ID is selected, DAU represents the number of distinct devices seen that day.
 
-More information on specific metrics and their defintions can be found at (User Accounting Metrics)[/metrics/user].
+More information on specific metrics and their defintions can be found at [User Accounting Metrics](/metrics/user).
 
 ## Metric Dimensions
 
