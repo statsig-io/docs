@@ -133,6 +133,7 @@ module.exports = {
       },
       items: [
         "metrics/create",
+        "metrics/ingest",
         "metrics/user",
         "metrics/pulse",
         "metrics/console",
