@@ -21,7 +21,7 @@ Statsig automatically generates three types of metrics:
 
 See [Creating Custom Metrics](/metrics/create) to learn how to create custom metrics for your product and business.
 
-See [Ingesting Precomputed Metrics](/metrics/ingest) to learn how to ingest your pre-computed product and business metrics into Statsig. 
+See [Ingesting Metrics](/metrics/ingest) to learn how to ingest your pre-computed product and business metrics into Statsig. 
 
 All metrics are computed for each day.
 
