@@ -1,4 +1,3 @@
-
 ---
 title: Ingesting Metrics
 sidebar_label: Ingesting Metrics
