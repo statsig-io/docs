@@ -19,19 +19,19 @@ Statsig automatically generates three types of metrics:
 | event_dau   | Yes       | Yes        | 0, 1                       | Unique users who viewed a page |
 | user        | Yes       | No         | Depends on specific metric | Daily Active Users             |
 
-See [Creating Custom Metrics](/metrics/create) to learn how to create custom metrics for product and business.
+See [Creating Custom Metrics](/metrics/create) to learn how to create custom metrics for your product and business.
+
+See [Ingesting Metrics](/metrics/ingest) to learn how to ingest your pre-computed product and business metrics into Statsig. 
 
 All metrics are computed for each day.
 
-### 1. Event Count
-
-`metric_type = event_count`
+### 1. Metric Type: Event Count
 
 Event counts are the simplest metric. For every event we receive, we automatically create an event_count metric based on the number of times Statsig receives that event for each day. In experiments, this value is calculated for each user, and users can have values ranging from 0, 1, 2, ... etc.
 
 Every unique event you send us creates an event_count metric. The name of this metric will match the name of the event, and be denoted with a metric_type = event_count.
 
-### 2. Event Daily Active Users
+### 2. Metric Type: Event Daily Active Users
 
 `metric_type = event_dau`
 
@@ -41,9 +41,7 @@ These metrics are computed separately for each unit type available in the projec
 
 Every unique event you send us creates an event_dau metric. The name of this metric will match the name of the event, and be denoted with a metric_type = event_dau.
 
-### 3. User Accounting Metrics
-
-`metric_type = user`
+### 3. Metric Type: User Accounting Metrics
 
 User metrics start with a definition of a daily active user (DAU). By default, Statsig will consider a user as a daily active user if they've triggered any event, gate check, or config check on a given day. A daily active user is a binary designation that's assigned to every user; A user can be either a daily active user for a given day, or not (ie. inactive). Statsig's default day starts at GMT-8 (Pacific Standard Time), and does not follow daylight savings time.
 
@@ -51,7 +49,7 @@ User metrics are a standard set of 15 metrics (as of October 2021) that are crea
 
 These metrics are computed separately for each unit type. For example, when Stable ID is selected, DAU represents the number of distinct devices seen that day.
 
-More information on specific metrics and their defintions can be found at (User Accounting Metrics)[/metrics/user].
+More information on specific metrics and their defintions can be found at [User Accounting Metrics](/metrics/user).
 
 ## Metric Dimensions
 

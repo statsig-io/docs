@@ -64,5 +64,3 @@ On the other hand, if you decide to continue targeting,
 In this case, the default value of **targetted_layer_param** in **Demo Layer** will not change. 
 
 <img width="454" alt="image" src="https://user-images.githubusercontent.com/1315028/162634627-ae327d9e-81a9-42f9-8171-836808cb6ffb.png">
-
-
