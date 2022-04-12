@@ -1,0 +1,60 @@
+---
+title: Getting the Group
+sidebar_label:Getting the Group
+slug: /experiments-plus/getting-the-group
+---
+
+One of the most common questions we get is "How do I check the experiment group in code?"  Checking the experiment group _in code_ is actually an anti-pattern.
+Experiment groups are very useful for understanding what a set of parameters represents in the Statsig console.  Comparing "Sorted Long List" vs "Default Search Results"
+is easier to discuss than trying to understand what the `sorted = true, length = 10` parameters represent.
+
+That being said, in code, its much more powerful to directly check parameters and their values. Parameters are the building blocks of your experiments when coding.
+Hard coding experiment group names would be both very fragile and very limiting.  Let's see why.
+
+In code, if you tried to use experiment groups, your function might end up looking like this:
+
+```ts
+async function getSearchItems(user: StatsigUser, searchTerm: String): String[] {
+    const results = index.get(searchTerm);
+    const experiment = await statsig.getExperiment(user, 'search_results');
+    if (experiment.groupName === 'Sorted Long List') {
+      return results.sort().slice(10);
+    } else if (experiment.groupName === 'Sorted Short List') {
+      return results.sort().slice(3);
+    } else {
+      return results;
+    }
+}
+```
+
+There are a few problems with this code:
+
+1. Its very fragile.  If the group name in code does not match the name in the Statsig console, you won't return the correct experience
+2. Its static.  I can't easily add another experiment group without changing the code.  I cant add an "Unsorted long list" without a code change.
+
+So instead, this is what the code would look like using experiment parameters directly:
+
+```ts
+async function getSearchItems(user: StatsigUser, searchTerm: String): String[] {
+    let results = index.get(searchTerm);
+    const experiment = await statsig.getExperiment(user, 'search_results');
+    const sort = experiment.get("sorted", false");
+    if (sort) {
+      results = results.sort();
+    }
+    const numItems = experiment.get("length", 0);
+    if (numItems > 0) {
+      results = results.slice(numItems);
+    }
+    return results;
+}
+```
+
+Now, your code is completed decoupled from the names of experiment groups in the statsig console.  You are left with a set of dynamic parameters.
+You can create whichever experiment groups you want out of these building blocks, and the same code will work.  Want to test an unsorted list of 5 items
+against a sorted list of 20 items?  Just set it up in the Statsig console (and name it whatever you want).
+
+As you can see, experiment groups are very useful for describing a set of parameters.  It makes it easy to compare one group against the other when you
+are looking at the results of your experiments.
+
+But when you are coding - stick to the parameters themselves.  It will help you run experiments safely and quickly by making your code fully dynamic.
