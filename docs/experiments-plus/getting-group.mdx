@@ -43,7 +43,7 @@ So instead, this is what the code would look like using experiment parameters di
 async function getSearchItems(user: StatsigUser, searchTerm: String): String[] {
     let results = index.get(searchTerm);
     const experiment = await statsig.getExperiment(user, 'search_results');
-    results = experiment.get("sorted", false") ? results.sort() : results;
+    results = experiment.get("sorted", false) ? results.sort() : results;
     const numItems = experiment.get("length", 0);
     return numItems > 0 ? results.slice(numItems) : results;
 }
