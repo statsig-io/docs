@@ -28,16 +28,16 @@ The easiest way to run an A/A test in Statsig is by leveraging a [Feature Gate](
 
 Log into the Statsig console at https://console.statsig.com/ and navigate to “Feature Gates” in the left-hand navigation panel.
 
-Click on the ***Create button*** and enter the name and (optional) description for your feature gate. We will call our feature gate “aatest_example”. Click ***Create***. 
+Click on the **Create** button and enter the name and (optional) description for your feature gate. We will call our feature gate “aatest_example”. Click **Create**. 
 
 ![create_new_fg_empty](https://user-images.githubusercontent.com/101903926/163246908-24494f12-9d2e-4d8b-8e3e-4fc0ad9c7e41.png)
 
-In the Setup tab, define the rules for this feature gate. Tap “+ Add New Rule”. While you could run an A/A test on a specific user-group, platform, etc. the easiest setup is to simply divide all of your traffic 50/50 and deliver the same experience (your default product experience) to each group.
+In the Setup tab, define the rules for this feature gate. Tap **+ Add New Rule**. While you could run an A/A test on a specific user-group, platform, etc. the easiest setup is to simply divide all of your traffic 50/50 and deliver the same experience (your default product experience) to each group.
 
 ![add_new_rule_empty](https://user-images.githubusercontent.com/101903926/163247089-360857f8-ada3-46af-ac82-e41fc99274b5.png)
 
 
-To do this, under “Criteria” select “Everyone” (you may need to scroll up), name your rule, and then change the “Pass Percentage” to 50%. Click “Add Rule” and that’s it! Tap “Save Changes” in the upper right-hand corner.  
+To do this, under **Criteria** select **Everyone** (you may need to scroll up), name your rule, and then change the **Pass Percentage** to 50%. Click **Add Rule** and that’s it! Tap **Save Changes** in the upper right-hand corner.  
 
 ![add_new_rule_filled](https://user-images.githubusercontent.com/101903926/163247141-30c96f8a-8257-4b39-aa9f-830bb3c89228.png)
 
@@ -51,54 +51,36 @@ Check that it is working as expected by typing in some dummy user IDs into the c
 
 ![check_rule_fail](https://user-images.githubusercontent.com/101903926/163247287-7d565983-8253-4841-a65a-0f74d2e103b2.png)
 
-## Step 2: PLACEHOLDER 
+## Step 2: Check the feature gate in your application and log an event 
 
-Within 24 hours of starting your experiment, you'll see the cumulative exposures in the **Results** tab.
-
-![image](https://user-images.githubusercontent.com/1315028/154574304-79b564b3-0833-49d5-bc65-427b59051343.png)
-
-You will also start to see the key results for each test group compared to the control in the **Results** tab. 
-
-![image](https://user-images.githubusercontent.com/1315028/154574509-adde9b5c-5152-4c91-9e14-bb2c5615b808.png)
-
-In the **Metric Lifts** panel, you can see the full picture of how all your tagged metrics have shifted in the experiment.
-
-![image](https://user-images.githubusercontent.com/1315028/154574843-480b16b6-2785-4246-87e2-afae03ff358f.png)
-
-Once you start to see statistically significant results, either green (positive) or red (negative), you're getting ready to make a decision about whether to ship the test variant. 
-
-Alternatively, you can choose to ramp up the experiment to a larger user base by increasing the allocation in the **Setup** tab. We recommend scaling up allocation slowly in the initial stages, and then by a larger margin in later stages, say 0% -> 2% -> 10% -> 50% -> 100%. This helps you get more data and build more confidence before you decide to ship the experiment.
-
-## Step 3: PLACEHOLDER 
-
-
-
-
-
-
-
-
-
-
-![image](https://user-images.githubusercontent.com/1315028/154571621-4022dddb-6689-4a25-9401-f813a159ef9f.png)
-
-In the Setup tab, define the test groups for this experiment. You can define what percentage of users should receive the group's configured values. Click on the pencil icon next to the _sample_parameter_ and enter the name and type of your experiment parameter, and click **Confirm**. Enter the values that the parameter will take for the control and test groups.  
-
-![image](https://user-images.githubusercontent.com/1315028/154576194-0b38bbe6-feb8-47a1-b460-3c0c2e9e58c6.png)
-
-In the **Allocation** panel, enter the percentage of users that you want to allocate to this experiment. 
-
-![image](https://user-images.githubusercontent.com/1315028/138972419-b7c42f97-29ec-407e-851f-3301130a21c5.png)
-
-After you install the SDK, you must initialize the SDK using an active **Client API Key** from the **API Keys** tab under **[Settings](https://console.statsig.com/settings)** in the Statsig console.
-
-In addition to the Client API key, you must also pass in a `Statsig User ID` to ensure users can be assigned and tracked for different variants of the experiment.
-
-<Initialize />
-
-
-
+Copy the code snippet in the upper righthand corner of your feature gate page under the **< >** symbol and drop it into your application at the point you want to call the A/A check.  
 
 ```jsx
-statsig.logEvent('add_to_cart', 'groceries', {'price': '9.99', 'SKU_ID': 'SKU-123'});
+statsig.checkGate("aatest_example") 
 ```
+
+Now when a user renders this page in their client application, you will automatically start to see a live log stream in the Statsig console when you navigate to the **Diagnostics** tab for your feature gate. 
+
+![logstream](https://user-images.githubusercontent.com/101903926/163247712-4610d7b4-188f-4418-a696-127b3c2f54da.png)
+
+## Step 3: Review A/A test results 
+
+Within 24 hours of starting your experiment, you'll see the cumulative exposures in the **Pulse Results** tab of your feature gate. 
+
+![cumulative_exposures](https://user-images.githubusercontent.com/101903926/163247787-be1e816c-f715-4fd3-ad59-3a6caf48027a.png)
+
+This will break down your logged exposures (as well as the distribution of the logged exposures). If something looks off, check the **Diagnostics** tab for more granular, day-by-day exposure breakdowns at both the Checks and User level.  
+
+In the **Metric Lifts** panel, you can see the full picture of how all your tagged metrics are performing.  
+
+What should you expect to see?  
+
+* **Exposures**- make sure you’re seeing exposures flowing through as expected from your product. If you’re not seeing exposures, use the **Diagnostics** tab and the Exposure Stream to debug.  
+* **Pulse results**- roughly 5% of your metrics in Pulse should be showing a statistically significant change due to the 95% confidence interval of Statsig’s stats engine. 
+
+***NOTE***- If you are seeing a larger than expected number of metrics showing a stat-sig lift, your sampling may be biased. In this scenario, our recommendation is to resalt  (accessed via the “...” menu in the upper right-hand corner on the feature gate page) and re-run.
+
+
+![pulse_results_empty](https://user-images.githubusercontent.com/101903926/163248267-7bd7419a-59e0-4d58-b8e5-8ace95ed74d9.png)
+
+We recommend running your A/A long enough to reach most of your weekly active users, or at least a week.  
