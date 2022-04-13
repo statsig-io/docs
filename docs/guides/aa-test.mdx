@@ -1,0 +1,79 @@
+---
+sidebar_label: Running an A/A Test
+title: Running an A/A Test
+---
+
+In this guide, we will walk you through how to leverage Statsig’s platform to run an A/A test on your product.  
+
+:::info This guide assumes that you have successfully set up and configured your Statsig SDK. For a step-by-step guide on how to do this, see our [“Your first feature”](https://docs.statsig.com/guides/first-feature) guide.
+
+:::
+
+## Why run an A/A test?  
+
+There are many reasons to run an A/A test, one of the most common being to validate a new experimentation engine you may be integrating with (in this case Statsig).  For new users just getting started with Statsig, we often recommend running an A/A test to provide a “low-stakes” first test environment, ensuring that you’ve got your metrics set up correctly and are seeing exposures flowing through as expected before kicking off your first real A/B test. 
+
+Here at Statsig, we are continuously running both live and offline simulation A/A tests on our stats engine- if you want to check one out for yourself, see this example in our Swaggr Demo Project!  
+
+## How to run an A/A test
+
+The easiest way to run an A/A test in Statsig is by leveraging a [Feature Gate](https://docs.statsig.com/feature-gates/working-with). You can also leverage an [Experiment](https://docs.statsig.com/guides/abn-tests) to run an A/A, but we chose to use a Feature Gate for this tutorial for simplicity. 
+
+## Step 1: Create a new feature gate in the Statsig console
+
+Log into the Statsig console at https://console.statsig.com/ and navigate to **Feature Gates** in the left-hand navigation panel.
+
+Click on the **Create** button and enter the name and (optional) description for your feature gate. We will call our feature gate “aatest_example”. Click **Create**. 
+
+![create_new_fg_empty](https://user-images.githubusercontent.com/101903926/163246908-24494f12-9d2e-4d8b-8e3e-4fc0ad9c7e41.png)
+
+In the Setup tab, define the rules for this feature gate. Tap **+ Add New Rule**. While you could run an A/A test on a specific user-group, platform, etc. the easiest setup is to simply divide all of your traffic 50/50 and deliver the same experience (your default product experience) to each group.
+
+![add_new_rule_empty](https://user-images.githubusercontent.com/101903926/163247089-360857f8-ada3-46af-ac82-e41fc99274b5.png)
+
+
+To do this, under **Criteria** select **Everyone** (you may need to scroll up), name your rule, and then change the **Pass Percentage** to 50%. Click **Add Rule** and that’s it! Tap **Save Changes** in the upper right-hand corner.  
+
+![add_new_rule_filled](https://user-images.githubusercontent.com/101903926/163247141-30c96f8a-8257-4b39-aa9f-830bb3c89228.png)
+
+Your feature gate setup should now look as follows-  
+
+![aa_rule_filled_out](https://user-images.githubusercontent.com/101903926/163247211-aacb2c54-1088-4c4a-ab7b-64e393383bdb.png)
+
+Check that it is working as expected by typing in some dummy user IDs into the console- roughly 50% of the time your IDs should pass, and 50% of the time they should fail.  
+
+![check_rule_pass](https://user-images.githubusercontent.com/101903926/163247281-c0fb8089-f418-41af-a3a7-d8e684a3cdf3.png)
+
+![check_rule_fail](https://user-images.githubusercontent.com/101903926/163247287-7d565983-8253-4841-a65a-0f74d2e103b2.png)
+
+## Step 2: Check the feature gate in your application and log an event 
+
+Copy the code snippet in the upper righthand corner of your feature gate page under the **< >** symbol and drop it into your application at the point you want to call the A/A check.  
+
+```jsx
+statsig.checkGate("aatest_example") 
+```
+
+Now when a user renders this page in their client application, you will automatically start to see a live log stream in the Statsig console when you navigate to the **Diagnostics** tab for your feature gate. 
+
+![logstream](https://user-images.githubusercontent.com/101903926/163247712-4610d7b4-188f-4418-a696-127b3c2f54da.png)
+
+## Step 3: Review A/A test results 
+
+Within 24 hours of starting your experiment, you'll see the cumulative exposures in the **Pulse Results** tab of your feature gate. 
+
+![cumulative_exposures](https://user-images.githubusercontent.com/101903926/163247787-be1e816c-f715-4fd3-ad59-3a6caf48027a.png)
+
+This will break down your logged exposures (as well as the distribution of the logged exposures). If something looks off, check the **Diagnostics** tab for more granular, day-by-day exposure breakdowns at both the Checks and User level.  
+
+In the **Metric Lifts** panel, you can see the full picture of how all your tagged metrics are performing.  
+
+
+![pulse_results_empty](https://user-images.githubusercontent.com/101903926/163248267-7bd7419a-59e0-4d58-b8e5-8ace95ed74d9.png)
+
+What should you expect to see?  
+
+* **Exposures**- make sure you’re seeing exposures flowing through as expected from your product. If you’re not seeing exposures, use the **Diagnostics** tab and the **Exposure Stream** to debug  
+* **Pulse results**- roughly 5% of your metrics in Pulse should be showing a statistically significant change due to the 95% confidence interval of Statsig’s stats engine 
+
+We recommend running your A/A long enough to reach most of your weekly active users, or at least a week.  
