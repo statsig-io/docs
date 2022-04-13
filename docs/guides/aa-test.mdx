@@ -3,6 +3,11 @@ sidebar_label: Running an A/A Test
 title: Running an A/A Test
 ---
 
+import Install from '../client/js/_install.mdx' 
+import Initialize from '../client/js/_initialize.mdx' 
+import GetExperiment from '../client/js/_getExperiment.mdx' 
+import LogEvent from '../client/js/_logEvent.mdx'
+
 In this guide, we will walk you through how to leverage Statsig’s platform to run an A/A test on your product.  
 
 :::info This guide assumes that you have successfully set up and configured your Statsig SDK. For a step-by-step guide on how to do this, see our [“Your first feature”](https://docs.statsig.com/guides/first-feature) guide.
@@ -11,63 +16,40 @@ In this guide, we will walk you through how to leverage Statsig’s platform to 
 
 ## Why run an A/A test?  
 
-Log into the Statsig console at https://console.statsig.com/ and navigate to Experiments in the left-hand navigation panel.
+There are many reasons to run an A/A test, one of the most common being to validate a new experimentation engine you may be integrating with (in this case Statsig).  For new users just getting started with Statsig, we often recommend running an A/A test to provide a “low-stakes” first test environment, ensuring that you’ve got your metrics set up correctly and are seeing exposures flowing through as expected before kicking off your first real A/B test. 
 
-Click on the **Create** button and enter the name and description for your experiment. Click **Create**.
-
-![image](https://user-images.githubusercontent.com/1315028/154571621-4022dddb-6689-4a25-9401-f813a159ef9f.png)
-
-In the Setup tab, define the test groups for this experiment. You can define what percentage of users should receive the group's configured values. Click on the pencil icon next to the _sample_parameter_ and enter the name and type of your experiment parameter, and click **Confirm**. Enter the values that the parameter will take for the control and test groups.  
-
-![image](https://user-images.githubusercontent.com/1315028/154576194-0b38bbe6-feb8-47a1-b460-3c0c2e9e58c6.png)
-
-In the **Allocation** panel, enter the percentage of users that you want to allocate to this experiment. 
-
-![image](https://user-images.githubusercontent.com/1315028/138972419-b7c42f97-29ec-407e-851f-3301130a21c5.png)
-
-Enter the key metrics you want to track in this experiment. While Statsig will show you experiment results 
-for all your metrics, these key metrics represent your hypothesis for the experiment. Establishing a hypothesis
-upfront ensures that the experiment serves to improve your understanding of users rather than
-simply serving data points to bolster the case for shipping or not shipping your experiment.   
-Finally, don't forget to click on the **Save** button at the top right hand side of the page to complete your experiment setup.
-
-![image](https://user-images.githubusercontent.com/1315028/138973362-69b53d48-745a-462f-a275-b0a3720d4d90.png)
+Here at Statsig, we are continuously running both live and offline simulation A/A tests on our stats engine- if you want to check one out for yourself, see this example in our Swaggr Demo Project!  
 
 ## How to run an A/A test
 
-In this guide, we use the Statsig Javascript client SDK. See the Statsig [client or server SDKs docs](https://docs.statsig.com/#sdks) for your desired programming language and technology.
+The easiest way to run an A/A test in Statsig is by leveraging a [Feature Gate](https://docs.statsig.com/feature-gates/working-with).  
 
-<Install />
+## Step 1: Create a new feature gate in the Statsig console
 
-After you install the SDK, you must initialize the SDK using an active **Client API Key** from the **API Keys** tab under **[Settings](https://console.statsig.com/settings)** in the Statsig console.
+Log into the Statsig console at https://console.statsig.com/ and navigate to “Feature Gates” in the left-hand navigation panel.
 
-In addition to the Client API key, you must also pass in a `Statsig User ID` to ensure users can be assigned and tracked for different variants of the experiment.
+Click on the ***Create button*** and enter the name and (optional) description for your feature gate. We will call our feature gate “aatest_example”. Click ***Create***. 
 
-<Initialize />
+![create_new_fg_empty](https://user-images.githubusercontent.com/101903926/163246908-24494f12-9d2e-4d8b-8e3e-4fc0ad9c7e41.png)
 
-## Step 1: PLACEHOLDER 
+In the Setup tab, define the rules for this feature gate. Tap “+ Add New Rule”. While you could run an A/A test on a specific user-group, platform, etc. the easiest setup is to simply divide all of your traffic 50/50 and deliver the same experience (your default product experience) to each group.
 
-Get your experiment's configuration parameters to enable the user to see the experience you want to create with each variant. In this case, we fetch the value of the shape parameter that we had created earlier.
+![add_new_rule_empty](https://user-images.githubusercontent.com/101903926/163247089-360857f8-ada3-46af-ac82-e41fc99274b5.png)
 
-```jsx
-const expConfig = statsig.getExperiment("onboarding_banner");
 
-const showBanner = expConfig.get("showbanner", false);
- 
-```
+To do this, under “Criteria” select “Everyone” (you may need to scroll up), name your rule, and then change the “Pass Percentage” to 50%. Click “Add Rule” and that’s it! Tap “Save Changes” in the upper right-hand corner.  
 
-Now when a user renders this page in their client application, you will automatically start to see a live log stream in the Statsig console when you navigate to your experiment and select the **Diagnostics** tab.
+![add_new_rule_filled](https://user-images.githubusercontent.com/101903926/163247141-30c96f8a-8257-4b39-aa9f-830bb3c89228.png)
 
-![image](https://user-images.githubusercontent.com/1315028/139113152-7d19afa1-733f-4ee4-b788-3d39cecedae1.png)
+Your feature gate setup should now look as follows-  
 
-At this stage, you may also want to track downstream events to measure how your users are responding to different variants of the experiment. To do this, call the `LogEvent` API with the key measure that you may want to aggregate as well as other metadata that you may use as additional dimensions to breakdown the aggregate results.
+![aa_rule_filled_out](https://user-images.githubusercontent.com/101903926/163247211-aacb2c54-1088-4c4a-ab7b-64e393383bdb.png)
 
-```jsx
-statsig.logEvent('add_to_cart', 'groceries', {'price': '9.99', 'SKU_ID': 'SKU-123'});
-```
+Check that it is working as expected by typing in some dummy user IDs into the console- roughly 50% of the time your IDs should pass, and 50% of the time they should fail.  
 
-As the experiment progresses, you will see how many experiment checks occur and how many events are logged on an hourly basis in the **Diagnostics** tab.
+![check_rule_pass](https://user-images.githubusercontent.com/101903926/163247281-c0fb8089-f418-41af-a3a7-d8e684a3cdf3.png)
 
+![check_rule_fail](https://user-images.githubusercontent.com/101903926/163247287-7d565983-8253-4841-a65a-0f74d2e103b2.png)
 
 ## Step 2: PLACEHOLDER 
 
@@ -89,3 +71,34 @@ Alternatively, you can choose to ramp up the experiment to a larger user base by
 
 ## Step 3: PLACEHOLDER 
 
+
+
+
+
+
+
+
+
+
+![image](https://user-images.githubusercontent.com/1315028/154571621-4022dddb-6689-4a25-9401-f813a159ef9f.png)
+
+In the Setup tab, define the test groups for this experiment. You can define what percentage of users should receive the group's configured values. Click on the pencil icon next to the _sample_parameter_ and enter the name and type of your experiment parameter, and click **Confirm**. Enter the values that the parameter will take for the control and test groups.  
+
+![image](https://user-images.githubusercontent.com/1315028/154576194-0b38bbe6-feb8-47a1-b460-3c0c2e9e58c6.png)
+
+In the **Allocation** panel, enter the percentage of users that you want to allocate to this experiment. 
+
+![image](https://user-images.githubusercontent.com/1315028/138972419-b7c42f97-29ec-407e-851f-3301130a21c5.png)
+
+After you install the SDK, you must initialize the SDK using an active **Client API Key** from the **API Keys** tab under **[Settings](https://console.statsig.com/settings)** in the Statsig console.
+
+In addition to the Client API key, you must also pass in a `Statsig User ID` to ensure users can be assigned and tracked for different variants of the experiment.
+
+<Initialize />
+
+
+
+
+```jsx
+statsig.logEvent('add_to_cart', 'groceries', {'price': '9.99', 'SKU_ID': 'SKU-123'});
+```
