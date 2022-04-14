@@ -11,7 +11,7 @@ The statistics computed for Pulse vary according to the metric type.  Most metri
 | Metric Type      | Total Calculation       | Mean           | Units          |
 |------------------|-------------------------|----------------|----------------|
 | event_count      | Sum of events           | Average events per user  | All users  |
-| event_dau        | Sum of event DAU (distinct user-day pairs) | Average event_dau value per user per day. The probability a user is DAU for that event.  | All users |
+| event_dau        | Sum of event DAU (distinct user-day pairs) | Average event_dau value per user per day. The probability a user is DAU for that event. Note that we call this "Event Participation Rate" in console for clarity.  | All users |
 | ratio            | Overall ratio: sum(numerator values)/sum(denominator values)  | Overall ratio  |  Participating users |
 | sum              | Total sum of values     | Average value per user   | All users |
 | mean             | Overall mean value    | Overall mean value   | Participating users |
