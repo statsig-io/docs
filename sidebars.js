@@ -25,6 +25,7 @@ module.exports = {
         "guides/use-statsig-for-analytics-only",
         "guides/featuregates-or-experiments",
         "guides/experimentation-program",
+        "guides/aa-test",
       ],
     },
     {
