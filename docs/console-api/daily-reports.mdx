@@ -23,7 +23,6 @@ All responses will contain a **url** field and a **date** field.
 This API supports three types of daily reports:
 1. type=first_exposures - Provides a link to download your company's full set of "first exposures" across feature gates and experiments.
 2. type=pulse_daily - Provides a link to download your company's daily experimental results.  This data is a single day's results and a full experimental analysis requires the entire duration of the experiment.
-3. type=unit_metrics_daily - Provides a link to download your company's daily user metrics (as computed by Statsig).  This data has one row for every user/metric pair for the most recent date.
 
 This feature is available to Pro and Enterprise tier customers.
 
@@ -44,3 +43,17 @@ curl --request POST 'https://api.statsig.com/v1/get_daily_reports' \
   "date": <DS>,
 }
 ```
+
+## Report Schema - type = first_exposures
+
+| Column Name | Description |
+|-------------|-------------|
+| user_id / stable_id / <custom_id> | Refers to the unit identifier used in the experiment |
+| name | The name of the gate/experiment |
+| rule | For gates, this refers to the rule name |
+| experiment_group | The group the user was assigned to |
+| first_exposure_utc | The UTC timestamp when the user was first assigned to the experiment |
+| first_exposure_pst_date | The date in PST when the user was first assigned to the experiment |
+| as_of_pst_date | The date this data was generated |
+| user_dimensions | JSON-formatted key-value pairs describing the user's attributes at the time of first exposure |
+
