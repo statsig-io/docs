@@ -6,7 +6,7 @@ WORKDIR /usr/app
 COPY ./ ./
 RUN npm install -g pnpm
 RUN pnpm install --frozen-lockfile
-RUN pnpm run build
+RUN pnpm build
 
 ## production environment
 FROM nginx:1-alpine

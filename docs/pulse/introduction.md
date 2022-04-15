@@ -90,14 +90,14 @@ You can export your Pulse Results for Feature Gates and Experiments.  Simply nav
 
 There are three types of export:
 1. Exposures - A table of all exposed users and their first exposures.  This is useful for joining on your own internal data, and running custom queries within your own data warehouse.  This can also be used to verify who was in the experiment, what group they were assigned to, and when they were first exposed (around 1-25MB).  This will contain:
-   1. <experiment>_first_exposures.csv - contains a list of users and their first exposure to the experiment.
+   1. <experiment\>_first_exposures.csv - contains a list of users and their first exposure to the experiment.
    
 2. Pulse Summary - This provides precomputed summary experimental data for all metrics and test groups including everything that's visible on Pulse (**around 10-100 kb**).  This will contain:
-   1. <experiment>_pulse_summary.csv - contains Pulse aggregate metrics computed over the duration of the experiment.
+   1. <experiment\>_pulse_summary.csv - contains Pulse aggregate metrics computed over the duration of the experiment.
 
 3. Raw Data - This provides raw exposures and metrics data at the user-day level. This is best used for manually inspecting data, or recomputing your own statistics (**around 10MB-1GB**).  This will contain:
-   1. <experiment>_first_exposures.csv - contains a list of users and their first exposure to the experiment. If this is the only file you are interested in, you can get this by exporting an "Exposures" report which will be much smaller in size.
-   2. <experiment>_user_metrics.csv - contains a list of experimental users, and their calculated metrics for each day they were enrolled in the experiment.
+   1. <experiment\>_first_exposures.csv - contains a list of users and their first exposure to the experiment. If this is the only file you are interested in, you can get this by exporting an "Exposures" report which will be much smaller in size.
+   2. <experiment\>_user_metrics.csv - contains a list of experimental users, and their calculated metrics for each day they were enrolled in the experiment.
 
 ### Pulse Summary File Description - For Feature Gates
 
