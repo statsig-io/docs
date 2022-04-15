@@ -82,7 +82,7 @@ We have some suggestions on how to interpret Pulse in a scientifically-sound way
 
 ## Export Report
 
-![Finding Export Report](https://user-images.githubusercontent.com/77478319/163458841-5394573f-08e1-40b3-a62a-ae1bfe6cfde1.png)
+![Finding Export Report](https://user-images.githubusercontent.com/77478319/163510492-e6bff7cf-9d7c-46b2-a276-ec2e550aa9a1.png)
 
 You can export your Pulse Results for Feature Gates and Experiments.  Simply navigate to the relevant "Pulse Results" page, and click "Export Report". Exporting results can take up to 10 minutes.  A notification and an email will be sent when the report is ready, and a link will be available under under Project Settings -> Reports.
 
