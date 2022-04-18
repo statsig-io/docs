@@ -170,7 +170,7 @@ unit identifier will limit the utility of your events, as we won't be able to us
 
 | Column       | Description                                          | Rules                                                                                                                |
 |--------------|------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| user_id      | The unique user identifier this metric is for        |                                                                                                                      |
+| user_id      | The unique user identifier this metric is for. This might not necessarily be a user_id - it could be a custom_id of some kind        |                                                                                                                      |
 | id_type      | The id_type the user_id represents.                  | Must be a valid id_type. The default Statsig types are user_id/stable_id, but you may have generated custom id_types |
 | date         | Date of the daily metric  |                                                                                                    |
 | timeuuid     | A unique timeuuid for the event                      | This should be a timeuuid, but using a unique id will suffice. If not provided, the table defaults to generating a UUID.           |
