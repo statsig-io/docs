@@ -97,7 +97,7 @@ curl --request GET 'https://api.statsig.com/console/v1/gates/a_gate' \
 ## Updating a Gate
 
 ```bash
-curl --request PUT 'https://api.statsig.com/console/v1/gates/a_gate' \
+curl --request POST 'https://api.statsig.com/console/v1/gates/a_gate' \
 --header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx' \
 --header 'Content-Type: application/json' \
 --data-raw '{
