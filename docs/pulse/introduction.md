@@ -40,7 +40,7 @@ There are two ways in which we can breakdown a given Pulse metric - one is by us
 
 **User dimensions** refer to user level attributes that are either part of the user object you log, or additional metadata that Statsig extracts. Examples of these attributes are operating system, country, and region. Clicking on the "Settings" button and then the "Create Custom Query" button in the Pulse metrics view will take you through the flow for creating a query that _filters on_ and/or _groups by_ the user dimensions you have available. This allows you to do simple queries such as "See metrics for users in the US" to much more complicated queries such as "See metrics for users who use iOS, grouped by their Country". These queries take a few minutes to run, but once complete the results will be visible in the "Custom Queries" tab of the Gate or Experiment you ran the query for (you will also receive an email and console notification with a link).
 
-![image](https://user-images.githubusercontent.com/88338316/158862710-042a4440-e17a-44ab-96cb-0af6a8597eb3.png)
+![image](https://user-images.githubusercontent.com/31516123/164115306-a9482970-54ab-441d-bb88-5209d2c1986c.png)
 ![image](https://user-images.githubusercontent.com/88338316/158862836-381dafe2-8140-4b7d-9a28-b59a0ebcbd4c.png)
 ![image](https://user-images.githubusercontent.com/88338316/158864531-be7f4527-6f83-4f9c-9b9d-2de4f34ec77f.png)
 
