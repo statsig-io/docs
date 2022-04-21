@@ -175,19 +175,40 @@ unit identifier will limit the utility of your events, as we won't be able to us
 | date         | Date of the daily metric  |                                                                                                    |
 | timeuuid     | A unique timeuuid for the event                      | This should be a timeuuid, but using a unique id will suffice. If not provided, the table defaults to generating a UUID.           |
 | metric_name  | The name of the metric                               | Not null. Length < 128 characters                                                                                    |
-| metric_value | A numeric value for the metric                       | Metric value, or both of numerator/denominator need to be provided for Statsig to process the metric                 |
-| numerator    | Numerator for metric calculation                     | See above                                                                                                            |
-| denominator  | Denominator for metric calculation                   | See above                                                                                                            |
+| metric_value | A numeric value for the metric                       | Metric value, or both of numerator/denominator need to be provided for Statsig to process the metric. See details below                 |
+| numerator    | Numerator for metric calculation                     | See above, and details below                                                                                                        |
+| denominator  | Denominator for metric calculation                   | See above, and details below                                                                                                            |
 
 Metric ingestion is for user-day metric pairs. This is useful for measuring experimental results on complex business logic (e.g. LTV estimates) that you generate in your data warehouse.
 
+##### Note on metric values
+If you provide **both** a numerator and denominator value for any record of a metric, we'll assume that this metric is a ratio metric; we'll filter out users who do not have a denominator value from analysis, and recalculate the metric value ourselves via the numerator and denominator fields. 
+
+If you only provide a metric_value, we'll use the metric_value for analysis. In this case, we'll impute 0 for users without a metric value in experiments.
+
+For example, this dataset would lead to us using a ratio calculation:
+| UserID | Metric_Value | Numerator | Denominator |
+|--------|--------------|-----------|-------------|
+| 1      | 1            | 1         | 3           |
+| 2      | 1            | 2         | 3           |
+| 3      | 1            |          |            |
+
+We would calculate the population value as `(1+2)/(3+3) = 0.5`
+
+This dataset would lead to us using a metric calculation:
+| UserID | Metric_Value | Numerator | Denominator |
+|--------|--------------|-----------|-------------|
+| 1      | 1            | 1         |             |
+| 2      | 1            |           |             |
+
+The reported topline value would be `(1+1) = 2`. However, if we had an expermental arm that had users 1, 2, and 3 in it, user 3 would be implicitly set to 0 and the population **mean** would be `(1+1+0)/3 = 2/3`
 
 #### Scheduling
 Because you may be streaming events to your tables or have multiple ETLs pointing to your metrics table, Statsig relies on you
 signalling that your metric/events for a given day are done. 
 
-When a day is fully loaded, insert that date (UTC-formatted) as a row in the appropriate signal_table - `statsig_user_metrics_signal` for metrics
-or `statsig_events_signal` for events. 
+When a day is fully loaded, insert that date as a row in the appropriate signal_table - `statsig_user_metrics_signal` for metrics
+or `statsig_events_signal` for events. For example, once all of your metrics data is loaded into `statsig_user_metrics` for `2022-04-01`, you would insert `2022-04-01` into `statsig_user_metrics_signal`. 
 
 Statsig expects you to load data in order. For example, if you have loaded up to `2022-04-01` and signal that `2022-04-03` has landed,
 we will wait for you to signal that `2022-04-02` has landed, and load that data before we ingest data from `2022-04-03`
