@@ -1,0 +1,35 @@
+---
+sidebar_label: Serverless
+title: Using Statsig in Serverless Environments
+---
+
+In this guide, we will walk you through how to leverage Statsig’s platform in serverless environments.  The examples in this guide use the `statsig-node` SDK in a Google Cloud Function.
+These details shouldn't matter - but you may have to adjust your implementation based on your cloud provider of choice.
+
+### Usage
+
+Statsig server SDKs can be used in serverless environments.  If you are unable to `initialize` Statsig outside of a serverless function, you will incur a server round trip to Statsig servers to initialize the SDK in every function.
+
+After this point, all checks should be locally evaluated in the function.
+
+Finally, if you need to force Statsig to flush logs, you should `shutdown` the SDK before the function exits.
+
+### Example
+
+The following example has some debugging information built in to show the cost of initializing the SDK in a cloud function.  In our experience, the `initialize` call takes less than a second, and subsequent function invocations should proceed without this startup cost.
+
+import Gist from 'react-gist';
+
+<Gist id="bc759e43fd3fbac4619e5635d8ba9353" />
+
+https://gist.github.com/tore-statsig/bc759e43fd3fbac4619e5635d8ba9353
+
+
+### Alternatives
+
+If this doesn't work for you, a custom integration may help but would require additional setup.
+
+For example, you could create a background function which fetches your definitions from Statsig servers periodically, and stores them in your database.
+Then, when initializing a Statsig server SDK, you can fetch the values from your database, rather than issuing a request to Statsig servers.
+
+[Reach out to us in Slack](https://www.statsig.com/slack) if you want to talk through how to make Statsig play nicely with your architecture and requirements!
