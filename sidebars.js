@@ -26,6 +26,7 @@ module.exports = {
         "guides/featuregates-or-experiments",
         "guides/experimentation-program",
         "guides/aa-test",
+        "guides/serverless",
       ],
     },
     {
