@@ -34,6 +34,8 @@ Delta(%) = (Test - Control) / Control
 
 Confidence intervals are reported at the selected significance level (95% by default).  In a typical Z-test, we show the confidence interval as +/- 1.96 * standard error.
 
+99.9% winsorization is automatically applied to event_count, event_count_custom, and sum metrics. This caps extreme outlier values to reduce their impact on experiment results. 
+
 ### Dimensions
 
 There are two ways in which we can breakdown a given Pulse metric - one is by user dimension, the other is by value dimension.
