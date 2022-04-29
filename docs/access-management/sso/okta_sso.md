@@ -5,7 +5,7 @@ title: Single Sign-On With Okta
 
 ## Requirements
 
-- You will need to be the `Owner` of the Statsig Project you intend to add SSO with Okta to.
+- You will need to be the `Admin` of the Statsig Organization you intend to add SSO with Okta to.
 - You will need to be the Administrator of the Okta account you want to link.
 
 ## Supported Features
