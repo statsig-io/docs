@@ -5,11 +5,11 @@ title: Single Sign-On With OIDC
 
 *This documentation assumes that you already have an OIDC Provider up and running.*
 
-SSO with OIDC can be configured for your Statsig Projects to continue using your company's identity store with Statsig and simplify the process for inviting your team to your Projects.
+SSO with OIDC can be configured for your Statsig Organization to continue using your company's identity store with Statsig and simplify the process for inviting your team to your Projects. Organizations are an Enterprise Tier feature.
 
 ## Configuration
 
-An `Owner` of a Project can configure SSO for their Project on Statsig. On your OIDC Provider you will need to specify the following for your Statsig Project:
+An `Admin` of an organization can configure SSO on Statsig. On your OIDC Provider you will need to specify the following for your Statsig Project:
 
 - Sign-in redirect URI: https://console.statsig.com/sso/oidc
 - Sign-out redirect URI: https://console.statsig.com
@@ -22,9 +22,9 @@ To enable SSO on Statsig, you will need the following from your OIDC Provider:
 
 Once you have obtained all of the information mentioned above:
 
-1. Navigate to your Project's [`Basic Settings` page](https://console.statsig.com/settings) and click the `Enable` button for Single Sign-on.
+1. Navigate to your Organization's [`Basic Settings` page](https://console.statsig.com/organization) and click the `Enable` button for Single Sign-on.
 
-![image](https://user-images.githubusercontent.com/75151332/128761218-e52c09a0-a51a-4e6d-870a-07359867be5b.png)
+![image](https://user-images.githubusercontent.com/31516123/166059008-f8607e0c-54a9-402f-8515-a4170233ceb6.png)
 
 2. Provide the information acquired from your OIDC Provider into the fields in the dialog and click `Enable`.
 
