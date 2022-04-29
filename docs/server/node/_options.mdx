@@ -8,4 +8,8 @@
 - **bootstrapValues**: string, default nil
   - a string that represents all rules for all feature gates, dynamic configs and experiments. It can be provided to bootstrap the Statsig server SDK at initialization in case your server runs into network issue or Statsig server is down temporarily.
 - **rulesUpdatedCallback**: function, default nil
-  - a callback function that's called whenever we have an update for the rules; it's called with a logical timestamp and a JSON string (used as is for `bootstrapValues` mentioned above).
+  - a callback function that's called whenever we have an update for the rules; it's called with a JSON string (used as is for `bootstrapValues` mentioned above) and a timestamp, like below:
+
+    ```
+    options.rulesUpdatedCallback(specsString, timeStamp)
+    ```
