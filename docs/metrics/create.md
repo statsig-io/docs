@@ -42,7 +42,7 @@ The example below shows a **Total Revenue** metric that sums the _value_ associa
 ![image](https://user-images.githubusercontent.com/1315028/160025808-b84b45c5-9817-4fb9-8bd2-fe9fbd25b66a.png)
 
 #### 4. Ratio Metrics
-The example below shows the creation of a **Cart Conversion Rate** metric. Here we use the unique users who triggered the _purchase event_ as the numerator and the unique users who triggered the _add to cart_ event in the denominator. 
+The example below shows the creation of a **Cart Conversion Rate** metric. Here we use the unique users who triggered the _purchase event_ as the numerator and the unique users who triggered the _add to cart_ event in the denominator. Note that when calculating the numerator, we filter to only include users who also had the denominator event in the same day. So in the case of this metric, a user who only has _purchase event_ on a given day without an _add to cart_ on that same day will not count towards the numerator.
 
 ![image](https://user-images.githubusercontent.com/1315028/160025540-550bbee3-cfbd-4fc0-9a46-5db4f2e09c5e.png)
 
