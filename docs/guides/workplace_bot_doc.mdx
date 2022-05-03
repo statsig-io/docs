@@ -31,10 +31,10 @@ In order for your bot to know which image to show, I recommend setting up a dyna
 ```jsx
 {
   statsig: {
-    src: '<https://statsig.com/images/logo_wordmark.svg>',
+    src: 'https://statsig.com/images/logo_wordmark.svg',
   },
   nicenice: {
-    src: '<https://cdn.britannica.com/86/64486-050-C8AEE0D0/Nice-France.jpg>',
+    src: 'https://cdn.britannica.com/86/64486-050-C8AEE0D0/Nice-France.jpg',
   },
 }
 
@@ -44,140 +44,9 @@ For custom images, we used github to host our images but you can use any image h
 
 ## 3. Create Your Webhook:
 
-Create a new webhook wherever your webhooks live. Here’s what our webhook looks like:
-
-```jsx
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { getSession } from 'next-auth/react';
-import { genValidateSession } from '../../lib/SessionUtils';
-import axios from 'axios';
-import { IDUtils } from '../../lib/IDUtils';
-import Secrets from '../../lib/Secrets'
-import statsig, { StatsigOptions } from 'statsig-node';
-
-export default async function marcosbot_workplace(
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<void> {
-  // 1. Handle verification of webhook
-  if (req.method === 'GET') {
-    // Your verify token. Should be a random string.
-    let VERIFY_TOKEN = '******';
-
-    // Parse the query params
-    let mode = req.query['hub.mode'];
-    let token = req.query['hub.verify_token'];
-    let challenge = req.query['hub.challenge'];
-
-    // Checks if a token and mode is in the query string of the request
-    if (mode && token) {
-      // Checks the mode and token sent is correct
-      if (mode === 'subscribe' && token === VERIFY_TOKEN) {
-        // Responds with the challenge token from the request
-        console.log('WEBHOOK_VERIFIED');
-        res.status(200).send(challenge);
-      } else {
-        // Responds with '403 Forbidden' if verify tokens do not match
-        res.status(403);
-      }
-      return;
-    }
-  }
-
-  // You can find this in the Details section of your integration
-  const access_token = "****";
-
-  // 2. Get message
-  let msg: string | undefined;
-  let data = req.body;
-  let thread_id: any = {};
-  if (data.object == 'page') {
-    for (let pageEntry of data.entry) {
-      for (let messagingEvent of pageEntry.messaging) {
-        thread_id = messagingEvent.thread?.id;
-        if (messagingEvent.message) msg = messagingEvent.message.text ?? '';
-      }
-    }
-  }
-  msg = msg ?? '';
-  if (msg === '') {
-    res.status(200).json({
-      success: true,
-    });
-    return;
-  }
-
-  // 2. Parse message
-  let marco_name: any = {};
-  let marco_command = '';
-  try {
-    let marco_parsed = msg.split(" ", 2);
-    marco_command = marco_parsed[0]
-    marco_name = marco_parsed[1];
-	// Our bot responds whenever #m, @MarcosBot, or MarcosBot is used
-    if (!(marco_command === "#m" || marco_command === "@MarcosBot" || marco_command === "MarcosBot")) {
-      res.status(200).json({
-        success: true,
-      });
-      return;
-    }
-  } catch (e) {
-    res.status(200).json({
-      success: true,
-    });
-    return;
-  }
-
-  // 4. Use Statsig to retrieve image url
-  await statsig.initialize(Secrets.StatsigInternServerSecretKey, { environment: { tier: "development" } });
-  const marcos = (await statsig.getConfig({
-    userID: "workplace",
-  }, "marcos")).value as Record<string, unknown>;
-  let marco = marcos[marco_name] as ({ src: string } | undefined);
-  if (!marco) {
-    marco = marcos['brokenmarcosbot'] as { src: string };
-  }
-
-  // 5. Send response
-  let messageData = {
-    message_type: "RESPONSE",
-    recipient: {
-      thread_key: thread_id
-    },
-    message: {
-      attachment: {
-        type: "image",
-        payload: {
-          is_reusable: true,
-          url: marco.src
-        }
-      }
-    },
-  };
-  try {
-    const response = await axios.post(
-      `https://graph.facebook.com/v13.0/me/messages?access_token=${access_token}`,
-      messageData,
-      {
-        headers: {
-          Authorization: `Bearer ${access_token}`,
-          'Content-Type': 'application/json',
-        },
-      },
-    );
-    statsig.logEvent({
-      userID: "workplace",
-    }, "parse:" + (marco_name ?? ''), undefined, marco);
-  } catch (e) {
-    console.error(e);
-  }
-
-  res.status(200).json({
-    success: true,
-  });
-}
-
-```
+Create a new webhook wherever your webhooks live. Here’s what our webhook looks like
+import Gist from 'react-gist';
+<Gist id="18d30500c1a8267d2edf9992a1e9e1b4" />
 
 ## 4. Test Your Webhook
 
@@ -185,14 +54,14 @@ We used ngrok to test our webhook. Head [here](https://ngrok.com/docs/getting-st
 
 1.  Run “ngrok http <your port number>”
     
-2.  You should get back a url that looks like this [](http://71c8-216-207-142-218.ngrok.io/)[http://71c8-216-207-142-218.ngrok.io](http://71c8-216-207-142-218.ngrok.io). Input that as the callback url in the page webhook.
+2.  You should get back a url that looks like this http://71c8-216-207-142-218.ngrok.io/. Input that as the callback url in the page webhook.
     ![Screen Shot 2022-04-26 at 1 23 43 PM](https://user-images.githubusercontent.com/99914387/166559137-3f36762c-3ca5-417e-8e2f-34ea06a00d78.png)  
     
-3.  Open up [](http://localhost:4040/)[http://localhost:4040/](http://localhost:4040/) in your browser. Here is where you can see requests sent and received by your webhook.
+3.  Open up http://localhost:4040/ in your browser. Here is where you can see requests sent and received by your webhook.
     
 4.  Create a new Workplace group chat with your favorite coworkers and your bot, and trigger your bot by calling one of your macros such as “#m lgtm”
     
-5.  Use [](http://localhost:4040/)[http://localhost:4040/](http://localhost:4040/) and console to debug as needed
+5.  Use http://localhost:4040/ and console to debug as needed
     
 ## Limitations
 One major quirk I ran into while building this was the bot must be added to the group chat to work, which means:
@@ -206,8 +75,3 @@ One major quirk I ran into while building this was the bot must be added to the 
     <img width="1297" alt="Screen Shot 2022-04-26 at 4 37 32 PM" src="https://user-images.githubusercontent.com/99914387/166559194-41a39093-e283-43ea-8415-7645f4c1351f.png">
     
     Fun fact: you can actually get around this by creating a normal group chat → adding the bot to the chat → use the More Options button in the chat to got to Admin Options → click Create Group. Then your bot is in a chat associated with a group and works normally.
-    
-
-## Final Thoughts
-
-ngrok is an incredible tool. I found it confusing at first but once I got the hang of it it was straightforward to use and extremely helpful in testing my code. I will definitely use this tool again next time I am working work webhooks. Workplace custom integrations, on the other hand, I found incredibly frustrating because I know first hand how powerful they can be. Internally at Facebook, they have built out a ton of incredible Workplace tools such as #remindme to remind you of something at a later date, @silent to make your messages not send out a notification, and #share to share posts from one group to another. All of these commands worked in all chats and groups without having to explicitly add a bot. I hope in the future Workplace will ship these features out to other companies and give us the ability to make our own custom integrations just as powerful.
