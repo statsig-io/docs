@@ -7,7 +7,7 @@ slug: /layers
 # What are Layers?
 Layers (a.k.a. Universes) allow us to create experiments that are mutually exclusive to each other. That is to say, users that are in one experiment of a layer, cannot also be in another experiment in the same layer.
 
-In addition to that, **Layers is key to improving engineering efficiency and iteration velocity** for product teams. In a Layer, parameters exist at the Layer level, and can be shared across experiments within the Layer. Due to this characteristic, we can abstract the concept of "Experiment" away from the SDKs so that users only need to deal with parameters in code, which makes it super easy to run multiple experiments that change the same thing and iterate on the same experiment without any code change.
+In addition to that, **Layers are key to improving engineering efficiency and iteration velocity** for product teams. In a Layer, parameters exist at the Layer level, and can be shared across experiments within the Layer. Due to this characteristic, we can abstract the concept of "Experiment" away from the SDKs so that users only need to deal with parameters in code, which makes it super easy to run multiple experiments that change the same thing and iterate on the same experiment without any code changes.
 
 Let's say your product has an important sign up dialog, which contains some text that your team runs a lot of tests on, some of which were ran in parallel, and some were iterations of previous experiments. If you work with Experiments directly, your code will look like this over time:
 
@@ -47,7 +47,7 @@ let signUpText = statsig.getLayer('sign_up_tests').get('sign_up_dialog_text', DE
 // Then we display the text in the dialog
 ```
 
-That's all the code you ever need! No more code change and app release for new tests. Every time you want to add a new test, simply add a new experiment to the same Layer and choose the parameter `sign_up_dialog_text` as a parameter for the new experiment. The SDK takes care of figuring out which value to serve for the user, based on which experiment the user is allocated to.
+That's all the code you ever need! No more code changes and app releases for new tests. Every time you want to add a new test, simply add a new experiment to the same Layer and choose the parameter `sign_up_dialog_text` as a parameter for the new experiment. The SDK takes care of figuring out which value to serve for the user, based on which experiment the user is allocated to.
 
 # See it in Action
 
