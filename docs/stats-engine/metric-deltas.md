@@ -8,13 +8,13 @@ slug: /stats-engine/metric-deltas
 
 A metric delta refers to the difference in metric values between the test and control groups.  This is usually the impact we care about when looking at experiment results.  To account for the different number of users (or units) that consitute each group, we compare the mean metric value per user, not the total.  
 
-Two different metric deltas are available in Pulse.  The absolute delta is simply the difference between the two means:
+Two different metric deltas are available in Pulse.  The **absolute delta** is simply the difference between the two means:
 
-![image](https://user-images.githubusercontent.com/90343952/167711653-b0b4973b-ff5f-4ea1-be27-5e7a5c6c7451.png)
+![image](https://user-images.githubusercontent.com/90343952/167957643-918eb0f4-cf4b-44df-9fbd-c617bc751232.png)
 
-It's often helpful to understand the impact relative to the baseline value of the metric. For example, an absolute delta of +1 clicks/user has different meanings with a baseline value of 1 (+100% increase) vs. a baseline value of 100 (+1% increase).  The relative delta is computed using the mean of the control group as the baseline:
+It's often helpful to understand the impact relative to the baseline value of the metric. For example, an absolute delta of +1 clicks/user has different meanings with a baseline value of 1 (+100% increase) vs. a baseline value of 100 (+1% increase).  The **relative delta** is computed using the mean of the control group as the baseline:
 
-![image](https://user-images.githubusercontent.com/90343952/167740950-24351470-525a-41a9-8d20-56d4d1fbcc2f.png)
+![image](https://user-images.githubusercontent.com/90343952/167957805-1c2328e7-5909-4f72-afc3-7f8096750168.png)
 
 ## Computing Means
 
@@ -26,7 +26,7 @@ These metrics represent totals: Number of times an event occurs, sum of time spe
 
 The mean value of the metric *X* is given by:  
 
-![image](https://user-images.githubusercontent.com/90343952/167717427-5e6a604c-f037-4fa8-a014-5a149b821aff.png)
+![image](https://user-images.githubusercontent.com/90343952/167957910-dde0c585-5fde-4fcf-9722-dfd2f048036f.png)
 
 where 
 * *N* is the number of users in the group 
@@ -39,7 +39,7 @@ Note that only user metrics recorded after a user has been exposed to the experi
 
 Event DAU metrics capture the number of distinct users that have the event each day.  In Pulse results, they are normalized by the number of days the user has been in the experiment.  This represents the probaility that a user is daily active for that event, i.e. the daily participation rate.  In the terms defined above, the event DAU group mean is given by:
 
-![image](https://user-images.githubusercontent.com/90343952/167726157-c6f0a66c-2638-4d43-80de-c765b6f839b6.png)
+![image](https://user-images.githubusercontent.com/90343952/167958004-7e1257d5-5a34-4d32-928f-2de185cf5569.png)
 
 The following user accounting metrics are computed in the same may: *DAU, WAU, MAU_28day, L7, L14, L28*
 
@@ -47,7 +47,7 @@ The following user accounting metrics are computed in the same may: *DAU, WAU, M
 
 These are metrics such as click through rate, averge purchase value, sessions per user, etc. They're obtained by diving a numerator value, *X*, by a denominator value, *Y*.  The mean value of a ratio metric *R* for an experiment group is given by:
 
-![image](https://user-images.githubusercontent.com/90343952/167737665-ab98ba8c-8a53-4383-ab98-20e0943028f3.png)
+![image](https://user-images.githubusercontent.com/90343952/167958053-044b0554-e33e-406b-8119-1a748a187fe1.png)
 
 Where *N* is the number of users in the experiment group that participate in the metric, i.e. have a non-zero denominator value. *X<sub>i,d</sub>* and  *Y<sub>i,d</sub>* are the *X* and *Y* values for user *i* on day *d*. 
 
