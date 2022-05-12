@@ -15,7 +15,7 @@ To **export** events to Snowflake, you can use our [Fivetran integration](/integ
 ## Direct ingestion from Snowflake
 
 We also support direct data ingestion from Snowflake, through which Statsig will automatically pull data from Snowflake into your events.
-You will need to do the following steps. Please follow the <Link to="#checklist">checklist</Link> to avoid delays!
+You will need to do the following steps. Please follow the [checklist](#checklist) to avoid delays!
 
 ### 1. Set up your Snowflake data warehouse and user for Statsig integration {#setup}
 
@@ -221,7 +221,8 @@ we will wait for you to signal that `2022-04-02` has landed, and load that data 
 _NOTE: this ingestion pipeline is in beta, and does not currently support automatic backfills or updates to data once it's been ingested. Only signal these tables
 are loaded after you've run data quality checks!_
 
-#### Checklist {#checklist}
+<a name="checklist"></a>
+#### Checklist
 
 These are common errors we've run into - please go through and make sure your setup is looking good!
 
