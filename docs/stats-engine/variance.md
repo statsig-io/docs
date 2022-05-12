@@ -6,7 +6,7 @@ slug: /stats-engine/variance
 
 The variance of the metric delta is required for computing its confidence interval and p-value.  It can be obtained directly from the variances of the test and control group means, which require different calculations depending on the type of metric.
 
-## Computing Varianace 
+## Computing Variance 
 
 The variance of the absolute metric delta is simply the sum of the variances of the test and control means:
 
