@@ -1,7 +1,7 @@
 ---
 title: Custom Pulse Queries
 sidebar_label: Custom Queries
-slug: /feature-gates/custom-queries
+slug: /pulse/custom-queries
 ---
 
 ## Custom Queries
@@ -28,4 +28,3 @@ Pressing the "Create" button opens up the menu to create your custom query. This
 These queries take a few minutes to run, but once complete the results will be visible in the "Custom Queries" tab of the Gate or Experiment you ran the query for (you will also receive an email and console notification with a link).
 
 ![image](https://user-images.githubusercontent.com/102695539/168132350-a9b53b90-ee0f-480e-852d-ece86b19ffe2.png)
-
