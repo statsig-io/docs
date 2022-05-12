@@ -45,7 +45,7 @@ There are two ways in which we can breakdown a given Pulse metric - one is by us
 
 User dimensions refer to user level attributes that are either part of the user object you log, or additional metadata that Statsig extracts. Examples of these attributes are operating system, country, and region.
 
-You can create [custom queries](/pulse/custom) to create queries that _filter on_ or _group by_ available user dimensions. For example, you could "See results for users in the US", or "See results for users using iOS, grouped by their country".
+You can create [custom queries](/pulse/custom-queries) to create queries that _filter on_ or _group by_ available user dimensions. For example, you could "See results for users in the US", or "See results for users using iOS, grouped by their country".
 
 #### Value dimensions
 

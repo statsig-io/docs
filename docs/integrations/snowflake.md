@@ -190,23 +190,6 @@ If you provide **both** a numerator and denominator value for any record of a me
 
 If you only provide a metric_value, we'll use the metric_value for analysis. In this case, we'll impute 0 for users without a metric value in experiments.
 
-For example, this dataset would lead to us using a ratio calculation:
-| UserID | Metric_Value | Numerator | Denominator |
-|--------|--------------|-----------|-------------|
-| 1 | 1 | 1 | 3 |
-| 2 | 1 | 2 | 3 |
-| 3 | 1 | | |
-
-We would calculate the population value as `(1+2)/(3+3) = 0.5`
-
-This dataset would lead to us using a metric calculation:
-| UserID | Metric_Value | Numerator | Denominator |
-|--------|--------------|-----------|-------------|
-| 1 | 1 | 1 | |
-| 2 | 1 | | |
-
-The reported topline value would be `(1+1) = 2`. However, if we had an expermental arm that had users 1, 2, and 3 in it, user 3 would be implicitly set to 0 and the population **mean** would be `(1+1+0)/3 = 2/3`
-
 #### Scheduling
 
 Because you may be streaming events to your tables or have multiple ETLs pointing to your metrics table, Statsig relies on you
@@ -222,6 +205,7 @@ _NOTE: this ingestion pipeline is in beta, and does not currently support automa
 are loaded after you've run data quality checks!_
 
 <a name="checklist"></a>
+
 #### Checklist
 
 These are common errors we've run into - please go through and make sure your setup is looking good!

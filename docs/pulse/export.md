@@ -1,7 +1,7 @@
 ---
 title: Exporting Pulse Reports
 sidebar_label: Export
-slug: /feature-gates/export
+slug: /pulse/export
 ---
 
 ## How to Export Pulse Data
