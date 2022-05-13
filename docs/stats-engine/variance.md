@@ -1,10 +1,14 @@
 ---
-title: Variance 
-sidebar_label: Variance
+title: Standard Error
+sidebar_label: Standard Error
 slug: /stats-engine/variance
 ---
 
-The variance of the metric delta is required for computing its confidence interval and p-value.  It can be obtained directly from the variances of the test and control group means, which require different calculations depending on the type of metric.
+The standard error of the means is required for computing the confidence interval and p-value of a metric delta.  It can be obatained by dividing the sample standard deviation of *X* by the number of users in the group.
+
+![image](https://user-images.githubusercontent.com/90343952/168379752-9b9161a9-ddcd-497b-8a5e-96cbff6f666c.png)
+
+Note that standard deviation is the square root of the variance.  Since variances are easier to manipulate algebraically, here we derive the variance for each metric type and then take the square root to obatin the confidence intervals. 
 
 ## Computing Variance 
 
@@ -34,6 +38,7 @@ The variance of ratio and mean metrics depends upon the numberator and denominat
 where the variance of the numerator and denominator means are computed in the same way as detailed above for count metrics, and the covariance is 
 
 ![image](https://user-images.githubusercontent.com/90343952/167956127-c17017ef-07b2-4f76-88c4-00539eec50a7.png)
+
 
 
 
