@@ -262,6 +262,20 @@ module.exports = {
         "integrations/vscode",
       ],
     },
+    {
+      type: "category",
+      label: "Stats Engine",
+      link: {
+        type: "doc",
+        id: "stats-engine/introduction",
+      },
+      items: [
+        "stats-engine/metric-deltas",
+        "stats-engine/variance",
+        "stats-engine/confidence-intervals",
+        "stats-engine/p-value",
+      ],
+    },
     "faq",
   ],
 };
