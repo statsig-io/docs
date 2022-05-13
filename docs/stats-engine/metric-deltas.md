@@ -22,7 +22,7 @@ Properly computing the groups means is critical for obatined meaningful metric d
 
 ### Event Count and Sum Metrics
 
-These metrics represent totals: Number of times an event occurs, sum of time spent, total purhcase amount, etc.  The mean is the average user-level total during the time period of the analysis.
+These metrics represent totals: Number of times an event occurs, sum of time spent, total purchase amount, etc.  The mean is the average user-level total during the time period of the analysis.
 
 The mean value of the metric *X* is given by:  
 
