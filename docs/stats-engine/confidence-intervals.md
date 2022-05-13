@@ -6,7 +6,9 @@ slug: /stats-engine/confidence-intervals
 
 Confidence intervals are an intuitive way to quantify the uncertainty in the observed metric deltas.  A 95% confidence interval should contain the true effect 95% of the time.  This means that if we ran an experiment 100 times, the true value of the metric delta should be inside the confidence intervals 95 times.  
 
-In practical terms, a 95% confidence interval that doesn't contain zero represents a statstically significant result (with *&alpha; = 0.05*). Only 5% of the time would we expect to see that confidence interval if the true effect was zero.  Larger confidence intervals imply less certainity in the exact size of the effect with a larger range of likley values.  
+![image](https://user-images.githubusercontent.com/90343952/168382034-73afed14-d9f5-42cb-ade1-034526002a0b.png)
+
+In practical terms, a 95% confidence interval that doesn't contain zero (the green bar above) represents a statstically significant result (with *&alpha; = 0.05*). Only 5% of the time would we expect to see that confidence interval if the true effect was zero (a false positive).  Larger confidence intervals imply less certainity in the exact size of the effect with a larger range of likley values.  
 
 ## Computing Confidence Intervals
 
