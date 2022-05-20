@@ -31,8 +31,11 @@ The configuration parameters received from Statsig servers in response to the `i
 ### 2. Serving Variants
 
  - After the `initialize` call completes, any subsequent `getExperiment` call synchronously returns the experiment configuration for the variant that your end-user is assigned to (you define these parameters when you set up an experiment on the Statsig console);  use the returned `config` object to `get` the value of the parameters required to implement the experiment variant
- - If your experiment is part of a Layer, the `getLayer` call returns the experiment configuration for the variant that the your end-user is assigned to;  again, use the returned `config` object to `get` the value of the parameters required to implement the experiment variant 
+ 
+ - If your experiment is part of a Layer, the `getLayer` call returns the experiment configuration for the variant that the your end-user is assigned to;  again, use the returned `config` object to `get` the value of the parameters required to implement the experiment variant
+  
  - The `checkGate` calls returns _true_ if the end-user passes the feature gate rules that you've configured on the Statsig console, and _false_ otherwise 
+ 
  - The `getConfig` call returns the dynamic configuration based on the rules that you've configured to target your end-users; use the returned `config` object to `get` the value of the parameters required to serve a dynamically configured app experience
 
  Statsig recommends including a default value when you make the `get` call to fetch a parameter value from the returned `config` object. This will ensure that your application code falls back to the default value for a parameter that's not yet been configured in an experiment, layer, or dynamic config in the Statsig console. For convenience, Statsig by default returns _false_ when you check a gate that has not yet been configured.   
@@ -40,7 +43,9 @@ The configuration parameters received from Statsig servers in response to the `i
 ### 3. Recording Exposure Checks & Custom Events
 
 -	The client SDK automatically flushes all accumulated exposure checks and logged custom events to the Statsig servers every 10 seconds; you can also force this flush by calling `shutdown` to push these accumulated exposure checks and custom events to Statsig servers 
+
 -	You can verify that exposure events are being recorded in Statsig servers by checking the live **Exposure Stream** in the Statsig console under the **Diagnostics** tab of your experiment
+
 -	The **Users** and **Checks** charts in the **Diagnostics** tab are updated hourly; the **Metrics Lift** panel in experiment **Results** is updated daily around 9am PST.
 
 :::info Testing exposure checks in development or staging environments
