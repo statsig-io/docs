@@ -7,34 +7,49 @@ Statsig server SDKs enable you to run experiments for any applications improveme
   
 As shown in the diagram below, implementing an experiment using a Statsig server SDK consists of three phases:
 1. Initialization
-2. Evaluating Experiment Variants
-3. Recording Exposure & Custom Events
+2. Evaluating Variants
+3. Recording Exposure Checks & Custom Events
 
-![Server SDKs](https://user-images.githubusercontent.com/74584483/156812577-bf9af089-eec0-495e-a392-1c4cfe8a2367.png)
+![Server SDKs](https://user-images.githubusercontent.com/1315028/169563936-121cb75e-37e5-491f-8bb1-2d853c2e04b8.png)
 
 ### 1. Initialization
--	The server SDK `initialize` call takes the server SDK key and makes a network request to Statsig servers; this network call fetches all rule sets to your application server to enable local evaluation in the next phase
+-	The server SDK's `initialize` call takes the **server SDK key** and makes a network request to Statsig servers; this network call fetches all rule sets to your application server to enable local evaluation in the next phase
 
-### 2. Evaluating Experiment Variants
--	The server SDK `getExperiment` call takes a [**StatsigUser**](/server/concepts/user) object with a user identifier, evaluates the rules for the specified user, and returns the configuration of the variant that the user is assigned to
--	 If your experiment is part of a Layer, the `getLayer` call takes a [**StatsigUser**](/server/concepts/user) object with a user identifier and returns the experiment configuration for the variant that the your end-user is assigned to;  use the returned `config` to `get` the value of the parameters that you need to implement the test variant
- - The `checkGate` calls takes a [**StatsigUser**](/server/concepts/user) object with a user identifier and returns _true_ if the end-user passes the feature gate rules that you've configured on the Statsig console, and _false_ otherwise 
- - The `getConfig` call takes a [**StatsigUser**](/sever/concepts/user) object with a user identifier and returns the dynamic configuration based on the rules that you've configured for your end-users; use the returned `config` to `get` the value of the parameters that you need to implement a dynamically configured app experience
+### 2. Evaluating Variants
+-	The server SDK's `getExperiment` call takes a [**StatsigUser**](/server/concepts/user) object with a user identifier, evaluates the rules for the specified user, and returns the configuration of the variant that the user is assigned to; use the returned `config` object to `get` the value of the parameters required to implement the experiment variant
 
-Statsig recommends including a default value when you make the `get` call to fetch a parameter value from the returned `config` object in case the parameter has not been configured in the experiment, layer, or dynamic config that you're implementing. Statsig automatically defaults to _false_ when you check a gate that has not been configured.   
+-	 If your experiment is part of a Layer, the `getLayer` call takes a [**StatsigUser**](/server/concepts/user) object with a user identifier and returns the experiment configuration for the variant that the your end-user is assigned to; use the returned `config` object to `get` the value of the parameters required to implement the experiment variant
 
-The server SDK polls Statsig servers for updates to the rule sets every 10 seconds. The Statsig’s servers service these requests through a cache with a TTL of 60 seconds. This means that it may take 10 - 70 seconds to propagate any rule updates to the server SDK. 
+- The `checkGate` calls takes a [**StatsigUser**](/server/concepts/user) object with a user identifier and returns _true_ if the end-user passes the feature gate rules that you've configured on the Statsig console, and _false_ otherwise 
 
-:::info Why is StatsigUser with a UserID required for server SDKs?
+- The `getConfig` call takes a [**StatsigUser**](/sever/concepts/user) object with a user identifier and returns the dynamic configuration based on the rules that you've configured for your end-users; use the returned `config` object to `get` the value of the parameters required to implement a dynamically configured app experience
+
+Statsig recommends including a default value when you make the `get` call to fetch a parameter value from the returned `config` object. This will ensure that your application code falls back to the default value for a parameter that's not yet been configured in an experiment, layer, or dynamic config in the Statsig console. For convenience, Statsig by default returns _false_ when you check a gate that has not yet been configured. 
+
+The server SDK polls Statsig servers for updates to the rule sets every 10 seconds. Statsig’s servers service these requests through a cache with a TTL of 60 seconds. This means that it may take 10 - 70 seconds to propagate any rule updates to the server SDK. 
+
+:::info Why is StatsigUser with a userID required for server SDKs?
 
 Learn about [UserID Requirements](/messages/serverRequiredUserID) for the [StatsigUser](/server/concepts/user) before using a server SDK. 
 
 :::
 
-### 3. Recording Exposure & Custom Events
+### 3. Recording Exposure Checks & Custom Events
 
- - The server SDK automatically flushes events to the Statsig servers every 10 seconds; you can also force this flush by calling `shutdown` to flush exposure events and custom events to Statsig servers. You can verify that these exposure events are being recorded in Statsig servers using the live **Exposure Stream** in the Statsig console under the **Diagnostics** tab of your experiment
+- The server SDK automatically flushes all accumulated exposure checks and logged custom events to the Statsig servers every 60 seconds
+
+- You can verify that these exposure events are being recorded in Statsig servers using the live **Exposure Stream** in the Statsig console under the **Diagnostics** tab of your experiment
+ 
 -	The **Users** and **Checks** charts in the **Diagnostics** tab are updated hourly. Experiment **Results** with the **Metrics Lift** panel is updated daily around 9am PST.
+
+:::info Testing exposure checks in development or staging environments
+
+You can test your experiment in development or staging environments by setting the environment tier in the `initialize` call. When you do this, you can verify that your exposure checks are working by switching the toggle to _Show non-production logs_ in the **Exposure Stream** under the **Diagnostics** tab for your experiment in the Statsig console. By default, the **Exposure Stream** shows exposure checks logged in production environments. 
+
+When you're testing in development or staging environments, you can also target specific members in your team to see a specific variant by adding these members to the override list of a rule or variant group using the **Manage Overrides** option.  
+
+:::
+
 
 To start integrating, jump into the technical docs by language:
 
