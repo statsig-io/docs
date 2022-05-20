@@ -14,7 +14,7 @@ As shown in the diagram below, implementing an experiment using a Statsig client
 
 ### 1. Initialization
 
-- The client SDK `initialize` call takes the **client SDK key** and a [**StatsigUser**](/client/concepts/user) object and makes a network request to the Statsig servers; this network call fetches precomputed experiment parameters for the specified user from Statsig servers and stores these parameters in local storage on the client device
+- The client SDK `initialize` call takes the **client SDK key** and a [**StatsigUser**](/client/concepts/user) object and makes a network request to Statsig servers; this network call fetches precomputed experiment parameters for the specified user from Statsig servers and stores these parameters in local storage on the client device
 
 -	Statsig's server latency for this `initialize` call is generally less than 100ms; the latency for a given end-user may vary depending on how far they are from Statsig's servers; the client SDK has a built-in timeout of 3 seconds that you can configure using **StatsigOptions** when you initialize the SDK
 
