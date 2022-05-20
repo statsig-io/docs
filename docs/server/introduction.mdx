@@ -3,22 +3,40 @@ title: Server SDKs
 slug: /server/introduction
 ---
 
-Statsig Server SDKs evaluate gate, config, experiment checks locally, on your server.
-
-In general, Server SDKs follow the same pattern:
-
-1. Initialize the SDK.  The SDK will reach out to Statsig for the most up to date definition of all of your feature gates, dynamic configs, experiments, autotunes, and layers
-2. Evaluate `checkGate`/ `getConfig` / `getExperiment` calls locally
-3. Batch exposure logs with calls to `logEvent` and periodically flush logs to Statsig servers
+Statsig server SDKs enable you to run experiments for any applications improvements driven by server-side functionality including APIs, algorithms, latency, configuration, and infrastructure improvements. Statsig server SDKs evaluate gate, config, and experiment checks locally on your application server.
+  
+As shown in the diagram below, implementing an experiment using a Statsig server SDK consists of three phases:
+1. Initialization
+2. Evaluating Experiment Variants
+3. Recording Exposure & Custom Events
 
 ![Server SDKs](https://user-images.githubusercontent.com/74584483/156812577-bf9af089-eec0-495e-a392-1c4cfe8a2367.png)
 
-There are a few key concepts that may be helpful to review before integrating an SDK:
+### 1. Initialization
+-	The server SDK `initialize` call takes the server SDK key and makes a network request to Statsig servers; this network call fetches all rule sets to your application server to enable local evaluation in the next phase
 
-- [StatsigUser](/server/concepts/user)
-- [UserID Requirements](/messages/serverRequiredUserID)
+### 2. Evaluating Experiment Variants
+-	The server SDK `getExperiment` call takes a [**StatsigUser**](/server/concepts/user) object with a user identifier, evaluates the rules for the specified user, and returns the configuration of the variant that the user is assigned to
+-	 If your experiment is part of a Layer, the `getLayer` call takes a [**StatsigUser**](/server/concepts/user) object with a user identifier and returns the experiment configuration for the variant that the your end-user is assigned to;  use the returned `config` to `get` the value of the parameters that you need to implement the test variant
+ - The `checkGate` calls takes a [**StatsigUser**](/server/concepts/user) object with a user identifier and returns _true_ if the end-user passes the feature gate rules that you've configured on the Statsig console, and _false_ otherwise 
+ - The `getConfig` call takes a [**StatsigUser**](/sever/concepts/user) object with a user identifier and returns the dynamic configuration based on the rules that you've configured for your end-users; use the returned `config` to `get` the value of the parameters that you need to implement a dynamically configured app experience
 
-Or, you can jump right in to the technical docs, by language, on the sidebar or below:
+Statsig recommends including a default value when you make the `get` call to fetch a parameter value from the returned `config` object in case the parameter has not been configured in the experiment, layer, or dynamic config that you're implementing. Statsig automatically defaults to _false_ when you check a gate that has not been configured.   
+
+The server SDK polls Statsig servers for updates to the rule sets every 10 seconds. The Statsig’s servers service these requests through a cache with a TTL of 60 seconds. This means that it may take 10 - 70 seconds to propagate any rule updates to the server SDK. 
+
+:::info Why is StatsigUser with a UserID required for server SDKs?
+
+Learn about [UserID Requirements](/messages/serverRequiredUserID) for the [StatsigUser](/server/concepts/user) before using a server SDK. 
+
+:::
+
+### 3. Recording Exposure & Custom Events
+
+ - The server SDK automatically flushes events to the Statsig servers every 10 seconds; you can also force this flush by calling `shutdown` to flush exposure events and custom events to Statsig servers. You can verify that these exposure events are being recorded in Statsig servers using the live **Exposure Stream** in the Statsig console under the **Diagnostics** tab of your experiment
+-	The **Users** and **Checks** charts in the **Diagnostics** tab are updated hourly. Experiment **Results** with the **Metrics Lift** panel is updated daily around 9am PST.
+
+To start integrating, jump into the technical docs by language:
 
 - [node js](nodejsServerSDK)
 - [java](javaSdk)
@@ -27,3 +45,5 @@ Or, you can jump right in to the technical docs, by language, on the sidebar or 
 - [ruby](rubySDK)
 - [dotnet](dotnetSDK)
 - [php](phpSDK)
+
+Got questions? Join the Statsig engineering and product team on the [Statsig Slack channel](https://statsig.com/slack) and ask away!
