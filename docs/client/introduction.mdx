@@ -3,21 +3,45 @@ title: Client SDKs
 slug: /client/introduction
 ---
 
-Statsig Client SDKs evaluate gate, config, experiment checks up front for a particular user, and then serve all checks synchronously from this evaluation.
+Statsig client SDKs enable you to run experiments for user experience improvements in applications running on end-user devices. These applications include web and mobile apps, television and gaming apps, and other consumer electronics apps.  
 
-In general, Client SDKs follow the same pattern:
-
-1. Initialize the SDK.  The SDK will reach out to Statsig and evaluate all feature gates, dynamic configs, experiments, autotunes, and layers for the given user
-2. Evaluate `checkGate`/ `getConfig` / `getExperiment` calls from the values fetched in (1)
-3. Batch exposure logs with calls to `logEvent` and periodically flush logs to Statsig servers
+As shown in the diagram below, implementing an experiment using a Statsig client SDK consists of three phases:
+1. Initialization
+2. Evaluating Experiment Variants
+3. Recording Exposure & Custom Events
 
 ![Client SDKs](https://user-images.githubusercontent.com/74584483/156815263-851a0320-8501-4ad0-827d-3239d7612cf9.png)
 
-It may be helpful to review our documentation on a `StatsigUser` before integrating an SDK:
+### 1. Initialization
 
-- [StatsigUser](/client/concepts/user)
+- The client SDK `initialize` call takes the **client SDK key** and a [**StatsigUser**](/client/concepts/user) object and makes a network request to the Statsig servers; this network call fetches precomputed experiment parameters for the specified user from Statsig servers and stores these parameters in local storage on the client device
 
-Or, you can jump right in to the technical docs, by language, on the sidebar or below:
+-	Statsig's server latency for this `initialize` call is generally less than 100ms; the latency for a given end-user may vary depending on how far they are from Statsig's servers; the client SDK has a built-in timeout of 3 seconds that you can configure using **StatsigOptions** when you initialize the SDK
+
+-	The [**StatsigUser**](/client/concepts/user) object that you provide in the `initialize` call should include the user identifier (userID) that you use to identify the end-user of your application; the client SDK also generates a device identifier called _stableID_ to enable experiments where users aren’t signed in and a _userID_ is not available; you can choose to override this _stableID_ through **StatsigOptions** using the _overrideStableID_ parameter when you initialize the SDK
+
+:::info Using [**StatsigUser**](/client/concepts/user)
+
+Learn how to use `StatsigUser` before using a client SDK. 
+
+:::
+
+### 2. Evaluating Experiment Variants
+
+ - The client SDK `getExperiment` call synchronously returns the experiment configuration for the variant that your end-user is assigned to (you define these parameters when you set up an experiment on the Statsig console);  use the returned `config` to `get` the value of the parameters that you need to implement the test variant
+ - If your experiment is part of a Layer, the `getLayer` call returns the experiment configuration for the variant that the your end-user is assigned to;  use the returned `config` to `get` the value of the parameters that you need to implement the test variant
+ - The `checkGate` calls returns _true_ if the end-user passes the feature gate rules that you've configured on the Statsig console, and _false_ otherwise 
+ - The `getConfig` call returns the dynamic configuration based on the rules that you've configured for your end-users; use the returned `config` to `get` the value of the parameters that you need to implement a dynamically configured app experience
+
+ Statsig recommends including a default value when you make the `get` call to fetch a parameter value from the returned `config` object in case the parameter has not been configured in an experiment, layer, or dynamic config. Statsig automatically defaults to _false_ when you check a gate that has not been configured.   
+ 
+
+### 3. Recording Exposure Events & Custom Events
+
+-	The client SDK automatically flushes events to the Statsig servers every 10 seconds; you can also force this flush by calling `shutdown` to flush exposure events and custom events to Statsig servers. You can verify that these exposure events are being recorded in Statsig servers using the live **Exposure Stream** in the Statsig console under the **Diagnostics** tab of your experiment
+-	The **Users** and **Checks** charts in the **Diagnostics** tab are updated hourly. Experiment **Results** with the **Metrics Lift** panel is updated daily around 9am PST.
+
+To start integrating, iump into the technical docs by language:
 
 - [Javascript](jsClientSDK)
 - [React](reactSDK)
@@ -28,3 +52,5 @@ Or, you can jump right in to the technical docs, by language, on the sidebar or 
 - [Dotnet](dotnetSDK)
 - [Roku](rokuSDK)
 - [Unity](unitySDK)
+
+Got questions? Join the Statsig engineering and product team on the [Statsig Slack channel](https://statsig.com/slack) and ask away! 
