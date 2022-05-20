@@ -7,8 +7,8 @@ Statsig client SDKs enable you to run experiments for user experience improvemen
 
 As shown in the diagram below, implementing an experiment using a Statsig client SDK consists of three phases:
 1. Initialization
-2. Serving Variants
-3. Recording Exposure Checks & Custom Events
+2. Checking an Experiment
+3. Logging Custom Events
 
 ![Client SDKs](https://user-images.githubusercontent.com/1315028/169555378-a1ba4c22-1d13-46c5-956e-ba87abe9b549.png)
 
@@ -20,33 +20,40 @@ As shown in the diagram below, implementing an experiment using a Statsig client
 
 -	The [**StatsigUser**](/client/concepts/user) object that you provide in the `initialize` call should include the user identifier, _userID_, that you use to identify the end-user of your application; the client SDK also generates a device identifier called _stableID_ to enable experiments where users aren’t signed in and a _userID_ is not available; you can choose to override this _stableID_ through **StatsigOptions** using the _overrideStableID_ parameter when you initialize the SDK
 
-:::info Using [**StatsigUser**](/client/concepts/user)
+### 2. Checking an Experiment
 
-Learn how to use `StatsigUser` before using a client SDK. 
-
-:::
-
-The configuration parameters received from Statsig servers in response to the `initialize` call persist until you either make another `initialize` call (recommended when the end-user starts a new session) or an `updateUser` call (recommended when an end-user attribute changes). These calls trigger a revaluation of all experiment configuration for the end-user.   
-
-### 2. Serving Variants
-
- - After the `initialize` call completes, any subsequent `getExperiment` call synchronously returns the experiment configuration for the variant that your end-user is assigned to (you define these parameters when you set up an experiment on the Statsig console);  use the returned `config` object to `get` the value of the parameters required to implement the experiment variant
+ - After the `initialize` call completes, any subsequent `getExperiment` call synchronously returns the variant that your end-user is assigned to (you define these parameters when you set up an experiment on the Statsig console);  use the returned `config` object to `get` the value of the parameters required to implement the experiment variant
  
- - If your experiment is part of a Layer, the `getLayer` call returns the experiment configuration for the variant that the your end-user is assigned to;  again, use the returned `config` object to `get` the value of the parameters required to implement the experiment variant
+ - If your experiment is part of a Layer, the `getLayer` call returns the variant that the your end-user is assigned to;  use the returned `layer` object to `get` the value of the parameters required to implement the experiment variant
   
  - The `checkGate` calls returns _true_ if the end-user passes the feature gate rules that you've configured on the Statsig console, and _false_ otherwise 
  
  - The `getConfig` call returns the dynamic configuration based on the rules that you've configured to target your end-users; use the returned `config` object to `get` the value of the parameters required to serve a dynamically configured app experience
+ 
+ - The client SDK automatically flushes all accumulated exposure checks events to the Statsig servers every 10 seconds
 
- Statsig recommends including a default value when you make the `get` call to fetch a parameter value from the returned `config` object. This will ensure that your application code falls back to the default value for a parameter that's not yet been configured in an experiment, layer, or dynamic config in the Statsig console. For convenience, Statsig by default returns _false_ when you check a gate that has not yet been configured.   
+ -	You can also force this flush by calling `shutdown` to push these accumulated exposure checks to Statsig servers; the `shutdown` call also resets the state of the SDK and you can call it when the application exits
 
-### 3. Recording Exposure Checks & Custom Events
+ -	You can verify that exposure events are being recorded in Statsig servers by checking the live **Exposure Stream** in the Statsig console under the **Diagnostics** tab of your experiment
 
--	The client SDK automatically flushes all accumulated exposure checks and logged custom events to the Statsig servers every 10 seconds; you can also force this flush by calling `shutdown` to push these accumulated exposure checks and custom events to Statsig servers 
+ -	The **Users** and **Checks** charts in the **Diagnostics** tab are updated hourly; the **Metrics Lift** panel in experiment **Results** is updated daily around 9am PST.
 
--	You can verify that exposure events are being recorded in Statsig servers by checking the live **Exposure Stream** in the Statsig console under the **Diagnostics** tab of your experiment
+#### Updating Experiment Configuration
 
--	The **Users** and **Checks** charts in the **Diagnostics** tab are updated hourly; the **Metrics Lift** panel in experiment **Results** is updated daily around 9am PST.
+- The experiment configuration received from Statsig servers in response to the `initialize` call persists until you either make another `initialize` call (recommended when the end-user starts a new session) or an `updateUser` call (recommended when an end-user attribute changes). These calls trigger a revaluation of all experiment configuration for the end-user.   
+
+
+:::info Best Practices
+
+**Using [**StatsigUser**](/client/concepts/user)**
+
+Learn how to use [StatsigUser](/server/concepts/user) while using a client SDK. 
+
+**Setting Default Parameter Values**
+
+Statsig recommends including a default value when you make the `get` call to fetch a parameter value from the returned `config` object. This will ensure that your application code falls back to the default value for a parameter that's not yet been configured in an experiment, layer, or dynamic config in the Statsig console. For convenience, Statsig by default returns _false_ when you check a gate that has not yet been configured.
+
+:::
 
 :::info Testing exposure checks in development or staging environments
 
@@ -55,6 +62,16 @@ You can test your experiment in development or staging environments by setting t
 When you're testing in development or staging environments, you can target specific members in your team to see a specific variant by adding these members to the override list of a rule or variant group using the **Manage Overrides** option.  
 
 :::
+
+
+### 3. Logging Custom Events
+
+-	The client SDK's `logEvent` call takes a custom event that you want to record to analyze the impact of the experiment on your end-user experience
+
+- The client SDK automatically flushes all accumulated logged custom events to the Statsig servers every 10 seconds
+
+-	Statsig uses these custom events to compute metrics as part of your experiment **Results**; Statsig automatically updates the **Metrics Lift** panel in the experiment **Results** tab daily around 9am PST
+
 
 To start integrating, jump into the technical docs by language:
 
