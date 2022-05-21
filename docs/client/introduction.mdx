@@ -32,7 +32,7 @@ As shown in the diagram below, implementing an experiment using a Statsig client
  
  - The client SDK automatically flushes all accumulated exposure checks events to the Statsig servers every 10 seconds
 
- -	You can also force this flush by calling `shutdown` to push these accumulated exposure checks to Statsig servers; the `shutdown` call also resets the state of the SDK and you can call it when the application exits
+ -	You can also force this flush by calling `shutdown` to push these accumulated exposure checks to Statsig servers; the `shutdown` call resets the state of the SDK and you should call it when the application is about to exit
 
  -	You can verify that exposure events are being recorded in Statsig servers by checking the live **Exposure Stream** in the Statsig console under the **Diagnostics** tab of your experiment
 
