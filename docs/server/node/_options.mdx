@@ -1,13 +1,13 @@
 `statsig.initialize()` takes an optional parameter `options` in addition to the secret key that you can provide to customize the Statsig client. Here are the current options and we are always adding more to the list:
 
-- **environment**: StatsigEnvironment, default nil
+- **environment**: StatsigEnvironment, default null
 
   - An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
   - The most common usage is to set the environment tier ('production', 'staging' or 'development'), e.g. `{ tier: 'staging' }`, and have feature gates pass/fail for specific environments.
 
-- **bootstrapValues**: string, default nil
+- **bootstrapValues**: string, default null
   - a string that represents all rules for all feature gates, dynamic configs and experiments. It can be provided to bootstrap the Statsig server SDK at initialization in case your server runs into network issue or Statsig server is down temporarily.
-- **rulesUpdatedCallback**: function, default nil
+- **rulesUpdatedCallback**: function, default null
   - a callback function that's called whenever we have an update for the rules; it's called with a JSON string (used as is for `bootstrapValues` mentioned above) and a timestamp, like below:
 
     ```
