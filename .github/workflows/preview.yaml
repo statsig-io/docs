@@ -20,7 +20,6 @@ jobs:
               args: [--frozen-lockfile]
       - run: |
           pnpm build
-          ls
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
@@ -29,7 +28,7 @@ jobs:
           enable-commit-comment: true
           overwrites-pull-request-comment: true
           deploy-message: "Preview Deploy for ${{ github.event.pull_request.title }}"
-          github_token: ${{ secrets.ROIM }}
+          github-token: ${{ secrets.ROIM }}
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
