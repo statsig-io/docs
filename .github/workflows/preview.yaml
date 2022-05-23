@@ -28,6 +28,7 @@ jobs:
           enable-pull-request-comment: false
           enable-commit-comment: true
           overwrites-pull-request-comment: true
+          deploy-message: "Preview Deploy for ${{ github.event.pull_request.title }}"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
