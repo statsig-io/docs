@@ -22,7 +22,7 @@ As shown in the diagram below, implementing an experiment using a Statsig server
 
 - The `checkGate` calls takes a [**StatsigUser**](/server/concepts/user) object with a user identifier and returns _true_ if the end-user passes the feature gate rules that you've configured on the Statsig console, and _false_ otherwise 
 
-- The `getConfig` call takes a [**StatsigUser**](/sever/concepts/user) object with a user identifier and returns the dynamic configuration based on the rules that you've configured for your end-users; use the returned `config` object to `get` the value of the parameters required to implement a dynamically configured app experience
+- The `getConfig` call takes a [**StatsigUser**](/server/concepts/user) object with a user identifier and returns the dynamic configuration based on the rules that you've configured for your end-users; use the returned `config` object to `get` the value of the parameters required to implement a dynamically configured app experience
 
 - The server SDK automatically flushes all accumulated exposure checks to the Statsig servers every 60 seconds
 
