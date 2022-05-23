@@ -24,7 +24,7 @@ jobs:
         uses: nwtgck/actions-netlify@v1.2
         with:
           publish-dir: './build'
-          enable-pull-request-comment: false
+          enable-pull-request-comment: true
           enable-commit-comment: true
           overwrites-pull-request-comment: true
           deploy-message: "Preview Deploy for ${{ github.event.pull_request.title }}"
