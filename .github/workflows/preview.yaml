@@ -22,6 +22,7 @@ jobs:
           pnpm build
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
+        id: netlify
         with:
           publish-dir: './build'
           enable-pull-request-comment: true
@@ -34,4 +35,13 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         timeout-minutes: 2
-
+      - uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.ROIM }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🚀 Deploy on ${{ steps.netlify.outputs.deploy-url }} !'
+            })
