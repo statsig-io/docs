@@ -65,13 +65,16 @@ Hit **Add Rule** and don't forget to **Save Changes**.
 
 ### Step 4 - Create a new Client API key
 
-Navigate to the **API Keys** section of the Statsig console. Here you would see different types of API keys you can generate.
+Navigate to the **API Keys** section of the Statsig console (⚙️ > API Keys) or visit the API Keys section via [console.statsig.com/api_keys](https://console.statsig.com/api_keys). Here you would see different types of API keys you can generate.
 
-![Screen Shot 2021-06-14 at 5 05 20 PM](https://user-images.githubusercontent.com/82126616/121973844-02dd0f00-cd33-11eb-8f07-9c1210c853a1.png)
+![Screen Shot 2022-05-23 at 11 23 59 AM](https://user-images.githubusercontent.com/95646168/169883923-30d4cdc0-c5fc-4170-983a-c6dd59d6c46e.png)
+
 
 **Server Secret Keys** are used only for server side integrations. These keys are secrets that you want to safe-guard and that means not using it on clients.
 
-**Client SDK Keys** are used in product apps or websites to access Statsig features. It's okay to embed these keys in apps or website.
+**Client API Keys** are used in product apps or websites to access Statsig features. It's okay to embed these keys in apps or website.
+
+**Console API Keys** are used to interact with the /console API. These keys allow you to read and configure your gates/configs without using the console.statsig.com website. These keys should be kept secret and not included any public repositories or client code.
 
 The main differences between client and server keys are that client keys are only able to fetch feature gates and experiments with hashed names (so your unreleased features won't be leaked), and client keys don't have permission to call into certain server SDK only endpoints and CRUD APIs.
 
