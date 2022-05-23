@@ -29,19 +29,9 @@ jobs:
           enable-commit-comment: true
           overwrites-pull-request-comment: true
           deploy-message: "Preview Deploy for ${{ github.event.pull_request.title }}"
-          github-token: ${{ secrets.ROIM }}
+          github-token: ${{ secrets.PUBLIC_REPO }}
           fails-without-credentials: true
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         timeout-minutes: 2
-      - uses: actions/github-script@v5
-        with:
-          github-token: ${{ secrets.ROIM }}
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '🚀 Deploy on ${{ steps.netlify.outputs.deploy-url }} !'
-            })
