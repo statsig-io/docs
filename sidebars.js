@@ -27,6 +27,7 @@ module.exports = {
         "guides/experimentation-program",
         "guides/aa-test",
         "guides/serverless",
+        "guides/config-history",
       ],
     },
     {
