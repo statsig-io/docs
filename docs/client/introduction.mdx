@@ -46,11 +46,9 @@ As shown in the diagram below, implementing an experiment using a Statsig client
 :::info Best Practices
 
 **Using [StatsigUser](/client/concepts/user)**
-
 Learn how to use [StatsigUser](/server/concepts/user) while using a client SDK. 
 
 **Setting Default Parameter Values**
-
 Statsig recommends including a default value when you make the `get` call to fetch a parameter value from the returned `config` object. This will ensure that your application code falls back to the default value for a parameter that's not yet been configured in an experiment, layer, or dynamic config in the Statsig console. For convenience, Statsig by default returns _false_ when you check a gate that has not yet been configured.
 
 :::
