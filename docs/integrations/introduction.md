@@ -31,5 +31,3 @@ Update the following places when Feature Gates/Experiments/Dynamic Configs chang
 ### Other
 - Jira: track Statsig gate rollout status and A/B test results from Jira issues
 - Visual Studio Code: bring Statsig gates and experiments into your VSCode development environment
-
-![integrations](https://user-images.githubusercontent.com/74584483/148121464-e9061193-798c-4ac8-9113-399b1b7803e3.png)
