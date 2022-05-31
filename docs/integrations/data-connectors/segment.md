@@ -59,14 +59,6 @@ To export your Statsig events to Segment,
 
 ## Filtering Events
 
-Once you've enabled incoming events from **Segment**, you can select specific Segment events that you want to ingest by clicking on the **Event Filtering** button.
+## Filtering Events
 
-![image](https://user-images.githubusercontent.com/1315028/150829446-149dc7c5-0025-451a-8fae-09760b4f0566.png)
-
-You can now search for specific events and select or deselect the events that you want Statsig to ingest.
-
-![image](https://user-images.githubusercontent.com/1315028/150829346-e2f29d7e-bca3-4427-8d54-02e96f37951d.png)
-
-Similarly, once you've enabled outbound events to **Segment**, you can select which categories of Statsig events you want to export.
-
-![image](https://user-images.githubusercontent.com/1315028/150853774-6112c939-d101-4e15-9f74-3d872e6ba6f3.png)
+You can customize which events should be sent and received via Segment using [Event Filtering](/integrations/event_filtering)
