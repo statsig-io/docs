@@ -242,7 +242,7 @@ module.exports = {
     {
       type: "category",
       label: "Integrations",
-      ink: {
+      link: {
         type: "doc",
         id: "integrations/introduction",
       },
