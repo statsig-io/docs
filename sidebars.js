@@ -243,8 +243,8 @@ module.exports = {
       type: "category",
       label: "Integrations",
       link: {
-        type: "doc",
-        id: "integrations/introduction",
+        type: "generated-index",
+        title: "Integrations",
       },
       items: [
         {
