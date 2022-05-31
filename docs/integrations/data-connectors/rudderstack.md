@@ -24,7 +24,7 @@ To ingest your events from RudderStack,
 
 #### User IDs and Custom IDs
 
-Statsig automatically detects the `event` and `userID` fields that you log through your RudderStack events. If you're running an experiment with the user as your unit type, this userID should match the user identifer that you log with the Statsig SDK, for example when you expose the the user to a Statsig feature gate or experiment.
+Statsig automatically detects the `event` and `userID` fields that you log through your RudderStack events. If you're running an experiment with the user as your unit type, this userID should match the user identifer that you log with the Statsig SDK.
 
 If you're using a [custom ID](https://docs.statsig.com/guides/experiment-on-custom-id-types) as the unit type for your experiment, you can provide this identifier using the key `statsigCustomIDs` as part of the RudderStack `properties` field as shown below.
 
@@ -46,7 +46,7 @@ To export your Statsig events to RudderStack,
 1. Log into the Statsig console and navigate to the [**Integrations**](https://console.statsig.com/integrations) page.
 2. Click on the **RudderStack** card and switch to the **Outbound** tab.
 3. Follow the steps outlined in [RudderStack's Webhook Source](https://www.rudderstack.com/docs/stream-sources/webhook-source/) to get the required "Write Key" and "Data Plane URL".
-4. Once filled out, hit enabled to save your changes.
+4. Once filled out, hit enable to save your changes.
 
 ## Filtering Events
 
