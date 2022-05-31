@@ -14,6 +14,7 @@ Forward any events logged via Statsig APIs or SDKs to the following providers:
 - Mixpanel
 - RevenueCat
 - Segment
+- Rudderstack
 
 ### Changelog
 Update the following places when Feature Gates/Experiments/Dynamic Configs change:
