@@ -1,0 +1,77 @@
+# Creating a Meme bot for Workplace (by Facebook) Using Statsig
+
+One of my favorite and most used tools at Facebook was the macro tool. The macro tool allowed employees to upload an image or gif, name it, and then use it across many internal surfaces. Within Workplace, all you had to do was type #m followed by the name of your macro and the macro bot would respond to your comment or message with the macro associated with that name. For example, if you typed “#m lgtm” the bot would respond with the macro lgtm, an image of a doge saying looks good to me.
+
+<img width="573" alt="Screen Shot 2022-04-26 at 1 36 02 PM" src="https://user-images.githubusercontent.com/99914387/166558878-02f9895b-7fcd-40c0-827c-8d1299676b49.png">
+
+But why have a dedicated tool instead of sending the image yourself each time? A few main reasons:
+
+1.  If you know the name of the macro you want to use, it's a lot faster for you to type the name than to find the image on your computer each time you want to use it.
+2.  Once a macro is made, anyone at the company can easily use it.
+3.  All the macros are located in one place for everyone at the company, making it easy to find and build off of other macros. On Facebook Gaming we had a series of macros that were ghost themed and built off one another into an expansive universe. 
+5.  It’s just fun ¯\\_(ツ)_/¯
+
+To bring some of the fun of macros to Statsig, some teammates and I set out to recreate the macro tool and named it marcos in honor of our manager Marcos. I began work bringing the tool to Workplace using a custom integration. Here is how I accomplished this:
+
+## 1. Create a Custom Integration within Workplace
+ Note: You must be an Admin to do this
+ 1. Within the Admin Panel -> Select Integrations -> Click Create custom integration
+        
+ ![Screen Shot 2022-04-26 at 3 02 14 PM](https://user-images.githubusercontent.com/99914387/166558945-b5b14da8-50b3-438d-a132-1073143ea6e0.png)
+        
+2.  Within Permissions, check “Group chat bot”, “Message any member”, and “Read all messages”
+        
+ ![Screen Shot 2022-04-26 at 3 38 12 PM](https://user-images.githubusercontent.com/99914387/166559780-b1b275cd-f242-4f9f-bded-3e441d173daa.png)
+        
+ I recommend you do NOT select “Automatically remove unused permissions”. I found when building my bot that Workplace was removing necessary permissions when my bot wasn’t used frequently enough.
+## 2. Set up a Dynamic Config through Statsig
+
+In order for your bot to know which image to show, I recommend setting up a dynamic config. Dynamic config is a tool that replaces hard-coded values in your application with configuration parameters defined on the server. Once set up, that Statsig UI makes it super easy for both technical and non-technical users to add more marcos. Read [here](https://docs.statsig.com/guides/first-dynamic-config) for more information on how to set up a dynamic config. Here is an example of how I set up ours:
+
+```
+{
+  statsig: {
+    src: 'https://statsig.com/images/logo_wordmark.svg',
+  },
+  nicenice: {
+    src: 'https://cdn.britannica.com/86/64486-050-C8AEE0D0/Nice-France.jpg',
+  },
+}
+
+```
+
+For custom images, we used github to host our images but you can use any image hosting website.
+
+## 3. Create Your Webhook:
+
+Create a new webhook wherever your webhooks live. Here’s what our webhook looks like
+import Gist from 'react-gist';
+<Gist id="18d30500c1a8267d2edf9992a1e9e1b4" />
+
+## 4. Test Your Webhook
+
+We used ngrok to test our webhook. Head [here](https://ngrok.com/docs/getting-started) for more information on getting started. Once installed:
+
+1.  Run “ngrok http (your port number)”
+    
+2.  You should get back a url that looks like this http://71c8-216-207-142-218.ngrok.io/. Input that as the callback url in the page webhook.
+    ![Screen Shot 2022-04-26 at 1 23 43 PM](https://user-images.githubusercontent.com/99914387/166559137-3f36762c-3ca5-417e-8e2f-34ea06a00d78.png)  
+    
+3.  Open up http://localhost:4040/ in your browser. Here is where you can see requests sent and received by your webhook.
+    
+4.  Create a new Workplace group chat with your favorite coworkers and your bot, and trigger your bot by calling one of your macros such as “#m lgtm”
+    
+5.  Use http://localhost:4040/ and console to debug as needed
+    
+## Limitations
+One major quirk I ran into while building this was the bot must be added to the group chat to work, which means:
+
+1.  If you forget to add the bot to your chat before you try to use the #m command it won’t work
+    
+2.  You cannot use the bot in a direct message. In order for you to use the bot you would have to create a new group chat with yourself, the person you want to message and the bot.
+    
+3.  The bot can not be used in any chat that is associated with a group. Workplace has the ability to add a chat to a workplace group. This comes with nice features such as automatic membership and keeps both your posts and chats in one place. When you try to directly add the bot to the group/chat, the bot does not appear in the list of options when you hit Add people. If you unlink the chat and the group using admin options, you can then add the bot to the chat but you don’t get any of the benefits of having the chat and group linked. If you then try to relink the chat and the group, you are finally shown this error message making it clear that bots can not be used in a chat that is associated with a Workplace group.
+    
+<img width="1297" alt="166559194-41a39093-e283-43ea-8415-7645f4c1351f" src="https://user-images.githubusercontent.com/99914387/171302237-9bd4c315-79b0-4c5d-8c76-04f5677808f0.png">
+    
+Fun fact: you can actually get around this by creating a normal group chat → adding the bot to the chat → use the More Options button in the chat to got to Admin Options → click Create Group. Then your bot is in a chat associated with a group and works normally.
