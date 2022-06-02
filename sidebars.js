@@ -159,6 +159,11 @@ module.exports = {
     },
     {
       type: "doc",
+      label: "Events Explorer",
+      id: "events-explorer/introduction",
+    },
+    {
+      type: "doc",
       label: "Holdouts",
       id: "holdouts/introduction",
     },
