@@ -83,7 +83,6 @@ How we at Statsig use the SDK, and suggested usage.
 At the root of your component tree, wrap your app in a `StatsigProvider` and set `waitForInitialization=true` (if you do not wait for initialization, `useGate` hooks will return false on the first render, and will only update to the actual gate value once SDK initialization completes and Gates are fetched for the passed in user.  Similarly, `useConfig` and `useExperiment` will return empty dynamic configs).
 
 
-
 ```react
 
 import { StatsigProvider } from 'statsig-react';
@@ -98,7 +97,7 @@ import { StatsigProvider } from 'statsig-react';
       ... // other user parameters
     }}
     waitForInitialization={true}>
-    <Component />
+    <MyComponent />
 </StatsigProvider>
 ```
 
@@ -116,6 +115,10 @@ export default function MyComponent(): JSX.Element {
   return {featureOn ? <MyComponent /> : null;
 }
 ```
+
+:::info
+NOTE: Statsig SDK Hooks rely on a Context from the Statsig Provider.  Context will get its value from the closest matching Provider above it in the component tree. Make sure you make a separate child component to consume the StatsigContext, and place your hooks there. Learn more here: https://reactjs.org/docs/context.html
+:::
 
 To logEvents, get the global javascript SDK
 
@@ -161,9 +164,7 @@ A react hook to get a Statsig Feature Gate.
 Parameters:
 - `gateName: string` - the name of the gate to check
 
-
-Returns:
-- `GateResult`
+Returns `GateResult`:
 -   `isLoading: boolean;` - the loading/initializing state of the SDK
 -   `value: boolean` - the value of the feature gate (false by default)
 
@@ -174,8 +175,7 @@ Parameters:
 - `configName: string` - the name of the config to get
 
 
-Returns:
-- `ConfigResult`
+Returns `ConfigResult`:
 -   `isLoading: boolean;` - the loading/initializing state of the SDK
 -   `config: DynamicConfig` - the backing `DynamicConfig` (see the [statsig-js sdk docs](/client/jsClientSDK) for more information)
 
@@ -186,10 +186,20 @@ Parameters:
 - `experimentName: string` - the name of the experiment to get
 
 
-Returns:
-- `ConfigResult`
+Returns `ConfigResult`:
 -   `isLoading: boolean;` - the loading/initializing state of the SDK
 -   `config: DynamicConfig` - the backing `DynamicConfig` (see the [statsig-js sdk docs](/client/jsClientSDK) for more information)
+
+##### `useLayer`
+A react hook to get a Statsig Experiment, represented as a DynamicConfig.
+
+Parameters:
+- `experimentName: string` - the name of the experiment to get
+
+Returns `LayerResult`:
+-   `isLoading: boolean;` - the loading/initializing state of the SDK
+-   `layer: Layer` - the backing `Layer` (see the [statsig-js sdk docs](/client/jsClientSDK) for more information)
+
 
 ##### `useStatsigLogEffect`
 A react hook to simplify top level logEvents into an effect which will only log and event once the SDK is ready

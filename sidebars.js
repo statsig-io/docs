@@ -27,6 +27,7 @@ module.exports = {
         "guides/experimentation-program",
         "guides/aa-test",
         "guides/serverless",
+        "guides/config-history",
       ],
     },
     {
@@ -158,6 +159,11 @@ module.exports = {
     },
     {
       type: "doc",
+      label: "Events Explorer",
+      id: "events-explorer/introduction",
+    },
+    {
+      type: "doc",
       label: "Holdouts",
       id: "holdouts/introduction",
     },
@@ -254,8 +260,10 @@ module.exports = {
             "integrations/data-connectors/mparticle",
             "integrations/data-connectors/revenuecat",
             "integrations/data-connectors/segment",
+            "integrations/data-connectors/rudderstack",
           ],
         },
+        "integrations/event_filtering",
         "integrations/event_webhook",
         "integrations/jira",
         "integrations/snowflake",
