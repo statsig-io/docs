@@ -4,6 +4,8 @@ sidebar_label: Events Explorer
 slug: /events-explorer
 ---
 
+The Events Explorer tab allows you to analyze your event log data in real-time, supporting a variety of queries against the data you send us by when you use our SDKs or integrations.
+
 ## Events Explorer Use Cases
 We built Events Explorer with two primary use cases in mind:
 1. Diagnosing Product Performance: As you accelerate your product development velocity, Events Explorer enables you to monitor and interactively analyze how your product is performing in real-time. Product performance issues can range from app crashes to seemingly innocuous bugs that impact app-wide usage. Compared to pre-aggregated graphs that limit root cause analyses, Events Explorer allows you to dive deep into arbitrary product data for real-time, ad-hoc analyses.
