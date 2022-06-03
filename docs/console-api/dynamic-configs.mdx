@@ -1,0 +1,294 @@
+---
+title: Dynamic Configs
+sidebar_label: Dynamic Configs
+slug: /console-api/dynamic_configs
+description: Create dynamic configs via HTTP requests.
+---
+
+# console/v1/dynamic_configs
+
+## Authorization
+
+All requests must include the **STATSIG-API-KEY** field in the header. The value should be a **Console API Key** which can be created in the Project Settings on [console.statsig.com/api_keys](https://console.statsig.com/api_keys)
+
+## Responses
+
+All responses will contain a **message** field and a **data** field.
+
+- **message** is a simple string explaining the result of the operation.
+- **data** will either be a [Dynamic Config](#dynamic-config-object) object or an array of [Dynamic Config](#dynamic-config-object) objects, depending on the request you made.
+
+## Create a Dynamic Config
+
+```bash
+curl --request POST 'https://api.statsig.com/console/v1/dynamic_configs' \
+--header 'STASIG-API-KEY: console-xxXxxXXXXxxxxXxx' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "a dynamic config",
+    "description": "helpful summary of what this dynamic config does"
+}'
+```
+
+**Reponse JSON** : A single [Dynamic Config](#dynamic-config-object) object
+
+```json
+{
+  "message": "Dynamic Config created successfully.",
+  "data": {
+    "id": "a_dynamic_config",
+    "isEnabled": true,
+    "description": "helpful summary of what this dynamic config does",
+    ...
+  }
+}
+```
+
+## Reading All Dynamic Configs
+
+```bash
+curl --request GET 'https://api.statsig.com/console/v1/dynamic_configs' \
+--header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx'
+```
+
+**Reponse JSON** : An array of [Dynamic Config](#dynamic-config-object) objects
+
+```json
+{
+  "message": "Dynamic Configss listed successfully.",
+  "data": [
+    {
+      "id": "a_dynamic_config",
+      "isEnabled": true,
+      "description": "helpful summary of what this dynamic config does"
+      ...
+    },
+    {
+      "id": "b_dynamic_config",
+      "isEnabled": true,
+      "description": "similar to a_dynamic_config but it has a b instead"
+      ...
+    }
+  ]
+}
+```
+
+## Reading a Single Dynamic Config
+
+```bash
+curl --request GET 'https://api.statsig.com/console/v1/dynamic_configs/a_dynamic_config' \
+--header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx'
+```
+
+**Reponse JSON** : A single [Dynamic Config](#dynamic-config-object) object
+
+```json
+{
+  "message": "Dynamic config read successfully.",
+  "data": {
+    "id": "a_dynamic_config",
+    "isEnabled": true,
+    "description": "helpful summary of what this dynamic config does",
+    ...
+  }
+}
+```
+
+## Updating a Dynamic Config
+
+```bash
+curl --request POST 'https://api.statsig.com/console/v1/dynamic_configs/a_dynamic_config' \
+--header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "isEnabled": false,
+  "description": "helpful summary of what this dynamic config does",
+  "rules": [
+    {
+      "name": "Public",
+      "passPercentage": 100,
+      "returnValue" : {
+        "key": "value"
+      }
+      "conditions": [
+        {
+          "type": "public"
+        }
+      ]
+    }
+  ]
+}'
+```
+
+**Reponse JSON** : A single [Dynamic Config](#dynamic-config-object) object
+
+```json
+{
+  "message": "Dynamic config updated successfully.",
+  "data": {
+    "id": "a_dynamic_config",
+    "isEnabled": false,
+    "description": "helpful summary of what this dynamic config does",
+    ...
+  }
+}
+```
+
+## Deleting a Dynamic Config
+
+```bash
+curl --request DELETE 'https://api.statsig.com/console/v1/dynamic_configs/a_dynamic_config' \
+--header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx'
+```
+
+**Reponse JSON** : Only a message is returned for this request
+
+```json
+{
+  "message": "Dynamic config deleted successfully."
+}
+```
+
+## ----
+
+## Objects
+
+<a name="dynamic-config-object"></a>
+
+### Dynamic Config
+
+- **id** | The name that was originally given to the dynamic config on creation but formatted as an ID ("A Dynamic Config" -> "a_dynamic_config").
+- **isEnabled** | Is the dynamic config enabled.
+- **description** | A brief summary of what the dynamic config is being used for.
+- **lastModifierName** | The Statsig Username of the last modifier of this dynamic config.
+- **lastModifierID** | The Statsig UserID of the last modifier of this dynamic config.
+- **rules** | An array of [Rule](#rule-object) objects.
+- **defaultValue** | The fallback JSON object when no rules are triggered.
+
+```json
+{
+  "id": "my_dynamic_config",
+  "isEnabled": true,
+  "description": "helpful summary of what this dynamic config does",
+  "lastModifierName": "CONSOLE API",
+  "lastModifierID": "x45r10nNlsdfJCs",
+  "rules": [
+    {
+      "name": "All Conditions",
+      "passPercentage": 10,
+      "conditions": [
+        {
+          "type": "public"
+        },
+        {
+          "type": "user_id",
+          "targetValue": ["111", "222"],
+          "operator": "any"
+        },
+        {
+          "type": "email",
+          "targetValue": ["@outlook.com", "@gmail.com"],
+          "operator": "str_contains_any"
+        },
+        {
+          "type": "custom_field",
+          "targetValue": ["31"],
+          "operator": "any",
+          "field": "age"
+        },
+        {
+          "type": "app_version",
+          "targetValue": "1.1.1",
+          "operator": "version_gt"
+        },
+        {
+          "type": "browser_name",
+          "targetValue": ["Android", "Chrome"],
+          "operator": "any"
+        },
+        {
+          "type": "browser_version",
+          "targetValue": ["94.0.4606.81", "94.0.4606.92"],
+          "operator": "any"
+        },
+        {
+          "type": "os_name",
+          "targetValue": ["Android", "Windows"],
+          "operator": "none"
+        },
+        {
+          "type": "os_version",
+          "targetValue": "11.0.0",
+          "operator": "version_lte"
+        },
+        {
+          "type": "country",
+          "targetValue": ["NZ", "US"],
+          "operator": "any"
+        },
+        {
+          "type": "passes_gate",
+          "targetValue": "a_gate"
+        },
+        {
+          "type": "fails_gate",
+          "targetValue": "a_gate"
+        },
+        {
+          "type": "time",
+          "targetValue": 1643070357193,
+          "operator": "after"
+        },
+        {
+          "type": "environment_tier",
+          "targetValue": ["production"],
+          "operator": "any"
+        },
+        {
+          "type": "passes_segment",
+          "targetValue": "growth_org"
+        },
+        {
+          "type": "fails_segment",
+          "targetValue": "growth_org"
+        },
+        {
+          "type": "ip_address",
+          "targetValue": ["1.1.1.1", "8.8.8.8"],
+          "operator": "any"
+        }
+      ],
+      "returnValue": {
+        "key": "this rule was triggered"
+      },
+    }
+  ],
+  "defaultValue": {
+    "key":"the default value"
+  }
+}
+```
+
+<a name="rule-object"></a>
+
+### Rule
+
+- **name** | The name of this Rule.
+- **passPercentage** | Of the users that meet the conditions of this rule, what percent should return true.
+- **conditions** | An array of [Condition](#condition-object) objects.
+- **returnValue** | JSON object that is returned if this Rule evaluate to true
+
+```json
+{
+  "name": "Public",
+  "passPercentage": 10,
+  "conditions": [
+    {
+      "type": "public"
+    }
+  ],
+  "returnValue": {
+    "key" : "value"
+  }
+}
+```
