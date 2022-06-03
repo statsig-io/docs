@@ -1,3 +1,5 @@
+import Conditions from "./snippets/conditions.mdx"
+
 ---
 title: Dynamic Configs
 sidebar_label: Dynamic Configs
@@ -17,6 +19,7 @@ All responses will contain a **message** field and a **data** field.
 
 - **message** is a simple string explaining the result of the operation.
 - **data** will either be a [Dynamic Config](#dynamic-config-object) object or an array of [Dynamic Config](#dynamic-config-object) objects, depending on the request you made.
+
 
 ## Create a Dynamic Config
 
@@ -269,14 +272,16 @@ curl --request DELETE 'https://api.statsig.com/console/v1/dynamic_configs/a_dyna
 }
 ```
 
+
 <a name="rule-object"></a>
 
 ### Rule
 
-- **name** | The name of this Rule.
+- **name** | The name of this rule.
 - **passPercentage** | Of the users that meet the conditions of this rule, what percent should return true.
 - **conditions** | An array of [Condition](#condition-object) objects.
-- **returnValue** | JSON object that is returned if this Rule evaluate to true
+- **returnValue** | The JSON object returned when this rule is triggered.
+
 
 ```json
 {
@@ -288,7 +293,31 @@ curl --request DELETE 'https://api.statsig.com/console/v1/dynamic_configs/a_dyna
     }
   ],
   "returnValue": {
-    "key" : "value"
+    "display": true
   }
 }
 ```
+
+<a name="condition-object"></a>
+
+### Condition
+
+- **type** | The type of condition it is. A full list of conditions can be found [here](#).
+- **operator** | What form of evaluation should be run against the **targetValue**.
+- **targetValue** | The value or values you wish to evaluate.
+
+```json
+{
+  "type": "user_id",
+  "operator": "any",
+  "targetValue": ["111", "222"]
+}
+```
+
+## ----
+
+## All Dynamic Config Conditions
+
+Conditions for dynamic configs are the same as conditions used in feature gates.
+
+<Conditions />
