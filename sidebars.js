@@ -148,9 +148,19 @@ module.exports = {
       ],
     },
     {
-      type: "doc",
+      type: "category",
       label: "Pulse",
-      id: "pulse/introduction",
+      link: {
+        type: "doc",
+        id: "pulse/introduction",
+      },
+      items: [
+        "pulse/read-pulse",
+        "pulse/drill-down",
+        "pulse/custom-queries",
+        "pulse/export",
+        "pulse/best-practices",
+      ],
     },
     {
       type: "doc",
