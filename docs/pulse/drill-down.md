@@ -57,19 +57,24 @@ This view shows the group level statistics needed to compute the metric deltas a
 - **Experiment Delta (absolute)**: The absolute difference of the Mean between test groups i.e. Test Mean - Control Mean.
 - **Experiment Delta (relative)**: Relative difference of the Mean i.e. 100% x (Test Mean – Control Mean) / Control Mean
 - **Top-line Impact**: The measured effect that experiment is having on the overall topline metric.  Computed on a daily basis and averaged across days.  The absolute value is the net increase or decrease in the metric, while the relative value is the percentage change.
-- **Projected Launch Impact**: An estimate of the topline impact we expect to see if a decision is made and the test group is launched to all users.  This takes into account the layer allocation and the size of the test group.
+- **Projected Launch Impact**: An estimate of the topline impact we expect to see if a decision is made and the test group is launched to all users.  This takes into account the layer allocation and the size of the test group.  Assumes the targeting gate (if there is one) remains the same after launch.
 
 See [here](https://docs.statsig.com/stats-engine/topline-impact) for details on the exact calculation for topline and projected impact.
 
 **FAQs about topline impact**
 
-*Why is the Topline Impact higher than the Experiment Delta?*
+*Why is the projected launch impact smaller than the relative experiment delta?*
 
-Depending on the metric, it's possible for the topline impact to be higher than the experiment delta.  This because the two values are computed differently and have different meaning.  
+Often times, an experiment can imapct only a subset of the user base that contributes to a topline metric.  So the relative experiment delta that we observe is effectively diluted when measured against the topline metric value.  
+
+For example: Consider a top-of-funnel experiment on the registration page.  Among users that hit this page, the treatment is leading to more sign ups and a 10% lift in daily active users (DAU).  However, our topline DAU metric includes other user segments outside of the experiment, such as long term users that don't go to the registration page.  So what was a 10% lift in the test vs. control comparison, may amount to only a 1% increase in overal DAU.
+
+*How can the topline impact be higher than the experiment delta?*
+
+It's possible for the topline impact to be higher or lower than the experiment delta.  This is because the two values are computed differently and have different meaning.  
 
 Experiment deltas are based on the unit-level averages: The mean value of the metric is computed for each user across all days, and then averaged to obtain the group mean.  The topline impact is computed daily based on the total pooled effect from all users, and we take the averaged across days to show the daily impact.  
 
 We chose to compute topline impacts in this way because most metrics are tracked on a daily basis and the topline value tends to be computed as an aggregation across all users, rather than a user-level average.  For experiment analysis, on the other hand, best practice is for the analysis unit to match the randomization unit, so metrics are aggregated at the unit level first before comuting experiment deltas.
 
-*Why is the projected launch impact smaller than the relative experiment delta?*
 
