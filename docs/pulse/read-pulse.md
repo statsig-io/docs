@@ -29,7 +29,7 @@ The formula for calculating lift is:
 
 Delta(%) = (Test - Control) / Control
 
-Confidence intervals are reported at the selected significance level (95% by default). In a typical Z-test, we show the confidence interval as +/- 1.96 \* standard error.
+Confidence intervals are reported at the selected significance level (95% by default). In a typical two-sided Z-test, we show the confidence interval as +/- 1.96 \* standard error.
 
 99.9% winsorization is automatically applied to event_count, event_count_custom, and sum metrics. This caps extreme outlier values to reduce their impact on experiment results.
 
