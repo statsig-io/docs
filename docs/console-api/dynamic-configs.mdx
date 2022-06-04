@@ -1,13 +1,12 @@
 ---
-title: Gates
-sidebar_label: Gates
-slug: /console-api/gates
-description: Create feature gates via HTTP requests.
+title: Dynamic Configs
+sidebar_label: Dynamic Configs
+slug: /console-api/dynamic_configs
+description: Create dynamic configs via HTTP requests.
 ---
 import Conditions from "./snippets/conditions.mdx"
 
-
-# console/v1/gates
+# console/v1/dynamic_configs
 
 ## Authorization
 
@@ -18,125 +17,132 @@ All requests must include the **STATSIG-API-KEY** field in the header. The value
 All responses will contain a **message** field and a **data** field.
 
 - **message** is a simple string explaining the result of the operation.
-- **data** will either be a [Gate](#gate-object) object or an array of [Gate](#gate-object) objects, depending on the request you made.
+- **data** will either be a [Dynamic Config](#dynamic-config-object) object or an array of [Dynamic Config](#dynamic-config-object) objects, depending on the request you made.
 
-## Create a Gate
+
+## Create a Dynamic Config
 
 ```bash
-curl --request POST 'https://api.statsig.com/console/v1/gates' \
+curl --request POST 'https://api.statsig.com/console/v1/dynamic_configs' \
 --header 'STASIG-API-KEY: console-xxXxxXXXXxxxxXxx' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "name": "a gate",
-    "description": "helpful summary of what this gate does"
+    "name": "a dynamic config",
+    "description": "helpful summary of what this dynamic config does"
 }'
 ```
 
-**Reponse JSON** : A single [Gate](#gate-object) object
+**Reponse JSON** : A single [Dynamic Config](#dynamic-config-object) object
 
 ```json
 {
-  "message": "Gate created successfully.",
+  "message": "Dynamic Config created successfully.",
   "data": {
-    "id": "a_gate",
+    "id": "a_dynamic_config",
     "isEnabled": true,
-    "description": "helpful summary of what this gate does",
+    "description": "helpful summary of what this dynamic config does",
     ...
   }
 }
 ```
 
-## Reading All Gates
+## Reading All Dynamic Configs
 
 ```bash
-curl --request GET 'https://api.statsig.com/console/v1/gates' \
+curl --request GET 'https://api.statsig.com/console/v1/dynamic_configs' \
 --header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx'
 ```
 
-**Reponse JSON** : An array of [Gate](#gate-object) objects
+**Reponse JSON** : An array of [Dynamic Config](#dynamic-config-object) objects
 
 ```json
 {
-  "message": "Gates listed successfully.",
+  "message": "Dynamic Configss listed successfully.",
   "data": [
     {
-      "id": "a_gate",
+      "id": "a_dynamic_config",
       "isEnabled": true,
-      "description": "helpful summary of what this gate does"
+      "description": "helpful summary of what this dynamic config does"
       ...
     },
     {
-      "id": "b_gate",
+      "id": "b_dynamic_config",
       "isEnabled": true,
-      "description": "similar to gate_a but it has a b instead"
+      "description": "similar to a_dynamic_config but it has a b instead"
       ...
     }
   ]
 }
 ```
 
-## Reading a Single Gate
+## Reading a Single Dynamic Config
 
 ```bash
-curl --request GET 'https://api.statsig.com/console/v1/gates/a_gate' \
+curl --request GET 'https://api.statsig.com/console/v1/dynamic_configs/a_dynamic_config' \
 --header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx'
 ```
 
-**Reponse JSON** : A single [Gate](#gate-object) object
+**Reponse JSON** : A single [Dynamic Config](#dynamic-config-object) object
 
 ```json
 {
-  "message": "Gate read successfully.",
+  "message": "Dynamic config read successfully.",
   "data": {
-    "id": "a_gate",
+    "id": "a_dynamic_config",
     "isEnabled": true,
-    "description": "helpful summary of what this gate does",
+    "description": "helpful summary of what this dynamic config does",
     ...
   }
 }
 ```
 
-## Updating a Gate
+## Updating a Dynamic Config
 
 ```bash
-curl --request POST 'https://api.statsig.com/console/v1/gates/a_gate' \
+curl --request POST 'https://api.statsig.com/console/v1/dynamic_configs/a_dynamic_config' \
 --header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "isEnabled": false,
-  "description": "helpful summary of what this gate does",
+  "description": "helpful summary of what this dynamic config does",
   "rules": [
     {
       "name": "Public",
       "passPercentage": 100,
+      "returnValue" : {
+        "key": "value"
+      }
       "conditions": [
         {
           "type": "public"
         }
       ]
     }
-  ]
+  ],
+  "defaultValue": {
+    "key": "value"
+  }
 }'
 ```
 
-**Reponse JSON** : A single [Gate](#gate-object) object
+**Reponse JSON** : A single [Dynamic Config](#dynamic-config-object) object
 
 ```json
 {
-  "message": "Gate updated successfully.",
+  "message": "Dynamic config updated successfully.",
   "data": {
-    "id": "a_gate",
+    "id": "a_dynamic_config",
     "isEnabled": false,
-    "description": "helpful summary of what this gate does",
+    "description": "helpful summary of what this dynamic config does",
     ...
   }
 }
 ```
 
-## Deleting a Gate
+## Deleting a Dynamic Config
 
 ```bash
-curl --request DELETE 'https://api.statsig.com/console/v1/gates/a_gate' \
+curl --request DELETE 'https://api.statsig.com/console/v1/dynamic_configs/a_dynamic_config' \
 --header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx'
 ```
 
@@ -144,7 +150,7 @@ curl --request DELETE 'https://api.statsig.com/console/v1/gates/a_gate' \
 
 ```json
 {
-  "message": "Gate deleted successfully."
+  "message": "Dynamic config deleted successfully."
 }
 ```
 
@@ -152,22 +158,23 @@ curl --request DELETE 'https://api.statsig.com/console/v1/gates/a_gate' \
 
 ## Objects
 
-<a name="gate-object"></a>
+<a name="dynamic-config-object"></a>
 
-### Gate
+### Dynamic Config
 
-- **id** | The name that was originally given to the gate on creation but formatted as an ID ("A Gate" -> "a_gate").
-- **isEnabled** | Is the gate enabled.
-- **description** | A brief summary of what the gate is being used for.
-- **lastModifierName** | The Statsig Username of the last modifier of this gate.
-- **lastModifierID** | The Statsig UserID of the last modifier of this gate.
+- **id** | The name that was originally given to the dynamic config on creation but formatted as an ID ("A Dynamic Config" -> "a_dynamic_config").
+- **isEnabled** | Is the dynamic config enabled.
+- **description** | A brief summary of what the dynamic config is being used for.
+- **lastModifierName** | The Statsig Username of the last modifier of this dynamic config.
+- **lastModifierID** | The Statsig UserID of the last modifier of this dynamic config.
 - **rules** | An array of [Rule](#rule-object) objects.
+- **defaultValue** | The fallback JSON object when no rules are triggered.
 
 ```json
 {
-  "id": "my_gate",
+  "id": "my_dynamic_config",
   "isEnabled": true,
-  "description": "helpful summary of what this gate does",
+  "description": "helpful summary of what this dynamic config does",
   "lastModifierName": "CONSOLE API",
   "lastModifierID": "x45r10nNlsdfJCs",
   "rules": [
@@ -255,11 +262,18 @@ curl --request DELETE 'https://api.statsig.com/console/v1/gates/a_gate' \
           "targetValue": ["1.1.1.1", "8.8.8.8"],
           "operator": "any"
         }
-      ]
+      ],
+      "returnValue": {
+        "key": "this rule was triggered"
+      },
     }
-  ]
+  ],
+  "defaultValue": {
+    "key":"the default value"
+  }
 }
 ```
+
 
 <a name="rule-object"></a>
 
@@ -268,6 +282,8 @@ curl --request DELETE 'https://api.statsig.com/console/v1/gates/a_gate' \
 - **name** | The name of this rule.
 - **passPercentage** | Of the users that meet the conditions of this rule, what percent should return true.
 - **conditions** | An array of [Condition](#condition-object) objects.
+- **returnValue** | The JSON object returned when this rule is triggered.
+
 
 ```json
 {
@@ -277,7 +293,10 @@ curl --request DELETE 'https://api.statsig.com/console/v1/gates/a_gate' \
     {
       "type": "public"
     }
-  ]
+  ],
+  "returnValue": {
+    "display": true
+  }
 }
 ```
 
@@ -301,6 +320,8 @@ curl --request DELETE 'https://api.statsig.com/console/v1/gates/a_gate' \
 
 <a name="all-conditions"></a>
 
-## All Gate Conditions
+## All Dynamic Config Conditions
+
+Conditions for dynamic configs are the same as conditions used in feature gates.
 
 <Conditions />

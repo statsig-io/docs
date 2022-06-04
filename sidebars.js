@@ -233,6 +233,7 @@ module.exports = {
         "console-api/gates",
         "console-api/daily-reports",
         "console-api/segments",
+        "console-api/dynamic-configs"
       ],
     },
     {
