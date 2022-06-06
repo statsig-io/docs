@@ -23,8 +23,27 @@ curl \
   --data “{“metrics": [{"user_id": "1237", "metric_name": "test_metric", "id_type": "user_id", "metric_value": 90}, {"user_id": "4568", "metric_name": "ratio", "id_type": "stable_id", "numerator": 3, "denominator": 15}]}”
  ```
  
- Response:
+With response:
 `{"success":true}`
+
+Statsig does not automatically process these metrics until you mark them as ready, as it's possible you might land data out of order. Once you are finished loading data for a period, you mark the data as ready by hitting the `mark_data_ready` API:
+```
+curl --location --request POST ‘https://api.statsig.com/v1/mark_data_ready’ \
+--header ‘statsig-api-key: {your statsig server secret}’ \
+--header ‘Content-Type: application/json’ \
+--data-raw ‘{
+    “timestamp”: 1647975283,
+    “type”: “metrics”
+}
+```
+
+The timestamp provided should be:
+- A unix timestamp
+- Represents the latest point in time for which all metrics before have been uploaded.
+- Any future calls to this API with an earlier timestamp will be invalid.
+- We don’t guarantee correct behavior if metrics are provided with an earlier timestamp after this API is called.
+
+Statsig processes metrics as a full day in the PST timezone; we will wait until a full day is marked as ready before processing that day.
 
 ### Importing Metrics from Snowflake
 

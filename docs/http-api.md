@@ -153,3 +153,23 @@ curl \
   --data '{"exposures": [{"user": {"userID": "user_id_12345"}, "experimentName": "analytics_only_experiment", "group": "Control"}]}' \
   "https://api.statsig.com/v1/log_custom_exposure"
 ```
+
+Event inputs to this endpoint can have either of the two following forms:
+
+```
+// Experiment Exposure Events
+// See https://docs.statsig.com/client/concepts/user for full list of user fields
+user: object, // must have a userID or a customID to match with event data.
+experimentName: string,
+group: string,
+time?: number | string, // unix timestamp, optional (request time used if not set)
+```
+
+```
+// Gate Exposure Events
+user: object, // must have a userID or a customID to match with event data.
+gateName: string,
+group: string,
+passes: boolean,
+time?: number | string, // unix timestamp, optional (request time used if not set)
+```
