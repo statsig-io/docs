@@ -16,7 +16,7 @@ You can log one or more precomputed metrics with Statsing using the `log_custom_
 
 ```bash
 curl \
-  “https://api.statsig.com/v1/log_custom_metric” \
+  “https://events.statsigapi.net/v1/log_custom_metric” \
   --header “statsig-api-key: <YOUR-SDK-KEY>” \
   --header “Content-Type: application/json” \
   --request POST \

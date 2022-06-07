@@ -46,7 +46,7 @@ curl \
   --header "Content-Type: application/json" \
   --request POST \
   --data '{"events": [{"user": { "userID": "42" }, "time": 1616826986211, "eventName": "test_api_event"}]}' \
-  "https://api.statsig.com/v1/log_event"
+  "https://events.statsigapi.net/v1/log_event"
 ```
 
 Response:
@@ -62,7 +62,7 @@ curl \
   --header "Content-Type: application/json" \
   --request POST \
   --data '{"events": [{"user": { "userID": "42", "statsigEnvironment": {"tier": "staging"} }, "time": 1616826986211, "eventName": "test_api_event"}]}' \
-  "https://api.statsig.com/v1/log_event"
+  "https://events.statsigapi.net/v1/log_event"
 ```
 
 Response:
@@ -151,7 +151,7 @@ curl \
   --header "Content-Type: application/json" \
   --request POST \
   --data '{"exposures": [{"user": {"userID": "user_id_12345"}, "experimentName": "analytics_only_experiment", "group": "Control"}]}' \
-  "https://api.statsig.com/v1/log_custom_exposure"
+  "https://events.statsigapi.net/v1/log_custom_exposure"
 ```
 
 Event inputs to this endpoint can have either of the two following forms:
