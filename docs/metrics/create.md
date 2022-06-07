@@ -59,13 +59,19 @@ In experimentation, ratio metrics are a frequent source of misleading informatio
 
 ## Funnel Metrics
 
-Statsig automatically produces a suite of funnel metrics in your Pulse Results when you create a **User Funnel**.
+You can create a custom funnel metric, from either the Custom Metrics Creation wizard in the Metrics Catalog or via the **Charts** tab. 
+
+![Screen Shot 2022-06-07 at 10 47 39 AM](https://user-images.githubusercontent.com/101903926/172448956-7480cb6e-6583-4c0b-8417-bd8e917eee30.png)
 
 ### Components of Funnel Metrics
 Funnel metrics have a few components:
-1. **Overall funnel conversion rate**: This metric tracks the percentage of users who complete a funnel (trigger the end event) relative to all users who start the funnel (trigger the starting event)
-2. **Start DAU and End DAU**: These metrics track the number of users that triggered the starting event and the ending event, respectively. When you're experimenting to improve funnel conversion rates, it's important to check the absolute number of users clearing the funnel to validate if there's a net gain at the end of the funnel
+1. **Lineage**: Surfaces the events used to generate the funnel 
+2. **Metric Value**: Metric value represents the overall funnel conversion rate, or the percentage of users who complete a funnel (trigger the end event) relative to all users who start the funnel (trigger the starting event)
 3. **Conversion rate between stages**: This set of metrics track the percentage of users who triggered an event N relative to all users that triggered event N-1 in the funnel
+
+![Screen Shot 2022-06-07 at 10 34 58 AM](https://user-images.githubusercontent.com/101903926/172446711-5511e394-b353-4d38-97f1-1b681b67042b.png)
+
+After funnels are created and populated, you can view your funnel metric much like any other metric in Pulse. Additionally, you can expand the funnel metric to view Pulse performance at each step in the funnel. 
 
 In the example below, the **Square** variant shows a lift in the **overall funnel conversion rate**. Expanding the metrics to examine the entire funnel reveals two key insights:
 * Both the **Square** and **Circle** variants show a lift in top-of-funnel DAU (_Land Page View Start DAU_). However, only the **Square** variant shows statistically significant increase in end-of-funnel DAU (_Purchase Event End DAU_).
