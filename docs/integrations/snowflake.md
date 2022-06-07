@@ -58,13 +58,12 @@ BEGIN;
   CREATE TABLE IF NOT EXISTS statsig.statsig.statsig_user_metrics(
       unit_id STRING NOT NULL,
       id_type STRING NOT NULL, -- stable_id, user_id, etc.
-      date DATE NOT NULL, -- unix time
+      date DATE NOT NULL, -- YYYY-MM-DD. Statsig calculates dates according to PST
       timeuuid STRING NOT NULL DEFAULT UUID_STRING(),
       metric_name STRING NOT NULL,
       metric_value NUMBER,
       numerator NUMBER,
-      denominator NUMBER,
-      record_number NUMBER AUTOINCREMENT START 1 INCREMENT 1
+      denominator NUMBER
   );
 
   CREATE TABLE IF NOT EXISTS statsig.statsig.statsig_events_signal(
