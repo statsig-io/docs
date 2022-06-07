@@ -6,9 +6,9 @@ slug: /metrics/create
 
 ## Custom Metrics
 
-To create custom metrics, navigate to **Metrics** from the left-hand navigation panel and on the first **Metrics Catalog** tab, click on the **Create** button. 
+To create custom metrics, navigate to **Metrics** from the left-hand navigation panel, then to the **Metrics Catalog** tab. Tap on the **Create** button. 
 
-![Screen Shot 2022-06-07 at 10 15 51 AM](https://user-images.githubusercontent.com/101903926/172443360-eeceea96-cf00-4ed6-8736-9bb9a98ca687.png)
+![Screen Shot 2022-06-07 at 1 02 48 PM](https://user-images.githubusercontent.com/101903926/172471990-b0a0c3a8-f017-4166-9095-6a981af7cc87.png)
 
 Statsig supports four types of custom metrics:
 
@@ -61,7 +61,7 @@ In experimentation, ratio metrics are a frequent source of misleading informatio
 
 You can create a custom funnel metric, from either the Custom Metrics Creation wizard in the Metrics Catalog or via the **Charts** tab. 
 
-![Screen Shot 2022-06-07 at 10 47 39 AM](https://user-images.githubusercontent.com/101903926/172448956-7480cb6e-6583-4c0b-8417-bd8e917eee30.png)
+![Screen Shot 2022-06-07 at 1 05 37 PM](https://user-images.githubusercontent.com/101903926/172472515-c94b264c-85a6-4b78-bf12-769585e4880d.png)
 
 ### Components of Funnel Metrics
 Funnel metrics have a few components:
