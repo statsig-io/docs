@@ -229,6 +229,7 @@ module.exports = {
         id: "console-api/introduction",
       },
       items: [
+        "console-api/main-api",
         "console-api/autotunes",
         "console-api/gates",
         "console-api/daily-reports",
