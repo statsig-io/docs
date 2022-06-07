@@ -1,5 +1,5 @@
 ```go
-user := User{UserID: "some_user_id"}
+user := statsig.User{UserID: "some_user_id"}
 feature := statsig.CheckGate(user, "use_new_feature")
 if feature {
   // Gate is on, enable new feature
