@@ -6,9 +6,9 @@ slug: /metrics/create
 
 ## Custom Metrics
 
-To create custom metrics, navigate to **Metrics** from the left hand navigation panel and click on the **Custom** tab. 
+To create custom metrics, navigate to **Metrics** from the left-hand navigation panel and on the first **Metrics Catalog** tab, click on the **Create** button. 
 
-![Custom Metrics Section](https://user-images.githubusercontent.com/77478319/137035147-1d87b955-3f95-46b7-b2c7-fb709f7cec7d.png)
+![Screen Shot 2022-06-07 at 10 15 51 AM](https://user-images.githubusercontent.com/101903926/172443360-eeceea96-cf00-4ed6-8736-9bb9a98ca687.png)
 
 Statsig supports four types of custom metrics:
 
