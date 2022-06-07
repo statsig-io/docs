@@ -22,7 +22,7 @@ From here you can drill into each event and see a detailed view of the logs, bro
 ![Screen Shot 2022-06-07 at 12 05 35 PM](https://user-images.githubusercontent.com/101903926/172462231-ff2f3063-0c4e-49fd-af17-7147bd09d3d1.png)
 
 ## Metrics Catalog
-The **Metrics Catalog** tab allows you to search and tag your metrics. Tags enable you organize your metrics and create collections of metrics that are associated in some way. For example, you could tag a set of metrics focused on a product area, business function, business objective, and so on. You can also create a loose collection of guardrail metrics that teams check in every experiment to ensure there are causing no unexpected effects in other parts of the business. Once you create a tagged collection of metrics, you can easily pull up this set of metrics when viewing your experiment results and zoom into the context that you want to focus on. 
+The **Metrics Catalog** tab allows you to search and tag your metrics, as well as [create custom metrics](/guides/metrics/create). Tags enable you organize your metrics and create collections of metrics that are associated in some way. For example, you could tag a set of metrics focused on a product area, business function, business objective, and so on. You can also create a loose collection of guardrail metrics that teams check in every experiment to ensure there are causing no unexpected effects in other parts of the business. Once you create a tagged collection of metrics, you can easily pull up this set of metrics when viewing your experiment results and zoom into the context that you want to focus on. 
 
 ![Screen Shot 2022-06-07 at 12 08 08 PM](https://user-images.githubusercontent.com/101903926/172462680-68a6de4e-17bf-4b11-920d-6d7830551012.png)
 
@@ -31,18 +31,9 @@ The **Metrics Catalog** tab allows you to search and tag your metrics. Tags enab
  ![Screen Shot 2022-06-07 at 12 09 40 PM](https://user-images.githubusercontent.com/101903926/172462947-877bbcc7-46b3-45cd-ac57-d0dc2c949d7d.png)
 
 
-## Custom Metrics
-The **Custom** tab allows you to create new metrics based on the ones you have logged.
-
-![image](https://user-images.githubusercontent.com/74588208/127936616-ee236410-a324-4990-a4eb-2e0d7a6829e1.png)
-
 ## Charts
-The **Charts** tab enables you to visualize customer journeys through your application. These **User Flows** can be a great source of new hypotheses about customer behavior and you could turn these hypotheses into new features and experiments to validate your understanding of customer behavior.
+The **Charts** tab shows a set of user-level metric charts that are automatically created based on the events that you log, such as daily/ weekly/ monthly active users, user stickiness, and retention. You can also create custom charts that enable you to visualize customer journeys through your application. 
 
-![image](https://user-images.githubusercontent.com/1315028/141157888-ea748571-b049-41fd-b121-56d7894b5ab7.png)
 
-The **Users** tab shows user-level metrics that are derived from the events that you log.
-
-![image](https://user-images.githubusercontent.com/74588208/127933909-a51c5587-992b-4fc7-8dd4-147c149772cb.png)
-
+![Screen Shot 2022-06-07 at 12 55 08 PM](https://user-images.githubusercontent.com/101903926/172470741-af6294d0-a84a-4630-80f8-827de7e0c03b.png)
 
