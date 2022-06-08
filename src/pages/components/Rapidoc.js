@@ -5,22 +5,6 @@ import('rapidoc');
 export default function Rapidoc(props) {
   let {apiUrl} = props
 
-	const rapidoc = <rapi-doc 
-											header-color={"#004876"}
-											nav-text-color={"#004876"}
-											primary-color={"#ff9e1b"}
-											nav-bg-color={"#ffffff"}
-											id='rapidoc'
-											allow-search={false}
-											render-style={"read"}
-											allow-try={true}
-											show-header={false}
-											allow-authentication={true}
-											regular-font="Roboto"
-											use-path-in-nav-bar={true}
-											style={{height: "80vh", width: "100%"}}
-											mono-font="monospace" theme={"light"}/>
-
 	useEffect(() => {
 		setTimeout(() => {
 			var data = require('../../../docs/console-api/openapi/main.json');
@@ -33,7 +17,21 @@ export default function Rapidoc(props) {
   if (ExecutionEnvironment.canUseDOM) {
     /// Make sure we only import the rapidoc web component in case we are on the client side
     return (
-			rapidoc
+			<div style={{height: '170vh'}}>
+				<rapi-doc 
+					id='rapidoc'
+					style={{"height": "170vh"}}
+					allow-search={false}
+					update-route={false}
+					render-style="view" // Controls how to api gets rendered
+					layout='row'
+					allow-try={true} // Enable ability for users to run commands
+					show-header={false} // Disable user changing api spec file
+					allow-authentication={true} // Enable user passing STATSIG-API-KEY at top of file
+					use-path-in-nav-bar={false} // Disable using paths in side bar
+					show-method-in-nav-bar='as-colored-block' // Enables small tags in nav bar
+				/>
+			</div>	
 		)
 	}
   return <div/>
