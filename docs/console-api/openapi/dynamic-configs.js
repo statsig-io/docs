@@ -1,3 +1,4 @@
+module.exports = 
 {
   "openapi": "3.0.0",
   "info": {
@@ -370,7 +371,7 @@
         }
       }
     },
-    "/dynamic_configs/a_dynamic_config": {
+    "/dynamic_configs/{dynamic_config_id}": {
       "get": {
         "tags": [
           "dynamic config"
@@ -449,7 +450,7 @@
               "schema": {
                 "type": "object",
                 "example": {
-                  "id": "a_dynamic_config",
+                  "id": "{dynamic_config_id}",
                   "isEnabled": false,
                   "description": "helpful summary of what this dynamic config does",
                   "lastModifierName": "CONSOLE API",

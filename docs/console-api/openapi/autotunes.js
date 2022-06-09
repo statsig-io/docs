@@ -1,3 +1,4 @@
+module.exports = 
 {
   "openapi": "3.0.0",
   "info": {
@@ -21,23 +22,6 @@
   "security": [
     {
       "STATSIG-API-KEY": []
-    }
-  ],
-  "tags": [
-    {
-      "name": "gates"
-    },
-    {
-      "name": "dynamic config"
-    },
-    {
-      "name": "segments"
-    },
-    {
-      "name": "autotunes"
-    },
-    {
-      "name": "events"
     }
   ],
   "paths": {
@@ -100,7 +84,7 @@
         }
       }
     },
-    "/autotunes/my_second_autotune": {
+    "/autotunes/{autotune_id}": {
       "get": {
         "tags": [
           "autotunes"
@@ -114,9 +98,7 @@
             }
           }
         }
-      }
-    },
-    "/autotunes/my_autotunes_are_best": {
+      },
       "delete": {
         "tags": [
           "autotunes"
