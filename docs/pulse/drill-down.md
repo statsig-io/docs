@@ -64,8 +64,8 @@ This view shows the group level statistics needed to compute the metric deltas a
 
 - **Experiment Delta (absolute)**: The absolute difference of the Mean between test groups i.e. Test Mean - Control Mean.
 - **Experiment Delta (relative)**: Relative difference of the Mean i.e. 100% x (Test Mean – Control Mean) / Control Mean
-- **Top-line Impact**: The measured effect that experiment is having on the overall topline metric.  Computed on a daily basis and averaged across days in the analysis window.  The absolute value is the net increase or decrease in the metric, while the relative value is the percentage change.
-- **Projected Launch Impact**: An estimate of the topline impact we expect to see if a decision is made and the test group is launched to all users.  This takes into account the layer allocation and the size of the test group.  Assumes the targeting gate (if there is one) remains the same after launch.
+- **Top-line Impact**: The measured effect that experiment is having on the overall topline metric each day, on average.  Computed on a daily basis and averaged across days in the analysis window.  The absolute value is the net daily increase or decrease in the metric, while the relative value is the daily percentage change.
+- **Projected Launch Impact**: An estimate of the daily topline impact we expect to see if a decision is made and the test group is launched to all users.  This takes into account the layer allocation and the size of the test group.  Assumes the targeting gate (if there is one) remains the same after launch.
 
 See [here](https://docs.statsig.com/stats-engine/topline-impact) for details on the exact calculation for topline and projected impact.
 
