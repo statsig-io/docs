@@ -1,3 +1,4 @@
+module.exports = 
 {
   "openapi": "3.0.0",
   "info": {
@@ -47,6 +48,24 @@
           "gates"
         ],
         "summary": "Create Gate",
+        "x-code-samples": [
+          {
+            "lang": "JavaScript",
+            "label": "JS - Node",
+            "source": "var request = require(\"request\");\n"
+
+          },
+          {
+            "lang": "JavaScript",
+            "label": "JS - Node",
+            "source": "<?php echo \"This is our custom PHP code\"; ?>"
+          },
+          {
+            "lang": "JavaScript",
+            "label": "JS - Node",
+            "source": "var request = require(\"request\");\n"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
