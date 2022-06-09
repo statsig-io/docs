@@ -16,7 +16,7 @@ export default function Rapidoc(props) {
 
   useEffect(() => {
     setTimeout(() => {
-      var data = require("../../../docs/console-api/openapi/".concat(apiFile)); // maybe wait to render until after the js has been read
+      var data = require("../../../docs/console-api/openapi/".concat(apiFile));
 			data = updateCodeSnippets(data)
       const el = document.getElementById(id);
       el.loadSpec(data);
