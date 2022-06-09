@@ -104,6 +104,7 @@ module.exports = {
         "experiments-plus/create-new",
         "experiments-plus/power-analysis",
         "experiments-plus/implement",
+        "experiments-plus/rules",
         "experiments-plus/getting-group",
         "experiments-plus/monitor",
         "experiments-plus/read-results",
