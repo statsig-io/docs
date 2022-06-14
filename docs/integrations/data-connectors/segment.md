@@ -58,7 +58,4 @@ To export your Statsig events to Segment,
 ![image](https://user-images.githubusercontent.com/1315028/150827399-333d9064-de1c-4f4e-bc33-51a46a83531d.png)
 
 ## Filtering Events
-
-## Filtering Events
-
 You can customize which events should be sent and received via Segment using [Event Filtering](/integrations/event_filtering)
