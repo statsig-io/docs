@@ -37,6 +37,8 @@ STATSIG-API-KEY: {STATSIG_SERVER_SECRET}
 
 <div style={{paddingBottom: "32px"}}></div>
 
+---
+
 ## Outgoing
 
 <div style={{display: "flex", justifyContent: "center", marginBottom: "16px"}} >
@@ -69,73 +71,139 @@ Events will be sent to your webhook in batches in a JSON format. The structure o
 | timestamp       | Number | Timestamp in MS of the event                                         |
 | value           | String | Value of the event provided                                          |
 | metadata        | JSON   | Custom Metadata provided                                             |
-| statsigMetadata | JSON   | Metadata added by Statsig                                            |
+| statsigMetadata | JSON   | Metadata related to the logging of this event added by Statsig       |
 | timeUUID        | String | UUID for the event                                                   |
 
-#### Feature Gate Exposure Format
+#### Custom Event Formatting - logEvent
 
-For events representing an exposure for a [`Statsig Feature Gate`](https://docs.statsig.com/feature-gates), the event will be in the following format:
+>
 
-```
+```json
 {
-  eventName: "statsig::gate_exposure",
-  statsigMetadata: {
-    gate: <Name of the gate that was exposed>,
-    gateValue: <True/False depending on if user passed the gate>,
-    gateGroupName: <Name of the Rule the user was checked against>,
-    ruleID: <Unique identifier for the Rule>
-  }
+  "eventName": "my_custom_event",
+  "user": {
+    "userID": "a_user",
+    "email": "a.user@email.com"
+  },
+  "userID": "a_user",
+  "timestamp": "1655231253265",
+  "statsigMetadata": {
+    ...
+  },
+  "value": "a_custom_value",
+  "metadata": {
+    "key_a": "value_a",
+    "key_b": "123"
+  },
+  "timeUUID": "aad2a983-ec0f-11ec-917a-fb8cdaeda578"
 }
 ```
 
-#### Experiment Exposure Format
+#### Feature Gate Exposure Formatting - checkGate
 
-For events representing an exposure for a [`Statsig Experiment`](https://docs.statsig.com/experiments-plus), the event will be in the following format:
+>
 
-```
+```json
 {
-  eventName: "statsig::experiment_exposure",
-  statsigMetadata: {
-    config: <Name of the gate that was exposed>,
-    experimentGroupName: <Name of the Group in the experiment the user was allocated to>,
-    ruleID: <Unique identifier for the Group>
-  }
+  "eventName": "statsig::gate_exposure",
+  "user": { ... },
+  "userID": "a_user",
+  "timestamp": "1655231253265",
+  "statsigMetadata": { ... },
+  "value": "",
+  "metadata": {
+    "gate": "a_gate",
+    "gateValue": "false",
+    "ruleID": "default",
+    "reason": "Network",
+    "time": "1655231249644"
+  },
+  "timeUUID": "8d7c1040-ec11-11ec-g123-abe2c32fcf46"
+}
+```
+
+#### Dynamic Config Exposure Formatting - getConfig
+
+>
+
+```json
+{
+  "eventName": "statsig::config_exposure",
+  "user": { ... },
+  "userID": "a_user",
+  "timestamp": "1655231253265",
+  "statsigMetadata": { ... },
+  "value": "",
+  "metadata": {
+    "config": "a_config",
+    "ruleID": "default",
+    "reason": "Network",
+    "time": "1655231249644"
+  },
+  "timeUUID": "af379f60-ec11-22ad-8e0a-05c3ee70bd0c"
+}
+```
+
+#### Experiment Exposure Formatting - getExperiment
+
+>
+
+```json
+{
+  "eventName": "statsig::experiment_exposure",
+  "user": { ... },
+  "userID": "a_user",
+  "timestamp": "1655232119734",
+  "statsigMetadata": { ... },
+  "value": "",
+  "metadata": {
+    "config": "an_experiment",
+    "ruleID": "4SauZJcM1T7zNvh1igBjwE",
+    "reason": "Network",
+    "time": "1655231249644",
+    "experimentGroupName": "Control"
+  },
+  "timeUUID": "af379f61-ab22-11ec-8e0a-05c3ee70bd0c"
 }
 ```
 
 #### Example Batch
 
-```
+>
+
+```json
 [
   {
-    eventName: "page_view"
-    user: {userID: "user_1", country: "US"},
-    userID: "user_1",
-    timestamp: 1644520566967,
-    value: "example_value",
-    metadata: {page: "home_page"},
-    statsigMetadata: {},
-    timeUUID: "f4c414a0-8aa5-11ec-a8a3-0242ac120002"
+    "eventName": "page_view",
+    "user": {"userID": "user_1", "country": "US"},
+    "userID": "user_1",
+    "timestamp": 1644520566967,
+    "value": "example_value",
+    "metadata": {"page": "home_page"},
+    "statsigMetadata": {},
+    "timeUUID": "f4c414a0-8aa5-11ec-a8a3-0242ac120002"
   },
   {
-    eventName: "statsig::gate_exposure"
-    user: {userID: "user_1", country: "US"},
-    userID: "user_1",
-    timestamp: 1644520566968,
-    value: "",
-    metadata: {},
-    statsigMetadata: {gate: "test_gate", gateValue: true, gateGroupName: "US Users", ruleID: "5T2Gg0bwizTh9heDKL1El7"},
-    timeUUID: "f4c414a0-8aa5-11ec-a8a3-0242ac120003"
+    "eventName": "statsig::gate_exposure",
+    "user": {"userID": "user_1", "country": "US"},
+    "userID": "user_1",
+    "timestamp": 1644520566968,
+    "value": "",
+    "metadata": {"gate": "test_gate", "gateValue": "true", "ruleID": "default"},
+    "statsigMetadata": {},
+    "timeUUID": "f4c414a0-8aa5-11ec-a8a3-0242ac120003"
   },
   {
-    eventName: "statsig::experiment_exposure"
-    user: {userID: "user_1", country: "US"},
-    userID: "user_1",
-    timestamp: 1644520566969,
-    value: "",
-    metadata: {},
-    statsigMetadata: {config: "test_experiment", experimentGroupName: "Control", ruleID: "5T2Gg0bwizTh9heUKL1El7"},
-    timeUUID: "f4c414a0-8aa5-11ec-a8a3-0242ac120004"
+    "eventName": "statsig::experiment_exposure"
+    "user": {"userID": "user_1", "country": "US"},
+    "userID": "user_1",
+    "timestamp": 1644520566969,
+    "value": "",
+    "metadata": {
+       "config": "an_experiment", "ruleID": "4SauZJcM1T7zNvh1igBjwE", "reason": "Network", "time": "1655231249644", "experimentGroupName": "Control"
+    },
+    "statsigMetadata": {},
+    "timeUUID": "f4c414a0-8aa5-11ec-a8a3-0242ac120004"
   }
 ]
 ```
