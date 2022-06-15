@@ -8,15 +8,17 @@ slug: /metrics/create-metric-tags
 
 To create a metric tag, click on **Metrics** in the left hand navigation menu, and click on the [Metrics Catalog](https://console.statsig.com/4TLCtqzctSqusYcQljJLJE/metrics/metrics_catalog) tab. 
 
-In the **Metrics Catalog** tab, click on the **Tags** button, and select the **Create New Tag** option as shown below.
+![Screen Shot 2022-06-07 at 1 15 55 PM](https://user-images.githubusercontent.com/101903926/172474361-3c47eb33-0d44-457f-b3be-dc61cd085cb8.png)
 
-![image](https://user-images.githubusercontent.com/1315028/154554331-44b80d65-11bc-45fa-9676-080b33331322.png)
+In the **Metrics Catalog** tab, click on the **Tags** filter icon in the upper right-hand corner, and then tap **Manage** in the drop-down. This will take you to the tag manager within Project Settings for all tags in your project.
 
-Enter a name and description for your new tag, and select the metrics that you want to associate with this tag. Click on **Create**.
+![Screen Shot 2022-06-07 at 1 20 09 PM](https://user-images.githubusercontent.com/101903926/172474897-7eb84784-ff21-4461-87cd-6a0c45bb7ef7.png)
+
+Tap on the **Create New Tag** in the upper right-hand corner of the tag manager tab to create a new tag. Enter a name and description for your new tag. Click on **Create**. 
 
 ![image](https://user-images.githubusercontent.com/1315028/154555162-9309a3f5-0278-4a04-8620-245408e5d6d0.png)
 
-From now on, you can quickly add this tag to any metric using the **+** icon when you hover on the metric. 
+From now on, you can quickly add this tag to any metric using the **+** icon when you hover on the metric. To see what metrics are associated with a given tag, you can reference the **Tags** tab within Project Settings. 
 
 ![image](https://user-images.githubusercontent.com/1315028/154557097-3a2e07d9-1bb4-4cc5-9d03-c96b61f34296.png)
 
