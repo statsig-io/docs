@@ -52,7 +52,11 @@ Statsig processes metrics as a full day in the PST timezone; we will wait until 
 
 ### Importing Metrics from Snowflake
 
-See [Direct Ingestion from Snowflake](/integrations/snowflake#direct-ingestion-from-snowflake) on how to set up your Snowflake data warehouse instance so Statsig can directly and automatically ingest your precomputed metrics as well as raw events from Snowflake.
+See [Direct Ingestion from Snowflake](/integrations/data-imports/snowflake#direct-ingestion-from-snowflake) on how to set up your Snowflake data warehouse instance so Statsig can directly and automatically ingest your precomputed metrics as well as raw events from Snowflake.
+
+### Importing Metrics - Upload to Azure
+
+See [Azure Metrics Upload](/integrations/data-imports/azure_upload) on how to get set up with an Azure container where you can write metrics data to for Statsig to ingest.
 
 ### Ingesting Metrics from Segment
 

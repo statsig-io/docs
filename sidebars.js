@@ -275,11 +275,16 @@ module.exports = {
             "integrations/data-connectors/rudderstack",
           ],
         },
+        {
+          "Data Imports": [
+            "integrations/data-imports/overview",
+            "integrations/data-imports/snowflake",
+            "integrations/data-imports/azure_upload",
+          ],
+        },
         "integrations/event_filtering",
         "integrations/event_webhook",
         "integrations/jira",
-        "integrations/snowflake",
-        "integrations/azure_upload",
         "integrations/vscode",
       ],
     },
