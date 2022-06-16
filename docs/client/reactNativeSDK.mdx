@@ -85,3 +85,14 @@ import { Statsig } from "statsig-react-native";
 Statsig.checkGate("gate_name");
 ```
 
+### FAQ
+
+Some users of the react native SDK have reported issues that look like the following:
+
+```
+ ERROR  [Statsig] An unexpected exception occurred. [TypeError: undefined is not a function (near '...}).finally(function () {...')]
+```
+
+Some libraries, like storybook, remove the `finally()` handler for promises.  In order to pollyfill this and get around the error, see this thread:
+
+https://github.com/storybookjs/react-native/issues/20

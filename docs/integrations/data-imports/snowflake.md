@@ -216,3 +216,10 @@ These are common errors we've run into - please go through and make sure your se
   - Default types are `user_id` or `stable_id`. If you have custom ids, make sure that the capitalization and spelling matches as these are case sensitive (you can find your custom ID types by going to your Project Settings in the Statsig console).
 - Your ids match the format of ids logged from SDKs
   - In some cases, your data warehouse may transform IDs. This may mean we can't join your experiment or feature gate data to your metrics to calculate pulse or other reports. You can go to the Metrics page of your project and view the log stream to check the format of the ids being sent (either `User ID`, or a custom ID in `User Properties`) to confirm they match
+
+If your data is not showing up in the Statsig console
+  - Monitoring is limited today, but you should be able to check your snowflake query history for the Statsig user to understand which data is being pulled, and if queries are not executing (no history) or are failing. 
+  - You should see polling queries within a few hours of setting up your integration.
+  - If you have a signal date in the last 28d, you should see a select statement for data from the earliest signal date in that window
+  - If that query fails, try running it yourself to understand if there is a schema issue
+  - If data is loading, it's likely we're just processing. For new metrics, give it a day to catch. If data isn't loaded after a day or two, please check in with us. The most common reason for metrics catalog failures is due to id_type mismatches.
