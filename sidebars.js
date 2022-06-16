@@ -28,6 +28,7 @@ module.exports = {
         "guides/aa-test",
         "guides/serverless",
         "guides/config-history",
+        "guides/production",
       ],
     },
     {
