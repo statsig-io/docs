@@ -10,7 +10,7 @@ Statsig has a number of ways by which you can send your own events or pre-comput
 
 Some specifics may vary based on your approach, but in general you will write your metrics data at a user-day-metric granularity to a table (or API endpoint) with a special schema. You'll write dates as rows to a special signal table (or API endpoint) when you've finished adding metrics for that day.
 
-Statsig will poll this signal table hourly. Once you've marked your first day of data as ready as ready, or marked the next day of your data as ready, Statsig will pull data from your table and then process it into metrics and experiment results.
+Statsig will poll this signal table hourly. Once you've marked your first day of data as ready, or marked the next day of your data as ready, Statsig will pull data from your table and then process it into metrics and experiment results.
 
 Some notes:
 
