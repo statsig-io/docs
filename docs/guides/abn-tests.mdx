@@ -29,23 +29,28 @@ Log into the Statsig console at https://console.statsig.com/ and navigate to Exp
 
 Click on the **Create** button and enter the name and description for your experiment. Click **Create**.
 
-![image](https://user-images.githubusercontent.com/1315028/154571621-4022dddb-6689-4a25-9401-f813a159ef9f.png)
+![Screen Shot 2022-06-17 at 12 14 50 PM](https://user-images.githubusercontent.com/74584483/174388297-9ce44f6f-7557-4873-b208-62501a25f4c8.png)
 
-In the Setup tab, define the test groups for this experiment. You can define what percentage of users should receive the group's configured values. Click on the pencil icon next to the _sample_parameter_ and enter the name and type of your experiment parameter, and click **Confirm**. Enter the values that the parameter will take for the control and test groups.  
+In the Setup tab, you can fill out the scorecard for the experiment Hypothesis, and any primary metrics you are interested in watching.  While Statsig will show you experiment results for all your metrics, these key metrics represent your hypothesis for the experiment. Establishing a hypothesis
+upfront ensures that the experiment serves to improve your understanding of users rather than simply serving data points to bolster the case for shipping or not shipping your experiment.   
 
-![image](https://user-images.githubusercontent.com/1315028/154576194-0b38bbe6-feb8-47a1-b460-3c0c2e9e58c6.png)
+![Screen Shot 2022-06-17 at 12 17 17 PM](https://user-images.githubusercontent.com/74584483/174388696-4db2e3ce-69a0-400a-9cc3-b0d67bf1b097.png)
 
-In the **Allocation** panel, enter the percentage of users that you want to allocate to this experiment. 
+Then, define the test groups for this experiment. You can define what percentage of users should receive the group's configured values. First, click on "Add Parameter."  Here, I'll add a Boolean parameter called "enable feature".
 
-![image](https://user-images.githubusercontent.com/1315028/138972419-b7c42f97-29ec-407e-851f-3301130a21c5.png)
+![Screen Shot 2022-06-17 at 12 18 39 PM](https://user-images.githubusercontent.com/74584483/174388767-0944b5b4-7c30-40a4-a8d4-5f6263e9f8cb.png)
 
-Enter the key metrics you want to track in this experiment. While Statsig will show you experiment results 
-for all your metrics, these key metrics represent your hypothesis for the experiment. Establishing a hypothesis
-upfront ensures that the experiment serves to improve your understanding of users rather than
-simply serving data points to bolster the case for shipping or not shipping your experiment.   
-Finally, don't forget to click on the **Save** button at the top right hand side of the page to complete your experiment setup.
+Now you can set the value for your Test and Control groups.  An easy way to double check your statsig integration is to start with an A/A test - meaning, there is no difference between the test and control groups.  In that case, the parameter values will be the same:
 
-![image](https://user-images.githubusercontent.com/1315028/138973362-69b53d48-745a-462f-a275-b0a3720d4d90.png)
+![Screen Shot 2022-06-17 at 12 20 12 PM](https://user-images.githubusercontent.com/74584483/174388919-e1cb424d-1c62-43d5-a90f-e6a6dfcb5083.png)
+
+In the **Allocation** panel, enter the percentage of users that you want to allocate to this experiment. By default, this is allocated to 100% of your users.
+
+![Screen Shot 2022-06-17 at 12 20 52 PM](https://user-images.githubusercontent.com/74584483/174388979-5fbbcaa7-9b72-4cf6-be91-449c74ae556c.png)
+
+Finally, don't forget to scroll back up and click on the **Save** button at the top right hand side of the page to complete your experiment setup.
+
+![Screen Shot 2022-06-17 at 12 21 58 PM](https://user-images.githubusercontent.com/74584483/174389126-c666be40-db36-44be-b02a-af29258e374f.png)
 
 ## Step 2: Install and Initialize the Statsig SDK
 
@@ -66,7 +71,7 @@ Get your experiment's configuration parameters to enable the user to see the exp
 ```jsx
 const expConfig = statsig.getExperiment("onboarding_banner");
 
-const showBanner = expConfig.get("showbanner", false);
+const showBanner = expConfig.get("enable feature", false);
  
 ```
 
@@ -89,14 +94,10 @@ Within 24 hours of starting your experiment, you'll see the cumulative exposures
 
 ![image](https://user-images.githubusercontent.com/1315028/154574304-79b564b3-0833-49d5-bc65-427b59051343.png)
 
-You will also start to see the key results for each test group compared to the control in the **Results** tab. 
+You will also start to see the key results for each test group compared to the control in the **Results** tab. In the **Metric Lifts** panel, you can see the full picture of how all your tagged metrics have shifted in the experiment.
 
-![image](https://user-images.githubusercontent.com/1315028/154574509-adde9b5c-5152-4c91-9e14-bb2c5615b808.png)
+![Screen Shot 2022-06-17 at 12 24 29 PM](https://user-images.githubusercontent.com/74584483/174389478-2c0c306a-38c8-4c11-998d-f914778d20c6.png)
 
-In the **Metric Lifts** panel, you can see the full picture of how all your tagged metrics have shifted in the experiment.
-
-![image](https://user-images.githubusercontent.com/1315028/154574843-480b16b6-2785-4246-87e2-afae03ff358f.png)
-
-Once you start to see statistically significant results, either green (positive) or red (negative), you're getting ready to make a decision about whether to ship the test variant. 
+After your experiment has run for your predetermined duration, you can start to make a decision based on the results in the Metric Lifts panel.
 
 Alternatively, you can choose to ramp up the experiment to a larger user base by increasing the allocation in the **Setup** tab. We recommend scaling up allocation slowly in the initial stages, and then by a larger margin in later stages, say 0% -> 2% -> 10% -> 50% -> 100%. This helps you get more data and build more confidence before you decide to ship the experiment. 
