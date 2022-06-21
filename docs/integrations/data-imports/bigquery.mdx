@@ -1,4 +1,15 @@
 ---
 title: BigQuery 
 ---
-A native integration with BigQuery is coming soon. In the interim you can export data to [Azure Blob Storage](integrations/data-imports/azure_upload) and have Statsig ingest them.
+## Overview
+
+There are 2 ways to integrate with BigQuery: using a data connector, or through direct ingestion from BigQuery.
+
+## Using a Data Connector
+
+To **ingest** events from BigQuery, you can use our [Census integration](/integrations/data-connectors/census).
+
+To **export** events to BigQuery, you can use our [Fivetran integration](/integrations/data-connectors/fivetran).
+
+## Direct ingestion from BigQuery
+A native integration with BigQuery is coming soon. In the interim you can upload your pre-computed metrics data to [Azure Blob Storage](integrations/data-imports/azure_upload) and have Statsig ingest them.
