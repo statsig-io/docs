@@ -1,3 +1,15 @@
 ---
 title: Redshift
 ---
+## Overview
+
+There are 2 ways to integrate with Redshift: using a data connector, or through ingestion via a blob store from Redshift.
+
+## Using a Data Connector
+
+To **ingest** events from Redshift, you can use our [Census integration](/integrations/data-connectors/census).
+
+To **export** events to Redshift, you can use our [Fivetran integration](/integrations/data-connectors/fivetran).
+
+## Direct ingestion from Redshift
+Upload your pre-computed metrics data to [Azure Blob Storage](integrations/data-imports/azure_upload) and have Statsig ingest them.
