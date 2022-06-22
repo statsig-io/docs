@@ -61,16 +61,13 @@ module.exports = {
   },
   plugins: [
     [
-      require.resolve('docusaurus-lunr-search'),
-      {
-        baseUrl: '/',
-        excludeRoutes: [
-          'client/**/_*',
-          'client/_client-sdk-template',
-          'server/**/_*',
-          'server/_server-sdk-template',
-        ],
-      },
+        require.resolve('@easyops-cn/docusaurus-search-local'),
+        {
+            hashed: true,
+            indexBlog: false,
+            indexDocs: true,
+            docsRouteBasePath: "/",
+        },
     ],
     function statsig() {
       const isProd = process.env.NODE_ENV === 'production';

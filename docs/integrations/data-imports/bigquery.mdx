@@ -15,7 +15,7 @@ Here are the steps to take to enable BigQuery integration with Statsig:
 
 4. Insert data into tables and mark data to be ready for import.
 
-## Set Up Tables in your BigQuery Instance
+## Set Up Tables in your BigQuery instance {#setup}
 
 1. In your project, create a new dataset where tables for Statsig should live. You can
    use an existing dataset, but you will be giving the Statsig server user some permissions on
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS statsig.statsig_user_metrics_signal(
 );
 ```
 
-## Give permissions to Statsig's service account
+## Give permissions to Statsig's service account {#permissions}
 
 1. In your Statsig console, navigate to Project Settings -> Integrations -> BigQuery. Here you will see the Statsig service account. Copy it to be used later.
 
