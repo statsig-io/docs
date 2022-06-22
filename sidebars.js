@@ -279,8 +279,11 @@ module.exports = {
         {
           "Data Imports": [
             "integrations/data-imports/overview",
-            "integrations/data-imports/snowflake",
             "integrations/data-imports/azure_upload",
+            "integrations/data-imports/bigquery",
+            "integrations/data-imports/redshift",
+            "integrations/data-imports/snowflake",
+
           ],
         },
         "integrations/event_filtering",
