@@ -1,15 +1,45 @@
 ---
-title: BigQuery 
+title: BigQuery
 ---
+
 ## Overview
 
-There are 2 ways to integrate with BigQuery: using a data connector, or through direct ingestion from BigQuery.
+The BigQuery integration allows you to export events and/or metrics from your BigQuery instance to Statsig.
+Here are the 3 steps to take to enable BigQuery integration with Statsig:
 
-## Using a Data Connector
+1. Set up tables in your BigQuery instance.
 
-To **ingest** events from BigQuery, you can use our [Census integration](/integrations/data-connectors/census).
+2. Give Statsig's service account corresponding permissions on the tables.
 
-To **export** events to BigQuery, you can use our [Fivetran integration](/integrations/data-connectors/fivetran).
+3. Insert data into tables and mark data to be ready for import.
 
-## Direct ingestion from BigQuery
-A native integration with BigQuery is coming soon. In the interim you can upload your pre-computed metrics data to [Azure Blob Storage](azure_upload) and have Statsig ingest them.
+## Set Up Tables in your BigQuery instance
+
+1. In your project, create a new dataset where tables for Statsig should live.
+
+2. Create a table for pre-computed metrics.
+
+3. Create a table for signal.
+
+TODO:
+
+## Give permissions to Statsig's service account
+
+1. In your Statsig console, navigate to Project Settings -> Integrations -> BigQuery. Here you will see the Statsig service account. Copy it to be used later.
+
+2. In your BigQuery's [IAM & Admin settings](https://console.cloud.google.com/iam-admin/), add the Statsig service account you copied in step 1 as a new principal for your project, and give it "BigQuery Read Session User" role.
+   ![image](https://user-images.githubusercontent.com/77478330/175113594-7b121b7e-60fd-4c03-b82e-ffe397c9efa7.png)
+
+3. Navigate to your [BigQuery SQL Workspace](https://console.cloud.google.com/bigquery), choose the dataset, click on "+ Sharing" -> "Permissions" -> "Add Principal" to give the same Statsig service account "BigQuery Data Viewer" role on the dataset.
+   ![image](https://user-images.githubusercontent.com/77478330/175113611-90e618ad-f6e8-4005-933e-2a5660a14466.png)
+
+4. Back to your Statsig console's BigQuery integration dialog, and enter your BigQuery project and dataset name. Then click "Enable".
+   ![bq_permission_step_3](https://user-images.githubusercontent.com/77478330/175113629-35c9be3c-591b-46f3-b9bd-e04cc9ff4b50.png)
+
+Now the service account should have the required permissions to export data from this dataset.
+
+## Insert data for import and let us know
+
+TODO:
+
+Now that everything is set up, shoot us a message on [Slack](https://www.statsig.com/slack) if you have any questions. We can also help making sure everything is set up correctly for you.
