@@ -59,12 +59,6 @@ CREATE TABLE IF NOT EXISTS statsig.statsig_user_metrics_signal(
 
 Now the service account should have the required permissions to export data from this dataset.
 
-## Enable the Integrations
-
-- Go to [console.statsig.com](https://console.statsig.com/) and log in
-- Go to the settings page and navigate to the integrations tab.
-- Find Bigquery in the integrations list and enable the integration. You will be asked to provide the project name and dataset name for your tables.
-
 ## Insert data for import, and signal when it is ready
 
 To load data into statsig, you will load data into `statsig_user_metrics` and then mark a day as completed in `statsig_user_metrics_signal` once all of the data for that day is loaded.
