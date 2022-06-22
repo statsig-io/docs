@@ -2,6 +2,8 @@
 title: Rudderstack
 ---
 
+import StatsigEnvironmentFormat from "../snippets/integration_statsig_env_format.mdx";
+
 ## Overview
 
 Enabling the RudderStack integration for Statsig will allow Statsig to pull in your RudderStack events. This allows you to run your experiment analysis on Statsig with all of your existing events from RudderStack without requiring any additional logging.
@@ -38,6 +40,8 @@ If you're using a [custom ID](https://docs.statsig.com/guides/experiment-on-cust
 ```
 
 The `statsigCustomIDs` field in properties should be an array, where the even index is the name of the user ID type and the odd index is the value of the previous element in the array. Assuming you've created this custom ID type on Statsig (under **ID Type Settings** in your [Project Settings](https://console.statsig.com/settings)), Statsig will automatically recognize these custom identifiers to compute your experiment results appropriately.
+
+<StatsigEnvironmentFormat />
 
 ## Configuring Outbound Events
 
