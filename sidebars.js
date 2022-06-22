@@ -111,6 +111,7 @@ module.exports = {
         "experiments-plus/read-results",
         "experiments-plus/make-decision",
         "experiments-plus/overrides",
+	"experiments-plus/disable-group",
         {
           Experimentation: [
             "experiments-plus/experimentation/why-experiment",
