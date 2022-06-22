@@ -61,17 +61,28 @@ module.exports = {
   },
   plugins: [
     [
-      require.resolve('docusaurus-lunr-search'),
-      {
-        baseUrl: '/',
-        excludeRoutes: [
-          'client/**/_*',
-          'client/_client-sdk-template',
-          'server/**/_*',
-          'server/_server-sdk-template',
-        ],
-      },
-    ],
+        require.resolve('@easyops-cn/docusaurus-search-local'),
+        {
+          ignoreFiles: [
+            'client/**/_*',
+            'client/_client-sdk-template',
+            'server/**/_*',
+            'server/_server-sdk-template',
+          ],
+        },
+      ],
+    // [
+    //   require.resolve('docusaurus-lunr-search'),
+    //   {
+    //     baseUrl: '/',
+    //     excludeRoutes: [
+    //       'client/**/_*',
+    //       'client/_client-sdk-template',
+    //       'server/**/_*',
+    //       'server/_server-sdk-template',
+    //     ],
+    //   },
+    // ],
     function statsig() {
       const isProd = process.env.NODE_ENV === 'production';
       const tier = isProd ? 'production' : 'development';
