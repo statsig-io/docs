@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
 export default function Rapidoc(props) {
-  let { id, apiFile, codeSnippetFile} = props;
+  let { id, entity } = props;
 
 	function updateCodeSnippets(data) {
-		let snippet = require('../../../docs/console-api/openapi/snippets/x-code-samples/'.concat(codeSnippetFile))
+		let snippet = require(`../../../docs/console-api/openapi/snippets/x-code-samples/${entity}.js`)
 		for(let path in snippet){
 			for(let command in snippet[path]){
 				data['paths'][path][command]['x-code-samples'] = snippet[path][command]
@@ -16,7 +16,7 @@ export default function Rapidoc(props) {
 
   useEffect(() => {
     setTimeout(() => {
-      var data = require("../../../docs/console-api/openapi/".concat(apiFile));
+      var data = require(`../../../docs/console-api/openapi/${entity}.js`);
 			data = updateCodeSnippets(data)
       const el = document.getElementById(id);
       el.loadSpec(data);
