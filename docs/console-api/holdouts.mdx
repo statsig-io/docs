@@ -107,7 +107,7 @@ curl --request POST 'https://api.statsig.com/console/v1/holdouts/a_holdout' \
   "isEnabled": false,
   "description": "an updated summary of what this holdout does",
   "passPercentage": 5,
-  "gateIDs": [a_gate],
+  "gateIDs": ["a_gate"],
   "experimentIDs": ["a_experiment"],
   "layerIDs": ["a_layer"],
   "isGlobal": true
@@ -158,7 +158,7 @@ curl --request DELETE 'https://api.statsig.com/console/v1/holdouts/a_holdout' \
 - **isGlobal** | Is the holdout being applied to all new gates.
 - **lastModifierName** | The Statsig Username of the last modifier of this holdout.
 - **lastModifierID** | The Statsig UserID of the last modifier of this holdout.
-- **passPercentage** | The percentage of custumers who won't see the new features.
+- **passPercentage** | The percentage of custumers, on the range of 0%-10%, who won't see the new features.
 - **gateIDs** | An array of gatesIDs which this holdout is to be applied.
 - **experimentIDs** | An array of experimentsIDs which this holdout is to be applied.
 - **layerIDs** | An array of layersIDs which this holdout is to be applied.
