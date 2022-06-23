@@ -1,15 +1,122 @@
 ---
-title: BigQuery 
+title: BigQuery
 ---
+
 ## Overview
 
-There are 2 ways to integrate with BigQuery: using a data connector, or through direct ingestion from BigQuery.
+The BigQuery integration allows you to export events and/or metrics from your BigQuery instance to Statsig.
+Here are the steps to take to enable BigQuery integration with Statsig:
 
-## Using a Data Connector
+1. Set up tables in your BigQuery instance.
 
-To **ingest** events from BigQuery, you can use our [Census integration](/integrations/data-connectors/census).
+2. Give Statsig's service account corresponding permissions on the tables.
 
-To **export** events to BigQuery, you can use our [Fivetran integration](/integrations/data-connectors/fivetran).
+3. Enable the BigQuery integration in the Statsig console.
 
-## Direct ingestion from BigQuery
-A native integration with BigQuery is coming soon. In the interim you can upload your pre-computed metrics data to [Azure Blob Storage](azure_upload) and have Statsig ingest them.
+4. Insert data into tables and mark data to be ready for import.
+
+## Set Up Tables in your BigQuery instance {#setup}
+
+1. In your project, create a new dataset where tables for Statsig should live. You can
+   use an existing dataset, but you will be giving the Statsig server user some permissions on
+   this dataset later.
+
+2. Create a table for pre-computed metrics, and another for signalling when data
+   has landed with the statement below:
+
+```
+-- Replace statsig with your dataset name, if not using statsig
+CREATE TABLE IF NOT EXISTS statsig.statsig_user_metrics(
+  unit_id STRING NOT NULL,
+  id_type STRING NOT NULL, -- stable_id, user_id, etc.
+  date DATE NOT NULL, -- YYYY-MM-DD. Statsig calculates dates according to PST
+  timeuuid STRING, --Generated unique UUID; we will generate if not provided
+  metric_name STRING NOT NULL,
+  metric_value NUMERIC,
+  numerator NUMERIC,
+  denominator NUMERIC
+);
+
+-- Replace statsig with your dataset name, if not using statsig
+CREATE TABLE IF NOT EXISTS statsig.statsig_user_metrics_signal(
+  finished_date DATE
+);
+```
+
+## Give permissions to Statsig's service account {#permissions}
+
+1. In your Statsig console, navigate to Project Settings -> Integrations -> BigQuery. Here you will see the Statsig service account. Copy it to be used later.
+
+2. In your BigQuery's [IAM & Admin settings](https://console.cloud.google.com/iam-admin/), add the Statsig service account you copied in step 1 as a new principal for your project, and give it "BigQuery Read Session User" role.
+   ![image](https://user-images.githubusercontent.com/77478330/175113594-7b121b7e-60fd-4c03-b82e-ffe397c9efa7.png)
+
+3. Navigate to your [BigQuery SQL Workspace](https://console.cloud.google.com/bigquery), choose the dataset, click on "+ Sharing" -> "Permissions" -> "Add Principal" to give the same Statsig service account "BigQuery Data Viewer" role on the dataset.
+   ![image](https://user-images.githubusercontent.com/77478330/175113611-90e618ad-f6e8-4005-933e-2a5660a14466.png)
+
+4. Back to your Statsig console's BigQuery integration dialog, and enter your BigQuery project and dataset name. Then click "Enable".
+
+   ![bq_permission_step_3](https://user-images.githubusercontent.com/77478330/175113629-35c9be3c-591b-46f3-b9bd-e04cc9ff4b50.png)
+
+Now the service account should have the required permissions to export data from this dataset.
+
+## Insert data for import, and signal when it is ready
+
+To load data into statsig, you will load data into `statsig_user_metrics` and then mark a day as completed in `statsig_user_metrics_signal` once all of the data for that day is loaded.
+
+Your data should conform to these definitions and rules to avoid errors or delays:
+
+| Column       | Description                                                                                                                   | Rules                                                                                                                    |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| unit_id      | The unique user identifier this metric is for. This might not necessarily be a user_id - it could be a custom_id of some kind |                                                                                                                          |
+| id_type      | The id_type the unit_id represents.                                                                                           | Must be a valid id_type. The default Statsig types are user_id/stable_id, but you may have generated custom id_types     |
+| date         | Date of the daily metric                                                                                                      |                                                                                                                          |
+| timeuuid     | A unique timeuuid for the event                                                                                               | This should be a timeuuid, but using a unique id will suffice. If not provided, the table defaults to generating a UUID. |
+| metric_name  | The name of the metric                                                                                                        | Not null. Length < 128 characters                                                                                        |
+| metric_value | A numeric value for the metric                                                                                                | Metric value, or both of numerator/denominator need to be provided for Statsig to process the metric. See details below  |
+| numerator    | Numerator for metric calculation                                                                                              | See above, and details below                                                                                             |
+| denominator  | Denominator for metric calculation                                                                                            | See above, and details below                                                                                             |
+
+Metric ingestion is for user-day metric pairs. This is useful for measuring experimental results on complex business logic (e.g. LTV estimates) that you generate in your data warehouse.
+
+##### Note on metric values
+
+If you provide **both** a numerator and denominator value for any record of a metric, we'll assume that this metric is a ratio metric; we'll filter out users who do not have a denominator value from analysis, and recalculate the metric value ourselves via the numerator and denominator fields.
+
+If you only provide a metric_value, we'll use the metric_value for analysis. In this case, we'll impute 0 for users without a metric value in experiments.
+
+#### Scheduling
+
+Because you may be streaming events to your tables or have multiple ETLs pointing to your metrics table, Statsig relies on you
+signalling that your metric/events for a given day are done.
+
+When a day is fully loaded, insert that date as a row in the appropriate signal_table - `statsig_user_metrics_signal` for metrics
+or `statsig_events_signal` for events. For example, once all of your metrics data is loaded into `statsig_user_metrics` for `2022-04-01`, you would insert `2022-04-01` into `statsig_user_metrics_signal`.
+
+Statsig expects you to load data in order. For example, if you have loaded up to `2022-04-01` and signal that `2022-04-03` has landed,
+we will wait for you to signal that `2022-04-02` has landed, and load that data before we ingest data from `2022-04-03`
+
+_NOTE: this ingestion pipeline is in beta, and does not currently support automatic backfills or updates to data once it's been ingested. Only signal these tables
+are loaded after you've run data quality checks!_
+
+#### Checklist
+
+These are common errors we've run into - please go through and make sure your setup is looking good!
+
+- The `id_type` is set correctly
+  - Default types are `user_id` or `stable_id`. If you have custom ids, make sure that the capitalization and spelling matches as these are case sensitive (you can find your custom ID types by going to your Project Settings in the Statsig console).
+- Your ids match the format of ids logged from SDKs
+  - In some cases, your data warehouse may transform IDs. This may mean we can't join your experiment or feature gate data to your metrics to calculate pulse or other reports. You can go to the Metrics page of your project and view the log stream to check the format of the ids being sent (either `User ID`, or a custom ID in `User Properties`) to confirm they match
+
+If your data is not showing up in the Statsig console
+
+- Monitoring is limited today, but you should be able to check your snowflake query history for the Statsig user to understand which data is being pulled, and if queries are not executing (no history) or are failing.
+- You should see polling queries within a few hours of setting up your integration.
+- If you have a signal date in the last 28d, you should see a select statement for data from the earliest signal date in that window
+- If that query fails, try running it yourself to understand if there is a schema issue
+- If data is loading, it's likely we're just processing. For new metrics, give it a day to catch. If data isn't loaded after a day or two, please check in with us. The most common reason for metrics catalog failures is due to id_type mismatches.
+
+## Next Steps
+
+Now that everything is set up, your data should start flowing into Statsig's metrics tab and experiment results, and should appear on your console by around noon the next day (PST). This may take longer if you choose an early first date, as we'll need to sequentially load your historical data.
+
+Please shoot us a message on [Slack](https://www.statsig.com/slack) if you have any questions. We can also help making sure everything is set up correctly for you.
