@@ -3,6 +3,10 @@ sidebar_label: Organizations
 title: Organization Settings & Administration
 ---
 
+::: info
+Organizations and their related features are an Enterprise feature.  Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you need to enable Enterprise features as you try out Statsig.
+:::
+
 ## Creating an Organization
 
 To create an organization,
