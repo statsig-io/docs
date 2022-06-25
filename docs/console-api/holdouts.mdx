@@ -1,11 +1,11 @@
 ---
 title: Holdouts
 sidebar_label: Holdouts
-slug: /console-api/Holdouts
+slug: /console-api/holdouts
 description: Create feature holdouts via HTTP requests.
 ---
-import Conditions from "./snippets/conditions.mdx"
 
+import Conditions from "./snippets/conditions.mdx";
 
 # console/v1/holdouts
 
@@ -163,7 +163,6 @@ curl --request DELETE 'https://api.statsig.com/console/v1/holdouts/a_holdout' \
 - **experimentIDs** | An array of experimentsIDs which this holdout is to be applied.
 - **layerIDs** | An array of layersIDs which this holdout is to be applied.
 
-
 ```json
 {
   "id": "my_holdout",
@@ -174,14 +173,8 @@ curl --request DELETE 'https://api.statsig.com/console/v1/holdouts/a_holdout' \
   "lastModifierName": "CONSOLE API",
   "lastModifierID": "kcj8gnkvk2kcj9d",
   "passPercentage": 2,
-  "gateIDs": [
-    "a_gate",
-    "b_gate"
-  ],
-  "experimentIDs": [
-    "my_experiment"
-  ],
-  "layerIDs": [
-    "my_layer"
-  ]
+  "gateIDs": ["a_gate", "b_gate"],
+  "experimentIDs": ["my_experiment"],
+  "layerIDs": ["my_layer"]
 }
+```

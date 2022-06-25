@@ -111,7 +111,7 @@ module.exports = {
         "experiments-plus/read-results",
         "experiments-plus/make-decision",
         "experiments-plus/overrides",
-	"experiments-plus/disable-group",
+        "experiments-plus/disable-group",
         {
           Experimentation: [
             "experiments-plus/experimentation/why-experiment",
@@ -233,11 +233,27 @@ module.exports = {
       },
       items: [
         "console-api/autotunes",
-        "console-api/gates",
+        {
+          type: "category",
+          label: "Gates",
+          link: {
+            type: "doc",
+            id: "console-api/gates",
+          },
+          items: ["console-api/gate-overrides"],
+        },
         "console-api/daily-reports",
         "console-api/segments",
         "console-api/dynamic-configs",
-        "console-api/holdouts"
+        {
+          type: "category",
+          label: "Holdouts",
+          link: {
+            type: "doc",
+            id: "console-api/holdouts",
+          },
+          items: ["console-api/holdout-overrides"],
+        },
       ],
     },
     {
@@ -285,7 +301,6 @@ module.exports = {
             "integrations/data-imports/bigquery",
             "integrations/data-imports/redshift",
             "integrations/data-imports/snowflake",
-
           ],
         },
         "integrations/event_filtering",

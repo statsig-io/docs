@@ -1,0 +1,84 @@
+---
+title: Holdout Overrides
+sidebar_label: Overrides
+slug: /console-api/holdouts/overrides
+description: Add/Remove holdout overrides via HTTP requests.
+---
+
+# console/v1/holdouts/{holdout_id}/overrides
+
+## Authorization
+
+All requests must include the **STATSIG-API-KEY** field in the header. The value should be a **Console API Key** which can be created in the Project Settings on [console.statsig.com/api_keys](https://console.statsig.com/api_keys)
+
+## Responses
+
+All responses will contain a **message** field and a **data** field.
+
+- **message** is a simple string explaining the result of the operation.
+- **data** will be a [Holdout Overrides](#holdout-overrides-object) object.
+
+## Read Overrides for a Holdout
+
+```bash
+curl --request GET 'https://api.statsig.com/console/v1/holdouts/a_holdout/overrides' \
+--header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx'
+```
+
+**Reponse JSON** : A [Holdout Overrides](#holdout-overrides-object) object
+
+```json
+{
+  "message": "Holdout Overrides read successfully.",
+  "data": {
+    "passingUserIDs": [],
+    "failingUserIDs": []
+  }
+}
+```
+
+## Update Overrides for a Holdout
+
+```bash
+curl --request POST 'https://api.statsig.com/console/v1/holdouts/a_holdout/overrides' \
+  --header 'STATSIG-API-KEY: console-xxXxxXXXXxxxxXxx' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+    "passingUserIDs": [
+        "passing-user"
+    ],
+    "failingUserIDs": [
+        "failing-user"
+    ]
+}'
+```
+
+**Reponse JSON** : A [Holdout Overrides](#holdout-overrides-object) object
+
+```json
+{
+  "message": "Holdout Overrides read successfully.",
+  "data": {
+    "passingUserIDs": ["passing-user"],
+    "failingUserIDs": ["failing-user"]
+  }
+}
+```
+
+## ----
+
+## Objects
+
+<a name="holdout-overrides-object"></a>
+
+### Holdout Overrides
+
+- **passingUserIDs** | An array of UserIDs that will be forced into the holdout.
+- **failingUserIDs** | An array of UserIDs that will be forced out of the holdout.
+
+```json
+{
+  "passingUserIDs": ["passing-user"],
+  "failingUserIDs": ["failing-user"]
+}
+```
