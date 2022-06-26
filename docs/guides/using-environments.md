@@ -30,21 +30,29 @@ These examples in js and node illustrate the general pattern - refer to your lan
 
 Head on over to the console and create a new feature gate.  For this example, I'll call mine "development mode." It will only pass for our development apps.
 
-![Screen Shot 2021-06-16 at 1 55 06 PM](https://user-images.githubusercontent.com/74584483/122292351-c0d6d900-ceaa-11eb-996d-a367cad6ed92.png)
+![Screen Shot 2022-06-26 at 11 42 43 AM](https://user-images.githubusercontent.com/74584483/175829319-85b98b49-969d-4cc6-a81c-eea40a1d48ff.png)
 
-Then, add a rule with an "Environment Tier" condition:
+Then, toggle on the Environment Rules from the overflow menu in the top right:
 
-![Screen Shot 2021-06-16 at 1 55 34 PM](https://user-images.githubusercontent.com/74584483/122292404-ce8c5e80-ceaa-11eb-9730-26859d94ef9c.png)
+![Screen Shot 2022-06-26 at 11 43 02 AM](https://user-images.githubusercontent.com/74584483/175829349-0efa1daa-f35e-41a0-8d1c-21223bda8bdc.png)
 
 And select the "development" option:
 
-![Screen Shot 2021-06-16 at 1 55 43 PM](https://user-images.githubusercontent.com/74584483/122292429-d6e49980-ceaa-11eb-942b-d8b4b0585bbf.png)
+![Screen Shot 2022-06-26 at 11 44 27 AM](https://user-images.githubusercontent.com/74584483/175829370-52b03b85-aa1c-4092-a4aa-408840c28e36.png)
 
-Your rules should look something like this - don't forget to click "Save Changes" to finalize them!
+Your gate should now have a seperate section for "development" rules:
 
-![Screen Shot 2021-06-16 at 1 56 00 PM](https://user-images.githubusercontent.com/74584483/122292509-e7950f80-ceaa-11eb-83f5-7e404df12df0.png)
+![Screen Shot 2022-06-26 at 11 45 07 AM](https://user-images.githubusercontent.com/74584483/175829388-17088f7e-fcdb-4dd2-89f3-33bc5ad4758c.png)
 
-Now you have created a gate which will pass for all users who are using one of your "development" builds.
+Under "Development Rules" hit "Add a Rule."  Lets make this pass for everyone on the development tier:
+
+![Screen Shot 2022-06-26 at 11 46 00 AM](https://user-images.githubusercontent.com/74584483/175829414-46abecaf-af7e-4118-96b4-32be4034f2ce.png)
+
+After clicking **Save Changes** you can test it out in the test gate console at the bottom.  You should see the gate Pass when the environment tier is set to "Development"
+
+![Screen Shot 2022-06-26 at 11 47 14 AM](https://user-images.githubusercontent.com/74584483/175829453-3c6da0bb-3d6a-4aee-adaa-15e4a852a9c1.png)
+
+You have successfully created a gate which will pass for all users who are using one of your "development" builds.
 
 Happy building!
 
