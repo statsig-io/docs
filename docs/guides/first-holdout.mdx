@@ -15,46 +15,39 @@ With Statsig, creating and managing a holdout is _nearly_ automatic. With just a
 
 Statsig has a separate tool just for this called "Holdouts" (what a name!). Start by navigating there.
 
-![Screen Shot 2021-06-14 at 5 28 04 PM](https://user-images.githubusercontent.com/82126616/121975391-6157bc80-cd36-11eb-8461-20dbcb3d721f.png)
+![Screen Shot 2022-06-26 at 11 00 07 AM](https://user-images.githubusercontent.com/74584483/175827709-a145aa12-fd21-4262-bb5a-68de2723def4.png)
 
-Next, click "Create"
+Next, click "Create New", and fill in the name/description, as well as the ID type for the holdout
 
-![Screen Shot 2021-06-14 at 5 29 11 PM](https://user-images.githubusercontent.com/82126616/121975398-63ba1680-cd36-11eb-9e2f-30951515d1a7.png)
+![Screen Shot 2022-06-26 at 11 01 52 AM](https://user-images.githubusercontent.com/74584483/175827771-54271830-7a06-4a35-9419-b2f5aedb9b2d.png)
 
-Fill out the resulting form.
+Fill out the resulting form and click **create**.  Then, you will be landed on the setup tab to complete your holdout configuration:
 
 - If you want all future gates to respect this holdout, make sure you mark it as a "global" holdout.
 - Select a Holdout size in terms of a percentage of all users. Depending on how many users you have, how long you are keeping this holdout,
   and how many experiments you are running, you may choose to make this a bit bigger, but generally its quite small (1-5%).
 - If there are any existing features that are already gated, you can select those gates at the bottom to make sure they respect the holdout moving forward.
 
-Click create, and you are DONE! Now, when you look at a Feature Gate that has a holdout applied to it, the holdout will show at the top like this
+Click **Save Changes** to finalize the setup, but you can always come back and add new gates/experiments to the holdout later if you need to.  When you looking at a Feature Gate or Experiment that has a holdout applied to it, the holdout will show at the top like this:
 
-![Screen Shot 2021-06-14 at 5 29 28 PM](https://user-images.githubusercontent.com/82126616/121975407-67e63400-cd36-11eb-98aa-b7ff11e9a217.png)
+![Screen Shot 2022-06-26 at 11 09 08 AM](https://user-images.githubusercontent.com/74584483/175828076-15d18109-762f-4cfe-917c-f0bb62fd34a3.png)
 
 ## How can I analyze my holdout group?
 
 In order to actually analyze a holdout, you would need to collect data over a long period of time. Don't worry - we have some demo companies set up
-which have been using Statsig for some time. Let's take a look at one of their holdouts.
+which have been using Statsig for a while. Let's take a look at one of their holdouts.
 
 Step 1. Log in to the demo account
 Go to statsig.com/demo and complete the captcha
 
-![Screen Shot 2021-06-14 at 5 33 19 PM](https://user-images.githubusercontent.com/82126616/121975507-a2e86780-cd36-11eb-9d8d-bf7bee3a3468.png)
+![Screen Shot 2022-06-26 at 11 13 18 AM](https://user-images.githubusercontent.com/74584483/175828212-195bf828-9185-4351-a130-c6ce372f4598.png)
 
-Step 2. Switch to the "Swagger Exclusive Retail" demo company
+This will land you on the "Demo: Swagger Exclusive Retail" company.
 
-![Screen Shot 2021-06-14 at 5 30 24 PM](https://user-images.githubusercontent.com/82126616/121975424-70d70580-cd36-11eb-8dc0-0a68a93d9dd0.png)
+Step 2. Navigate to Holdouts and select the "Frontend Team Holdout"
 
-Step 3. Navigate to Pulse
-Analyzing a holdout is no different that analyzing an experiment - we always start from the Pulse page!
+![Screen Shot 2022-06-26 at 11 20 47 AM](https://user-images.githubusercontent.com/74584483/175828519-58be7c3b-9f07-4f70-b695-e0fc1cc93fd0.png)
 
-![Screen Shot 2021-06-14 at 5 30 35 PM](https://user-images.githubusercontent.com/82126616/121975431-746a8c80-cd36-11eb-8d16-623e07ece2d8.png)
+Step 3. You should land on the "Results" tab.  Now you can analyze the impact of the set of features that respect this holdout together vs the holdout group. In this case, the changes the front end team has been making have moved a number of metrics in the conversion funnel!
 
-Step 4. Select the "2021_h1_product_holdout" Holdout
-
-![Screen Shot 2021-06-14 at 5 31 00 PM](https://user-images.githubusercontent.com/82126616/121975447-7cc2c780-cd36-11eb-8dc8-e64f61e4e52f.png)
-
-Step 5. Interpret the results!
-Pulse will pull all the same metrics comparisons as your experiments, only for the holdout group. If you need help interpreting Pulse results,
-check out our [Getting Started with Experiments guide](/pulse)
+![Screen Shot 2022-06-26 at 11 19 37 AM](https://user-images.githubusercontent.com/74584483/175828491-92f6eed6-81fa-4faa-8c69-0a7b2cb40f65.png)
