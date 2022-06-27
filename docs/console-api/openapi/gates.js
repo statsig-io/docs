@@ -1,9 +1,12 @@
-module.exports = 
-{
+module.exports = {
   "openapi": "3.0.0",
+  "x-stoplight": {
+    "id": "1u57vctjoz9y8"
+  },
   "info": {
     "title": "console/v1",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "description": "Gate endpoint",
   },
   "servers": [
     {
@@ -36,69 +39,102 @@ module.exports =
             "application/json": {
               "schema": {
                 "type": "object",
-                "example": {
-                  "name": "a gate",
-                  "description": "helpful summary of what this gate does"
+                "x-examples": {
+                  "example-1": {
+                    "name": {
+                      "type": "string",
+                      "description": "The display name to give the new gate"
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "A summary of what this gate does"
+                    }
+                  }
+                },
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "The name of the new gate"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "A description of the new gate"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "name": "a gate",
+                    "description": "helpful summary of what this gate does"
+                  }
+                }
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "name": {
+                      "type": "string",
+                      "description": "The display name to give the new gate"
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "A summary of what this gate does"
+                    }
+                  }
+                },
+                "properties": {
+                  "name": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "description": "Name of the new gate"
+                      },
+                      "description": {
+                        "type": "string",
+                        "description": "A summary of this gate purpose"
+                      }
+                    }
+                  }
                 }
               }
             }
-          }
+          },
+          "description": ""
         },
         "responses": {
           "201": {
             "description": "Created",
-            "headers": {
-              "vary": {
-                "schema": {
-                  "type": "string",
-                  "example": "Origin"
-                }
-              },
-              "access-control-allow-origin": {
-                "schema": {
-                  "type": "string",
-                  "example": "*"
-                }
-              },
-              "content-type": {
-                "schema": {
-                  "type": "string",
-                  "example": "application/json; charset=utf-8"
-                }
-              },
-              "content-length": {
-                "schema": {
-                  "type": "integer",
-                  "example": "221"
-                }
-              },
-              "Date": {
-                "schema": {
-                  "type": "string",
-                  "example": "Sun, 23 Jan 2022 23:52:29 GMT"
-                }
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string",
-                  "example": "keep-alive"
-                }
-              }
-            },
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.yaml"
+                    },
+                    "data": {
+                      "$ref": "../models/gate.json"
+                    }
+                  }
                 },
-                "example": {
-                  "message": "Gate created successfully.",
-                  "data": {
-                    "id": "a_gate",
-                    "isEnabled": true,
-                    "description": "helpful summary of what this gate does",
-                    "lastModifierName": "CONSOLE API",
-                    "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
-                    "rules": []
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Gate created successfully.",
+                      "data": {
+                        "id": "a_gate",
+                        "isEnabled": true,
+                        "description": "helpful summary of what this gate does",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "rules": []
+                      }
+                    }
                   }
                 }
               }
@@ -109,7 +145,45 @@ module.exports =
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": {
+                        "type": "number",
+                        "description": "Status Code"
+                      },
+                      "message": {
+                        "type": "string",
+                        "description": "A summary of what went wrong"
+                      }
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.yaml"
+                    },
+                    "message": {
+                      "$ref": "../models/message.yaml"
+                    },
+                    "error": {
+                      "type": "array",
+                      "description": "A list of errors that have occured with the request",
+                      "nullable": true,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "property": {
+                            "type": "string",
+                            "description": "Which property of the request body is invalid"
+                          },
+                          "error": {
+                            "type": "string",
+                            "description": "A description of the problem"
+                          }
+                        }
+                      }
+                    }
+                  }
                 },
                 "examples": {
                   "example-0": {
@@ -141,16 +215,35 @@ module.exports =
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-9O92sGDeuJuT8xTVH6zARKsa9MHof2VHWMLBn9vr8Nqaasdf"
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.yaml"
+                    },
+                    "message": {
+                      "$ref": "../models/message.yaml"
+                    }
+                  }
                 },
-                "example": {
-                  "status": 403,
-                  "message": "Forbidden resource"
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxxXXXXxxxxXXXxxx"
+                    }
+                  }
                 }
               }
             }
           }
-        }
+        },
+        "description": "Create a new gate"
       },
       "get": {
         "tags": [
@@ -160,189 +253,72 @@ module.exports =
         "responses": {
           "200": {
             "description": "OK",
-            "headers": {
-              "vary": {
-                "schema": {
-                  "type": "string",
-                  "example": "Origin"
-                }
-              },
-              "access-control-allow-origin": {
-                "schema": {
-                  "type": "string",
-                  "example": "*"
-                }
-              },
-              "content-type": {
-                "schema": {
-                  "type": "string",
-                  "example": "application/json; charset=utf-8"
-                }
-              },
-              "content-length": {
-                "schema": {
-                  "type": "integer",
-                  "example": "1163"
-                }
-              },
-              "Date": {
-                "schema": {
-                  "type": "string",
-                  "example": "Sun, 23 Jan 2022 23:37:57 GMT"
-                }
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string",
-                  "example": "keep-alive"
-                }
-              }
-            },
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {
+                    "Message": {
+                      "type": "string",
+                      "description": "The status of the request"
+                    },
+                    "data": {
+                      "type": "array",
+                      "description": "An array of existing gate objects",
+                      "items": {
+                        "$ref": "../models/gate.json"
+                      }
+                    }
+                  }
                 },
-                "example": {
-                  "message": "Gates listed successfully.",
-                  "data": [
-                    {
-                      "id": "my_gate_a",
-                      "isEnabled": true,
-                      "description": "",
-                      "lastModifierName": "CONSOLE API",
-                      "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
-                      "rules": []
-                    },
-                    {
-                      "id": "my_gate_3",
-                      "isEnabled": true,
-                      "description": "",
-                      "lastModifierName": "CONSOLE API",
-                      "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
-                      "rules": []
-                    },
-                    {
-                      "id": "my_gate_2",
-                      "isEnabled": true,
-                      "description": "",
-                      "lastModifierName": "CONSOLE API",
-                      "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
-                      "rules": []
-                    },
-                    {
-                      "id": "my_gate",
-                      "isEnabled": true,
-                      "description": "Description Here",
-                      "lastModifierName": "CONSOLE API",
-                      "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
-                      "rules": [
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Gates listed successfully.",
+                      "data": [
                         {
-                          "name": "Specific Users",
-                          "passPercentage": 100,
-                          "conditions": [
+                          "id": "a_gate",
+                          "isEnabled": true,
+                          "description": "helpful summary of what this gate does",
+                          "lastModifierName": "CONSOLE API",
+                          "lastModifierID": "aiK7Y0FdTimICpPEdUrf2",
+                          "rules": [
                             {
-                              "type": "user_id",
-                              "targetValue": [
-                                "111",
-                                "222"
-                              ],
-                              "operator": "any"
+                              "name": "a rule",
+                              "passPercentage": 100,
+                              "conditions": [
+                                {
+                                  "type": "user_id",
+                                  "targetValue": [
+                                    "user1"
+                                  ],
+                                  "operator": "any"
+                                }
+                              ]
                             }
                           ]
                         },
                         {
-                          "name": "Public",
-                          "passPercentage": 10,
-                          "conditions": [
-                            {
-                              "type": "public"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "id": "b_gate",
-                      "isEnabled": true,
-                      "description": "Description Here",
-                      "lastModifierName": "CONSOLE API",
-                      "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
-                      "rules": [
-                        {
-                          "name": "Specific Users",
-                          "passPercentage": 100,
-                          "conditions": [
-                            {
-                              "type": "user_id",
-                              "targetValue": [
-                                "111",
-                                "222"
-                              ],
-                              "operator": "any"
-                            }
-                          ]
-                        },
-                        {
-                          "name": "Public",
-                          "passPercentage": 10,
-                          "conditions": [
-                            {
-                              "type": "public"
-                            }
-                          ]
+                          "id": "b_gate",
+                          "isEnabled": true,
+                          "description": "similar to gate_a but it has a b instead",
+                          "lastModifierName": "CONSOLE API",
+                          "lastModifierID": "jd7G9DSiwimICpPjdTl4U8g",
+                          "rules": []
                         }
                       ]
                     }
-                  ]
+                  }
                 }
               }
             }
           },
-          "403": {
-            "description": "Forbidden",
-            "headers": {
-              "vary": {
-                "schema": {
-                  "type": "string",
-                  "example": "Origin"
-                }
-              },
-              "access-control-allow-origin": {
-                "schema": {
-                  "type": "string",
-                  "example": "*"
-                }
-              },
-              "content-type": {
-                "schema": {
-                  "type": "string",
-                  "example": "application/json; charset=utf-8"
-                }
-              },
-              "content-length": {
-                "schema": {
-                  "type": "integer",
-                  "example": "45"
-                }
-              },
-              "Date": {
-                "schema": {
-                  "type": "string",
-                  "example": "Sun, 23 Jan 2022 23:38:21 GMT"
-                }
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string",
-                  "example": "keep-alive"
-                }
-              }
-            },
+          "401": {
+            "description": "Unauthorized",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "$ref": "../models/401.json"
                 },
                 "example": {
                   "status": 403,
@@ -351,7 +327,16 @@ module.exports =
               }
             }
           }
-        }
+        },
+        "operationId": "",
+        "description": "Get a list of all gates",
+        "x-code-samples": [
+          {
+            "lang": "cURL",
+            "label": "cURL",
+            "source": "curl --request GET 'https://api.statsig.com/console/v1/gates' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
+          }
+        ]
       }
     },
     "/gates/{gate_id}": {
@@ -360,67 +345,236 @@ module.exports =
           "gates"
         ],
         "summary": "Read Single Gate",
+        "parameters": [
+          {
+            "name": "gate_id",
+            "in": "path",
+            "description": "Gate ID to get",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
-            "headers": {
-              "vary": {
-                "schema": {
-                  "type": "string",
-                  "example": "Origin"
-                }
-              },
-              "access-control-allow-origin": {
-                "schema": {
-                  "type": "string",
-                  "example": "*"
-                }
-              },
-              "content-type": {
-                "schema": {
-                  "type": "string",
-                  "example": "application/json; charset=utf-8"
-                }
-              },
-              "content-length": {
-                "schema": {
-                  "type": "integer",
-                  "example": "218"
-                }
-              },
-              "Date": {
-                "schema": {
-                  "type": "string",
-                  "example": "Sun, 23 Jan 2022 23:53:53 GMT"
-                }
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string",
-                  "example": "keep-alive"
-                }
-              }
-            },
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Gate read successfully.",
+                      "data": {
+                        "id": "a_gate",
+                        "isEnabled": true,
+                        "description": "helpful summary of what this gate does",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "rules": [
+                          {
+                            "name": "All Conditions",
+                            "passPercentage": 10,
+                            "conditions": [
+                              {
+                                "type": "public"
+                              },
+                              {
+                                "type": "user_id",
+                                "targetValue": [
+                                  "111",
+                                  "222"
+                                ],
+                                "operator": "any"
+                              },
+                              {
+                                "type": "email",
+                                "targetValue": [
+                                  "@outlook.com",
+                                  "@gmail.com"
+                                ],
+                                "operator": "str_contains_any"
+                              },
+                              {
+                                "type": "email",
+                                "operator": "is_null"
+                              },
+                              {
+                                "type": "custom_field",
+                                "targetValue": 31,
+                                "operator": "gt",
+                                "field": "age"
+                              },
+                              {
+                                "type": "app_version",
+                                "targetValue": "1.1.1",
+                                "operator": "version_gt"
+                              },
+                              {
+                                "type": "browser_name",
+                                "targetValue": [
+                                  "Android",
+                                  "Chrome"
+                                ],
+                                "operator": "any"
+                              },
+                              {
+                                "type": "browser_version",
+                                "targetValue": [
+                                  "94.0.4606.81",
+                                  "94.0.4606.92"
+                                ],
+                                "operator": "any"
+                              },
+                              {
+                                "type": "os_name",
+                                "targetValue": [
+                                  "Android",
+                                  "Windows"
+                                ],
+                                "operator": "none"
+                              },
+                              {
+                                "type": "os_version",
+                                "targetValue": "11.0.0",
+                                "operator": "version_lte"
+                              },
+                              {
+                                "type": "country",
+                                "targetValue": [
+                                  "NZ",
+                                  "US"
+                                ],
+                                "operator": "any"
+                              },
+                              {
+                                "type": "passes_gate",
+                                "targetValue": "my_gate_2"
+                              },
+                              {
+                                "type": "fails_gate",
+                                "targetValue": "my_gate_2"
+                              },
+                              {
+                                "type": "time",
+                                "targetValue": 1643070357193,
+                                "operator": "after"
+                              },
+                              {
+                                "type": "environment_tier",
+                                "targetValue": [
+                                  "production"
+                                ],
+                                "operator": "any"
+                              },
+                              {
+                                "type": "passes_segment",
+                                "targetValue": "growth_org"
+                              },
+                              {
+                                "type": "fails_segment",
+                                "targetValue": "growth_org"
+                              },
+                              {
+                                "type": "ip_address",
+                                "targetValue": [
+                                  "1.1.1.1",
+                                  "8.8.8.8"
+                                ],
+                                "operator": "any"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.yaml"
+                    },
+                    "data": {
+                      "$ref": "../models/gate.json"
+                    }
+                  }
                 },
-                "example": {
-                  "message": "Gate read successfully.",
-                  "data": {
-                    "id": "a_gate",
-                    "isEnabled": true,
-                    "description": "helpful summary of what this gate does",
-                    "lastModifierName": "CONSOLE API",
-                    "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
-                    "rules": []
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Gate read successfully.",
+                      "data": {
+                        "id": "a_gate",
+                        "isEnabled": true,
+                        "description": "helpful summary of what this gate does",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "rules": [
+                          {
+                            "name": "specific users",
+                            "passPercentage": 100,
+                            "conditions": [
+                              {
+                                "type": "user_id",
+                                "targetValue": [
+                                  "111",
+                                  "222"
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
                   }
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 400,
+                      "message": "Name is already in use"
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.yaml"
+                    },
+                    "message": {
+                      "$ref": "../models/message.yaml"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 400,
+                      "message": "Name is already in use"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/401.json"
+                }
+              }
+            }
           }
-        }
+        },
+        "description": "Read data from a single gate "
       },
       "post": {
         "tags": [
@@ -431,178 +585,53 @@ module.exports =
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "example": {
-                  "isEnabled": true,
-                  "description": "helpful summary of what this gate does",
-                  "lastModifierName": "CONSOLE API",
-                  "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
-                  "rules": [
-                    {
-                      "name": "All Conditions",
-                      "passPercentage": 10,
-                      "conditions": [
-                        {
-                          "type": "public"
-                        },
-                        {
-                          "type": "user_id",
-                          "operator": "any",
-                          "targetValue": [
-                            "111",
-                            "222"
-                          ]
-                        },
-                        {
-                          "type": "email",
-                          "operator": "str_contains_any",
-                          "targetValue": [
-                            "@outlook.com",
-                            "@gmail.com"
-                          ]
-                        },
-                        {
-                          "type": "email",
-                          "operator": "is_null",
-                          "value": null
-                        },
-                        {
-                          "type": "custom_field",
-                          "operator": "gt",
-                          "targetValue": 31,
-                          "field": "age"
-                        },
-                        {
-                          "type": "app_version",
-                          "operator": "version_gt",
-                          "targetValue": "1.1.1"
-                        },
-                        {
-                          "type": "browser_name",
-                          "operator": "any",
-                          "targetValue": [
-                            "Android",
-                            "Chrome"
-                          ]
-                        },
-                        {
-                          "type": "browser_version",
-                          "operator": "any",
-                          "targetValue": [
-                            "94.0.4606.81",
-                            "94.0.4606.92"
-                          ]
-                        },
-                        {
-                          "type": "os_name",
-                          "operator": "none",
-                          "targetValue": [
-                            "Android",
-                            "Windows"
-                          ]
-                        },
-                        {
-                          "type": "os_version",
-                          "operator": "version_lte",
-                          "targetValue": [
-                            "11.0.0"
-                          ]
-                        },
-                        {
-                          "type": "country",
-                          "operator": "any",
-                          "targetValue": [
-                            "NZ",
-                            "US"
-                          ]
-                        },
-                        {
-                          "type": "passes_gate",
-                          "targetValue": "my_gate_2"
-                        },
-                        {
-                          "type": "fails_gate",
-                          "targetValue": "my_gate_2"
-                        },
-                        {
-                          "type": "time",
-                          "operator": "after",
-                          "targetValue": 1643070357193
-                        },
-                        {
-                          "type": "environment_tier",
-                          "operator": "any",
-                          "targetValue": "production"
-                        },
-                        {
-                          "type": "passes_segment",
-                          "targetValue": "growth_org"
-                        },
-                        {
-                          "type": "fails_segment",
-                          "targetValue": "growth_org"
-                        },
-                        {
-                          "type": "ip_address",
-                          "operator": "any",
-                          "targetValue": [
-                            "1.1.1.1",
-                            "8.8.8.8"
-                          ]
-                        }
-                      ]
-                    }
-                  ]
+                "$ref": "../models/gate.json"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "isEnabled": false,
+                    "description": "helpful summary of what this gate does",
+                    "lastModifierName": "CONSOLE API",
+                    "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
+                    "rules": [
+                      {
+                        "name": "new rules",
+                        "passPercentage": 10,
+                        "conditions": [
+                          {
+                            "type": "email",
+                            "operator": "str_contains_any",
+                            "targetValue": [
+                              "@outlook.com",
+                              "@gmail.com"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
                 }
               }
             }
-          }
+          },
+          "description": "The fields you wish to override in the given gate"
         },
         "responses": {
           "200": {
             "description": "OK",
-            "headers": {
-              "vary": {
-                "schema": {
-                  "type": "string",
-                  "example": "Origin"
-                }
-              },
-              "access-control-allow-origin": {
-                "schema": {
-                  "type": "string",
-                  "example": "*"
-                }
-              },
-              "content-type": {
-                "schema": {
-                  "type": "string",
-                  "example": "application/json; charset=utf-8"
-                }
-              },
-              "content-length": {
-                "schema": {
-                  "type": "integer",
-                  "example": "395"
-                }
-              },
-              "Date": {
-                "schema": {
-                  "type": "string",
-                  "example": "Sun, 23 Jan 2022 23:54:20 GMT"
-                }
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string",
-                  "example": "keep-alive"
-                }
-              }
-            },
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.yaml"
+                    },
+                    "data": {
+                      "$ref": "../models/gate.json"
+                    }
+                  }
                 },
                 "example": {
                   "message": "Gate updated successfully.",
@@ -642,7 +671,8 @@ module.exports =
               }
             }
           }
-        }
+        },
+        "description": "Create a new gate"
       },
       "delete": {
         "tags": [
@@ -652,57 +682,40 @@ module.exports =
         "responses": {
           "200": {
             "description": "OK",
-            "headers": {
-              "vary": {
-                "schema": {
-                  "type": "string",
-                  "example": "Origin"
-                }
-              },
-              "access-control-allow-origin": {
-                "schema": {
-                  "type": "string",
-                  "example": "*"
-                }
-              },
-              "content-type": {
-                "schema": {
-                  "type": "string",
-                  "example": "application/json; charset=utf-8"
-                }
-              },
-              "content-length": {
-                "schema": {
-                  "type": "integer",
-                  "example": "40"
-                }
-              },
-              "Date": {
-                "schema": {
-                  "type": "string",
-                  "example": "Sun, 23 Jan 2022 23:55:21 GMT"
-                }
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string",
-                  "example": "keep-alive"
-                }
-              }
-            },
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.yaml"
+                    }
+                  }
                 },
-                "example": {
-                  "message": "Gate deleted successfully."
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Gate deleted successfully."
+                    }
+                  }
                 }
               }
             }
           }
+        },
+        "description": "Delete a gate"
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "gate_id",
+          "in": "path",
+          "description": "The unique gate id to query",
+          "required": true
         }
-      }
+      ]
     }
   }
 }

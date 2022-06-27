@@ -1,0 +1,62 @@
+{
+  "type": "object",
+  "x-examples": {
+    "example-1": {
+      "id": "a_gate",
+      "isEnabled": true,
+      "description": "",
+      "lastModifierName": "CONSOLE API",
+      "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
+      "rules": []
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "isEnabled": {
+      "type": "boolean"
+    },
+    "description": {
+      "type": "string"
+    },
+    "lastModifierName": {
+      "type": "string"
+    },
+    "lastModifierID": {
+      "type": "string"
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "$ref": "./rule.yaml"
+      }
+    }
+  },
+  "examples": [
+    {
+      "id": "a_gate",
+      "isEnabled": true,
+      "description": "helpful summary of what this gate does",
+      "lastModifierName": "CONSOLE API",
+      "lastModifierID": "1vaasdfLlkaujjajiuOSBP2",
+      "rules": [
+        {
+          "name": "email gate",
+          "passPercentage": 10,
+          "conditions": [
+            {
+              "type": "email",
+              "operator": "str_contains_any",
+              "targetValue": [
+                "@outlook.com",
+                "@gmail.com"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "description": ""
+}

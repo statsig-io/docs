@@ -1,0 +1,16 @@
+type: object
+x-examples:
+  example-1:
+    name: Public
+    passPercentage: 10
+    conditions:
+      - type: public
+properties:
+  name:
+    type: string
+  passPercentage:
+    type: integer
+  conditions:
+    type: array
+    items:
+      $ref: ./condition.yaml

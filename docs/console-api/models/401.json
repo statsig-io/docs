@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "integer"
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "x-examples": {
+    "example-1": {
+      "status": 401,
+      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-9O92sGDeuJuT8xTVH6zARKsa9MHof2VHWMLBn9vr8Nqaasdf"
+    }
+  },
+  "examples": [
+    {
+      "status": 401,
+      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+    }
+  ]
+}
