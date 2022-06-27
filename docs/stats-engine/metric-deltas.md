@@ -43,6 +43,12 @@ Event DAU metrics capture the number of distinct users that have the event each 
 
 The following user accounting metrics are computed in the same may: *DAU, WAU, MAU_28day, L7, L14, L28*
 
+For new user accounting (*new_DAU, new_WAU, new_MAU_28day*) we count users that are new xAU at some point during the analysis window.  So the group mean is given by:
+
+![image](https://user-images.githubusercontent.com/90343952/174866462-aff0ce19-6e9e-497e-9021-e4e6c595bca4.png)
+
+Where *max(X<sub>i</sub>)* is the maximum value of the new xAU metric for user *i*.
+
 ### Custom Ratios, Means, Retention and Stickiness Metrics
 
 These are metrics such as click through rate, averge purchase value, sessions per user, etc. They're obtained by diving a numerator value, *X*, by a denominator value, *Y*.  The mean value of a ratio metric *R* for an experiment group is given by:

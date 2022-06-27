@@ -28,6 +28,7 @@ module.exports = {
         "guides/aa-test",
         "guides/serverless",
         "guides/config-history",
+        "guides/production",
       ],
     },
     {
@@ -104,11 +105,13 @@ module.exports = {
         "experiments-plus/create-new",
         "experiments-plus/power-analysis",
         "experiments-plus/implement",
+        "experiments-plus/rules",
         "experiments-plus/getting-group",
         "experiments-plus/monitor",
         "experiments-plus/read-results",
         "experiments-plus/make-decision",
         "experiments-plus/overrides",
+        "experiments-plus/disable-group",
         {
           Experimentation: [
             "experiments-plus/experimentation/why-experiment",
@@ -230,10 +233,27 @@ module.exports = {
       },
       items: [
         "console-api/autotunes",
-        "console-api/gates",
+        {
+          type: "category",
+          label: "Gates",
+          link: {
+            type: "doc",
+            id: "console-api/gates",
+          },
+          items: ["console-api/gate-overrides"],
+        },
         "console-api/daily-reports",
         "console-api/segments",
-        "console-api/dynamic-configs"
+        "console-api/dynamic-configs",
+        {
+          type: "category",
+          label: "Holdouts",
+          link: {
+            type: "doc",
+            id: "console-api/holdouts",
+          },
+          items: ["console-api/holdout-overrides"],
+        },
       ],
     },
     {
@@ -274,10 +294,18 @@ module.exports = {
             "integrations/data-connectors/rudderstack",
           ],
         },
+        {
+          "Data Imports": [
+            "integrations/data-imports/overview",
+            "integrations/data-imports/azure_upload",
+            "integrations/data-imports/bigquery",
+            "integrations/data-imports/redshift",
+            "integrations/data-imports/snowflake",
+          ],
+        },
         "integrations/event_filtering",
         "integrations/event_webhook",
         "integrations/jira",
-        "integrations/snowflake",
         "integrations/vscode",
       ],
     },
@@ -293,6 +321,7 @@ module.exports = {
         "stats-engine/variance",
         "stats-engine/confidence-intervals",
         "stats-engine/p-value",
+        "stats-engine/topline-impact",
       ],
     },
     "faq",

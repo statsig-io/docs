@@ -17,6 +17,8 @@ As a Project Admin, you can configure your project to require reviews for any ch
 
 <img width="455" alt="image" src="https://user-images.githubusercontent.com/1315028/166673961-3da1f147-47fc-458b-aae1-4ed73ba3a73e.png"/>
 
+- You can optionally allow yourself as a project admin to bypass the review requirement and self-approve review requests.
+
 - Now when you make any configuration changes, say to a feature gate or experiment, you'll be asked to **Submit for Review**; you can add reviewers when you submit the change for review
 
 <img width="1168" alt="Screen Shot 2022-05-04 at 5 08 21 AM" src="https://user-images.githubusercontent.com/1315028/166678241-272adade-ca60-4942-bd04-a1413d54864c.png"/>
@@ -31,9 +33,9 @@ As a Project Admin, you can configure your project to require reviews for any ch
 ### Creating Review Groups
 To create a predefined group of reviewers,
 
-- Navigate to the **Reviews** tab under your **Project Settings**, and click the **Create New** button to create a new **Review Group**
+- Navigate to the **Basic SEttings** tab under your **Project Settings**, and click the **Create New Group** button under **Project Members and Groups** 
 
-<img width="676" alt="image" src="https://user-images.githubusercontent.com/1315028/166674369-84b503be-d5b9-40e1-84aa-a97f90f2f3e1.png"/>
+![Screen Shot 2022-06-27 at 8 31 24 AM](https://user-images.githubusercontent.com/74584483/175977950-01f18981-ad91-4116-ab4c-9e69a9a6de98.png)
 
 - Enter the name and members of the group and click **Create**.  
 
@@ -41,8 +43,7 @@ To create a predefined group of reviewers,
 
 - You can now use these predefined **Review Groups** when you submit any changes for review.
 
-<img width="1103" alt="image" src="https://user-images.githubusercontent.com/1315028/166684577-29598c7f-fcba-4c7e-848d-9a45b031bd79.png"/>
-
+![image](https://user-images.githubusercontent.com/1315028/166684577-29598c7f-fcba-4c7e-848d-9a45b031bd79.png)
 
 ### Enforcing Team Reviews
 You can _a priori_ restrict who can make changes to your Project by (a) turning on **Reviews Required** for your Project and (b) adding designated **Review Groups** or **Reviewers** when you create the Feature Gate or Experiment. 

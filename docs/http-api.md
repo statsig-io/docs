@@ -46,7 +46,7 @@ curl \
   --header "Content-Type: application/json" \
   --request POST \
   --data '{"events": [{"user": { "userID": "42" }, "time": 1616826986211, "eventName": "test_api_event"}]}' \
-  "https://api.statsig.com/v1/log_event"
+  "https://events.statsigapi.net/v1/log_event"
 ```
 
 Response:
@@ -62,7 +62,7 @@ curl \
   --header "Content-Type: application/json" \
   --request POST \
   --data '{"events": [{"user": { "userID": "42", "statsigEnvironment": {"tier": "staging"} }, "time": 1616826986211, "eventName": "test_api_event"}]}' \
-  "https://api.statsig.com/v1/log_event"
+  "https://events.statsigapi.net/v1/log_event"
 ```
 
 Response:
@@ -114,11 +114,13 @@ Response:
 
 ##### Export Report {#export-report}
 
-You can [export your Pulse data](https://docs.statsig.com/pulse#export-report) via the console or using the following API. In addition to the [`first_exposures`](https://docs.statsig.com/pulse#first-exposures-file-description) report type as shown below, you can also request a [`pulse_daily`](https://docs.statsig.com/pulse#pulse-summary-and-daily-file-description) or [`unit_metrics_daily`](https://docs.statsig.com/pulse#unit-metrics-file-description) report types.
+You can [export your Pulse data](https://docs.statsig.com/pulse/export) via the console or using the following API. In addition to the [`first_exposures`](https://docs.statsig.com/pulse#first-exposures-file-description) report type as shown below, you can also request a [`pulse_daily`](https://docs.statsig.com/pulse#pulse-summary-and-daily-file-description) or [`unit_metrics_daily`](https://docs.statsig.com/pulse#unit-metrics-file-description) report types.
+
+Note this API requires a server-side secret key.
 
 ```bash
 curl \
-  --header "statsig-api-key: <YOUR-SDK-KEY>" \
+  --header "statsig-api-key: <YOUR-SERVER-SECRET-KEY>" \
   --header "Content-Type: application/json" \
   --request POST \
   --data '{"type": "first_exposures" }' \
@@ -151,7 +153,7 @@ curl \
   --header "Content-Type: application/json" \
   --request POST \
   --data '{"exposures": [{"user": {"userID": "user_id_12345"}, "experimentName": "analytics_only_experiment", "group": "Control"}]}' \
-  "https://api.statsig.com/v1/log_custom_exposure"
+  "https://events.statsigapi.net/v1/log_custom_exposure"
 ```
 
 Event inputs to this endpoint can have either of the two following forms:

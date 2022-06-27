@@ -20,28 +20,29 @@ This feature enables a new mobile optimized registration flow which
 we will be launching on iOS and Android as part of the V2 refresh.
 ```
 
-![Screen Shot 2021-06-14 at 4 59 29 PM](https://user-images.githubusercontent.com/82126616/121973406-015f1700-cd32-11eb-9dcf-5f05ea78038b.png)
+![Screen Shot 2022-06-17 at 11 27 32 AM](https://user-images.githubusercontent.com/74584483/174356771-2c243f16-c351-4d06-acda-db1ef507899e.png)
 
 Once you create a new Feature Gate, you will see a screen like this:
-![Screen Shot 2021-06-14 at 5 02 47 PM](https://user-images.githubusercontent.com/82126616/121973756-d0cbad00-cd32-11eb-89d3-8d7dd18af866.png)
+![Screen Shot 2022-06-17 at 11 28 57 AM](https://user-images.githubusercontent.com/74584483/174356861-db7775b5-ec78-4ca0-bf72-ac4a82153cee.png)
 
-The Feature Gate is enabled by default (meaning calls to this gate will evaluate the rules and conditions you specify next). You can disable gates by clicking on the toggle button (this stops the gate from evaluating rules and conditions and instead just returns `false`). Let's leave it on for now.
+The Feature Gate is enabled by default (meaning calls to this gate will evaluate the rules and conditions you specify next). You can disable gates by clicking on the menu button, and selecting "Disable" (this stops the gate from evaluating rules and conditions and instead just returns `false`). Let's leave it on for now.
 
-![Screen Shot 2021-06-14 at 5 03 11 PM](https://user-images.githubusercontent.com/82126616/121973775-da551500-cd32-11eb-9daa-ce56f295b59f.png)
+![Screen Shot 2022-06-17 at 11 29 38 AM](https://user-images.githubusercontent.com/74584483/174356964-5854169a-563a-429d-bcbf-1305a39d561f.png)
+
 
 ### Step 2 - Create a new Rule
 
-By default, your new Feature Gate will not pass any rule and hence will be returning `false` for all checks on the client side. In order to turn on this feature, you will need to target this feature to a specific set of folks. You do that by clicking on **Add Rule**
+By default, your new Feature Gate will not pass any rule and hence will be returning `false` for all checks on the client side. In order to turn on this feature, you will need to target this feature to a specific set of folks. You do that by clicking on **Add New Rule**
 
-![Screen Shot 2021-06-14 at 5 03 23 PM](https://user-images.githubusercontent.com/82126616/121973783-df19c900-cd32-11eb-8f9a-721eab4f0bfe.png)
+![Screen Shot 2022-06-17 at 11 31 08 AM](https://user-images.githubusercontent.com/74584483/174357177-9b1992e0-3264-464f-b68d-195def66d01a.png)
 
 You can choose from a list of targeting criteria like User ID, Country, Browser, Operating System, etc.
 
-![Screen Shot 2021-06-14 at 5 03 36 PM](https://user-images.githubusercontent.com/82126616/121973790-e345e680-cd32-11eb-8d42-303f3064b931.png)
+![Screen Shot 2022-06-17 at 11 31 43 AM](https://user-images.githubusercontent.com/74584483/174357260-203797c8-71e6-4bd6-a019-d35673855da3.png)
 
 Let's go ahead and choose **Operating System** is **Any of** and pick **Android** and **iOS** for our Mobile only targeting.
 
-![Screen Shot 2021-06-14 at 5 03 59 PM](https://user-images.githubusercontent.com/82126616/121973803-e7720400-cd32-11eb-9c75-7a03c098b3a6.png)
+![Screen Shot 2022-06-17 at 11 32 55 AM](https://user-images.githubusercontent.com/74584483/174357440-f1f5ad74-922b-45b6-9b22-e8f19e05abc1.png)
 
 Now hit the **Add Rule** button and you should now see the new rule in the Feature Gate details page.
 
@@ -57,18 +58,18 @@ Let's add one more rule to our Feature Gate, one that allows us to test the new 
 
 This time, let's pick **Email** **Contains any of** and choose a domain. Like this:
 
-![Screen Shot 2021-06-14 at 5 04 49 PM](https://user-images.githubusercontent.com/82126616/121973828-f9ec3d80-cd32-11eb-9ca4-4b25fa17fb75.png)
+![Screen Shot 2022-06-17 at 11 34 54 AM](https://user-images.githubusercontent.com/74584483/174357706-53e296de-9a01-4e51-a20d-970952bad0e6.png)
 
 Hit **Add Rule** and don't forget to **Save Changes**.
 
-![Screen Shot 2021-06-14 at 5 04 59 PM](https://user-images.githubusercontent.com/82126616/121973836-fd7fc480-cd32-11eb-9090-cc6e736def06.png)
+![Screen Shot 2022-06-17 at 11 36 22 AM](https://user-images.githubusercontent.com/74584483/174357922-160335f3-1004-4d16-b07e-d63fc774c64f.png)
+
 
 ### Step 4 - Create a new Client API key
 
 Navigate to the **API Keys** section of the Statsig console (⚙️ > API Keys) or visit the API Keys section via [console.statsig.com/api_keys](https://console.statsig.com/api_keys). Here you would see different types of API keys you can generate.
 
 ![Screen Shot 2022-05-23 at 11 23 59 AM](https://user-images.githubusercontent.com/95646168/169883923-30d4cdc0-c5fc-4170-983a-c6dd59d6c46e.png)
-
 
 **Server Secret Keys** are used only for server side integrations. These keys are secrets that you want to safe-guard and that means not using it on clients.
 
@@ -92,7 +93,7 @@ Now that we have configured this feature gate, let's go ahead and implement the 
 Statsig supports many different SDKs. Please checkout [Getting Started](/) for the full list of Client side SDKs
 :::
 
-Statsig is available from [jsdelivr](http://www.jsdelivr.com/), an open source CDN. So let's open the Console Window of a new Chrome browser window for the next set of steps.
+The statsig-js sdk is available from [jsdelivr](http://www.jsdelivr.com/), an open source CDN. So let's open the Console Window of a new Chrome browser window for the next set of steps.
 
 Use this link https://cdn.jsdelivr.net/npm/statsig-js/build/statsig-prod-web-sdk.min.js to get you the latest SDK version that's available.
 
@@ -123,7 +124,7 @@ Now that we have initialized Statsig, we can go ahead and make a call to our new
 statsig.checkGate("mobile_registration");
 ```
 
-You should get a response 'false' back from the server.
+You should get a response 'false' back - we didnt initialize from a mobile client, nor with an email containing `@statsig.com`.
 
 ![image](https://user-images.githubusercontent.com/74588208/117421778-b270c700-aed3-11eb-8574-af05119b9b22.png)
 
@@ -135,7 +136,7 @@ Chrome DevTools allows us to change our Device type to mobile. Let's use that fe
 
 ![image](https://user-images.githubusercontent.com/74588208/117494211-de6a6780-af28-11eb-8d99-c2f557d4ccde.png)
 
-Since the environment has changed, we need to call updateUser on Statsig. Copy and paste the following code in the console.
+Since the environment has changed, we need to call updateUser on Statsig.  This will reevaluate the Feature Gates against the new environment. Copy and paste the following code in the console.
 
 ```js
 await statsig.updateUser({});
@@ -172,6 +173,15 @@ statsig.checkGate("mobile_registration");
 This time, you should get back a `true` indicating that this feature is available for this user.
 
 ![image](https://user-images.githubusercontent.com/74588208/117422203-30cd6900-aed4-11eb-85ce-69761a90d59a.png)
+
+If you're ever wondering *why* you are getting a certain value, you can use the "Diagnostics" tab on your feature gate.  This will show checks in near real time, and evaluation results, along with the rule that was evaluated, or reason you got the value.
+
+![Screen Shot 2022-06-17 at 11 42 42 AM](https://user-images.githubusercontent.com/74584483/174362332-d3c2d9ff-8fce-4a82-87df-cff3c248ce1a.png)
+
+Scroll to the bottom of the "Diagnostics" tab to see the "Exposure Stream".  For our three checks we just made, we should see a fail, a Pass on the Mobile OS rule, and then a Pass on the employee rule:
+
+![Screen Shot 2022-06-17 at 11 42 47 AM](https://user-images.githubusercontent.com/74584483/174364387-174c258a-7a38-44bc-a46e-653403015762.png)
+
 
 ### Step 8 - How to use these gates in production
 

@@ -2,6 +2,8 @@
 title: Segment
 ---
 
+import StatsigEnvironmentFormat from "../snippets/integration_statsig_env_format.mdx";
+
 ## Overview
 
 Enabling the Segment integration for Statsig will allow Statsig to pull in your Segment events. This allows you to run your experiment analysis on Statsig with all of your existing events from Segment without requiring any additional logging.
@@ -39,6 +41,8 @@ If you're using a [custom ID](https://docs.statsig.com/guides/experiment-on-cust
 
 The `statsigCustomIDs` field in properties should be an array, where the even index is the name of the user ID type and the odd index is the value of the previous element in the array. Assuming you've created this custom ID type on Statsig (under **ID Type Settings** in your [Project Settings](https://console.statsig.com/settings)), Statsig will automatically recognize these custom identifiers to compute your experiment results appropriately.
 
+<StatsigEnvironmentFormat />
+
 #### Syncing Statsig Segment ID Lists with Segment Personas Audiences
 
 By using [Segment Personas Audiences](https://segment.com/docs/personas/audiences/) you are able to maintain a list of users that can be used for targeting using [Statsig Feature Gates](/feature-gates). To configure this:
@@ -56,8 +60,6 @@ To export your Statsig events to Segment,
 2. Click on the **Segment** card and switch to the **Outbound** tab, copy your [Segment write key](https://segment.com/docs/getting-started/02-simple-install/#find-your-write-key), paste into the **API Key** text box shown below, and click **Enable**.
 
 ![image](https://user-images.githubusercontent.com/1315028/150827399-333d9064-de1c-4f4e-bc33-51a46a83531d.png)
-
-## Filtering Events
 
 ## Filtering Events
 

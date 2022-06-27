@@ -69,15 +69,20 @@ module.exports = {
   },
   plugins: [
     [
-      require.resolve("docusaurus-lunr-search"),
+      require.resolve("@easyops-cn/docusaurus-search-local"),
       {
-        baseUrl: "/",
-        excludeRoutes: [
-          "client/**/_*",
-          "client/_client-sdk-template",
-          "server/**/_*",
-          "server/_server-sdk-template",
-        ],
+        hashed: true,
+        indexBlog: false,
+        indexDocs: true,
+        docsRouteBasePath: "/",
+        lunr: {
+          excludeRoutes: [
+            "client/**/_*",
+            "client/_client-sdk-template",
+            "server/**/_*",
+            "server/_server-sdk-template",
+          ],
+        },
       },
     ],
     function statsig() {

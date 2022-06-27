@@ -7,7 +7,7 @@ After creating your first gate, you want to start logging events in order for th
 
 ### How to log events
 
-There are two ways Statsig can ingest events. The simplest method is to use one of our many Server/Client SDKs, or use one of the many [Data Connectors](/integrations/introduction) available in the Integrations setting.
+There are a few ways Statsig can ingest events: via one of our Server/Client SDKs, connecting to a 3rd party like Segment, mParticle, or other Analytics provider listed in our [Integrations](/integrations/introduction), or via our metrics import http APIs.
 
 #### Logging events via SDKs
 
@@ -60,8 +60,14 @@ We encourage you to log as many events as you can and want. The more events ther
 
 The events you log is aggregated and analyzed by Statsig to give you useful metrics.  These can be viewed in the [Metrics Tab](/metrics).
 
-![image](https://user-images.githubusercontent.com/74588208/127933988-c981bf83-f20c-4404-8194-004017cf96ef.png)
+![Screen Shot 2022-06-17 at 11 46 12 AM](https://user-images.githubusercontent.com/74584483/174369069-d829d97e-8eed-4d2e-8207-e6dd92de27ff.png)
 
-Statsig also provides a view into a set of derived user metrics like DAU, WAU, Stickiness, etc. just based on the events you log.  Here's a view of those metrics available in the **Users** page in Metrics Tab.
+Statsig also provides a view into a set of derived user metrics like DAU, WAU, Stickiness, etc. just based on the events you log.  Here's a view of those metrics available in the **Charts** page in Metrics Tab.
 
-![Metrics > Users](https://user-images.githubusercontent.com/74584483/135521068-91b37474-0b7c-4fb0-bb3d-78290e2312d3.png)
+![Screen Shot 2022-06-17 at 11 47 14 AM](https://user-images.githubusercontent.com/74584483/174371316-cd1443a5-70a1-483c-8d36-a16b4d451891.png)
+
+### Metrics for Experiments
+
+Metrics will also make there way into your experiment results.  When analyzing the impact of one of your experiments, you will need to send Statsig event data to join with the different groups that users were assigned to in an experiment.  The experiment results section will then show the difference in metrics between groups, and whether that difference is considered "Statistically Significant" - or Statsig, as we like to say :)
+
+![Screen Shot 2022-06-17 at 11 48 34 AM](https://user-images.githubusercontent.com/74584483/174374052-44804949-d565-499a-9555-807646439f89.png)

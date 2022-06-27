@@ -25,7 +25,8 @@ The exact calculation for each of the above depends on the metric type:
 | ratio            | Overall ratio: sum(numerator values)/sum(denominator values)  | Overall ratio  |  Participating users |
 | sum              | Total sum of values (99.9% winsorization)     | Average value per user (99.9% winsorization)   | All users |
 | mean             | Overall mean value    | Overall mean value   | Participating users |
-| user: dau, wau, mau_28day |  Not shown   | Average metric value per user per day. The probability that a user is xAU | All users |
+| user: dau | sum of daily active users   | Average metric value per user per day. The probability that a user is DAU | All users |
+| user: wau, mau_28day | Not shown   | Average metric value per user per day. The probability that a user is xAU | All users |
 | user: new_dau, new_wau, new_mau_28day |  Count of distinct users that are new xAU at some point in the experiment  | Fraction of users that are new xAU |  All users |
 | user: retention metrics |  Overall average retention rate   | Overall average retention rate  | Participating users |
 | user: L7, L14, L28 |  Not shown   | Average L-ness value per user per day  | All users |
@@ -64,8 +65,8 @@ This view shows the group level statistics needed to compute the metric deltas a
 
 - **Experiment Delta (absolute)**: The absolute difference of the Mean between test groups i.e. Test Mean - Control Mean.
 - **Experiment Delta (relative)**: Relative difference of the Mean i.e. 100% x (Test Mean – Control Mean) / Control Mean
-- **Top-line Impact**: The measured effect that experiment is having on the overall topline metric.  Computed on a daily basis and averaged across days in the analysis window.  The absolute value is the net increase or decrease in the metric, while the relative value is the percentage change.
-- **Projected Launch Impact**: An estimate of the topline impact we expect to see if a decision is made and the test group is launched to all users.  This takes into account the layer allocation and the size of the test group.  Assumes the targeting gate (if there is one) remains the same after launch.
+- **Top-line Impact**: The measured effect that experiment is having on the overall topline metric each day, on average.  Computed on a daily basis and averaged across days in the analysis window.  The absolute value is the net daily increase or decrease in the metric, while the relative value is the daily percentage change.
+- **Projected Launch Impact**: An estimate of the daily topline impact we expect to see if a decision is made and the test group is launched to all users.  This takes into account the layer allocation and the size of the test group.  Assumes the targeting gate (if there is one) remains the same after launch.
 
 See [here](https://docs.statsig.com/stats-engine/topline-impact) for details on the exact calculation for topline and projected impact.
 
