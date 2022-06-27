@@ -75,14 +75,6 @@ module.exports = {
         indexBlog: false,
         indexDocs: true,
         docsRouteBasePath: "/",
-        lunr: {
-          excludeRoutes: [
-            "client/**/_*",
-            "client/_client-sdk-template",
-            "server/**/_*",
-            "server/_server-sdk-template",
-          ],
-        },
       },
     ],
     function statsig() {

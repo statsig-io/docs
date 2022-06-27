@@ -29,7 +29,7 @@
     "rules": {
       "type": "array",
       "items": {
-        "$ref": "./rule.yaml"
+        "$ref": "./rule.json"
       }
     }
   },
