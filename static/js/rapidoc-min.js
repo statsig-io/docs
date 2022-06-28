@@ -662,6 +662,7 @@ input[type="checkbox"]:checked:after {
   text-transform:uppercase;
   margin-right:5px;
 }
+.endpoint-head .method{ width: 65px; }
 .endpoint-head .method.delete{ border: 2px solid var(--red);}
 .endpoint-head .method.put{ border: 2px solid var(--orange); }
 .endpoint-head .method.post{ border: 2px solid var(--green); }
