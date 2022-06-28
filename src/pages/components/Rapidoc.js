@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import Models from "../../../docs/console-api/models/index";
+import { useColorMode } from '@docusaurus/theme-common';
 
 function updateCodeSnippets(data, entity) {
   let snippet = require(`../../../docs/console-api/openapi/snippets/x-code-samples/${entity}.js`);
@@ -39,7 +40,10 @@ function loadReferences(spec) {
 }
 
 export default function Rapidoc(props) {
-  let { id, entity } = props;
+  const { id, entity } = props;
+
+  const { colorMode } = useColorMode();
+  const isDarkTheme  = true ;//colorMode === 'dark';
 
   useEffect(() => {
     setTimeout(() => {
@@ -48,26 +52,25 @@ export default function Rapidoc(props) {
 
       loadReferences(data);
 
-      const el = document.getElementById(id);
-      el.loadSpec(data);
-    }, 300);
+      const rapidoc = document.getElementById(id);
+      rapidoc.loadSpec(data);
+    }, 30);
   }, []);
 
   if (ExecutionEnvironment.canUseDOM) {
-    /// Make sure we only import the rapidoc web component in case we are on the client side
     return (
       <rapi-doc
         id={id}
+        theme={isDarkTheme ? 'dark' : 'light'}
+        primary-color={isDarkTheme ? '#2196f3' : '#194b7d'}
         style={{ height: "120vh" }}
         allow-search={false}
-        update-route={false}
         render-style="view" // Controls how to api gets rendered
         layout="column"
         allow-try={true} // Enable ability for users to run commands
         show-header={false} // Disable user changing api spec file
         allow-authentication={true} // Enable user passing STATSIG-API-KEY at top of file
-        use-path-in-nav-bar={false} // Disable using paths in side bar
-        show-method-in-nav-bar="as-colored-block" // Enables small tags in nav bar
+        regular-font={["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Ubuntu", "sans-serif"]}
       />
     );
   }
