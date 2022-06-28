@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
-import Models from "../../../docs/console-api/models/index";
+import Models from "../../docs/console-api/models/index";
 import { useColorMode } from '@docusaurus/theme-common';
 
 function updateCodeSnippets(data, entity) {
-  let snippet = require(`../../../docs/console-api/openapi/snippets/x-code-samples/${entity}.js`);
+  let snippet = require(`../../docs/console-api/openapi/snippets/x-code-samples/${entity}.js`);
   for (let path in snippet) {
     for (let command in snippet[path]) {
       data["paths"][path][command]["x-code-samples"] = snippet[path][command];
@@ -42,12 +42,11 @@ function loadReferences(spec) {
 export default function Rapidoc(props) {
   const { id, entity } = props;
 
-  const { colorMode } = useColorMode();
-  const isDarkTheme  = true ;//colorMode === 'dark';
+  const { isDarkTheme } = useColorMode();
 
   useEffect(() => {
     setTimeout(() => {
-      var data = require(`../../../docs/console-api/openapi/${entity}.js`);
+      var data = require(`../../docs/console-api/openapi/${entity}.js`);
       data = updateCodeSnippets(data, entity);
 
       loadReferences(data);
@@ -63,6 +62,7 @@ export default function Rapidoc(props) {
         id={id}
         theme={isDarkTheme ? 'dark' : 'light'}
         primary-color={isDarkTheme ? '#2196f3' : '#194b7d'}
+        bg-color={isDarkTheme ? '#1b1b1d' : "#ffffff"}
         style={{ height: "120vh" }}
         allow-search={false}
         render-style="view" // Controls how to api gets rendered
