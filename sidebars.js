@@ -238,7 +238,7 @@ module.exports = {
         "console-api/segments",
         "console-api/dynamic-configs",
         "console-api/holdouts",
-        "console-api/single-page"
+        "console-api/all-endpoints"
       ],
     },
     {

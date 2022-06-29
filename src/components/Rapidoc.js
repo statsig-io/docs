@@ -21,16 +21,16 @@ function updateCodeSnippets(data, entity) {
   return data;
 }
 
-function loadSinglePage(){
+function loadAllEndpoints(){
   
-  let singlePage = require('../../docs/console-api/openapi/single-page.js');
+  let allEndpoints = require('../../docs/console-api/openapi/all-endpoints.js');
 
   for(const entity of supportedEntities){
     const entityData = require(`../../docs/console-api/openapi/${entity}.js`);
 
     // Add endpoints
     for (const idx in entityData['paths']) {
-      singlePage["paths"][idx] = entityData['paths'][idx];
+      allEndpoints["paths"][idx] = entityData['paths'][idx];
     }
 
     // Add components ie 'requestBodies', 'schemas', etc...
@@ -39,16 +39,16 @@ function loadSinglePage(){
         continue;
       }
 
-      if(singlePage['components'][component] === undefined){
-        singlePage['components'][component] = {}
+      if(allEndpoints['components'][component] === undefined){
+        allEndpoints['components'][component] = {}
       }
       
       for(const scheme in entityData['components'][component]) {
-        singlePage['components'][component][scheme] = entityData['components'][component][scheme]
+        allEndpoints['components'][component][scheme] = entityData['components'][component][scheme]
       }
     }
   }
-  return singlePage;
+  return allEndpoints;
 }
 
 function loadReferences(spec) {
@@ -86,8 +86,8 @@ export default function Rapidoc(props) {
       
       var data;
 
-      if(entity === 'single-page'){
-        data = loadSinglePage();
+      if(entity === 'all-endpoints'){
+        data = loadAllEndpoints();
       } else {
         data = require(`../../docs/console-api/openapi/${entity}.js`);
       }
