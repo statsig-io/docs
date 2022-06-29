@@ -403,15 +403,6 @@ module.exports = {
             }
           }
         },
-        "x-extension-1": {
-          "get": [
-            {
-              "lang": "cURL",
-              "label": "cURL",
-              "source": "curl --request GET 'https://api.statsig.com/console/v1/gates' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
-            }
-          ]
-        }
       },
       "post": {
         "tags": [
