@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import Models from "../../docs/console-api/models/index";
 import { useColorMode } from '@docusaurus/theme-common';
+import { isConstructorDeclaration } from "typescript";
+
+const supportedEntities = ["autotunes", "dynamic-configs","gates","holdouts","segments"]
 
 function updateCodeSnippets(data, entity) {
   let snippet;
@@ -16,6 +19,36 @@ function updateCodeSnippets(data, entity) {
     }
   }
   return data;
+}
+
+function loadSinglePage(){
+  
+  let singlePage = require('../../docs/console-api/openapi/single-page.js');
+
+  for(const entity of supportedEntities){
+    const entityData = require(`../../docs/console-api/openapi/${entity}.js`);
+
+    // Add endpoints
+    for (const idx in entityData['paths']) {
+      singlePage["paths"][idx] = entityData['paths'][idx];
+    }
+
+    // Add components ie 'requestBodies', 'schemas', etc...
+    for (const component in entityData['components']){
+      if(component === 'securitySchemes') {
+        continue;
+      }
+
+      if(singlePage['components'][component] === undefined){
+        singlePage['components'][component] = {}
+      }
+      
+      for(const scheme in entityData['components'][component]) {
+        singlePage['components'][component][scheme] = entityData['components'][component][scheme]
+      }
+    }
+  }
+  return singlePage;
 }
 
 function loadReferences(spec) {
@@ -50,7 +83,15 @@ export default function Rapidoc(props) {
 
   useEffect(() => {
     setTimeout(() => {
-      var data = require(`../../docs/console-api/openapi/${entity}.js`);
+      
+      var data;
+
+      if(entity === 'single-page'){
+        data = loadSinglePage();
+      } else {
+        data = require(`../../docs/console-api/openapi/${entity}.js`);
+      }
+      
       data = updateCodeSnippets(data, entity);
 
       loadReferences(data);
