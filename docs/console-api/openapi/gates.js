@@ -11,10 +11,6 @@ module.exports = {
       "name": "Statsig Support Slack",
       "url": "https://www.statsig.com/slack"
     },
-    "license": {
-      "name": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-    }
   },
   "servers": [
     {
@@ -770,8 +766,10 @@ module.exports = {
         }
       ],
       "get": {
+        "tags": [
+          "gates"
+        ],
         "summary": "Get a list of overrides for a gate",
-        "tags": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -873,7 +871,9 @@ module.exports = {
       },
       "post": {
         "summary": "Update overrides on a gate",
-        "tags": [],
+        "tags": [
+          "gates"
+        ],
         "responses": {
           "200": {
             "description": "OK",

@@ -397,6 +397,15 @@ module.exports = {
               }
             }
           }
+        },
+        "x-extension-1": {
+          "get": [
+            {
+              "lang": "cURL",
+              "label": "cURL",
+              "source": "curl --request GET 'https://api.statsig.com/console/v1/gates' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
+            }
+          ]
         }
       },
       "post": {
@@ -1188,7 +1197,9 @@ module.exports = {
       ],
       "get": {
         "summary": "Get a gate's overrides",
-        "tags": [],
+        "tags": [
+          "holdouts"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -1247,7 +1258,9 @@ module.exports = {
       },
       "post": {
         "summary": "update a gates overrides",
-        "tags": [],
+        "tags": [
+          "holdouts"
+        ],
         "responses": {
           "200": {
             "description": "OK",

@@ -4,7 +4,12 @@ import Models from "../../docs/console-api/models/index";
 import { useColorMode } from '@docusaurus/theme-common';
 
 function updateCodeSnippets(data, entity) {
-  let snippet = require(`../../docs/console-api/openapi/snippets/x-code-samples/${entity}.js`);
+  let snippet;
+  try {
+    snippet = require(`../../docs/console-api/openapi/snippets/x-code-samples/${entity}.js`);
+  } catch(e){
+    return data;
+  }
   for (let path in snippet) {
     for (let command in snippet[path]) {
       data["paths"][path][command]["x-code-samples"] = snippet[path][command];
