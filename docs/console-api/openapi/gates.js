@@ -7,10 +7,6 @@ module.exports = {
     "contact": {
       "name": "Statsig Support Slack",
       "url": "https://www.statsig.com/slack"
-    },
-    "license": {
-      "name": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
   "servers": [
