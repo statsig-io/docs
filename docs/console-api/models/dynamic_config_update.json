@@ -1,0 +1,62 @@
+{
+  "title": "dynamic-config-update",
+  "x-stoplight": {
+    "id": "3kdoc658uye6l"
+  },
+  "x-tags": [
+    "dynamic config",
+    "entity"
+  ],
+  "type": "object",
+  "examples": [
+    {
+      "id": "a_dynamic_config",
+      "isEnabled": false,
+      "description": "an updated summary of what this dynamic config does",
+      "lastModifierName": "CONSOLE API",
+      "lastModifierID": "j8dp7mqAd",
+      "rules": [
+        {
+          "name": "Public",
+          "passPercentage": 100,
+          "returnValue": {
+            "key": "updated value"
+          },
+          "conditions": [
+            {
+              "type": "public"
+            }
+          ]
+        }
+      ],
+      "defaultValue": {
+        "key": "the updated default value"
+      }
+    }
+  ],
+  "description": "Fields which can be updated in a dynamic config",
+  "properties": {
+    "isEnabled": {
+      "type": [
+        "string",
+        "boolean"
+      ],
+      "description": "Is the dynamic config enabled."
+    },
+    "description": {
+      "type": "string",
+      "description": "A brief summary of what the dynamic config is being used for."
+    },
+    "rules": {
+      "type": "array",
+      "description": " An array of Rule objects.",
+      "items": {
+        "$ref": "./rule.json"
+      }
+    },
+    "defaultValue": {
+      "type": "object",
+      "description": "The fallback JSON object when no rules are triggered."
+    }
+  }
+}

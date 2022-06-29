@@ -10,29 +10,6 @@
       "rules": []
     }
   },
-  "properties": {
-    "id": {
-      "type": "string"
-    },
-    "isEnabled": {
-      "type": "boolean"
-    },
-    "description": {
-      "type": "string"
-    },
-    "lastModifierName": {
-      "type": "string"
-    },
-    "lastModifierID": {
-      "type": "string"
-    },
-    "rules": {
-      "type": "array",
-      "items": {
-        "$ref": "./rule.json"
-      }
-    }
-  },
   "examples": [
     {
       "id": "a_gate",
@@ -58,5 +35,28 @@
       ]
     }
   ],
-  "description": ""
+  "description": "Gate object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "isEnabled": {
+      "type": "boolean"
+    },
+    "description": {
+      "type": "string"
+    },
+    "lastModifierName": {
+      "type": "string"
+    },
+    "lastModifierID": {
+      "type": "string"
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "$ref": "./rule.json"
+      }
+    }
+  }
 }

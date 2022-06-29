@@ -1,6 +1,8 @@
-module.exports = 
-{
+module.exports = {
   "openapi": "3.0.0",
+  "x-stoplight": {
+    "id": "9fio7rv1803fc"
+  },
   "info": {
     "title": "console/v1",
     "version": "1.0.0"
@@ -52,18 +54,167 @@ module.exports =
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "example": {
-                  "name": "a dynamic config",
-                  "description": "helpful summary of what this dynamic config does"
+                "$ref": "../models/dynamic-config-update.json"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "id": "a_dynamic_config",
+                    "isEnabled": false,
+                    "description": "an updated summary of what this dynamic config does",
+                    "lastModifierName": "CONSOLE API",
+                    "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                    "rules": [
+                      {
+                        "name": "All Conditions",
+                        "passPercentage": 10,
+                        "returnValue": {
+                          "key": true
+                        },
+                        "conditions": [
+                          {
+                            "type": "public"
+                          }
+                        ]
+                      }
+                    ],
+                    "defaultValue": {
+                      "key": true
+                    }
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "201": {
-            "description": "Created",
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Dynamic config updated successfully.",
+                      "data": {
+                        "id": "a_dynamic_config",
+                        "isEnabled": true,
+                        "description": "helpful summary of what this dynamic config does",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "rules": [
+                          {
+                            "name": "All Conditions",
+                            "passPercentage": 10,
+                            "conditions": [
+                              {
+                                "type": "public"
+                              }
+                            ],
+                            "returnValue": {
+                              "key": true
+                            }
+                          }
+                        ],
+                        "defaultValue": {
+                          "key": true
+                        }
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "data": {
+                      "$ref": "../models/dynamic-config.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Dynamic config updated successfully.",
+                      "data": {
+                        "id": "a_dynamic_config",
+                        "isEnabled": true,
+                        "description": "an updated summary of what this dynamic config does",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "6dja72kfgNidnaN",
+                        "rules": [
+                          {
+                            "name": "1/10th of people",
+                            "passPercentage": 10,
+                            "conditions": [
+                              {
+                                "type": "public"
+                              }
+                            ],
+                            "returnValue": {
+                              "key": true
+                            }
+                          }
+                        ],
+                        "defaultValue": {
+                          "key": false
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "$ref": "../models/error.json"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "example-0": {
+                    "summary": "400 Name Used",
+                    "value": {
+                      "status": 400,
+                      "message": "Name is already in use"
+                    }
+                  },
+                  "example-1": {
+                    "summary": "400 Missing Field",
+                    "value": {
+                      "status": 400,
+                      "message": "Bad Request Exception",
+                      "errors": [
+                        {
+                          "property": "name",
+                          "errorMessage": "Required"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
             "headers": {
               "vary": {
                 "schema": {
@@ -105,7 +256,7 @@ module.exports =
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "$ref": "../models/error_401.json"
                 },
                 "example": {
                   "message": "Gate created successfully.",
@@ -117,36 +268,12 @@ module.exports =
                     "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
                     "rules": []
                   }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
                 },
                 "examples": {
-                  "example-0": {
-                    "summary": "400 Name Used",
-                    "value": {
-                      "status": 400,
-                      "message": "Name is already in use"
-                    }
-                  },
                   "example-1": {
-                    "summary": "400 Missing Field",
                     "value": {
-                      "status": 400,
-                      "message": "Bad Request Exception",
-                      "errors": [
-                        {
-                          "property": "name",
-                          "errorMessage": "Required"
-                        }
-                      ]
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
                     }
                   }
                 }
@@ -218,7 +345,15 @@ module.exports =
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "data": {
+                      "$ref": "../models/dynamic-config.json"
+                    }
+                  }
                 },
                 "example": {
                   "message": "Gates listed successfully.",
@@ -312,12 +447,43 @@ module.exports =
                       ]
                     }
                   ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "string",
+                      "data": {
+                        "id": "a_dynamic_config",
+                        "isEnabled": false,
+                        "description": "helpful summary of what this dynamic config does",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "rules": [
+                          {
+                            "name": "1/10th of public gets true",
+                            "passPercentage": 10,
+                            "conditions": [
+                              {
+                                "type": "public"
+                              }
+                            ],
+                            "returnValue": {
+                              "key": true
+                            }
+                          }
+                        ],
+                        "defaultValue": {
+                          "key": true
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
           },
-          "403": {
-            "description": "Forbidden",
+          "404": {
+            "description": "Not Found",
             "headers": {
               "vary": {
                 "schema": {
@@ -359,16 +525,33 @@ module.exports =
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
                 },
                 "example": {
                   "status": 403,
                   "message": "Forbidden resource"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 404,
+                      "message": "Dynamic config not found."
+                    }
+                  }
                 }
               }
             }
           }
-        }
+        },
+        "description": ""
       }
     },
     "/dynamic_configs/{dynamic_config_id}": {
@@ -421,7 +604,15 @@ module.exports =
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "data": {
+                      "$ref": "../models/dynamic_config.json"
+                    }
+                  }
                 },
                 "example": {
                   "message": "Gate read successfully.",
@@ -433,11 +624,93 @@ module.exports =
                     "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
                     "rules": []
                   }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Dynamic config read successfully.",
+                      "data": {
+                        "id": "a_dynamic_config",
+                        "isEnabled": true,
+                        "description": "helpful summary of what this dynamic config does",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "ja739Hi83H",
+                        "rules": [
+                          {
+                            "name": "Public",
+                            "passPercentage": 100,
+                            "returnValue": {
+                              "key": "value"
+                            },
+                            "conditions": [
+                              {
+                                "type": "public"
+                              }
+                            ]
+                          }
+                        ],
+                        "defaultValue": {
+                          "key": "the default value"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 404,
+                      "message": "Dynamic config not found."
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 404,
+                      "message": "Dynamic config not found."
+                    }
+                  }
                 }
               }
             }
           }
-        }
+        },
+        "description": ""
       },
       "post": {
         "tags": [
@@ -448,29 +721,33 @@ module.exports =
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "example": {
-                  "id": "{dynamic_config_id}",
-                  "isEnabled": false,
-                  "description": "helpful summary of what this dynamic config does",
-                  "lastModifierName": "CONSOLE API",
-                  "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                  "rules": [
-                    {
-                      "name": "All Conditions",
-                      "passPercentage": 10,
-                      "returnValue": {
-                        "key": true
-                      },
-                      "conditions": [
-                        {
-                          "type": "public"
-                        }
-                      ]
+                "$ref": "../models/dynamic-config-update.json"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "id": "a_dynamic_config",
+                    "isEnabled": false,
+                    "description": "an updated summary of what this dynamic config does",
+                    "lastModifierName": "CONSOLE API",
+                    "lastModifierID": "j8dp7mqAd",
+                    "rules": [
+                      {
+                        "name": "Public",
+                        "passPercentage": 100,
+                        "returnValue": {
+                          "key": "updated value"
+                        },
+                        "conditions": [
+                          {
+                            "type": "public"
+                          }
+                        ]
+                      }
+                    ],
+                    "defaultValue": {
+                      "key": "the updated default value"
                     }
-                  ],
-                  "defaultValue": {
-                    "key": true
                   }
                 }
               }
@@ -521,7 +798,15 @@ module.exports =
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "data": {
+                      "$ref": "../models/dynamic-config.json"
+                    }
+                  }
                 },
                 "example": {
                   "message": "Gate created successfully.",
@@ -533,6 +818,37 @@ module.exports =
                     "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
                     "rules": []
                   }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "string",
+                      "data": {
+                        "id": "a_dynamic_config",
+                        "isEnabled": true,
+                        "description": "helpful summary of what this dynamic config does",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "ja739Hi83H",
+                        "rules": [
+                          {
+                            "name": "Public",
+                            "passPercentage": 100,
+                            "returnValue": {
+                              "key": "value"
+                            },
+                            "conditions": [
+                              {
+                                "type": "public"
+                              }
+                            ]
+                          }
+                        ],
+                        "defaultValue": {
+                          "key": "the default value"
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -542,7 +858,22 @@ module.exports =
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "$ref": "../models/error.json"
+                      }
+                    }
+                  }
                 },
                 "examples": {
                   "example-0": {
@@ -569,16 +900,56 @@ module.exports =
               }
             }
           },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 404,
+                      "message": "Dynamic config not found."
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
                 },
                 "example": {
                   "status": 403,
                   "message": "Forbidden resource"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 404,
+                      "message": "Dynamic config not found."
+                    }
+                  }
                 }
               }
             }
@@ -634,16 +1005,89 @@ module.exports =
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
                 },
                 "example": {
                   "message": "Gate deleted successfully."
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Dynamic config deleted successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 404,
+                      "message": "Dynamic config not found."
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 404,
+                      "message": "Dynamic config not found."
+                    }
+                  }
                 }
               }
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "dynamic_config_id",
+          "in": "path",
+          "required": true,
+          "description": "The id of the dynamic config to be queried"
+        }
+      ]
     }
   }
 }

@@ -1,5 +1,8 @@
 {
   "type": "object",
+  "x-stoplight": {
+    "id": "5501baf894752"
+  },
   "x-examples": {
     "example-1": {
       "name": "Public",
@@ -11,18 +14,29 @@
       ]
     }
   },
+  "description": "Rule Object",
   "properties": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "description": "The name of this rule."
     },
     "passPercentage": {
-      "type": "integer"
+      "type": "integer",
+      "description": "Of the users that meet the conditions of this rule, what percent should return true."
     },
     "conditions": {
       "type": "array",
+      "description": "An array of Condition objects.",
       "items": {
         "$ref": "./condition.json"
       }
+    },
+    "returnValue": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "description": "The JSON object returned when this rule is triggered."
     }
   }
 }

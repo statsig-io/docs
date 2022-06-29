@@ -1,0 +1,99 @@
+{
+  "type": "object",
+  "x-examples": {
+    "example-1": {
+      "name": "My Autotunes Are Best",
+      "description": "helpful summary of what this Aututune is",
+      "variants": [
+        {
+          "name": "red",
+          "json": {
+            "foo": "boo"
+          }
+        },
+        {
+          "name": "blue",
+          "json": {}
+        }
+      ],
+      "successEvent": "purchase_item",
+      "explorationWindow": "1hr",
+      "attributionWindow": "2hr",
+      "winnerThreshold": "99%"
+    }
+  },
+  "examples": [
+    {
+      "name": "My Autotunes Are Best",
+      "description": "helpful summary of what this Aututune is",
+      "variants": [
+        {
+          "name": "red",
+          "json": {
+            "foo": "boo"
+          }
+        },
+        {
+          "name": "blue",
+          "json": {}
+        }
+      ],
+      "successEvent": "purchase_item",
+      "explorationWindow": "1hr",
+      "attributionWindow": "2hr",
+      "winnerThreshold": "99%"
+    }
+  ],
+  "description": "Autotune Object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "json": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "successEvent": {
+      "type": "string"
+    },
+    "explorationWindow": {
+      "type": "string",
+      "enum": [
+        "1hr",
+        "24hr",
+        "48hr"
+      ]
+    },
+    "attributionWindow": {
+      "type": "string",
+      "enum": [
+        "1hr",
+        "24hr",
+        "48hr"
+      ]
+    },
+    "winnerThreshold": {
+      "type": "string",
+      "enum": [
+        "80%",
+        "90%",
+        "95%",
+        "98%",
+        "99%"
+      ]
+    }
+  }
+}

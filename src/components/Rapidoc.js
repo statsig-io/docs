@@ -27,7 +27,6 @@ function loadReferences(spec) {
         const model = Models[name];
         if (model) {
           spec[key] = model;
-          console.log("loaded", name, spec[key]);
         }
       }
     }
@@ -42,7 +41,7 @@ function loadReferences(spec) {
 export default function Rapidoc(props) {
   const { id, entity } = props;
 
-  const { isDarkTheme } = useColorMode();
+  const isDarkTheme = useColorMode().colorMode === 'dark';
 
   useEffect(() => {
     setTimeout(() => {
@@ -63,7 +62,7 @@ export default function Rapidoc(props) {
         theme={isDarkTheme ? 'dark' : 'light'}
         primary-color={isDarkTheme ? '#2196f3' : '#194b7d'}
         bg-color={isDarkTheme ? '#1b1b1d' : "#ffffff"}
-        style={{ height: "120vh" }}
+        style={{ height: "100%"}}
         allow-search={false}
         render-style="view" // Controls how to api gets rendered
         layout="column"
