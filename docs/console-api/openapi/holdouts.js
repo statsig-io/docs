@@ -2,18 +2,23 @@ module.exports = {
   "openapi": "3.0.0",
   "info": {
     "title": "console/v1",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "contact": {
+      "name": "Statsig Support Slack",
+      "url": "https://www.statsig.com/slack"
+    }
   },
   "servers": [
     {
-      "url": "http://{{base_url}}"
+      "url": "https://api.statsig.com/console/v1"
     }
   ],
   "components": {
     "securitySchemes": {
-      "apikeyAuth": {
-        "type": "http",
-        "scheme": "apikey"
+      "STATSIG-API-KEY": {
+        "name": "STATSIG-API-KEY",
+        "type": "apiKey",
+        "in": "header"
       }
     },
     "requestBodies": {
@@ -114,7 +119,7 @@ module.exports = {
   },
   "security": [
     {
-      "apikeyAuth": []
+      "STATSIG-API-KEY": []
     }
   ],
   "tags": [
@@ -598,20 +603,6 @@ module.exports = {
                       "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
                     }
                   }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                },
-                "example": {
-                  "status": 403,
-                  "message": "Forbidden resource"
                 }
               }
             }
