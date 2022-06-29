@@ -3,9 +3,14 @@ module.exports = {
   "info": {
     "title": "console/v1",
     "version": "1.0.0",
+    "description": "Gate endpoint",
     "contact": {
-      "url": "https://www.statsig.com/slack",
-      "name": "Statsig Support Slack"
+      "name": "Statsig Support Slack",
+      "url": "https://www.statsig.com/slack"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
   "servers": [
@@ -20,6 +25,38 @@ module.exports = {
         "in": "header",
         "name": "STATSIG-API-KEY"
       }
+    },
+    "schemas": {
+      "gate_override": {
+        "type": "object",
+        "x-examples": {
+          "example-1": {
+            "passingUserIDs": [
+              "passing-user"
+            ],
+            "failingUserIDs": [
+              "failing-user"
+            ]
+          }
+        },
+        "properties": {
+          "passingUserIDs": {
+            "type": "array",
+            "description": "An array of UserIDs that will be forced to pass the gate.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "failingUserIDs": {
+            "type": "array",
+            "description": "An array of UserIDs that will be forced to fail the gate.",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "description": ""
+      }
     }
   },
   "security": [
@@ -28,75 +65,245 @@ module.exports = {
     }
   ],
   "paths": {
-    "/segments": {
-      "get": {
+    "/gates": {
+      "post": {
         "tags": [
-          "segments"
+          "gates"
         ],
-        "summary": "Read All Segments",
+        "summary": "Create Gate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "name": {
+                      "type": "string",
+                      "description": "The display name to give the new gate"
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "A summary of what this gate does"
+                    }
+                  }
+                },
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "The name of the new gate"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "A description of the new gate"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "name": "a gate",
+                    "description": "helpful summary of what this gate does"
+                  }
+                }
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "name": {
+                      "type": "string",
+                      "description": "The display name to give the new gate"
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "A summary of what this gate does"
+                    }
+                  }
+                },
+                "properties": {
+                  "name": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "description": "Name of the new gate"
+                      },
+                      "description": {
+                        "type": "string",
+                        "description": "A summary of this gate purpose"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
         "responses": {
-          "200": {
-            "description": "Successful response",
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.yaml"
+                    },
+                    "data": {
+                      "$ref": "../models/gate.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Gate created successfully.",
+                      "data": {
+                        "id": "a_gate",
+                        "isEnabled": true,
+                        "description": "helpful summary of what this gate does",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "rules": []
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "x-examples": {
                     "example-1": {
-                      "message": "Segments listed successfully.",
-                      "data": [
-                        {
-                          "id": "test",
-                          "isEnabled": true,
-                          "description": "test",
-                          "lastModifierName": "Jacob O'Quinn",
-                          "lastModifierID": "wsJTGUMTimICpPESo2DYg",
-                          "type": "rule_based"
-                        },
-                        {
-                          "id": "a_segment",
-                          "isEnabled": true,
-                          "description": "helpful summary of what this segment is",
-                          "lastModifierName": "CONSOLE API",
-                          "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                          "type": "id_list"
-                        },
-                        {
-                          "id": "c_segment",
-                          "isEnabled": true,
-                          "description": "helpful summary of what this segment is",
-                          "lastModifierName": "CONSOLE API",
-                          "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                          "type": "id_list"
-                        },
-                        {
-                          "id": "segment_test_2",
-                          "isEnabled": true,
-                          "description": "this is the second test",
-                          "lastModifierName": "jacob ",
-                          "lastModifierID": "wsJTGUMTimICpPESo2DYg",
-                          "type": "rule_based"
-                        },
-                        {
-                          "id": "segment_test",
-                          "isEnabled": true,
-                          "description": "a simple test ",
-                          "lastModifierName": "jacob ",
-                          "lastModifierID": "wsJTGUMTimICpPESo2DYg",
-                          "type": "rule_based"
-                        }
-                      ]
+                      "status": {
+                        "type": "number",
+                        "description": "Status Code"
+                      },
+                      "message": {
+                        "type": "string",
+                        "description": "A summary of what went wrong"
+                      }
                     }
                   },
                   "properties": {
+                    "status": {
+                      "$ref": "../models/status.yaml"
+                    },
                     "message": {
-                      "$ref": "../models/message.json"
+                      "$ref": "../models/message.yaml"
+                    },
+                    "error": {
+                      "type": "array",
+                      "description": "A list of errors that have occured with the request",
+                      "nullable": true,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "property": {
+                            "type": "string",
+                            "description": "Which property of the request body is invalid"
+                          },
+                          "error": {
+                            "type": "string",
+                            "description": "A description of the problem"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "example-0": {
+                    "summary": "400 Name Used",
+                    "value": {
+                      "status": 400,
+                      "message": "Name is already in use"
+                    }
+                  },
+                  "example-1": {
+                    "summary": "400 Missing Field",
+                    "value": {
+                      "status": 400,
+                      "message": "Bad Request Exception",
+                      "errors": [
+                        {
+                          "property": "name",
+                          "errorMessage": "Required"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-9O92sGDeuJuT8xTVH6zARKsa9MHof2VHWMLBn9vr8Nqaasdf"
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.yaml"
+                    },
+                    "message": {
+                      "$ref": "../models/message.yaml"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxxXXXXxxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Create a new gate"
+      },
+      "get": {
+        "tags": [
+          "gates"
+        ],
+        "summary": "Read All Gates",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "Message": {
+                      "type": "string",
+                      "description": "The status of the request"
                     },
                     "data": {
                       "type": "array",
-                      "description": "An array of segments",
+                      "description": "An array of existing gate objects",
                       "items": {
-                        "$ref": "../models/segment.json"
+                        "$ref": "../models/gate.json"
                       }
                     }
                   }
@@ -104,25 +311,506 @@ module.exports = {
                 "examples": {
                   "example-1": {
                     "value": {
-                      "message": "Segments listed successfully.",
+                      "message": "Gates listed successfully.",
                       "data": [
                         {
-                          "id": "a_segment",
+                          "id": "a_gate",
                           "isEnabled": true,
-                          "description": "helpful summary of what this segment is",
+                          "description": "helpful summary of what this gate does",
                           "lastModifierName": "CONSOLE API",
-                          "lastModifierID": "8dahjGcaRh92n9aoFaicW9",
-                          "type": "id_list"
+                          "lastModifierID": "aiK7Y0FdTimICpPEdUrf2",
+                          "rules": [
+                            {
+                              "name": "a rule",
+                              "passPercentage": 100,
+                              "conditions": [
+                                {
+                                  "type": "user_id",
+                                  "targetValue": [
+                                    "user1"
+                                  ],
+                                  "operator": "any"
+                                }
+                              ]
+                            }
+                          ]
                         },
                         {
-                          "id": "b_segment",
+                          "id": "b_gate",
                           "isEnabled": true,
-                          "description": "like a_segment but with a b instead",
+                          "description": "similar to gate_a but it has a b instead",
                           "lastModifierName": "CONSOLE API",
-                          "lastModifierID": "jFiia92hinDkcGaFijd0",
-                          "type": "id_list"
+                          "lastModifierID": "jd7G9DSiwimICpPjdTl4U8g",
+                          "rules": []
                         }
                       ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "example": {
+                  "status": 403,
+                  "message": "Forbidden resource"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "",
+        "description": "Get a list of all gates",
+        "x-code-samples": [
+          {
+            "lang": "cURL",
+            "label": "cURL",
+            "source": "curl --request GET 'https://api.statsig.com/console/v1/gates' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
+          }
+        ]
+      }
+    },
+    "/gates/{gate_id}": {
+      "get": {
+        "tags": [
+          "gates"
+        ],
+        "summary": "Read Single Gate",
+        "parameters": [
+          {
+            "name": "gate_id",
+            "in": "path",
+            "description": "Gate ID to get",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Gate read successfully.",
+                      "data": {
+                        "id": "a_gate",
+                        "isEnabled": true,
+                        "description": "helpful summary of what this gate does",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "rules": [
+                          {
+                            "name": "All Conditions",
+                            "passPercentage": 10,
+                            "conditions": [
+                              {
+                                "type": "public"
+                              },
+                              {
+                                "type": "user_id",
+                                "targetValue": [
+                                  "111",
+                                  "222"
+                                ],
+                                "operator": "any"
+                              },
+                              {
+                                "type": "email",
+                                "targetValue": [
+                                  "@outlook.com",
+                                  "@gmail.com"
+                                ],
+                                "operator": "str_contains_any"
+                              },
+                              {
+                                "type": "email",
+                                "operator": "is_null"
+                              },
+                              {
+                                "type": "custom_field",
+                                "targetValue": 31,
+                                "operator": "gt",
+                                "field": "age"
+                              },
+                              {
+                                "type": "app_version",
+                                "targetValue": "1.1.1",
+                                "operator": "version_gt"
+                              },
+                              {
+                                "type": "browser_name",
+                                "targetValue": [
+                                  "Android",
+                                  "Chrome"
+                                ],
+                                "operator": "any"
+                              },
+                              {
+                                "type": "browser_version",
+                                "targetValue": [
+                                  "94.0.4606.81",
+                                  "94.0.4606.92"
+                                ],
+                                "operator": "any"
+                              },
+                              {
+                                "type": "os_name",
+                                "targetValue": [
+                                  "Android",
+                                  "Windows"
+                                ],
+                                "operator": "none"
+                              },
+                              {
+                                "type": "os_version",
+                                "targetValue": "11.0.0",
+                                "operator": "version_lte"
+                              },
+                              {
+                                "type": "country",
+                                "targetValue": [
+                                  "NZ",
+                                  "US"
+                                ],
+                                "operator": "any"
+                              },
+                              {
+                                "type": "passes_gate",
+                                "targetValue": "my_gate_2"
+                              },
+                              {
+                                "type": "fails_gate",
+                                "targetValue": "my_gate_2"
+                              },
+                              {
+                                "type": "time",
+                                "targetValue": 1643070357193,
+                                "operator": "after"
+                              },
+                              {
+                                "type": "environment_tier",
+                                "targetValue": [
+                                  "production"
+                                ],
+                                "operator": "any"
+                              },
+                              {
+                                "type": "passes_segment",
+                                "targetValue": "growth_org"
+                              },
+                              {
+                                "type": "fails_segment",
+                                "targetValue": "growth_org"
+                              },
+                              {
+                                "type": "ip_address",
+                                "targetValue": [
+                                  "1.1.1.1",
+                                  "8.8.8.8"
+                                ],
+                                "operator": "any"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.yaml"
+                    },
+                    "data": {
+                      "$ref": "../models/gate.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Gate read successfully.",
+                      "data": {
+                        "id": "a_gate",
+                        "isEnabled": true,
+                        "description": "helpful summary of what this gate does",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "rules": [
+                          {
+                            "name": "specific users",
+                            "passPercentage": 100,
+                            "conditions": [
+                              {
+                                "type": "user_id",
+                                "targetValue": [
+                                  "111",
+                                  "222"
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 400,
+                      "message": "Name is already in use"
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.yaml"
+                    },
+                    "message": {
+                      "$ref": "../models/message.yaml"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 400,
+                      "message": "Name is already in use"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Read data from a single gate "
+      },
+      "post": {
+        "tags": [
+          "gates"
+        ],
+        "summary": "Update Gate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/gate.json"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "isEnabled": false,
+                    "description": "helpful summary of what this gate does",
+                    "lastModifierName": "CONSOLE API",
+                    "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
+                    "rules": [
+                      {
+                        "name": "new rules",
+                        "passPercentage": 10,
+                        "conditions": [
+                          {
+                            "type": "email",
+                            "operator": "str_contains_any",
+                            "targetValue": [
+                              "@outlook.com",
+                              "@gmail.com"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "description": "The fields you wish to override in the given gate"
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.yaml"
+                    },
+                    "data": {
+                      "$ref": "../models/gate.json"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Gate updated successfully.",
+                  "data": {
+                    "id": "a_gate",
+                    "isEnabled": true,
+                    "description": "Description Here",
+                    "lastModifierName": "CONSOLE API",
+                    "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
+                    "rules": [
+                      {
+                        "name": "Specific Users",
+                        "passPercentage": 100,
+                        "conditions": [
+                          {
+                            "type": "user_id",
+                            "targetValue": [
+                              "111",
+                              "222"
+                            ],
+                            "operator": "any"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Public",
+                        "passPercentage": 10,
+                        "conditions": [
+                          {
+                            "type": "public"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Create a new gate"
+      },
+      "delete": {
+        "tags": [
+          "gates"
+        ],
+        "summary": "Delete Gate",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.yaml"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Gate deleted successfully."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete a gate"
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "gate_id",
+          "in": "path",
+          "description": "The unique gate id to query",
+          "required": true
+        }
+      ]
+    },
+    "/gates/{gate_id}/overrides": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "gate_id",
+          "in": "path",
+          "required": true,
+          "description": "Gate id to query"
+        }
+      ],
+      "get": {
+        "tags": [
+          "gates"
+        ],
+        "summary": "Get a list of overrides for a gate",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "passingUserIDs": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "failingUserIDs": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Holdout Overrides updated successfully.",
+                      "data": {
+                        "passingUserIDs": [
+                          "passing-user"
+                        ],
+                        "failingUserIDs": [
+                          "failing-user"
+                        ]
+                      }
                     }
                   }
                 }
@@ -146,123 +834,64 @@ module.exports = {
                 }
               }
             }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "segments"
-        ],
-        "summary": "Create Segment",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "description": {
-                    "type": "string"
-                  },
-                  "type": {
-                    "type": "string"
-                  }
-                },
-                "x-examples": {
-                  "example-1": {
-                    "name": "a segment",
-                    "description": "helpful summary of what this segment is",
-                    "type": "id_list"
-                  }
-                }
-              },
-              "examples": {
-                "example-1": {
-                  "value": {
-                    "name": "a segment",
-                    "description": "helpful summary of what this segment is",
-                    "type": "id_list"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response",
+          },
+          "404": {
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "x-examples": {
                     "example-1": {
-                      "message": "Segment created successfully.",
-                      "data": {
-                        "id": "a_segment",
-                        "isEnabled": true,
-                        "description": "helpful summary of what this segment is",
-                        "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                        "type": "id_list"
-                      }
+                      "status": 404,
+                      "message": "Holdout not found."
                     }
                   },
                   "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
                     "message": {
                       "$ref": "../models/message.json"
-                    },
-                    "data": {
-                      "$ref": "../models/segment.json"
                     }
                   }
                 },
                 "examples": {
                   "example-1": {
                     "value": {
-                      "message": "Segment created successfully.",
-                      "data": {
-                        "id": "a_segment",
-                        "isEnabled": true,
-                        "description": "helpful summary of what this segment is",
-                        "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                        "type": "id_list"
-                      }
+                      "status": 404,
+                      "message": "Holdout not found."
                     }
                   }
                 }
               }
             }
           }
-        }
-      }
-    },
-    "/segments/{segment_id}": {
-      "get": {
+        },
+        "operationId": "get-gates-gate_id-overrides"
+      },
+      "post": {
+        "summary": "Update overrides on a gate",
         "tags": [
-          "segments"
+          "gates"
         ],
-        "summary": "Read a Single Segment",
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "x-examples": {
                     "example-1": {
-                      "message": "Segment read successfully.",
+                      "message": "Holdout Overrides updated successfully.",
                       "data": {
-                        "id": "a_segment",
-                        "isEnabled": true,
-                        "description": "helpful summary of what this segment is",
-                        "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                        "type": "id_list"
+                        "passingUserIDs": [
+                          "passing-user"
+                        ],
+                        "failingUserIDs": [
+                          "failing-user"
+                        ]
                       }
                     }
                   },
@@ -271,7 +900,22 @@ module.exports = {
                       "$ref": "../models/message.json"
                     },
                     "data": {
-                      "$ref": "../models/segment.json"
+                      "$ref": "#/components/schemas/gate_override"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Holdout Overrides updated successfully.",
+                      "data": {
+                        "passingUserIDs": [
+                          "passing-user"
+                        ],
+                        "failingUserIDs": [
+                          "failing-user"
+                        ]
+                      }
                     }
                   }
                 }
@@ -297,7 +941,7 @@ module.exports = {
                   "x-examples": {
                     "example-1": {
                       "status": 404,
-                      "message": "Segment not found."
+                      "message": "Holdout not found."
                     }
                   },
                   "properties": {
@@ -313,85 +957,37 @@ module.exports = {
                   "example-1": {
                     "value": {
                       "status": 404,
-                      "message": "Segment not found."
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "x-examples": {
-                    "example-1": {
-                      "message": "Segment read successfully.",
-                      "data": {
-                        "id": "a_segment",
-                        "isEnabled": true,
-                        "description": "helpful summary of what this segment is",
-                        "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                        "type": "id_list"
-                      }
-                    }
-                  },
-                  "properties": {
-                    "message": {
-                      "$ref": "../models/message.json"
-                    },
-                    "data": {
-                      "$ref": "../models/segment.json"
-                    }
-                  }
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "message": "Segment read successfully.",
-                      "data": {
-                        "id": "a_segment",
-                        "isEnabled": true,
-                        "description": "helpful summary of what this segment is",
-                        "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                        "type": "id_list"
-                      }
+                      "message": "Holdout not found."
                     }
                   }
                 }
               }
             }
           }
-        }
-      },
-      "delete": {
-        "tags": [
-          "segments"
-        ],
-        "summary": "Delete Segment",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
+        },
+        "operationId": "post-gates-gate_id-overrides",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/gate_override"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "passingUserIDs": [
+                      "passing-user"
+                    ],
+                    "failingUserIDs": [
+                      "failing-user"
+                    ]
+                  }
+                }
+              }
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "segment_id",
-          "in": "path",
-          "required": true,
-          "description": "The segment id to query"
-        }
-      ]
+      }
     }
   }
 }
