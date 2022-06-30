@@ -6,9 +6,17 @@ on:
 name: Broken Link Check
 
 jobs:
-  check:
-    name: Broken Link Check
+  broken_link_checker_job:
     runs-on: ubuntu-latest
+    name: Check for broken links
     steps:
-      - name: Broken Link Check
-        uses: technote-space/broken-link-checker-action@v2
+    - name: Check for broken links
+      id: link-report
+      uses: celinekurpershoek/link-checker@v1.0.1
+      with:
+        # Required:
+        url: 'https://docs.statsig.com'
+        honorRobotExclusions: false
+        recursiveLinks: true
+    - name: Get the result
+      run: echo "${{steps.link-report.outputs.result}}"
