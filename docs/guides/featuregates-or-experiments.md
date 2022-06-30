@@ -8,7 +8,7 @@ If you're wondering when to use a feature gate vs. an experiment, this guide is 
 
 ## What do you need?
 In short, 
- - Want to measure the impact of a feature? Use a **Feature Gate**.
+ - Want to measure the impact of a feature (and roll it out gradually)? Use a **Feature Gate**.
  - Want to test your hypotheses between product variants? Create an **Experiment**.
 
 ## What to expect?
