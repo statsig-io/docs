@@ -1,11 +1,12 @@
 module.exports = {
   "openapi": "3.0.0",
-  "x-stoplight": {
-    "id": "85s9baacsp738"
-  },
   "info": {
     "title": "console/v1",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://www.statsig.com/slack",
+      "name": "Statsig Support Slack"
+    }
   },
   "servers": [
     {
@@ -48,7 +49,7 @@ module.exports = {
                           "id": "test",
                           "isEnabled": true,
                           "description": "test",
-                          "lastModifierName": "CONSOLE API",
+                          "lastModifierName": "Jacob O'Quinn",
                           "lastModifierID": "wsJTGUMTimICpPESo2DYg",
                           "type": "rule_based"
                         },
@@ -57,7 +58,7 @@ module.exports = {
                           "isEnabled": true,
                           "description": "helpful summary of what this segment is",
                           "lastModifierName": "CONSOLE API",
-                          "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                          "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                           "type": "id_list"
                         },
                         {
@@ -65,14 +66,14 @@ module.exports = {
                           "isEnabled": true,
                           "description": "helpful summary of what this segment is",
                           "lastModifierName": "CONSOLE API",
-                          "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                          "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                           "type": "id_list"
                         },
                         {
                           "id": "segment_test_2",
                           "isEnabled": true,
                           "description": "this is the second test",
-                          "lastModifierName": "CONSOLE API",
+                          "lastModifierName": "jacob ",
                           "lastModifierID": "wsJTGUMTimICpPESo2DYg",
                           "type": "rule_based"
                         },
@@ -80,7 +81,7 @@ module.exports = {
                           "id": "segment_test",
                           "isEnabled": true,
                           "description": "a simple test ",
-                          "lastModifierName": "CONSOLE API",
+                          "lastModifierName": "jacob ",
                           "lastModifierID": "wsJTGUMTimICpPESo2DYg",
                           "type": "rule_based"
                         }
@@ -158,22 +159,28 @@ module.exports = {
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "description": {
-                    "type": "string"
-                  },
-                  "type": {
-                    "type": "string"
-                  }
-                },
                 "x-examples": {
                   "example-1": {
                     "name": "a segment",
                     "description": "helpful summary of what this segment is",
                     "type": "id_list"
+                  }
+                },
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the new segment"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "A brief summary of what the segment is being used for."
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "id_list",
+                      "rule_based"
+                    ]
                   }
                 }
               },
@@ -204,7 +211,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "type": "id_list"
                       }
                     }
@@ -227,9 +234,27 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "type": "id_list"
                       }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
                     }
                   }
                 }
@@ -260,7 +285,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "type": "id_list"
                       }
                     }
@@ -332,7 +357,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "type": "id_list"
                       }
                     }
@@ -355,7 +380,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "type": "id_list"
                       }
                     }
@@ -375,7 +400,78 @@ module.exports = {
           "200": {
             "description": "Successful response",
             "content": {
-              "application/json": {}
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Segment deleted successfully."
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Segment deleted successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 404,
+                      "message": "Segment not found."
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 404,
+                      "message": "Segment not found."
+                    }
+                  }
+                }
+              }
             }
           }
         }

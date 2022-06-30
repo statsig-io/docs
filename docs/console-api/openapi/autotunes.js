@@ -52,24 +52,19 @@ module.exports = {
               },
               "properties": {
                 "description": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "A brief summary of what the autotune is being used for."
                 },
                 "variants": {
                   "type": "array",
+                  "description": "Array of Variant Objects",
                   "items": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string"
-                      },
-                      "json": {
-                        "type": "object"
-                      }
-                    }
+                    "$ref": "../models/variant.json"
                   }
                 },
                 "successEvent": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "The event you are trying to optimize for."
                 },
                 "explorationWindow": {
                   "type": "string",
@@ -80,7 +75,8 @@ module.exports = {
                     "1",
                     "24",
                     "48"
-                  ]
+                  ],
+                  "description": "The initial time period where Autotune will equally split the traffic."
                 },
                 "attributionWindow": {
                   "type": "string",
@@ -93,7 +89,8 @@ module.exports = {
                     "2",
                     "4",
                     "24"
-                  ]
+                  ],
+                  "description": "The maximum duration between the exposure and success event that counts as a success."
                 },
                 "winnerThreshold": {
                   "type": "string",
@@ -103,7 +100,8 @@ module.exports = {
                     "95%",
                     "98%",
                     "99%"
-                  ]
+                  ],
+                  "description": "The \"probability of best\" threshold a variant needs to achieve for Autotune to declare it the winner, stop collecting data, and direct all traffic."
                 }
               }
             },
@@ -238,6 +236,14 @@ module.exports = {
               "application/json": {
                 "schema": {
                   "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
                 }
               }
             }
@@ -258,18 +264,20 @@ module.exports = {
               "examples": {
                 "example-1": {
                   "value": {
-                    "name": "My Autotunes Are Best",
+                    "name": "a_autotune",
                     "description": "helpful summary of what this Aututune is",
                     "variants": [
                       {
                         "name": "red",
                         "json": {
-                          "foo": "boo"
+                          "color": "red"
                         }
                       },
                       {
                         "name": "blue",
-                        "json": {}
+                        "json": {
+                          "color": "blue"
+                        }
                       }
                     ],
                     "successEvent": "purchase_item",
@@ -451,7 +459,7 @@ module.exports = {
         "tags": [
           "autotunes"
         ],
-        "summary": "Read a Single Segment",
+        "summary": "Read a Single Autotune",
         "responses": {
           "200": {
             "description": "OK",

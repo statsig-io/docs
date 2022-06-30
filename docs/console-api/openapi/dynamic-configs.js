@@ -1,11 +1,12 @@
 module.exports = {
   "openapi": "3.0.0",
-  "x-stoplight": {
-    "id": "9fio7rv1803fc"
-  },
   "info": {
     "title": "console/v1",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://www.statsig.com/slack",
+      "name": "Statsig Support Slack"
+    }
   },
   "servers": [
     {
@@ -26,35 +27,18 @@ module.exports = {
       "STATSIG-API-KEY": []
     }
   ],
-  "tags": [
-    {
-      "name": "gates"
-    },
-    {
-      "name": "dynamic config"
-    },
-    {
-      "name": "segments"
-    },
-    {
-      "name": "autotunes"
-    },
-    {
-      "name": "events"
-    }
-  ],
   "paths": {
     "/dynamic_configs": {
       "post": {
         "tags": [
-          "dynamic config"
+          "dynamic configs"
         ],
         "summary": "Create Dynamic Config",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/dynamic-config-update.json"
+                "$ref": "../models/dynmaic-config-update.json"
               },
               "examples": {
                 "example-1": {
@@ -63,7 +47,7 @@ module.exports = {
                     "isEnabled": false,
                     "description": "an updated summary of what this dynamic config does",
                     "lastModifierName": "CONSOLE API",
-                    "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                    "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                     "rules": [
                       {
                         "name": "All Conditions",
@@ -102,7 +86,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this dynamic config does",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "rules": [
                           {
                             "name": "All Conditions",
@@ -298,7 +282,7 @@ module.exports = {
       },
       "get": {
         "tags": [
-          "dynamic config"
+          "dynamic configs"
         ],
         "summary": "Read All Dynamic Configs",
         "responses": {
@@ -457,7 +441,7 @@ module.exports = {
                         "isEnabled": false,
                         "description": "helpful summary of what this dynamic config does",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "rules": [
                           {
                             "name": "1/10th of public gets true",
@@ -557,7 +541,7 @@ module.exports = {
     "/dynamic_configs/{dynamic_config_id}": {
       "get": {
         "tags": [
-          "dynamic config"
+          "dynamic configs"
         ],
         "summary": "Read Single Dynamic Config",
         "responses": {
@@ -713,15 +697,12 @@ module.exports = {
         "description": ""
       },
       "post": {
-        "tags": [
-          "dynamic config"
-        ],
         "summary": "Update Dynamic Config",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/dynamic-config-update.json"
+                "$ref": "../models/dynmaic-config-update.json"
               },
               "examples": {
                 "example-1": {
@@ -954,12 +935,12 @@ module.exports = {
               }
             }
           }
-        }
+        },
+        "tags": [
+          "dynamic configs"
+        ]
       },
       "delete": {
-        "tags": [
-          "dynamic config"
-        ],
         "summary": "Delete Dynamic Config",
         "responses": {
           "200": {
@@ -1075,7 +1056,10 @@ module.exports = {
               }
             }
           }
-        }
+        },
+        "tags": [
+          "dynamic configs"
+        ]
       },
       "parameters": [
         {
@@ -1089,5 +1073,10 @@ module.exports = {
         }
       ]
     }
-  }
+  },
+  "tags": [
+    {
+      "name": "dynamic configs"
+    }
+  ]
 }

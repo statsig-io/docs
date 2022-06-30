@@ -2,10 +2,10 @@
   "type": "object",
   "x-examples": {
     "example-1": {
-      "id": "my_autotunes_are_best",
+      "id": "my_autotunes_are_bestj",
       "isStarted": false,
       "description": "helpful summary of what this Aututune is",
-      "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+      "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
       "lastModifierName": "CONSOLE API",
       "variants": [
         {
@@ -27,6 +27,30 @@
     }
   },
   "description": "Autotune object",
+  "examples": [
+    {
+      "name": "a_autotune",
+      "description": "helpful summary of what this Aututune is",
+      "variants": [
+        {
+          "name": "red",
+          "json": {
+            "color": "red"
+          }
+        },
+        {
+          "name": "blue",
+          "json": {
+            "color": "blue"
+          }
+        }
+      ],
+      "successEvent": "purchase_item",
+      "explorationWindow": "1hr",
+      "attributionWindow": "2hr",
+      "winnerThreshold": "99%"
+    }
+  ],
   "properties": {
     "id": {
       "type": "string",
@@ -65,7 +89,7 @@
     },
     "explorationWindow": {
       "type": "string",
-      "description": "The initial time period where Autotune will equally split the traffic.\nstring | \"1\" or \"24\" or \"48\"",
+      "description": "The initial time period where Autotune will equally split the traffic.",
       "enum": [
         "1hr",
         "24hr",

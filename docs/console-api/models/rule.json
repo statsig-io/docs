@@ -32,10 +32,7 @@
       }
     },
     "returnValue": {
-      "type": [
-        "null",
-        "object"
-      ],
+      "type": "object",
       "description": "The JSON object returned when this rule is triggered."
     }
   }

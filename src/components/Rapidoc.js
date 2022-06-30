@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import Models from "../../docs/console-api/models/index";
 import { useColorMode } from '@docusaurus/theme-common';
-import { isConstructorDeclaration } from "typescript";
 
 const supportedEntities = ["autotunes", "dynamic-configs","gates","holdouts","segments"]
 
@@ -48,6 +47,7 @@ function loadAllEndpoints(){
       }
     }
   }
+  console.log(allEndpoints)
   return allEndpoints;
 }
 
