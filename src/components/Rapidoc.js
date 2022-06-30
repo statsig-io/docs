@@ -116,7 +116,14 @@ export default function Rapidoc(props) {
         show-header={false} // Disable user changing api spec file
         allow-authentication={true} // Enable user passing STATSIG-API-KEY at top of file
         regular-font={["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Ubuntu", "sans-serif"]}
-      />
+      >
+        <p slot="auth" style={{color:'#E05550'}}>
+          Warning! You will be directly modifying the project connected to the api-key provided.
+        </p>
+        <p slot="auth">
+          We suggest creating a temporary project when testing our the API below
+        </p>
+      </rapi-doc>
     );
   }
   return <div />;
