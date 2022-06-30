@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "x-stoplight": {
+    "id": "b98cd9db5791a"
+  },
+  "x-examples": {
+    "example-1": {
+      "name": "red",
+      "json": {
+        "foo": "bar",
+        "types": [
+          1,
+          2,
+          3
+        ]
+      }
+    }
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name given to this variant."
+    },
+    "json": {
+      "type": "object",
+      "description": "The JSON value returned for this variant."
+    }
+  },
+  "description": "Variant Object"
+}

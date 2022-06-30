@@ -43,7 +43,7 @@ curl --request POST 'https://api.statsig.com/console/v1/holdouts/a_holdout'
     "idType": "a_customid",
     "isGlobal": true,
     "lastModifierName": "CONSOLE API",
-    "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+    "lastModifierID": "ahKwUoaNauHu9AmJPc2",
     "passPercentage": 10,
     "gateIDs": [ 
     ],

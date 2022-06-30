@@ -1,11 +1,12 @@
 module.exports = {
   "openapi": "3.0.0",
-  "x-stoplight": {
-    "id": "qbkyg1l2zyhhs"
-  },
   "info": {
     "title": "console/v1",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://www.statsig.com/slack",
+      "name": "Statsig Support Slack"
+    }
   },
   "servers": [
     {
@@ -160,10 +161,7 @@ module.exports = {
                       "$ref": "../models/message.json"
                     },
                     "data": {
-                      "type": [
-                        "string",
-                        "array"
-                      ],
+                      "type": "array",
                       "items": {
                         "$ref": "../models/autotune.json"
                       }
@@ -244,9 +242,6 @@ module.exports = {
               }
             }
           }
-        },
-        "requestBody": {
-          "$ref": "#/components/requestBodies/update_autotune"
         }
       },
       "post": {
@@ -291,7 +286,111 @@ module.exports = {
           "200": {
             "description": "Successful response",
             "content": {
-              "application/json": {}
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Autotune Experiments listed successfully.",
+                      "data": [
+                        {
+                          "id": "button_color_test",
+                          "isStarted": false,
+                          "description": "Which color button gets the most clicks.",
+                          "lastModifierID": "pqicjc739cna93nca",
+                          "lastModifierName": "CONSOLE API",
+                          "variants": [
+                            {
+                              "name": "red",
+                              "json": {
+                                "color": "red"
+                              }
+                            },
+                            {
+                              "name": "blue",
+                              "json": {
+                                "color": "blue"
+                              }
+                            }
+                          ],
+                          "successEvent": "click",
+                          "successEventValue": "",
+                          "explorationWindow": "1hr",
+                          "attributionWindow": "2hrs",
+                          "winnerThreshold": "99%"
+                        },
+                        {
+                          "id": "rounded_icons_test",
+                          "isStarted": false,
+                          "description": "Circles vs rounded squares.",
+                          "lastModifierID": "pqicjc739cna93nca",
+                          "lastModifierName": "CONSOLE API",
+                          "variants": [
+                            {
+                              "name": "circle",
+                              "json": {
+                                "shape": "circle"
+                              }
+                            },
+                            {
+                              "name": "rounded square",
+                              "json": {
+                                "shape": "rounded-square"
+                              }
+                            }
+                          ],
+                          "successEvent": "purchase_item",
+                          "successEventValue": "",
+                          "explorationWindow": "1hr",
+                          "attributionWindow": "2hrs",
+                          "winnerThreshold": "99%"
+                        }
+                      ]
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "../models/autotune.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Autotune Experiments created successfully.",
+                      "data": {
+                        "id": "button_color_test",
+                        "isStarted": false,
+                        "description": "Which color button gets the most clicks.",
+                        "lastModifierID": "pqicjc739cna93nca",
+                        "lastModifierName": "CONSOLE API",
+                        "variants": [
+                          {
+                            "name": "red",
+                            "json": {
+                              "color": "red"
+                            }
+                          },
+                          {
+                            "name": "blue",
+                            "json": {
+                              "color": "blue"
+                            }
+                          }
+                        ],
+                        "successEvent": "click",
+                        "successEventValue": "",
+                        "explorationWindow": "1hr",
+                        "attributionWindow": "2hrs",
+                        "winnerThreshold": "99%"
+                      }
+                    }
+                  }
+                }
+              }
             }
           },
           "400": {

@@ -315,7 +315,7 @@ module.exports = {
                           "idType": "userID",
                           "isGlobal": true,
                           "lastModifierName": "CONSOLE API",
-                          "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                          "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                           "passPercentage": 10,
                           "gateIDs": [
                             "g_gate",
@@ -464,7 +464,7 @@ module.exports = {
                         "idType": "userID",
                         "isGlobal": true,
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "passPercentage": 10,
                         "gateIDs": [],
                         "experimentIDs": [],
@@ -505,7 +505,7 @@ module.exports = {
                         "idType": "userID",
                         "isGlobal": true,
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "passPercentage": 30,
                         "gateIDs": [
                           "a_gate"
@@ -824,7 +824,7 @@ module.exports = {
                         "idType": "userID",
                         "isGlobal": true,
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "passPercentage": 10,
                         "gateIDs": [],
                         "experimentIDs": [],
@@ -865,7 +865,7 @@ module.exports = {
                         "idType": "userID",
                         "isGlobal": true,
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "passPercentage": 30,
                         "gateIDs": [
                           "a_gate"

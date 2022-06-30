@@ -48,7 +48,7 @@ module.exports = {
                           "id": "test",
                           "isEnabled": true,
                           "description": "test",
-                          "lastModifierName": "Jacob O'Quinn",
+                          "lastModifierName": "CONSOLE API",
                           "lastModifierID": "wsJTGUMTimICpPESo2DYg",
                           "type": "rule_based"
                         },
@@ -57,7 +57,7 @@ module.exports = {
                           "isEnabled": true,
                           "description": "helpful summary of what this segment is",
                           "lastModifierName": "CONSOLE API",
-                          "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                          "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                           "type": "id_list"
                         },
                         {
@@ -65,14 +65,14 @@ module.exports = {
                           "isEnabled": true,
                           "description": "helpful summary of what this segment is",
                           "lastModifierName": "CONSOLE API",
-                          "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                          "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                           "type": "id_list"
                         },
                         {
                           "id": "segment_test_2",
                           "isEnabled": true,
                           "description": "this is the second test",
-                          "lastModifierName": "jacob ",
+                          "lastModifierName": "CONSOLE API",
                           "lastModifierID": "wsJTGUMTimICpPESo2DYg",
                           "type": "rule_based"
                         },
@@ -80,7 +80,7 @@ module.exports = {
                           "id": "segment_test",
                           "isEnabled": true,
                           "description": "a simple test ",
-                          "lastModifierName": "jacob ",
+                          "lastModifierName": "CONSOLE API",
                           "lastModifierID": "wsJTGUMTimICpPESo2DYg",
                           "type": "rule_based"
                         }
@@ -204,7 +204,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "type": "id_list"
                       }
                     }
@@ -227,7 +227,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "type": "id_list"
                       }
                     }
@@ -260,7 +260,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "type": "id_list"
                       }
                     }
@@ -332,7 +332,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "type": "id_list"
                       }
                     }
@@ -355,7 +355,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "type": "id_list"
                       }
                     }

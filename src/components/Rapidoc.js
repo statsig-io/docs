@@ -121,7 +121,7 @@ export default function Rapidoc(props) {
           Warning! You will be directly modifying the project connected to the api-key provided.
         </p>
         <p slot="auth">
-          We suggest creating a temporary project when testing our the API below
+          We suggest creating a temporary project when testing our API below.
         </p>
       </rapi-doc>
     );

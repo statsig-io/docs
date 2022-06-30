@@ -63,7 +63,7 @@ module.exports = {
                     "isEnabled": false,
                     "description": "an updated summary of what this dynamic config does",
                     "lastModifierName": "CONSOLE API",
-                    "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                    "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                     "rules": [
                       {
                         "name": "All Conditions",
@@ -102,7 +102,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this dynamic config does",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "rules": [
                           {
                             "name": "All Conditions",
@@ -457,7 +457,7 @@ module.exports = {
                         "isEnabled": false,
                         "description": "helpful summary of what this dynamic config does",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "rules": [
                           {
                             "name": "1/10th of public gets true",

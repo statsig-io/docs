@@ -164,7 +164,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this gate does",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "rules": []
                       }
                     }
@@ -404,7 +404,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this gate does",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "rules": [
                           {
                             "name": "All Conditions",
@@ -541,7 +541,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this gate does",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "rules": [
                           {
                             "name": "specific users",
