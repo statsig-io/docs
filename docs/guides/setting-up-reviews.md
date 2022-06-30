@@ -62,7 +62,7 @@ As a Project Admin, you can allow yourself and other Project Admins to self-appr
 
 <img width="1109" alt="image" src="https://user-images.githubusercontent.com/1315028/166682645-b2daf076-7f8b-4413-9bc7-01e92e8eeb05.png"/>
 
-### Skipping reviews
+### Skipping reviews in dev and staging environments 
 If reviews are required on your project, you can add explicit sections for Development and Staging tier rules. These are identical to a rule that has a rule that includes an AND condition that specifies Environment Tier = Dev/Staging. Changes made to the explicit Dev/Staging tier rules do not require approval. 
 
 ![image](https://user-images.githubusercontent.com/31516123/176740260-2fb19763-1bb7-40de-a363-c4a3ae02e07b.png)
