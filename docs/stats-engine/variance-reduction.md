@@ -1,10 +1,10 @@
 ---
 title: Variance Reduction
-sidebar_label: Variance Reduction (CUPED)
+sidebar_label: Variance Reduction
 slug: /stats-engine/variance_reduction
 ---
 
-## Variance Reduction At Statsig
+## Variance Reduction
 
 [Variance](/stats-engine/variance) is a measurement of dispersion which measures the amount of "noise" in a metric or experiment results. Higher variance is associated with larger confidence intervals, and leads to experiments requiring more sample size to consistently observe a statistically significant result on the same effect size.
 
@@ -32,6 +32,12 @@ Extending this observation, the more correlated the pre-experiment information i
 - CUPED does not work on new users, because there is not pre-exposure data to leverage
 - CUPED will not be applied historically for newly created metrics, or metrics that were added to Key Metrics partway through an experiment, but will be calculated for exposed users after the metric is added
 - CUPED is less effective if a user's metric value is uncorrelated with historical behavior
+
+## Winsorization
+
+Another common technique for reducing noise is Winsorization, which is a way to manage the influence of outliers.
+
+Winsorization refers to the practice of measuring the percentile _P<sub>x</sub>_ of a metric and setting all values over _P<sub>x</sub>_ to _P<sub>x</sub>_. At Statsig, the default percentile for winsorization is 99.9%. This reduces the influence of extreme outliers caused by factors such as logging errors or bad actors.
 
 ## Literature
 
