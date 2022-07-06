@@ -32,7 +32,7 @@ Extending this observation, the more correlated the pre-experiment information i
 - CUPED does not work on new users, because there is not pre-exposure data to leverage
 - CUPED will not be applied historically for newly created metrics, or metrics that were added to Key Metrics partway through an experiment, but will be calculated for exposed users after the metric is added
 - CUPED is less effective if a user's metric value is uncorrelated with historical behavior
-- CUPED is applied to common metric types, and we're working on rolling it out to more metric types.
+- CUPED is applied to common metric types, but not all; we're working on rolling it out to more metric types
 
 ## Winsorization
 
