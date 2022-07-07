@@ -56,8 +56,14 @@ Once these steps have been completed, your Segment Audience will be synced, and 
 
 To export your Statsig events to Segment,
 
-1. Log into the Statsig console and navigate to the [**Integrations**](https://console.statsig.com/integrations) page.
-2. Click on the **Segment** card and switch to the **Outbound** tab, copy your [Segment write key](https://segment.com/docs/getting-started/02-simple-install/#find-your-write-key), paste into the **API Key** text box shown below, and click **Enable**.
+1. Create an [HTTP API](https://segment.com/docs/connections/sources/catalog/libraries/server/http-api/) source on the Segment dashboard.
+2. Select your HTTP API source and select the 'Settings' tab, then on the side bar, select API Keys.
+
+   ![Screen Shot 2022-07-07 at 11 36 37 AM](https://user-images.githubusercontent.com/95646168/177846106-0b17fda2-bad7-47b2-9e75-4036b2075fed.png)
+
+3. Locate your **Write Key** and copy it.
+4. Log into the Statsig console and navigate to the [**Integrations**](https://console.statsig.com/integrations) page.
+5. Click on the **Segment** card and switch to the **Outbound** tab, paste the **Write Key** into the **API Key** text box shown below, and click **Enable**.
 
 ![image](https://user-images.githubusercontent.com/1315028/150827399-333d9064-de1c-4f4e-bc33-51a46a83531d.png)
 
