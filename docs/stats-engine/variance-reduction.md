@@ -12,7 +12,7 @@ Reducing variance can lead to shorter experiment run times due to the lower samp
 
 At Statsig, we use a form of CUPED based on a [2013 Microsoft paper](https://www.exp-platform.com/Documents/2013-02-CUPED-ImprovingSensitivityOfControlledExperiments.pdf) (Deng, Xu, Kohavi, & Walker). This is automatically applied to experiments at Statsig, and is run for the topline results on key metrics in Pulse. This observably leads to significant variance reduction in the large majority of metrics where CUPED can be applied.
 
-Refer to our launch post for CUPED for more details.
+Refer to our [launch post for CUPED](https://blog.statsig.com/cuped-on-statsig-d57f23122d0e) for more details.
 
 ## CUPED
 
