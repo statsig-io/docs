@@ -46,6 +46,7 @@ module.exports = {
                   "winnerThreshold": "99%"
                 }
               },
+              "description": "Autotune object",
               "properties": {
                 "description": {
                   "type": "string",
@@ -65,26 +66,33 @@ module.exports = {
                 "explorationWindow": {
                   "type": "string",
                   "enum": [
+                    "1",
+                    "24",
+                    "48",
                     "1hr",
                     "24hr",
                     "48hr",
-                    "1",
-                    "24",
-                    "48"
+                    "1hrs",
+                    "24hrs",
+                    "48hrs"
                   ],
                   "description": "The initial time period where Autotune will equally split the traffic."
                 },
                 "attributionWindow": {
                   "type": "string",
                   "enum": [
+                    "1",
+                    "2",
+                    "4",
+                    "24",
                     "1hr",
                     "2hr",
                     "4hr",
                     "24hr",
-                    "1",
-                    "2",
-                    "4",
-                    "24"
+                    "1hrs",
+                    "2hrs",
+                    "4hrs",
+                    "24hrs"
                   ],
                   "description": "The maximum duration between the exposure and success event that counts as a success."
                 },
@@ -127,7 +135,8 @@ module.exports = {
               }
             }
           }
-        }
+        },
+        "description": "Request body expects an Autotune object"
       }
     }
   },
