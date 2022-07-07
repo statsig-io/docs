@@ -2,11 +2,7 @@ module.exports = {
   "openapi": "3.0.0",
   "info": {
     "title": "console/v1",
-    "version": "1.0.0",
-    "contact": {
-      "url": "https://www.statsig.com/slack",
-      "name": "Statsig Support Slack"
-    }
+    "version": "1.0.0"
   },
   "servers": [
     {
@@ -58,7 +54,7 @@ module.exports = {
                           "isEnabled": true,
                           "description": "helpful summary of what this segment is",
                           "lastModifierName": "CONSOLE API",
-                          "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                          "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                           "type": "id_list"
                         },
                         {
@@ -66,7 +62,7 @@ module.exports = {
                           "isEnabled": true,
                           "description": "helpful summary of what this segment is",
                           "lastModifierName": "CONSOLE API",
-                          "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                          "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                           "type": "id_list"
                         },
                         {
@@ -211,7 +207,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "type": "id_list"
                       }
                     }
@@ -234,7 +230,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "type": "id_list"
                       }
                     }
@@ -285,7 +281,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "type": "id_list"
                       }
                     }
@@ -357,7 +353,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "type": "id_list"
                       }
                     }
@@ -380,7 +376,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "type": "id_list"
                       }
                     }

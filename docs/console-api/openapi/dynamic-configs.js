@@ -2,11 +2,7 @@ module.exports = {
   "openapi": "3.0.0",
   "info": {
     "title": "console/v1",
-    "version": "1.0.0",
-    "contact": {
-      "url": "https://www.statsig.com/slack",
-      "name": "Statsig Support Slack"
-    }
+    "version": "1.0.0"
   },
   "servers": [
     {
@@ -38,7 +34,7 @@ module.exports = {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/dynmaic-config-update.json"
+                "$ref": "../models/dynmaic_config_update.json"
               },
               "examples": {
                 "example-1": {
@@ -47,7 +43,7 @@ module.exports = {
                     "isEnabled": false,
                     "description": "an updated summary of what this dynamic config does",
                     "lastModifierName": "CONSOLE API",
-                    "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                    "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                     "rules": [
                       {
                         "name": "All Conditions",
@@ -86,7 +82,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this dynamic config does",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "rules": [
                           {
                             "name": "All Conditions",
@@ -441,7 +437,7 @@ module.exports = {
                         "isEnabled": false,
                         "description": "helpful summary of what this dynamic config does",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "rules": [
                           {
                             "name": "1/10th of public gets true",
@@ -702,7 +698,7 @@ module.exports = {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/dynmaic-config-update.json"
+                "$ref": "../models/dynmaic_config_update.json"
               },
               "examples": {
                 "example-1": {

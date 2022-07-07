@@ -3,11 +3,7 @@ module.exports = {
   "info": {
     "title": "console/v1",
     "version": "1.0.0",
-    "description": "Gate endpoint",
-    "contact": {
-      "name": "Statsig Support Slack",
-      "url": "https://www.statsig.com/slack"
-    }
+    "description": "Gate endpoint"
   },
   "servers": [
     {

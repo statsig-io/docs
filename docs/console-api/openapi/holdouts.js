@@ -2,11 +2,7 @@ module.exports = {
   "openapi": "3.0.0",
   "info": {
     "title": "console/v1",
-    "version": "1.0.0",
-    "contact": {
-      "name": "Statsig Support Slack",
-      "url": "https://www.statsig.com/slack"
-    }
+    "version": "1.0.0"
   },
   "servers": [
     {
@@ -403,6 +399,11 @@ module.exports = {
             }
           }
         },
+        "x-codeSample": {
+          "lang": "cURL",
+          "label": "cURL",
+          "source": "curl --request GET 'https://api.statsig.com/console/v1/gates' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
+        }
       },
       "post": {
         "tags": [

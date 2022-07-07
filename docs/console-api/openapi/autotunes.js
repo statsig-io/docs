@@ -2,11 +2,7 @@ module.exports = {
   "openapi": "3.0.0",
   "info": {
     "title": "console/v1",
-    "version": "1.0.0",
-    "contact": {
-      "url": "https://www.statsig.com/slack",
-      "name": "Statsig Support Slack"
-    }
+    "version": "1.0.0"
   },
   "servers": [
     {
@@ -474,7 +470,7 @@ module.exports = {
                         "id": "my_autotunes_are_best",
                         "isStarted": false,
                         "description": "helpful summary of what this Aututune is",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "lastModifierName": "CONSOLE API",
                         "variants": [
                           {
@@ -513,7 +509,7 @@ module.exports = {
                         "id": "my_autotunes_are_best",
                         "isStarted": false,
                         "description": "helpful summary of what this Aututune is",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "lastModifierName": "CONSOLE API",
                         "variants": [
                           {
@@ -687,7 +683,7 @@ module.exports = {
                         "id": "my_autotunes_are_best",
                         "isStarted": false,
                         "description": "helpful summary of what this Aututune is",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "lastModifierName": "CONSOLE API",
                         "variants": [
                           {
@@ -728,7 +724,7 @@ module.exports = {
                         "id": "my_autotunes_are_best",
                         "isStarted": false,
                         "description": "helpful summary of what this Aututune is",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "lastModifierName": "CONSOLE API",
                         "variants": [
                           {
