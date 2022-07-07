@@ -34,7 +34,7 @@ module.exports = {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/dynmaic_config_update.json"
+                "$ref": "../models/dynamic_config_update.json"
               },
               "examples": {
                 "example-1": {
@@ -108,7 +108,7 @@ module.exports = {
                       "$ref": "../models/message.json"
                     },
                     "data": {
-                      "$ref": "../models/dynamic-config.json"
+                      "$ref": "../models/dynamic_config.json"
                     }
                   }
                 },
@@ -331,7 +331,7 @@ module.exports = {
                       "$ref": "../models/message.json"
                     },
                     "data": {
-                      "$ref": "../models/dynamic-config.json"
+                      "$ref": "../models/dynamic_config.json"
                     }
                   }
                 },
@@ -698,7 +698,7 @@ module.exports = {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/dynmaic_config_update.json"
+                "$ref": "../models/dynamic_config_update.json"
               },
               "examples": {
                 "example-1": {
@@ -781,7 +781,7 @@ module.exports = {
                       "$ref": "../models/message.json"
                     },
                     "data": {
-                      "$ref": "../models/dynamic-config.json"
+                      "$ref": "../models/dynamic_config.json"
                     }
                   }
                 },
