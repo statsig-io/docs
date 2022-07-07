@@ -144,7 +144,7 @@ module.exports = {
                   "type": "object",
                   "properties": {
                     "message": {
-                      "$ref": "../models/message.yaml"
+                      "$ref": "../models/message.json"
                     },
                     "data": {
                       "$ref": "../models/gate.json"
@@ -189,10 +189,10 @@ module.exports = {
                   },
                   "properties": {
                     "status": {
-                      "$ref": "../models/status.yaml"
+                      "$ref": "../models/status.json"
                     },
                     "message": {
-                      "$ref": "../models/message.yaml"
+                      "$ref": "../models/message.json"
                     },
                     "error": {
                       "type": "array",
@@ -253,10 +253,10 @@ module.exports = {
                   },
                   "properties": {
                     "status": {
-                      "$ref": "../models/status.yaml"
+                      "$ref": "../models/status.json"
                     },
                     "message": {
-                      "$ref": "../models/message.yaml"
+                      "$ref": "../models/message.json"
                     }
                   }
                 },
@@ -521,7 +521,7 @@ module.exports = {
                   },
                   "properties": {
                     "message": {
-                      "$ref": "../models/message.yaml"
+                      "$ref": "../models/message.json"
                     },
                     "data": {
                       "$ref": "../models/gate.json"
@@ -574,10 +574,10 @@ module.exports = {
                   },
                   "properties": {
                     "status": {
-                      "$ref": "../models/status.yaml"
+                      "$ref": "../models/status.json"
                     },
                     "message": {
-                      "$ref": "../models/message.yaml"
+                      "$ref": "../models/message.json"
                     }
                   }
                 },
@@ -655,7 +655,7 @@ module.exports = {
                   "type": "object",
                   "properties": {
                     "message": {
-                      "$ref": "../models/message.yaml"
+                      "$ref": "../models/message.json"
                     },
                     "data": {
                       "$ref": "../models/gate.json"
@@ -717,7 +717,7 @@ module.exports = {
                   "type": "object",
                   "properties": {
                     "message": {
-                      "$ref": "../models/message.yaml"
+                      "$ref": "../models/message.json"
                     }
                   }
                 },

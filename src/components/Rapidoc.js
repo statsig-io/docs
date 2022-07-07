@@ -47,7 +47,6 @@ function loadAllEndpoints(){
       }
     }
   }
-  console.log(allEndpoints)
   return allEndpoints;
 }
 
