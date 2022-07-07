@@ -374,17 +374,6 @@ module.exports = {
           "gates"
         ],
         "summary": "Read Single Gate",
-        "parameters": [
-          {
-            "name": "gate_id",
-            "in": "path",
-            "description": "Gate ID to get",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -737,7 +726,8 @@ module.exports = {
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "string",
+            "example": "a_gate"
           },
           "name": "gate_id",
           "in": "path",
@@ -750,7 +740,8 @@ module.exports = {
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "string",
+            "example": "a_gate"
           },
           "name": "gate_id",
           "in": "path",

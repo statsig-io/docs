@@ -475,7 +475,8 @@ module.exports = {
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "string",
+            "example": "a_segment"
           },
           "name": "segment_id",
           "in": "path",

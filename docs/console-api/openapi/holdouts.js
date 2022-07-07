@@ -1159,7 +1159,8 @@ module.exports = {
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "string",
+            "example": "a_holdout"
           },
           "name": "holdout_id",
           "in": "path",
@@ -1171,7 +1172,8 @@ module.exports = {
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "string",
+            "example": "a_holdout"
           },
           "name": "holdout_id",
           "in": "path",

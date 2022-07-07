@@ -810,7 +810,8 @@ module.exports = {
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "string",
+            "example": "a_autotune"
           },
           "name": "autotune_id",
           "in": "path",

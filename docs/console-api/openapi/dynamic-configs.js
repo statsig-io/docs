@@ -1060,7 +1060,8 @@ module.exports = {
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "string",
+            "example": "a_dynamic_config"
           },
           "name": "dynamic_config_id",
           "in": "path",
