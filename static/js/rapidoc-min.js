@@ -2784,17 +2784,6 @@ pre[class*="language-"] {
       > </api-response>
     </div>
   </div>`}function rL(e=!0,t=!0,r=!1){return this.resolvedSpec?B`
-    ${e?B`
-        <div style="display:flex; justify-content:flex-end;"> 
-          <span @click="${e=>XR(e,"expand-all")}" style="color:var(--primary-color); cursor:pointer;">
-            Expand all
-          </span> 
-          &nbsp;|&nbsp; 
-          <span @click="${e=>XR(e,"collapse-all")}" style="color:var(--primary-color); cursor:pointer;" >
-            Collapse all
-          </span> 
-          &nbsp; sections
-        </div>`:""}
     ${this.resolvedSpec.tags.map((e=>B`
       ${t?B` 
           <div class='regular-font section-gap section-tag ${e.expanded?"expanded":"collapsed"}'> 
