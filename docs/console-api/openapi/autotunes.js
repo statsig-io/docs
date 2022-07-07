@@ -140,7 +140,7 @@ module.exports = {
     "/autotunes": {
       "get": {
         "tags": [
-          "autotunes"
+          "Autotunes"
         ],
         "summary": "Read All Autotunes",
         "responses": {
@@ -248,7 +248,7 @@ module.exports = {
       },
       "post": {
         "tags": [
-          "autotunes"
+          "Autotunes"
         ],
         "summary": "Create Autotune",
         "requestBody": {
@@ -284,7 +284,8 @@ module.exports = {
                 }
               }
             }
-          }
+          },
+          "description": "Request body expects an Autotune object"
         },
         "responses": {
           "200": {
@@ -453,7 +454,7 @@ module.exports = {
     "/autotunes/{autotune_id}": {
       "get": {
         "tags": [
-          "autotunes"
+          "Autotunes"
         ],
         "summary": "Read a Single Autotune",
         "responses": {
@@ -581,7 +582,7 @@ module.exports = {
       },
       "delete": {
         "tags": [
-          "autotunes"
+          "Autotunes"
         ],
         "summary": "Delete Autotune",
         "responses": {
@@ -666,7 +667,7 @@ module.exports = {
       },
       "post": {
         "tags": [
-          "autotunes"
+          "Autotunes"
         ],
         "summary": "Update Autotune",
         "responses": {

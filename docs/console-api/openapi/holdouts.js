@@ -145,7 +145,7 @@ module.exports = {
     "/holdouts": {
       "get": {
         "tags": [
-          "holdouts"
+          "Holdouts"
         ],
         "summary": "Read All Holdouts",
         "responses": {
@@ -407,7 +407,7 @@ module.exports = {
       },
       "post": {
         "tags": [
-          "holdouts"
+          "Holdouts"
         ],
         "summary": "Update Holdout Overrides",
         "responses": {
@@ -665,7 +665,7 @@ module.exports = {
     "/holdouts/{holdout_id}": {
       "get": {
         "tags": [
-          "holdouts"
+          "Holdouts"
         ],
         "summary": "Read Single Holdout",
         "responses": {
@@ -767,7 +767,7 @@ module.exports = {
       },
       "post": {
         "tags": [
-          "holdouts"
+          "Holdouts"
         ],
         "summary": "Update Holdout Overrides",
         "responses": {
@@ -1037,7 +1037,7 @@ module.exports = {
       },
       "delete": {
         "tags": [
-          "holdouts"
+          "Holdouts"
         ],
         "summary": "Delete Holdout",
         "responses": {
@@ -1183,7 +1183,7 @@ module.exports = {
       "get": {
         "summary": "Get a gate's overrides",
         "tags": [
-          "holdouts"
+          "Holdouts"
         ],
         "responses": {
           "200": {
@@ -1244,7 +1244,7 @@ module.exports = {
       "post": {
         "summary": "update a gates overrides",
         "tags": [
-          "holdouts"
+          "Holdouts"
         ],
         "responses": {
           "200": {

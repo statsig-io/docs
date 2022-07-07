@@ -60,7 +60,7 @@ module.exports = {
     "/gates": {
       "post": {
         "tags": [
-          "gates"
+          "Gates"
         ],
         "summary": "Create Gate",
         "requestBody": {
@@ -276,7 +276,7 @@ module.exports = {
       },
       "get": {
         "tags": [
-          "gates"
+          "Gates"
         ],
         "summary": "Read All Gates",
         "responses": {
@@ -371,7 +371,7 @@ module.exports = {
     "/gates/{gate_id}": {
       "get": {
         "tags": [
-          "gates"
+          "Gates"
         ],
         "summary": "Read Single Gate",
         "responses": {
@@ -596,7 +596,7 @@ module.exports = {
       },
       "post": {
         "tags": [
-          "gates"
+          "Gates"
         ],
         "summary": "Update Gate",
         "requestBody": {
@@ -694,7 +694,7 @@ module.exports = {
       },
       "delete": {
         "tags": [
-          "gates"
+          "Gates"
         ],
         "summary": "Delete Gate",
         "responses": {
@@ -751,7 +751,7 @@ module.exports = {
       ],
       "get": {
         "tags": [
-          "gates"
+          "Gates"
         ],
         "summary": "Get a list of overrides for a gate",
         "responses": {
@@ -856,7 +856,7 @@ module.exports = {
       "post": {
         "summary": "Update overrides on a gate",
         "tags": [
-          "gates"
+          "Gates"
         ],
         "responses": {
           "200": {

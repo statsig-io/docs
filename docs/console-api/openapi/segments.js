@@ -27,7 +27,7 @@ module.exports = {
     "/segments": {
       "get": {
         "tags": [
-          "segments"
+          "Segments"
         ],
         "summary": "Read All Segments",
         "responses": {
@@ -147,7 +147,7 @@ module.exports = {
       },
       "post": {
         "tags": [
-          "segments"
+          "Segments"
         ],
         "summary": "Create Segment",
         "requestBody": {
@@ -263,7 +263,7 @@ module.exports = {
     "/segments/{segment_id}": {
       "get": {
         "tags": [
-          "segments"
+          "Segments"
         ],
         "summary": "Read a Single Segment",
         "responses": {
@@ -389,7 +389,7 @@ module.exports = {
       },
       "delete": {
         "tags": [
-          "segments"
+          "Segments"
         ],
         "summary": "Delete Segment",
         "responses": {

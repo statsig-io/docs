@@ -27,7 +27,7 @@ module.exports = {
     "/dynamic_configs": {
       "post": {
         "tags": [
-          "dynamic configs"
+          "Dynamic Configs"
         ],
         "summary": "Create Dynamic Config",
         "requestBody": {
@@ -65,7 +65,8 @@ module.exports = {
                 }
               }
             }
-          }
+          },
+          "description": "Request body expects a Dynamic Config object"
         },
         "responses": {
           "200": {
@@ -278,7 +279,7 @@ module.exports = {
       },
       "get": {
         "tags": [
-          "dynamic configs"
+          "Dynamic Configs"
         ],
         "summary": "Read All Dynamic Configs",
         "responses": {
@@ -537,7 +538,7 @@ module.exports = {
     "/dynamic_configs/{dynamic_config_id}": {
       "get": {
         "tags": [
-          "dynamic configs"
+          "Dynamic Configs"
         ],
         "summary": "Read Single Dynamic Config",
         "responses": {
@@ -933,7 +934,7 @@ module.exports = {
           }
         },
         "tags": [
-          "dynamic configs"
+          "Dynamic Configs"
         ]
       },
       "delete": {
@@ -1054,7 +1055,7 @@ module.exports = {
           }
         },
         "tags": [
-          "dynamic configs"
+          "Dynamic Configs"
         ]
       },
       "parameters": [
@@ -1070,10 +1071,5 @@ module.exports = {
         }
       ]
     }
-  },
-  "tags": [
-    {
-      "name": "dynamic configs"
-    }
-  ]
+  }
 }
