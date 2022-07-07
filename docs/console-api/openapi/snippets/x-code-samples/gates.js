@@ -113,12 +113,23 @@ req.end();
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request POST 'https://api.statsig.com/console/v1/gates' 
---header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx' 
---header 'Content-Type: application/json' 
+curl --location --request POST 'https://api.statsig.com/console/v1/gates/a_gate' \
+--header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx' \
+--header 'Content-Type: application/json' \
 --data-raw '{
-    "name": "a gate",
-    "description": "helpful summary of what this gate does"
+  "isEnabled": true,
+  "description": "helpful summary of what this gate does",
+  "rules": [
+    {
+      "name": "ten percent of everyone",
+      "passPercentage": 10,
+      "conditions": [
+        {
+          "type": "public"
+        }
+      ]
+    }
+  ]
 }'
         `
       },

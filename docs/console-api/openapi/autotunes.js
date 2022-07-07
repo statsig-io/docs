@@ -298,7 +298,7 @@ module.exports = {
         },
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Successful response. Returns a message and the newly created Autotune object",
             "content": {
               "application/json": {
                 "schema": {

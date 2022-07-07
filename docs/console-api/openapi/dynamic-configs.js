@@ -306,44 +306,7 @@ module.exports = {
         "responses": {
           "200": {
             "description": "OK",
-            "headers": {
-              "vary": {
-                "schema": {
-                  "type": "string",
-                  "example": "Origin"
-                }
-              },
-              "access-control-allow-origin": {
-                "schema": {
-                  "type": "string",
-                  "example": "*"
-                }
-              },
-              "content-type": {
-                "schema": {
-                  "type": "string",
-                  "example": "application/json; charset=utf-8"
-                }
-              },
-              "content-length": {
-                "schema": {
-                  "type": "integer",
-                  "example": "1163"
-                }
-              },
-              "Date": {
-                "schema": {
-                  "type": "string",
-                  "example": "Sun, 23 Jan 2022 23:37:57 GMT"
-                }
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string",
-                  "example": "keep-alive"
-                }
-              }
-            },
+            "headers": {},
             "content": {
               "application/json": {
                 "schema": {
@@ -353,7 +316,11 @@ module.exports = {
                       "$ref": "../models/message.json"
                     },
                     "data": {
-                      "$ref": "../models/dynamic_config.json"
+                      "type": "array",
+                      "description": "Array of existing Dynamic Configs",
+                      "items": {
+                        "$ref": "../models/dynamic_config.json"
+                      }
                     }
                   }
                 },
