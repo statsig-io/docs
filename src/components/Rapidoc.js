@@ -113,6 +113,7 @@ export default function Rapidoc(props) {
         render-style="view" // Controls how to api gets rendered
         layout="column"
         allow-try={true} // Enable ability for users to run commands
+        allow-server-selection={false}
         show-header={false} // Disable user changing api spec file
         allow-authentication={true} // Enable user passing STATSIG-API-KEY at top of file
         regular-font={["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Ubuntu", "sans-serif"]}
