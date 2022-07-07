@@ -16,6 +16,62 @@ module.exports = {
         "in": "header",
         "name": "STATSIG-API-KEY"
       }
+    },
+    "requestBodies": {
+      "create_dynamic_config": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "x-examples": {
+                "example-1": {
+                  "name": "a dynamic config",
+                  "isEnabled": false,
+                  "description": "an updated summary of what this dynamic config does",
+                  "lastModifierName": "CONSOLE API",
+                  "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                  "rules": [
+                    {
+                      "name": "All Conditions",
+                      "passPercentage": 10,
+                      "returnValue": {
+                        "key": true
+                      },
+                      "conditions": [
+                        {
+                          "type": "public"
+                        }
+                      ]
+                    }
+                  ],
+                  "defaultValue": {
+                    "key": true
+                  }
+                }
+              },
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "The display name of the dynamic config"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "A brief summary of what the dynamic config is being used for."
+                }
+              }
+            },
+            "examples": {
+              "example-1": {
+                "value": {
+                  "name": "a dynamic config",
+                  "description": "helpful summary of what this dynamic config does"
+                }
+              }
+            }
+          }
+        },
+        "description": "The name and description for the new Dynamic Config"
+      }
     }
   },
   "security": [
@@ -30,47 +86,9 @@ module.exports = {
           "Dynamic Configs"
         ],
         "summary": "Create Dynamic Config",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../models/dynamic_config_update.json"
-              },
-              "examples": {
-                "example-1": {
-                  "value": {
-                    "id": "a_dynamic_config",
-                    "isEnabled": false,
-                    "description": "an updated summary of what this dynamic config does",
-                    "lastModifierName": "CONSOLE API",
-                    "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                    "rules": [
-                      {
-                        "name": "All Conditions",
-                        "passPercentage": 10,
-                        "returnValue": {
-                          "key": true
-                        },
-                        "conditions": [
-                          {
-                            "type": "public"
-                          }
-                        ]
-                      }
-                    ],
-                    "defaultValue": {
-                      "key": true
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "description": "Request body expects a Dynamic Config object"
-        },
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Successful response. Returns a message and the newly created Dynamic Config object",
             "content": {
               "application/json": {
                 "schema": {
@@ -275,6 +293,9 @@ module.exports = {
               }
             }
           }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/create_dynamic_config"
         }
       },
       "get": {
@@ -730,49 +751,13 @@ module.exports = {
                 }
               }
             }
-          }
+          },
+          "description": "Request body expects a Dynamic Config object"
         },
         "responses": {
           "201": {
-            "description": "Created",
-            "headers": {
-              "vary": {
-                "schema": {
-                  "type": "string",
-                  "example": "Origin"
-                }
-              },
-              "access-control-allow-origin": {
-                "schema": {
-                  "type": "string",
-                  "example": "*"
-                }
-              },
-              "content-type": {
-                "schema": {
-                  "type": "string",
-                  "example": "application/json; charset=utf-8"
-                }
-              },
-              "content-length": {
-                "schema": {
-                  "type": "integer",
-                  "example": "221"
-                }
-              },
-              "Date": {
-                "schema": {
-                  "type": "string",
-                  "example": "Sun, 23 Jan 2022 23:52:29 GMT"
-                }
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string",
-                  "example": "keep-alive"
-                }
-              }
-            },
+            "description": "Successful response. Returns a message and the newly created Dynamic Config object",
+            "headers": {},
             "content": {
               "application/json": {
                 "schema": {
@@ -942,44 +927,7 @@ module.exports = {
         "responses": {
           "200": {
             "description": "OK",
-            "headers": {
-              "vary": {
-                "schema": {
-                  "type": "string",
-                  "example": "Origin"
-                }
-              },
-              "access-control-allow-origin": {
-                "schema": {
-                  "type": "string",
-                  "example": "*"
-                }
-              },
-              "content-type": {
-                "schema": {
-                  "type": "string",
-                  "example": "application/json; charset=utf-8"
-                }
-              },
-              "content-length": {
-                "schema": {
-                  "type": "integer",
-                  "example": "40"
-                }
-              },
-              "Date": {
-                "schema": {
-                  "type": "string",
-                  "example": "Sun, 23 Jan 2022 23:55:21 GMT"
-                }
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string",
-                  "example": "keep-alive"
-                }
-              }
-            },
+            "headers": {},
             "content": {
               "application/json": {
                 "schema": {
