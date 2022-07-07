@@ -12,12 +12,13 @@ Similar to A/B tests, Experiments provides the following features to run and ana
  - Analyze **Metrics Lifts** for different segments by filtering for dimensions such as operating system and browser version
  - Use the Statsig client or server SDK of your choice to implement the experiment in your application
 
-Experiments offers additional features to accelerate and scale your experimentats:
+Experiments offers additional features to accelerate and scale your experiments:
  - Create multiple variants as part of the same experiment (A/B/n tests)
  - Select the key metrics that you want to prioritize for your hypothesis 
  - Define layers to exclude the users participating in one experiment from other related experiments
 
 ## Tutorials
+- [Your first A/B test](/guides/abn-tests)
 - [Create an experiment using a userID](/experiments-plus/create-new)
 - [Create an experiment using a customID](/guides/experiment-on-custom-id-types)
 - [Use a language specific Statsig SDK to implement an experiment in your application](/experiments-plus/implement)

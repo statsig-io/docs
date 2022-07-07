@@ -53,8 +53,7 @@ For (a), see section **Turning on Change Reviews for a Project** to turn on proj
 <img width="655" alt="image" src="https://user-images.githubusercontent.com/1315028/166682283-c9e2de57-0b9a-473e-adf2-100a240ab6b0.png"/>
 
 <img width="458" alt="Screen Shot 2022-05-04 at 5 14 57 AM" src="https://user-images.githubusercontent.com/1315028/166682177-d44411e6-c4ab-49fe-9250-c77b063621af.png"/>
- 
- 
+
 ### Self-approvals for Admins  
 As a Project Admin, you can allow yourself and other Project Admins to self-approve review requests. To turn on this setting,
 - Navigate to the **Project Settings** page
@@ -63,5 +62,7 @@ As a Project Admin, you can allow yourself and other Project Admins to self-appr
 
 <img width="1109" alt="image" src="https://user-images.githubusercontent.com/1315028/166682645-b2daf076-7f8b-4413-9bc7-01e92e8eeb05.png"/>
 
+### Skipping reviews in dev and staging environments 
+If reviews are required on your project, you can add explicit sections for Development and Staging tier rules. These are identical to a rule that has a rule that includes an AND condition that specifies Environment Tier = Dev/Staging. Changes made to the explicit Dev/Staging tier rules do not require approval. 
 
-
+![image](https://user-images.githubusercontent.com/31516123/176740260-2fb19763-1bb7-40de-a363-c4a3ae02e07b.png)

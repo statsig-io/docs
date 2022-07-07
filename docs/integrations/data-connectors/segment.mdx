@@ -26,7 +26,7 @@ To ingest your events from Segment,
 
 #### User IDs and Custom IDs
 
-Statsig automatically detects the `event` and `userID` fields that you log through your Segment [`track`](https://segment.com/docs/connections/spec/track/) event. If you're running an experiment with the user as your unit type, this userID should match the user identifer that you log with the Statsig SDK, for example when you expose the the user to a Statsig feature gate or experiment.
+Statsig automatically detects the `event` and `userId` fields that you log through your Segment [`track`](https://segment.com/docs/connections/spec/track/) event. If you're running an experiment with the user as your unit type, this userID should match the user identifer that you log with the Statsig SDK, for example when you expose the the user to a Statsig feature gate or experiment.
 
 If you're using a [custom ID](https://docs.statsig.com/guides/experiment-on-custom-id-types) as the unit type for your experiment, you can provide this identifier using the key `statsigCustomIDs` as part of the Segment `properties` field as shown below.
 

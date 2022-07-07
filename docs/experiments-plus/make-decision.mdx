@@ -61,6 +61,6 @@ On the other hand, if you decide to continue targeting,
 - all users who **pass** the targeting gate will see the _overriden_ value of the parameter
 - all users who **fail** the targeting gate will see the _default_ value of the parameter
 
-In this case, the default value of **targetted_layer_param** in **Demo Layer** will not change. 
+In this case, the default value of **targetted_layer_param** in **Demo Layer** will not change. Also, any users who pass the targeting gate will not be eligible for future experiments run in this layer. For this reason, we do not encourage shipping experiments with targeting on, especially when the experiment is in a layer.
 
 <img width="454" alt="image" src="https://user-images.githubusercontent.com/1315028/162634627-ae327d9e-81a9-42f9-8171-836808cb6ffb.png" />

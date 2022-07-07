@@ -307,6 +307,7 @@ module.exports = {
         "stats-engine/confidence-intervals",
         "stats-engine/p-value",
         "stats-engine/topline-impact",
+        "stats-engine/variance-reduction",
       ],
     },
     "faq",
