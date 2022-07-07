@@ -6,7 +6,7 @@ module.exports = {
   },
   "servers": [
     {
-      "url": "https://api.statsig.com/console/v1"
+      "url": "https://statsigapi.net/console/v1"
     }
   ],
   "components": {
@@ -470,7 +470,7 @@ module.exports = {
                         "id": "my_autotunes_are_best",
                         "isStarted": false,
                         "description": "helpful summary of what this Aututune is",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "lastModifierName": "CONSOLE API",
                         "variants": [
                           {
@@ -509,7 +509,7 @@ module.exports = {
                         "id": "my_autotunes_are_best",
                         "isStarted": false,
                         "description": "helpful summary of what this Aututune is",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "lastModifierName": "CONSOLE API",
                         "variants": [
                           {
@@ -683,7 +683,7 @@ module.exports = {
                         "id": "my_autotunes_are_best",
                         "isStarted": false,
                         "description": "helpful summary of what this Aututune is",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "lastModifierName": "CONSOLE API",
                         "variants": [
                           {
@@ -724,7 +724,7 @@ module.exports = {
                         "id": "my_autotunes_are_best",
                         "isStarted": false,
                         "description": "helpful summary of what this Aututune is",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "lastModifierName": "CONSOLE API",
                         "variants": [
                           {

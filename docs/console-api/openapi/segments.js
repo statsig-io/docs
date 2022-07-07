@@ -6,7 +6,7 @@ module.exports = {
   },
   "servers": [
     {
-      "url": "https://api.statsig.com/console/v1"
+      "url": "https://statsigapi.net/console/v1"
     }
   ],
   "components": {
@@ -54,7 +54,7 @@ module.exports = {
                           "isEnabled": true,
                           "description": "helpful summary of what this segment is",
                           "lastModifierName": "CONSOLE API",
-                          "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                          "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                           "type": "id_list"
                         },
                         {
@@ -62,7 +62,7 @@ module.exports = {
                           "isEnabled": true,
                           "description": "helpful summary of what this segment is",
                           "lastModifierName": "CONSOLE API",
-                          "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                          "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                           "type": "id_list"
                         },
                         {
@@ -207,7 +207,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "type": "id_list"
                       }
                     }
@@ -230,7 +230,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "type": "id_list"
                       }
                     }
@@ -281,7 +281,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "type": "id_list"
                       }
                     }
@@ -353,7 +353,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "type": "id_list"
                       }
                     }
@@ -376,7 +376,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "type": "id_list"
                       }
                     }

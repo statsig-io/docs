@@ -6,7 +6,7 @@ module.exports = {
   },
   "servers": [
     {
-      "url": "https://api.statsig.com/console/v1"
+      "url": "https://statsigapi.net/console/v1"
     }
   ],
   "components": {
@@ -43,7 +43,7 @@ module.exports = {
                     "isEnabled": false,
                     "description": "an updated summary of what this dynamic config does",
                     "lastModifierName": "CONSOLE API",
-                    "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                    "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                     "rules": [
                       {
                         "name": "All Conditions",
@@ -82,7 +82,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this dynamic config does",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "rules": [
                           {
                             "name": "All Conditions",
@@ -437,7 +437,7 @@ module.exports = {
                         "isEnabled": false,
                         "description": "helpful summary of what this dynamic config does",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "rules": [
                           {
                             "name": "1/10th of public gets true",

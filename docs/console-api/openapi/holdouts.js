@@ -6,7 +6,7 @@ module.exports = {
   },
   "servers": [
     {
-      "url": "https://api.statsig.com/console/v1"
+      "url": "https://statsigapi.net/console/v1"
     }
   ],
   "components": {
@@ -311,7 +311,7 @@ module.exports = {
                           "idType": "userID",
                           "isGlobal": true,
                           "lastModifierName": "CONSOLE API",
-                          "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                          "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                           "passPercentage": 10,
                           "gateIDs": [
                             "g_gate",
@@ -402,7 +402,7 @@ module.exports = {
         "x-codeSample": {
           "lang": "cURL",
           "label": "cURL",
-          "source": "curl --request GET 'https://api.statsig.com/console/v1/gates' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
+          "source": "curl --request GET 'https://statsigapi.net/console/v1/gates' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
         }
       },
       "post": {
@@ -465,7 +465,7 @@ module.exports = {
                         "idType": "userID",
                         "isGlobal": true,
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "passPercentage": 10,
                         "gateIDs": [],
                         "experimentIDs": [],
@@ -506,7 +506,7 @@ module.exports = {
                         "idType": "userID",
                         "isGlobal": true,
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "passPercentage": 30,
                         "gateIDs": [
                           "a_gate"
@@ -825,7 +825,7 @@ module.exports = {
                         "idType": "userID",
                         "isGlobal": true,
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "passPercentage": 10,
                         "gateIDs": [],
                         "experimentIDs": [],
@@ -866,7 +866,7 @@ module.exports = {
                         "idType": "userID",
                         "isGlobal": true,
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "passPercentage": 30,
                         "gateIDs": [
                           "a_gate"

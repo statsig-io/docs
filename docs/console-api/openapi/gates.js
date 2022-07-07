@@ -7,7 +7,7 @@ module.exports = {
   },
   "servers": [
     {
-      "url": "https://api.statsig.com/console/v1"
+      "url": "https://statsigapi.net/console/v1"
     }
   ],
   "components": {
@@ -160,7 +160,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this gate does",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "rules": []
                       }
                     }
@@ -363,7 +363,7 @@ module.exports = {
           {
             "lang": "cURL",
             "label": "cURL",
-            "source": "curl --request GET 'https://api.statsig.com/console/v1/gates' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
+            "source": "curl --request GET 'https://statsigapi.net/console/v1/gates' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
           }
         ]
       }
@@ -400,7 +400,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this gate does",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "rules": [
                           {
                             "name": "All Conditions",
@@ -537,7 +537,7 @@ module.exports = {
                         "isEnabled": true,
                         "description": "helpful summary of what this gate does",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "rules": [
                           {
                             "name": "specific users",
