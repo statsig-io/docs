@@ -5,7 +5,17 @@ slug: /layers
 ---
 
 # What are Layers?
-Layers (a.k.a. Universes) allow us to create experiments that are mutually exclusive to each other. That is to say, users that are in one experiment of a layer, cannot also be in another experiment in the same layer.
+Layers (a.k.a. Universes) allow us to create experiments that are mutually exclusive to each other. Each layer has a logical representation of all your users and can have experiments created "within" this layer. Users that are in one experiment of a layer, cannot also be in another experiment in the same layer.
+
+![image](https://user-images.githubusercontent.com/31516123/177894290-465521fa-ebef-4647-acb0-d976cf8e2a7d.png)
+
+You can add experiments to a layer (or create a layer) during experiment creation.
+![image](https://user-images.githubusercontent.com/31516123/177894600-a5921bdb-cec8-49d6-9b05-64f66fbf37a0.png)
+
+Once you create a layer, you'll be able to manage them on the layer management tab under Experiments.
+![image](https://user-images.githubusercontent.com/31516123/177894503-0118879e-790f-4368-978a-36a4fe90a427.png)
+![image](https://user-images.githubusercontent.com/31516123/177894553-118c7de5-40b7-4e95-a4b3-d59b3b727347.png)
+
 
 In addition to that, **Layers are key to improving engineering efficiency and iteration velocity** for product teams. In a Layer, parameters exist at the Layer level, and can be shared across experiments within the Layer. Due to this characteristic, we can abstract the concept of "Experiment" away from the SDKs so that users only need to deal with parameters in code, which makes it super easy to run multiple experiments that change the same thing and iterate on the same experiment without any code changes.
 

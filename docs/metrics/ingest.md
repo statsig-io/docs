@@ -3,17 +3,23 @@ title: Ingesting Metrics
 sidebar_label: Ingesting Metrics
 slug: /metrics/ingest
 ---
+## Ingesting [Metrics](https://docs.statsig.com/metrics)
+
+Statsig allows you to ingest raw events that are computed into metrics in the following ways:
+
+- Using either our [client](https://docs.statsig.com/client/introduction) or [server](https://docs.statsig.com/server/introduction) SDKs to log events to Statsig.
+- Ingesting metrics from your data tools such as [Segment](https://docs.statsig.com/integrations/data-connectors/segment), [mParticle](https://docs.statsig.com/integrations/data-connectors/mparticle), [Rudderstack](https://docs.statsig.com/integrations/data-connectors/rudderstack) and [Census](https://docs.statsig.com/integrations/data-connectors/census)
+-  Logging metrics using Statsig's [HTTP API](https://docs.statsig.com/http-api)
 
 ## Ingesting Precomputed Metrics
 
-Statsig allows you to ingest any of your precomputed product and business metrics in three different ways:
+Statsig allows you to ingest any of your precomputed product and business metrics in the following ways:
 
-- Logging metrics using Statsig's HTTP API
-- Importing metrics from a datawarehouse such as Snowflake
-- Exporting metrics to a Statsig-owned azure blob container that we'll import data from
-- Ingesting metrics from your collection layer service such as Segment.
+- Importing metrics from a data warehouse like [Snowflake](https://docs.statsig.com/integrations/data-imports/snowflake), [BigQuery](https://docs.statsig.com/integrations/data-imports/bigquery) or [Redshift](https://docs.statsig.com/integrations/data-imports/redshift)
+- Exporting metrics to a [Statsig-owned azure blob container](https://docs.statsig.com/integrations/data-imports/azure_upload) that we'll import data from
+-  Logging precomputed metrics using Statsig's [HTTP API](https://docs.statsig.com/http-api)
 
-### Logging Metrics using the HTTP API
+### Logging Precomputed Metrics using the [HTTP API](https://docs.statsig.com/http-api)
 
 You can log one or more precomputed metrics with Statsing using the `log_custom_metric` API as shown below. The API call requires an **ID type** and should either (a) include a **metric_value**, or (b) provide a numerator and denominator of the metrics (if it's a ratio metric).
 
@@ -49,17 +55,3 @@ The timestamp provided should be:
 - We don’t guarantee correct behavior if metrics are provided with an earlier timestamp after this API is called.
 
 Statsig processes metrics as a full day in the PST timezone; we will wait until a full day is marked as ready before processing that day.
-
-### Importing Metrics from Snowflake
-
-See [Direct Ingestion from Snowflake](/integrations/data-imports/snowflake#direct-ingestion-from-snowflake) on how to set up your Snowflake data warehouse instance so Statsig can directly and automatically ingest your precomputed metrics as well as raw events from Snowflake.
-
-### Importing Metrics - Upload to Azure
-
-See [Azure Metrics Upload](/integrations/data-imports/azure_upload) on how to get set up with an Azure container where you can write metrics data to for Statsig to ingest.
-
-### Ingesting Metrics from Segment
-
-See [Configuring Incoming Events](/integrations/data-connectors/segment#configuring-incoming-events) on how to configure Statsig and Segment to import your raw events from Segment.
-
-Watch this space on how to also ingest precomputed metrics via Segment.
