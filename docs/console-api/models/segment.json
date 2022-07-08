@@ -1,0 +1,56 @@
+{
+  "type": "object",
+  "x-stoplight": {
+    "id": "c73023b049758"
+  },
+  "x-examples": {
+    "example-1": {
+      "id": "a_segment",
+      "isEnabled": true,
+      "description": "helpful summary of what this segment is",
+      "lastModifierName": "CONSOLE API",
+      "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+      "type": "id_list"
+    }
+  },
+  "examples": [
+    {
+      "id": "a_segment",
+      "isEnabled": true,
+      "description": "helpful summary of what this segment is",
+      "lastModifierName": "CONSOLE API",
+      "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+      "type": "id_list"
+    }
+  ],
+  "description": "A Segment object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The name that was originally given to the segment on creation but formatted as an ID (\"A Segment\" -> \"a_segment\")."
+    },
+    "isEnabled": {
+      "type": "boolean",
+      "description": "Is the segment enabled."
+    },
+    "description": {
+      "type": "string",
+      "description": "A brief summary of what the segment is being used for."
+    },
+    "lastModifierName": {
+      "type": "string",
+      "description": "The Statsig Username of the last modifier of this segment."
+    },
+    "lastModifierID": {
+      "type": "string",
+      "description": "The Statsig UserID of the last modifier of this segment."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "id_list",
+        "rule_based"
+      ]
+    }
+  }
+}

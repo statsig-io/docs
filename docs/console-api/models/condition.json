@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "x-stoplight": {
+    "id": "8074ece809a77"
+  },
+  "x-examples": {
+    "example-1": {
+      "type": "custom_field",
+      "operator": "gt",
+      "targetValue": 31,
+      "field": "age"
+    }
+  },
+  "description": "Condition object",
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "operator": {
+      "type": "string"
+    },
+    "targetValue": {
+      "type": [
+        "integer",
+        "number",
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "number",
+          "string"
+        ]
+      }
+    },
+    "field": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "customID": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

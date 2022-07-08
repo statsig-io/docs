@@ -233,27 +233,12 @@ module.exports = {
       },
       items: [
         "console-api/autotunes",
-        {
-          type: "category",
-          label: "Gates",
-          link: {
-            type: "doc",
-            id: "console-api/gates",
-          },
-          items: ["console-api/gate-overrides"],
-        },
+        "console-api/gates",
         "console-api/daily-reports",
         "console-api/segments",
         "console-api/dynamic-configs",
-        {
-          type: "category",
-          label: "Holdouts",
-          link: {
-            type: "doc",
-            id: "console-api/holdouts",
-          },
-          items: ["console-api/holdout-overrides"],
-        },
+        "console-api/holdouts",
+        "console-api/all-endpoints"
       ],
     },
     {
