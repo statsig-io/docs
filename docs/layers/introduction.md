@@ -5,7 +5,7 @@ slug: /layers
 ---
 
 # What are Layers?
-Layers (a.k.a. Universes) allow us to create experiments that are mutually exclusive to each other. Users that are in one experiment of a layer, cannot also be in another experiment in the same layer.
+Layers (a.k.a. Universes) allow us to create experiments that are mutually exclusive to each other. Each layer has a logical representation of all your users and can have experiments created "within" this layer. Users that are in one experiment of a layer, cannot also be in another experiment in the same layer.
 
 ![image](https://user-images.githubusercontent.com/31516123/177894290-465521fa-ebef-4647-acb0-d976cf8e2a7d.png)
 
