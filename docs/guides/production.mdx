@@ -3,21 +3,20 @@ sidebar_label: POC to Production
 title: Moving from POC to Production
 ---
 
-In this guide, we introduce you to transitioning from a proof of concept or limited test on Statsig to a broader production deployment. 
-
+In this guide, we introduce you to transitioning from a proof of concept or limited test on Statsig to a broader production deployment.
 
 ## 1. Check project name/structure
 
-Most teams continue to use the project they used during trial. 
+Most teams continue to use the project they used during trial.
+
 - Rename the project if needed.
-- Decide if you need more than one project. Tools like tags and granular permissions let you to manage many teams within a project. Create a new project for a seperate product when the definition of a user (and DAU) is distinct and no metrics need to be  shared.
+- Decide if you need more than one project. Tools like tags and granular permissions let you to manage many teams within a project. Create a new project for a seperate product when the definition of a user (and DAU) is distinct and no metrics need to be shared.
 - Seed your project with a set of tags to use across gates, experiments and metrics.
 
 ## 2. Setup SSO to ease onboarding
 
 Instead of having to invite each user and remembering to deactive them if they leave your company, set up [Single Sign On](access-management/introduction) with your identity provider. Statsig supports ODIC - a modern protocol that most identity providers support. Employees (your identity provider verifies) will have a Statsig account created on first use. Once you do this, make your project "Open" so new users verified by SSO default to having access to your projects. If you choose to keep your project closed, you can explicitly approve new requests.
 ![image](https://user-images.githubusercontent.com/31516123/175362892-862d0cf5-012f-484a-8e39-22489011029e.png)
-
 
 ## 3. Decide on change management policies for production
 
@@ -26,27 +25,29 @@ Statsig lets you [require reviews](guides/setting-up-reviews) before making chan
 ## 4. Set up Key Metrics and Dimensions
 
 You should make sure [metrics](metrics) and dimensions you want to experiment on are set up and correct before starting experiments. Some things to consider/explore while determining this include
- - [Custom Metrics](metrics/create) that build on top of other metrics (e.g. aggregations, ratios) 
- - [User Dimensions]() to be able to slice experiment results by Geo, User etc.
+
+- [Custom Metrics](metrics/create) that build on top of other metrics (e.g. aggregations, ratios)
+- [User Dimensions](#) to be able to slice experiment results by Geo, User etc.
 - [Metric Dimensions](metrics#metric-dimensions) to be able to able slice metrics (eg. add-to-cart events by Product Category)
-- [Funnels](metrics/create-user-funnels) 
+- [Funnels](metrics/create-user-funnels)
 - [Tag frequently used collections of metrics](metrics/create-metric-tags) so they're easy to bring into experiments
 
-## 5. Set up integrations 
+## 5. Set up integrations
 
-You might already have set up integrations to bring data into Statsig. Consider other integrations that may be helpful - 
+You might already have set up integrations to bring data into Statsig. Consider other integrations that may be helpful -
+
 - Export assigninment data from Statsig to your data warehouse
 - Export Change History to Slack, Teams or Datadog (overlay over operational dashboards)
 
-## 6. Best practices, Forums and Training 
+## 6. Best practices, Forums and Training
 
-Set up a best practice repo and a forum for experimenters to share best practices, get feedback and seek help. Have guidance available to your teams on when to use Feature Gates vs Experiments. 
+Set up a best practice repo and a forum for experimenters to share best practices, get feedback and seek help. Have guidance available to your teams on when to use Feature Gates vs Experiments.
 
-If you've contracted with Statsig for Enterprise Support 
+If you've contracted with Statsig for Enterprise Support
+
 - consider what training specific to your SMEs might be useful and ask for this
-- Switch support communication to the Slack Support channel with an SLA 
+- Switch support communication to the Slack Support channel with an SLA
 
 ## 7. Determine migration strategy (if any)
+
 Pick a date after which new experiment and gates are created on Statsig. Allow experiments and ephemeral gates on legacy systems to conclude and wind down there. Move over only gates that are expected to persist for extended periods.
-
-
