@@ -12,36 +12,79 @@ Reach out in slack or to your primary Statsig point of contact. We'll set up an 
 
 ## Filesystem Format
 
-We will expect data in your azure container to be saved in parquet format.
+To allow for daily uploads, please set up your blob storage container with the following folders:
 
-To allow for daily uploads, please set up a folder `statsig_user_metrics` with daily folders labelled according to ISO-formatted dates (`YYYY-MM-DD`). You can add metric-level (or other) partition folders underneath these as needed; we will be reading the daily folders in their entirety.
+- `events/` for events data
+- `metrics/` for metrics data
+- `signals/` for signal flags when you've finished uploading data for a day. You can omit this folder and instead use the [`mark_data_ready` API](/metrics/ingest) instead, but you must use one or the other
 
-For example, your data for `2022-05-22` would go into `<container_name_from_statsig>/statsig_user_metrics/2022-05-22/`
+We recommend writing folders by date partitions for ease of debugging, i.e. storing day's data in folders with ISO-formatted names (`YYYY-MM-DD`).
 
-## Table Format
+### Data Format
 
-Please make sure your data conforms to the following schema:
+Please make sure your data conforms to the following schemas.
 
-| Column       | Description                                                                                                                   | Rules                                                                                                                                                                                                                         |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| unit_id      | The unique user identifier this metric is for. This might not necessarily be a user_id - it could be a custom_id of some kind | Make sure this is in the same format as your logged unit_ids                                                                                                                                                                  |
-| id_type      | The id_type the unit_id represents.                                                                                           | Must be a valid id_type. The default Statsig types are user_id/stable_id, but you may have generated custom id_types. Make sure this matches (case sensitive) a customID in your project, or you won't get experiment results |
-| date         | Date of the daily metric                                                                                                      | Statsig's dates are calculated in PST - we'll load custom metrics to whatever date you use here                                                                                                                               |
-| metric_name  | The name of the metric                                                                                                        | Not null. Length < 128 characters                                                                                                                                                                                             |
-| metric_value | A numeric value for the metric                                                                                                | Metric value, or both of numerator/denominator need to be provided for Statsig to process the metric. See details below                                                                                                       |
-| numerator    | Numerator for metric calculation                                                                                              | Required for ratio metrics. If present along with a denominator in any record, the metric will be treated as ratio and only calculated for users with non-null denominators                                                   |
-| denominator  | Denominator for metric calculation                                                                                            | See above                                                                                                                                                                                                                     |
+<b>Events</b>
 
-#### Scheduling
+| Column         | Description                                                                                                       | Rules                                                                                                   |
+| -------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| timestamp      | UNIX timestamp of the event                                                                                       | UTC timestamp                                                                                           |
+| event_name     | The name of the event                                                                                             | String under 128 characters, using `_` for spaces                                                       |
+| event_value    | A string representing the value of a current event. Can represent a 'dimension' or a 'value'                      | Read as string format; numeric values will be converted into value                                      |
+| event_metadata | A dictionary<string, string> in the form of a JSON string, containing named metadata for the event                | String format. Not null. Length < 128 characters                                                        |
+| user           | A JSON object representing the user this event was logged for; see below                                          | Escaped JSON string including the keys 'custom' and 'customIDs'. A userID or customID must be provided. |
+| timeuuid       | A unique UUID or timeUUID used for deduping. If omitted, will be generated but will not be effective for deduping | UUID format                                                                                             |
 
-Because you may be streaming events to your tables or have multiple ETLs pointing to your metrics table, Statsig relies on you
-signalling that your metric/events for a given day are done.
+Please refer to docs for the [Statsig User Object](https://docs.statsig.com/client/concepts/user#user-attributes) for available fields. An example would look like:
 
-To do this, create a separate folder in your blob called `statsig_user_metrics_signal` that has data from a table with a single column (`finished_date`). Once you are finished uploading a day's data, add a record
-with that date. For example, once all of your metrics data is loaded into `statsig_user_metrics/2022-05-22`, you would insert `2022-05-22` into the data in `statsig_user_metrics_signal`.
+```
+{
+  userID: "12345",
+  customIDs: {
+    stableID: "<device_id_here>",
+    ...
+  }
+  email: "12345@gmail.com",
+  userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.40 Safari/537.36",
+  ip: "192.168.1.101",
+  country: "US",
+  locale: "en_US",
+  appVersion: "1.0.1",
+  systemName: "Android",
+  systemVersion: "15.4",
+  browserName: "Chrome",
+  browserVersion: "45.0",
+  custom: {
+    new_user: "false",
+    age: "22"
+    ...
+  },
+}
+```
 
-Statsig expects you to load data in order. For example, if you have loaded up to `2022-05-22` and signal that `2022-05-24` has landed,
-we will wait for you to signal that `2022-05-23` has landed, and load that data before we ingest data from `2022-05-24`
+<b>Metrics</b>
+
+Make sure to include all of metric_value, numerator, and denominator, writing `cast(null as double)` for numerator and denominator if you are omitting them (or conversely for metric_value if sending numerator/denominator).
+
+| Column       | Description                                                                                                                   | Rules                                                                                                                                                                                                                                        |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| unit_id      | The unique user identifier this metric is for. This might not necessarily be a user_id - it could be a custom_id of some kind | String format. Make sure this is in the same format as your logged unit_ids                                                                                                                                                                  |
+| id_type      | The id_type the unit_id represents.                                                                                           | String format. Must be a valid id_type. The default Statsig types are user_id/stable_id, but you may have generated custom id_types. Make sure this matches (case sensitive) a customID in your project, or you won't get experiment results |
+| date         | Date of the daily metric                                                                                                      | Read as string format; can be written as ISO date. Statsig's dates are calculated in PST - we'll load custom metrics to whatever date you use here                                                                                           |
+| metric_name  | The name of the metric                                                                                                        | String format. Not null. Length < 128 characters                                                                                                                                                                                             |
+| metric_value | A numeric value for the metric                                                                                                | Double format. Metric value, or both of numerator/denominator need to be provided for Statsig to process the metric. See details below                                                                                                       |
+| numerator    | Numerator for metric calculation                                                                                              | Double format. Required for ratio metrics. If present along with a denominator in any record, the metric will be treated as ratio and only calculated for users with non-null denominators                                                   |
+| denominator  | Denominator for metric calculation                                                                                            | Double format. See above                                                                                                                                                                                                                     |
+
+### Scheduling
+
+Because you may be streaming events to your tables or have multiple ETLs pointing to your metrics table, Statsig relies on you signalling that your metric/events for a given day are done.
+
+To do this, write a dataset with the single column `finished_date`, which contains all dates of data which have been written to Statsig. For example, once you have written data for `2022-06-22` you would insert a record with `finished_date` of `2022-06-22` to trigger ingestion of data from up to and including `2022-06-22`.
+
+Unlike some other integrations like Snowflake, for S3 Statsig will skip dates; if your latest finished date is `2022-06-22` and you insert `2022-07-01`, we will ingest all data as of `2022-07-01` and infer that data for dates between (e.g. `2022-06-25`) is loaded.
+
+Alternatively, you can use the `mark_data_ready` API and send a timestamp for which the data previous to that timestamp has finished loading into your container.
 
 <a name="checklist"></a>
 
