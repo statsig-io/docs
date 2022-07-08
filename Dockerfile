@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FROM node:15-alpine as builder
+FROM node:16-alpine as builder
 WORKDIR /usr/app
 
 COPY ./ ./
