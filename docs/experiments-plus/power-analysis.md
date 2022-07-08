@@ -5,7 +5,7 @@ slug: /experiments-plus/power-analysis
 ---
 
 The power analysis tool leverages past data for a given metric to estimate the relationship between three variables:
-* Minimum detectable effect (MDE): The smallest change in the metric that the experiment can detect.  For example: An MDE of 1% means that if there's a true effect of 1% or larger on our metric, we expect the experiment will show a statistically significant result.  If the effect is smaller than 1%, then it will likely fall inside the confidence intervals and not be statisctically significant.  
+* Minimum detectable effect (MDE): The smallest change in the metric that the experiment can detect.  For example: An MDE of 1% means that if there's a true effect of 1% or larger on our metric, we expect the experiment will show a statistically significant result.  If the effect is smaller than 1%, then it will likely fall inside the confidence intervals and not be statistically significant.  
 * Number of days: How long the experiment is active.  Longer running experiment typically have more observations, leading to tighter confidence intervals and smaller MDE.
 * Allocation: The percentage of traffic that participates in the experiment.  Larger allocation leads to smaller MDE, so it's often desireable to allocate as many users as possible to get faster or more sensisitve results.  When there's a risk of negative impact however, it's useful to know the smallest allocation that can achieve the desired MDE. 
 
