@@ -15,28 +15,28 @@ Most teams continue to use the project they used during trial.
 
 ## 2. Setup SSO to ease onboarding
 
-Instead of having to invite each user and remembering to deactive them if they leave your company, set up [Single Sign On](access-management/introduction) with your identity provider. Statsig supports ODIC - a modern protocol that most identity providers support. Employees (your identity provider verifies) will have a Statsig account created on first use. Once you do this, make your project "Open" so new users verified by SSO default to having access to your projects. If you choose to keep your project closed, you can explicitly approve new requests.
+Instead of having to invite each user and remembering to deactive them if they leave your company, set up [Single Sign On](https://docs.statsig.com/access-management/introduction) with your identity provider. Statsig supports ODIC - a modern protocol that most identity providers support. Employees (your identity provider verifies) will have a Statsig account created on first use. Once you do this, make your project "Open" so new users verified by SSO default to having access to your projects. If you choose to keep your project closed, you can explicitly approve new requests.
 ![image](https://user-images.githubusercontent.com/31516123/175362892-862d0cf5-012f-484a-8e39-22489011029e.png)
 
 ## 3. Decide on change management policies for production
 
-Statsig lets you [require reviews](guides/setting-up-reviews) before making changes in production. This is a best practice similar to requiring code reviews when developing software. You can also create [Review Groups](guides/setting-up-reviews) (to notify) and apply more granular permissions to specific feature gates and experiments.
+Statsig lets you [require reviews](https://docs.statsig.com/guides/setting-up-reviews) before making changes in production. This is a best practice similar to requiring code reviews when developing software. You can also create [Review Groups](guides/setting-up-reviews) (to notify) and apply more granular permissions to specific feature gates and experiments.
 
 ## 4. Set up Key Metrics and Dimensions
 
-You should make sure [metrics](metrics) and dimensions you want to experiment on are set up and correct before starting experiments. Some things to consider/explore while determining this include
+You should make sure [metrics](https://docs.statsig.com/metrics) and dimensions you want to experiment on are set up and correct before starting experiments. Some things to consider/explore while determining this include
 
-- [Custom Metrics](metrics/create) that build on top of other metrics (e.g. aggregations, ratios)
-- [User Dimensions](#) to be able to slice experiment results by Geo, User etc.
-- [Metric Dimensions](metrics#metric-dimensions) to be able to able slice metrics (eg. add-to-cart events by Product Category)
-- [Funnels](metrics/create-user-funnels)
-- [Tag frequently used collections of metrics](metrics/create-metric-tags) so they're easy to bring into experiments
+- [Custom Metrics](https://docs.statsig.com/metrics/create) that build on top of other metrics (e.g. aggregations, ratios)
+- User Dimensions to be able to slice experiment results by Geo, User etc.
+- [Metric Dimensions](https://docs.statsig.com/metrics#metric-dimensions) to be able to able slice metrics (eg. add-to-cart events by Product Category)
+- [Funnels](https://docs.statsig.com/metrics/create-user-funnels)
+- [Tag metrics](https://docs.statsig.com/metrics/create-metric-tags) so that frequently used collections of metrics are easy to bring into experiments
 
 ## 5. Set up integrations
 
-You might already have set up integrations to bring data into Statsig. Consider other integrations that may be helpful -
+You might already have set up [integrations](https://docs.statsig.com/integrations/introduction) to bring data into Statsig. Consider other integrations that may be helpful -
 
-- Export assigninment data from Statsig to your data warehouse
+- Export assignment data from Statsig to your data warehouse
 - Export Change History to Slack, Teams or Datadog (overlay over operational dashboards)
 
 ## 6. Best practices, Forums and Training
