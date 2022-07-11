@@ -310,6 +310,7 @@ module.exports = {
         "stats-engine/variance-reduction",
       ],
     },
+    "custom_proxy",
     "faq",
   ],
 };
