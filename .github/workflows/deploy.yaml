@@ -7,7 +7,7 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-#    runs-on: self-hosted
+    #    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
         with:
@@ -45,8 +45,8 @@ jobs:
           app_id: ${{ secrets.AZ_LATEST_SERVICE_PRINCIPLE_APP_ID }}
           password: ${{ secrets.AZ_LATEST_SERVICE_PRINCIPLE_PASSWORD }}
           tenant: ${{ secrets.AZ_LATEST_SERVICE_PRINCIPLE_TENANT }}
-          region: az-westus-2
-          tier: latest
+          region: az-centralus
+          tier: staging
         with:
           args: rollout restart deployment/docs
       - name: Validate Deployment
@@ -55,8 +55,7 @@ jobs:
           app_id: ${{ secrets.AZ_LATEST_SERVICE_PRINCIPLE_APP_ID }}
           password: ${{ secrets.AZ_LATEST_SERVICE_PRINCIPLE_PASSWORD }}
           tenant: ${{ secrets.AZ_LATEST_SERVICE_PRINCIPLE_TENANT }}
-          region: az-westus-2
-          tier: latest
+          region: az-centralus
+          tier: staging
         with:
           args: rollout status deployment/docs
-        
