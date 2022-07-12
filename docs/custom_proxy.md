@@ -54,3 +54,5 @@ In your DNS settings (depending on your DNS provider),
 ### Update Statsig SDK to use your custom domain
 
 When using Statsig SDK, make sure to update the `api` parameter in the [Statsig Options](/client/jsClientSDK#statsig-options) to your custom domain with `/v1/` appended, e.g. `https://statsig.example.com/v1/`.
+
+Also note that the request IP will change from your user’s IP to your proxy’s, so conditions based on either IP address or country won’t work properly. You need to manually user’s IP on the user object’s `ip` field, or you can set the country code directly on the `country` field.
