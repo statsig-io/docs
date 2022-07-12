@@ -11,7 +11,7 @@ There are many ways to set up custom proxies. We are showing instructions for a 
 ### Prerequisites
 
 - Write access to your DNS settings.
-- Write access on your AWS CloudFront console.
+- Write access on your AWS CloudFront and Lambda console.
 - Access to a SSL certificate for your custom domain.
 
 ### Setup
