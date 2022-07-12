@@ -233,6 +233,7 @@ module.exports = {
       },
       items: [
         "console-api/autotunes",
+        "console-api/experiments",
         "console-api/gates",
         "console-api/daily-reports",
         "console-api/segments",

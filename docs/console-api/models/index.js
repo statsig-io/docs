@@ -3,6 +3,8 @@ export default {
   autotune: require("./autotune.json"),
   dynamic_config: require("./dynamic_config.json"),
   dynamic_config_update: require("./dynamic_config_update.json"),
+  experiment: require("./experiment.json"),
+  experimentMetric: require("./experimentMetric.json"),
   segment: require("./segment.json"),
   error: require("./error.json"),
   holdout: require("./holdout.json"),
