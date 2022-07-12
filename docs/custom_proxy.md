@@ -11,7 +11,7 @@ There are many ways to set up custom proxies. We are showing instructions for a 
 ### Prerequisites
 
 - Write access to your DNS settings.
-- Write access on your AWS CloudFront console.
+- Write access on your AWS CloudFront and Lambda console.
 - Access to a SSL certificate for your custom domain.
 
 ### Setup
@@ -30,8 +30,25 @@ On your [AWS CloudFront console](https://console.aws.amazon.com/cloudfront/),
 
   - Set Viewer protocol policy to `Redirect HTTP to HTTPS`.
   - Set Allowed HTTP methods to `GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE`.
+  - In the Cache Key and origin requests subsection, allow all headers and parameters to be forwarded to the Origin, and allow CORS requests for the Origin.
 
-![Default cache behavior section](https://user-images.githubusercontent.com/7304774/178337879-d2a16abe-46be-4f79-a708-de1a55cae5b1.png)
+![Default cache behavior section](https://user-images.githubusercontent.com/7304774/178590547-acdedcb6-e15a-4086-a29f-0657242d9894.png)
+
+- In Function associations section,
+
+  - Add a Lambda@Edge function to Origin request to rewrite the `Host` header to `api.statsig.com`. Please refer to [the AWS tutorial on creating a Lambda@Edge function](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-edge-how-it-works-tutorial.html).
+
+![Function associations section](https://user-images.githubusercontent.com/7304774/178591897-a93a046a-c76f-4fc6-ab0c-86452de99be7.png)
+  
+  You can use the following javascript code snippet in your Lambda@Edge function:
+
+  ```javascript
+  exports.handler = (event, context, callback) => {
+    const request = event.Records[0].cf.request;
+    request.headers.host[0].value = 'api.statsig.com';
+    return callback(null, request);
+  };
+  ```
 
 - In Settings,
 
