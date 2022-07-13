@@ -86,6 +86,8 @@ Unlike some other integrations like Snowflake, for S3 Statsig will skip dates; i
 
 Alternatively, you can use the `mark_data_ready` API and send a timestamp for which the data previous to that timestamp has finished loading into your container.
 
+Note that, for events, Statsig processes days in PST. When you mark data ready for '2022-06-20', statsig will process events from `2022-06-20T00:00` PST to `2022-06-20T23:59....` PST. Keep this in mind when scheduling your signals!
+
 <a name="checklist"></a>
 
 #### Checklist
