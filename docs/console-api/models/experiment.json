@@ -1,0 +1,201 @@
+{
+  "type": "object",
+  "x-examples": {
+    "example-1": {
+      "id": "a_experiment",
+      "description": "helpful summary of what this experiment does",
+      "lastModifierName": "CONSOLE API",
+      "lastModifierID": "4FKF0sUbi1D7xZFW5vcHWB",
+      "idType": "userID",
+      "status": "setup",
+      "layerID": "statsig::a_experiment_layer",
+      "hypothesis": "",
+      "primaryMetrics": [],
+      "secondaryMetrics": [],
+      "groups": [
+        {
+          "name": "Control",
+          "size": 50,
+          "parameterValues": {}
+        },
+        {
+          "name": "Test",
+          "size": 50,
+          "parameterValues": {}
+        }
+      ],
+      "allocation": 100,
+      "duration": 14,
+      "targetingGateID": "",
+      "defaultConfidenceInterval": "95",
+      "bonferroniCorrection": false
+    }
+  },
+  "description": "Experiment Object",
+  "examples": [
+    {
+      "id": "a_experiment",
+      "description": "a helpful summary of what this experiment does",
+      "lastModifierName": "CONSOLE API",
+      "lastModifierID": "f0JAV9dd7KF0sUbi1DHWB",
+      "idType": "userID",
+      "status": "setup",
+      "layerID": "layer1",
+      "hypothesis": "Does 1 or 0 work better?",
+      "primaryMetrics": [
+        {
+          "name": "l14",
+          "type": "user"
+        }
+      ],
+      "secondaryMetrics": [
+        {
+          "name": "mau_28d",
+          "type": "user"
+        }
+      ],
+      "groups": [
+        {
+          "name": "group1",
+          "size": 50,
+          "parameterValues": {
+            "key": 1
+          }
+        },
+        {
+          "name": "gruop2",
+          "size": 50,
+          "parameterValues": {
+            "key": 0
+          }
+        }
+      ],
+      "allocation": 50.46,
+      "duration": 14,
+      "targetingGateID": "a_gate",
+      "defaultConfidenceInterval": "95",
+      "bonferroniCorrection": false
+    }
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The name that was originally given to the experiment on creation but formatted as an ID (\"A Experiment\" -> \"a_experiment\")."
+    },
+    "description": {
+      "type": "string",
+      "description": "A helpful summary of what this experiment does"
+    },
+    "lastModifierName": {
+      "type": "string",
+      "description": "The Statsig Username of the last modifier of this experiment."
+    },
+    "lastModifierID": {
+      "type": "string",
+      "description": "The Statsig UserID of the last modifier of this experiment."
+    },
+    "idType": {
+      "type": "string",
+      "description": "The type of ID which the experiment is based on."
+    },
+    "status": {
+      "type": "string",
+      "description": "The current status of the experiment.",
+      "enum": [
+        "setup",
+        "active",
+        "decision_made"
+      ]
+    },
+    "layerID": {
+      "type": "string",
+      "description": "The layer that the experiment is in."
+    },
+    "hypothesis": {
+      "type": "string",
+      "description": "A statement that will be tested by this experiment."
+    },
+    "primaryMetrics": {
+      "type": "array",
+      "description": "Main metrics needed to evaluate your hypothesis",
+      "items": {
+        "$ref": "./experimentMetric.json"
+      }
+    },
+    "secondaryMetrics": {
+      "type": "array",
+      "description": "Additional metric you may want to monitor that might impact the analysis or final decision of the experiment",
+      "items": {
+        "$ref": "./experimentMetric.json"
+      }
+    },
+    "groups": {
+      "type": "array",
+      "description": "The test groups for your experiment",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "size": {
+            "type": "number",
+            "description": "What percentage of traffic should be passed into this group",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "parameterValues": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "name",
+          "size",
+          "parameterValues"
+        ]
+      }
+    },
+    "allocation": {
+      "type": "number",
+      "description": "Percent of layer allocated to this experiment",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "duration": {
+      "type": "integer",
+      "description": "How long the experiment should last in days",
+      "minimum": 0
+    },
+    "targetingGateID": {
+      "type": "string",
+      "description": "Restrict your experiment to users passing the selected feature gate."
+    },
+    "defaultConfidenceInterval": {
+      "type": "string",
+      "description": "Default error margin used for results",
+      "enum": [
+        "80",
+        "90",
+        "95",
+        "98",
+        "99"
+      ]
+    },
+    "bonferroniCorrection": {
+      "type": "boolean",
+      "description": "Is Bonferroni correction applied?"
+    }
+  },
+  "required": [
+    "id",
+    "lastModifierName",
+    "lastModifierID",
+    "idType",
+    "status",
+    "layerID",
+    "groups",
+    "allocation",
+    "defaultConfidenceInterval",
+    "bonferroniCorrection"
+  ]
+}
