@@ -10,7 +10,7 @@ module.exports = {
   },
   "servers": [
     {
-      "url": "https://statsigapi.net/console/v1"
+      "url": "https://api.statsig.net/console/v1"
     }
   ],
   "components": {
@@ -147,8 +147,10 @@ module.exports = {
               "examples": {
                 "example-1": {
                   "value": {
-                    "name": "a experiment",
-                    "description": "helpful summary of what this experiment does"
+                    "name": "a_experiment",
+                    "description": "helpful summary of what this experiment does",
+                    "idType": "userID",
+                    "layerID": "a_layer"
                   }
                 }
               }
@@ -210,11 +212,32 @@ module.exports = {
                       "message": "Experiment created successfully.",
                       "data": {
                         "id": "a_experiment",
-                        "isEnabled": true,
                         "description": "helpful summary of what this experiment does",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "7daj2rCzjHJSO9cS8",
-                        "rules": []
+                        "lastModifierID": "4FKF0sUbi1D7xZFW5vcHWB",
+                        "idType": "userID",
+                        "status": "setup",
+                        "layerID": "a_layer",
+                        "hypothesis": "",
+                        "primaryMetrics": [],
+                        "secondaryMetrics": [],
+                        "groups": [
+                          {
+                            "name": "Control",
+                            "size": 50,
+                            "parameterValues": {}
+                          },
+                          {
+                            "name": "Test",
+                            "size": 50,
+                            "parameterValues": {}
+                          }
+                        ],
+                        "allocation": 0,
+                        "duration": 14,
+                        "targetingGateID": "",
+                        "defaultConfidenceInterval": "95",
+                        "bonferroniCorrection": false
                       }
                     }
                   }
@@ -393,6 +416,14 @@ module.exports = {
                 "example": {
                   "status": 403,
                   "message": "Forbidden resource"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
                 }
               }
             }
@@ -404,7 +435,7 @@ module.exports = {
           {
             "lang": "cURL",
             "label": "cURL",
-            "source": "curl --request GET 'https://statsigapi.net/console/v1/experiments' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
+            "source": "curl --request GET 'https://api.statsig.net/console/v1/experiments' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
           }
         ],
         "tags": [
@@ -607,6 +638,14 @@ module.exports = {
               "application/json": {
                 "schema": {
                   "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
                 }
               }
             }
@@ -683,6 +722,14 @@ module.exports = {
               "application/json": {
                 "schema": {
                   "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
                 }
               }
             }
@@ -698,21 +745,9 @@ module.exports = {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "id": {
-                    "type": "string",
-                    "description": "The name that was originally given to the experiment on creation but formatted as an ID (\"A Experiment\" -> \"a_experiment\")."
-                  },
                   "description": {
                     "type": "string",
                     "description": "A helpful summary of what this experiment does"
-                  },
-                  "lastModifierName": {
-                    "type": "string",
-                    "description": "The Statsig Username of the last modifier of this experiment."
-                  },
-                  "lastModifierID": {
-                    "type": "string",
-                    "description": "The Statsig UserID of the last modifier of this experiment."
                   },
                   "idType": {
                     "type": "string",
@@ -726,10 +761,6 @@ module.exports = {
                       "active",
                       "decision_made"
                     ]
-                  },
-                  "layerID": {
-                    "type": "string",
-                    "description": "The layer that the experiment is in."
                   },
                   "hypothesis": {
                     "type": "string",
@@ -754,9 +785,11 @@ module.exports = {
                     "description": "The test groups for your experiment",
                     "items": {
                       "type": "object",
+                      "description": "Group object",
                       "properties": {
                         "name": {
-                          "type": "string"
+                          "type": "string",
+                          "description": "name of the group"
                         },
                         "size": {
                           "type": "number",
@@ -767,12 +800,7 @@ module.exports = {
                         "parameterValues": {
                           "type": "object"
                         }
-                      },
-                      "required": [
-                        "name",
-                        "size",
-                        "parameterValues"
-                      ]
+                      }
                     }
                   },
                   "allocation": {
@@ -813,7 +841,6 @@ module.exports = {
                     "description": "Updated summary of what this experiment does",
                     "idType": "userID",
                     "status": "setup",
-                    "layerID": "statsig::test_experiment_layer",
                     "hypothesis": "Updated hypothesis",
                     "primaryMetrics": [],
                     "secondaryMetrics": [],
