@@ -1019,7 +1019,9 @@ module.exports = {
       ],
       "get": {
         "summary": "Your GET endpoint",
-        "tags": [],
+        "tags": [
+          "Experiments"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -1347,7 +1349,10 @@ module.exports = {
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Experiments"
+        ]
       }
     }
   }
