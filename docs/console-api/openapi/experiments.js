@@ -51,6 +51,68 @@ module.exports = {
           }
         },
         "description": ""
+      },
+      "overrides": {
+        "type": "object",
+        "x-examples": {
+          "example-1": {
+            "groupID": "4IfTisAzh1ieQ5E1rc9kK2",
+            "name": "b_gate",
+            "type": "gate"
+          }
+        },
+        "properties": {
+          "groupID": {
+            "$ref": "#/components/schemas/groupID"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of gate / segment which should override the experiment."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "gate",
+              "segment"
+            ],
+            "description": "Specifies if this override comes from a gate or a segment."
+          }
+        }
+      },
+      "userIDOverrides": {
+        "type": "object",
+        "x-examples": {
+          "example-1": {
+            "ids": [
+              "a_user",
+              "b_user"
+            ],
+            "groupID": "4IfTisAzh1ieQ5E1rc9kK2"
+          }
+        },
+        "properties": {
+          "ids": {
+            "type": "array",
+            "description": "User IDs to override",
+            "items": {
+              "type": "string"
+            }
+          },
+          "groupID": {
+            "$ref": "#/components/schemas/groupID"
+          }
+        }
+      },
+      "groupID": {
+        "title": "groupID",
+        "x-stoplight": {
+          "id": "hydu327p1bsmk"
+        },
+        "type": "string",
+        "description": "The experiment group which these overrides are applied.",
+        "x-examples": {
+          "example-1": "Test"
+        }
       }
     },
     "responses": {
@@ -942,6 +1004,351 @@ module.exports = {
           "description": "experiment ID to query"
         }
       ]
+    },
+    "/experiments/{experiment_id}/overrides": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "experiment_id",
+          "in": "path",
+          "required": true,
+          "description": "Experiment ID to query"
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Experiment Overrides read successfully.",
+                      "data": {
+                        "overrides": [
+                          {
+                            "groupID": "4IfTisAzh1ieQ5E1rc9kK2",
+                            "name": "b_gate",
+                            "type": "gate"
+                          },
+                          {
+                            "groupID": "4IfTiqVwOJ8KwG65Q4dHr0",
+                            "name": "",
+                            "type": "segment"
+                          },
+                          {
+                            "groupID": "4IfTiqVwOJ8KwG65Q4dHr0",
+                            "name": "a_gate",
+                            "type": "gate"
+                          }
+                        ],
+                        "userIDOverrides": [
+                          {
+                            "ids": [
+                              "a_user",
+                              "b_user"
+                            ],
+                            "groupID": "4IfTisAzh1ieQ5E1rc9kK2"
+                          },
+                          {
+                            "ids": [
+                              "c_user"
+                            ],
+                            "groupID": "4IfTiqVwOJ8KwG65Q4dHr0"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "overrides": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/overrides"
+                          }
+                        },
+                        "userIDOverrides": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/userIDOverrides"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Experiment Overrides read successfully.",
+                      "data": {
+                        "overrides": [
+                          {
+                            "groupID": "4IfTisAzh1ieQ5E1rc9kK2",
+                            "name": "b_gate",
+                            "type": "gate"
+                          },
+                          {
+                            "groupID": "4IfTiqVwOJ8KwG65Q4dHr0",
+                            "name": "a_gate",
+                            "type": "gate"
+                          }
+                        ],
+                        "userIDOverrides": [
+                          {
+                            "ids": [
+                              "a_user",
+                              "b_user"
+                            ],
+                            "groupID": "4IfTisAzh1ieQ5E1rc9kK2"
+                          },
+                          {
+                            "ids": [
+                              "c_user"
+                            ],
+                            "groupID": "4IfTiqVwOJ8KwG65Q4dHr0"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
+        },
+        "operationId": "get-experiments-experiment_id-overrides",
+        "description": "List out overrides for a Experiment"
+      },
+      "post": {
+        "summary": "",
+        "operationId": "post-experiments-experiment_id-overrides",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Experiment Overrides updated successfully.",
+                      "data": {
+                        "overrides": [
+                          {
+                            "type": "segment",
+                            "name": "a_segment",
+                            "groupID": "Control"
+                          },
+                          {
+                            "type": "gate",
+                            "name": "a_gate",
+                            "groupID": "Test"
+                          }
+                        ],
+                        "userIDOverrides": [
+                          {
+                            "groupID": "Control",
+                            "ids": [
+                              "updated_id_list"
+                            ]
+                          },
+                          {
+                            "groupID": "Test",
+                            "ids": [
+                              "updated_id_lists"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "overrides": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/overrides"
+                          }
+                        },
+                        "userIDOverrides": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/userIDOverrides"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Experiment Overrides updated successfully.",
+                      "data": {
+                        "overrides": [
+                          {
+                            "type": "segment",
+                            "name": "a_segment",
+                            "groupID": "Control"
+                          },
+                          {
+                            "type": "gate",
+                            "name": "a_gate",
+                            "groupID": "Test"
+                          }
+                        ],
+                        "userIDOverrides": [
+                          {
+                            "groupID": "Control",
+                            "ids": [
+                              "updated_id_list"
+                            ]
+                          },
+                          {
+                            "groupID": "Test",
+                            "ids": [
+                              "updated_id_lists"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "overrides": [
+                      {
+                        "type": "segment",
+                        "name": "a_segment",
+                        "groupID": "Control"
+                      },
+                      {
+                        "type": "gate",
+                        "name": "a_gate",
+                        "groupID": "Test"
+                      }
+                    ],
+                    "userIDOverrides": [
+                      {
+                        "groupID": "Control",
+                        "ids": [
+                          "updated_id_list"
+                        ]
+                      },
+                      {
+                        "groupID": "Test",
+                        "ids": [
+                          "updated_id_lists"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "properties": {
+                  "overrides": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/overrides"
+                    }
+                  },
+                  "userIDOverrides": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/userIDOverrides"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "overrides": [
+                      {
+                        "type": "segment",
+                        "name": "a_segment",
+                        "groupID": "Control"
+                      },
+                      {
+                        "type": "gate",
+                        "name": "a_gate",
+                        "groupID": "Test"
+                      }
+                    ],
+                    "userIDOverrides": [
+                      {
+                        "groupID": "Control",
+                        "ids": [
+                          "updated_id_list"
+                        ]
+                      },
+                      {
+                        "groupID": "Test",
+                        "ids": [
+                          "updated_id_lists"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
