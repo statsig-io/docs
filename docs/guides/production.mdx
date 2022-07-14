@@ -35,14 +35,18 @@ You should make sure [metrics](https://docs.statsig.com/metrics) and dimensions 
 ![image](https://user-images.githubusercontent.com/31516123/178082121-bb258851-29e5-4732-bd2a-af87833f7570.png)
 
 
-## 5. Set up integrations
+## 5. Decide what IDs to experiment on
+
+Most experiments or feature rollouts on Statsig target users (identified by userID). Another identity type Statsig supports is stableID. This is a Statsig client SDK managed ID unique to a device - typically used to experiment on anonomyous users. You can also create arbitrary units of assignment (eg. organizationID for B2Bs, VIN or vehicleIDs if you're controlling features on cars, creatorID if you have a two sides marketplace with creators and consumers (regular users) and want to target both). [Read more](https://docs.statsig.com/guides/experiment-on-custom-id-types).
+
+## 6. Set up integrations
 
 You might already have set up [integrations](https://docs.statsig.com/integrations/introduction) to bring data into Statsig. Consider other integrations that may be helpful -
 
 - Export assignment data from Statsig to your data warehouse
 - Export Change History to Slack, Teams or Datadog (overlay over operational dashboards)
 
-## 6. Best practices, Forums and Training
+## 7. Best practices, Forums and Training
 
 Set up a best practice repo and a forum for experimenters to share best practices, get feedback and seek help. Have guidance available to your teams on when to use Feature Gates vs Experiments.
 
@@ -55,6 +59,6 @@ Here're some ideas on potential topics to engage on
 ![image](https://user-images.githubusercontent.com/31516123/178082163-91f0081b-61fe-42d1-a060-618405edce5c.png)
 
 
-## 7. Determine migration strategy (if any)
+## 8. Determine migration strategy (if any)
 
 Pick a date after which new experiment and gates are created on Statsig. Allow experiments and ephemeral gates on legacy systems to conclude and wind down there. Move over only gates that are expected to persist for extended periods.
