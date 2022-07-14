@@ -37,7 +37,16 @@ You should make sure [metrics](https://docs.statsig.com/metrics) and dimensions 
 
 ## 5. Decide what IDs to experiment on
 
-Most experiments or feature rollouts on Statsig target users (identified by userID). Another identity type Statsig supports is stableID. This is a Statsig client SDK managed ID unique to a device - typically used to experiment on anonomyous users. You can also create arbitrary units of assignment (eg. organizationID for B2Bs, VIN or vehicleIDs if you're controlling features on cars, creatorID if you have a two sides marketplace with creators and consumers (regular users) and want to target both). [Read more](https://docs.statsig.com/guides/experiment-on-custom-id-types).
+Most experiments or feature rollouts on Statsig target users (identified by userID). Statsig also allows you choose arbitary "units of assignment" beyond userID.
+
+1. userID: Identifies users.
+2. stableID: This is a Statsig client SDK managed ID that is unique to a device. It is typically used to experiment on anonomyous users.
+3. You can also create arbitrary units of assignment. Examples include
+    a. organizationID for B2Bs
+    b. VIN or vehicleIDs if you're controlling features on cars
+    c. creatorID if you have a two sides marketplace with creators and consumers (regular users) and want to control by either
+    
+[Read more](https://docs.statsig.com/guides/experiment-on-custom-id-types).
 
 ## 6. Set up integrations
 
