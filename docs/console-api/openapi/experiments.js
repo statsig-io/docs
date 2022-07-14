@@ -56,8 +56,8 @@ module.exports = {
         "type": "object",
         "x-examples": {
           "example-1": {
-            "groupID": "4IfTisAzh1ieQ5E1rc9kK2",
-            "name": "b_gate",
+            "groupID": "Test",
+            "name": "a_gate",
             "type": "gate"
           }
         },
@@ -83,11 +83,11 @@ module.exports = {
         "type": "object",
         "x-examples": {
           "example-1": {
+            "groupID": "Control",
             "ids": [
-              "a_user",
-              "b_user"
-            ],
-            "groupID": "4IfTisAzh1ieQ5E1rc9kK2"
+              "user1",
+              "user2"
+            ]
           }
         },
         "properties": {
@@ -747,7 +747,7 @@ module.exports = {
                     "isEnabled": true,
                     "description": "Description Here",
                     "lastModifierName": "CONSOLE API",
-                    "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
+                    "lastModifierID": "5rf8chidoxLIYTscuSaaasdflB8",
                     "rules": [
                       {
                         "name": "Specific Users",
@@ -1009,7 +1009,8 @@ module.exports = {
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "string",
+            "example": "a_experiment"
           },
           "name": "experiment_id",
           "in": "path",
@@ -1136,6 +1137,14 @@ module.exports = {
               "application/json": {
                 "schema": {
                   "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
                 }
               }
             }
@@ -1234,13 +1243,13 @@ module.exports = {
                           {
                             "groupID": "Control",
                             "ids": [
-                              "updated_id_list"
+                              "updated_user1"
                             ]
                           },
                           {
                             "groupID": "Test",
                             "ids": [
-                              "updated_id_lists"
+                              "updated_user2"
                             ]
                           }
                         ]
@@ -1257,6 +1266,14 @@ module.exports = {
               "application/json": {
                 "schema": {
                   "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
                 }
               }
             }
