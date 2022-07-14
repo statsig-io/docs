@@ -66,6 +66,6 @@ The **Metrics Logstream** will surface all ingested, precomputed metrics in real
 
 We've also exposed the ability to include test metrics, tagged with **isTest**, which you can toggle on/ off for debugging purposes in the **Metrics Logstream**. Note that this **isTest** flag is only available for precomputed metrics ingested via Statsig's APIs. Support for this flag via our integrations with Snowflake, BigQuery, and Redshift is coming soon.  
 
-To set this **isTest** flag in the ingestion API- 
+![292825183_585502089655173_8192569048240569580_n](https://user-images.githubusercontent.com/101903926/179048336-ebdde45b-17e7-47ad-bb81-01f8f032b978.png)
 
-Finally, it's important to note that **Metrics Logstream** only appears if you're actively ingesting precomputed metrics, so if you're not seeing it appear at the bottom of your **Metrics Catalog** this means the integration is not working as expected and Statsig is not receiving your precomputed metrics. 
+Finally, it's important to note that **Metrics Logstream** only appears if you're actively ingesting precomputed metrics, so if you're not seeing it appear at the bottom of your **Metrics Catalog** this means there is likely a connection or schema issue and Statsig is not receiving your precomputed metrics. 
