@@ -55,3 +55,17 @@ The timestamp provided should be:
 - We don’t guarantee correct behavior if metrics are provided with an earlier timestamp after this API is called.
 
 Statsig processes metrics as a full day in the PST timezone; we will wait until a full day is marked as ready before processing that day.
+
+## Debugging Precomputed Metrics 
+
+All precomputed metrics generate Metric Detail View pages. However, these Detail View pages take a few hours to generate post-ingestion. The fastest way to start seeing and debugging your precomputed metrics is via the **Metrics Logstream** on the **Metrics Catalog** tab within **Metrics**. 
+
+![Screen Shot 2022-07-13 at 4 22 46 PM](https://user-images.githubusercontent.com/101903926/178854882-730ef0d5-8eb2-4344-88ab-33111301e712.png)
+
+The **Metrics Logstream** will surface all ingested, precomputed metrics in real-time as they are ingested, enabling you to check metric name, value, ID, ID type, and ingestion date. Pro tip- we often find that customers get tripped up on ensuring their precomputed metrics have the right ID type, so pay extra attention to this column! 
+
+We've also exposed the ability to include test metrics, tagged with **isTest**, which you can toggle on/ off for debugging purposes in the **Metrics Logstream**. Note that this **isTest** flag is only available for precomputed metrics ingested via Statsig's APIs. Support for this flag via our integrations with Snowflake, BigQuery, and Redshift is coming soon.  
+
+![292825183_585502089655173_8192569048240569580_n](https://user-images.githubusercontent.com/101903926/179048336-ebdde45b-17e7-47ad-bb81-01f8f032b978.png)
+
+Finally, it's important to note that **Metrics Logstream** only appears if you're actively ingesting precomputed metrics, so if you're not seeing it appear at the bottom of your **Metrics Catalog** this means there is likely a connection or schema issue and Statsig is not receiving your precomputed metrics. 
