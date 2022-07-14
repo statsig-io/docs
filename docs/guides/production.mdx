@@ -7,11 +7,10 @@ In this guide, we introduce you to transitioning from a proof of concept or limi
 
 ## 1. Check project name/structure
 
-Most teams continue to use the project they used during trial.
-
-- Rename the project if needed.
-- Decide if you need more than one project. Tools like tags and granular permissions let you to manage many teams within a project. Create a new project for a seperate product when the definition of a user (and DAU) is distinct and no metrics need to be shared.
-- Seed your project with a set of tags to use across gates, experiments and metrics.
+1. Rename the project if needed. Most teams continue to use the project they used during trial.
+2. Decide if you need more than one project. Tools like tags and granular permissions let you to manage many teams within a project. Create a new project for a seperate product when the definition of a user (and DAU) is distinct and no metrics need to be shared.
+3. Seed your project with a set of tags to use across gates, experiments and metrics.
+4. Create [Segments](https://docs.statsig.com/segments) to identify internal employees so you can easily override them into feature rollouts and experiments.
 
 ## 2. Setup SSO to ease onboarding
 
@@ -46,7 +45,7 @@ Most experiments or feature rollouts on Statsig target users (identified by user
     b. VIN or vehicleIDs if you're controlling features on cars
     c. creatorID if you have a two sides marketplace with creators and consumers (regular users) and want to control by either
     
-[Read more](https://docs.statsig.com/guides/experiment-on-custom-id-types).
+[Read more](https://docs.statsig.com/guides/experiment-on-custom-id-types)
 
 ## 6. Set up integrations
 
