@@ -64,7 +64,18 @@ All precomputed metrics generate Metric Detail View pages. However, these Detail
 
 The **Metrics Logstream** will surface all ingested, precomputed metrics in real-time as they are ingested, enabling you to check metric name, value, ID, ID type, and ingestion date. Pro tip- we often find that customers get tripped up on ensuring their precomputed metrics have the right ID type, so pay extra attention to this column! 
 
-We've also exposed the ability to include test metrics, tagged with **isTest**, which you can toggle on/ off for debugging purposes in the **Metrics Logstream**. Note that this **isTest** flag is only available for precomputed metrics ingested via Statsig's APIs. Support for this flag via our integrations with Snowflake, BigQuery, and Redshift is coming soon.  
+We've also exposed the ability to include test metrics, tagged with **isTest**, which you can toggle on/ off for debugging purposes in the **Metrics Logstream**. Note that this **isTest** flag is only available for precomputed metrics ingested via Statsig's APIs. Support for this flag via our integrations with Snowflake, BigQuery, and Redshift is coming soon.
+
+To mark a batch of metrics as test metrics the isTest parameter needs to be set to true as part of the data for the request as seen below.
+
+```bash
+curl \
+  “https://events.statsigapi.net/v1/log_custom_metric” \
+  --header “statsig-api-key: <YOUR-SDK-KEY>” \
+  --header “Content-Type: application/json” \
+  --request POST \
+  --data “{"isTest": true, “metrics": [{"user_id": "1237", "metric_name": "test_metric", "id_type": "user_id", "metric_value": 90}, {"user_id": "4568", "metric_name": "ratio", "id_type": "stable_id", "numerator": 3, "denominator": 15}]}”
+```
 
 ![292825183_585502089655173_8192569048240569580_n](https://user-images.githubusercontent.com/101903926/179048336-ebdde45b-17e7-47ad-bb81-01f8f032b978.png)
 
