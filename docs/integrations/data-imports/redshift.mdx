@@ -164,3 +164,5 @@ To do this, write a dataset with the single column `finished_date`, which contai
 Unlike some other integrations like Snowflake, for S3 Statsig will skip dates; if your latest finished date is `2022-06-22` and you insert `2022-07-01`, we will ingest all data as of `2022-07-01` and infer that data for dates between (e.g. `2022-06-25`) is loaded.
 
 Alternatively, you can use the `mark_data_ready` API and send a timestamp for which the data previous to that timestamp has finished loading into S3.
+
+Note that, for events, Statsig processes days according to PST. When you mark data ready for '2022-06-20', statsig will process events from `2022-06-20T00:00` PST to `2022-06-20T23:59....` PST. Keep this in mind when scheduling your signals!
