@@ -832,14 +832,14 @@ module.exports = {
                     "type": "array",
                     "description": "Main metrics needed to evaluate your hypothesis",
                     "items": {
-                      "$ref": "./experimentMetric.json"
+                      "$ref": "./experiment_metric.json"
                     }
                   },
                   "secondaryMetrics": {
                     "type": "array",
                     "description": "Additional metric you may want to monitor that might impact the analysis or final decision of the experiment",
                     "items": {
-                      "$ref": "./experimentMetric.json"
+                      "$ref": "./experiment_metric.json"
                     }
                   },
                   "groups": {
@@ -1099,29 +1099,28 @@ module.exports = {
                       "data": {
                         "overrides": [
                           {
-                            "groupID": "4IfTisAzh1ieQ5E1rc9kK2",
-                            "name": "b_gate",
+                            "groupID": "Control",
+                            "name": "a_gate",
                             "type": "gate"
                           },
                           {
-                            "groupID": "4IfTiqVwOJ8KwG65Q4dHr0",
-                            "name": "a_gate",
-                            "type": "gate"
+                            "groupID": "test",
+                            "name": "a_segment",
+                            "type": "segment"
                           }
                         ],
                         "userIDOverrides": [
                           {
                             "ids": [
-                              "a_user",
-                              "b_user"
+                              "updated_id_list"
                             ],
-                            "groupID": "4IfTisAzh1ieQ5E1rc9kK2"
+                            "groupID": "Control"
                           },
                           {
                             "ids": [
-                              "c_user"
+                              "updated_id_lists"
                             ],
-                            "groupID": "4IfTiqVwOJ8KwG65Q4dHr0"
+                            "groupID": "Test"
                           }
                         ]
                       }
@@ -1154,7 +1153,7 @@ module.exports = {
           }
         },
         "operationId": "get-experiments-experiment_id-overrides",
-        "description": "List out overrides for a Experiment"
+        "description": "Get Experiment Overrides"
       },
       "post": {
         "summary": "",
@@ -1369,7 +1368,8 @@ module.exports = {
         },
         "tags": [
           "Experiments"
-        ]
+        ],
+        "description": "Update Experiment Overrides"
       }
     }
   }
