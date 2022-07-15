@@ -1019,7 +1019,7 @@ module.exports = {
         }
       ],
       "get": {
-        "summary": "Your GET endpoint",
+        "summary": "Get Experiment Overrides",
         "tags": [
           "Experiments"
         ],
@@ -1156,7 +1156,7 @@ module.exports = {
         "description": "Get Experiment Overrides"
       },
       "post": {
-        "summary": "",
+        "summary": "Update Experiment Overrides",
         "operationId": "post-experiments-experiment_id-overrides",
         "responses": {
           "201": {
