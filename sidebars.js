@@ -161,7 +161,7 @@ module.exports = {
         "pulse/read-pulse",
         "pulse/drill-down",
         "pulse/custom-queries",
-        "pulse/
+        "pulse/export
         ",
         "pulse/best-practices",
       ],
