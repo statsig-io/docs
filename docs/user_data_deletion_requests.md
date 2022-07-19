@@ -1,5 +1,5 @@
 ---
-title: [Coming Soon] User Data Deletion Requests API
+title: (Coming Soon) User Data Deletion Requests API
 ---
 
 :::info
