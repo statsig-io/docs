@@ -3,7 +3,7 @@ title: Data Export
 ---
 
 ## Overview
-Your data is your data. Statsig makes it easy to export both the reports and the raw data your feature rollouts and experiments generate. Scenarios we enable include  auditing or reproducing results or taking the raw data back into your warehouse for ad-hoc analsis when needed (e.g. to study counfounding data or join with a different dataset).
+Your data is your data. Statsig makes it easy to export both the reports and the raw data your feature rollouts and experiments generate. Scenarios we enable include auditing/reproducing results or taking the raw data back into your warehouse for ad-hoc analysis (e.g. to study counfounding data or join with a different dataset).
 
 ## How to
 1. [Download Pulse results](https://docs.statsig.com/pulse/export#how-to-export-pulse-data) from the Console as a CSV file - including a summary view, exposures and the raw data. This is meant for one-off downloads/analysis. 
