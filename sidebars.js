@@ -312,6 +312,7 @@ module.exports = {
       ],
     },
     "custom_proxy",
+    "user_data_deletion_requests",
     "faq",
   ],
 };
