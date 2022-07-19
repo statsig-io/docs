@@ -21,7 +21,7 @@ curl \
   --header "Content-Type: application/json" \
   --request POST \
   --data '{"unit_type": "user_id", "ids": ["1", "2", "3"], "request_id": "test_request_1"}' \
-  "https://events.statsigapi.net/v1/delete_user_data"
+  "https://api.statsig.com/console/v1/delete_user_data"
 ```
 
 Response:
@@ -43,7 +43,7 @@ curl \
   --header "Content-Type: application/json" \
   --request POST \
   --data '{"request_id": "test_request_1"}' \
-  "https://events.statsigapi.net/v1/get_delete_user_data_request_status"
+  "https://api.statsig.com/console/v1/get_delete_user_data_request_status"
 ```
 
 Response:
