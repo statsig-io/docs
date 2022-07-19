@@ -161,7 +161,8 @@ module.exports = {
         "pulse/read-pulse",
         "pulse/drill-down",
         "pulse/custom-queries",
-        "pulse/export",
+        "pulse/
+        ",
         "pulse/best-practices",
       ],
     },
@@ -288,6 +289,11 @@ module.exports = {
             "integrations/data-imports/redshift",
             "integrations/data-imports/snowflake",
           ],
+        },
+           {
+          "Data Exports": [
+            "integrations/data-exports/overview"
+           ],
         },
         "integrations/event_filtering",
         "integrations/event_webhook",
