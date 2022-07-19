@@ -11,7 +11,7 @@ All requests must include the STATSIG-API-KEY field in the header. The value sho
 ## Sending Requests
 
 Data deletion requests take the following parameters:
-- `unit_type`: The unit type that corresponds to the IDs that you would like to deleted. This could be `userID`, `stableID`, or some custom ID that you have set up
+- `unit_type`: The unit type that corresponds to the IDs that you would like to deleted. This could be userID, stableID, or some custom ID that you have set up
 - `ids`: A list of strings, that are the IDs you would like to delete data for
 - `request_id` (optional): If you store a request ID on your side that you would like us to use, you can pass it in, and it will be used to track the request. If left unset, we will provide an ID for you to use in the response. Note that it must be a unique ID if you are supplying your own, otherwise the request will fail with a 400 code.
 
@@ -32,6 +32,7 @@ Response:
 Using the request ID, you can check on the status of a deletion.
 Input:
 - `request_id`: The ID of the request
+
 Output:
 - `COMPLETE` if the data has been deleted
 - `PENDING` if the data is still pending deletion
