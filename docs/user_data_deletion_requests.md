@@ -1,6 +1,10 @@
 ---
-title: User Data Deletion Requests API
+title: [Coming Soon] User Data Deletion Requests API
 ---
+
+:::info
+NOTE: This is not quite rolled out yet! We are just sharing this as a preview of what it will look like. If you have feedback or feature requests, please let us know.
+:::
 
 GDPR and similar laws may require that you delete a user's data when they request it. To support deletion requests on our side, we have built this API for you to call.
 
