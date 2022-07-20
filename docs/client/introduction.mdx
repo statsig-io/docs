@@ -29,8 +29,10 @@ As shown in the diagram below, implementing an experiment using a Statsig client
  - The `checkGate` calls returns _true_ if the end-user passes the feature gate rules that you've configured on the Statsig console, and _false_ otherwise 
  
  - The `getConfig` call returns the dynamic configuration based on the rules that you've configured to target your end-users; use the returned `config` object to `get` the value of the parameters required to serve a dynamically configured app experience
+
+ - All of the above (`checkGate`, `getExperiment`, `getLayer`, and `getConfig`) log an exposure at the time the check is made, before returning a value to the caller.
  
- - The client SDK automatically flushes all accumulated exposure checks events to the Statsig servers every 10 seconds
+ - The client SDK automatically flushes all accumulated exposure checks and events to the Statsig servers every 10 seconds
 
  -	You can also force this flush by calling `shutdown` to push these accumulated exposure checks to Statsig servers; the `shutdown` call resets the state of the SDK and you should call it when the application is about to exit
 
