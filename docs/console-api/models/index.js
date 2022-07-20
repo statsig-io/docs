@@ -3,6 +3,8 @@ export default {
   autotune: require("./autotune.json"),
   dynamic_config: require("./dynamic_config.json"),
   dynamic_config_update: require("./dynamic_config_update.json"),
+  layer: require("./layer.json"),
+  layer_parameter: require("./layer_parameter.json"),
   experiment: require("./experiment.json"),
   experiment_metric: require("./experiment_metric.json"),
   segment: require("./segment.json"),
