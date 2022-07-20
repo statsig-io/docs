@@ -4,7 +4,7 @@ export default {
   dynamic_config: require("./dynamic_config.json"),
   dynamic_config_update: require("./dynamic_config_update.json"),
   experiment: require("./experiment.json"),
-  experimentMetric: require("./experimentMetric.json"),
+  experiment_metric: require("./experiment_metric.json"),
   segment: require("./segment.json"),
   error: require("./error.json"),
   holdout: require("./holdout.json"),
