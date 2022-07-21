@@ -4,7 +4,7 @@ slug: /compliance/user_data_deletion_requests
 ---
 
 :::info
-NOTE: This is not quite rolled out yet! We are just sharing this as a preview of what it will look like. If you have feedback or feature requests, please let us know.
+User data deletion requests are for Enterprise contracts only. Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you need to enable Enterprise features as you use Statsig.
 :::
 
 GDPR and similar laws may require that you delete a user's data when they request it. To support deletion requests on our side, we have built this API for you to call.
