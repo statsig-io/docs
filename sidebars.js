@@ -311,8 +311,18 @@ module.exports = {
         "stats-engine/variance-reduction",
       ],
     },
+    {
+      type: "category",
+      label: "Compliance",
+      link: {
+        type: "doc",
+        id: "compliance/introduction",
+      },
+      items: [
+        "compliance/user_data_deletion_requests",
+      ],
+    },
     "custom_proxy",
-    "user_data_deletion_requests",
     "faq",
   ],
 };

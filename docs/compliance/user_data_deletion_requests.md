@@ -1,5 +1,6 @@
 ---
 title: (Coming Soon) User Data Deletion Requests API
+slug: /compliance/user_data_deletion_requests
 ---
 
 :::info
