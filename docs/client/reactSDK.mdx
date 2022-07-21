@@ -256,8 +256,11 @@ Internally at Statsig, we use this jest mock to test our components:
 
 ```js
 let mockGates: Record<string, boolean> = {};
+let mockLayers: Record<string, Layer> = {};
 jest.mock('statsig-react', () => {
-  return {
+  const DynamicConfig = jest.requireActual('statsig-react')
+    .DynamicConfig as new (mockName: string) => DynamicConfig;
+  const StatsigMock = {
     useGate: (gateName: string) => {
       return {
         isLoading: false,
@@ -267,22 +270,51 @@ jest.mock('statsig-react', () => {
     useConfig: () => {
       return {};
     },
-    useExperiment: () => {},
+    useLayer: (name: string) => {
+      return { layer: mockLayers[name], isLoading: false };
+    },
+    useExperiment: (name: string) => {
+      return {
+        isLoading: false,
+        config: new DynamicConfig(name),
+      };
+    },
     Statsig: {
       logEvent: () => {},
       checkGate: (gateName: string) => mockGates[gateName] ?? false,
       getConfig: () => {
         return {
-          /* eslint-disable @typescript-eslint/no-explicit-any */
-          /* eslint-disable @typescript-eslint/no-unsafe-return */
           get: (name: string, fallback: any) => fallback,
-          /* eslint-disable @typescript-eslint/no-explicit-any */
-          /* eslint-disable @typescript-eslint/no-unsafe-return */
           getValue: (name: string, fallback: any) => fallback,
+        };
+      },
+      getLayer: (layerName: string) => {
+        return StatsigMock.Layer._create(layerName);
+      },
+    },
+
+    Layer: {
+      _create(
+        _layerName: string,
+        _layerValue: Record<string, any> = {},
+        _ruleID = '',
+        _secondaryExposures: Record<string, string>[] = [],
+        _allocatedExperimentName = '',
+      ) {
+        return {
+          get: function <T>(
+            _key: string,
+            defaultValue: T,
+            _typeGuard?: (value: unknown) => value is T,
+          ): T {
+            return defaultValue;
+          },
         };
       },
     },
   };
+  return StatsigMock;
+});
 ```
 
 #### Browser Support
