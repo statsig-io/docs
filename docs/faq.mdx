@@ -4,7 +4,7 @@ slug: /faq
 sidebar_label: FAQ
 ---
 
-And for everything else, there's always the FAQ.  We'll try to keep this list updated with more recent and common questions, and move those answers to their respective places in the docs over time.
+And for everything else, there's always the FAQ. We'll try to keep this list updated with more recent and common questions, and move those answers to their respective places in the docs over time.
 
 ## I don't see my client or server language listed, can I still use Statsig?
 
@@ -14,9 +14,32 @@ with more SDKs, plugins, and integrations shipping all the time.
 
 ## How can I get started with running an A/B Test?
 
-If you have a feature built but not yet released, you can run a simple A/B test by opening up a partial rollout using a [feature gate](/guides/first-feature). This will create test and control groups to measure the impact of your new feature. If you already have a feature in production and want to test different variants, create an [experiment](/guides/abn-tests). Either way, you can analyze the results in the **Pulse Results** tab of your feature gate or experiment.  
-
+If you have a feature built but not yet released, you can run a simple A/B test by opening up a partial rollout using a [feature gate](/guides/first-feature). This will create test and control groups to measure the impact of your new feature. If you already have a feature in production and want to test different variants, create an [experiment](/guides/abn-tests). Either way, you can analyze the results in the **Pulse Results** tab of your feature gate or experiment.
 
 ## Is it possible to add a layer to a running experiment?
 
 Once an experiment has been started you cannot change the layer. Doing so would impact the integrity of the experiment. Once an experiment has been created, you can no longer change the layer (we may allow this in the future)
+
+## Why should I define parameters for my experiments and get them in code, instead of just get the group?
+
+Even though some products on the market took the latter approach, parameterizing experiments is what companies like Facebook, Uber and Airbnb do in their internal experimentation platform, and it allows for much faster iteration (no code change for new experiments) and more flexible experiment design.
+
+Take a look at this example, where you are testing the color of a button. If you are to get the group the user is in and decide what the button looks like in the code, it will look like this:
+
+```
+if (otherExpEngine.getExperiment('button_color_test').getGroup() === 'Control') {
+    color = 'BLACK';
+} else if (otherExpEngine.getExperiment('button_color_test').getGroup() === 'Blue') {
+    color = 'BLUE';
+}
+```
+
+In Statsig, you will add a parameter to your experiment named "button_color", and your code will look like this:
+
+```
+color = statsig.getExperiment('button_color_test').getString('button_color', 'BLACK');
+```
+
+In the first set up, if you want to test a new color, say "Green", you will need to change your experiment, make a code change, and even wait for a new release cycle if you are developing on mobile platforms.
+
+In the second set up using Statsig, you can simply change your experiment to add a new group that returns "GREEN" and be done. No code change or waiting for release cycle needed!
