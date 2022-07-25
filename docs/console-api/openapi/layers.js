@@ -506,6 +506,69 @@ module.exports = {
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 400,
+                      "message": "Bad Request Exception",
+                      "errors": {
+                        "property": "parameter",
+                        "errorMessage": "Parameter(s) missing: [a_parameter, b_parameter, c_parameter, d_parameter, e_parameter]"
+                      }
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "errors": {
+                      "type": "object",
+                      "properties": {
+                        "property": {
+                          "type": "string"
+                        },
+                        "errorMessage": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 400,
+                      "message": "Bad Request Exception",
+                      "errors": {
+                        "property": "parameters",
+                        "errorMessage": "Parameter(s) missing: [a_parameter, b_parameter]"
+                      }
+                    }
+                  },
+                  "example-2": {
+                    "value": {
+                      "status": 400,
+                      "message": "Bad Request Exception",
+                      "errors": [
+                        {
+                          "property": "description",
+                          "errorMessage": "Required"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
           "401": {
             "description": "Unauthorized",
             "content": {
