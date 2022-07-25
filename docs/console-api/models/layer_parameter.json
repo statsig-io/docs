@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "description": "Parameter object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of this parameter."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "string",
+        "boolean",
+        "number",
+        "object"
+      ],
+      "description": "The type that this parameter returns."
+    },
+    "defaultValue": {
+      "description": "The default value for this parameter, must match the type provided",
+      "type": [
+        "integer",
+        "string",
+        "number",
+        "boolean",
+        "object"
+      ]
+    }
+  }
+}

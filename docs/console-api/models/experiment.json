@@ -119,14 +119,14 @@
       "type": "array",
       "description": "Main metrics needed to evaluate your hypothesis",
       "items": {
-        "$ref": "./experimentMetric.json"
+        "$ref": "./experiment_metric.json"
       }
     },
     "secondaryMetrics": {
       "type": "array",
       "description": "Additional metric you may want to monitor that might impact the analysis or final decision of the experiment",
       "items": {
-        "$ref": "./experimentMetric.json"
+        "$ref": "./experiment_metric.json"
       }
     },
     "groups": {
