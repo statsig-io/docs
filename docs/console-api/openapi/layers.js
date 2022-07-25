@@ -54,7 +54,7 @@ module.exports = {
               "examples": {
                 "example-1": {
                   "value": {
-                    "name": "a layer",
+                    "name": "A Layer",
                     "description": "helpful summary of what this layer does"
                   }
                 }
@@ -72,27 +72,22 @@ module.exports = {
                   "type": "object",
                   "x-examples": {
                     "example-1": {
-                      "name": "a layer",
-                      "description": "helpful summary of what this layer does",
-                      "idType": "userID"
+                      "message": "Layer created successfully.",
+                      "data": {
+                        "id": "a_layer",
+                        "description": "helpful summary of what this layer does",
+                        "idType": "userID",
+                        "isImplicitLayer": false,
+                        "parameters": []
+                      }
                     }
                   },
                   "properties": {
-                    "name": {
-                      "type": "string",
-                      "description": "The name of this layer"
+                    "message": {
+                      "$ref": "../models/message.json"
                     },
-                    "description": {
-                      "type": "string",
-                      "description": "A brief summary of what the layer is being used for"
-                    },
-                    "idType": {
-                      "type": "string",
-                      "enum": [
-                        "userID",
-                        "stableID"
-                      ],
-                      "description": "The idType this layer uses."
+                    "data": {
+                      "$ref": "../models/layer.json"
                     }
                   }
                 },
@@ -110,9 +105,14 @@ module.exports = {
                 "examples": {
                   "example-1": {
                     "value": {
-                      "name": "a layer",
-                      "description": "helpful summary of what this layer does",
-                      "idType": "userID"
+                      "message": "Layer created successfully.",
+                      "data": {
+                        "id": "a_layer",
+                        "description": "helpful summary of what this layer does",
+                        "idType": "userID",
+                        "isImplicitLayer": false,
+                        "parameters": []
+                      }
                     }
                   }
                 }
@@ -188,7 +188,7 @@ module.exports = {
         ]
       },
       "get": {
-        "summary": "",
+        "summary": "Get Layers",
         "operationId": "get-layers",
         "responses": {
           "200": {
@@ -281,7 +281,7 @@ module.exports = {
                           "description": "a description",
                           "parameters": [
                             {
-                              "name": "a_name",
+                              "name": "a_parameter",
                               "type": "boolean",
                               "defaultValue": true
                             }
@@ -321,7 +321,7 @@ module.exports = {
     },
     "/layers/{layer_id}": {
       "post": {
-        "summary": "Update Layer",
+        "summary": "Update Layer Description",
         "requestBody": {
           "content": {
             "application/json": {
@@ -341,7 +341,8 @@ module.exports = {
                 },
                 "properties": {
                   "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Updated description"
                   },
                   "parameters": {
                     "type": "array",
@@ -354,17 +355,34 @@ module.exports = {
               "examples": {
                 "example-1": {
                   "value": {
-                    "description": "updated description",
+                    "description": "new description",
                     "parameters": [
                       {
-                        "name": "a_name",
+                        "name": "a_parameter",
                         "type": "boolean",
                         "defaultValue": true
                       },
                       {
-                        "name": "b_name",
+                        "name": "b_parameter",
+                        "type": "number",
+                        "defaultValue": 123
+                      },
+                      {
+                        "name": "c_parameter",
                         "type": "string",
-                        "defaultValue": "return this value"
+                        "defaultValue": "this is a string"
+                      },
+                      {
+                        "name": "d_parameter",
+                        "type": "array",
+                        "defaultValue": []
+                      },
+                      {
+                        "name": "e_parameter",
+                        "type": "object",
+                        "defaultValue": {
+                          "key": "value"
+                        }
                       }
                     ]
                   }
@@ -449,18 +467,36 @@ module.exports = {
                       "message": "Layer updated successfully.",
                       "data": {
                         "id": "a_layer",
+                        "description": "new description",
+                        "idType": "userID",
                         "isImplicitLayer": false,
-                        "description": "updated description",
                         "parameters": [
                           {
-                            "name": "a_name",
+                            "name": "a_parameter",
                             "type": "boolean",
                             "defaultValue": true
                           },
                           {
-                            "name": "b_name",
+                            "name": "b_parameter",
+                            "type": "number",
+                            "defaultValue": 123
+                          },
+                          {
+                            "name": "c_parameter",
                             "type": "string",
-                            "defaultValue": "return this value"
+                            "defaultValue": "this is a string"
+                          },
+                          {
+                            "name": "d_parameter",
+                            "type": "array",
+                            "defaultValue": []
+                          },
+                          {
+                            "name": "e_parameter",
+                            "type": "object",
+                            "defaultValue": {
+                              "key": "value"
+                            }
                           }
                         ]
                       }
@@ -627,7 +663,7 @@ module.exports = {
         }
       ],
       "get": {
-        "summary": "",
+        "summary": "Get Layer",
         "operationId": "get-layers-layer_id",
         "responses": {
           "200": {
@@ -672,7 +708,7 @@ module.exports = {
                         "description": "a helpful description",
                         "parameters": [
                           {
-                            "name": "a_name",
+                            "name": "a_parameter",
                             "type": "string",
                             "defaultValue": "return this value"
                           }
@@ -696,6 +732,38 @@ module.exports = {
                     "value": {
                       "status": 401,
                       "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 404,
+                      "message": "Layer not found."
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 404,
+                      "message": "Layer not found."
                     }
                   }
                 }
