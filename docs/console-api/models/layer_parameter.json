@@ -32,7 +32,15 @@
         "boolean",
         "array",
         "object"
-      ]
+      ],
+      "items": {
+        "type": [
+          "number",
+          "string",
+          "boolean",
+          "object"
+        ]
+      }
     }
   }
 }
