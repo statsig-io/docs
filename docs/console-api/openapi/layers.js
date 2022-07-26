@@ -872,6 +872,233 @@ module.exports = {
           "Layers"
         ]
       }
+    },
+    "/layers/{layer_id}/experiments": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string",
+            "example": "a_layer"
+          },
+          "name": "layer_id",
+          "in": "path",
+          "required": true,
+          "description": "layer id to query"
+        }
+      ],
+      "get": {
+        "summary": "Get Layer Experiments",
+        "tags": [
+          "Layers"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Layer experiments listed successfully",
+                      "data": [
+                        {
+                          "id": "d_experiment",
+                          "description": "",
+                          "lastModifierName": "Jacob O'Quinn",
+                          "lastModifierID": "wsJTGUMTimICpPESo2DYg",
+                          "idType": "userID",
+                          "status": "setup",
+                          "layerID": "a_layer",
+                          "hypothesis": "",
+                          "primaryMetrics": [],
+                          "secondaryMetrics": [],
+                          "groups": [
+                            {
+                              "name": "Control",
+                              "size": 50,
+                              "parameterValues": {}
+                            },
+                            {
+                              "name": "Test",
+                              "size": 50,
+                              "parameterValues": {}
+                            }
+                          ],
+                          "allocation": 10,
+                          "duration": 14,
+                          "targetingGateID": "",
+                          "defaultConfidenceInterval": "95",
+                          "bonferroniCorrection": false
+                        },
+                        {
+                          "id": "experiment",
+                          "description": "",
+                          "lastModifierName": "Jacob O'Quinn",
+                          "lastModifierID": "wsJTGUMTimICpPESo2DYg",
+                          "idType": "userID",
+                          "status": "setup",
+                          "layerID": "a_layer",
+                          "hypothesis": "",
+                          "primaryMetrics": [],
+                          "secondaryMetrics": [],
+                          "groups": [
+                            {
+                              "name": "Control",
+                              "size": 50,
+                              "parameterValues": {}
+                            },
+                            {
+                              "name": "Test",
+                              "size": 50,
+                              "parameterValues": {}
+                            }
+                          ],
+                          "allocation": 0,
+                          "duration": 14,
+                          "targetingGateID": "",
+                          "defaultConfidenceInterval": "95",
+                          "bonferroniCorrection": false
+                        }
+                      ]
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "../models/experiment.json"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Layer experiments listed successfully",
+                      "data": [
+                        {
+                          "id": "a_experiment",
+                          "description": "a helpful description",
+                          "lastModifierName": "Adam Smith",
+                          "lastModifierID": "dKixAUMTimICd0a2DYg",
+                          "idType": "userID",
+                          "status": "setup",
+                          "layerID": "a_layer",
+                          "hypothesis": "my hypothesis",
+                          "primaryMetrics": [],
+                          "secondaryMetrics": [],
+                          "groups": [
+                            {
+                              "name": "Control",
+                              "size": 50,
+                              "parameterValues": {}
+                            },
+                            {
+                              "name": "Test",
+                              "size": 50,
+                              "parameterValues": {}
+                            }
+                          ],
+                          "allocation": 10,
+                          "duration": 14,
+                          "targetingGateID": "",
+                          "defaultConfidenceInterval": "95",
+                          "bonferroniCorrection": false
+                        },
+                        {
+                          "id": "b_experiment",
+                          "description": "a helpful description",
+                          "lastModifierName": "CONSOLE API",
+                          "lastModifierID": "F1dTd9achapPESsp7d3",
+                          "idType": "userID",
+                          "status": "setup",
+                          "layerID": "a_layer",
+                          "hypothesis": "my hypothesis",
+                          "primaryMetrics": [],
+                          "secondaryMetrics": [],
+                          "groups": [
+                            {
+                              "name": "Control",
+                              "size": 50,
+                              "parameterValues": {}
+                            },
+                            {
+                              "name": "Test",
+                              "size": 50,
+                              "parameterValues": {}
+                            }
+                          ],
+                          "allocation": 0,
+                          "duration": 14,
+                          "targetingGateID": "",
+                          "defaultConfidenceInterval": "95",
+                          "bonferroniCorrection": false
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 404,
+                      "message": "Layer not found."
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 404,
+                      "message": "Layer not found."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-layers-layer_id-experiments",
+        "description": "Get a list of Experiments in the Layer"
+      }
     }
   }
 }
