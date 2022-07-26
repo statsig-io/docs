@@ -232,14 +232,14 @@ module.exports = {
         id: "console-api/introduction",
       },
       items: [
-        "console-api/autotunes",
-        "console-api/experiments",
-        "console-api/layers",
         "console-api/gates",
-        "console-api/daily-reports",
         "console-api/segments",
         "console-api/dynamic-configs",
+        "console-api/experiments",
         "console-api/holdouts",
+        "console-api/layers",
+        "console-api/autotunes",
+        "console-api/daily-reports",
         "console-api/all-endpoints"
       ],
     },

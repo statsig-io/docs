@@ -3,8 +3,7 @@ import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import Models from "../../docs/console-api/models/index";
 import { useColorMode } from '@docusaurus/theme-common';
 
-// In the order they will appear on All Endpoint's tab preferably
-const supportedEntities = ["gates", "experiments", "layers", "dynamic-configs", "segments", "autotunes", "holdouts" ]
+const supportedEntities = ['gates', 'segments', 'dynamic-configs', 'experiments', 'holdouts', 'layers', 'autotunes']
 
 function updateCodeSnippets(data, entity) {
   let snippet;
