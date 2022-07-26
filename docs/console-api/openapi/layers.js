@@ -321,7 +321,7 @@ module.exports = {
     },
     "/layers/{layer_id}": {
       "post": {
-        "summary": "Update Layer Description",
+        "summary": "Update Layer",
         "requestBody": {
           "content": {
             "application/json": {
