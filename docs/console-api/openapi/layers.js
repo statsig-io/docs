@@ -60,7 +60,8 @@ module.exports = {
                 }
               }
             }
-          }
+          },
+          "description": ""
         },
         "responses": {
           "201": {
@@ -652,6 +653,38 @@ module.exports = {
                   "example-1": {
                     "value": {
                       "message": "Layer deleted successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 400,
+                      "message": "Layer cannot be deleted with experiments still on it"
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 400,
+                      "message": "Layer cannot be deleted with experiments still on it"
                     }
                   }
                 }
