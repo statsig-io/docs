@@ -154,6 +154,8 @@ StatsigProvider is a [react context provider](https://reactjs.org/docs/context.h
 - `options?: StatsigOptions;` - See [StatsigOptions](/client/jsClientSDK#statsig-options).  An optional bag of initialization properties (shared with the statsig-js sdk) for advanced configuration.  
 - `waitForInitialization?: boolean;` - Waits for the SDK to initialize with updated values before rendering child components
 - `initializingComponent?: React.ReactNode | React.ReactNode[];` - A loading component to render iff waitForInitialization is set to true and the SDK is initializing
+- `mountKey?: string` - A key for stable mounting/unmounting when updating the user.  If this key is set and changes when the user object changes (or if it is not provided) Then the children of StatsigProvider will unmount/remount with the async update. If this key is set and does not change, then the children of StatsigProvider will continue to be mounted, and it will trigger a rerender after updateUser completes.
+- `shutdownOnUnmount?: boolean` - If set to true, will automatically call Statsig.shutdown() when the provider is unmounted
 
 #### Hooks
 The SDK exposes Feature Gates, Dynamic Configs, Experiments, and the underlying [statsig-js](/client/jsClientSDK).  If you are unfamiliar with hooks, be sure to check out the [rules of hooks](https://reactjs.org/docs/hooks-rules.html)
@@ -256,8 +258,11 @@ Internally at Statsig, we use this jest mock to test our components:
 
 ```js
 let mockGates: Record<string, boolean> = {};
+let mockLayers: Record<string, Layer> = {};
 jest.mock('statsig-react', () => {
-  return {
+  const DynamicConfig = jest.requireActual('statsig-react')
+    .DynamicConfig as new (mockName: string) => DynamicConfig;
+  const StatsigMock = {
     useGate: (gateName: string) => {
       return {
         isLoading: false,
@@ -267,22 +272,51 @@ jest.mock('statsig-react', () => {
     useConfig: () => {
       return {};
     },
-    useExperiment: () => {},
+    useLayer: (name: string) => {
+      return { layer: mockLayers[name], isLoading: false };
+    },
+    useExperiment: (name: string) => {
+      return {
+        isLoading: false,
+        config: new DynamicConfig(name),
+      };
+    },
     Statsig: {
       logEvent: () => {},
       checkGate: (gateName: string) => mockGates[gateName] ?? false,
       getConfig: () => {
         return {
-          /* eslint-disable @typescript-eslint/no-explicit-any */
-          /* eslint-disable @typescript-eslint/no-unsafe-return */
           get: (name: string, fallback: any) => fallback,
-          /* eslint-disable @typescript-eslint/no-explicit-any */
-          /* eslint-disable @typescript-eslint/no-unsafe-return */
           getValue: (name: string, fallback: any) => fallback,
+        };
+      },
+      getLayer: (layerName: string) => {
+        return StatsigMock.Layer._create(layerName);
+      },
+    },
+
+    Layer: {
+      _create(
+        _layerName: string,
+        _layerValue: Record<string, any> = {},
+        _ruleID = '',
+        _secondaryExposures: Record<string, string>[] = [],
+        _allocatedExperimentName = '',
+      ) {
+        return {
+          get: function <T>(
+            _key: string,
+            defaultValue: T,
+            _typeGuard?: (value: unknown) => value is T,
+          ): T {
+            return defaultValue;
+          },
         };
       },
     },
   };
+  return StatsigMock;
+});
 ```
 
 #### Browser Support

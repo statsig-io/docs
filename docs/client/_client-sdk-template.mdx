@@ -1,8 +1,8 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 <div>
-  Statsig client SDK for {props.sdkType} applications. This SDK is{' '}
+  Statsig client SDK for {props.sdkType} applications. This SDK is{" "}
   <a href={props.github}>open source and hosted on github</a>.
 </div>
 
@@ -58,7 +58,7 @@ Feature Gates can be very useful for simple on/off switches, with optional but a
 
 <div>{props.getConfig}</div>
 
-Then we have **Experiments**, which you can use to run A/B/n experiments and use advanced features like layers (coming soon) to avoid collision and enable quicker iterations with parameter reuse.
+Then we have **Experiments**, which you can use to run A/B/n experiments and use advanced features like [layers](/layers) to avoid collision and enable quicker iterations with parameter reuse.
 
 <div>{props.getExperiment}</div>
 
@@ -88,7 +88,7 @@ For example, if you have feature gates that should only pass for users with emai
 
 ## Statsig Options {#statsig-options}
 
-<div>{props.options ?? '(Coming soon)'}</div>
+<div>{props.options ?? "(Coming soon)"}</div>
 
 ## Shutting down Statsig
 

@@ -15,7 +15,7 @@ Holdouts measure the aggregate impact of multiple features. A "holdout" is a gro
 ![image](https://user-images.githubusercontent.com/1315028/131407752-e3bd55dc-7a3d-4f16-b622-4ac8d521291a.png)
 
 ## How to read Holdouts
-As Holdouts measure the impact for users who aren't seeing any new features, your metrics will likely show a negative lift. This is a good result because it means that the features you’ve shipped have a positive impact on your metrics. 
+The Metric Lifts section shows the comparison of *Not in Holdout* vs. *In Holdout*.  In other words, it represents the cumulative impact of launched and active experiments and gates relative to the Holdout group, which doesn't see any of these changes.  In the example below, the new features are having an overall negative effect on many metrics.
 
 ![image](https://user-images.githubusercontent.com/1315028/131407825-23f00cd3-8e64-429c-91a4-48a8eaa8555a.png)
 

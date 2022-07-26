@@ -203,6 +203,7 @@ module.exports = {
         "client/dotnetSDK",
         "client/rokuSDK",
         "client/unitySDK",
+        "client/dartSDK",
       ],
     },
     {
@@ -315,6 +316,17 @@ module.exports = {
         "stats-engine/p-value",
         "stats-engine/topline-impact",
         "stats-engine/variance-reduction",
+      ],
+    },
+    {
+      type: "category",
+      label: "Compliance",
+      link: {
+        type: "doc",
+        id: "compliance/introduction",
+      },
+      items: [
+        "compliance/user_data_deletion_requests",
       ],
     },
     "custom_proxy",

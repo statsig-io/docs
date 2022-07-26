@@ -1,0 +1,9 @@
+```jsx
+var expConfig = Statsig.getExperiment("new_user_promo");
+
+var promoTitle = expConfig.get(
+  "title",
+  "Welcome to Statsig! Use discount code WELCOME10OFF for 10% off your first purchase!"
+);
+var discount = expConfig.get("discount", 0.1);
+```
