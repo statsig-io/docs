@@ -27,8 +27,8 @@
     "defaultValue": {
       "description": "The default value for this parameter, must match the type provided",
       "type": [
-        "string",
         "number",
+        "string",
         "boolean",
         "array",
         "object"
@@ -37,8 +37,7 @@
         "type": [
           "number",
           "string",
-          "boolean",
-          "object"
+          "boolean"
         ]
       }
     }
