@@ -1,5 +1,12 @@
 {
   "type": "object",
+  "x-examples": {
+    "example-1": {
+      "name": "a_parameter",
+      "type": "number",
+      "defaultValue": 100
+    }
+  },
   "description": "Parameter object",
   "properties": {
     "name": {
@@ -12,17 +19,18 @@
         "string",
         "boolean",
         "number",
-        "object"
+        "object",
+        "array"
       ],
       "description": "The type that this parameter returns."
     },
     "defaultValue": {
       "description": "The default value for this parameter, must match the type provided",
       "type": [
-        "integer",
         "string",
         "number",
         "boolean",
+        "array",
         "object"
       ]
     }
