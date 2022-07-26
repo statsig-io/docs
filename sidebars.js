@@ -203,6 +203,7 @@ module.exports = {
         "client/dotnetSDK",
         "client/rokuSDK",
         "client/unitySDK",
+        "client/dartSDK",
       ],
     },
     {
@@ -238,7 +239,7 @@ module.exports = {
         "console-api/segments",
         "console-api/dynamic-configs",
         "console-api/holdouts",
-        "console-api/all-endpoints"
+        "console-api/all-endpoints",
       ],
     },
     {
