@@ -7,7 +7,7 @@ module.exports = {
   },
   "servers": [
     {
-      "url": "http://0.0.0.0:3006/console/v1"
+      "url": "https://statsigapi.net/console/v1"
     }
   ],
   "components": {
