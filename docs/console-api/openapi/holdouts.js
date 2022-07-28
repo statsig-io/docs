@@ -769,48 +769,11 @@ module.exports = {
         "tags": [
           "Holdouts"
         ],
-        "summary": "Update Holdout Overrides",
+        "summary": "Fully Update Holdout",
         "responses": {
           "201": {
             "description": "Created",
-            "headers": {
-              "vary": {
-                "schema": {
-                  "type": "string",
-                  "example": "Origin"
-                }
-              },
-              "access-control-allow-origin": {
-                "schema": {
-                  "type": "string",
-                  "example": "*"
-                }
-              },
-              "content-type": {
-                "schema": {
-                  "type": "string",
-                  "example": "application/json; charset=utf-8"
-                }
-              },
-              "content-length": {
-                "schema": {
-                  "type": "integer",
-                  "example": "221"
-                }
-              },
-              "Date": {
-                "schema": {
-                  "type": "string",
-                  "example": "Sun, 23 Jan 2022 23:52:29 GMT"
-                }
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string",
-                  "example": "keep-alive"
-                }
-              }
-            },
+            "headers": {},
             "content": {
               "application/json": {
                 "schema": {
@@ -959,20 +922,6 @@ module.exports = {
               }
             }
           },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                },
-                "example": {
-                  "status": 403,
-                  "message": "Forbidden resource"
-                }
-              }
-            }
-          },
           "404": {
             "description": "Not Found",
             "content": {
@@ -1033,7 +982,8 @@ module.exports = {
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/Update-Holdout"
-        }
+        },
+        "description": "Update all fields of the holdout"
       },
       "delete": {
         "tags": [
@@ -1166,7 +1116,134 @@ module.exports = {
           "in": "path",
           "required": true
         }
-      ]
+      ],
+      "patch": {
+        "summary": "Partially Update Holdout",
+        "operationId": "patch-holdouts-holdout_id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Holdout updated successfully.",
+                      "data": {
+                        "id": "a_holdout",
+                        "isEnabled": true,
+                        "description": "an updated summary of what this holdout does",
+                        "idType": "userID",
+                        "isGlobal": true,
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "passPercentage": 10,
+                        "gateIDs": [],
+                        "experimentIDs": [],
+                        "layerIDs": [
+                          "mynewlayer"
+                        ]
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "../models/holdout.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Holdout updated successfully.",
+                      "data": {
+                        "id": "a_holdout",
+                        "isEnabled": true,
+                        "description": "an updated summary of what this holdout does",
+                        "idType": "userID",
+                        "isGlobal": true,
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "passPercentage": 10,
+                        "gateIDs": [
+                          "a_gate"
+                        ],
+                        "experimentIDs": [
+                          "a_experiment"
+                        ],
+                        "layerIDs": [
+                          "a_layer"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 404,
+                      "message": "Holdout not found."
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 404,
+                      "message": "Holdout not found."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Update-Holdout"
+        },
+        "description": "Update selected properties of the holdout",
+        "tags": [
+          "Holdouts"
+        ]
+      }
     },
     "/holdouts/{holdout_id}/overrides": {
       "parameters": [
