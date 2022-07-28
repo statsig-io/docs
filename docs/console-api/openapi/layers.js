@@ -189,7 +189,7 @@ module.exports = {
         ]
       },
       "get": {
-        "summary": "Get Layers",
+        "summary": "Read All Layers",
         "operationId": "get-layers",
         "responses": {
           "200": {
@@ -759,7 +759,7 @@ module.exports = {
         }
       ],
       "get": {
-        "summary": "Get Layer",
+        "summary": "Read Single Layer",
         "operationId": "get-layers-layer_id",
         "responses": {
           "200": {
