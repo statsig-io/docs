@@ -7,7 +7,7 @@ module.exports = {
   },
   "servers": [
     {
-      "url": "https://statsigapi.net/console/v1"
+      "url": "http://0.0.0.0:3006/console/v1"
     }
   ],
   "components": {
@@ -322,7 +322,7 @@ module.exports = {
     },
     "/layers/{layer_id}": {
       "post": {
-        "summary": "Update Layer",
+        "summary": "Fully Update Layer",
         "requestBody": {
           "content": {
             "application/json": {
@@ -868,6 +868,223 @@ module.exports = {
           }
         },
         "description": "Get a single Layer",
+        "tags": [
+          "Layers"
+        ]
+      },
+      "patch": {
+        "summary": "Partially Update Layer",
+        "operationId": "patch-layers-layer_id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Layer updated successfully.",
+                      "data": {
+                        "id": "a_layer",
+                        "description": "new description",
+                        "idType": "userID",
+                        "isImplicitLayer": false,
+                        "parameters": [
+                          {
+                            "name": "a_parameter",
+                            "type": "boolean",
+                            "defaultValue": true
+                          },
+                          {
+                            "name": "b_parameter",
+                            "type": "number",
+                            "defaultValue": 123
+                          },
+                          {
+                            "name": "c_parameter",
+                            "type": "string",
+                            "defaultValue": "this is a string"
+                          },
+                          {
+                            "name": "d_parameter",
+                            "type": "array",
+                            "defaultValue": []
+                          },
+                          {
+                            "name": "e_parameter",
+                            "type": "object",
+                            "defaultValue": {
+                              "key": "value"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "data": {
+                      "$ref": "../models/layer.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Layer updated successfully.",
+                      "data": {
+                        "id": "a_layer",
+                        "description": "new description",
+                        "idType": "userID",
+                        "isImplicitLayer": false,
+                        "parameters": [
+                          {
+                            "name": "a_parameter",
+                            "type": "boolean",
+                            "defaultValue": true
+                          },
+                          {
+                            "name": "b_parameter",
+                            "type": "number",
+                            "defaultValue": 123
+                          },
+                          {
+                            "name": "c_parameter",
+                            "type": "string",
+                            "defaultValue": "this is a string"
+                          },
+                          {
+                            "name": "d_parameter",
+                            "type": "array",
+                            "defaultValue": []
+                          },
+                          {
+                            "name": "e_parameter",
+                            "type": "object",
+                            "defaultValue": {
+                              "key": "value"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "description": "new description",
+                    "parameters": [
+                      {
+                        "name": "a_parameter",
+                        "type": "boolean",
+                        "defaultValue": true
+                      },
+                      {
+                        "name": "b_parameter",
+                        "type": "number",
+                        "defaultValue": 123
+                      },
+                      {
+                        "name": "c_parameter",
+                        "type": "string",
+                        "defaultValue": "this is a string"
+                      },
+                      {
+                        "name": "d_parameter",
+                        "type": "array",
+                        "defaultValue": []
+                      },
+                      {
+                        "name": "e_parameter",
+                        "type": "object",
+                        "defaultValue": {
+                          "key": "value"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "description": "A helpful summary of this layer"
+                  },
+                  "parameters": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "../models/layer_parameter.json"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "description": "new description",
+                    "parameters": [
+                      {
+                        "name": "a_parameter",
+                        "type": "boolean",
+                        "defaultValue": true
+                      },
+                      {
+                        "name": "b_parameter",
+                        "type": "number",
+                        "defaultValue": 123
+                      },
+                      {
+                        "name": "c_parameter",
+                        "type": "string",
+                        "defaultValue": "this is a string"
+                      },
+                      {
+                        "name": "d_parameter",
+                        "type": "array",
+                        "defaultValue": []
+                      },
+                      {
+                        "name": "e_parameter",
+                        "type": "object",
+                        "defaultValue": {
+                          "key": "value"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "example-2": {
+                  "value": {
+                    "description": "just update the description"
+                  }
+                },
+                "example-3": {
+                  "value": {
+                    "parameters": [
+                      {
+                        "name": "update_only_parameters",
+                        "type": "boolean",
+                        "defaultValue": true
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Update selected properties of the layer",
         "tags": [
           "Layers"
         ]
