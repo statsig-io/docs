@@ -690,7 +690,7 @@ module.exports = {
             }
           }
         },
-        "description": "Update a gate"
+        "description": "Update all properties of a gate"
       },
       "delete": {
         "tags": [
@@ -855,7 +855,7 @@ module.exports = {
             }
           }
         },
-        "description": "Update particular proerties of the gate",
+        "description": "Update selected properties of the gate",
         "requestBody": {
           "content": {
             "application/json": {
