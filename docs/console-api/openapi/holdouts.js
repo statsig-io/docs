@@ -1298,7 +1298,7 @@ module.exports = {
         }
       ],
       "get": {
-        "summary": "Get a gate's overrides",
+        "summary": "Read Holdout Overrides",
         "tags": [
           "Holdouts"
         ],
@@ -1359,7 +1359,7 @@ module.exports = {
         "operationId": "get-holdouts-holdout_id-overrides"
       },
       "post": {
-        "summary": "update a gates overrides",
+        "summary": "Update Holdout Overrides",
         "tags": [
           "Holdouts"
         ],
