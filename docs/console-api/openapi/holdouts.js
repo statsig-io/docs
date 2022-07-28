@@ -409,48 +409,11 @@ module.exports = {
         "tags": [
           "Holdouts"
         ],
-        "summary": "Update Holdout Overrides",
+        "summary": "Create Holdout",
         "responses": {
           "201": {
             "description": "Created",
-            "headers": {
-              "vary": {
-                "schema": {
-                  "type": "string",
-                  "example": "Origin"
-                }
-              },
-              "access-control-allow-origin": {
-                "schema": {
-                  "type": "string",
-                  "example": "*"
-                }
-              },
-              "content-type": {
-                "schema": {
-                  "type": "string",
-                  "example": "application/json; charset=utf-8"
-                }
-              },
-              "content-length": {
-                "schema": {
-                  "type": "integer",
-                  "example": "221"
-                }
-              },
-              "Date": {
-                "schema": {
-                  "type": "string",
-                  "example": "Sun, 23 Jan 2022 23:52:29 GMT"
-                }
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string",
-                  "example": "keep-alive"
-                }
-              }
-            },
+            "headers": {},
             "content": {
               "application/json": {
                 "schema": {
@@ -658,7 +621,43 @@ module.exports = {
           }
         },
         "requestBody": {
-          "$ref": "#/components/requestBodies/Update-Holdout"
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "name": "a holdout",
+                    "description": "helpful summary of what this holdout does",
+                    "idType": "userID"
+                  }
+                },
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Display name of new holdout."
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "A summary of what this holdout does."
+                  },
+                  "idType": {
+                    "type": "string",
+                    "description": "The idType the holdout will use."
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "name": "a holdout",
+                    "description": "helpful summary of what this holdout does",
+                    "idType": "userID"
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -1236,13 +1235,54 @@ module.exports = {
             }
           }
         },
-        "requestBody": {
-          "$ref": "#/components/requestBodies/Update-Holdout"
-        },
         "description": "Update selected properties of the holdout",
         "tags": [
           "Holdouts"
-        ]
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/holdout.json"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "isEnabled": true,
+                    "description": "an updated summary of what this holdout does",
+                    "idType": "userID",
+                    "isGlobal": true,
+                    "passPercentage": 10,
+                    "gateIDs": [
+                      "a_gate"
+                    ],
+                    "experimentIDs": [
+                      "a_experiment"
+                    ],
+                    "layerIDs": [
+                      "a_layer"
+                    ]
+                  }
+                },
+                "example-2": {
+                  "value": {
+                    "isEnabled": true,
+                    "description": "an updated summary of what this holdout does"
+                  }
+                },
+                "example-3": {
+                  "value": {
+                    "isEnabled": false,
+                    "passPercentage": 10,
+                    "gateIDs": [
+                      "a_gate"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/holdouts/{holdout_id}/overrides": {
