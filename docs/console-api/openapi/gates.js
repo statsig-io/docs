@@ -598,7 +598,7 @@ module.exports = {
         "tags": [
           "Gates"
         ],
-        "summary": "Update Gate",
+        "summary": "Fully Update Gate",
         "requestBody": {
           "content": {
             "application/json": {
@@ -690,7 +690,7 @@ module.exports = {
             }
           }
         },
-        "description": "Create a new gate"
+        "description": "Update a gate"
       },
       "delete": {
         "tags": [
@@ -734,7 +734,204 @@ module.exports = {
           "description": "The unique gate id to query",
           "required": true
         }
-      ]
+      ],
+      "patch": {
+        "summary": "Partially Update Gate",
+        "operationId": "patch-gates-gate_id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Holdout updated successfully.",
+                      "data": {
+                        "id": "a_holdout",
+                        "isEnabled": true,
+                        "description": "UPDATED summary of what this holdout does",
+                        "idType": "userID",
+                        "isGlobal": true,
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "passPercentage": 10,
+                        "gateIDs": [
+                          "a_gate"
+                        ],
+                        "experimentIDs": [],
+                        "layerIDs": [
+                          "mynewlayer"
+                        ]
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "../models/gate.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Gate updated successfully.",
+                      "data": {
+                        "id": "a_gate",
+                        "isEnabled": true,
+                        "description": "updated summary of what this gate does",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "rules": [
+                          {
+                            "name": "10 percent of all",
+                            "passPercentage": 100,
+                            "conditions": [
+                              {
+                                "type": "public"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 404,
+                      "message": "Gate not found."
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 404,
+                      "message": "Gate not found."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Update particular proerties of the gate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "isEnabled": true,
+                    "description": "updated summary of what this gate does",
+                    "rules": [
+                      {
+                        "name": "10 percent of all",
+                        "passPercentage": 10,
+                        "conditions": [
+                          {
+                            "type": "public"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "properties": {
+                  "isEnabled": {
+                    "type": "boolean",
+                    "description": "Is the gate Enabled."
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "A summary of what this gate does."
+                  },
+                  "rules": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "../models/rule.json"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "isEnabled": true,
+                    "description": "updated summary of what this gate does",
+                    "rules": [
+                      {
+                        "name": "10 percent of all",
+                        "passPercentage": 10,
+                        "conditions": [
+                          {
+                            "type": "public"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "example-2": {
+                  "value": {
+                    "isEnabled": true
+                  }
+                },
+                "example-3": {
+                  "value": {
+                    "description": "Just update the description"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "tags": [
+          "Gates"
+        ]
+      }
     },
     "/gates/{gate_id}/overrides": {
       "parameters": [
@@ -753,7 +950,7 @@ module.exports = {
         "tags": [
           "Gates"
         ],
-        "summary": "Get a list of overrides for a gate",
+        "summary": "Get All Gate Overrides",
         "responses": {
           "200": {
             "description": "OK",
@@ -854,7 +1051,7 @@ module.exports = {
         "operationId": "get-gates-gate_id-overrides"
       },
       "post": {
-        "summary": "Update overrides on a gate",
+        "summary": "Update Gate Overrides",
         "tags": [
           "Gates"
         ],
