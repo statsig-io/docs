@@ -52,66 +52,141 @@ module.exports = {
         },
         "description": ""
       },
-      "overrides": {
-        "type": "object",
-        "x-examples": {
-          "example-1": {
-            "groupID": "Test",
-            "name": "a_gate",
-            "type": "gate"
-          }
-        },
-        "properties": {
-          "groupID": {
-            "$ref": "#/components/schemas/groupID"
-          },
-          "name": {
-            "type": "string",
-            "description": "The name of gate / segment which should override the experiment."
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "gate",
-              "segment"
-            ],
-            "description": "Specifies if this override comes from a gate or a segment."
-          }
-        }
-      },
-      "userIDOverrides": {
-        "type": "object",
-        "x-examples": {
-          "example-1": {
-            "groupID": "Control",
-            "ids": [
-              "user1",
-              "user2"
-            ]
-          }
-        },
-        "properties": {
-          "ids": {
-            "type": "array",
-            "description": "User IDs to override",
-            "items": {
-              "type": "string"
-            }
-          },
-          "groupID": {
-            "$ref": "#/components/schemas/groupID"
-          }
-        }
-      },
-      "groupID": {
-        "title": "groupID",
+      "description": {
+        "title": "description",
         "x-stoplight": {
-          "id": "hydu327p1bsmk"
+          "id": "qvkg176q352su"
         },
         "type": "string",
-        "description": "The experiment group which these overrides are applied.",
+        "description": "A helpful summary of what this experiment does",
         "x-examples": {
-          "example-1": "Test"
+          "example-1": "A helpful summary of what this experiment does"
+        }
+      },
+      "id": {
+        "title": "id",
+        "x-stoplight": {
+          "id": "du660arabb32i"
+        },
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "idType": {
+        "title": "idType",
+        "x-stoplight": {
+          "id": "c97b5rk85shom"
+        },
+        "type": "string",
+        "description": "The type of ID which the experiment is based on.",
+        "x-examples": {
+          "example-1": "userID"
+        }
+      },
+      "status": {
+        "title": "status",
+        "x-stoplight": {
+          "id": "8eyruln4wbga4"
+        },
+        "type": "string",
+        "description": "The current status of the experiment.",
+        "enum": [
+          "setup",
+          "active",
+          "decision_made"
+        ]
+      },
+      "hypothesis": {
+        "title": "hypothesis",
+        "x-stoplight": {
+          "id": "r3r3izlcpph5h"
+        },
+        "type": "string",
+        "description": "A statement that will be tested by this experiment."
+      },
+      "alloation": {
+        "title": "alloation",
+        "x-stoplight": {
+          "id": "hkhfy0yu59ktg"
+        },
+        "type": "number",
+        "description": "Percent of layer allocated to this experiment",
+        "minimum": 0,
+        "maximum": 100
+      },
+      "duration": {
+        "title": "duration",
+        "x-stoplight": {
+          "id": "od90nv9jwan2n"
+        },
+        "type": "integer",
+        "description": "How long the experiment should last in days",
+        "minimum": 0
+      },
+      "targetingGateID": {
+        "title": "targetingGateID",
+        "x-stoplight": {
+          "id": "od90nv9jwan2n"
+        },
+        "type": "string",
+        "description": "Restrict your experiment to users passing the selected feature gate."
+      },
+      "defaultConfidenceInterval": {
+        "title": "defaultConfidenceInterval",
+        "x-stoplight": {
+          "id": "od90nv9jwan2n"
+        },
+        "type": "string",
+        "description": "Default error margin used for results",
+        "enum": [
+          "80",
+          "90",
+          "95",
+          "98",
+          "99"
+        ]
+      },
+      "bonferroniCorrection": {
+        "title": "bonferroniCorrection",
+        "x-stoplight": {
+          "id": "od90nv9jwan2n"
+        },
+        "type": "boolean",
+        "description": "Is Bonferroni correction applied?"
+      },
+      "groups": {
+        "title": "groups",
+        "x-stoplight": {
+          "id": "od90nv9jwan2n"
+        },
+        "type": "array",
+        "description": "The test groups for your experiment",
+        "items": {
+          "type": "object",
+          "description": "Group object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "name of the group"
+            },
+            "size": {
+              "type": "number",
+              "description": "What percentage of traffic should be passed into this group",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "parameterValues": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "name",
+            "size",
+            "parameterValues"
+          ]
         }
       }
     },
@@ -723,7 +798,7 @@ module.exports = {
         "tags": [
           "Experiments"
         ],
-        "summary": "Update Experiment",
+        "summary": "Fully Update Experiment",
         "responses": {
           "200": {
             "description": "OK",
@@ -747,7 +822,7 @@ module.exports = {
                     "isEnabled": true,
                     "description": "Description Here",
                     "lastModifierName": "CONSOLE API",
-                    "lastModifierID": "5rf8chidoxLIYTscuSaaasdflB8",
+                    "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
                     "rules": [
                       {
                         "name": "Specific Users",
@@ -808,25 +883,16 @@ module.exports = {
                 "type": "object",
                 "properties": {
                   "description": {
-                    "type": "string",
-                    "description": "A helpful summary of what this experiment does"
+                    "$ref": "#/components/schemas/description"
                   },
                   "idType": {
-                    "type": "string",
-                    "description": "The type of ID which the experiment is based on."
+                    "$ref": "#/components/schemas/idType"
                   },
                   "status": {
-                    "type": "string",
-                    "description": "The current status of the experiment.",
-                    "enum": [
-                      "setup",
-                      "active",
-                      "decision_made"
-                    ]
+                    "$ref": "../models/status.json"
                   },
                   "hypothesis": {
-                    "type": "string",
-                    "description": "A statement that will be tested by this experiment."
+                    "$ref": "#/components/schemas/hypothesis"
                   },
                   "primaryMetrics": {
                     "type": "array",
@@ -846,56 +912,39 @@ module.exports = {
                     "type": "array",
                     "description": "The test groups for your experiment",
                     "items": {
-                      "type": "object",
-                      "description": "Group object",
-                      "properties": {
-                        "name": {
-                          "type": "string",
-                          "description": "name of the group"
-                        },
-                        "size": {
-                          "type": "number",
-                          "description": "What percentage of traffic should be passed into this group",
-                          "minimum": 0,
-                          "maximum": 100
-                        },
-                        "parameterValues": {
-                          "type": "object"
-                        }
-                      }
+                      "$ref": "#/components/schemas/groups"
                     }
                   },
                   "allocation": {
-                    "type": "number",
-                    "description": "Percent of layer allocated to this experiment",
-                    "minimum": 0,
-                    "maximum": 100
+                    "$ref": "#/components/schemas/alloation"
                   },
                   "duration": {
-                    "type": "integer",
-                    "description": "How long the experiment should last in days",
-                    "minimum": 0
+                    "$ref": "#/components/schemas/duration"
                   },
                   "targetingGateID": {
-                    "type": "string",
-                    "description": "Restrict your experiment to users passing the selected feature gate."
+                    "$ref": "#/components/schemas/targetingGateID"
                   },
                   "defaultConfidenceInterval": {
-                    "type": "string",
-                    "description": "Default error margin used for results",
-                    "enum": [
-                      "80",
-                      "90",
-                      "95",
-                      "98",
-                      "99"
-                    ]
+                    "$ref": "#/components/schemas/defaultConfidenceInterval"
                   },
                   "bonferroniCorrection": {
-                    "type": "boolean",
-                    "description": "Is Bonferroni correction applied?"
+                    "$ref": "#/components/schemas/bonferroniCorrection"
                   }
-                }
+                },
+                "required": [
+                  "description",
+                  "idType",
+                  "status",
+                  "hypothesis",
+                  "primaryMetrics",
+                  "secondaryMetrics",
+                  "groups",
+                  "allocation",
+                  "duration",
+                  "targetingGateID",
+                  "defaultConfidenceInterval",
+                  "bonferroniCorrection"
+                ]
               },
               "examples": {
                 "example-1": {
@@ -1003,26 +1052,10 @@ module.exports = {
           "required": true,
           "description": "experiment ID to query"
         }
-      ]
-    },
-    "/experiments/{experiment_id}/overrides": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string",
-            "example": "a_experiment"
-          },
-          "name": "experiment_id",
-          "in": "path",
-          "required": true,
-          "description": "Experiment ID to query"
-        }
       ],
-      "get": {
-        "summary": "Get Experiment Overrides",
-        "tags": [
-          "Experiments"
-        ],
+      "patch": {
+        "summary": "Partially Update Experiment",
+        "operationId": "patch-experiments-experiment_id",
         "responses": {
           "200": {
             "description": "OK",
@@ -1032,40 +1065,37 @@ module.exports = {
                   "type": "object",
                   "x-examples": {
                     "example-1": {
-                      "message": "Experiment Overrides read successfully.",
+                      "message": "Experiment updated successfully.",
                       "data": {
-                        "overrides": [
+                        "id": "a_experiment",
+                        "description": "updated summary",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "idType": "userID",
+                        "status": "setup",
+                        "layerID": "statsig::a_experiment_layer",
+                        "hypothesis": "updated hypothesis",
+                        "primaryMetrics": [],
+                        "secondaryMetrics": [],
+                        "groups": [
                           {
-                            "groupID": "4IfTisAzh1ieQ5E1rc9kK2",
-                            "name": "b_gate",
-                            "type": "gate"
+                            "name": "group1",
+                            "size": 50,
+                            "parameterValues": {
+                              "key": 1
+                            }
                           },
                           {
-                            "groupID": "4IfTiqVwOJ8KwG65Q4dHr0",
-                            "name": "",
-                            "type": "segment"
-                          },
-                          {
-                            "groupID": "4IfTiqVwOJ8KwG65Q4dHr0",
-                            "name": "a_gate",
-                            "type": "gate"
+                            "name": "gruop2",
+                            "size": 50,
+                            "parameterValues": {}
                           }
                         ],
-                        "userIDOverrides": [
-                          {
-                            "ids": [
-                              "a_user",
-                              "b_user"
-                            ],
-                            "groupID": "4IfTisAzh1ieQ5E1rc9kK2"
-                          },
-                          {
-                            "ids": [
-                              "c_user"
-                            ],
-                            "groupID": "4IfTiqVwOJ8KwG65Q4dHr0"
-                          }
-                        ]
+                        "allocation": 100,
+                        "duration": 14,
+                        "targetingGateID": "",
+                        "defaultConfidenceInterval": "95",
+                        "bonferroniCorrection": true
                       }
                     }
                   },
@@ -1074,56 +1104,7 @@ module.exports = {
                       "$ref": "../models/message.json"
                     },
                     "data": {
-                      "type": "object",
-                      "properties": {
-                        "overrides": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/overrides"
-                          }
-                        },
-                        "userIDOverrides": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/userIDOverrides"
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "message": "Experiment Overrides read successfully.",
-                      "data": {
-                        "overrides": [
-                          {
-                            "groupID": "Control",
-                            "name": "a_gate",
-                            "type": "gate"
-                          },
-                          {
-                            "groupID": "test",
-                            "name": "a_segment",
-                            "type": "segment"
-                          }
-                        ],
-                        "userIDOverrides": [
-                          {
-                            "ids": [
-                              "updated_id_list"
-                            ],
-                            "groupID": "Control"
-                          },
-                          {
-                            "ids": [
-                              "updated_id_lists"
-                            ],
-                            "groupID": "Test"
-                          }
-                        ]
-                      }
+                      "$ref": "../models/experiment.json"
                     }
                   }
                 }
@@ -1149,138 +1130,39 @@ module.exports = {
             }
           },
           "404": {
-            "$ref": "#/components/responses/experiment_404.json"
-          }
-        },
-        "operationId": "get-experiments-experiment_id-overrides",
-        "description": "Get Experiment Overrides"
-      },
-      "post": {
-        "summary": "Update Experiment Overrides",
-        "operationId": "post-experiments-experiment_id-overrides",
-        "responses": {
-          "201": {
-            "description": "Created",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "x-examples": {
                     "example-1": {
-                      "message": "Experiment Overrides updated successfully.",
-                      "data": {
-                        "overrides": [
-                          {
-                            "type": "segment",
-                            "name": "a_segment",
-                            "groupID": "Control"
-                          },
-                          {
-                            "type": "gate",
-                            "name": "a_gate",
-                            "groupID": "Test"
-                          }
-                        ],
-                        "userIDOverrides": [
-                          {
-                            "groupID": "Control",
-                            "ids": [
-                              "updated_id_list"
-                            ]
-                          },
-                          {
-                            "groupID": "Test",
-                            "ids": [
-                              "updated_id_lists"
-                            ]
-                          }
-                        ]
-                      }
+                      "status": 404,
+                      "message": "Experiment not found."
                     }
                   },
                   "properties": {
-                    "message": {
-                      "type": "string"
+                    "status": {
+                      "$ref": "../models/status.json"
                     },
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "overrides": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/overrides"
-                          }
-                        },
-                        "userIDOverrides": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/userIDOverrides"
-                          }
-                        }
-                      }
+                    "message": {
+                      "$ref": "../models/message.json"
                     }
                   }
                 },
                 "examples": {
                   "example-1": {
                     "value": {
-                      "message": "Experiment Overrides updated successfully.",
-                      "data": {
-                        "overrides": [
-                          {
-                            "type": "segment",
-                            "name": "a_segment",
-                            "groupID": "Control"
-                          },
-                          {
-                            "type": "gate",
-                            "name": "a_gate",
-                            "groupID": "Test"
-                          }
-                        ],
-                        "userIDOverrides": [
-                          {
-                            "groupID": "Control",
-                            "ids": [
-                              "updated_user1"
-                            ]
-                          },
-                          {
-                            "groupID": "Test",
-                            "ids": [
-                              "updated_user2"
-                            ]
-                          }
-                        ]
-                      }
+                      "status": 404,
+                      "message": "Experiment not found."
                     }
                   }
                 }
               }
             }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error_401.json"
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "status": 401,
-                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "$ref": "#/components/responses/experiment_404.json"
           }
         },
+        "description": "Update all properties of the dynamic config",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1288,78 +1170,127 @@ module.exports = {
                 "type": "object",
                 "x-examples": {
                   "example-1": {
-                    "overrides": [
+                    "id": "a_experiment",
+                    "description": "updated summary",
+                    "idType": "userID",
+                    "layerID": "statsig::a_layer",
+                    "hypothesis": "updated hypothesis",
+                    "keyMetrics": [
                       {
-                        "type": "segment",
-                        "name": "a_segment",
-                        "groupID": "Control"
-                      },
-                      {
-                        "type": "gate",
-                        "name": "a_gate",
-                        "groupID": "Test"
+                        "id": "my_custom_metric",
+                        "type": "event_count_custom"
                       }
                     ],
-                    "userIDOverrides": [
+                    "secondaryMetrics": [],
+                    "groups": [
                       {
-                        "groupID": "Control",
-                        "ids": [
-                          "updated_id_list"
-                        ]
+                        "name": "group1",
+                        "size": 50,
+                        "parameterValues": {
+                          "key": 1
+                        }
                       },
                       {
-                        "groupID": "Test",
-                        "ids": [
-                          "updated_id_lists"
-                        ]
+                        "name": "gruop2",
+                        "size": 50,
+                        "parameterValues": {}
                       }
-                    ]
+                    ],
+                    "allocation": 100,
+                    "duration": 14,
+                    "targetingGateID": "",
+                    "defaultConfidenceInterval": "95",
+                    "bonferroniCorrection": true
                   }
                 },
                 "properties": {
-                  "overrides": {
+                  "id": {
+                    "$ref": "#/components/schemas/id"
+                  },
+                  "description": {
+                    "$ref": "#/components/schemas/description"
+                  },
+                  "idType": {
+                    "$ref": "#/components/schemas/idType"
+                  },
+                  "hypothesis": {
+                    "$ref": "#/components/schemas/hypothesis"
+                  },
+                  "keyMetrics": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/overrides"
+                      "$ref": "../models/experiment_metric.json"
                     }
                   },
-                  "userIDOverrides": {
+                  "secondaryMetrics": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/userIDOverrides"
+                      "$ref": "../models/experiment_metric.json"
                     }
+                  },
+                  "groups": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/groups"
+                    }
+                  },
+                  "allocation": {
+                    "$ref": "#/components/schemas/alloation"
+                  },
+                  "duration": {
+                    "$ref": "#/components/schemas/duration"
+                  },
+                  "targetingGateID": {
+                    "$ref": "#/components/schemas/targetingGateID"
+                  },
+                  "defaultConfidenceInterval": {
+                    "$ref": "#/components/schemas/defaultConfidenceInterval"
+                  },
+                  "bonferroniCorrection": {
+                    "$ref": "#/components/schemas/bonferroniCorrection"
                   }
                 }
               },
               "examples": {
+                "example-2": {
+                  "value": {
+                    "description": "updated summary",
+                    "hypothesis": "updated hypothesis"
+                  }
+                },
                 "example-1": {
                   "value": {
-                    "overrides": [
+                    "id": "a_experiment",
+                    "description": "updated summary",
+                    "idType": "userID",
+                    "layerID": "statsig::a_layer",
+                    "hypothesis": "updated hypothesis",
+                    "keyMetrics": [
                       {
-                        "type": "segment",
-                        "name": "a_segment",
-                        "groupID": "Control"
-                      },
-                      {
-                        "type": "gate",
-                        "name": "a_gate",
-                        "groupID": "Test"
+                        "id": "my_custom_metric",
+                        "type": "event_count_custom"
                       }
                     ],
-                    "userIDOverrides": [
+                    "secondaryMetrics": [],
+                    "groups": [
                       {
-                        "groupID": "Control",
-                        "ids": [
-                          "updated_id_list"
-                        ]
+                        "name": "group1",
+                        "size": 50,
+                        "parameterValues": {
+                          "key": 1
+                        }
                       },
                       {
-                        "groupID": "Test",
-                        "ids": [
-                          "updated_id_lists"
-                        ]
+                        "name": "gruop2",
+                        "size": 50,
+                        "parameterValues": {}
                       }
-                    ]
+                    ],
+                    "allocation": 100,
+                    "duration": 14,
+                    "targetingGateID": "",
+                    "defaultConfidenceInterval": "95",
+                    "bonferroniCorrection": true
                   }
                 }
               }
@@ -1368,8 +1299,7 @@ module.exports = {
         },
         "tags": [
           "Experiments"
-        ],
-        "description": "Update Experiment Overrides"
+        ]
       }
     }
   }
