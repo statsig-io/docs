@@ -1162,7 +1162,7 @@ module.exports = {
             }
           }
         },
-        "description": "Update all properties of the dynamic config",
+        "description": "Update all properties of the experiment",
         "requestBody": {
           "content": {
             "application/json": {
