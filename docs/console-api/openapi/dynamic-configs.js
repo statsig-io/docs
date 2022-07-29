@@ -72,6 +72,41 @@ module.exports = {
         },
         "description": "The name and description for the new Dynamic Config"
       }
+    },
+    "schemas": {
+      "description": {
+        "title": "description",
+        "x-stoplight": {
+          "id": "liyywvwv1ul0f"
+        },
+        "type": "string",
+        "description": "A helpful summary of what this dynamic config does.",
+        "x-examples": {
+          "example-1": "a helpful summary of what this dynamic config does"
+        }
+      },
+      "isEnabled": {
+        "title": "isEnabled",
+        "x-stoplight": {
+          "id": "a777j69kq9g8y"
+        },
+        "type": "boolean",
+        "description": "Is the dynamic config enabled.",
+        "x-examples": {
+          "example-1": true
+        }
+      },
+      "id": {
+        "title": "id",
+        "x-stoplight": {
+          "id": "270blnxzb3ln4"
+        },
+        "type": "string",
+        "description": "The name that was originally given to the dynamic config on creation but formatted as an ID (\"A Dynamic Config\" -> \"a_dynamic_config\")",
+        "x-examples": {
+          "example-1": "a_dynamic_config"
+        }
+      }
     }
   },
   "security": [
@@ -682,7 +717,7 @@ module.exports = {
         "description": ""
       },
       "post": {
-        "summary": "Update Dynamic Config",
+        "summary": "Fully Update Dynamic Config",
         "requestBody": {
           "content": {
             "application/json": {
@@ -879,6 +914,236 @@ module.exports = {
                       "status": 404,
                       "message": "Dynamic config not found."
                     }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Dynamic Configs"
+        ],
+        "description": "Update all properties of the dynamic config"
+      },
+      "patch": {
+        "summary": "Partially Update Dynamic Config",
+        "operationId": "patch-dynamic_configs-dynamic_config_id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Dynamic config updated successfully.",
+                      "data": {
+                        "id": "a_dynamic_config",
+                        "isEnabled": true,
+                        "description": "helpful summary of what this dynamic config does",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "rules": [
+                          {
+                            "name": "All Conditions",
+                            "passPercentage": 10,
+                            "conditions": [
+                              {
+                                "type": "public"
+                              }
+                            ],
+                            "returnValue": {
+                              "key": true
+                            }
+                          }
+                        ],
+                        "defaultValue": {
+                          "key": true
+                        }
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "data": {
+                      "$ref": "../models/dynamic_config.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Dynamic config updated successfully.",
+                      "data": {
+                        "id": "a_dynamic_config",
+                        "isEnabled": true,
+                        "description": "helpful summary of what this dynamic config does",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "rules": [
+                          {
+                            "name": "All Conditions",
+                            "passPercentage": 10,
+                            "conditions": [
+                              {
+                                "type": "public"
+                              }
+                            ],
+                            "returnValue": {
+                              "key": true
+                            }
+                          }
+                        ],
+                        "defaultValue": {
+                          "key": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 404,
+                      "message": "Dynamic config not found."
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 404,
+                      "message": "Dynamic config not found."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Update selected properties of the dynamic config",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "id": "a_dynamic_config",
+                    "isEnabled": true,
+                    "rules": [
+                      {
+                        "name": "All Conditions",
+                        "passPercentage": 10,
+                        "returnValue": {
+                          "key": true
+                        },
+                        "conditions": [
+                          {
+                            "type": "public"
+                          }
+                        ]
+                      }
+                    ],
+                    "defaultValue": {
+                      "key": true
+                    }
+                  }
+                },
+                "properties": {
+                  "id": {
+                    "$ref": "#/components/schemas/id"
+                  },
+                  "description": {
+                    "$ref": "#/components/schemas/description"
+                  },
+                  "isEnabled": {
+                    "$ref": "#/components/schemas/isEnabled"
+                  },
+                  "rules": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "../models/rule.json"
+                    }
+                  },
+                  "defaultValue": {
+                    "type": "object",
+                    "description": "The fallback JSON object when no rules are triggered"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "isEnabled": true,
+                    "description": "Updated summary of what this dynamic config does",
+                    "rules": [
+                      {
+                        "name": "Updated Conditions",
+                        "passPercentage": 10,
+                        "returnValue": {
+                          "key": true
+                        },
+                        "conditions": [
+                          {
+                            "type": "public"
+                          }
+                        ]
+                      }
+                    ],
+                    "defaultValue": {
+                      "key": "Updated value"
+                    }
+                  }
+                },
+                "example-2": {
+                  "value": {
+                    "isEnabled": false,
+                    "defaultValue": {
+                      "key": "Updated value"
+                    }
+                  }
+                },
+                "example-3": {
+                  "value": {
+                    "description": "Just update the description"
                   }
                 }
               }
