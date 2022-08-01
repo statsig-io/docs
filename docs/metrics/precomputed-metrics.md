@@ -8,7 +8,7 @@ slug: /metrics/metrics-101/precomputed-metrics
 
 You can import precomputed metrics in three ways.
 
-TODO: add figure
+![image](https://user-images.githubusercontent.com/1315028/182259912-c32f9d0d-60ff-420a-8732-98b5b999967a.png)
 
 
 ### Importing Precomputing Metrics from your Data Warehouse
