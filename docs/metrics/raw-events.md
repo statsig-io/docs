@@ -21,11 +21,12 @@ You must include at least one unit identifier when you record any raw events wit
 2. Join exposure events with all custom events triggered by a given user to compute experiment results
 
 ## Ingesting Raw Events
-You can ingest exposure and custom events with Statsig in three ways.
+You can ingest raw events into Statsig in three ways.
 
-TODO: add figure
+![image](https://user-images.githubusercontent.com/1315028/182259551-58808a13-4bf0-43fb-871d-e774f05e5985.png)
+
 1. Integrate with Statsig's [client](https://docs.statsig.com/client/introduction) or [server](https://docs.statsig.com/server/introduction) SDKs or [HTTP](https://docs.statsig.com/http-api) API
-2. Use a data connector such as [Segment](https://docs.statsig.com/integrations/data-connectors/segment#configuring-incoming-events), [mParticle](https://docs.statsig.com/integrations/data-connectors/mparticle#configuring-incoming-events), [Rudderstack](https://docs.statsig.com/integrations/data-connectors/rudderstack#configuring-incoming-events) and [Census](https://docs.statsig.com/integrations/data-connectors/census#configuring-incoming-events)
+2. Set up Statsig as a destination in a data connector such as [Segment](https://docs.statsig.com/integrations/data-connectors/segment#configuring-incoming-events), [mParticle](https://docs.statsig.com/integrations/data-connectors/mparticle#configuring-incoming-events), [Rudderstack](https://docs.statsig.com/integrations/data-connectors/rudderstack#configuring-incoming-events) and [Census](https://docs.statsig.com/integrations/data-connectors/census#configuring-incoming-events)
 3. Import from your data warehouse such as [Snowflake](https://docs.statsig.com/integrations/data-imports/snowflake#direct-ingestion-from-snowflake), [BigQuery](https://docs.statsig.com/integrations/data-imports/bigquery), and [Redshift](https://docs.statsig.com/integrations/data-imports/redshift#direct-ingestion).
 
 ## Raw Events in Console
