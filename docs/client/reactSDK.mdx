@@ -281,6 +281,11 @@ jest.mock('statsig-react', () => {
         config: new DynamicConfig(name),
       };
     },
+    StatsigProvider: (props: object) => {
+        return <>
+            props.children
+        </>
+    },
     Statsig: {
       logEvent: () => {},
       checkGate: (gateName: string) => mockGates[gateName] ?? false,
