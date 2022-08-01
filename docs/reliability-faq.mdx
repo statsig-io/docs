@@ -1,0 +1,39 @@
+---
+title: Reliability FAQs
+slug: /reliability-faqs
+sidebar_label: Reliability FAQs
+---
+
+Integrating your product with Statsig means depending on Statsig, and we take reliability seriously. Here are some questions many people have when trying to evaluate the risks, please feel free to reach out on Slack if you have questions that are not listed here.
+
+## What does Statsig do to stay highly-available?
+- We actively track internal Service Level Objectives (SLOs) for availability to make sure our service has a high uptime.
+- Here are some examples of measures that we take to ensure our service reliability:
+    - We handle bursts gracefully via autoscalers and over-provisioned resources
+    - We have mechanisms to reduce unintended/malicious spikes and prevent DDoS attack
+    - Our services are deployed in multiple regions. In case of a region goes down, traffic will be routed to other healthy regions.
+    - We adopt the GitOps approach(e.g. code review, validation, CI/CD, etc.) for all of our infra changes to prevent human errors.
+    - We have a 24/7 eng oncall rotation to solve customer-facing alerts and issues.
+
+## Does Statsig use any caching to help with latency?
+- We use a combination of caching solutions, depending on the problem we are solving. For serving our console and API requests, most caching is done at the region or host level.
+
+## What does your architecture look like?
+- We have explanations and architecture diagrams here - https://statsig.com/how
+
+## What else does Statsig do to make sure the service is resilient?
+- Our SDKs are designed to be resilient in case there is an issue in the API requests, to make sure a seamless experience on your side.
+- Client SDKs:
+    - The SDKs will use the latest values from Statsig server if the user is able to reach Statsig server;
+    - Then it will use cached value from a previous session will be used, if available;
+    - After that, the APIs require you to have set default values in your code, so that will be used. This means the worst case scenario your users will get the default experiences.
+- Sever SDKs:
+    - They store rules for gates and experiments in memory, so it will be able to continue evaluating them even if Statsig is down.
+    - There is also an option to “bootstrap” your server SDKs with rule values from a previous session if Statsig is down when your server is starting up.
+
+## What kind of automated testing does Statsig do?
+- Unit and integration tests run on every pull request
+- Continuous CI/CD running our unit/integrations test suites
+- Synthetic tests for Console and API use cases, mimicking customer requests
+- Stress tests to detect any performance issues
+- Continuous SDK tests run on every pull request and on schedule

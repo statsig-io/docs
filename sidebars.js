@@ -330,6 +330,7 @@ module.exports = {
       ],
     },
     "custom_proxy",
+    "reliability-faq",
     "faq",
   ],
 };
