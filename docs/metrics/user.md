@@ -1,7 +1,7 @@
 ---
 title: User Accounting Metrics
-sidebar_label: User Accounting
-slug: /metrics/user
+sidebar_label: User Accounting Metrics
+slug: /metrics/metrics-201/user
 ---
 
 ## Definition of a Daily Active User

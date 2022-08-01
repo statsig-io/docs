@@ -1,7 +1,7 @@
 ---
 title: Creating User Funnels
 sidebar_label: Creating User Funnels
-slug: /metrics/create-user-funnels
+slug: /metrics/metrics-301/create-user-funnels
 ---
 
 Statsig's **User Funnels** enable you to analyze how your users step through successive stages to complete a goal defined by you. Funnels are fertile ground for experimentation because they can yield several actionable ways to grow your product usage.  

@@ -1,10 +1,9 @@
 ---
-title: Creating Metrics
-sidebar_label: Creating Metrics
-slug: /metrics/create
+title: Creating Custom Metrics
+sidebar_label: Creating Custom Metrics
+slug: /metrics/metrics-201/create
 ---
 
-## Custom Metrics
 
 To create custom metrics, navigate to **Metrics** from the left-hand navigation panel, then to the **Metrics Catalog** tab. Tap on the **Create** button. 
 
@@ -19,29 +18,29 @@ Statsig supports four types of custom metrics:
 | Aggregation       | **Sum or Average** of the _value_ or _metadata_ property of an event type  | **Total Revenue** |
 | Ratio  | **Rates** (e.g. cart conversion rate, purchase rate),  **Normalized Values** (e.g. sessions per user, items per cart) | **Cart Conversion Rate**, **Sessions per User** |
 
-Statsig computes custom metrics on a per day basis for your **Metrics** dashboard, and rolled up for the duration of the experiment in your **Pulse Results** delivered with your Feature Gates and Experiments.  After you create a custom metric, it will not populate until the next day (and will not backfill to previous days).  Statsig will only calculate it moving forward from the creation date.
+Statsig computes custom metrics on a per day basis for your **Metrics** dashboard, and rolled up for the duration of the experiment in your **Pulse Results** delivered with your Feature Gates and Experiments.  After you create a custom metric, it will not populate until the next day (and will not backfill to previous days). Statsig will only calculate it moving forward from the creation date.
 
-### Examples
+## Examples
 
-#### 1. Event Count Metrics
+### 1. Event Count Metrics
 Here's an example of setting up a custom event metric to count the **number of add_to_cart events** filtered by a metadata property called _value_, which carries the price of the item added to the cart. As this example specifies the ID Type as _userID_, Statsig will compute this metric as part of the test group that the corresponding user is assigned to in an experiment. 
 
 ![image](https://user-images.githubusercontent.com/1315028/160023689-927c4343-37fd-4f7e-a6e5-30d684b71e10.png)
 
 If you select the ID Type as _stableID_, Statsig will compute this metric in the test group that the corresponding device is assigned to in an experiment. When you select more than ID Type, Statsig will compute this metric for each type of ID Type that you specify.  
 
-#### 2. User Count Metrics 
+### 2. User Count Metrics 
 The example below creates a metric to count the **number of unique users** who viewed a product in the _books_ category and that was priced under $10.
 
 ![image](https://user-images.githubusercontent.com/1315028/160025339-5f9d7e29-5a39-4689-8954-5ba819d9d609.png)
 
 
-#### 3. Aggregation Metrics
+### 3. Aggregation Metrics
 The example below shows a **Total Revenue** metric that sums the _value_ associated with all purchase events. 
 
 ![image](https://user-images.githubusercontent.com/1315028/160025808-b84b45c5-9817-4fb9-8bd2-fe9fbd25b66a.png)
 
-#### 4. Ratio Metrics
+### 4. Ratio Metrics
 The example below shows the creation of a **Cart Conversion Rate** metric. Here we use the unique users who triggered the _purchase event_ as the numerator and the unique users who triggered the _add to cart_ event in the denominator. Note that when calculating the numerator, we filter to only include users who also had the denominator event in the same day. So in the case of this metric, a user who only has _purchase event_ on a given day without an _add to cart_ on that same day will not count towards the numerator.
 
 ![image](https://user-images.githubusercontent.com/1315028/160025540-550bbee3-cfbd-4fc0-9a46-5db4f2e09c5e.png)
@@ -52,10 +51,9 @@ The example below shows creating a metric for **Items per Cart**. You can track 
 
 ![image](https://user-images.githubusercontent.com/1315028/160026924-165df332-53fe-4faa-a40c-3d5872fa2f8b.png)
 
-#### A Word of Caution
-
+:::info A Word of Caution
 In experimentation, ratio metrics are a frequent source of misleading information. It's possible to see an increase in **click through rate** alongside a net _decrease_ in total clicks (the opposite may also happen). This situation can occur if the number of unique users viewing a button (denominator) decreases. As a best practice, Statsig recommends tracking the numerator and denominator as independent metrics when monitoring ratio indicator. Ratio metrics are often subject to statistical noise and can be tricky to use for obtaining a statistically significant result.
-
+:::
 
 ## Funnel Metrics
 

@@ -140,12 +140,18 @@ module.exports = {
         id: "metrics/introduction",
       },
       items: [
+        "metrics/metrics-101",
+        "metrics/raw-events",
+        "metrics/raw-event-metrics",
+        "metrics/custom-metrics",
+        "metrics/precomputed-metrics",
+        "metrics/pulse-metrics",
+        "metrics/metric-dimensions",
+        "metrics/metrics-201",
         "metrics/create",
-        "metrics/ingest",
-        "metrics/user",
-        "metrics/pulse",
-        "metrics/console",
         "metrics/create-metric-tags",
+        "metrics/user",
+        "metrics/metrics-301",
         "metrics/create-user-flows",
         "metrics/create-user-funnels",
       ],
@@ -291,10 +297,10 @@ module.exports = {
             "integrations/data-imports/snowflake",
           ],
         },
-           {
+        {
           "Data Exports": [
             "integrations/data-exports/overview"
-           ],
+          ],
         },
         "integrations/event_filtering",
         "integrations/event_webhook",

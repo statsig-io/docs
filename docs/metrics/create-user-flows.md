@@ -1,7 +1,7 @@
 ---
 title: Creating User Flows
 sidebar_label: Creating User Flows
-slug: /metrics/create-user-flows
+slug: /metrics/metrics-301/create-user-flows
 ---
 
 Statsig's **User Flows** enable you to visualize customer journeys through your application. To create a **User Flow**,
