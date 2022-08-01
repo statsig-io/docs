@@ -19,19 +19,16 @@ Statsig automatically generates a standard set of metrics from the **custom even
 | event_dau   | Yes       | Yes        | 0, 1                       | Marks each user as 1 or 0 based on whether they triggered the event or not | Unique users who viewed a page |
 
 
-In the **Metrics** section on the Statsig console, when you click on an event type in the **Events** tab, you will see a detailed view of the event, including the **event_count** and **event_dau** metrics linked to that event.
+When you click on an event type in the **Events** tab, you will see a detailed view of the event, including the **event_count** and **event_dau** metrics linked to that event. Click on these metrics to visit the detail pages for these metrics. 
 
-![Screen Shot 2022-06-07 at 12 05 35 PM](https://user-images.githubusercontent.com/101903926/172462231-ff2f3063-0c4e-49fd-af17-7147bd09d3d1.png)
-TODO: trim image
+![image](https://user-images.githubusercontent.com/1315028/182260966-7b50660d-352f-4d84-9a16-7bd915983894.png)
 
 ## Event Count
 Event count is the simplest metric in your Statsig Project. For every event recorded, Statsig automatically creates an **event_count** metric based on the number of times Statsig receives that event each day. In experiments, Statsig calculates this value for each user, and each user can have values ranging from 0, 1, 2,... etc.
 
 You will find an **event_count** metric for each event type that you record in the Statsig console. The name of the metric matches the name of the raw event and its metric type is marked as **event_count**. 
 
-Statsig provides two unit identifiers by default: **User ID** and **Stable ID**. 
-
-TODO: add image
+![Screen Shot 2022-08-01 at 1 48 36 PM](https://user-images.githubusercontent.com/1315028/182260179-a1bfc2b7-e6bf-4d5a-8c04-7acb344e5b35.gif)
 
 ## Event DAU
 Like **event_count**, Statsig automatically creates an **event_dau** metric that measures the number of unique users who trigger a specific event on a given day. Each user can have a value of 1 or 0 corresponding to active or inactive, based on whether they trigger an event or not. This metric counts the number of users who are marked as active (or "1"). This metric works well in experimentation as it minimizes outliers, has tighter confidence intervals, and enables a simple measure to describe a user's breadth of activity across different events.
@@ -40,7 +37,7 @@ Statsig computes the **event_dau** for each unit ID that you define in your Stat
 
 You will find an **event_dau** metric for each event type that you record with Statsig. The name of the metric matches the name of the raw event and its metric type is marked as **event_dau**. 
 
-TODO: add image
+![Screen Shot 2022-08-01 at 1 48 49 PM](https://user-images.githubusercontent.com/1315028/182260198-d8c9f508-e405-4451-81ef-6759636d8c38.gif)
 
 ## User Accounting Metrics
 Statsig automatically derives a number of **User Accounting** metrics based on any exposure or custom event triggered by a user on a given day.
