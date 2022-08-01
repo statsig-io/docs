@@ -38,7 +38,6 @@ You can toggle between a list view or chart view of your events to view the tren
 
 ![Screen Shot 2022-06-07 at 12 00 22 PM](https://user-images.githubusercontent.com/101903926/172461387-a3d42641-2c2c-4128-aabc-fc2b5dba2ed9.png)
 
-Select a unit identifier from the drop down to view all events that include the selected unit identifier. See the [guide to create custom ID type](https://docs.statsig.com/guides/experiment-on-custom-id-types#step-1---add-companyid-as-a-new-id-type-in-your-project-settings) to create additional unit identifiers for your project. 
+Statsig provides two unit identifiers by default: **User ID** and **Stable ID**. Select a unit identifier from the drop down to view all events that include the selected unit identifier. See the [guide to create custom ID type](https://docs.statsig.com/guides/experiment-on-custom-id-types#step-1---add-companyid-as-a-new-id-type-in-your-project-settings) to create additional unit identifiers for your project. 
 
 ![Screen Shot 2022-06-07 at 10 58 26 AM](https://user-images.githubusercontent.com/101903926/172450890-4a4c95eb-a362-49a6-90ad-68f3460a933f.png)
-
