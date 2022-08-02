@@ -1,10 +1,12 @@
 ---
-title: Metrics in Pulse
-sidebar_label: Pulse
-slug: /metrics/pulse
+title: Pulse Metrics
+sidebar_label: Pulse Metrics
+slug: /metrics/101/pulse-metrics
 ---
 
-The statistics computed for Pulse vary according to the metric type.  Most metrics are aggregated across all users in the group.  Some ratio type metrics are only aggregated across partipating users, meaning users that have non-null value for that metric.
+# Pulse Metrics
+
+Statsig computes experiment results, also known as Statsig's **Pulse** results, depending on the metric type. Most metrics are aggregated across all users in the group. Some ratio type metrics are only aggregated across partipating users (users that have non-null value for that metric).
 
 ## Pulse Statistics by Metric Type
 
@@ -20,4 +22,7 @@ The statistics computed for Pulse vary according to the metric type.  Most metri
 | user: retention metrics |  Overall average retention rate   | Overall average retention rate  | Participating users |
 | user: L7, L14, L28 |  Not shown   | Average L-ness value per user per day  | All users |
 
-Winsorization: To reduce the impact of outliers, event_count and sum metrics are capped at the 99.9th percentile.  This mitigates the risk of bots and extreme values significantly swaying experiment results.
+
+## Winsorization
+To reduce the impact of outliers, Statsig caps *event_count* and *sum* metric types at the 99.9th percentile. This mitigates the risk of bots and extreme values significantly swaying experiment results.
+
