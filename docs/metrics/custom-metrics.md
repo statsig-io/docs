@@ -17,4 +17,4 @@ Statsig supports four types of custom metrics:
 | Aggregation       | **Sum or Average** of the _value_ or _metadata_ property of an event type  | **Total Revenue** |
 | Ratio  | **Rates** (e.g. cart conversion rate, purchase rate),  **Normalized Values** (e.g. sessions per user, items per cart) | **Cart Conversion Rate**, **Sessions per User** |
 
-See **Metrics 201** topic, [Creating Custom Metrics](create), to learn how to create custom metrics for your product.
+See **Metrics 201** topic, [Creating Custom Metrics](/metrics/metrics-101/create), to learn how to create custom metrics for your product.
