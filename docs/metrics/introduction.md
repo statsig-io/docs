@@ -23,5 +23,5 @@ Statsig combines product experimentation with real-time analytics to help you ac
 ![image](https://user-images.githubusercontent.com/1315028/182259790-b898161f-6657-4d52-8367-f3bdeb8d6037.png)
 
 
-Get started with [Metrics 101](metrics-101).
+Get started with [Metrics 101](/metrics/metrics-101).
 
