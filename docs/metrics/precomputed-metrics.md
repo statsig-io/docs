@@ -1,7 +1,7 @@
 ---
 title: Precomputed Metrics
 sidebar_label: Precomputed Metrics
-slug: /metrics/metrics-101/precomputed-metrics
+slug: /metrics/101/precomputed-metrics
 ---
 
 ## Importing Precomputed Metrics

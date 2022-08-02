@@ -1,7 +1,7 @@
 ---
 title: Creating Custom Metrics
 sidebar_label: Creating Custom Metrics
-slug: /metrics/metrics-201/create
+slug: /metrics/201/create
 ---
 
 

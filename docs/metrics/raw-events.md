@@ -1,7 +1,7 @@
 ---
 title: Raw Events
 sidebar_label: Raw Events
-slug: /metrics/metrics-101/raw-events
+slug: /metrics/101/raw-events
 ---
 
 # Raw Events
