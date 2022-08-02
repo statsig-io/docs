@@ -16,6 +16,7 @@
       }
     }
   },
+  "description": "Variant Object",
   "properties": {
     "name": {
       "type": "string",
@@ -26,5 +27,8 @@
       "description": "The JSON value returned for this variant."
     }
   },
-  "description": "Variant Object"
+  "required": [
+    "name",
+    "json"
+  ]
 }
