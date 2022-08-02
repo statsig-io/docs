@@ -148,11 +148,10 @@ module.exports = {
         "x-stoplight": {
           "id": "179oi5srnx6dj"
         },
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          }
+        "type": "string",
+        "description": "A helpful description of what this autotune does.",
+        "x-examples": {
+          "example-1": "A helpful description of what this autotune does."
         }
       },
       "variants": {
@@ -1151,10 +1150,7 @@ module.exports = {
                     "$ref": "#/components/schemas/description"
                   },
                   "variants": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/variants"
-                    }
+                    "$ref": "#/components/schemas/variants"
                   },
                   "successEvent": {
                     "$ref": "#/components/schemas/successEvent"
