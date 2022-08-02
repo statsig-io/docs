@@ -13,14 +13,28 @@ import TabItem from "@theme/TabItem";
 import com.statsig.androidsdk.*;
 ...
 
-Application app = getApplication();
-StatsigUser user = new StatsigUser("user_id");
-CompletableFuture future = Statsig.initializeAsync(app, "my_client_sdk_key", user);
-future.thenApply(this::onStatsigReady);
-...
-
-private Object onStatsigReady(Object empty) {
-    // use your gates and feature configs now
+public class MainActivity extends AppCompatActivity implements IStatsigCallback {
+    
+    ...
+    StatsigOptions options = new StatsigOptions();
+    options.setTier(Tier.PRODUCTION);
+    StatsigUser user = new StatsigUser("UUID");
+    Statsig.initializeAsync(app, "client-key", user, this, options);
+    ...
+    // SDK is usable, but values will be from the cache or defaults (false for gates, {} for configs)
+    // Once onStatsigInitialize fires, then 
+    
+    
+    @Override
+    public void onStatsigInitialize() {
+        // SDK is initialized and has the most up to date values
+    }
+    
+    @Override
+    public void onStatsigUpdateUser() {
+        // User has been updated and values have been refetched for the new user
+    }
+    
 }
 ```
 
@@ -32,13 +46,13 @@ import com.statsig.androidsdk.*
 
 ...
 
-myScope.launch {
+async {
     Statsig.initialize(
         this.application,
         "my_client_sdk_key",
         StatsigUser("user_id"),
     )
-}
+}.await()
 ```
 
   </TabItem>
