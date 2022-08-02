@@ -22,7 +22,9 @@
     },
     "passPercentage": {
       "type": "integer",
-      "description": "Of the users that meet the conditions of this rule, what percent should return true."
+      "description": "Of the users that meet the conditions of this rule, what percent should return true.",
+      "minimum": 0,
+      "maximum": 100
     },
     "conditions": {
       "type": "array",
@@ -35,5 +37,11 @@
       "type": "object",
       "description": "The JSON object returned when this rule is triggered."
     }
-  }
+  },
+  "required": [
+    "name",
+    "passPercentage",
+    "conditions",
+    "returnValue"
+  ]
 }

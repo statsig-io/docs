@@ -23,8 +23,7 @@
       "type": [
         "integer",
         "number",
-        "array",
-        "null"
+        "array"
       ],
       "items": {
         "type": [
@@ -34,16 +33,14 @@
       }
     },
     "field": {
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "customID": {
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
-  }
+  },
+  "required": [
+    "type",
+    "operator"
+  ]
 }
