@@ -16,7 +16,7 @@ Statsig can also reuse your existing, **precomputed metrics** by natively integr
 
 ![image](https://user-images.githubusercontent.com/1315028/182259766-9f9cbbb2-a4aa-462a-821c-c4e9e5ab2106.png)
 
-The **Metrics User Guide** consists of [Metrics 101](metrics-101), [201](metrics-201), and [301](metrics-301) level guides that step through basic concepts to real-time analytics in Statsig. 
+The **Metrics User Guide** consists of [Metrics 101](/metrics/metrics-101), [201](/metrics/metrics-201), and [301](/metrics/metrics-301) level guides that step through basic concepts to real-time analytics in Statsig. 
 
 Statsig combines product experimentation with real-time analytics to help you achieve 360° **product observability**. 
 
