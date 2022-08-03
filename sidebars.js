@@ -180,6 +180,7 @@ module.exports = {
         "pulse/custom-queries",
         "pulse/export",
         "pulse/best-practices",
+        "pulse/faq",
       ],
     },
     {
