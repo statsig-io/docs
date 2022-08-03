@@ -1,0 +1,42 @@
+---
+title: Frequently Asked Questions on Using Pulse
+sidebar_label: FAQ
+slug: /pulse/best-faq
+---
+
+Interpreting statistical results can be tricky, and often people will have similar questions as we ramp up. Here's some answers!
+
+## I had a stat sig result, but it turned negative. How should I interpret this?
+
+In general, you should trust the current result, as it's incorporating more information about the users in your experiment.
+
+There's a number of reasons this can happen:
+
+- Random noise, which gets diluted as your sample size gets larger
+- Within-week seasonality (e.g. an effect is different on Mondays), which gets normalized with more data
+- The population that was exposed early on is somehow different than the slower adopters. You can look at the time series view to get more insight on this
+- There was some sort of novelty effect that made the experiment meaningful early on, but fall off. You can use the days-since-exposure view to get more insight on this
+
+Best practice for timing is to pick a readout date when you launch your experiment (based on a [power analysis](experiments-plus/power-analysis)), and to disregard the statistical interpretation of results until then. This is because reading results multiple times before then dramatically increases the rate at which you'll get false positives.
+
+## How should I start with interpreting results?
+
+Start by using your scorecard metrics to understand if you've moved your key target metrics and critical context metrics to them. You should come into pulse with a hypothesis on what your experiment should drive, and that hypothesis should be answered by your primary metrics.
+
+The delta displayed is based on the observed difference between a test and control population. The error bars are a visualization of a confidence interval, which is the band that has a given chance of the true value of the difference falling within. For example, a 95% confidence interval of 0.5% - 2.5% is saying that based on the observed data there is a 95% chance that the true difference falls between 0.5% and 2.5%.
+
+Keep in mind that these results are statistical interpretations and not facts:
+
+- If a result is not stat sig, this means you don't have sufficient evidence to reject the null hypothesis (i.e., based on your experiment design the observed result is reasonably likely to have happened by chance).
+  - Generally, you should treat these results as a lack of evidence for your hypothesis
+  - Underpowered tests may lead to neutral results even if a true effect exists
+- If a result is stat sig, this means that you have sufficient evidence to reject the null hypothesis (i.e., the probability that you would observe this result, or one more extreme, if the two groups' results were identical is below the pre-determined threshold you set).
+  - Generally, you should treat this result as evidnece for your hypothesis
+  - Multiple comparisons (many metrics, rerunning an experiment, or grouping by dimensions) greatly increase the chance of seeing a stat sig result when there's _not_ a true effect. Be wary of interpreting results when you see those behaviors!
+  - A test that was extremely unlikely to succeed (moonshots, etc.) that has stat sig results have a high chance of that result being a false positive. In cases like this, it's a strong signal but you should consider trying to reproduce the result or running a back-test, or consider reducing your p-value.
+
+Once you've looked at the results on your scorecard, we encourage you to use the all-metrics tab and custom queries to get more information on your experiment, but you shouldn't necessarily trust that if those see a stat-sig movement it is a statistically sound interpretation; as mentioned above if you increase the number of metrics you are looking at, you increase the chance that you will see a false positive. Use this section to look for unexpected large regressions and to generate follow-up hypotheses.
+
+## Results aren't showing up for some metrics
+
+This normally happens when your company is both using the SDK or event imports, and also importing precomputed metrics from your data warehouse. Since these can run at different times, the data availability may differ. You can adjust your analysis date range to get a full view of your data.
