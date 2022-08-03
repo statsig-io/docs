@@ -5,7 +5,7 @@ module.exports = {
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request POST 'https://api.statsig.com/console/v1/autotunes' \
+curl --request POST 'https://statsigapi.net/console/v1/autotunes' \
 --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -93,7 +93,7 @@ req.end();
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request GET 'https://api.statsig.com/console/v1/autotunes' 
+curl --request GET 'https://statsigapi.net/console/v1/autotunes' 
 --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'
         `
       },{
@@ -141,7 +141,7 @@ req.end();
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request POST 'https://api.statsig.com/console/v1/autotunes/a_autotune' \
+curl --request POST 'https://statsigapi.net/console/v1/autotunes/a_autotune' \
 --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -229,7 +229,7 @@ req.end();
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request GET 'https://api.statsig.com/console/v1/autotunes/a_autotune' 
+curl --request GET 'https://statsigapi.net/console/v1/autotunes/a_autotune' 
 --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'
         `
       },
@@ -276,7 +276,7 @@ req.end();
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request DELETE 'https://api.statsig.com/console/v1/autotunes/a_autotune' 
+curl --request DELETE 'https://statsigapi.net/console/v1/autotunes/a_autotune' 
 --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'
         `
       },

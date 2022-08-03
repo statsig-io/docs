@@ -5,7 +5,7 @@ module.exports = {
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request POST 'https://api.statsig.com/console/v1/gates' 
+curl --request POST 'https://statsigapi.net/console/v1/gates' 
 --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx' 
 --header 'Content-Type: application/json' 
 --data-raw '{
@@ -65,7 +65,7 @@ req.end();
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request GET 'https://api.statsig.com/console/v1/gates' 
+curl --request GET 'https://statsigapi.net/console/v1/gates' 
 --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx' 
         `
       },{
@@ -113,7 +113,7 @@ req.end();
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --location --request POST 'https://api.statsig.com/console/v1/gates/a_gate' \
+curl --location --request POST 'https://statsigapi.net/console/v1/gates/a_gate' \
 --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -184,7 +184,7 @@ req.end();
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request GET 'https://api.statsig.com/console/v1/gates/{gate_id}' 
+curl --request GET 'https://statsigapi.net/console/v1/gates/{gate_id}' 
 --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'
         `
       },
@@ -239,7 +239,7 @@ req.end();
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --location --request DELETE 'https://api.statsig.com/console/v1/gates/{gate_id}' 
+curl --location --request DELETE 'https://statsigapi.net/console/v1/gates/{gate_id}' 
 --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'
         `
       },
