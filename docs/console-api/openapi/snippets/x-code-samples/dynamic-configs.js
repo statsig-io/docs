@@ -5,7 +5,7 @@ module.exports = {
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request POST 'https://api.statsig.com/console/v1/dynamic_configs' 
+curl --request POST 'https://statsigapi.net/console/v1/dynamic_configs' 
 --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx' 
 --header 'Content-Type: application/json' 
 --data-raw '{
@@ -65,7 +65,7 @@ req.end();
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request GET 'https://api.statsig.com/console/v1/dynamic_configs' 
+curl --request GET 'https://statsigapi.net/console/v1/dynamic_configs' 
 --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx' 
         `
       },{
@@ -113,7 +113,7 @@ req.end();
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request POST 'https://api.statsig.com/console/v1/dynamic_configs' 
+curl --request POST 'https://statsigapi.net/console/v1/dynamic_configs' 
 --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx' 
 --header 'Content-Type: application/json' 
 --data-raw '{
@@ -209,7 +209,7 @@ req.end();
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request GET 'https://api.statsig.com/console/v1/dynamic_configs/{dynamic_config_id}' 
+curl --request GET 'https://statsigapi.net/console/v1/dynamic_configs/{dynamic_config_id}' 
 --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'
         `
       },
@@ -256,7 +256,7 @@ req.end();
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request DELETE 'https://api.statsig.com/console/v1/dynamic_configs/{dynamic_config_id}' 
+curl --request DELETE 'https://statsigapi.net/console/v1/dynamic_configs/{dynamic_config_id}' 
 --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'
         `
       },

@@ -5,7 +5,7 @@ module.exports = {
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request POST 'https://api.statsig.com/console/v1/holdouts' 
+curl --request POST 'https://statsigapi.net/console/v1/holdouts' 
 --header 'STATSIG-API-KEY: console-xxxxxXXXXXXXXXxxxxxxxxxXXXXXXXxxxxxxxx' 
 --header 'Content-Type: application/json' 
 --data-raw '{
@@ -21,7 +21,7 @@ curl --request POST 'https://api.statsig.com/console/v1/holdouts'
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request GET 'https://api.statsig.com/console/v1/holdouts' 
+curl --request GET 'https://statsigapi.net/console/v1/holdouts' 
 --header 'STATSIG-API-KEY: console-xxxxxXXXXXXXXXxxxxxxxxxXXXXXXXxxxxxxxx'
         `
       }
@@ -33,7 +33,7 @@ curl --request GET 'https://api.statsig.com/console/v1/holdouts'
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request POST 'https://api.statsig.com/console/v1/holdouts/a_holdout' 
+curl --request POST 'https://statsigapi.net/console/v1/holdouts/a_holdout' 
 --header 'STATSIG-API-KEY: console-xxxxxXXXXXXXXXxxxxxxxxxXXXXXXXxxxxxxxx' 
 --header 'Content-Type: application/json' 
 --data-raw '{
@@ -61,7 +61,7 @@ curl --request POST 'https://api.statsig.com/console/v1/holdouts/a_holdout'
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request GET 'https://api.statsig.com/console/v1/holdouts/a_holdout' 
+curl --request GET 'https://statsigapi.net/console/v1/holdouts/a_holdout' 
 --header 'STATSIG-API-KEY: console-xxxxxXXXXXXXXXxxxxxxxxxXXXXXXXxxxxxxxx'
         `
       }
@@ -71,7 +71,7 @@ curl --request GET 'https://api.statsig.com/console/v1/holdouts/a_holdout'
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request DELETE 'https://api.statsig.com/console/v1/holdouts/a_holdout' 
+curl --request DELETE 'https://statsigapi.net/console/v1/holdouts/a_holdout' 
 --header 'STATSIG-API-KEY: console-xxxxxXXXXXXXXXxxxxxxxxxXXXXXXXxxxxxxxx'
         `
       }
@@ -83,7 +83,7 @@ curl --request DELETE 'https://api.statsig.com/console/v1/holdouts/a_holdout'
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request POST 'https://api.statsig.com/console/v1/holdouts' 
+curl --request POST 'https://statsigapi.net/console/v1/holdouts' 
 --header 'STATSIG-API-KEY: console-xxxxxXXXXXXXXXxxxxxxxxxXXXXXXXxxxxxxxx' 
 --header 'Content-Type: application/json' 
 --data-raw '{
@@ -99,7 +99,7 @@ curl --request POST 'https://api.statsig.com/console/v1/holdouts'
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request GET 'https://api.statsig.com/console/v1/holdouts/a_holdout/overrides' 
+curl --request GET 'https://statsigapi.net/console/v1/holdouts/a_holdout/overrides' 
 --header 'STATSIG-API-KEY: console-xxxxxXXXXXXXXXxxxxxxxxxXXXXXXXxxxxxxxx'
         `
       }
