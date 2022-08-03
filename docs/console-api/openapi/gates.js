@@ -49,6 +49,40 @@ module.exports = {
         },
         "description": ""
       }
+    },
+    "responses": {
+      "404": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "x-examples": {
+                "example-1": {
+                  "status": 404,
+                  "message": "Gate not found."
+                }
+              },
+              "properties": {
+                "status": {
+                  "$ref": "../models/status.json"
+                },
+                "message": {
+                  "$ref": "../models/message.json"
+                }
+              }
+            },
+            "examples": {
+              "example-1": {
+                "value": {
+                  "status": 404,
+                  "message": "Gate not found."
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "security": [
@@ -587,9 +621,20 @@ module.exports = {
               "application/json": {
                 "schema": {
                   "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
                 }
               }
             }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
           }
         },
         "description": "Read data from a single gate "
@@ -688,6 +733,27 @@ module.exports = {
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
           }
         },
         "description": "Update all properties of a gate"
@@ -699,12 +765,42 @@ module.exports = {
         "summary": "Delete Gate",
         "responses": {
           "200": {
-            "description": "OK",
+            "$ref": "#/components/responses/404"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 403,
+                      "message": "Failed to delete config because it is refenced in another config"
+                    }
+                  },
                   "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
                     "message": {
                       "$ref": "../models/message.json"
                     }
@@ -713,7 +809,40 @@ module.exports = {
                 "examples": {
                   "example-1": {
                     "value": {
-                      "message": "Gate deleted successfully."
+                      "status": 403,
+                      "message": "Failed to delete config because it is refenced in another config"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 404,
+                      "message": "Gate not found."
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 404,
+                      "message": "Gate not found."
                     }
                   }
                 }
@@ -822,69 +951,8 @@ module.exports = {
               }
             }
           },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "x-examples": {
-                    "example-1": {
-                      "status": 403,
-                      "message": "Failed to delete config because it is refenced in another config"
-                    }
-                  },
-                  "properties": {
-                    "status": {
-                      "$ref": "../models/status.json"
-                    },
-                    "message": {
-                      "$ref": "../models/message.json"
-                    }
-                  }
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "status": 403,
-                      "message": "Failed to delete config because it is refenced in another config"
-                    }
-                  }
-                }
-              }
-            }
-          },
           "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "x-examples": {
-                    "example-1": {
-                      "status": 404,
-                      "message": "Gate not found."
-                    }
-                  },
-                  "properties": {
-                    "status": {
-                      "$ref": "../models/status.json"
-                    },
-                    "message": {
-                      "$ref": "../models/message.json"
-                    }
-                  }
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "status": 404,
-                      "message": "Gate not found."
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           }
         },
         "description": "Update selected properties of the gate",
@@ -1048,36 +1116,7 @@ module.exports = {
             }
           },
           "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "x-examples": {
-                    "example-1": {
-                      "status": 404,
-                      "message": "Holdout not found."
-                    }
-                  },
-                  "properties": {
-                    "status": {
-                      "$ref": "../models/status.json"
-                    },
-                    "message": {
-                      "$ref": "../models/message.json"
-                    }
-                  }
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "status": 404,
-                      "message": "Holdout not found."
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           }
         },
         "operationId": "get-gates-gate_id-overrides"
@@ -1145,36 +1184,7 @@ module.exports = {
             }
           },
           "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "x-examples": {
-                    "example-1": {
-                      "status": 404,
-                      "message": "Holdout not found."
-                    }
-                  },
-                  "properties": {
-                    "status": {
-                      "$ref": "../models/status.json"
-                    },
-                    "message": {
-                      "$ref": "../models/message.json"
-                    }
-                  }
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "status": 404,
-                      "message": "Holdout not found."
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           }
         },
         "operationId": "post-gates-gate_id-overrides",
