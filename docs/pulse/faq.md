@@ -21,7 +21,7 @@ Best practice for timing is to pick a readout date when you launch your experime
 
 ## How should I start with interpreting results?
 
-Start by using your scorecard metrics to understand if you've moved your key target metrics and critical context metrics to them. You should come into pulse with a hypothesis on what your experiment should drive, and that hypothesis should be answered by your primary metrics.
+Start by using your scorecard metrics to understand if you've moved the metrics you thought you would. You should come into pulse with a hypothesis on what your experiment should drive, and that hypothesis should be answered by your primary metrics.
 
 The delta displayed is based on the observed difference between a test and control population. The error bars are a visualization of a confidence interval. A confidence interval is a range of probable values for the difference between groups. A future sample's 95% confidence interval will have a 95% chance to contain the true value of the difference. This is a bit of a wonkish distinction which means that (unfortunately) you can't say that your observed 95% CI has a 95% chance of containing the true value. In practice, the CI is a representative range of what the true value might be.
 
@@ -33,7 +33,7 @@ Keep in mind that these results are statistical interpretations and not facts:
 - If a result is stat sig, this means that you have sufficient evidence to reject the null hypothesis (i.e., the probability that you would observe this result, or one more extreme, if the two groups' results were identical is below the pre-determined threshold you set).
   - Generally, you should treat this result as evidnece for your hypothesis
   - Multiple comparisons (many metrics, rerunning an experiment, or grouping by dimensions) greatly increase the chance of seeing a stat sig result when there's _not_ a true effect. Be wary of interpreting results when you see those behaviors!
-  - A test that was extremely unlikely to succeed (moonshots, etc.) that has stat sig results have a high chance of that result being a false positive. In cases like this, it's a strong signal but you should consider trying to reproduce the result or running a back-test, or consider reducing your p-value.
+  - A test that was extremely unlikely to succeed (moonshots, etc.) that has stat sig results have a high chance of that result being a false positive. In cases like this, it's a strong signal but you should consider trying to reproduce the result or running a back-test, or consider reducing your significance level.
 
 Once you've looked at the results on your scorecard, we encourage you to use the all-metrics tab and custom queries to get more information on your experiment, but you shouldn't necessarily trust that if those see a stat-sig movement it is a statistically sound interpretation; as mentioned above if you increase the number of metrics you are looking at, you increase the chance that you will see a false positive. Use this section to look for unexpected large regressions and to generate follow-up hypotheses.
 
