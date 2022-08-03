@@ -14,8 +14,8 @@ There's a number of reasons this can happen:
 
 - Random noise, which gets diluted as your sample size gets larger
 - Within-week seasonality (e.g. an effect is different on Mondays), which gets normalized with more data
-- The population that was exposed early on is somehow different than the slower adopters. You can look at the time series view to get more insight on this
-- There was some sort of novelty effect that made the experiment meaningful early on, but fall off. You can use the days-since-exposure view to get more insight on this
+- The population that saw the experiment early early on is somehow different than the slower adopters. This happens frequently - a daily user will likely see your experiment before someone who users your product once a month. You can look at the time series view to get more insight on this
+- There was some sort of novelty effect that made the experiment meaningful early on, but fall off. Imagine changing a button - people might click on it early out of curiosity or novelty, but once that effect goes away they'll behave like before. You can use the days-since-exposure view to get more insight on this
 
 Best practice for timing is to pick a readout date when you launch your experiment (based on a [power analysis](experiments-plus/power-analysis)), and to disregard the statistical interpretation of results until then. This is because reading results multiple times before then dramatically increases the rate at which you'll get false positives.
 
@@ -23,7 +23,7 @@ Best practice for timing is to pick a readout date when you launch your experime
 
 Start by using your scorecard metrics to understand if you've moved your key target metrics and critical context metrics to them. You should come into pulse with a hypothesis on what your experiment should drive, and that hypothesis should be answered by your primary metrics.
 
-The delta displayed is based on the observed difference between a test and control population. The error bars are a visualization of a confidence interval, which is the band that has a given chance of the true value of the difference falling within. For example, a 95% confidence interval of 0.5% - 2.5% is saying that based on the observed data there is a 95% chance that the true difference falls between 0.5% and 2.5%.
+The delta displayed is based on the observed difference between a test and control population. The error bars are a visualization of a confidence interval. A confidence interval is a range of probable values for the difference between groups. A future sample's 95% confidence interval will have a 95% chance to contain the true value of the difference. This is a bit of a wonkish distinction which means that (unfortunately) you can't say that your observed 95% CI has a 95% chance of containing the true value. In practice, the CI is a representative range of what the true value might be.
 
 Keep in mind that these results are statistical interpretations and not facts:
 
