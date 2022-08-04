@@ -1,3 +1,9 @@
 ```jsx
 statsig.shutdown();
 ```
+
+Alternatively, if you are operating in a serverless environment/cloud function, you may wish to leave Statsig running in case your function is recycled but flush the logs to Statsig servers.  Or, if you need an async method to wait for logs to post before resolving, you can use:
+
+```js
+statsig.flush();
+```
