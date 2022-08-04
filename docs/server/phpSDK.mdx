@@ -42,7 +42,7 @@ The SDK is also [open source and hosted on github](https://github.com/statsig-io
 
 After installation, you will need to initialize the SDK using a [Server Secret Key from the statsig console](https://console.statsig.com/api_keys).
 
-There is also a parameter `options` that requires you to pass in a file name for saving configurations and another for writing log events.
+There is also a parameter `options` that requires you to pass in a storage adapter for storing configurations and event logs.  In this below example, we use a local file storage adapter, but you can write your own to plug in Redis or another storage solution.  Create an adapter that implements `Statsig\Adapters\IConfigAdapter` if you do not want to use the local file storage adapter.
 
 ```java
 use Statsig\StatsigServer;
@@ -185,7 +185,7 @@ For example, if you have feature gates that should only pass for users with emai
 
 ## Statsig Options {#statsig-options}
 
-StatsigOptions is a common configuration parameter across Statsig SDKs. For the PHP sdk, the follow are configurable:
+StatsigOptions is a common configuration parameter across Statsig SDKs. For the PHP sdk, the following are configurable:
 
 - `IConfigAdapter` (required) - A class that implements IConfigAdapter. Statsig provides the LocalFileConfigAdapter, but you can write your own.
 - `ILoggingAdapter` - A class that implements ILoggingAdapter. Statsig provides the LocalFileLoggingAdapter, but you can write your own. If no adapter is provided, logs must be sent during the request.
@@ -193,7 +193,7 @@ StatsigOptions is a common configuration parameter across Statsig SDKs. For the 
 You can also configure:
 
 - The environment (see [using environments](https://docs.statsig.com/guides/using-environments)) via `setEnvironmentTier("production" | "staging" | "development")`
-- The event queue size (How many events to track before they are sent to Statsig) via setEventQueueSize(int $size).
+- The event queue size (How many events to track before they are sent to Statsig) via `setEventQueueSize(int $size)`.
 
 ## FAQ {#faq}
 
@@ -212,4 +212,4 @@ If you want a simple snippet for using the http api in php, you may find the [fo
 Note that the `user` parameter to each of these functions follows the [Statsig User](/server/concepts/user) definition for Server SDKs.
 
 <Gist id="c27fb9de65c7a1d1591d161570ae807a" />
-```
+
