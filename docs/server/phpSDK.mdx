@@ -1,10 +1,11 @@
 ---
-sidebar_label: Php
+sidebar_label: PHP
 title: PHP SDK for Statsig
 ---
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import AsyncDisclaimer from './async_disclaimer.mdx';
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import AsyncDisclaimer from "./async_disclaimer.mdx";
 
 ## The Basics {#the-basics}
 
@@ -17,25 +18,25 @@ Get started in a few quick steps.
 5. [Send logs to Statsig](#step5)
 6. [Log a custom event](#step6)
 
-<a name='step1'></a>
+<a name="step1"></a>
 
 #### Step 1 - Create a free account on [www.statsig.com](https://console.statsig.com/sign_up) {#step-1---create-a-free-account-on-wwwstatsigcom}
 
 You could skip this for now, but you will need an SDK Key and some Feature Gates or Dynamic Configs to use with the SDK in just a minute.
 
-<a name='step2'></a>
+<a name="step2"></a>
 
 #### Step 2 - Install the SDK {#step-2---install-the-sdk}
 
 You can install the SDK using composer
 
-```php
+```shell
 composer require statsig/statsigsdk
 ```
 
-The SDK is also [open source and hosted on github](https://github.com/statsig-io/php-sdk).  The package is published to [packagist](https://packagist.org/packages/statsig/statsigsdk).
+The SDK is also [open source and hosted on github](https://github.com/statsig-io/php-sdk). The package is published to [packagist](https://packagist.org/packages/statsig/statsigsdk).
 
-<a name='step3'></a>
+<a name="step3"></a>
 
 #### Step 3 - Initialize the SDK {#step-3---initialize-the-sdk}
 
@@ -43,55 +44,33 @@ After installation, you will need to initialize the SDK using a [Server Secret K
 
 There is also a parameter `options` that requires you to pass in a file name for saving configurations and another for writing log events.
 
-```php
+```java
 use Statsig\StatsigServer;
 use Statsig\StatsigOptions;
+use Statsig\Adapters\LocalFileConfigAdapter;
+use Statsig\Adapters\LocalFileLoggingAdapter;
 
-$this->statsig = new StatsigServer($key, new StatsigOptions("/tmp/statsig.config", "/tmp/statsig.log"));
+$config_adapter = new LocalFileConfigAdapter();
+$logging_adapter = new LocalFileLoggingAdapter();
+$options = new StatsigOptions($config_adapter, $logging_adapter);
+$this->statsig = new StatsigServer("server-sdk-key", $options);
 ```
 
-To keep your configurations up to date, and send event data to Statsig, you must create two cron jobs.
-
-The first runs `sync.php` to download the latest definition of gates/configs/experiments from statsig, and save it to a config file locally.
-If you do not update this file, your gate/config/experiment values will never change, and you will be unable to roll out or roll back features.
-
-```sh
-# Run once
-php sync.php --secret <STATSIG_SECRET_KEY> --output /tmp/statsig.config
-```
-```sh
-# Create a cron job that runs as statsigsync every minute
-echo '*/1 * * * * statsigsync php /my/path/to/statsig/sync.php --secret <STATSIG_SECRET_KEY> --output /tmp/statsig.config > /dev/null' | sudo tee /etc/cron.d/statsigsync
-sudo service cron reload    # reload the cron daemon
-```
-
-The second runs `send.php` to send the exposure data and log events to statsig.  Without this data, you will get no realtime insights (nor A/B test results).
-
-```sh
-# Run once
-php send.php --secret <STATSIG_SECRET_KEY> --file /tmp/statsig.log
-```
-```sh
-# Create a cron job that runs as statsigsync every minute
-echo '*/1 * * * * statsigdata php /my/path/to/statsig/send.php --secret <STATSIG_SECRET_KEY> --file /tmp/statsig.log > /dev/null' | sudo tee /etc/cron.d/statsigdata
-sudo service cron reload    # reload the cron daemon
-```
-
-<a name='step4'></a>
+<a name="step4"></a>
 
 #### Step 4 - Fetch Feature Gates, Dynamic Configs, or Experiments {#step-4---fetch-values}
 
-:::info NOTE: The php SDK currently does not support Segments that are using ID lists.  Please [file an issue on github](https://github.com/statsig-io/php-sdk/issues) if you need this feature, or reach out to us on our slack channel
+:::info NOTE: The php SDK currently does not support Segments that are using ID lists. Please [file an issue on github](https://github.com/statsig-io/php-sdk/issues) if you need this feature, or reach out to us on our slack channel
 :::
 
 Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-gates). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
 
 From this point on, all APIs will require you to specify the user (see [Statsig user](#statsig-user)) associated with the request. For example, check a gate for a certain user like this:
 
-```php
+```java
 use Statsig\StatsigUser;
 
-$user = new StatsigUser("123");
+$user = StatsigUser::withUserID("123");
 $user->setEmail("testuser@statsig.com");
 
 $this->statsig->checkGate($user, "<gate_name>");
@@ -99,24 +78,23 @@ $this->statsig->checkGate($user, "<gate_name>");
 
 Feature Gates can be very useful for simple on/off switches, with optional but advanced user targeting. However, if you want to be able send a different set of values (strings, numbers, and etc.) to your clients based on specific user attributes, e.g. country, [**Dynamic Configs**](/dynamic-config) can help you with that. The API is very similar to Feature Gates, but you get an entire json object you can configure on the server and you can fetch typed parameters from it. For example:
 
-```php
+```java
 $this->statsig->getConfig($user, "<config_name>");
 ```
 
 Then we have [**Experiments**](/experiments-plus), which you can use to run A/B/n experiments and use advanced features like layers (coming soon) to avoid collision and enable quicker iterations with parameter reuse.
 
-```php
+```java
 $this->statsig->getExperiment($user, "test_config");
 ```
 
-
-<a name='step5'></a>
+<a name="step5"></a>
 
 #### Step 5 - Log a custom event {#step-5---log-event}
 
 Now that you have a Feature Gate or an Experiment set up, you may want to track some custom events and see how your new features or different experiment groups affect these events. This is super easy with Statsig - simply call the Log Event API and specify the user and event name to log; you additionally provide some value and/or an object of metadata to be logged together with the event:
 
-```php
+```java
 use Statsig\StatsigEvent;
 
 $event = new StatsigEvent("purchase");
@@ -128,16 +106,76 @@ $this->statsig->logEvent($event);
 
 At the end of the request, you can flush events to the log file using:
 
-```php
+```java
 $this->statsig->flush();
 ```
 
+#### Step 6 (Optional) - Sync Gate/Experiment/Config Defintions and Send Logs
+
+To keep your configurations up to date, and send event data to Statsig, you can create two cron jobs.
+
+**Sync**
+
+The first runs `sync.php` to download the latest definition of gates/configs/experiments from Statsig, and save it to a config file locally.
+If you do not update this file, your gate/config/experiment values may be stale and will be refetched during a request, which may lead to slower response times.
+
+```sh
+# Run once
+php sync.php --secret <STATSIG_SECRET_KEY>
+```
+
+```sh
+# Create a cron job that runs as statsigsync every minute
+echo '*/1 * * * * statsigsync php /my/path/to/statsig/sync.php --secret <STATSIG_SECRET_KEY> > /dev/null' | sudo tee /etc/cron.d/statsigsync
+sudo service cron reload    # reload the cron daemon
+```
+
+Alternatively, you may provide your own custom adapter that implements Statsig\Adapters\IConfigAdapter if you do not want to use the local file storage adapter.
+
+```sh
+php send.php --secret <STATSIG_SECRET_KEY> \
+    --adapter-class Namespace\For\MyConfigAdapter \
+    --adapter-path /path/to/MyConfigAdapter.php \
+    --adapter-arg an_argument_for_my_adapter \
+    --adapter-arg another_argument
+```
+
+By default, send.php will use the Statsig LocalFileLoggingAdapter which writes to /tmp/statsig.logs
+
+**Send**
+
+The second runs `send.php` to send the exposure data and log events to statsig. Without this data, your events will need to be logged during the lifetime of the request, which may lead to slower resposne times.
+
+```sh
+# Run once
+php send.php --secret <STATSIG_SECRET_KEY>
+```
+
+```sh
+# Create a cron job that runs as statsigsync every minute
+echo '*/1 * * * * statsigdata php /my/path/to/statsig/send.php --secret <STATSIG_SECRET_KEY> > /dev/null' | sudo tee /etc/cron.d/statsigdata
+sudo service cron reload    # reload the cron daemon
+```
+
+Alternatively, you may provide your own custom adapter that implements Statsig\Adapters\ILoggingConfig if you do not want to use the local file storage adapter.
+
+```sh
+php send.php --secret <STATSIG_SECRET_KEY> \
+     --adapter-class Namespace\For\MyConfigAdapter \
+     --adapter-path /path/to/MyConfigAdapter.php \
+     --adapter-arg an_argument_for_my_adapter \
+     --adapter-arg another_argument
+```
+
+By default, send.php will use the Statsig LocalFileConfigAdapter which writes to /tmp/statsig.configs
 
 ## Statsig User {#statsig-user}
 
 When calling APIs that require a user, you should pass as much information as possible in order to take advantage of advanced gate and config conditions (like country or OS/browser level checks), and correctly measure impact of your experiments on your metrics/events. The `userID` field is required because it's needed to provide a consistent experience for a given user (click [here](/server/concepts/user#why-is-statsiguser-with-a-userid-required-for-server-sdks) to understand further why it's important to always provide a userID).
 
-Besides `userID`, we also have `email`, `ip`, `userAgent`, `country`, `locale` and `appVersion` as top-level fields on StatsigUser. In addition, you can pass any key-value pairs in an object/dictionary to the `custom` field and be able to create targeting based on them.
+Besides `userID`, we also have `customIDs`, `email`, `ip`, `userAgent`, `country`, `locale` and `appVersion` as top-level fields on StatsigUser. In addition, you can pass any key-value pairs in an object/dictionary to the `custom` field and be able to create targeting based on them.
+
+Note: You must provide userID or at least 1 customID or an exception will be thrown.
 
 #### Have sensitive user PII data that should not be logged? {#private-attributes}
 
@@ -147,26 +185,31 @@ For example, if you have feature gates that should only pass for users with emai
 
 ## Statsig Options {#statsig-options}
 
-StatsigOptions is a common configuration parameter across Statsig SDKs.  For the PHP sdk, there are two parameters:
+StatsigOptions is a common configuration parameter across Statsig SDKs. For the PHP sdk, the follow are configurable:
 
-- `/path/to/config_file.config` (required) - Path to a file for saving statsig configurations
-- `/path/to/log_file.log` (optional - can flush logs after each request by calling `$statsig->flush()` instead of batching in a log file)
+- `IConfigAdapter` (required) - A class that implements IConfigAdapter. Statsig provides the LocalFileConfigAdapter, but you can write your own.
+- `ILoggingAdapter` - A class that implements ILoggingAdapter. Statsig provides the LocalFileLoggingAdapter, but you can write your own. If no adapter is provided, logs must be sent during the request.
 
-You can also configure the environment (see [using environments](https://docs.statsig.com/guides/using-environments)) via `setEnvironmentTier("production" | "staging" | "development")`
+You can also configure:
+
+- The environment (see [using environments](https://docs.statsig.com/guides/using-environments)) via `setEnvironmentTier("production" | "staging" | "development")`
+- The event queue size (How many events to track before they are sent to Statsig) via setEventQueueSize(int $size).
 
 ## FAQ {#faq}
 
 #### How do I run experiments for logged out users? {#logged-out-experiments}
 
-You can run experiments for arbitrary unit IDs (sessionID, groupID, etc), rather than at the userID level, if you choose. These custom unit IDs must be predefined in your Statsig project, and then selected in the Experiment creation flow.  For more information, see our guide on [experimenting on custom ID types](/guides/experiment-on-custom-id-types)
+You can run experiments for arbitrary unit IDs (sessionID, groupID, etc), rather than at the userID level, if you choose. These custom unit IDs must be predefined in your Statsig project, and then selected in the Experiment creation flow. For more information, see our guide on [experimenting on custom ID types](/guides/experiment-on-custom-id-types)
 
 <div>{props.faqs}</div>
 
 #### Using the httpAPI instead
-import Gist from 'react-gist';
 
-If you want a simple snippet for using the http api in php, you may find the [following gist](https://gist.github.com/tore-statsig/c27fb9de65c7a1d1591d161570ae807a) useful.  It exposes functions to `checkGate`, `getConfig`, `getExperiment`, and `logEvent`.
+import Gist from "react-gist";
+
+If you want a simple snippet for using the http api in php, you may find the [following gist](https://gist.github.com/tore-statsig/c27fb9de65c7a1d1591d161570ae807a) useful. It exposes functions to `checkGate`, `getConfig`, `getExperiment`, and `logEvent`.
 
 Note that the `user` parameter to each of these functions follows the [Statsig User](/server/concepts/user) definition for Server SDKs.
 
 <Gist id="c27fb9de65c7a1d1591d161570ae807a" />
+```
