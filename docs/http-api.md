@@ -126,7 +126,7 @@ curl \
 ```
 
 Response:
-`{"name":"YOUR-LAYER-NAME","value":{"color":"blue","shape":"circle"},"ruleID":"default"}`
+`{"name":"YOUR-LAYER-NAME","value":{"color":"blue","shape":"circle"},"ruleID":"2OZdhuDfq3w1UIHovUFRBM", "allocatedExperimentName": "a_experiment"}`
 
 ##### Export Report {#export-report}
 
