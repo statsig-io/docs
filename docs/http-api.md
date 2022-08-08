@@ -121,7 +121,7 @@ curl \
   --header "statsig-api-key: <YOUR-SDK-KEY>" \
   --header "Content-Type: application/json" \
   --request POST \
-  --data '{"user": { "userID": "42" },"configName":"<YOUR-LAYER-NAME>"}' \
+  --data '{"user": { "userID": "42" },"layerName":"<YOUR-LAYER-NAME>"}' \
   "https://statsigapi.net/v1/get_layer"
 ```
 
