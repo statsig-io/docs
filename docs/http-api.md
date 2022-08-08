@@ -112,6 +112,22 @@ curl \
 Response:
 `{"name":"YOUR-EXPERIMENT-NAME","value":{"color":"blue","shape":"circle"},"group":"default"}`
 
+##### Fetch Layer Value {#fetch-layer-config}
+
+The system will automatically log the right exposure based on the name of the config.
+
+```bash
+curl \
+  --header "statsig-api-key: <YOUR-SDK-KEY>" \
+  --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"user": { "userID": "42" },"configName":"<YOUR-LAYER-NAME>"}' \
+  "https://statsigapi.net/v1/get_layer"
+```
+
+Response:
+`{"name":"YOUR-LAYER-NAME","value":{"color":"blue","shape":"circle"},"ruleID":"default"}`
+
 ##### Export Report {#export-report}
 
 You can [export your Pulse data](https://docs.statsig.com/pulse/export) via the console or using the following API. In addition to the [`first_exposures`](https://docs.statsig.com/pulse#first-exposures-file-description) report type as shown below, you can also request a [`pulse_daily`](https://docs.statsig.com/pulse#pulse-summary-and-daily-file-description) or [`unit_metrics_daily`](https://docs.statsig.com/pulse#unit-metrics-file-description) report types.
