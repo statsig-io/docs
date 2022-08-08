@@ -6,7 +6,7 @@ module.exports = {
   },
   "servers": [
     {
-      "url": "https://statsigapi.net/console/v1"
+      "url": "https://latest.api.statsig.com/console/v1"
     }
   ],
   "components": {
@@ -16,7 +16,82 @@ module.exports = {
         "in": "header",
         "name": "STATSIG-API-KEY"
       }
-    }
+    },
+    "responses": {
+      "400": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "x-examples": {
+                "example-1": {
+                  "status": 400,
+                  "message": "Segment must be of type 'id_list' to be modified"
+                }
+              },
+              "properties": {
+                "status": {
+                  "$ref": "../models/status.json"
+                },
+                "message": {
+                  "$ref": "../models/message.json"
+                }
+              },
+              "required": [
+                "status",
+                "message"
+              ]
+            },
+            "examples": {
+              "example-1": {
+                "value": {
+                  "status": 400,
+                  "message": "Segment must be of type 'id_list' to be modified"
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "x-examples": {
+                "example-1": {
+                  "status": 404,
+                  "message": "Segment not found."
+                }
+              },
+              "properties": {
+                "status": {
+                  "$ref": "../models/status.json"
+                },
+                "message": {
+                  "$ref": "../models/message.json"
+                }
+              },
+              "required": [
+                "status",
+                "message"
+              ]
+            },
+            "examples": {
+              "example-1": {
+                "value": {
+                  "status": 404,
+                  "message": "Segment not found."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {}
   },
   "security": [
     {
@@ -294,6 +369,21 @@ module.exports = {
                       "$ref": "../models/segment.json"
                     }
                   }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "string",
+                      "data": {
+                        "id": "a_segment",
+                        "isEnabled": true,
+                        "description": "helpful summary of what this segment is",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "type": "id_list"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -304,41 +394,20 @@ module.exports = {
               "application/json": {
                 "schema": {
                   "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
                 }
               }
             }
           },
           "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "x-examples": {
-                    "example-1": {
-                      "status": 404,
-                      "message": "Segment not found."
-                    }
-                  },
-                  "properties": {
-                    "status": {
-                      "$ref": "../models/status.json"
-                    },
-                    "message": {
-                      "$ref": "../models/message.json"
-                    }
-                  }
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "status": 404,
-                      "message": "Segment not found."
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "": {
             "content": {
@@ -439,36 +508,7 @@ module.exports = {
             }
           },
           "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "x-examples": {
-                    "example-1": {
-                      "status": 404,
-                      "message": "Segment not found."
-                    }
-                  },
-                  "properties": {
-                    "status": {
-                      "$ref": "../models/status.json"
-                    },
-                    "message": {
-                      "$ref": "../models/message.json"
-                    }
-                  }
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "status": 404,
-                      "message": "Segment not found."
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           }
         }
       },
@@ -484,6 +524,205 @@ module.exports = {
           "description": "The segment id to query"
         }
       ]
+    },
+    "/segments/{segment_id}/id_list": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "segment_id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "patch": {
+        "summary": "Add IDs to Segment",
+        "operationId": "patch-segments-segment_id-id_list",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Segment ids updated successfully."
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "message"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Segment ids updated successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "tags": [
+          "Segments"
+        ],
+        "description": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "description": "Array of IDs to add to segment",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "ids"
+                ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "ids": [
+                      "user-1",
+                      "user-2"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Remove IDs from Segment",
+        "operationId": "delete-segments-segment_id-id_list",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Segment ids deleted successfully."
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Segment ids deleted successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "tags": [
+          "Segments"
+        ],
+        "description": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "description": "Array of IDs to remove from segment",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "ids"
+                ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "ids": [
+                      "user-1",
+                      "user-2"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
