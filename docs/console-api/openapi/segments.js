@@ -6,7 +6,7 @@ module.exports = {
   },
   "servers": [
     {
-      "url": "https://latest.api.statsig.com/console/v1"
+      "url": "https://statsigapi.net/console/v1"
     }
   ],
   "components": {
