@@ -12,6 +12,19 @@ module.exports = {
   organizationName: "statsig", // Usually your GitHub org/user name.
   projectName: "statsig-io/docs", // Usually your repo name.
   themeConfig: {
+    metadata: [{
+        name: "og:image",
+        content: "/img/docs_meta.jpg"
+    }, {
+        name: "og:type",
+        content: "websiteg"
+    }, {
+        name: "twitter:card",
+        content: "summary_large_image"
+    }, {
+        name: "og:image:type",
+        content: "image/jpg"
+    }],
     navbar: {
       title: "",
       logo: {
