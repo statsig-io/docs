@@ -1,0 +1,23 @@
+---
+title: Stitch
+---
+
+import EventFormats from "../snippets/integration_event_formats.mdx";
+
+## Overview
+
+Enabling the Stitch integration for Statsig will allow Statsig to push events to your Stitch account through a webhook. This allows you to forward Statsig data to any connectors available from Stitch.
+
+## Configuring Outbound Events
+
+1. Follow the steps in the [Stitch Webhook Setup Guide](https://www.stitchdata.com/docs/integrations/webhooks/stitch-incoming-webhooks#setup) to create a new Webhook URL.
+2. On the Statsig [Integrations](https://console.statsig.com/integrations) page, enable the Stitch integration by pasting in the Stitch Webhook URL and click **Confirm**.
+
+<EventFormats />
+
+## Filtering Events
+
+Once you've enabled outbound events to Stitch, you can select which categories of Statsig events you want to export by click on the **Event Filtering** button and checking the appropriate boxes as shown below.
+
+![Image](https://user-images.githubusercontent.com/26360698/183725742-b58c87a7-fbb4-4f30-be9a-9d20c08cd7d0.png)
+![Image](https://user-images.githubusercontent.com/26360698/183725752-b79b5c3f-d275-4dec-80ba-04fa9a73da0d.png)
