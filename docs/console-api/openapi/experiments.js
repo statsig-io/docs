@@ -68,12 +68,8 @@ module.exports = {
         "x-stoplight": {
           "id": "du660arabb32i"
         },
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          }
-        }
+        "type": "string",
+        "description": "The name that was originally given to the experiment on creation but formatted as an ID (\"A Experiment\" -> \"a_experiment\")"
       },
       "idType": {
         "title": "idType",
@@ -875,7 +871,7 @@ module.exports = {
             "$ref": "#/components/responses/experiment_404.json"
           }
         },
-        "description": "Create a new experiment",
+        "description": "Update all properties of the experiment",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1162,7 +1158,7 @@ module.exports = {
             }
           }
         },
-        "description": "Update all properties of the experiment",
+        "description": "Update selected properties of the experiment",
         "requestBody": {
           "content": {
             "application/json": {
