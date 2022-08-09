@@ -10,7 +10,7 @@ module.exports = {
   },
   "servers": [
     {
-      "url": "https://statsigapi.net/console/v1"
+      "url": "https://api.statsig.com/console/v1"
     }
   ],
   "components": {
@@ -568,7 +568,7 @@ module.exports = {
           {
             "lang": "cURL",
             "label": "cURL",
-            "source": "curl --request GET 'https://statsigapi.net/console/v1/experiments' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
+            "source": "curl --request GET 'https://api.statsig.com/console/v1/experiments' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
           }
         ],
         "tags": [
@@ -871,7 +871,7 @@ module.exports = {
             "$ref": "#/components/responses/experiment_404.json"
           }
         },
-        "description": "Create a new experiment",
+        "description": "Update all properties of the experiment",
         "requestBody": {
           "content": {
             "application/json": {
