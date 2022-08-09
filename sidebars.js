@@ -298,6 +298,7 @@ module.exports = {
             "integrations/data-connectors/revenuecat",
             "integrations/data-connectors/segment",
             "integrations/data-connectors/rudderstack",
+            "integrations/data-connectors/stitch",
           ],
         },
         {
