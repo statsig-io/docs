@@ -10,7 +10,7 @@ module.exports = {
   },
   "servers": [
     {
-      "url": "https://statsigapi.net/console/v1"
+      "url": "https://api.statsig.com/console/v1"
     }
   ],
   "components": {
@@ -68,12 +68,8 @@ module.exports = {
         "x-stoplight": {
           "id": "du660arabb32i"
         },
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          }
-        }
+        "type": "string",
+        "description": "The name that was originally given to the experiment on creation but formatted as an ID (\"A Experiment\" -> \"a_experiment\")"
       },
       "idType": {
         "title": "idType",
@@ -572,7 +568,7 @@ module.exports = {
           {
             "lang": "cURL",
             "label": "cURL",
-            "source": "curl --request GET 'https://statsigapi.net/console/v1/experiments' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
+            "source": "curl --request GET 'https://api.statsig.com/console/v1/experiments' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
           }
         ],
         "tags": [
@@ -1162,7 +1158,7 @@ module.exports = {
             }
           }
         },
-        "description": "Update all properties of the experiment",
+        "description": "Update selected properties of the experiment",
         "requestBody": {
           "content": {
             "application/json": {
