@@ -10,7 +10,7 @@ module.exports = {
   },
   "servers": [
     {
-      "url": "https://api.statsig.com/console/v1"
+      "url": "https://statsigapi.net/console/v1"
     }
   ],
   "components": {
