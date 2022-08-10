@@ -140,14 +140,30 @@ module.exports = {
         id: "metrics/introduction",
       },
       items: [
-        "metrics/create",
+        {
+            "Metrics 101 - Overview": [
+                "metrics/101",
+                "metrics/raw-events",
+                "metrics/raw-event-metrics",
+                "metrics/custom-metrics",
+                "metrics/precomputed-metrics",
+                "metrics/metric-dimensions"
+            ],
+        },
+        // other
         "metrics/ingest",
-        "metrics/user",
         "metrics/pulse",
         "metrics/console",
+
+        // 201
+        "metrics/create",
         "metrics/create-metric-tags",
+        "metrics/user",
+       
+        // 301
         "metrics/create-user-flows",
         "metrics/create-user-funnels",
+        "metrics/events-explorer",
       ],
     },
     {
