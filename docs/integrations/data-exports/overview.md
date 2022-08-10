@@ -17,7 +17,9 @@ Your data is your data. Statsig makes it easy to export both the reports and the
 
 ## Validating data
 
-Many teams audit and compare their data in Statsig with what they have in other systems. Some tips when doing so -
+Many teams audit and compare their data in Statsig with what they have in other systems. There are no black box algorithms.  We use well-recognized statistical methods and industry best practices and you should be able to reproduce results yourself.
+
+Some tips when doing so -
 1. Start small: Use a day's worth of data to reduce the variables in play. When comparing experiments, start with a full day (not days the experiment started/stopped where there's partial data). 
 2. Third party ads/tracking blockers can block events sent to 3rd party services. Using a server side integration or [proxying requests via your domain](https://docs.statsig.com/custom_proxy) will remove this. 
 3. Watch for time zone conversion issues to make sure a consistent definition of day is being used. 
