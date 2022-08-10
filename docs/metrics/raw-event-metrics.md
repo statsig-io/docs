@@ -51,7 +51,7 @@ Statsig automatically derives a number of **User Accounting** metrics based on a
 
 Like the **event_dau** metric, Statsig computes **User Accounting Metrics** for each unit ID that you define in your Statsig Project. For example, given User IDs, DAU counts the number of distinct users that triggered the event. Given Stable IDs, DAU counts the number of distinct devices running your application.
 
-User Accounting metrics are listed in the **Metrics** section under the **Charts** tab in the Statsig console. See [User Accounting Metrics](/metrics/201/user) for the full list of user accounting metrics and learn how to customize the definition of a DAU. 
+User Accounting metrics are listed in the **Metrics** section under the **Charts** tab in the Statsig console. See [User Accounting Metrics](/metrics/user) for the full list of user accounting metrics and learn how to customize the definition of a DAU. 
 
 ![Screen Shot 2022-06-07 at 12 55 08 PM](https://user-images.githubusercontent.com/101903926/172470741-af6294d0-a84a-4630-80f8-827de7e0c03b.png)
 

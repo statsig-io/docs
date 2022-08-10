@@ -22,10 +22,10 @@ The **Metrics User Guide** consists of [Metrics 101](/metrics/101), [201](/metri
 
 - [Introduction](metrics/101)
 - [Raw Events](metrics/raw-events)
-- [Raw Event Metrics](metrics/raw-event-metrics)
+- [Raw Event Metrics](metrics/metrics-from-events)
 - [Custom Metrics](metrics/custom-metrics)
 - [Precomputed Metrics](metrics/precomputed-metrics)
-- [Pulse Metrics](metrics/pulse-metrics)
+- [Pulse Metrics](metrics/pulse)
 - [Metric Dimensions](metrics/metric-dimensions)
 
 # Metrics 201 - Diving deeper
