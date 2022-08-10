@@ -1,7 +1,7 @@
 ---
 title: Events Explorer
 sidebar_label: Events Explorer
-slug: /metrics/301/events-explorer
+slug: /metrics/events-explorer
 ---
 
 Statsig's **Events Explorer** enables you to dive straight into real-time events emitted by your application. 

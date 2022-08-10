@@ -1,7 +1,7 @@
 ---
 title: Creating Metric Tags
 sidebar_label: Creating Metric Tags
-slug: /metrics/201/create-metric-tags
+slug: /metrics/create-metric-tags
 ---
 
 To create a metric tag, click on **Metrics** in the left hand navigation menu, and click on the [Metrics Catalog](https://console.statsig.com/4TLCtqzctSqusYcQljJLJE/metrics/metrics_catalog) tab. 
