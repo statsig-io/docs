@@ -1,7 +1,7 @@
 ---
 title: Pulse Metrics
 sidebar_label: Pulse Metrics
-slug: /metrics/101/pulse-metrics
+slug: /metrics/pulse
 ---
 
 # Pulse Metrics

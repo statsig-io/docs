@@ -1,7 +1,7 @@
 ---
 title: Metric Dimensions
 sidebar_label: Metric Dimensions
-slug: /metrics/101/metric-dimensions
+slug: /metrics/metric-dimensions
 ---
 
 # Metric Dimensions

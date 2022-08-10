@@ -1,7 +1,7 @@
 ---
 title: Custom Metrics
 sidebar_label: Custom Metrics
-slug: /metrics/101/custom-metrics
+slug: /metrics/custom-metrics
 ---
 
 # Custom Metrics

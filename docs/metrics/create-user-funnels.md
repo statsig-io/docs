@@ -1,7 +1,7 @@
 ---
 title: Funnel Metrics
 sidebar_label: Funnel Metrics
-slug: /metrics/301/create-user-funnel-metrics
+slug: /metrics/create-user-funnel-metrics
 ---
 
 

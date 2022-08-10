@@ -1,7 +1,7 @@
 ---
 title: Auto-generated Metrics
 sidebar_label: Auto-generated Metrics
-slug: /metrics/101/metrics-from-events
+slug: /metrics/metrics-from-events
 ---
 
 # Auto-generated Metrics
