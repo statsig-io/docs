@@ -26,6 +26,8 @@ Samples view:
 Table view:
 ![Screen Shot 2022-06-02 at 9 30 34 AM](https://user-images.githubusercontent.com/88338316/171684238-59e93285-7d61-4905-b684-22ef4928c1fc.png)
 
+## Annotations
+If you click on **Edit Data Settings** at the top of the page, you will get a dialog that allows you to configure up to five Feature Gates and Experiments. Once you add some and **Save**, any future events that happen in your product will get annotated with these Feature Gates and Experiments - we will evaluate the selected Feature Gates and Experiments for each row, and add the results of those evaluatione in the **exposures** column in Events Explorer. This allows you to quickly filter and group by experiment groups, and see how your events and metrics are changing in real-time.
 
 ## Notes
 Events Explorer uses sampled data over a 14-day rolling window. Whenever you aggregate data (count, average, sum), we use the inverse of the sampling rate for a given row as the weight, to provide approximate values of the aggregation.
