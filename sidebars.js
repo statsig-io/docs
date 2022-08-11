@@ -29,6 +29,7 @@ module.exports = {
         "guides/serverless",
         "guides/config-history",
         "guides/production",
+        "guides/testing",
       ],
     },
     {
