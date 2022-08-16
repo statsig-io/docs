@@ -43,3 +43,6 @@ color = statsig.getExperiment('button_color_test').getString('button_color', 'BL
 In the first set up, if you want to test a new color, say "Green", you will need to change your experiment, make a code change, and even wait for a new release cycle if you are developing on mobile platforms.
 
 In the second set up using Statsig, you can simply change your experiment to add a new group that returns "GREEN" and be done. No code change or waiting for release cycle needed!
+
+## When should I create a new Project
+Projects have distinct boundaries - nothing is shared between them. Create a new project when you're managing a distinct product with it's own distinct userIDs and metrics. If your app has web, iOS and Android - you will likely want to manage them together in one project so you can measure metrics like DAU across them (while still splitting it out by platform). 
