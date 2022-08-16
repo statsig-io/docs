@@ -8,9 +8,11 @@ In this guide, we introduce you to transitioning from a proof of concept or limi
 ## 1. Check project name/structure
 
 1. Rename the project if needed. Most teams continue to use the project they used during trial.
-2. Decide if you need more than one project. Tools like tags and granular permissions let you to manage many teams within a project. Create a new project for a seperate product when the definition of a user (and DAU) is distinct and no metrics need to be shared.
-3. Seed your project with a set of tags to use across gates, experiments and metrics.
-4. Create [Segments](https://docs.statsig.com/segments) to identify internal employees so you can easily override them into feature rollouts and experiments.
+2. Decide if you need more than one project. Tools like tags and granular permissions let you to manage many teams within a project. Create a new project only for a seperate product - when the definition of a user (and DAU) is distinct and no metrics need to be shared. You can require Admins to create new projects so this doesn't happen accidentally. 
+![image](https://user-images.githubusercontent.com/31516123/184998486-094beff1-f41f-417c-bd36-89700b0c014c.png)
+
+4. Seed your project with a set of tags to use across gates, experiments and metrics.
+5. Create [Segments](https://docs.statsig.com/segments) to identify internal employees so you can easily override them into feature rollouts and experiments.
 
 ## 2. Setup SSO to ease onboarding
 
@@ -23,6 +25,7 @@ Statsig lets you [require reviews](https://docs.statsig.com/guides/setting-up-re
 
 ![image](https://user-images.githubusercontent.com/31516123/179292011-5a6bcb75-9bb7-47d4-b876-28c2510315fe.png)
 ![image](https://user-images.githubusercontent.com/31516123/179292033-d6e10544-08f6-418a-9fdb-32156487e6da.png)
+
 
 
 ## 4. Set up Key Metrics and Dimensions
