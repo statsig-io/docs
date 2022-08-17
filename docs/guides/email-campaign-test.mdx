@@ -15,3 +15,4 @@ The general flow looks like this:
 :::warning
 #4 is the biggest gotcha.  When you check the experiment for each of the users you need to pass a user object to Statsig.  If your experiment is on the userID id type, you need to make sure each of those checks sets the userID on the user object.
 Any metrics and events you have instrumented in your app/website/server must pass that same userID in order for Statsig to join product metrics with experiment variant assignment.
+:::
