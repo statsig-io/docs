@@ -85,6 +85,7 @@ Statsig exports log events and exposure events to segment as `track` events:
         name: 'statsig',
         version: '1.0',
       },
+      stableID: event.statsigMetadata.stableID // stableID, if you are relying on that for anonymous users
     },
     properties: {
       value: event.value,
