@@ -54,34 +54,36 @@ yarn add statsig-react
 
 #### v1.0.0 Update
 
-Migrates the `statsig-react` sdk to v4.0 of the `statsig-js` SDK.  This introduces a number of breaking changes and enhancements.
+Migrates the `statsig-react` sdk to v4.0 of the `statsig-js` SDK. This introduces a number of breaking changes and enhancements.
 
 Breaking Changes:
-- Removed the `useStatsig` hook.  Instead, use `import Statsig from 'statsig-react'` to use the `statsig-js` sdk for event logging, or gate checks/event logging outside of a component tree.  NOTE: SDK methods like `checkGate` and `logEvent` will throw if called before `initialize()` - to avoid errors in your component tree, check `initStarted` from the `StatsigContext`, or globally, check `Statsig.initializedCalled()`
+
+- Removed the `useStatsig` hook. Instead, use `import Statsig from 'statsig-react'` to use the `statsig-js` sdk for event logging, or gate checks/event logging outside of a component tree. NOTE: SDK methods like `checkGate` and `logEvent` will throw if called before `initialize()` - to avoid errors in your component tree, check `initStarted` from the `StatsigContext`, or globally, check `Statsig.initializedCalled()`
 - Removed the separate `DynamicConfig` type, instead directly exporting the same type from the `statsig-js` sdk.
 
 Enhancements and Bug Fixes:
+
 - Unify the type of `DynamicConfig` to be a single type across this SDK and the `statsig-js` sdk.
 - Memoizes the result of gate/config checks for a given user for enhanced performance and to reduce duplicate exposures.
 - Adds `initializationComponent` to render while initializing if `waitForInitialization` is `true`
 - Fetches cached flag values from local storage while initialize is pending if `waitForInitialization` is `false`
 - Fixes an issue where changing the user object could trigger an `updateUser` while the SDK was initializing, which would throw an exception
 
-Additional features (inherited from `statsig-js`).  See the [releases](https://github.com/statsig-io/js-client/releases) for more details:
+Additional features (inherited from `statsig-js`). See the [releases](https://github.com/statsig-io/js-client/releases) for more details:
+
 - `DynamicConfig` overrides
 - Ability to `checkGate` and `getConfig` without overrides
 - Improved support for browsers + event logging, SSR logging bug fix, and configurations for event batch sizes and event flush intervals.
 
 :::info
-If you are calling methods on the global `Statsig` like `initialize` or `updateUser`, the user object tracked by the provider and the user object used outside the component tree can get out of sync.  You are responsible for maintaining the state of the `user` and keeping it consistent with the `StatsigProvider` in these cases.  The `statsig-react` SDK uses the global `Statsig` class to serve gate/config/experiment checks, but these are memoized in the hooks the SDK provides.  Updates to the user which impact flag values that are made outside the context of the react component tree will not be reflected in the component tree unless the updated user is passed in to the `StatsigProvider`.
+If you are calling methods on the global `Statsig` like `initialize` or `updateUser`, the user object tracked by the provider and the user object used outside the component tree can get out of sync. You are responsible for maintaining the state of the `user` and keeping it consistent with the `StatsigProvider` in these cases. The `statsig-react` SDK uses the global `Statsig` class to serve gate/config/experiment checks, but these are memoized in the hooks the SDK provides. Updates to the user which impact flag values that are made outside the context of the react component tree will not be reflected in the component tree unless the updated user is passed in to the `StatsigProvider`.
 :::
 
 #### Usage
 
 How we at Statsig use the SDK, and suggested usage.
 
-At the root of your component tree, wrap your app in a `StatsigProvider` and set `waitForInitialization=true` (if you do not wait for initialization, `useGate` hooks will return false on the first render, and will only update to the actual gate value once SDK initialization completes and Gates are fetched for the passed in user.  Similarly, `useConfig` and `useExperiment` will return empty dynamic configs).
-
+At the root of your component tree, wrap your app in a `StatsigProvider` and set `waitForInitialization=true` (if you do not wait for initialization, `useGate` hooks will return false on the first render, and will only update to the actual gate value once SDK initialization completes and Gates are fetched for the passed in user. Similarly, `useConfig` and `useExperiment` will return empty dynamic configs).
 
 ```react
 
@@ -101,7 +103,7 @@ import { StatsigProvider } from 'statsig-react';
 </StatsigProvider>
 ```
 
-Then, in your app, the `useGate`, `useConfig`, and `useExperiment` hooks will provide the up to date values of Feature Gates, DynamicConfigs, and Experiments (respectively) for the initialized user.  If you are unfamiliar with React Hooks, see the [rules of hooks](https://reactjs.org/docs/hooks-rules.html).
+Then, in your app, the `useGate`, `useConfig`, and `useExperiment` hooks will provide the up to date values of Feature Gates, DynamicConfigs, and Experiments (respectively) for the initialized user. If you are unfamiliar with React Hooks, see the [rules of hooks](https://reactjs.org/docs/hooks-rules.html).
 
 ```react
 import { useGate } from 'statsig-react';
@@ -117,7 +119,7 @@ export default function MyComponent(): JSX.Element {
 ```
 
 :::info
-NOTE: Statsig SDK Hooks rely on a Context from the Statsig Provider.  Context will get its value from the closest matching Provider above it in the component tree. Make sure you make a separate child component to consume the StatsigContext, and place your hooks there. Learn more here: https://reactjs.org/docs/context.html
+NOTE: Statsig SDK Hooks rely on a Context from the Statsig Provider. Context will get its value from the closest matching Provider above it in the component tree. Make sure you make a separate child component to consume the StatsigContext, and place your hooks there. Learn more here: https://reactjs.org/docs/context.html
 :::
 
 To logEvents, get the global javascript SDK
@@ -140,80 +142,100 @@ export default function MyComponent(): JSX.Element {
 
 If you need to check gates/configs in a loop, you can use this same import to avoid using the Feature Gate and Config hooks improperly in a loop.
 
-
 #### More Details
 
 The `statsig-react` sdk exports the following components:
 
 ##### `StatsigProvider`
-StatsigProvider is a [react context provider](https://reactjs.org/docs/context.html#contextprovider) which initializes the SDK, and passes down its state to the rest of the react application via a `StatsigContext`.  It takes the following properties:
+
+StatsigProvider is a [react context provider](https://reactjs.org/docs/context.html#contextprovider) which initializes the SDK, and passes down its state to the rest of the react application via a `StatsigContext`. It takes the following properties:
 
 - `children: React.ReactNode | React.ReactNode[];` - One or more child components
 - `sdkKey: string;` - A client SDK key from the Statsig Console
-- `user: StatsigUser;` - A [Statsig User](/client/concepts/user) object.  Changing this will update the user and Gate values, causing a re-initialization
-- `options?: StatsigOptions;` - See [StatsigOptions](/client/jsClientSDK#statsig-options).  An optional bag of initialization properties (shared with the statsig-js sdk) for advanced configuration.  
+- `user: StatsigUser;` - A [Statsig User](/client/concepts/user) object. Changing this will update the user and Gate values, causing a re-initialization
+- `options?: StatsigOptions;` - See [StatsigOptions](/client/jsClientSDK#statsig-options). An optional bag of initialization properties (shared with the statsig-js sdk) for advanced configuration.
 - `waitForInitialization?: boolean;` - Waits for the SDK to initialize with updated values before rendering child components
 - `initializingComponent?: React.ReactNode | React.ReactNode[];` - A loading component to render if and only if `waitForInitialization` is set to `true` and the SDK is initializing
-- `mountKey?: string` - A key for stable mounting/unmounting when updating the user.  If this key is set and changes when the user object changes (or if it is not provided) Then the children of StatsigProvider will unmount/remount with the async update. If this key is set and does not change, then the children of StatsigProvider will continue to be mounted, and it will trigger a rerender after updateUser completes.
+- `mountKey?: string` - A key for stable mounting/unmounting when updating the user. If this key is set and changes when the user object changes (or if it is not provided) Then the children of StatsigProvider will unmount/remount with the async update. If this key is set and does not change, then the children of StatsigProvider will continue to be mounted, and it will trigger a rerender after updateUser completes.
 - `shutdownOnUnmount?: boolean` - If set to true, will automatically call Statsig.shutdown() when the provider is unmounted
 
 #### Hooks
-The SDK exposes Feature Gates, Dynamic Configs, Experiments, and the underlying [statsig-js](/client/jsClientSDK).  If you are unfamiliar with hooks, be sure to check out the [rules of hooks](https://reactjs.org/docs/hooks-rules.html)
+
+The SDK exposes Feature Gates, Dynamic Configs, Experiments, and the underlying [statsig-js](/client/jsClientSDK). If you are unfamiliar with hooks, be sure to check out the [rules of hooks](https://reactjs.org/docs/hooks-rules.html)
 
 ##### `useGate`
+
 A react hook to get a Statsig Feature Gate.
 
 Parameters:
+
 - `gateName: string` - the name of the gate to check
 
 Returns `GateResult`:
--   `isLoading: boolean;` - the loading/initializing state of the SDK
--   `value: boolean` - the value of the feature gate (false by default)
+
+- `isLoading: boolean;` - the loading/initializing state of the SDK
+- `value: boolean` - the value of the feature gate (false by default)
 
 ##### `useConfig`
+
 A react hook to get a Statsig Dynamic Config.
 
 Parameters:
+
 - `configName: string` - the name of the config to get
 
-
 Returns `ConfigResult`:
--   `isLoading: boolean;` - the loading/initializing state of the SDK
--   `config: DynamicConfig` - the backing `DynamicConfig` (see the [statsig-js sdk docs](/client/jsClientSDK) for more information)
+
+- `isLoading: boolean;` - the loading/initializing state of the SDK
+- `config: DynamicConfig` - the backing `DynamicConfig` (see the [statsig-js sdk docs](/client/jsClientSDK) for more information)
 
 ##### `useExperiment`
+
 A react hook to get a Statsig Experiment, represented as a DynamicConfig.
 
 Parameters:
+
 - `experimentName: string` - the name of the experiment to get
 
-
 Returns `ConfigResult`:
--   `isLoading: boolean;` - the loading/initializing state of the SDK
--   `config: DynamicConfig` - the backing `DynamicConfig` (see the [statsig-js sdk docs](/client/jsClientSDK) for more information)
+
+- `isLoading: boolean;` - the loading/initializing state of the SDK
+- `config: DynamicConfig` - the backing `DynamicConfig` (see the [statsig-js sdk docs](/client/jsClientSDK) for more information)
 
 ##### `useLayer`
+
 A react hook to get a Statsig Experiment, represented as a DynamicConfig.
 
 Parameters:
+
 - `experimentName: string` - the name of the experiment to get
 
 Returns `LayerResult`:
--   `isLoading: boolean;` - the loading/initializing state of the SDK
--   `layer: Layer` - the backing `Layer` (see the [statsig-js sdk docs](/client/jsClientSDK) for more information)
 
+- `isLoading: boolean;` - the loading/initializing state of the SDK
+- `layer: Layer` - the backing `Layer` (see the [statsig-js sdk docs](/client/jsClientSDK) for more information)
 
 ##### `useStatsigLogEffect`
+
 A react hook to simplify top level logEvents into an effect which will only log and event once the SDK is ready
 
-Parameters: none
+Parameters:
+
 - `eventName: string`
 - `value?: string | number | null`
 - `metadata?: Record<string, string> | null`
 
+##### `usePrefetchUsers` (v1.15.0+)
+
+A react hook to prefetch an array of StatsigUser objects. This will call the underling [prefetchUsers](/client/jsClientSDK#prefetching-users-directly) method.
+
+Parameters:
+
+- `users: StatsigUser[]`
 
 ##### `StatsigContext`
-StatsigContext is a [react context](https://reactjs.org/docs/context.html) used internally by the SDK to manage internal state.  You should not need to use the `StatsigContext` directly, as the Provider and Hooks interface with it for you.  It tracks the following state:
+
+StatsigContext is a [react context](https://reactjs.org/docs/context.html) used internally by the SDK to manage internal state. You should not need to use the `StatsigContext` directly, as the Provider and Hooks interface with it for you. It tracks the following state:
 
 - `initialized: boolean;` the initialization state of the SDK
 - `statsigPromise: React.MutableRefObject<Promise<void>> | null;` a reference to a promise which resolves once SDK initialization is complete
@@ -221,25 +243,27 @@ StatsigContext is a [react context](https://reactjs.org/docs/context.html) used 
 - `userVersion: number` used interally by the SDK to memoize SDK functions based on the user. Increments when the user object is changed and updateUser is called.
 
 ##### `Statsig`
-You can import the global `Statsig` singleton to call SDK functions outside of a component tree or in callbacks/loops/or wherever else you are unable to use hooks.  For all SDK functions, see the [statsig-js sdk docs](/client/jsClientSDK).
+
+You can import the global `Statsig` singleton to call SDK functions outside of a component tree or in callbacks/loops/or wherever else you are unable to use hooks. For all SDK functions, see the [statsig-js sdk docs](/client/jsClientSDK).
 
 :::info
-If you are calling methods on the global `Statsig` like `initialize` or `updateUser`, the user object tracked by the provider and the user object used outside the component tree can get out of sync.  You are responsible for maintaining the state of the `user` and keeping it consistent with the `StatsigProvider` in these cases.  The `statsig-react` SDK uses the global `Statsig` class to serve gate/config/experiment checks, but these are memoized in the hooks the SDK provides.  Updates to the user which impact flag values that are made outside the context of the react component tree will not be reflected in the component tree unless the updated user is passed in to the `StatsigProvider`.
+If you are calling methods on the global `Statsig` like `initialize` or `updateUser`, the user object tracked by the provider and the user object used outside the component tree can get out of sync. You are responsible for maintaining the state of the `user` and keeping it consistent with the `StatsigProvider` in these cases. The `statsig-react` SDK uses the global `Statsig` class to serve gate/config/experiment checks, but these are memoized in the hooks the SDK provides. Updates to the user which impact flag values that are made outside the context of the react component tree will not be reflected in the component tree unless the updated user is passed in to the `StatsigProvider`.
 :::
 
 #### Server Side Rendering {#ssr}
 
-Starting in `v1.9.1`, the react SDK supports server side rendering via the `StatsigSynchronousProvider`.  This provider takes in similar properties to the `StatsigProvider` with a few exceptions:
+Starting in `v1.9.1`, the react SDK supports server side rendering via the `StatsigSynchronousProvider`. This provider takes in similar properties to the `StatsigProvider` with a few exceptions:
+
 - the addition of an `initializeValues` prop, which takes in the `initializeValues` generated by the `stasig-node` server SDK method `getClientInitializeResponse` introduced in `v4.13.0` of the `statsig-node` sdk ([release notes](https://github.com/statsig-io/node-js-server-sdk/releases/tag/v4.13.0)).
 - consequently, there is no `waitForInitialization` or `initializingComponent` as the SDK is initialized and has all of the values immediately when rendered on the server (or on the first render pass on the client).
 
 Note that if the user object changes, the provider will update the user and values via a call to Statsig servers.
 
-
 #### Custom Initialization
-import Gist from 'react-gist';
 
-If you wish to use the React SDK but customize the initialization logic beyond what the `StatsigProvider` offers, you can write your own provider.  See the above warning on using the global `Statsig` singleton before proceeding.
+import Gist from "react-gist";
+
+If you wish to use the React SDK but customize the initialization logic beyond what the `StatsigProvider` offers, you can write your own provider. See the above warning on using the global `Statsig` singleton before proceeding.
 
 An example provider with custom initialization logic might look something like this:
 
@@ -249,8 +273,7 @@ Feel free to reach out to us in the [Statsig Slack channel](https://www.statsig.
 
 #### Silencing "Call and wait for initialize() to finish first"
 
-Starting in `v1.6.0`, setting the environment variable `REACT_APP_STATSIG_SDK_MODE=silent` will swallow the `Call and wait for initialize() to finish first` exception.  For more information, see the [release notes for v1.6.0](https://github.com/statsig-io/react-sdk/releases/tag/v1.6.0)
-
+Starting in `v1.6.0`, setting the environment variable `REACT_APP_STATSIG_SDK_MODE=silent` will swallow the `Call and wait for initialize() to finish first` exception. For more information, see the [release notes for v1.6.0](https://github.com/statsig-io/react-sdk/releases/tag/v1.6.0)
 
 #### Testing
 
@@ -325,4 +348,5 @@ jest.mock('statsig-react', () => {
 ```
 
 #### Browser Support
-The `statsig-react` SDK relies on the `statsig-js` SDK and inherits its browser compatibility.  For more information, see the [statsig-js docs](https://docs.statsig.com/client/jsClientSDK#what-kind-of-browser-support-can-i-expect-from-the-sdk).
+
+The `statsig-react` SDK relies on the `statsig-js` SDK and inherits its browser compatibility. For more information, see the [statsig-js docs](https://docs.statsig.com/client/jsClientSDK#what-kind-of-browser-support-can-i-expect-from-the-sdk).
