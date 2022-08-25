@@ -351,6 +351,7 @@ module.exports = {
                       "data": [
                         {
                           "id": "a_gate",
+                          "idType": "userID",
                           "isEnabled": true,
                           "description": "helpful summary of what this gate does",
                           "lastModifierName": "CONSOLE API",
@@ -569,6 +570,7 @@ module.exports = {
                       "message": "Gate read successfully.",
                       "data": {
                         "id": "a_gate",
+                        "idType": "userID",
                         "isEnabled": true,
                         "description": "helpful summary of what this gate does",
                         "lastModifierName": "CONSOLE API",
