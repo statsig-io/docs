@@ -14,7 +14,7 @@ Statsig automatically creates these metrics from the **raw events** that you log
 
 Statsig can also reuse your existing **precomputed metrics** by natively integrating and pulling data from your cloud data warehouse. You can also choose to ingest metrics into Statsig using an HTTP endpoint or Azure Blob storage.   
 
-![image](https://user-images.githubusercontent.com/1315028/182465990-46ec0fb9-e51a-44ab-be42-c584b8c285af.png)
+![image](https://user-images.githubusercontent.com/31516123/186747131-f1533fff-9e9a-4dc3-9ccc-186987a61d82.png)
 
 The **Metrics User Guide** consists of [Metrics 101](/metrics/101), [201](/metrics/201), and [301](/metrics/301) level guides that step through basic concepts to real-time analytics in Statsig. 
 
