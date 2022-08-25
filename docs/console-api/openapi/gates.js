@@ -111,7 +111,7 @@ module.exports = {
                     "description": {
                       "type": "string",
                       "description": "A summary of what this gate does"
-                    }
+                    },
                     "idType": {
                       "type": "string",
                       "description": "The ID type to use for evaluating this gate.  userID, stableID, or a predefined customID"
