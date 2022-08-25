@@ -112,6 +112,10 @@ module.exports = {
                       "type": "string",
                       "description": "A summary of what this gate does"
                     }
+                    "idType": {
+                      "type": "string",
+                      "description": "The ID type to use for evaluating this gate.  userID, stableID, or a predefined customID"
+                    }
                   }
                 },
                 "properties": {
@@ -121,7 +125,11 @@ module.exports = {
                   },
                   "description": {
                     "type": "string",
-                    "description": "A description of the new gate"
+                    "description": "A description of the new gate",
+                  },
+                  "idType": {
+                    "type": "string",
+                    "description": "The ID type to use for evaluating this gate.  userID, stableID, or a predefined customID"
                   }
                 }
               },
@@ -129,7 +137,8 @@ module.exports = {
                 "example-1": {
                   "value": {
                     "name": "a gate",
-                    "description": "helpful summary of what this gate does"
+                    "description": "helpful summary of what this gate does",
+                    "idType": "stableID"
                   }
                 }
               }
@@ -191,6 +200,7 @@ module.exports = {
                       "message": "Gate created successfully.",
                       "data": {
                         "id": "a_gate",
+                        "idType": "userID",
                         "isEnabled": true,
                         "description": "helpful summary of what this gate does",
                         "lastModifierName": "CONSOLE API",
@@ -363,6 +373,7 @@ module.exports = {
                         },
                         {
                           "id": "b_gate",
+                          "idType": "userID",
                           "isEnabled": true,
                           "description": "similar to gate_a but it has a b instead",
                           "lastModifierName": "CONSOLE API",
@@ -420,6 +431,7 @@ module.exports = {
                       "message": "Gate read successfully.",
                       "data": {
                         "id": "a_gate",
+                        "idType": "stableID",
                         "isEnabled": true,
                         "description": "helpful summary of what this gate does",
                         "lastModifierName": "CONSOLE API",
