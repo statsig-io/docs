@@ -13,7 +13,7 @@
   - Entirely disables the keepalive flag from being appended to network requests issued by the SDK
 - **api** - default https://api.statsig.com/v1/
   - The default endpoint to use for all SDK network requests. You should not override this (unless you have another API that implements the Statsig API endpoints)
-  - Startign in `v4.17.0+`, if you wish to separately override the logevent endpoint only, see `eventLoggingApi`
+  - Starting in `v4.17.0+`, if you wish to separately override the log_event endpoint only, see `eventLoggingApi`
 - **overrideStableID** - string, default null
   - If you'd like to use your own ID in place of Statsig's stableID, then you can pass the ID as an option here.
   - Once a value is passed, the SDK will store this ID in the local storage for the browser for future use as well.
