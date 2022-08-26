@@ -29,5 +29,5 @@
   - Provide the `initializeResponse` values directly to the javascript SDK to synchronously initialize the client. You can generate these values from the [node js server SDK](https://github.com/statsig-io/node-js-server-sdk/releases/tag/v4.13.0) starting in `statsig-node@4.13.0` NOTE: for the `statsig-react` SDK, this is done via a separate provider, rather than via this option.
 - **prefetchUsers?** `StatsigUser[]` | null, default null (supported in `v4.20.0+`)
   - An array of additional StatsigUser objects to be fetched during the `statsig.initialize` call. A max of 5 users is enforced, if more than 5 users are provided, the 5 users at the start of the array will be used.
-- **disableLocalStorage?** `boolean`l, default `false` (supported in `v4.21.0+`)
+- **disableLocalStorage?** `boolean`, default `false` (supported in `v4.21.0+`)
   - Completely disable the use of local storage for the lifecycle of this `initialize` -> `shutdown`.  The only access to local storage will be to clear out existing keys when statsig is `shutdown`
