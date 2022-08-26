@@ -1,5 +1,17 @@
 You can specify optional parameters with `options` when initializing. Here are the current options and we are always adding more to the list:
 
-- **environment**: Hash, default nil
+- **environment**: Hash, default `nil`
   - a Hash you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
   - The most common usage is to set the "tier" (string), and have feature gates pass/fail for specific environments. The accepted values are "production", "staging" and "development", e.g. `StatsigOptions.New({ 'tier' => 'staging' })`.
+- **api_url_base** string, default `"https://statsigapi.net/v1"`
+  - The base url to use for network requests from the SDK
+- **rulesets_sync_interval**: Number, default `10`
+  - The interval to poll for changes to your gate and config definition changes
+- **idlists_sync_interval**: Number, default `60`
+  - The interval to poll for changes to id lists
+- **logging_interval_seconds**: Number, default `60`
+  - The default interval to flush logs to Statsig servers
+- **logging_max_buffer_size**: Number, default `1000`, can be set lower but anything over 1000 will be dropped on the server
+  - The maximum number of events to batch before flushing logs to the server
+- **local_mode**: Boolean, default `false`
+  - An option to restrict the sdk to not issue any network requests and only respond with default values (or local overrides)
