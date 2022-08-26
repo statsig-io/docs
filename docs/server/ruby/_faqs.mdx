@@ -1,0 +1,11 @@
+
+## How can I mock or override the SDK for testing?
+
+Starting in `v1.12.0+`, the ruby SDK supports `localMode` and `overrides`
+
+- `localMode` is a boolean parameter in `StatsigOptions` when initializing the SDK. It restricts all network traffic,
+so the SDK operates offline and only returns default or override values.
+- `Statsig.override_gate(<gate_name>, <gate_value>);` will override the given gate to the provided boolean value. Useful for forcing a particular
+code branch in tests
+- `Statsig.override_config(<config_name>, <config_value_hash>);` will override the given config (or experiment) to the provided hash value.  Useful for forcing
+a particular experiment variant in tests
