@@ -28,17 +28,17 @@ On the StatsigUser object, there is a field called privateAttributes, which is a
 
 For example, if you have feature gates that should only pass for users with emails ending in "@statsig.com", but do not want to log your users' email addresses to Statsig, you can simply add the key-value pair { email: "my_user@statsig.com" } to privateAttributes on the user and that's it!
 
-### Why is StatsigUser with a UserID required for server SDKs?
+### Why is StatsigUser with a UserID (or any customID) required for server SDKs?
 
-In Server SDKs, a StatsigUser with a userID is required for checkGate, getConfig, and getExperiment. We always recommend using the actual user ID if it's available: users will get a stable experience, and subsequent events will be attributed to the correct users so you can accurately measure downstream metrics.
+In Server SDKs, a StatsigUser with a userID (or any customID) is required for checkGate, getConfig, and getExperiment. We always recommend using the actual user ID if it's available: users will get a stable experience, and subsequent events will be attributed to the correct users so you can accurately measure downstream metrics.
 
-Still aren't sure whether you need to provide the userID? Here are our suggestions for different use cases:
+Still aren't sure whether you need to provide an ID? Here are our suggestions for different use cases:
 
-If you only plan to use feature gates to turn on/off a feature for all of your users, or for all users passing certain conditions (e.g. "country is US"), you can pass any non-empty identifier, hard coded string, or a random ID as the userID if you do not have the actual user ID. Note that you cannot target the empty string in the statsig console.
+If you only plan to use feature gates to turn on/off a feature for all of your users, or for all users passing certain conditions (e.g. "country is US"), you can pass any non-empty identifier, hard coded string, or a random ID as the userID if you do not have the actual user ID or any kind of custom IDs. Note that you cannot target the empty string in the statsig console.
 
 If you want to rollout a feature partially first, make sure it does not cause significant regressions, then roll out to all users, you should pass the persistent user IDs in your checkGate/getConfig/getExperiment calls, as well as any logEvent calls you make. This way, we are able to attribute the events you log to the correct users who saw or didn't see your new feature, and calculate metrics correctly to help you understand whether there was any regression.
 
-If you want to run an A/B experiment to decide whether to ship a new feature, you should also pass the persistent user IDs, for the same reason mentioned in 2) above.
+If you want to run an A/B experiment to decide whether to ship a new feature, you should also pass the persistent user IDs (or custom IDs for experiments and feature gates based on other ID types), for the same reason mentioned in 2) above.
 
 If you want to pass a userID for the above reasons, but don't have a logged in user (e.g. you are optimizing the login flow), set a stable identifier as a cookie or in local storage and use that with each call to Statsig.
 
