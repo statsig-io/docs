@@ -305,10 +305,21 @@ module.exports = {
         {
           "Data Imports": [
             "integrations/data-imports/overview",
-            "integrations/data-imports/azure_upload",
-            "integrations/data-imports/bigquery",
-            "integrations/data-imports/redshift",
-            "integrations/data-imports/snowflake",
+            { "Connection Set Up": [
+                "integrations/data-imports/bigquery",
+                "integrations/data-imports/redshift",
+                "integrations/data-imports/snowflake",
+              ] 
+            },
+            "integrations/data-imports/data_mapping",
+            { "Others": [
+                "integrations/data-imports/overview-deprecated",
+                "integrations/data-imports/azure_upload",
+                "integrations/data-imports/bigquery-deprecated",
+                "integrations/data-imports/redshift-deprecated",
+                "integrations/data-imports/snowflake-deprecated",
+              ] 
+            },
           ],
         },
         {

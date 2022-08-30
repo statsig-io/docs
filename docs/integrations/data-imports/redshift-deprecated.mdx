@@ -1,0 +1,168 @@
+---
+title: Redshift (Deprecated)
+---
+
+## Overview
+
+There are 2 ways to integrate with Redshift: using a data connector, or ingesting events and metrics to Statsig through S3.
+
+## Using a Data Connector
+
+To **ingest** events from Redshift, you can use our [Census integration](/integrations/data-connectors/census).
+
+To **export** events to Redshift, you can use our [Fivetran integration](/integrations/data-connectors/fivetran).
+
+## Direct Ingestion
+
+S3 imports are currently a custom setup flow. You'll need to reach out to Statsig through Slack or through your support PoC in order to set up this integration.
+The documentation below describes the steps to set up this integration. There are 3 main steps:
+
+1. Create a pipeline to write your metric, event, and (optionally) signal data to an S3 bucket in parquet format
+
+2. Create an IAM user with read and list access on that bucket and send that user's Key/Secret to Statsig. We will securely store these in a keystore service
+
+3. Schedule ingestion through a `signals` dataset or through the `mark_data_ready` API
+
+### Set up a data pipeline to S3
+
+#### Filesystem Format
+
+We will expect data in your S3 bucket to be saved in parquet format.
+
+To allow for daily uploads, please set up your bucket with the following folders:
+
+- `events/` for events data
+- `metrics/` for metrics data
+- `signals/` for signal flags when you've finished uploading data for a day. You can omit this folder and instead use the [`mark_data_ready` API](/metrics/ingest) instead, but you must use one or the other
+
+We recommend writing folders by date partitions for ease of debugging, i.e. storing day's data in folders with ISO-formatted names (`YYYY-MM-DD`).
+
+#### Data Format
+
+Please make sure your data conforms to the following schemas.
+
+<b>Events</b>
+
+| Column         | Description                                                                                                       | Rules                                                                                                   |
+| -------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| timestamp      | UNIX timestamp of the event                                                                                       | UTC timestamp                                                                                           |
+| event_name     | The name of the event                                                                                             | String under 128 characters, using `_` for spaces                                                       |
+| event_value    | A string representing the value of a current event. Can represent a 'dimension' or a 'value'                      | Read as string format; numeric values will be converted into value                                      |
+| event_metadata | A dictionary<string, string> in the form of a JSON string, containing named metadata for the event                | String format                                                        |
+| user           | A JSON object representing the user this event was logged for; see below                                          | Escaped JSON string including the keys 'custom' and 'customIDs'. A userID or customID must be provided. |
+| timeuuid       | A unique UUID or timeUUID used for deduping. If omitted, will be generated but will not be effective for deduping | UUID format                                                                                             |
+
+Please refer to docs for the [Statsig User Object](https://docs.statsig.com/client/concepts/user#user-attributes) for available fields. An example would look like:
+
+```
+{
+  userID: "12345",
+  customIDs: {
+    stableID: "<device_id_here>",
+    ...
+  }
+  email: "12345@gmail.com",
+  userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.40 Safari/537.36",
+  ip: "192.168.1.101",
+  country: "US",
+  locale: "en_US",
+  appVersion: "1.0.1",
+  systemName: "Android",
+  systemVersion: "15.4",
+  browserName: "Chrome",
+  browserVersion: "45.0",
+  custom: {
+    new_user: "false",
+    age: "22"
+    ...
+  },
+}
+```
+
+<b>Metrics</b>
+
+Make sure to include all of metric_value, numerator, and denominator, writing `cast(null as double)` for numerator and denominator if you are omitting them (or conversely for metric_value if sending numerator/denominator).
+
+| Column       | Description                                                                                                                   | Rules                                                                                                                                                                                                                                        |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| unit_id      | The unique user identifier this metric is for. This might not necessarily be a user_id - it could be a custom_id of some kind | String format. Make sure this is in the same format as your logged unit_ids                                                                                                                                                                  |
+| id_type      | The id_type the unit_id represents.                                                                                           | String format. Must be a valid id_type. The default Statsig types are user_id/stable_id, but you may have generated custom id_types. Make sure this matches (case sensitive) a customID in your project, or you won't get experiment results |
+| date         | Date of the daily metric                                                                                                      | Read as string format; can be written as ISO date. Statsig's dates are calculated in PST - we'll load custom metrics to whatever date you use here                                                                                           |
+| metric_name  | The name of the metric                                                                                                        | String format. Not null. Length < 128 characters                                                                                                                                                                                             |
+| metric_value | A numeric value for the metric                                                                                                | Double format. Metric value, or both of numerator/denominator need to be provided for Statsig to process the metric. See details below                                                                                                       |
+| numerator    | Numerator for metric calculation                                                                                              | Double format. Required for ratio metrics. If present along with a denominator in any record, the metric will be treated as ratio and only calculated for users with non-null denominators                                                   |
+| denominator  | Denominator for metric calculation                                                                                            | Double format. See above                                                                                                                                                                                                                     |
+
+### Set up and Provide Credentials
+
+- Navigate to your IAM console on AWS
+- Go to Users->Add User
+- Select the `Access key - Programmatic access` credential type
+- Attach an appropriate policy which gives Read and List access to the appropriate bucket. Make sure this is scoped appropriately so the user only has access to the data intended!
+  Example policy:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": "<BUCKET_ARN>"
+        }
+    ]
+}
+```
+
+Next, modify your bucket access policy (under `permissions` on your S3 bucket's page) to allows this user to access objects.
+Example policy:
+
+```
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "statement1",
+			"Effect": "Allow",
+			"Principal": {
+				"AWS": "<IAM_ARN>"
+			},
+			"Action": "s3:ListBucket",
+			"Resource": "<BUCKET_ARN>"
+		},
+		{
+			"Sid": "statement2",
+			"Effect": "Allow",
+			"Principal": {
+				"AWS": "<IAM_ARN>"
+			},
+			"Action": "s3:GetObject",
+			"Resource": "<BUCKET_ARN>/*"
+		}
+	]
+}
+```
+
+You can confirm your credentials are sufficient by adding any data to your metrics folder and running the following code in PySpark with the IAM user credentials:
+
+```
+sc._jsc.hadoopConfiguration().set("fs.s3n.awsAccessKeyId", '<IAM_USER_ACCESS_KEY>')
+sc._jsc.hadoopConfiguration().set("fs.s3n.awsSecretAccessKey", '<IAM_USER_SECRET>')
+spark.read.parquet("s3://<BUCKET_NAME>/metrics/*",inferSchema=True).show()
+```
+
+### Scheduling
+
+Because you may be streaming events to your tables or have multiple ETLs pointing to your metrics table, Statsig relies on you signalling that your metric/events for a given day are done.
+
+To do this, write a dataset with the single column `finished_date`, which contains all dates of data which have been written to Statsig. For example, once you have written data for `2022-06-22` you would insert a record with `finished_date` of `2022-06-22` to trigger ingestion of data from up to and including `2022-06-22`.
+
+Unlike some other integrations like Snowflake, for S3 Statsig will skip dates; if your latest finished date is `2022-06-22` and you insert `2022-07-01`, we will ingest all data as of `2022-07-01` and infer that data for dates between (e.g. `2022-06-25`) is loaded.
+
+Alternatively, you can use the `mark_data_ready` API and send a timestamp for which the data previous to that timestamp has finished loading into S3.
+
+Note that, for events, Statsig processes days according to PST. When you mark data ready for '2022-06-20', statsig will process events from `2022-06-20T00:00` PST to `2022-06-20T23:59....` PST. Keep this in mind when scheduling your signals!

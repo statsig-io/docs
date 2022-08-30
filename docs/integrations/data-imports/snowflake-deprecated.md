@@ -1,5 +1,5 @@
 ---
-title: Snowflake
+title: Snowflake (Deprecated)
 ---
 
 ## Overview

@@ -1,5 +1,6 @@
 ---
-title: Imports Overview
+title: Imports Overview (Deprecated)
+slug: /data-imports/overview-deprecated
 ---
 
 ## Overview
