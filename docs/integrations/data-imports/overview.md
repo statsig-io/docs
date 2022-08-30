@@ -1,6 +1,5 @@
 ---
 title: Imports Overview
-slug: /data-imports/overview
 ---
 
 ## Overview
