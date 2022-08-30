@@ -129,6 +129,9 @@ Response:
 `{"name":"YOUR-LAYER-NAME","value":{"color":"blue","shape":"circle"},"ruleID":"2OZdhuDfq3w1UIHovUFRBM", "allocatedExperimentName": "a_experiment"}`
 
 ##### Export Report {#export-report}
+:::info
+This is available for Enterprise contracts only and needs to be enabled once for you. Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you want this enabled.
+:::
 
 You can [export your Pulse data](https://docs.statsig.com/pulse/export) via the console or using the following API. In addition to the [`first_exposures`](https://docs.statsig.com/pulse#first-exposures-file-description) report type as shown below, you can also request a [`pulse_daily`](https://docs.statsig.com/pulse#pulse-summary-and-daily-file-description) or [`unit_metrics_daily`](https://docs.statsig.com/pulse#unit-metrics-file-description) report types.
 
