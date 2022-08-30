@@ -13,7 +13,7 @@ Statsig records two types of raw events from your application:
 
 1. **Exposure events** track which users are assigned to control and test groups. This data allows Statsig to generate test results so you can evaluate the impact of new features and experiments. Exposure events also allow Statsig to assess the health of an experiment so you can always make key decisions based on trustworthy experiments. To generate experiment results, Statsig will require you to provide exposure events at a minimum. 
 
-2. **Custom events** track user actions and as any events that get triggered in the course of using your application, including events that capture performance (e.g. latency) or capture data for analytics (e.g. session start). These events allow Statsig to assess overall user engagement in your applcation (e.g. daily active users, weekly stickiness) as well as changes in user behavior as you roll out new features and experiments.
+2. **Custom events** track user actions and as any events that get triggered in the course of using your application, including events that capture performance (e.g. latency) or capture data for analytics (e.g. session start). These events allow Statsig to assess overall user engagement in your application (e.g. daily active users, weekly stickiness) as well as changes in user behavior as you roll out new features and experiments.
 
 ## Unit Identifiers
 You must include at least one unit identifier when you record any raw events with Statsig. This unit identifier is essential for two reasons:
