@@ -23,7 +23,7 @@ Statsig computes experiment results, also known as Statsig's **Pulse** results, 
 | user: L7, L14, L28 |  Not shown   | Average L-ness value per user per day  | All users |
 
 ## Event Count and Event DAU in Pulse
-As independent metrics,
+From [Metrics 101](metrics/metrics-from-events),
  - [**event_count**](/metrics/metrics-from-events#event-count-metric) measures the volume of the activity based on count of events triggered  
  - [**event_dau**](/metrics/metrics-from-events#event-dau-metric) measures unique daily users who triggered a given event
 
@@ -61,7 +61,7 @@ To reduce the impact of outliers, Statsig caps *event_count* and *sum* metric ty
 
 Yes, it is possible for the ratio to rise while both the numerator and denominator metrics decline. For example, this happens when the denominator is falls more than the numerator. As a best practice, Statsig recommends tracking the numerator and denominator as independent metrics when monitoring ratio metric. Ratio metrics are often subject to statistical noise and can be tricky to use for obtaining a statistically significant result.   
 
-**2. For ratio metrics using event_dau, how does Statsig determine _participating users_?**
+**2. For ratio metrics, how does Statsig determine _participating users_?**
 
-Ratio metrics that use event_dau include user-days only when the denominator is non-zero i.e. the user must have triggered the denominator event on a given day to be included in the daily ratio.   
+Ratio metrics are computed only for users that have a non-zero value in the denominator, i.e. the user must have triggered the denominator event on a given day to be included in the daily ratio.   Users that don't trigger the denominator event during an experiment are not included in the test vs. control comparison of a ratio metric. 
 
