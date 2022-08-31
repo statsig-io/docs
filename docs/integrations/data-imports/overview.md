@@ -2,6 +2,8 @@
 title: Imports Overview
 ---
 
+![Slide 4_3 - 2](https://user-images.githubusercontent.com/108023879/187787586-67608566-4041-4cd8-8712-409346603a26.png)
+
 ## Overview
 
 Statsig currently supports data ingestion from Data Warehouses. In Statsig console, we currently support ingestion from:
