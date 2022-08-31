@@ -8,7 +8,11 @@ Statsig requires certain data schema in order for proper processing. We support 
 
 1. Custom Events
 2. Precomputed Metrics
-3. Exposure Events
+3. Exposure Events (Coming Soon)
+
+During setup, we will ask you to map columns in your data output to fields Statsig expects and run a small sample query to make sure that there aren't any basic issues with data types, the mapping, or the base query itself.
+
+Please note that we will cast fields into the appropriate type. For example, Statsig accepts String IDs, but it's okay to leave an ID field as an integer.
 
 ---
 
@@ -18,80 +22,51 @@ Events that are emitted by your application to measure the ongoing impact of you
 
 #### Required
 
-| Column         | Description                            | Rules                                                                                                                    |
-| -------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| time_stamp     | The unix time your event was logged at | Not null                                                                                      |
-| event_name     | The name of the event                  | Not null. Length < 128 characters                                                                                        |
-| unit_id        | Unique unit identifier                 | e.g., User ID, Stable ID, etc. Can have multiple. |
+| Column     | Description                            | Format/Rules                                                                     |
+| ---------- | -------------------------------------- | -------------------------------------------------------------------------------- |
+| time_stamp | The unix time your event was logged at | BIGINT; please cast timestamps into timezoneless unix time                       |
+| event_name | The name of the event                  | STRING/VARCHAR. Not null. Length < 128 characters                                |
+| unit_id    | Unique unit identifier                 | STRING/VARCHAR User ID, Stable ID, etc. The same event row can have multiple IDs |
 
 #### Optional
 
-| Column         | Description                            | Rules                                                                                                                    |
-| -------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| timeuuid       | A unique timeuuid for the event        | This should be a timeuuid, but using a unique id will suffice. If not provided, the table defaults to generating a UUID. |
-| user           | A user json object.                    | See user object below                                                                                                                |
-| event_value    | The value of the event                 | Length < 128 characters                                                                                                  |
-| event_metadata | Metadata about the event               | Not null. Length < 16384 characters. Json-formatted - leave empty if none                                                |
-| event_version  | The version of this event              |                             
+| Column         | Description                      | Rules                                                                                                            |
+| -------------- | -------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| event_value    | The value of the event           | STRING/VARCHAR Length < 128 characters. Statsig will detect numeric values                                       |
+| event_metadata | Metadata columns about the event | (MANY) STRING:STRING. Statsig will generate a metadata json field from however many metadata columns you provide |
+| metadata_json  | Metadata json about the event    | JSON STRING. Statsig will unpack this json 1 level deep. Nested values will be stored as strings                 |
 
-The user object is a stringified JSON representation. An example might look like:
-
-```json
-{
-  "os": "Mac OS X",
-  "os_version": "10.15.7",
-  "browser_name": "Electron",
-  "browser_version": "11.5.0",
-  "ip": "1.1.1.1",
-  "country": "KR",
-  "locale": "en-US",
-  "userID": "aaaaa-aaaaa-aaaaa-aaaaa",
-  "custom": {
-    "locale": "en-US",
-    "clientVersion": "23.10.23.10",
-    "desktopVersion": "11.5.0"
-  },
-  "customIDs": {
-    "deviceId": "aaaaa-aaaaa-aaaaa-aaaaa",
-    "stableID": "aaaaa-aaaaa-aaaaa-aaaaa"
-  }
-}
-```
-
-<br/>
+<br />
 
 ---
 
-<br/>
+<br />
 
 ### Precomputed Metrics
 
-Precomputed metrics to augment your feature and experiment analysis in Statsig.
+Precomputed metrics are a powerful way to leverage statsig for experiment results. Use these to send complex metrics and metrics that require delays due to attribution windows or long baking periods.
+
+Precomputed metrics in statsig are expected to be calculated at a user-day granularity.
 
 #### Required
 
-| Column       | Description                                                                                                                   | Rules                                                                                                                    |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| unit_id      | The unique user identifier this metric is for. This might not necessarily be a user_id - it could be a custom_id of some kind |                                                                                                                          |
-| id_type      | The id_type the unit_id represents.                                                                                           | Must be a valid id_type. The default Statsig types are user_id/stable_id, but you may have generated custom id_types     |
-| date         | Date of the daily metric                                                                                                      |                                                                                                                          |
-| metric_name  | The name of the metric                                                                                                        | Not null. Length < 128 characters                                                                                        |
-| metric_value | A numeric value for the metric                                                                                                | Metric value <br/><b>OR</b><br/> Both of numerator/denominator need to be provided for Statsig to process the metric.             |
-| numerator    | Numerator for metric calculation                                                                                              | If present along with a denominator in any record, the metric will be treated as ratio and only calculated for users with non-null denominators. |
-| denominator  | Denominator for metric calculation                                                                                            | If present along with a numerator in any record, the metric will be treated as ratio and only calculated for users with non-null denominators.                                                                                           |
+| Column       | Description                                                                                                                   | Format/Rules                                                                                                                                                     |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| unit_id      | The unique user identifier this metric is for. This might not necessarily be a user_id - it could be a custom_id of some kind | STRING                                                                                                                                                           |
+| id_type      | The id_type the unit_id represents.                                                                                           | STRING. A valid ID type from your project                                                                                                                        |
+| date         | Date of the daily metric                                                                                                      | DATE or ISOFORMATTED STRING. The date of the metric value for the unit_id provided                                                                               |
+| metric_name  | The name of the metric                                                                                                        | STRING (Not null). Length < 128 characters                                                                                                                       |
+| metric_value | A numeric value for the metric                                                                                                | DOUBLE/NUMERIC. Metric value <br/><b>OR</b><br/> Both of numerator/denominator need to be provided for Statsig to process the metric.                            |
+| numerator    | Numerator for metric calculation                                                                                              | DOUBLE/NUMERIC. If present along with a denominator in any record, the metric will be treated as ratio and only calculated for users with non-null denominators. |
+| denominator  | Denominator for metric calculation                                                                                            | DOUBLE/NUMERIC. If present along with a numerator in any record, the metric will be treated as ratio and only calculated for users with non-null denominators.   |
 
 #### Optional
 
-| Column       | Description                                                                                                                   | Rules                                                                                                                    |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| timeuuid     | A unique timeuuid for the event                                                                                               | This should be a timeuuid, but using a unique id will suffice. If not provided, the table defaults to generating a UUID. |
-
-<br/>
+<br />
 
 ---
 
-<br/>
-
+<br />
 
 ### Exposure Events
 

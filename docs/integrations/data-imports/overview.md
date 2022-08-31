@@ -4,11 +4,12 @@ title: Imports Overview
 
 ## Overview
 
-Statsig currently supports data ingestion from Data Warehouses. In Statsig console, we currently support ingestion from:
+Statsig can directly ingest data from your Data Warehouse. This lets you send raw events and pre-computed metrics for tracking and experimental measurement.
+We currently support ingestion from the following providers:
 
-1. BigQuery
-2. Redshift
-3. Snowflake
+1. [BigQuery](./bigquery.mdx)
+2. [Redshift](./redshift.mdx)
+3. [Snowflake](./snowflake.mdx)
 
 ### How to Begin Data Ingestion
 
@@ -19,4 +20,4 @@ To begin ingestion from a Data Warehouse:
 3. To go the "Ingestion" tab
 4. Click on a Data Warehouse you want to ingest from
 
-You will be required to set up connections with necessary credentials, and map your data to appropriate schema that Statsig expects to see for each datasets.
+You will be required to set up connections with necessary credentials, and map your data fields to the fields Statsig expects to ingest. Please refer to the warehouse-level setup documentation for more information on setup.
