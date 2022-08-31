@@ -11,6 +11,12 @@ We currently support ingestion from the following providers:
 2. [Redshift](./redshift.mdx)
 3. [Snowflake](./snowflake.mdx)
 
+### How it works
+
+Ingestion is set up on a daily schedule. Statsig will run a query you provide on your data warehouse, download the result set, and materialize the results into your console the same as those that came in through the SDK.
+
+If data lands late or is updated, Statsig will detect this change (currently via listening for row count changes) on a rolling window and reload the data for that day.
+
 ### How to Begin Data Ingestion
 
 To begin ingestion from a Data Warehouse:
