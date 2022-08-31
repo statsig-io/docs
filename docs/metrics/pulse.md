@@ -25,7 +25,7 @@ Statsig computes experiment results, also known as Statsig's **Pulse** results, 
 ## Event Count and Event DAU in Pulse
 As independent metrics,
  - [**event_count**](/metrics/metrics-from-events#event-count-metric) measures the volume of the activity based on count of events triggered  
- - [**event_dau**](/metrics-from-events#event-dau-metric) measures unique daily users who triggered a given event
+ - [**event_dau**](/metrics/metrics-from-events#event-dau-metric) measures unique daily users who triggered a given event
 
 For example, the table below shows the **event_count** and **event_dau** metrics for two event types,_Page Views_ and _Add to Cart_, for three users over three days. 
 ![image](https://user-images.githubusercontent.com/1315028/187719553-c7e5c186-5dfe-4521-8bfb-1bb4b8cdb38d.png)
