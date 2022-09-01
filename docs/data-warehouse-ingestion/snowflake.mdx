@@ -1,0 +1,40 @@
+---
+title: Snowflake
+---
+
+## Overview
+
+To set up connection with Snowflake, Statsig needs the following
+
+- Account Name
+- Database Name
+- Schema Name
+- Admin User Name
+- Admin User Password
+
+<b>
+  Your credentials will not be saved or stored; we will only use them to create
+  a limited-scope user for ingesting data.
+</b>
+
+### Account Name
+
+For the Account Name field, please enter in the format of `<id>.<region>.<provider>`. So, your information may look something like this:
+
+`aa00000.us-central1.gcp`
+
+To get this information navigate to bottom left in your Snowflake console, as shown in the picture below and copy the link URL:
+
+![Frame 6](https://user-images.githubusercontent.com/108023879/187517221-4bb3dce3-8b8f-4f30-b4d4-fd12e5249722.png)
+
+The copied URL will look something like this:
+
+`https://xy12345.us-central1.gcp.snowflakecomputing.com`
+
+You can extract information from here to get the required fields for Account Name, which for this example would be `xy12345.us-central1.gcp`.
+
+### Database and Schema Name
+
+For each data type, provide the database/schema of the table(s) you will be ingesting from.
+
+![Frame 7](https://user-images.githubusercontent.com/108023879/187517225-017b4626-eaea-443b-a042-59fd474ae657.png)

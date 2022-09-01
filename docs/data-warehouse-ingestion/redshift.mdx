@@ -1,0 +1,28 @@
+---
+title: Redshift
+---
+
+## Overview
+
+To set up connection with Redshift, Statsig needs the following
+
+- Cluster Endpoint
+- Admin User Name
+- Admin User Password
+
+You can find the this information in your aws console within your specific cluster, as shown in the image below. (Open image in new tab for a bigger image)
+
+![Frame 1](https://user-images.githubusercontent.com/108023879/187515405-17fa7d90-44e1-422f-87a7-cfde090637ed.png)
+
+<b>Admin user name and password will only be used for Statsig to create an admin role with restricted access to query from your data warehouse.</b>
+
+## SSH Tunneling
+
+For Redshift connections, we also allow users to create an SSH tunnel into their Redshift cluster for a more secure and private access to the database.
+To enable access, Statsig requires:
+
+- SSH Host
+- SSH Port
+- SSH User
+
+Statsig will use this information to generate an SSH key. Please add this generated key to your `~/.ssh/authorized_keys` file on your SSH proxy machine to enable SSH tunneling.

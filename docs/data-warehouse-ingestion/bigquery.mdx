@@ -1,0 +1,40 @@
+---
+title: BigQuery
+---
+
+## Overview
+
+To set up connection with BigQuery, we need the following:
+
+- Granting Permissions to a Statsig-owned Service Account
+- Your BigQuery Project ID
+
+## Grant Permissions to Statsig's Service Account
+
+You need to grant some permissions for Statsig from your Google Cloud console in order for us to access your BigQuery data.
+
+1. In your BigQuery's [IAM & Admin settings](https://console.cloud.google.com/iam-admin/), add the Statsig service account you copied in the Statsig Console as a new principal for your project, and give it the following roles:
+   - `BigQuery Job User`
+   - `BigQuery Read Session User`
+
+![image](https://user-images.githubusercontent.com/77478330/175113594-7b121b7e-60fd-4c03-b82e-ffe397c9efa7.png)
+
+<br />
+
+2. Navigate to your [BigQuery SQL Workspace](https://console.cloud.google.com/bigquery), choose the dataset, click on "+ Sharing" -> "Permissions" -> "Add Principal" to give the same Statsig service account "BigQuery Data Viewer" role on the dataset.
+
+   ![image](https://user-images.githubusercontent.com/77478330/175113611-90e618ad-f6e8-4005-933e-2a5660a14466.png)
+
+Now the service account should have the required permissions to export data from this dataset.
+
+## BigQuery Project ID
+
+Find your BigQuery Project ID below
+
+1. Click on your Project Dropdown inside your Cloud Console.
+
+![Frame 4](https://user-images.githubusercontent.com/108023879/187518062-7027f682-d1fd-445e-9947-897e44ea929e.png)
+
+2. Copy and paste relevant Project ID from the modal pop-up.
+
+![Frame 5](https://user-images.githubusercontent.com/108023879/187517901-9e7fd237-8325-4254-a1bd-c75f0ea08497.png)

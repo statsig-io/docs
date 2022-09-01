@@ -1,0 +1,71 @@
+---
+title: Data Mapping
+---
+
+## Overview
+
+Statsig requires certain data schema in order for proper processing. We support 3 different types of datasets to be ingested into our platform:
+
+1. Custom Events
+2. Precomputed Metrics
+3. Exposure Events (Coming Soon)
+
+During setup, we will ask you to map columns in your data output to fields Statsig expects and run a small sample query to make sure that there aren't any basic issues with data types, the mapping, or the base query itself.
+
+Please note that we will cast fields into the appropriate type. For example, Statsig accepts String IDs, but it's okay to leave an ID field as an integer.
+
+---
+
+### Custom Events
+
+Events that are emitted by your application to measure the ongoing impact of your features and experiments.
+
+#### Required
+
+| Column     | Description                            | Format/Rules                                                                     |
+| ---------- | -------------------------------------- | -------------------------------------------------------------------------------- |
+| time_stamp | The unix time your event was logged at | BIGINT. please cast timestamps into timezoneless unix time                       |
+| event_name | The name of the event                  | STRING/VARCHAR. Not null. Length < 128 characters                                |
+| unit_id    | Unique unit identifier                 | STRING/VARCHAR. User ID, Stable ID, etc. The same event row can have multiple IDs |
+
+#### Optional
+
+| Column         | Description                      | Rules                                                                                                            |
+| -------------- | -------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| event_value    | The value of the event           | STRING/VARCHAR. Length < 128 characters. Statsig will detect numeric values                                       |
+| event_metadata | Metadata columns about the event | (MANY) STRING:STRING. Statsig will generate a metadata json field from however many metadata columns you provide |
+| metadata_json  | Metadata json about the event    | JSON STRING. Statsig will unpack this json 1 level deep. Nested values will be stored as strings                 |
+
+<br />
+
+---
+
+<br />
+
+### Precomputed Metrics
+
+Precomputed metrics are a powerful way to leverage statsig for experiment results. Use these to send complex metrics and metrics that require delays due to attribution windows or long baking periods.
+
+Precomputed metrics in statsig are expected to be calculated at a user-day granularity.
+
+#### Required
+
+| Column       | Description                                                                                                                   | Format/Rules                                                                                                                                                     |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| unit_id      | The unique user identifier this metric is for. This might not necessarily be a user_id - it could be a custom_id of some kind | STRING                                                                                                                                                           |
+| id_type      | The id_type the unit_id represents.                                                                                           | STRING. A valid ID type from your project                                                                                                                        |
+| date         | Date of the daily metric                                                                                                      | DATE or ISOFORMATTED STRING. The date of the metric value for the unit_id provided                                                                               |
+| metric_name  | The name of the metric                                                                                                        | STRING (Not null). Length < 128 characters                                                                                                                       |
+| metric_value | A numeric value for the metric                                                                                                | DOUBLE/NUMERIC. Metric value <br/><b>OR</b><br/> Both of numerator/denominator need to be provided for Statsig to process the metric.                            |
+| numerator    | Numerator for metric calculation                                                                                              | DOUBLE/NUMERIC. If present along with a denominator in any record, the metric will be treated as ratio and only calculated for users with non-null denominators. |
+| denominator  | Denominator for metric calculation                                                                                            | DOUBLE/NUMERIC. If present along with a numerator in any record, the metric will be treated as ratio and only calculated for users with non-null denominators.   |
+
+<br />
+
+---
+
+<br />
+
+### Exposure Events
+
+Coming Soon
