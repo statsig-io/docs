@@ -284,6 +284,24 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Data Warehouse Ingestion",
+      link: {
+        type: "doc",
+        id: "data-warehouse-ingestion/introduction"
+      },
+      items: [
+        {
+          "Connection Set Up": [
+            "data-warehouse-ingestion/bigquery",
+            "data-warehouse-ingestion/redshift",
+            "data-warehouse-ingestion/snowflake",
+          ], 
+        },
+        "data-warehouse-ingestion/data_mapping",
+      ]
+    },
+    {
+      type: "category",
       label: "Integrations",
       link: {
         type: "doc",
@@ -303,24 +321,12 @@ module.exports = {
           ],
         },
         {
-          "Data Imports": [
-            "integrations/data-imports/overview",
-            { "Connection Set Up": [
-                "integrations/data-imports/bigquery",
-                "integrations/data-imports/redshift",
-                "integrations/data-imports/snowflake",
-              ] 
-            },
-            "integrations/data-imports/data_mapping",
-            { "Others": [
-                "integrations/data-imports/overview-deprecated",
-                "integrations/data-imports/azure_upload",
-                "integrations/data-imports/bigquery-deprecated",
-                "integrations/data-imports/redshift-deprecated",
-                "integrations/data-imports/snowflake-deprecated",
-              ] 
-            },
-          ],
+          "Data Imports (Deprecated)": [
+            "integrations/data-imports/overview-deprecated",
+            "integrations/data-imports/bigquery-deprecated",
+            "integrations/data-imports/redshift-deprecated",
+            "integrations/data-imports/snowflake-deprecated",
+          ]
         },
         {
           "Data Exports": [
