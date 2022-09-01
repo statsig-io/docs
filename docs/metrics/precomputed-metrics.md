@@ -12,7 +12,7 @@ You can import precomputed metrics in three ways.
 
 ### Importing Precomputing Metrics from your Data Warehouse
 
-Statsig integrates natively with cloud data warehouses such as [Snowflake](/integrations/data-imports/snowflake), [BigQuery](/integrations/data-imports/bigquery), [Redshift](/integrations/data-imports/redshift) to ingest any of your existing metrics for computing experiment results. See [Data Imports](/integrations/data-imports/overview) to get started.
+Statsig integrates natively with cloud data warehouses such as [Snowflake](/data-warehouse-ingestion/snowflake), [BigQuery](/data-warehouse-ingestion/bigquery), [Redshift](/data-warehouse-ingestion/redshift) to ingest any of your existing metrics for computing experiment results. See [Data Warehouse Ingestion](/data-warehouse-ingestion/introduction) to get started.
 
 ### Logging Precomputed Metrics using HTTP API
 
