@@ -1,5 +1,6 @@
 ---
 title: Snowflake (Deprecated)
+slug: snowflake
 ---
 
 ## Overview

@@ -1,5 +1,6 @@
 ---
 title: Imports Overview (Deprecated)
+slug: overview
 ---
 
 ## Overview
