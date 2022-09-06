@@ -1,5 +1,7 @@
 `statsig.initialize()` takes an optional parameter `options` in addition to the secret key that you can provide to customize the Statsig client. Here are the current options and we are always adding more to the list:
 
+- **api**: string, default `https://statsigapi.net/v1`
+  - The base url to use for all network requests.  Defaults to the statsig API.
 - **environment**: StatsigEnvironment, default null
 
   - An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
@@ -13,3 +15,7 @@
     ```
     options.rulesUpdatedCallback(specsString, timeStamp)
     ```
+- **localMode**: boolean, default false
+  - disables all network access, so the SDK will only return default (or overridden) values.  Useful in testing
+- **initTimeoutMs**: number, default 0
+  - sets a maximum time to wait for the config download network request to resolve before considering the SDK initialized and resolving the call to `initialize()`
