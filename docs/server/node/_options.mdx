@@ -13,3 +13,7 @@
     ```
     options.rulesUpdatedCallback(specsString, timeStamp)
     ```
+- **localMode**: boolean, default false
+  - disables all network access, so the SDK will only return default (or overridden) values.  Useful in testing
+- **initTimeoutMs**: number, default 0
+  - sets a maximum time to wait for the config download network request to resolve before considering the SDK initialized and resolving the call to `initialize()`
