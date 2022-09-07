@@ -1,5 +1,24 @@
-You can specify optional parameters with `options` when initializing using `InitializeWithOptions()`. Here are the current options and we are always adding more to the list:
+You can specify optional parameters with `options` when initializing using `InitializeWithOptions()`
+
+```
+type Options struct {
+	API                string      `json:"api"`
+	Environment        Environment `json:"environment"`
+	LocalMode          bool        `json:"localMode"`
+	ConfigSyncInterval time.Duration
+	IDListSyncInterval time.Duration
+}
+```
 
 - **Environment**: default nil
   - An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
   - The most common usage is to set the environment tier (string), and have feature gates pass/fail for specific environments. The accepted values are "production", "staging" and "development".
+- **Environment**: default nil
+  - An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
+  - The most common usage is to set the environment tier (string), and have feature gates pass/fail for specific environments. The accepted values are "production", "staging" and "development".
+- **LocalMode**: default false
+  - Disables all network requests from the SDK, so it will only return default values.  Useful in tests/non production environments.
+- **ConfigSyncInterval**: default 10 seconds
+  - The interval to poll for gate/experiment/config changes.
+- **IDListSyncInterval**: default 1 minute
+  - The interval to poll for ID list changes.
