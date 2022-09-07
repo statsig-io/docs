@@ -296,6 +296,7 @@ module.exports = {
             "data-warehouse-ingestion/bigquery",
             "data-warehouse-ingestion/redshift",
             "data-warehouse-ingestion/snowflake",
+            "data-warehouse-ingestion/databricks",
           ], 
         },
         "data-warehouse-ingestion/data_mapping",
