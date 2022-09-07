@@ -1,6 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import AsyncDisclaimer from './async_disclaimer.mdx';
+import ThreadSafeWarning from './thread_safe_warning.mdx';
 
 <span>
   Statsig server SDK for {props.sdkType} applications. This SDK is{' '}
@@ -109,9 +110,6 @@ Because we batch and periodically flush events, some events may not have been se
 
 You can run experiments for arbitrary unit IDs (sessionID, groupID, etc), rather than at the userID level, if you choose. These custom unit IDs must be predefined in your Statsig project, and then selected in the Experiment creation flow. For more information, see our guide on [experimenting on custom ID types](/guides/experiment-on-custom-id-types)
 
-#### Is the SDK thread safe (for multi-threaded languages)? {#thread-safety}
-
-Even though we try to make the SDK thread safe whenever we can, we make no guarantees that is always the case.
-Therefore, please make sure to always call Statsig APIs from the same thread.
+{props.disableThreadSafeWarning ? <div /> : <ThreadSafeWarning />}
 
 <div>{props.faqs}</div>
