@@ -1,0 +1,42 @@
+### StatsigUser
+
+```python
+@dataclass
+class StatsigUser:
+    """An object of properties relating to the current user
+    user_id or at least a custom ID is required: learn more https://docs.statsig.com/messages/serverRequiredUserID
+    Provide as many as possible to take advantage of advanced conditions in the statsig console
+    A dictionary of additional fields can be provided under the custom field
+    Set private_attributes for any user property you need for gate evaluation but prefer stripped from logs/metrics
+    """
+    user_id: Optional[str] = None
+    email: Optional[str] = None
+    ip: Optional[str] = None
+    user_agent: Optional[str] = None
+    country: Optional[str] = None
+    locale: Optional[str] = None
+    app_version: Optional[str] = None
+    custom: Optional[dict] = None
+    private_attributes: Optional[dict] = None
+    custom_ids: Optional[dict] = None
+```
+
+### StatsigOptions
+
+```python
+class StatsigOptions:
+    """An object of properties for initializing the sdk with additional parameters"""
+
+    def __init__(
+        self,
+        api: str = "https://statsigapi.net/v1/",
+        tier: typing.Union[str, StatsigEnvironmentTier, None] = None,
+        timeout: typing.Optional[int] = None,
+        rulesets_sync_interval: int = 10,
+        idlists_sync_interval: int = 60,
+        local_mode: bool = False,
+        bootstrap_values: typing.Optional[str] = None,
+        rules_updated_callback: typing.Optional[typing.Callable] = None,
+        event_queue_size: typing.Optional[int] = 500,
+    ):
+```
