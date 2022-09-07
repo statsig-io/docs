@@ -3,7 +3,7 @@
 ```go
 // User specific attributes for evaluating Feature Gates, Experiments, and DyanmicConfigs
 //
-// NOTE: UserID is **required** - see https://docs.statsig.com/messages/serverRequiredUserID\
+// NOTE: UserID is **required** - see https://docs.statsig.com/messages/serverRequiredUserID
 // PrivateAttributes are only used for user targeting/grouping in feature gates, dynamic configs,
 // experiments and etc; they are omitted in logs.
 type User struct {
@@ -18,18 +18,5 @@ type User struct {
 	PrivateAttributes  map[string]interface{} `json:"privateAttributes"`
 	StatsigEnvironment map[string]string      `json:"statsigEnvironment"`
 	CustomIDs          map[string]string      `json:"customIDs"`
-}
-```
-
-### StatsigOptions
-
-```go
-// Advanced options for configuring the Statsig SDK
-type Options struct {
-	API                string      `json:"api"`
-	Environment        Environment `json:"environment"`
-	LocalMode          bool        `json:"localMode"`
-	ConfigSyncInterval time.Duration
-	IDListSyncInterval time.Duration
 }
 ```
