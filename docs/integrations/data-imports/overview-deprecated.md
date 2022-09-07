@@ -3,6 +3,8 @@ title: Imports Overview (Deprecated)
 slug: overview
 ---
 
+**Note: this solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out the [Data Warehouse Ingestion](../../data-warehouse-ingestion/introduction.md) solution instead.**
+
 ## Overview
 
 Statsig has a number of ways by which you can send your own events or pre-computed metrics. We support some native integrations to read directly from your data warehouse, or you can choose to write your data to Azure storage owned by Statsig.

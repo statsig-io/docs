@@ -3,6 +3,8 @@ title: Snowflake (Deprecated)
 slug: snowflake
 ---
 
+**Note: this solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out the [Data Warehouse Ingestion](../../data-warehouse-ingestion/introduction.md) solution instead.**
+
 ## Overview
 
 There are 2 ways to integrate with Snowflake: using a data connector, or through direct ingestion from Snowflake.
@@ -219,8 +221,9 @@ These are common errors we've run into - please go through and make sure your se
   - In some cases, your data warehouse may transform IDs. This may mean we can't join your experiment or feature gate data to your metrics to calculate pulse or other reports. You can go to the Metrics page of your project and view the log stream to check the format of the ids being sent (either `User ID`, or a custom ID in `User Properties`) to confirm they match
 
 If your data is not showing up in the Statsig console
-  - Monitoring is limited today, but you should be able to check your snowflake query history for the Statsig user to understand which data is being pulled, and if queries are not executing (no history) or are failing. 
-  - You should see polling queries within a few hours of setting up your integration.
-  - If you have a signal date in the last 28d, you should see a select statement for data from the earliest signal date in that window
-  - If that query fails, try running it yourself to understand if there is a schema issue
-  - If data is loading, it's likely we're just processing. For new metrics, give it a day to catch. If data isn't loaded after a day or two, please check in with us. The most common reason for metrics catalog failures is due to id_type mismatches.
+
+- Monitoring is limited today, but you should be able to check your snowflake query history for the Statsig user to understand which data is being pulled, and if queries are not executing (no history) or are failing.
+- You should see polling queries within a few hours of setting up your integration.
+- If you have a signal date in the last 28d, you should see a select statement for data from the earliest signal date in that window
+- If that query fails, try running it yourself to understand if there is a schema issue
+- If data is loading, it's likely we're just processing. For new metrics, give it a day to catch. If data isn't loaded after a day or two, please check in with us. The most common reason for metrics catalog failures is due to id_type mismatches.
