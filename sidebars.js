@@ -328,6 +328,7 @@ module.exports = {
             "integrations/data-imports/bigquery-deprecated",
             "integrations/data-imports/redshift-deprecated",
             "integrations/data-imports/snowflake-deprecated",
+            "integrations/data-imports/azure_upload-deprecated",
           ]
         },
         {
