@@ -242,6 +242,7 @@ module.exports = {
         "server/rubySDK",
         "server/dotnetSDK",
         "server/phpSDK",
+        "server/erlangSDK",
       ],
     },
     "http-api",
