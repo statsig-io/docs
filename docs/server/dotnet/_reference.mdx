@@ -1,0 +1,48 @@
+### Type StatsigUser
+
+```
+namespace Statsig
+{
+    public class StatsigUser
+    {
+        public string? UserID
+        public string? Email
+        public string? IPAddress
+        public string? UserAgent
+        public string? Country
+        public string? Locale
+        public string? AppVersion
+
+        public StatsigUser()
+
+        public void AddCustomProperty(string key, object value)
+
+        public void AddPrivateAttribute(string key, object value)
+
+        public void AddCustomID(string idType, string value)
+
+    }
+}
+```
+
+### Type StatsigOptions
+
+```
+namespace Statsig
+{
+    public class StatsigOptions
+    {
+        public string ApiUrlBase { get; }
+        public StatsigEnvironment StatsigEnvironment { get; }
+        public string? PersistentStorageFolder { get; set; }
+        public double RulesetsSyncInterval = 60;
+        public double IDListsSyncInterval = 60;
+        public int ClientRequestTimeoutMs = 0;
+
+        private Dictionary<string, string> _additionalHeaders;
+        private Func<IIDStore>? _idStoreFactory = null;
+        
+        public StatsigOptions(string? apiUrlBase = null, StatsigEnvironment? environment = null)
+    }
+}
+```
