@@ -38,3 +38,88 @@ You can extract information from here to get the required fields for Account Nam
 For each data type, provide the database/schema of the table(s) you will be ingesting from.
 
 ![Frame 7](https://user-images.githubusercontent.com/108023879/187517225-017b4626-eaea-443b-a042-59fd474ae657.png)
+
+### Custom User Privileges
+
+To create a custom user with specific privileges instead of using an admin user, run the following code in your Snowflake worksheet that has sysadmin and securityadmin roles.
+Replace `<USER>` and `<PASSWORD>` with your value, which you will copy over into our console.
+
+```sql
+BEGIN;
+
+  -- set up variable values to be used in statements later
+  -- make sure to configure user_name and user_password with your own values
+  SET user_name = '<USER>'; -- REPLACE WITH YOUR OWN VALUE
+  SET user_password = '<PASSWORD>'; -- REPLACE WITH YOUR OWN VALUE
+  SET role_name = 'STATSIG_ROLE';
+
+  -- change role to sysadmin for warehouse / database steps
+  USE ROLE sysadmin;
+
+  -- create a warehouse, database, schema and tables for Statsig
+  CREATE OR REPLACE WAREHOUSE statsig WITH warehouse_size='XSMALL';
+  CREATE DATABASE IF NOT EXISTS statsig;
+  CREATE SCHEMA IF NOT EXISTS statsig.statsig;
+
+  -- a table for ingestion of raw events
+  CREATE TABLE IF NOT EXISTS statsig.statsig.statsig_events(
+      time BIGINT NOT NULL, -- unix time
+      timeuuid STRING NOT NULL DEFAULT UUID_STRING(), --generated unique timeuuid
+      user STRING NOT NULL, --json user object
+      event_name STRING NOT NULL,
+      event_value STRING,
+      event_metadata STRING NOT NULL, --json metadata object
+      event_version BIGINT,
+      record_number NUMBER AUTOINCREMENT START 1 INCREMENT 1
+  );
+
+  -- a table for ingestion of metrics/user outcomes
+  CREATE TABLE IF NOT EXISTS statsig.statsig.statsig_user_metrics(
+      unit_id STRING NOT NULL,
+      id_type STRING NOT NULL, -- stable_id, user_id, etc.
+      date DATE NOT NULL, -- YYYY-MM-DD. Statsig calculates dates according to PST
+      timeuuid STRING NOT NULL DEFAULT UUID_STRING(),
+      metric_name STRING NOT NULL,
+      metric_value NUMBER,
+      numerator NUMBER,
+      denominator NUMBER
+  );
+
+  CREATE TABLE IF NOT EXISTS statsig.statsig.statsig_events_signal(
+      finished_date DATE
+  );
+
+  CREATE TABLE IF NOT EXISTS statsig.statsig.statsig_user_metrics_signal(
+      finished_date DATE
+  );
+
+  -- change current role to securityadmin to create role and user for Statsig's access
+  USE ROLE securityadmin;
+
+  -- create role for Statsig
+  CREATE ROLE IF NOT EXISTS identifier($role_name);
+  GRANT ROLE identifier($role_name) TO ROLE SYSADMIN;
+
+  -- create a user for Statsig
+  CREATE USER IF NOT EXISTS identifier($user_name)
+  password = $user_password
+  default_role = $role_name
+  default_warehouse = statsig;
+  GRANT ROLE identifier($role_name) TO USER identifier($user_name);
+
+  -- grant Statsig role access
+  GRANT USAGE ON WAREHOUSE statsig TO ROLE identifier($role_name);
+  GRANT USAGE ON DATABASE statsig TO ROLE identifier($role_name);
+  GRANT USAGE ON SCHEMA statsig.statsig TO ROLE identifier($role_name);
+  GRANT SELECT ON statsig.statsig.statsig_events TO ROLE identifier($role_name);
+  GRANT SELECT ON statsig.statsig.statsig_user_metrics TO ROLE identifier($role_name);
+  GRANT SELECT ON statsig.statsig.statsig_events_signal TO ROLE identifier($role_name);
+  GRANT SELECT ON statsig.statsig.statsig_user_metrics_signal TO ROLE identifier($role_name);
+
+COMMIT;
+```
+
+After running the script, input the `<USER>` and `<PASSWORD>` you created in our console, during Connection Set Up stage under the Advanced settings options.
+
+
+![Screen Shot 2022-09-07 at 10 36 57 AM](https://user-images.githubusercontent.com/108023879/188943178-6b541962-62da-4529-b5af-ff59b20b7a8d.png)
