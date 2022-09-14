@@ -1,0 +1,5 @@
+```erlang
+User = #{<<"userID">> => UserID},
+Experiment = statsig:get_experiment(User, ExperimentName),
+EnableFeature = maps:get(<<"feature_enabled">>, Experiment, false),
+```

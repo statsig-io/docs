@@ -242,6 +242,7 @@ module.exports = {
         "server/rubySDK",
         "server/dotnetSDK",
         "server/phpSDK",
+        "server/erlangSDK",
       ],
     },
     "http-api",
@@ -296,6 +297,7 @@ module.exports = {
             "data-warehouse-ingestion/bigquery",
             "data-warehouse-ingestion/redshift",
             "data-warehouse-ingestion/snowflake",
+            "data-warehouse-ingestion/databricks",
           ], 
         },
         "data-warehouse-ingestion/data_mapping",
@@ -327,6 +329,7 @@ module.exports = {
             "integrations/data-imports/bigquery-deprecated",
             "integrations/data-imports/redshift-deprecated",
             "integrations/data-imports/snowflake-deprecated",
+            "integrations/data-imports/azure_upload-deprecated",
           ]
         },
         {

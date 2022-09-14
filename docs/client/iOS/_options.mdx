@@ -10,3 +10,5 @@
    - e.g. passing in a value of `StatsigEnvironment(tier: .Staging)` will allow your users to pass any condition that pass for the staging environment tier, and fail any condition that only passes for other environment tiers.
 4. **enableAutoValueUpdate**: boolean, default false
    - by default, feature values for a user is fetched once during `Statsig.start` and don't change throughout the session. Setting this value to true will turn on the feature for Statsig to periodically fetch updated values for the current user.
+5. **overrideStableID**: string?, default null
+   - overrides the stableID in the SDK that is set for the user

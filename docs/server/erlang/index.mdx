@@ -7,13 +7,11 @@ import GetConfig from './_getConfig.mdx'
 import GetExperiment from './_getExperiment.mdx'
 import LogEvent from './_logEvent.mdx'
 import Options from './_options.mdx'
-import FAQs from './_faqs.mdx'
 import Shutdown from './_shutdown.mdx'
-import Reference from './_reference.mdx'
 
 <Template
-  sdkType="Go"
-  github="https://github.com/statsig-io/go-sdk"
+  sdkType="Erlang"
+  github="https://github.com/statsig-io/erlang-sdk"
   install={<Install />}
   initialize={<Initialize />}
   checkGate={<CheckGate />}
@@ -21,9 +19,6 @@ import Reference from './_reference.mdx'
   getExperiment={<GetExperiment />}
   logEvent={<LogEvent />}
   options={<Options />}
-  faqs={<FAQs />}
   shutdown={<Shutdown />}
-  hideAsyncDisclaimer={true}
-  disableThreadSafeWarning={true}
-  reference={<Reference />}
+  hideAsyncDisclaimer
 />

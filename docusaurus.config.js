@@ -77,6 +77,8 @@ module.exports = {
         "go",
         "python",
         "kotlin",
+        "erlang",
+        "dart",
       ],
     },
   },

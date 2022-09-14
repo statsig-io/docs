@@ -1,0 +1,42 @@
+### StatsigUser
+
+```kotlin
+/**
+ * An object of properties relating to the current user
+ * Provide as many as possible to take advantage of advanced conditions in the Statsig console
+ * A dictionary of additional fields can be provided under the "custom" field
+ * @property userID - string - REQUIRED - a unique identifier for the user.  Why is this required?  See https://docs.statsig.com/messages/serverRequiredUserID/
+ * @property email - string - an email associated with the current user
+ * @property ip - string - the ip address of the requests for the user
+ * @property userAgent - string - the user agent of the requests for this user
+ * @property country - string - the two letter country code of the user
+ * @property locale - string - the locale for the user
+ * @property appVersion - string -  the current version of the app
+ * @property custom - Map<string, string> - any additional custom user attributes for custom conditions in the console
+ * @property privateAttributes - Map<string, Object> - any user attributes that should be used in evaluation only and removed in any logs.
+ * @property customIDs - Map<string, string> - Map of ID name to ID value for custom identifiers
+ */
+data class StatsigUser
+```
+
+### StatsigOptions and StatsigEnvironment
+
+```kotlin
+class StatsigOptions(
+    var api: String = https://statsigapi.net/v1,
+    var initTimeoutMs: Long? = 3000L,
+    var bootstrapValues: String? = null,
+    var rulesUpdatedCallback: ((rules: String) -> unit)? = null,
+    var localMode: Boolean = false
+) {
+
+    // to set the environment tier
+    fun setTier(tier : Tier);
+}
+
+enum class Tier {
+    PRODUCTION,
+    STAGING,
+    DEVELOPMENT,
+}
+```
