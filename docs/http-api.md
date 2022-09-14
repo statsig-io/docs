@@ -49,8 +49,47 @@ curl \
   "https://events.statsigapi.net/v1/log_event"
 ```
 
+*Schema*
+```ts
+// json
+{
+  events: [StatsigEvent];
+}
+
+// StatsigEvent - object
+{
+  eventName: string;
+  value: number | string;
+  time: string; // unix timestamp
+  user: StatsigUser;
+  metadata: Record<string, string>;
+}
+
+// StatsigUser - object
+{
+  userID: string;
+  email?: string;
+  ip?: string;
+  userAgent?: string;
+  country?: string;
+  locale?: string;
+  appVersion?: string;
+  custom?: Record<
+    string,
+    string | number | boolean | Array<string> | undefined
+  >;
+  privateAttributes?: Record<
+    string,
+    string | number | boolean | Array<string> | undefined
+  >;
+  customIDs?: Record<string, string>;
+  statsigEnvironment: {
+    tier: string
+  };
+};
+```
 Response:
-`{"success":true}`
+`{"success":true}`, status `202`
 
 ##### Log an event with custom environment {#log-an-event-with-environment}
 
