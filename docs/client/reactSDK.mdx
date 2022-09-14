@@ -52,33 +52,6 @@ yarn add statsig-react
   </TabItem>
 </Tabs>
 
-#### v1.0.0 Update
-
-Migrates the `statsig-react` sdk to v4.0 of the `statsig-js` SDK. This introduces a number of breaking changes and enhancements.
-
-Breaking Changes:
-
-- Removed the `useStatsig` hook. Instead, use `import Statsig from 'statsig-react'` to use the `statsig-js` sdk for event logging, or gate checks/event logging outside of a component tree. NOTE: SDK methods like `checkGate` and `logEvent` will throw if called before `initialize()` - to avoid errors in your component tree, check `initStarted` from the `StatsigContext`, or globally, check `Statsig.initializedCalled()`
-- Removed the separate `DynamicConfig` type, instead directly exporting the same type from the `statsig-js` sdk.
-
-Enhancements and Bug Fixes:
-
-- Unify the type of `DynamicConfig` to be a single type across this SDK and the `statsig-js` sdk.
-- Memoizes the result of gate/config checks for a given user for enhanced performance and to reduce duplicate exposures.
-- Adds `initializationComponent` to render while initializing if `waitForInitialization` is `true`
-- Fetches cached flag values from local storage while initialize is pending if `waitForInitialization` is `false`
-- Fixes an issue where changing the user object could trigger an `updateUser` while the SDK was initializing, which would throw an exception
-
-Additional features (inherited from `statsig-js`). See the [releases](https://github.com/statsig-io/js-client/releases) for more details:
-
-- `DynamicConfig` overrides
-- Ability to `checkGate` and `getConfig` without overrides
-- Improved support for browsers + event logging, SSR logging bug fix, and configurations for event batch sizes and event flush intervals.
-
-:::info
-If you are calling methods on the global `Statsig` like `initialize` or `updateUser`, the user object tracked by the provider and the user object used outside the component tree can get out of sync. You are responsible for maintaining the state of the `user` and keeping it consistent with the `StatsigProvider` in these cases. The `statsig-react` SDK uses the global `Statsig` class to serve gate/config/experiment checks, but these are memoized in the hooks the SDK provides. Updates to the user which impact flag values that are made outside the context of the react component tree will not be reflected in the component tree unless the updated user is passed in to the `StatsigProvider`.
-:::
-
 #### Usage
 
 How we at Statsig use the SDK, and suggested usage.
@@ -152,8 +125,8 @@ StatsigProvider is a [react context provider](https://reactjs.org/docs/context.h
 
 - `children: React.ReactNode | React.ReactNode[];` - One or more child components
 - `sdkKey: string;` - A client SDK key from the Statsig Console
-- `user: StatsigUser;` - A [Statsig User](/client/concepts/user) object. Changing this will update the user and Gate values, causing a re-initialization
-- `options?: StatsigOptions;` - See [StatsigOptions](/client/jsClientSDK#statsig-options). An optional bag of initialization properties (shared with the statsig-js sdk) for advanced configuration.
+- `user: StatsigUser;` - A [Statsig User](/client/concepts/user) object. Changing this will update the experiment and gate values, causing a re-initialization and rerender
+- `options?: StatsigOptions;` - See [StatsigOptions](/client/reactSDK#statsig-options). An optional bag of initialization properties (mostly shared with the statsig-js sdk) for advanced configuration.
 - `waitForInitialization?: boolean;` - Waits for the SDK to initialize with updated values before rendering child components
 - `initializingComponent?: React.ReactNode | React.ReactNode[];` - A loading component to render if and only if `waitForInitialization` is set to `true` and the SDK is initializing
 - `mountKey?: string` - A key for stable mounting/unmounting when updating the user. If this key is set and changes when the user object changes (or if it is not provided) Then the children of StatsigProvider will unmount/remount with the async update. If this key is set and does not change, then the children of StatsigProvider will continue to be mounted, and it will trigger a rerender after updateUser completes.
@@ -274,6 +247,41 @@ Feel free to reach out to us in the [Statsig Slack channel](https://www.statsig.
 #### Silencing "Call and wait for initialize() to finish first"
 
 Starting in `v1.6.0`, setting the environment variable `REACT_APP_STATSIG_SDK_MODE=silent` will swallow the `Call and wait for initialize() to finish first` exception. For more information, see the [release notes for v1.6.0](https://github.com/statsig-io/react-sdk/releases/tag/v1.6.0)
+
+### StatsigOptions {#statsig-options}
+
+
+- **environment**: StatsigEnvironment, default null
+  - An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
+  - The most common usage is to set the environment tier ('production', 'staging' or 'development'), e.g. `{ tier: 'staging' }`, and have feature gates pass/fail for specific environments.
+- **disableCurrentPageLogging** boolean, default false.
+  - By default, the sdk appends the current page for log events to the event payload to generate user journey/funnel analytics
+- **loggingIntervalMillis**: number, default 5000 (5s), min 1000, max 60000
+  - How frequently to flush logs to statsig (milliseconds)
+- **loggingBufferMaxSize**: number, default 10), min 2, max 500
+  - Maximum number of events to buffer before flushing events to statsig
+- **disableNetworkKeepalive**: boolean, default false
+  - Entirely disables the keepalive flag from being appended to network requests issued by the SDK
+- **api** - default https://api.statsig.com/v1/
+  - The default endpoint to use for all SDK network requests. You should not override this (unless you have another API that implements the Statsig API endpoints)
+  - If you wish to separately override the log_event endpoint only, see `eventLoggingApi`
+- **overrideStableID** - string, default null
+  - If you'd like to use your own ID in place of Statsig's stableID, then you can pass the ID as an option here.
+  - Once a value is passed, the SDK will store this ID in the local storage for the browser for future use as well.
+- **localMode** - boolean, default false
+  - Pass true to this option to turn on Local Mode for the SDK, which will stop the SDK from issuing any network requests and make it only operate with only local overrides and cache.
+- **initTimeoutMs** - number, default 3000
+  - This option configures the maximum time (in milliseconds) the SDK would wait for the network request made by `initialize()` to respond before it resolves.
+  - If the SDK resolves before the network request has completed due to the timeout, it will continue work with local overrides, cached values, and then default values set in code.
+- **disableErrorLogging** - boolean, default false
+  - By default, the SDK auto logs javascript errors to Statsig. This will be connected with the metrics and pulse views to show the impact of new features on key error metrics
+- **disableAutoMetricsLogging** - boolean, default false
+  - By default, the SDK auto logs javascript performance metrics to Statsig. This will be connected with the metrics and pulse views to show the impact of new features on key performance metrics
+- **eventLoggingApi?** `string`, default `'https://events.statsigapi.net/v1/`
+  - The SDK will hit different endpoints for `initialize` to evaluate gates and for `logEvent` to log event data.  The `api` option controls the evaluation endpoint, and `eventLoggingApi` controls the event logging endpoint.
+- **prefetchUsers?** `StatsigUser[]` | null, default null
+  - An array of additional StatsigUser objects to be fetched during the `statsig.initialize` call. A max of 5 users is enforced, if more than 5 users are provided, the 5 users at the start of the array will be used.
+
 
 #### Testing
 
