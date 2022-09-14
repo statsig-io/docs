@@ -42,16 +42,8 @@ import { StatsigProvider, useGate, useExperiment, useConfig, Statsig } from "sta
 
 ## Usage {#usage}
 
-### v4.X.X+
-
 v4.X.X of our react-native-expo SDK wraps the [statsig-react](./reactSDK) sdk. It contains the same React Context, Providers, and Hooks, used in the same way. Get started with our [suggested usage](./reactSDK#usage) or the [Provider and Hooks](/client/reactSDK#more-details) details.
 
-It also exposes a global `Statsig` class that you can import outside your component tree to check gates/log events/etc.
-
-```jsx
-import { Statsig } from "statsig-react-native-expo";
-
-...
-
-Statsig.checkGate("gate_name");
-```
+:::info
+Be sure to update the imports from the examples on the react SDK docs to use "statsig-react-native-expo" instead of "statsig-react"
+:::
