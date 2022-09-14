@@ -57,41 +57,8 @@ BEGIN;
   USE ROLE sysadmin;
 
   -- create a warehouse, database, schema and tables for Statsig
-  CREATE OR REPLACE WAREHOUSE statsig WITH warehouse_size='XSMALL';
-  CREATE DATABASE IF NOT EXISTS statsig;
-  CREATE SCHEMA IF NOT EXISTS statsig.statsig;
-
-  -- a table for ingestion of raw events
-  CREATE TABLE IF NOT EXISTS statsig.statsig.statsig_events(
-      time BIGINT NOT NULL, -- unix time
-      timeuuid STRING NOT NULL DEFAULT UUID_STRING(), --generated unique timeuuid
-      user STRING NOT NULL, --json user object
-      event_name STRING NOT NULL,
-      event_value STRING,
-      event_metadata STRING NOT NULL, --json metadata object
-      event_version BIGINT,
-      record_number NUMBER AUTOINCREMENT START 1 INCREMENT 1
-  );
-
-  -- a table for ingestion of metrics/user outcomes
-  CREATE TABLE IF NOT EXISTS statsig.statsig.statsig_user_metrics(
-      unit_id STRING NOT NULL,
-      id_type STRING NOT NULL, -- stable_id, user_id, etc.
-      date DATE NOT NULL, -- YYYY-MM-DD. Statsig calculates dates according to PST
-      timeuuid STRING NOT NULL DEFAULT UUID_STRING(),
-      metric_name STRING NOT NULL,
-      metric_value NUMBER,
-      numerator NUMBER,
-      denominator NUMBER
-  );
-
-  CREATE TABLE IF NOT EXISTS statsig.statsig.statsig_events_signal(
-      finished_date DATE
-  );
-
-  CREATE TABLE IF NOT EXISTS statsig.statsig.statsig_user_metrics_signal(
-      finished_date DATE
-  );
+  CREATE OR REPLACE WAREHOUSE STATSIG_INGESTION WITH warehouse_size='XSMALL';
+  CREATE DATABASE IF NOT EXISTS STATSIG_STAGING;
 
   -- change current role to securityadmin to create role and user for Statsig's access
   USE ROLE securityadmin;
@@ -104,17 +71,18 @@ BEGIN;
   CREATE USER IF NOT EXISTS identifier($user_name)
   password = $user_password
   default_role = $role_name
-  default_warehouse = statsig;
+  default_warehouse = STATSIG_INGESTION;
   GRANT ROLE identifier($role_name) TO USER identifier($user_name);
 
-  -- grant Statsig role access
-  GRANT USAGE ON WAREHOUSE statsig TO ROLE identifier($role_name);
-  GRANT USAGE ON DATABASE statsig TO ROLE identifier($role_name);
-  GRANT USAGE ON SCHEMA statsig.statsig TO ROLE identifier($role_name);
-  GRANT SELECT ON statsig.statsig.statsig_events TO ROLE identifier($role_name);
-  GRANT SELECT ON statsig.statsig.statsig_user_metrics TO ROLE identifier($role_name);
-  GRANT SELECT ON statsig.statsig.statsig_events_signal TO ROLE identifier($role_name);
-  GRANT SELECT ON statsig.statsig.statsig_user_metrics_signal TO ROLE identifier($role_name);
+  -- grant Statsig role access to create warehouse and schema
+  GRANT USAGE ON WAREHOUSE STATSIG_INGESTION TO ROLE identifier($role_name);
+  GRANT CREATE SCHEMA, MONITOR, USAGE ON DATABASE STATSIG_STAGING TO ROLE identifier($role_name);
+
+  -- grant Statsig role read access to database and schema passed in
+  GRANT USAGE ON DATABASE <DATABASE> TO ROLE identifier($role_name);
+  GRANT USAGE ON SCHEMA <DATABASE>.<SCHEMA> TO ROLE identifier($role_name);
+  GRANT SELECT ON ALL TABLES IN <DATABASE> TO ROLE identifier($role_name);
+  GRANT SELECT ON FUTURE TABLES IN DATABASE <DATABASE> TO ROLE identifier($role_name);
 
 COMMIT;
 ```
