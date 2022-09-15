@@ -37,5 +37,8 @@ To begin ingestion from a Data Warehouse:
 
 ![Ingestion Tab](https://user-images.githubusercontent.com/108023879/187800555-47885bbd-8317-40d9-b8d7-ad5236e3c73f.png)
 
-
 You will be required to set up connections with necessary credentials, and map your data fields to the fields Statsig expects to ingest. Please refer to the warehouse-level setup documentation for more information on setup.
+
+### Scheduling Ingestion & Backfilling
+
+Backfilling metrics and events will be charged as events as per our [Pricing Plan](https://statsig.com/pricing). 
