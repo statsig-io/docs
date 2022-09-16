@@ -110,6 +110,6 @@ Because we batch and periodically flush events, some events may not have been se
 
 You can run experiments for arbitrary unit IDs (sessionID, groupID, etc), rather than at the userID level, if you choose. These custom unit IDs must be predefined in your Statsig project, and then selected in the Experiment creation flow. For more information, see our guide on [experimenting on custom ID types](/guides/experiment-on-custom-id-types)
 
-{props.disableThreadSafeWarning ? <div /> : <ThreadSafeWarning />}
+<div>{props.disableThreadSafeWarning ? <div /> : <ThreadSafeWarning />}</div>
 
 <div>{props.faqs}</div>
