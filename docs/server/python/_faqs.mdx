@@ -17,3 +17,26 @@ override_experiment(experiment:str, value:object, user_id:str = None)
 These can be used to set a gate or config override for a specific user, or for all users (by not providing a specific user ID).
 
 We suggest you enable `localMode` and then override gates/configs/experiments to specific values to test the various code flows you are building.
+
+
+#### Can I generate the initialize response for a client SDK using the python server SDK?
+
+The python server SDK, starting in `v0.12.0+` supports generating the `initializeValues` needed to bootstrap a `statsig-js` or `statsig-react` SDK and render it on the server/use the SDK without a round trip to Statsig servers.
+
+```
+values = statsig.get_client_initialize_response(user); // dict() | None
+```
+
+NOTE: This will not automatically use the `ip`, or `userAgent` for gate evaluation as statsig servers would, since there is no request from the client SDK specifying these values.  If you want to use conditions like IP, or conditions which are inferred from the IP/UA like: Browser Name or Version, OS Name or Version, Country, you must manually set the `ip` and `userAgent` field on the user object when calling `get_client_initialize_response`.
+
+Similarly, there is no auto-generated `stableID` for device based experimentation, since the server generates the initialize response without any information from the client SDK.  If you wish to run a device based experiment while using the server to generate the initialize resopnse, we recommend you:
+
+1. Create a customID in the Statsig console. See [experimenting on custom IDs](/guides/experiment-on-custom-id-types) for more information.
+2. Generate an ID on the server, and set it in a cookie to be used on the client side as well.
+3. Set that ID as the customID on the `StatsigUser` object when generating the initialize response from the python sdk.
+4. Get that ID from the cookie, and set it as the customID on the `StatsigUser` object when using the client SDK, so all event data and exposure checks tie back to the same user.
+
+Alternatively, if you wish to use the `stableID` field rather than a custom ID, you still need to do step (2) above.  Then:
+
+- Set the `stableID` field on the `StatsigUser` object in the `customIDs` map when generating the initialize response from the python sdk
+- Override the `stableID` in the client SDK by getting the value from the cookie and setting the `overrideStableID` parameter in [`StatsigOptions`]
