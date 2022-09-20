@@ -34,23 +34,30 @@ module.exports = {
             ]
           }
         },
+        "description": "Forces users which pass a gate or are in a segment into the desired group.",
+        "title": "",
         "properties": {
-          "passingUserIDs": {
-            "type": "array",
-            "description": "An array of UserIDs that will be forced to pass the experiment.",
-            "items": {
-              "type": "string"
-            }
+          "type": {
+            "type": "string",
+            "enum": [
+              "segment",
+              "gate"
+            ]
           },
-          "failingUserIDs": {
-            "type": "array",
-            "description": "An array of UserIDs that will be forced to fail the experiment.",
-            "items": {
-              "type": "string"
-            }
+          "id": {
+            "type": "string",
+            "description": "The id of the segment or gate"
+          },
+          "groupID": {
+            "type": "string",
+            "description": "The experiment group which user will be forced into"
           }
         },
-        "description": ""
+        "required": [
+          "type",
+          "id",
+          "groupID"
+        ]
       },
       "description": {
         "title": "description",
@@ -184,6 +191,35 @@ module.exports = {
             "parameterValues"
           ]
         }
+      },
+      "experiment_id_override": {
+        "type": "object",
+        "x-examples": {
+          "example-1": {
+            "groupID": "Control",
+            "ids": [
+              "updated_id_list"
+            ]
+          }
+        },
+        "properties": {
+          "groupID": {
+            "type": "string",
+            "description": "The experiment group which user will be forced into"
+          },
+          "ids": {
+            "type": "array",
+            "description": "The userID(s) to force into an experiment group",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "groupID",
+          "ids"
+        ],
+        "description": "Forces specific users into the desired group."
       }
     },
     "responses": {
@@ -1372,13 +1408,13 @@ module.exports = {
                         "overrides": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/overrides"
+                            "$ref": "#/components/schemas/experiment_override"
                           }
                         },
                         "userIDOverrides": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/userIDOverrides"
+                            "$ref": "#/components/schemas/experiment_id_override"
                           }
                         }
                       }
@@ -1501,13 +1537,13 @@ module.exports = {
                         "overrides": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/overrides"
+                            "$ref": "#/components/schemas/experiment_override"
                           }
                         },
                         "userIDOverrides": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/userIDOverrides"
+                            "$ref": "#/components/schemas/experiment_id_override"
                           }
                         }
                       }
@@ -1613,13 +1649,13 @@ module.exports = {
                   "overrides": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/overrides"
+                      "$ref": "#/components/schemas/experiment_override"
                     }
                   },
                   "userIDOverrides": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/userIDOverrides"
+                      "$ref": "#/components/schemas/experiment_id_override"
                     }
                   }
                 }
