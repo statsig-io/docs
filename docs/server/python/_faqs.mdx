@@ -40,3 +40,11 @@ Alternatively, if you wish to use the `stableID` field rather than a custom ID, 
 
 - Set the `stableID` field on the `StatsigUser` object in the `customIDs` map when generating the initialize response from the python sdk
 - Override the `stableID` in the client SDK by getting the value from the cookie and setting the `overrideStableID` parameter in [`StatsigOptions`]
+
+#### Timestamp bug: v0.8.0-v0.12.0 {#timestampbug}
+
+We  discovered and patched a bug in the python SDK (v0.8.0 to v0.12.0) where event timestamps were statically set for the duration of the SDK session.  On some webserver implementations, this means that exposure events and log event data were not considered in experiment analysis because the data was too late to be considered.
+
+We have updated our server to use the request time instead of event time when events come from these old versions of the python SDK (v0.8.0 to v0.12.0).  This should prevent late landing data from impacting experiments moving forward.
+
+We recommend all python SDK users update to the latest version of the sdk (v0.12.2) as soon as possible to prevent any further issues.
