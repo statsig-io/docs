@@ -34,23 +34,30 @@ module.exports = {
             ]
           }
         },
+        "description": "Forces users which pass a gate or are in a segment into the desired group.",
+        "title": "",
         "properties": {
-          "passingUserIDs": {
-            "type": "array",
-            "description": "An array of UserIDs that will be forced to pass the experiment.",
-            "items": {
-              "type": "string"
-            }
+          "type": {
+            "type": "string",
+            "enum": [
+              "segment",
+              "gate"
+            ]
           },
-          "failingUserIDs": {
-            "type": "array",
-            "description": "An array of UserIDs that will be forced to fail the experiment.",
-            "items": {
-              "type": "string"
-            }
+          "id": {
+            "type": "string",
+            "description": "The id of the segment or gate"
+          },
+          "groupID": {
+            "type": "string",
+            "description": "The experiment group which user will be forced into"
           }
         },
-        "description": ""
+        "required": [
+          "type",
+          "id",
+          "groupID"
+        ]
       },
       "description": {
         "title": "description",
@@ -184,6 +191,35 @@ module.exports = {
             "parameterValues"
           ]
         }
+      },
+      "experiment_id_override": {
+        "type": "object",
+        "x-examples": {
+          "example-1": {
+            "groupID": "Control",
+            "ids": [
+              "updated_id_list"
+            ]
+          }
+        },
+        "properties": {
+          "groupID": {
+            "type": "string",
+            "description": "The experiment group which user will be forced into"
+          },
+          "ids": {
+            "type": "array",
+            "description": "The userID(s) to force into an experiment group",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "groupID",
+          "ids"
+        ],
+        "description": "Forces specific users into the desired group."
       }
     },
     "responses": {
@@ -1296,6 +1332,373 @@ module.exports = {
         "tags": [
           "Experiments"
         ]
+      }
+    },
+    "/experiments/{experiment_id}/overrides": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string",
+            "example": "a_experiment"
+          },
+          "name": "experiment_id",
+          "in": "path",
+          "required": true,
+          "description": "Experiment ID to query"
+        }
+      ],
+      "get": {
+        "summary": "Get Experiment Overrides",
+        "tags": [
+          "Experiments"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Experiment Overrides read successfully.",
+                      "data": {
+                        "overrides": [
+                          {
+                            "groupID": "4IfTisAzh1ieQ5E1rc9kK2",
+                            "name": "b_gate",
+                            "type": "gate"
+                          },
+                          {
+                            "groupID": "4IfTiqVwOJ8KwG65Q4dHr0",
+                            "name": "",
+                            "type": "segment"
+                          },
+                          {
+                            "groupID": "4IfTiqVwOJ8KwG65Q4dHr0",
+                            "name": "a_gate",
+                            "type": "gate"
+                          }
+                        ],
+                        "userIDOverrides": [
+                          {
+                            "ids": [
+                              "a_user",
+                              "b_user"
+                            ],
+                            "groupID": "4IfTisAzh1ieQ5E1rc9kK2"
+                          },
+                          {
+                            "ids": [
+                              "c_user"
+                            ],
+                            "groupID": "4IfTiqVwOJ8KwG65Q4dHr0"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "overrides": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/experiment_override"
+                          }
+                        },
+                        "userIDOverrides": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/experiment_id_override"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Experiment Overrides read successfully.",
+                      "data": {
+                        "overrides": [
+                          {
+                            "groupID": "Control",
+                            "name": "a_gate",
+                            "type": "gate"
+                          },
+                          {
+                            "groupID": "test",
+                            "name": "a_segment",
+                            "type": "segment"
+                          }
+                        ],
+                        "userIDOverrides": [
+                          {
+                            "ids": [
+                              "updated_id_list"
+                            ],
+                            "groupID": "Control"
+                          },
+                          {
+                            "ids": [
+                              "updated_id_lists"
+                            ],
+                            "groupID": "Test"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
+        },
+        "operationId": "get-experiments-experiment_id-overrides",
+        "description": ""
+      },
+      "post": {
+        "summary": "Update Experiment Overrides",
+        "operationId": "post-experiments-experiment_id-overrides",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Experiment Overrides updated successfully.",
+                      "data": {
+                        "overrides": [
+                          {
+                            "type": "segment",
+                            "name": "a_segment",
+                            "groupID": "Control"
+                          },
+                          {
+                            "type": "gate",
+                            "name": "a_gate",
+                            "groupID": "Test"
+                          }
+                        ],
+                        "userIDOverrides": [
+                          {
+                            "groupID": "Control",
+                            "ids": [
+                              "updated_id_list"
+                            ]
+                          },
+                          {
+                            "groupID": "Test",
+                            "ids": [
+                              "updated_id_lists"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "overrides": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/experiment_override"
+                          }
+                        },
+                        "userIDOverrides": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/experiment_id_override"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Experiment Overrides updated successfully.",
+                      "data": {
+                        "overrides": [
+                          {
+                            "type": "segment",
+                            "name": "a_segment",
+                            "groupID": "Control"
+                          },
+                          {
+                            "type": "gate",
+                            "name": "a_gate",
+                            "groupID": "Test"
+                          }
+                        ],
+                        "userIDOverrides": [
+                          {
+                            "groupID": "Control",
+                            "ids": [
+                              "updated_user1"
+                            ]
+                          },
+                          {
+                            "groupID": "Test",
+                            "ids": [
+                              "updated_user2"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "overrides": [
+                      {
+                        "type": "segment",
+                        "name": "a_segment",
+                        "groupID": "Control"
+                      },
+                      {
+                        "type": "gate",
+                        "name": "a_gate",
+                        "groupID": "Test"
+                      }
+                    ],
+                    "userIDOverrides": [
+                      {
+                        "groupID": "Control",
+                        "ids": [
+                          "updated_id_list"
+                        ]
+                      },
+                      {
+                        "groupID": "Test",
+                        "ids": [
+                          "updated_id_lists"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "properties": {
+                  "overrides": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/experiment_override"
+                    }
+                  },
+                  "userIDOverrides": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/experiment_id_override"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "overrides": [
+                      {
+                        "type": "segment",
+                        "id": "a_segment",
+                        "groupID": "Control"
+                      },
+                      {
+                        "type": "gate",
+                        "id": "a_gate",
+                        "groupID": "Test"
+                      }
+                    ],
+                    "userIDOverrides": [
+                      {
+                        "groupID": "Control",
+                        "ids": [
+                          "updated_control_id_list"
+                        ]
+                      },
+                      {
+                        "groupID": "Test",
+                        "ids": [
+                          "updated_test_id_list"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Experiments"
+        ],
+        "description": ""
       }
     }
   }
