@@ -20,7 +20,8 @@ Set up mappings for top-level fields that Statsig requires using the following k
 - `event`
 - `userID`
 - `value`
+- `timestamp`
 
-![](https://user-images.githubusercontent.com/75151332/148701784-11dbe055-c8aa-42bc-b13f-f3e477217272.png)
+![](https://user-images.githubusercontent.com/111380336/191574001-4f0bb28e-1436-4e3e-b255-ed28e2c5f837.png)
 
 All other fields will be included in the `metadata` section of the mapped Statsig event.
