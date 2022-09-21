@@ -1,7 +1,7 @@
 ---
 title: Sequential Testing
 sidebar_label: Sequential Testing
-slug: /pulse/sequential-testing
+slug: /experiments-plus/sequential-testing
 ---
 
 ## What is Sequential Testing?
