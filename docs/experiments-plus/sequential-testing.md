@@ -12,7 +12,7 @@ This is because p-values fluctuate and are likely to drop in and out of signific
 
 In Sequential Testing, the p-values for each preliminary analysis window are adjusted to compensate for the increased false positive rate associated with peeking.  The goal is to enable early decision making when there's sufficient evidence while limiting the risk of false positives.  This can be especially valuable when regressions are detected early on.
 
-## Quick Guide: Interpreting Sequential Tesing Results
+## Quick Guide: Interpreting Sequential Testing Results
 
 Click on Edit at the top of the metrics section in Pulse to toggle Sequential Testing on/off.
 
