@@ -8,7 +8,7 @@ slug: /experiments-plus/sequential-testing
 
 Traditional A/B testing best practices dictate that the readout of experiment metrics should occur only once, when the target sample size of the experiment has been reached.  Continous monitoring for the purpose of decision making results in inflated false positive rates, much higher than expected based on the significance level selected for the test.  
 
-This is because p-values fluctuate and are likely to drop in and out of significance just by random chance, even when there is no real effect.  Continuous monitoring introduces selection bias in the date we pick for the readout: Selectively choosing a date based on the observed results is essentailly cherry-picking a stat-sig results that would never be observed if the data were to be analyzed only over the entire, pre-determined durtaion of the experiment.
+This is because p-values fluctuate and are likely to drop in and out of significance just by random chance, even when there is no real effect.  Continuous monitoring introduces selection bias in the date we pick for the readout: Selectively choosing a date based on the observed results is essentially cherry-picking a stat-sig results that would never be observed if the data were to be analyzed only over the entire, pre-determined duration of the experiment.
 
 In Sequential Testing, the p-values for each preliminary analysis window are adjusted to compensate for the increased false positive rate associated with peeking.  The goal is to enable early decision making when there's sufficient evidence while limiting the risk of false positives.  This can be especially valuable when regressions are detected early on.
 
