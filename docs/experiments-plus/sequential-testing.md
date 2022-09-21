@@ -31,7 +31,7 @@ Hover over a metric and click **View Details** to review the progression of the 
 The **Sequential Testing Z-Statistic** time series contains the following information for a metric:
 
 * **Efficacy Boundaries** (solid red and green curves): The thresholds for positive and negative statistical significance.  These start out high, signifying the increased confidence needed for making an early decision. When the target duration is reached, they converge to the standard Z-score for the selected significance level (dashed lines).
-* **Measurement Z-score** (dots): These are the Z-scores computed each day for the test vs. control comparisson.  A Z-score higher than the upper efficacy boundary is stat-sig positive.  One lower than the bottom boundary is stat-sig negative.  
+* **Measurement Z-score** (dots): These are the Z-scores computed each day for the test vs. control comparison.  A Z-score higher than the upper efficacy boundary is stat-sig positive.  One lower than the bottom boundary is stat-sig negative.  
 
 
 ## Statsig's Implementation of Sequential Testing
