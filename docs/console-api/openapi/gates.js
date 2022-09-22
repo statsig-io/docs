@@ -22,15 +22,30 @@ module.exports = {
       "gate_override": {
         "type": "object",
         "x-examples": {
-          "example-1": {
+          "Gate of id type UserID": {
             "passingUserIDs": [
               "passing-user"
             ],
             "failingUserIDs": [
               "failing-user"
             ]
+          },
+          "Gate with a customID type": {
+            "passingUserIDs": [
+              "passing-user"
+            ],
+            "failingUserIDs": [
+              "failing-user"
+            ],
+            "passingCustomIDs": [
+              "passing-custom-id"
+            ],
+            "failingCustomIDs": [
+              "failing-custom-id"
+            ]
           }
         },
+        "description": "",
         "properties": {
           "passingUserIDs": {
             "type": "array",
@@ -45,9 +60,26 @@ module.exports = {
             "items": {
               "type": "string"
             }
+          },
+          "passingCustomIDs": {
+            "type": "array",
+            "description": "An array of CustomIDs that will be forced to pass the gate (used for gates not using UserID as their idType).",
+            "items": {
+              "type": "string"
+            }
+          },
+          "failingCustomIDs": {
+            "type": "array",
+            "description": "An array of CustomIDs that will be forced to fail the gate (used for gates not using UserID as their idType).",
+            "items": {
+              "type": "string"
+            }
           }
         },
-        "description": ""
+        "required": [
+          "passingUserIDs",
+          "failingUserIDs"
+        ]
       }
     },
     "responses": {
@@ -111,10 +143,6 @@ module.exports = {
                     "description": {
                       "type": "string",
                       "description": "A summary of what this gate does"
-                    },
-                    "idType": {
-                      "type": "string",
-                      "description": "The ID type to use for evaluating this gate.  userID, stableID, or a predefined customID"
                     }
                   }
                 },
@@ -125,11 +153,7 @@ module.exports = {
                   },
                   "description": {
                     "type": "string",
-                    "description": "A description of the new gate",
-                  },
-                  "idType": {
-                    "type": "string",
-                    "description": "The ID type to use for evaluating this gate.  userID, stableID, or a predefined customID"
+                    "description": "A description of the new gate"
                   }
                 }
               },
@@ -137,8 +161,7 @@ module.exports = {
                 "example-1": {
                   "value": {
                     "name": "a gate",
-                    "description": "helpful summary of what this gate does",
-                    "idType": "stableID"
+                    "description": "helpful summary of what this gate does"
                   }
                 }
               }
@@ -200,7 +223,6 @@ module.exports = {
                       "message": "Gate created successfully.",
                       "data": {
                         "id": "a_gate",
-                        "idType": "userID",
                         "isEnabled": true,
                         "description": "helpful summary of what this gate does",
                         "lastModifierName": "CONSOLE API",
@@ -351,7 +373,6 @@ module.exports = {
                       "data": [
                         {
                           "id": "a_gate",
-                          "idType": "userID",
                           "isEnabled": true,
                           "description": "helpful summary of what this gate does",
                           "lastModifierName": "CONSOLE API",
@@ -374,7 +395,6 @@ module.exports = {
                         },
                         {
                           "id": "b_gate",
-                          "idType": "userID",
                           "isEnabled": true,
                           "description": "similar to gate_a but it has a b instead",
                           "lastModifierName": "CONSOLE API",
@@ -432,7 +452,6 @@ module.exports = {
                       "message": "Gate read successfully.",
                       "data": {
                         "id": "a_gate",
-                        "idType": "stableID",
                         "isEnabled": true,
                         "description": "helpful summary of what this gate does",
                         "lastModifierName": "CONSOLE API",
@@ -570,7 +589,6 @@ module.exports = {
                       "message": "Gate read successfully.",
                       "data": {
                         "id": "a_gate",
-                        "idType": "userID",
                         "isEnabled": true,
                         "description": "helpful summary of what this gate does",
                         "lastModifierName": "CONSOLE API",
@@ -793,38 +811,6 @@ module.exports = {
                     "value": {
                       "status": 401,
                       "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "x-examples": {
-                    "example-1": {
-                      "status": 403,
-                      "message": "Failed to delete config because it is refenced in another config"
-                    }
-                  },
-                  "properties": {
-                    "status": {
-                      "$ref": "../models/status.json"
-                    },
-                    "message": {
-                      "$ref": "../models/message.json"
-                    }
-                  }
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "status": 403,
-                      "message": "Failed to delete config because it is refenced in another config"
                     }
                   }
                 }
@@ -1193,6 +1179,14 @@ module.exports = {
               "application/json": {
                 "schema": {
                   "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
                 }
               }
             }
@@ -1222,7 +1216,204 @@ module.exports = {
               }
             }
           }
-        }
+        },
+        "description": "Set gate overrides to be provided lists"
+      },
+      "patch": {
+        "summary": "Add Gate Overrides",
+        "tags": [
+          "Gates"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Holdout Overrides updated successfully.",
+                      "data": {
+                        "passingUserIDs": [
+                          "passing-user"
+                        ],
+                        "failingUserIDs": [
+                          "failing-user"
+                        ]
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/gate_override"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Holdout Overrides updated successfully.",
+                      "data": {
+                        "passingUserIDs": [
+                          "passing-user"
+                        ],
+                        "failingUserIDs": [
+                          "failing-user"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "operationId": "patch-gates-gate_id-overrides",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/gate_override"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "passingUserIDs": [
+                      "passing-user"
+                    ],
+                    "failingUserIDs": [
+                      "failing-user"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Adds provided lists to existing gate overrides"
+      },
+      "delete": {
+        "summary": "Remove Gate Overrides",
+        "tags": [
+          "Gates"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Holdout Overrides updated successfully.",
+                      "data": {
+                        "passingUserIDs": [
+                          "passing-user"
+                        ],
+                        "failingUserIDs": [
+                          "failing-user"
+                        ]
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/gate_override"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Holdout Overrides updated successfully.",
+                      "data": {
+                        "passingUserIDs": [
+                          "passing-user"
+                        ],
+                        "failingUserIDs": [
+                          "failing-user"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "operationId": "delete-gates-gate_id-overrides",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/gate_override"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "passingUserIDs": [
+                      "passing-user"
+                    ],
+                    "failingUserIDs": [
+                      "failing-user"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Removes provided lists from existing gate overrides"
       }
     }
   }
