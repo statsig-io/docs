@@ -22,7 +22,7 @@ When enabled, an adjustment is automatically applied to results calculated befor
 
 ![image](https://user-images.githubusercontent.com/90343952/191135645-0042dced-3e8f-479f-8f63-c814dfbd4923.png)
 
-The dashed line represents the expanded confidence interval resulting from the adjsutment.  The solid bar is the standard confidence interval computed without any adjustments.  If the adjusted confience interval overalps with zero, this means the metric delta is not stat-sig at the moment, and the experiment should continue its course as planned. 
+The dashed line represents the expanded confidence interval resulting from the adjustment.  The solid bar is the standard confidence interval computed without any adjustments.  If the adjusted confidence interval overlaps with zero, this means the metric delta is not stat-sig at the moment, and the experiment should continue its course as planned. 
 
 Hover over a metric and click **View Details** to review the progression of the sequential test.  
 
