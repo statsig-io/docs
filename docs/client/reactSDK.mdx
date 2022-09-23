@@ -56,7 +56,10 @@ yarn add statsig-react
 
 How we at Statsig use the SDK, and suggested usage.
 
-At the root of your component tree, wrap your app in a `StatsigProvider` and set `waitForInitialization=true` (if you do not wait for initialization, `useGate` hooks will return false on the first render, and will only update to the actual gate value once SDK initialization completes and Gates are fetched for the passed in user. Similarly, `useConfig` and `useExperiment` will return empty dynamic configs).
+At the root of your component tree, wrap your app in a `StatsigProvider` and set `waitForInitialization=true` (if you do not wait for initialization, `useGate` hooks will return false on the first render (for any non-cached user), and will only update to the actual gate value once SDK initialization completes and Gates are fetched for the passed in user. Similarly, `useConfig` and `useExperiment` will return empty dynamic configs).  If/when the user object changes, the SDK will automatically fetch the updated values for the new user object - if `waitForInitialization` is false, and no `mountKey` is provided, this will trigger a re-render for the new user with default values, followed by a render when the values have been updated.
+
+:::info
+waitForInitialization
 
 ```react
 
