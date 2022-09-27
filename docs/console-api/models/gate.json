@@ -32,6 +32,9 @@
             }
           ]
         }
+      ],
+      "tags": [
+        "* Core"
       ]
     }
   ],
@@ -57,6 +60,18 @@
       "items": {
         "$ref": "./rule.json"
       }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Tags assigned to this gate",
+      "items": {
+        "type": "string",
+        "example": "[\"* Core\"]"
+      }
+    },
+    "checksPerHour": {
+      "type": "integer",
+      "example": 0
     }
   }
 }
