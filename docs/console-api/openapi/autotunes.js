@@ -1365,7 +1365,7 @@ module.exports = {
         }
       ],
       "put": {
-        "summary": "Start Experiment",
+        "summary": "Finish Experiment Early",
         "operationId": "put-autotunes-autotune_id-start",
         "responses": {
           "200": {
@@ -1511,7 +1511,7 @@ module.exports = {
         }
       ],
       "put": {
-        "summary": "Start Experiment",
+        "summary": "Restart Experiment",
         "operationId": "put-autotunes-autotune_id-start",
         "responses": {
           "200": {
