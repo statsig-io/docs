@@ -229,6 +229,40 @@ module.exports = {
         ],
         "description": "The \"probability of best\" threshold a variant needs to achieve for Autotune to declare it the winner, stop collecting data, and direct all traffic."
       }
+    },
+    "responses": {
+      "404": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "x-examples": {
+                "example-1": {
+                  "status": 404,
+                  "message": "Autotune Experiment not found."
+                }
+              },
+              "properties": {
+                "status": {
+                  "$ref": "../models/status.json"
+                },
+                "message": {
+                  "$ref": "../models/message.json"
+                }
+              }
+            },
+            "examples": {
+              "example-1": {
+                "value": {
+                  "status": 404,
+                  "message": "Autotune Experiment not found."
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "security": [
@@ -1204,6 +1238,367 @@ module.exports = {
                 }
               }
             }
+          },
+          "description": ""
+        },
+        "tags": [
+          "Autotunes"
+        ]
+      }
+    },
+    "/autotunes/{autotune_id}/start": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "autotune_id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "Start Experiment",
+        "operationId": "put-autotunes-autotune_id-start",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Autotune Experiment successfully started."
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Success": {
+                    "value": {
+                      "message": "Autotune Experiment successfully started."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "status": 400,
+                      "message": "Autotune experiment has finished"
+                    }
+                  }
+                },
+                "examples": {
+                  "Autotune already started": {
+                    "value": {
+                      "status": 400,
+                      "message": "Autotune experiment has already started"
+                    }
+                  },
+                  "Autotune already finished": {
+                    "value": {
+                      "status": 400,
+                      "message": "Autotune experiment has already finished"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "tags": [
+          "Autotunes"
+        ]
+      }
+    },
+    "/autotunes/{autotune_id}/make_decision": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "autotune_id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "Start Experiment",
+        "operationId": "put-autotunes-autotune_id-start",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Autotune Experiment successfully started."
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Success": {
+                    "value": {
+                      "message": "Decision made for Autotune Experiment."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 400,
+                      "message": "Autotune experiment has finished"
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Autotune has not yet started": {
+                    "value": {
+                      "status": 400,
+                      "message": "Autotune experiment has not yet started"
+                    }
+                  },
+                  "Autotune already finished": {
+                    "value": {
+                      "status": 400,
+                      "message": "Autotune experiment has already finished"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "tags": [
+          "Autotunes"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "groupID": "red",
+                    "decisionReason": "A valid reason to stop early",
+                    "removeTargeting": true
+                  }
+                },
+                "properties": {
+                  "groupID": {
+                    "type": "string",
+                    "description": "The groupID to be selected as the winner"
+                  },
+                  "decisionReason": {
+                    "type": "string",
+                    "description": "Reason for stopping the experiment early"
+                  },
+                  "removeTargeting": {
+                    "type": "boolean",
+                    "description": "Whether targetting gate should be removed"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "groupID": "red",
+                    "decisionReason": "Your reason for stopping early",
+                    "removeTargeting": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/autotunes/{autotune_id}/restart": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "autotune_id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "Start Experiment",
+        "operationId": "put-autotunes-autotune_id-start",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Autotune Experiment successfully started."
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Success": {
+                    "value": {
+                      "message": "Autotune Experiment successfully restarted."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "status": 400,
+                      "message": "Autotune experiment has finished"
+                    }
+                  }
+                },
+                "examples": {
+                  "Autotune has not yet started": {
+                    "value": {
+                      "status": 400,
+                      "message": "Autotune experiment has not yet started"
+                    }
+                  },
+                  "Autotune has not yet finished": {
+                    "value": {
+                      "status": 400,
+                      "message": "Autotune experiment has not yet finished"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
           }
         },
         "tags": [
