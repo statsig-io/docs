@@ -15,5 +15,7 @@ export default {
   gate: require("./gate.json"),
   rule: require("./rule.json"),
   condition: require("./condition.json"),
-  variant: require("./variant.json")
+  variant: require("./variant.json"),
+  audit_log: require("./audit_log.json"),
+  pagination: require("./pagination.json")
 };
