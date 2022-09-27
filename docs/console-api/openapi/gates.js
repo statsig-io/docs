@@ -227,7 +227,11 @@ module.exports = {
                         "description": "helpful summary of what this gate does",
                         "lastModifierName": "CONSOLE API",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                        "rules": []
+                        "rules": [],
+                        "tags": [
+                          "* Core"
+                        ],
+                        "checksPerHour": 0
                       }
                     }
                   }
@@ -376,7 +380,7 @@ module.exports = {
                           "isEnabled": true,
                           "description": "helpful summary of what this gate does",
                           "lastModifierName": "CONSOLE API",
-                          "lastModifierID": "aiK7Y0FdTimICpPEdUrf2",
+                          "lastModifierID": "aiK7Y0FddfTimfadf2f9vacz",
                           "rules": [
                             {
                               "name": "a rule",
@@ -391,15 +395,11 @@ module.exports = {
                                 }
                               ]
                             }
-                          ]
-                        },
-                        {
-                          "id": "b_gate",
-                          "isEnabled": true,
-                          "description": "similar to gate_a but it has a b instead",
-                          "lastModifierName": "CONSOLE API",
-                          "lastModifierID": "jd7G9DSiwimICpPjdTl4U8g",
-                          "rules": []
+                          ],
+                          "tags": [
+                            "* Core"
+                          ],
+                          "checksPerHour": 0
                         }
                       ]
                     }
@@ -607,7 +607,11 @@ module.exports = {
                               }
                             ]
                           }
-                        ]
+                        ],
+                        "tags": [
+                          "* Core"
+                        ],
+                        "checksPerHour": 0
                       }
                     }
                   }
@@ -680,7 +684,38 @@ module.exports = {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/gate.json"
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "isEnabled": true,
+                    "description": "updated summary of what this gate does",
+                    "rules": [
+                      {
+                        "name": "10 percent of all",
+                        "passPercentage": 10,
+                        "conditions": [
+                          {
+                            "type": "public"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "properties": {
+                  "isEnabled": {
+                    "type": "boolean"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "rules": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "../models/rule.json"
+                    }
+                  }
+                }
               },
               "examples": {
                 "example-1": {
@@ -710,7 +745,7 @@ module.exports = {
               }
             }
           },
-          "description": "The fields you wish to override in the given gate"
+          "description": ""
         },
         "responses": {
           "200": {
@@ -761,6 +796,40 @@ module.exports = {
                         ]
                       }
                     ]
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "string",
+                      "data": {
+                        "id": "a_gate",
+                        "isEnabled": true,
+                        "description": "helpful summary of what this gate does",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaasdfLlkaujjajiuOSBP2",
+                        "rules": [
+                          {
+                            "name": "email gate",
+                            "passPercentage": 10,
+                            "conditions": [
+                              {
+                                "type": "email",
+                                "operator": "str_contains_any",
+                                "targetValue": [
+                                  "@outlook.com",
+                                  "@gmail.com"
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "tags": [
+                          "* Core"
+                        ],
+                        "checksPerHour": 0
+                      }
+                    }
                   }
                 }
               }
@@ -912,20 +981,29 @@ module.exports = {
                       "data": {
                         "id": "a_gate",
                         "isEnabled": true,
-                        "description": "updated summary of what this gate does",
+                        "description": "helpful summary of what this gate does",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "1vaasdfLlkaujjajiuOSBP2",
                         "rules": [
                           {
-                            "name": "10 percent of all",
-                            "passPercentage": 100,
+                            "name": "email check",
+                            "passPercentage": 10,
                             "conditions": [
                               {
-                                "type": "public"
+                                "type": "email",
+                                "operator": "str_contains_any",
+                                "targetValue": [
+                                  "@outlook.com",
+                                  "@gmail.com"
+                                ]
                               }
                             ]
                           }
-                        ]
+                        ],
+                        "tags": [
+                          "* Core"
+                        ],
+                        "checksPerHour": 0
                       }
                     }
                   }
