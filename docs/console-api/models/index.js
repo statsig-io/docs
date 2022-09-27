@@ -16,5 +16,6 @@ export default {
   rule: require("./rule.json"),
   condition: require("./condition.json"),
   variant: require("./variant.json"),
-  audit_log: require("./audit_log.json")
+  audit_log: require("./audit_log.json"),
+  pagination: require("./pagination.json")
 };

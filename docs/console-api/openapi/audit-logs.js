@@ -51,35 +51,8 @@ module.exports = {
                         "$ref": "../models/audit_log.json"
                       }
                     },
-                    "itemsPerPage": {
-                      "title": "pagination",
-                      "description": "Number of items per page",
-                      "type": "number"
-                    },
-                    "pageNumber": {
-                      "title": "pagination",
-                      "description": "The page number",
-                      "type": "number"
-                    },
-                    "totalItems": {
-                      "title": "pagination",
-                      "description": "Total number of items across all pages",
-                      "type": "number"
-                    },
-                    "nextPage": {
-                      "title": "pagination",
-                      "description": "API endpoint to return next page",
-                      "type": "string"
-                    },
-                    "previousPage": {
-                      "title": "pagination",
-                      "description": "API endpoint to return previous page",
-                      "type": "string"
-                    },
-                    "all": {
-                      "title": "pagination",
-                      "description": "API endpoint to return all items",
-                      "type": "string"
+                    "pagination": {
+                      "$ref": "../models/pagination.json"
                     }
                   }
                 },
@@ -113,12 +86,14 @@ module.exports = {
                           "updatedBy": "John Doe"
                         }
                       ],
-                      "itemsPerPage": 3,
-                      "pageNumber": 2,
-                      "totalItems": 829,
-                      "nextPage": "latest.statsigapi.net/console/v1/audit_logs?page=3&limit=3",
-                      "previousPage": "latest.statsigapi.net/console/v1/audit_logs?page=1&limit=3",
-                      "all": "latest.statsigapi.net/console/v1/audit_logs"
+                      "pagination": {
+                        "itemsPerPage": 3,
+                        "pageNumber": 2,
+                        "totalItems": 829,
+                        "nextPage": "statsigapi.net/console/v1/audit_logs?page=3&limit=3",
+                        "previousPage": "statsigapi.net/console/v1/audit_logs?page=1&limit=3",
+                        "all": "statsigapi.net/console/v1/audit_logs"
+                      }
                     }
                   }
                 }
@@ -149,7 +124,7 @@ module.exports = {
               "content-length": {
                 "schema": {
                   "type": "integer",
-                  "example": "45"
+                  "example": 45
                 }
               },
               "Date": {
@@ -209,8 +184,8 @@ module.exports = {
         },
         {
           "schema": {
-            "type": "string",
-            "example": "5"
+            "type": "number",
+            "example": 5
           },
           "name": "limit",
           "in": "query",
@@ -220,7 +195,7 @@ module.exports = {
         {
           "schema": {
             "type": "number",
-            "example": "1"
+            "example": 1
           },
           "name": "page",
           "in": "query",
@@ -228,6 +203,6 @@ module.exports = {
           "description": "The page number to return"
         }
       ]
-    },
+    }
   }
 }
