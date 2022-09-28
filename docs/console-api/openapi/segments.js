@@ -815,7 +815,7 @@ module.exports = {
                   "x-examples": {
                     "example-1": {
                       "status": 400,
-                      "message": "Segment must be of type 'id_list' to be modified"
+                      "message": "Segment must be of type 'rule_based' to be modified"
                     }
                   }
                 },
