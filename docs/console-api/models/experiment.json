@@ -119,14 +119,14 @@
       "type": "array",
       "description": "Main metrics needed to evaluate your hypothesis",
       "items": {
-        "$ref": "./experiment_metric.json"
+        "$ref": "./experimentMetric.json"
       }
     },
     "secondaryMetrics": {
       "type": "array",
       "description": "Additional metric you may want to monitor that might impact the analysis or final decision of the experiment",
       "items": {
-        "$ref": "./experiment_metric.json"
+        "$ref": "./experimentMetric.json"
       }
     },
     "groups": {
@@ -184,6 +184,13 @@
     "bonferroniCorrection": {
       "type": "boolean",
       "description": "Is Bonferroni correction applied?"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "example": "[\"* Core\"]"
+      }
     }
   },
   "required": [
@@ -196,6 +203,7 @@
     "groups",
     "allocation",
     "defaultConfidenceInterval",
-    "bonferroniCorrection"
+    "bonferroniCorrection",
+    "tags"
   ]
 }
