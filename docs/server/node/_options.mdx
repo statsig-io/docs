@@ -19,3 +19,7 @@
   - disables all network access, so the SDK will only return default (or overridden) values.  Useful in testing
 - **initTimeoutMs**: number, default 0
   - sets a maximum time to wait for the config download network request to resolve before considering the SDK initialized and resolving the call to `initialize()`
+- **dataAdapter**: IDataAdapter, default null
+  - An adapter with custom storage behavior for config specs. Can be used to bootstrap Statsig server (takes priority over `bootstrapValues`).
+  - For example, see our 1P implementation via Redis [statsig-node-redis](https://github.com/statsig-io/node-js-server-sdk-redis).
+

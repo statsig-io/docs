@@ -43,3 +43,14 @@ export type StatsigEnvironment = {
   rulesUpdatedCallback: function;
 };
 ```
+
+### Interface IDataAdapter
+
+```typescript
+export interface IDataAdapter {
+  get(key: string): Promise<AdapterResponse>;
+  set(key: string, value: string, time?: number): Promise<void>;
+  initialize(): Promise<void>;
+  shutdown(): Promise<void>;
+}
+```
