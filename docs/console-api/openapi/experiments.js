@@ -406,7 +406,10 @@ module.exports = {
                         "duration": 14,
                         "targetingGateID": "",
                         "defaultConfidenceInterval": "95",
-                        "bonferroniCorrection": false
+                        "bonferroniCorrection": false,
+                        "tags": [
+                          "* Core"
+                        ]
                       }
                     }
                   }
@@ -566,7 +569,10 @@ module.exports = {
                           "allocation": 100,
                           "targetingGateID": "test_public",
                           "defaultConfidenceInterval": "95",
-                          "bonferroniCorrection": false
+                          "bonferroniCorrection": false,
+                          "tags": [
+                            "* Core"
+                          ]
                         }
                       ]
                     }
@@ -793,7 +799,10 @@ module.exports = {
                         "duration": 14,
                         "targetingGateID": "",
                         "defaultConfidenceInterval": "95",
-                        "bonferroniCorrection": false
+                        "bonferroniCorrection": false,
+                        "tags": [
+                          "* Core"
+                        ]
                       }
                     }
                   }
@@ -880,6 +889,57 @@ module.exports = {
                         ]
                       }
                     ]
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "string",
+                      "data": {
+                        "id": "a_experiment",
+                        "description": "a helpful summary of what this experiment does",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "f0JAV9dd7KF0sUbi1DHWB",
+                        "idType": "userID",
+                        "status": "setup",
+                        "layerID": "layer1",
+                        "hypothesis": "Does 1 or 0 work better?",
+                        "primaryMetrics": [
+                          {
+                            "name": "l14",
+                            "type": "user"
+                          }
+                        ],
+                        "secondaryMetrics": [
+                          {
+                            "name": "mau_28d",
+                            "type": "user"
+                          }
+                        ],
+                        "groups": [
+                          {
+                            "name": "group1",
+                            "size": 50,
+                            "parameterValues": {
+                              "key": 1
+                            }
+                          },
+                          {
+                            "name": "gruop2",
+                            "size": 50,
+                            "parameterValues": {
+                              "key": 0
+                            }
+                          }
+                        ],
+                        "allocation": 50.46,
+                        "duration": 14,
+                        "targetingGateID": "a_gate",
+                        "defaultConfidenceInterval": "95",
+                        "bonferroniCorrection": false,
+                        "tags": []
+                      }
+                    }
                   }
                 }
               }
@@ -1137,6 +1197,57 @@ module.exports = {
                     },
                     "data": {
                       "$ref": "../models/experiment.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "string",
+                      "data": {
+                        "id": "a_experiment",
+                        "description": "a helpful summary of what this experiment does",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "f0JAV9dd7KF0sUbi1DHWB",
+                        "idType": "userID",
+                        "status": "setup",
+                        "layerID": "layer1",
+                        "hypothesis": "Does 1 or 0 work better?",
+                        "primaryMetrics": [
+                          {
+                            "name": "l14",
+                            "type": "user"
+                          }
+                        ],
+                        "secondaryMetrics": [
+                          {
+                            "name": "mau_28d",
+                            "type": "user"
+                          }
+                        ],
+                        "groups": [
+                          {
+                            "name": "group1",
+                            "size": 50,
+                            "parameterValues": {
+                              "key": 1
+                            }
+                          },
+                          {
+                            "name": "gruop2",
+                            "size": 50,
+                            "parameterValues": {
+                              "key": 0
+                            }
+                          }
+                        ],
+                        "allocation": 50.46,
+                        "duration": 14,
+                        "targetingGateID": "a_gate",
+                        "defaultConfidenceInterval": "95",
+                        "bonferroniCorrection": false,
+                        "tags": []
+                      }
                     }
                   }
                 }
