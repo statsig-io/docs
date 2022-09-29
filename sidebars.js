@@ -112,6 +112,7 @@ module.exports = {
         "experiments-plus/getting-group",
         "experiments-plus/monitor",
         "experiments-plus/read-results",
+        "experiments-plus/sequential-testing",
         "experiments-plus/make-decision",
         "experiments-plus/overrides",
         "experiments-plus/disable-group",
