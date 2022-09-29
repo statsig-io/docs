@@ -6,6 +6,7 @@
   "type": "object",
   "x-examples": {
     "example-1": {
+      "id": "19LZJaPtCM4GT1sUbWlqVC",
       "name": "check_employee",
       "changeLog": "Removed Tag from Config",
       "actionType": "config_remove_tag",

@@ -62,6 +62,7 @@ module.exports = {
                       "message": "Audit logs listed successfully.",
                       "data": [
                         {
+                          "id": "25KPZcLjTY7AS1uZdBolPZ",
                           "name": "test_gate_1",
                           "changeLog": "Created Gate",
                           "actionType": "gate_create",
@@ -70,6 +71,7 @@ module.exports = {
                           "updatedBy": "Jane Doe"
                         },
                         {
+                          "id": "19LZJaPtCM4GT1sUbWlqVC",
                           "name": "check_employee",
                           "changeLog": "Removed Tag from Config",
                           "actionType": "config_remove_tag",
@@ -78,6 +80,7 @@ module.exports = {
                           "updatedBy": "John Doe"
                         },
                         {
+                          "id": "76LGVrItCR9WE1iDfNmpHT",
                           "name": "check_employee",
                           "changeLog": "Removed Tag from Config",
                           "actionType": "config_remove_tag",
@@ -201,6 +204,36 @@ module.exports = {
           "in": "query",
           "required": false,
           "description": "The page number to return"
+        },
+        {
+          "schema": {
+            "type": "string",
+            "example": "time"
+          },
+          "name": "sortKey",
+          "in": "query",
+          "required": false,
+          "description": "The key to sort by (default is time)"
+        },
+        {
+          "schema": {
+            "type": "string",
+            "example": "desc"
+          },
+          "name": "sortOrder",
+          "in": "query",
+          "required": false,
+          "description": "The order to sort in (default is desc)"
+        },
+        {
+          "schema": {
+            "type": "string",
+            "example": "25KPZcLjTY7AS1uZdBolPZ"
+          },
+          "name": "latestID",
+          "in": "query",
+          "required": false,
+          "description": "If specified, returns up to the specified audit log (exclusive) "
         }
       ]
     }
