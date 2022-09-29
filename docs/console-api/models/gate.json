@@ -33,6 +33,28 @@
           ]
         }
       ],
+      "devRules": [
+        {
+          "name": "ten percent of people",
+          "passPercentage": 10,
+          "conditions": [
+            {
+              "type": "public"
+            }
+          ]
+        }
+      ],
+      "stagingRules": [
+        {
+          "name": "everyone",
+          "passPercentage": 100,
+          "conditions": [
+            {
+              "type": "public"
+            }
+          ]
+        }
+      ],
       "tags": [
         "* Core"
       ]
@@ -56,6 +78,18 @@
       "type": "string"
     },
     "rules": {
+      "type": "array",
+      "items": {
+        "$ref": "./rule.json"
+      }
+    },
+    "devRules": {
+      "type": "array",
+      "items": {
+        "$ref": "./rule.json"
+      }
+    },
+    "stagingRules": {
       "type": "array",
       "items": {
         "$ref": "./rule.json"
