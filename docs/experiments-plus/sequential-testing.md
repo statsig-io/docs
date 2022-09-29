@@ -28,7 +28,7 @@ The dashed line represents the expanded confidence interval resulting from the a
 
 Hover over a metric and click **View Details** to review the progression of the sequential test.  
 
-(screen shot coming)
+![image](https://user-images.githubusercontent.com/90343952/193104948-c702a3b1-e0e1-4fda-9691-c5252e919d22.png)
 
 The **Sequential Testing Z-Statistic** time series contains the following information for a metric:
 
