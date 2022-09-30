@@ -309,8 +309,8 @@ module.exports = {
               }
             }
           },
-          "403": {
-            "description": "Forbidden",
+          "401": {
+            "description": "Unauthorized",
             "content": {
               "application/json": {
                 "schema": {
