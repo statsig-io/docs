@@ -1279,12 +1279,12 @@ module.exports = {
                     "isEnabled": true
                   }
                 },
-                "example-3": {
+                "update description": {
                   "value": {
                     "description": "Just update the description"
                   }
                 },
-                "example-4": {
+                "partial update": {
                   "value": {
                     "isEnabled": true,
                     "description": "string",
