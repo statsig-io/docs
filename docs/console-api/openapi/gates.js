@@ -892,8 +892,30 @@ module.exports = {
                         "lastModifierID": "1vaasdfLlkaujjajiuOSBP2",
                         "rules": [
                           {
-                            "name": "email gate",
-                            "passPercentage": 10,
+                            "name": "everyone",
+                            "passPercentage": 100,
+                            "type": "public"
+                          }
+                        ],
+                        "devRules": [
+                          {
+                            "name": "all outlook",
+                            "passPercentage": 100,
+                            "conditions": [
+                              {
+                                "type": "email",
+                                "operator": "str_contains_any",
+                                "targetValue": [
+                                  "@outlook.com"
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "stagingRules": [
+                          {
+                            "name": "all outlook and gmail",
+                            "passPercentage": 100,
                             "conditions": [
                               {
                                 "type": "email",
