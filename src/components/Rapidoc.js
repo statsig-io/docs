@@ -135,8 +135,8 @@ function getDescription(entity){
   switch(entity){
     case 'gates':
       return <>
-        <p>A feature <a href="../feature-gates/working-with">gate</a> is a mechanism for teams to configure what system behavior is visible to users without changing application code. This page describes how gates can be created and modified through the console API.</p>
-        <p>For more detail on creating user targeting based on Statsig-derived environment attributes such as location, client device, browser type, and client app version, see the console API <a href="./rules#rule">Rules</a> page where all conditions are listed.</p>
+        <p>A feature <a href="../feature-gates/working-with">gate</a> is a mechanism for teams to configure what system behavior is visible to users without changing application code. This page describes how gates can be created and modified through the Console API.</p>
+        <p>For more detail on creating user targeting based on Statsig-derived environment attributes such as location, client device, browser type, and client app version, see the Console API <a href="./rules#rule">Rules</a> page where all conditions are listed.</p>
         <h2>Gate API functions</h2>
         <ul>
           <li>Create a new gate</li>
@@ -147,7 +147,7 @@ function getDescription(entity){
         </ul>
         <h2>Authorization</h2>
         All requests must include the STATSIG-API-KEY field in the header. The value should be a Console API Key which can be created in the Project Settings on console.statsig.com/api_keys. <br/>
-        To use the 'try it' section on this page, enter your console API into the box below.
+        To use the 'try it' section on this page, enter your Console API into the box below.
         <hr/>
         
         </>
