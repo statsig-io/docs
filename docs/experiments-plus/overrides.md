@@ -12,7 +12,7 @@ Overrides can be added based on Feature Gates and Segments, and will allow you t
 
 :::info Note
 - For Experiments that are in a Layer, the overrides are set at the Layer level, and a user can only be overridden in to one Experiment within that Layer.
-- When you add an override to an Experiment, the metrics for users allocated to the group via the override will not be counted towards the Pulse results for that group. As a result, adding overrides that change the allocation for a significant number of users can have adverse effects on the reliability of your experiment results.
+- Users in overrides are excluded from Pulse results. Since these users are not randomized, we purposely exclude them from experimental results. Adding a large number of users to the override can affect the reliability of your experimental results.
 :::
 
 ### Adding an Override
