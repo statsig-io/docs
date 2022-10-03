@@ -18,42 +18,6 @@ module.exports = {
       }
     },
     "responses": {
-      "400": {
-        "description": "Example response",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "x-examples": {
-                "example-1": {
-                  "status": 400,
-                  "message": "Segment must be of type 'id_list' to be modified"
-                }
-              },
-              "properties": {
-                "status": {
-                  "$ref": "../models/status.json"
-                },
-                "message": {
-                  "$ref": "../models/message.json"
-                }
-              },
-              "required": [
-                "status",
-                "message"
-              ]
-            },
-            "examples": {
-              "example-1": {
-                "value": {
-                  "status": 400,
-                  "message": "Segment must be of type 'id_list' to be modified"
-                }
-              }
-            }
-          }
-        }
-      },
       "404": {
         "description": "Example response",
         "content": {
@@ -571,7 +535,36 @@ module.exports = {
             }
           },
           "400": {
-            "$ref": "#/components/responses/400"
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 400,
+                      "message": "Segment must be of type 'id_list' to be modified"
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 400,
+                      "message": "Segment must be of type 'id_list' to be modified on this endpoint"
+                    }
+                  }
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -662,8 +655,37 @@ module.exports = {
               }
             }
           },
-          "201": {
-            "$ref": "#/components/responses/400"
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 400,
+                      "message": "Segment must be of type 'id_list' to be modified on this endpoint"
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 400,
+                      "message": "Segment must be of type 'id_list' to be modified on this endpoint"
+                    }
+                  }
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -722,6 +744,155 @@ module.exports = {
             }
           }
         }
+      }
+    },
+    "/segments/{segment_id}/conditional": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "segment_id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Update Segment Rules",
+        "operationId": "post-segments-segment_id-conditional",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Rules successfully updated"
+                    }
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": "{\n    \"message\": \"Rules successfully updated\"\n}"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "status": 400,
+                      "message": "Segment must be of type 'rule_based' to be modified"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 400,
+                      "message": "Segment must be of type 'rule_based' to be modified on this endpoint"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "passPercentage": {
+                      "type": "integer"
+                    },
+                    "conditions": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "../models/condition.json"
+                      }
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": [
+                    {
+                      "name": "App version check",
+                      "passPercentage": 10,
+                      "conditions": [
+                        {
+                          "type": "app_version",
+                          "operator": "version_gt",
+                          "targetValue": [
+                            "1.1.1"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "",
+        "tags": [
+          "Segments"
+        ]
       }
     }
   }
