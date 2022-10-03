@@ -117,6 +117,7 @@ export default function Rapidoc(props) {
         allow-authentication={true} // Enable user passing STATSIG-API-KEY at top of file
         regular-font={["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Ubuntu", "sans-serif"]}
       >
+        <p slot="overview">{getDescription(entity)}</p>
         <p slot="auth" style={{color:'#E05550'}}>
           Warning! You will be directly modifying the project connected to the api-key provided.
         </p>
@@ -127,4 +128,32 @@ export default function Rapidoc(props) {
     );
   }
   return <div />;
+}
+
+
+function getDescription(entity){
+  switch(entity){
+    case 'gates':
+      return <>
+        <p>A feature <a href="../feature-gates/working-with">gate</a> is a mechanism for teams to configure what system behavior is visible to users without changing application code. This page describes how gates can be created and modified through the Console API.</p>
+        <p>For more detail on creating user targeting based on Statsig-derived environment attributes such as location, client device, browser type, and client app version, see the Console API <a href="./rules#rule">Rules</a> page where all conditions are listed.</p>
+        <h2>Gate API functions</h2>
+        <ul>
+          <li>Create a new gate</li>
+          <li>Read data from individual/all existing gates</li>
+          <li>Update individual/all properties of gates</li>
+          <li>Delete gates</li>
+          <li>Update gate overrides</li>
+        </ul>
+        <h2>Authorization</h2>
+        All requests must include the STATSIG-API-KEY field in the header. The value should be a Console API Key which can be created in the Project Settings on console.statsig.com/api_keys. <br/>
+        To use the 'try it' section on this page, enter your Console API into the box below.
+        <hr/>
+        
+        </>
+      // return <>Feature gates make use of <a href="./rules#rule">Rules</a> to turn system functions on or off.</>
+    case 'segments':
+      return <>Segments make use of <a href="./rules">Conditionals</a> and id list to filter users.</>
+
+  }
 }

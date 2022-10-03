@@ -264,7 +264,8 @@ module.exports = {
         "console-api/audit-logs",
         "console-api/autotunes",
         "console-api/daily-reports",
-        "console-api/all-endpoints"
+        "console-api/all-endpoints",
+        "console-api/rules"
       ],
     },
     {
