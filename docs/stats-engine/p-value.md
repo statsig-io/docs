@@ -4,7 +4,7 @@ sidebar_label: p-Values
 slug: /stats-engine/p-value
 ---
 
-In hypothesis testing, the p-value is the probability of observing an effect larger than or equal to the measured metric delta, under the assumption that the null hypothesis is true.  In other words, the smaller the p-value the higher the probability that there is a true difference between the test and control group.
+In hypothesis testing, the p-value is the probability of observing an effect larger than or equal to the measured metric delta, under the assumption that the null hypothesis is true.  In practice, a p-value that's lower than your pre-defined threshold is treated as evidence for there being a true effect.
 
 The methodology used for p-value calculation depends on the number of degrees of freedom (*&nu;*).  A two-sample z-test is appropriate for most experiments.  Welch's t-test is used for smaller experiments with *&nu; < 100*.  In both cases, the p-value depends on the metric [mean](https://docs.statsig.com/stats-engine/metric-deltas) and [variance](https://docs.statsig.com/stats-engine/variance) computed for the test and control groups.
 
