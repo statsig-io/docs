@@ -139,7 +139,7 @@ function getDescription(entity){
         <p>For more detail on creating user targeting based on Statsig-derived environment attributes such as location, client device, browser type, and client app version, see the console API <a href="./rules#rule">Rules</a> page where all conditions are listed.</p>
         <h2>Gate API functions</h2>
         <ul>
-          <li>Create new gate</li>
+          <li>Create a new gate</li>
           <li>Read data from individual/all existing gates</li>
           <li>Update individual/all properties of gates</li>
           <li>Delete gates</li>
