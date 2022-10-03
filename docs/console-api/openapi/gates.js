@@ -2,8 +2,7 @@ module.exports = {
   "openapi": "3.0.0",
   "info": {
     "title": "console/v1",
-    "version": "1.0.0",
-    "description": "Gate endpoint"
+    "version": "1.0.0"
   },
   "servers": [
     {
@@ -228,9 +227,9 @@ module.exports = {
                         "lastModifierName": "CONSOLE API",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "rules": [],
-                        "tags": [
-                          "* Core"
-                        ],
+                        "devRules": [],
+                        "stagingRules": [],
+                        "tags": [],
                         "checksPerHour": 0
                       }
                     }
@@ -309,8 +308,8 @@ module.exports = {
               }
             }
           },
-          "403": {
-            "description": "Forbidden",
+          "401": {
+            "description": "Unauthorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -392,6 +391,28 @@ module.exports = {
                                     "user1"
                                   ],
                                   "operator": "any"
+                                }
+                              ]
+                            }
+                          ],
+                          "devRules": [
+                            {
+                              "name": "ten percent of people",
+                              "passPercentage": 10,
+                              "conditions": [
+                                {
+                                  "type": "public"
+                                }
+                              ]
+                            }
+                          ],
+                          "stagingRules": [
+                            {
+                              "name": "everyone",
+                              "passPercentage": 100,
+                              "conditions": [
+                                {
+                                  "type": "public"
                                 }
                               ]
                             }
@@ -608,6 +629,28 @@ module.exports = {
                             ]
                           }
                         ],
+                        "devRules": [
+                          {
+                            "name": "ten percent of people",
+                            "passPercentage": 10,
+                            "conditions": [
+                              {
+                                "type": "public"
+                              }
+                            ]
+                          }
+                        ],
+                        "stagingRules": [
+                          {
+                            "name": "everyone",
+                            "passPercentage": 100,
+                            "conditions": [
+                              {
+                                "type": "public"
+                              }
+                            ]
+                          }
+                        ],
                         "tags": [
                           "* Core"
                         ],
@@ -714,6 +757,18 @@ module.exports = {
                     "items": {
                       "$ref": "../models/rule.json"
                     }
+                  },
+                  "devRules": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "../models/rule.json"
+                    }
+                  },
+                  "stagingRules": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "../models/rule.json"
+                    }
                   }
                 }
               },
@@ -726,8 +781,34 @@ module.exports = {
                     "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
                     "rules": [
                       {
-                        "name": "new rules",
-                        "passPercentage": 10,
+                        "name": "everyone",
+                        "passPercentage": 100,
+                        "conditions": [
+                          {
+                            "type": "public"
+                          }
+                        ]
+                      }
+                    ],
+                    "devRules": [
+                      {
+                        "name": "all outlook",
+                        "passPercentage": 100,
+                        "conditions": [
+                          {
+                            "type": "email",
+                            "operator": "str_contains_any",
+                            "targetValue": [
+                              "@outlook.com"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "stagingRules": [
+                      {
+                        "name": "all outlook and gmail",
+                        "passPercentage": 100,
                         "conditions": [
                           {
                             "type": "email",
@@ -810,8 +891,30 @@ module.exports = {
                         "lastModifierID": "1vaasdfLlkaujjajiuOSBP2",
                         "rules": [
                           {
-                            "name": "email gate",
-                            "passPercentage": 10,
+                            "name": "everyone",
+                            "passPercentage": 100,
+                            "type": "public"
+                          }
+                        ],
+                        "devRules": [
+                          {
+                            "name": "all outlook",
+                            "passPercentage": 100,
+                            "conditions": [
+                              {
+                                "type": "email",
+                                "operator": "str_contains_any",
+                                "targetValue": [
+                                  "@outlook.com"
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "stagingRules": [
+                          {
+                            "name": "all outlook and gmail",
+                            "passPercentage": 100,
                             "conditions": [
                               {
                                 "type": "email",
@@ -866,7 +969,31 @@ module.exports = {
         "summary": "Delete Gate",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/404"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Gate deleted successfully."
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Gate deleted successfully."
+                    }
+                  }
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -980,14 +1107,40 @@ module.exports = {
                       "message": "Gate updated successfully.",
                       "data": {
                         "id": "a_gate",
-                        "isEnabled": true,
-                        "description": "helpful summary of what this gate does",
                         "lastModifierName": "CONSOLE API",
                         "lastModifierID": "1vaasdfLlkaujjajiuOSBP2",
+                        "isEnabled": false,
+                        "description": "helpful summary of what this gate does",
                         "rules": [
                           {
-                            "name": "email check",
-                            "passPercentage": 10,
+                            "name": "everyone",
+                            "passPercentage": 100,
+                            "conditions": [
+                              {
+                                "type": "public"
+                              }
+                            ]
+                          }
+                        ],
+                        "devRules": [
+                          {
+                            "name": "all outlook",
+                            "passPercentage": 100,
+                            "conditions": [
+                              {
+                                "type": "email",
+                                "operator": "str_contains_any",
+                                "targetValue": [
+                                  "@outlook.com"
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "stagingRules": [
+                          {
+                            "name": "all outlook and gmail",
+                            "passPercentage": 100,
                             "conditions": [
                               {
                                 "type": "email",
@@ -999,11 +1152,7 @@ module.exports = {
                               }
                             ]
                           }
-                        ],
-                        "tags": [
-                          "* Core"
-                        ],
-                        "checksPerHour": 0
+                        ]
                       }
                     }
                   }
@@ -1074,31 +1223,86 @@ module.exports = {
                 }
               },
               "examples": {
-                "example-1": {
+                "full update": {
                   "value": {
-                    "isEnabled": true,
-                    "description": "updated summary of what this gate does",
+                    "isEnabled": false,
+                    "description": "helpful summary of what this gate does",
+                    "lastModifierName": "CONSOLE API",
+                    "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
                     "rules": [
                       {
-                        "name": "10 percent of all",
-                        "passPercentage": 10,
+                        "name": "everyone",
+                        "passPercentage": 100,
                         "conditions": [
                           {
                             "type": "public"
                           }
                         ]
                       }
+                    ],
+                    "devRules": [
+                      {
+                        "name": "all outlook",
+                        "passPercentage": 100,
+                        "conditions": [
+                          {
+                            "type": "email",
+                            "operator": "str_contains_any",
+                            "targetValue": [
+                              "@outlook.com"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "stagingRules": [
+                      {
+                        "name": "all outlook and gmail",
+                        "passPercentage": 100,
+                        "conditions": [
+                          {
+                            "type": "email",
+                            "operator": "str_contains_any",
+                            "targetValue": [
+                              "@outlook.com",
+                              "@gmail.com"
+                            ]
+                          }
+                        ]
+                      }
                     ]
                   }
                 },
-                "example-2": {
+                "update isEnabled": {
                   "value": {
                     "isEnabled": true
                   }
                 },
-                "example-3": {
+                "update description": {
                   "value": {
                     "description": "Just update the description"
+                  }
+                },
+                "partial update": {
+                  "value": {
+                    "isEnabled": true,
+                    "description": "string",
+                    "rules": [
+                      {
+                        "name": "string",
+                        "passPercentage": 0,
+                        "conditions": [
+                          {
+                            "type": "string",
+                            "operator": "string",
+                            "targetValue": 0,
+                            "field": "string",
+                            "customID": "string"
+                          }
+                        ],
+                        "returnValue": {}
+                      }
+                    ]
                   }
                 }
               }
@@ -1136,6 +1340,19 @@ module.exports = {
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Gate Overrides read successfully.",
+                      "data": {
+                        "passingUserIDs": [],
+                        "failingUserIDs": [
+                          "failing-user"
+                        ],
+                        "passingCustomIDs": [],
+                        "failingCustomIDs": []
+                      }
+                    }
+                  },
                   "properties": {
                     "message": {
                       "type": "string"
@@ -1154,19 +1371,39 @@ module.exports = {
                           "items": {
                             "type": "string"
                           }
+                        },
+                        "passingCustomIDs": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "failingCustomIDs": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
                         }
                       }
                     }
-                  },
-                  "x-examples": {
-                    "example-1": {
-                      "message": "Holdout Overrides updated successfully.",
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Gate Overrides read successfully.",
                       "data": {
                         "passingUserIDs": [
                           "passing-user"
                         ],
                         "failingUserIDs": [
                           "failing-user"
+                        ],
+                        "passingCustomIDs": [
+                          "passing-custom-id"
+                        ],
+                        "failingCustomIDs": [
+                          "passing-custom-id"
                         ]
                       }
                     }
