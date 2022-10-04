@@ -10,12 +10,19 @@ import TabItem from "@theme/TabItem";
   <TabItem value="java">
 
 ```java
-Future<DynamicConfig> configFuture = Statsig.getExperiment(user, "new_user_promo");
-DynamicConfig expConfig = configFuture.get();
+// Values via getLayer
 
+Layer layer = Statsig.getLayerAsync(user, "user_promo_experiments").get();
+String promoTitle = layer.getString("title", "Welcome to Statsig!");
+Double discount = layer.getDouble("discount", 0.1);
 
-String promoTitle = expConfig.getString("title", "Welcome to Statsig! Use discount code WELCOME10OFF for 10% off your first purchase!");
-Double discount = expConfig.getDouble("discount", 0.1);
+// or, via getExperiment
+
+DynamicConfig titleExperiment = Statsig.getExperimentAsync(user, "new_user_promo_title").get();
+DynamicConfig priceExperiment = Statsig.getExperimentAsync(user, "new_user_promo_price").get();
+
+String promoTitle = titleExperiment.getString("title", "Welcome to Statsig!");
+Double discount = priceExperiment.getDouble("discount", 0.1);
 
 ...
 
@@ -26,14 +33,24 @@ Double price = msrp * (1 - discount);
   <TabItem value="kotlin">
 
 ```kotlin
-val expConfig = async { Statsig.getExperiment("new_user_promo") }.await()
+// Values via getLayer
 
-val promoTitle = expConfig.getString("title", "Welcome to Statsig! Use discount code WELCOME10OFF for 10% off your first purchase!")
-val discount = expConfig.getDouble("discount", 0.1)
+val layer = Statsig.getLayer(user, "user_promo_experiments")
+val promoTitle = layer.getString("title", "Welcome to Statsig!")
+val discount = layer.getDouble("discount", 0.1)
+
+// or, via getExperiment
+
+val titleExperiment = Statsig.getExperiment(user, "new_user_promo_title")
+val priceExperiment = Statsig.getExperiment(user, "new_user_promo_price")
+
+val promoTitle = titleExperiment.getString("title", "Welcome to Statsig!")
+val discount = priceExperiment.getDouble("discount", 0.1)
 
 ...
 
-val price = msrp * (1 - discount);
+val price = msrp * (1 - discount)
+
 ```
 
   </TabItem>
