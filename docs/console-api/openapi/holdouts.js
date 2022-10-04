@@ -616,6 +616,9 @@ module.exports = {
                   "properties": {
                     "message": {
                       "$ref": "../models/message.json"
+                    },
+                    "data": {
+                      "$ref": "../models/holdout.json"
                     }
                   }
                 },
