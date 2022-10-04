@@ -167,27 +167,6 @@ curl \
 Response:
 `{"name":"YOUR-LAYER-NAME","value":{"color":"blue","shape":"circle"},"ruleID":"2OZdhuDfq3w1UIHovUFRBM", "allocatedExperimentName": "a_experiment"}`
 
-##### Export Report {#export-report}
-:::info
-This is available for Enterprise contracts and needs to be enabled for you, once. Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you want this enabled.
-:::
-
-You can [export your Pulse data](https://docs.statsig.com/pulse/export) via the console or using the following API. In addition to the [`first_exposures`](https://docs.statsig.com/pulse#first-exposures-file-description) report type as shown below, you can also request a [`pulse_daily`](https://docs.statsig.com/pulse#pulse-summary-and-daily-file-description) or [`unit_metrics_daily`](https://docs.statsig.com/pulse#unit-metrics-file-description) report types.
-
-Note this API requires a server-side secret key.
-
-```bash
-curl \
-  --header "statsig-api-key: <YOUR-SERVER-SECRET-KEY>" \
-  --header "Content-Type: application/json" \
-  --request POST \
-  --data '{"type": "first_exposures" }' \
-  "https://api.statsig.com/v1/get_daily_report"
-```
-
-Response:
-`{ date: {date in PST of data} url: {url to download CSV for the specified type} }`
-
 #### Log an exposure event {#log-exposure-event}
 
 You can log one or more exposure events with this API. For each exposure object, the "group" parameter should match the "Group Name" in your experiment.

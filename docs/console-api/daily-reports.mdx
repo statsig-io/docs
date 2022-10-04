@@ -24,27 +24,27 @@ All responses will contain a **url** field and a **date** field.
 
 ## Get Daily Reports
 
-This API supports two types of daily reports:
-1. type=first_exposures - Provides a link to download your company's full set of "first exposures" across feature gates and experiments.
-2. type=pulse_daily - Provides a link to download your company's daily experimental results.  This data is a single day's results and a full experimental analysis requires the entire duration of the experiment.
+You can [export your Pulse data](https://docs.statsig.com/pulse/export) via the console or using this API.  This API supports two types of daily reports:
+1. [type=first_exposures](https://docs.statsig.com/pulse#first-exposures-file-description) - Provides a link to download your company's full set of "first exposures" across feature gates and experiments.
+2. [type=pulse_daily](https://docs.statsig.com/pulse#pulse-summary-and-daily-file-description) - Provides a link to download your company's daily experimental results.  This data is a single day's results and a full experimental analysis requires the entire duration of the experiment.
 
 This feature is available to Pro and Enterprise tier customers.
 
 ```bash
-curl --request POST 'https://api.statsig.com/v1/get_daily_report' \
---header 'STATSIG-API-KEY: server-side Secret Key' \
---header 'Content-Type: application/json' \
---data-raw '{
-  "type": "<daily_report_type>"
-}'
+curl \
+  --header "statsig-api-key: <YOUR-SERVER-SECRET-KEY>" \
+  --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"type": "first_exposures" }' \
+  "https://api.statsig.com/v1/get_daily_report"
 ```
 
 **Reponse JSON** : 
 
 ```json
 {
-  "url": <url>,
-  "date": <DS>,
+  "url": <url to download CSV for the specified type>,
+  "date": <date in PST of data>,
 }
 ```
 
