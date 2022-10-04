@@ -10,10 +10,19 @@ import TabItem from "@theme/TabItem";
   <TabItem value="swift">
 
 ```swift
-let expConfig = Statsig.getExperiment("new_user_promo")
+// Values via getLayer
 
-let promoTitle = expConfig.getValue(forKey: "title", defaultValue: "Welcome to Statsig! Use discount code WELCOME10OFF for 10% off your first purchase!")
-let discount = expConfig.getValue(forKey: "discount", defaultValue: 0.1)
+let layer = Statsig.getLayer("user_promo_experiments")
+let promoTitle = layer.getValue(forKey: "title", defaultValue: "Welcome to Statsig!")
+let discount = layer.getValue(forKey: "discount", defaultValue: 0.1)
+
+// or, via getExperiment
+
+let titleExperiment = Statsig.getExperiment("new_user_promo_title")
+let priceExperiment = Statsig.getExperiment("new_user_promo_price")
+
+let promoTitle = titleExperiment.getValue(forKey: "title", defaultValue: "Welcome to Statsig")
+let discount = priceExperiment.getValue(forKey: "discount", defaultValue: 0.1)
 
 ...
 

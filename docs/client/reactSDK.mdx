@@ -56,7 +56,7 @@ yarn add statsig-react
 
 How we at Statsig use the SDK, and suggested usage.
 
-At the root of your component tree, wrap your app in a `StatsigProvider` and set `waitForInitialization=true` (if you do not wait for initialization, `useGate` hooks will return false on the first render (for any non-cached user), and will only update to the actual gate value once SDK initialization completes and Gates are fetched for the passed in user. Similarly, `useConfig` and `useExperiment` will return empty dynamic configs).  If/when the user object changes, the SDK will automatically fetch the updated values for the new user object - if `waitForInitialization` is false, and no `mountKey` is provided, this will trigger a re-render for the new user with default values, followed by a render when the values have been updated.
+At the root of your component tree, wrap your app in a `StatsigProvider` and set `waitForInitialization=true` (if you do not wait for initialization, `useGate` hooks will return false on the first render (for any non-cached user), and will only update to the actual gate value once SDK initialization completes and Gates are fetched for the passed in user. Similarly, `useConfig` and `useExperiment` will return empty dynamic configs). If/when the user object changes, the SDK will automatically fetch the updated values for the new user object - if `waitForInitialization` is false, and no `mountKey` is provided, this will trigger a re-render for the new user with default values, followed by a render when the values have been updated.
 
 :::info
 waitForInitialization
@@ -180,7 +180,7 @@ Returns `ConfigResult`:
 
 ##### `useLayer`
 
-A react hook to get a Statsig Experiment, represented as a DynamicConfig.
+A react hook to get a Statsig Experiment, represented as a Layer.
 
 Parameters:
 
@@ -253,7 +253,6 @@ Starting in `v1.6.0`, setting the environment variable `REACT_APP_STATSIG_SDK_MO
 
 ### StatsigOptions {#statsig-options}
 
-
 - **environment**: StatsigEnvironment, default null
   - An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
   - The most common usage is to set the environment tier ('production', 'staging' or 'development'), e.g. `{ tier: 'staging' }`, and have feature gates pass/fail for specific environments.
@@ -281,10 +280,9 @@ Starting in `v1.6.0`, setting the environment variable `REACT_APP_STATSIG_SDK_MO
 - **disableAutoMetricsLogging** - boolean, default false
   - By default, the SDK auto logs javascript performance metrics to Statsig. This will be connected with the metrics and pulse views to show the impact of new features on key performance metrics
 - **eventLoggingApi?** `string`, default `'https://events.statsigapi.net/v1/`
-  - The SDK will hit different endpoints for `initialize` to evaluate gates and for `logEvent` to log event data.  The `api` option controls the evaluation endpoint, and `eventLoggingApi` controls the event logging endpoint.
+  - The SDK will hit different endpoints for `initialize` to evaluate gates and for `logEvent` to log event data. The `api` option controls the evaluation endpoint, and `eventLoggingApi` controls the event logging endpoint.
 - **prefetchUsers?** `StatsigUser[]` | null, default null
   - An array of additional StatsigUser objects to be fetched during the `statsig.initialize` call. A max of 5 users is enforced, if more than 5 users are provided, the 5 users at the start of the array will be used.
-
 
 #### Testing
 

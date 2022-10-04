@@ -1,8 +1,17 @@
 ```go
-expConfig := statsig.GetExperiment(user, "new_user_promo");
+// Values via getLayer
 
-promoTitle := expConfig.GetString("title", "Welcome to Statsig! Use discount code WELCOME10OFF for 10% off your first purchase!");
-discount := expConfig.GetNumber("discount", 0.1);
+layer := Statsig.getLayer(user, "user_promo_experiments");
+promoTitle := layer.getString("title", "Welcome to Statsig!");
+discount := layer.getDouble("discount", 0.1);
+
+// or, via getExperiment
+
+titleExperiment := Statsig.getExperiment("new_user_promo_title");
+priceExperiment := Statsig.getExperiment("new_user_promo_price");
+
+promoTitle := titleExperiment.getString("title", "Welcome to Statsig!");
+discount := priceExperiment.getDouble("discount", 0.1);
 
 ...
 
