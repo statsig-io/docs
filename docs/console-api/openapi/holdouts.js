@@ -282,7 +282,6 @@ module.exports = {
                           ],
                           "experimentIDs": [
                             "c_experiment",
-                            "a_experiment",
                             "a_experiment"
                           ],
                           "layerIDs": [
