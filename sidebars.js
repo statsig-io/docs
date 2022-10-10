@@ -145,14 +145,14 @@ module.exports = {
       },
       items: [
         {
-            "Metrics 101 - Overview": [
-                "metrics/101",
-                "metrics/raw-events",
-                "metrics/raw-event-metrics",
-                "metrics/custom-metrics",
-                "metrics/precomputed-metrics",
-                "metrics/metric-dimensions"
-            ],
+          "Metrics 101 - Overview": [
+            "metrics/101",
+            "metrics/raw-events",
+            "metrics/raw-event-metrics",
+            "metrics/custom-metrics",
+            "metrics/precomputed-metrics",
+            "metrics/metric-dimensions",
+          ],
         },
         // other
         "metrics/ingest",
@@ -163,7 +163,7 @@ module.exports = {
         "metrics/create",
         "metrics/create-metric-tags",
         "metrics/user",
-       
+
         // 301
         "metrics/create-user-flows",
         "metrics/create-user-funnels",
@@ -265,7 +265,7 @@ module.exports = {
         "console-api/autotunes",
         "console-api/daily-reports",
         "console-api/all-endpoints",
-        "console-api/rules"
+        "console-api/rules",
       ],
     },
     {
@@ -292,7 +292,7 @@ module.exports = {
       label: "Data Warehouse Ingestion",
       link: {
         type: "doc",
-        id: "data-warehouse-ingestion/introduction"
+        id: "data-warehouse-ingestion/introduction",
       },
       items: [
         {
@@ -301,10 +301,10 @@ module.exports = {
             "data-warehouse-ingestion/redshift",
             "data-warehouse-ingestion/snowflake",
             "data-warehouse-ingestion/databricks",
-          ], 
+          ],
         },
         "data-warehouse-ingestion/data_mapping",
-      ]
+      ],
     },
     {
       type: "category",
@@ -333,17 +333,16 @@ module.exports = {
             "integrations/data-imports/redshift-deprecated",
             "integrations/data-imports/snowflake-deprecated",
             "integrations/data-imports/azure_upload-deprecated",
-          ]
+          ],
         },
         {
-          "Data Exports": [
-            "integrations/data-exports/overview"
-          ],
+          "Data Exports": ["integrations/data-exports/overview"],
         },
         "integrations/event_filtering",
         "integrations/event_webhook",
         "integrations/jira",
         "integrations/vscode",
+        "integrations/terraform",
       ],
     },
     {
@@ -369,9 +368,7 @@ module.exports = {
         type: "doc",
         id: "compliance/introduction",
       },
-      items: [
-        "compliance/user_data_deletion_requests",
-      ],
+      items: ["compliance/user_data_deletion_requests"],
     },
     "custom_proxy",
     "reliability-faq",
