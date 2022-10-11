@@ -81,8 +81,10 @@ BEGIN;
   -- grant Statsig role read access to database and schema passed in
   GRANT USAGE ON DATABASE <DATABASE> TO ROLE identifier($role_name);
   GRANT USAGE ON SCHEMA <DATABASE>.<SCHEMA> TO ROLE identifier($role_name);
-  GRANT SELECT ON ALL TABLES IN <DATABASE> TO ROLE identifier($role_name);
+  GRANT SELECT ON ALL TABLES IN DATABASE <DATABASE> TO ROLE identifier($role_name);
   GRANT SELECT ON FUTURE TABLES IN DATABASE <DATABASE> TO ROLE identifier($role_name);
+  GRANT SELECT ON ALL VIEWS IN DATABASE <DATABASE> TO ROLE identifier($role_name);
+  GRANT SELECT ON FUTURE VIEWS IN DATABASE ACTUAL_DATA TO ROLE identifier($role_name);
 
 COMMIT;
 ```
