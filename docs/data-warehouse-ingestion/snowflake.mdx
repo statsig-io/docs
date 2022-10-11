@@ -33,6 +33,13 @@ The copied URL will look something like this:
 
 You can extract information from here to get the required fields for Account Name, which for this example would be `xy12345.us-central1.gcp`.
 
+:::info Using `<orgname>-<account_name>` for Snowflake URL
+
+Your Snowflake [account identifier](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#format-1-preferred-account-name-in-your-organization) typically takes the form `<orgname>-<account_name>`. To find the `<orgname>` in the Snowflake console, click on your account profile (usually at the bottom left) to view account details as shown below. 
+
+![image](https://user-images.githubusercontent.com/1315028/195217037-ad630f37-a8fe-4b61-823f-ce0e8c984ed0.png)
+:::
+
 ### Database and Schema Name
 
 For each data type, provide the database/schema of the table(s) you will be ingesting from.
