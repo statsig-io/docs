@@ -324,6 +324,7 @@ module.exports = {
             "integrations/data-connectors/segment",
             "integrations/data-connectors/rudderstack",
             "integrations/data-connectors/stitch",
+            "integrations/data-connectors/mixpanel",
           ],
         },
         {
