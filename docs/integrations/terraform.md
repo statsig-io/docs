@@ -60,3 +60,7 @@ conditions {
 ```
 
 See the full list of conditions [here](https://docs.statsig.com/console-api/rules#all-conditions).
+
+
+A full gate example is included in the open source Github repo https://github.com/statsig-io/terraform-provider-statsig/blob/17f1f29c51c4b49db70ed41ccdb0846475d565d6/examples/main.tf
+
