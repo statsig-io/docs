@@ -42,7 +42,7 @@ The SDK is also [open source and hosted on github](https://github.com/statsig-io
 
 After installation, you will need to initialize the SDK using a [Server Secret Key from the statsig console](https://console.statsig.com/api_keys).
 
-There is also a parameter `options` that requires you to pass in a storage adapter for storing configurations and event logs.  In this below example, we use a local file storage adapter, but you can write your own to plug in Redis or another storage solution.  Create an adapter that implements `Statsig\Adapters\IConfigAdapter` if you do not want to use the local file storage adapter.
+There is also a parameter `options` that requires you to pass in a storage adapter for storing configurations and event logs. In this below example, we use a local file storage adapter, but you can write your own to plug in Redis or another storage solution. Create an adapter that implements `Statsig\Adapters\IConfigAdapter` if you do not want to use the local file storage adapter.
 
 ```java
 use Statsig\StatsigServer;
@@ -110,7 +110,7 @@ At the end of the request, you can flush events to the log file using:
 $this->statsig->flush();
 ```
 
-#### Step 6 (Optional) - Sync Gate/Experiment/Config Defintions and Send Logs
+#### Step 6 (Optional but Recommended) - Sync Gate/Experiment/Config Defintions and Send Logs
 
 To keep your configurations up to date, and send event data to Statsig, you can create two cron jobs.
 
@@ -168,6 +168,12 @@ php send.php --secret <STATSIG_SECRET_KEY> \
 ```
 
 By default, send.php will use the Statsig LocalFileConfigAdapter which writes to /tmp/statsig.configs
+
+:::caution
+If you do not configure a cron job, your request performance may be impacted.
+A check for configuration freshness is made before evaluation (checkGate/getConfig/getExperiment).
+If your configurations are over 1 minute old, a network request will be fired to Statsig to update them.
+:::
 
 ## Statsig User {#statsig-user}
 
@@ -259,4 +265,3 @@ If you want a simple snippet for using the http api in php, you may find the [fo
 Note that the `user` parameter to each of these functions follows the [Statsig User](/server/concepts/user) definition for Server SDKs.
 
 <Gist id="c27fb9de65c7a1d1591d161570ae807a" />
-
