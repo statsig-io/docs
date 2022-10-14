@@ -896,9 +896,6 @@ module.exports = {
       }
     },
     "/segments/{segment_id}/id_list/reset": {
-      "tags": [
-        "Segments"
-      ],
       "parameters": [
         {
           "schema": {
@@ -910,6 +907,9 @@ module.exports = {
         }
       ],
       "post": {
+        "tags": [
+          "Segments"
+        ],
         "summary": "",
         "operationId": "post-segments-segment_id-id_list-reset",
         "responses": {
