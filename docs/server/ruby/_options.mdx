@@ -15,3 +15,9 @@ You can specify optional parameters with `options` when initializing.
   - The maximum number of events to batch before flushing logs to the server
 - **local_mode**: Boolean, default `false`
   - An option to restrict the sdk to not issue any network requests and only respond with default values (or local overrides)
+- **bootstrap_values**: String, default nil
+  - a string that represents all rules for all feature gates, dynamic configs and experiments. It can be provided to bootstrap the Statsig server SDK at initialization in case your server runs into network issue or Statsig server is down temporarily.
+- **rules_updated_callback**: function, default nil
+  - a callback function that's called whenever we have an update for the rules; it's called with a logical timestamp and a JSON string (used as is for bootstrapValues mentioned above). Note that as of v0.6.0, this will be called from a background thread that the SDK uses to update config values.
+- **data_store**: IDataStore, default nil
+  - A data store with custom storage behavior for config specs. Can be used to bootstrap Statsig server (takes priority over `bootstrap_values`).

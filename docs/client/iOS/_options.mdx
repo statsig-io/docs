@@ -11,4 +11,6 @@
 4. **enableAutoValueUpdate**: boolean, default false
    - by default, feature values for a user is fetched once during `Statsig.start` and don't change throughout the session. Setting this value to true will turn on the feature for Statsig to periodically fetch updated values for the current user.
 5. **overrideStableID**: string?, default null
-   - overrides the stableID in the SDK that is set for the user
+   - overrides the stableID in the SDK that is set for the user.
+6. **disableCurrentVCLogging**: bool, default false
+   - By default we log the name of the ViewController the user is currently in with events you log to Statsig. Set this to true to disable the behavior.
