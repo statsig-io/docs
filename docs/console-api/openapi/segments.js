@@ -896,6 +896,9 @@ module.exports = {
       }
     },
     "/segments/{segment_id}/id_list/reset": {
+      "tags": [
+        "Segments"
+      ],
       "parameters": [
         {
           "schema": {
