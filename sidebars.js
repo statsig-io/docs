@@ -360,6 +360,7 @@ module.exports = {
         "stats-engine/p-value",
         "stats-engine/topline-impact",
         "stats-engine/variance-reduction",
+        "stats-engine/offlineaa",
       ],
     },
     {
