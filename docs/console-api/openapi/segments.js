@@ -894,6 +894,46 @@ module.exports = {
           "Segments"
         ]
       }
+    },
+    "/segments/{segment_id}/id_list/reset": {
+      "tags": [
+        "Segments"
+      ],
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "segment_id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "",
+        "operationId": "post-segments-segment_id-id_list-reset",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Upsert an id list",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "items": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
