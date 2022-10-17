@@ -42,6 +42,10 @@ You should make sure [metrics](https://docs.statsig.com/metrics) and dimensions 
 
 Decide if you want to [export data from Statsig](https://docs.statsig.com/integrations/data-exports/overview) back into your systems.
 
+Consider if you want to [customize Statsig's DAU definition](https://docs.statsig.com/metrics/user#definition-of-a-daily-active-user) to include only meaningful events. The default is to count a user as active if they generate any event.
+![image](https://user-images.githubusercontent.com/31516123/196256669-aae1a8a7-687b-429e-b2f3-c15d4d1e4f61.png)
+
+
 ## 5. Decide what IDs to experiment on
 
 Most experiments or feature rollouts on Statsig target users (identified by userID). Statsig also allows you choose arbitary "units of assignment" beyond userID.
