@@ -14,7 +14,7 @@ For example, say a user made two purchases on September 1st. This value can be a
 ## Two Sources of Statsig Metrics 
 
 There are two sources of metrics in Statsig:
-1. **Raw Events** - you can convert these into metrics via [Custom Metrics](/metrics/create)
+1. **Raw Events** - you can convert these into metrics via [Custom Metrics](/metrics/create); Statsig also [auto-generates certain metrics](/metrics/metrics-from-events) from these events
 2. **Precomputed Metrics** - you can provide these pre-computed values to Statsig 
 
 Statsig's Stats Engine joins these metrics with your exposure events from feature gates and experiments to compute experiment results and analytics.
