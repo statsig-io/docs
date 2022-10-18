@@ -6,13 +6,9 @@ slug: /metrics/how-metrics-work
 
 # How Metrics Work on Statsig
 
-A metric in Statsig is a numeric value each user on a given day. 
+A metric in Statsig is a numeric value each user on a given day. This value can be aggregated across the entire user base or a subset, such as the test group of an experiment. 
 
-This value can be aggregated across the entire user base or a subset, such as the test group of an experiment. 
-
-For example, say a user made two purchases on September 1st. 
-
-This value can be aggregated across multiple users to calculate the total number of purchases across all users on September 1st.
+For example, say a user made two purchases on September 1st. This value can be aggregated across multiple users to calculate the total number of purchases across all users on September 1st.
 
 
 ## Two Sources of Statsig Metrics 
