@@ -41,4 +41,17 @@ You will be required to set up connections with necessary credentials, and map y
 
 ### Scheduling Ingestion & Backfilling
 
-Backfilling metrics and events will be charged as events as per our [Pricing Plan](https://statsig.com/pricing). 
+Statsig supports multiple schedules for ingestion. At the scheduled window, we will check if data is present in your warehouse for the latest date, and load if it exists. 
+
+At several follow-up windows we will check if the data has changed, and reload it if there's a change larger than 1%. 
+
+We also support a user-triggered backfill. This could be useful if a specific metric definiton has changed, or you want to resync data older than a few days. 
+
+Reloading data and backfilling metrics and events is charged as a logged event as per our [Pricing Plan](https://statsig.com/pricing). 
+
+### Notes
+- Event data from ingestions is generally treated the same as SDK-logged events. There are some minor differences, however:
+  - Events from ingestions do not count towards Statsig's "user metrics" such as DAU or Retention. 
+    - Many companies only send us a subset of their events, which means that the user accounting could lead to your having multiple competing values for "fact" data like daily active users. 
+    - We recommend sending your own definition of DAU as a precomputed metric or as a daily event per user (1 'daily_active' event if a user was active that day)
+- For most customers, data loads should take 1-2 hours to materialize in your console from when they are scheduled. Note that the schedule is in PST, and not PDT, so depending on daylight savings time they may start an hour later or earlier.
