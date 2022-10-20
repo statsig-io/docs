@@ -67,6 +67,10 @@ To export your Statsig events to Segment,
 
 ![image](https://user-images.githubusercontent.com/1315028/150827399-333d9064-de1c-4f4e-bc33-51a46a83531d.png)
 
+If you want to use your Segment Anonymous ID in lieu of the Statsig StableID (or another CustomID) you can map it using the integration. Remember to also do this with the Statsig SDK so IDs from exposure events can be matched with the Segment events.
+![image](https://user-images.githubusercontent.com/31516123/197004042-1747af2f-88e8-471d-a646-683ca6f7f6e0.png)
+
+
 ### Outbound event schema
 
 Statsig exports log events and exposure events to segment as `track` events:
