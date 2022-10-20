@@ -244,6 +244,7 @@ module.exports = {
         "server/dotnetSDK",
         "server/phpSDK",
         "server/erlangSDK",
+        "server/rustSDK",
       ],
     },
     "http-api",
