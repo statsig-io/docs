@@ -556,5 +556,10 @@ module.exports = {
         "in": "header"
       }
     }
-  }
+  },
+  "security": [
+    {
+      "STATSIG-API-KEY": []
+    }
+  ]
 }
