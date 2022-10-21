@@ -262,6 +262,7 @@ module.exports = {
         "console-api/experiments",
         "console-api/holdouts",
         "console-api/layers",
+        "console-api/users",
         "console-api/audit-logs",
         "console-api/autotunes",
         "console-api/daily-reports",
