@@ -147,6 +147,7 @@ module.exports = {
         {
           "Metrics 101 - Overview": [
             "metrics/101",
+            "metrics/how-metrics-work",
             "metrics/raw-events",
             "metrics/raw-event-metrics",
             "metrics/custom-metrics",
