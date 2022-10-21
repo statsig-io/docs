@@ -1,0 +1,64 @@
+---
+title: Amplitude
+---
+
+import StatsigEnvironmentFormat from "../snippets/integration_statsig_env_format.mdx";
+
+## Overview
+
+Statsig supports both incoming outgoing events for Amplitude. As well as adding Ampltiude Cohorts to Statsig ID Lists.
+
+## Incoming - Receving Events From Amplitude
+
+The following steps outline how to forward events from Amplitude into Statsig.
+
+1. Get a Statsig "Server Secret Key" from the API keys page in [Project Settings](https://console.statsig.com/api_keys).
+
+2. Go to Amplitude and navigate to the Data Destinations page. Click the
+   "Add Destination" button in the top right.
+
+   ![](https://console.statsig.com/img/integrations/amplitude:incoming_integration_steps/step_1.png)
+
+3. From the Destinations Catalog, search for and select the Statsig Event
+   Streaming destination.
+
+   ![](https://console.statsig.com/img/integrations/amplitude:incoming_integration_steps/step_2.png)
+
+4. Give this destination a name and click "Create Sync".
+
+   ![](https://console.statsig.com/img/integrations/amplitude:incoming_integration_steps/step_3.png)
+
+5. Enter the "Server Secret Key" you copied in Step 1 into the provided
+   field. Select the events you wish to send to Statsig. Ensure that the
+   Status is set to "Enabled" and then click "Save".
+
+   ![](https://console.statsig.com/img/integrations/amplitude:incoming_integration_steps/step_4.png)
+
+6. On the Integrations page for your Statsig project, enable the Amplitude Incoming integration.
+
+## Outgoing - Sending Statsig Events to Amplitude
+
+1. Navgate to Amplitude and click on the Settings button in the
+   bottom-left corner.
+
+   ![](https://console.statsig.com/img/integrations/amplitude_integration_steps/settings.png)
+
+2. Click on the Projects tab and choose the Project you wish to send data
+   to.
+
+   ![](https://console.statsig.com/img/integrations/amplitude_integration_steps/project.png)
+
+3. Copy the API Key and paste it in the Statsig integration panel.
+
+   ![](https://console.statsig.com/img/integrations/amplitude_integration_steps/api_key.png)
+
+   ![](https://user-images.githubusercontent.com/95646168/197276579-b3884a8f-ed47-4cd9-8852-c37f40958554.png)
+
+4. Hit Enable on the integration panel and any data logged to Statsig will show up in your
+   Amplitude Project account.
+
+   ![](https://console.statsig.com/img/integrations/amplitude_integration_steps/amplitude_data.png)
+
+## Filtering Events
+
+You can customize which events should be sent and received via RudderStack using [Event Filtering](/integrations/event_filtering)
