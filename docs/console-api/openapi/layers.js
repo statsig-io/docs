@@ -3,7 +3,7 @@ module.exports = {
   "info": {
     "title": "console/v1",
     "version": "1.0.0",
-    "description": "Gate endpoint"
+    "description": "Layer endpoint"
   },
   "servers": [
     {
