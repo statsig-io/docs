@@ -325,7 +325,7 @@ module.exports = {
         ]
       }
     },
-    "/user": {
+    "/users": {
       "get": {
         "summary": "Read All Users",
         "operationId": "get-user",
