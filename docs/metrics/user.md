@@ -26,7 +26,7 @@ Statsig automatically creates a standard set of user accounting metrics to track
 | new_mau_28d            | Count      | Count of users who became a daily active user within the last 28 days. |
 | daily_user_stickiness  | Stickiness | Fraction of the previous day's users who are active on the next day. |
 | weekly_user_stickiness | Stickiness | Fraction of the previous week's users who have been active within the last 7 days. |
-| montly_user_stickiness | Stickiness | Fraction of the previous month's users who have been active within the last 28 days. |
+| monthly_user_stickiness | Stickiness | Fraction of the previous month's users who have been active within the last 28 days. |
 | D1_retention_rate      | Retention  | Fraction of the previous day's (D0) new users who are active the following day (D1). |
 | WAU @ D14 Retention Rate | Retention  | Fraction of new users from 13 days ago that have been active in the previous 7 days. |
 | MAU @ D56 Retention Rate | Retention  | Fraction of new users from 56 days ago that have been active in the previous 28 days. |
