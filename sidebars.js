@@ -305,6 +305,7 @@ module.exports = {
             "data-warehouse-ingestion/snowflake",
             "data-warehouse-ingestion/databricks",
             "data-warehouse-ingestion/faq",
+            "data-warehouse-ingestion/synapse",
           ],
         },
         "data-warehouse-ingestion/data_mapping",
