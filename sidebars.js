@@ -304,6 +304,7 @@ module.exports = {
             "data-warehouse-ingestion/redshift",
             "data-warehouse-ingestion/snowflake",
             "data-warehouse-ingestion/databricks",
+            "data-warehouse-ingestion/synapse",
             "data-warehouse-ingestion/faq",
           ],
         },
