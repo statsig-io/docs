@@ -299,6 +299,14 @@ module.exports = {
               "application/json": {
                 "schema": {
                   "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
                 }
               }
             }
