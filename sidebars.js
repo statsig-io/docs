@@ -367,6 +367,15 @@ module.exports = {
         "stats-engine/topline-impact",
         "stats-engine/variance-reduction",
         "stats-engine/offlineaa",
+        {
+          "Methodologies Used": [
+            "stats-engine/methodologies/bonferroni-correction",
+            "stats-engine/methodologies/cuped",
+            "stats-engine/methodologies/delta-method",
+            "stats-engine/methodologies/srm-checks",
+            "stats-engine/methodologies/winsorization",
+          ],
+        },
       ],
     },
     {
