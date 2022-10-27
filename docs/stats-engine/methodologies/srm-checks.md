@@ -4,7 +4,7 @@ sidebar_label: SRM Checks
 slug: /stats-engine/methodologies/srm-checks
 ---
 
-## Sample Ratio Mismatch
+## SRM - Sample Ratio Mismatch
 
 Sample ratio mismatch (SRM for short) is when the observed allocation of users between test groups differs from the expected allocation or "split" of the test.
 
