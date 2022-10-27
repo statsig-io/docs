@@ -32,7 +32,7 @@ Where:
 
 ### Ratio and Mean Metrics
 
-The variance of ratio and mean metrics depends upon the numberator and denominator variables, which are typically correlated. For example, consider a _clicks per session_ metric. The number of clicks and the number of sessions are two sets of obervations coming from the same group of users, so they are not independent from each other. To properly account for this correlation, the variance of the mean of a ratio metric _R_ is obtained using the delta method:
+The variance of ratio and mean metrics depends upon the numerator and denominator variables, which are typically correlated. For example, consider a _clicks per session_ metric. The number of clicks and the number of sessions are two sets of obervations coming from the same group of users, so they are not independent from each other. To properly account for this correlation, the variance of the mean of a ratio metric _R_ is obtained using the delta method:
 
 ![image](https://user-images.githubusercontent.com/90343952/167956015-cc3f9fca-2c4d-410c-bff1-3f13dd16d105.png)
 
