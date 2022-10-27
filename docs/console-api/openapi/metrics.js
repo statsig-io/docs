@@ -152,10 +152,16 @@ module.exports = {
                   }
                 },
                 "examples": {
-                  "example-1": {
+                  "No metric found": {
                     "value": {
                       "status": 400,
                       "message": "No metric found for the given id, recieved: not_a::real_metric"
+                    }
+                  },
+                  "No data found": {
+                    "value": {
+                      "status": 400,
+                      "message": "No metric data found for the given date, recieved: 2022-11-25"
                     }
                   }
                 }
