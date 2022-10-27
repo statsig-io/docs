@@ -204,8 +204,8 @@ module.exports = {
     },
     {
       type: "doc",
-      label: "Ultrasound",
-      id: "ultrasound/introduction",
+      label: "Insights",
+      id: "insights/introduction",
     },
     {
       type: "category",
