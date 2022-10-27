@@ -65,3 +65,9 @@ Yes, you can ingest multiple metrics (and event types) in the same scheduled ing
 5. **If ingested data does not include metric values for a given user on a given day, how does this effect my experiments?**
 If the metric value is unavailable for a given user on a given day, Statsig takes it to be `zero` for additive metrics such as counts and sums. For metrics that depend on a user "participating" in the metric, say conversion rate, the user is excluded. Note that additive metrics typically have a single `metric_value` column in the ingested data, while ratio (participating) metrics typically have separate numerator and denominator columns. 
 
+6. **How will Statsig notify me about the status of scheduled ingestions?**
+Statsig shows the status of your daily ingestion on the console under the **Ingestions** tab. Statsig also sends email notifications with status updates to the Statsig user who set up the ingestion. This user can also enable Slack notifications to themselves in their [Account Settings](https://console.statsig.com/account_notifications).   
+
+
+
+
