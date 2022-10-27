@@ -3,7 +3,7 @@ import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import Models from "../../docs/console-api/models/index";
 import { useColorMode } from '@docusaurus/theme-common';
 
-const supportedEntities = ['gates', 'segments', 'dynamic-configs', 'experiments', 'holdouts', 'layers', 'autotunes', 'users', 'audit-logs']
+const supportedEntities = ['gates', 'segments', 'dynamic-configs', 'experiments', 'holdouts', 'layers', 'autotunes', 'users', 'metrics', 'audit-logs']
 
 function updateCodeSnippets(data, entity) {
   let snippet;
