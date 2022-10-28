@@ -51,22 +51,33 @@ Reloading data and backfilling metrics and events is billed as any other [custom
 
 ### Frequently Asked Questions
 1. **Does the event data from count towards Statsig's "user metrics" such as DAU or Retention?**
-No, event data from ingestions does not count towards Statsig's "user metrics" such as DAU or Retention. Customers typically send Statsig a subset of their events, which could result in multiple competing values for "fact" data such as daily active users in your Statsig project. Statsig recommends      sending your own precomputed metric for DAU or as a daily event per user (1 'daily_active' event if a user was active that day).
+
+No, event data from ingestions does not count towards Statsig's "user metrics" such as DAU or Retention. Customers typically send Statsig a subset of their events, which could result in multiple competing values for "fact" data such as daily active users in your Statsig project. Statsig recommends sending your own precomputed metric for DAU or as a daily event per user (1 'daily_active' event if a user was active that day).
 
 2. **How long does the data take to load?** 
-3. For most customers, data ingestions should take 1-2 hours to materialize in the Statsig console from the point the ingestion is scheduled. Note that the schedule is in PST, and not PDT, so depending on daylight savings time they may start an hour later or earlier.
+
+For most customers, data ingestions should take 1-2 hours to materialize in the Statsig console from the point the ingestion is scheduled. Note that the schedule is in PST, and not PDT, so depending on daylight savings time they may start an hour later or earlier.
 
 3. **Does Statsig load data incrementally every day or does it refresh all historical data?**
+
 Yes, Statsig loads data incrementally every day. Statsig also monitors this daily data over several follow-windows for up to two weeks, and reloads data for a given day if it has changed more than 1%.
 
 4. **Can I ingest multiple metrics (and event types) in the same scheduled ingestion?**
+
 Yes, you can ingest multiple metrics (and event types) in the same scheduled ingestion. Statsig enables you to run a SQL query against your data warehouse cluster to join multiple tables to generate a view with all your precomputed metrics. You can use this as the source view for your scheduled data ingestion and import multiple metrics at the same time. For example, your dataset could import both `metric-1` and `metric-2`, with `metric-2` including multiple units of analysis (`user_id` and `alphabet_id`).
 
 5. **If ingested data does not include metric values for a given user on a given day, how does this effect my experiments?**
+
 If the metric value is unavailable for a given user on a given day, Statsig takes it to be `zero` for additive metrics such as counts and sums. For metrics that depend on a user "participating" in the metric, say conversion rate, the user is excluded. Note that additive metrics typically have a single `metric_value` column in the ingested data, while ratio (participating) metrics typically have separate numerator and denominator columns. 
 
-6. **How will Statsig notify me about the status of scheduled ingestions?**
-Statsig shows the status of your daily ingestion on the console under the **Ingestions** tab. Statsig also sends email notifications with status updates to the Statsig user who set up the ingestion. This user can also enable Slack notifications to themselves in their [Account Settings](https://console.statsig.com/account_notifications).   
+6. **Does Statsig notify me about the status of scheduled ingestions?**
+
+Statsig shows the status of your daily ingestion on the console under the **Ingestions** tab. Statsig reports the following status points:
+ - ingestion succeeded for a given day
+ - ingestion succeeded for a given day, but no data was detected
+ - ingestion failed for a given day
+
+Statsig also sends email notifications with these status updates to the Statsig user who set up the ingestion. This user can also enable Slack notifications to themselves in their [Account Settings](https://console.statsig.com/account_notifications).   
 
 
 
