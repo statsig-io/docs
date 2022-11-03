@@ -46,6 +46,7 @@ module.exports = {
         "feature-gates/add-rule",
         "feature-gates/test-gate",
         "feature-gates/overrides",
+        "/feature-gates/scheduled-rollouts",
         {
           Implement: [
             "feature-gates/implement",
