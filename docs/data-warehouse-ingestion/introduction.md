@@ -1,3 +1,4 @@
+
 ---
 title: Data Warehouse Ingestion
 ---
@@ -39,6 +40,22 @@ To begin ingestion from a Data Warehouse:
 
 You will be required to set up connections with necessary credentials, and map your data fields to the fields Statsig expects to ingest. Please refer to the warehouse-level setup documentation for more information on setup.
 
+### Connection Flow
+
+See the docs sidebar to find the documentation for the data warehouse of your choice. Upon connection, you will provide a SQL query to generate a view via data for Statsig to ingest.
+
+<img src="https://user-images.githubusercontent.com/87334575/199855101-2bed8f01-bfc7-4ef9-91a8-42620f7b796b.png" width="500"/>
+
+
+### Data Mapping
+
+After connecting and providing a SQL query, we ask you to map columns in your data output to fields Statsig expects and run a small sample query to make sure that there aren't any basic issues with data types.
+
+<img src="https://user-images.githubusercontent.com/87334575/199855255-ebd683fb-bf3b-4825-9f2b-63913e1dda89.png" width="500"/>
+<img src="https://user-images.githubusercontent.com/87334575/199855270-a59ead1a-4fd7-4d99-bd1f-a511ca21750a.png" width="500"/>
+
+See [here](data_mapping.mdx) for more information.
+
 ### Scheduling Ingestion & Backfilling
 
 Statsig supports multiple schedules for ingestion. At the scheduled window, we will check if data is present in your warehouse for the latest date, and load if it exists. 
@@ -46,6 +63,9 @@ Statsig supports multiple schedules for ingestion. At the scheduled window, we w
 At several follow-up windows we will check if the data has changed, and reload it if there's a change larger than 1%. 
 
 We also support a user-triggered backfill. This could be useful if a specific metric definiton has changed, or you want to resync data older than a few days. 
+
+<img src="https://user-images.githubusercontent.com/87334575/199854289-dec60731-b54e-43d1-92a0-2fbd53f47087.png" width="300"/>
+
 
 Reloading data and backfilling metrics and events is billed as any other [custom event](metrics/raw-events#billing)
 
