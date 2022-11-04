@@ -16,7 +16,7 @@ If your application is using Rails, you should initialize Statsig in `config/ini
 Statsig.initialize('server-secret-key', options)
 ```
 
-### Initializing Statsig when using Unicorn, Puma, or Passenger web server
+### Initializing Statsig when using Unicorn, Puma, Passenger, or Sidekiq
 
 For **Unicorn**, you should initialize Statsig within an `after_fork` hook in your `unicorn.rb` config file:
 
@@ -43,3 +43,18 @@ if defined?(PhusionPassenger)
   end
 end
 ```
+
+For **Sidekiq**, you should initialize Statsig in your `sidekiq.rb`/server configuration file:
+```
+Sidekiq.configure_server do |config|
+  config.on(:startup) do
+    Statsig.initialize
+  end
+
+  config.on(:shutdown) do
+    Statsig.shutdown
+  end
+end
+```
+
+If you are using Rails in combination with any of the above, you should be sure to initialize using the specific process lifecycle hooks exposed by the respective tool.  You can initialize in multiple places, which should ensure the SDK is fully usable including all background processing.
