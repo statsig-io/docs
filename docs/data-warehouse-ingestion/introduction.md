@@ -1,4 +1,3 @@
-
 ---
 title: Data Warehouse Ingestion
 ---
