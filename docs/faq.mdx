@@ -44,7 +44,7 @@ In the first set up, if you want to test a new color, say "Green", you will need
 
 In the second set up using Statsig, you can simply change your experiment to add a new group that returns "GREEN" and be done. No code change or waiting for release cycle needed!
 
-## When should I create a new Project
+## When should I create a new Project?
 Projects have distinct boundaries - nothing is shared between them. Create a new project when you're managing a distinct product with it's own distinct userIDs and metrics. If your app has web, iOS and Android endpoints - you should manage them in one project so you can measure metrics like DAU across them.
 
 If you have a distinct marketing website (only sees anonymous users) from a product (only sees signed in users), you can create distinct projects for them. However if you want to track success across them, you'll want to manage them in the same project. An example of this is measuring user signup on the marketing website, where the success metric is new users created who're still active users 30 days after account creation. 
