@@ -69,4 +69,4 @@ By default, Pulse results are displayed with 95% confidence intervals and withou
 
 ### Targeting Gates
 
-By default, this is hidden under the advanced configuration of an experiment (at the bottom of the experiment setup page).  A targeting gate will restrict the users elegible for the experiment to those who pass the list of conditions definied in the linked Feature Gate.  This continues to apply after making a decision on an experiment in the Statsig UI.
+By default, this is hidden under the advanced configuration of an experiment (at the bottom of the experiment setup page).  A targeting gate will restrict the users eligible for the experiment to those who pass the list of conditions defined in the linked Feature Gate.  This continues to apply after making a decision on an experiment in the Statsig UI.
