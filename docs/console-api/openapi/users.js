@@ -409,8 +409,8 @@ module.exports = {
       },
       "parameters": []
     },
-    "/users/invites": {
-      "get": {
+    "/users/invite": {
+      "post": {
         "summary": "Invite To Project",
         "tags": [
           "Users"
