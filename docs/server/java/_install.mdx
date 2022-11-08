@@ -1,6 +1,6 @@
 v1.X.X+ of the SDK is now published only to mavenCentral
 
-To install the SDK, set the maven central repository
+To install the SDK, set the maven central repository in your `build.gradle`.  You probably already have this for other dependencies
 
 ```
 repositories {
@@ -8,10 +8,10 @@ repositories {
 }
 ```
 
-and add the dependency:
+Then add the dependency:
 
 ```
-implementation 'com.statsig:serversdk:serversdk:1.X.X'
+implementation 'com.statsig:serversdk:serversdk:1.X.X' // replace with the most up to date version
 ```
 
 NOTE: you can remove `maven { url 'https://jitpack.io' }` if statsig was the only library you got from jitpack and you previously relied on v0.X.X of the sdk.
