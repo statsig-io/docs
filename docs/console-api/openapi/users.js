@@ -406,6 +406,187 @@ module.exports = {
           "Users"
         ],
         "description": "List all users in the project"
+      },
+      "parameters": []
+    },
+    "/users/invites": {
+      "get": {
+        "summary": "Invite To Project",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Users Invited successfully"
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Success": {
+                    "value": {
+                      "message": "Users Invited successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "Example 1": {
+                      "status": 400,
+                      "message": "Bad Request Exception",
+                      "errors": [
+                        {
+                          "property": "role",
+                          "errorMessage": "Invalid enum value. Expected 'admin' | 'member' | 'read_only', received 'asdf'"
+                        }
+                      ]
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "property": {
+                            "type": "string"
+                          },
+                          "errorMessage": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Invalid Role": {
+                    "value": {
+                      "status": 400,
+                      "message": "Bad Request Exception",
+                      "errors": [
+                        {
+                          "property": "role",
+                          "errorMessage": "Invalid enum value. Expected 'admin' | 'member' | 'read_only', received 'not_a_real_role'"
+                        }
+                      ]
+                    }
+                  },
+                  "Invalid Email": {
+                    "value": {
+                      "status": 400,
+                      "message": "Bad Request Exception",
+                      "errors": [
+                        {
+                          "property": "emails.0",
+                          "errorMessage": "Invalid email"
+                        }
+                      ]
+                    }
+                  },
+                  "Invalid email domain on organization": {
+                    "value": {
+                      "status": 400,
+                      "message": "Can not invite emails from outside your organization's domain (statsig.com) using the ConsoleAPI, recieved: invalid@outsideDomain.com"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-users-invites",
+        "description": "Invite a list of emails to your project",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "Example 1": {
+                    "role": "member",
+                    "emails": [
+                      "jacob@statsig.com",
+                      "joe@statsig.com"
+                    ]
+                  }
+                },
+                "properties": {
+                  "role": {
+                    "type": "string",
+                    "enum": [
+                      "read_only",
+                      "member",
+                      "admin"
+                    ]
+                  },
+                  "emails": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "example": "john@mydomain.com",
+                      "format": "email"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "role": "read_only",
+                    "emails": [
+                      "john@mydomain.com"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "description": "Invite emails to your project with a selected role. \nIf your project is in an organization, only email domains that match the organization's domain may be invited. "
+        }
       }
     }
   },
