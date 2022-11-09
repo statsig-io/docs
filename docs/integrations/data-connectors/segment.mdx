@@ -34,12 +34,20 @@ If you're using a [custom ID](https://docs.statsig.com/guides/experiment-on-cust
 {
   ...
   properties: {
-    "statsigCustomIDs": [ "companyID", "<this_company_id>", "stableID", "<this_stable_id>",]
+    "statsigCustomIDs": [ "companyID", "<this_company_id>"]
   }
 }
 ```
 
 The `statsigCustomIDs` field in properties should be an array, where the even index is the name of the user ID type and the odd index is the value of the previous element in the array. Assuming you've created this custom ID type on Statsig (under **ID Type Settings** in your [Project Settings](https://console.statsig.com/settings)), Statsig will automatically recognize these custom identifiers to compute your experiment results appropriately.
+
+#### Anonymous Use Cases
+
+If you're running experiments on anonymous users, you can use Segment's `anonymousId` as the unit of randomization. First, you will want to use [the `overrideStableID` option](https://docs.statsig.com/client/jsClientSDK#statsig-options) when initializing the Statsig SDK. This `overrideStableID` parameter where you can tell Statsig to use the Segment `anonymousId` when tracking anonymous users. You can access Segment's `anonymousId` using `analytics.user().anonymousId()` as [outlined in the Segment docs here](https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/identity/). 
+
+Then, you will map the `anonymousId` to the `stableId` (or another CustomID you're using) in the Segment integration modal in Statsig.
+
+![image](https://user-images.githubusercontent.com/31516123/197004042-1747af2f-88e8-471d-a646-683ca6f7f6e0.png)
 
 <StatsigEnvironmentFormat />
 
@@ -66,10 +74,6 @@ To export your Statsig events to Segment,
 5. Click on the **Segment** card and switch to the **Outbound** tab, paste the **Write Key** into the **API Key** text box shown below, and click **Enable**.
 
 ![image](https://user-images.githubusercontent.com/1315028/150827399-333d9064-de1c-4f4e-bc33-51a46a83531d.png)
-
-If you want to use your Segment Anonymous ID in lieu of the Statsig StableID (or another CustomID) you can map it using the integration. Remember to also do this with the Statsig SDK so IDs from exposure events can be matched with the Segment events.
-![image](https://user-images.githubusercontent.com/31516123/197004042-1747af2f-88e8-471d-a646-683ca6f7f6e0.png)
-
 
 ### Outbound event schema
 
