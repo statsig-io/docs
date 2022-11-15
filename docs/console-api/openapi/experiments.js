@@ -779,6 +779,7 @@ module.exports = {
                         "lastModifierID": "4FKF0sUbi1D7xZFW5vcHWB",
                         "idType": "userID",
                         "status": "setup",
+                        "launchedGroupID": null,
                         "layerID": "statsig::a_experiment_layer",
                         "hypothesis": "",
                         "primaryMetrics": [],
@@ -786,6 +787,7 @@ module.exports = {
                         "groups": [
                           {
                             "name": "Control",
+                            "id": "4HbgLdfqlIeN3sHkyMG1qC",
                             "size": 50,
                             "parameterValues": {}
                           },
@@ -1043,13 +1045,20 @@ module.exports = {
                   "value": {
                     "description": "Updated summary of what this experiment does",
                     "idType": "userID",
+                    "lastModifierName": "CONSOLE API",
+                    "lastModifierID": "66wvNB1zril4QQWFOGvfTP",
                     "status": "setup",
                     "hypothesis": "Updated hypothesis",
+                    "launchedGroupID": null,
+                    "startTime": null,
+                    "endTime": null,
+                    "layerID": null,
                     "primaryMetrics": [],
                     "secondaryMetrics": [],
                     "groups": [
                       {
                         "name": "group1",
+                        "id": "4HbgLdfqlIeN3sHkyMG1qC",
                         "size": 50,
                         "parameterValues": {
                           "key": 1
@@ -1057,6 +1066,7 @@ module.exports = {
                       },
                       {
                         "name": "group2",
+                        "id": "4HbgLeUsO0ohmSfg9UBEJE",
                         "size": 50,
                         "parameterValues": {}
                       }
@@ -1395,17 +1405,15 @@ module.exports = {
                 }
               },
               "examples": {
-                "example-2": {
-                  "value": {
-                    "description": "updated summary",
-                    "hypothesis": "updated hypothesis"
-                  }
-                },
                 "example-1": {
                   "value": {
                     "id": "a_experiment",
                     "description": "updated summary",
                     "idType": "userID",
+                    "status": "setup",
+                    "launchedGroupID": null,
+                    "startTime": null,
+                    "endTime": null,
                     "layerID": "statsig::a_layer",
                     "hypothesis": "updated hypothesis",
                     "keyMetrics": [
@@ -1418,6 +1426,7 @@ module.exports = {
                     "groups": [
                       {
                         "name": "group1",
+                        "id": "4HbgLdfqlIeN3sHkyMG1qC",
                         "size": 50,
                         "parameterValues": {
                           "key": 1
@@ -1425,6 +1434,7 @@ module.exports = {
                       },
                       {
                         "name": "gruop2",
+                        "id": "4HbgLeUsO0ohmSfg9UBEJE",
                         "size": 50,
                         "parameterValues": {}
                       }
