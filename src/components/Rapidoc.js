@@ -57,7 +57,7 @@ function loadReferences(spec) {
     }
 
     let value = spec[key];
-    if (value["$ref"] && typeof value["$ref"] === "string") {
+    if (value?.["$ref"] && typeof value["$ref"] === "string") {
       const filename = value["$ref"].split("/").pop();
       if (filename.endsWith(".json")) {
         const name = filename.split(".").shift();
