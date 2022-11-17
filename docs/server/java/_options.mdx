@@ -9,7 +9,7 @@ You can pass in an optional parameter `options` in addition to the server secret
   - e.g. passing in a value of `Tier.Staging` will allow your users to pass any condition that pass for the staging environment tier, and fail any condition that only passes for other environment tiers.
 - **bootstrapValues**: string?, default null
   - a string that represents all rules for all feature gates, dynamic configs and experiments. It can be provided to bootstrap the Statsig server SDK at initialization in case your server runs into network issue or Statsig server is down temporarily.
-- **rulesUpdatedCallback**: ((rules: String) -> Unit)?, default null
+- **rulesUpdatedCallback**: ((rules: String) -> {})?, default null
   - a callback function that's called whenever we have an update for the rules; it's called with a JSON string (used as is for `bootstrapValues` mentioned above) and a timestamp.
 - **localMode** - boolean, default false
   - Pass true to this option to turn on Local Mode for the SDK, which will stop the SDK from issuing any network requests and make it only operate with only local overrides and cache.
