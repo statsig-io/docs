@@ -87,3 +87,14 @@ By default, Pulse results are displayed with 95% confidence intervals and withou
 
 * **Bonferroni Correction**: Select this option to automatically apply the correction in experiments with more than one test group.  This reduces the probability of Type I errors (false positives) by adjusting the significance level alpha, which will be divided by the number of test variants in the experiment.
 * **Default Confidence Interval**: The selection will be used by default every time Pulse results are shown for this experiment.  Choose lower confidence intervals (e.g.: 80%) when there's higher tolerance for false positives and fast iteration with directional results is preferred over longer/larger experiments with increased certainty.   
+
+### Target Duration
+<img width="1504" alt="Screen Shot 2022-11-23 at 11 44 25 AM" src="https://user-images.githubusercontent.com/101903926/203633616-9e14a0bc-4077-4fd1-8144-2ed2c17a50f8.png">
+
+Setting a target duration is optional, but can be good experimental practice to ensure you wait long enough for an experiment to reach full power before reading out the results. You can use the Power Analysis Calculator to help you determine what target duration to set based on which metrics you're looking to move. 
+
+<img width="795" alt="Screen Shot 2022-11-23 at 11 48 08 AM" src="https://user-images.githubusercontent.com/101903926/203634126-811bd508-8fc4-4f87-ab63-df5626344331.png">
+
+Once a target duration is set, you can track your progress against your target duration from the header of your experiment. When your experiment hits target duration, you will be notified via email and Slack if you have enabled the Statsig Slack integration. 
+
+<img width="582" alt="Screen Shot 2022-11-23 at 11 49 51 AM" src="https://user-images.githubusercontent.com/101903926/203634347-bf98bd4e-3593-45bc-b75c-4876cea49d85.png">
