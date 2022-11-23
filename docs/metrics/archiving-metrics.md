@@ -9,19 +9,19 @@ slug: /metrics/archiving-metrics
 ### Archiving a Metric 
 To archive a metric, select the metric(s) you want to archive. Once you've selected at least one metric, you will see a toolbar of options appear to **Archive**, **Compare**, or **Tag** the selected metrics. 
 
-<img src="https://user-images.githubusercontent.com/101903926/203647259-64d0d903-8ad8-46df-a738-204ff7b89641.png" alt="Screen Shot 2022-11-23 at 1 14 30 PM" width="1510">
+![Screen Shot 2022-11-23 at 1 14 30 PM](https://user-images.githubusercontent.com/101903926/203647259-64d0d903-8ad8-46df-a738-204ff7b89641.png)
 
 Tap the **Archive** button and you will see the metric change to a disabled state with the "Archived" symbol next to it to indicate that it is archived.
 
-<img width="1492" alt="Screen Shot 2022-11-23 at 1 16 21 PM" src="https://user-images.githubusercontent.com/101903926/203647513-937c9a2e-d5cc-4179-9398-d839831c3292.png">
+![Screen Shot 2022-11-23 at 1 16 21 PM](https://user-images.githubusercontent.com/101903926/203647513-937c9a2e-d5cc-4179-9398-d839831c3292.png)
 
 You can also archive directly from the Metrics Detail View page. Tap the "..." in the upper right-hand corner, and select **Archive**. 
 
-<img width="1577" alt="Screen Shot 2022-11-23 at 1 59 15 PM" src="https://user-images.githubusercontent.com/101903926/203653065-00134f24-a3a4-49ab-8d84-f52d71b861cf.png">
+![Screen Shot 2022-11-23 at 1 59 15 PM](https://user-images.githubusercontent.com/101903926/203653065-00134f24-a3a4-49ab-8d84-f52d71b861cf.png)
 
 When you go to the Metric Detail View for this metric, you will see a banner across the top of the page indicating that the metric has been archived. 
 
-<img width="1584" alt="Screen Shot 2022-11-23 at 1 17 20 PM" src="https://user-images.githubusercontent.com/101903926/203647646-4453bdd2-78a4-41c1-bb46-3680ac6a491d.png">
+![Screen Shot 2022-11-23 at 1 17 20 PM](https://user-images.githubusercontent.com/101903926/203647646-4453bdd2-78a4-41c1-bb46-3680ac6a491d.png)
 
 ### Implications of Archiving a Metric 
 If you archive a metric, the metric will be hidden in your Metrics Catalog and in Pulse. This means- 
@@ -34,6 +34,6 @@ If you archive a metric, the metric will be hidden in your Metrics Catalog and i
 ### Unarchiving a Metric
 If you mistakenly archived a metric you can undo your archive by "Unarchiving" the metric. Simply go to the last page or two of your Metrics Catalog, select the archived metric, and tap "Unarchive" from the banner at the top of the Metric Detail view page. This will restore the  metric to both your Metrics Catalog as well as any experiment results that include the metric. 
 
-<img width="1557" alt="Screen Shot 2022-11-23 at 2 41 54 PM" src="https://user-images.githubusercontent.com/101903926/203658136-2e672906-8122-4c99-a985-970e9b60317c.png">
+![Screen Shot 2022-11-23 at 2 41 54 PM](https://user-images.githubusercontent.com/101903926/203658136-2e672906-8122-4c99-a985-970e9b60317c.png)
 
 
