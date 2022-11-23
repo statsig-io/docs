@@ -13,7 +13,7 @@ To create a user-level experiment,
 3. Click on the **Create** button
 4. Enter the name and description for your experiment as shown in the figure below
 5. By default, your expeirment runs in its own Layer. If you would like to add this experiment to a Layer, select the **Add Layer** option under **Advanced** in the experiment creation modal or create a new Layer via **Create New Layer**.   
-<img width="494" alt="Screen Shot 2022-11-23 at 10 31 09 AM" src="https://user-images.githubusercontent.com/101903926/203622099-dde952fe-d96b-4e4e-8dcd-bdec8b54c354.png">
+<img src="https://user-images.githubusercontent.com/101903926/203622099-dde952fe-d96b-4e4e-8dcd-bdec8b54c354.png" alt="Screen Shot 2022-11-23 at 10 31 09 AM" width="494">
 6. Click "Create" 
 
 <img width="500" alt="Screen Shot 2022-11-23 at 9 42 50 AM" src="https://user-images.githubusercontent.com/101903926/203613919-0c3ff6ec-e465-4d05-92e1-e55b2ae32226.png">
