@@ -4,19 +4,40 @@ sidebar_label: Create
 slug: /experiments-plus/create-new
 ---
 
+# Create a New Experiment 
+
 ### User-level Experiments
 To create a user-level experiment,
 1. Log into the Statsig console at [https://console.statsig.com/](https://console.statsig.com/)
 2. Navigate to **Experiments** in the left-hand navigation panel
 3. Click on the **Create** button
 4. Enter the name and description for your experiment as shown in the figure below
-5. Click **Create** 
+5. By default, your expeirment runs in its own Layer. If you would like to add this experiment to an existing Layer, select the "Add Layer" option under "Advanced" in the experiment creation modal.  
+<img width="494" alt="Screen Shot 2022-11-23 at 10 31 09 AM" src="https://user-images.githubusercontent.com/101903926/203622099-dde952fe-d96b-4e4e-8dcd-bdec8b54c354.png">
+6. Click **Create** 
 
-   ![image](https://user-images.githubusercontent.com/1315028/138970611-1e46fe5a-6119-4be3-8cc1-0b296477d6c8.png)
-   
-6. In the **Allocation** panel, enter the percentage of users that you want to allocate to this experiment. By default, each experiment runs in its own layer and you can enter a value up to 100%
+<img width="500" alt="Screen Shot 2022-11-23 at 9 42 50 AM" src="https://user-images.githubusercontent.com/101903926/203613919-0c3ff6ec-e465-4d05-92e1-e55b2ae32226.png">
 
-   ![allocation image](https://user-images.githubusercontent.com/74584483/152994031-8aff75dc-5e7b-4381-9a26-c778ec35d5c9.png)
+### Configure Your Scorecard
+<img width="1511" alt="Screen Shot 2022-11-23 at 9 44 32 AM" src="https://user-images.githubusercontent.com/101903926/203614214-1d7a45d4-a701-43e6-955c-025fd29c4903.png">
+
+When running an experiment, you are typically trying to test a hypothesis, which you are measuring using a set of key metrics. The Scorecard makes this easy, with an affordance to enter your Hypothesis, Primary, and Secondary metrics. 
+
+Primary metrics are the metrics you are looking to influence directly with your experiment. Secondary metrics are the set of metrics you may want to monitor or ensure don't regress with your test, but aren't directly trying to move. 
+
+Configuring the Scorecard is optional, but is especially helpful to ensure other members of your team viewing your experiment have context on the hypothesis being tested and how success is being measured. Additionally, all metrics added to the Scorecard are pre-computed daily, as well as eligible for more advanced statistical treatments like CUPED and Sequential Testing.
+
+Read more about best practices for configuring your Scorecard [here](https://docs.statsig.com/experiments-plus/read-results#reading-experiment-results).  
+
+### Configure Your Groups and Parameters
+<img width="1512" alt="Screen Shot 2022-11-23 at 10 10 34 AM" src="https://user-images.githubusercontent.com/101903926/203618668-fae24a99-3df8-4eff-90ed-c2ce7ab7d9c1.png">
+
+This is where the meat of experiment configuration happens. Whereas the Scorecard is an optional setup step, configuring your experiment's allocation, targeting criteria, and groups and parameters is mandatory. 
+
+In the **Allocation** panel, enter the percentage of users that you want to allocate to this experiment. By default, each experiment runs in its own layer and you can enter a value up to 100%.
+
+<img width="1495" alt="Screen Shot 2022-11-23 at 10 21 21 AM" src="https://user-images.githubusercontent.com/101903926/203620564-028c7244-c77b-4f51-92e1-40f522a03902.png">
+
 
 7. In the **Variations** panel, enter the variant names and click on **Add Another Variant** to enter more variants
 
