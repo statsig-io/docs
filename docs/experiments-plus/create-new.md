@@ -40,38 +40,26 @@ For **Allocation**, enter the percentage of users that you want to allocate to t
 
 <img width="1504" alt="Screen Shot 2022-11-23 at 10 37 52 AM" src="https://user-images.githubusercontent.com/101903926/203623193-9137bd21-54c5-4cae-a462-831c7ad9833b.png">
 
-If you want to use a targeting gate in your experiment, tap on **Targeting** to select a Feature Gate. By default, no Feature Gate is selected and your experiment will use all allocated users (up to the Allocation % specified in the previous step) within either your exposed userbase or within the Layer you have selected. 
+If you want to use a targeting gate in your experiment, tap on **Targeting** to select a Feature Gate. A targeting gate will restrict the users elegible for the experiment to those who pass the list of conditions definied in the linked Feature Gate. This continues to apply after making a decision on an experiment in the Statsig UI. 
+
+By default, no Feature Gate is selected and your experiment will use all allocated users (up to the Allocation % specified in the previous step) within either your exposed userbase or within the Layer you have selected. 
 
 <img width="1497" alt="Screen Shot 2022-11-23 at 10 42 05 AM" src="https://user-images.githubusercontent.com/101903926/203623897-5ae52609-80cc-4927-a64b-5e3af0005fd0.png">
 
-When configuring your Groups and Parameters, we recommend adding your Parameters first. Parameters are what actually control the different experiment variants in code. Read more about Groups vs. Parameters [here](https://docs.statsig.com/experiments-plus/getting-group). 
+When configuring your Groups and Parameters, we recommend adding your test Parameter(s) first. Parameters are what actually control the different experiment variants in code. Enter the values that the experiment parameter will take for each variant. Read more about Groups vs. Parameters [here](https://docs.statsig.com/experiments-plus/getting-group). Please note that you cannot start your experiment without adding at least one Parameter.  
+
+<img width="1493" alt="Screen Shot 2022-11-23 at 11 28 00 AM" src="https://user-images.githubusercontent.com/101903926/203631152-f4b7d844-7aa4-40c9-bdd9-c5e90d0cc3d7.png">
+
+If you are looking to test more variants than just an A/B, add more Groups to your experiment by tapping the "+" to the right of the existing experiment groups. You will be prompted to enter the Parameter value for each new experiment group added. You'll notice that the split percentages between the experiment groups automatically change to evenly distribute users between the groups.
 
 
+<img width="794" alt="Screen Shot 2022-11-23 at 11 18 31 AM" src="https://user-images.githubusercontent.com/101903926/203629627-8366655c-19df-43c7-8212-ba243eecc43d.png">
 
-
-7. In the **Variations** panel, enter the variant names and click on **Add Another Variant** to enter more variants
-
-   ![image](https://user-images.githubusercontent.com/1315028/138972765-bd10e43e-be10-4859-ae32-bde87913b0e6.png)
-
-   You'll find that the split percentages between these variants automatically change to evenly distribute users between these variants.
-
-8. Continuing in the **Variations** pabel, click on the pencil icon next the _sample_parameter_ and enter the name of your experiment parameter and the type, and click **Confirm**
-
-   ![image](https://user-images.githubusercontent.com/1315028/138972604-3bb43962-6991-4eac-9fba-a9ab165ea1d2.png)
-
-9. Enter the values that the experiment parameter will take for each variant
-
-   ![image](https://user-images.githubusercontent.com/1315028/138973003-66f3879c-14f2-44f2-9a3a-ee2be0b18162.png)
-   
-10. Enter the key metrics you want to track in this experiment
-
-   ![image](https://user-images.githubusercontent.com/1315028/138973362-69b53d48-745a-462f-a275-b0a3720d4d90.png)
-
-11. Click on the **Save** button at the top right hand side of the page to complete your experiment setup.
+Once Parameters and their values for different groups are defined, you can add additional Group metadata to name, describe, and add a corresponding variant image to each experiment group via the "Groups" section. Note that neither the Group name or description is used in your end experiment- only the Parameters and their values are actually called in code to influence the end experience a user sees based on their group assignment. 
 
 
 ### Device-level and Custom ID Experiments
-The default randomization unit for experiments is User ID.  To create an experiment with a different unit ID type, follow steps 1 - 4 above. Then,
+The default randomization unit for experiments is User ID.  To create an experiment with a different unit ID type, follow steps 1 - 4 from the "User-level Experiments" section above. Then,
  1. Click the **ID Type** drop down menu and make a selection.
  2. Click **Create**
  
@@ -80,12 +68,14 @@ The default randomization unit for experiments is User ID.  To create an experim
 Now follow the remaining steps as described in the previous section to complete your experiment setup. 
 
 ### Isolated Experiments
-By default, each experiment runs in its own layer. When you want to create an experiment that excludes any users exposed to other experiments, follow steps 1 -4 in 1 -4 n User-level Experiments above. Then,
-1. Click the checkbox for **Add Layer**
-2. Select an existing layer or _create a new layer_.
-3. Click **Create**
+By default, each experiment runs in its own layer. When you want to create an experiment that excludes any users exposed to other experiments, follow steps 1 -4  from the "User-level Experiments" section above. Then,
 
-![image](https://user-images.githubusercontent.com/1315028/138971433-98c6e385-a95b-4e9c-a3d8-d9d291b6cac6.png)
+1. Select **Advanced** 
+2. Click the checkbox for **Add Layer**
+3. Select an existing layer or _create a new layer_.
+4. Click **Create**
+
+<img width="494" alt="Screen Shot 2022-11-23 at 10 31 09 AM" src="https://user-images.githubusercontent.com/101903926/203622099-dde952fe-d96b-4e4e-8dcd-bdec8b54c354.png">
 
 Now follow the remaining steps as described in the top section on this page to complete your experiment setup.
 
@@ -93,11 +83,7 @@ Now follow the remaining steps as described in the top section on this page to c
 
 ![image](https://user-images.githubusercontent.com/90343952/149187492-2e8b6df9-59cd-424c-aac8-4f3e690c2b39.png)
 
-By default, Pulse results are displayed with 95% confidence intervals and without Bonferroni correction.  This default can be changed during the experiment creation and can also be adjusted in the settings when viewing the results. 
+By default, Pulse results are displayed with 95% confidence intervals and without Bonferroni correction.  This default can be changed during the experiment creation and can also be adjusted in the settings when viewing results in Pulse. 
 
 * **Bonferroni Correction**: Select this option to automatically apply the correction in experiments with more than one test group.  This reduces the probability of Type I errors (false positives) by adjusting the significance level alpha, which will be divided by the number of test variants in the experiment.
 * **Default Confidence Interval**: The selection will be used by default every time Pulse results are shown for this experiment.  Choose lower confidence intervals (e.g.: 80%) when there's higher tolerance for false positives and fast iteration with directional results is preferred over longer/larger experiments with increased certainty.   
-
-### Targeting Gates
-
-By default, this is hidden under the advanced configuration of an experiment (at the bottom of the experiment setup page).  A targeting gate will restrict the users elegible for the experiment to those who pass the list of conditions definied in the linked Feature Gate.  This continues to apply after making a decision on an experiment in the Statsig UI.
