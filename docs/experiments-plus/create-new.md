@@ -14,7 +14,7 @@ To create a user-level experiment,
 4. Enter the name and description for your experiment as shown in the figure below
 5. By default, your expeirment runs in its own Layer. If you would like to add this experiment to an existing Layer, select the "Add Layer" option under "Advanced" in the experiment creation modal.  
 <img width="494" alt="Screen Shot 2022-11-23 at 10 31 09 AM" src="https://user-images.githubusercontent.com/101903926/203622099-dde952fe-d96b-4e4e-8dcd-bdec8b54c354.png">
-6. Click **Create** 
+6. Click "Create" 
 
 <img width="500" alt="Screen Shot 2022-11-23 at 9 42 50 AM" src="https://user-images.githubusercontent.com/101903926/203613919-0c3ff6ec-e465-4d05-92e1-e55b2ae32226.png">
 
@@ -34,9 +34,19 @@ Read more about best practices for configuring your Scorecard [here](https://doc
 
 This is where the meat of experiment configuration happens. Whereas the Scorecard is an optional setup step, configuring your experiment's allocation, targeting criteria, and groups and parameters is mandatory. 
 
-In the **Allocation** panel, enter the percentage of users that you want to allocate to this experiment. By default, each experiment runs in its own layer and you can enter a value up to 100%.
-
 <img width="1495" alt="Screen Shot 2022-11-23 at 10 21 21 AM" src="https://user-images.githubusercontent.com/101903926/203620564-028c7244-c77b-4f51-92e1-40f522a03902.png">
+
+For **Allocation**, enter the percentage of users that you want to allocate to this experiment. By default, each experiment runs in its own layer and you can enter a value up to 100%.
+
+<img width="1504" alt="Screen Shot 2022-11-23 at 10 37 52 AM" src="https://user-images.githubusercontent.com/101903926/203623193-9137bd21-54c5-4cae-a462-831c7ad9833b.png">
+
+If you want to use a targeting gate in your experiment, tap on **Targeting** to select a Feature Gate. By default, no Feature Gate is selected and your experiment will use all allocated users (up to the Allocation % specified in the previous step) within either your exposed userbase or within the Layer you have selected. 
+
+<img width="1497" alt="Screen Shot 2022-11-23 at 10 42 05 AM" src="https://user-images.githubusercontent.com/101903926/203623897-5ae52609-80cc-4927-a64b-5e3af0005fd0.png">
+
+When configuring your Groups and Parameters, we recommend adding your Parameters first. Parameters are what actually control the different experiment variants in code. Read more about Groups vs. Parameters [here](https://docs.statsig.com/experiments-plus/getting-group). 
+
+
 
 
 7. In the **Variations** panel, enter the variant names and click on **Add Another Variant** to enter more variants
