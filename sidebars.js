@@ -154,6 +154,7 @@ module.exports = {
             "metrics/custom-metrics",
             "metrics/precomputed-metrics",
             "metrics/metric-dimensions",
+            "metrics/archiving-metrics",
           ],
         },
         // other
