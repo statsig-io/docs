@@ -24,7 +24,7 @@ To create a user-level experiment,
 
    You'll find that the split percentages between these variants automatically change to evenly distribute users between these variants.
 
-8. Continuing in the **Variations** pabel, click on the pencil icon next the _sample_parameter_ and enter the name of your experiment parameter and the type, and click **Confirm**
+8. Continuing in the **Variations** panel, click on the pencil icon next the _sample_parameter_ and enter the name of your experiment parameter and the type, and click **Confirm**
 
    ![image](https://user-images.githubusercontent.com/1315028/138972604-3bb43962-6991-4eac-9fba-a9ab165ea1d2.png)
 
