@@ -315,6 +315,20 @@ module.exports = {
         "description": "List all metrics in the project",
         "tags": [
           "Metrics"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "true",
+                "false"
+              ]
+            },
+            "in": "query",
+            "name": "showHiddenMetrics",
+            "description": "Should hidden metrics be returned"
+          }
         ]
       },
       "parameters": []
