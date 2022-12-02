@@ -137,7 +137,7 @@ module.exports = {
                   }
                 },
                 "examples": {
-                  "example-1": {
+                  "Id list segments": {
                     "value": {
                       "message": "Segments listed successfully.",
                       "data": [
@@ -156,6 +156,37 @@ module.exports = {
                           "lastModifierName": "CONSOLE API",
                           "lastModifierID": "jFiia92hinDkcGaFijd0",
                           "type": "id_list"
+                        }
+                      ]
+                    }
+                  },
+                  "Rule based segment": {
+                    "value": {
+                      "message": "Rules successfully updated",
+                      "data": [
+                        {
+                          "id": "a_segment",
+                          "isEnabled": true,
+                          "description": "a rule_based segment",
+                          "lastModifierName": "CONSOLE API",
+                          "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                          "type": "rule_based",
+                          "rules": [
+                            {
+                              "name": "check a field",
+                              "passPercentage": 10,
+                              "conditions": [
+                                {
+                                  "type": "custom_field",
+                                  "targetValue": [
+                                    "31"
+                                  ],
+                                  "operator": "any",
+                                  "field": "field_to_check"
+                                }
+                              ]
+                            }
+                          ]
                         }
                       ]
                     }
@@ -261,7 +292,7 @@ module.exports = {
                   }
                 },
                 "examples": {
-                  "example-1": {
+                  "id list": {
                     "value": {
                       "message": "Segment created successfully.",
                       "data": {
@@ -270,7 +301,22 @@ module.exports = {
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                        "type": "id_list"
+                        "type": "id_list",
+                        "count": 0
+                      }
+                    }
+                  },
+                  "rule based": {
+                    "value": {
+                      "message": "Segment created successfully.",
+                      "data": {
+                        "id": "a_segment",
+                        "isEnabled": true,
+                        "description": "helpful summary of what this segment is",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "type": "id_list",
+                        "rules": []
                       }
                     }
                   }
@@ -296,7 +342,8 @@ module.exports = {
               }
             }
           }
-        }
+        },
+        "description": ""
       }
     },
     "/segments/{segment_id}": {
@@ -335,16 +382,31 @@ module.exports = {
                   }
                 },
                 "examples": {
-                  "example-1": {
+                  "id list": {
                     "value": {
-                      "message": "string",
+                      "message": "Segment read successfully.",
                       "data": {
                         "id": "a_segment",
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                        "type": "id_list"
+                        "type": "id_list",
+                        "count": 0
+                      }
+                    }
+                  },
+                  "rule based": {
+                    "value": {
+                      "message": "Segment read successfully.",
+                      "data": {
+                        "id": "a_segment",
+                        "isEnabled": true,
+                        "description": "helpful summary of what this segment is",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "type": "id_list",
+                        "rules": []
                       }
                     }
                   }
