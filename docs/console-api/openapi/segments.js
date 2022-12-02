@@ -94,7 +94,8 @@ module.exports = {
                           "description": "helpful summary of what this segment is",
                           "lastModifierName": "CONSOLE API",
                           "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                          "type": "id_list"
+                          "type": "id_list",
+                          "count": 0
                         },
                         {
                           "id": "c_segment",
@@ -102,7 +103,8 @@ module.exports = {
                           "description": "helpful summary of what this segment is",
                           "lastModifierName": "CONSOLE API",
                           "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                          "type": "id_list"
+                          "type": "id_list",
+                          "count": 0
                         },
                         {
                           "id": "segment_test_2",
@@ -110,7 +112,8 @@ module.exports = {
                           "description": "this is the second test",
                           "lastModifierName": "jacob ",
                           "lastModifierID": "wsJTGUMTimICpPESo2DYg",
-                          "type": "rule_based"
+                          "type": "rule_based",
+                          "rules": []
                         },
                         {
                           "id": "segment_test",
@@ -118,7 +121,8 @@ module.exports = {
                           "description": "a simple test ",
                           "lastModifierName": "jacob ",
                           "lastModifierID": "wsJTGUMTimICpPESo2DYg",
-                          "type": "rule_based"
+                          "type": "rule_based",
+                          "rules": []
                         }
                       ]
                     }
@@ -147,7 +151,8 @@ module.exports = {
                           "description": "helpful summary of what this segment is",
                           "lastModifierName": "CONSOLE API",
                           "lastModifierID": "8dahjGcaRh92n9aoFaicW9",
-                          "type": "id_list"
+                          "type": "id_list",
+                          "count": 0
                         },
                         {
                           "id": "b_segment",
@@ -155,7 +160,8 @@ module.exports = {
                           "description": "like a_segment but with a b instead",
                           "lastModifierName": "CONSOLE API",
                           "lastModifierID": "jFiia92hinDkcGaFijd0",
-                          "type": "id_list"
+                          "type": "id_list",
+                          "count": 0
                         }
                       ]
                     }
@@ -229,7 +235,7 @@ module.exports = {
                   "example-1": {
                     "name": "a segment",
                     "description": "helpful summary of what this segment is",
-                    "type": "id_list"
+                    "type": "id_list",
                   }
                 },
                 "properties": {
@@ -278,7 +284,8 @@ module.exports = {
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                        "type": "id_list"
+                        "type": "id_list",
+                        "count": 0
                       }
                     }
                   },
@@ -368,7 +375,8 @@ module.exports = {
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                        "type": "id_list"
+                        "type": "id_list",
+                        "count": 0
                       }
                     }
                   },
@@ -405,7 +413,7 @@ module.exports = {
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                        "type": "id_list",
+                        "type": "rule_based",
                         "rules": []
                       }
                     }
@@ -449,7 +457,8 @@ module.exports = {
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                        "type": "id_list"
+                        "type": "id_list",
+                        "count": 0
                       }
                     }
                   },
@@ -472,7 +481,8 @@ module.exports = {
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                        "type": "id_list"
+                        "type": "id_list",
+                        "count": 0
                       }
                     }
                   }
