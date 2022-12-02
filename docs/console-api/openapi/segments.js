@@ -349,8 +349,7 @@ module.exports = {
               }
             }
           }
-        },
-        "description": ""
+        }
       }
     },
     "/segments/{segment_id}": {
