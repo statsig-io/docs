@@ -3,50 +3,50 @@ import CodeBlock from "@theme/CodeBlock";
 import ManualExposuresTemplate from "../../sdks/_manual-exposures-template.mdx";
 
 <ManualExposuresTemplate
-  addedInVersion={() => <span>5.0.0</span>}
+  addedInVersion={() => <span>4.28.0</span>}
   // Gate
   gateSnippet={
     <CodeBlock language="jsx">
-      {`const result = await statsig.checkGateWithExposureLoggingDisabled(aUser, 'a_gate_name');`}
+      {`const result = await statsig.checkGateWithExposureLoggingDisabled('a_gate_name');`}
     </CodeBlock>
   }
   gateExposureSnippet={
     <CodeBlock language="jsx">
-      {`statsig.manuallyLogGateExposure(aUser, 'a_gate_name');`}
+      {`statsig.manuallyLogGateExposure('a_gate_name');`}
     </CodeBlock>
   }
   // Config
   configSnippet={
     <CodeBlock language="jsx">
-      {`const config = await statsig.getConfigWithExposureLoggingDisabled(aUser, 'a_dynamic_config_name');`}
+      {`const config = await statsig.getConfigWithExposureLoggingDisabled('a_dynamic_config_name');`}
     </CodeBlock>
   }
   configExposureSnippet={
     <CodeBlock language="jsx">
-      {`statsig.manuallyLogConfigExposure(aUser, 'a_dynamic_config_name');`}
+      {`statsig.manuallyLogConfigExposure('a_dynamic_config_name');`}
     </CodeBlock>
   }
   // Experiment
   experimentSnippet={
     <CodeBlock language="jsx">
-      {`const experiment = await statsig.getExperimentWithExposureLoggingDisabled(aUser, 'an_experiment_name');`}
+      {`const experiment = await statsig.getExperimentWithExposureLoggingDisabled('an_experiment_name');`}
     </CodeBlock>
   }
   experimentExposureSnippet={
     <CodeBlock language="jsx">
-      {`statsig.manuallyLogExperimentExposure(aUser, 'an_experiment_name');`}
+      {`statsig.manuallyLogExperimentExposure('an_experiment_name');`}
     </CodeBlock>
   }
   // Layer
   layerSnippet={
     <CodeBlock language="jsx">
-      {`const layer = await statsig.getLayerWithExposureLoggingDisabled(aUser, 'a_layer_name');
+      {`const layer = await statsig.getLayerWithExposureLoggingDisabled('a_layer_name');
 const paramValue = layer.get('a_param_name', 'fallback_value');`}
     </CodeBlock>
   }
   layerExposureSnippet={
     <CodeBlock language="jsx">
-      {`statsig.manuallyLogLayerParameterExposure(aUser, 'a_layer_name', 'a_param_name');`}
+      {`statsig.manuallyLogLayerParameterExposure('a_layer_name', 'a_param_name');`}
     </CodeBlock>
   }
 />
