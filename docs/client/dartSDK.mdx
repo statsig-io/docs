@@ -3,8 +3,9 @@ sidebar_label: Dart/Flutter
 title: Dart Client SDK
 ---
 
+import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
+
 import {
-  Builder,
   GettingStarted,
   FAQ,
   WorkingWith,
@@ -14,7 +15,7 @@ import {
   ManualExposures,
   Shutdown,
   LocalOverrides,
-} from "./Template/_Builder.mdx";
+} from "./Templates/index.mdx";
 
 import Install from "./Dart/_install.mdx";
 import Initialize from "./Dart/_initialize.mdx";
@@ -27,7 +28,7 @@ import MoreFAQs from "./Dart/_faqs.mdx";
 import Options from "./Dart/_options.mdx";
 import ShutdownSnippet from "./Dart/_shutdown.mdx";
 
-export const Result = Builder(
+export const Result = SDKDocsBuilder(
   [
     [
       GettingStarted,

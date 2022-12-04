@@ -1,10 +1,11 @@
 ---
 sidebar_label: JavaScript
-title: JavaScript Client SDK for Statsig
+title: JavaScript Client SDK
 ---
 
+import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
+
 import {
-  Builder,
   GettingStarted,
   FAQ,
   WorkingWith,
@@ -14,7 +15,7 @@ import {
   ManualExposures,
   Shutdown,
   LocalOverrides,
-} from "./Template/_Builder.mdx";
+} from "./Templates/index.mdx";
 
 import Install from "./js/_install.mdx";
 import Initialize from "./js/_initialize.mdx";
@@ -31,7 +32,7 @@ import { Snippets as ManualExposureSnippets } from "./js/_manualExposures.mdx";
 import ShutdownSnippet from "./js/_shutdown.mdx";
 import LocalOverridesSnippet from "./js/_localOverrides.mdx";
 
-export const Result = Builder(
+export const Result = SDKDocsBuilder(
   [
     [
       GettingStarted,

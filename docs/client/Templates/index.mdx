@@ -24,18 +24,3 @@ export const Shutdown = _Shutdown;
 
 import * as _LocalOverrides from "./_LocalOverrides.mdx";
 export const LocalOverrides = _LocalOverrides;
-
-import Gap from "./_Gap.mdx";
-
-export const Builder = (sections, toc) => {
-  toc.length = 0;
-  return sections.map(([Section, props], index) => {
-    toc.push(...Section.toc);
-    return (
-      <React.Fragment key={"" + index}>
-        <Section.default {...props} />
-        <Gap />
-      </React.Fragment>
-    );
-  });
-};

@@ -3,8 +3,9 @@ sidebar_label: Android
 title: Android Client SDK
 ---
 
+import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
+
 import {
-  Builder,
   GettingStarted,
   FAQ,
   WorkingWith,
@@ -14,7 +15,7 @@ import {
   ManualExposures,
   Shutdown,
   LocalOverrides,
-} from "./Template/_Builder.mdx";
+} from "./Templates/index.mdx";
 
 import Install from "./Android/_install.mdx";
 import Initialize from "./Android/_initialize.mdx";
@@ -29,7 +30,7 @@ import LocalOverridesSnippet from "./Android/_localOverrides.mdx";
 // import { Snippets as ManualExposureSnippets } from "./Android/_manualExposures.mdx";
 import ShutdownSnippet from "./Android/_shutdown.mdx";
 
-export const Result = Builder(
+export const Result = SDKDocsBuilder(
   [
     [
       GettingStarted,

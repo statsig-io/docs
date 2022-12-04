@@ -1,10 +1,11 @@
 ---
 sidebar_label: iOS/tvOS
-title: iOS/tvOS SDK for Statsig
+title: iOS/tvOS Client SDK
 ---
 
+import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
+
 import {
-  Builder,
   GettingStarted,
   FAQ,
   WorkingWith,
@@ -14,7 +15,7 @@ import {
   ManualExposures,
   Shutdown,
   LocalOverrides,
-} from "./Template/_Builder.mdx";
+} from "./Templates/index.mdx";
 
 import Install from "./iOS/_install.mdx";
 import Initialize from "./iOS/_initialize.mdx";
@@ -29,7 +30,7 @@ import { Snippets as ManualExposureSnippets } from "./iOS/_manualExposures.mdx";
 import ShutdownSnippet from "./iOS/_shutdown.mdx";
 import LocalOverridesSnippet from "./iOS/_localOverrides.mdx";
 
-export const Result = Builder(
+export const Result = SDKDocsBuilder(
   [
     [
       GettingStarted,

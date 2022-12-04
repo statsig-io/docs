@@ -3,8 +3,9 @@ sidebar_label: Unity
 title: Unity SDK
 ---
 
+import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
+
 import {
-  Builder,
   GettingStarted,
   FAQ,
   WorkingWith,
@@ -14,7 +15,7 @@ import {
   ManualExposures,
   Shutdown,
   LocalOverrides,
-} from "./Template/_Builder.mdx";
+} from "./Templates/index.mdx";
 
 import Install from "./Unity/_install.mdx";
 import Initialize from "./Unity/_initialize.mdx";
@@ -27,7 +28,7 @@ import MoreFAQs from "./Unity/_faqs.mdx";
 import Options from "./Unity/_options.mdx";
 import ShutdownSnippet from "./Unity/_shutdown.mdx";
 
-export const Result = Builder(
+export const Result = SDKDocsBuilder(
   [
     [
       GettingStarted,
