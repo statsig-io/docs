@@ -2,6 +2,7 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
 <Tabs
+  groupId="ios-sdk-lang-choice"
   defaultValue="swift"
   values={[
     {label: 'Swift', value: 'swift'},
@@ -32,7 +33,7 @@ let price = msrp * (1 - discount);
   </TabItem>
   <TabItem value="objectivec">
 
-```objectivec
+```swift
 DynamicConfig *expConfig = [Statsig getExperimentForName:@"new_user_promo"];
 
 NSString *promoTitle = [expConfig.getStringForKey:@"title" defaultValue:@"Welcome to Statsig! Use discount code WELCOME10OFF for 10% off your first purchase!"];

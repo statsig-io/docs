@@ -1,19 +1,56 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="js-sdk-lang-choice"
+  defaultValue="ts"
+  values={[
+    {label: 'TypeScript', value: 'ts'},
+    {label: 'JavaScript', value: 'js'},
+  ]}>
+
+  <TabItem value="ts">
+
 ```typescript
+import type { Layer, DynamicConfig } from "statsig-js";
+
 // Values via getLayer
 
-const layer = statsig.getLayer("user_promo_experiments");
+const layer: Layer = Statsig.getLayer("user_promo_experiments");
+const promoTitle: string = layer.get("title", "Welcome to Statsig!");
+const discount: number = layer.get("discount", 0.1);
+
+// or, via getExperiment
+
+const titleExperiment: DynamicConfig = Statsig.getExperiment(
+  "new_user_promo_title"
+);
+const priceExperiment: DynamicConfig = Statsig.getExperiment(
+  "new_user_promo_price"
+);
+
+const promoTitle: string = titleExperiment.get("title", "Welcome to Statsig!");
+const discount: number = priceExperiment.get("discount", 0.1);
+```
+
+  </TabItem>
+  <TabItem value="js">
+
+```jsx
+// Values via getLayer
+
+const layer = Statsig.getLayer("user_promo_experiments");
 const promoTitle = layer.get("title", "Welcome to Statsig!");
 const discount = layer.get("discount", 0.1);
 
 // or, via getExperiment
 
-const titleExperiment = statsig.getExperiment("new_user_promo_title");
-const priceExperiment = statsig.getExperiment("new_user_promo_price");
+const titleExperiment = Statsig.getExperiment("new_user_promo_title");
+const priceExperiment = Statsig.getExperiment("new_user_promo_price");
 
 const promoTitle = titleExperiment.get("title", "Welcome to Statsig!");
 const discount = priceExperiment.get("discount", 0.1);
-
-...
-
-const price = msrp * (1 - discount);
 ```
+
+  </TabItem>
+</Tabs>

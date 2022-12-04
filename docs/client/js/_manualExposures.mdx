@@ -1,6 +1,7 @@
 import CodeBlock from "@theme/CodeBlock";
 
 export const Snippets = {
+  // Gates
   gateSnippet: (
     <CodeBlock language="jsx">
       {`const result = await statsig.checkGateWithExposureLoggingDisabled('a_gate_name');`}
@@ -11,6 +12,7 @@ export const Snippets = {
       {`statsig.manuallyLogGateExposure('a_gate_name');`}
     </CodeBlock>
   ),
+  // Configs
   configSnippet: (
     <CodeBlock language="jsx">
       {`const config = await statsig.getConfigWithExposureLoggingDisabled('a_dynamic_config_name');`}
