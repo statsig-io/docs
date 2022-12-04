@@ -1,0 +1,61 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="ios-sdk-lang-choice"
+  defaultValue="swift"
+  values={[
+    {label: 'Swift', value: 'swift'},
+    {label: 'Objective-C', value: 'objectivec'},
+  ]}>
+  <TabItem value="swift">
+
+```swift
+// Overrides the given gate to the specified value
+Statsig.overrideGate("a_gate_name", value: true)
+
+// Overrides the given config (dynamic config or experiment) to the provided value
+Statsig.overrideConfig("a_config_or_experiment_name", value: ["key": "value"])
+
+// Overrides the given layer to the provided value
+Statsig.overrideLayer("a_layer_name", value: ["key": "value"])
+
+// Removes any overrides associated with the provided gate/config/experiment/layer name
+Statsig.removeOverride("a_gate_name")
+Statsig.removeOverride("a_config_or_experiment_name")
+Statsig.removeOverride("a_layer_name")
+
+// Removes all overrides
+Statsig.removeAllOverrides()
+
+// Returns a StatsigOverrides object, contain all the current overrides
+let currentOverrides = Statsig.getAllOverrides()
+```
+
+  </TabItem>
+  <TabItem value="objectivec">
+
+```swift
+// Overrides the given gate to the specified value
+[Statsig overrideGate:@"a_gate_name" value:true];
+
+// Overrides the given config (dynamic config or experiment) to the provided value
+[Statsig overrideConfig:@"a_config_or_experiment_name" value:@{@"key": @"value"}];
+
+// Overrides the given layer to the provided value
+[Statsig overrideLayer:@"a_layer_name" value:@{@"key": @"value"}];
+
+// Removes any overrides associated with the provided gate/config/experiment/layer name
+[Statsig removeOverride:@"a_gate_name"];
+[Statsig removeOverride:@"a_config_or_experiment_name"];
+[Statsig removeOverride:@"a_layer_name"];
+
+// Removes all overrides
+[Statsig removeAllOverrides];
+
+// Returns a StatsigOverrides object, contain all the current overrides
+StatsigOverrides *currentOverrides = [Statsig getAllOverrides];
+```
+
+  </TabItem>
+</Tabs>

@@ -15,6 +15,7 @@ import * as StatsigOptions from "./Template/_StatsigOptions.mdx";
 import * as PrefetchUsers from "./Template/_PrefetchUsers.mdx";
 import * as ManualExposures from "./Template/_ManualExposures.mdx";
 import * as Shutdown from "./Template/_Shutdown.mdx";
+import * as LocalOverrides from "./Template/_LocalOverrides.mdx";
 
 import Install from "./iOS/_install.mdx";
 import Initialize from "./iOS/_initialize.mdx";
@@ -27,6 +28,7 @@ import MoreFAQs from "./iOS/_faqs.mdx";
 import Options from "./iOS/_options.mdx";
 import { Snippets as ManualExposureSnippets } from "./iOS/_manualExposures.mdx";
 import ShutdownSnippet from "./iOS/_shutdown.mdx";
+import LocalOverridesSnippet from "./iOS/_localOverrides.mdx";
 
 export const Result = Builder(
   [
@@ -50,6 +52,7 @@ export const Result = Builder(
     [StatsigUser, { updateUser: <UpdateUser /> }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [LocalOverrides, { localOverrides: <LocalOverridesSnippet /> }],
     [ManualExposures, { addedInVersion: "1.16.0", ...ManualExposureSnippets }],
     [FAQ, { faqs: <MoreFAQs /> }],
   ],

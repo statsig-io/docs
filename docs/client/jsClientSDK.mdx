@@ -13,6 +13,7 @@ import * as StatsigOptions from "./Template/_StatsigOptions.mdx";
 import * as PrefetchUsers from "./Template/_PrefetchUsers.mdx";
 import * as ManualExposures from "./Template/_ManualExposures.mdx";
 import * as Shutdown from "./Template/_Shutdown.mdx";
+import * as LocalOverrides from "./Template/_LocalOverrides.mdx";
 
 import Install from "./js/_install.mdx";
 import Initialize from "./js/_initialize.mdx";
@@ -27,6 +28,7 @@ import PrefetchUsersMethod from "./js/_prefetchUsersMethod.mdx";
 import Options from "./js/_options.mdx";
 import { Snippets as ManualExposureSnippets } from "./js/_manualExposures.mdx";
 import ShutdownSnippet from "./js/_shutdown.mdx";
+import LocalOverridesSnippet from "./js/_localOverrides.mdx";
 
 export const Result = Builder(
   [
@@ -54,6 +56,7 @@ export const Result = Builder(
     ],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [LocalOverrides, { localOverrides: <LocalOverridesSnippet /> }],
     [ManualExposures, { addedInVersion: "4.28.0", ...ManualExposureSnippets }],
     [FAQ, { faqs: <MoreFAQs /> }],
   ],

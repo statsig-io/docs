@@ -5,10 +5,10 @@ export const Builder = (sections, toc) => {
   return sections.map(([Section, props], index) => {
     toc.push(...Section.toc);
     return (
-      <>
-        <Section.default key={"" + index} {...props} />
+      <React.Fragment key={"" + index}>
+        <Section.default {...props} />
         <Gap />
-      </>
+      </React.Fragment>
     );
   });
 };
