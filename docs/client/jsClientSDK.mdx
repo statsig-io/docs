@@ -3,18 +3,17 @@ sidebar_label: JavaScript
 title: JavaScript Client SDK for Statsig
 ---
 
-import GettingStarted, {
-  toc as GettingStartedTOC,
-} from "./Template/_GettingStarted.mdx";
+import { Builder } from "./Template/_Builder.mdx";
 
-import FAQ, { toc as FAQTOC } from "./Template/_FAQ.mdx";
-import StatsigUser, {
-  toc as StatsigUserTOC,
-} from "./Template/_StatsigUser.mdx";
+import * as GettingStarted from "./Template/_GettingStarted.mdx";
+import * as FAQ from "./Template/_FAQ.mdx";
+import * as WorkingWith from "./Template/_WorkingWith.mdx";
+import * as StatsigUser from "./Template/_StatsigUser.mdx";
+import * as StatsigOptions from "./Template/_StatsigOptions.mdx";
+import * as PrefetchUsers from "./Template/_PrefetchUsers.mdx";
+import * as ManualExposures from "./Template/_ManualExposures.mdx";
+import * as Shutdown from "./Template/_Shutdown.mdx";
 
-import { ConstructTOC } from "./Template/_ConstructTOC.mdx";
-
-import Docs from "./js/index.mdx";
 import Install from "./js/_install.mdx";
 import Initialize from "./js/_initialize.mdx";
 import CheckGate from "./js/_checkGate.mdx";
@@ -23,28 +22,41 @@ import GetExperiment from "./js/_getExperiment.mdx";
 import LogEvent from "./js/_logEvent.mdx";
 import UpdateUser from "./js/_updateUser.mdx";
 import MoreFAQs from "./js/_faqs.mdx";
+import PrefetchUsersConfig from "./js/_prefetchUsersConfig.mdx";
+import PrefetchUsersMethod from "./js/_prefetchUsersMethod.mdx";
+import Options from "./js/_options.mdx";
+import { Snippets as ManualExposureSnippets } from "./js/_manualExposures.mdx";
+import ShutdownSnippet from "./js/_shutdown.mdx";
 
-<GettingStarted
-  sdkType={"JavaScript"}
-  install={<Install />}
-  checkGate={<CheckGate />}
-  getConfig={<GetConfig />}
-  getExperiment={<GetExperiment />}
-  logEvent={<LogEvent />}
-/>
+export const Result = Builder(
+  [
+    [
+      GettingStarted,
+      {
+        sdkType: "JavaScript",
+        install: <Install />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+      },
+    ],
+    [StatsigUser, { updateUser: <UpdateUser /> }],
+    [
+      PrefetchUsers,
+      { config: <PrefetchUsersConfig />, methodCall: <PrefetchUsersMethod /> },
+    ],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [ManualExposures, { addedInVersion: "4.28.0", ...ManualExposureSnippets }],
+    [FAQ, { faqs: <MoreFAQs /> }],
+  ],
+  toc
+);
 
-<StatsigUser updateUser={<UpdateUser />} />
-
-<FAQ faqs={<MoreFAQs />} />
-
-export const _toc = ConstructTOC(toc, [
-  ...GettingStartedTOC,
-  ...StatsigUserTOC,
-  ...FAQTOC,
-]);
-
-:::warning
-OLD STUFF
-:::
-
-<Docs />
+<>{Result}</>

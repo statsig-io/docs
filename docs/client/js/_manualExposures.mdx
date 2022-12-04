@@ -1,52 +1,47 @@
 import CodeBlock from "@theme/CodeBlock";
 
-import ManualExposuresTemplate from "../../sdks/_manual-exposures-template.mdx";
-
-<ManualExposuresTemplate
-  addedInVersion={() => <span>4.28.0</span>}
-  // Gate
-  gateSnippet={
+export const Snippets = {
+  gateSnippet: (
     <CodeBlock language="jsx">
       {`const result = await statsig.checkGateWithExposureLoggingDisabled('a_gate_name');`}
     </CodeBlock>
-  }
-  gateExposureSnippet={
+  ),
+  gateExposureSnippet: (
     <CodeBlock language="jsx">
       {`statsig.manuallyLogGateExposure('a_gate_name');`}
     </CodeBlock>
-  }
-  // Config
-  configSnippet={
+  ),
+  configSnippet: (
     <CodeBlock language="jsx">
       {`const config = await statsig.getConfigWithExposureLoggingDisabled('a_dynamic_config_name');`}
     </CodeBlock>
-  }
-  configExposureSnippet={
+  ),
+  configExposureSnippet: (
     <CodeBlock language="jsx">
       {`statsig.manuallyLogConfigExposure('a_dynamic_config_name');`}
     </CodeBlock>
-  }
+  ),
   // Experiment
-  experimentSnippet={
+  experimentSnippet: (
     <CodeBlock language="jsx">
       {`const experiment = await statsig.getExperimentWithExposureLoggingDisabled('an_experiment_name');`}
     </CodeBlock>
-  }
-  experimentExposureSnippet={
+  ),
+  experimentExposureSnippet: (
     <CodeBlock language="jsx">
       {`statsig.manuallyLogExperimentExposure('an_experiment_name');`}
     </CodeBlock>
-  }
+  ),
   // Layer
-  layerSnippet={
+  layerSnippet: (
     <CodeBlock language="jsx">
       {`const layer = await statsig.getLayerWithExposureLoggingDisabled('a_layer_name');
 const paramValue = layer.get('a_param_name', 'fallback_value');`}
     </CodeBlock>
-  }
-  layerExposureSnippet={
+  ),
+  layerExposureSnippet: (
     <CodeBlock language="jsx">
       {`statsig.manuallyLogLayerParameterExposure('a_layer_name', 'a_param_name');`}
     </CodeBlock>
-  }
-/>
+  ),
+};

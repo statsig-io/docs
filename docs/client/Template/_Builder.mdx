@@ -1,0 +1,14 @@
+import Gap from "./_Gap.mdx";
+
+export const Builder = (sections, toc) => {
+  toc.length = 0;
+  return sections.map(([Section, props], index) => {
+    toc.push(...Section.toc);
+    return (
+      <>
+        <Section.default key={"" + index} {...props} />
+        <Gap />
+      </>
+    );
+  });
+};
