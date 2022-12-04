@@ -3,6 +3,48 @@ sidebar_label: JavaScript
 title: JavaScript Client SDK for Statsig
 ---
 
-import Docs from './js/index.mdx'
+import GettingStarted, {
+  toc as GettingStartedTOC,
+} from "./Template/_GettingStarted.mdx";
+
+import FAQ, { toc as FAQTOC } from "./Template/_FAQ.mdx";
+import StatsigUser, {
+  toc as StatsigUserTOC,
+} from "./Template/_StatsigUser.mdx";
+
+import { ConstructTOC } from "./Template/_ConstructTOC.mdx";
+
+import Docs from "./js/index.mdx";
+import Install from "./js/_install.mdx";
+import Initialize from "./js/_initialize.mdx";
+import CheckGate from "./js/_checkGate.mdx";
+import GetConfig from "./js/_getConfig.mdx";
+import GetExperiment from "./js/_getExperiment.mdx";
+import LogEvent from "./js/_logEvent.mdx";
+import UpdateUser from "./js/_updateUser.mdx";
+import MoreFAQs from "./js/_faqs.mdx";
+
+<GettingStarted
+  sdkType={"JavaScript"}
+  install={<Install />}
+  checkGate={<CheckGate />}
+  getConfig={<GetConfig />}
+  getExperiment={<GetExperiment />}
+  logEvent={<LogEvent />}
+/>
+
+<StatsigUser updateUser={<UpdateUser />} />
+
+<FAQ faqs={<MoreFAQs />} />
+
+export const _toc = ConstructTOC(toc, [
+  ...GettingStartedTOC,
+  ...StatsigUserTOC,
+  ...FAQTOC,
+]);
+
+:::warning
+OLD STUFF
+:::
 
 <Docs />
