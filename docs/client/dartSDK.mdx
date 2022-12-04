@@ -3,6 +3,55 @@ sidebar_label: Dart/Flutter
 title: Dart Client SDK
 ---
 
-import Docs from "./Dart/index.mdx";
+import {
+  Builder,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  PrefetchUsers,
+  ManualExposures,
+  Shutdown,
+  LocalOverrides,
+} from "./Template/_Builder.mdx";
 
-<Docs />
+import Install from "./Dart/_install.mdx";
+import Initialize from "./Dart/_initialize.mdx";
+import CheckGate from "./Dart/_checkGate.mdx";
+import GetConfig from "./Dart/_getConfig.mdx";
+import GetExperiment from "./Dart/_getExperiment.mdx";
+import LogEvent from "./Dart/_logEvent.mdx";
+import UpdateUser from "./Dart/_updateUser.mdx";
+import MoreFAQs from "./Dart/_faqs.mdx";
+import Options from "./Dart/_options.mdx";
+import ShutdownSnippet from "./Dart/_shutdown.mdx";
+
+export const Result = Builder(
+  [
+    [
+      GettingStarted,
+      {
+        sdkType: "Android",
+        install: <Install />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+      },
+    ],
+    [StatsigUser, { updateUser: <UpdateUser /> }],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [FAQ, { faqs: <MoreFAQs /> }],
+  ],
+  toc
+);
+
+<>{Result}</>

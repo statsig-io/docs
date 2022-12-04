@@ -3,6 +3,59 @@ sidebar_label: .NET
 title: .NET Client SDK
 ---
 
-import Docs from './dotnet/index.mdx'
+import {
+  Builder,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  PrefetchUsers,
+  ManualExposures,
+  Shutdown,
+  LocalOverrides,
+} from "./Template/_Builder.mdx";
 
-<Docs />
+import Install from "./dotnet/_install.mdx";
+import Initialize from "./dotnet/_initialize.mdx";
+import CheckGate from "./dotnet/_checkGate.mdx";
+import GetConfig from "./dotnet/_getConfig.mdx";
+import GetExperiment from "./dotnet/_getExperiment.mdx";
+import LogEvent from "./dotnet/_logEvent.mdx";
+import UpdateUser from "./dotnet/_updateUser.mdx";
+import MoreFAQs from "./dotnet/_faqs.mdx";
+import Options from "./dotnet/_options.mdx";
+// import LocalOverridesSnippet from "./dotnet/_localOverrides.mdx";
+// import { Snippets as ManualExposureSnippets } from "./dotnet/_manualExposures.mdx";
+import ShutdownSnippet from "./dotnet/_shutdown.mdx";
+
+export const Result = Builder(
+  [
+    [
+      GettingStarted,
+      {
+        sdkType: "Android",
+        install: <Install />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+      },
+    ],
+    [StatsigUser, { updateUser: <UpdateUser /> }],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    // [LocalOverrides, { localOverrides: <LocalOverridesSnippet /> }],
+    // [ManualExposures, { addedInVersion: "1.16.0", ...ManualExposureSnippets }],
+    [FAQ, { faqs: <MoreFAQs /> }],
+  ],
+  toc
+);
+
+<>{Result}</>
