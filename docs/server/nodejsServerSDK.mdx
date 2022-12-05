@@ -15,6 +15,7 @@ import {
   Shutdown,
   ClientInitResponse,
   LocalOverrides,
+  Reference,
 } from "./Templates/index.mdx";
 
 import Install from "./node/_install.mdx";
@@ -29,6 +30,7 @@ import ShutdownSnippet from "./node/_shutdown.mdx";
 import Flush from "./node/_flush.mdx";
 import ClientInitResponseSnippet from "./node/_clientInitResponse.mdx";
 import OverridesSnippet from "./node/_localOverrides.mdx";
+import * as RefSnippets from "./node/_reference.mdx";
 
 export const Result = SDKDocsBuilder(
   [
@@ -65,8 +67,10 @@ export const Result = SDKDocsBuilder(
       { addedInVersion: "4.8.0", snippet: <OverridesSnippet /> },
     ],
     [FAQ, { faqs: <MoreFAQs /> }],
+    [Reference, { snippets: <RefSnippets.default /> }],
   ],
-  toc
+  toc,
+  [...RefSnippets.toc]
 );
 
 <>{Result}</>

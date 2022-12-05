@@ -7,13 +7,13 @@ import CodeBlock from "@theme/CodeBlock";
 export const Code = ({ type }) => {
   return (
     <CodeBlock language="swift">{`// Overrides the given gate to the specified value
-Statsig.overrideGate("a_gate_name", true);
+Statsig.overrideGate("a_gate_name", true, "a_user_id");
 \t
 // Overrides the given config (dynamic config or experiment) to the provided value
-Statsig.overrideConfig("a_config_or_experiment_name", { key: "value" });
+Statsig.overrideConfig("a_config_or_experiment_name", { key: "value" }, "a_user_id");
 \t
 // Overrides the given layer to the provided value
-Statsig.overrideLayer("a_layer_name", { key: "value" });
+Statsig.overrideLayer("a_layer_name", { key: "value" }, "a_user_id");
 `}</CodeBlock>
   );
 };
@@ -33,3 +33,5 @@ Statsig.overrideLayer("a_layer_name", { key: "value" });
     <Code />
   </TabItem>
 </Tabs>
+
+These can be used to set an override for a specific user, or for all users (by not providing a specific user ID). Experiments/Autotune are overridden with the `overrideConfig` API.

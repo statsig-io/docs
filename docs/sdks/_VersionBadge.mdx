@@ -1,6 +1,9 @@
 import { useColorMode } from "@docusaurus/theme-common";
 
 export const VersionBadge = ({ version }) => {
+  if (!version) {
+    return null;
+  }
   const isDarkTheme = useColorMode().colorMode === "dark";
   return (
     <span
