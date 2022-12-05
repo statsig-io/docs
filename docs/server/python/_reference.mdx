@@ -1,6 +1,6 @@
 ### StatsigUser
 
-```python
+```py
 @dataclass
 class StatsigUser:
     """An object of properties relating to the current user
@@ -23,20 +23,20 @@ class StatsigUser:
 
 ### StatsigOptions
 
-```python
+```py
 class StatsigOptions:
     """An object of properties for initializing the sdk with additional parameters"""
 
     def __init__(
         self,
         api: str = "https://statsigapi.net/v1/",
-        tier: typing.Union[str, StatsigEnvironmentTier, None] = None,
-        timeout: typing.Optional[int] = None,
+        tier: Union[str, StatsigEnvironmentTier, None] = None,
+        timeout: Optional[int] = None,
         rulesets_sync_interval: int = 10,
         idlists_sync_interval: int = 60,
         local_mode: bool = False,
-        bootstrap_values: typing.Optional[str] = None,
-        rules_updated_callback: typing.Optional[typing.Callable] = None,
-        event_queue_size: typing.Optional[int] = 500,
+        bootstrap_values: Optional[str] = None,
+        rules_updated_callback: Optional[Callable] = None,
+        event_queue_size: Optional[int] = 500,
     ):
 ```
