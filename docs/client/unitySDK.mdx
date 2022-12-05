@@ -6,6 +6,7 @@ title: Unity SDK
 import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
 
 import {
+  Repository,
   GettingStarted,
   FAQ,
   WorkingWith,
@@ -30,6 +31,12 @@ import ShutdownSnippet from "./Unity/_shutdown.mdx";
 
 export const Result = SDKDocsBuilder(
   [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/js-client",
+      },
+    ],
     [
       GettingStarted,
       {

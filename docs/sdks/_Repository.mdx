@@ -1,0 +1,30 @@
+import DarkLogo from "@site/static/img/GitHub-Mark-64px.png";
+import LightLogo from "@site/static/img/GitHub-Mark-Light-64px.png";
+import { useColorMode } from "@docusaurus/theme-common";
+
+export default function ({ repo }) {
+  const isDarkTheme = useColorMode().colorMode === "dark";
+  return (
+    <a
+      href={repo}
+      style={{
+        fontSize: 14,
+        marginTop: -20,
+        color: isDarkTheme ? "white" : "black",
+        fontWeight: "600",
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
+      <img
+        src={isDarkTheme ? LightLogo : DarkLogo}
+        style={{
+          height: 18,
+          width: 18,
+          marginRight: 6,
+        }}
+      />
+      {repo.replace("https://github.com/", "")}
+    </a>
+  );
+}

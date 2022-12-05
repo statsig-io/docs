@@ -6,6 +6,7 @@ title: Python Server SDK
 import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
 
 import {
+  Repository,
   GettingStarted,
   FAQ,
   WorkingWith,
@@ -33,6 +34,12 @@ import ClientInitResponseSnippet from "./python/_clientInitResponse.mdx";
 
 export const Result = SDKDocsBuilder(
   [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/python-sdk",
+      },
+    ],
     [
       GettingStarted,
       {

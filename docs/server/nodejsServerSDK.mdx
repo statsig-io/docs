@@ -6,6 +6,7 @@ title: Node.js Server SDK
 import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
 
 import {
+  Repository,
   GettingStarted,
   FAQ,
   WorkingWith,
@@ -34,6 +35,12 @@ import * as RefSnippets from "./node/_reference.mdx";
 
 export const Result = SDKDocsBuilder(
   [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/node-js-server-sdk",
+      },
+    ],
     [
       GettingStarted,
       {
