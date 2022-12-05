@@ -1,0 +1,15 @@
+import { VersionBadge } from "../../sdks/_VersionBadge.mdx";
+
+## Local Overrides <VersionBadge version={props.addedInVersion} />
+
+If you want to locally override gates/configs/experiments/layers, there are a set of override APIs as follows. Coupling this with [StatsigOptions.localMode](#statsig-options) can be useful when writing unit tests.
+
+<>{props.snippet}</>
+
+These can be used to set a gate or config override for a specific user, or for all users (by not providing a specific user ID). Experiments/Autotune are overridden with the `overrideConfig` API.
+
+:::note
+
+Note that these only apply locally - they do not update definitions in the Statsig console or elsewhere.
+
+:::

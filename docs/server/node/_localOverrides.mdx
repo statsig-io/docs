@@ -1,0 +1,35 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<!-- Because its the same for both languages -->
+
+export const Code = ({ type }) => {
+  return (
+    <CodeBlock language="swift">{`// Overrides the given gate to the specified value
+Statsig.overrideGate("a_gate_name", true);
+\t
+// Overrides the given config (dynamic config or experiment) to the provided value
+Statsig.overrideConfig("a_config_or_experiment_name", { key: "value" });
+\t
+// Overrides the given layer to the provided value
+Statsig.overrideLayer("a_layer_name", { key: "value" });
+`}</CodeBlock>
+  );
+};
+
+<Tabs
+  groupId="js-sdk-lang-choice"
+  defaultValue="ts"
+  values={[
+    { label: "TypeScript", value: "ts" },
+    { label: "JavaScript", value: "js" },
+  ]}
+>
+  <TabItem value="ts">
+    <Code />
+  </TabItem>
+  <TabItem value="js">
+    <Code />
+  </TabItem>
+</Tabs>
