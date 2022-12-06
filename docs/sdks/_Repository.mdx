@@ -5,26 +5,32 @@ import { useColorMode } from "@docusaurus/theme-common";
 export default function ({ repo }) {
   const isDarkTheme = useColorMode().colorMode === "dark";
   return (
-    <a
-      href={repo}
+    <div
       style={{
-        fontSize: 14,
         marginTop: -20,
-        color: isDarkTheme ? "white" : "black",
-        fontWeight: "600",
         display: "flex",
-        alignItems: "center",
       }}
     >
-      <img
-        src={isDarkTheme ? LightLogo : DarkLogo}
+      <a
+        href={repo}
         style={{
-          height: 18,
-          width: 18,
-          marginRight: 6,
+          fontSize: 14,
+          fontWeight: "600",
+          color: isDarkTheme ? "white" : "black",
+          display: "flex",
+          alignItems: "center",
         }}
-      />
-      {repo.replace("https://github.com/", "")}
-    </a>
+      >
+        <img
+          src={isDarkTheme ? LightLogo : DarkLogo}
+          style={{
+            height: 18,
+            width: 18,
+            marginRight: 6,
+          }}
+        />
+        {repo.replace("https://github.com/", "")}
+      </a>
+    </div>
   );
 }
