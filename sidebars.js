@@ -154,7 +154,6 @@ module.exports = {
             "metrics/custom-metrics",
             "metrics/precomputed-metrics",
             "metrics/metric-dimensions",
-            "metrics/archiving-metrics",
           ],
         },
         // other
@@ -164,6 +163,7 @@ module.exports = {
 
         // 201
         "metrics/create",
+        "metrics/archiving-metrics",
         "metrics/create-metric-tags",
         "metrics/user",
 
