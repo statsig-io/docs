@@ -1,0 +1,60 @@
+---
+title: Mixpanel
+---
+
+## Overview
+
+The [Mixpanel](https://mixpanel.com/) integration has two functions.
+
+- Incoming: Statsig can sync your Mixpanel user cohorts with a Statsig ID list segment.
+- Outgoing: Statsig can forward Statsig events to Mixpanel.
+
+## Cohort Syncing
+
+Statsig can ingest user information via a [Mixpanel Cohort Syncing](https://developer.mixpanel.com/docs/cohort-webhooks)
+
+1. On Statsig, navigate to Segments on the left navigation menu and create a segment.
+
+- **Name**: Must match the name of your Mixpanel cohort.
+- **Type of segment**: Should be ID List.
+
+![statsig-segment-config](https://user-images.githubusercontent.com/95646168/195177166-07b0f568-836c-4ae8-ba93-e4f1da64bd39.png)
+
+2. On Mixpanel, click on the Data Management navbar item and choose Integrations from
+   the dropdown.
+
+![mixpanel-integration-menu](https://user-images.githubusercontent.com/95646168/195173611-170f02df-543f-4198-8589-7db313f4dd9f.png)
+
+3. In the list of integrations, scroll until you find Custom Webhook and then
+   select it.
+
+![mixpanel-custom-webhook](https://user-images.githubusercontent.com/95646168/195173845-73ac1d5b-94b4-4daf-bf36-102eabd5d1fe.png)
+
+4. In the dialog that appears, paste the url below, substituting the
+   SERVER_SECRET_KEY with a "Server Secret Key" found in [Project Settings](https://console.statsig.com/api_keys), then click Continue.
+
+```
+https://api.statsig.com/v1/webhooks/mixpanel?statsig-api-key=SERVER_SECRET_KEY
+```
+
+![custom-webhook-dialog](https://user-images.githubusercontent.com/95646168/195174446-d3e8078c-ebaf-4ed4-bb5b-f8195694bade.png)
+
+5. You can now kick off a cohort sync job on Mixpanel from the Cohorts page.
+
+## Configuring Outbound Events
+
+To export your Statsig events to Mixpanel:
+
+1. Get a copy of your "Project Token" from Mixpanel by following this [guide](https://help.mixpanel.com/hc/en-us/articles/115004502806-Find-Project-Token-).
+
+2. Paste your project token into the Outgoing configuration on the Statsig integration panel and hit "Enable" (or "Confirm" if you are updating the integration).
+
+   ![mixpanel-outgoing-configuration](https://user-images.githubusercontent.com/95646168/195172632-e14fe03f-377f-435f-92ca-60fe20da4746.png)
+
+3. Verify your events are being forward by visiting the Events tab on Mixpanel
+
+   ![mixpanel-event-tab](https://user-images.githubusercontent.com/95646168/195172678-8ff14bfe-6400-4660-b1dd-fef1780ddcd5.png)
+
+### Filtering Events
+
+You can customize which events should be sent to Mixpanel using [Event Filtering](/integrations/event_filtering#outoing-event-filtering)

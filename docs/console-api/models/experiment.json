@@ -146,12 +146,16 @@
           },
           "parameterValues": {
             "type": "object"
+          },
+          "id": {
+            "type": "string"
           }
         },
         "required": [
           "name",
           "size",
-          "parameterValues"
+          "parameterValues",
+          "id"
         ]
       }
     },
@@ -191,6 +195,10 @@
         "type": "string",
         "example": "[\"* Core\"]"
       }
+    },
+    "launchedGroupID": {
+      "type": "string",
+      "description": "ID of the launched group, null otherwise"
     }
   },
   "required": [

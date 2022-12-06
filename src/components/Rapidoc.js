@@ -3,7 +3,7 @@ import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import Models from "../../docs/console-api/models/index";
 import { useColorMode } from '@docusaurus/theme-common';
 
-const supportedEntities = ['gates', 'segments', 'dynamic-configs', 'experiments', 'holdouts', 'layers', 'autotunes', 'audit-logs']
+const supportedEntities = ['gates', 'segments', 'dynamic-configs', 'experiments', 'holdouts', 'layers', 'autotunes', 'users', 'metrics', 'audit-logs']
 
 function updateCodeSnippets(data, entity) {
   let snippet;
@@ -57,7 +57,7 @@ function loadReferences(spec) {
     }
 
     let value = spec[key];
-    if (value["$ref"] && typeof value["$ref"] === "string") {
+    if (value?.["$ref"] && typeof value["$ref"] === "string") {
       const filename = value["$ref"].split("/").pop();
       if (filename.endsWith(".json")) {
         const name = filename.split(".").shift();

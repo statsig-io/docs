@@ -1,16 +1,16 @@
 ---
-title: Ultrasound
-sidebar_label: Ultrasound
-slug: /ultrasound
+title: Insights
+sidebar_label: Insights
+slug: /insights
 ---
 
-Ultrasound shows the impact that active experiments and feature gates are having on a metric of interest.  This is a powerful tool for root causing unexpected changes in a metric.  
+Insights shows the impact that active experiments and feature gates are having on a metric of interest.  This is a powerful tool for root causing unexpected changes in a metric.  
 
-Ultrasound presents a reverse perspective of the [Pulse](/pulse) view. While Pulse measures the impact of a new feature on all your metrics, Ultrasound allows you to focus on a single metric and identify which tests are impacting it the most. 
+Insights presents a reverse perspective of the [Pulse](/pulse) view. While Pulse measures the impact of a new feature on all your metrics, Insights allows you to focus on a single metric and identify which tests are impacting it the most. 
 
 
-## How to read Ultrasound
-1.	Navigate to the Ultrasound section on the Statsig console: https://console.statsig.com/ 
+## How to read Insights
+1.	Navigate to the Insights section on the Statsig console: https://console.statsig.com/ 
 2.	Select a metric that you want to observe from the selector drop down at the top of the page. 
 3.	Select the time window that you want to observe.   
 4.	The **Feature Lifts** panel shows two numbers. The number in parantheses is the absolute change in the metric driven by the users in the test group. The **Delta %** is percentage change relative to the topline value of the metric. Both numbers represent the daily average impact over the time window you have selected.

@@ -7,6 +7,12 @@
   - the default value is null, and only users who have null or `Production` as their environment tier will be included in Pulse metric calculation.
 
 - **InitializeTimeoutMs**
+
   - takes a non-negative integer, and default value is 5000;
   - this option specify the maximum time `Statsig.Initialize()` will take to complete;
   - the `Initialize` API makes a network request to fetch the latest feature gate and experiment values for the user, and this option is useful if your game waits for the API to return, but do not want it to wait for too long in case the user has poor connectivity.
+
+- **LoggingIntervalMs**, int, default 60,000
+  - sets the interval for the SDK to periodically flush all logging events to Statsig backend.
+- **LoggingBufferMaxSize**, int, default 100
+  - sets the maximum number of events the SDK's logger will batch before flushing them all to Statsig backend.

@@ -10,6 +10,8 @@ To set up connection with Databricks, Statsig needs the following
 - Server Hostname
 - HTTP Path
 
+We can use any cluster in your project to connect to your data, but we recommend using a databricks [SQL warehouse/endpoint](https://docs.databricks.com/sql/admin/sql-endpoints.html) so that the cluster does not need to spin up for every pull. 
+
 ### API Key
 
 You can generate a new API key by going to "User Settings" in your Databricks console. There, you should be able to generate a new token as shown below.

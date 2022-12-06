@@ -1,5 +1,23 @@
-You can install the SDK using JitPack. See the latest version and installation steps at https://jitpack.io/#statsig-io/java-server-sdk
+v1.X.X+ of the SDK is now published only to mavenCentral
 
-NOTE: There was a breaking API change in SDK v0.8.0:  The singleton for interfacing with Statsig, `StatsigServer` was renamed to simply `Statsig`
+To install the SDK, set the maven central repository in your `build.gradle`.  You probably already have this for other dependencies
 
-[See the release notes](https://github.com/statsig-io/java-server-sdk/releases/tag/v0.8.0).
+```
+repositories {
+    mavenCentral()
+}
+```
+
+Then add the dependency:
+
+```
+implementation 'com.statsig:serversdk:1.X.X' // replace with the most up to date version
+```
+
+You can find the versions in the github releases of the [open source sdk repository](https://github.com/statsig-io/java-server-sdk/releases), or from the [maven central repository](https://central.sonatype.dev/artifact/com.statsig/serversdk/1.0.0/versions).
+
+NOTE: you can remove `maven { url 'https://jitpack.io' }` if statsig was the only library you got from jitpack and you previously relied on v0.X.X of the sdk.
+
+
+v0.X.X versions of the SDK are available from jitpack. You can install the SDK using JitPack. See the latest version and installation steps at https://jitpack.io/#statsig-io/java-server-sdk
+

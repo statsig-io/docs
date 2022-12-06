@@ -125,6 +125,12 @@ module.exports = {
                   src: "/js/rapidoc-min.js",
                 },
               },
+              {
+                tagName: "script",
+                attributes: {
+                  src: "https://cdn.koala.live/v1/daniel/sdk.js",
+                },
+              }
             ],
           };
         },

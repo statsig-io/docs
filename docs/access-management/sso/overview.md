@@ -17,6 +17,7 @@ An `Admin` of an organization can configure SSO on Statsig. On your OIDC Provide
 
 - Sign-in redirect URI: https://console.statsig.com/sso/oidc
 - Sign-out redirect URI: https://console.statsig.com
+- Sign-in URI: https://console.statsig.com/sso
 
 To enable SSO on Statsig, you will need the following from your OIDC Provider:
 

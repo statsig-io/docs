@@ -46,6 +46,7 @@ module.exports = {
         "feature-gates/add-rule",
         "feature-gates/test-gate",
         "feature-gates/overrides",
+        "feature-gates/scheduled-rollouts",
         {
           Implement: [
             "feature-gates/implement",
@@ -145,14 +146,15 @@ module.exports = {
       },
       items: [
         {
-            "Metrics 101 - Overview": [
-                "metrics/101",
-                "metrics/raw-events",
-                "metrics/raw-event-metrics",
-                "metrics/custom-metrics",
-                "metrics/precomputed-metrics",
-                "metrics/metric-dimensions"
-            ],
+          "Metrics 101 - Overview": [
+            "metrics/101",
+            "metrics/how-metrics-work",
+            "metrics/raw-events",
+            "metrics/raw-event-metrics",
+            "metrics/custom-metrics",
+            "metrics/precomputed-metrics",
+            "metrics/metric-dimensions",
+          ],
         },
         // other
         "metrics/ingest",
@@ -161,9 +163,10 @@ module.exports = {
 
         // 201
         "metrics/create",
+        "metrics/archiving-metrics",
         "metrics/create-metric-tags",
         "metrics/user",
-       
+
         // 301
         "metrics/create-user-flows",
         "metrics/create-user-funnels",
@@ -203,8 +206,8 @@ module.exports = {
     },
     {
       type: "doc",
-      label: "Ultrasound",
-      id: "ultrasound/introduction",
+      label: "Insights",
+      id: "insights/introduction",
     },
     {
       type: "category",
@@ -244,6 +247,7 @@ module.exports = {
         "server/dotnetSDK",
         "server/phpSDK",
         "server/erlangSDK",
+        "server/rustSDK",
       ],
     },
     "http-api",
@@ -261,11 +265,13 @@ module.exports = {
         "console-api/experiments",
         "console-api/holdouts",
         "console-api/layers",
+        "console-api/users",
+        "console-api/metrics",
         "console-api/audit-logs",
         "console-api/autotunes",
         "console-api/daily-reports",
         "console-api/all-endpoints",
-        "console-api/rules"
+        "console-api/rules",
       ],
     },
     {
@@ -292,7 +298,7 @@ module.exports = {
       label: "Data Warehouse Ingestion",
       link: {
         type: "doc",
-        id: "data-warehouse-ingestion/introduction"
+        id: "data-warehouse-ingestion/introduction",
       },
       items: [
         {
@@ -301,10 +307,12 @@ module.exports = {
             "data-warehouse-ingestion/redshift",
             "data-warehouse-ingestion/snowflake",
             "data-warehouse-ingestion/databricks",
-          ], 
+            "data-warehouse-ingestion/synapse",
+            "data-warehouse-ingestion/faq",
+          ],
         },
         "data-warehouse-ingestion/data_mapping",
-      ]
+      ],
     },
     {
       type: "category",
@@ -324,6 +332,8 @@ module.exports = {
             "integrations/data-connectors/segment",
             "integrations/data-connectors/rudderstack",
             "integrations/data-connectors/stitch",
+            "integrations/data-connectors/mixpanel",
+            "integrations/data-connectors/amplitude",
           ],
         },
         {
@@ -333,17 +343,16 @@ module.exports = {
             "integrations/data-imports/redshift-deprecated",
             "integrations/data-imports/snowflake-deprecated",
             "integrations/data-imports/azure_upload-deprecated",
-          ]
+          ],
         },
         {
-          "Data Exports": [
-            "integrations/data-exports/overview"
-          ],
+          "Data Exports": ["integrations/data-exports/overview"],
         },
         "integrations/event_filtering",
         "integrations/event_webhook",
         "integrations/jira",
         "integrations/vscode",
+        "integrations/terraform",
       ],
     },
     {
@@ -360,6 +369,16 @@ module.exports = {
         "stats-engine/p-value",
         "stats-engine/topline-impact",
         "stats-engine/variance-reduction",
+        "stats-engine/offlineaa",
+        {
+          "Methodologies Used": [
+            "stats-engine/methodologies/bonferroni-correction",
+            "stats-engine/methodologies/cuped",
+            "stats-engine/methodologies/delta-method",
+            "stats-engine/methodologies/srm-checks",
+            "stats-engine/methodologies/winsorization",
+          ],
+        },
       ],
     },
     {
@@ -369,9 +388,7 @@ module.exports = {
         type: "doc",
         id: "compliance/introduction",
       },
-      items: [
-        "compliance/user_data_deletion_requests",
-      ],
+      items: ["compliance/user_data_deletion_requests"],
     },
     "custom_proxy",
     "reliability-faq",
