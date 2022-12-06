@@ -28,7 +28,6 @@ import UpdateUser from "./Android/_updateUser.mdx";
 import MoreFAQs from "./Android/_faqs.mdx";
 import Options from "./Android/_options.mdx";
 import LocalOverridesSnippet from "./Android/_localOverrides.mdx";
-// import { Snippets as ManualExposureSnippets } from "./Android/_manualExposures.mdx";
 import ShutdownSnippet from "./Android/_shutdown.mdx";
 
 export const Result = SDKDocsBuilder(
@@ -60,7 +59,6 @@ export const Result = SDKDocsBuilder(
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [LocalOverrides, { localOverrides: <LocalOverridesSnippet /> }],
-    // [ManualExposures, { addedInVersion: "1.16.0", ...ManualExposureSnippets }],
     [FAQ, { faqs: <MoreFAQs /> }],
   ],
   toc
