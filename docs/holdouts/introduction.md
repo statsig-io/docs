@@ -29,3 +29,9 @@ By default, holdouts are based on User ID.  To use a different ID type, select i
 
 ![image](https://user-images.githubusercontent.com/90343952/149035806-6764f5f5-cd72-49f9-8c8e-9c0eac217155.png)
 
+## Holdout effects on Gates & Experiments SDK methods
+### Gates
+* For users in holdout, gates will always return `False`.
+### Experiments
+* For users in holdout, if the experiment _is not in a Layer_, calls to get experiment parameters will always return the "default value" passed in code.
+* For users in holdout, if the experiment _is in a Layer_, calls to get experiment parameters will return the values defined in the Layer defaults in the Statsig console.
