@@ -33,6 +33,10 @@ Custom query fields:
 - **(Advanced) ID List Segment filters:** You can choose an ID-list based [segment](/segments), and your results will only be calculated for users who are in that segment. This can be useful if you forgot to log an important user dimension that you want to filter to, or realized that you only care about a sub-population that you've defined in your own data warehouse
   - Careful! This option can easily lead to erroneous and biased results. You will need to make sure the segment is defined based on the user's status _before_ they were exposed to the experiment or feature gate.
 
+> Note: These queries take a few minutes to run, but once complete the results will be visible in the "Custom Queries" tab of the Gate or Experiment you ran the query for (you will also receive an email and console notification with a link).
+
+> Note: User data in this tool is based off of first-touch attribution. The filters and grouping applied will be based on the user attributes collected at the time of first exposure.
+
 ### Viewing a Custom Query
 
 These queries take a few minutes to run, but once complete the results will be visible inline within the gate or experiment you ran the query for (you will also receive an email and console notification with a link).
@@ -41,5 +45,3 @@ These queries take a few minutes to run, but once complete the results will be v
 
 
 ![Screen Shot 2022-10-14 at 10 32 01 AM](https://user-images.githubusercontent.com/101903926/195906893-6307319b-e0af-453c-a77c-1e13c35a90aa.png)
-
-
