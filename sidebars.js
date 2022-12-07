@@ -165,7 +165,7 @@ module.exports = {
         "metrics/create",
         "metrics/archiving-metrics",
         "metrics/create-metric-tags",
-        "/metrics/metric-alerts", 
+        "metrics/metric-alerts", 
         "metrics/user",
 
         // 301
