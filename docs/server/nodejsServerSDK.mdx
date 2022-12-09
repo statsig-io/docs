@@ -30,6 +30,7 @@ import Options from "./node/_options.mdx";
 import ShutdownSnippet from "./node/_shutdown.mdx";
 import Flush from "./node/_flush.mdx";
 import ClientInitResponseSnippet from "./node/_clientInitResponse.mdx";
+import { Snippets as ManualExposureSnippets } from "./node/_manualExposures.mdx";
 import OverridesSnippet from "./node/_localOverrides.mdx";
 import * as RefSnippets from "./node/_reference.mdx";
 
@@ -44,7 +45,7 @@ export const Result = SDKDocsBuilder(
     [
       GettingStarted,
       {
-        sdkType: "NodeJS",
+        sdkType: "Node.js",
         install: <Install />,
         initialize: <Initialize />,
       },
@@ -74,6 +75,7 @@ export const Result = SDKDocsBuilder(
       LocalOverrides,
       { addedInVersion: "4.8.0", snippet: <OverridesSnippet /> },
     ],
+    [ManualExposures, { addedInVersion: "5.0.0", ...ManualExposureSnippets }],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <RefSnippets.default /> }],
   ],
