@@ -116,6 +116,7 @@ module.exports = {
         "experiments-plus/sequential-testing",
         "experiments-plus/make-decision",
         "experiments-plus/overrides",
+        "experiments-plus/abandon",
         "experiments-plus/disable-group",
         {
           Experimentation: [
