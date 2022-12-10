@@ -19,6 +19,7 @@ specifiers:
   '@types/react': ^18.0.9
   clsx: ^1.1.1
   lunr: ^2.3.9
+  prismjs: ^1.29.0
   rapidoc: ^9.3.2
   react: ^17.0.2
   react-dom: ^17.0.2
@@ -35,6 +36,7 @@ dependencies:
   '@mdx-js/react': 1.6.22_react@17.0.2
   clsx: 1.1.1
   lunr: 2.3.9
+  prismjs: 1.29.0
   rapidoc: 9.3.2
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
@@ -2150,7 +2152,7 @@ packages:
       nprogress: 0.2.0
       postcss: 8.4.14
       prism-react-renderer: 1.3.3_react@17.0.2
-      prismjs: 1.28.0
+      prismjs: 1.29.0
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-router-dom: 5.3.3_react@17.0.2
@@ -7194,8 +7196,8 @@ packages:
       react: 17.0.2
     dev: false
 
-  /prismjs/1.28.0:
-    resolution: {integrity: sha512-8aaXdYvl1F7iC7Xm1spqSaY/OJBpYW3v+KJ+F17iYxvdc8sfjW194COK5wVhMZX45tGteiBQgdvD/nhxcRwylw==}
+  /prismjs/1.29.0:
+    resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
     engines: {node: '>=6'}
     dev: false
 
@@ -7318,7 +7320,7 @@ packages:
       buffer: 6.0.3
       lit: 2.2.6
       marked: 4.0.17
-      prismjs: 1.28.0
+      prismjs: 1.29.0
     transitivePeerDependencies:
       - encoding
     dev: false

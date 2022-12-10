@@ -12,19 +12,24 @@ module.exports = {
   organizationName: "statsig", // Usually your GitHub org/user name.
   projectName: "statsig-io/docs", // Usually your repo name.
   themeConfig: {
-    metadata: [{
+    metadata: [
+      {
         name: "og:image",
-        content: "/img/docs_meta.jpg"
-    }, {
+        content: "/img/docs_meta.jpg",
+      },
+      {
         name: "og:type",
-        content: "websiteg"
-    }, {
+        content: "websiteg",
+      },
+      {
         name: "twitter:card",
-        content: "summary_large_image"
-    }, {
+        content: "summary_large_image",
+      },
+      {
         name: "og:image:type",
-        content: "image/jpg"
-    }],
+        content: "image/jpg",
+      },
+    ],
     navbar: {
       title: "",
       logo: {
@@ -79,6 +84,7 @@ module.exports = {
         "kotlin",
         "erlang",
         "dart",
+        "rust",
       ],
     },
   },
@@ -130,7 +136,7 @@ module.exports = {
                 attributes: {
                   src: "https://cdn.koala.live/v1/daniel/sdk.js",
                 },
-              }
+              },
             ],
           };
         },
