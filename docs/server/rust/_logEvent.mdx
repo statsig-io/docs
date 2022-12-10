@@ -1,0 +1,12 @@
+```rust
+let event = StatsigEvent {
+    event_name: "add_to_cart".into(),
+    value: Some(json!("SKU_12345")),
+    metadata: Some( HashMap::from([
+        ("price".into(), "9.99".into()),
+        ("item_name".into(), "diet_coke_48_pack".into())
+    ]))
+};
+
+Statsig::log_event(&user, event);
+```
