@@ -1,0 +1,16 @@
+```jsx
+import { useGate } from "statsig-react";
+
+...
+
+function MyComponent() {
+  const { value, isLoading } = useGate("a_gate_name");
+
+  // Only required if you have not set waitForInitialization to true
+  if (isLoading) {
+    return <div>Fetching Values...</div>;
+  }
+
+  return <div>{value ? "Passes Gate" : "Fails Gate"}</div>;
+}
+```
