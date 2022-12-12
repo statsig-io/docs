@@ -21,7 +21,7 @@ You can also include it directly in your project's Package.swift. Find out the l
 //...
 dependencies: [
     // see the latest version on https://github.com/statsig-io/ios-sdk/releases
-    .package(url: "https://github.com/statsig-io/ios-sdk.git", .upToNextMinor("1.5.0")),
+    .package(url: "https://github.com/statsig-io/ios-sdk.git", .upToNextMinor("X.Y.Z")),
 ],
 //...
 targets: [
@@ -42,9 +42,11 @@ If you are using CocoaPods, our pod name is 'Statsig', and you can include the f
 use_frameworks!
 target 'TargetName' do
   //...
-  pod 'Statsig', '~> 1.8.0' // Add this line, see the latest version on https://github.com/statsig-io/ios-sdk/releases
+  pod 'Statsig', '~> X.Y.Z'
 end
 ```
+
+Find the latest versions by searching [cocoapods.org](https://cocoapods.org/) or on [Github](https://github.com/statsig-io/ios-sdk/releases).
 
   </TabItem>
 </Tabs>

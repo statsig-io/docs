@@ -4,6 +4,9 @@ using Statsig.Server;
 
 await StatsigServer.Initialize(
     "server-secret-key",
-    new StatsigOptions(new StatsigEnvironment(EnvironmentTier.Development)) // optional, use when needed to customize certain behaviors
+    // optionally customize the SDKs configuration via StatsigOptions
+    new StatsigOptions(
+        new StatsigEnvironment(EnvironmentTier.Development)
+    )
 );
 ```

@@ -1,5 +1,6 @@
 ```csharp
-// if you want to update the existing user, or change to a different user, call UpdateUser. The API makes a network request to fetch values for the new user.
+// if you want to update the existing user, or change to a different user, call UpdateUser.
+// The API makes a network request to fetch values for the new user.
 
 await Statsig.UpdateUser(
     new StatsigUser { UserID = "new_user_id", Email = "new_user@email.com" },

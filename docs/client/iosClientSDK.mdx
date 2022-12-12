@@ -30,6 +30,7 @@ import Options from "./iOS/_options.mdx";
 import { Snippets as ManualExposureSnippets } from "./iOS/_manualExposures.mdx";
 import ShutdownSnippet from "./iOS/_shutdown.mdx";
 import LocalOverridesSnippet from "./iOS/_localOverrides.mdx";
+import * as StatsigListening from "./iOS/_statsigListening.mdx";
 
 export const Result = SDKDocsBuilder(
   [
@@ -61,6 +62,7 @@ export const Result = SDKDocsBuilder(
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [LocalOverrides, { localOverrides: <LocalOverridesSnippet /> }],
     [ManualExposures, { addedInVersion: "1.16.0", ...ManualExposureSnippets }],
+    [StatsigListening, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
   ],
   toc

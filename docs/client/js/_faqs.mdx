@@ -3,24 +3,7 @@
 The SDK has a few key features to make testing easier:
 
 1. `localMode` - a parameter in `StatsigOptions` which disables all network requests to Statsig servers. This makes the SDK operate only locally, so your tests don't need network access
-2. Overrides. You can override gates, configs, experiments (experiments ARE configs), remove overrides, or get a list of all overrides using the following methods:
-
-```typescript
-overrideGate(gateName: string, value: boolean): void
-
-overrideConfig(configName: string, value: object): void
-
-removeGateOverride(name?: string): void
-
-removeConfigOverride(name?: string): void
-
-getAllOverrides(): StatsigOverrides
-
-type StatsigOverrides = {
-  gates: Record<string, boolean>;
-  configs: Record<string, Record<string, any>>;
-};
-```
+2. You can override the values returned from the various APIs. See [Local Overrides](#local-overrides) for more info.
 
 Taken together, `localMode` and override APIs will help you mock the exact values you want to test.
 
