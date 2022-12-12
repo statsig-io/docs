@@ -3,6 +3,65 @@ sidebar_label: Dart/Flutter
 title: Dart Client SDK
 ---
 
-import Docs from "./Dart/index.mdx";
+import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
 
-<Docs />
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  PrefetchUsers,
+  ManualExposures,
+  Shutdown,
+  LocalOverrides,
+} from "./Templates/index.mdx";
+
+import Install from "./Dart/_install.mdx";
+import Initialize from "./Dart/_initialize.mdx";
+import CheckGate from "./Dart/_checkGate.mdx";
+import GetConfig from "./Dart/_getConfig.mdx";
+import GetExperiment from "./Dart/_getExperiment.mdx";
+import LogEvent from "./Dart/_logEvent.mdx";
+import UpdateUser from "./Dart/_updateUser.mdx";
+import MoreFAQs from "./Dart/_faqs.mdx";
+import Options from "./Dart/_options.mdx";
+import ShutdownSnippet from "./Dart/_shutdown.mdx";
+import * as FlutterLifecycle from "./Dart/_flutterLifecycle.mdx";
+
+export const Result = SDKDocsBuilder(
+  [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/dart-sdk",
+      },
+    ],
+    [
+      GettingStarted,
+      {
+        sdkType: "Android",
+        install: <Install />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+      },
+    ],
+    [StatsigUser, { updateUser: <UpdateUser /> }],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [FlutterLifecycle, {}],
+    [FAQ, { faqs: <MoreFAQs /> }],
+  ],
+  toc
+);
+
+<>{Result}</>

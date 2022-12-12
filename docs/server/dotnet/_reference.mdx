@@ -1,6 +1,6 @@
 ### Type StatsigUser
 
-```
+```csharp
 namespace Statsig
 {
     public class StatsigUser
@@ -27,7 +27,7 @@ namespace Statsig
 
 ### Type StatsigOptions
 
-```
+```csharp
 namespace Statsig
 {
     public class StatsigOptions
@@ -41,7 +41,7 @@ namespace Statsig
 
         private Dictionary<string, string> _additionalHeaders;
         private Func<IIDStore>? _idStoreFactory = null;
-        
+
         public StatsigOptions(string? apiUrlBase = null, StatsigEnvironment? environment = null)
     }
 }

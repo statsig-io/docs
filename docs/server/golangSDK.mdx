@@ -1,8 +1,76 @@
 ---
 sidebar_label: Go
-title: Go Server SDK for Statsig
+title: Go Server SDK
 ---
 
-import Docs from './go/index.mdx'
+import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
 
-<Docs />
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigOptions,
+  StatsigUser,
+  ManualExposures,
+  Shutdown,
+  ClientInitResponse,
+  LocalOverrides,
+  Reference,
+} from "./Templates/index.mdx";
+
+import Install from "./go/_install.mdx";
+import Initialize from "./go/_initialize.mdx";
+import CheckGate from "./go/_checkGate.mdx";
+import GetConfig from "./go/_getConfig.mdx";
+import GetExperiment from "./go/_getExperiment.mdx";
+import LogEvent from "./go/_logEvent.mdx";
+import MoreFAQs from "./go/_faqs.mdx";
+import Options from "./go/_options.mdx";
+import OverridesSnippet from "./go/_localOverrides.mdx";
+import ShutdownSnippet from "./go/_shutdown.mdx";
+import * as ReferenceSnippets from "./go/_reference.mdx";
+
+export const Result = SDKDocsBuilder(
+  [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/go-sdk",
+      },
+    ],
+    [
+      GettingStarted,
+      {
+        sdkType: "Go",
+        install: <Install />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+      },
+    ],
+    [StatsigUser, {}],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [
+      LocalOverrides,
+      {
+        addedInVersion: "1.3.0",
+        snippet: <OverridesSnippet />,
+      },
+    ],
+    [FAQ, { faqs: <MoreFAQs /> }],
+    [Reference, { snippets: <ReferenceSnippets.default /> }],
+  ],
+  toc,
+  [...ReferenceSnippets.toc]
+);
+
+<>{Result}</>

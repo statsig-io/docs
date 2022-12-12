@@ -3,7 +3,7 @@ require 'statsig'
 
 Statsig.initialize('server-secret-key')
 
-// Or, if you want to initialize with certain options
+# Or, if you want to initialize with certain options
 options = StatsigOptions.new({'tier' => 'staging'})
 Statsig.initialize('server-secret-key', options)
 ```
@@ -45,7 +45,8 @@ end
 ```
 
 For **Sidekiq**, you should initialize Statsig in your `sidekiq.rb`/server configuration file:
-```
+
+```ruby
 Sidekiq.configure_server do |config|
   config.on(:startup) do
     Statsig.initialize
@@ -57,4 +58,4 @@ Sidekiq.configure_server do |config|
 end
 ```
 
-If you are using Rails in combination with any of the above, you should be sure to initialize using the specific process lifecycle hooks exposed by the respective tool.  You can initialize in multiple places, which should ensure the SDK is fully usable including all background processing.
+If you are using Rails in combination with any of the above, you should be sure to initialize using the specific process lifecycle hooks exposed by the respective tool. You can initialize in multiple places, which should ensure the SDK is fully usable including all background processing.

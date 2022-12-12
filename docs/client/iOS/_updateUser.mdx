@@ -2,6 +2,7 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
 <Tabs
+  groupId="ios-sdk-lang-choice"
   defaultValue="swift"
   values={[
     {label: 'Swift', value: 'swift'},
@@ -23,7 +24,7 @@ Statsig.updateUser(newUser) { errorMessage in
   </TabItem>
   <TabItem value="objectivec">
 
-```objectivec
+```swift
 StatsigUser *newUser = [[StatsigUser alloc] initWithUserID:@"new_user_id" email:@"newUser@gmail.com" ip:nil country:@"US" custom:custom:@{@"is_new_user": @YES}];
 [Statsig updateUserWithNewUser:user completion:^(NSString * errorMessage) {
   // Statsig has finished fetching the latest feature gate and experiment values for your updated user.

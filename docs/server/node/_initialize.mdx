@@ -1,8 +1,8 @@
 ```jsx
-const statsig = require('statsig-node');
+const Statsig = require("statsig-node");
 
-await statsig.initialize(
-    'server-secret-key',
-    { environment: { tier: 'staging' } }, // optional, pass options here if needed
+await Statsig.initialize(
+  "server-secret-key",
+  { environment: { tier: "staging" } } // optional, pass options here if needed
 );
 ```

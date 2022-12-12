@@ -1,0 +1,16 @@
+import Gap from "./_Gap.mdx";
+
+export const SDKDocsBuilder = (sections, toc, appendTOC) => {
+  toc.length = 0;
+  const result = sections.map(([Section, props], index) => {
+    toc.push(...Section.toc);
+    return (
+      <React.Fragment key={"" + index}>
+        <Section.default {...props} />
+        <Gap />
+      </React.Fragment>
+    );
+  });
+  toc.push(...(appendTOC ?? []));
+  return result;
+};
