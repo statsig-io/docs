@@ -1,0 +1,15 @@
+```rust
+// Values via get_layer
+
+let layer = Statsig::get_layer(&user, "user_promo_experiments").ok().unwrap();
+let title = layer.get("title", "Welcome to Statsig!".to_string());
+let discount = layer.get("discount", 0.1);
+
+// or, via getExperiment
+
+let title_exp = Statsig::get_config(&user, "new_user_promo_title").ok().unwrap();
+let price_exp = Statsig::get_config(&user, "new_user_promo_price").ok().unwrap();
+
+let title = title_exp.get("title", "Welcome to Statsig!".to_string());
+let discount = price_exp.get("discount", 0.1);
+```

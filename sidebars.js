@@ -116,6 +116,7 @@ module.exports = {
         "experiments-plus/sequential-testing",
         "experiments-plus/make-decision",
         "experiments-plus/overrides",
+        "experiments-plus/abandon",
         "experiments-plus/disable-group",
         {
           Experimentation: [
@@ -165,6 +166,7 @@ module.exports = {
         "metrics/create",
         "metrics/archiving-metrics",
         "metrics/create-metric-tags",
+        "metrics/metric-alerts", 
         "metrics/user",
 
         // 301

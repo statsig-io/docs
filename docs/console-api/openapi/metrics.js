@@ -190,7 +190,8 @@ module.exports = {
         "parameters": [
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "2022-10-31"
             },
             "in": "query",
             "name": "date",
@@ -199,7 +200,8 @@ module.exports = {
           },
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "d1_retention_rate::user"
             },
             "in": "query",
             "name": "id",
@@ -207,6 +209,147 @@ module.exports = {
             "required": true
           }
         ],
+        "tags": [
+          "Metrics"
+        ]
+      }
+    },
+    "/metrics/{metric_id}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string",
+            "example": "d1_retention_rate::user"
+          },
+          "name": "metric_id",
+          "in": "path",
+          "required": true,
+          "description": "metric id to query (metric_name::metric_type) found in /metrics/list response"
+        }
+      ],
+      "post": {
+        "summary": "",
+        "operationId": "post-metrics",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "isHidden": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Metric updated successfully.",
+                      "data": {
+                        "name": "daily_stickiness",
+                        "type": "user",
+                        "description": "new description",
+                        "isHidden": false
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "Example 1": {
+                      "status": 404,
+                      "message": "Metric not found"
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Not found": {
+                    "value": {
+                      "status": 404,
+                      "message": "Metric not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "description": "Update metric's description"
+                  }
+                }
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "description": "Updated description"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Update Metric",
         "tags": [
           "Metrics"
         ]
@@ -265,9 +408,16 @@ module.exports = {
                       "message": "Metrics listed successfully.",
                       "data": [
                         {
-                          "name": "metric name",
+                          "name": "metric_name",
                           "type": "composite",
-                          "id": "metric name::composite"
+                          "id": "metric_name::composite"
+                        },
+                        {
+                          "name": "d1_retention_rate",
+                          "type": "user",
+                          "id": "d1_retention_rate::user",
+                          "description": "this metric has a description and isHidden field",
+                          "isHidden": false
                         }
                       ]
                     }
@@ -342,6 +492,9 @@ module.exports = {
           "id": "zjzdkz4s3hqqv"
         },
         "type": "object",
+        "x-tags": [
+          "Metrics"
+        ],
         "properties": {
           "id": {
             "type": "string",
@@ -354,6 +507,12 @@ module.exports = {
           "type": {
             "type": "string",
             "description": "Metric type"
+          },
+          "description": {
+            "type": "string"
+          },
+          "isHidden": {
+            "type": "boolean"
           }
         },
         "required": [
@@ -361,10 +520,22 @@ module.exports = {
           "name",
           "type"
         ],
-        "x-tags": [
-          "Metrics"
-        ],
-        "description": ""
+        "x-examples": {
+          "d1_retention_rate": {
+            "name": "d1_retention_rate",
+            "type": "user",
+            "id": "d1_retention_rate::user",
+            "description": "ab",
+            "isHidden": false
+          },
+          "daily_stickiness": {
+            "name": "daily_stickiness",
+            "type": "user",
+            "id": "daily_stickiness::user",
+            "description": "new description",
+            "isHidden": false
+          }
+        }
       },
       "MetricRead": {
         "title": "MetricRead",

@@ -6,7 +6,7 @@ title: Vercel Edge Config
 Statsig’s Vercel integration pushes Statsig Configs to Vercel's Edge Config, allowing you to bootstrap your Vercel projects quickly.
 
 ## Configuration
-Go to the [Vercel Marketplace](https://vercel.com/integrations/statsig-edge-config) to install the Statsig app for Vercel. In the setup, you'll be able to map Statsig projects <-> Edge Configs, and Statsig will keep project configs synced with the specified Edge Config.
+Go to the [Vercel Marketplace](https://vercel.com/integrations/statsig) to install the Statsig app for Vercel. In the setup, you'll be able to map Statsig projects <-> Edge Configs, and Statsig will keep project configs synced with the specified Edge Config.
 
 <img src="https://user-images.githubusercontent.com/87334575/205374493-08dfc561-2095-45f2-be10-bba1a1958bf9.png" width="474" height="400" />
 
