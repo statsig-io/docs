@@ -1,0 +1,11 @@
+### Updating the StatsigUser
+
+If/when the user object changes, the SDK will automatically fetch the updated values for the new user object -
+if `waitForInitialization` is false, and no [mountKey](#mount-key) is set on the [StatsigProvider](#statsig-provider), this will trigger a
+re-render for the new user with default values, followed by a render when the values have been updated.
+
+```js
+setUser({ userID: "another-user" });
+```
+
+There also exists am `updateUser` method on the [Statsig](#statsig-interface) interface, but calling this directly may lead to issues with the StatsigProvider.

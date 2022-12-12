@@ -1,0 +1,23 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+At the root of your component tree, wrap your app in a [`StatsigProvider`](#statsig-provider) and set `waitForInitialization=true`.
+
+```jsx
+import { StatsigProvider } from "statsig-react";
+
+function App() {
+  return (
+    <StatsigProvider
+      sdkKey="client-wlH3WMkysINMhMU8VrNBkbjrEr2JQrqgxKwDPOUosJK"
+      waitForInitialization={true}
+    >
+      <div className="App">{/* Rest of App ... */}</div>
+    </StatsigProvider>
+  );
+}
+```
+
+:::note
+If you do not use `waitForInitialization`, all checks to Statsig will return default values until initialization completes.
+:::

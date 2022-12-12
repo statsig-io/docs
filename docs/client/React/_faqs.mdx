@@ -1,0 +1,17 @@
+#### Which Browsers Supported?
+
+The `statsig-react` SDK relies on the `statsig-js` SDK and inherits its browser compatibility. For more information, see the [statsig-js docs](https://docs.statsig.com/client/jsClientSDK#what-kind-of-browser-support-can-i-expect-from-the-sdk).
+
+#### How do I silence "Call and wait for initialize() to finish first" logs?
+
+Starting in `v1.6.0`, setting the environment variable `REACT_APP_STATSIG_SDK_MODE=silent` will swallow the `Call and wait for initialize() to finish first` exception. For more information, see the [release notes for v1.6.0](https://github.com/statsig-io/react-sdk/releases/tag/v1.6.0)
+
+#### Can I write my own StatsigProvider?
+
+import Gist from "react-gist";
+
+If you wish to use the React SDK but customize the initialization logic beyond what the `StatsigProvider` offers, you can write your own provider. See the above warning on using the global `Statsig` singleton before proceeding.
+
+An example provider with custom initialization logic might look something like this:
+
+<Gist id="0bb12b2eb847847af62d547731d2dca9" />
