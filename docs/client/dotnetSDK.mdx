@@ -27,8 +27,6 @@ import LogEvent from "./dotnet/_logEvent.mdx";
 import UpdateUser from "./dotnet/_updateUser.mdx";
 import MoreFAQs from "./dotnet/_faqs.mdx";
 import Options from "./dotnet/_options.mdx";
-// import LocalOverridesSnippet from "./dotnet/_localOverrides.mdx";
-// import { Snippets as ManualExposureSnippets } from "./dotnet/_manualExposures.mdx";
 import ShutdownSnippet from "./dotnet/_shutdown.mdx";
 
 export const Result = SDKDocsBuilder(
@@ -42,7 +40,7 @@ export const Result = SDKDocsBuilder(
     [
       GettingStarted,
       {
-        sdkType: "Android",
+        sdkType: ".NET",
         install: <Install />,
         initialize: <Initialize />,
       },
@@ -59,8 +57,6 @@ export const Result = SDKDocsBuilder(
     [StatsigUser, { updateUser: <UpdateUser /> }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
-    // [LocalOverrides, { localOverrides: <LocalOverridesSnippet /> }],
-    // [ManualExposures, { addedInVersion: "1.16.0", ...ManualExposureSnippets }],
     [FAQ, { faqs: <MoreFAQs /> }],
   ],
   toc
