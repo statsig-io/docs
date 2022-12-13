@@ -150,8 +150,17 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           routeBasePath: "/",
-          // Please change this to your repo.
           editUrl: "https://github.com/statsig-io/docs/edit/main/",
+          showLastUpdateTime: true,
+          remarkPlugins: [
+            function (a, b, c) {
+              return function (x, y, z) {
+                if (y.path.includes("docs/client/")) {
+                  console.log(a, b, c, x, y, z);
+                }
+              };
+            },
+          ],
         },
         blog: false,
         theme: {

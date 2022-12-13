@@ -1,7 +1,15 @@
 import Gap from "./_Gap.mdx";
 
-export const SDKDocsBuilder = (sections, toc, appendTOC) => {
+import SDKDocTOCHeader from "@site/src/components/SDKDocTOCHeader";
+
+export const SDKDocsBuilder = (tocHeaderConfig, sections, toc, appendTOC) => {
   toc.length = 0;
+  toc.push({
+    value: SDKDocTOCHeader(tocHeaderConfig),
+    id: "0",
+    level: 2,
+  });
+  //
   const result = sections.map(([Section, props], index) => {
     toc.push(...Section.toc);
     return (
