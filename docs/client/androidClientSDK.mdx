@@ -3,7 +3,10 @@ sidebar_label: Android
 title: Android Client SDK
 ---
 
-import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
 
 import {
   Repository,
@@ -31,7 +34,7 @@ import LocalOverridesSnippet from "./Android/_localOverrides.mdx";
 import ShutdownSnippet from "./Android/_shutdown.mdx";
 
 export const Result = SDKDocsBuilder(
-  {},
+  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
   [
     [
       Repository,

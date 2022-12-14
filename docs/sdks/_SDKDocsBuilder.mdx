@@ -2,6 +2,8 @@ import Gap from "./_Gap.mdx";
 
 import SDKDocTOCHeader from "@site/src/components/SDKDocTOCHeader";
 
+export const HOOK__SDKDocUpdate = "<SDK_DOC_UPDATE_HOOK>";
+
 export const SDKDocsBuilder = (tocHeaderConfig, sections, toc, appendTOC) => {
   toc.length = 0;
   toc.push({

@@ -1,3 +1,4 @@
+const sdkDateExtractor = require("./src/plugins/rehype-sdk-date-extractor");
 const path = require("path");
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
@@ -152,15 +153,7 @@ module.exports = {
           routeBasePath: "/",
           editUrl: "https://github.com/statsig-io/docs/edit/main/",
           showLastUpdateTime: true,
-          remarkPlugins: [
-            function (a, b, c) {
-              return function (x, y, z) {
-                if (y.path.includes("docs/client/")) {
-                  console.log(a, b, c, x, y, z);
-                }
-              };
-            },
-          ],
+          rehypePlugins: [sdkDateExtractor],
         },
         blog: false,
         theme: {

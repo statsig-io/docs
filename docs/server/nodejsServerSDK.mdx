@@ -3,7 +3,10 @@ sidebar_label: Node.js
 title: Node.js Server SDK
 ---
 
-import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
 
 import {
   Repository,
@@ -35,7 +38,7 @@ import OverridesSnippet from "./node/_localOverrides.mdx";
 import * as RefSnippets from "./node/_reference.mdx";
 
 export const Result = SDKDocsBuilder(
-  {},
+  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
   [
     [
       Repository,

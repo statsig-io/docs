@@ -3,7 +3,10 @@ sidebar_label: Unity
 title: Unity SDK
 ---
 
-import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
 
 import {
   Repository,
@@ -30,7 +33,7 @@ import Options from "./Unity/_options.mdx";
 import ShutdownSnippet from "./Unity/_shutdown.mdx";
 
 export const Result = SDKDocsBuilder(
-  {},
+  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
   [
     [
       Repository,

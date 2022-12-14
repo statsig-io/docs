@@ -3,7 +3,10 @@ sidebar_label: Dart/Flutter
 title: Dart Client SDK
 ---
 
-import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
 
 import {
   Repository,
@@ -31,7 +34,7 @@ import ShutdownSnippet from "./Dart/_shutdown.mdx";
 import * as FlutterLifecycle from "./Dart/_flutterLifecycle.mdx";
 
 export const Result = SDKDocsBuilder(
-  { name: "Dart" },
+  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
   [
     [
       Repository,

@@ -3,7 +3,10 @@ sidebar_label: Python
 title: Python Server SDK
 ---
 
-import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
 
 import {
   Repository,
@@ -34,7 +37,7 @@ import * as ReferenceSnippets from "./python/_reference.mdx";
 import ClientInitResponseSnippet from "./python/_clientInitResponse.mdx";
 
 export const Result = SDKDocsBuilder(
-  {},
+  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
   [
     [
       Repository,

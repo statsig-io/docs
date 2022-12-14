@@ -3,7 +3,10 @@ sidebar_label: .NET
 title: .NET Server SDK
 ---
 
-import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
 
 import {
   Repository,
@@ -31,7 +34,7 @@ import ShutdownSnippet from "./dotnet/_shutdown.mdx";
 import * as ReferenceSnippets from "./dotnet/_reference.mdx";
 
 export const Result = SDKDocsBuilder(
-  {},
+  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
   [
     [
       Repository,

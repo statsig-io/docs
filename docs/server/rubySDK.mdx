@@ -3,7 +3,10 @@ sidebar_label: Ruby
 title: Ruby Server SDK
 ---
 
-import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
 
 import {
   Repository,
@@ -33,7 +36,7 @@ import * as ReferenceSnippets from "./ruby/_reference.mdx";
 import ClientInitResponseSnippet from "./ruby/_clientInitResponse.mdx";
 
 export const Result = SDKDocsBuilder(
-  {},
+  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
   [
     [
       Repository,
