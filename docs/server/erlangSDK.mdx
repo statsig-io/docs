@@ -3,7 +3,10 @@ sidebar_label: Erlang/Elixir
 title: Erlang Server SDK
 ---
 
-import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
 
 import {
   Repository,
@@ -29,6 +32,7 @@ import Options from "./erlang/_options.mdx";
 import ShutdownSnippet from "./erlang/_shutdown.mdx";
 
 export const Result = SDKDocsBuilder(
+  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
   [
     [
       Repository,

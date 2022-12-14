@@ -3,7 +3,10 @@ sidebar_label: iOS/tvOS
 title: iOS/tvOS Client SDK
 ---
 
-import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
 
 import {
   Repository,
@@ -33,6 +36,7 @@ import LocalOverridesSnippet from "./iOS/_localOverrides.mdx";
 import * as StatsigListening from "./iOS/_statsigListening.mdx";
 
 export const Result = SDKDocsBuilder(
+  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
   [
     [
       Repository,

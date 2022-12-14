@@ -3,7 +3,10 @@ sidebar_label: Rust
 title: Rust Server SDK
 ---
 
-import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
 
 import {
   Repository,
@@ -31,6 +34,7 @@ import ShutdownSnippet from "./rust/_shutdown.mdx";
 import * as ReferenceSnippets from "./rust/_reference.mdx";
 
 export const Result = SDKDocsBuilder(
+  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
   [
     [
       Repository,

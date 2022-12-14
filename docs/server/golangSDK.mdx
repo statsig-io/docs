@@ -3,7 +3,10 @@ sidebar_label: Go
 title: Go Server SDK
 ---
 
-import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
 
 import {
   Repository,
@@ -32,6 +35,7 @@ import ShutdownSnippet from "./go/_shutdown.mdx";
 import * as ReferenceSnippets from "./go/_reference.mdx";
 
 export const Result = SDKDocsBuilder(
+  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
   [
     [
       Repository,

@@ -120,3 +120,8 @@ html[data-theme="dark"] {
   --ifm-alert-color: #f44336;
   --ra-admonition-icon-color: #f44336;
 }
+
+.sdk-toc-header {
+  background-color: blue;
+  color: red;
+}

@@ -1,3 +1,4 @@
+const sdkDateExtractor = require("./src/plugins/rehype-sdk-date-extractor");
 const path = require("path");
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
@@ -150,8 +151,9 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           routeBasePath: "/",
-          // Please change this to your repo.
           editUrl: "https://github.com/statsig-io/docs/edit/main/",
+          showLastUpdateTime: true,
+          rehypePlugins: [sdkDateExtractor],
         },
         blog: false,
         theme: {

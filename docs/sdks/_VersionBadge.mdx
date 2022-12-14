@@ -1,7 +1,6 @@
 import { useColorMode } from "@docusaurus/theme-common";
 
 export const VersionBadge = ({ version }) => {
-  const isDarkTheme = useColorMode().colorMode === "dark";
   if (!version) {
     return null;
   }
@@ -9,10 +8,8 @@ export const VersionBadge = ({ version }) => {
     <span
       style={{
         padding: "5px 10px",
-        color: isDarkTheme ? "white" : "black",
-        backgroundColor: isDarkTheme
-          ? "rgba(255,255,255,0.2)"
-          : "rgba(0,0,0,0.3)",
+        color: "var(--ifm-color-content)",
+        backgroundColor: "var(--ifm-navbar-background-color)",
         borderRadius: 30,
         marginLeft: 10,
       }}

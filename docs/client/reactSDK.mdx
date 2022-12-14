@@ -6,7 +6,10 @@ title: React Client SDK
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
 
 import {
   Repository,
@@ -36,6 +39,7 @@ import * as Testing from "./React/_testing.mdx";
 import * as SSR from "./React/_ssr.mdx";
 
 export const Result = SDKDocsBuilder(
+  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
   [
     [
       Repository,
