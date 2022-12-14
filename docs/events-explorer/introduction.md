@@ -7,7 +7,7 @@ slug: /events-explorer
 The Events Explorer tab allows you to analyze your event log data in real-time, supporting a variety of queries against the data you send us by when you use our SDKs or integrations.
 
 :::info
-NOTE: Events Explorer is a *sampled* dataset - it trades off quantity and exact correctness to make your data available closer to real time.  It is useful for measuring trends, comparing day over day or week over week, or getting a high level look at your events.  It cannot give you all data for a specific user (The [/users](Users Tab) can though!), nor can it give you a completely accurate count or export of a specific event.
+NOTE: Events Explorer is a *sampled* dataset - it trades off quantity and exact correctness to make your data available closer to real time.  It is useful for measuring trends, comparing day over day or week over week, or getting a high level look at your events.  It cannot give you all data for a specific user (The (Users Tab)[/users] can though!), nor can it give you a completely accurate count or export of a specific event.
 :::
 
 ## Events Explorer Use Cases
