@@ -32,7 +32,7 @@ function Header({ lastUpdated }) {
       >
         <div style={{ display: "flex", alignItems: "center" }}>
           <img src="/img/slack.webp" style={{ height: 15, width: 15 }} />
-          <span style={{ marginLeft: 8 }}>Question? Ask on Slack</span>
+          <span style={{ marginLeft: 8 }}>Stuck? Ask Statsig on Slack</span>
         </div>
       </a>
     </div>
