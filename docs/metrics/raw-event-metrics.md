@@ -57,6 +57,8 @@ User Accounting metrics are listed in the **Metrics** section under the **Charts
 
 Note that Statsig's default day starts at GMT-8 (Pacific Standard Time), and does not follow daylight savings time. 
 
+Note: Auto-generated **User Accounting Metrics** are not supported today for data warehouse ingestions. 
+
 ## Metrics Catalog
 
 The **Metrics Catalog** tab allows you to quickly search and tag your metrics. Tags enable you organize your metrics and create collections of metrics that are associated in some way. For example, you could tag a set of metrics focused on a product area, business function, business objective, and so on. You can also create a loose collection of guardrail metrics that teams check in every experiment to ensure there are causing no unexpected effects in other parts of the business. Once you create a tagged collection of metrics, you can easily pull up this set of metrics when viewing your experiment results and zoom into the context that you want to focus on. 
