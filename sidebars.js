@@ -291,6 +291,7 @@ module.exports = {
             "access-management/sso/overview",
             "access-management/sso/okta_sso",
             "access-management/sso/azuread",
+            "access-management/sso/google",
           ],
         },
       ],
