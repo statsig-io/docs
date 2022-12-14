@@ -1821,6 +1821,366 @@ module.exports = {
         ],
         "description": ""
       }
+    },
+    "/experiments/{experiment_id}/start": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "experiment_id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "Start Experiment",
+        "operationId": "put-experiments-experiment_id-start",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Experiment successfully started."
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Success": {
+                    "value": {
+                      "message": "Experiment successfully started."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "status": 400,
+                      "message": "Experiment has finished"
+                    }
+                  }
+                },
+                "examples": {
+                  "Experiment already started": {
+                    "value": {
+                      "status": 400,
+                      "message": "Experiment has already started"
+                    }
+                  },
+                  "Experiment already finished": {
+                    "value": {
+                      "status": 400,
+                      "message": "Experiment has already finished"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
+        },
+        "tags": [
+          "Experiments"
+        ]
+      }
+    },
+    "/experiments/{experiment_id}/make_decision": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "experiment_id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "Finish Experiment Early",
+        "operationId": "put-experiments-experiment_id-start",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Experiment successfully started."
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Success": {
+                    "value": {
+                      "message": "Decision made for Experiment."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 400,
+                      "message": "Experiment has finished"
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Experiment has not yet started": {
+                    "value": {
+                      "status": 400,
+                      "message": "Experiment has not yet started"
+                    }
+                  },
+                  "Experiment already finished": {
+                    "value": {
+                      "status": 400,
+                      "message": "Experiment has already finished"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
+        },
+        "tags": [
+          "Experiments"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "groupID": "red",
+                    "decisionReason": "A valid reason to stop early",
+                    "removeTargeting": true
+                  }
+                },
+                "properties": {
+                  "groupID": {
+                    "type": "string",
+                    "description": "The groupID to be selected as the winner"
+                  },
+                  "decisionReason": {
+                    "type": "string",
+                    "description": "Reason for stopping the experiment early"
+                  },
+                  "removeTargeting": {
+                    "type": "boolean",
+                    "description": "Whether targetting gate should be removed"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "groupID": "red",
+                    "decisionReason": "Your reason for stopping early",
+                    "removeTargeting": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/experiments/{experiment_id}/restart": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "experiment_id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "Restart Experiment",
+        "operationId": "put-experiments-experiment_id-start",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Experiment successfully started."
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Success": {
+                    "value": {
+                      "message": "Experiment successfully restarted."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "status": 400,
+                      "message": "Experiment has finished"
+                    }
+                  }
+                },
+                "examples": {
+                  "Experiment has not yet started": {
+                    "value": {
+                      "status": 400,
+                      "message": "Experiment has not yet started"
+                    }
+                  },
+                  "Experiment has not yet finished": {
+                    "value": {
+                      "status": 400,
+                      "message": "Experiment has not yet finished"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
+        },
+        "tags": [
+          "Experiments"
+        ]
+      }
     }
   }
 }
