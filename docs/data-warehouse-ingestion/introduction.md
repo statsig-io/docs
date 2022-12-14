@@ -68,6 +68,9 @@ We also support a user-triggered backfill. This could be useful if a specific me
 
 Reloading data and backfilling metrics and events is billed as any other [custom event](metrics/raw-events#billing)
 
+Note: Auto-generated **User Accounting Metrics** are not supported today for data warehouse ingestions.
+
+
 ### Frequently Asked Questions
 1. **Does the event data from count towards Statsig's [User Accounting Metrics](/metrics/user) such as DAU or Retention?**
 
