@@ -1,9 +1,12 @@
 #!/bin/bash
 
 FROM node:16-alpine as builder
+RUN apk add --no-cache git
+
 WORKDIR /usr/app
 
 COPY ./ ./
+
 RUN npm install -g pnpm
 RUN pnpm install --frozen-lockfile
 RUN pnpm build
