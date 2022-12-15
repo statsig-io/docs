@@ -1,0 +1,57 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  defaultValue="hook"
+  values={[
+    {label: 'Via Hook', value: 'hook'},
+    {label: 'Directly', value: 'direct'},
+  ]}>
+
+  <TabItem value="hook">
+
+```jsx
+import { useGate } from "statsig-react-native";
+
+...
+
+function MyComponent() {
+  const { value, isLoading } = useGate("a_gate_name");
+
+  // Only required if you have not set waitForInitialization to true
+  if (isLoading) {
+    return <div>Fetching Values...</div>;
+  }
+
+  return <div>{value ? "Passes Gate" : "Fails Gate"}</div>;
+}
+```
+
+  </TabItem>
+  <TabItem value="direct">
+
+You can call `Statsig.checkGate` directly. This can be helpful when gate checks are needed in loops.
+Ensure you have set waitForInitialization to true or you may get default values.
+
+```jsx
+import { Statsig } from "statsig-react-native";
+
+...
+
+function MyComponent() {
+  return (
+      <div>
+        {someArray.map((item) => {
+          if (Statsig.checkGate("a_gate_name")) {
+            return <div>Passes Gate</div>;
+          }
+
+          return <div>Fails Gate</div>;
+        })}
+      </div>
+    );
+}
+```
+
+  </TabItem>
+</Tabs>

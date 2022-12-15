@@ -1,0 +1,15 @@
+#### Which Browsers Supported?
+
+The `statsig-react-native` SDK relies on the `statsig-js` SDK and inherits its browser compatibility. For more information, see the [statsig-js docs](https://docs.statsig.com/client/jsClientSDK#what-kind-of-browser-support-can-i-expect-from-the-sdk).
+
+#### Why a I seeing an "unexpected exception"?
+
+Some users of the ReactNative SDK have reported issues that look like the following:
+
+```
+ ERROR  [Statsig] An unexpected exception occurred. [TypeError: undefined is not a function (near '...}).finally(function () {...')]
+```
+
+Some libraries, like storybook, remove the `finally()` handler for promises. In order to pollyfill this and get around the error, see this thread:
+
+https://github.com/storybookjs/react-native/issues/20
