@@ -1,0 +1,23 @@
+You can start by downloading a copy of [the github repository](https://github.com/statsig-io/roku-sdk). Roku does not have a package manager where we could release an SDK, so instead, you will copy over the implementation from this repository to integrate Statsig in your roku app.
+
+You will need the following files:
+
+```
+Statsig
+  -- components
+    -- statsigsdk
+      -- StatsigTask.brs
+      -- StatsigTask.xml
+  -- source
+    -- DynamicConfig.brs
+    -- Statsig.brs
+    -- StatsigClient.brs
+    -- StatsigUser.brs
+```
+
+The library consists of two main parts:
+
+source/Statsig - an object used by SceneGraph components that connects a StatsigClient with the background StatsigTask.
+components/StatsigTask - a SceneGraph Task to do work in the background for integrating with Statsig like batching events and fetching values from Statsig servers.
+
+The "components" folder contains SceneGraph components and the "source" folder contains BrightScript files. All of these files must be included in their respective folders of the application. Note that if you change the file paths, you will need to update the file references in `StatsigTask.xml`. You will also need to include those references in your main xml file.
