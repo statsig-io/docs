@@ -1,0 +1,7 @@
+`statsig-react-native` utilizes [React Hooks](https://reactjs.org/docs/hooks-intro.html) to provide access to your gates/configs/experiments.
+It also exposes a global `Statsig` class that you can import outside your
+component tree to access this information.
+
+:::info
+Statsig SDK Hooks rely on a Context from the Statsig Provider. Context will get its value from the closest matching Provider above it in the component tree. Make sure you make a separate child component to consume the StatsigContext, and place your hooks there. Learn more here: https://reactjs.org/docs/context.html
+:::
