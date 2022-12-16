@@ -220,6 +220,20 @@ module.exports = {
           "ids"
         ],
         "description": "Forces specific users into the desired group."
+      },
+      "tags": {
+        "title": "tags",
+        "x-stoplight": {
+          "id": "gcd8cfpqxepu1"
+        },
+        "type": [
+          "array"
+        ],
+        "description": "Override the project tags assigned to this experiment",
+        "items": {
+          "type": "string",
+          "example": "* Core"
+        }
       }
     },
     "responses": {
@@ -982,6 +996,9 @@ module.exports = {
                   "idType": {
                     "$ref": "#/components/schemas/idType"
                   },
+                  "tags": {
+                    "$ref": "#/components/schemas/tags"
+                  },
                   "status": {
                     "$ref": "../models/status.json"
                   },
@@ -1047,6 +1064,9 @@ module.exports = {
                     "idType": "userID",
                     "lastModifierName": "CONSOLE API",
                     "lastModifierID": "66wvNB1zril4QQWFOGvfTP",
+                    "tags": [
+                      "customTag"
+                    ],
                     "status": "setup",
                     "hypothesis": "Updated hypothesis",
                     "launchedGroupID": null,
@@ -1366,6 +1386,9 @@ module.exports = {
                   "idType": {
                     "$ref": "#/components/schemas/idType"
                   },
+                  "tags": {
+                    "$ref": "#/components/schemas/tags"
+                  },
                   "hypothesis": {
                     "$ref": "#/components/schemas/hypothesis"
                   },
@@ -1411,6 +1434,10 @@ module.exports = {
                     "description": "updated summary",
                     "idType": "userID",
                     "status": "setup",
+                    "tags": [
+                      "marketing",
+                      "cost_savings"
+                    ],
                     "launchedGroupID": null,
                     "startTime": null,
                     "endTime": null,
