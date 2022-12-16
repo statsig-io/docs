@@ -6,6 +6,10 @@ slug: /events-explorer
 
 The Events Explorer tab allows you to analyze your event log data in real-time, supporting a variety of queries against the data you send us by when you use our SDKs or integrations.
 
+:::info
+NOTE: Events Explorer is a *sampled* dataset - it trades off quantity and exact correctness to make your data available closer to real time.  It is useful for measuring trends, comparing day over day or week over week, or getting a high level look at your events.  It cannot give you all data for a specific user (The (Users Tab)[/users] can though!), nor can it give you a completely accurate count or export of a specific event.
+:::
+
 ## Events Explorer Use Cases
 We built Events Explorer with two primary use cases in mind:
 1. Diagnosing Product Performance: As you accelerate your product development velocity, Events Explorer enables you to monitor and interactively analyze how your product is performing in real-time. Product performance issues can range from app crashes to seemingly innocuous bugs that impact app-wide usage. Compared to pre-aggregated graphs that limit root cause analyses, Events Explorer allows you to dive deep into arbitrary product data for real-time, ad-hoc analyses.
