@@ -1,13 +1,20 @@
 import Gap from "./_Gap.mdx";
 
-import SDKDocTOCHeader from "@site/src/components/SDKDocTOCHeader";
+import SDKDocTOCHeader, {
+  SDKDocTOCHeaderAsString,
+} from "@site/src/components/SDKDocTOCHeader";
 
 export const HOOK__SDKDocUpdate = "<SDK_DOC_UPDATE_HOOK>";
 
-export const SDKDocsBuilder = (tocHeaderConfig, sections, toc, appendTOC) => {
+export const SDKDocsBuilder = (
+  { lastSDKDocsUpdate },
+  sections,
+  toc,
+  appendTOC
+) => {
   toc.length = 0;
   toc.push({
-    value: SDKDocTOCHeader(tocHeaderConfig),
+    value: `<div id="sdk-toc-header" x-last-updated="${lastSDKDocsUpdate}"><div style="min-height: 65px; cursor: default; padding: 10px 20px; background-color: var(--ifm-navbar-background-color); border-radius: 10px; font-size: 12px; margin-bottom: 15px; color: var(--ifm-color-content);">...</div></div>`,
     id: "0",
     level: 2,
   });
@@ -22,5 +29,5 @@ export const SDKDocsBuilder = (tocHeaderConfig, sections, toc, appendTOC) => {
     );
   });
   toc.push(...(appendTOC ?? []));
-  return result;
+  return [<SDKDocTOCHeader key="header" />, ...result];
 };
