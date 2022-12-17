@@ -69,3 +69,25 @@ jest.mock('statsig-react', () => {
   return StatsigMock;
 });
 ```
+
+
+If you want to use local overrides, you can create a helper function to make this easier:
+
+```
+function StatsigOverrides({children}) {
+    const statsigContext = useContext(StatsigContext);
+
+    if (!statsigContext.initialized) {
+        return <></>
+    }
+    Statsig.overrideConfig("test_config", {test_key: "test_value"});
+    // more overrides for your test here
+    return children;
+}
+
+<StatsigProvider ...>
+  <StatsigOverrides>
+    <App />
+  </StatsigOverrides>
+</StatsigProvider>
+```
