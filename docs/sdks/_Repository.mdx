@@ -1,9 +1,8 @@
 import DarkLogo from "@site/static/img/GitHub-Mark-64px.png";
 import LightLogo from "@site/static/img/GitHub-Mark-Light-64px.png";
-import { useColorMode } from "@docusaurus/theme-common";
+import ThemedImage from "@theme/ThemedImage";
 
 export default function ({ repo }) {
-  const isDarkTheme = useColorMode().colorMode === "dark";
   return (
     <div
       style={{
@@ -16,13 +15,17 @@ export default function ({ repo }) {
         style={{
           fontSize: 14,
           fontWeight: "600",
-          color: isDarkTheme ? "white" : "black",
+          color: "var(--ifm-color-content)",
           display: "flex",
           alignItems: "center",
         }}
       >
-        <img
-          src={isDarkTheme ? LightLogo : DarkLogo}
+        <ThemedImage
+          alt="Docusaurus themed image"
+          sources={{
+            light: DarkLogo,
+            dark: LightLogo,
+          }}
           style={{
             height: 18,
             width: 18,

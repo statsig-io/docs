@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOMServer from "react-dom/server";
+import ReactDOM from "react-dom";
 
 function Header({ lastUpdated }) {
   const epoch = parseInt(lastUpdated);
@@ -14,7 +15,9 @@ function Header({ lastUpdated }) {
 
   return (
     <div
+      onClick={(event) => event.preventDefault()}
       style={{
+        cursor: "default",
         padding: "10px 20px",
         backgroundColor: "var(--ifm-navbar-background-color)",
         borderRadius: 10,
@@ -23,11 +26,18 @@ function Header({ lastUpdated }) {
         color: "var(--ifm-color-content)",
       }}
     >
-      {updated && (
-        <div style={{ marginBottom: 5 }}>Last Updated: {updated}</div>
+      {(!lastUpdated || updated) && (
+        <div style={{ marginBottom: 5 }}>Last Updated: {updated ?? "..."}</div>
       )}
       <a
-        x-sdk-onclick="window.open('https://statsigcommunity.slack.com/archives/C01RAKM10TD', '_blank').focus();"
+        onClick={() =>
+          window
+            .open(
+              "https://statsigcommunity.slack.com/archives/C01RAKM10TD",
+              "_blank"
+            )
+            .focus()
+        }
         href="#"
       >
         <div style={{ display: "flex", alignItems: "center" }}>
@@ -39,10 +49,19 @@ function Header({ lastUpdated }) {
   );
 }
 
-export default function SDKDocTOCHeader({ lastSDKDocsUpdate }) {
-  // Note: Most attributes are stripped by ReactDOMServer.renderToStaticMarkup. eg onClick won't work
-  const asString = ReactDOMServer.renderToStaticMarkup(
-    <Header lastUpdated={lastSDKDocsUpdate} />
-  ).replaceAll("x-sdk-", "");
-  return `<div onclick="event.preventDefault();" style="cursor: default">${asString}</div>`;
+export default function SDKDocTOCHeader() {
+  useEffect(() => {
+    const node = document.querySelector("#sdk-toc-header");
+    if (node?.getAttribute("x-last-updated")) {
+      ReactDOM.render(
+        <Header lastUpdated={node.getAttribute("x-last-updated")} />,
+        document.getElementById("sdk-toc-header")
+      );
+    }
+  }, []);
+  return <></>;
+}
+
+export function SDKDocTOCHeaderAsString() {
+  return ReactDOMServer.renderToStaticMarkup(<Header />);
 }
