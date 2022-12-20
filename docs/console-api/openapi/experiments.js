@@ -1006,17 +1006,17 @@ module.exports = {
                     "$ref": "#/components/schemas/hypothesis"
                   },
                   "primaryMetrics": {
-                    "type": "array",
                     "description": "Main metrics needed to evaluate your hypothesis",
+                    "type": "array",
                     "items": {
-                      "$ref": "./experiment_metric.json"
+                      "$ref": "../models/experiment_metric.json"
                     }
                   },
                   "secondaryMetrics": {
                     "type": "array",
                     "description": "Additional metric you may want to monitor that might impact the analysis or final decision of the experiment",
                     "items": {
-                      "$ref": "./experiment_metric.json"
+                      "$ref": "../models/experiment_metric.json"
                     }
                   },
                   "groups": {
@@ -1348,7 +1348,7 @@ module.exports = {
                     "idType": "userID",
                     "layerID": "statsig::a_layer",
                     "hypothesis": "updated hypothesis",
-                    "keyMetrics": [
+                    "primaryMetrics": [
                       {
                         "id": "my_custom_metric",
                         "type": "event_count_custom"
@@ -1392,7 +1392,7 @@ module.exports = {
                   "hypothesis": {
                     "$ref": "#/components/schemas/hypothesis"
                   },
-                  "keyMetrics": {
+                  "primaryMetrics": {
                     "type": "array",
                     "items": {
                       "$ref": "../models/experiment_metric.json"
@@ -1443,7 +1443,7 @@ module.exports = {
                     "endTime": null,
                     "layerID": "statsig::a_layer",
                     "hypothesis": "updated hypothesis",
-                    "keyMetrics": [
+                    "primaryMetrics": [
                       {
                         "id": "my_custom_metric",
                         "type": "event_count_custom"
