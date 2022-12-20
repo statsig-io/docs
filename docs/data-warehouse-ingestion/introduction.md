@@ -72,7 +72,7 @@ Note: Auto-generated **User Accounting Metrics** are not supported today for dat
 
 
 ### Frequently Asked Questions
-1. **Does the event data from count towards Statsig's [User Accounting Metrics](/metrics/user) such as DAU or Retention?**
+1. **Does the event data from ingestion count towards Statsig's [User Accounting Metrics](/metrics/user) such as DAU or Retention?**
 
 No, event data from ingestions does not count towards Statsig's User Accounting Metrics such as DAU or Retention. Customers typically send Statsig a subset of their events, which could result in multiple competing values for "fact" data such as daily active users in your Statsig project. Statsig recommends sending your own precomputed metric for DAU or as a daily event per user (1 'daily_active' event if a user was active that day).
 
