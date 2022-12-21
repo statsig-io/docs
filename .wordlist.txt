@@ -13,6 +13,7 @@ backfilling
 backfills
 Bezos
 Bonferroni
+bonferroni
 boolean
 Bugsnag
 ccdb
@@ -99,7 +100,7 @@ MAU
 mau
 MAUs
 MDE
-metric’s
+metric's
 metrics
 Mixpanel
 mParticle
@@ -120,7 +121,7 @@ precomputed
 Precomputing
 preload
 priori
-Programatically
+Programmatically
 proxying
 pst
 Px
@@ -136,7 +137,6 @@ rollout
 Rollouts
 rollouts
 RudderStack
-Rudderstack
 schemas
 SDK
 SDKs

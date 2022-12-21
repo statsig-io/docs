@@ -10,7 +10,7 @@ Your data is your data. Statsig makes it easy to export both the reports and the
 
 ![image](https://user-images.githubusercontent.com/31516123/179842166-0c8945ea-d93c-4aa6-96d9-4ea5a2e52437.png)
 
-2. [Programatically export the data underlying Pulse](https://docs.statsig.com/console-api/daily-reports).
+2. [Programmatically export the data underlying Pulse](https://docs.statsig.com/console-api/daily-reports).
 3. For ongoing data exports we support [data integrations](https://docs.statsig.com/integrations/introduction) via CDBs like Segment, Rudderstack and mParticle. There is also a [generic webhook](https://docs.statsig.com/integrations/event_webhook) if you want to build your own integration. 
 
 ![image](https://user-images.githubusercontent.com/31516123/179850016-3a31e479-5894-4e74-8f53-aaf1ea3d2b12.png)
