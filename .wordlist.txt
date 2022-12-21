@@ -9,3 +9,11 @@ resync
 backfill
 SDK
 backfilling
+MDE
+userID
+Autotune
+dau
+Precomputing
+Logstream
+APIs
+isTest
