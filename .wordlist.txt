@@ -3,3 +3,9 @@ DM
 ingestions
 dataset
 precomputed
+Statsig's
+DAU
+resync
+backfill
+SDK
+backfilling
