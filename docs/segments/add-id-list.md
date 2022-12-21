@@ -11,7 +11,7 @@ An ID list enables you specify the user IDs or stable IDs that you want to targe
 Assuming you have created a segment of type ID List,
  - If you're not already there, navigate to the segment page on https://console.statsig.com
  - Click the **Edit** button in the ID List panel 
- - Enter the list of identifers and click **Confirm**
+ - Enter the list of identifiers and click **Confirm**
  
 ![image](https://user-images.githubusercontent.com/1315028/146095989-f0633201-1051-42f4-a1fb-4a8a7e55fcb7.png)
 
