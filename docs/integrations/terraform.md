@@ -2,7 +2,7 @@
 title: Terraform Provider
 ---
 
-The Statsig Terrafrom Provider allows you to configure your gates with Terraform. This is achieved by leveraging the Console API. If there is something you need to perform that isn't supported by the Terraform Provider, checkout the [Console API](https://docs.statsig.com/console-api/introduction).
+The Statsig Terraform Provider allows you to configure your gates with Terraform. This is achieved by leveraging the Console API. If there is something you need to perform that isn't supported by the Terraform Provider, checkout the [Console API](https://docs.statsig.com/console-api/introduction).
 
 It is hosted on the Terraform registry at https://registry.terraform.io/providers/statsig-io/statsig
 

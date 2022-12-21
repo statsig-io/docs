@@ -33,14 +33,14 @@ The exact calculation for each of the above depends on the metric type:
 
 ## Detailed View
 
-Click on **View Details** to access in depth metric information.  The deatiled view contains three sections: 
+Click on **View Details** to access in depth metric information.  The detailed view contains three sections: 
 - **Time Series**: How the metrics evolve over time
 - **Raw Date**: Group level statistics
 - **Impact**: How the experiment impacts the metric 
 
 ### Time Series
 
-In this view, select and drag as needed to zoom-in on different time ranges.  Three types of time series are avaialble in the drop-down:
+In this view, select and drag as needed to zoom-in on different time ranges.  Three types of time series are available in the drop-down:
 
 **Daily**: The metric impact on each calendar day without aggregating days together.  This is useful for assessing the variability of the metric day-over-day and the impact of specific events.  It's the recommended time series view for Holdouts, since it highlights the impact over time as new features are launched. 
 
@@ -76,7 +76,7 @@ See [here](https://docs.statsig.com/stats-engine/topline-impact) for details on 
 
 Often times, an experiment can impact only a subset of the user base that contributes to a topline metric.  So the relative experiment delta that we observe is effectively diluted when measured against the topline metric value.  
 
-For example: Consider a top-of-funnel experiment on the registration page.  Among users that hit this page, the treatment is leading to more sign ups and a 10% lift in daily active users (DAU).  However, our topline DAU metric includes other user segments outside of the experiment, such as long term users that don't go to the registration page.  So what was a 10% lift in the test vs. control comparison, may amount to only a 1% increase in overal DAU.
+For example: Consider a top-of-funnel experiment on the registration page.  Among users that hit this page, the treatment is leading to more sign ups and a 10% lift in daily active users (DAU).  However, our topline DAU metric includes other user segments outside of the experiment, such as long term users that don't go to the registration page.  So what was a 10% lift in the test vs. control comparison, may amount to only a 1% increase in overall DAU.
 
 *How can the topline impact be higher than the experiment delta?*
 

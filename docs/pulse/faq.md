@@ -31,7 +31,7 @@ Keep in mind that these results are statistical interpretations and not facts:
   - Generally, you should treat these results as a lack of evidence for your hypothesis
   - Underpowered tests may lead to neutral results even if a true effect exists
 - If a result is stat sig, this means that you have sufficient evidence to reject the null hypothesis (i.e., the probability that you would observe this result, or one more extreme, if the two groups' results were identical is below the pre-determined threshold you set).
-  - Generally, you should treat this result as evidnece for your hypothesis
+  - Generally, you should treat this result as evidence for your hypothesis
   - Multiple comparisons (many metrics, rerunning an experiment, or grouping by dimensions) greatly increase the chance of seeing a stat sig result when there's _not_ a true effect. Be wary of interpreting results when you see those behaviors!
   - A test that was extremely unlikely to succeed (moonshots, etc.) that has stat sig results have a high chance of that result being a false positive. In cases like this, it's a strong signal but you should consider trying to reproduce the result or running a back-test, or consider reducing your significance level.
 

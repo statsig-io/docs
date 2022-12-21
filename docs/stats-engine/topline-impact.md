@@ -58,7 +58,7 @@ Similar to the topline impact calculation above, the projected impact of ratio m
 
 ![image](https://user-images.githubusercontent.com/90343952/171698790-dba2b646-578d-48a5-a794-b2c07183a7f7.png)
 
-Where the first term rerpesents the projected metric value after launch. 
+Where the first term represents the projected metric value after launch. 
 
 Finally, the projected relative impact of a ratio metric is the projected absolute impact divided by the baseline value of the ratio: 
 
@@ -80,7 +80,7 @@ And for projected launch impact we get:
 
 For ratio metrics and relative impacts, the variance is calculated using the Delta method.  This properly accounts for the correlation between the various numerator and denominator terms, leveraging Taylor expansion to linearize expressions containing non-linear combinations of experiment variables.  
 
-For example, the variance in the relaive impact of a count metric is given by:
+For example, the variance in the relative impact of a count metric is given by:
 
 ![image](https://user-images.githubusercontent.com/90343952/171686256-4ae81e10-c4f4-474d-9326-3a2ea6911ea3.png)
 

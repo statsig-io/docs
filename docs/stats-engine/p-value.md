@@ -21,7 +21,7 @@ The two-sided p-value is obtained from the standard normal cumulative distributi
 
 ### Welch's t-test
 
-For smaller sample sizes, Welch's t-test is the prefered statistical test for lower false positive rates in cases of unequal sizes and variances.  In Pulse, Welch's t-test is automatically applied when the degress of freedom *&nu; < 100*.  
+For smaller sample sizes, Welch's t-test is the preferred statistical test for lower false positive rates in cases of unequal sizes and variances.  In Pulse, Welch's t-test is automatically applied when the degress of freedom *&nu; < 100*.  
 
 The t-statistic is computed in the same way as the two-sample z-statistic above.  Additionally, we compute the degrees of freedom *&nu;* using:
 
