@@ -25,7 +25,7 @@ Once in the Metric Detail View, go to the **Alerts** tab, and tap **+ Create Ale
 Once a metric alert has been configured for a given metric, you will see an “alert” alarm bell icon next to the metric inline in the Metrics Catalog. You can also filter for metrics with alerts set on them via the standard metrics filtering affordance next to the search bar.
 
 ## Determining the Right Threshold 
-To help you configure the right threshold for your metric alert, there is a preview of how much the metric has moved in the context of any feature gates or experiments containing that metric in the Scorecard. These metric delta previews can be toggled to show Hourly vs. Daily deltas by changing the metric’s **Alert Window**. Please note that for hourly lifts, no confidence intervals are shown. Additionally, both hourly and daily-windowed alerts are triggered based on the mean metric delta, *without* confidence intervals.
+To help you configure the right threshold for your metric alert, there is a preview of how much the metric has moved in the context of any feature gates or experiments containing that metric in the Scorecard. These metric delta previews can be toggled to show Hourly vs. Daily deltas by changing the metric's **Alert Window**. Please note that for hourly lifts, no confidence intervals are shown. Additionally, both hourly and daily-windowed alerts are triggered based on the mean metric delta, *without* confidence intervals.
 
 <img width="1509" alt="Screen Shot 2022-12-06 at 9 38 16 AM" src="https://user-images.githubusercontent.com/101903926/205982857-e3f7d9ed-7eb8-4649-8807-e16f706315e2.png"/>
 

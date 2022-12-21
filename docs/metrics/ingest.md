@@ -8,7 +8,7 @@ slug: /metrics/ingest
 Statsig allows you to ingest raw events that are computed into metrics in the following ways:
 
 - Using either our [client](https://docs.statsig.com/client/introduction) or [server](https://docs.statsig.com/server/introduction) SDKs to log events to Statsig.
-- Ingesting metrics from your data tools such as [Segment](https://docs.statsig.com/integrations/data-connectors/segment), [mParticle](https://docs.statsig.com/integrations/data-connectors/mparticle), [Rudderstack](https://docs.statsig.com/integrations/data-connectors/rudderstack) and [Census](https://docs.statsig.com/integrations/data-connectors/census)
+- Ingesting metrics from your data tools such as [Segment](https://docs.statsig.com/integrations/data-connectors/segment), [mParticle](https://docs.statsig.com/integrations/data-connectors/mparticle), [RudderStack](https://docs.statsig.com/integrations/data-connectors/rudderstack) and [Census](https://docs.statsig.com/integrations/data-connectors/census)
 -  Logging metrics using Statsig's [HTTP API](https://docs.statsig.com/http-api)
 
 ## Ingesting Precomputed Metrics
