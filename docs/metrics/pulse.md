@@ -6,7 +6,7 @@ slug: /metrics/pulse
 
 # Pulse Metrics
 
-Statsig computes experiment results, also known as Statsig's **Pulse** results, depending on the metric type. Most metrics are aggregated across all users in the group. Some ratio type metrics are only aggregated across partipating users (users that have non-null value for that metric).
+Statsig computes experiment results, also known as Statsig's **Pulse** results, depending on the metric type. Most metrics are aggregated across all users in the group. Some ratio type metrics are only aggregated across participating users (users that have non-null value for that metric).
 
 ## Pulse Statistics by Metric Type
 
