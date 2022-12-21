@@ -151,7 +151,7 @@ Unarchive
 onboarding
 Unarchiving
 affordance
-metric’s
+metrics
 overlayed
 hoc
 eventName
@@ -193,6 +193,7 @@ degress
 covariate
 underperforming
 CNAME
+SUTVA
 DNS
 CORS
 javascript
@@ -205,3 +206,6 @@ unmonitored
 RBAC
 jdo
 focussing
+jdoe
+GDPR
+th

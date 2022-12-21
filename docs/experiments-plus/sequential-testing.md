@@ -43,7 +43,7 @@ We use an adjustment factor *q<sub>n</sub>* that's determined by the number of d
 ![image](https://user-images.githubusercontent.com/90343952/191127696-c8cbbf6f-8757-439e-86df-c7d7dd13ef36.png)
 
 When the target duration is reached, *q<sub>n</sub> = 1* and no more adjustments are applied.  This method has 2 benefits:
-* Simplicity: The calculation of the adjustment factor is easy to understand.  It also satisifes the intuitive expectation that the significance threshold be higher early on.
+* Simplicity: The calculation of the adjustment factor is easy to understand.  It also satisfies the intuitive expectation that the significance threshold be higher early on.
 * Power: When the target duration is reached, the efficacy boundary converges with the standard Z-score for the selected significance level.  Therefore, there is no loss in statistical power when doing a metrics readout at the conclusion of the pre-determined experiment duration. We selected this approach because we believe the primary value of sequential testing is to provide higher confidence when making early decisions based on unexpected metric movements, such as ending an experiment early due to a large regression.  However, in most cases it's best make a decision based on the complete set of relevant metrics at the end of the experiment, without any adjustments that reduce power. 
 
 ### Efficacy Boundary and Z-score Calculation
