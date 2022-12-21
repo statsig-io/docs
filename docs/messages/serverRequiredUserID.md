@@ -18,4 +18,4 @@ Still aren't sure whether you need to provide the userID? Here are our suggestio
 We hope this is helpful. If you have a use case that is not covered in these scenarios, or have any question at all, feel free to join our [Slack community](https://join.slack.com/t/statsigcommunity/shared_invite/zt-pbp005hg-VFQOutZhMw5Vu9eWvCro9g) and drop a question/comment there!
 
 
-Note that the SDK does not check if the experiment you are checking against is based on the ID type you are providing.  If you are running BOTH user and custom ID experiences, it is safest to provide both IDs with every check, so you dont fail to log exposures or events with a missing unit type
+Note that the SDK does not check if the experiment you are checking against is based on the ID type you are providing.  If you are running BOTH user and custom ID experiences, it is safest to provide both IDs with every check, so you don't fail to log exposures or events with a missing unit type

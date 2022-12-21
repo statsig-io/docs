@@ -10,7 +10,7 @@ The methodology used for p-value calculation depends on the number of degrees of
 
 ### Two-Sample Z-Test
 
-The z-statsitc of a two-sample z-test is:
+The z-statistic of a two-sample z-test is:
 
 ![image](https://user-images.githubusercontent.com/90343952/168131340-d318d6e3-adce-4ede-bb91-adc2390f7107.png)
 
@@ -27,7 +27,7 @@ The t-statistic is computed in the same way as the two-sample z-statistic above.
 
 ![image](https://user-images.githubusercontent.com/90343952/168124467-58a81687-95e4-4fac-905d-3782509b8c8d.png)
 
-The p-value is then obatined from the t-distribution with *&nu;* degrees of freedom.
+The p-value is then obtained from the t-distribution with *&nu;* degrees of freedom.
 
 
 
