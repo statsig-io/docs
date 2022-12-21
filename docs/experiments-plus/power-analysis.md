@@ -7,7 +7,7 @@ slug: /experiments-plus/power-analysis
 The power analysis tool leverages past data for a given metric to estimate the relationship between three variables:
 * Minimum detectable effect (MDE): The smallest change in the metric that the experiment can detect.  For example: An MDE of 1% means that if there's a true effect of 1% or larger on our metric, we expect the experiment will show a statistically significant result.  If the effect is smaller than 1%, then it will likely fall inside the confidence intervals and not be statistically significant.  
 * Number of days: How long the experiment is active.  Longer running experiment typically have more observations, leading to tighter confidence intervals and smaller MDE.
-* Allocation: The percentage of traffic that participates in the experiment.  Larger allocation leads to smaller MDE, so it's often desireable to allocate as many users as possible to get faster or more sensisitve results.  When there's a risk of negative impact however, it's useful to know the smallest allocation that can achieve the desired MDE. 
+* Allocation: The percentage of traffic that participates in the experiment.  Larger allocation leads to smaller MDE, so it's often desirable to allocate as many users as possible to get faster or more sensitive results.  When there's a risk of negative impact however, it's useful to know the smallest allocation that can achieve the desired MDE. 
 
 ### Using the Tool
 
@@ -41,7 +41,7 @@ Choose this option to understand how the length of the experiment impacts the MD
    ![image](https://user-images.githubusercontent.com/90343952/145122364-02af83d7-ea3d-4b24-8a10-506c1f227f8b.png)
 
 
-Advanced settings to custumize the analysis:
+Advanced settings to customize the analysis:
 * **One-sided or Two-sided test**: Toggle this setting to select the type of z-test to use for the analysis.  
 * **Number of Experiment Groups**: The total number of groups in the experiment, including control.
 * **Test Group Size**: Default is 1, meaning the test and control groups are the same size.  For different sized groups, enter the multiplier applied to the test group size.  E.g.: 0.5 means the test group is half the size of the control group. 

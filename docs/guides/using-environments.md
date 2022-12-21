@@ -40,7 +40,7 @@ And select the "development" option:
 
 ![Screen Shot 2022-06-26 at 11 44 27 AM](https://user-images.githubusercontent.com/74584483/175829370-52b03b85-aa1c-4092-a4aa-408840c28e36.png)
 
-Your gate should now have a seperate section for "development" rules:
+Your gate should now have a separate section for "development" rules:
 
 ![Screen Shot 2022-06-26 at 11 45 07 AM](https://user-images.githubusercontent.com/74584483/175829388-17088f7e-fcdb-4dd2-89f3-33bc5ad4758c.png)
 

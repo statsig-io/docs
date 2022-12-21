@@ -12,7 +12,7 @@ To create a user-level experiment,
 2. Navigate to **Experiments** in the left-hand navigation panel
 3. Click on the **Create** button
 4. Enter the name and description for your experiment as shown in the figure below
-5. By default, your expeirment runs in its own Layer. If you would like to add this experiment to a Layer, select the **Add Layer** option under **Advanced** in the experiment creation modal or create a new Layer via **Create New Layer**.   
+5. By default, your experiment runs in its own Layer. If you would like to add this experiment to a Layer, select the **Add Layer** option under **Advanced** in the experiment creation modal or create a new Layer via **Create New Layer**.   
 <img src="https://user-images.githubusercontent.com/101903926/203622099-dde952fe-d96b-4e4e-8dcd-bdec8b54c354.png" alt="Screen Shot 2022-11-23 at 10 31 09 AM" width="494"/>
 6. Click "Create" 
 
@@ -39,7 +39,7 @@ For **Allocation**, enter the percentage of users that you want to allocate to t
 
 <img width="1495" alt="Screen Shot 2022-11-23 at 10 21 21 AM" src="https://user-images.githubusercontent.com/101903926/203620564-028c7244-c77b-4f51-92e1-40f522a03902.png"/>
 
-If you want to use a targeting gate in your experiment, tap on **All Allocated Users** in the **Targeting** section to select a Feature Gate from the drop-down. A targeting gate will restrict the users elegible for the experiment to those who pass the list of conditions definied in the linked Feature Gate. This continues to apply after making a decision on an experiment in the Statsig UI. 
+If you want to use a targeting gate in your experiment, tap on **All Allocated Users** in the **Targeting** section to select a Feature Gate from the drop-down. A targeting gate will restrict the users eligible for the experiment to those who pass the list of conditions defined in the linked Feature Gate. This continues to apply after making a decision on an experiment in the Statsig UI. 
 
 <img width="1504" alt="Screen Shot 2022-11-23 at 10 37 52 AM" src="https://user-images.githubusercontent.com/101903926/203623193-9137bd21-54c5-4cae-a462-831c7ad9833b.png"/>
 

@@ -61,7 +61,7 @@ Statsig supports multiple schedules for ingestion. At the scheduled window, we w
 
 At several follow-up windows we will check if the data has changed, and reload it if there's a change larger than 1%. 
 
-We also support a user-triggered backfill. This could be useful if a specific metric definiton has changed, or you want to resync data older than a few days. 
+We also support a user-triggered backfill. This could be useful if a specific metric definition has changed, or you want to resync data older than a few days. 
 
 <img src="https://user-images.githubusercontent.com/87334575/199854289-dec60731-b54e-43d1-92a0-2fbd53f47087.png" width="400"/>
 

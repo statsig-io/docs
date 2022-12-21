@@ -9,7 +9,7 @@ Statsig's **Events Explorer** enables you to dive straight into real-time events
 Events Explorer enable you to create queries **without requiring any SQL expertise** and analyze results to complex queries within **sub-second latency**.
 
 ## Use Cases
-1. **Diagnosting Product Performance**: As you accelerate your product development velocity, Events Explorer enables you to monitor and interactively analyze how your product is performing in real-time. Product performance issues can range from app crashes to 'innocuous' bugs that impact app-wide usage. Compared to pre-aggregated graphs that limit root cause analyses, Events Explorer allows you to dive deep into arbitrary product data for real-time, ad-hoc analyses.
+1. **Diagnosing Product Performance**: As you accelerate your product development velocity, Events Explorer enables you to monitor and interactively analyze how your product is performing in real-time. Product performance issues can range from app crashes to 'innocuous' bugs that impact app-wide usage. Compared to pre-aggregated graphs that limit root cause analyses, Events Explorer allows you to dive deep into arbitrary product data for real-time, ad-hoc analyses.
 2. **Exploratory Product Analyses**: As you add product features, Events Explorer enables you to investigate product usage patterns that can point to further improvements and new product hypotheses. For example, at Statsig, we use the Events Explorer to better understand customer onboarding patterns on Statsig.
 
 ## Table View

@@ -39,10 +39,10 @@ There are three types of export:
 | end_date         | The end date for this measurement                                                                                                                                                                                      |
 | test_units       | The number of users in the test group                                                                                                                                                                                  |
 | test_mean        | The average value of this metric across test users (or participating units when applicable)                                                                                                                            |
-| test_stderr      | The standard error for the estiamte of the mean for test users. This can be used to compute confidence intervals.                                                                                                      |
+| test_stderr      | The standard error for the estimate of the mean for test users. This can be used to compute confidence intervals.                                                                                                      |
 | ctrl_units       | The number of users in the control group                                                                                                                                                                               |
 | ctrl_mean        | The average value of this metric across control users (or participating units when applicable)                                                                                                                         |
-| ctrl_stderr      | The standard error for the estiamte of the mean for control users. This can be used to compute confidence intervals.                                                                                                   |
+| ctrl_stderr      | The standard error for the estimate of the mean for control users. This can be used to compute confidence intervals.                                                                                                   |
 | abs_delta        | The absolute difference between the test and control mean (test_mean - ctrl_mean)                                                                                                                                      |
 | abs_stderr       | The estimated standard error of abs_delta                                                                                                                                                                              |
 | rel_delta        | The relative difference between test and control mean, sometimes referred to as lift (test_mean - ctrl_mean)/ctrl_mean                                                                                                 |
@@ -63,7 +63,7 @@ There are three types of export:
 | end_date         | The end date for this measurement                                                                                                                                                                                      |
 | units            | The number of users included in this metric estimate.                                                                                                                                                                  |
 | mean             | The average value of this metric across units (or participating units when applicable)                                                                                                                                 |
-| stderr           | The standard error for the estiamte of the mean. This can be used to compute confidence intervals.                                                                                                                     |
+| stderr           | The standard error for the estimate of the mean. This can be used to compute confidence intervals.                                                                                                                     |
 
 ### First Exposures File Description
 

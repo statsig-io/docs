@@ -21,7 +21,7 @@ Statsig allows you to ingest any of your precomputed product and business metric
 
 ### Logging Precomputed Metrics using the [HTTP API](https://docs.statsig.com/http-api)
 
-You can log one or more precomputed metrics with Statsing using the `log_custom_metric` API as shown below. The API call requires an **ID type** and should either (a) include a **metric_value**, or (b) provide a numerator and denominator of the metrics (if it's a ratio metric).
+You can log one or more precomputed metrics with Statsig using the `log_custom_metric` API as shown below. The API call requires an **ID type** and should either (a) include a **metric_value**, or (b) provide a numerator and denominator of the metrics (if it's a ratio metric).
 
 ```bash
 curl \
