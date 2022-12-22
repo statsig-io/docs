@@ -417,7 +417,8 @@ module.exports = {
                           "type": "user",
                           "id": "d1_retention_rate::user",
                           "description": "this metric has a description and isHidden field",
-                          "isHidden": false
+                          "isHidden": false,
+                          "tags": []
                         }
                       ]
                     }
@@ -435,6 +436,45 @@ module.exports = {
                           "name": "metric_2",
                           "type": "event_count",
                           "id": "metric_2::event_count"
+                        }
+                      ]
+                    }
+                  },
+                  "Filtered by tag ": {
+                    "value": {
+                      "message": "Metrics listed successfully.",
+                      "data": [
+                        {
+                          "name": "d1_retention_rate",
+                          "type": "user",
+                          "id": "d1_retention_rate::user",
+                          "description": "description",
+                          "isHidden": false,
+                          "tags": [
+                            "queried_tag"
+                          ]
+                        },
+                        {
+                          "name": "l14",
+                          "type": "user",
+                          "id": "l14::user",
+                          "description": "a description",
+                          "isHidden": false,
+                          "tags": [
+                            "queried_tag",
+                            "other_tag"
+                          ]
+                        },
+                        {
+                          "name": "mau@d56_retention_rate",
+                          "type": "user",
+                          "id": "mau@d56_retention_rate::user",
+                          "description": "",
+                          "isHidden": false,
+                          "tags": [
+                            "queried_tag",
+                            "another_tag"
+                          ]
                         }
                       ]
                     }
@@ -478,6 +518,14 @@ module.exports = {
             "in": "query",
             "name": "showHiddenMetrics",
             "description": "Should hidden metrics be returned"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "tag",
+            "description": "Filter metrics based on a given tagID, found on /tags endpoint"
           }
         ]
       },
