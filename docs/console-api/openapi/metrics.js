@@ -521,10 +521,10 @@ module.exports = {
           },
           {
             "schema": {
-              "type": "string"
+              "type": "array"
             },
             "in": "query",
-            "name": "tag",
+            "name": "tags",
             "description": "Filter metrics based on a given tagID, found on /tags endpoint"
           }
         ]
