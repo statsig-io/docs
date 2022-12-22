@@ -85,7 +85,7 @@ Follow the following steps to verify the signature:
 
 1. Grab your webhook signing secret from your Webhook integration card
 
-<img width="738" alt="Screen Shot 2022-12-21 at 5 36 49 PM" src="https://user-images.githubusercontent.com/87334575/209035738-bbbc0944-b428-4454-bf19-8845892c2044.png">
+<img width="738" alt="Screen Shot 2022-12-21 at 5 36 49 PM" src="https://user-images.githubusercontent.com/87334575/209035738-bbbc0944-b428-4454-bf19-8845892c2044.png"></img>
 
 2. Extract the request time header 'X-Statsig-Request-Timestamp' from the webhook request.
 3. Concatenate the version number ("v0"), the timestamp, and the request body together, using a colon (:) as a delimiter to create a signature basestring. Here's an example of a possible base string:
