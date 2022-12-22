@@ -76,3 +76,33 @@ Once you've enabled outbound events to your webhook, you can select which catego
 ![event-filter-button](https://user-images.githubusercontent.com/95646168/162329973-6f229186-1126-4824-9e29-1ff029f6553e.png)
 
 ![event-filter-dialog](https://user-images.githubusercontent.com/95646168/162329983-169703fc-c838-40a2-81dc-dd3c83886d00.png)
+
+### Webhook Signature (Beta)
+
+You can verify that a webhook request is coming from Statsig via our Webhook Signature. 
+
+Follow the following steps to verify the signature:
+
+1. Grab your webhook signing secret from your Webhook integration card
+
+<img width="738" alt="Screen Shot 2022-12-21 at 5 36 49 PM" src="https://user-images.githubusercontent.com/87334575/209035738-bbbc0944-b428-4454-bf19-8845892c2044.png">
+
+2. Extract the request time header 'X-Statsig-Request-Timestamp' from the webhook request.
+3. Concatenate the version number ("v0"), the timestamp, and the request body together, using a colon (:) as a delimiter to create a signature basestring. Here's an example of a possible base string:
+
+```
+v0:1671672194836:{"data":[{"user":{"name":"Joe Zeng","email":"joe@statsig.com"},"timestamp":1671672134833,"eventName":"statsig::config_change","metadata":{"type":"Gate","name":"test","description":"- Updated Rule test rollout from 100.00% to 10.00%","environment":"production"}}]}
+```
+
+4. Hash the signature basestring, using the signing secret as a key, and take the hex digest of the hash. Create the full signature by prefixing the hex digest with the version number ("v0") and an equals sign. See sample psuedo code below.
+
+```
+statsig_signature = 'v0=' + hmac.compute_hash_sha256(
+webhook_signing_secret,
+signature_basestring
+).hexdigest()
+>>> 'v0=05c50d1513d49f884df8b0469befbbd432bd30364e81f16a606dec69f29e8f18'
+```
+
+5. Compare the resulting signature to the 'X-Statsig-Signature' header on the request
+
