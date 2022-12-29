@@ -12,7 +12,7 @@ Be careful with statistical interpretation of Custom Queries, especially when gr
 
 ### Running a Custom Query
 
-To run a Custom Query, navigate to your Pulse results. This is accesible via the **Explore** tab within **Metrics Lifts** in Pulse.  
+To run a Custom Query, navigate to your Pulse results. This is accesible via the **Explore** tab within **Metric Lifts** in Pulse.  
 
 ![Screen Shot 2022-10-14 at 10 23 58 AM](https://user-images.githubusercontent.com/101903926/195905568-65c4f0a4-beaa-4c5e-a5c4-8ca39b3096de.png)
 
@@ -22,8 +22,9 @@ Custom Query fields:
 - **Date range:** The date range for which you're running your analysis on
 - **User dimension group by:** A user dimension that the results will be grouped by. For example, if you were to choose Country, each Country would have its own lift calculated in the Custom Query
 - **User dimension filter:** A user dimension that the results will be filtered to. Users not matching this dimension will be excluded from the analysis.
-- **(Advanced) ID List Segment filters:** You can choose an ID-list based [Segment](https://docs.statsig.com/segments), and your results will only be calculated for users who are in that segment. This can be useful if you forgot to log an important user dimension that you want to filter to, or realized that you only care about a sub-population that you've defined in your own data warehouse. Please note: this option can easily lead to erroneous and biased results. You will need to make sure the segment is defined based on the user's status _before_ they were exposed to the experiment or feature gate.
-  - Similarly, you can choose to _exclude_ a certain ID list segment, for example if you want to exclude a set of users who have been retroactively identified as bad actors from your lifts anlaysis. 
+- **(Advanced) ID List Segment filters:** You can choose an ID-list based [Segment](https://docs.statsig.com/segments), and your results will only be calculated for users who are in that segment. This can be useful if you forgot to log an important user dimension that you want to filter to, or realized that you only care about a sub-population that you've defined in your own data warehouse. Similarly, you can choose to _exclude_ a certain ID list segment, for example if you want to exclude a set of users who have been retroactively identified as bad actors from your lifts anlaysis. 
+  - Careful! This option can easily lead to erroneous and biased results. You will need to make sure the segment is defined based on the user's status _before_ they were exposed to the experiment or feature gate.
+
 
 > Note: User data in this tool is based off of first-touch attribution. The filters and grouping applied will be based on the user attributes collected at the time of first exposure.
 
