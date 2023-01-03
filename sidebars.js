@@ -30,6 +30,7 @@ module.exports = {
         "guides/config-history",
         "guides/production",
         "guides/testing",
+        "guides/landing-page-experiments",
         "guides/email-campaign-test",
         "guides/cms-integrations",
       ],
