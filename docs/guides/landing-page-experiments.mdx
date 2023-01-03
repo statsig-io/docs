@@ -30,14 +30,12 @@ In the Add New Parameter modal, add a new **String** parameter and name it ```pa
 
 ![image](https://user-images.githubusercontent.com/74588208/210317537-7c929557-49bf-434c-a23a-c7ce602d1047.png)
 
-### Step 3: Set up the urls for landing pages
-
 Set the urls that you want to test in those parameters.  These urls can either be absolute (```https://example.com/page_one```), or relative to the originating url (```/page_one```).  For this walkthrough, you can leave the allocations at 50%/50%.  This will run an equally allocated A/B test.
 
 
 ![image](https://user-images.githubusercontent.com/74588208/210318001-3eb3d0e5-2bed-4fb0-8dd0-c3a491eef8e2.png)
 
-### Step 4: Start the experiment
+### Step 3: Start the experiment
 
 Save the experiment setup and **Start** it.  We're all set with the experiment set up.
 
@@ -48,7 +46,7 @@ While you're at it, copy the **Experiment Name**.  We'll use this in a bit.
 ![image](https://user-images.githubusercontent.com/74588208/210320187-4f70fe55-b672-40aa-a203-148e6f4a9363.png)
 
 
-### Step 5: Copy API key
+### Step 4: Copy API key
 
 Click on the settings and choose 'Project Settings'
 
@@ -58,9 +56,9 @@ Select the 'API Keys' tab and copy the 'Client API Key'.  It will look something
 
 ![image](https://user-images.githubusercontent.com/74588208/210319717-49ac4a21-8bdd-4348-b534-374b760ab047.png)
 
-### Step 6: Add code snippet
+### Step 5: Add HTML snippet
 
-In your landing pages, add the following code snippet in the ```<head>``` section.  Make sure you replace the ```[API_KEY]``` with the Client API Key you copied in **Step 5**, and ```[EXP_NAME]``` with the Experiment Name you copied in **Step 4**.
+In your landing pages, add the following code snippet in the ```<head>``` section.  Make sure you replace the ```[API_KEY]``` with the Client API Key you copied in **Step 4**, and ```[EXP_NAME]``` with the Experiment Name you copied in **Step 3**.
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/statsig-landing-page-exp?apikey=[API_KEY]&expid=[EXP_NAME]">
