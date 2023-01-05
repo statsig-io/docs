@@ -31,6 +31,7 @@ module.exports = {
         "guides/production",
         "guides/testing",
         "guides/landing-page-experiments",
+        "guides/sendgrid-email-abtest",
         "guides/email-campaign-test",
         "guides/cms-integrations",
       ],
