@@ -120,7 +120,7 @@ export default function Rapidoc(props) {
         <p slot="overview">
           {getDescription(entity)}
           <h2>Authorization</h2>
-          All requests must include the STATSIG-API-KEY field in the header.The value should be a Console API Key which can be created in Project Settings-{">"}API Keys  tab.  <br/>
+          All requests must include the STATSIG-API-KEY field in the header. The value should be a Console API Key which can be created in 'Project Settings'-{">"}'API Keys' tab.  <br/>
           To use the 'try it' section on this page, enter your Console API into the box below.
           <hr/> 
         </p>
@@ -154,14 +154,15 @@ function getDescription(entity){
       </>
     case 'segments':
       return <>
-        <p>A <a href="../segments">Segment</a> defines a reusable set of users. You can define a segment based on <a href="./rules">conditionals</a> such as location, client device, browser, client application version, or simply using user IDs.</p>
+        <p>A <a href="../segments">Segment</a> defines a reusable set of users. You can define a segment based on properties such as location, client device, browser, client application version, or simply using a list of IDs.</p>
+        <p>For more detail on creating user targeting based on Statsig-derived environment attributes such as location, client device, browser type, and client app version, see the Console API <a href="./rules#rule">Rules</a> page where all conditions are listed.</p>
 
         <h2>Segment API functions</h2>
         <ul>
           <li>Create a new segment</li>
           <li>Read data from existing segments</li>
           <li>Update properties of a segment</li>
-          <li>Add/remove ids from an id list segment</li>
+          <li>Update IDs in a segment</li>
           <li>Delete a segment</li>
         </ul>
       </>
@@ -169,7 +170,6 @@ function getDescription(entity){
     case 'dynamic-configs':
       return <>
         <p>A <a href="../dynamic-config">Dynamic Config</a> is a tool that replaces hard-coded values in your application with configuration parameters defined on the server.</p>
-
         <h2>Dynamic Config API functions</h2>
         <ul>
           <li>Create a new dynamic config</li>
@@ -180,7 +180,7 @@ function getDescription(entity){
       </>
     case 'experiments':
       return <>
-        <p>An <a href="../experiments-plus">Experiment</a> is an experimentation platform that enables you to run randomized controlled experiments to evaluate your software products and features.</p>
+        <p>An <a href="../experiments-plus">Experiment</a> is a platform that enables you to run randomized controlled experiments to evaluate your software products and features.</p>
 
         <h2>Experiment API functions</h2>
         <ul>
@@ -200,7 +200,6 @@ function getDescription(entity){
     case 'holdouts':
       return <>
         <p>A <a href="../holdouts">Holdout</a> is a group of users that are held back from a set of features to measure the aggregate impact of this feature set.</p>
-
         <h2>Holdout API functions</h2>
         <ul>
           <li>Create a new holdout</li>
@@ -213,7 +212,6 @@ function getDescription(entity){
     case 'layers':
       return <>
         <p>A <a href="../layers">Layer</a> allow us to create <a href="../experiments-plus">experiments</a> that are mutually exclusive to each other.</p>
-
         <h2>Holdout API functions</h2>
         <ul>
           <li>Create a new Layer</li>
@@ -226,7 +224,6 @@ function getDescription(entity){
     case 'autotunes':
       return <>
         <p>An <a href="../autotune">Autotune</a> automatically finds the best variant among a group of candidates, while dynamically allocating traffic to optimize for a single target metric.</p>
-
         <h2>Autotune API functions</h2>
         <ul>
           <li>Create a new autotune</li>
@@ -243,8 +240,7 @@ function getDescription(entity){
       </>
     case 'users':
       return <>
-        <p>A User refers to a member of a Statsig project.</p>
-
+        <p>A User refers to a member of the Statsig project connected to the API key provided.</p>
         <h2>User API functions</h2>
         <ul>
           <li>List users in the Statsig project</li>
@@ -255,7 +251,6 @@ function getDescription(entity){
     case 'metrics':
       return <>
         <p>Statsig combines data from any of your existing data sources to give you a complete view of your product <a href="../metrics">Metrics</a> as well as the impact new features and experiments have on these metrics. </p>
-
         <h2>Metric API functions</h2>
         <ul>
           <li>Get metric values</li>
@@ -266,7 +261,6 @@ function getDescription(entity){
     case 'audit-logs':
       return <>
         <p>Audit Logs {"('Project settings'->'Audit Logs')"} keeps a history of all changes made to the entities withing the Project.</p>
-
         <h2>Audit Logs API functions</h2>
         <ul>
           <li>List Audit Logs in the Statsig project</li>
