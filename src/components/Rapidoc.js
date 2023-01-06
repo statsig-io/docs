@@ -272,5 +272,9 @@ function getDescription(entity){
           <li>List Audit Logs in the Statsig project</li>
         </ul>
       </>
+    case 'all-endpoints':
+    return <>
+      <p>This page lists out all Console API endpoints currently available.</p>
+    </>
   }
 }
