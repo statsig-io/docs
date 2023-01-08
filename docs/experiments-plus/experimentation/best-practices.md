@@ -24,12 +24,7 @@ slug: /experiments-plus/experimentation/best-practices
  - **Experiment Duration** – As users trickle into the experiment, the sample size for the experiment increases and adds statistical power to the experiment. As your user population may change over the week, it is important to ensure that your experiment captures the weekly cycle. Some experiments may have unusually large or small initial effects such as early novelty that take time to stabilize. Some features may also take time to gather adoption. To get the most out of your experiment, make sure to run the experiment for sufficient duration. 
 
 ## Results to Decisions 
-
- - **Establishing Practical Significance** – While statistical significance measures the probability of a metric lift you observe in an experiment, practical significance represents how the metric lift that actually matters to your business. Establishing  practical significance is important to assess whether the metric lift you observe is worth the cost of making the changes.  
+ 
  - **Interpreting Results** – Your decision given an experiment may vary depending on whether the results you observe are statistically significant. For example,
-    - When the result in not statistically significant and it’s clear there’s no practical significance, you may decide to iterate or abandon the idea.
-    - When the result is statistically significant and practically significant, we recommend launching the feature.
-    - When the result is statistically significant but not practically significant, the magnitude of the change may not be sufficient to outweigh other factors such as the cost of development. 
-    - When the result is neutral, suggesting the metric could rise or fall by 5%, the experiment does not have enough power to draw a strong conclusion. We recommend running a follow up experiment with more power, say with more users, more sensitive metrics, or lower variance metrics.
-    - When the result is practically significant but not statistically significant, there’s a good chance that the variant has no impact at all even if your best guess is that it does. We recommend repeating the experiment with more power. 
-    - When the result is practically significant and likely practically significant, choosing to launch is a reasonable decision. Repeating the experiment with power may provide further validation for the launch. 
+    - When the result is statistically significant, we recommend launching the feature, but you should also weigh the impact against other factors such as the cost of development. 
+    - When the result in not statistically significant, you may decide to iterate (repeat the experiment with more power, say with more users, more sensitive metrics, or lower variance metrics) or abandon the idea.
