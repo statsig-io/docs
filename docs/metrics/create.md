@@ -34,6 +34,13 @@ The example below creates a metric to count the **number of unique users** who v
 
 ![image](https://user-images.githubusercontent.com/1315028/160025339-5f9d7e29-5a39-4689-8954-5ba819d9d609.png)
 
+**Time Window**
+
+Two time window options are available for user count metrics
+
+* Daily Participation Rate: This works just like the default event_dau metrics.  It counts the total number of days that a user has the selected event, divided by the number of days the user is in the experiment.  The result is a metric value between 0 and 1, which represents the probably of a user having the event on a daily basis.  It works best for events that are expected to occur repeatedly for a given user.
+* One Time Event: This checks if a user has the selected event at least once during their time in the experiment.  The result is a binary metric with value 0 or 1 for each user.  This is ideal for events that are only expected once per user, such as sign up events.
+
 
 ### 3. Aggregation Metrics
 The example below shows a **Total Revenue** metric that sums the _value_ associated with all purchase events. 
