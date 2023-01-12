@@ -19,6 +19,7 @@ To monitor the status of your experiment,
     - **Event metrics have data** checks that events are being logged with unit IDs matching the experiment.  If logged events don't have the same unit ID as the experiment exposures, event based metrics won't be available in Pulse. A common cause is running an experiment using an ID type that isn't userID (eg. stableID or a customID) - while events data coming from a system like Segment is missing this identifier to match to. You can look at examples of how to set this [here](/integrations/data-connectors/segment#user-ids-and-custom-ids). Available within an hour after an exposure and event have been logged by the same unitID.
     - **Pulse metrics available** monitors availability of Pulse results, which are expected on the day after the experiment starts.  
     - **Exposures are balanced** checks that the number of units exposed in each group matches the expected allocation.  The Sample Ratio Mismatch check is performed using a Chi-Squared test of independence. A p-value < 0.01 triggers a (yellow) warning for possible imbalance. A p-value < 0.001 (red) means there is likely a problem with the experiment exposures.  True SRM imbalances that originate from systematic assignment/logging problems will get worst over time.  If you receive a yellow warning (p < 0.01), it's recommended to monitor this over time.
+    - **Default value type mismatch** detects if an experiment's fallback default value type has differed from the set parameter type.
  
 ### Monitoring exposures
 
