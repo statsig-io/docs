@@ -234,6 +234,17 @@ module.exports = {
           "type": "string",
           "example": "* Core"
         }
+      },
+      "metricTags": {
+        "title": "metricTags",
+        "x-stoplight": {
+          "id": "6glli1d6kkzma"
+        },
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "The name of tags as listed on the /tags endpoint"
       }
     },
     "responses": {
@@ -403,7 +414,9 @@ module.exports = {
                         "layerID": "a_layer",
                         "hypothesis": "",
                         "primaryMetrics": [],
+                        "primaryMetricTags": [],
                         "secondaryMetrics": [],
+                        "secondaryMetricTags": [],
                         "groups": [
                           {
                             "name": "Control",
@@ -563,7 +576,11 @@ module.exports = {
                           "layerID": "test_layer_with_holdout",
                           "hypothesis": "",
                           "primaryMetrics": [],
+                          "primaryMetricTags": [],
                           "secondaryMetrics": [],
+                          "secondaryMetricTags": [
+                            "* Core"
+                          ],
                           "groups": [
                             {
                               "name": "Control",
@@ -797,7 +814,9 @@ module.exports = {
                         "layerID": "statsig::a_experiment_layer",
                         "hypothesis": "",
                         "primaryMetrics": [],
+                        "primaryMetricTags": [],
                         "secondaryMetrics": [],
+                        "secondaryMetricTags": [],
                         "groups": [
                           {
                             "name": "Control",
@@ -926,12 +945,14 @@ module.exports = {
                             "type": "user"
                           }
                         ],
+                        "primaryMetricTags": [],
                         "secondaryMetrics": [
                           {
                             "name": "mau_28d",
                             "type": "user"
                           }
                         ],
+                        "secondaryMetricTags": [],
                         "groups": [
                           {
                             "name": "group1",
@@ -1012,12 +1033,18 @@ module.exports = {
                       "$ref": "../models/experiment_metric.json"
                     }
                   },
+                  "primaryMetricTags": {
+                    "$ref": "#/components/schemas/metricTags"
+                  },
                   "secondaryMetrics": {
                     "type": "array",
                     "description": "Additional metric you may want to monitor that might impact the analysis or final decision of the experiment",
                     "items": {
                       "$ref": "../models/experiment_metric.json"
                     }
+                  },
+                  "secondaryMetricTags": {
+                    "$ref": "#/components/schemas/metricTags"
                   },
                   "groups": {
                     "type": "array",
@@ -1074,7 +1101,9 @@ module.exports = {
                     "endTime": null,
                     "layerID": null,
                     "primaryMetrics": [],
+                    "primaryMetricTags": [],
                     "secondaryMetrics": [],
+                    "secondaryMetricTags": [],
                     "groups": [
                       {
                         "name": "group1",
@@ -1398,11 +1427,17 @@ module.exports = {
                       "$ref": "../models/experiment_metric.json"
                     }
                   },
+                  "primaryMetricTags": {
+                    "$ref": "#/components/schemas/metricTags"
+                  },
                   "secondaryMetrics": {
                     "type": "array",
                     "items": {
                       "$ref": "../models/experiment_metric.json"
                     }
+                  },
+                  "secondaryMetricTags": {
+                    "$ref": "#/components/schemas/metricTags"
                   },
                   "groups": {
                     "type": "array",
@@ -1449,7 +1484,11 @@ module.exports = {
                         "type": "event_count_custom"
                       }
                     ],
+                    "primaryMetricTags": [],
                     "secondaryMetrics": [],
+                    "secondaryMetricTags": [
+                      "* Core"
+                    ],
                     "groups": [
                       {
                         "name": "group1",
