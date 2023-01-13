@@ -7,7 +7,7 @@ slug: /metrics/metric-alerts
 # Metric Alerts
 When rolling out a new feature or experiment, you may want to be notified if your rollout or experiment regresses a metric beyond a pre-set threshold. Statsig enables this via metric alerts.
 
-NOTE: Metric alerts are **not top-line metric value** alerts, but rather **alert at the experiment/ feature gate level**. This means that even if you have an experiment allocated to 10% of your users, but the metric change within that 10% allocation breaches the set threshold, you will be alerted. All alerts you receive will be in the context of a specific experiment or feature gate and to debug/ resolve the alert you will be directed to the offending experiment or gate in question.
+NOTE: Metric alerts are **not topline metric value** alerts, but rather **alert at the experiment/ feature gate level**. This means that even if you have an experiment allocated to 10% of your users, but the metric change within that 10% allocation breaches the set threshold, you will be alerted. All alerts you receive will be in the context of a specific experiment or feature gate and to debug/ resolve the alert you will be directed to the offending experiment or gate in question.
 
 ## Setting up a Metric Alert
 To set up a metric alert, go to the **Metrics** tab  —>  **Metrics Catalog** and search for the desired metric. If you want to set up alerts for all metrics in a given tag, filter the Metrics Catalog by the target tag.

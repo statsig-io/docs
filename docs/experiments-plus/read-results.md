@@ -24,7 +24,7 @@ When you mouse over a metric lift, additional, more detailed information on the 
 * Unit counts, means, and totals for each experiment group 
 * Ability to see a time series of how the lift has trended by day, days since exposure, and cumulatively
 * Raw data for the lifts
-* Top-line metric impact and projected topline impact at launch (if this experiment were to roll out to 100%) 
+* Topline metric impact and projected topline impact at launch (if this experiment were to roll out to 100%) 
 Read more about how to interpret the detailed Pulse results presented in the hovercard [here](https://docs.statsig.com/pulse/drill-down).  
 
 ![Screen Shot 2022-07-08 at 4 59 22 PM](https://user-images.githubusercontent.com/101903926/178083262-a64257b4-d033-409e-88e1-a3cc07a54f1f.png)
