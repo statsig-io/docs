@@ -1278,12 +1278,14 @@ module.exports = {
                             "type": "user"
                           }
                         ],
+                        "primaryMetricTags": [],
                         "secondaryMetrics": [
                           {
                             "name": "mau_28d",
                             "type": "user"
                           }
                         ],
+                        "secondaryMetricTags": [],
                         "groups": [
                           {
                             "name": "group1",
