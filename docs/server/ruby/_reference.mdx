@@ -46,17 +46,50 @@ class StatsigOptions
   attr_accessor :logging_interval_seconds
   attr_accessor :logging_max_buffer_size
   attr_accessor :local_mode
+  attr_accessor :bootstrap_values
+  attr_accessor :rules_updated_callback
   attr_accessor :data_store
+  attr_accessor :idlist_threadpool_size
+  attr_accessor :disable_diagnostics_logging
+  attr_accessor :disable_sorbet_logging_handlers
 
   def initialize(
-    environment=nil,
-    api_url_base='https://statsigapi.net/v1',
-    rulesets_sync_interval: 10,
-    idlists_sync_interval: 60,
-    logging_interval_seconds: 60,
-    logging_max_buffer_size: 1000,
-    local_mode: false,
-    data_store: nil)
+    environment: T.any(T::Hash[String, String], NilClass),
+    api_url_base: String,
+    rulesets_sync_interval: T.any(Float, Integer),
+    idlists_sync_interval: T.any(Float, Integer),
+    logging_interval_seconds: T.any(Float, Integer),
+    logging_max_buffer_size: Integer,
+    local_mode: T::Boolean,
+    bootstrap_values: T.any(String, NilClass),
+    rules_updated_callback: T.any(Method, Proc, NilClass),
+    data_store: T.any(Statsig::Interfaces::IDataStore, NilClass),
+    idlist_threadpool_size: Integer,
+    disable_diagnostics_logging: T::Boolean,
+    disable_sorbet_logging_handlers: T::Boolean)
+  end
+end
+```
+
+### DataStore
+
+```ruby
+module Statsig
+  module Interfaces
+    class IDataStore
+      def init
+      end
+
+      def get(key)
+        nil
+      end
+
+      def set(key, value)
+      end
+
+      def shutdown
+      end
+    end
   end
 end
 ```
