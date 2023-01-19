@@ -11,9 +11,9 @@ Once the api is back up and operating normally, your SDK will automatically refe
 
 But what about spinning up a new server, or a new SDK instance, while Statsig is down?
 
-This is what we built the `DataAdapter`/`DataStore` for.
+This is what we built the `DataAdapter`/`DataStore` (depending on your sdk of choice) for.
 
-## DataAdapter (or DataStore)
+### DataAdapter (or DataStore)
 
 DataAdapters allow you to plug in your own storage solution as a cache for the Statsig server sdk.
 
@@ -26,3 +26,13 @@ If you're interested in using a DataAdapter as the source of truth indefinitely,
 :::
 
 For information on your specific SDK language, see the language specific docs in the left hand column.
+
+## Limitations
+
+The data adapter stores a few keys:
+
+1. The definition of all gates, configs, experiments, and layers (referred to as ConfigSpecs or the project Ruleset)
+2. The list of all ID Lists in your project
+3. One key:value pair per ID list (name:list of IDs)
+
+If the value of this exceeds the maximum size of a value for your storage of choice, you will not be able to rely on the DataAdapter cache.  For example, DynamoDB limits the size of the value to 400 KB - a very long ID list or large project could exceed this limit, while Redis limits the value to 512 MiB (which would be difficult to exceed).
