@@ -22,21 +22,49 @@ data class StatsigUser
 ### StatsigOptions and StatsigEnvironment
 
 ```kotlin
-class StatsigOptions(
-    var api: String = https://statsigapi.net/v1,
-    var initTimeoutMs: Long? = 3000L,
-    var bootstrapValues: String? = null,
-    var rulesUpdatedCallback: ((rules: String) -> unit)? = null,
-    var localMode: Boolean = false
-) {
+private const val TIER_KEY: String = "tier"
+private const val DEFAULT_API_URL_BASE: String = "https://statsigapi.net/v1"
+private const val DEFAULT_INIT_TIME_OUT_MS: Long = 3000L
+private const val CONFIG_SYNC_INTERVAL_MS: Long = 10 * 1000
+private const val ID_LISTS_SYNC_INTERVAL_MS: Long = 60 * 1000
 
-    // to set the environment tier
-    fun setTier(tier : Tier);
+
+/**
+ * A SAM for Java compatibility
+ */
+@FunctionalInterface
+fun interface RulesUpdatedCallback {
+    fun accept(rules: String)
 }
 
 enum class Tier {
     PRODUCTION,
     STAGING,
     DEVELOPMENT,
+}
+
+class StatsigOptions(
+    var api: String = DEFAULT_API_URL_BASE,
+    var initTimeoutMs: Long? = DEFAULT_INIT_TIME_OUT_MS,
+    var bootstrapValues: String? = null,
+    var rulesUpdatedCallback: RulesUpdatedCallback? = null,
+    var localMode: Boolean = false,
+    var rulesetsSyncIntervalMs: Long = CONFIG_SYNC_INTERVAL_MS,
+    var idListsSyncIntervalMs: Long = ID_LISTS_SYNC_INTERVAL_MS,
+    var dataStore: IDataStore? = null
+) {
+
+    // to set the environment tier
+    fun setTier(tier : Tier);
+}
+```
+
+### DataStore
+
+```kotlin
+abstract class IDataStore {
+    abstract fun get(key: String): String?
+    abstract fun set(key: String, value: String)
+    abstract fun shutdown()
 }
 ```
