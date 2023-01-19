@@ -243,7 +243,7 @@ module.exports = {
         id: "server/introduction",
       },
       items: [
-        { Concepts: ["server/concepts/user", "messages/serverRequiredUserID"] },
+        { Concepts: ["server/concepts/user", "messages/serverRequiredUserID", "server/concepts/data_store"] },
         "server/nodejsServerSDK",
         "server/javaSdk",
         "server/pythonSDK",
