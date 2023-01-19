@@ -1,0 +1,16 @@
+import CodeBlock from "@theme/CodeBlock";
+
+export const GetStableID = () => (
+  <CodeBlock language="swift">
+    {`Statsig.getStableID(); 
+`}
+  </CodeBlock>
+);
+
+export const OverrideStableID = () => (
+  <CodeBlock language="swift">
+    {`let opts = StatsigOptions(overrideStableID: "my_stable_id")
+Statsig.start(sdkKey: "client-xyx", options: opts)
+`}
+  </CodeBlock>
+);

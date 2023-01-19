@@ -19,6 +19,7 @@ import {
   ManualExposures,
   Shutdown,
   LocalOverrides,
+  StableID,
 } from "./Templates/index.mdx";
 
 import Install from "./Android/_install.mdx";
@@ -32,6 +33,7 @@ import MoreFAQs from "./Android/_faqs.mdx";
 import Options from "./Android/_options.mdx";
 import LocalOverridesSnippet from "./Android/_localOverrides.mdx";
 import ShutdownSnippet from "./Android/_shutdown.mdx";
+import { GetStableID, OverrideStableID } from "./Android/_stableID.mdx";
 
 export const Result = SDKDocsBuilder(
   { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
@@ -63,6 +65,10 @@ export const Result = SDKDocsBuilder(
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [LocalOverrides, { localOverrides: <LocalOverridesSnippet /> }],
+    [
+      StableID,
+      { getSnippet: <GetStableID />, overrideSnippet: <OverrideStableID /> },
+    ],
     [FAQ, { faqs: <MoreFAQs /> }],
   ],
   toc
