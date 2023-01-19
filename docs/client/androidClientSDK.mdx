@@ -34,6 +34,7 @@ import Options from "./Android/_options.mdx";
 import LocalOverridesSnippet from "./Android/_localOverrides.mdx";
 import ShutdownSnippet from "./Android/_shutdown.mdx";
 import { GetStableID, OverrideStableID } from "./Android/_stableID.mdx";
+import { Snippets as ManualExposureSnippets } from "./Android/_manualExposures.mdx";
 
 export const Result = SDKDocsBuilder(
   { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
@@ -65,6 +66,7 @@ export const Result = SDKDocsBuilder(
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [LocalOverrides, { localOverrides: <LocalOverridesSnippet /> }],
+    [ManualExposures, { addedInVersion: "4.9.0", ...ManualExposureSnippets }],
     [
       StableID,
       { getSnippet: <GetStableID />, overrideSnippet: <OverrideStableID /> },
