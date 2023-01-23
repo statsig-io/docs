@@ -30,7 +30,7 @@ After the 24-hour grace period, Statsig will stop computing this metric and the 
 ### Unarchiving a Metric
 If you mistakenly archived a metric you can undo your Archival in 2 ways:
 1) During the 24 hour grace period, click "undo" on the archival banner at the top of the Metrics Detail View page. Since you undid Archival before the grace period ended (when the metric is no longer computed), this will restore the  metric to both your Metrics Catalog as well as any experiment results that include the metric.  
-2) After the 24 hour grace peirod - 
+2) After the 24 hour grace period - 
     a) Go to the last few pages of your Metrics Catalog, select the archived metric, and tap "Unarchive" from the banner at the top of the Metric Detail view page. 
     b) In the Metrics Detail View page of an archived metric, select the "..." in the upper right-hand corner, and select **Unarchive**. 
 
