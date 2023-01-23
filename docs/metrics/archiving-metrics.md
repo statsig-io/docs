@@ -4,7 +4,7 @@ sidebar_label: Archiving Metrics
 slug: /metrics/archiving-metrics
 ---
 
-# Archiving Metrics 
+# Archiving and Deleting Metrics 
 
 ### Archiving a Metric 
 To archive a metric, select the metric(s) you want to archive. Once you've selected at least one metric, you will see a toolbar of options appear to **Archive**, **Compare**, or **Tag** the selected metrics. 
