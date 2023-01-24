@@ -6,7 +6,7 @@ slug: /metrics/archiving-metrics
 
 Statsig offers two ways to manage the end-of-life for your metrics. 
 - **Archiving a metric**: for when a metric is no longer relevant, but you still wish to maintain the history of it. This will stop computing the metric, but retain the history for your record. Use case example: you can archive older versions of a metric that continues to evolve so you have a record of how the metric has evolved over time.
-- **Deleting a metric**: for when you've made a mistake, logged or imported an irrelevant metric, or created a more accurate version of a metric. This will remove the metric from Statsig completely, including its history. Use case examples include incorrect definition, incorrect name, duplicative metric that you don't want to confuse others with. 
+- **Deleting a metric**: for when you've made a mistake, logged or imported an irrelevant metric, or created a more accurate version of a metric. This will remove the metric from Statsig completely, including its history. Use case examples include incorrect definition, incorrect name, duplicate metric that you don't want to confuse others with. 
 
 # Archiving Metrics 
 
@@ -34,9 +34,9 @@ _After the 24-hour grace period has ended,_
 ### Unarchiving a Metric
 If you mistakenly archived a metric you can undo your Archival. 
 - _During_ the 24-hour grace period: 
-    - Click "undo" on the archival banner at the top of the Metrics Detail View page. Since you unarchived before the grace period ended (when the metric is no longer computed), this will restore the  metric to both your Metrics Catalog as well as any experiment results that include the metric.  
+    - Click "undo" on the archival banner at the top of the Metrics Detail View page. Since you **Unarchived** before the grace period ended (when the metric is no longer computed), this will restore the  metric to both your Metrics Catalog as well as any experiment results that include the metric.  
 - _After_ the 24-hour grace period:  
-    - Either a) go to the last few pages of your Metrics Catalog, select the archived metric(s) you want to unarchive to see a toolbar of options appear, and select the **Unarchive** icon OR b) in the Metrics Detail View page of an archived metric, select the "..." in the upper right-hand corner, and select **Unarchive**. 
+    - Either a) go to the last few pages of your Metrics Catalog, select the archived metric(s) you want to **Unarchive** to see a toolbar of options appear, and select the **Unarchive** icon OR b) in the Metrics Detail View page of an archived metric, select the "..." in the upper right-hand corner, and select **Unarchive**. 
     - Since the grace period has ended and the metric has stopped being computed already, its calculation will restart from scratch and history will not be restored. 
 
 # Deleting Metrics 
