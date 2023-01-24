@@ -5,8 +5,8 @@ slug: /metrics/archiving-metrics
 ---
 
 Statsig offers two ways to manage the end-of-life for your metrics. 
-- Archiving a metric: for when a metric is no longer relevant. This will stop computing the metric, but retain the history for your record. Use case example: you can archive older versions of a metric that continues to evolve so you have a record of how the metric has evolved over time.
-- Deleting a metric: for when you've made a mistake, logged or imported an irrelevant metric, or created a more accurate version of a metric. This will remove the metric from Statsig completely, including its history. Use case examples include incorrect definition, incorrect name, duplicative metric that you don't want to confuse others with. 
+- **Archiving** a metric: for when a metric is no longer relevant. This will stop computing the metric, but retain the history for your record. Use case example: you can archive older versions of a metric that continues to evolve so you have a record of how the metric has evolved over time.
+- **Deleting** a metric: for when you've made a mistake, logged or imported an irrelevant metric, or created a more accurate version of a metric. This will remove the metric from Statsig completely, including its history. Use case examples include incorrect definition, incorrect name, duplicative metric that you don't want to confuse others with. 
 
 # Archiving Metrics 
 
