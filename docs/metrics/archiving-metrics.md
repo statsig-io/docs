@@ -5,8 +5,8 @@ slug: /metrics/archiving-metrics
 ---
 
 Statsig offers two ways to manage the end-of-life for your metrics. 
-- **Archiving** a metric: for when a metric is no longer relevant. This will stop computing the metric, but retain the history for your record. Use case example: you can archive older versions of a metric that continues to evolve so you have a record of how the metric has evolved over time.
-- **Deleting** a metric: for when you've made a mistake, logged or imported an irrelevant metric, or created a more accurate version of a metric. This will remove the metric from Statsig completely, including its history. Use case examples include incorrect definition, incorrect name, duplicative metric that you don't want to confuse others with. 
+- **Archiving a metric**: for when a metric is no longer relevant. This will stop computing the metric, but retain the history for your record. Use case example: you can archive older versions of a metric that continues to evolve so you have a record of how the metric has evolved over time.
+- **Deleting a metric**: for when you've made a mistake, logged or imported an irrelevant metric, or created a more accurate version of a metric. This will remove the metric from Statsig completely, including its history. Use case examples include incorrect definition, incorrect name, duplicative metric that you don't want to confuse others with. 
 
 # Archiving Metrics 
 
@@ -22,21 +22,22 @@ Once you have no metric dependencies, you will start a 24-hour grace period duri
 After the 24-hour grace period, Statsig will stop computing this metric and the Metric Detail View page will update with a new banner indicating that the metric has been archived, and Metric Value will change to a disabled state to indicate that this metric is archived.
 
 ### Implications of Archiving a Metric 
-_As soon as Archive button is clicked_
+_As soon as the **Archive** button is clicked,_
 - 24-hour grace period will start
 - Owners of Experiments and Gates using this metric will receive an email notification to be notified of potential impact upstream
-_After the 24-hour grace period._
+
+_After the 24-hour grace period has ended,_
 - Archived metrics will no longer be computed (when the 24-hour grace period ends). 
 - Archived metrics will not show up in your Metric Catalog search. To access all archived metrics, go to the last page(s) of your Metrics Catalog. 
 - Archived metrics will be removed from Pulse, including any time the archived metric has been added to the Scorecard of an experiment or the Monitoring Metrics section of a Feature Gate 
 
 ### Unarchiving a Metric
 If you mistakenly archived a metric you can undo your Archival. 
-- If unarchiving _during_ the 24-hour grace period, click "undo" on the archival banner at the top of the Metrics Detail View page. Since you unarchived before the grace period ended (when the metric is no longer computed), this will restore the  metric to both your Metrics Catalog as well as any experiment results that include the metric.  
-- If unarchiving _after_ the 24-hour grace period, you can either
-    a) Go to the last few pages of your Metrics Catalog, select the archived metric, and tap "Unarchive" from the banner at the top of the Metric Detail view page OR
-    b) In the Metrics Detail View page of an archived metric, select the "..." in the upper right-hand corner, and select **Unarchive**. 
-  Since the grace period has ended and the metric has stopped being computed already, its calculation will restart from scratch and history will not be restored. 
+- _During_ the 24-hour grace period: 
+    - Click "undo" on the archival banner at the top of the Metrics Detail View page. Since you unarchived before the grace period ended (when the metric is no longer computed), this will restore the  metric to both your Metrics Catalog as well as any experiment results that include the metric.  
+- _After_ the 24-hour grace period:  
+    - Either a) go to the last few pages of your Metrics Catalog, select the archived metric(s) you want to unarchive to see a toolbar of options appear, and select the **Unarchive** icon OR b) in the Metrics Detail View page of an archived metric, select the "..." in the upper right-hand corner, and select **Unarchive**. 
+    - Since the grace period has ended and the metric has stopped being computed already, its calculation will restart from scratch and history will not be restored. 
 
 # Deleting Metrics 
 
@@ -45,14 +46,17 @@ To delete a metric, go the Metrics Detail View page of a metric you wish to dele
 
 Once you select Delete, Statsig will check if this metric is used in any feature gates, experiments, or other metrics. While feature gate or experiment dependencies will be shown as soft warnings (no action necessary), metric dependencies will require you to remove the dependency first, before proceeding with the deletion, so that other dependent metric values are not impacted by this deletion.
 
-Once you have no metric dependencies, you will start a 24-hour grace period during which you'll be able to undo the deletion. In the Metrics Detail View page, you will see a new banner appear at the top of the page, indicating the start of the grace period. **Metric Deletion cannot be undone after the grace period.**
+Once you have no metric dependencies, you will start a 24-hour grace period during which you'll be able to undo the deletion. In the Metrics Detail View page, you will see a new banner appear at the top of the page, indicating the start of the grace period. 
+
+**Metric Deletion cannot be undone after the grace period.**
 
 
 ### Implications of Deleting a Metric
-_As soon as Delete button is clicked_
+_As soon as **Delete** button is clicked_
 - 24-hour grace period will start
 - Owners of Experiments and Gates using this metric will receive an email notification to be notified of potential impact upstream
-_After the 24-hour grace period._
+
+_After the 24-hour grace period has ended,_
 - Deleted metrics and their history will be removed from Statsig, and cannot be restored. 
 - Deleted metrics will be removed from Pulse, including any time the deleted metric has been added to the Scorecard of an experiment or the Monitoring Metrics section of a Feature Gate 
 
