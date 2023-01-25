@@ -11,9 +11,14 @@ The power analysis tool leverages past data for a given metric to estimate the r
 
 ### Using the Tool
 
-To begin, launch the tool from the experiment creation flow: 
+To begin, launch the tool from the tools menu:
 
-   ![image](https://user-images.githubusercontent.com/90343952/145107332-49befa18-3ca0-4cde-89cb-e80a1663754c.png)
+![image](https://user-images.githubusercontent.com/74584483/214613153-e883fdd1-1c90-42b9-bd36-494d1941ec11.png)
+   
+or from the advanced settings at the bottom of experiment setup
+
+![image](https://user-images.githubusercontent.com/74584483/214613115-a90b2d79-3645-452a-a3de-7e37e8ebba38.png)
+
    
 1. Select a metric of interest
 2. Select the type of analysis to perform
