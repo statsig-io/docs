@@ -30,6 +30,9 @@ module.exports = {
         "guides/config-history",
         "guides/production",
         "guides/testing",
+        "guides/uptime",
+        "guides/landing-page-experiments",
+        "guides/sendgrid-email-abtest",
         "guides/email-campaign-test",
         "guides/cms-integrations",
       ],
@@ -240,7 +243,7 @@ module.exports = {
         id: "server/introduction",
       },
       items: [
-        { Concepts: ["server/concepts/user", "messages/serverRequiredUserID"] },
+        { Concepts: ["server/concepts/user", "messages/serverRequiredUserID", "server/concepts/data_store"] },
         "server/nodejsServerSDK",
         "server/javaSdk",
         "server/pythonSDK",

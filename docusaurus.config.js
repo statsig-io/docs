@@ -30,6 +30,10 @@ module.exports = {
         name: "og:image:type",
         content: "image/jpg",
       },
+      {
+        name: "twitter:image",
+        content: "/img/docs_meta.jpg",
+      },
     ],
     navbar: {
       title: "",
