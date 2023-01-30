@@ -43,7 +43,7 @@ Statsig provides two unit identifiers by default: **User ID** and **Stable ID**.
 ![Screen Shot 2022-06-07 at 10 58 26 AM](https://user-images.githubusercontent.com/101903926/172450890-4a4c95eb-a362-49a6-90ad-68f3460a933f.png)
 
 ## Billing
-Statsig bills you for the [two types of raw events](/metrics/raw-events#types-of-raw-events) outlined above. We only bill for production enviroment events, because analytics are only run on production environment events. 
+Statsig bills you for the [two types of raw events](/metrics/raw-events#types-of-raw-events) outlined above. We only bill for production environment events, because analytics are only run on production environment events. 
 
 1. An **Exposure Event** is recorded for billing when you check a user for assignment in a Feature Gate or Experiment, or check for a value using a Dynamic Config. 
    
