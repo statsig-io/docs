@@ -38,15 +38,13 @@ _After the 24-hour grace period has ended,_
 
 ### Unarchiving a Metric
 If you mistakenly archived a metric you can undo your Archival. 
-- _During_ the 24-hour grace period: 
-    - Click "undo" on the archival banner at the top of the Metrics Detail View page. Since you **Unarchived** before the grace period ended (when the metric is no longer computed), this will restore the  metric to both your Metrics Catalog as well as any experiment results that include the metric.  
+- _During_ the 24-hour grace period: Click "undo" on the archival banner at the top of the Metrics Detail View page. Since you **Unarchived** before the grace period ended (when the metric is no longer computed), this will restore the  metric to both your Metrics Catalog as well as any experiment results that include the metric.  
 ![Archive Grace Period](https://user-images.githubusercontent.com/120431069/215640435-412375f7-398b-4bef-9495-cc20d1805769.png)
 
-- _After_ the 24-hour grace period:  
-    - Either a) go to the last few pages of your Metrics Catalog, select the archived metric(s) you want to **Unarchive** to see a toolbar of options appear, and select the **Unarchive** icon OR b) in the Metrics Detail View page of an archived metric, select "Unarchive" in the banner indicating metric's archival
+- _After_ the 24-hour grace period: Either a) go to the last few pages of your Metrics Catalog, select the archived metric(s) you want to **Unarchive** to see a toolbar of options appear, and select the **Unarchive** icon OR b) in the Metrics Detail View page of an archived metric, select "Unarchive" in the banner indicating metric's archival
 ![Archive after grace period](https://user-images.githubusercontent.com/120431069/215640543-7cb05d46-e61d-4cf4-a07c-eb76c9f50e36.png)
 
-    - Since the grace period has ended and the metric has stopped being computed already, its calculation will restart from scratch and history will not be restored. 
+Since the grace period has ended and the metric has stopped being computed already, its calculation will restart from scratch and history will not be restored. 
 
 # Deleting Metrics 
 
