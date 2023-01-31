@@ -1,3 +1,9 @@
+---
+title: Managing Lifecycle of Feature Gates
+sidebar_label: Managing Lifecycle of Feature Gates
+slug: /feature-gates/feature-gates-lifecycles
+---
+
 # Background
 
 A feature can go through different phases throughout its lifecycle - maybe it’s still being tested out by a few users, or only recently fully rolled out to the world, or maybe it’s been tried and true and you no longer need the feature behind a toggle. 
@@ -11,6 +17,7 @@ Whatever phase the feature may be in, its gate should clearly reflect that, for 
 # Managing the lifecycle of your feature gates on Statsig
 
 Statsig makes it easy for your feature gates to reflect the phase your feature is in by using **status**. A gate can be in one of four statuses:
+
 
 | Status | What it represents | Implication |
 |-------------|-----------------------|---------|
