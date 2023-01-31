@@ -10,7 +10,7 @@ A feature can go through different phases throughout its lifecycle - maybe it’
 
 Whatever phase the feature may be in, its gate should clearly reflect that, for a few important reasons - 
 
-- **Prevent incidents**: prevent a scenario where old code for a deprecated feature is accidentally touched or repurposed, with real business consquences like how [Knight Capital lost half-a-billion dollars] (https://www.statsig.com/blog/lose-half-a-billion-dollars-with-bad-feature-flags-knight-capital)
+- **Prevent incidents**: prevent a scenario where old code for a deprecated feature is accidentally touched or repurposed, with real business consequences like how [Knight Capital lost half-a-billion dollars](https://www.statsig.com/blog/lose-half-a-billion-dollars-with-bad-feature-flags-knight-capital)
 - **Maintain healthy codebase**: messy code base with dead references to flags mean that your team has more volume of code to navigate on a daily basis, and it can even slow down new developers onboarding
 - **Reduce mental load**: mental tracking of all your features is no longer necessary because you will be able to see easily what next steps you need to take for the product (e.g. launch or kill a feature), as well as not having to worry about old features that are no longer relevant.
 
