@@ -23,6 +23,7 @@ checkGate
 CIs
 CloudFront
 CNAME
+codebase
 CodeLens
 config
 configs
@@ -90,6 +91,7 @@ kb
 Kohavi
 KPIs
 learnings
+lifecycle
 linearize
 listview
 LogDNA
@@ -206,3 +208,4 @@ wonkish
 workspaces
 xAU
 Xu
+yyyy
