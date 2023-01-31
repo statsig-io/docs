@@ -1,39 +1,62 @@
 ---
-title: Archiving Metrics
-sidebar_label: Archiving Metrics
+title: Archiving and Deleting Metrics
+sidebar_label: Archiving and Deleting Metrics
 slug: /metrics/archiving-metrics
 ---
+
+Statsig offers two ways to manage the end-of-life for your metrics. 
+- **Archiving a metric**: for when a metric is no longer relevant, but you still wish to maintain the history of it. This will stop computing the metric, but retain the history for your record. Use case example: you can archive older versions of a metric that continues to evolve so you have a record of how the metric has evolved over time.
+- **Deleting a metric**: for when you've made a mistake, logged or imported an irrelevant metric, or created a more accurate version of a metric. This will remove the metric from Statsig completely, including its history. Use case examples include incorrect definition, incorrect name, duplicate metric that you don't want to confuse others with. 
 
 # Archiving Metrics 
 
 ### Archiving a Metric 
-To archive a metric, select the metric(s) you want to archive. Once you've selected at least one metric, you will see a toolbar of options appear to **Archive**, **Compare**, or **Tag** the selected metrics. 
+There are two ways to archive a metric: 
+1) In your Metric Catalog, select the metric(s) you want to archive to see a toolbar of options appear to **Archive**, **Compare**, or **Tag**. Select the **Archive** icon.
+2) In the Metrics Detail View page, select the "..." in the upper right-hand corner, and select **Archive**. 
 
-![Screen Shot 2022-11-23 at 1 14 30 PM](https://user-images.githubusercontent.com/101903926/203647259-64d0d903-8ad8-46df-a738-204ff7b89641.png)
+Once you select Archive, Statsig will check if this metric is used in any feature gates, experiments, or other metrics. While feature gate or experiment dependencies will be shown as soft warnings (no action necessary), metric dependencies will require you to remove the dependency first, before proceeding with the archival. This is because archival of a metric stops its computation, and we don't want other dependent metric values impacted by this archival. 
 
-Tap the **Archive** button and you will see the metric change to a disabled state with the "Archived" symbol next to it to indicate that it is archived.
+Once you have no metric dependencies, you will start a 24-hour grace period during which you'll be able to undo the archival. In the Metrics Detail View page, you will see a new banner appear at the top of the page, indicating the start of the grace period. 
 
-![Screen Shot 2022-11-23 at 1 16 21 PM](https://user-images.githubusercontent.com/101903926/203647513-937c9a2e-d5cc-4179-9398-d839831c3292.png)
-
-You can also archive directly from the Metrics Detail View page. Tap the "..." in the upper right-hand corner, and select **Archive**. 
-
-![Screen Shot 2022-11-23 at 1 59 15 PM](https://user-images.githubusercontent.com/101903926/203653065-00134f24-a3a4-49ab-8d84-f52d71b861cf.png)
-
-When you go to the Metric Detail View for this metric, you will see a banner across the top of the page indicating that the metric has been archived. 
-
-![Screen Shot 2022-11-23 at 1 17 20 PM](https://user-images.githubusercontent.com/101903926/203647646-4453bdd2-78a4-41c1-bb46-3680ac6a491d.png)
+After the 24-hour grace period, Statsig will stop computing this metric and the Metric Detail View page will update with a new banner indicating that the metric has been archived, and Metric Value will change to a disabled state to indicate that this metric is archived.
 
 ### Implications of Archiving a Metric 
-If you archive a metric, the metric will be hidden in your Metrics Catalog and in Pulse. This means- 
+_As soon as the **Archive** button is clicked,_
+- 24-hour grace period will start
+- Owners of Experiments and Gates using this metric will receive an email notification to be notified of potential impact upstream
 
+_After the 24-hour grace period has ended,_
+- Archived metrics will no longer be computed (when the 24-hour grace period ends). 
 - Archived metrics will not show up in your Metric Catalog search. To access all archived metrics, go to the last page(s) of your Metrics Catalog. 
 - Archived metrics will be removed from Pulse, including any time the archived metric has been added to the Scorecard of an experiment or the Monitoring Metrics section of a Feature Gate 
-- Any Custom Metrics that leverage an archived metric will not be impacted, as we are still computing all archived metrics on the backend. However, it's still recommended to take a pass on any Custom Metrics that use an archived metric to decide whether you need to swap out the archived metric being used for another metric in the Custom Metric setup. 
-
 
 ### Unarchiving a Metric
-If you mistakenly archived a metric you can undo your archive by "Unarchiving" the metric. Simply go to the last page or two of your Metrics Catalog, select the archived metric, and tap "Unarchive" from the banner at the top of the Metric Detail view page. This will restore the  metric to both your Metrics Catalog as well as any experiment results that include the metric. 
+If you mistakenly archived a metric you can undo your Archival. 
+- _During_ the 24-hour grace period: 
+    - Click "undo" on the archival banner at the top of the Metrics Detail View page. Since you **Unarchived** before the grace period ended (when the metric is no longer computed), this will restore the  metric to both your Metrics Catalog as well as any experiment results that include the metric.  
+- _After_ the 24-hour grace period:  
+    - Either a) go to the last few pages of your Metrics Catalog, select the archived metric(s) you want to **Unarchive** to see a toolbar of options appear, and select the **Unarchive** icon OR b) in the Metrics Detail View page of an archived metric, select the "..." in the upper right-hand corner, and select **Unarchive**. 
+    - Since the grace period has ended and the metric has stopped being computed already, its calculation will restart from scratch and history will not be restored. 
 
-![Screen Shot 2022-11-23 at 2 41 54 PM](https://user-images.githubusercontent.com/101903926/203658136-2e672906-8122-4c99-a985-970e9b60317c.png)
+# Deleting Metrics 
 
+### Deleting a Metric 
+To delete a metric, go the Metrics Detail View page of a metric you wish to delete, select the "..." in the upper right-hand corner, and select **Delete**. 
+
+Once you select Delete, Statsig will check if this metric is used in any feature gates, experiments, or other metrics. While feature gate or experiment dependencies will be shown as soft warnings (no action necessary), metric dependencies will require you to remove the dependency first, before proceeding with the deletion, so that other dependent metric values are not impacted by this deletion.
+
+Once you have no metric dependencies, you will start a 24-hour grace period during which you'll be able to undo the deletion. In the Metrics Detail View page, you will see a new banner appear at the top of the page, indicating the start of the grace period. 
+
+**Metric Deletion cannot be undone after the grace period.**
+
+
+### Implications of Deleting a Metric
+_As soon as **Delete** button is clicked_
+- 24-hour grace period will start
+- Owners of Experiments and Gates using this metric will receive an email notification to be notified of potential impact upstream
+
+_After the 24-hour grace period has ended,_
+- Deleted metrics and their history will be removed from Statsig, and cannot be restored. 
+- Deleted metrics will be removed from Pulse, including any time the deleted metric has been added to the Scorecard of an experiment or the Monitoring Metrics section of a Feature Gate 
 
