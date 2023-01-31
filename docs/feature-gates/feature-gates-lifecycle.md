@@ -1,7 +1,7 @@
 ---
 title: Managing Lifecycle of Feature Gates
 sidebar_label: Managing Lifecycle of Feature Gates
-slug: /feature-gates/feature-gates-lifecycles
+slug: /feature-gates/feature-gates-lifecycle
 ---
 
 # Background
@@ -16,6 +16,8 @@ Whatever phase the feature may be in, its gate should clearly reflect that, for 
 
 # Managing the lifecycle of your feature gates on Statsig
 
+
+
 Statsig makes it easy for your feature gates to reflect the phase your feature is in by using **status**. A gate can be in one of four statuses:
 
 
@@ -26,13 +28,13 @@ Statsig makes it easy for your feature gates to reflect the phase your feature i
 | Disabled       | this feature has been safely rolled back from everyone  | This gate will always return **default value = FALSE**, and will stop generating billable exposure events; you’ll stop incurring costs. The gate reference is likely safe to be cleaned up in the codebase |
 | Archived  | this feature is now a permanent part of your codebase (i.e. flag reference has been removed) | This gate has been receiving 0 checks for the last 7 days, and no checks will be sent this gate anymore |
 
-## When/How to update the status of a gate
+### When/How to update the status of a gate
 
-###1) When the gate has been fully rolled out or rolled back, and you want to skip rule evaluation (stop incurring costs for your gates)
+1) When the gate has been fully rolled out or rolled back, and you want to skip rule evaluation (stop incurring costs for your gates)
 
 Go to the feature gate page and click on “…” menu on the upper right corner to select “Launch or Disable”. It will open up the following window -
-- **In Progress → Launch:** when ****the gate has been rolled out to 100% a while ago (i.e. >30days), and you feel comfortable with the gate always returning TRUE
-- **In Progress → Disable:** when ****the gate has been rolled back to 0% a while go (i.e. >30 days), and you feel comfortable with the gate always returning FALSE
+- **In Progress → Launch**: when the gate has been rolled out to 100% a while ago (i.e. >30days), and you feel comfortable with the gate always returning TRUE
+- **In Progress → Disable**: when the gate has been rolled back to 0% a while go (i.e. >30 days), and you feel comfortable with the gate always returning FALSE
 
 
 To find _all_ gates that are good candidates to be **Launched** or **Disabled** (i.e. have been rolled out to 100% or rolled back to 0% more than 30 days ago):
@@ -43,7 +45,7 @@ To find _all_ gates that are good candidates to be **Launched** or **Disabled** 
   - In the search bar: “Modified: <mm/dd/yyyy;” (update the date to be 30 days ago)
   
   
-###2) When you’re ready to clean up the gate reference from your codebase:
+2) When you’re ready to clean up the gate reference from your codebase:
 Confirm that the gate has been set to either **Launched** or **Disabled** (i.e. returning a default value) for a while (i.e. >60 days) so you don’t unintentionally break any rule evaluation and you’ve had enough time to ensure no negative impact on your metrics before you clean up the gate reference. Once confirmed,
   - for **Launched** gates: remove the gate reference ****only**** (leave the code related to the feature as a permanent fixture to the codebase)
   - for **Disabled** gates: remove the gate reference + all code related to the feature
@@ -53,7 +55,7 @@ To find *all* gates that are good candidates to be removed from your codebase (i
     - In search bar: “Last modified: < dd/mm/yyyy” (update the date to be 60 days ago)
     
     
-###3) After you’ve cleaned up the gate reference from your codebase:
+3) After you’ve cleaned up the gate reference from your codebase:
 **Launched or Disabled → Archived:** you’ll want to update this status to mark that the gate has been removed from your codebase, so that it will be filtered out from the list of candidate gates to be cleaned up for the future (as part of step #2)
   - Go to the feature gate page and click on “…” menu on the upper right corner to select “Archive”. It will open up the following window -
 
@@ -64,15 +66,19 @@ To find _all_ gates that should be marked as **Archived**:
       - Status = **Launched** or **Disabled**
       - Checks = 0 checks in last 7 dates
       
- #FAQs
+# FAQs
+
 **What is the best practice for our team to do a feature gate cleanup?**
-  - We recommend having a quarterly “feature gate cleanup party”, where the team blocks out a chunk of time to identify all gates that need to be cleaned up (step #2) and remove the references from their codebase. One person can then follow up after 7 days to make sure all those gates are now receiving 0 checks on Statsig and can mark them as “Archived”
-  - Overtime, your team should see more **Archived** gates than **Launched/Disabled/In Progress** gates.
+- We recommend having a quarterly “feature gate cleanup party”, where the team blocks out a chunk of time to identify all gates that need to be cleaned up (step #2) and remove the references from their codebase. One person can then follow up after 7 days to make sure all those gates are now receiving 0 checks on Statsig and can mark them as “Archived”. Overtime, your team should see more **Archived** gates than **Launched/Disabled/In Progress** gates.
+
 **Who can make these status changes?**
-  - Consistent with any other changes to a gate, anyone will be able to make a change, but it will require the same review process for the change to be approved.
+- Consistent with any other changes to a gate, anyone will be able to make a change, but it will require the same review process for the change to be approved.
+
 **Once my gate has been launched or disabled, can I re-enable rule evaluation for it?**
-  - Yes, once the feature gate is **Launched** or **Disabled**, you will see a banner with an option to re-enable rule evaluation.
+- Yes, once the feature gate is **Launched** or **Disabled**, you will see a banner with an option to re-enable rule evaluation.
+
 **Oops, my feature that hasn’t been rolled out fully is doing something unexpected. Can I just disable the gate as a kill switch?**
-  - You can, but assuming you’ll be iterating on this feature and re-testing it, you’ll have to re-enable gate evaluation at some point. So it would be easier to just change the rule itself, instead of updating the status.
+- You can, but assuming you’ll be iterating on this feature and re-testing it, you’ll have to re-enable gate evaluation at some point. So it would be easier to just change the rule itself, instead of updating the status.
+
 **When would I delete a feature gate?**
-  - We recommend that you use Delete only for mistakes. Deletion removes the gate and its history from Statsig, and having your Feature Gate Catalog retain history of your gates will help you see valuable information like velocity of your team’s feature releases, # of launches decisions made, etc.
+- We recommend that you use Delete only for mistakes. Deletion removes the gate and its history from Statsig, and having your Feature Gate Catalog retain history of your gates will help you see valuable information like velocity of your team’s feature releases, # of launches decisions made, etc.
