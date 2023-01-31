@@ -539,7 +539,7 @@ module.exports = {
           }
         },
         "operationId": "get-users-invites",
-        "description": "Invite a list of emails to your project",
+        "description": "Invite a list of emails to your project. Note that console API does not send outgoing emails.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -585,7 +585,7 @@ module.exports = {
               }
             }
           },
-          "description": "Invite emails to your project with a selected role. \nIf your project is in an organization, only email domains that match the organization's domain may be invited. "
+          "description": "Invited emails will be able to join the project with a selected role apon signing in. \nIf your project is in an organization, only email domains that match the organization's domain may be invited to the project. "
         }
       }
     }
