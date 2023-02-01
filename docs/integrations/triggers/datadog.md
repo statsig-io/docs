@@ -4,7 +4,7 @@ title: Datadog
 
 ### Overview
 
-Triggers can be used with Datadog to toggle a gate on or off depending on the performace of a metric.
+Triggers can be used with Datadog to toggle a gate on or off depending on the performance of a metric.
 
 ### Creating a Trigger
 
