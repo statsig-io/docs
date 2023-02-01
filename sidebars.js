@@ -359,6 +359,15 @@ module.exports = {
         "integrations/jira",
         "integrations/vscode",
         "integrations/terraform",
+        {
+          type: "category",
+          label: "Triggers",
+          link: {
+            type: "doc",
+            id: "integrations/triggers/introduction",
+          },
+          items: ["integrations/triggers/datadog"],
+        },
       ],
     },
     {
