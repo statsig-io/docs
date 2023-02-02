@@ -63,7 +63,6 @@ Confirm that the gate has been set to either **Launched** or **Disabled** (i.e. 
       - In search bar: “Last modified: < dd/mm/yyyy” (update the date to be 60 days ago)
     <img width="1072" alt="Feature_Gates___Statsig" src="https://user-images.githubusercontent.com/120431069/216166227-7e36df55-f540-4c74-a899-e0bfdfb808f6.png">
 
-    
 **3) After you’ve cleaned up the gate reference from your codebase**
 
 - **Launched or Disabled → Archived:** you’ll want to update this status to mark that the gate has been removed from your codebase, so that it will be filtered out from the list of candidate gates to be cleaned up for the future (as part of step #2)
