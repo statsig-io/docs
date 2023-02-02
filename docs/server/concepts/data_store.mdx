@@ -21,7 +21,7 @@ They define a simple API that you have to implement: `initialize`, `get`, `set`,
 When a Statsig sdk is initialized with a `DataAdapter`, it will rely on that first as the source of truth for the project definition, before reaching out to Statsig servers.  Whenever it gets an up to date version of the project from our api, it will cache it locally using the DataAdapter.
 
 :::info
-NOTE: DataAdapters are currently only used for the `initialize` path for getting a project definition.  Right now, only the `node` and `php` sdks can rely on your local cache as the source of truth throughout the lifetime of the SDK instance (with a separate process which keeps those values up to date.)
+NOTE: DataAdapters are currently only used for the `initialize` path for getting a project definition.  Right now, only the `node`, `php`, and `ruby` sdks can rely on your local cache as the source of truth throughout the lifetime of the SDK instance (with a separate process which keeps those values up to date.)
 If you're interested in using a DataAdapter as the source of truth indefinitely, please reach out and let us know which language this would be useful for!
 :::
 
