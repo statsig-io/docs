@@ -18,7 +18,7 @@ Whatever phase the feature may be in, its gate should clearly reflect that, for 
 
 Statsig makes it easy for your feature gates to reflect the phase your feature is in by using **status**. A gate can be in one of four statuses:
 
-<img width="991" alt="Gates_Lifecycle" src="https://user-images.githubusercontent.com/120431069/216169028-44ca6ce1-1300-44b6-9156-55ea52cd85ea.png">
+<img width="991" alt="Gates_Lifecycle" src="https://user-images.githubusercontent.com/120431069/216169028-44ca6ce1-1300-44b6-9156-55ea52cd85ea.png"></img>
 
 
 | Status | What it represents | Implication |
@@ -48,7 +48,7 @@ There are 3 points throughout the gate's lifecycle when you'd want to take actio
         - Pass Rate = 100% AND 0%
     - In the search bar: “Modified: <mm/dd/yyyy;” (update the date to be 30 days ago)
 
-<img width="1058" alt="Feature_Gates___Statsig" src="https://user-images.githubusercontent.com/120431069/216164917-85a7da7a-2ee6-4ba5-8ca6-c6ced99516ee.png">
+    <img width="1058" alt="Feature_Gates___Statsig" src="https://user-images.githubusercontent.com/120431069/216164917-85a7da7a-2ee6-4ba5-8ca6-c6ced99516ee.png"></img>
 
 **2) You’re ready to clean up the gate reference from your codebase**
 Confirm that the gate has been set to either **Launched** or **Disabled** (i.e. returning a default value) for a while (we recommend >60 days) so you don’t unintentionally break any rule evaluation and you’ve had enough time to ensure no negative impact on your metrics before you clean up the gate reference. Once confirmed,  
@@ -63,7 +63,7 @@ Confirm that the gate has been set to either **Launched** or **Disabled** (i.e. 
     - Go to Feature Gates catalog
       - Click on filter icon: Status = **Launched** AND **Disabled**
       - In search bar: “Last modified: < dd/mm/yyyy” (update the date to be 60 days ago)
-<img width="1072" alt="Feature_Gates___Statsig" src="https://user-images.githubusercontent.com/120431069/216166227-7e36df55-f540-4c74-a899-e0bfdfb808f6.png">
+    <img width="1072" alt="Feature_Gates___Statsig" src="https://user-images.githubusercontent.com/120431069/216166227-7e36df55-f540-4c74-a899-e0bfdfb808f6.png"></img>
 
 **3) After you’ve cleaned up the gate reference from your codebase**
 
@@ -78,7 +78,7 @@ _Note: You can only archive feature gates that have not had any checks in the la
         - Status = **Launched** or **Disabled**
         - Checks = 0 checks in last 7 days or 30 days, depending on your comfort level
 
-<img width="1058" alt="Feature_Gates___Statsig" src="https://user-images.githubusercontent.com/120431069/216166665-b9ad6655-4c6e-4b66-8a65-8e94e98e3485.png">
+    <img width="1058" alt="Feature_Gates___Statsig" src="https://user-images.githubusercontent.com/120431069/216166665-b9ad6655-4c6e-4b66-8a65-8e94e98e3485.png"></img>
 
       
 # FAQs
