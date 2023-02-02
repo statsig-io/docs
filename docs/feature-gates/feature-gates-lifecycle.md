@@ -100,4 +100,3 @@ _Note: You can only archive feature gates that have not had any checks in the la
 
 **What if I want to re-use a feature gate that has been archived already?**
 - Archival of a gate implies that any reference to the gate has been completely and permanently removed from your code. Therefore, as best practice, we recommend that you clone an archived gate, essentially creating a new gate with the same rules, instead of reusing a previously archived gate. 
-
