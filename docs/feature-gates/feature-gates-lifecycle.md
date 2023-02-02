@@ -50,7 +50,6 @@ There are 3 points throughout the gate's lifecycle when you'd want to take actio
 
     <img width="1058" alt="Feature_Gates___Statsig" src="https://user-images.githubusercontent.com/120431069/216164917-85a7da7a-2ee6-4ba5-8ca6-c6ced99516ee.png">
 
-  
 **2) You’re ready to clean up the gate reference from your codebase**
 Confirm that the gate has been set to either **Launched** or **Disabled** (i.e. returning a default value) for a while (we recommend >60 days) so you don’t unintentionally break any rule evaluation and you’ve had enough time to ensure no negative impact on your metrics before you clean up the gate reference. Once confirmed,  
   
