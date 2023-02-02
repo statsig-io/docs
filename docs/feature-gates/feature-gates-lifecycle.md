@@ -47,7 +47,8 @@ There are 3 points throughout the gate's lifecycle when you'd want to take actio
         - Status = In Progress
         - Pass Rate = 100% AND 0%
     - In the search bar: “Modified: <mm/dd/yyyy;” (update the date to be 30 days ago)
-  <img width="1058" alt="Feature_Gates___Statsig" src="https://user-images.githubusercontent.com/120431069/216164917-85a7da7a-2ee6-4ba5-8ca6-c6ced99516ee.png">
+
+    <img width="1058" alt="Feature_Gates___Statsig" src="https://user-images.githubusercontent.com/120431069/216164917-85a7da7a-2ee6-4ba5-8ca6-c6ced99516ee.png">
 
   
 **2) You’re ready to clean up the gate reference from your codebase**
