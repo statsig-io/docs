@@ -70,7 +70,7 @@ Confirm that the gate has been set to either **Launched** or **Disabled** (i.e. 
 - **Launched or Disabled → Archived:** you’ll want to update this status to mark that the gate has been removed from your codebase, so that it will be filtered out from the list of candidate gates to be cleaned up for the future (as part of step #2)
   - Go to the feature gate page and click on “…” menu on the upper right corner to select “Archive”. 
   
-_Note: You can only archive feature gates that have not had any checks in the last 7 days. Once a gate has been archived, it cannot be unarchived._
+_Note: You can only archive feature gates that have not had any checks in the last 7 days, and archival cannot be undone._
   
 - To find _all_ gates that should be marked as **Archived**:
     - Go to Feature Gates catalog
@@ -99,5 +99,5 @@ _Note: You can only archive feature gates that have not had any checks in the la
 - We recommend that you use Delete only for mistakes. Deletion removes the gate and its history from Statsig, and having your Feature Gate Catalog retain history of your gates will help you see valuable information like velocity of your team’s feature releases, # of launches decisions made, etc.
 
 **What if I want to re-use a feature gate that has been archived already?**
-- Archival of a gate implies that any reference to the gate has been completely and peromanently removed from your code. Therefore, as best practice, we recommend that you clone an archived gate, essentially creating a new gate with the same rules, instead of unarchiving a removed gate. 
+- Archival of a gate implies that any reference to the gate has been completely and permanently removed from your code. Therefore, as best practice, we recommend that you clone an archived gate, essentially creating a new gate with the same rules, instead of reusing a previously archived gate. 
 
