@@ -57,6 +57,8 @@ Confirm that the gate has been set to either **Launched** or **Disabled** (i.e. 
     - for **Launched** gates: remove the gate reference (but leave the code related to the feature as a permanent fixture to the codebase)
     - for **Disabled** gates: remove the gate reference + all code related to the feature
 
+  _Note: please confirm that these gates are not included in any active Holdouts before removing reference_
+
   - To find *all* gates that are good candidates to be removed from your codebase (i.e. have been **Launched** or **Disabled** more than 60 days ago)
     - Go to Feature Gates catalog
       - Click on filter icon: Status = **Launched** AND **Disabled**
