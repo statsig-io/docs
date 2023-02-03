@@ -10,7 +10,7 @@ To deploy your experiment, your application must pull the experiment configurati
 
 ```js
 const user = { userID: loggedInUserID };
-const demoConfiguration = statsig.getExperiment(user, "demo_experience")
+const demoConfiguration = statsig.getExperiment(user, "demo_experience");
 
 // use parameters to control the experience
 if (demoConfiguration.get("show_banner", false) {
@@ -25,9 +25,9 @@ In order to get experiment results for the events and metrics you care about, yo
 
 ```
 
-statsig.logEvent(user, "demo_started")
+statsig.logEvent(user, "demo_started");
 ...
-statsig.logEvent(user, "demo_completed")
+statsig.logEvent(user, "demo_completed");
 ```
 
 Just a few simple events can help you measure how people are moving through a certain funnel in your product, and enable you to experiment on those flows to increase conversion.
