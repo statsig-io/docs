@@ -30,4 +30,4 @@ statsig.logEvent(user, "demo_started")
 statsig.logEvent(user, "demo_completed")
 ```
 
-Justa few simple events can help you measure how people are moving through a certain funnel in your product, and enable you to experiment on those flows to increase conversion.
+Just a few simple events can help you measure how people are moving through a certain funnel in your product, and enable you to experiment on those flows to increase conversion.
