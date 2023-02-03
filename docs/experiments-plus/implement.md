@@ -3,10 +3,8 @@ title: Implement an experiment
 sidebar_label: Implement
 slug: /experiments-plus/implement
 ---
-### Use a language-specific Statsig SDK to implement the experiment in your application
 
-To deploy your experiment, your application must pull the experiment configuration from Statsig and log the required events with Statsig.  In the code snippets below, we are making up an example surface you are experimenting on - a product demo flow, where you want to experiment with improving conversions through the funnel from starting to completing the demo.  For more examples, see this guide on [your first a/b test](guides/abn-tests)
-
+To deploy your experiment, your application must pull the experiment configuration from Statsig and log the required events with Statsig.  In the code snippets below, we are making up an example surface you are experimenting on - a product demo flow, where you want to experiment with improving conversions through the funnel from starting to completing the demo.  For more examples, see this guide on [your first a/b test](guides/abn-tests), or check out the sdk docs for the languages relevant to your use case.
 
 ```js
 const user = { userID: loggedInUserID };
