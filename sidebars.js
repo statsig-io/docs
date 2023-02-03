@@ -60,6 +60,7 @@ module.exports = {
         },
         "feature-gates/conditions",
         "feature-gates/view-exposures",
+        "feature-gates/feature-gates-lifecycle",
         "feature-gates/best-practices",
       ],
     },
@@ -359,6 +360,15 @@ module.exports = {
         "integrations/jira",
         "integrations/vscode",
         "integrations/terraform",
+        {
+          type: "category",
+          label: "Triggers",
+          link: {
+            type: "doc",
+            id: "integrations/triggers/introduction",
+          },
+          items: ["integrations/triggers/datadog"],
+        },
       ],
     },
     {
