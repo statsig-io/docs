@@ -1,6 +1,6 @@
 ---
-title: Managing Lifecycle of Feature Gates
-sidebar_label: Managing Lifecycle of Feature Gates
+title: Managing the Lifecycle of Feature Gates
+sidebar_label: Managing Lifecycle
 slug: /feature-gates/feature-gates-lifecycle
 ---
 
