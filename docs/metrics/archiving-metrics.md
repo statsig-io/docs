@@ -5,7 +5,7 @@ slug: /metrics/archiving-metrics
 ---
 
 Statsig offers two ways to manage the end-of-life for your metrics. 
-- **Archiving a metric**: the metric will no longer be computed, but its history will be retained for your record. Use this for when a metric is no longer relevant, but you still wish to maintain the history of it. Use case example: you can archive older versions of a metric that continues to evolve so you have a record of how the metric has evolved over time.
+- **Archiving a metric**: the metric will no longer be computed, but its history will be retained for your record. Use this for when a metric is no longer relevant, but you still wish to maintain the history of it. Use case example: you can archive older versions of a metric that continues to evolve (i.e. a new metric with a better definition has been created) so you have a record of how the metric has evolved over time.
 - **Deleting a metric**: the metric will be removed from Statsig completely, including its history. Use this for when you've made a mistake, logged or imported an irrelevant metric, or created a more accurate version of a metric. Use case examples include incorrect definition, incorrect name, duplicate metric that you don't want to confuse others with. 
 
 # Archiving Metrics 
@@ -20,7 +20,7 @@ There are two ways to archive a metric:
 
 Once you select Archive, Statsig will check if this metric is used in any feature gates, experiments, or other metrics. 
 ![archive dependencies](https://user-images.githubusercontent.com/120431069/215640348-b210eb9e-5475-4853-869f-7a9f66375f0a.png)
-While feature gate or experiment dependencies will be shown as soft warnings (no action necessary), metric dependencies will require you to remove the dependency first, before proceeding with the archival. This is because archival of a metric stops its computation, and we don't want other dependent metric values impacted by this archival.
+While the inclusion of a metric in a feature gate or experiment will trigger a soft warning (no action necessary), if a metric which is requested to be archived is used as a part of a composite metric, you will need to delete or archive the composite metric first.
 
 Once you have no metric dependencies, you will start a 24-hour grace period during which you'll be able to undo the archival. In the Metrics Detail View page, you will see a new banner appear at the top of the page, indicating the start of the grace period. 
 
@@ -52,7 +52,7 @@ Since the grace period has ended and the metric has stopped being computed alrea
 To delete a metric, go the Metrics Detail View page of a metric you wish to delete, select the "..." in the upper right-hand corner, and select **Delete**. 
 ![delete metric](https://user-images.githubusercontent.com/120431069/215641202-82f23bac-f620-4d4a-8c32-fe64a4ffc06c.png)
 
-Once you select Delete, Statsig will check if this metric is used in any feature gates, experiments, or other metrics. While feature gate or experiment dependencies will be shown as soft warnings (no action necessary), metric dependencies will require you to remove the dependency first, before proceeding with the deletion, so that other dependent metric values are not impacted by this deletion.
+Once you select Delete, Statsig will check if this metric is used in any feature gates, experiments, or other metrics. While the inclusion of a metric in a feature gate or experiment will trigger a soft warning (no action necessary), if a metric which is requested to be archived is used as a part of a composite metric, you will need to delete or archive the composite metric first.
 ![dependencies](https://user-images.githubusercontent.com/120431069/215641295-55c8dc10-7199-4505-ba0e-d02299fb371a.png)
 
 
