@@ -1,7 +1,7 @@
 ---
 title: Using Statsig for Experiment Analysis (Only)
 sidebar_label: Using Statsig for Experiment Analysis (Only)
-slug: /metrics/Experiment-Analysis-Point-Solution
+slug: /guides/Experiment-Analysis-Point-Solution
 ---
 
 
