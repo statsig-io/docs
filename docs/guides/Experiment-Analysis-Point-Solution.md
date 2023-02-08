@@ -14,7 +14,7 @@ While Statsig as an end-to-end (E2E) platform can be quite powerful, we understa
 
 **Pulse** is Statsig's powerful visualization that shows an experiment's impact across a wide range of metrics. It allows you to quickly assess which metrics you need to pay attention to, while finding trends across metrics, allowing you to validate existing hypotheses or devise alternative explanations. You can check out this [article](https://docs.statsig.com/pulse/read-pulse) to learn more. 
 
-Or better yet, we encourage you to play with our [demo project](https://console.statsig.com/demo?ref=demo_redirect) to see Pulse in action!
+Or better yet, we encourage you to play with our [demo project](https://console.statsig.com/demo?ref=demo_redirect) to see Pulse in action! In this demo project, we've pre-populated a few experiments for you to interact with, so you can get a better feel how your experiment results would look on Statsig.
 
 ### I want to plug in an existing experiment I’ve run/am running/will run
 
@@ -25,14 +25,14 @@ This is how data will flow from one platform to another in this scenario:
 First, [create a free account on Statsig](https://www.statsig.com/signup), then follow these 3 easy steps to use Statsig to analyze your experiment results - 
 
 1. **Connect to your data source and import assignment data to Statsig**
-    1. If your assignment data is stored in your data warehouse: follow this [guide](https://docs.statsig.com/data-warehouse-ingestion/introduction)
-    2. If your assignment data is being piped to either Segment or mParticle: reach out to us on slack for support
+Statsig is able to import your assignment data from a variety of sources:
+    - If your assignment data is stored in your data warehouse (most common): follow this [guide](https://docs.statsig.com/data-warehouse-ingestion/introduction)
+    - If your assignment data is being piped to either Segment or mParticle: reach out to us on slack for support
 
 2. **Generate or import the metrics you’re tracking against**
-
-These metrics will be included in your experiment (step #3 below) so that you can actually see useful results that are ready to be analyzed. There are two ways for you to choose from to get the metrics you need:
-    1. Generate events using Statsig SDK
-    2. Import custom events or precomputed metrics from your data source
+These are metrics that you're hoping to impact with the metric you're setting up (step #3 below). Without metrics, your experiment results won't really be useful, so we highly recommend you to complete this step before setting up your experiment. There are two ways you can get your metrics into Statsig -
+    - Generate events using Statsig SDK
+    - Import custom events or precomputed metrics from your data source
         - from your data warehouse: follow this [guide](https://docs.statsig.com/data-warehouse-ingestion/data_mapping)
         - from other integrations: follow this [guide](https://docs.statsig.com/integrations/introduction)
 
