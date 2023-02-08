@@ -5,7 +5,7 @@ slug: /metrics/Experiment-Analysis-Point-Solution
 ---
 
 
-# Using Statsig to analyze your experiment results
+# Using Statsig for experiment analysis only
 
 
 While Statsig as an end-to-end (E2E) platform can be quite powerful, we understand that sometimes, you already have an assignment tool you’re feeling invested in and want to be able to simply plug and play a point solution to analyze your experiment results - Statsig’s  powerful stats engine and visualization is available for you in that case, too!
@@ -20,13 +20,13 @@ Or better yet, we encourage you to play with our [demo project](https://console.
 
 This is how data will flow from one platform to another in this scenario:
 
-![DataFlow](https://user-images.githubusercontent.com/120431069/217403623-954b8a08-e38d-4beb-8d03-4112ab60a79c.png)
+![Flow](https://user-images.githubusercontent.com/120431069/217403623-954b8a08-e38d-4beb-8d03-4112ab60a79c.png)
 
 First, [create a free account on Statsig](https://www.statsig.com/signup), then follow these 3 easy steps to use Statsig to analyze your experiment results - 
 
 1. **Connect to your data source and import assignment data to Statsig**
     1. If your assignment data is stored in your data warehouse: follow this [guide](https://docs.statsig.com/data-warehouse-ingestion/introduction)
-    2. If your assignment data is being piped to either Segement or mparticle: reach out to us on slack for support
+    2. If your assignment data is being piped to either Segment or mParticle: reach out to us on slack for support
 2. **Generate or import the metrics you’re tracking against**
 These metrics will be included in your experiment (step #3 below) so that you can actually see useful results that are ready to be analyzed
     1. Either generate events using Statsig SDK
