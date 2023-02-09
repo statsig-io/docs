@@ -26,15 +26,15 @@ First, [create a free account on Statsig](https://www.statsig.com/signup), then 
 
 1. **Connect to your data source and import assignment data to Statsig**
 Statsig is able to import your assignment data from a variety of sources:
-    - If your assignment data is stored in your data warehouse (most common): follow this [guide](https://docs.statsig.com/data-warehouse-ingestion/introduction)
-    - If your assignment data is being piped to either Segment or mParticle: reach out to us on slack for support
+   - If your assignment data is stored in your data warehouse (most common): follow this [guide](https://docs.statsig.com/data-warehouse-ingestion/introduction)
+   - If your assignment data is being piped to either Segment or mParticle: reach out to us on slack for support
 
 2. **Generate or import the metrics you’re tracking against**
 These are metrics that you're hoping to impact with the metric you're setting up (step #3 below). Without metrics, your experiment results won't really be useful, so we highly recommend you to complete this step before setting up your experiment. There are two ways you can get your metrics into Statsig -
-    - Generate events using Statsig SDK
-    - Import custom events or precomputed metrics from your data source
-        - from your data warehouse: follow this [guide](https://docs.statsig.com/data-warehouse-ingestion/data_mapping)
-        - from other integrations: follow this [guide](https://docs.statsig.com/integrations/introduction)
+   - Generate events using Statsig SDK
+   - Import custom events or precomputed metrics from your data source
+       - from your data warehouse: follow this [guide](https://docs.statsig.com/data-warehouse-ingestion/data_mapping)
+       - from other integrations: follow this [guide](https://docs.statsig.com/integrations/introduction)
 
 3. **Set up your experiment, using assignment data that was imported in step #1**
     
