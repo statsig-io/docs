@@ -11,8 +11,10 @@ class StatsigUser
   attr_accessor :locale
   attr_accessor :app_version
   attr_accessor :statsig_environment
-  attr_accessor :custom_ids
-  attr_accessor :private_attributes
+  attr_accessor :custom_ids # Hash of key:string value:string
+  attr_accessor :private_attributes # Hash of key:string value:string
+  
+  @custom # Hash of key:string value:string
   
   def initialize(user_hash)
     @statsig_environment = Hash.new
