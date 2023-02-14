@@ -17,7 +17,7 @@ module.exports = {
     "/reports": {
       "parameters": [],
       "get": {
-        "summary": "Read Single Report",
+        "summary": "Get Report URL",
         "operationId": "get-users-userId",
         "description": "Get report data on a given date",
         "responses": {
