@@ -51,8 +51,8 @@ An example dataset for events might look like this:
 Note that:
 
 - One user can send multiple of the same event, with or without any changes in metadata. Statsig will aggregate these together.
-- You can send metadata in both of a json-formatted (only one-level deep) string, and/or pull in fields from columns. You can use metadata and values to generate custom metrics in the console, like "sum(value) where "product_category"="clothing".
-- You can send multiple IDs on a single event. For example, the visit above would could for both user and visit level metrics/experiments. During the mapping flow you tell us unit_types IDs correspond to in statsig.
+- You can send metadata in both of a json-formatted (only one-level deep) string, and/or pull in fields from columns. You can use metadata and values to generate custom metrics in the console, like sum(value) where "product_category"="clothing".
+- You can send multiple IDs on a single event. For example, the visit above would could for both user and visit level metrics/experiments. During the mapping flow you tell us which unit types your different IDs correspond to in statsig.
 
 ---
 
