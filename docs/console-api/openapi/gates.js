@@ -167,7 +167,8 @@ module.exports = {
                 "name/description": {
                   "value": {
                     "name": "a gate",
-                    "description": "helpful summary of what this gate does"
+                    "description": "helpful summary of what this gate does",
+                    "idType": "userID"
                   }
                 },
                 "customID": {
