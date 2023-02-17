@@ -256,7 +256,8 @@ module.exports = {
                   },
                   "idType": {
                     "type": "string",
-                    "description": "idType of id_list segments (ignored on rule_based)"
+                    "description": "idType of id_list segments (ignored on rule_based)",
+                    "default": "userID"
                   }
                 },
                 "required": [
