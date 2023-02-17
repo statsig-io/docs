@@ -152,6 +152,7 @@ module.exports = {
                           "lastModifierName": "CONSOLE API",
                           "lastModifierID": "8dahjGcaRh92n9aoFaicW9",
                           "type": "id_list",
+                          "idType": "customID",
                           "count": 0
                         },
                         {
@@ -161,6 +162,7 @@ module.exports = {
                           "lastModifierName": "CONSOLE API",
                           "lastModifierID": "jFiia92hinDkcGaFijd0",
                           "type": "id_list",
+                          "idType": "userID",
                           "count": 0
                         }
                       ]
@@ -327,6 +329,7 @@ module.exports = {
                         "lastModifierName": "CONSOLE API",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "type": "id_list",
+                        "idType": "customID",
                         "count": 0
                       }
                     }
@@ -417,6 +420,7 @@ module.exports = {
                         "lastModifierName": "CONSOLE API",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "type": "id_list",
+                        "idType": "userID",
                         "count": 0
                       }
                     }
