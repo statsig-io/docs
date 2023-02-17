@@ -253,15 +253,33 @@ module.exports = {
                       "id_list",
                       "rule_based"
                     ]
+                  },
+                  "idType": {
+                    "type": "string",
+                    "description": "idType of id_list segments (ignored on rule_based)",
+                    "default": "userID"
                   }
-                }
+                },
+                "required": [
+                  "name",
+                  "description",
+                  "type"
+                ]
               },
               "examples": {
-                "example-1": {
+                "id_list": {
                   "value": {
                     "name": "a segment",
                     "description": "helpful summary of what this segment is",
-                    "type": "id_list"
+                    "type": "id_list",
+                    "idType": "customID"
+                  }
+                },
+                "rule_based": {
+                  "value": {
+                    "name": "string",
+                    "description": "string",
+                    "type": "rule_based"
                   }
                 }
               }
