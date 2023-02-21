@@ -70,7 +70,7 @@ Note: Auto-generated **User Accounting Metrics** are not supported today for dat
 
 ### Triggered Ingestion
 
-Enterprise customers can trigger ingestion for `metrics` or `events` using the statsig API. This will enqueue and run your daily ingestion immediately after triggering, and can be helpful for companies whose data availability timing may vary day over day and want data to land as soon as possible in statsig.
+Enterprise customers can trigger ingestion for `metrics` or `events` using the statsig API. This will enqueue and run your daily ingestion immediately after triggering, and can be helpful for companies whose data availability timing may vary day over day and want data to land as soon as possible in Statsig. This can be enabled by selecting "API Triggered" as your ingestion schedule - note that with this enabled, there will not be an automatic ingestion, but we will still re-sync data after the initial ingestion if we observe a change.
 
 To trigger ingestion, send a post request to `https://latest.api.statsig.com/v1/mark_data_ready_dwh` endpoint using your statsig API key. An example would be:
 
