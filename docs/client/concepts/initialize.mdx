@@ -1,0 +1,23 @@
+---
+title: Initializing a Client SDK
+sidebar_label: Initializing
+---
+
+One of the first steps in using a Statsig client SDK is to call the asynchronous `initialize()` method in the SDK langauage of your choice.
+If you're looking for synchronous initialization or server side rendering, skip down to the bottom
+
+### General Flow
+`initialize` will take an SDK key and `StatsigUser` object, as well as a set of options to parameterize the SDK.  The sdk will then do a few things:
+1. Check local storage for cached values.  The SDK caches the previous evaluations locally so they are available on the next session without a successful network call
+2. Create a cache a `STATSIG_STABLE_ID` for experimenting on `stableID` - e.g. for experimenting and stable evaluations across the logged out to logged in boundary, where there userID may go from undefined to known.
+3. Set the SDK as initialized so checks wont throw - they will either return cached values or defaults.
+4. Issue a network request to Statsig to get the latest values for all gates/experiments/configs/layers/autotunes for the given user.  If the project definition does not change from the most recent cached values, this request may succeed without returning new data.
+5. Resolve the asynchronous `initialize` call.  If the request to the server failed, the SDK will have the cached values or return defaults for this session.
+
+
+### Synchronous Initialization
+If asynchronous initialization is not an option for your performance requirements, you can initialize the SDK synchronously - throughout the docs, we refer to how you can accomplish this as "Server Side Rendering."
+The client SDK still needs to know the gate and experiment values for the given user at initialization time, but you can use a server SDK to generate those values, so when your first network roundtrip completes, you can initialize the statsig SDK synchronously rather than waiting for a network round trip to Statsig servers.
+The server SDK will take in a user object and use its local evaluation to generate the same response that the `/initialize` network call would generate.
+
+This integration requires a client sdk and a server SDK, so it is a bit more setup, but it will give you the most performant way to integrate Statsig in your website. We currently only support this on the `statsig-js` or `statsig-react` sdks, but let us know in slack if you have another use case.
