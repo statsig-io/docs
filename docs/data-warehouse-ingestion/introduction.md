@@ -80,7 +80,7 @@ curl \
   --header "Content-Type: application/json" \
   --request POST \
   --data '{"datestamps": "2023-02-20", "type": "events"}' \
-  "https://events.statsigapi.net/v1/log_event"
+  "https://latest.api.statsig.com/v1/mark_data_ready_dwh"
 ```
 
 Note that this is rate limited to once every two hours, and there may be a few minutes delay after triggering before status updates while compute resources are created.
