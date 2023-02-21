@@ -3,7 +3,7 @@ import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import Models from "../../docs/console-api/models/index";
 import { useColorMode } from '@docusaurus/theme-common';
 
-const supportedEntities = ['gates', 'segments', 'dynamic-configs', 'experiments', 'holdouts', 'layers', 'autotunes', 'users', 'metrics', 'audit-logs']
+const supportedEntities = ['gates', 'segments', 'dynamic-configs', 'experiments', 'holdouts', 'layers', 'autotunes', 'users', 'metrics', 'audit-logs', 'reports']
 
 function updateCodeSnippets(data, entity) {
   let snippet;
@@ -266,6 +266,11 @@ function getDescription(entity){
           <li>List Audit Logs in the Statsig project</li>
         </ul>
       </>
+    case 'reports':
+      return <>
+        <p>With data reports we strive for a 10am (PST) deadline but there's always a possibility we land late. For such cases, fallbacks should be implemented with this API.</p>
+      </>
+      
     case 'all-endpoints':
     return <>
       <p>This page lists out all Console API endpoints currently available.</p>
