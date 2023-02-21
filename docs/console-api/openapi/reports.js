@@ -6,7 +6,6 @@ module.exports = {
   "info": {
     "title": "console/v1",
     "version": "1.0",
-    "description": "Reports Endpoint"
   },
   "servers": [
     {
