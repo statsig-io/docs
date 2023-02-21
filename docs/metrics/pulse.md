@@ -6,7 +6,7 @@ slug: /metrics/pulse
 
 # Pulse Metrics
 
-Statsig computes experiment results, also known as Statsig's **Pulse** results, depending on the metric type. Most metrics are aggregated across all users in the group. Some ratio type metrics are only aggregated across partipating users (users that have non-null value for that metric).
+Statsig computes experiment results, also known as Statsig's **Pulse** results, depending on the metric type. Most metrics are aggregated across all users in the group. Some ratio type metrics are only aggregated across participating users (users that have non-null value for that metric).
 
 ## Pulse Statistics by Metric Type
 
@@ -65,3 +65,8 @@ Yes, it is possible for the ratio to rise while both the numerator and denominat
 
 Ratio metrics are computed only for users that have a non-zero value in the denominator, i.e. the user must have triggered the denominator event on a given day to be included in the daily ratio.   Users that don't trigger the denominator event during an experiment are not included in the test vs. control comparison of a ratio metric. 
 
+**3. What is the difference in metrics between One-Time Event vs Daily Participation Rate?
+
+The distinction between these in only relevant in the context of an experiment.
+Daily participation rate counts the number of _days_ a user has that event, divided by the number of _days_ the user has been in the experiment.
+One time event is a binary metric that checks whether the user has that event _at least once_ during their time in the experiment.

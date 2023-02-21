@@ -1,0 +1,16 @@
+import CodeBlock from "@theme/CodeBlock";
+
+export const GetStableID = () => (
+  <CodeBlock language="typescript">
+    {`Statsig.getStableID(); 
+`}
+  </CodeBlock>
+);
+
+export const OverrideStableID = () => (
+  <CodeBlock language="typescript">
+    {`const opts: StatsigOptions = { overrideStableID: "my_stable_id" };
+await Statsig.initialize("client-xyx", null, opts);
+`}
+  </CodeBlock>
+);

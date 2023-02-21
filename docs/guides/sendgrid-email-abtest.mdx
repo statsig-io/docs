@@ -1,0 +1,129 @@
+---
+sidebar_label: Email AB Testing with SendGrid
+title: Email AB Testing with SendGrid
+---
+
+Email campaigns are a critical tool for any Marketing team.  Finding the best performing Email template is a perfect use-case for an A/B test.  Statsig allows you to run simple but powerful A/B tests on different parts of your email content.  Since Statsig can integrate seamlessly with product analytics, you can run email experiments and understand deeper business level impact easily.
+
+:::info
+This guide assumes you have an existing Statsig account.  Please go here to create a new free account if you don't already have one: https://statsig.com/signup
+:::
+
+### Step 1: Create an experiment
+
+Start by creating a new Experiment on Statsig console. Put in a name and leave the rest of the fields empty/default.  For the purposes of this walkthrough, that should do.
+
+![image](https://user-images.githubusercontent.com/74588208/210731384-8bbfc1e1-076c-4ae3-959a-ef1507801e71.png)
+
+### Step 2: Start the experiment
+
+Since you can't start an experiment without a parameter, let's go ahead and add a dummy parameter.
+
+![image](https://user-images.githubusercontent.com/74588208/210316935-99f13616-c412-47c1-b9ab-99b90462805e.png)
+
+![image](https://user-images.githubusercontent.com/74588208/210731687-0883c356-5cef-458d-a6aa-bfde9ad36f8b.png)
+
+Save the experiment setup and **Start** it.  We're all set with the experiment set up.
+
+![image](https://user-images.githubusercontent.com/74588208/210731969-decf481a-b6a2-41ee-b1c1-6b917bb18fab.png)
+
+While you're at it, copy the **Experiment Name**.  We'll use this in a bit.
+
+![image](https://user-images.githubusercontent.com/74588208/210732298-34c0e1f4-6485-425b-af07-fa535ad86396.png)
+
+### Step 3: Set up Webhook
+
+In your SendGrid console, go to **Settings** -&gt; **Mail Settings** -&gt; **Event Webhook**.
+
+In the HTTP Post URL, put in:
+
+```https://sendgrid-webhook.statsig.workers.dev/?apikey=[YOUR STATSIG API KEY]```
+
+:::info
+You can find your API Key by navigating to Statsig Project Settings -&gt; API Keys, and copying the 'Client API Key'.
+
+![image](https://user-images.githubusercontent.com/74588208/210319717-49ac4a21-8bdd-4348-b534-374b760ab047.png)
+
+It should look like this: ```client-abcd123efg...```
+:::
+
+Make sure all the **Deliverability Data** and **Engagement Data** checkboxes are checked.  Next, Enable the **Event Webhook Status** and hit Save.  
+
+The set up should look like this:
+
+![image](https://user-images.githubusercontent.com/74588208/210737123-86725ff7-2432-4bde-95e6-173f8f194f86.png)
+
+### Step 4: Create Single Sends
+
+Now on your SendGrid app, create two new **Single Send** and name them using the experiment-name like this. 
+
+The first one would be the "Control", which is the baseline.  That one should be named ```[experiment_name]/control```.  For example, in our case it will be ```drip_campaign_ab_test/control```.
+
+![image](https://user-images.githubusercontent.com/74588208/210733152-5766320a-ed30-45f7-b57f-bf0526f796a8.png)
+
+The second one would be the "Test", which is the template you are comparing with the baseline.  That one should be named ```[experiment_name]/test```.  For example, in our case it will be ```drip_campaign_ab_test/test```.
+
+![image](https://user-images.githubusercontent.com/74588208/210733504-581ea181-3ebc-4bc1-a707-391866bcbf62.png)
+
+You can customize these templates however you want, and even use different subjects.  
+
+The most important thing here is you need to split the recipient list evenly between the Control & Test.  This will aid in a 'balanced' experiment.
+
+:::info
+In order to avoid introducing any bias, it is best to split the recipient list at random.  For instance, you want to ensure recipients within the same company are distributed evenly between the two lists.
+:::
+
+Now you're good to go.  Send those emails and Statsig will automatically track how well each variant in your A/B test is performing across email opens, clicks, etc.
+
+## Monitoring the set up
+
+When you've started the sends, you can verify everything is working as expected by navigating to the Diagnostics Tab in your experiment and looking at the 'Exposure Stream' at the bottom of the page.  This shows a realtime stream of the page loads along with the variant they were allocated.
+
+![image](https://user-images.githubusercontent.com/74588208/210737715-6adf5fd9-3b23-433a-a852-f2c8ea93cf2a.png)
+
+## Interpreting results
+
+By going to the **Pulse Results** tab in the Experiment page, you can add metrics you want to monitor and verify which variant is doing better.  To learn more about reading Pulse Results, check this article out: [Reading Pulse Results](../pulse/read-pulse).
+
+![image](https://user-images.githubusercontent.com/74588208/210737928-3f33ca3b-a46b-40ac-b095-0b33fab66109.png)
+
+## Using API instead of Single Send
+
+Statsig also supports A/B testing when using API or Automation to send marketing emails.  In order to enable this, you would use unique arguments (https://docs.sendgrid.com/for-developers/sending-email/unique-arguments) and pass in unique_args as below:
+
+```json
+{
+  "unique_args": {
+    "statsig_experiment_name": "[Experiment Name]",
+    "statsig_variant_name": "[control or test]"
+  }
+}
+```
+
+So in our example above, you will set up the Control variant like this:
+
+```json
+{
+  "unique_args": {
+    "statsig_experiment_name": "drip_campaign_ab_test",
+    "statsig_variant_name": "control"
+  }
+}
+```
+
+And the Test variant would look like this:
+
+```json
+{
+  "unique_args": {
+    "statsig_experiment_name": "drip_campaign_ab_test",
+    "statsig_variant_name": "control"
+  }
+}
+```
+
+## More than two variants
+
+It's simple to extend this setup to run ABC or ABn tests.  You can add more variants in the Experiment Setup tab, like below.  Make sure the variant name is correctly applied in either the Single Send name or the unique arguments in the API.
+
+![image](https://user-images.githubusercontent.com/74588208/210738925-89f91116-fefc-4e3c-992d-c9fc228f1a8c.png)

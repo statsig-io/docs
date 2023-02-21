@@ -33,7 +33,7 @@ As a Project Admin, you can configure your project to require reviews for any ch
 ### Creating Review Groups
 To create a predefined group of reviewers,
 
-- Navigate to the **Basic SEttings** tab under your **Project Settings**, and click the **Create New Group** button under **Project Members and Groups** 
+- Navigate to the **Basic Settings** tab under your **Project Settings**, and click the **Create New Group** button under **Project Members and Groups** 
 
 ![Screen Shot 2022-06-27 at 8 31 24 AM](https://user-images.githubusercontent.com/74584483/175977950-01f18981-ad91-4116-ab4c-9e69a9a6de98.png)
 
@@ -48,7 +48,7 @@ To create a predefined group of reviewers,
 ### Enforcing Team Reviews
 You can _a priori_ restrict who can make changes to your Project by (a) turning on **Reviews Required** for your Project and (b) adding designated **Review Groups** or **Reviewers** when you create the Feature Gate or Experiment. 
 
-For (a), see section **Turning on Change Reviews for a Project** to turn on project-wide reviews. For (b), as an owner of a Feature Gate or Experiment, you can add desginated **Review Groups** or **Reviewers** at any time as shown below. This ensures that only these designated groups or members can review and approve any subsequent changes. When another member now tries to edit these designated review groups/reviewers, this will require approval from currently desginated reviewers. 
+For (a), see section **Turning on Change Reviews for a Project** to turn on project-wide reviews. For (b), as an owner of a Feature Gate or Experiment, you can add designated **Review Groups** or **Reviewers** at any time as shown below. This ensures that only these designated groups or members can review and approve any subsequent changes. When another member now tries to edit these designated review groups/reviewers, this will require approval from currently designated reviewers. 
 
 <img width="655" alt="image" src="https://user-images.githubusercontent.com/1315028/166682283-c9e2de57-0b9a-473e-adf2-100a240ab6b0.png"/>
 

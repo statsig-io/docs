@@ -12,4 +12,4 @@ The Statsig VSCode extension has several features to bring insights from your Fe
 | CodeLens (enable in Settings) | ![img](https://github.com/statsig-io/statsig-code/raw/HEAD/media/codelens.png) |
 | Keyboard Shortcuts | ![img](https://github.com/statsig-io/statsig-code/raw/HEAD/media/keyboard.gif) |
 ## Configuration
-Go to the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Statsig.code) to install and configure the Statsig VSCode Extension.
+Go to the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=statsig-vscode.statsig) to install and configure the Statsig VSCode Extension.

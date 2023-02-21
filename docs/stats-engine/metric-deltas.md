@@ -6,7 +6,7 @@ slug: /stats-engine/metric-deltas
 
 ## Computing Metric Deltas
 
-A metric delta refers to the difference in metric values between the test and control groups.  This is usually the impact we care about when looking at experiment results.  To account for the different number of users (or units) that consitute each group, we compare the mean metric value per user, not the total.  
+A metric delta refers to the difference in metric values between the test and control groups.  This is usually the impact we care about when looking at experiment results.  To account for the different number of users (or units) that constitute each group, we compare the mean metric value per user, not the total.  
 
 Two different metric deltas are available in Pulse.  The **absolute delta** is simply the difference between the two means:
 
@@ -18,7 +18,7 @@ It's often helpful to understand the impact relative to the baseline value of th
 
 ## Computing Means
 
-Properly computing the groups means is critical for obatined meaningful metric deltas. The exact methodology for calculating the metric means depends on the type of metric.
+Properly computing the groups means is critical for obtained meaningful metric deltas. The exact methodology for calculating the metric means depends on the type of metric.
 
 ### Event Count and Sum Metrics
 
@@ -37,7 +37,7 @@ Note that only user metrics recorded after a user has been exposed to the experi
 
 ###  Event DAU and User Accounting Metrics
 
-Event DAU metrics capture the number of distinct users that have the event each day.  In Pulse results, they are normalized by the number of days the user has been in the experiment.  This represents the probaility that a user is daily active for that event, i.e. the daily participation rate.  In the terms defined above, the event DAU group mean is given by:
+Event DAU metrics capture the number of distinct users that have the event each day.  In Pulse results, they are normalized by the number of days the user has been in the experiment.  This represents the probability that a user is daily active for that event, i.e. the daily participation rate.  In the terms defined above, the event DAU group mean is given by:
 
 ![image](https://user-images.githubusercontent.com/90343952/167958004-7e1257d5-5a34-4d32-928f-2de185cf5569.png)
 
@@ -51,7 +51,7 @@ Where *max(X<sub>i</sub>)* is the maximum value of the new xAU metric for user *
 
 ### Custom Ratios, Means, Retention and Stickiness Metrics
 
-These are metrics such as click through rate, averge purchase value, sessions per user, etc. They're obtained by diving a numerator value, *X*, by a denominator value, *Y*.  The mean value of a ratio metric *R* for an experiment group is given by:
+These are metrics such as click through rate, average purchase value, sessions per user, etc. They're obtained by diving a numerator value, *X*, by a denominator value, *Y*.  The mean value of a ratio metric *R* for an experiment group is given by:
 
 ![image](https://user-images.githubusercontent.com/90343952/167958053-044b0554-e33e-406b-8119-1a748a187fe1.png)
 

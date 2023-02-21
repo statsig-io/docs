@@ -13,9 +13,9 @@ Insights presents a reverse perspective of the [Pulse](/pulse) view. While Pulse
 1.	Navigate to the Insights section on the Statsig console: https://console.statsig.com/ 
 2.	Select a metric that you want to observe from the selector drop down at the top of the page. 
 3.	Select the time window that you want to observe.   
-4.	The **Feature Lifts** panel shows two numbers. The number in parantheses is the absolute change in the metric driven by the users in the test group. The **Delta %** is percentage change relative to the topline value of the metric. Both numbers represent the daily average impact over the time window you have selected.
+4.	The **Feature Lifts** panel shows two numbers. The number in parentheses is the absolute change in the metric driven by the users in the test group. The **Delta %** is percentage change relative to the topline value of the metric. Both numbers represent the daily average impact over the time window you have selected.
 
-In the example below, the **new_search_algo_v2** is driving an additional 65,070 **add_to_cart** events per day over the last 30 days.  This is equivalent to a 5.98% average daily lift in this metric, which has oscillated bewtween 1M and 1.3M events per day during this time period. 
+In the example below, the **new_search_algo_v2** is driving an additional 65,070 **add_to_cart** events per day over the last 30 days.  This is equivalent to a 5.98% average daily lift in this metric, which has oscillated between 1M and 1.3M events per day during this time period. 
 
 ![image](https://user-images.githubusercontent.com/90343952/167211755-4e87e8e2-2bb4-4bd6-a50f-56f3e5ce68b0.png)
 
@@ -45,7 +45,7 @@ To properly derive the topline impact on a ratio metric we must understand the i
 
 ![image](https://user-images.githubusercontent.com/90343952/167229064-f2e0d46d-c620-423e-a786-3a683509d8ba.png)
 
-where *&mu;<sub>X,t</sub>* and *&mu;<sub>Y,t</sub>* represent the average numerator and denominator values for the test group, and similarly for the control group.  *Toplin_X* and *Topline_Y* are the overall numerator and denominator values for the topline metric.
+where *&mu;<sub>X,t</sub>* and *&mu;<sub>Y,t</sub>* represent the average numerator and denominator values for the test group, and similarly for the control group.  *Topline_X* and *Topline_Y* are the overall numerator and denominator values for the topline metric.
 
 The relative impact for ratio metrics is obtained by dividing the absolute impact by the topline value of the metric that we would expect without this experiment:
 

@@ -10,7 +10,7 @@ The methodology used for p-value calculation depends on the number of degrees of
 
 ### Two-Sample Z-Test
 
-The z-statsitc of a two-sample z-test is:
+The z-statistic of a two-sample z-test is:
 
 ![image](https://user-images.githubusercontent.com/90343952/168131340-d318d6e3-adce-4ede-bb91-adc2390f7107.png)
 
@@ -21,13 +21,13 @@ The two-sided p-value is obtained from the standard normal cumulative distributi
 
 ### Welch's t-test
 
-For smaller sample sizes, Welch's t-test is the prefered statistical test for lower false positive rates in cases of unequal sizes and variances.  In Pulse, Welch's t-test is automatically applied when the degress of freedom *&nu; < 100*.  
+For smaller sample sizes, Welch's t-test is the preferred statistical test for lower false positive rates in cases of unequal sizes and variances.  In Pulse, Welch's t-test is automatically applied when the degress of freedom *&nu; < 100*.  
 
 The t-statistic is computed in the same way as the two-sample z-statistic above.  Additionally, we compute the degrees of freedom *&nu;* using:
 
 ![image](https://user-images.githubusercontent.com/90343952/168124467-58a81687-95e4-4fac-905d-3782509b8c8d.png)
 
-The p-value is then obatined from the t-distribution with *&nu;* degrees of freedom.
+The p-value is then obtained from the t-distribution with *&nu;* degrees of freedom.
 
 
 

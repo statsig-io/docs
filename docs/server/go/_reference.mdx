@@ -3,7 +3,7 @@
 ```go
 // User specific attributes for evaluating Feature Gates, Experiments, and DyanmicConfigs
 //
-// NOTE: UserID is **required** - see https://docs.statsig.com/messages/serverRequiredUserID
+// NOTE: UserID or a customID is **required** - see https://docs.statsig.com/messages/serverRequiredUserID
 // PrivateAttributes are only used for user targeting/grouping in feature gates, dynamic configs,
 // experiments and etc; they are omitted in logs.
 type User struct {
@@ -18,5 +18,67 @@ type User struct {
 	PrivateAttributes  map[string]interface{} `json:"privateAttributes"`
 	StatsigEnvironment map[string]string      `json:"statsigEnvironment"`
 	CustomIDs          map[string]string      `json:"customIDs"`
+}
+```
+
+### StatsigOptions
+
+```go
+// Advanced options for configuring the Statsig SDK
+type Options struct {
+	API                  string
+	Environment          environment
+	LocalMode            bool
+	ConfigSyncInterval   time.Duration
+	IDListSyncInterval   time.Duration
+	LoggingInterval      time.Duration
+	LoggingMaxBufferSize int
+	BootstrapValues      string
+	RulesUpdatedCallback func(rules string, time int64)
+	InitTimeout          time.Duration
+	DataAdapter          IDataAdapter
+}
+```
+
+### Event
+
+```go
+type Event struct {
+	EventName string            `json:"eventName"`
+	User      User              `json:"user"`
+	Value     string            `json:"value"`
+	Metadata  map[string]string `json:"metadata"`
+	Time      int64             `json:"time"`
+}
+```
+
+### DataAdapter
+
+```go
+/**
+ * An adapter for implementing custom storage of config specs.
+ * Can be used to bootstrap Statsig (priority over bootstrapValues if both provided)
+ * Also useful for backing up cached data
+ */
+type IDataAdapter interface {
+	/**
+	 * Returns the data stored for a specific key
+	 */
+	get(key string) string
+
+	/**
+	 * Updates data stored for each key
+	 */
+	set(key string, value string)
+
+	/**
+	 * Startup tasks to run before any get/set calls can be made
+	 */
+	initialize()
+
+	/**
+	 * Cleanup tasks to run when statsig is shutdown
+	 */
+	shutdown()
 }
 ```

@@ -6,13 +6,13 @@ slug: /experiments-plus/sequential-testing
 
 ## What is Sequential Testing?
 
-Traditional A/B testing best practices dictate that the readout of experiment metrics should occur only once, when the target sample size of the experiment has been reached.  Continous monitoring for the purpose of decision making results in inflated false positive rates (a.k.a. *the peeking problem*), much higher than expected based on the significance level selected for the test.  
+Traditional A/B testing best practices dictate that the readout of experiment metrics should occur only once, when the target sample size of the experiment has been reached.  Continuous monitoring for the purpose of decision making results in inflated false positive rates (a.k.a. *the peeking problem*), much higher than expected based on the significance level selected for the test.  
 
 This is because p-values fluctuate and are likely to drop in and out of significance just by random chance, even when there is no real effect.  Continuous monitoring introduces selection bias in the date we pick for the readout: Selectively choosing a date based on the observed results is essentially cherry-picking a stat-sig result that would never be observed if the data were to be analyzed only over the entire, pre-determined duration of the experiment. This increases the false positive rate (observing an experimental effect when there is none).
 
 In Sequential Testing, the p-values for each preliminary analysis window are adjusted to compensate for the increased false positive rate associated with peeking.  The goal is to enable early decision making when there's sufficient evidence while limiting the risk of false positives.  While peeking is typically discouraged, regular monitoring of experiments with sequential testing is particularly valuable in some cases.  For example:
-* Unexpected regressions: Sometimes experiments have bugs or unintended consequences that severly impact key metrics.  Sequential testing helps identify these regressions early and ditinguishes significant effects from random fluctuations.
-* Opportunity cost: This arises when a signifcant loss may be incurred by delaying the experiment decision, such as launching a new feature ahead of a major event or fixing a bug.  If sequential testing shows an improvement in the key metrics, an early decision could be made.  But use caution: An early stat-sig result for certain metrics doesn't guarantee sufficient power to detect regressions in other metircs.  Limit this approach to cases where only a small number of metrics are relevant to the decision.    
+* Unexpected regressions: Sometimes experiments have bugs or unintended consequences that severely impact key metrics.  Sequential testing helps identify these regressions early and distinguishes significant effects from random fluctuations.
+* Opportunity cost: This arises when a significant loss may be incurred by delaying the experiment decision, such as launching a new feature ahead of a major event or fixing a bug.  If sequential testing shows an improvement in the key metrics, an early decision could be made.  But use caution: An early stat-sig result for certain metrics doesn't guarantee sufficient power to detect regressions in other metrics.  Limit this approach to cases where only a small number of metrics are relevant to the decision.    
 
 ## Quick Guide: Interpreting Sequential Testing Results
 
@@ -43,7 +43,7 @@ We use an adjustment factor *q<sub>n</sub>* that's determined by the number of d
 ![image](https://user-images.githubusercontent.com/90343952/191127696-c8cbbf6f-8757-439e-86df-c7d7dd13ef36.png)
 
 When the target duration is reached, *q<sub>n</sub> = 1* and no more adjustments are applied.  This method has 2 benefits:
-* Simplicity: The calculation of the adjustment factor is easy to understand.  It also satisifes the intuitive expectation that the significance threshold be higher early on.
+* Simplicity: The calculation of the adjustment factor is easy to understand.  It also satisfies the intuitive expectation that the significance threshold be higher early on.
 * Power: When the target duration is reached, the efficacy boundary converges with the standard Z-score for the selected significance level.  Therefore, there is no loss in statistical power when doing a metrics readout at the conclusion of the pre-determined experiment duration. We selected this approach because we believe the primary value of sequential testing is to provide higher confidence when making early decisions based on unexpected metric movements, such as ending an experiment early due to a large regression.  However, in most cases it's best make a decision based on the complete set of relevant metrics at the end of the experiment, without any adjustments that reduce power. 
 
 ### Efficacy Boundary and Z-score Calculation

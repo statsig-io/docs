@@ -122,11 +122,23 @@
         "$ref": "./experimentMetric.json"
       }
     },
+    "primaryMetricTags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
     "secondaryMetrics": {
       "type": "array",
       "description": "Additional metric you may want to monitor that might impact the analysis or final decision of the experiment",
       "items": {
         "$ref": "./experimentMetric.json"
+      }
+    },
+    "secondaryMetricTags": {
+      "type": "array",
+      "items": {
+        "type": "string"
       }
     },
     "groups": {
@@ -208,6 +220,8 @@
     "idType",
     "status",
     "layerID",
+    "primaryMetricTags",
+    "secondaryMetricTags",
     "groups",
     "allocation",
     "defaultConfidenceInterval",
