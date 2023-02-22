@@ -52,50 +52,68 @@ module.exports = {
               }
             }
           },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error_401.json"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "headers": {
-              "content-type": {
-                "schema": {
-                  "type": "string",
-                  "example": "application/json; charset=utf-8"
-                }
-              }
-            },
+          "400": {
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
                     "status": {
-                      "$ref": "../models/status.json"
+                      "type": "integer"
                     },
                     "message": {
-                      "$ref": "../models/message.json"
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "status": 400,
+                      "message": "start: 0, is before project creation: 1653327122393"
                     }
                   }
-                },
-                "example": {
-                  "status": 403,
-                  "message": "Forbidden resource"
                 },
                 "examples": {
-                  "example-1": {
+                  "Invalid start time": {
                     "value": {
-                      "status": 404,
-                      "message": "Audit log not found"
+                      "status": 400,
+                      "message": "start: 0, is before project creation: 1653327122393"
+                    }
+                  },
+                  "Invalid end time 1": {
+                    "value": {
+                      "status": 400,
+                      "message": "Bad Request Exception",
+                      "errors": [
+                        {
+                          "property": "end",
+                          "errorMessage": "Value should be greater than 0"
+                        }
+                      ]
+                    }
+                  },
+                  "Invalid end time 2": {
+                    "value": {
+                      "status": 400,
+                      "message": "Bad Request Exception",
+                      "errors": [
+                        {
+                          "property": "start.end",
+                          "errorMessage": "start time must be before end time recieved: { start: 1673480254731, end: 0}"
+                        }
+                      ]
                     }
                   }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
                 }
               }
             }
