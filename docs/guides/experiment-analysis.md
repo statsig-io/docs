@@ -27,7 +27,15 @@ First, [create a free account on Statsig](https://www.statsig.com/signup), then 
 1. **Connect to your data source and import assignment data to Statsig**
 Statsig is able to import your assignment data from a variety of sources:
 - If your assignment data is stored in your data warehouse (most common): follow this [guide](https://docs.statsig.com/data-warehouse-ingestion/introduction)
-- If your assignment data is being piped to either Segment or mParticle: reach out to us on slack for support
+- If you use LaunchDarkly for assignment, you can pipe it to Statsig via either Segment or mParticle:
+  - Via Segment
+    - Follow [Segment’s instructions](https://segment.com/docs/connections/sources/catalog/cloud-apps/launchdarkly/) to set up LaunchDarkly as an **event source** to Segment.
+    - Follow [Segment’s instructions](https://segment.com/docs/connections/destinations/catalog/statsig/) to set up Statsig as a **destination** from Segment for the LaunchDarkly Source created above.
+  - Via mParticle
+    - Follow [LaunchDarkly’s instructions](https://docs.launchdarkly.com/home/data-export/mparticle) to set up mParticle as a Data Export destination.
+    - Follow [mParticle’s instructions](https://docs.mparticle.com/integrations/statsig/event/) to set up the Statsig integration
+  - Via Warehouse Ingestion
+    - You can also also pipe your LaunchDarkly data into a data warehouse via [Amazon Kinesis](https://docs.launchdarkly.com/home/data-export/kinesis), [Azure Event Hubs](https://docs.launchdarkly.com/home/data-export/event-hub), or [Google Cloud Pub/Sub](https://docs.launchdarkly.com/home/data-export/google-pubsub), and ingest that into Statsig via our [Data Warehouse Ingestion](https://docs.statsig.com/data-warehouse-ingestion/introduction) feature.
 
 2. **Generate or import the metrics you’re tracking against**
 These are metrics that you're hoping to impact with the metric you're setting up (step #3 below). Without metrics, your experiment results won't really be useful, so we highly recommend you to complete this step before setting up your experiment. There are two ways you can get your metrics into Statsig:
