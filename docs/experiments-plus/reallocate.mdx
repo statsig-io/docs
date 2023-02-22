@@ -1,0 +1,11 @@
+---
+title: Reallocate an Experiment
+sidebar_label: Reallocate
+slug: /experiments-plus/reallocate
+---
+
+If you need to restart an experiment - whether that's a result of finding a bug you need to fix before you wish to run the experiment, or a change you need to make to the groups, you can **reallocate** the experiment. Reallocating an experiment will put it in an unstarted state, returning all users to the default experience.
+
+<img width="307" alt="Screen Shot 2023-02-22 at 2 19 19 PM" src="https://user-images.githubusercontent.com/100615502/220772857-3e5db6d9-a803-4ac4-9e3a-3f992e6feff3.png">
+
+When an experiment is reallocated, the "salt" that the experiment uses to randomize a user's group will also change. This means that when you re-start the experiment, your users will be randomly assigned to a group that is not necessarily the same group they were in prior to the experiment being reallocated. This is important because it makes sure that the new result for the group that was not performing well due to an issue like a bug or bad experience in the previous run, is not negatively affected even after the issue is addressed in the new version.
