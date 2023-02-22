@@ -31,9 +31,9 @@ module.exports = {
     "/project/usage_billing": {
       "get": {
         "tags": [
-          "Audit Logs"
+          "Usage and Billing"
         ],
-        "summary": "Read Audit Logs",
+        "summary": "Get usage breakdown",
         "responses": {
           "200": {
             "description": "OK",
