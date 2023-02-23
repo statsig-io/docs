@@ -86,7 +86,7 @@ _Note: You can only archive feature gates that have not had any checks in the la
       
 
 # Managing permanent or long-term gates
-Statsig also lets you mark some feature gates as **Permanent**. **Permanent** feature gates are expected to live in your codebase for an extended period of time, beyond a feature release, usually for operations or infrastructure control. Common examples include user permissions (e.g. premium features based on subscription level) or circuit breakers/killswitches (e.g. terminating a connection to prevent negative customer impact). To make your gates as **Permanent**, go to the individual feature gate page, click on the "..." menu and click on "Mark Gate Permanent".
+Statsig also lets you mark some feature gates as **Permanent**. **Permanent** feature gates are expected to live in your codebase for an extended period of time, beyond a feature release, usually for operations or infrastructure control. Common examples include user permissions (e.g. premium features based on subscription level) or circuit breakers/kill switches (e.g. terminating a connection to prevent negative customer impact). To make your gates as **Permanent**, go to the individual feature gate page, click on the "..." menu and click on "Mark Gate Permanent".
   ![image](https://user-images.githubusercontent.com/120431069/220805873-1de86d6a-67a9-49ca-a608-76254e50db89.png)
 ### Implications of marking a gate as Permanent
   - New filter: you can now filter for **Permanent** gates in the metrics catalog
