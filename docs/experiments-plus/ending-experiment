@@ -1,0 +1,21 @@
+---
+title: Stopping an Experiment
+sidebar_label: Stop
+slug: /experiments-plus/stop
+---
+
+# Stopping an Experiment 
+For one reason or another, your experiment has come to an end. This could be for a variety of reasons:
+- Your experiment was a success, and it's time to give it to all of your users
+- Your experiment has a problem, and you need to stop it
+- Your experiment has concluded, but the results do not support shipping it
+
+## Making a Decision
+To ship any of the groups in your experiment, including control, to all your users - make decision is the route to take.
+https://docs.statsig.com/experiments-plus/make-decision
+
+## Reallocate an Experiment
+If your experiment has a problem and you need to stop it, reallocate will put it into an unstarted state. Every user will recieve the default experience - either the value defined in code or the layer default. Additionally, the "salt" used to randomize a user's group will be changed. This means that when you re-start the experiment, your users will be randomly assigned to a group that is not necessarily the same group they were in prior to the experiment being reallocated. This is important because it makes sure that the new result for the group that was not performing well due to an issue like a bug or bad experience in the previous run, is not negatively affected even after the issue is addressed in the new version.
+
+## Abandon an Experiment
+If you are done with an experiment, and don't wish to ship any group, you can abandon the experiment. The experiment will be marked as abandoned, and all users will fall back to recieving the default experience - either the value defined in code or the layer default.
