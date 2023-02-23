@@ -1888,6 +1888,419 @@ module.exports = {
           "Experiments"
         ],
         "description": ""
+      },
+      "patch": {
+        "summary": "Add Experiment Overrides",
+        "operationId": "post-experiments-experiment_id-overrides",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Experiment Overrides updated successfully.",
+                      "data": {
+                        "overrides": [
+                          {
+                            "type": "segment",
+                            "name": "a_segment",
+                            "groupID": "Control"
+                          },
+                          {
+                            "type": "gate",
+                            "name": "a_gate",
+                            "groupID": "Test"
+                          }
+                        ],
+                        "userIDOverrides": [
+                          {
+                            "groupID": "Control",
+                            "ids": [
+                              "updated_id_list"
+                            ]
+                          },
+                          {
+                            "groupID": "Test",
+                            "ids": [
+                              "updated_id_lists"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "overrides": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/experiment_override"
+                          }
+                        },
+                        "userIDOverrides": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/experiment_id_override"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Adding overrides": {
+                    "value": {
+                      "message": "Experiment Overrides updated successfully.",
+                      "data": {
+                        "overrides": [
+                          {
+                            "type": "segment",
+                            "name": "a_segment",
+                            "groupID": "Control"
+                          },
+                          {
+                            "type": "gate",
+                            "id": "a_gate",
+                            "groupID": "Test"
+                          }
+                        ],
+                        "userIDOverrides": [
+                          {
+                            "groupID": "Control",
+                            "ids": [
+                              "newly_added_id"
+                            ]
+                          },
+                          {
+                            "groupID": "Test",
+                            "ids": [
+                              "id_that_already_existed"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "overrides": [
+                      {
+                        "type": "segment",
+                        "name": "a_segment",
+                        "groupID": "Control"
+                      },
+                      {
+                        "type": "gate",
+                        "name": "a_gate",
+                        "groupID": "Test"
+                      }
+                    ],
+                    "userIDOverrides": [
+                      {
+                        "groupID": "Control",
+                        "ids": [
+                          "updated_id_list"
+                        ]
+                      },
+                      {
+                        "groupID": "Test",
+                        "ids": [
+                          "updated_id_lists"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "properties": {
+                  "overrides": {
+                    "type": "array",
+                    "description": "experiment overrides to be added",
+                    "items": {
+                      "$ref": "#/components/schemas/experiment_override"
+                    }
+                  },
+                  "userIDOverrides": {
+                    "type": "array",
+                    "description": "list of ids to add from each selected group",
+                    "items": {
+                      "$ref": "#/components/schemas/experiment_id_override"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Adding overrides": {
+                  "value": {
+                    "overrides": [
+                      {
+                        "type": "gate",
+                        "id": "a_gate",
+                        "groupID": "Test"
+                      }
+                    ],
+                    "userIDOverrides": [
+                      {
+                        "groupID": "Control",
+                        "ids": [
+                          "newly_added_id"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "description": "This endpoint will add overrides to the existing list of overrides."
+        },
+        "tags": [
+          "Experiments"
+        ],
+        "description": ""
+      },
+      "delete": {
+        "summary": "Remove Experiment Overrides",
+        "operationId": "post-experiments-experiment_id-overrides",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Experiment Overrides updated successfully.",
+                      "data": {
+                        "overrides": [
+                          {
+                            "type": "segment",
+                            "name": "a_segment",
+                            "groupID": "Control"
+                          },
+                          {
+                            "type": "gate",
+                            "name": "a_gate",
+                            "groupID": "Test"
+                          }
+                        ],
+                        "userIDOverrides": [
+                          {
+                            "groupID": "Control",
+                            "ids": [
+                              "updated_id_list"
+                            ]
+                          },
+                          {
+                            "groupID": "Test",
+                            "ids": [
+                              "updated_id_lists"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "overrides": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/experiment_override"
+                          }
+                        },
+                        "userIDOverrides": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/experiment_id_override"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Experiment Overrides updated successfully.",
+                      "data": {
+                        "overrides": [
+                          {
+                            "type": "segment",
+                            "name": "a_segment",
+                            "groupID": "Control"
+                          }
+                        ],
+                        "userIDOverrides": [
+                          {
+                            "groupID": "Control",
+                            "ids": [
+                              "unaffected_id1",
+                              "unaffected_id2"
+                            ]
+                          },
+                          {
+                            "groupID": "Test",
+                            "ids": [
+                              "id1",
+                              "id2"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "overrides": [
+                      {
+                        "type": "segment",
+                        "name": "a_segment",
+                        "groupID": "Control"
+                      },
+                      {
+                        "type": "gate",
+                        "name": "a_gate",
+                        "groupID": "Test"
+                      }
+                    ],
+                    "userIDOverrides": [
+                      {
+                        "groupID": "Control",
+                        "ids": [
+                          "updated_id_list"
+                        ]
+                      },
+                      {
+                        "groupID": "Test",
+                        "ids": [
+                          "updated_id_lists"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "properties": {
+                  "overrides": {
+                    "type": "array",
+                    "description": "experiment overrides to be removed",
+                    "items": {
+                      "$ref": "#/components/schemas/experiment_override"
+                    }
+                  },
+                  "userIDOverrides": {
+                    "type": "array",
+                    "description": "list of ids to be removed from each selected group",
+                    "items": {
+                      "$ref": "#/components/schemas/experiment_id_override"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Removing overrides": {
+                  "value": {
+                    "overrides": [
+                      {
+                        "type": "gate",
+                        "id": "a_gate",
+                        "groupID": "Test"
+                      }
+                    ],
+                    "userIDOverrides": [
+                      {
+                        "groupID": "Control",
+                        "ids": [
+                          "remove_just_this_id"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "description": "This endpoint will remove selected overrides while leaving the rest unaffected."
+        },
+        "tags": [
+          "Experiments"
+        ],
+        "description": ""
       }
     },
     "/experiments/{experiment_id}/start": {

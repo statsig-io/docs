@@ -3,9 +3,64 @@ title: Daily Reports
 sidebar_label: Daily Reports
 slug: /console-api/daily-reports
 description: Download daily reports
+hide_table_of_contents: true
+custom_edit_url: null
 ---
 
-# v1/get_daily_report
+## Authorization
+
+:::info
+This is available for Enterprise contracts and needs to be enabled for you, once. Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you want this enabled.
+:::
+
+import Rapidoc from "../../src/components/Rapidoc"
+
+<Rapidoc id="reports" entity='reports'/>
+
+
+## Report Schema - type = first_exposures
+
+| Column Name             | Description                                                                                   |
+| ----------------------- | --------------------------------------------------------------------------------------------- |
+| copmany_id              |                                                                                               |
+| unit_id                 | Refers to the unit identifier used in the experiment                                          |
+| exposure_type           | Statsig Product used: "check_gate" for Feature Gates, and "get_experiment" for Experiments    |
+| name                    | The name of the gate/experiment                                                               |
+| rule                    | For gates, this refers to the rule name                                                       |
+| experiment_group        | The group the user was assigned to                                                            |
+| first_exposure_utc      | The UTC timestamp when the user was first assigned to the experiment                          |
+| first_exposure_pst_date | The date in PST when the user was first assigned to the experiment                            |
+| as_of_pst_date          | The date this data was generated                                                              |
+| percent                 | Group's rollout percent. This is the rule-level pass-rate, or the experiment's group size     |
+| rollout                 | Rollout version number                                                                        |
+| user_dimensions         | JSON-formatted key-value pairs describing the user's attributes at the time of first exposure |
+
+## Report Schema - type = pulse_daily
+
+| Column Name         | Description                                                                                        |
+| ------------------- | -------------------------------------------------------------------------------------------------- |
+| copmany_id          | STRING, the id of the company                                                                      |
+| name                | STRING, the name of the gate/experiment                                                            |
+| rule                | STRING, for gates, this refers to the rule name                                                    |
+| experiment_group    | STRING, the group the user was assigned to                                                         |
+| pst_date            | DATE, the 24hr window the the data refers to. All dates are anchored from 12:00a -> 11:59p PST.    |
+| metric_type         | STRING, the type of the metric, e.g. ratio                                                         |
+| metric_name         | STRING, the name of the metric                                                                     |
+| metric_dimension    | STRING, the name of the metric dimension. '!statsig_topline' is the overall metric with no slicing |
+| units               | BIGINT, the number of users included in this metric                                                |
+| participating_units | BIGINT, the number of users participated in this metric                                            |
+| mean                | DOUBLE, the average value of this metric across units (or participating units when applicable)     |
+| total               | DOUBLE, the sum of this metric across units                                                        |
+| stddev              | DOUBLE, the standard deviation of this metric across units                                         |
+| stderr              | DOUBLE, the standard error of this metric across units                                             |
+| varpop              | DOUBLE, the varpop of this metric                                                                  |
+
+- New columns may be added in the future.
+
+<br/>
+<hr/>
+
+# Deprecated: v1/get_daily_report
 
 ## Authorization
 
@@ -49,41 +104,3 @@ curl \
 }
 ```
 
-## Report Schema - type = first_exposures
-
-| Column Name             | Description                                                                                   |
-| ----------------------- | --------------------------------------------------------------------------------------------- |
-| copmany_id              |                                                                                               |
-| unit_id                 | Refers to the unit identifier used in the experiment                                          |
-| exposure_type           | Statsig Product used: "check_gate" for Feature Gates, and "get_experiment" for Experiments    |
-| name                    | The name of the gate/experiment                                                               |
-| rule                    | For gates, this refers to the rule name                                                       |
-| experiment_group        | The group the user was assigned to                                                            |
-| first_exposure_utc      | The UTC timestamp when the user was first assigned to the experiment                          |
-| first_exposure_pst_date | The date in PST when the user was first assigned to the experiment                            |
-| as_of_pst_date          | The date this data was generated                                                              |
-| percent                 | Group's rollout percent. This is the rule-level pass-rate, or the experiment's group size     |
-| rollout                 | Rollout version number                                                                        |
-| user_dimensions         | JSON-formatted key-value pairs describing the user's attributes at the time of first exposure |
-
-## Report Schema - type = pulse_daily
-
-| Column Name         | Description                                                                                        |
-| ------------------- | -------------------------------------------------------------------------------------------------- |
-| copmany_id          | STRING, the id of the company                                                                      |
-| name                | STRING, the name of the gate/experiment                                                            |
-| rule                | STRING, for gates, this refers to the rule name                                                    |
-| experiment_group    | STRING, the group the user was assigned to                                                         |
-| pst_date            | DATE, the 24hr window the the data refers to. All dates are anchored from 12:00a -> 11:59p PST.    |
-| metric_type         | STRING, the type of the metric, e.g. ratio                                                         |
-| metric_name         | STRING, the name of the metric                                                                     |
-| metric_dimension    | STRING, the name of the metric dimension. '!statsig_topline' is the overall metric with no slicing |
-| units               | BIGINT, the number of users included in this metric                                                |
-| participating_units | BIGINT, the number of users participated in this metric                                            |
-| mean                | DOUBLE, the average value of this metric across units (or participating units when applicable)     |
-| total               | DOUBLE, the sum of this metric across units                                                        |
-| stddev              | DOUBLE, the standard deviation of this metric across units                                         |
-| stderr              | DOUBLE, the standard error of this metric across units                                             |
-| varpop              | DOUBLE, the varpop of this metric                                                                  |
-
-- New columns may be added in the future.

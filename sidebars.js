@@ -35,6 +35,7 @@ module.exports = {
         "guides/sendgrid-email-abtest",
         "guides/email-campaign-test",
         "guides/cms-integrations",
+        "guides/experiment-analysis",
       ],
     },
     {
@@ -60,6 +61,7 @@ module.exports = {
         },
         "feature-gates/conditions",
         "feature-gates/view-exposures",
+        "feature-gates/feature-gates-lifecycle",
         "feature-gates/best-practices",
       ],
     },
@@ -276,6 +278,7 @@ module.exports = {
         "console-api/autotunes",
         "console-api/daily-reports",
         "console-api/all-endpoints",
+        "console-api/usage-billing",
         "console-api/rules",
       ],
     },
@@ -359,6 +362,15 @@ module.exports = {
         "integrations/jira",
         "integrations/vscode",
         "integrations/terraform",
+        {
+          type: "category",
+          label: "Triggers",
+          link: {
+            type: "doc",
+            id: "integrations/triggers/introduction",
+          },
+          items: ["integrations/triggers/datadog"],
+        },
       ],
     },
     {

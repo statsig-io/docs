@@ -62,3 +62,18 @@ Statsig dedupes billable exposure events for the same user and feature/experimen
 
 Experiment checks that result in no allocation (e.g. the experiment hasn’t started, or has finished) or Feature Gates that have been disabled (fully shipped or abandoned with no rule evaluation) do not generate billable exposure events.
 
+
+## How do I manage my billable event volume?  
+See the question above for what counts as a billable event. Some tools available to keep an eye on your event volume include
+1. Go to the Usage and Billing tab within your Project Settings to download a CSV file that details what gate/experiment checks or events are contributing to your event volume. Open it in Excel and create a Pivot Table using this data to quickly sort and look at top event volume drivers.
+![image](https://user-images.githubusercontent.com/31516123/218547079-ba33751c-43f0-4ff7-8733-501711596333.png)
+
+
+2. The CSV is the richest way to explore usage data. There is some ability to see what gates/experiments or events consume the most events in the Usage and Billing Tab (within Project Settings). This is coming soon in early March 2023.
+![image](https://user-images.githubusercontent.com/31516123/218545373-ac447ba7-1afd-4a0b-99f8-6698c8b2c045.png)
+
+
+3. When Enterprise Contracts begin to approach 75% usage, admins will begin to see warnings about this on the home page.
+![image](https://user-images.githubusercontent.com/31516123/218544792-0c027d19-6c1f-400a-9b8d-2041ad04985e.png)
+
+4. Look for gates that are 0% or 100% pass. These can be launched (always return Pass) or disabled (always return Fail) to stop generating billable events. [More information](https://statsig.com/updates#2/2/2023). With experiments, filter to experiments with Status = In Progress and Created < [day-45] to find long running experiments to make sure these are intentional and not just forgotten.
