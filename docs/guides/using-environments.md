@@ -3,7 +3,7 @@ sidebar_label: Using Environments
 title: Using Environments for Conditional Evaluation outside of Production
 ---
 
-All of our SDKs allow you to set the environment tier your app is currently in during initialization. If you'd like to evaluate feature gates, dynamic configs, and/or experiments to different values in development/staging environment vs. production, you simply need to set the correct environment in your code when initializing and configure the corresponding features in Statsig console to evaluate differently for an environment tier. The sections below goes into details on how to do these.
+All of our SDKs allow you to set the environment tier your app is currently in during initialization. If you'd like to evaluate feature gates, dynamic configs, and/or experiments to different values in development/staging environment vs. production, you simply need to set the correct environment in your code when initializing and configure the corresponding features in the Statsig Console to evaluate differently for an environment tier. The sections below detail how to do this. 
 
 ## SDK Usage
 
@@ -28,15 +28,31 @@ These examples in js and node illustrate the general pattern - refer to your lan
 
 ## Console Usage
 
-Head on over to the console and create a new feature gate.  For this example, I'll call mine "development mode." It will only pass for our development apps.
+Head on over to the Console and create a new Feature Gate.  For this example, I'll call mine "development mode." It will only pass for our development apps.
 
-![Screen Shot 2022-06-26 at 11 42 43 AM](https://user-images.githubusercontent.com/74584483/175829319-85b98b49-969d-4cc6-a81c-eea40a1d48ff.png)
+<img width="486" alt="Screen Shot 2023-02-26 at 3 10 09 PM" src="https://user-images.githubusercontent.com/101903926/221443079-59d81448-d070-4da0-a010-f038016a6b09.png"/>
 
-Then, toggle on the Environment Rules from the overflow menu in the top right:
+At rule creation, you will have the opportunity to configure the target environments for that rule. Check the "Specify Environemnts" checkbox and choose which environments you want your rule to be enabled for. By default unless otherwise specified, a rule is enabled for ALL environments. 
 
-![Screen Shot 2022-06-26 at 11 43 02 AM](https://user-images.githubusercontent.com/74584483/175829349-0efa1daa-f35e-41a0-8d1c-21223bda8bdc.png)
+ <img width="490" alt="Screen Shot 2023-02-26 at 3 12 31 PM" src="https://user-images.githubusercontent.com/101903926/221443202-de70eab5-68d5-4173-8f6d-7c680762212e.png"/>
 
-And select the "development" option:
+Press "Save" and that's it! You can now see which environment(s) your rule is enabled for inline, directly below the rule name. 
+
+<img width="1497" alt="Screen Shot 2023-02-26 at 3 14 59 PM" src="https://user-images.githubusercontent.com/101903926/221443319-597f1e1e-facc-41a0-8b7a-dcff0fec4405.png"/>
+
+You can also easily filter rule-sets by environment via environment filters in the upper right-hand corner of your rule-set within your Feature Gate. 
+
+<img width="1490" alt="Screen Shot 2023-02-26 at 3 19 04 PM" src="https://user-images.githubusercontent.com/101903926/221443466-92616326-bdb3-4025-99de-9fa3fd2af558.png"/>
+
+A rule's target environment(s) can be edited at any time. To do so, tap the "..." on the rule.
+
+<img width="1498" alt="Screen Shot 2023-02-26 at 3 16 42 PM" src="https://user-images.githubusercontent.com/101903926/221443425-c8a5e4fe-f49a-47f9-96a7-568ef2f2dd5d.png"/>
+
+Then select "Edit Rule" and specify any environment changes you want to make. 
+
+
+
+
 
 ![Screen Shot 2022-06-26 at 11 44 27 AM](https://user-images.githubusercontent.com/74584483/175829370-52b03b85-aa1c-4092-a4aa-408840c28e36.png)
 
