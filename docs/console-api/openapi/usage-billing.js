@@ -28,7 +28,7 @@ module.exports = {
     }
   ],
   "paths": {
-    "/project/usage_billing": {
+    "/project/usage_billing/report": {
       "get": {
         "tags": [
           "Usage and Billing"
@@ -123,21 +123,21 @@ module.exports = {
           {
             "schema": {
               "type": "string",
-              "example": "1674155572"
+              "example": "1653327122393"
             },
             "in": "query",
             "name": "start",
-            "description": "start of report window in UNIX",
+            "description": "start of report window in UNIX ms",
             "required": true
           },
           {
             "schema": {
               "type": "string",
-              "example": "1676574663"
+              "example": "1677529431000"
             },
             "in": "query",
             "name": "end",
-            "description": "end of report window in UNIX",
+            "description": "end of report window in UNIX ms",
             "required": true
           }
         ],
