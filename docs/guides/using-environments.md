@@ -3,12 +3,15 @@ sidebar_label: Using Environments
 title: Using Environments for Conditional Evaluation outside of Production
 ---
 
-All of our SDKs allow you to set the environment tier your app is currently in during initialization. If you'd like to evaluate feature gates, dynamic configs, and/or experiments to different values in development/staging environment vs. production, you simply need to set the correct environment in your code when initializing and configure the corresponding features in the Statsig Console to evaluate differently for an environment tier. The sections below detail how to do this. 
+All of our SDKs allow you to set the environment tier your app is currently in during initialization. 
+
+If you'd like to evaluate feature gates, dynamic configs, and/or experiments to different values in lower environments vs. Production, you simply need to set the correct environment in your code when initializing and configure the corresponding Feature Gate rules in the Statsig Console to evaluate differently for a given environment tier. The sections below detail how to do this. 
 
 ## SDK Usage
 
 When initializing the SDK, set the environment via the `StatsigOptions` parameter.  All SDKs accept an SDK key and an (optional) `StatsigOptions` dictionary of parameters.
-One of those options is the `environment` parameter, which has a `tier` field. The `tier` can be one of: "production"/"development"/"staging".  If the environment tier is unset, all checks and event logs are considered "production" data.
+
+One of those options is the `environment` parameter, which has a `tier` field. The `tier` can be any of your pre-configured environments (see below for how to configure new environments).  If the environment tier is unset, all checks and event logs are considered "production" data.
 
 For this example, lets say we are setting the parameter for our development environment/app.
 
