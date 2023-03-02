@@ -24,9 +24,9 @@ Statsig makes it easy for your feature gates to reflect the phase your feature i
 | Status | What it represents | Implication |
 |-------------|-----------------------|---------|
 |   In Progress   | this feature is in the process of being rolled out and tested. | N/A; it’s the default status when you create a gate |
-|   Launched   |  this feature has been safely rolled out to everyone | This gate will always return **default value = TRUE**, and will stop generating billable exposure events; you’ll stop incurring costs. The gate reference is likely safe to be cleaned up in the codebase |
-|   Disabled         | this feature has been safely rolled back from everyone  | This gate will always return **default value = FALSE**, and will stop generating billable exposure events; you’ll stop incurring costs. The gate reference is likely safe to be cleaned up in the codebase |
-|   Archived    | this feature is now a permanent part of your codebase (i.e. flag reference has been removed) | This gate has been receiving 0 checks for the last 7 days, and no checks will be sent this gate anymore |
+|   Launched   |  this feature has been rolled out to everyone | This gate will always return **default value = TRUE**, and will stop generating billable exposure events; you’ll stop incurring costs. The gate reference is likely safe to be cleaned up in the codebase |
+|   Disabled         | this feature has been rolled back from everyone  | This gate will always return **default value = FALSE**, and will stop generating billable exposure events; you’ll stop incurring costs. The gate reference is likely safe to be cleaned up in the codebase |
+|   Archived    | this feature is no longer referenced in code or checked; history on the gate is preserved | This gate has been receiving 0 checks for the last 7 days, and no checks will be sent this gate anymore |
 
 
 ### When/How to update the lifecycle
