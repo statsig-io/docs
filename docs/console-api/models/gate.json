@@ -1,20 +1,11 @@
 {
   "type": "object",
-  "x-examples": {
-    "example-1": {
-      "id": "a_gate",
-      "isEnabled": true,
-      "description": "",
-      "lastModifierName": "CONSOLE API",
-      "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
-      "rules": []
-    }
-  },
   "examples": [
     {
       "id": "a_gate",
       "isEnabled": true,
       "description": "helpful summary of what this gate does",
+      "status": "In Progress",
       "lastModifierName": "CONSOLE API",
       "lastModifierID": "1vaasdfLlkaujjajiuOSBP2",
       "rules": [
@@ -70,6 +61,16 @@
     },
     "description": {
       "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "default": "In Progress",
+      "enum": [
+        "In Progress",
+        "Launched",
+        "Disabled",
+        "Archived"
+      ]
     },
     "lastModifierName": {
       "type": "string"
