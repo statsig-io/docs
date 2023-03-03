@@ -280,7 +280,7 @@ module.exports = {
         {
           Reports: [
             "console-api/daily-reports",
-            "console-api/daily-reports-depricated",
+            "console-api/daily-reports-deprecated",
           ]
         },
         "console-api/all-endpoints",
