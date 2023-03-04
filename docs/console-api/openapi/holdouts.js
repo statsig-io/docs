@@ -85,12 +85,26 @@ module.exports = {
       "overrides_data": {
         "type": "object",
         "x-examples": {
-          "example-1": {
+          "userID Holdout": {
             "passingUserIDs": [
               "passing-user"
             ],
             "failingUserIDs": [
               "failing-user"
+            ]
+          },
+          "customID Holdout": {
+            "passingUserIDs": [
+              "passing-user"
+            ],
+            "failingUserIDs": [
+              "failing-user"
+            ],
+            "passingCustomIDs": [
+              "passing-custom-id"
+            ],
+            "failingCustomIDs": [
+              "failing-custom-id"
             ]
           }
         },
@@ -108,8 +122,28 @@ module.exports = {
             "items": {
               "type": "string"
             }
+          },
+          "passingCustomIDs": {
+            "type": [
+              "array"
+            ],
+            "description": "Custom IDs that are added will be part of the Holdout. Only present if the Holdout's idType is not \"userID\"",
+            "items": {
+              "type": "string"
+            }
+          },
+          "failingCustomIDs": {
+            "type": "array",
+            "description": "Custom IDs that are added will not be part of the Holdout. Only present if the Holdout's idType is not \"userID\"",
+            "items": {
+              "type": "string"
+            }
           }
-        }
+        },
+        "required": [
+          "passingUserIDs",
+          "failingUserIDs"
+        ]
       }
     }
   },
@@ -331,11 +365,6 @@ module.exports = {
               }
             }
           }
-        },
-        "x-codeSample": {
-          "lang": "cURL",
-          "label": "cURL",
-          "source": "curl --request GET 'https://statsigapi.net/console/v1/gates' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
         }
       },
       "post": {
@@ -1285,6 +1314,12 @@ module.exports = {
                         ],
                         "failingUserIDs": [
                           "failing-user"
+                        ],
+                        "passingCustomIDs": [
+                          "passing-custom-id"
+                        ],
+                        "failingCustomIDs": [
+                          "failing-custom-id"
                         ]
                       }
                     }
@@ -1351,6 +1386,306 @@ module.exports = {
             }
           }
         }
+      },
+      "patch": {
+        "summary": "Add Holdout Overrides",
+        "tags": [
+          "Holdouts"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Holdout Overrides updated successfully.",
+                      "data": {
+                        "passingUserIDs": [
+                          "passing-user"
+                        ],
+                        "failingUserIDs": [
+                          "failing-user"
+                        ]
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/overrides_data"
+                    }
+                  }
+                },
+                "examples": {
+                  "UserID Holdout": {
+                    "value": {
+                      "message": "Holdout Overrides updated successfully.",
+                      "data": {
+                        "passingUserIDs": [
+                          "passing-user",
+                          "new-passing-user-id"
+                        ],
+                        "failingUserIDs": [
+                          "failing-user",
+                          "new-failing-user-id"
+                        ]
+                      }
+                    }
+                  },
+                  "CustomID Holdout": {
+                    "value": {
+                      "message": "Holdout Overrides updated successfully.",
+                      "data": {
+                        "passingUserIDs": [
+                          "passing-user",
+                          "new-passing-user-id"
+                        ],
+                        "failingUserIDs": [
+                          "failing-user",
+                          "new-failing-user-id"
+                        ],
+                        "passingCustomIDs": [
+                          "passing-custom-id",
+                          "new-passing-custom-id"
+                        ],
+                        "failingCustomIDs": [
+                          "failing-custom-id",
+                          "new-failing-custom-id"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "patch-holdouts-holdout_id-overrides",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/overrides_data"
+              },
+              "examples": {
+                "UserID Holdout": {
+                  "value": {
+                    "passingUserIDs": [
+                      "new-passing-user-id"
+                    ],
+                    "failingUserIDs": [
+                      "new-failing-user-id"
+                    ]
+                  }
+                },
+                "CustomID Holdout": {
+                  "value": {
+                    "passingUserIDs": [
+                      "passing-user"
+                    ],
+                    "failingUserIDs": [
+                      "failing-user"
+                    ],
+                    "passingCustomIDs": [
+                      "passing-custom-id"
+                    ],
+                    "failingCustomIDs": [
+                      "failing-custom-id"
+                    ]
+                  }
+                }
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/overrides_data"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "passingUserIDs": [
+                      "string"
+                    ],
+                    "failingUserIDs": [
+                      "string"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Add individual ids to an id list"
+      },
+      "delete": {
+        "summary": "Remove Holdout Overrides",
+        "tags": [
+          "Holdouts"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Holdout Overrides updated successfully.",
+                      "data": {
+                        "passingUserIDs": [
+                          "passing-user"
+                        ],
+                        "failingUserIDs": [
+                          "failing-user"
+                        ]
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/overrides_data"
+                    }
+                  }
+                },
+                "examples": {
+                  "UserID Holdout": {
+                    "value": {
+                      "message": "Holdout Overrides updated successfully.",
+                      "data": {
+                        "passingUserIDs": [
+                          "passing-user"
+                        ],
+                        "failingUserIDs": [
+                          "failing-user"
+                        ]
+                      }
+                    }
+                  },
+                  "CustomID Holdout": {
+                    "value": {
+                      "message": "Holdout Overrides updated successfully.",
+                      "data": {
+                        "passingUserIDs": [
+                          "passing-user"
+                        ],
+                        "failingUserIDs": [
+                          "failing-user"
+                        ],
+                        "passingCustomIDs": [
+                          "passing-custom-id"
+                        ],
+                        "failingCustomIDs": [
+                          "failing-custom-id"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "delete-holdouts-holdout_id-overrides",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/overrides_data"
+              },
+              "examples": {
+                "UserID Holdout": {
+                  "value": {
+                    "passingUserIDs": [
+                      "remove-passing-user-id"
+                    ],
+                    "failingUserIDs": [
+                      "remove-failing-user-id"
+                    ]
+                  }
+                },
+                "CustomID Holdout": {
+                  "value": {
+                    "passingUserIDs": [
+                      "remove-passing-user"
+                    ],
+                    "failingUserIDs": [
+                      "remove-failing-user"
+                    ],
+                    "passingCustomIDs": [
+                      "remove-passing-custom-id"
+                    ],
+                    "failingCustomIDs": [
+                      "remove-failing-custom-id"
+                    ]
+                  }
+                }
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/overrides_data"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "passingUserIDs": [
+                      "string"
+                    ],
+                    "failingUserIDs": [
+                      "string"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Remove selected ids from an id list"
       }
     }
   }

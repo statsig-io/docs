@@ -35,6 +35,7 @@ module.exports = {
         "guides/sendgrid-email-abtest",
         "guides/email-campaign-test",
         "guides/cms-integrations",
+        "guides/experiment-analysis",
       ],
     },
     {
@@ -121,6 +122,7 @@ module.exports = {
         "experiments-plus/make-decision",
         "experiments-plus/overrides",
         "experiments-plus/abandon",
+        "experiments-plus/ending-experiment",
         "experiments-plus/disable-group",
         {
           Experimentation: [
@@ -277,6 +279,7 @@ module.exports = {
         "console-api/autotunes",
         "console-api/daily-reports",
         "console-api/all-endpoints",
+        "console-api/usage-billing",
         "console-api/rules",
       ],
     },
