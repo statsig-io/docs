@@ -13,17 +13,24 @@ function wireClickHandlers(tagName) {
 }
 
 function initStatsig() {
-  statsig.initialize(
-    'client-oJY6hTJeduhEN2bf6fh6unHvxIk9UsjS99BlO4owh0r', 
-    null, 
-    { environment: { tier: window.statsigTier }}
-  ).then((err) => {
-    statsig.logEvent(
-      'page_view', 
-      window.location.pathname, 
-      { page : window.location.href, referrer: document && document.referrer }
-    );
-  });
+  // Remove for now in favour of web experiments
+  // statsig.initialize(
+  //   'client-oJY6hTJeduhEN2bf6fh6unHvxIk9UsjS99BlO4owh0r', 
+  //   null, 
+  //   { environment: { tier: window.statsigTier }}
+  // ).then((err) => {
+  //   statsig.logEvent(
+  //     'page_view', 
+  //     window.location.pathname, 
+  //     { page : window.location.href, referrer: document && document.referrer }
+  //   );
+  // });
+
+  statsig.logEvent(
+    'page_view',
+    window.location.pathname, 
+    { page : window.location.href, referrer: document && document.referrer }
+  );
 }
 
 function setupKoala() {
