@@ -1,0 +1,76 @@
+---
+title: Managing Experiments With Terraform
+sidebar_label: Managing Experiments
+---
+
+You can create a .tf file (Terraform File) to configure your Statsig experiments. All features of [console/v1/experiments](/console-api/experiments) are supported. The layout is very similar to the JSON body of a /experiments request.
+
+Requiring the Statsig provider. (You will need to change the version).
+
+```go
+terraform {
+  required_providers {
+    statsig = {
+      version = "x.x.x"
+      source  = "statsig-io/statsig"
+    }
+  }
+}
+```
+
+## Basic Example
+
+Creating a basic experiment resource
+
+```go
+resource "statsig_experiment" "my_experiment" {
+  name        = "my_experiment"
+  description = "A short description of what we are experimenting on."
+  id_type     = "userID"
+  allocation  = 10
+  status      = "setup"
+  groups {
+    name                  = "Test Group"
+    size                  = 50
+    parameter_values_json = jsonencode({ "a_string" : "test_string", "a_bool" : true })
+  }
+  groups {
+    name                  = "Control Group"
+    size                  = 50
+    parameter_values_json = jsonencode({ "a_string" : "control_string", "a_bool" : false })
+  }
+}
+```
+
+## Changing Experiment Status
+
+You can update the `status` field to four possible values, **setup**, **active**, **decision_made** and **abandoned**.
+
+If you would like to see code examples of how the **Setup -> Run -> Ship** flow works for an experiment, check out our [Terraform Acceptance Tests](#) for experiments.
+
+#### Status: setup
+
+When an experiment has this status, you are stating that your experiment is not ready, and no values will be served via a Statsig SDK or the HttpAPI.
+
+#### Status: active
+
+When an experiment has this status, you are marking the experiment as running, and it will start returning values to your users and collecting analytics data.
+
+#### Status: decision_made
+
+When an experiment has this status, you are stating that your experiment is complete and you have picked an experiment group that you would like to ship.
+Changing to this state will require the `launched_group_id` field to be set will the GroupID found on [console.statsig.com](https://console.statsig.com).
+
+#### Status: abandoned
+
+Experiments with this status will not serve any values and will not collect any analytics information.
+
+:::info
+
+- You may only create an experiment with the status "setup" or "active".
+
+- You can only transition to "decision_made" from "setup".
+
+:::
+
+A full experiment example is included in the open source Github repo https://github.com/statsig-io/terraform-provider-statsig/todo
