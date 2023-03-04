@@ -23,6 +23,7 @@ checkGate
 CIs
 CloudFront
 CNAME
+codebase
 CodeLens
 config
 configs
@@ -87,9 +88,13 @@ JSON
 Json
 json
 kb
+Kinesis
 Kohavi
 KPIs
+LaunchDarkly
+LaunchDarkly's
 learnings
+lifecycle
 linearize
 listview
 LogDNA
@@ -175,6 +180,7 @@ topline
 tradeoffs
 UI
 Unarchive
+Unarchived
 Unarchiving
 uncaptured
 uncheck
@@ -205,3 +211,4 @@ wonkish
 workspaces
 xAU
 Xu
+yyyy

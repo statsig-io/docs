@@ -30,6 +30,10 @@ module.exports = {
         name: "og:image:type",
         content: "image/jpg",
       },
+      {
+        name: "twitter:image",
+        content: "/img/docs_meta.jpg",
+      },
     ],
     navbar: {
       title: "",
@@ -113,7 +117,7 @@ module.exports = {
               {
                 tagName: "script",
                 attributes: {
-                  src: "https://cdn.jsdelivr.net/npm/statsig-js@4.22.3/build/statsig-prod-web-sdk.min.js",
+                  src: "https://statsigapi.net/v1/web_experiments?k=client-oJY6hTJeduhEN2bf6fh6unHvxIk9UsjS99BlO4owh0r",
                 },
               },
               {

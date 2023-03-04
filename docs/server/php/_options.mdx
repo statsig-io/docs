@@ -1,0 +1,9 @@
+StatsigOptions is a common configuration parameter across Statsig SDKs. For the PHP SDK, the following are configurable:
+
+- `IDataAdapter` (required) - A class that implements IDataAdapter. Statsig provides the LocalFileDataAdapter, but you can write your own. See [Data Stores](/server/concepts/data_store).
+- `ILoggingAdapter` - A class that implements ILoggingAdapter. Statsig provides the LocalFileLoggingAdapter, but you can write your own. If no adapter is provided, logs will be sent during the request.
+
+You can also configure:
+
+- The environment (see [using environments](https://docs.statsig.com/guides/using-environments)) via `setEnvironmentTier("production" | "staging" | "development")`
+- The event queue size (How many events to track before they are sent to Statsig) via `setEventQueueSize(int $size)`.

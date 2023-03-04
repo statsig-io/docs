@@ -153,14 +153,29 @@ module.exports = {
                   "description": {
                     "type": "string",
                     "description": "A description of the new gate"
+                  },
+                  "idType": {
+                    "type": "string",
+                    "description": "The id type this gate will use, defaults to 'userID'"
                   }
-                }
+                },
+                "required": [
+                  "name"
+                ]
               },
               "examples": {
-                "example-1": {
+                "name/description": {
                   "value": {
                     "name": "a gate",
-                    "description": "helpful summary of what this gate does"
+                    "description": "helpful summary of what this gate does",
+                    "idType": "userID"
+                  }
+                },
+                "customID": {
+                  "value": {
+                    "name": "a_custom_gate",
+                    "description": "this is a gate with a custom idType",
+                    "idType": "customID"
                   }
                 }
               }
@@ -222,15 +237,33 @@ module.exports = {
                       "message": "Gate created successfully.",
                       "data": {
                         "id": "a_gate",
-                        "isEnabled": true,
                         "description": "helpful summary of what this gate does",
+                        "status": "In Progress",
+                        "lastModifierID": "xxxxXXXXxxxxXXXxxxx",
+                        "lastModifiedTime": 1675294285705,
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                        "rules": [],
+                        "lastModifierEmail": null,
+                        "creatorID": "xxxxXXXXxxxxXXXxxxx",
+                        "createdTime": 1674769467002,
+                        "creatorName": "CONSOLE API",
+                        "creatorEmail": null,
+                        "idType": "userID",
+                        "isEnabled": true,
                         "devRules": [],
                         "stagingRules": [],
-                        "tags": [],
-                        "checksPerHour": 0
+                        "rules": [
+                          {
+                            "name": "Ten percent of users",
+                            "passPercentage": 10,
+                            "conditions": [
+                              {
+                                "type": "public"
+                              }
+                            ]
+                          }
+                        ],
+                        "checksPerHour": 0,
+                        "tags": []
                       }
                     }
                   }
@@ -378,6 +411,7 @@ module.exports = {
                           "id": "a_gate",
                           "isEnabled": true,
                           "description": "helpful summary of what this gate does",
+                          "status": "In Progress",
                           "lastModifierName": "CONSOLE API",
                           "lastModifierID": "aiK7Y0FddfTimfadf2f9vacz",
                           "rules": [
@@ -612,6 +646,7 @@ module.exports = {
                         "id": "a_gate",
                         "isEnabled": true,
                         "description": "helpful summary of what this gate does",
+                        "status": "In Progress",
                         "lastModifierName": "CONSOLE API",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "rules": [
@@ -777,6 +812,7 @@ module.exports = {
                   "value": {
                     "isEnabled": false,
                     "description": "helpful summary of what this gate does",
+                    "status": "In Progress",
                     "lastModifierName": "CONSOLE API",
                     "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
                     "rules": [
@@ -1111,6 +1147,7 @@ module.exports = {
                         "lastModifierID": "1vaasdfLlkaujjajiuOSBP2",
                         "isEnabled": false,
                         "description": "helpful summary of what this gate does",
+                        "status": "In Progress",
                         "rules": [
                           {
                             "name": "everyone",

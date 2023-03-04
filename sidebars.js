@@ -30,9 +30,12 @@ module.exports = {
         "guides/config-history",
         "guides/production",
         "guides/testing",
+        "guides/uptime",
         "guides/landing-page-experiments",
+        "guides/sendgrid-email-abtest",
         "guides/email-campaign-test",
         "guides/cms-integrations",
+        "guides/experiment-analysis",
       ],
     },
     {
@@ -58,6 +61,7 @@ module.exports = {
         },
         "feature-gates/conditions",
         "feature-gates/view-exposures",
+        "feature-gates/feature-gates-lifecycle",
         "feature-gates/best-practices",
       ],
     },
@@ -118,6 +122,7 @@ module.exports = {
         "experiments-plus/make-decision",
         "experiments-plus/overrides",
         "experiments-plus/abandon",
+        "experiments-plus/ending-experiment",
         "experiments-plus/disable-group",
         {
           Experimentation: [
@@ -241,7 +246,7 @@ module.exports = {
         id: "server/introduction",
       },
       items: [
-        { Concepts: ["server/concepts/user", "messages/serverRequiredUserID"] },
+        { Concepts: ["server/concepts/user", "messages/serverRequiredUserID", "server/concepts/data_store"] },
         "server/nodejsServerSDK",
         "server/javaSdk",
         "server/pythonSDK",
@@ -274,6 +279,7 @@ module.exports = {
         "console-api/autotunes",
         "console-api/daily-reports",
         "console-api/all-endpoints",
+        "console-api/usage-billing",
         "console-api/rules",
       ],
     },
@@ -357,6 +363,15 @@ module.exports = {
         "integrations/jira",
         "integrations/vscode",
         "integrations/terraform",
+        {
+          type: "category",
+          label: "Triggers",
+          link: {
+            type: "doc",
+            id: "integrations/triggers/introduction",
+          },
+          items: ["integrations/triggers/datadog"],
+        },
       ],
     },
     {

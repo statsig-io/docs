@@ -48,7 +48,7 @@ Usage: Simple lists of User IDs to explicitly target or exclude from a gate.
 
 Supported Operators: Any of, none of
 
-Example usage: Add yourself (or a small group like your team) when you just start building a new feature.  Or exclude your designer until its ready for their eyes.
+Example usage: Add yourself (or a small group like your team) when you just start building a new feature.  Or exclude your designer until it's ready for their eyes.
 
 ![Small user id allowlist example](https://user-images.githubusercontent.com/74584483/137389819-d2f20bb5-235b-4d86-b2f4-a73f515909d9.png)
 
@@ -84,7 +84,7 @@ Usage: A particular version of a browser, parsed from the user agent.  Should li
 
 Supported Operators: >=, >, <, <=, any of, none of
 
-Example: Turn off a feature for old verisons of chrome which don't support a certain API
+Example: Turn off a feature for old versions of chrome which don't support a certain API
 
 ![Browser Name and Version example](https://user-images.githubusercontent.com/74584483/137394148-cb84ce40-0478-4f1b-a40e-bec5af8c5e08.png)
 
@@ -106,7 +106,7 @@ Often combined with the Browser Version condition.
 
 Supported Operators: >=, >, <, <=, any of, none of
 
-Example: Turn off a feature for old verisons of chrome which don't support a certain API
+Example: Turn off a feature for old versions of chrome which don't support a certain API
 
 To test: The Browser Name is inferred from the `userAgent`, but if you need to set it explicitly, you can set `browserName` in the user object.
 
@@ -117,7 +117,7 @@ Usage: A particular os version the user is on, parsed from the user agent.  Shou
 
 Supported Operators: >=, >, <, <=, any of, none of
 
-Example: Turn off a feature for verisons of macOS which don't support a certain API
+Example: Turn off a feature for versions of macOS which don't support a certain API
 
 ![Operating System example](https://user-images.githubusercontent.com/74584483/137398532-bac9b55b-07f1-48b2-a0c9-edcaec55d528.png)
 
@@ -128,7 +128,7 @@ Often combined with the OS Version condition.
 
 Supported Operators: any of, none of
 
-Example: Turn off a feature for verisons of macOS which don't support a certain API
+Example: Turn off a feature for versions of macOS which don't support a certain API
 
 To test: The OS is inferred from the `userAgent`, but if you need to set it explicitly, you can set `deviceOS` in the user object.
 

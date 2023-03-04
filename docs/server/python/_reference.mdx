@@ -15,10 +15,10 @@ class StatsigUser:
     user_agent: Optional[str] = None
     country: Optional[str] = None
     locale: Optional[str] = None
-    app_version: Optional[str] = None
-    custom: Optional[dict] = None
-    private_attributes: Optional[dict] = None
-    custom_ids: Optional[dict] = None
+    app_version: Optional[str] = None 
+    custom: Optional[dict] = None # key: string, value: string
+    private_attributes: Optional[dict] = None # key: string, value: string
+    custom_ids: Optional[dict] = None # key: string, value: string
 ```
 
 ### StatsigOptions
@@ -31,6 +31,7 @@ class StatsigOptions:
         self,
         api: str = "https://statsigapi.net/v1/",
         tier: Union[str, StatsigEnvironmentTier, None] = None,
+        init_timeout: Optional[int] = None,
         timeout: Optional[int] = None,
         rulesets_sync_interval: int = 10,
         idlists_sync_interval: int = 60,
@@ -38,5 +39,22 @@ class StatsigOptions:
         bootstrap_values: Optional[str] = None,
         rules_updated_callback: Optional[Callable] = None,
         event_queue_size: Optional[int] = 500,
+        data_store: Optional[IDataStore] = None,
+        idlists_thread_limit: int = 3,
+        logging_interval: int = 60
     ):
+```
+
+### DataStore
+
+```py
+class IDataStore:
+    def get(self, key: str) -> Optional[str]:
+        return None
+
+    def set(self, key: str, value: str):
+        pass
+
+    def shutdown(self):
+        pass
 ```
