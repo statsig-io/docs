@@ -68,7 +68,63 @@ module.exports = {
                           "actionType": "gate_create",
                           "date": "Mon Sep 26 2022",
                           "time": "23:46:14 GMT+0000 (Coordinated Universal Time)",
-                          "updatedBy": "Jane Doe"
+                          "updatedBy": "Jane Doe",
+                          "updatedByUserID": "4eoDlYj7svJixZfDsYSn",
+                          "changes": {
+                            "rules": {
+                              "new": [
+                                {
+                                  "groupName": "test",
+                                  "percentagePass": 100,
+                                  "conditionJSON": [
+                                    {
+                                      "conditionType": 1,
+                                      "operator": 0,
+                                      "value": [
+                                        "1"
+                                      ],
+                                      "extraConfig": {}
+                                    }
+                                  ],
+                                  "returnValueJSON": "true",
+                                  "id": "BfGswoMDcsZ4y9Le1d9O",
+                                  "salt": "8df8n90p-d9bj-1l23-c9bl-1m022n9bzps8",
+                                  "environment": "production",
+                                  "rollouts": [],
+                                  "enabledEnvironments": [
+                                    "development",
+                                    "staging",
+                                    "production"
+                                  ]
+                                }
+                              ],
+                              "old": [
+                                {
+                                  "groupName": "test",
+                                  "percentagePass": 100,
+                                  "conditionJSON": [
+                                    {
+                                      "conditionType": 1,
+                                      "operator": 0,
+                                      "value": [
+                                        "1"
+                                      ],
+                                      "extraConfig": {}
+                                    }
+                                  ],
+                                  "returnValueJSON": "true",
+                                  "id": "BfGswoMDcsZ4y9Le1d9O",
+                                  "salt": "8df8n90p-d9bj-1l23-c9bl-1m022n9bzps8",
+                                  "environment": "production",
+                                  "rollouts": [],
+                                  "enabledEnvironments": [
+                                    "development",
+                                    "staging"
+                                  ]
+                                }
+                              ]
+                            }
+                          }
                         },
                         {
                           "id": "19LZJaPtCM4GT1sUbWlqVC",
@@ -77,7 +133,9 @@ module.exports = {
                           "actionType": "config_remove_tag",
                           "date": "Mon Sep 26 2022",
                           "time": "21:25:22 GMT+0000 (Coordinated Universal Time)",
-                          "updatedBy": "John Doe"
+                          "updatedBy": "John Doe",
+                          "updatedByUserID": "fd7dWH15Ddncvl3xhVLH",
+                          "changes": {}
                         },
                         {
                           "id": "76LGVrItCR9WE1iDfNmpHT",
@@ -86,7 +144,9 @@ module.exports = {
                           "actionType": "config_remove_tag",
                           "date": "Mon Sep 26 2022",
                           "time": "21:25:18 GMT+0000 (Coordinated Universal Time)",
-                          "updatedBy": "John Doe"
+                          "updatedBy": "John Doe",
+                          "updatedByUserID": "fd7dWH15Ddncvl3xhVLH",
+                          "changes": {}
                         }
                       ],
                       "pagination": {

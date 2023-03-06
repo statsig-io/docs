@@ -12,7 +12,9 @@
       "actionType": "config_remove_tag",
       "date": "Thu Sep 22 2022",
       "time": "10:44:27 GMT-0700 (Pacific Daylight Time)",
-      "updatedBy": "John Doe"
+      "updatedBy": "John Doe",
+      "updatedByUserID": "fd7dWH15Ddncvl3xhVLH",
+      "changes": {}
     }
   },
   "description": "Audit log object",
@@ -34,6 +36,12 @@
     },
     "updatedBy": {
       "type": "string"
+    },
+    "updatedByUserID": {
+      "type": "string"
+    },
+    "changes": {
+      "type": "object"
     }
   }
 }
