@@ -277,7 +277,12 @@ module.exports = {
         "console-api/metrics",
         "console-api/audit-logs",
         "console-api/autotunes",
-        "console-api/daily-reports",
+        {
+          Reports: [
+            "console-api/daily-reports",
+            "console-api/daily-reports-deprecated",
+          ]
+        },
         "console-api/all-endpoints",
         "console-api/usage-billing",
         "console-api/rules",
