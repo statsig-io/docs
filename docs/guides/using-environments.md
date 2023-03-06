@@ -13,6 +13,8 @@ When initializing the SDK, set the environment via the `StatsigOptions` paramete
 
 One of those options is the `environment` parameter, which has a `tier` field. The `tier` can be any of your pre-configured environments (see below for how to configure new environments).  If the environment tier is unset, all checks and event logs are considered "production" data.
 
+Please note, that per-environment API keys do not affect the evaluation context of feature gates, dynamic configs or experiments: they only restrict which rules the SDK can download. For more information, see the [Per-Environment API keys section](#per-environment-api-keys) further down this page.
+
 For this example, lets say we are setting the parameter for our development environment/app.
 
 Client SDKs take an SDK Key, User, and StatsigOptions parameter:
@@ -64,7 +66,11 @@ Tap **Edit** to configure your environments, as well as reorder the hierarchy of
 
 <img width="489" alt="Screen Shot 2023-02-26 at 5 09 38 PM" src="https://user-images.githubusercontent.com/101903926/221449939-0ba6e53f-bad1-4600-ac99-1833d55230be.png"/>
 
-For privacy and security reasons, you can also configure per-environment API keys via this tab. To generate a new, environment-specific key tap **Generate New Key** and specify the target environments. Please note that the three default environments that are built into all new Projects on Statsig share the same server and client-side API keys. 
+### Per-Environment API keys
+
+For privacy and security reasons, you can also configure per-environment API keys via this tab. This means that any SDK initialized with the API keys generated here, will only see the rules for which it has access. For example, if an SDK it initialized with an API key set to development, it will not know about any rules that have been set for any other environment.
+
+To generate a new, environment-specific key tap **Generate New Key** and specify the target environments. Please note that the three default environments that are built into all new Projects on Statsig share the same server and client-side API keys. 
 
 <img width="1534" alt="Screen Shot 2023-02-26 at 5 15 29 PM" src="https://user-images.githubusercontent.com/101903926/221450416-44348e77-631a-4ae1-98d1-00d5a4c282ad.png"/>
 
