@@ -38,8 +38,8 @@ Choose this option to understand how the length of the experiment impacts the MD
 
 ### Advanced Options
 
-   ![image](https://user-images.githubusercontent.com/90343952/145122364-02af83d7-ea3d-4b24-8a10-506c1f227f8b.png)
-
+   <img width="659" alt="image" src="https://user-images.githubusercontent.com/122306695/224191002-7abe03fb-d920-4772-8f99-fcdf1f43bb7d.png">
+   
 
 Advanced settings to customize the analysis:
 * **One-sided or Two-sided test**: Toggle this setting to select the type of z-test to use for the analysis.  
