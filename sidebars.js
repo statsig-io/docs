@@ -62,6 +62,7 @@ module.exports = {
         "feature-gates/conditions",
         "feature-gates/view-exposures",
         "feature-gates/feature-gates-lifecycle",
+        "feature-gates/permanent-and-stale-gates",
         "feature-gates/best-practices",
       ],
     },
