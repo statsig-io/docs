@@ -1,14 +1,9 @@
 ---
-title: Terraform Provider
+title: Managing Gates With Terraform
+sidebar_label: Managing Gates
 ---
 
-The Statsig Terraform Provider allows you to configure your gates with Terraform. This is achieved by leveraging the Console API. If there is something you need to perform that isn't supported by the Terraform Provider, checkout the [Console API](https://docs.statsig.com/console-api/introduction).
-
-It is hosted on the Terraform registry at https://registry.terraform.io/providers/statsig-io/statsig
-
-## Gates
-
-You can create a .tf file (Terraform File) to configure how your gate works. All features of [console/v1/gates](https://docs.statsig.com/console-api/gates) are supported. The layout is very similar to the JSON body of a /gates request.
+You can create a .tf file (Terraform File) to configure your Statsig feature gates. All features of [console/v1/gates](https://docs.statsig.com/console-api/gates) are supported. The layout is very similar to the JSON body of a /gates request.
 
 Requiring the Statsig provider. (You will need to change the version).
 
@@ -22,6 +17,8 @@ terraform {
   }
 }
 ```
+
+## Basic Example
 
 Creating a basic gate resource
 
@@ -41,7 +38,7 @@ resource "statsig_gate" "my_gate" {
 }
 ```
 
-### Conditions
+## Conditions
 
 All Console API conditions are supported but the syntax needs a little tweaking.
 
@@ -61,6 +58,4 @@ conditions {
 
 See the full list of conditions [here](https://docs.statsig.com/console-api/rules#all-conditions).
 
-
-A full gate example is included in the open source Github repo https://github.com/statsig-io/terraform-provider-statsig/blob/17f1f29c51c4b49db70ed41ccdb0846475d565d6/examples/main.tf
-
+A full gate example is included in the open source Github repo https://github.com/statsig-io/terraform-provider-statsig/blob/main/statsig/test_resources/gate_full.tf

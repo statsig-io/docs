@@ -173,7 +173,7 @@ module.exports = {
         "metrics/create",
         "metrics/archiving-metrics",
         "metrics/create-metric-tags",
-        "metrics/metric-alerts", 
+        "metrics/metric-alerts",
         "metrics/user",
 
         // 301
@@ -247,7 +247,13 @@ module.exports = {
         id: "server/introduction",
       },
       items: [
-        { Concepts: ["server/concepts/user", "messages/serverRequiredUserID", "server/concepts/data_store"] },
+        {
+          Concepts: [
+            "server/concepts/user",
+            "messages/serverRequiredUserID",
+            "server/concepts/data_store",
+          ],
+        },
         "server/nodejsServerSDK",
         "server/javaSdk",
         "server/pythonSDK",
@@ -368,7 +374,18 @@ module.exports = {
         "integrations/event_webhook",
         "integrations/jira",
         "integrations/vscode",
-        "integrations/terraform",
+        {
+          type: "category",
+          label: "Terraform",
+          link: {
+            type: "doc",
+            id: "integrations/terraform/introduction",
+          },
+          items: [
+            "integrations/terraform/terraform_gate",
+            "integrations/terraform/terraform_experiment",
+          ],
+        },
         {
           type: "category",
           label: "Triggers",
