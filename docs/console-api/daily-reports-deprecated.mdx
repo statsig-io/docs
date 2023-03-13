@@ -1,0 +1,53 @@
+---
+title: Daily Reports Deprecated
+sidebar_label: Daily Reports Deprecated
+slug: /console-api/daily-reports-deprecated
+description: Download daily reports deprecated
+# hide_table_of_contents: true
+custom_edit_url: null
+---
+
+# Deprecated: v1/get_daily_report
+
+## Authorization
+
+All requests must include the **Server-Side Secret Key** field in the header. This can can be created in the Project Settings on [console.statsig.com/api_keys](https://console.statsig.com/api_keys). This feature requires Pro or Enterprise Tier.
+
+:::warning
+Please note that this endpoint was previously available for project use, but it has since been deprecated and is no longer accepting new signups. If you were previously added to this endpoint, you may continue to use it, but we recommend transitioning to the new daily reports endpoint.
+:::
+
+## Responses
+
+All responses will contain a **url** field and a **date** field.
+
+- **url** is the URL containing the daily report.
+- **date** is the date of the currentlyavailable report.
+
+## Get Daily Reports
+
+You can [export your Pulse data](https://docs.statsig.com/pulse/export) via the console or using this API. This API supports two types of daily reports:
+
+1. [type=first_exposures](https://docs.statsig.com/pulse#first-exposures-file-description) - Provides a link to download your company's full set of "first exposures" across feature gates and experiments.
+2. [type=pulse_daily](https://docs.statsig.com/pulse#pulse-summary-and-daily-file-description) - Provides a link to download your company's daily experimental results. This data is a single day's results and a full experimental analysis requires the entire duration of the experiment.
+
+This feature is available to Pro and Enterprise tier customers.
+
+```bash
+curl \
+  --header "statsig-api-key: <YOUR-SERVER-SECRET-KEY>" \
+  --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"type": "first_exposures" }' \
+  "https://api.statsig.com/v1/get_daily_report"
+```
+
+**Reponse JSON** :
+
+```json
+{
+  "url": <url to download CSV for the specified type>,
+  "date": <date in PST of data>,
+}
+```
+

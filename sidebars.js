@@ -62,6 +62,7 @@ module.exports = {
         "feature-gates/conditions",
         "feature-gates/view-exposures",
         "feature-gates/feature-gates-lifecycle",
+        "feature-gates/permanent-and-stale-gates",
         "feature-gates/best-practices",
       ],
     },
@@ -283,7 +284,12 @@ module.exports = {
         "console-api/metrics",
         "console-api/audit-logs",
         "console-api/autotunes",
-        "console-api/daily-reports",
+        {
+          Reports: [
+            "console-api/daily-reports",
+            "console-api/daily-reports-deprecated",
+          ]
+        },
         "console-api/all-endpoints",
         "console-api/usage-billing",
         "console-api/rules",
