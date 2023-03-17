@@ -147,6 +147,17 @@ module.exports = {
         },
       };
     },
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            to: '/integrations/terraform/introduction',
+            from: '/integrations/terraform',
+          },
+        ],
+      },
+    ],
   ],
   presets: [
     [
