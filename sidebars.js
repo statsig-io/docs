@@ -12,6 +12,7 @@ module.exports = {
         "guides/first-feature",
         "guides/logging-events",
         "guides/first-dynamic-config",
+        "guides/experiments",
         "guides/abn-tests",
         "guides/first-device-level-experiment",
         "guides/experiment-on-custom-id-types",
