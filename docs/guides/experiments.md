@@ -12,7 +12,7 @@ In this guide, we provide a quick overview of "interesting" experiment types we'
 Ipsum Lorem
 
 
-## Experiment on page frameowrk changes and impact on SEO
+## Experiment on page framework changes and impact on SEO
 Ipsum Lorem
 
 
