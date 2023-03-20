@@ -33,6 +33,7 @@ module.exports = {
         "guides/uptime",
         "guides/landing-page-experiments",
         "guides/sendgrid-email-abtest",
+        "guides/customer-io-email-abtest",
         "guides/email-campaign-test",
         "guides/cms-integrations",
         "guides/experiment-analysis",
@@ -373,6 +374,7 @@ module.exports = {
         "integrations/event_filtering",
         "integrations/event_webhook",
         "integrations/jira",
+        "integrations/vercel",
         "integrations/vscode",
         {
           type: "category",
