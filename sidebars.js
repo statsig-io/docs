@@ -33,6 +33,7 @@ module.exports = {
         "guides/uptime",
         "guides/landing-page-experiments",
         "guides/sendgrid-email-abtest",
+        "guides/customer-io-email-abtest",
         "guides/email-campaign-test",
         "guides/cms-integrations",
         "guides/experiment-analysis",
