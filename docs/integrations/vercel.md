@@ -16,3 +16,8 @@ After setting up the configuration, you can go to Project Settings -> Integratio
 
 <img src="https://user-images.githubusercontent.com/87334575/205373841-c347767e-db59-4763-8d9e-1f55b8970c2d.png" width="403" height="400" />
 
+## Known Limitations
+
+Vercel Edge Config has maximum size limits that may prevent Statsig from pushing configs into your Edge Config. See [here](https://vercel.com/docs/concepts/edge-network/edge-config/edge-config-limits) for the latest Vercel Edge Config limits.
+
+Statsig ID Lists are not currently synced into the Edge Config.
