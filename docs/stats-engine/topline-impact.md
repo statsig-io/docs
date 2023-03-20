@@ -4,11 +4,14 @@ sidebar_label: Topline Impact
 slug: /stats-engine/topline-impact
 ---
 
-The **topline impact** is the measured effect that an active experiment has on the overall topline metric each day.  This is the real impact that results from running the experiment with its current allocation.  The **projected launch impact** is an estimate of the topline impact we expect to see if a decision is made and the test group is launched to all users. This impact is computed relative to the expected baseline value of the topline metric if the experiment wasn't running at all.
+The **topline impact** is the measured effect that an active experiment has on the overall topline metric over the rollup windows.  This is the real impact that results from running the experiment with its current allocation.  The **projected launch impact** is an estimate of the topline impact we expect to see if a decision is made and the test group is launched to all users. This impact is computed relative to the expected baseline value of the topline metric if the experiment wasn't running at all.
 
 ## Computing Topline Impact
 
-The topline impact is computed daily and averaged over the selected dates.  The exact calculation depends on whether the metric represents an absolute quantity or a ratio.
+The topline impact is computed over rollup windows of 7, 14, 28 days, and the impact over an arbitrary date range is approximated by that of closest largest rollup windows. This gives the most accurate estimate and tight confidence interval. 
+>For example, the impact over the recent 30 days is estimated by the impact of 28-day rollup; 12-day window is estimated by that of 7-day rollup.
+
+The exact calculation depends on whether the metric represents an absolute quantity or a ratio:
 
 ### Count and Sum Metrics (event_count, event_dau, sum)
 
@@ -16,7 +19,7 @@ The absolute topline impact is derived directly from the experiment results. It 
 
 ![image](https://user-images.githubusercontent.com/90343952/171673761-504e4de4-4f9b-4107-a228-2c921a725723.png)
 
-Knowing the absolute impact and the overall metric value (as seen in the [metrics dashboard](/metrics/console)), we can compute the relative impact.  This is the percentage change in the overall daily metric value that is attributed to the active experiment.
+Knowing the absolute impact and the overall metric value (as seen in the [metrics dashboard](/metrics/console)), we can compute the relative impact.  This is the percentage change in the overall metric value over the rollup window that is attributed to the active experiment.
 
 ![image](https://user-images.githubusercontent.com/90343952/171680476-c05fd539-0bb9-44f6-96e5-7d5a9f496a3d.png)
 
@@ -38,7 +41,13 @@ The relative impact for ratio metrics is obtained by dividing the absolute impac
 
 The layer allocation of the experiment and the size of the test group are used to estimate a scaling factor *m*, which represents the increase in absolute impact expected when a decision is made to launch the test group.
 
-![image](https://user-images.githubusercontent.com/90343952/171688263-2fcfd88d-ee2e-443e-a1cf-295cf261b3c3.png)
+The launch factor over a rollup window is calculated as
+
+$
+m_{rollup}=\frac{1}{\sum_{1}^{rollup}{layer\_alloc \times group\_pct}} \times rollup
+$
+
+to accommodate changes in allocation during the experiment.
 
 Note that the targeting gate isn't factored in.  The projected impact calculation assumes that the target gate remains the same after the experiment is launched.
 
