@@ -47,7 +47,7 @@ $
 m_{rollup}=\frac{1}{\sum_{1}^{rollup}{layer\_alloc \times group\_pct}} \times rollup
 $
 
-to accomodate changes in allocation during the experiment.
+to accommodate changes in allocation during the experiment.
 
 Note that the targeting gate isn't factored in.  The projected impact calculation assumes that the target gate remains the same after the experiment is launched.
 
