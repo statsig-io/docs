@@ -373,6 +373,7 @@ module.exports = {
         "integrations/event_filtering",
         "integrations/event_webhook",
         "integrations/jira",
+        "integrations/vercel",
         "integrations/vscode",
         {
           type: "category",
