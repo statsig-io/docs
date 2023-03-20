@@ -13,7 +13,7 @@ Want to run an experiment you don't see represented here? Reach out on and ask a
 Placeholder text
 
 
-## Experiment on page frameowrk changes and impact on SEO
+## Experiment on page framework changes and impact on SEO
 Placeholder text
 
 
