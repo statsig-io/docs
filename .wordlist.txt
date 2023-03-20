@@ -88,8 +88,11 @@ JSON
 Json
 json
 kb
+Kinesis
 Kohavi
 KPIs
+LaunchDarkly
+LaunchDarkly's
 learnings
 lifecycle
 linearize

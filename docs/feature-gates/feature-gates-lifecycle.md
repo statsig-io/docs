@@ -24,9 +24,9 @@ Statsig makes it easy for your feature gates to reflect the phase your feature i
 | Status | What it represents | Implication |
 |-------------|-----------------------|---------|
 |   In Progress   | this feature is in the process of being rolled out and tested. | N/A; it’s the default status when you create a gate |
-|   Launched   |  this feature has been safely rolled out to everyone | This gate will always return **default value = TRUE**, and will stop generating billable exposure events; you’ll stop incurring costs. The gate reference is likely safe to be cleaned up in the codebase |
-|   Disabled         | this feature has been safely rolled back from everyone  | This gate will always return **default value = FALSE**, and will stop generating billable exposure events; you’ll stop incurring costs. The gate reference is likely safe to be cleaned up in the codebase |
-|   Archived    | this feature is now a permanent part of your codebase (i.e. flag reference has been removed) | This gate has been receiving 0 checks for the last 7 days, and no checks will be sent this gate anymore |
+|   Launched   |  this feature has been rolled out to everyone | This gate will always return **default value = TRUE**, and will stop generating billable exposure events; you’ll stop incurring costs. The gate reference is likely safe to be cleaned up in the codebase |
+|   Disabled         | this feature has been rolled back from everyone  | This gate will always return **default value = FALSE**, and will stop generating billable exposure events; you’ll stop incurring costs. The gate reference is likely safe to be cleaned up in the codebase |
+|   Archived    | this feature is no longer referenced in code or checked; history on the gate is preserved | This gate has been receiving 0 checks for the last 7 days, and no checks will be sent this gate anymore |
 
 
 ### When/How to update the lifecycle
@@ -83,17 +83,6 @@ _Note: You can only archive feature gates that have not had any checks in the la
         - Checks = 0 checks in last 7 days or 30 days, depending on your comfort level
 
       ![image](https://user-images.githubusercontent.com/120431069/216166665-b9ad6655-4c6e-4b66-8a65-8e94e98e3485.png)
-      
-
-# Managing permanent or long-term gates
-Statsig also lets you mark some feature gates as **Permanent**. **Permanent** feature gates are expected to live in your codebase for an extended period of time, beyond a feature release, usually for operations or infrastructure control. Common examples include user permissions (e.g. premium features based on subscription level) or circuit breakers/kill switches (e.g. terminating a connection to prevent negative customer impact). To make your gates as **Permanent**, go to the individual feature gate page, click on the "..." menu and click on "Mark Gate Permanent".
-  ![image](https://user-images.githubusercontent.com/120431069/220805873-1de86d6a-67a9-49ca-a608-76254e50db89.png)
-### Implications of marking a gate as Permanent
-  - New filter: you can now filter for **Permanent** gates in the metrics catalog
-  - More caution in its management: while you are able to archive or delete a **permanent** feature gate, there will be a warning shown before proceeding
-
-You will be able to change the gate back to **Temporary** (default) at any point. 
-
       
       
 # FAQs

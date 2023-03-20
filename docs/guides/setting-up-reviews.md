@@ -23,7 +23,7 @@ As a Project Admin, you can configure your project to require reviews for any ch
 
 <img width="1168" alt="Screen Shot 2022-05-04 at 5 08 21 AM" src="https://user-images.githubusercontent.com/1315028/166678241-272adade-ca60-4942-bd04-a1413d54864c.png"/>
 
-- Reviewers will now see see an alert on the Statsig console as shown below. When they click on **View Proposed Changes**, they will see a diff of the *current version* in production and *new version*. Reviewers can now **Approve** or **Reject** the submitted changes.
+- Reviewers will now see an alert on the Statsig console as shown below. When they click on **View Proposed Changes**, they will see a diff of the *current version* in production and *new version*. Reviewers can now **Approve** or **Reject** the submitted changes.
 
 <img width="871" alt="image" src="https://user-images.githubusercontent.com/1315028/166675031-43a138eb-c1ec-4272-ad51-bed66c6379b6.png"/>
 

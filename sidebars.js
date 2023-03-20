@@ -33,6 +33,7 @@ module.exports = {
         "guides/uptime",
         "guides/landing-page-experiments",
         "guides/sendgrid-email-abtest",
+        "guides/customer-io-email-abtest",
         "guides/email-campaign-test",
         "guides/cms-integrations",
         "guides/experiment-analysis",
@@ -62,6 +63,7 @@ module.exports = {
         "feature-gates/conditions",
         "feature-gates/view-exposures",
         "feature-gates/feature-gates-lifecycle",
+        "feature-gates/permanent-and-stale-gates",
         "feature-gates/best-practices",
       ],
     },
@@ -122,6 +124,7 @@ module.exports = {
         "experiments-plus/make-decision",
         "experiments-plus/overrides",
         "experiments-plus/abandon",
+        "experiments-plus/ending-experiment",
         "experiments-plus/disable-group",
         {
           Experimentation: [
@@ -171,7 +174,7 @@ module.exports = {
         "metrics/create",
         "metrics/archiving-metrics",
         "metrics/create-metric-tags",
-        "metrics/metric-alerts", 
+        "metrics/metric-alerts",
         "metrics/user",
 
         // 301
@@ -245,7 +248,13 @@ module.exports = {
         id: "server/introduction",
       },
       items: [
-        { Concepts: ["server/concepts/user", "messages/serverRequiredUserID", "server/concepts/data_store"] },
+        {
+          Concepts: [
+            "server/concepts/user",
+            "messages/serverRequiredUserID",
+            "server/concepts/data_store",
+          ],
+        },
         "server/nodejsServerSDK",
         "server/javaSdk",
         "server/pythonSDK",
@@ -276,7 +285,12 @@ module.exports = {
         "console-api/metrics",
         "console-api/audit-logs",
         "console-api/autotunes",
-        "console-api/daily-reports",
+        {
+          Reports: [
+            "console-api/daily-reports",
+            "console-api/daily-reports-deprecated",
+          ]
+        },
         "console-api/all-endpoints",
         "console-api/usage-billing",
         "console-api/rules",
@@ -360,8 +374,20 @@ module.exports = {
         "integrations/event_filtering",
         "integrations/event_webhook",
         "integrations/jira",
+        "integrations/vercel",
         "integrations/vscode",
-        "integrations/terraform",
+        {
+          type: "category",
+          label: "Terraform",
+          link: {
+            type: "doc",
+            id: "integrations/terraform/introduction",
+          },
+          items: [
+            "integrations/terraform/terraform_gate",
+            "integrations/terraform/terraform_experiment",
+          ],
+        },
         {
           type: "category",
           label: "Triggers",
