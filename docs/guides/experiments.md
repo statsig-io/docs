@@ -9,13 +9,13 @@ In this guide, we provide a quick overview of "interesting" experiment types we'
 :::
 
 ## Experiment on email or notification campaigns
-Ipsum Lorem
+Placeholder text
 
 
 ## Experiment on page frameowrk changes and impact on SEO
-Ipsum Lorem
+Placeholder text
 
 
 ## Experiment on non-user ID entities
-Ipsum Lorem
+Placeholder text
 
