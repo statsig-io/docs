@@ -4,7 +4,7 @@ sidebar_label: User Dimensions
 slug: /metrics/user-dimensions
 ---
 
-It is often helpful to be able to break down results by user properties like Free vs Paid, or OS type. Setting User Dimensions lets you slice data by properties like this. 
+It is useful to break down results by user properties like Free vs Paid or the users' OS type. Setting User Dimensions lets you slice data by properties like this. 
 
 You set user dimensions when you create the User object. These are frozen when a user is first exposed to a feature gate or experiment - in case your experiment ends up changing these properties (e.g. convert a Free user to Paid). 
 
