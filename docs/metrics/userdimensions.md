@@ -10,5 +10,5 @@ You set user dimensions when you create the User object. These are frozen when a
 
 ![image](https://user-images.githubusercontent.com/31516123/226679274-01705500-48ee-44d4-8a5c-cbc49d97d0b2.png)
 
-You can run custom queries (Explore) on your Pulse results to group by or filter by these User Dimensions.
+You can run custom queries on your Pulse results (Explore tab) to group by or filter by these User Dimensions.
 ![image](https://user-images.githubusercontent.com/31516123/226679816-5c7d393f-80e2-4670-8978-fc607b5fbe1a.png)
