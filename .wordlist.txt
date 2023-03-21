@@ -219,3 +219,9 @@ alloc
 frac
 SEO
 frameowrk
+KPI
+KPIs
+Pinterest
+VINs
+CustomIDs
+Sendgrid

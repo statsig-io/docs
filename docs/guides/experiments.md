@@ -10,7 +10,7 @@ Want to run an experiment you don't see represented here? Reach out on and ask a
 :::
 
 ## Experiment on email or notification campaigns
-People use Statsig to measure the effectiveness of email and notification campaigns. Tools that allow email/notification campaigns often have some basic A/B testing - measuring open and click through rates, but measuring the experiment in Statsig lets you understand impact on product metrics including retention, usage and revenue. You can find generic guidance [here](https://docs.statsig.com/guides/email-campaign-test) and more specific guidance for [Sendgrid](https://docs.statsig.com/guides/sendgrid-email-abtest) and [Custommer.io](https://docs.statsig.com/guides/customer-io-email-abtest).   
+People use Statsig to measure the effectiveness of email and notification campaigns. Tools that allow email/notification campaigns often have some basic A/B testing - measuring open and click through rates, but measuring the experiment in Statsig lets you understand impact on product metrics including retention, usage and revenue. You can find generic guidance [here](https://docs.statsig.com/guides/email-campaign-test) and more specific guidance for [Sendgrid](https://docs.statsig.com/guides/sendgrid-email-abtest) and [Customer.io](https://docs.statsig.com/guides/customer-io-email-abtest).   
 
 
 ## Experiment on non-user ID entities
