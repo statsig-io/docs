@@ -1,7 +1,7 @@
 ---
 title: User Dimensions
 sidebar_label: User Dimensions
-slug: /metrics/userdims
+slug: /metrics/userdimensions
 ---
 
 It is often helpful to be able to break down results by user properties like Free vs Paid, or OS type. Setting User Dimensions lets you slice data by properties like this. 
