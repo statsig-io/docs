@@ -41,6 +41,9 @@ If you're using a [custom ID](https://docs.statsig.com/guides/experiment-on-cust
 
 The `statsigCustomIDs` field in properties should be an array, where the even index is the name of the user ID type and the odd index is the value of the previous element in the array. Assuming you've created this custom ID type on Statsig (under **ID Type Settings** in your [Project Settings](https://console.statsig.com/settings)), Statsig will automatically recognize these custom identifiers to compute your experiment results appropriately.
 
+#### Mapping segment
+
+
 #### Anonymous Use Cases
 
 If you're running experiments on anonymous users, you can use Segment's `anonymousId` as the unit of randomization. First, you will want to use [the `overrideStableID` option](https://docs.statsig.com/client/jsClientSDK#statsig-options) when initializing the Statsig SDK. This `overrideStableID` parameter is where you can tell Statsig to use the Segment `anonymousId` when tracking anonymous users. You can access Segment's `anonymousId` using `analytics.user().anonymousId()` as [outlined in the Segment docs here](https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/identity/). 
