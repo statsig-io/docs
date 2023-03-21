@@ -5,17 +5,16 @@ title: Experiment Types on Statsig
 
 In this guide, we provide a quick overview of "interesting" experiment types we've seen people run on Statsig. 
 
-:::info This is not exhaustive. Want to run an experiment you don't see represented here? Reach out on and ask about it on [Slack](https://statsig.com/slack).  
+:::info This is not exhaustive
+Want to run an experiment you don't see represented here? Reach out on and ask about it on [Slack](https://statsig.com/slack).  
 :::
 
 ## Experiment on email or notification campaigns
-Ipsum Lorem
-
-
-## Experiment on page frameowrk changes and impact on SEO
-Ipsum Lorem
+People use Statsig to measure the effectiveness of email and notification campaigns. Tools that allow email/notification campaigns often have some basic A/B testing - measuring open and click through rates, but measuring the experiment in Statsig lets you understand impact on product metrics including retention, usage and revenue. You can find generic guidance [here](https://docs.statsig.com/guides/email-campaign-test) and more specific guidance for [Sendgrid](https://docs.statsig.com/guides/sendgrid-email-abtest) and [Custommer.io](https://docs.statsig.com/guides/customer-io-email-abtest).   
 
 
 ## Experiment on non-user ID entities
-Ipsum Lorem
+People use Statsig to control features and experiments by non-user entities like organizations. B2B companies often all users in the same organization to see similar experiences. Statsig lets you define your own CustomIDs and control experiments and features using this. ([see more](https://docs.statsig.com/guides/experiment-on-custom-id-types))
+
+Use cases on Statsig are as varied as watching KPI impact of firmware upgrades on devices, controlling features by VINs on vehicles and even running experiments on page framework changes and measuring impact on SEO, similar to what Pinterest describes [here](https://medium.com/pinterest-engineering/demystifying-seo-with-experiments-a183b325cf4c). 
 
