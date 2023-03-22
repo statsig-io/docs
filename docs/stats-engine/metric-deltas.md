@@ -10,11 +10,11 @@ A metric delta refers to the difference in metric values between the test and co
 
 Two different metric deltas are available in Pulse.  The **absolute delta** is simply the difference between the two means:
 
-![image](https://user-images.githubusercontent.com/90343952/167957643-918eb0f4-cf4b-44df-9fbd-c617bc751232.png)
+$\Delta \bar{X}=\overline{X_t}-\overline{X_c}$
 
 It's often helpful to understand the impact relative to the baseline value of the metric. For example, an absolute delta of +1 clicks/user has different meanings with a baseline value of 1 (+100% increase) vs. a baseline value of 100 (+1% increase).  The **relative delta** is computed using the mean of the control group as the baseline:
 
-![image](https://user-images.githubusercontent.com/90343952/167957805-1c2328e7-5909-4f72-afc3-7f8096750168.png)
+$\Delta \bar{X} \%=\frac{\bar{X}_t-\bar{X}_c}{\bar{X}_c} \times 100 \%$
 
 ## Computing Means
 
@@ -26,7 +26,7 @@ These metrics represent totals: Number of times an event occurs, sum of time spe
 
 The mean value of the metric *X* is given by:  
 
-![image](https://user-images.githubusercontent.com/90343952/167957910-dde0c585-5fde-4fcf-9722-dfd2f048036f.png)
+$\bar{X}=\frac{1}{N} \sum_{i=0}^N \sum_{d=0}^{n_i} X_{i, d}$
 
 where 
 * *N* is the number of users in the group 
@@ -39,13 +39,13 @@ Note that only user metrics recorded after a user has been exposed to the experi
 
 Event DAU metrics capture the number of distinct users that have the event each day.  In Pulse results, they are normalized by the number of days the user has been in the experiment.  This represents the probability that a user is daily active for that event, i.e. the daily participation rate.  In the terms defined above, the event DAU group mean is given by:
 
-![image](https://user-images.githubusercontent.com/90343952/167958004-7e1257d5-5a34-4d32-928f-2de185cf5569.png)
+$\bar{X}=\frac{1}{N} \sum_{i=0}^N \frac{1}{n_i} \sum_{d=0}^{n_i} X_{i, d}$
 
 The following user accounting metrics are computed in the same may: *DAU, WAU, MAU_28day, L7, L14, L28*
 
 For new user accounting (*new_DAU, new_WAU, new_MAU_28day*) we count users that are new xAU at some point during the analysis window.  So the group mean is given by:
 
-![image](https://user-images.githubusercontent.com/90343952/174866462-aff0ce19-6e9e-497e-9021-e4e6c595bca4.png)
+$\bar{X}=\frac{1}{N} \sum_{i=0}^N \max \left(X_i\right)$
 
 Where *max(X<sub>i</sub>)* is the maximum value of the new xAU metric for user *i*.
 
@@ -53,7 +53,7 @@ Where *max(X<sub>i</sub>)* is the maximum value of the new xAU metric for user *
 
 These are metrics such as click through rate, average purchase value, sessions per user, etc. They're obtained by diving a numerator value, *X*, by a denominator value, *Y*.  The mean value of a ratio metric *R* for an experiment group is given by:
 
-![image](https://user-images.githubusercontent.com/90343952/167958053-044b0554-e33e-406b-8119-1a748a187fe1.png)
+$\bar{R}=\frac{\frac{1}{N} \sum_{i=0}^N \sum_{d=0}^{n_i} X_{i, d}}{\frac{1}{N} \sum_{i=0}^N \sum_{d=0}^{n_i} Y_{i, d}}=\frac{\bar{X}}{\bar{Y}}$
 
 Where *N* is the number of users in the experiment group that participate in the metric, i.e. have a non-zero denominator value. *X<sub>i,d</sub>* and  *Y<sub>i,d</sub>* are the *X* and *Y* values for user *i* on day *d*. 
 
