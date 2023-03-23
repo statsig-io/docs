@@ -34,7 +34,7 @@ Statsig provides multiple options for you to import or pipeline your exposure ev
 ![image](https://user-images.githubusercontent.com/120431069/226689948-4f9e18fb-1427-4751-b489-2ddad163255d.png)
 
 Select the data source you wish to connect to, and follow the guides linked below to set up the connection and data mapping - 
-- **Snowflake, Databricks, redshift, Synapse, BigQuery** Data Warehouse Ingestion (most common): Follow this [guide](https://docs.statsig.com/data-warehouse-ingestion/introduction)  
+- **Snowflake, Databricks, Redshift, Synapse, BigQuery** Data Warehouse Ingestion (most common): Follow this [guide](https://docs.statsig.com/data-warehouse-ingestion/introduction)  
 - **Segment**: Follow [Segment’s instructions](https://segment.com/docs/connections/destinations/catalog/statsig/) to set up Statsig as a **destination** from Segment for the source of your exposure events
 - **mParticle**: Follow [mParticle’s instructions](https://docs.mparticle.com/integrations/statsig/event/) to set up the Statsig integration
 - **API**: Follow this [guide](https://docs.statsig.com/http-api#log-exposure-event)
