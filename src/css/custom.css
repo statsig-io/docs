@@ -125,3 +125,7 @@ html[data-theme="dark"] {
   background-color: blue;
   color: red;
 }
+
+span.math.math-inline {
+  font-size: 150%;
+}

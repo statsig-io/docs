@@ -162,6 +162,7 @@ module.exports = {
             "metrics/raw-event-metrics",
             "metrics/custom-metrics",
             "metrics/precomputed-metrics",
+            "metrics/user-dimensions",
             "metrics/metric-dimensions",
           ],
         },
