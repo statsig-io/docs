@@ -361,15 +361,6 @@ module.exports = {
           ],
         },
         {
-          "Data Imports (Deprecated)": [
-            "integrations/data-imports/overview-deprecated",
-            "integrations/data-imports/bigquery-deprecated",
-            "integrations/data-imports/redshift-deprecated",
-            "integrations/data-imports/snowflake-deprecated",
-            "integrations/data-imports/azure_upload-deprecated",
-          ],
-        },
-        {
           "Data Exports": ["integrations/data-exports/overview"],
         },
         "integrations/event_filtering",
