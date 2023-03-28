@@ -23,6 +23,7 @@ import {
   Shutdown,
   LocalOverrides,
   Reference,
+  FetchMode,
 } from "./Templates/index.mdx";
 
 import Install from "./React/_install.mdx";
@@ -70,6 +71,7 @@ export const Result = SDKDocsBuilder(
       { excludeMentionToDirectUpdateUser: true, updateUser: <InitUser /> },
     ],
     [UpdateUser, {}],
+    [FetchMode, { addedInVersion: "1.26.0", sdk: "React" }],
     [SSR, {}],
     [ManualExposures, { addedInVersion: "1.21.0", ...ManualExposureSnippets }],
     [Testing, {}],
