@@ -36,3 +36,5 @@
   - Completely disable the use of local storage for the lifecycle of this `initialize` -> `shutdown`. The only access to local storage will be to clear out existing keys when statsig is `shutdown`
 - **initCompletionCallback?** `(initDurationMs: number, success: boolean, message: string | null) => void`, default null
   - A callback that's invoked whenever initialization has completed.
+- **fetchMode?** `network-only | cache-or-network`, default `network-only`
+  - Changes the behavior of updateUser calls. See [Fetch Mode](#fetch-mode-) for more details.

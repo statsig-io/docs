@@ -20,6 +20,7 @@ import {
   Shutdown,
   LocalOverrides,
   StableID,
+  FetchMode,
 } from "./Templates/index.mdx";
 
 import Install from "./js/_install.mdx";
@@ -69,6 +70,7 @@ export const Result = SDKDocsBuilder(
       PrefetchUsers,
       { config: <PrefetchUsersConfig />, methodCall: <PrefetchUsersMethod /> },
     ],
+    [FetchMode, { addedInVersion: "4.32.0", sdk: "JS" }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [LocalOverrides, { localOverrides: <LocalOverridesSnippet /> }],

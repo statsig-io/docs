@@ -24,7 +24,7 @@ To ingest your events from Segment,
 
 ![image](https://user-images.githubusercontent.com/1315028/150830169-17564060-816b-4c5c-ade9-10bf6274265a.png)
 
-#### User IDs and Custom IDs
+### User IDs and Custom IDs
 
 Statsig automatically detects the `event` and `userId` fields that you log through your Segment [`track`](https://segment.com/docs/connections/spec/track/) event. If you're running an experiment with the user as your unit type, this userID should match the user identifer that you log with the Statsig SDK, for example when you expose the the user to a Statsig feature gate or experiment.
 
@@ -41,17 +41,20 @@ If you're using a [custom ID](https://docs.statsig.com/guides/experiment-on-cust
 
 The `statsigCustomIDs` field in properties should be an array, where the even index is the name of the user ID type and the odd index is the value of the previous element in the array. Assuming you've created this custom ID type on Statsig (under **ID Type Settings** in your [Project Settings](https://console.statsig.com/settings)), Statsig will automatically recognize these custom identifiers to compute your experiment results appropriately.
 
-#### Anonymous Use Cases
+### Custom ID Mapping
+The Segment integration also allows the mapping of top level fields to Statsig Custom IDs. To do this, visit the Segment panel on the Statsig Integrations page and look for the "Map Identifier" section. Here you can choose fields you would like mapped to a Custom ID.
 
 If you're running experiments on anonymous users, you can use Segment's `anonymousId` as the unit of randomization. First, you will want to use [the `overrideStableID` option](https://docs.statsig.com/client/jsClientSDK#statsig-options) when initializing the Statsig SDK. This `overrideStableID` parameter is where you can tell Statsig to use the Segment `anonymousId` when tracking anonymous users. You can access Segment's `anonymousId` using `analytics.user().anonymousId()` as [outlined in the Segment docs here](https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/identity/). 
 
 Then, you will map the `anonymousId` to the `stableId` (or another CustomID you're using) in the Segment integration modal in Statsig.
 
-![image](https://user-images.githubusercontent.com/31516123/197004042-1747af2f-88e8-471d-a646-683ca6f7f6e0.png)
+:warning: **Warning:** values passed in `properties.statsigCustomIDs` will take precedence over mapped identifiers below.
+
+<img src="https://user-images.githubusercontent.com/26360698/226498584-36148ee4-f1e5-4a19-bdda-a71a4a923ad5.png"/>
 
 <StatsigEnvironmentFormat />
 
-#### Syncing Statsig Segment ID Lists with Segment Personas Audiences
+### Syncing Statsig Segment ID Lists with Segment Personas Audiences
 
 By using [Segment Personas Audiences](https://segment.com/docs/personas/audiences/) you are able to maintain a list of users that can be used for targeting using [Statsig Feature Gates](/feature-gates). To configure this:
 

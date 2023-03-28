@@ -8,7 +8,7 @@ WORKDIR /usr/app
 COPY ./ ./
 
 RUN npm install -g pnpm
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 RUN pnpm build
 
 ## production environment
