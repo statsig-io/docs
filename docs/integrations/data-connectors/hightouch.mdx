@@ -1,0 +1,38 @@
+## **title: Hightouch**
+
+## **Overview**
+
+Enabling the **[Hightouch](https://hightouch.com/)** integration allows you to send events and keep segments up-to-date in Statsig via Hightouch. You can ingest data into Statsig from [any source](https://hightouch.com/integrations) that Hightouch supports.
+
+You can find all events that Statsig receives from Hightouch in the **[Metrics](https://chat.openai.com/metrics)** tab in the Statsig console, if you’re on a [Pro plan](https://www.statsig.com/pricing). Statsig automatically includes these events in **[Pulse](https://chat.openai.com/pulse)** and **[Experiment](https://chat.openai.com/experiments-plus/monitor)** results for your feature gates and experiments respectively. You can view your updated segment lists on the **[Segments](https://console.statsig.com/segments)** page.
+
+## **Event configuration**
+
+1. From the **[API Keys](https://console.statsig.com/api_keys)** tab in the Statsig console, copy the Statsig **Client-SDK API key.**
+2. Go to the Hightouch **[Destinations** overview page](https://app.hightouch.com/destinations) and click the **Add destination**
+button. Select **Statsig** and click **Continue**. You can then authenticate Hightouch to **Statsig** by entering the appropriate key.
+3. Once you've set up your Statsig destination and have a [model](https://hightouch.com/docs/getting-started/concepts#models) to pull data from, you can set up your sync configuration to begin syncing data. Go to the **[Syncs** overview page](https://app.hightouch.com/syncs) and click the **Add sync** button to begin. Then, select the relevant model and the Statsig destination you previously set-up.
+4. Select **Events** as the sync type.
+5. Enter either a static value or select a column that contains **event names**.
+6. Optionally, select a column that contains the event timestamp. If empty, Statsig uses the time the event arrives at the server.
+7. Choose source columns to sync as event metadata and user attributes, such as the **User ID**.
+8. Finally, select whether you want the first sync to backfill event data or not. For more information about configuration options see [Hightouch’s Statsig docs](https://hightouch.com/docs/destinations/statsig#events).
+9. Run the sync and check that events appear in your Statsig **[Metrics](https://chat.openai.com/metrics)** tab.
+
+## Segment configuration
+
+The Hightouch integration lets you keep your segments up-to-date by adding or removing members based on changes in your source dataset. 
+
+1. From the **[API Keys](https://console.statsig.com/api_keys)** tab in the Statsig console, copy the Statsig **Console API key.**
+2. Go to the Hightouch **[Destinations** overview page](https://app.hightouch.com/destinations) and click the **Add destination**
+button. Select **Statsig** and click **Continue**. You can then authenticate Hightouch to **Statsig** by entering the appropriate key.
+3. Once you've set up your Statsig destination and have a [model](https://hightouch.com/docs/getting-started/concepts#models) to pull data from, you can set up your sync configuration to begin syncing data. Go to the **[Syncs** overview page](https://app.hightouch.com/syncs) and click the **Add sync** button to begin. Then, select the relevant model and the Statsig destination you previously set-up.
+4. Select **Segment** as the sync type.
+5. Select whether you would like to create a new audience or use an existing audience to sync data to. If creating a new audience, you can give it a name. If you leave this input blank, Hightouh uses the name of your model for the audience.
+6. Select the audience's ID type: either **userID** or **stableID**.
+7. Select the source column and Statsig field to match records on. For more information see Hightouch's docs on [record matching](https://hightouch.com/docs/syncs/record-matching).
+5. [Schedule your sync](https://hightouch.com/docs/syncs/schedule-sync-ui) to run as frequently as you need. You can view your updated segment lists on the **[Segments](https://console.statsig.com/segments)** page.
+
+## Troubleshooting
+
+If you have any questions, don’t hesitate to contact [Hightouch support](https://www.notion.so/Hightouch-page-in-Statsig-docs-42b88b32b82b491d9baf1694049955ab) for assistance.
