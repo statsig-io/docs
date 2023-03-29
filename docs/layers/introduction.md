@@ -4,7 +4,7 @@ sidebar_label: Introduction
 slug: /layers
 ---
 
-# What are Layers?
+## What are Layers?
 Layers (a.k.a. Universes) allow us to create experiments that are mutually exclusive to each other. Each layer has a logical representation of all your users and can have experiments created "within" this layer. Users that are in one experiment of a layer, cannot also be in another experiment in the same layer.
 
 ![image](https://user-images.githubusercontent.com/31516123/177894290-465521fa-ebef-4647-acb0-d976cf8e2a7d.png)
@@ -59,12 +59,12 @@ let signUpText = statsig.getLayer('sign_up_tests').get('sign_up_dialog_text', DE
 
 That's all the code you ever need! No more code changes and app releases for new tests. Every time you want to add a new test, simply add a new experiment to the same Layer and choose the parameter `sign_up_dialog_text` as a parameter for the new experiment. The SDK takes care of figuring out which value to serve for the user, based on which experiment the user is allocated to.
 
-# A Note on Exposures 
+## A Word on Exposures
 When calling `getLayer(LayerName<string>)` you won't see any exposure logged, however, you will see an exposure logged when accessing a specific parameter within the layer using `getLayer(LayerName<string>).get(Parameter<string>)`. The name of the exposure event is called `statsig::layer_exposure`. 
 * If the user is assigned to an experiment within the Layer, the `statsig::layer_exposure` exposure event is billable.
 * If the user is not assigned an experiment within the Layer, the `statsig::layer_exposure` exposure event is not billable.
 > You will see multiple exposure events logged for each parameters accessed, but these are de-duped on Statsig servers.
 
-# See it in Action
+## See it in Action
 
 To learn about all that you can do with Layers with an E2E example, see the Statsig tutorial [on Layers in JS](/layers/js-tutorial).
