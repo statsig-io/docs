@@ -13,6 +13,8 @@ We currently support ingestion from the following providers:
 2. [Redshift](redshift.mdx)
 3. [Snowflake](snowflake.mdx)
 4. [Databricks](databricks.mdx)
+5. [Synapse](synapse.mdx)
+6. [S3](s3.mdx)
 
 ### How it works
 
