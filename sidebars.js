@@ -332,6 +332,7 @@ module.exports = {
             "data-warehouse-ingestion/snowflake",
             "data-warehouse-ingestion/databricks",
             "data-warehouse-ingestion/synapse",
+            "data-warehouse-ingestion/s3",
             "data-warehouse-ingestion/faq",
           ],
         },
