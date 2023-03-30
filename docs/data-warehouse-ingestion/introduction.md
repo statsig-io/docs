@@ -60,7 +60,7 @@ See [here](data_mapping.mdx) for more information.
 
 Statsig supports multiple schedules for ingestion. At the scheduled window, we will check if data is present in your warehouse for the latest date, and load if it exists.
 
-At several follow-up windows we will check if the data has changed, and reload it if there's a change larger than 1%.
+At several follow-up windows we will check if the data has changed, and reload it if there's a change larger than 5%.
 
 We also support a user-triggered backfill. This could be useful if a specific metric definition has changed, or you want to resync data older than a few days.
 
