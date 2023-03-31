@@ -20,6 +20,12 @@ If you have a feature built but not yet released, you can run a simple A/B test 
 
 Once an experiment has been started you cannot change the layer. Doing so would impact the integrity of the experiment. Once an experiment has been created, you can no longer change the layer (we may allow this in the future)
 
+## Can I target my experiment at a subset of users. e.g users on iOS only? 
+
+Yes you can! When setting up your experiment you can select a Feature Gate that contains targeting rules. Learn more about feature gates [here](https://docs.statsig.com/feature-gates/working-with).
+![image](https://user-images.githubusercontent.com/31516123/229173350-a1795b5a-bdef-4c58-afb1-36806dc38f1a.png)
+
+
 ## Why should I define parameters for my experiments and get them in code, instead of just get the group?
 
 Even though some products on the market took the latter approach, parameterizing experiments is what companies like Facebook, Uber and Airbnb do in their internal experimentation platform, and it allows for much faster iteration (no code change for new experiments) and more flexible experiment design.
