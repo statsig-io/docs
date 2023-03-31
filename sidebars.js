@@ -358,6 +358,7 @@ module.exports = {
             "integrations/data-connectors/stitch",
             "integrations/data-connectors/mixpanel",
             "integrations/data-connectors/amplitude",
+            "integrations/data-connectors/hightouch",
           ],
         },
         {
