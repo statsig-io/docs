@@ -14,7 +14,7 @@ We're looking for the Cloudflare Account ID, KV Namespace ID and Cloudflare API 
 
 * Cloudflare Account ID - Can be found in Cloudflare portal under **Account Home** -> **Workers**, on the right hand side
 * KV Namespace ID - Can be found in Cloudflare portal under **Account Home** -> **Workers** -> **KV**, and can be copied in the table view
-* Cloudflare API Token - Can be found in Cloudflare portal under **Account Home** -> **Profile** -> **API Tokens**
+* Cloudflare API Token - Can be found in Cloudflare portal under **Account Home** -> **Profile** -> **API Tokens**. We need a token with Account.Workers KV Storage Edit Permissons.
 
 After setting up the integration, implement the [Statsig Cloudflare KV Data Adapter](https://www.npmjs.com/package/statsig-node-cloudflare-kv) into your worker. 
 
