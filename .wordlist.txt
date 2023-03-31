@@ -21,6 +21,7 @@ CDBs
 Changelog
 checkGate
 CIs
+Cloudflare
 CloudFront
 CNAME
 codebase
@@ -88,6 +89,7 @@ JSON
 Json
 json
 kb
+KV
 Kinesis
 Kohavi
 KPIs
