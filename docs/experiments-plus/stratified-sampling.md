@@ -1,7 +1,7 @@
 ---
 title: Stratified Sampling
 sidebar_label: Stratified Sampling
-slug: /experiments-plus/stratifiedsampling
+slug: /experiments-plus/stratified-sampling
 ---
 
 ## Stratified Sampling
