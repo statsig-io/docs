@@ -3,11 +3,14 @@ sidebar_label: Experiment Types
 title: Experiment Types on Statsig
 ---
 
-In this guide, we provide a quick overview of "interesting" experiment types we've seen people run on Statsig. 
+This guide provides a quick overview of  experiment types we've seen people run on Statsig. 
 
 :::info This is not exhaustive
 Want to run an experiment you don't see represented here? Reach out on and ask about it on [Slack](https://statsig.com/slack).  
 :::
+
+## Experiment on anonymous users
+Statsig client SDKs automatically persist a unique device identifier (called StableID) in local storage. This StableID can be used as the identifier experiments will run on. If you already have your own device identifier, you can override the StableID (or add it as a distinct Custom ID). Read more - [stable id experiments](https://docs.statsig.com/guides/first-device-level-experiment), [custom id experiments](https://docs.statsig.com/guides/experiment-on-custom-id-types).
 
 ## Experiment on email or notification campaigns
 People use Statsig to measure the effectiveness of email and notification campaigns. Tools that allow email/notification campaigns often have some basic A/B testing - measuring open and click through rates, but measuring the experiment in Statsig lets you understand impact on product metrics including retention, usage and revenue. You can find generic guidance [here](https://docs.statsig.com/guides/email-campaign-test) and more specific guidance for [Sendgrid](https://docs.statsig.com/guides/sendgrid-email-abtest) and [Customer.io](https://docs.statsig.com/guides/customer-io-email-abtest).   

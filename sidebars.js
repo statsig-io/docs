@@ -332,6 +332,7 @@ module.exports = {
             "data-warehouse-ingestion/snowflake",
             "data-warehouse-ingestion/databricks",
             "data-warehouse-ingestion/synapse",
+            "data-warehouse-ingestion/s3",
             "data-warehouse-ingestion/faq",
           ],
         },
@@ -376,6 +377,7 @@ module.exports = {
         "integrations/event_webhook",
         "integrations/jira",
         "integrations/vercel",
+        "integrations/cloudflare",
         "integrations/vscode",
         {
           type: "category",
