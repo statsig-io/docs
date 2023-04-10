@@ -14,7 +14,7 @@ With large numbers, good randomization typically solves this. However in B2B sce
 Reach out in [Slack](https://statsig.com/slack) if automated stratified sampling is of interest to you. Depending on your scenario we may have a beta for you! 
 
 ### Manual assignment for Stratified Sampling
-When setting up an experiment, you can configure overrides (e.g. force user X or Segment A into Control, force user Y or Segment B into Test). This is  meant for testing; overriden users are excluded from experimental analysis in Pulse results. If you do want manual assignment for stratified sampling, you should check the _Include Overrides in Pulse_ checkbox. 
+When setting up an experiment, you can configure overrides (e.g. force user X or Segment A into Control, force user Y or Segment B into Test). This is  meant for testing; overridden users are excluded from experimental analysis in Pulse results. If you do want manual assignment for stratified sampling, you should check the _Include Overrides in Pulse_ checkbox. 
 
 When you use the Statsig SDK for assignment, it takes care of randomization. When you control assignment of users, you're responsible for making sure users are balanced across experiment groups. Users exposed to the experiment without an override will be randomized like they normally are.  
 
