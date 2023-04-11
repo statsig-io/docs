@@ -112,6 +112,8 @@ metrics
 Mixpanel
 mParticle
 mParticle's
+Namespace
+namespace
 natively
 nav
 ness
