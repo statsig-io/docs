@@ -3,8 +3,7 @@ sidebar_label: Setting up Reviews
 title: Setting up Reviews for Team Workflows  
 ---
 
-You can enable reviews for all Statsig resources such as feature gates, dynamic configs, segments, and experiments 
-that you'll likely deploy to a production environment. 
+You can enable reviews for all Statsig resources such as feature gates, dynamic configs, segments, and experiments that you'll likely deploy to a production environment. 
 
 ### Turning on Change Reviews for a Project
 As a Project Admin, you can configure your project to require reviews for any changes. To enable reviews for your project, 
