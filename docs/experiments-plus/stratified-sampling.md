@@ -15,7 +15,7 @@ This is in development. Reach out in [Slack](https://statsig.com/slack) if autom
 
 ### Manual assignment for Stratified Sampling
 
-When setting up an experiment, you can configure overrides (e.g. force user X or Segment A into Control, force user Y or Segment B into Test). This is  meant for testing; overridden users are excluded from experimental analysis in Pulse results. If you do want manual assignment for stratified sampling, you should check the _Include Overrides in Pulse_ checkbox. This will include the users you've manually overriden into each variant in all metric lift analyses. You can configure 100% of experiment participants into your test variants manually, or configure some subset of participants into variants manually and randomly assign the rest of your participants.
+When setting up an experiment, you can configure overrides (e.g. force user X or Segment A into Control, force user Y or Segment B into Test). This is  meant for testing; overridden users are excluded from experimental analysis in Pulse results. If you do want manual assignment for stratified sampling, you should check the _Include Overrides in Pulse_ checkbox. This will include the users you've manually overridden into each variant in all metric lift analyses. You can configure 100% of experiment participants into your test variants manually, or configure some subset of participants into variants manually and randomly assign the rest of your participants.
 
 When you use the Statsig SDK for assignment, it takes care of randomization. When you control assignment of users, you're responsible for making sure users are balanced across experiment groups.   
 
