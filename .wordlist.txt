@@ -90,6 +90,7 @@ Json
 json
 kb
 KV
+KVs
 Kinesis
 Kohavi
 KPIs
