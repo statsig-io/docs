@@ -44,7 +44,7 @@ $
 The relative impact for ratio metrics is obtained by dividing the absolute impact by the baseline value:
 
 $
-Impact_{rel}=\frac{Imapct_{abs}}{Baseline\_Value} \times 100\%
+Impact_{rel}=\frac{Impact_{abs}}{Baseline\_Value} \times 100\%
 $
 
 ## Computing Projected Launch Impact
@@ -66,7 +66,7 @@ Note that the targeting gate isn't factored in.  The projected impact calculatio
 For count and sum metrics, the projected absolute impact is simply the current topline impact scaled by a factor of *m*.  For example: Consider an experiment running with 50% layers allocation and 50/50 test/control split, so that 25% of all users are in the test group.  If the topline impact is currently +10 events per day, then launching the experiment would lead to +40 events per day. 
 
 $
-Projected_{abs}=Imapct_{abs} \times m
+Projected_{abs}=Impact_{abs} \times m
 $
 
 The relative projected impact is expected percentage change in the topline metric, relative to the baseline value of the metric without the experiment running.
