@@ -13,3 +13,7 @@ Add a dependency on statsig to your:
 ```
 dep_statsig = hex 0.0.1
 ```
+
+:::warn
+NOTE: The SDK currently does not support IP/UA based conditions (browser name/version, os name/version, country), and ID lists.  It will return false for all conditions which rely on those operators.  Please reach out to us if they are important for your use case.
+:::
