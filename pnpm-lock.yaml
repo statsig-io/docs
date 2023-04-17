@@ -30,7 +30,7 @@ specifiers:
   rehype-extract-meta: ^2.0.4
   rehype-katex: '5'
   remark-math: '3'
-  statsig-docusaurus-search: 0.0.2-beta.19
+  statsig-docusaurus-search: 0.0.2-beta.20
   typescript: ^4.6.4
 
 dependencies:
@@ -53,7 +53,7 @@ dependencies:
   rehype-extract-meta: 2.0.4
   rehype-katex: 5.0.0
   remark-math: 3.0.1
-  statsig-docusaurus-search: 0.0.2-beta.19_4gkdfsqnrjoiob5b5tsc4felku
+  statsig-docusaurus-search: 0.0.2-beta.20_4gkdfsqnrjoiob5b5tsc4felku
 
 devDependencies:
   '@types/react': 18.0.14
@@ -3468,6 +3468,10 @@ packages:
       '@types/node': 18.0.0
     dev: false
 
+  /@types/marked/4.0.8:
+    resolution: {integrity: sha512-HVNzMT5QlWCOdeuBsgXP8EZzKUf0+AXzN+sLmjvaB3ZlLqO+e4u0uXrdw9ub69wBKFs+c6/pA4r9sy6cCDvImw==}
+    dev: false
+
   /@types/mdast/3.0.10:
     resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==}
     dependencies:
@@ -6741,6 +6745,12 @@ packages:
     hasBin: true
     dev: false
 
+  /marked/4.3.0:
+    resolution: {integrity: sha512-PRsaiG84bK+AMvxziE/lCFss8juXjNaWzVbN5tXAm4XjeaS9NAHhop+PjQxz2A9h8Q4M/xGmzP8vqNwy6JeK0A==}
+    engines: {node: '>= 12'}
+    hasBin: true
+    dev: false
+
   /match-sorter/6.3.1:
     resolution: {integrity: sha512-mxybbo3pPNuA+ZuCUhm5bwNkXrJTbsk5VWbR5wiwz/GC6LIiegBGn2w3O08UG/jdbYLinw51fSQ5xNU1U3MgBw==}
     dependencies:
@@ -8807,8 +8817,8 @@ packages:
     resolution: {integrity: sha512-d/5Z4/2iiCnHw6Xzghyhb+GcmF89bxwgXG60wjIiZaxnymbyOmI8Hk4VqHXiVVp6u2ysaskFfXg3ekCj4WNftQ==}
     dev: false
 
-  /statsig-docusaurus-search/0.0.2-beta.19_4gkdfsqnrjoiob5b5tsc4felku:
-    resolution: {integrity: sha512-BfDzv/QvfnrwdWkvs44mgO02ZJMTGFExEmatSQKMLQP8Y+VXz4wTZAjXS9yEhq0aLVAs7zv21f2Z3qqdbgsG+Q==}
+  /statsig-docusaurus-search/0.0.2-beta.20_4gkdfsqnrjoiob5b5tsc4felku:
+    resolution: {integrity: sha512-TYoC11wiGiW16vEjWRfOWfx5kC1cuesUAW4oaBkgKcpF6zsPZYh8AEBFumkz2ui5N3mhVGNLwihxdnCqkpKk0A==}
     engines: {node: '>=12'}
     peerDependencies:
       '@docusaurus/theme-common': ^2.0.0-rc.1
@@ -8824,6 +8834,7 @@ packages:
       '@easyops-cn/autocomplete.js': 0.38.1
       '@microsoft/fetch-event-source': 2.0.1
       '@node-rs/jieba': 1.6.1
+      '@types/marked': 4.0.8
       axios: 1.3.5_debug@4.3.4
       cheerio: 1.0.0-rc.12
       clsx: 1.1.1
@@ -8833,6 +8844,7 @@ packages:
       lunr: 2.3.9
       lunr-languages: 1.9.0
       mark.js: 8.11.1
+      marked: 4.3.0
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       tslib: 2.4.0
