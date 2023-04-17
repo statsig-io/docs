@@ -97,7 +97,7 @@ module.exports = {
   },
   plugins: [
     [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
+      require.resolve("statsig-docusaurus-search"),
       {
         hashed: true,
         indexBlog: false,
