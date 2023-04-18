@@ -44,13 +44,25 @@ The `statsigCustomIDs` field in properties should be an array, where the even in
 ### Custom ID Mapping
 The Segment integration also allows the mapping of top level fields to Statsig Custom IDs. To do this, visit the Segment panel on the Statsig Integrations page and look for the "Map Identifier" section. Here you can choose fields you would like mapped to a Custom ID.
 
-If you're running experiments on anonymous users, you can use Segment's `anonymousId` as the unit of randomization. First, you will want to use [the `overrideStableID` option](https://docs.statsig.com/client/jsClientSDK#statsig-options) when initializing the Statsig SDK. This `overrideStableID` parameter is where you can tell Statsig to use the Segment `anonymousId` when tracking anonymous users. You can access Segment's `anonymousId` using `analytics.user().anonymousId()` as [outlined in the Segment docs here](https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/identity/). 
+For example, if you're running experiments on anonymous users, you can use Segment's `anonymousId` as the unit of randomization. First, you will want to [add a new customer identifer to Statsig](https://docs.statsig.com/guides/experiment-on-custom-id-types#step-1---add-companyid-as-a-new-id-type-in-your-project-settings). For this example, we'll call our new custom ID `segmentAnonymousID`. Then, when [initializing](https://docs.statsig.com/client/jsClientSDK#initialize-the-sdk) the Statsig SDK, if you have access to the Segment `anonymousId` you will want to pass it to Statsig as a custom ID. For example, your Statsig initialization may look like this:
+
+```jsx
+const Statsig = require("statsig-js");
+
+await Statsig.initialize(
+  "client-sdk-key",
+  { userID: "some_user_id" },
+  { customIDs: { segmentAnonymousID: "some_segment_anonymous_id" } } 
+);
+```
+
+You can access Segment's `anonymousId` using `analytics.user().anonymousId()` as [outlined in the Segment docs here](https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/identity/). It's important to note, that the Segment SDK may initialize after Statsig SDK, and the `anonymousId` may not be available in that scenario. It's important to check this in your specific implementation. If you're using vanilla javascript, you may want to wait for the `anonymousId` from the Segment SDK after initialization and call the `updateUser()` method on the Statsig SDK to update this ID.
 
 Then, you will map the `anonymousId` to the `stableId` (or another CustomID you're using) in the Segment integration modal in Statsig.
 
 :warning: **Warning:** values passed in `properties.statsigCustomIDs` will take precedence over mapped identifiers below.
 
-<img src="https://user-images.githubusercontent.com/26360698/226498584-36148ee4-f1e5-4a19-bdda-a71a4a923ad5.png"/>
+<img src="https://user-images.githubusercontent.com/5475308/232928291-8b292fa0-d191-4e5c-8bbb-9c94a0581158.png"/>
 
 <StatsigEnvironmentFormat />
 
