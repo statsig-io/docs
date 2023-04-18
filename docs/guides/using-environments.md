@@ -10,14 +10,14 @@ If you'd like to evaluate feature gates, dynamic configs, and/or experiments to 
 ## SDK Usage
 
 There are two main levers for setting environment- 
-1. **Environment-specific SDK keys**- to control which rules are downloaded to a given SDK 
-2. **Environment tier at SDK initialization**- to control which rules are evaluated  
+1. **Environment-specific SDK keys**- used to control which rules are downloaded to a given SDK 
+2. **Environment tier at SDK initialization**- used for evaluating rules   
 
 ### Environment-specific SDK Keys
 Configuring an environment-specific SDK key enables you to control which rule-sets are sent to a given SDK based on environment. For example, if an SDK it initialized with an API key set to development, it will not know about any rules that have been set for any other environment. For more information, see the [Per-Environment API keys section](#per-environment-api-keys) further down this page.
 
 ### Environment Tier Parameter 
-It's important to note that SDK keys can correspond to multiple environments, so it's a good idea to set the environment tier on SDK initialization explicitly, even if you are using an environment-specific SDK key. You can set the environment via the `StatsigOptions` parameter.  All SDKs accept an SDK key and an (optional) `StatsigOptions` dictionary of parameters.
+It's important to note that SDK keys can correspond to multiple environments, so you need to set the environment tier on SDK initialization explicitly, even if you are using an environment-specific SDK key. You can set the environment via the `StatsigOptions` parameter.  All SDKs accept an SDK key and an (optional) `StatsigOptions` dictionary of parameters.
 
 One of these options is the `environment` parameter, which has a `tier` field. The `tier` can be any of your pre-configured environments (see below for how to configure new environments).  If the environment tier is unset, all checks and event logs are considered "production" data.
 
