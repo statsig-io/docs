@@ -380,6 +380,7 @@ module.exports = {
         "integrations/vercel",
         "integrations/cloudflare",
         "integrations/vscode",
+        "integrations/datadog",
         {
           type: "category",
           label: "Terraform",
