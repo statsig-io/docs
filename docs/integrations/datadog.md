@@ -9,23 +9,11 @@ We also offer a Datadog Trigger integration which you can read more about [here]
 
 ### Connecting to Datadog
 
-<ol>
-  <li>
-    To create a Datadog application key, navigate to{' '}
-    <b>Organization Settings</b> &gt; <b>Application Keys</b>. If you have
-    the permission to create application keys, click <b>New Key</b>.
-  </li>
+1. To create a Datadog application key, navigate to **Organization Settings** > **Application Keys**. If you have the permission to create application keys, click **New Key**.
 
 ![Image](https://user-images.githubusercontent.com/26360698/232632837-d1e81380-78a3-48a2-887d-72b13d541b0a.png)
 
-  <br />
-  <li>
-    Paste the API key in the text box at the top of the integration dialog, then hit
-    &quot;Confirm&quot;.
-  </li>
-</ol>
-
-
+2. Paste the API key in the text box at the top of the integration dialog, then hit "Confirm".
 
 If the above is out of date, refer to the [Datadog documentation](https://docs.datadoghq.com/account_management/api-app-keys/#add-application-keys) on how to setup API Keys
 
@@ -39,46 +27,28 @@ to be forwarded to Datadog.
 <br />
 Statsig events are mapped to Datadog metrics with listed tags as follows:
 
-<ul>
-  <li>
-    statsig::gate_exposure -&gt; statsig.check_gate.count
-    <ul>
-      <li>environment</li>
-      <li>name</li>
-      <li>value</li>
-    </ul>
-  </li>
-  <li>
-    statsig::config_exposure -&gt; statsig.get_config.count
-    <ul>
-      <li>environment</li>
-      <li>name</li>
-    </ul>
-  </li>
-  <li>
-    statsig::experiment_exposure -&gt; statsig.get_experiment.count
-    <ul>
-      <li>environment</li>
-      <li>group</li>
-      <li>name</li>
-    </ul>
-  </li>
-  <li>
-    statsig::layer_exposure -&gt; statsig.get_layer.count
-    <ul>
-      <li>environment</li>
-      <li>name</li>
-    </ul>
-  </li>
-  <li>
-    statsig::holdout_exposure -&gt; statsig.get_holdout.count
-    <ul>
-      <li>environment</li>
-      <li>name</li>
-      <li>value</li>
-    </ul>
-  </li>
-</ul>
+- statsig::gate_exposure -> statsig.check_gate.count
+  - environment
+  - name
+  - value
+
+- statsig::config_exposure -> statsig.get_config.count
+  - environment
+
+- statsig::experiment_exposure -> statsig.get_experiment.count
+  - environment
+  - group
+  - name
+
+- statsig::layer_exposure -> statsig.get_layer.count
+  - environment
+  - name
+
+- statsig::holdout_exposure -> statsig.get_holdout.count
+  - environment
+  - name
+  - value
+
 
 #### Example of check_gate metric
 
