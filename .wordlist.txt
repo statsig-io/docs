@@ -21,6 +21,7 @@ CDBs
 Changelog
 checkGate
 CIs
+Cloudflare
 CloudFront
 CNAME
 codebase
@@ -88,6 +89,8 @@ JSON
 Json
 json
 kb
+KV
+KVs
 Kinesis
 Kohavi
 KPIs
@@ -110,6 +113,8 @@ metrics
 Mixpanel
 mParticle
 mParticle's
+Namespace
+namespace
 natively
 nav
 ness
@@ -121,6 +126,7 @@ onboarding
 OpenID
 ordinally
 overlayed
+overridden
 pre
 precomputed
 Precomputing
@@ -226,3 +232,5 @@ VINs
 CustomIDs
 Sendgrid
 overline
+githubusercontent
+png

@@ -4,9 +4,9 @@ sidebar_label: Data Stores
 slug: /server/concepts/data_store
 ---
 
-One common question when configuring statsig is how to design your integration around handling potential points of failure.  For example - in case of a statsig api outage, can my integration continue to function?
+One common question when configuring Statsig is how to design your integration around handling potential points of failure. For example - in case of a statsig api outage, can my integration continue to function?
 
-The short answer is yes.  Your server SDK will continue to operate normally, serving the most recent set of known values in response to calls like `checkGate`, `getConfig`, `getExperiment`, and `getLayer`.
+The short answer is yes. Your server SDK will continue to operate normally, serving the most recent set of known values in response to calls like `checkGate`, `getConfig`, `getExperiment`, and `getLayer`.
 Once the api is back up and operating normally, your SDK will automatically refetch the most up to date version of your project.
 
 But what about spinning up a new server, or a new SDK instance, while Statsig is down?
@@ -18,11 +18,12 @@ This is what we built the `DataAdapter`/`DataStore` for.
 DataAdapters allow you to plug in your own storage solution as a cache for the Statsig server sdk.
 
 They define a simple API that you have to implement: `initialize`, `get`, `set`, and `shutdown` for setup, reading, writing, and closing.
-When a Statsig sdk is initialized with a `DataAdapter`, it will rely on that first as the source of truth for the project definition, before reaching out to Statsig servers.  Whenever it gets an up to date version of the project from our api, it will cache it locally using the DataAdapter.
+When a Statsig SDK is initialized with a `DataAdapter`, it will rely on that first as the source of truth for the project definition, before reaching out to Statsig servers. Whenever it gets an up to date version of the project from our api, it will cache it locally using the DataAdapter.
 
 :::info
-NOTE: DataAdapters are currently only used for the `initialize` path for getting a project definition.  Right now, only the `node`, `php`, and `ruby` sdks can rely on your local cache as the source of truth throughout the lifetime of the SDK instance (with a separate process which keeps those values up to date.)
-If you're interested in using a DataAdapter as the source of truth indefinitely, please reach out and let us know which language this would be useful for!
+NOTE: Most DataAdapters are currently only used for the `initialize` path for getting a project definition.
+
+At the time of this writing, only `Node.js`, `Ruby`, and `.NET` support polling for updates. If you're interested in using a DataAdapter as the source of truth indefinitely, please reach out and let us know which language this would be useful for!
 :::
 
 For information on your specific SDK language, see the language specific docs in the left hand column.
