@@ -4,8 +4,8 @@ title: Datadog
 
 ### Overview
 
-There are two aspects to the Datadog integration, forwarding event counts and change config changes. The goal of this integration is to allow monitoring of Statsig usage for billing purposes and alerts for config changes. 
-We also offer a Datadog Trigger integration which you can read more about [here](https://docs.statsig.com/integrations/triggers/Datadog)
+There are two aspects to the Datadog integration, forwarding event counts and change config changes. The goal of this integration is to allow monitoring of Statsig usage for billing purposes and alerts for config changes.
+We also offer a [Datadog trigger](https://docs.statsig.com/integrations/triggers/datadog) integration.
 
 ### Connecting to Datadog
 
@@ -28,19 +28,23 @@ to be forwarded to Datadog.
 Statsig events are mapped to Datadog metrics with listed tags as follows:
 
 - statsig::gate_exposure -> statsig.check_gate.count
+
   - environment
   - name
   - value
 
 - statsig::config_exposure -> statsig.get_config.count
+
   - environment
 
 - statsig::experiment_exposure -> statsig.get_experiment.count
+
   - environment
   - group
   - name
 
 - statsig::layer_exposure -> statsig.get_layer.count
+
   - environment
   - name
 
@@ -49,11 +53,9 @@ Statsig events are mapped to Datadog metrics with listed tags as follows:
   - name
   - value
 
-
 #### Example of check_gate metric
 
 ![image](https://user-images.githubusercontent.com/26360698/232629870-e1776bd6-c63d-438d-863e-2d7a3a347eab.png)
-
 
 ### Config Changes
 
@@ -64,4 +66,3 @@ someone edits a Feature Gate.
 These events can be found in the Datadog Events Explorer.
 
 ![image](https://user-images.githubusercontent.com/26360698/232636042-ee5cf1d0-e9e7-4158-903b-5a447ab14575.png)
-
