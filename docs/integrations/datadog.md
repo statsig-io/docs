@@ -9,13 +9,13 @@ We also offer a [Datadog trigger](https://docs.statsig.com/integrations/triggers
 
 ### Connecting to Datadog
 
-1. To create a Datadog application key, navigate to **Organization Settings** > **Application Keys**. If you have the permission to create application keys, click **New Key**.
+1. To create a Datadog API key, navigate to **Organization Settings** > **API Keys**. If you have the permission to create API keys, click **New Key**.
 
 ![Image](https://user-images.githubusercontent.com/26360698/232632837-d1e81380-78a3-48a2-887d-72b13d541b0a.png)
 
 2. Paste the API key in the text box at the top of the integration dialog, then hit "Confirm".
 
-If the above is out of date, refer to the [Datadog documentation](https://docs.datadoghq.com/account_management/api-app-keys/#add-application-keys) on how to setup API Keys
+If the above is out of date, refer to the [Datadog documentation](https://docs.datadoghq.com/account_management/api-app-keys/#add-an-api-key-or-client-token) on how to setup API Keys
 
 ### Events
 
