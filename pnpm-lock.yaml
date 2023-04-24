@@ -29,7 +29,7 @@ specifiers:
   rehype-extract-meta: ^2.0.4
   rehype-katex: '5'
   remark-math: '3'
-  statsig-docusaurus-search: 0.0.2-beta.24
+  statsig-docusaurus-search: 0.0.2-beta.33
   typescript: ^4.6.4
 
 dependencies:
@@ -51,7 +51,7 @@ dependencies:
   rehype-extract-meta: 2.0.4
   rehype-katex: 5.0.0
   remark-math: 3.0.1
-  statsig-docusaurus-search: 0.0.2-beta.24_4gkdfsqnrjoiob5b5tsc4felku
+  statsig-docusaurus-search: 0.0.2-beta.33_4gkdfsqnrjoiob5b5tsc4felku
 
 devDependencies:
   '@types/react': 18.0.14
@@ -8636,8 +8636,8 @@ packages:
     resolution: {integrity: sha512-d/5Z4/2iiCnHw6Xzghyhb+GcmF89bxwgXG60wjIiZaxnymbyOmI8Hk4VqHXiVVp6u2ysaskFfXg3ekCj4WNftQ==}
     dev: false
 
-  /statsig-docusaurus-search/0.0.2-beta.24_4gkdfsqnrjoiob5b5tsc4felku:
-    resolution: {integrity: sha512-VjREuvL3ABad/2/TbfBit/YLWC73WJM7GkloeLo4X3akqvDj9A/WDi3YPkdWWehYdHYzKt7MCGIdrRyMEhOLOg==}
+  /statsig-docusaurus-search/0.0.2-beta.33_4gkdfsqnrjoiob5b5tsc4felku:
+    resolution: {integrity: sha512-BYisOa/tEY2xTnJHsqq2afVjO3JfsiViPmduoBcSneFqpuDasDNMgTgjuUW/CNjWwh7BHx0kokvc+elJkmWpSA==}
     engines: {node: '>=12'}
     peerDependencies:
       '@docusaurus/theme-common': ^2.0.0-rc.1
