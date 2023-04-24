@@ -168,19 +168,9 @@ Response:
 `{"name":"YOUR-LAYER-NAME","value":{"color":"blue","shape":"circle"},"ruleID":"2OZdhuDfq3w1UIHovUFRBM", "allocatedExperimentName": "a_experiment"}`
 
 #### Log an exposure event {#log-exposure-event}
+You can log one or more exposure events with this API. 
 
-You can log one or more exposure events with this API. For each exposure object, the "group" parameter should match the "Group Name" in your experiment.
-
-```bash
-curl \
-  --header "statsig-api-key: <YOUR-SDK-KEY>" \
-  --header "Content-Type: application/json" \
-  --request POST \
-  --data '{"exposures": [{"user": {"userID": "user_id_12345"}, "experimentName": "analytics_only_experiment", "group": "Control"}]}' \
-  "https://events.statsigapi.net/v1/log_custom_exposure"
-```
-
-Event inputs to this endpoint can have either of the two following forms:
+##### Experiments
 
 ```
 // Experiment Exposure Events
@@ -191,6 +181,21 @@ group: string,
 time?: number | string, // unix timestamp, optional (request time used if not set)
 ```
 
+For each exposure object, the `"group"` parameter should match the name of your Test Group in your experiment config.
+[![Test group name](https://user-images.githubusercontent.com/2018204/234073412-92dde2b7-7a5d-442f-a539-0c9c1b426a5a.png)
+
+_example experiment exposure_
+```bash
+curl \
+  --header "statsig-api-key: <YOUR-SDK-KEY>" \
+  --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"exposures": [{"user": {"userID": "user_id_12345"}, "experimentName": "analytics_only_experiment", "group": "Daily Deals"}]}' \
+  "https://events.statsigapi.net/v1/log_custom_exposure"
+```
+
+##### Gates
+
 ```
 // Gate Exposure Events
 user: object, // must have a userID or a customID to match with event data.
@@ -199,3 +204,18 @@ group: string,
 passes: boolean,
 time?: number | string, // unix timestamp, optional (request time used if not set)
 ```
+
+For each exposure object, the `"group"` parameter should match the name of your Rule in your gate config.
+![Gate Rule Name](https://user-images.githubusercontent.com/2018204/234073618-e5f1e3c0-9766-4bd3-b927-bad155bbea05.png)
+
+
+_example gate exposure_
+```bash
+curl \
+  --header "statsig-api-key: <YOUR-SDK-KEY>" \
+  --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"exposures": [{"user": {"userID": "user_id_12345"}, "gateName": "saleBanner", "group": "Controls Access", "passes": true}]}' \
+  "https://events.statsigapi.net/v1/log_custom_exposure"
+```
+
