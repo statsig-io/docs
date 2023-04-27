@@ -229,7 +229,7 @@ module.exports = {
         id: "client/introduction",
       },
       items: [
-        { Concepts: ["client/concepts/user"] },
+        { Concepts: ["client/concepts/user", "sdks/debugging"] },
         "client/jsClientSDK",
         "client/reactSDK",
         "client/reactNativeSDK",
@@ -255,6 +255,7 @@ module.exports = {
             "server/concepts/user",
             "messages/serverRequiredUserID",
             "server/concepts/data_store",
+            "sdks/debugging",
           ],
         },
         "server/nodejsServerSDK",
