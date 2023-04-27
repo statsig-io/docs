@@ -62,9 +62,10 @@ export const Result = SDKDocsBuilder(
     [StatsigUser, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
-    [...RefSnippets.toc]
+    [Reference, { snippets: <RefSnippets.default /> }]
   ],
-  toc
+  toc,
+  [...RefSnippets.toc]
 );
 
 <>{Result}</>
