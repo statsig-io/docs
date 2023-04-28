@@ -91,7 +91,7 @@ By default, Pulse results are displayed with 95% confidence intervals and withou
 ### Target Duration
 <img width="1504" alt="Screen Shot 2022-11-23 at 11 44 25 AM" src="https://user-images.githubusercontent.com/101903926/203633616-9e14a0bc-4077-4fd1-8144-2ed2c17a50f8.png"/>
 
-Setting a target duration is optional, but can be good experimental practice to ensure you wait long enough for an experiment to reach full power before reading out the results. You can use the Power Analysis Calculator to help you determine what target duration to set based on which metrics you're looking to move. 
+Setting a target duration is optional, but can be good experimental practice to ensure you wait long enough for an experiment to reach full power before reading out the results. You can set either a target number of days or number of exposures for your experiment, and use the Power Analysis Calculator to  determine what target duration to set based on which metrics you're looking to move. 
 
 <img width="795" alt="Screen Shot 2022-11-23 at 11 48 08 AM" src="https://user-images.githubusercontent.com/101903926/203634126-811bd508-8fc4-4f87-ab63-df5626344331.png"/>
 
