@@ -11,6 +11,9 @@ To read the results of your experiment, go to the **Results** tab, where you wil
 
 **Scorecard** shows the metric lifts for all Primary and Secondary metrics you set up at experiment creation as part of the Scorecard. **All Metrics** shows the experiment impact for all metrics in your Metric Catalog, regardless of whether they were included in the Scorecard or not. 
 
+* **Experiment results are computed for the first 90 days**: By default, Statsig will compute Pulse Results for your experiment for only the first 90 days of your experiment. You will be notified via e-mail as you approach the 90 days cap, at which point will be able to extend this compute window for another 14 days at a time. Your user assignement will continue to run as expected even if the compute window is not extended, until you make a decision on the experiment. 
+
+
 #### Scorecard 
 The **Scorecard** panel shows how your Primary and Secondary experiment metrics for each variant compare against the control. These Primary and Secondary metrics are in the context of the experiment hypothesis, which is also prominently highlighted at the top of the **Scorecard** tab. 
 
