@@ -94,7 +94,7 @@ By default, Pulse results are displayed with 95% confidence intervals and withou
 Setting a target duration is optional, but can be good experimental practice to ensure you wait long enough for an experiment to reach full power before reading out the results. You can set either a target number of days or number of exposures for your experiment, and use the Power Analysis Calculator to  determine what target duration to set based on which metrics you're looking to move. 
 
 * 💡**Selecting target duration greater than 90 days** 💡
-By default, Statsig will compute Pulse Results (i.e. metric lifts) for your experiment for the first 90 days, while your user assignement will continue to work until the experiment stops. While you will be able to extend this compute window as you approach the 90 days cap, it's worthwhile asking why it's necessary to run an experiment beyond 90 days - What conclusion do you expect to see beyond 90 days that you might not see before then? Will this decision still be relevant in 90 days?
+By default, Statsig will compute Pulse Results (i.e. metric lifts) for your experiment for the first 90 days, while your user assignment will continue to work until the experiment stops. While you will be able to extend this compute window as you approach the 90 days cap, it's worthwhile asking why it's necessary to run an experiment beyond 90 days - What conclusion do you expect to see beyond 90 days that you might not see before then? Will this decision still be relevant in 90 days?
 
 
 <img width="795" alt="Screen Shot 2022-11-23 at 11 48 08 AM" src="https://user-images.githubusercontent.com/101903926/203634126-811bd508-8fc4-4f87-ab63-df5626344331.png"/>
