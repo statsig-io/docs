@@ -153,15 +153,15 @@ The user object is a stringified JSON representation. An example might look like
   "ip": "1.1.1.1",
   "country": "KR",
   "locale": "en-US",
-  "userID": "aaaaa-aaaaa-aaaaa-aaaaa",
+  "userID": "bbbbb-bbbbb-bbbbb-bbbbb",
   "custom": {
     "locale": "en-US",
     "clientVersion": "23.10.23.10",
     "desktopVersion": "11.5.0"
   },
   "customIDs": {
-    "deviceId": "aaaaa-aaaaa-aaaaa-aaaaa",
-    "stableID": "aaaaa-aaaaa-aaaaa-aaaaa"
+    "deviceId": "ddddd-ddddd-ddddd-ddddd",
+    "stableID": "sssss-sssss-sssss-sssss"
   }
 }
 ```

@@ -3,8 +3,7 @@ sidebar_label: Setting up Reviews
 title: Setting up Reviews for Team Workflows  
 ---
 
-You can enable reviews for all Statsig resources such as feature gates, dynamic configs, segments, and experiments 
-that you'll likely deploy to a production environment. 
+You can enable reviews for all Statsig resources such as feature gates, dynamic configs, segments, and experiments that you'll likely deploy to a production environment. 
 
 ### Turning on Change Reviews for a Project
 As a Project Admin, you can configure your project to require reviews for any changes. To enable reviews for your project, 
@@ -62,7 +61,13 @@ As a Project Admin, you can allow yourself and other Project Admins to self-appr
 
 <img width="1109" alt="image" src="https://user-images.githubusercontent.com/1315028/166682645-b2daf076-7f8b-4413-9bc7-01e92e8eeb05.png"/>
 
-### Skipping reviews in dev and staging environments 
-If reviews are required on your project, you can add explicit sections for Development and Staging tier rules. These are identical to a rule that has a rule that includes an AND condition that specifies Environment Tier = Dev/Staging. Changes made to the explicit Dev/Staging tier rules do not require approval. 
+### Configuring Review Settings for Different Environments 
+Many teams build, test, and launch new features and experiments across multiple development environments. Statsig makes creating and using environments in feature launches easy via our [Environments support](https://docs.statsig.com/guides/using-environments#configuring-environments). 
 
-![image](https://user-images.githubusercontent.com/31516123/176740260-2fb19763-1bb7-40de-a363-c4a3ae02e07b.png)
+You can also configure which environments require reviews via your **Project Settings**. To do so, go to **Project Settings** --> **Keys & Environments**  --> tap **Edit** on **Environments**. 
+
+By default if you have turned on "Reviews Required" for your Project, reviews will be required for Production, but not non-Production (lower) environments. 
+
+![Screen Shot 2023-04-11 at 9 47 12 AM](https://user-images.githubusercontent.com/101903926/231233087-5b87310d-b33b-456e-b1a7-7a73555c8100.png)
+
+![Screen Shot 2023-04-11 at 9 48 02 AM](https://user-images.githubusercontent.com/101903926/231233356-967c9785-5a89-4cac-a04a-e3f11cb7bb12.png)

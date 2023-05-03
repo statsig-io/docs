@@ -73,6 +73,10 @@ StatsigContext is a [react context](https://reactjs.org/docs/context.html) used 
   - An array of additional StatsigUser objects to be fetched during the `statsig.initialize` call. A max of 5 users is enforced, if more than 5 users are provided, the 5 users at the start of the array will be used.
 - **fetchMode?** `network-only | cache-or-network`, default `network-only`
   - Changes the behavior of updateUser calls. See [Fetch Mode](#fetch-mode-) for more details.
+- **initCompletionCallback?** `(initDurationMs: number, success: boolean, message: string | null) => void`, default null
+  - A callback that's invoked whenever initialization has completed.
+- **updateUserCompletionCallback?** `(durationMs: number, success: boolean, message: string | null) => void`, default null
+  - A callback that's invoked whenever an updateUser call has completed.
 
 ## Hooks
 

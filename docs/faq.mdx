@@ -20,6 +20,15 @@ If you have a feature built but not yet released, you can run a simple A/B test 
 
 Once an experiment has been started you cannot change the layer. Doing so would impact the integrity of the experiment. Once an experiment has been created, you can no longer change the layer (we may allow this in the future)
 
+## Can I target my experiment at a subset of users. e.g users on iOS only? 
+
+Yes you can! When setting up your experiment you can select a Feature Gate that contains targeting rules. 
+![image](https://user-images.githubusercontent.com/31516123/229173350-a1795b5a-bdef-4c58-afb1-36806dc38f1a.png)
+
+Your Feate Gate can explictly pass only users who meet specific criteria - in this example users on iOS. Learn more about feature gates [here](https://docs.statsig.com/feature-gates/working-with).
+![image](https://user-images.githubusercontent.com/31516123/229173998-3099feac-64cc-42fc-a1c3-69c9065d2dd0.png)
+
+
 ## Why should I define parameters for my experiments and get them in code, instead of just get the group?
 
 Even though some products on the market took the latter approach, parameterizing experiments is what companies like Facebook, Uber and Airbnb do in their internal experimentation platform, and it allows for much faster iteration (no code change for new experiments) and more flexible experiment design.
@@ -62,6 +71,7 @@ Statsig dedupes billable exposure events for the same user and feature/experimen
 
 Experiment checks that result in no allocation (e.g. the experiment hasn’t started, or has finished) or Feature Gates that have been disabled (fully shipped or abandoned with no rule evaluation) do not generate billable exposure events.
 
+Layer exposures are slightly more nuanced as outlined [here](/layers#a-note-on-exposures).
 
 ## How do I manage my billable event volume?  
 See the question above for what counts as a billable event. Some tools available to keep an eye on your event volume include

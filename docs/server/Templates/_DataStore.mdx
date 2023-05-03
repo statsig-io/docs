@@ -1,0 +1,20 @@
+## Data Store
+
+If you would like to implement your own caching logic,
+or have finer control over the network requests sent to Statsig,
+you can implement your own DataStore.
+You can provide a DataStore via [StatsigOptions.DataStore](#statsig-options).
+
+If you would like to know more about how Data Stores work, you can read more about the concept [here](/server/concepts/data_store).
+
+### Custom Data Store
+
+You can write you own custom Data Stores that implement the following interface:
+
+<>{props.interface}</>
+
+### Redis
+
+Statsig provides a Redis DataStore implementation.
+
+<>{props.redis}</>
