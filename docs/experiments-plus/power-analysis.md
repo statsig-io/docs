@@ -11,9 +11,9 @@ The power analysis tool leverages past data for a given metric to estimate the r
 
 ### Using the Tool
 
-To begin, launch the tool from the experiment creation flow: 
+It can be accessed from the tools menu. It's also available on the experiment setup page.
 
-   ![image](https://user-images.githubusercontent.com/90343952/145107332-49befa18-3ca0-4cde-89cb-e80a1663754c.png)
+   ![image](https://user-images.githubusercontent.com/31516123/236296790-d7768b1a-13ca-4e55-9877-bdad607d6da4.png)
    
 1. Select a metric of interest
 2. Select the type of analysis to perform
@@ -34,7 +34,7 @@ The results show the minimum number of days needed to reach this MDE for differe
 
 Choose this option to understand how the length of the experiment impacts the MDE.  The example below shows how the MDE for a click count metric shrinks over time in an experiment with 100% allocation.  On the first day the MDE is 64%, after 30 days it's down to 11%.
 
-   ![image](https://user-images.githubusercontent.com/90343952/145121657-c36d37ce-7c19-4088-bd20-6a216a00cd37.png)
+   ![image](https://user-images.githubusercontent.com/31516123/236297353-6e191514-ae72-42c3-89b5-1b102dfac593.png)
 
 ### Advanced Options
 
