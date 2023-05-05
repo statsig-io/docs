@@ -3,7 +3,7 @@ title: Cloudflare KV
 ---
 
 ## Overview
-Statsig’s Vercel integration pushes Statsig Configs to Cloudflare KV, allowing you to bootstrap your Cloudflare projects quickly.
+Statsig’s Cloudflare integration pushes Statsig Configs to Cloudflare KV, allowing you to bootstrap your Cloudflare projects quickly.
 
 ## Configuration
 Navigate to the Cloudflare integration in Statsig's Console under **Project Settings** -> **Integrations**. 
