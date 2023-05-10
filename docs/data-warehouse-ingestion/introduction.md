@@ -13,6 +13,8 @@ We currently support ingestion from the following providers:
 2. [Redshift](redshift.mdx)
 3. [Snowflake](snowflake.mdx)
 4. [Databricks](databricks.mdx)
+5. [Synapse](synapse.mdx)
+6. [S3](s3.mdx)
 
 ### How it works
 
@@ -58,7 +60,7 @@ See [here](data_mapping.mdx) for more information.
 
 Statsig supports multiple schedules for ingestion. At the scheduled window, we will check if data is present in your warehouse for the latest date, and load if it exists.
 
-At several follow-up windows we will check if the data has changed, and reload it if there's a change larger than 1%.
+At several follow-up windows we will check if the data has changed, and reload it if there's a change larger than 5%.
 
 We also support a user-triggered backfill. This could be useful if a specific metric definition has changed, or you want to resync data older than a few days.
 
@@ -72,7 +74,7 @@ Note: Auto-generated **User Accounting Metrics** are not supported today for dat
 
 Enterprise customers can trigger ingestion for `metrics` or `events` using the statsig API. This will run your daily ingestion immediately after triggering, and can be helpful for companies whose data availability timing may vary day over day and want data to land as soon as possible in Statsig. This can be enabled by selecting "API Triggered" as your ingestion schedule - note that with this enabled, there will not be an automatic ingestion, but we will still re-sync data after the initial ingestion if we observe a change.
 
-To trigger ingestion, send a post request to `https://latest.api.statsig.com/v1/mark_data_ready_dwh` endpoint using your statsig API key. An example would be:
+To trigger ingestion, send a post request to the `https://latest.api.statsig.com/v1/mark_data_ready_dwh` endpoint using your statsig API key. An example would be:
 
 ```
 curl \
@@ -80,14 +82,15 @@ curl \
   --header "Content-Type: application/json" \
   --request POST \
   --data '{"datestamps": "2023-02-20", "type": "events"}' \
-  "https://events.statsigapi.net/v1/log_event"
+  "https://latest.api.statsig.com/v1/mark_data_ready_dwh"
 ```
 
 Note that this is rate limited to once every two hours, and there may be a few minutes delay after triggering before status updates while compute resources are created.
 
 ### Frequently Asked Questions
 
-1. **Does the event data from count towards Statsig's [User Accounting Metrics](/metrics/user) such as DAU or Retention?**
+1. **Does event data from ingestion count towards Statsig's [User Accounting Metrics](/metrics/user) such as DAU or Retention?**
+
 
 No, event data from ingestions does not count towards Statsig's User Accounting Metrics such as DAU or Retention. Customers typically send Statsig a subset of their events, which could result in multiple competing values for "fact" data such as daily active users in your Statsig project. Statsig recommends sending your own precomputed metric for DAU or as a daily event per user (1 'daily_active' event if a user was active that day).
 

@@ -17,6 +17,7 @@ import {
   StatsigUser,
   ManualExposures,
   Shutdown,
+  ClientInitResponse,
   LocalOverrides,
   Reference,
 } from "./Templates/index.mdx";
@@ -33,6 +34,7 @@ import Options from "./java/_options.mdx";
 import ShutdownSnippet from "./java/_shutdown.mdx";
 import OverridesSnippet from "./java/_localOverrides.mdx";
 import * as ReferenceSnippets from "./java/_reference.mdx";
+import ClientInitResponseSnippet from "./java/_clientInitResponse.mdx";
 
 export const Result = SDKDocsBuilder(
   { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
@@ -64,6 +66,15 @@ export const Result = SDKDocsBuilder(
     [StatsigUser, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [
+      ClientInitResponse,
+      {
+        sdkName: "Java/Kotlin",
+        addedInVersion: "1.4.1",
+        snippet: <ClientInitResponseSnippet />,
+        signature: () => <code>getClientInitializeResponse</code>,
+      },
+    ],
     [
       LocalOverrides,
       {

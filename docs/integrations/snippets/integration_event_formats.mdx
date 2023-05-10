@@ -12,6 +12,7 @@ Events will be sent in batches in a JSON format. The structure of a Statsig Even
 | metadata        | JSON   | Custom Metadata provided                                             |
 | statsigMetadata | JSON   | Metadata related to the logging of this event added by Statsig       |
 | timeUUID        | String | UUID for the event                                                   |
+| unitID          | String | Unit ID of the exposure (e.g. userID, stableID, or the customID)     |
 
 #### Custom Event Formatting - logEvent
 
@@ -34,7 +35,7 @@ Events will be sent in batches in a JSON format. The structure of a Statsig Even
     "key_a": "value_a",
     "key_b": "123"
   },
-  "timeUUID": "aad2a983-ec0f-11ec-917a-fb8cdaeda578"
+  "timeUUID": "abd2a983-ec0f-11ec-917a-fb8cdaeda578"
 }
 ```
 
@@ -57,7 +58,8 @@ Events will be sent in batches in a JSON format. The structure of a Statsig Even
     "reason": "Network",
     "time": "1655231249644"
   },
-  "timeUUID": "8d7c1040-ec11-11ec-g123-abe2c32fcf46"
+  "timeUUID": "8d7c1040-ec11-11ec-g123-abe2c32fcf46",
+  "unitID": "userID"
 }
 ```
 
@@ -79,7 +81,8 @@ Events will be sent in batches in a JSON format. The structure of a Statsig Even
     "reason": "Network",
     "time": "1655231249644"
   },
-  "timeUUID": "af379f60-ec11-22ad-8e0a-05c3ee70bd0c"
+  "timeUUID": "af379f60-ec11-22ad-8e0a-05c3ee70bd0c",
+  "unitID": "userID"
 }
 ```
 
@@ -102,7 +105,8 @@ Events will be sent in batches in a JSON format. The structure of a Statsig Even
     "time": "1655231249644",
     "experimentGroupName": "Control"
   },
-  "timeUUID": "af379f61-ab22-11ec-8e0a-05c3ee70bd0c"
+  "timeUUID": "af379f61-ab22-11ec-8e0a-05c3ee70bd0c",
+  "unitID": "userID"
 }
 ```
 
@@ -142,7 +146,7 @@ Events will be sent in batches in a JSON format. The structure of a Statsig Even
     "value": "example_value",
     "metadata": {"page": "home_page"},
     "statsigMetadata": {},
-    "timeUUID": "f4c414a0-8aa5-11ec-a8a3-0242ac120002"
+    "timeUUID": "f4c414a0-8ab5-11ec-a8a3-0242ac120002"
   },
   {
     "eventName": "statsig::gate_exposure",
@@ -152,7 +156,8 @@ Events will be sent in batches in a JSON format. The structure of a Statsig Even
     "value": "",
     "metadata": {"gate": "test_gate", "gateValue": "true", "ruleID": "default"},
     "statsigMetadata": {},
-    "timeUUID": "f4c414a0-8aa5-11ec-a8a3-0242ac120003"
+    "timeUUID": "f4c414a0-8ab5-11ec-a8a3-0242ac120003",
+    "unitID": "userID"
   },
   {
     "eventName": "statsig::experiment_exposure"
@@ -164,7 +169,8 @@ Events will be sent in batches in a JSON format. The structure of a Statsig Even
        "config": "an_experiment", "ruleID": "4SauZJcM1T7zNvh1igBjwE", "reason": "Network", "time": "1655231249644", "experimentGroupName": "Control"
     },
     "statsigMetadata": {},
-    "timeUUID": "f4c414a0-8aa5-11ec-a8a3-0242ac120004"
+    "timeUUID": "f4c414a0-8ab5-11ec-a8a3-0242ac120004",
+    "unitID": "userID"
   }
 ]
 ```

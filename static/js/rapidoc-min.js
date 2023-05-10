@@ -2163,7 +2163,7 @@ pre[class*="language-"] {
       <div style="display:flex; flex-direction:column;">
         ${r}
         ${this.serverUrl?B`
-            <div style="display:flex; align-items:baseline;">
+            <div style="display:flex; align-items:baseline;font-size:140%">
               <div style="font-weight:bold; padding-right:5px;">API Server</div> 
               <span class = "gray-text"> ${this.serverUrl} </span>
             </div>

@@ -1,0 +1,13 @@
+The .NET Redis DataStore can be found as a NuGet package here: https://www.nuget.org/packages/StatsigRedis.
+It leverages the standard [StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis) package.
+
+```csharp
+public class RedisDataStore : IDataStore
+{
+  public bool AllowConfigSpecPolling = false;
+
+  public RedisDataStore(IDatabase database){}
+
+  public RedisDataStore(string host, int port, string password){}
+}
+```

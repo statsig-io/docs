@@ -108,6 +108,25 @@ Can not be used in conditional segments
 }
 ```
 
+#### Unit ID
+
+- type: **unit_id**
+- operator:
+  - string: **any** | **none** | **str_contains_any** | **str_contains_none**
+  - Any: **any** | **none** | **is_null** | **is_not_null**
+- targetValue: **string** | **number** | **string[]** | **number[]**
+- field: **{field_name}**
+- [Learn more](/feature-gates/conditions#unit-id) at Feature Gates > Conditions > Unit ID
+
+```json
+{
+  "type": "unit_id",
+  "targetValue": ["passingValue1", "passingValue2"],
+  "operator": "any",
+  "customID": "a_custom_id"
+}
+```
+
 #### App Version
 
 - type: **app_version**

@@ -1,5 +1,7 @@
 const sdkDateExtractor = require("./src/plugins/rehype-sdk-date-extractor");
 const path = require("path");
+const math = require('remark-math');
+const katex = require('rehype-katex');
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
@@ -95,7 +97,7 @@ module.exports = {
   },
   plugins: [
     [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
+      require.resolve("statsig-docusaurus-search"),
       {
         hashed: true,
         indexBlog: false,
@@ -117,7 +119,7 @@ module.exports = {
               {
                 tagName: "script",
                 attributes: {
-                  src: "https://cdn.jsdelivr.net/npm/statsig-js@4.22.3/build/statsig-prod-web-sdk.min.js",
+                  src: "https://statsigapi.net/v1/web_experiments?k=client-oJY6hTJeduhEN2bf6fh6unHvxIk9UsjS99BlO4owh0r",
                 },
               },
               {
@@ -147,6 +149,17 @@ module.exports = {
         },
       };
     },
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            to: '/integrations/terraform/introduction',
+            from: '/integrations/terraform',
+          },
+        ],
+      },
+    ],
   ],
   presets: [
     [
@@ -157,7 +170,8 @@ module.exports = {
           routeBasePath: "/",
           editUrl: "https://github.com/statsig-io/docs/edit/main/",
           showLastUpdateTime: true,
-          rehypePlugins: [sdkDateExtractor],
+          rehypePlugins: [sdkDateExtractor, katex],
+          remarkPlugins: [math],
         },
         blog: false,
         theme: {
@@ -166,5 +180,11 @@ module.exports = {
       },
     ],
   ],
-  stylesheets: ["https://fonts.googleapis.com/icon?family=Material+Icons"],
+  stylesheets: ["https://fonts.googleapis.com/icon?family=Material+Icons", {
+    href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
+    type: 'text/css',
+    integrity:
+      'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+    crossorigin: 'anonymous',
+  }],
 };

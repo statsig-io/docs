@@ -71,6 +71,12 @@ StatsigContext is a [react context](https://reactjs.org/docs/context.html) used 
   - The SDK will hit different endpoints for `initialize` to evaluate gates and for `logEvent` to log event data. The `api` option controls the evaluation endpoint, and `eventLoggingApi` controls the event logging endpoint.
 - **prefetchUsers?** `StatsigUser[]` | null, default null
   - An array of additional StatsigUser objects to be fetched during the `statsig.initialize` call. A max of 5 users is enforced, if more than 5 users are provided, the 5 users at the start of the array will be used.
+- **fetchMode?** `network-only | cache-or-network`, default `network-only`
+  - Changes the behavior of updateUser calls. See [Fetch Mode](#fetch-mode-) for more details.
+- **initCompletionCallback?** `(initDurationMs: number, success: boolean, message: string | null) => void`, default null
+  - A callback that's invoked whenever initialization has completed.
+- **updateUserCompletionCallback?** `(durationMs: number, success: boolean, message: string | null) => void`, default null
+  - A callback that's invoked whenever an updateUser call has completed.
 
 ## Hooks
 

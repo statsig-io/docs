@@ -27,9 +27,11 @@ Integrating your product with Statsig means depending on Statsig, and we take re
     - The SDKs will use the latest values from Statsig server if the user is able to reach Statsig server;
     - Then it will use cached value from a previous session will be used, if available;
     - After that, the APIs require you to have set default values in your code, so that will be used. This means the worst case scenario your users will get the default experiences.
-- Sever SDKs:
+    - The SDKs will automatically retry failed event requests if for some reason Statsig event servers are unreachable. The Client SDKs will even persist failed log requests to local storage and retry in subsequent sessions.
+- Server SDKs:
     - They store rules for gates and experiments in memory, so it will be able to continue evaluating them even if Statsig is down.
     - There is also an option to “bootstrap” your server SDKs with rule values from a previous session if Statsig is down when your server is starting up.
+    - The SDKs will automatically retry failed event requests if for some reason Statsig event servers are unreachable.
 
 ## What kind of automated testing does Statsig do?
 - Unit and integration tests run on every pull request

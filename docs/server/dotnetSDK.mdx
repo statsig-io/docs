@@ -20,6 +20,7 @@ import {
   ClientInitResponse,
   LocalOverrides,
   Reference,
+  DataStore,
 } from "./Templates/index.mdx";
 
 import Install from "./dotnet/_install.mdx";
@@ -31,6 +32,8 @@ import LogEvent from "./dotnet/_logEvent.mdx";
 import MoreFAQs from "./dotnet/_faqs.mdx";
 import Options from "./dotnet/_options.mdx";
 import ShutdownSnippet from "./dotnet/_shutdown.mdx";
+import DataStoreInterface from "./dotnet/_dataStoreInterface.mdx";
+import RedisDataStore from "./dotnet/_redisDataStore.mdx";
 import * as ReferenceSnippets from "./dotnet/_reference.mdx";
 
 export const Result = SDKDocsBuilder(
@@ -62,6 +65,10 @@ export const Result = SDKDocsBuilder(
     [StatsigUser, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [
+      DataStore,
+      { interface: <DataStoreInterface />, redis: <RedisDataStore /> },
+    ],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
   ],

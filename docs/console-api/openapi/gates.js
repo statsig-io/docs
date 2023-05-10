@@ -238,6 +238,7 @@ module.exports = {
                       "data": {
                         "id": "a_gate",
                         "description": "helpful summary of what this gate does",
+                        "status": "In Progress",
                         "lastModifierID": "xxxxXXXXxxxxXXXxxxx",
                         "lastModifiedTime": 1675294285705,
                         "lastModifierName": "CONSOLE API",
@@ -410,6 +411,7 @@ module.exports = {
                           "id": "a_gate",
                           "isEnabled": true,
                           "description": "helpful summary of what this gate does",
+                          "status": "In Progress",
                           "lastModifierName": "CONSOLE API",
                           "lastModifierID": "aiK7Y0FddfTimfadf2f9vacz",
                           "rules": [
@@ -644,6 +646,7 @@ module.exports = {
                         "id": "a_gate",
                         "isEnabled": true,
                         "description": "helpful summary of what this gate does",
+                        "status": "In Progress",
                         "lastModifierName": "CONSOLE API",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "rules": [
@@ -809,6 +812,7 @@ module.exports = {
                   "value": {
                     "isEnabled": false,
                     "description": "helpful summary of what this gate does",
+                    "status": "In Progress",
                     "lastModifierName": "CONSOLE API",
                     "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
                     "rules": [
@@ -1143,6 +1147,7 @@ module.exports = {
                         "lastModifierID": "1vaasdfLlkaujjajiuOSBP2",
                         "isEnabled": false,
                         "description": "helpful summary of what this gate does",
+                        "status": "In Progress",
                         "rules": [
                           {
                             "name": "everyone",
