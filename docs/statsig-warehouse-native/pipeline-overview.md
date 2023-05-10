@@ -1,7 +1,7 @@
 ---
 title: Statsig Warehouse Native Pipeline Overview
 slug: /statsig-warehouse-native/pipeline-overview
-sidebar_;abel: Pipeline Overview
+sidebar_label: Pipeline Overview
 description: Understand what we're running on your warehouse
 ---
 

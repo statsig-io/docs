@@ -81,7 +81,7 @@ For example, you might break down a "click" metric by which "page_name" the clic
 
 **Filters**
 
-Filters are a powerful way to flexibly reuse metric sources. Your Data Team can provide cleaned and organized views into data, and anyone can use the filtering UI to set up specific custom metrrics as needed.
+Filters are a powerful way to flexibly reuse metric sources. Your Data Team can provide cleaned and organized views into data, and anyone can use the filtering UI to set up specific custom metrics as needed.
 
 Once a metric is set up, you can reload your sampled source with filters applied to make sure things look good. Save your metric, and you're good to go!
 

@@ -25,7 +25,7 @@ with the calculated daily sum of revenue as the value.
 
 ### Where to Filter
 
-You can filter Metric Sources in metric defintions For example o a Metric Source can key to multiple event-based metrics
+You can filter Metric Sources in metric definitions For example o a Metric Source can key to multiple event-based metrics
 by filtering to different events in the Metric definition. This can be very powerful for unblocking non-data stakeholders
 who want to set up metrics from trusted Metric Sources. The downside is that if you are filtering huge datasets in Metric
 definitions, it can possibly lead to us scanning more data than necessary.
