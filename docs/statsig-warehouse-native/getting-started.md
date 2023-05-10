@@ -25,7 +25,7 @@ This connection is very similar to the setups for warehouse ingestion. Refer to 
 - [Bigquery](../data-warehouse-ingestion/bigquery.mdx)
 - [Snowflake](../data-warehouse-ingestion/snowflake.mdx)
 
-One difference for Statsig Warehouse Native is that you should create an isolated Dataset or Schema that Statsig's service user has **write access** to. We will use this to save intermediate results, making queries more performant and giving you access to hour experimential data.
+One difference for Statsig Warehouse Native is that you should create an isolated Dataset or Schema that Statsig's service user has **write access** to. We will use this to save intermediate results, making queries more performant and giving you access to your experimential data.
 
 _Note - while you're here, you can go to **Basic Settings** and add any Custom ID Types you want to use for experimentation._
 
@@ -63,15 +63,15 @@ To create a metric, you pick the Metric Source you're deriving the metric from a
 
 ![Metric Creation Flow](https://user-images.githubusercontent.com/102695539/237241707-54306e23-5f28-434a-8d53-8e3d42d5587a.png)
 
-**Metric Type**
+**Metric Types**
 
 Metric types specify the aggregations and available settings for your experiment metric. We support:
 
-- Counts: basic counts of events with filters, such as click events
-- Sum: sums of values from events, such as revenue or aggregating over pre-aggregated metric fields (e.g. daily_clicks in a user-day level source).
-- Mean: the mean value of non-null value fields
-- User Count: the number of users who had records in your Metric Source, calculated as a daily average, an overall participation rate, or a participation rate in some window based on their exposure
-- Ratio: the population-level ratio of two metrics you define
+- **Count**: basic counts of events with filters, such as click events
+- **Sum**: sums of values from events, such as revenue or aggregating over pre-aggregated metric fields (e.g. daily_clicks in a user-day level source)
+- **Mean**: the mean value of non-null value fields
+- **User Count**: the number of users who had records in your Metric Source, calculated as a daily average, an overall participation rate, or a participation rate in some window based on their exposure
+- **Ratio**: the population-level ratio of two metrics you define
 
 **Metadata Columns**
 
@@ -81,7 +81,7 @@ For example, you might break down a "click" metric by which "page_name" the clic
 
 **Filters**
 
-Filters are a powerful way to flexibly reuse metric sources. Your Data Team can provide cleaned and organized views into data, and anyone can use the filtering UI to set up specific custom metrrics as needed
+Filters are a powerful way to flexibly reuse metric sources. Your Data Team can provide cleaned and organized views into data, and anyone can use the filtering UI to set up specific custom metrrics as needed.
 
 Once a metric is set up, you can reload your sampled source with filters applied to make sure things look good. Save your metric, and you're good to go!
 
@@ -93,7 +93,7 @@ An **Assignment Source** is very similar to a Metric Source. You can create one 
 
 ![Assignment Source Nav](https://user-images.githubusercontent.com/102695539/237241704-f2dc5c83-a0c9-4cf2-a354-2904f6612c47.png)
 
-Here, you'll specify a query that provides a view into your exposure assignment data. You'll need to provide a timestamp, experiment ID, group ID, and at least one unit identifier.
+Here, you'll specify a query that provides a view into your exposure assignment data. You'll need to provide a timestamp, experiment ID, group ID, and at least one unit ID (i.e. a unique identifier for the type of units you're experimenting on).
 
 ![Assignment Source Query](https://user-images.githubusercontent.com/102695539/237241702-d877cafa-23f0-4964-a50c-813e93cb3add.png)
 ![Assignment Source Mapping](https://user-images.githubusercontent.com/102695539/237241701-5f95ff7f-2ae3-4a31-85aa-aa9ec111770d.png)
@@ -104,7 +104,7 @@ With **Metrics** and an **Assignment Source**, creating an experiment is easy. G
 
 ![Experiment Creation Flow](https://user-images.githubusercontent.com/102695539/237241700-c100522e-c3e7-4ba7-b065-9af370aa23eb.png)
 
-In the experiment config, you can configure which metrics you want to measure and manage the groups you want to analyze. We'll automatically detect groups and infer the experimental split, but in some cases you may need to correct the split so we can properly evaluate Sample Ratio Mismatch issues.
+In the experiment config, you can configure which metrics you want to measure and manage the groups you want to analyze. We'll automatically detect groups and infer the experimental split, but in some cases you may need to correct the intended split so we can properly evaluate Sample Ratio Mismatch issues.
 
 ![Group Setup](https://user-images.githubusercontent.com/102695539/237241689-7838cff7-65e6-4055-9674-f8d82d0a1398.png)
 
@@ -112,4 +112,8 @@ Once it's set up, click Analyze to define the experiment timeline. After this, y
 
 ## Step 6 - Analyze Results
 
--- todo working image here
+Once you start analysis, you'll see a progress bar tracking the jobs in our pipeline. This generally takes 15-30 seconds for small-mid sized companies, but can depend on the resources you provide and the size of the data.
+
+From here on out, you'll have access to the Statsig pulse view from your experiment, discuss, and make decisions as in the standard Statsig product!
+
+![Pulse Results](https://user-images.githubusercontent.com/102695539/237532583-2ce67b70-1953-4211-9ab1-449acb25f463.png)
