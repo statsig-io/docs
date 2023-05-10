@@ -25,7 +25,7 @@ This connection is very similar to the setups for warehouse ingestion. Refer to 
 - [Bigquery](../data-warehouse-ingestion/bigquery.mdx)
 - [Snowflake](../data-warehouse-ingestion/snowflake.mdx)
 
-One difference for Statsig Warehouse Native is that you should create an isolated Dataset or Schema that Statsig's service user has **write access** to. We will use this to save intermediate results, making queries more performant and giving you access to your experimential data.
+One difference for Statsig Warehouse Native is that you should create an isolated Dataset or Schema that Statsig's service user has **write access** to. We will use this to save intermediate results, making queries more performant and giving you access to your experimental data.
 
 _Note - while you're here, you can go to **Basic Settings** and add any Custom ID Types you want to use for experimentation._
 

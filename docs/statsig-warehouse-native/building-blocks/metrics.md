@@ -10,7 +10,7 @@ filters, and an optional metadata breakdown field.
 
 ## Types of Metrics
 
-Metrics define different aggregations for user-level aggregations, as well as group-level aggaregations
+Metrics define different aggregations for user-level aggregations, as well as group-level aggregations
 and Statistical calculations. Refer to the crosstab below for the metric types available, and how
 we'll calculate these on the backend.
 
