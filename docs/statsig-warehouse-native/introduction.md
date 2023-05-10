@@ -47,6 +47,6 @@ This is intended to be very transparent; and we've deliberately chosen to perfor
 
 ### Getting Started
 
-For a full tutorial, check out the [getting started](getting_started.md) page. We also have a [quick start guide](quick-start-guide.md) for those who want to quickly see an experiment result in Statsig.
+Check out the [getting started](getting_started.md) page for a quick guide on how to get pulse results in Statsig.
 
 For more information on how Statsig processes data on your warehouse, refer to the [pipeline overview](pipeline-overview.md) and the best practices information available in the sidebar.

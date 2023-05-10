@@ -317,13 +317,13 @@ module.exports = {
       items: [
         "statsig-warehouse-native/getting-started",
         "statsig-warehouse-native/pipeline-overview",
-        // {
-        //   "Best Practices": [
-        //     "statsig-warehouse-native/best-practices/data-modelling",
-        //     "statsig-warehouse-native/best-practices/security",
-        //     "statsig-warehouse-native/best-practices/managing-costs",
-        //   ],
-        // },
+        {
+          "Building Blocks": [
+            "statsig-warehouse-native/building-blocks/assignment-sources",
+            "statsig-warehouse-native/building-blocks/metric-sources",
+            "statsig-warehouse-native/building-blocks/metrics",
+          ],
+        },
       ],
     },
     {
