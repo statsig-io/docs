@@ -88,7 +88,9 @@ curl \
 Note that this is rate limited to once every two hours, and there may be a few minutes delay after triggering before status updates while compute resources are created.
 
 ### Frequently Asked Questions
+
 1. **Does event data from ingestion count towards Statsig's [User Accounting Metrics](/metrics/user) such as DAU or Retention?**
+
 
 No, event data from ingestions does not count towards Statsig's User Accounting Metrics such as DAU or Retention. Customers typically send Statsig a subset of their events, which could result in multiple competing values for "fact" data such as daily active users in your Statsig project. Statsig recommends sending your own precomputed metric for DAU or as a daily event per user (1 'daily_active' event if a user was active that day).
 

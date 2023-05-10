@@ -322,6 +322,25 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Statsig Warehouse Native",
+      link: {
+        type: "doc",
+        id: "statsig-warehouse-native/introduction",
+      },
+      items: [
+        "statsig-warehouse-native/getting-started",
+        "statsig-warehouse-native/pipeline-overview",
+        {
+          "Building Blocks": [
+            "statsig-warehouse-native/building-blocks/assignment-sources",
+            "statsig-warehouse-native/building-blocks/metric-sources",
+            "statsig-warehouse-native/building-blocks/metrics",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "Data Warehouse Ingestion",
       link: {
         type: "doc",
