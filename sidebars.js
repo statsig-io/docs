@@ -293,7 +293,7 @@ module.exports = {
           Reports: [
             "console-api/daily-reports",
             "console-api/daily-reports-deprecated",
-          ]
+          ],
         },
         "console-api/all-endpoints",
         "console-api/usage-billing",
@@ -335,6 +335,12 @@ module.exports = {
             "statsig-warehouse-native/building-blocks/assignment-sources",
             "statsig-warehouse-native/building-blocks/metric-sources",
             "statsig-warehouse-native/building-blocks/metrics",
+          ],
+        },
+        {
+          "Connecting Your Warehouse": [
+            "statsig-warehouse-native/connecting-your-warehouse/bigquery",
+            "statsig-warehouse-native/connecting-your-warehouse/snowflake",
           ],
         },
       ],
