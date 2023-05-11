@@ -1,7 +1,7 @@
 ---
 title: Metrics in Statsig Warehouse Native
 slug: /statsig-warehouse-native/building-blocks/metrics
-sidebar-label: Metrics
+sidebar_label: Metrics
 ---
 
 Metrics are measures of user or system behavior that you'll use as evaluation criteria for
