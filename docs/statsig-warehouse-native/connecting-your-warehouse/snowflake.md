@@ -93,7 +93,8 @@ BEGIN;
 
   -- this is for global drop priveleges in this schema.
   -- ONLY GIVE THIS ACCESS in the staging schema.
-  GRANT ALL ON SCHEMA STATSIG_STAGING.STATSIG_TABLES TO ROLE identifier($role_name);
+  GRANT OWNERSHIP, SELECT, UPDATE, INSERT, DELETE ON ALL TABLES IN SCHEMA STATSIG_STAGING.STATSIG_TABLES TO ROLE identifier($role_name);
+
 
   -- grant Statsig role read access to database and schema passed in
   -- do this at a table level, database level, and/or schema level
