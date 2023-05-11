@@ -70,7 +70,7 @@ Reloading data and backfilling metrics and events is billed as any other [custom
 
 Note: Auto-generated **User Accounting Metrics** are not supported today for data warehouse ingestions.
 
-### Triggered Ingestion
+### Triggered Ingestion (mark_data_ready)
 
 Enterprise customers can trigger ingestion for `metrics` or `events` using the statsig API. This will run your daily ingestion immediately after triggering, and can be helpful for companies whose data availability timing may vary day over day and want data to land as soon as possible in Statsig. This can be enabled by selecting "API Triggered" as your ingestion schedule - note that with this enabled, there will not be an automatic ingestion, but we will still re-sync data after the initial ingestion if we observe a change.
 
