@@ -1,7 +1,7 @@
 ---
 title: Assignment Sources
 slug: /statsig-warehouse-native/building-blocks/assignment-sources
-sidebar-label: Assignment Sources
+sidebar_label: Assignment Sources
 ---
 
 Assignment Sources are flat views into experiment assignment data. These will be cleaned

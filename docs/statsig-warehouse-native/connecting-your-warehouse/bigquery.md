@@ -1,7 +1,7 @@
 ---
 title: Bigquery Connection
 slug: /statsig-warehouse-native/connecting-your-warehouse/bigquery
-sidebar-label: BigQuery
+sidebar_label: BigQuery
 ---
 
 ## Overview

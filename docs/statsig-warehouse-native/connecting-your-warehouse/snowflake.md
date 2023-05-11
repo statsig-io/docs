@@ -1,7 +1,7 @@
 ---
 title: Snowflake Connection
 slug: /statsig-warehouse-native/connecting-your-warehouse/snowflake
-sidebar-label: Snowflake
+sidebar_label: Snowflake
 ---
 
 ## Overview

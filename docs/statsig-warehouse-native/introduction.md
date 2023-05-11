@@ -1,7 +1,7 @@
 ---
 title: Statsig Warehouse Native
 slug: /statsig-warehouse-native/introduction
-sidebar-label: Statsig Warehouse Native
+sidebar_label: Statsig Warehouse Native
 description: Statsig in your warehouse
 ---
 

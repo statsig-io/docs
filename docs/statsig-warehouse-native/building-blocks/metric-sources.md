@@ -1,7 +1,7 @@
 ---
 title: Metric Sources
 slug: /statsig-warehouse-native/building-blocks/metric-sources
-sidebar-label: Metric Sources
+sidebar_label: Metric Sources
 ---
 
 Metric Sources are the building blocks of experimental metrics in Statsig Warehouse Native. These are very flexible,
