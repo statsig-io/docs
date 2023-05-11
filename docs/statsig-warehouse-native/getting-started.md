@@ -22,8 +22,8 @@ Use the landing page guide or go to your **Project Settings** (the gear in the t
 
 This connection is very similar to the setups for warehouse ingestion. Refer to the docs for vendors:
 
-- [Bigquery](../data-warehouse-ingestion/bigquery.mdx)
-- [Snowflake](../data-warehouse-ingestion/snowflake.mdx)
+- [Bigquery](./connecting-your-warehouse/bigquery.md)
+- [Snowflake](./connecting-your-warehouse/snowflake.md)
 
 One difference for Statsig Warehouse Native is that you should create an isolated Dataset or Schema that Statsig's service user has **write access** to. We will use this to save intermediate results, making queries more performant and giving you access to your experimental data.
 
