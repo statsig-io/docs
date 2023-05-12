@@ -249,8 +249,6 @@ module.exports = {
                         "creatorEmail": null,
                         "idType": "userID",
                         "isEnabled": true,
-                        "devRules": [],
-                        "stagingRules": [],
                         "rules": [
                           {
                             "name": "Ten percent of users",
@@ -427,9 +425,7 @@ module.exports = {
                                   "operator": "any"
                                 }
                               ]
-                            }
-                          ],
-                          "devRules": [
+                            },
                             {
                               "name": "ten percent of people",
                               "passPercentage": 10,
@@ -438,9 +434,7 @@ module.exports = {
                                   "type": "public"
                                 }
                               ]
-                            }
-                          ],
-                          "stagingRules": [
+                            },
                             {
                               "name": "everyone",
                               "passPercentage": 100,
@@ -662,9 +656,7 @@ module.exports = {
                                 ]
                               }
                             ]
-                          }
-                        ],
-                        "devRules": [
+                          },
                           {
                             "name": "ten percent of people",
                             "passPercentage": 10,
@@ -673,9 +665,7 @@ module.exports = {
                                 "type": "public"
                               }
                             ]
-                          }
-                        ],
-                        "stagingRules": [
+                          },
                           {
                             "name": "everyone",
                             "passPercentage": 100,
@@ -792,18 +782,6 @@ module.exports = {
                     "items": {
                       "$ref": "../models/rule.json"
                     }
-                  },
-                  "devRules": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "../models/rule.json"
-                    }
-                  },
-                  "stagingRules": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "../models/rule.json"
-                    }
                   }
                 }
               },
@@ -824,9 +802,7 @@ module.exports = {
                             "type": "public"
                           }
                         ]
-                      }
-                    ],
-                    "devRules": [
+                      },
                       {
                         "name": "all outlook",
                         "passPercentage": 100,
@@ -839,9 +815,7 @@ module.exports = {
                             ]
                           }
                         ]
-                      }
-                    ],
-                    "stagingRules": [
+                      },
                       {
                         "name": "all outlook and gmail",
                         "passPercentage": 100,
@@ -930,9 +904,7 @@ module.exports = {
                             "name": "everyone",
                             "passPercentage": 100,
                             "type": "public"
-                          }
-                        ],
-                        "devRules": [
+                          },
                           {
                             "name": "all outlook",
                             "passPercentage": 100,
@@ -945,9 +917,7 @@ module.exports = {
                                 ]
                               }
                             ]
-                          }
-                        ],
-                        "stagingRules": [
+                          },
                           {
                             "name": "all outlook and gmail",
                             "passPercentage": 100,
@@ -1157,9 +1127,7 @@ module.exports = {
                                 "type": "public"
                               }
                             ]
-                          }
-                        ],
-                        "devRules": [
+                          },
                           {
                             "name": "all outlook",
                             "passPercentage": 100,
@@ -1172,9 +1140,7 @@ module.exports = {
                                 ]
                               }
                             ]
-                          }
-                        ],
-                        "stagingRules": [
+                          },
                           {
                             "name": "all outlook and gmail",
                             "passPercentage": 100,
@@ -1275,9 +1241,7 @@ module.exports = {
                             "type": "public"
                           }
                         ]
-                      }
-                    ],
-                    "devRules": [
+                      },
                       {
                         "name": "all outlook",
                         "passPercentage": 100,
@@ -1290,9 +1254,7 @@ module.exports = {
                             ]
                           }
                         ]
-                      }
-                    ],
-                    "stagingRules": [
+                      },
                       {
                         "name": "all outlook and gmail",
                         "passPercentage": 100,
