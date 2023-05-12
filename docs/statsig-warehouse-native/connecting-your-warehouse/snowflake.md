@@ -89,12 +89,14 @@ BEGIN;
 
   -- grant Statsig role access to create warehouse and schema
   GRANT USAGE ON WAREHOUSE STATSIG TO ROLE identifier($role_name);
+  GRANT USAGE ON SCHEMA STATSIG_STAGING.STATSIG_TABLES TO ROLE identifier($role_name);
   GRANT CREATE SCHEMA, MONITOR, USAGE ON DATABASE STATSIG_STAGING TO ROLE identifier($role_name);
 
-  -- this is for global drop priveleges in this schema.
-  -- ONLY GIVE THIS ACCESS in the staging schema.
-  GRANT OWNERSHIP, SELECT, UPDATE, INSERT, DELETE ON ALL TABLES IN SCHEMA STATSIG_STAGING.STATSIG_TABLES TO ROLE identifier($role_name);
-
+  -- ONLY GIVE THIS LEVEL OF ACCESS in the staging schema.
+  GRANT CREATE TABLE ON SCHEMA STATSIG_STAGING.STATSIG_TABLES TO ROLE identifier($role_name);
+  GRANT SELECT, UPDATE, INSERT, DELETE ON ALL TABLES IN SCHEMA STATSIG_STAGING.STATSIG_TABLES TO ROLE identifier($role_name);
+  GRANT SELECT, UPDATE, INSERT, DELETE ON FUTURE TABLES IN SCHEMA STATSIG_STAGING.STATSIG_TABLES TO ROLE identifier($role_name);
+  GRANT OWNERSHIP ON FUTURE TABLES IN SCHEMA STATSIG_STAGING.STATSIG_TABLES TO ROLE identifier($role_name);
 
   -- grant Statsig role read access to database and schema passed in
   -- do this at a table level, database level, and/or schema level
