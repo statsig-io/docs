@@ -15,13 +15,13 @@ It can be accessed from the tools menu. It's also available on the experiment se
 
    ![image](https://user-images.githubusercontent.com/31516123/236296790-d7768b1a-13ca-4e55-9877-bdad607d6da4.png)
    
-1. Select the popluation used to determine the metric mean and variance and to estimate the number of exposures over time.
+1. Select the population used to determine the metric mean and variance and to estimate the number of exposures over time.
     - Everyone: Analysis is based on the entire user base.  
     - Targeting gate: Analysis is scoped to the set of users that pass the selected feature gate, which has been active for at least 7 days.  Choose this option when you plan to use a targeting gate for the experiment.  Note: This will trigger an offline query, you'll be notified when results are ready.
     - [Coming soon] Past experiment: Analysis is based on data collected from in a previous experiment.  Use this option when the new experiment will impact a similar user base or part of the product as the previous one.  
 2. Select a metric of interest (or multiple metrics for a targeting gate analysis)
 3. Select the type of analysis to perform:
-    - Fixed Allocation: You know the available allocation, the tool tells you the expected MDE for different durations
+    - Fixed Allocation: You know the available allocation, the tool tells you the expected MDE for each duration
     - Fixed MDE: You know the effect size you want to measure, the tool tells you the allocation and duration needed
 4. Click on **Start Calculation** to see the results
 
@@ -29,15 +29,15 @@ It can be accessed from the tools menu. It's also available on the experiment se
 
 ## Population Types
 
-The pupolation selected directly impacts the inputs of the analysis (mean, vairance, number of users).  To obtain reliable power analysis estimates, the metric values of the selected pupolation should roughly match those of the users you'll be targeting in the experiment.  
+The pupolation selected directly impacts the inputs of the analysis (mean, variance, number of users).  To obtain reliable power analysis estimates, the metric values of the selected pupolation should roughly match those of the users you'll be targeting in the experiment.  
 
 ### Example
-Say we want to test a change in the checkout flow and we want to know our expected MDE for total_purchases.  Let's assume that only ~10% of our daily users reach the checkout page.  If we use the *Everyone* population for our anlaysis, we're likely to:
+Say we want to test a change in the checkout flow and we want to know our expected MDE for total_purchases.  Let's assume that only ~10% of our daily users reach the checkout page.  If we use the *Everyone* population for our analysis, we're likely to:
 * Overestimate the number of users that the experiment will get.
 * Underestimate the mean value of the total_purchases metric.  The 90% of user that don't reach the checkout page have a value of zero, but in practice they won't be in our experiment and won't contribute to the metric.
 * Incorrectly estimate the variance in the total_purchases metric.  The distribution of metric values is different if we include the 90% of users that have 0 purchases because they never reached the checkout page.
 
-Thus, in cases when the experiment only includes a biased subset of users, it's possible the MDE and duration obatined by the power analysis won't be a good estimate. 
+Thus, in cases when the experiment only includes a biased subset of users, it's possible the MDE and duration obtained by the power analysis won't be a good estimate. 
 
 One way to address this is to use data from a past experiment to estimate the power of a new, similar experiment (coming soon!).  In our example, if we had a prior experiment that was also targeting the checkout page, we could use it to get better estimates of traffic volumes and metrics for this part of the product.
 
@@ -48,7 +48,7 @@ This is how the various inputs for the power analysis are obtained from the diff
 |------------------|-------------------------|----------------|
 | Everyone         | Mean and variance across all users, estimated for 1, 2, 3, and 4 week rollups   | Total count of users seen in the past 1, 2, 3, and 4 weeks |
 | Targeting Gate   | Mean and variance for users that pass the targeting gate, computed for 1, 2, 3, 4 week rollups | Total users that passed the targeting gate after 1, 2, 3, 4 weeks |
-| Past Experiment (coming soon) | Cumulative mean and variance for the control group at 1, 2, 3, and 4 weeks | Total experiment exposures after 1, 2, 3, and 4 weeks, adjusted accoring to the past experiment's allocation and the desired allocation for the new experiment.
+| Past Experiment (coming soon) | Cumulative mean and variance for the control group at 1, 2, 3, and 4 weeks | Total experiment exposures after 1, 2, 3, and 4 weeks, adjusted according to the past experiment's allocation and the desired allocation for the new experiment.
 
 ## Analysis Types
 
@@ -56,7 +56,7 @@ This is how the various inputs for the power analysis are obtained from the diff
 
 Choose this option to understand how the length of the experiment impacts the MDE.  The example below shows how the MDE for a page load metric shrinks over time in an experiment with 100% allocation.  After 1 week we expect 5200 users per group and an MDE of 21.6%, by week 4 the number of users per group should increase to ~48k and the MDE is reduced to 7%
 
-![image](https://github.com/statsig-io/docs/assets/90343952/c3b5e22c-951e-4ef1-84a9-0b935a2e18e8)
+   ![image](https://github.com/statsig-io/docs/assets/90343952/c3b5e22c-951e-4ef1-84a9-0b935a2e18e8)
 
 ### Fixed MDE Analysis
 
@@ -64,7 +64,7 @@ Choose this option if the smallest effect size that the experiment should detect
 
 The results show the minimum number of weeks needed to reach this MDE for different allocation percentages.  In the example below, the experiment should run for at least 2 weeks with 65% allocation or 4 weeks with 50% allocation.  There's no way achieve the desired MDE in 1 week, as this would require more than 100% allocation (more users than we expect to see in one week).
 
-![image](https://github.com/statsig-io/docs/assets/90343952/494a847a-89a0-4487-86e5-a4d453e04fb1)
+   ![image](https://github.com/statsig-io/docs/assets/90343952/494a847a-89a0-4487-86e5-a4d453e04fb1)
 
 ## Advanced Options
 
