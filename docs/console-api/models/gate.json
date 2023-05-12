@@ -22,9 +22,7 @@
               ]
             }
           ]
-        }
-      ],
-      "devRules": [
+        },
         {
           "name": "ten percent of people",
           "passPercentage": 10,
@@ -33,9 +31,7 @@
               "type": "public"
             }
           ]
-        }
-      ],
-      "stagingRules": [
+        },
         {
           "name": "everyone",
           "passPercentage": 100,
@@ -79,18 +75,6 @@
       "type": "string"
     },
     "rules": {
-      "type": "array",
-      "items": {
-        "$ref": "./rule.json"
-      }
-    },
-    "devRules": {
-      "type": "array",
-      "items": {
-        "$ref": "./rule.json"
-      }
-    },
-    "stagingRules": {
       "type": "array",
       "items": {
         "$ref": "./rule.json"
