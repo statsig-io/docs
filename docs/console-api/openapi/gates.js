@@ -249,8 +249,6 @@ module.exports = {
                         "creatorEmail": null,
                         "idType": "userID",
                         "isEnabled": true,
-                        "devRules": [],
-                        "stagingRules": [],
                         "rules": [
                           {
                             "name": "Ten percent of users",
@@ -427,9 +425,7 @@ module.exports = {
                                   "operator": "any"
                                 }
                               ]
-                            }
-                          ],
-                          "devRules": [
+                            },
                             {
                               "name": "ten percent of people",
                               "passPercentage": 10,
@@ -438,9 +434,7 @@ module.exports = {
                                   "type": "public"
                                 }
                               ]
-                            }
-                          ],
-                          "stagingRules": [
+                            },
                             {
                               "name": "everyone",
                               "passPercentage": 100,
@@ -662,9 +656,7 @@ module.exports = {
                                 ]
                               }
                             ]
-                          }
-                        ],
-                        "devRules": [
+                          },
                           {
                             "name": "ten percent of people",
                             "passPercentage": 10,
@@ -673,9 +665,7 @@ module.exports = {
                                 "type": "public"
                               }
                             ]
-                          }
-                        ],
-                        "stagingRules": [
+                          },
                           {
                             "name": "everyone",
                             "passPercentage": 100,
@@ -793,16 +783,20 @@ module.exports = {
                       "$ref": "../models/rule.json"
                     }
                   },
-                  "devRules": {
-                    "type": "array",
+                  "tags": {
+                    "type": [
+                      "array"
+                    ],
+                    "x-stoplight": {
+                      "id": "5rrnm2ejylkzx"
+                    },
+                    "description": "The gate's tags",
                     "items": {
-                      "$ref": "../models/rule.json"
-                    }
-                  },
-                  "stagingRules": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "../models/rule.json"
+                      "x-stoplight": {
+                        "id": "voxa9f4r28gsa"
+                      },
+                      "type": "string",
+                      "example": "product_team"
                     }
                   }
                 }
@@ -815,6 +809,9 @@ module.exports = {
                     "status": "In Progress",
                     "lastModifierName": "CONSOLE API",
                     "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
+                    "tags": [
+                      "design"
+                    ],
                     "rules": [
                       {
                         "name": "everyone",
@@ -824,9 +821,7 @@ module.exports = {
                             "type": "public"
                           }
                         ]
-                      }
-                    ],
-                    "devRules": [
+                      },
                       {
                         "name": "all outlook",
                         "passPercentage": 100,
@@ -839,9 +834,7 @@ module.exports = {
                             ]
                           }
                         ]
-                      }
-                    ],
-                    "stagingRules": [
+                      },
                       {
                         "name": "all outlook and gmail",
                         "passPercentage": 100,
@@ -930,9 +923,7 @@ module.exports = {
                             "name": "everyone",
                             "passPercentage": 100,
                             "type": "public"
-                          }
-                        ],
-                        "devRules": [
+                          },
                           {
                             "name": "all outlook",
                             "passPercentage": 100,
@@ -945,9 +936,7 @@ module.exports = {
                                 ]
                               }
                             ]
-                          }
-                        ],
-                        "stagingRules": [
+                          },
                           {
                             "name": "all outlook and gmail",
                             "passPercentage": 100,
@@ -1157,9 +1146,7 @@ module.exports = {
                                 "type": "public"
                               }
                             ]
-                          }
-                        ],
-                        "devRules": [
+                          },
                           {
                             "name": "all outlook",
                             "passPercentage": 100,
@@ -1172,9 +1159,7 @@ module.exports = {
                                 ]
                               }
                             ]
-                          }
-                        ],
-                        "stagingRules": [
+                          },
                           {
                             "name": "all outlook and gmail",
                             "passPercentage": 100,
@@ -1190,7 +1175,10 @@ module.exports = {
                             ]
                           }
                         ]
-                      }
+                      },
+                      "tags": [
+                        "product_team"
+                      ]
                     }
                   }
                 }
@@ -1256,6 +1244,22 @@ module.exports = {
                     "items": {
                       "$ref": "../models/rule.json"
                     }
+                  },
+                  "tags": {
+                    "type": [
+                      "array"
+                    ],
+                    "x-stoplight": {
+                      "id": "5rrnm2ejylkzx"
+                    },
+                    "description": "The gate's tags",
+                    "items": {
+                      "x-stoplight": {
+                        "id": "voxa9f4r28gsa"
+                      },
+                      "type": "string",
+                      "example": "product_team"
+                    }
                   }
                 }
               },
@@ -1264,8 +1268,9 @@ module.exports = {
                   "value": {
                     "isEnabled": false,
                     "description": "helpful summary of what this gate does",
-                    "lastModifierName": "CONSOLE API",
-                    "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
+                    "tags": [
+                      "product_team"
+                    ],
                     "rules": [
                       {
                         "name": "everyone",
@@ -1275,9 +1280,7 @@ module.exports = {
                             "type": "public"
                           }
                         ]
-                      }
-                    ],
-                    "devRules": [
+                      },
                       {
                         "name": "all outlook",
                         "passPercentage": 100,
@@ -1290,9 +1293,7 @@ module.exports = {
                             ]
                           }
                         ]
-                      }
-                    ],
-                    "stagingRules": [
+                      },
                       {
                         "name": "all outlook and gmail",
                         "passPercentage": 100,
