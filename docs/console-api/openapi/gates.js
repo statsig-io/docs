@@ -782,6 +782,22 @@ module.exports = {
                     "items": {
                       "$ref": "../models/rule.json"
                     }
+                  },
+                  "tags": {
+                    "type": [
+                      "array"
+                    ],
+                    "x-stoplight": {
+                      "id": "5rrnm2ejylkzx"
+                    },
+                    "description": "The gate's tags",
+                    "items": {
+                      "x-stoplight": {
+                        "id": "voxa9f4r28gsa"
+                      },
+                      "type": "string",
+                      "example": "product_team"
+                    }
                   }
                 }
               },
@@ -793,6 +809,9 @@ module.exports = {
                     "status": "In Progress",
                     "lastModifierName": "CONSOLE API",
                     "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
+                    "tags": [
+                      "design"
+                    ],
                     "rules": [
                       {
                         "name": "everyone",
@@ -1156,7 +1175,10 @@ module.exports = {
                             ]
                           }
                         ]
-                      }
+                      },
+                      "tags": [
+                        "product_team"
+                      ]
                     }
                   }
                 }
@@ -1222,6 +1244,22 @@ module.exports = {
                     "items": {
                       "$ref": "../models/rule.json"
                     }
+                  },
+                  "tags": {
+                    "type": [
+                      "array"
+                    ],
+                    "x-stoplight": {
+                      "id": "5rrnm2ejylkzx"
+                    },
+                    "description": "The gate's tags",
+                    "items": {
+                      "x-stoplight": {
+                        "id": "voxa9f4r28gsa"
+                      },
+                      "type": "string",
+                      "example": "product_team"
+                    }
                   }
                 }
               },
@@ -1230,8 +1268,9 @@ module.exports = {
                   "value": {
                     "isEnabled": false,
                     "description": "helpful summary of what this gate does",
-                    "lastModifierName": "CONSOLE API",
-                    "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
+                    "tags": [
+                      "product_team"
+                    ],
                     "rules": [
                       {
                         "name": "everyone",
