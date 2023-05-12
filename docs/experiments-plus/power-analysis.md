@@ -29,7 +29,7 @@ It can be accessed from the tools menu. It's also available on the experiment se
 
 ## Population Types
 
-The population selected directly impacts the inputs of the analysis (mean, variance, number of users).  To obtain reliable power analysis estimates, the metric values of the selected pupolation should roughly match those of the users you'll be targeting in the experiment.  
+The population selected directly impacts the inputs of the analysis (mean, variance, number of users).  To obtain reliable power analysis estimates, the metric values of the selected population should roughly match those of the users you'll be targeting in the experiment.  
 
 ### Example
 Say we want to test a change in the checkout flow and we want to know our expected MDE for total_purchases.  Let's assume that only ~10% of our daily users reach the checkout page.  If we use the *Everyone* population for our analysis, we're likely to:
