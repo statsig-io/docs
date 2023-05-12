@@ -29,7 +29,7 @@ You need to grant some permissions for Statsig from your Google Cloud console in
 
    ![image](https://user-images.githubusercontent.com/77478330/175113611-90e618ad-f6e8-4005-933e-2a5660a14466.png)
 
-3. Follow the steps above, but give the "BigQuery Data Editor" role on the dataset you want Statsig to use for its staging data.
+3. Following the steps above, give the "BigQuery Data Editor" role on the dataset you want Statsig to use for its staging data.
 
 Now the service account should have the required permissions to run queries and materialize results.
 
