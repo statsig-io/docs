@@ -13,7 +13,7 @@ To create a new feature gate,
 
  ![image](https://github.com/statsig-io/docs/assets/31516123/d058b0cb-153f-4e84-b7d6-e8db77cc1c49)
  
-When you create a feature gate, it is enabled by default as shown below. This means that any call to check this feature gate for a user evaluates the rules that you define for this feature gate. This check returns a **true** or **false** depending on whether that user matches these rules. If no rules are defined, the gate check returns **false** by default.
+Calls to check this feature gate for a user evaluate the rules that you define for this feature gate. This check returns a **true** or **false** depending on whether that user matches these rules. If no rules are defined, the gate check returns **false** by default.
  
 ![image](https://github.com/statsig-io/docs/assets/31516123/bb35e7ce-72ba-4643-8343-fdeccbf36c7f)
 
