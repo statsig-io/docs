@@ -37,6 +37,7 @@ module.exports = {
         "guides/email-campaign-test",
         "guides/cms-integrations",
         "guides/experiment-analysis",
+        "guides/migrate-from-launchdarkly",
       ],
     },
     {
@@ -292,7 +293,7 @@ module.exports = {
           Reports: [
             "console-api/daily-reports",
             "console-api/daily-reports-deprecated",
-          ]
+          ],
         },
         "console-api/all-endpoints",
         "console-api/usage-billing",
@@ -315,6 +316,31 @@ module.exports = {
             "access-management/sso/okta_sso",
             "access-management/sso/azuread",
             "access-management/sso/google",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Statsig Warehouse Native",
+      link: {
+        type: "doc",
+        id: "statsig-warehouse-native/introduction",
+      },
+      items: [
+        "statsig-warehouse-native/getting-started",
+        "statsig-warehouse-native/pipeline-overview",
+        {
+          "Building Blocks": [
+            "statsig-warehouse-native/building-blocks/assignment-sources",
+            "statsig-warehouse-native/building-blocks/metric-sources",
+            "statsig-warehouse-native/building-blocks/metrics",
+          ],
+        },
+        {
+          "Connecting Your Warehouse": [
+            "statsig-warehouse-native/connecting-your-warehouse/bigquery",
+            "statsig-warehouse-native/connecting-your-warehouse/snowflake",
           ],
         },
       ],

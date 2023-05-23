@@ -11,12 +11,12 @@ To create a new feature gate,
 - Enter the name and the description of the feature gate you want to create
 - Click **Create** to complete creating your feature gate
 
- ![image](https://user-images.githubusercontent.com/1315028/129071275-d8e2a0da-c71d-4d96-8cbb-b83113597367.png)
+ ![image](https://github.com/statsig-io/docs/assets/31516123/d058b0cb-153f-4e84-b7d6-e8db77cc1c49)
  
-When you create a feature gate, it is enabled by default as shown below. This means that any call to check this feature gate for a user evaluates the rules that you define for this feature gate. This check returns a **true** or **false** depending on whether that user matches these rules. If no rules are defined, the gate check returns **false** by default.
+Calls to check this feature gate for a user evaluate the rules that you define for this feature gate. This check returns a **true** or **false** depending on whether that user matches these rules. If no rules are defined, the gate check returns **false** by default.
  
-![image](https://user-images.githubusercontent.com/1315028/129071741-8bace745-f9e1-49c5-b563-7d4241bf8704.png)
+![image](https://github.com/statsig-io/docs/assets/31516123/bb35e7ce-72ba-4643-8343-fdeccbf36c7f)
 
-You can disable the feature gate by clicking on the toggle button next to the name of the feature gate. Statsig always returns **false** when you check a feature gate that’s disabled. 
+You can also Launch (pass 100%) or Disable (fail 100%) the gate using the More Options menu (...).
 
 When you need more than a Boolean value returned for different groups of users, say to customize the user experience, set up a [dynamic config](/dynamic-config). 

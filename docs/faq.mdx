@@ -25,11 +25,11 @@ Once an experiment has been started you cannot change the layer. Doing so would 
 Yes you can! When setting up your experiment you can select a Feature Gate that contains targeting rules. 
 ![image](https://user-images.githubusercontent.com/31516123/229173350-a1795b5a-bdef-4c58-afb1-36806dc38f1a.png)
 
-Your Feate Gate can explictly pass only users who meet specific criteria - in this example users on iOS. Learn more about feature gates [here](https://docs.statsig.com/feature-gates/working-with).
+Your Feature Gate can explictly pass only users who meet specific criteria - in this example users on iOS. Learn more about feature gates [here](https://docs.statsig.com/feature-gates/working-with).
 ![image](https://user-images.githubusercontent.com/31516123/229173998-3099feac-64cc-42fc-a1c3-69c9065d2dd0.png)
 
 
-## Why should I define parameters for my experiments and get them in code, instead of just get the group?
+## Why should I define parameters for my experiments and get them in code, instead of just getting the group?
 
 Even though some products on the market took the latter approach, parameterizing experiments is what companies like Facebook, Uber and Airbnb do in their internal experimentation platform, and it allows for much faster iteration (no code change for new experiments) and more flexible experiment design.
 
@@ -63,6 +63,8 @@ If you have a distinct marketing website (only sees anonymous users) from a prod
 
 Yes. For example, if your rule was passing 10%, and you increase it to 20%, the original 10% users will still pass, and an additional 10% will change from fail to pass.
 
+If you find a bug with the rollout, disable the gate, fix the bug and then re-enable the gate - Statsig will maintain the set of users exposed to the rollout. Reducing the rollout % and then increasing it will cause users to be shuffled and we don't recommend doing this. 
+
 
 ## What counts as a [billable event](https://statsig.com/pricing#faq)? 
 Statsig records an event when your application calls the Statsig SDK to check whether a user should be exposed to a feature gate or experiment, to log an event for a custom metric, or to check a dynamic config.
@@ -79,11 +81,11 @@ See the question above for what counts as a billable event. Some tools available
 ![image](https://user-images.githubusercontent.com/31516123/218547079-ba33751c-43f0-4ff7-8733-501711596333.png)
 
 
-2. The CSV is the richest way to explore usage data. There is some ability to see what gates/experiments or events consume the most events in the Usage and Billing Tab (within Project Settings). This is coming soon in early March 2023.
+2. The CSV is the richest way to explore usage data. There is some ability to see what gates/experiments or events consume the most events in the Usage and Billing Tab (within Project Settings). 
 ![image](https://user-images.githubusercontent.com/31516123/218545373-ac447ba7-1afd-4a0b-99f8-6698c8b2c045.png)
 
 
-3. When Enterprise Contracts begin to approach 75% usage, admins will begin to see warnings about this on the home page.
+3. Admins will be proactively alerted when Enterprise Contracts hit 25/ 50/ 75/ 100% usage of their contracted events.
 ![image](https://user-images.githubusercontent.com/31516123/218544792-0c027d19-6c1f-400a-9b8d-2041ad04985e.png)
 
 4. Look for gates that are 0% or 100% pass. These can be launched (always return Pass) or disabled (always return Fail) to stop generating billable events. [More information](https://statsig.com/updates#2/2/2023). With experiments, filter to experiments with Status = In Progress and Created < [day-45] to find long running experiments to make sure these are intentional and not just forgotten.

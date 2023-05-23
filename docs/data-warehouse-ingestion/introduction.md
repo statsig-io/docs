@@ -70,7 +70,7 @@ Reloading data and backfilling metrics and events is billed as any other [custom
 
 Note: Auto-generated **User Accounting Metrics** are not supported today for data warehouse ingestions.
 
-### Triggered Ingestion
+### API Triggered Ingestion (mark_data_ready)
 
 Enterprise customers can trigger ingestion for `metrics` or `events` using the statsig API. This will run your daily ingestion immediately after triggering, and can be helpful for companies whose data availability timing may vary day over day and want data to land as soon as possible in Statsig. This can be enabled by selecting "API Triggered" as your ingestion schedule - note that with this enabled, there will not be an automatic ingestion, but we will still re-sync data after the initial ingestion if we observe a change.
 
@@ -88,7 +88,9 @@ curl \
 Note that this is rate limited to once every two hours, and there may be a few minutes delay after triggering before status updates while compute resources are created.
 
 ### Frequently Asked Questions
+
 1. **Does event data from ingestion count towards Statsig's [User Accounting Metrics](/metrics/user) such as DAU or Retention?**
+
 
 No, event data from ingestions does not count towards Statsig's User Accounting Metrics such as DAU or Retention. Customers typically send Statsig a subset of their events, which could result in multiple competing values for "fact" data such as daily active users in your Statsig project. Statsig recommends sending your own precomputed metric for DAU or as a daily event per user (1 'daily_active' event if a user was active that day).
 
