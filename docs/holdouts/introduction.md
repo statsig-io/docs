@@ -10,7 +10,7 @@ Holdouts measure the aggregate impact of multiple features. A "holdout" is a gro
 1.	To create a new holdout, navigate to the Holdouts section on the Statsig console: https://console.statsig.com/ 
 2.	Click the Create New button and enter the name and description of the holdout that you want to create. 
 3.	You can choose to either create a global or a selected holdout. A global holdout captures the aggregate impact of all features developed after the holdout began. A selected holdout captures the aggregate impact of a specific selection of features that you want to hold off. 
-4.	By default Holdouts apply to a % of all users (Population = Everyone). You can optionally target the Holdout at a subset of your users by applying a Targeting Gate (Population = Targeting Gate). This is useful if you want to create for example a distinct iOS only Holdout.   
+4.	By default Holdouts apply to a % of all users (Population = Everyone). You can optionally target the Holdout at a subset of users by applying a Targeting Gate (Population = Targeting Gate). e.g. If you wanted an iOS users only Holdout, you could apply a Targeting Gate that only passes iOS users.    
 5.	You must set the percentage of users to be held-out between 1% to 10%. Statsig recommends a small holdout percentage to limit the number of customers who don’t see new features. 
 
 ![image](https://github.com/statsig-io/docs/assets/31516123/f949e687-ee6e-49aa-bdc3-23159030a510)
