@@ -341,6 +341,7 @@ module.exports = {
           "Connecting Your Warehouse": [
             "statsig-warehouse-native/connecting-your-warehouse/bigquery",
             "statsig-warehouse-native/connecting-your-warehouse/snowflake",
+            "statsig-warehouse-native/connecting-your-warehouse/databricks",
           ],
         },
       ],
