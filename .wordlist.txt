@@ -129,6 +129,7 @@ crosstab
 ctrl
 cuped
 customID
+databricks
 dataset
 datasets
 dau
@@ -153,6 +154,8 @@ granularities
 grey
 hoc
 hovercard
+hostname
+Hostname
 http
 https
 img
@@ -215,6 +218,7 @@ securityadmin
 sig
 signalling
 signup
+sql
 srm
 sso
 stableID
