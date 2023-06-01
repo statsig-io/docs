@@ -19,7 +19,7 @@ Start by enabling the Databricks source in your project settings.
 
 1. Follow the [Databricks documentation](https://docs.databricks.com/integrations/jdbc-odbc-bi.html#get-connection-details-for-a-cluster) to get the hostname and http path of the cluster you'll use to run your experimental analaysis. You may want to create a specific clsuter for this use case.
 
-![credentials](https://github.com/craig-statsig/pics/assets/102695539/e6329ea8-92ae-43af-95dc-7bce2a26a3e6)
+![credentials](https://user-images.githubusercontent.com/102695539/242474157-e6329ea8-92ae-43af-95dc-7bce2a26a3e6.png)
 
 <br />
 
