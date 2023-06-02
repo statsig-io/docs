@@ -91,6 +91,6 @@ See the question above for what counts as a billable event. Some tools available
 4. Look for gates that are 0% or 100% pass. These can be launched (always return Pass) or disabled (always return Fail) to stop generating billable events. [More information](https://statsig.com/updates#2/2/2023). With experiments, filter to experiments with Status = In Progress and Created < [day-45] to find long running experiments to make sure these are intentional and not just forgotten.
 
 ## What domains do I need to whitelist for Content Security Policy (CSP)?  
-If your web app configures the strict Content Security Policy (CSP) for security concerns, adjust the policy to whitelist these two Statsig domains 
+If your web app configures strict Content Security Policy (CSP), adjust the policy to whitelist these two Statsig domains 
 - https://featuregates.org (SDKs initialize and download config from here) and
-- https://events.statsigapi.net (log events) 
+- https://events.statsigapi.net (SDKs log events here) 
