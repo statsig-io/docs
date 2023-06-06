@@ -362,6 +362,7 @@ module.exports = {
             "data-warehouse-ingestion/databricks",
             "data-warehouse-ingestion/synapse",
             "data-warehouse-ingestion/s3",
+            "data-warehouse-ingestion/athena",
             "data-warehouse-ingestion/faq",
           ],
         },
