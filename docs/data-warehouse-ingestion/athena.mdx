@@ -1,0 +1,38 @@
+---
+title: Athena
+---
+
+## Overview
+
+** Athena Ingestion is in beta, please message the team to get early access **
+
+To set up connection with S3, Statsig needs the following
+
+- Region
+- IAM User Access Key
+- IAM Secret Access Key
+
+The above IAM User will need to be given permissions to query from Athena. Here's a sample policy with required permissions to access Athena:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "athena:StartQueryExecution",
+                "athena:GetQueryExecution",
+                "athena:GetQueryResults",
+                "s3:GetObject",
+                "s3:ListBucket",
+                "s3:GetBucketLocation",
+                "glue:GetTable",
+                "glue:GetDatabase"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
