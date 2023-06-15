@@ -21,3 +21,86 @@ The client SDK still needs to know the gate and experiment values for the given 
 The server SDK will take in a user object and use its local evaluation to generate the same response that the `/initialize` network call would generate.
 
 This integration requires a client sdk and a server SDK, so it is a bit more setup, but it will give you the most performant way to integrate Statsig in your website. We currently only support this on the `statsig-js` or `statsig-react` sdks, but let us know in slack if you have another use case.
+
+### Schema of /initialize response
+```typescript
+/** Specs for Dynamic Configs */
+dynamic_configs: {
+  [key: string]: {
+    name: string;
+    rule_id: string | null;
+    value: { [key: string]: unknown };
+    group?: string;
+    secondary_exposures?: {
+      gate: string,
+      gateValue: string,
+      ruleID: string,
+    }[];
+    undelegated_secondary_exposures?: {
+      gate: string,
+      gateValue: string,
+      ruleID: string,
+    }[];
+    is_device_based?: boolean;
+    is_user_in_experiment?: boolean;
+    is_experiment_active?: boolean;
+    explicit_parameters?: string[];
+    is_in_layer?: boolean;
+    allocated_experiment_name?: string;
+  };
+};
+/** Specs for Feature Gates */
+feature_gates: {
+  [key: string]: {
+    name: string;
+    value: boolean;
+    rule_id: string | null;
+    secondary_exposures?: {
+      gate: string,
+      gateValue: string,
+      ruleID: string,
+    }[];
+  };
+};
+/** Specs for Layer Configs */
+layer_configs: {
+  [key: string]: {
+    name: string;
+    rule_id: string | null;
+    value: { [key: string]: unknown };
+    group?: string;
+    secondary_exposures?: {
+      gate: string,
+      gateValue: string,
+      ruleID: string,
+    }[];
+    undelegated_secondary_exposures?: {
+      gate: string,
+      gateValue: string,
+      ruleID: string,
+    }[];
+    is_device_based?: boolean;
+    is_user_in_experiment?: boolean;
+    is_experiment_active?: boolean;
+    explicit_parameters?: string[];
+    is_in_layer?: boolean;
+    allocated_experiment_name?: string;
+  };
+};
+/** Whether the response contains updates from the sinceTime */
+has_updates: boolean;
+/** Name of the service that generated the response */
+generator: string;
+/** Timestamp of response */
+time: number;
+/** Timestamp of company's last config update time */
+company_lcut: number;
+/** The user keys evaluated */
+evaluated_keys: {
+  userID?: string;
+  stableID?: string;
+  customIDs?: Record<string, string>;
+};
+/** The hashing algorithm used */
+hash_used: string; 
+```
