@@ -15,6 +15,7 @@ CSV
 CTA
 CUPED
 Changelog
+CLI
 CloudFront
 Cloudflare
 CodeLens
