@@ -230,7 +230,7 @@ module.exports = {
         id: "client/introduction",
       },
       items: [
-        { Concepts: ["client/concepts/user", "sdks/debugging"] },
+        { Concepts: ["client/concepts/user", "client/concepts/initialize", "sdks/debugging"] },
         "client/jsClientSDK",
         "client/reactSDK",
         "client/reactNativeSDK",
@@ -362,6 +362,7 @@ module.exports = {
             "data-warehouse-ingestion/databricks",
             "data-warehouse-ingestion/synapse",
             "data-warehouse-ingestion/s3",
+            "data-warehouse-ingestion/athena",
             "data-warehouse-ingestion/faq",
           ],
         },

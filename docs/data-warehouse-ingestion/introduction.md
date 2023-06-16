@@ -15,6 +15,7 @@ We currently support ingestion from the following providers:
 4. [Databricks](databricks.mdx)
 5. [Synapse](synapse.mdx)
 6. [S3](s3.mdx)
+6. [Athena](athena.mdx)
 
 ### How it works
 
