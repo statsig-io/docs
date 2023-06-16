@@ -10,7 +10,8 @@ Statsig’s Fastly integration pushes Statsig Configs to Fastly Config Stores, a
 
 Navigate to the Fastly integration in Statsig's Console under **Project Settings** -> **Integrations**.
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/135646288/245945801-6376166b-0239-437f-ad25-a0a43468bcb7.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230614%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230614T221504Z&X-Amz-Expires=300&X-Amz-Signature=cfb61dd13bf934f9bc988eb46a93866c863027656be585ac6f1881570e50d969&X-Amz-SignedHeaders=host&actor_id=135646288&key_id=0&repo_id=318704090)
+<img width="841" alt="Screen Shot 2023-06-16 at 4 01 43 PM" src="https://github.com/statsig-io/docs/assets/135646288/8f013e0e-c075-4a92-a473-197983a056d6">
+
 
 We're looking for the Fastly API Token and Fastly Config Store ID
 
