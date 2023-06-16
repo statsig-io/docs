@@ -409,6 +409,7 @@ module.exports = {
         "integrations/jira",
         "integrations/vercel",
         "integrations/cloudflare",
+        "integrations/fastly",
         "integrations/vscode",
         "integrations/datadog",
         {

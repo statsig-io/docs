@@ -15,6 +15,7 @@ CSV
 CTA
 CUPED
 Changelog
+CLI
 CloudFront
 Cloudflare
 CodeLens
@@ -26,6 +27,7 @@ Databricks
 Datadog
 Dev
 ETLs
+Fastly
 Fivetran
 GDPR
 Github
