@@ -14,7 +14,7 @@ Navigate to the Fastly integration in Statsig's Console under **Project Settings
 
 We're looking for the Fastly API Token and Fastly Config Store ID
 
-- Fastly API Key - Can be found in Fastly portal under **Account** -> **API Tokens**. We need a token with global access.
+- Fastly API Key - Can be found in Fastly portal under **Account** -> **API Tokens**. We need an automation token with Engineer Roles and Global access.
 - Config Store ID - You can create a Config Store or view your existing Config Stores using the Fastly [API](https://developer.fastly.com/reference/api/services/resources/config-store/) or [CLI](https://developer.fastly.com/reference/cli/config-store/).
 
 After setting up the integration, implement the [Statsig Fastly Data Adapter](https://www.npmjs.com/package/statsig-node-fastly) into your worker.
