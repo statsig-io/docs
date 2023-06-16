@@ -230,7 +230,7 @@ module.exports = {
         id: "client/introduction",
       },
       items: [
-        { Concepts: ["client/concepts/user", "sdks/debugging"] },
+        { Concepts: ["client/concepts/user", "client/concepts/initialize", "sdks/debugging"] },
         "client/jsClientSDK",
         "client/reactSDK",
         "client/reactNativeSDK",
@@ -450,6 +450,7 @@ module.exports = {
         "stats-engine/topline-impact",
         "stats-engine/variance-reduction",
         "stats-engine/offlineaa",
+        "stats-engine/pre-experiment-bias",
         {
           "Methodologies Used": [
             "stats-engine/methodologies/bonferroni-correction",
