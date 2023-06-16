@@ -449,6 +449,7 @@ module.exports = {
         "stats-engine/topline-impact",
         "stats-engine/variance-reduction",
         "stats-engine/offlineaa",
+        "stats-engine/pre-experiment-bias",
         {
           "Methodologies Used": [
             "stats-engine/methodologies/bonferroni-correction",
