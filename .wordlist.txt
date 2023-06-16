@@ -26,6 +26,7 @@ Databricks
 Datadog
 Dev
 ETLs
+Fastly
 Fivetran
 GDPR
 Github
