@@ -14,6 +14,19 @@ At the top of Pulse is the Exposures Chart. Exposures are the unique experimenta
 
 ### Metric Lifts
 
+#### First 24 hours post-experiment start 
+
+For the first 24 hours after starting your experiment, Pulse is calculated hourly. This more real-time Pulse is designed to enable you to confirm that exposures and metrics are being calculated as expected and debug your experiment or gate setup if needed. 
+
+Please note that you should **not** make any experiment decisions based on more real-time Pulse data in the first 24 hours after experiment start. Experiments should only be called once the experiment has hit target duration, as set by your primary metric(s) hitting experimental power. Read more about target duration [here](https://docs.statsig.com/experiments-plus/create-new#target-duration). 
+
+A few key differences between Hourly Pulse and your daily Pulse results that will start showing after the initial 24 hour window post-experiment start: 
+
+- No confidence intervals
+- 
+
+#### Ongoing Metric Lifts  
+
 ![Screen Shot 2022-12-29 at 1 47 32 PM](https://user-images.githubusercontent.com/101903926/210014132-cfe6d82c-d451-4deb-8834-971412d482d4.png)
 
 The **Metric Lifts** section, a.k.a. **Pulse** calculates the difference between the comparable randomization groups (eg. test and control) across your company's suite of metrics, and applies a statistical test to the results. You can read more about Statsig's stats engine [here](https://docs.statsig.com/stats-engine). 
