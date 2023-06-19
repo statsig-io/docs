@@ -20,7 +20,7 @@ For the first 24 hours after starting your experiment, the **Metric Lifts** sect
 
 Please note that you should **not** make any experiment decisions based on more real-time Pulse data in the first 24 hours after experiment start. Experiments should only be called once the experiment has hit target duration, as set by your primary metric(s) hitting experimental power. Read more about target duration [here](https://docs.statsig.com/experiments-plus/create-new#target-duration). 
 
-<img width="1205" alt="Screen Shot 2023-06-19 at 3 29 13 PM" src="https://github.com/statsig-io/docs/assets/101903926/c148deb6-b20d-4f36-af1a-83836d23371b">
+<img width="1205" alt="Screen Shot 2023-06-19 at 3 29 13 PM" src="https://github.com/statsig-io/docs/assets/101903926/c148deb6-b20d-4f36-af1a-83836d23371b"/>
 
 Given data during the first 24 hours of an experiment is designed for diagnostic, not decision-making purposes, you will notice a few key differences between this Pulse view and the daily Pulse results that will start showing after the initial 24 hour window post-experiment start: 
 
@@ -29,7 +29,7 @@ Given data during the first 24 hours of an experiment is designed for diagnostic
 - No projected topline impact analysis
 - No option to apply more advanced statistical tactics, such as CUPED or Sequential Testing 
 
-<img width="992" alt="Screen Shot 2023-06-19 at 3 32 13 PM" src="https://github.com/statsig-io/docs/assets/101903926/c34d4358-c92d-488f-ae49-d073904065d0">
+<img width="992" alt="Screen Shot 2023-06-19 at 3 32 13 PM" src="https://github.com/statsig-io/docs/assets/101903926/c34d4358-c92d-488f-ae49-d073904065d0"/>
 
 
 
