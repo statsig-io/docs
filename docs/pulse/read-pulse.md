@@ -14,7 +14,7 @@ At the top of Pulse is the Exposures Chart. Exposures are the unique experimenta
 
 ### Metric Lifts
 
-#### Up to first 24 hours post-experiment start 
+#### Immediately Post-experiment Start 
 
 For up to the first 24 hours after starting your experiment (before our daily Pulse run), the **Metric Lifts** section, a.k.a. Pulse, is calculated in near real-time. This more real-time Pulse is designed to enable you to confirm that exposures and metrics are being calculated as expected and debug your experiment or gate setup if needed. 
 
@@ -22,7 +22,8 @@ Please note that you should **not** make any experiment decisions based on more 
 
 <img width="1205" alt="Screen Shot 2023-06-19 at 3 29 13 PM" src="https://github.com/statsig-io/docs/assets/101903926/c148deb6-b20d-4f36-af1a-83836d23371b"/>
 
-Given data during before the first daily Pulse run of an experiment is designed for diagnostic, not decision-making purposes, you will notice a few key differences between this Pulse view and the daily Pulse results that will start showing after daily runs have initiated: 
+
+Given data during this early post-experiment start window is designed for diagnostic, not decision-making purposes, you will notice a few key differences between this Pulse view and the Pulse results that will start showing after daily runs have initiated: 
 
 - Metric lifts do not have confidence intervals
 - No time-series view of metric trends
@@ -35,11 +36,11 @@ Given data during before the first daily Pulse run of an experiment is designed 
 
 All of these are available in daily Pulse results, which will start showing in the next daily Pulse run. 
 
-#### Post-First Day Metric Lifts  
+#### Post-first Day Metric Lifts  
 
 ![Screen Shot 2022-12-29 at 1 47 32 PM](https://user-images.githubusercontent.com/101903926/210014132-cfe6d82c-d451-4deb-8834-971412d482d4.png)
 
-After the first 24 hours of an experiment, Pulse calculates the difference between the comparable randomization groups (eg. test and control) across your company's suite of metrics, and applies a statistical test to the results. You can read more about Statsig's stats engine [here](https://docs.statsig.com/stats-engine). 
+The Pulse daily run calculates the difference between the comparable randomization groups (eg. test and control) across your company's suite of metrics, and applies a statistical test to the results. You can read more about Statsig's stats engine [here](https://docs.statsig.com/stats-engine). 
 
 For every metric, we will show you:
 
