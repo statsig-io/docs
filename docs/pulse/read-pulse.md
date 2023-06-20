@@ -14,15 +14,15 @@ At the top of Pulse is the Exposures Chart. Exposures are the unique experimenta
 
 ### Metric Lifts
 
-#### First 24 hours post-experiment start 
+#### Up to first 24 hours post-experiment start 
 
-For the first 24 hours after starting your experiment, the **Metric Lifts** section, a.k.a. Pulse, is calculated in near real-time. This more real-time Pulse is designed to enable you to confirm that exposures and metrics are being calculated as expected and debug your experiment or gate setup if needed. 
+For up to the first 24 hours after starting your experiment (before our daily Pulse run), the **Metric Lifts** section, a.k.a. Pulse, is calculated in near real-time. This more real-time Pulse is designed to enable you to confirm that exposures and metrics are being calculated as expected and debug your experiment or gate setup if needed. 
 
-Please note that you should **not** make any experiment decisions based on more real-time Pulse data in the first 24 hours after experiment start. Experiments should only be called once the experiment has hit target duration, as set by your primary metric(s) hitting experimental power. Read more about target duration [here](https://docs.statsig.com/experiments-plus/create-new#target-duration). 
+Please note that you should **not** make any experiment decisions based on more real-time Pulse data in this first 24 hour window after experiment start. Experiments should only be called once the experiment has hit target duration, as set by your primary metric(s) hitting experimental power. Read more about target duration [here](https://docs.statsig.com/experiments-plus/create-new#target-duration). 
 
 <img width="1205" alt="Screen Shot 2023-06-19 at 3 29 13 PM" src="https://github.com/statsig-io/docs/assets/101903926/c148deb6-b20d-4f36-af1a-83836d23371b"/>
 
-Given data during the first 24 hours of an experiment is designed for diagnostic, not decision-making purposes, you will notice a few key differences between this Pulse view and the daily Pulse results that will start showing after the initial 24 hour window post-experiment start: 
+Given data during before the first daily Pulse run of an experiment is designed for diagnostic, not decision-making purposes, you will notice a few key differences between this Pulse view and the daily Pulse results that will start showing after daily runs have initiated: 
 
 - Metric lifts do not have confidence intervals
 - No time-series view of metric trends
@@ -33,7 +33,7 @@ Given data during the first 24 hours of an experiment is designed for diagnostic
 
 
 
-All of these are available in daily Pulse results, which will start showing after the experiment has been running for 24 hours. 
+All of these are available in daily Pulse results, which will start showing in the next daily Pulse run. 
 
 #### Post-First Day Metric Lifts  
 
