@@ -166,6 +166,7 @@ module.exports = {
             "metrics/precomputed-metrics",
             "metrics/user-dimensions",
             "metrics/metric-dimensions",
+            "metrics/health-checks",
           ],
         },
         // other
