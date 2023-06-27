@@ -119,7 +119,7 @@ curl \
 ```
 
 Response:
-`{"name":"YOUR-GATE-NAME","value":false}`
+`{"name":"YOUR-GATE-NAME","value":false,"rule_id":"123","group_name":"group123"}`
 
 ##### Get a Dynamic Config value {#get-a-dynamic-config-value}
 
@@ -133,7 +133,7 @@ curl \
 ```
 
 Response:
-`{"name":"YOUR-CONFIG-NAME","value":{"a":1,"b":2},"group":"default"}`
+`{"name":"YOUR-CONFIG-NAME","value":{"a":1,"b":2},"group":"123","rule_id":"123","group_name":"group123"}`
 
 ##### Fetch Experiment Config {#fetch-experiment-config}
 
@@ -149,7 +149,7 @@ curl \
 ```
 
 Response:
-`{"name":"YOUR-EXPERIMENT-NAME","value":{"color":"blue","shape":"circle"},"group":"default"}`
+`{"name":"YOUR-EXPERIMENT-NAME","value":{"color":"blue","shape":"circle"},"group":"123","rule_id":"123","group_name":"group123}`
 
 ##### Fetch Layer Value {#fetch-layer-config}
 
