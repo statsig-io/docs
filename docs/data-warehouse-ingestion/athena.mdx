@@ -9,6 +9,10 @@ title: Athena
 To set up connection with Athena, Statsig needs the following
 
 - Region
+- Granting Athena Access Permissions to a Statsig-owned Service Account  
+
+In place of granting Athena Access Permissions to a Statsig-owned Service Account, you can also provide the following:
+
 - IAM User Access Key
 - IAM Secret Access Key
 
@@ -35,7 +39,10 @@ The above IAM User will need to be given permissions to query from Athena. Here'
                 "glue:GetTable",
                 "glue:GetDatabase"
             ],
-            "Resource": "*"
+            "Resource": [
+                "arn:aws:athena:*:<ACCOUNT_ID>:workgroup/*",
+                "arn:aws:glue:<REGION>:<ACCOUNT_ID>:*"
+            ]
         }
     ]
 }
