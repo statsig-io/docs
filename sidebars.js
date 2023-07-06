@@ -172,6 +172,7 @@ module.exports = {
         "metrics/ingest",
         "metrics/pulse",
         "metrics/console",
+        "metrics/health-checks",
 
         // 201
         "metrics/create",
