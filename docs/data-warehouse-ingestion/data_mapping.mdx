@@ -24,7 +24,7 @@ Events that are emitted by your application to measure the ongoing impact of you
 
 | Column     | Description                            | Format/Rules                                                                      |
 | ---------- | -------------------------------------- | --------------------------------------------------------------------------------- |
-| timestamp  | The unix time your event was logged at | BIGINT. please cast timestamps into timezoneless unix time                        |
+| timestamp  | The unix time your event was logged at | BIGINT. please cast timestamps into epoch time in seconds                         |
 | event_name | The name of the event                  | STRING/VARCHAR. Not null. Length < 128 characters                                 |
 | unit_id    | Unique unit identifier                 | STRING/VARCHAR. User ID, Stable ID, etc. The same event row can have multiple IDs |
 

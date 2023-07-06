@@ -15,6 +15,7 @@ CSV
 CTA
 CUPED
 Changelog
+CLI
 CloudFront
 Cloudflare
 CodeLens
@@ -26,6 +27,7 @@ Databricks
 Datadog
 Dev
 ETLs
+Fastly
 Fivetran
 GDPR
 Github
@@ -129,6 +131,7 @@ crosstab
 ctrl
 cuped
 customID
+databricks
 dataset
 datasets
 dau
@@ -153,6 +156,8 @@ granularities
 grey
 hoc
 hovercard
+hostname
+Hostname
 http
 https
 img
@@ -215,6 +220,7 @@ securityadmin
 sig
 signalling
 signup
+sql
 srm
 sso
 stableID
