@@ -231,7 +231,13 @@ module.exports = {
         id: "client/introduction",
       },
       items: [
-        { Concepts: ["client/concepts/user", "client/concepts/initialize", "sdks/debugging"] },
+        {
+          Concepts: [
+            "client/concepts/user",
+            "client/concepts/initialize",
+            "sdks/debugging",
+          ],
+        },
         "client/jsClientSDK",
         "client/reactSDK",
         "client/reactNativeSDK",
@@ -343,6 +349,7 @@ module.exports = {
             "statsig-warehouse-native/connecting-your-warehouse/bigquery",
             "statsig-warehouse-native/connecting-your-warehouse/snowflake",
             "statsig-warehouse-native/connecting-your-warehouse/databricks",
+            "statsig-warehouse-native/connecting-your-warehouse/redshift",
           ],
         },
       ],

@@ -22,3 +22,16 @@ than the control group in the week before exposure for this metric
 
 Statsig detects this bias by running the standard [pulse](../pulse) calculation on the pre-experiment term (looking back one week), and calculating the p-value for the null hypothesis that the groups are identical.
 Relevant results will be flagged according to logic which balances awareness and false positives stemming from high numbers of scorecard metrics or groups.
+
+### What to Do
+
+Pre-experiment bias can occur by chance and is not always a major issue.
+
+- If the total delta is small, it may not meaningfully influence your interpretation of results
+- If CUPED can account for the bias, then the bias should not impact your results
+
+In many cases, you can just use this warning as that - a warning - and proceed while treating impacted metrics with a grain of salt.
+This is often the correct path forward if the metric is not critical to the experiment, or if you care more about the directional movement than the exact number.
+Additionally, more time may alleviate the bias if there's no systemic source (which is generally the case), as the bias will be diluted by additional new users.
+
+However, if the metric is critical to your analysis and you care about the exact numerical value, you may want to consider resalting and restarting this experiment.

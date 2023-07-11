@@ -2,6 +2,7 @@ APIs
 Atlassian
 Autotune
 Autotune's
+aws
 Bezos
 BigQuery
 Bigquery
@@ -205,6 +206,7 @@ preload
 priori
 proxying
 pst
+redshift
 repo
 resalt
 resync
