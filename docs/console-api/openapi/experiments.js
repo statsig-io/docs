@@ -646,6 +646,32 @@ module.exports = {
         ],
         "tags": [
           "Experiments"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "status",
+            "description": "Filter by experiment status"
+          },
+          {
+            "schema": {
+              "type": "array"
+            },
+            "in": "query",
+            "name": "tags",
+            "description": "Filter by experiments with selected tags"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "layerID",
+            "description": "Filter by experiments inside of the selected layer"
+          }
         ]
       },
       "parameters": []
