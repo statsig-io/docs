@@ -44,3 +44,7 @@ Find your BigQuery Project ID below
 2. Copy and paste relevant Project ID from the modal pop-up.
 
 ![Frame 5](https://user-images.githubusercontent.com/108023879/187517901-9e7fd237-8325-4254-a1bd-c75f0ea08497.png)
+
+### What IP addresses will Statsig access data warehouses from?
+
+[See FAQ](https://docs.statsig.com/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from)
