@@ -33,8 +33,8 @@ function setupKoala() {
   });
 }
 
-initStatsig();
+// initStatsig();
 setupKoala();
-window.addEventListener('load', function () {
-  wireClickHandlers('a');
-});
+// window.addEventListener('load', function () {
+//   wireClickHandlers('a');
+// });
