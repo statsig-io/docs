@@ -14,21 +14,21 @@ In contrast, communicating Frequentist AB testing results in a statistically-val
 
 > *Because the probability of observing the data under the null hypothesis is lower than 5%, which is unlikely, we can reject null hypothesis and accept the alternative hypothesis that the test variant improves the metric.*
 
-Bayesian methods can make use of prior information to build a probability model for the observed data.  Unfortunately, building a useful and robust prior model depends on a lot of factors including the amount of information you have, experimental context, and assumptions you’ve made.  This is quite challenging to construct and is often criticized for introducing bias to your experimental results.  In many cases, priors are often carefully constructed for single metrics under specific contexts where there is a rich history of prior experimental data (eg. >200 experiments).  To deploy Bayesian methods across Statsig’s diverse customer-base and their wide range of metrics, we’ve avoided this by implementing a naive prior model that assumes nothing.  This means that even though the results capture the same data, they may end up with the same statistical power as frequentist methods.  Yet interpretation is much clearer.
+Bayesian methods can also make use of prior information to build a probability model for the observed data.  Unfortunately, building a useful and robust prior model depends on a lot of factors including the amount of information you have, experimental context, and assumptions you’ve made.  This is quite challenging to construct and is often criticized for introducing bias to your experimental results.  In many cases, priors are often carefully constructed for single metrics under specific contexts where there is a rich history of prior experimental data (eg. >200 experiments).  To deploy Bayesian methods across Statsig’s diverse customer-base and their wide range of metrics, we’ve avoided this by implementing a naive prior model that assumes nothing.  This means that even though the results capture the same data, they may end up with the same statistical power as frequentist methods.  Yet interpretation is much clearer.
 
 ### Bayesian Testing in Statsig
 
 Using Bayesian Testing is simple. You can set up the experiment as you would for ordinary AB testing. Then select the Bayesian option under the Advanced Settings of Experiment Setup.
 
-INSERT IMAGE HERE!
+![Image](https://github.com/statsig-io/docs/assets/132317445/c9c01a57-fe13-47a9-b734-20d6e8d715a4)
 
 And you are done. Your Pulse results should now be recalculated with new visualizations around Bayesian Testing specific statistics.
 
-INSERT IMAGE HERE!
+![Image](https://github.com/statsig-io/docs/assets/132317445/be912632-6200-4408-977c-92f48dfdd7bc)
 
 Deep dive analysis should also reflect Bayesian statistics
 
-INSERT IMAGE HERE!
+![Image](https://github.com/statsig-io/docs/assets/132317445/c9214142-d11f-48c8-92a4-53581bbc498c)
 
 **What is supported?** Today, we are only supporting normal-normal Bayesian testing setups given its robustness and usage safety. We have plans to increase the set of distribution pairs available on our platform over time.
 
