@@ -128,6 +128,7 @@ module.exports = {
         "experiments-plus/abandon",
         "experiments-plus/ending-experiment",
         "experiments-plus/disable-group",
+        "experiments-plus/bayesian",
         {
           Experimentation: [
             "experiments-plus/experimentation/why-experiment",
