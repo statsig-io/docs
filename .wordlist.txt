@@ -257,6 +257,7 @@ wonkish
 workspaces
 xAU
 yyyy
+bayesian
 frequentist
 Frequentist
 unintuitive
