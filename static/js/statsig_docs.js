@@ -17,17 +17,23 @@ function wireClickHandlers(tagName) {
 }
 
 function initStatsig() {
-  statsig.initialize(
-    'client-oJY6hTJeduhEN2bf6fh6unHvxIk9UsjS99BlO4owh0r', 
-    null, 
-    { environment: { tier: window.statsigTier }}
-  ).then((err) => {
-    statsig.logEvent(
-      'page_view', 
-      window.location.pathname, 
-      { page : window.location.href, referrer: document && document.referrer }
-    );
-  })
+  statsig.logEvent(
+    'page_view',
+    window.location.pathname, 
+    { page : window.location.href, referrer: document && document.referrer }
+  );
+  // statsig.initialize(
+  //   'client-oJY6hTJeduhEN2bf6fh6unHvxIk9UsjS99BlO4owh0r', 
+  //   null, 
+  //   { environment: { tier: window.statsigTier }}
+  // ).then((err) => {
+  //   console.log("initialized");
+  //   statsig.logEvent(
+  //     'page_view', 
+  //     window.location.pathname, 
+  //     { page : window.location.href, referrer: document && document.referrer }
+  //   );
+  // })
   // .catch((_e) => {
   //   // noop
   // });
