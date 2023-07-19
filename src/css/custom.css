@@ -133,3 +133,11 @@ span.math.math-inline {
 .katex{
   font-size: 80%;
 }
+
+.katex .base {
+  vertical-align: 0em;  /* Adjust this value as needed */
+}
+
+.math-inline {
+  line-height: 1;
+}
