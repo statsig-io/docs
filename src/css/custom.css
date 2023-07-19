@@ -129,3 +129,7 @@ html[data-theme="dark"] {
 span.math.math-inline {
   font-size: 150%;
 }
+
+.katex{
+  font-size: 80%;
+}
