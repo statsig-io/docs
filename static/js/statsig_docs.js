@@ -3,11 +3,15 @@ function wireClickHandlers(tagName) {
   for (let ii = 0; ii < elements.length; ii++) {
     const el = elements[ii];
     el.addEventListener('click', () => {
-      statsig.logEvent(
-        'link_click', 
-        el.pathname, 
-        { page : window.location.href, referrer: document && document.referrer }
-      );
+      //try {
+        statsig.logEvent(
+          'link_click', 
+          el.pathname, 
+          { page : window.location.href, referrer: document && document.referrer }
+        );
+      // } catch (_e) {
+      //   // noop
+      // }
     });
   }
 }
@@ -23,7 +27,10 @@ function initStatsig() {
       window.location.pathname, 
       { page : window.location.href, referrer: document && document.referrer }
     );
-  });
+  })
+  // .catch((_e) => {
+  //   // noop
+  // });
 }
 
 function setupKoala() {
@@ -33,8 +40,8 @@ function setupKoala() {
   });
 }
 
-// initStatsig();
+initStatsig();
 setupKoala();
-// window.addEventListener('load', function () {
-//   wireClickHandlers('a');
-// });
+window.addEventListener('load', function () {
+  wireClickHandlers('a');
+});
