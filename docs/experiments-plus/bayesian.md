@@ -1,4 +1,3 @@
-
 ---
 title: Bayesian Experiments
 sidebar_label: Bayesian
