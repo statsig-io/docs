@@ -5,12 +5,6 @@ sidebar_label: Bayesian
 slug: /experiments-plus/bayesian
 ---
 
----
-title: Bayesian Experiments
-sidebar_label: Bayesian
-slug: /experiments-plus/bayesian
----
-
 ### Why Bayesian
 
 Bayesian A/B testing leverages a different statistical framework for A/B testing than the more widely used Frequentist-based statistics. It’s often selected for its simplicity and intuitiveness.  Practitioners do not have to deal with the complexities of p-values, null hypotheses, nor unintuitive confidence intervals.  Instead, you can make statements like:
