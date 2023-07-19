@@ -257,3 +257,12 @@ wonkish
 workspaces
 xAU
 yyyy
+bayesian
+frequentist
+Frequentist
+unintuitive
+ie
+num
+cdot
+forall
+mathbb
