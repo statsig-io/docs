@@ -22,7 +22,7 @@
  
    return {
      onRouteUpdate({location}) {
-      if (typeof window === 'undefined' || typeof window.statsig === undefined) {
+      if (typeof window === 'undefined' || typeof window.statsig === 'undefined') {
         return;
       }
       // will no-op if already initialized
