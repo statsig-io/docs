@@ -50,16 +50,7 @@ Since the grace period has ended and the metric has stopped being computed alrea
 
 To combat metric clutter, Statsig offers a default auto-archival feature that cleans up metrics that have not been in-use for at least 60 days. Metric creators and admins will get a warning about a week before archival happens, at which time they can either choose to extend the metric for another 60 days or mark it as permanent. The entire process is outlined below:
 
-```mermaid
-graph TD
-	LiveMetric --activity--> ActiveMetric
-	LiveMetric --no activity--> InactiveMetric
-	InactiveMetric --activity detected--> ActiveMetric
-	ActiveMetric --removal of use--> InactiveMetric
-	InactiveMetric --60 days--> ScheduledForArchival
-	ScheduledForArchival --7 to 14 days---> Archived
-	ScheduledForArchival --use and interactions--> ActiveMetric
-```
+![state graph](https://github.com/statsig-io/docs/assets/132317445/c7912507-636f-4f33-9555-70180dfd205e)
 
 #### How do we measure activity?
 
