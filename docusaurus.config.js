@@ -111,6 +111,7 @@ module.exports = {
       return {
         name: "docusaurus-plugin-statsig",
         getClientModules() {
+          // statsig client sdk initialization
           return [path.resolve(__dirname, "./statsig")];
         },
         injectHtmlTags() {
@@ -129,12 +130,6 @@ module.exports = {
               {
                 tagName: "script",
                 attributes: {
-                  src: "/js/statsig_docs.js",
-                },
-              },
-              {
-                tagName: "script",
-                attributes: {
                   src: "/js/rapidoc-min.js",
                 },
               },
@@ -142,6 +137,12 @@ module.exports = {
                 tagName: "script",
                 attributes: {
                   src: "https://cdn.koala.live/v1/daniel/sdk.js",
+                },
+              },
+              {
+                tagName: "script",
+                attributes: {
+                  src: "/js/koala.js",
                 },
               },
             ],
