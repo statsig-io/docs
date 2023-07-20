@@ -69,18 +69,10 @@ So that’s Bayesian statistics. How does this apply to AB testing? We simply st
 - Expected Loss $:= \text{Exp}[\ \Delta\ |\ \Delta < 0 \ ] \cdot P(\Delta < 0)$
 - Chance to Beat $:= P(\Delta > 0)$
 
-At first glance, Bayesian testing seems simple and intuitive. For instance, you can make statements like
-
-> *We expect a lift in our metric by 10% $\pm$ 5%. Overall,* t*here is a 80% chance that the test variant beats the control variant and if we roll it out, there is risk that we degrade our metric by an expected amount of 0.5.*
-
-In contrast, Frequentist AB testing makes a double negative statement: 
-
-> *Because the probability of observing the data under the null hypothesis is lower than 5%, which is unlikely, we can say with confidence that null hypothesis is not true and that the test variant improves the metric by a significant amount.*
-
-However, the simplicity is deceptive. We’ve actually swept an enormous amount of complexity under the rug — the entire method is extremely sensitive to the choice of priors. What is the correct prior distribution to use? Given the choice of prior distributions, how do you model the prior distribution parameters (in this case, $\mu_0, \sigma_0$)? These assumptions can dramatically affect the results. In fact, the leading scientific publication, Nature, recently published guidelines on what is required when using Bayesian testing, in which they warned:
+At first glance, Bayesian testing seems simple and intuitive. However, the simplicity is deceptive. We’ve actually swept an enormous amount of complexity under the rug — the entire method is extremely sensitive to the choice of priors. What is the correct prior distribution to use? Given the choice of prior distributions, how do you model the prior distribution parameters (in this case, $\mu_0, \sigma_0$)? These assumptions can dramatically affect the results. In fact, the leading scientific publication, Nature, recently published guidelines on what is required when using Bayesian testing, in which they warned:
 
 > Because the posterior distribution can sometimes depend strongly on the choice of prior distribution, a key part of reporting priors is justifying the choice. That is, it is not sufficient merely to state what prior was used, there must be a rationale for the prior. Two further steps are involved in justifying a prior: a prior predictive check and a sensitivity analysis.
 
-A widely used method to satisfy this standard is Markov Chain Monte Carlo simulations, via techniques such as Metropolis-Hasting or Gibbs Sampling. More details can be found in this awesome blog post [here](https://www.notion.so/Bayesian-Content-0583e987f44e4d9885349d770a74bbe7?pvs=21). But for practical use, this can be too much unnecessary complexity for most companies and is generally only employed at the largest scales by companies like Meta, Amazon and others. 
+A widely used method to satisfy this standard is Markov Chain Monte Carlo simulations, via techniques such as Metropolis-Hasting or Gibbs Sampling. More details can be found in this awesome blog post [here](https://towardsdatascience.com/bayesian-inference-problem-mcmc-and-variational-inference-25a8aa9bce29). But for practical use, this can be too much unnecessary complexity for most companies and is generally only employed at the largest scales by companies like Meta, Amazon and others. 
 
-With this in mind, we’ve designed Statsig’s Bayesian Testing functionality to as useful as possible without surreptitiously leading customers to dangerous waters.
+With this in mind, we’ve designed Statsig’s Bayesian Testing functionality to as useful as possible without unwittingly leading customers to dangerous waters.
