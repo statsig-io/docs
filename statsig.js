@@ -26,6 +26,7 @@
         return;
       }
       // will no-op if already initialized
+      window.statsig.encodeIntializeCall = false; // unsupported on statsig backend until 07/24
       window.statsig.initialize(
         'client-oJY6hTJeduhEN2bf6fh6unHvxIk9UsjS99BlO4owh0r', 
         null, 
