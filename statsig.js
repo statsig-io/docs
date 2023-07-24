@@ -25,13 +25,17 @@
       if (typeof window === 'undefined' || typeof window.statsig === 'undefined') {
         return;
       }
-      // will no-op if already initialized
-      window.statsig.initialize(
-        'client-oJY6hTJeduhEN2bf6fh6unHvxIk9UsjS99BlO4owh0r', 
-        null, 
-        { environment: { tier: window.statsigTier }}
-      );
-      window.statsig.logEvent('page_view', window.location.pathname, {referrer: document && document.referrer});
+      try {
+        // will no-op if already initialized
+        window.statsig.initialize(
+          'client-oJY6hTJeduhEN2bf6fh6unHvxIk9UsjS99BlO4owh0r', 
+          null, 
+          { environment: { tier: window.statsigTier }}
+        );
+        window.statsig.logEvent('page_view', window.location.pathname, {referrer: document && document.referrer});
+      } catch (e) {
+        console.error(e);
+      }
      },
    };
  })();
