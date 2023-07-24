@@ -480,8 +480,46 @@ module.exports = {
             "label": "cURL",
             "source": "curl --request GET 'https://statsigapi.net/console/v1/gates' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
           }
-        ]
-      }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "array"
+            },
+            "in": "query",
+            "name": "tags",
+            "description": "Filter by gates with selected tags"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "idType",
+            "description": "Filter by gates with selected idType"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "creatorID",
+            "description": "Filter by gates with selected creatorID"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "creatorName",
+            "description": "Filter by gates with selected creatorName"
+          }
+        ],
+        "requestBody": {
+          "content": {}
+        }
+      },
+      "parameters": []
     },
     "/gates/{gate_id}": {
       "get": {
