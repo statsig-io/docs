@@ -117,13 +117,15 @@ export default function Rapidoc(props) {
         allow-authentication={true} // Enable user passing STATSIG-API-KEY at top of file
         regular-font={["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Ubuntu", "sans-serif"]}
       >
-        <p slot="overview">
+        <div slot="overview">
           {getDescription(entity)}
           <h2>Authorization</h2>
-          All requests must include the STATSIG-API-KEY field in the header. The value should be a Console API Key which can be created in 'Project Settings'-{">"}'API Keys' tab.  <br/>
-          To use the 'try it' section on this page, enter your Console API into the box below.
+          <p>
+            All requests must include the STATSIG-API-KEY field in the header. The value should be a Console API Key which can be created in 'Project Settings'-{">"}'API Keys' tab.  <br/>
+            To use the 'try it' section on this page, enter your Console API into the box below.
+          </p>
           <hr/> 
-        </p>
+        </div>
         <p slot="auth" style={{color:'#E05550'}}>
           Warning! You will be directly modifying the project connected to the api-key provided.
         </p>
