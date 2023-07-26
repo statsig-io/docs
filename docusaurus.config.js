@@ -1,7 +1,7 @@
 const sdkDateExtractor = require("./src/plugins/rehype-sdk-date-extractor");
 const path = require("path");
-const math = require('remark-math');
-const katex = require('rehype-katex');
+const math = require("remark-math");
+const katex = require("rehype-katex");
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
@@ -120,6 +120,12 @@ module.exports = {
               {
                 tagName: "script",
                 attributes: {
+                  src: "/js/datadog.js",
+                },
+              },
+              {
+                tagName: "script",
+                attributes: {
                   src: "https://cdn.jsdelivr.net/npm/statsig-js@4.36.0/build/statsig-prod-web-sdk.min.js",
                 },
               },
@@ -151,12 +157,12 @@ module.exports = {
       };
     },
     [
-      '@docusaurus/plugin-client-redirects',
+      "@docusaurus/plugin-client-redirects",
       {
         redirects: [
           {
-            to: '/integrations/terraform/introduction',
-            from: '/integrations/terraform',
+            to: "/integrations/terraform/introduction",
+            from: "/integrations/terraform",
           },
         ],
       },
@@ -181,11 +187,14 @@ module.exports = {
       },
     ],
   ],
-  stylesheets: ["https://fonts.googleapis.com/icon?family=Material+Icons", {
-    href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
-    type: 'text/css',
-    integrity:
-      'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
-    crossorigin: 'anonymous',
-  }],
+  stylesheets: [
+    "https://fonts.googleapis.com/icon?family=Material+Icons",
+    {
+      href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
+      type: "text/css",
+      integrity:
+        "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
+      crossorigin: "anonymous",
+    },
+  ],
 };
