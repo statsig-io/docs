@@ -1,9 +1,9 @@
 ---
-title: Why is StatsigUser with a UserID or CustomID required for server SDKs?
+title: Why is StatsigUser with a UserID or custom UnitID required for server SDKs?
 sidebar_label: UserID Required
 ---
 
-In Server SDKs, a StatsigUser with a userID (or customID) is required for checkGate, getConfig, and getExperiment. For userID based experiences, we always recommend using the actual user ID if it's available: users will get a stable experience, and subsequent events will be attributed to the correct users so you can accurately measure downstream metrics.
+In Server SDKs, a StatsigUser with a userID (or custom UnitID) is required for checkGate, getConfig, and getExperiment. For userID based experiences, we always recommend using the actual user ID if it's available: users will get a stable experience, and subsequent events will be attributed to the correct users so you can accurately measure downstream metrics.
 
 Still aren't sure whether you need to provide the userID? Here are our suggestions for different use cases:
 
@@ -15,7 +15,7 @@ Still aren't sure whether you need to provide the userID? Here are our suggestio
 
 4. If you want to pass a userID for the above reasons, but don't have a logged in user (e.g. you are optimizing the login flow), set a stable identifier as a cookie or in local storage and use that with each call to Statsig.
 
-We hope this is helpful. If you have a use case that is not covered in these scenarios, or have any question at all, feel free to join our [Slack community](https://join.slack.com/t/statsigcommunity/shared_invite/zt-pbp005hg-VFQOutZhMw5Vu9eWvCro9g) and drop a question/comment there!
+We hope this is helpful. If you have a use case that is not covered in these scenarios, or have any question at all, feel free to join our [Slack community](https://statsig.com/slack) and drop a question/comment there!
 
 
 Note that the SDK does not check if the experiment you are checking against is based on the ID type you are providing.  If you are running BOTH user and custom ID experiences, it is safest to provide both IDs with every check, so you don't fail to log exposures or events with a missing unit type
