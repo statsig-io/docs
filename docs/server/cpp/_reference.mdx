@@ -1,0 +1,50 @@
+### User
+
+```cpp
+struct User
+{
+  std::string userID;
+  std::string email;
+  std::string ipAddress;
+  std::string userAgent;
+  std::string country;
+  std::string locale;
+  std::string appVersion;
+  std::unordered_map<std::string, JSON::any> custom;
+  std::unordered_map<std::string, JSON::any> privateAttribute;
+  std::unordered_map<std::string, std::string> statsigEnvironment;
+  std::unordered_map<std::string, std::string> customIDs;
+};
+inline bool operator==(User const &a, User const &b)
+{
+  return a.userID == b.userID &&
+          a.email == b.email &&
+          a.ipAddress == b.ipAddress &&
+          a.userAgent == b.userAgent &&
+          a.country == b.country &&
+          a.locale == b.locale &&
+          a.appVersion == b.appVersion &&
+          a.custom == b.custom &&
+          a.privateAttribute == b.privateAttribute &&
+          a.statsigEnvironment == b.statsigEnvironment &&
+          a.customIDs == b.customIDs;
+};
+```
+
+### Options
+
+```cpp
+struct Options
+{
+  std::string api;
+  bool localMode;
+  int rulesetsSyncIntervalMs;
+  int loggingIntervalMs;
+  int loggingMaxBufferSize;
+  Options() : api("https://statsigapi.net"),
+              localMode(false),
+              rulesetsSyncIntervalMs(10 * 1000),
+              loggingIntervalMs(60 * 1000),
+              loggingMaxBufferSize(1000){};
+};
+```

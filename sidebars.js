@@ -278,6 +278,7 @@ module.exports = {
         "server/phpSDK",
         "server/erlangSDK",
         "server/rustSDK",
+        "server/cppSDK",
       ],
     },
     "http-api",
