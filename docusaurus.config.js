@@ -1,7 +1,7 @@
 const sdkDateExtractor = require("./src/plugins/rehype-sdk-date-extractor");
 const path = require("path");
-const math = require('remark-math');
-const katex = require('rehype-katex');
+const math = require("remark-math");
+const katex = require("rehype-katex");
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
@@ -111,6 +111,7 @@ module.exports = {
       return {
         name: "docusaurus-plugin-statsig",
         getClientModules() {
+          // statsig client sdk initialization
           return [path.resolve(__dirname, "./statsig")];
         },
         injectHtmlTags() {
@@ -119,18 +120,18 @@ module.exports = {
               {
                 tagName: "script",
                 attributes: {
-                  src: "https://statsigapi.net/v1/web_experiments?k=client-oJY6hTJeduhEN2bf6fh6unHvxIk9UsjS99BlO4owh0r",
+                  src: "/js/datadog.js",
+                },
+              },
+              {
+                tagName: "script",
+                attributes: {
+                  src: "https://cdn.jsdelivr.net/npm/statsig-js@4.36.0/build/statsig-prod-web-sdk.min.js",
                 },
               },
               {
                 tagName: "script",
                 innerHTML: `window.statsigTier="${tier}"`,
-              },
-              {
-                tagName: "script",
-                attributes: {
-                  src: "/js/statsig_docs.js",
-                },
               },
               {
                 tagName: "script",
@@ -144,18 +145,24 @@ module.exports = {
                   src: "https://cdn.koala.live/v1/daniel/sdk.js",
                 },
               },
+              {
+                tagName: "script",
+                attributes: {
+                  src: "/js/koala.js",
+                },
+              },
             ],
           };
         },
       };
     },
     [
-      '@docusaurus/plugin-client-redirects',
+      "@docusaurus/plugin-client-redirects",
       {
         redirects: [
           {
-            to: '/integrations/terraform/introduction',
-            from: '/integrations/terraform',
+            to: "/integrations/terraform/introduction",
+            from: "/integrations/terraform",
           },
         ],
       },
@@ -180,11 +187,14 @@ module.exports = {
       },
     ],
   ],
-  stylesheets: ["https://fonts.googleapis.com/icon?family=Material+Icons", {
-    href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
-    type: 'text/css',
-    integrity:
-      'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
-    crossorigin: 'anonymous',
-  }],
+  stylesheets: [
+    "https://fonts.googleapis.com/icon?family=Material+Icons",
+    {
+      href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
+      type: "text/css",
+      integrity:
+        "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
+      crossorigin: "anonymous",
+    },
+  ],
 };

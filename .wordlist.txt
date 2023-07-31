@@ -2,6 +2,7 @@ APIs
 Atlassian
 Autotune
 Autotune's
+aws
 Bezos
 BigQuery
 Bigquery
@@ -15,6 +16,7 @@ CSV
 CTA
 CUPED
 Changelog
+CLI
 CloudFront
 Cloudflare
 CodeLens
@@ -26,6 +28,7 @@ Databricks
 Datadog
 Dev
 ETLs
+Fastly
 Fivetran
 GDPR
 Github
@@ -129,6 +132,7 @@ crosstab
 ctrl
 cuped
 customID
+databricks
 dataset
 datasets
 dau
@@ -153,6 +157,8 @@ granularities
 grey
 hoc
 hovercard
+hostname
+Hostname
 http
 https
 img
@@ -200,6 +206,7 @@ preload
 priori
 proxying
 pst
+redshift
 repo
 resalt
 resync
@@ -215,6 +222,7 @@ securityadmin
 sig
 signalling
 signup
+sql
 srm
 sso
 stableID

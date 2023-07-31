@@ -1,0 +1,77 @@
+---
+sidebar_label: C++
+title: C++ Server SDK
+---
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStarted,
+  WorkingWith,
+  StatsigOptions,
+  StatsigUser,
+  ManualExposures,
+  Shutdown,
+  LocalOverrides,
+  Reference,
+} from "./Templates/index.mdx";
+
+import Install from "./cpp/_install.mdx";
+import Initialize from "./cpp/_initialize.mdx";
+import CheckGate from "./cpp/_checkGate.mdx";
+import GetConfig from "./cpp/_getConfig.mdx";
+import GetExperiment from "./cpp/_getExperiment.mdx";
+import LogEvent from "./cpp/_logEvent.mdx";
+import Options from "./cpp/_options.mdx";
+import ShutdownSnippet from "./cpp/_shutdown.mdx";
+import OverridesSnippet from "./cpp/_localOverrides.mdx";
+import * as ReferenceSnippets from "./cpp/_reference.mdx";
+
+export const Result = SDKDocsBuilder(
+  { lastSDKDocsUpdate: 0 },
+  [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/cpp-server-sdk",
+      },
+    ],
+    [
+      GettingStarted,
+      {
+        sdkType: "C++",
+        install: <Install />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+        hideAsyncDisclaimer: true,
+      },
+    ],
+    [StatsigUser, {}],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [
+      LocalOverrides,
+      {
+        addedInVersion: "0.1.0",
+        snippet: <OverridesSnippet />,
+      },
+    ],
+    [Reference, { snippets: <ReferenceSnippets.default /> }],
+  ],
+  toc,
+  [...ReferenceSnippets.toc]
+);
+
+<>{Result}</>

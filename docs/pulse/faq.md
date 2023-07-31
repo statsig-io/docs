@@ -40,3 +40,7 @@ Once you've looked at the results on your scorecard, we encourage you to use the
 ## Results aren't showing up for some metrics
 
 This normally happens when your company is both using the SDK or event imports, and also importing precomputed metrics from your data warehouse. Since these can run at different times, the data availability may differ. You can adjust your analysis date range to get a full view of your data.
+
+## Our external source shows more exposure events than Statsig. Are data missing?
+
+Exposures on the last day (the day you made a decision) are not counted as exposures. Please filter out that day when you analyze your external data. Be sure to cast to the timezone Statsig uses too. (US Pacific)

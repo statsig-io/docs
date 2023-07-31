@@ -128,6 +128,7 @@ module.exports = {
         "experiments-plus/abandon",
         "experiments-plus/ending-experiment",
         "experiments-plus/disable-group",
+        "experiments-plus/bayesian",
         {
           Experimentation: [
             "experiments-plus/experimentation/why-experiment",
@@ -172,6 +173,7 @@ module.exports = {
         "metrics/ingest",
         "metrics/pulse",
         "metrics/console",
+        "metrics/health-checks",
 
         // 201
         "metrics/create",
@@ -230,7 +232,14 @@ module.exports = {
         id: "client/introduction",
       },
       items: [
-        { Concepts: ["client/concepts/user", "sdks/debugging"] },
+        {
+          Concepts: [
+            "client/concepts/user",
+            "client/concepts/initialize",
+            "sdks/debugging",
+            "sdk-keys/target-apps",
+          ],
+        },
         "client/jsClientSDK",
         "client/reactSDK",
         "client/reactNativeSDK",
@@ -257,6 +266,7 @@ module.exports = {
             "messages/serverRequiredUserID",
             "server/concepts/data_store",
             "sdks/debugging",
+            "sdk-keys/target-apps",
           ],
         },
         "server/nodejsServerSDK",
@@ -268,6 +278,7 @@ module.exports = {
         "server/phpSDK",
         "server/erlangSDK",
         "server/rustSDK",
+        "server/cppSDK",
       ],
     },
     "http-api",
@@ -341,6 +352,8 @@ module.exports = {
           "Connecting Your Warehouse": [
             "statsig-warehouse-native/connecting-your-warehouse/bigquery",
             "statsig-warehouse-native/connecting-your-warehouse/snowflake",
+            "statsig-warehouse-native/connecting-your-warehouse/databricks",
+            "statsig-warehouse-native/connecting-your-warehouse/redshift",
           ],
         },
       ],
@@ -361,6 +374,7 @@ module.exports = {
             "data-warehouse-ingestion/databricks",
             "data-warehouse-ingestion/synapse",
             "data-warehouse-ingestion/s3",
+            "data-warehouse-ingestion/athena",
             "data-warehouse-ingestion/faq",
           ],
         },
@@ -407,6 +421,7 @@ module.exports = {
         "integrations/jira",
         "integrations/vercel",
         "integrations/cloudflare",
+        "integrations/fastly",
         "integrations/vscode",
         "integrations/datadog",
         {
@@ -447,6 +462,7 @@ module.exports = {
         "stats-engine/topline-impact",
         "stats-engine/variance-reduction",
         "stats-engine/offlineaa",
+        "stats-engine/pre-experiment-bias",
         {
           "Methodologies Used": [
             "stats-engine/methodologies/bonferroni-correction",
