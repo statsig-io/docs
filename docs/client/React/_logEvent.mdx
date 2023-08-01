@@ -1,6 +1,21 @@
 ```jsx
+import { Statsig } from "statsig-react";
+
 Statsig.logEvent("add_to_cart", "SKU_12345", {
   price: "9.99",
   item_name: "diet_coke_48_pack",
 });
+
+// or via a React Hook
+
+import { useStatsigLogEffect } from "statsig-react";
+
+function MyComponent() {
+  useStatsigLogEffect("my_custom_event", "SKU_12345", {
+    price: "9.99",
+    item_name: "diet_coke_48_pack",
+  });
+
+  return <div>...</div>;
+}
 ```
