@@ -37,7 +37,6 @@ module.exports = {
         "guides/customer-io-email-abtest",
         "guides/email-campaign-test",
         "guides/cms-integrations",
-        "guides/experiment-analysis",
         "guides/migrate-from-launchdarkly",
       ],
     },
