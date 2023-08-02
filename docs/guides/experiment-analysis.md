@@ -5,7 +5,7 @@ slug: /guides/experiment-analysis
 ---
 
 
-# Using Statsig for experiment analysis only
+# [Deprecated] Using Statsig for experiment analysis only
 
 
 While Statsig as an end-to-end (E2E) platform can be quite powerful, we understand that sometimes, you already have an assignment tool you’re feeling invested in and want to be able to simply plug and play a point solution to analyze your experiment results - Statsig’s  powerful stats engine and visualization is available for you in that case, too!
