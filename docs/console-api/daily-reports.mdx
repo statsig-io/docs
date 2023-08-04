@@ -20,21 +20,26 @@ import Rapidoc from "../../src/components/Rapidoc"
 
 ## Report Schema - type = first_exposures
 
-| Column Name             | Description                                                                                   |
-| ----------------------- | --------------------------------------------------------------------------------------------- |
-| company_id              |                                                                                               |
-| unit_id                 | Refers to the unit identifier used in the experiment                                          |
-| exposure_type           | Statsig Product used: "check_gate" for Feature Gates, and "get_experiment" for Experiments    |
-| name                    | The name of the gate/experiment                                                               |
-| rule                    | rule id for both gates; 'experiment' for experiments                                          |
-| rule_name               | rule name for gates; 'experiment' for experiments                                             |
-| experiment_group        | The group the user was assigned to                                                            |
-| first_exposure_utc      | The UTC timestamp when the user was first assigned to the experiment                          |
-| first_exposure_pst_date | The date in PST when the user was first assigned to the experiment                            |
-| as_of_pst_date          | The date this data was generated                                                              |
-| percent                 | Group's rollout percent. This is the rule-level pass-rate, or the experiment's group size     |
-| rollout                 | Rollout version number                                                                        |
-| user_dimensions         | JSON-formatted key-value pairs describing the user's attributes at the time of first exposure |
+| Column Name             | Data Type | Description                                                                                   |
+| ----------------------- | --------- | --------------------------------------------------------------------------------------------- |
+| company_id              | string    |                                                                                               |
+| unit_id                 | string    | Refers to the unit identifier used in the experiment                                          |
+| unit_type               | string    | Refers to the unit type used in the experiment                                                |
+| exposure_type           | string    | Statsig Product used: "check_gate" for Feature Gates, and "get_experiment" for experiments    |
+| name                    | string    | The name of the gate/experiment                                                               |
+| rule                    | string    | rule id for both gates; 'experiment' for experiments                                          |
+| experiment_group        | string    | The group the user was assigned to                                                            |
+| first_exposure_utc      | timestamp | The UTC timestamp when the user was first assigned to the experiment                          |
+| first_exposure_pst_date | date      | The date in PST when the user was first assigned to the experiment                            |
+| as_of_pst_date          | date      | The date this data was generated                                                              |
+| percent                 | float     | Group's rollout percent. This is the rule-level pass-rate, or the experiment's group size     |
+| rollout                 | int       | Rollout version number                                                                        |
+| user_dimensions         | string    | JSON-formatted key-value pairs describing the user's attributes at the time of first exposure |
+| inserted_at             | timestamp | The timestamp when this report is generated                                                   |
+| rule_name               | string    | Rule name for gates; 'experiment' for experiments                                             |
+
+- Besides the exposure reports from the API access, we also offer data warehouse export to Snowflake for our enterprise customers. Currently, you need to contact our support team to set it up.
+- We commit to maintain the report format including column order and type, but we recommend that you use the column name and cast column type when parsing the file.
 
 ## Report Schema - type = pulse_daily
 
