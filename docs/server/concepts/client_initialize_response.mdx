@@ -1,0 +1,33 @@
+---
+title: ClientInitializeResponse
+sidebar_label: ClientInitializeResponse
+---
+
+## Introduction
+
+Many customers come to us with strict performance requirements for their client applications, hoping they can still take advantage of the convience our client SDKs offer.  
+If you are looking to improve the performance of your Statsig integration on the client side, it may seem counter intuitive that a Server SDK can help.  Because every server SDK downloads
+the entire project definition, it can be used to generate values for your client side applications.  You can leverage this to integrate Statsig with server side rendering,
+or just to remove a network request to Statsig when your app loads (improving performance and solving the "flicker effect" at the same time).
+
+## Using a Server SDK
+
+This is one of the more complicated integrations to set up, and requires you to use Statsig on your backend as well.  If you're alreadying using one of our server SDKs, 
+its just a matter of 
+
+## Complications
+
+The first complication along the way is the user object: for this integration to work, the user object that you use to generate the initialize values must match the object you set on the client side.  The object you set on the client side is what dictates which user is associated with exposure and event logs, while the object used to generate the values on the server will be used for evaluation only.
+
+There are some checks to verify that the two user objects are similar - the client will verify that any IDs (the user ID and all custom IDs) match.  If the don't, it will report as an InvalidBootstrap in the diagnostics logstream for any checks.
+
+The next complication is the configurations available to the server SDK.  The way the client initialize response is generated requires your server SDK to have all of the configurations for the 
+client app your are bootstrapping, and for the environment(s) that the client app is running in.  This means:
+
+If you are using Target Apps:
+- you must also set the client Target App on the server SDK key, so it has access to the client flags
+- when calling `getClientInitializeResponse`, you can pass a client SDK Key with the proper target app to filter the list of configurations down to only what the client SDK needs
+
+If you are using Environment-restricted keys:
+- server secret keys with access to a specific environment will only be able to generate initialize values for that environment
+- if you want to specify a different client environment for the user, you have to add it to the `statsigEnvironment: { tier: <<>> } }` object on the user.
