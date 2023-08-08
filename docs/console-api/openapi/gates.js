@@ -513,6 +513,24 @@ module.exports = {
             "in": "query",
             "name": "creatorName",
             "description": "Filter by gates with selected creatorName"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "minimum": 1
+            },
+            "in": "query",
+            "name": "page",
+            "description": "Pagination page number (must also pass limit)"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "minimum": 1
+            },
+            "in": "query",
+            "name": "limit",
+            "description": "Gates per pagination response (must also pass page)"
           }
         ],
         "requestBody": {
