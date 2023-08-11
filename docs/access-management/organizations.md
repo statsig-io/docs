@@ -75,8 +75,8 @@ All members in the organization will be able to view the current Experiment Sett
 As the organization's Admin, you can also edit these settings.
 
 - **Require Group Images** will not let members of you organization start an experiment until images are set for both experiment groups
-- **Allow Including Overrides in Pulse** if toggled on will allow members to choose for overriden companies to be included in pulse (still off by default) [learn more](https://docs.statsig.com/experiments-plus/stratified-sampling#manual-assignment-for-stratified-sampling)
+- **Allow Including Overrides in Pulse** if toggled on will allow members to choose for overridden companies to be included in pulse (still off by default) [learn more](https://docs.statsig.com/experiments-plus/stratified-sampling#manual-assignment-for-stratified-sampling)
 - **Experiment Duration** will let you choose the default experiment duration in days and enforce a minimum duration. Members will not be forced to use a target duration (field can be left blank)
-- **Experiment Anaylsis** settings let you set defaults for the confidence interval, sequential testing, and bonferroni options when creating new experiments. You can also enforce these settings so that they cannot be changed (enforcing will also update existing experiments)
+- **Experiment Analysis** settings let you set defaults for the confidence interval, sequential testing, and bonferroni options when creating new experiments. You can also enforce these settings so that they cannot be changed (enforcing will also update existing experiments)
 
   <img src="/img/manage_experiment_settings.png" alt="manage_experiment_settings" width="500"/>
