@@ -227,7 +227,7 @@ module.exports = {
         ]
       },
       "get": {
-        "summary": "Read Single Metric",
+        "summary": "Read Single Metric Value",
         "operationId": "get-users-userId",
         "description": "Get metric data on a given date",
         "responses": {
