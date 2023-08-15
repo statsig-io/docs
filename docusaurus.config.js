@@ -68,7 +68,11 @@ module.exports = {
             },
             {
               label: "Blog",
-              href: "https://blog.statsig.com",
+              href: "https://statsig.com/blog",
+            },
+            {
+              label: "Slack Community",
+              href: "https://statsig.com/slack",
             },
             {
               label: "Code",
