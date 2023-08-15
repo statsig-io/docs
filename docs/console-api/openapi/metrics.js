@@ -1,7 +1,7 @@
 module.exports = {
   "openapi": "3.0.0",
   "x-stoplight": {
-    "id": "gxm032r7wg95q"
+    "id": "1evg09eajy9t7"
   },
   "info": {
     "title": "console/v1",
@@ -15,7 +15,218 @@ module.exports = {
   ],
   "paths": {
     "/metrics": {
-      "parameters": [],
+      "post": {
+        "summary": "",
+        "operationId": "post-metrics",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "3vsxrr0evbwp6"
+                      }
+                    },
+                    "type": {
+                      "x-stoplight": {
+                        "id": "xnxur6e4en7k7"
+                      },
+                      "enum": [
+                        "sum",
+                        "ratio",
+                        "mean",
+                        "event_count_sum",
+                        "composite",
+                        "composite_sum",
+                        "undefined"
+                      ]
+                    },
+                    "unitTypes": {
+                      "type": "array",
+                      "x-stoplight": {
+                        "id": "ehpnnxfz6c0yz"
+                      },
+                      "items": {
+                        "x-stoplight": {
+                          "id": "71ea5453k4i5a"
+                        },
+                        "type": "string"
+                      }
+                    },
+                    "metricEvents": {
+                      "x-stoplight": {
+                        "id": "53994xk4ya08u"
+                      },
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/MetricEvent"
+                      }
+                    },
+                    "description": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "jqy1nta5slpw1"
+                      }
+                    },
+                    "tags": {
+                      "type": [
+                        "string",
+                        "array"
+                      ],
+                      "x-stoplight": {
+                        "id": "mb2gw8txpqr7p"
+                      },
+                      "items": {
+                        "x-stoplight": {
+                          "id": "v0uogfi23ye79"
+                        },
+                        "type": "string"
+                      }
+                    },
+                    "isPermanent": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "d1fc16g6cvkvb"
+                      }
+                    },
+                    "gateIDToAddAsMonitoringMetrics": {
+                      "type": "string"
+                    },
+                    "metricSourceID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "xryj6gjtnf8tt"
+                      }
+                    },
+                    "count": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "gcmmrmikxah08"
+                      }
+                    },
+                    "calculation": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "qejiy9k8n57od"
+                      }
+                    },
+                    "totalCalculation": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "sasvspobkvfet"
+                      }
+                    },
+                    "rollup": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "0ayuwzbkrpodr"
+                      }
+                    },
+                    "customRollUpStart": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "33gt6znmgom6g"
+                      }
+                    },
+                    "customRollUpEnd": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "e8s8uf11bc3mh"
+                      }
+                    },
+                    "funnelEventList": {
+                      "type": "array",
+                      "x-stoplight": {
+                        "id": "n2i9j79vv91nu"
+                      },
+                      "items": {
+                        "x-stoplight": {
+                          "id": "qjd3e63vtoxf7"
+                        },
+                        "type": "string"
+                      }
+                    },
+                    "funnelCountDistinct": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "9rqjftisfb4hf"
+                      }
+                    },
+                    "funnelMetricTypes": {
+                      "type": "array",
+                      "x-stoplight": {
+                        "id": "nu7eqvs01dwmj"
+                      },
+                      "items": {
+                        "x-stoplight": {
+                          "id": "ir7tdizpgiy7k"
+                        },
+                        "type": "string"
+                      }
+                    },
+                    "metricComponentMetrics": {
+                      "type": "array",
+                      "x-stoplight": {
+                        "id": "2qi9z75cevhfx"
+                      },
+                      "items": {
+                        "x-stoplight": {
+                          "id": "rowku5mu3liqi"
+                        },
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "7h35fhmtlr30o"
+                            }
+                          },
+                          "type": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "k4g6grxa1mt30"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "type",
+                    "description"
+                  ]
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              },
+              "multipart/form-data": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "hvf03dwk20xj9"
+        },
+        "description": "Create Metric",
+        "tags": [
+          "Metrics"
+        ]
+      },
+
       "get": {
         "summary": "Read Single Metric",
         "operationId": "get-users-userId",
@@ -353,6 +564,22 @@ module.exports = {
         "tags": [
           "Metrics"
         ]
+      },
+      "delete": {
+        "summary": "",
+        "operationId": "delete-metrics-metric_id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "x-stoplight": {
+          "id": "eatiypmphl0ob"
+        },
+        "description": "Delete Metric",
+        "tags": [
+          "Metrics"
+        ]
       }
     },
     "/metrics/list": {
@@ -393,7 +620,7 @@ module.exports = {
                       "type": "array",
                       "description": "Array of metrics in the project",
                       "items": {
-                        "$ref": "#/components/schemas/MetricList"
+                        "$ref": "#/components/schemas/MetricListItem"
                       }
                     }
                   },
@@ -534,15 +761,53 @@ module.exports = {
   },
   "components": {
     "schemas": {
-      "MetricList": {
-        "title": "MetricList",
+      "MetricListItem": {
+        "title": "MetricListItem",
         "x-stoplight": {
-          "id": "zjzdkz4s3hqqv"
+          "id": "vwqy1rj4332g5"
         },
         "type": "object",
         "x-tags": [
           "Metrics"
         ],
+        "x-examples": {
+          "d1_retention_rate": {
+            "name": "d1_retention_rate",
+            "type": "user",
+            "id": "d1_retention_rate::user",
+            "description": "ab",
+            "isHidden": false,
+            "lineage": {
+              "events": [],
+              "metrics": []
+            }
+          },
+          "daily_stickiness": {
+            "name": "daily_stickiness",
+            "type": "user",
+            "id": "daily_stickiness::user",
+            "description": "new description",
+            "isHidden": false
+          },
+          "Lineage": {
+            "name": "Example Experiment funnel metric",
+            "type": "funnel",
+            "id": "Alison funnel metric::funnel",
+            "description": "",
+            "isHidden": false,
+            "tags": [],
+            "lineage": {
+              "events": [],
+              "metrics": [
+                "create_experiment::event_count",
+                "start_experiment::event_count",
+                "make_experiment_decision::event_count",
+                "abandon_experiment::event_count",
+                "delete_experiment::event_count"
+              ]
+            }
+          }
+        },
         "properties": {
           "id": {
             "type": "string",
@@ -561,34 +826,59 @@ module.exports = {
           },
           "isHidden": {
             "type": "boolean"
+          },
+          "lineage": {
+            "type": "object",
+            "x-stoplight": {
+              "id": "gjeoc9wvk5oqf"
+            },
+            "required": [
+              "events",
+              "metrics"
+            ],
+            "properties": {
+              "events": {
+                "type": "array",
+                "x-stoplight": {
+                  "id": "v9yrwxfg7vo8h"
+                },
+                "description": "Events used in the calculation of this metric",
+                "items": {
+                  "x-stoplight": {
+                    "id": "aqij9pethyohr"
+                  },
+                  "type": "string"
+                }
+              },
+              "metrics": {
+                "type": "array",
+                "x-stoplight": {
+                  "id": "b9xuqqow2zbik"
+                },
+                "description": "Other metrics used in the calculation this metric",
+                "items": {
+                  "x-stoplight": {
+                    "id": "0s6pfi5idq6qm"
+                  },
+                  "type": "string"
+                }
+              }
+            }
           }
         },
         "required": [
           "id",
           "name",
-          "type"
-        ],
-        "x-examples": {
-          "d1_retention_rate": {
-            "name": "d1_retention_rate",
-            "type": "user",
-            "id": "d1_retention_rate::user",
-            "description": "ab",
-            "isHidden": false
-          },
-          "daily_stickiness": {
-            "name": "daily_stickiness",
-            "type": "user",
-            "id": "daily_stickiness::user",
-            "description": "new description",
-            "isHidden": false
-          }
-        }
+          "type",
+          "description",
+          "isHidden",
+          "lineage"
+        ]
       },
       "MetricRead": {
         "title": "MetricRead",
         "x-stoplight": {
-          "id": "y1cixhcqmax54"
+          "id": "sjiyq40dd03sc"
         },
         "type": "object",
         "properties": {
@@ -617,6 +907,127 @@ module.exports = {
           "value",
           "unit_type"
         ]
+      },
+      "MetricEventCriteria": {
+        "title": "MetricEventCriteria",
+        "x-stoplight": {
+          "id": "67hbl3oy9tb9u"
+        },
+        "type": "object",
+        "properties": {
+          "type": {
+            "x-stoplight": {
+              "id": "dkr711t57brtg"
+            },
+            "enum": [
+              "value",
+              "meta_data"
+            ]
+          },
+          "key": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "23mcaed8cniuy"
+            }
+          },
+          "condition": {
+            "x-stoplight": {
+              "id": "cxuwe1km9l0me"
+            },
+            "enum": [
+              "in",
+              "not_in",
+              "=",
+              ">",
+              "<",
+              "is_null",
+              "non_null",
+              "contains",
+              "not_contains"
+            ]
+          },
+          "values": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "t3dtdwyak3ac2"
+            },
+            "items": {
+              "x-stoplight": {
+                "id": "uu6ghu9kvja0c"
+              },
+              "type": "string"
+            }
+          },
+          "nullVacuousOverride": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "jihy7v48qfdt8"
+            }
+          }
+        },
+        "description": ""
+      },
+      "MetricEvent": {
+        "type": "object",
+        "x-stoplight": {
+          "id": "nl2xrqgt10xps"
+        },
+        "properties": {
+          "name": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "ecwn1i3x658yu"
+            }
+          },
+          "type": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "m1bmdcn4mgmra"
+            }
+          },
+          "metadataKey": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "jpz7tmktfkeht"
+            }
+          },
+          "criteria": {
+            "$ref": "#/components/schemas/MetricEventCriteria"
+          }
+        },
+        "title": "MetricEvent",
+        "description": ""
+      },
+      "MetricEvents": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "vnirpue3d0k4t"
+            }
+          },
+          "type": {
+            "x-stoplight": {
+              "id": "wpvl99wqssx2d"
+            },
+            "enum": [
+              "count",
+              "count_distinct",
+              "value",
+              "metadata"
+            ]
+          },
+          "metadataKey": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "n0hyuxjjw261m"
+            }
+          },
+          "criteria": {
+            "$ref": "#/components/schemas/MetricEventCriteria"
+          }
+        }
       }
     },
     "responses": {},
