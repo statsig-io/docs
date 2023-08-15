@@ -4,7 +4,7 @@ module.exports = {
     "id": "1evg09eajy9t7"
   },
   "info": {
-    "title": "console/v1",
+    "title": "https://statsigapi.net/console/v1",
     "version": "1.0",
     "description": "Metrics Endpoint"
   },

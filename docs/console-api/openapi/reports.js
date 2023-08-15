@@ -4,7 +4,7 @@ module.exports = {
     "id": "tbgqir4m41g7b"
   },
   "info": {
-    "title": "console/v1",
+    "title": "https://statsigapi.net/console/v1",
     "version": "1.0",
   },
   "servers": [
