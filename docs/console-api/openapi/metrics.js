@@ -226,7 +226,6 @@ module.exports = {
           "Metrics"
         ]
       },
-
       "get": {
         "summary": "Read Single Metric",
         "operationId": "get-users-userId",
@@ -335,6 +334,26 @@ module.exports = {
                           "denominator": 5
                         }
                       ]
+                    }
+                  },
+                  "Lineage": {
+                    "value": {
+                      "name": "Experiment interactions funnel metric",
+                      "type": "funnel",
+                      "id": "Experiment interactions metric::funnel",
+                      "description": "",
+                      "isHidden": false,
+                      "tags": [],
+                      "lineage": {
+                        "events": [],
+                        "metrics": [
+                          "create_experiment::event_count",
+                          "start_experiment::event_count",
+                          "make_experiment_decision::event_count",
+                          "abandon_experiment::event_count",
+                          "delete_experiment::event_count"
+                        ]
+                      }
                     }
                   }
                 }
