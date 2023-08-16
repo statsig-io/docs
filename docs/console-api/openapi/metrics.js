@@ -130,7 +130,7 @@ module.exports = {
                     "x-stoplight": {
                       "id": "ehpnnxfz6c0yz"
                     },
-                    "description": "Unit of the metirc: stableID vs userID",
+                    "description": "Unit of the metirc: stable_id, user_id, and other custom ids",
                     "items": {
                       "x-stoplight": {
                         "id": "71ea5453k4i5a"
@@ -234,20 +234,21 @@ module.exports = {
                       "x-stoplight": {
                         "id": "qjd3e63vtoxf7"
                       },
-                      "type": "string"
-                    }
-                  },
-                  "funnelMetricTypes": {
-                    "type": "array",
-                    "x-stoplight": {
-                      "id": "nu7eqvs01dwmj"
-                    },
-                    "description": "For funnel metric type. \nTypes of events provided ",
-                    "items": {
-                      "x-stoplight": {
-                        "id": "ir7tdizpgiy7k"
-                      },
-                      "type": "string"
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "fcua7juddgsrc"
+                          }
+                        },
+                        "type": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "29pvd8mmfcffn"
+                          }
+                        }
+                      }
                     }
                   },
                   "funnelCountDistinct": {
@@ -294,17 +295,6 @@ module.exports = {
                     "rollupEndDate": 10
                   }
                 },
-                "Funnel Metric": {
-                  "value": {
-                    "name": "test_funnel_metric",
-                    "type": "funnel",
-                    "unitTypes": [
-                      "useID"
-                    ],
-                    "description": "For testing funnel metric",
-                    "funnelCountDistinct": "events"
-                  }
-                }
               }
             },
             "application/xml": {
