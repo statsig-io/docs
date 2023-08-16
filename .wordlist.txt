@@ -58,6 +58,7 @@ Lorem
 MAU
 MAUs
 MDE
+mex
 MEX
 Mixpanel
 Namespace
