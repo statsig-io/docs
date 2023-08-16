@@ -11,7 +11,7 @@ Get data you can trust and insights you need to take action and drive growth. Fi
 
 ## Example Use Cases
 
-### Metric Drilldown
+### Metric Drill down
 
 Select multiple events, group by user properties and apply filters to see how these move together. 
 ![image](https://github.com/statsig-io/docs/assets/31516123/bb128d04-98fd-48e3-9954-13e8ae38648a)
