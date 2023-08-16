@@ -113,6 +113,7 @@ module.exports = {
                     "x-stoplight": {
                       "id": "xnxur6e4en7k7"
                     },
+                    "type": "string",
                     "enum": [
                       "sum",
                       "ratio",
@@ -255,6 +256,7 @@ module.exports = {
                     "x-stoplight": {
                       "id": "9rqjftisfb4hf"
                     },
+                    "type": "string",
                     "description": "For funnel metric type. \nIf you care about counting each time a user goes through a given sequence of events, choose 'Events'. If you care about counting the number of distinct users that go through a given sequence of events, choose 'Users'.",
                     "enum": [
                       "events",
@@ -1024,6 +1026,7 @@ module.exports = {
             "x-stoplight": {
               "id": "dkr711t57brtg"
             },
+            "type": "string",
             "enum": [
               "value",
               "meta_data"
@@ -1039,6 +1042,7 @@ module.exports = {
             "x-stoplight": {
               "id": "cxuwe1km9l0me"
             },
+            "type": "string",
             "enum": [
               "in",
               "not_in",
@@ -1116,6 +1120,7 @@ module.exports = {
             "x-stoplight": {
               "id": "wpvl99wqssx2d"
             },
+            "type": "string",
             "enum": [
               "count",
               "count_distinct",
