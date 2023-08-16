@@ -211,8 +211,8 @@ module.exports = {
     },
     {
       type: "doc",
-      label: "Events Explorer",
-      id: "events-explorer/introduction",
+      label: "Metrics Explorer",
+      id: "mex/introduction",
     },
     {
       type: "doc",
