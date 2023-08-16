@@ -424,6 +424,7 @@ module.exports = {
         "integrations/fastly",
         "integrations/vscode",
         "integrations/datadog",
+        "integrations/github_code_references",
         {
           type: "category",
           label: "Terraform",
