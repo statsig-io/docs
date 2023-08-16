@@ -286,7 +286,7 @@ module.exports = {
                       {
                         "name": "test_event",
                         "type": "value",
-                        "criteria": {}
+                        "criteria": []
                       }
                     ],
                     "description": "Sum user count",
