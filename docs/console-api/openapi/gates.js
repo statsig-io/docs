@@ -6,7 +6,7 @@ module.exports = {
   },
   "servers": [
     {
-      "url": " http://latest.api.statsig.net/console/v1"
+      "url": "https://statsigapi.net/console/v1/"
     }
   ],
   "components": {
@@ -478,7 +478,7 @@ module.exports = {
           {
             "lang": "cURL",
             "label": "cURL",
-            "source": "curl --request GET ' http://0.0.0.0:3006/console/v1' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
+            "source": "curl --request GET 'https://statsigapi.net/console/v1/' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
           }
         ],
         "parameters": [
