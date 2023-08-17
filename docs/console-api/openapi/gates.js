@@ -1,12 +1,12 @@
 module.exports = {
   "openapi": "3.0.0",
   "info": {
-    "title": "https://statsigapi.net/console/v1",
+    "title": "console/v1",
     "version": "1.0.0"
   },
   "servers": [
     {
-      "url": "https://statsigapi.net/console/v1"
+      "url": " http://latest.api.statsig.net/console/v1"
     }
   ],
   "components": {
@@ -478,7 +478,7 @@ module.exports = {
           {
             "lang": "cURL",
             "label": "cURL",
-            "source": "curl --request GET 'https://statsigapi.net/console/v1/gates' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
+            "source": "curl --request GET ' http://0.0.0.0:3006/console/v1' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
           }
         ],
         "parameters": [
@@ -513,6 +513,40 @@ module.exports = {
             "in": "query",
             "name": "creatorName",
             "description": "Filter by gates with selected creatorName"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "minimum": 1
+            },
+            "in": "query",
+            "name": "page",
+            "description": "Pagination page number (must also pass limit)"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "minimum": 1
+            },
+            "in": "query",
+            "name": "limit",
+            "description": "Gates per pagination response (must also pass page)"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "type",
+            "description": "Filter by gates with selected type"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "typeReason",
+            "description": "Filter by gates with selected typeReason"
           }
         ],
         "requestBody": {
@@ -835,6 +869,12 @@ module.exports = {
                       },
                       "type": "string",
                       "example": "product_team"
+                    }
+                  },
+                  "type": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "z4yjl8n8f5mc4"
                     }
                   }
                 }
