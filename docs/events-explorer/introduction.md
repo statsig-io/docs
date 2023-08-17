@@ -3,6 +3,11 @@ title: Events Explorer
 sidebar_label: Events Explorer
 slug: /events-explorer
 ---
+:::info
+Event Explorer is being deprecated. Please see [Metrics Explorer](https://docs.statsig.com/mex) instead.
+:::
+
+
 
 The Events Explorer tab allows you to analyze your event log data in real-time, supporting a variety of queries against the data you send us by when you use our SDKs or integrations.
 
