@@ -26,196 +26,67 @@ module.exports = {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "name": {
+                    "message": {
                       "type": "string",
                       "x-stoplight": {
-                        "id": "3vsxrr0evbwp6"
+                        "id": "i8elj7e1sb3c1"
                       }
                     },
-                    "type": {
+                    "data": {
+                      "type": "object",
                       "x-stoplight": {
-                        "id": "xnxur6e4en7k7"
+                        "id": "b179epemkmk01"
                       },
-                      "enum": [
-                        "sum",
-                        "ratio",
-                        "mean",
-                        "event_count_sum",
-                        "composite",
-                        "composite_sum",
-                        "undefined"
-                      ]
-                    },
-                    "unitTypes": {
-                      "type": "array",
-                      "x-stoplight": {
-                        "id": "ehpnnxfz6c0yz"
-                      },
-                      "items": {
-                        "x-stoplight": {
-                          "id": "71ea5453k4i5a"
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "ghb8q12qtbw1i"
+                          }
                         },
-                        "type": "string"
-                      }
-                    },
-                    "metricEvents": {
-                      "x-stoplight": {
-                        "id": "53994xk4ya08u"
-                      },
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/MetricEvent"
-                      }
-                    },
-                    "description": {
-                      "type": "string",
-                      "x-stoplight": {
-                        "id": "jqy1nta5slpw1"
-                      }
-                    },
-                    "tags": {
-                      "type": [
-                        "string",
-                        "array"
-                      ],
-                      "x-stoplight": {
-                        "id": "mb2gw8txpqr7p"
-                      },
-                      "items": {
-                        "x-stoplight": {
-                          "id": "v0uogfi23ye79"
+                        "type": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "ebuvr7cjeew18"
+                          }
                         },
-                        "type": "string"
-                      }
-                    },
-                    "isPermanent": {
-                      "type": "string",
-                      "x-stoplight": {
-                        "id": "d1fc16g6cvkvb"
-                      }
-                    },
-                    "gateIDToAddAsMonitoringMetrics": {
-                      "type": "string"
-                    },
-                    "metricSourceID": {
-                      "type": "string",
-                      "x-stoplight": {
-                        "id": "xryj6gjtnf8tt"
-                      }
-                    },
-                    "count": {
-                      "type": "string",
-                      "x-stoplight": {
-                        "id": "gcmmrmikxah08"
-                      }
-                    },
-                    "calculation": {
-                      "type": "string",
-                      "x-stoplight": {
-                        "id": "qejiy9k8n57od"
-                      }
-                    },
-                    "totalCalculation": {
-                      "type": "string",
-                      "x-stoplight": {
-                        "id": "sasvspobkvfet"
-                      }
-                    },
-                    "rollup": {
-                      "type": "string",
-                      "x-stoplight": {
-                        "id": "0ayuwzbkrpodr"
-                      }
-                    },
-                    "customRollUpStart": {
-                      "type": "string",
-                      "x-stoplight": {
-                        "id": "33gt6znmgom6g"
-                      }
-                    },
-                    "customRollUpEnd": {
-                      "type": "string",
-                      "x-stoplight": {
-                        "id": "e8s8uf11bc3mh"
-                      }
-                    },
-                    "funnelEventList": {
-                      "type": "array",
-                      "x-stoplight": {
-                        "id": "n2i9j79vv91nu"
-                      },
-                      "items": {
-                        "x-stoplight": {
-                          "id": "qjd3e63vtoxf7"
+                        "description": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "d4k1mf6tjflw7"
+                          }
                         },
-                        "type": "string"
-                      }
-                    },
-                    "funnelCountDistinct": {
-                      "type": "string",
-                      "x-stoplight": {
-                        "id": "9rqjftisfb4hf"
-                      }
-                    },
-                    "funnelMetricTypes": {
-                      "type": "array",
-                      "x-stoplight": {
-                        "id": "nu7eqvs01dwmj"
-                      },
-                      "items": {
-                        "x-stoplight": {
-                          "id": "ir7tdizpgiy7k"
-                        },
-                        "type": "string"
-                      }
-                    },
-                    "metricComponentMetrics": {
-                      "type": "array",
-                      "x-stoplight": {
-                        "id": "2qi9z75cevhfx"
-                      },
-                      "items": {
-                        "x-stoplight": {
-                          "id": "rowku5mu3liqi"
-                        },
-                        "type": "object",
-                        "properties": {
-                          "name": {
-                            "type": "string",
-                            "x-stoplight": {
-                              "id": "7h35fhmtlr30o"
-                            }
-                          },
-                          "type": {
-                            "type": "string",
-                            "x-stoplight": {
-                              "id": "k4g6grxa1mt30"
-                            }
+                        "isHidden": {
+                          "type": "boolean",
+                          "x-stoplight": {
+                            "id": "j3a7yfprkqvll"
                           }
                         }
                       }
                     }
-                  },
-                  "required": [
-                    "name",
-                    "type",
-                    "description"
-                  ]
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object",
-                  "properties": {}
-                }
-              },
-              "multipart/form-data": {
-                "schema": {
-                  "type": "object",
-                  "properties": {}
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Metric created successfully.",
+                      "data": {
+                        "name": "test_sum_metric",
+                        "type": "sum",
+                        "description": "Sum user count",
+                        "isHidden": false
+                      }
+                    }
+                  }
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         },
         "x-stoplight": {
@@ -224,7 +95,224 @@ module.exports = {
         "description": "Create Metric",
         "tags": [
           "Metrics"
-        ]
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "3vsxrr0evbwp6"
+                    },
+                    "description": "The name of the new metric"
+                  },
+                  "type": {
+                    "x-stoplight": {
+                      "id": "xnxur6e4en7k7"
+                    },
+                    "type": "string",
+                    "enum": [
+                      "sum",
+                      "ratio",
+                      "mean",
+                      "event_count_sum",
+                      "composite",
+                      "composite_sum",
+                      "undefined",
+                      "funnel"
+                    ],
+                    "description": "Type of the metric"
+                  },
+                  "unitTypes": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "ehpnnxfz6c0yz"
+                    },
+                    "description": "Unit of the metirc: stable_id, user_id, and other custom ids",
+                    "items": {
+                      "x-stoplight": {
+                        "id": "71ea5453k4i5a"
+                      },
+                      "type": "string"
+                    }
+                  },
+                  "metricEvents": {
+                    "x-stoplight": {
+                      "id": "53994xk4ya08u"
+                    },
+                    "type": "array",
+                    "description": "Event(s) used to compute the metric",
+                    "items": {
+                      "$ref": "#/components/schemas/MetricEvent"
+                    }
+                  },
+                  "description": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "jqy1nta5slpw1"
+                    },
+                    "description": "Description of the new metric"
+                  },
+                  "tags": {
+                    "type": [
+                      "string",
+                      "array"
+                    ],
+                    "x-stoplight": {
+                      "id": "mb2gw8txpqr7p"
+                    },
+                    "items": {
+                      "x-stoplight": {
+                        "id": "v0uogfi23ye79"
+                      },
+                      "type": "string"
+                    }
+                  },
+                  "isPermanent": {
+                    "type": "boolean",
+                    "x-stoplight": {
+                      "id": "d1fc16g6cvkvb"
+                    }
+                  },
+                  "metricComponentMetrics": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "2qi9z75cevhfx"
+                    },
+                    "description": "List of input metrics used to calculate the new metric\nFor composite_sum and composite type of metric. ",
+                    "items": {
+                      "x-stoplight": {
+                        "id": "rowku5mu3liqi"
+                      },
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "7h35fhmtlr30o"
+                          }
+                        },
+                        "type": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "k4g6grxa1mt30"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "rollup": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "0ayuwzbkrpodr"
+                    },
+                    "description": "Time window for metric.\nSpecify \"custom\", if you want to provide customized time window. Default to be same as experiment time window"
+                  },
+                  "customRollUpStart": {
+                    "type": "number",
+                    "x-stoplight": {
+                      "id": "33gt6znmgom6g"
+                    },
+                    "description": "Custom time window start date (Days since exposure)\n"
+                  },
+                  "customRollUpEnd": {
+                    "type": "number",
+                    "x-stoplight": {
+                      "id": "e8s8uf11bc3mh"
+                    },
+                    "description": "Custom time window end date(Days since exposure)"
+                  },
+                  "funnelEventList": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "n2i9j79vv91nu"
+                    },
+                    "description": "For funnel metric type. \nNames of events used to create metric",
+                    "items": {
+                      "x-stoplight": {
+                        "id": "qjd3e63vtoxf7"
+                      },
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "fcua7juddgsrc"
+                          }
+                        },
+                        "type": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "29pvd8mmfcffn"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "funnelCountDistinct": {
+                    "x-stoplight": {
+                      "id": "9rqjftisfb4hf"
+                    },
+                    "type": "string",
+                    "description": "For funnel metric type. \nIf you care about counting each time a user goes through a given sequence of events, choose 'Events'. If you care about counting the number of distinct users that go through a given sequence of events, choose 'Users'.",
+                    "enum": [
+                      "events",
+                      "users"
+                    ]
+                  }
+                },
+                "required": [
+                  "name",
+                  "type"
+                ]
+              },
+              "examples": {
+                "Incomplete metric creation": {
+                  "value": {
+                    "name": "test_metrics",
+                    "type": "undefined",
+                    "description": "Metrics with minimum information, more details can be setup later"
+                  }
+                },
+                "Sum Event Metric": {
+                  "value": {
+                    "name": "test_sum_metric",
+                    "type": "sum",
+                    "unitTypes": [
+                      "userID"
+                    ],
+                    "metricEvents": [
+                      {
+                        "name": "test_event",
+                        "type": "value",
+                        "criteria": []
+                      }
+                    ],
+                    "description": "Sum user count",
+                    "rollup": "custom",
+                    "rollupStartDate": 3,
+                    "rollupEndDate": 10
+                  }
+                },
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          }
+        }
       },
       "get": {
         "summary": "Read Single Metric Value",
@@ -938,6 +1026,7 @@ module.exports = {
             "x-stoplight": {
               "id": "dkr711t57brtg"
             },
+            "type": "string",
             "enum": [
               "value",
               "meta_data"
@@ -953,6 +1042,7 @@ module.exports = {
             "x-stoplight": {
               "id": "cxuwe1km9l0me"
             },
+            "type": "string",
             "enum": [
               "in",
               "not_in",
@@ -1030,6 +1120,7 @@ module.exports = {
             "x-stoplight": {
               "id": "wpvl99wqssx2d"
             },
+            "type": "string",
             "enum": [
               "count",
               "count_distinct",
