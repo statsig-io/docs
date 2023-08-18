@@ -21,6 +21,6 @@ matrix:
       - 'code'
       - 'pre'
       - 'blockquote'
-      - 'unlaunched'
+      - 'UNLAUNCHED'
   sources:
   - 'docs/**/*.md'
