@@ -33,9 +33,9 @@ _Note - while you're here, you can go to **Basic Settings** and add any Custom I
 
 ### Overview
 
-A Metric Source gives you the ability to define a custom SQL query into your Data Warehouse that generates a resultset on which you'll be able to use Statsig's Metric builder to define Metrics. Typically, customer data pipelines collecting a variety of categories of data from many data sources will result in a number of tables in the data warehouse. For example:
+A Metric Source gives you the ability to define a custom SQL query into your Data Warehouse that generates a result-set on which you'll be able to use Statsig's Metric builder to define Metrics. Typically, customer data pipelines collecting a variety of categories of data from many data sources will result in a number of tables in the data warehouse. For example:
 
-* Web clickstream events
+* Web click-stream events
 * Purchase events
 * Support events (i.e.; via offline and call center data)
 * Product return events
