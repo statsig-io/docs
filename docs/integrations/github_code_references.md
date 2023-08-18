@@ -27,3 +27,7 @@ Finally, navigate to the Feature Gates or Dynamic Configs pages on the Statsig C
 Code References will appear based on the feature gate or dynamic config page you are on. Code References can be filtered by repository and file extension.
 
 ![img](/img/github_code_references/code_references.png)
+
+### Github Code References Action
+
+We also have a [Github Action](https://github.com/statsig-io/github-code-references) that can scan your repositories for gates and dynamic configs, then create a PR replacing [Stale Gates](/feature-gates/permanent-and-stale-gates.md).
