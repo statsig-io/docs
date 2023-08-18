@@ -465,7 +465,7 @@ module.exports = {
                   "$ref": "../models/error_401.json"
                 },
                 "example": {
-                  "status": 403,
+                  "status": 401,
                   "message": "Forbidden resource"
                 }
               }
