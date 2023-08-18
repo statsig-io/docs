@@ -31,6 +31,19 @@ _Note - while you're here, you can go to **Basic Settings** and add any Custom I
 
 ## Step 2 - Create a Metric Source
 
+### Overview
+
+A Metric Source gives you the ability to define a custom SQL query into your Data Warehouse that generates a result-set on which you'll be able to use Statsig's Metric builder to define Metrics. Typically, customer data pipelines collecting a variety of categories of data from many data sources will result in a number of tables in the data warehouse. For example:
+
+* Web click-stream events
+* Purchase events
+* Support events (i.e.; via offline and call center data)
+* Product return events
+
+Metric Sources is designed for customers to define a query to map each of these datasets from their warehouse to Statsig metrics, rather than having to define a single sophisticated query joining multiple datasets and normalizing dozens of columns at once. 
+
+### Configuration
+
 Next, click into **Metrics** on the left navbar and go to the **Metric Sources**. Click **Create** to create a new Metric source. Give your new Metric Source a relevant name and description.
 
 ![Metric Source Navigation](https://user-images.githubusercontent.com/102695539/237239161-9e7fd9ac-c800-4e64-948f-296648357987.png)
@@ -57,7 +70,7 @@ Once that's done, save your metric source.
 
 Once you have a **Metric Source** set up, creating metrics is very similar to the usual Statsig flow. Go back to the Metrics view and click **Create** in the **Metrics** tab.
 
-![Metrics Tab Nav](https://user-images.githubusercontent.com/102695539/237239161-9e7fd9ac-c800-4e64-948f-296648357987.png)
+![Metrics Tab Nav](https://user-images.githubusercontent.com/2018204/261672201-cf92f405-1b1e-4255-bbb9-2494d2f7fc2b.png)
 
 To create a metric, you pick the Metric Source you're deriving the metric from and specify some settings:
 
