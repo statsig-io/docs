@@ -33,7 +33,7 @@ In your feature gates catalog, you'll see different **Types** displayed in the S
     - No change in the gate’s behavior when called
     - Easy filtering on Feature Gates catalog
     - Will include the gate in Statsig’s nudges for cleanup (more below)
-  - **Stale Reasons** are the reason why a gate has been set as stale.
+  - **Stale Reasons** are the reason why a gate has been set as stale. This information can be queried on the [Console API](/console-api/gates).
     - **None** No Stale Gates should have their reason set as None, this is exclusively for **Temporary** or **Permanent** gates.
     - **STALE_PROBABLY_DEAD_CHECK** There have been no checks in the last 30 days.
     - **STALE_PROBABLY_LAUNCHED** The Gate is disabled and has likely launched.
