@@ -1,7 +1,7 @@
 module.exports = {
   "openapi": "3.0.0",
   "info": {
-    "title": "https://statsigapi.net/console/v1",
+    "title": "console/v1",
     "version": "1.0.0"
   },
   "servers": [
@@ -465,7 +465,7 @@ module.exports = {
                   "$ref": "../models/error_401.json"
                 },
                 "example": {
-                  "status": 403,
+                  "status": 401,
                   "message": "Forbidden resource"
                 }
               }
@@ -513,6 +513,52 @@ module.exports = {
             "in": "query",
             "name": "creatorName",
             "description": "Filter by gates with selected creatorName"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "minimum": 1
+            },
+            "in": "query",
+            "name": "page",
+            "description": "Pagination page number (must also pass limit)"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "minimum": 1
+            },
+            "in": "query",
+            "name": "limit",
+            "description": "Gates per pagination response (must also pass page)"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "STALE",
+                "TEMPORARY",
+                "PERMANENT"
+              ]
+            },
+            "in": "query",
+            "name": "type",
+            "description": "Filter by gates with selected type"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "NONE",
+                "STALE_PROBABLY_LAUNCHED",
+                "STALE_PROBABLY_UNLAUNCHED",
+                "STALE_NO_RULES",
+                "STALE_PROBABLY_DEAD_CHECK"
+              ]
+            },
+            "in": "query",
+            "name": "typeReason",
+            "description": "Filter by gates with selected typeReason"
           }
         ],
         "requestBody": {
@@ -835,6 +881,12 @@ module.exports = {
                       },
                       "type": "string",
                       "example": "product_team"
+                    }
+                  },
+                  "type": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "z4yjl8n8f5mc4"
                     }
                   }
                 }
