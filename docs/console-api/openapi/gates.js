@@ -1,7 +1,7 @@
 module.exports = {
   "openapi": "3.0.0",
   "info": {
-    "title": "https://statsigapi.net/console/v1",
+    "title": "console/v1",
     "version": "1.0.0"
   },
   "servers": [
@@ -534,7 +534,12 @@ module.exports = {
           },
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "STALE",
+                "TEMPORARY",
+                "PERMANENT"
+              ]
             },
             "in": "query",
             "name": "type",
@@ -542,7 +547,14 @@ module.exports = {
           },
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "NONE",
+                "STALE_PROBABLY_LAUNCHED",
+                "STALE_PROBABLY_UNLAUNCHED",
+                "STALE_NO_RULES",
+                "STALE_PROBABLY_DEAD_CHECK"
+              ]
             },
             "in": "query",
             "name": "typeReason",
