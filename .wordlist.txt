@@ -247,6 +247,7 @@ uncaptured
 uncheck
 underperforming
 unix
+unlaunched
 unmonitored
 unsampled
 userID
