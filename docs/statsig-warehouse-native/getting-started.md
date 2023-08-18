@@ -37,7 +37,7 @@ A Metric Source gives you the ability to define a custom SQL query into your Dat
 
 * Web clickstream events
 * Purchase events
-* Support events (ie; via offline and callcenter data)
+* Support events (i.e.; via offline and call center data)
 * Product return events
 
 Metric Sources is designed for customers to define a query to map each of these datasets from their warehouse to Statsig metrics, rather than having to define a single sophisticated query joining multiple datasets and normalizing dozens of columns at once. 
