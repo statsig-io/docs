@@ -300,6 +300,7 @@ module.exports = {
         "console-api/metrics",
         "console-api/audit-logs",
         "console-api/autotunes",
+        "console-api/target-apps",
         {
           Reports: [
             "console-api/daily-reports",

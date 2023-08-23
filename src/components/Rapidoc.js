@@ -4,7 +4,21 @@ import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import Models from "../../docs/console-api/models/index";
 import { useColorMode } from '@docusaurus/theme-common';
 
-const supportedEntities = ['gates', 'segments', 'dynamic-configs', 'experiments', 'holdouts', 'layers', 'autotunes', 'users', 'metrics', 'audit-logs', 'reports', 'usage-billing'];
+const supportedEntities = [
+  'gates', 
+  'segments', 
+  'dynamic-configs', 
+  'experiments', 
+  'holdouts', 
+  'layers', 
+  'autotunes', 
+  'users', 
+  'metrics', 
+  'audit-logs', 
+  'reports', 
+  'usage-billing', 
+  'target-apps'
+];
 
 function updateCodeSnippets(data, entity) {
   let snippet;
@@ -274,6 +288,16 @@ function getDescription(entity) {
     case 'reports':
       return <>
         <p>With data reports we strive for a 10am (PST) deadline but there's always a possibility we land late. For such cases, fallbacks should be implemented with this API.</p>
+      </>
+
+    case 'target-apps':
+      return <>
+        <p>Target Apps are used to group users across multiple applications. This is useful when you want to run an experiment or feature flag across multiple applications.</p>
+        <h2>Target App API functions</h2>
+        <ul>
+          <li>List existing target app</li>
+          <li>Bulk assign configs selected target apps</li>
+        </ul>
       </>
 
     case 'all-endpoints':
