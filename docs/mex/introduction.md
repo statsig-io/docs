@@ -28,3 +28,8 @@ Retention Analysis helps you drive product adoption by showing you how often use
 
 Configure Funnels to understand how users navigate through a defined path and identify where users drop off.
 ![image](https://github.com/statsig-io/docs/assets/31516123/0628fc77-fa86-43de-8377-273ce9239937)
+
+### Samples
+
+Investigate data issues by looking at samples of the underlying data.
+![image](https://github.com/statsig-io/docs/assets/31516123/9316bc8c-e541-4086-b60d-0b17ddddb985)
