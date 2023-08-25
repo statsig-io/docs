@@ -3,12 +3,16 @@ title: Target Apps
 sidebar_label: Target Apps
 ---
 
+:::info
+NOTE: Target Apps are an Enterprise-only feature. To upgrade to Enterprise, reach out to our Sales team [here](https://statsig.com/contact/demo). 
+:::
+
 ## Motivation
 
 There are two main attributes you can add to SDK Keys which restrict their access to certain configs or config definitions - Environments and Target Apps.  A “Target App” is a user defined abstraction tied to entities in your Statsig Project which can be linked to one or more SDK Keys.
 Target apps should be things like your "Android" or "iOS" apps, or could be more restricted to specific services like "Search" and "Feed" which may span both client and server usage.
 
-Defining and using Target Apps is a best practice when using Statsig, and has two main benefits:
+Defining and using Target Apps is a best practice when using Statsig at large scale, and has two main benefits:
 - Performance: removing unused entities from the payload to your Statsig SDK integration will speed up the initialization time and reduce the amount of data that is stored in any local caches or data stores
 - Security: you may not want to expose certain gates/experiments/configs to the client side, or to the client key which is easily found in your client app. Specifying a target app for your client key and ONLY linking that to client specific gates/configs/experiments hides those from prying eyes
 
