@@ -1,5 +1,6 @@
 ---
 title: Custom Proxy for Statsig API
+slug: /custom_proxy
 ---
 
 Instead of sending API requests directly to Statsig, you can set up your own environment that proxies requests from your custom domain name to Statsig.
