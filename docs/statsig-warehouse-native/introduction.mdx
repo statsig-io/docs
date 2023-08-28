@@ -1,0 +1,216 @@
+---
+title: Getting Started with Statsig Warehouse Native
+slug: /statsig-warehouse-native/glossary
+sidebar_label: Warehouse Native
+description: Set up your first Statsig Warehouse Native project
+---
+
+import Button from "@material-ui/core/Button";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardHeader from "@material-ui/core/CardHeader";
+import Icon from "@material-ui/core/Icon";
+import IconButton from "@material-ui/core/IconButton";
+import Link from "@material-ui/core/Link";
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+export const ArrowButton = ({ link }) => (
+  <IconButton
+    style={{
+      color: "#194b7d",
+      border: "1px solid rgba(0, 0, 0, 0.12)",
+      borderRadius: "16px",
+      padding: "4px",
+    }}
+    href={link}
+  >
+    <Icon
+      style={{
+        color: "#194b7d",
+      }}
+    >
+      arrow_forward
+    </Icon>
+  </IconButton>
+);
+
+export const OutlinedCard = ({ title, description, icon, link }) => (
+  <Card
+    style={{
+      minWidth: "240px",
+      margin: "16px",
+      flex: "0 0 28%",
+      display: "flex",
+      flexDirection: "column",
+      padding: "16px",
+      boxShadow: "0 6px 16px rgba(0, 0, 0, 0.06)",
+      border: 0,
+    }}
+  >
+    <div
+      style={{
+        fontWeight: "bold",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-start",
+        alignContent: "space-between",
+        alignItems: "center",
+      }}
+    >
+      <Icon style={{ color: "#194b7d" }}>{icon}</Icon>
+      <div style={{ paddingLeft: "8px" }}>{title}</div>
+    </div>
+    <CardContent
+      style={{
+        padding: 0,
+        paddingTop: "4px",
+        display: "flex",
+        flex: 1,
+        flexDirection: "column",
+        justifyContent: "space-between",
+      }}
+    >
+      <p>{description}</p>
+      <CardActions
+        style={{
+          padding: 0,
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "flex-end",
+        }}
+      >
+        <ArrowButton link={link} />
+      </CardActions>
+    </CardContent>
+  </Card>
+);
+
+Statsig Warehouse Native brings Statsig's to your warehouse. Assess the impact of new features on-demand, on your compute, and mix and match use Statsig's SDKs with your own sources of metric and assigment data.
+
+This is an appealing option for customers who are privacy sensitive or who are already using other solutions for experiment assignment. Our [support team](mailto:support@statsig.com) can help you decide if Statsig Warehouse Native is a good fit for your experimentation needs.
+
+## What Statsig Warehouse Native Does
+
+With Statsig Warehouse Native, you set up connections to your source data using basic SQL queries and define Metrics as measures on top of that source data. Statsig will run a SQL-based [data pipeline](analysis_tools/pipeline-overview.md) in your warehouse to run experimental analysis on your raw data. At the end, Statsig downloads a small result set with no user identifiers - just group-level summary data.
+
+![Simple-view](https://user-images.githubusercontent.com/102695539/236989885-a30c24d8-26c9-4f8e-b596-3565a0be018d.png)
+
+This process is fully transparent. The queries and cost data are available in the Statsig console, and algorithms like CUPED and winsorization are run in SQL to avoid black boxes and inconsistent results.
+
+Nonetheless, the Statsig Warehouse Native pipeline supports many of the advanced features offered in Statsig, such as:
+
+- Support for multiple unit types - the same event can be used in experiments for a user_id, company_id, etc.
+- Timeseries and days-since-exposure breakdowns
+- Dimensional breakdowns - set up metrics to calculate dimensional breakdowns as well as a topline view
+- Custom queries - filter and group results by user-level attributes
+- Advanced metrics and corresponding statistics tools like Ratio Metrics, Funnels, and the Delta Method to adjust for metric covariance
+- CUPED, Sequential Testing, Outlier Removal, and more
+
+You can also integrate Statsig's feature gates, rollout scheduling, holdouts, and layers (mutual exclusion) with Warehouse Native and still store and process the data in your warehouse.
+
+:::info
+Statsig Warehouse Native is only available for Enterprise contracts. Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you are interested in evaluating Statsig Warehouse Native.
+:::
+
+## Walkthrough Guides
+
+<div
+  style={{
+    display: "flex",
+    flexWrap: "wrap",
+  }}
+>
+  <OutlinedCard
+    title="Connect Your Warehouse"
+    icon="warehouse"
+    description="Connect Statsig to your warehouse to start analyzing experiments"
+    link="statig-warehouse-native/guides/connect"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Create Metrics"
+    icon="speed"
+    description="Connect to a metric source and configure metrics for analysis in Statsig"
+    link="statig-warehouse-native/guides/metric_sources"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Start an Experiment"
+    icon="science"
+    description="Connect to your assignment data in minutes, and start testing hypotheses"
+    link="statig-warehouse-native/guides/assigment_sources"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Run Pulse"
+    icon="assessment"
+    description="Calculate and explore experiment results in your warehouse"
+    link="statig-warehouse-native/guides/pulse"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Use Statsig SDKs"
+    icon="flaky"
+    description="Use Statsig's SDK to get easy event logging and rich features like holdouts and mutual exclusion. Export events to your warehouse for analysis"
+    link="statig-warehouse-native/guides/sdks"
+  ></OutlinedCard>
+</div>
+
+## Tools
+
+Statsig Warehouse Native integrates with Statsig's development tools:
+
+<div
+  style={{
+    display: "flex",
+    flexWrap: "wrap",
+  }}
+>
+  <OutlinedCard
+    title="Feature Gates"
+    icon="tune"
+    description="Control access to new functionality and automatically measure how it’s performing with an A/B test before you ship"
+    link="/feature-gates/working-with"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Dynamic Configs"
+    icon="dns"
+    description="Dynamically configure user experience with configuration parameters instead of hard-coded constants"
+    link="/dynamic-config"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Segments"
+    icon="donut_small"
+    description="Define a reusable set of rules to target a group of users"
+    link="/segments"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Experiments+"
+    icon="science"
+    description="Run sophisticated experiments with multiple variants (A/B/n tests) or mutual exclusion"
+    link="/experiments-plus/working-with"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Users"
+    icon="people"
+    description="View users exposed to all gate checks and events logged with Statsig"
+    link="/users"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Pulse"
+    icon="assessment"
+    description="View how your experiments impact your metrics"
+    link="statsig-warehouse-native/analysis/pulse"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Insights"
+    icon="donut_small"
+    description="View all experiments that have impacted a metric"
+    link="/insights"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Holdouts"
+    icon="flaky"
+    description="Measure the cumulative impact of all features shipped over a period of time"
+    link="/holdouts"
+  ></OutlinedCard>
+</div>
