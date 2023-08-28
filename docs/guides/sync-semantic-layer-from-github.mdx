@@ -1,0 +1,102 @@
+---
+sidebar_label: GitHub Action for Statsig Metric Definitions
+title: GitHub Action for Statsig Metric Definitions
+---
+
+This document describes a GitHub Action that automates the process of taking semantic layer style metric definitions from yaml files in GitHub and writing them to Statsig. The action parses a yaml file hosting a metric definition from GitHub, checks if the metric source exists in Statsig, and creates it if it doesn't exist. It then checks if the metric exists in Statsig, creates it if it doesn't, or updates it if it do.
+
+### Prerequisites
+
+- A GitHub account with a repository containing your yaml metric defition files.
+- A (Statsig Warehouse Native)[https://docs.statsig.com/statsig-warehouse-native/introduction] account with access to the console API.
+- Request your Statsig account team to enable access to the (Statsig Warehouse Native)[https://docs.statsig.com/statsig-warehouse-native/introduction] metric creation APIs.
+
+### GitHub Action Workflow
+
+Create a new file in your `.github/workflows` directory and name it `statsig-metrics.yml`. This file will define your GitHub Action workflow.
+
+```yaml
+name: Statsig Metrics
+
+on:
+  push:
+    paths:
+      - '**.yml'
+
+jobs:
+  update-metrics:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Parse and update metrics
+        run: |
+          python3 ./scripts/update_metrics.py
+```
+
+This workflow triggers whenever a push event that modifies a .yml file occurs. It then runs a Python script that handles the parsing and updating of metrics in Statsig.
+
+### Python Script for Updating Metrics
+
+Create a new Python script in your `scripts` directory and name it `update_metrics.py`. This script will parse your .yml files and interact with the Statsig Console API.
+
+```python
+import yaml
+import requests
+
+STATSIG_API = "https://console.statsig.com/api/v1/metrics"
+
+def parse_yaml(file_path):
+    with open(file_path, 'r') as file:
+        return yaml.safe_load(file)
+
+def check_metric_source_exists(metric_source):
+    response = requests.get(f"{STATSIG_API}/metric_sources/{metric_source}")
+    return response.status_code == 200
+
+def create_metric_source(metric_source):
+    payload = {"source": metric_source}
+    requests.post(f"{STATSIG_API}/metric_sources", data=payload)
+
+def update_metric(metric):
+    payload = {"metric": metric}
+    requests.put(f"{STATSIG_API}/metrics", data=payload)
+
+def create_metric(metric):
+    payload = {"metric": metric}
+    requests.post(f"{STATSIG_API}/metrics", data=payload)
+
+def main():
+    metric_definitions = parse_yaml("./YOUR_FILE.yml")
+
+    for metric_source, metrics in metric_definitions.items():
+        if not check_metric_source_exists(metric_source):
+            create_metric_source(metric_source)
+
+        for metric in metrics:
+            if not check_metric_source_exists(metric):
+                create_metric(metric)
+            else:
+                update_metric(metric)
+
+if __name__ == "__main__":
+    main()
+```
+### Metric Definitions
+
+Statsig currently supports the following (metric definitions)[https://docs.statsig.com/console-api/metrics#post-/metrics]:
+
+| Parameter    | Description                                                                                                                   | Type     |
+|--------------|------------------------------------------------------------------------------------------------------------------------------|----------|
+| name         | String. Unique name of the metric.                                                                                                    | Required |
+| description  | String. Provide the description for your metric.                                                                                      | Optional |
+| type         | String. Define the (type of metric)[https://docs.statsig.com/statsig-warehouse-native/building-blocks/metrics#types-of-metrics].      | Required |
+| unit_types   | [String] Unit of the metric: stable_id, user_id, and other custom ids                                                                  | Required |
+| configs      | [String] Provide the specific configurations for your metric.                                                                           | Optional |
+| tags         | String or [String] The display name for your metric. This value will be shown in downstream tools.                                               | Optional |
+| filter       | [String] You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause. | Optional |
+| meta         | String or [String] Additional metadata you want to add to your metric.                                                                           | Optional |
+
+Please reach out to your Statsig account team if you need support for broader metric definitions or you want access to WHN metric creation APIs.
