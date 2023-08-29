@@ -16,7 +16,7 @@ experiments. In Statsig warehouse native, Metrics are configurations on top of a
 - Optional toggle for if the metric should wait for a user's data to bake before including a user in results
 - For Ratios and Funnels, multiple metric sources that contribute the components of the metric
 
-<!-- <TODO Picture of Metric Tab> -->
+![Metric Tab](https://user-images.githubusercontent.com/102695539/264088732-187cba73-1cf9-4ddf-b720-9641e97ce678.png)
 
 ## Supported Metric Types
 
@@ -39,9 +39,11 @@ We're actively working on adding more metric types - refer to the crosstab below
 
 ## Configuring Your Metric
 
-When creating a metric, pick your metric source, and determine if you want to filter your metric source data. You can press the reload button to validate that any filters are working as expected. Then, depending on your metric source, you will configure input fields.
+When creating a metric, pick your metric source, and determine if you want to filter your metric source data. You can press the reload button to validate that any filters are working as expected. Then, depending on your metric source, you will configure the inputs to the metric as well as specific configurations for experiment analysis.
 
-Some common configurations to consider are below:
+![Example Metric](https://user-images.githubusercontent.com/102695539/264088978-0aa89c83-e6ee-43d6-9d69-2dafeba6f94d.png)
+
+Some common configurations you can use are below:
 
 ### Filters
 
@@ -64,8 +66,46 @@ if this toggle is set any user only 5 days from their first exposure would be ex
 
 Some metric types can include a dimension-based breakdown. This is very useful if you frequently want to see how the metric was influenced across high-level cuts like country or product category. This does increase the cost of calculation, as each dimension is functionally another metric for the purposes of analysis.
 
+## Example Metrics
+
+### Filtered Revenue Metric
+
+This metric would calculate the total revenue on checkout events on clothing/electronics items for items costing < $1000. User-level values would be winsorized to the 99.9th percentile, and the results would be grouped by 2 different selected metadata columns by default.
+
+![Sum Metric](https://user-images.githubusercontent.com/102695539/264089678-75cf6e83-9399-416c-a8e1-22dd7d86b931.png)
+
+### Ratio Metric
+
+This metric would calculate the ratio of total checkout events per distinct users in the experiment who ever visited.
+
+![Ratio Metric](https://user-images.githubusercontent.com/102695539/264089903-aa1defd6-c09b-4837-b47b-9805e3571f4d.png)
+
+### Activation Metric
+
+This metric would calculate if a user ever visited in the span of the experiment.
+
+![Activation metric](https://user-images.githubusercontent.com/102695539/264099042-87ddc3b7-fe3e-48f1-9983-dceb78dbad39.png)
+
+### Week 2 Retention Metric
+
+This metric would calculate the rate at which exposed users were active in the 2nd week since their exposure, a common pattern for signup experiments.
+
+Since the metric is configured to wait for users to reach the window, users who were exposed < 14 days ago would not be included in the experiment results on a given day.
+
+![Retention Metric](https://user-images.githubusercontent.com/102695539/264097021-b9ce0caa-5a4c-4ae5-a5be-4ef3204257d7.png)
+
+### Funnel Metric
+
+This funnel metric would calculate the overall and step-level conversion for users going from a visit -> cart view -> checkout at a unique user level. Each event would only count if the user had already completed the previous steps in order.
+
+Since the calculation window is set to 7, the user would have 7 days to complete the funnel from the time of their first visit.
+
+![Funnel Metric](https://user-images.githubusercontent.com/102695539/264097015-87f2d98e-c394-49a8-b133-30f479c78e50.png)
+
 ## Viewing your Metric
 
 With the metric set up, you can load or schedule loads of a timeseires view to populate a timeseries that tracks the population value and aids in debugging/identifying data bugs. Additionally, this can be used to calculate the projected topline impact of releasing an experiment.
+
+![Timeseries](https://user-images.githubusercontent.com/102695539/264099747-687a3241-db10-43d4-b1ef-8c4c2a29d0dc.png)
 
 With the metric set up, you can start using it in experiments.

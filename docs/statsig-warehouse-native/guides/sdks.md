@@ -6,7 +6,8 @@ sidebar_label: SDKs
 
 Warehouse Native Works with any of Statsig's SDKs for logging events and getting feature flags or expereiment assignments.
 
-Refer to the SDK docs for help setting up SDKs. This page guides you through how to integrate with Statsig's SDKs in your warehouse.
+This page is a brief overview of how Warehouse Native works with Statsig's SDKs.
+Refer to the [client](../../client/introduction) or [server](../../server/introduction) SDK docs for help setting up SDKs.
 
 ## Exposures
 
