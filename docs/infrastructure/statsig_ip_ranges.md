@@ -3,7 +3,7 @@ title: Statsig IP Ranges
 ---
 
 Statsig reserves the following IP addresses and ranges for use by its services. If you have a network policy set up inside your systems, you should allowlist
-all of the IPs below or select IPs based on the direction of network traffic.
+all of the IPs below or select IPs based on the direction of network requests.
 
 ## Outbound (Statsig -> Your Servers)
 
