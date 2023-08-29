@@ -8,7 +8,7 @@ Metric Sources are an interface to connect to your data from Statsig. These act 
 
 ## Creating a Metric Source
 
-To create a metric source, go to the metric tab in Statsig and go to the Metric Sources pane. We also have a metrics API that lets you create metrics programmatically.
+To create a metric source, go to the metric tab in Statsig and go to the Metric Sources pane.
 
 A metric source starts with a SQL query. This can be a flat read of a table or view, or a more complex join:
 ![Metric Source SQL](https://user-images.githubusercontent.com/102695539/264088009-f466deb1-cc48-4672-8ff9-76f593637d7e.png)
