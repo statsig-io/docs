@@ -485,8 +485,19 @@ module.exports = {
       },
       items: ["compliance/user_data_deletion_requests"],
     },
-    "custom_proxy",
-    "reliability-faq",
+    {
+      type: "category",
+      label: "Infrastructure",
+      link: {
+        type: "doc",
+        id: "infrastructure/introduction",
+      },
+      items: [
+        "infrastructure/statsig_ip_ranges",
+        "infrastructure/custom_proxy",
+        "infrastructure/reliability-faq",
+      ],
+    },
     "faq",
   ],
 };

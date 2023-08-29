@@ -1,3 +1,4 @@
+allowlist
 APIs
 Atlassian
 Autotune
@@ -37,6 +38,7 @@ IAM
 IDSync
 IdP
 Ipsum
+IPs
 JS
 JSON
 Javascript
