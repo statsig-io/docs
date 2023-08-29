@@ -42,6 +42,46 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Statsig Warehouse Native",
+      link: {
+        type: "doc",
+        id: "statsig-warehouse-native/introduction",
+      },
+      items: [
+        {
+          Guides: [
+            "statsig-warehouse-native/guides/connect",
+            "statsig-warehouse-native/guides/metric_sources",
+            "statsig-warehouse-native/guides/metrics",
+            "statsig-warehouse-native/guides/assignment_sources",
+            "statsig-warehouse-native/guides/experiments",
+            "statsig-warehouse-native/guides/pulse",
+            "statsig-warehouse-native/guides/sdks",
+          ],
+        },
+        "statsig-warehouse-native/native-vs-cloud",
+        {
+          "Data Overview": [
+            // "statsig-warehouse-native/analysis-tools/pulse",
+            // "statsig-warehouse-native/analysis-tools/settings",
+            "statsig-warehouse-native/analysis-tools/data-privacy",
+            "statsig-warehouse-native/analysis-tools/pipeline-overview",
+            "statsig-warehouse-native/analysis-tools/data-modelling",
+          ],
+        },
+
+        {
+          "Connecting Your Warehouse": [
+            "statsig-warehouse-native/connecting-your-warehouse/bigquery",
+            "statsig-warehouse-native/connecting-your-warehouse/snowflake",
+            "statsig-warehouse-native/connecting-your-warehouse/databricks",
+            "statsig-warehouse-native/connecting-your-warehouse/redshift",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "Feature Gates",
       link: {
         type: "doc",
@@ -332,33 +372,7 @@ module.exports = {
         },
       ],
     },
-    {
-      type: "category",
-      label: "Statsig Warehouse Native",
-      link: {
-        type: "doc",
-        id: "statsig-warehouse-native/introduction",
-      },
-      items: [
-        "statsig-warehouse-native/getting-started",
-        "statsig-warehouse-native/pipeline-overview",
-        {
-          "Building Blocks": [
-            "statsig-warehouse-native/building-blocks/assignment-sources",
-            "statsig-warehouse-native/building-blocks/metric-sources",
-            "statsig-warehouse-native/building-blocks/metrics",
-          ],
-        },
-        {
-          "Connecting Your Warehouse": [
-            "statsig-warehouse-native/connecting-your-warehouse/bigquery",
-            "statsig-warehouse-native/connecting-your-warehouse/snowflake",
-            "statsig-warehouse-native/connecting-your-warehouse/databricks",
-            "statsig-warehouse-native/connecting-your-warehouse/redshift",
-          ],
-        },
-      ],
-    },
+
     {
       type: "category",
       label: "Data Warehouse Ingestion",
