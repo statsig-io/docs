@@ -30,8 +30,8 @@ If there's any confusion, or if a feature is critical for your evaluation, we're
 |                           | Export to CSV                             | Identical                                          |
 |                           | Share Links                               | Identical                                          |
 |                           | All Metrics Tab                           | N/A for WHN                                        |
-| Analysis Only Experiments | Overrides                                 | Not relevant w/o SDK                               |
-| (Not using Statsig SDKs)  | Diagnostics (SDK Related)                 | Not relevant w/o SDK                               |
+| Analysis Only Experiments (w/o SDK)| Overrides                                 | Not relevant w/o SDK                               |
+|                           | Diagnostics (SDK Related)                 | Not relevant w/o SDK                               |
 |                           | Diagnostics (Data specific)               | WHN has additional                                 |
 |                           | Capture Hypothesis                        | Identical                                          |
 |                           | Capture Images                            | Identical                                          |
