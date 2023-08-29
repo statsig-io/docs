@@ -2,10 +2,10 @@
 title: Warehouse Native Vs. Cloud
 slug: /statsig-warehouse-native/native-vs-cloud
 sidebar_label: Native vs Cloud
-description: Undertstand the different Statsig products
+description: Understand the different Statsig products
 ---
 
-Statsig Warehouse Native and Statsig Cloud share many capabilties, but there are some differences between the platforms. This page is intended to make those differences clear, and to help you make the right choice for your experimentation needs.
+Statsig Warehouse Native and Statsig Cloud share many capabilities, but there are some differences between the platforms. This page is intended to make those differences clear, and to help you make the right choice for your experimentation needs.
 
 If there's any confusion, or if a feature is critical for your evaluation, we're always open to prioritizing requests. Don't hesitate to reach out in Slack or to our [support team](mailto:support@statsig.com)
 

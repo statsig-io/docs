@@ -39,13 +39,13 @@ Delta(%) = (Test - Control) / Control
 
 Confidence intervals are reported at the selected significance level (95% by default). In a typical two-sided Z-test, we show the confidence interval as +/- 1.96 \* standard error.
 
-Winsorization will be applied based on metric-level settings. This caps extreme outlier values to reduce their impact on experiment results. CUPED (regression adjustment) is applied by default, with an easy toggle to see non-CUPED results if desired. Sequential testing, Bonferonni Corrections for multiple comparisons and controlling family-wise error rates, and Bayesian analysis are available in the settings page.
+Winsorization will be applied based on metric-level settings. This caps extreme outlier values to reduce their impact on experiment results. CUPED (regression adjustment) is applied by default, with an easy toggle to see non-CUPED results if desired. Sequential testing, bonferroni corrections for multiple comparisons and controlling family-wise error rates, and Bayesian analysis are available in the settings page.
 
 ![Scorecard](https://user-images.githubusercontent.com/102695539/264087011-46725b31-6064-4cd4-806b-d8db119e0e9b.png)
 
 ## Health Checks
 
-In the diagnostics tab, the results of Statsitical and Data Quality checks are available. These include:
+In the diagnostics tab, the results of Statistical and Data Quality checks are available. These include:
 
 - The status of Jobs. Here you can also see and copy the SQL that was run for every step of the Pulse analysis
 - Exposures are balanced between group. This uses a chi-squared test to detect if there is a meaningful difference between the group populations and the expected split.

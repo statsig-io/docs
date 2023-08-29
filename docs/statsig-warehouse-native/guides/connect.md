@@ -4,7 +4,7 @@ slug: /statsig-warehouse-native/guides/connect
 sidebar_label: Connect Your Warehouse
 ---
 
-To run anaylsis on your warehouse, Statsig needs to connect to your warehouse via a service user. You control the access this user gets to your warehouse. In general, Statsig will require:
+To run analysis on your warehouse, Statsig needs to connect to your warehouse via a service user. You control the access this user gets to your warehouse. In general, Statsig will require:
 
 - Read access to metric data and exposures data
 - Write access to an isolated Statsig Staging database for writing results and exporting data

@@ -104,7 +104,7 @@ Since the calculation window is set to 7, the user would have 7 days to complete
 
 ## Viewing your Metric
 
-With the metric set up, you can load or schedule loads of a timeseires view to populate a timeseries that tracks the population value and aids in debugging/identifying data bugs. Additionally, this can be used to calculate the projected topline impact of releasing an experiment.
+With the metric set up, you can load or schedule loads of a timeseries view to populate a timeseries that tracks the population value and aids in debugging/identifying data bugs. Additionally, this can be used to calculate the projected topline impact of releasing an experiment.
 
 ![Timeseries](https://user-images.githubusercontent.com/102695539/264099747-687a3241-db10-43d4-b1ef-8c4c2a29d0dc.png)
 

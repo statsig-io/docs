@@ -31,7 +31,7 @@ You'll need to specify the control group as well as the ID type the experiment i
 You'll land in the setup page for the experiment. Here, you can further refine your hypothesis and add the Primary and Secondary metrics for your experiment.
 
 - Primary metrics should be a short list (1-3) of metrics that specify your overall evaluation criteria for the experiment. Generally this is one target metric, and a first-mile metric (e.g. revenue, and checkout clicks)
-- Secondary metrics are guardrails and explanatory metrics. These are more observational in nature, and should be treated as less conclusive. Applying bonferonni corrections is a way to formalize this approach, though it can be unessecarily conservative.
+- Secondary metrics are guardrails and explanatory metrics. These are more observational in nature, and should be treated as less conclusive. Applying bonferroni corrections is a way to formalize this approach, though it can be overly conservative.
 
 ![Choose Metrics](https://user-images.githubusercontent.com/102695539/264101219-396f00f6-fbdc-4944-94c0-62354eaa2980.png)
 
@@ -50,7 +50,7 @@ Statsig has many settings you can configure in your experiment. Defaults for the
 - Frequentist vs. Bayesian Analysis
 - Target duration of the experiment
 - Whether or not to apply Sequential Testing adjustments
-- Whether and how to apply Bonferonni Correction
+- Whether and how to apply bonferroni Correction
 - Confidence Intervals
 - Default rollup windows for result readouts (Cumulative, 1, 7, 14, or 28 days from the analysis date)
 
