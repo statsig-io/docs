@@ -6,9 +6,9 @@ sidebar_label: Assignment Sources
 
 Assignment Sources are an interface to connect to your assignment data from Statsig. These assignments could be from Statsig, or from any data source with the required fields. Here, we'll go through the process of setting one up.
 
-## Creating a Metric Source
+## Creating an Assignment Source
 
-To create an assignment source, go to the experiments tab in Statsig and go to the Assignment Sources pane. We also have a metrics API that lets you create metrics programmatically.
+To create an assignment source, go to the experiments tab in Statsig and go to the Assignment Sources pane.
 
 An Assignment Source is defined as a SQL query and a mapping of the output columns to specific fields
 Statsig requires (user identifiers, a `timestamp`, an experiment identifier, and a group identifier).
