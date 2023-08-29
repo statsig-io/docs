@@ -92,29 +92,6 @@ Statsig Warehouse Native brings Statsig's to your warehouse. Assess the impact o
 
 This is an appealing option for customers who are privacy sensitive or who are already using other solutions for experiment assignment. Our [support team](mailto:support@statsig.com) can help you decide if Statsig Warehouse Native is a good fit for your experimentation needs.
 
-## What Statsig Warehouse Native Does
-
-With Statsig Warehouse Native, you set up connections to your source data using basic SQL queries and define Metrics as measures on top of that source data. Statsig will run a SQL-based [data pipeline](analysis-tools/pipeline-overview.md) in your warehouse to run experimental analysis on your raw data. At the end, Statsig downloads a small result set with no user identifiers - just group-level summary data.
-
-![Simple-view](https://user-images.githubusercontent.com/102695539/236989885-a30c24d8-26c9-4f8e-b596-3565a0be018d.png)
-
-This process is fully transparent. The queries and cost data are available in the Statsig console, and algorithms like CUPED and winsorization are run in SQL to avoid black boxes and inconsistent results.
-
-Nonetheless, the Statsig Warehouse Native pipeline supports many of the advanced features offered in Statsig, such as:
-
-- Support for multiple unit types - the same event can be used in experiments for a user_id, company_id, etc.
-- Timeseries and days-since-exposure breakdowns
-- Dimensional breakdowns - set up metrics to calculate dimensional breakdowns as well as a topline view
-- Custom queries - filter and group results by user-level attributes
-- Advanced metrics and corresponding statistics tools like Ratio Metrics, Funnels, and the Delta Method to adjust for metric covariance
-- CUPED, Sequential Testing, Outlier Removal, and more
-
-You can also integrate Statsig's feature gates, rollout scheduling, holdouts, and layers (mutual exclusion) with Warehouse Native and still store and process the data in your warehouse.
-
-:::info
-Statsig Warehouse Native is only available for Enterprise contracts. Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you are interested in evaluating Statsig Warehouse Native.
-:::
-
 ## Walkthrough Guides
 
 <div
@@ -214,3 +191,26 @@ Statsig Warehouse Native integrates with Statsig's development tools:
     link="/holdouts"
   ></OutlinedCard>
 </div>
+
+## What Statsig Warehouse Native Does
+
+With Statsig Warehouse Native, you set up connections to your source data using basic SQL queries and define Metrics as measures on top of that source data. Statsig will run a SQL-based [data pipeline](analysis-tools/pipeline-overview.md) in your warehouse to run experimental analysis on your raw data. At the end, Statsig downloads a small result set with no user identifiers - just group-level summary data.
+
+![Simple-view](https://user-images.githubusercontent.com/102695539/236989885-a30c24d8-26c9-4f8e-b596-3565a0be018d.png)
+
+This process is fully transparent. The queries and cost data are available in the Statsig console, and algorithms like CUPED and winsorization are run in SQL to avoid black boxes and inconsistent results.
+
+Nonetheless, the Statsig Warehouse Native pipeline supports many of the advanced features offered in Statsig, such as:
+
+- Support for multiple unit types - the same event can be used in experiments for a user_id, company_id, etc.
+- Timeseries and days-since-exposure breakdowns
+- Dimensional breakdowns - set up metrics to calculate dimensional breakdowns as well as a topline view
+- Custom queries - filter and group results by user-level attributes
+- Advanced metrics and corresponding statistics tools like Ratio Metrics, Funnels, and the Delta Method to adjust for metric covariance
+- CUPED, Sequential Testing, Outlier Removal, and more
+
+You can also integrate Statsig's feature gates, rollout scheduling, holdouts, and layers (mutual exclusion) with Warehouse Native and still store and process the data in your warehouse.
+
+:::info
+Statsig Warehouse Native is only available for Enterprise contracts. Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you are interested in evaluating Statsig Warehouse Native.
+:::
