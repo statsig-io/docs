@@ -15,8 +15,8 @@ allowing only certain IPs.
 - 20.252.36.2
 - 20.190.14.199
 
-- 34.128.128.0/29
-- 34.128.128.12/30
+- 34.128.128.0/29 (8 addresses)
+- 34.128.128.12/30 (4 addresses)
 
 ## Inbound (Your Clients/Servers -> Statsig)
 
@@ -27,4 +27,4 @@ These IPs back the domains (e.g. `api.statsig.com`, `featuregates.org`, `statsig
 - 52.139.250.209
 
 - 34.120.214.181
-- 34.128.128.8/30
+- 34.128.128.8/30 (4 addresses)
