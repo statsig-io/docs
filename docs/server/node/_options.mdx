@@ -1,3 +1,5 @@
+import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
+
 `statsig.initialize()` takes an optional parameter `options` in addition to the secret key that you can provide to customize the Statsig client. Here are the current options and we are always adding more to the list:
 
 - **api**: string, default `https://statsigapi.net/v1`
@@ -18,7 +20,7 @@
     ```
 
 - **localMode**: boolean, default false
-  - disables all network access, so the SDK will only return default (or overridden) values. Useful in testing
+  - <LocalModeSnippet type="server" />
 - **initTimeoutMs**: number, default 0
   - sets a maximum time to wait for the config download network request to resolve before considering the SDK initialized and resolving the call to `initialize()`
 - **dataAdapter**: IDataAdapter, default null
