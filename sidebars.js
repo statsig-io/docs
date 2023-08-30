@@ -407,6 +407,7 @@ module.exports = {
         {
           "Data Connectors": [
             "integrations/data-connectors/census",
+            "integrations/data-connectors/google-analytics",
             "integrations/data-connectors/fivetran",
             "integrations/data-connectors/heap",
             "integrations/data-connectors/hightouch",
