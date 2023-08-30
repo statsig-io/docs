@@ -1,3 +1,5 @@
+import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
+
 You can specify optional parameters with `options` when initializing.
 
 - **api** string, default `"https://statsigapi.net/v1"`
@@ -9,7 +11,7 @@ You can specify optional parameters with `options` when initializing.
 - **loggingMaxBufferSize**: int, default `1000`, can be set lower but anything over 1000 will be dropped on the server
   - The maximum number of events to batch before flushing logs to the server
 - **localMode**: bool, default `false`
-  - An option to restrict the sdk to not issue any network requests and only respond with default values (or local overrides)
+  - <LocalModeSnippet type="server" />
 
 :::info
 ID Lists are currently not supported in the C++ server SDK
