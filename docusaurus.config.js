@@ -130,7 +130,19 @@ module.exports = {
               {
                 tagName: "script",
                 attributes: {
-                  src: "https://cdn.jsdelivr.net/npm/statsig-js@4.37.0-beta.5/build/statsig-prod-web-sdk.min.js",
+                  src: "https://dcs-worker.statsig.workers.dev/v1/download_config_specs/client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps.js",
+                },
+              },
+              {
+                tagName: "script",
+                attributes: {
+                  src: "https://cdn.jsdelivr.net/npm/statsig-js-local-eval@0.0.1/build/statsig-prod-web-sdk.min.js",
+                },
+              },
+              {
+                tagName: "script",
+                attributes: {
+                  src: "/js/localevalsdk.js",
                 },
               },
               {

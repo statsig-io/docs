@@ -6,7 +6,7 @@ function wireClickHandlers(tagName) {
   for (let ii = 0; ii < elements.length; ii++) {
     const el = elements[ii];
     el.addEventListener("click", () => {
-      window.statsig.logEvent("link_click", el.pathname, {
+      window.statsig.logEvent({}, "link_click", el.pathname, {
         page: window.location.href,
         referrer: document && document.referrer,
       });
@@ -35,7 +35,7 @@ export default (function () {
           null,
           { environment: { tier: window.statsigTier } }
         );
-        window.statsig.logEvent("page_view", window.location.pathname, {
+        window.statsig.logEvent({}, "page_view", window.location.pathname, {
           referrer: document && document.referrer,
         });
       } catch (e) {
