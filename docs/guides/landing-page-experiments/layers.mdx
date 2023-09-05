@@ -1,0 +1,42 @@
+---
+sidebar_label: Multiple Experiments
+title: Running Multiple Experiments
+---
+
+## Method 1: Layers
+
+Using layers allows you to run multiple landing page experiments without needing to update the code on the website for each experiment.  Layers are a powerful way to run many experiments in sequence, one building on top of the learning from the other.
+
+Running an experiment within a layer is simple.  Create a layer with the `page_url` parameter defined first like here:
+
+![image](https://github.com/statsig-io/statuspage/assets/74588208/cc49d1cd-9abb-49f4-8712-72d0d518f7e1)
+
+Then you can go ahead and create a new experiment as detailed above.
+
+When you run experiments as part of a layer, you should update the script to specify the `layerid` instead of `expid`.
+
+```html
+<script
+  src="https://cdn.jsdelivr.net/npm/statsig-landing-page-exp?apikey=[API_KEY]&layerid=[LAYER_NAME]">
+</script>
+```
+
+## Method 2: Multiple Fallback Experiments
+
+Another way to run multiple experiments is using fallback experiments with different targeting gates.  For example, if you have two experiments, one for organic visitors and the other for paid visitors, you might want to set up two experiments and pass them to the landing page.  You can use `multiexpids` query param to indicate this.
+
+```html
+<script 
+  src="https://cdn.jsdelivr.net/npm/statsig-landing-page-exp?apikey=[API_KEY]&multiexpids=expid1,expid2,expid3">
+</script>
+```
+
+This will first evaluate if the user is in `exp1` and if the user is not part of the experiment, fallback to `exp2` and so on.  When the user is allocated to one of the specified experiments, then the `page_url` property is consulted and the redirect happens.
+
+In these cases, it's helpful to know on the final redirect which experiment was consulted for the redirect and that can be easily fetched by looking at the `_configname` query param that's passed on to the redirected page.
+
+:::info
+If you don't want to expose the experiment names in the final redirect to your users, you can suppress the inclusion of the experiment name in the url by setting a parameter named `excludeConfigNameInUrl` to true in your experiments.
+:::
+
+![image](https://github.com/statsig-io/.github/assets/74588208/3ed06102-3ba5-4fb6-807e-d790d2011310)
