@@ -32,7 +32,15 @@ module.exports = {
         "guides/production",
         "guides/testing",
         "guides/uptime",
-        "guides/landing-page-experiments",
+        {
+          "Landing Page Experiments": [
+            "guides/landing-page-experiments/introduction",
+            "guides/landing-page-experiments/setup",
+            "guides/landing-page-experiments/interpreting",
+            "guides/landing-page-experiments/layers",
+            "guides/landing-page-experiments/webflow",
+          ]
+        },
         "guides/sendgrid-email-abtest",
         "guides/customer-io-email-abtest",
         "guides/email-campaign-test",
