@@ -89,8 +89,9 @@
       }
     },
     "checksPerHour": {
-      "type": "integer",
-      "example": 0
+      "type": "number",
+      "example": 0,
+      "description": "Average number of checks per hours based on the last 24 hours"
     }
   }
 }
