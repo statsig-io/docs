@@ -136,7 +136,7 @@ module.exports = {
               {
                 tagName: "script",
                 attributes: {
-                  src: "https://cdn.jsdelivr.net/npm/statsig-js-local-eval@0.0.1/build/statsig-prod-web-sdk.min.js",
+                  src: "/js/statsigsdk.js",
                 },
               },
               {
