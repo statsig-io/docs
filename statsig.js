@@ -30,7 +30,11 @@ export default (function () {
 
       try {
         // will no-op if already initialized
-        window.statsig.initializeAsync("client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps", { environment: { tier: window.statsigTier } });
+        window.statsig.initializeAsync("client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps", { environment: { tier: window.statsigTier } }).then(() => {
+          window.statsig.getExperiment({}, "a_a_test");
+        }).catch(e => {
+          console.error(e);
+        });
         window.statsig.logEvent({}, "page_view", window.location.pathname, {
           referrer: document && document.referrer,
         });

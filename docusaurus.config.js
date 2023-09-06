@@ -141,12 +141,6 @@ module.exports = {
               },
               {
                 tagName: "script",
-                attributes: {
-                  src: "/js/localevalsdk.js",
-                },
-              },
-              {
-                tagName: "script",
                 innerHTML: `window.statsigTier="${tier}"`,
               },
               {
