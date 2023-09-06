@@ -18,7 +18,7 @@ module.exports = {
     metadata: [
       {
         name: "og:image",
-        content: "/img/docs_meta.jpg",
+        content: "/img/docs_meta_q3_2023.png",
       },
       {
         name: "og:type",
@@ -34,7 +34,7 @@ module.exports = {
       },
       {
         name: "twitter:image",
-        content: "/img/docs_meta.jpg",
+        content: "/img/docs_meta_q3_2023.png",
       },
     ],
     navbar: {
