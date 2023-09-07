@@ -1,7 +1,5 @@
 name: Spellcheck Action
 on: push
-
-jobs:
   build:
     name: Spellcheck
     runs-on: ubuntu-latest
