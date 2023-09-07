@@ -30,7 +30,7 @@ export default (function () {
 
       // measure cdn perf
       setTimeout(async () => {
-        const start = performance.now();
+        let start = performance.now();
         await fetch(
           'https://latest.api.statsig.com/v1/download_config_specs?k=client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps', {cache: "reload"}
         )
@@ -44,9 +44,7 @@ export default (function () {
               error: e.message,
             });
           });
-      }, 1000);
-      setTimeout(async () => {
-        const start = performance.now();
+        start = performance.now();
         await fetch(
           'https://cache.statsigcdn.com/v1/download_config_specs?k=client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps', {cache: "reload"}
         )
@@ -60,9 +58,7 @@ export default (function () {
               error: e.message,
             });
           });
-      }, 1000);
-      setTimeout(async () => {
-        const start = performance.now();
+        start = performance.now();
         await fetch(
           'https://dcs-worker.statsig.workers.dev/v1/download_config_specs/client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps.js', {cache: "reload"}
         )
