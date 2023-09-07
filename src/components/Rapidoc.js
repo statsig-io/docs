@@ -17,7 +17,8 @@ const supportedEntities = [
   'audit-logs', 
   'reports', 
   'usage-billing', 
-  'target-apps'
+  'target-apps',
+  'ingestions',
 ];
 
 function updateCodeSnippets(data, entity) {
