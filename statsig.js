@@ -28,25 +28,11 @@ export default (function () {
         return;
       }
 
-      try {
-        // will no-op if already initialized
-        window.statsig.initializeAsync("client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps", { environment: { tier: window.statsigTier } }).then(() => {
-          window.statsig.getExperiment({}, "a_a_test");
-        }).catch(e => {
-          console.error(e);
-        });
-        window.statsig.logEvent({}, "page_view", window.location.pathname, {
-          referrer: document && document.referrer,
-        });
-      } catch (e) {
-        console.error(e);
-      }
-
       // measure cdn perf
       setTimeout(async () => {
         const start = performance.now();
         await fetch(
-          'https://latest.api.statsig.com/v1/download_config_specs?k=client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps',
+          'https://latest.api.statsig.com/v1/download_config_specs?k=client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps', {cache: "reload"}
         )
           .then(() => {
             const delta = performance.now() - start;
@@ -62,7 +48,7 @@ export default (function () {
       setTimeout(async () => {
         const start = performance.now();
         await fetch(
-          'https://cache.statsigcdn.com/v1/download_config_specs?k=client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps',
+          'https://cache.statsigcdn.com/v1/download_config_specs?k=client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps', {cache: "reload"}
         )
           .then(() => {
             const delta = performance.now() - start;
@@ -78,7 +64,7 @@ export default (function () {
       setTimeout(async () => {
         const start = performance.now();
         await fetch(
-          'https://dcs-worker.statsig.workers.dev/v1/download_config_specs?k=client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps',
+          'https://dcs-worker.statsig.workers.dev/v1/download_config_specs/client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps.js', {cache: "reload"}
         )
           .then(() => {
             const delta = performance.now() - start;
@@ -91,6 +77,20 @@ export default (function () {
             });
           });
       }, 1000);
+
+      try {
+        // will no-op if already initialized
+        window.statsig.initializeAsync("client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps", { environment: { tier: window.statsigTier } }).then(() => {
+          window.statsig.getExperiment({}, "a_a_test");
+        }).catch(e => {
+          console.error(e);
+        });
+        window.statsig.logEvent({}, "page_view", window.location.pathname, {
+          referrer: document && document.referrer,
+        });
+      } catch (e) {
+        console.error(e);
+      }
     },
   };
 })();
