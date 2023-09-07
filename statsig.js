@@ -41,6 +41,56 @@ export default (function () {
       } catch (e) {
         console.error(e);
       }
+
+      // measure cdn perf
+      setTimeout(async () => {
+        const start = performance.now();
+        await fetch(
+          'https://latest.api.statsig.com/v1/download_config_specs?k=client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps',
+        )
+          .then(() => {
+            const delta = performance.now() - start;
+            window.statsig.logEvent('cloud_cdn_latency', delta);
+          })
+          .catch((e) => {
+            const delta = performance.now() - start;
+            window.statsig.logEvent('cloud_cdn_latency', delta, {
+              error: e.message,
+            });
+          });
+      }, 1000);
+      setTimeout(async () => {
+        const start = performance.now();
+        await fetch(
+          'https://cache.statsigcdn.com/v1/download_config_specs?k=client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps',
+        )
+          .then(() => {
+            const delta = performance.now() - start;
+            window.statsig.logEvent('cloudflare_cdn_latency', delta);
+          })
+          .catch((e) => {
+            const delta = performance.now() - start;
+            window.statsig.logEvent('cloudflare_cdn_latency', delta, {
+              error: e.message,
+            });
+          });
+      }, 1000);
+      setTimeout(async () => {
+        const start = performance.now();
+        await fetch(
+          'https://dcs-worker.statsig.workers.dev/v1/download_config_specs?k=client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps',
+        )
+          .then(() => {
+            const delta = performance.now() - start;
+            window.statsig.logEvent('cloudflare_worker_latency', delta);
+          })
+          .catch((e) => {
+            const delta = performance.now() - start;
+            window.statsig.logEvent('cloudflare_worker_latency', delta, {
+              error: e.message,
+            });
+          });
+      }, 1000);
     },
   };
 })();
