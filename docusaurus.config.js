@@ -18,7 +18,7 @@ module.exports = {
     metadata: [
       {
         name: "og:image",
-        content: "/img/docs_meta.jpg",
+        content: "/img/docs_meta_q3_2023.png",
       },
       {
         name: "og:type",
@@ -34,7 +34,7 @@ module.exports = {
       },
       {
         name: "twitter:image",
-        content: "/img/docs_meta.jpg",
+        content: "/img/docs_meta_q3_2023.png",
       },
     ],
     navbar: {
@@ -68,7 +68,11 @@ module.exports = {
             },
             {
               label: "Blog",
-              href: "https://blog.statsig.com",
+              href: "https://statsig.com/blog",
+            },
+            {
+              label: "Slack Community",
+              href: "https://statsig.com/slack",
             },
             {
               label: "Code",
@@ -126,7 +130,13 @@ module.exports = {
               {
                 tagName: "script",
                 attributes: {
-                  src: "https://cdn.jsdelivr.net/npm/statsig-js@4.36.0/build/statsig-prod-web-sdk.min.js",
+                  src: "https://dcs-worker.statsig.workers.dev/v1/download_config_specs/client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps.js",
+                },
+              },
+              {
+                tagName: "script",
+                attributes: {
+                  src: "/js/statsigsdk.js",
                 },
               },
               {

@@ -28,16 +28,64 @@ module.exports = {
         "guides/aa-test",
         "guides/serverless",
         "guides/config-history",
+        "guides/running-a-poc",
         "guides/production",
         "guides/testing",
         "guides/uptime",
-        "guides/landing-page-experiments",
+        {
+          "Landing Page Experiments": [
+            "guides/landing-page-experiments/introduction",
+            "guides/landing-page-experiments/setup",
+            "guides/landing-page-experiments/interpreting",
+            "guides/landing-page-experiments/layers",
+            "guides/landing-page-experiments/webflow",
+          ]
+        },
         "guides/sendgrid-email-abtest",
         "guides/customer-io-email-abtest",
         "guides/email-campaign-test",
         "guides/cms-integrations",
-        "guides/experiment-analysis",
         "guides/migrate-from-launchdarkly",
+      ],
+    },
+    {
+      type: "category",
+      label: "Statsig Warehouse Native",
+      link: {
+        type: "doc",
+        id: "statsig-warehouse-native/introduction",
+      },
+      items: [
+        {
+          Guides: [
+            "statsig-warehouse-native/guides/connect",
+            "statsig-warehouse-native/guides/metric_sources",
+            "statsig-warehouse-native/guides/metrics",
+            "statsig-warehouse-native/guides/assignment_sources",
+            "statsig-warehouse-native/guides/experiments",
+            "statsig-warehouse-native/guides/pulse",
+            "statsig-warehouse-native/guides/sdks",
+          ],
+        },
+        "statsig-warehouse-native/native-vs-cloud",
+        {
+          "Data Overview": [
+            // "statsig-warehouse-native/analysis-tools/pulse",
+            // "statsig-warehouse-native/analysis-tools/settings",
+            "statsig-warehouse-native/analysis-tools/data-privacy",
+            "statsig-warehouse-native/analysis-tools/pipeline-overview",
+            "statsig-warehouse-native/analysis-tools/data-modelling",
+          ],
+        },
+
+        {
+          "Connecting Your Warehouse": [
+            "statsig-warehouse-native/connecting-your-warehouse/bigquery",
+            "statsig-warehouse-native/connecting-your-warehouse/snowflake",
+            "statsig-warehouse-native/connecting-your-warehouse/databricks",
+            "statsig-warehouse-native/connecting-your-warehouse/redshift",
+          ],
+        },
       ],
     },
     {
@@ -211,8 +259,8 @@ module.exports = {
     },
     {
       type: "doc",
-      label: "Events Explorer",
-      id: "events-explorer/introduction",
+      label: "Metrics Explorer",
+      id: "mex/introduction",
     },
     {
       type: "doc",
@@ -300,6 +348,7 @@ module.exports = {
         "console-api/metrics",
         "console-api/audit-logs",
         "console-api/autotunes",
+        "console-api/target-apps",
         {
           Reports: [
             "console-api/daily-reports",
@@ -331,33 +380,7 @@ module.exports = {
         },
       ],
     },
-    {
-      type: "category",
-      label: "Statsig Warehouse Native",
-      link: {
-        type: "doc",
-        id: "statsig-warehouse-native/introduction",
-      },
-      items: [
-        "statsig-warehouse-native/getting-started",
-        "statsig-warehouse-native/pipeline-overview",
-        {
-          "Building Blocks": [
-            "statsig-warehouse-native/building-blocks/assignment-sources",
-            "statsig-warehouse-native/building-blocks/metric-sources",
-            "statsig-warehouse-native/building-blocks/metrics",
-          ],
-        },
-        {
-          "Connecting Your Warehouse": [
-            "statsig-warehouse-native/connecting-your-warehouse/bigquery",
-            "statsig-warehouse-native/connecting-your-warehouse/snowflake",
-            "statsig-warehouse-native/connecting-your-warehouse/databricks",
-            "statsig-warehouse-native/connecting-your-warehouse/redshift",
-          ],
-        },
-      ],
-    },
+
     {
       type: "category",
       label: "Data Warehouse Ingestion",
@@ -392,6 +415,7 @@ module.exports = {
         {
           "Data Connectors": [
             "integrations/data-connectors/census",
+            "integrations/data-connectors/google-analytics",
             "integrations/data-connectors/fivetran",
             "integrations/data-connectors/heap",
             "integrations/data-connectors/hightouch",
@@ -424,6 +448,7 @@ module.exports = {
         "integrations/fastly",
         "integrations/vscode",
         "integrations/datadog",
+        "integrations/github_code_references",
         {
           type: "category",
           label: "Terraform",
@@ -483,8 +508,19 @@ module.exports = {
       },
       items: ["compliance/user_data_deletion_requests"],
     },
-    "custom_proxy",
-    "reliability-faq",
+    {
+      type: "category",
+      label: "Infrastructure",
+      link: {
+        type: "doc",
+        id: "infrastructure/introduction",
+      },
+      items: [
+        "infrastructure/statsig_ip_ranges",
+        "infrastructure/custom_proxy",
+        "infrastructure/reliability-faq",
+      ],
+    },
     "faq",
   ],
 };

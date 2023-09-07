@@ -7,11 +7,11 @@ slug: /feature-gates/implement/server
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-
 ### Step 1: Get the Statsig server secret key
 
-To get the Statsig server secret key, 
-- Log into the Statsig console at https://console.statsig.com 
+To get the Statsig server secret key,
+
+- Log into the Statsig console at https://console.statsig.com
 - Click on the **Project Settings** gear icon next to your account settings at the top right corner of the page as shown below
 
   ![image](https://user-images.githubusercontent.com/1315028/129190279-60ab338f-02da-4b9a-86ee-e81cb6ac8940.png)
@@ -20,7 +20,7 @@ To get the Statsig server secret key,
 - Copy the active **Server Secret Key**
 
 ### Step 2: Install the SDK
-  
+
 <Tabs
   defaultValue="node"
   groupId="statsigserver"
@@ -36,7 +36,7 @@ To get the Statsig server secret key,
 If you are using Bundler, add the [Statsig gem](https://rubygems.org/gems/statsig) to your Gemfile from command line:
 
 ```shell
-bundle add statsig --version ">= 1.4.0" 
+bundle add statsig --version ">= 1.4.0"
 ```
 
 Or directly include it in your Gemfile and do a bundle install:
@@ -71,12 +71,12 @@ In your go.mod, add a dependency on the most recent version of the SDK. See the 
 
 ```
 require (
-  github.com/statsig-io/go-sdk v0.2.0
+  statsig "github.com/statsig-io/go-sdk"
+  github.com/statsig-io/go-sdk v1.10.0
 )
 ```
 
 </TabItem>
-
 
 <TabItem value="net">
 
@@ -92,7 +92,7 @@ dotnet add package Statsig --version 1.1.0
 ### Step 3: Initialize the SDK
 
 To initialize the SDK, copy the following in your server side application code:
-  
+
 <Tabs
   defaultValue="node"
   groupId="statsigserver"
@@ -142,13 +142,12 @@ initFuture.get();
 ```go
 import (
   statsig "github.com/statsig-io/go-sdk"
-  "github.com/statsig-io/go-sdk/types"
 )
 
 statsig.Initialize("SERVER_SECRET_KEY")
 
 // Or if you want to initialize with certain options
-statsig.InitializeWithOptions("SERVER_SECRET_KEY", &types.StatsigOptions{Environment: types.StatsigEnvironment{Tier: "staging"}})
+statsig.InitializeWithOptions("SERVER_SECRET_KEY", &statsig.Options{Environment: statsig.Environment{Tier: "staging"}})
 ```
 
 </TabItem>
@@ -167,10 +166,9 @@ await StatsigServer.Initialize(
 </TabItem>
 </Tabs>
 
-
 ### Step 4: Check the feature gate
 
-To implement a feature gate, you must include a feature gate check in your application code. 
+To implement a feature gate, you must include a feature gate check in your application code.
 
 A feature gate check returns a Boolean value. A feature gate is closed/off and a gate check returns **false** by default. After you have created a rule to target a set of users, the feature gate check returns **true** when you perform a check for an eligible user. You can use this return value to expose the eligible user to the feature as shown below.
 
@@ -226,13 +224,13 @@ Boolean isFeatureOn = featureOn.get()
 </TabItem>
 <TabItem value="go">
 
-  ```go
+```go
 user := types.StatsigUser{UserID: "LOGGED_IN_USER_ID"}
 feature := statsig.CheckGate(user, "FEATURE_GATE_NAME")
 if feature {
-  // Gate is on, enable new feature
+// Gate is on, enable new feature
 } else {
-  // Gate is off
+// Gate is off
 }
 ```
 
@@ -257,7 +255,7 @@ else
     
 ### Step 5 (Optional): Log an event
 
-You can optionally log an event to capture any metrics that show the impact of your feature. 
+You can optionally log an event to capture any metrics that show the impact of your feature.
 
 <Tabs
   defaultValue="node"
@@ -279,7 +277,10 @@ Statsig.log_event(user, 'EVENT_NAME', 'EVENT_VALUE', { 'price' => '9.99', 'item_
 <TabItem value="node">
 
 ```jsx
-statsig.logEvent(user, 'EVENT_NAME', 'EVENT_VALUE', {'price': '9.99', 'item_name': 'diet_coke_48_pack'});
+statsig.logEvent(user, "EVENT_NAME", "EVENT_VALUE", {
+  price: "9.99",
+  item_name: "diet_coke_48_pack",
+});
 ```
 
 </TabItem>
@@ -303,7 +304,6 @@ statsig.LogEvent(types.StatsigEvent{
 ```
 
 </TabItem>
-
 
 <TabItem value="net">
 

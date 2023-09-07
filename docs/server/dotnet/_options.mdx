@@ -1,21 +1,15 @@
+import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
+
 `Initialize()` takes an optional parameter `options` in addition to `sdkKey` and `user` that you can provide to customize the Statsig client. Here are the current options and we are always adding more to the list:
 
 - **environment**: StatsigEnvironment, default null
-
   - An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
   - The most common usage is to set the environment tier (EnvironmentTier), e.g. `new StatsigEnvironment(EnvironmentTier.Staging)`, and have feature gates pass/fail for specific environments.
-
 - **RulesetsSyncInterval**: double, default 10
-
   - Use this to override how often you want the SDK to poll Statsig backend for changes on the rulesets.
-
 - **IDListsSyncInterval**: double, default 60
-
   - Use this to override how often you want the SDK to poll Statsig backend for changes on the ID Lists.
-
 - **LocalMode**: bool, default false
-
-  - Restricts the SDK to not issue any network requests and only respond with default values.
-
+  - <LocalModeSnippet type="server" />
 - [**DataStore**](#data-store): IDataStore, default null
   - A class that extends IDataStore. Can be used to provide values from a common data store (like Redis) to initialize the Statsig SDK.

@@ -4,7 +4,7 @@ module.exports = {
     "id": "e0352ead0cc67"
   },
   "info": {
-    "title": "console/v1",
+    "title": "https://statsigapi.net/console/v1",
     "version": "1.0.0",
     "description": "Experiment endpoint"
   },

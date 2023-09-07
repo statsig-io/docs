@@ -1,14 +1,7 @@
 ---
-sidebar_label: Landing Page Experiments
-title: Landing Page Experiments
+sidebar_label: Experiment Setup
+title: Setting up Landing Page Experiments
 ---
-
-Running an A/B test between multiple versions of Landing Pages is a common Marketing use case.  Statsig provides powerful no/low-code support for running such experiments, and also makes it extremely simple and robust.  Since Statsig can integrate seamlessly with product analytics, you can run experiments and understand deeper business level impact easily.
-
-This method operates directly at the HTML/JS level and supports all web development tools: Webflow, Framer, WordPress, Wix, Contentful, etc.
-
-## Working Prototype 
-A working prototype is available here: https://ab-testing-website.webflow.io/
 
 :::info
 This guide assumes you have an existing Statsig account.  Please go here to create a new free account if you don't already have one: https://statsig.com/signup
@@ -76,39 +69,4 @@ When you've published the landing pages, you can verify everything is working as
 ![image](https://user-images.githubusercontent.com/74588208/210324429-d5aa84c7-47b0-415a-bb92-cccfcb3b5a35.png)
 
 **Tip:** You can clear cookies, or use Incognito mode on your browser to test the variant allocation for a different user.
-
-## Interpreting results
-
-By going to the **Pulse Results** tab in the Experiment page, you can add metrics you want to monitor and verify which variant is doing better.  To learn more about reading Pulse Results, check this article out: [Reading Pulse Results](../pulse/read-pulse).
-
-![image](https://user-images.githubusercontent.com/74588208/210324819-4b6afc1b-8dcd-4f6a-b40c-7d1f09031fc3.png)
-
-## More than two variants
-
-It's simple to extend this setup to run ABC or ABn tests.  You can add more variants in the Experiment Setup tab, like below:
-
-![image](https://user-images.githubusercontent.com/74588208/210325878-9e83a619-84e2-4e5e-8b0e-ac91bd8b2fdf.png)
-
-## Layers
-
-Using layers allows you to run multiple landing page experiments without needing to update the code on the website for each experiment.  Layers are a powerful way to run many experiments in sequence, one building on top of the learning from the other.
-
-Running an experiment within a layer is simple.  Create a layer with the `page_url` parameter defined first like here:
-
-![image](https://github.com/statsig-io/statuspage/assets/74588208/cc49d1cd-9abb-49f4-8712-72d0d518f7e1)
-
-Then you can go ahead and create a new experiment as detailed above.
-
-When you run experiments as part of a layer, you should update the script to specify the `layerid` instead of `expid`.
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/statsig-landing-page-exp?apikey=[API_KEY]&layerid=[LAYER_NAME]">
-</script>
-```
-
-## Webflow set up
-
-To add the script in Webflow, you can open the **Pages** tab on the left, and click the 'Settings' gear icon next to the landing page.  In there, within the 'Custom Code' section, add the script snippet **Inside &lt;head&gt; tag**
-
-![image](https://user-images.githubusercontent.com/74588208/210325253-6d118adf-8758-48fb-9c99-fdee6ff34f06.png)
 

@@ -122,3 +122,8 @@ Statsig shows the status of your daily ingestion on the console under the **Inge
 - ingestion failed for a given day
 
 Statsig also sends email notifications with these status updates to the Statsig user who set up the ingestion. This user can also enable Slack direct message (DM) notifications to themselves in their Statsig [Account Settings](https://console.statsig.com/account_notifications).
+
+
+7. **Does Statsig automatically backfill data**
+
+ Statsig looks back at data for the last 3 days from today to see data has changed (>5% number of rows) to automatically trigger a backfill. Outside of this window, we expect the customer to trigger backfill for the range of dates.

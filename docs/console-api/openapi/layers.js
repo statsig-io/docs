@@ -1,7 +1,7 @@
 module.exports = {
   "openapi": "3.0.0",
   "info": {
-    "title": "console/v1",
+    "title": "https://statsigapi.net/console/v1",
     "version": "1.0.0",
     "description": "Layer endpoint"
   },

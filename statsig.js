@@ -6,7 +6,7 @@ function wireClickHandlers(tagName) {
   for (let ii = 0; ii < elements.length; ii++) {
     const el = elements[ii];
     el.addEventListener("click", () => {
-      window.statsig.logEvent("link_click", el.pathname, {
+      window.statsig.logEvent({}, "link_click", el.pathname, {
         page: window.location.href,
         referrer: document && document.referrer,
       });
@@ -30,12 +30,12 @@ export default (function () {
 
       try {
         // will no-op if already initialized
-        window.statsig.initialize(
-          "client-oJY6hTJeduhEN2bf6fh6unHvxIk9UsjS99BlO4owh0r",
-          null,
-          { environment: { tier: window.statsigTier } }
-        );
-        window.statsig.logEvent("page_view", window.location.pathname, {
+        window.statsig.initializeAsync("client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps", { environment: { tier: window.statsigTier } }).then(() => {
+          window.statsig.getExperiment({}, "a_a_test");
+        }).catch(e => {
+          console.error(e);
+        });
+        window.statsig.logEvent({}, "page_view", window.location.pathname, {
           referrer: document && document.referrer,
         });
       } catch (e) {

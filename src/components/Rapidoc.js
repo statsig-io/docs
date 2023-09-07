@@ -1,15 +1,30 @@
 import React, { useEffect } from "react";
+
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import Models from "../../docs/console-api/models/index";
 import { useColorMode } from '@docusaurus/theme-common';
 
-const supportedEntities = ['gates', 'segments', 'dynamic-configs', 'experiments', 'holdouts', 'layers', 'autotunes', 'users', 'metrics', 'audit-logs', 'reports', 'usage-billing'];
+const supportedEntities = [
+  'gates', 
+  'segments', 
+  'dynamic-configs', 
+  'experiments', 
+  'holdouts', 
+  'layers', 
+  'autotunes', 
+  'users', 
+  'metrics', 
+  'audit-logs', 
+  'reports', 
+  'usage-billing', 
+  'target-apps'
+];
 
 function updateCodeSnippets(data, entity) {
   let snippet;
   try {
     snippet = require(`../../docs/console-api/openapi/snippets/x-code-samples/${entity}.js`);
-  } catch(e){
+  } catch (e) {
     return data;
   }
   for (let path in snippet) {
@@ -20,11 +35,11 @@ function updateCodeSnippets(data, entity) {
   return data;
 }
 
-function loadAllEndpoints(){
-  
+function loadAllEndpoints() {
+
   let allEndpoints = require('../../docs/console-api/openapi/all-endpoints.js');
 
-  for(const entity of supportedEntities){
+  for (const entity of supportedEntities) {
     const entityData = require(`../../docs/console-api/openapi/${entity}.js`);
 
     // Add endpoints
@@ -33,16 +48,16 @@ function loadAllEndpoints(){
     }
 
     // Add components ie 'requestBodies', 'schemas', etc...
-    for (const component in entityData['components']){
-      if(component === 'securitySchemes') {
+    for (const component in entityData['components']) {
+      if (component === 'securitySchemes') {
         continue;
       }
 
-      if(allEndpoints['components'][component] === undefined){
+      if (allEndpoints['components'][component] === undefined) {
         allEndpoints['components'][component] = {}
       }
-      
-      for(const scheme in entityData['components'][component]) {
+
+      for (const scheme in entityData['components'][component]) {
         allEndpoints['components'][component][scheme] = entityData['components'][component][scheme]
       }
     }
@@ -82,15 +97,15 @@ export default function Rapidoc(props) {
 
   useEffect(() => {
     setTimeout(() => {
-      
+
       var data;
 
-      if(entity === 'all-endpoints'){
+      if (entity === 'all-endpoints') {
         data = loadAllEndpoints();
       } else {
         data = require(`../../docs/console-api/openapi/${entity}.js`);
       }
-      
+
       data = updateCodeSnippets(data, entity);
 
       loadReferences(data);
@@ -107,7 +122,7 @@ export default function Rapidoc(props) {
         theme={isDarkTheme ? 'dark' : 'light'}
         primary-color={isDarkTheme ? '#2196f3' : '#194b7d'}
         bg-color={isDarkTheme ? '#1b1b1d' : "#ffffff"}
-        style={{ height: "100%"}}
+        style={{ height: "100%" }}
         allow-search={false}
         render-style="view" // Controls how to api gets rendered
         layout="column"
@@ -121,12 +136,12 @@ export default function Rapidoc(props) {
           {getDescription(entity)}
           <h2>Authorization</h2>
           <p>
-            All requests must include the STATSIG-API-KEY field in the header. The value should be a Console API Key which can be created in 'Project Settings'-{">"}'API Keys' tab.  <br/>
+            All requests must include the STATSIG-API-KEY field in the header. The value should be a Console API Key which can be created in 'Project Settings'-{">"}'API Keys' tab.  <br />
             To use the 'try it' section on this page, enter your Console API into the box below.
           </p>
-          <hr/> 
+          <hr />
         </div>
-        <p slot="auth" style={{color:'#E05550'}}>
+        <p slot="auth" style={{ color: '#E05550' }}>
           Warning! You will be directly modifying the project connected to the api-key provided.
         </p>
         <p slot="auth">
@@ -139,8 +154,8 @@ export default function Rapidoc(props) {
 }
 
 
-function getDescription(entity){
-  switch(entity){
+function getDescription(entity) {
+  switch (entity) {
     case 'gates':
       return <>
         <p>A feature <a href="../feature-gates/working-with">gate</a> is a mechanism for teams to configure what system behavior is visible to users without changing application code. This page describes how gates can be created and modified through the Console API.</p>
@@ -152,7 +167,7 @@ function getDescription(entity){
           <li>Update properties of a gate</li>
           <li>Delete a gate</li>
           <li>Update gate overrides</li>
-        </ul>  
+        </ul>
       </>
     case 'segments':
       return <>
@@ -178,7 +193,7 @@ function getDescription(entity){
           <li>Read data from existing dynamic configs</li>
           <li>Update properties of a dynamic config</li>
           <li>Delete a dynamic config</li>
-        </ul> 
+        </ul>
       </>
     case 'experiments':
       return <>
@@ -221,7 +236,7 @@ function getDescription(entity){
           <li>List experiments in a Layer</li>
           <li>Update properties of a Layer</li>
           <li>Delete a Layer</li>
-        </ul> 
+        </ul>
       </>
     case 'autotunes':
       return <>
@@ -255,9 +270,11 @@ function getDescription(entity){
         <p>Statsig combines data from any of your existing data sources to give you a complete view of your product <a href="../metrics">Metrics</a> as well as the impact new features and experiments have on these metrics. </p>
         <h2>Metric API functions</h2>
         <ul>
+          <li>Create metric</li>
           <li>Get metric values</li>
           <li>List metrics in the Statsig project</li>
           <li>Update properties of a metric</li>
+          <li>Delete metric</li>
         </ul>
       </>
     case 'audit-logs':
@@ -272,10 +289,20 @@ function getDescription(entity){
       return <>
         <p>With data reports we strive for a 10am (PST) deadline but there's always a possibility we land late. For such cases, fallbacks should be implemented with this API.</p>
       </>
-      
+
+    case 'target-apps':
+      return <>
+        <p>Target Apps are used to group users across multiple applications. This is useful when you want to run an experiment or feature flag across multiple applications.</p>
+        <h2>Target App API functions</h2>
+        <ul>
+          <li>List existing target app</li>
+          <li>Bulk assign configs selected target apps</li>
+        </ul>
+      </>
+
     case 'all-endpoints':
-    return <>
-      <p>This page lists out all Console API endpoints currently available.</p>
-    </>
+      return <>
+        <p>This page lists out all Console API endpoints currently available.</p>
+      </>
   }
 }
