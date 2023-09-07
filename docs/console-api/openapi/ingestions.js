@@ -282,30 +282,6 @@ module.exports = {
             "in": "query",
             "name": "endDate",
             "description": "End date for your query"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "ingestion_source",
-            "description": "Filter for selected ingestion sources"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "ingestion_dataset",
-            "description": "Filter for selected datasets"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "status",
-            "description": "Filter for selected status"
           }
         ],
         "requestBody": {
