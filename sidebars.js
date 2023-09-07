@@ -39,7 +39,7 @@ module.exports = {
             "guides/landing-page-experiments/interpreting",
             "guides/landing-page-experiments/layers",
             "guides/landing-page-experiments/webflow",
-          ]
+          ],
         },
         "guides/sendgrid-email-abtest",
         "guides/customer-io-email-abtest",
@@ -327,6 +327,7 @@ module.exports = {
         "server/erlangSDK",
         "server/rustSDK",
         "server/cppSDK",
+        "server/deprecation-notices",
       ],
     },
     "http-api",
