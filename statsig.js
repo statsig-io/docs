@@ -78,6 +78,9 @@ export default (function () {
         // will no-op if already initialized
         window.statsig.initializeAsync("client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps", { environment: { tier: window.statsigTier } }).then(() => {
           window.statsig.getExperiment({}, "a_a_test");
+
+          const layer = window.statsig.getLayer({}, "master_layer");
+          console.log(layer.get("title", "code_default"));
         }).catch(e => {
           console.error(e);
         });
