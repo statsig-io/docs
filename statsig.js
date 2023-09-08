@@ -36,11 +36,11 @@ export default (function () {
         )
           .then(() => {
             const delta = performance.now() - start;
-            window.statsig.logEvent('cloud_cdn_latency', delta);
+            window.statsig.logEvent({}, 'cloud_cdn_latency', delta);
           })
           .catch((e) => {
             const delta = performance.now() - start;
-            window.statsig.logEvent('cloud_cdn_latency', delta, {
+            window.statsig.logEvent({}, 'cloud_cdn_latency', delta, {
               error: e.message,
             });
           });
@@ -50,11 +50,11 @@ export default (function () {
         )
           .then(() => {
             const delta = performance.now() - start;
-            window.statsig.logEvent('cloudflare_cdn_latency', delta);
+            window.statsig.logEvent({}, 'cloudflare_cdn_latency', delta);
           })
           .catch((e) => {
             const delta = performance.now() - start;
-            window.statsig.logEvent('cloudflare_cdn_latency', delta, {
+            window.statsig.logEvent({}, 'cloudflare_cdn_latency', delta, {
               error: e.message,
             });
           });
@@ -64,11 +64,11 @@ export default (function () {
         )
           .then(() => {
             const delta = performance.now() - start;
-            window.statsig.logEvent('cloudflare_worker_latency', delta);
+            window.statsig.logEvent({}, 'cloudflare_worker_latency', delta);
           })
           .catch((e) => {
             const delta = performance.now() - start;
-            window.statsig.logEvent('cloudflare_worker_latency', delta, {
+            window.statsig.logEvent({}, 'cloudflare_worker_latency', delta, {
               error: e.message,
             });
           });
