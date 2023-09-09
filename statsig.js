@@ -46,7 +46,7 @@ export default (function () {
           });
         start = performance.now();
         await fetch(
-          'https://cache.statsigcdn.com/v1/download_config_specs?k=client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps', {cache: "reload"}
+          'https://api.statsigcdn.com/v1/download_config_specs?k=client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps', {cache: "reload"}
         )
           .then(() => {
             const delta = performance.now() - start;
