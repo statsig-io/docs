@@ -1,16 +1,36 @@
 `Statsig.start()` takes an optional parameter `options` in addition to `sdkKey` and `user` that you can provide to customize the Statsig client. Here are the current options and we are always adding more to the list:
 
-1. **initTimeout**: double, default 3.0
+- **initTimeout**: Double, default `3.0`
    - used to decide how long the Statsig client waits for the initial network request to respond before calling the completion block. The Statsig client will return either cached values (if any) or default values if checkGate/getConfig/getExperiment is called before the initial network request completes.
    - If you always want to wait for the latest values fetched from Statsig server, you should set this to 0 so we do not timeout the network request.
-2. **disableCurrentVCLogging**: boolean, default false
+
+-  **disableCurrentVCLogging**: Bool, default `false`
    - by default, any custom event your application logs with `Statsig.logEvent()` includes the current root View Controller. This is so we can generate user journey funnels for your users. You can set this parameter to true to disable this behavior.
-3. **environment**: StatsigEnvironment, default nil
+
+-  **environment**: StatsigEnvironment, default `nil`
    - StatsigEnvironment is a class for you to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
    - e.g. passing in a value of `StatsigEnvironment(tier: .Staging)` will allow your users to pass any condition that pass for the staging environment tier, and fail any condition that only passes for other environment tiers.
-4. **enableAutoValueUpdate**: boolean, default false
+
+-  **enableAutoValueUpdate**: Bool, default `false`
    - by default, feature values for a user is fetched once during `Statsig.start` and don't change throughout the session. Setting this value to true will turn on the feature for Statsig to periodically fetch updated values for the current user.
-5. **overrideStableID**: string?, default null
-   - overrides the stableID in the SDK that is set for the user.
-6. **disableCurrentVCLogging**: bool, default false
-   - By default we log the name of the ViewController the user is currently in with events you log to Statsig. Set this to true to disable the behavior.
+
+-  **overrideStableID**: String, default `nil`
+   - Overrides the auto generated StableID that is set for the device.
+
+-  **enableCacheByFile**: Bool, default `false`
+   - Use file caching instead of UserDefaults. Useful if you are running into size limits with UserDefaults (ie tvOS).
+
+-  **initializeValues**: [String: Any], default `nil`
+   - Provide a Dictionary representing the "initiailize response" required  to synchronously initialize the SDK.
+     This value can be obtained from a Statsig server SDK.
+
+-  **disableDiagnostics**: Bool, default `false`
+   - Prevent the SDK from sending useful debug information to Statsig.
+
+-  **disableHashing**: Bool, default `false`
+   - When disabled, the SDK will not hash gate/config/experiment names, instead they will be readable as plain text.
+   - Note: This requires special authorization from Statsig. Reach out to us if you are interested in this feature.
+
+-  **shutdownOnBackground**: Bool, default `true`
+   - The SDK automatically shuts down when an app is put into the background.
+     If you need to use the SDK while your app is backgrounded, set this to false.
