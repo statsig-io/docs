@@ -81,7 +81,7 @@ module.exports = {
             // "statsig-warehouse-native/analysis-tools/settings",
             "statsig-warehouse-native/analysis-tools/data-privacy",
             "statsig-warehouse-native/analysis-tools/pipeline-overview",
-            "statsig-warehouse-native/analysis-tools/data-modelling",
+            "statsig-warehouse-native/guides/best-practices",
           ],
         },
 
