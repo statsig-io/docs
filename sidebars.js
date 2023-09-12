@@ -334,6 +334,7 @@ module.exports = {
         "server/erlangSDK",
         "server/rustSDK",
         "server/cppSDK",
+        "server/deprecation-notices",
       ],
     },
     "http-api",
