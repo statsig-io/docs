@@ -7,9 +7,9 @@ slug: /metrics/create
 
 To create custom metrics, navigate to **Metrics** from the left-hand navigation panel, then to the **Metrics Catalog** tab. Tap on the **Create** button. 
 
-![Screen Shot 2022-06-07 at 1 02 48 PM](https://user-images.githubusercontent.com/101903926/172471990-b0a0c3a8-f017-4166-9095-6a981af7cc87.png)
+![Screen Shot 2023-09-12 at 12 53 05 PM](https://github.com/statsig-io/docs/assets/101903926/4148f4b8-f9e4-4a37-98df-35663650d76f)
 
-Statsig supports four types of custom metrics:
+Statsig supports six types of custom metrics:
 
 | Metric Type | Description | Examples |
 |-------------|-----------------------|---------|
@@ -17,6 +17,9 @@ Statsig supports four types of custom metrics:
 | User Count |  **Number of unique users** that trigger events filtered by the _value_ and _metadata_ of an event type| **Active Users** based on their views of a product category |
 | Aggregation       | **Sum or Average** of the _value_ or _metadata_ property of an event type  | **Total Revenue** |
 | Ratio  | **Rates** (e.g. cart conversion rate, purchase rate),  **Normalized Values** (e.g. sessions per user, items per cart) | **Cart Conversion Rate**, **Sessions per User** |
+| Funnel  | **Funnels**- funnel of multiple events with conversion tracking | **Sign-up Funnel**, **Checkout Funnel** |
+| Pre-computed  | **Pre-computed Metric**- calculation on top of a pre-computed metric| Can be a manipulation of any ingested metric|
+
 
 Statsig computes custom metrics on a per day basis for your **Metrics** dashboard, and rolled up for the duration of the experiment in your **Pulse Results** delivered with your Feature Gates and Experiments.  After you create a custom metric, it will not populate until the next day (and will not backfill to previous days). Statsig will only calculate it moving forward from the creation date.
 
