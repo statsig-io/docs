@@ -238,6 +238,7 @@ securityadmin
 sig
 signalling
 signup
+signups
 sql
 srm
 sso
@@ -248,6 +249,7 @@ stringified
 subdimension
 suboptimal
 terraform
+Timeframes
 tf
 th
 timeseries
