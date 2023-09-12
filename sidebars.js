@@ -67,7 +67,14 @@ module.exports = {
             "statsig-warehouse-native/guides/sdks",
           ],
         },
-        "statsig-warehouse-native/native-vs-cloud",
+        {
+          Features: [
+            "statsig-warehouse-native/native-vs-cloud",
+            "statsig-warehouse-native/features/funnel-metrics",
+            "statsig-warehouse-native/features/cohort-metrics",
+            "statsig-warehouse-native/features/id-resolution",
+          ],
+        },
         {
           "Data Overview": [
             // "statsig-warehouse-native/analysis-tools/pulse",
@@ -350,6 +357,7 @@ module.exports = {
         "console-api/audit-logs",
         "console-api/autotunes",
         "console-api/target-apps",
+        "console-api/ingestions",
         {
           Reports: [
             "console-api/daily-reports",

@@ -17,6 +17,7 @@ CSV
 CSVs
 CTA
 CUPED
+customizable
 Changelog
 CLI
 CloudFront
@@ -29,7 +30,15 @@ DNS
 Databricks
 Datadog
 Dev
+deduplication
+Deduplication
+Deduplicate
+sessionID
+deduplicate
+Deduplicating
+deduplicating
 ETLs
+Ecommerce
 Fastly
 Fivetran
 GDPR
@@ -229,6 +238,7 @@ securityadmin
 sig
 signalling
 signup
+signups
 sql
 srm
 sso
@@ -239,6 +249,7 @@ stringified
 subdimension
 suboptimal
 terraform
+Timeframes
 tf
 th
 timeseries
