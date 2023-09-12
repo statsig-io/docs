@@ -59,7 +59,7 @@ If cost is a high concern, being judicious about which results you schedule vs. 
 
 ### Utilize Metric Level Reloads
 
-Statsig offers Metric-level reloads; this allows you to add a new metric to an experiment and get its entire history, or restate a single metric after its definition has changed. This is signficantly cheaper than a full reload for experiments with many metrics, and is an easy way to check guardrails or analyze follow-up questions post-hoc.
+Statsig offers Metric-level reloads; this allows you to add a new metric to an experiment and get its entire history, or restate a single metric after its definition has changed. This is cheaper than a full reload for experiments with many metrics, and is an easy way to check guardrails or analyze follow-up questions post-hoc.
 
 ### Use Statsig's Macros
 
