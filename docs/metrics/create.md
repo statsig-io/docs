@@ -21,6 +21,11 @@ Statsig supports five types of custom metrics:
 
 Statsig computes custom metrics on a per day basis for your **Metrics** dashboard, and rolled up for the duration of the experiment in your **Pulse Results** delivered with your Feature Gates and Experiments.  After you create a custom metric, it will not populate until the next day (and will not backfill to previous days). Statsig will only calculate it moving forward from the creation date.
 
+When creating your custom metric, you can preview the historical values of a given custom metric at the bottom of the page. To view metric preview, tap **View Output Preview** to see a 7-day history of your new custom metric's value in both chart and table form. 
+
+![Screen Shot 2023-09-12 at 1 39 16 PM](https://github.com/statsig-io/docs/assets/101903926/9a5cee6f-40e1-4d7c-8ef8-28163f15ff2b)
+
+
 ## Examples
 
 ### 1. Event Count Metrics
