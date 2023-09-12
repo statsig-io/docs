@@ -109,7 +109,7 @@ If this is not possible, it's a good idea to:
 - Schedule your Statsig runs after your main runs - this also ensures the data in your experiment analysis is fresh
 - Use API triggers to launch Statsig analyses after the main run is finished
 
-# Debugging
+## Debugging
 
 Statsig shows you all the SQL being run, and any errors that occur. Generally these are caused by changing underlying tables or Metric Sources, causing a metric query to fail. Here's some best practices for debugging Statsig Queries.
 
