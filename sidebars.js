@@ -39,7 +39,7 @@ module.exports = {
             "guides/landing-page-experiments/interpreting",
             "guides/landing-page-experiments/layers",
             "guides/landing-page-experiments/webflow",
-          ]
+          ],
         },
         "guides/sendgrid-email-abtest",
         "guides/customer-io-email-abtest",
@@ -67,7 +67,14 @@ module.exports = {
             "statsig-warehouse-native/guides/sdks",
           ],
         },
-        "statsig-warehouse-native/native-vs-cloud",
+        {
+          Features: [
+            "statsig-warehouse-native/native-vs-cloud",
+            "statsig-warehouse-native/features/funnel-metrics",
+            "statsig-warehouse-native/features/cohort-metrics",
+            "statsig-warehouse-native/features/id-resolution",
+          ],
+        },
         {
           "Data Overview": [
             // "statsig-warehouse-native/analysis-tools/pulse",
