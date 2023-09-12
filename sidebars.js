@@ -71,6 +71,7 @@ module.exports = {
           Features: [
             "statsig-warehouse-native/native-vs-cloud",
             "statsig-warehouse-native/features/funnel-metrics",
+            "statsig-warehouse-native/features/power-analysis",
             "statsig-warehouse-native/features/cohort-metrics",
             "statsig-warehouse-native/features/id-resolution",
           ],
@@ -81,7 +82,7 @@ module.exports = {
             // "statsig-warehouse-native/analysis-tools/settings",
             "statsig-warehouse-native/analysis-tools/data-privacy",
             "statsig-warehouse-native/analysis-tools/pipeline-overview",
-            "statsig-warehouse-native/analysis-tools/data-modelling",
+            "statsig-warehouse-native/guides/best-practices",
           ],
         },
 
