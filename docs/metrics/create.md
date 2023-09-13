@@ -23,8 +23,7 @@ Statsig computes custom metrics on a per day basis for your **Metrics** dashboar
 
 When creating your custom metric, you can preview a given custom metric's value at the bottom of the page. To view metric preview, tap **View Output Preview** to see what your metric would have looked like based on its components’ values over the last 7 days, in both chart and table form. 
 
-![Screen Shot 2023-09-12 at 1 39 16 PM](https://github.com/statsig-io/docs/assets/101903926/9a5cee6f-40e1-4d7c-8ef8-28163f15ff2b)
-
+![Screen Shot 2023-09-13 at 10 30 58 AM](https://github.com/statsig-io/docs/assets/101903926/0869e1bf-8fea-407e-8a5f-8b97860b3867)
 
 ## Examples
 
