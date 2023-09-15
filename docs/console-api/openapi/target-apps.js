@@ -1,7 +1,7 @@
 module.exports = {
   "openapi": "3.0.0",
   "x-stoplight": {
-    "id": "4m4nd4s1y1y97"
+    "id": "j1lrgeicxt78f"
   },
   "info": {
     "title": "https://statsigapi.net/console/v1",
@@ -25,7 +25,7 @@ module.exports = {
       "TargetAppListItem": {
         "title": "TargetAppListItem",
         "x-stoplight": {
-          "id": "40viauwuhgomo"
+          "id": "21727a47q5vc6"
         },
         "type": "object",
         "x-examples": {
@@ -37,7 +37,7 @@ module.exports = {
           "name": {
             "type": "string",
             "x-stoplight": {
-              "id": "tm0d08vsepf34"
+              "id": "is2bm9pmi5o54"
             },
             "description": "Name of the target app"
           }
@@ -53,35 +53,9 @@ module.exports = {
       "STATSIG-API-KEY": []
     }
   ],
-  "tags": [
-    {
-      "name": "gates"
-    },
-    {
-      "name": "experiments"
-    },
-    {
-      "name": "holdouts"
-    },
-    {
-      "name": "dynamic config"
-    },
-    {
-      "name": "segments"
-    },
-    {
-      "name": "autotunes"
-    },
-    {
-      "name": "events"
-    }
-  ],
   "paths": {
     "/target_app": {
       "get": {
-        "tags": [
-          "Holdouts"
-        ],
         "summary": "List Target Apps",
         "responses": {
           "200": {
@@ -243,8 +217,11 @@ module.exports = {
           }
         },
         "x-stoplight": {
-          "id": "ythd9w80evaps"
-        }
+          "id": "1bw1w9pyqk809"
+        },
+        "tags": [
+          "Target Apps"
+        ]
       },
       "post": {
         "tags": [
@@ -385,12 +362,12 @@ module.exports = {
                   "targetApps": {
                     "type": "array",
                     "x-stoplight": {
-                      "id": "0ind0w4hh7i6k"
+                      "id": "4g7yynkua72lq"
                     },
                     "description": "List of target apps to be assigned to following configs",
                     "items": {
                       "x-stoplight": {
-                        "id": "bbb6mr6y2592t"
+                        "id": "wo9qazrx33qnk"
                       },
                       "type": "string"
                     }
@@ -398,12 +375,12 @@ module.exports = {
                   "gates": {
                     "type": "array",
                     "x-stoplight": {
-                      "id": "djjlqf72epy4i"
+                      "id": "s1dnlrs3krdi4"
                     },
                     "description": "Gate IDs assigned new target appIDs ",
                     "items": {
                       "x-stoplight": {
-                        "id": "16huqscrgx5nu"
+                        "id": "ty2jluwfcgl4k"
                       },
                       "type": "string"
                     }
@@ -411,12 +388,12 @@ module.exports = {
                   "experiments": {
                     "type": "array",
                     "x-stoplight": {
-                      "id": "ro3t2vwgueval"
+                      "id": "4h0j040vqis6q"
                     },
                     "description": "Experiments IDs assigned new target appIDs ",
                     "items": {
                       "x-stoplight": {
-                        "id": "ezy9eo9ji31xc"
+                        "id": "qesw17qmqkgfo"
                       },
                       "type": "string"
                     }
@@ -446,11 +423,16 @@ module.exports = {
           }
         },
         "x-stoplight": {
-          "id": "dtobypdbs8d06"
+          "id": "9pi33tt755h2t"
         },
         "description": "Add a selected target apps to multiple configs at once"
       },
       "parameters": []
     }
-  }
+  },
+  "tags": [
+    {
+      "name": "Target Apps"
+    }
+  ]
 }
