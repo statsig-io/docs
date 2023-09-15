@@ -1,5 +1,5 @@
 ```typescript
-import type { Layer, DynamicConfig } from "statsig-js";
+import type { Layer, DynamicConfig } from "statsig-js-local-eval";
 
 // Values via getLayer
 
@@ -14,6 +14,7 @@ const titleExperiment: DynamicConfig = Statsig.getExperiment(
   "new_user_promo_title"
 );
 const priceExperiment: DynamicConfig = Statsig.getExperiment(
+  {email: "test@statsig.com"},
   "new_user_promo_price"
 );
 
