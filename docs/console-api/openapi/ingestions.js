@@ -21,32 +21,6 @@ module.exports = {
       }
     },
     "requestBodies": {},
-    "schemas": {
-      "TargetAppListItem": {
-        "title": "TargetAppListItem",
-        "x-stoplight": {
-          "id": "rs118igbtzxng"
-        },
-        "type": "object",
-        "x-examples": {
-          "Example 2": {
-            "name": "My target app"
-          }
-        },
-        "properties": {
-          "name": {
-            "type": "string",
-            "x-stoplight": {
-              "id": "tm0d08vsepf34"
-            },
-            "description": "Name of the target app"
-          }
-        },
-        "required": [
-          "name"
-        ]
-      }
-    }
   },
   "security": [
     {
@@ -55,34 +29,13 @@ module.exports = {
   ],
   "tags": [
     {
-      "name": "gates"
-    },
-    {
-      "name": "experiments"
-    },
-    {
-      "name": "holdouts"
-    },
-    {
-      "name": "dynamic config"
-    },
-    {
-      "name": "segments"
-    },
-    {
-      "name": "autotunes"
-    },
-    {
-      "name": "events"
+      "name": "ingestion"
     }
   ],
   "paths": {
     "/ingestion/status": {
       "get": {
-        "tags": [
-          "Holdouts"
-        ],
-        "summary": "List Target Apps",
+        "summary": "List Ingestions Status",
         "responses": {
           "200": {
             "description": "OK",
@@ -286,7 +239,10 @@ module.exports = {
         ],
         "requestBody": {
           "content": {}
-        }
+        },
+        "tags": [
+          "Ingestions"
+        ]
       },
       "parameters": []
     }
