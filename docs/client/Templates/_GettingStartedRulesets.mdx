@@ -23,6 +23,12 @@ You could skip this for now, but you will need an SDK key and some gates/experim
 
 <Gap />
 
+### Installation
+
+<div>{props.install}</div>
+
+<Gap />
+
 ### Initialize the SDK
 
 Initialize the SDK using a Client SDK key from the ["API Keys" tab on the Statsig console](https://console.statsig.com/api_keys).  When creating the key, or using an existing key,
@@ -40,21 +46,6 @@ When creating a new client key, select "Allow Download Config Specs"
 :::info
 Do NOT embed your Server Secret Key in client side applications.
 :::
-
-In addition to the SDK key, you should also pass in a [StatsigUser](#statsig-user) for feature gate targeting and experimentation grouping purposes.
-
-<!-- The terrible formatting below is to ensure the markdown works -->
-
-<>
-{
-  props.shouldSkipStatsigOptions !== true && <div>
-
-The 3rd parameter is optional and allows you to pass in a [StatsigOptions](#statsig-options) to customize the SDK.
-
-  </div>
-}
-
-</>
 
 <div>{props.initialize}</div>
 
