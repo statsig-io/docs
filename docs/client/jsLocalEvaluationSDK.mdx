@@ -24,6 +24,7 @@ import {
 
 import AdditionalWelcome from "./jslocal/_additionalWelcome.mdx";
 import Initialize from "./jslocal/_initialize.mdx";
+import Install from "./jslocal/_install.mdx";
 import CheckGate from "./jslocal/_checkGate.mdx";
 import GetConfig from "./jslocal/_getConfig.mdx";
 import GetExperiment from "./jslocal/_getExperiment.mdx";
@@ -32,6 +33,7 @@ import MoreFAQs from "./jslocal/_faqs.mdx";
 import Options from "./jslocal/_options.mdx";
 import ShutdownSnippet from "./jslocal/_shutdown.mdx";
 import { GetStableID, OverrideStableID } from "./jslocal/_stableID.mdx";
+import * as UsingPersistentValues from "./jslocal/_usingPersistentValues.mdx";
 
 export const Result = SDKDocsBuilder(
   {},
@@ -41,6 +43,7 @@ export const Result = SDKDocsBuilder(
       {
         additionalWelcomeMessage: <AdditionalWelcome />,
         sdkType: "JS Local Evaluation",
+        install: <Install />,
         initialize: <Initialize />,
       },
     ],
@@ -53,6 +56,7 @@ export const Result = SDKDocsBuilder(
         logEvent: <LogEvent />,
       },
     ],
+
     [StatsigUser, {excludeMentionToDirectUpdateUser: true}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
@@ -60,6 +64,7 @@ export const Result = SDKDocsBuilder(
       StableID,
       { getSnippet: <GetStableID />, overrideSnippet: <OverrideStableID /> },
     ],
+    [UsingPersistentValues, { }],
     [FAQ, { faqs: <MoreFAQs /> }],
   ],
   toc
