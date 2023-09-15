@@ -27,6 +27,24 @@ Statsig lets you run your pipeline in a few different ways:
 - An **Incremental Refresh** appends new data to your experiment data. This reduces the cost of running scheduled updates to your results
 - A **Metric** refresh allows you to update a specific metric in case you changed a definition, or want to add new metrics to your analysis
 
+## Artifacts and Entity Relationships
+
+The following tables will be generated and stored in your warehouse per-experiment. You have full access to these and some customers use them for custom visualizations or modelling.
+
+| Table                                                        | Description                                                                                                                     | Notes                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| <experiment\>\_first_exposures                               | Deduplicated and stitched (for experiments with ID resolution) first exposure events                                            | Useful for ad-hoc analysis                                 |
+| <experiment\>\_exposures_summary                             | Timeseries of exposures per group for display in Pulse                                                                          |                                                            |
+| <experiment\>\_user_level_aggregations                       | User-day level metric aggregations table                                                                                        | Useful for ad-hoc analysis                                 |
+| <experiment\>\_user_level_aggregations_for_pre_exposure_data | User-level pre-experiment aggregations for regression adjustment/CUPED                                                          |                                                            |
+| <experiment\>\_funnel_events                                 | Staging table for running funnel analysis                                                                                       |                                                            |
+| windowed_metrics\_<experiment\>                              | Staging table for generating running totals when restating Pulse                                                                |                                                            |
+| <experiment\>\_results\_<rollup\>                            | Outputs of Statistical Analysis for different rollups (e.g. daily, days-since-exposure, cumulative, 7-day). Exported to Statsig | Pulse inputs - useful for replicating Statistical analysis |
+
+The high level relationships/contents of these tables are represented below - refer to the Main Steps image below for scheduling details.
+
+![WHN ER Diagram](https://github.com/statsig-io/docs/assets/102695539/120eb9ed-fe35-4a66-8acd-cbcd819a2bdf)
+
 ## Other Jobs
 
 Alongside and inside this main flow, Statsig will also:
