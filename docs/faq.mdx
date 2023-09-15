@@ -88,6 +88,16 @@ See the question above for what counts as a billable event. Some tools available
 
 4. Look for gates that are 0% or 100% pass. These can be launched (always return Pass) or disabled (always return Fail) to stop generating billable events. [More information](https://statsig.com/updates#2/2/2023). With experiments, filter to experiments with Status = In Progress and Created < [day-45] to find long running experiments to make sure these are intentional and not just forgotten.
 
+## How does bucketing within the Statsig SDKs work?
+At a high level:
+Salt Creation: For each experiment or feature gate, a unique salt is generated.
+Hashing: The chosen unit (e.g., userId, organizationId, etc.) is passed through a hashing function along with the unique salt which produces a big int.
+Bucket Assignment: The big int is subjected to a modulus operation with the number 10000. This results in a value between 0 and 9999. (Layers use 1000)
+Determination: The result from step 3 represents the specific bucket (out of the 10000 possible) that the unit is assigned to.
+This ensures a randomized yet deterministic bucketing of units across different experiments or feature gates, while the unique salt ensures that the same unit can be assigned to different buckets in different experiments.
+
+
+
 ## What domains do I need to whitelist for Content Security Policy (CSP)?  
 If your web app configures strict Content Security Policy (CSP), adjust the policy to whitelist these two Statsig domains 
 - https://featuregates.org (SDKs initialize and download config from here) and
