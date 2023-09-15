@@ -26,7 +26,7 @@ If there's any confusion, or if a feature is critical for your evaluation, we're
 |                                     | BF Correction                             | Identical                                          |
 |                                     | Power Analysis                            | Identical [Planned Extensions to WHN Capabilities] |
 |                                     | Custom Queries                            | Identical                                          |
-|                                     | Guardrail Metric Alerts                   | Cloud-only                                         |
+|                                     | Guardrail Metric Alerts                   | Available in WHN, based on your pipeline cadence   |
 |                                     | Export to CSV                             | Identical                                          |
 |                                     | Share Links                               | Identical                                          |
 |                                     | All Metrics Tab                           | N/A for WHN                                        |
