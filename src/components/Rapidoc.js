@@ -301,6 +301,16 @@ function getDescription(entity) {
         </ul>
       </>
 
+    case 'ingestions': 
+      return <>
+        <p> Read more about ingesting data from your data warehouse <a href="https://docs.statsig.com/console-api/ingestions">here</a>
+        </p>
+        <h2>Ingestion API functions</h2>
+        <ul>
+          <li>Check the status history of ingestions sent to Statsig</li>
+        </ul>
+      </>
+
     case 'all-endpoints':
       return <>
         <p>This page lists out all Console API endpoints currently available.</p>
