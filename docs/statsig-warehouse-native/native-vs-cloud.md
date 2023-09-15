@@ -39,7 +39,7 @@ If there's any confusion, or if a feature is critical for your evaluation, we're
 |                                     | Experiment Parameters                     | Not relevant w/o SDK                               |
 |                                     | SRM Checks                                | Identical                                          |
 |                                     | View SQL                                  | WHN-only                                           |
-| Layers                              | Coming to WHN 9/1                         | Coming to WHN                                      |
+| Layers                              | All                                       | Identical                                          |
 | Insights                            | Relative Impact                           | Coming to WHN                                      |
 |                                     | Topline Impact                            | Coming to WHN                                      |
 |                                     | Active feature analysis                   | Coming to WHN                                      |
