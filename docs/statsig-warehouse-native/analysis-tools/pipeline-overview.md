@@ -29,7 +29,7 @@ Statsig lets you run your pipeline in a few different ways:
 
 ## Artifacts and Entity Relationships
 
-The following tables will be generated and stored in your warehouse per-experiment. You have full access to these and some customers use them for custom visualizations or modelling.
+The following tables will be generated and stored in your warehouse per-experiment. You have full access to these data sources for your own analysis, models, or visualizations.
 
 | Table                                                        | Description                                                                                                                     | Notes                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
