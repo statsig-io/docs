@@ -306,6 +306,7 @@ module.exports = {
         "client/rokuSDK",
         "client/unitySDK",
         "client/dartSDK",
+        "client/jsLocalEvaluationSDK",
       ],
     },
     {
