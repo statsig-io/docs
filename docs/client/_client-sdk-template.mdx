@@ -81,8 +81,6 @@ You should provide a StatsigUser object whenever possible when initializing the 
 
 Besides `userID`, we also have `email`, `ip`, `userAgent`, `country`, `locale` and `appVersion` as top-level fields on StatsigUser. In addition, you can pass any key-value pairs in an object/dictionary to the `custom` field and be able to create targeting based on them.
 
-Once the user logs in or has an update/changed, make sure to call `updateUser` with the updated `userID` and/or any other updated user attributes:
-
 <div>{props.updateUser}</div>
 
 #### Have sensitive user PII data that should not be logged? {#private-attributes}

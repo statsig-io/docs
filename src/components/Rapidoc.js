@@ -17,7 +17,8 @@ const supportedEntities = [
   'audit-logs', 
   'reports', 
   'usage-billing', 
-  'target-apps'
+  'target-apps',
+  'ingestions',
 ];
 
 function updateCodeSnippets(data, entity) {
@@ -297,6 +298,16 @@ function getDescription(entity) {
         <ul>
           <li>List existing target app</li>
           <li>Bulk assign configs selected target apps</li>
+        </ul>
+      </>
+
+    case 'ingestions': 
+      return <>
+        <p> Read more about ingesting data from your data warehouse <a href="https://docs.statsig.com/console-api/ingestions">here</a>
+        </p>
+        <h2>Ingestion API functions</h2>
+        <ul>
+          <li>Check the status history of ingestions sent to Statsig</li>
         </ul>
       </>
 

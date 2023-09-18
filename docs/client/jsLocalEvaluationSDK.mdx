@@ -1,0 +1,72 @@
+---
+sidebar_label: JS Local Evaluation
+title: JavaScript Local Evaluation
+---
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStartedRulesets,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  PrefetchUsers,
+  Shutdown,
+  LocalOverrides,
+  StableID,
+  FetchMode,
+} from "./Templates/index.mdx";
+
+import AdditionalWelcome from "./jslocal/_additionalWelcome.mdx";
+import Initialize from "./jslocal/_initialize.mdx";
+import Install from "./jslocal/_install.mdx";
+import CheckGate from "./jslocal/_checkGate.mdx";
+import GetConfig from "./jslocal/_getConfig.mdx";
+import GetExperiment from "./jslocal/_getExperiment.mdx";
+import LogEvent from "./jslocal/_logEvent.mdx";
+import MoreFAQs from "./jslocal/_faqs.mdx";
+import Options from "./jslocal/_options.mdx";
+import ShutdownSnippet from "./jslocal/_shutdown.mdx";
+import { GetStableID, OverrideStableID } from "./jslocal/_stableID.mdx";
+import * as UsingPersistentValues from "./jslocal/_usingPersistentValues.mdx";
+
+export const Result = SDKDocsBuilder(
+  {},
+  [
+    [
+      GettingStartedRulesets,
+      {
+        additionalWelcomeMessage: <AdditionalWelcome />,
+        sdkType: "JS Local Evaluation",
+        install: <Install />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+      },
+    ],
+    [StatsigUser, {excludeMentionToDirectUpdateUser: true}],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [
+      StableID,
+      { getSnippet: <GetStableID />, overrideSnippet: <OverrideStableID /> },
+    ],
+    [UsingPersistentValues, { }],
+    [FAQ, { faqs: <MoreFAQs /> }],
+  ],
+  toc
+);
+
+<>{Result}</>

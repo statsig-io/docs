@@ -1,0 +1,46 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="js-sdk-lang-choice"
+  defaultValue="ts"
+  values={[
+    {label: 'Async Initialization', value: 'ts'},
+    {label: 'Synchronous Initialization', value: 'js'},
+  ]}>
+
+  <TabItem value="ts">
+
+```typescript
+import Statsig from "statsig-js-local-eval";
+
+// initialize returns a promise which always resolves
+await Statsig.initializeAsync(
+  "client-sdk-key",
+  { environment: { tier: "staging" } } // optional, pass options here if needed
+);
+```
+
+  </TabItem>
+  <TabItem value="js">
+
+```html
+<script src="https://api.statsigcdn.com/v1/download_config_specs/client-key.js" />
+```
+
+NOTE: you may need to allow https://api.statsigcdn.com/ in your [Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
+
+```jsx
+import Statsig from "statsig-js-local-eval";
+
+// initialize returns a promise which always resolves
+Statsig.initialize(
+  "client-sdk-key",
+  { 
+    initializeValues: window.statsigConfigSpecs // set via the script above, or bring your own CDN for specs
+  }
+);
+```
+
+  </TabItem>
+</Tabs>
