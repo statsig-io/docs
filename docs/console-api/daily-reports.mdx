@@ -39,6 +39,7 @@ import Rapidoc from "../../src/components/Rapidoc"
 | rule_name               | string    | Rule name for gates; 'experiment' for experiments                                             |
 
 - Besides the exposure reports from the API access, we also offer data warehouse export to Snowflake for our enterprise customers. Currently, you need to contact our support team to set it up.
+- After the feature is turned on for you, it will be ready when our pipeline runs. Generally, you can expect it around the time you see cumulative exposures.
 - We commit to maintain the report format including column order and type, but we recommend that you use the column name and cast column type when parsing the file.
 
 ## Report Schema - type = pulse_daily
@@ -64,5 +65,7 @@ import Rapidoc from "../../src/components/Rapidoc"
 
 - New columns may be added in the future.
 - Exposures on the day when a decision is made are excluded from the report, as they are not part of the experiment.
+- Metric values are non-CUPED.
+- After the feature is turned on for you, it will be ready when our pipeline runs. Generally, you can expect it around the time you see pulse results.
 
 __Please note that the previous get_daily_reports endpoint has been deprecated. If you were using this endpoint, please migrate to the new version. However, you can find old docs [here](/console-api/daily-reports-deprecated)__
