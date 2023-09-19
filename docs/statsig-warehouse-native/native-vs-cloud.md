@@ -40,10 +40,10 @@ If there's any confusion, or if a feature is critical for your evaluation, we're
 |                                     | SRM Checks                                | Identical                                          |
 |                                     | View SQL                                  | WHN-only                                           |
 | Layers                              | All                                       | Identical                                          |
-| Insights                            | Relative Impact                           | Coming to WHN                                      |
+| Insights                            | Relative Impact                           | Identical                                          |
 |                                     | Topline Impact                            | Coming to WHN                                      |
-|                                     | Active feature analysis                   | Coming to WHN                                      |
-|                                     | Historic feature analysis                 | Coming to both                                     |
+|                                     | Active feature analysis                   | Identical                                          |
+|                                     | Historic feature analysis                 | Identical                                          |
 | Dynamic Config                      | All                                       | Identical                                          |
 | Dashboards                          | All                                       | Identical                                          |
 | Segments                            | All                                       | Identical                                          |
