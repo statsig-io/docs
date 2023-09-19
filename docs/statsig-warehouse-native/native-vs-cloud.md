@@ -65,5 +65,5 @@ If there's any confusion, or if a feature is critical for your evaluation, we're
 |                                     | Console API                               | Identical                                          |
 |                                     | Audit Log                                 | Identical                                          |
 |                                     | Audit Log API                             | Identical                                          |
-| Autotune                            | MAB                                       | Cloud only for now                                 |
+| Autotune                            | MAB                                       | Coming to WHN                                      |
 | Users Tab                           | Users tab                                 | Coming to WHN                                      |
