@@ -276,6 +276,8 @@ function getDescription(entity) {
           <li>List metrics in the Statsig project</li>
           <li>Update properties of a metric</li>
           <li>Delete metric</li>
+          <li>Create warehouse native metric source</li>
+          <li>Update warehouse native metric source</li>
         </ul>
       </>
     case 'audit-logs':
