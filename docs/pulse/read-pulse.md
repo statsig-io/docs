@@ -38,7 +38,7 @@ All of these are available in daily Pulse results, which will start showing in t
 
 #### Post-first Day Metric Lifts  
 
-<img width="1194" alt="Screen Shot 2023-09-20 at 11 35 05 AM" src="https://github.com/statsig-io/docs/assets/101903926/85fdc847-8d70-4215-a6ad-5a1f2d49c5e7">
+<img width="1194" alt="Screen Shot 2023-09-20 at 11 35 05 AM" src="https://github.com/statsig-io/docs/assets/101903926/85fdc847-8d70-4215-a6ad-5a1f2d49c5e7"/>
 
 The Pulse daily run calculates the difference between the comparable randomization groups (eg. test and control) across your company's suite of metrics, and applies a statistical test to the results. You can read more about Statsig's stats engine [here](https://docs.statsig.com/stats-engine). 
 
@@ -68,10 +68,10 @@ There are a few different views to see your Pulse metric lifts, namely:
 
 Cumulative results includes a detailed view on hover, where you can additionally view the raw statistics used in the Pulse metric lift calculations, as well as topline impact.
 
-<img width="1282" alt="Screen Shot 2023-09-20 at 11 35 16 AM" src="https://github.com/statsig-io/docs/assets/101903926/1509479e-b5c6-416f-8d2a-ac0672165dd1">
+<img width="1282" alt="Screen Shot 2023-09-20 at 11 35 16 AM" src="https://github.com/statsig-io/docs/assets/101903926/1509479e-b5c6-416f-8d2a-ac0672165dd1"/>
 
 
-<img width="1194" alt="Screen Shot 2023-09-20 at 11 35 35 AM" src="https://github.com/statsig-io/docs/assets/101903926/9cdb7294-c979-4e0d-b26c-e20c86794d2b">
+<img width="1194" alt="Screen Shot 2023-09-20 at 11 35 35 AM" src="https://github.com/statsig-io/docs/assets/101903926/9cdb7294-c979-4e0d-b26c-e20c86794d2b"/>
 
 
 ### Dimensions
