@@ -36,7 +36,7 @@ Statsig uses your SQL to connect to your source data. Here's some common issues:
     - Partition/Cluster Assignment Source tables by date, and then your experiment_id column so experiment-level queries can be scoped to just that experiment
     - Partition/Cluster Metric Source tables based on date, and then the fields you expect to use for filters
 
-These best practices are true across all warehouses, and especially significant for
+These best practices are generally true across all warehouses, especially as the datasets you use for experimentation scale.
 
 ### Materialize Tables/Views
 
