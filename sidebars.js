@@ -528,6 +528,7 @@ module.exports = {
       },
       items: [
         "infrastructure/statsig_ip_ranges",
+        "infrastructure/statsig_domains",
         "infrastructure/custom_proxy",
         "infrastructure/reliability-faq",
       ],
