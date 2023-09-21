@@ -14,6 +14,8 @@ The power analysis tool leverages the known mean and variance of a metric and th
 The Power Analysis Calculator can be accessed from the tools menu as well as the experiment setup page under **Advanced Settings**, as a tool to help set an accurate target duration. 
 
    ![image](https://user-images.githubusercontent.com/31516123/236296790-d7768b1a-13ca-4e55-9877-bdad607d6da4.png)
+
+To use the Power Analysis calculator: 
    
 1. Select the population used to determine the metric mean and variance and to estimate the number of exposures over time.
     - **Everyone**: Analysis is based on the entire user base.  
@@ -27,6 +29,11 @@ The Power Analysis Calculator can be accessed from the tools menu as well as the
 
 ![Screen Shot 2023-09-21 at 11 31 53 AM](https://github.com/statsig-io/docs/assets/101903926/464a611b-439a-450c-b50c-73f507468fb4)
 
+In addition to generating new Power Analysis calculations, you can view historical power analyses via the **Past Analyses** tab. You can see results for past analyses inline, as well as share the analysis and use the analysis as a starter for future analyses all via the "..." menu. 
+
+![Screen Shot 2023-09-21 at 12 42 51 PM](https://github.com/statsig-io/docs/assets/101903926/e19d9286-5ac6-4390-a33f-d3293afb7a45)
+
+
 ## Population Types
 
 The population selected directly impacts the inputs of the analysis (mean, variance, number of users).  To obtain reliable power analysis estimates, the metric values of the selected population should roughly match those of the users you'll be targeting in the experiment.  
@@ -39,7 +46,7 @@ Say we want to test a change in the checkout flow and we want to know our expect
 
 Thus, in cases when the experiment only includes a biased subset of users, it's possible the MDE and duration obtained by the power analysis won't be a good estimate. 
 
-One way to address this is to use data from a past experiment to estimate the power of a new, similar experiment (coming soon!).  In our example, if we had a prior experiment that was also targeting the checkout page, we could use it to get better estimates of traffic volumes and metrics for this part of the product.
+One way to address this is to use data from a past experiment to estimate the power of a new, similar experiment.  In our example, if we had a prior experiment that was also targeting the checkout page, we could use it to get better estimates of traffic volumes and metrics for this part of the product.
 
 ### Inputs by Population Type
 This is how the various inputs for the power analysis are obtained from the different population types:
@@ -48,7 +55,7 @@ This is how the various inputs for the power analysis are obtained from the diff
 |------------------|-------------------------|----------------|
 | Everyone         | Mean and variance across all users, estimated for 1, 2, 3, and 4 week rollups   | Total count of users seen in the past 1, 2, 3, and 4 weeks |
 | Targeting Gate   | Mean and variance for users that pass the targeting gate, computed for 1, 2, 3, 4 week rollups | Total users that passed the targeting gate after 1, 2, 3, 4 weeks |
-| Past Experiment (coming soon) | Cumulative mean and variance for the control group at 1, 2, 3, and 4 weeks | Total experiment exposures after 1, 2, 3, and 4 weeks, adjusted according to the past experiment's allocation and the desired allocation for the new experiment.
+| Past Experiment  | Cumulative mean and variance for the control group at 1, 2, 3, and 4 weeks | Total experiment exposures after 1, 2, 3, and 4 weeks, adjusted according to the past experiment's allocation and the desired allocation for the new experiment.
 
 ## Analysis Types
 
