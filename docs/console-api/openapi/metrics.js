@@ -1295,7 +1295,7 @@ module.exports = {
           },
           description: "",
         },
-        tags: ["Metric Source(Warehouse Native)"],
+        tags: ["Metric Source (Warehouse Native)"],
       },
     },
     "/metrics/metric_source/{name}": {
