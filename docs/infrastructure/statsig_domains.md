@@ -11,7 +11,7 @@ all of the domains below or select domains based on the features you use.
 
 ## Statsig API Services
 
-These domains are used by our SDKs to communicate with our backends for feature gates, dynamic configs and event logging. They are also used for other Statsig APIs, e.g. console APIs, integrations.
+These domains are used by our SDKs to communicate with our backend for feature gates, dynamic configs and event logging. They are also used for other Statsig APIs, e.g. console APIs, integrations.
 
 - `api.statsig.com`
 - `featuregates.org`
