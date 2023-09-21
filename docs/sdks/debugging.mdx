@@ -25,7 +25,7 @@ For client SDKs, these reasons for the value you are seeing can be:
 
 - `Network`: fetched at SDK initialization time from the network
 - `Bootstrap`: derived from bootstrapping the client SDK with a set of values
-- `InvalidBootstrap`: the set of values was for a different user than the SDK was initialized with
+- `InvalidBootstrap`: the set of values was for a different user than the SDK was initialized with (See [Fixing InvalidBootstrap](#fixing-invalidbootstrap))
 - `Cache`: loaded from the local storage cache for the current user, and a network result was not available
 - `Prefetch`: fetched from the `prefetchUsers` api (js-client only)
 - `Sticky`: persisted from a sticky evaluation previously
@@ -52,3 +52,36 @@ In this example, the project was last updated yesterday, and the SDK was initial
 and the SDK is still using that same set of definitions which it fetched from the network.  You can also see the SDK type and version associated with a given check.
 
 ![Screen Shot 2023-04-27 at 11 15 50 AM](https://user-images.githubusercontent.com/74584483/234955366-0e39adbf-c5a2-4a52-b9bb-ae0df9f15819.png)
+
+
+
+## Fixing InvalidBootstrap
+
+This can occur when you are [Bootstrapping](https://docs.statsig.com/search?q=Client+SDK+Bootstrapping) a Statsig Client SDK with your own prefetched or generated values. 
+The InvalidBootstrap reason is signally that the current user the Client SDK is operating against is not the same as the one 
+used to generate the bootstrap values.
+
+The following pseudo code highlights how this can occur:
+
+```js
+// Server Side
+
+userA = { userID: 'user-a' };
+bootstrapValues = Statsig.getClientInitializeResponse(userA);
+
+// Client Side
+
+bootstrapValues = fetchStatsigValuesFromMyServers(); // <- Network request that executes the above logic
+
+userB = { userID: 'user-b' }; // <- This is not the same User
+Statsig.initialize("client-key", userB, { initializeValues: bootstrapValues });
+```
+
+
+Users must also be a 1 to 1 match. The SDK will treat a user with slightly different values as a completely different user. 
+For example, the following two user objects would also trigger InvalidBootstrap even though they have the same UserID.
+
+```js
+userA = { userID: 'user-a' };
+userAExt = { userID: 'user-a', customIDs: { employeeID: 'employee-a' }};
+```
