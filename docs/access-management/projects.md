@@ -20,6 +20,11 @@ The different Project Roles available are:
 | Admin | Users with this role have the same access as `Members` but are additionally able to modify Project Access settings. This includes inviting new users to the Project and changing Roles for existing users of the Project. |
 | Owner | Only the user that has created a project is given the Role of `Owner`. The Owner of a Project have the same access as `Admins` but are additionally able to delete the Project and configure automatic invitations for the Project. If you need to change the Owner of a project, please reach out to support@statsig.com. |
 
+## Custom Roles
+Enterprise customers can customize roles used to assign permissions in Statsig. You can create new roles beyond Admin, Member and Read-Only and choose what permissions these roles have. Common use cases include creating a Metrics Admin role or a Warehouse Admin role (for Statsig Warehouse Native).
+![image](https://github.com/statsig-io/docs/assets/31516123/bd3d4fac-9753-44ff-87ac-2ce1b30bdbea)
+
+
 ## Automatic Project Invitations
 
 To simplify sending invitations for a Project, you can allow users creating a new Statsig account to automatically join your project if their work email domain matches the `Owner's`. For example, a Project Owner with an `@statsig.com` email can enable all new users signing up with an `@statsig.com` email to automatically join their project.
