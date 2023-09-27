@@ -1,7 +1,7 @@
 ---
-title: Switchback Testing 
-sidebar_label: Switchback Testing
-slug: /experiments-plus/switchback-testing
+title: Switchback Tests 
+sidebar_label: Switchback Tests
+slug: /experiments-plus/switchback-tests
 ---
 
 # What is Switchback Testing? 
@@ -63,24 +63,4 @@ The Schedule section of experiment setup enables you to configure-
 - Starting phase (treatment group) for each bucket
 
 Burn-in/ burn-out periods enable you to define periods at both the beginning and end of your switchback windows to discard exposures from analysis. This is typically leveraged when there are risks of “bleed over effect” from the previous treatment while a bucket is switching between test and control.
-
-
-# APPENDIX
-
-$P(\ p = p_k \ |\ \hat{p}\ ) = \frac{P(\ p_k\ \cap\ \hat{p}\ ) }{P(\hat{p}\ ) } = \frac{P(\ p_k\  \ \cap\ \hat{p}\ ) }{\sum_{\forall p_i} P(\ \hat{p}\ \cap\ p_i\ )} = \frac{P(\ \hat{p} \ | \ p_k)\ \cdot\ P(p_k) }{\sum_{\forall p_i} P(\ \hat{p} \ |\ p = p_i\ ) \ \cdot \ P(\ p = p_i\ ) }$
-
-In other words, given the new observations in the sample, $\hat{p}$, we can calculate the updated probability of the true value of $p$ being $p_k$, ie. the _posterior probability distribution_ It is the probability of the event that both $p=p_k$ and $\hat{p}$ being observed, divided by the probability of $\hat{p}$ being observed across all possible values of $p$. Statisticians often visualize this rule using the area in a Venn Diagram. 
-
-![Image](https://github.com/statsig-io/docs/assets/132317445/6e446d4b-d45f-4db8-9f8c-063c95d8e164)
-
-
-$\text{Given observed sample mean } \hat{\mu} = \frac{1}{n} \sum X_i \ \ , \ \ \mu_{\text{posterior}} \sim N\left(\ \ \frac{1}{\frac{1}{\sigma_0^2} + \frac{n}{\sigma^2}}\left(\frac{\mu_0}{\sigma_0^2} + \frac{n\hat{\mu}}{\sigma^2}\right) \ \ , \ \ \frac{1}{\frac{1}{\sigma_0^2} + \frac{n}{\sigma^2}}\ \ \right)$
- 
-
-
-- Treatment Lift $:= \frac{\mu_t - \mu_c}{\mu_c}$
-- 95% Credible Interval $:= \left[\frac{\alpha}{\mu_c},\frac{\beta}{\mu_c}\right]$ where $\alpha, \beta \in \mathbb{R}: P(\ \alpha < \Delta < \beta\ ) >  95\%$
-- Expected Loss $:= \text{Exp}[\ \Delta\ |\ \Delta < 0 \ ] \cdot P(\Delta < 0)$
-- Chance to Beat $:= P(\Delta > 0)$
-
 
