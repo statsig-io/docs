@@ -47,7 +47,7 @@ If there's any confusion, or if a feature is critical for your evaluation, we're
 | Dynamic Config                      | All                                       | Identical                                          |
 | Dashboards                          | All                                       | Identical                                          |
 | Segments                            | All                                       | Identical                                          |
-| Holdouts                            | All                                       | Coming to WHN                                      |
+| Holdouts                            | All                                       | Identical                                          |
 | Metrics                             | Metrics Explorer                          | Cloud only for now                                 |
 |                                     | SDK Events Logstream                      | Identical                                          |
 |                                     | Autocreate metric from SDK Events         | Cloud only for now                                 |
