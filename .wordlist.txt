@@ -39,6 +39,7 @@ sessionID
 deduplicate
 Deduplicating
 deduplicating
+ETAs
 ETLs
 Ecommerce
 Fastly
@@ -231,6 +232,7 @@ redshift
 repo
 resalt
 resync
+rideshare
 roadmap
 roadmaps
 rollout
