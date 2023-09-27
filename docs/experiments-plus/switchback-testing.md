@@ -41,10 +41,10 @@ For example: User 123 is exposed to bucket A at 9:15 am.  The test has an attrib
 Once we have all the events corresponding to a bucket, we calculate the scorecard metrics derived from these events.  
 
 
-
 #Setup 
 To set up a Switchback test on Statsig, when you create an experiment tap **Advanced Settings** → **Experiment Type** and select “Switchback Test”.
 
+<img width="495" alt="Screen Shot 2023-09-26 at 6 59 01 AM" src="https://github.com/statsig-io/docs/assets/101903926/0f020775-c022-42e9-9f58-b7b457d9771f"/>
 
 
 There are a few new aspects of experiment configuration when setting up a Switchback test, namely- 
