@@ -185,6 +185,7 @@ module.exports = {
         "experiments-plus/ending-experiment",
         "experiments-plus/disable-group",
         "experiments-plus/bayesian",
+        "experiments-plus/switchback-testing",
         {
           Experimentation: [
             "experiments-plus/experimentation/why-experiment",
