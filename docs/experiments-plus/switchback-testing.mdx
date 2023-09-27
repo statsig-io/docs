@@ -42,13 +42,30 @@ Once we have all the events corresponding to a bucket, we calculate the scorecar
 
 
 
+#Setup 
+To set up a Switchback test on Statsig, when you create an experiment tap **Advanced Settings** → **Experiment Type** and select “Switchback Test”.
 
 
 
+There are a few new aspects of experiment configuration when setting up a Switchback test, namely- 
+
+1. **Buckets**- The different defined populations you will be running your experiment on. 
+2. **Schedule**- The switching frequency and starting treatment for each bucket.
+
+When configuring buckets under experiment targeting, you can choose between *None*, *Country, Locale,* or any *Custom Field* you log. Not configuring any buckets (choosing “None”) will default to using your whole population. 
+
+The Schedule section of experiment setup enables you to configure-
+
+- Start time
+- Duration (in days)
+- Assignment window size (in minutes)
+- Burn-in/ burn-out periods (in minutes)
+- Starting phase (treatment group) for each bucket
+
+Burn-in/ burn-out periods enable you to define periods at both the beginning and end of your switchback windows to discard exposures from analysis. This is typically leveraged when there are risks of “bleed over effect” from the previous treatment while a bucket is switching between test and control.
 
 
-
-The Bayesian approach however allows you to start with some preconceived notion of what $p$ is, and since you don’t have perfect information about what it is, we allow it to be a probability distribution, $p_{\text{prior}} \sim B_\theta$, parameterized by $\theta$ (for eg. a beta distribution with the parameters $\theta = (\alpha, \beta)$). When you flip the coin $n$ times again, you have new information on the coin and thus can _update your beliefs_ of what $p$ is. The way we do this leverages the Bayes Rule:
+# APPENDIX
 
 $P(\ p = p_k \ |\ \hat{p}\ ) = \frac{P(\ p_k\ \cap\ \hat{p}\ ) }{P(\hat{p}\ ) } = \frac{P(\ p_k\  \ \cap\ \hat{p}\ ) }{\sum_{\forall p_i} P(\ \hat{p}\ \cap\ p_i\ )} = \frac{P(\ \hat{p} \ | \ p_k)\ \cdot\ P(p_k) }{\sum_{\forall p_i} P(\ \hat{p} \ |\ p = p_i\ ) \ \cdot \ P(\ p = p_i\ ) }$
 
@@ -56,23 +73,14 @@ In other words, given the new observations in the sample, $\hat{p}$, we can calc
 
 ![Image](https://github.com/statsig-io/docs/assets/132317445/6e446d4b-d45f-4db8-9f8c-063c95d8e164)
 
-The denominator in the equation is the _marginal probability_ of $\hat{p}$. Unfortunately, this can be devilishly hard to compute depending on how the likelihood and the prior distribution (in this case, the $\text{Bern}(p)$ and $B_\theta$ distributions) interact. Since the distribution of the event depends on the real-world effects, the common practice to choose convenient distributions, also known as _conjugate priors_, to model your _prior_ beliefs. There is a full list of such priors — and we’ve sneakily used one above, since the beta distribution is the conjugate of a Bernoulli random variable. An especially powerful setup is the _Normal-Normal_ conjugate pair with known variance $\sigma$, where the likelihood is defined $X \sim N(\mu, \sigma)$ and the prior distribution is $\mu_{\text{prior}} \sim N(\mu_0, \sigma_0)$. This adequately models most real world phenomenons due to the central limit theorem, and allows us a quick and intuitive way for us to update our view for new observations:
 
 $\text{Given observed sample mean } \hat{\mu} = \frac{1}{n} \sum X_i \ \ , \ \ \mu_{\text{posterior}} \sim N\left(\ \ \frac{1}{\frac{1}{\sigma_0^2} + \frac{n}{\sigma^2}}\left(\frac{\mu_0}{\sigma_0^2} + \frac{n\hat{\mu}}{\sigma^2}\right) \ \ , \ \ \frac{1}{\frac{1}{\sigma_0^2} + \frac{n}{\sigma^2}}\ \ \right)$
+ 
 
-In essence, the new posterior mean is a scaled sum of the prior mean and the observed mean, with scaling factors being the prior variance, the (known) likelihood variance and the number of samples taken. The standard deviation terms $\sigma_0$ and $\sigma$ signify the relative level of “conviction” between your prior belief and the data you’ve observed. A quick note here: even though we philosophically assume that we know the likelihood’s variance term $\sigma$, we don’t in real life and simply approximate it using the sample variance, ie. $\sigma^2 \approx \hat{\sigma}^2\ := \frac{1}{n} \sum_i (x_i - \hat{\mu})^2$. 
-
-So that’s Bayesian statistics. How does this apply to AB testing? We simply start with a prior, then collect data across the variants, updating a posterior for each variant. For instance, with 2 variants, Test and Control, we calculate the posterior distributions, $T$ and $C$. We can then calculating the Bayesian testing statistics as follows. Define $\Delta = T-C$ random variable of the difference between $T$ and $C$, which is also a normally distributed random variable.
 
 - Treatment Lift $:= \frac{\mu_t - \mu_c}{\mu_c}$
 - 95% Credible Interval $:= \left[\frac{\alpha}{\mu_c},\frac{\beta}{\mu_c}\right]$ where $\alpha, \beta \in \mathbb{R}: P(\ \alpha < \Delta < \beta\ ) >  95\%$
 - Expected Loss $:= \text{Exp}[\ \Delta\ |\ \Delta < 0 \ ] \cdot P(\Delta < 0)$
 - Chance to Beat $:= P(\Delta > 0)$
 
-At first glance, Bayesian testing seems simple and intuitive. However, the simplicity is deceptive. We’ve actually swept an enormous amount of complexity under the rug — the entire method is extremely sensitive to the choice of priors. What is the correct prior distribution to use? Given the choice of prior distributions, how do you model the prior distribution parameters (in this case, $\mu_0, \sigma_0$)? These assumptions can dramatically affect the results. In fact, the leading scientific publication, Nature, recently published guidelines on what is required when using Bayesian testing, in which they warned:
 
-> Because the posterior distribution can sometimes depend strongly on the choice of prior distribution, a key part of reporting priors is justifying the choice. That is, it is not sufficient merely to state what prior was used, there must be a rationale for the prior. Two further steps are involved in justifying a prior: a prior predictive check and a sensitivity analysis.
-
-A widely used method to satisfy this standard is Markov Chain Monte Carlo simulations, via techniques such as Metropolis-Hasting or Gibbs Sampling. More details can be found in this awesome blog post [here](https://towardsdatascience.com/bayesian-inference-problem-mcmc-and-variational-inference-25a8aa9bce29). But for practical use, this can be too much unnecessary complexity for most companies and is generally only employed at the largest scales by companies like Meta, Amazon and others. 
-
-With this in mind, we’ve designed Statsig’s Bayesian Testing functionality to as useful as possible without unwittingly leading customers to dangerous waters.
