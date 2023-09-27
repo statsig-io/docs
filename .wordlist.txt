@@ -228,6 +228,8 @@ preload
 priori
 proxying
 pst
+quantile
+quartile
 redshift
 repo
 resalt
