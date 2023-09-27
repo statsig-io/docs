@@ -1,52 +1,52 @@
 ---
-title: Bayesian Experiments
-sidebar_label: Bayesian
-slug: /experiments-plus/bayesian
+title: Switchback Testing 
+sidebar_label: Switchback Testing
+slug: /experiments-plus/switchback-testing
 ---
 
-### Why Bayesian
+# What is Switchback Testing? 
 
-Bayesian A/B testing leverages a different statistical framework for A/B testing than the more widely used Frequentist-based statistics. It’s often selected for its simplicity and intuitiveness.  Practitioners do not have to deal with the complexities of p-values, null hypotheses, nor unintuitive confidence intervals.  Instead, you can make statements like:
+Switchback tests are an alternative experiment form, whereby an entire population is “switched” back and forth between test and control treatments on a set cadence vs. being split and evenly divided between test and control for the duration of the experiment. 
 
-> *We expect a lift in our metric by 10% +/- 5%. Overall,* t*here is a 80% chance that the test variant beats the control variant and if we roll it out, there is risk that we degrade our metric by an expected amount of 0.5.*
+Switchback tests are particularly common in marketplaces, whereby running a traditional A/B on one side- or a small %- of the marketplace would have an unintended consequence on the rest of the marketplace due to network effects, ultimately impacting experiment results. 
 
-In contrast, communicating Frequentist AB testing results in a statistically-valid manner is comically quite challenging, and can invoke a double negative statement like:
+Switchback tests are often carried out across multiple “buckets”, typically regions or other defined groups that are flipped between test and control treatments over the course of the experiment. 
 
-> *Because the probability of observing the data under the null hypothesis is lower than 5%, which is unlikely, we can reject null hypothesis and accept the alternative hypothesis that the test variant improves the metric.*
+### Switchback Testing Example 
 
-Bayesian methods can also make use of prior information to build a probability model for the observed data.  Unfortunately, building a useful and robust prior model depends on a lot of factors including the amount of information you have, experimental context, and assumptions you’ve made.  This is quite challenging to construct and is often criticized for introducing bias to your experimental results.  In many cases, priors are often carefully constructed for single metrics under specific contexts where there is a rich history of prior experimental data (eg. >200 experiments).  To deploy Bayesian methods across Statsig’s diverse customer-base and their wide range of metrics, we’ve avoided this by implementing a naive prior model that assumes nothing.  This means that even though the results capture the same data, they may end up with the same statistical power as frequentist methods.  Yet interpretation is much clearer.
+Let’s say you are a rideshare platform and want to test pricing. You initially consider splitting your riders into two groups, one with the higher price and one with a lower price. 
 
-### Bayesian Testing in Statsig
+However, you quickly notice that the riders with the lower price are requesting rides at a significantly higher rate, and sucking up all the available driver supply in a given area. This leaves the riders with higher prices with not only a higher ride estimate, but longer ETAs when they open up their app, making them even less likely to request. 
 
-Using Bayesian Testing is simple. You can set up the experiment as you would for ordinary AB testing. Then select the Bayesian option under the Advanced Settings of Experiment Setup.
+When you look at your experiment results you’re not sure if the decreased ride request rate in the higher price group was due to the higher prices they saw or the fact that their ETAs went up- your experiment results are polluted! 
 
-![Image](https://github.com/statsig-io/docs/assets/132317445/c9c01a57-fe13-47a9-b734-20d6e8d715a4)
+In this scenario, you could consider running a Switchback test on your marketplace. To do this, you might switch 100% of your riders and drivers in a given metro in and out of the new pricing plan hourly and understand the impact on overall ride request rates during hours at which rider prices were higher vs. lower. 
 
-And you are done. Your Pulse results should now be recalculated with new visualizations around Bayesian Testing specific statistics.
+# Switchback Testing on Statsig 
 
-![Image](https://github.com/statsig-io/docs/assets/132317445/be912632-6200-4408-977c-92f48dfdd7bc)
+## Methodology
 
-Deep dive analysis should also reflect Bayesian statistics
+Our Switchback Testing methodology for computing results consists of 3 steps:
 
-![Image](https://github.com/statsig-io/docs/assets/132317445/c9214142-d11f-48c8-92a4-53581bbc498c)
+1. Attribute events to the corresponding switchback bucket, where each bucket is defined by the time window and grouping attribute.
+2. Calculate the variant-level and bucket-level metrics based on the attributed events.
+3. Calculate the difference in means between test and control.  Use bootstrapping to obtain the confidence intervals.
 
-**What is supported?** Today, we are only supporting normal-normal Bayesian testing setups given its robustness and usage safety. We have plans to increase the set of distribution pairs available on our platform over time.
+### Event Attribution 
+Attribution of events to a particular bucket is based on the timestamp and unit_id of the exposure, the length of the attribution window, and the timestamp of subsequent events for that unit_id.  
 
-**How we handle priors?** To ensure that there is minimal amount of distortion from prior definitions, all our priors are initialized with infinite prior variance. Thus, given observed data,
+For example: User 123 is exposed to bucket A at 9:15 am.  The test has an attribution window of 90 minutes.  This means all events triggered by user 123 between 9:15 am and 10:45 am will be included in the metric calculations for bucket A. 
 
-$\mu_{\text{posterior}} \sim N\left(\ \hat{\mu}\ \ , \ \ \frac{\hat{\sigma}^2}{n}\ \ \right)$
+### Bucket-level Metrics 
+Once we have all the events corresponding to a bucket, we calculate the scorecard metrics derived from these events.  
 
-You may notice that this is effectively the same as a frequentist AB experiment with a t-test. God does not play dice and this elegant reduction is not a coincidence. We currently do not allow our customers to specify their own prior parameters, given the complications described above.
 
-**Feedback?** We are focused on supporting your success. Let us know how we can improve our product here.
 
-### Bayesian A/B Testing Explained
 
-Bayesian A/B Testing leverages a different statistical framework for hypothesis testing than the more widely used (Frequentist) A/B Testing. Even though they capture the same data and in many cases, the same statistical power, the interpretation of the results differ in important ways and require deep understanding to avoid unwittingly falling into traps. To dive into Bayesian testing, we first briefly recap Bayesian statistics.
 
-Imagine you have an unfair coin and your job is to find what is the probability $p$ that this coin lands on its head. The coin is thus a random variable following a Bernoulli distribution over two possible states, $\{0,1\}$, ie. $X_{\text{coin}} \sim \text{Bern}(p)$. In Bayesian terminology, this is the _likelihood_. 
 
-The frequentist approach of estimating $p$ is fairly obvious — you start with no assumptions, flip it a lot of times (say $n$ times), and take a ratio between the number of heads and the number of flips. This sample average, $\hat{p} = \frac{\text{num of heads}}{\text{num of flips}}$, is thus an _estimator_ of the true value of $p$. 
+
+
 
 The Bayesian approach however allows you to start with some preconceived notion of what $p$ is, and since you don’t have perfect information about what it is, we allow it to be a probability distribution, $p_{\text{prior}} \sim B_\theta$, parameterized by $\theta$ (for eg. a beta distribution with the parameters $\theta = (\alpha, \beta)$). When you flip the coin $n$ times again, you have new information on the coin and thus can _update your beliefs_ of what $p$ is. The way we do this leverages the Bayes Rule:
 
