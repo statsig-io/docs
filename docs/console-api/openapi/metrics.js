@@ -500,66 +500,108 @@ module.exports = {
                     funnelCountDistinct: "events",
                   },
                 },
-                "Warehouse Native Count": {
-                  value: {
-                    name: "whn_count_metric_v1",
-                    description:
-                      "Creating warehouse native metric and aggregation type of this metric is count",
-                    tags: ["non_production"],
-                    type: "user_warehouse",
-                    warehouseNative: {
-                      aggregation: "count",
-                      metricSourceName: "Log Events",
-                      criteria: [
-                        {
-                          type: "metadata",
-                          key: "product_category", //column name
-                          values: ["clothing"],
-                          condition: "=",
-                        },
-                      ],
-                    },
-                  },
-                },
                 "Warehouse Native Funnel": {
-                  value: {
-                    name: "whn_ratio_metric_v1",
-                    description:
-                      "Creating warehouse native metric and aggregation type of this metric is ratio",
-                    tags: ["non_production"],
-                    type: "user_warehouse",
-                    warehouseNative: {
-                      metricSourceName: "Support Events",
-                      aggregation: "ratio",
-                      denominatorMetricSourceName: "Support Events",
-                      denominatorAggregation: "count",
-                      numeratorAggregation: "count",
-                    },
-                  },
+                  "value": {
+                    "name": "whn_funnel_metric",
+                    "description": "Creating warehouse native metric and aggregation type of this metric is count",
+                    "tags": [
+                      "non_production"
+                    ],
+                    "type": "user_warehouse",
+                    "warehouseNative": {
+                      "aggregation": "funnel",
+                      "funnelEvents": [
+                        {
+                          "metricSourceName": "Log Events",
+                          "name": "page_view",
+                          "criteria": [
+                            {
+                              "type": "metadata",
+                              "key": "page",
+                              "condition": "in",
+                              "values": [
+                                "product_page"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "metricSourceName": "Log Events",
+                          "name": "add_to_cart",
+                          "criteria": [
+                            {
+                              "type": "metadata",
+                              "key": "page",
+                              "condition": "in",
+                              "values": [
+                                "product_page"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "metricSourceName": "Log Events",
+                          "name": "cart_view",
+                          "criteria": [
+                            {
+                              "type": "metadata",
+                              "key": "page",
+                              "condition": "in",
+                              "values": [
+                                "cart"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "funnelCalculationWindow": 7,
+                      "funnelCountDistinct": "users",
+                      "funnelStartCriteria": "start_event"
+                    }
+                  }
                 },
                 "Warehouse Native Sum": {
-                  value: {
-                    name: "whn_sum_metric",
-                    description:
-                      "Creating warehouse native metric and aggregation type of this metric is sum",
-                    tags: ["non_production"],
-                    type: "user_warehouse",
-                    warehouseNative: {
-                      metricSourceName: "Checkout Events",
-                      aggregation: "sum",
-                      valueColumn: "price_usd",
-                      criteria: [
+                  "value": {
+                    "name": "whn_sum_metric",
+                    "description": "Creating warehouse native metric and aggregation type of this metric is sum",
+                    "tags": [
+                      "non_production"
+                    ],
+                    "type": "user_warehouse",
+                    "warehouseNative": {
+                      "metricSourceName": "Checkout Events",
+                      "aggregation": "sum",
+                      "valueColumn": "price_usd",
+                      "criteria": [
                         {
-                          type: "metadata",
-                          key: "event",
-                          condition: "in",
-                          values: ["purchase"],
-                        },
-                      ],
-                    },
-                  },
+                          "type": "metadata",
+                          "key": "event",
+                          "condition": "in",
+                          "values": [
+                            "purchase"
+                          ]
+                        }
+                      ]
+                    }
+                  }
                 },
-              },
+                "Warehouse Native Ratio": {
+                  "value": {
+                    "name": "whn_ratio_metric_v1",
+                    "description": "Creating warehouse native metric and aggregation type of this metric is ratio",
+                    "tags": [
+                      "non_production"
+                    ],
+                    "type": "user_warehouse",
+                    "warehouseNative": {
+                      "metricSourceName": "Support Events",
+                      "aggregation": "ratio",
+                      "denominatorMetricSourceName": "Support Events",
+                      "denominatorMetricAggregation": "count"
+                    }
+                  }
+                }
+              }
             },
             "application/xml": {
               schema: {
