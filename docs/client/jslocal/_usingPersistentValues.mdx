@@ -1,9 +1,9 @@
 ### Using Persistent Evaluations
 
-If you want to ensure that a user's variant stays consistent while an experiment is running, regardless of changes to allocation or targeting, you can implement the `UserPersistentStorageInterface` and set it in `StatsigOptions` when you initialize the SDK.
+If you want to ensure that a user's variant stays consistent while an experiment is running, regardless of changes to allocation or targeting, you can implement the `UserPersistentStorageInterface` and set it in `StatsigOptions` when you initialize the SDK.  You must also opt in to using persistent values on a per-check basis - if you do not set a `userPersistentValue` or set it to `null`, the SDK will not attempt to `save` values, and will not override the evaluation.  We have provided top level methods on `statsig` for loading the value for a user, which you can pass in with a `getExperiment` check.
 
 #### Synchronous Persistent Evaluations
-The `UserPersistentStorageInterface` exposes two methods for synchronous persistent storage, which will be called by default when evaluating an experiment.
+The `UserPersistentStorageInterface` exposes two methods for synchronous persistent storage, and a top level method that uses the `load` to create a value you can pass in to `getExperiment`
 
 ```
 export interface UserPersistentStorageInterface {
@@ -13,9 +13,30 @@ export interface UserPersistentStorageInterface {
 }
 ```
 
-The `key` string is a combination of ID and ID Type: e.g. "123:userID" or "abc:stableID" which the SDK will construct and call `get` and `set` on by default
+For your convenience, we've created a top level method to load the value for a given user and ID Type:
 
-You can use this interface to persist evaluations synchronously to local storage.  If you need an async interface, read on.
+```
+const userPersistedValues = statsig.loadUserPersistedValues(
+  user: StatsigUser,
+  idType: string, // userID, stableID, customIDxyz, etc
+);
+```
+The `key` string is a combination of ID and ID Type: e.g. "123:userID" or "abc:stableID" which the SDK will construct and call `get` when you call `loadUserPersistedValues` values, and set when saving.
+
+You can use this interface to persist evaluations synchronously to local storage.  If you need an async interface, see below.
+
+Putting it all together, assuming you have implemented the `UserPersistentStorageInterface` and set it on `StatsigOptions`, your callsite will look like this:
+
+```
+const user = { userID: "123" };
+const userValues = statsig.loadUserPersistedValues(user, 'userID');
+const experiment = statsig.getExperiment(
+  {userID: "123"},
+  'the_allocated_experiment',
+  { userPersistedValues: userValues }, // you must set userPersistedValues to opt in for this check
+);
+```
+
 
 #### Asynchronous Persistent Evaluations
 The `UserPersistentStorageInterface` exposes two methods for asyncronous persistent evaluations. Because the `getExperiment` call is synchronous, you must load the value first, and pass it in as `userPersistedValues`
@@ -41,5 +62,10 @@ Putting it all together, assuming you have implemented the `UserPersistentStorag
 ```
 const user = { userID: "123" };
 const userValues = await statsig.loadUserPersistedValuesAsync(user, 'userID');
-const experiment = statsig.getExperiment({userID: "123"}, 'the_allocated_experiment', { userPersistedValues: userValues });
+const experiment = statsig.getExperiment(
+  {userID: "123"},
+  'the_allocated_experiment',
+  { userPersistedValues: userValues }, // you must set userPersistedValues to opt in for this check
+);
+```
 ```
