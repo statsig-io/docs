@@ -1047,7 +1047,7 @@ module.exports = {
                     "$ref": "#/components/schemas/tags"
                   },
                   "status": {
-                    "$ref": "../models/status.json"
+                    "$ref": "../models/experiment_status.json"
                   },
                   "hypothesis": {
                     "$ref": "#/components/schemas/hypothesis"
@@ -1487,6 +1487,9 @@ module.exports = {
                   },
                   "bonferroniCorrection": {
                     "$ref": "#/components/schemas/bonferroniCorrection"
+                  },
+                  "status": {
+                    "$ref": "../models/experiment_status.json"
                   }
                 }
               },

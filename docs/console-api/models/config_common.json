@@ -1,0 +1,55 @@
+{
+    "title": "config_common",
+    "x-stoplight": {
+      "id": "hpfhce1pbgmnp"
+    },
+    "type": "object",
+    "x-internal": false,
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "The name that was originally given to the entity on creation but formatted as an ID (\"A Experiment\" -> \"a_entity\")."
+      },
+      "description": {
+        "type": "string",
+        "description": "A helpful summary of what this entity"
+      },
+      "lastModifierID": {
+        "type": "string",
+        "description": "The Statsig username of the last modifier of this experiment.\n\n"
+      },
+      "lastModifierName": {
+        "type": "string"
+      },
+      "creatorEmail": {
+        "type": "string",
+        "description": "The email of the user who created this entity"
+      },
+      "creatorName": {
+        "type": "string",
+        "description": "The name of the user who created this entity"
+      },
+      "createdTime": {
+        "type": "integer"
+      }
+    },
+    "required": [
+      "id",
+      "description",
+      "lastModifierID",
+      "lastModifierName",
+      "createdTime"
+    ],
+    "description": "Shared fields between configs",
+    "examples": [
+      {
+        "id": "a_entity",
+        "description": "a helpful description",
+        "lastModifierID": "zvaQatoLdkaua9ii4OSB12",
+        "lastModifierName": "John Smith",
+        "creatorEmail": "johnsmith@mydomain.com",
+        "creatorName": "John Smith",
+        "createdTime": 1674769467002
+      }
+    ]
+  }
