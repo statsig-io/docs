@@ -224,9 +224,6 @@ module.exports = {
         ]
       },
       "post": {
-        "tags": [
-          "Holdouts"
-        ],
         "summary": "Bulk Add Target App",
         "responses": {
           "201": {
@@ -425,7 +422,10 @@ module.exports = {
         "x-stoplight": {
           "id": "9pi33tt755h2t"
         },
-        "description": "Add a selected target apps to multiple configs at once"
+        "description": "Add a selected target apps to multiple configs at once",
+        "tags": [
+          "Target Apps"
+        ]
       },
       "parameters": []
     }
