@@ -45,4 +45,4 @@ Enabling `Strict SSO` will require that all members of a Project besides the `Ow
 
 ## Break Glass Scenarios
 
-If you have configured SSO to be required, but corrupt your SSO config this will block people from logging in. In case of emergency, the user with the Owner role in the organization can use the break glass URL to sign in with a password (bypassing SSO). The break glass URL is [https://console.statsig/login?method=password-only]([url](https://console.statsig/login?method=password-only)https://console.statsig/login?method=password-only)
+If you have configured SSO to be required, but corrupt your SSO config this will block people from logging in. In case of emergency, the user with the Owner role in the organization can use the break glass URL to sign in with a password (bypassing SSO). The break glass URL is [https://console.statsig/login?method=password-only](https://console.statsig/login?method=password-only)
