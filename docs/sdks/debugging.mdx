@@ -85,3 +85,20 @@ For example, the following two user objects would also trigger InvalidBootstrap 
 userA = { userID: 'user-a' };
 userAExt = { userID: 'user-a', customIDs: { employeeID: 'employee-a' }};
 ```
+
+
+## Client SDK Debugger
+
+It can be useful to inspect the current values that a Client SDK is using internally. For this, we have a Client SDK Debugger.
+With this tool, you can see the current User object the SDK is using as well as the gate/config values associated with it.
+
+Javascript/React: Via a Chrome Extension https://github.com/statsig-io/statsig-sdk-debugger-chrome-extension
+
+iOS: Available with `Statsig.openDebugView()`. Available in [v1.26.0](https://github.com/statsig-io/ios-sdk/releases/tag/v1.26.0) and [above](https://github.com/statsig-io/ios-sdk/releases).
+
+Android: Not yet supported. 
+
+
+|Landing|Gates List|Gate Details|Experiment Details|
+|--|--|--|--|
+|![client-debugger-landing](https://github.com/statsig-io/statsig-sdk-debugger-chrome-extension/assets/95646168/fa6d7237-eb47-4f09-896c-696cfd5c956c)|![client-debugger-gates-list](https://github.com/statsig-io/statsig-sdk-debugger-chrome-extension/assets/95646168/161d8f35-a9b8-4ff9-b549-e04d04acac8a)|![client-debugger-gate-info](https://github.com/statsig-io/statsig-sdk-debugger-chrome-extension/assets/95646168/ab15e586-5259-4475-8f5c-018b2ab6e8db)|![client-debugger-experiment-details](https://github.com/statsig-io/statsig-sdk-debugger-chrome-extension/assets/95646168/920a6e8a-eb84-4d37-bf77-bb909a575d58)|

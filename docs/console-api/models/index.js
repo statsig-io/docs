@@ -1,8 +1,10 @@
 export default {
   error_401: require("./error_401.json"),
   autotune: require("./autotune.json"),
+  config_common: require("./config_common.json"),
   dynamic_config: require("./dynamic_config.json"),
   dynamic_config_update: require("./dynamic_config_update.json"),
+  experiment_status: require("./experiment_status.json"),
   layer: require("./layer.json"),
   layer_parameter: require("./layer_parameter.json"),
   experiment: require("./experiment.json"),
