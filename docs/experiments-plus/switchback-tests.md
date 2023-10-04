@@ -96,17 +96,17 @@ There are a few different ways to define targeting, namely-
 
 ![Screen Shot 2023-10-04 at 11 44 44 AM](https://github.com/statsig-io/docs/assets/101903926/3c79d1c1-8b15-401c-9635-6b3d4b08d416)
 
-The Schedule section of experiment setup enables you to configure-
+Depending on which bucketing method you've chosen, the **Schedule** section of experiment setup enables you to configure-
 
 - Start time
 - Duration (in days)
 - Assignment window size (in minutes)
 - Burn-in/ burn-out periods (in minutes)
-- Starting phase (treatment group) for each bucket
+- *(Pre-defined bucketing only)* Starting phase (treatment group) for each bucket
 
 <img width="1019" alt="Screen Shot 2023-09-26 at 6 50 36 AM" src="https://github.com/statsig-io/docs/assets/101903926/67ed1aee-f5aa-49b6-b684-a9919b59d5ca"/>
 
-Burn-in/ burn-out periods enable you to define periods at both the beginning and end of your switchback windows to discard exposures from analysis. This is typically leveraged when there are risks of “bleed over effect” from the previous treatment while a bucket is switching between test and control.
+Burn-in/ burn-out periods enable you to define periods at both the beginning and end of your switchback windows to discard exposures from analysis. This is typically leveraged when there are risks of “bleed over effect” from the previous treatment while a population is switching between test and control.
 
 # Reading Results 
 
