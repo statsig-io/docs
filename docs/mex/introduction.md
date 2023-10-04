@@ -33,3 +33,8 @@ Configure Funnels to understand how users navigate through a defined path and id
 
 Investigate data issues by looking at samples of the underlying data.
 ![image](https://github.com/statsig-io/docs/assets/31516123/9316bc8c-e541-4086-b60d-0b17ddddb985)
+
+## Distributions
+
+Group data into distributions or percentiles to help see trends.
+![image](https://github.com/statsig-io/docs/assets/31516123/c6dd0b1b-1e62-4b55-8682-c87812afad68)
