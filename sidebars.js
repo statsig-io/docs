@@ -460,6 +460,7 @@ module.exports = {
         "integrations/vscode",
         "integrations/datadog",
         "integrations/github_code_references",
+        "integrations/slack",
         {
           type: "category",
           label: "Terraform",
