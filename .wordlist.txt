@@ -11,6 +11,8 @@ Bonferroni
 Bugsnag
 CDBs
 CIs
+CityID
+CityIDs
 CNAME
 CORS
 CSV
