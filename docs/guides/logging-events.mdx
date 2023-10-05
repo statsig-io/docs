@@ -56,6 +56,12 @@ StatsigClient.LogEvent(
 We encourage you to log as many events as you can and want. The more events there are, the more holistic picture you will get when you are building and releasing new features.
 :::
 
+:::info Size limits on event payload
+Note that there are limits to how large each event field can be.
+Object fields have an overall limit of 4096 on its stringified length.
+String fields have a limit of 128 on its length.
+:::
+
 ### Where do these events end up?
 
 The events you log is aggregated and analyzed by Statsig to give you useful metrics.  These can be viewed in the [Metrics Tab](/metrics).
