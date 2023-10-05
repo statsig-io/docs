@@ -16,7 +16,7 @@ If you want to set up only [Project Notifications](#project-notification-setting
 :::
 
 1. Click the button below to authorize the Statsig Slack App to your workspace
-<a href="https://slack.com/oauth/v2/authorize?client_id=1857368318405.2078343039634&scope=chat:write,incoming-webhook&user_scope="><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcSet="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
+<a href="https://slack.com/oauth/v2/authorize?client_id=1857368318405.2078343039634&scope=chat:write,incoming-webhook&state=docs&user_scope="><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcSet="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
 
 2. Select a channel to direct all project-level messages.
 ![image](https://github.com/statsig-io/docs/assets/111380336/7fd720bd-e7eb-4201-88e7-0a480a3dd7ed)
