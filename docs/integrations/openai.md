@@ -91,7 +91,7 @@ elif satisfaction == 'n':
     statsig.log_event(StatsigEvent(user, "dissatisfaction"))
 ```
 
-Next, we log a more explicit indictor of feedback, the user's self-reported satisfaction or dissatisfaction. The satisfaction metric can provide a strong indicator of the model's overall power. 
+Next, we log a more explicit indicator of feedback, the user's self-reported satisfaction or dissatisfaction. The satisfaction metric can provide a strong indicator of the model's overall power. 
 
 And we're done - we can run this Python program with the following code, now outside of our ask_question function.
 
