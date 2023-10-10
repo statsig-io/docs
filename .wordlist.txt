@@ -302,7 +302,9 @@ mgmt
 sdks
 DAGs
 openai
-openai's
+OpenAI
+OpenAI's
 chatcompletion
 gpt
 chatgpt
+ChatGPT
