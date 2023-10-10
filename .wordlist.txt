@@ -305,6 +305,7 @@ openai
 OpenAI
 OpenAI's
 chatcompletion
+ChatCompletion
 gpt
 chatgpt
 ChatGPT
