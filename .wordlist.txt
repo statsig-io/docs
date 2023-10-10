@@ -301,3 +301,8 @@ WHN
 mgmt
 sdks
 DAGs
+openai
+openai's
+chatcompletion
+gpt
+chatgpt
