@@ -462,6 +462,7 @@ module.exports = {
         "integrations/datadog",
         "integrations/github_code_references",
         "integrations/slack",
+        "integrations/openai",
         {
           type: "category",
           label: "Terraform",
