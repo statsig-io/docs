@@ -32,43 +32,46 @@ export default (function () {
       setTimeout(async () => {
         let start = performance.now();
         await fetch(
-          'https://latest.api.statsig.com/v1/download_config_specs?k=client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps', {cache: "reload"}
+          "https://latest.api.statsig.com/v1/download_config_specs?k=client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps",
+          { cache: "reload" }
         )
           .then(() => {
             const delta = performance.now() - start;
-            window.statsig.logEvent({}, 'cloud_cdn_latency', delta);
+            window.statsig.logEvent({}, "cloud_cdn_latency", delta);
           })
           .catch((e) => {
             const delta = performance.now() - start;
-            window.statsig.logEvent({}, 'cloud_cdn_latency', delta, {
+            window.statsig.logEvent({}, "cloud_cdn_latency", delta, {
               error: e.message,
             });
           });
         start = performance.now();
         await fetch(
-          'https://api.statsigcdn.com/v1/download_config_specs?k=client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps', {cache: "reload"}
+          "https://api.statsigcdn.com/v1/download_config_specs?k=client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps",
+          { cache: "reload" }
         )
           .then(() => {
             const delta = performance.now() - start;
-            window.statsig.logEvent({}, 'cloudflare_cdn_latency', delta);
+            window.statsig.logEvent({}, "cloudflare_cdn_latency", delta);
           })
           .catch((e) => {
             const delta = performance.now() - start;
-            window.statsig.logEvent({}, 'cloudflare_cdn_latency', delta, {
+            window.statsig.logEvent({}, "cloudflare_cdn_latency", delta, {
               error: e.message,
             });
           });
         start = performance.now();
         await fetch(
-          'https://dcs-worker.statsig.workers.dev/v1/download_config_specs/client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps.js', {cache: "reload"}
+          "https://dcs-worker.statsig.workers.dev/v1/download_config_specs/client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps.js",
+          { cache: "reload" }
         )
           .then(() => {
             const delta = performance.now() - start;
-            window.statsig.logEvent({}, 'cloudflare_worker_latency', delta);
+            window.statsig.logEvent({}, "cloudflare_worker_latency", delta);
           })
           .catch((e) => {
             const delta = performance.now() - start;
-            window.statsig.logEvent({}, 'cloudflare_worker_latency', delta, {
+            window.statsig.logEvent({}, "cloudflare_worker_latency", delta, {
               error: e.message,
             });
           });
@@ -76,14 +79,21 @@ export default (function () {
 
       try {
         // will no-op if already initialized
-        window.statsig.initializeAsync("client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps", { environment: { tier: window.statsigTier } }).then(() => {
-          window.statsig.getExperiment({}, "a_a_test");
+        window.statsig
+          .initializeAsync(
+            "client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps",
+            { environment: { tier: window.statsigTier } }
+          )
+          .then(() => {
+            const statsig = window.statsig;
+            statsig.getExperiment({}, "a_a_test");
 
-          const layer = window.statsig.getLayer({}, "master_layer");
-          console.log(layer.get("title", "code_default"));
-        }).catch(e => {
-          console.error(e);
-        });
+            const layer = statsig.getLayer({}, "master_layer");
+            console.log(layer.get("title", "code_default"));
+          })
+          .catch((e) => {
+            console.error(e);
+          });
         window.statsig.logEvent({}, "page_view", window.location.pathname, {
           referrer: document && document.referrer,
         });
