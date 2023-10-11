@@ -3,12 +3,18 @@ title: Getting Started
 slug: /
 ---
 
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import Control from "./control_getting-started.mdx";
 import Test from "./test_getting-started.mdx";
 
-<>{window.__isGettingStartedV2Enabled = window.statsig
-              .getExperiment({}, "docs_getting_started_content")
-              .get("show_v2", false)}</>
-
-<>{!window.__isGettingStartedV2Enabled && <Control />}</>
-<>{window.__isGettingStartedV2Enabled && <Test />}</>
+<BrowserOnly>
+  {() => {
+    const isGettingStartedV2Enabled = window.statsig
+                  .getExperiment({}, "docs_getting_started_content")
+                  .get("show_v2", false)
+    return <>
+      <>{!isGettingStartedV2Enabled && <Control />}</>
+      <>{isGettingStartedV2Enabled && <Test />}</>
+    </>
+  }}
+</BrowserOnly>
