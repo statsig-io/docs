@@ -10,5 +10,5 @@ import Test from "./test_getting-started.mdx";
               .getExperiment({}, "docs_getting_started_content")
               .get("show_v2", false)}</>
 
-<>{!window.__isGettingStartedV2Enabled && <Test />}</>
+<>{!window.__isGettingStartedV2Enabled && <Control />}</>
 <>{window.__isGettingStartedV2Enabled && <Test />}</>
