@@ -888,11 +888,14 @@ module.exports = {
                     "x-stoplight": {
                       "id": "z4yjl8n8f5mc4"
                     }
+                  },
+                  "targetApps": {
+                    "$ref": "../models/targetApps.json"
                   }
                 }
               },
               "examples": {
-                "example-1": {
+                "Full Update": {
                   "value": {
                     "isEnabled": false,
                     "description": "helpful summary of what this gate does",
@@ -902,6 +905,7 @@ module.exports = {
                     "tags": [
                       "design"
                     ],
+                    "targetApps": [],
                     "rules": [
                       {
                         "name": "everyone",
@@ -1350,6 +1354,9 @@ module.exports = {
                       "type": "string",
                       "example": "product_team"
                     }
+                  },
+                  "targetApps": {
+                    "$ref": "../models/targetApps.json"
                   }
                 }
               },
@@ -1361,6 +1368,7 @@ module.exports = {
                     "tags": [
                       "product_team"
                     ],
+                    "targetApps": [],
                     "rules": [
                       {
                         "name": "everyone",

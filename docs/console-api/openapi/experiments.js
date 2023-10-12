@@ -1093,6 +1093,9 @@ module.exports = {
                   },
                   "bonferroniCorrection": {
                     "$ref": "#/components/schemas/bonferroniCorrection"
+                  },
+                  "targetApps": {
+                    "$ref": "../models/targetApps.json"
                   }
                 },
                 "required": [
@@ -1120,6 +1123,7 @@ module.exports = {
                     "tags": [
                       "customTag"
                     ],
+                    "targetApps": [],
                     "status": "setup",
                     "hypothesis": "Updated hypothesis",
                     "launchedGroupID": null,
@@ -1490,6 +1494,9 @@ module.exports = {
                   },
                   "status": {
                     "$ref": "../models/experiment_status.json"
+                  },
+                  "targetApps": {
+                    "$ref": "../models/targetApps.json"
                   }
                 }
               },
@@ -1504,6 +1511,7 @@ module.exports = {
                       "marketing",
                       "cost_savings"
                     ],
+                    "targetApps": [],
                     "launchedGroupID": null,
                     "startTime": null,
                     "endTime": null,
