@@ -18,13 +18,16 @@ Tags let you apply light-weight organization to your Statsig config (e.g. gates,
 
 The Core tag is meant to be used for company critical metrics. These are defaulted into experiment scorecards so experiemnters are looking at impact on these metrics as part of their experiments.
 
-## Metric Dimensions
+## Metric and User Dimensions
+Metric dimensions let you break out  breakdown an event such as add-to-cart into product categories such as sports, toys, appliances, electronics. To do this, you would simply log add-to-cart events and provide the product category in the event's value field. [See more]((https://docs.statsig.com/metrics/metric-dimensions))
 
-## User Dimensions
-
+User dimensions let you slice or filter metrics based on a user property. This is often something like Country, Device Type or a property like Free vs Paid. On Statsig Cloud, theser are frozen when a user is first exposed to a feature gate or experiment - in case your experiment ends up changing these properties (e.g. convert a Free user to Paid). If you're using Statsig Warehouse Native, these properties can be set anytime before analysis. 
 
 ## Slack Notifs
+Statsig supports two classes of Slack Notifcations -  Project and Personal Notifications. [See more](https://docs.statsig.com/integrations/slack)
+Project Notifications will drop into a Slack channel you choose updates including Configuration changes (User1 rolled out Feature1 to 100% of Everyone), Health Check Alerts (Experiment1 is failing Sample Ratio Mismatch checks) and Statsig Health Status Reports (also posted to https://status.statsig.com). 
+
+Individuals can opt into Personal Notifications - so they're notified when tagged in discussions, invited to review a change etc or there's a change on an experiment they're following. 
 
 ## Discussions
-
-
+Experimentation is a collaborative exercise where teams work together. Often this collaboration requires people taking screenshots around the experiment and DMing team mates to ask them questions. This information is siloed and lost to others. In-context Discussions allow teams to discuss aspects of the experiment while making this context available to other team members. Common reasons include discussing a surprising metric lift, asking questions on validation  performed before ramping up a feature rollout or even keeping a running log of ovbservations/escalations that can be referenced when the experiment is complete. 
