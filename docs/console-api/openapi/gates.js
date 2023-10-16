@@ -891,6 +891,19 @@ module.exports = {
                   },
                   "targetApps": {
                     "$ref": "../models/targetApps.json"
+                  },
+                  "idType": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "6o8q8g32tty5p"
+                    },
+                    "description": "Changing ID type will overwrite all historical Pulse results"
+                  },
+                  "": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "x9ql896pw8y28"
+                    }
                   }
                 }
               },
@@ -898,6 +911,7 @@ module.exports = {
                 "Full Update": {
                   "value": {
                     "isEnabled": false,
+                    "idType": "stableID",
                     "description": "helpful summary of what this gate does",
                     "status": "In Progress",
                     "lastModifierName": "CONSOLE API",
@@ -1005,7 +1019,7 @@ module.exports = {
                 "examples": {
                   "example-1": {
                     "value": {
-                      "message": "string",
+                      "message": "Gate updated successfully.",
                       "data": {
                         "id": "a_gate",
                         "isEnabled": true,
@@ -1357,6 +1371,13 @@ module.exports = {
                   },
                   "targetApps": {
                     "$ref": "../models/targetApps.json"
+                  },
+                  "idType": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "66ijtgompruqj"
+                    },
+                    "description": "Changing ID type will overwrite all historical Pulse results"
                   }
                 }
               },
@@ -1364,6 +1385,7 @@ module.exports = {
                 "full update": {
                   "value": {
                     "isEnabled": false,
+                    "stableID": "stableID",
                     "description": "helpful summary of what this gate does",
                     "tags": [
                       "product_team"

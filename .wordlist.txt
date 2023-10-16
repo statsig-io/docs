@@ -79,6 +79,7 @@ mex
 MEX
 Mixpanel
 Namespace
+OAuth
 OIDC
 Okta
 OpenID
