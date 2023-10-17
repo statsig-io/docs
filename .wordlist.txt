@@ -30,6 +30,7 @@ CodeLens
 CustomIDs
 DAU
 DM
+DMing
 DNS
 Databricks
 Datadog
@@ -79,6 +80,7 @@ mex
 MEX
 Mixpanel
 Namespace
+Notifs
 OAuth
 OIDC
 Okta
@@ -98,6 +100,7 @@ runtime
 SDK
 SDKs
 SEO
+siloed
 SLA
 SRM
 SSL
@@ -310,3 +313,8 @@ ChatCompletion
 gpt
 chatgpt
 ChatGPT
+usd
+TTL
+serp
+pre-calculate
+Castable
