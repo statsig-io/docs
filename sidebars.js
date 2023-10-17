@@ -80,6 +80,7 @@ module.exports = {
           "Data Overview": [
             // "statsig-warehouse-native/analysis-tools/pulse",
             // "statsig-warehouse-native/analysis-tools/settings",
+            "statsig-warehouse-native/analysis-tools/data-sources",
             "statsig-warehouse-native/analysis-tools/data-privacy",
             "statsig-warehouse-native/analysis-tools/pipeline-overview",
             "statsig-warehouse-native/guides/best-practices",
@@ -242,7 +243,7 @@ module.exports = {
         // 301
         "metrics/create-user-flows",
         "metrics/create-user-funnels",
-         ],
+      ],
     },
     {
       type: "category",
