@@ -45,7 +45,7 @@ For experiment assignment sources, Statsig requires information on who was expos
 
 | Column Type            | Description                                                                               | Format/Rules                   |
 | ---------------------- | ----------------------------------------------------------------------------------------- | ------------------------------ |
-| timestamp              | **Required** an identifier of when the experiment exposure occured                        | Castable to Timestamp/Date     |
+| timestamp              | **Required** an identifier of when the experiment exposure occurred                       | Castable to Timestamp/Date     |
 | unit identifier        | **Required** at least one entity to which this metric belongs                             | Generally a user ID or similar |
 | experiment identifier  | **Required** the experiment the exposure was for                                          | Usually an experiment name     |
 | group identifier       | **Required** the experimental variant the user was assigned to                            | Usually a group name           |
@@ -66,7 +66,7 @@ Qualifying events are used to simulate exposures for power analysis. They are si
 
 | Column Type            | Description                                                                               | Format/Rules                   |
 | ---------------------- | ----------------------------------------------------------------------------------------- | ------------------------------ |
-| timestamp              | **Required** an identifier of when the qualifying event occured                           | Castable to Timestamp/Date     |
+| timestamp              | **Required** an identifier of when the qualifying event occurred                          | Castable to Timestamp/Date     |
 | unit identifier        | **Required** At least one entity to which this metric belongs                             | Generally a user ID or similar |
 | additional identifiers | _Optional_ Entity identifiers for reuse across identifier types                           |                                |
 | context columns        | _Optional_ Fields which can be used to group by and filter results in exploratory queries |                                |
