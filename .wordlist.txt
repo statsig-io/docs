@@ -313,3 +313,7 @@ ChatCompletion
 gpt
 chatgpt
 ChatGPT
+usd
+TTL
+serp
+pre-calculate

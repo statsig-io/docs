@@ -14,7 +14,7 @@ the same base query, and select values to sum, mean, or group by.
 
 | Column Type            | Description                                                         | Format/Rules                   |
 | ---------------------- | ------------------------------------------------------------------- | ------------------------------ |
-| timestamp              | **Required** an identifier of when the metric data occured          | Castable to Timestamp/Date     |
+| timestamp              | **Required** an identifier of when the metric data occurred         | Castable to Timestamp/Date     |
 | unit identifier        | **Required** At least one entity to which this metric belongs       | Generally a user ID or similar |
 | additional identifiers | _Optional_ Entity identifiers for reuse across identifier types     |                                |
 | context columns        | _Optional_ Fields which will be aggregated, filtered, or grouped on |                                |
@@ -29,7 +29,7 @@ For example, you could pull from event logging and aggregate the event-level dat
 
 You could create an average TTL metric by averaging time_to_load, and group it by page route or filter to specific routes when creating your metric.
 
-As another example, you might precalculate some metrics yourself at a user-day grain - either to match your source-of-truth exactly or to add more complex logical fields:
+As another example, you might pre-calculate some metrics yourself at a user-day grain - either to match your source-of-truth exactly or to add more complex logical fields:
 
 | timestamp  | user_id       | company_id | country | page_loads | satisfaction_score | revenue_usd | net_revenue_usd |
 | ---------- | ------------- | ---------- | ------- | ---------- | ------------------ | ----------- | --------------- |
@@ -81,12 +81,12 @@ For example, you could pull from page load event logging directly:
 
 ## Property Sources
 
-For property sources, Statsig only needs a user_id and property fields. Propery sources can define **fixed** properties (e.g. a users Country of origin), but can also define **dynamic**
+For property sources, Statsig only needs a user_id and property fields. Property sources can define **fixed** properties (e.g. a users Country of origin), but can also define **dynamic**
 in which case you need to provide a timestamp for Statsig to identify the most recent pre-exposure record.
 
 | Column Type      | Description                                                                                 | Format/Rules                   |
 | ---------------- | ------------------------------------------------------------------------------------------- | ------------------------------ |
-| timestamp        | _Optional_ an identifier of when the property was defined. Required for dynamic peroperties | Castable to Timestamp/Date     |
+| timestamp        | _Optional_ an identifier of when the property was defined. Required for dynamic properties  | Castable to Timestamp/Date     |
 | unit identifier  | **Required** At least one entity to which this metric belongs                               | Generally a user ID or similar |
 | property columns | **Required** Fields which can be used to group by and filter results in exploratory queries |                                |
 
