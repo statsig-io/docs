@@ -889,6 +889,9 @@ module.exports = {
                       "id": "z4yjl8n8f5mc4"
                     }
                   },
+                  "targetApps": {
+                    "$ref": "../models/targetApps.json"
+                  },
                   "idType": {
                     "type": "string",
                     "x-stoplight": {
@@ -905,7 +908,7 @@ module.exports = {
                 }
               },
               "examples": {
-                "example-1": {
+                "Full Update": {
                   "value": {
                     "isEnabled": false,
                     "idType": "stableID",
@@ -916,6 +919,7 @@ module.exports = {
                     "tags": [
                       "design"
                     ],
+                    "targetApps": [],
                     "rules": [
                       {
                         "name": "everyone",
@@ -1365,6 +1369,9 @@ module.exports = {
                       "example": "product_team"
                     }
                   },
+                  "targetApps": {
+                    "$ref": "../models/targetApps.json"
+                  },
                   "idType": {
                     "type": "string",
                     "x-stoplight": {
@@ -1383,6 +1390,7 @@ module.exports = {
                     "tags": [
                       "product_team"
                     ],
+                    "targetApps": [],
                     "rules": [
                       {
                         "name": "everyone",
