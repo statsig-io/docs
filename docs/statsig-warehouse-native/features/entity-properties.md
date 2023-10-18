@@ -1,3 +1,12 @@
+---
+title: Cohort Metrics
+slug: /statsig-warehouse-native/features/entity-properties
+sidebar_label: Entity Properties
+description: Provide additional details about given entity
+---
+
+# Cohort Metrics
+
 
 ## Entity Properties
 
