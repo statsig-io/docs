@@ -74,12 +74,14 @@ module.exports = {
             "statsig-warehouse-native/features/power-analysis",
             "statsig-warehouse-native/features/cohort-metrics",
             "statsig-warehouse-native/features/id-resolution",
+            "statsig-warehouse-native/features/entity-properties",
           ],
         },
         {
           "Data Overview": [
             // "statsig-warehouse-native/analysis-tools/pulse",
             // "statsig-warehouse-native/analysis-tools/settings",
+            "statsig-warehouse-native/analysis-tools/data-sources",
             "statsig-warehouse-native/analysis-tools/data-privacy",
             "statsig-warehouse-native/analysis-tools/pipeline-overview",
             "statsig-warehouse-native/guides/best-practices",
@@ -242,7 +244,7 @@ module.exports = {
         // 301
         "metrics/create-user-flows",
         "metrics/create-user-funnels",
-         ],
+      ],
     },
     {
       type: "category",
