@@ -65,7 +65,7 @@ If you find a bug with the rollout, disable the gate, fix the bug and then re-en
 
 
 ## What counts as a [billable event](https://statsig.com/pricing#faq)? 
-Statsig records an event when your application calls the Statsig SDK to check whether a user should be exposed to a feature gate or experiment or to log an event. Additionally, pre-computed metrics ingested to Statsig from from a data warehouse or custom metrics created using existing metrics/events also count as billable.
+Statsig records an event when your application calls the Statsig SDK to check whether a user should be exposed to a feature gate or experiment or to log an event. Additionally, pre-computed metrics ingested to Statsig from a data warehouse or custom metrics created using existing metrics/events also count as billable.
 
 Statsig dedupes billable exposure events for the same user and feature/experiment on client (60m window; proxy for session duration) and server SDKs (1m window; proxy for user request handling).
 
