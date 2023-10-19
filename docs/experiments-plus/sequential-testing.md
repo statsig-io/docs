@@ -32,11 +32,11 @@ Statsig uses mSPRT based on the the approach proposed by Zhao et al. in this [pa
 
 ![image](https://github.com/statsig-io/docs/assets/90343952/d50bc6c4-fd72-4ac3-b3d7-e2d802ab6cfa)
 
-Here *V* is the variance of the difference in means, which can be obatined from the sample variance of the test and control group means:
+Here *V* is the variance of the difference in means, which can be obtained from the sample variance of the test and control group means:
 
 ![image](https://github.com/statsig-io/docs/assets/90343952/cbee704f-75fd-4947-a49a-6e256a76dfae)
 
-$\tau$ is the mixing paramenter given by:
+$\tau$ is the mixing parameter given by:
 
 ![image](https://github.com/statsig-io/docs/assets/90343952/24fb4569-925e-4c39-bc2b-233efc7c7008)
 
