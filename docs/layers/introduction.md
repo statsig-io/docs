@@ -7,7 +7,9 @@ slug: /layers
 ## What are Layers?
 Layers (a.k.a. Universes) allow us to create experiments that are mutually exclusive to each other. Each layer has a logical representation of all your users and can have experiments created "within" this layer. Users that are in one experiment of a layer, cannot also be in another experiment in the same layer.
 
-![image](https://user-images.githubusercontent.com/31516123/177894290-465521fa-ebef-4647-acb0-d976cf8e2a7d.png)
+![image](https://github.com/statsig-io/docs/assets/146870406/8e555dd1-093f-4500-baee-2ec2ad93ba5e)
+
+
 
 You can add experiments to a layer (or create a layer) during experiment creation.
 ![image](https://user-images.githubusercontent.com/31516123/177894600-a5921bdb-cec8-49d6-9b05-64f66fbf37a0.png)
