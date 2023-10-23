@@ -32,6 +32,7 @@ module.exports = {
         "guides/production",
         "guides/testing",
         "guides/uptime",
+        "guides/fomo",
         {
           "Landing Page Experiments": [
             "guides/landing-page-experiments/introduction",
