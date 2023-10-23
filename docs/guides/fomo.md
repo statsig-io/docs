@@ -43,3 +43,13 @@ Individuals can opt into Personal Notifications - so they're notified when tagge
 Experimentation is a collaborative exercise where teams work together. Often this collaboration requires people taking screenshots around the experiment and DMing team mates to ask them questions. This information is siloed and lost to others. In-context Discussions allow teams to discuss aspects of the experiment while making this context available to other team members. Common reasons include discussing a surprising metric lift, asking questions on validation  performed before ramping up a feature rollout or even keeping a running log of observations/escalations that can be referenced when the experiment is complete. 
 
 ![image](https://github.com/statsig-io/docs/assets/31516123/7215b193-41ae-4932-aeff-8f41fc00c55e)
+
+## Users tab
+The users tab is a powerful diagnostics tool for developers trying to troubleshoot or validate experiments. It can answer questions like "which experiment group was this user in?" or "when did the user first see this feature?". [See more](https://docs.statsig.com/users).
+![image](https://github.com/statsig-io/docs/assets/31516123/6826e065-85c9-40ab-9ce0-531cb02f0c30)
+
+## Dynamic Config
+Dynamic config is a tool that replaces hard-coded values in your application with configuration parameters defined on the server. These configuration parameters can include any property across your client-side or server-side application code, from button colors to ranking configurations. This enables you to control the behavior of your application dynamically in near real-time. [See more](https://docs.statsig.com/dynamic-config).
+
+## Holdouts
+Holdouts are an advanced feature that helps with experimentation program maturity. They let you measure the cumulative impact of feature releases - in addition to measuring if wins are sustained. [See more](https://statsig.com/blog/getting-in-on-holdouts)https://statsig.com/blog/getting-in-on-holdouts. 
