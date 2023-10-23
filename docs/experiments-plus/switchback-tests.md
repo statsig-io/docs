@@ -77,24 +77,36 @@ To set up a Switchback test on Statsig, when you create an experiment tap **Adva
 
 There are a few new aspects of experiment configuration when setting up a Switchback test, namely- 
 
-1. **Buckets**- The different defined populations you will be running your experiment on. 
-2. **Schedule**- The switching frequency and starting treatment for each bucket.
+1. **Targeting**- The defined population(s) you will be running your experiment on. 
+2. **Schedule**- The switching frequency and starting treatments for different pre-defined populations.
 
-When configuring buckets under experiment targeting, you can choose between *None*, *Country, Locale,* or any *Custom Field* you log. Not configuring any buckets (choosing “None”) will default to using your whole population. 
+There are a few different ways to define targeting, namely- 
+- **Targeting Gate**- Specify a targeting gate to define your target experiment population, similar to any other experiment on Statsig.
+- **Bucketing Method**- Bucket users based on either pre-defined buckets or randomized across an ID type.
+  
+![Screen Shot 2023-10-04 at 3 12 05 PM](https://github.com/statsig-io/docs/assets/101903926/a3e951fb-9a62-48be-9fec-59fcc2003d17)
 
-<img width="1281" alt="Screen Shot 2023-09-26 at 6 45 57 AM" src="https://github.com/statsig-io/docs/assets/101903926/88a56356-b2c7-49ad-9999-07a4b8105927"/>
 
-The Schedule section of experiment setup enables you to configure-
+**Buckets** enable you to specify pre-defined buckets, such as *Country*, *Locale*, or a *Custom Field* you log. This is useful when you have a few, pre-defined populations you want to switch in and out of Test/ Control over the course of the experiment. 
+
+![Screen Shot 2023-10-04 at 11 44 26 AM](https://github.com/statsig-io/docs/assets/101903926/e53ea760-91c1-40e3-85fd-3da3d886d1ed)
+
+
+**ID Type** lets you specify an ID type to randomize across, e.g. choosing a custom ID such as CityID will automatically randomize different CityIDs across Treatment/ Control over the course of the different switchback windows. This is useful if you have a very large or dynamic number of experiment units you want to randomize across over the course of the experiment. 
+
+![Screen Shot 2023-10-04 at 11 44 44 AM](https://github.com/statsig-io/docs/assets/101903926/3c79d1c1-8b15-401c-9635-6b3d4b08d416)
+
+Depending on which bucketing method you've chosen, the **Schedule** section of experiment setup enables you to configure-
 
 - Start time
 - Duration (in days)
 - Assignment window size (in minutes)
 - Burn-in/ burn-out periods (in minutes)
-- Starting phase (treatment group) for each bucket
+- *(Pre-defined bucketing only)* Starting phase (treatment group) for each bucket
 
 <img width="1019" alt="Screen Shot 2023-09-26 at 6 50 36 AM" src="https://github.com/statsig-io/docs/assets/101903926/67ed1aee-f5aa-49b6-b684-a9919b59d5ca"/>
 
-Burn-in/ burn-out periods enable you to define periods at both the beginning and end of your switchback windows to discard exposures from analysis. This is typically leveraged when there are risks of “bleed over effect” from the previous treatment while a bucket is switching between test and control.
+Burn-in/ burn-out periods enable you to define periods at both the beginning and end of your switchback windows to discard exposures from analysis. This is typically leveraged when there are risks of “bleed over effect” from the previous treatment while a population is switching between test and control.
 
 # Reading Results 
 

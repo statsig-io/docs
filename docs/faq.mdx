@@ -65,7 +65,7 @@ If you find a bug with the rollout, disable the gate, fix the bug and then re-en
 
 
 ## What counts as a [billable event](https://statsig.com/pricing#faq)? 
-Statsig records an event when your application calls the Statsig SDK to check whether a user should be exposed to a feature gate or experiment, to log an event for a custom metric, or to check a dynamic config.
+Statsig records an event when your application calls the Statsig SDK to check whether a user should be exposed to a feature gate or experiment or to log an event. Additionally, pre-computed metrics ingested to Statsig from a data warehouse or custom metrics created using existing metrics/events also count as billable.
 
 Statsig dedupes billable exposure events for the same user and feature/experiment on client (60m window; proxy for session duration) and server SDKs (1m window; proxy for user request handling).
 
@@ -90,11 +90,11 @@ See the question above for what counts as a billable event. Some tools available
 
 ## How does bucketing within the Statsig SDKs work?
 Bucketing on Statsig is deterministic. Given the same UserID (or any UnitID) and an experiment/gate a given rollout stage, we'll always evalaute to the same result. This is true even if the evaluation happens in different places - on the client or server. For a peek into how we do this at a high level:
-Salt Creation: For each experiment or feature gate, a unique salt is generated.
-Hashing: The chosen unit (e.g., userId, organizationId, etc.) is passed through a hashing function along with the unique salt which produces a big int.
-Bucket Assignment: The big int is subjected to a modulus operation with the number 10000. This results in a value between 0 and 9999. (Layers use 1000)
-Determination: The result from step 3 represents the specific bucket (out of the 10000 possible) that the unit is assigned to.
-This ensures a randomized yet deterministic bucketing of units across different experiments or feature gates, while the unique salt ensures that the same unit can be assigned to different buckets in different experiments.
+- Salt Creation: For each experiment or feature gate, a unique salt is generated.
+- Hashing: The chosen unit (e.g., userId, organizationId, etc.) is passed through a hashing function along with the unique salt which produces a big int.
+- Bucket Assignment: The big int is subjected to a modulus operation with the number 10000. This results in a value between 0 and 9999. (Layers use 1000)
+- Determination: The result from step 3 represents the specific bucket (out of the 10000 possible) that the unit is assigned to.
+- This ensures a randomized yet deterministic bucketing of units across different experiments or feature gates, while the unique salt ensures that the same unit can be assigned to different buckets in different experiments.
 You can also peek into our open source SDKs [here](https://github.com/statsig-io/node-js-server-sdk/blob/main/src/Evaluator.ts).
 
 

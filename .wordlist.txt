@@ -11,6 +11,8 @@ Bonferroni
 Bugsnag
 CDBs
 CIs
+CityID
+CityIDs
 CNAME
 CORS
 CSV
@@ -28,6 +30,7 @@ CodeLens
 CustomIDs
 DAU
 DM
+DMing
 DNS
 Databricks
 Datadog
@@ -77,8 +80,11 @@ mex
 MEX
 Mixpanel
 Namespace
+Notifs
+OAuth
 OIDC
 Okta
+oncalls
 OpenID
 Pinterest
 Precomputing
@@ -95,6 +101,7 @@ runtime
 SDK
 SDKs
 SEO
+siloed
 SLA
 SRM
 SSL
@@ -299,3 +306,20 @@ WHN
 mgmt
 sdks
 DAGs
+openai
+OpenAI
+OpenAI's
+chatcompletion
+ChatCompletion
+gpt
+chatgpt
+ChatGPT
+usd
+TTL
+serp
+pre-calculate
+Castable
+Zhao
+al
+et
+mSPRT

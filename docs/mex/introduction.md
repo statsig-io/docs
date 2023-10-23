@@ -4,7 +4,7 @@ sidebar_label: Metrics Explorer
 slug: /mex
 ---
 
-Metrics Explorer (currently in open beta) is an analytics surface with powerful slicing for your events and metrics. Break out a metric by device type, country or user tier. Explode a ratio metric and see how the numerator and denominator have moved.
+Metrics Explorer is an analytics surface with powerful slicing for your events and metrics. Break out a metric by device type, country or user tier. Explode a ratio metric and see how the numerator and denominator have moved.
 
 Get data you can trust and insights you need to take action and drive growth. Find this under Metrics -> Explore. Tell us what you want to see [here](https://statsig.com/slack)!
 
@@ -33,3 +33,8 @@ Configure Funnels to understand how users navigate through a defined path and id
 
 Investigate data issues by looking at samples of the underlying data.
 ![image](https://github.com/statsig-io/docs/assets/31516123/9316bc8c-e541-4086-b60d-0b17ddddb985)
+
+## Distributions
+
+Group data into distributions or percentiles to help see trends.
+![image](https://github.com/statsig-io/docs/assets/31516123/c6dd0b1b-1e62-4b55-8682-c87812afad68)
