@@ -3,7 +3,7 @@ sidebar_label: Commonly Used Features
 title: Commonly Used Features on Statsig for Enterprise Customers
 ---
 
-# Features you should be using on Statsig
+# Commonly Used Features on Statsig for Enterprise Customers
 
 ## Single Sign On (SSO)
 ### ⚠️ Security risk if not enabled 
