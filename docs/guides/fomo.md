@@ -32,7 +32,7 @@ User dimensions let you slice or filter metrics based on a user property. This i
 ![image](https://github.com/statsig-io/docs/assets/31516123/975df15b-8ac8-4396-aa3b-5877843ed5d5)
 
 ## Slack Notifs
-Statsig supports two classes of Slack Notifications -  Project and Personal. [See more](https://docs.statsig.com/integrations/slack)
+Statsig supports two classes of [Slack Notifications](https://docs.statsig.com/integrations/slack) -  Project and Personal. 
 Project Notifications will drop into a Slack channel you choose updates including Configuration changes (User1 rolled out Feature1 to 100% of Everyone), Health Check Alerts (Experiment1 is failing Sample Ratio Mismatch checks) and Statsig Health Status Reports (also posted to https://status.statsig.com). 
 ![image](https://github.com/statsig-io/docs/assets/31516123/9f7d3a81-a228-43cd-80f9-cf2c7a2d63a1)
 
