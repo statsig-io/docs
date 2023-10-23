@@ -1,0 +1,42 @@
+---
+sidebar_label: Commonly Used Features
+title: Commonly Used Features on Statsig for Enterprise Customers
+---
+
+# Features you should be using on Statsig
+
+## Single Sign On (SSO)
+### ⚠️ Security risk if not enabled 
+If you've not enabled SSO on Statsig, your ex-employees will be able to make changes in your Statsig project, unless you remember to deactivate them in Statsig. Using SSO makes sure they cannot access Statsig when you remove their user account from your systems (by forcing them to authenticate with your systems frequently). [See more](https://docs.statsig.com/access-management/sso/overview) 
+
+## Require Change Review
+### ⚠️ Production systems at risk if not enabled
+Like with changes to your source code or production configuration, requiring a second pair of eyes to review changes in Statsig helps reduces mistakes in production. When enabled, changes impacting only pre-production environments do not require approval - allowing agility there. You can grant admins or oncalls the ability to self-approve changes if desired. 
+![image](https://github.com/statsig-io/docs/assets/31516123/5d98e65d-6eca-4766-b3cb-7981695d02ab)
+If you choose to ignore this recommendation, consider enabling change review and granting all members the ability to self-approve changes, so they clearly see the change they're committing before doing so. [See more](https://docs.statsig.com/access-management/sso/overview) 
+![image](https://github.com/statsig-io/docs/assets/31516123/42b9b0d2-a5de-4e56-a258-dc593d240a72)
+
+## Tags for organization
+Tags let you apply light-weight organization to your Statsig config (e.g. gates, experiments and metrics) to allow easy filtering by team (or organization objectives). E.g. You can tag growth related experiments and metrics with a tag called "Growth", easily filtering down to just these when needed. This is particularly useful with metrics - since you can now just add the Growth tag to your scorecard metrics, and pull in all the key Growth metrics instead of individually picking them.
+
+The Core tag is meant to be used for company critical metrics. These are defaulted into experiment scorecards so experimenters are looking at impact on these metrics as part of their experiments.
+![image](https://github.com/statsig-io/docs/assets/31516123/81fea5b9-e719-4850-8fa3-a447fd580a3b)
+
+## Metric and User Dimensions
+Metric dimensions let you break out  breakdown an event such as add-to-cart into product categories such as sports, toys, appliances, electronics. To do this, you would simply log add-to-cart events and provide the product category in the event's value field. [See more](https://docs.statsig.com/metrics/metric-dimensions)
+![image](https://github.com/statsig-io/docs/assets/31516123/b6d73519-9387-4d95-98fa-871d96e96126)
+
+User dimensions let you slice or filter metrics based on a user property. This is often something like Country, Device Type or a property like Free vs Paid. On Statsig Cloud, these are frozen when a user is first exposed to a feature gate or experiment - in case your experiment ends up changing these properties (e.g. convert a Free user to Paid). If you're using Statsig Warehouse Native, these properties can be set anytime before analysis. 
+![image](https://github.com/statsig-io/docs/assets/31516123/43165071-d661-4f7f-b17c-a05ca7b92879)
+
+## Slack Notifs
+Statsig supports two classes of Slack Notifications -  Project and Personal. [See more](https://docs.statsig.com/integrations/slack)
+Project Notifications will drop into a Slack channel you choose updates including Configuration changes (User1 rolled out Feature1 to 100% of Everyone), Health Check Alerts (Experiment1 is failing Sample Ratio Mismatch checks) and Statsig Health Status Reports (also posted to https://status.statsig.com). 
+![image](https://github.com/statsig-io/docs/assets/31516123/e98ea522-4249-4631-864e-58eea1f2c155)
+
+Individuals can opt into Personal Notifications - so they're notified when tagged in discussions, invited to review a change or there's a change on an experiment they're following. 
+![image](https://github.com/statsig-io/docs/assets/31516123/3203de23-a191-452d-95b1-bf31fc74935b)
+
+## Discussions
+Experimentation is a collaborative exercise where teams work together. Often this collaboration requires people taking screenshots around the experiment and DMing team mates to ask them questions. This information is siloed and lost to others. In-context Discussions allow teams to discuss aspects of the experiment while making this context available to other team members. Common reasons include discussing a surprising metric lift, asking questions on validation  performed before ramping up a feature rollout or even keeping a running log of observations/escalations that can be referenced when the experiment is complete. 
+![image](https://github.com/statsig-io/docs/assets/31516123/1bab9c7c-7ce9-43a3-af8f-938fe9630da8)
