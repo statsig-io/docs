@@ -34,10 +34,10 @@ As a Project Admin, you can configure your project to require reviews for any ch
 ### Creating Review Groups
 To create a predefined group of reviewers,
 
-- Navigate to the **Basic Settings** tab under your **Project Settings**, and click the **Create New Group** button under **Project Members and Groups** 
+- Navigate to the **Reviews** tab under your **Project Settings**, and inside the **Groups** sub tab, click the **Create New Review Group** button
 
-![Screen Shot 2022-06-27 at 8 31 24 AM](https://user-images.githubusercontent.com/74584483/175977950-01f18981-ad91-4116-ab4c-9e69a9a6de98.png)
-
+![image](https://github.com/statsig-io/docs/assets/74588208/3762f843-abd1-4893-aa0c-59b04ecee9ef)
+ 
 - Enter the name and members of the group and click **Create**.  
 
 ![image](https://user-images.githubusercontent.com/1315028/146826405-0f9070f7-8aa4-4c10-8802-178bef5e1505.png)
