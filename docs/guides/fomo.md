@@ -14,7 +14,7 @@ If you've not enabled SSO on Statsig, your ex-employees will be able to make cha
 Like with changes to your source code or production configuration, requiring a second pair of eyes to review changes in Statsig helps reduces mistakes in production. When enabled, changes impacting only pre-production environments do not require approval - allowing agility there. You can grant admins or oncalls the ability to self-approve changes if desired.
 ![image](https://github.com/statsig-io/docs/assets/31516123/7d640328-2615-4b17-94e3-b2788fb6d164)
 
-If you choose to ignore this recommendation, consider enabling change review and granting all members the ability to self-approve changes, so they clearly see the change they're committing before doing so. [See more](https://docs.statsig.com/access-management/sso/overview) 
+If you choose to ignore this recommendation, consider enabling change review and granting all members the ability to self-approve changes, so they clearly see the change they're committing before doing so. [See more](https://docs.statsig.com/guides/setting-up-reviews) 
 ![image](https://github.com/statsig-io/docs/assets/31516123/5e298030-a4ae-4cea-9a77-811c2c30d8ea)
 
 ## Tags for organization
@@ -40,7 +40,7 @@ Individuals can opt into Personal Notifications - so they're notified when tagge
 ![image](https://github.com/statsig-io/docs/assets/31516123/6604cdc4-8191-44bf-bbfe-7c4853a8f226)
 
 ## Discussions
-Experimentation is a collaborative exercise where teams work together. Often this collaboration requires people taking screenshots around the experiment and DMing team mates to ask them questions. This information is siloed and lost to others. In-context Discussions allow teams to discuss aspects of the experiment while making this context available to other team members. Common reasons include discussing a surprising metric lift, asking questions on validation  performed before ramping up a feature rollout or even keeping a running log of observations/escalations that can be referenced when the experiment is complete. 
+Feature rollout and experimentation are collaborative exercises where teams work together. Often this collaboration requires people taking screenshots, looking at metrics and DMing team mates to ask them questions. This information is siloed and lost to others. In-context Discussions allow teams to discuss aspects of the feature rollout or experiment while making this context available to other team members. Common reasons include discussing a surprising metric lift, asking questions on validation performed before ramping up a feature rollout or even keeping a running log of observations/escalations that can be referenced when the experiment is complete. 
 
 ![image](https://github.com/statsig-io/docs/assets/31516123/7215b193-41ae-4932-aeff-8f41fc00c55e)
 
