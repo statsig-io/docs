@@ -16,7 +16,9 @@ As a Project Admin, you can configure your project to require reviews for any ch
 
 <img width="455" alt="image" src="https://user-images.githubusercontent.com/1315028/166673961-3da1f147-47fc-458b-aae1-4ed73ba3a73e.png"/>
 
-- You can optionally allow yourself as a project admin to bypass the review requirement and self-approve review requests.
+- You can optionally allow different roles to bypass the review requirement and self-approve review requests by clicking on "Manage" button next to Roles and Access Controls under Project Setting:
+ 
+![Project_Settings___Statsig](https://github.com/statsig-io/docs/assets/120431069/70c44ed2-d9f0-4e3d-9c89-073d543df8c4)
 
 - Now when you make any configuration changes, say to a feature gate or experiment, you'll be asked to **Submit for Review**; you can add reviewers when you submit the change for review
 
