@@ -46,7 +46,8 @@ Besides the exposure reports from the API access, we also offer data warehouse e
 1. Navigate to `Tools` -> `Exports`. Under the `Scheduled` tab, create a new connection.
 2. In your Snowflake warehouse, create a custom user for export purpose.
 3. Run the script to create the table and grant your user permissions to operate on it.
-```
+
+```sql
 CREATE OR REPLACE TABLE ${database}.${schema}.${exportTableName} (
 	COMPANY_ID VARCHAR(16777216),
 	UNIT_ID VARCHAR(16777216),
