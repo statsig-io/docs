@@ -1,0 +1,45 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+You can install the Statsig JS with Local Evaluation SDK via npm, yarn or jsdelivr:
+
+<Tabs
+  defaultValue="script"
+  values={[
+    {label: 'Script', value: 'script'}, 
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+  ]}>
+
+  <TabItem value="script">
+
+Statsig is available from [jsdelivr](https://www.jsdelivr.com/package/npm/statsig-js-local-eval), an open source CDN.
+
+To access the current primary JavaScript bundle, use:
+
+`https://cdn.jsdelivr.net/npm/statsig-js-local-eval/build/statsig-prod-web-sdk.min.js`
+
+To access specific files/versions:
+
+`http://cdn.jsdelivr.net/npm/statsig-js-local-eval@{version}/{file}`
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/statsig-js-local-eval/build/statsig-prod-web-sdk.min.js"></script>
+```
+
+  </TabItem>
+  <TabItem value="npm">
+
+```shell
+npm install statsig-js-local-eval
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```shell
+yarn add statsig-js-local-eval
+```
+
+  </TabItem>
+</Tabs>

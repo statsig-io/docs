@@ -1,0 +1,14 @@
+{
+    "title": "experiment_status",
+    "x-stoplight": {
+      "id": "79bglwd1nse0s"
+    },
+    "x-internal": true,
+    "type": "string",
+    "description": "The current status of the experiment.",
+    "enum": [
+      "setup",
+      "active",
+      "decision_made"
+    ]
+  }

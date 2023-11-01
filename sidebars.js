@@ -32,6 +32,7 @@ module.exports = {
         "guides/production",
         "guides/testing",
         "guides/uptime",
+        "guides/fomo",
         {
           "Landing Page Experiments": [
             "guides/landing-page-experiments/introduction",
@@ -39,7 +40,7 @@ module.exports = {
             "guides/landing-page-experiments/interpreting",
             "guides/landing-page-experiments/layers",
             "guides/landing-page-experiments/webflow",
-          ]
+          ],
         },
         "guides/sendgrid-email-abtest",
         "guides/customer-io-email-abtest",
@@ -67,14 +68,24 @@ module.exports = {
             "statsig-warehouse-native/guides/sdks",
           ],
         },
-        "statsig-warehouse-native/native-vs-cloud",
+        {
+          Features: [
+            "statsig-warehouse-native/native-vs-cloud",
+            "statsig-warehouse-native/features/funnel-metrics",
+            "statsig-warehouse-native/features/power-analysis",
+            "statsig-warehouse-native/features/cohort-metrics",
+            "statsig-warehouse-native/features/id-resolution",
+            "statsig-warehouse-native/features/entity-properties",
+          ],
+        },
         {
           "Data Overview": [
             // "statsig-warehouse-native/analysis-tools/pulse",
             // "statsig-warehouse-native/analysis-tools/settings",
+            "statsig-warehouse-native/analysis-tools/data-sources",
             "statsig-warehouse-native/analysis-tools/data-privacy",
             "statsig-warehouse-native/analysis-tools/pipeline-overview",
-            "statsig-warehouse-native/analysis-tools/data-modelling",
+            "statsig-warehouse-native/guides/best-practices",
           ],
         },
 
@@ -177,6 +188,7 @@ module.exports = {
         "experiments-plus/ending-experiment",
         "experiments-plus/disable-group",
         "experiments-plus/bayesian",
+        "experiments-plus/switchback-tests",
         {
           Experimentation: [
             "experiments-plus/experimentation/why-experiment",
@@ -233,7 +245,6 @@ module.exports = {
         // 301
         "metrics/create-user-flows",
         "metrics/create-user-funnels",
-        "metrics/events-explorer",
       ],
     },
     {
@@ -298,6 +309,7 @@ module.exports = {
         "client/rokuSDK",
         "client/unitySDK",
         "client/dartSDK",
+        "client/jsLocalEvaluationSDK",
       ],
     },
     {
@@ -327,6 +339,7 @@ module.exports = {
         "server/erlangSDK",
         "server/rustSDK",
         "server/cppSDK",
+        "server/deprecation-notices",
       ],
     },
     "http-api",
@@ -349,6 +362,7 @@ module.exports = {
         "console-api/audit-logs",
         "console-api/autotunes",
         "console-api/target-apps",
+        "console-api/ingestions",
         {
           Reports: [
             "console-api/daily-reports",
@@ -449,6 +463,8 @@ module.exports = {
         "integrations/vscode",
         "integrations/datadog",
         "integrations/github_code_references",
+        "integrations/slack",
+        "integrations/openai",
         {
           type: "category",
           label: "Terraform",
@@ -517,6 +533,7 @@ module.exports = {
       },
       items: [
         "infrastructure/statsig_ip_ranges",
+        "infrastructure/statsig_domains",
         "infrastructure/custom_proxy",
         "infrastructure/reliability-faq",
       ],

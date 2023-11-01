@@ -1,231 +1,186 @@
 {
-  "type": "object",
-  "x-examples": {
-    "example-1": {
-      "id": "a_experiment",
-      "description": "helpful summary of what this experiment does",
-      "lastModifierName": "CONSOLE API",
-      "lastModifierID": "4FKF0sUbi1D7xZFW5vcHWB",
-      "idType": "userID",
-      "status": "setup",
-      "layerID": "statsig::a_experiment_layer",
-      "hypothesis": "",
-      "primaryMetrics": [],
-      "secondaryMetrics": [],
-      "groups": [
-        {
-          "name": "Control",
-          "size": 50,
-          "parameterValues": {}
-        },
-        {
-          "name": "Test",
-          "size": 50,
-          "parameterValues": {}
-        }
-      ],
-      "allocation": 100,
-      "duration": 14,
-      "targetingGateID": "",
-      "defaultConfidenceInterval": "95",
-      "bonferroniCorrection": false
-    }
-  },
-  "description": "Experiment Object",
-  "examples": [
+  "allOf": [
     {
-      "id": "a_experiment",
-      "description": "a helpful summary of what this experiment does",
-      "lastModifierName": "CONSOLE API",
-      "lastModifierID": "f0JAV9dd7KF0sUbi1DHWB",
-      "idType": "userID",
-      "status": "setup",
-      "layerID": "layer1",
-      "hypothesis": "Does 1 or 0 work better?",
-      "primaryMetrics": [
-        {
-          "name": "l14",
-          "type": "user"
-        }
-      ],
-      "secondaryMetrics": [
-        {
-          "name": "mau_28d",
-          "type": "user"
-        }
-      ],
-      "groups": [
-        {
-          "name": "group1",
-          "size": 50,
-          "parameterValues": {
-            "key": 1
-          }
+      "$ref": "./config_common.json"
+    },
+    {
+      "type": "object",
+      "description": "Experiment specific fields",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The name that was originally given to the experiment on creation but formatted as an ID (\"A Experiment\" -> \"a_experiment\")."
         },
-        {
-          "name": "gruop2",
-          "size": 50,
-          "parameterValues": {
-            "key": 0
-          }
-        }
-      ],
-      "allocation": 50.46,
-      "duration": 14,
-      "targetingGateID": "a_gate",
-      "defaultConfidenceInterval": "95",
-      "bonferroniCorrection": false
-    }
-  ],
-  "properties": {
-    "id": {
-      "type": "string",
-      "description": "The name that was originally given to the experiment on creation but formatted as an ID (\"A Experiment\" -> \"a_experiment\")."
-    },
-    "description": {
-      "type": "string",
-      "description": "A helpful summary of what this experiment does"
-    },
-    "lastModifierName": {
-      "type": "string",
-      "description": "The Statsig Username of the last modifier of this experiment."
-    },
-    "lastModifierID": {
-      "type": "string",
-      "description": "The Statsig UserID of the last modifier of this experiment."
-    },
-    "idType": {
-      "type": "string",
-      "description": "The type of ID which the experiment is based on."
-    },
-    "status": {
-      "type": "string",
-      "description": "The current status of the experiment.",
-      "enum": [
-        "setup",
-        "active",
-        "decision_made"
-      ]
-    },
-    "layerID": {
-      "type": "string",
-      "description": "The layer that the experiment is in."
-    },
-    "hypothesis": {
-      "type": "string",
-      "description": "A statement that will be tested by this experiment."
-    },
-    "primaryMetrics": {
-      "type": "array",
-      "description": "Main metrics needed to evaluate your hypothesis",
-      "items": {
-        "$ref": "./experimentMetric.json"
-      }
-    },
-    "primaryMetricTags": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "secondaryMetrics": {
-      "type": "array",
-      "description": "Additional metric you may want to monitor that might impact the analysis or final decision of the experiment",
-      "items": {
-        "$ref": "./experimentMetric.json"
-      }
-    },
-    "secondaryMetricTags": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "groups": {
-      "type": "array",
-      "description": "The test groups for your experiment",
-      "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "size": {
-            "type": "number",
-            "description": "What percentage of traffic should be passed into this group",
-            "minimum": 0,
-            "maximum": 100
-          },
-          "parameterValues": {
-            "type": "object"
-          },
-          "id": {
+        "description": {
+          "type": "string",
+          "description": "A helpful summary of what this experiment does"
+        },
+        "createdTime": {
+          "type": "string",
+          "description": "The timestamp when this experiment was created."
+        },
+        "creatorID": {
+          "type": "string",
+          "description": "The Statsig ID of the creator of this experiment."
+        },
+        "creatorName": {
+          "type": "string",
+          "description": "The Statsig Username of the creator of this experiment."
+        },
+        "creatorEmail": {
+          "type": "string",
+          "description": "The email of the creator of this experiment."
+        },
+        "targetApps": {
+          "type": "array",
+          "description": "Target apps assigned to this experiment",
+          "items": {
+            "x-stoplight": {
+              "id": "v8bmxd9220htx"
+            },
             "type": "string"
           }
         },
-        "required": [
-          "name",
-          "size",
-          "parameterValues",
-          "id"
-        ]
-      }
-    },
-    "allocation": {
-      "type": "number",
-      "description": "Percent of layer allocated to this experiment",
-      "minimum": 0,
-      "maximum": 100
-    },
-    "duration": {
-      "type": "integer",
-      "description": "How long the experiment should last in days",
-      "minimum": 0
-    },
-    "targetingGateID": {
-      "type": "string",
-      "description": "Restrict your experiment to users passing the selected feature gate."
-    },
-    "defaultConfidenceInterval": {
-      "type": "string",
-      "description": "Default error margin used for results",
-      "enum": [
-        "80",
-        "90",
-        "95",
-        "98",
-        "99"
+        "lastModifierID": {
+          "type": "string",
+          "description": "The Statsig UserID of the last modifier of this experiment."
+        },
+        "idType": {
+          "type": "string",
+          "description": "The type of ID which the experiment is based on."
+        },
+        "status": {
+          "$ref": "./experiment_status.json",
+          "description": "The current status of the experiment."
+        },
+        "layerID": {
+          "type": "string",
+          "description": "The layer that the experiment is in."
+        },
+        "hypothesis": {
+          "type": "string",
+          "description": "A statement that will be tested by this experiment."
+        },
+        "primaryMetrics": {
+          "type": "array",
+          "description": "Main metrics needed to evaluate your hypothesis",
+          "items": {
+            "$ref": "./experiment_metric.json"
+          }
+        },
+        "primaryMetricTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "secondaryMetrics": {
+          "type": "array",
+          "description": "Additional metric you may want to monitor that might impact the analysis or final decision of the experiment",
+          "items": {
+            "$ref": "./experiment_metric.json"
+          }
+        },
+        "secondaryMetricTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "groups": {
+          "type": "array",
+          "description": "The test groups for your experiment",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number",
+                "description": "What percentage of traffic should be passed into this group",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "parameterValues": {
+                "type": "object"
+              },
+              "id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "size",
+              "parameterValues",
+              "id"
+            ]
+          }
+        },
+        "allocation": {
+          "type": "number",
+          "description": "Percent of layer allocated to this experiment",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "duration": {
+          "type": "integer",
+          "description": "How long the experiment is expected to last in days",
+          "minimum": 0
+        },
+        "targetingGateID": {
+          "type": "string",
+          "description": "Restrict your experiment to users passing the selected feature gate."
+        },
+        "defaultConfidenceInterval": {
+          "type": "string",
+          "description": "Default error margin used for results",
+          "enum": [
+            "80",
+            "90",
+            "95",
+            "98",
+            "99"
+          ]
+        },
+        "bonferroniCorrection": {
+          "type": "boolean",
+          "description": "Is Bonferroni correction applied?"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "[\"* Core\"]"
+          }
+        },
+        "launchedGroupID": {
+          "type": "string",
+          "description": "ID of the launched group, null otherwise"
+        },
+        "startTime": {
+          "type": "number",
+          "description": "timestamp at which the experiment was started"
+        },
+        "endTime": {
+          "type": "number",
+          "description": "timestamp at which the experiment concluded. This is triggered when a variation is shipped or when the experiment is abandoned"
+        }
+      },
+      "required": [
+        "id",
+        "lastModifierID",
+        "idType",
+        "status",
+        "layerID",
+        "primaryMetricTags",
+        "secondaryMetricTags",
+        "groups",
+        "allocation",
+        "defaultConfidenceInterval",
+        "bonferroniCorrection",
+        "tags"
       ]
-    },
-    "bonferroniCorrection": {
-      "type": "boolean",
-      "description": "Is Bonferroni correction applied?"
-    },
-    "tags": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "example": "[\"* Core\"]"
-      }
-    },
-    "launchedGroupID": {
-      "type": "string",
-      "description": "ID of the launched group, null otherwise"
     }
-  },
-  "required": [
-    "id",
-    "lastModifierName",
-    "lastModifierID",
-    "idType",
-    "status",
-    "layerID",
-    "primaryMetricTags",
-    "secondaryMetricTags",
-    "groups",
-    "allocation",
-    "defaultConfidenceInterval",
-    "bonferroniCorrection",
-    "tags"
   ]
 }

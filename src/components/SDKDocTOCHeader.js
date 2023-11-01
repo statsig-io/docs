@@ -31,12 +31,7 @@ function Header({ lastUpdated }) {
       )}
       <a
         onClick={() =>
-          window
-            .open(
-              "https://statsigcommunity.slack.com/archives/C01RAKM10TD",
-              "_blank"
-            )
-            .focus()
+          window.open("https://statsig.com/community", "_blank").focus()
         }
         href="#"
       >

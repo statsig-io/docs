@@ -130,13 +130,13 @@ module.exports = {
               {
                 tagName: "script",
                 attributes: {
-                  src: "https://dcs-worker.statsig.workers.dev/v1/download_config_specs/client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps.js",
+                  src: "https://api.statsigcdn.com/v1/download_config_specs/client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps.js",
                 },
               },
               {
                 tagName: "script",
                 attributes: {
-                  src: "/js/statsigsdk.js",
+                  src: "https://cdn.jsdelivr.net/npm/statsig-js-local-eval@1.0.0/build/statsig-prod-web-sdk.min.js",
                 },
               },
               {
