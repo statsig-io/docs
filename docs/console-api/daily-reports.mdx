@@ -38,9 +38,36 @@ import Rapidoc from "../../src/components/Rapidoc"
 | inserted_at             | timestamp | The timestamp when this report is generated                                                   |
 | rule_name               | string    | Rule name for gates; 'experiment' for experiments                                             |
 
-- Besides the exposure reports from the API access, we also offer data warehouse export to Snowflake for our enterprise customers. Currently, you need to contact our support team to set it up.
 - After the feature is turned on for you, it will be ready when our pipeline runs. Generally, you can expect it around the time you see cumulative exposures.
 - We commit to maintain the report format including column order and type, but we recommend that you use the column name and cast column type when parsing the file.
+
+### Egress exposure data to your warehouse
+Besides the exposure reports from the API access, we also offer data warehouse export to Snowflake for our enterprise customers.
+1. Navigate to `Tools` -> `Exports`. Under the `Scheduled` tab, create a new connection.
+2. In your Snowflake warehouse, create a custom user for export purpose.
+3. Run the script to create the table and grant your user permissions to operate on it.
+```
+CREATE OR REPLACE TABLE ${database}.${schema}.${exportTableName} (
+	COMPANY_ID VARCHAR(16777216),
+	UNIT_ID VARCHAR(16777216),
+	UNIT_TYPE VARCHAR(16777216),
+	EXPOSURE_TYPE VARCHAR(16777216),
+	NAME VARCHAR(16777216),
+	RULE VARCHAR(16777216),
+	EXPERIMENT_GROUP VARCHAR(16777216),
+	FIRST_EXPOSURE_UTC TIMESTAMP_NTZ(9),
+	FIRST_EXPOSURE_PST_DATE DATE,
+	AS_OF_PST_DATE DATE,
+	PERCENT FLOAT,
+	ROLLOUT NUMBER(38,0),
+	USER_DIMENSIONS VARCHAR(16777216),
+	INSERTED_AT TIMESTAMP_NTZ(9) NOT NULL,
+	RULE_NAME VARCHAR(16777216)
+);
+
+GRANT INSERT, UPDATE, DELETE ON TABLE ${database}.${schema}.${exportTableName} TO ROLE ${generatedRole};
+```
+4. Connect. Then StatSig will run tests to make sure all privileges are granted. Once it's successful, you are enrolled in the feature.
 
 ## Report Schema - type = pulse_daily
 
