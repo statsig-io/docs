@@ -43,8 +43,9 @@ import Rapidoc from "../../src/components/Rapidoc"
 
 ### Egress exposure data to your warehouse
 Besides the exposure reports from the API access, we also offer data warehouse export to Snowflake for our enterprise customers.
-1. Navigate to [] -> Exports. Under the `Scheduled` tab, create a new connection.
+1. Navigate to `Tools` -> `Exports`. Under the `Scheduled` tab, create a new connection.
 2. In your Snowflake warehouse, create a custom user for export purpose.
+3. Run the script to create the table and grant your user permissions to operate on it.
 ```
 CREATE OR REPLACE TABLE ${database}.${schema}.${exportTableName} (
 	COMPANY_ID VARCHAR(16777216),
@@ -66,7 +67,7 @@ CREATE OR REPLACE TABLE ${database}.${schema}.${exportTableName} (
 
 GRANT INSERT, UPDATE, DELETE ON TABLE ${database}.${schema}.${exportTableName} TO ROLE ${generatedRole};
 ```
-3. Connect. Then StatSig will run tests to make sure all privileges are granted. Once it's successful, you are enrolled in the feature.
+4. Connect. Then StatSig will run tests to make sure all privileges are granted. Once it's successful, you are enrolled in the feature.
 
 ## Report Schema - type = pulse_daily
 
