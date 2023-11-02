@@ -5,9 +5,9 @@ slug: /experiments-plus/power-analysis
 ---
 
 The power analysis tool leverages the known mean and variance of a metric and the observed traffic volume to estimate the relationship between three variables:
-* Minimum detectable effect (MDE): The smallest change in the metric that the experiment can detect.  For example: An MDE of 1% means that if there's a true effect of 1% or larger on our metric, we expect the experiment will show a statistically significant result.  If the effect is smaller than 1%, then it will likely fall inside the confidence intervals and not be statistically significant.  
-* Number of days or exposures: How long the experiment is active and the number of users enrolled in it.  Longer running experiments typically have more observations, leading to tighter confidence intervals and smaller MDE.  We use historical data to estimate the number of new users that would be eligible for the experiment each day.
-* Allocation: The percentage of traffic that participates in the experiment.  Larger allocation leads to smaller MDE, so it's often desirable to allocate as many users as possible to get faster or more sensitive results.  When there's a risk of negative impact or a need for mutually exclusive experiments however, it's useful to know the smallest allocation that can achieve the desired MDE. 
+* **Minimum detectable effect (MDE)**: The smallest change in the metric that the experiment can reliably detect. For example: An MDE of 1% with Power set to 80% means that if there's a true effect of 1% on our metric, we expect the experiment will have an 80% chance to produce a statistically significant result. If the magnitude of the true effect is smaller than 1%, it will be less likely to produce a statistically significant result (though it can still occur).
+* **Number of days or exposures**: How long the experiment is active and the number of users enrolled in it.  Longer running experiments typically have more observations, leading to tighter confidence intervals and smaller MDE.  We use historical data to estimate the number of new users that would be eligible for the experiment each day.
+* **Allocation**: The percentage of traffic that participates in the experiment.  Larger allocation leads to smaller MDE, so it's often desirable to allocate as many users as possible to get faster or more sensitive results.  When there's a risk of negative impact or a need for mutually exclusive experiments however, it's useful to know the smallest allocation that can achieve the desired MDE. 
 
 ## Using the Tool
 
@@ -16,9 +16,10 @@ It can be accessed from the tools menu. It's also available on the experiment se
    ![image](https://user-images.githubusercontent.com/31516123/236296790-d7768b1a-13ca-4e55-9877-bdad607d6da4.png)
    
 1. Select the population used to determine the metric mean and variance and to estimate the number of exposures over time.
-    - Everyone: Analysis is based on the entire user base.  
-    - Targeting gate: Analysis is scoped to the set of users that pass the selected feature gate, which has been active for at least 7 days.  Choose this option when you plan to use a targeting gate for the experiment.  Note: This will trigger an offline query, you'll be notified when results are ready.
-    - [Coming soon] Past experiment: Analysis is based on data collected from in a previous experiment.  Use this option when the new experiment will impact a similar user base or part of the product as the previous one.  
+    - **Everyone**: Analysis is based on the entire user base.  
+    - **Targeting gate**: Analysis is scoped to the set of users who pass the selected feature gate, which must have been active for at least 7 days.  Choose this option when you plan to use a targeting gate for the experiment.  
+    - **Past experiment**: Analysis is based on data collected from in a previous experiment.  Use this option when the new experiment will impact a similar user base or part of the product as the previous one.
+    - **Qualifying event**: Analysis is scoped to the set of users who logged the event specified. 
 2. Select a metric of interest (or multiple metrics for a targeting gate analysis)
 3. Select the type of analysis to perform:
     - Fixed Allocation: You know the available allocation, the tool tells you the expected MDE for each duration
@@ -48,7 +49,9 @@ This is how the various inputs for the power analysis are obtained from the diff
 |------------------|-------------------------|----------------|
 | Everyone         | Mean and variance across all users, estimated for 1, 2, 3, and 4 week rollups   | Total count of users seen in the past 1, 2, 3, and 4 weeks |
 | Targeting Gate   | Mean and variance for users that pass the targeting gate, computed for 1, 2, 3, 4 week rollups | Total users that passed the targeting gate after 1, 2, 3, 4 weeks |
-| Past Experiment (coming soon) | Cumulative mean and variance for the control group at 1, 2, 3, and 4 weeks | Total experiment exposures after 1, 2, 3, and 4 weeks, adjusted according to the past experiment's allocation and the desired allocation for the new experiment.
+| Past Experiment  | Cumulative mean and variance for the control group at 1, 2, 3, and 4 weeks | Total experiment exposures after 1, 2, 3, and 4 weeks, adjusted according to the past experiment's allocation and the desired allocation for the new experiment.
+| Qualifying Event | Mean and variance for users who logged a specified event, computed for 1, 2, 3, 4 week rollups | Total users who logged a specified event after 1, 2, 3, 4 weeks |
+
 
 ## Analysis Types
 
