@@ -33,7 +33,7 @@
     "rehype-extract-meta": "^2.0.4",
     "rehype-katex": "5",
     "remark-math": "3",
-    "statsig-docusaurus-search": "0.0.2-beta.33"
+    "statsig-docusaurus-search": "0.0.2-beta.35"
   },
   "browserslist": {
     "production": [
