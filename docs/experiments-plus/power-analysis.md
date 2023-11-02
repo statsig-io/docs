@@ -48,7 +48,9 @@ This is how the various inputs for the power analysis are obtained from the diff
 |------------------|-------------------------|----------------|
 | Everyone         | Mean and variance across all users, estimated for 1, 2, 3, and 4 week rollups   | Total count of users seen in the past 1, 2, 3, and 4 weeks |
 | Targeting Gate   | Mean and variance for users that pass the targeting gate, computed for 1, 2, 3, 4 week rollups | Total users that passed the targeting gate after 1, 2, 3, 4 weeks |
-| Past Experiment (coming soon) | Cumulative mean and variance for the control group at 1, 2, 3, and 4 weeks | Total experiment exposures after 1, 2, 3, and 4 weeks, adjusted according to the past experiment's allocation and the desired allocation for the new experiment.
+| Past Experiment  | Cumulative mean and variance for the control group at 1, 2, 3, and 4 weeks | Total experiment exposures after 1, 2, 3, and 4 weeks, adjusted according to the past experiment's allocation and the desired allocation for the new experiment.
+| Qualifying Event | Mean and variance for users who logged a specified event, computed for 1, 2, 3, 4 week rollups | Total users who logged a specified event after 1, 2, 3, 4 weeks |
+
 
 ## Analysis Types
 
