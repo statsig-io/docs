@@ -43,6 +43,8 @@ import Rapidoc from "../../src/components/Rapidoc"
 
 ### Egress exposure data to your warehouse
 Besides the exposure reports from the API access, we also offer data warehouse export to Snowflake for our enterprise customers.
+![image](https://github.com/statsig-io/docs/assets/31516123/10345fb8-b4c3-47a5-936e-e4fc4120433c)
+
 
 > **We do NOT support this feature if your warehouse has IP restrictions. Coming in a week.**
 1. Navigate to `Tools` -> `Exports`. Under the `Scheduled` tab, create a new connection.
