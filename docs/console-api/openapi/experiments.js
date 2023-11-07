@@ -2807,6 +2807,39 @@ module.exports = {
         ],
         "x-stoplight": {
           "id": "vjbcvlmncez7b"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "Example 1": {
+                    "removeTargeting": false,
+                    "decisionReason": ""
+                  }
+                },
+                "properties": {
+                  "removeTargeting": {
+                    "type": "boolean",
+                    "description": "Removing targeting on experiment"
+                  },
+                  "decisionReason": {
+                    "type": "string",
+                    "description": "Why the experiment was abandoned"
+                  }
+                }
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "removeTargeting": false,
+                    "decisionReason": "Reason for abandoning the experiment"
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
