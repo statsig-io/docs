@@ -2807,6 +2807,21 @@ module.exports = {
         ],
         "x-stoplight": {
           "id": "vjbcvlmncez7b"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "examples": {
+                "": {
+                  "value": {}
+                }
+              }
+            }
+          }
         }
       }
     }
