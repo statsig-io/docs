@@ -2813,11 +2813,29 @@ module.exports = {
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": {}
+                "x-examples": {
+                  "Example 1": {
+                    "removeTargeting": false,
+                    "decisionReason": ""
+                  }
+                },
+                "properties": {
+                  "removeTargeting": {
+                    "type": "boolean",
+                    "description": "Removing targeting on experiment"
+                  },
+                  "decisionReason": {
+                    "type": "string",
+                    "description": "Why the experiment was abandoned"
+                  }
+                }
               },
               "examples": {
-                "": {
-                  "value": {}
+                "Example": {
+                  "value": {
+                    "removeTargeting": false,
+                    "decisionReason": "Reason for abandoning the experiment"
+                  }
                 }
               }
             }
