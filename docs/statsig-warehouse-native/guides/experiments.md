@@ -15,7 +15,7 @@ To create an experiment, you can go to the experiments tab in your console and p
 There's two types of experiments in Statsig Warehouse Native:
 
 - Analyze: these are for 3rd-party or in-house exposure sources
-- Create & Analyze: these are Statsig-configured experiments. You can set up all of the configuration here, as well as track results.
+- Create & Analyze: these are Statsig-configured experiments. You can set up all of the configuration here, implement it through Statsig SDKs, and track results.
 
 ![Create Experiment](https://user-images.githubusercontent.com/102695539/264101231-45446c24-f8a9-4ae9-8b44-fff320458615.png)
 
