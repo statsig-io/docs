@@ -91,7 +91,7 @@ See the question above for what counts as a billable event. Some tools available
 ## How does bucketing within the Statsig SDKs work?
 Bucketing on Statsig is deterministic. Given the same UserID (or any UnitID) and an experiment/gate a given rollout stage, we'll always evalaute to the same result. This is true even if the evaluation happens in different places - on the client or server. For a peek into how we do this at a high level:
 - Salt Creation: For each experiment or feature gate, a unique salt is generated.
-- Hashing: The chosen unit (e.g., userId, organizationId, etc.) is passed through a hashing function along with the unique salt which produces a big int.
+- Hashing: The chosen unit (e.g., userId, organizationId, etc.) is passed through a hashing function (SHA256) along with the unique salt which produces a big int.
 - Bucket Assignment: The big int is subjected to a modulus operation with the number 10000. This results in a value between 0 and 9999. (Layers use 1000)
 - Determination: The result from step 3 represents the specific bucket (out of the 10000 possible) that the unit is assigned to.
 - This ensures a randomized yet deterministic bucketing of units across different experiments or feature gates, while the unique salt ensures that the same unit can be assigned to different buckets in different experiments.
