@@ -18,7 +18,7 @@ You can find the configuration for these datasets and the table we create/output
 
 ## Exposures
 
-Statsig calculates deduplicated first-exposure rollups for you on a daily basis and exports that miniaturized dataset to your warehouse. Additionally, on every Pulse load on the first day of a experiment, deduplicated exposures for the day will be exported to your warehouse in near realtime, up to 1 million exposures.
+Statsig calculates deduplicated first-exposure rollups for you on a daily basis and exports that miniaturized dataset to your warehouse. Additionally, on every Pulse load on the first day of a experiment, deduplicated exposures for the day will be exported to your warehouse in near real-time, up to 1 million exposures.
 
 ## Log Events
 
