@@ -12,7 +12,7 @@ Bonferroni corrections are an optional feature on Statsig experiments that reduc
 
 You can choose to apply these based on one or both of the following:
 * The number of test groups (multiple treatment hypotheses).  The significance level is divided by the number of variants being compared against control.
-* The number of metrics in the scorecard.  Here you may select what percentage of your total α is divided evenly among the Primary Metrics, and the remaining α is split equally among Seconday Metrics.  For example:
+* The number of metrics in the scorecard.  Here you may select what percentage of your total α is divided evenly among the Primary Metrics, and the remaining α is split equally among Secondary Metrics.  For example:
   * Significance level of 0.05
   * 2 Primary Metrics and 4 Secondary Metrics
   * 60% of α applied to Primary Metrics
