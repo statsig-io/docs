@@ -165,6 +165,13 @@
         "endTime": {
           "type": "number",
           "description": "timestamp at which the experiment concluded. This is triggered when a variation is shipped or when the experiment is abandoned"
+        },
+        "decisionReason": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "5qr4wojsv4un8"
+          },
+          "description": "Reason for shipping or abandoning an experiment"
         }
       },
       "required": [
@@ -181,6 +188,70 @@
         "bonferroniCorrection",
         "tags"
       ]
+    }
+  ],
+  "examples": [
+    {
+      "id": "a_experiment",
+      "name": "a_experiment",
+      "description": "This experiment will do great things",
+      "idType": "userID",
+      "lastModifierID": "68ztZp2v2nFc81RAsvuvj4",
+      "lastModifiedTime": 1699558636288,
+      "lastModifierName": "Bobby O",
+      "lastModifierEmail": "bobby@statsig.com",
+      "creatorID": "1vaAVaoflkdua9iiuOSBP2",
+      "createdTime": 1699558602554,
+      "creatorName": "CONSOLE API",
+      "creatorEmail": null,
+      "targetApps": [],
+      "tags": [],
+      "status": "decision_made",
+      "launchedGroupID": "2p5pZm5R5bFXMpVno6b6f7",
+      "startTime": 1699558621627,
+      "endTime": 1699558636170,
+      "layerID": null,
+      "hypothesis": "asdf",
+      "primaryMetrics": [
+        {
+          "name": "dau",
+          "type": "user"
+        }
+      ],
+      "primaryMetricTags": [],
+      "secondaryMetrics": [
+        {
+          "name": "d1_retention_rate",
+          "type": "user"
+        },
+        {
+          "name": "l28",
+          "type": "user"
+        }
+      ],
+      "secondaryMetricTags": [],
+      "groups": [
+        {
+          "name": "Control",
+          "id": "2p5lFiNFJhcKNTvf18ngwx",
+          "size": 50,
+          "parameterValues": {},
+          "description": ""
+        },
+        {
+          "name": "Test",
+          "id": "2p5pZm5R5bFXMpVno6b6f7",
+          "size": 50,
+          "parameterValues": {},
+          "description": ""
+        }
+      ],
+      "allocation": 100,
+      "duration": 14,
+      "targetingGateID": "",
+      "defaultConfidenceInterval": "95",
+      "bonferroniCorrection": false,
+      "decisionReason": "This experiment increased DAU by 1000%"
     }
   ]
 }
