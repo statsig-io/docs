@@ -76,6 +76,7 @@ module.exports = {
             "statsig-warehouse-native/features/cohort-metrics",
             "statsig-warehouse-native/features/id-resolution",
             "statsig-warehouse-native/features/entity-properties",
+            "statsig-warehouse-native/features/monitor-an-experiment",
           ],
         },
         {
