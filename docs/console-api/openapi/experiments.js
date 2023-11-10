@@ -436,7 +436,8 @@ module.exports = {
                         "bonferroniCorrection": false,
                         "tags": [
                           "* Core"
-                        ]
+                        ],
+                        "decisionReason": ""
                       }
                     }
                   }
@@ -603,7 +604,8 @@ module.exports = {
                           "bonferroniCorrection": false,
                           "tags": [
                             "* Core"
-                          ]
+                          ],
+                          "decisionReason": ""
                         }
                       ]
                     }
@@ -863,7 +865,8 @@ module.exports = {
                         "bonferroniCorrection": false,
                         "tags": [
                           "* Core"
-                        ]
+                        ],
+                        "decisionReason": ""
                       }
                     }
                   }
@@ -1154,7 +1157,8 @@ module.exports = {
                     "duration": 28,
                     "targetingGateID": "a_gate",
                     "defaultConfidenceInterval": "90",
-                    "bonferroniCorrection": false
+                    "bonferroniCorrection": false,
+                    "decisionReason": ""
                   }
                 }
               }
@@ -1548,7 +1552,8 @@ module.exports = {
                     "duration": 14,
                     "targetingGateID": "",
                     "defaultConfidenceInterval": "95",
-                    "bonferroniCorrection": true
+                    "bonferroniCorrection": true,
+                    "decisionReason": ""
                   }
                 }
               }
