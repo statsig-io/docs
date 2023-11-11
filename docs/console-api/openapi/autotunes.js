@@ -1499,7 +1499,7 @@ module.exports = {
         }
       }
     },
-    "/autotunes/{autotune_id}/restart": {
+    "/autotunes/{autotune_id}/reset": {
       "parameters": [
         {
           "schema": {
@@ -1511,7 +1511,7 @@ module.exports = {
         }
       ],
       "put": {
-        "summary": "Restart Experiment",
+        "summary": "Reset Experiment",
         "operationId": "put-autotunes-autotune_id-start",
         "responses": {
           "200": {
