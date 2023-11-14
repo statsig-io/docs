@@ -244,7 +244,6 @@ module.exports = {
         "metrics/user",
 
         // 301
-        "metrics/create-user-flows",
         "metrics/create-user-funnels",
       ],
     },
