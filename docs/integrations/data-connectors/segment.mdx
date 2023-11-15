@@ -199,8 +199,8 @@ const Statsig = require("statsig-js");
 
 await Statsig.initialize(
   "client-sdk-key",
-  { userID: "some_user_id" },
-  { customIDs: { segmentAnonymousID: analytics.user().anonymousId()} } 
+  { userID: "some_user_id",
+    customIDs: { segmentAnonymousId: analytics.user().anonymousId()} } 
 );
 ```
 
