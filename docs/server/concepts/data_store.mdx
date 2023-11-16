@@ -25,6 +25,7 @@ When a Statsig SDK is initialized with a `DataAdapter`, it will rely on that fir
 - The SDK client will attempt to load config via `DataAdapter.get` for initialization and use that if the entry is available, but if entry does not exist, will go to network for an updated config and then write that back to the data store (via `DataAdapter.set`).
 - In the background, the SDK will poll Statsig config for updates and write them to your data store via `DataAdapter.set`.
 - If your DataAdapter implements `supportsPollingUpdatesFor` and returns `true`, the SDK will _only poll_ via the DataAdapter for updates and will never reach over the network to Statsig. 
+- If the SDK client is initialize with `localMode=true`, this will disable any fallback to fetching the config across the network from Statsig.
 
 :::info
 NOTE: Most DataAdapters are currently only used for the `initialize` path for getting a project definition.
