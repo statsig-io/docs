@@ -217,9 +217,9 @@ Refer to the following diagram to help orient you to mapping `anonymousIds` in S
 ![](https://user-images.githubusercontent.com/125311112/283278011-3c22e6e8-ab36-4844-aee2-b6630ecda4de.png)
 
 1. Initialize the Statsig SDK with your [Statsig User](/client/concepts/user) which will contain an optional `userID` value and a `customID` that you've created in the Statsig UI - `segmentAnonymousId` in this example.
-2. As you orchestrate features/experiments, Statsig will associate this user to a variant using the unit of randomization chosen. For anonymous users, we'll use `segmentAnonymousID`.
+2. As you orchestrate features/experiments, Statsig will associate this user to a variant using the unit of randomization chosen. For anonymous users, we'll use `segmentAnonymousId`.
 3. Your existing Segment implementation tracks user traffic and associates anonymous users to the top-level field `anonymousId`. 
-4. This `anonymousId` is mapped in Statsig (to `segmentAnonymousID`), properly associating the identifier used in experiment exposures to the same identifier used to track user actions.
+4. This `anonymousId` is mapped in Statsig (to `segmentAnonymousId`), properly associating the identifier used in experiment exposures to the same identifier used to track user actions.
 
 ### Syncing Statsig Segment ID Lists with Segment Engage Audiences
 
