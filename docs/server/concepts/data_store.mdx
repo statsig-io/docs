@@ -18,7 +18,13 @@ This is what we built the `DataAdapter`/`DataStore` for.
 DataAdapters allow you to plug in your own storage solution as a cache for the Statsig server sdk.
 
 They define a simple API that you have to implement: `initialize`, `get`, `set`, and `shutdown` for setup, reading, writing, and closing.
-When a Statsig SDK is initialized with a `DataAdapter`, it will rely on that first as the source of truth for the project definition, before reaching out to Statsig servers. Whenever it gets an up to date version of the project from our api, it will cache it locally using the DataAdapter.
+
+When a Statsig SDK is initialized with a `DataAdapter`, it will rely on that first as the source of truth for fetching the project configuration (includes all experiments, gates and their targeting/allocation rules), before reaching out to Statsig servers. Whenever it gets an up to date version of the project from our api, it will cache it locally using the DataAdapter.
+
+### Data Adapter Logic
+- The SDK client will attempt to load config via `DataAdapter.get` for initialization and use that if the entry is available, but if entry does not exist, will go to network for an updated config and then write that back to the data store (via `DataAdapter.set`).
+- In the background, the SDK will poll Statsig config for updates and write them to your data store via `DataAdapter.set`.
+- If your DataAdapter implements `supportsPollingUpdatesFor` and returns `true`, the SDK will _only poll_ via the DataAdapter for updates and will never reach over the network to Statsig. 
 
 :::info
 NOTE: Most DataAdapters are currently only used for the `initialize` path for getting a project definition.
