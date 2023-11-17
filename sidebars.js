@@ -361,6 +361,7 @@ module.exports = {
         "console-api/users",
         "console-api/metrics",
         "console-api/audit-logs",
+        "console-api/exposure-count",
         "console-api/autotunes",
         "console-api/target-apps",
         "console-api/ingestions",

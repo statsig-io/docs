@@ -20,5 +20,5 @@ export default {
   variant: require("./variant.json"),
   audit_log: require("./audit_log.json"),
   pagination: require("./pagination.json"),
-  targetApps: require("./targetApps.json")
+  targetApps: require("./targetApps.json"),
 };
