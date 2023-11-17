@@ -15,6 +15,7 @@ const supportedEntities = [
   'users', 
   'metrics', 
   'audit-logs', 
+  'exposure-count',
   'reports', 
   'usage-billing', 
   'target-apps',
