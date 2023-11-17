@@ -92,74 +92,6 @@ If you are unable to connect to Segment via OAuth, you can still manually connec
 7. As your Segment events flow into Statsig, you'll see a live **Log Stream** in the [Metrics](/metrics) tab in the Statsig console. You can click one of these events to see the details that are logged as part of the event.
     ![](https://user-images.githubusercontent.com/1315028/150830169-17564060-816b-4c5c-ade9-10bf6274265a.png)
 
-## Configuring Outbound Events to Segment
-
-To export your Statsig events to Segment,
-
-1. In your Segment app, add a new source → search for Statsig → click **Next**
-    
-  ![](https://user-images.githubusercontent.com/125311112/263066497-1856270d-adb9-4ca7-9349-1b4b393b1aa2.png)
-    
-2. Name your source → Create Source → click **Done**:
-
-  ![](https://user-images.githubusercontent.com/125311112/263066506-cbe5beca-5971-4baf-ae41-571bd7c1ae52.png)
-
-3. Locate your **Write Key** and copy it.
-4. Log into the Statsig console and navigate to the [**Integrations**](https://console.statsig.com/integrations) page.
-5. Click on the **Segment** card and switch to the **Outbound** tab, paste the **Write Key** into the **API Key** text box shown below, and click **Enable**.
-
-  ![image](https://user-images.githubusercontent.com/1315028/150827399-333d9064-de1c-4f4e-bc33-51a46a83531d.png)
-
-### Outbound event schema
-
-Statsig exports log events and exposure events to segment as `track` events:
-
-```
-{
-    type: 'track',
-    userId: event.userID,
-    timestamp: Number(event.timestamp),
-    event: event.eventName,
-    context: {
-      user: event.user,
-      value: event.value,
-      metadata: event.metadata,
-      library: {
-        name: 'statsig',
-        version: '1.0',
-      },
-      stableID: event.statsigMetadata.stableID // stableID, if you are relying on that for anonymous users
-    },
-    properties: {
-      value: event.value,
-      metadata: event.metadata,
-    },
-  };
-}
-```
-
-Config Change events follow this schema:
-
-```
-{
-  userId: statsigUserID,
-  timestamp: Date.now(),
-  event: 'statsig::config_change',
-  context: {
-    library: {
-      name: 'statsig',
-      version: '1.0',
-    },
-  },
-  properties: {
-    author: author,
-    configName: configName,
-    description: changeDescription,
-    environment: environment,
-  },
-},
-```
-
 ## Working with Users
 Statsig will join incomming user identifiers to whichever [unit of randomization](/experiments-plus/experimentation/choosing-randomization-unit) you choose. This allows you to be flexible with your experimentation and enables testing on known (userID) and unknown (anonymousID) traffic as well as any custom identifiers your team may have (deviceID, companyID, vehicleID, etc).
 
@@ -230,7 +162,7 @@ By using [Segment Engage Audiences](https://segment.com/docs/engage/audiences/) 
 
 Once these steps have been completed, your Segment Audience will be synced, and you will be able to target those users for features you develop or experiments you run.
 
-## Custom Properties
+### Custom Properties
 Passing [custom properties to a Statsig User](/client/concepts/user#user-attributes) (see `custom` field) enables targeting on specific cohorts of your users in feature gates and experimentation. 
 Providing custom user properties also allows you to drill down your results to specific populations (ex: android/iOS, isVIP, etc) when [reading pulse results](/pulse/custom-queries#running-a-custom-query).
 
@@ -244,6 +176,74 @@ field, as an array of key value pairs: `[key1, value1, key2, value2, ...]`. An e
     "statsigCustom": [ "isVIP", "true", "marketing_campaign", "abx343", ...]
   }
 }
+```
+
+## Configuring Outbound Events to Segment
+
+To export your Statsig events to Segment,
+
+1. In your Segment app, add a new source → search for Statsig → click **Next**
+    
+  ![](https://user-images.githubusercontent.com/125311112/263066497-1856270d-adb9-4ca7-9349-1b4b393b1aa2.png)
+    
+2. Name your source → Create Source → click **Done**:
+
+  ![](https://user-images.githubusercontent.com/125311112/263066506-cbe5beca-5971-4baf-ae41-571bd7c1ae52.png)
+
+3. Locate your **Write Key** and copy it.
+4. Log into the Statsig console and navigate to the [**Integrations**](https://console.statsig.com/integrations) page.
+5. Click on the **Segment** card and switch to the **Outbound** tab, paste the **Write Key** into the **API Key** text box shown below, and click **Enable**.
+
+  ![image](https://user-images.githubusercontent.com/1315028/150827399-333d9064-de1c-4f4e-bc33-51a46a83531d.png)
+
+### Outbound event schema
+
+Statsig exports log events and exposure events to segment as `track` events:
+
+```
+{
+    type: 'track',
+    userId: event.userID,
+    timestamp: Number(event.timestamp),
+    event: event.eventName,
+    context: {
+      user: event.user,
+      value: event.value,
+      metadata: event.metadata,
+      library: {
+        name: 'statsig',
+        version: '1.0',
+      },
+      stableID: event.statsigMetadata.stableID // stableID, if you are relying on that for anonymous users
+    },
+    properties: {
+      value: event.value,
+      metadata: event.metadata,
+    },
+  };
+}
+```
+
+Config Change events follow this schema:
+
+```
+{
+  userId: statsigUserID,
+  timestamp: Date.now(),
+  event: 'statsig::config_change',
+  context: {
+    library: {
+      name: 'statsig',
+      version: '1.0',
+    },
+  },
+  properties: {
+    author: author,
+    configName: configName,
+    description: changeDescription,
+    environment: environment,
+  },
+},
 ```
 
 ## Environments
