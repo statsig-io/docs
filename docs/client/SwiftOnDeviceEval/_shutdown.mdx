@@ -1,0 +1,38 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="swift-ondevice-sdk-lang-choice"
+  defaultValue="swift"
+  values={[
+    {label: 'Swift', value: 'swift'},
+    {label: 'Objective C', value: 'objective-c'},
+  ]}>
+
+  <TabItem value="swift">
+
+```swift
+Statsig.shared.shutdown { err in
+    if let err = err {
+        print("An error occurred during Statsig shutdown: \(err)")
+    } else {
+        print("Statsig shutdown successfully")
+    }
+}
+```
+
+  </TabItem>
+  <TabItem value="objective-c">
+
+```swift
+[[Statsig sharedInstance] shutdownWithCompletion:^(NSError * _Nullable error) {
+    if (error != nil) {
+        NSLog(@"An error occurred during Statsig shutdown: %@", error);
+    } else {
+        NSLog(@"Statsig shutdown successfully");
+    }
+}];
+```
+
+  </TabItem>
+</Tabs>
