@@ -44,6 +44,7 @@ In `index.html`, paste the following:
 <html lang="en">
 
 <head>
+  <meta charset="UTF-8">
   <link rel="stylesheet" href="styles.css">
   <script src="scripts.js"></script>
 </head>
@@ -137,6 +138,7 @@ In our `index.html` file, let’s include the Statsig JS SDK by adding a script 
 
 ```markup
 <head>
+  <meta charset="UTF-8">
   <link rel="stylesheet" href="styles.css">
 
   <!-- Statsig JS -->
@@ -236,7 +238,7 @@ Then we’ll update the `scripts.js` file to pull the move set from Statsig and 
 ```javascript
 let moves = ["✊", "🖐", "✌"];
 
-async () => {
+(async () => {
   await statsig.initialize(
     "<CLIENT_SDK_KEY>",
     {
