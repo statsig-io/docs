@@ -4,8 +4,6 @@ If/when the user object changes, the SDK will automatically fetch the updated va
 if `waitForInitialization` is false, and no [mountKey](#mount-key) is set on the [StatsigProvider](#statsig-provider), this will trigger a
 re-render for the new user with default values, followed by a render when the values have been updated.
 
-```js
-setUser({ userID: "another-user" });
-```
+Alternatively, you can provide a user update function to the provider under the `setUser` property.  This will be called when the `useUpdateUser` hook is triggered.
 
-There also exists am `updateUser` method on the [Statsig](#statsig-interface) interface, but calling this directly may lead to issues with the StatsigProvider.
+There is also `updateUser` method on the [Statsig](#statsig-interface) interface, but calling this directly may lead to issues with the StatsigProvider.
