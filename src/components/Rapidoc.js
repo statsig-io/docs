@@ -20,6 +20,7 @@ const supportedEntities = [
   'usage-billing', 
   'target-apps',
   'ingestions',
+  'tags',
 ];
 
 function updateCodeSnippets(data, entity) {
@@ -311,6 +312,15 @@ function getDescription(entity) {
         <h2>Ingestion API functions</h2>
         <ul>
           <li>Check the status history of ingestions sent to Statsig</li>
+        </ul>
+      </>
+
+    case 'tags': 
+      return <>
+        <h2>Tag API functions</h2>
+        <ul>
+          <li>Create a new tag</li>
+          <li>Read data from existing tags</li>
         </ul>
       </>
 
