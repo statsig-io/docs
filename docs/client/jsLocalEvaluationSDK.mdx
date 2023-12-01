@@ -1,6 +1,6 @@
 ---
-sidebar_label: JS Local Evaluation
-title: JavaScript Local Evaluation
+sidebar_label: JavaScript (On Device Evaluation)
+title: JavaScript On Device Evaluation
 ---
 
 import {
@@ -22,6 +22,8 @@ import {
   FetchMode,
 } from "./Templates/index.mdx";
 
+import OnDeviceEvalProsAndCons from "./Templates/_OnDeviceEvalProsAndCons.mdx";
+
 import AdditionalWelcome from "./jslocal/_additionalWelcome.mdx";
 import Initialize from "./jslocal/_initialize.mdx";
 import Install from "./jslocal/_install.mdx";
@@ -39,9 +41,21 @@ export const Result = SDKDocsBuilder(
   {},
   [
     [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/js-local-eval",
+      },
+    ],
+    [
       GettingStartedRulesets,
       {
-        additionalWelcomeMessage: <AdditionalWelcome />,
+        additionalWelcomeMessage:  <OnDeviceEvalProsAndCons
+            sdkName="JavascriptOnDeviceEvaluations"
+            otherSDK={{
+              name: "Javascript Precomputed Evaluations SDK",
+              link: "/client/jsClientSDK",
+            }}
+          />,
         sdkType: "JS Local Evaluation",
         install: <Install />,
         initialize: <Initialize />,

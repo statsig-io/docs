@@ -141,3 +141,9 @@ span.math.math-inline {
 .math-inline {
   line-height: 1;
 }
+
+.img-center {
+  display: flex;
+  justify-content: center;
+  width: 100%,
+}

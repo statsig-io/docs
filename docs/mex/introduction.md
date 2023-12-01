@@ -1,5 +1,7 @@
 ---
 title: Metrics Explorer
+tags:
+- Statsig Cloud 
 sidebar_label: Metrics Explorer
 slug: /mex
 ---
