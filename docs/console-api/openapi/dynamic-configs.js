@@ -23,51 +23,34 @@ module.exports = {
           "application/json": {
             "schema": {
               "type": "object",
-              "x-examples": {
-                "example-1": {
-                  "name": "a dynamic config",
-                  "isEnabled": false,
-                  "description": "an updated summary of what this dynamic config does",
-                  "lastModifierName": "CONSOLE API",
-                  "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                  "rules": [
-                    {
-                      "name": "All Conditions",
-                      "passPercentage": 10,
-                      "returnValue": {
-                        "key": true
-                      },
-                      "conditions": [
-                        {
-                          "type": "public"
-                        }
-                      ]
-                    }
-                  ],
-                  "defaultValue": {
-                    "key": true
-                  }
-                }
-              },
               "properties": {
                 "name": {
                   "type": "string",
-                  "description": "The display name of the dynamic config"
+                  "description": "The display name of the dynamic config",
+                  "example": "a dynamic config"
                 },
                 "description": {
                   "type": "string",
-                  "description": "A brief summary of what the dynamic config is being used for."
+                  "description": "A brief summary of what the dynamic config is being used for.",
+                  "example": "helpful summary of what this dynamic config does"
+                },
+                "tags": {
+                  "type": "array",
+                  "x-stoplight": {
+                    "id": "4u8p85o6xcf2l"
+                  },
+                  "description": "a list of tag names to attach to the dynamic config",
+                  "items": {
+                    "x-stoplight": {
+                      "id": "dlpg24cgslee8"
+                    },
+                    "type": "string",
+                    "example": "a tag"
+                  }
                 }
               }
             },
-            "examples": {
-              "example-1": {
-                "value": {
-                  "name": "a dynamic config",
-                  "description": "helpful summary of what this dynamic config does"
-                }
-              }
-            }
+            "examples": {}
           }
         },
         "description": "The name and description for the new Dynamic Config"
@@ -167,22 +150,30 @@ module.exports = {
                   }
                 },
                 "examples": {
-                  "example-1": {
+                  "Example 1": {
                     "value": {
-                      "message": "Dynamic config updated successfully.",
+                      "message": "Dynamic config created successfully.",
                       "data": {
                         "id": "a_dynamic_config",
-                        "isEnabled": true,
-                        "description": "an updated summary of what this dynamic config does",
+                        "description": "helpful summary of what this dynamic config does",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "6dja72kfgNidnaN",
+                        "creatorEmail": "johnsmith@mydomain.com",
+                        "creatorName": "John Smith",
+                        "createdTime": 1674769467002,
+                        "holdoutIDs": [],
+                        "isEnabled": true,
                         "rules": [
                           {
-                            "name": "1/10th of people",
+                            "name": "All Conditions",
                             "passPercentage": 10,
                             "conditions": [
                               {
-                                "type": "public"
+                                "type": "public",
+                                "operator": "string",
+                                "targetValue": 0,
+                                "field": "string",
+                                "customID": "string"
                               }
                             ],
                             "returnValue": {
@@ -191,8 +182,11 @@ module.exports = {
                           }
                         ],
                         "defaultValue": {
-                          "key": false
-                        }
+                          "key": "the default value"
+                        },
+                        "tags": [
+                          "a tag"
+                        ]
                       }
                     }
                   }
@@ -453,33 +447,46 @@ module.exports = {
                   ]
                 },
                 "examples": {
-                  "example-1": {
+                  "Example 1": {
                     "value": {
-                      "message": "string",
-                      "data": {
-                        "id": "a_dynamic_config",
-                        "isEnabled": false,
-                        "description": "helpful summary of what this dynamic config does",
-                        "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                        "rules": [
-                          {
-                            "name": "1/10th of public gets true",
-                            "passPercentage": 10,
-                            "conditions": [
-                              {
-                                "type": "public"
+                      "message": "Dynamic configs listed successfully.",
+                      "data": [
+                        {
+                          "id": "a_dynamic_config",
+                          "description": "helpful summary of what this dynamic config does",
+                          "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                          "lastModifierName": "CONSOLE API",
+                          "creatorEmail": "johnsmith@mydomain.com",
+                          "creatorName": "John Smith",
+                          "createdTime": 1674769467002,
+                          "holdoutIDs": [],
+                          "isEnabled": true,
+                          "rules": [
+                            {
+                              "name": "All Conditions",
+                              "passPercentage": 10,
+                              "conditions": [
+                                {
+                                  "type": "public",
+                                  "operator": "string",
+                                  "targetValue": 0,
+                                  "field": "string",
+                                  "customID": "string"
+                                }
+                              ],
+                              "returnValue": {
+                                "key": true
                               }
-                            ],
-                            "returnValue": {
-                              "key": true
                             }
-                          }
-                        ],
-                        "defaultValue": {
-                          "key": true
+                          ],
+                          "defaultValue": {
+                            "key": "the default value"
+                          },
+                          "tags": [
+                            "a tag"
+                          ]
                         }
-                      }
+                      ]
                     }
                   }
                 }
@@ -630,32 +637,43 @@ module.exports = {
                   }
                 },
                 "examples": {
-                  "example-1": {
+                  "Example 1": {
                     "value": {
                       "message": "Dynamic config read successfully.",
                       "data": {
                         "id": "a_dynamic_config",
-                        "isEnabled": true,
                         "description": "helpful summary of what this dynamic config does",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ja739Hi83H",
+                        "creatorEmail": "johnsmith@mydomain.com",
+                        "creatorName": "John Smith",
+                        "createdTime": 1674769467002,
+                        "holdoutIDs": [],
+                        "isEnabled": true,
                         "rules": [
                           {
-                            "name": "Public",
-                            "passPercentage": 100,
-                            "returnValue": {
-                              "key": "value"
-                            },
+                            "name": "All Conditions",
+                            "passPercentage": 10,
                             "conditions": [
                               {
-                                "type": "public"
+                                "type": "public",
+                                "operator": "string",
+                                "targetValue": 0,
+                                "field": "string",
+                                "customID": "string"
                               }
-                            ]
+                            ],
+                            "returnValue": {
+                              "key": true
+                            }
                           }
                         ],
                         "defaultValue": {
                           "key": "the default value"
-                        }
+                        },
+                        "tags": [
+                          "a tag"
+                        ]
                       }
                     }
                   }
@@ -785,32 +803,43 @@ module.exports = {
                   }
                 },
                 "examples": {
-                  "example-1": {
+                  "Example 1": {
                     "value": {
-                      "message": "string",
+                      "message": "Dynamic config updated successfully.",
                       "data": {
                         "id": "a_dynamic_config",
-                        "isEnabled": true,
                         "description": "helpful summary of what this dynamic config does",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "ja739Hi83H",
+                        "creatorEmail": "johnsmith@mydomain.com",
+                        "creatorName": "John Smith",
+                        "createdTime": 1674769467002,
+                        "holdoutIDs": [],
+                        "isEnabled": true,
                         "rules": [
                           {
-                            "name": "Public",
-                            "passPercentage": 100,
-                            "returnValue": {
-                              "key": "value"
-                            },
+                            "name": "All Conditions",
+                            "passPercentage": 10,
                             "conditions": [
                               {
-                                "type": "public"
+                                "type": "public",
+                                "operator": "string",
+                                "targetValue": 0,
+                                "field": "string",
+                                "customID": "string"
                               }
-                            ]
+                            ],
+                            "returnValue": {
+                              "key": true
+                            }
                           }
                         ],
                         "defaultValue": {
                           "key": "the default value"
-                        }
+                        },
+                        "tags": [
+                          "a tag"
+                        ]
                       }
                     }
                   }
@@ -870,7 +899,7 @@ module.exports = {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/error_error_401.json"
+                  "$ref": "../models/error_401.json"
                 },
                 "examples": {
                   "example-1": {
@@ -974,22 +1003,30 @@ module.exports = {
                   }
                 },
                 "examples": {
-                  "example-1": {
+                  "Example 1": {
                     "value": {
                       "message": "Dynamic config updated successfully.",
                       "data": {
                         "id": "a_dynamic_config",
-                        "isEnabled": true,
                         "description": "helpful summary of what this dynamic config does",
-                        "lastModifierName": "CONSOLE API",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierName": "CONSOLE API",
+                        "creatorEmail": "johnsmith@mydomain.com",
+                        "creatorName": "John Smith",
+                        "createdTime": 1674769467002,
+                        "holdoutIDs": [],
+                        "isEnabled": true,
                         "rules": [
                           {
                             "name": "All Conditions",
                             "passPercentage": 10,
                             "conditions": [
                               {
-                                "type": "public"
+                                "type": "public",
+                                "operator": "string",
+                                "targetValue": 0,
+                                "field": "string",
+                                "customID": "string"
                               }
                             ],
                             "returnValue": {
@@ -998,8 +1035,11 @@ module.exports = {
                           }
                         ],
                         "defaultValue": {
-                          "key": true
-                        }
+                          "key": "the default value"
+                        },
+                        "tags": [
+                          "a tag"
+                        ]
                       }
                     }
                   }
@@ -1106,6 +1146,20 @@ module.exports = {
                   "defaultValue": {
                     "type": "object",
                     "description": "The fallback JSON object when no rules are triggered"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "6fcbz59pu3vu6"
+                    },
+                    "description": "a list of tag names to attach to the dynamic config",
+                    "items": {
+                      "x-stoplight": {
+                        "id": "r4ji5xjkdjysb"
+                      },
+                      "type": "string",
+                      "example": "a tag"
+                    }
                   }
                 }
               },
@@ -1174,7 +1228,7 @@ module.exports = {
                   "message": "Gate deleted successfully."
                 },
                 "examples": {
-                  "example-1": {
+                  "Example 1": {
                     "value": {
                       "message": "Dynamic config deleted successfully."
                     }
