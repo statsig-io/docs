@@ -37,6 +37,7 @@ import Rapidoc from "../../src/components/Rapidoc"
 | user_dimensions         | string    | JSON-formatted key-value pairs describing the user's attributes at the time of first exposure |
 | inserted_at             | timestamp | The timestamp when this report is generated                                                   |
 | rule_name               | string    | Rule name for gates; 'experiment' for experiments                                             |
+| group_id				  | string    | True/False for gates; group_id for experiments                                                |
 
 - After the feature is turned on for you, it will be ready when our pipeline runs. Generally, you can expect it around the time you see cumulative exposures.
 - We commit to maintain the report format including column order and type, but we recommend that you use the column name and cast column type when parsing the file.
