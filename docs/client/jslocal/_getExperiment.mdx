@@ -21,3 +21,19 @@ const priceExperiment: DynamicConfig = Statsig.getExperiment(
 const promoTitle: string = titleExperiment.get("title", "Welcome to Statsig!");
 const discount: number = priceExperiment.get("discount", 0.1);
 ```
+
+The `getExperiment` API takes an optional third parameter with a set of parameters for that check.
+
+```
+export type GetExperimentOptions = {
+  disableExposureLogging?: boolean;
+  userPersistedValues?: Record<string, Record<string, unknown>> | null;
+};
+```
+
+For information on `userPersistedValues`, see [Using Persistent Evaluations](https://docs.statsig.com/client/jsLocalEvaluationSDK#using-persistent-evaluations)
+
+To check an experiment with exposure logging disabled, you can set that field in the options.  Exposure logging will be disabled for that check only - you must pass that parameter with every check you wish to disable exposure logging for.
+```
+Statsig.getExperiment(User, "my_experiment", { disableExposureLogging: true });
+```
