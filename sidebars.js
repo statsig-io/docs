@@ -301,7 +301,6 @@ module.exports = {
           ],
         },
         "client/jsClientSDK",
-        "client/jsLocalEvaluationSDK",
         "client/reactSDK",
         "client/reactNativeSDK",
         "client/reactNativeExpoSDK",
@@ -312,6 +311,7 @@ module.exports = {
         "client/rokuSDK",
         "client/unitySDK",
         "client/dartSDK",
+        "client/jsLocalEvaluationSDK",
       ],
     },
     {
