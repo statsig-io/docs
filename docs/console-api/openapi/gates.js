@@ -157,6 +157,14 @@ module.exports = {
                   "idType": {
                     "type": "string",
                     "description": "The id type this gate will use, defaults to 'userID'"
+                  },
+                  "creatorID": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "a5j8czj6nrw96"
+                    },
+                    "description": "The userID of intended creator, defaults to Console API",
+                    "example": "35sClJFs8l0y5uRQhDwUDo"
                   }
                 },
                 "required": [
@@ -168,7 +176,8 @@ module.exports = {
                   "value": {
                     "name": "a gate",
                     "description": "helpful summary of what this gate does",
-                    "idType": "userID"
+                    "idType": "userID",
+                    "creatorID": "35sClJFs8l0y5uRQhDwUDo"
                   }
                 },
                 "customID": {
