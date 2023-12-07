@@ -45,10 +45,8 @@ import Rapidoc from "../../src/components/Rapidoc"
 ### Egress exposure data to your warehouse
 Besides the exposure reports from the API access, we also offer data warehouse export to Snowflake for our enterprise customers.
 
-> **We do NOT support this feature if your warehouse has IP restrictions. Coming in a week.**
+> **We do NOT support this feature if your warehouse has IP restrictions.**
 1. Navigate to `Tools` -> `Exports`. Under the `Scheduled` tab, create a new connection.
-
-<img src="../../static/img/scheduled_exports.png" width="300"/><br/>
 2. In your Snowflake warehouse, create a custom user for export purpose.
 3. Run the script to create the table and grant your user permissions to operate on it.
 
@@ -69,7 +67,8 @@ CREATE OR REPLACE TABLE <database>.<schema>.<exportTableName> (
 	ROLLOUT NUMBER(38,0),
 	USER_DIMENSIONS VARCHAR(16777216),
 	INSERTED_AT TIMESTAMP_NTZ(9) NOT NULL,
-	RULE_NAME VARCHAR(16777216)
+	RULE_NAME VARCHAR(16777216),
+	GROUP_ID VARCHAR(16777216)
 );
 
 -- grant the custom user privileges to operate on the table
