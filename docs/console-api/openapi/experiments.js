@@ -1,7 +1,7 @@
 module.exports = {
   "openapi": "3.0.0",
   "x-stoplight": {
-    "id": "jauuldufb1wc7"
+    "id": "h0qh01vbqeyb6"
   },
   "info": {
     "title": "https://statsigapi.net/console/v1",
@@ -62,7 +62,7 @@ module.exports = {
       "description": {
         "title": "description",
         "x-stoplight": {
-          "id": "jxrm7jdqeflcs"
+          "id": "p7vwx0hr47aw5"
         },
         "type": "string",
         "description": "A helpful summary of what this experiment does",
@@ -73,7 +73,7 @@ module.exports = {
       "id": {
         "title": "id",
         "x-stoplight": {
-          "id": "doqm342a0gj9o"
+          "id": "k1z68ti7f924d"
         },
         "type": "string",
         "description": "The name that was originally given to the experiment on creation but formatted as an ID (\"A Experiment\" -> \"a_experiment\")"
@@ -81,7 +81,7 @@ module.exports = {
       "idType": {
         "title": "idType",
         "x-stoplight": {
-          "id": "7qqdb1cfnbyes"
+          "id": "ex4xg41yih6ib"
         },
         "type": "string",
         "description": "The type of ID which the experiment is based on.",
@@ -92,7 +92,7 @@ module.exports = {
       "status": {
         "title": "status",
         "x-stoplight": {
-          "id": "3ycfqoy94rfya"
+          "id": "fcoljihk5fqsi"
         },
         "type": "string",
         "description": "The current status of the experiment.",
@@ -105,7 +105,7 @@ module.exports = {
       "hypothesis": {
         "title": "hypothesis",
         "x-stoplight": {
-          "id": "m6bxewhbfrioc"
+          "id": "pkpn3dmg2slrb"
         },
         "type": "string",
         "description": "A statement that will be tested by this experiment."
@@ -113,7 +113,7 @@ module.exports = {
       "alloation": {
         "title": "alloation",
         "x-stoplight": {
-          "id": "tux5zcz8uigbi"
+          "id": "x18r7ln5s9fvz"
         },
         "type": "number",
         "description": "Percent of layer allocated to this experiment",
@@ -123,7 +123,7 @@ module.exports = {
       "duration": {
         "title": "duration",
         "x-stoplight": {
-          "id": "iq284a4pdrhhz"
+          "id": "rcd3vjzl7246w"
         },
         "type": "integer",
         "description": "How long the experiment should last in days",
@@ -132,7 +132,7 @@ module.exports = {
       "targetingGateID": {
         "title": "targetingGateID",
         "x-stoplight": {
-          "id": "1igo8p5r8hxs4"
+          "id": "94xkly2tzwcj1"
         },
         "type": "string",
         "description": "Restrict your experiment to users passing the selected feature gate."
@@ -140,7 +140,7 @@ module.exports = {
       "defaultConfidenceInterval": {
         "title": "defaultConfidenceInterval",
         "x-stoplight": {
-          "id": "y6stq7t2dy6t2"
+          "id": "hjgb0jyf73821"
         },
         "type": "string",
         "description": "Default error margin used for results",
@@ -155,7 +155,7 @@ module.exports = {
       "bonferroniCorrection": {
         "title": "bonferroniCorrection",
         "x-stoplight": {
-          "id": "p7muc91sj9r5e"
+          "id": "ec9wtngxr13yr"
         },
         "type": "boolean",
         "description": "Is Bonferroni correction applied?"
@@ -163,7 +163,7 @@ module.exports = {
       "groups": {
         "title": "groups",
         "x-stoplight": {
-          "id": "c3xtorla9fn9u"
+          "id": "ni3hh31643iv9"
         },
         "type": "array",
         "description": "The test groups for your experiment",
@@ -224,7 +224,7 @@ module.exports = {
       "tags": {
         "title": "tags",
         "x-stoplight": {
-          "id": "gg5wp0dm99j2u"
+          "id": "8eiqinzy4oea1"
         },
         "type": [
           "array"
@@ -238,7 +238,7 @@ module.exports = {
       "metricTags": {
         "title": "metricTags",
         "x-stoplight": {
-          "id": "3gps7r79cws5d"
+          "id": "56jou9fw3u95z"
         },
         "type": "array",
         "items": {
@@ -332,6 +332,14 @@ module.exports = {
                     "type": "string",
                     "description": "Which layer to place the experiment into.",
                     "example": "layer_1"
+                  },
+                  "creatorID": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "fqz7tz8qqqzy5"
+                    },
+                    "example": "35sClJFs8l0y5uRQhDwUDo",
+                    "description": "The userID of intended creator, defaults to Console API"
                   }
                 },
                 "required": [
@@ -344,7 +352,8 @@ module.exports = {
                     "name": "a_experiment",
                     "description": "helpful summary of what this experiment does",
                     "idType": "userID",
-                    "layerID": "a_layer"
+                    "layerID": "a_layer",
+                    "creatorID": "35sClJFs8l0y5uRQhDwUDo"
                   }
                 }
               }
@@ -2704,7 +2713,7 @@ module.exports = {
           "Experiments"
         ],
         "x-stoplight": {
-          "id": "s5j1rq27zjhu5"
+          "id": "j7v1w5s60ynya"
         },
         "description": ""
       }
@@ -2815,7 +2824,7 @@ module.exports = {
           "Experiments"
         ],
         "x-stoplight": {
-          "id": "vjbcvlmncez7b"
+          "id": "woa738678jk09"
         },
         "requestBody": {
           "content": {
