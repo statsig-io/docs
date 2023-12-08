@@ -1,64 +1,4 @@
 module.exports = {
-  // docs: [
-  //   "getting-started",
-  //   {
-  //     type: "category",
-  //     label: "Statsig Warehouse Native",
-  //     link: {
-  //       type: "doc",
-  //       id: "statsig-warehouse-native/introduction",
-  //     },
-  //     items: [
-  //       {
-  //         Guides: [
-  //           "statsig-warehouse-native/guides/connect",
-  //           "statsig-warehouse-native/guides/metric_sources",
-  //           "statsig-warehouse-native/guides/metrics",
-  //           "statsig-warehouse-native/guides/assignment_sources",
-  //           "statsig-warehouse-native/guides/experiments",
-  //           "statsig-warehouse-native/guides/pulse",
-  //           "statsig-warehouse-native/guides/sdks",
-  //         ],
-  //       },
-  //       {
-  //         Features: [
-  //           "statsig-warehouse-native/native-vs-cloud",
-  //           "statsig-warehouse-native/features/funnel-metrics",
-  //           "statsig-warehouse-native/features/power-analysis",
-  //           "statsig-warehouse-native/features/cohort-metrics",
-  //           "statsig-warehouse-native/features/id-resolution",
-  //           "statsig-warehouse-native/features/entity-properties",
-  //           "statsig-warehouse-native/features/monitor-an-experiment",
-  //         ],
-  //       },
-  //       {
-  //         "Data Overview": [
-  //           // "statsig-warehouse-native/analysis-tools/pulse",
-  //           // "statsig-warehouse-native/analysis-tools/settings",
-  //           "statsig-warehouse-native/analysis-tools/data-sources",
-  //           "statsig-warehouse-native/analysis-tools/data-privacy",
-  //           "statsig-warehouse-native/analysis-tools/pipeline-overview",
-  //           "statsig-warehouse-native/guides/best-practices",
-  //         ],
-  //       },
-
-  //       {
-  //         "Connecting Your Warehouse": [
-  //           "statsig-warehouse-native/connecting-your-warehouse/bigquery",
-  //           "statsig-warehouse-native/connecting-your-warehouse/snowflake",
-  //           "statsig-warehouse-native/connecting-your-warehouse/databricks",
-  //           "statsig-warehouse-native/connecting-your-warehouse/redshift",
-  //         ],
-  //       },
-  //     ],
-  //   },
-    
-
-    
-    // 
-  //   },
-    
-  // ],
   docsRevamp: [
     {
       type: "category",
@@ -326,6 +266,57 @@ module.exports = {
         "users/introduction",
         "insights/introduction",
       ]
+    },
+    {
+      type: "category",
+      label: "Statsig Warehouse Native",
+      link: {
+        type: "doc",
+        id: "statsig-warehouse-native/introduction",
+      },
+      items: [
+        {
+          Guides: [
+            "statsig-warehouse-native/guides/connect",
+            "statsig-warehouse-native/guides/metric_sources",
+            "statsig-warehouse-native/guides/metrics",
+            "statsig-warehouse-native/guides/assignment_sources",
+            "statsig-warehouse-native/guides/experiments",
+            "statsig-warehouse-native/guides/pulse",
+            "statsig-warehouse-native/guides/sdks",
+          ],
+        },
+        {
+          Features: [
+            "statsig-warehouse-native/native-vs-cloud",
+            "statsig-warehouse-native/features/funnel-metrics",
+            "statsig-warehouse-native/features/power-analysis",
+            "statsig-warehouse-native/features/cohort-metrics",
+            "statsig-warehouse-native/features/id-resolution",
+            "statsig-warehouse-native/features/entity-properties",
+            "statsig-warehouse-native/features/monitor-an-experiment",
+          ],
+        },
+        {
+          "Data Overview": [
+            // "statsig-warehouse-native/analysis-tools/pulse",
+            // "statsig-warehouse-native/analysis-tools/settings",
+            "statsig-warehouse-native/analysis-tools/data-sources",
+            "statsig-warehouse-native/analysis-tools/data-privacy",
+            "statsig-warehouse-native/analysis-tools/pipeline-overview",
+            "statsig-warehouse-native/guides/best-practices",
+          ],
+        },
+
+        {
+          "Connecting Your Warehouse": [
+            "statsig-warehouse-native/connecting-your-warehouse/bigquery",
+            "statsig-warehouse-native/connecting-your-warehouse/snowflake",
+            "statsig-warehouse-native/connecting-your-warehouse/databricks",
+            "statsig-warehouse-native/connecting-your-warehouse/redshift",
+          ],
+        },
+      ],
     },
     {
       type: "category",
