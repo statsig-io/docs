@@ -45,7 +45,22 @@ module.exports = {
         srcDark: "img/logo_white.svg",
         href: "https://statsig.com",
       },
-      items: [],
+      items: [
+        {
+          type: 'doc',
+          position: 'left',
+          docId: 'getting-started',
+          sidebarId: 'cloud',
+          label: 'Cloud',
+        },
+        {
+          type: 'docSidebar',
+          position: 'left',
+          docId: 'statsig-warehouse-native/introduction',
+          sidebarId: 'warehouseNative',
+          label: 'Warehouse',
+        },
+      ],
     },
     footer: {
       style: "dark",
