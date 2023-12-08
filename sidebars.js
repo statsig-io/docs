@@ -3,45 +3,6 @@ module.exports = {
   //   "getting-started",
   //   {
   //     type: "category",
-  //     label: "Walkthrough Guides",
-  //     link: {
-  //       type: "generated-index",
-  //       title: "Walkthrough Guides",
-  //     },
-  //     items: [
-  //       "guides/first-feature",
-  //       "guides/logging-events",
-  //       "guides/first-dynamic-config",
-  //       "guides/abn-tests",
-  //       "guides/first-device-level-experiment",
-  //       "guides/experiment-on-custom-id-types",
-  //       "guides/first-holdout",
-  //       "guides/using-environments",
-  //       "guides/setting-up-reviews",
-  //       "guides/first-segment",
-  //       "guides/private-attributes",
-  //       "guides/synchronized-launch",
-  //       "guides/first-shopify-abtest",
-  //       "guides/use-statsig-for-analytics-only",
-  //       "guides/featuregates-or-experiments",
-  //       "guides/experimentation-program",
-  //       "guides/aa-test",
-  //       "guides/serverless",
-  //       "guides/config-history",
-  //       "guides/running-a-poc",
-  //       "guides/production",
-  //       "guides/testing",
-  //       "guides/uptime",
-  //       "guides/fomo",
-  //       "guides/sendgrid-email-abtest",
-  //       "guides/customer-io-email-abtest",
-  //       "guides/email-campaign-test",
-  //       "guides/cms-integrations",
-  //       "guides/migrate-from-launchdarkly",
-  //     ],
-  //   },
-  //   {
-  //     type: "category",
   //     label: "Statsig Warehouse Native",
   //     link: {
   //       type: "doc",
@@ -93,38 +54,54 @@ module.exports = {
   //   },
     
 
-  //   {
-  //     type: "category",
-  //     label: "Data Warehouse Ingestion",
-  //     link: {
-  //       type: "doc",
-  //       id: "data-warehouse-ingestion/introduction",
-  //     },
-  //     items: [
-  //       {
-  //         "Connection Set Up": [
-  //           "data-warehouse-ingestion/bigquery",
-  //           "data-warehouse-ingestion/redshift",
-  //           "data-warehouse-ingestion/snowflake",
-  //           "data-warehouse-ingestion/databricks",
-  //           "data-warehouse-ingestion/synapse",
-  //           "data-warehouse-ingestion/s3",
-  //           "data-warehouse-ingestion/athena",
-  //           "data-warehouse-ingestion/faq",
-  //         ],
-  //       },
-  //       "data-warehouse-ingestion/data_mapping",
-  //     ],
-  //   },
+    
     // 
   //   },
     
-
-    
-  //   "faq",
   // ],
   docsRevamp: [
-    'getting-started',
+    {
+      type: "category",
+      label: "Getting Started",
+      items: [
+        'getting-started',
+        {
+          type: "category",
+          label: "Guides",
+          items: [
+            "guides/first-feature",
+            "guides/logging-events",
+            "guides/first-dynamic-config",
+            "guides/abn-tests",
+            "guides/first-device-level-experiment",
+            "guides/experiment-on-custom-id-types",
+            "guides/first-holdout",
+            "guides/using-environments",
+            "guides/setting-up-reviews",
+            "guides/first-segment",
+            "guides/private-attributes",
+            "guides/synchronized-launch",
+            "guides/first-shopify-abtest",
+            "guides/use-statsig-for-analytics-only",
+            "guides/featuregates-or-experiments",
+            "guides/experimentation-program",
+            "guides/aa-test",
+            "guides/serverless",
+            "guides/config-history",
+            "guides/running-a-poc",
+            "guides/production",
+            "guides/testing",
+            "guides/uptime",
+            "guides/fomo",
+            "guides/sendgrid-email-abtest",
+            "guides/customer-io-email-abtest",
+            "guides/email-campaign-test",
+            "guides/cms-integrations",
+            "guides/migrate-from-launchdarkly",
+          ],
+        }
+      ]
+    },
     {
       type: "category",
       label: "Feature Gates",
@@ -345,6 +322,7 @@ module.exports = {
             "metrics/create-user-funnels",
           ],
         },
+        "mex/introduction",
         "users/introduction",
         "insights/introduction",
       ]
@@ -515,6 +493,29 @@ module.exports = {
               },
               items: ["integrations/triggers/datadog"],
             },
+          ],
+        },
+        {
+          type: "category",
+          label: "Data Warehouse Ingestion",
+          link: {
+            type: "doc",
+            id: "data-warehouse-ingestion/introduction",
+          },
+          items: [
+            {
+              "Connection Set Up": [
+                "data-warehouse-ingestion/bigquery",
+                "data-warehouse-ingestion/redshift",
+                "data-warehouse-ingestion/snowflake",
+                "data-warehouse-ingestion/databricks",
+                "data-warehouse-ingestion/synapse",
+                "data-warehouse-ingestion/s3",
+                "data-warehouse-ingestion/athena",
+                "data-warehouse-ingestion/faq",
+              ],
+            },
+            "data-warehouse-ingestion/data_mapping",
           ],
         },
       ]
