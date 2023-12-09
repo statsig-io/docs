@@ -9,7 +9,6 @@ module.exports = {
           type: "category",
           label: "Guides",
           items: [
-            "guides/guides_overview", 
             "guides/first-feature",
             "guides/logging-events",
             "guides/first-dynamic-config",
