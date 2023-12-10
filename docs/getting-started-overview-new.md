@@ -12,7 +12,8 @@ Statsig has three core product lines- **Feature Gates**, **Experiments**, and **
 
 Here’s how the Statsig ecosystem looks at the highest-level: 
 
-![Docs_GettingStarted_Image1](https://github.com/statsig-io/docs/assets/101903926/d16773f4-f7b3-4036-9ed0-ae207e8a7fcb)
+![image_4_overview](https://github.com/statsig-io/docs/assets/101903926/3896709d-3d41-43e2-bf37-75277afc9b85)
+
 
 # Statsig Models 
 There are two ways to leverage Statsig's core products: Statsig Cloud (we host your data) and Statsig Warehouse Native (you host your data in your warehouse). 
