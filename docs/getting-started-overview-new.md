@@ -12,13 +12,13 @@ Statsig has three core product lines- **Feature Gates**, **Experiments**, and **
 
 Here’s how the Statsig ecosystem looks at the highest-level: 
 
-![image_4_overview](https://github.com/statsig-io/docs/assets/101903926/3896709d-3d41-43e2-bf37-75277afc9b85)
+![statsig product overview](/img/products_overview_light.png)
 
 
 # Statsig Models 
 There are two ways to leverage Statsig's core products: Statsig Cloud (we host your data) and Statsig Warehouse Native (you host your data in your warehouse). 
 
-![image(3)](https://github.com/statsig-io/docs/assets/101903926/d570b53e-fc23-46fe-a20d-f4a213cc2a96)
+![statsig banner](/img/statsig_banner_light.png)
 
 - **Statsig Cloud:** Set up ***Statsig SDK***, configure **events logging**. Everything else is handled by us.
     - You get feature gates and 1 million metered events for free, as well as many analytics tools such as Dashboard, Metrics Explorer, and Insights. Here is [a link](https://www.statsig.com/pricing) to our pricing details.
