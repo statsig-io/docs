@@ -12,27 +12,24 @@ module.exports = {
           type: "category",
           label: "Guides",
           items: [
+            {
+              "Beginner's Guides": [
             "guides/first-feature",
             "guides/logging-events",
+            "guides/abn-tests"
+              ],
+            },
+            {
+              "Advanced Guides": [
             "guides/first-dynamic-config",
-            "guides/abn-tests",
-            "guides/experiment-on-custom-id-types",
             "guides/first-holdout",
+            "guides/first-segment",
+            "guides/experiment-on-custom-id-types",
             "guides/using-environments",
             "guides/setting-up-reviews",
-            "guides/first-segment",
-            "guides/private-attributes",
-            "guides/synchronized-launch",
-            "guides/featuregates-or-experiments",
-            "guides/experimentation-program",
-            "guides/serverless",
-            "guides/config-history",
-            "guides/running-a-poc",
-            "guides/production",
-            "guides/testing",
-            "guides/uptime",
-            "guides/fomo",
-            "guides/migrate-from-launchdarkly",
+            "guides/private-attributes"
+              ],
+            },
             {
               "Common Use Cases": [
                 "guides/aa-test",
@@ -44,6 +41,17 @@ module.exports = {
                 "guides/first-device-level-experiment"
               ],
             },
+            "guides/synchronized-launch",
+            "guides/featuregates-or-experiments",
+            "guides/experimentation-program",
+            "guides/serverless",
+            "guides/config-history",
+            "guides/running-a-poc",
+            "guides/production",
+            "guides/testing",
+            "guides/uptime",
+            "guides/fomo",
+            "guides/migrate-from-launchdarkly"
           ],
         }
       ]
