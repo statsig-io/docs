@@ -1,6 +1,6 @@
 ---
 title: A/A Test
-slug: /statsig-warehouse-native/guides/A/A Test
+slug: /statsig-warehouse-native/guides/AATest
 sidebar_label: A/A Test
 ---
 
