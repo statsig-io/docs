@@ -1,7 +1,7 @@
 module.exports = {
   "openapi": "3.0.0",
   "x-stoplight": {
-    "id": "e0352ead0cc67"
+    "id": "h0qh01vbqeyb6"
   },
   "info": {
     "title": "https://statsigapi.net/console/v1",
@@ -62,7 +62,7 @@ module.exports = {
       "description": {
         "title": "description",
         "x-stoplight": {
-          "id": "qvkg176q352su"
+          "id": "p7vwx0hr47aw5"
         },
         "type": "string",
         "description": "A helpful summary of what this experiment does",
@@ -73,7 +73,7 @@ module.exports = {
       "id": {
         "title": "id",
         "x-stoplight": {
-          "id": "du660arabb32i"
+          "id": "k1z68ti7f924d"
         },
         "type": "string",
         "description": "The name that was originally given to the experiment on creation but formatted as an ID (\"A Experiment\" -> \"a_experiment\")"
@@ -81,7 +81,7 @@ module.exports = {
       "idType": {
         "title": "idType",
         "x-stoplight": {
-          "id": "c97b5rk85shom"
+          "id": "ex4xg41yih6ib"
         },
         "type": "string",
         "description": "The type of ID which the experiment is based on.",
@@ -92,7 +92,7 @@ module.exports = {
       "status": {
         "title": "status",
         "x-stoplight": {
-          "id": "8eyruln4wbga4"
+          "id": "fcoljihk5fqsi"
         },
         "type": "string",
         "description": "The current status of the experiment.",
@@ -105,7 +105,7 @@ module.exports = {
       "hypothesis": {
         "title": "hypothesis",
         "x-stoplight": {
-          "id": "r3r3izlcpph5h"
+          "id": "pkpn3dmg2slrb"
         },
         "type": "string",
         "description": "A statement that will be tested by this experiment."
@@ -113,7 +113,7 @@ module.exports = {
       "alloation": {
         "title": "alloation",
         "x-stoplight": {
-          "id": "hkhfy0yu59ktg"
+          "id": "x18r7ln5s9fvz"
         },
         "type": "number",
         "description": "Percent of layer allocated to this experiment",
@@ -123,7 +123,7 @@ module.exports = {
       "duration": {
         "title": "duration",
         "x-stoplight": {
-          "id": "od90nv9jwan2n"
+          "id": "rcd3vjzl7246w"
         },
         "type": "integer",
         "description": "How long the experiment should last in days",
@@ -132,7 +132,7 @@ module.exports = {
       "targetingGateID": {
         "title": "targetingGateID",
         "x-stoplight": {
-          "id": "od90nv9jwan2n"
+          "id": "94xkly2tzwcj1"
         },
         "type": "string",
         "description": "Restrict your experiment to users passing the selected feature gate."
@@ -140,7 +140,7 @@ module.exports = {
       "defaultConfidenceInterval": {
         "title": "defaultConfidenceInterval",
         "x-stoplight": {
-          "id": "od90nv9jwan2n"
+          "id": "hjgb0jyf73821"
         },
         "type": "string",
         "description": "Default error margin used for results",
@@ -155,7 +155,7 @@ module.exports = {
       "bonferroniCorrection": {
         "title": "bonferroniCorrection",
         "x-stoplight": {
-          "id": "od90nv9jwan2n"
+          "id": "ec9wtngxr13yr"
         },
         "type": "boolean",
         "description": "Is Bonferroni correction applied?"
@@ -163,7 +163,7 @@ module.exports = {
       "groups": {
         "title": "groups",
         "x-stoplight": {
-          "id": "od90nv9jwan2n"
+          "id": "ni3hh31643iv9"
         },
         "type": "array",
         "description": "The test groups for your experiment",
@@ -224,7 +224,7 @@ module.exports = {
       "tags": {
         "title": "tags",
         "x-stoplight": {
-          "id": "gcd8cfpqxepu1"
+          "id": "8eiqinzy4oea1"
         },
         "type": [
           "array"
@@ -238,7 +238,7 @@ module.exports = {
       "metricTags": {
         "title": "metricTags",
         "x-stoplight": {
-          "id": "6glli1d6kkzma"
+          "id": "56jou9fw3u95z"
         },
         "type": "array",
         "items": {
@@ -332,6 +332,14 @@ module.exports = {
                     "type": "string",
                     "description": "Which layer to place the experiment into.",
                     "example": "layer_1"
+                  },
+                  "creatorID": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "fqz7tz8qqqzy5"
+                    },
+                    "example": "35sClJFs8l0y5uRQhDwUDo",
+                    "description": "The userID of intended creator, defaults to Console API"
                   }
                 },
                 "required": [
@@ -344,7 +352,8 @@ module.exports = {
                     "name": "a_experiment",
                     "description": "helpful summary of what this experiment does",
                     "idType": "userID",
-                    "layerID": "a_layer"
+                    "layerID": "a_layer",
+                    "creatorID": "35sClJFs8l0y5uRQhDwUDo"
                   }
                 }
               }
@@ -436,7 +445,8 @@ module.exports = {
                         "bonferroniCorrection": false,
                         "tags": [
                           "* Core"
-                        ]
+                        ],
+                        "decisionReason": ""
                       }
                     }
                   }
@@ -603,7 +613,8 @@ module.exports = {
                           "bonferroniCorrection": false,
                           "tags": [
                             "* Core"
-                          ]
+                          ],
+                          "decisionReason": ""
                         }
                       ]
                     }
@@ -863,7 +874,8 @@ module.exports = {
                         "bonferroniCorrection": false,
                         "tags": [
                           "* Core"
-                        ]
+                        ],
+                        "decisionReason": ""
                       }
                     }
                   }
@@ -1093,6 +1105,9 @@ module.exports = {
                   },
                   "bonferroniCorrection": {
                     "$ref": "#/components/schemas/bonferroniCorrection"
+                  },
+                  "targetApps": {
+                    "$ref": "../models/targetApps.json"
                   }
                 },
                 "required": [
@@ -1120,6 +1135,7 @@ module.exports = {
                     "tags": [
                       "customTag"
                     ],
+                    "targetApps": [],
                     "status": "setup",
                     "hypothesis": "Updated hypothesis",
                     "launchedGroupID": null,
@@ -1150,7 +1166,8 @@ module.exports = {
                     "duration": 28,
                     "targetingGateID": "a_gate",
                     "defaultConfidenceInterval": "90",
-                    "bonferroniCorrection": false
+                    "bonferroniCorrection": false,
+                    "decisionReason": ""
                   }
                 }
               }
@@ -1490,6 +1507,9 @@ module.exports = {
                   },
                   "status": {
                     "$ref": "../models/experiment_status.json"
+                  },
+                  "targetApps": {
+                    "$ref": "../models/targetApps.json"
                   }
                 }
               },
@@ -1504,6 +1524,7 @@ module.exports = {
                       "marketing",
                       "cost_savings"
                     ],
+                    "targetApps": [],
                     "launchedGroupID": null,
                     "startTime": null,
                     "endTime": null,
@@ -1540,7 +1561,8 @@ module.exports = {
                     "duration": 14,
                     "targetingGateID": "",
                     "defaultConfidenceInterval": "95",
-                    "bonferroniCorrection": true
+                    "bonferroniCorrection": true,
+                    "decisionReason": ""
                   }
                 }
               }
@@ -2585,7 +2607,7 @@ module.exports = {
         }
       }
     },
-    "/experiments/{experiment_id}/restart": {
+    "/experiments/{experiment_id}/reset": {
       "parameters": [
         {
           "schema": {
@@ -2597,7 +2619,7 @@ module.exports = {
         }
       ],
       "put": {
-        "summary": "Restart Experiment",
+        "summary": "Reset Experiment",
         "operationId": "put-experiments-experiment_id-start",
         "responses": {
           "200": {
@@ -2689,7 +2711,154 @@ module.exports = {
         },
         "tags": [
           "Experiments"
-        ]
+        ],
+        "x-stoplight": {
+          "id": "j7v1w5s60ynya"
+        },
+        "description": ""
+      }
+    },
+    "/experiments/{experiment_id}/abandon": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "experiment_id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "Abandon Experiment",
+        "operationId": "put-experiments-experiment_id-start",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Experiment successfully started."
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Success": {
+                    "value": {
+                      "message": "Experiment successfully abandonded."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "status": 400,
+                      "message": "Experiment has finished"
+                    }
+                  }
+                },
+                "examples": {
+                  "Experiment not started": {
+                    "value": {
+                      "status": 400,
+                      "message": "Experiment has not yet started"
+                    }
+                  },
+                  "Experiment already abandoned": {
+                    "value": {
+                      "status": 400,
+                      "message": "Experiment a_experiment is already abandoned"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
+        },
+        "tags": [
+          "Experiments"
+        ],
+        "x-stoplight": {
+          "id": "woa738678jk09"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "Example 1": {
+                    "removeTargeting": false,
+                    "decisionReason": ""
+                  }
+                },
+                "properties": {
+                  "removeTargeting": {
+                    "type": "boolean",
+                    "description": "Removing targeting on experiment"
+                  },
+                  "decisionReason": {
+                    "type": "string",
+                    "description": "Why the experiment was abandoned"
+                  }
+                }
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "removeTargeting": false,
+                    "decisionReason": "Reason for abandoning the experiment"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

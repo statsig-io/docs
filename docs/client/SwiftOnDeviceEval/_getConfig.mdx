@@ -1,0 +1,6 @@
+```swift
+let config = Statsig.shared.getDynamicConfig("my_dynamic_config", user)
+
+let name: String? = config.value["product_name"] as? String
+let price: Double? = config.value["price"] as? Double
+```

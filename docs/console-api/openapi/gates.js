@@ -157,6 +157,14 @@ module.exports = {
                   "idType": {
                     "type": "string",
                     "description": "The id type this gate will use, defaults to 'userID'"
+                  },
+                  "creatorID": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "a5j8czj6nrw96"
+                    },
+                    "description": "The userID of intended creator, defaults to Console API",
+                    "example": "35sClJFs8l0y5uRQhDwUDo"
                   }
                 },
                 "required": [
@@ -168,7 +176,8 @@ module.exports = {
                   "value": {
                     "name": "a gate",
                     "description": "helpful summary of what this gate does",
-                    "idType": "userID"
+                    "idType": "userID",
+                    "creatorID": "35sClJFs8l0y5uRQhDwUDo"
                   }
                 },
                 "customID": {
@@ -888,13 +897,30 @@ module.exports = {
                     "x-stoplight": {
                       "id": "z4yjl8n8f5mc4"
                     }
+                  },
+                  "targetApps": {
+                    "$ref": "../models/targetApps.json"
+                  },
+                  "idType": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "6o8q8g32tty5p"
+                    },
+                    "description": "Changing ID type will overwrite all historical Pulse results"
+                  },
+                  "": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "x9ql896pw8y28"
+                    }
                   }
                 }
               },
               "examples": {
-                "example-1": {
+                "Full Update": {
                   "value": {
                     "isEnabled": false,
+                    "idType": "stableID",
                     "description": "helpful summary of what this gate does",
                     "status": "In Progress",
                     "lastModifierName": "CONSOLE API",
@@ -902,6 +928,7 @@ module.exports = {
                     "tags": [
                       "design"
                     ],
+                    "targetApps": [],
                     "rules": [
                       {
                         "name": "everyone",
@@ -1001,7 +1028,7 @@ module.exports = {
                 "examples": {
                   "example-1": {
                     "value": {
-                      "message": "string",
+                      "message": "Gate updated successfully.",
                       "data": {
                         "id": "a_gate",
                         "isEnabled": true,
@@ -1350,6 +1377,16 @@ module.exports = {
                       "type": "string",
                       "example": "product_team"
                     }
+                  },
+                  "targetApps": {
+                    "$ref": "../models/targetApps.json"
+                  },
+                  "idType": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "66ijtgompruqj"
+                    },
+                    "description": "Changing ID type will overwrite all historical Pulse results"
                   }
                 }
               },
@@ -1357,10 +1394,12 @@ module.exports = {
                 "full update": {
                   "value": {
                     "isEnabled": false,
+                    "stableID": "stableID",
                     "description": "helpful summary of what this gate does",
                     "tags": [
                       "product_team"
                     ],
+                    "targetApps": [],
                     "rules": [
                       {
                         "name": "everyone",
@@ -1857,6 +1896,117 @@ module.exports = {
           }
         },
         "description": "Removes provided lists from existing gate overrides"
+      }
+    },
+    "/gates/:id/launch": {
+      "put": {
+        "summary": "",
+        "operationId": "put-gates-:id-launch",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Gate updated successfully.",
+                      "data": {
+                        "id": "a_gate",
+                        "name": "A gate",
+                        "description": "",
+                        "idType": "userID",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifiedTime": 1698950181739,
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierEmail": null,
+                        "creatorID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "createdTime": 1698950178518,
+                        "creatorName": "CONSOLE API",
+                        "creatorEmail": null,
+                        "targetApps": [],
+                        "isEnabled": false,
+                        "status": "Launched",
+                        "rules": [
+                          {
+                            "name": "public",
+                            "passPercentage": 100,
+                            "conditions": [
+                              {
+                                "type": "public"
+                              }
+                            ],
+                            "environments": null
+                          }
+                        ],
+                        "checksPerHour": 0,
+                        "tags": [],
+                        "type": "TEMPORARY",
+                        "typeReason": "NONE"
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "data": {
+                      "$ref": "../models/gate.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Launch Gate": {
+                    "value": {
+                      "message": "Gate updated successfully.",
+                      "data": {
+                        "id": "a_gate",
+                        "name": "A gate",
+                        "description": "",
+                        "idType": "userID",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifiedTime": 1698950181739,
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierEmail": null,
+                        "creatorID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "createdTime": 1698950178518,
+                        "creatorName": "CONSOLE API",
+                        "creatorEmail": null,
+                        "targetApps": [],
+                        "isEnabled": false,
+                        "status": "Launched",
+                        "rules": [
+                          {
+                            "name": "public",
+                            "passPercentage": 100,
+                            "conditions": [
+                              {
+                                "type": "public"
+                              }
+                            ],
+                            "environments": null
+                          }
+                        ],
+                        "checksPerHour": 0,
+                        "tags": [],
+                        "type": "TEMPORARY",
+                        "typeReason": "NONE"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "kdox550fr7np2"
+        },
+        "description": "Launch a feature gate",
+        "tags": [
+          "Gates"
+        ]
       }
     }
   }

@@ -16,7 +16,9 @@ As a Project Admin, you can configure your project to require reviews for any ch
 
 <img width="455" alt="image" src="https://user-images.githubusercontent.com/1315028/166673961-3da1f147-47fc-458b-aae1-4ed73ba3a73e.png"/>
 
-- You can optionally allow yourself as a project admin to bypass the review requirement and self-approve review requests.
+- You can optionally allow different roles to bypass the review requirement and self-approve review requests by clicking on "Manage" button next to Roles and Access Controls under Project Setting:
+ 
+![Project_Settings___Statsig](https://github.com/statsig-io/docs/assets/120431069/70c44ed2-d9f0-4e3d-9c89-073d543df8c4)
 
 - Now when you make any configuration changes, say to a feature gate or experiment, you'll be asked to **Submit for Review**; you can add reviewers when you submit the change for review
 
@@ -32,10 +34,10 @@ As a Project Admin, you can configure your project to require reviews for any ch
 ### Creating Review Groups
 To create a predefined group of reviewers,
 
-- Navigate to the **Basic Settings** tab under your **Project Settings**, and click the **Create New Group** button under **Project Members and Groups** 
+- Navigate to the **Reviews** tab under your **Project Settings**, and inside the **Groups** sub tab, click the **Create New Review Group** button
 
-![Screen Shot 2022-06-27 at 8 31 24 AM](https://user-images.githubusercontent.com/74584483/175977950-01f18981-ad91-4116-ab4c-9e69a9a6de98.png)
-
+![image](https://github.com/statsig-io/docs/assets/74588208/3762f843-abd1-4893-aa0c-59b04ecee9ef)
+ 
 - Enter the name and members of the group and click **Create**.  
 
 ![image](https://user-images.githubusercontent.com/1315028/146826405-0f9070f7-8aa4-4c10-8802-178bef5e1505.png)

@@ -4,7 +4,7 @@ require 'statsig'
 Statsig.initialize('server-secret-key')
 
 # Or, if you want to initialize with certain options
-options = StatsigOptions.new({'tier' => 'staging'})
+options = StatsigOptions.new({'tier' => 'staging'}, network_timeout: 5)
 Statsig.initialize('server-secret-key', options)
 ```
 

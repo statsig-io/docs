@@ -68,7 +68,7 @@ BEGIN;
   USE ROLE sysadmin;
 
   -- create a warehouse, database, schema and tables for Statsig
-  CREATE OR REPLACE WAREHOUSE STATSIG WITH warehouse_size='XSMALL';
+  CREATE OR REPLACE WAREHOUSE STATSIG WITH warehouse_size='XLARGE'; -- adjust based on your data size
   CREATE DATABASE IF NOT EXISTS STATSIG_STAGING;
   CREATE SCHEMA IF NOT EXISTS STATSIG_STAGING.STATSIG_TABLES;
 
