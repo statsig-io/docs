@@ -4,9 +4,9 @@ slug: /statsig-warehouse-native/guides/AATest
 sidebar_label: A/A Test
 ---
 
-To create a quick A/A test, you can randomly split existing users you already have events for. 
+To create a quick A/A test, you can randomly split existing users you already have events for.Create an assignment source using the script below - and you;ll be ready to analyze your A/A test in minutes and see Pulse scorecards light up. 
 
-Example script - 
+Example script to use - 
 
 ```sql
 SELECT
