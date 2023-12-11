@@ -321,6 +321,10 @@ module.exports = {
     {
       type: "category",
       label: "SDKs, APIs, Integrations",
+      link: {
+        type: "doc",
+        id: "sdks/sdks-overview",
+      },
       items: [
         {
           type: "category",
