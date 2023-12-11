@@ -3,8 +3,11 @@ module.exports = {
     {
       type: "category",
       label: "Getting Started",
+      link: {
+        type: "doc",
+        id: "getting-started",
+      },
       items: [
-        'getting-started',
         {
           type: "category",
           label: "Guides",
