@@ -12,17 +12,36 @@ module.exports = {
           type: "category",
           label: "Guides",
           items: [
-            "guides/first-feature",
-            "guides/logging-events",
-            "guides/first-dynamic-config",
-            "guides/abn-tests",
-            "guides/experiment-on-custom-id-types",
-            "guides/first-holdout",
+            {
+              "Beginner Guides": [
+                "guides/logging-events", 
+                "guides/first-feature",
+                "guides/abn-tests",
+              ],
+            },
+            {
+              "Advanced Guides": [
+                "guides/first-dynamic-config",
+                "guides/first-segment",
+                "guides/first-holdout",
+              ],
+            },
+            {
+              "Common Use Cases": [
+                "guides/aa-test",
+                "guides/first-shopify-abtest",
+                "guides/sendgrid-email-abtest",
+                "guides/customer-io-email-abtest",
+                "guides/email-campaign-test",
+                "guides/cms-integrations",
+                "guides/first-device-level-experiment"
+                "guides/experiment-on-custom-id-types",
+                "guides/synchronized-launch",
+              ],
+            },
             "guides/using-environments",
             "guides/setting-up-reviews",
-            "guides/first-segment",
             "guides/private-attributes",
-            "guides/synchronized-launch",
             "guides/featuregates-or-experiments",
             "guides/experimentation-program",
             "guides/serverless",
@@ -33,17 +52,6 @@ module.exports = {
             "guides/uptime",
             "guides/fomo",
             "guides/migrate-from-launchdarkly",
-            {
-              "Common Use Cases": [
-                "guides/aa-test",
-                "guides/first-shopify-abtest",
-                "guides/sendgrid-email-abtest",
-                "guides/customer-io-email-abtest",
-                "guides/email-campaign-test",
-                "guides/cms-integrations",
-                "guides/first-device-level-experiment"
-              ],
-            },
           ],
         }
       ]
