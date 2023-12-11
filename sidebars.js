@@ -34,7 +34,7 @@ module.exports = {
             "guides/fomo",
             "guides/migrate-from-launchdarkly",
             {
-              Scnenarios: [
+              "Common Use Cases": [
                 "guides/aa-test",
                 "guides/first-shopify-abtest",
                 "guides/sendgrid-email-abtest",
