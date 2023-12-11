@@ -4,7 +4,7 @@ module.exports = {
       type: "category",
       label: "Getting Started",
       items: [
-        'getting-started',
+        'getting-started-overview-new',
         {
           type: "category",
           label: "Guides",
