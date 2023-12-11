@@ -34,7 +34,7 @@ module.exports = {
                 "guides/customer-io-email-abtest",
                 "guides/email-campaign-test",
                 "guides/cms-integrations",
-                "guides/first-device-level-experiment"
+                "guides/first-device-level-experiment",
                 "guides/experiment-on-custom-id-types",
                 "guides/synchronized-launch",
               ],
