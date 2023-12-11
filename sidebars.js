@@ -13,7 +13,6 @@ module.exports = {
             "guides/logging-events",
             "guides/first-dynamic-config",
             "guides/abn-tests",
-            "guides/first-device-level-experiment",
             "guides/experiment-on-custom-id-types",
             "guides/first-holdout",
             "guides/using-environments",
@@ -21,11 +20,8 @@ module.exports = {
             "guides/first-segment",
             "guides/private-attributes",
             "guides/synchronized-launch",
-            "guides/first-shopify-abtest",
-            "guides/use-statsig-for-analytics-only",
             "guides/featuregates-or-experiments",
             "guides/experimentation-program",
-            "guides/aa-test",
             "guides/serverless",
             "guides/config-history",
             "guides/running-a-poc",
@@ -33,11 +29,18 @@ module.exports = {
             "guides/testing",
             "guides/uptime",
             "guides/fomo",
-            "guides/sendgrid-email-abtest",
-            "guides/customer-io-email-abtest",
-            "guides/email-campaign-test",
-            "guides/cms-integrations",
             "guides/migrate-from-launchdarkly",
+            {
+              "Common Scenarios": [
+                "guides/aa-test",
+                "guides/first-shopify-abtest",
+                "guides/sendgrid-email-abtest",
+                "guides/customer-io-email-abtest",
+                "guides/email-campaign-test",
+                "guides/cms-integrations",
+                "guides/first-device-level-experiment"
+              ],
+            },
           ],
         }
       ]
