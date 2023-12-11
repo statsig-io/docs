@@ -13,17 +13,21 @@ module.exports = {
           label: "Guides",
           items: [
             {
-              "Beginner Guides": [
-                "guides/logging-events", 
-                "guides/first-feature",
-                "guides/abn-tests",
+              "Beginner's Guides": [
+            "guides/first-feature",
+            "guides/logging-events",
+            "guides/abn-tests"
               ],
             },
             {
               "Advanced Guides": [
-                "guides/first-dynamic-config",
-                "guides/first-segment",
-                "guides/first-holdout",
+            "guides/first-dynamic-config",
+            "guides/first-holdout",
+            "guides/first-segment",
+            "guides/experiment-on-custom-id-types",
+            "guides/using-environments",
+            "guides/setting-up-reviews",
+            "guides/private-attributes"
               ],
             },
             {
@@ -34,14 +38,10 @@ module.exports = {
                 "guides/customer-io-email-abtest",
                 "guides/email-campaign-test",
                 "guides/cms-integrations",
-                "guides/first-device-level-experiment",
-                "guides/experiment-on-custom-id-types",
-                "guides/synchronized-launch",
+                "guides/first-device-level-experiment"
               ],
             },
-            "guides/using-environments",
-            "guides/setting-up-reviews",
-            "guides/private-attributes",
+            "guides/synchronized-launch",
             "guides/featuregates-or-experiments",
             "guides/experimentation-program",
             "guides/serverless",
@@ -51,7 +51,7 @@ module.exports = {
             "guides/testing",
             "guides/uptime",
             "guides/fomo",
-            "guides/migrate-from-launchdarkly",
+            "guides/migrate-from-launchdarkly"
           ],
         }
       ]
