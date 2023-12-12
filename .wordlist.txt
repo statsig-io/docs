@@ -283,6 +283,7 @@ unix
 unlaunched
 unmonitored
 unsampled
+updateUser
 userID
 userbase
 utc
