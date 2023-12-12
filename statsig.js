@@ -17,7 +17,7 @@ function wireClickHandlers(tagName) {
 async function measureCDNPerformance() {
   let start = performance.now();
   await fetch(
-    "https://api.statsigcdn.com/v1/download_config_specs?k=client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps",
+    "https://api.statsigcdn.com/v1/download_config_specs/client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps.js",
     { cache: "reload" }
   )
     .then(() => {
