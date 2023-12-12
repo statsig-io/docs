@@ -14,20 +14,20 @@ module.exports = {
           items: [
             {
               "Beginner's Guides": [
-            "guides/first-feature",
-            "guides/logging-events",
-            "guides/abn-tests"
+                "guides/first-feature",
+                "guides/logging-events",
+                "guides/abn-tests",
               ],
             },
             {
               "Advanced Guides": [
-            "guides/first-dynamic-config",
-            "guides/first-holdout",
-            "guides/first-segment",
-            "guides/experiment-on-custom-id-types",
-            "guides/using-environments",
-            "guides/setting-up-reviews",
-            "guides/private-attributes"
+                "guides/first-dynamic-config",
+                "guides/first-holdout",
+                "guides/first-segment",
+                "guides/experiment-on-custom-id-types",
+                "guides/using-environments",
+                "guides/setting-up-reviews",
+                "guides/private-attributes",
               ],
             },
             {
@@ -38,7 +38,7 @@ module.exports = {
                 "guides/customer-io-email-abtest",
                 "guides/email-campaign-test",
                 "guides/cms-integrations",
-                "guides/first-device-level-experiment"
+                "guides/first-device-level-experiment",
               ],
             },
             "guides/synchronized-launch",
@@ -51,10 +51,10 @@ module.exports = {
             "guides/testing",
             "guides/uptime",
             "guides/fomo",
-            "guides/migrate-from-launchdarkly"
+            "guides/migrate-from-launchdarkly",
           ],
-        }
-      ]
+        },
+      ],
     },
     {
       type: "category",
@@ -116,7 +116,7 @@ module.exports = {
             "segments/use-segment",
           ],
         },
-      ]
+      ],
     },
     {
       type: "category",
@@ -141,7 +141,7 @@ module.exports = {
             "experiments-plus/sequential-testing",
             "experiments-plus/make-decision",
             "experiments-plus/overrides",
-            "experiments-plus/stratified-sampling", 
+            "experiments-plus/stratified-sampling",
             "experiments-plus/abandon",
             "experiments-plus/ending-experiment",
             "experiments-plus/disable-group",
@@ -215,7 +215,7 @@ module.exports = {
           },
           items: ["autotune/setup", "autotune/monitoring"],
         },
-        
+
         {
           type: "category",
           label: "Pulse",
@@ -232,7 +232,7 @@ module.exports = {
             "pulse/faq",
           ],
         },
-      ]
+      ],
     },
     {
       type: "category",
@@ -263,14 +263,14 @@ module.exports = {
             "metrics/pulse",
             "metrics/console",
             "metrics/health-checks",
-    
+
             // 201
             "metrics/create",
             "metrics/archiving-metrics",
             "metrics/create-metric-tags",
             "metrics/metric-alerts",
             "metrics/user",
-    
+
             // 301
             "metrics/create-user-flows",
             "metrics/create-user-funnels",
@@ -279,7 +279,7 @@ module.exports = {
         "mex/introduction",
         "users/introduction",
         "insights/introduction",
-      ]
+      ],
     },
     {
       type: "category",
@@ -364,6 +364,7 @@ module.exports = {
             "client/iosClientSDK",
             "client/swiftOnDeviceEvaluationSDK",
             "client/androidClientSDK",
+            "client/androidOnDeviceEvaluationSDK",
             "client/dotnetSDK",
             "client/rokuSDK",
             "client/unitySDK",
@@ -528,7 +529,7 @@ module.exports = {
             "data-warehouse-ingestion/data_mapping",
           ],
         },
-      ]
+      ],
     },
     {
       type: "category",
@@ -577,8 +578,8 @@ module.exports = {
             "infrastructure/reliability-faq",
           ],
         },
-      ]
+      ],
     },
     "faq",
-  ]
+  ],
 };
