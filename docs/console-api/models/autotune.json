@@ -1,128 +1,136 @@
 {
-  "type": "object",
-  "x-examples": {
-    "example-1": {
-      "id": "my_autotunes_are_best",
-      "isStarted": false,
-      "description": "helpful summary of what this Aututune is",
-      "lastModifierID": "ahKwUoaNauHu9AmJPc2",
-      "lastModifierName": "CONSOLE API",
-      "variants": [
-        {
-          "name": "red",
-          "json": {
-            "foo": "boo"
-          }
-        },
-        {
-          "name": "blue",
-          "json": {}
-        }
-      ],
-      "successEvent": "purchase_item",
-      "successEventValue": "",
-      "explorationWindow": "1hr",
-      "attributionWindow": "2hrs",
-      "winnerThreshold": "99%"
-    }
-  },
-  "description": "Autotune object",
-  "examples": [
+  "allOf": [
     {
-      "name": "a_autotune",
-      "description": "helpful summary of what this Aututune is",
-      "variants": [
-        {
-          "name": "red",
-          "json": {
-            "color": "red"
-          }
-        },
-        {
-          "name": "blue",
-          "json": {
-            "color": "blue"
-          }
-        }
-      ],
-      "successEvent": "purchase_item",
-      "explorationWindow": "1hr",
-      "attributionWindow": "2hr",
-      "winnerThreshold": "99%"
-    }
-  ],
-  "properties": {
-    "id": {
-      "type": "string",
-      "description": "The name that was originally given to the autotune on creation but formatted as an ID (\"A Autotune\" -> \"a_autotune\")."
-    },
-    "isStarted": {
-      "type": "boolean",
-      "description": "Is the autotune experiment currently running."
-    },
-    "description": {
-      "type": "string",
-      "description": "A brief summary of what the autotune is being used for."
-    },
-    "lastModifierID": {
-      "type": "string",
-      "description": "The Statsig UserID of the last modifier of this autotune."
-    },
-    "lastModifierName": {
-      "type": "string",
-      "description": "The Statsig Username of the last modifier of this autotune."
-    },
-    "variants": {
-      "type": "array",
-      "description": "An array of Variant objects.",
-      "items": {
-        "$ref": "./variant.json"
+      "$ref": "./config_common.json",
+      "x-stoplight": {
+        "id": "zxc4ug9x161ri"
       }
     },
-    "successEvent": {
-      "type": "string",
-      "description": "The event you are trying to optimize for."
-    },
-    "successEventValue": {
-      "type": "string",
-      "description": "he value that should come with the event for it to be consider successful."
-    },
-    "explorationWindow": {
-      "type": "string",
-      "description": "The initial time period where Autotune will equally split the traffic.",
-      "enum": [
-        "1hr",
-        "24hr",
-        "48hr",
-        "1",
-        "24",
-        "48"
-      ]
-    },
-    "attributionWindow": {
-      "type": "string",
-      "description": "The maximum duration between the exposure and success event that counts as a success.",
-      "enum": [
-        "1hr",
-        "2hr",
-        "4hr",
-        "24hr",
-        "1",
-        "2",
-        "4",
-        "24"
-      ]
-    },
-    "winnerThreshold": {
-      "type": "string",
-      "description": "The \"probability of best\" threshold a variant needs to achieve for Autotune to declare it the winner, stop collecting data, and direct all traffic.",
-      "enum": [
-        "80%",
-        "90%",
-        "95%",
-        "98%",
-        "99%"
-      ]
+    {
+      "type": "object",
+      "x-stoplight": {
+        "id": "zj6l8al6t5ij4"
+      },
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The name that was originally given to the autotune on creation but formatted as an ID (\"A Autotune\" -> \"a_autotune\").",
+          "x-stoplight": {
+            "id": "r9uwg9ip8q4to"
+          }
+        },
+        "isStarted": {
+          "type": "boolean",
+          "description": "Is the autotune experiment currently running.",
+          "x-stoplight": {
+            "id": "tm8boe60l16b8"
+          }
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief summary of what the autotune is being used for.",
+          "x-stoplight": {
+            "id": "9zlyo5uj7libn"
+          }
+        },
+        "lastModifierID": {
+          "type": "string",
+          "description": "The Statsig UserID of the last modifier of this autotune.",
+          "x-stoplight": {
+            "id": "9q5gy8v6njk9f"
+          }
+        },
+        "lastModifierName": {
+          "type": "string",
+          "description": "The Statsig Username of the last modifier of this autotune.",
+          "x-stoplight": {
+            "id": "0kzsjhc0piqd2"
+          }
+        },
+        "variants": {
+          "type": "array",
+          "description": "An array of Variant objects.",
+          "x-stoplight": {
+            "id": "zkd87dmxq67r9"
+          },
+          "items": {
+            "$ref": "./variant.json",
+            "x-stoplight": {
+              "id": "teewma75dma4s"
+            }
+          }
+        },
+        "successEvent": {
+          "type": "string",
+          "description": "The event you are trying to optimize for.",
+          "x-stoplight": {
+            "id": "ij1megshw84x4"
+          }
+        },
+        "successEventValue": {
+          "type": "string",
+          "description": "he value that should come with the event for it to be consider successful.",
+          "x-stoplight": {
+            "id": "r25swe01q0hqo"
+          }
+        },
+        "explorationWindow": {
+          "type": "string",
+          "description": "The initial time period where Autotune will equally split the traffic.",
+          "enum": [
+            "1hr",
+            "24hr",
+            "48hr",
+            "1",
+            "24",
+            "48"
+          ],
+          "x-stoplight": {
+            "id": "0esiz825ov4wt"
+          }
+        },
+        "attributionWindow": {
+          "type": "string",
+          "description": "The maximum duration between the exposure and success event that counts as a success.",
+          "enum": [
+            "1hr",
+            "2hr",
+            "4hr",
+            "24hr",
+            "1",
+            "2",
+            "4",
+            "24"
+          ],
+          "x-stoplight": {
+            "id": "f5ts9igeznftw"
+          }
+        },
+        "winnerThreshold": {
+          "type": "string",
+          "description": "The \"probability of best\" threshold a variant needs to achieve for Autotune to declare it the winner, stop collecting data, and direct all traffic.",
+          "enum": [
+            "80%",
+            "90%",
+            "95%",
+            "98%",
+            "99%"
+          ],
+          "x-stoplight": {
+            "id": "kdcb4zks53lyr"
+          }
+        },
+        "idType": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "59t342978zj5h"
+          },
+          "description": "idType of the autotune. Defaults to userID if not provided"
+        }
+      }
     }
+  ],
+  "x-stoplight": {
+    "id": "d2z76wb3gijsq"
   }
 }
