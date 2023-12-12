@@ -1,12 +1,4 @@
 {
-  "allOf": [
-    {
-      "$ref": "./config_common.json",
-      "x-stoplight": {
-        "id": "zxc4ug9x161ri"
-      }
-    },
-    {
       "type": "object",
       "x-stoplight": {
         "id": "zj6l8al6t5ij4"
@@ -129,8 +121,3 @@
         }
       }
     }
-  ],
-  "x-stoplight": {
-    "id": "d2z76wb3gijsq"
-  }
-}
