@@ -10,7 +10,11 @@ module.exports = {
       items: [
         {
           type: "category",
-          label: "Guides",
+          label: "Walkthrough Guides",
+          link: {
+            type: "generated-index",
+            title: "Walkthrough Guides",
+          },
           items: [
             {
               "Beginner's Guides": [
