@@ -123,6 +123,13 @@
         "98%",
         "99%"
       ]
+    },
+    "idType": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "59t342978zj5h"
+      },
+      "description": "idType of the autotune (userID, stableID, or a customID). Defaults to userID if not provided"
     }
   }
 }
