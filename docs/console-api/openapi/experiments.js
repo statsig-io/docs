@@ -2746,9 +2746,9 @@ module.exports = {
           required: true,
         },
       ],
-      put: {
+      post: {
         summary: "Load Pulse",
-        operationId: "put-experiments-experiment_id-load-pulse",
+        operationId: "post-experiments-experiment_id-load-pulse",
         responses: {
           200: {
             description: "OK",
