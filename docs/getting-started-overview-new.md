@@ -3,10 +3,6 @@ sidebar_label: Getting Started
 title: Getting Started
 ---
 
-:::info
-Have a question or need help getting set up? Our Eng, Data, and Product teams are ready to answer questions in our [Slack community](https://www.statsig.com/slack).
-:::
-
 # Statsig Platform Overview
 Statsig has three core product lines- **Feature Gates**, **Experiments**, and **Analytics**- all of which sit on top of our suite of SDKs, APIs, and integrations that enable you to (1) manage assignment, and (2) log or import events and exposures. 
 
@@ -30,3 +26,7 @@ There are two ways to leverage Statsig's core products: Statsig Cloud (we host y
  
 
 Once you know whether Statsig Cloud or Statsig Warehouse Native is a better fit for your organization, choose the “Getting Started” guide that best fits your first use-case for Statsig. Read more about choosing between the two models [here](https://statsig.com/blog/deciding-cloud-hosted-versus-warehouse-native-experimentation-platforms).
+
+:::info
+Have a question or need help getting set up? Our Eng, Data, and Product teams are ready to answer questions in our [Slack community](https://www.statsig.com/slack).
+:::
