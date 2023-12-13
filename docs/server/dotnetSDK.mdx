@@ -69,6 +69,10 @@ export const Result = SDKDocsBuilder(
       DataStore,
       { interface: <DataStoreInterface />, redis: <RedisDataStore /> },
     ],
+    [
+      LocalOverrides,
+      { addedInVersion: "1.21.0", snippet: <OverridesSnippet /> },
+    ],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
   ],
