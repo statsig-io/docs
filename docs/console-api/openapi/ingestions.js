@@ -565,17 +565,16 @@ module.exports = {
         "requestBody": {
           "content": {}
         },
+        "description": "",
         "tags": [
           "Ingestions"
-        ],
-        "description": ""
+        ]
       },
       "parameters": []
     },
     "/ingestion/runs": {
       "get": {
         "summary": "List Ingestion Runs",
-        "tags": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -1721,13 +1720,15 @@ module.exports = {
             "description": "Which page to query"
           }
         ],
-        "description": "List ingestion runs sorted by the timestamp they were triggered"
+        "description": "List ingestion runs sorted by the timestamp they were triggered",
+        "tags": [
+          "Ingestions"
+        ]
       }
     },
     "/ingestion/runs/{run_id}": {
       "get": {
         "summary": "Read Ingestion Run",
-        "tags": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -1921,8 +1922,22 @@ module.exports = {
             "description": "Which page to query"
           }
         ],
-        "description": "Get a selected run_id"
-      }
+        "description": "Get a selected run_id",
+        "tags": [
+          "Ingestions"
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "run_id",
+          "in": "path",
+          "required": true,
+          "description": "The Run ID to query"
+        }
+      ]
     }
   }
 }
