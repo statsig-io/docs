@@ -215,6 +215,7 @@ function getDescription(entity) {
           </ul>
           <li>Update experiment overrides</li>
           <li>Delete an experiment</li>
+          <li>Load Pulse results on Warehouse Native</li>
         </ul>
       </>
     case 'holdouts':
