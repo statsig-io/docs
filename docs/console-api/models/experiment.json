@@ -270,7 +270,8 @@
       "targetingGateID": "",
       "defaultConfidenceInterval": "95",
       "bonferroniCorrection": false,
-      "decisionReason": "This experiment increased DAU by 1000%"
+      "decisionReason": "This experiment increased DAU by 1000%",
+      "decisionTime": 1702665103377
     }
   ]
 }
