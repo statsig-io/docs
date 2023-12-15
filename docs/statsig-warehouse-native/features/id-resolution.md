@@ -38,7 +38,7 @@ This works natively across Metric Sources, so you can easily set up funnel or ra
 
 # Considerations
 
-Deduplicating records can lead to results, so Statsig preforms two extra health checks on this kind of experiment.
+Deduplicating records can lead to biased results, so Statsig preforms two extra health checks on this kind of experiment.
 
 - Statsig will check your deduplication rate and warn you if it is unusually high. It's expected that some secondary IDs will have multiple logged-out IDs due to users
   using different devices or clearing browser history
