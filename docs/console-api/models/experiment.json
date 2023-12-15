@@ -167,11 +167,30 @@
           "description": "timestamp at which the experiment concluded. This is triggered when a variation is shipped or when the experiment is abandoned"
         },
         "decisionReason": {
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "x-stoplight": {
             "id": "5qr4wojsv4un8"
           },
           "description": "Reason for shipping or abandoning an experiment"
+        },
+        "decisionTime": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "x-stoplight": {
+            "id": "w53ws3pftl61p"
+          },
+          "description": "Unix Millisecond Timestamp of when a descision (shipping a group / abandoning) was made for the experiment"
+        },
+        "healthChecks": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "zhaa2e7qbwyck"
+          }
         }
       },
       "required": [
