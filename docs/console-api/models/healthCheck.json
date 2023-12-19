@@ -1,0 +1,37 @@
+{
+    "type": "object",
+    "x-examples": {
+      "Example 1": {
+        "name": "Checks not yet detected",
+        "status": "WAITING",
+        "description": "This experiment is active but it has not recorded any exposure checks in production. Statsig will not use non-production exposures or exposures associated with Overrides for further analysis. See the client and server SDK docs to instrument your application. See the live Exposure Stream to validate that your application is instrumented correctly."
+      }
+    },
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "status": {
+        "enum": [
+          "PASSED",
+          "FAILED",
+          "WAITING",
+          "WARNING"
+        ]
+      },
+      "description": {
+        "type": "string"
+      },
+      "metadata": {
+        "type": "object",
+        "x-stoplight": {
+          "id": "1qkrxi21nxh3t"
+        }
+      }
+    },
+    "required": [
+      "name",
+      "status",
+      "description"
+    ]
+  }
