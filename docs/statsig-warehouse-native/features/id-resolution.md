@@ -43,3 +43,13 @@ Deduplicating records can lead to biased results, so Statsig preforms two extra 
 - Statsig will check your deduplication rate and warn you if it is unusually high. It's expected that some secondary IDs will have multiple logged-out IDs due to users
   using different devices or clearing browser history
 - Statsig will perform a chi-squared test evaluating if the deduplication rate is identical across arms of the experiment. In some cases, an experiment may cause more users to come back (for example an email resurrection campaign), in which case duplicates are expected to be more frequent in that arm and can be a positive outcome. In this case, you can perform first-touch attribution to maintain a common identifier
+
+
+# Configuring Project Level Identity Resolution [coming soon]
+To use Identity Resolution across experiments in your project, you will need a lookup table that maps the logged-out identifier to a userID. This table can be configured by setting up an Entity Property and setting it as an Identity Resolution source.
+![image](https://github.com/statsig-io/docs/assets/31516123/8b822870-0807-436c-9e84-b9ce4f2e7317)
+
+You will be able to configure a project level default Identity Resolution source (and optionally override this on an experiment).
+
+If you want to use a Statsig SDK to populate this table, you can log an event (like a "Signup" event that has both the anononymousID and the userID on the same event. Events sent via the Statsig SDK are written into your warehouse - and you can configure an Identity Resolution source on top of that using something like this - 
+![image](https://github.com/statsig-io/docs/assets/31516123/6b2a3d0e-a1ad-446b-a604-43dd050f05fa)
