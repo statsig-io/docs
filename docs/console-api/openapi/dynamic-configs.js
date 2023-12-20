@@ -37,18 +37,29 @@ module.exports = {
                 "tags": {
                   "type": "array",
                   "x-stoplight": {
-                    "id": "4u8p85o6xcf2l"
+                    "id": "pr38lwk3l4ves"
                   },
                   "description": "a list of tag names to attach to the dynamic config",
                   "items": {
                     "x-stoplight": {
-                      "id": "dlpg24cgslee8"
+                      "id": "ya0b1mdyl3ylk"
                     },
                     "type": "string",
                     "example": "a tag"
                   }
+                },
+                "creatorID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "fizory4tclp2f"
+                  },
+                  "description": "The userID of intended creator, defaults to Console API",
+                  "example": "35sClJFs8l0y5uRQhDwUDo"
                 }
-              }
+              },
+              "required": [
+                "name"
+              ]
             },
             "examples": {}
           }
@@ -60,7 +71,7 @@ module.exports = {
       "description": {
         "title": "description",
         "x-stoplight": {
-          "id": "liyywvwv1ul0f"
+          "id": "q54nvdsddtnf0"
         },
         "type": "string",
         "description": "A helpful summary of what this dynamic config does.",
@@ -71,7 +82,7 @@ module.exports = {
       "isEnabled": {
         "title": "isEnabled",
         "x-stoplight": {
-          "id": "a777j69kq9g8y"
+          "id": "g5iv7rb1708ud"
         },
         "type": "boolean",
         "description": "Is the dynamic config enabled.",
@@ -82,7 +93,7 @@ module.exports = {
       "id": {
         "title": "id",
         "x-stoplight": {
-          "id": "270blnxzb3ln4"
+          "id": "drv28ng2nji8e"
         },
         "type": "string",
         "description": "The name that was originally given to the dynamic config on creation but formatted as an ID (\"A Dynamic Config\" -> \"a_dynamic_config\")",
@@ -1150,12 +1161,12 @@ module.exports = {
                   "tags": {
                     "type": "array",
                     "x-stoplight": {
-                      "id": "6fcbz59pu3vu6"
+                      "id": "h1gaar0oxcx9h"
                     },
                     "description": "a list of tag names to attach to the dynamic config",
                     "items": {
                       "x-stoplight": {
-                        "id": "r4ji5xjkdjysb"
+                        "id": "smz6qk9ixmwz6"
                       },
                       "type": "string",
                       "example": "a tag"

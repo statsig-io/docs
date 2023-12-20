@@ -191,11 +191,18 @@ module.exports = {
                     "type": "string",
                     "description": "idType of id_list segments (ignored on rule_based)",
                     "default": "userID"
+                  },
+                  "creatorID": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "e7pluh4jxhk41"
+                    },
+                    "description": "The userID of intended creator, defaults to Console API",
+                    "example": "35sClJFs8l0y5uRQhDwUDo"
                   }
                 },
                 "required": [
                   "name",
-                  "description",
                   "type"
                 ]
               },
@@ -205,7 +212,8 @@ module.exports = {
                     "name": "a segment",
                     "description": "helpful summary of what this segment is",
                     "type": "id_list",
-                    "idType": "customID"
+                    "idType": "customID",
+                    "creatorID": "35sClJFs8l0y5uRQhDwUDo"
                   }
                 },
                 "rule_based": {
