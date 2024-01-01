@@ -26,6 +26,8 @@ When enabled, an adjustment is automatically applied to results calculated befor
 
 The dashed line represents the expanded confidence interval resulting from the adjustment.  The solid bar is the standard confidence interval computed without any adjustments.  If the adjusted confidence interval overlaps with zero, this means the metric delta is not stat-sig at the moment, and the experiment should continue its course as planned. 
 
+Sequential testing is a reliable way to make an early decision especially for detecting regressions.  However preliminary scorecard results are generally underpowered, and lift estimates will have a high degree of uncertainty.  If making the right decision is important, you can use statistically-significant sequential testing results.  If an accurate measurement is important, you should wait for full power as estimated by your pre-experimental power calculation.  We do not calculate statistical power on post-hoc experimental results (See section "Post-hoc Power Calculations are Noisy and Misleading" in [Kohavi, Deng, and Vermeer, A/B Testing Intuition Busters](https://bit.ly/ABTestingIntuitionBusters).
+
 ## Statsig's Implementation of Sequential Testing
 
 Statsig uses mSPRT based on the the approach proposed by Zhao et al. in this [paper](https://arxiv.org/pdf/1905.10493.pdf).  The two-sided Sequential Testing confidence interval with significance level  $\alpha$ is given by:
