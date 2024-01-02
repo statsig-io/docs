@@ -49,9 +49,14 @@ function DocumentationFork({
     return warehouse;
   };
 
+  // TODO @tore use getDocumentation() instead and render only the selected mode
   return (
     <div>
-      {getDocumentation()}
+      <h2>Statsig Cloud</h2>
+      {cloud}
+      <br />
+      <h2>Warehouse Native</h2>
+      {warehouse}
     </div>
   );
 }
