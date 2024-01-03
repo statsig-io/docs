@@ -17,8 +17,6 @@ jobs:
           version: 7.0.0
           run_install: false
       - run: |
-          pnpm config set auto-install-peers true
-      - run: |
           pnpm i --no-frozen-lockfile
       - run: |
           pnpm build
