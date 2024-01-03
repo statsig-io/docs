@@ -17,7 +17,7 @@ jobs:
           version: 7.0.0
           run_install: false
       - run: |
-          pnpm i --no-frozen-lockfile
+          pnpm i --no-frozen-lockfile --config.auto-install-peers=true
       - run: |
           pnpm build
       - name: Deploy to Netlify
