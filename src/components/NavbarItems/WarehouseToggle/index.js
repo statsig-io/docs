@@ -44,21 +44,20 @@ function WarehouseToggle({ className }) {
   };
 
   return (
-    <div className={clsx(styles.toggle,className, selectedMode)} id="warehouseToggle">
-      <button
-        className={clsx(
-          'clean-btn',
-          styles.toggleButton,
-          !isBrowser && styles.toggleButtonDisabled,
-        )}
-        type="button"
+    <div className={clsx(styles.toggle, className)} id="warehouseToggle">
+      <IconCloud
+        className={clsx(styles.icon, 'cloud', selectedMode === 'cloud' && styles.activeIcon)}
         onClick={handleToggleClick}
-        disabled={!isBrowser}
-        title='Switch between Statsig Cloud and Warehouse Native mode' >
-        {getActiveIcon()}
-      </button>
+        innerFill={selectedMode === 'cloud' ? "#CCFBC7" : '#E0E0E0'}
+        />
+      <IconWarehouse
+        className={clsx(styles.icon, 'warehouse', selectedMode === 'warehouse' && styles.activeIcon)}
+        onClick={handleToggleClick}
+        innerFill={selectedMode === 'warehouse' ? "#CCFBC7" : '#E0E0E0'}
+        />
     </div>
   );
+  
 }
 
 export default React.memo(WarehouseToggle);

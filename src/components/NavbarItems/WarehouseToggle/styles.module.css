@@ -1,28 +1,29 @@
 .toggle {
-  width: 2rem;
-  height: 2rem;
-}
-
-.toggleButton {
-  -webkit-tap-highlight-color: transparent;
-  align-items: center;
   display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  transition: background var(--ifm-transition-fast);
+  align-items: center;
+  justify-content: space-between; /* Space out icons */
+  position: relative;
+  width: 100px; /* Adjust size as needed */
+  height: 30px; /* Adjust size as needed */
+  background-color: #e0e0e0; /* Background color of the toggle bar */
+  border-radius: 15px; /* Rounded edges */
+  padding: 3px; /* Padding around the knob */
 }
 
-.toggleButton:hover {
-  background: var(--ifm-color-emphasis-200);
+.toggleButton.warehouse {
+  left: 50%; /* Move to right side for 'warehouse' mode */
 }
 
-[data-theme='cloud'] .cloudToggleIcon,
-[data-theme='warehouse'] .warehouseToggleIcon {
-  display: none;
+.icon {
+  z-index: 1;
+  display: block;
+  flex: 1;
 }
 
-.toggleButtonDisabled {
-  cursor: not-allowed;
+.icon.cloud {
+  left: 10px;
+}
+
+.icon.warehouse {
+  right: 10px;
 }
