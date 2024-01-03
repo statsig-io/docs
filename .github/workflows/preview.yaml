@@ -12,13 +12,14 @@ jobs:
         with:
           lfs: true
       - run: git lfs pull
-      - run: pnpm config set auto-install-peers true
       - uses: pnpm/action-setup@v2.1.0
         with:
           version: 7.0.0
-          run_install: |
-            - recursive: true
-              args: [--no-frozen-lockfile]
+          run_install: false
+      - run: |
+          pnpm config set auto-install-peers true
+      - run: |
+          pnpm i --no-frozen-lockfile
       - run: |
           pnpm build
       - name: Deploy to Netlify
