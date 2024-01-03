@@ -279,6 +279,7 @@ tradeoffs
 uncaptured
 uncheck
 underperforming
+underpowered
 unix
 unlaunched
 unmonitored
