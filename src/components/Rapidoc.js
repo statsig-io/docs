@@ -21,6 +21,7 @@ const supportedEntities = [
   'target-apps',
   'ingestions',
   'tags',
+  'all-endpoints-generated',
 ];
 
 function updateCodeSnippets(data, entity) {
@@ -100,9 +101,18 @@ export default function Rapidoc(props) {
 
   useEffect(() => {
     setTimeout(() => {
-
       var data;
 
+      switch(entity) {
+        case 'all-endpoints':
+          data = loadAllEndpoints();
+          break;
+        case 'all-endpoints-generated':
+          data = require(`../../docs/console-api/openapi/all-endpoints-generated.js`);
+          break;
+        default:
+          data = require(`../../docs/console-api/openapi/${entity}.js`);
+      }
       if (entity === 'all-endpoints') {
         data = loadAllEndpoints();
       } else {
