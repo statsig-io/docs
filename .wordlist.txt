@@ -182,6 +182,7 @@ frac
 frameowrk
 getConfig
 getExperiment
+getLayer
 github
 githubusercontent
 granularities
@@ -279,6 +280,7 @@ tradeoffs
 uncaptured
 uncheck
 underperforming
+underpowered
 unix
 unlaunched
 unmonitored
@@ -326,3 +328,4 @@ Zhao
 al
 et
 mSPRT
+VARCHAR
