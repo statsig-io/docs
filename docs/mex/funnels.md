@@ -29,7 +29,7 @@ To do so:
 
 ## Step 2: Choose an ID Type
 
-In general, you want to construct funnels to understand the rate at which individual users make it through each step of the flow you’ve defined. This means creating a funnel using a UserId.
+In general, you want to construct funnels to understand the rate at which individual users make it through each step of the flow you’ve defined. This means creating a funnel using a userId.
 
 However, some interesting funnels may involve several people in an organization using your service. For example, you may want to understand the end-to-end success of company onboarding to your service, where different people are involved in purchasing, deploying, and then using your service.
 
