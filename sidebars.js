@@ -252,6 +252,7 @@ module.exports = {
             "mex/retention",
           ]
         },
+        "mex/dashboards",
         {
           type: "category",
           label: "Metrics",
