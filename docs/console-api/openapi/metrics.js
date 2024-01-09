@@ -93,7 +93,7 @@ module.exports = {
           id: "hvf03dwk20xj9",
         },
         description:
-          "Create Cloud Metrics or Warehouse Native Metrics\n\nFor creating Warehouse Native Metrics: See [documentation](https://docs.statsig.com/statsig-warehouse-native/guides/metrics). Configuration of warehouse native metric goes to warehouseNative field",
+          "Create Cloud Metrics or Warehouse Native Metrics\n\nFor creating Warehouse Native Metrics: See [documentation](https://docs.statsig.com/statsig-warehouse-native/guides/metrics). Configuration of warehouse native metric goes to warehouseNative field. Fields NOT under warehouseNative, only name, tags, isPermanent, and description ",
         tags: ["Metrics"],
         requestBody: {
           content: {
@@ -315,6 +315,30 @@ module.exports = {
                         "x-stoplight": {
                           id: "uu6c3ixwngpwq",
                         },
+                      },
+                      rollupTimeWindow: {
+                        type: "string",
+                        "x-stoplight": {
+                          id: "0ayuwzbkrpodr",
+                        },
+                        description:
+                          'Time window for metric.\nSpecify "custom", if you want to provide customized time window. Default to be same as experiment time window',
+                      },
+                      customRollUpStart: {
+                        type: "number",
+                        "x-stoplight": {
+                          id: "33gt6znmgom6g",
+                        },
+                        description:
+                          "Custom time window start date (Days since exposure)\n",
+                      },
+                      customRollUpEnd: {
+                        type: "number",
+                        "x-stoplight": {
+                          id: "e8s8uf11bc3mh",
+                        },
+                        description:
+                          "Custom time window end date(Days since exposure)",
                       },
                       denominatorMetricSourceName: {
                         type: "string",
