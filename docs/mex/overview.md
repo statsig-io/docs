@@ -23,9 +23,9 @@ In Metrics Explorer, charts are the primary means of analysis, providing a versa
 
 We offer the following chart types: 
 
-- Metric Drilldown
-- Funnels
-- Retention
+- [Metric Drilldown](/mex/drilldown)
+- [Funnels](/mex/funnels)
+- [Retention](/mex/retention)
 - Distribution
 - User Journeys (Beta)
 
@@ -33,7 +33,7 @@ Get started with Metrics Explorer charts by going to the Metrics in the left-nav
 
 # Dashboards
 
-Dashboards are a great way to share important and interesting insights and information with your team. Any chart that you have built can be saved to a dashboard. You can also save a snapshot of Feature Gates, A/B tests, and experiments to dashboards as well. You can also automatically sync experiments and feature gate snapshots to a dashboard, making it easy to keep people update to date with relevant launches and experiments as they emerge. These dashboards are auto-populated with any entity matching any tag you specify.  
+[Dashboards](/mex/dashboards) are a great way to share important and interesting insights and information with your team. Any chart that you have built can be saved to a dashboard. You can also save a snapshot of Feature Gates, A/B tests, and experiments to dashboards as well. You can also automatically sync experiments and feature gate snapshots to a dashboard, making it easy to keep people update to date with relevant launches and experiments as they emerge. These dashboards are auto-populated with any entity matching any tag you specify.  
 
 ## Charts in Dashboards
 
