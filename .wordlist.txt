@@ -32,6 +32,7 @@ CodeLens
 CustomIDs
 DAU
 Disaggregate
+disaggregate
 DM
 DMing
 DNS
@@ -42,6 +43,7 @@ deduplication
 Deduplication
 Deduplicate
 Drilldown
+drilldown
 sessionID
 deduplicate
 dedeuplicated
@@ -291,6 +293,7 @@ unmonitored
 unsampled
 updateUser
 userID
+userIDs
 userbase
 utc
 vercel
