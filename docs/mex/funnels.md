@@ -1,5 +1,5 @@
 ---
-title: Funnels
+title: Funnel Charts
 tags:
 - Statsig Cloud 
 sidebar_label: Funnels
