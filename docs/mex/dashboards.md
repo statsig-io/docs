@@ -63,7 +63,7 @@ To dive into a chart on the dashboard, click [ ] icon.  Once expanded, you have 
 
 ## Dashboard Date Ranges
 
-The charts and widgets on a dashboard are by default sync’d with the date range of the dashboard itself. You can change the date range of the entire dashboard by modifying the date range. You can view widgets in custom date ranges by expanding the chart / widget and modifying its date range. 
+The charts and widgets on a dashboard are by default synced with the date range of the dashboard itself. You can change the date range of the entire dashboard by modifying the date range. You can view widgets in custom date ranges by expanding the chart / widget and modifying its date range. 
 
 <img width="751" alt="image" src="https://github.com/statsig-io/docs/assets/3464964/c5b0b66a-2ff0-40f2-a3a9-52746e1819ad">
 
