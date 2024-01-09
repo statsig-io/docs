@@ -55,7 +55,7 @@ When selecting an event, the total number of times the event occurred (Count) on
     ![image](https://github.com/statsig-io/docs/assets/3464964/d0bf3d0c-f37e-4e46-bf1d-751eac554e84)
 
     
-- **Perceniles**: Plot the value of a selected event property value at the selected percentile within the given time range per data point.
+- **Percentiles**: Plot the value of a selected event property value at the selected percentile within the given time range per data point.
     
     ![image](https://github.com/statsig-io/docs/assets/3464964/9933b80e-e24f-467b-9f56-b502c9522b36)
 
@@ -171,7 +171,7 @@ Often when digging for insight, you may want to quickly zoom in on a certain por
 
 Once you’ve arrived at an insight you find interesting and want to share you have two options for sharing: 
 
-- **Share via URL:** Simply copy the url. This is a quick and easy way to share a query as it currently is defined.
+- **Share via URL:** Simply copy the URL. This is a quick and easy way to share a query as it currently is defined.
 - **Create a share link:** If you would like to share a shorter, cleaner, URL, clicking the “…” button in the top right of the chart and then clicking “Share Link” copies a shortened link to the query as currently configured to the clipboard.
 - **Share to Dashboard:** Clicking the “…” button and selecting “Export to Dashboard” allows you to either save your chart to an existing dashboard, or create a new dashboard where you can save the chart.
 
