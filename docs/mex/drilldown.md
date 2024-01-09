@@ -1,8 +1,8 @@
 ---
-title: Metric Drilldown
+title: Metric Drilldown Charts
 tags:
 - Statsig Cloud 
-sidebar_label: Metrics Explorer
+sidebar_label: Metric Drilldown
 slug: /mex/drilldown
 ---
 
