@@ -19,8 +19,8 @@ By analyzing user retention patterns, you can identify whether your product or c
 For our Retention Chart in Metrics Explorer, you can unlock a deeper understanding of user engagement and loyalty over time. This chart type is essential for tracking how well your product retains users after their initial interaction.
 
 - **Long-Term User Engagement Tracking**: Monitor user retention over various periods like days, weeks, or months. This helps in understanding the duration for which users stay engaged with your product after their initial interaction or a specific trigger event.  This helps provide insights into the long-term appeal of your product or specific features.
-- ********Stickiness of Specific Features:******** Understand which of your product features users derive value from and correlate with them coming back to use your service.
-- ************************************************Sub-popluation Analysis:************************************************ Uncover the engagement of different sub-populations of your users by filtering your retention analysis to groups of interest.
+- **Stickiness of Specific Features:** Understand which of your product features users derive value from and correlate with them coming back to use your service.
+- **Sub-popluation Analysis:** Uncover the engagement of different sub-populations of your users by filtering your retention analysis to groups of interest.
 
 # Creating a Retention Chart
 
