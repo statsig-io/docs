@@ -84,4 +84,4 @@ Once you’ve created a chart you may want to quickly find the charts that matte
 
 To make creating dashboards easier, we provide the ability to automatically generate dashboards based on certain entity metadata. For example, you can create a dashboard that syncs all metrics, experiments, or feature gates with a specific tag. This will automatically create the dashboard and add any new entities created with that tag to the dashboard. 
 
-Dashboards that are generated via syncing entities are indicated with 🔁 icon.
+Dashboards that are generated via syncing entities are indicated with sync icon.
