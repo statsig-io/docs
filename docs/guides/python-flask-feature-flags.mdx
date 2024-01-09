@@ -5,7 +5,7 @@ title: Python/Flask Feature Flags
 
 Flask is a lightweight web framework for Python that has grown popular with developers who enjoy its simple-but-powerful design. Given its simplicity in a friendly language, its a great place to implement your first feature flag!
 
-In this tutorial we'll use our ["Python Server SDK"](https://docs.statsig.com/server/pythonSDK). Flask's lightweight nature means that we don't have to treat our usage of Statsig much differently than you would with any Python project. As an example, we'll be making a Flask app that counts the number of times you visit the site.
+In this tutorial we'll use our [Python Server SDK](https://docs.statsig.com/server/pythonSDK). Flask's lightweight nature means that we don't have to treat our usage of Statsig much differently than you would with any Python project. As an example, we'll be making a Flask app that counts the number of times you visit the site.
 
 ## Step 1: Setup
 
@@ -59,7 +59,7 @@ def secretRoute():
 
 After stopping and starting your project again, you'll be able to see this at [http://127.0.0.1:5000/secretRoute](http://127.0.0.1:5000/secretRoute). If you refresh - you should see the number increment. 
 
-But our secret route is still accessible to everyone - we'll have to put it behind a feature flag ("called a "Gate" in Statsig) to make it private. Setting up a statsig account and generating your first flag is easy - head to [console.statsig.com](https://console.statsig.com/) to get started. For this example, setup an account and click on "Launch a Feature". On the next page, you'll be able to select Python as your SDK and retrieve your server key.
+But our secret route is still accessible to everyone - we'll have to put it behind a feature flag ("called a "Gate" in Statsig) to make it private. Setting up a statsig account and generating your first flag is easy - head to [console.statsig.com](https://console.statsig.com/) to get started. For this example, setup an account and click on "Launch a Feature" in the setups wizard. On the next page, you'll be able to select Python as your SDK and retrieve your server key. If you don't see these buttons, simply click on the settings gear in your home page then click on Keys & Environments, where you can copy your server key.
 
 ## Step 3: Setting Up Statsig Feature Flags
 
@@ -72,7 +72,9 @@ statsig.initialize("server-secret-key") #insert your server key here!
 
 You now have Statsig set up, and just need to wrap your secret route in a feature flag. With Statsig, we call .checkGate to check if a feature is available or not. Lets edit our /secretRoute to include this!
 
-Click next in the Statsig console, and you'll be given the opportunity to name your flag. I've called mine secret_route, and left "user_id" as the default. Click next, and set the "rule" on your feature flag to allowing "Everyone" (in the drop down) and leave the "pass percent" at 100%. Click next and you should see a - for now empty - log stream. Now, change your secretRoute function to look like this:
+First, we need to set up a feature flag - feature flags in Statsig are [free up to 500M events](https://www.statsig.com/blog/introducing-free-feature-flags) - lets set one up. Click next in the Statsig setup page, and you'll be given the opportunity to name your flag (if you don't see this - just click on "Feature Gates" in the Statsig console!). I've called mine secret_route, and left "user_id" as the default. Click next, and set the "rule" on your feature flag to allowing "Everyone" (in the drop down) and leave the "pass percent" at 100%. Click next and you should see a - for now empty - log stream. Now, change your secretRoute function to look like this:
+
+![image](/img/everyone_gate.png)
 
 ```Python 
 @app.route('/secretRoute')
@@ -83,12 +85,14 @@ def secretRoute():
         visit_count += 1
         return f"This page has been visited {visit_count} times."
     else:
-        return "access denied"
+        return "failed feature flag"
 ```
 
 Now, when we access this route, we'll only be granted access if our gate's rules allow. When you refresh [127.0.0.1:5000/secretRoute](http://127.0.0.1:5000/secretRoute) - it should still pass!
 
-But if you click the "back" button on your Statsig console, change the rule to 100% fail, then wait a moment and refresh, you should see "access denied" checking your secretRoute. Congratulations! You've set up your first feature flag. 
+But if you head back to your rule and change it to 100% fail, then wait a moment and refresh, you should see "failed feature flag" checking your secretRoute. Congratulations! You've set up your first feature flag.
+
+![image](/img/everyone0_gate.png)
 
 Its important to note that changes with a Server SDK won't be instantaneous, see the architecutre diagram on our [Server SDK Introduction Page](https://docs.statsig.com/server/introduction) for more.
 
@@ -108,10 +112,12 @@ def secretRoute():
         visit_count += 1
         return f"This page has been visited {visit_count} times."
     else:
-        return "access denied"
+        return "failed feature flag"
 ```
 
 Now, we've added an email field to our user - which we can pass in in a query parameter, for example - http://127.0.0.1:5000/secretRoute?email=brock@statsig.com. Now, lets go change our rule in the the Statsig console (pressing the back button) to show only users where their email contains @statsig.com - and pass 100% of those users.
+
+![iamge](/img/statsigemail_gate.png)
 
 Now, when we refresh the URL above - we should have access! But if we change the email to not include @statsig.com by even one character, we will no longer have access. This is the fundamental concept of access management - and it unlocks so many more possibilities! A great next step is to consider implementing [log events](https://docs.statsig.com/guides/logging-events) in your project to measure the impact on users who are exposed and not exposed to a feature. 
 
