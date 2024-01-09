@@ -30,11 +30,11 @@ Dashboards are designed to help teams share and absorb product insights of all t
 
 There are several types of dashboard widgets you can add or create including: 
 
--**Charts** Create a new chart directly from a dashboard or export a chart created in Metrics Explorer to a dashboard. Supported charts include:
-    - Drilldown Charts
-    - Retention Charts
-    - Funnel Charts
-    - User Journey Charts
+- **Charts** Create a new chart directly from a dashboard or export a chart created in Metrics Explorer to a dashboard. Supported charts include:
+  - Drilldown Charts
+  - Retention Charts
+  - Funnel Charts
+  - User Journey Charts
 - **Text**: Annotate dashboards with context or create section headers for better readability.
 - **Single Value:** Highlight a hero metric with clarity by adding a single value to the dashboard.
 - **Experiment, Feature Gate:** Get a quick snapshot of an experiment or feature gate.
