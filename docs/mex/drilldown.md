@@ -36,7 +36,7 @@ In Metrics Explorer you can choose events, custom-metrics, or auto-generated met
 When selecting an event, the total number of times the event occurred (Count) on a given data point (hour, day, etc) will be plotted by default. You can also choose different ways to aggregate event data. The full list is as follows:
 
 - **Count**: Plot the number of times the event occurred within the given time range per data point.
-- **Unique**: Plot the number of unique ids (generally UserIds) that performed the event in the given time range per data point.
+- **Unique**: Plot the number of unique ids (generally UserIDs) that performed the event in the given time range per data point.
     
     ![image](https://github.com/statsig-io/docs/assets/3464964/6f450da6-0e1c-44a9-91f2-8e51e1225e77)
     
