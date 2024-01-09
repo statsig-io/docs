@@ -18,7 +18,7 @@ The Metric Drilldown chart in Metrics Explorer is a versatile tool for understan
 - **Identify interesting cohorts**: Define and explore interesting cohorts by zooming in on users who performed certain events at frequencies you define.
 - **Understand how Targeted Feature Launches, A/B tests, and Experiments affect usage:** Split any metric out by Experiment Group or Feature Gate Group to compare how those metrics perform for different groups. Leverage automatically generated annotations on charts for important decisions such as Feature or Experiment launches to help correlate those decisions with changing trends.
 - **Segmentation and Comparison**: Dissect metrics to understand how different user segments or product features perform. This is crucial for identifying which areas are providing value for your users and those which may need more attention or improvement. It is also useful in understanding how different segments interact with your product, and for identifying unique trends or needs within these groups.
-- ******************Filtering******************: Focus on specific segments or cohorts that are of particular interest. This filtering capability allows for a more targeted analysis, helping you to understand the behaviors and needs of specific user groups.
+- **Filtering**: Focus on specific segments or cohorts that are of particular interest. This filtering capability allows for a more targeted analysis, helping you to understand the behaviors and needs of specific user groups.
 - **Statistical Understanding:** Understand how the average, median, or other decile value (e.g. p99, p95) of a metric changes over time.
 - **Dynamic Metric Creation with Formulas**: Craft new metrics on the fly using custom formulas. This flexibility is useful in deriving ad-hoc insights with minimal effort.
 - **Flexible Visualization Options**: Choose from a range of visualization formats, like line charts, bar charts, or stacked bar charts, to best represent your data. The right visualization can make complex data more understandable and actionable.
@@ -65,7 +65,7 @@ When selecting an event, the total number of times the event occurred (Count) on
 
 Selecting a custom Metric or auto-generated  Metric plots the value of that metric over your selected date-range. 
 
-****************************Viewing and Modifying the Metric Definition****************************
+**Viewing and Modifying the Metric Definition**
 
 You can easily view the definition of the metric directly below the metric name.  You can also modify your metric plot on the fly by making ad-hoc edits to the event based definition shown. This allows you to plot new metrics on the fly, based on metrics you have already defined.  
 
@@ -108,7 +108,7 @@ A metric can be grouped-by event properties, user properties, experiment group, 
 
 At Statsig we believe in the power of experimentation. To that end, you can also select one of your Feature Gate or Experiments in order to split out a metric by the different groups in the selected test. 
 
-**************************Adding a Group-By**************************
+**Adding a Group-By**
 
 To add a group by, hover over the “+” icon in the Drilldown section and select Group By. You can then select the property or experiment group to split the metric out by. 
 
@@ -124,9 +124,9 @@ Building a useful group of users to analyze often requires a bit more precision 
 
 To support this we allow you to define event-based cohorts. You can select an event of interest, and then define a frequency criteria for how often users in the cohort performed the event. These criteria include: 
 
-- Performed the event *********************************at least********************************* some number of times
-- Performed the event *********************************at most********************************* some number of times
-- Performed the event *********************************exactly********************************* some number of times
+- Performed the event ***at least*** some number of times
+- Performed the event ***at most*** some number of times
+- Performed the event ***exactly*** some number of times
 
 You can also define the window in which a user performed the event for inclusion, as well as filter to some property in order to be as granular as needed when defining the cohort. 
 
@@ -171,8 +171,8 @@ Often when digging for insight, you may want to quickly zoom in on a certain por
 
 Once you’ve arrived at an insight you find interesting and want to share you have two options for sharing: 
 
-- ******************************Share via URL:****************************** Simply copy the url. This is a quick and easy way to share a query as it currently is defined.
+- **Share via URL:** Simply copy the url. This is a quick and easy way to share a query as it currently is defined.
 - **Create a share link:** If you would like to share a shorter, cleaner, URL, clicking the “…” button in the top right of the chart and then clicking “Share Link” copies a shortened link to the query as currently configured to the clipboard.
-- ****************************************Share to Dashboard:**************************************** Clicking the “…” button and selecting “Export to Dashboard” allows you to either save your chart to an existing dashboard, or create a new dashboard where you can save the chart.
+- **Share to Dashboard:** Clicking the “…” button and selecting “Export to Dashboard” allows you to either save your chart to an existing dashboard, or create a new dashboard where you can save the chart.
 
 Note sharing a chart via URL or shortened link essentially shares a “snapshot” of the chart as currently defined when the link was copied. Any subsequent changes will not be captured via the share link.
