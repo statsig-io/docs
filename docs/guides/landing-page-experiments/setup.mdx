@@ -25,6 +25,19 @@ In the Add New Parameter modal, add a new **String** parameter and name it ```pa
 
 Set the urls that you want to test in those parameters.  These urls can either be absolute (```https://example.com/page_one```), or relative to the originating url (```/page_one```).  For this walkthrough, you can leave the allocations at 50%/50%.  This will run an equally allocated A/B test.
 
+:::info
+`page_url` could also be of form: `https://example.com/path_name`, `./path_name`, `/path_name` or `+/path_name`, and each of them will merge with the host page's url in different ways as indicated in the table below:
+
+
+| Base Page URL | page_url parameter | Resulting redirect |
+|--|--|--|
+| https://ex.com/abc/def | `https://ex2.com/path_name` | https://ex2.com/path_name |
+| https://ex.com/abc/def | `/path_name` | https://ex.com/path_name |
+| https://ex.com/abc/def | `./path_name` | https://ex.com/abc/path_name |
+| https://ex.com/abc/def | `+/path_name` | https://ex.com/abc/def/path_name |
+
+:::
+
 
 ![image](https://user-images.githubusercontent.com/74588208/210318001-3eb3d0e5-2bed-4fb0-8dd0-c3a491eef8e2.png)
 

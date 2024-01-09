@@ -1,3 +1,4 @@
+AATest
 allowlist
 APIs
 Atlassian
@@ -40,6 +41,7 @@ Deduplication
 Deduplicate
 sessionID
 deduplicate
+dedeuplicated
 Deduplicating
 deduplicating
 ETAs
@@ -180,6 +182,7 @@ frac
 frameowrk
 getConfig
 getExperiment
+getLayer
 github
 githubusercontent
 granularities
@@ -277,10 +280,12 @@ tradeoffs
 uncaptured
 uncheck
 underperforming
+underpowered
 unix
 unlaunched
 unmonitored
 unsampled
+updateUser
 userID
 userbase
 utc

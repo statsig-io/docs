@@ -76,57 +76,6 @@ module.exports = {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "x-examples": {
-                    "example-1": {
-                      "message": "Segments listed successfully.",
-                      "data": [
-                        {
-                          "id": "test",
-                          "isEnabled": true,
-                          "description": "test",
-                          "lastModifierName": "Jacob O'Quinn",
-                          "lastModifierID": "wsJTGUMTimICpPESo2DYg",
-                          "type": "rule_based"
-                        },
-                        {
-                          "id": "a_segment",
-                          "isEnabled": true,
-                          "description": "helpful summary of what this segment is",
-                          "lastModifierName": "CONSOLE API",
-                          "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                          "type": "id_list",
-                          "count": 0
-                        },
-                        {
-                          "id": "c_segment",
-                          "isEnabled": true,
-                          "description": "helpful summary of what this segment is",
-                          "lastModifierName": "CONSOLE API",
-                          "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                          "type": "id_list",
-                          "count": 0
-                        },
-                        {
-                          "id": "segment_test_2",
-                          "isEnabled": true,
-                          "description": "this is the second test",
-                          "lastModifierName": "jacob ",
-                          "lastModifierID": "wsJTGUMTimICpPESo2DYg",
-                          "type": "rule_based",
-                          "rules": []
-                        },
-                        {
-                          "id": "segment_test",
-                          "isEnabled": true,
-                          "description": "a simple test ",
-                          "lastModifierName": "jacob ",
-                          "lastModifierID": "wsJTGUMTimICpPESo2DYg",
-                          "type": "rule_based",
-                          "rules": []
-                        }
-                      ]
-                    }
-                  },
                   "properties": {
                     "message": {
                       "$ref": "../models/message.json"
@@ -141,59 +90,48 @@ module.exports = {
                   }
                 },
                 "examples": {
-                  "Id list segments": {
+                  "Example 1": {
                     "value": {
                       "message": "Segments listed successfully.",
                       "data": [
                         {
-                          "id": "a_segment",
+                          "id": "an_id_list",
                           "isEnabled": true,
                           "description": "helpful summary of what this segment is",
                           "lastModifierName": "CONSOLE API",
-                          "lastModifierID": "8dahjGcaRh92n9aoFaicW9",
+                          "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                           "type": "id_list",
-                          "idType": "customID",
-                          "count": 0
+                          "count": 0,
+                          "tags": [
+                            "a tag"
+                          ]
                         },
                         {
-                          "id": "b_segment",
+                          "id": "a_rule_based_segment",
                           "isEnabled": true,
-                          "description": "like a_segment but with a b instead",
+                          "description": "helpful summary of what this segment is",
                           "lastModifierName": "CONSOLE API",
-                          "lastModifierID": "jFiia92hinDkcGaFijd0",
-                          "type": "id_list",
-                          "idType": "userID",
-                          "count": 0
-                        }
-                      ]
-                    }
-                  },
-                  "Rule based segment": {
-                    "value": {
-                      "message": "Rules successfully updated",
-                      "data": [
-                        {
-                          "id": "a_segment",
-                          "isEnabled": true,
-                          "description": "a rule_based segment",
-                          "lastModifierName": "CONSOLE API",
-                          "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                          "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                           "type": "rule_based",
-                          "rules": [
-                            {
-                              "name": "check a field",
-                              "passPercentage": 10,
-                              "conditions": [
-                                {
-                                  "type": "custom_field",
-                                  "targetValue": [
-                                    "31"
-                                  ],
-                                  "operator": "any",
-                                  "field": "field_to_check"
-                                }
-                              ]
+                          "count": 0,
+                          "rules": {
+                            "name": "All Conditions",
+                            "passPercentage": 10,
+                            "conditions": [
+                              {
+                                "type": "public",
+                                "operator": "string",
+                                "targetValue": 0,
+                                "field": "string",
+                                "customID": "string"
+                              }
+                            ],
+                            "returnValue": {
+                              "key": true
                             }
+                          },
+                          "tags": [
+                            "a tag"
                           ]
                         }
                       ]
@@ -233,13 +171,6 @@ module.exports = {
             "application/json": {
               "schema": {
                 "type": "object",
-                "x-examples": {
-                  "example-1": {
-                    "name": "a segment",
-                    "description": "helpful summary of what this segment is",
-                    "type": "id_list",
-                  }
-                },
                 "properties": {
                   "name": {
                     "type": "string",
@@ -260,11 +191,18 @@ module.exports = {
                     "type": "string",
                     "description": "idType of id_list segments (ignored on rule_based)",
                     "default": "userID"
+                  },
+                  "creatorID": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "e7pluh4jxhk41"
+                    },
+                    "description": "The userID of intended creator, defaults to Console API",
+                    "example": "35sClJFs8l0y5uRQhDwUDo"
                   }
                 },
                 "required": [
                   "name",
-                  "description",
                   "type"
                 ]
               },
@@ -274,7 +212,8 @@ module.exports = {
                     "name": "a segment",
                     "description": "helpful summary of what this segment is",
                     "type": "id_list",
-                    "idType": "customID"
+                    "idType": "customID",
+                    "creatorID": "35sClJFs8l0y5uRQhDwUDo"
                   }
                 },
                 "rule_based": {
@@ -295,20 +234,6 @@ module.exports = {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "x-examples": {
-                    "example-1": {
-                      "message": "Segment created successfully.",
-                      "data": {
-                        "id": "a_segment",
-                        "isEnabled": true,
-                        "description": "helpful summary of what this segment is",
-                        "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                        "type": "id_list",
-                        "count": 0
-                      }
-                    }
-                  },
                   "properties": {
                     "message": {
                       "$ref": "../models/message.json"
@@ -323,14 +248,16 @@ module.exports = {
                     "value": {
                       "message": "Segment created successfully.",
                       "data": {
-                        "id": "a_segment",
+                        "id": "an_id_list",
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "type": "id_list",
-                        "idType": "customID",
-                        "count": 0
+                        "count": 0,
+                        "tags": [
+                          "a tag"
+                        ]
                       }
                     }
                   },
@@ -338,13 +265,32 @@ module.exports = {
                     "value": {
                       "message": "Segment created successfully.",
                       "data": {
-                        "id": "a_segment",
+                        "id": "a_rule_based_segment",
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                        "type": "id_list",
-                        "rules": []
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+                        "type": "rule_based",
+                        "count": 0,
+                        "rules": {
+                          "name": "All Conditions",
+                          "passPercentage": 10,
+                          "conditions": [
+                            {
+                              "type": "public",
+                              "operator": "string",
+                              "targetValue": 0,
+                              "field": "string",
+                              "customID": "string"
+                            }
+                          ],
+                          "returnValue": {
+                            "key": true
+                          }
+                        },
+                        "tags": [
+                          "a tag"
+                        ]
                       }
                     }
                   }
@@ -386,20 +332,6 @@ module.exports = {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "x-examples": {
-                    "example-1": {
-                      "message": "Segment read successfully.",
-                      "data": {
-                        "id": "a_segment",
-                        "isEnabled": true,
-                        "description": "helpful summary of what this segment is",
-                        "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                        "type": "id_list",
-                        "count": 0
-                      }
-                    }
-                  },
                   "properties": {
                     "message": {
                       "$ref": "../models/message.json"
@@ -414,14 +346,16 @@ module.exports = {
                     "value": {
                       "message": "Segment read successfully.",
                       "data": {
-                        "id": "a_segment",
+                        "id": "an_id_list",
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "type": "id_list",
-                        "idType": "userID",
-                        "count": 0
+                        "count": 0,
+                        "tags": [
+                          "a tag"
+                        ]
                       }
                     }
                   },
@@ -429,13 +363,32 @@ module.exports = {
                     "value": {
                       "message": "Segment read successfully.",
                       "data": {
-                        "id": "a_segment",
+                        "id": "a_rule_based_segment",
                         "isEnabled": true,
                         "description": "helpful summary of what this segment is",
                         "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifierID": "ahKwUoaNauHu9AmJPc2",
                         "type": "rule_based",
-                        "rules": []
+                        "count": 0,
+                        "rules": {
+                          "name": "All Conditions",
+                          "passPercentage": 10,
+                          "conditions": [
+                            {
+                              "type": "public",
+                              "operator": "string",
+                              "targetValue": 0,
+                              "field": "string",
+                              "customID": "string"
+                            }
+                          ],
+                          "returnValue": {
+                            "key": true
+                          }
+                        },
+                        "tags": [
+                          "a tag"
+                        ]
                       }
                     }
                   }
@@ -469,20 +422,6 @@ module.exports = {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "x-examples": {
-                    "example-1": {
-                      "message": "Segment read successfully.",
-                      "data": {
-                        "id": "a_segment",
-                        "isEnabled": true,
-                        "description": "helpful summary of what this segment is",
-                        "lastModifierName": "CONSOLE API",
-                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
-                        "type": "id_list",
-                        "count": 0
-                      }
-                    }
-                  },
                   "properties": {
                     "message": {
                       "$ref": "../models/message.json"
@@ -525,11 +464,6 @@ module.exports = {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "x-examples": {
-                    "example-1": {
-                      "message": "Segment deleted successfully."
-                    }
-                  },
                   "properties": {
                     "message": {
                       "$ref": "../models/message.json"
@@ -603,11 +537,6 @@ module.exports = {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "x-examples": {
-                    "example-1": {
-                      "message": "Segment ids updated successfully."
-                    }
-                  },
                   "properties": {
                     "message": {
                       "type": "string"
@@ -633,12 +562,6 @@ module.exports = {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "x-examples": {
-                    "example-1": {
-                      "status": 400,
-                      "message": "Segment must be of type 'id_list' to be modified"
-                    }
-                  },
                   "properties": {
                     "status": {
                       "$ref": "../models/status.json"
@@ -871,21 +794,6 @@ module.exports = {
                     "value": {
                       "message": "Rules successfully updated"
                     }
-                  }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "$ref": "../models/message.json"
-                    }
-                  }
-                },
-                "examples": {
-                  "example-1": {
-                    "value": "{\n    \"message\": \"Rules successfully updated\"\n}"
                   }
                 }
               }
