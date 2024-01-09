@@ -2,7 +2,7 @@
 title: Retention Chart
 tags:
 - Statsig Cloud 
-sidebar_label: Retention Chart
+sidebar_label: Retention
 slug: /mex/retention
 ---
 
