@@ -14,6 +14,7 @@ CDBs
 CIs
 CityID
 CityIDs
+cmd
 CNAME
 CORS
 CSV
@@ -30,6 +31,8 @@ Cloudflare
 CodeLens
 CustomIDs
 DAU
+Disaggregate
+disaggregate
 DM
 DMing
 DNS
@@ -39,6 +42,8 @@ Dev
 deduplication
 Deduplication
 Deduplicate
+Drilldown
+drilldown
 sessionID
 deduplicate
 dedeuplicated
@@ -281,12 +286,14 @@ uncaptured
 uncheck
 underperforming
 underpowered
+uniques
 unix
 unlaunched
 unmonitored
 unsampled
 updateUser
 userID
+userIDs
 userbase
 utc
 vercel
