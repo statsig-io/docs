@@ -19,7 +19,7 @@ The Metric Drilldown chart in Metrics Explorer is a versatile tool for understan
 - **Understand how Targeted Feature Launches, A/B tests, and Experiments affect usage:** Split any metric out by Experiment Group or Feature Gate Group to compare how those metrics perform for different groups. Leverage automatically generated annotations on charts for important decisions such as Feature or Experiment launches to help correlate those decisions with changing trends.
 - **Segmentation and Comparison**: Dissect metrics to understand how different user segments or product features perform. This is crucial for identifying which areas are providing value for your users and those which may need more attention or improvement. It is also useful in understanding how different segments interact with your product, and for identifying unique trends or needs within these groups.
 - **Filtering**: Focus on specific segments or cohorts that are of particular interest. This filtering capability allows for a more targeted analysis, helping you to understand the behaviors and needs of specific user groups.
-- **Statistical Understanding:** Understand how the average, median, or other decile value (e.g. p99, p95) of a metric changes over time.
+- **Statistical Understanding:** Understand how the average, median, or other percentile value (e.g. p99, p95) of a metric changes over time.
 - **Dynamic Metric Creation with Formulas**: Craft new metrics on the fly using custom formulas. This flexibility is useful in deriving ad-hoc insights with minimal effort.
 - **Flexible Visualization Options**: Choose from a range of visualization formats, like line charts, bar charts, or stacked bar charts, to best represent your data. The right visualization can make complex data more understandable and actionable.
 - **Event Samples for Debugging**: Quickly access and analyze a metric’s underlying sample events, and the granular user-level information attached to the event. This feature is particularly useful for troubleshooting and understanding the root causes of trends or anomalies in your data.
@@ -165,7 +165,7 @@ Metrics Drilldown offers many ways to visualize your data, including:
 
 ### Zooming in
 
-Often when digging for insight, you may want to quickly zoom in on a certain portion of the date range to view things more granularly. To help with this, you can simply use your mouse to click at one end of the date range you want to zoom in on, and hold the mouse button down while moving to the other end of the date range of interest. Letting go of the mouse button will then zoom in on that portion of the chart. To reset your zoom, click “Reset Zoom” in the top right of the chart. 
+Often when digging for insight, you may want to quickly zoom in on a certain portion of the date range to view things with more granularity. To help with this, you can simply use your mouse to click at one end of the date range you want to zoom in on, and hold the mouse button down while moving to the other end of the date range of interest. Letting go of the mouse button will then zoom in on that portion of the chart. To reset your zoom, click “Reset Zoom” in the top right of the chart. 
 
 ### Sharing your insights
 
