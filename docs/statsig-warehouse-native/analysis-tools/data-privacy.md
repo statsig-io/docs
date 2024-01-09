@@ -42,3 +42,9 @@ Statsig only reads two forms of data, both of which are very small (generally in
 During analysis, data stays in your warehouse. Intermediate tables and results are written to the Statsig data staging set. When the results of Health Checks or Pulse become available, Statsig consumes those result sets and stores them on its servers as well (usually < 1000 rows):
 
 ![Analysis Flow](https://user-images.githubusercontent.com/102695539/264110212-b9e07098-cd3a-4107-aa3f-6740fc3d8b7a.png)
+
+## Data Retention
+
+Customer data contained within exposure events when using the SDK for assignment is retained for a maximum of 30 days purely for diagnostics and debugging purposes.
+Statsig will automatically remove any customer data no longer than 30 days after the events are sent to our system.
+

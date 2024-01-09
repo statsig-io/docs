@@ -18,9 +18,10 @@ There are two ways to seamlessly integrate Statsig into your product development
 
 - **Statsig Cloud:** Set up ***Statsig SDK***, configure **events logging**. Everything else is handled by us.
     - You get feature gates and 1 million metered events for free, as well as many analytics tools such as Dashboard, Metrics Explorer, and Insights. Here is [a link](https://www.statsig.com/pricing) to our pricing details.
-- **Warehouse Native:** If you have data instruments already, or a strong privacy requirement, you may want to consider [Warehouse Native](https://docs.statsig.com/statsig-warehouse-native/introduction) (WHN). With WHN, you can host Statsig’s Stats Engine within your own Data Warehouse, using your own pre-existing data sets to calculate metric lifts. You can define feature assignment either by providing us feature exposures (you randomize), or through our SDK (we randomize).
-    - Today’s this option is only available for Enterprise contracts. Check [this link](https://docs.statsig.com/statsig-warehouse-native/introduction) for more details or <LogOnClick event="demo_click"> <a href="https://www.statsig.com/contact/demo">Schedule a demo</a> </LogOnClick>  with our sales if you are interested in this option.
-    - With WHN, we still recommend using ***Statsig SDK*** for feature gates, and randomization, and take advantage of its reliable infrastructure, and seamless integration with the Statsig Console.
+- **Warehouse Native:** If the events or metrics you want to experiment on are already in your warehouse, you may want to consider [Warehouse Native](https://docs.statsig.com/statsig-warehouse-native/introduction) (WHN).
+    - With WHN, you can host Statsig’s Stats Engine within your own Data Warehouse, calculating metric lifts on your own datasets. This is particularly useful for teams with strong privacy contraints.
+    - You can use non-Statsig SDKs for feature assignment and provide us exposures in a table (you randomize), or use our SDKs (we randomize and write into your warehouse). The former helps you scale analysis; the latter helps you [10x experimentation velocity](https://www.statsig.com/blog/features-to-10x-experiment-velocity).
+    - Today’s this option is only available with Enterprise contracts. Check [this link](https://docs.statsig.com/statsig-warehouse-native/introduction) for more details or [Schedule a demo](https://www.statsig.com/contact/demo) with our sales team.
 
 This page gives you an organized overview of how to set up the SDK. SDK can help you log events, and assignments, which will light up **feature gate**, **experiments**, and **analytics** within half an hour.
 

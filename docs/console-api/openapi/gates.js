@@ -44,7 +44,6 @@ module.exports = {
             ]
           }
         },
-        "description": "",
         "properties": {
           "passingUserIDs": {
             "type": "array",
@@ -73,11 +72,77 @@ module.exports = {
             "items": {
               "type": "string"
             }
+          },
+          "environmentOverride": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "k5gbkaazc1w8z"
+            },
+            "description": "Environment overrides are currently only supported on POST updates.",
+            "items": {
+              "$ref": "#/components/schemas/environment_override"
+            }
           }
         },
         "required": [
           "passingUserIDs",
           "failingUserIDs"
+        ]
+      },
+      "environment_override": {
+        "title": "environment_override",
+        "x-stoplight": {
+          "id": "prl1wtbi4szf7"
+        },
+        "type": "object",
+        "properties": {
+          "environment": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "ws3z0x2it6tud"
+            },
+            "description": "Which environment(s) the override is to be applied, Null implies all environments.",
+            "nullable": true
+          },
+          "unitID": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "tm5bnw1vhij0z"
+            },
+            "description": "Which unit ID the override is being applied to."
+          },
+          "passingIDs": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "98bfxxf2rnv42"
+            },
+            "description": "IDs that are forced to pass the feature gate",
+            "items": {
+              "x-stoplight": {
+                "id": "d407ifgjgg74j"
+              },
+              "type": "string"
+            }
+          },
+          "failingIDs": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "9yeft355cn4hm"
+            },
+            "description": "IDs that are forced to fail the feature gate",
+            "items": {
+              "x-stoplight": {
+                "id": "o09rvvx1e6c70"
+              },
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "environment",
+          "unitID",
+          "passingIDs",
+          "failingIDs"
         ]
       }
     },
@@ -157,6 +222,14 @@ module.exports = {
                   "idType": {
                     "type": "string",
                     "description": "The id type this gate will use, defaults to 'userID'"
+                  },
+                  "creatorID": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "a5j8czj6nrw96"
+                    },
+                    "description": "The userID of intended creator, defaults to Console API",
+                    "example": "35sClJFs8l0y5uRQhDwUDo"
                   }
                 },
                 "required": [
@@ -168,7 +241,8 @@ module.exports = {
                   "value": {
                     "name": "a gate",
                     "description": "helpful summary of what this gate does",
-                    "idType": "userID"
+                    "idType": "userID",
+                    "creatorID": "35sClJFs8l0y5uRQhDwUDo"
                   }
                 },
                 "customID": {
@@ -1541,13 +1615,26 @@ module.exports = {
                           "items": {
                             "type": "string"
                           }
+                        },
+                        "environmentOverrides": {
+                          "x-stoplight": {
+                            "id": "zif61py20eavs"
+                          },
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/environment_override"
+                          }
                         }
-                      }
+                      },
+                      "required": [
+                        "passingUserIDs",
+                        "failingUserIDs"
+                      ]
                     }
                   }
                 },
                 "examples": {
-                  "example-1": {
+                  "UserID and CustomID overrides": {
                     "value": {
                       "message": "Gate Overrides read successfully.",
                       "data": {
@@ -1562,6 +1649,35 @@ module.exports = {
                         ],
                         "failingCustomIDs": [
                           "passing-custom-id"
+                        ]
+                      }
+                    }
+                  },
+                  "Environment Override": {
+                    "value": {
+                      "message": "Gate Overrides read successfully.",
+                      "data": {
+                        "passingUserIDs": [],
+                        "failingUserIDs": [],
+                        "environmentOverrides": [
+                          {
+                            "environment": "production",
+                            "unitID": "userID",
+                            "passingIDs": [
+                              "update_pass"
+                            ],
+                            "failingIDs": [
+                              "update_fail"
+                            ]
+                          },
+                          {
+                            "environment": "staging",
+                            "unitID": "customID",
+                            "passingIDs": [
+                              "staging_pass"
+                            ],
+                            "failingIDs": []
+                          }
                         ]
                       }
                     }

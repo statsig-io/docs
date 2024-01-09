@@ -21,4 +21,5 @@ export default {
   audit_log: require("./audit_log.json"),
   pagination: require("./pagination.json"),
   targetApps: require("./targetApps.json"),
+  tag: require("./tag.json")
 };

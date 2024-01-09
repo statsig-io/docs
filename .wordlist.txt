@@ -1,3 +1,4 @@
+AATest
 allowlist
 APIs
 Atlassian
@@ -13,6 +14,7 @@ CDBs
 CIs
 CityID
 CityIDs
+cmd
 CNAME
 CORS
 CSV
@@ -29,6 +31,8 @@ Cloudflare
 CodeLens
 CustomIDs
 DAU
+Disaggregate
+disaggregate
 DM
 DMing
 DNS
@@ -38,8 +42,11 @@ Dev
 deduplication
 Deduplication
 Deduplicate
+Drilldown
+drilldown
 sessionID
 deduplicate
+dedeuplicated
 Deduplicating
 deduplicating
 ETAs
@@ -180,6 +187,7 @@ frac
 frameowrk
 getConfig
 getExperiment
+getLayer
 github
 githubusercontent
 granularities
@@ -277,11 +285,15 @@ tradeoffs
 uncaptured
 uncheck
 underperforming
+underpowered
+uniques
 unix
 unlaunched
 unmonitored
 unsampled
+updateUser
 userID
+userIDs
 userbase
 utc
 vercel
@@ -323,3 +335,4 @@ Zhao
 al
 et
 mSPRT
+VARCHAR

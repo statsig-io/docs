@@ -29,7 +29,6 @@ If there's any confusion, or if a feature is critical for your evaluation, we're
 |                                     | Guardrail Metric Alerts                   | Available in WHN, based on your pipeline cadence   |
 |                                     | Export to CSV                             | Identical                                          |
 |                                     | Share Links                               | Identical                                          |
-|                                     | All Metrics Tab                           | N/A for WHN                                        |
 | Analysis Only Experiments (w/o SDK) | Overrides                                 | Not relevant w/o SDK                               |
 |                                     | Diagnostics (SDK Related)                 | Not relevant w/o SDK                               |
 |                                     | Diagnostics (Data specific)               | WHN has additional                                 |
@@ -65,5 +64,5 @@ If there's any confusion, or if a feature is critical for your evaluation, we're
 |                                     | Console API                               | Identical                                          |
 |                                     | Audit Log                                 | Identical                                          |
 |                                     | Audit Log API                             | Identical                                          |
-| Autotune                            | MAB                                       | Coming to WHN                                      |
-| Users Tab                           | Users tab                                 | Coming to WHN                                      |
+| Autotune                            | MAB                                       | Identical                                          |
+| Users Tab                           | Users tab                                 | Identical                                          |
