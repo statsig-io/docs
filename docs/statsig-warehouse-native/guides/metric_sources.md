@@ -44,7 +44,7 @@ When specifying a timestamp, you can also specify if the metric source contains 
 
 When this setting is enabled, data from the first day of exposures will be included. For example, if the metric date were '2024-01-01' and a user was exposed at '2024-01-01T12:00:00', a timestamp based join would not include this first day of metrics, but a date-based join would.
 
-This is a common issue you might run into when your data is aggregated date-level metrics, but your exposures are logged in real-time. Toggling thi setting allows you to include day-1 metrics for those aggregated sources, while getting timestamp-based joins for realtime sources like vent logging.
+This is a common issue you might run into when your data is aggregated date-level metrics, but your exposures are logged in real-time. Toggling this setting allows you to include day-1 metrics for those aggregated sources, while getting timestamp-based joins for realtime sources like event logging.
 
 ### Note - Governance
 
