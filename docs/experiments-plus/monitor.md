@@ -21,7 +21,8 @@ To monitor the status of your experiment,
       - **p-value < 0.01 and group size differs from expected size by less than 0.1% absolute**: Warning (yellow) indicating that an imbalance is possible, but the impact to the experiment is expected to be small.  This scenario typically occurs in large web experiments (1M+ users) where small variations in performance across groups can cause a small fraction of exposures to be dropped for certain groups more than others. 
       - **p-value < 0.001 and more than 0.1% absolute deviation from expected group size**: Alert (red) meaning there is likely a problem with the experiment exposures and experiment results may not be trustworthy.   
     - **Default value type mismatch** detects if an experiment's fallback default value type has differed from the set parameter type.
-    - **Group assignment healthy** verifies that your SDKs are configured correctly and surfaces if there are a high percentage of checks with assignment reasons like "Uninitialized" or "InvalidBootstrap" which might indicate your experiment assignment is not configured correctly. You can view an hourly breakdown of assignment reason via the **View Assignment Reasons** CTA
+    - **Group assignment healthy** verifies that your SDKs are configured correctly and surfaces if there are a high percentage of checks with assignment reasons like "Uninitialized" or "InvalidBootstrap" which might indicate experiment assignment is not configured correctly. You can view an hourly breakdown of assignment reason via the **View Assignment Reasons** CTA. To better understand what each assignment reason means, see our breakdown [here](https://docs.statsig.com/sdk/debugging). 
+
   
  ![Screen Shot 2024-01-10 at 1 24 02 PM](https://github.com/statsig-io/docs/assets/101903926/afd2d1f4-8c2d-42a2-99ed-c2f301e8625a)
 
