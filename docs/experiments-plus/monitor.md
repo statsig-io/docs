@@ -9,11 +9,9 @@ Once you turn on your experiment, you can monitor the health of your experiment 
 ### Monitoring experiment health
 To monitor the status of your experiment, 
  - Navigate to **Experiments** in the left-hand navigation panel in the Statsig console
- - Select the experiment you want to monitor 
+ - Select the experiment you want to monitor
+ 
  - **Experiment Health Checks** show alerts for problems with the experiment setup.  Hover over the icon and click on a check for more details.
-   
-   ![Screen Shot 2021-11-10 at 9 38 52 AM](https://user-images.githubusercontent.com/90343952/141164665-9f4d28b6-0d93-4cd1-a01a-e576f9049544.png)
-  
     - **Checks started** verifies that config checks are occurring.  Available shortly after the experiment starts.  
     - **Checks have valid unit type** ensures that config checks contain the unit ID type selected for this experiment (user ID by default).  Available when checks begin.
     - **Event metrics have data** checks that events are being logged with unit IDs matching the experiment.  If logged events don't have the same unit ID as the experiment exposures, event based metrics won't be available in Pulse. A common cause is running an experiment using an ID type that isn't userID (eg. stableID or a customID) - while events data coming from a system like Segment is missing this identifier to match to. You can look at examples of how to set this [here](/integrations/data-connectors/segment#user-ids-and-custom-ids). Available within an hour after an exposure and event have been logged by the same unitID.
@@ -23,6 +21,13 @@ To monitor the status of your experiment,
       - **p-value < 0.01 and group size differs from expected size by less than 0.1% absolute**: Warning (yellow) indicating that an imbalance is possible, but the impact to the experiment is expected to be small.  This scenario typically occurs in large web experiments (1M+ users) where small variations in performance across groups can cause a small fraction of exposures to be dropped for certain groups more than others. 
       - **p-value < 0.001 and more than 0.1% absolute deviation from expected group size**: Alert (red) meaning there is likely a problem with the experiment exposures and experiment results may not be trustworthy.   
     - **Default value type mismatch** detects if an experiment's fallback default value type has differed from the set parameter type.
+    - **Group assignment healthy** verifies that your SDKs are configured correctly and surfaces if there are a high percentage of checks with assignment reasons like "Uninitialized" or "InvalidBootstrap" which might indicate your experiment assignment is not configured correctly. You can view an hourly breakdown of assignment reason via the **View Assignment Reasons** CTA
+  
+ ![Screen Shot 2024-01-10 at 1 24 02 PM](https://github.com/statsig-io/docs/assets/101903926/afd2d1f4-8c2d-42a2-99ed-c2f301e8625a)
+
+
+ ![Screen Shot 2024-01-10 at 1 27 19 PM](https://github.com/statsig-io/docs/assets/101903926/3696383e-7e56-4a9b-87aa-cb92a8c9517a)
+
  
 ### Monitoring exposures
 
