@@ -36,6 +36,16 @@ In the metric source tab, you can see your metric sources and the metrics/experi
 
 Now that we have a metric source set up, we can use it to create a Metric.
 
+## Daily Vs. Realtime Sources
+
+When specifying a timestamp, you can also specify if the metric source contains data at a daily or timestamp granularity by toggling the "Treat Timestamp as Date" setting.
+
+![Screenshot 2024-01-09 at 4 15 05 PM](https://github.com/statsig-io/docs/assets/102695539/f0edfdaf-9531-4583-b440-d05f0f3c3618)
+
+When this setting is enabled, data from the first day of exposures will be included. For example, if the metric date were '2024-01-01' and a user was exposed at '2024-01-01T12:00:00', a timestamp based join would not include this first day of metrics, but a date-based join would.
+
+This is a common issue you might run into when your data is aggregated date-level metrics, but your exposures are logged in real-time. Toggling thi setting allows you to include day-1 metrics for those aggregated sources, while getting timestamp-based joins for realtime sources like vent logging.
+
 ### Note - Governance
 
 If you are concerned about granting Statsig broad read access, our recommended solution is to only give Statsig access
