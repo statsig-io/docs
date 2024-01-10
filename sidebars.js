@@ -242,6 +242,17 @@ module.exports = {
       type: "category",
       label: "Analytics",
       items: [
+        "mex/overview",
+        {
+          type: "category",
+          label: "Metric Explorer",
+          items: [
+            "mex/drilldown",
+            "mex/funnels",
+            "mex/retention",
+          ]
+        },
+        "mex/dashboards",
         {
           type: "category",
           label: "Metrics",
@@ -280,7 +291,6 @@ module.exports = {
             "metrics/create-user-funnels",
           ],
         },
-        "mex/introduction",
         "users/introduction",
         "insights/introduction",
       ],

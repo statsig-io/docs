@@ -14,7 +14,7 @@ for the experiment is a logged-in metric (e.g. subscription rate, or estimated L
 
 Many people handle this probably in an ad-hoc way. Usually, this means running ad-hoc queries to join and deduplicate exposures, or tagging userID metrics with an associated logged-out identifier. Statsig Warehouse Native offers an easy solution for connecting identifiers across this boundary in a centralized and reproducible way.
 
-# How it Works
+## How it Works
 
 Setting up identity resolution in Statsig is very simple.
 
@@ -33,7 +33,7 @@ Behind the scenes, Statsig will:
 
 This works natively across Metric Sources, so you can easily set up funnel or ratio metrics across the two ID types.
 
-# Considerations
+## Considerations
 
 Deduplicating records can lead to biased results, so Statsig preforms two extra health checks on this kind of experiment.
 
@@ -42,7 +42,7 @@ Deduplicating records can lead to biased results, so Statsig preforms two extra 
 - Statsig will perform a chi-squared test evaluating if the deduplication rate is identical across arms of the experiment. In some cases, an experiment may cause more users to come back (for example an email resurrection campaign), in which case duplicates are expected to be more frequent in that arm and can be a positive outcome. In this case, you can perform first-touch attribution to maintain a common identifier
 
 
-# Configuring Project Level Identity Resolution [coming soon]
+## Configuring Project Level Identity Resolution [coming soon]
 To use Identity Resolution across experiments in your project, you will need a lookup table that maps the logged-out identifier to a user ID. This table can be configured by setting up an Entity Property and setting it as an Identity Resolution source.
 ![image](https://github.com/statsig-io/docs/assets/31516123/8b822870-0807-436c-9e84-b9ce4f2e7317)
 
