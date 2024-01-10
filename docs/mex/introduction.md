@@ -6,7 +6,7 @@ sidebar_label: Metrics Explorer
 slug: /mex
 ---
 
-#Statsig Product Analytics
+# Statsig Product Analytics
 - [Overview](https://docs.statsig.com/mex/overview)
 - [Metric Drilldown Charts](https://docs.statsig.com/mex/drilldown)
 - [Funnel Charts](https://docs.statsig.com/mex/funnels)
