@@ -4,7 +4,10 @@ slug: /compliance/user_data_deletion_requests
 ---
 
 :::info
-User data deletion requests are for Enterprise contracts only. Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you need to enable Enterprise features as you use Statsig.
+User data deletion APIs are for customers on Enterprise contracts only. Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you need to enable Enterprise features as you use Statsig.
+
+If you are not on an Enterprise contract, please send your deletion request with details to our [support team email](mailto:support@statsig.com) for processing.
+
 We currently only support deleting data for unit type `user_id`.
 :::
 
