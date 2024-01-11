@@ -417,6 +417,7 @@ module.exports = {
           ],
         },
         "http-api",
+        "Other Frameworks",
         {
           type: "category",
           label: "Console API",
