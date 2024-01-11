@@ -202,6 +202,7 @@ img
 ingestions
 integrations
 interpretable
+InvalidBootstrap
 io
 isTest
 javascript
@@ -313,6 +314,7 @@ Autocreate
 Frequentist
 MAB
 Rudderstack
+unitID
 UnitIDs
 WHN
 mgmt
