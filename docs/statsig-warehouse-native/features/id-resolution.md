@@ -14,10 +14,21 @@ for the experiment is a logged-in metric (e.g. subscription rate, or estimated L
 
 Many people handle this probably in an ad-hoc way. Usually, this means running ad-hoc queries to join and deduplicate exposures, or tagging userID metrics with an associated logged-out identifier. Statsig Warehouse Native offers an easy solution for connecting identifiers across this boundary in a centralized and reproducible way.
 
-# How it Works
+## How it Works
 
-Setting up identity resolution in Statsig is very simple.
+Setting up identity resolution in Statsig is very simple. You can either log or join data to provide both IDs on your assignment source, or provide one ID in the assignment source along with a mapping table between the IDs in the form of an Entity Property Source. 
 
+### Using a Property Source
+To use Identity Resolution across experiments in your project, you will need a lookup table that has both the ID you are exposing on and the selected targeted ID. This table can be configured by setting up an Entity Property Source with both IDs present.
+
+Once that's done, you can simply select this source when configuring your secondary ID type, and Statsig handles the join for you.
+
+![Screenshot 2024-01-11 at 10 31 04 AM](https://github.com/statsig-io/docs/assets/102695539/3fc0422d-ed96-4fe6-9e52-05e24a6cc2a2)
+
+If you want to use a Statsig SDK to populate this table, you can log an event (like a "Signup" event that has both the logged-out identifier and the user ID on the same event. Events sent via the Statsig SDK are written into your warehouse - and you can configure an Identity Resolution source on top of that using something like this - 
+![image](https://github.com/statsig-io/docs/assets/31516123/6b2a3d0e-a1ad-446b-a604-43dd050f05fa)
+
+### Using An Assignment Source
 When creating an assignment source, provide a column for both ID types. It is assumed that your 'Primary ID' will be non-null for exposure records. Your secondary ID can be null. If your secondary ID is sparse (some records are null, and some are not due to logging), Statsig will back-attribute any identified secondary ID to other records from the same Primary ID.
 
 ![ID Resolution Assignment Source](https://github.com/statsig-io/docs/assets/102695539/8cbdd8cc-2ea6-4bf8-a620-0428051989d1)
@@ -36,7 +47,7 @@ Behind the scenes, Statsig will:
 
 This works natively across Metric Sources, so you can easily set up funnel or ratio metrics across the two ID types.
 
-# Considerations
+## Considerations
 
 Deduplicating records can lead to biased results, so Statsig preforms two extra health checks on this kind of experiment.
 
@@ -44,12 +55,3 @@ Deduplicating records can lead to biased results, so Statsig preforms two extra 
   using different devices or clearing browser history
 - Statsig will perform a chi-squared test evaluating if the deduplication rate is identical across arms of the experiment. In some cases, an experiment may cause more users to come back (for example an email resurrection campaign), in which case duplicates are expected to be more frequent in that arm and can be a positive outcome. In this case, you can perform first-touch attribution to maintain a common identifier
 
-
-# Configuring Project Level Identity Resolution [coming soon]
-To use Identity Resolution across experiments in your project, you will need a lookup table that maps the logged-out identifier to a user ID. This table can be configured by setting up an Entity Property and setting it as an Identity Resolution source.
-![image](https://github.com/statsig-io/docs/assets/31516123/8b822870-0807-436c-9e84-b9ce4f2e7317)
-
-You will be able to configure a project level default Identity Resolution source (and optionally override this on an experiment).
-
-If you want to use a Statsig SDK to populate this table, you can log an event (like a "Signup" event that has both the logged-out identifier and the user ID on the same event. Events sent via the Statsig SDK are written into your warehouse - and you can configure an Identity Resolution source on top of that using something like this - 
-![image](https://github.com/statsig-io/docs/assets/31516123/6b2a3d0e-a1ad-446b-a604-43dd050f05fa)
