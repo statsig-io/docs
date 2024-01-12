@@ -45,6 +45,11 @@ module.exports = {
                 "guides/first-device-level-experiment",
               ],
             },
+            {
+              "Technology-Specific Guides":[
+                "guides/python-flask-feature-flags",
+              ],
+            },
             "guides/synchronized-launch",
             "guides/featuregates-or-experiments",
             "guides/experimentation-program",
