@@ -1,6 +1,6 @@
 ---
-sidebar_label: Python/Flask A/B Test
-title: Python/Flask A/B Test
+sidebar_label: Run an A/B Test with Python Flask
+title: Run an A/B Test with Python Flask
 ---
 
 Flask is a popular lightweight framework for web development with Python. While Flask is known for its simplicity and ease-of-use, its also powerful enough to use at scale for a consumer-facing application, where you might find yourself wanting to run a simple A/B Test. Today, we'll show you how to do just that with Statsig's free tier!
@@ -33,7 +33,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return f"Hello World!"
+    return "Hello World!"
 
 app.run(debug=True)
 ```
@@ -51,7 +51,7 @@ Next, lets add a new endpoint to our Flask app that we can use for our experimen
 ```Python
 @app.route('/experimentRoute')
 def experimentRoute():
-    return f"<body style='background-color:red'/>"
+    return "<body style='background-color:red'/>"
 ```
 
 After stopping and starting your project again, you'll be able to see this route at [http://127.0.0.1:5000/experimentRoute](http://127.0.0.1:5000/experimentRoute). You won't see much now - just a red screen!
@@ -64,7 +64,7 @@ Lets set up an Experiment in Statsig!
 
 ## Step 3: Setting Up Statsig
 
-If you haven't yet - now is the time to head to [console.statsig.com](http://console.statsig.com) and set up an account - Statsig is free up to 1 Million events per month for A/B Tests. When you signup, you'll have the opportunbity to setup your SDK type, but if you don't see this, no problem, simply click on the settings gear in your home page then click on Keys & Environments, where you can copy your server key. Initializing Statsig in Python and Flask only takes two lines:
+If you haven't yet - now is the time to head to [console.statsig.com](http://console.statsig.com) and set up an account - Statsig is free up to 1 Million events per month for A/B Tests. When you signup, you'll have the opportunity to setup your SDK type, but if you don't see this, no problem, simply click on the settings gear in your home page then click on Keys & Environments, where you can copy your server key. Initializing Statsig in Python and Flask only takes two lines:
 
 ```Python
 from statsig import statsig, StatsigUser

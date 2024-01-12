@@ -1,6 +1,6 @@
 ---
-sidebar_label: Python/Flask Feature Flags
-title: Python/Flask Feature Flags
+sidebar_label: How to set up Feature Flags in Python with Flask
+title: How to set up Feature Flags in Python with Flask
 ---
 
 Flask is a lightweight web framework for Python that has grown popular with developers who enjoy its simple-but-powerful design. Given its simplicity in a friendly language, its a great place to implement your first feature flag!
@@ -33,7 +33,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return f"Hello World!"
+    return "Hello World!"
 
 app.run(debug=True)
 ```
@@ -117,9 +117,8 @@ def secretRoute():
 
 Now, we've added an email field to our user - which we can pass in in a query parameter, for example - http://127.0.0.1:5000/secretRoute?email=brock@statsig.com. Now, lets go change our rule in the the Statsig console (pressing the back button) to show only users where their email contains @statsig.com - and pass 100% of those users.
 
-![iamge](/img/statsigemail_gate.png)
+![image](/img/statsigemail_gate.png)
 
 Now, when we refresh the URL above - we should have access! But if we change the email to not include @statsig.com by even one character, we will no longer have access. This is the fundamental concept of access management - and it unlocks so many more possibilities! A great next step is to consider implementing [log events](https://docs.statsig.com/guides/logging-events) in your project to measure the impact on users who are exposed and not exposed to a feature. 
 
 Thanks for reading this tutorial! If you have trouble or any other questions, please join our [Slack Group](https://statsig.com/slack).
-
