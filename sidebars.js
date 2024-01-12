@@ -376,14 +376,20 @@ module.exports = {
             "client/reactNativeSDK",
             "client/reactNativeExpoSDK",
             "client/iosClientSDK",
-            "client/swiftOnDeviceEvaluationSDK",
             "client/androidClientSDK",
-            "client/androidOnDeviceEvaluationSDK",
             "client/dotnetSDK",
             "client/rokuSDK",
             "client/unitySDK",
             "client/dartSDK",
-            "client/jsLocalEvaluationSDK",
+            {
+              type: "category",
+              label: "On Device Evaluation",
+              items: [
+                "client/jsLocalEvaluationSDK",
+                "client/swiftOnDeviceEvaluationSDK",
+                "client/androidOnDeviceEvaluationSDK",
+              ],
+            },
           ],
         },
         {
