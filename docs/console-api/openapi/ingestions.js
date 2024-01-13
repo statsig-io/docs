@@ -1,7 +1,7 @@
 module.exports = {
   "openapi": "3.0.0",
   "x-stoplight": {
-    "id": "iyu7er1n6xhuz"
+    "id": "pdfye4jj6i5ex"
   },
   "info": {
     "title": "https://statsigapi.net/console/v1",
@@ -20,8 +20,253 @@ module.exports = {
         "in": "header"
       }
     },
-    "requestBodies": {},
+    "requestBodies": {
+      "Ingestion-query": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "x-stoplight": {
+                    "id": "x1n0o34q92wh0"
+                  },
+                  "enum": [
+                    "redshift",
+                    "bigquery-v2",
+                    "snowflake-v2",
+                    "databricks",
+                    "azure-synapse",
+                    "s3",
+                    "athena",
+                    "adls"
+                  ],
+                  "description": "Ingestion type"
+                },
+                "dataset": {
+                  "x-stoplight": {
+                    "id": "4thuuxacghp54"
+                  },
+                  "enum": [
+                    "Events",
+                    "Metrics",
+                    "export_exposures"
+                  ],
+                  "description": "Ingestion export data type"
+                },
+                "source_name": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "doa357fzn256c"
+                  },
+                  "description": "Name of ingestion source"
+                }
+              },
+              "required": [
+                "type",
+                "dataset"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "type": "redshift",
+                  "dataset": "Events"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "schemas": {
+      "Ingestion": {
+        "title": "Ingestion",
+        "x-stoplight": {
+          "id": "vutftepdhpz2q"
+        },
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "jwh924gc6zstt"
+            },
+            "description": "Ingestion ID"
+          },
+          "type": {
+            "x-stoplight": {
+              "id": "cj9ela8v2prs5"
+            },
+            "description": "Ingestion type",
+            "example": "databricks",
+            "enum": [
+              "redshift",
+              "bigquery-v2",
+              "snowflake-v2",
+              "databricks",
+              "azure-synapse",
+              "s3",
+              "athena",
+              "adls"
+            ]
+          },
+          "enabled": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "2i2bvbs0nxdxu"
+            },
+            "description": "Ingestion enabled status"
+          },
+          "data": {
+            "type": "object",
+            "x-stoplight": {
+              "id": "q7cpsr0zffvvx"
+            },
+            "properties": {
+              "name": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "3llealu3z0xmj"
+                }
+              },
+              "namespace": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "3ld1eddo8rre1"
+                }
+              },
+              "query": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "ts5lmeo2uh1un"
+                }
+              },
+              "knownColumns": {
+                "type": "array",
+                "x-stoplight": {
+                  "id": "3ljc8de0nvst9"
+                },
+                "items": {
+                  "x-stoplight": {
+                    "id": "3dxtsajldh572"
+                  },
+                  "type": "string"
+                }
+              },
+              "sampleRows": {
+                "type": "array",
+                "x-stoplight": {
+                  "id": "sb42t3ck7uvtg"
+                },
+                "items": {
+                  "x-stoplight": {
+                    "id": "wxnpyil84bj04"
+                  },
+                  "type": "array",
+                  "items": {
+                    "x-stoplight": {
+                      "id": "cszyai1rm9kvm"
+                    },
+                    "type": "string"
+                  }
+                }
+              },
+              "columnTypes": {
+                "type": "array",
+                "x-stoplight": {
+                  "id": "t83hdwqnlomo2"
+                },
+                "items": {
+                  "x-stoplight": {
+                    "id": "9evty6isf6456"
+                  },
+                  "type": "string"
+                }
+              },
+              "columnMappings": {
+                "type": "object",
+                "x-stoplight": {
+                  "id": "0wl3gxhmdxfpy"
+                }
+              },
+              "scheduled_hour_pst": {
+                "type": "number",
+                "x-stoplight": {
+                  "id": "ayq2h8p0lu52n"
+                }
+              },
+              "enabled": {
+                "type": "boolean",
+                "x-stoplight": {
+                  "id": "ugy98pecuqnpn"
+                }
+              },
+              "creator": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "nrq36vh4p1q6p"
+                }
+              },
+              "creation_time": {
+                "type": "number",
+                "x-stoplight": {
+                  "id": "sjgx929hzwqym"
+                }
+              },
+              "last_modifier": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "hl1vp6druq6d7"
+                }
+              },
+              "last_modified_time": {
+                "type": "number",
+                "x-stoplight": {
+                  "id": "fbwn446n1kh2u"
+                }
+              },
+              "subscriber_emails": {
+                "type": "array",
+                "x-stoplight": {
+                  "id": "j64yquak8ic0q"
+                },
+                "items": {
+                  "x-stoplight": {
+                    "id": "xbn45xxhw3b5w"
+                  },
+                  "type": "string"
+                }
+              },
+              "dataExportType": {
+                "x-stoplight": {
+                  "id": "6sawhdlyhxxia"
+                },
+                "enum": [
+                  "pulse-summary",
+                  "exposures"
+                ]
+              },
+              "exportTableName": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "v2a9zyqia4oud"
+                }
+              },
+              "is_delta_sharing": {
+                "type": "boolean",
+                "x-stoplight": {
+                  "id": "rv5cjku4yviet"
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "id",
+          "type"
+        ]
+      },
       "ingestion-run": {
         "type": "object",
         "x-examples": {
@@ -321,6 +566,53 @@ module.exports = {
           "latestStatus"
         ]
       }
+    },
+    "responses": {},
+    "parameters": {
+      "Ingestion-type": {
+        "name": "type",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "redshift",
+            "bigquery-v2",
+            "snowflake-v2",
+            "databricks",
+            "azure-synapse",
+            "s3",
+            "athena",
+            "adls"
+          ],
+          "example": "redshift"
+        },
+        "description": "Ingestion type"
+      },
+      "Dataset": {
+        "name": "dataset",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "Events",
+            "Metrics",
+            "export_exposures"
+          ],
+          "example": "Events"
+        },
+        "description": "Ingestion export dataset type"
+      },
+      "Source-name": {
+        "name": "source_name",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        },
+        "description": "Name of ingestion source"
+      }
     }
   },
   "security": [
@@ -334,7 +626,335 @@ module.exports = {
     }
   ],
   "paths": {
+    "/ingestion": {
+      "get": {
+        "summary": "Read Ingestion",
+        "tags": [
+          "Ingestions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "9lzwe5v4g6yyn"
+                      },
+                      "example": "Ingestion read successfully."
+                    },
+                    "data": {
+                      "x-stoplight": {
+                        "id": "qbmg7vkdc2kqz"
+                      },
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/Ingestion"
+                        },
+                        {
+                          "type": "array",
+                          "x-stoplight": {
+                            "id": "ce5p1pahrzz90"
+                          },
+                          "items": {
+                            "$ref": "#/components/schemas/Ingestion"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "message"
+                  ]
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Ingestion read successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "operationId": "get-ingestion",
+        "x-stoplight": {
+          "id": "k90se0bwlz0xl"
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "redshift",
+                "bigquery-v2",
+                "snowflake-v2",
+                "databricks",
+                "azure-synapse",
+                "s3",
+                "athena",
+                "adls"
+              ]
+            },
+            "in": "query",
+            "name": "type",
+            "description": "Ingestion type",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Metrics",
+                "Events",
+                "export_exposures"
+              ]
+            },
+            "in": "query",
+            "name": "dataset",
+            "description": "Ingestion dataset type",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "source_name",
+            "description": "Name of ingestion source"
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Update Ingestion",
+        "tags": [
+          "Ingestions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "nc50nnvqce026"
+                      },
+                      "example": "Ingestion updated successfully."
+                    },
+                    "data": {
+                      "x-stoplight": {
+                        "id": "ltnexxplnex5k"
+                      },
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/Ingestion"
+                        },
+                        {
+                          "type": "array",
+                          "x-stoplight": {
+                            "id": "ua70fvoxtm2eh"
+                          },
+                          "items": {
+                            "$ref": "#/components/schemas/Ingestion"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "message"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "operationId": "patch-ingestion",
+        "x-stoplight": {
+          "id": "rs5pha9pfoxas"
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Ingestion-query"
+        }
+      },
+      "delete": {
+        "summary": "Delete Ingestion Source",
+        "tags": [
+          "Ingestions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "etbyxfedykplu"
+                      },
+                      "example": "Ingestion deleted successfully."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "delete-ingestion",
+        "x-stoplight": {
+          "id": "jooevk266dvkx"
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "redshift",
+                "bigquery-v2",
+                "snowflake-v2",
+                "databricks",
+                "azure-synapse",
+                "s3",
+                "athena",
+                "adls"
+              ]
+            },
+            "in": "query",
+            "name": "type",
+            "description": "Ingestion type",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Metrics",
+                "Events",
+                "export_exposures"
+              ]
+            },
+            "in": "query",
+            "name": "dataset",
+            "description": "Ingestion dataset type",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "source_name",
+            "description": "Name of ingestion source"
+          }
+        ]
+      }
+    },
+    "/ingestion/connection/databricks": {
+      "post": {
+        "summary": "Create Databricks Connection",
+        "operationId": "post-ingestion-connection-databricks",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "x8a0wpvrquwnt"
+                      },
+                      "example": "Ingestion created successfully."
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Ingestion"
+                    }
+                  },
+                  "required": [
+                    "message"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "9d9ntiffcoa4z"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "v7ge4wxqna4fv"
+                    }
+                  },
+                  "host": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "i9uuvyyz47l18"
+                    }
+                  },
+                  "path": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "0457vp9870p6l"
+                    }
+                  },
+                  "deltaSharingCredentials": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "i8nvnou9kp1xx"
+                    }
+                  },
+                  "verified": {
+                    "type": "boolean",
+                    "x-stoplight": {
+                      "id": "w7fdlwrm7d5i8"
+                    }
+                  }
+                },
+                "required": [
+                  "token",
+                  "host",
+                  "path"
+                ]
+              }
+            }
+          }
+        },
+        "tags": [
+          "Ingestion Connections"
+        ]
+      },
+      "parameters": []
+    },
     "/ingestion/status": {
+      "parameters": [],
       "get": {
         "summary": "List Ingestions Status",
         "responses": {
@@ -376,7 +996,7 @@ module.exports = {
                     "rowCount": {
                       "type": "number",
                       "x-stoplight": {
-                        "id": "pikd8895jlenw"
+                        "id": "ii0udr3ulbu5d"
                       },
                       "description": "number of rows imported"
                     }
@@ -516,7 +1136,7 @@ module.exports = {
           }
         },
         "x-stoplight": {
-          "id": "gu8nzt1mgrwrw"
+          "id": "fwep8bndnv73m"
         },
         "parameters": [
           {
@@ -567,10 +1187,9 @@ module.exports = {
         },
         "description": "",
         "tags": [
-          "Ingestions"
+          "Ingestion Status"
         ]
-      },
-      "parameters": []
+      }
     },
     "/ingestion/runs": {
       "get": {
@@ -1722,7 +2341,7 @@ module.exports = {
         ],
         "description": "List ingestion runs sorted by the timestamp they were triggered",
         "tags": [
-          "Ingestions"
+          "Ingestion Runs"
         ]
       }
     },
@@ -1924,7 +2543,7 @@ module.exports = {
         ],
         "description": "Get a selected run_id",
         "tags": [
-          "Ingestions"
+          "Ingestion Runs"
         ]
       },
       "parameters": [
@@ -1938,6 +2557,104 @@ module.exports = {
           "description": "The Run ID to query"
         }
       ]
+    },
+    "/ingestion/backfill": {
+      "post": {
+        "summary": "Backfill Ingestion",
+        "operationId": "post-ingestion-backfill",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "rxvkpyx1t0lxo"
+                      },
+                      "example": "Ingestion backfilled successfully."
+                    }
+                  },
+                  "required": [
+                    "message"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "datestamp_start": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "zcbo0n3nqjx4l"
+                    },
+                    "description": "Start time in format YYYY-MM-DD"
+                  },
+                  "datestamp_end": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "knulbz9hcr5ws"
+                    },
+                    "description": "End time in format YYYY-MM-DD"
+                  },
+                  "source": {
+                    "x-stoplight": {
+                      "id": "fx2sfi29ofmqt"
+                    },
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "x-stoplight": {
+                          "id": "rea0kq07wkplx"
+                        },
+                        "items": {
+                          "x-stoplight": {
+                            "id": "y8qizc0ndfr0l"
+                          },
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "r3zolrv0jtz7i"
+                        }
+                      }
+                    ]
+                  },
+                  "type": {
+                    "x-stoplight": {
+                      "id": "88wjrru7zco2e"
+                    },
+                    "enum": [
+                      "events",
+                      "metrics"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "33c6deicwos3q"
+        },
+        "tags": [
+          "Ingestion Backfills"
+        ]
+      }
     }
   }
 }
