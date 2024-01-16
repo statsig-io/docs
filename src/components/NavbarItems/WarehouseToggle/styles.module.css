@@ -1,0 +1,29 @@
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space out icons */
+  position: relative;
+  width: 100px; /* Adjust size as needed */
+  height: 30px; /* Adjust size as needed */
+  background-color: #e0e0e0; /* Background color of the toggle bar */
+  border-radius: 15px; /* Rounded edges */
+  padding: 3px; /* Padding around the knob */
+}
+
+.toggleButton.warehouse {
+  left: 50%; /* Move to right side for 'warehouse' mode */
+}
+
+.icon {
+  z-index: 1;
+  display: block;
+  flex: 1;
+}
+
+.icon.cloud {
+  left: 10px;
+}
+
+.icon.warehouse {
+  right: 10px;
+}

@@ -50,7 +50,12 @@ module.exports = {
           type: 'html',
           position: 'right',
           value: '<button id="consoleCTA" onclick="window.open(\'https://console.statsig.com\', \'_blank\').focus(); window.statsig.logEvent({}, \'console_button_click\', window.location.pathname, {referrer: document && document.referrer,});">Get Started</button>',
-        }
+        },
+        // TODO @tore enable with sidebar
+        {
+          type: 'custom-warehouseToggle', 
+          position: "left",
+        },
       ],
     },
     footer: {
