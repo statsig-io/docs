@@ -104,6 +104,11 @@ module.exports = {
         "rust",
       ],
     },
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
   },
   plugins: [
     [

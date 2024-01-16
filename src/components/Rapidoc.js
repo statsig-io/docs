@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 
-import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import Models from "../../docs/console-api/models/index";
-import { useColorMode } from '@docusaurus/theme-common';
 
 const supportedEntities = [
   'gates', 
@@ -95,9 +93,9 @@ function loadReferences(spec) {
 
 export default function Rapidoc(props) {
   const { id, entity } = props;
-
-  const isDarkTheme = useColorMode().colorMode === 'dark';
-
+  const queryParameters = new URLSearchParams(window.location.search);
+  const isDarkTheme = queryParameters.get("docusaurus-theme") == "dark";
+  console.log('theme', queryParameters.get("docusaurus-theme"));
   useEffect(() => {
     setTimeout(() => {
 
@@ -121,10 +119,10 @@ export default function Rapidoc(props) {
   return (
     <rapi-doc
       id={id}
-      theme={isDarkTheme ? 'dark' : 'light'}
-      primary-color={isDarkTheme ? '#2196f3' : '#194b7d'}
-      bg-color={isDarkTheme ? '#1b1b1d' : "#ffffff"}
-      style={{ height: "100%" }}
+      // theme={isDarkTheme ? 'dark' : 'light'}
+      // primary-color={isDarkTheme ? '#2196f3' : '#194b7d'}
+      // bg-color={isDarkTheme ? '#1b1b1d' : "#ffffff"}
+      // style={{ height: "100%" }}
       allow-search={false}
       render-style="view" // Controls how to api gets rendered
       layout="column"
@@ -134,21 +132,23 @@ export default function Rapidoc(props) {
       allow-authentication={true} // Enable user passing STATSIG-API-KEY at top of file
       regular-font={["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Ubuntu", "sans-serif"]}
     >
-      <div slot="overview">
-        {getDescription(entity)}
-        <h2>Authorization</h2>
-        <p>
-          All requests must include the STATSIG-API-KEY field in the header. The value should be a Console API Key which can be created in 'Project Settings'-{">"}'API Keys' tab.  <br />
-          To use the 'try it' section on this page, enter your Console API into the box below.
+      <div className="rapidoc">
+        <div slot="overview">
+          {getDescription(entity)}
+          <h2>Authorization</h2>
+          <p>
+            All requests must include the STATSIG-API-KEY field in the header. The value should be a Console API Key which can be created in 'Project Settings'-{">"}'API Keys' tab.  <br />
+            To use the 'try it' section on this page, enter your Console API into the box below.
+          </p>
+          <hr />
+        </div>
+        <p slot="auth" style={{ color: '#E05550' }}>
+          Warning! You will be directly modifying the project connected to the api-key provided.
         </p>
-        <hr />
+        <p slot="auth">
+          We suggest creating a temporary project when testing our API below.
+        </p>
       </div>
-      <p slot="auth" style={{ color: '#E05550' }}>
-        Warning! You will be directly modifying the project connected to the api-key provided.
-      </p>
-      <p slot="auth">
-        We suggest creating a temporary project when testing our API below.
-      </p>
     </rapi-doc>
   );
 }

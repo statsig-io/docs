@@ -7,7 +7,7 @@ WORKDIR /usr/app
 
 COPY ./ ./
 
-RUN npm install -g pnpm
+RUN npm install -g pnpm@7.0.0
 RUN pnpm install
 RUN pnpm build
 
