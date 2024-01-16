@@ -46,10 +46,11 @@ module.exports = {
         href: "/",
       },
       items: [
-        {
-          type: 'custom-warehouseToggle', 
-          position: "left",
-        },
+        // TODO @tore enable with sidebar
+        // {
+        //   type: 'custom-warehouseToggle', 
+        //   position: "left",
+        // },
         {
           type: "html",
           position: "right",
