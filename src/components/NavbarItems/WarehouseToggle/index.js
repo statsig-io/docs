@@ -4,6 +4,7 @@ import IconCloud from '../../IconCloud';
 import IconWarehouse from '../../IconWarehouse';
 import styles from './styles.module.css';
 import { ToggleButton, ToggleButtonGroup, Tooltip } from '@mui/material';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 
 export const STORAGE_KEY = 'statsig_warehouse';
 export const URL_PARAM = 'sw';
@@ -35,14 +36,16 @@ function WarehouseToggle({ className }) {
     localStorage.setItem(STORAGE_KEY, newMode);
   };
 
-  const cloud = document.querySelectorAll(".sb-cloud");
-  const whn = document.querySelectorAll(".sb-whn");
-  if (selectedMode === 'cloud') {
-    cloud.forEach((x) => (x.style.display = ""));
-    whn.forEach((x) => (x.style.display = "none"));
-  } else {
-    cloud.forEach((x) => (x.style.display = "none"));
-    whn.forEach((x) => (x.style.display = ""));
+  if (typeof document !== 'undefined') {
+    const cloud = document.querySelectorAll(".sb-cloud");
+    const whn = document.querySelectorAll(".sb-whn");
+    if (selectedMode === 'cloud') {
+      cloud.forEach((x) => (x.style.display = ""));
+      whn.forEach((x) => (x.style.display = "none"));
+    } else {
+      cloud.forEach((x) => (x.style.display = "none"));
+      whn.forEach((x) => (x.style.display = ""));
+    }
   }
 
   const cloudFill = {
@@ -53,29 +56,31 @@ function WarehouseToggle({ className }) {
   };
 
   return (
-    <div>
-      <ToggleButtonGroup
-        value={selectedMode}
-        exclusive
-        onChange={handleToggleClick}
-        size='small'
-      >
-        <ToggleButton value="cloud" aria-label="list">
-          <Tooltip title="Statsig Cloud" placement="bottom">
-            <div style={{height: "32px"}}>
-              <IconCloud className={clsx(styles.activeIcon)} {...cloudFill} />
-            </div>
-          </Tooltip>
-        </ToggleButton>
-        <ToggleButton value="warehouse" aria-label="module">
-          <Tooltip title="Statsig Warehouse Native" placement="bottom">
-            <div style={{height: "32px"}}>
-              <IconWarehouse className={clsx(styles.activeIcon)} {...warehouseFill} />
-            </div>
-          </Tooltip>
-        </ToggleButton>
-      </ToggleButtonGroup>
-    </div>
+    <BrowserOnly>
+      <div>
+        <ToggleButtonGroup
+          value={selectedMode}
+          exclusive
+          onChange={handleToggleClick}
+          size='small'
+        >
+          <ToggleButton value="cloud" aria-label="list">
+            <Tooltip title="Statsig Cloud" placement="bottom">
+              <div style={{height: "32px"}}>
+                <IconCloud className={clsx(styles.activeIcon)} {...cloudFill} />
+              </div>
+            </Tooltip>
+          </ToggleButton>
+          <ToggleButton value="warehouse" aria-label="module">
+            <Tooltip title="Statsig Warehouse Native" placement="bottom">
+              <div style={{height: "32px"}}>
+                <IconWarehouse className={clsx(styles.activeIcon)} {...warehouseFill} />
+              </div>
+            </Tooltip>
+          </ToggleButton>
+        </ToggleButtonGroup>
+      </div>
+    </BrowserOnly>
   );
   
 }
