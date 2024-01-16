@@ -45,6 +45,12 @@ module.exports = {
                 "guides/first-device-level-experiment",
               ],
             },
+            {
+              "Technology-Specific Guides":[
+                "guides/python-flask-feature-flags",
+                "guides/python-flask-abtests"
+              ],
+            },
             "guides/synchronized-launch",
             "guides/featuregates-or-experiments",
             "guides/experimentation-program",
@@ -376,14 +382,20 @@ module.exports = {
             "client/reactNativeSDK",
             "client/reactNativeExpoSDK",
             "client/iosClientSDK",
-            "client/swiftOnDeviceEvaluationSDK",
             "client/androidClientSDK",
-            "client/androidOnDeviceEvaluationSDK",
             "client/dotnetSDK",
             "client/rokuSDK",
             "client/unitySDK",
             "client/dartSDK",
-            "client/jsLocalEvaluationSDK",
+            {
+              type: "category",
+              label: "On Device Evaluation",
+              items: [
+                "client/jsLocalEvaluationSDK",
+                "client/swiftOnDeviceEvaluationSDK",
+                "client/androidOnDeviceEvaluationSDK",
+              ],
+            },
           ],
         },
         {

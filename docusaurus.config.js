@@ -45,7 +45,13 @@ module.exports = {
         srcDark: "img/logo_white.svg",
         href: "https://statsig.com",
       },
-      items: [],
+      items: [
+        {
+          type: 'html',
+          position: 'right',
+          value: '<button id="consoleCTA" onclick="window.open(\'https://console.statsig.com\', \'_blank\').focus(); window.statsig.logEvent({}, \'console_button_click\', window.location.pathname, {referrer: document && document.referrer,});">Get Started</button>',
+        }
+      ],
     },
     footer: {
       style: "dark",
