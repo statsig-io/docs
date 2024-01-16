@@ -35,6 +35,16 @@ function WarehouseToggle({ className }) {
     localStorage.setItem(STORAGE_KEY, newMode);
   };
 
+  const cloud = document.querySelectorAll(".sb-cloud");
+  const whn = document.querySelectorAll(".sb-whn");
+  if (selectedMode === 'cloud') {
+    cloud.forEach((x) => (x.style.display = ""));
+    whn.forEach((x) => (x.style.display = "none"));
+  } else {
+    cloud.forEach((x) => (x.style.display = "none"));
+    whn.forEach((x) => (x.style.display = ""));
+  }
+
   const cloudFill = {
     innerFill: selectedMode === 'cloud' ? "#CCFBC7" : "none"
   };
