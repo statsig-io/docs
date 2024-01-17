@@ -27,7 +27,7 @@ Keep these high level steps in mind as you begin your planning your implementati
         - If your team plans on utilizing the **create and analyze** experimentation option, you’ll want to identify **************where************** the experiment will run. Typically ******************web based****************** experiments are easier to evaluate, however Statsig has SDK support for server and mobile SDKs as well.
             - **Note**: It’s important the implementing team understands how the SDKs operate prior to executing a proof of concept. Our [client](/client/introduction) and [server](/server/introduction) docs can help orient your team!
             - A typical evaluation takes **2-4 weeks** to account for experiment design, implementation, time to bake, and analysis. To ensure a successful POC, [have a well scoped plan](/guides/running-a-poc#phase-0-scope--prepare-your-poc) and ensure the right teams are included to assist along the way.
-    - Read [experimentation best practices](https://statsig.com/blog/product-experimentation-best-practices) to get an idea of how to best succeed.
+    - Read [experimentation best practices](/blog/product-experimentation-best-practices) to get an idea of how to best succeed.
     
 
 1. **Connect the Warehouse** - In order to query data and operate within your warehouse, you’ll need to allocate resources and connect to Statsig. You may choose to utilize an existing prod database or create a separate cluster specifically for experimentation (if you don’t already have one). 
@@ -67,7 +67,7 @@ Keep these high level steps in mind as you begin your planning your implementati
     
 
 4. **Read Results** - Once the experiment has been successfully run, it’s important to read the results and ensure everything looks reasonable. Was your hypothesis validated or are the results surprising? Are the results easy to interpret and navigate for the teams involved? Check out our [section on pulse](/statsig-warehouse-native/guides/pulse) to get an idea of the high level analytics capabilities. A few things to note here:
-    - Results can be sliced further via the [explore tab](/guides/pulse#explore) and enables you to break down results by specific user and event properties
+    - Results can be sliced further via the [explore tab](/statsig-warehouse-native/guides/pulse#explore) and enables you to break down results by specific user and event properties
     - Exposure and metric data can be configured to be forwarded to your warehouse
     - The [Health Checks (diagnostics) tab](/statsig-warehouse-native/guides/pulse#health-checks) surfaces the SQL used to generate results so you can validate any analysis performed on your systems.
     
