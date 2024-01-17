@@ -1,7 +1,5 @@
 # Running a WHN Proof Of Concept 
 
-The purpose of this guide is to give the reader and a general overview of how they should plan a proof of concept with Statsig Warehouse Native. This guide should articulate the high level components of our solution, the steps required for a customer to successfully lead a proof of concept and validation/next steps to move forward with a productionization.
-
 # Introduction
 
 In this guide, we suggest some planning steps which aim to assist in running an effective proof of concept.
