@@ -319,6 +319,7 @@ module.exports = {
             "statsig-warehouse-native/guides/pulse",
             "statsig-warehouse-native/guides/sdks",
             "statsig-warehouse-native/guides/aatest",
+            "statsig-warehouse-native/guides/running_a_poc"
           ],
         },
         {

@@ -339,3 +339,9 @@ et
 mSPRT
 VARCHAR
 realtime
+productionization
+ivr
+sms
+poc
+POC
+vehicleId
