@@ -27,7 +27,7 @@ Once you've tagged your metrics, you can zoom into **Metric Lifts** in Pulse for
 ![image](https://user-images.githubusercontent.com/1315028/154556623-79b2b198-b24d-40fa-bcf8-0feccef70f29.png)
 
 
-# Core Tag 
+## Core Tag 
 
 As part of every Statsig Project, a **Core** tag is auto-created and pre-populated with a subset of your app’s User Metrics. User Metrics are a suite of classic growth metrics, such as MAU, WAU, DAU, L7, 28d retention, etc. that Statsig calculates daily based on your logged events. The following User Metrics are added to the Core tag by default (though you can remove them or swap them for other, more relevant business metrics as needed): 
 
