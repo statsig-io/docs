@@ -4,6 +4,7 @@ tags:
 - Statsig Cloud 
 sidebar_label: Statsig Product Analytics
 slug: /mex
+displayed_sidebar: docsRevamp
 ---
 
 # Statsig Product Analytics
