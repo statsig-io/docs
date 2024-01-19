@@ -4,7 +4,7 @@ import { VersionBadge } from "../../sdks/_VersionBadge.mdx";
 The SDK cannot poll for updates accross requests since Cloudflare does not allow for timers[**](https://developers.cloudflare.com/workers/reference/security-model/#step-1-disallow-timers-and-multi-threading). <br />
 To solve for this, a manual sync API is available for independently updating the SDK internal store. <br />
 These can be used along side [Cloudflare Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/) (or any external scheduling service) to keep your Cloudflare worker up-to-date.
-```JavaScript
+```javascript
 export default {
   async scheduled(event, env, context) {
     context.waitUntil(Statsig.syncConfigSpecs());
@@ -14,7 +14,8 @@ export default {
 
 #### Flushing events <VersionBadge version={"4.16.0"}/>
 The SDK enqueues logged events and flushes them in batches. In order to ensure events are properly flushed, we recommend calling `flush` using [`context.waitUntil`](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/#contextwaituntil).
-```JavaScript
+This will keep the request handler alive until finished flushing without blocking the response.
+```javascript
 context.waitUntil(Statsig.flush());
 ```
 
