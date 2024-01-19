@@ -1,0 +1,87 @@
+---
+sidebar_label: How to set up Feature Flags with Next.js
+title: How to set up Feature Flags with Next.js
+---
+
+
+Integrating Statsig with Next.js
+Introduction
+This guide provides step-by-step instructions on how to integrate the Statsig Node.js SDK into a Next.js application. Statsig is a feature flag and experiment management system that allows developers to control and test features in their applications dynamically.
+
+## Prerequisites
+- Statsig account and SDK key [signup for free](https://www.statsig.com/signup).
+- A basic understanding of Next.js and Node.js
+- A Next.js app
+
+## Installation
+1. Install the Statsig [Node.js SDK] (https://docs.statsig.com/server/Node.jsServerSDK): Add the Statsig Node.js SDK to your project using npm or yarn.
+
+```
+npm install statsig-node
+```
+or
+```
+yarn add statsig-node
+```
+
+2. Environment Variable: Add your Statsig SDK key (available under your Project Settings) to your environment variables in .env.local and to your hosting provider (e.g. Vercel, Netlify).
+
+```
+STATSIG_SERVER_SECRET_KEY=your_statsig_server_secret
+```
+
+## Server-Side Integration
+Integrate Statsig in your getServerSideProps or API routes for server-side feature flag evaluation.
+
+Initialize Statsig on the Server: In your getServerSideProps or API routes, initialize Statsig using the SDK key.
+
+```
+import StatsigServer from 'statsig-node';
+
+export async function getServerSideProps(context) {
+  StatsigServer.initialize(process.env.STATSIG_SERVER_SECRET_KEY);
+
+  // Rest of your code
+}
+```
+
+Evaluate Feature Flags: Use StatsigServer.checkGate, StatsigServer.getConfig, or StatsigServer.getExperiment to evaluate feature flags, dynamic configs, or experiments.
+
+```
+const isFeatureEnabled = await StatsigServer.checkGate("feature_gate_name");
+```
+
+## Client-Side Integration
+For client-side feature flag evaluation, pass the evaluated flags from the server to the client.
+
+Passing Flags from Server to Client: In your getServerSideProps, return the evaluated flags as props.
+
+```
+return {
+  props: {
+    isFeatureEnabled,
+    // other props
+  },
+};
+```
+
+## Using Flags in Components: Use the passed props in your Next.js components.
+
+```
+function HomePage({ isFeatureEnabled }) {
+  return (
+    <div>
+      {isFeatureEnabled ? (
+        <div>Feature is enabled</div>
+      ) : (
+        <div>Feature is not enabled</div>
+      )}
+    </div>
+  );
+}
+```
+
+## Conclusion
+By following these steps, you can successfully integrate Statsig with your Next.js application for feature flag management and experimentation. This allows for more controlled feature rollouts and A/B testing.
+
+Remember to refer to the official Statsig documentation for more detailed information and updates.
