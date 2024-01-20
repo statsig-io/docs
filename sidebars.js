@@ -452,6 +452,7 @@ module.exports = {
             "console-api/target-apps",
             "console-api/ingestions",
             "console-api/tags",
+            "console-api/keys",
             {
               Reports: [
                 "console-api/daily-reports",
