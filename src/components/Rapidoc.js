@@ -274,6 +274,7 @@ function getDescription(entity) {
         <ul>
           <li>Create metric</li>
           <li>Get metric values</li>
+          <li>Get Metric Definitions</li>
           <li>List metrics in the Statsig project</li>
           <li>Update properties of a metric</li>
           <li>Delete metric</li>
