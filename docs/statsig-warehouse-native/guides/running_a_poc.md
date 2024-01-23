@@ -9,18 +9,16 @@ In this guide, we suggest some planning steps which aim to assist in running an 
 **Statsig Warehouse Native** enables customers with existing metric logs to quickly run analysis on their existing metric data, and optionally bring previous assignment data/offline experiments into the platform quickly. The data warehouse native solution has two major flavors:
 
 1. **Create and analyze**: You can run an experiment on **web/mobile/app** and use Statsig’s SDKs to allocate and randomize users, and run analysis.
-2. **Analyze**: You can run an experiment elsewhere (***email, direct mail, sms, ivr, etc.***) and use Statsig to analyze that data and calculate experiment results. This data can be read from your warehouse in [this format](/statsig-warehouse-native/data-sources#assignment-sources) - we call these external sources [Assignment Sources](/statsig-warehouse-native/guides/assignment-sources).
+2. **Analyze**: You can run an experiment elsewhere (***your own SDK, email, direct mail, sms, ivr, etc.***) and use Statsig to analyze that data and calculate experiment results. This data can be read from your warehouse in [this format](/statsig-warehouse-native/data-sources#assignment-sources) - we call these external sources [Assignment Sources](/statsig-warehouse-native/guides/assignment-sources).
 
-Refer to this diagram below to help decide which path is best for you during the trial period: 
-
-![](https://gist.github.com/assets/125311112/d0e01d37-5149-4821-96a6-7c162e1677e2)
+If you have a pre-existing experiment in your warehouse, we recommend getting started first with an **Analyze** experiment. This is an effective and quick way to get comfortable with establishing a connection between Statsig and your warehouse, and the experience of consuming [experiment results](/statsig-warehouse-native/guides/pulse) in the Statsig console. Then, we recommend running a **Create and analyze** experiment using Statsig's SDKs; typically an A/A test. With the A/A **Create and analyze** experiment, you can test Statsig's SDKs and implementation process with your engineering and product team.
 
 # Steps to running an effective Proof of Concept with Warehouse Native
 
-Keep these high level steps in mind as you begin your planning your implementation. Note this is a pared down version of the larger [guide located here](/guides/running-a-poc). The following is intended to create clarity on high level steps for our Warehouse Native solution.
+Keep these high level steps in mind as you begin your planning your Warehouse Native implementation:
 
 1. **Define your experiment(s) and metrics for validation** - Ultimately a proof of concept will determine if Statsig fits your experimentation needs thus running an experiment with Statsig is the quickest path for evaluation. — **Responsible Party**:  Typically a product or engineering lead
-    - Plan to run 1-2 production level experiments to validate. Upcoming projects or product changes are great opportunities to implement a Statsig experiment!
+    - Plan to run 1-2 production level experiments to validate. Past experiments, A/A tests or upcoming projects or product changes are great opportunities to implement a Statsig experiment!
         - Identify your hypothesis and [metrics](/statsig-warehouse-native/guides/metrics) which will validate this hypothesis. These metrics will be joined with unit assignment/exposure data and run through the stats engine.
         - If your team plans on running **analysis only**, identify the user **assignment** data which will be joined with the metric data.
             - This approach can yield results for analysis in as little as **30 minutes,** assuming data is readily available for ingestion
