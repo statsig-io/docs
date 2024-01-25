@@ -374,6 +374,7 @@ module.exports = {
               Concepts: [
                 "client/concepts/user",
                 "client/concepts/initialize",
+                "client/concepts/bootstrapping",
                 "sdks/debugging",
                 "sdk-keys/target-apps",
               ],
