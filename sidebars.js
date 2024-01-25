@@ -48,7 +48,9 @@ module.exports = {
             {
               "Technology-Specific Guides":[
                 "guides/python-flask-feature-flags",
-                "guides/python-flask-abtests"
+                "guides/python-flask-abtests",
+                "guides/node-express-feature-flags",
+                "guides/node-express-abtests"
               ],
             },
             "guides/synchronized-launch",
