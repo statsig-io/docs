@@ -152,7 +152,7 @@ Statsig Warehouse Native integrates with Statsig's development tools:
 
 With Statsig Warehouse Native, you set up connections to your source data using basic SQL queries and define Metrics as measures on top of that source data. Statsig will run a SQL-based [data pipeline](analysis-tools/pipeline-overview.md) in your warehouse to run experimental analysis on your raw data. At the end, Statsig downloads a small result set with no user identifiers - just group-level summary data.
 
-<img width="1242" alt="Warehouse Native Data Flow" src="https://github.com/statsig-io/docs/assets/119635664/7a1e17b0-1ae0-4847-bd03-553abcd7baa6">
+![Simple-view](https://github.com/statsig-io/docs/assets/119635664/7a1e17b0-1ae0-4847-bd03-553abcd7baa6)
 
 This process is fully transparent. The queries and cost data are available in the Statsig console, and algorithms like CUPED and winsorization are run in SQL to avoid black boxes and inconsistent results.
 
