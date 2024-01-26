@@ -46,11 +46,17 @@ module.exports = {
               ],
             },
             {
-              "Technology-Specific Guides":[
+              type: "category",
+              label: "Technology-Specific Guides",
+              link: {
+                type: "doc",
+                id: "guides/frameworks-introduction",
+              },
+              items: [
                 "guides/python-flask-feature-flags",
                 "guides/python-flask-abtests",
                 "guides/node-express-feature-flags",
-                "guides/node-express-abtests"
+                "guides/node-express-abtests",
               ],
             },
             "guides/synchronized-launch",
@@ -254,11 +260,7 @@ module.exports = {
         {
           type: "category",
           label: "Metric Explorer",
-          items: [
-            "mex/drilldown",
-            "mex/funnels",
-            "mex/retention",
-          ]
+          items: ["mex/drilldown", "mex/funnels", "mex/retention"],
         },
         "mex/dashboards",
         {
@@ -321,7 +323,7 @@ module.exports = {
             "statsig-warehouse-native/guides/pulse",
             "statsig-warehouse-native/guides/sdks",
             "statsig-warehouse-native/guides/aatest",
-            "statsig-warehouse-native/guides/running_a_poc"
+            "statsig-warehouse-native/guides/running_a_poc",
           ],
         },
         {
