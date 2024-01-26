@@ -12,6 +12,24 @@ In this tutorial we'll integrate our [NodeJS Server SDK](https://docs.statsig.co
 
 The readme within details the steps on installing the app and its dependencies, setting the necessary environment variables, and running the app. Those concepts won't be covered in this guide because they are standard NodeJS practices.
 :::
+
+## Create Experiment in Statsig
+The below command can be run to automatically create the simple `express_app_test` experiment in Statsig that gets used throughout this integration guide and demo app. 
+The experiment randomizes based on `userID`, has a 50/50 test group split, and implements a single parameter. 
+Make sure to replace the authorization key in the header with your key generated in Statsig project settings as documented [here](https://docs.statsig.com/console-api/introduction).
+```bash
+curl --request POST 'https://statsigapi.net/console/v1/experiments' \
+--header 'STATSIG-API-KEY: console-REPLACE_WITH_YOURS' \
+--header 'Content-Type: application/json' \
+--data-raw '{"name":"express_app_test","idType":"userID","status":"active","hypothesis":"Running Statsig in express works nicely!","primaryMetrics":[{"name":"dau","type":"user"}],"primaryMetricTags":[],"secondaryMetrics":[{"name":"dau","type":"user"}],"secondaryMetricTags":[],"groups":[{"name":"Control","size":50,"parameterValues":{"variant":"control"}},{"name":"Test","size":50,"parameterValues":{"variant":"test"}}],"allocation":100,"duration":14}'
+
+# Note that the above request creates an Unstarted experiment
+# Either start the experiment via Console or via this command:
+curl --request PUT 'https://statsigapi.net/console/v1/experiments/express_app_test/start' \
+--header 'STATSIG-API-KEY: console-REPLACE_WITH_YOURS'
+``` 
+
+![image](/img/express-abtest.png)
  
 ## Project Outline
 
@@ -72,7 +90,7 @@ app.use(async (req, res, next) => {
 });
 ```
 
-## Check Gate Assignment for Page Render
+## Assign user to experiment
 In your route handler, you will have access to the global `statsig` singleton. Whenever you need to assign a user to an experiment and access the Test Group parameters, you can simply call `statsig.getExperiment` and pass in the user object. This will return an object that contains the experiment config, where you can access the assigned parameters using `get("<param key>", <default value>)`. You can read more on this approach and the best practices [here](https://docs.statsig.com/server/nodejsServerSDK#getting-an-layerexperiment).
 ```js
 app.get('/', async (req, res) => {

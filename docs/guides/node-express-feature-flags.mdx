@@ -14,14 +14,15 @@ The readme within details the steps on installing the app and its dependencies, 
 :::
 
 ## Create Feature Gate in Statsig
-The below command can be run to automatically create the simple `express_app_bg` gate in Statsig that gets used throughout this integration guide and demo app. The gate targets based on `userID` and has a 50/50 allocation. Make sure to replace the authorization key in the header with your key generated in Statsig project settings as documented [here](https://docs.statsig.com/console-api/introduction).
-```
+The below command can be run to automatically create the simple `express_app_bg` gate in Statsig that gets used throughout this integration guide and demo app. The gate randomizes based on `userID` and has a 50/50 allocation. Make sure to replace the authorization key in the header with your key generated in Statsig project settings as documented [here](https://docs.statsig.com/console-api/introduction).
+```bash
 curl --request POST 'https://statsigapi.net/console/v1/gates' \
 --header 'STATSIG-API-KEY: console-REPLACE_WITH_YOURS' \
 --header 'Content-Type: application/json' \
 --data-raw '{"name":"express_app_bg","idType":"userID","isEnabled":true,"rules":[{"name":"Everyone","passPercentage":50,"conditions":[{"type":"public"}]}]}'
 ``` 
 ![image](/img/express-gate.png)
+
 ## Project Outline
 
 This example was built on the very simple [Hello World](https://expressjs.com/en/starter/hello-world.html) example app documented by ExpressJS.
