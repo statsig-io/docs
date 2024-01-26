@@ -12,8 +12,8 @@ As with a normal Autotune, you will want to define a success event. In Warehouse
 
 Once you have a Metric Source setup that exemplifies your success event, you are ready to create the Autotune.
 
-1. Navigate to the [Experiments section](https://console.statsig.com/3dElKM5STY5EC8SG2zjhK4/experiments) in the sidebar of the Statsig Console.
-2. Click on the [Autotune tab](https://console.statsig.com/3dElKM5STY5EC8SG2zjhK4/autotune) at the top.
+1. Navigate to the [Experiments section](https://console.statsig.com/experiments) in the sidebar of the Statsig Console.
+2. Click on the [Autotune tab](https://console.statsig.com/autotune) at the top.
 3. Click the Create button and enter the name and description of the Autotune Experiment that you want to create.
 4. Select an ID Type for your Experiment.
 5. Create and name your variants for your Autotune Experiment. The variant that's listed as Control/Default will be returned when the Autotune Experiment is not running.
