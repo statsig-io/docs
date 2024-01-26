@@ -4,7 +4,7 @@ slug: /statsig-warehouse-native/features/autotune
 sidebar_label: Autotune
 ---
 
-Autotune Experiments in Warehouse Native have a very similar setup to cloud [Autotunes](https://docs.statsig.com/autotune). The key difference is source of the success event that the Autotune will optimize for.
+Autotune Experiments in Warehouse Native have a very similar setup to cloud [Autotunes](https://docs.statsig.com/autotune). The key difference is the source of the success event that the Autotune will optimize for.
 
 # Creating an Autotune
 
@@ -28,4 +28,4 @@ There are a few parameters you can specify:
 
 Click "Create" to finalize the setup.
 
-7. Your Autotune is setup and ready to go. Click "Start" when you're ready to launch your Autotune test.
+7. Your Autotune is set up and ready to go. Click "Start" when you're ready to launch your Autotune test.
