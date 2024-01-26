@@ -45,6 +45,20 @@ module.exports = {
                 "guides/first-device-level-experiment",
               ],
             },
+            {
+              type: "category",
+              label: "Technology-Specific Guides",
+              link: {
+                type: "doc",
+                id: "guides/frameworks-introduction",
+              },
+              items: [
+                "guides/python-flask-feature-flags",
+                "guides/python-flask-abtests",
+                "guides/node-express-feature-flags",
+                "guides/node-express-abtests",
+              ],
+            },
             "guides/synchronized-launch",
             "guides/featuregates-or-experiments",
             "guides/experimentation-program",
@@ -242,6 +256,13 @@ module.exports = {
       type: "category",
       label: "Analytics",
       items: [
+        "mex/overview",
+        {
+          type: "category",
+          label: "Metric Explorer",
+          items: ["mex/drilldown", "mex/funnels", "mex/retention"],
+        },
+        "mex/dashboards",
         {
           type: "category",
           label: "Metrics",
@@ -280,7 +301,6 @@ module.exports = {
             "metrics/create-user-funnels",
           ],
         },
-        "mex/introduction",
         "users/introduction",
         "insights/introduction",
       ],
@@ -303,6 +323,7 @@ module.exports = {
             "statsig-warehouse-native/guides/pulse",
             "statsig-warehouse-native/guides/sdks",
             "statsig-warehouse-native/guides/aatest",
+            "statsig-warehouse-native/guides/running_a_poc",
           ],
         },
         {
@@ -314,6 +335,7 @@ module.exports = {
             "statsig-warehouse-native/features/id-resolution",
             "statsig-warehouse-native/features/entity-properties",
             "statsig-warehouse-native/features/monitor-an-experiment",
+            "statsig-warehouse-native/features/autotune",
           ],
         },
         {
@@ -357,6 +379,7 @@ module.exports = {
               Concepts: [
                 "client/concepts/user",
                 "client/concepts/initialize",
+                "client/concepts/bootstrapping",
                 "sdks/debugging",
                 "sdk-keys/target-apps",
               ],
@@ -366,14 +389,20 @@ module.exports = {
             "client/reactNativeSDK",
             "client/reactNativeExpoSDK",
             "client/iosClientSDK",
-            "client/swiftOnDeviceEvaluationSDK",
             "client/androidClientSDK",
-            "client/androidOnDeviceEvaluationSDK",
             "client/dotnetSDK",
             "client/rokuSDK",
             "client/unitySDK",
             "client/dartSDK",
-            "client/jsLocalEvaluationSDK",
+            {
+              type: "category",
+              label: "On Device Evaluation",
+              items: [
+                "client/jsLocalEvaluationSDK",
+                "client/swiftOnDeviceEvaluationSDK",
+                "client/androidOnDeviceEvaluationSDK",
+              ],
+            },
           ],
         },
         {
@@ -429,6 +458,7 @@ module.exports = {
             "console-api/target-apps",
             "console-api/ingestions",
             "console-api/tags",
+            "console-api/keys",
             {
               Reports: [
                 "console-api/daily-reports",

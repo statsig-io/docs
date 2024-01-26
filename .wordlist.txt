@@ -3,6 +3,7 @@ allowlist
 APIs
 Atlassian
 Autotune
+Autotunes
 Autotune's
 aws
 Bezos
@@ -14,6 +15,7 @@ CDBs
 CIs
 CityID
 CityIDs
+cmd
 CNAME
 CORS
 CSV
@@ -30,6 +32,8 @@ Cloudflare
 CodeLens
 CustomIDs
 DAU
+Disaggregate
+disaggregate
 DM
 DMing
 DNS
@@ -39,11 +43,14 @@ Dev
 deduplication
 Deduplication
 Deduplicate
+Drilldown
+drilldown
 sessionID
 deduplicate
 dedeuplicated
 Deduplicating
 deduplicating
+docsRevamp
 ETAs
 ETLs
 Ecommerce
@@ -197,6 +204,7 @@ img
 ingestions
 integrations
 interpretable
+InvalidBootstrap
 io
 isTest
 javascript
@@ -281,12 +289,14 @@ uncaptured
 uncheck
 underperforming
 underpowered
+uniques
 unix
 unlaunched
 unmonitored
 unsampled
 updateUser
 userID
+userIDs
 userbase
 utc
 vercel
@@ -306,6 +316,7 @@ Autocreate
 Frequentist
 MAB
 Rudderstack
+unitID
 UnitIDs
 WHN
 mgmt
@@ -328,3 +339,11 @@ Zhao
 al
 et
 mSPRT
+VARCHAR
+realtime
+productionization
+ivr
+sms
+poc
+POC
+vehicleId

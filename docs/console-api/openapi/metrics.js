@@ -90,10 +90,10 @@ module.exports = {
           },
         },
         "x-stoplight": {
-          id: "hvf03dwk20xj9",
+          id: "ojtsn2l22teqk",
         },
         description:
-          "Create Cloud Metrics or Warehouse Native Metrics\n\nFor creating Warehouse Native Metrics: See [documentation](https://docs.statsig.com/statsig-warehouse-native/guides/metrics). Configuration of warehouse native metric goes to warehouseNative field",
+          "Create Cloud Metrics or Warehouse Native Metrics\n\nFor creating Warehouse Native Metrics: See [documentation](https://docs.statsig.com/statsig-warehouse-native/guides/metrics). Configuration of warehouse native metric goes to warehouseNative field. Fields NOT under warehouseNative, only name, tags, isPermanent, and description ",
         tags: ["Metrics"],
         requestBody: {
           content: {
@@ -139,6 +139,15 @@ module.exports = {
                       },
                       type: "string",
                     },
+                  },
+                  directionality: {
+                    "x-stoplight": {
+                      id: "hl21fnj9m20qz",
+                    },
+                    type: "string",
+                    enum: ["increase", "decrease"],
+                    description:
+                      "Allowed increase | decrease. Metric directionality will be used in pulse to signify desired or undesired changes.",
                   },
                   metricEvents: {
                     "x-stoplight": {
@@ -203,7 +212,7 @@ module.exports = {
                       },
                     },
                   },
-                  rollupTimeWindow: {
+                  rollup: {
                     type: "string",
                     "x-stoplight": {
                       id: "0ayuwzbkrpodr",
@@ -310,7 +319,7 @@ module.exports = {
                           $ref: "#/components/schemas/MetricEventCriteria",
                         },
                       },
-                      waitForCohortWindow: {
+                      customRollupWaitUntilEndToInclude: {
                         type: "boolean",
                         "x-stoplight": {
                           id: "uu6c3ixwngpwq",
@@ -357,7 +366,7 @@ module.exports = {
                           $ref: "#/components/schemas/MetricEventCriteria",
                         },
                       },
-                      denominatorRollupTimeWindow: {
+                      denominatorRollup: {
                         type: "string",
                         "x-stoplight": {
                           id: "npmvzobznq22i",
@@ -444,7 +453,7 @@ module.exports = {
                         minimum: 0,
                         maximum: 1,
                       },
-                      metricDimensionColumns: {
+                      metadataColumns: {
                         type: "array",
                         "x-stoplight": {
                           id: "hq8zr9gs7rzr9",
@@ -486,7 +495,7 @@ module.exports = {
                       },
                     ],
                     description: "Sum user count",
-                    rollupTimeWindow: "custom",
+                    rollup: "custom",
                     rollupStartDate: 3,
                     rollupEndDate: 10,
                   },
@@ -510,30 +519,59 @@ module.exports = {
                     warehouseNative: {
                       aggregation: "count",
                       metricSourceName: "Log Events",
-                      criteria: [
-                        {
-                          type: "metadata",
-                          column: "product_category", //column name
-                          values: ["clothing"],
-                          condition: "=",
-                        },
-                      ],
                     },
                   },
                 },
                 "Warehouse Native Funnel": {
                   value: {
-                    name: "whn_ratio_metric_v1",
+                    name: "whn_funnel_metric",
                     description:
-                      "Creating warehouse native metric and aggregation type of this metric is ratio",
+                      "Creating warehouse native metric and aggregation type of this metric is count",
                     tags: ["non_production"],
                     type: "user_warehouse",
                     warehouseNative: {
-                      metricSourceName: "Support Events",
-                      aggregation: "ratio",
-                      denominatorMetricSourceName: "Support Events",
-                      denominatorAggregation: "count",
-                      numeratorAggregation: "count",
+                      aggregation: "funnel",
+                      funnelEvents: [
+                        {
+                          metricSourceName: "Log Events",
+                          name: "page_view",
+                          criteria: [
+                            {
+                              type: "metadata",
+                              key: "page",
+                              condition: "in",
+                              values: ["product_page"],
+                            },
+                          ],
+                        },
+                        {
+                          metricSourceName: "Log Events",
+                          name: "add_to_cart",
+                          criteria: [
+                            {
+                              type: "metadata",
+                              key: "page",
+                              condition: "in",
+                              values: ["product_page"],
+                            },
+                          ],
+                        },
+                        {
+                          metricSourceName: "Log Events",
+                          name: "cart_view",
+                          criteria: [
+                            {
+                              type: "metadata",
+                              key: "page",
+                              condition: "in",
+                              values: ["cart"],
+                            },
+                          ],
+                        },
+                      ],
+                      funnelCalculationWindow: 7,
+                      funnelCountDistinct: "users",
+                      funnelStartCriteria: "start_event",
                     },
                   },
                 },
@@ -551,11 +589,26 @@ module.exports = {
                       criteria: [
                         {
                           type: "metadata",
-                          column: "event",
+                          key: "event",
                           condition: "in",
                           values: ["purchase"],
                         },
                       ],
+                    },
+                  },
+                },
+                "Warehouse Native Ratio": {
+                  value: {
+                    name: "whn_ratio_metric_v1",
+                    description:
+                      "Creating warehouse native metric and aggregation type of this metric is ratio",
+                    tags: ["non_production"],
+                    type: "user_warehouse",
+                    warehouseNative: {
+                      metricSourceName: "Support Events",
+                      aggregation: "ratio",
+                      denominatorMetricSourceName: "Support Events",
+                      denominatorMetricAggregation: "count",
                     },
                   },
                 },
@@ -574,6 +627,7 @@ module.exports = {
               },
             },
           },
+          description: "",
         },
       },
       get: {
@@ -793,6 +847,9 @@ module.exports = {
           },
         ],
         tags: ["Metrics"],
+        "x-stoplight": {
+          id: "2y16y1mgyxzfb",
+        },
       },
     },
     "/metrics/{metric_id}": {
@@ -947,6 +1004,9 @@ module.exports = {
         },
         description: "Update Metric",
         tags: ["Metrics"],
+        "x-stoplight": {
+          id: "vyh7yz39egaog",
+        },
       },
       delete: {
         summary: "",
@@ -978,10 +1038,88 @@ module.exports = {
           },
         },
         "x-stoplight": {
-          id: "eatiypmphl0ob",
+          id: "h4bz03pbpiefw",
         },
         description: "Delete Metric",
         tags: ["Metrics"],
+      },
+      get: {
+        summary: "Get definition of a metric",
+        tags: ["Metrics"],
+        responses: {
+          "2XX": {
+            description: "Metric read successfully.",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  "x-examples": {
+                    "Example 1": {
+                      message: "Metric read successfully.",
+                      data: {
+                        name: "Purchase Revenue",
+                        directionality: "increase",
+                        type: "user_warehouse",
+                        description: "",
+                        isPermanent: false,
+                        warehouseNative: {
+                          aggregation: "sum",
+                          metricSourceName: "Checkout Events",
+                          criteria: [
+                            {
+                              type: "metadata",
+                              column: "event",
+                              condition: "in",
+                              values: ["purchase"],
+                            },
+                          ],
+                          denominatorCriteria: [],
+                          metricDimensionColumns: ["product_category", "page"],
+                          valueColumn: "price_usd",
+                        },
+                      },
+                    },
+                  },
+                },
+                examples: {
+                  "Read Success": {
+                    value: {
+                      message: "Metric read successfully.",
+                      data: {
+                        name: "Purchase Revenue",
+                        directionality: "increase",
+                        type: "user_warehouse",
+                        description: "",
+                        isPermanent: false,
+                        warehouseNative: {
+                          aggregation: "sum",
+                          metricSourceName: "Checkout Events",
+                          criteria: [
+                            {
+                              type: "metadata",
+                              column: "event",
+                              condition: "in",
+                              values: ["purchase"],
+                            },
+                          ],
+                          denominatorCriteria: [],
+                          metricDimensionColumns: ["product_category", "page"],
+                          valueColumn: "price_usd",
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+        operationId: "get-metrics-metric_id",
+        "x-stoplight": {
+          id: "dsztuywvm6sj7",
+        },
+        description:
+          "Get Metric Definition: Returned schema should be consistent with schema required for metric creation. (Tags is still WIP)",
       },
     },
     "/metrics/list": {
@@ -1233,6 +1371,9 @@ module.exports = {
             description: "Elements per page",
           },
         ],
+        "x-stoplight": {
+          id: "g475g6rzctlhv",
+        },
       },
       parameters: [],
     },
@@ -1249,7 +1390,7 @@ module.exports = {
           },
         },
         "x-stoplight": {
-          id: "i5ul513dgspqs",
+          id: "zi0lkxt3kjwrp",
         },
         description:
           "Create Warehouse Native Metric Source.\n \nSee [guidance](https://docs.statsig.com/statsig-warehouse-native/guides/metric-sources)",
@@ -1407,7 +1548,7 @@ module.exports = {
           },
         },
         "x-stoplight": {
-          id: "ptvf43w4him6t",
+          id: "qbal0pqtte1um",
         },
         description: "Update description and tags of the given metric source",
         requestBody: {
@@ -1463,7 +1604,7 @@ module.exports = {
       MetricListItem: {
         title: "MetricListItem",
         "x-stoplight": {
-          id: "vwqy1rj4332g5",
+          id: "3c2y7qf00o8kv",
         },
         type: "object",
         "x-tags": ["Metrics"],
@@ -1566,7 +1707,7 @@ module.exports = {
       MetricRead: {
         title: "MetricRead",
         "x-stoplight": {
-          id: "sjiyq40dd03sc",
+          id: "ded34hh6byswu",
         },
         type: "object",
         properties: {
@@ -1596,7 +1737,7 @@ module.exports = {
       MetricEventCriteria: {
         title: "MetricEventCriteria",
         "x-stoplight": {
-          id: "67hbl3oy9tb9u",
+          id: "dom5qx1w7e4dw",
         },
         type: "object",
         properties: {
@@ -1607,7 +1748,7 @@ module.exports = {
             type: "string",
             enum: ["value", "meta_data"],
           },
-          column: {
+          key: {
             type: "string",
             "x-stoplight": {
               id: "23mcaed8cniuy",
@@ -1654,7 +1795,7 @@ module.exports = {
       MetricEvent: {
         type: "object",
         "x-stoplight": {
-          id: "nl2xrqgt10xps",
+          id: "trf6y4smxk2za",
         },
         properties: {
           name: {
@@ -1708,11 +1849,14 @@ module.exports = {
             $ref: "#/components/schemas/MetricEventCriteria",
           },
         },
+        "x-stoplight": {
+          id: "qpzs0nkp7ez3w",
+        },
       },
       WarehuseNativeFunnelEvent: {
         title: "WarehuseNativeFunnelEvent",
         "x-stoplight": {
-          id: "uvrxt5rnjibea",
+          id: "hp3fmqo5jrcxr",
         },
         type: "object",
         properties: {

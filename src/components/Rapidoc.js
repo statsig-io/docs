@@ -22,6 +22,7 @@ const supportedEntities = [
   'ingestions',
   'tags',
   'all-endpoints-generated',
+  'keys',
 ];
 
 function updateCodeSnippets(data, entity) {
@@ -330,6 +331,11 @@ function getDescription(entity) {
           <li>Create a new tag</li>
           <li>Read data from existing tags</li>
         </ul>
+      </>
+
+    case 'keys': 
+      return <>
+        <h2>API for Statsig Keys</h2>
       </>
 
     case 'all-endpoints':

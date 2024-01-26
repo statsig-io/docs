@@ -201,7 +201,11 @@ Example: Only show a feature on development builds
 
 Usage: Specify the key in the custom object to fetch the value use on the left hand side of a comparison
 
-Supported Operators: any of, none of
+Supported Operators:
+- string: any of, none of, str_contains_any, str_contains_none
+- number: any of, none of, less than, greater than
+- version: any of, none of, less than, greater than, less than or equal to, greater than or equal to
+- date: before, after
 
 Example: Only show a feature to user's who have turned on dark mode, as marked by the custom object having "darkmode": true.
 
