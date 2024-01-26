@@ -49,13 +49,17 @@ To reduce the impact of this, best practice is to:
 
 ### Use Incremental Reloads
 
-Statsig offers both Full and Incremental reloads. Incremental reloads will only process new data, and can be significantly cheaper on long-running experiments.
+Statsig offers both Full and Incremental reloads. Incremental reloads will only process new data, and can be significantly cheaper on long-running experiments. A number of advanced settings in the pulse advanced settings section (and available at an org-level default) will help you make tradeoffs to reduce the total compute cost. For example "Only calculate the latest day of experiment results" skips timeseries, but can run large full reloads (e.g. 1-year on 100M users) in 5 minutes on a Large snowflake cluster.
 
 ### Reload Data Ad-Hoc
 
 Depending on your warehouse and data size, Statsig Pulse results can be available in as little as 45 seconds. Since there's flat costs to pipelines, reloading 5 days is not 5 times as expensive as loading one day.
 
 If cost is a high concern, being judicious about which results you schedule vs. load on-demand can significantly reduce the amount of processing your warehouse has to do.
+
+### Leverage Statsig's Advanced Options
+
+By default, Statsig runs a thorough analysis including historical timeseries and context on your results. 
 
 ### Utilize Metric Level Reloads
 
