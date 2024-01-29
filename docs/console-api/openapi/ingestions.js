@@ -26,33 +26,16 @@ module.exports = {
           "application/json": {
             "schema": {
               "type": "object",
+              "required": [
+                "type",
+                "dataset"
+              ],
               "properties": {
                 "type": {
-                  "x-stoplight": {
-                    "id": "x1n0o34q92wh0"
-                  },
-                  "enum": [
-                    "redshift",
-                    "bigquery-v2",
-                    "snowflake-v2",
-                    "databricks",
-                    "azure-synapse",
-                    "s3",
-                    "athena",
-                    "adls"
-                  ],
-                  "description": "Ingestion type"
+                  "$ref": "#/components/schemas/Ingestion-type"
                 },
                 "dataset": {
-                  "x-stoplight": {
-                    "id": "4thuuxacghp54"
-                  },
-                  "enum": [
-                    "Events",
-                    "Metrics",
-                    "export_exposures"
-                  ],
-                  "description": "Ingestion export data type"
+                  "$ref": "#/components/schemas/Ingestion-dataset"
                 },
                 "source_name": {
                   "type": "string",
@@ -61,17 +44,81 @@ module.exports = {
                   },
                   "description": "Name of ingestion source"
                 }
-              },
+              }
+            },
+            "examples": {}
+          }
+        }
+      },
+      "ingestion-update": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
               "required": [
                 "type",
                 "dataset"
-              ]
-            },
-            "examples": {
-              "Example 1": {
-                "value": {
-                  "type": "redshift",
-                  "dataset": "Events"
+              ],
+              "properties": {
+                "type": {
+                  "$ref": "#/components/schemas/Ingestion-type"
+                },
+                "dataset": {
+                  "$ref": "#/components/schemas/Ingestion-dataset"
+                },
+                "source_name": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "kev4mfhszpciy"
+                  },
+                  "description": "Name of ingestion source",
+                  "example": "ingestion-1"
+                },
+                "query": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "bdgu38tjjy3z4"
+                  },
+                  "description": "SQL query string",
+                  "example": "SELECT * FROM TABLE"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Ingestion-create": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "type",
+                "dataset",
+                "source_name"
+              ],
+              "properties": {
+                "type": {
+                  "$ref": "#/components/schemas/Ingestion-type"
+                },
+                "dataset": {
+                  "$ref": "#/components/schemas/Ingestion-dataset"
+                },
+                "source_name": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "3d6xwhepjxb7l"
+                  },
+                  "description": "Name of ingestion source",
+                  "example": "ingestion-1"
+                },
+                "query": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "socxsev11ng67"
+                  },
+                  "description": "SQL query string",
+                  "example": "SELECT * FROM TABLE"
                 }
               }
             }
@@ -86,6 +133,11 @@ module.exports = {
           "id": "vutftepdhpz2q"
         },
         "type": "object",
+        "x-examples": {},
+        "required": [
+          "id",
+          "type"
+        ],
         "properties": {
           "id": {
             "type": "string",
@@ -95,21 +147,7 @@ module.exports = {
             "description": "Ingestion ID"
           },
           "type": {
-            "x-stoplight": {
-              "id": "cj9ela8v2prs5"
-            },
-            "description": "Ingestion type",
-            "example": "databricks",
-            "enum": [
-              "redshift",
-              "bigquery-v2",
-              "snowflake-v2",
-              "databricks",
-              "azure-synapse",
-              "s3",
-              "athena",
-              "adls"
-            ]
+            "$ref": "#/components/schemas/Ingestion-type"
           },
           "enabled": {
             "type": "boolean",
@@ -123,6 +161,7 @@ module.exports = {
             "x-stoplight": {
               "id": "q7cpsr0zffvvx"
             },
+            "description": "Ingestion data",
             "properties": {
               "name": {
                 "type": "string",
@@ -239,13 +278,7 @@ module.exports = {
                 }
               },
               "dataExportType": {
-                "x-stoplight": {
-                  "id": "6sawhdlyhxxia"
-                },
-                "enum": [
-                  "pulse-summary",
-                  "exposures"
-                ]
+                "$ref": "#/components/schemas/data-export-type"
               },
               "exportTableName": {
                 "type": "string",
@@ -261,11 +294,7 @@ module.exports = {
               }
             }
           }
-        },
-        "required": [
-          "id",
-          "type"
-        ]
+        }
       },
       "ingestion-run": {
         "type": "object",
@@ -565,6 +594,51 @@ module.exports = {
           "runID",
           "latestStatus"
         ]
+      },
+      "Ingestion-type": {
+        "title": "Ingestion-type",
+        "x-stoplight": {
+          "id": "i585gw9msyp46"
+        },
+        "enum": [
+          "redshift",
+          "bigquery-v2",
+          "snowflake-v2",
+          "databricks",
+          "azure-synapse",
+          "s3",
+          "athena",
+          "adls"
+        ],
+        "type": "string",
+        "example": "databricks",
+        "description": "Ingestion type"
+      },
+      "Ingestion-dataset": {
+        "title": "Ingestion-dataset",
+        "x-stoplight": {
+          "id": "yrhr68du1cn1e"
+        },
+        "enum": [
+          "Metrics",
+          "Events",
+          "export_exposures"
+        ],
+        "type": "string",
+        "example": "Metrics",
+        "description": "Ingestion dataset"
+      },
+      "data-export-type": {
+        "title": "data-export-type",
+        "x-stoplight": {
+          "id": "z6j99u0dmixnk"
+        },
+        "enum": [
+          "pulse-summary",
+          "exposures"
+        ],
+        "type": "string",
+        "example": "pulse-summary"
       }
     },
     "responses": {},
@@ -585,7 +659,7 @@ module.exports = {
             "athena",
             "adls"
           ],
-          "example": "redshift"
+          "example": "databricks"
         },
         "description": "Ingestion type"
       },
@@ -602,14 +676,15 @@ module.exports = {
           ],
           "example": "Events"
         },
-        "description": "Ingestion export dataset type"
+        "description": "Ingestion dataset type"
       },
       "Source-name": {
         "name": "source_name",
         "in": "query",
         "required": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "ingestion-1"
         },
         "description": "Name of ingestion source"
       }
@@ -691,45 +766,13 @@ module.exports = {
         },
         "parameters": [
           {
-            "schema": {
-              "type": "string",
-              "enum": [
-                "redshift",
-                "bigquery-v2",
-                "snowflake-v2",
-                "databricks",
-                "azure-synapse",
-                "s3",
-                "athena",
-                "adls"
-              ]
-            },
-            "in": "query",
-            "name": "type",
-            "description": "Ingestion type",
-            "required": true
+            "$ref": "#/components/parameters/Ingestion-type"
           },
           {
-            "schema": {
-              "type": "string",
-              "enum": [
-                "Metrics",
-                "Events",
-                "export_exposures"
-              ]
-            },
-            "in": "query",
-            "name": "dataset",
-            "description": "Ingestion dataset type",
-            "required": true
+            "$ref": "#/components/parameters/Dataset"
           },
           {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "source_name",
-            "description": "Name of ingestion source"
+            "$ref": "#/components/parameters/Source-name"
           }
         ]
       },
@@ -789,7 +832,7 @@ module.exports = {
           "id": "rs5pha9pfoxas"
         },
         "requestBody": {
-          "$ref": "#/components/requestBodies/Ingestion-query"
+          "$ref": "#/components/requestBodies/ingestion-update"
         }
       },
       "delete": {
@@ -824,46 +867,57 @@ module.exports = {
         },
         "parameters": [
           {
-            "schema": {
-              "type": "string",
-              "enum": [
-                "redshift",
-                "bigquery-v2",
-                "snowflake-v2",
-                "databricks",
-                "azure-synapse",
-                "s3",
-                "athena",
-                "adls"
-              ]
-            },
-            "in": "query",
-            "name": "type",
-            "description": "Ingestion type",
-            "required": true
+            "$ref": "#/components/parameters/Ingestion-type"
           },
           {
-            "schema": {
-              "type": "string",
-              "enum": [
-                "Metrics",
-                "Events",
-                "export_exposures"
-              ]
-            },
-            "in": "query",
-            "name": "dataset",
-            "description": "Ingestion dataset type",
-            "required": true
+            "$ref": "#/components/parameters/Dataset"
           },
           {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "source_name",
-            "description": "Name of ingestion source"
+            "$ref": "#/components/parameters/Source-name"
           }
+        ]
+      },
+      "post": {
+        "summary": "Create Ingestion Source",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "45yxnlchi8zyg"
+                      },
+                      "example": "Ingestion created successfully"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Ingestion"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "operationId": "post-ingestion",
+        "x-stoplight": {
+          "id": "fkd5nnemj1s88"
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Ingestion-create"
+        },
+        "tags": [
+          "Ingestions"
         ]
       }
     },
@@ -878,6 +932,9 @@ module.exports = {
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "message"
+                  ],
                   "properties": {
                     "message": {
                       "type": "string",
@@ -889,10 +946,7 @@ module.exports = {
                     "data": {
                       "$ref": "#/components/schemas/Ingestion"
                     }
-                  },
-                  "required": [
-                    "message"
-                  ]
+                  }
                 }
               }
             }
@@ -2641,7 +2695,8 @@ module.exports = {
                     "enum": [
                       "events",
                       "metrics"
-                    ]
+                    ],
+                    "type": "string"
                   }
                 }
               }
