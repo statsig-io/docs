@@ -1,7 +1,7 @@
 module.exports = {
   openapi: "3.0.0",
   "x-stoplight": {
-    id: "1evg09eajy9t7",
+    id: "z4r4frc83xaoi",
   },
   info: {
     title: "console/v1",
@@ -29,37 +29,37 @@ module.exports = {
                     message: {
                       type: "string",
                       "x-stoplight": {
-                        id: "i8elj7e1sb3c1",
+                        id: "4wrsimwekispt",
                       },
                     },
                     data: {
                       type: "object",
                       "x-stoplight": {
-                        id: "b179epemkmk01",
+                        id: "jp8tn0h0mfo84",
                       },
                       properties: {
                         name: {
                           type: "string",
                           "x-stoplight": {
-                            id: "ghb8q12qtbw1i",
+                            id: "2cof9awd4cjrg",
                           },
                         },
                         type: {
                           type: "string",
                           "x-stoplight": {
-                            id: "ebuvr7cjeew18",
+                            id: "pvn5k6uw74x1y",
                           },
                         },
                         description: {
                           type: "string",
                           "x-stoplight": {
-                            id: "d4k1mf6tjflw7",
+                            id: "5o88j7p22uouz",
                           },
                         },
                         isHidden: {
                           type: "boolean",
                           "x-stoplight": {
-                            id: "j3a7yfprkqvll",
+                            id: "gftsa9yrt391j",
                           },
                         },
                       },
@@ -90,7 +90,7 @@ module.exports = {
           },
         },
         "x-stoplight": {
-          id: "ojtsn2l22teqk",
+          id: "oq67er1vq5lgo",
         },
         description:
           "Create Cloud Metrics or Warehouse Native Metrics\n\nFor creating Warehouse Native Metrics: See [documentation](https://docs.statsig.com/statsig-warehouse-native/guides/metrics). Configuration of warehouse native metric goes to warehouseNative field. Fields NOT under warehouseNative, only name, tags, isPermanent, and description ",
@@ -100,17 +100,18 @@ module.exports = {
             "application/json": {
               schema: {
                 type: "object",
+                required: ["name", "type"],
                 properties: {
                   name: {
                     type: "string",
                     "x-stoplight": {
-                      id: "3vsxrr0evbwp6",
+                      id: "ppd970kq42147",
                     },
                     description: "The name of the new metric",
                   },
                   type: {
                     "x-stoplight": {
-                      id: "xnxur6e4en7k7",
+                      id: "8w4e30u8ntzyj",
                     },
                     type: "string",
                     enum: [
@@ -129,20 +130,20 @@ module.exports = {
                   unitTypes: {
                     type: "array",
                     "x-stoplight": {
-                      id: "ehpnnxfz6c0yz",
+                      id: "s66oghnnhrg2w",
                     },
                     description:
                       "Unit of the metirc: stable_id, user_id, and other custom ids",
                     items: {
                       "x-stoplight": {
-                        id: "71ea5453k4i5a",
+                        id: "pnnrvaged3fd8",
                       },
                       type: "string",
                     },
                   },
                   directionality: {
                     "x-stoplight": {
-                      id: "hl21fnj9m20qz",
+                      id: "9fal37duwsv60",
                     },
                     type: "string",
                     enum: ["increase", "decrease"],
@@ -151,7 +152,7 @@ module.exports = {
                   },
                   metricEvents: {
                     "x-stoplight": {
-                      id: "53994xk4ya08u",
+                      id: "rr95ay90741jo",
                     },
                     type: "array",
                     description: "Event(s) used to compute the metric",
@@ -162,18 +163,18 @@ module.exports = {
                   description: {
                     type: "string",
                     "x-stoplight": {
-                      id: "jqy1nta5slpw1",
+                      id: "hi8d3xvjngz2i",
                     },
                     description: "Description of the new metric",
                   },
                   tags: {
                     type: ["string", "array"],
                     "x-stoplight": {
-                      id: "mb2gw8txpqr7p",
+                      id: "y0ph1a0vruf25",
                     },
                     items: {
                       "x-stoplight": {
-                        id: "v0uogfi23ye79",
+                        id: "z8ibs5ztabx4v",
                       },
                       type: "string",
                     },
@@ -181,32 +182,32 @@ module.exports = {
                   isPermanent: {
                     type: "boolean",
                     "x-stoplight": {
-                      id: "d1fc16g6cvkvb",
+                      id: "mdokl2nq26n8i",
                     },
                   },
                   metricComponentMetrics: {
                     type: "array",
                     "x-stoplight": {
-                      id: "2qi9z75cevhfx",
+                      id: "ay3syqdtfbvi6",
                     },
                     description:
                       "List of input metrics used to calculate the new metric\nFor composite_sum and composite type of metric. ",
                     items: {
                       "x-stoplight": {
-                        id: "rowku5mu3liqi",
+                        id: "8q136e74lgme0",
                       },
                       type: "object",
                       properties: {
                         name: {
                           type: "string",
                           "x-stoplight": {
-                            id: "7h35fhmtlr30o",
+                            id: "npoaq7nd09fx3",
                           },
                         },
                         type: {
                           type: "string",
                           "x-stoplight": {
-                            id: "k4g6grxa1mt30",
+                            id: "u5kzrgqskszve",
                           },
                         },
                       },
@@ -215,7 +216,7 @@ module.exports = {
                   rollup: {
                     type: "string",
                     "x-stoplight": {
-                      id: "0ayuwzbkrpodr",
+                      id: "oponh2m391oue",
                     },
                     description:
                       'Time window for metric.\nSpecify "custom", if you want to provide customized time window. Default to be same as experiment time window',
@@ -223,7 +224,7 @@ module.exports = {
                   customRollUpStart: {
                     type: "number",
                     "x-stoplight": {
-                      id: "33gt6znmgom6g",
+                      id: "36xwnuj34j3ws",
                     },
                     description:
                       "Custom time window start date (Days since exposure)\n",
@@ -231,7 +232,7 @@ module.exports = {
                   customRollUpEnd: {
                     type: "number",
                     "x-stoplight": {
-                      id: "e8s8uf11bc3mh",
+                      id: "0kvadt8zsgs5n",
                     },
                     description:
                       "Custom time window end date(Days since exposure)",
@@ -239,26 +240,26 @@ module.exports = {
                   funnelEventList: {
                     type: "array",
                     "x-stoplight": {
-                      id: "n2i9j79vv91nu",
+                      id: "ag1qwtbpejlof",
                     },
                     description:
                       "For funnel metric type. \nNames of events used to create metric",
                     items: {
                       "x-stoplight": {
-                        id: "qjd3e63vtoxf7",
+                        id: "22ar7ts82qjt9",
                       },
                       type: "object",
                       properties: {
                         name: {
                           type: "string",
                           "x-stoplight": {
-                            id: "fcua7juddgsrc",
+                            id: "hc7cmbckn9zlh",
                           },
                         },
                         type: {
                           type: "string",
                           "x-stoplight": {
-                            id: "29pvd8mmfcffn",
+                            id: "tzw18ucxv2i7u",
                           },
                         },
                       },
@@ -266,7 +267,7 @@ module.exports = {
                   },
                   funnelCountDistinct: {
                     "x-stoplight": {
-                      id: "9rqjftisfb4hf",
+                      id: "4dfeed66234hz",
                     },
                     description:
                       "For funnel metric type. \nIf you care about counting each time a user goes through a given sequence of events, choose 'Events'. If you care about counting the number of distinct users that go through a given sequence of events, choose 'Users'.",
@@ -276,14 +277,15 @@ module.exports = {
                   warehouseNative: {
                     type: "object",
                     "x-stoplight": {
-                      id: "lezdetwl5lrqv",
+                      id: "6zpsok874p6mx",
                     },
                     description:
                       "Warehouse native metric configuration.  [Documentation](https://docs.statsig.com/statsig-warehouse-native/guides/metrics)\n\nFor creating user warehouse metric, all configuration is within this object. \nFor other fields, only name, description, tags, and metric type will be used. ",
+                    required: ["aggregation", "criteria"],
                     properties: {
                       aggregation: {
                         "x-stoplight": {
-                          id: "v53h10ral471w",
+                          id: "c1tt9bybpu3fa",
                         },
                         enum: [
                           "count",
@@ -297,7 +299,7 @@ module.exports = {
                       metricSourceName: {
                         type: "string",
                         "x-stoplight": {
-                          id: "lv877blejtwh8",
+                          id: "59x6cuagnyz2v",
                         },
                         description:
                           "For Count, Sum, Mean, User Count aggregation types: the name of metric source\n\nFor Ratio aggregation type: the name of numerator metric source\n\nFor funnel aggregation type: you can ignore. Metric sources information are defined with funnelEvents",
@@ -305,7 +307,7 @@ module.exports = {
                       valueColumn: {
                         type: "string",
                         "x-stoplight": {
-                          id: "y2e6mpwf165hj",
+                          id: "9i0hga30ini7y",
                         },
                         description:
                           "Name of value column used by Ratio and Sum aggregation type metric.",
@@ -313,7 +315,7 @@ module.exports = {
                       criteria: {
                         type: "array",
                         "x-stoplight": {
-                          id: "na2i6sa5cyokl",
+                          id: "u5h8i2dp3vron",
                         },
                         items: {
                           $ref: "#/components/schemas/MetricEventCriteria",
@@ -322,18 +324,18 @@ module.exports = {
                       customRollupWaitUntilEndToInclude: {
                         type: "boolean",
                         "x-stoplight": {
-                          id: "uu6c3ixwngpwq",
+                          id: "6vbqkhea2btm1",
                         },
                       },
                       denominatorMetricSourceName: {
                         type: "string",
                         "x-stoplight": {
-                          id: "nqwmvm7f703o1",
+                          id: "c6c0gdzy9c6wl",
                         },
                       },
                       denominatorAggregation: {
                         "x-stoplight": {
-                          id: "qd3n3xynq40dv",
+                          id: "wjtpp64805spk",
                         },
                         type: "string",
                         enum: [
@@ -348,19 +350,19 @@ module.exports = {
                       denominatorCustomRollupStart: {
                         type: "number",
                         "x-stoplight": {
-                          id: "39nrbrnvdf6vf",
+                          id: "v1d93bofcx0zr",
                         },
                       },
                       denominatorCustomRollupEnd: {
                         type: "number",
                         "x-stoplight": {
-                          id: "8f1a1fx4pkkh2",
+                          id: "21jquda5kd429",
                         },
                       },
                       denominatorCriteria: {
                         type: "array",
                         "x-stoplight": {
-                          id: "0a6pv38szylco",
+                          id: "i6whuclxr6z2x",
                         },
                         items: {
                           $ref: "#/components/schemas/MetricEventCriteria",
@@ -369,7 +371,7 @@ module.exports = {
                       denominatorRollup: {
                         type: "string",
                         "x-stoplight": {
-                          id: "npmvzobznq22i",
+                          id: "qcd1qrba0dvxt",
                         },
                         description:
                           'Time window for metric. Specify "custom", if you want to provide customized time window. Default to be same as experiment time window',
@@ -377,13 +379,13 @@ module.exports = {
                       denominatorValueColumn: {
                         type: "string",
                         "x-stoplight": {
-                          id: "sqatk8h1apyig",
+                          id: "glyml61ndmqh2",
                         },
                       },
                       funnelEvents: {
                         type: "array",
                         "x-stoplight": {
-                          id: "e5mb3g18l6x50",
+                          id: "h1g3cwycgoa22",
                         },
                         items: {
                           $ref: "#/components/schemas/WarehuseNativeFunnelEvent",
@@ -392,35 +394,35 @@ module.exports = {
                       funnelCalculationWindow: {
                         type: "number",
                         "x-stoplight": {
-                          id: "kqkulcra6r7ot",
+                          id: "jj1mhb4zazf21",
                         },
                         description: "How long to count funnel events",
                       },
-                      funnelCountDistinct: {
-                        "x-stoplight": {
-                          id: "m7flf3152btup",
-                        },
-                        type: "string",
-                        enum: ["users", "sessions"],
-                      },
                       funnelStartCriteria: {
                         "x-stoplight": {
-                          id: "4crg2sna4yo4l",
+                          id: "9ql4m2tci6y3g",
                         },
                         type: "string",
                         enum: ["start_event", "exposure"],
                       },
+                      funnelCountDistinct: {
+                        "x-stoplight": {
+                          id: "9wz857wouhb40",
+                        },
+                        type: "string",
+                        enum: ["users", "sessions"],
+                      },
                       metricBakeDays: {
                         type: "number",
                         "x-stoplight": {
-                          id: "zh040jsgwnepw",
+                          id: "vlrvax2yj3dtg",
                         },
                         description:
                           "[Documentation](https://docs.statsig.com/statsig-warehouse-native/features/cohort-metrics)",
                       },
                       numeratorAggregation: {
                         "x-stoplight": {
-                          id: "r3l133y8gkj1e",
+                          id: "1bu0jvyc8l51g",
                         },
                         type: "string",
                         enum: [
@@ -436,7 +438,7 @@ module.exports = {
                       winsorizationHigh: {
                         type: "number",
                         "x-stoplight": {
-                          id: "ru5jkeokyvwiy",
+                          id: "dvdes9cfe8f20",
                         },
                         description:
                           "See [document](https://docs.statsig.com/stats-engine/methodologies/winsorization)",
@@ -446,7 +448,7 @@ module.exports = {
                       winsorizationLow: {
                         type: "number",
                         "x-stoplight": {
-                          id: "3x8x8m930tvqr",
+                          id: "fzzo7wkv1zuf8",
                         },
                         description:
                           "See [document](https://docs.statsig.com/stats-engine/methodologies/winsorization)",
@@ -456,22 +458,26 @@ module.exports = {
                       metadataColumns: {
                         type: "array",
                         "x-stoplight": {
-                          id: "hq8zr9gs7rzr9",
+                          id: "xxzwls43s6gax",
                         },
                         description:
                           "Specify metadata that you wish to breakdown in experiment analysis.",
                         items: {
                           "x-stoplight": {
-                            id: "w8odjtbh582ic",
+                            id: "6y58tiofkv4od",
                           },
                           type: "string",
                         },
                       },
+                      rollupTimeWindow: {
+                        "x-stoplight": {
+                          id: "gooi968t4r27p",
+                        },
+                        enum: ["max", "latest", "custom"],
+                      },
                     },
-                    required: ["aggregation"],
                   },
                 },
-                required: ["name", "type"],
               },
               examples: {
                 "Incomplete metric creation": {
@@ -848,7 +854,7 @@ module.exports = {
         ],
         tags: ["Metrics"],
         "x-stoplight": {
-          id: "2y16y1mgyxzfb",
+          id: "agexjgbpovrnk",
         },
       },
     },
@@ -866,7 +872,7 @@ module.exports = {
             "metric id to query (metric_name::metric_type) found in /metrics/list response",
         },
       ],
-      post: {
+      "post - copy": {
         summary: "",
         operationId: "post-metrics",
         responses: {
@@ -979,14 +985,8 @@ module.exports = {
                   },
                   tags: {
                     type: "array",
-                    "x-stoplight": {
-                      id: "jks1almjct3qk",
-                    },
                     description: "Updated list of tags. Tags must exist first",
                     items: {
-                      "x-stoplight": {
-                        id: "v1la7a08xg7ub",
-                      },
                       type: "string",
                     },
                   },
@@ -1004,9 +1004,6 @@ module.exports = {
         },
         description: "Update Metric",
         tags: ["Metrics"],
-        "x-stoplight": {
-          id: "vyh7yz39egaog",
-        },
       },
       delete: {
         summary: "",
@@ -1022,7 +1019,7 @@ module.exports = {
                     message: {
                       type: "string",
                       "x-stoplight": {
-                        id: "xdkz91fyubppj",
+                        id: "xt32erk7maxls",
                       },
                     },
                   },
@@ -1038,7 +1035,7 @@ module.exports = {
           },
         },
         "x-stoplight": {
-          id: "h4bz03pbpiefw",
+          id: "4skzeybn0o9h5",
         },
         description: "Delete Metric",
         tags: ["Metrics"],
@@ -1091,6 +1088,7 @@ module.exports = {
                         type: "user_warehouse",
                         description: "",
                         isPermanent: false,
+                        tags: ["★ Core"],
                         warehouseNative: {
                           aggregation: "sum",
                           metricSourceName: "Checkout Events",
@@ -1116,10 +1114,13 @@ module.exports = {
         },
         operationId: "get-metrics-metric_id",
         "x-stoplight": {
-          id: "dsztuywvm6sj7",
+          id: "9a0l8henitzhd",
         },
         description:
           "Get Metric Definition: Returned schema should be consistent with schema required for metric creation. (Tags is still WIP)",
+      },
+      post: {
+        description: "",
       },
     },
     "/metrics/list": {
@@ -1178,6 +1179,7 @@ module.exports = {
                           name: "metric_name",
                           type: "composite",
                           id: "metric_name::composite",
+                          tags: ["★ Core"],
                         },
                         {
                           name: "d1_retention_rate",
@@ -1372,7 +1374,7 @@ module.exports = {
           },
         ],
         "x-stoplight": {
-          id: "g475g6rzctlhv",
+          id: "hraf7qd3ede6p",
         },
       },
       parameters: [],
@@ -1390,7 +1392,7 @@ module.exports = {
           },
         },
         "x-stoplight": {
-          id: "zi0lkxt3kjwrp",
+          id: "g743ks59c83ix",
         },
         description:
           "Create Warehouse Native Metric Source.\n \nSee [guidance](https://docs.statsig.com/statsig-warehouse-native/guides/metric-sources)",
@@ -1399,78 +1401,6 @@ module.exports = {
             "application/json": {
               schema: {
                 type: "object",
-                properties: {
-                  name: {
-                    type: "string",
-                    "x-stoplight": {
-                      id: "hktll4obhh4ry",
-                    },
-                  },
-                  description: {
-                    type: "string",
-                    "x-stoplight": {
-                      id: "wvrgp2kzpolcj",
-                    },
-                  },
-                  tags: {
-                    type: "array",
-                    "x-stoplight": {
-                      id: "2kql1tlfnw6a4",
-                    },
-                    description:
-                      "List of tags. Tag must already exists in your project",
-                    items: {
-                      "x-stoplight": {
-                        id: "atgr5hdjs62z3",
-                      },
-                      type: "string",
-                    },
-                  },
-                  timestampColumn: {
-                    type: "string",
-                    "x-stoplight": {
-                      id: "zz1evnn21t1lk",
-                    },
-                    description: "Timestamp ",
-                  },
-                  sql: {
-                    type: "string",
-                    "x-stoplight": {
-                      id: "srebazq8zud29",
-                    },
-                    description: "SQL query you want to ",
-                  },
-                  idTypeMapping: {
-                    type: "array",
-                    "x-stoplight": {
-                      id: "fz442jsroljw5",
-                    },
-                    items: {
-                      "x-stoplight": {
-                        id: "x5670urmp9kah",
-                      },
-                      type: "object",
-                      properties: {
-                        statsigUnitID: {
-                          type: "string",
-                          "x-stoplight": {
-                            id: "m16zh42a524qk",
-                          },
-                          description:
-                            "Type of Unit ID this column represents. Configure a custom ID in project settings. [View Documentation](https://docs.statsig.com/guides/experiment-on-custom-id-types)",
-                        },
-                        column: {
-                          type: "string",
-                          "x-stoplight": {
-                            id: "7e8i37syxy40a",
-                          },
-                          description:
-                            "Column name containing this unit type's values",
-                        },
-                      },
-                    },
-                  },
-                },
                 required: [
                   "name",
                   "description",
@@ -1478,6 +1408,84 @@ module.exports = {
                   "sql",
                   "idTypeMapping",
                 ],
+                properties: {
+                  name: {
+                    type: "string",
+                    "x-stoplight": {
+                      id: "hntiod51vjbew",
+                    },
+                  },
+                  description: {
+                    type: "string",
+                    "x-stoplight": {
+                      id: "yoz2h2stwhgdi",
+                    },
+                  },
+                  tags: {
+                    type: "array",
+                    "x-stoplight": {
+                      id: "tra890ftvr0x0",
+                    },
+                    description:
+                      "List of tags. Tag must already exists in your project",
+                    items: {
+                      "x-stoplight": {
+                        id: "txpkdb1loqn3y",
+                      },
+                      type: "string",
+                    },
+                  },
+                  timestampColumn: {
+                    type: "string",
+                    "x-stoplight": {
+                      id: "6uvv25sdv8qm2",
+                    },
+                    description: "Timestamp ",
+                  },
+                  sql: {
+                    type: "string",
+                    "x-stoplight": {
+                      id: "tcgyz0371yl6x",
+                    },
+                    description: "SQL query you want to ",
+                  },
+                  idTypeMapping: {
+                    type: "array",
+                    "x-stoplight": {
+                      id: "qteof4kbqqqxw",
+                    },
+                    items: {
+                      "x-stoplight": {
+                        id: "x6g48nfaamslm",
+                      },
+                      type: "object",
+                      properties: {
+                        statsigUnitID: {
+                          type: "string",
+                          "x-stoplight": {
+                            id: "1r888gtck50ia",
+                          },
+                          description:
+                            "Type of Unit ID this column represents. Configure a custom ID in project settings. [View Documentation](https://docs.statsig.com/guides/experiment-on-custom-id-types)",
+                        },
+                        column: {
+                          type: "string",
+                          "x-stoplight": {
+                            id: "p6yf8ckwqm2i9",
+                          },
+                          description:
+                            "Column name containing this unit type's values",
+                        },
+                      },
+                    },
+                  },
+                  timestampAsDay: {
+                    type: "boolean",
+                    "x-stoplight": {
+                      id: "9f2iy2sjk6fsx",
+                    },
+                  },
+                },
               },
               examples: {
                 "Example 1": {
@@ -1493,6 +1501,7 @@ module.exports = {
                       },
                     ],
                     timestampColumn: "ts",
+                    timestampAsDay: true,
                   },
                 },
               },
@@ -1516,7 +1525,7 @@ module.exports = {
                   "": {
                     type: "string",
                     "x-stoplight": {
-                      id: "arjxpc3d6kgmu",
+                      id: "eltb8b2lwlts8",
                     },
                   },
                 },
@@ -1548,7 +1557,7 @@ module.exports = {
           },
         },
         "x-stoplight": {
-          id: "qbal0pqtte1um",
+          id: "fhbmy15agoxzz",
         },
         description: "Update description and tags of the given metric source",
         requestBody: {
@@ -1560,19 +1569,19 @@ module.exports = {
                   description: {
                     type: "string",
                     "x-stoplight": {
-                      id: "8gvyd8m9249jd",
+                      id: "9bbrbvy9uebpg",
                     },
                   },
                   tags: {
                     type: "array",
                     "x-stoplight": {
-                      id: "o9u6ms5n4ych4",
+                      id: "sdjcdma8junxx",
                     },
                     description:
                       "Updated list of tags. Tag must be created first",
                     items: {
                       "x-stoplight": {
-                        id: "hhgpnru52317p",
+                        id: "uev9305380j93",
                       },
                       type: "string",
                     },
@@ -1598,13 +1607,292 @@ module.exports = {
         tags: ["Metric Source (Warehouse Native)"],
       },
     },
+    "/metrics/metric_source/list": {
+      get: {
+        summary: "List Metric Sources",
+        tags: ["Metric Source (Warehouse Native)"],
+        responses: {
+          200: {
+            description: "OK",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  "x-examples": {
+                    "Example 1": {
+                      message: "Metric sources listed successfully.",
+                      data: [
+                        {
+                          name: "Log Events",
+                          description: "events",
+                          tags: ["helo"],
+                          sql: "SELECT * FROM shoppy-sales.logging.events\n",
+                          timestampColumn: "ts",
+                          timestampAsDay: true,
+                          idTypeMapping: [
+                            {
+                              statsigUnitID: "userID",
+                              column: "user_id",
+                            },
+                            {
+                              statsigUnitID: "deviceID",
+                              column: "device_id",
+                            },
+                            {
+                              statsigUnitID: "companyID",
+                              column: "device_id",
+                            },
+                          ],
+                        },
+                        {
+                          name: "Visits",
+                          description: "",
+                          tags: [],
+                          sql: "SELECT\n  *, 1 as abc, 2 as abc2\nFROM shoppy-sales.logging.events\nWHERE event = 'visit'",
+                          timestampColumn: "ts",
+                          timestampAsDay: false,
+                          idTypeMapping: [
+                            {
+                              statsigUnitID: "userID",
+                              column: "user_id",
+                            },
+                            {
+                              statsigUnitID: "deviceID",
+                              column: "device_id",
+                            },
+                          ],
+                        },
+                        {
+                          name: "Navigation Events",
+                          description: "",
+                          tags: [],
+                          sql: "SELECT\n  ts,\n  user_id,\n  device_id,\n  page,\n  PRODUCT_CATEGORY\nFROM shoppy-sales.logging.events\nWHERE event = 'page_view'",
+                          timestampColumn: "ts",
+                          timestampAsDay: false,
+                          idTypeMapping: [
+                            {
+                              statsigUnitID: "userID",
+                              column: "user_id",
+                            },
+                            {
+                              statsigUnitID: "deviceID",
+                              column: "device_id",
+                            },
+                          ],
+                        },
+                        {
+                          name: "Checkout Events",
+                          description: "",
+                          tags: [],
+                          sql: "SELECT\n  ts,\n  event,\n  user_id,\n  page,\n  product_category,\n  price_usd\nFROM shoppy-sales.logging.events",
+                          timestampColumn: "ts",
+                          timestampAsDay: false,
+                          idTypeMapping: [
+                            {
+                              statsigUnitID: "userID",
+                              column: "user_id",
+                            },
+                          ],
+                        },
+                        {
+                          name: "Support Events",
+                          description: "",
+                          tags: [],
+                          sql: "SELECT \n  event, \n  ts, \n  user_id, \n  device_id\nFROM shoppy-sales.logging.events",
+                          timestampColumn: "ts",
+                          timestampAsDay: false,
+                          idTypeMapping: [
+                            {
+                              statsigUnitID: "userID",
+                              column: "user_id",
+                            },
+                          ],
+                        },
+                        {
+                          name: "123213",
+                          description: "",
+                          tags: [],
+                          sql: "SELECT\n  ts,\n  event,\n  user_id,\n  page,\n  product_category,\n  price_usd\nFROM shoppy-sales.logging.events ",
+                          timestampColumn: "ts",
+                          timestampAsDay: false,
+                          idTypeMapping: [
+                            {
+                              statsigUnitID: "userID",
+                              column: "user_id",
+                            },
+                          ],
+                        },
+                        {
+                          name: "Visits DeviceID",
+                          description: "",
+                          tags: [],
+                          sql: "SELECT\n  *, 1 as thing\nFROM shoppy-sales.logging.events\nWHERE event = 'visit'\n  AND farm_fingerprint(device_id) > 0",
+                          timestampColumn: "ts",
+                          timestampAsDay: false,
+                          idTypeMapping: [
+                            {
+                              statsigUnitID: "deviceID",
+                              column: "device_id",
+                            },
+                          ],
+                        },
+                        {
+                          name: "Users who generated event X",
+                          description: "",
+                          tags: [],
+                          sql: "",
+                          timestampColumn: "",
+                          timestampAsDay: false,
+                          idTypeMapping: [],
+                        },
+                        {
+                          name: "12345",
+                          description: "",
+                          tags: [],
+                          sql: "SELECT * except(group_id) FROM `shoppy-sales.statsig.statsig_forwarded_exposures`",
+                          timestampColumn: "timestamp",
+                          timestampAsDay: false,
+                          idTypeMapping: [
+                            {
+                              statsigUnitID: "userID",
+                              column: "user_id",
+                            },
+                          ],
+                        },
+                        {
+                          name: "123456",
+                          description: "",
+                          tags: [],
+                          sql: "",
+                          timestampColumn: "",
+                          timestampAsDay: false,
+                          idTypeMapping: [],
+                        },
+                        {
+                          name: "555",
+                          description: "",
+                          tags: [],
+                          sql: "",
+                          timestampColumn: "",
+                          timestampAsDay: false,
+                          idTypeMapping: [],
+                        },
+                        {
+                          name: "Search Event",
+                          description: "",
+                          tags: [],
+                          sql: "",
+                          timestampColumn: "",
+                          timestampAsDay: false,
+                          idTypeMapping: [],
+                        },
+                        {
+                          name: "test_metric_source",
+                          description: "Test description for metric source",
+                          tags: ["helo"],
+                          sql: "SELECT * FROM shoppy-sales.logging.events WHERE event = 'visit'",
+                          timestampColumn: "ts",
+                          timestampAsDay: true,
+                          idTypeMapping: [
+                            {
+                              statsigUnitID: "userID",
+                              column: "user_id",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  },
+                  properties: {
+                    message: {
+                      type: "string",
+                    },
+                    data: {
+                      type: "array",
+                      items: {
+                        type: "object",
+                        properties: {
+                          name: {
+                            type: "string",
+                          },
+                          description: {
+                            type: "string",
+                          },
+                          tags: {
+                            type: "array",
+                            items: {
+                              type: "string",
+                            },
+                          },
+                          sql: {
+                            type: "string",
+                          },
+                          timestampColumn: {
+                            type: "string",
+                          },
+                          timestampAsDay: {
+                            type: "boolean",
+                          },
+                          idTypeMapping: {
+                            type: "array",
+                            items: {
+                              type: "object",
+                              properties: {
+                                statsigUnitID: {
+                                  type: "string",
+                                },
+                                column: {
+                                  type: "string",
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+                examples: {
+                  "Example 1": {
+                    value: {
+                      message: "Metric sources listed successfully.",
+                      data: [
+                        {
+                          name: "Log Events",
+                          description: "events",
+                          tags: ["Core"],
+                          sql: "SELECT * FROM shoppy-sales.logging.events",
+                          timestampColumn: "ts",
+                          timestampAsDay: true,
+                          idTypeMapping: [
+                            {
+                              statsigUnitID: "user",
+                              column: "string",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+        operationId: "get-metrics-metric_source-list",
+        "x-stoplight": {
+          id: "3wzno6nvteckc",
+        },
+        description: "List all Metric Sources in the project",
+      },
+    },
   },
   components: {
     schemas: {
       MetricListItem: {
         title: "MetricListItem",
         "x-stoplight": {
-          id: "3c2y7qf00o8kv",
+          id: "4v7o2l5nnx9re",
         },
         type: "object",
         "x-tags": ["Metrics"],
@@ -1668,19 +1956,19 @@ module.exports = {
           lineage: {
             type: "object",
             "x-stoplight": {
-              id: "gjeoc9wvk5oqf",
+              id: "5udcl9v5tl1sl",
             },
             required: ["events", "metrics"],
             properties: {
               events: {
                 type: "array",
                 "x-stoplight": {
-                  id: "v9yrwxfg7vo8h",
+                  id: "ooigxtv1t43ya",
                 },
                 description: "Events used in the calculation of this metric",
                 items: {
                   "x-stoplight": {
-                    id: "aqij9pethyohr",
+                    id: "16rl4kckiumx1",
                   },
                   type: "string",
                 },
@@ -1688,13 +1976,13 @@ module.exports = {
               metrics: {
                 type: "array",
                 "x-stoplight": {
-                  id: "b9xuqqow2zbik",
+                  id: "rbr4k1f79f498",
                 },
                 description:
                   "Other metrics used in the calculation this metric",
                 items: {
                   "x-stoplight": {
-                    id: "0s6pfi5idq6qm",
+                    id: "b0n7gtx88jyyb",
                   },
                   type: "string",
                 },
@@ -1707,7 +1995,7 @@ module.exports = {
       MetricRead: {
         title: "MetricRead",
         "x-stoplight": {
-          id: "ded34hh6byswu",
+          id: "lsp9kqne0cmc7",
         },
         type: "object",
         properties: {
@@ -1737,13 +2025,13 @@ module.exports = {
       MetricEventCriteria: {
         title: "MetricEventCriteria",
         "x-stoplight": {
-          id: "dom5qx1w7e4dw",
+          id: "ph4mf3fld3gnx",
         },
         type: "object",
         properties: {
           type: {
             "x-stoplight": {
-              id: "dkr711t57brtg",
+              id: "ndh4brj6qo251",
             },
             type: "string",
             enum: ["value", "meta_data"],
@@ -1751,12 +2039,12 @@ module.exports = {
           key: {
             type: "string",
             "x-stoplight": {
-              id: "23mcaed8cniuy",
+              id: "fx6th90kgp4dr",
             },
           },
           condition: {
             "x-stoplight": {
-              id: "cxuwe1km9l0me",
+              id: "dccvwzonek7o6",
             },
             type: "string",
             enum: [
@@ -1769,16 +2057,22 @@ module.exports = {
               "non_null",
               "contains",
               "not_contains",
+              "sql_filter",
+              "starts_with",
+              "ends_with",
+              "after_exposure",
             ],
+            description:
+              "sql_filter, start_withs, ends_with, and after_exposure are only applicable in Warehouse Native",
           },
           values: {
             type: "array",
             "x-stoplight": {
-              id: "t3dtdwyak3ac2",
+              id: "xvhgypao06xar",
             },
             items: {
               "x-stoplight": {
-                id: "uu6ghu9kvja0c",
+                id: "ubplhjgfe36ew",
               },
               type: "string",
             },
@@ -1786,34 +2080,33 @@ module.exports = {
           nullVacuousOverride: {
             type: "boolean",
             "x-stoplight": {
-              id: "jihy7v48qfdt8",
+              id: "5iqta37m0qnpz",
             },
           },
         },
-        description: "",
       },
       MetricEvent: {
         type: "object",
         "x-stoplight": {
-          id: "trf6y4smxk2za",
+          id: "mm7ftpgp75a31",
         },
         properties: {
           name: {
             type: "string",
             "x-stoplight": {
-              id: "ecwn1i3x658yu",
+              id: "re74p4rg8otoy",
             },
           },
           type: {
             type: "string",
             "x-stoplight": {
-              id: "m1bmdcn4mgmra",
+              id: "xmiikz0hsjeq4",
             },
           },
           metadataKey: {
             type: "string",
             "x-stoplight": {
-              id: "jpz7tmktfkeht",
+              id: "24expnj75zwnp",
             },
           },
           criteria: {
@@ -1829,12 +2122,12 @@ module.exports = {
           name: {
             type: "string",
             "x-stoplight": {
-              id: "vnirpue3d0k4t",
+              id: "hp1tu02mq9are",
             },
           },
           type: {
             "x-stoplight": {
-              id: "wpvl99wqssx2d",
+              id: "99v6c4hwjlitj",
             },
             type: "string",
             enum: ["count", "count_distinct", "value", "metadata"],
@@ -1842,7 +2135,7 @@ module.exports = {
           metadataKey: {
             type: "string",
             "x-stoplight": {
-              id: "n0hyuxjjw261m",
+              id: "5yavuvymeu1yi",
             },
           },
           criteria: {
@@ -1850,19 +2143,19 @@ module.exports = {
           },
         },
         "x-stoplight": {
-          id: "qpzs0nkp7ez3w",
+          id: "fsu96u3r8ccdx",
         },
       },
       WarehuseNativeFunnelEvent: {
         title: "WarehuseNativeFunnelEvent",
         "x-stoplight": {
-          id: "hp3fmqo5jrcxr",
+          id: "p2mmrob1vwxtk",
         },
         type: "object",
         properties: {
           criteria: {
             "x-stoplight": {
-              id: "5wodquwrw5ekr",
+              id: "plt3l9nmmd4dd",
             },
             type: "array",
             items: {
@@ -1872,12 +2165,12 @@ module.exports = {
           metricSourceName: {
             type: "string",
             "x-stoplight": {
-              id: "37ei2vk2iae0n",
+              id: "o9tb413gjq07y",
             },
           },
           name: {
             "x-stoplight": {
-              id: "k15m0hu4ntvl4",
+              id: "f0xj6fn8oxbth",
             },
             type: "string",
             description: "Step name",
@@ -1886,7 +2179,7 @@ module.exports = {
           sessionIdentifierField: {
             type: "string",
             "x-stoplight": {
-              id: "55yqtcbqfuhay",
+              id: "i44iehk3b8fsq",
             },
             description:
               "Name of column which being used as session identifier. Funnel event with the same metric source have to have the same identifier column",
