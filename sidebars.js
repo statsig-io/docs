@@ -57,6 +57,7 @@ module.exports = {
                 "guides/python-flask-abtests",
                 "guides/node-express-feature-flags",
                 "guides/node-express-abtests",
+                "guides/nextjs-feature-flags",
               ],
             },
             "guides/synchronized-launch",
