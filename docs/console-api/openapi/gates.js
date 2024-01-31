@@ -2005,7 +2005,7 @@ module.exports = {
         "description": "Removes provided lists from existing gate overrides"
       }
     },
-    "/gates/:id/launch": {
+    "/gates/{gate_id}/launch": {
       "put": {
         "summary": "",
         "operationId": "put-gates-:id-launch",
@@ -2108,18 +2108,29 @@ module.exports = {
           }
         },
         "x-stoplight": {
-          "id": "kdox550fr7np2"
+          "id": "07vwx0bjfwo42"
         },
         "description": "Launch a feature gate",
         "tags": [
           "Gates"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "gate_id",
+          "in": "path",
+          "required": true,
+          "description": "Gate id to query"
+        }
+      ]
     },
-    "/gates/:id/archive": {
+    "/gates/{gate_id}/archive": {
       "put": {
         "summary": "",
-        "operationId": "put-gates-:id-launch",
+        "operationId": "put-gates-:id-archive",
         "responses": {
           "200": {
             "description": "OK",
@@ -2225,7 +2236,18 @@ module.exports = {
         "tags": [
           "Gates"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "gate_id",
+          "in": "path",
+          "required": true,
+          "description": "Gate id to query"
+        }
+      ]
     }
   }
 }
