@@ -72,7 +72,7 @@ yarn add statsig-react
 And add your Statsig Client API key (available in your Project Settings) to an env variable in `.env.local` and to your hosting provider (e.g. Vercel, Netlify). Prefix the env variable with `NEXT_PUBLIC_` so that the client SDK will be bundled to the browser.
 
 ```
-NEXT_PUBLIC_STATSIG_CLIENT_KEY=client-voEIZ0rGAYGBugJ6vONHN23YNuqYrExm2TMPpTiDZfi
+NEXT_PUBLIC_STATSIG_CLIENT_KEY=your_client_key
 ```
 
 Since app router using server components by default, and the Statsig React SDK is a client side package, we'll need to wrap the React SDK as described in NextJS docs [here](https://nextjs.org/docs/app/building-your-application/rendering/composition-patterns#using-third-party-packages-and-providers)
@@ -199,6 +199,12 @@ export function StatsigSynchronousProvider({ children, initializeValues, user }:
       </Provider>
     );
   }
+```
+
+And add your Statsig Server Secret Key to your `.env.local` file
+
+```
+STATSIG_SERVER_SECRET=your_server_key
 ```
 
 Now in our RootLayout, we can evaluate Statsig configs for a user on the server side, and pass the results to the StatsigSynchronousProvider. This will avoid a round-trip to Statsig for gate evaluation results, and avoiding flicker when loading webpages. 
