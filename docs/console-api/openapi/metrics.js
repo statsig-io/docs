@@ -475,6 +475,12 @@ module.exports = {
                         },
                         enum: ["max", "latest", "custom"],
                       },
+                      cupedAttributionWindow: {
+                        type: "number",
+                        "x-stoplight": {
+                          id: "wdku0hnsizit8",
+                        },
+                      },
                     },
                   },
                 },
@@ -1103,6 +1109,7 @@ module.exports = {
                           denominatorCriteria: [],
                           metricDimensionColumns: ["product_category", "page"],
                           valueColumn: "price_usd",
+                          cupedAttributionWindow: 7,
                         },
                       },
                     },
@@ -1118,9 +1125,6 @@ module.exports = {
         },
         description:
           "Get Metric Definition: Returned schema should be consistent with schema required for metric creation. (Tags is still WIP)",
-      },
-      post: {
-        description: "",
       },
     },
     "/metrics/list": {
