@@ -223,6 +223,16 @@ module.exports = {
             "guides/landing-page-experiments/webflow",
           ],
         },
+        {
+          type: "category",
+          label: "Low-code Experiments",
+          items: [
+            "guides/sidecar-experiments/introduction",
+            "guides/sidecar-experiments/setup",
+            "guides/sidecar-experiments/creating-experiments",
+            "guides/sidecar-experiments/publishing-experiments",
+          ],
+        },
         "holdouts/introduction",
         {
           type: "category",
