@@ -116,6 +116,7 @@ export default function Rapidoc(props) {
 
       const rapidoc = document.getElementById(id);
       rapidoc.loadSpec(data);
+      console.log(data)
     }, 30);
   }, []);
 

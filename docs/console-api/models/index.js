@@ -9,6 +9,7 @@ export default {
   layer_parameter: require("./layer_parameter.json"),
   experiment: require("./experiment.json"),
   experiment_metric: require("./experiment_metric.json"),
+  experiment_health_check: require("./experiment_health_check.json"),
   segment: require("./segment.json"),
   error: require("./error.json"),
   holdout: require("./holdout.json"),
@@ -21,5 +22,6 @@ export default {
   audit_log: require("./audit_log.json"),
   pagination: require("./pagination.json"),
   targetApps: require("./targetApps.json"),
-  tag: require("./tag.json")
+  tag: require("./tag.json"),
+  healthCheck: require("./healthCheck.json")
 };
