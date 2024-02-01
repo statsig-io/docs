@@ -2005,7 +2005,7 @@ module.exports = {
         "description": "Removes provided lists from existing gate overrides"
       }
     },
-    "/gates/:id/launch": {
+    "/gates/{gate_id}/launch": {
       "put": {
         "summary": "",
         "operationId": "put-gates-:id-launch",
@@ -2108,13 +2108,146 @@ module.exports = {
           }
         },
         "x-stoplight": {
-          "id": "kdox550fr7np2"
+          "id": "07vwx0bjfwo42"
         },
         "description": "Launch a feature gate",
         "tags": [
           "Gates"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "gate_id",
+          "in": "path",
+          "required": true,
+          "description": "Gate id to query"
+        }
+      ]
+    },
+    "/gates/{gate_id}/archive": {
+      "put": {
+        "summary": "",
+        "operationId": "put-gates-:id-archive",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Gate updated successfully.",
+                      "data": {
+                        "id": "a_gate",
+                        "name": "A gate",
+                        "description": "",
+                        "idType": "userID",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifiedTime": 1698950181739,
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierEmail": null,
+                        "creatorID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "createdTime": 1698950178518,
+                        "creatorName": "CONSOLE API",
+                        "creatorEmail": null,
+                        "targetApps": [],
+                        "isEnabled": false,
+                        "status": "Launched",
+                        "rules": [
+                          {
+                            "name": "public",
+                            "passPercentage": 100,
+                            "conditions": [
+                              {
+                                "type": "public"
+                              }
+                            ],
+                            "environments": null
+                          }
+                        ],
+                        "checksPerHour": 0,
+                        "tags": [],
+                        "type": "TEMPORARY",
+                        "typeReason": "NONE"
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "data": {
+                      "$ref": "../models/gate.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Archive Gate": {
+                    "value": {
+                      "message": "Gate updated successfully.",
+                      "data": {
+                        "id": "a_gate",
+                        "name": "A gate",
+                        "description": "",
+                        "idType": "userID",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifiedTime": 1698950181739,
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierEmail": null,
+                        "creatorID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "createdTime": 1698950178518,
+                        "creatorName": "CONSOLE API",
+                        "creatorEmail": null,
+                        "targetApps": [],
+                        "isEnabled": false,
+                        "status": "Archived",
+                        "rules": [
+                          {
+                            "name": "public",
+                            "passPercentage": 100,
+                            "conditions": [
+                              {
+                                "type": "public"
+                              }
+                            ],
+                            "environments": null
+                          }
+                        ],
+                        "checksPerHour": 0,
+                        "tags": [],
+                        "type": "TEMPORARY",
+                        "typeReason": "NONE"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "07vwx0bjfwo42"
+        },
+        "description": "Archive a feature gate",
+        "tags": [
+          "Gates"
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "gate_id",
+          "in": "path",
+          "required": true,
+          "description": "Gate id to query"
+        }
+      ]
     }
   }
 }
