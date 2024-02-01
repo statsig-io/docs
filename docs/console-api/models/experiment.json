@@ -192,7 +192,7 @@
             "id": "zhaa2e7qbwyck"
           },
           "items": {
-            "$ref": "./healthCheck.json",
+            "$ref": "./experiment_health_check.json",
             "x-stoplight": {
               "id": "vyyaisnkyj3s6"
             }
