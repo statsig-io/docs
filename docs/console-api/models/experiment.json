@@ -187,9 +187,15 @@
           "description": "Unix Millisecond Timestamp of when a descision (shipping a group / abandoning) was made for the experiment"
         },
         "healthChecks": {
-          "type": "string",
+          "type": "array",
           "x-stoplight": {
             "id": "zhaa2e7qbwyck"
+          },
+          "items": {
+            "$ref": "./experiment_health_check.json",
+            "x-stoplight": {
+              "id": "vyyaisnkyj3s6"
+            }
           }
         }
       },
@@ -205,7 +211,8 @@
         "allocation",
         "defaultConfidenceInterval",
         "bonferroniCorrection",
-        "tags"
+        "tags",
+        "healthChecks"
       ]
     }
   ],
@@ -271,7 +278,14 @@
       "defaultConfidenceInterval": "95",
       "bonferroniCorrection": false,
       "decisionReason": "This experiment increased DAU by 1000%",
-      "decisionTime": 1702665103377
+      "decisionTime": 1702665103377,
+      "healthChecks": [
+        {
+          "name": "Checks not yet detected",
+          "status": "WAITING",
+          "description": "This experiment is active but it has not recorded any exposure checks in production. Statsig will not use non-production exposures or exposures associated with Overrides for further analysis. See the client and server SDK docs to instrument your application. See the live Exposure Stream to validate that your application is instrumented correctly."
+        }
+      ]
     }
   ]
 }
