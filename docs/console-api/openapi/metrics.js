@@ -93,7 +93,7 @@ module.exports = {
           id: "hvf03dwk20xj9",
         },
         description:
-          "Create Cloud Metrics or Warehouse Native Metrics\n\nFor creating Warehouse Native Metrics: See [documentation](https://docs.statsig.com/statsig-warehouse-native/guides/metrics). Configuration of warehouse native metric goes to warehouseNative field",
+          "Create Cloud Metrics or Warehouse Native Metrics\n\nFor creating Warehouse Native Metrics: See [documentation](https://docs.statsig.com/statsig-warehouse-native/guides/metrics). Configuration of warehouse native metric goes to warehouseNative field. Fields NOT under warehouseNative, only name, tags, isPermanent, and description ",
         tags: ["Metrics"],
         requestBody: {
           content: {
@@ -203,7 +203,7 @@ module.exports = {
                       },
                     },
                   },
-                  rollup: {
+                  rollupTimeWindow: {
                     type: "string",
                     "x-stoplight": {
                       id: "0ayuwzbkrpodr",
@@ -310,11 +310,35 @@ module.exports = {
                           $ref: "#/components/schemas/MetricEventCriteria",
                         },
                       },
-                      customRollupWaitUntilEndToInclude: {
+                      waitForCohortWindow: {
                         type: "boolean",
                         "x-stoplight": {
                           id: "uu6c3ixwngpwq",
                         },
+                      },
+                      rollupTimeWindow: {
+                        type: "string",
+                        "x-stoplight": {
+                          id: "0ayuwzbkrpodr",
+                        },
+                        description:
+                          'Time window for metric.\nSpecify "custom", if you want to provide customized time window. Default to be same as experiment time window',
+                      },
+                      customRollUpStart: {
+                        type: "number",
+                        "x-stoplight": {
+                          id: "33gt6znmgom6g",
+                        },
+                        description:
+                          "Custom time window start date (Days since exposure)\n",
+                      },
+                      customRollUpEnd: {
+                        type: "number",
+                        "x-stoplight": {
+                          id: "e8s8uf11bc3mh",
+                        },
+                        description:
+                          "Custom time window end date(Days since exposure)",
                       },
                       denominatorMetricSourceName: {
                         type: "string",
@@ -357,7 +381,7 @@ module.exports = {
                           $ref: "#/components/schemas/MetricEventCriteria",
                         },
                       },
-                      denominatorRollup: {
+                      denominatorRollupTimeWindow: {
                         type: "string",
                         "x-stoplight": {
                           id: "npmvzobznq22i",
@@ -444,7 +468,7 @@ module.exports = {
                         minimum: 0,
                         maximum: 1,
                       },
-                      metadataColumns: {
+                      metricDimensionColumns: {
                         type: "array",
                         "x-stoplight": {
                           id: "hq8zr9gs7rzr9",
@@ -486,7 +510,7 @@ module.exports = {
                       },
                     ],
                     description: "Sum user count",
-                    rollup: "custom",
+                    rollupTimeWindow: "custom",
                     rollupStartDate: 3,
                     rollupEndDate: 10,
                   },
@@ -513,7 +537,7 @@ module.exports = {
                       criteria: [
                         {
                           type: "metadata",
-                          key: "product_category", //column name
+                          column: "product_category", //column name
                           values: ["clothing"],
                           condition: "=",
                         },
@@ -551,7 +575,7 @@ module.exports = {
                       criteria: [
                         {
                           type: "metadata",
-                          key: "event",
+                          column: "event",
                           condition: "in",
                           values: ["purchase"],
                         },
@@ -985,278 +1009,254 @@ module.exports = {
       },
     },
     "/metrics/list": {
-      "get": {
-        "summary": "List All Metrics",
-        "operationId": "get-user",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
+      get: {
+        summary: "List All Metrics",
+        operationId: "get-user",
+        responses: {
+          200: {
+            description: "OK",
+            content: {
               "application/json": {
-                "schema": {
-                  "type": "object",
+                schema: {
+                  type: "object",
                   "x-examples": {
                     "Example 1": {
-                      "message": "User listed successfully.",
-                      "data": [
+                      message: "User listed successfully.",
+                      data: [
                         {
-                          "email": "jacob@statsig.com",
-                          "firstName": "jacob",
-                          "lastName": "O'Quinn",
-                          "role": "admin"
+                          email: "jacob@statsig.com",
+                          firstName: "jacob",
+                          lastName: "O'Quinn",
+                          role: "admin",
                         },
                         {
-                          "email": "joe@statsig.com",
-                          "firstName": "Joe",
-                          "lastName": "Zeng",
-                          "role": "admin"
-                        }
-                      ]
-                    }
-                  },
-                  "properties": {
-                    "message": {
-                      "$ref": "../models/message.json"
+                          email: "joe@statsig.com",
+                          firstName: "Joe",
+                          lastName: "Zeng",
+                          role: "admin",
+                        },
+                      ],
                     },
-                    "data": {
-                      "type": "array",
-                      "description": "Array of metrics in the project",
-                      "items": {
-                        "$ref": "#/components/schemas/MetricListItem"
-                      }
-                    },
-                    "pagination": {
-                      "$ref": "../models/pagination.json"
-                    }
                   },
-                  "required": [
-                    "message",
-                    "data"
-                  ]
+                  properties: {
+                    message: {
+                      $ref: "../models/message.json",
+                    },
+                    data: {
+                      type: "array",
+                      description: "Array of metrics in the project",
+                      items: {
+                        $ref: "#/components/schemas/MetricListItem",
+                      },
+                    },
+                    pagination: {
+                      $ref: "../models/pagination.json",
+                    },
+                  },
+                  required: ["message", "data"],
                 },
-                "examples": {
+                examples: {
                   "example-1": {
-                    "value": {
-                      "message": "Metrics listed successfully.",
-                      "data": [
+                    value: {
+                      message: "Metrics listed successfully.",
+                      data: [
                         {
-                          "name": "metric_name",
-                          "type": "composite",
-                          "id": "metric_name::composite"
+                          name: "metric_name",
+                          type: "composite",
+                          id: "metric_name::composite",
                         },
                         {
-                          "name": "d1_retention_rate",
-                          "type": "user",
-                          "id": "d1_retention_rate::user",
-                          "description": "this metric has a description and isHidden field",
-                          "isHidden": false,
-                          "tags": []
-                        }
-                      ]
-                    }
+                          name: "d1_retention_rate",
+                          type: "user",
+                          id: "d1_retention_rate::user",
+                          description:
+                            "this metric has a description and isHidden field",
+                          isHidden: false,
+                          tags: [],
+                        },
+                      ],
+                    },
                   },
                   "example-2": {
-                    "value": {
-                      "message": "Metrics listed successfully.",
-                      "data": [
+                    value: {
+                      message: "Metrics listed successfully.",
+                      data: [
                         {
-                          "name": "metric_1",
-                          "type": "composite",
-                          "id": "metric_1::composite"
+                          name: "metric_1",
+                          type: "composite",
+                          id: "metric_1::composite",
                         },
                         {
-                          "name": "metric_2",
-                          "type": "event_count",
-                          "id": "metric_2::event_count"
-                        }
-                      ]
-                    }
+                          name: "metric_2",
+                          type: "event_count",
+                          id: "metric_2::event_count",
+                        },
+                      ],
+                    },
                   },
                   "Filtered by tag ": {
-                    "value": {
-                      "message": "Metrics listed successfully.",
-                      "data": [
+                    value: {
+                      message: "Metrics listed successfully.",
+                      data: [
                         {
-                          "name": "d1_retention_rate",
-                          "type": "user",
-                          "id": "d1_retention_rate::user",
-                          "description": "description",
-                          "isHidden": false,
-                          "tags": [
-                            "queried_tag"
-                          ]
+                          name: "d1_retention_rate",
+                          type: "user",
+                          id: "d1_retention_rate::user",
+                          description: "description",
+                          isHidden: false,
+                          tags: ["queried_tag"],
                         },
                         {
-                          "name": "l14",
-                          "type": "user",
-                          "id": "l14::user",
-                          "description": "a description",
-                          "isHidden": false,
-                          "tags": [
-                            "queried_tag",
-                            "other_tag"
-                          ]
+                          name: "l14",
+                          type: "user",
+                          id: "l14::user",
+                          description: "a description",
+                          isHidden: false,
+                          tags: ["queried_tag", "other_tag"],
                         },
                         {
-                          "name": "mau@d56_retention_rate",
-                          "type": "user",
-                          "id": "mau@d56_retention_rate::user",
-                          "description": "",
-                          "isHidden": false,
-                          "tags": [
-                            "queried_tag",
-                            "another_tag"
-                          ]
-                        }
-                      ]
-                    }
+                          name: "mau@d56_retention_rate",
+                          type: "user",
+                          id: "mau@d56_retention_rate::user",
+                          description: "",
+                          isHidden: false,
+                          tags: ["queried_tag", "another_tag"],
+                        },
+                      ],
+                    },
                   },
                   "Pagination Example": {
-                    "value": {
-                      "message": "Metrics listed successfully.",
-                      "data": [
+                    value: {
+                      message: "Metrics listed successfully.",
+                      data: [
                         {
-                          "name": "my_metric",
-                          "type": "ratio",
-                          "id": "my_metric::ratio",
-                          "description": "",
-                          "isHidden": false,
-                          "creatorName": "jacob O'Quinn",
-                          "creatorEmail": "jacob@statsig.com",
-                          "tags": [],
-                          "lineage": {
-                            "events": [
-                              "gql_query",
-                              "custom_event"
-                            ],
-                            "metrics": []
-                          }
+                          name: "my_metric",
+                          type: "ratio",
+                          id: "my_metric::ratio",
+                          description: "",
+                          isHidden: false,
+                          creatorName: "jacob O'Quinn",
+                          creatorEmail: "jacob@statsig.com",
+                          tags: [],
+                          lineage: {
+                            events: ["gql_query", "custom_event"],
+                            metrics: [],
+                          },
                         },
                         {
-                          "name": "gql_query",
-                          "type": "event_count",
-                          "id": "gql_query::event_count",
-                          "lineage": {
-                            "events": [
-                              "gql_query"
-                            ],
-                            "metrics": []
-                          }
+                          name: "gql_query",
+                          type: "event_count",
+                          id: "gql_query::event_count",
+                          lineage: {
+                            events: ["gql_query"],
+                            metrics: [],
+                          },
                         },
                         {
-                          "name": "gql_query",
-                          "type": "event_dau",
-                          "id": "gql_query::event_dau",
-                          "lineage": {
-                            "events": [
-                              "gql_query"
-                            ],
-                            "metrics": []
-                          }
+                          name: "gql_query",
+                          type: "event_dau",
+                          id: "gql_query::event_dau",
+                          lineage: {
+                            events: ["gql_query"],
+                            metrics: [],
+                          },
                         },
                         {
-                          "name": "hello",
-                          "type": "setup_incomplete",
-                          "id": "hello::setup_incomplete",
-                          "description": "",
-                          "isHidden": false,
-                          "creatorName": "jacob O'Quinn",
-                          "creatorEmail": "jacob@statsig.com",
-                          "tags": [
-                            "★ Core"
-                          ],
-                          "lineage": {
-                            "events": [],
-                            "metrics": []
-                          }
+                          name: "hello",
+                          type: "setup_incomplete",
+                          id: "hello::setup_incomplete",
+                          description: "",
+                          isHidden: false,
+                          creatorName: "jacob O'Quinn",
+                          creatorEmail: "jacob@statsig.com",
+                          tags: ["★ Core"],
+                          lineage: {
+                            events: [],
+                            metrics: [],
+                          },
                         },
                         {
-                          "name": "joe loves event names",
-                          "type": "event_count",
-                          "id": "joe loves event names::event_count",
-                          "lineage": {
-                            "events": [
-                              "joe loves event names"
-                            ],
-                            "metrics": []
-                          }
-                        }
+                          name: "joe loves event names",
+                          type: "event_count",
+                          id: "joe loves event names::event_count",
+                          lineage: {
+                            events: ["joe loves event names"],
+                            metrics: [],
+                          },
+                        },
                       ],
-                      "pagination": {
-                        "itemsPerPage": 5,
-                        "pageNumber": 2,
-                        "totalItems": 38,
-                        "nextPage": "/console/v1/metrics/list?page=3&limit=5",
-                        "previousPage": "/console/v1/metrics/list?page=1&limit=5",
-                        "all": "/console/v1/metrics/list"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error_401.json"
+                      pagination: {
+                        itemsPerPage: 5,
+                        pageNumber: 2,
+                        totalItems: 38,
+                        nextPage: "/console/v1/metrics/list?page=3&limit=5",
+                        previousPage: "/console/v1/metrics/list?page=1&limit=5",
+                        all: "/console/v1/metrics/list",
+                      },
+                    },
+                  },
                 },
-                "examples": {
+              },
+            },
+          },
+          401: {
+            description: "Unauthorized",
+            content: {
+              "application/json": {
+                schema: {
+                  $ref: "../models/error_401.json",
+                },
+                examples: {
                   "example-1": {
-                    "value": {
-                      "status": 401,
-                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
-                    }
-                  }
-                }
-              }
-            }
-          }
+                    value: {
+                      status: 401,
+                      message:
+                        "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx",
+                    },
+                  },
+                },
+              },
+            },
+          },
         },
-        "description": "List all metrics in the project",
-        "tags": [
-          "Metrics"
+        description: "List all metrics in the project",
+        tags: ["Metrics"],
+        parameters: [
+          {
+            schema: {
+              type: "string",
+              enum: ["true", "false"],
+            },
+            in: "query",
+            name: "showHiddenMetrics",
+            description: "Should hidden metrics be returned",
+          },
+          {
+            schema: {
+              type: "array",
+            },
+            in: "query",
+            name: "tags",
+            description:
+              "Filter metrics based on a given tagID, found on /tags endpoint",
+          },
+          {
+            schema: {
+              type: "number",
+            },
+            in: "query",
+            name: "page",
+            description: "Page to query",
+          },
+          {
+            schema: {
+              type: "number",
+            },
+            in: "query",
+            name: "limit",
+            description: "Elements per page",
+          },
         ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string",
-              "enum": [
-                "true",
-                "false"
-              ]
-            },
-            "in": "query",
-            "name": "showHiddenMetrics",
-            "description": "Should hidden metrics be returned"
-          },
-          {
-            "schema": {
-              "type": "array"
-            },
-            "in": "query",
-            "name": "tags",
-            "description": "Filter metrics based on a given tagID, found on /tags endpoint"
-          },
-          {
-            "schema": {
-              "type": "number"
-            },
-            "in": "query",
-            "name": "page",
-            "description": "Page to query"
-          },
-          {
-            "schema": {
-              "type": "number"
-            },
-            "in": "query",
-            "name": "limit",
-            "description": "Elements per page"
-          }
-        ]
       },
       parameters: [],
     },
@@ -1631,7 +1631,7 @@ module.exports = {
             type: "string",
             enum: ["value", "meta_data"],
           },
-          key: {
+          column: {
             type: "string",
             "x-stoplight": {
               id: "23mcaed8cniuy",
