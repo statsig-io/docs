@@ -878,7 +878,7 @@ module.exports = {
             "metric id to query (metric_name::metric_type) found in /metrics/list response",
         },
       ],
-      "post - copy": {
+      post: {
         summary: "",
         operationId: "post-metrics",
         responses: {
