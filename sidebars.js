@@ -310,6 +310,7 @@ module.exports = {
             // 301
             "metrics/create-user-flows",
             "metrics/create-user-funnels",
+            "metrics/verified"
           ],
         },
         "users/introduction",
