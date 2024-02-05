@@ -651,6 +651,24 @@ module.exports = {
             name: "layerID",
             description: "Filter by experiments inside of the selected layer",
           },
+          {
+            "schema": {
+              "type": "number",
+              "minimum": 1
+            },
+            "in": "query",
+            "name": "page",
+            "description": "Pagination page number (must also pass limit)"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "minimum": 1
+            },
+            "in": "query",
+            "name": "limit",
+            "description": "Gates per pagination response"
+          }
         ],
       },
       parameters: [],
