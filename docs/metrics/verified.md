@@ -13,3 +13,6 @@ You choose to verify metrics from the overflow menu on the Metric.
 Admins can control which roles are able to verify metrics.  
 ![image](https://github.com/statsig-io/docs/assets/31516123/437645df-dd63-4fd4-841d-1517126e1531)
 
+:::info
+Note : This is an Enterprise feature
+:::
