@@ -106,7 +106,7 @@ Now that we have the SDK set up on the client side, we can check feature gates.
 To do this, create a new page under the `src/pages/background/index.tsx` file that checks the `nextjs_app_bg` gate we created earlier.
 
 ```
-// src/pages/background/index.tsx
+// pages/background/index.tsx
 import { useGate } from "statsig-react";
 
 export default function Background() {
@@ -142,10 +142,10 @@ First, add your Statsig Server Secret Key to your `.env.local` file
 STATSIG_SERVER_SECRET=your_server_key
 ```
 
-In our component, we can export a getServerSideProps function that generates the user's feature flag evaluation on the server
+In our background page, we can export a getServerSideProps function that generates the user's feature flag evaluation on the server
 
 ```
-// src/pages/background/index.tsx
+// pages/background/index.tsx
 
 ...
 
@@ -164,37 +164,34 @@ export async function getServerSideProps() {
 
 ```
 
-Now in our main app component, we can evaluate Statsig configs for a user on the server side, and pass the results to the StatsigSynchronousProvider. This will avoid a round-trip to Statsig for gate evaluation results, and avoiding flicker when loading webpages. 
+Now in our main app component, we can use the evaluated Statsig configs from the server side, and pass the results to the StatsigSynchronousProvider. This will avoid a round-trip to Statsig for gate evaluation results, and avoiding flicker when loading webpages. 
 
 ```
-// app/layout.tsx
+// pages/_app.tsx
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+import { StatsigProvider, StatsigSynchronousProvider } from "statsig-react";
 
-...
-import { StatsigProvider } from "./statsig-provider";
-import { StatsigSynchronousProvider } from "./statsig-synchronous-provider";
-...
-
-export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function App({ Component, pageProps }: AppProps) {
   const user = { userID: "123" }; // Get the user from your app
-  const data = await getStatsigInitializeResponse(user);
 
-  return (
-    <html lang="en">
-        <body className={inter.className}>
-          {data ? 
-            <StatsigSynchronousProvider initializeValues={data} user={user}>
-              {children}
-            </StatsigSynchronousProvider> :
-            <StatsigProvider user={user}>
-              {children}
-            </StatsigProvider>
-          }
-        </body>
-    </html>
-  );
+  if (pageProps.initializeValues) {
+    return <StatsigSynchronousProvider
+      sdkKey={process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!}
+      initializeValues={pageProps.initializeValues}
+      user={user}
+    >
+      <Component {...pageProps} />
+    </StatsigSynchronousProvider>;
+
+  } else {
+    return <StatsigProvider
+      sdkKey={process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!}
+      waitForInitialization={true}
+      user={user}
+    >
+      <Component {...pageProps} />
+    </StatsigProvider>;
+  }
 }
 ```
