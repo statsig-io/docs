@@ -58,6 +58,7 @@ module.exports = {
                 "guides/node-express-feature-flags",
                 "guides/node-express-abtests",
                 "guides/nextjs-feature-flags",
+                "guides/nextjs-page-router-feature-flags",
               ],
             },
             "guides/synchronized-launch",
