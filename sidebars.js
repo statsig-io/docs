@@ -368,6 +368,7 @@ module.exports = {
             "statsig-warehouse-native/connecting-your-warehouse/snowflake",
             "statsig-warehouse-native/connecting-your-warehouse/databricks",
             "statsig-warehouse-native/connecting-your-warehouse/redshift",
+            "statsig-warehouse-native/connecting-your-warehouse/scheduled-reloads",
           ],
         },
       ],
