@@ -1,7 +1,7 @@
 module.exports = {
   "openapi": "3.0.0",
   "x-stoplight": {
-    "id": "0f7f8wu4j7re3"
+    "id": "9fm0gxbphylmd"
   },
   "info": {
     "title": "https://statsigapi.net/console/v1",
@@ -291,12 +291,7 @@ module.exports = {
                 "properties": {
                   "role": {
                     "type": "string",
-                    "enum": [
-                      "read_only",
-                      "member",
-                      "admin"
-                    ],
-                    "description": "update user's role"
+                    "description": "update user's role. Can be one of 'Admin', 'Read Only', 'Member', or the name of any custom role."
                   },
                   "firstName": {
                     "type": "string",
@@ -557,11 +552,7 @@ module.exports = {
                 "properties": {
                   "role": {
                     "type": "string",
-                    "enum": [
-                      "read_only",
-                      "member",
-                      "admin"
-                    ]
+                    "description": "Can be one of 'Admin', 'Read Only', 'Member', or the name of any custom role."
                   },
                   "emails": {
                     "type": "array",
@@ -595,9 +586,17 @@ module.exports = {
       "User": {
         "title": "User",
         "x-stoplight": {
-          "id": "od759i65teq1z"
+          "id": "yusl5zuzud3uq"
         },
         "type": "object",
+        "x-examples": {
+          "example-1": {
+            "email": "john@gmail.com",
+            "firstName": "John",
+            "lastName": "Adams",
+            "role": "read_only"
+          }
+        },
         "properties": {
           "email": {
             "type": "string",
@@ -613,20 +612,7 @@ module.exports = {
           },
           "role": {
             "type": "string",
-            "enum": [
-              "read_only",
-              "member",
-              "admin"
-            ],
             "example": "member"
-          }
-        },
-        "x-examples": {
-          "example-1": {
-            "email": "john@gmail.com",
-            "firstName": "John",
-            "lastName": "Adams",
-            "role": "read_only"
           }
         }
       }
@@ -670,11 +656,6 @@ module.exports = {
                     },
                     "role": {
                       "type": "string",
-                      "enum": [
-                        "read_only",
-                        "member",
-                        "admin"
-                      ],
                       "example": "member"
                     }
                   }
