@@ -197,6 +197,11 @@
               "id": "vyyaisnkyj3s6"
             }
           }
+        },
+        "isAnalyisOnly": {
+          "type": "boolean",
+          "description": "For Warehouse Native"
+
         }
       },
       "required": [
