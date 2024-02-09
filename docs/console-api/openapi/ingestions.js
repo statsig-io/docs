@@ -81,6 +81,23 @@ module.exports = {
                   },
                   "description": "SQL query string",
                   "example": "SELECT * FROM TABLE"
+                },
+                "column_mapping": {
+                  "x-stoplight": {
+                    "id": "8vki37gr9qgjj"
+                  },
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/metrics-column-mapping"
+                    },
+                    {
+                      "$ref": "#/components/schemas/events-column-mapping"
+                    },
+                    {
+                      "$ref": "#/components/schemas/exposures-column-mapping"
+                    }
+                  ],
+                  "description": "Column mapping"
                 }
               }
             }
@@ -95,7 +112,8 @@ module.exports = {
               "required": [
                 "type",
                 "dataset",
-                "source_name"
+                "source_name",
+                "query"
               ],
               "properties": {
                 "type": {
@@ -119,9 +137,27 @@ module.exports = {
                   },
                   "description": "SQL query string",
                   "example": "SELECT * FROM TABLE"
+                },
+                "column_mapping": {
+                  "x-stoplight": {
+                    "id": "tiv2xpn7oya4u"
+                  },
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/metrics-column-mapping"
+                    },
+                    {
+                      "$ref": "#/components/schemas/events-column-mapping"
+                    },
+                    {
+                      "$ref": "#/components/schemas/exposures-column-mapping"
+                    }
+                  ],
+                  "description": "Column mapping"
                 }
               }
-            }
+            },
+            "examples": {}
           }
         }
       }
@@ -639,6 +675,136 @@ module.exports = {
         ],
         "type": "string",
         "example": "pulse-summary"
+      },
+      "metrics-column-mapping": {
+        "title": "metrics-column-mapping",
+        "x-stoplight": {
+          "id": "s1goz9etcdvdg"
+        },
+        "type": "object",
+        "description": "Column mapping schema for metric ingestions",
+        "required": [
+          "unit_id",
+          "id_type",
+          "dateid",
+          "metric_name"
+        ],
+        "properties": {
+          "unit_id": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "1tworh1znxcsg"
+            }
+          },
+          "id_type": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "78kzg52vev8g3"
+            }
+          },
+          "dateid": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "ifj2q329was1v"
+            }
+          },
+          "metric_name": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "ey8zifs4tsaj5"
+            }
+          },
+          "metric_value": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "hokrgy3482cnj"
+            },
+            "description": "Either metric_value or both numerator and denominator are required"
+          },
+          "numerator": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "uz6h18y3a4o3g"
+            }
+          },
+          "denominator": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "rrqrsxh0v43xb"
+            }
+          }
+        }
+      },
+      "events-column-mapping": {
+        "title": "events-column-mapping",
+        "x-stoplight": {
+          "id": "x8a0q3nxndoi2"
+        },
+        "type": "object",
+        "description": "Column mapping schema for event dataset ingestions",
+        "required": [
+          "event_name",
+          "timestamp"
+        ],
+        "properties": {
+          "unit_id": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "af65857zb61fr"
+            }
+          },
+          "event_name": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "qvb3cq2b4ifd4"
+            }
+          },
+          "timestamp": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "hv3n491szkt1h"
+            }
+          }
+        }
+      },
+      "exposures-column-mapping": {
+        "title": "exposures-column-mapping",
+        "x-stoplight": {
+          "id": "is0wb97wlkmtg"
+        },
+        "type": "object",
+        "description": "Column mapping schema for exposure ingestions",
+        "required": [
+          "experiment",
+          "group_id",
+          "timestamp"
+        ],
+        "properties": {
+          "experiment": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "or7ypjin0pdv5"
+            }
+          },
+          "group_id": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "3k3447tnkoufp"
+            }
+          },
+          "unit_id": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "dszg8qtoom4vl"
+            }
+          },
+          "timestamp": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "dmo3kh4quvuck"
+            }
+          }
+        }
       }
     },
     "responses": {},
