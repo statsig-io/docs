@@ -996,6 +996,10 @@ module.exports = {
                       type: "string",
                     },
                   },
+                  isVerified: {
+                    type: "boolean",
+                    description: "This is used to display a \"verified\" icon next to this metric throughout the Statsig Console."
+                  },
                 },
               },
               examples: {
