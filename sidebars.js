@@ -626,6 +626,15 @@ module.exports = {
             "infrastructure/reliability-faq",
           ],
         },
+        {
+          type: "category",
+          label: "Organization Experiment Policy",
+          link: {
+            type: "doc",
+            id: "org-admin/experiment_policy",
+          },
+          items: []
+        },
       ],
     },
     "faq",
