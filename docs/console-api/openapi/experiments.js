@@ -2946,9 +2946,6 @@ module.exports = {
         "tags": [
           "Experiments"
         ],
-        "requestBody": {
-          "content": {}
-        },
         "x-stoplight": {
           "id": "h15x52iitij3r"
         }
