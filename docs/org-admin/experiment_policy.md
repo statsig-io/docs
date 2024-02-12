@@ -3,7 +3,7 @@ title: Organization Experiment Policy
 ---
 
 :::info
-Organization Experiment Policies is an Enterpise only feature.
+Organization Experiment Policies is an Enterprise only feature.
 :::
 
 ##  Experiment policy grants organization admins the ability to:
