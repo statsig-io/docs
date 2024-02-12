@@ -477,6 +477,22 @@ module.exports = {
                         type: "string",
                         enum: ["max", "latest", "custom"],
                       },
+                      customRollUpStart: {
+                        type: "number",
+                        "x-stoplight": {
+                          id: "33gt6znmgom6g",
+                        },
+                        description:
+                          "Custom time window start date (Days since exposure)\n",
+                      },
+                      customRollUpEnd: {
+                        type: "number",
+                        "x-stoplight": {
+                          id: "e8s8uf11bc3mh",
+                        },
+                        description:
+                          "Custom time window end date(Days since exposure)",
+                      },
                       cupedAttributionWindow: {
                         type: "number",
                         "x-stoplight": {
