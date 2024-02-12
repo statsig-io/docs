@@ -52,7 +52,8 @@ The following steps outline how to forward events from Amplitude into Statsig.
 
    ![](https://console.statsig.com/img/integrations/amplitude_integration_steps/api_key.png)
 
-   ![](https://user-images.githubusercontent.com/95646168/197276579-b3884a8f-ed47-4cd9-8852-c37f40958554.png)
+   ![image](https://github.com/statsig-io/docs/assets/31516123/71097ab6-2bce-4b31-8269-7cffc72abe64)
+
 
 4. Hit Enable on the integration panel and any data logged to Statsig will show up in your
    Amplitude Project account.
