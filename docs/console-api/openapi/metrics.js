@@ -287,6 +287,7 @@ module.exports = {
                         "x-stoplight": {
                           id: "c1tt9bybpu3fa",
                         },
+                        type: "string",
                         enum: [
                           "count",
                           "sum",
@@ -473,6 +474,7 @@ module.exports = {
                         "x-stoplight": {
                           id: "gooi968t4r27p",
                         },
+                        type: "string",
                         enum: ["max", "latest", "custom"],
                       },
                       cupedAttributionWindow: {
