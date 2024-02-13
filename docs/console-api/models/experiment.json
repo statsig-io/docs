@@ -222,12 +222,7 @@
             "id": "u1kpwzv3b6jjp"
           },
           "type": "string",
-          "description": "For Warehouse Native",
-          "enum": [
-            "conversion",
-            "reactivation",
-            "retention"
-          ]
+          "description": "For Warehouse Native. Examples: 'conversion' | 'reactivation' | 'retention'."
         },
         "externalExperimentName": {
           "type": "string",
