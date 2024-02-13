@@ -2879,6 +2879,78 @@ module.exports = {
         }
       }
     },
+    "/experiments/{experiment_id}/archive": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "experiment_id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "Archive Experiment",
+        "operationId": "put-experiments-experiment_id-archive",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Experiment successfully started."
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Success": {
+                    "value": {
+                      "message": "Experiment successfully archived."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
+        },
+        "tags": [
+          "Experiments"
+        ],
+        "x-stoplight": {
+          "id": "h15x52iitij3r"
+        }
+      }
+    },
     "/experiments/{experiment_id}/load_pulse": {
       "parameters": [
         {
@@ -2893,7 +2965,7 @@ module.exports = {
       "get": {
         "summary": "Load Pulse (Warehouse Native)",
         "tags": [
-          "Experiments"
+          "Warehouse Native"
         ],
         "responses": {
           "200": {
@@ -2945,6 +3017,824 @@ module.exports = {
           }
         }
       }
+    },
+    "/experiments/assignment_sources": {
+      "get": {
+        "summary": "List Assignment Sources",
+        "tags": [
+          "Warehouse Native"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Assignment Sources listed successfully",
+                      "data": [
+                        {
+                          "name": "statsig_forwarded_exposures",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM `shoppy-sales.statsig_dev_2.exposures`",
+                          "timestampColumn": "timestamp",
+                          "groupIDColumn": "group_id",
+                          "experimentIDColumn": "experiment_id",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            },
+                            {
+                              "statsigUnitID": "stableID",
+                              "column": "stable_id"
+                            },
+                            {
+                              "statsigUnitID": "companyID",
+                              "column": "companyID"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Exposures",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM shoppy-sales.experiment_data.exposures \n",
+                          "timestampColumn": "ts",
+                          "groupIDColumn": "group_id",
+                          "experimentIDColumn": "experiment_name",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            },
+                            {
+                              "statsigUnitID": "deviceID",
+                              "column": "device_id"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Experiment Assignments",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT \n  *\nFROM shoppy-sales.experiment_data.exposures",
+                          "timestampColumn": "ts",
+                          "groupIDColumn": "group_id",
+                          "experimentIDColumn": "experiment_name",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Statsig_Filtered",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM `shoppy-sales.statsig.statsig_forwarded_exposures`\nWHERE DATE(timestamp) < DATE('2023-10-10')",
+                          "timestampColumn": "timestamp",
+                          "groupIDColumn": "group_id",
+                          "experimentIDColumn": "experiment_id",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "test_expo_echidna",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM `shoppy-sales.statsig.statsig_forwarded_exposures`\nWHERE DATE(timestamp) < DATE('2023-10-10')",
+                          "timestampColumn": "user_id",
+                          "groupIDColumn": "stable_id",
+                          "experimentIDColumn": "stable_id",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "nulltimestamp",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM shoppy-sales.experiment_data.exposures ",
+                          "timestampColumn": "!statsig_null_timestamp",
+                          "groupIDColumn": "group_id",
+                          "experimentIDColumn": "experiment_name",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "capi sources",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM shoppy-sales.experiment_data.exposures",
+                          "timestampColumn": "ts",
+                          "groupIDColumn": "group_id",
+                          "experimentIDColumn": "experiment_id",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "stableID",
+                              "column": "user_id"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "tags": {
+                            "type": "array",
+                            "items": {
+                              "type": "object"
+                            }
+                          },
+                          "sql": {
+                            "type": "string"
+                          },
+                          "timestampColumn": {
+                            "type": "string"
+                          },
+                          "groupIDColumn": {
+                            "type": "string"
+                          },
+                          "experimentIDColumn": {
+                            "type": "string"
+                          },
+                          "idTypeMapping": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "statsigUnitID": {
+                                  "type": "string"
+                                },
+                                "column": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Assignment Sources listed successfully",
+                      "data": [
+                        {
+                          "name": "statsig_forwarded_exposures",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM `shoppy-sales.statsig_dev_2.exposures`",
+                          "timestampColumn": "timestamp",
+                          "groupIDColumn": "group_id",
+                          "experimentIDColumn": "experiment_id",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            },
+                            {
+                              "statsigUnitID": "stableID",
+                              "column": "stable_id"
+                            },
+                            {
+                              "statsigUnitID": "companyID",
+                              "column": "companyID"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Exposures",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM shoppy-sales.experiment_data.exposures \n",
+                          "timestampColumn": "ts",
+                          "groupIDColumn": "group_id",
+                          "experimentIDColumn": "experiment_name",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            },
+                            {
+                              "statsigUnitID": "deviceID",
+                              "column": "device_id"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-experiments-assignment_sources",
+        "x-stoplight": {
+          "id": "krv9gjqx7786q"
+        },
+        "requestBody": {
+          "content": {}
+        }
+      },
+      "post": {
+        "summary": "Create Assignment Source",
+        "tags": [
+          "Warehouse Native"
+        ],
+        "responses": {
+          "2XX": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "tags": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {}
+                          }
+                        },
+                        "sql": {
+                          "type": "string"
+                        },
+                        "timestampColumn": {
+                          "type": "string"
+                        },
+                        "idTypeMapping": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "statsigUnitID": {
+                                "type": "string"
+                              },
+                              "column": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Entity Property Source created successfully",
+                      "data": {
+                        "name": "Gender3",
+                        "description": "",
+                        "tags": [],
+                        "sql": "SELECT * FROM shoppy-sales.setup.user_properties",
+                        "timestampColumn": "timestamp",
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "stableID",
+                            "column": "user_id"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Assignment Source created successfully",
+                      "data": {
+                        "name": "exposures",
+                        "description": "",
+                        "tags": [],
+                        "sql": "SELECT * FROM shoppy-sales.experiment_data.exposures",
+                        "timestampColumn": "ts",
+                        "groupIDColumn": "group_id",
+                        "experimentIDColumn": "experiment_name",
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "stableID",
+                            "column": "user_id"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "post-experiments-assignment_sources",
+        "x-stoplight": {
+          "id": "lgr3h7dfz8d8i"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "Example 1": {
+                    "name": "expos",
+                    "description": "",
+                    "tags": [],
+                    "sql": "SELECT * FROM shoppy-sales.experiment_data.exposures",
+                    "groupIDColumn": "group_id",
+                    "experimentIDColumn": "experiment_name",
+                    "timestampColumn": "ts",
+                    "idTypeMapping": [
+                      {
+                        "statsigUnitID": "stableID",
+                        "column": "user_id"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "name",
+                  "description",
+                  "tags",
+                  "sql",
+                  "groupIDColumn",
+                  "experimentIDColumn",
+                  "timestampColumn"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "sql": {
+                    "type": "string"
+                  },
+                  "groupIDColumn": {
+                    "type": "string"
+                  },
+                  "experimentIDColumn": {
+                    "type": "string"
+                  },
+                  "timestampColumn": {
+                    "type": "string"
+                  },
+                  "idTypeMapping": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "statsigUnitID",
+                        "column"
+                      ],
+                      "properties": {
+                        "statsigUnitID": {
+                          "type": "string"
+                        },
+                        "column": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "name": "exposures",
+                    "description": "",
+                    "tags": [],
+                    "sql": "SELECT * FROM shoppy-sales.experiment_data.exposures",
+                    "groupIDColumn": "group_id",
+                    "experimentIDColumn": "experiment_name",
+                    "timestampColumn": "ts",
+                    "idTypeMapping": [
+                      {
+                        "statsigUnitID": "stableID",
+                        "column": "user_id"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/experiments/entity_properties": {
+      "get": {
+        "summary": "List Entity Property Sources",
+        "tags": [
+          "Warehouse Native"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "tags": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          },
+                          "sql": {
+                            "type": "string"
+                          },
+                          "idTypeMapping": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "statsigUnitID": {
+                                  "type": "string"
+                                },
+                                "column": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "timestampColumn": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Entity Property Sources listed successfully",
+                      "data": [
+                        {
+                          "name": "Gender",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM shoppy-sales.setup.user_properties",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "stableID",
+                              "column": "user_id"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Static Country",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT  \n  *\nFROM shoppy-sales.setup.user_country",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Segmentation Models",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT\n  *\nFROM shoppy-sales.setup.segments",
+                          "timestampColumn": "ds",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Gender2",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM shoppy-sales.setup.user_properties",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "stableID",
+                              "column": "user_id"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Entity Property Sources listed successfully",
+                      "data": [
+                        {
+                          "name": "Gender",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM shoppy-sales.setup.user_properties",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "stableID",
+                              "column": "user_id"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Static Country",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT  \n  *\nFROM shoppy-sales.setup.user_country",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-experiments-property_sources",
+        "x-stoplight": {
+          "id": "8ylhx2lwr4cfc"
+        }
+      },
+      "post": {
+        "summary": "Create Entity Property Source",
+        "tags": [
+          "Warehouse Native"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "tags": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {}
+                          }
+                        },
+                        "sql": {
+                          "type": "string"
+                        },
+                        "timestampColumn": {
+                          "type": "string"
+                        },
+                        "idTypeMapping": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "statsigUnitID": {
+                                "type": "string"
+                              },
+                              "column": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Entity Property Source created successfully",
+                      "data": {
+                        "name": "Gender",
+                        "description": "",
+                        "tags": [],
+                        "sql": "SELECT * FROM shoppy-sales.setup.user_properties",
+                        "timestampColumn": "timestamp",
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "stableID",
+                            "column": "user_id"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Entity Property Source created successfully",
+                      "data": {
+                        "name": "Gender",
+                        "description": "",
+                        "tags": [],
+                        "sql": "SELECT * FROM shoppy-sales.setup.user_properties",
+                        "timestampColumn": "timestamp",
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "stableID",
+                            "column": "user_id"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "post-experiments-property_sources",
+        "x-stoplight": {
+          "id": "9uy4xauraiwhz"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "Example 1": {
+                    "name": "Gender",
+                    "description": "",
+                    "tags": [],
+                    "sql": "SELECT * FROM shoppy-sales.setup.user_properties",
+                    "timestampColumn": "timestamp",
+                    "idTypeMapping": [
+                      {
+                        "statsigUnitID": "stableID",
+                        "column": "user_id"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "name",
+                  "description",
+                  "tags",
+                  "sql"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        ""
+                      ],
+                      "properties": {
+                        "": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "zve5vhijvmdzj"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "sql": {
+                    "type": "string"
+                  },
+                  "timestampColumn": {
+                    "type": "string"
+                  },
+                  "idTypeMapping": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "statsigUnitID",
+                        "column"
+                      ],
+                      "properties": {
+                        "statsigUnitID": {
+                          "type": "string"
+                        },
+                        "column": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "name": "Gender",
+                    "description": "",
+                    "tags": [],
+                    "sql": "SELECT * FROM shoppy-sales.setup.user_properties",
+                    "timestampColumn": "timestamp",
+                    "idTypeMapping": [
+                      {
+                        "statsigUnitID": "stableID",
+                        "column": "user_id"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": []
     }
   }
 }
