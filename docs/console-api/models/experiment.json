@@ -221,6 +221,7 @@
           "x-stoplight": {
             "id": "u1kpwzv3b6jjp"
           },
+          "type": "string",
           "description": "For Warehouse Native",
           "enum": [
             "conversion",
