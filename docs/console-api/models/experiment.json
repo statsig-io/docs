@@ -6,6 +6,21 @@
     {
       "type": "object",
       "description": "Experiment specific fields",
+      "required": [
+        "id",
+        "lastModifierID",
+        "idType",
+        "status",
+        "layerID",
+        "primaryMetricTags",
+        "secondaryMetricTags",
+        "groups",
+        "allocation",
+        "defaultConfidenceInterval",
+        "bonferroniCorrection",
+        "tags",
+        "healthChecks"
+      ],
       "properties": {
         "id": {
           "type": "string",
@@ -92,6 +107,12 @@
           "description": "The test groups for your experiment",
           "items": {
             "type": "object",
+            "required": [
+              "name",
+              "size",
+              "parameterValues",
+              "id"
+            ],
             "properties": {
               "name": {
                 "type": "string"
@@ -108,13 +129,7 @@
               "id": {
                 "type": "string"
               }
-            },
-            "required": [
-              "name",
-              "size",
-              "parameterValues",
-              "id"
-            ]
+            }
           }
         },
         "allocation": {
@@ -201,24 +216,34 @@
         "isAnalyisOnly": {
           "type": "boolean",
           "description": "For Warehouse Native"
-
+        },
+        "subtype": {
+          "x-stoplight": {
+            "id": "u1kpwzv3b6jjp"
+          },
+          "type": "string",
+          "description": "For Warehouse Native",
+          "enum": [
+            "conversion",
+            "reactivation",
+            "retention"
+          ]
+        },
+        "externalExperimentName": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "3fzyo1wt510e7"
+          },
+          "description": "For Warehouse Native"
+        },
+        "assignmentSourceName": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "bmv96pm1lvoz3"
+          },
+          "description": "For Warehouse Native"
         }
-      },
-      "required": [
-        "id",
-        "lastModifierID",
-        "idType",
-        "status",
-        "layerID",
-        "primaryMetricTags",
-        "secondaryMetricTags",
-        "groups",
-        "allocation",
-        "defaultConfidenceInterval",
-        "bonferroniCorrection",
-        "tags",
-        "healthChecks"
-      ]
+      }
     }
   ],
   "examples": [
