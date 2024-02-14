@@ -62,6 +62,12 @@ module.exports = {
                             id: "gftsa9yrt391j",
                           },
                         },
+                        isReadOnly: {
+                          type: "boolean",
+                          "x-stoplight": {
+                            id: "ngr7tnd2uwy1j",
+                          },
+                        },
                       },
                     },
                   },
@@ -108,6 +114,13 @@ module.exports = {
                       id: "ppd970kq42147",
                     },
                     description: "The name of the new metric",
+                  },
+                  isReadOnly: {
+                    type: "boolean",
+                    "x-stoplight": {
+                      id: "wogtferdhpylz",
+                    },
+                    description: "Set metric as read only with static metric definition",
                   },
                   type: {
                     "x-stoplight": {
