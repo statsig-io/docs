@@ -62,6 +62,12 @@ module.exports = {
                             id: "gftsa9yrt391j",
                           },
                         },
+                        isReadOnly: {
+                          type: "boolean",
+                          "x-stoplight": {
+                            id: "ngr7tnd2uwy1j",
+                          },
+                        },
                       },
                     },
                   },
