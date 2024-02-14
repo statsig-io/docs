@@ -499,6 +499,14 @@ module.exports = {
                           id: "wdku0hnsizit8",
                         },
                       },
+                      isReadOnly: {
+                        type: "boolean",
+                        "x-stoplight": {
+                          id: "vwu73j0pp71cy",
+                        },
+                        description:
+                          "Read only metric for static metric definition",
+                      },
                     },
                   },
                 },
@@ -1016,7 +1024,8 @@ module.exports = {
                   },
                   isVerified: {
                     type: "boolean",
-                    description: "This is used to display a \"verified\" icon next to this metric throughout the Statsig Console."
+                    description:
+                      'This is used to display a "verified" icon next to this metric throughout the Statsig Console.',
                   },
                 },
               },
@@ -1406,172 +1415,168 @@ module.exports = {
       parameters: [],
     },
     "/metrics/values": {
-      "get": {
-        "summary": "List All Metric Values",
-        "operationId": "get-user",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
+      get: {
+        summary: "List All Metric Values",
+        operationId: "get-user",
+        responses: {
+          200: {
+            description: "OK",
+            content: {
               "application/json": {
-                "schema": {
-                  "type": "object",
+                schema: {
+                  type: "object",
                   "x-examples": {
                     "Example 1": {
-                      "message": "User listed successfully.",
-                      "data": [
+                      message: "User listed successfully.",
+                      data: [
                         {
-                          "email": "jacob@statsig.com",
-                          "firstName": "jacob",
-                          "lastName": "O'Quinn",
-                          "role": "admin"
+                          email: "jacob@statsig.com",
+                          firstName: "jacob",
+                          lastName: "O'Quinn",
+                          role: "admin",
                         },
                         {
-                          "email": "joe@statsig.com",
-                          "firstName": "Joe",
-                          "lastName": "Zeng",
-                          "role": "admin"
-                        }
-                      ]
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "data",
-                    "pagination"
-                  ],
-                  "properties": {
-                    "message": {
-                      "$ref": "../models/message.json"
-                    },
-                    "data": {
-                      "type": "array",
-                      "description": "Array of metrics in the project",
-                      "items": {
-                        "$ref": "#/components/schemas/MetricValue"
-                      }
-                    },
-                    "pagination": {
-                      "$ref": "../models/pagination.json"
-                    }
-                  }
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "message": "Metric values listed successfully.",
-                      "data": [
-                          {
-                              "value": 21377,
-                              "unitType": "overall",
-                              "numerator": null,
-                              "denominator": null,
-                              "metricName": "Page Loads",
-                              "metricType": "event_count_custom"
-                          },
-                          {
-                              "value": 21377,
-                              "unitType": "stable_id",
-                              "numerator": null,
-                              "denominator": null,
-                              "metricName": "Page Loads",
-                              "metricType": "event_count_custom"
-                          },
-                          {
-                              "value": 21355,
-                              "unitType": "user_id",
-                              "numerator": null,
-                              "denominator": null,
-                              "metricName": "Page Loads",
-                              "metricType": "event_count_custom"
-                          },
-                          {
-                              "value": 646524,
-                              "unitType": "stable_id",
-                              "numerator": null,
-                              "denominator": null,
-                              "metricName": "Average Time Spent on Page",
-                              "metricType": "event_user"
-                          },
-                          {
-                              "value": 5676,
-                              "unitType": "stable_id",
-                              "numerator": null,
-                              "denominator": null,
-                              "metricName": "Page Latency",
-                              "metricType": "mean"
-                          }
+                          email: "joe@statsig.com",
+                          firstName: "Joe",
+                          lastName: "Zeng",
+                          role: "admin",
+                        },
                       ],
-                      "pagination": {
-                          "itemsPerPage": 5,
-                          "pageNumber": 1,
-                          "totalItems": 5767,
-                          "nextPage": "/console/v1/metrics/values?date=2024-02-04&page=2&limit=5",
-                          "previousPage": null
-                      }
-                    }
+                    },
                   },
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/error_401.json"
+                  required: ["message", "data", "pagination"],
+                  properties: {
+                    message: {
+                      $ref: "../models/message.json",
+                    },
+                    data: {
+                      type: "array",
+                      description: "Array of metrics in the project",
+                      items: {
+                        $ref: "#/components/schemas/MetricValue",
+                      },
+                    },
+                    pagination: {
+                      $ref: "../models/pagination.json",
+                    },
+                  },
                 },
-                "examples": {
+                examples: {
                   "example-1": {
-                    "value": {
-                      "status": 401,
-                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
-                    }
-                  }
-                }
-              }
-            }
-          }
+                    value: {
+                      message: "Metric values listed successfully.",
+                      data: [
+                        {
+                          value: 21377,
+                          unitType: "overall",
+                          numerator: null,
+                          denominator: null,
+                          metricName: "Page Loads",
+                          metricType: "event_count_custom",
+                        },
+                        {
+                          value: 21377,
+                          unitType: "stable_id",
+                          numerator: null,
+                          denominator: null,
+                          metricName: "Page Loads",
+                          metricType: "event_count_custom",
+                        },
+                        {
+                          value: 21355,
+                          unitType: "user_id",
+                          numerator: null,
+                          denominator: null,
+                          metricName: "Page Loads",
+                          metricType: "event_count_custom",
+                        },
+                        {
+                          value: 646524,
+                          unitType: "stable_id",
+                          numerator: null,
+                          denominator: null,
+                          metricName: "Average Time Spent on Page",
+                          metricType: "event_user",
+                        },
+                        {
+                          value: 5676,
+                          unitType: "stable_id",
+                          numerator: null,
+                          denominator: null,
+                          metricName: "Page Latency",
+                          metricType: "mean",
+                        },
+                      ],
+                      pagination: {
+                        itemsPerPage: 5,
+                        pageNumber: 1,
+                        totalItems: 5767,
+                        nextPage:
+                          "/console/v1/metrics/values?date=2024-02-04&page=2&limit=5",
+                        previousPage: null,
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+          401: {
+            description: "Unauthorized",
+            content: {
+              "application/json": {
+                schema: {
+                  $ref: "../models/error_401.json",
+                },
+                examples: {
+                  "example-1": {
+                    value: {
+                      status: 401,
+                      message:
+                        "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx",
+                    },
+                  },
+                },
+              },
+            },
+          },
         },
-        "description": "List all metric values in the project",
-        "tags": [
-          "Metrics"
-        ],
-        "parameters": [
+        description: "List all metric values in the project",
+        tags: ["Metrics"],
+        parameters: [
           {
-            "schema": {
-              "type": "number"
+            schema: {
+              type: "number",
             },
-            "in": "query",
-            "name": "page",
-            "description": "Page to query",
-            "required": true
+            in: "query",
+            name: "page",
+            description: "Page to query",
+            required: true,
           },
           {
-            "schema": {
-              "type": "number"
+            schema: {
+              type: "number",
             },
-            "in": "query",
-            "name": "limit",
-            "description": "Elements per page",
-            "required": true
+            in: "query",
+            name: "limit",
+            description: "Elements per page",
+            required: true,
           },
           {
-            "schema": {
-              "type": "string"
+            schema: {
+              type: "string",
             },
-            "in": "query",
-            "name": "date",
-            "description": "Get values on select date (YYYY-MM-DD)",
-            "required": true
-          }
+            in: "query",
+            name: "date",
+            description: "Get values on select date (YYYY-MM-DD)",
+            required: true,
+          },
         ],
         "x-stoplight": {
-          "id": "izx8gkka2rb36"
-        }
+          id: "izx8gkka2rb36",
+        },
       },
-      "parameters": []
+      parameters: [],
     },
     "/metrics/metric_source": {
       post: {
