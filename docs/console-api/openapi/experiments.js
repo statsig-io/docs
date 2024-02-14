@@ -2902,7 +2902,7 @@ module.exports = {
                   "type": "object",
                   "x-examples": {
                     "example-1": {
-                      "message": "Experiment successfully started."
+                      "message": "Experiment successfully archived."
                     }
                   },
                   "properties": {
@@ -2915,6 +2915,78 @@ module.exports = {
                   "Success": {
                     "value": {
                       "message": "Experiment successfully archived."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
+        },
+        "tags": [
+          "Experiments"
+        ],
+        "x-stoplight": {
+          "id": "h15x52iitij3r"
+        }
+      }
+    },
+    "/experiments/{experiment_id}/unarchive": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "experiment_id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "Archive Experiment",
+        "operationId": "put-experiments-experiment_id-archive",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Experiment successfully unarchived."
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Success": {
+                    "value": {
+                      "message": "Experiment successfully unarchived."
                     }
                   }
                 }
