@@ -2965,7 +2965,7 @@ module.exports = {
       "get": {
         "summary": "Load Pulse (Warehouse Native)",
         "tags": [
-          "Warehouse Native"
+          "Experiments (Warehouse Native)"
         ],
         "responses": {
           "200": {
@@ -3022,7 +3022,7 @@ module.exports = {
       "get": {
         "summary": "List Assignment Sources",
         "tags": [
-          "Warehouse Native"
+          "Experiments (Warehouse Native)"
         ],
         "responses": {
           "200": {
@@ -3276,7 +3276,7 @@ module.exports = {
       "post": {
         "summary": "Create Assignment Source",
         "tags": [
-          "Warehouse Native"
+          "Experiments (Warehouse Native)"
         ],
         "responses": {
           "2XX": {
@@ -3481,7 +3481,7 @@ module.exports = {
       "get": {
         "summary": "List Entity Property Sources",
         "tags": [
-          "Warehouse Native"
+          "Experiments (Warehouse Native)"
         ],
         "responses": {
           "200": {
@@ -3638,7 +3638,7 @@ module.exports = {
       "post": {
         "summary": "Create Entity Property Source",
         "tags": [
-          "Warehouse Native"
+          "Experiments (Warehouse Native)"
         ],
         "responses": {
           "200": {

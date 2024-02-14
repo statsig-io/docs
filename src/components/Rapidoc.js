@@ -21,7 +21,6 @@ const supportedEntities = [
   'target-apps',
   'ingestions',
   'tags',
-  'all-endpoints-generated',
   'keys',
 ];
 
@@ -107,18 +106,13 @@ export default function Rapidoc(props) {
 
       switch(entity) {
         case 'all-endpoints-generated':
-          rapidoc.loadSpec("https://latest.api.statsig.com/console/v1/open_api");
+          rapidoc.loadSpec("https://statsigapi.net/console/v1/open_api");
           return;
         case 'all-endpoints':
           data = loadAllEndpoints();
           break;
         default:
           data = require(`../../docs/console-api/openapi/${entity}.js`);
-      }
-      if (entity === 'all-endpoints') {
-        data = loadAllEndpoints();
-      } else {
-        data = require(`../../docs/console-api/openapi/${entity}.js`);
       }
 
       data = updateCodeSnippets(data, entity);
