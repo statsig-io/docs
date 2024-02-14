@@ -49,13 +49,13 @@ async function getSearchItems(user: StatsigUser, searchTerm: String): String[] {
 }
 ```
 
-Now, your code is completed decoupled from the names of experiment groups in the statsig console.  You are left with a set of dynamic parameters.
+Now, your code is completely decoupled from the names of experiment groups in the statsig console.  You are left with a set of dynamic parameters.
 You can create whichever experiment groups you want out of these building blocks, and the same code will work.  Want to test an unsorted list of 5 items
 against a sorted list of 20 items?  Just set it up in the Statsig console (and name it whatever you want).
 
 If you were trying to check group names, you would have to go back and add conditions like:
 
-```
+```ts
 } else if (experiment.groupName === 'Unsorted Short List') {
   return results.slice(5);
 } else if (experiment.groupName === 'XL Sorted List') {

@@ -1,27 +1,39 @@
 ---
-title: Creating User Funnels
-sidebar_label: Creating User Funnels
+title: Funnel Metrics
+sidebar_label: Funnel Metrics
 slug: /metrics/create-user-funnels
 ---
 
-Statsig's **User Funnels** enable you to analyze how your users step through successive stages to complete a goal defined by you. 
-Funnels are fertile ground for experimentation because they can yield several actionable ways to grow your product usage.  
-Funnels enable you identify where your users may be facing friction or ambiguity, and how to increase the success rate of your goal.
-  For example, funnels are commonly used by teams working to improve user activations by reducing the friction for users to sign up (register) for their application.
 
-When you create a funnel, Statsig automatically publishes the number of users entering and exiting the funnel as well as intermediate conversion metrics 
-(collectively known as [funnel metrics](https://docs.statsig.com/metrics#6-funnel-metrics)) in the Results tab of your experiments.  
+You can create a custom **funnel metric**, from either the **Custom Metrics** creation wizard in the **Metrics Catalog** or via the **Charts** tab. 
 
-To create a **User Flow**,
-1. Log into the Statsig console at https://console.statsig.com
-2. On the left-hand navigation panel, select **Metrics** and then click on the **Charts** tab
-3. Click on the **Create** button
-4. Enter the chart name and select the **Chart Type** as _Funnel_
-5. Select the **Users** radio button to track unique users (using the most successful attempt of a user), or **Events** to include multiple attempts of a user through the funnel
-6. Enter the sequence of events that you want to include in the funnel
-7. Enter the window of time over which you want to review user activity in the funnel (Statsig's default is 7 days)
-9. Click on **Create** to finish creating your funnel
+![Screen Shot 2022-06-07 at 1 05 37 PM](https://user-images.githubusercontent.com/101903926/172472515-c94b264c-85a6-4b78-bf12-769585e4880d.png)
 
-![Screen Shot 2021-12-10 at 4 17 15 PM](https://user-images.githubusercontent.com/1315028/145865252-f522b749-3e5c-41d9-8b28-851b88133b24.png)
+## Components of Funnel Metrics
+Funnel metrics have a few components:
+1. **Lineage**: Surfaces the events used to generate the funnel 
+2. **Metric Value**: Metric value represents the overall funnel conversion rate, or the percentage of users who complete a funnel (trigger the end event) relative to all users who start the funnel (trigger the starting event)
+3. **Roll-up Window**: Funnel metrics are calculated on a daily basis. 
+3. **Conversion Rate between Stages**: This set of metrics track the percentage of users who triggered an event N relative to all users that triggered event N-1 in the funnel
+
+
+![Screen Shot 2022-06-07 at 10 34 58 AM](https://user-images.githubusercontent.com/101903926/172446711-5511e394-b353-4d38-97f1-1b681b67042b.png)
+
+After funnels are created and populated, you can view your funnel metric much like any other metric in Pulse. Additionally, you can expand the funnel metric to view Pulse performance at each step in the funnel. 
+
+## User-based Funnel Metrics
+
+When counting distinct events, funnel metrics add the number of events per day over the analysis period. When counting distinct users, funnel metrics add the number of distinct users per day over the analysis period. 
+
+Suppose a funnel consists of events A, B, and C, in that order. User-based funnel metrics count the number of distinct users who triggered events A, B, and C on a given day. If you're tracking funnel conversion over multiple days, the daily granularity of funnel metrics may not be a good fit for your analysis.
+
+## Example
+In the example below, the **Square** variant shows a lift in the **overall funnel conversion rate**. Expanding the metrics to examine the entire funnel reveals two key insights:
+* Both the **Square** and **Circle** variants show a lift in top-of-funnel DAU (_Land Page View Start DAU_). However, only the **Square** variant shows statistically significant increase in end-of-funnel DAU (_Purchase Event End DAU_).
+* The overall funnel conversion rate improvement for **Square** is primarily due to the higher conversion from _Checkout Event_ to _Purchase Event_ stages in the funnel.  
+
+![image](https://user-images.githubusercontent.com/90343952/148440643-8e8a24bd-934d-4100-a15a-abcbcc4bb11c.png)
+
+
 
 

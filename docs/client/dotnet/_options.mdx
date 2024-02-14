@@ -3,3 +3,14 @@
 - **environment**: StatsigEnvironment, default null
   - An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
   - The most common usage is to set the environment tier (EnvironmentTier), e.g. `new StatsigEnvironment(EnvironmentTier.Staging)`, and have feature gates pass/fail for specific environments.
+- **ClientRequestTimeoutMs**: int, default 0.
+
+  - When set, the `/initialize` request will wait for a maximum of the specified ms before ignoring the request and considering the SDK initialized (relying on cached values or default values for checks to gates/experiments)
+
+- **PersistentStorageFolder**: string, default null
+
+  - use this to specify a location for the persistent storage where the SDK will save cached values and logs.
+
+- **ClientRequestTimeoutMs**: int, default 0
+  - use this to configure a timeout for the initialize request;
+  - when the request times out, the SDK will serve cached or default values.

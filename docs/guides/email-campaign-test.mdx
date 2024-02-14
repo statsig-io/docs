@@ -1,0 +1,18 @@
+---
+sidebar_label: A/B Test Email Campaigns
+title: A/B Test Email Campaigns
+---
+
+A/B Testing an email campaign and getting experiment results on downstream product metrics (in addition to top level email interaction metrics), is a common use case for Statsig customers.
+
+The general flow looks like this:
+
+1. Create an Experiment in Statsig for this email campaign.
+2. Check that experiment for each user you are sending the email to using a server SDK (very performant for large volumes).  Record the variant of the email to send.  If you are writing a script to do this, make sure to send the exposure events to Statsig (either `flush()` or `shutdown()` the SDK before exiting the script). If you are unsure, check the Diagnostics page of your experiment and make sure the exposure checks are recorded for each of the users.
+3. Using the list you have of users for each variant, send the corresponding email
+4. Downstream events you log on your client or server application must use the same ID and ID type as the experiment check in step (2).
+
+:::warning
+#4 is the biggest gotcha.  When you check the experiment for each of the users you need to pass a user object to Statsig.  If your experiment is on the userID id type, you need to make sure each of those checks sets the userID on the user object.
+Any metrics and events you have instrumented in your app/website/server must pass that same userID in order for Statsig to join product metrics with experiment variant assignment.
+:::

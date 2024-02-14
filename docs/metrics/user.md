@@ -1,6 +1,6 @@
 ---
 title: User Accounting Metrics
-sidebar_label: User Accounting
+sidebar_label: User Accounting Metrics
 slug: /metrics/user
 ---
 
@@ -26,7 +26,7 @@ Statsig automatically creates a standard set of user accounting metrics to track
 | new_mau_28d            | Count      | Count of users who became a daily active user within the last 28 days. |
 | daily_user_stickiness  | Stickiness | Fraction of the previous day's users who are active on the next day. |
 | weekly_user_stickiness | Stickiness | Fraction of the previous week's users who have been active within the last 7 days. |
-| montly_user_stickiness | Stickiness | Fraction of the previous month's users who have been active within the last 28 days. |
+| monthly_user_stickiness | Stickiness | Fraction of the previous month's users who have been active within the last 28 days. |
 | D1_retention_rate      | Retention  | Fraction of the previous day's (D0) new users who are active the following day (D1). |
 | WAU @ D14 Retention Rate | Retention  | Fraction of new users from 13 days ago that have been active in the previous 7 days. |
 | MAU @ D56 Retention Rate | Retention  | Fraction of new users from 56 days ago that have been active in the previous 28 days. |
@@ -38,7 +38,7 @@ These user metrics can be very useful in understanding the long-term behavior of
 
 # Customizing the DAU Definition
 
-You can customize the definition of DAU within the Statsig Console and specify or exclude a set of Statsig and custom events.  You can find this in Metrics > Users at the top of the page (Current Active User Definition).  If you have priviliges, you can edit this.
+You can customize the definition of DAU within the Statsig Console and specify or exclude a set of Statsig and custom events.  You can find this in Metrics > Charts at the top of the page (Current Active User Definition).  If you have privileges, you can edit this.
 
 ![edit_active_user_definition](https://user-images.githubusercontent.com/77478319/137034274-e41b2117-fe7e-4809-82a8-5e9be4be183f.png)
 

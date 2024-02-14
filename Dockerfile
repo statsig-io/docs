@@ -1,11 +1,14 @@
 #!/bin/bash
 
-FROM node:15-alpine as builder
+FROM node:16-alpine as builder
+RUN apk add --no-cache git
+
 WORKDIR /usr/app
 
 COPY ./ ./
+
 RUN npm install -g pnpm
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 RUN pnpm build
 
 ## production environment

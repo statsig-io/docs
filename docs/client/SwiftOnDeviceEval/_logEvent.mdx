@@ -1,0 +1,12 @@
+```swift
+let event = StatsigEvent(
+    eventName: "add_to_cart",
+    value: "SKU_1234",
+    metadata: [
+        "price": "9.99",
+        "item_name": "CoolProduct"
+    ]
+)
+
+Statsig.shared.logEvent(event, user)
+```

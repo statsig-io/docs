@@ -1,8 +1,81 @@
 ---
-sidebar_label: iOS
-title: iOS SDK for Statsig
+sidebar_label: Swift
+title: Swift
 ---
 
-import Docs from './iOS/index.mdx'
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
 
-<Docs />
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  PrefetchUsers,
+  ManualExposures,
+  Shutdown,
+  LocalOverrides,
+  StableID,
+} from "./Templates/index.mdx";
+
+import Install from "./iOS/_install.mdx";
+import Initialize from "./iOS/_initialize.mdx";
+import CheckGate from "./iOS/_checkGate.mdx";
+import GetConfig from "./iOS/_getConfig.mdx";
+import GetExperiment from "./iOS/_getExperiment.mdx";
+import LogEvent from "./iOS/_logEvent.mdx";
+import UpdateUser from "./iOS/_updateUser.mdx";
+import MoreFAQs from "./iOS/_faqs.mdx";
+import Options from "./iOS/_options.mdx";
+import { Snippets as ManualExposureSnippets } from "./iOS/_manualExposures.mdx";
+import ShutdownSnippet from "./iOS/_shutdown.mdx";
+import LocalOverridesSnippet from "./iOS/_localOverrides.mdx";
+import * as StatsigListening from "./iOS/_statsigListening.mdx";
+import { GetStableID, OverrideStableID } from "./iOS/_stableID.mdx";
+
+export const Result = SDKDocsBuilder(
+  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
+  [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/ios-sdk",
+      },
+    ],
+    [
+      GettingStarted,
+      {
+        sdkType: "iOS/tvOS/macOS",
+        install: <Install />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+      },
+    ],
+    [StatsigUser, { updateUser: <UpdateUser /> }],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [LocalOverrides, { localOverrides: <LocalOverridesSnippet /> }],
+    [ManualExposures, { addedInVersion: "1.16.0", ...ManualExposureSnippets }],
+    [
+      StableID,
+      { getSnippet: <GetStableID />, overrideSnippet: <OverrideStableID /> },
+    ],
+    [StatsigListening, {}],
+    [FAQ, { faqs: <MoreFAQs /> }],
+  ],
+  toc
+);
+
+<>{Result}</>

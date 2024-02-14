@@ -1,0 +1,10 @@
+#### How can I mock or override the SDK for testing?
+
+Starting in `v1.12.0+`, the Ruby SDK supports `localMode` and `overrides`, see [Local Overrides](#local-overrides)
+
+- `localMode` is a boolean parameter in `StatsigOptions` when initializing the SDK. It restricts all network traffic,
+  so the SDK operates offline and only returns default or override values.
+
+#### Can I generate the initialize response for a client SDK using the Ruby server SDK?
+
+Yes. See [Client Initialize Response](#bootstrap).

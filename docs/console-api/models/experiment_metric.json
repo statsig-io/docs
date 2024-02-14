@@ -1,0 +1,22 @@
+{
+  "title": "experiment_metric",
+  "x-stoplight": {
+    "id": "5gdoucp4eunp5"
+  },
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "description": "ID type used for this metric",
+      "example": "userID"
+    }
+  },
+  "required": [
+    "name",
+    "type"
+  ],
+  "description": ""
+}

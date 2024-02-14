@@ -1,0 +1,43 @@
+### Client SDK with Local Evaluation
+
+The `statsig-js-local-eval` sdk is really the first of its kind - its a client SDK that behaves more like our server SDKs.  Rather than require a user up front, you can check gates/configs/experiments for any set of user properties, because the SDK downloads the definition of your project.
+
+The are a number of tradeoffs to consider when using this client SDK vs the `statsig-js` client sdk:
+
+<table>
+  <tr>
+    <th> Pros </th>
+    <th> Cons </th>
+  </tr>
+  <tr>
+    <td>
+    No need for a network request when changing user properties - just check the gate/config/experiment locally
+    </td>
+    <td>
+    Entire project definition is available client side - the names and configurations of all experiments and feature flags accessible by your client key are exposed.
+    </td>
+  </tr>
+  <tr>
+    <td>
+    Can bring your own cdn or synchronously initialize with a preloaded project definition
+    </td>
+    <td>
+    Payload size is strictly larger than what is required for the statsig-js sdk
+    </td>
+  </tr>
+  <tr>
+    <td>
+    Lower latency to download configs cached at the edge, rather than evaluated for a given user (which cannot be cached as much)
+    </td>
+    <td>
+    Evaluation performance is slightly slower - rather than looking up the value, the sdk must actually evaluate targeting conditions and an allocation decision
+    </td>
+  </tr>
+  <tr>
+    <td>
+    </td>
+    <td>
+    Does not support ID list segments with > 1000 IDs, nor automatic IP/UA based checks (Browser Version/Name, OS Version/Name, IP, Country)
+    </td>
+  </tr>
+</table>

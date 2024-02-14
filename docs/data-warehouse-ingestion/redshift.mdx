@@ -1,0 +1,51 @@
+---
+title: Redshift
+---
+
+## Overview
+
+To set up connection with Redshift, Statsig needs the following
+
+- Cluster Endpoint
+- Admin User Name
+- Admin User Password
+
+You can find this information in your aws console within your specific cluster, as shown in the image below. (Open image in new tab for a bigger image)
+
+![Frame 1](https://user-images.githubusercontent.com/108023879/187515405-17fa7d90-44e1-422f-87a7-cfde090637ed.png)
+
+<b>Admin user name and password will be used by Statsig to create a user with restricted access to query from your data warehouse.</b>
+
+## SSH Tunneling
+
+For Redshift connections, we also allow users to create an SSH tunnel into their Redshift cluster for a more secure and private access to the database.
+To enable access, Statsig requires:
+
+- SSH Host
+- SSH Port
+- SSH User
+
+Statsig will use this information to generate an SSH key. Please add this generated key to your `~/.ssh/authorized_keys` file on your SSH proxy machine to enable SSH tunneling.
+
+### Custom User Privileges
+
+To create a custom user with specific privileges instead of using an admin user, run the following code in your Redshift cluster with your admin user.
+Replace `<USER>` and `<PASSWORD>` with your value, which you will copy over into our console.
+
+
+```sql
+# Create Statsig User
+CREATE USER <USER> WITH PASSWORD <PASSWORD> SYSLOG ACCESS UNRESTRICTED;
+
+# Give access to any Schemas that the Statsig User needs to read from
+GRANT USAGE ON SCHEMA <SCHEMA> to <USER>;
+GRANT SELECT ON ALL TABLES IN SCHEMA <SCHEMA> to <USER>;
+
+# Create a Schema for Statsig User to write temporary data to
+CREATE SCHEMA IF NOT EXISTS statsig_ingestion_staging;
+GRANT ALL ON SCHEMA <SCHEMA> TO <USER>;
+```
+
+After running the script, input the `<USER>` and `<PASSWORD>` you created in our console, during Connection Set Up stage under the Advanced settings options.
+
+![Screen Shot 2022-09-07 at 10 36 57 AM](https://user-images.githubusercontent.com/108023879/188943178-6b541962-62da-4529-b5af-ff59b20b7a8d.png)

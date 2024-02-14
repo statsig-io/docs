@@ -1,0 +1,41 @@
+---
+sidebar_label: Testing Your Setup
+title: Testing your Configurations on Statsig
+---
+
+Statsig increases your engineering velocity. This page has pointers to features across the product that enable you to test while moving fast. 
+
+## Overrides: Testing a specific feature or experiment
+You can create overrides for [features](https://docs.statsig.com/feature-gates/overrides#adding-an-override), [experiments](https://docs.statsig.com/experiments-plus/overrides) or [holdouts](https://docs.statsig.com/holdouts). Overrides are excluded from analysis in Pulse results so they don't bias results. Experiments overrides can include Segments that target pre-prod environments or employees.
+
+![image](https://user-images.githubusercontent.com/31516123/184234368-3d714df2-d6f2-4c72-8b45-81f46d5597cc.png)
+![image](https://user-images.githubusercontent.com/31516123/184234596-3099e18b-69c3-4885-9e04-06b4ba1e6fb6.png)
+
+## Unit Tests
+
+Server SDKs let you enable `localMode` which causes the SDK to never hit the network, and only return default values. This is perfect for dummy environments or test environments that should not access the network. You can set `overrideGate` and `overrideConfig` APIs to set overrides for a specific user, or for all users.
+
+```
+function overrideGate(
+    gateName: string,
+    value: boolean,
+    userID?: string,
+): void;
+```
+
+```
+function overrideConfig(
+    configName: string,
+    value: object,
+    userID?: string,
+): void
+```
+
+See example on [Node.js Server SDK](https://docs.statsig.com/server/nodejsServerSDK#how-can-i-mock-statsig-for-testing) or[ JavaScript Client SDK](https://docs.statsig.com/client/jsClientSDK#how-can-i-mock-the-sdkoverride-gates-in-tests).
+
+## Environments 
+If there is no environment associated with feature or experiment checks or metrics, Statsig assumes they're for Production. You can explicitly add an environment to checks and metrics and target them using rules in Feature Gates or Segments. Non-production events are visible in diagnostics, but are not included in Pulse results. 
+
+You can choose to map your environments to the environmentsd directly supported in Statsig - Development, Staging and Production or override them and use what you want. Many customers choose to create a logical mapping (e.g. Dev One boxes to Development, Early Access (special 1% slice of production) to Production).
+
+[Learn more](https://blog.statsig.com/environments-on-statsig-6a818805b3c2).

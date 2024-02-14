@@ -46,11 +46,50 @@ curl \
   --header "Content-Type: application/json" \
   --request POST \
   --data '{"events": [{"user": { "userID": "42" }, "time": 1616826986211, "eventName": "test_api_event"}]}' \
-  "https://api.statsig.com/v1/log_event"
+  "https://events.statsigapi.net/v1/log_event"
 ```
 
+*Schema*
+```ts
+// json
+{
+  events: [StatsigEvent];
+}
+
+// StatsigEvent - object
+{
+  eventName: string;
+  value: number | string;
+  time: string; // unix timestamp
+  user: StatsigUser;
+  metadata: Record<string, string>;
+}
+
+// StatsigUser - object
+{
+  userID: string;
+  email?: string;
+  ip?: string;
+  userAgent?: string;
+  country?: string;
+  locale?: string;
+  appVersion?: string;
+  custom?: Record<
+    string,
+    string | number | boolean | Array<string> | undefined
+  >;
+  privateAttributes?: Record<
+    string,
+    string | number | boolean | Array<string> | undefined
+  >;
+  customIDs?: Record<string, string>;
+  statsigEnvironment: {
+    tier: string
+  };
+};
+```
 Response:
-`{"success":true}`
+`{"success":true}`, status `202`
 
 ##### Log an event with custom environment {#log-an-event-with-environment}
 
@@ -62,7 +101,7 @@ curl \
   --header "Content-Type: application/json" \
   --request POST \
   --data '{"events": [{"user": { "userID": "42", "statsigEnvironment": {"tier": "staging"} }, "time": 1616826986211, "eventName": "test_api_event"}]}' \
-  "https://api.statsig.com/v1/log_event"
+  "https://events.statsigapi.net/v1/log_event"
 ```
 
 Response:
@@ -80,7 +119,7 @@ curl \
 ```
 
 Response:
-`{"name":"YOUR-GATE-NAME","value":false}`
+`{"name":"YOUR-GATE-NAME","value":false,"rule_id":"123","group_name":"group123"}`
 
 ##### Get a Dynamic Config value {#get-a-dynamic-config-value}
 
@@ -94,7 +133,7 @@ curl \
 ```
 
 Response:
-`{"name":"YOUR-CONFIG-NAME","value":{"a":1,"b":2},"group":"default"}`
+`{"name":"YOUR-CONFIG-NAME","value":{"a":1,"b":2},"group":"123","rule_id":"123","group_name":"group123"}`
 
 ##### Fetch Experiment Config {#fetch-experiment-config}
 
@@ -110,46 +149,73 @@ curl \
 ```
 
 Response:
-`{"name":"YOUR-EXPERIMENT-NAME","value":{"color":"blue","shape":"circle"},"group":"default"}`
+`{"name":"YOUR-EXPERIMENT-NAME","value":{"color":"blue","shape":"circle"},"group":"123","rule_id":"123","group_name":"group123}`
 
-##### Export Report {#export-report}
+##### Fetch Layer Value {#fetch-layer-config}
 
-You can [export your Pulse data](https://docs.statsig.com/pulse#export-report) via the console or using the following API. In addition to the [`first_exposures`](https://docs.statsig.com/pulse#first-exposures-file-description) report type as shown below, you can also request a [`pulse_daily`](https://docs.statsig.com/pulse#pulse-summary-and-daily-file-description) or [`unit_metrics_daily`](https://docs.statsig.com/pulse#unit-metrics-file-description) report types.
+The system will automatically log the right exposure based on the name of the config.
 
 ```bash
 curl \
   --header "statsig-api-key: <YOUR-SDK-KEY>" \
   --header "Content-Type: application/json" \
   --request POST \
-  --data '{"type": "first_exposures" }' \
-  "https://api.statsig.com/v1/get_daily_report"
+  --data '{"user": { "userID": "42" },"layerName":"<YOUR-LAYER-NAME>"}' \
+  "https://statsigapi.net/v1/get_layer"
 ```
 
 Response:
-`{ date: {date in PST of data} url: {url to download CSV for the specified type} }`
-
-#### Update ID List {#update-id-list}
-
-You can dynamically modify users in your [ID List Segments](https://docs.statsig.com/segments/create-new) via the console or using the following API.
-
-```bash
-curl \
-  --header "statsig-api-key: <YOUR-SDK-KEY>" \
-  --header "Content-Type: application/json" \
-  --request POST \
-  --data '{"idListName": <YOUR ID LIST NAME>, "usersToAdd": [<user_id_1>, <user_id_2>, ...], "usersToRemove": [<user_id_3>, <user_id_4>, ...] }' \
-  "https://api.statsig.com/v1/update_id_list"
-```
+`{"name":"YOUR-LAYER-NAME","value":{"color":"blue","shape":"circle"},"ruleID":"2OZdhuDfq3w1UIHovUFRBM", "allocatedExperimentName": "a_experiment"}`
 
 #### Log an exposure event {#log-exposure-event}
+You can log one or more exposure events with this API. 
 
-You can log one or more exposure events with this API. For each exposure object, the "group" parameter should match the "Group Name" in your experiment.
+##### Experiments
 
+```
+// Experiment Exposure Events
+// See https://docs.statsig.com/client/concepts/user for full list of user fields
+user: object, // must have a userID or a customID to match with event data.
+experimentName: string,
+group: string,
+time?: number | string, // unix timestamp, optional (request time used if not set)
+```
+
+For each exposure object, the `"group"` parameter should match the name of your Test Group in your experiment config.
+[![Test group name](https://user-images.githubusercontent.com/2018204/234073412-92dde2b7-7a5d-442f-a539-0c9c1b426a5a.png)
+
+_example experiment exposure_
 ```bash
 curl \
   --header "statsig-api-key: <YOUR-SDK-KEY>" \
   --header "Content-Type: application/json" \
   --request POST \
-  --data '{"exposures": [{"user": {"userID": "user_id_12345"}, "experimentName": "analytics_only_experiment", "group": "Control"}]}' \
-  "https://api.statsig.com/v1/log_custom_exposure"
+  --data '{"exposures": [{"user": {"userID": "user_id_12345"}, "experimentName": "analytics_only_experiment", "group": "Daily Deals"}]}' \
+  "https://events.statsigapi.net/v1/log_custom_exposure"
 ```
+
+##### Gates
+
+```
+// Gate Exposure Events
+user: object, // must have a userID or a customID to match with event data.
+gateName: string,
+group: string,
+passes: boolean,
+time?: number | string, // unix timestamp, optional (request time used if not set)
+```
+
+For each exposure object, the `"group"` parameter should match the name of your Rule in your gate config.
+![Gate Rule Name](https://user-images.githubusercontent.com/2018204/234073618-e5f1e3c0-9766-4bd3-b927-bad155bbea05.png)
+
+
+_example gate exposure_
+```bash
+curl \
+  --header "statsig-api-key: <YOUR-SDK-KEY>" \
+  --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"exposures": [{"user": {"userID": "user_id_12345"}, "gateName": "saleBanner", "group": "Controls Access", "passes": true}]}' \
+  "https://events.statsigapi.net/v1/log_custom_exposure"
+```
+

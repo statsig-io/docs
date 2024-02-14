@@ -1,0 +1,10 @@
+You can specify optional parameters in the [application config](https://www.erlang.org/doc/design_principles/applications.html#configuring-an-application).
+
+The available parameters are:
+- `statsig_api_key`: a server secret api key from the statsig console
+- `statsig_api`: default "https://statsigapi.net/v1/".  The endpoint to use for network requests to load gates/experiments and flush log events
+- `http_client`: default `hackney_client`, a network client for the SDK to issue requests.  Must use the `http_client` behavior
+- `statsig_polling_interval`: default 60000, How frequently to poll for changes to gates/experiments in your statsig project, in ms
+- `statsig_flush_interval`: default 60000, How frequently to flush event and exposure logs for your statsig project, in ms
+- `statsig_flush_batch_size`: default 500, Maximum batch size of events
+- `statsig_environment_tier`: default undefined, The environment tier to set for this instance of the statsig erlang sdk.  "production", "staging", "development" or your own custom tiers

@@ -1,0 +1,90 @@
+---
+title: Amplitude
+---
+
+import StatsigEnvironmentFormat from "../snippets/integration_statsig_env_format.mdx";
+
+## Overview
+
+Statsig supports both incoming outgoing events for Amplitude. As well as adding Amplitude Cohorts to Statsig ID Lists.
+
+## Incoming - Receiving Events From Amplitude
+
+The following steps outline how to forward events from Amplitude into Statsig.
+
+1. Get a Statsig "Server Secret Key" from the API keys page in [Project Settings](https://console.statsig.com/api_keys).
+
+2. Go to Amplitude and navigate to the Data Destinations page. Click the
+   "Add Destination" button in the top right.
+
+   ![](https://console.statsig.com/img/integrations/amplitude:incoming_integration_steps/step_1.png)
+
+3. From the Destinations Catalog, search for and select the Statsig Event
+   Streaming destination.
+
+   ![](https://console.statsig.com/img/integrations/amplitude:incoming_integration_steps/step_2.png)
+
+4. Give this destination a name and click "Create Sync".
+
+   ![](https://console.statsig.com/img/integrations/amplitude:incoming_integration_steps/step_3.png)
+
+5. Enter the "Server Secret Key" you copied in Step 1 into the provided
+   field. Select the events you wish to send to Statsig. Ensure that the
+   Status is set to "Enabled" and then click "Save".
+
+   ![](https://console.statsig.com/img/integrations/amplitude:incoming_integration_steps/step_4.png)
+
+6. On the Integrations page for your Statsig project, enable the Amplitude Incoming integration.
+
+## Outgoing - Sending Statsig Events to Amplitude
+
+1. Navgate to Amplitude and click on the Settings button in the
+   bottom-left corner.
+
+   ![](https://console.statsig.com/img/integrations/amplitude_integration_steps/settings.png)
+
+2. Click on the Projects tab and choose the Project you wish to send data
+   to.
+
+   ![](https://console.statsig.com/img/integrations/amplitude_integration_steps/project.png)
+
+3. Copy the API Key and paste it in the Statsig integration panel.
+
+   ![](https://console.statsig.com/img/integrations/amplitude_integration_steps/api_key.png)
+
+   ![](https://user-images.githubusercontent.com/95646168/197276579-b3884a8f-ed47-4cd9-8852-c37f40958554.png)
+
+4. Hit Enable on the integration panel and any data logged to Statsig will show up in your
+   Amplitude Project account.
+
+   ![](https://console.statsig.com/img/integrations/amplitude_integration_steps/amplitude_data.png)
+
+## First Exposures
+
+[First exposures](https://docs.statsig.com/pulse/export#first-exposures-file-description) are an enterprise-tier feature that simplifies your project insights.
+This is available for Enterprise contracts and needs to be enabled for you, once. Please reach out to our support team, your sales contact, or via our slack channel if you want this enabled.
+
+### What is it?
+
+Our Amplitude Integration offers the flexibility to forward first exposures instead of every exposure, reducing the overall number of events being forwarded. First exposures are calculated daily and forwarded to integrations at around 7pm UTC.
+
+### How to enable
+
+First ensure that the "first exposure" feature has been enabled for your company by reaching out to our support team. Once this is done you will be able to go into the event filtering tab of the integration and enabled "First Exposure" setting.
+
+### Example Events In Amplitude
+
+Example of a get_experiment First Exposure in Amplitude.
+![](https://github.com/statsig-io/docs/assets/26360698/5e945a95-8c7b-4181-8440-8e60502455e2)
+
+### Accessing Raw Data
+
+For a comprehensive view, you can obtain the raw first exposure data in CSV format. Simply make a request to the [console/v1/reports](https://docs.statsig.com/console-api/daily-reports#get-/reports) endpoint to receive a download link.
+
+## Cohort Sync - Syncing Amplitude Cohorts to Statsig Segments
+
+For up to date configuration information on syncing Cohorts (aka Segments) from Amplitude to Statsig, please take a look at Amplitude's documentation [here](https://www.docs.developers.amplitude.com/data/destinations/statsig-cohort/).
+
+## Filtering Events
+
+You can customize which events should be sent and received via Amplitude using [Event Filtering](/integrations/event_filtering)

@@ -1,87 +1,81 @@
 ---
 sidebar_label: React Native
-title: React Native SDK for Statsig
+title: React Native Client SDK
 ---
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-Statsig client side SDK for applications in React Native not using Expo. If you are using Expo, check out our [Expo SDK](./reactNativeExpoSDK). This SDK is based on our [JavaScript client SDK](https://github.com/statsig-io/js-client).
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
 
-## Installation {#installation}
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  PrefetchUsers,
+  ManualExposures,
+  Shutdown,
+  LocalOverrides,
+  Reference,
+} from "./Templates/index.mdx";
 
-You can install the SDK via npm or yarn. In your project directory, run:
+import Install from "./ReactNative/_install.mdx";
+import WorkingWithIntro from "./ReactNative/_workingWithIntro.mdx";
+import AdditionalWelcome from "./ReactNative/_additionalWelcome.mdx";
+import Initialize from "./ReactNative/_initialize.mdx";
+import CheckGate from "./ReactNative/_checkGate.mdx";
+import GetConfig from "./ReactNative/_getConfig.mdx";
+import GetExperiment from "./ReactNative/_getExperiment.mdx";
+import LogEvent from "./ReactNative/_logEvent.mdx";
+import InitUser from "./ReactNative/_initUser.mdx";
+import * as UpdateUser from "./ReactNative/_updateUser.mdx";
+import MoreFAQs from "./ReactNative/_faqs.mdx";
+import * as ReferenceSnippets from "./ReactNative/_reference.mdx";
 
-<Tabs
-  defaultValue="npm"
-  values={[
-    {label: 'NPM', value: 'npm'},
-    {label: 'Yarn', value: 'yarn'},
-  ]}>
-  <TabItem value="npm">
+export const Result = SDKDocsBuilder(
+  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
+  [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/react-native",
+      },
+    ],
+    [
+      GettingStarted,
+      {
+        sdkType: "React Native without Expo",
+        additionalWelcomeMessage: <AdditionalWelcome />,
+        install: <Install />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        introduction: <WorkingWithIntro />,
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+      },
+    ],
+    [
+      StatsigUser,
+      { excludeMentionToDirectUpdateUser: true, updateUser: <InitUser /> },
+    ],
+    [UpdateUser, {}],
+    [FAQ, { faqs: <MoreFAQs /> }],
+    [Reference, { snippets: <ReferenceSnippets.default /> }],
+  ],
+  toc,
+  [...ReferenceSnippets.toc]
+);
 
-```shell
-npm install statsig-react-native
-```
-
-  </TabItem>
-  <TabItem value="yarn">
-
-```shell
-yarn add statsig-react-native
-```
-
-  </TabItem>
-</Tabs>
-
-Next, let's install the dependencies we need for the SDK to work:
-
-<Tabs
-  defaultValue="npm"
-  values={[
-    {label: 'NPM', value: 'npm'},
-    {label: 'Yarn', value: 'yarn'},
-  ]}>
-  <TabItem value="npm">
-
-```shell
-npm install @react-native-async-storage/async-storage react-native-device-info react-native-get-random-values
-```
-
-  </TabItem>
-  <TabItem value="yarn">
-
-```shell
-yarn add @react-native-async-storage/async-storage react-native-device-info react-native-get-random-values
-```
-
-  </TabItem>
-</Tabs>
-
-Lastly, if you are on a Mac and developing for iOS, you need to install the pods to complete the linking:
-
-```shell
-npx pod-install ios # or pod install, in your /ios folder
-```
-
-## Usage {#usage}
-
-
-```jsx
-import { StatsigProvider, useGate, useExperiment, useConfig, Statsig } from "statsig-react-native";
-```
-
-### v4.X.X+
-
-v4.X.X of our react-native SDK wraps the [statsig-react](./reactSDK) sdk. It contains the same React Context, Providers, and Hooks, used in the same way. Get started with our [suggested usage](./reactSDK#usage) or the [Provider and Hooks](/client/reactSDK#more-details) details.
-
-It also exposes a global `Statsig` class that you can import outside your component tree to check gates/log events/etc.
-
-```jsx
-import { Statsig } from "statsig-react-native";
-
-...
-
-Statsig.checkGate("gate_name");
-```
-
+<>{Result}</>

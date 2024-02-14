@@ -3,21 +3,18 @@ sidebar_label: Organizations
 title: Organization Settings & Administration
 ---
 
+:::info
+Organizations and their related features are for Enterprise contracts only. Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you need to enable Enterprise features as you use Statsig.
+:::
+
 ## Creating an Organization
 
-To create an organization,
-1. Log into the [Statsig console](https://console.statsig.com/)
-2. Navigate to your [Account Settings](https://console.statsig.com/settings)
-3. Click on **Create New** next to **Organization** under your **Account Settings** 
-4. Optionally invite others in your team to join your organization
-5. Move your existing projects to the organization and click **Create**
-
-![image](https://user-images.githubusercontent.com/1315028/141505028-66535ac5-25df-4b13-8298-237395e0930b.png)
+Statsig creates an organization for companies with an Enterprise contract.
 
 When you move a project to the organization, 
  - All existing **members** will receive an invitation to join the organization 
  - All existing project **administrators** will remain the same 
- - The project will be added as **public** i.e. any registered Statsig user with the same email domain as the project owner will have access to the project; you can change this setting in the **Project Settings** tab
+ - The project will be added as **Open** i.e. any registered Statsig user with the same email domain as the project owner will have access to the project; you can change this setting in the **Project Settings** tab
 
 If you don't move a project to the organization, you may lose access to it as it will be archived. 
 

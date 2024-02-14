@@ -6,9 +6,9 @@ slug: /feature-gates/overrides
 
 ## Override results of a feature gate
 
-During development, it can be useful to explicity state which users should pass or fail a given feature gate. This is where overrides come in.
+During development, it can be useful to explicitly state which users should pass or fail a given feature gate. This is where overrides come in.
 
-Overrides are based of user IDs and can be set to pass or fail for a given user ID. During evaluation of a gate, if the user ID is overriden, the overriden result will be returned immediatly before any rules are evaluated.
+Overrides are based of user IDs and can be set to pass or fail for a given user ID. During evaluation of a gate, if the user ID is overridden, the overridden result will be returned immediately before any rules are evaluated.
 
 ### Adding an Override
 

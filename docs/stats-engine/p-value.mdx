@@ -1,0 +1,39 @@
+---
+title: p-Value Calculation
+sidebar_label: p-Values
+slug: /stats-engine/p-value
+---
+
+In hypothesis testing, the p-value is the probability of observing an effect larger than or equal to the measured metric delta, under the assumption that the null hypothesis is true.  In practice, a p-value that's lower than your pre-defined threshold is treated as evidence for there being a true effect.
+
+The methodology used for p-value calculation depends on the number of degrees of freedom (*&nu;*).  A two-sample z-test is appropriate for most experiments.  Welch's t-test is used for smaller experiments with *&nu; < 100*.  In both cases, the p-value depends on the metric [mean](https://docs.statsig.com/stats-engine/metric-deltas) and [variance](https://docs.statsig.com/stats-engine/variance) computed for the test and control groups.
+
+### Two-Sample Z-Test
+
+The z-statistic of a two-sample z-test is:
+
+$
+Z = \frac{\overline X_t - \overline X_c}{\sqrt{var(\overline X_t)+ var(\overline X_c)}}
+$
+
+The two-sided p-value is obtained from the standard normal cumulative distribution function:
+
+$
+p-value = 2\cdot \frac{1}{\sqrt{2\pi}} \int \limits _{-\infty}^{-|Z|}{e^{-t^2/2}dt}
+$
+
+### Welch's t-test
+
+For smaller sample sizes, Welch's t-test is the preferred statistical test for lower false positive rates in cases of unequal sizes and variances.  In Pulse, Welch's t-test is automatically applied when the degrees of freedom *&nu; < 100*.  
+
+The t-statistic is computed in the same way as the two-sample z-statistic above.  Additionally, we compute the degrees of freedom *&nu;* using:
+
+$
+\nu = \frac{\left(var(\overline X_t) + var(\overline X_c)\right)^2}{\frac{var(\overline X_t)^2}{N_t - 1}+\frac{var(\overline X_c)^2}{N_c - 1}}
+$
+
+The p-value is then obtained from the t-distribution with *&nu;* degrees of freedom.
+
+
+
+

@@ -12,25 +12,26 @@ jobs:
         with:
           lfs: true
       - run: git lfs pull
-      - uses: pnpm/action-setup@v2.1.0
+      - uses: pnpm/action-setup@v2.4.0
         with:
-          version: 7.0.0
-          run_install: |
-            - recursive: true
-              args: [--frozen-lockfile]
+          version: latest
+          run_install: false
+      - run: |
+          pnpm install
       - run: |
           pnpm build
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
+        id: netlify
         with:
           publish-dir: './build'
           enable-pull-request-comment: true
           enable-commit-comment: true
           overwrites-pull-request-comment: true
           deploy-message: "Preview Deploy for ${{ github.event.pull_request.title }}"
-          github-token: ${{ secrets.ROIM }}
+          github-token: ${{ secrets.PUBLIC_REPO }}
+          fails-without-credentials: true
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         timeout-minutes: 2
-

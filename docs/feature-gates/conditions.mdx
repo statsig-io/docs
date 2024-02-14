@@ -48,7 +48,7 @@ Usage: Simple lists of User IDs to explicitly target or exclude from a gate.
 
 Supported Operators: Any of, none of
 
-Example usage: Add yourself (or a small group like your team) when you just start building a new feature.  Or exclude your designer until its ready for their eyes.
+Example usage: Add yourself (or a small group like your team) when you just start building a new feature.  Or exclude your designer until it's ready for their eyes.
 
 ![Small user id allowlist example](https://user-images.githubusercontent.com/74584483/137389819-d2f20bb5-235b-4d86-b2f4-a73f515909d9.png)
 
@@ -84,7 +84,7 @@ Usage: A particular version of a browser, parsed from the user agent.  Should li
 
 Supported Operators: >=, >, <, <=, any of, none of
 
-Example: Turn off a feature for old verisons of chrome which don't support a certain API
+Example: Turn off a feature for old versions of chrome which don't support a certain API
 
 ![Browser Name and Version example](https://user-images.githubusercontent.com/74584483/137394148-cb84ce40-0478-4f1b-a40e-bec5af8c5e08.png)
 
@@ -106,7 +106,7 @@ Often combined with the Browser Version condition.
 
 Supported Operators: >=, >, <, <=, any of, none of
 
-Example: Turn off a feature for old verisons of chrome which don't support a certain API
+Example: Turn off a feature for old versions of chrome which don't support a certain API
 
 To test: The Browser Name is inferred from the `userAgent`, but if you need to set it explicitly, you can set `browserName` in the user object.
 
@@ -117,7 +117,7 @@ Usage: A particular os version the user is on, parsed from the user agent.  Shou
 
 Supported Operators: >=, >, <, <=, any of, none of
 
-Example: Turn off a feature for verisons of macOS which don't support a certain API
+Example: Turn off a feature for versions of macOS which don't support a certain API
 
 ![Operating System example](https://user-images.githubusercontent.com/74584483/137398532-bac9b55b-07f1-48b2-a0c9-edcaec55d528.png)
 
@@ -128,7 +128,7 @@ Often combined with the OS Version condition.
 
 Supported Operators: any of, none of
 
-Example: Turn off a feature for verisons of macOS which don't support a certain API
+Example: Turn off a feature for versions of macOS which don't support a certain API
 
 To test: The OS is inferred from the `userAgent`, but if you need to set it explicitly, you can set `deviceOS` in the user object.
 
@@ -197,16 +197,32 @@ Example: Only show a feature on development builds
 
 ![Environment tier example](https://user-images.githubusercontent.com/74584483/137402331-c9f9eb46-de8b-49b6-8abc-f480d9334c95.png)
 
-### Custom {#custom}
+### Custom Field {#custom}
+
 Usage: Specify the key in the custom object to fetch the value use on the left hand side of a comparison
 
-Supported Operators: any of, none of
+Supported Operators:
+- string: any of, none of, str_contains_any, str_contains_none
+- number: any of, none of, less than, greater than
+- version: any of, none of, less than, greater than, less than or equal to, greater than or equal to
+- date: before, after
 
 Example: Only show a feature to user's who have turned on dark mode, as marked by the custom object having "darkmode": true.
 
 ![Custom example](https://user-images.githubusercontent.com/74584483/137402870-092830df-96a3-4842-bb5a-bd36e416b8cb.png)
 
+### Unit ID {#unit-id}
+
+Usage: Select custom ids to explicitly target or exclude from a gate.
+
+Supported Operators: any of, none of, is null, is not null, contains any of, contains none of, regex
+
+Example: Add yourself (or a small group like your team) when you just start building a new feature.
+
+![Unit id example](https://user-images.githubusercontent.com/26360698/234152123-c77fb946-f74c-4be4-80c7-e5513ecbb90f.png)
+
 ### Time
+
 Usage: Evaluate a gate relative to the current time (in PST for client SDKs, or your server time for server SDKs)
 
 Supported Operators: after time, before time, on date

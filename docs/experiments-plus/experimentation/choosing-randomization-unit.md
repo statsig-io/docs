@@ -12,10 +12,10 @@ Choosing the right randomization unit will ensure that you deliver a consistent 
 ## Some units are better than others 
 A key assumption in most A/B tests and experiments is the **stable unit treatment value assumption (SUTVA)**, where the response of a unit of randomization under treatment is 
 independent of the response of another unit under treatment. The most common unit of randomization is the user identifier your application uses to uniquely identify an individual user.
-You may choose to use other types of identifiers based on the kind of experiment you want to run and the contraints around it as outlined below.
+You may choose to use other types of identifiers based on the kind of experiment you want to run and the constraints around it as outlined below.
 
 ### User Identifiers
-**Registered User IDs** are the most commonly used units of randomizaiton. Your application would generally create a registered user ID after the user has registered with your application and created an account. 
+**Registered User IDs** are the most commonly used units of randomization. Your application would generally create a registered user ID after the user has registered with your application and created an account. 
 Available as long as the user stays signed-in, the user ID is the most popular unit of randomization as it ensures a consistent user experience, 
 across sessions and devices. It doesn't depend on client-side cookies, which may be cleared by the user at any time.
 

@@ -1,0 +1,15 @@
+```jsx
+import { useConfig } from "statsig-react";
+
+...
+function MyComponent() {
+  const { config, isLoading } = useConfig("a_config_name");
+
+  // Only required if you have not set waitForInitialization to true
+  if (isLoading) {
+    return <div>Fetching Values...</div>;
+  }
+
+  return <div>{config.get("header_label", "Welcome")}</div>;
+}
+```

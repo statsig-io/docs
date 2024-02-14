@@ -1,10 +1,21 @@
 ```ruby
-expConfig = Statsig.get_experiment(user, 'new_user_promo');
+# Values via getLayer
 
-promoTitle = expConfig.get('title', 'Welcome to Statsig! Use discount code WELCOME10OFF for 10% off your first purchase!');
-discount = expConfig.get('discount', 0.1);
+layer = Statsig.get_layer(user, "user_promo_experiments")
+title = layer.get("title", "Welcome to Statsig!")
+discount = layer.get("discount", 0.1)
+
+# or, via getExperiment
+
+title_exp = Statsig.get_experiment(user, "new_user_promo_title")
+price_exp = Statsig.get_experiment(user, "new_user_promo_price")
+
+title = title_exp.get("title", "Welcome to Statsig!")
+discount = price_exp.get("discount", 0.1)
 
 ...
 
-price = msrp * (1 - discount);
+price = msrp * (1 - discount)
+
+
 ```

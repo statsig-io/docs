@@ -1,0 +1,56 @@
+---
+title: S3
+---
+
+## Overview
+
+** S3 Ingestion is in beta, please message the team to get early access **
+
+To set up connection with S3, Statsig needs the following
+
+- Region
+- Bucket Name
+- Granting Bucket Read Access Permissions to a Statsig-owned Service Account
+
+You can find the regions and bucket name of your S3 bucket in your AWS console within your S3 Buckets overview page, as shown in the image below. (Open image in new tab for a bigger image)
+
+![image](https://user-images.githubusercontent.com/87334575/228698847-864e4607-95e4-44c0-bc0e-e15abb5b43fd.png)
+
+You will be given a Statsig owned IAM user that you'll need to grant S3 bucket permissions to.
+
+![image](https://user-images.githubusercontent.com/87334575/228700279-0e4f265e-32d8-4b8e-b516-496479952870.png)
+
+The user will need read access permissions to your bucket, you can use the below bucket policy for your convenience, replacing STATSIG_IAM_USER and YOUR_S3_BUCKET.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::999689269917:user/STATSIG_IAM_USER"
+            },
+            "Action": [
+                "s3:ListBucket",
+                "s3:GetBucketLocation"
+            ],
+            "Resource": "arn:aws:s3:::YOUR_S3_BUCKET"
+        },
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::999689269917:user/STATSIG_IAM_USER"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::YOUR_S3_BUCKET/*"
+        }
+    ]
+}
+```
+
+### S3 bucket Format
+
+For each dataset you're ingesting through S3, we expect a top level folder in the S3 bucket matching the name of the dataset (e.g metrics, events), with folders denoting each day of data. In each folder we expect parquet files with data corresponding to that day's import. See the following screenshot for a example folder structure.
+
+![image](https://user-images.githubusercontent.com/87334575/228701015-56804b30-522a-4293-b48e-4da3c02b9b6d.png)

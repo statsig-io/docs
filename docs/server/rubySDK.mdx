@@ -3,6 +3,88 @@ sidebar_label: Ruby
 title: Ruby Server SDK
 ---
 
-import Docs from './ruby/index.mdx'
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
 
-<Docs />
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigOptions,
+  StatsigUser,
+  ManualExposures,
+  Shutdown,
+  ClientInitResponse,
+  LocalOverrides,
+  Reference,
+} from "./Templates/index.mdx";
+
+import Install from "./ruby/_install.mdx";
+import Initialize from "./ruby/_initialize.mdx";
+import CheckGate from "./ruby/_checkGate.mdx";
+import GetConfig from "./ruby/_getConfig.mdx";
+import GetExperiment from "./ruby/_getExperiment.mdx";
+import LogEvent from "./ruby/_logEvent.mdx";
+import MoreFAQs from "./ruby/_faqs.mdx";
+import Options from "./ruby/_options.mdx";
+import ShutdownSnippet from "./ruby/_shutdown.mdx";
+import OverridesSnippet from "./ruby/_localOverrides.mdx";
+import * as ReferenceSnippets from "./ruby/_reference.mdx";
+import ClientInitResponseSnippet from "./ruby/_clientInitResponse.mdx";
+
+export const Result = SDKDocsBuilder(
+  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
+  [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/ruby-sdk",
+      },
+    ],
+    [
+      GettingStarted,
+      {
+        sdkType: "Ruby",
+        install: <Install />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+      },
+    ],
+    [StatsigUser, {}],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [
+      ClientInitResponse,
+      {
+        sdkName: "Ruby",
+        addedInVersion: "0.13.0",
+        snippet: <ClientInitResponseSnippet />,
+        signature: () => <code>get_client_initialize_response</code>,
+      },
+    ],
+    [
+      LocalOverrides,
+      {
+        addedInVersion: "1.12.0",
+        snippet: <OverridesSnippet />,
+      },
+    ],
+    [FAQ, { faqs: <MoreFAQs /> }],
+    [Reference, { snippets: <ReferenceSnippets.default /> }],
+  ],
+  toc,
+  [...ReferenceSnippets.toc]
+);
+
+<>{Result}</>

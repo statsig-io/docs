@@ -21,7 +21,7 @@ Because of these differences, Statsig recommends Autotune in the following scena
 2. You want the decision to be automated.  Because Autotune automatically selects the winner, it requires no human decision-making.  This is great for launching dozens of simultaneous tests, or for running a long-term unmonitored test.
 3. When it's okay for users to be exposed to different experiences upon return visits.  For example, changing text or recommendation algorithms.
 4. When you have one simple metric to optimize for (eg. click-through rate) that has is an immediate effect of the test.
-5. When you want to test multiple variations.  Autotune can quickly rules out really poor performers while focussing traffic on the best variants.
+5. When you want to test multiple variations.  Autotune can quickly rules out really poor performers while focusing traffic on the best variants.
 
 Autotune should be avoided in the following scenarios:
 1. When you have a complex ecosystem and want to understand secondary effects, tradeoffs between variants, and user behavior.

@@ -1,0 +1,37 @@
+---
+title: Pre-Experiment Bias
+sidebar_label: Pre-Experiment Bias
+slug: /stats-engine/pre-experiment-bias
+---
+
+In some cases, users in two experiment groups can have meaningfully different average behaviors before your experiment applies any intervention to them. If this difference is maintained after your experiment starts, it's possible that experiment analysis will attribute that pre-existing difference to your intervention.
+This can make a result seem more or less "good" or "bad" than it really is.
+[CUPED](methodologies/cuped.md) is helpful in addressing this bias, but can't totally account for it.
+
+Additionally, some metrics like retention are not viable candidates for CUPED and can't be easily adjusted.
+
+Statsig proactively measures the pre-experiment values of all scorecard metrics for all experiment groups, and determines if the values are significantly different and could cause misinterpretations.
+If bias is detected, users are notified and a warning is placed on relevant Pulse results.
+
+### How it works
+
+Statsig provies a "Days Since Exposure" view to help identify novelty effects and existing pre-experiment effects. For example, the test group of the experiment below had a consistently higher mean
+than the control group in the week before exposure for this metric
+
+![image](https://user-images.githubusercontent.com/102695539/246545035-22ff2db6-9c08-4227-a53d-8faa8feb5e92.png)
+
+Statsig detects this bias by running the standard [pulse](../pulse) calculation on the pre-experiment term (looking back one week), and calculating the p-value for the null hypothesis that the groups are identical.
+Relevant results will be flagged according to logic which balances awareness and false positives stemming from high numbers of scorecard metrics or groups.
+
+### What to Do
+
+Pre-experiment bias can occur by chance and is not always a major issue.
+
+- If the total delta is small, it may not meaningfully influence your interpretation of results
+- If CUPED can account for the bias, then the bias should not impact your results
+
+In many cases, you can just use this warning as that - a warning - and proceed while treating impacted metrics with a grain of salt.
+This is often the correct path forward if the metric is not critical to the experiment, or if you care more about the directional movement than the exact number.
+Additionally, more time may alleviate the bias if there's no systemic source (which is generally the case), as the bias will be diluted by additional new users.
+
+However, if the metric is critical to your analysis and you care about the exact numerical value, you may want to consider resalting and restarting this experiment.

@@ -34,7 +34,7 @@ As shown in the diagram below, implementing an experiment using a Statsig server
 
 #### Updating Experiment Configuration
 
-- The server SDK polls Statsig servers for updates to the rule sets every 10 seconds. Statsig’s servers service these requests through a cache with a TTL of 60 seconds. This means that it may take 10 - 70 seconds to propagate any rule updates to the server SDK. 
+- The server SDK polls Statsig servers for updates to the rule sets every 10 seconds by default (and can be overridden).  
 
 
 :::info Best Practices
@@ -75,5 +75,6 @@ To start integrating, jump into the technical docs by language:
 - [ruby](rubySDK)
 - [dotnet](dotnetSDK)
 - [php](phpSDK)
+- [c++](cppSDK)
 
 Got questions? Join the Statsig engineering and product team on the [Statsig Slack channel](https://statsig.com/slack) and ask away!

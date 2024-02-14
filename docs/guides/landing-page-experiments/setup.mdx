@@ -1,0 +1,85 @@
+---
+sidebar_label: Experiment Setup
+title: Setting up Landing Page Experiments
+---
+
+:::info
+This guide assumes you have an existing Statsig account.  Please go here to create a new free account if you don't already have one: https://statsig.com/signup
+:::
+
+### Step 1: Create an experiment
+
+Start by creating a new Experiment on Statsig console. Put in a name and select 'Stable ID' for the ID Type.  This ensures that the experiment works for logged-out users as well.  For the purposes of this walkthrough, you can leave the rest of the fields empty/default.
+
+![Create New Experiment](https://user-images.githubusercontent.com/74588208/210316793-785d4da2-bb40-4f6b-8bab-185f91c62b6a.png)
+
+### Step 2: Add Parameters
+
+Scroll down the Setup tab of the newly created experiment and click on "Add Parameter" button.
+
+![image](https://user-images.githubusercontent.com/74588208/210316935-99f13616-c412-47c1-b9ab-99b90462805e.png)
+
+In the Add New Parameter modal, add a new **String** parameter and name it ```page_url```
+
+![image](https://user-images.githubusercontent.com/74588208/210317537-7c929557-49bf-434c-a23a-c7ce602d1047.png)
+
+Set the urls that you want to test in those parameters.  These urls can either be absolute (```https://example.com/page_one```), or relative to the originating url (```/page_one```).  For this walkthrough, you can leave the allocations at 50%/50%.  This will run an equally allocated A/B test.
+
+:::info
+`page_url` could also be of form: `https://example.com/path_name`, `./path_name`, `/path_name` or `+/path_name`, and each of them will merge with the host page's url in different ways as indicated in the table below:
+
+
+| Base Page URL | page_url parameter | Resulting redirect |
+|--|--|--|
+| https://ex.com/abc/def | `https://ex2.com/path_name` | https://ex2.com/path_name |
+| https://ex.com/abc/def | `/path_name` | https://ex.com/path_name |
+| https://ex.com/abc/def | `./path_name` | https://ex.com/abc/path_name |
+| https://ex.com/abc/def | `+/path_name` | https://ex.com/abc/def/path_name |
+
+:::
+
+
+![image](https://user-images.githubusercontent.com/74588208/210318001-3eb3d0e5-2bed-4fb0-8dd0-c3a491eef8e2.png)
+
+### Step 3: Start the experiment
+
+Save the experiment setup and **Start** it.  We're all set with the experiment set up.
+
+![image](https://user-images.githubusercontent.com/74588208/210318696-866c8aff-3bb7-461b-90d6-f772e06642a1.png)
+
+While you're at it, copy the **Experiment Name**.  We'll use this in a bit.
+
+![image](https://user-images.githubusercontent.com/74588208/210320187-4f70fe55-b672-40aa-a203-148e6f4a9363.png)
+
+
+### Step 4: Copy API key
+
+Click on the settings and choose 'Project Settings'
+
+![image](https://user-images.githubusercontent.com/74588208/210319529-de329895-5f8b-4da2-ad89-b35b079f0e47.png)
+
+Select the 'API Keys' tab and copy the 'Client API Key'.  It will look something like this: ```client-aBcD45FghIjk890...``` You'll need this to wire up the landing pages.
+
+![image](https://user-images.githubusercontent.com/74588208/210319717-49ac4a21-8bdd-4348-b534-374b760ab047.png)
+
+### Step 5: Add HTML snippet
+
+In your landing pages, add the following code snippet in the ```<head>``` section.  Make sure you replace the ```[API_KEY]``` with the Client API Key you copied in **Step 4**, and ```[EXP_NAME]``` with the Experiment Name you copied in **Step 3**.
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/statsig-landing-page-exp?apikey=[API_KEY]&expid=[EXP_NAME]">
+</script>
+```
+
+You have to do this to both the landing pages you're testing.  
+
+Now, publish your landing pages, and you're good to go.  Whenever a user lands on either of those landing pages, Statsig will automatically redirect them to the one they are allocated to as part of the experiment.  So over time you'll get an even 50%/50% split.
+
+## Monitoring the set up
+
+When you've published the landing pages, you can verify everything is working as expected by navigating to the Diagnostics Tab in your experiment and looking at the 'Exposure Stream' at the bottom of the page.  This shows a realtime stream of the page loads along with the variant they were allocated.
+
+![image](https://user-images.githubusercontent.com/74588208/210324429-d5aa84c7-47b0-415a-bb92-cccfcb3b5a35.png)
+
+**Tip:** You can clear cookies, or use Incognito mode on your browser to test the variant allocation for a different user.
+

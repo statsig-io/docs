@@ -1,0 +1,14 @@
+import { VersionBadge } from "../../sdks/_VersionBadge.mdx";
+
+## Local Overrides <VersionBadge version={props.addedInVersion} /> {#local-overrides}
+
+If you want to locally override gates/configs/experiments/layers, there are a set of override APIs as follows. Coupling this with [StatsigOptions.localMode](#statsig-options) can be useful when writing unit tests.
+
+<>{props.snippet}</>
+
+:::note
+
+1. These only apply locally - they do not update definitions in the Statsig console or elsewhere.
+2. The local override API is not designed to be a full mock. They are only a convenient way to override the value of the gate/config/etc.
+
+:::

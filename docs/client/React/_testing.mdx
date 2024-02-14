@@ -1,0 +1,94 @@
+## Testing
+
+At Statsig, we use this jest mock to test our components:
+
+```js
+let mockGates: Record<string, boolean> = {};
+let mockLayers: Record<string, Layer> = {};
+jest.mock('statsig-react', () => {
+  const DynamicConfig = jest.requireActual('statsig-react')
+    .DynamicConfig as new (mockName: string) => DynamicConfig;
+  const StatsigMock = {
+    useGate: (gateName: string) => {
+      return {
+        isLoading: false,
+        value: mockGates[gateName] ?? false,
+      };
+    },
+    useConfig: () => {
+      return {};
+    },
+    useLayer: (name: string) => {
+      return { layer: mockLayers[name], isLoading: false };
+    },
+    useExperiment: (name: string) => {
+      return {
+        isLoading: false,
+        config: new DynamicConfig(name),
+      };
+    },
+    StatsigProvider: (props: object) => {
+        return <>
+            props.children
+        </>
+    },
+    Statsig: {
+      logEvent: () => {},
+      checkGate: (gateName: string) => mockGates[gateName] ?? false,
+      getConfig: () => {
+        return {
+          get: (name: string, fallback: any) => fallback,
+          getValue: (name: string, fallback: any) => fallback,
+        };
+      },
+      getLayer: (layerName: string) => {
+        return StatsigMock.Layer._create(layerName);
+      },
+    },
+
+    Layer: {
+      _create(
+        _layerName: string,
+        _layerValue: Record<string, any> = {},
+        _ruleID = '',
+        _secondaryExposures: Record<string, string>[] = [],
+        _allocatedExperimentName = '',
+      ) {
+        return {
+          get: function <T>(
+            _key: string,
+            defaultValue: T,
+            _typeGuard?: (value: unknown) => value is T,
+          ): T {
+            return defaultValue;
+          },
+        };
+      },
+    },
+  };
+  return StatsigMock;
+});
+```
+
+
+If you want to use local overrides, you can create a helper function to make this easier:
+
+```
+import { Statsig, StatsigContext, StatsigProvider } from 'statsig-react'
+
+function StatsigOverrides({children}) {
+    const statsigContext = useContext(StatsigContext);
+    useEffect(() => {
+      // make sure you import this from statsig-react!
+      Statsig.overrideConfig("a_config", {test_key: "test_value"});
+    }, [statsigContext.initialized]);
+       
+    return statsigContext.initialized ? children : null;
+}
+
+<StatsigProvider ...>
+  <StatsigOverrides>
+    <App />
+  </StatsigOverrides>
+</StatsigProvider>
+```

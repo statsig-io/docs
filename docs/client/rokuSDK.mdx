@@ -1,78 +1,53 @@
 ---
 sidebar_label: Roku
-title: Roku Client SDK for Statsig
+title: Roku Client SDK
 ---
 
-You can start by downloading a copy of [the github repository](https://github.com/statsig-io/roku-sdk).  Roku does not have a package manager where we could release an SDK, so instead, you will copy over the implementation from this repository to integrate Statsig in your roku app.
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
-You will need the following files:
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
 
-```
-Statsig
-  -- components
-    -- statsigsdk
-      -- StatsigTask.brs
-      -- StatsigTask.xml
-  -- source
-    -- DynamicConfig.brs
-    -- Statsig.brs
-    -- StatsigClient.brs
-    -- StatsigUser.brs
-```
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  PrefetchUsers,
+  ManualExposures,
+  Shutdown,
+  LocalOverrides,
+  Reference,
+} from "./Templates/index.mdx";
 
-The library consists of two main parts:
+import Install from "./Roku/_install.mdx";
+import Initialize from "./Roku/_initialize.mdx";
 
-source/Statsig - an object used by SceneGraph components that connects a StatsigClient with the background StatsigTask.
-components/StatsigTask - a SceneGraph Task to do work in the background for integrating with Statsig like batching events and fetching values from Statsig servers.
+export const Result = SDKDocsBuilder(
+  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
+  [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/react-sdk",
+      },
+    ],
+    [
+      GettingStarted,
+      {
+        sdkType: "Roku",
+        shouldSkipStatsigOptions: true,
+        install: <Install />,
+        initialize: <Initialize />,
+      },
+    ],
+  ],
+  toc
+);
 
-The "components" folder contains SceneGraph components and the "source" folder contains BrightScript files.  All of these files must be included in their respective folders of the application.  Note that if you change the file paths, you will need to update the file references in `StatsigTask.xml`.  You will also need to include those references in your main xml file.
-
-### Initializing Statsig
-
-To Initialize the SDK, you first need to integrate the SDK files into your application.
-
-Include `StatsigClient.brs`, `StatsigUser.brs`. `DynamicConfig.brs`, and `Statsig.brs`:
-
-```
-<script type="text/brightscript" uri="pkg:/source/Statsig.brs" />
-<script type="text/brightscript" uri="pkg:/source/StatsigClient.brs" />
-<script type="text/brightscript" uri="pkg:/source/StatsigUser.brs" />
-<script type="text/brightscript" uri="pkg:/source/DynamicConfig.brs" />
-```
-
-Next, you can initialize the library in your init() function, and add a listener for when gates/experiments have been fetched:
-
-
-```
-<!-- in component xml -->
-<StatsigTask id="statsigTask" />
-```
-
-```
-    statsigTask = m.top.findNode("statsigTask")
-    statsigTask.observeField("initializeValues", "onStatsigReady")
-    m.statsig = Statsig(statsigTask)
-
-    user = StatsigUser()
-    user.setUserID("456")
-    m.statsig.initialize("client-xCcfvCnnFxAFDKPOB2NwyXQ5YmYw1ENydKmG6WxIxRx", user)
-```
-
-For more information on all of the user fields you can use, see the [StatsigUser docs](/client/concepts/user).
-
-Before the SDK has loaded the updated values, all APIs will return default values (false for gates, empty configs and experiments).  
-To implement a callback handler for statsig being ready, and tell the SDK to load the updated values in the `onStatsigReady` function observed above:
-
-```
-function onStatsigReady() as void
-    m.statsig.load()
-    
-    // Check gates, log events, check experiments, etc
-    gate = m.statsig.checkGate("gate_id")
-    config = m.statsig.getConfig("config_id")
-    experiment = m.statsig.getExperiment("experiment_id")
-    m.statsig.logEvent("event_name", "event_value", {metadata: "event_metadata"})
-end function
-```
-
-If you need to update the user, `m.statsig.updateUser(newUser)` will trigger the same `onStatsigReady` callback once the new gate/config/experiment values have been fetched from statsig servers.
+<>{Result}</>

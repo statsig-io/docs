@@ -1,0 +1,16 @@
+```jsx
+const [user, setUser] = useState({
+  userID: "a-user",
+  email: "user-a@gmail.com"
+});
+
+...
+
+// Pass your StatsigUser into the StatsigProvider
+return (
+    <StatsigProvider
+      sdkKey="client-key"
+      waitForInitialization={true}
+      user={user}
+    >
+```

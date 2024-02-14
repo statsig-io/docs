@@ -1,0 +1,31 @@
+---
+title: Deprecation Notices
+sidebar_label: Deprecation Notices
+---
+
+## Async Evaluation Functions
+
+#### Reason
+Server SDKs were originally desgined for maximum backwards compatibility. 
+This meant that if a Server SDK did not contain support for an operator or configuration, 
+it would fallback to hitting Statsig's servers, ensuring a valid result would be returned. 
+This is why all top level evaluation related functions were asynchronous.
+
+In practice however, this is seldom required, so we no longer feel the trade off 
+for sync vs async functions is worth it and will be removing the asynchronous functions in newer releases.
+
+#### Example
+
+```java
+var result = await Statsig.checkGate("my_gate"); // Bad
+
+var result = Statsig.checkGateSync("my_gate"); // Good
+```
+
+#### SDKs
+
+.NET Server - [v1.20.0](https://github.com/statsig-io/dotnet-sdk/releases/tag/v1.20.0)
+
+NodeJS Server - [v5.10.0](https://github.com/statsig-io/node-js-server-sdk/releases/tag/v5.10.0)
+
+Java/Kotlin Server - [v1.12.0](https://github.com/statsig-io/java-server-sdk/releases/tag/v1.12.0)

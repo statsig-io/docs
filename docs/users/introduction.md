@@ -4,18 +4,19 @@ sidebar_label: Users
 slug: /users
 ---
 
-The Users tab gives you a view of how each user experiences your features and how their gate checks evaluated.
+The Users tab enables you to diagnose issues for specific IDs, by helping answer questions like "which experiment group was this ID in?" Or "when did this ID first see this feature?" It also provides a handy interface to override a specific ID into/ out of different gate and experiment treatments. 
 
 ## How the Users tab works 
-The data in the Users tab is populated automatically when users are evaluated by the Statsig SDK. You can filter and search for specific users and see gate evaluations and recent events. Data is refreshed daily. Few things to note:
-- For user metadata such as email address, IP, etc we show the most commonly occuring value in cases where the user has had events with multiple different values
-- We only show events from the last 3 days (capped at a max of 10 events per users) - we will be adding support for pulling more data for a user shortly!
-- The list of Feature Gates, Experiments, and Dynamic Configs for a user reflects those that the user has had at least one exposure to - it does not guarantee that the user will continue to be a part of those in subsequent visits to your product, since the rules for your Feature Gates and Experiments can change, and the user attributes that those depend on could also change.
+When you enter the User's tab, you specify which ID's data to load. To do this, you'll need to enter both the ID and ID type you're looking for. You'll be blocked from submitting a query until you enter both of these inputs. 
 
-![Users tab overview](https://user-images.githubusercontent.com/31516123/134972013-de7d47c2-2d81-4494-90ac-c4929007b7a9.png)
-![User detail view](https://user-images.githubusercontent.com/31516123/134972152-a3eb61f8-6f0b-49b7-9f37-fa56dc90552b.png)
+A Users Tab query surfaces the following information: 
 
-## Unit Types
-The Users Tab is filtered by unit type.  Use the drop down selector to view users or units based on each of the unit types availalbe for the project.
+- **ID Properties-** Additional context around this ID
+- **Log History & Event Details-** History of events and exposures for this ID, limited to 5000 rows
+- **Overrides-** Ability to manually override a given ID into a given feature gate or experiment variant 
 
-![image](https://user-images.githubusercontent.com/90343952/148592563-da1c3d41-4df8-4953-840f-f5baf8b0b94c.png)
+## Override Controls from the Users Tab 
+The Users tab surfaces a list of all entities, along with the ability to override an ID into a given experiment variant or feature gate rollout. If there is already an active override for an ID on a particular entity, this will be surfaced within this section (and can be modified inline). Any overrides set in the Users Tab will be synced to the "Overrides" section of the entity in question (and can be edited/ removed from this interface as well). 
+
+![Screen Shot 2023-12-01 at 2 36 50 PM](https://github.com/statsig-io/docs/assets/101903926/3b6c5f66-b76e-4472-9023-ecf1090183ba)
+![Screen Shot 2023-12-01 at 2 36 58 PM](https://github.com/statsig-io/docs/assets/101903926/29595907-1b4d-4da4-b1bd-feccdbdbf06c)

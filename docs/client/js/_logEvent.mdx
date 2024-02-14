@@ -1,3 +1,32 @@
-```jsx
-statsig.logEvent('add_to_cart', 'SKU_12345', {'price': '9.99', 'item_name': 'diet_coke_48_pack'});
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="js-sdk-lang-choice"
+  defaultValue="ts"
+  values={[
+    {label: 'TypeScript', value: 'ts'},
+    {label: 'JavaScript', value: 'js'},
+  ]}>
+
+  <TabItem value="ts">
+
+```typescript
+Statsig.logEvent("add_to_cart", "SKU_12345", {
+  price: "9.99",
+  item_name: "diet_coke_48_pack",
+});
 ```
+
+  </TabItem>
+  <TabItem value="js">
+
+```jsx
+Statsig.logEvent("add_to_cart", "SKU_12345", {
+  price: "9.99",
+  item_name: "diet_coke_48_pack",
+});
+```
+
+  </TabItem>
+</Tabs>

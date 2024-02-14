@@ -1,0 +1,20 @@
+import { useColorMode } from "@docusaurus/theme-common";
+
+export const VersionBadge = ({ version }) => {
+  if (!version) {
+    return null;
+  }
+  return (
+    <span
+      style={{
+        padding: "5px 10px",
+        color: "var(--ifm-color-content)",
+        backgroundColor: "var(--ifm-navbar-background-color)",
+        borderRadius: 30,
+        marginLeft: 10,
+      }}
+    >
+      v{version}+
+    </span>
+  );
+};

@@ -19,8 +19,33 @@ When calling APIs that require a StatsigUser object, you should pass as much inf
 | Locale            | Locale of the user                                                                                                                                                                                                   | `en_US`                                                                                                                    |
 | App Version       | Version of the app the user is using                                                                                                                                                                                 | `1.0.1`                                                                                                                    |
 | Custom            | Dictionary that can contain key/value pairs that can be used for Feature Gate targeting. The content of this dictionary will be stored and available after targeting                                                 | `{current_page: "/homepage", ...}`                                                                                         |
-| Private Attibutes | Dictionary that can contain key/value pairs that can be used for Feature Gate targeting. The content of this dictionary will **not** be stored after used for targeting and will be removed from any log_event calls | `{sensitive_field: "sensitive_information", ...}`                                                                          |
+| Private Attibutes | Dictionary that can contain key/value pairs that can be used to evaluate feature gate conditions and segment conditions. The content of this dictionary will **not** be stored after used for targeting and will be removed from any log_event calls | `{sensitive_field: "sensitive_information", ...}`                                                                          |
 | Custom IDs        | Dictionary that can contain key/value pairs used as the randomization unit ID for experiments that are set up using these IDs instead of the `User ID`                                                               | `{account_id: "23456555", company_id: "company_xyz"}`                                                                      |
+
+### What fields can I override to set "Operating System" and "Browser" explicitly?
+
+If you set the userAgent field, server SDKs will parse out the OS/Browser information for evaluating those conditions.  But what if you want to explicitly set this yourself?  You can set it in two places: either top level in the user object (which typing may not allow for some languages), or in the "custom" object.
+
+You must provide this information under the following keys:
+
+- Operating System: os_name
+- OS Version: os_version
+- Browser Name: browser_name
+- Browser Version: browser_version
+
+So, for example, you could set this one of two ways in the user object:
+
+```
+{
+  userID: "uuid",
+  os_name: "Android", // top level
+  custom: {
+    os_name: "iOS",
+  }
+}
+```
+
+If either of these fields is explicitly set, it will take precedence over inferring the value from the `userAgent` field.
 
 ### Have sensitive user PII data that should not be logged?
 
@@ -28,17 +53,17 @@ On the StatsigUser object, there is a field called privateAttributes, which is a
 
 For example, if you have feature gates that should only pass for users with emails ending in "@statsig.com", but do not want to log your users' email addresses to Statsig, you can simply add the key-value pair { email: "my_user@statsig.com" } to privateAttributes on the user and that's it!
 
-### Why is StatsigUser with a UserID required for server SDKs?
+### Why is StatsigUser with a UserID (or any customID) required for server SDKs?
 
-In Server SDKs, a StatsigUser with a userID is required for checkGate, getConfig, and getExperiment. We always recommend using the actual user ID if it's available: users will get a stable experience, and subsequent events will be attributed to the correct users so you can accurately measure downstream metrics.
+In Server SDKs, a StatsigUser with a userID (or any customID) is required for checkGate, getConfig, and getExperiment. We always recommend using the actual user ID if it's available: users will get a stable experience, and subsequent events will be attributed to the correct users so you can accurately measure downstream metrics.
 
-Still aren't sure whether you need to provide the userID? Here are our suggestions for different use cases:
+Still aren't sure whether you need to provide an ID? Here are our suggestions for different use cases:
 
-If you only plan to use feature gates to turn on/off a feature for all of your users, or for all users passing certain conditions (e.g. "country is US"), you can pass any non-empty identifier, hard coded string, or a random ID as the userID if you do not have the actual user ID. Note that you cannot target the empty string in the statsig console.
+If you only plan to use feature gates to turn on/off a feature for all of your users, or for all users passing certain conditions (e.g. "country is US"), you can pass any non-empty identifier, hard coded string, or a random ID as the userID if you do not have the actual user ID or any kind of custom IDs. Note that you cannot target the empty string in the statsig console.
 
 If you want to rollout a feature partially first, make sure it does not cause significant regressions, then roll out to all users, you should pass the persistent user IDs in your checkGate/getConfig/getExperiment calls, as well as any logEvent calls you make. This way, we are able to attribute the events you log to the correct users who saw or didn't see your new feature, and calculate metrics correctly to help you understand whether there was any regression.
 
-If you want to run an A/B experiment to decide whether to ship a new feature, you should also pass the persistent user IDs, for the same reason mentioned in 2) above.
+If you want to run an A/B experiment to decide whether to ship a new feature, you should also pass the persistent user IDs (or custom IDs for experiments and feature gates based on other ID types), for the same reason mentioned in 2) above.
 
 If you want to pass a userID for the above reasons, but don't have a logged in user (e.g. you are optimizing the login flow), set a stable identifier as a cookie or in local storage and use that with each call to Statsig.
 

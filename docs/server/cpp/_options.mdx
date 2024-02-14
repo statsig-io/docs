@@ -1,0 +1,18 @@
+import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
+
+You can specify optional parameters with `options` when initializing.
+
+- **api** string, default `"https://statsigapi.net/v1"`
+  - The base url to use for network requests from the SDK
+- **rulesetsSyncIntervalMs**: int, default `10000`
+  - The interval to poll for changes to your gate and config definition changes
+- **loggingIntervalMs**: int, default `60000`
+  - The default interval to flush logs to Statsig servers
+- **loggingMaxBufferSize**: int, default `1000`, can be set lower but anything over 1000 will be dropped on the server
+  - The maximum number of events to batch before flushing logs to the server
+- **localMode**: bool, default `false`
+  - <LocalModeSnippet type="server" />
+
+:::info
+ID Lists are currently not supported in the C++ server SDK
+:::

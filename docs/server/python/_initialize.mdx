@@ -1,5 +1,9 @@
-```python
+```py
 from statsig import statsig
 
-statsig.initialize('server-secret-key')
+statsig.initialize("server-secret-key")
+
+# or with StatsigOptions
+options = StatsigOptions(tier=StatsigEnvironmentTier.development)
+statsig.initialize("server-secret-key", options)
 ```
