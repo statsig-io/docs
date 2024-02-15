@@ -5,7 +5,7 @@ sidebar_label: ID Resolution
 description: Map cross-platform IDs in experiment analysis
 ---
 
-## The identity problem
+## The identity challenge
 
 A common problem in experimentation is trying to connect different user identifiers before or after some event boundary, most frequently signups.
 
