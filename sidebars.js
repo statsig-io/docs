@@ -593,8 +593,9 @@ module.exports = {
             id: "access-management/introduction",
           },
           items: [
-            "access-management/projects",
             "access-management/organizations",
+            "access-management/projects",
+            "access-management/teams", 
             {
               "Single Sign-On": [
                 "access-management/sso/overview",
