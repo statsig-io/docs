@@ -6,25 +6,26 @@ title: Teams
 Note- Teams are an Enterprise-only feature. If you are on the Developer or Pro tiers, this guide will not apply to you. To upgrade to Enterprise, feel free to reach out to our team [here](https://www.statsig.com/contact/demo).
 :::
 
-In the [Basic Settings page](https://console.statsig.com/24vDD6KOtLJqjrw1Y6oj4C/settings) you are able to configure who has access to your project. Each person invited to a project is assigned a Role that specifies their level of access. 
+## Overview 
+For larger organizations, the Teams feature enables an organizational and settings/ permissions layer on top of a Project. Teams are configured at the Project-level (not Organization-level), and are default-editable by all Project Admins. 
+
+Once teams are configured and a user is assigned to a team, any config they create (gates/ experiments/ metrics, etc.) will be associated with the team they belong to, and will inherit the settings of that team. Users who are members of multiple teams will have the choice of which team to associate their config with at creation time. 
 
 ## Creating Teams 
 
-The different Project Roles available are:
+To create a team, navigate to **Settings** -> **Members** and toggle to the **Teams** tab. Create a new team via the **+Create** button, where you'll be asked to assign the team a name and select its members. You can add/ remove members from a team at any time, not just at initial team creation. 
 
-| Role | Description |
-|-----------|-------------|
-| Read-Only | Users with this role only have access to read data on the Project. This includes reading gate and dynamic config configurations, experiment data, and metrics. Any actions users with these roles take that attempt to edit the configuration for the Project will fail. |
-| Member | Users with this role are able read data for a Project and are able to edit configurations within the Project. This includes being able to create and modify: Feature Gates, Dynamic Configs, Holdouts, Experiments+, etc. |
-| Admin | Users with this role have the same access as `Members` but are additionally able to modify Project Access settings. This includes inviting new users to the Project and changing Roles for existing users of the Project. |
-| Owner | Only the user that has created a project is given the Role of `Owner`. The Owner of a Project have the same access as `Admins` but are additionally able to delete the Project and configure automatic invitations for the Project. If you need to change the Owner of a project, the current owner can change it by going to Settings -> Project Members & Invites -> select the person and edit role to be Owner. |
+Each team has a **Members** and **Settings** tab. Within **Members** you can see all members of the team, including whether a member is a Team Admin or Project Admin (Project Admins have "super Admin" powers and can modify any team). 
 
-## Custom Roles
+<img width="1279" alt="Screen Shot 2024-02-17 at 4 05 18 PM" src="https://github.com/statsig-io/docs/assets/101903926/2e82dc9a-72d2-4c22-aa18-2e6231cf82d1">
+
+
+## Configuring Team Settings 
 Enterprise customers can customize roles used to assign permissions in Statsig. You can create new roles beyond Admin, Member and Read-Only and choose what permissions these roles have. Common use cases include creating a Metrics Admin role or a Warehouse Admin role (for Statsig Warehouse Native).
 ![image](https://github.com/statsig-io/docs/assets/31516123/bd3d4fac-9753-44ff-87ac-2ce1b30bdbea)
 
 
-## Automatic Project Invitations
+## How Teams are Used Throughout the Console 
 
 To simplify sending invitations for a Project, you can allow users creating a new Statsig account to automatically join your project if their work email domain matches the `Owner's`. For example, a Project Owner with an `@statsig.com` email can enable all new users signing up with an `@statsig.com` email to automatically join their project.
 
