@@ -7,13 +7,13 @@ Note- Teams are an Enterprise-only feature. If you are on the Developer or Pro t
 :::
 
 ## Overview 
-For larger organizations, the Teams feature enables an organizational and settings/ permissions layer on top of a Project. Teams are configured at the Project-level (not Organization-level), and are default-editable by all Project Admins. 
+For larger organizations, the Teams feature enables an organizational and settings/ permissions layer on top of a Project. Teams are configured at the Project (not Organization) level, and are default-editable by all Project Admins. 
 
-Once teams are configured and a user is assigned to a team, any config they create (gates/ experiments/ metrics, etc.) will be associated with the team they belong to, and will inherit the settings of that team. Users who are members of multiple teams will have the choice of which team to associate their config with at creation time. 
+Once teams are configured and a user is assigned to a team, any config (gates/ experiments/ metrics, etc.) they create will be associated with the team they belong to, and will inherit the settings of that team. Users who are members of multiple teams will have the choice of which team to associate their config with at creation time. 
 
 ## Creating Teams 
 
-To create a team, navigate to **Settings** -> **Members** and toggle to the **Teams** tab. Create a new team via the **+Create** button, where you'll be asked to assign the team a name and select its members. You can add/ remove members from a team at any time, not just at initial team creation. 
+To create a team, navigate to **Settings** -> **Members** and toggle to the **Teams** tab. Create a new team via the **+Create** button, where you'll be asked to name the team and add members. You can add/ remove members from a team at any time, not just at initial team creation. 
 
 Each team has a **Members** and **Settings** tab. Within **Members** you can see all members of the team, including whether a member is a Team Admin or Project Admin (Project Admins have "super Admin" powers and can modify any team). 
 
