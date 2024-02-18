@@ -19,20 +19,44 @@ Each team has a **Members** and **Settings** tab. Within **Members** you can see
 
 <img width="1279" alt="Screen Shot 2024-02-17 at 4 05 18 PM" src="https://github.com/statsig-io/docs/assets/101903926/2e82dc9a-72d2-4c22-aa18-2e6231cf82d1">
 
+<br>
 
 ## Configuring Team Settings 
 
 For each team, there are a number of settings you can configure: 
 
-- **Default Monitoring Metrics/ Scorecard Metrics:** This setting enables pre-configuration of a set of metrics to add to every new gate/ experiment/ holdout at the team level. These might be a mix of top-line company metrics every team must monitor (e.g. revenue/ app performance), as well as a set of team-specific KPIs all rollouts and experiments should be tracking. 
-- **Default Allowed Reviewers:** This setting enables more granular control of *who* is allowed to review and approve changes to a team's configs. There are three options here- "Anyone in the Project" (least restrictive), "Team Members Only" (keep reviews within the team), and "Team or Project Admins Only" (most restrictive). 
-- **Create/ Edit Configs and Metrics:** This setting dictates which members of a team are allowed to edit or create configs tagged with the team. There are two options here- "Anyone in the Project" (ie. no restrictions, anyone can edit the team's configs), or "Team Members Only". 
-- **Default Target Applications:** This setting will auto-apply any assigned Target Applications to all configs created associated with this team. 
+**Default Monitoring Metrics/ Scorecard Metrics:** This setting enables pre-configuration of a set of metrics to add to every new gate/ experiment/ holdout at the team level. These might be a mix of top-line company metrics every team must monitor (e.g. revenue/ app performance), as well as a set of team-specific KPIs all rollouts and experiments should be tracking. 
 
+
+<img width="881" alt="Screen Shot 2024-02-17 at 4 24 12 PM" src="https://github.com/statsig-io/docs/assets/101903926/16f0ccfd-05d6-4fb2-8992-ec8780ff3778">
+
+**Default Allowed Reviewers:** This setting enables more granular control of *who* is allowed to review and approve changes to a team's configs. There are three options here- "Anyone in the Project" (least restrictive), "Team Members Only" (keep reviews within the team), and "Team or Project Admins Only" (most restrictive). 
+
+
+<img width="924" alt="Screen Shot 2024-02-17 at 4 24 50 PM" src="https://github.com/statsig-io/docs/assets/101903926/39263840-cb37-4286-b30a-c6d255f218d0">
+
+**Create/ Edit Configs and Metrics:** This setting dictates which members of a team are allowed to edit or create configs tagged with the team. There are two options here- "Anyone in the Project" (ie. no restrictions, anyone can edit the team's configs), or "Team Members Only".
+
+
+<img width="919" alt="Screen Shot 2024-02-17 at 4 24 59 PM" src="https://github.com/statsig-io/docs/assets/101903926/df517c17-acdd-4516-a9ee-bc612a0bfdc9">
+
+**Default Target Applications:** This setting will auto-apply any assigned Target Applications to all configs created associated with this team.
+
+<img width="941" alt="Screen Shot 2024-02-17 at 4 26 03 PM" src="https://github.com/statsig-io/docs/assets/101903926/f9a74cb6-e8f8-440c-b394-38ddbc27ae5b">
 
 ## How Teams are Used Throughout the Console 
 
-Once a user is associated with a team, every config they create will now be default-associated with their team. For folks on multiple teams, they will be able to choose which team to associate their config with at creation time). This will apply the team’s relevant settings to that config. Every config will have a field in the header for “Team” (separate from “Owner”).
-You’ll also now have the ability to filter Gate/ Experiment/ Metric listviews, Home Feed, etc. by Team.
+Once a user is associated with a team, every config they create will now be default-associated with their team. For users on multiple teams, they will be able to choose which team to associate their config with at creation time. This will apply the team’s relevant settings to that config. 
 
+![Screen Shot 2024-02-15 at 3 10 45 PM](https://github.com/statsig-io/docs/assets/101903926/dbdc681d-3918-4da1-b9e3-6e43ecb744f8)
+
+
+Every config will have a field in the header for “Team”. This field is separate from “Owner"- whereby "Owner" is a single individual, "Team" is a group of individuals and will not automatially update if, for example, the Owner moves to a different team within the organization. Teams must be manually changed (subject to the review requirements) at the config level. 
+
+![Screen Shot 2024-02-15 at 3 12 18 PM](https://github.com/statsig-io/docs/assets/101903926/7fc0faf7-c059-451b-8a44-6f58e526ef8e)
+
+
+Finally, with the addition of teams, every user can now filter Gate/ Experiment/ Metric listviews and the Home Feed by team. The Home Feed will default to a user's team(s), ensuring the most relevant content is surfaced. 
+
+![Screen Shot 2024-02-15 at 3 09 23 PM](https://github.com/statsig-io/docs/assets/101903926/299cc0ad-5878-454b-9186-e005f8f442b5)
 
