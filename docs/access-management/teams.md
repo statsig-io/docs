@@ -21,19 +21,18 @@ Each team has a **Members** and **Settings** tab. Within **Members** you can see
 
 
 ## Configuring Team Settings 
-Enterprise customers can customize roles used to assign permissions in Statsig. You can create new roles beyond Admin, Member and Read-Only and choose what permissions these roles have. Common use cases include creating a Metrics Admin role or a Warehouse Admin role (for Statsig Warehouse Native).
-![image](https://github.com/statsig-io/docs/assets/31516123/bd3d4fac-9753-44ff-87ac-2ce1b30bdbea)
+
+For each team, there are a number of settings you can configure: 
+
+- **Default Monitoring Metrics/ Scorecard Metrics:** This setting enables pre-configuration of a set of metrics to add to every new gate/ experiment/ holdout at the team level. These might be a mix of top-line company metrics every team must monitor (e.g. revenue/ app performance), as well as a set of team-specific KPIs all rollouts and experiments should be tracking. 
+- **Default Allowed Reviewers:** This setting enables more granular control of *who* is allowed to review and approve changes to a team's configs. There are three options here- "Anyone in the Project" (least restrictive), "Team Members Only" (keep reviews within the team), and "Team or Project Admins Only" (most restrictive). 
+- **Create/ Edit Configs and Metrics:** This setting dictates which members of a team are allowed to edit or create configs tagged with the team. There are two options here- "Anyone in the Project" (ie. no restrictions, anyone can edit the team's configs), or "Team Members Only". 
+- **Default Target Applications:** This setting will auto-apply any assigned Target Applications to all configs created associated with this team. 
 
 
 ## How Teams are Used Throughout the Console 
 
-To simplify sending invitations for a Project, you can allow users creating a new Statsig account to automatically join your project if their work email domain matches the `Owner's`. For example, a Project Owner with an `@statsig.com` email can enable all new users signing up with an `@statsig.com` email to automatically join their project.
+Once a user is associated with a team, every config they create will now be default-associated with their team. For folks on multiple teams, they will be able to choose which team to associate their config with at creation time). This will apply the team’s relevant settings to that config. Every config will have a field in the header for “Team” (separate from “Owner”).
+You’ll also now have the ability to filter Gate/ Experiment/ Metric listviews, Home Feed, etc. by Team.
 
-To enable this feature:
-
-1. Go to your [Project Basic Settings page](https://console.statsig.com/24vDD6KOtLJqjrw1Y6oj4C/settings).
-2. Click on the `Edit Project Settings` button.
-3. Toggle the checkbox labeled `Anyone who signs up with the same email domain can join` and choose the role that users will be assigned to.
-
-![image](https://user-images.githubusercontent.com/75151332/128581866-b5856f1d-9ac6-462d-a57e-22320a093457.png)
 
