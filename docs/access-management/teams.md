@@ -35,7 +35,7 @@ For each team, there are a number of settings you can configure:
 
 <img width="924" alt="Screen Shot 2024-02-17 at 4 24 50 PM" src="https://github.com/statsig-io/docs/assets/101903926/39263840-cb37-4286-b30a-c6d255f218d0">
 
-**Create/ Edit Configs and Metrics:** This setting dictates which members of a team are allowed to edit or create configs tagged with the team. There are two options here- "Anyone in the Project" (ie. no restrictions, anyone can edit the team's configs), or "Team Members Only".
+**Create/ Edit Configs and Metrics:** This setting dictates which members of a team are allowed to edit or create configs tagged with the team. There are two options here- "Anyone in the Project" (no restrictions, anyone can edit the team's configs), or "Team Members Only".
 
 
 <img width="919" alt="Screen Shot 2024-02-17 at 4 24 59 PM" src="https://github.com/statsig-io/docs/assets/101903926/df517c17-acdd-4516-a9ee-bc612a0bfdc9">
@@ -51,12 +51,12 @@ Once a user is associated with a team, every config they create will now be defa
 ![Screen Shot 2024-02-15 at 3 10 45 PM](https://github.com/statsig-io/docs/assets/101903926/dbdc681d-3918-4da1-b9e3-6e43ecb744f8)
 
 
-Every config will have a field in the header for “Team”. This field is separate from “Owner"- whereby "Owner" is a single individual, "Team" is a group of individuals and will not automatially update if, for example, the Owner moves to a different team within the organization. Teams must be manually changed (subject to the review requirements) at the config level. 
+Every config will have a field in the header for “Team”. This field is separate from “Owner"- whereby "Owner" is a single individual, "Team" is a group of individuals and will not automatically update if, for example, the Owner moves to a different team within the organization. Teams must be manually changed (subject to the review requirements) at the config level. 
 
 ![Screen Shot 2024-02-15 at 3 12 18 PM](https://github.com/statsig-io/docs/assets/101903926/7fc0faf7-c059-451b-8a44-6f58e526ef8e)
 
 
-Finally, with the addition of teams, every user can now filter Gate/ Experiment/ Metric listviews and the Home Feed by team. The Home Feed will default to a user's team(s), ensuring the most relevant content is surfaced. 
+Finally, with the addition of teams, every user can now filter Gate/ Experiment/ Metric lists and the Home Feed by team. The Home Feed will default to a user's team(s), ensuring the most relevant content is surfaced. 
 
 ![Screen Shot 2024-02-15 at 3 09 23 PM](https://github.com/statsig-io/docs/assets/101903926/299cc0ad-5878-454b-9186-e005f8f442b5)
 
