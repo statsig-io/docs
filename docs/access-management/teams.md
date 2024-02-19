@@ -19,8 +19,6 @@ Each team has a **Members** and **Settings** tab. Within **Members** you can see
 
 <img width="1279" alt="Screen Shot 2024-02-17 at 4 05 18 PM" src="https://github.com/statsig-io/docs/assets/101903926/2e82dc9a-72d2-4c22-aa18-2e6231cf82d1"/>
 
-<br>
-
 ## Configuring Team Settings 
 
 For each team, there are a number of settings you can configure: 
