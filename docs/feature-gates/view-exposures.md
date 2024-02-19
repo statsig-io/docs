@@ -16,7 +16,7 @@ To see the number of users who are being exposed to a feature gate,
   2. Units that did not pass the feature gate, and were used for analysis vs. the "Pass" group
   3. Units that did not pass the feature gate, and were *not* used for analysis vs. the "Pass" group
 
-<img>width="1417" alt="Screen Shot 2024-02-19 at 2 36 22 PM" src="https://github.com/statsig-io/docs/assets/101903926/9b115b7b-026c-4364-aac9-24a2e0007b5d"</>
+<img width="1417" alt="Screen Shot 2024-02-19 at 2 36 22 PM" src="https://github.com/statsig-io/docs/assets/101903926/9b115b7b-026c-4364-aac9-24a2e0007b5d"/>
 
 ## Metric Lifts
 The **Metrics Lifts** panel shows how your feature is performing based on lifts in any business metrics added to the list of **Monitoring Metrics** for your gate. 
@@ -25,5 +25,5 @@ After working with experimentation experts across the industry, we aligned on an
 
 In the example below, the rises in *product view count* and *purchase event count* are statistically significant, suggesting this feature positively impacts the number of product views, but may actually be *negatively* impacting conversions to purchases itself. 
 
-<img>width="1420" alt="Screen Shot 2024-02-19 at 2 50 30 PM" src="https://github.com/statsig-io/docs/assets/101903926/01207199-5a5a-4505-a0af-7e6354b4590d"</>
+<img width="1420" alt="Screen Shot 2024-02-19 at 2 50 30 PM" src="https://github.com/statsig-io/docs/assets/101903926/01207199-5a5a-4505-a0af-7e6354b4590d"/>
 
