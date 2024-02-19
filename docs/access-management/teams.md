@@ -17,7 +17,7 @@ To create a team, navigate to **Settings** -> **Members** and toggle to the **Te
 
 Each team has a **Members** and **Settings** tab. Within **Members** you can see all members of the team, including whether a member is a Team Admin or Project Admin (Project Admins have "super Admin" powers and can modify any team). 
 
-<img width="1279" alt="Screen Shot 2024-02-17 at 4 05 18 PM" src="https://github.com/statsig-io/docs/assets/101903926/2e82dc9a-72d2-4c22-aa18-2e6231cf82d1">
+<img width="1279" alt="Screen Shot 2024-02-17 at 4 05 18 PM" src="https://github.com/statsig-io/docs/assets/101903926/2e82dc9a-72d2-4c22-aa18-2e6231cf82d1"/>
 
 <br>
 
@@ -28,21 +28,21 @@ For each team, there are a number of settings you can configure:
 **Default Monitoring Metrics/ Scorecard Metrics:** This setting enables pre-configuration of a set of metrics to add to every new gate/ experiment/ holdout at the team level. These might be a mix of top-line company metrics every team must monitor (e.g. revenue/ app performance), as well as a set of team-specific KPIs all rollouts and experiments should be tracking. 
 
 
-<img width="881" alt="Screen Shot 2024-02-17 at 4 24 12 PM" src="https://github.com/statsig-io/docs/assets/101903926/16f0ccfd-05d6-4fb2-8992-ec8780ff3778">
+<img width="881" alt="Screen Shot 2024-02-17 at 4 24 12 PM" src="https://github.com/statsig-io/docs/assets/101903926/16f0ccfd-05d6-4fb2-8992-ec8780ff3778"/>
 
 **Default Allowed Reviewers:** This setting enables more granular control of *who* is allowed to review and approve changes to a team's configs. There are three options here- "Anyone in the Project" (least restrictive), "Team Members Only" (keep reviews within the team), and "Team or Project Admins Only" (most restrictive). 
 
 
-<img width="924" alt="Screen Shot 2024-02-17 at 4 24 50 PM" src="https://github.com/statsig-io/docs/assets/101903926/39263840-cb37-4286-b30a-c6d255f218d0">
+<img width="924" alt="Screen Shot 2024-02-17 at 4 24 50 PM" src="https://github.com/statsig-io/docs/assets/101903926/39263840-cb37-4286-b30a-c6d255f218d0"/>
 
 **Create/ Edit Configs and Metrics:** This setting dictates which members of a team are allowed to edit or create configs tagged with the team. There are two options here- "Anyone in the Project" (no restrictions, anyone can edit the team's configs), or "Team Members Only".
 
 
-<img width="919" alt="Screen Shot 2024-02-17 at 4 24 59 PM" src="https://github.com/statsig-io/docs/assets/101903926/df517c17-acdd-4516-a9ee-bc612a0bfdc9">
+<img width="919" alt="Screen Shot 2024-02-17 at 4 24 59 PM" src="https://github.com/statsig-io/docs/assets/101903926/df517c17-acdd-4516-a9ee-bc612a0bfdc9"/>
 
 **Default Target Applications:** This setting will auto-apply any assigned Target Applications to all configs created associated with this team.
 
-<img width="941" alt="Screen Shot 2024-02-17 at 4 26 03 PM" src="https://github.com/statsig-io/docs/assets/101903926/f9a74cb6-e8f8-440c-b394-38ddbc27ae5b">
+<img width="941" alt="Screen Shot 2024-02-17 at 4 26 03 PM" src="https://github.com/statsig-io/docs/assets/101903926/f9a74cb6-e8f8-440c-b394-38ddbc27ae5b"/>
 
 ## How Teams are Used Throughout the Console 
 
