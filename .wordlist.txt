@@ -3,6 +3,7 @@ allowlist
 APIs
 athena
 Atlassian
+athena
 Autotune
 Autotunes
 Autotune's
@@ -42,10 +43,12 @@ DMing
 DNS
 Databricks
 Datadog
+dbfs
 Dev
 deduplication
 Deduplication
 Deduplicate
+deltalake
 Drilldown
 drilldown
 sessionID
@@ -84,6 +87,7 @@ LaunchDarkly's
 LogDNA
 Logstream
 Lorem
+Lukas
 materializations
 MAU
 MAUs
