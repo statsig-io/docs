@@ -21,7 +21,7 @@ To see the number of users who are being exposed to a feature gate,
 ## Metric Lifts
 The **Metrics Lifts** panel shows how your feature is performing based on lifts in any business metrics added to the list of **Monitoring Metrics** for your gate. 
 
-After working with experimentation experts across the industry, we aligned on an equal variant comparison (i.e. 10% vs 10% in this example) for calculating metric lifts for gate rollouts. You can read more about the advantages of this methodolgy in ["A/B Testing Intuition Busters: Common Misunderstandings in Online Controlled Experiments”](https://www.researchgate.net/publication/361226478_AB_Testing_Intuition_Busters_Common_Misunderstandings_in_Online_Controlled_Experiments) by Ron Kohavi, Alex Deng, & Lukas Vermeer. 
+After working with experimentation experts across the industry, we aligned on an equal variant comparison (i.e. 10% vs 10% in this example) for calculating metric lifts for gate rollouts. You can read more about the advantages of this methodology in ["A/B Testing Intuition Busters: Common Misunderstandings in Online Controlled Experiments”](https://www.researchgate.net/publication/361226478_AB_Testing_Intuition_Busters_Common_Misunderstandings_in_Online_Controlled_Experiments) by Ron Kohavi, Alex Deng, & Lukas Vermeer. 
 
 In the example below, the rises in *product view count* and *purchase event count* are statistically significant, suggesting this feature positively impacts the number of product views, but may actually be *negatively* impacting conversions to purchases itself. 
 
