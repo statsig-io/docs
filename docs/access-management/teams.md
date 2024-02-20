@@ -38,7 +38,7 @@ For each team, there are a number of settings you can configure:
 
 <img width="919" alt="Screen Shot 2024-02-17 at 4 24 59 PM" src="https://github.com/statsig-io/docs/assets/101903926/df517c17-acdd-4516-a9ee-bc612a0bfdc9"/>
 
-**Default Target Applications:** This setting will auto-apply any assigned Target Applications to all configs created associated with this team.
+**Default Target Applications:** This setting will auto-apply any assigned Target Applications to all configs created that are associated with this team. Note that this only impacts which Target Applications are added to the config by default at creation time, but can be edited/ overridden as needed. 
 
 <img width="941" alt="Screen Shot 2024-02-17 at 4 26 03 PM" src="https://github.com/statsig-io/docs/assets/101903926/f9a74cb6-e8f8-440c-b394-38ddbc27ae5b"/>
 
