@@ -1,6 +1,7 @@
 AATest
 allowlist
 APIs
+athena
 Atlassian
 athena
 Autotune
@@ -33,6 +34,8 @@ Cloudflare
 CodeLens
 CustomIDs
 DAU
+dbfs
+deltalake
 Disaggregate
 disaggregate
 DM
