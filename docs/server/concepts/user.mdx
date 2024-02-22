@@ -68,3 +68,10 @@ If you want to run an A/B experiment to decide whether to ship a new feature, yo
 If you want to pass a userID for the above reasons, but don't have a logged in user (e.g. you are optimizing the login flow), set a stable identifier as a cookie or in local storage and use that with each call to Statsig.
 
 We hope this is helpful. If you have a use case that is not covered in these scenarios, or have any question at all, feel free to join our Slack community and drop a question/comment there!
+
+### Time-based conditions
+
+All server SDKs support unix timestamps to evaluate time based conditions (After time, before time).  Without knowing all possible variations of DateTime formats, we have to normalize on something, so its best to convert your DateTime field into a standard format for evaluation.
+
+We have added support for ISO timestamps to some server SDKs.
+- The `java-server` sdk, as of `v1.6.0` supports [DateTime fields in the format of `ISO_INSTANT`](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#ISO_INSTANT)
