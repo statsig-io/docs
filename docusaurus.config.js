@@ -186,6 +186,15 @@ module.exports = {
                 }
               },
               {
+                tagName: 'script',
+                attributes: {
+                  type: 'text/javascript',
+                  async: true,
+                  src: 'https://www.googletagmanager.com/gtag/js?id=G-EM5RHE1RHW',
+                  // Add other attributes as needed, like 'nonce' if you use it
+                }
+              },
+              {
                 tagName: "script",
                 attributes: {
                   src: "/js/datadog.js",

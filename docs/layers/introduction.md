@@ -61,6 +61,9 @@ let signUpText = statsig.getLayer('sign_up_tests').get('sign_up_dialog_text', DE
 
 That's all the code you ever need! No more code changes and app releases for new tests. Every time you want to add a new test, simply add a new experiment to the same Layer and choose the parameter `sign_up_dialog_text` as a parameter for the new experiment. The SDK takes care of figuring out which value to serve for the user, based on which experiment the user is allocated to.
 
+## getExperiment vs getLayer API
+For experiments in a layer, you should use the `getLayer` API.  You may notice that your experiments are still accessible via `getExperiment`, but using this API with mutually exclusive experiments can lead to undefined behavior.  This is because the `getExperiment` API is not able to evaluate other experiments, decisions, and parameter values that are determined at the layer level - the `getExperiment` API only evaluates within the scope of that experiment.  As such, you should use `getLayer` for mutually exclusive experiments, never `getExperiment`.
+
 ## A Word on Exposures
 When calling `getLayer(LayerName<string>)` you won't see any exposure logged, however, you will see an exposure logged when accessing a specific parameter within the layer using `getLayer(LayerName<string>).get(Parameter<string>)`. The name of the exposure event is called `statsig::layer_exposure`. 
 * If the user is assigned to an experiment within the Layer, the `statsig::layer_exposure` exposure event is billable.
