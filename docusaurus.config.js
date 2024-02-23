@@ -127,6 +127,64 @@ module.exports = {
         injectHtmlTags() {
           return {
             headTags: [
+              // Google Tag Manager - gtm.js
+              {
+                tagName: 'script',
+                attributes: {
+                  async: true,
+                  src: 'https://www.googletagmanager.com/gtm.js?id=GTM-NRDCWNF',
+                  // include the nonce attribute as needed
+                },
+              },
+              // Inline script to initialize dataLayer and GTM
+              {
+                tagName: 'script',
+                innerHTML: `
+                  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                  'https://www.googletagmanager.com/gtm.js?id='+i+dl;var n=d.querySelector('[nonce]');
+                  n&&j.setAttribute('nonce',n.nonce||n.getAttribute('nonce'));f.parentNode.insertBefore(j,f);
+                  })(window,document,'script','dataLayer','GTM-NRDCWNF');
+                `,
+                attributes: {
+                  type: 'text/javascript',
+                  // include the nonce attribute as needed
+                },
+              },
+              // Global site tag (gtag.js) - Google Analytics
+              {
+                tagName: 'script',
+                attributes: {
+                  async: true,
+                  defer: true,
+                  src: 'https://www.googletagmanager.com/gtag/js?id=G-EM5RHE1RHW',
+                  // include the nonce attribute as needed
+                },
+              },
+              // Inline script to initialize gtag
+              {
+                tagName: 'script',
+                innerHTML: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', 'G-EM5RHE1RHW');
+                `,
+                attributes: {
+                  type: 'text/javascript',
+                  // include the nonce attribute as needed
+                },
+              },
+              {
+                tagName: 'script',
+                attributes: {
+                  type: 'text/javascript',
+                  async: true,
+                  src: 'https://www.googletagmanager.com/gtag/js?id=G-EM5RHE1RHW',
+                  // Add other attributes as needed, like 'nonce' if you use it
+                }
+              },
               {
                 tagName: 'script',
                 attributes: {
