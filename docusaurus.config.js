@@ -127,16 +127,6 @@ module.exports = {
         injectHtmlTags() {
           return {
             headTags: [
-              // Google Tag Manager - gtm.js
-              {
-                tagName: 'script',
-                attributes: {
-                  async: true,
-                  src: 'https://www.googletagmanager.com/gtm.js?id=GTM-NRDCWNF',
-                  // include the nonce attribute as needed
-                },
-              },
-              // Inline script to initialize dataLayer and GTM
               {
                 tagName: 'script',
                 innerHTML: `
@@ -149,20 +139,16 @@ module.exports = {
                 `,
                 attributes: {
                   type: 'text/javascript',
-                  // include the nonce attribute as needed
                 },
               },
-              // Global site tag (gtag.js) - Google Analytics
               {
                 tagName: 'script',
                 attributes: {
                   async: true,
                   defer: true,
                   src: 'https://www.googletagmanager.com/gtag/js?id=G-EM5RHE1RHW',
-                  // include the nonce attribute as needed
                 },
               },
-              // Inline script to initialize gtag
               {
                 tagName: 'script',
                 innerHTML: `
@@ -173,7 +159,6 @@ module.exports = {
                 `,
                 attributes: {
                   type: 'text/javascript',
-                  // include the nonce attribute as needed
                 },
               },
               {
