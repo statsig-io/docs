@@ -195,6 +195,19 @@ module.exports = {
                 }
               },
               {
+                tagName: "co-pilot",
+                attributes: {
+                  copilot_id: "6f8EwgjiL",
+                },
+              },
+              {
+                tagName: "script",
+                attributes: {
+                  type: "module",
+                  src: "https://ui.scoutos.com/copilot.js"
+                },
+              },
+              {
                 tagName: "script",
                 attributes: {
                   src: "/js/datadog.js",
