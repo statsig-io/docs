@@ -176,6 +176,7 @@ module.exports = {
                   // include the nonce attribute as needed
                 },
               },
+https://www.googletagmanager.com/gtag/js?id=G-EM5RHE1RHW
               {
                 tagName: 'script',
                 attributes: {
@@ -193,6 +194,19 @@ module.exports = {
                   src: 'https://www.googletagmanager.com/gtag/js?id=G-EM5RHE1RHW',
                   // Add other attributes as needed, like 'nonce' if you use it
                 }
+              },
+              {
+                tagName: "co-pilot",
+                attributes: {
+                  copilot_id: "6f8EwgjiL",
+                },
+              },
+              {
+                tagName: "script",
+                attributes: {
+                  type: "module",
+                  src: "https://ui.scoutos.com/copilot.js"
+                },
               },
               {
                 tagName: "script",
