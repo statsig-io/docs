@@ -176,7 +176,6 @@ module.exports = {
                   // include the nonce attribute as needed
                 },
               },
-https://www.googletagmanager.com/gtag/js?id=G-EM5RHE1RHW
               {
                 tagName: 'script',
                 attributes: {
