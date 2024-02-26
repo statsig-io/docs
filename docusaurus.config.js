@@ -106,15 +106,6 @@ module.exports = {
     },
   },
   plugins: [
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        hashed: true,
-        indexBlog: false,
-        indexDocs: true,
-        docsRouteBasePath: "/",
-      },
-    ],
     function statsig() {
       const isProd = process.env.NODE_ENV === "production";
       const tier = isProd ? "production" : "development";
@@ -215,6 +206,21 @@ module.exports = {
             from: "/integrations/terraform",
           },
         ],
+      },
+    ],
+  ],
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        indexBlog: false,
+        indexDocs: true,
+        docsRouteBasePath: "/",
+        ignoreFiles: [
+          /client.*/i,
+          /server.*/i,
+        ]
       },
     ],
   ],
