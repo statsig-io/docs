@@ -218,8 +218,10 @@ module.exports = {
         indexDocs: true,
         docsRouteBasePath: "/",
         ignoreFiles: [
-          /client.*/i,
-          /server.*/i,
+          /client\/_[^\/]*\.mdx/i,
+          /server\/_[^\/]*\.mdx/i,
+          /client\/(Android|AndroidOnDeviceEvaluation|Dart|React|ReactNative|Roku|SwiftOnDeviceEval|Templates|Unity|dotnet|iOS|js|jslocal)\/?/i,
+          /server\/(Templates|java|node|cpp|dotnet|erlang|go|php|python|ruby|rust)\/?/i,
         ]
       },
     ],
