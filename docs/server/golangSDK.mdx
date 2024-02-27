@@ -20,6 +20,7 @@ import {
   ClientInitResponse,
   LocalOverrides,
   Reference,
+  DataStore,
   UserPersistentStorage,
 } from "./Templates/index.mdx";
 
@@ -33,6 +34,8 @@ import MoreFAQs from "./go/_faqs.mdx";
 import Options from "./go/_options.mdx";
 import OverridesSnippet from "./go/_localOverrides.mdx";
 import ShutdownSnippet from "./go/_shutdown.mdx";
+import DataStoreInterface from "./go/_dataStoreInterface.mdx";
+import DataStoreExample from "./go/_dataStoreExample.mdx";
 import PersistentStorageInterface from "./go/_persistentStorageInterface.mdx";
 import PersistentStorageExample from "./go/_persistentStorageExample.mdx";
 import * as ReferenceSnippets from "./go/_reference.mdx";
@@ -73,6 +76,10 @@ export const Result = SDKDocsBuilder(
         addedInVersion: "1.3.0",
         snippet: <OverridesSnippet />,
       },
+    ],
+    [
+      DataStore,
+      { interface: <DataStoreInterface />, example: <DataStoreExample /> },
     ],
     [
       UserPersistentStorage,
