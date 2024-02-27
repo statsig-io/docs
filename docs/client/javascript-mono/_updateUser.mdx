@@ -1,0 +1,58 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="js-sdk-lang-choice"
+  defaultValue="ts"
+  values={[
+    {label: 'TypeScript', value: 'ts'},
+    {label: 'JavaScript', value: 'js'},
+  ]}>
+
+  <TabItem value="ts">
+
+```typescript
+import type { StatsigUser } from "statsig-js";
+
+const user: StatsigUser = {
+    userID: currentUserID,
+    ip: currentIP,
+    custom: {
+        new_user: true,
+        level: 2
+    }
+};
+
+await Statsig.initialize('client-sdk-key', user);
+
+...
+// if you want to update the existing user, or change to a different user, call updateUser
+
+const newUser: StatsigUser = { ... };
+await Statsig.updateUser(newUser);
+```
+
+  </TabItem>
+  <TabItem value="js">
+
+```jsx
+const user = {
+    userID: currentUserID,
+    ip: currentIP,
+    custom: {
+        new_user: true,
+        level: 2
+    }
+};
+
+await Statsig.initialize('client-sdk-key', user);
+
+...
+// if you want to update the existing user, or change to a different user, call updateUser
+
+const newUser = { ... };
+await Statsig.updateUser(newUser);
+```
+
+  </TabItem>
+</Tabs>

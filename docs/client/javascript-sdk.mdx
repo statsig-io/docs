@@ -1,0 +1,84 @@
+---
+sidebar_label: New JavaScript (Beta)
+title: New JavaScript Client SDK (Beta)
+---
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  PrefetchUsers,
+  ManualExposures,
+  Shutdown,
+  LocalOverrides,
+  StableID,
+  FetchMode,
+} from "./Templates/index.mdx";
+
+import Install from "./javascript-mono/_install.mdx";
+import Initialize from "./javascript-mono/_initialize.mdx";
+import CheckGate from "./javascript-mono/_checkGate.mdx";
+import GetConfig from "./javascript-mono/_getConfig.mdx";
+import GetExperiment from "./javascript-mono/_getExperiment.mdx";
+import LogEvent from "./javascript-mono/_logEvent.mdx";
+import UpdateUser from "./javascript-mono/_updateUser.mdx";
+import MoreFAQs from "./javascript-mono/_faqs.mdx";
+import PrefetchUsersConfig from "./javascript-mono/_prefetchUsersConfig.mdx";
+import PrefetchUsersMethod from "./javascript-mono/_prefetchUsersMethod.mdx";
+import Options from "./javascript-mono/_options.mdx";
+import { Snippets as ManualExposureSnippets } from "./javascript-mono/_manualExposures.mdx";
+import ShutdownSnippet from "./javascript-mono/_shutdown.mdx";
+import LocalOverridesSnippet from "./javascript-mono/_localOverrides.mdx";
+import { GetStableID, OverrideStableID } from "./javascript-mono/_stableID.mdx";
+
+export const Result = SDKDocsBuilder(
+  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
+  [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/js-client-monorepo",
+      },
+    ],
+    [
+      GettingStarted,
+      {
+        sdkType: "React",
+        install: <Install />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+      },
+    ],
+    [
+      StatsigUser,
+      { excludeMentionToDirectUpdateUser: true, updateUser: <InitUser /> },
+    ],
+    [UpdateUser, {}],
+    [FetchMode, { addedInVersion: "1.26.0", sdk: "React" }],
+    [SSR, {}],
+    [ManualExposures, { addedInVersion: "1.21.0", ...ManualExposureSnippets }],
+    [Testing, {}],
+    [FAQ, { faqs: <MoreFAQs /> }],
+    [Reference, { snippets: <ReferenceSnippets.default /> }],
+  ],
+  toc,
+  [...ReferenceSnippets.toc]
+);
+
+<>{Result}</>

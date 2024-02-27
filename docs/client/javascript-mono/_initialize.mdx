@@ -1,0 +1,40 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="js-sdk-lang-choice"
+  defaultValue="ts"
+  values={[
+    {label: 'TypeScript', value: 'ts'},
+    {label: 'JavaScript', value: 'js'},
+  ]}>
+
+  <TabItem value="ts">
+
+```typescript
+import Statsig from "statsig-js";
+
+// initialize returns a promise which always resolves
+await Statsig.initialize(
+  "client-sdk-key",
+  { userID: "some_user_id" },
+  { environment: { tier: "staging" } } // optional, pass options here if needed
+);
+```
+
+  </TabItem>
+  <TabItem value="js">
+
+```jsx
+const Statsig = require("statsig-js");
+
+// initialize returns a promise which always resolves
+await Statsig.initialize(
+  "client-sdk-key",
+  { userID: "some_user_id" },
+  { environment: { tier: "staging" } } // optional, pass options here if needed
+);
+```
+
+  </TabItem>
+</Tabs>

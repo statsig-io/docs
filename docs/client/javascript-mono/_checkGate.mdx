@@ -1,0 +1,34 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="js-sdk-lang-choice"
+  defaultValue="ts"
+  values={[
+    {label: 'TypeScript', value: 'ts'},
+    {label: 'JavaScript', value: 'js'},
+  ]}>
+
+  <TabItem value="ts">
+
+```typescript
+if (Statsig.checkGate("new_homepage_design")) {
+  // Gate is on, show new home page
+} else {
+  // Gate is off, show old home page
+}
+```
+
+  </TabItem>
+  <TabItem value="js">
+
+```jsx
+if (Statsig.checkGate("new_homepage_design")) {
+  // Gate is on, show new home page
+} else {
+  // Gate is off, show old home page
+}
+```
+
+  </TabItem>
+</Tabs>
