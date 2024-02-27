@@ -47,7 +47,7 @@ You should see the following app in your localhost:
 
 ## Setup the Statsig React SDK on the client side
 
-First install the Statsig [React SDK](https://docs.statsig.com/server/Node.jsServerSDK)
+First install the Statsig [React SDK](https://docs.statsig.com/client/reactSDK)
 
 <Tabs
   defaultValue="npm"
@@ -177,6 +177,32 @@ Failing Experience:
 
 To improve performance for the client side feature gates check pattern, we can evaluate feature flag values on the server and pass results to the client. 
 
+First install the Statsig [Node SDK](https://docs.statsig.com/server/nodejsServerSDK)
+
+<Tabs
+  defaultValue="npm"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+  ]}>
+  <TabItem value="npm">
+
+```shell
+npm install statsig-node
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```shell
+yarn add statsig-node
+```
+
+  </TabItem>
+</Tabs>
+
+
+
 Create a `statsig-synchronous-provider.tsx` file to wrap the StatsigSynchronousProvider component from the React SDK.
 
 ```
@@ -217,6 +243,7 @@ Now in our RootLayout, we can evaluate Statsig configs for a user on the server 
 ...
 import { StatsigProvider } from "./statsig-provider";
 import { StatsigSynchronousProvider } from "./statsig-synchronous-provider";
+import Statsig, { StatsigUser } from "statsig-node";
 ...
 
 async function getStatsigInitializeResponse(user: StatsigUser) {
