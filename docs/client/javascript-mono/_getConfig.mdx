@@ -1,42 +1,9 @@
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
-<Tabs
-  groupId="js-sdk-lang-choice"
-  defaultValue="ts"
-  values={[
-    {label: 'TypeScript', value: 'ts'},
-    {label: 'JavaScript', value: 'js'},
-  ]}>
-
-  <TabItem value="ts">
-
 ```typescript
-import type { DynamicConfig } from "statsig-js";
+const dynamicConfig = myStatsigClient.getDynamicConfig("awesome_product_details");
+const itemName = dynamicConfig.value["product_name"] ?? "Some Fallback";
+const price = dynamicConfig.value["price"] ?? 10.0;
 
-const config: DynamicConfig = Statsig.getConfig("awesome_product_details");
-
-// The 2nd parameter is the default value to be used in case the given parameter name does not exist on
-// the Dynamic Config object. This can happen when there is a typo, or when the user is offline and the
-// value has not been cached on the client.
-const itemName: string = config.get("product_name", "Awesome Product v1");
-const price: number = config.get("price", 10.0);
-const shouldDiscount: boolean = config.get("discount", false);
+if (dynamicConfig.value["is_discount_enabled"] === true) {
+  // apply some discount logic
+}
 ```
-
-  </TabItem>
-  <TabItem value="js">
-
-```jsx
-const config = Statsig.getConfig("awesome_product_details");
-
-// The 2nd parameter is the default value to be used in case the given parameter name does not exist on
-// the Dynamic Config object. This can happen when there is a typo, or when the user is offline and the
-// value has not been cached on the client.
-const itemName = config.get("product_name", "Awesome Product v1");
-const price = config.get("price", 10.0);
-const shouldDiscount = config.get("discount", false);
-```
-
-  </TabItem>
-</Tabs>

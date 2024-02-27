@@ -1,40 +1,11 @@
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
-<Tabs
-  groupId="js-sdk-lang-choice"
-  defaultValue="ts"
-  values={[
-    {label: 'TypeScript', value: 'ts'},
-    {label: 'JavaScript', value: 'js'},
-  ]}>
-
-  <TabItem value="ts">
 
 ```typescript
-import Statsig from "statsig-js";
+import { PrecomputedEvaluationsClient } from '@sigstat/precomputed-evaluations';
 
-// initialize returns a promise which always resolves
-await Statsig.initialize(
-  "client-sdk-key",
-  { userID: "some_user_id" },
-  { environment: { tier: "staging" } } // optional, pass options here if needed
+const myStatsigClient = new PrecomputedEvaluationsClient(
+  "<STATSIG_CLIENT_SDK_KEY>", 
+  { userID: 'a-user' }, 
+  { environment: { tier: "staging" } } // (optional) Configure SDK via StatsigOptions here
 );
+await myStatsigClient.initialize();
 ```
-
-  </TabItem>
-  <TabItem value="js">
-
-```jsx
-const Statsig = require("statsig-js");
-
-// initialize returns a promise which always resolves
-await Statsig.initialize(
-  "client-sdk-key",
-  { userID: "some_user_id" },
-  { environment: { tier: "staging" } } // optional, pass options here if needed
-);
-```
-
-  </TabItem>
-</Tabs>

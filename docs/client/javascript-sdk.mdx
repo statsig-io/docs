@@ -15,32 +15,27 @@ import {
   WorkingWith,
   StatsigUser,
   StatsigOptions,
-  PrefetchUsers,
-  ManualExposures,
   Shutdown,
-  LocalOverrides,
-  StableID,
-  FetchMode,
+  CodeExamples,
 } from "./Templates/index.mdx";
 
-import Install from "./javascript-mono/_install.mdx";
-import Initialize from "./javascript-mono/_initialize.mdx";
+import OnDeviceEvalProsAndCons from "./Templates/_OnDeviceEvalProsAndCons.mdx";
+
+import * as _Migration from "./javascript-mono/_migration.mdx";
+export const Migration = _Migration;
+
 import CheckGate from "./javascript-mono/_checkGate.mdx";
 import GetConfig from "./javascript-mono/_getConfig.mdx";
 import GetExperiment from "./javascript-mono/_getExperiment.mdx";
+import Initialize from "./javascript-mono/_initialize.mdx";
+import Install from "./javascript-mono/_install.mdx";
 import LogEvent from "./javascript-mono/_logEvent.mdx";
-import UpdateUser from "./javascript-mono/_updateUser.mdx";
 import MoreFAQs from "./javascript-mono/_faqs.mdx";
-import PrefetchUsersConfig from "./javascript-mono/_prefetchUsersConfig.mdx";
-import PrefetchUsersMethod from "./javascript-mono/_prefetchUsersMethod.mdx";
 import Options from "./javascript-mono/_options.mdx";
-import { Snippets as ManualExposureSnippets } from "./javascript-mono/_manualExposures.mdx";
 import ShutdownSnippet from "./javascript-mono/_shutdown.mdx";
-import LocalOverridesSnippet from "./javascript-mono/_localOverrides.mdx";
-import { GetStableID, OverrideStableID } from "./javascript-mono/_stableID.mdx";
 
 export const Result = SDKDocsBuilder(
-  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
+  { },
   [
     [
       Repository,
@@ -48,10 +43,11 @@ export const Result = SDKDocsBuilder(
         repo: "https://github.com/statsig-io/js-client-monorepo",
       },
     ],
+    [Migration, {}],
     [
       GettingStarted,
       {
-        sdkType: "React",
+        sdkType: "JavaScript Precomputed Evaluations",
         install: <Install />,
         initialize: <Initialize />,
       },
@@ -66,19 +62,18 @@ export const Result = SDKDocsBuilder(
       },
     ],
     [
-      StatsigUser,
-      { excludeMentionToDirectUpdateUser: true, updateUser: <InitUser /> },
+      CodeExamples,
+      {
+        link: "https://github.com/statsig-io/js-client-monorepo/tree/main/samples",
+        trailingMessage: "Included are both Swift and Objective C uses.",
+      },
     ],
-    [UpdateUser, {}],
-    [FetchMode, { addedInVersion: "1.26.0", sdk: "React" }],
-    [SSR, {}],
-    [ManualExposures, { addedInVersion: "1.21.0", ...ManualExposureSnippets }],
-    [Testing, {}],
+    [StatsigUser, { excludeMentionToDirectUpdateUser: true, isOnDeviceEval: true, snippet: <></> }],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
-    [Reference, { snippets: <ReferenceSnippets.default /> }],
   ],
   toc,
-  [...ReferenceSnippets.toc]
 );
 
 <>{Result}</>

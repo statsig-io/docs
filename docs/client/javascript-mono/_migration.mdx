@@ -1,0 +1,121 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+## Migration
+
+
+
+
+
+
+
+
+### Standard Initialize
+
+
+
+<Tabs
+  groupId="js-migration-choice"
+  defaultValue="new"
+  values={[
+    {label: 'Legacy', value: 'legacy'},
+    {label: 'New', value: 'new'},
+  ]}>
+  <TabItem value="legacy">
+
+```typescript
+import Statsig from "statsig-js";
+
+// initialize returns a promise which always resolves
+await Statsig.initialize(
+  "client-sdk-key",
+  { userID: "some_user_id" },
+  { environment: { tier: "staging" } } // optional, pass options here if needed
+);
+```
+
+  </TabItem>
+  <TabItem value="new">
+
+```typescript
+import { PrecomputedEvaluationsClient } from '@sigstat/precomputed-evaluations';
+
+const statsig = new PrecomputedEvaluationsClient(
+  "<STATSIG_CLIENT_SDK_KEY>", 
+  { userID: 'a-user' }, 
+  { environment: { tier: "staging" } } // (optional) Configure SDK via StatsigOptions here
+);
+await statsig.initialize();
+```
+
+  </TabItem>
+</Tabs>
+
+
+
+
+
+
+
+
+
+
+
+
+### React Initialize
+
+<Tabs
+  groupId="js-migration-choice"
+  defaultValue="new"
+  values={[
+    {label: 'Legacy', value: 'legacy'},
+    {label: 'New', value: 'new'},
+  ]}>
+  <TabItem value="legacy">
+
+```jsx
+import { StatsigProvider } from "statsig-react";
+
+function App() {
+  return (
+    <StatsigProvider
+      sdkKey="<STATSIG_CLIENT_SDK_KEY>"
+      user={{userID: 'a-user'}}
+      waitForInitialization={true}
+      // StatsigOptions (Not Required)
+      options={{
+        environment: { tier: "staging" },
+      }}
+    >
+      <div className="App">{/* Rest of App ... */}</div>
+    </StatsigProvider>
+  );
+}
+```
+
+  </TabItem>
+  <TabItem value="new">
+
+```jsx
+import { PrecomputedEvaluationsClient } from '@sigstat/precomputed-evaluations';
+import { StatsigProvider } from '@sigstat/react-bindings';
+
+const client = new PrecomputedEvaluationsClient(
+  "<STATSIG_CLIENT_SDK_KEY>", 
+  { userID: 'a-user' }, 
+  { environment: { tier: "staging" } } // (optional) Configure SDK via StatsigOptions here
+);
+await statsig.initialize();
+
+function App() {
+  return (
+    <StatsigProvider client={client}>
+      <div className="App">{/* Rest of App ... */}</div>
+    </StatsigProvider>
+  );
+}
+
+```
+
+  </TabItem>
+</Tabs>

@@ -4,10 +4,10 @@ import TabItem from "@theme/TabItem";
 You can install the Statsig SDK via npm, yarn or jsdelivr:
 
 <Tabs
-  defaultValue="script"
+  defaultValue="npm"
   values={[
-    {label: 'Script', value: 'script'}, 
     {label: 'NPM', value: 'npm'},
+    {label: 'Script', value: 'script'}, 
     {label: 'Yarn', value: 'yarn'},
   ]}>
 
@@ -21,24 +21,24 @@ To access the current primary JavaScript bundle, use:
 
 To access specific files/versions:
 
-`http://cdn.jsdelivr.net/npm/statsig-js@{version}/{file}`
+`https://cdn.jsdelivr.net/npm/@statsig/precomputed-evaluations@{version}/build/precomputed-evaluations.min.js`
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/statsig-js/build/statsig-prod-web-sdk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@statsig/precomputed-evaluations/build/precomputed-evaluations.min.js"></script>
 ```
 
   </TabItem>
   <TabItem value="npm">
 
 ```shell
-npm install statsig-js
+npm install @statsig/precomputed-evaluations
 ```
 
   </TabItem>
   <TabItem value="yarn">
 
 ```shell
-yarn add statsig-js
+yarn add @statsig/precomputed-evaluations
 ```
 
   </TabItem>
