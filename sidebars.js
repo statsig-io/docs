@@ -579,6 +579,11 @@ module.exports = {
             "data-warehouse-ingestion/data_mapping",
           ],
         },
+        {
+          type: "category",
+          label: "Notices",
+          items: ["sdks/group-name-breaking-change"],
+        },
       ],
     },
     {
