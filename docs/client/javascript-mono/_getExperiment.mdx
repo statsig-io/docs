@@ -1,16 +1,15 @@
 ```typescript
 // Values via getLayer
 
-const layer = Statsig.getLayer("user_promo_experiments");
-const promoTitle = layer.getValue("title") ?? "Welcome to Statsig!";
-const discount = layer.getValue("discount") ?? 0.1;
+const layer = myStatsigClient.getLayer("user_promo_experiments");
+
+const promoTitle = myStatsigClient.getValue("title") ?? "Welcome to Statsig!";
+const discount = myStatsigClient.getValue("discount") ?? 0.1;
 
 // or, via getExperiment
 
-const titleExperiment = Statsig.getExperiment("new_user_promo_title");
-const priceExperiment = Statsig.getExperiment("new_user_promo_price");
-
-const itemName = dynamicConfig.value["product_name"] ?? "Some Fallback";
+const titleExperiment = myStatsigClient.getExperiment("new_user_promo_title");
+const priceExperiment = myStatsigClient.getExperiment("new_user_promo_price");
 
 const promoTitle = titleExperiment.value["title"] ?? "Welcome to Statsig!";
 const discount = priceExperiment.value["discount"] ?? 0.1;

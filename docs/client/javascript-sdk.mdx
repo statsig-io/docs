@@ -43,7 +43,6 @@ export const Result = SDKDocsBuilder(
         repo: "https://github.com/statsig-io/js-client-monorepo",
       },
     ],
-    [Migration, {}],
     [
       GettingStarted,
       {
@@ -65,12 +64,13 @@ export const Result = SDKDocsBuilder(
       CodeExamples,
       {
         link: "https://github.com/statsig-io/js-client-monorepo/tree/main/samples",
-        trailingMessage: "Included are both Swift and Objective C uses.",
+        trailingMessage: "",
       },
     ],
     [StatsigUser, { excludeMentionToDirectUpdateUser: true, isOnDeviceEval: true, snippet: <></> }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [Migration, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
   ],
   toc,
