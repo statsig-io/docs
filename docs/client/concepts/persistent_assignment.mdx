@@ -1,12 +1,14 @@
 ---
-title: User Persistent Storage
-sidebar_label: User Persistent Storage
-slug: /client/concepts/user_persistent_storage
+title: Persistent Assignment
+sidebar_label: Persistent Assignment
+slug: /client/concepts/persistent_assignment
 ---
+
+Persistent assignment allows you to ensure that a user's variant stays consistent while an experiment is running, regardless of changes to allocation or targeting.
 
 ## Persistent Storage
 
-The persistent storage adapter allows you to plug in your own storage solution that Statsig SDK uses to persist values for users.
+The persistent storage adapter allows you to plug in your own storage solution that Statsig SDK uses to persist user assignments.
 The user persistent storage interface consists of just a `load`/`loadAsync`, `save`, `delete` API for read/write operations.
 
 :::info
