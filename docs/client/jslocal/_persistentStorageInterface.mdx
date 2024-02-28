@@ -1,0 +1,10 @@
+```typescript
+type UserPersistedValues = Record<string, Record<string, unknown>>;
+
+interface UserPersistentStorageInterface {
+  delete(key: string, experiment: string): void
+  load(key: string): UserPersistedValues
+  save(key: string, experiment: string, data: string): void
+  loadAsync(key: string): Promise<UserPersistedValues>
+}
+```
