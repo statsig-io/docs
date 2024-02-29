@@ -76,7 +76,7 @@ module.exports = {
           "environmentOverride": {
             "type": "array",
             "x-stoplight": {
-              "id": "k5gbkaazc1w8z"
+              "id": "6abs5bfj5pjre"
             },
             "description": "Environment overrides are currently only supported on POST updates.",
             "items": {
@@ -92,14 +92,14 @@ module.exports = {
       "environment_override": {
         "title": "environment_override",
         "x-stoplight": {
-          "id": "prl1wtbi4szf7"
+          "id": "x8qq0u2gdq4c3"
         },
         "type": "object",
         "properties": {
           "environment": {
             "type": "string",
             "x-stoplight": {
-              "id": "ws3z0x2it6tud"
+              "id": "ztbhpgz1h9r9z"
             },
             "description": "Which environment(s) the override is to be applied, Null implies all environments.",
             "nullable": true
@@ -107,19 +107,19 @@ module.exports = {
           "unitID": {
             "type": "string",
             "x-stoplight": {
-              "id": "tm5bnw1vhij0z"
+              "id": "8ewvbv3g2xqb4"
             },
             "description": "Which unit ID the override is being applied to."
           },
           "passingIDs": {
             "type": "array",
             "x-stoplight": {
-              "id": "98bfxxf2rnv42"
+              "id": "2svzgbmqcytzm"
             },
             "description": "IDs that are forced to pass the feature gate",
             "items": {
               "x-stoplight": {
-                "id": "d407ifgjgg74j"
+                "id": "jl1iymtmkfp28"
               },
               "type": "string"
             }
@@ -127,12 +127,12 @@ module.exports = {
           "failingIDs": {
             "type": "array",
             "x-stoplight": {
-              "id": "9yeft355cn4hm"
+              "id": "y7se7ps38ttn9"
             },
             "description": "IDs that are forced to fail the feature gate",
             "items": {
               "x-stoplight": {
-                "id": "o09rvvx1e6c70"
+                "id": "k212xjpudy82x"
               },
               "type": "string"
             }
@@ -210,6 +210,9 @@ module.exports = {
                     }
                   }
                 },
+                "required": [
+                  "name"
+                ],
                 "properties": {
                   "name": {
                     "type": "string",
@@ -226,15 +229,18 @@ module.exports = {
                   "creatorID": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "a5j8czj6nrw96"
+                      "id": "ml2iaxez5z29w"
                     },
                     "description": "The userID of intended creator, defaults to Console API",
                     "example": "35sClJFs8l0y5uRQhDwUDo"
+                  },
+                  "team": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "kqvdgfa1g2j0q"
+                    }
                   }
-                },
-                "required": [
-                  "name"
-                ]
+                }
               },
               "examples": {
                 "name/description": {
@@ -946,12 +952,12 @@ module.exports = {
                       "array"
                     ],
                     "x-stoplight": {
-                      "id": "5rrnm2ejylkzx"
+                      "id": "iev87e150ufct"
                     },
                     "description": "The gate's tags",
                     "items": {
                       "x-stoplight": {
-                        "id": "voxa9f4r28gsa"
+                        "id": "5x5ddbw0ysfil"
                       },
                       "type": "string",
                       "example": "product_team"
@@ -960,7 +966,7 @@ module.exports = {
                   "type": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "z4yjl8n8f5mc4"
+                      "id": "cjy7d9v62w1qb"
                     }
                   },
                   "targetApps": {
@@ -969,14 +975,14 @@ module.exports = {
                   "idType": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "6o8q8g32tty5p"
+                      "id": "uoaf30hsi8wjf"
                     },
                     "description": "Changing ID type will overwrite all historical Pulse results"
                   },
-                  "": {
+                  "team": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "x9ql896pw8y28"
+                      "id": "dgmkxl44rl4zg"
                     }
                   }
                 }
@@ -1432,12 +1438,12 @@ module.exports = {
                       "array"
                     ],
                     "x-stoplight": {
-                      "id": "5rrnm2ejylkzx"
+                      "id": "zpyj6zvb92prk"
                     },
                     "description": "The gate's tags",
                     "items": {
                       "x-stoplight": {
-                        "id": "voxa9f4r28gsa"
+                        "id": "f3c7wvyhbz0c6"
                       },
                       "type": "string",
                       "example": "product_team"
@@ -1449,9 +1455,15 @@ module.exports = {
                   "idType": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "66ijtgompruqj"
+                      "id": "ej6w8bcm0mfvn"
                     },
                     "description": "Changing ID type will overwrite all historical Pulse results"
+                  },
+                  "team": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "rr48rstrvhnn0"
+                    }
                   }
                 }
               },
@@ -1618,7 +1630,7 @@ module.exports = {
                         },
                         "environmentOverrides": {
                           "x-stoplight": {
-                            "id": "zif61py20eavs"
+                            "id": "z9qw0637tujai"
                           },
                           "type": "array",
                           "items": {
@@ -2108,7 +2120,7 @@ module.exports = {
           }
         },
         "x-stoplight": {
-          "id": "07vwx0bjfwo42"
+          "id": "0gaalfc6efhko"
         },
         "description": "Launch a feature gate",
         "tags": [
@@ -2230,7 +2242,7 @@ module.exports = {
           }
         },
         "x-stoplight": {
-          "id": "07vwx0bjfwo42"
+          "id": "od85u2zkv6rxl"
         },
         "description": "Archive a feature gate",
         "tags": [
