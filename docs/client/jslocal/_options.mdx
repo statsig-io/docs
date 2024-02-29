@@ -43,3 +43,6 @@ import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
   - Completely disable the use of local storage for the lifecycle of this `initialize` -> `shutdown`. The only access to local storage will be to clear out existing keys when statsig is `shutdown`
 - **disableNetworkKeepalive**: boolean, default false. sdk
   - Entirely disables the keepalive flag from being appended to network requests issued by the SDK
+- **userPersistentStorage?** UserPersistentStorageInterface, default null
+  - A persistent storage adapter for running sticky experiments.
+  

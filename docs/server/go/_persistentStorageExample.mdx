@@ -1,0 +1,18 @@
+```go
+type userPersistentStorageExample struct {
+	store      map[string]string
+	loadCalled int
+	saveCalled int
+}
+
+func (d *userPersistentStorageExample) Load(key string) (string, bool) {
+	d.loadCalled++
+	val, ok := d.store[key]
+	return val, ok
+}
+
+func (d *userPersistentStorageExample) Save(key string, value string) {
+	d.saveCalled++
+	d.store[key] = value
+}
+```

@@ -110,7 +110,7 @@ module.exports = {
                   "unitTypes": {
                     "type": "array",
                     "x-stoplight": { "id": "s66oghnnhrg2w" },
-                    "description": "Unit of the metirc: stable_id, user_id, and other custom ids",
+                    "description": "Unit of the metirc: stableID, userID, and other custom ids",
                     "items": {
                       "x-stoplight": { "id": "pnnrvaged3fd8" },
                       "type": "string"
@@ -528,8 +528,8 @@ module.exports = {
                         { "value": 20995, "unit_type": "companyID" },
                         { "value": 3048, "unit_type": "orgID" },
                         { "value": 23502, "unit_type": "overall" },
-                        { "value": 23502, "unit_type": "stable_id" },
-                        { "value": 21094, "unit_type": "user_id" }
+                        { "value": 23502, "unit_type": "stableID" },
+                        { "value": 21094, "unit_type": "userID" }
                       ]
                     }
                   },
@@ -551,8 +551,8 @@ module.exports = {
                         { "value": 20995, "unit_type": "companyID" },
                         { "value": 3048, "unit_type": "orgID" },
                         { "value": 23502, "unit_type": "overall" },
-                        { "value": 23502, "unit_type": "stable_id" },
-                        { "value": 21094, "unit_type": "user_id" }
+                        { "value": 23502, "unit_type": "stableID" },
+                        { "value": 21094, "unit_type": "userID" }
                       ]
                     }
                   },
@@ -562,7 +562,7 @@ module.exports = {
                       "data": [
                         {
                           "value": 105,
-                          "unit_type": "user_id",
+                          "unit_type": "userID",
                           "input_rows": 5,
                           "numerator": 525,
                           "denominator": 5
@@ -576,7 +576,7 @@ module.exports = {
                       "data": [
                         {
                           "value": 1,
-                          "unit_type": "user_id",
+                          "unit_type": "userID",
                           "numerator": 5,
                           "denominator": 5
                         }
@@ -1201,7 +1201,7 @@ module.exports = {
                         },
                         {
                           "value": 21377,
-                          "unitType": "stable_id",
+                          "unitType": "stableID",
                           "numerator": null,
                           "denominator": null,
                           "metricName": "Page Loads",
@@ -1209,7 +1209,7 @@ module.exports = {
                         },
                         {
                           "value": 21355,
-                          "unitType": "user_id",
+                          "unitType": "userID",
                           "numerator": null,
                           "denominator": null,
                           "metricName": "Page Loads",
@@ -1217,7 +1217,7 @@ module.exports = {
                         },
                         {
                           "value": 646524,
-                          "unitType": "stable_id",
+                          "unitType": "stableID",
                           "numerator": null,
                           "denominator": null,
                           "metricName": "Average Time Spent on Page",
@@ -1225,7 +1225,7 @@ module.exports = {
                         },
                         {
                           "value": 5676,
-                          "unitType": "stable_id",
+                          "unitType": "stableID",
                           "numerator": null,
                           "denominator": null,
                           "metricName": "Page Latency",
@@ -1375,7 +1375,7 @@ module.exports = {
                     "tags": ["non_production"],
                     "sql": "SELECT * FROM shoppy-sales.logging.events WHERE event = 'visit'",
                     "idTypeMapping": [
-                      { "statsigUnitID": "userID", "column": "user_id" }
+                      { "statsigUnitID": "userID", "column": "userID" }
                     ],
                     "timestampColumn": "ts",
                     "timestampAsDay": true
@@ -1478,7 +1478,7 @@ module.exports = {
                           "timestampColumn": "ts",
                           "timestampAsDay": true,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "user_id" },
+                            { "statsigUnitID": "userID", "column": "userID" },
                             {
                               "statsigUnitID": "deviceID",
                               "column": "device_id"
@@ -1497,7 +1497,7 @@ module.exports = {
                           "timestampColumn": "ts",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "user_id" },
+                            { "statsigUnitID": "userID", "column": "userID" },
                             {
                               "statsigUnitID": "deviceID",
                               "column": "device_id"
@@ -1508,11 +1508,11 @@ module.exports = {
                           "name": "Navigation Events",
                           "description": "",
                           "tags": [],
-                          "sql": "SELECT\n  ts,\n  user_id,\n  device_id,\n  page,\n  PRODUCT_CATEGORY\nFROM shoppy-sales.logging.events\nWHERE event = 'page_view'",
+                          "sql": "SELECT\n  ts,\n  userID,\n  device_id,\n  page,\n  PRODUCT_CATEGORY\nFROM shoppy-sales.logging.events\nWHERE event = 'page_view'",
                           "timestampColumn": "ts",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "user_id" },
+                            { "statsigUnitID": "userID", "column": "userID" },
                             {
                               "statsigUnitID": "deviceID",
                               "column": "device_id"
@@ -1523,33 +1523,33 @@ module.exports = {
                           "name": "Checkout Events",
                           "description": "",
                           "tags": [],
-                          "sql": "SELECT\n  ts,\n  event,\n  user_id,\n  page,\n  product_category,\n  price_usd\nFROM shoppy-sales.logging.events",
+                          "sql": "SELECT\n  ts,\n  event,\n  userID,\n  page,\n  product_category,\n  price_usd\nFROM shoppy-sales.logging.events",
                           "timestampColumn": "ts",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "user_id" }
+                            { "statsigUnitID": "userID", "column": "userID" }
                           ]
                         },
                         {
                           "name": "Support Events",
                           "description": "",
                           "tags": [],
-                          "sql": "SELECT \n  event, \n  ts, \n  user_id, \n  device_id\nFROM shoppy-sales.logging.events",
+                          "sql": "SELECT \n  event, \n  ts, \n  userID, \n  device_id\nFROM shoppy-sales.logging.events",
                           "timestampColumn": "ts",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "user_id" }
+                            { "statsigUnitID": "userID", "column": "userID" }
                           ]
                         },
                         {
                           "name": "123213",
                           "description": "",
                           "tags": [],
-                          "sql": "SELECT\n  ts,\n  event,\n  user_id,\n  page,\n  product_category,\n  price_usd\nFROM shoppy-sales.logging.events ",
+                          "sql": "SELECT\n  ts,\n  event,\n  userID,\n  page,\n  product_category,\n  price_usd\nFROM shoppy-sales.logging.events ",
                           "timestampColumn": "ts",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "user_id" }
+                            { "statsigUnitID": "userID", "column": "userID" }
                           ]
                         },
                         {
@@ -1583,7 +1583,7 @@ module.exports = {
                           "timestampColumn": "timestamp",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "user_id" }
+                            { "statsigUnitID": "userID", "column": "userID" }
                           ]
                         },
                         {
@@ -1621,7 +1621,7 @@ module.exports = {
                           "timestampColumn": "ts",
                           "timestampAsDay": true,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "user_id" }
+                            { "statsigUnitID": "userID", "column": "userID" }
                           ]
                         }
                       ]
@@ -1776,7 +1776,7 @@ module.exports = {
             "type": "number",
             "description": "Metric value for the given unit_type"
           },
-          "unit_type": { "type": "string", "description": "Which unit_type" },
+          "unit_type": { "type": "string", "description": "Which unitType" },
           "input_rows": {
             "type": "integer",
             "description": "row count for imported metric"

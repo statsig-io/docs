@@ -106,15 +106,6 @@ module.exports = {
     },
   },
   plugins: [
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        hashed: true,
-        indexBlog: false,
-        indexDocs: true,
-        docsRouteBasePath: "/",
-      },
-    ],
     function statsig() {
       const isProd = process.env.NODE_ENV === "production";
       const tier = isProd ? "production" : "development";
@@ -127,16 +118,6 @@ module.exports = {
         injectHtmlTags() {
           return {
             headTags: [
-              // Google Tag Manager - gtm.js
-              {
-                tagName: 'script',
-                attributes: {
-                  async: true,
-                  src: 'https://www.googletagmanager.com/gtm.js?id=GTM-NRDCWNF',
-                  // include the nonce attribute as needed
-                },
-              },
-              // Inline script to initialize dataLayer and GTM
               {
                 tagName: 'script',
                 innerHTML: `
@@ -149,20 +130,16 @@ module.exports = {
                 `,
                 attributes: {
                   type: 'text/javascript',
-                  // include the nonce attribute as needed
                 },
               },
-              // Global site tag (gtag.js) - Google Analytics
               {
                 tagName: 'script',
                 attributes: {
                   async: true,
                   defer: true,
                   src: 'https://www.googletagmanager.com/gtag/js?id=G-EM5RHE1RHW',
-                  // include the nonce attribute as needed
                 },
               },
-              // Inline script to initialize gtag
               {
                 tagName: 'script',
                 innerHTML: `
@@ -173,26 +150,7 @@ module.exports = {
                 `,
                 attributes: {
                   type: 'text/javascript',
-                  // include the nonce attribute as needed
                 },
-              },
-              {
-                tagName: 'script',
-                attributes: {
-                  type: 'text/javascript',
-                  async: true,
-                  src: 'https://www.googletagmanager.com/gtag/js?id=G-EM5RHE1RHW',
-                  // Add other attributes as needed, like 'nonce' if you use it
-                }
-              },
-              {
-                tagName: 'script',
-                attributes: {
-                  type: 'text/javascript',
-                  async: true,
-                  src: 'https://www.googletagmanager.com/gtag/js?id=G-EM5RHE1RHW',
-                  // Add other attributes as needed, like 'nonce' if you use it
-                }
               },
               {
                 tagName: "script",
@@ -248,6 +206,23 @@ module.exports = {
             from: "/integrations/terraform",
           },
         ],
+      },
+    ],
+  ],
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        indexBlog: false,
+        indexDocs: true,
+        docsRouteBasePath: "/",
+        ignoreFiles: [
+          /client\/_[^\/]*\.mdx/i,
+          /server\/_[^\/]*\.mdx/i,
+          /client\/(Android|AndroidOnDeviceEvaluation|Dart|React|ReactNative|Roku|SwiftOnDeviceEval|Templates|Unity|dotnet|iOS|js|jslocal)\/?/i,
+          /server\/(Templates|java|node|cpp|dotnet|erlang|go|php|python|ruby|rust)\/?/i,
+        ]
       },
     ],
   ],
