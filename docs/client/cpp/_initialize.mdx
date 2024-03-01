@@ -1,0 +1,16 @@
+```cpp
+#include <statsig.h>
+
+StatsigUser user;
+user.user_id = "a-user";
+user.custom_ids = {
+    {"employeeID", "an-employee"}
+};
+
+// Create your own instance
+StatsigClient client;
+client.Initialize("client-{YOUR_CLIENT_SDK_KEY}", user);
+
+// or, use the shared instance
+StatsigClient::Shared().Initialize("client-{YOUR_CLIENT_SDK_KEY}", user);
+```
