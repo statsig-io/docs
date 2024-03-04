@@ -1,7 +1,7 @@
 module.exports = {
   "openapi": "3.0.0",
   "x-stoplight": {
-    "id": "83wq4zuvj8n2k"
+    "id": "8a5i8tbrp47mj"
   },
   "info": {
     "title": "https://statsigapi.net/console/v1",
@@ -62,7 +62,7 @@ module.exports = {
       "description": {
         "title": "description",
         "x-stoplight": {
-          "id": "dcz9cd85chafk"
+          "id": "dlbw9g22pgs38"
         },
         "type": "string",
         "description": "A helpful summary of what this experiment does",
@@ -73,7 +73,7 @@ module.exports = {
       "id": {
         "title": "id",
         "x-stoplight": {
-          "id": "ta744sqq80zxy"
+          "id": "fs6mvps0fopje"
         },
         "type": "string",
         "description": "The name that was originally given to the experiment on creation but formatted as an ID (\"A Experiment\" -> \"a_experiment\")"
@@ -81,7 +81,7 @@ module.exports = {
       "idType": {
         "title": "idType",
         "x-stoplight": {
-          "id": "iqh8tjqbe4wkr"
+          "id": "mtuuml1p6d3kn"
         },
         "type": "string",
         "description": "The type of ID which the experiment is based on.",
@@ -92,7 +92,7 @@ module.exports = {
       "status": {
         "title": "status",
         "x-stoplight": {
-          "id": "ntiwxb5zxjjbb"
+          "id": "jt3a8xrj9xhtc"
         },
         "type": "string",
         "description": "The current status of the experiment.",
@@ -105,7 +105,7 @@ module.exports = {
       "hypothesis": {
         "title": "hypothesis",
         "x-stoplight": {
-          "id": "fnjo7g73j8gu5"
+          "id": "0iloix3n0is8o"
         },
         "type": "string",
         "description": "A statement that will be tested by this experiment."
@@ -113,7 +113,7 @@ module.exports = {
       "alloation": {
         "title": "alloation",
         "x-stoplight": {
-          "id": "l67zhpb05og67"
+          "id": "itpjl40aovecl"
         },
         "type": "number",
         "description": "Percent of layer allocated to this experiment",
@@ -123,7 +123,7 @@ module.exports = {
       "duration": {
         "title": "duration",
         "x-stoplight": {
-          "id": "k4lv96qacem0g"
+          "id": "9so287gcmbsjr"
         },
         "type": "integer",
         "description": "How long the experiment should last in days",
@@ -132,7 +132,7 @@ module.exports = {
       "targetingGateID": {
         "title": "targetingGateID",
         "x-stoplight": {
-          "id": "6u1y69ie3u9er"
+          "id": "yp69zqq0qa4tx"
         },
         "type": "string",
         "description": "Restrict your experiment to users passing the selected feature gate."
@@ -140,7 +140,7 @@ module.exports = {
       "defaultConfidenceInterval": {
         "title": "defaultConfidenceInterval",
         "x-stoplight": {
-          "id": "gyc07c30a6u1r"
+          "id": "5n9cgsri9mj5d"
         },
         "type": "string",
         "description": "Default error margin used for results",
@@ -155,7 +155,7 @@ module.exports = {
       "bonferroniCorrection": {
         "title": "bonferroniCorrection",
         "x-stoplight": {
-          "id": "veja728iw8lce"
+          "id": "7d5j4jppvqm2x"
         },
         "type": "boolean",
         "description": "Is Bonferroni correction applied?"
@@ -163,7 +163,7 @@ module.exports = {
       "groups": {
         "title": "groups",
         "x-stoplight": {
-          "id": "1acstajazljhr"
+          "id": "ufc63iv1rihyq"
         },
         "type": "array",
         "description": "The test groups for your experiment",
@@ -224,7 +224,7 @@ module.exports = {
       "tags": {
         "title": "tags",
         "x-stoplight": {
-          "id": "2xs24kj8ami16"
+          "id": "qdrm8id4o357w"
         },
         "type": [
           "array"
@@ -238,7 +238,7 @@ module.exports = {
       "metricTags": {
         "title": "metricTags",
         "x-stoplight": {
-          "id": "rdkqptouzkvc4"
+          "id": "nzcrykklgc29k"
         },
         "type": "array",
         "items": {
@@ -339,7 +339,7 @@ module.exports = {
                   "creatorID": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "r2nuodzf4rbln"
+                      "id": "6nj10ii43wo7e"
                     },
                     "example": "35sClJFs8l0y5uRQhDwUDo",
                     "description": "The userID of intended creator, defaults to Console API"
@@ -347,7 +347,37 @@ module.exports = {
                   "team": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "xqsjaoxx8l5on"
+                      "id": "vkn1nh28hie4h"
+                    }
+                  },
+                  "hypothesis": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "2hhy36irjz2hx"
+                    }
+                  },
+                  "primaryMetrics": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "fjn4zo4mhfmah"
+                    },
+                    "items": {
+                      "$ref": "../../models/experiment_metric.json"
+                    }
+                  },
+                  "secondaryMetrics": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "rgax4dtmoq20d"
+                    },
+                    "items": {
+                      "$ref": "../../models/experiment_metric.json"
+                    }
+                  },
+                  "allocation": {
+                    "type": "number",
+                    "x-stoplight": {
+                      "id": "b2hskdp13cebb"
                     }
                   }
                 }
@@ -1150,7 +1180,7 @@ module.exports = {
                   "team": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "ax1958eyjez2i"
+                      "id": "bwbtcm4zp5xhs"
                     }
                   }
                 }
@@ -1544,7 +1574,7 @@ module.exports = {
                   "team": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "mmrr8wd39bw0j"
+                      "id": "xlzo1aj1le021"
                     }
                   }
                 }
@@ -2749,7 +2779,7 @@ module.exports = {
           "Experiments"
         ],
         "x-stoplight": {
-          "id": "a5mrdd5ctekwy"
+          "id": "la4r8wta4m59f"
         },
         "description": ""
       }
@@ -2860,7 +2890,7 @@ module.exports = {
           "Experiments"
         ],
         "x-stoplight": {
-          "id": "9b4wjkys4pp64"
+          "id": "l84jkqxmrq8wv"
         },
         "requestBody": {
           "content": {
@@ -2965,7 +2995,7 @@ module.exports = {
           "Experiments"
         ],
         "x-stoplight": {
-          "id": "5o60igmohndzw"
+          "id": "emtim398cufaq"
         }
       }
     },
@@ -2996,7 +3026,7 @@ module.exports = {
                     "message": {
                       "type": "string",
                       "x-stoplight": {
-                        "id": "pwvbtb8fsc7c6"
+                        "id": "h8iq6upwtxbfl"
                       }
                     }
                   }
@@ -3014,7 +3044,7 @@ module.exports = {
         },
         "operationId": "Load Pulse",
         "x-stoplight": {
-          "id": "aotc0heyuo9qm"
+          "id": "0w9utb8f51k3p"
         },
         "requestBody": {
           "content": {
@@ -3025,7 +3055,7 @@ module.exports = {
                   "type": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "0en27v9qj5dnk"
+                      "id": "yjyhjqtrbhxlq"
                     },
                     "description": "'full' or 'incremental'"
                   }
@@ -3285,7 +3315,7 @@ module.exports = {
         },
         "operationId": "get-experiments-assignment_sources",
         "x-stoplight": {
-          "id": "uhuru5sju8270"
+          "id": "skm8ymr9fegxx"
         },
         "requestBody": {
           "content": {}
@@ -3393,7 +3423,7 @@ module.exports = {
         },
         "operationId": "post-experiments-assignment_sources",
         "x-stoplight": {
-          "id": "l6qjg6ts2o9qh"
+          "id": "fqzsw92dm4n6x"
         },
         "requestBody": {
           "content": {
@@ -3650,7 +3680,7 @@ module.exports = {
         },
         "operationId": "get-experiments-property_sources",
         "x-stoplight": {
-          "id": "igj7o9sb55p5v"
+          "id": "83nr81intighy"
         }
       },
       "post": {
@@ -3753,7 +3783,7 @@ module.exports = {
         },
         "operationId": "post-experiments-property_sources",
         "x-stoplight": {
-          "id": "bylzkyr327h4x"
+          "id": "ckibvujsy8mbb"
         },
         "requestBody": {
           "content": {
@@ -3799,7 +3829,7 @@ module.exports = {
                         "": {
                           "type": "string",
                           "x-stoplight": {
-                            "id": "jlz0x95gjokkf"
+                            "id": "ckc6iin2hxpj7"
                           }
                         }
                       }
