@@ -1,14 +1,40 @@
+import { useColorMode } from "@docusaurus/theme-common";
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+export const CodePen = ({ embed }) => {
+  const isDarkTheme = useColorMode().colorMode === "dark";
+  return (
+    <iframe
+      height="520"
+      width="100%"
+      scrolling="no"
+      title="Statsig Example"
+      src={`${embed}?default-tab=js%2Cresult&editable=true&theme-id=${
+        isDarkTheme ? "dark" : "light"
+      }`}
+      frameborder="no"
+      loading="lazy"
+      allowtransparency="true"
+      allowfullscreen="true"
+    >
+      Unable to load Example.
+    </iframe>
+  );
+};
+
 ## Samples
 
- <div className="codepen"
-      data-height="300"
-      data-theme-id="dark"
-      data-default-tab="js"
-      data-slug-hash="gOyOPwP"
-      data-user="daniel-statsig"
-      style={{ height: '300px', boxSizing: 'border-box', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '2px solid', margin: '1em 0', padding: '1em' }}>
-  <span>
-    See the Pen <a href="https://codepen.io/daniel-statsig/pen/gOyOPwP">Untitled</a> by Daniel Statsig (<a href="https://codepen.io/daniel-statsig">@daniel-statsig</a>)
-    on <a href="https://codepen.io">CodePen</a>.
-  </span>
-</div>
+### Basic Precomputed Evaluations Usage
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/BundleSizeExamplePage.tsx" />
+
+<CodePen embed="https://codepen.io/daniel-statsig/embed/mdgyVyZ" />
+
+<iframe
+  frameborder="0"
+  scrolling="no"
+  height="520"
+  width="100%"
+  allow="clipboard-write"
+  src="https://emgithub.com/iframe.html?target=https%3A%2F%2Fgithub.com%2Fstatsig-io%2Fjs-client-monorepo%2Fblob%2Fmain%2Fsamples%2Freact%2Fsrc%2FClientEventStreamExamplePage.tsx%23L63-L83&style=atom-one-dark&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showCopy=on"
+></iframe>
