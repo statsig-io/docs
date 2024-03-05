@@ -379,6 +379,18 @@ module.exports = {
                     "x-stoplight": {
                       "id": "b2hskdp13cebb"
                     }
+                  },
+                  "tags": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "zj7qbywx8y43s"
+                    },
+                    "items": {
+                      "x-stoplight": {
+                        "id": "jcfcy3lo1zop4"
+                      },
+                      "type": "string"
+                    }
                   }
                 }
               },
