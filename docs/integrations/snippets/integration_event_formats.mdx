@@ -110,28 +110,6 @@ Events will be sent in batches in a JSON format. The structure of a Statsig Even
 }
 ```
 
-#### Configuration Change - Gate Change
-
->
-
-```json
-{
-  "eventName": "statsig::config_change",
-  "user": {
-    "name": "A User",
-    "email": "a.user@email.com"
-  },
-  "timestamp": "1655232119734",
-  "metadata": {
-    "type": "gate",
-    "name": "a_gate_name",
-    "description": "a_description",
-    "environment": "production"
-  },
-  "timeUUID": "af379f61-ab22-11ec-8e0a-05c3ee70bd0c"
-}
-```
-
 #### Example Batch
 
 >
