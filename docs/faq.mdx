@@ -107,3 +107,6 @@ If your web app configures strict Content Security Policy (CSP), adjust the poli
 
 ## Why am I not seeing my exposures and custom events logged in Statsig?
 If you are executing Statsig in a short-lived process (ie a script or edge worker environment), it's likely the process is exiting prior to the event queue being flushed to Statsig. To ensure your exposures and events are sent to Statsig, make sure to call `statsig.flush()` before your process exits. Some edge providers offer utility methods to elegantly handle this situation to ensure events are flushed without blocking the response to the client ([example](https://docs.statsig.com/server/nodejsServerSDK#flushing-events-)). In a long-lived process like a webserver this is typically not required, but some customers choose to hook into the process's shutdown signal to flush events. 
+
+## Can I filter bots from my experiments?
+Yes. The most common way people achieve this is by creating a Segment that targets bots using the user agent string. You can then reference this Segment in any feature gates you create to exclude bots. When you edit this Segment to refine how you identify bots, all the active feature gates that reference it will benefit from the change. 
