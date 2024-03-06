@@ -424,6 +424,7 @@ module.exports = {
             "client/dotnetSDK",
             "client/rokuSDK",
             "client/unitySDK",
+            "client/javascript-sdk",
             "client/dartSDK",
             "client/cpp-client-sdk",
             {

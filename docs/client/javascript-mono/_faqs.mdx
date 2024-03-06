@@ -1,0 +1,5 @@
+#### Does the SDK use the browser local storage or cookies? If so, for what purposes?
+
+The SDK does not use any cookies.
+
+It does use the local storage for feature targeting and experimentation purposes only. Values for feature gates, dynamic configs and experiments are cached in the local storage, which are used as a backup in the event that your website/app cannot reach the Statsig server to fetch the latest values. If any events were logged but could not be sent to Statsig server due to issues like network failure, we also save them in the local storage to be sent again when network restores.
