@@ -39,7 +39,7 @@ We're actively working on adding more metric types - refer to the crosstab below
 | Ratio                 | revenue per page hit, revenue per new user          | Value of Numerator/Value of Denominator based on types | Value of numerator, denominator based on types          | Sum(numerators)/Sum(denominators) | Delta Method applied |
 | Funnel                | conversion through a 5-step buy flow                | Value of Numerator/Value of Denominator based on types | For each step, did the user complete all previous steps | Sum(completions)/Sum(step starts) | Delta Method applied |
 
-You can think of each of these in terms of a SQL query. The means of the experiment groups are either calculated directly (for ratios and mean metrics) or divided by the group population.
+You can think of each of these in terms of a SQL query. The means of the experiment groups are either calculated directly (for ratios and mean metrics) or as the group total divided by the group population.
 
 ### Count
 ```
