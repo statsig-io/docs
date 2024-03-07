@@ -30,12 +30,168 @@ We're actively working on adding more metric types - refer to the crosstab below
 | Count                 | clicks, purchases, API requests                     | Count of Metric Source rows                            | "                                                       | Sum of user values                |                      |
 | Sum                   | revenue, time spent, bandwidth                      | Sum of Metric Source values                            | "                                                       | Sum of user values                |                      |
 | Mean                  | average latency, average purchase price             | Average of non-null Metric Source values               | Sum of values, Count of values                          | Sum(values)/Sum(counts)           | Delta Method applied |
+| Count Distinct        | Unique game rooms the user connected to             | Count of distinct user-value pairs                     | Count of distinct values                                | Average of user-level counts      |                      |
 | User Count            | Metrics based on users with various configurations  |                                                        |                                                         |                                   |                      |
 | - Daily Participation | Average DAU of exposed users                        | Daily Active Users                                     | 1/0 flag for participation on each day                  | Sum of values / Total Days        |                      |
 | - One Time Event      | Did a user complete an event during the experiment  | Daily Active Users                                     | 1/0 flag for participation across experiment lifespan   | Count of users                    |                      |
 | - Custom Window       | Did a user subscribe between 3-7 days from exposure | Daily Active Users                                     | 1/0 flag for participation within window                | Count of users                    |                      |
+| - Latest Value        | Is the user a subscriber today?                     | Daily Active Users                                     | 1/0 flag for participation on latest available day of data | Count of users                 |                      |
 | Ratio                 | revenue per page hit, revenue per new user          | Value of Numerator/Value of Denominator based on types | Value of numerator, denominator based on types          | Sum(numerators)/Sum(denominators) | Delta Method applied |
 | Funnel                | conversion through a 5-step buy flow                | Value of Numerator/Value of Denominator based on types | For each step, did the user complete all previous steps | Sum(completions)/Sum(step starts) | Delta Method applied |
+
+You can think of each of these in terms of a SQL query. The means of the experiment groups are either calculated directly (for ratios and mean metrics) or divided by the group population.
+
+### Count
+```
+-- User Level
+SELECT
+  user_id,
+  COUNT(1) as value
+FROM source_data
+GROUP BY user_id;
+
+-- Group Level
+SELECT
+  group_id,
+  SUM(value) as total,
+  COUNT(distinct user_id) as population
+FROM user_level_data
+GROUP BY group_id;
+```
+
+### Sum
+```
+-- User Level
+SELECT
+  user_id,
+  SUM(value_column) as value
+FROM source_data
+GROUP BY user_id;
+
+-- Group Level
+SELECT
+  group_id,
+  SUM(value) as total,
+  COUNT(distinct user_id) as population
+FROM user_level_data
+GROUP BY group_id;
+```
+
+```
+-- User Level
+SELECT
+  user_id,
+  COUNT(1) as value
+FROM source_data
+GROUP BY user_id;
+
+-- Group Level
+SELECT
+  group_id,
+  SUM(value) as total,
+  COUNT(distinct user_id) as population
+FROM user_data
+GROUP BY group_id;
+```
+
+### Mean
+```
+-- User Level
+SELECT
+  user_id,
+  SUM(value_column) as value,
+  COUNT(value_column) as records
+FROM source_data
+GROUP BY user_id;
+
+-- Group Level
+SELECT
+  group_id,
+  SUM(value)/SUM(records) as mean
+FROM user_data
+GROUP BY group_id;
+```
+
+### Count Distinct
+```
+-- User Level
+SELECT
+  user_id,
+  COUNT(distinct value_column) as value
+FROM source_data
+GROUP BY user_id;
+
+-- Group Level
+SELECT
+  group_id,
+  SUM(value) as total,
+  COUNT(distinct user_id) as population
+FROM user_data
+GROUP BY group_id;
+```
+
+### User Count
+```
+-- User Level
+SELECT
+  user_id,
+  COUNT(distinct date_column) as `Daily Participation Value`,
+  MAX(1) as `One-Time Event Value`,
+  MAX(IF(minutes_since_exposure between window_start and window_end, 1, 0)) as `Custom Window Value`,
+  MAX_BY(passes_filters, date_column) as `Latest Value Value`
+FROM source_data
+GROUP BY user_id;
+
+-- Group Level
+SELECT
+  group_id,
+  SUM(`Daily Participation Value`/days_exposed) as `Daily Participation Total`
+  SUM(`One-Time Event Value`) as `One-Time Event Total`,
+  SUM(`Custom Window Value`) as `Custom Window Total`,
+  SUM(`Latest Value Value`) as `Latest Value Total`,
+  COUNT(distinct user_id) as population
+FROM user_data
+GROUP BY group_id;
+```
+
+### Ratio
+```
+-- User Level
+SELECT
+  user_id,
+  <> as numerator, --depends on numerator type
+  <> as denominator -- depends on denominator type
+FROM source_data
+GROUP BY user_id;
+
+-- Group Level
+SELECT
+  group_id,
+  SUM(numerator)/SUM(denominator) as mean
+FROM user_data
+GROUP BY group_id;
+```
+
+### Funnel
+```
+-- User Level, per step
+SELECT
+  user_id,
+  funnel_session_id, -- optional
+  funnel_step_id,
+  IF(`Completed All Steps Up to Current Step In Order`, 1, 0) as numerator,
+  IF(`Completed Previous Steps In Order`, 1, 0) as denominator
+FROM user_data;
+
+--Group Level
+SELECT
+  group_id,
+  funnel_step_id,
+  SUM(numerator)/SUM(denominator) as mean
+FROM user_data
+GROUP BY group_id;
+```
+
 
 ## Configuring Your Metric
 
