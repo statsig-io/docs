@@ -6,7 +6,7 @@ It is a Client SDK that behaves more like a Server SDK. Rather than require a us
 ### Pros
 - No need for a network request when changing user properties - just check the gate/config/experiment locally
 - Can bring your own cdn or synchronously initialize with a preloaded project definition
-- Lower latency to download configs cached at the edge, rather than evaluated for a given user (which cannot be cached as much)
+- Lower latency to download configs which are cached in Cloudflare CDN at the edge, rather than evaluated on demand for a given user (which cannot be cached as much)
 
 ### Cons
 - Entire project definition is available client side - the names and configurations of all experiments and feature flags accessible by your client key are exposed.
