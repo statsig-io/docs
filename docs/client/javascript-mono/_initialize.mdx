@@ -1,0 +1,11 @@
+
+```typescript
+import { PrecomputedEvaluationsClient } from '@sigstat/precomputed-evaluations';
+
+const myStatsigClient = new PrecomputedEvaluationsClient(
+  "<STATSIG_CLIENT_SDK_KEY>", 
+  { userID: 'a-user' }, 
+  { environment: { tier: "staging" } } // (optional) Configure SDK via StatsigOptions here
+);
+await myStatsigClient.initialize();
+```

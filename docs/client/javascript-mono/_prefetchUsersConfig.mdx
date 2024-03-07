@@ -1,0 +1,46 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="js-sdk-lang-choice"
+  defaultValue="ts"
+  values={[
+    {label: 'TypeScript', value: 'ts'},
+    {label: 'JavaScript', value: 'js'},
+  ]}>
+
+  <TabItem value="ts">
+
+```typescript
+import type { StatsigUser } from "statsig-js";
+
+const prefetchUsers: StatsigUser[] = [
+  { userID: "user_a", customIDs: { groupID: "group_a" } },
+  { userID: "user_b", customIDs: { groupID: "group_a" } },
+];
+
+await Statsig.initialize(
+  "client-sdk-key",
+  { userID: "user_a" },
+  { prefetchUsers: prefetchUsers }
+);
+```
+
+  </TabItem>
+  <TabItem value="js">
+
+```jsx
+const prefetchUsers = [
+  { userID: "user_a", customIDs: { groupID: "group_a" } },
+  { userID: "user_b", customIDs: { groupID: "group_a" } },
+];
+
+await Statsig.initialize(
+  "client-sdk-key",
+  { userID: "user_a" },
+  { prefetchUsers: prefetchUsers }
+);
+```
+
+  </TabItem>
+</Tabs>
