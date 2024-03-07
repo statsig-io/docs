@@ -1,12 +1,18 @@
 module.exports = {
   "openapi": "3.0.0",
-  "x-stoplight": { "id": "z4r4frc83xaoi" },
+  "x-stoplight": {
+    "id": "q123cebmjcdll"
+  },
   "info": {
     "title": "console/v1",
     "version": "1.0",
     "description": "Metrics Endpoint"
   },
-  "servers": [{ "url": "https://statsigapi.net/console/v1" }],
+  "servers": [
+    {
+      "url": "https://statsigapi.net/console/v1"
+    }
+  ],
   "paths": {
     "/metrics": {
       "post": {
@@ -22,31 +28,51 @@ module.exports = {
                   "properties": {
                     "message": {
                       "type": "string",
-                      "x-stoplight": { "id": "4wrsimwekispt" }
+                      "x-stoplight": {
+                        "id": "a94j2stoyc1fi"
+                      }
                     },
                     "data": {
                       "type": "object",
-                      "x-stoplight": { "id": "jp8tn0h0mfo84" },
+                      "x-stoplight": {
+                        "id": "qeiqgpakou71n"
+                      },
                       "properties": {
                         "name": {
                           "type": "string",
-                          "x-stoplight": { "id": "2cof9awd4cjrg" }
+                          "x-stoplight": {
+                            "id": "2mjdc9d8l6e6j"
+                          }
                         },
                         "type": {
                           "type": "string",
-                          "x-stoplight": { "id": "pvn5k6uw74x1y" }
+                          "x-stoplight": {
+                            "id": "d5a90zmvy3woy"
+                          }
                         },
                         "description": {
                           "type": "string",
-                          "x-stoplight": { "id": "5o88j7p22uouz" }
+                          "x-stoplight": {
+                            "id": "ozwemsbc1cehp"
+                          }
                         },
                         "isHidden": {
                           "type": "boolean",
-                          "x-stoplight": { "id": "gftsa9yrt391j" }
+                          "x-stoplight": {
+                            "id": "rjvjj1okzm2wx"
+                          }
                         },
                         "isReadOnly": {
                           "type": "boolean",
-                          "x-stoplight": { "id": "ngr7tnd2uwy1j" }
+                          "x-stoplight": {
+                            "id": "fi1igkx2q6hcz"
+                          }
+                        },
+                        "team": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "666nzllt5tqun"
+                          }
                         }
                       }
                     }
@@ -68,31 +94,48 @@ module.exports = {
               }
             }
           },
-          "400": { "description": "Bad Request" },
-          "401": { "description": "Unauthorized" }
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
         },
-        "x-stoplight": { "id": "oq67er1vq5lgo" },
+        "x-stoplight": {
+          "id": "vpucl6wt3kj45"
+        },
         "description": "Create Cloud Metrics or Warehouse Native Metrics\n\nFor creating Warehouse Native Metrics: See [documentation](https://docs.statsig.com/statsig-warehouse-native/guides/metrics). Configuration of warehouse native metric goes to warehouseNative field. Fields NOT under warehouseNative, only name, tags, isPermanent, and description ",
-        "tags": ["Metrics"],
+        "tags": [
+          "Metrics"
+        ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["name", "type"],
+                "required": [
+                  "name",
+                  "type"
+                ],
                 "properties": {
                   "name": {
                     "type": "string",
-                    "x-stoplight": { "id": "ppd970kq42147" },
+                    "x-stoplight": {
+                      "id": "v6wplqgc7ohzw"
+                    },
                     "description": "The name of the new metric"
                   },
                   "isReadOnly": {
                     "type": "boolean",
-                    "x-stoplight": { "id": "wogtferdhpylz" },
+                    "x-stoplight": {
+                      "id": "az4xm5oypoq6e"
+                    },
                     "description": "Set the metric definition as editable only from Console API"
                   },
                   "type": {
-                    "x-stoplight": { "id": "8w4e30u8ntzyj" },
+                    "x-stoplight": {
+                      "id": "macnydefvpx3r"
+                    },
                     "type": "string",
                     "enum": [
                       "sum",
@@ -109,109 +152,167 @@ module.exports = {
                   },
                   "unitTypes": {
                     "type": "array",
-                    "x-stoplight": { "id": "s66oghnnhrg2w" },
-                    "description": "Unit of the metirc: stable_id, user_id, and other custom ids",
+                    "x-stoplight": {
+                      "id": "b1koshiknnl34"
+                    },
+                    "description": "Unit of the metirc: stableID, userID, and other custom ids",
                     "items": {
-                      "x-stoplight": { "id": "pnnrvaged3fd8" },
+                      "x-stoplight": {
+                        "id": "ufchwavzxc109"
+                      },
                       "type": "string"
                     }
                   },
                   "directionality": {
-                    "x-stoplight": { "id": "9fal37duwsv60" },
+                    "x-stoplight": {
+                      "id": "9e2xoz36fby1f"
+                    },
                     "type": "string",
-                    "enum": ["increase", "decrease"],
+                    "enum": [
+                      "increase",
+                      "decrease"
+                    ],
                     "description": "Allowed increase | decrease. Metric directionality will be used in pulse to signify desired or undesired changes."
                   },
                   "metricEvents": {
-                    "x-stoplight": { "id": "rr95ay90741jo" },
+                    "x-stoplight": {
+                      "id": "1sb55esyu69uf"
+                    },
                     "type": "array",
                     "description": "Event(s) used to compute the metric",
-                    "items": { "$ref": "#/components/schemas/MetricEvent" }
+                    "items": {
+                      "$ref": "#/components/schemas/MetricEvent"
+                    }
                   },
                   "description": {
                     "type": "string",
-                    "x-stoplight": { "id": "hi8d3xvjngz2i" },
+                    "x-stoplight": {
+                      "id": "6iyt42od6wcn6"
+                    },
                     "description": "Description of the new metric"
                   },
                   "tags": {
-                    "type": ["string", "array"],
-                    "x-stoplight": { "id": "y0ph1a0vruf25" },
+                    "type": [
+                      "string",
+                      "array"
+                    ],
+                    "x-stoplight": {
+                      "id": "kklvni6rifhih"
+                    },
                     "items": {
-                      "x-stoplight": { "id": "z8ibs5ztabx4v" },
+                      "x-stoplight": {
+                        "id": "9sthmib918cdt"
+                      },
                       "type": "string"
                     }
                   },
                   "isPermanent": {
                     "type": "boolean",
-                    "x-stoplight": { "id": "mdokl2nq26n8i" }
+                    "x-stoplight": {
+                      "id": "dx0z0wwu1iqkz"
+                    }
                   },
                   "metricComponentMetrics": {
                     "type": "array",
-                    "x-stoplight": { "id": "ay3syqdtfbvi6" },
+                    "x-stoplight": {
+                      "id": "j9o3tga71jpbu"
+                    },
                     "description": "List of input metrics used to calculate the new metric\nFor composite_sum and composite type of metric. ",
                     "items": {
-                      "x-stoplight": { "id": "8q136e74lgme0" },
+                      "x-stoplight": {
+                        "id": "15war9ld2wy6j"
+                      },
                       "type": "object",
                       "properties": {
                         "name": {
                           "type": "string",
-                          "x-stoplight": { "id": "npoaq7nd09fx3" }
+                          "x-stoplight": {
+                            "id": "3bqzox50pyj1c"
+                          }
                         },
                         "type": {
                           "type": "string",
-                          "x-stoplight": { "id": "u5kzrgqskszve" }
+                          "x-stoplight": {
+                            "id": "vienzyq2qo8u8"
+                          }
                         }
                       }
                     }
                   },
                   "rollup": {
                     "type": "string",
-                    "x-stoplight": { "id": "oponh2m391oue" },
+                    "x-stoplight": {
+                      "id": "gfo1eslrp7eth"
+                    },
                     "description": "Time window for metric.\nSpecify \"custom\", if you want to provide customized time window. Default to be same as experiment time window"
                   },
                   "customRollUpStart": {
                     "type": "number",
-                    "x-stoplight": { "id": "36xwnuj34j3ws" },
+                    "x-stoplight": {
+                      "id": "h57sfwreqbkfz"
+                    },
                     "description": "Custom time window start date (Days since exposure)\n"
                   },
                   "customRollUpEnd": {
                     "type": "number",
-                    "x-stoplight": { "id": "0kvadt8zsgs5n" },
+                    "x-stoplight": {
+                      "id": "pj87b1u48tlol"
+                    },
                     "description": "Custom time window end date(Days since exposure)"
                   },
                   "funnelEventList": {
                     "type": "array",
-                    "x-stoplight": { "id": "ag1qwtbpejlof" },
+                    "x-stoplight": {
+                      "id": "6gaqo8te62muf"
+                    },
                     "description": "For funnel metric type. \nNames of events used to create metric",
                     "items": {
-                      "x-stoplight": { "id": "22ar7ts82qjt9" },
+                      "x-stoplight": {
+                        "id": "8i5r8fud4va8z"
+                      },
                       "type": "object",
                       "properties": {
                         "name": {
                           "type": "string",
-                          "x-stoplight": { "id": "hc7cmbckn9zlh" }
+                          "x-stoplight": {
+                            "id": "m8jk7qsr2vajl"
+                          }
                         },
                         "type": {
                           "type": "string",
-                          "x-stoplight": { "id": "tzw18ucxv2i7u" }
+                          "x-stoplight": {
+                            "id": "buaizmo8n25aj"
+                          }
                         }
                       }
                     }
                   },
                   "funnelCountDistinct": {
-                    "x-stoplight": { "id": "4dfeed66234hz" },
+                    "x-stoplight": {
+                      "id": "9hrzfmw1wl6oj"
+                    },
                     "description": "For funnel metric type. \nIf you care about counting each time a user goes through a given sequence of events, choose 'Events'. If you care about counting the number of distinct users that go through a given sequence of events, choose 'Users'.",
                     "type": "string",
-                    "enum": ["events", "users"]
+                    "enum": [
+                      "events",
+                      "users"
+                    ]
                   },
                   "warehouseNative": {
                     "type": "object",
-                    "x-stoplight": { "id": "6zpsok874p6mx" },
+                    "x-stoplight": {
+                      "id": "9vl7kbw8i5dcj"
+                    },
                     "description": "Warehouse native metric configuration.  [Documentation](https://docs.statsig.com/statsig-warehouse-native/guides/metrics)\n\nFor creating user warehouse metric, all configuration is within this object. \nFor other fields, only name, description, tags, and metric type will be used. ",
-                    "required": ["aggregation", "criteria"],
+                    "required": [
+                      "aggregation",
+                      "criteria"
+                    ],
                     "properties": {
                       "aggregation": {
-                        "x-stoplight": { "id": "c1tt9bybpu3fa" },
+                        "x-stoplight": {
+                          "id": "lfjmt17tch06m"
+                        },
                         "type": "string",
                         "enum": [
                           "count",
@@ -224,31 +325,43 @@ module.exports = {
                       },
                       "metricSourceName": {
                         "type": "string",
-                        "x-stoplight": { "id": "59x6cuagnyz2v" },
+                        "x-stoplight": {
+                          "id": "ayvlt60sjw1p8"
+                        },
                         "description": "For Count, Sum, Mean, User Count aggregation types: the name of metric source\n\nFor Ratio aggregation type: the name of numerator metric source\n\nFor funnel aggregation type: you can ignore. Metric sources information are defined with funnelEvents"
                       },
                       "valueColumn": {
                         "type": "string",
-                        "x-stoplight": { "id": "9i0hga30ini7y" },
+                        "x-stoplight": {
+                          "id": "mam0jrwbidujm"
+                        },
                         "description": "Name of value column used by Ratio and Sum aggregation type metric."
                       },
                       "criteria": {
                         "type": "array",
-                        "x-stoplight": { "id": "u5h8i2dp3vron" },
+                        "x-stoplight": {
+                          "id": "ex505dyp0f2wq"
+                        },
                         "items": {
                           "$ref": "#/components/schemas/MetricEventCriteria"
                         }
                       },
                       "customRollupWaitUntilEndToInclude": {
                         "type": "boolean",
-                        "x-stoplight": { "id": "6vbqkhea2btm1" }
+                        "x-stoplight": {
+                          "id": "cbkz9ptj7w1kl"
+                        }
                       },
                       "denominatorMetricSourceName": {
                         "type": "string",
-                        "x-stoplight": { "id": "c6c0gdzy9c6wl" }
+                        "x-stoplight": {
+                          "id": "tpbnwnw3mvcsz"
+                        }
                       },
                       "denominatorAggregation": {
-                        "x-stoplight": { "id": "wjtpp64805spk" },
+                        "x-stoplight": {
+                          "id": "t368xcah2n2kj"
+                        },
                         "type": "string",
                         "enum": [
                           "count",
@@ -261,57 +374,85 @@ module.exports = {
                       },
                       "denominatorCustomRollupStart": {
                         "type": "number",
-                        "x-stoplight": { "id": "v1d93bofcx0zr" }
+                        "x-stoplight": {
+                          "id": "r4rdlv63xbire"
+                        }
                       },
                       "denominatorCustomRollupEnd": {
                         "type": "number",
-                        "x-stoplight": { "id": "21jquda5kd429" }
+                        "x-stoplight": {
+                          "id": "8arfqv78bbooy"
+                        }
                       },
                       "denominatorCriteria": {
                         "type": "array",
-                        "x-stoplight": { "id": "i6whuclxr6z2x" },
+                        "x-stoplight": {
+                          "id": "poelw6vvmsy1u"
+                        },
                         "items": {
                           "$ref": "#/components/schemas/MetricEventCriteria"
                         }
                       },
                       "denominatorRollup": {
                         "type": "string",
-                        "x-stoplight": { "id": "qcd1qrba0dvxt" },
+                        "x-stoplight": {
+                          "id": "y43ozaitlu5yb"
+                        },
                         "description": "Time window for metric. Specify \"custom\", if you want to provide customized time window. Default to be same as experiment time window"
                       },
                       "denominatorValueColumn": {
                         "type": "string",
-                        "x-stoplight": { "id": "glyml61ndmqh2" }
+                        "x-stoplight": {
+                          "id": "6rhr8t7q80ej1"
+                        }
                       },
                       "funnelEvents": {
                         "type": "array",
-                        "x-stoplight": { "id": "h1g3cwycgoa22" },
+                        "x-stoplight": {
+                          "id": "hsvjlcsr3164x"
+                        },
                         "items": {
                           "$ref": "#/components/schemas/WarehuseNativeFunnelEvent"
                         }
                       },
                       "funnelCalculationWindow": {
                         "type": "number",
-                        "x-stoplight": { "id": "jj1mhb4zazf21" },
+                        "x-stoplight": {
+                          "id": "5s3k75ecev4rv"
+                        },
                         "description": "How long to count funnel events"
                       },
                       "funnelStartCriteria": {
-                        "x-stoplight": { "id": "9ql4m2tci6y3g" },
+                        "x-stoplight": {
+                          "id": "tfxypp65o1su4"
+                        },
                         "type": "string",
-                        "enum": ["start_event", "exposure"]
+                        "enum": [
+                          "start_event",
+                          "exposure"
+                        ]
                       },
                       "funnelCountDistinct": {
-                        "x-stoplight": { "id": "9wz857wouhb40" },
+                        "x-stoplight": {
+                          "id": "b88udrm0pw3yt"
+                        },
                         "type": "string",
-                        "enum": ["users", "sessions"]
+                        "enum": [
+                          "users",
+                          "sessions"
+                        ]
                       },
                       "metricBakeDays": {
                         "type": "number",
-                        "x-stoplight": { "id": "vlrvax2yj3dtg" },
+                        "x-stoplight": {
+                          "id": "mlmmzgu74p027"
+                        },
                         "description": "[Documentation](https://docs.statsig.com/statsig-warehouse-native/features/cohort-metrics)"
                       },
                       "numeratorAggregation": {
-                        "x-stoplight": { "id": "1bu0jvyc8l51g" },
+                        "x-stoplight": {
+                          "id": "ieknkdluxzu8e"
+                        },
                         "type": "string",
                         "enum": [
                           "count",
@@ -324,47 +465,74 @@ module.exports = {
                       },
                       "winsorizationHigh": {
                         "type": "number",
-                        "x-stoplight": { "id": "dvdes9cfe8f20" },
+                        "x-stoplight": {
+                          "id": "zgspx5dslu0gp"
+                        },
                         "description": "See [document](https://docs.statsig.com/stats-engine/methodologies/winsorization)",
                         "minimum": 0,
                         "maximum": 1
                       },
                       "winsorizationLow": {
                         "type": "number",
-                        "x-stoplight": { "id": "fzzo7wkv1zuf8" },
+                        "x-stoplight": {
+                          "id": "pf1c88kumboh7"
+                        },
                         "description": "See [document](https://docs.statsig.com/stats-engine/methodologies/winsorization)",
                         "minimum": 0,
                         "maximum": 1
                       },
                       "metadataColumns": {
                         "type": "array",
-                        "x-stoplight": { "id": "xxzwls43s6gax" },
+                        "x-stoplight": {
+                          "id": "cjyjhk3a4jhef"
+                        },
                         "description": "Specify metadata that you wish to breakdown in experiment analysis.",
                         "items": {
-                          "x-stoplight": { "id": "6y58tiofkv4od" },
+                          "x-stoplight": {
+                            "id": "k1tuqu1n6cqcc"
+                          },
                           "type": "string"
                         }
                       },
                       "rollupTimeWindow": {
-                        "x-stoplight": { "id": "gooi968t4r27p" },
+                        "x-stoplight": {
+                          "id": "nk6tt9qmhty60"
+                        },
                         "type": "string",
-                        "enum": ["max", "latest", "custom"]
+                        "enum": [
+                          "max",
+                          "latest",
+                          "custom"
+                        ]
                       },
                       "customRollUpStart": {
                         "type": "number",
-                        "x-stoplight": { "id": "33gt6znmgom6g" },
+                        "x-stoplight": {
+                          "id": "9paq73h2m0gwh"
+                        },
                         "description": "Custom time window start date (Days since exposure)\n"
                       },
                       "customRollUpEnd": {
                         "type": "number",
-                        "x-stoplight": { "id": "e8s8uf11bc3mh" },
+                        "x-stoplight": {
+                          "id": "hkolnyqm8whud"
+                        },
                         "description": "Custom time window end date(Days since exposure)"
                       },
                       "cupedAttributionWindow": {
                         "type": "number",
-                        "x-stoplight": { "id": "wdku0hnsizit8" }
+                        "x-stoplight": {
+                          "id": "1qig1jsbvvmbk"
+                        }
                       }
                     }
+                  },
+                  "team": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "d5btfmgb93ri7"
+                    },
+                    "description": "Enterprise only"
                   }
                 }
               },
@@ -380,9 +548,15 @@ module.exports = {
                   "value": {
                     "name": "test_sum_metric",
                     "type": "sum",
-                    "unitTypes": ["userID"],
+                    "unitTypes": [
+                      "userID"
+                    ],
                     "metricEvents": [
-                      { "name": "test_event", "type": "value", "criteria": {} }
+                      {
+                        "name": "test_event",
+                        "type": "value",
+                        "criteria": {}
+                      }
                     ],
                     "description": "Sum user count",
                     "rollup": "custom",
@@ -394,7 +568,9 @@ module.exports = {
                   "value": {
                     "name": "test_funnel_metric",
                     "type": "funnel",
-                    "unitTypes": ["useID"],
+                    "unitTypes": [
+                      "useID"
+                    ],
                     "description": "For testing funnel metric",
                     "funnelCountDistinct": "events"
                   }
@@ -403,7 +579,9 @@ module.exports = {
                   "value": {
                     "name": "whn_count_metric_v1",
                     "description": "Creating warehouse native metric and aggregation type of this metric is count",
-                    "tags": ["non_production"],
+                    "tags": [
+                      "non_production"
+                    ],
                     "type": "user_warehouse",
                     "warehouseNative": {
                       "aggregation": "count",
@@ -415,7 +593,9 @@ module.exports = {
                   "value": {
                     "name": "whn_funnel_metric",
                     "description": "Creating warehouse native metric and aggregation type of this metric is count",
-                    "tags": ["non_production"],
+                    "tags": [
+                      "non_production"
+                    ],
                     "type": "user_warehouse",
                     "warehouseNative": {
                       "aggregation": "funnel",
@@ -428,7 +608,9 @@ module.exports = {
                               "type": "metadata",
                               "key": "page",
                               "condition": "in",
-                              "values": ["product_page"]
+                              "values": [
+                                "product_page"
+                              ]
                             }
                           ]
                         },
@@ -440,7 +622,9 @@ module.exports = {
                               "type": "metadata",
                               "key": "page",
                               "condition": "in",
-                              "values": ["product_page"]
+                              "values": [
+                                "product_page"
+                              ]
                             }
                           ]
                         },
@@ -452,7 +636,9 @@ module.exports = {
                               "type": "metadata",
                               "key": "page",
                               "condition": "in",
-                              "values": ["cart"]
+                              "values": [
+                                "cart"
+                              ]
                             }
                           ]
                         }
@@ -467,7 +653,9 @@ module.exports = {
                   "value": {
                     "name": "whn_sum_metric",
                     "description": "Creating warehouse native metric and aggregation type of this metric is sum",
-                    "tags": ["non_production"],
+                    "tags": [
+                      "non_production"
+                    ],
                     "type": "user_warehouse",
                     "warehouseNative": {
                       "metricSourceName": "Checkout Events",
@@ -478,7 +666,9 @@ module.exports = {
                           "type": "metadata",
                           "key": "event",
                           "condition": "in",
-                          "values": ["purchase"]
+                          "values": [
+                            "purchase"
+                          ]
                         }
                       ]
                     }
@@ -488,7 +678,9 @@ module.exports = {
                   "value": {
                     "name": "whn_ratio_metric_v1",
                     "description": "Creating warehouse native metric and aggregation type of this metric is ratio",
-                    "tags": ["non_production"],
+                    "tags": [
+                      "non_production"
+                    ],
                     "type": "user_warehouse",
                     "warehouseNative": {
                       "metricSourceName": "Support Events",
@@ -501,10 +693,16 @@ module.exports = {
               }
             },
             "application/xml": {
-              "schema": { "type": "object", "properties": {} }
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
             },
             "multipart/form-data": {
-              "schema": { "type": "object", "properties": {} }
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
             }
           },
           "description": ""
@@ -525,34 +723,71 @@ module.exports = {
                     "Example 1": {
                       "message": "Metric read successfully.",
                       "data": [
-                        { "value": 20995, "unit_type": "companyID" },
-                        { "value": 3048, "unit_type": "orgID" },
-                        { "value": 23502, "unit_type": "overall" },
-                        { "value": 23502, "unit_type": "stable_id" },
-                        { "value": 21094, "unit_type": "user_id" }
+                        {
+                          "value": 20995,
+                          "unit_type": "companyID"
+                        },
+                        {
+                          "value": 3048,
+                          "unit_type": "orgID"
+                        },
+                        {
+                          "value": 23502,
+                          "unit_type": "overall"
+                        },
+                        {
+                          "value": 23502,
+                          "unit_type": "stableID"
+                        },
+                        {
+                          "value": 21094,
+                          "unit_type": "userID"
+                        }
                       ]
                     }
                   },
                   "properties": {
-                    "message": { "type": "string" },
+                    "message": {
+                      "type": "string"
+                    },
                     "data": {
                       "type": "array",
                       "description": "Data corresponding each unit_type of the queried metric",
-                      "items": { "$ref": "#/components/schemas/MetricValue" }
+                      "items": {
+                        "$ref": "#/components/schemas/MetricValue"
+                      }
                     }
                   },
-                  "required": ["message", "data"]
+                  "required": [
+                    "message",
+                    "data"
+                  ]
                 },
                 "examples": {
                   "basic metric": {
                     "value": {
                       "message": "Metric read successfully.",
                       "data": [
-                        { "value": 20995, "unit_type": "companyID" },
-                        { "value": 3048, "unit_type": "orgID" },
-                        { "value": 23502, "unit_type": "overall" },
-                        { "value": 23502, "unit_type": "stable_id" },
-                        { "value": 21094, "unit_type": "user_id" }
+                        {
+                          "value": 20995,
+                          "unit_type": "companyID"
+                        },
+                        {
+                          "value": 3048,
+                          "unit_type": "orgID"
+                        },
+                        {
+                          "value": 23502,
+                          "unit_type": "overall"
+                        },
+                        {
+                          "value": 23502,
+                          "unit_type": "stableID"
+                        },
+                        {
+                          "value": 21094,
+                          "unit_type": "userID"
+                        }
                       ]
                     }
                   },
@@ -562,7 +797,7 @@ module.exports = {
                       "data": [
                         {
                           "value": 105,
-                          "unit_type": "user_id",
+                          "unit_type": "userID",
                           "input_rows": 5,
                           "numerator": 525,
                           "denominator": 5
@@ -576,7 +811,7 @@ module.exports = {
                       "data": [
                         {
                           "value": 1,
-                          "unit_type": "user_id",
+                          "unit_type": "userID",
                           "numerator": 5,
                           "denominator": 5
                         }
@@ -620,8 +855,12 @@ module.exports = {
                     }
                   },
                   "properties": {
-                    "status": { "$ref": "../models/status.json" },
-                    "message": { "$ref": "../models/message.json" }
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
                   }
                 },
                 "examples": {
@@ -645,7 +884,9 @@ module.exports = {
             "description": "Unauthorized",
             "content": {
               "application/json": {
-                "schema": { "$ref": "../models/error_401.json" },
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
                 "examples": {
                   "example-1": {
                     "value": {
@@ -660,7 +901,10 @@ module.exports = {
         },
         "parameters": [
           {
-            "schema": { "type": "string", "example": "2022-10-31" },
+            "schema": {
+              "type": "string",
+              "example": "2022-10-31"
+            },
             "in": "query",
             "name": "date",
             "description": "date to query (YYYY-MM-DD)",
@@ -677,14 +921,21 @@ module.exports = {
             "required": true
           }
         ],
-        "tags": ["Metrics"],
-        "x-stoplight": { "id": "agexjgbpovrnk" }
+        "tags": [
+          "Metrics"
+        ],
+        "x-stoplight": {
+          "id": "ogudtjrt0v2ck"
+        }
       }
     },
     "/metrics/{metric_id}": {
       "parameters": [
         {
-          "schema": { "type": "string", "example": "d1_retention_rate::user" },
+          "schema": {
+            "type": "string",
+            "example": "d1_retention_rate::user"
+          },
           "name": "metric_id",
           "in": "path",
           "required": true,
@@ -692,7 +943,7 @@ module.exports = {
         }
       ],
       "post": {
-        "summary": "",
+        "summary": "Update a Metric",
         "operationId": "post-metrics",
         "responses": {
           "201": {
@@ -702,14 +953,31 @@ module.exports = {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": { "$ref": "../models/message.json" },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
                     "data": {
                       "type": "object",
                       "properties": {
-                        "name": { "type": "string" },
-                        "type": { "type": "string" },
-                        "description": { "type": "string" },
-                        "isHidden": { "type": "boolean" }
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "isHidden": {
+                          "type": "boolean"
+                        },
+                        "team": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "jdefsxmkmjpop"
+                          },
+                          "description": "Enterprise only"
+                        }
                       }
                     }
                   }
@@ -734,7 +1002,9 @@ module.exports = {
             "description": "Unauthorized",
             "content": {
               "application/json": {
-                "schema": { "$ref": "../models/error_401.json" },
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
                 "examples": {
                   "Example 1": {
                     "value": {
@@ -759,13 +1029,20 @@ module.exports = {
                     }
                   },
                   "properties": {
-                    "status": { "$ref": "../models/status.json" },
-                    "message": { "$ref": "../models/message.json" }
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
                   }
                 },
                 "examples": {
                   "Not found": {
-                    "value": { "status": 404, "message": "Metric not found" }
+                    "value": {
+                      "status": 404,
+                      "message": "Metric not found"
+                    }
                   }
                 }
               }
@@ -785,7 +1062,9 @@ module.exports = {
                   "tags": {
                     "type": "array",
                     "description": "Updated list of tags. Tags must exist first",
-                    "items": { "type": "string" }
+                    "items": {
+                      "type": "string"
+                    }
                   },
                   "isVerified": {
                     "type": "boolean",
@@ -794,20 +1073,32 @@ module.exports = {
                   "unitTypes": {
                     "type": "array",
                     "description": "Update unit types for the metric",
-                    "items": { "type": "string" }
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "team": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "8o7lpt1mdlvf2"
+                    }
                   }
                 }
               },
               "examples": {
                 "Example 1": {
-                  "value": { "description": "Updated description" }
+                  "value": {
+                    "description": "Updated description"
+                  }
                 }
               }
             }
           }
         },
         "description": "Update Metric",
-        "tags": ["Metrics"]
+        "tags": [
+          "Metrics"
+        ]
       },
       "delete": {
         "summary": "",
@@ -822,23 +1113,35 @@ module.exports = {
                   "properties": {
                     "message": {
                       "type": "string",
-                      "x-stoplight": { "id": "xt32erk7maxls" }
+                      "x-stoplight": {
+                        "id": "ulptneel8ms0f"
+                      }
                     }
                   }
                 }
               }
             }
           },
-          "401": { "description": "Unauthorized" },
-          "404": { "description": "Not Found" }
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          }
         },
-        "x-stoplight": { "id": "4skzeybn0o9h5" },
+        "x-stoplight": {
+          "id": "rbkrn0v51eckz"
+        },
         "description": "Delete Metric",
-        "tags": ["Metrics"]
+        "tags": [
+          "Metrics"
+        ]
       },
       "get": {
         "summary": "Get definition of a metric",
-        "tags": ["Metrics"],
+        "tags": [
+          "Metrics"
+        ],
         "responses": {
           "2XX": {
             "description": "Metric read successfully.",
@@ -863,7 +1166,9 @@ module.exports = {
                               "type": "metadata",
                               "column": "event",
                               "condition": "in",
-                              "values": ["purchase"]
+                              "values": [
+                                "purchase"
+                              ]
                             }
                           ],
                           "denominatorCriteria": [],
@@ -887,7 +1192,9 @@ module.exports = {
                         "type": "user_warehouse",
                         "description": "",
                         "isPermanent": false,
-                        "tags": ["★ Core"],
+                        "tags": [
+                          "★ Core"
+                        ],
                         "warehouseNative": {
                           "aggregation": "sum",
                           "metricSourceName": "Checkout Events",
@@ -896,7 +1203,9 @@ module.exports = {
                               "type": "metadata",
                               "column": "event",
                               "condition": "in",
-                              "values": ["purchase"]
+                              "values": [
+                                "purchase"
+                              ]
                             }
                           ],
                           "denominatorCriteria": [],
@@ -916,7 +1225,9 @@ module.exports = {
           }
         },
         "operationId": "get-metrics-metric_id",
-        "x-stoplight": { "id": "9a0l8henitzhd" },
+        "x-stoplight": {
+          "id": "i1c6sr9on23ks"
+        },
         "description": "Get Metric Definition: Returned schema should be consistent with schema required for metric creation. (Tags is still WIP)"
       }
     },
@@ -951,15 +1262,24 @@ module.exports = {
                     }
                   },
                   "properties": {
-                    "message": { "$ref": "../models/message.json" },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
                     "data": {
                       "type": "array",
                       "description": "Array of metrics in the project",
-                      "items": { "$ref": "#/components/schemas/MetricListItem" }
+                      "items": {
+                        "$ref": "#/components/schemas/MetricListItem"
+                      }
                     },
-                    "pagination": { "$ref": "../models/pagination.json" }
+                    "pagination": {
+                      "$ref": "../models/pagination.json"
+                    }
                   },
-                  "required": ["message", "data"]
+                  "required": [
+                    "message",
+                    "data"
+                  ]
                 },
                 "examples": {
                   "example-1": {
@@ -970,7 +1290,9 @@ module.exports = {
                           "name": "metric_name",
                           "type": "composite",
                           "id": "metric_name::composite",
-                          "tags": ["★ Core"]
+                          "tags": [
+                            "★ Core"
+                          ]
                         },
                         {
                           "name": "d1_retention_rate",
@@ -1010,7 +1332,9 @@ module.exports = {
                           "id": "d1_retention_rate::user",
                           "description": "description",
                           "isHidden": false,
-                          "tags": ["queried_tag"]
+                          "tags": [
+                            "queried_tag"
+                          ]
                         },
                         {
                           "name": "l14",
@@ -1018,7 +1342,10 @@ module.exports = {
                           "id": "l14::user",
                           "description": "a description",
                           "isHidden": false,
-                          "tags": ["queried_tag", "other_tag"]
+                          "tags": [
+                            "queried_tag",
+                            "other_tag"
+                          ]
                         },
                         {
                           "name": "mau@d56_retention_rate",
@@ -1026,7 +1353,10 @@ module.exports = {
                           "id": "mau@d56_retention_rate::user",
                           "description": "",
                           "isHidden": false,
-                          "tags": ["queried_tag", "another_tag"]
+                          "tags": [
+                            "queried_tag",
+                            "another_tag"
+                          ]
                         }
                       ]
                     }
@@ -1045,7 +1375,10 @@ module.exports = {
                           "creatorEmail": "jacob@statsig.com",
                           "tags": [],
                           "lineage": {
-                            "events": ["gql_query", "custom_event"],
+                            "events": [
+                              "gql_query",
+                              "custom_event"
+                            ],
                             "metrics": []
                           }
                         },
@@ -1053,13 +1386,23 @@ module.exports = {
                           "name": "gql_query",
                           "type": "event_count",
                           "id": "gql_query::event_count",
-                          "lineage": { "events": ["gql_query"], "metrics": [] }
+                          "lineage": {
+                            "events": [
+                              "gql_query"
+                            ],
+                            "metrics": []
+                          }
                         },
                         {
                           "name": "gql_query",
                           "type": "event_dau",
                           "id": "gql_query::event_dau",
-                          "lineage": { "events": ["gql_query"], "metrics": [] }
+                          "lineage": {
+                            "events": [
+                              "gql_query"
+                            ],
+                            "metrics": []
+                          }
                         },
                         {
                           "name": "hello",
@@ -1069,15 +1412,22 @@ module.exports = {
                           "isHidden": false,
                           "creatorName": "jacob O'Quinn",
                           "creatorEmail": "jacob@statsig.com",
-                          "tags": ["★ Core"],
-                          "lineage": { "events": [], "metrics": [] }
+                          "tags": [
+                            "★ Core"
+                          ],
+                          "lineage": {
+                            "events": [],
+                            "metrics": []
+                          }
                         },
                         {
                           "name": "joe loves event names",
                           "type": "event_count",
                           "id": "joe loves event names::event_count",
                           "lineage": {
-                            "events": ["joe loves event names"],
+                            "events": [
+                              "joe loves event names"
+                            ],
                             "metrics": []
                           }
                         }
@@ -1100,7 +1450,9 @@ module.exports = {
             "description": "Unauthorized",
             "content": {
               "application/json": {
-                "schema": { "$ref": "../models/error_401.json" },
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
                 "examples": {
                   "example-1": {
                     "value": {
@@ -1114,34 +1466,50 @@ module.exports = {
           }
         },
         "description": "List all metrics in the project",
-        "tags": ["Metrics"],
+        "tags": [
+          "Metrics"
+        ],
         "parameters": [
           {
-            "schema": { "type": "string", "enum": ["true", "false"] },
+            "schema": {
+              "type": "string",
+              "enum": [
+                "true",
+                "false"
+              ]
+            },
             "in": "query",
             "name": "showHiddenMetrics",
             "description": "Should hidden metrics be returned"
           },
           {
-            "schema": { "type": "array" },
+            "schema": {
+              "type": "array"
+            },
             "in": "query",
             "name": "tags",
             "description": "Filter metrics based on a given tagID, found on /tags endpoint"
           },
           {
-            "schema": { "type": "number" },
+            "schema": {
+              "type": "number"
+            },
             "in": "query",
             "name": "page",
             "description": "Page to query"
           },
           {
-            "schema": { "type": "number" },
+            "schema": {
+              "type": "number"
+            },
             "in": "query",
             "name": "limit",
             "description": "Elements per page"
           }
         ],
-        "x-stoplight": { "id": "hraf7qd3ede6p" }
+        "x-stoplight": {
+          "id": "e4czhou0mk9ut"
+        }
       },
       "parameters": []
     },
@@ -1175,15 +1543,25 @@ module.exports = {
                       ]
                     }
                   },
-                  "required": ["message", "data", "pagination"],
+                  "required": [
+                    "message",
+                    "data",
+                    "pagination"
+                  ],
                   "properties": {
-                    "message": { "$ref": "../models/message.json" },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
                     "data": {
                       "type": "array",
                       "description": "Array of metrics in the project",
-                      "items": { "$ref": "#/components/schemas/MetricValue" }
+                      "items": {
+                        "$ref": "#/components/schemas/MetricValue"
+                      }
                     },
-                    "pagination": { "$ref": "../models/pagination.json" }
+                    "pagination": {
+                      "$ref": "../models/pagination.json"
+                    }
                   }
                 },
                 "examples": {
@@ -1201,7 +1579,7 @@ module.exports = {
                         },
                         {
                           "value": 21377,
-                          "unitType": "stable_id",
+                          "unitType": "stableID",
                           "numerator": null,
                           "denominator": null,
                           "metricName": "Page Loads",
@@ -1209,7 +1587,7 @@ module.exports = {
                         },
                         {
                           "value": 21355,
-                          "unitType": "user_id",
+                          "unitType": "userID",
                           "numerator": null,
                           "denominator": null,
                           "metricName": "Page Loads",
@@ -1217,7 +1595,7 @@ module.exports = {
                         },
                         {
                           "value": 646524,
-                          "unitType": "stable_id",
+                          "unitType": "stableID",
                           "numerator": null,
                           "denominator": null,
                           "metricName": "Average Time Spent on Page",
@@ -1225,7 +1603,7 @@ module.exports = {
                         },
                         {
                           "value": 5676,
-                          "unitType": "stable_id",
+                          "unitType": "stableID",
                           "numerator": null,
                           "denominator": null,
                           "metricName": "Page Latency",
@@ -1249,7 +1627,9 @@ module.exports = {
             "description": "Unauthorized",
             "content": {
               "application/json": {
-                "schema": { "$ref": "../models/error_401.json" },
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
                 "examples": {
                   "example-1": {
                     "value": {
@@ -1263,31 +1643,41 @@ module.exports = {
           }
         },
         "description": "List all metric values in the project",
-        "tags": ["Metrics"],
+        "tags": [
+          "Metrics"
+        ],
         "parameters": [
           {
-            "schema": { "type": "number" },
+            "schema": {
+              "type": "number"
+            },
             "in": "query",
             "name": "page",
             "description": "Page to query",
             "required": true
           },
           {
-            "schema": { "type": "number" },
+            "schema": {
+              "type": "number"
+            },
             "in": "query",
             "name": "limit",
             "description": "Elements per page",
             "required": true
           },
           {
-            "schema": { "type": "string" },
+            "schema": {
+              "type": "string"
+            },
             "in": "query",
             "name": "date",
             "description": "Get values on select date (YYYY-MM-DD)",
             "required": true
           }
         ],
-        "x-stoplight": { "id": "izx8gkka2rb36" }
+        "x-stoplight": {
+          "id": "jct4x0y75f71i"
+        }
       },
       "parameters": []
     },
@@ -1296,10 +1686,16 @@ module.exports = {
         "summary": "Create Metric Source (Warehouse Native)",
         "operationId": "post-metrics-metric_source",
         "responses": {
-          "200": { "description": "OK" },
-          "400": { "description": "Bad Request" }
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
         },
-        "x-stoplight": { "id": "g743ks59c83ix" },
+        "x-stoplight": {
+          "id": "z2ujt3x6wa3qw"
+        },
         "description": "Create Warehouse Native Metric Source.\n \nSee [guidance](https://docs.statsig.com/statsig-warehouse-native/guides/metric-sources)",
         "requestBody": {
           "content": {
@@ -1316,46 +1712,66 @@ module.exports = {
                 "properties": {
                   "name": {
                     "type": "string",
-                    "x-stoplight": { "id": "hntiod51vjbew" }
+                    "x-stoplight": {
+                      "id": "nbn893ry37uql"
+                    }
                   },
                   "description": {
                     "type": "string",
-                    "x-stoplight": { "id": "yoz2h2stwhgdi" }
+                    "x-stoplight": {
+                      "id": "mq127hfj2b285"
+                    }
                   },
                   "tags": {
                     "type": "array",
-                    "x-stoplight": { "id": "tra890ftvr0x0" },
+                    "x-stoplight": {
+                      "id": "fgb7312xpqbzd"
+                    },
                     "description": "List of tags. Tag must already exists in your project",
                     "items": {
-                      "x-stoplight": { "id": "txpkdb1loqn3y" },
+                      "x-stoplight": {
+                        "id": "61rgo7jk9qhgf"
+                      },
                       "type": "string"
                     }
                   },
                   "timestampColumn": {
                     "type": "string",
-                    "x-stoplight": { "id": "6uvv25sdv8qm2" },
+                    "x-stoplight": {
+                      "id": "y11nc7rnf43pt"
+                    },
                     "description": "Timestamp "
                   },
                   "sql": {
                     "type": "string",
-                    "x-stoplight": { "id": "tcgyz0371yl6x" },
+                    "x-stoplight": {
+                      "id": "9deuqlyvy2ee6"
+                    },
                     "description": "SQL query you want to "
                   },
                   "idTypeMapping": {
                     "type": "array",
-                    "x-stoplight": { "id": "qteof4kbqqqxw" },
+                    "x-stoplight": {
+                      "id": "mjzy1qweouv0k"
+                    },
                     "items": {
-                      "x-stoplight": { "id": "x6g48nfaamslm" },
+                      "x-stoplight": {
+                        "id": "e7zr5k7cc3dhm"
+                      },
                       "type": "object",
                       "properties": {
                         "statsigUnitID": {
                           "type": "string",
-                          "x-stoplight": { "id": "1r888gtck50ia" },
+                          "x-stoplight": {
+                            "id": "lnnmj60odzi6j"
+                          },
                           "description": "Type of Unit ID this column represents. Configure a custom ID in project settings. [View Documentation](https://docs.statsig.com/guides/experiment-on-custom-id-types)"
                         },
                         "column": {
                           "type": "string",
-                          "x-stoplight": { "id": "p6yf8ckwqm2i9" },
+                          "x-stoplight": {
+                            "id": "cxhq14p63ln00"
+                          },
                           "description": "Column name containing this unit type's values"
                         }
                       }
@@ -1363,7 +1779,9 @@ module.exports = {
                   },
                   "timestampAsDay": {
                     "type": "boolean",
-                    "x-stoplight": { "id": "9f2iy2sjk6fsx" }
+                    "x-stoplight": {
+                      "id": "yy9e9ngw5du3c"
+                    }
                   }
                 }
               },
@@ -1372,10 +1790,15 @@ module.exports = {
                   "value": {
                     "name": "test_metric_source",
                     "description": "Test description for metric source",
-                    "tags": ["non_production"],
+                    "tags": [
+                      "non_production"
+                    ],
                     "sql": "SELECT * FROM shoppy-sales.logging.events WHERE event = 'visit'",
                     "idTypeMapping": [
-                      { "statsigUnitID": "userID", "column": "user_id" }
+                      {
+                        "statsigUnitID": "userID",
+                        "column": "userID"
+                      }
                     ],
                     "timestampColumn": "ts",
                     "timestampAsDay": true
@@ -1384,10 +1807,16 @@ module.exports = {
               }
             },
             "application/xml": {
-              "schema": { "type": "object", "properties": {} }
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
             },
             "multipart/form-data": {
-              "schema": { "type": "object", "properties": {} }
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
             },
             "text/html": {
               "schema": {
@@ -1395,7 +1824,9 @@ module.exports = {
                 "properties": {
                   "": {
                     "type": "string",
-                    "x-stoplight": { "id": "eltb8b2lwlts8" }
+                    "x-stoplight": {
+                      "id": "sinsnklxlrxvn"
+                    }
                   }
                 }
               }
@@ -1403,13 +1834,17 @@ module.exports = {
           },
           "description": ""
         },
-        "tags": ["Metric Source (Warehouse Native)"]
+        "tags": [
+          "Metric Source (Warehouse Native)"
+        ]
       }
     },
     "/metrics/metric_source/{name}": {
       "parameters": [
         {
-          "schema": { "type": "string" },
+          "schema": {
+            "type": "string"
+          },
           "name": "name",
           "in": "path",
           "required": true
@@ -1418,8 +1853,14 @@ module.exports = {
       "post": {
         "summary": "Update Metric Source",
         "operationId": "post-metrics-metric_source-name",
-        "responses": { "200": { "description": "OK" } },
-        "x-stoplight": { "id": "fhbmy15agoxzz" },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "x-stoplight": {
+          "id": "dp7ont9iduy88"
+        },
         "description": "Update description and tags of the given metric source",
         "requestBody": {
           "content": {
@@ -1429,14 +1870,20 @@ module.exports = {
                 "properties": {
                   "description": {
                     "type": "string",
-                    "x-stoplight": { "id": "9bbrbvy9uebpg" }
+                    "x-stoplight": {
+                      "id": "hkqkzhvzxkepy"
+                    }
                   },
                   "tags": {
                     "type": "array",
-                    "x-stoplight": { "id": "sdjcdma8junxx" },
+                    "x-stoplight": {
+                      "id": "dkb8e61zlmi0z"
+                    },
                     "description": "Updated list of tags. Tag must be created first",
                     "items": {
-                      "x-stoplight": { "id": "uev9305380j93" },
+                      "x-stoplight": {
+                        "id": "hi62k1flm6dsc"
+                      },
                       "type": "string"
                     }
                   }
@@ -1444,21 +1891,33 @@ module.exports = {
               },
               "examples": {
                 "Update description only": {
-                  "value": { "description": "Updated description" }
+                  "value": {
+                    "description": "Updated description"
+                  }
                 },
-                "Update tags only": { "value": { "tags": ["non_production"] } }
+                "Update tags only": {
+                  "value": {
+                    "tags": [
+                      "non_production"
+                    ]
+                  }
+                }
               }
             }
           },
           "description": ""
         },
-        "tags": ["Metric Source (Warehouse Native)"]
+        "tags": [
+          "Metric Source (Warehouse Native)"
+        ]
       }
     },
     "/metrics/metric_source/list": {
       "get": {
         "summary": "List Metric Sources",
-        "tags": ["Metric Source (Warehouse Native)"],
+        "tags": [
+          "Metric Source (Warehouse Native)"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -1473,12 +1932,14 @@ module.exports = {
                         {
                           "name": "Log Events",
                           "description": "events",
-                          "tags": ["helo"],
+                          "tags": [
+                            "helo"
+                          ],
                           "sql": "SELECT * FROM shoppy-sales.logging.events\n",
                           "timestampColumn": "ts",
                           "timestampAsDay": true,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "user_id" },
+                            { "statsigUnitID": "userID", "column": "userID" },
                             {
                               "statsigUnitID": "deviceID",
                               "column": "device_id"
@@ -1497,7 +1958,7 @@ module.exports = {
                           "timestampColumn": "ts",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "user_id" },
+                            { "statsigUnitID": "userID", "column": "userID" },
                             {
                               "statsigUnitID": "deviceID",
                               "column": "device_id"
@@ -1508,11 +1969,11 @@ module.exports = {
                           "name": "Navigation Events",
                           "description": "",
                           "tags": [],
-                          "sql": "SELECT\n  ts,\n  user_id,\n  device_id,\n  page,\n  PRODUCT_CATEGORY\nFROM shoppy-sales.logging.events\nWHERE event = 'page_view'",
+                          "sql": "SELECT\n  ts,\n  userID,\n  device_id,\n  page,\n  PRODUCT_CATEGORY\nFROM shoppy-sales.logging.events\nWHERE event = 'page_view'",
                           "timestampColumn": "ts",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "user_id" },
+                            { "statsigUnitID": "userID", "column": "userID" },
                             {
                               "statsigUnitID": "deviceID",
                               "column": "device_id"
@@ -1523,33 +1984,33 @@ module.exports = {
                           "name": "Checkout Events",
                           "description": "",
                           "tags": [],
-                          "sql": "SELECT\n  ts,\n  event,\n  user_id,\n  page,\n  product_category,\n  price_usd\nFROM shoppy-sales.logging.events",
+                          "sql": "SELECT\n  ts,\n  event,\n  userID,\n  page,\n  product_category,\n  price_usd\nFROM shoppy-sales.logging.events",
                           "timestampColumn": "ts",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "user_id" }
+                            { "statsigUnitID": "userID", "column": "userID" }
                           ]
                         },
                         {
                           "name": "Support Events",
                           "description": "",
                           "tags": [],
-                          "sql": "SELECT \n  event, \n  ts, \n  user_id, \n  device_id\nFROM shoppy-sales.logging.events",
+                          "sql": "SELECT \n  event, \n  ts, \n  userID, \n  device_id\nFROM shoppy-sales.logging.events",
                           "timestampColumn": "ts",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "user_id" }
+                            { "statsigUnitID": "userID", "column": "userID" }
                           ]
                         },
                         {
                           "name": "123213",
                           "description": "",
                           "tags": [],
-                          "sql": "SELECT\n  ts,\n  event,\n  user_id,\n  page,\n  product_category,\n  price_usd\nFROM shoppy-sales.logging.events ",
+                          "sql": "SELECT\n  ts,\n  event,\n  userID,\n  page,\n  product_category,\n  price_usd\nFROM shoppy-sales.logging.events ",
                           "timestampColumn": "ts",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "user_id" }
+                            { "statsigUnitID": "userID", "column": "userID" }
                           ]
                         },
                         {
@@ -1583,7 +2044,7 @@ module.exports = {
                           "timestampColumn": "timestamp",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "user_id" }
+                            { "statsigUnitID": "userID", "column": "userID" }
                           ]
                         },
                         {
@@ -1616,40 +2077,60 @@ module.exports = {
                         {
                           "name": "test_metric_source",
                           "description": "Test description for metric source",
-                          "tags": ["helo"],
+                          "tags": [
+                            "helo"
+                          ],
                           "sql": "SELECT * FROM shoppy-sales.logging.events WHERE event = 'visit'",
                           "timestampColumn": "ts",
                           "timestampAsDay": true,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "user_id" }
+                            { "statsigUnitID": "userID", "column": "userID" }
                           ]
                         }
                       ]
                     }
                   },
                   "properties": {
-                    "message": { "type": "string" },
+                    "message": {
+                      "type": "string"
+                    },
                     "data": {
                       "type": "array",
                       "items": {
                         "type": "object",
                         "properties": {
-                          "name": { "type": "string" },
-                          "description": { "type": "string" },
+                          "name": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
                           "tags": {
                             "type": "array",
-                            "items": { "type": "string" }
+                            "items": {
+                              "type": "string"
+                            }
                           },
-                          "sql": { "type": "string" },
-                          "timestampColumn": { "type": "string" },
-                          "timestampAsDay": { "type": "boolean" },
+                          "sql": {
+                            "type": "string"
+                          },
+                          "timestampColumn": {
+                            "type": "string"
+                          },
+                          "timestampAsDay": {
+                            "type": "boolean"
+                          },
                           "idTypeMapping": {
                             "type": "array",
                             "items": {
                               "type": "object",
                               "properties": {
-                                "statsigUnitID": { "type": "string" },
-                                "column": { "type": "string" }
+                                "statsigUnitID": {
+                                  "type": "string"
+                                },
+                                "column": {
+                                  "type": "string"
+                                }
                               }
                             }
                           }
@@ -1666,12 +2147,17 @@ module.exports = {
                         {
                           "name": "Log Events",
                           "description": "events",
-                          "tags": ["Core"],
+                          "tags": [
+                            "Core"
+                          ],
                           "sql": "SELECT * FROM shoppy-sales.logging.events",
                           "timestampColumn": "ts",
                           "timestampAsDay": true,
                           "idTypeMapping": [
-                            { "statsigUnitID": "user", "column": "string" }
+                            {
+                              "statsigUnitID": "user",
+                              "column": "string"
+                            }
                           ]
                         }
                       ]
@@ -1683,7 +2169,9 @@ module.exports = {
           }
         },
         "operationId": "get-metrics-metric_source-list",
-        "x-stoplight": { "id": "3wzno6nvteckc" },
+        "x-stoplight": {
+          "id": "zlb6viwg6ryc1"
+        },
         "description": "List all Metric Sources in the project"
       }
     }
@@ -1692,9 +2180,13 @@ module.exports = {
     "schemas": {
       "MetricListItem": {
         "title": "MetricListItem",
-        "x-stoplight": { "id": "4v7o2l5nnx9re" },
+        "x-stoplight": {
+          "id": "igvn9y7kjvjv3"
+        },
         "type": "object",
-        "x-tags": ["Metrics"],
+        "x-tags": [
+          "Metrics"
+        ],
         "x-examples": {
           "d1_retention_rate": {
             "name": "d1_retention_rate",
@@ -1702,7 +2194,10 @@ module.exports = {
             "id": "d1_retention_rate::user",
             "description": "ab",
             "isHidden": false,
-            "lineage": { "events": [], "metrics": [] }
+            "lineage": {
+              "events": [],
+              "metrics": []
+            }
           },
           "daily_stickiness": {
             "name": "daily_stickiness",
@@ -1730,53 +2225,92 @@ module.exports = {
             }
           }
         },
+        "required": [
+          "id",
+          "name",
+          "type",
+          "description",
+          "isHidden",
+          "lineage"
+        ],
         "properties": {
           "id": {
             "type": "string",
             "description": "The formatted id used for queries"
           },
-          "name": { "type": "string", "description": "Metric name" },
-          "type": { "type": "string", "description": "Metric type" },
-          "description": { "type": "string" },
-          "isHidden": { "type": "boolean" },
+          "name": {
+            "type": "string",
+            "description": "Metric name"
+          },
+          "type": {
+            "type": "string",
+            "description": "Metric type"
+          },
+          "description": {
+            "type": "string"
+          },
+          "isHidden": {
+            "type": "boolean"
+          },
           "lineage": {
             "type": "object",
-            "x-stoplight": { "id": "5udcl9v5tl1sl" },
-            "required": ["events", "metrics"],
+            "x-stoplight": {
+              "id": "mid78b269dgua"
+            },
+            "required": [
+              "events",
+              "metrics"
+            ],
             "properties": {
               "events": {
                 "type": "array",
-                "x-stoplight": { "id": "ooigxtv1t43ya" },
+                "x-stoplight": {
+                  "id": "0usvcexwz7lld"
+                },
                 "description": "Events used in the calculation of this metric",
                 "items": {
-                  "x-stoplight": { "id": "16rl4kckiumx1" },
+                  "x-stoplight": {
+                    "id": "05xyvx5fzd8k3"
+                  },
                   "type": "string"
                 }
               },
               "metrics": {
                 "type": "array",
-                "x-stoplight": { "id": "rbr4k1f79f498" },
+                "x-stoplight": {
+                  "id": "qo8uvlbwp1mc8"
+                },
                 "description": "Other metrics used in the calculation this metric",
                 "items": {
-                  "x-stoplight": { "id": "b0n7gtx88jyyb" },
+                  "x-stoplight": {
+                    "id": "cvh0slo112dkd"
+                  },
                   "type": "string"
                 }
               }
             }
+          },
+          "team": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "9i9d9j9rbyzsg"
+            },
+            "description": "Enterprise only"
           }
-        },
-        "required": ["id", "name", "type", "description", "isHidden", "lineage"]
+        }
       },
       "MetricValue": {
         "title": "MetricValue",
-        "x-stoplight": { "id": "lsp9kqne0cmc7" },
+        "x-stoplight": {
+          "id": "rrwb1zi0llrj1"
+        },
         "type": "object",
         "properties": {
           "value": {
             "type": "number",
             "description": "Metric value for the given unit_type"
           },
-          "unit_type": { "type": "string", "description": "Which unit_type" },
+          "unit_type": { "type": "string", "description": "Which unitType" },
           "input_rows": {
             "type": "integer",
             "description": "row count for imported metric"
@@ -1790,21 +2324,38 @@ module.exports = {
             "description": "Denominator of a ratio metric"
           }
         },
-        "required": ["value", "unit_type"]
+        "required": [
+          "value",
+          "unit_type"
+        ]
       },
       "MetricEventCriteria": {
         "title": "MetricEventCriteria",
-        "x-stoplight": { "id": "ph4mf3fld3gnx" },
+        "x-stoplight": {
+          "id": "dd58049m3s3ve"
+        },
         "type": "object",
         "properties": {
           "type": {
-            "x-stoplight": { "id": "ndh4brj6qo251" },
+            "x-stoplight": {
+              "id": "3ek2n08bgdjfd"
+            },
             "type": "string",
-            "enum": ["value", "meta_data"]
+            "enum": [
+              "value",
+              "meta_data"
+            ]
           },
-          "key": { "type": "string", "x-stoplight": { "id": "fx6th90kgp4dr" } },
+          "key": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "t3t24pwfcltx5"
+            }
+          },
           "condition": {
-            "x-stoplight": { "id": "dccvwzonek7o6" },
+            "x-stoplight": {
+              "id": "7jsl6ds2wuhjy"
+            },
             "type": "string",
             "enum": [
               "in",
@@ -1825,35 +2376,51 @@ module.exports = {
           },
           "values": {
             "type": "array",
-            "x-stoplight": { "id": "xvhgypao06xar" },
+            "x-stoplight": {
+              "id": "1n4i8d2ivepj9"
+            },
             "items": {
-              "x-stoplight": { "id": "ubplhjgfe36ew" },
+              "x-stoplight": {
+                "id": "6veb6jqyiuohb"
+              },
               "type": "string"
             }
           },
           "nullVacuousOverride": {
             "type": "boolean",
-            "x-stoplight": { "id": "5iqta37m0qnpz" }
+            "x-stoplight": {
+              "id": "tw08j0l574wyc"
+            }
           }
         }
       },
       "MetricEvent": {
         "type": "object",
-        "x-stoplight": { "id": "mm7ftpgp75a31" },
+        "x-stoplight": {
+          "id": "x4xrxw4c84j52"
+        },
         "properties": {
           "name": {
             "type": "string",
-            "x-stoplight": { "id": "re74p4rg8otoy" }
+            "x-stoplight": {
+              "id": "tll2doo9f72qr"
+            }
           },
           "type": {
             "type": "string",
-            "x-stoplight": { "id": "xmiikz0hsjeq4" }
+            "x-stoplight": {
+              "id": "p3ck0r18jntot"
+            }
           },
           "metadataKey": {
             "type": "string",
-            "x-stoplight": { "id": "24expnj75zwnp" }
+            "x-stoplight": {
+              "id": "kojh2kt3cv4rc"
+            }
           },
-          "criteria": { "$ref": "#/components/schemas/MetricEventCriteria" }
+          "criteria": {
+            "$ref": "#/components/schemas/MetricEventCriteria"
+          }
         },
         "title": "MetricEvent",
         "description": ""
@@ -1863,44 +2430,71 @@ module.exports = {
         "properties": {
           "name": {
             "type": "string",
-            "x-stoplight": { "id": "hp1tu02mq9are" }
+            "x-stoplight": {
+              "id": "rdf4ea4dxnnn8"
+            }
           },
           "type": {
-            "x-stoplight": { "id": "99v6c4hwjlitj" },
+            "x-stoplight": {
+              "id": "quj6ludcf5btd"
+            },
             "type": "string",
-            "enum": ["count", "count_distinct", "value", "metadata"]
+            "enum": [
+              "count",
+              "count_distinct",
+              "value",
+              "metadata"
+            ]
           },
           "metadataKey": {
             "type": "string",
-            "x-stoplight": { "id": "5yavuvymeu1yi" }
+            "x-stoplight": {
+              "id": "b2dqb30f18nxh"
+            }
           },
-          "criteria": { "$ref": "#/components/schemas/MetricEventCriteria" }
+          "criteria": {
+            "$ref": "#/components/schemas/MetricEventCriteria"
+          }
         },
-        "x-stoplight": { "id": "fsu96u3r8ccdx" }
+        "x-stoplight": {
+          "id": "aba65c846oix6"
+        }
       },
       "WarehuseNativeFunnelEvent": {
         "title": "WarehuseNativeFunnelEvent",
-        "x-stoplight": { "id": "p2mmrob1vwxtk" },
+        "x-stoplight": {
+          "id": "hcuw2oc41j6d5"
+        },
         "type": "object",
         "properties": {
           "criteria": {
-            "x-stoplight": { "id": "plt3l9nmmd4dd" },
+            "x-stoplight": {
+              "id": "f31c0fravk949"
+            },
             "type": "array",
-            "items": { "$ref": "#/components/schemas/MetricEventCriteria" }
+            "items": {
+              "$ref": "#/components/schemas/MetricEventCriteria"
+            }
           },
           "metricSourceName": {
             "type": "string",
-            "x-stoplight": { "id": "o9tb413gjq07y" }
+            "x-stoplight": {
+              "id": "v2w1q55id1mnd"
+            }
           },
           "name": {
-            "x-stoplight": { "id": "f0xj6fn8oxbth" },
+            "x-stoplight": {
+              "id": "e24o4boy2oo7y"
+            },
             "type": "string",
             "description": "Step name",
             "nullable": true
           },
           "sessionIdentifierField": {
             "type": "string",
-            "x-stoplight": { "id": "i44iehk3b8fsq" },
+            "x-stoplight": {
+              "id": "86nyjespkr46c"
+            },
             "description": "Name of column which being used as session identifier. Funnel event with the same metric source have to have the same identifier column"
           }
         }
@@ -1915,5 +2509,9 @@ module.exports = {
       }
     }
   },
-  "security": [{ "STATSIG-API-KEY": [] }]
+  "security": [
+    {
+      "STATSIG-API-KEY": []
+    }
+  ]
 }

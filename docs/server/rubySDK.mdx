@@ -20,6 +20,7 @@ import {
   ClientInitResponse,
   LocalOverrides,
   Reference,
+  UserPersistentStorage,
 } from "./Templates/index.mdx";
 
 import Install from "./ruby/_install.mdx";
@@ -32,6 +33,8 @@ import MoreFAQs from "./ruby/_faqs.mdx";
 import Options from "./ruby/_options.mdx";
 import ShutdownSnippet from "./ruby/_shutdown.mdx";
 import OverridesSnippet from "./ruby/_localOverrides.mdx";
+import PersistentStorageInterface from "./ruby/_persistentStorageInterface.mdx";
+import PersistentStorageExample from "./ruby/_persistentStorageExample.mdx";
 import * as ReferenceSnippets from "./ruby/_reference.mdx";
 import ClientInitResponseSnippet from "./ruby/_clientInitResponse.mdx";
 
@@ -79,6 +82,10 @@ export const Result = SDKDocsBuilder(
         addedInVersion: "1.12.0",
         snippet: <OverridesSnippet />,
       },
+    ],
+    [
+      UserPersistentStorage,
+      { interface: <PersistentStorageInterface />, example: <PersistentStorageExample />},
     ],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],

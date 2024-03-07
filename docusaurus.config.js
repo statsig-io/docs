@@ -90,6 +90,8 @@ module.exports = {
       copyright: `Copyright (c) ${new Date().getFullYear()} Statsig, Inc. | Thanks Docusaurus`,
     },
     prism: {
+      theme: require('prism-react-renderer/themes/github'),
+      darkTheme: require('prism-react-renderer/themes/dracula'),
       additionalLanguages: [
         "swift",
         "java",
@@ -106,15 +108,6 @@ module.exports = {
     },
   },
   plugins: [
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        hashed: true,
-        indexBlog: false,
-        indexDocs: true,
-        docsRouteBasePath: "/",
-      },
-    ],
     function statsig() {
       const isProd = process.env.NODE_ENV === "production";
       const tier = isProd ? "production" : "development";
@@ -215,6 +208,23 @@ module.exports = {
             from: "/integrations/terraform",
           },
         ],
+      },
+    ],
+  ],
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        indexBlog: false,
+        indexDocs: true,
+        docsRouteBasePath: "/",
+        ignoreFiles: [
+          /client\/_[^\/]*\.mdx/i,
+          /server\/_[^\/]*\.mdx/i,
+          /client\/(Android|AndroidOnDeviceEvaluation|Dart|React|ReactNative|Roku|SwiftOnDeviceEval|Templates|Unity|dotnet|iOS|js|jslocal)\/?/i,
+          /server\/(Templates|java|node|cpp|dotnet|erlang|go|php|python|ruby|rust)\/?/i,
+        ]
       },
     ],
   ],

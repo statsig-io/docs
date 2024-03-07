@@ -1,0 +1,11 @@
+```csharp
+StatsigUser user;
+user.user_id = "a-user";
+
+
+client.UpdateUser(user);
+
+// or, use the shared instance
+
+StatsigClient::Shared().UpdateUser(user);
+```
