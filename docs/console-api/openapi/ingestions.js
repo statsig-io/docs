@@ -98,6 +98,27 @@ module.exports = {
                     }
                   ],
                   "description": "Column mapping"
+                },
+                "share": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "h054eyckse647"
+                  },
+                  "description": "Delta sharing share. Can only be set if ingestion already uses delta sharing."
+                },
+                "schema": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "if3vc534tyf9c"
+                  },
+                  "description": "Delta sharing schema. Can only be set if ingestion already uses delta sharing."
+                },
+                "table": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "elj5foayttsem"
+                  },
+                  "description": "Delta sharing table. Can only be set if ingestion already uses delta sharing."
                 }
               }
             }
@@ -112,8 +133,7 @@ module.exports = {
               "required": [
                 "type",
                 "dataset",
-                "source_name",
-                "query"
+                "source_name"
               ],
               "properties": {
                 "type": {
@@ -154,6 +174,35 @@ module.exports = {
                     }
                   ],
                   "description": "Column mapping"
+                },
+                "use_delta_sharing": {
+                  "type": "boolean",
+                  "x-stoplight": {
+                    "id": "dim9u981cprxb"
+                  },
+                  "default": true,
+                  "description": "Should use delta sharing."
+                },
+                "share": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "78ytt3ix3f8rz"
+                  },
+                  "description": "Delta sharing share. Required if ingestion uses delta sharing."
+                },
+                "schema": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "7cll67kzb221n"
+                  },
+                  "description": "Delta sharing schema. Required if ingestion uses delta sharing."
+                },
+                "table": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "d7dsctacmulfr"
+                  },
+                  "description": "Delta sharing table. Required if ingestion uses delta sharing."
                 }
               }
             },
