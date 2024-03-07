@@ -1,9 +1,3 @@
-```typescript
-const dynamicConfig = myStatsigClient.getDynamicConfig("awesome_product_details");
-const itemName = dynamicConfig.value["product_name"] ?? "Some Fallback";
-const price = dynamicConfig.value["price"] ?? 10.0;
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
-if (dynamicConfig.value["is_discount_enabled"] === true) {
-  // apply some discount logic
-}
-```
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/PrecomputedClientGetDynamicConfig.tsx" />

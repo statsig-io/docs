@@ -1,16 +1,3 @@
-```typescript
-// Values via getLayer
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
-const layer = myStatsigClient.getLayer("user_promo_experiments");
-
-const promoTitle = myStatsigClient.getValue("title") ?? "Welcome to Statsig!";
-const discount = myStatsigClient.getValue("discount") ?? 0.1;
-
-// or, via getExperiment
-
-const titleExperiment = myStatsigClient.getExperiment("new_user_promo_title");
-const priceExperiment = myStatsigClient.getExperiment("new_user_promo_price");
-
-const promoTitle = titleExperiment.value["title"] ?? "Welcome to Statsig!";
-const discount = priceExperiment.value["discount"] ?? 0.1;
-```
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/PrecomputedClientGetLayer.tsx" />
