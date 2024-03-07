@@ -1,24 +1,19 @@
+---
+title: Migrating From statsig-js
+sidebar_label: Migrating from statsig-js
+slug: /client/javascript-sdk/migrating-from-statsig-js
+---
+
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-## Migration from statsig-js
-
-
-
-
-
-
-
-
 ### Standard Initialize
-
-
 
 <Tabs
   groupId="js-migration-choice"
   defaultValue="new"
   values={[
-    {label: 'Legacy', value: 'legacy'},
+    {label: 'statsig-js (Legacy)', value: 'legacy'},
     {label: 'New', value: 'new'},
   ]}>
   <TabItem value="legacy">
@@ -38,11 +33,11 @@ await Statsig.initialize(
   <TabItem value="new">
 
 ```typescript
-import { PrecomputedEvaluationsClient } from '@sigstat/precomputed-evaluations';
+import { PrecomputedEvaluationsClient } from "@sigstat/precomputed-evaluations";
 
 const statsig = new PrecomputedEvaluationsClient(
-  "<STATSIG_CLIENT_SDK_KEY>", 
-  { userID: 'a-user' }, 
+  "<STATSIG_CLIENT_SDK_KEY>",
+  { userID: "a-user" },
   { environment: { tier: "staging" } } // (optional) Configure SDK via StatsigOptions here
 );
 await statsig.initialize();
@@ -51,24 +46,13 @@ await statsig.initialize();
   </TabItem>
 </Tabs>
 
-
-
-
-
-
-
-
-
-
-
-
 ### React Initialize
 
 <Tabs
   groupId="js-migration-choice"
   defaultValue="new"
   values={[
-    {label: 'Legacy', value: 'legacy'},
+    {label: 'statsig-js (Legacy)', value: 'legacy'},
     {label: 'New', value: 'new'},
   ]}>
   <TabItem value="legacy">
@@ -80,7 +64,7 @@ function App() {
   return (
     <StatsigProvider
       sdkKey="<STATSIG_CLIENT_SDK_KEY>"
-      user={{userID: 'a-user'}}
+      user={{ userID: "a-user" }}
       waitForInitialization={true}
       // StatsigOptions (Not Required)
       options={{
@@ -97,12 +81,12 @@ function App() {
   <TabItem value="new">
 
 ```jsx
-import { PrecomputedEvaluationsClient } from '@sigstat/precomputed-evaluations';
-import { StatsigProvider } from '@sigstat/react-bindings';
+import { PrecomputedEvaluationsClient } from "@sigstat/precomputed-evaluations";
+import { StatsigProvider } from "@sigstat/react-bindings";
 
 const client = new PrecomputedEvaluationsClient(
-  "<STATSIG_CLIENT_SDK_KEY>", 
-  { userID: 'a-user' }, 
+  "<STATSIG_CLIENT_SDK_KEY>",
+  { userID: "a-user" },
   { environment: { tier: "staging" } } // (optional) Configure SDK via StatsigOptions here
 );
 await statsig.initialize();
@@ -114,7 +98,6 @@ function App() {
     </StatsigProvider>
   );
 }
-
 ```
 
   </TabItem>

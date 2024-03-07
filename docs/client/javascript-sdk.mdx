@@ -21,8 +21,8 @@ import {
 
 import OnDeviceEvalProsAndCons from "./Templates/_OnDeviceEvalProsAndCons.mdx";
 
-import * as _Migration from "./javascript-mono/_migration.mdx";
-export const Migration = _Migration;
+import * as _DataProviders from "./javascript-mono/_dataProviders.mdx";
+export const DataProviders = _DataProviders;
 
 import * as _Samples from "./javascript-mono/_samples.mdx";
 export const Samples = _Samples;
@@ -38,7 +38,7 @@ import Options from "./javascript-mono/_options.mdx";
 import ShutdownSnippet from "./javascript-mono/_shutdown.mdx";
 
 export const Result = SDKDocsBuilder(
-  { },
+  {},
   [
     [
       Repository,
@@ -70,14 +70,21 @@ export const Result = SDKDocsBuilder(
         trailingMessage: "",
       },
     ],
-    [StatsigUser, { excludeMentionToDirectUpdateUser: true, isOnDeviceEval: true, snippet: <></> }],
+    [
+      StatsigUser,
+      {
+        excludeMentionToDirectUpdateUser: true,
+        isOnDeviceEval: true,
+        snippet: <></>,
+      },
+    ],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
-    [Migration, {}],
+    [DataProviders, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Samples, {}],
   ],
-  toc,
+  toc
 );
 
 <>{Result}</>
