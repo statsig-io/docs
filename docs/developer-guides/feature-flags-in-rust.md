@@ -1,3 +1,11 @@
+---
+title: How to set up Feature Flags in Rust
+sidebar_label: Feature Flags in Rust
+slug: /developer-guides/feature-flags-in-rust
+---
+
+To integrate feature flags into a Rust application with the Statsig SDK, you'll start by setting up a simple Rust "Hello World" app, then integrate Statsig to manage your feature flags. 
+
 ### Step 1: Create a Rust Project
 
 Create a new Rust project using `cargo`. In your terminal, enter the following command:
