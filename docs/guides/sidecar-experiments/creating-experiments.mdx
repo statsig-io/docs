@@ -1,0 +1,79 @@
+---
+sidebar_label: Creating Experiments
+title: Creating your first experiment
+---
+
+Sidecar allows you to create and run A/B experiments easily without having to write code or push code to production.  Here we'll see how you can create one such experiment and get results 
+
+:::info
+This guide assumes you have followed the previous steps of installing side-car, creating a statsig account and setting up the API Keys correctly.  Check out [Setup](./setup) for those instructions.
+:::
+
+### Step 1: Navigate to the web page
+
+Navigate to the web page you want to experiment on.
+
+![image](https://github.com/statsig-io/.github/assets/74588208/3a783170-1c69-4720-8d4d-8f4005999c7c)
+
+### Step 2: New experiment
+
+Hit the *New Experiment* button and fill out the details.  This will create a local experiment which hasn't been published yet. This allows you to configure all the details, verify that everything works and then you can publish it.
+
+![image](https://github.com/statsig-io/.github/assets/74588208/d8cfc8bb-43e9-4a64-8ca8-002c579e7fff)
+
+Once it's created your Sidecar panel would look like this.  Notice that the Experiment is now in "Draft" state.
+
+![image](https://github.com/statsig-io/.github/assets/74588208/0f2d1392-f4b3-49c3-b9f2-be3963d189fb)
+
+
+### Step 3 (Optional): Add url filter
+
+You have the option to select what pages this experiment is valid by choosing a regex.  This regex will be matched against page urls, and the experiment will only be active for those urls that match.
+
+For example, `(http|https):\/\/www.statsig.com\/pricing` matches pages `http://www.statsig.com/pricing` or `https://www.statsig.com/pricing`, and will activate this experiment on those pages.
+
+![image](https://github.com/statsig-io/.github/assets/74588208/8909cdc4-41a0-45ad-b947-583d22734a99)
+
+
+### Step 4: Add actions
+
+Click the *Add Action* button and you'll see a list of actions you can perform with this experiment. Let's try one of them here.
+
+Go ahead and choose *Change content of an element*.  This will set you up to run an A/B test changing the content of an HTML element - like Headlines, descriptions, CTA, etc.
+
+![image](https://github.com/statsig-io/.github/assets/74588208/f91f6878-3a3a-4120-86e6-da1982f35e09)
+
+
+### Step 5: Select an element
+
+In order to run a content change experiment, you will need two things: 1. the element that you want to test with, 2. the content you want to change.
+
+Click on the yellow *Target element path* text-box.  This will activate an element selector mode. 
+
+Now as you move your mouse over your web page you'll see a red selection rectangle.  Choose the element you want by clicking on it.  In this example, we're choosing the main Headline.
+
+![image](https://github.com/statsig-io/.github/assets/74588208/bffdf35e-bff5-4a62-93ae-15cad3dd8d05)
+
+Sidecar will now reflect the path of the element that was selected.
+
+![image](https://github.com/statsig-io/.github/assets/74588208/be0525cb-0da8-45bf-b4ab-e7d2bf0d23ed)
+
+
+### Step 6: Update content
+
+Now, you can choose the two different text content you want to A/B test.  In the *Control content* text box, add your control text ("Build Better Products") and in the *Test content* text box, add your test variant ("Experiment Like a Pro").
+
+You can validate these changes in realtime by clicking on the &#x25B6; button above the text box for each variant.  This will immediately change the element's content so you can visually inspect how things look before publishing.
+
+![image](https://github.com/statsig-io/.github/assets/74588208/508adf9e-ca18-4939-b394-db6d768a3c12)
+
+### Step 7: Add more actions
+
+Feel free to add more actions within the same experiment and play with the capabilities of the tool
+
+![image](https://github.com/statsig-io/.github/assets/74588208/060c06e4-f77c-4057-ac51-b99cf5af0777)
+
+#### Congratulations!  You have created your first no-code experiment
+
+## Next up: [Publishing Experiments](./publishing-experiments)
+

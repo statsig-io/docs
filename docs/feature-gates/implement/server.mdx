@@ -203,7 +203,7 @@ const user = {
   ...
 };
 
-const showNewDesign = await statsig.checkGate(user, 'FEATURE_GATE_NAME');
+const showNewDesign = Statsig.checkGateSync(user, 'FEATURE_GATE_NAME');
 if (showNewDesign) {
   // show new design here
 } else {

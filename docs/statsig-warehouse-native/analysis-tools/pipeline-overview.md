@@ -29,17 +29,17 @@ Statsig lets you run your pipeline in a few different ways:
 
 ## Artifacts and Entity Relationships
 
-The following tables will be generated and stored in your warehouse per-experiment. You have full access to these data sources for your own analysis, models, or visualizations.
+The following tables will be generated and stored in your warehouse per-experiment. You have full access to these data sources for your own analysis, models, or visualizations. For experiments, `experiment_id` will be the name of the experiment; for Feature Gates, `experiment_id` will be the name of the gate along with the specific rule ID (e.g. `chatbot_llm_model_switch_31e9jwlgO1bSSznKntb2gp_exposures_summary`)
 
-| Table                                                        | Description                                                                                                                     | Notes                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| <experiment\>\_first_exposures                               | Deduplicated and stitched (for experiments with ID resolution) first exposure events                                            | Useful for ad-hoc analysis                                 |
-| <experiment\>\_exposures_summary                             | Timeseries of exposures per group for display in Pulse                                                                          |                                                            |
-| <experiment\>\_user_level_aggregations                       | User-day level metric aggregations table                                                                                        | Useful for ad-hoc analysis                                 |
-| <experiment\>\_user_level_aggregations_for_pre_exposure_data | User-level pre-experiment aggregations for regression adjustment/CUPED                                                          |                                                            |
-| <experiment\>\_funnel_events                                 | Staging table for running funnel analysis                                                                                       |                                                            |
-| windowed_metrics\_<experiment\>                              | Staging table for generating running totals when restating Pulse                                                                |                                                            |
-| <experiment\>\_results\_<rollup\>                            | Outputs of Statistical Analysis for different rollups (e.g. daily, days-since-exposure, cumulative, 7-day). Exported to Statsig | Pulse inputs - useful for replicating Statistical analysis |
+| Table                                                           | Description                                                                                                                     | Notes                                                      |
+| --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| <experiment_id\>\_first_exposures                               | Deduplicated and stitched (for experiments with ID resolution) first exposure events                                            | Useful for ad-hoc analysis                                 |
+| <experiment_id\>\_exposures_summary                             | Timeseries of exposures per group for display in Pulse                                                                          |                                                            |
+| <experiment_id\>\_user_level_aggregations                       | User-day level metric aggregations table                                                                                        | Useful for ad-hoc analysis                                 |
+| <experiment_id\>\_user_level_aggregations_for_pre_exposure_data | User-level pre-experiment aggregations for regression adjustment/CUPED                                                          |                                                            |
+| <experiment_id\>\_funnel_events                                 | Staging table for running funnel analysis                                                                                       |                                                            |
+| windowed_metrics\_<experiment_id\>                              | Staging table for generating running totals when restating Pulse                                                                |                                                            |
+| <experiment_id\>\_results\_<rollup\>                            | Outputs of Statistical Analysis for different rollups (e.g. daily, days-since-exposure, cumulative, 7-day). Exported to Statsig | Pulse inputs - useful for replicating Statistical analysis |
 
 The high level relationships/contents of these tables are represented below - refer to the Main Steps image below for scheduling details.
 

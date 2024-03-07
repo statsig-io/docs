@@ -1,0 +1,49 @@
+---
+title: Persistent Assignment
+sidebar_label: Persistent Assignment
+slug: /server/concepts/persistent_assignment
+---
+
+Persistent assignment allows you to ensure that a user's variant stays consistent while an experiment is running, regardless of changes to allocation or targeting.
+
+## Persistent Storage Adapter
+
+The persistent storage adapter allows you to plug in your own storage solution that Statsig SDK uses to persist user assignments.
+The storage interface consists of just a `load` and `save` API for read/write operations.
+
+:::info
+Currently only supported in `Go` and `Ruby`
+:::
+
+### Persistent Storage Logic
+- Providing a storage adapter on Statsig initialization will give the SDK access to read & write on your custom storage
+- Providing user persisted values to `get_experiment` will inform the SDK to
+  - **save** the evaluation of the current user **on first evaluation**
+  - **load** the previously saved evaluation of a persisted user **on subsequent evaluations**
+
+### Example usage
+```ruby
+Statsig.initialize(
+  'secret-key',
+  StatsigOptions.new(
+    user_persistent_storage: DummyPersistentStorageAdapter.new
+  )
+)
+persisted_user = StatsigUser.new({ 'userID' => 'test-123' })
+exp = Statsig.get_experiment( # User gets saved to persisted storage
+  persisted_user,
+  'active_experiment',
+  Statsig::GetExperimentOptions.new(
+    user_persisted_values: Statsig.get_user_persisted_values(persisted_user, 'userID')
+  )
+)
+puts exp.group_name # 'Control'
+exp = Statsig.get_experiment( # User evaluates using values from persisted storage
+  StatsigUser.new({'userID' => 'unknown'}),
+  'active_experiment',
+  Statsig::GetExperimentOptions.new(
+    user_persisted_values: Statsig.get_user_persisted_values(persisted_user, 'userID')
+  )
+)
+puts exp.group_name # 'Control'
+```
