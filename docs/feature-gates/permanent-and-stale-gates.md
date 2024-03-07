@@ -28,6 +28,7 @@ In your feature gates catalog, you'll see different **Types** displayed in the S
 - **Stale Gates** (set by Statsig)
   - **Stale feature gates** indicate to your team that these gates could be a good candidate for cleanup. Statsig automatically marks gates as stale based on the following definition (excludes Permanent and newly created gates) -
     - 0 checks within last 30 days OR
+    - no modifications within the last 30 days
     - gate rolled out to 100% or 0%
   - Implications of gates being marked as **Stale**
     - No change in the gate’s behavior when called

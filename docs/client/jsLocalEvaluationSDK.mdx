@@ -1,5 +1,5 @@
 ---
-sidebar_label: JavaScript (On Device Evaluation)
+sidebar_label: JavaScript
 title: JavaScript On Device Evaluation
 ---
 
@@ -20,6 +20,7 @@ import {
   LocalOverrides,
   StableID,
   FetchMode,
+  UserPersistentStorage,
 } from "./Templates/index.mdx";
 
 import OnDeviceEvalProsAndCons from "./Templates/_OnDeviceEvalProsAndCons.mdx";
@@ -34,8 +35,9 @@ import LogEvent from "./jslocal/_logEvent.mdx";
 import MoreFAQs from "./jslocal/_faqs.mdx";
 import Options from "./jslocal/_options.mdx";
 import ShutdownSnippet from "./jslocal/_shutdown.mdx";
+import PersistentStorageInterface from "./jslocal/_persistentStorageInterface.mdx";
+import PersistentStorageExample from "./jslocal/_persistentStorageExample.mdx";
 import { GetStableID, OverrideStableID } from "./jslocal/_stableID.mdx";
-import * as UsingPersistentValues from "./jslocal/_usingPersistentValues.mdx";
 
 export const Result = SDKDocsBuilder(
   {},
@@ -77,7 +79,10 @@ export const Result = SDKDocsBuilder(
       StableID,
       { getSnippet: <GetStableID />, overrideSnippet: <OverrideStableID /> },
     ],
-    [UsingPersistentValues, { }],
+    [
+      UserPersistentStorage,
+      { interface: <PersistentStorageInterface />, example: <PersistentStorageExample /> },
+    ],
     [FAQ, { faqs: <MoreFAQs /> }],
   ],
   toc

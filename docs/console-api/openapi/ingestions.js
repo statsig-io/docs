@@ -1,7 +1,7 @@
 module.exports = {
   "openapi": "3.0.0",
   "x-stoplight": {
-    "id": "iyu7er1n6xhuz"
+    "id": "pdfye4jj6i5ex"
   },
   "info": {
     "title": "https://statsigapi.net/console/v1",
@@ -20,8 +20,367 @@ module.exports = {
         "in": "header"
       }
     },
-    "requestBodies": {},
+    "requestBodies": {
+      "Ingestion-query": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "type",
+                "dataset"
+              ],
+              "properties": {
+                "type": {
+                  "$ref": "#/components/schemas/Ingestion-type"
+                },
+                "dataset": {
+                  "$ref": "#/components/schemas/Ingestion-dataset"
+                },
+                "source_name": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "doa357fzn256c"
+                  },
+                  "description": "Name of ingestion source"
+                }
+              }
+            },
+            "examples": {}
+          }
+        }
+      },
+      "ingestion-update": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "type",
+                "dataset"
+              ],
+              "properties": {
+                "type": {
+                  "$ref": "#/components/schemas/Ingestion-type"
+                },
+                "dataset": {
+                  "$ref": "#/components/schemas/Ingestion-dataset"
+                },
+                "source_name": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "kev4mfhszpciy"
+                  },
+                  "description": "Name of ingestion source",
+                  "example": "ingestion-1"
+                },
+                "query": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "bdgu38tjjy3z4"
+                  },
+                  "description": "SQL query string",
+                  "example": "SELECT * FROM TABLE"
+                },
+                "column_mapping": {
+                  "x-stoplight": {
+                    "id": "8vki37gr9qgjj"
+                  },
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/metrics-column-mapping"
+                    },
+                    {
+                      "$ref": "#/components/schemas/events-column-mapping"
+                    },
+                    {
+                      "$ref": "#/components/schemas/exposures-column-mapping"
+                    }
+                  ],
+                  "description": "Column mapping"
+                },
+                "share": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "h054eyckse647"
+                  },
+                  "description": "Delta sharing share. Can only be set if ingestion already uses delta sharing."
+                },
+                "schema": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "if3vc534tyf9c"
+                  },
+                  "description": "Delta sharing schema. Can only be set if ingestion already uses delta sharing."
+                },
+                "table": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "elj5foayttsem"
+                  },
+                  "description": "Delta sharing table. Can only be set if ingestion already uses delta sharing."
+                }
+              }
+            }
+          }
+        }
+      },
+      "Ingestion-create": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "type",
+                "dataset",
+                "source_name"
+              ],
+              "properties": {
+                "type": {
+                  "$ref": "#/components/schemas/Ingestion-type"
+                },
+                "dataset": {
+                  "$ref": "#/components/schemas/Ingestion-dataset"
+                },
+                "source_name": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "3d6xwhepjxb7l"
+                  },
+                  "description": "Name of ingestion source",
+                  "example": "ingestion-1"
+                },
+                "query": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "socxsev11ng67"
+                  },
+                  "description": "SQL query string",
+                  "example": "SELECT * FROM TABLE"
+                },
+                "column_mapping": {
+                  "x-stoplight": {
+                    "id": "tiv2xpn7oya4u"
+                  },
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/metrics-column-mapping"
+                    },
+                    {
+                      "$ref": "#/components/schemas/events-column-mapping"
+                    },
+                    {
+                      "$ref": "#/components/schemas/exposures-column-mapping"
+                    }
+                  ],
+                  "description": "Column mapping"
+                },
+                "use_delta_sharing": {
+                  "type": "boolean",
+                  "x-stoplight": {
+                    "id": "dim9u981cprxb"
+                  },
+                  "default": true,
+                  "description": "Should use delta sharing."
+                },
+                "share": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "78ytt3ix3f8rz"
+                  },
+                  "description": "Delta sharing share. Required if ingestion uses delta sharing."
+                },
+                "schema": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "7cll67kzb221n"
+                  },
+                  "description": "Delta sharing schema. Required if ingestion uses delta sharing."
+                },
+                "table": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "d7dsctacmulfr"
+                  },
+                  "description": "Delta sharing table. Required if ingestion uses delta sharing."
+                }
+              }
+            },
+            "examples": {}
+          }
+        }
+      }
+    },
     "schemas": {
+      "Ingestion": {
+        "title": "Ingestion",
+        "x-stoplight": {
+          "id": "vutftepdhpz2q"
+        },
+        "type": "object",
+        "x-examples": {},
+        "required": [
+          "id",
+          "type"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "jwh924gc6zstt"
+            },
+            "description": "Ingestion ID"
+          },
+          "type": {
+            "$ref": "#/components/schemas/Ingestion-type"
+          },
+          "enabled": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "2i2bvbs0nxdxu"
+            },
+            "description": "Ingestion enabled status"
+          },
+          "data": {
+            "type": "object",
+            "x-stoplight": {
+              "id": "q7cpsr0zffvvx"
+            },
+            "description": "Ingestion data",
+            "properties": {
+              "name": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "3llealu3z0xmj"
+                }
+              },
+              "namespace": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "3ld1eddo8rre1"
+                }
+              },
+              "query": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "ts5lmeo2uh1un"
+                }
+              },
+              "knownColumns": {
+                "type": "array",
+                "x-stoplight": {
+                  "id": "3ljc8de0nvst9"
+                },
+                "items": {
+                  "x-stoplight": {
+                    "id": "3dxtsajldh572"
+                  },
+                  "type": "string"
+                }
+              },
+              "sampleRows": {
+                "type": "array",
+                "x-stoplight": {
+                  "id": "sb42t3ck7uvtg"
+                },
+                "items": {
+                  "x-stoplight": {
+                    "id": "wxnpyil84bj04"
+                  },
+                  "type": "array",
+                  "items": {
+                    "x-stoplight": {
+                      "id": "cszyai1rm9kvm"
+                    },
+                    "type": "string"
+                  }
+                }
+              },
+              "columnTypes": {
+                "type": "array",
+                "x-stoplight": {
+                  "id": "t83hdwqnlomo2"
+                },
+                "items": {
+                  "x-stoplight": {
+                    "id": "9evty6isf6456"
+                  },
+                  "type": "string"
+                }
+              },
+              "columnMappings": {
+                "type": "object",
+                "x-stoplight": {
+                  "id": "0wl3gxhmdxfpy"
+                }
+              },
+              "scheduled_hour_pst": {
+                "type": "number",
+                "x-stoplight": {
+                  "id": "ayq2h8p0lu52n"
+                }
+              },
+              "enabled": {
+                "type": "boolean",
+                "x-stoplight": {
+                  "id": "ugy98pecuqnpn"
+                }
+              },
+              "creator": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "nrq36vh4p1q6p"
+                }
+              },
+              "creation_time": {
+                "type": "number",
+                "x-stoplight": {
+                  "id": "sjgx929hzwqym"
+                }
+              },
+              "last_modifier": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "hl1vp6druq6d7"
+                }
+              },
+              "last_modified_time": {
+                "type": "number",
+                "x-stoplight": {
+                  "id": "fbwn446n1kh2u"
+                }
+              },
+              "subscriber_emails": {
+                "type": "array",
+                "x-stoplight": {
+                  "id": "j64yquak8ic0q"
+                },
+                "items": {
+                  "x-stoplight": {
+                    "id": "xbn45xxhw3b5w"
+                  },
+                  "type": "string"
+                }
+              },
+              "dataExportType": {
+                "$ref": "#/components/schemas/data-export-type"
+              },
+              "exportTableName": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "v2a9zyqia4oud"
+                }
+              },
+              "is_delta_sharing": {
+                "type": "boolean",
+                "x-stoplight": {
+                  "id": "rv5cjku4yviet"
+                }
+              }
+            }
+          }
+        }
+      },
       "ingestion-run": {
         "type": "object",
         "x-examples": {
@@ -320,6 +679,229 @@ module.exports = {
           "runID",
           "latestStatus"
         ]
+      },
+      "Ingestion-type": {
+        "title": "Ingestion-type",
+        "x-stoplight": {
+          "id": "i585gw9msyp46"
+        },
+        "enum": [
+          "redshift",
+          "bigquery-v2",
+          "snowflake-v2",
+          "databricks",
+          "azure-synapse",
+          "s3",
+          "athena",
+          "adls"
+        ],
+        "type": "string",
+        "example": "databricks",
+        "description": "Ingestion type"
+      },
+      "Ingestion-dataset": {
+        "title": "Ingestion-dataset",
+        "x-stoplight": {
+          "id": "yrhr68du1cn1e"
+        },
+        "enum": [
+          "Metrics",
+          "Events",
+          "export_exposures"
+        ],
+        "type": "string",
+        "example": "Metrics",
+        "description": "Ingestion dataset"
+      },
+      "data-export-type": {
+        "title": "data-export-type",
+        "x-stoplight": {
+          "id": "z6j99u0dmixnk"
+        },
+        "enum": [
+          "pulse-summary",
+          "exposures"
+        ],
+        "type": "string",
+        "example": "pulse-summary"
+      },
+      "metrics-column-mapping": {
+        "title": "metrics-column-mapping",
+        "x-stoplight": {
+          "id": "s1goz9etcdvdg"
+        },
+        "type": "object",
+        "description": "Column mapping schema for metric ingestions",
+        "required": [
+          "unit_id",
+          "id_type",
+          "dateid",
+          "metric_name"
+        ],
+        "properties": {
+          "unit_id": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "1tworh1znxcsg"
+            }
+          },
+          "id_type": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "78kzg52vev8g3"
+            }
+          },
+          "dateid": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "ifj2q329was1v"
+            }
+          },
+          "metric_name": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "ey8zifs4tsaj5"
+            }
+          },
+          "metric_value": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "hokrgy3482cnj"
+            },
+            "description": "Either metric_value or both numerator and denominator are required"
+          },
+          "numerator": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "uz6h18y3a4o3g"
+            }
+          },
+          "denominator": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "rrqrsxh0v43xb"
+            }
+          }
+        }
+      },
+      "events-column-mapping": {
+        "title": "events-column-mapping",
+        "x-stoplight": {
+          "id": "x8a0q3nxndoi2"
+        },
+        "type": "object",
+        "description": "Column mapping schema for event dataset ingestions",
+        "required": [
+          "event_name",
+          "timestamp"
+        ],
+        "properties": {
+          "unit_id": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "af65857zb61fr"
+            }
+          },
+          "event_name": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "qvb3cq2b4ifd4"
+            }
+          },
+          "timestamp": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "hv3n491szkt1h"
+            }
+          }
+        }
+      },
+      "exposures-column-mapping": {
+        "title": "exposures-column-mapping",
+        "x-stoplight": {
+          "id": "is0wb97wlkmtg"
+        },
+        "type": "object",
+        "description": "Column mapping schema for exposure ingestions",
+        "required": [
+          "experiment",
+          "group_id",
+          "timestamp"
+        ],
+        "properties": {
+          "experiment": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "or7ypjin0pdv5"
+            }
+          },
+          "group_id": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "3k3447tnkoufp"
+            }
+          },
+          "unit_id": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "dszg8qtoom4vl"
+            }
+          },
+          "timestamp": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "dmo3kh4quvuck"
+            }
+          }
+        }
+      }
+    },
+    "responses": {},
+    "parameters": {
+      "Ingestion-type": {
+        "name": "type",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "redshift",
+            "bigquery-v2",
+            "snowflake-v2",
+            "databricks",
+            "azure-synapse",
+            "s3",
+            "athena",
+            "adls"
+          ],
+          "example": "databricks"
+        },
+        "description": "Ingestion type"
+      },
+      "Dataset": {
+        "name": "dataset",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "Events",
+            "Metrics",
+            "export_exposures"
+          ],
+          "example": "Events"
+        },
+        "description": "Ingestion dataset type"
+      },
+      "Source-name": {
+        "name": "source_name",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "example": "ingestion-1"
+        },
+        "description": "Name of ingestion source"
       }
     }
   },
@@ -334,7 +916,314 @@ module.exports = {
     }
   ],
   "paths": {
+    "/ingestion": {
+      "get": {
+        "summary": "Read Ingestion",
+        "tags": [
+          "Ingestions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "9lzwe5v4g6yyn"
+                      },
+                      "example": "Ingestion read successfully."
+                    },
+                    "data": {
+                      "x-stoplight": {
+                        "id": "qbmg7vkdc2kqz"
+                      },
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/Ingestion"
+                        },
+                        {
+                          "type": "array",
+                          "x-stoplight": {
+                            "id": "ce5p1pahrzz90"
+                          },
+                          "items": {
+                            "$ref": "#/components/schemas/Ingestion"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "message"
+                  ]
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Ingestion read successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "operationId": "get-ingestion",
+        "x-stoplight": {
+          "id": "k90se0bwlz0xl"
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Ingestion-type"
+          },
+          {
+            "$ref": "#/components/parameters/Dataset"
+          },
+          {
+            "$ref": "#/components/parameters/Source-name"
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Update Ingestion",
+        "tags": [
+          "Ingestions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "nc50nnvqce026"
+                      },
+                      "example": "Ingestion updated successfully."
+                    },
+                    "data": {
+                      "x-stoplight": {
+                        "id": "ltnexxplnex5k"
+                      },
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/Ingestion"
+                        },
+                        {
+                          "type": "array",
+                          "x-stoplight": {
+                            "id": "ua70fvoxtm2eh"
+                          },
+                          "items": {
+                            "$ref": "#/components/schemas/Ingestion"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "message"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "operationId": "patch-ingestion",
+        "x-stoplight": {
+          "id": "rs5pha9pfoxas"
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/ingestion-update"
+        }
+      },
+      "delete": {
+        "summary": "Delete Ingestion Source",
+        "tags": [
+          "Ingestions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "etbyxfedykplu"
+                      },
+                      "example": "Ingestion deleted successfully."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "delete-ingestion",
+        "x-stoplight": {
+          "id": "jooevk266dvkx"
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Ingestion-type"
+          },
+          {
+            "$ref": "#/components/parameters/Dataset"
+          },
+          {
+            "$ref": "#/components/parameters/Source-name"
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create Ingestion Source",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "45yxnlchi8zyg"
+                      },
+                      "example": "Ingestion created successfully"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Ingestion"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "operationId": "post-ingestion",
+        "x-stoplight": {
+          "id": "fkd5nnemj1s88"
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Ingestion-create"
+        },
+        "tags": [
+          "Ingestions"
+        ]
+      }
+    },
+    "/ingestion/connection/databricks": {
+      "post": {
+        "summary": "Create Databricks Connection",
+        "operationId": "post-ingestion-connection-databricks",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "x8a0wpvrquwnt"
+                      },
+                      "example": "Ingestion created successfully."
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Ingestion"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "9d9ntiffcoa4z"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "v7ge4wxqna4fv"
+                    }
+                  },
+                  "host": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "i9uuvyyz47l18"
+                    }
+                  },
+                  "path": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "0457vp9870p6l"
+                    }
+                  },
+                  "deltaSharingCredentials": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "i8nvnou9kp1xx"
+                    }
+                  },
+                  "verified": {
+                    "type": "boolean",
+                    "x-stoplight": {
+                      "id": "w7fdlwrm7d5i8"
+                    }
+                  }
+                },
+                "required": [
+                  "token",
+                  "host",
+                  "path"
+                ]
+              }
+            }
+          }
+        },
+        "tags": [
+          "Ingestion Connections"
+        ]
+      },
+      "parameters": []
+    },
     "/ingestion/status": {
+      "parameters": [],
       "get": {
         "summary": "List Ingestions Status",
         "responses": {
@@ -376,7 +1265,7 @@ module.exports = {
                     "rowCount": {
                       "type": "number",
                       "x-stoplight": {
-                        "id": "pikd8895jlenw"
+                        "id": "ii0udr3ulbu5d"
                       },
                       "description": "number of rows imported"
                     }
@@ -516,7 +1405,7 @@ module.exports = {
           }
         },
         "x-stoplight": {
-          "id": "gu8nzt1mgrwrw"
+          "id": "fwep8bndnv73m"
         },
         "parameters": [
           {
@@ -567,10 +1456,9 @@ module.exports = {
         },
         "description": "",
         "tags": [
-          "Ingestions"
+          "Ingestion Status"
         ]
-      },
-      "parameters": []
+      }
     },
     "/ingestion/runs": {
       "get": {
@@ -1722,7 +2610,7 @@ module.exports = {
         ],
         "description": "List ingestion runs sorted by the timestamp they were triggered",
         "tags": [
-          "Ingestions"
+          "Ingestion Runs"
         ]
       }
     },
@@ -1924,7 +2812,7 @@ module.exports = {
         ],
         "description": "Get a selected run_id",
         "tags": [
-          "Ingestions"
+          "Ingestion Runs"
         ]
       },
       "parameters": [
@@ -1938,6 +2826,105 @@ module.exports = {
           "description": "The Run ID to query"
         }
       ]
+    },
+    "/ingestion/backfill": {
+      "post": {
+        "summary": "Backfill Ingestion",
+        "operationId": "post-ingestion-backfill",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "rxvkpyx1t0lxo"
+                      },
+                      "example": "Ingestion backfilled successfully."
+                    }
+                  },
+                  "required": [
+                    "message"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "datestamp_start": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "zcbo0n3nqjx4l"
+                    },
+                    "description": "Start time in format YYYY-MM-DD"
+                  },
+                  "datestamp_end": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "knulbz9hcr5ws"
+                    },
+                    "description": "End time in format YYYY-MM-DD"
+                  },
+                  "source": {
+                    "x-stoplight": {
+                      "id": "fx2sfi29ofmqt"
+                    },
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "x-stoplight": {
+                          "id": "rea0kq07wkplx"
+                        },
+                        "items": {
+                          "x-stoplight": {
+                            "id": "y8qizc0ndfr0l"
+                          },
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "r3zolrv0jtz7i"
+                        }
+                      }
+                    ]
+                  },
+                  "type": {
+                    "x-stoplight": {
+                      "id": "88wjrru7zco2e"
+                    },
+                    "enum": [
+                      "events",
+                      "metrics"
+                    ],
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "33c6deicwos3q"
+        },
+        "tags": [
+          "Ingestion Backfills"
+        ]
+      }
     }
   }
 }

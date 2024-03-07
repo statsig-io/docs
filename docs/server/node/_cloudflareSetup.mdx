@@ -1,0 +1,22 @@
+import { VersionBadge } from "../../sdks/_VersionBadge.mdx";
+
+#### Polling for updates <VersionBadge version={"5.13.0"}/>
+The SDK cannot poll for updates accross requests since Cloudflare does not allow for timers[**](https://developers.cloudflare.com/workers/reference/security-model/#step-1-disallow-timers-and-multi-threading). <br />
+To solve for this, a manual sync API is available for independently updating the SDK internal store. <br />
+```javascript
+if (env.lastSyncTime < Date.now() - env.syncInterval) {
+  env.lastSyncTime = Date.now();
+  context.waitUntil(Statsig.syncConfigSpecs());
+}
+```
+
+#### Flushing events <VersionBadge version={"4.16.0"}/>
+The SDK enqueues logged events and flushes them in batches. In order to ensure events are properly flushed, we recommend calling `flush` using [`context.waitUntil`](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/#contextwaituntil).
+This will keep the request handler alive until events are flushed without blocking the response.
+```javascript
+context.waitUntil(Statsig.flush());
+```
+
+#### Node.JS Compatibility <VersionBadge version={"5.16.0"}/>
+Many native JavaScript API and Node standard libraries can be accessed in Cloudflare via the [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) compatibility flag. <br />
+The SDK is now compatible with `nodejs_compat` (since v5.16.0). In older versions, manual polyfilling is required.

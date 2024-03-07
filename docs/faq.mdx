@@ -88,6 +88,8 @@ See the question above for what counts as a billable event. Some tools available
 
 4. Look for gates that are 0% or 100% pass. These can be launched (always return Pass) or disabled (always return Fail) to stop generating billable events. [More information](https://statsig.com/updates#2/2/2023). With experiments, filter to experiments with Status = In Progress and Created < [day-45] to find long running experiments to make sure these are intentional and not just forgotten.
 
+5. There's a Console API endpoint that lets you download billing and usage data to sync this to your own systems [here](https://docs.statsig.com/console-api/usage-billing).
+
 ## How does bucketing within the Statsig SDKs work?
 Bucketing on Statsig is deterministic. Given the same UserID (or any UnitID) and an experiment/gate a given rollout stage, we'll always evalaute to the same result. This is true even if the evaluation happens in different places - on the client or server. For a peek into how we do this at a high level:
 - Salt Creation: For each experiment or feature gate, a unique salt is generated.
@@ -102,3 +104,6 @@ You can also peek into our open source SDKs [here](https://github.com/statsig-io
 If your web app configures strict Content Security Policy (CSP), adjust the policy to whitelist these two Statsig domains 
 - https://featuregates.org (SDKs initialize and download config from here) and
 - https://events.statsigapi.net (SDKs log events here) 
+
+## Why am I not seeing my exposures and custom events logged in Statsig?
+If you are executing Statsig in a short-lived process (ie a script or edge worker environment), it's likely the process is exiting prior to the event queue being flushed to Statsig. To ensure your exposures and events are sent to Statsig, make sure to call `statsig.flush()` before your process exits. Some edge providers offer utility methods to elegantly handle this situation to ensure events are flushed without blocking the response to the client ([example](https://docs.statsig.com/server/nodejsServerSDK#flushing-events-)). In a long-lived process like a webserver this is typically not required, but some customers choose to hook into the process's shutdown signal to flush events. 

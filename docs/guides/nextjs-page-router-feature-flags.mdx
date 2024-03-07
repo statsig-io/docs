@@ -1,0 +1,199 @@
+---
+sidebar_label: How to set up Feature Flags with Next.js (Page Router)
+title: How to set up Feature Flags with Next.js (Page Router)
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+Next.js, a powerful React framework, offers developers the tools to build fast, scalable, and interactive web applications.
+
+This guide focuses on the seamless integration of feature flags within Next.js applications, utilizing Statsig's React Client SDK and NodeJS Server SDK. Perfect for those looking to dynamically toggle features or conduct A/B testing, this tutorial will walk you through setting up feature flags in Next.js using the Page Router method, enabling personalized user experiences and facilitating efficient feature rollouts.
+
+In this walkthrough, we'll integrate our [React Client SDK](https://docs.statsig.com/client/reactSDK) and [NodeJS Server SDK](https://docs.statsig.com/server/nodejsServerSDK) into a simple Next.js app with Page Router and check a feature gate to determine if the end-user should see a new feature. 
+
+## Creating Your Feature Gate in Statsig for Next.js Development
+
+Create a Statsig account and obtain an SDK key: [Signup for free](https://www.statsig.com/signup)!
+
+The below command can be run to automatically create the simple `nextjs_app_bg` gate in Statsig that gets used throughout this integration guide and demo app. The gate randomizes based on `userID` and has a 50/50 allocation. Make sure to replace the authorization key in the header with your key generated in Statsig project settings as documented [here](https://docs.statsig.com/console-api/introduction).
+```bash
+curl --request POST 'https://statsigapi.net/console/v1/gates' \
+--header 'STATSIG-API-KEY: console-REPLACE_WITH_YOURS' \
+--header 'Content-Type: application/json' \
+--data-raw '{"name":"nextjs_app_bg","idType":"userID","isEnabled":true,"rules":[{"name":"Everyone","passPercentage":50,"conditions":[{"type":"public"}]}]}'
+``` 
+![image](/img/nextjs-gate.png)
+![image](/img/nextjs-rule.png)
+
+## Setting Up a Next.js Application for Feature Flag Integration
+
+Create a Next.js app by running the following command, and using all the default options except selecting 'No' for using App Router:
+
+```
+npx create-next-app@latest
+```
+
+This will create a Next.js app in a folder with the name of your app (default my-app). Run the following commands to run the app:
+
+```
+cd my-app
+npm run dev
+```
+
+You should see the following app in your localhost:
+
+![image](/img/nextjs-page-router-app.png)
+
+## Setup the Statsig React SDK on the client side
+
+First install the Statsig [React SDK](https://docs.statsig.com/server/Node.jsServerSDK)
+
+<Tabs
+  defaultValue="npm"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+  ]}>
+  <TabItem value="npm">
+
+```shell
+npm install statsig-react
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```shell
+yarn add statsig-react
+```
+
+  </TabItem>
+</Tabs>
+
+And add your Statsig Client API key (available in your Project Settings) to an env variable in `.env.local` and to your hosting provider (e.g. Vercel, Netlify). Prefix the env variable with `NEXT_PUBLIC_` so that the client SDK will be bundled to the browser.
+
+```
+NEXT_PUBLIC_STATSIG_CLIENT_KEY=your_client_key
+```
+
+We'll now be able to import the StatsigProvider from the ReactJS SDK, and wrap our app in a StatsigProvider
+
+```
+// pages/_app.tsx
+
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+import { StatsigProvider } from "statsig-react";
+
+export default function App({ Component, pageProps }: AppProps) {
+  const user = { userID: "123" }; // Get the user from your app
+
+  return <StatsigProvider         
+            sdkKey={process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!}
+            waitForInitialization={true}
+            user={user}
+          >
+            <Component {...pageProps} />
+          </StatsigProvider>;
+}
+ 
+
+```
+
+## Evaluating Feature Flags on the Client Side Within a Next.js App
+
+Now that we have the SDK set up on the client side, we can check feature gates. 
+
+To do this, create a new page under the `src/pages/background/index.tsx` file that checks the `nextjs_app_bg` gate we created earlier.
+
+```
+// pages/background/index.tsx
+import { useGate } from "statsig-react";
+
+export default function Background() {
+
+    const { value } = useGate("nextjs_app_bg");
+    
+    return (
+        <div style={value ? {background: "#194B7D"} : {}}>
+        <h1>Statsig Sample Nextjs App</h1>
+        <h3>
+            {value ? "Passing nextjs_app_bg gate (Blue Background)" : "Failing nextjs_app_bg gate (Black Background)"}
+        </h3>
+        </div>
+    );
+}
+```
+
+You'll now be bucketed either into the gate or not and get a corresponding experience. 
+
+Passing Experience:
+![image](/img/nextjs-pass.png)
+
+Failing Experience: 
+![image](/img/nextjs-fail.png)
+
+## Using Server-Side Rendering to Improve Performance
+
+To improve performance for the client-side feature gates check pattern, we can evaluate feature flag values on the server and pass results to the client. 
+
+First, add your Statsig Server Secret Key to your `.env.local` file
+
+```
+STATSIG_SERVER_SECRET=your_server_key
+```
+
+In our background page, we can export a getServerSideProps function that generates the user's feature flag evaluation on the server
+
+```
+// pages/background/index.tsx
+
+...
+
+export async function getServerSideProps() {
+    const user = { userID: "123452321" }; // Get the user from your app/request
+    await Statsig.initialize(process.env.STATSIG_SERVER_SECRET!);
+  
+    return {
+      props: {
+        initializeValues: Statsig.getClientInitializeResponse(user),
+      }
+    }
+  }
+
+...
+
+```
+
+Now, in our main app component, we can use the evaluated Statsig configs from the server side and pass the results to the StatsigSynchronousProvider. This will avoid a round-trip to Statsig for gate evaluation results, and avoiding flicker when loading webpages. 
+
+```
+// pages/_app.tsx
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+import { StatsigProvider, StatsigSynchronousProvider } from "statsig-react";
+
+export default function App({ Component, pageProps }: AppProps) {
+  const user = { userID: "123" }; // Get the user from your app
+
+  if (pageProps.initializeValues) {
+    return <StatsigSynchronousProvider
+      sdkKey={process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!}
+      initializeValues={pageProps.initializeValues}
+      user={user}
+    >
+      <Component {...pageProps} />
+    </StatsigSynchronousProvider>;
+
+  } else {
+    return <StatsigProvider
+      sdkKey={process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!}
+      waitForInitialization={true}
+      user={user}
+    >
+      <Component {...pageProps} />
+    </StatsigProvider>;
+  }
+}
+```
