@@ -3008,6 +3008,23 @@ module.exports = {
         ],
         "x-stoplight": {
           "id": "emtim398cufaq"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "archiveReason": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "m73kgehid2a1i"
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },
