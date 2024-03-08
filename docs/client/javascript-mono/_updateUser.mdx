@@ -1,58 +1,9 @@
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
-<Tabs
-  groupId="js-sdk-lang-choice"
-  defaultValue="ts"
-  values={[
-    {label: 'TypeScript', value: 'ts'},
-    {label: 'JavaScript', value: 'js'},
-  ]}>
+### Updating Users
 
-  <TabItem value="ts">
+At some point, you will probably need to change the StatsigUser being used by the Statsig client. To do this you can call `updateUserSync` or `updateUserAsync`.
 
-```typescript
-import type { StatsigUser } from "statsig-js";
+In advanced use cases, you may want to Prefetch or Bootstrap (Provide) values for the updating of a user. See [Using EvaluationsDataAdapter](/client/javascript-sdk/using-evaluations-data-adapter) to learn how this can be achieved.
 
-const user: StatsigUser = {
-    userID: currentUserID,
-    ip: currentIP,
-    custom: {
-        new_user: true,
-        level: 2
-    }
-};
-
-await Statsig.initialize('client-sdk-key', user);
-
-...
-// if you want to update the existing user, or change to a different user, call updateUser
-
-const newUser: StatsigUser = { ... };
-await Statsig.updateUser(newUser);
-```
-
-  </TabItem>
-  <TabItem value="js">
-
-```jsx
-const user = {
-    userID: currentUserID,
-    ip: currentIP,
-    custom: {
-        new_user: true,
-        level: 2
-    }
-};
-
-await Statsig.initialize('client-sdk-key', user);
-
-...
-// if you want to update the existing user, or change to a different user, call updateUser
-
-const newUser = { ... };
-await Statsig.updateUser(newUser);
-```
-
-  </TabItem>
-</Tabs>
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-update-user.tsx" />

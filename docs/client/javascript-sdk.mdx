@@ -21,11 +21,11 @@ import {
 
 import OnDeviceEvalProsAndCons from "./Templates/_OnDeviceEvalProsAndCons.mdx";
 
-import * as _DataProviders from "./javascript-mono/_dataProviders.mdx";
-export const DataProviders = _DataProviders;
+import * as _DataAdapter from "./javascript-mono/_dataAdapter.mdx";
+export const DataAdapter = _DataAdapter;
 
-import * as _Samples from "./javascript-mono/_samples.mdx";
-export const Samples = _Samples;
+import * as _UpdateUser from "./javascript-mono/_UpdateUser.mdx";
+export const UpdateUser = _UpdateUser;
 
 import CheckGate from "./javascript-mono/_checkGate.mdx";
 import GetConfig from "./javascript-mono/_getConfig.mdx";
@@ -70,21 +70,14 @@ export const Result = SDKDocsBuilder(
         trailingMessage: "",
       },
     ],
-    [
-      StatsigUser,
-      {
-        excludeMentionToDirectUpdateUser: true,
-        isOnDeviceEval: true,
-        snippet: <></>,
-      },
-    ],
+    [StatsigUser, {}],
+    [UpdateUser, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
-    [DataProviders, {}],
+    [DataAdapter, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
-    [Samples, {}],
   ],
   toc
 );
 
-<>{Result}</>
+<>{Result}</>./javascript-mono/_UpdateUser.mdx

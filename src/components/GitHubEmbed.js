@@ -8,7 +8,6 @@ function extractSnippet(input) {
   let isAdding = false;
 
   for (const line of parts) {
-    console.log(line);
     if (line.includes("<snippet>")) {
       isAdding = true;
     } else if (line.includes("</snippet>")) {
@@ -21,7 +20,7 @@ function extractSnippet(input) {
   return result.join("\n");
 }
 
-export default function GitHubEmbed({ url }) {
+export default function GitHubEmbed({ url, language }) {
   const [content, setContent] = useState("// Loading...");
 
   useEffect(() => {
@@ -34,7 +33,6 @@ export default function GitHubEmbed({ url }) {
         const data = await response.text();
         setContent(extractSnippet(data));
       } catch (error) {
-        console.error("Error fetching data:", error);
         setContent(`// Failed to load example.\n// View on GitHub:\n// ${url}`);
       }
     };
@@ -42,5 +40,5 @@ export default function GitHubEmbed({ url }) {
     fetchData();
   }, [url]);
 
-  return <CodeBlock language="typescript">{content}</CodeBlock>;
+  return <CodeBlock language={language ?? "typescript"}>{content}</CodeBlock>;
 }

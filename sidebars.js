@@ -416,6 +416,20 @@ module.exports = {
               ],
             },
             "client/jsClientSDK",
+            {
+              type: "category",
+              label: "New JavaScript (Beta)",
+              link: {
+                type: "doc",
+                id: "client/javascript-sdk",
+              },
+              items: [
+                "client/javascript-mono/MigrationFromOldSDK",
+                // "client/javascript-mono/IntegrationNextJs",
+                // "client/javascript-mono/IntegrationReact",
+                "client/javascript-mono/UsingEvaluationsDataAdapter",
+              ],
+            },
             "client/reactSDK",
             "client/reactNativeSDK",
             "client/reactNativeExpoSDK",
@@ -424,15 +438,6 @@ module.exports = {
             "client/dotnetSDK",
             "client/rokuSDK",
             "client/unitySDK",
-            {
-              type: "category",
-              label: "New JavaScript (Beta)",
-              link: {
-                type: "doc",
-                id: "client/javascript-sdk",
-              },
-              items: ["client/javascript-mono/MigrationFromOldSDK"],
-            },
             "client/dartSDK",
             "client/cpp-client-sdk",
             {
