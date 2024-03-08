@@ -1,7 +1,7 @@
 module.exports = {
   "openapi": "3.0.0",
   "x-stoplight": {
-    "id": "pdfye4jj6i5ex"
+    "id": "onvh52dwdr6ga"
   },
   "info": {
     "title": "https://statsigapi.net/console/v1",
@@ -40,7 +40,7 @@ module.exports = {
                 "source_name": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "doa357fzn256c"
+                    "id": "fbemz0zvt96wm"
                   },
                   "description": "Name of ingestion source"
                 }
@@ -69,7 +69,7 @@ module.exports = {
                 "source_name": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "kev4mfhszpciy"
+                    "id": "hmd7f0wt4d2u0"
                   },
                   "description": "Name of ingestion source",
                   "example": "ingestion-1"
@@ -77,14 +77,14 @@ module.exports = {
                 "query": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "bdgu38tjjy3z4"
+                    "id": "k1wy7wm1f23p6"
                   },
                   "description": "SQL query string",
                   "example": "SELECT * FROM TABLE"
                 },
                 "column_mapping": {
                   "x-stoplight": {
-                    "id": "8vki37gr9qgjj"
+                    "id": "6vzfjohi44f70"
                   },
                   "oneOf": [
                     {
@@ -102,21 +102,21 @@ module.exports = {
                 "share": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "h054eyckse647"
+                    "id": "5g2fhj49wnq6a"
                   },
                   "description": "Delta sharing share. Can only be set if ingestion already uses delta sharing."
                 },
                 "schema": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "if3vc534tyf9c"
+                    "id": "555q8rvnb0f2b"
                   },
                   "description": "Delta sharing schema. Can only be set if ingestion already uses delta sharing."
                 },
                 "table": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "elj5foayttsem"
+                    "id": "f5o1p7uplmpj4"
                   },
                   "description": "Delta sharing table. Can only be set if ingestion already uses delta sharing."
                 }
@@ -145,7 +145,7 @@ module.exports = {
                 "source_name": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "3d6xwhepjxb7l"
+                    "id": "wg3e3jzshassd"
                   },
                   "description": "Name of ingestion source",
                   "example": "ingestion-1"
@@ -153,14 +153,14 @@ module.exports = {
                 "query": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "socxsev11ng67"
+                    "id": "46ln3vyq93zt2"
                   },
                   "description": "SQL query string",
                   "example": "SELECT * FROM TABLE"
                 },
                 "column_mapping": {
                   "x-stoplight": {
-                    "id": "tiv2xpn7oya4u"
+                    "id": "60vvxjxb2e8j6"
                   },
                   "oneOf": [
                     {
@@ -178,7 +178,7 @@ module.exports = {
                 "use_delta_sharing": {
                   "type": "boolean",
                   "x-stoplight": {
-                    "id": "dim9u981cprxb"
+                    "id": "rum0lm73wa14f"
                   },
                   "default": true,
                   "description": "Should use delta sharing."
@@ -186,21 +186,21 @@ module.exports = {
                 "share": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "78ytt3ix3f8rz"
+                    "id": "c2qceadhasmwm"
                   },
                   "description": "Delta sharing share. Required if ingestion uses delta sharing."
                 },
                 "schema": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "7cll67kzb221n"
+                    "id": "d9sp2sgl6qkrf"
                   },
                   "description": "Delta sharing schema. Required if ingestion uses delta sharing."
                 },
                 "table": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "d7dsctacmulfr"
+                    "id": "tfyasovprxo2c"
                   },
                   "description": "Delta sharing table. Required if ingestion uses delta sharing."
                 }
@@ -215,7 +215,7 @@ module.exports = {
       "Ingestion": {
         "title": "Ingestion",
         "x-stoplight": {
-          "id": "vutftepdhpz2q"
+          "id": "0j3l694zzn1s1"
         },
         "type": "object",
         "x-examples": {},
@@ -227,7 +227,7 @@ module.exports = {
           "id": {
             "type": "string",
             "x-stoplight": {
-              "id": "jwh924gc6zstt"
+              "id": "48qasxe8kaonh"
             },
             "description": "Ingestion ID"
           },
@@ -237,43 +237,43 @@ module.exports = {
           "enabled": {
             "type": "boolean",
             "x-stoplight": {
-              "id": "2i2bvbs0nxdxu"
+              "id": "assdvev7zkt5k"
             },
             "description": "Ingestion enabled status"
           },
           "data": {
             "type": "object",
             "x-stoplight": {
-              "id": "q7cpsr0zffvvx"
+              "id": "xqcppkj99d6j9"
             },
             "description": "Ingestion data",
             "properties": {
               "name": {
                 "type": "string",
                 "x-stoplight": {
-                  "id": "3llealu3z0xmj"
+                  "id": "rnq0qb15721eg"
                 }
               },
               "namespace": {
                 "type": "string",
                 "x-stoplight": {
-                  "id": "3ld1eddo8rre1"
+                  "id": "6wzne5i5rwv7e"
                 }
               },
               "query": {
                 "type": "string",
                 "x-stoplight": {
-                  "id": "ts5lmeo2uh1un"
+                  "id": "24hf7l8haqsnb"
                 }
               },
               "knownColumns": {
                 "type": "array",
                 "x-stoplight": {
-                  "id": "3ljc8de0nvst9"
+                  "id": "zi1qf11txaxz4"
                 },
                 "items": {
                   "x-stoplight": {
-                    "id": "3dxtsajldh572"
+                    "id": "skcbdm8x2itk5"
                   },
                   "type": "string"
                 }
@@ -281,16 +281,16 @@ module.exports = {
               "sampleRows": {
                 "type": "array",
                 "x-stoplight": {
-                  "id": "sb42t3ck7uvtg"
+                  "id": "oe46x32lwdtqv"
                 },
                 "items": {
                   "x-stoplight": {
-                    "id": "wxnpyil84bj04"
+                    "id": "r90sepyf0xjda"
                   },
                   "type": "array",
                   "items": {
                     "x-stoplight": {
-                      "id": "cszyai1rm9kvm"
+                      "id": "gkfytxaypb7zb"
                     },
                     "type": "string"
                   }
@@ -299,11 +299,11 @@ module.exports = {
               "columnTypes": {
                 "type": "array",
                 "x-stoplight": {
-                  "id": "t83hdwqnlomo2"
+                  "id": "ncbs3b2086k77"
                 },
                 "items": {
                   "x-stoplight": {
-                    "id": "9evty6isf6456"
+                    "id": "rsfv8778xkiqt"
                   },
                   "type": "string"
                 }
@@ -311,53 +311,53 @@ module.exports = {
               "columnMappings": {
                 "type": "object",
                 "x-stoplight": {
-                  "id": "0wl3gxhmdxfpy"
+                  "id": "r24dal4hbsycd"
                 }
               },
               "scheduled_hour_pst": {
                 "type": "number",
                 "x-stoplight": {
-                  "id": "ayq2h8p0lu52n"
+                  "id": "fjkdju9z3c0yw"
                 }
               },
               "enabled": {
                 "type": "boolean",
                 "x-stoplight": {
-                  "id": "ugy98pecuqnpn"
+                  "id": "4d9x5pljred4o"
                 }
               },
               "creator": {
                 "type": "string",
                 "x-stoplight": {
-                  "id": "nrq36vh4p1q6p"
+                  "id": "6y7vc58ud9r3o"
                 }
               },
               "creation_time": {
                 "type": "number",
                 "x-stoplight": {
-                  "id": "sjgx929hzwqym"
+                  "id": "b39gj0g0h5s8r"
                 }
               },
               "last_modifier": {
                 "type": "string",
                 "x-stoplight": {
-                  "id": "hl1vp6druq6d7"
+                  "id": "bz43vn592ccrq"
                 }
               },
               "last_modified_time": {
                 "type": "number",
                 "x-stoplight": {
-                  "id": "fbwn446n1kh2u"
+                  "id": "e8dtbswwar7hm"
                 }
               },
               "subscriber_emails": {
                 "type": "array",
                 "x-stoplight": {
-                  "id": "j64yquak8ic0q"
+                  "id": "b4jgg2lktyirw"
                 },
                 "items": {
                   "x-stoplight": {
-                    "id": "xbn45xxhw3b5w"
+                    "id": "dbnz6aqzf90xf"
                   },
                   "type": "string"
                 }
@@ -368,13 +368,13 @@ module.exports = {
               "exportTableName": {
                 "type": "string",
                 "x-stoplight": {
-                  "id": "v2a9zyqia4oud"
+                  "id": "sifra1vjtbsz2"
                 }
               },
               "is_delta_sharing": {
                 "type": "boolean",
                 "x-stoplight": {
-                  "id": "rv5cjku4yviet"
+                  "id": "q123n4fvowhlk"
                 }
               }
             }
@@ -683,7 +683,7 @@ module.exports = {
       "Ingestion-type": {
         "title": "Ingestion-type",
         "x-stoplight": {
-          "id": "i585gw9msyp46"
+          "id": "fb1elnvxnmsev"
         },
         "enum": [
           "redshift",
@@ -702,7 +702,7 @@ module.exports = {
       "Ingestion-dataset": {
         "title": "Ingestion-dataset",
         "x-stoplight": {
-          "id": "yrhr68du1cn1e"
+          "id": "ewavhqtgwoccm"
         },
         "enum": [
           "Metrics",
@@ -716,7 +716,7 @@ module.exports = {
       "data-export-type": {
         "title": "data-export-type",
         "x-stoplight": {
-          "id": "z6j99u0dmixnk"
+          "id": "8u564r0ncixle"
         },
         "enum": [
           "pulse-summary",
@@ -728,7 +728,7 @@ module.exports = {
       "metrics-column-mapping": {
         "title": "metrics-column-mapping",
         "x-stoplight": {
-          "id": "s1goz9etcdvdg"
+          "id": "8zidqofaikwu5"
         },
         "type": "object",
         "description": "Column mapping schema for metric ingestions",
@@ -742,44 +742,44 @@ module.exports = {
           "unit_id": {
             "type": "string",
             "x-stoplight": {
-              "id": "1tworh1znxcsg"
+              "id": "cty9ts0xww7jd"
             }
           },
           "id_type": {
             "type": "string",
             "x-stoplight": {
-              "id": "78kzg52vev8g3"
+              "id": "084bvzy7j332p"
             }
           },
           "dateid": {
             "type": "string",
             "x-stoplight": {
-              "id": "ifj2q329was1v"
+              "id": "zzf59lg3iqr3f"
             }
           },
           "metric_name": {
             "type": "string",
             "x-stoplight": {
-              "id": "ey8zifs4tsaj5"
+              "id": "bct18vbqtf2ta"
             }
           },
           "metric_value": {
             "type": "string",
             "x-stoplight": {
-              "id": "hokrgy3482cnj"
+              "id": "ucnkdllivd3s0"
             },
             "description": "Either metric_value or both numerator and denominator are required"
           },
           "numerator": {
             "type": "string",
             "x-stoplight": {
-              "id": "uz6h18y3a4o3g"
+              "id": "kl03xk9mq8mot"
             }
           },
           "denominator": {
             "type": "string",
             "x-stoplight": {
-              "id": "rrqrsxh0v43xb"
+              "id": "37fxd4inp0rmk"
             }
           }
         }
@@ -787,7 +787,7 @@ module.exports = {
       "events-column-mapping": {
         "title": "events-column-mapping",
         "x-stoplight": {
-          "id": "x8a0q3nxndoi2"
+          "id": "du0kwt7fglzt8"
         },
         "type": "object",
         "description": "Column mapping schema for event dataset ingestions",
@@ -799,19 +799,19 @@ module.exports = {
           "unit_id": {
             "type": "string",
             "x-stoplight": {
-              "id": "af65857zb61fr"
+              "id": "pv4tashyor0o2"
             }
           },
           "event_name": {
             "type": "string",
             "x-stoplight": {
-              "id": "qvb3cq2b4ifd4"
+              "id": "qmd6khz3kxzib"
             }
           },
           "timestamp": {
             "type": "string",
             "x-stoplight": {
-              "id": "hv3n491szkt1h"
+              "id": "nlw5msa2or6u3"
             }
           }
         }
@@ -819,7 +819,7 @@ module.exports = {
       "exposures-column-mapping": {
         "title": "exposures-column-mapping",
         "x-stoplight": {
-          "id": "is0wb97wlkmtg"
+          "id": "6tn51mv4qetbc"
         },
         "type": "object",
         "description": "Column mapping schema for exposure ingestions",
@@ -832,25 +832,25 @@ module.exports = {
           "experiment": {
             "type": "string",
             "x-stoplight": {
-              "id": "or7ypjin0pdv5"
+              "id": "n2p69a5m0gbdh"
             }
           },
           "group_id": {
             "type": "string",
             "x-stoplight": {
-              "id": "3k3447tnkoufp"
+              "id": "iw8a6qrvmwyka"
             }
           },
           "unit_id": {
             "type": "string",
             "x-stoplight": {
-              "id": "dszg8qtoom4vl"
+              "id": "jt7bs4ui55gqd"
             }
           },
           "timestamp": {
             "type": "string",
             "x-stoplight": {
-              "id": "dmo3kh4quvuck"
+              "id": "9dlzsz9mk00z1"
             }
           }
         }
@@ -933,13 +933,13 @@ module.exports = {
                     "message": {
                       "type": "string",
                       "x-stoplight": {
-                        "id": "9lzwe5v4g6yyn"
+                        "id": "4dxi7s3dni1h7"
                       },
                       "example": "Ingestion read successfully."
                     },
                     "data": {
                       "x-stoplight": {
-                        "id": "qbmg7vkdc2kqz"
+                        "id": "rir19lebxjq6d"
                       },
                       "oneOf": [
                         {
@@ -948,7 +948,7 @@ module.exports = {
                         {
                           "type": "array",
                           "x-stoplight": {
-                            "id": "ce5p1pahrzz90"
+                            "id": "ns01pz64hmjja"
                           },
                           "items": {
                             "$ref": "#/components/schemas/Ingestion"
@@ -977,7 +977,7 @@ module.exports = {
         },
         "operationId": "get-ingestion",
         "x-stoplight": {
-          "id": "k90se0bwlz0xl"
+          "id": "q90xa4o51w0zc"
         },
         "parameters": [
           {
@@ -1007,13 +1007,13 @@ module.exports = {
                     "message": {
                       "type": "string",
                       "x-stoplight": {
-                        "id": "nc50nnvqce026"
+                        "id": "897yygzkrltvl"
                       },
                       "example": "Ingestion updated successfully."
                     },
                     "data": {
                       "x-stoplight": {
-                        "id": "ltnexxplnex5k"
+                        "id": "or7rgz7fp0jx6"
                       },
                       "oneOf": [
                         {
@@ -1022,7 +1022,7 @@ module.exports = {
                         {
                           "type": "array",
                           "x-stoplight": {
-                            "id": "ua70fvoxtm2eh"
+                            "id": "uedt3mwkjsigl"
                           },
                           "items": {
                             "$ref": "#/components/schemas/Ingestion"
@@ -1044,7 +1044,7 @@ module.exports = {
         },
         "operationId": "patch-ingestion",
         "x-stoplight": {
-          "id": "rs5pha9pfoxas"
+          "id": "sjs61bo7ecohx"
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/ingestion-update"
@@ -1066,7 +1066,7 @@ module.exports = {
                     "message": {
                       "type": "string",
                       "x-stoplight": {
-                        "id": "etbyxfedykplu"
+                        "id": "6wil52gnho9n2"
                       },
                       "example": "Ingestion deleted successfully."
                     }
@@ -1078,7 +1078,7 @@ module.exports = {
         },
         "operationId": "delete-ingestion",
         "x-stoplight": {
-          "id": "jooevk266dvkx"
+          "id": "rhz75n2dj7w48"
         },
         "parameters": [
           {
@@ -1108,7 +1108,7 @@ module.exports = {
                     "message": {
                       "type": "string",
                       "x-stoplight": {
-                        "id": "45yxnlchi8zyg"
+                        "id": "n176iylq5wr1i"
                       },
                       "example": "Ingestion created successfully"
                     },
@@ -1126,7 +1126,7 @@ module.exports = {
         },
         "operationId": "post-ingestion",
         "x-stoplight": {
-          "id": "fkd5nnemj1s88"
+          "id": "wenx9j62aawf2"
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/Ingestion-create"
@@ -1154,7 +1154,7 @@ module.exports = {
                     "message": {
                       "type": "string",
                       "x-stoplight": {
-                        "id": "x8a0wpvrquwnt"
+                        "id": "s91ppk3nf2ice"
                       },
                       "example": "Ingestion created successfully."
                     },
@@ -1168,7 +1168,7 @@ module.exports = {
           }
         },
         "x-stoplight": {
-          "id": "9d9ntiffcoa4z"
+          "id": "74iy0akt2dtib"
         },
         "requestBody": {
           "content": {
@@ -1179,31 +1179,31 @@ module.exports = {
                   "token": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "v7ge4wxqna4fv"
+                      "id": "vqhqbokzy44kt"
                     }
                   },
                   "host": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "i9uuvyyz47l18"
+                      "id": "b7lfs74c6lsyo"
                     }
                   },
                   "path": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "0457vp9870p6l"
+                      "id": "vvatm3cnodzcg"
                     }
                   },
                   "deltaSharingCredentials": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "i8nvnou9kp1xx"
+                      "id": "8kw9xyl1v9ewd"
                     }
                   },
                   "verified": {
                     "type": "boolean",
                     "x-stoplight": {
-                      "id": "w7fdlwrm7d5i8"
+                      "id": "qc57goc6pwcnm"
                     }
                   }
                 },
@@ -1265,7 +1265,7 @@ module.exports = {
                     "rowCount": {
                       "type": "number",
                       "x-stoplight": {
-                        "id": "ii0udr3ulbu5d"
+                        "id": "olukg1nzo84xw"
                       },
                       "description": "number of rows imported"
                     }
@@ -1405,7 +1405,7 @@ module.exports = {
           }
         },
         "x-stoplight": {
-          "id": "fwep8bndnv73m"
+          "id": "h218ukpi9hjc8"
         },
         "parameters": [
           {
@@ -1476,7 +1476,7 @@ module.exports = {
                     },
                     "data": {
                       "x-stoplight": {
-                        "id": "rjekv7bkqh9sx"
+                        "id": "5929jvxypz4ke"
                       },
                       "type": "array",
                       "items": {
@@ -2595,7 +2595,7 @@ module.exports = {
         },
         "operationId": "get-ingestion-runs",
         "x-stoplight": {
-          "id": "qmhe6i49s5mr9"
+          "id": "g4etp74h0xp1a"
         },
         "parameters": [
           {
@@ -2797,7 +2797,7 @@ module.exports = {
         },
         "operationId": "get-ingestion-runs",
         "x-stoplight": {
-          "id": "ib0bn9rwm841d"
+          "id": "5uhik5q1q2wum"
         },
         "parameters": [
           {
@@ -2842,7 +2842,7 @@ module.exports = {
                     "message": {
                       "type": "string",
                       "x-stoplight": {
-                        "id": "rxvkpyx1t0lxo"
+                        "id": "w6vs0u615ia1b"
                       },
                       "example": "Ingestion backfilled successfully."
                     }
@@ -2867,30 +2867,30 @@ module.exports = {
                   "datestamp_start": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "zcbo0n3nqjx4l"
+                      "id": "k2a90ssrf36nh"
                     },
                     "description": "Start time in format YYYY-MM-DD"
                   },
                   "datestamp_end": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "knulbz9hcr5ws"
+                      "id": "0xrh3r810fody"
                     },
                     "description": "End time in format YYYY-MM-DD"
                   },
                   "source": {
                     "x-stoplight": {
-                      "id": "fx2sfi29ofmqt"
+                      "id": "lvvm9nslzmyfr"
                     },
                     "anyOf": [
                       {
                         "type": "array",
                         "x-stoplight": {
-                          "id": "rea0kq07wkplx"
+                          "id": "jr6sldg8f6uyr"
                         },
                         "items": {
                           "x-stoplight": {
-                            "id": "y8qizc0ndfr0l"
+                            "id": "ib8qw3v9rxzv4"
                           },
                           "type": "string"
                         }
@@ -2898,14 +2898,14 @@ module.exports = {
                       {
                         "type": "string",
                         "x-stoplight": {
-                          "id": "r3zolrv0jtz7i"
+                          "id": "la2e2m47er9rl"
                         }
                       }
                     ]
                   },
                   "type": {
                     "x-stoplight": {
-                      "id": "88wjrru7zco2e"
+                      "id": "zokcd4g5qamz6"
                     },
                     "enum": [
                       "events",
@@ -2919,10 +2919,512 @@ module.exports = {
           }
         },
         "x-stoplight": {
-          "id": "33c6deicwos3q"
+          "id": "jt8tz6wycutnc"
         },
         "tags": [
           "Ingestion Backfills"
+        ]
+      }
+    },
+    "/ingestion/events/count": {
+      "get": {
+        "summary": "Read Ingestion Event Counts",
+        "tags": [
+          "Ingestion Events"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "t62inlamov1uf"
+                      },
+                      "example": "Event count read successfully."
+                    },
+                    "data": {
+                      "x-stoplight": {
+                        "id": "4frhnjd17vnpn"
+                      },
+                      "oneOf": [
+                        {
+                          "x-stoplight": {
+                            "id": "9khak2r8y4kpw"
+                          },
+                          "items": {
+                            "x-stoplight": {
+                              "id": "jb7cl2dnzpp37"
+                            },
+                            "type": "object",
+                            "required": [
+                              "date",
+                              "event",
+                              "count",
+                              "last_updated_time"
+                            ],
+                            "properties": {
+                              "date": {
+                                "type": "string",
+                                "x-stoplight": {
+                                  "id": "he8obkibcyxmr"
+                                },
+                                "example": "Mon Mar 04 2024 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                                "description": "Date of record"
+                              },
+                              "event": {
+                                "type": "string",
+                                "x-stoplight": {
+                                  "id": "hnkqed9g5ufed"
+                                },
+                                "description": "Name of event",
+                                "example": "example_event"
+                              },
+                              "count": {
+                                "type": "number",
+                                "x-stoplight": {
+                                  "id": "rkusafkrq17su"
+                                },
+                                "example": 1234,
+                                "description": "Count of events"
+                              },
+                              "last_updated_time": {
+                                "type": "string",
+                                "x-stoplight": {
+                                  "id": "jjfq6g27mnqhl"
+                                },
+                                "example": "2024-03-05T19:43:59.110Z",
+                                "description": "Last updated time of the data represented"
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "x-stoplight": {
+                            "id": "dni58zg61wt9c"
+                          },
+                          "items": {
+                            "x-stoplight": {
+                              "id": "la3o1l4htdr4g"
+                            },
+                            "type": "object",
+                            "required": [
+                              "date",
+                              "events"
+                            ],
+                            "properties": {
+                              "date": {
+                                "type": "string",
+                                "x-stoplight": {
+                                  "id": "kax14hfmhkuwt"
+                                },
+                                "description": "Date of record",
+                                "example": "Mon Mar 04 2024 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                              },
+                              "events": {
+                                "type": "array",
+                                "x-stoplight": {
+                                  "id": "hlvnerx46ynr1"
+                                },
+                                "description": "List of events and their counts. Elements are unique by event, and aggregated over sources",
+                                "items": {
+                                  "x-stoplight": {
+                                    "id": "72ofnx85d8ptj"
+                                  },
+                                  "type": "object",
+                                  "required": [
+                                    "event",
+                                    "count",
+                                    "last_updated_time"
+                                  ],
+                                  "properties": {
+                                    "event": {
+                                      "type": "string",
+                                      "x-stoplight": {
+                                        "id": "875q4dv8ri08k"
+                                      },
+                                      "description": "Name of event",
+                                      "example": "example_event"
+                                    },
+                                    "count": {
+                                      "type": "number",
+                                      "x-stoplight": {
+                                        "id": "y5j9fqlzze94h"
+                                      },
+                                      "description": "Count of events",
+                                      "example": 1234
+                                    },
+                                    "last_updated_time": {
+                                      "type": "string",
+                                      "x-stoplight": {
+                                        "id": "yheo7s7045ncz"
+                                      },
+                                      "description": "Last updated time of the data represented",
+                                      "example": "2024-03-05T19:43:59.110Z"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "type": "array"
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Event count read successfully.",
+                      "data": [
+                        {
+                          "date": "Mon Mar 04 2024 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                          "event": "example_event",
+                          "count": 1234,
+                          "last_updated_time": "2024-03-05T19:43:59.110Z"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "operationId": "get-ingestion-events",
+              "x-stoplight": {
+                "id": "abnqx2zv9euf7"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "source_name",
+            "description": "Name of ingestion source. If omitted, counts are aggregated over all sources."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "event_name",
+            "description": "Name of event. If omitted, response includes list of all events"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "start_date",
+            "description": "Start date of date range to query"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "end_date",
+            "description": "End date of date range to query"
+          }
+        ]
+      }
+    },
+    "/ingestion/events/delta": {
+      "get": {
+        "summary": "Read Ingestion Event Deltas",
+        "tags": [
+          "Ingestion Events"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "am747xucddfob"
+                      },
+                      "example": "Event delta read successfully."
+                    },
+                    "data": {
+                      "x-stoplight": {
+                        "id": "2miothbyac56z"
+                      },
+                      "oneOf": [
+                        {
+                          "x-stoplight": {
+                            "id": "pd2nqs8jk1utd"
+                          },
+                          "items": {
+                            "x-stoplight": {
+                              "id": "wx9oftx41ixdd"
+                            },
+                            "type": "object",
+                            "required": [
+                              "date",
+                              "source",
+                              "event",
+                              "internal_count",
+                              "external_count",
+                              "has_diff",
+                              "threshold",
+                              "last_updated_time"
+                            ],
+                            "properties": {
+                              "date": {
+                                "type": "string",
+                                "x-stoplight": {
+                                  "id": "mlad4q6mxqrrx"
+                                },
+                                "example": "Mon Mar 04 2024 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                                "description": "Date of record"
+                              },
+                              "source": {
+                                "type": "string",
+                                "x-stoplight": {
+                                  "id": "49xmmq6i7v3b0"
+                                },
+                                "description": "Name of ingestion source",
+                                "example": "main-source"
+                              },
+                              "event": {
+                                "type": "string",
+                                "x-stoplight": {
+                                  "id": "gtvded3pwowxu"
+                                },
+                                "example": "example_event",
+                                "description": "Name of event"
+                              },
+                              "internal_count": {
+                                "type": "number",
+                                "x-stoplight": {
+                                  "id": "6mrnwc2zyvdeo"
+                                },
+                                "example": 1234,
+                                "description": "Count in Statsig"
+                              },
+                              "external_count": {
+                                "type": "number",
+                                "x-stoplight": {
+                                  "id": "zunbxxnzixrak"
+                                },
+                                "example": 1246,
+                                "description": "Count from ingestion source"
+                              },
+                              "has_diff": {
+                                "type": "boolean",
+                                "x-stoplight": {
+                                  "id": "ov5tpn71myiv9"
+                                },
+                                "description": "Whether there is a significant delta between internal and external counts"
+                              },
+                              "threshold": {
+                                "type": "number",
+                                "x-stoplight": {
+                                  "id": "8j8v7i6fs08h0"
+                                },
+                                "example": 0.2,
+                                "description": "Difference threshold"
+                              },
+                              "last_updated_time": {
+                                "type": "string",
+                                "x-stoplight": {
+                                  "id": "w9bg7scrldsk5"
+                                },
+                                "description": "Last updated time of the data represented",
+                                "example": "2024-03-05T19:43:59.110Z"
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "x-stoplight": {
+                            "id": "9scst73lx3dij"
+                          },
+                          "items": {
+                            "x-stoplight": {
+                              "id": "72c1yjtins9gq"
+                            },
+                            "type": "object",
+                            "required": [
+                              "date",
+                              "events"
+                            ],
+                            "properties": {
+                              "date": {
+                                "type": "string",
+                                "x-stoplight": {
+                                  "id": "vraologu2fb0k"
+                                },
+                                "example": "Mon Mar 04 2024 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                                "description": "Date of record"
+                              },
+                              "events": {
+                                "type": "array",
+                                "x-stoplight": {
+                                  "id": "lmlcddyglg58i"
+                                },
+                                "description": "List of events and their deltas. Elements are unique by event and source",
+                                "items": {
+                                  "x-stoplight": {
+                                    "id": "r8e6k2qy1l6ht"
+                                  },
+                                  "type": "object",
+                                  "required": [
+                                    "source",
+                                    "event",
+                                    "internal_count",
+                                    "external_count",
+                                    "has_diff",
+                                    "threshold",
+                                    "last_updated_time"
+                                  ],
+                                  "properties": {
+                                    "source": {
+                                      "type": "string",
+                                      "x-stoplight": {
+                                        "id": "zzrmxo91q3zgc"
+                                      },
+                                      "description": "Name of ingestion source",
+                                      "example": "main-source"
+                                    },
+                                    "event": {
+                                      "type": "string",
+                                      "x-stoplight": {
+                                        "id": "3dvfsst5wcvpw"
+                                      },
+                                      "example": "example_event",
+                                      "description": "Name of event"
+                                    },
+                                    "internal_count": {
+                                      "type": "number",
+                                      "x-stoplight": {
+                                        "id": "5fh8zhp8ad1lj"
+                                      },
+                                      "example": 1234,
+                                      "description": "Count in Statsig"
+                                    },
+                                    "external_count": {
+                                      "type": "number",
+                                      "x-stoplight": {
+                                        "id": "63k5tnqaadoky"
+                                      },
+                                      "example": 1246,
+                                      "description": "Count from ingestion source"
+                                    },
+                                    "has_diff": {
+                                      "type": "boolean",
+                                      "x-stoplight": {
+                                        "id": "ptlaru5a4b2yr"
+                                      },
+                                      "description": "Whether there is a significant delta between internal and external counts"
+                                    },
+                                    "threshold": {
+                                      "type": "number",
+                                      "x-stoplight": {
+                                        "id": "lccdrddoayx9p"
+                                      },
+                                      "example": 0.2,
+                                      "description": "Difference threshold"
+                                    },
+                                    "last_updated_time": {
+                                      "type": "string",
+                                      "x-stoplight": {
+                                        "id": "l3hyl2k4xu43g"
+                                      },
+                                      "description": "Last updated time of the data represented",
+                                      "example": "2024-03-05T19:43:59.110Z"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "type": "array"
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Event delta read successfully.",
+                      "data": [
+                        {
+                          "date": "Mon Mar 04 2024 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                          "source": "main-source",
+                          "event": "example_event",
+                          "internal_count": 1234,
+                          "external_count": 1246,
+                          "has_diff": true,
+                          "threshold": 0.2,
+                          "last_updated_time": "2024-03-05T19:43:59.110Z"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-ingestion-events-delta",
+        "x-stoplight": {
+          "id": "lgd48lh7921fx"
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "source_name",
+            "description": "Name of ingestion source. If omitted, response includes all sources"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "event_name",
+            "description": "Name of event. If omitted, response includes list of all events"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "start_date",
+            "description": "Start date of date range to query"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "end_date",
+            "description": "End date of date range to query"
+          }
         ]
       }
     }
