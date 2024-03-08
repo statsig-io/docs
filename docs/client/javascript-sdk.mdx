@@ -27,6 +27,9 @@ export const DataAdapter = _DataAdapter;
 import * as _UpdateUser from "./javascript-mono/_updateUser.mdx";
 export const UpdateUser = _UpdateUser;
 
+import * as _ClientEventEmitting from "./javascript-mono/_clientEventEmitting.mdx";
+export const ClientEventEmitting = _ClientEventEmitting;
+
 import CheckGate from "./javascript-mono/_checkGate.mdx";
 import GetConfig from "./javascript-mono/_getConfig.mdx";
 import GetExperiment from "./javascript-mono/_getExperiment.mdx";
@@ -72,6 +75,7 @@ export const Result = SDKDocsBuilder(
     ],
     [StatsigUser, {}],
     [UpdateUser, {}],
+    [ClientEventEmitting, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [DataAdapter, {}],
@@ -80,4 +84,4 @@ export const Result = SDKDocsBuilder(
   toc
 );
 
-<>{Result}</>./javascript-mono/_UpdateUser.mdx
+<>{Result}</>
