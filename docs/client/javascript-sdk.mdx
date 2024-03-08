@@ -30,6 +30,9 @@ export const UpdateUser = _UpdateUser;
 import * as _ClientEventEmitting from "./javascript-mono/_clientEventEmitting.mdx";
 export const ClientEventEmitting = _ClientEventEmitting;
 
+import * as _MultiInstance from "./javascript-mono/_multiInstance.mdx";
+export const MultiInstance = _MultiInstance;
+
 import CheckGate from "./javascript-mono/_checkGate.mdx";
 import GetConfig from "./javascript-mono/_getConfig.mdx";
 import GetExperiment from "./javascript-mono/_getExperiment.mdx";
@@ -76,6 +79,7 @@ export const Result = SDKDocsBuilder(
     [StatsigUser, {}],
     [UpdateUser, {}],
     [ClientEventEmitting, {}],
+    [MultiInstance, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [DataAdapter, {}],
