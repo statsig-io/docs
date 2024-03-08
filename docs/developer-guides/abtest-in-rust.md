@@ -38,21 +38,21 @@ First, you'll need to set up your Rust environment.
     - Modify your application to use the call the Statsig SDK to fetch and get values from your experiment. This should come after initialization in your application, and will return the values from the SDK that you set up in y our A/B test on the Statsig console. Note - this code won't run until you create and start your experiment on the Statsig console. 
 
     - Ensure to replace `'your_experiment_name'` with the name of your experiment, and "backgroundColor" with the name of the parameter you add on the console. 
-      ```rust
+    ```rust
     #[tokio::main]
     async fn main() {
-    // Initialize the Statsig SDK with your Server Secret Key
-    Statsig::initialize("secret-key").await;
-     // Check if a feature flag is enabled for a user
-    let user = StatsigUser::with_user_id("a-user".to_string());
+        // Initialize the Statsig SDK with your Server Secret Key
+        Statsig::initialize("secret-key").await;
+        // Check if a feature flag is enabled for a user
+        let user = StatsigUser::with_user_id("a-user".to_string());
 
-    let experiment = Statsig::get_experiment(&user, "your_experiment_name").ok().unwrap();
-    let text_to_show = experiment.get("backgroundColor", "Hello, World!".to_string());
+        let experiment = Statsig::get_experiment(&user, "your_experiment_name").ok().unwrap();
+        let text_to_show = experiment.get("backgroundColor", "Hello, World!".to_string());
 
-    println!("{}", text_to_show);
+        println!("{}", text_to_show);
 
-    // Shut down the Statsig SDK before exiting the application
-    Statsig::shutdown().await;
+        // Shut down the Statsig SDK before exiting the application
+        Statsig::shutdown().await;
     }
     ```
 
