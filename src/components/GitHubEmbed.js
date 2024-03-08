@@ -23,6 +23,12 @@ function extractSnippet(input) {
 export default function GitHubEmbed({ url, language }) {
   const [content, setContent] = useState("// Loading...");
 
+  try {
+    console.log("StatsigMono", window.__STATSIG__);
+  } catch (e) {
+    console.error(e);
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
