@@ -42,7 +42,7 @@ First, you'll need to set up your Rust environment.
     #[tokio::main]
     async fn main() {
     // Initialize the Statsig SDK with your Server Secret Key
-    Statsig::initialize("secret-2EfA1EtnPzBfBP4xNVDWrLUPkU6pXArbAiFhrgyNgwZ").await;
+    Statsig::initialize("secret-key").await;
      // Check if a feature flag is enabled for a user
     let user = StatsigUser::with_user_id("a-user".to_string());
 
