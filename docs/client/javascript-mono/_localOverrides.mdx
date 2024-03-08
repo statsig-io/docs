@@ -1,0 +1,50 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<!-- Because its the same for both languages -->
+
+export const Code = ({ type }) => {
+  return (
+    <CodeBlock language="swift">{`// Overrides the given gate to the specified value
+Statsig.overrideGate("a_gate_name", true);
+\t
+// Overrides the given config (dynamic config or experiment) to the provided value
+Statsig.overrideConfig("a_config_or_experiment_name", { key: "value" });
+\t
+// Overrides the given layer to the provided value
+Statsig.overrideLayer("a_layer_name", { key: "value" });
+\t
+// Removing gate overrides
+Statsig.removeGateOverride("a_gate_name"); // Removes a single override
+Statsig.removeGateOverride(null); // Removes all gate overrides
+\t
+// Removing config/experiment overrides
+Statsig.removeConfigOverride("a_config_or_experiment_name"); // Removes a single override
+Statsig.removeConfigOverride(null); // Removes all config/experiment overrides
+\t
+// Removing layer overrides
+Statsig.removeLayerOverride("a_layer_name"); // Removes a single override
+Statsig.removeLayerOverride(null); // Removes all layer overrides
+\t
+// Returns a StatsigOverrides object, contain all the current overrides
+const currentOverrides = Statsig.getAllOverrides()
+`}</CodeBlock>
+  );
+};
+
+<Tabs
+  groupId="js-sdk-lang-choice"
+  defaultValue="ts"
+  values={[
+    { label: "TypeScript", value: "ts" },
+    { label: "JavaScript", value: "js" },
+  ]}
+>
+  <TabItem value="ts">
+    <Code />
+  </TabItem>
+  <TabItem value="js">
+    <Code />
+  </TabItem>
+</Tabs>
