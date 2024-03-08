@@ -1,7 +1,7 @@
 module.exports = {
   "openapi": "3.0.0",
   "x-stoplight": {
-    "id": "q123cebmjcdll"
+    "id": "58dv4xcbssdsx"
   },
   "info": {
     "title": "console/v1",
@@ -29,49 +29,49 @@ module.exports = {
                     "message": {
                       "type": "string",
                       "x-stoplight": {
-                        "id": "a94j2stoyc1fi"
+                        "id": "nt9mvo6zsocwe"
                       }
                     },
                     "data": {
                       "type": "object",
                       "x-stoplight": {
-                        "id": "qeiqgpakou71n"
+                        "id": "x6rfmo4dez9m3"
                       },
                       "properties": {
                         "name": {
                           "type": "string",
                           "x-stoplight": {
-                            "id": "2mjdc9d8l6e6j"
+                            "id": "zm8utmuhqtq56"
                           }
                         },
                         "type": {
                           "type": "string",
                           "x-stoplight": {
-                            "id": "d5a90zmvy3woy"
+                            "id": "eaja07cjg48mm"
                           }
                         },
                         "description": {
                           "type": "string",
                           "x-stoplight": {
-                            "id": "ozwemsbc1cehp"
+                            "id": "kb4o39kd6039l"
                           }
                         },
                         "isHidden": {
                           "type": "boolean",
                           "x-stoplight": {
-                            "id": "rjvjj1okzm2wx"
+                            "id": "qv6l6d4hxw2h7"
                           }
                         },
                         "isReadOnly": {
                           "type": "boolean",
                           "x-stoplight": {
-                            "id": "fi1igkx2q6hcz"
+                            "id": "ojs7jctcm5mj0"
                           }
                         },
                         "team": {
                           "type": "string",
                           "x-stoplight": {
-                            "id": "666nzllt5tqun"
+                            "id": "ya0pw98iohx0o"
                           }
                         }
                       }
@@ -102,7 +102,7 @@ module.exports = {
           }
         },
         "x-stoplight": {
-          "id": "vpucl6wt3kj45"
+          "id": "bquwiudidnjzt"
         },
         "description": "Create Cloud Metrics or Warehouse Native Metrics\n\nFor creating Warehouse Native Metrics: See [documentation](https://docs.statsig.com/statsig-warehouse-native/guides/metrics). Configuration of warehouse native metric goes to warehouseNative field. Fields NOT under warehouseNative, only name, tags, isPermanent, and description ",
         "tags": [
@@ -121,20 +121,20 @@ module.exports = {
                   "name": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "v6wplqgc7ohzw"
+                      "id": "5lk3k3ij4ghgk"
                     },
                     "description": "The name of the new metric"
                   },
                   "isReadOnly": {
                     "type": "boolean",
                     "x-stoplight": {
-                      "id": "az4xm5oypoq6e"
+                      "id": "tdjorevh6e8ig"
                     },
                     "description": "Set the metric definition as editable only from Console API"
                   },
                   "type": {
                     "x-stoplight": {
-                      "id": "macnydefvpx3r"
+                      "id": "3b3bexxparxwx"
                     },
                     "type": "string",
                     "enum": [
@@ -153,19 +153,19 @@ module.exports = {
                   "unitTypes": {
                     "type": "array",
                     "x-stoplight": {
-                      "id": "b1koshiknnl34"
+                      "id": "srp9o6nljf77a"
                     },
                     "description": "Unit of the metirc: stableID, userID, and other custom ids",
                     "items": {
                       "x-stoplight": {
-                        "id": "ufchwavzxc109"
+                        "id": "cf8eadcs3gjed"
                       },
                       "type": "string"
                     }
                   },
                   "directionality": {
                     "x-stoplight": {
-                      "id": "9e2xoz36fby1f"
+                      "id": "tjotg0uuic9uu"
                     },
                     "type": "string",
                     "enum": [
@@ -176,7 +176,7 @@ module.exports = {
                   },
                   "metricEvents": {
                     "x-stoplight": {
-                      "id": "1sb55esyu69uf"
+                      "id": "stbs4g0ubvk7v"
                     },
                     "type": "array",
                     "description": "Event(s) used to compute the metric",
@@ -187,7 +187,7 @@ module.exports = {
                   "description": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "6iyt42od6wcn6"
+                      "id": "9sqdcd2tovcdb"
                     },
                     "description": "Description of the new metric"
                   },
@@ -197,11 +197,11 @@ module.exports = {
                       "array"
                     ],
                     "x-stoplight": {
-                      "id": "kklvni6rifhih"
+                      "id": "6ww15lbvugyuu"
                     },
                     "items": {
                       "x-stoplight": {
-                        "id": "9sthmib918cdt"
+                        "id": "6j16fep3br950"
                       },
                       "type": "string"
                     }
@@ -209,31 +209,31 @@ module.exports = {
                   "isPermanent": {
                     "type": "boolean",
                     "x-stoplight": {
-                      "id": "dx0z0wwu1iqkz"
+                      "id": "jbb68e8fqhtbm"
                     }
                   },
                   "metricComponentMetrics": {
                     "type": "array",
                     "x-stoplight": {
-                      "id": "j9o3tga71jpbu"
+                      "id": "1ue627hpqomwk"
                     },
                     "description": "List of input metrics used to calculate the new metric\nFor composite_sum and composite type of metric. ",
                     "items": {
                       "x-stoplight": {
-                        "id": "15war9ld2wy6j"
+                        "id": "uqx8creh3ysjc"
                       },
                       "type": "object",
                       "properties": {
                         "name": {
                           "type": "string",
                           "x-stoplight": {
-                            "id": "3bqzox50pyj1c"
+                            "id": "s5zky6hxqt226"
                           }
                         },
                         "type": {
                           "type": "string",
                           "x-stoplight": {
-                            "id": "vienzyq2qo8u8"
+                            "id": "ivwzs0coxr3fq"
                           }
                         }
                       }
@@ -242,46 +242,46 @@ module.exports = {
                   "rollup": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "gfo1eslrp7eth"
+                      "id": "h9gq5r4ya2qyp"
                     },
                     "description": "Time window for metric.\nSpecify \"custom\", if you want to provide customized time window. Default to be same as experiment time window"
                   },
                   "customRollUpStart": {
                     "type": "number",
                     "x-stoplight": {
-                      "id": "h57sfwreqbkfz"
+                      "id": "vlzayz6tji7b6"
                     },
                     "description": "Custom time window start date (Days since exposure)\n"
                   },
                   "customRollUpEnd": {
                     "type": "number",
                     "x-stoplight": {
-                      "id": "pj87b1u48tlol"
+                      "id": "hhzx5l8zabze5"
                     },
                     "description": "Custom time window end date(Days since exposure)"
                   },
                   "funnelEventList": {
                     "type": "array",
                     "x-stoplight": {
-                      "id": "6gaqo8te62muf"
+                      "id": "lpqd085pkgfl3"
                     },
                     "description": "For funnel metric type. \nNames of events used to create metric",
                     "items": {
                       "x-stoplight": {
-                        "id": "8i5r8fud4va8z"
+                        "id": "749wxpgjd6th3"
                       },
                       "type": "object",
                       "properties": {
                         "name": {
                           "type": "string",
                           "x-stoplight": {
-                            "id": "m8jk7qsr2vajl"
+                            "id": "oveaskm0kj8xz"
                           }
                         },
                         "type": {
                           "type": "string",
                           "x-stoplight": {
-                            "id": "buaizmo8n25aj"
+                            "id": "6w8bexku0yeie"
                           }
                         }
                       }
@@ -289,7 +289,7 @@ module.exports = {
                   },
                   "funnelCountDistinct": {
                     "x-stoplight": {
-                      "id": "9hrzfmw1wl6oj"
+                      "id": "z6rr3raudpf9o"
                     },
                     "description": "For funnel metric type. \nIf you care about counting each time a user goes through a given sequence of events, choose 'Events'. If you care about counting the number of distinct users that go through a given sequence of events, choose 'Users'.",
                     "type": "string",
@@ -301,7 +301,7 @@ module.exports = {
                   "warehouseNative": {
                     "type": "object",
                     "x-stoplight": {
-                      "id": "9vl7kbw8i5dcj"
+                      "id": "rnfmv5n7ob1du"
                     },
                     "description": "Warehouse native metric configuration.  [Documentation](https://docs.statsig.com/statsig-warehouse-native/guides/metrics)\n\nFor creating user warehouse metric, all configuration is within this object. \nFor other fields, only name, description, tags, and metric type will be used. ",
                     "required": [
@@ -311,7 +311,7 @@ module.exports = {
                     "properties": {
                       "aggregation": {
                         "x-stoplight": {
-                          "id": "lfjmt17tch06m"
+                          "id": "8kc7d76p58qrw"
                         },
                         "type": "string",
                         "enum": [
@@ -326,21 +326,21 @@ module.exports = {
                       "metricSourceName": {
                         "type": "string",
                         "x-stoplight": {
-                          "id": "ayvlt60sjw1p8"
+                          "id": "tgx85c0uch6r8"
                         },
                         "description": "For Count, Sum, Mean, User Count aggregation types: the name of metric source\n\nFor Ratio aggregation type: the name of numerator metric source\n\nFor funnel aggregation type: you can ignore. Metric sources information are defined with funnelEvents"
                       },
                       "valueColumn": {
                         "type": "string",
                         "x-stoplight": {
-                          "id": "mam0jrwbidujm"
+                          "id": "gjdlhdb4wlwx6"
                         },
                         "description": "Name of value column used by Ratio and Sum aggregation type metric."
                       },
                       "criteria": {
                         "type": "array",
                         "x-stoplight": {
-                          "id": "ex505dyp0f2wq"
+                          "id": "lixnvhr7jgil9"
                         },
                         "items": {
                           "$ref": "#/components/schemas/MetricEventCriteria"
@@ -349,18 +349,18 @@ module.exports = {
                       "customRollupWaitUntilEndToInclude": {
                         "type": "boolean",
                         "x-stoplight": {
-                          "id": "cbkz9ptj7w1kl"
+                          "id": "vbonjqv7av9lh"
                         }
                       },
                       "denominatorMetricSourceName": {
                         "type": "string",
                         "x-stoplight": {
-                          "id": "tpbnwnw3mvcsz"
+                          "id": "pvw8hkxwt24ug"
                         }
                       },
                       "denominatorAggregation": {
                         "x-stoplight": {
-                          "id": "t368xcah2n2kj"
+                          "id": "pguy6gxdwql45"
                         },
                         "type": "string",
                         "enum": [
@@ -375,19 +375,19 @@ module.exports = {
                       "denominatorCustomRollupStart": {
                         "type": "number",
                         "x-stoplight": {
-                          "id": "r4rdlv63xbire"
+                          "id": "ngtf5z625kh1n"
                         }
                       },
                       "denominatorCustomRollupEnd": {
                         "type": "number",
                         "x-stoplight": {
-                          "id": "8arfqv78bbooy"
+                          "id": "jz0e3876nz9yw"
                         }
                       },
                       "denominatorCriteria": {
                         "type": "array",
                         "x-stoplight": {
-                          "id": "poelw6vvmsy1u"
+                          "id": "in796fk4qkrd8"
                         },
                         "items": {
                           "$ref": "#/components/schemas/MetricEventCriteria"
@@ -396,20 +396,20 @@ module.exports = {
                       "denominatorRollup": {
                         "type": "string",
                         "x-stoplight": {
-                          "id": "y43ozaitlu5yb"
+                          "id": "01iwfr8eybalf"
                         },
                         "description": "Time window for metric. Specify \"custom\", if you want to provide customized time window. Default to be same as experiment time window"
                       },
                       "denominatorValueColumn": {
                         "type": "string",
                         "x-stoplight": {
-                          "id": "6rhr8t7q80ej1"
+                          "id": "crriv5afi2g4r"
                         }
                       },
                       "funnelEvents": {
                         "type": "array",
                         "x-stoplight": {
-                          "id": "hsvjlcsr3164x"
+                          "id": "fwjs21zmwzjxj"
                         },
                         "items": {
                           "$ref": "#/components/schemas/WarehuseNativeFunnelEvent"
@@ -418,13 +418,13 @@ module.exports = {
                       "funnelCalculationWindow": {
                         "type": "number",
                         "x-stoplight": {
-                          "id": "5s3k75ecev4rv"
+                          "id": "5u3ppk3ykxpfi"
                         },
                         "description": "How long to count funnel events"
                       },
                       "funnelStartCriteria": {
                         "x-stoplight": {
-                          "id": "tfxypp65o1su4"
+                          "id": "nd4uewopkm7e6"
                         },
                         "type": "string",
                         "enum": [
@@ -434,7 +434,7 @@ module.exports = {
                       },
                       "funnelCountDistinct": {
                         "x-stoplight": {
-                          "id": "b88udrm0pw3yt"
+                          "id": "h3vwo3p6ygz5v"
                         },
                         "type": "string",
                         "enum": [
@@ -445,13 +445,13 @@ module.exports = {
                       "metricBakeDays": {
                         "type": "number",
                         "x-stoplight": {
-                          "id": "mlmmzgu74p027"
+                          "id": "6gv9b6ta5ck33"
                         },
                         "description": "[Documentation](https://docs.statsig.com/statsig-warehouse-native/features/cohort-metrics)"
                       },
                       "numeratorAggregation": {
                         "x-stoplight": {
-                          "id": "ieknkdluxzu8e"
+                          "id": "1m6x7raoo5o5m"
                         },
                         "type": "string",
                         "enum": [
@@ -466,7 +466,7 @@ module.exports = {
                       "winsorizationHigh": {
                         "type": "number",
                         "x-stoplight": {
-                          "id": "zgspx5dslu0gp"
+                          "id": "d4rbf854gpgyv"
                         },
                         "description": "See [document](https://docs.statsig.com/stats-engine/methodologies/winsorization)",
                         "minimum": 0,
@@ -475,7 +475,7 @@ module.exports = {
                       "winsorizationLow": {
                         "type": "number",
                         "x-stoplight": {
-                          "id": "pf1c88kumboh7"
+                          "id": "85kd5yxm6fdfk"
                         },
                         "description": "See [document](https://docs.statsig.com/stats-engine/methodologies/winsorization)",
                         "minimum": 0,
@@ -484,19 +484,19 @@ module.exports = {
                       "metadataColumns": {
                         "type": "array",
                         "x-stoplight": {
-                          "id": "cjyjhk3a4jhef"
+                          "id": "gjlvy15z5zvnf"
                         },
                         "description": "Specify metadata that you wish to breakdown in experiment analysis.",
                         "items": {
                           "x-stoplight": {
-                            "id": "k1tuqu1n6cqcc"
+                            "id": "pmr2ewbzz1n00"
                           },
                           "type": "string"
                         }
                       },
                       "rollupTimeWindow": {
                         "x-stoplight": {
-                          "id": "nk6tt9qmhty60"
+                          "id": "fz2iz506q6xwe"
                         },
                         "type": "string",
                         "enum": [
@@ -508,21 +508,21 @@ module.exports = {
                       "customRollUpStart": {
                         "type": "number",
                         "x-stoplight": {
-                          "id": "9paq73h2m0gwh"
+                          "id": "srt3704kn3bcu"
                         },
                         "description": "Custom time window start date (Days since exposure)\n"
                       },
                       "customRollUpEnd": {
                         "type": "number",
                         "x-stoplight": {
-                          "id": "hkolnyqm8whud"
+                          "id": "u5wmokccozzj2"
                         },
                         "description": "Custom time window end date(Days since exposure)"
                       },
                       "cupedAttributionWindow": {
                         "type": "number",
                         "x-stoplight": {
-                          "id": "1qig1jsbvvmbk"
+                          "id": "n70u34uxm26ff"
                         }
                       }
                     }
@@ -530,7 +530,7 @@ module.exports = {
                   "team": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "d5btfmgb93ri7"
+                      "id": "kxcxt65yhn3gj"
                     },
                     "description": "Enterprise only"
                   }
@@ -925,7 +925,7 @@ module.exports = {
           "Metrics"
         ],
         "x-stoplight": {
-          "id": "ogudtjrt0v2ck"
+          "id": "yvpvgqm80hmdj"
         }
       }
     },
@@ -974,7 +974,7 @@ module.exports = {
                         "team": {
                           "type": "string",
                           "x-stoplight": {
-                            "id": "jdefsxmkmjpop"
+                            "id": "4j8schleepivd"
                           },
                           "description": "Enterprise only"
                         }
@@ -1080,7 +1080,7 @@ module.exports = {
                   "team": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "8o7lpt1mdlvf2"
+                      "id": "kjzptbr2j50gf"
                     }
                   }
                 }
@@ -1114,7 +1114,7 @@ module.exports = {
                     "message": {
                       "type": "string",
                       "x-stoplight": {
-                        "id": "ulptneel8ms0f"
+                        "id": "prdmdmkomx4hh"
                       }
                     }
                   }
@@ -1130,7 +1130,7 @@ module.exports = {
           }
         },
         "x-stoplight": {
-          "id": "rbkrn0v51eckz"
+          "id": "jz14xizbq9paj"
         },
         "description": "Delete Metric",
         "tags": [
@@ -1180,6 +1180,22 @@ module.exports = {
                         }
                       }
                     }
+                  },
+                  "required": [
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "xva1metpzd8ni"
+                      },
+                      "default": "Metric read successfully."
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/MetricListItem"
+                    }
                   }
                 },
                 "examples": {
@@ -1226,7 +1242,7 @@ module.exports = {
         },
         "operationId": "get-metrics-metric_id",
         "x-stoplight": {
-          "id": "i1c6sr9on23ks"
+          "id": "96hn53zqbw7de"
         },
         "description": "Get Metric Definition: Returned schema should be consistent with schema required for metric creation. (Tags is still WIP)"
       }
@@ -1292,7 +1308,13 @@ module.exports = {
                           "id": "metric_name::composite",
                           "tags": [
                             "★ Core"
-                          ]
+                          ],
+                          "creatorName": "John Doe",
+                          "creatorEmail": "john@email.com",
+                          "createdTime": 1709866818123,
+                          "owner": {
+                            "name": "Mary Jane"
+                          }
                         },
                         {
                           "name": "d1_retention_rate",
@@ -1508,7 +1530,7 @@ module.exports = {
           }
         ],
         "x-stoplight": {
-          "id": "e4czhou0mk9ut"
+          "id": "3ot3vi6ok1kwn"
         }
       },
       "parameters": []
@@ -1676,7 +1698,7 @@ module.exports = {
           }
         ],
         "x-stoplight": {
-          "id": "jct4x0y75f71i"
+          "id": "p329ri779y7jn"
         }
       },
       "parameters": []
@@ -1694,7 +1716,7 @@ module.exports = {
           }
         },
         "x-stoplight": {
-          "id": "z2ujt3x6wa3qw"
+          "id": "2b2k2tyw7t295"
         },
         "description": "Create Warehouse Native Metric Source.\n \nSee [guidance](https://docs.statsig.com/statsig-warehouse-native/guides/metric-sources)",
         "requestBody": {
@@ -1713,24 +1735,24 @@ module.exports = {
                   "name": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "nbn893ry37uql"
+                      "id": "zpvxctlzeop2x"
                     }
                   },
                   "description": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "mq127hfj2b285"
+                      "id": "ga0a4qrk4acg5"
                     }
                   },
                   "tags": {
                     "type": "array",
                     "x-stoplight": {
-                      "id": "fgb7312xpqbzd"
+                      "id": "ysuk8ow5u1iqo"
                     },
                     "description": "List of tags. Tag must already exists in your project",
                     "items": {
                       "x-stoplight": {
-                        "id": "61rgo7jk9qhgf"
+                        "id": "8da1xehsesgrg"
                       },
                       "type": "string"
                     }
@@ -1738,39 +1760,39 @@ module.exports = {
                   "timestampColumn": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "y11nc7rnf43pt"
+                      "id": "aqdllfjgqh6uo"
                     },
                     "description": "Timestamp "
                   },
                   "sql": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "9deuqlyvy2ee6"
+                      "id": "h5hzo9ljar2lr"
                     },
                     "description": "SQL query you want to "
                   },
                   "idTypeMapping": {
                     "type": "array",
                     "x-stoplight": {
-                      "id": "mjzy1qweouv0k"
+                      "id": "6suc1egfufslz"
                     },
                     "items": {
                       "x-stoplight": {
-                        "id": "e7zr5k7cc3dhm"
+                        "id": "84g694s49el9f"
                       },
                       "type": "object",
                       "properties": {
                         "statsigUnitID": {
                           "type": "string",
                           "x-stoplight": {
-                            "id": "lnnmj60odzi6j"
+                            "id": "9oov8u658qhq4"
                           },
                           "description": "Type of Unit ID this column represents. Configure a custom ID in project settings. [View Documentation](https://docs.statsig.com/guides/experiment-on-custom-id-types)"
                         },
                         "column": {
                           "type": "string",
                           "x-stoplight": {
-                            "id": "cxhq14p63ln00"
+                            "id": "jj2syczjxis7l"
                           },
                           "description": "Column name containing this unit type's values"
                         }
@@ -1780,7 +1802,7 @@ module.exports = {
                   "timestampAsDay": {
                     "type": "boolean",
                     "x-stoplight": {
-                      "id": "yy9e9ngw5du3c"
+                      "id": "uzhp11qf08tyc"
                     }
                   }
                 }
@@ -1825,7 +1847,7 @@ module.exports = {
                   "": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "sinsnklxlrxvn"
+                      "id": "f6951e1g4slfi"
                     }
                   }
                 }
@@ -1859,7 +1881,7 @@ module.exports = {
           }
         },
         "x-stoplight": {
-          "id": "dp7ont9iduy88"
+          "id": "44eg0rpnev10i"
         },
         "description": "Update description and tags of the given metric source",
         "requestBody": {
@@ -1871,18 +1893,18 @@ module.exports = {
                   "description": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "hkqkzhvzxkepy"
+                      "id": "r9ggqb32mmfoo"
                     }
                   },
                   "tags": {
                     "type": "array",
                     "x-stoplight": {
-                      "id": "dkb8e61zlmi0z"
+                      "id": "csomgej1xjtie"
                     },
                     "description": "Updated list of tags. Tag must be created first",
                     "items": {
                       "x-stoplight": {
-                        "id": "hi62k1flm6dsc"
+                        "id": "8csihc5aefrxd"
                       },
                       "type": "string"
                     }
@@ -1939,7 +1961,10 @@ module.exports = {
                           "timestampColumn": "ts",
                           "timestampAsDay": true,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "userID" },
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "userID"
+                            },
                             {
                               "statsigUnitID": "deviceID",
                               "column": "device_id"
@@ -1958,7 +1983,10 @@ module.exports = {
                           "timestampColumn": "ts",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "userID" },
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "userID"
+                            },
                             {
                               "statsigUnitID": "deviceID",
                               "column": "device_id"
@@ -1973,7 +2001,10 @@ module.exports = {
                           "timestampColumn": "ts",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "userID" },
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "userID"
+                            },
                             {
                               "statsigUnitID": "deviceID",
                               "column": "device_id"
@@ -1988,7 +2019,10 @@ module.exports = {
                           "timestampColumn": "ts",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "userID" }
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "userID"
+                            }
                           ]
                         },
                         {
@@ -1999,7 +2033,10 @@ module.exports = {
                           "timestampColumn": "ts",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "userID" }
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "userID"
+                            }
                           ]
                         },
                         {
@@ -2010,7 +2047,10 @@ module.exports = {
                           "timestampColumn": "ts",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "userID" }
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "userID"
+                            }
                           ]
                         },
                         {
@@ -2044,7 +2084,10 @@ module.exports = {
                           "timestampColumn": "timestamp",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "userID" }
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "userID"
+                            }
                           ]
                         },
                         {
@@ -2084,7 +2127,10 @@ module.exports = {
                           "timestampColumn": "ts",
                           "timestampAsDay": true,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "userID" }
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "userID"
+                            }
                           ]
                         }
                       ]
@@ -2170,7 +2216,7 @@ module.exports = {
         },
         "operationId": "get-metrics-metric_source-list",
         "x-stoplight": {
-          "id": "zlb6viwg6ryc1"
+          "id": "9kkgsqjv4ib17"
         },
         "description": "List all Metric Sources in the project"
       }
@@ -2181,7 +2227,7 @@ module.exports = {
       "MetricListItem": {
         "title": "MetricListItem",
         "x-stoplight": {
-          "id": "igvn9y7kjvjv3"
+          "id": "fkyqxw5dg7v0c"
         },
         "type": "object",
         "x-tags": [
@@ -2197,6 +2243,12 @@ module.exports = {
             "lineage": {
               "events": [],
               "metrics": []
+            },
+            "creatorName": "John Doe",
+            "creatorEmail": "john@email.com",
+            "createdTime": 1709866818123,
+            "owner": {
+              "name": "Mary Jane"
             }
           },
           "daily_stickiness": {
@@ -2255,7 +2307,7 @@ module.exports = {
           "lineage": {
             "type": "object",
             "x-stoplight": {
-              "id": "mid78b269dgua"
+              "id": "hn1c0mgzfpcwf"
             },
             "required": [
               "events",
@@ -2265,12 +2317,12 @@ module.exports = {
               "events": {
                 "type": "array",
                 "x-stoplight": {
-                  "id": "0usvcexwz7lld"
+                  "id": "knjo7ftmghltd"
                 },
                 "description": "Events used in the calculation of this metric",
                 "items": {
                   "x-stoplight": {
-                    "id": "05xyvx5fzd8k3"
+                    "id": "0yymzi9l3gp1f"
                   },
                   "type": "string"
                 }
@@ -2278,12 +2330,12 @@ module.exports = {
               "metrics": {
                 "type": "array",
                 "x-stoplight": {
-                  "id": "qo8uvlbwp1mc8"
+                  "id": "7uxaw35rtzvsq"
                 },
                 "description": "Other metrics used in the calculation this metric",
                 "items": {
                   "x-stoplight": {
-                    "id": "cvh0slo112dkd"
+                    "id": "zaceeu04fcmae"
                   },
                   "type": "string"
                 }
@@ -2293,16 +2345,57 @@ module.exports = {
           "team": {
             "type": "string",
             "x-stoplight": {
-              "id": "9i9d9j9rbyzsg"
+              "id": "u0vji9pit3pxa"
             },
             "description": "Enterprise only"
+          },
+          "creatorName": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "imgjy6qzyg9z4"
+            },
+            "description": "Creator name",
+            "example": "John Doe"
+          },
+          "creatorEmail": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "qqewedsqnrlgs"
+            },
+            "description": "Creator email",
+            "example": "john@email.com"
+          },
+          "createdTime": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "r2i8p9ijv8cut"
+            },
+            "example": 1709866818123,
+            "description": "Created timestamp in epoch ms"
+          },
+          "owner": {
+            "type": "object",
+            "x-stoplight": {
+              "id": "6k8rscudykhhu"
+            },
+            "description": "Metric owner",
+            "properties": {
+              "name": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "9c5x2yc1tojj7"
+                },
+                "description": "Owner name",
+                "example": "Mary Jane"
+              }
+            }
           }
         }
       },
       "MetricValue": {
         "title": "MetricValue",
         "x-stoplight": {
-          "id": "rrwb1zi0llrj1"
+          "id": "saqprrktzjx6h"
         },
         "type": "object",
         "properties": {
@@ -2310,7 +2403,10 @@ module.exports = {
             "type": "number",
             "description": "Metric value for the given unit_type"
           },
-          "unit_type": { "type": "string", "description": "Which unitType" },
+          "unit_type": {
+            "type": "string",
+            "description": "Which unitType"
+          },
           "input_rows": {
             "type": "integer",
             "description": "row count for imported metric"
@@ -2332,13 +2428,13 @@ module.exports = {
       "MetricEventCriteria": {
         "title": "MetricEventCriteria",
         "x-stoplight": {
-          "id": "dd58049m3s3ve"
+          "id": "0zznle8jc0d8e"
         },
         "type": "object",
         "properties": {
           "type": {
             "x-stoplight": {
-              "id": "3ek2n08bgdjfd"
+              "id": "qsrwqcp5wjz62"
             },
             "type": "string",
             "enum": [
@@ -2349,12 +2445,12 @@ module.exports = {
           "key": {
             "type": "string",
             "x-stoplight": {
-              "id": "t3t24pwfcltx5"
+              "id": "njy4bvp20pir5"
             }
           },
           "condition": {
             "x-stoplight": {
-              "id": "7jsl6ds2wuhjy"
+              "id": "a9mg4pbfiojg6"
             },
             "type": "string",
             "enum": [
@@ -2377,11 +2473,11 @@ module.exports = {
           "values": {
             "type": "array",
             "x-stoplight": {
-              "id": "1n4i8d2ivepj9"
+              "id": "fabmmj2osxfp6"
             },
             "items": {
               "x-stoplight": {
-                "id": "6veb6jqyiuohb"
+                "id": "793v8zel3n8jk"
               },
               "type": "string"
             }
@@ -2389,7 +2485,7 @@ module.exports = {
           "nullVacuousOverride": {
             "type": "boolean",
             "x-stoplight": {
-              "id": "tw08j0l574wyc"
+              "id": "59j4yk52b3wxs"
             }
           }
         }
@@ -2397,25 +2493,25 @@ module.exports = {
       "MetricEvent": {
         "type": "object",
         "x-stoplight": {
-          "id": "x4xrxw4c84j52"
+          "id": "yc1fmvvv2giu1"
         },
         "properties": {
           "name": {
             "type": "string",
             "x-stoplight": {
-              "id": "tll2doo9f72qr"
+              "id": "426b0xlaruq57"
             }
           },
           "type": {
             "type": "string",
             "x-stoplight": {
-              "id": "p3ck0r18jntot"
+              "id": "x1chigyfijfzs"
             }
           },
           "metadataKey": {
             "type": "string",
             "x-stoplight": {
-              "id": "kojh2kt3cv4rc"
+              "id": "wwka211t0o3ij"
             }
           },
           "criteria": {
@@ -2431,12 +2527,12 @@ module.exports = {
           "name": {
             "type": "string",
             "x-stoplight": {
-              "id": "rdf4ea4dxnnn8"
+              "id": "ww9gtpkqixlfs"
             }
           },
           "type": {
             "x-stoplight": {
-              "id": "quj6ludcf5btd"
+              "id": "diylfl7fh8ke1"
             },
             "type": "string",
             "enum": [
@@ -2449,7 +2545,7 @@ module.exports = {
           "metadataKey": {
             "type": "string",
             "x-stoplight": {
-              "id": "b2dqb30f18nxh"
+              "id": "dqkc34xodnjwo"
             }
           },
           "criteria": {
@@ -2457,19 +2553,19 @@ module.exports = {
           }
         },
         "x-stoplight": {
-          "id": "aba65c846oix6"
+          "id": "y4s2igonwubsq"
         }
       },
       "WarehuseNativeFunnelEvent": {
         "title": "WarehuseNativeFunnelEvent",
         "x-stoplight": {
-          "id": "hcuw2oc41j6d5"
+          "id": "8d04ybenj2mlz"
         },
         "type": "object",
         "properties": {
           "criteria": {
             "x-stoplight": {
-              "id": "f31c0fravk949"
+              "id": "5yloi5lml1jbx"
             },
             "type": "array",
             "items": {
@@ -2479,12 +2575,12 @@ module.exports = {
           "metricSourceName": {
             "type": "string",
             "x-stoplight": {
-              "id": "v2w1q55id1mnd"
+              "id": "695mv5csnnpe2"
             }
           },
           "name": {
             "x-stoplight": {
-              "id": "e24o4boy2oo7y"
+              "id": "ejke3wqkzltk5"
             },
             "type": "string",
             "description": "Step name",
@@ -2493,7 +2589,7 @@ module.exports = {
           "sessionIdentifierField": {
             "type": "string",
             "x-stoplight": {
-              "id": "86nyjespkr46c"
+              "id": "oacjc9x1gwr9r"
             },
             "description": "Name of column which being used as session identifier. Funnel event with the same metric source have to have the same identifier column"
           }
