@@ -7,25 +7,25 @@ You can install the Statsig SDK via npm, yarn or jsdelivr:
   defaultValue="npm"
   values={[
     {label: 'NPM', value: 'npm'},
-    {label: 'Script', value: 'script'}, 
+    {label: 'CDN / <script>', value: 'script'}, 
     {label: 'Yarn', value: 'yarn'},
   ]}>
 
   <TabItem value="script">
 
-Statsig is available from [jsdelivr](https://www.jsdelivr.com/package/npm/statsig-js), an open source CDN. We use this installation method for using Statsig on www.statsig.com! Go ahead, inspect the page source.
+```html
+<script src="https://cdn.jsdelivr.net/npm/@statsig/precomputed-evaluations/build/precomputed-evaluations.min.js"></script>
+```
+
+Statsig is hosted on the [jsDelivr](https://www.jsdelivr.com/package/npm/@statsig/precomputed-evaluations) CDN.
 
 To access the current primary JavaScript bundle, use:
 
-`https://cdn.jsdelivr.net/npm/statsig-js/build/statsig-prod-web-sdk.min.js`
+`https://cdn.jsdelivr.net/npm/@statsig/precomputed-evaluations/build/precomputed-evaluations.min.js`
 
 To access specific files/versions:
 
 `https://cdn.jsdelivr.net/npm/@statsig/precomputed-evaluations@{version}/build/precomputed-evaluations.min.js`
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/@statsig/precomputed-evaluations/build/precomputed-evaluations.min.js"></script>
-```
 
   </TabItem>
   <TabItem value="npm">
