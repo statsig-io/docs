@@ -20,7 +20,7 @@ You can also sync in an ID list Segment from sources like an [Amplitude Cohorts]
 There is a hard limit of 10 million IDs across all ID Lists in your project.
 
 ### Keep ID Lists Small(!)
-When an ID List is small (no more than 1000 IDs), it is synchronized in the same process with other feature gates, experiments, and conditional segments, which has high consistency and reliability. Once an ID List goes over 1000 in size, to scale efficiently and not negatively impact the other entities as the lists grow, there is a separate process to synchronize them. As a result, they are not downloaded in the main initialization process (in server SDK's initialization path, or the local evaluation version of our client SDKs), and change propagation takes longer.
+When an ID List is small (no more than 1000 IDs), it is synchronized in the same process with other feature gates, experiments, and conditional segments, which has high consistency and reliability. Once an ID List goes over 1000 in size, to scale efficiently and not negatively impact the other entities as the lists grow, there is a separate process to synchronize them. As a result, they are not downloaded in the main initialization process (in the initialization path of server SDKs, or the local evaluation version of our client SDKs), and change propagation takes longer.
 
 We recommend always keeping your ID Lists to be no more than 1000 IDs in each, unless you are ok with the caveats mentioned above.
 
