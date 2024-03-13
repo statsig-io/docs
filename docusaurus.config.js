@@ -120,6 +120,15 @@ module.exports = {
         },
         injectHtmlTags() {
           return {
+            preBodyTags:[
+              {
+                type:"html",
+                innerHTML: `<co-pilot copilot_id="6f8EwgjiL"></co-pilot>
+                <script type="module" src="https://ui.scoutos.com/copilot.js"></script>
+                `,
+                tagName: "div",
+              },
+            ],
             headTags: [
               {
                 tagName: "script",
