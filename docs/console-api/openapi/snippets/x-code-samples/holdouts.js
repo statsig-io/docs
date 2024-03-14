@@ -83,13 +83,16 @@ curl --request DELETE 'https://statsigapi.net/console/v1/holdouts/a_holdout'
         "lang": "cURL",
         "label": "cURL",
         "source": `
-curl --request POST 'https://statsigapi.net/console/v1/holdouts' 
+curl --request POST 'https://statsigapi.net/console/v1/holdouts/a_holdout/overrides' 
 --header 'STATSIG-API-KEY: console-xxxxxXXXXXXXXXxxxxxxxxxXXXXXXXxxxxxxxx' 
 --header 'Content-Type: application/json' 
 --data-raw '{
-    "name": "a holdout",
-    "description": "helpful summary of what this holdout does",
-    "idType": "userID"
+  "passingUserIDs": [
+    "passing_id"
+  ],
+  "failingUserIDs": [
+    "failing_id"
+  ]
 }'
         `
       }
