@@ -50,23 +50,22 @@ Integrating feature flags into a new Node.js application using Statsig is a stra
      const statsig = require('statsig-node');
 
      async function main() {
-       await statsig.initialize('your_server_secret_key');
+      await statsig.initialize('your_server_secret_key');
 
-       const checkFeatureFlag = await statsig.checkGate('example_feature_flag', { userID: 'user_123' });
+      const checkFeatureFlag = statsig.checkGateSync({ userID: 'user_123' }, 'my_dev_test_flag');
+      if (checkFeatureFlag) {
+        console.log('Feature Flag is enabled');
+      } else {
+        console.log('Feature Flag is disabled');
+      }
 
-       if (checkFeatureFlag) {
-         console.log('Feature Flag is enabled');
-       } else {
-         console.log('Feature Flag is disabled');
-       }
+      statsig.shutdown();
+    }
 
-       statsig.shutdown();
-     }
-
-     main();
-     ```
+    main();
+    ```
    - Replace `'your_server_secret_key'` with your actual Statsig Server Secret Key.
-   - Replace `'example_feature_flag'` with the name of your feature flag.
+   - Replace `'my_dev_test_flag'` with the name of your feature flag.
 
 3. **Run Your Program Again**:
    - Execute your updated Node.js application:
