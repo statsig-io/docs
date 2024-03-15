@@ -35,6 +35,7 @@ import ShutdownSnippet from "./dotnet/_shutdown.mdx";
 import DataStoreInterface from "./dotnet/_dataStoreInterface.mdx";
 import RedisDataStore from "./dotnet/_redisDataStore.mdx";
 import * as ReferenceSnippets from "./dotnet/_reference.mdx";
+import OverridesSnippet from "./dotnet/_localOverrides.mdx";
 
 export const Result = SDKDocsBuilder(
   { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
@@ -67,7 +68,11 @@ export const Result = SDKDocsBuilder(
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [
       DataStore,
-      { interface: <DataStoreInterface />, redis: <RedisDataStore /> },
+      { interface: <DataStoreInterface />, example: <RedisDataStore /> },
+    ],
+    [
+      LocalOverrides,
+      { addedInVersion: "1.21.0", snippet: <OverridesSnippet /> },
     ],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],

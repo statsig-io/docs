@@ -44,7 +44,6 @@ module.exports = {
             ]
           }
         },
-        "description": "",
         "properties": {
           "passingUserIDs": {
             "type": "array",
@@ -73,11 +72,77 @@ module.exports = {
             "items": {
               "type": "string"
             }
+          },
+          "environmentOverride": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "dcwcrh5uu9cl3"
+            },
+            "description": "Environment overrides are currently only supported on POST updates.",
+            "items": {
+              "$ref": "#/components/schemas/environment_override"
+            }
           }
         },
         "required": [
           "passingUserIDs",
           "failingUserIDs"
+        ]
+      },
+      "environment_override": {
+        "title": "environment_override",
+        "x-stoplight": {
+          "id": "zashpfqkoff41"
+        },
+        "type": "object",
+        "properties": {
+          "environment": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "vzlpq8ud28ela"
+            },
+            "description": "Which environment(s) the override is to be applied, Null implies all environments.",
+            "nullable": true
+          },
+          "unitID": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "yu20rf9clrh89"
+            },
+            "description": "Which unit ID the override is being applied to."
+          },
+          "passingIDs": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "lj0q3higtkcs2"
+            },
+            "description": "IDs that are forced to pass the feature gate",
+            "items": {
+              "x-stoplight": {
+                "id": "elbx0du6j38ez"
+              },
+              "type": "string"
+            }
+          },
+          "failingIDs": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "xlyxjgbi664u1"
+            },
+            "description": "IDs that are forced to fail the feature gate",
+            "items": {
+              "x-stoplight": {
+                "id": "vxcm7nfmf9fwm"
+              },
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "environment",
+          "unitID",
+          "passingIDs",
+          "failingIDs"
         ]
       }
     },
@@ -145,6 +210,9 @@ module.exports = {
                     }
                   }
                 },
+                "required": [
+                  "name"
+                ],
                 "properties": {
                   "name": {
                     "type": "string",
@@ -157,18 +225,42 @@ module.exports = {
                   "idType": {
                     "type": "string",
                     "description": "The id type this gate will use, defaults to 'userID'"
+                  },
+                  "team": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "lt5rqciecph43"
+                    }
+                  },
+                  "creatorID": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "zsivo6fa4jkim"
+                    },
+                    "description": "The userID of intended creator, defaults to Console API",
+                    "example": "35sClJFs8l0y5uRQhDwUDo"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "47byz9onb5mbx"
+                    },
+                    "items": {
+                      "x-stoplight": {
+                        "id": "w853emu7663xq"
+                      },
+                      "type": "string"
+                    }
                   }
-                },
-                "required": [
-                  "name"
-                ]
+                }
               },
               "examples": {
                 "name/description": {
                   "value": {
                     "name": "a gate",
                     "description": "helpful summary of what this gate does",
-                    "idType": "userID"
+                    "idType": "userID",
+                    "creatorID": "35sClJFs8l0y5uRQhDwUDo"
                   }
                 },
                 "customID": {
@@ -872,12 +964,12 @@ module.exports = {
                       "array"
                     ],
                     "x-stoplight": {
-                      "id": "5rrnm2ejylkzx"
+                      "id": "ok13ll2vlpmkt"
                     },
                     "description": "The gate's tags",
                     "items": {
                       "x-stoplight": {
-                        "id": "voxa9f4r28gsa"
+                        "id": "u0wliutw4tsgn"
                       },
                       "type": "string",
                       "example": "product_team"
@@ -886,7 +978,7 @@ module.exports = {
                   "type": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "z4yjl8n8f5mc4"
+                      "id": "vg4f96tm25n38"
                     }
                   },
                   "targetApps": {
@@ -895,14 +987,14 @@ module.exports = {
                   "idType": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "6o8q8g32tty5p"
+                      "id": "jmduf8cob9wpz"
                     },
                     "description": "Changing ID type will overwrite all historical Pulse results"
                   },
-                  "": {
+                  "team": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "x9ql896pw8y28"
+                      "id": "cuoxyfswftzfr"
                     }
                   }
                 }
@@ -1358,12 +1450,12 @@ module.exports = {
                       "array"
                     ],
                     "x-stoplight": {
-                      "id": "5rrnm2ejylkzx"
+                      "id": "j04smi89rx8f4"
                     },
                     "description": "The gate's tags",
                     "items": {
                       "x-stoplight": {
-                        "id": "voxa9f4r28gsa"
+                        "id": "uqs5i4sz6no46"
                       },
                       "type": "string",
                       "example": "product_team"
@@ -1375,9 +1467,15 @@ module.exports = {
                   "idType": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "66ijtgompruqj"
+                      "id": "kv21zfwu0axuf"
                     },
                     "description": "Changing ID type will overwrite all historical Pulse results"
+                  },
+                  "team": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "t1vb31zsc362c"
+                    }
                   }
                 }
               },
@@ -1541,13 +1639,26 @@ module.exports = {
                           "items": {
                             "type": "string"
                           }
+                        },
+                        "environmentOverrides": {
+                          "x-stoplight": {
+                            "id": "zit8j156266e3"
+                          },
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/environment_override"
+                          }
                         }
-                      }
+                      },
+                      "required": [
+                        "passingUserIDs",
+                        "failingUserIDs"
+                      ]
                     }
                   }
                 },
                 "examples": {
-                  "example-1": {
+                  "UserID and CustomID overrides": {
                     "value": {
                       "message": "Gate Overrides read successfully.",
                       "data": {
@@ -1562,6 +1673,35 @@ module.exports = {
                         ],
                         "failingCustomIDs": [
                           "passing-custom-id"
+                        ]
+                      }
+                    }
+                  },
+                  "Environment Override": {
+                    "value": {
+                      "message": "Gate Overrides read successfully.",
+                      "data": {
+                        "passingUserIDs": [],
+                        "failingUserIDs": [],
+                        "environmentOverrides": [
+                          {
+                            "environment": "production",
+                            "unitID": "userID",
+                            "passingIDs": [
+                              "update_pass"
+                            ],
+                            "failingIDs": [
+                              "update_fail"
+                            ]
+                          },
+                          {
+                            "environment": "staging",
+                            "unitID": "customID",
+                            "passingIDs": [
+                              "staging_pass"
+                            ],
+                            "failingIDs": []
+                          }
                         ]
                       }
                     }
@@ -1889,7 +2029,7 @@ module.exports = {
         "description": "Removes provided lists from existing gate overrides"
       }
     },
-    "/gates/:id/launch": {
+    "/gates/{gate_id}/launch": {
       "put": {
         "summary": "",
         "operationId": "put-gates-:id-launch",
@@ -1992,13 +2132,146 @@ module.exports = {
           }
         },
         "x-stoplight": {
-          "id": "kdox550fr7np2"
+          "id": "8tx3wzzyc3boc"
         },
         "description": "Launch a feature gate",
         "tags": [
           "Gates"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "gate_id",
+          "in": "path",
+          "required": true,
+          "description": "Gate id to query"
+        }
+      ]
+    },
+    "/gates/{gate_id}/archive": {
+      "put": {
+        "summary": "",
+        "operationId": "put-gates-:id-archive",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Gate updated successfully.",
+                      "data": {
+                        "id": "a_gate",
+                        "name": "A gate",
+                        "description": "",
+                        "idType": "userID",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifiedTime": 1698950181739,
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierEmail": null,
+                        "creatorID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "createdTime": 1698950178518,
+                        "creatorName": "CONSOLE API",
+                        "creatorEmail": null,
+                        "targetApps": [],
+                        "isEnabled": false,
+                        "status": "Launched",
+                        "rules": [
+                          {
+                            "name": "public",
+                            "passPercentage": 100,
+                            "conditions": [
+                              {
+                                "type": "public"
+                              }
+                            ],
+                            "environments": null
+                          }
+                        ],
+                        "checksPerHour": 0,
+                        "tags": [],
+                        "type": "TEMPORARY",
+                        "typeReason": "NONE"
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "data": {
+                      "$ref": "../models/gate.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Archive Gate": {
+                    "value": {
+                      "message": "Gate updated successfully.",
+                      "data": {
+                        "id": "a_gate",
+                        "name": "A gate",
+                        "description": "",
+                        "idType": "userID",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifiedTime": 1698950181739,
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierEmail": null,
+                        "creatorID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "createdTime": 1698950178518,
+                        "creatorName": "CONSOLE API",
+                        "creatorEmail": null,
+                        "targetApps": [],
+                        "isEnabled": false,
+                        "status": "Archived",
+                        "rules": [
+                          {
+                            "name": "public",
+                            "passPercentage": 100,
+                            "conditions": [
+                              {
+                                "type": "public"
+                              }
+                            ],
+                            "environments": null
+                          }
+                        ],
+                        "checksPerHour": 0,
+                        "tags": [],
+                        "type": "TEMPORARY",
+                        "typeReason": "NONE"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "otga7qyan1ygh"
+        },
+        "description": "Archive a feature gate",
+        "tags": [
+          "Gates"
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "gate_id",
+          "in": "path",
+          "required": true,
+          "description": "Gate id to query"
+        }
+      ]
     }
   }
 }

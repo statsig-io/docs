@@ -1,11 +1,12 @@
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardHeader from "@material-ui/core/CardHeader";
-import Icon from "@material-ui/core/Icon";
-import IconButton from "@material-ui/core/IconButton";
-import Link from "@material-ui/core/Link";
+import Button from "@mui/material/Button";
+import OutlinedCard from "@site/src/components/OutlinedCard";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
+import Icon from "@mui/material/Icon";
+import IconButton from "@mui/material/IconButton";
+import Link from "@mui/material/Link";
 
 import LogOnClick from "@site/src/components/LogOnClick";
 
@@ -18,9 +19,10 @@ There are two ways to seamlessly integrate Statsig into your product development
 
 - **Statsig Cloud:** Set up ***Statsig SDK***, configure **events logging**. Everything else is handled by us.
     - You get feature gates and 1 million metered events for free, as well as many analytics tools such as Dashboard, Metrics Explorer, and Insights. Here is [a link](https://www.statsig.com/pricing) to our pricing details.
-- **Warehouse Native:** If you have data instruments already, or a strong privacy requirement, you may want to consider [Warehouse Native](https://docs.statsig.com/statsig-warehouse-native/introduction) (WHN). With WHN, you can host Statsig’s Stats Engine within your own Data Warehouse, using your own pre-existing data sets to calculate metric lifts. You can define feature assignment either by providing us feature exposures (you randomize), or through our SDK (we randomize).
-    - Today’s this option is only available for Enterprise contracts. Check [this link](https://docs.statsig.com/statsig-warehouse-native/introduction) for more details or <LogOnClick event="demo_click"> <a href="https://www.statsig.com/contact/demo">Schedule a demo</a> </LogOnClick>  with our sales if you are interested in this option.
-    - With WHN, we still recommend using ***Statsig SDK*** for feature gates, and randomization, and take advantage of its reliable infrastructure, and seamless integration with the Statsig Console.
+- **Warehouse Native:** If the events or metrics you want to experiment on are already in your warehouse, you may want to consider [Warehouse Native](https://docs.statsig.com/statsig-warehouse-native/introduction) (WHN).
+    - With WHN, you can host Statsig’s Stats Engine within your own Data Warehouse, calculating metric lifts on your own datasets. This is particularly useful for teams with strong privacy contraints.
+    - You can use non-Statsig SDKs for feature assignment and provide us exposures in a table (you randomize), or use our SDKs (we randomize and write into your warehouse). The former helps you scale analysis; the latter helps you [10x experimentation velocity](https://www.statsig.com/blog/features-to-10x-experiment-velocity).
+    - Today’s this option is only available with Enterprise contracts. Check [this link](https://docs.statsig.com/statsig-warehouse-native/introduction) for more details or [Schedule a demo](https://www.statsig.com/contact/demo) with our sales team.
 
 This page gives you an organized overview of how to set up the SDK. SDK can help you log events, and assignments, which will light up **feature gate**, **experiments**, and **analytics** within half an hour.
 
@@ -62,57 +64,6 @@ export const ArrowButton = ({ link }) => (
       arrow_forward
     </Icon>
   </IconButton>
-);
-
-export const OutlinedCard = ({ title, description, icon, link }) => (
-  <Card
-    style={{
-      minWidth: "240px",
-      margin: "16px",
-      flex: "0 0 28%",
-      display: "flex",
-      flexDirection: "column",
-      padding: "16px",
-      boxShadow: "0 6px 16px rgba(0, 0, 0, 0.06)",
-      border: 0,
-    }}
-  >
-    <div
-      style={{
-        fontWeight: "bold",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "flex-start",
-        alignContent: "space-between",
-        alignItems: "center",
-      }}
-    >
-      <Icon style={{ color: "#194b7d" }}>{icon}</Icon>
-      <div style={{ paddingLeft: "8px" }}>{title}</div>
-    </div>
-    <CardContent
-      style={{
-        padding: 0,
-        paddingTop: "4px",
-        display: "flex",
-        flex: 1,
-        flexDirection: "column",
-        justifyContent: "space-between",
-      }}
-    >
-      <p>{description}</p>
-      <CardActions
-        style={{
-          padding: 0,
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "flex-end",
-        }}
-      >
-        <ArrowButton link={link} />
-      </CardActions>
-    </CardContent>
-  </Card>
 );
 
 export const SDKCard = ({ language, image, link }) => (

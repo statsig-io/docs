@@ -22,8 +22,7 @@ The different Project Roles available are:
 
 ## Custom Roles
 Enterprise customers can customize roles used to assign permissions in Statsig. You can create new roles beyond Admin, Member and Read-Only and choose what permissions these roles have. Common use cases include creating a Metrics Admin role or a Warehouse Admin role (for Statsig Warehouse Native).
-![image](https://github.com/statsig-io/docs/assets/31516123/bd3d4fac-9753-44ff-87ac-2ce1b30bdbea)
-
+![image](https://github.com/statsig-io/docs/assets/112416832/1b5a0601-6311-401e-87e3-5d1055a025e7)
 
 ## Automatic Project Invitations
 

@@ -20,6 +20,8 @@ const supportedEntities = [
   'usage-billing', 
   'target-apps',
   'ingestions',
+  'tags',
+  'keys',
 ];
 
 function updateCodeSnippets(data, entity) {
@@ -99,60 +101,61 @@ export default function Rapidoc(props) {
 
   useEffect(() => {
     setTimeout(() => {
-
       var data;
+      const rapidoc = document.getElementById(id);
 
-      if (entity === 'all-endpoints') {
-        data = loadAllEndpoints();
-      } else {
-        data = require(`../../docs/console-api/openapi/${entity}.js`);
+      switch(entity) {
+        case 'all-endpoints-generated':
+          rapidoc.loadSpec("https://statsigapi.net/console/v1/open_api");
+          return;
+        case 'all-endpoints':
+          data = loadAllEndpoints();
+          break;
+        default:
+          data = require(`../../docs/console-api/openapi/${entity}.js`);
       }
 
       data = updateCodeSnippets(data, entity);
 
       loadReferences(data);
 
-      const rapidoc = document.getElementById(id);
       rapidoc.loadSpec(data);
     }, 30);
   }, []);
 
-  if (ExecutionEnvironment.canUseDOM) {
-    return (
-      <rapi-doc
-        id={id}
-        theme={isDarkTheme ? 'dark' : 'light'}
-        primary-color={isDarkTheme ? '#2196f3' : '#194b7d'}
-        bg-color={isDarkTheme ? '#1b1b1d' : "#ffffff"}
-        style={{ height: "100%" }}
-        allow-search={false}
-        render-style="view" // Controls how to api gets rendered
-        layout="column"
-        allow-try={true} // Enable ability for users to run commands
-        allow-server-selection={false}
-        show-header={false} // Disable user changing api spec file
-        allow-authentication={true} // Enable user passing STATSIG-API-KEY at top of file
-        regular-font={["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Ubuntu", "sans-serif"]}
-      >
-        <div slot="overview">
-          {getDescription(entity)}
-          <h2>Authorization</h2>
-          <p>
-            All requests must include the STATSIG-API-KEY field in the header. The value should be a Console API Key which can be created in 'Project Settings'-{">"}'API Keys' tab.  <br />
-            To use the 'try it' section on this page, enter your Console API into the box below.
-          </p>
-          <hr />
-        </div>
-        <p slot="auth" style={{ color: '#E05550' }}>
-          Warning! You will be directly modifying the project connected to the api-key provided.
+  return (
+    <rapi-doc
+      id={id}
+      theme={isDarkTheme ? 'dark' : 'light'}
+      primary-color={isDarkTheme ? '#2196f3' : '#194b7d'}
+      bg-color={isDarkTheme ? '#1b1b1d' : "#ffffff"}
+      style={{ height: "100%" }}
+      allow-search={false}
+      render-style="view" // Controls how to api gets rendered
+      layout="column"
+      allow-try={true} // Enable ability for users to run commands
+      allow-server-selection={false}
+      show-header={false} // Disable user changing api spec file
+      allow-authentication={true} // Enable user passing STATSIG-API-KEY at top of file
+      regular-font={["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Ubuntu", "sans-serif"]}
+    >
+      <div slot="overview">
+        {getDescription(entity)}
+        <h2>Authorization</h2>
+        <p>
+          All requests must include the STATSIG-API-KEY field in the header. The value should be a Console API Key which can be created in 'Project Settings'-{">"}'API Keys' tab.  <br />
+          To use the 'try it' section on this page, enter your Console API into the box below.
         </p>
-        <p slot="auth">
-          We suggest creating a temporary project when testing our API below.
-        </p>
-      </rapi-doc>
-    );
-  }
-  return <div />;
+        <hr />
+      </div>
+      <p slot="auth" style={{ color: '#E05550' }}>
+        Warning! You will be directly modifying the project connected to the api-key provided.
+      </p>
+      <p slot="auth">
+        We suggest creating a temporary project when testing our API below.
+      </p>
+    </rapi-doc>
+  );
 }
 
 
@@ -214,6 +217,7 @@ function getDescription(entity) {
           </ul>
           <li>Update experiment overrides</li>
           <li>Delete an experiment</li>
+          <li>Load Pulse results on Warehouse Native</li>
         </ul>
       </>
     case 'holdouts':
@@ -312,6 +316,20 @@ function getDescription(entity) {
         <ul>
           <li>Check the status history of ingestions sent to Statsig</li>
         </ul>
+      </>
+
+    case 'tags': 
+      return <>
+        <h2>Tag API functions</h2>
+        <ul>
+          <li>Create a new tag</li>
+          <li>Read data from existing tags</li>
+        </ul>
+      </>
+
+    case 'keys': 
+      return <>
+        <h2>API for Statsig Keys</h2>
       </>
 
     case 'all-endpoints':

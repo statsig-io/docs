@@ -1,0 +1,78 @@
+---
+sidebar_label: Android
+title: Android On Device Evaluation
+---
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStartedRulesets,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  Shutdown,
+  CodeExamples,
+} from "./Templates/index.mdx";
+
+import OnDeviceEvalProsAndCons from "./Templates/_OnDeviceEvalProsAndCons.mdx";
+
+import CheckGate from "./AndroidOnDeviceEvaluation/_checkGate.mdx";
+import GetConfig from "./AndroidOnDeviceEvaluation/_getConfig.mdx";
+import GetExperiment from "./AndroidOnDeviceEvaluation/_getExperiment.mdx";
+import Initialize from "./AndroidOnDeviceEvaluation/_initialize.mdx";
+import Install from "./AndroidOnDeviceEvaluation/_install.mdx";
+import LogEvent from "./AndroidOnDeviceEvaluation/_logEvent.mdx";
+import MoreFAQs from "./AndroidOnDeviceEvaluation/_faqs.mdx";
+import Options from "./AndroidOnDeviceEvaluation/_options.mdx";
+import ShutdownSnippet from "./AndroidOnDeviceEvaluation/_shutdown.mdx";
+import * as UsingPersistentValues from "./AndroidOnDeviceEvaluation/_usingPersistentValues.mdx";
+
+export const Result = SDKDocsBuilder(
+  {},
+  [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/android-local-eval",
+      },
+    ],
+    [
+      GettingStartedRulesets,
+      {
+        additionalWelcomeMessage: (
+          <OnDeviceEvalProsAndCons
+            sdkName="AndroidOnDeviceEvaluations"
+            otherSDK={{
+              name: "Android Precomputed Evaluations SDK",
+              link: "/client/androidClientSDK",
+            }}
+          />
+        ),
+        sdkType: "Android On Device Evaluation",
+        install: <Install />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+      },
+    ],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [UsingPersistentValues, {}],
+    [FAQ, { faqs: <MoreFAQs /> }],
+  ],
+  toc
+);
+
+<>{Result}</>

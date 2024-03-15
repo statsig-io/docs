@@ -15,9 +15,10 @@ To create an experiment, you can go to the experiments tab in your console and p
 There's two types of experiments in Statsig Warehouse Native:
 
 - Analyze: these are for 3rd-party or in-house exposure sources
-- Create & Analyze: these are Statsig-configured experiments. You can set up all of the configuration here, implement it through Statsig SDKs, and track results.
+- Assign & Analyze: these are Statsig-configured experiments. You can set up all of the configuration here, implement it through Statsig SDKs, and track results.
 
-![Create Experiment](https://user-images.githubusercontent.com/102695539/264101231-45446c24-f8a9-4ae9-8b44-fff320458615.png)
+![image](https://github.com/statsig-io/docs/assets/31516123/30954be6-7c2e-48f4-8072-f196349adbc3)
+
 
 Next, you'll give the experiment a name, specify your hypothesis, and pick the experiment from your exposure sources. You can sync sources
 if your exposure isn't loaded in the dropdown.
@@ -61,3 +62,8 @@ With all this done, press Save and Analyze to start the experiment. You'll be pr
 ![Schedule](https://user-images.githubusercontent.com/102695539/264101192-1626481b-3c45-4622-b7c8-1e9638436a8d.png)
 
 When you press load data, a Pulse analysis will start and you'll be taken to the results page.
+
+## Data Freshness
+For a Statsig-configured experiment where you're using the Statsig SDKs to generate exposures - the default  is that exposures are batched, deduplicated and written to your warehouse once a day. When you launch an experiment, it's helpful to be able to look at early metric deltas  (to detect crashes or catch an egregious bug). When Pulse is loaded soon after the experiment starts, we'll update exposures in your warehouse before computing Pulse results. This lets you see Pulse results as fresh as ~15m (assuming events and metrics come in at the same speed).
+
+Under the covers, if the # of exposures on an experiment is < 1 million we perform a just-in-time update of exposures in your warehouse when Pulse is loaded.

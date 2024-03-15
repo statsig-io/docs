@@ -1,0 +1,19 @@
+```ruby
+class DummyPersistentStorageAdapter < Statsig::Interfaces::IUserPersistentStorage
+  attr_accessor :store
+
+  def initialize
+    @store = {}
+  end
+
+  def load(key)
+    return nil unless @store&.key?(key)
+
+    @store[key]
+  end
+
+  def save(key, data)
+    @store[key] = data
+  end
+end
+```

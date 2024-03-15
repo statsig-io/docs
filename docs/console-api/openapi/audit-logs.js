@@ -17,8 +17,7 @@ module.exports = {
         "name": "STATSIG-API-KEY"
       }
     },
-    "schemas": {
-    }
+    "schemas": {}
   },
   "security": [
     {
@@ -158,6 +157,86 @@ module.exports = {
                         "all": "statsigapi.net/console/v1/audit_logs"
                       }
                     }
+                  },
+                  "?id=Daniel West": {
+                    "value": {
+                      "message": "Audit logs listed successfully.",
+                      "data": [
+                        {
+                          "id": "1x6btqfUDGLusBPZw63x32",
+                          "name": "Daniel West",
+                          "changeLog": "User logged in",
+                          "actionType": "user_login",
+                          "date": "Tue Dec 12 2023",
+                          "time": "19:39:42 GMT+0000 (Coordinated Universal Time)",
+                          "updatedBy": "Daniel West",
+                          "updatedByUserID": "35sClJFs8l0y5uRQhDwUDo",
+                          "modifierEmail": "danielwest@statsig.com",
+                          "changes": {},
+                          "tags": []
+                        },
+                        {
+                          "id": "5g3DEkViuRHvdeSX7FzDJQ",
+                          "name": "Daniel West",
+                          "changeLog": "User logged in",
+                          "actionType": "user_login",
+                          "date": "Tue Dec 12 2023",
+                          "time": "18:31:33 GMT+0000 (Coordinated Universal Time)",
+                          "updatedBy": "Daniel West",
+                          "updatedByUserID": "35sClJFs8l0y5uRQhDwUDo",
+                          "modifierEmail": "danielwest@statsig.com",
+                          "changes": {},
+                          "tags": []
+                        },
+                        {
+                          "id": "3d2GvfwsfXcYaC0cVCmgeL",
+                          "name": "Daniel West",
+                          "changeLog": "User logged in",
+                          "actionType": "user_login",
+                          "date": "Tue Dec 12 2023",
+                          "time": "02:01:49 GMT+0000 (Coordinated Universal Time)",
+                          "updatedBy": "Daniel West",
+                          "updatedByUserID": "35sClJFs8l0y5uRQhDwUDo",
+                          "modifierEmail": "danielwest@statsig.com",
+                          "changes": {},
+                          "tags": []
+                        },
+                        {
+                          "id": "2ORHJYB2kL5nMPNES5mtCl",
+                          "name": "Daniel West",
+                          "changeLog": "User logged in",
+                          "actionType": "user_login",
+                          "date": "Mon Dec 11 2023",
+                          "time": "18:30:29 GMT+0000 (Coordinated Universal Time)",
+                          "updatedBy": "Daniel West",
+                          "updatedByUserID": "35sClJFs8l0y5uRQhDwUDo",
+                          "modifierEmail": "danielwest@statsig.com",
+                          "changes": {},
+                          "tags": []
+                        },
+                        {
+                          "id": "6vjxStOnA23TmApETMbuKV",
+                          "name": "Daniel West",
+                          "changeLog": "User logged in",
+                          "actionType": "user_login",
+                          "date": "Mon Dec 11 2023",
+                          "time": "18:26:43 GMT+0000 (Coordinated Universal Time)",
+                          "updatedBy": "Daniel West",
+                          "updatedByUserID": "35sClJFs8l0y5uRQhDwUDo",
+                          "modifierEmail": "danielwest@statsig.com",
+                          "changes": {},
+                          "tags": []
+                        }
+                      ],
+                      "pagination": {
+                        "itemsPerPage": 5,
+                        "pageNumber": 1,
+                        "totalItems": 13,
+                        "nextPage": "/console/v1/audit_logs?id=Daniel West&sortKey=time&sortOrder=desc&latestID=25KPZcLjTY7AS1uZdBolPZ&page=2&limit=5",
+                        "previousPage": null,
+                        "all": "/console/v1/audit_logs"
+                      }
+                    }
                   }
                 }
               }
@@ -232,7 +311,21 @@ module.exports = {
             }
           }
         },
-        "description": ""
+        "description": "",
+        "requestBody": {
+          "content": {}
+        },
+        "operationId": "",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "id",
+            "description": "Filter by the 'name' field of the response entity (some for the examples below: test_gate_1, Daniel West, etc.)"
+          }
+        ]
       },
       "parameters": [
         {

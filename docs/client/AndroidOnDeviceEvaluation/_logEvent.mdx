@@ -1,0 +1,27 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
+StatsigUser user = new StatsigUser("user_id")
+Statsig.logEvent(user, "purchase", 2.99, Map.of("item_name", "remove_ads"));
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+val user = StatsigUser("user_id")
+Statsig.logEvent(user, "purchase", 2.99, Map.of("item_name" to "remove_ads"))
+```
+
+  </TabItem>
+</Tabs>
