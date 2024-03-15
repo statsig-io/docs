@@ -54,7 +54,7 @@ First, you'll need a simple Python web server. Flask is a lightweight WSGI web a
      statsig.initialize('your_server_secret_key')
      user = StatsigUser(
        user_id = "user123", 
-       email = "abc@statsig.com",
+       email = "test@statsig.com",
      )  # Customize user info as needed
      experiment = statsig.get_experiment(user, 'your_experiment_name')
      text_to_show = experiment.get('text', 'Hello, World!')
