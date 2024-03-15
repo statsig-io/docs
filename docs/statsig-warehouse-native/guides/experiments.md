@@ -68,4 +68,4 @@ For a Statsig-configured experiment where you're using the Statsig SDKs to gener
 
 Under the covers, if the # of exposures on an experiment is < 1 million we perform a just-in-time update of exposures in your warehouse when Pulse is loaded.
 
-Note : We only write to your warehouse exposure information that will be used for experiment analysis. We will not write exposures in pre-production environements or from overrides. 
+Note : We only write to your warehouse exposure information that will be used for experiment analysis. We will not write exposures in pre-production environements or from overrides since these are not used in analysis. 
