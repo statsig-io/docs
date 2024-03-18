@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CodeBlock from "@theme/CodeBlock";
 
-const { StatsigClient } = window.Statsig;
-
 let _client;
 function getClient() {
   if (_client) {
@@ -10,6 +8,8 @@ function getClient() {
   }
 
   const sdkDemoKey = "client-rfLvYGag3eyU0jYW5zcIJTQip7GXxSrhOFN69IGMjvq";
+  const { StatsigClient } = window.Statsig;
+
   _client = new StatsigClient(sdkDemoKey, {
     userID: "",
   });
