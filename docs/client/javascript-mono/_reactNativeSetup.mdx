@@ -11,19 +11,7 @@ Because storage in React Native is async (See [AsyncStorage](https://reactnative
 to load any cache values from disk. This warming performs some AsyncStorage.getItem operations that block the
 `StatsigProviderRN` from rendering.
 
-```typescript
-import { PrecomputedEvaluationsClient } from "@statsig/precomputed-evaluations";
-import {
-  StatsigProviderRN, // StatsigProvider specifically for RN
-  warmCachingFromAsyncStorage,
-} from "@statsig/react-native-bindings";
-
-const myStatsigClient = new PrecomputedEvaluationsClient(YOUR_CLIENT_KEY, {
-  userID: "a-user",
-});
-
-const warming = warmCachingFromAsyncStorage(myStatsigClient);
-```
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react-native/src/app/snippets/snippet-react-native-warming.tsx" />
 
 ### Render the StatsigProvider
 
