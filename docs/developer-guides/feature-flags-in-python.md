@@ -45,13 +45,14 @@ To integrate Statsig into your Python application, follow these steps:
 2. **Initialize Statsig in Your Application**:
    - Modify `app.py` to include initialization of the Statsig SDK and to check a feature flag. You will need a server secret key from Statsig, which you can get from the Statsig dashboard.
      ```python
-     import statsig
+     from statsig import statsig
+     from statsig.statsig_user import StatsigUser
 
      # Initialize Statsig with your server secret key
-     statsig.initialize(server_secret='your_server_secret_key')
+     statsig.initialize('your_server_secret_key')
 
      # Check a feature flag
-     if statsig.check_gate('your_feature_flag_name'):
+     if statsig.check_gate(StatsigUser("user-id"), 'your_feature_flag_name'):
          print("Feature Enabled: Hello, Statsig World!")
      else:
          print("Feature Disabled: Hello, World!")

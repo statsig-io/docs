@@ -15,9 +15,14 @@ Assuming you have created a segment of type ID List,
  
 ![image](https://user-images.githubusercontent.com/1315028/146095989-f0633201-1051-42f4-a1fb-4a8a7e55fcb7.png)
 
-You can add thousands of identifiers using this page in the Statsig console. There is a hard cap of 10m IDs across all ID list segments in a project.
-
 You can also sync in an ID list Segment from sources like an [Amplitude Cohorts](https://help.amplitude.com/hc/en-us/articles/4789303290011) or [Segment Audiences](https://docs.statsig.com/integrations/data-connectors/segment#syncing-statsig-segment-id-lists-with-segment-personas-audiences) or from a custom source using the [Console API](/console-api/segments)
+
+There is a hard limit of 10 million IDs across all ID Lists in your project.
+
+### Keep ID Lists Small(!)
+When an ID List is small (no more than 1000 IDs), it is synchronized in the same process with other feature gates, experiments, and conditional segments, which has high consistency and reliability. Once an ID List goes over 1000 in size, to scale efficiently and not negatively impact the other entities as the lists grow, there is a separate process to synchronize them. As a result, they are not downloaded in the main initialization process (in the initialization path of server SDKs, or the local evaluation version of our client SDKs), and change propagation takes longer.
+
+We recommend always keeping your ID Lists to be no more than 1000 IDs in each, unless you are okay with the caveats mentioned above.
 
 ### Very Large ID Lists(!)
 Evaluating ID Lists requires Statsig to sync down to each instance of the server SDK a copy of the ID List; and then keep syncing any changes made to this list. Having very large ID Lists will extend how long your servers take to initialize the Statsig SDK. Changes to the ID List are synced lazily without blocking other updates to your configuration in Statsig. Client SDKs work great with ID Lists - since it's only the results of the evaluation for a single user that are sent down to the Client SDK.
