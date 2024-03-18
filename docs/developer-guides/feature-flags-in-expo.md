@@ -17,7 +17,7 @@ Integrating feature flags into a React Native app using Expo and the Statsig SDK
 2. **Create a New Expo Project**:
    - In your terminal, navigate to the directory where you want to create your app and run:
      ```sh
-     expo init HelloWorldApp
+     npx expo init HelloWorldApp
      ```
    - Choose a template: For a simple start, select "blank" (a minimal app as clean as an empty canvas).
    - Navigate into your project directory:
@@ -28,9 +28,9 @@ Integrating feature flags into a React Native app using Expo and the Statsig SDK
 3. **Start Your Expo Project**:
    - Run the following command to start your project:
      ```sh
-     expo start
+      npx expo run:[ios|android]
      ```
-   - This will open up a browser window with the Expo developer tools. You can launch the app on an iOS simulator, Android emulator, or your physical device using the Expo Go app.
+   - This will package the app and run it on your development platform of choice (either ios or Android). The Statsig React Native SDK requires that you package your app, rather then just running it with "npx expo start".
 
 ### Step 2: Integrate Statsig for Feature Flags
 
