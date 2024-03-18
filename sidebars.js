@@ -428,6 +428,8 @@ module.exports = {
                 // "client/javascript-mono/IntegrationNextJs",
                 // "client/javascript-mono/IntegrationReact",
                 "client/javascript-mono/UsingEvaluationsDataAdapter",
+                "client/javascript-mono/ReactNativeUsage",
+                "client/javascript-mono/Examples",
               ],
             },
             "client/reactSDK",

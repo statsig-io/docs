@@ -176,7 +176,7 @@ module.exports = {
               {
                 tagName: "script",
                 attributes: {
-                  src: "https://cdn.jsdelivr.net/npm/@statsig/precomputed-evaluations@0.0.1-beta.8/build/precomputed-evaluations.min.js",
+                  src: "https://cdn.jsdelivr.net/npm/@statsig/js-client@0.0.1-beta.14/build/statsig-js-client.min.js",
                 },
               },
               {
