@@ -1,0 +1,46 @@
+---
+title: Using EvaluationsDataAdapter
+sidebar_label: EvaluationsDataAdapter
+slug: /client/javascript-sdk/using-evaluations-data-adapter
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+The `EvaluationsDataAdapter` is the default `StatsigDataAdapter` used by the `PrecomputedEvaluationsClient`.
+It handles caching and fetching values from Statsig. If required, you can create your own custom `StatsigDataAdapter`
+and provide it to the Statsig client via [StatsigOptions.dataAdapter](/client/javascript-sdk#statsig-options).
+
+## Overview
+
+### Synchronous Behavior (Cache)
+
+When callling `PrecomputedEvaluationsClient.initalizeSync`, the `EvaluationsDataAdapter` will load values
+from Cache and provide them to the client. The client will also call refresh in the background via
+`EvaluationsDataAdapter.getDataAsync`, leading to values lagging until
+the next time `initializeSync` or `updateUserSync` is called.
+
+### Asynchronous Behavior (Network)
+
+When callling `PrecomputedEvaluationsClient.initializeAsync`, the `EvaluationsDataAdapter` will load values
+from Cache and provide them to the client. The client will then block on a call to `EvaluationsDataAdapter.getDataAsync`,
+allowing the ability to await the latest values from Statsig.
+
+## Advanced Usage
+
+### Getting the Data Adapter
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-get-data-adapter.tsx" />
+
+### Bootstrapping
+
+Bootstrapping allows you to provide data for a given StatsigUser. This can be useful if you are are running a
+Statsig Server SDK on your backend and do not wish to make unneccesary network calls (See [statsig-node](/server/nodejsServerSDK#bootstrap)'s getClientInitializeResponse).
+This approach can also be useful if you are bundling values with your application and want to load from a local file.
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-bootstrap.tsx" />
+
+### Prefetching
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-prefetch.tsx" />

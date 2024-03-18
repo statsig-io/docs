@@ -47,10 +47,11 @@ module.exports = {
       },
       items: [
         {
-          type: 'html',
-          position: 'right',
-          value: '<button id="consoleCTA" onclick="window.open(\'https://console.statsig.com\', \'_blank\').focus(); window.statsig.logEvent({}, \'console_button_click\', window.location.pathname, {referrer: document && document.referrer,});">Get Started</button>',
-        }
+          type: "html",
+          position: "right",
+          value:
+            "<button id=\"consoleCTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus(); window.statsig.logEvent({}, 'console_button_click', window.location.pathname, {referrer: document && document.referrer,});\">Get Started</button>",
+        },
       ],
     },
     footer: {
@@ -90,8 +91,8 @@ module.exports = {
       copyright: `Copyright (c) ${new Date().getFullYear()} Statsig, Inc. | Thanks Docusaurus`,
     },
     prism: {
-      theme: require('prism-react-renderer/themes/github'),
-      darkTheme: require('prism-react-renderer/themes/dracula'),
+      theme: require("prism-react-renderer/themes/github"),
+      darkTheme: require("prism-react-renderer/themes/dracula"),
       additionalLanguages: [
         "swift",
         "java",
@@ -121,7 +122,7 @@ module.exports = {
           return {
             headTags: [
               {
-                tagName: 'script',
+                tagName: "script",
                 innerHTML: `
                   (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -131,19 +132,19 @@ module.exports = {
                   })(window,document,'script','dataLayer','GTM-NRDCWNF');
                 `,
                 attributes: {
-                  type: 'text/javascript',
+                  type: "text/javascript",
                 },
               },
               {
-                tagName: 'script',
+                tagName: "script",
                 attributes: {
                   async: true,
                   defer: true,
-                  src: 'https://www.googletagmanager.com/gtag/js?id=G-EM5RHE1RHW',
+                  src: "https://www.googletagmanager.com/gtag/js?id=G-EM5RHE1RHW",
                 },
               },
               {
-                tagName: 'script',
+                tagName: "script",
                 innerHTML: `
                   window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);}
@@ -151,7 +152,7 @@ module.exports = {
                   gtag('config', 'G-EM5RHE1RHW');
                 `,
                 attributes: {
-                  type: 'text/javascript',
+                  type: "text/javascript",
                 },
               },
               {
@@ -170,6 +171,12 @@ module.exports = {
                 tagName: "script",
                 attributes: {
                   src: "https://cdn.jsdelivr.net/npm/statsig-js-local-eval@1.0.0/build/statsig-prod-web-sdk.min.js",
+                },
+              },
+              {
+                tagName: "script",
+                attributes: {
+                  src: "https://cdn.jsdelivr.net/npm/@statsig/precomputed-evaluations@0.0.1-beta.8/build/precomputed-evaluations.min.js",
                 },
               },
               {
@@ -224,7 +231,7 @@ module.exports = {
           /server\/_[^\/]*\.mdx/i,
           /client\/(Android|AndroidOnDeviceEvaluation|Dart|React|ReactNative|Roku|SwiftOnDeviceEval|Templates|Unity|dotnet|iOS|js|jslocal)\/?/i,
           /server\/(Templates|java|node|cpp|dotnet|erlang|go|php|python|ruby|rust)\/?/i,
-        ]
+        ],
       },
     ],
   ],
