@@ -27,7 +27,7 @@ You need to grant some permissions for Statsig from your AWS console in order fo
    (**A**) IAM Role
       - In your AWS IAM Dashboard, select the Roles page under the Access Management tab
       - Create a new Role
-      - Under the Trust Relationships tab of this newly created Role, edit the trust policy to include the AssumeRole action for the provided Statsig Service Account:
+      - Under the Trust Relationships tab of this newly created Role, edit the trust policy to include the Assume Role action for the provided Statsig Service Account:
          ```
          {
             "Version": "2012-10-17",
