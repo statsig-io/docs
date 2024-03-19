@@ -8,7 +8,9 @@ function getClient() {
   }
 
   const sdkDemoKey = "client-rfLvYGag3eyU0jYW5zcIJTQip7GXxSrhOFN69IGMjvq";
-  _client = new __STATSIG__.PrecomputedEvaluationsClient(sdkDemoKey, {
+  const { StatsigClient } = window.Statsig;
+
+  _client = new StatsigClient(sdkDemoKey, {
     userID: "",
   });
 
