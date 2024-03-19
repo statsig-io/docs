@@ -45,7 +45,14 @@ module.exports = {
         srcDark: "img/logo_white.svg",
         href: "https://statsig.com",
       },
-      items: [],
+      items: [
+        {
+          type: "html",
+          position: "right",
+          value:
+            "<button id=\"consoleCTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus(); window.statsig.logEvent({}, 'console_button_click', window.location.pathname, {referrer: document && document.referrer,});\">Get Started</button>",
+        },
+      ],
     },
     footer: {
       style: "dark",
@@ -84,6 +91,8 @@ module.exports = {
       copyright: `Copyright (c) ${new Date().getFullYear()} Statsig, Inc. | Thanks Docusaurus`,
     },
     prism: {
+      theme: require("prism-react-renderer/themes/github"),
+      darkTheme: require("prism-react-renderer/themes/dracula"),
       additionalLanguages: [
         "swift",
         "java",
@@ -100,15 +109,6 @@ module.exports = {
     },
   },
   plugins: [
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        hashed: true,
-        indexBlog: false,
-        indexDocs: true,
-        docsRouteBasePath: "/",
-      },
-    ],
     function statsig() {
       const isProd = process.env.NODE_ENV === "production";
       const tier = isProd ? "production" : "development";
@@ -121,6 +121,40 @@ module.exports = {
         injectHtmlTags() {
           return {
             headTags: [
+              {
+                tagName: "script",
+                innerHTML: `
+                  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                  'https://www.googletagmanager.com/gtm.js?id='+i+dl;var n=d.querySelector('[nonce]');
+                  n&&j.setAttribute('nonce',n.nonce||n.getAttribute('nonce'));f.parentNode.insertBefore(j,f);
+                  })(window,document,'script','dataLayer','GTM-NRDCWNF');
+                `,
+                attributes: {
+                  type: "text/javascript",
+                },
+              },
+              {
+                tagName: "script",
+                attributes: {
+                  async: true,
+                  defer: true,
+                  src: "https://www.googletagmanager.com/gtag/js?id=G-EM5RHE1RHW",
+                },
+              },
+              {
+                tagName: "script",
+                innerHTML: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', 'G-EM5RHE1RHW');
+                `,
+                attributes: {
+                  type: "text/javascript",
+                },
+              },
               {
                 tagName: "script",
                 attributes: {
@@ -137,6 +171,12 @@ module.exports = {
                 tagName: "script",
                 attributes: {
                   src: "https://cdn.jsdelivr.net/npm/statsig-js-local-eval@1.0.0/build/statsig-prod-web-sdk.min.js",
+                },
+              },
+              {
+                tagName: "script",
+                attributes: {
+                  src: "https://cdn.jsdelivr.net/npm/@statsig/js-client@0.0.1-beta.14/build/statsig-js-client.min.js",
                 },
               },
               {
@@ -174,6 +214,23 @@ module.exports = {
             to: "/integrations/terraform/introduction",
             from: "/integrations/terraform",
           },
+        ],
+      },
+    ],
+  ],
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        indexBlog: false,
+        indexDocs: true,
+        docsRouteBasePath: "/",
+        ignoreFiles: [
+          /client\/_[^\/]*\.mdx/i,
+          /server\/_[^\/]*\.mdx/i,
+          /client\/(Android|AndroidOnDeviceEvaluation|Dart|React|ReactNative|Roku|SwiftOnDeviceEval|Templates|Unity|dotnet|iOS|js|jslocal)\/?/i,
+          /server\/(Templates|java|node|cpp|dotnet|erlang|go|php|python|ruby|rust)\/?/i,
         ],
       },
     ],

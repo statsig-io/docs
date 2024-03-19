@@ -48,6 +48,19 @@ module.exports = {
                   "description": {
                     "type": "string",
                     "description": "A helpful summary of what this layer does."
+                  },
+                  "targetApps": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "cwnq61sn0qnt0"
+                    },
+                    "description": "List of target apps",
+                    "items": {
+                      "x-stoplight": {
+                        "id": "czilu7axb3foh"
+                      },
+                      "type": "string"
+                    }
                   }
                 }
               },
@@ -85,7 +98,8 @@ module.exports = {
                   },
                   "properties": {
                     "message": {
-                      "$ref": "../models/message.json"
+                      "type": "string",
+                      "example": "Layer created successfully."
                     },
                     "data": {
                       "$ref": "../models/layer.json"
@@ -103,20 +117,7 @@ module.exports = {
                     "rules": []
                   }
                 },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "message": "Layer created successfully.",
-                      "data": {
-                        "id": "a_layer",
-                        "description": "helpful summary of what this layer does",
-                        "idType": "userID",
-                        "isImplicitLayer": false,
-                        "parameters": []
-                      }
-                    }
-                  }
-                }
+                "examples": {}
               }
             }
           },
@@ -255,7 +256,8 @@ module.exports = {
                   },
                   "properties": {
                     "message": {
-                      "$ref": "../models/message.json"
+                      "type": "string",
+                      "example": "Layers listed successfully."
                     },
                     "data": {
                       "type": "array",
@@ -265,33 +267,7 @@ module.exports = {
                     }
                   }
                 },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "message": "Layers listed successfully.",
-                      "data": [
-                        {
-                          "id": "statsig::a_experiment_layer",
-                          "isImplicitLayer": true,
-                          "description": "",
-                          "parameters": []
-                        },
-                        {
-                          "id": "a_layer",
-                          "isImplicitLayer": false,
-                          "description": "a description",
-                          "parameters": [
-                            {
-                              "name": "a_parameter",
-                              "type": "boolean",
-                              "defaultValue": true
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  }
-                }
+                "examples": {}
               }
             }
           },
@@ -349,6 +325,19 @@ module.exports = {
                     "type": "array",
                     "items": {
                       "$ref": "../models/layer_parameter.json"
+                    }
+                  },
+                  "targetApps": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "61tti5i7peynn"
+                    },
+                    "description": "List of target apps",
+                    "items": {
+                      "x-stoplight": {
+                        "id": "cgrbc3gkct5x2"
+                      },
+                      "type": "string"
                     }
                   }
                 }
@@ -420,7 +409,8 @@ module.exports = {
                   },
                   "properties": {
                     "message": {
-                      "$ref": "../models/message.json"
+                      "type": "string",
+                      "example": "Layer updated successfully."
                     },
                     "data": {
                       "$ref": "../models/layer.json"
@@ -462,48 +452,7 @@ module.exports = {
                     ]
                   }
                 },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "message": "Layer updated successfully.",
-                      "data": {
-                        "id": "a_layer",
-                        "description": "new description",
-                        "idType": "userID",
-                        "isImplicitLayer": false,
-                        "parameters": [
-                          {
-                            "name": "a_parameter",
-                            "type": "boolean",
-                            "defaultValue": true
-                          },
-                          {
-                            "name": "b_parameter",
-                            "type": "number",
-                            "defaultValue": 123
-                          },
-                          {
-                            "name": "c_parameter",
-                            "type": "string",
-                            "defaultValue": "this is a string"
-                          },
-                          {
-                            "name": "d_parameter",
-                            "type": "array",
-                            "defaultValue": []
-                          },
-                          {
-                            "name": "e_parameter",
-                            "type": "object",
-                            "defaultValue": {
-                              "key": "value"
-                            }
-                          }
-                        ]
-                      }
-                    }
-                  }
-                }
+                "examples": {}
               }
             }
           },
@@ -642,7 +591,8 @@ module.exports = {
                   },
                   "properties": {
                     "message": {
-                      "$ref": "../models/message.json"
+                      "type": "string",
+                      "example": "Layer deleted successfully."
                     }
                   }
                 },
@@ -787,32 +737,15 @@ module.exports = {
                   },
                   "properties": {
                     "message": {
-                      "$ref": "../models/message.json"
+                      "type": "string",
+                      "example": "Layer read successfully."
                     },
                     "data": {
                       "$ref": "../models/layer.json"
                     }
                   }
                 },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "message": "Layer read successfully.",
-                      "data": {
-                        "id": "a_layer",
-                        "isImplicitLayer": false,
-                        "description": "a helpful description",
-                        "parameters": [
-                          {
-                            "name": "a_parameter",
-                            "type": "string",
-                            "defaultValue": "return this value"
-                          }
-                        ]
-                      }
-                    }
-                  }
-                }
+                "examples": {}
               }
             }
           },
@@ -924,55 +857,15 @@ module.exports = {
                   },
                   "properties": {
                     "message": {
-                      "$ref": "../models/message.json"
+                      "type": "string",
+                      "example": "Layer updated successfully."
                     },
                     "data": {
                       "$ref": "../models/layer.json"
                     }
                   }
                 },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "message": "Layer updated successfully.",
-                      "data": {
-                        "id": "a_layer",
-                        "description": "new description",
-                        "idType": "userID",
-                        "isImplicitLayer": false,
-                        "parameters": [
-                          {
-                            "name": "a_parameter",
-                            "type": "boolean",
-                            "defaultValue": true
-                          },
-                          {
-                            "name": "b_parameter",
-                            "type": "number",
-                            "defaultValue": 123
-                          },
-                          {
-                            "name": "c_parameter",
-                            "type": "string",
-                            "defaultValue": "this is a string"
-                          },
-                          {
-                            "name": "d_parameter",
-                            "type": "array",
-                            "defaultValue": []
-                          },
-                          {
-                            "name": "e_parameter",
-                            "type": "object",
-                            "defaultValue": {
-                              "key": "value"
-                            }
-                          }
-                        ]
-                      }
-                    }
-                  }
-                }
+                "examples": {}
               }
             }
           }

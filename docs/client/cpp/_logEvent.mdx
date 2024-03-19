@@ -1,0 +1,9 @@
+```cpp
+std::unordered_map<std::string, std::string> metadata{
+    { "price", "9.99" },
+    { "item_name", "some_great_product" }
+};
+
+StatsigEvent event("add_to_cart", "SKU_12345", metadata);
+StatsigClient::Shared().LogEvent(event);
+```

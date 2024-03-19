@@ -1,7 +1,7 @@
 module.exports = {
   "openapi": "3.0.0",
   "x-stoplight": {
-    "id": "0f7f8wu4j7re3"
+    "id": "xsirst36b2hjz"
   },
   "info": {
     "title": "https://statsigapi.net/console/v1",
@@ -291,12 +291,7 @@ module.exports = {
                 "properties": {
                   "role": {
                     "type": "string",
-                    "enum": [
-                      "read_only",
-                      "member",
-                      "admin"
-                    ],
-                    "description": "update user's role"
+                    "description": "update user's role. Can be one of 'Admin', 'Read Only', 'Member', or the name of any custom role."
                   },
                   "firstName": {
                     "type": "string",
@@ -557,11 +552,7 @@ module.exports = {
                 "properties": {
                   "role": {
                     "type": "string",
-                    "enum": [
-                      "read_only",
-                      "member",
-                      "admin"
-                    ]
+                    "description": "Can be one of 'Admin', 'Read Only', 'Member', or the name of any custom role."
                   },
                   "emails": {
                     "type": "array",
@@ -588,6 +579,1218 @@ module.exports = {
           "description": "Invited emails will be able to join the project with a selected role apon signing in. \nIf your project is in an organization, only email domains that match the organization's domain may be invited to the project. "
         }
       }
+    },
+    "/users/teams": {
+      "get": {
+        "summary": "List Teams",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Teams listed successfully.",
+                      "data": [
+                        {
+                          "name": "123123",
+                          "members": [],
+                          "admins": [],
+                          "defaultGateMetrics": [
+                            {
+                              "name": "1236",
+                              "type": "user_warehouse"
+                            }
+                          ],
+                          "defaultExperimentPrimaryMetrics": [
+                            {
+                              "name": "1236",
+                              "type": "user_warehouse"
+                            }
+                          ],
+                          "defaultExperimentSecondaryMetrics": [
+                            {
+                              "name": "1236",
+                              "type": "user_warehouse"
+                            }
+                          ],
+                          "defaultHoldoutMetrics": [
+                            {
+                              "name": "1236",
+                              "type": "user_warehouse"
+                            }
+                          ],
+                          "changeTeamConfigs": "anyone",
+                          "reviewApproval": "team_only",
+                          "defaultTargetApplications": [
+                            "react-client"
+                          ]
+                        },
+                        {
+                          "name": "12312",
+                          "members": [
+                            {
+                              "email": "nick@statsig.com",
+                              "firstName": "Nick",
+                              "lastName": "Jiang",
+                              "role": "Owner"
+                            }
+                          ],
+                          "admins": [
+                            {
+                              "email": "nick@statsig.com",
+                              "firstName": "Nick",
+                              "lastName": "Jiang",
+                              "role": "Owner"
+                            }
+                          ],
+                          "defaultGateMetrics": [],
+                          "defaultExperimentPrimaryMetrics": [],
+                          "defaultExperimentSecondaryMetrics": [],
+                          "defaultHoldoutMetrics": [],
+                          "changeTeamConfigs": "team_only",
+                          "reviewApproval": "team_only",
+                          "defaultTargetApplications": []
+                        },
+                        {
+                          "name": "1231231",
+                          "members": [
+                            {
+                              "email": "nick@statsig.com",
+                              "firstName": "Nick",
+                              "lastName": "Jiang",
+                              "role": "Owner"
+                            }
+                          ],
+                          "admins": [
+                            {
+                              "email": "nick@statsig.com",
+                              "firstName": "Nick",
+                              "lastName": "Jiang",
+                              "role": "Owner"
+                            }
+                          ],
+                          "defaultGateMetrics": [],
+                          "defaultExperimentPrimaryMetrics": [],
+                          "defaultExperimentSecondaryMetrics": [],
+                          "defaultHoldoutMetrics": [],
+                          "changeTeamConfigs": "anyone",
+                          "reviewApproval": "team_only",
+                          "defaultTargetApplications": []
+                        }
+                      ]
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "members": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/User"
+                            }
+                          },
+                          "admins": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/User"
+                            }
+                          },
+                          "defaultGateMetrics": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "defaultExperimentPrimaryMetrics": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "defaultExperimentSecondaryMetrics": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "defaultHoldoutMetrics": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "changeTeamConfigs": {
+                            "type": "string"
+                          },
+                          "reviewApproval": {
+                            "type": "string"
+                          },
+                          "defaultTargetApplications": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Teams listed successfully.",
+                      "data": [
+                        {
+                          "name": "Team name",
+                          "members": [
+                            {
+                              "email": "john@gmail.com",
+                              "firstName": "John",
+                              "lastName": "Adams",
+                              "role": "Owner"
+                            }
+                          ],
+                          "admins": [
+                            {
+                              "email": "john@gmail.com",
+                              "firstName": "John",
+                              "lastName": "Adams",
+                              "role": "Owner"
+                            }
+                          ],
+                          "defaultGateMetrics": [
+                            {
+                              "name": "clicks",
+                              "type": "event_count"
+                            }
+                          ],
+                          "defaultExperimentPrimaryMetrics": [
+                            {
+                              "name": "clicks",
+                              "type": "event_count"
+                            }
+                          ],
+                          "defaultExperimentSecondaryMetrics": [
+                            {
+                              "name": "clicks",
+                              "type": "event_count"
+                            }
+                          ],
+                          "defaultHoldoutMetrics": [
+                            {
+                              "name": "clicks",
+                              "type": "event_count"
+                            }
+                          ],
+                          "changeTeamConfigs": "anyone",
+                          "reviewApproval": "team_only",
+                          "defaultTargetApplications": [
+                            "react-client"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-users-teams",
+        "x-stoplight": {
+          "id": "o3vglh2xh70tr"
+        },
+        "tags": [
+          "Teams (Enterprise only)"
+        ]
+      },
+      "post": {
+        "summary": "Create Team",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Team updated successfully.",
+                      "data": {
+                        "name": "newteam",
+                        "members": [
+                          {
+                            "email": "nick@statsig.com",
+                            "firstName": "Nick",
+                            "lastName": "Jiang",
+                            "role": "Owner"
+                          }
+                        ],
+                        "admins": [
+                          {
+                            "email": "nick@statsig.com",
+                            "firstName": "Nick",
+                            "lastName": "Jiang",
+                            "role": "Owner"
+                          }
+                        ],
+                        "defaultGateMetrics": [
+                          {
+                            "name": "1236",
+                            "type": "user_warehouse"
+                          }
+                        ],
+                        "defaultExperimentPrimaryMetrics": [
+                          {
+                            "name": "1236",
+                            "type": "user_warehouse"
+                          }
+                        ],
+                        "defaultExperimentSecondaryMetrics": [
+                          {
+                            "name": "1236",
+                            "type": "user_warehouse"
+                          }
+                        ],
+                        "defaultHoldoutMetrics": [
+                          {
+                            "name": "1236",
+                            "type": "user_warehouse"
+                          }
+                        ],
+                        "changeTeamConfigs": "anyone",
+                        "reviewApproval": "team_only",
+                        "defaultTargetApplications": [
+                          "react-client"
+                        ]
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "members": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "email": {
+                                "type": "string"
+                              },
+                              "firstName": {
+                                "type": "string"
+                              },
+                              "lastName": {
+                                "type": "string"
+                              },
+                              "role": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "admins": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "email": {
+                                "type": "string"
+                              },
+                              "firstName": {
+                                "type": "string"
+                              },
+                              "lastName": {
+                                "type": "string"
+                              },
+                              "role": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "defaultGateMetrics": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "defaultExperimentPrimaryMetrics": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "defaultExperimentSecondaryMetrics": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "defaultExperimentSecondaryMetrics - copy": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "defaultHoldoutMetrics": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "changeTeamConfigs": {
+                          "type": "string",
+                          "enum": [
+                            "anyone",
+                            "team_only"
+                          ]
+                        },
+                        "reviewApproval": {
+                          "type": "string",
+                          "enum": [
+                            "anyone",
+                            "team_only",
+                            "admin_only"
+                          ]
+                        },
+                        "defaultTargetApplications": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Team created successfully.",
+                      "data": {
+                        "name": "new team",
+                        "members": [
+                          {
+                            "email": "john@gmail.com",
+                            "firstName": "John",
+                            "lastName": "Adams",
+                            "role": "Owner"
+                          }
+                        ],
+                        "admins": [
+                          {
+                            "email": "john@gmail.com",
+                            "firstName": "John",
+                            "lastName": "Adams",
+                            "role": "Owner"
+                          }
+                        ],
+                        "defaultGateMetrics": [
+                          {
+                            "name": "clicks",
+                            "type": "event_count"
+                          }
+                        ],
+                        "defaultExperimentPrimaryMetrics": [
+                          {
+                            "name": "clicks",
+                            "type": "event_count"
+                          }
+                        ],
+                        "defaultExperimentSecondaryMetrics": [
+                          {
+                            "name": "clicks",
+                            "type": "event_count"
+                          }
+                        ],
+                        "defaultHoldoutMetrics": [
+                          {
+                            "name": "clicks",
+                            "type": "event_count"
+                          }
+                        ],
+                        "changeTeamConfigs": "anyone",
+                        "reviewApproval": "team_only",
+                        "defaultTargetApplications": [
+                          "react-client"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "post-users-teams",
+        "x-stoplight": {
+          "id": "fhl5m5r7j1lhq"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "Example 1": {
+                    "name": "newteam",
+                    "members": [
+                      "nick@statsig.com"
+                    ],
+                    "admins": [
+                      "nick@statsig.com"
+                    ],
+                    "defaultGateMetrics": [
+                      {
+                        "name": "1236",
+                        "type": "user_warehouse"
+                      }
+                    ],
+                    "defaultExperimentPrimaryMetrics": [
+                      {
+                        "name": "1236",
+                        "type": "user_warehouse"
+                      }
+                    ],
+                    "defaultExperimentSecondaryMetrics": [
+                      {
+                        "name": "1236",
+                        "type": "user_warehouse"
+                      }
+                    ],
+                    "defaultHoldoutMetrics": [
+                      {
+                        "name": "1236",
+                        "type": "user_warehouse"
+                      }
+                    ],
+                    "changeTeamConfigs": "anyone",
+                    "reviewApproval": "team_only",
+                    "defaultTargetApplications": [
+                      "react-client"
+                    ]
+                  }
+                },
+                "required": [
+                  "name",
+                  "members",
+                  "admins",
+                  "defaultHoldoutMetrics",
+                  "changeTeamConfigs",
+                  "reviewApproval",
+                  "defaultTargetApplications"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "members": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "admins": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "defaultGateMetrics": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "name",
+                        "type"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "defaultExperimentSecondaryMetrics": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "name",
+                        "type"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "defaultExperimentPrimaryMetrics": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "name"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "defaultHoldoutMetrics": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "name",
+                        "type"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "changeTeamConfigs": {
+                    "type": "string",
+                    "enum": [
+                      "anyone",
+                      "team_only"
+                    ]
+                  },
+                  "reviewApproval": {
+                    "type": "string",
+                    "enum": [
+                      "anyone",
+                      "team_only",
+                      "admin_only"
+                    ]
+                  },
+                  "defaultTargetApplications": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "name": "new team",
+                    "members": [
+                      "john@gmail.com"
+                    ],
+                    "admins": [
+                      "john@gmail.com"
+                    ],
+                    "defaultGateMetrics": [
+                      {
+                        "name": "clicks",
+                        "type": "event_count"
+                      }
+                    ],
+                    "defaultExperimentPrimaryMetrics": [
+                      {
+                        "name": "clicks",
+                        "type": "event_count"
+                      }
+                    ],
+                    "defaultExperimentSecondaryMetrics": [
+                      {
+                        "name": "clicks",
+                        "type": "event_count"
+                      }
+                    ],
+                    "defaultHoldoutMetrics": [
+                      {
+                        "name": "clicks",
+                        "type": "event_count"
+                      }
+                    ],
+                    "changeTeamConfigs": "anyone",
+                    "reviewApproval": "team_only",
+                    "defaultTargetApplications": [
+                      "react-client"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Teams (Enterprise only)"
+        ]
+      }
+    },
+    "/users/teams/{team_name}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "team_name",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "team_name",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "patch": {
+        "summary": "Partially Update Team",
+        "tags": [
+          "Teams (Enterprise only)"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Team created successfully.",
+                      "data": {
+                        "name": "new team",
+                        "members": [
+                          {
+                            "email": "john@gmail.com",
+                            "firstName": "John",
+                            "lastName": "Adams",
+                            "role": "Owner"
+                          }
+                        ],
+                        "admins": [
+                          {
+                            "email": "john@gmail.com",
+                            "firstName": "John",
+                            "lastName": "Adams",
+                            "role": "Owner"
+                          }
+                        ],
+                        "defaultGateMetrics": [
+                          {
+                            "name": "clicks",
+                            "type": "event_count"
+                          }
+                        ],
+                        "defaultExperimentPrimaryMetrics": [
+                          {
+                            "name": "clicks",
+                            "type": "event_count"
+                          }
+                        ],
+                        "defaultExperimentSecondaryMetrics": [
+                          {
+                            "name": "clicks",
+                            "type": "event_count"
+                          }
+                        ],
+                        "defaultHoldoutMetrics": [
+                          {
+                            "name": "clicks",
+                            "type": "event_count"
+                          }
+                        ],
+                        "changeTeamConfigs": "anyone",
+                        "reviewApproval": "team_only",
+                        "defaultTargetApplications": [
+                          "react-client"
+                        ]
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "members": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/User"
+                          }
+                        },
+                        "admins": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/User"
+                          }
+                        },
+                        "defaultGateMetrics": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "defaultExperimentPrimaryMetrics": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "defaultExperimentSecondaryMetrics": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "defaultHoldoutMetrics": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "changeTeamConfigs": {
+                          "type": "string",
+                          "enum": [
+                            "anyone",
+                            "team_only"
+                          ]
+                        },
+                        "reviewApproval": {
+                          "type": "string",
+                          "enum": [
+                            "anyone",
+                            "team_only",
+                            "admin_only"
+                          ]
+                        },
+                        "defaultTargetApplications": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Team updated successfully.",
+                      "data": {
+                        "name": "new team",
+                        "members": [
+                          {
+                            "email": "john@gmail.com",
+                            "firstName": "John",
+                            "lastName": "Adams",
+                            "role": "Owner"
+                          }
+                        ],
+                        "admins": [
+                          {
+                            "email": "john@gmail.com",
+                            "firstName": "John",
+                            "lastName": "Adams",
+                            "role": "Owner"
+                          }
+                        ],
+                        "defaultGateMetrics": [
+                          {
+                            "name": "clicks",
+                            "type": "event_count"
+                          }
+                        ],
+                        "defaultExperimentPrimaryMetrics": [
+                          {
+                            "name": "clicks",
+                            "type": "event_count"
+                          }
+                        ],
+                        "defaultExperimentSecondaryMetrics": [
+                          {
+                            "name": "clicks",
+                            "type": "event_count"
+                          }
+                        ],
+                        "defaultHoldoutMetrics": [
+                          {
+                            "name": "clicks",
+                            "type": "event_count"
+                          }
+                        ],
+                        "changeTeamConfigs": "anyone",
+                        "reviewApproval": "team_only",
+                        "defaultTargetApplications": [
+                          "react-client"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "patch-users-teams-team_name",
+        "x-stoplight": {
+          "id": "d0kzinv05v33d"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "Example 1": {
+                    "message": "Team creaed successfully.",
+                    "data": {
+                      "name": "new team",
+                      "members": [
+                        {
+                          "email": "john@gmail.com",
+                          "firstName": "John",
+                          "lastName": "Adams",
+                          "role": "Owner"
+                        }
+                      ],
+                      "admins": [
+                        {
+                          "email": "john@gmail.com",
+                          "firstName": "John",
+                          "lastName": "Adams",
+                          "role": "Owner"
+                        }
+                      ],
+                      "defaultGateMetrics": [
+                        {
+                          "name": "clicks",
+                          "type": "event_count"
+                        }
+                      ],
+                      "defaultExperimentPrimaryMetrics": [
+                        {
+                          "name": "clicks",
+                          "type": "event_count"
+                        }
+                      ],
+                      "defaultExperimentSecondaryMetrics": [
+                        {
+                          "name": "clicks",
+                          "type": "event_count"
+                        }
+                      ],
+                      "defaultHoldoutMetrics": [
+                        {
+                          "name": "clicks",
+                          "type": "event_count"
+                        }
+                      ],
+                      "changeTeamConfigs": "anyone",
+                      "reviewApproval": "team_only",
+                      "defaultTargetApplications": [
+                        "react-client"
+                      ]
+                    }
+                  }
+                },
+                "properties": {
+                  "message": {
+                    "type": "string"
+                  },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "members": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/User"
+                        }
+                      },
+                      "admins": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/User"
+                        }
+                      },
+                      "defaultGateMetrics": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "defaultExperimentPrimaryMetrics": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "defaultExperimentSecondaryMetrics": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "defaultHoldoutMetrics": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "changeTeamConfigs": {
+                        "type": "string",
+                        "enum": [
+                          "anyone",
+                          "team_only"
+                        ]
+                      },
+                      "reviewApproval": {
+                        "type": "string",
+                        "enum": [
+                          "anyone",
+                          "team_only",
+                          "admin_only"
+                        ]
+                      },
+                      "defaultTargetApplications": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "name": "new team",
+                    "members": [
+                      "john@gmail.com"
+                    ],
+                    "admins": [
+                      "john@gmail.com"
+                    ],
+                    "defaultGateMetrics": [
+                      {
+                        "name": "clicks",
+                        "type": "event_count"
+                      }
+                    ],
+                    "defaultExperimentPrimaryMetrics": [
+                      {
+                        "name": "clicks",
+                        "type": "event_count"
+                      }
+                    ],
+                    "defaultExperimentSecondaryMetrics": [
+                      {
+                        "name": "clicks",
+                        "type": "event_count"
+                      }
+                    ],
+                    "defaultHoldoutMetrics": [
+                      {
+                        "name": "clicks",
+                        "type": "event_count"
+                      }
+                    ],
+                    "changeTeamConfigs": "anyone",
+                    "reviewApproval": "team_only",
+                    "defaultTargetApplications": [
+                      "react-client"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -595,9 +1798,17 @@ module.exports = {
       "User": {
         "title": "User",
         "x-stoplight": {
-          "id": "od759i65teq1z"
+          "id": "f6r4g3anpc9iv"
         },
         "type": "object",
+        "x-examples": {
+          "example-1": {
+            "email": "john@gmail.com",
+            "firstName": "John",
+            "lastName": "Adams",
+            "role": "read_only"
+          }
+        },
         "properties": {
           "email": {
             "type": "string",
@@ -613,20 +1824,7 @@ module.exports = {
           },
           "role": {
             "type": "string",
-            "enum": [
-              "read_only",
-              "member",
-              "admin"
-            ],
             "example": "member"
-          }
-        },
-        "x-examples": {
-          "example-1": {
-            "email": "john@gmail.com",
-            "firstName": "John",
-            "lastName": "Adams",
-            "role": "read_only"
           }
         }
       }
@@ -670,11 +1868,6 @@ module.exports = {
                     },
                     "role": {
                       "type": "string",
-                      "enum": [
-                        "read_only",
-                        "member",
-                        "admin"
-                      ],
                       "example": "member"
                     }
                   }

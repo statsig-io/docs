@@ -1,7 +1,7 @@
 module.exports = {
   "openapi": "3.0.0",
   "x-stoplight": {
-    "id": "j1lrgeicxt78f"
+    "id": "7rs45s44t9wib"
   },
   "info": {
     "title": "https://statsigapi.net/console/v1",
@@ -22,10 +22,10 @@ module.exports = {
     },
     "requestBodies": {},
     "schemas": {
-      "TargetAppListItem": {
-        "title": "TargetAppListItem",
+      "TargetApp": {
+        "title": "TargetApp",
         "x-stoplight": {
-          "id": "21727a47q5vc6"
+          "id": "qb59m781tauwf"
         },
         "type": "object",
         "x-examples": {
@@ -40,6 +40,13 @@ module.exports = {
               "id": "is2bm9pmi5o54"
             },
             "description": "Name of the target app"
+          },
+          "id": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "sbgkzkwzq1763"
+            },
+            "description": "ID of target app"
           }
         },
         "required": [
@@ -73,7 +80,7 @@ module.exports = {
                       "type": "array",
                       "description": "Array of existing holdouts",
                       "items": {
-                        "$ref": "#/components/schemas/TargetAppListItem"
+                        "$ref": "#/components/schemas/TargetApp"
                       }
                     }
                   },
@@ -217,17 +224,17 @@ module.exports = {
           }
         },
         "x-stoplight": {
-          "id": "1bw1w9pyqk809"
+          "id": "9cruq6ob5vkhh"
         },
         "tags": [
           "Target Apps"
         ]
       },
-      "post": {
-        "summary": "Bulk Add Target App",
+      "patch": {
+        "summary": "Bulk Assign Target App",
         "responses": {
           "201": {
-            "description": "Created",
+            "description": "Updated",
             "headers": {},
             "content": {
               "application/json": {
@@ -387,10 +394,23 @@ module.exports = {
                     "x-stoplight": {
                       "id": "4h0j040vqis6q"
                     },
-                    "description": "Experiments IDs assigned new target appIDs ",
+                    "description": "Experiments IDs assigned new target appIDs",
                     "items": {
                       "x-stoplight": {
                         "id": "qesw17qmqkgfo"
+                      },
+                      "type": "string"
+                    }
+                  },
+                  "dynamicConfigs": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "xk3nwr7uzqo7o"
+                    },
+                    "description": "Dynamic Config IDs assigned new target appIDs",
+                    "items": {
+                      "x-stoplight": {
+                        "id": "cyw7q969e3bl3"
                       },
                       "type": "string"
                     }
@@ -404,14 +424,17 @@ module.exports = {
                 "example-1": {
                   "value": {
                     "targetApps": [
-                      "App to add",
-                      "Second app to add"
+                      "Target App 1",
+                      "Target App 2"
                     ],
                     "gates": [
-                      "gate to update"
+                      "gate to assign"
+                    ],
+                    "dynamicConfigs": [
+                      "dynamic config to assign"
                     ],
                     "experiments": [
-                      "experiment to update"
+                      "experiment to assign"
                     ]
                   }
                 }
@@ -420,14 +443,172 @@ module.exports = {
           }
         },
         "x-stoplight": {
-          "id": "9pi33tt755h2t"
+          "id": "q3elz42pbferd"
         },
-        "description": "Add a selected target apps to multiple configs at once",
+        "description": "Assign configs to multiple target apps at once",
         "tags": [
           "Target Apps"
         ]
       },
-      "parameters": []
+      "parameters": [],
+      "post": {
+        "summary": "Create Target App",
+        "tags": [
+          "Target Apps"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "x-stoplight": {
+                        "id": "gc7nk1uk1mrly"
+                      },
+                      "type": "string",
+                      "example": "Target app created successfully"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/TargetApp"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "post-target_app",
+        "x-stoplight": {
+          "id": "bdx7v80njb1jh"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "onztxfocbim86"
+                    },
+                    "description": "Name of target app"
+                  },
+                  "description": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "12rxomfb0qe6l"
+                    },
+                    "description": "Description of target app"
+                  },
+                  "gates": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "ivoh7b9zbu1hl"
+                    },
+                    "description": "Feature gate IDs assigned the new target appID",
+                    "items": {
+                      "x-stoplight": {
+                        "id": "us8bkp58nsl8u"
+                      },
+                      "type": "string"
+                    }
+                  },
+                  "dynamicConfigs": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "bp925ps9byixu"
+                    },
+                    "description": "Dynamic config IDs assigned the new target appID",
+                    "items": {
+                      "x-stoplight": {
+                        "id": "qx4boulkzdgso"
+                      },
+                      "type": "string"
+                    }
+                  },
+                  "experiments": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "wdyla17ecvvr9"
+                    },
+                    "description": "Experiment IDs assigned the new target appID",
+                    "items": {
+                      "x-stoplight": {
+                        "id": "bw6oyprwp0cte"
+                      },
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "name": "Target app 1",
+                    "description": "Example description",
+                    "gates": [
+                      "Example gate"
+                    ],
+                    "dynamicConfigs": [
+                      "Example dynamic config"
+                    ],
+                    "experiments": [
+                      "Example experiment"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/target_app/{id}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "delete": {
+        "summary": "Delete Target App",
+        "operationId": "delete-target_app-id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "29z2uzx20275u"
+                      },
+                      "example": "Target app deleted successfully"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "sk4d7u54projq"
+        },
+        "tags": [
+          "Target Apps"
+        ]
+      }
     }
   },
   "tags": [

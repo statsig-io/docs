@@ -21,6 +21,7 @@ const supportedEntities = [
   'target-apps',
   'ingestions',
   'tags',
+  'keys',
 ];
 
 function updateCodeSnippets(data, entity) {
@@ -100,20 +101,24 @@ export default function Rapidoc(props) {
 
   useEffect(() => {
     setTimeout(() => {
-
       var data;
+      const rapidoc = document.getElementById(id);
 
-      if (entity === 'all-endpoints') {
-        data = loadAllEndpoints();
-      } else {
-        data = require(`../../docs/console-api/openapi/${entity}.js`);
+      switch(entity) {
+        case 'all-endpoints-generated':
+          rapidoc.loadSpec("https://statsigapi.net/console/v1/open_api");
+          return;
+        case 'all-endpoints':
+          data = loadAllEndpoints();
+          break;
+        default:
+          data = require(`../../docs/console-api/openapi/${entity}.js`);
       }
 
       data = updateCodeSnippets(data, entity);
 
       loadReferences(data);
 
-      const rapidoc = document.getElementById(id);
       rapidoc.loadSpec(data);
     }, 30);
   }, []);
@@ -320,6 +325,11 @@ function getDescription(entity) {
           <li>Create a new tag</li>
           <li>Read data from existing tags</li>
         </ul>
+      </>
+
+    case 'keys': 
+      return <>
+        <h2>API for Statsig Keys</h2>
       </>
 
     case 'all-endpoints':

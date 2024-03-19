@@ -1,0 +1,125 @@
+---
+sidebar_label: Feature Flags in NodeJS ExpressJS
+title: Feature Flags in NodeJS ExpressJS
+---
+
+ExpressJS, renowned for its efficiency and minimalist design, is a cornerstone framework for NodeJS developers. This guide focuses on integrating feature flags in NodeJS ExpressJS applications using Statsig's NodeJS Server SDK. Discover how to enhance your ExpressJS app with feature flags for flexible and dynamic user experiences.
+
+For this tutorial, let's integrate our [NodeJS Server SDK](https://docs.statsig.com/server/nodejsServerSDK) into a simple expressJS app and check a feature gate to determine if the end-user should see a new feature. 
+
+:::tip
+[ExpressJS + Statsig Sample App source code here](https://github.com/statsig-io/samples/tree/node-express/node-express#node-express-statsig-demo-app). 
+
+The readme within details the steps on installing the app and its dependencies, setting the necessary environment variables, and running the app. Those concepts won't be covered in this guide because they are standard NodeJS practices.
+:::
+
+## Create Feature Gate in Statsig for NodeJS ExpressJS Applications
+The below command can be run to automatically create the simple `express_app_bg` gate in Statsig that gets used throughout this integration guide and demo app.
+
+The gate randomizes based on `userID` and has a 50/50 allocation. Make sure to replace the authorization key in the header with your key generated in Statsig project settings as documented [here](https://docs.statsig.com/console-api/introduction).
+```bash
+curl --request POST 'https://statsigapi.net/console/v1/gates' \
+--header 'STATSIG-API-KEY: console-REPLACE_WITH_YOURS' \
+--header 'Content-Type: application/json' \
+--data-raw '{"name":"express_app_bg","idType":"userID","isEnabled":true,"rules":[{"name":"Everyone","passPercentage":50,"conditions":[{"type":"public"}]}]}'
+``` 
+![image](/img/express-gate.png)
+
+## Project Outline
+
+This example was built on the very simple [Hello World](https://expressjs.com/en/starter/hello-world.html) example app documented by ExpressJS.
+The main server entrypoint is `app.js` and the demo webpage source follows the handlebars standard, living in `views/index.hbs`.
+
+![image](/img/express-folder-structure.png)
+
+Aside from `statsig-node`, this example app requires several node modules, including:
+* `cookie-parser` for managing cookies for user identity
+* `uuidv4` for generating a random uuid
+* `express` as the NodeJS web framework
+* `express-handlebars` as the template engine
+* `dotenv` for secret management
+
+## Initializing Statsig SDK in Your ExpressJS App
+
+Every expressJS app has the call to boot the server and listen for requests. This is a convenient place to initialize the Statsig SDK. 
+Here is an example of how that can be achieved:
+
+```js
+app.listen(port, async () => {
+  const runtimeEnv = process.env.STATSIG_ENV_TIER || 'production';
+  await statsig.initialize(process.env.STATSIG_SERVER_KEY, {
+    environment: { tier: runtimeEnv },
+  });
+  console.log(`Example app listening in ${runtimeEnv} on port ${port}`);
+});
+```
+
+
+## Managing User Identity
+
+Any Statsig SDK method call requires a userObject to be passed in. Efficient user identity management is key to implementing feature flags in NodeJS ExpressJS.
+
+For known users that are logged in and an identity is accessible, this is trivial. In the case where identity isn't available, it's ideal to either (a) read an existing cookie ID available to the app or (b) create and use a new uid for the purposes of anonymous assignment within the Statsig SDK.
+
+ExpressJS offers a convenient middleware pattern that allows this business logic to be defined once, and it can be used globally in any route handler. Here is an example of what that looks like:
+
+_Generating and setting an anonymous uid requires installing `uuidv4` and `cookie-parser` module_
+```js
+// earlier in the source, prior to app.listen call
+app.use(cookieParser());
+
+/**
+* global middleware to set a cookie if it doesn't exist
+* passes the uuid down to route handlers on req object
+*/
+app.use(async (req, res, next) => {
+  let statsigDeviceID;
+  if (req.cookies['statsig_uuid']) {
+    statsigDeviceID = req.cookies['statsig_uuid'];
+  }
+  else {
+    statsigDeviceID = uuidv4();
+    res.cookie('statsig_uuid', statsigDeviceID);
+  }
+  req.statsigDeviceID = statsigDeviceID;
+  next();
+});
+```
+
+## Check Gate Assignment for Page Render
+In your route handler, you will have access to the global `statsig` singleton. Whenever you need to check a gate, you can simply call `statsig.checkGate` and pass in the user object. 
+```js
+app.get('/', async (req, res) => {
+  const user = {
+    // use the random uuid in cookie as the userID
+    // in practice, you'd use a known userID here
+    userID: req.statsigDeviceID,
+    country: 'US',
+    // pass any known user attribute here
+    custom: {
+      employee: true
+    }
+  };
+  res.render('index.hbs', { 
+    backgroundFeatureEnabled: statsig.checkGate(user, 'express_app_bg')
+  });
+});
+```
+
+## Leveraging Feature Flags in NodeJS ExpressJS HTML Templates
+The template will be rendered and with access to the `backgroundFeatureEnabled` (boolean) variable, which gets used in the handlebars `{{#if}}` operator to conditionally set a background image on the page. The rendered template will be served to the user as an HTML document.
+```hbs
+<body{{#if backgroundFeatureEnabled}} class="has-bg"{{/if}}>
+<div id="main">
+    <h1>Statsig sample Express app</h1>
+    <h3>
+        {{#if backgroundFeatureEnabled}}
+        You are in the <code>express_app_bg</code> feature gate. (Statsig page background)
+        {{else}}
+        You are not in the <code>express_app_bg</code> feature gate (no page background) 
+        {{/if}}
+    </h3>
+</div>
+```
+
+![image](/img/express-page.png)

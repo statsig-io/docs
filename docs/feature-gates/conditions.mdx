@@ -134,6 +134,17 @@ To test: The OS is inferred from the `userAgent`, but if you need to set it expl
 
 ![Operating System example](https://user-images.githubusercontent.com/74584483/137398532-bac9b55b-07f1-48b2-a0c9-edcaec55d528.png)
 
+### Device Model {#device-model}
+Usage: The device model of the mobile device the user is on.
+
+Supported Operators: any of, none of, is null, is not null, contains any of, contains none of, regex
+
+Example: Turn off a feature for older device models that your app does not support.
+
+To test: The Device Model is automatically inferred by the SDK, but if you need to set it explicitly, you can set `deviceModel` in the user object.
+
+![Device Model example](https://github.com/statsig-io/docs/assets/111380336/7602869a-be9c-43ea-ac05-5fcf0c30c871)
+
 ### Country  {#country}
 Usage: A 2 letter country code, either passed as the user's country or determined by the IP address.
 
@@ -201,7 +212,11 @@ Example: Only show a feature on development builds
 
 Usage: Specify the key in the custom object to fetch the value use on the left hand side of a comparison
 
-Supported Operators: any of, none of
+Supported Operators:
+- string: any of, none of, contains any of, contains none of
+- number: any of, none of, less than, greater than
+- version: any of, none of, less than, greater than, less than or equal to, greater than or equal to
+- date: before, after
 
 Example: Only show a feature to user's who have turned on dark mode, as marked by the custom object having "darkmode": true.
 
