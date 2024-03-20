@@ -235,7 +235,7 @@ function getDescription(entity) {
     case 'layers':
       return <>
         <p>A <a href="../layers">Layer</a> allow us to create <a href="../experiments-plus">experiments</a> that are mutually exclusive to each other.</p>
-        <h2>Holdout API functions</h2>
+        <h2>Layer API functions</h2>
         <ul>
           <li>Create a new Layer</li>
           <li>Read data from existing Layer</li>
