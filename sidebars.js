@@ -72,6 +72,7 @@ module.exports = {
             "guides/uptime",
             "guides/fomo",
             "guides/migrate-from-launchdarkly",
+            "guides/statsig-id-resolver",
           ],
         },
         {
