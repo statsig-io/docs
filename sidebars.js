@@ -247,6 +247,7 @@ module.exports = {
             "guides/sidecar-experiments/setup",
             "guides/sidecar-experiments/creating-experiments",
             "guides/sidecar-experiments/publishing-experiments",
+            "guides/sidecar-experiments/integrating-gtm"
           ],
         },
         "holdouts/introduction",
