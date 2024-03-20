@@ -248,6 +248,7 @@ module.exports = {
             "guides/sidecar-experiments/setup",
             "guides/sidecar-experiments/creating-experiments",
             "guides/sidecar-experiments/publishing-experiments",
+            "guides/sidecar-experiments/integrating-gtm"
           ],
         },
         "holdouts/introduction",
@@ -385,6 +386,7 @@ module.exports = {
             "statsig-warehouse-native/connecting-your-warehouse/snowflake",
             "statsig-warehouse-native/connecting-your-warehouse/databricks",
             "statsig-warehouse-native/connecting-your-warehouse/redshift",
+            "statsig-warehouse-native/connecting-your-warehouse/athena",
             "statsig-warehouse-native/connecting-your-warehouse/scheduled-reloads",
           ],
         },
