@@ -7,6 +7,7 @@ slug: /metrics/metric-alerts
 # Metric Alerts
 When rolling out a new feature or experiment, you may want to be notified if your rollout or experiment regresses a metric beyond a pre-set threshold. Statsig enables this via metric alerts.
 
+## Overview
 Metric alerts are hourly for the first 24 hours post experiment/ gate rollout (this includes new gate rules/ rollouts), and then daily thereafter. This is to help provide more real-time visibility during the most critical phase of a rollout; in those first 24 hours post-going live. Alerts only trigger if the metric delta is statistically significant lower/ higher than your threshold, which helps reduce alert noisiness. 
 
 Finally, all stats methodologies you've enabled for your experiment/ gate rollout (CUPED, Sequential Testing, etc.) will be applied to alert calculations post-the first 24 hours (once the alert becomes daily). 
