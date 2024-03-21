@@ -7,7 +7,7 @@ title: Google Tag Manager (GTM)
 This integration will allow customers using Statsig on the web to leverage their existing Google Tag manager configuration to track events to Statsig. This saves customers from having to retag their web properties with calls specific to Statsig's SDK. This integration uses a global listener to consume all GTM triggers and dispatch a corresponding event back to Statsig.
 
 ![image](/img/gtm-logstream.png)
-_(statsig logstream showing gtm events flowing in)_
+_(statsig log stream showing GTM events flowing in)_
 
 ## Setup
 
