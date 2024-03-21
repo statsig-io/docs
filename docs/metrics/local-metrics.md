@@ -25,6 +25,7 @@ When you are ready to save your Local Metric, you can choose to save it to eithe
 ![Screen Shot 2024-03-21 at 11 20 44 AM](https://github.com/statsig-io/docs/assets/101903926/50bc5742-2f2a-4147-9cb3-70658d6391da)
 ![Screen Shot 2024-03-21 at 11 20 50 AM](https://github.com/statsig-io/docs/assets/101903926/ae3932df-f81b-4fed-9d23-b2b196ac83bc)
 
+Once you've created a Local Metric, you can tap on the Local Metric in your Scorecard to view its configuration in the Local Metric wizard. 
 
 ## Types of Local Metrics
 The types of Local Metrics you can create are very similar to Custom Metrics (accessible via the Metrics Tab), with a few exceptions.
@@ -41,4 +42,8 @@ Here are the supported types of Local Metrics:
 The one type of Custom Metric that you cannot (yet) create as a Local Metric are funnels. 
 
 ## Lifecycle of Local Metrics 
-By default, Local Metrics will 
+By default, Local Metrics are scoped to the config they're created in the context of, and will only live for the lifecycle of that config. This means once you make a decision on your experiment or launch your feature gate, your Local Metric will no longer be computed. 
+
+Local Metrics do NOT show up in your Project Metrics Catalog, and are not searchable in top-line search. 
+
+While you can't convert a Local Metric into a "global" metric (i.e. a Metrics Catalog metric) today, this conversion flow is coming soon. In the meantime, you can recreate the same metric definition as a Custom Metric in the Metrics Catalog if you want this metric to live on in a more global capacity outside the scope of your gate/ experiment. 
