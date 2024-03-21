@@ -65,6 +65,7 @@ Fastly
 Fivetran
 GDPR
 Github
+GTM
 IAM
 IDSync
 IdP
@@ -263,6 +264,7 @@ redshift
 repo
 resalt
 resync
+retag
 rideshare
 roadmap
 roadmaps
