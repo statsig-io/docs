@@ -569,6 +569,7 @@ module.exports = {
             "integrations/github_code_references",
             "integrations/slack",
             "integrations/openai",
+            "integrations/gtm",
             {
               type: "category",
               label: "Terraform",
