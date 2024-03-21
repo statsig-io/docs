@@ -18,10 +18,27 @@ You can create a Local Metric from two places within your config-
 
 Entering into the Local Metric creation flow from either entry point will kick off the Local Metric creation wizard. If you're a heavy user of Metrics Explorer, this will feel quite familiar. The wizard allows you to select event(s), add filters, and preview the output values. 
 
+![Screen Shot 2024-03-21 at 11 19 22 AM](https://github.com/statsig-io/docs/assets/101903926/452d9efe-2706-4d47-aee6-48c8f6288e8f)
+
+When you are ready to save your Local Metric, you can choose to save it to either the Primary/ Secondary Metrics section of your Scorecard (for experiments), or the Monitoring Metrics section of your feature gate rollout.
+
+![Screen Shot 2024-03-21 at 11 20 44 AM](https://github.com/statsig-io/docs/assets/101903926/50bc5742-2f2a-4147-9cb3-70658d6391da)
+![Screen Shot 2024-03-21 at 11 20 50 AM](https://github.com/statsig-io/docs/assets/101903926/ae3932df-f81b-4fed-9d23-b2b196ac83bc)
+
 
 ## Types of Local Metrics
-The types of Local Metrics you can create are very similar to Custom Metrics (accessible via the Metrics Tab), with a few exceptions. 
+The types of Local Metrics you can create are very similar to Custom Metrics (accessible via the Metrics Tab), with a few exceptions.
 
+Here are the supported types of Local Metrics: 
 
+| Metric Type | Description | Examples |
+|-------------|-----------------------|---------|
+| Event Count | **Total count of events** filtered by the _value_ and _metadata_ properties of an event type | **Add to Cart** event filtered by category type |
+| User Count |  **Number of unique users** that trigger events filtered by the _value_ and _metadata_ of an event type| **Active Users** based on their views of a product category |
+| Aggregation       | **Sum or Average** of the _value_ or _metadata_ property of an event type  | **Total Revenue** |
+| Ratio  | **Rates** (e.g. cart conversion rate, purchase rate),  **Normalized Values** (e.g. sessions per user, items per cart) | **Cart Conversion Rate**, **Sessions per User** |
+
+The one type of Custom Metric that you cannot (yet) create as a Local Metric are funnels. 
 
 ## Lifecycle of Local Metrics 
+By default, Local Metrics will 
