@@ -83,16 +83,32 @@ window.StatsigLogger = (function () {
       log('++ handleGTMMessage / skip');
     }
   }
-
-  window.addEventListener('statsig:ready', function(evt) {
-    log('+++ Statsig:ready');
-    statsigInstance = evt.detail.statsig;
+  
+  var init = function(condition) {
+    log('+++ Statsig:ready ->', condition);
     // this may have past messages that haven't yet been handled
     var globalGTMListener = new DataLayerHelper(dataLayer, {
       listener: handleGTMMessage,
       listenToPast: true,
-    });    
-  });  
+    });        
+  }
+
+  var clientReady = false;
+  try {
+    clientReady = statsig.getClientX().ready;
+  } catch(err) { }
+  
+  if(clientReady) {
+    // if client is already initialized, proceed
+    init('pre-GTM');
+  }
+  else {
+    // otherwise wait for statsig
+    window.addEventListener('statsig:ready', function(evt) {
+      statsigInstance = evt.detail.statsig;
+      init('post-GTM');
+    });  
+  }
 
 })();  
 </script>
