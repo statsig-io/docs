@@ -72,6 +72,7 @@ module.exports = {
             "guides/uptime",
             "guides/fomo",
             "guides/migrate-from-launchdarkly",
+            "guides/statsig-id-resolver",
           ],
         },
         {
@@ -568,6 +569,7 @@ module.exports = {
             "integrations/github_code_references",
             "integrations/slack",
             "integrations/openai",
+            "integrations/gtm",
             {
               type: "category",
               label: "Terraform",
