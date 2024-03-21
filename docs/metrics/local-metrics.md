@@ -7,7 +7,7 @@ slug: /metrics/local-metrics
 # Local Metrics
 
 ## Overview 
-Local Metrics are metrics that are scoped to an individual config, i.e. a specific experiment or gate. They are created in the context of this config with the goal of being able to measure a specific metric value in the context of that config, without adding that new metric to the Project-wide Metrics Catalog on an ongoing basis. 
+Local Metrics are metrics that are scoped to an individual config, i.e. a specific experiment or gate. They are created in the context of this config with the goal of being able to capture how that metric trends in the context of that config, without adding that new metric to the Project-wide Metrics Catalog forever more. 
 
 ## Creating a Local Metric 
 You can create a Local Metric from two places within your config- 
