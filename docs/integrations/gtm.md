@@ -68,29 +68,47 @@ window.StatsigLogger = (function () {
     }
   };
 
-  var handleGTMMessage = function (model, message) {
-    log('+++ handleGTMMessage');
-    if (typeof message === 'object' && typeof message.event === 'string') {      
+  var handleGTMMessage = function (model, message) {    
+    if (typeof message === 'object' && typeof message.event === 'string') {
       var metadata = {};
       for (var prop in message) {
         if (prop.includes('gtm.') && !!message[prop] && (typeof message[prop] === 'number' || typeof message[prop] === 'boolean' || typeof message[prop] === 'string')) {
           metadata[prop] = message[prop];
         }
       }
-      log('\t', message.event, message.conversionValue || null, metadata);
+      log('++ handleGTMMessage', message.event, message.conversionValue || null, metadata);
       statsigInstance.logEvent(message.event, message.conversionValue || null, metadata);
     }
+    else {
+      log('++ handleGTMMessage / skip');
+    }
   }
-
-  window.addEventListener('statsig:ready', function(evt) {
-    log('+++ Statsig:ready');
-    statsigInstance = evt.detail.statsig;
+  
+  var init = function(condition) {
+    log('+++ Statsig:ready ->', condition);
     // this may have past messages that haven't yet been handled
     var globalGTMListener = new DataLayerHelper(dataLayer, {
       listener: handleGTMMessage,
       listenToPast: true,
-    });    
-  });  
+    });        
+  }
+
+  var clientReady = false;
+  try {
+    clientReady = statsig.getClientX().ready;
+  } catch(err) { }
+  
+  if(clientReady) {
+    // if client is already initialized, proceed
+    init('pre-GTM');
+  }
+  else {
+    // otherwise wait for statsig
+    window.addEventListener('statsig:ready', function(evt) {
+      statsigInstance = evt.detail.statsig;
+      init('post-GTM');
+    });  
+  }
 
 })();  
 </script>
