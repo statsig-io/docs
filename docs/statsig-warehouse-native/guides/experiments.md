@@ -67,3 +67,5 @@ When you press load data, a Pulse analysis will start and you'll be taken to the
 For a Statsig-configured experiment where you're using the Statsig SDKs to generate exposures - the default  is that exposures are batched, deduplicated and written to your warehouse once a day. When you launch an experiment, it's helpful to be able to look at early metric deltas  (to detect crashes or catch an egregious bug). When Pulse is loaded soon after the experiment starts, we'll update exposures in your warehouse before computing Pulse results. This lets you see Pulse results as fresh as ~15m (assuming events and metrics come in at the same speed).
 
 Under the covers, if the # of exposures on an experiment is < 1 million we perform a just-in-time update of exposures in your warehouse when Pulse is loaded.
+
+Note : We only write to your warehouse exposure information that will be used for experiment analysis. We will not write exposures in pre-production environments or from overrides since these are not used in analysis. 
