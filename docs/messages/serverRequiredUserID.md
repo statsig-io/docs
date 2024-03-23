@@ -1,9 +1,9 @@
 ---
-title: Why is StatsigUser with a UserID or CustomID required for server SDKs?
+title: Why is StatsigUser with a UserID or custom UnitID required for server SDKs?
 sidebar_label: UserID Required
 ---
 
-In Server SDKs, a StatsigUser with a userID (or customID) is required for checkGate, getConfig, and getExperiment. For userID based experiences, we always recommend using the actual user ID if it's available: users will get a stable experience, and subsequent events will be attributed to the correct users so you can accurately measure downstream metrics.
+In Server SDKs, a StatsigUser with a userID (or custom UnitID) is required for checkGate, getConfig, and getExperiment. For userID based experiences, we always recommend using the actual user ID if it's available: users will get a stable experience, and subsequent events will be attributed to the correct users so you can accurately measure downstream metrics.
 
 Still aren't sure whether you need to provide the userID? Here are our suggestions for different use cases:
 
