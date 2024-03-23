@@ -74,7 +74,7 @@ Confirm that the gate has been set to either **Launched** or **Disabled** (i.e. 
 - **Launched or Disabled → Archived:** you’ll want to update this status to mark that the gate has been removed from your codebase, so that it will be filtered out from the list of candidate gates to be cleaned up for the future (as part of step #2)
   - Go to the feature gate page and click on “…” menu on the upper right corner to select “Archive”. 
   
-_Note: You can only archive feature gates that have not had any checks in the last 7 days, and archival cannot be undone._
+_Note: We recommend that you don't archive gates unless there have been 0 checks in the last 7 days for safety measure. Archival cannot be undone._
   
 - To find _all_ gates that should be marked as **Archived**:
     - Go to Feature Gates catalog
