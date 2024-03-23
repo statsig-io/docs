@@ -314,6 +314,7 @@ module.exports = {
             // other
             "metrics/ingest",
             "metrics/pulse",
+            "metrics/local-metrics", 
             "metrics/console",
             "metrics/health-checks",
 
