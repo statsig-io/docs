@@ -1,0 +1,56 @@
+---
+title: Statsig in Expo
+sidebar_label: Expo Support
+slug: /client/javascript-sdk/expo
+---
+
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  Shutdown,
+  CodeExamples,
+} from "../Templates/index.mdx";
+
+import CheckGate from "./_checkGate.mdx";
+import GetConfig from "./_getConfig.mdx";
+import GetExperiment from "./_getExperiment.mdx";
+import Initialize from "./_initialize.mdx";
+import Install from "./_install.mdx";
+import LogEvent from "./_logEvent.mdx";
+import MoreFAQs from "./_faqs.mdx";
+import Options from "./_options.mdx";
+import ShutdownSnippet from "./_shutdown.mdx";
+
+import * as _ExpoInstall from "./_expoInstall.mdx";
+export const ExpoInstall = _ExpoInstall;
+
+import * as _ExpoSetup from "./_expoSetup.mdx";
+export const ExpoSetup = _ExpoSetup;
+
+export const Result = SDKDocsBuilder(
+  {},
+  [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/js-client-monorepo",
+      },
+    ],
+    [ExpoInstall, {}],
+    [ExpoSetup, {}],
+  ],
+  toc
+);
+
+<>{Result}</>
