@@ -57,43 +57,49 @@ You need to grant some permissions for Statsig from your AWS console in order fo
       "Version": "2012-10-17",
       "Statement": [
          {
-               "Effect": "Allow",
-               "Action": [
-                  "s3:ListBucket",
-                  "s3:GetBucketLocation",
-                  "s3:GetObject",
-                  "s3:PutObject",
-                  "s3:DeleteObject"
-               ],
-               "Resource": "arn:aws:s3:::<S3_BUCKET>"
+            "Effect": "Allow",
+            "Action": [
+               "s3:ListBucket",
+               "s3:GetBucketLocation",
+               "s3:GetObject",
+               "s3:PutObject",
+               "s3:DeleteObject"
+            ],
+            "Resource": "arn:aws:s3:::<S3_BUCKET>"
          },
          {
-               "Effect": "Allow",
-               "Action": [
-                  "s3:GetObject",
-                  "s3:PutObject",
-                  "s3:DeleteObject",
-                  "athena:StartQueryExecution",
-                  "athena:GetQueryResults",
-                  "athena:GetQueryExecution",
-                  "glue:GetTable",
-                  "glue:CreateTable",
-                  "glue:UpdateTable",
-                  "glue:DeleteTable",
-                  "glue:GetPartition",
-                  "glue:GetPartitions",
-                  "glue:CreatePartition",
-                  "glue:UpdatePartition",
-                  "glue:DeletePartition",
-                  "glue:BatchCreatePartition",
-                  "glue:BatchDeletePartition"
-               ],
-               "Resource": [
-                  "arn:aws:s3:::<S3_BUCKET>/<QUERY_RESULTS_FOLDER>/*",
-                  "arn:aws:s3:::<S3_BUCKET>/<STATSIG_S3_FOLDER>/*",
-                  "arn:aws:athena:*:<ACCOUNT_ID>:*",
-                  "arn:aws:glue:<REGION>:<ACCOUNT_ID>:*"
-               ]
+            "Effect": "Allow",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::<S3_BUCKET>/<PATH_TO_EVENTS_AND_EXPOSURES_DATA>/*"
+         },
+         {
+            "Effect": "Allow",
+            "Action": [
+               "s3:GetObject",
+               "s3:PutObject",
+               "s3:DeleteObject",
+               "athena:StartQueryExecution",
+               "athena:GetQueryResults",
+               "athena:GetQueryExecution",
+               "glue:GetTable",
+               "glue:CreateTable",
+               "glue:UpdateTable",
+               "glue:DeleteTable",
+               "glue:GetPartition",
+               "glue:GetPartitions",
+               "glue:CreatePartition",
+               "glue:UpdatePartition",
+               "glue:DeletePartition",
+               "glue:BatchCreatePartition",
+               "glue:BatchDeletePartition",
+               "glue:GetDatabase"
+            ],
+            "Resource": [
+               "arn:aws:s3:::<S3_BUCKET>/<PATH_TO_QUERY_RESULTS_FOLDER>/*",
+               "arn:aws:s3:::<S3_BUCKET>/<STATSIG_S3_FOLDER>/*",
+               "arn:aws:athena:*:<ACCOUNT_ID>:*",
+               "arn:aws:glue:<REGION>:<ACCOUNT_ID>:*"
+            ]
          }
       ]
    }
