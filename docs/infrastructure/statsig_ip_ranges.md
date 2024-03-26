@@ -22,6 +22,10 @@ allowing only certain IPs.
 
 - 34.38.207.120/30 (4 addresses)
 
+:::info
+Webhook requests are very high volume and may not be initiated from these IP Ranges. You should use [Webhook Signatures](https://docs.statsig.com/integrations/event_webhook#webhook-signature) for this.
+:::
+
 ## Inbound (Your Clients/Servers -> Statsig)
 
 These IPs back the domains (e.g. `api.statsig.com`, `featuregates.org`, `statsigapi.net`) of Statsig APIs.
