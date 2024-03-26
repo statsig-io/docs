@@ -15,12 +15,16 @@ Overrides can be added based on Feature Gates and Segments, and will allow you t
 - Users in overrides are excluded from Pulse results. Since these users are not randomized, we purposely exclude them from experimental results. Adding a large number of users to the override can affect the reliability of your experimental results.
 :::
 
+![overrides modal](/img/overrides-modal.png)
+
 ### Adding an Override
 
 - Log into the Statsig console at https://console.statsig.com
 - On the left-hand navigation panel, select **Experiments**
 - Select the experiment where you want to add an Override, and navigate to the Setup tab
 - Click the **Manage Override** button, configure the override, and hit **Save**
+
+![overrides modal](/img/overrides-entry.png)
 
 ### Deleting an Override
 
