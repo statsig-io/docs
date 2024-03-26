@@ -336,6 +336,14 @@ module.exports = {
                     "description": "Which layer to place the experiment into.",
                     "example": "layer_1"
                   },
+                  "targetingGateID": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "9tuxg4fa5zyb8"
+                    },
+                    "example": "a_layer",
+                    "description": "The ID of the targeting gate for the experiment."
+                  },
                   "creatorID": {
                     "type": "string",
                     "x-stoplight": {
