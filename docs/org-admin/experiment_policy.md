@@ -1,5 +1,6 @@
 ---
 title:  Experiment Policy
+slug: /org-admin/experiment_policy
 ---
 
 :::info
