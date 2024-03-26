@@ -682,6 +682,7 @@ module.exports = {
           },
           items: [
             "org-admin/experiment_policy", 
+            "org-admin/gates_policy",
           ],
         },
       ],
