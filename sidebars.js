@@ -675,7 +675,7 @@ module.exports = {
         },
         {
           type: "category",
-          label: "Organization Experiment Policy",
+          label: "Organization Policies",
           link: {
             type: "doc",
             id: "org-admin/organization_policies",
