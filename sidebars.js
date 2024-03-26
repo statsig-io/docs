@@ -678,9 +678,11 @@ module.exports = {
           label: "Organization Experiment Policy",
           link: {
             type: "doc",
-            id: "org-admin/experiment_policy",
+            id: "org-admin/organization_policies",
           },
-          items: [],
+          items: [
+            "org-admin/experiment_policy", 
+          ],
         },
       ],
     },
