@@ -675,10 +675,22 @@ module.exports = {
         },
         {
           type: "category",
-          label: "Organization Experiment Policy",
+          label: "Organization Policies",
           link: {
             type: "doc",
-            id: "org-admin/experiment_policy",
+            id: "org-admin/organization_policies",
+          },
+          items: [
+            "org-admin/experiment_policy", 
+            "org-admin/gates_policy",
+          ],
+        },
+        {
+          type: "category",
+          label: "Templates",
+          link: {
+            type: "doc",
+            id: "templates/templates",
           },
           items: [],
         },
