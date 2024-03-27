@@ -28,7 +28,13 @@ If you create a new config that you think would be useful to more folks on the t
 ![Screen Shot 2024-03-26 at 1 56 21 PM](https://github.com/statsig-io/docs/assets/101903926/790ed73e-d014-4163-abc2-caffaefaadc3)
 
 ## Managing Templates 
+Templates can be managed via the **Templates** tab within **Project Settings**. Note that permissions for who can/ can't create or modify templates are managed via Statsig's Role-based Access Controls in the **Project Settings** -> **Members** -> **Roles**. By default Org and Project Admins can modify or delete any Template. 
+
+![Screen Shot 2024-03-26 at 5 39 33 PM](https://github.com/statsig-io/docs/assets/101903926/0e77d362-a730-4939-844f-228a2982dbea)
 
 ## Creating Configs from Templates 
+To create a config using a template, at the time of config creation, select a template to apply from the template selector. If templates are required at the Organization or Team-level, the user will be blocked from proceeding with config creation until they've selected an approved template. The list of template options in the drop-down is configured at the team level (see below). 
+
+![Screen Shot 2024-03-26 at 5 52 15 PM](https://github.com/statsig-io/docs/assets/101903926/b6287605-3740-49a5-acf2-224642e0499b)
 
 ## Managing Templates- Settings & Permissions
