@@ -13,7 +13,7 @@ Templates can be enforced at the Org (via [Organization Settings](https://docs.s
 ## Creating Templates 
 There are two primary ways to create a new template- 
 1. From the **Templates** tab in **Project Settings**
-2. From a gate/ experiment you want to templatize (converting a config into a template)
+2. From a gate/ experiment you want to turn into a new template
 
 ### Creating Templates from Project Settings 
 To create a new template from Project Settings, navigate to **Settings** -> **Project Settings** -> **Templates** and click the **+Create New** CTA, then select whether you want to create a gate or experiment template. 
