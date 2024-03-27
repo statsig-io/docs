@@ -8,7 +8,7 @@ slug: /sdks/group-name-breaking-change-02-2024
 Removing non-experiment groups from the groupName API across all SDKs
 
 ## When
-March 27, 2024
+April 3, 2024
 
 ## Why
 When we first implemented group name accessors on DynamicConfigs, we did so as metadata about the evaluation, and included many non-experiment groups that get returned from the `getGroupName` API.  We got feedback from a number of customers that the group name was only useful as an experiment group, so we forked the logic on our serverside to support that use case without making a breaking change.
