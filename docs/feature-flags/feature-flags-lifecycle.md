@@ -1,8 +1,14 @@
 ---
-title: Managing the Lifecycle of Feature Gates
+title: Managing the Lifecycle of Feature Flags
 sidebar_label: Managing Lifecycle
-slug: /feature-gates/feature-gates-lifecycle
+slug: /feature-flags/feature-flags-lifecycle
 ---
+
+:::note
+
+Usually referred to online as _feature flags_, the Statsig UI and SDKs call them _feature gates_.
+
+:::
 
 # Background
 

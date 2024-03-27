@@ -1,7 +1,7 @@
 ---
 title: Feature gating with http api
 sidebar_label: HTTP API
-slug: /feature-gates/implement/http-api
+slug: /feature-flags/implement/http-api
 ---
 
 ## Using the HTTP API

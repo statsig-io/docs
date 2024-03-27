@@ -1,8 +1,14 @@
 ---
-title: Overrides
+title: Feature Flag Overrides
 sidebar_label: Overrides
-slug: /feature-gates/overrides
+slug: /feature-flags/overrides
 ---
+
+:::note
+
+Usually referred to online as _feature flags_, the Statsig UI and SDKs call them _feature gates_.
+
+:::
 
 ## Override results of a feature gate
 

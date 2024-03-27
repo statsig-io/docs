@@ -1,8 +1,14 @@
 ---
 title: Scheduled Rollouts
 sidebar_label: Scheduled Rollouts
-slug: /feature-gates/scheduled-rollouts
+slug: /feature-flags/scheduled-rollouts
 ---
+
+:::note
+
+Usually referred to online as _feature flags_, the Statsig UI and SDKs call them _feature gates_.
+
+:::
 
 ## Context
 Feature Gates are powerful in ensuring a safe, controlled feature rollout. Scheduled Rollouts add a time-based scheduling layer to Feature Gates, enabling you to pre-set any rollout schedule you want, which will execute automatically. This is particularly useful if, for example, you have a feature launch happening in another timezone (and don’t want to stay up all night!) or you have a standard, company-wide ramp-up schedule you follow with every feature release. 

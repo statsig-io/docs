@@ -112,7 +112,7 @@ It's important to note that changes with a Server SDK won't be instantaneous; se
 
 The true power of feature flags becomes apparent when you can rollout features to specific user group (enabling dogfooding, insider groups, or [canary testing](https://www.statsig.com/glossary/canary-testing)) and even more powerful—measuring the impact that it has on their experience and business metrics.
 
-This is what Statsig calls ["Metric Lifts"](https://docs.statsig.com/feature-gates/view-exposures) in our famous [pulse view](https://docs.statsig.com/pulse/read-pulse).
+This is what Statsig calls ["Metric Lifts"](https://docs.statsig.com/feature-flags/view-exposures) in our famous [pulse view](https://docs.statsig.com/pulse/read-pulse).
 
 One of the fundamental concepts that enables this is adding user identifiers to your feature flag checks (or "gate checks"). In the previous example, we added a placeholder user_id of 12345 to the user. A more interesting example is to include an email for the user, then set our rule to only allow certain emails to access the feature. See below:
 

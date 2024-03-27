@@ -51,7 +51,7 @@ There is also an optional parameter `options` that allows you to pass in a [Stat
 
 #### Step 4 - Fetch Feature Gates, Dynamic Configs, or Layers/Experiments {#step-4---fetch-values}
 
-Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-gates). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
+Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-flags/working-with). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
 
 From this point on, all APIs will require you to specify the user (see [Statsig user](#statsig-user)) associated with the request. For example, check a gate for a certain user like this:
 

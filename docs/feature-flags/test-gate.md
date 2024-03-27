@@ -1,8 +1,14 @@
 ---
-title: Testing
+title: Feature Flag Testing
 sidebar_label: Test
-slug: /feature-gates/test-gate
+slug: /feature-flags/test-gate
 ---
+
+:::note
+
+Usually referred to online as _feature flags_, the Statsig UI and SDKs call them _feature gates_.
+
+:::
 
 ## Test a feature gate
 

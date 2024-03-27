@@ -1,10 +1,16 @@
 ---
 title: Permanent and Stale Gates
 sidebar_label: Permanent and Stale Gates
-slug: /feature-gates/permanent-and-stale-gates
+slug: /feature-flags/permanent-and-stale-gates
 ---
 
-It is important for your codebase and team to bring feature gates to a final state (i.e. flags now permanently part of your codebase or completely removed) when they have served their purpose, as described [here](https://docs.statsig.com/feature-gates/feature-gates-lifecycle). On Statsig, you can use feature gate **Types** to easily keep track of your flags that might be ready to brought to their final state.
+:::note
+
+Usually referred to online as _feature flags_, the Statsig UI and SDKs call them _feature gates_.
+
+:::
+
+It is important for your codebase and team to bring feature gates to a final state (i.e. flags now permanently part of your codebase or completely removed) when they have served their purpose, as described [here](https://docs.statsig.com/feature-flags/feature-flags-lifecycle). On Statsig, you can use feature gate **Types** to easily keep track of your flags that might be ready to brought to their final state.
 
 ## Types
 

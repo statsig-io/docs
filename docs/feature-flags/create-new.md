@@ -1,8 +1,14 @@
 ---
-title: Create a feature gate
+title: Create a feature flag
 sidebar_label: Create
-slug: /feature-gates/create-new
+slug: /feature-flags/create-new
 ---
+
+:::note
+
+Usually referred to online as _feature flags_, the Statsig UI and SDKs call them _feature gates_.
+
+:::
 
 To create a new feature gate, 
 - Log into the Statsig console at https://console.statsig.com 

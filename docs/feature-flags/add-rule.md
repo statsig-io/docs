@@ -1,9 +1,15 @@
 ---
 title: Adding Rules
 sidebar_label: Add rule
-slug: /feature-gates/add-rule
+slug: /feature-flags/add-rule
 ---
-## Create a rule for a feature gate
+## Create a rule for a feature flag
+
+:::note
+
+Usually referred to online as _feature flags_, the Statsig UI and SDKs call them _feature gates_.
+
+:::
 
 By default, a feature gate check returns **false** when there are no rules configured to target a set of users. You can add a rule to a feature gate to expose the new feature to a targeted set of users as follows: 
 - Log into the Statsig console at https://console.statsig.com 
