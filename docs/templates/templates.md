@@ -21,7 +21,7 @@ To create a new template from Project Settings, navigate to **Settings** -> **Pr
 ![Screen Shot 2024-03-26 at 1 54 16 PM](https://github.com/statsig-io/docs/assets/101903926/dee2680f-18b9-414e-a7a4-a4fd5c823b22)
 
 ### Converting an Existing Config into a Template 
-If you create a new config that you think would be useful to more folks on the team as a template, you can convert an existing (or currently being created) config into a template. To do this, in the config you wish to templatize, tap the "..." menu and select **Save as Template**. This will prompt you to name your template and add a description before saving. 
+If you create a new config that you think would be useful to more folks on the team as a template, you can convert an existing (or currently being created) config into a template. To do this, in the config you wish to convert to a template, tap the "..." menu and select **Save as Template**. This will prompt you to name your template and add a description before saving. 
 
 ![Screen Shot 2024-03-26 at 1 55 55 PM](https://github.com/statsig-io/docs/assets/101903926/4768129f-f91a-4697-aaf7-d9950cdde4d2)
 
