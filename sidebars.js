@@ -685,6 +685,15 @@ module.exports = {
             "org-admin/gates_policy",
           ],
         },
+        {
+          type: "category",
+          label: "Templates",
+          link: {
+            type: "doc",
+            id: "templates/templates",
+          },
+          items: [],
+        },
       ],
     },
     "faq",
