@@ -38,3 +38,19 @@ To create a config using a template, at the time of config creation, select a te
 ![Screen Shot 2024-03-26 at 5 52 15 PM](https://github.com/statsig-io/docs/assets/101903926/b6287605-3740-49a5-acf2-224642e0499b)
 
 ## Managing Templates- Settings & Permissions
+There are a few key layers of settings governing templates, namely at the- 
+1. Org level
+2. Team level
+
+### Org-level Templates Settings 
+Within Experiment and Gate Policies (**Organization Settings** -> **Organization Info** -> **Experiment Settings**/ **Gate Settings**), you can enforce that a template is used for any new gate/ experiment creation. Only organization admins can configure this setting. NOTE that you must create at least 1 experiment/ gate template for users to choose if you toggle on this setting, otherwise they will be blocked in creating new configs. 
+
+![Screen Shot 2024-03-26 at 5 58 50 PM](https://github.com/statsig-io/docs/assets/101903926/7cbb069b-8060-4574-9fe9-e2859abdaaf4)
+
+
+### Team-level Templates Settings
+At the team-level, you can configure which templates members of that team can choose from at the time of config creation. You can also choose whether to require use of a template or not at the team level (note that this setting only applies if templates aren't already required at the organization-level, in which case that overrides any team-level configuration). 
+
+To configure team-specific templates, navigate to **Settings** -> **Project Settings** -> **Members** -> **Teams** -> choose a team -> **Settings** and then choose which templates are allowed for experiments and gates respectively. 
+
+![Screen Shot 2024-03-26 at 6 05 40 PM](https://github.com/statsig-io/docs/assets/101903926/08d38cb7-3a4d-4220-afa8-419bfedc531e)
