@@ -38,6 +38,7 @@ We're actively working on adding more metric types - refer to the crosstab below
 | - Latest Value        | Is the user a subscriber today?                     | Daily Active Users                                     | 1/0 flag for participation on latest available day of data | Count of users                 |                      |
 | Ratio                 | revenue per page hit, revenue per new user          | Value of Numerator/Value of Denominator based on types | Value of numerator, denominator based on types          | Sum(numerators)/Sum(denominators) | Delta Method applied |
 | Funnel                | conversion through a 5-step buy flow                | Value of Numerator/Value of Denominator based on types | For each step, did the user complete all previous steps | Sum(completions)/Sum(step starts) | Delta Method applied |
+| Percentile            | p99.5 latency on page load                          | PX of all daily values observed                        | N/A                                                     | Xth   Percentile of value column  | Uses the outer CI method |
 
 You can think of each of these in terms of a SQL query. The means of the experiment groups are either calculated directly (for ratios and mean metrics) or as the group total divided by the group population.
 
@@ -125,6 +126,17 @@ GROUP BY user_id;
 SELECT
   group_id,
   SUM(value) as total,
+  COUNT(distinct user_id) as population
+FROM user_data
+GROUP BY group_id;
+```
+
+### Percentile
+```
+-- Group Level
+SELECT
+  group_id,
+  PERCENTILE(value, percentile_level) as value,
   COUNT(distinct user_id) as population
 FROM user_data
 GROUP BY group_id;
