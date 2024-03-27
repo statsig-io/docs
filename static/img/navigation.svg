@@ -12,7 +12,7 @@
 <path d="M318 207L322 210L318 213" stroke="#68A4E1" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M318 359L322 362L318 365" stroke="#68A4E1" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M470 207L474 210L470 213" stroke="#68A4E1" stroke-linecap="round" stroke-linejoin="round"/>
-<a href="/feature-gates/working-with" target="_top">
+<a href="/feature-flags/working-with" target="_top">
 <g filter="url(#filter0_d_87_325)">
 <rect x="170" y="12" width="92.25" height="92.25" rx="5" fill="white"/>
 <g clip-path="url(#clip0_87_325)">

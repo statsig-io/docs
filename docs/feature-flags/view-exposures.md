@@ -1,8 +1,14 @@
 ---
 title: Exposures
 sidebar_label: Exposures
-slug: /feature-gates/view-exposures
+slug: /feature-flags/view-exposures
 ---
+
+:::note
+
+Usually referred to online as _feature flags_, the Statsig UI and SDKs call them _feature gates_.
+
+:::
 
 ## Gate Exposures
 
