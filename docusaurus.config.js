@@ -258,15 +258,23 @@ module.exports = {
             to: "/feature-flags/best-practices",
             from: "/feature-gates/best-practices",
           },
+          {
+            to: "/feature-flags/implement",
+            from: "/feature-gates/implement",
+          },
+          {
+            to: "/feature-flags/implement/client",
+            from: "/feature-gates/implement/client",
+          },
+          {
+            to: "/feature-flags/implement/server",
+            from: "/feature-gates/implement/server",
+          },
+          {
+            to: "/feature-flags/implement/http-api",
+            from: "/feature-gates/implement/http-api",
+          },
         ],
-        createRedirects(existingPath) {
-          if (existingPath.includes('/feature-gates/implement')) {
-            return [
-              existingPath.replace('/feature-gates/implement', '/feature-flags/implement'),
-            ];
-          }
-          return undefined; // Return a falsy value: no redirect created
-        },
       },
     ],
   ],
