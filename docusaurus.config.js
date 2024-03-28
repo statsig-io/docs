@@ -261,10 +261,8 @@ module.exports = {
         ],
         createRedirects(existingPath) {
           if (existingPath.includes('/feature-flags/implement')) {
-            // Redirect from /docs/team/X to /community/X and /docs/support/X to /community/X
             return [
               existingPath.replace('/feature-gates/implement', '/feature-flags/implement'),
-              existingPath.replace('/community', '/docs/support'),
             ];
           }
           return undefined; // Return a falsy value: no redirect created
