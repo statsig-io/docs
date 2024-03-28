@@ -223,6 +223,10 @@ module.exports = {
             from: "/feature-gates/create-new",
           },
           {
+            to: "/feature-flags",
+            from: "/feature-gates",
+          },
+          {
             to: "/feature-flags/add-rule",
             from: "/feature-gates/add-rule",
           },
