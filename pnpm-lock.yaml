@@ -18,7 +18,7 @@ dependencies:
     specifier: 2.4.3
     version: 2.4.3(@docusaurus/types@2.4.3)(react-dom@17.0.2)(react@17.0.2)(typescript@4.9.5)
   '@docusaurus/plugin-client-redirects':
-    specifier: 2.4.3
+    specifier: ^2.4.3
     version: 2.4.3(react-dom@17.0.2)(react@17.0.2)(typescript@4.9.5)
   '@docusaurus/preset-classic':
     specifier: 2.4.3
@@ -3611,6 +3611,7 @@ packages:
 
   /@swagger-api/apidom-ns-json-schema-draft-4@0.91.0:
     resolution: {integrity: sha512-oVxUVucnPSjcmUaYkTHAaqCGLbkgFEDWePGs+sqJj7WxhfJxLS+A8oFkvtXfTmfBel2ESQ7AFlReb/zhCpUfOg==}
+    requiresBuild: true
     dependencies:
       '@babel/runtime-corejs3': 7.23.8
       '@swagger-api/apidom-ast': 0.91.0
@@ -5820,6 +5821,7 @@ packages:
 
   /end-of-stream@1.4.4:
     resolution: {integrity: sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==}
+    requiresBuild: true
     dependencies:
       once: 1.4.0
     dev: false
