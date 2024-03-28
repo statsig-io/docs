@@ -211,6 +211,10 @@ module.exports = {
       {
         redirects: [
           {
+            to: "/feature-gates",
+            from: "/feature-flags",
+          },
+          {
             to: "/integrations/terraform/introduction",
             from: "/integrations/terraform",
           },
