@@ -260,7 +260,7 @@ module.exports = {
           },
         ],
         createRedirects(existingPath) {
-          if (existingPath.includes('/feature-flags/implement')) {
+          if (existingPath.includes('/feature-gates/implement')) {
             return [
               existingPath.replace('/feature-gates/implement', '/feature-flags/implement'),
             ];
