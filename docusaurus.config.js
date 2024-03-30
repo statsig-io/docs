@@ -223,7 +223,7 @@ module.exports = {
             from: "/feature-gates/create-new",
           },
           {
-            to: "/feature-flags",
+            to: "/feature-flags/working-with",
             from: "/feature-gates",
           },
           {
