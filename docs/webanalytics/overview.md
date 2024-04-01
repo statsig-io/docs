@@ -26,7 +26,7 @@ Follow these simple steps to get started with Web Analytics.
 </script>
 ```
 
-Your API KEY could be found in your Project Settings -> Keys & Enviroments. Reveal the Client API Key and copy it.
+Your API KEY could be found in your Project Settings -> Keys & Environments. Reveal the Client API Key and copy it.
 
 ![image](https://github.com/statsig-io/js-client/assets/74588208/0180a38a-2b3d-43c6-aa8e-4ea04c8ac751)
 
