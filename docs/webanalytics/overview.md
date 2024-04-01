@@ -36,7 +36,7 @@ Once your changes are live, you'll start to see the events flowing in your metri
 
 # Considerations
 
-For single page apps, or for more complex scenarios, look up how to [log events using Javacript](/client/jsClientSDK#logging-an-event).
+For single page apps, or for more complex scenarios, look up how to [log events using Javascript](/client/jsClientSDK#logging-an-event).
 
 # Exploring using Metrics Explorer
 
