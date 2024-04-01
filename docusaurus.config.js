@@ -224,11 +224,7 @@ module.exports = {
           },
           {
             to: "/feature-flags/working-with",
-            from: "/feature-gates",
-          },
-          {
-            to: "/feature-flags/working-with",
-            from: "/feature-flags",
+            from: ["/feature-gates","/feature-flags"]
           },
           {
             to: "/feature-flags/add-rule",
