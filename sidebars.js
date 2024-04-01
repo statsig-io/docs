@@ -339,6 +339,13 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Web Analytics",
+      items: [
+        "webanalytics/overview",
+      ],
+    },
+    {
+      type: "category",
       label: "Statsig Warehouse Native",
       link: {
         type: "doc",
