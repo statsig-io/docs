@@ -39,7 +39,8 @@ The **Metrics User Guide** consists of [Metrics 101](/metrics/101), [201](/metri
 - [Events Explorer](metrics/events-explorer)
 - [User Funnels](metrics/create-user-funnels)
 - [User Flows](metrics/create-user-flows)
-
+- [Heirarchical ID](metrics/hierarchical_id)
+- 
 Statsig combines product experimentation with real-time analytics to help you achieve 360° **product observability**. 
 
 ![image](https://user-images.githubusercontent.com/1315028/182259790-b898161f-6657-4d52-8367-f3bdeb8d6037.png)
