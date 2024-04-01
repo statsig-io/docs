@@ -58,6 +58,7 @@ dedeuplicated
 Deduplicating
 deduplicating
 docsRevamp
+Environments
 ETAs
 ETLs
 Ecommerce
@@ -315,6 +316,7 @@ userbase
 utc
 vercel
 wau
+webanalytics
 webhook
 winsorization
 wonkish
