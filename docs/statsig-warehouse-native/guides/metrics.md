@@ -270,6 +270,9 @@ Since the calculation window is set to 7, the user would have 7 days to complete
 
 ![Funnel Metric](https://user-images.githubusercontent.com/102695539/264097015-87f2d98e-c394-49a8-b133-30f479c78e50.png)
 
+### Hierarchical ID
+[Analysis with Hierarchical ID](https://docs.statsig.com/metrics/hierarchical-id)
+
 ## Viewing your Metric
 
 With the metric set up, you can load or schedule loads of a timeseries view to populate a timeseries that tracks the population value and aids in debugging/identifying data bugs. Additionally, this can be used to calculate the projected topline impact of releasing an experiment.
