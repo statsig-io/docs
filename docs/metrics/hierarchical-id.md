@@ -1,7 +1,7 @@
 ---
 title: Analysis with hierarchical ID
 sidebar_label: Hierarchical ID
-slug: /metrics/hierarchical_id
+slug: /metrics/hierarchical-id
 ---
 
 # Analysis with hierarchical ID
@@ -18,4 +18,3 @@ When you set up the metrics at the leaf level (”revenue per ride”) and run t
 For details on how we apply the delta method, visit: [Statsig - Delta Method Methodology](https://docs.statsig.com/stats-engine/methodologies/delta-method).
 
 This logic also applies to analyzing event-level outcomes, such as average purchase value, where each session represents a leaf, but randomization occurs at the user level.
-
