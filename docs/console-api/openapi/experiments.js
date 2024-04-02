@@ -202,6 +202,11 @@ module.exports = {
             ]
           }
         },
+        "description": "Forces specific users into the desired group.",
+        "required": [
+          "groupID",
+          "ids"
+        ],
         "properties": {
           "groupID": {
             "type": "string",
@@ -213,13 +218,20 @@ module.exports = {
             "items": {
               "type": "string"
             }
+          },
+          "environment": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "jr24xy66kjvq3"
+            }
+          },
+          "unitType": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "sui2dupy7xme6"
+            }
           }
-        },
-        "required": [
-          "groupID",
-          "ids"
-        ],
-        "description": "Forces specific users into the desired group."
+        }
       },
       "tags": {
         "title": "tags",
