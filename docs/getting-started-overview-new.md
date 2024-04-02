@@ -28,5 +28,5 @@ There are two ways to leverage Statsig's core products: Statsig Cloud (we host y
 Once you know whether Statsig Cloud or Statsig Warehouse Native is a better fit for your organization, choose the “Getting Started” guide that best fits your first use-case for Statsig. Read more about choosing between the two models [here](https://statsig.com/blog/deciding-cloud-hosted-versus-warehouse-native-experimentation-platforms).
 
 :::info
-Have a question or need help getting set up? Our Eng, Data, and Product teams are ready to answer questions in our [Slack community](https://www.statsig.com/slack).
+Have a question or need help getting set up? Our Eng, Data, and Product teams are ready to answer questions in our [Slack community](https://www.statsig.com/slack)
 :::
