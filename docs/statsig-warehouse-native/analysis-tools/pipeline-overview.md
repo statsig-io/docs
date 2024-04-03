@@ -62,3 +62,22 @@ Statsig generates experiment-level tables - this makes it easy to do your own fo
 Clicking into the history icon on your pulse results, you'll be able to see the Jobs and IDs we ran for each pulse reload, alongside relevant information on compute time and cost.
 
 This will also be fully transparent from your own Warehouse's history and usage management, but having the costs in console is helpful knowledge for the cross-functional experimentation teams running the analysis.
+
+
+## Exposure Export Table
+Statsig dedupes and records each user's first exposure to an experiment into a table in your warehouse. This table name is configurable in the Data Connection setup and defaults to statsig_forwarded_exposures. This table contains each user's first exposure to an experiment. For feature gates, we dedupe and record exposures for partial rollouts (e.g. 5% or 50% rollouts - but not 0% or 100% rollouts).
+
+
+
+| Column Name             | Data Type | Description                                                                                   |
+| ----------------------- | --------- | --------------------------------------------------------------------------------------------- |
+| experiment_id           | string    | The identifier for the gate/experiment                                                        |
+| group_id				        | string    | groupID for experiments; ruleID+Pass/Fail for gates                                           |
+| group_name  		        | string    | Name of the experiment group (e.g. Control vs Test) (Coming soon, ETA April 15                |
+| user_id                 | string    | The ID passed in as the Statsig userID                                                        |
+| stable_id               | string    | Statsig Client SDK managed stable device identifier                                           |
+| \[your custom ids]       | string    | One column for every custom unitID you use on Statsig                                        |
+| timestamp               | timestamp | Statsig Client SDK managed stable device identifier                                           |
+| user_dimensions         | object    | Warehouse specific object with all the user dimensions                                        |
+| ts                      | timestamp | Timestamp of the first exposure                                                               |
+
