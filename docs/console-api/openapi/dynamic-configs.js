@@ -134,6 +134,7 @@ module.exports = {
                         "rules": [
                           {
                             "name": "All Conditions",
+                            "id": "38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 10,
                             "conditions": [
                               {
@@ -177,6 +178,7 @@ module.exports = {
                         "rules": [
                           {
                             "name": "All Conditions",
+                            "id": "38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 10,
                             "conditions": [
                               {
@@ -664,6 +666,7 @@ module.exports = {
                         "rules": [
                           {
                             "name": "All Conditions",
+                            "id": "38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 10,
                             "conditions": [
                               {
@@ -830,6 +833,7 @@ module.exports = {
                         "rules": [
                           {
                             "name": "All Conditions",
+                            "id": "38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 10,
                             "conditions": [
                               {
@@ -987,6 +991,7 @@ module.exports = {
                         "rules": [
                           {
                             "name": "All Conditions",
+                            "id": "38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 10,
                             "conditions": [
                               {
@@ -1030,6 +1035,7 @@ module.exports = {
                         "rules": [
                           {
                             "name": "All Conditions",
+                            "id": "38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 10,
                             "conditions": [
                               {
