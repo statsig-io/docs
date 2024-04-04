@@ -11,7 +11,7 @@ There are several cases where the experiment assignment unit differs from the un
 2. To expose on a logged-out ID and measure logged-in revenue, use ID resolution.
 3. To aggregate all a user's businesses' revenue as a user-level metric, address this by tagging the business revenue with the user ID of the owner.
  
-For the first scenario, we have this demo experiment to illustrate how ratio metrics should be defined. In [the experiment](https://www.statsig.me/l/bmwpnhu9):
+For the first scenario, we have [this demo experiment](https://www.statsig.me/l/bmwpnhu9) to illustrate how ratio metrics should be defined. :
 - The unit of assignment is the org_id.
 - Each org_id is associated with multiple user_ids.
 - The primary metric is to analyze revenue per user.
