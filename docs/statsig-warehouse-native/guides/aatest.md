@@ -21,5 +21,5 @@ FROM <my_event/metrics_table>
 ```
 
 Note : This script works on BigQuery. Replace farm_fingerprint with a hash function for your warehouse.
-Snowflake : TO_NUMBER(MD5(TO_VARCHAR(user_id)), 16)
+Snowflake : HASH(events.datadog_user_id, 'SHA256')
 
