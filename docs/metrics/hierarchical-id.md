@@ -1,18 +1,21 @@
 ---
-title: Analysis with hierarchical ID
-sidebar_label: Hierarchical ID
-slug: /metrics/hierarchical-id
+title: Analysis with different IDs
+sidebar_label: Different IDs
+slug: /metrics/different-ids
 ---
 
-# Analysis with hierarchical ID
+# Analysis when the unit of assignment and the unit of analysis are different
 
-If your IDs have a "one-to-many" or "root-to-leaf" relationship, you can do two kinds of analysis
+There are a few cases when your experiment assignment is different than the unit you want to analyze on, each with a different recommendation solution:
 
-1. You can choose your randomization unit to be either root or leaf, with our support of multiple IDs -- You can specify the different IDs in assignment, or provide an ID mapping table when you set up the experiment.
+1. I want to measure session-level data in a user-level experiment → use ratio metrics
+2. I want to expose on a logged-out ID and measure logged-in revenue -> ID resolution
+3. I want to sum up all of a user's businesses' revenue as a user-level metric -> solve on my end by tagging the business revenue with a userid of the owner
 
-2. You can choose your randomization unit to be root and do analysis on both roof and leaf. This doc covers how.
-
-For instance, consider Uber, where the unit of randomization is "drivers." Each driver may complete multiple "rides." To measure the impact of an experiment of “sending different notifications to different drivers” on "revenue per ride," you should set up the "revenue per ride" metric in the Metrics Catalog as a ratio metric. The numerator is the sum of revenue and the denominator is the count of rides (or count distinct of ride_id, depending on your data model)
+For the first case, we have created a demo experiment to showcase how the ratio metrics should be defined. In the experiment: https://www.statsig.me/l/bmwpnhu9
+- The unit of assignment is org_id
+- Each org_id contains multiple user_ids
+- We want to analyze revenue per user
 
 In the Stats Engine, we apply the delta method to calculate variance and confidence intervals.
 
