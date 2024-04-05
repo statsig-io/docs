@@ -12,9 +12,11 @@ There are several cases where the experiment assignment unit differs from the un
 3. To aggregate all a user's businesses' revenue as a user-level metric, address this by tagging the business revenue with the user ID of the owner.
  
 For the first scenario, we have this demo experiment to illustrate how ratio metrics should be defined. In [the experiment](https://www.statsig.me/l/bmwpnhu9):
-- The unit of assignment is the org_id.
-- Each org_id is associated with multiple user_ids.
-- The primary metric is to analyze revenue per user.
+- The [unit of assignment is the org_id](https://console.statsig.com/3dElKM5STY5EC8SG2zjhK4/assignment_sources/aqILGOV81t4BS9PLYaJFM).
+- [Each org_id is associated with multiple user_ids](https://console.statsig.com/3dElKM5STY5EC8SG2zjhK4/metrics/metric_sources/265jYDifYZMVcVAVQIbm56).
+- We want to analyze the impact of this org_id experiment on the revenue per user metric.
+- The [Revenue per unit](https://console.statsig.com/3dElKM5STY5EC8SG2zjhK4/metrics/metrics_catalog/Revenue%20per%20unit/user_warehouse/setup) metric shows the wrong way of defining this ratio metric, because the denominator is the org_id, following the setup of the experiment
+- The [Revenue_over_num_user_id](https://console.statsig.com/3dElKM5STY5EC8SG2zjhK4/metrics/metrics_catalog/Revenue_over_users/user_warehouse/setup) metric shows the right way of defining this ratio metric.
 You can check the assignment source, the metric definition, and the metric source for more understanding.
   
 In the Stats Engine, we utilize the delta method to calculate variance and confidence intervals.
