@@ -27,10 +27,7 @@ module.exports = {
                   "type": "object",
                   "properties": {
                     "message": {
-                      "type": "string",
-                      "x-stoplight": {
-                        "id": "a94j2stoyc1fi"
-                      }
+                      "$ref": "../models/message.json"
                     },
                     "data": {
                       "type": "object",
@@ -67,6 +64,9 @@ module.exports = {
                           "x-stoplight": {
                             "id": "fi1igkx2q6hcz"
                           }
+                        },
+                        "warehouseNative": {
+                          "$ref": "#/components/schemas/WarehouseNativeMetric"
                         },
                         "team": {
                           "type": "string",
@@ -299,233 +299,7 @@ module.exports = {
                     ]
                   },
                   "warehouseNative": {
-                    "type": "object",
-                    "x-stoplight": {
-                      "id": "9vl7kbw8i5dcj"
-                    },
-                    "description": "Warehouse native metric configuration.  [Documentation](https://docs.statsig.com/statsig-warehouse-native/guides/metrics)\n\nFor creating user warehouse metric, all configuration is within this object. \nFor other fields, only name, description, tags, and metric type will be used. ",
-                    "required": [
-                      "aggregation",
-                      "criteria"
-                    ],
-                    "properties": {
-                      "aggregation": {
-                        "x-stoplight": {
-                          "id": "lfjmt17tch06m"
-                        },
-                        "type": "string",
-                        "enum": [
-                          "count",
-                          "sum",
-                          "mean",
-                          "daily_participation",
-                          "ratio",
-                          "funnel"
-                        ]
-                      },
-                      "metricSourceName": {
-                        "type": "string",
-                        "x-stoplight": {
-                          "id": "ayvlt60sjw1p8"
-                        },
-                        "description": "For Count, Sum, Mean, User Count aggregation types: the name of metric source\n\nFor Ratio aggregation type: the name of numerator metric source\n\nFor funnel aggregation type: you can ignore. Metric sources information are defined with funnelEvents"
-                      },
-                      "valueColumn": {
-                        "type": "string",
-                        "x-stoplight": {
-                          "id": "mam0jrwbidujm"
-                        },
-                        "description": "Name of value column used by Ratio and Sum aggregation type metric."
-                      },
-                      "criteria": {
-                        "type": "array",
-                        "x-stoplight": {
-                          "id": "ex505dyp0f2wq"
-                        },
-                        "items": {
-                          "$ref": "#/components/schemas/MetricEventCriteria"
-                        }
-                      },
-                      "customRollupWaitUntilEndToInclude": {
-                        "type": "boolean",
-                        "x-stoplight": {
-                          "id": "cbkz9ptj7w1kl"
-                        }
-                      },
-                      "denominatorMetricSourceName": {
-                        "type": "string",
-                        "x-stoplight": {
-                          "id": "tpbnwnw3mvcsz"
-                        }
-                      },
-                      "denominatorAggregation": {
-                        "x-stoplight": {
-                          "id": "t368xcah2n2kj"
-                        },
-                        "type": "string",
-                        "enum": [
-                          "count",
-                          "sum",
-                          "mean",
-                          "daily_participation",
-                          "ratio",
-                          "funnel"
-                        ]
-                      },
-                      "denominatorCustomRollupStart": {
-                        "type": "number",
-                        "x-stoplight": {
-                          "id": "r4rdlv63xbire"
-                        }
-                      },
-                      "denominatorCustomRollupEnd": {
-                        "type": "number",
-                        "x-stoplight": {
-                          "id": "8arfqv78bbooy"
-                        }
-                      },
-                      "denominatorCriteria": {
-                        "type": "array",
-                        "x-stoplight": {
-                          "id": "poelw6vvmsy1u"
-                        },
-                        "items": {
-                          "$ref": "#/components/schemas/MetricEventCriteria"
-                        }
-                      },
-                      "denominatorRollup": {
-                        "type": "string",
-                        "x-stoplight": {
-                          "id": "y43ozaitlu5yb"
-                        },
-                        "description": "Time window for metric. Specify \"custom\", if you want to provide customized time window. Default to be same as experiment time window"
-                      },
-                      "denominatorValueColumn": {
-                        "type": "string",
-                        "x-stoplight": {
-                          "id": "6rhr8t7q80ej1"
-                        }
-                      },
-                      "funnelEvents": {
-                        "type": "array",
-                        "x-stoplight": {
-                          "id": "hsvjlcsr3164x"
-                        },
-                        "items": {
-                          "$ref": "#/components/schemas/WarehuseNativeFunnelEvent"
-                        }
-                      },
-                      "funnelCalculationWindow": {
-                        "type": "number",
-                        "x-stoplight": {
-                          "id": "5s3k75ecev4rv"
-                        },
-                        "description": "How long to count funnel events"
-                      },
-                      "funnelStartCriteria": {
-                        "x-stoplight": {
-                          "id": "tfxypp65o1su4"
-                        },
-                        "type": "string",
-                        "enum": [
-                          "start_event",
-                          "exposure"
-                        ]
-                      },
-                      "funnelCountDistinct": {
-                        "x-stoplight": {
-                          "id": "b88udrm0pw3yt"
-                        },
-                        "type": "string",
-                        "enum": [
-                          "users",
-                          "sessions"
-                        ]
-                      },
-                      "metricBakeDays": {
-                        "type": "number",
-                        "x-stoplight": {
-                          "id": "mlmmzgu74p027"
-                        },
-                        "description": "[Documentation](https://docs.statsig.com/statsig-warehouse-native/features/cohort-metrics)"
-                      },
-                      "numeratorAggregation": {
-                        "x-stoplight": {
-                          "id": "ieknkdluxzu8e"
-                        },
-                        "type": "string",
-                        "enum": [
-                          "count",
-                          "sum",
-                          "mean",
-                          "daily_participation",
-                          "ratio"
-                        ],
-                        "description": "For ratio aggregation type. \nAggregation type for numerator"
-                      },
-                      "winsorizationHigh": {
-                        "type": "number",
-                        "x-stoplight": {
-                          "id": "zgspx5dslu0gp"
-                        },
-                        "description": "See [document](https://docs.statsig.com/stats-engine/methodologies/winsorization)",
-                        "minimum": 0,
-                        "maximum": 1
-                      },
-                      "winsorizationLow": {
-                        "type": "number",
-                        "x-stoplight": {
-                          "id": "pf1c88kumboh7"
-                        },
-                        "description": "See [document](https://docs.statsig.com/stats-engine/methodologies/winsorization)",
-                        "minimum": 0,
-                        "maximum": 1
-                      },
-                      "metadataColumns": {
-                        "type": "array",
-                        "x-stoplight": {
-                          "id": "cjyjhk3a4jhef"
-                        },
-                        "description": "Specify metadata that you wish to breakdown in experiment analysis.",
-                        "items": {
-                          "x-stoplight": {
-                            "id": "k1tuqu1n6cqcc"
-                          },
-                          "type": "string"
-                        }
-                      },
-                      "rollupTimeWindow": {
-                        "x-stoplight": {
-                          "id": "nk6tt9qmhty60"
-                        },
-                        "type": "string",
-                        "enum": [
-                          "max",
-                          "latest",
-                          "custom"
-                        ]
-                      },
-                      "customRollUpStart": {
-                        "type": "number",
-                        "x-stoplight": {
-                          "id": "9paq73h2m0gwh"
-                        },
-                        "description": "Custom time window start date (Days since exposure)\n"
-                      },
-                      "customRollUpEnd": {
-                        "type": "number",
-                        "x-stoplight": {
-                          "id": "hkolnyqm8whud"
-                        },
-                        "description": "Custom time window end date(Days since exposure)"
-                      },
-                      "cupedAttributionWindow": {
-                        "type": "number",
-                        "x-stoplight": {
-                          "id": "1qig1jsbvvmbk"
-                        }
-                      }
-                    }
+                    "$ref": "#/components/schemas/WarehouseNativeMetric"
                   },
                   "team": {
                     "type": "string",
@@ -957,28 +731,7 @@ module.exports = {
                       "$ref": "../models/message.json"
                     },
                     "data": {
-                      "type": "object",
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        },
-                        "type": {
-                          "type": "string"
-                        },
-                        "description": {
-                          "type": "string"
-                        },
-                        "isHidden": {
-                          "type": "boolean"
-                        },
-                        "team": {
-                          "type": "string",
-                          "x-stoplight": {
-                            "id": "jdefsxmkmjpop"
-                          },
-                          "description": "Enterprise only"
-                        }
-                      }
+                      "$ref": "#/components/schemas/MetricDefinition"
                     }
                   }
                 },
@@ -1069,6 +822,9 @@ module.exports = {
                   "isVerified": {
                     "type": "boolean",
                     "description": "This is used to display a \"verified\" icon next to this metric throughout the Statsig Console."
+                  },
+                  "warehouseNative": {
+                    "$ref": "#/components/schemas/WarehouseNativeMetric"
                   },
                   "unitTypes": {
                     "type": "array",
@@ -1179,6 +935,14 @@ module.exports = {
                           "valueColumn": "price_usd"
                         }
                       }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/MetricDefinition"
                     }
                   }
                 },
@@ -1939,7 +1703,10 @@ module.exports = {
                           "timestampColumn": "ts",
                           "timestampAsDay": true,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "userID" },
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "userID"
+                            },
                             {
                               "statsigUnitID": "deviceID",
                               "column": "device_id"
@@ -1958,7 +1725,10 @@ module.exports = {
                           "timestampColumn": "ts",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "userID" },
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "userID"
+                            },
                             {
                               "statsigUnitID": "deviceID",
                               "column": "device_id"
@@ -1973,7 +1743,10 @@ module.exports = {
                           "timestampColumn": "ts",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "userID" },
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "userID"
+                            },
                             {
                               "statsigUnitID": "deviceID",
                               "column": "device_id"
@@ -1988,7 +1761,10 @@ module.exports = {
                           "timestampColumn": "ts",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "userID" }
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "userID"
+                            }
                           ]
                         },
                         {
@@ -1999,7 +1775,10 @@ module.exports = {
                           "timestampColumn": "ts",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "userID" }
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "userID"
+                            }
                           ]
                         },
                         {
@@ -2010,7 +1789,10 @@ module.exports = {
                           "timestampColumn": "ts",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "userID" }
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "userID"
+                            }
                           ]
                         },
                         {
@@ -2044,7 +1826,10 @@ module.exports = {
                           "timestampColumn": "timestamp",
                           "timestampAsDay": false,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "userID" }
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "userID"
+                            }
                           ]
                         },
                         {
@@ -2084,7 +1869,10 @@ module.exports = {
                           "timestampColumn": "ts",
                           "timestampAsDay": true,
                           "idTypeMapping": [
-                            { "statsigUnitID": "userID", "column": "userID" }
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "userID"
+                            }
                           ]
                         }
                       ]
@@ -2305,15 +2093,25 @@ module.exports = {
           "id": "rrwb1zi0llrj1"
         },
         "type": "object",
+        "required": [
+          "value",
+          "unit_type"
+        ],
         "properties": {
           "value": {
             "type": "number",
             "description": "Metric value for the given unit_type"
           },
-          "unit_type": { "type": "string", "description": "Which unitType" },
-          "input_rows": {
+          "unit_type": {
+            "type": "string",
+            "description": "Which unitType"
+          },
+          "row_count": {
             "type": "integer",
-            "description": "row count for imported metric"
+            "description": "row count for imported metric",
+            "x-stoplight": {
+              "id": "ymzgfdzz1p850"
+            }
           },
           "numerator": {
             "type": "number",
@@ -2323,11 +2121,7 @@ module.exports = {
             "type": "number",
             "description": "Denominator of a ratio metric"
           }
-        },
-        "required": [
-          "value",
-          "unit_type"
-        ]
+        }
       },
       "MetricEventCriteria": {
         "title": "MetricEventCriteria",
@@ -2496,6 +2290,422 @@ module.exports = {
               "id": "86nyjespkr46c"
             },
             "description": "Name of column which being used as session identifier. Funnel event with the same metric source have to have the same identifier column"
+          }
+        }
+      },
+      "WarehouseNativeMetric": {
+        "title": "WarehouseNativeMetric",
+        "x-stoplight": {
+          "id": "wptayqp5ccog0"
+        },
+        "type": "object",
+        "properties": {
+          "aggregation": {
+            "x-stoplight": {
+              "id": "lfjmt17tch06m"
+            },
+            "type": "string",
+            "enum": [
+              "count",
+              "sum",
+              "mean",
+              "daily_participation",
+              "ratio",
+              "funnel",
+              "count_distinct",
+              "percentile"
+            ]
+          },
+          "metricSourceName": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "ayvlt60sjw1p8"
+            },
+            "description": "For Count, Sum, Mean, User Count aggregation types: the name of metric source\n\nFor Ratio aggregation type: the name of numerator metric source\n\nFor funnel aggregation type: you can ignore. Metric sources information are defined with funnelEvents"
+          },
+          "criteria": {
+            "$ref": "#/components/schemas/MetricEventCriteria"
+          },
+          "waitForCohortWindow": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "cbkz9ptj7w1kl"
+            }
+          },
+          "denominatorCriteria": {
+            "$ref": "#/components/schemas/MetricEventCriteria"
+          },
+          "denominatorAggregation": {
+            "x-stoplight": {
+              "id": "t368xcah2n2kj"
+            },
+            "type": "string",
+            "enum": [
+              "count",
+              "sum",
+              "mean",
+              "daily_participation",
+              "ratio",
+              "funnel",
+              "count_distinct",
+              "percentile"
+            ]
+          },
+          "denominatorCustomRollupEnd": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "8arfqv78bbooy"
+            }
+          },
+          "denominatorCustomRollupStart": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "r4rdlv63xbire"
+            }
+          },
+          "denominatorMetricSourceName": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "tpbnwnw3mvcsz"
+            }
+          },
+          "denominatorRollupTimeWindow": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "y43ozaitlu5yb"
+            },
+            "description": "Time window for metric. Specify \"custom\", if you want to provide customized time window. Default to be same as experiment time window"
+          },
+          "denominatorValueColumn": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "6rhr8t7q80ej1"
+            }
+          },
+          "funnelCalculationWindow": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "5s3k75ecev4rv"
+            },
+            "description": "How long to count funnel events"
+          },
+          "funnelCountDistinct": {
+            "x-stoplight": {
+              "id": "b88udrm0pw3yt"
+            },
+            "type": "string",
+            "enum": [
+              "users",
+              "sessions"
+            ]
+          },
+          "funnelEvents": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "hsvjlcsr3164x"
+            },
+            "items": {
+              "$ref": "#/components/schemas/WarehuseNativeFunnelEvent"
+            }
+          },
+          "funnelStartCriteria": {
+            "x-stoplight": {
+              "id": "tfxypp65o1su4"
+            },
+            "type": "string",
+            "enum": [
+              "start_event",
+              "exposure"
+            ]
+          },
+          "metricDimensionColumns": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "cjyjhk3a4jhef"
+            },
+            "description": "Specify metadata that you wish to breakdown in experiment analysis.",
+            "items": {
+              "x-stoplight": {
+                "id": "k1tuqu1n6cqcc"
+              },
+              "type": "string"
+            }
+          },
+          "metricBakeDays": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "mlmmzgu74p027"
+            },
+            "description": "[Documentation](https://docs.statsig.com/statsig-warehouse-native/features/cohort-metrics)"
+          },
+          "numeratorAggregation": {
+            "x-stoplight": {
+              "id": "ieknkdluxzu8e"
+            },
+            "type": "string",
+            "enum": [
+              "count",
+              "sum",
+              "mean",
+              "daily_participation",
+              "ratio",
+              "funnel",
+              "count_distinct",
+              "percentile"
+            ],
+            "description": "For ratio aggregation type. \nAggregation type for numerator"
+          },
+          "valueColumn": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "6fe6gdpmt0hmd"
+            }
+          },
+          "winsorizationHigh": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "zgspx5dslu0gp"
+            },
+            "description": "See [document](https://docs.statsig.com/stats-engine/methodologies/winsorization)",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "winsorizationLow": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "pf1c88kumboh7"
+            },
+            "description": "See [document](https://docs.statsig.com/stats-engine/methodologies/winsorization)",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "cupedAttributionWindow": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "1qig1jsbvvmbk"
+            }
+          },
+          "rollupTimeWindow": {
+            "x-stoplight": {
+              "id": "nk6tt9qmhty60"
+            },
+            "type": "string",
+            "enum": [
+              "max",
+              "latest",
+              "custom"
+            ]
+          },
+          "customRollUpStart": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "9paq73h2m0gwh"
+            },
+            "description": "Custom time window start date (Days since exposure)\n"
+          },
+          "customRollUpEnd": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "hkolnyqm8whud"
+            },
+            "description": "Custom time window end date(Days since exposure)"
+          }
+        }
+      },
+      "MetricDefinition": {
+        "title": "MetricCreation",
+        "x-stoplight": {
+          "id": "9npn4c8dq0tku"
+        },
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "y4bouei2kcsu3"
+            }
+          },
+          "type": {
+            "x-stoplight": {
+              "id": "hk74y9tzkiqzl"
+            },
+            "enum": [
+              "ratio",
+              "mean",
+              "event_count_custom",
+              "funnel",
+              "composite",
+              "composite_sum",
+              "sum",
+              "undefined",
+              "user_warehouse"
+            ]
+          },
+          "isHidden": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "6vhumtxumwu5t"
+            }
+          },
+          "isVerified": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "r345p7sc72w4q"
+            }
+          },
+          "isReadOnly": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "alruvzb8zekf9"
+            }
+          },
+          "unitTypes": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "hmsqnxu0g3l5o"
+            },
+            "items": {
+              "x-stoplight": {
+                "id": "d0re76uib15e0"
+              },
+              "type": "string"
+            }
+          },
+          "metricEvents": {
+            "$ref": "#/components/schemas/MetricEvents"
+          },
+          "metricComponentMetrics": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "ohjyt7vh268zp"
+            },
+            "items": {
+              "x-stoplight": {
+                "id": "mpebwt92gy4bv"
+              },
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "1v29bn5wg6cc7"
+                  }
+                },
+                "type": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "nw4bzon2c6qod"
+                  }
+                }
+              }
+            }
+          },
+          "description": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "0n21w1msiaa73"
+            }
+          },
+          "directionality": {
+            "x-stoplight": {
+              "id": "u1kuzoxsu18v9"
+            },
+            "enum": [
+              "increase",
+              "decrease"
+            ],
+            "description": "default: increase"
+          },
+          "tags": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "bmqblvjep51fv"
+            },
+            "items": {
+              "x-stoplight": {
+                "id": "hkk7895a1ye6a"
+              },
+              "type": "string"
+            }
+          },
+          "isPermanent": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "1y9mu17zkfyug"
+            }
+          },
+          "rollupTimeWindow": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "c47j2yi9537i5"
+            }
+          },
+          "customRollUpStart": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "828233rpvhumk"
+            }
+          },
+          "customRollUpEnd": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "ajqodb8yamog5"
+            }
+          },
+          "funnelEventList": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "fskp8bmrrgphd"
+            },
+            "items": {
+              "x-stoplight": {
+                "id": "5y86c1287nbog"
+              },
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "h9tzqgtt3xh1o"
+                  }
+                },
+                "type": {
+                  "x-stoplight": {
+                    "id": "za69di76bhyeo"
+                  },
+                  "enum": [
+                    "event_dau",
+                    "event_user",
+                    "event_count",
+                    "event_count_custom"
+                  ]
+                }
+              }
+            }
+          },
+          "funnelCountDistinct": {
+            "x-stoplight": {
+              "id": "wbn2t499fg910"
+            },
+            "enum": [
+              "events",
+              "users"
+            ]
+          },
+          "warehouseNative": {
+            "$ref": "#/components/schemas/WarehouseNativeMetric"
+          },
+          "team": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "kx5ihpgmfvirl"
+            }
+          },
+          "id": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "xw3fu6vgz7qk3"
+            }
           }
         }
       }
