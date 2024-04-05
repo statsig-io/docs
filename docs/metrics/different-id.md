@@ -15,8 +15,8 @@ For the first scenario, we have this demo experiment to illustrate how ratio met
 - The [unit of assignment is the org_id](https://console.statsig.com/3dElKM5STY5EC8SG2zjhK4/assignment_sources/aqILGOV81t4BS9PLYaJFM).
 - [Each org_id is associated with multiple user_ids](https://console.statsig.com/3dElKM5STY5EC8SG2zjhK4/metrics/metric_sources/265jYDifYZMVcVAVQIbm56).
 - We want to analyze the impact of this org_id experiment on the revenue per user metric.
-- The [Revenue per unit](https://console.statsig.com/3dElKM5STY5EC8SG2zjhK4/metrics/metrics_catalog/Revenue%20per%20unit/user_warehouse/setup) metric shows the wrong way of defining this ratio metric, because the denominator is the org_id, following the setup of the experiment
-- The ["Revenue_over_numberof_user_id"](https://console.statsig.com/3dElKM5STY5EC8SG2zjhK4/metrics/metrics_catalog/Revenue_over_users/user_warehouse/setup) metric shows the right way of defining this ratio metric.
+- The [Revenue per unit](https://console.statsig.com/3dElKM5STY5EC8SG2zjhK4/metrics/metrics_catalog/Revenue%20per%20unit/user_warehouse/setup) metric shows the wrong way of defining this ratio metric, because the denominator is the org_id, following the setup of the experiment.
+- The [Second metric](https://console.statsig.com/3dElKM5STY5EC8SG2zjhK4/metrics/metrics_catalog/Revenue_over_users/user_warehouse/setup) shows the right way of defining this ratio metric by using (count distinct user_id) as the denominator.
 You can check the assignment source, the metric definition, and the metric source for more understanding.
   
 In the Stats Engine, we utilize the delta method to calculate variance and confidence intervals.
