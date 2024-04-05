@@ -13,8 +13,7 @@ import TabItem from "@theme/TabItem";
 ```java
 
 StatsigUser user = new StatsigUser("user_id");
-Future<Boolean> featureOn = Statsig.checkGateAsync(user, "use_new_feature");
-Boolean isFeatureOn = featureOn.get()
+Boolean isFeatureOn = Statsig.checkGateSync(user, "use_new_feature");
 
 if (isFeatureOn) {
   // Gate is on, use new feature
@@ -30,7 +29,7 @@ if (isFeatureOn) {
 ```kotlin
 
 val user = StatsigUser("user_id");
-val featureOn = async { Statsig.checkGate(user, "use_new_feature") }.await()
+val featureOn = Statsig.checkGateSync(user, "use_new_feature")
 
 if (featureOn) {
   // Gate is on, use new feature

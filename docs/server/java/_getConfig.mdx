@@ -12,8 +12,7 @@ import TabItem from "@theme/TabItem";
 
 ```java
 
-Future<DynamicConfig> configFuture = Statsig.getConfig(user, "awesome_product_details");
-DynamicConfig config = configFuture.get();
+DynamicConfig config = Statsig.getConfigSync(user, "awesome_product_details");
 
 // The 2nd parameter is the default value to be used in case the given parameter name does not exist on
 // the Dynamic Config object. This can happen when there is a typo, or when the user is offline and the
@@ -29,7 +28,7 @@ Boolean shouldDiscount = config.getBoolean("discount", false);
 
 ```kotlin
 
-val config = async { Statsig.getConfig(user, "awesome_product_details") }.await()
+val config = Statsig.getConfigSync(user, "awesome_product_details")
 
 // The 2nd parameter is the default value to be used in case the given parameter name does not exist on
 // the Dynamic Config object. This can happen when there is a typo, or when the user is offline and the

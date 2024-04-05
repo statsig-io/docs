@@ -51,7 +51,9 @@ class StatsigOptions(
     var localMode: Boolean = false,
     var rulesetsSyncIntervalMs: Long = CONFIG_SYNC_INTERVAL_MS,
     var idListsSyncIntervalMs: Long = ID_LISTS_SYNC_INTERVAL_MS,
-    var dataStore: IDataStore? = null
+    var dataStore: IDataStore? = null,
+    var customLogger: LoggerInterface = defaultLogger,
+    var disableAllLogging: Boolean = false,
 ) {
 
     // to set the environment tier
