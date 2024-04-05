@@ -20,6 +20,7 @@ You can check the assignment source, the metric definition, and the metric sourc
 In the Stats Engine, we utilize the delta method to calculate variance and confidence intervals.
 - For mean metrics, we record a value indicating the number of observations per exposed unit in the records column of the staging data. This acts as the denominator or cluster-size value for delta calculations.
 - For general ratio metrics, we monitor the two component metrics (the ratio and the denominator) as independent metrics and combine them during the pulse analysis to derive a single metric from them.
+
 For more information on how we apply the delta method, visit: [Statsig - Delta Method Methodology.](https://docs.statsig.com/stats-engine/methodologies/delta-method). The reason we choose to use the delta method is to account for the covariance between the numerator and the denominator (i.e. more users per org is correlated with more revenue)
 
 This approach is also relevant for analyzing event-level outcomes, such as average purchase value, where randomization occurs at the user level, and each user may experience multiple session events.
