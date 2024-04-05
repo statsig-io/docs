@@ -1,0 +1,26 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="js-sdk-lang-choice"
+  defaultValue="ts"
+  values={[
+    {label: 'TypeScript', value: 'ts'},
+    {label: 'JavaScript', value: 'js'},
+  ]}>
+
+  <TabItem value="ts">
+
+```typescript
+Statsig.flushEvents();
+```
+
+  </TabItem>
+  <TabItem value="js">
+
+```jsx
+Statsig.flushEvents();
+```
+
+  </TabItem>
+</Tabs>
