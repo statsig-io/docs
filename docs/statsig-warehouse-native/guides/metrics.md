@@ -270,8 +270,8 @@ Since the calculation window is set to 7, the user would have 7 days to complete
 
 ![Funnel Metric](https://user-images.githubusercontent.com/102695539/264097015-87f2d98e-c394-49a8-b133-30f479c78e50.png)
 
-### Hierarchical ID
-[Analysis with Hierarchical ID](https://docs.statsig.com/metrics/hierarchical-id)
+### When Analysis Units and Assignment Units Are Different
+[Analysis with Different ID](https://docs.statsig.com/metrics/different-id)
 
 ## Viewing your Metric
 
