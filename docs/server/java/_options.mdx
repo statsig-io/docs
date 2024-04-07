@@ -1,4 +1,5 @@
 import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
+import { data_store } from "../concepts/data_store.mdx";
 
 You can pass in an optional parameter `options` in addition to the server secret during initialization to customize the Statsig client. Here are the current options and we are always adding more to the list:
 
@@ -15,3 +16,11 @@ You can pass in an optional parameter `options` in addition to the server secret
   - a callback function that's called whenever we have an update for the rules; it's called with a JSON string (used as is for `bootstrapValues` mentioned above) and a timestamp.
 - **localMode** - boolean, default false
   - <LocalModeSnippet type="server" />
+- **api** - String?, default null
+  - The API endpoint to use for initialization and logging. Default to `STATSIG_API_URL_BASE` 
+- **rulesetsSyncIntervalMs** - Long, default 10 * 1000
+- **idListsSyncIntervalMs** - Long, default 60 * 1000
+- **dataStore**
+  - [Data Store/Adapter Concept](https://docs.statsig.com/server/concepts/data_store)
+- **customLogger** - LoggerInterface
+- **disableAllLogging** - Boolean, default false
