@@ -70,3 +70,23 @@ abstract class IDataStore {
     abstract fun shutdown()
 }
 ```
+
+### LoggerInterface
+
+```kotlin
+interface LoggerInterface {
+    fun warning(message: String)
+    fun info(message: String)
+}
+
+val defaultLogger = object : LoggerInterface {
+
+    override fun warning(message: String) {
+        println(message)
+    }
+
+    override fun info(message: String) {
+        println(message)
+    }
+}
+```
