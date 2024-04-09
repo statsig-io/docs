@@ -234,6 +234,10 @@ if this toggle is set any user only 5 days from their first exposure would be ex
 
 Some metric types can include a dimension-based breakdown. This is very useful if you frequently want to see how the metric was influenced across high-level cuts like country or product category. This does increase the cost of calculation, as each dimension is functionally another metric for the purposes of analysis.
 
+### Thresholds
+
+Sum and count metrics can be configured to use a threshold. When using a threshold, the metric will measure if the user's sum or count metric surpassed a given threshold. This is usually combined with cohort windows to create a metric like "% of users who spent more than $100 in their first week". 
+
 ## Example Metrics
 
 ### Filtered Revenue Metric
