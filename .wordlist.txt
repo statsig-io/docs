@@ -36,6 +36,8 @@ CodeLens
 CustomIDs
 DAU
 dbfs
+de
+de-duplicated
 deltalake
 Disaggregate
 disaggregate
