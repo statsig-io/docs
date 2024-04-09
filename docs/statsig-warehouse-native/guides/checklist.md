@@ -7,7 +7,7 @@ sidebar_label: Setup Checklist
 Once you've connected your warehouse, and set up metrics sources and assignment sources, you can check the following items to make sure your setup is complete and correct.
 1. Primary keys 
 2. Timestamps
-3. Duplications
+3. Duplication
 4. Data availability
 
 After these checks, your offline results should match the results in the Statsig console, after turning off advanced features
