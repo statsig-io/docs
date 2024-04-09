@@ -4,7 +4,7 @@ slug: /statsig-warehouse-native/guides/checklist
 sidebar_label: Setup Checklist
 ---
 
-After you've linked your warehouse and set up both metrics and assignment sources, ensure your setup is complete and correct by checking the following items:
+After you've connected your warehouse and set up both metrics and assignment sources, you can ensure your setup is complete and correct by checking the following items:
 
 1. Primary keys
 2. Timestamps
@@ -78,5 +78,7 @@ When comparing a platform analysis to an **existing** experiment analysis that m
 
 # Make sure results match
 After completing the above four steps, your offline analysis should produce results that match those in the Statsig console. Note that the Statsig Console includes several advanced features, such as [winsorization](https://docs.statsig.com/stats-engine/methodologies/winsorization#winsorization-statsig-whn), [CUPED](https://docs.statsig.com/stats-engine/variance_reduction#cuped), and employs [the delta method](https://docs.statsig.com/stats-engine/variance#ratio-and-mean-metrics) to address ratio metrics. We recommend disabling these features initially when comparing results.
+
+If you have additional questions, just send us a slack message. We are happy to help!
 
 [This article](https://www.statsig.com/blog/how-to-analyze-an-experiment-from-databricks-tables) provides an example of conducting offline calculations in Databricks.
