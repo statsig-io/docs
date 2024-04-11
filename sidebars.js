@@ -359,6 +359,7 @@ module.exports = {
             "statsig-warehouse-native/guides/metrics",
             "statsig-warehouse-native/guides/assignment_sources",
             "statsig-warehouse-native/guides/experiments",
+            "statsig-warehouse-native/guides/checklist",
             "statsig-warehouse-native/guides/pulse",
             "statsig-warehouse-native/guides/sdks",
             "statsig-warehouse-native/guides/aatest",
