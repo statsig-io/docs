@@ -458,6 +458,21 @@ module.exports = {
               label: "On Device Evaluation",
               items: [
                 "client/jsLocalEvaluationSDK",
+                {
+                  type: "category",
+                  label: "New JavaScript (Beta)",
+                  link: {
+                    type: "doc",
+                    id: "client/js-on-device-eval-client",
+                  },
+                  items: [
+                    "client/js-device-eval-mono/MigrationFromOldSDK",
+                    // "client/javascript-mono/IntegrationNextJs",
+                    // "client/javascript-mono/IntegrationReact",
+                    "client/js-device-eval-mono/UsingSpecsDataAdapter",
+                    "client/js-device-eval-mono/ReactNativeUsage",
+                  ],
+                },
                 "client/swiftOnDeviceEvaluationSDK",
                 "client/androidOnDeviceEvaluationSDK",
               ],

@@ -1,0 +1,87 @@
+---
+title: Using SpecsDataAdapter
+sidebar_label: SpecsDataAdapter
+slug: /client/js-on-device-eval-client/using-evaluations-data-adapter
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+The `StatsigSpecsDataAdapter` is the default `SpecsDataAdapter` used by a `StatsigOnDeviceEvalClient` instance.
+
+It handles fetching and caching values from Statsig's servers. If required, you can create your own custom `SpecsDataAdapter`
+and provide it to the Statsig client via [StatsigOptions.dataAdapter](/client/js-on-device-eval-client#statsig-options).
+
+## Overview
+
+### Synchronous Behavior (Cache)
+
+When callling `StatsigOnDeviceEvalClient.initalizeSync`, the `StatsigSpecsDataAdapter` will load values
+from Cache and provide them to the client. The client will also call refresh in the background via
+`StatsigSpecsDataAdapter.getDataAsync`, leading to values lagging until the next time `initializeSync`.
+
+In practice, this means that for the very first session, there will be no values, and not until the next session will the cache have values.
+
+### Asynchronous Behavior (Network)
+
+When callling `StatsigOnDeviceEvalClient.initializeAsync`, the `StatsigSpecsDataAdapter` will load values
+from Cache and provide them to the client. The client will then block on a call to `StatsigSpecsDataAdapter.getDataAsync`,
+allowing the ability to await the latest values from Statsig.
+
+If you want the latest values, but do not want to await the asynchronous call, you may call `initializeAsync` and simply `.catch` the promise. Note that
+this could lead to values changing mid-session as newer values arrive from the network.
+
+## Advanced Usage
+
+### Getting the Data Adapter
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/on-device-eval-client/sample-on-device-get-data-adapter.tsx" />
+
+### Bootstrapping
+
+Bootstrapping allows you to provide the required data without a network call. This can be useful if you do not wish to make network calls during startup.
+
+If you are building a mobile app and want to bundle values with your application. Then you can load the values from a local file at startup and provide them to the data adapter.
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/on-device-eval-client/sample-on-device-bootstrap.tsx" />
+
+Note: You can get a copy of your current specs data by visiting: `https://api.statsigcdn.com/v1/download_config_specs/client-{YOUR_SDK_KEY}.json`
+
+### Custom Implementation
+
+If you would like to customize when and how data is fetched, as well as where it is stored, you can create your own class the conforms to the `SpecsDataAdapter` type.
+
+The `SpecsDataAdapter` type outlines the following functions:
+
+- `attach` - Called when the `SpecsDataAdapter` is passed into a `StatsigOnDeviceEvalClient` via `StatsigOptions`. This allows the `SpecsDataAdapter` to use
+  the same SDK Key and `StatsigOptions` as the `StatsigOnDeviceEvalClient` instance.
+
+  - ```typescript
+    attach: (sdkKey: string, options: StatsigOptionsCommon | null) => void
+    ```
+
+- `getDataSync` - Synchronously get evaluation data for the given user. Called during initializeSync. It is also called during
+  async update operations before StatsigDataAdapter.getDataAsync is called.
+
+  - ```typescript
+    getDataSync: () => DataAdapterResult | null;
+    ```
+
+- `getDataAsync` - Asynchronously get evaluation data for the given user. Called during initializeAsync.
+
+  - ```typescript
+    getDataAsync: (current: DataAdapterResult | null) => Promise<DataAdapterResult | null>;
+    ```
+
+- `prefetchData` - Manually trigger a fetch for new specs data.
+
+  - ```typescript
+    prefetchData: () => Promise<void>;
+    ```
+
+- `setData` - Manually set specs data.
+
+  - ```typescript
+    setData: (data: string) => Promise<void>;
+    ```
