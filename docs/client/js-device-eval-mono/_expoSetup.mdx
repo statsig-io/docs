@@ -1,0 +1,29 @@
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+## Expo Specific Setup
+
+### Create a Client
+
+Creating a Statsig client when using Expo has a slight
+twist when compared to pure JavaScript environments.
+
+Because storage in Expo is async (See [AsyncStorage](https://docs.expo.dev/versions/latest/sdk/async-storage/)), a warming step is required
+to load any cache values from disk. This warming performs some AsyncStorage.getItem operations that block the
+`StatsigProviderExpo` from rendering.
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/expo/src/app/snippets/snippet-expo-warming.tsx" />
+
+### Render the StatsigProvider
+
+Once the Statsig client is created and the warming step started, we can then pass them into
+the `StatsigProviderExpo` component for rendering.
+
+```typescript
+export function App(): JSX.Element {
+  return (
+    <StatsigProviderExpo client={myStatsigClient} cacheWarming={warming}>
+      {/* Render your App */}
+    </StatsigProviderExpo>
+  );
+}
+```

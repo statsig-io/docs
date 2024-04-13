@@ -1,0 +1,96 @@
+---
+sidebar_label: New JavaScript (Beta)
+title: New JavaScript Client SDK (Beta)
+---
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStartedRulesets,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  Shutdown,
+  CodeExamples,
+} from "./Templates/index.mdx";
+
+import OnDeviceEvalProsAndCons from "./Templates/_OnDeviceEvalProsAndCons.mdx";
+
+import * as _DataAdapter from "./js-device-eval-mono/_dataAdapter.mdx";
+export const DataAdapter = _DataAdapter;
+
+import * as _ClientEventEmitting from "./js-device-eval-mono/_clientEventEmitting.mdx";
+export const ClientEventEmitting = _ClientEventEmitting;
+
+import * as _MultiInstance from "./js-device-eval-mono/_multiInstance.mdx";
+export const MultiInstance = _MultiInstance;
+
+import CheckGate from "./js-device-eval-mono/_checkGate.mdx";
+import CreateUser from "./js-device-eval-mono/_createUserObject.mdx";
+import GetConfig from "./js-device-eval-mono/_getConfig.mdx";
+import GetExperiment from "./js-device-eval-mono/_getExperiment.mdx";
+import Initialize from "./js-device-eval-mono/_initialize.mdx";
+import Install from "./js-device-eval-mono/_install.mdx";
+import LogEvent from "./js-device-eval-mono/_logEvent.mdx";
+import MoreFAQs from "./js-device-eval-mono/_faqs.mdx";
+import Options from "./js-device-eval-mono/_options.mdx";
+import ShutdownSnippet from "./js-device-eval-mono/_shutdown.mdx";
+
+
+export const Result = SDKDocsBuilder(
+  {},
+  [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/js-client-monorepo",
+      },
+    ],
+    [
+      GettingStartedRulesets,
+      {
+        additionalWelcomeMessage: <OnDeviceEvalProsAndCons
+          sdkName="@statsig/js-on-device-eval-client"
+          otherSDK={{
+            name: "@statsig/js-client",
+            link: "/client/javascript-sdk",
+          }}
+        />,
+        sdkType: "JS using on device evaluations",
+        install: <Install />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        createUser: <CreateUser />,
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+      },
+    ],
+    [
+      CodeExamples,
+      {
+        link: "https://github.com/statsig-io/js-client-monorepo/tree/main/samples",
+        trailingMessage: "",
+      },
+    ],
+    [StatsigUser, {}],
+    [ClientEventEmitting, {}],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [DataAdapter, {}],
+    [FAQ, { faqs: <MoreFAQs /> }],
+  ],
+  toc
+);
+
+<>{Result}</>

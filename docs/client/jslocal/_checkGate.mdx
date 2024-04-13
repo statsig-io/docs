@@ -21,8 +21,11 @@ The checkGate API takes an optional third parameter with a set of parameters for
 export type CheckGateOptions = {
   disableExposureLogging: boolean;
 };
+```
 
-To check a gate with exposure logging disabled, you can set that field in the options.  Exposure logging will be disabled for that check only - you must pass that parameter with every check you wish to disable exposure logging for.
+To check a gate with exposure logging disabled, you can set that field in the options.  Exposure logging will be disabled for that check only 
+ - you must pass that parameter with every check you wish to disable exposure logging for.
+
 ```
 Statsig.checkGate(User, "my_feature", { disableExposureLogging: true });
 ```
