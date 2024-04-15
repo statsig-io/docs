@@ -6,7 +6,7 @@ slug: /metrics/different-id
 
 # Analysis When the Unit of Assignment and the Unit of Analysis Are Different
 
-There are several cases where the experiment assignment unit differs from the unit you wish to analyze. Each scenario requires a distinct resolution approach:
+There are several cases where the experiment assignment unit differs from the analysis unit. Each scenario requires a different solution:
 1. To measure session-level data in a user-level experiment, use ratio metrics.
 2. To expose on a logged-out ID and measure logged-in revenue, use ID resolution.
 3. To aggregate all a user's businesses' revenue as a user-level metric, address this by tagging the business revenue with the user ID of the owner.
