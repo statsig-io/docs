@@ -213,7 +213,7 @@
             }
           }
         },
-        "isAnalyisOnly": {
+        "isAnalysisOnly": {
           "type": "boolean",
           "description": "For Warehouse Native"
         },
