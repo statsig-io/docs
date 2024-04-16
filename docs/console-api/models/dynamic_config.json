@@ -71,6 +71,13 @@
             "id": "u4gan1b6frg27"
           }
         },
+        "defaultValueJsonC": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "akiipa6lbqvak"
+          },
+          "description": "Same as `defaultValue`, but may include comments if default value was updated with comments using JSON-C."
+        },
         "tags": {
           "type": "array",
           "x-stoplight": {
@@ -84,6 +91,20 @@
             "type": "string",
             "example": "a tag"
           }
+        },
+        "schema": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "rp4egcpvxiqt5"
+          },
+          "description": "A schema using JSON Schema Draft 2020-12 to enforce return values of this dynamic config's rules."
+        },
+        "schemaJsonC": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "sfn6h3gveb25s"
+          },
+          "description": "Same as `schema`, but may include comments if default value was updated with comments using JSON-C.\n\n"
         }
       }
     }
