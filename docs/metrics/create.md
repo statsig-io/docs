@@ -92,3 +92,7 @@ In the example below, the **Square** variant shows a lift in the **overall funne
 * The overall funnel conversion rate improvement for **Square** is primarily due to the higher conversion from _Checkout Event_ to _Purchase Event_ stages in the funnel.  
 
 ![image](https://user-images.githubusercontent.com/90343952/148440643-8e8a24bd-934d-4100-a15a-abcbcc4bb11c.png)
+
+### Custom Metrics & Dimensions
+For Custom Metrics that are composed of a single event (event count/ event dau, aggregation, etc.), the dimensions of the source event will be automatically pulled through into the Custom Metric and be exposed as dimensions of that Custom Metric. However, if your Custom Metric is composed of 2+ different events, any associated dimension(s) of the source input events will _not_ be pulled through as dimensions of the Custom Metric and are also not queryable today via the "Explore" tab in Pulse Results. 
+
