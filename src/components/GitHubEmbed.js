@@ -8,12 +8,15 @@ function getClient() {
   }
 
   const sdkDemoKey = "client-rfLvYGag3eyU0jYW5zcIJTQip7GXxSrhOFN69IGMjvq";
-  const { StatsigClient } = window.Statsig;
+  const { StatsigClient, runStatsigAutoCapture, runStatsigSessionReplay } =
+    window.Statsig;
 
   _client = new StatsigClient(sdkDemoKey, {
     userID: "",
   });
 
+  runStatsigAutoCapture(_client);
+  runStatsigSessionReplay(_client);
   _client.initializeSync();
 
   return _client;
@@ -23,7 +26,7 @@ function logRender(url, language) {
   try {
     getClient().logEvent({
       eventName: "gh_embed_render",
-      value: url,
+      value: url.replace("https://raw.githubusercontent.com/statsig-io", ""),
       metadata: { language },
     });
   } catch (error) {
