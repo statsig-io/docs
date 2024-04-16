@@ -17,7 +17,8 @@ function getClient() {
 
   runStatsigAutoCapture(_client);
   runStatsigSessionReplay(_client);
-  _client.initializeSync();
+
+  _client.initializeAsync().catch((err) => console.error(err));
 
   return _client;
 }
