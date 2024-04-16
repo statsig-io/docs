@@ -24,3 +24,40 @@ You can pass in an optional parameter `options` in addition to the server secret
   - [Data Store/Adapter Concept](https://docs.statsig.com/server/concepts/data_store)
 - **customLogger** - LoggerInterface
 - **disableAllLogging** - Boolean, default false
+- **proxyConfig** - ProxyConfig
+  ```kotlin
+    /**
+    * Represents configuration for a proxy.
+    *
+    * @property proxyHost The hostname or IP address of the proxy server.
+    * @property proxyPort The port number of the proxy server.
+    * @property proxyAuth Optional: Authentication credentials for the proxy server. 
+    *                     Pass in `Credentials.basic("username", "password")`.
+    * @property proxySchema The protocol scheme used by the proxy server. Defaults to "https".
+    */
+    data class ProxyConfig @JvmOverloads constructor(
+        var proxyHost: String,
+        var proxyPort: Int,
+        var proxyAuth: String? = null,
+        val proxySchema: String = "https"
+    )
+  
+  ```
+
+  **Example Usage**
+  
+  ```java
+
+    import okhttp3.Credentials;
+
+    // Create a ProxyConfig object With Auth
+    ProxyConfig proxyConfigWithAuth = new ProxyConfig("localhost", 8080, Credentials.basic("username", "password"), "https");
+
+    // Create a ProxyConfig object Without Auth
+    ProxyConfig proxyConfig = new ProxyConfig("localhost", 8080);
+
+    StatsigOptions options = new StatsigOptions();
+    options.setProxyConfig(proxyConfig);
+    Future initFuture = Statsig.initializeAsync(apiKey, options);
+    initFuture.get();
+  
