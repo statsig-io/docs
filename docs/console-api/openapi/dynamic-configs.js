@@ -1164,6 +1164,13 @@ module.exports = {
                     "type": "object",
                     "description": "The fallback JSON object when no rules are triggered"
                   },
+                  "defaultValueJsonC": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "tmr6k5uaqzz9a"
+                    },
+                    "description": "Same as `defaultValue`, but can accept comments. Only accepts valid JSON-C. Either this field or `defaultValue` may be provided, but providing both will throw an error."
+                  },
                   "tags": {
                     "type": "array",
                     "x-stoplight": {
@@ -1177,6 +1184,13 @@ module.exports = {
                       "type": "string",
                       "example": "a tag"
                     }
+                  },
+                  "schema": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "39eow704856tk"
+                    },
+                    "description": "A schema using JSON Schema Draft 2020-12 to enforce return values of this dynamic config's rules. When submitting a schema, all submitted return values (default value and rule return values) must match the schema. Alternatively, if no default values or rule return values are updated, existing rules and return values must already conform to the schema."
                   }
                 }
               },
