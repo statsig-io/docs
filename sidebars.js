@@ -290,6 +290,13 @@ module.exports = {
           label: "Metric Explorer",
           items: ["mex/drilldown", "mex/funnels", "mex/retention"],
         },
+        {
+          type: "category",
+          label: "Web Analytics",
+          items: [
+            "webanalytics/overview",
+          ],
+        },
         "mex/dashboards",
         {
           type: "category",
@@ -335,13 +342,6 @@ module.exports = {
         },
         "users/introduction",
         "insights/introduction",
-      ],
-    },
-    {
-      type: "category",
-      label: "Web Analytics",
-      items: [
-        "webanalytics/overview",
       ],
     },
     {
