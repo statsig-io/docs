@@ -21,12 +21,19 @@ Follow these simple steps to get started with Web Analytics.
 ## Install Statsig script on your website
 
 ```html
-<script
-  src="https://cdn.jsdelivr.net/npm/statsig-web-analytics/dist/index.min.js?apikey=[YOUR-API-KEY]">
+<script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@latest/build/statsig-js-client+session-replay+web-analytics.min.js"></script>
+<script>
+  const { StatsigClient, runStatsigAutoCapture, runStatsigSessionReplay } = window.Statsig;
+  
+  // put your client sdk key here - "client-XXXX"
+  const client = new StatsigClient("[YOUR-API-KEY]", {});
+  client.initializeAsync();
+  runStatsigAutoCapture(client);
+  runStatsigSessionReplay(client);
 </script>
 ```
 
-Your API KEY could be found in your Project Settings -> Keys & Environments. Reveal the Client API Key and copy it.
+Your API KEY could be found in your Project Settings -> Keys & Environments. Reveal the Client API Key, copy, and paste it over the [YOUR-API-KEY] in the snippet above
 
 ![image](https://github.com/statsig-io/js-client/assets/74588208/0180a38a-2b3d-43c6-aa8e-4ea04c8ac751)
 
@@ -36,7 +43,7 @@ Once your changes are live, you'll start to see the events flowing in your metri
 
 # Considerations
 
-For single page apps, or for more complex scenarios, look up how to [log events using Javascript](/client/jsClientSDK#logging-an-event).
+For single page apps, or for more complex scenarios, look up how to [log events using Javascript](/client/javascript-sdk#logging-an-event).
 
 # Exploring using Metrics Explorer
 
