@@ -13,7 +13,10 @@ import TabItem from "@theme/TabItem";
 ```java
 import com.statsig.sdk.Statsig;
 
-Future initFuture = Statsig.initializeAsync("server-secret-key");
+StatsigOptions options = new StatsigOptions();
+// Customize options as needed. For example:
+// options.initTimeoutMs = 9999;
+Future initFuture = Statsig.initializeAsync("server-secret-key", options);
 initFuture.get();
 
 ```
@@ -24,7 +27,11 @@ initFuture.get();
 ```kotlin
 import com.statsig.sdk.Statsig
 
-async { Statsig.initialize("server-secret-key") }.await()
+val options = StatsigOptions().apply {
+        // Customize options as needed. For example:
+        initTimeoutMs = 9999
+}
+async { Statsig.initialize("server-secret-key", options) }.await()
 
 ```
 

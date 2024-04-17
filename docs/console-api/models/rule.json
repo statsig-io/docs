@@ -1,7 +1,7 @@
 {
   "type": "object",
   "x-stoplight": {
-    "id": "5nanebm76ic8y"
+    "id": "b3wvx0g2u84wt"
   },
   "x-examples": {
     "example-1": {
@@ -20,9 +20,17 @@
       "type": "string",
       "description": "The name of this rule.",
       "x-stoplight": {
-        "id": "81gh8e3wtaon5"
+        "id": "jytmgdw8e7zux"
       },
       "example": "All Conditions"
+    },
+    "id": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "fh8edschydwyl"
+      },
+      "example": "38ttpCpzrQFTMKcqFKk02l",
+      "description": "The Statsig ID of this rule."
     },
     "passPercentage": {
       "type": "integer",
@@ -30,7 +38,7 @@
       "minimum": 0,
       "maximum": 100,
       "x-stoplight": {
-        "id": "v8v6pnj65wgxt"
+        "id": "7q6cwyew01xwj"
       },
       "example": 10
     },
@@ -38,12 +46,12 @@
       "type": "array",
       "description": "An array of Condition objects.",
       "x-stoplight": {
-        "id": "nmnih04emdf1d"
+        "id": "vw9ybs90886bu"
       },
       "items": {
         "$ref": "./condition.json",
         "x-stoplight": {
-          "id": "fclccmgdrz3wg"
+          "id": "5mp6i9ira5jy9"
         }
       }
     },
@@ -51,7 +59,20 @@
       "type": "object",
       "description": "The JSON object returned when this rule is triggered.",
       "x-stoplight": {
-        "id": "9fxgei6rpg9ju"
+        "id": "3ycuq3pkzsrpv"
+      }
+    },
+    "environments": {
+      "type": "array",
+      "x-stoplight": {
+        "id": "u7unbb4bnq7ij"
+      },
+      "description": "The environments this rule is enabled for.",
+      "items": {
+        "x-stoplight": {
+          "id": "t5rruea648bqf"
+        },
+        "type": "string"
       }
     }
   },
@@ -64,6 +85,7 @@
   "examples": [
     {
       "name": "All Conditions",
+      "id": "38ttpCpzrQFTMKcqFKk02l",
       "passPercentage": 10,
       "conditions": [
         {
@@ -76,7 +98,10 @@
       ],
       "returnValue": {
         "key": true
-      }
+      },
+      "environments": [
+        "staging"
+      ]
     }
   ]
 }

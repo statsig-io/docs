@@ -234,6 +234,10 @@ if this toggle is set any user only 5 days from their first exposure would be ex
 
 Some metric types can include a dimension-based breakdown. This is very useful if you frequently want to see how the metric was influenced across high-level cuts like country or product category. This does increase the cost of calculation, as each dimension is functionally another metric for the purposes of analysis.
 
+### Thresholds
+
+Sum and count metrics can be configured to use a threshold. When using a threshold, the metric will measure if the user's sum or count metric surpassed a given threshold. This is usually combined with cohort windows to create a metric like "% of users who spent more than $100 in their first week". 
+
 ## Example Metrics
 
 ### Filtered Revenue Metric
@@ -270,8 +274,8 @@ Since the calculation window is set to 7, the user would have 7 days to complete
 
 ![Funnel Metric](https://user-images.githubusercontent.com/102695539/264097015-87f2d98e-c394-49a8-b133-30f479c78e50.png)
 
-### Hierarchical ID
-[Analysis with Hierarchical ID](https://docs.statsig.com/metrics/hierarchical-id)
+### When Analysis Units and Assignment Units Are Different
+[Analysis with Different ID](https://docs.statsig.com/metrics/different-id)
 
 ## Viewing your Metric
 

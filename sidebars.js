@@ -359,9 +359,11 @@ module.exports = {
             "statsig-warehouse-native/guides/metrics",
             "statsig-warehouse-native/guides/assignment_sources",
             "statsig-warehouse-native/guides/experiments",
+            "statsig-warehouse-native/guides/checklist",
             "statsig-warehouse-native/guides/pulse",
             "statsig-warehouse-native/guides/sdks",
             "statsig-warehouse-native/guides/aatest",
+            "metrics/different-id",
             "statsig-warehouse-native/guides/running_a_poc",
           ],
         },
@@ -403,11 +405,8 @@ module.exports = {
     {
       type: "category",
       label: "SDKs, APIs, Integrations",
-      link: {
-        type: "doc",
-        id: "sdks/sdks-overview",
-      },
       items: [
+        "sdks/getting-started", 
         {
           type: "category",
           label: "Client SDKs",
@@ -459,6 +458,21 @@ module.exports = {
               label: "On Device Evaluation",
               items: [
                 "client/jsLocalEvaluationSDK",
+                {
+                  type: "category",
+                  label: "New JavaScript (Beta)",
+                  link: {
+                    type: "doc",
+                    id: "client/js-on-device-eval-client",
+                  },
+                  items: [
+                    "client/js-device-eval-mono/MigrationFromOldSDK",
+                    // "client/javascript-mono/IntegrationNextJs",
+                    // "client/javascript-mono/IntegrationReact",
+                    "client/js-device-eval-mono/UsingSpecsDataAdapter",
+                    "client/js-device-eval-mono/ReactNativeUsage",
+                  ],
+                },
                 "client/swiftOnDeviceEvaluationSDK",
                 "client/androidOnDeviceEvaluationSDK",
               ],

@@ -1,0 +1,45 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+You can install the Statsig SDK via npm, yarn or jsdelivr:
+
+<Tabs
+  defaultValue="npm"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'CDN / <script>', value: 'script'}, 
+    {label: 'Yarn', value: 'yarn'},
+  ]}>
+
+  <TabItem value="script">
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@statsig/js-on-device-eval-client@latest/build/statsig-js-on-device-eval-client.min.js"></script>
+```
+
+Statsig is hosted on the [jsDelivr](https://www.jsdelivr.com/package/npm/@statsig/js-client) CDN.
+
+To access the current primary JavaScript bundle, use:
+
+`https://cdn.jsdelivr.net/npm/@statsig/js-client/build/statsig-js-client.min.js`
+
+To access specific files/versions:
+
+`https://cdn.jsdelivr.net/npm/@statsig/js-client@{version}/build/statsig-js-client.min.js`
+
+  </TabItem>
+  <TabItem value="npm">
+
+```shell
+npm install @statsig/js-on-device-eval-client
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```shell
+yarn add @statsig/js-on-device-eval-client
+```
+
+  </TabItem>
+</Tabs>

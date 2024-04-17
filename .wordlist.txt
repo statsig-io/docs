@@ -36,6 +36,8 @@ CodeLens
 CustomIDs
 DAU
 dbfs
+de
+de-duplicated
 deltalake
 Disaggregate
 disaggregate
@@ -261,6 +263,7 @@ proxying
 pst
 quantile
 quartile
+queryable
 redshift
 repo
 resalt
