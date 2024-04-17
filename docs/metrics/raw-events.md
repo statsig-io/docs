@@ -29,6 +29,8 @@ You can ingest raw events into Statsig in three ways.
 2. Set up Statsig as a destination in a data connector such as [Segment](https://docs.statsig.com/integrations/data-connectors/segment#configuring-incoming-events), [mParticle](https://docs.statsig.com/integrations/data-connectors/mparticle#configuring-incoming-events), [RudderStack](https://docs.statsig.com/integrations/data-connectors/rudderstack#configuring-incoming-events) and [Census](https://docs.statsig.com/integrations/data-connectors/census#configuring-incoming-events)
 3. Import from your data warehouse such as [Snowflake](https://docs.statsig.com/integrations/data-imports/snowflake#direct-ingestion-from-snowflake), [BigQuery](https://docs.statsig.com/integrations/data-imports/bigquery), and [Redshift](https://docs.statsig.com/integrations/data-imports/redshift#direct-ingestion).
 
+Note that when processing events, event names that contain this regex/character set are dropped `"\\[\]{}<>#=;&$%|\u0000\n\r`
+
 ## Raw Events in Console
 As you ingest custom events, you'll see these listed in the **Metrics** section under the **Events** tab in the Statsig console. 
 
