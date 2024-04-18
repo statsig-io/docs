@@ -176,7 +176,7 @@ module.exports = {
               {
                 tagName: "script",
                 attributes: {
-                  src: "https://cdn.jsdelivr.net/npm/@statsig/js-client@0.0.1-beta.27/build/statsig-js-client+session-replay+web-analytics.min.js",
+                  src: "https://cdn.jsdelivr.net/npm/@statsig/js-client@latest/build/statsig-js-client+session-replay+web-analytics.min.js",
                 },
               },
               {
