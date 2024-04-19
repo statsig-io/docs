@@ -1,7 +1,7 @@
 ---
-title: Check Statsig SQLs
+title: Check Statsig SQL
 slug: /statsig-warehouse-native/guides/SQL
-sidebar_label: Check Statsig SQLs
+sidebar_label: Check Statsig SQL
 ---
 
 Statsig Warehouse Native runs SQL in our customers' data warehouse to generate the experiment results, and the queries are fully transparent to our customers. This means that you can trace any results you see on the Statsig console back to its calculation, artifacts, and raw events. 
@@ -17,5 +17,5 @@ For experiment result calculation queries, below are one-sentence summaries of w
 * First exposure: Generate the first exposure time of this experiment at the unit level, given the assignment source.
 * Exposure summary: Summarize the first exposures at the group level and generate cumulative exposures.
 * User-level calculations: Calculate unit-level metrics at unit * metric * day grain.
-* Windowed rollups: Rollup unit-level metrics at different durations.
-* Plus calculation: Generate the sample parameters that are necessary for calculating treatment effects, such as units, total, mean, stddev, varpop, covar, etc.
+* Windowed rollups: Rollup unit-level metrics at different time windows.
+* Plus calculation: Generate the sample parameters that are necessary for calculating treatment effects, such as units, total, mean, standard deviation, population variance, covariance, etc.
