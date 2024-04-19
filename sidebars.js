@@ -360,7 +360,7 @@ module.exports = {
             "statsig-warehouse-native/guides/assignment_sources",
             "statsig-warehouse-native/guides/experiments",
             "statsig-warehouse-native/guides/checklist",
-            "statsig-warehouse-native/guides/SQL",
+            "statsig-warehouse-native/guides/sql",
             "statsig-warehouse-native/guides/pulse",
             "statsig-warehouse-native/guides/sdks",
             "statsig-warehouse-native/guides/aatest",
