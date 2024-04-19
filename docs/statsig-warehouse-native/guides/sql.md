@@ -1,6 +1,6 @@
 ---
 title: Check Statsig SQL
-slug: /statsig-warehouse-native/guides/SQL
+slug: /statsig-warehouse-native/guides/sql
 sidebar_label: Check Statsig SQL
 ---
 
