@@ -291,11 +291,9 @@ module.exports = {
           items: ["mex/drilldown", "mex/funnels", "mex/retention"],
         },
         {
-          type: "category",
+          type: "doc",
           label: "Web Analytics",
-          items: [
-            "webanalytics/overview",
-          ],
+          id: "webanalytics/overview",
         },
         "mex/dashboards",
         {
