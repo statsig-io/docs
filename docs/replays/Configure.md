@@ -1,12 +1,24 @@
 # Configuration and Limits
 
-## Sampling Rate
+## Configure Recording Sampling Rate
 
 In the Statsig Console, you can configure your session recording sampling rate. This determines the percentage of all user sessions that are recorded. Since there is (currently) a limit of 10,000 session recordings every month, this can help ensure you space out running against that limit. The default sampling rate is 100% which is great for smaller companies and projects. 
 
 Click on the settings icon in the top right of the Statsig console to navigate to Project and Organization Settings. Under Project Settings, click on Session Replay and set the sampling rate. You must be a project admin to modify the sampling rate.
 
 ![image](https://github.com/statsig-io/docs/assets/3464964/3d4fc8e2-7490-4060-87f5-3aeb5f6dff90)
+
+
+## Configure Recording Privacy/PII Options
+
+If your users may be entering or viewing sensitive information, you can prevent this from being recorded and displayed using [CSS classes offered by the rrweb recorder](https://github.com/rrweb-io/rrweb/blob/master/guide.md#privacy) (the open source recording tool we use).
+
+- `input[type="password"]` will be masked by default.
+- An element with the class name `.rr-block` will not be recorded. Instead, it will replay as a placeholder with the same dimensions.
+- An element with the class name `.rr-ignore` will not record its input events.
+- All text of elements with the class name `.rr-mask` and their children will be masked.
+
+We plan to provide 1st class integration of privacy controls with the Statsig SDK as we roll out of beta.
 
 
 
