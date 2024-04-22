@@ -347,14 +347,12 @@ module.exports = {
     {
       type: "category",
       label: "Session Replay",
-      items: {
-        [
-          "session-replay/Overview",
-          "session-replay/Install",
-          "session-replay/Configure",
-          "session-replay/Watch",
-        ],
-      },
+      items: [
+          "session-replay/overview",
+          "session-replay/install",
+          "session-replay/configure",
+          "session-replay/watch",
+      ],
     },
     {
       type: "category",
