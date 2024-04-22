@@ -346,6 +346,16 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Session Replay",
+      items: [
+          "session-replay/overview",
+          "session-replay/install",
+          "session-replay/configure",
+          "session-replay/watch",
+      ],
+    },
+    {
+      type: "category",
       label: "Statsig Warehouse Native",
       link: {
         type: "doc",
