@@ -245,6 +245,7 @@ nav
 navbar
 ness
 NextJS
+NPM
 observability
 oidc
 onboarding
@@ -278,9 +279,11 @@ rollouts
 rollup
 rollups
 rrweb
+runStatsigAutoCapture
 schemas
 searchbox
 securityadmin
+SessionReplay
 sig
 signalling
 signup
