@@ -352,7 +352,7 @@ module.exports = {
           "session-replay/Overview",
           "session-replay/Install",
           "session-replay/Configure",
-          "session-replay/Watch"
+          "session-replay/Watch",
         ],
       },
     },
