@@ -277,6 +277,7 @@ rollout
 rollouts
 rollup
 rollups
+rrweb
 schemas
 searchbox
 securityadmin
