@@ -1,3 +1,8 @@
+---
+title: Watch Session Replays
+sidebar_label: Watch
+slug: /session-replay/watch
+---
 # Watch Replays
 
 Session Replays can be found under the User’s group in the Statsig console’s navigation panel. 

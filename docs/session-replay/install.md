@@ -1,3 +1,8 @@
+---
+title: Install Statsig Session Replay
+sidebar_label: Install
+slug: /session-replay/install
+---
 # Install Session Replay and Record Sessions
 
 ## Install
