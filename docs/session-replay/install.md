@@ -31,13 +31,13 @@ Get YOUR_CLIENT_KEY from Project Settings -> Keys & Environments. Reveal the Cli
 
 **NPM**
 
-`npm install @statsig/js-client @statsig/session-replay @statsig/autocapture`
+`npm install @statsig/js-client @statsig/session-replay @statsig/web-analytics`
 
 **Yarn**
 
-`yarn add @statsig/js-client @statsig/session-replay @statsig/autocapture`
+`yarn add @statsig/js-client @statsig/session-replay @statsig/web-analytics`
 
-We recommend using auto-capture as a great way to get started, but if you don’t want to automatically log and send events, you can remove the runStatsigAutoCapture option from the Javascript snippet or skip the `@statsig/autocapture` package installation.
+We recommend using web-analytics as a great way to get started, but if you don’t want to automatically log and send events, you can remove the runStatsigAutoCapture option from the Javascript snippet or skip the `@statsig/web-analytics` package installation.
 
 
 ## Record Sessions
