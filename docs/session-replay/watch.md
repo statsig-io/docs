@@ -1,5 +1,5 @@
 ---
-title: Watch Statsig Session Replay
+title: Watch Session Replays
 sidebar_label: Watch
 slug: /session-replay/watch
 ---
