@@ -282,20 +282,13 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Analytics",
+      label: "Product Analytics",
       items: [
         "mex/overview",
         {
           type: "category",
           label: "Metric Explorer",
           items: ["mex/drilldown", "mex/funnels", "mex/retention"],
-        },
-        {
-          type: "category",
-          label: "Web Analytics",
-          items: [
-            "webanalytics/overview",
-          ],
         },
         "mex/dashboards",
         {
@@ -353,6 +346,13 @@ module.exports = {
           "session-replay/configure",
           "session-replay/watch",
       ],
+    },
+    {
+          type: "category",
+          label: "Web Analytics",
+          items: [
+            "webanalytics/overview",
+          ],
     },
     {
       type: "category",
