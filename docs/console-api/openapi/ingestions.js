@@ -2894,6 +2894,12 @@ module.exports = {
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "datestamp_start",
+                  "datestamp_end",
+                  "dataset",
+                  "type"
+                ],
                 "properties": {
                   "datestamp_start": {
                     "type": "string",
@@ -2934,15 +2940,11 @@ module.exports = {
                       }
                     ]
                   },
+                  "dataset": {
+                    "$ref": "#/components/schemas/Ingestion-dataset"
+                  },
                   "type": {
-                    "x-stoplight": {
-                      "id": "zokcd4g5qamz6"
-                    },
-                    "enum": [
-                      "events",
-                      "metrics"
-                    ],
-                    "type": "string"
+                    "$ref": "#/components/schemas/Ingestion-type"
                   }
                 }
               }

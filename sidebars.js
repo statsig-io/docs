@@ -314,7 +314,7 @@ module.exports = {
             // other
             "metrics/ingest",
             "metrics/pulse",
-            "metrics/local-metrics", 
+            "metrics/local-metrics",
             "metrics/console",
             "metrics/health-checks",
 
@@ -341,18 +341,16 @@ module.exports = {
       type: "category",
       label: "Session Replay",
       items: [
-          "session-replay/overview",
-          "session-replay/install",
-          "session-replay/configure",
-          "session-replay/watch",
+        "session-replay/overview",
+        "session-replay/install",
+        "session-replay/configure",
+        "session-replay/watch",
       ],
     },
     {
-          type: "category",
-          label: "Web Analytics",
-          items: [
-            "webanalytics/overview",
-          ],
+      type: "category",
+      label: "Web Analytics",
+      items: ["webanalytics/overview"],
     },
     {
       type: "category",
@@ -417,7 +415,7 @@ module.exports = {
       type: "category",
       label: "SDKs, APIs, Integrations",
       items: [
-        "sdks/getting-started", 
+        "sdks/getting-started",
         {
           type: "category",
           label: "Client SDKs",
@@ -445,7 +443,8 @@ module.exports = {
                 id: "client/javascript-sdk",
               },
               items: [
-                "client/javascript-mono/MigrationFromOldSDK",
+                "client/javascript-mono/MigrationFromOldJsClient",
+                // "client/javascript-mono/MigrationFromOldReact",
                 // "client/javascript-mono/IntegrationNextJs",
                 // "client/javascript-mono/IntegrationReact",
                 "client/javascript-mono/UsingEvaluationsDataAdapter",
@@ -478,8 +477,6 @@ module.exports = {
                   },
                   items: [
                     "client/js-device-eval-mono/MigrationFromOldSDK",
-                    // "client/javascript-mono/IntegrationNextJs",
-                    // "client/javascript-mono/IntegrationReact",
                     "client/js-device-eval-mono/UsingSpecsDataAdapter",
                     "client/js-device-eval-mono/ReactNativeUsage",
                   ],
@@ -712,10 +709,7 @@ module.exports = {
             type: "doc",
             id: "org-admin/organization_policies",
           },
-          items: [
-            "org-admin/experiment_policy", 
-            "org-admin/gates_policy",
-          ],
+          items: ["org-admin/experiment_policy", "org-admin/gates_policy"],
         },
         {
           type: "category",
