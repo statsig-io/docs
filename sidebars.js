@@ -444,9 +444,9 @@ module.exports = {
               },
               items: [
                 "client/javascript-mono/MigrationFromOldJsClient",
-                "client/javascript-mono/MigrationFromOldReact",
-                "client/javascript-mono/IntegrationNextJs",
-                "client/javascript-mono/IntegrationReact",
+                // "client/javascript-mono/MigrationFromOldReact",
+                // "client/javascript-mono/IntegrationNextJs",
+                // "client/javascript-mono/IntegrationReact",
                 "client/javascript-mono/UsingEvaluationsDataAdapter",
                 "client/javascript-mono/ReactNativeUsage",
                 "client/javascript-mono/ExpoUsage",
@@ -477,8 +477,6 @@ module.exports = {
                   },
                   items: [
                     "client/js-device-eval-mono/MigrationFromOldSDK",
-                    // "client/javascript-mono/IntegrationNextJs",
-                    // "client/javascript-mono/IntegrationReact",
                     "client/js-device-eval-mono/UsingSpecsDataAdapter",
                     "client/js-device-eval-mono/ReactNativeUsage",
                   ],
