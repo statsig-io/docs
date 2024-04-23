@@ -1,3 +1,8 @@
+---
+title: Configure Statsig Session Replay
+sidebar_label: Configure
+slug: /session-replay/configure
+---
 # Configuration and Limits
 
 ## Configure Recording Sampling Rate
