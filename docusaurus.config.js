@@ -278,6 +278,10 @@ module.exports = {
             to: "/feature-flags/implement/http-api",
             from: "/feature-gates/implement/http-api",
           },
+          {
+            to: "/mex/overview",
+            from: "/metrics/events-explorer",
+          },
         ],
       },
     ],
