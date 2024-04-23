@@ -8,7 +8,7 @@ slug: /mex/overview
 
 # Overview
 
-Metrics Explorer, coupled with Statsig Dashboards, are the primary product analytic surfaces within Statsig. At Statsig, we believe that the journey from data to innovation is fueled by insights. Our product analytics offering is designed to give developers, data scientists, and product leaders the tools to make that journey with confidence. 
+Metrics Explorer, coupled with Statsig Dashboards, are the primary product analytics surfaces within Statsig. At Statsig, we believe that the journey from data to innovation is fueled by insights. Our product analytics offering is designed to give developers, data scientists, and product leaders the tools to make that journey with confidence. 
 
 ![cycle](https://github.com/statsig-io/docs/assets/3464964/0ee7ab99-747a-4940-a78c-4b8cc29bc7fc)
 
