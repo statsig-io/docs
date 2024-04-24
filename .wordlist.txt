@@ -5,6 +5,7 @@ approver
 athena
 Atlassian
 athena
+autocapture
 Autotune
 Autotunes
 Autotune's
@@ -36,6 +37,8 @@ CodeLens
 CustomIDs
 DAU
 dbfs
+de
+de-duplicated
 deltalake
 Disaggregate
 disaggregate
@@ -105,6 +108,7 @@ OIDC
 Okta
 oncalls
 OpenID
+PII
 Pinterest
 Precomputing
 Programmatically
@@ -243,6 +247,7 @@ nav
 navbar
 ness
 NextJS
+NPM
 observability
 oidc
 onboarding
@@ -261,6 +266,7 @@ proxying
 pst
 quantile
 quartile
+queryable
 redshift
 repo
 resalt
@@ -274,9 +280,12 @@ rollout
 rollouts
 rollup
 rollups
+rrweb
+runStatsigAutoCapture
 schemas
 searchbox
 securityadmin
+SessionReplay
 sig
 signalling
 signup
