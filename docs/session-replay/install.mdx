@@ -79,14 +79,16 @@ Next, following the [instructions for the Statsig Javascript SDK](https://docs.s
 
 ```jsx
 import { StatsigClient } from '@statsig/js-client';
-import { SessionReplay } from '@statsig/session-replay';
+import { runStatsigSessionReplay } from '@statsig/session-replay';
 
 const client = new StatsigClient(sdkKey,
 	{ userID: "some_user_id" },
   { environment: { tier: "staging" } } // optional, pass options here if needed
 );
-await client.initializeAsync()
-const replayer = new SessionReplay(client);
+runStatsigSessionReplay(client);
+runStatsigAutoCapture(client);
+await client.initializeAsync();
+
 ```
 
   </TabItem>
@@ -94,15 +96,16 @@ const replayer = new SessionReplay(client);
 
 ```jsx
 import { StatsigClient } from '@statsig/js-client';
-import { SessionReplay } from '@statsig/session-replay';
+import { runStatsigSessionReplay } from '@statsig/session-replay';
 import { StatsigProvider } from '@statsig/react-bindings';
 
 const client = new StatsigClient(sdkKey,
 	{ userID: "some_user_id" },
   { environment: { tier: "staging" } } // optional, pass options here if needed
 );
-await client.initializeAsync()
-const replayer = new SessionReplay(client);
+runStatsigSessionReplay(client);
+runStatsigAutoCapture(client);
+await client.initializeAsync();
 
 function App() {
   return (
