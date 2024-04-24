@@ -30,8 +30,12 @@ Within each team, there are a number of settings you can configure:
 
 **Default Monitoring Metrics/ Scorecard Metrics:** This setting enables pre-configuration of a set of metrics to add to every new gate/ experiment/ holdout at the team level. These might be a mix of top-line company metrics every team must monitor (e.g. revenue/ app performance), as well as a set of team-specific KPIs all rollouts and experiments should be tracking. 
 
-
 <img width="881" alt="Screen Shot 2024-02-17 at 4 24 12 PM" src="https://github.com/statsig-io/docs/assets/101903926/16f0ccfd-05d6-4fb2-8992-ec8780ff3778"/>
+
+**Require Reviews:** If reviews are not already required at the Project-level, this setting enables you to require reviews at the individual team level. Note that this setting won't appear if you're already requiring reviews at the Project level (controlled via **Settings** -> **Project Settings** -> **Reviews**).  
+
+![Screen Shot 2024-04-24 at 4 41 39 PM](https://github.com/statsig-io/docs/assets/101903926/554e0f6a-c9ce-466a-b5a4-db94b0cb24fa)
+
 
 **Default Allowed Reviewers:** This setting enables more granular control of *who* is allowed to review and approve changes to a team's configs. There are three options here- "Anyone in the Project" (least restrictive), "Team Members Only" (keep reviews within the team), and "Team or Project Admins Only" (most restrictive). 
 
@@ -46,7 +50,12 @@ Note that team-based review configurations layer on top of [role-based review se
 
 **Default Target Applications:** This setting will auto-apply any assigned Target Applications to all configs created that are associated with this team. Note that this only impacts which Target Applications are added to the config by default at creation time, but can be edited/ overridden as needed. 
 
-<img width="941" alt="Screen Shot 2024-02-17 at 4 26 03 PM" src="https://github.com/statsig-io/docs/assets/101903926/f9a74cb6-e8f8-440c-b394-38ddbc27ae5b"/>
+![Screen Shot 2024-04-24 at 4 43 43 PM](https://github.com/statsig-io/docs/assets/101903926/2cf75c17-9441-4645-beef-feb57578fb46)
+
+**Default Holdout:** It's a common use-case for teams to want to measure cumulative impact of their new features/ experiments over the course of a Quarter/ Half, etc. To make this easier and more automatic, you can associate a default Holdout to a team. This will cause all subsequent configs associated with the team will be auto-added to this default Holdout. 
+
+![Screen Shot 2024-04-24 at 4 48 00 PM](https://github.com/statsig-io/docs/assets/101903926/8f5a2226-c716-4882-939a-8ba53e852b22)
+
 
 ## How Teams are Used Throughout the Console 
 
