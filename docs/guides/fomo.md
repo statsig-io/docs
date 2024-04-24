@@ -24,11 +24,11 @@ The Core tag is meant to be used for company critical metrics. These are default
 ![image](https://github.com/statsig-io/docs/assets/31516123/92a44de5-71bb-4b80-9fea-f8d83e2c4f95)
 
 
-## Metric and User Dimensions
-Metric dimensions let you break out  breakdown an event such as add-to-cart into product categories such as sports, toys, appliances, electronics. To do this, you would simply log add-to-cart events and provide the product category in the event's value field. [See more](https://docs.statsig.com/metrics/metric-dimensions)
+## Metric and User Properties
+Metric properties let you break out an event such as add-to-cart into product categories such as sports, toys, appliances, electronics. To do this, you would simply log add-to-cart events and provide the product category in the event's value field. [See more](https://docs.statsig.com/metrics/metric-dimensions)
 ![image](https://github.com/statsig-io/docs/assets/31516123/f1478766-3471-45c8-970a-4a3335675c82)
 
-User dimensions let you slice or filter metrics based on a user property. This is often something like Country, Device Type or a property like Free vs Paid. On Statsig Cloud, these are frozen when a user is first exposed to a feature gate or experiment - in case your experiment ends up changing these properties (e.g. convert a Free user to Paid). If you're using Statsig Warehouse Native, these properties can be set anytime before analysis. 
+User properties let you slice or filter metrics based on a user property. This is often something like Country, Device Type or a property like Free vs Paid. On Statsig Cloud, these are frozen when a user is first exposed to a feature gate or experiment - in case your experiment ends up changing these properties (e.g. convert a Free user to Paid). If you're using Statsig Warehouse Native, these properties can be set anytime before analysis. 
 ![image](https://github.com/statsig-io/docs/assets/31516123/975df15b-8ac8-4396-aa3b-5877843ed5d5)
 
 ## Slack Notifs

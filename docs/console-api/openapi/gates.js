@@ -2512,6 +2512,96 @@ module.exports = {
             }
           }
         }
+      },
+      "delete": {
+        "summary": "Delete Gate Rule",
+        "tags": [
+          "Gates"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "data": {
+                      "$ref": "../models/gate.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Gate updated successfully.",
+                      "data": {
+                        "id": "a_gate",
+                        "isEnabled": true,
+                        "description": "helpful summary of what this gate does",
+                        "status": "In Progress",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaasdfLlkaujjajiuOSBP2",
+                        "rules": [],
+                        "tags": [
+                          "* Core"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "x-stoplight": {
+                        "id": "0awd0a8c3op74"
+                      },
+                      "items": {
+                        "$ref": "../models/error.json"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Nonexistent rule ID": {
+                    "value": {
+                      "status": 400,
+                      "message": "A provided rule ID does not match an existing rule ID",
+                      "errors": [
+                        {
+                          "property": "rules",
+                          "errorMessage": "A provided rule ID does not match an existing rule ID"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "delete-gates-gate_id-rules-rule_id",
+        "x-stoplight": {
+          "id": "t5iej5olk0qgp"
+        }
       }
     }
   }
