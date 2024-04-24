@@ -34,6 +34,11 @@ module.exports = {
                   "description": "A brief summary of what the dynamic config is being used for.",
                   "example": "helpful summary of what this dynamic config does"
                 },
+                "idType": {
+                  "type": "string",
+                  "description": "The type of ID which the dynamic config is based on.",
+                  "example": "userID"
+                },
                 "tags": {
                   "type": "array",
                   "x-stoplight": {
@@ -100,7 +105,14 @@ module.exports = {
         "x-examples": {
           "example-1": "a_dynamic_config"
         }
-      }
+      },
+      "idType": {
+        "type": "string",
+        "description": "The type of ID which the dynamic config is based on.",
+        "x-examples": {
+          "example-1": "userID"
+        }
+      },
     }
   },
   "security": [
@@ -128,6 +140,7 @@ module.exports = {
                       "data": {
                         "id": "a_dynamic_config",
                         "isEnabled": true,
+                        "idType": "userID",
                         "description": "helpful summary of what this dynamic config does",
                         "lastModifierName": "CONSOLE API",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
@@ -168,6 +181,7 @@ module.exports = {
                       "data": {
                         "id": "a_dynamic_config",
                         "description": "helpful summary of what this dynamic config does",
+                        "idType": "userID",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "lastModifierName": "CONSOLE API",
                         "creatorEmail": "johnsmith@mydomain.com",
@@ -467,6 +481,7 @@ module.exports = {
                         {
                           "id": "a_dynamic_config",
                           "description": "helpful summary of what this dynamic config does",
+                          "idType": "userID",
                           "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                           "lastModifierName": "CONSOLE API",
                           "creatorEmail": "johnsmith@mydomain.com",
@@ -656,6 +671,7 @@ module.exports = {
                       "data": {
                         "id": "a_dynamic_config",
                         "description": "helpful summary of what this dynamic config does",
+                        "idType": "userID",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "lastModifierName": "CONSOLE API",
                         "creatorEmail": "johnsmith@mydomain.com",
@@ -823,6 +839,7 @@ module.exports = {
                       "data": {
                         "id": "a_dynamic_config",
                         "description": "helpful summary of what this dynamic config does",
+                        "idType": "userID",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "lastModifierName": "CONSOLE API",
                         "creatorEmail": "johnsmith@mydomain.com",
@@ -1150,6 +1167,11 @@ module.exports = {
                   },
                   "description": {
                     "$ref": "#/components/schemas/description"
+                  },
+                  "idType": {
+                    "type": "string",
+                    "description": "The type of ID which the dynamic config is based on.",
+                    "example": "userID"
                   },
                   "isEnabled": {
                     "$ref": "#/components/schemas/isEnabled"
