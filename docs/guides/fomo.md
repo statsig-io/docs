@@ -52,4 +52,4 @@ The users tab is a powerful diagnostics tool for developers trying to troublesho
 Dynamic config is a tool that replaces hard-coded values in your application with configuration parameters defined on the server. These configuration parameters can include any property across your client-side or server-side application code, from button colors to ranking configurations. This enables you to control the behavior of your application dynamically in near real-time. [See more](https://docs.statsig.com/dynamic-config).
 
 ## Holdouts
-Holdouts are an advanced feature that helps with experimentation program maturity. They let you measure the cumulative impact of feature releases - in addition to measuring if wins are sustained. [See more](https://statsig.com/blog/getting-in-on-holdouts)https://statsig.com/blog/getting-in-on-holdouts. 
+Holdouts are an advanced feature that helps with experimentation program maturity. They let you measure the cumulative impact of feature releases - in addition to measuring if wins are sustained. [See more](https://statsig.com/blog/getting-in-on-holdouts). 
