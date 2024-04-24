@@ -1,0 +1,125 @@
+---
+title: Install Statsig Session Replay
+sidebar_label: Install
+slug: /session-replay/install
+---
+# Install Session Replay and Record Sessions
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+Session Replay is only supported on the Javascript or React SDKs for both desktop and mobile web users on your web application. See the instructions below to install our SDK and record user sessions.
+
+Note that Session Replay is currently only available when used with the new `@statsig/js-client` sdk, it is not compatible with `statsig-js` or `statsig-react`.  If you are using either of those SDKs, you will need to [migrate to the new sdk](/client/javascript-sdk/migrating-from-statsig-js) first.  If this is your first time integrating statsig, you can ignore this step.
+
+## Option 1 - No code - Add Javascript Snippet to your website
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-simple-script-tag.tsx" />
+
+Get YOUR_CLIENT_KEY from Project Settings -> Keys & Environments. Reveal the Client API Key, copy, and paste it over the [YOUR-API-KEY] in the snippet above.
+
+And you're done!  This will auto initialize the sdk and start recording sessions, no code required.
+
+If you'd like to use your existing Statsig integration, or customize the integration further, see option 2 below.  If you still want to use the script tag but also customize the integration, remove your key from the script url and initialize using the javascript code below.
+
+## Option 2 - Custom code - Install via Package Manager
+
+<Tabs
+  groupId="session-replay-js-framework"
+  defaultValue="js"
+  values={[
+    {label: 'js', value: 'js'},
+    {label: 'react', value: 'react'},
+  ]}>
+  <TabItem value="js">
+
+**npm**
+
+```jsx
+npm install @statsig/js-client @statsig/session-replay @statsig/web-analytics
+```
+
+**yarn**
+
+```jsx
+yarn add @statsig/js-client @statsig/session-replay @statsig/web-analytics
+```
+
+  </TabItem>
+  <TabItem value="react">
+
+**npm**
+
+```jsx
+npm install @statsig/js-client @statsig/session-replay @statsig/web-analytics @statsig/react-bindings
+```
+
+**yarn**
+
+```jsx
+yarn add @statsig/js-client @statsig/session-replay @statsig/web-analytics @statsig/react-bindings
+```
+
+  </TabItem>
+</Tabs>
+
+We recommend using autocapture as a great way to get started, but if you don’t want to automatically log and send events, you can remove the runStatsigAutoCapture option from the Javascript snippet or skip the `@statsig/web-analytics` package installation.
+
+Next, following the [instructions for the Statsig Javascript SDK](https://docs.statsig.com/client/javascript-sdk), initialize Statsig with your SDK key, [user](https://docs.statsig.com/client/concepts/user) and options:
+
+<Tabs
+  groupId="session-replay-js-framework"
+  defaultValue="js"
+  values={[
+    {label: 'js', value: 'js'},
+    {label: 'react', value: 'react'},
+  ]}>
+  <TabItem value="js">
+
+```jsx
+import { StatsigClient } from '@statsig/js-client';
+import { runStatsigSessionReplay } from '@statsig/session-replay';
+
+const client = new StatsigClient(sdkKey,
+	{ userID: "some_user_id" },
+  { environment: { tier: "staging" } } // optional, pass options here if needed
+);
+runStatsigSessionReplay(client);
+runStatsigAutoCapture(client);
+await client.initializeAsync();
+
+```
+
+  </TabItem>
+  <TabItem value="react">
+
+```jsx
+import { StatsigClient } from '@statsig/js-client';
+import { runStatsigSessionReplay } from '@statsig/session-replay';
+import { StatsigProvider } from '@statsig/react-bindings';
+
+const client = new StatsigClient(sdkKey,
+	{ userID: "some_user_id" },
+  { environment: { tier: "staging" } } // optional, pass options here if needed
+);
+runStatsigSessionReplay(client);
+runStatsigAutoCapture(client);
+await client.initializeAsync();
+
+function App() {
+  return (
+    <StatsigProvider client={myStatsigClient}>
+      <Content />
+    </StatsigProvider>
+  );
+}
+```
+
+  </TabItem>
+</Tabs>
+
+
+As a side effect of creating the SessionReplay, Statsig will begin recording if the session is sampled (see below). 
+
+That’s it! In the future, we will be adding robust ways to control other scenarios in which you may or may not want to record the session, but at this time, this is all you need to do.
