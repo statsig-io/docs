@@ -15,13 +15,18 @@ Once teams are configured and a user is assigned to a team, any config (gates/ e
 
 To create a team, navigate to **Settings** -> **Members** and toggle to the **Teams** tab. Create a new team via the **+Create** button, where you'll be asked to name the team and add members. You can add/ remove members from a team at any time, not just at initial team creation. 
 
-Each team has a **Members** and **Settings** tab. Within **Members** you can see all members of the team, including whether a member is a Team Admin or Project Admin (Project Admins have "super Admin" powers and can modify any team). 
+Each team has a **Members** and **Settings** tab. Within **Members** you can see all members of the team, including whether a member is a Team Admin or Project Admin (Project Admins have "Super Admin" powers and can modify any team). 
 
 <img width="1279" alt="Screen Shot 2024-02-17 at 4 05 18 PM" src="https://github.com/statsig-io/docs/assets/101903926/2e82dc9a-72d2-4c22-aa18-2e6231cf82d1"/>
 
 ## Configuring Team Settings 
 
-For each team, there are a number of settings you can configure: 
+At the Project-level, you can require all config creations are associated with a team via the "Require teams" setting under **Settings** -> **Project Settings** -> **Project Info**. Note that this will block anyone who isn't yet assigned to a team from creating a config, so should only be enabled after all members of the project have been added to (at least) one team. 
+
+![Screen Shot 2024-04-24 at 4 35 31 PM](https://github.com/statsig-io/docs/assets/101903926/d11ed451-7fff-4031-b117-4cd05cb3b960)
+
+
+Within each team, there are a number of settings you can configure: 
 
 **Default Monitoring Metrics/ Scorecard Metrics:** This setting enables pre-configuration of a set of metrics to add to every new gate/ experiment/ holdout at the team level. These might be a mix of top-line company metrics every team must monitor (e.g. revenue/ app performance), as well as a set of team-specific KPIs all rollouts and experiments should be tracking. 
 
