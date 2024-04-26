@@ -183,6 +183,7 @@ SELECT
   group_id,
   SUM(numerator)/SUM(denominator) as mean
 FROM user_data
+WHERE COALESCE(denominator, 0) != 0
 GROUP BY group_id;
 ```
 
