@@ -76,3 +76,4 @@ All server SDKs support unix timestamps to evaluate time based conditions (After
 We have added support for ISO timestamps to some server SDKs.
 - The `java-server` sdk, as of `v1.6.0` supports [DateTime fields in the format of `ISO_INSTANT`](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#ISO_INSTANT)
 - The `go` sdk, as of `v1.12.1` supports [DateTime fields in the format of `RFC3339`](https://pkg.go.dev/time#pkg-constants)
+- The `python` sdk supports the usage of epoch time in seconds. using `time.time()` may include subsecond components so you should use round the value to an integer
