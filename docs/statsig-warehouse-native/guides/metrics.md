@@ -103,6 +103,7 @@ SELECT
   SUM(value_column) as value,
   COUNT(value_column) as records
 FROM source_data
+WHERE value_column IS NOT NULL
 GROUP BY user_id;
 
 -- Group Level
@@ -139,6 +140,7 @@ SELECT
   PERCENTILE(value, percentile_level) as value,
   COUNT(distinct user_id) as population
 FROM user_data
+WHERE value IS NOT NULL
 GROUP BY group_id;
 ```
 
