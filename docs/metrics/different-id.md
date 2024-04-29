@@ -10,6 +10,10 @@ There are two common cases where the experiment assignment unit differs from the
 1. To measure session-level data in a user-level experiment, use ratio metrics (this doc).
 2. To expose a logged-out ID and measure logged-in revenue, use [ID resolution](https://docs.statsig.com/statsig-warehouse-native/features/id-resolution).
 
+We will explain how to set up the first scenario with Warehouse Native in this doc.
+
+![Screenshot 2024-04-29 at 3 45 28 PM](https://github.com/statsig-io/docs/assets/139815787/0b75615f-2b66-44f4-b6e0-e0bd3e555199)
+
 
 ## Example
 For the first scenario, we will use a demo to explain, suppose: 
