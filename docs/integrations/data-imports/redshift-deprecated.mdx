@@ -51,7 +51,7 @@ Please make sure your data conforms to the following schemas.
 | timestamp      | UNIX timestamp of the event                                                                                       | UTC timestamp                                                                                           |
 | event_name     | The name of the event                                                                                             | String under 128 characters, using `_` for spaces                                                       |
 | event_value    | A string representing the value of a current event. Can represent a 'dimension' or a 'value'                      | Read as string format; numeric values will be converted into value                                      |
-| event_metadata | A dictionary<string, string> in the form of a JSON string, containing named metadata for the event                | String format                                                                                           |
+| event_metadata | A dictionary`<string, string>` in the form of a JSON string, containing named metadata for the event              | String format                                                                                           |
 | user           | A JSON object representing the user this event was logged for; see below                                          | Escaped JSON string including the keys 'custom' and 'customIDs'. A userID or customID must be provided. |
 | timeuuid       | A unique UUID or timeUUID used for deduping. If omitted, will be generated but will not be effective for deduping | UUID format                                                                                             |
 
