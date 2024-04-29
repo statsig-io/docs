@@ -19,11 +19,11 @@ For the first scenario, we will use a demo to explain, suppose:
 
 
 First, you should set the metric source with org_id as an ID type. In this table, each row of data should have both org_id and user_id.
-![Screenshot 2024-04-29 at 2 45 19 PM](https://github.com/statsig-io/docs/assets/139815787/30b454ad-9227-4407-a2dc-d574d1b8a055)
+![1 metrics source](https://github.com/statsig-io/docs/assets/139815787/2653c7ee-f452-4891-bd04-3667cac20c30)
 
 
 Second, choose your assignment source, where the unit of assignment is org_id.
-![2 assignment source](https://github.com/statsig-io/docs/assets/139815787/82edd221-990a-47ed-89f6-9d0668372fe8)
+![2 assignment](https://github.com/statsig-io/docs/assets/139815787/16472cd7-1aa1-44a2-9a6b-0f789ac5308e)
 
 
 Then, define your metric of revenue per user_id. Note that your denominator should be `count distinct user_id` instead of `unit count`, because the latter is equivalent to `count distinct org_id` in an org_id level experiment.
