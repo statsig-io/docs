@@ -16,7 +16,7 @@ We will explain how to set up the first scenario with Warehouse Native in this d
 
 
 ## Example
-For the first scenario, we will use a demo to explain, suppose: 
+Let's use a demo to explain, suppose: 
 - Your metrics source has both `org_id` and `user_id`.
 - The relationship between `org_id` and `user_id` is 1-to-many. Namely, one org contains several users, but a user cannot be associated with multiple org_ids.
 - Your experiment is assigned at the `org_id` level.
