@@ -13,20 +13,21 @@ There are two common cases where the experiment assignment unit differs from the
 
 ## Example
 For the first scenario, we will use a demo to explain, suppose: 
-- Your metrics source has both user_id and org_id. The relationship between org_id and user_id is 1-to-many. Namely, one org contains several users, but a user cannot be associated with multiple org_ids.
-- Your experiment is assigned at the org_id level.
-- You are interested in understanding user_id level impact, such as revenue per user, across the treatment group and the control group.
+- Your metrics source has both `org_id` and `user_id`.
+- The relationship between `org_id` and `user_id` is 1-to-many. Namely, one org contains several users, but a user cannot be associated with multiple org_ids.
+- Your experiment is assigned at the `org_id` level.
+- You are interested in understanding the treatment effect at the `user_id` level, such as revenue per user.
 
 
-First, you should set the metric source with org_id as an ID type. In this table, each row of data should have both org_id and user_id.
-![1 metrics source](https://github.com/statsig-io/docs/assets/139815787/2653c7ee-f452-4891-bd04-3667cac20c30)
+First, you should set the metric source with `org_id` as an ID type. In this table, each row of data should have both `org_id` and `user_id`.
+![1 metric source](https://github.com/statsig-io/docs/assets/139815787/a99a4577-8be5-4001-ac4d-2297f3b2fff0)
 
 
-Second, choose your assignment source, where the unit of assignment is org_id.
+Second, choose your assignment source, where the unit of assignment is `org_id`.
 ![2 assignment](https://github.com/statsig-io/docs/assets/139815787/16472cd7-1aa1-44a2-9a6b-0f789ac5308e)
 
 
-Then, define your metric of revenue per user_id. Note that your denominator should be `count distinct user_id` instead of `unit count`, because the latter is equivalent to `count distinct org_id` in an org_id level experiment.
+Then, define your metric of revenue per user_id. Note that your denominator should be `count distinct user_id` instead of `unit count`, because the latter is equivalent to `count distinct org_id` in an `org_id` level experiment.
 
 Correct definition
 ![3a right](https://github.com/statsig-io/docs/assets/139815787/ca4c9076-28e1-4cf8-8aa1-2127def7d771)
@@ -35,7 +36,7 @@ Wrong definition
 ![3b wrong](https://github.com/statsig-io/docs/assets/139815787/7d81e5f7-20b0-440c-a4d8-1281f93c1ece)
 
 
-Finally, set up the experiment with org_id
+Finally, set up the experiment with `org_id`
 ![4 experiment](https://github.com/statsig-io/docs/assets/139815787/02f9c6bb-0b32-4caf-a529-5bacc2a56d44)
 
 
