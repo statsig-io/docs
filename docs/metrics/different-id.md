@@ -6,17 +6,35 @@ slug: /metrics/different-id
 
 # Analysis When the Unit of Assignment and the Unit of Analysis Are Different
 
-There are several cases where the experiment assignment unit differs from the analysis unit. Each scenario requires a different solution:
-1. To measure session-level data in a user-level experiment, use ratio metrics.
-2. To expose on a logged-out ID and measure logged-in revenue, use ID resolution.
-3. To aggregate all a user's businesses' revenue as a user-level metric, address this by tagging the business revenue with the user ID of the owner.
+There are two common cases where the experiment assignment unit differs from the analysis unit. Each scenario requires a different solution:
+1. To measure session-level data in a user-level experiment, use ratio metrics (this doc).
+2. To expose a logged-out ID and measure logged-in revenue, use [ID resolution](https://docs.statsig.com/statsig-warehouse-native/features/id-resolution).
+
  
-For the first scenario, we have this demo experiment to illustrate how ratio metrics should be defined. In [the experiment](https://www.statsig.me/l/bmwpnhu9):
-- The [unit of assignment is the org_id](https://console.statsig.com/3dElKM5STY5EC8SG2zjhK4/assignment_sources/aqILGOV81t4BS9PLYaJFM).
-- [Each org_id is associated with multiple user_ids](https://console.statsig.com/3dElKM5STY5EC8SG2zjhK4/metrics/metric_sources/265jYDifYZMVcVAVQIbm56).
-- We want to analyze the impact of this org_id experiment on the revenue per user metric.
-- The [Revenue per unit](https://console.statsig.com/3dElKM5STY5EC8SG2zjhK4/metrics/metrics_catalog/Revenue%20per%20unit%20(wrong%20definition)/user_warehouse/setup?unitType=user_id) metric shows the wrong way of defining this ratio metric, because the denominator is the org_id, following the setup of the experiment.
-- The [Second metric](https://console.statsig.com/3dElKM5STY5EC8SG2zjhK4/metrics/metrics_catalog/Revenue_over_num_user_id%20(correct%20definition)/user_warehouse/setup?unitType=user_id) shows the right way of defining this ratio metric by using (count distinct user_id) as the denominator.
+For the first scenario, we will use a demo to explain, suppose: 
+- Your metrics source has both user_id and org_id. The relationship between org_id and user_id is 1-to-many. Namely, one org contains several users, but a user cannot be associated with multiple org_ids.
+- Your experiment is assigned at the org_id level.
+- You are interested in understanding user_id level impact, such as revenue per user, across the treatment group and the control group.
+
+
+First, you should set the metric source with org_id as an ID type. In this table, each row of data should have both org_id and user_id.
+![Screenshot 2024-04-29 at 2 45 19 PM](https://github.com/statsig-io/docs/assets/139815787/30b454ad-9227-4407-a2dc-d574d1b8a055)
+
+
+Second, choose your assignment source, where the unit of assignment is org_id.
+![2 assignment source](https://github.com/statsig-io/docs/assets/139815787/82edd221-990a-47ed-89f6-9d0668372fe8)
+
+
+Then, define your metric of revenue per user_id. Note that your denominator should be `count distinct user_id` instead of `unit count`, because the latter is equivalent to `count distinct org_id` in an org_id level experiment.
+Correct definition
+![3a right](https://github.com/statsig-io/docs/assets/139815787/ca4c9076-28e1-4cf8-8aa1-2127def7d771)
+Wrong definition
+![3b wrong](https://github.com/statsig-io/docs/assets/139815787/7d81e5f7-20b0-440c-a4d8-1281f93c1ece)
+
+
+Finally, set up the experiment with org_id
+![4 experiment](https://github.com/statsig-io/docs/assets/139815787/02f9c6bb-0b32-4caf-a529-5bacc2a56d44)
+
   
 In the Stats Engine, we utilize the delta method to calculate variance and confidence intervals.
 - For mean metrics, we record a value indicating the number of observations per exposed unit in the records column of the staging data. This acts as the denominator or cluster-size value for delta calculations.
