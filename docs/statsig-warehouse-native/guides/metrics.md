@@ -5,16 +5,17 @@ sidebar_label: Metrics
 ---
 
 Metrics are measures of user or system behavior that you'll use as evaluation criteria for
-experiments. In Statsig warehouse native, Metrics are configurations on top of a Metric Source. This includes:
+experiments. In Statsig Warehouse Native, Metrics are calculations on top of Metric Sources. The configuration of a metric includes:
 
 - The type of aggregation you want to perform (E.g. Sum, Mean, Count, Unique Users)
-- For means, sums, etc., the field to use for the numerical calculation
-- Optional filters on fields from your Metric Source query
-- Optional metadata fields to act as drill-down dimensions in experiment results
-- Optional lower/upper winsorization bounds for outlier control
-- Optional time windows to take input data from
-- Optional toggle for if the metric should wait for a user's data to bake before including a user in results
-- For Ratios and Funnels, multiple metric sources that contribute the components of the metric
+- For Means, Sums, etc., the field to use for the numerical calculation
+  - Optional filters on fields from your Metric Source query
+  - Optional drill-down dimensions on metadata fields to be used in experiment analysis
+  - Optional toggle for lower/upper winsorization bounds for outlier control
+  - Optional toggle for cohort windows to take input data from
+  - Optional toggle for whether the metric should wait for a user's data to bake before including a user in results
+- For Ratios and Funnels, multiple metric sources, fields and aggregation that contribute the components of the metric
+
 
 ![Metric Tab](https://user-images.githubusercontent.com/102695539/264088732-187cba73-1cf9-4ddf-b720-9641e97ce678.png)
 
