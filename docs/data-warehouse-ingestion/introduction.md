@@ -28,7 +28,7 @@ In Statsig console, you can:
 
 Ingestion is set up on a daily schedule. Statsig will run a query you provide on your data warehouse, download the result set, and materialize the results into your console the same as those that came in through the SDK.
 
-If data lands late or is updated, Statsig will detect this change (currently via listening for row count changes) on a rolling window and reload the data for that day.
+If data lands late or is updated, Statsig will detect this change and reload the data for that day (details below).
 
 ### How to Begin Data Ingestion
 
@@ -61,7 +61,7 @@ See [here](data_mapping.mdx) for more information.
 
 Statsig supports multiple schedules for ingestion. At the scheduled window, we will check if data is present in your warehouse for the latest date, and load if it exists.
 
-At several follow-up windows we will check if the data has changed, and reload it if there's a change larger than 5%.
+We will check the underlying source table for changes.  For up to 3 days after initial ingestion, we will check for >5% changes in row counts and reload the data.
 
 We also support a user-triggered backfill. This could be useful if a specific metric definition has changed, or you want to resync data older than a few days.
 
