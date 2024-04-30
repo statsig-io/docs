@@ -92,7 +92,6 @@ Note that this is rate limited to once every two hours, and there may be a few m
 
 1. **Does event data from ingestion count towards Statsig's [User Accounting Metrics](/metrics/user) such as DAU or Retention?**
 
-
 No, event data from ingestions does not count towards Statsig's User Accounting Metrics such as DAU or Retention. Customers typically send Statsig a subset of their events, which could result in multiple competing values for "fact" data such as daily active users in your Statsig project. Statsig recommends sending your own precomputed metric for DAU or as a daily event per user (1 'daily_active' event if a user was active that day).
 
 2. **How long does the data take to load?**
@@ -126,4 +125,4 @@ Statsig also sends email notifications with these status updates to the Statsig 
 
 7. **Does Statsig automatically backfill data**
 
- Statsig looks back at data for the last 3 days from today to see data has changed (>5% number of rows) to automatically trigger a backfill. Outside of this window, we expect the customer to trigger backfill for the range of dates.
+ Statsig looks back at data for 3 days from the initial ingestion to see data has changed (>5% increase in the number of rows) to automatically trigger a backfill. Outside of this window, we expect the customer to trigger backfill for the range of dates.
