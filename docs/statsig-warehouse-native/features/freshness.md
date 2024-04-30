@@ -5,7 +5,7 @@ sidebar_label: Early Diagnostics
 description: Early Diagnostics of Experiments
 ---
 
-## Early Diagnostics for the first 1 million exposures
+## Just-in-time updates for the first 1 million exposures
 
 After launching an experiment, you may want to check certain results -- such as page load time, impressions on key pages, and business-critical metrics -- as early as possible to detect crashes or catch a bug.
 
