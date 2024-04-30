@@ -5,16 +5,19 @@ sidebar_label: Metrics
 ---
 
 Metrics are measures of user or system behavior that you'll use as evaluation criteria for
-experiments. In Statsig warehouse native, Metrics are configurations on top of a Metric Source. This includes:
+experiments. In Statsig Warehouse Native, Metrics are calculations on top of Metric Sources. The configuration of a metric includes:
 
 - The type of aggregation you want to perform (E.g. Sum, Mean, Count, Unique Users)
-- For means, sums, etc., the field to use for the numerical calculation
-- Optional filters on fields from your Metric Source query
-- Optional metadata fields to act as drill-down dimensions in experiment results
-- Optional lower/upper winsorization bounds for outlier control
-- Optional time windows to take input data from
-- Optional toggle for if the metric should wait for a user's data to bake before including a user in results
-- For Ratios and Funnels, multiple metric sources that contribute the components of the metric
+- For Means, Sums, etc., the field to use for the numerical calculation
+  - Optional filters on fields from your Metric Source query
+  - Optional drill-down dimensions on metadata fields to be used in experiment analysis
+  - Optional toggle for lower/upper winsorization bounds for outlier control
+  - Optional toggle for cohort windows to take input data from
+  - Optional toggle for whether the metric should wait for a user's data to bake before including a user in results
+- For Ratios and Funnels, the metric sources and fields that contribute the components of the metric
+  - Optional filters on fields from your Metric Source query
+  - Optional toggle for cohort windows to take input data from
+
 
 ![Metric Tab](https://user-images.githubusercontent.com/102695539/264088732-187cba73-1cf9-4ddf-b720-9641e97ce678.png)
 
@@ -31,7 +34,7 @@ We're actively working on adding more metric types - refer to the crosstab below
 | Sum                   | revenue, time spent, bandwidth                      | Sum of Metric Source values                            | "                                                       | Sum of user values                |                      |
 | Mean                  | average latency, average purchase price             | Average of non-null Metric Source values               | Sum of values, Count of values                          | Sum(values)/Sum(counts)           | Delta Method applied |
 | Count Distinct        | Unique game rooms the user connected to             | Count of distinct user-value pairs                     | Count of distinct values                                | Average of user-level counts      |                      |
-| User Count            | Metrics based on users with various configurations  |                                                        |                                                         |                                   |                      |
+| Unit Count            | Metrics based on users with various configurations  |                                                        |                                                         |                                   |                      |
 | - Daily Participation | Average DAU of exposed users                        | Daily Active Users                                     | 1/0 flag for participation on each day                  | Sum of values / Total Days        |                      |
 | - One Time Event      | Did a user complete an event during the experiment  | Daily Active Users                                     | 1/0 flag for participation across experiment lifespan   | Count of users                    |                      |
 | - Custom Window       | Did a user subscribe between 3-7 days from exposure | Daily Active Users                                     | 1/0 flag for participation within window                | Count of users                    |                      |
@@ -78,23 +81,6 @@ FROM user_level_data
 GROUP BY group_id;
 ```
 
-```
--- User Level
-SELECT
-  user_id,
-  COUNT(1) as value
-FROM source_data
-GROUP BY user_id;
-
--- Group Level
-SELECT
-  group_id,
-  SUM(value) as total,
-  COUNT(distinct user_id) as population
-FROM user_data
-GROUP BY group_id;
-```
-
 ### Mean
 ```
 -- User Level
@@ -103,6 +89,7 @@ SELECT
   SUM(value_column) as value,
   COUNT(value_column) as records
 FROM source_data
+WHERE value_column IS NOT NULL
 GROUP BY user_id;
 
 -- Group Level
@@ -139,6 +126,7 @@ SELECT
   PERCENTILE(value, percentile_level) as value,
   COUNT(distinct user_id) as population
 FROM user_data
+WHERE value IS NOT NULL
 GROUP BY group_id;
 ```
 
@@ -181,6 +169,7 @@ SELECT
   group_id,
   SUM(numerator)/SUM(denominator) as mean
 FROM user_data
+WHERE COALESCE(denominator, 0) != 0
 GROUP BY group_id;
 ```
 

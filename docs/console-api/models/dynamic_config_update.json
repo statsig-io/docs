@@ -54,6 +54,11 @@
       },
       "example": "an updated summary of what this dynamic config does"
     },
+    "idType": {
+      "type": "string",
+      "description": "The type of ID which the dynamic config is based on.",
+      "example": "userID"
+    },
     "rules": {
       "type": "array",
       "description": " An array of Rule objects.",

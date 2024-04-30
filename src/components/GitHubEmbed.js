@@ -77,7 +77,7 @@ function runGateCheck() {
 }
 
 export default function GitHubEmbed({ url, language }) {
-  const [content, setContent] = useState("// Loading...");
+  const [content, setContent] = useState(null);
 
   runGateCheck();
 
@@ -86,12 +86,22 @@ export default function GitHubEmbed({ url, language }) {
 
     const fetchData = async () => {
       try {
+        const start = Date.now();
         const response = await fetch(url);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
+        const minTime = 500;
         const data = await response.text();
-        setContent(extractSnippet(data));
+        const remaining = Date.now() - start;
+        if (remaining < minTime) {
+          setTimeout(
+            () => setContent(extractSnippet(data)),
+            minTime - remaining
+          );
+        } else {
+          setContent(extractSnippet(data));
+        }
       } catch (error) {
         setContent(`// Failed to load example.\n// View on GitHub:\n// ${url}`);
         logFailure(url, language, error);
@@ -101,5 +111,24 @@ export default function GitHubEmbed({ url, language }) {
     fetchData();
   }, [url]);
 
-  return <CodeBlock language={language ?? "typescript"}>{content}</CodeBlock>;
+  return (
+    <div
+      style={{
+        maxHeight: content ? "1000px" : "200px",
+        transition: "max-height 1s ease-out",
+        overflow: "hidden",
+      }}
+    >
+      {content == null && (
+        <CodeBlock language={language ?? "typescript"}>
+          <div style={{ textAlign: "center", padding: "50px 0px 50px 0px" }}>
+            ...
+          </div>
+        </CodeBlock>
+      )}
+      {content != null && (
+        <CodeBlock language={language ?? "typescript"}>{content}</CodeBlock>
+      )}
+    </div>
+  );
 }

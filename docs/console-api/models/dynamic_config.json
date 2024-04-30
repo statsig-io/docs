@@ -43,6 +43,11 @@
           },
           "example": "CONSOLE API"
         },
+        "idType": {
+          "type": "string",
+          "description": "The type of ID which the dynamic config is based on.",
+          "example": "userID"
+        },
         "lastModifierID": {
           "type": "string",
           "description": "The Statsig UserID of the last modifier of this dynamic config",
