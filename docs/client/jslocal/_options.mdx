@@ -3,6 +3,7 @@ import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
 `statsig.initializeAsync()` and `statsig.initialize()` takes an optional parameter `options` in addition to `sdkKey` and `user` that you can provide to customize the Statsig client. Here are the current options and we are always adding more to the list:
 
 ### User properties
+
 - **environment**: StatsigEnvironment, default null
   - An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
   - The most common usage is to set the environment tier ('production', 'staging' or 'development'), e.g. `{ tier: 'staging' }`, and have feature gates pass/fail for specific environments.
@@ -12,12 +13,14 @@ import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
   - The SDK will automatically add an entry in `customIDs` in the user object for the current `stableID`
 
 ### Endpoint Overrides
+
 - **configSpecAPI** - default https://api.statsig.com/v1/
-  - The endpoint to download the config spec definition for your project. You should likely not override this unless you are hosting your config spec on your own cdn.  Defaults to `https://api.statsigcdn.com/v1/download_config_specs/<client_key>.json`, used for async initialization
+  - The endpoint to download the config spec definition for your project. You should likely not override this unless you are hosting your config spec on your own cdn. Defaults to `https://api.statsigcdn.com/v1/download_config_specs/<client_key>.json`, used for async initialization
 - **eventLoggingApi?** `string`, default `'https://events.statsigapi.net/v1/rgstr/`
   - The SDK will hit different endpoints for downloading config definitions to evaluate gates and for `rgstr|log_event` to log event data. `eventLoggingApi` controls the event logging endpoint.
 
 ### Event Logging Parameters
+
 - **disableCurrentPageLogging** boolean, default false.
   - By default, the sdk appends the current page for log events to the event payload to generate user journey/funnel analytics
 - **loggingIntervalMillis**: number, default 5000 (5s), min 1000, max 60000
@@ -26,23 +29,24 @@ import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
   - Maximum number of events to buffer before flushing events to statsig
 
 ### Initialization
-- **initializeValues?** Record<string, any> | null, default null
+
+- **initializeValues?** Record `<string, any> | null`, default null
   - Provide the `download_config_specs` values directly to the Javascript SDK to synchronously initialize the client
-  - You may wish to fetch this from the default `js` snippet we provide on our cdn.  See "Synchronous Initialization" for more details
+  - You may wish to fetch this from the default `js` snippet we provide on our cdn. See "Synchronous Initialization" for more details
   - Only used when calling `statsig.initialize()`
 - **initTimeoutMs?** number, default `3000`
   - For asynchronous initialization, the time to wait for the project definition to be downloaded before falling back to cached or default values
   - Only used when calling `statsig.initializeAsync()`
 
 ### Networking and Local Storage
+
 - **localMode** - boolean, default false
   - <LocalModeSnippet type="client" />
 - **ignoreWindowUndefined?** `boolean`, default `false`
-  - By default, the SDK will not issue network requests when the global `window` is undefined.  If you are trying to execute in a server environment for SSR, you may wish to override this.  A better approach would be to bootstrap the sdk from the server rather than issuing a network request, but this can be used to unblock testing
+  - By default, the SDK will not issue network requests when the global `window` is undefined. If you are trying to execute in a server environment for SSR, you may wish to override this. A better approach would be to bootstrap the sdk from the server rather than issuing a network request, but this can be used to unblock testing
 - **disableLocalStorage?** `boolean`, default `false`
   - Completely disable the use of local storage for the lifecycle of this `initialize` -> `shutdown`. The only access to local storage will be to clear out existing keys when statsig is `shutdown`
 - **disableNetworkKeepalive**: boolean, default false. sdk
   - Entirely disables the keepalive flag from being appended to network requests issued by the SDK
 - **userPersistentStorage?** UserPersistentStorageInterface, default null
   - A persistent storage adapter for running sticky experiments.
-  

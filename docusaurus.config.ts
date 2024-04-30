@@ -3,8 +3,12 @@ const path = require("path");
 const math = require("remark-math");
 const katex = require("rehype-katex");
 
-/** @type {import('@docusaurus/types').DocusaurusConfig} */
-module.exports = {
+import type * as Preset from "@docusaurus/preset-classic";
+
+import type { Config } from "@docusaurus/types";
+import { themes as prismThemes } from "prism-react-renderer";
+
+const config: Config = {
   title: "Statsig Docs",
   tagline: "Ship faster!",
   url: "https://docs.statsig.com",
@@ -14,6 +18,9 @@ module.exports = {
   favicon: "img/favicon.ico",
   organizationName: "statsig", // Usually your GitHub org/user name.
   projectName: "statsig-io/docs", // Usually your repo name.
+  markdown: {
+    format: "detect",
+  },
   themeConfig: {
     metadata: [
       {
@@ -91,8 +98,8 @@ module.exports = {
       copyright: `Copyright (c) ${new Date().getFullYear()} Statsig, Inc. | Thanks Docusaurus`,
     },
     prism: {
-      theme: require("prism-react-renderer/themes/github"),
-      darkTheme: require("prism-react-renderer/themes/dracula"),
+      theme: prismThemes.github,
+      darkTheme: prismThemes.dracula,
       additionalLanguages: [
         "swift",
         "java",
@@ -333,3 +340,4 @@ module.exports = {
     },
   ],
 };
+export default config;
