@@ -51,7 +51,9 @@ class StatsigOptions(
     var localMode: Boolean = false,
     var rulesetsSyncIntervalMs: Long = CONFIG_SYNC_INTERVAL_MS,
     var idListsSyncIntervalMs: Long = ID_LISTS_SYNC_INTERVAL_MS,
-    var dataStore: IDataStore? = null
+    var dataStore: IDataStore? = null,
+    var customLogger: LoggerInterface = defaultLogger,
+    var disableAllLogging: Boolean = false,
 ) {
 
     // to set the environment tier
@@ -66,5 +68,25 @@ abstract class IDataStore {
     abstract fun get(key: String): String?
     abstract fun set(key: String, value: String)
     abstract fun shutdown()
+}
+```
+
+### LoggerInterface
+
+```kotlin
+interface LoggerInterface {
+    fun warning(message: String)
+    fun info(message: String)
+}
+
+val defaultLogger = object : LoggerInterface {
+
+    override fun warning(message: String) {
+        println(message)
+    }
+
+    override fun info(message: String) {
+        println(message)
+    }
 }
 ```

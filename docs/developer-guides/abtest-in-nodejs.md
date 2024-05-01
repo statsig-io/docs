@@ -33,27 +33,36 @@ To run a simple A/B experiment in a webpage with Node.js using the Statsig SDK, 
       });
       ```
 
+    - Verify the app runs by issuing `node index.js` command
+
 ### Step 2: Integrate Statsig for A/B Testing
 
 1. **Initialize Statsig**:
     - At the top of your `index.js`, require the Statsig SDK and initialize it with your server-side SDK key.
     - Modify your route to serve different content based on the experiment's variant.
-    - Ensure to replace `'your-server-sdk-key'` with your actual Statsig server-side SDK key and `'your_experiment_key'` with the name of your experiment.
+    - Ensure you replace `'your-server-sdk-key'` with your actual Statsig server-side SDK key and `'your_experiment_key'` with the name of your experiment.
+
       ```javascript
       const statsig = require('statsig-node');
+      const express = require('express');
+      const app = express();
+      const port = 3000;
 
       // Initialize Statsig server-side SDK
       statsig.initialize('your-server-sdk-key').then(() => {
-          app.get('/', async (req, res) => {
-              const user = { userID: 'user123' }; // Customize as needed
-              await statsig.checkGate(user, 'experiment_key'); // Preliminary check to fetch experiment data
-              const experimentValue = await statsig.getExperiment(user, 'your_experiment_key').getValue('textToShow', 'Default Text');
+        app.get('/', async (req, res) => {
+          const user = { userID: 'user123' }; // Customize as needed
+          const experiment = statsig.getExperimentSync(user, 'experiment_name');
+          const ev = experiment.getValue('parameter_name', 'Default Text');
+          res.send(`<h1>${ev}</h1>`);
+        });
+      });
 
-              res.send(`<h1>${experimentValue}</h1>`);
-          });
+      app.listen(port, () => {
+        console.log(`Server listening at http://localhost:${port}`);
       });
       ```
-    - Note: This step assumes you're using `await` inside an async callback, which may require adjustments based on your actual app structure.
+    - Run the app by issuing `node index.js` command
 
 ### Step 3: Create Your A/B Test in Statsig Console
 

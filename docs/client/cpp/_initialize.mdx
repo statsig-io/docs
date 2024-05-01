@@ -1,3 +1,4 @@
+
 ```cpp
 #include <statsig.h>
 
@@ -9,8 +10,39 @@ user.custom_ids = {
 
 // Create your own instance
 StatsigClient client;
-client.Initialize("client-{YOUR_CLIENT_SDK_KEY}", user);
 
-// or, use the shared instance
-StatsigClient::Shared().Initialize("client-{YOUR_CLIENT_SDK_KEY}", user);
+// Initialize synchronously using cached values from the previous session
+client.InitializeSync("client-{YOUR_CLIENT_SDK_KEY}", user);
+
+// or, Initialize asynchronosly from network
+client.InitializeAsync(
+    "client-{YOUR_CLIENT_SDK_KEY}", 
+    [](StatsigResultCode result) {
+        // completion callback
+    }, 
+    user
+);
+```
+
+**Synchronous** initialization will leverage cache (if available), returning immediately. 
+Data for subsequent sessions will then be fetched in the background.
+
+**Asynchronous** initialization, on the other hand provides a callback, allowing you to wait for the most 
+current data to be fetched.
+
+
+For convnience, there is also a singleton instance that can be accessed via `StatsigClient::Shared()`.
+
+```cpp
+// Initialize synchronously using cached values from the previous session
+StatsigClient::Shared().InitializeSync("client-{YOUR_CLIENT_SDK_KEY}", user);
+
+// or, Initialize asynchronosly from network
+StatsigClient::Shared().InitializeAsync(
+    "client-{YOUR_CLIENT_SDK_KEY}", 
+    [](StatsigResultCode result) {
+        // completion callback
+    }, 
+    user
+);
 ```

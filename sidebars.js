@@ -62,7 +62,7 @@ module.exports = {
               ],
             },
             "guides/synchronized-launch",
-            "guides/featuregates-or-experiments",
+            "guides/featureflags-or-experiments",
             "guides/experimentation-program",
             "guides/serverless",
             "guides/config-history",
@@ -72,6 +72,7 @@ module.exports = {
             "guides/uptime",
             "guides/fomo",
             "guides/migrate-from-launchdarkly",
+            "guides/statsig-id-resolver",
           ],
         },
         {
@@ -92,34 +93,34 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Feature Gates",
+      label: "Feature Flags",
       items: [
         {
           type: "category",
-          label: "Feature Gates",
+          label: "Feature Flags",
           link: {
             type: "doc",
-            id: "feature-gates/working-with",
+            id: "feature-flags/working-with",
           },
           items: [
-            "feature-gates/create-new",
-            "feature-gates/add-rule",
-            "feature-gates/test-gate",
-            "feature-gates/overrides",
-            "feature-gates/scheduled-rollouts",
+            "feature-flags/create-new",
+            "feature-flags/add-rule",
+            "feature-flags/test-gate",
+            "feature-flags/overrides",
+            "feature-flags/scheduled-rollouts",
             {
               Implement: [
-                "feature-gates/implement",
-                "feature-gates/implement/client",
-                "feature-gates/implement/server",
-                "feature-gates/implement/http-api",
+                "feature-flags/implement",
+                "feature-flags/implement/client",
+                "feature-flags/implement/server",
+                "feature-flags/implement/http-api",
               ],
             },
-            "feature-gates/conditions",
-            "feature-gates/view-exposures",
-            "feature-gates/feature-gates-lifecycle",
-            "feature-gates/permanent-and-stale-gates",
-            "feature-gates/best-practices",
+            "feature-flags/conditions",
+            "feature-flags/view-exposures",
+            "feature-flags/feature-flags-lifecycle",
+            "feature-flags/permanent-and-stale-gates",
+            "feature-flags/best-practices",
           ],
         },
         {
@@ -247,6 +248,7 @@ module.exports = {
             "guides/sidecar-experiments/setup",
             "guides/sidecar-experiments/creating-experiments",
             "guides/sidecar-experiments/publishing-experiments",
+            "guides/sidecar-experiments/integrating-gtm",
           ],
         },
         "holdouts/introduction",
@@ -280,7 +282,7 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Analytics",
+      label: "Product Analytics",
       items: [
         "mex/overview",
         {
@@ -312,6 +314,7 @@ module.exports = {
             // other
             "metrics/ingest",
             "metrics/pulse",
+            "metrics/local-metrics",
             "metrics/console",
             "metrics/health-checks",
 
@@ -336,6 +339,21 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Session Replay",
+      items: [
+        "session-replay/overview",
+        "session-replay/install",
+        "session-replay/configure",
+        "session-replay/watch",
+      ],
+    },
+    {
+      type: "category",
+      label: "Web Analytics",
+      items: ["webanalytics/overview"],
+    },
+    {
+      type: "category",
       label: "Statsig Warehouse Native",
       link: {
         type: "doc",
@@ -349,9 +367,12 @@ module.exports = {
             "statsig-warehouse-native/guides/metrics",
             "statsig-warehouse-native/guides/assignment_sources",
             "statsig-warehouse-native/guides/experiments",
+            "statsig-warehouse-native/guides/checklist",
+            "statsig-warehouse-native/guides/sql",
             "statsig-warehouse-native/guides/pulse",
             "statsig-warehouse-native/guides/sdks",
             "statsig-warehouse-native/guides/aatest",
+            "metrics/different-id",
             "statsig-warehouse-native/guides/running_a_poc",
           ],
         },
@@ -384,6 +405,7 @@ module.exports = {
             "statsig-warehouse-native/connecting-your-warehouse/snowflake",
             "statsig-warehouse-native/connecting-your-warehouse/databricks",
             "statsig-warehouse-native/connecting-your-warehouse/redshift",
+            "statsig-warehouse-native/connecting-your-warehouse/athena",
             "statsig-warehouse-native/connecting-your-warehouse/scheduled-reloads",
           ],
         },
@@ -392,11 +414,8 @@ module.exports = {
     {
       type: "category",
       label: "SDKs, APIs, Integrations",
-      link: {
-        type: "doc",
-        id: "sdks/sdks-overview",
-      },
       items: [
+        "sdks/getting-started",
         {
           type: "category",
           label: "Client SDKs",
@@ -424,10 +443,14 @@ module.exports = {
                 id: "client/javascript-sdk",
               },
               items: [
-                "client/javascript-mono/MigrationFromOldSDK",
+                "client/javascript-mono/MigrationFromOldJsClient",
+                // "client/javascript-mono/MigrationFromOldReact",
                 // "client/javascript-mono/IntegrationNextJs",
                 // "client/javascript-mono/IntegrationReact",
                 "client/javascript-mono/UsingEvaluationsDataAdapter",
+                "client/javascript-mono/ReactNativeUsage",
+                "client/javascript-mono/ExpoUsage",
+                "client/javascript-mono/Examples",
               ],
             },
             "client/reactSDK",
@@ -445,6 +468,19 @@ module.exports = {
               label: "On Device Evaluation",
               items: [
                 "client/jsLocalEvaluationSDK",
+                {
+                  type: "category",
+                  label: "New JavaScript (Beta)",
+                  link: {
+                    type: "doc",
+                    id: "client/js-on-device-eval-client",
+                  },
+                  items: [
+                    "client/js-device-eval-mono/MigrationFromOldSDK",
+                    "client/js-device-eval-mono/UsingSpecsDataAdapter",
+                    "client/js-device-eval-mono/ReactNativeUsage",
+                  ],
+                },
                 "client/swiftOnDeviceEvaluationSDK",
                 "client/androidOnDeviceEvaluationSDK",
               ],
@@ -564,6 +600,7 @@ module.exports = {
             "integrations/github_code_references",
             "integrations/slack",
             "integrations/openai",
+            "integrations/gtm",
             {
               type: "category",
               label: "Terraform",
@@ -667,10 +704,19 @@ module.exports = {
         },
         {
           type: "category",
-          label: "Organization Experiment Policy",
+          label: "Organization Policies",
           link: {
             type: "doc",
-            id: "org-admin/experiment_policy",
+            id: "org-admin/organization_policies",
+          },
+          items: ["org-admin/experiment_policy", "org-admin/gates_policy"],
+        },
+        {
+          type: "category",
+          label: "Templates",
+          link: {
+            type: "doc",
+            id: "templates/templates",
           },
           items: [],
         },

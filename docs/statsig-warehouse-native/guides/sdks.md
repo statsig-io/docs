@@ -22,4 +22,4 @@ Statsig calculates deduplicated first-exposure rollups for you on a daily basis 
 
 ## Log Events
 
-You can also use Statsig's powerful event logging to send events to the Statsig SDK and have them later exported to your warehouse for analysis. (In beta, broadly available soon)
+You can also use Statsig's powerful event logging to send events to the Statsig SDK and have them later exported to your warehouse for analysis. 

@@ -10,34 +10,31 @@ Running a simple A/B experiment in a web page with Python and the Statsig SDK in
 
 First, you'll need a simple Python web server. Flask is a lightweight WSGI web application framework that's perfect for this purpose.
 
+### Step 1: Creating a Simple Python "Hello World" Application
+
 1. **Set Up Your Python Environment**:
-    - Ensure Python 3 is installed on your system.
-    - Create a new directory for your project, navigate into it, and set up a virtual environment:
-      ```bash
-      python3 -m venv venv
-      source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-      ```
+   - Ensure Python is installed on your system. You can download it from [python.org](https://www.python.org/downloads/).
+   - Optionally, create a virtual environment for your project to manage dependencies:
+     ```
+     python -m venv venv
+     source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+     ```
 
-2. **Install Flask**:
-    - Install Flask within your virtual environment:
-      ```bash
-      pip install Flask
-      ```
+2. **Create a New Python File**:
+   - In your project directory, create a file named `app.py`.
 
-3. **Create Your Flask App**:
-    - In your project directory, create a file named `app.py`.
-    - Add the following code to create a simple web server:
-      ```python
-      from flask import Flask
-      app = Flask(__name__)
+3. **Write a Simple Python Program**:
+   - Open `app.py` in your favorite text editor or IDE and write a simple Python program:
+     ```python
+     print("Hello, World!")
+     ```
 
-      @app.route('/')
-      def hello_world():
-          return 'Hello, World!'
-
-      if __name__ == '__main__':
-          app.run(debug=True)
-      ```
+4. **Run Your Program**:
+   - Run your program from the command line or terminal:
+     ```
+     python app.py
+     ```
+   - You should see "Hello, World!" printed to the console.
 
 ### Step 2: Integrate Statsig for A/B Testing
 
@@ -47,27 +44,27 @@ First, you'll need a simple Python web server. Flask is a lightweight WSGI web a
       pip install statsig
       ```
 
-2. **Update Your Flask App for A/B Testing**:
-    - Modify `app.py` to use the Statsig SDK. You'll need to initialize Statsig and then use it within your route to determine which content to serve based on the A/B test configuration.
-    - Ensure to replace `'your-server-secret-key'` with your actual Statsig server-side SDK key and `'your_experiment_name'` with the name of your experiment.
-      ```python
-      from flask import Flask
-      import statsig
+2. **Initialize Statsig in Your Application**:
+   - Modify `app.py` to include initialization of the Statsig SDK and to check a feature flag. You will need a server secret key from Statsig, which you can get from the Statsig dashboard.
+     ```python
+     from statsig import statsig
+     from statsig.statsig_user import StatsigUser
 
-      app = Flask(__name__)
-
-      statsig.initialize('your-server-secret-key')
-
-      @app.route('/')
-      def hello_world():
-          user = {"userID": "user123"}  # Customize user info as needed
-          experiment = statsig.get_experiment(user, 'your_experiment_name')
-          text_to_show = experiment.get_value('text', 'Hello, World!')
-          return f'<h1>{text_to_show}</h1>'
-
-      if __name__ == '__main__':
-          app.run(debug=True)
-      ```
+     # Initialize Statsig with your server secret key
+     statsig.initialize('your_server_secret_key')
+     user = StatsigUser(
+       user_id = "user123", 
+       email = "test@statsig.com",
+     )  # Customize user info as needed
+     experiment = statsig.get_experiment(user, 'your_experiment_name')
+     text_to_show = experiment.get('text', 'Hello, World!')
+     print(text_to_show)
+     
+     # Shutdown Statsig before your application exits
+     statsig.shutdown()
+     ```
+   - Replace `'your_server_secret_key'` with your actual server secret key from Statsig.
+   - Replace `'your_experiment_name'` with the name of your experiment.
 
 ### Step 3: Creating the A/B Test in Statsig Console
 

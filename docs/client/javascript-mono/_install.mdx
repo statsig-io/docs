@@ -5,40 +5,40 @@ You can install the Statsig SDK via npm, yarn or jsdelivr:
 
 <Tabs
   defaultValue="npm"
+  groupId="js-client-approach"
   values={[
     {label: 'NPM', value: 'npm'},
-    {label: 'Script', value: 'script'}, 
-    {label: 'Yarn', value: 'yarn'},
+    {label: 'CDN / <script>', value: 'script'}, 
   ]}>
 
   <TabItem value="script">
 
-Statsig is available from [jsdelivr](https://www.jsdelivr.com/package/npm/statsig-js), an open source CDN. We use this installation method for using Statsig on www.statsig.com! Go ahead, inspect the page source.
+```html
+<script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@latest/build/statsig-js-client.min.js"></script>
+```
+
+Statsig is hosted on the [jsDelivr](https://www.jsdelivr.com/package/npm/@statsig/js-client) CDN.
 
 To access the current primary JavaScript bundle, use:
 
-`https://cdn.jsdelivr.net/npm/statsig-js/build/statsig-prod-web-sdk.min.js`
+`https://cdn.jsdelivr.net/npm/@statsig/js-client/build/statsig-js-client.min.js`
 
 To access specific files/versions:
 
-`https://cdn.jsdelivr.net/npm/@statsig/precomputed-evaluations@{version}/build/precomputed-evaluations.min.js`
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/@statsig/precomputed-evaluations/build/precomputed-evaluations.min.js"></script>
-```
+`https://cdn.jsdelivr.net/npm/@statsig/js-client@{version}/build/statsig-js-client.min.js`
 
   </TabItem>
   <TabItem value="npm">
 
 ```shell
-npm install @statsig/precomputed-evaluations
+npm install @statsig/js-client
 ```
 
   </TabItem>
   <TabItem value="yarn">
 
 ```shell
-yarn add @statsig/precomputed-evaluations
+yarn add @statsig/js-client
 ```
 
   </TabItem>

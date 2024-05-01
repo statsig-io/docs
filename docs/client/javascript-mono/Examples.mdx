@@ -1,0 +1,33 @@
+---
+title: Javascript Examples
+sidebar_label: Examples
+slug: /client/javascript-sdk/examples
+---
+
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+Examples can be found within the GitHub repository:
+
+Next.js
+
+- [Server Side Rendering](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/next-js/src/app/bootstrap-example/BootstrapExample.tsx)
+  - Using Next.js and "use client" to render an App with the StatsigClient.
+- [Proxying Network Calls](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/next-js/src/app/proxy-example/ProxyExample.tsx)
+  - Using your own Next.js api to respond to StatsigClient network calls.
+
+React
+
+- [Auth Flow](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/TransitionToLoggedInExamplePage.tsx)
+  - Transitioning from a unauthorized to an authorized state.
+- [Statsig ClientEvent Streaming](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/ClientEventStreamExamplePage.tsx)
+  - Receiving callbacks for the various events that can happen within the StatsigClient.
+
+## React Login Example
+
+### Auth Service
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-auth-service.ts" />
+
+### Login Form Submission
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-login.tsx" />

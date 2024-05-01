@@ -176,7 +176,7 @@ module.exports = {
               {
                 tagName: "script",
                 attributes: {
-                  src: "https://cdn.jsdelivr.net/npm/@statsig/precomputed-evaluations@0.0.1-beta.8/build/precomputed-evaluations.min.js",
+                  src: "https://cdn.jsdelivr.net/npm/@statsig/js-client@latest/build/statsig-js-client+session-replay+web-analytics.min.js",
                 },
               },
               {
@@ -213,6 +213,74 @@ module.exports = {
           {
             to: "/integrations/terraform/introduction",
             from: "/integrations/terraform",
+          },
+          {
+            to: "/feature-flags/working-with",
+            from: "/feature-gates/working-with",
+          },
+          {
+            to: "/feature-flags/create-new",
+            from: "/feature-gates/create-new",
+          },
+          {
+            to: "/feature-flags/working-with",
+            from: ["/feature-gates", "/feature-flags"],
+          },
+          {
+            to: "/feature-flags/add-rule",
+            from: "/feature-gates/add-rule",
+          },
+          {
+            to: "/feature-flags/test-gate",
+            from: "/feature-gates/test-gate",
+          },
+          {
+            to: "/feature-flags/overrides",
+            from: "/feature-gates/overrides",
+          },
+          {
+            to: "/feature-flags/scheduled-rollouts",
+            from: "/feature-gates/scheduled-rollouts",
+          },
+          {
+            to: "/feature-flags/conditions",
+            from: "/feature-gates/conditions",
+          },
+          {
+            to: "/feature-flags/view-exposures",
+            from: "/feature-gates/view-exposures",
+          },
+          {
+            to: "/feature-flags/feature-flags-lifecycle",
+            from: "/feature-gates/feature-gates-lifecycle",
+          },
+          {
+            to: "/feature-flags/permanent-and-stale-gates",
+            from: "/feature-gates/permanent-and-stale-gates",
+          },
+          {
+            to: "/feature-flags/best-practices",
+            from: "/feature-gates/best-practices",
+          },
+          {
+            to: "/feature-flags/implement",
+            from: "/feature-gates/implement",
+          },
+          {
+            to: "/feature-flags/implement/client",
+            from: "/feature-gates/implement/client",
+          },
+          {
+            to: "/feature-flags/implement/server",
+            from: "/feature-gates/implement/server",
+          },
+          {
+            to: "/feature-flags/implement/http-api",
+            from: "/feature-gates/implement/http-api",
+          },
+          {
+            to: "/mex/overview",
+            from: "/metrics/events-explorer",
           },
         ],
       },

@@ -119,6 +119,13 @@ module.exports = {
                     "id": "f5o1p7uplmpj4"
                   },
                   "description": "Delta sharing table. Can only be set if ingestion already uses delta sharing."
+                },
+                "enabled": {
+                  "type": "boolean",
+                  "x-stoplight": {
+                    "id": "d9qdtvpcaa7sc"
+                  },
+                  "description": "Whether ingestion source is enabled or not"
                 }
               }
             }
@@ -203,6 +210,14 @@ module.exports = {
                     "id": "tfyasovprxo2c"
                   },
                   "description": "Delta sharing table. Required if ingestion uses delta sharing."
+                },
+                "enabled": {
+                  "type": "boolean",
+                  "x-stoplight": {
+                    "id": "uauc63uhyk4mr"
+                  },
+                  "default": false,
+                  "description": "Whether ingestion source is enabled or not"
                 }
               }
             },
@@ -323,8 +338,9 @@ module.exports = {
               "enabled": {
                 "type": "boolean",
                 "x-stoplight": {
-                  "id": "4d9x5pljred4o"
-                }
+                  "id": "2qh3b93j3s8j7"
+                },
+                "default": false
               },
               "creator": {
                 "type": "string",
@@ -2838,6 +2854,9 @@ module.exports = {
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "message"
+                  ],
                   "properties": {
                     "message": {
                       "type": "string",
@@ -2845,11 +2864,23 @@ module.exports = {
                         "id": "w6vs0u615ia1b"
                       },
                       "example": "Ingestion backfilled successfully."
+                    },
+                    "data": {
+                      "type": "object",
+                      "x-stoplight": {
+                        "id": "juv3agselwdvt"
+                      },
+                      "properties": {
+                        "runID": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "jgco2mbgnojn4"
+                          },
+                          "description": "Run ID"
+                        }
+                      }
                     }
-                  },
-                  "required": [
-                    "message"
-                  ]
+                  }
                 }
               }
             }
@@ -2863,6 +2894,12 @@ module.exports = {
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "datestamp_start",
+                  "datestamp_end",
+                  "dataset",
+                  "type"
+                ],
                 "properties": {
                   "datestamp_start": {
                     "type": "string",
@@ -2903,15 +2940,11 @@ module.exports = {
                       }
                     ]
                   },
+                  "dataset": {
+                    "$ref": "#/components/schemas/Ingestion-dataset"
+                  },
                   "type": {
-                    "x-stoplight": {
-                      "id": "zokcd4g5qamz6"
-                    },
-                    "enum": [
-                      "events",
-                      "metrics"
-                    ],
-                    "type": "string"
+                    "$ref": "#/components/schemas/Ingestion-type"
                   }
                 }
               }

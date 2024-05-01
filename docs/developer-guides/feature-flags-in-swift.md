@@ -77,20 +77,30 @@ Integrating feature flags into an iOS application using the Statsig Swift SDK in
 3. **Use a Feature Flag in Your View**:
    - For SwiftUI, modify `ContentView.swift`:
      ```swift
-     import Statsig
-     struct ContentView: View {
-         @State private var featureEnabled: Bool = false
+        import Statsig
+        import SwiftUI
 
-         var body: some View {
-             Text(featureEnabled ? "Feature Enabled!" : "Hello, World!")
-                 .padding()
-                 .onAppear {
-                     Statsig.checkGate("example_feature_flag") { isEnabled in
-                         self.featureEnabled = isEnabled
-                     }
-                 }
-         }
-     }
+        struct ContentView: View {
+            @State private var featureEnabled: Bool = false
+
+            var body: some View {
+                Text(featureEnabled ? "New Homepage Design" : "Old Homepage Design")
+                    .padding()
+                    .onAppear {
+                        checkFeatureGate()
+                    }
+            }
+
+            func checkFeatureGate() {
+                if Statsig.checkGate("example_feature_flag") {
+                    // Gate is on, show new home page
+                    featureEnabled = true
+                } else {
+                    // Gate is off, show old home page
+                    featureEnabled = false
+                }
+            }
+        }
      ```
    - For UIKit, modify `ViewController.swift` to check the feature flag when the view loads:
      ```swift
