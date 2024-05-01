@@ -150,6 +150,9 @@ module.exports = {
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "description"
+                ],
                 "properties": {
                   "description": {
                     "type": "string",
@@ -165,10 +168,10 @@ module.exports = {
                     },
                     "description": "List of scopes",
                     "items": {
+                      "type": "string",
                       "x-stoplight": {
                         "id": "if6ecbif91jir"
                       },
-                      "type": "string",
                       "enum": [
                         "omni_read_only",
                         "omni_read_write",
@@ -183,19 +186,32 @@ module.exports = {
                     "x-stoplight": {
                       "id": "l0b1oda00zakd"
                     },
-                    "description": "Target app ID"
+                    "description": "Primary target app",
+                    "example": "primaryApp"
+                  },
+                  "secondaryTargetAppIDs": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "gicnjda1tmx2y"
+                    },
+                    "description": "List of secondary target apps",
+                    "items": {
+                      "x-stoplight": {
+                        "id": "lst419b0xpbsc"
+                      },
+                      "type": "string",
+                      "example": "secondaryApp"
+                    }
                   },
                   "environments": {
                     "type": "string",
                     "x-stoplight": {
                       "id": "bqijx0740xt6z"
                     },
-                    "description": "List of environments"
+                    "description": "List of environments",
+                    "example": "production"
                   }
-                },
-                "required": [
-                  "description"
-                ]
+                }
               },
               "examples": {}
             }
@@ -241,6 +257,11 @@ module.exports = {
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "description",
+                  "type",
+                  "scopes"
+                ],
                 "properties": {
                   "description": {
                     "type": "string",
@@ -250,11 +271,11 @@ module.exports = {
                     "description": "Description of key"
                   },
                   "type": {
+                    "type": "string",
                     "x-stoplight": {
                       "id": "vthmsr4hiavcv"
                     },
                     "example": "SERVER",
-                    "type": "string",
                     "enum": [
                       "SERVER",
                       "CLIENT",
@@ -269,10 +290,10 @@ module.exports = {
                     },
                     "description": "List of scopes",
                     "items": {
+                      "type": "string",
                       "x-stoplight": {
                         "id": "jzyoiul0smp6f"
                       },
-                      "type": "string",
                       "enum": [
                         "omni_read_only",
                         "omni_read_write",
@@ -287,7 +308,22 @@ module.exports = {
                     "x-stoplight": {
                       "id": "bzsqchyzp31l6"
                     },
-                    "description": "Target app ID"
+                    "description": "Primary target app",
+                    "example": "primaryApp"
+                  },
+                  "secondaryTargetAppIDs": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "u6znogksf81p3"
+                    },
+                    "description": "List of secondary target apps",
+                    "items": {
+                      "x-stoplight": {
+                        "id": "xai2bqihi3q30"
+                      },
+                      "type": "string",
+                      "example": "secondaryApp"
+                    }
                   },
                   "environments": {
                     "type": "array",
@@ -299,15 +335,11 @@ module.exports = {
                       "x-stoplight": {
                         "id": "yl2nnj8cbpia5"
                       },
-                      "type": "string"
+                      "type": "string",
+                      "example": "production"
                     }
                   }
-                },
-                "required": [
-                  "description",
-                  "type",
-                  "scopes"
-                ]
+                }
               },
               "examples": {}
             }
@@ -526,6 +558,11 @@ module.exports = {
         "x-tags": [
           "Keys"
         ],
+        "required": [
+          "type",
+          "description",
+          "scopes"
+        ],
         "properties": {
           "key": {
             "type": "string",
@@ -536,10 +573,10 @@ module.exports = {
             "example": "server-123"
           },
           "type": {
+            "type": "string",
             "x-stoplight": {
               "id": "ljjph6acf4c9a"
             },
-            "type": "string",
             "description": "Type of key",
             "example": "SERVER",
             "enum": [
@@ -563,10 +600,10 @@ module.exports = {
             },
             "description": "List of scopes",
             "items": {
+              "type": "string",
               "x-stoplight": {
                 "id": "8ncfaplbv1pwu"
               },
-              "type": "string",
               "enum": [
                 "omni_read_only",
                 "omni_read_write",
@@ -592,20 +629,29 @@ module.exports = {
               "example": "production"
             }
           },
-          "targetAppID": {
+          "primaryTargetApp": {
             "type": "string",
             "x-stoplight": {
               "id": "lvtp2mj1grbuh"
             },
-            "description": "ID of target app",
-            "example": "12345"
+            "description": "Primary target app",
+            "example": "primaryApp"
+          },
+          "secondaryTargetApps": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "zaegxv2genlpd"
+            },
+            "description": "List of secondary target apps",
+            "items": {
+              "x-stoplight": {
+                "id": "3f42v5du4zzx6"
+              },
+              "type": "string",
+              "example": "secondaryApp"
+            }
           }
-        },
-        "required": [
-          "type",
-          "description",
-          "scopes"
-        ]
+        }
       }
     }
   },
