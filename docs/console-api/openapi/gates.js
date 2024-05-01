@@ -73,14 +73,14 @@ module.exports = {
               "type": "string"
             }
           },
-          "environmentOverride": {
+          "environmentOverrides": {
             "type": "array",
             "x-stoplight": {
               "id": "dcwcrh5uu9cl3"
             },
-            "description": "Environment overrides are currently only supported on POST updates.",
+            "description": "",
             "items": {
-              "$ref": "#/components/schemas/environment_override"
+              "$ref": "#/components/schemas/environment_overrides"
             }
           }
         },
@@ -89,8 +89,8 @@ module.exports = {
           "failingUserIDs"
         ]
       },
-      "environment_override": {
-        "title": "environment_override",
+      "environment_overrides": {
+        "title": "environment_overrides",
         "x-stoplight": {
           "id": "zashpfqkoff41"
         },
@@ -1659,7 +1659,7 @@ module.exports = {
                           },
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/environment_override"
+                            "$ref": "#/components/schemas/environment_overrides"
                           }
                         }
                       },

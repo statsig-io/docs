@@ -1,5 +1,5 @@
 ---
-title: A/A Test
+title: Synthetic A/A Test
 slug: /statsig-warehouse-native/guides/AATest
 sidebar_label: A/A Test
 ---
