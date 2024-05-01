@@ -38,13 +38,13 @@ Now that we have a metric source set up, we can use it to create a Metric.
 
 ## Daily Vs. Realtime Sources
 
-When specifying a timestamp, you can also specify if the metric source contains data at a daily or timestamp granularity by toggling the "Treat Timestamp as Date" setting.
+When specifying a timestamp, you can also specify if the metric source contains data at a daily or timestamp granularity by toggling the "Treat Timestamp as Date" setting. 
 
 ![Screenshot 2024-01-09 at 4 15 05 PM](https://github.com/statsig-io/docs/assets/102695539/f0edfdaf-9531-4583-b440-d05f0f3c3618)
 
-When this setting is enabled, data from the first day of exposures will be included. For example, if the metric date were '2024-01-01' and a user was exposed at '2024-01-01T12:00:00', a timestamp based join would not include this first day of metrics, but a date-based join would.
+When this setting is **not** enabled, the system performs a timestamp-based join. This means that events are attributed to the experiment results based on the exact time they occur in relation to the exposure time. For example, if a user is exposed to an experiment at `2024-01-01T11:00:00` and an event occurs at `2024-01-01T11:01:00` on the same day, the event will be attributed to the experiment results because it happened after the exposure. Conversely, if the event occurs at `2024-01-01T10:59:00`, just before the exposure, it will not be attributed to the experiment results since it happened prior to the exposure.
 
-This is a common issue you might run into when your data is aggregated date-level metrics, but your exposures are logged in real-time. Toggling this setting allows you to include day-1 metrics for those aggregated sources, while getting timestamp-based joins for realtime sources like event logging.
+On the other hand, if the "Treat Timestamp as Date" setting is enabled, the system performs a date-based join. In this case, all events occurring on the same calendar day as the exposure, regardless of the time, will be included in the experiment results. This includes data from the first day of exposures, ensuring that day-1 metrics are not omitted from the analysis.
 
 ### Note - Governance
 

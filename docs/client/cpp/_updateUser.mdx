@@ -1,11 +1,30 @@
+### Updating Users
+
+At some point, your user might need to change. To make Statsig aware of this new user, you will need to make
+a call to an UpdateUser function.
+
 ```csharp
-StatsigUser user;
-user.user_id = "a-user";
-
-
-client.UpdateUser(user);
+client.UpdateUserSync(user);
 
 // or, use the shared instance
 
-StatsigClient::Shared().UpdateUser(user);
+StatsigClient::Shared().UpdateUserSync(user);
 ```
+
+If you want to ensure you have the latest values for an update (Say you are transition from 
+logged out to logged in). You can use the Asynchronous update function.
+
+```csharp
+{client or StatsigClient::Shared()}.UpdateUserAsync(
+    user,
+    [](StatsigResultCode result) {
+        if (result == StatsigResultCode::Ok) {
+          // do something now that the latest values have been fetched
+        } else {
+          // error state
+        }
+    }
+);
+```
+
+Asynchronous vs Synchronous behaviors are the same as the [Initialize](#initialize-the-sdk) functions.

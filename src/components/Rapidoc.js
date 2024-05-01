@@ -163,7 +163,7 @@ function getDescription(entity) {
   switch (entity) {
     case 'gates':
       return <>
-        <p>A feature <a href="../feature-gates/working-with">gate</a> is a mechanism for teams to configure what system behavior is visible to users without changing application code. This page describes how gates can be created and modified through the Console API.</p>
+        <p>A feature <a href="../feature-flags/working-with">gate</a> is a mechanism for teams to configure what system behavior is visible to users without changing application code. This page describes how gates can be created and modified through the Console API.</p>
         <p>For more detail on creating user targeting based on Statsig-derived environment attributes such as location, client device, browser type, and client app version, see the Console API <a href="./rules#rule">Rules</a> page where all conditions are listed.</p>
         <h2>Gate API functions</h2>
         <ul>
