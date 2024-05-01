@@ -1,0 +1,39 @@
+---
+title: Persistent Assignment
+sidebar_label: Persistent Assignment
+slug: /client/concepts/persistent_assignment
+---
+
+Persistent assignment allows you to ensure that a user's variant stays consistent while an experiment is running, regardless of changes to allocation or targeting.
+
+## Persistent Storage
+
+The persistent storage adapter allows you to plug in your own storage solution that Statsig SDK uses to persist user assignments.
+The user persistent storage interface consists of just a `load`/`loadAsync`, `save`, `delete` API for read/write operations.
+
+:::info
+Currently only supported in `Javascript`, `iOS` and `Android`
+:::
+
+### Persistent Storage Logic
+- Providing a storage adapter on Statsig initialization will give the SDK access to read & write on your custom storage
+- Providing user persisted values to `get_experiment` will inform the SDK to
+  - **save** the evaluation of the current user **on first evaluation**
+  - **load** the previously saved evaluation of a persisted user **on subsequent evaluations**
+  - **delete** the previously saved evaluation of a persisted user if the experiment is no longer active
+- Not providing user persisted values to `get_experiment` will **delete** a previously saved evaluation
+
+### Example usage
+
+```typescript
+await statsig.initialize('client-key', {userPersistentStorage: new CustomStorageAdapter()});
+
+const user = { userID: "123" };
+const userPersistedValues = await statsig.loadUserPersistedValuesAsync(user, 'userID');
+
+let experiment = statsig.getExperiment({userID: "123"}, 'the_allocated_experiment', { userPersistedValues: userPersistedValues });
+console.log(experiment.getGroupName()) // 'Control'
+
+experiment = statsig.getExperiment({userID: "unknown"}, 'the_allocated_experiment', { userPersistedValues: userPersistedValues });
+console.log(experiment.getGroupName()) // 'Control'
+```

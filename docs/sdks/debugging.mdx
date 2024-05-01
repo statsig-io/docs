@@ -34,6 +34,17 @@ For client SDKs, these reasons for the value you are seeing can be:
 - `Error`: an unknown error has occured, and was logged to statsig servers
 - `NetworkNotModified`: the network response came back, but the cached values were already up to date for this user
 
+Newer versions of the sdk will contain two tags: one regarding the initialization state of the sdk, and the other qualifying different sources for that value.
+
+So in addition to the reasons above, you may have:
+
+- `Recognized`: the value was recognized in the set of configs the client was operating with
+- `Unrecognized`: the value was not included in the set of configs the client was operating with
+- `Sticky`: the value is from `keepDeviceValue = true` on the method call
+- `LocalOverride`: the value is from a local override set on the sdk
+
+So `Network:Recognized` means the sdk had up to date values from a successful initialization network request, and the gate/config/experiment you were checking was defined in the payload.  If you are not sure why the config was not included in the payload, it could be excluded due to [Target Apps](/sdk-keys/target-apps), or [Client Bootstrapping](/client/concepts/bootstrapping), for example.
+
 For server SDKs, these reasons for the value you are seeing can be:
 
 - `Network`: fetched at SDK initialization time from the network
@@ -42,6 +53,8 @@ For server SDKs, these reasons for the value you are seeing can be:
 - `LocalOverride`: from an override set locally on the SDK via an override API
 - `Unrecognized`: the sdk was initialized, but this config did not exist in the set of values
 - `Uninitialized`: the sdk was not yet successfully initialized
+
+Newer versions fothe 
 
 In addition to these reasons, the most recent versions of server SDKs will also give you two times to watch: the time at which config definitions initialized the SDK,
 and the time at which the SDK was currently evaluating those definitions.  When you change a gate/config/experiment, the project time will update

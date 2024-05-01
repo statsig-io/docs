@@ -73,14 +73,14 @@ module.exports = {
               "type": "string"
             }
           },
-          "environmentOverride": {
+          "environmentOverrides": {
             "type": "array",
             "x-stoplight": {
-              "id": "k5gbkaazc1w8z"
+              "id": "dcwcrh5uu9cl3"
             },
-            "description": "Environment overrides are currently only supported on POST updates.",
+            "description": "",
             "items": {
-              "$ref": "#/components/schemas/environment_override"
+              "$ref": "#/components/schemas/environment_overrides"
             }
           }
         },
@@ -89,17 +89,17 @@ module.exports = {
           "failingUserIDs"
         ]
       },
-      "environment_override": {
-        "title": "environment_override",
+      "environment_overrides": {
+        "title": "environment_overrides",
         "x-stoplight": {
-          "id": "prl1wtbi4szf7"
+          "id": "zashpfqkoff41"
         },
         "type": "object",
         "properties": {
           "environment": {
             "type": "string",
             "x-stoplight": {
-              "id": "ws3z0x2it6tud"
+              "id": "vzlpq8ud28ela"
             },
             "description": "Which environment(s) the override is to be applied, Null implies all environments.",
             "nullable": true
@@ -107,19 +107,19 @@ module.exports = {
           "unitID": {
             "type": "string",
             "x-stoplight": {
-              "id": "tm5bnw1vhij0z"
+              "id": "yu20rf9clrh89"
             },
             "description": "Which unit ID the override is being applied to."
           },
           "passingIDs": {
             "type": "array",
             "x-stoplight": {
-              "id": "98bfxxf2rnv42"
+              "id": "lj0q3higtkcs2"
             },
             "description": "IDs that are forced to pass the feature gate",
             "items": {
               "x-stoplight": {
-                "id": "d407ifgjgg74j"
+                "id": "elbx0du6j38ez"
               },
               "type": "string"
             }
@@ -127,12 +127,12 @@ module.exports = {
           "failingIDs": {
             "type": "array",
             "x-stoplight": {
-              "id": "9yeft355cn4hm"
+              "id": "xlyxjgbi664u1"
             },
             "description": "IDs that are forced to fail the feature gate",
             "items": {
               "x-stoplight": {
-                "id": "o09rvvx1e6c70"
+                "id": "vxcm7nfmf9fwm"
               },
               "type": "string"
             }
@@ -210,6 +210,9 @@ module.exports = {
                     }
                   }
                 },
+                "required": [
+                  "name"
+                ],
                 "properties": {
                   "name": {
                     "type": "string",
@@ -223,18 +226,33 @@ module.exports = {
                     "type": "string",
                     "description": "The id type this gate will use, defaults to 'userID'"
                   },
+                  "team": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "lt5rqciecph43"
+                    }
+                  },
                   "creatorID": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "a5j8czj6nrw96"
+                      "id": "zsivo6fa4jkim"
                     },
                     "description": "The userID of intended creator, defaults to Console API",
                     "example": "35sClJFs8l0y5uRQhDwUDo"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "47byz9onb5mbx"
+                    },
+                    "items": {
+                      "x-stoplight": {
+                        "id": "w853emu7663xq"
+                      },
+                      "type": "string"
+                    }
                   }
-                },
-                "required": [
-                  "name"
-                ]
+                }
               },
               "examples": {
                 "name/description": {
@@ -326,6 +344,7 @@ module.exports = {
                         "rules": [
                           {
                             "name": "Ten percent of users",
+                            "id": "38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 10,
                             "conditions": [
                               {
@@ -489,6 +508,7 @@ module.exports = {
                           "rules": [
                             {
                               "name": "a rule",
+                              "id": "38ttpCpzrQFTMKcqFKk02l",
                               "passPercentage": 100,
                               "conditions": [
                                 {
@@ -502,6 +522,7 @@ module.exports = {
                             },
                             {
                               "name": "ten percent of people",
+                              "id": "38ttpCpzrQFTMKcqFKk02m",
                               "passPercentage": 10,
                               "conditions": [
                                 {
@@ -511,6 +532,7 @@ module.exports = {
                             },
                             {
                               "name": "everyone",
+                              "id": "38ttpCpzrQFTMKcqFKk02n",
                               "passPercentage": 100,
                               "conditions": [
                                 {
@@ -804,6 +826,7 @@ module.exports = {
                         "rules": [
                           {
                             "name": "specific users",
+                            "id": "38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 100,
                             "conditions": [
                               {
@@ -817,6 +840,7 @@ module.exports = {
                           },
                           {
                             "name": "ten percent of people",
+                            "id": "38ttpCpzrQFTMKcqFKk02m",
                             "passPercentage": 10,
                             "conditions": [
                               {
@@ -826,6 +850,7 @@ module.exports = {
                           },
                           {
                             "name": "everyone",
+                            "id": "38ttpCpzrQFTMKcqFKk02n",
                             "passPercentage": 100,
                             "conditions": [
                               {
@@ -946,12 +971,12 @@ module.exports = {
                       "array"
                     ],
                     "x-stoplight": {
-                      "id": "5rrnm2ejylkzx"
+                      "id": "ok13ll2vlpmkt"
                     },
                     "description": "The gate's tags",
                     "items": {
                       "x-stoplight": {
-                        "id": "voxa9f4r28gsa"
+                        "id": "u0wliutw4tsgn"
                       },
                       "type": "string",
                       "example": "product_team"
@@ -960,7 +985,7 @@ module.exports = {
                   "type": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "z4yjl8n8f5mc4"
+                      "id": "vg4f96tm25n38"
                     }
                   },
                   "targetApps": {
@@ -969,14 +994,14 @@ module.exports = {
                   "idType": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "6o8q8g32tty5p"
+                      "id": "jmduf8cob9wpz"
                     },
                     "description": "Changing ID type will overwrite all historical Pulse results"
                   },
-                  "": {
+                  "team": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "x9ql896pw8y28"
+                      "id": "cuoxyfswftzfr"
                     }
                   }
                 }
@@ -1103,11 +1128,13 @@ module.exports = {
                         "rules": [
                           {
                             "name": "everyone",
+                            "id": "38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 100,
                             "type": "public"
                           },
                           {
                             "name": "all outlook",
+                            "id": "38ttpCpzrQFTMKcqFKk02m",
                             "passPercentage": 100,
                             "conditions": [
                               {
@@ -1121,6 +1148,7 @@ module.exports = {
                           },
                           {
                             "name": "all outlook and gmail",
+                            "id": "38ttpCpzrQFTMKcqFKk02n",
                             "passPercentage": 100,
                             "conditions": [
                               {
@@ -1322,6 +1350,7 @@ module.exports = {
                         "rules": [
                           {
                             "name": "everyone",
+                            "id": "38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 100,
                             "conditions": [
                               {
@@ -1331,6 +1360,7 @@ module.exports = {
                           },
                           {
                             "name": "all outlook",
+                            "id": "38ttpCpzrQFTMKcqFKk02m",
                             "passPercentage": 100,
                             "conditions": [
                               {
@@ -1344,6 +1374,7 @@ module.exports = {
                           },
                           {
                             "name": "all outlook and gmail",
+                            "id": "38ttpCpzrQFTMKcqFKk02n",
                             "passPercentage": 100,
                             "conditions": [
                               {
@@ -1432,12 +1463,12 @@ module.exports = {
                       "array"
                     ],
                     "x-stoplight": {
-                      "id": "5rrnm2ejylkzx"
+                      "id": "j04smi89rx8f4"
                     },
                     "description": "The gate's tags",
                     "items": {
                       "x-stoplight": {
-                        "id": "voxa9f4r28gsa"
+                        "id": "uqs5i4sz6no46"
                       },
                       "type": "string",
                       "example": "product_team"
@@ -1449,9 +1480,15 @@ module.exports = {
                   "idType": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "66ijtgompruqj"
+                      "id": "kv21zfwu0axuf"
                     },
                     "description": "Changing ID type will overwrite all historical Pulse results"
+                  },
+                  "team": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "t1vb31zsc362c"
+                    }
                   }
                 }
               },
@@ -1618,11 +1655,11 @@ module.exports = {
                         },
                         "environmentOverrides": {
                           "x-stoplight": {
-                            "id": "zif61py20eavs"
+                            "id": "zit8j156266e3"
                           },
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/environment_override"
+                            "$ref": "#/components/schemas/environment_overrides"
                           }
                         }
                       },
@@ -2108,7 +2145,7 @@ module.exports = {
           }
         },
         "x-stoplight": {
-          "id": "07vwx0bjfwo42"
+          "id": "8tx3wzzyc3boc"
         },
         "description": "Launch a feature gate",
         "tags": [
@@ -2230,7 +2267,7 @@ module.exports = {
           }
         },
         "x-stoplight": {
-          "id": "07vwx0bjfwo42"
+          "id": "otga7qyan1ygh"
         },
         "description": "Archive a feature gate",
         "tags": [
@@ -2248,6 +2285,324 @@ module.exports = {
           "description": "Gate id to query"
         }
       ]
+    },
+    "/gates/{gate_id}/rules/{rule_id}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "gate_id",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "rule_id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "patch": {
+        "summary": "Update Gate Rule",
+        "tags": [
+          "Gates"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "data": {
+                      "$ref": "../models/gate.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Gate updated successfully.",
+                      "data": {
+                        "id": "a_gate",
+                        "isEnabled": true,
+                        "description": "helpful summary of what this gate does",
+                        "status": "In Progress",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaasdfLlkaujjajiuOSBP2",
+                        "rules": [
+                          {
+                            "name": "All Conditions",
+                            "id": "38ttpCpzrQFTMKcqFKk02l",
+                            "passPercentage": 10,
+                            "conditions": [
+                              {
+                                "type": "user_id",
+                                "targetValue": [
+                                  "35sClJFs8l0y5uRQhDwUDo"
+                                ],
+                                "operator": "any"
+                              }
+                            ],
+                            "environments": [
+                              "staging"
+                            ]
+                          }
+                        ],
+                        "tags": [
+                          "* Core"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "x-stoplight": {
+                        "id": "0awd0a8c3op74"
+                      },
+                      "items": {
+                        "$ref": "../models/error.json"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Duplicate rule name": {
+                    "value": {
+                      "status": 400,
+                      "message": "Duplicate rule name(s) given",
+                      "errors": [
+                        {
+                          "property": "rules",
+                          "errorMessage": "Duplicate rule name(s) given"
+                        }
+                      ]
+                    }
+                  },
+                  "Duplicate rule ID": {
+                    "value": {
+                      "status": 400,
+                      "message": "Duplicate rule IDs given",
+                      "errors": [
+                        {
+                          "property": "rules",
+                          "errorMessage": "Duplicate rule IDs given"
+                        }
+                      ]
+                    }
+                  },
+                  "Nonexistent rule ID": {
+                    "value": {
+                      "status": 400,
+                      "message": "A provided rule ID does not match an existing rule ID",
+                      "errors": [
+                        {
+                          "property": "rules",
+                          "errorMessage": "A provided rule ID does not match an existing rule ID"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "patch-gates-gate_id-rules-rule_id",
+        "x-stoplight": {
+          "id": "t5iej5olk0qgp"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "crtdj4g1d3it8"
+                    },
+                    "example": "All Conditions"
+                  },
+                  "id": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "ts2m44t3xbffn"
+                    },
+                    "example": "38ttpCpzrQFTMKcqFKk02l"
+                  },
+                  "passPercentage": {
+                    "type": "number",
+                    "x-stoplight": {
+                      "id": "ywuhd2cfth65a"
+                    },
+                    "minimum": 0,
+                    "maximum": 100,
+                    "example": 10
+                  },
+                  "conditions": {
+                    "x-stoplight": {
+                      "id": "cedecip4etuwv"
+                    },
+                    "type": "array",
+                    "items": {
+                      "$ref": "../models/condition.json"
+                    }
+                  },
+                  "environments": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "c1mifsawut2bt"
+                    },
+                    "items": {
+                      "x-stoplight": {
+                        "id": "5mo159ziiuy2m"
+                      },
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "name": "All Conditions",
+                    "id": "38ttpCpzrQFTMKcqFKk02l",
+                    "passPercentage": 10,
+                    "conditions": [
+                      {
+                        "type": "user_id",
+                        "targetValue": [
+                          "35sClJFs8l0y5uRQhDwUDo"
+                        ],
+                        "operator": "any"
+                      }
+                    ],
+                    "environments": [
+                      "staging"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Gate Rule",
+        "tags": [
+          "Gates"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "data": {
+                      "$ref": "../models/gate.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Gate updated successfully.",
+                      "data": {
+                        "id": "a_gate",
+                        "isEnabled": true,
+                        "description": "helpful summary of what this gate does",
+                        "status": "In Progress",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaasdfLlkaujjajiuOSBP2",
+                        "rules": [],
+                        "tags": [
+                          "* Core"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
+                    },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "x-stoplight": {
+                        "id": "0awd0a8c3op74"
+                      },
+                      "items": {
+                        "$ref": "../models/error.json"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Nonexistent rule ID": {
+                    "value": {
+                      "status": 400,
+                      "message": "A provided rule ID does not match an existing rule ID",
+                      "errors": [
+                        {
+                          "property": "rules",
+                          "errorMessage": "A provided rule ID does not match an existing rule ID"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "delete-gates-gate_id-rules-rule_id",
+        "x-stoplight": {
+          "id": "t5iej5olk0qgp"
+        }
+      }
     }
   }
 }

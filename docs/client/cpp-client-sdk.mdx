@@ -1,0 +1,73 @@
+---
+sidebar_label: C++
+title: C++ Client SDK
+---
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  PrefetchUsers,
+  ManualExposures,
+  Shutdown,
+  LocalOverrides,
+} from "./Templates/index.mdx";
+
+import Install from "./cpp/_install.mdx";
+import Initialize from "./cpp/_initialize.mdx";
+import CheckGate from "./cpp/_checkGate.mdx";
+import GetConfig from "./cpp/_getConfig.mdx";
+import GetExperiment from "./cpp/_getExperiment.mdx";
+import LogEvent from "./cpp/_logEvent.mdx";
+import UserObject from "./cpp/_userObject.mdx";
+import MoreFAQs from "./cpp/_faqs.mdx";
+import Options from "./cpp/_options.mdx";
+import ShutdownSnippet from "./cpp/_shutdown.mdx";
+
+import * as _UpdateUser from "./cpp/_updateUser.mdx";
+export const UpdateUser = _UpdateUser;
+
+export const Result = SDKDocsBuilder(
+  {},
+  [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/cpp-client-sdk",
+      },
+    ],
+    [
+      GettingStarted,
+      {
+        sdkType: "C++",
+        install: <Install />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+      },
+    ],
+    [StatsigUser, { updateUser: <UserObject /> }],
+    [UpdateUser, {}],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [FAQ, { faqs: <MoreFAQs /> }],
+  ],
+  toc
+);
+
+<>{Result}</>

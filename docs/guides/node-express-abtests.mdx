@@ -5,7 +5,7 @@ title: Experimenting in NodeJS ExpressJS
 
 ExpressJS is a fast, minimalist framework for NodeJS.
 
-In this tutorial we'll integrate our [NodeJS Server SDK](https://docs.statsig.com/server/nodejsServerSDK) into a simple expressJS app and use it to assign the user to an experiment and render the necessary test group. 
+ExpressJS stands out as a swift and minimalist framework within the NodeJS ecosystem, offering an optimal solution for developers aiming to implement experiments in their web applications. This guide dives into how you can seamlessly integrate the NodeJS Server SDK into an ExpressJS application, enabling you to dynamically assign users to experiments and manage test groups effectively. 
 
 :::tip
 [ExpressJS + Statsig Sample App source code here](https://github.com/statsig-io/samples/tree/node-express/node-express#node-express-statsig-demo-app). 
@@ -13,7 +13,7 @@ In this tutorial we'll integrate our [NodeJS Server SDK](https://docs.statsig.co
 The readme within details the steps on installing the app and its dependencies, setting the necessary environment variables, and running the app. Those concepts won't be covered in this guide because they are standard NodeJS practices.
 :::
 
-## Create Experiment in Statsig
+## Creating Your First Experiment with Statsig in NodeJS ExpressJS
 The below command can be run to automatically create the simple `express_app_test` experiment in Statsig that gets used throughout this integration guide and demo app. 
 The experiment randomizes based on `userID`, has a 50/50 test group split, and implements a single parameter. 
 Make sure to replace the authorization key in the header with your key generated in Statsig project settings as documented [here](https://docs.statsig.com/console-api/introduction).
@@ -31,7 +31,7 @@ curl --request PUT 'https://statsigapi.net/console/v1/experiments/express_app_te
 
 ![image](/img/express-abtest.png)
  
-## Project Outline
+## Project Setup for Experimentation in NodeJS ExpressJS
 
 This example was built on the very simple [Hello World](https://expressjs.com/en/starter/hello-world.html) example app documented by ExpressJS.
 The main server entrypoint is `app.js` and the demo webpage source follows the handlebars standard, living in `views/index.hbs`.
@@ -45,7 +45,7 @@ Aside from `statsig-node`, this example app requires several node modules, inclu
 * `express-handlebars` as the template engine
 * `dotenv` for secret management
 
-## Initializing Statsig SDK
+## Initializing the Statsig SDK
 
 Every expressJS app has the call to boot the server and listen for requests. This is a convenient place to initialize the Statsig SDK. 
 Here is an example of how that can be achieved:

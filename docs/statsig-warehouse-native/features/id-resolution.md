@@ -5,6 +5,8 @@ sidebar_label: ID Resolution
 description: Map cross-platform IDs in experiment analysis
 ---
 
+## The identity challenge
+
 A common problem in experimentation is trying to connect different user identifiers before or after some event boundary, most frequently signups.
 
 In these scenarios, the experimenter will have a logged-out identifier (e.g. a cookie or a Statsig StableID) as well as - for those who do sign up - a userID generated after the user signs up.
@@ -13,6 +15,25 @@ Because business metrics are generally calculated at the grain of userID, it's c
 for the experiment is a logged-in metric (e.g. subscription rate, or estimated Lifetime Value).
 
 Many people handle this probably in an ad-hoc way. Usually, this means running ad-hoc queries to join and deduplicate exposures, or tagging userID metrics with an associated logged-out identifier. Statsig Warehouse Native offers an easy solution for connecting identifiers across this boundary in a centralized and reproducible way.
+
+## Supported Mapping Schema
+
+Today, we support 1:1 mapping, meaning that we can map the user's identity at the point of assignment to downstream metrics sources using a single, secondary identity. 
+
+For us to join assignment data to metric sources that contain a different identity, your Entity Source or Assignment Source must provide a mapping from assignment source identity to metric source identity. The constraint here, is that it's a single identity used for joining, so all metric sources must contain that same identity. 
+
+#### Example of a supported schema
+
+if your assignment source data contains:<br  />`{stableID: 'unknown_123', exp_id: 'PDP Test', test_group: 'Control'}`
+
+and your metric sources contain data that represents a metric as:<br  />`{userID: 'known_abc', event: 'page_load'}`
+
+Your Entity Source or Assignment source must contain the secondary identity (in this case, `userID`) that will enable Statsig to join your assignment data with your metric data:<br />
+`{stableID: 'unknown_123', userID: 'known_abc', country: 'USA'}`
+
+:::info
+We are interested in supporting more complex 1-to-many relationships of identities, where a user can be represented with several different identities across your metric sources. We are eager to partner with customers to develop these capabilities if this more advanced use-case is required.
+:::
 
 ## How it Works
 

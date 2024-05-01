@@ -63,11 +63,57 @@ In the dialog that appears, enter the url of you destination webhook and then hi
 
 You can then set which events you want forwarded to your webhook using the [Event Filtering](#event-filtering-dialog) dialog.
 
+### Runtime event webhooks
+
+These webhooks are triggered at runtime as users are being assigned to gates, experiments and are triggering events.
+
 <EventFormats />
 
 <a name="event-filtering-dialog"></a>
 
-<div style={{ paddingBottom: "32px" }}></div>
+### Config Change webhooks
+
+These webhooks are triggered by configuration changes taking place within Console. Each webhook request body will contain a batch of change events in the following format: `{"data": [<config-change>, <config-change>]}`. Batches may contain 1 or more config change events.
+
+Below are a few examples of some of the config change payloads. To best capture the exhaustive types of config webhooks and their payloads, it's recommended to run a service such as ngrok or some other service that will help you log incoming webhooks.
+
+#### Gate Change
+
+```json
+{
+  "user": {
+      "name": "Test User",
+      "email": "testuser@email.com"
+  },
+  "timestamp": 1709660061095,
+  "eventName": "statsig::config_change",
+  "metadata": {
+      "type": "Gate",
+      "name": "layout_v2",
+      "description": "Description: Change default page layout",
+      "action": "created"
+  }
+}
+```
+
+#### Experiment Change
+
+```json
+{
+  "user": {
+      "name": "Test User",
+      "email": "testuser@email.com"
+  },
+  "timestamp": 1709658507446,
+  "eventName": "statsig::config_change",
+  "metadata": {
+      "type": "Experiment",
+      "name": "heading_test",
+      "description": "- Updated experiment settings\n    - Groups updated: control, test\n    - Parameters added: heading\n    - Parameters updated: directives",
+      "action": "updated"
+  }
+}
+```
 
 ### Filtering Events
 

@@ -79,7 +79,7 @@ For example, you could pull from page load event logging directly:
 | 2023-10-10 00:02:15 | my_user_18821 | c_22235455 | /search    |
 | 2023-10-10 00:03:12 | my_user_22251 | c_9928     | /profile   |
 
-## Property Sources
+## Entity Property Sources
 
 For property sources, Statsig only needs a user_id and property fields. Property sources can define **fixed** properties (e.g. a users Country of origin), but can also define **dynamic**
 in which case you need to provide a timestamp for Statsig to identify the most recent pre-exposure record.

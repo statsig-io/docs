@@ -1,0 +1,89 @@
+---
+sidebar_label: Statsig ID Resolver
+title: Statsig ID Resolver
+---
+
+## What is Statsig ID Resolver?
+
+Statsig ID Resolver is an integration set up at the project level that brings your ID names into console. IDs are used everywhere within console, but unless your are an ID Wizard it is hard to tell at a glance what or who an ID belongs to. Take gate rules for example:
+
+![image](/img/id_resolver1.png)
+
+Each of the IDs shown represent a superhero with a name and other identifying information. After setting up ID Resolver you will be able to see an ID’s “name” next to each ID. In this example, the ID’s name is the superhero’s name followed by their publisher. You have the power to define “name” as whatever would be most useful for your project.
+
+![image](/img/id_resolver2.png)
+
+Additionally, after setting up ID Resolver Autocomplete you can begin typing in an ID’s name and have it auto-resolve to the correct ID
+
+![image](/img/id_resolver3.png)
+
+ID Resolver can be used in rules, overrides, users tab, and segment ID lists
+
+![image](/img/id_resolver_4.png)
+
+## Step 1 - Create your ID Resolver Webhook
+
+You will need to create and host your own webhook for this integration. This webhook should take in an `id` and a possibly null `unit_type` and return `name`. `unit_type` will come in the form of userID, stableID, or one of your custom ID types
+
+```js
+  const inputId = req.body.id as string | null;
+  const unitType = req.body.unit_type as string | null;
+
+  if (!inputId) {
+    res.status(200).json({
+      success: true,
+      data: {
+        name: "",
+      },
+    });
+  }
+
+  const result = IDResolverDatabase.find((d) => d.id === inputId);
+  res.status(200).json({
+    success: true,
+    data: {
+      name: result ? result.name + ", " + result.Publisher : "",
+    },
+  });
+```
+
+## Step 2 - Create your ID Resolver Autocomplete Webhook
+
+This webhook should take in a `name` (the current partially typed name) and a possibly null `unit_type` and return the array `results` which contains potential matches in the shape of `{name: string, id: string}`
+
+```js
+  const partialName = req.body.name as string | null;
+  const unitType = req.body.unit_type as string | null;
+
+  if (!partialName) {
+    res.status(200).json({
+      success: true,
+      data: {
+        results: [],
+      },
+    });
+  }
+
+  const results = IDResolverDatabase.filter((d) =>
+    d.name.match(new RegExp(`^${partialName}`))
+  );
+  res.status(200).json({
+    success: true,
+    data: {
+      results: results.map((result) => {
+        return {
+          name: result.name + ", (" + result.Publisher + ")",
+          id: result.id,
+        };
+      }),
+    },
+  });
+```
+
+## Step 3 - Integrate your webhooks with Statsig
+
+You can find Statsig ID Resolver under the Integrations tab within Project Settings
+
+![image](/img/id_resolver_setup_1.png)
+
+![image](/img/id_resolver_setup_2.png)

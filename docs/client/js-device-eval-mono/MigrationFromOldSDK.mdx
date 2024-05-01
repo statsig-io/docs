@@ -1,0 +1,40 @@
+---
+title: Migrating From js-local-eval
+sidebar_label: Migrating from js-local-eval
+slug: /client/js-on-device-eval-client/migrating-from-js-local-eval
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+### Standard Initialize
+
+<Tabs
+  groupId="js-migration-choice"
+  defaultValue="new"
+  values={[
+    {label: 'js-local-eval (Legacy)', value: 'legacy'},
+    {label: 'New', value: 'new'},
+  ]}>
+  <TabItem value="legacy">
+
+```typescript
+import Statsig from "statsig-js-local-eval";
+
+// initialize returns a promise which always resolves
+await Statsig.initializeAsync(
+  "client-sdk-key",
+  { environment: { tier: "staging" } } // optional, pass options here if needed
+);
+```
+
+  </TabItem>
+  <TabItem value="new">
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/on-device-eval-client/sample-on-device-initialize.tsx" />
+
+
+  </TabItem>
+</Tabs>
+

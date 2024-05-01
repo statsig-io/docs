@@ -1,655 +1,755 @@
 module.exports = {
-  openapi: "3.0.0",
+  "openapi": "3.0.0",
   "x-stoplight": {
-    id: "h0qh01vbqeyb6",
+    "id": "8a5i8tbrp47mj"
   },
-  info: {
-    title: "https://statsigapi.net/console/v1",
-    version: "1.0.0",
-    description: "Experiment endpoint",
+  "info": {
+    "title": "https://statsigapi.net/console/v1",
+    "version": "1.0.0",
+    "description": "Experiment endpoint"
   },
-  servers: [
+  "servers": [
     {
-      url: "https://statsigapi.net/console/v1",
-    },
+      "url": "https://statsigapi.net/console/v1"
+    }
   ],
-  components: {
-    securitySchemes: {
+  "components": {
+    "securitySchemes": {
       "STATSIG-API-KEY": {
-        type: "apiKey",
-        in: "header",
-        name: "STATSIG-API-KEY",
-      },
+        "type": "apiKey",
+        "in": "header",
+        "name": "STATSIG-API-KEY"
+      }
     },
-    schemas: {
-      experiment_override: {
-        type: "object",
+    "schemas": {
+      "experiment_override": {
+        "type": "object",
         "x-examples": {
           "example-1": {
-            passingUserIDs: ["passing-user"],
-            failingUserIDs: ["failing-user"],
-          },
+            "passingUserIDs": [
+              "passing-user"
+            ],
+            "failingUserIDs": [
+              "failing-user"
+            ]
+          }
         },
-        description:
-          "Forces users which pass a gate or are in a segment into the desired group.",
-        title: "",
-        properties: {
-          type: {
-            type: "string",
-            enum: ["segment", "gate"],
+        "description": "Forces users which pass a gate or are in a segment into the desired group.",
+        "title": "",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "segment",
+              "gate"
+            ]
           },
-          id: {
-            type: "string",
-            description: "The id of the segment or gate",
+          "id": {
+            "type": "string",
+            "description": "The id of the segment or gate"
           },
-          groupID: {
-            type: "string",
-            description: "The experiment group which user will be forced into",
-          },
+          "groupID": {
+            "type": "string",
+            "description": "The experiment group which user will be forced into"
+          }
         },
-        required: ["type", "id", "groupID"],
+        "required": [
+          "type",
+          "id",
+          "groupID"
+        ]
       },
-      description: {
-        title: "description",
+      "description": {
+        "title": "description",
         "x-stoplight": {
-          id: "p7vwx0hr47aw5",
+          "id": "dlbw9g22pgs38"
         },
-        type: "string",
-        description: "A helpful summary of what this experiment does",
+        "type": "string",
+        "description": "A helpful summary of what this experiment does",
         "x-examples": {
-          "example-1": "A helpful summary of what this experiment does",
-        },
+          "example-1": "A helpful summary of what this experiment does"
+        }
       },
-      id: {
-        title: "id",
+      "id": {
+        "title": "id",
         "x-stoplight": {
-          id: "k1z68ti7f924d",
+          "id": "fs6mvps0fopje"
         },
-        type: "string",
-        description:
-          'The name that was originally given to the experiment on creation but formatted as an ID ("A Experiment" -> "a_experiment")',
+        "type": "string",
+        "description": "The name that was originally given to the experiment on creation but formatted as an ID (\"A Experiment\" -> \"a_experiment\")"
       },
-      idType: {
-        title: "idType",
+      "idType": {
+        "title": "idType",
         "x-stoplight": {
-          id: "ex4xg41yih6ib",
+          "id": "mtuuml1p6d3kn"
         },
-        type: "string",
-        description: "The type of ID which the experiment is based on.",
+        "type": "string",
+        "description": "The type of ID which the experiment is based on.",
         "x-examples": {
-          "example-1": "userID",
-        },
+          "example-1": "userID"
+        }
       },
-      status: {
-        title: "status",
+      "status": {
+        "title": "status",
         "x-stoplight": {
-          id: "fcoljihk5fqsi",
+          "id": "jt3a8xrj9xhtc"
         },
-        type: "string",
-        description: "The current status of the experiment.",
-        enum: ["setup", "active", "decision_made"],
+        "type": "string",
+        "description": "The current status of the experiment.",
+        "enum": [
+          "setup",
+          "active",
+          "decision_made"
+        ]
       },
-      hypothesis: {
-        title: "hypothesis",
+      "hypothesis": {
+        "title": "hypothesis",
         "x-stoplight": {
-          id: "pkpn3dmg2slrb",
+          "id": "0iloix3n0is8o"
         },
-        type: "string",
-        description: "A statement that will be tested by this experiment.",
+        "type": "string",
+        "description": "A statement that will be tested by this experiment."
       },
-      alloation: {
-        title: "alloation",
+      "alloation": {
+        "title": "alloation",
         "x-stoplight": {
-          id: "x18r7ln5s9fvz",
+          "id": "itpjl40aovecl"
         },
-        type: "number",
-        description: "Percent of layer allocated to this experiment",
-        minimum: 0,
-        maximum: 100,
+        "type": "number",
+        "description": "Percent of layer allocated to this experiment",
+        "minimum": 0,
+        "maximum": 100
       },
-      duration: {
-        title: "duration",
+      "duration": {
+        "title": "duration",
         "x-stoplight": {
-          id: "rcd3vjzl7246w",
+          "id": "9so287gcmbsjr"
         },
-        type: "integer",
-        description: "How long the experiment should last in days",
-        minimum: 0,
+        "type": "integer",
+        "description": "How long the experiment should last in days",
+        "minimum": 0
       },
-      targetingGateID: {
-        title: "targetingGateID",
+      "targetingGateID": {
+        "title": "targetingGateID",
         "x-stoplight": {
-          id: "94xkly2tzwcj1",
+          "id": "yp69zqq0qa4tx"
         },
-        type: "string",
-        description:
-          "Restrict your experiment to users passing the selected feature gate.",
+        "type": "string",
+        "description": "Restrict your experiment to users passing the selected feature gate."
       },
-      defaultConfidenceInterval: {
-        title: "defaultConfidenceInterval",
+      "defaultConfidenceInterval": {
+        "title": "defaultConfidenceInterval",
         "x-stoplight": {
-          id: "hjgb0jyf73821",
+          "id": "5n9cgsri9mj5d"
         },
-        type: "string",
-        description: "Default error margin used for results",
-        enum: ["80", "90", "95", "98", "99"],
+        "type": "string",
+        "description": "Default error margin used for results",
+        "enum": [
+          "80",
+          "90",
+          "95",
+          "98",
+          "99"
+        ]
       },
-      bonferroniCorrection: {
-        title: "bonferroniCorrection",
+      "bonferroniCorrection": {
+        "title": "bonferroniCorrection",
         "x-stoplight": {
-          id: "ec9wtngxr13yr",
+          "id": "7d5j4jppvqm2x"
         },
-        type: "boolean",
-        description: "Is Bonferroni correction applied?",
+        "type": "boolean",
+        "description": "Is Bonferroni correction applied?"
       },
-      groups: {
-        title: "groups",
+      "groups": {
+        "title": "groups",
         "x-stoplight": {
-          id: "ni3hh31643iv9",
+          "id": "ufc63iv1rihyq"
         },
-        type: "array",
-        description: "The test groups for your experiment",
-        items: {
-          type: "object",
-          description: "Group object",
-          properties: {
-            name: {
-              type: "string",
-              description: "name of the group",
+        "type": "array",
+        "description": "The test groups for your experiment",
+        "items": {
+          "type": "object",
+          "description": "Group object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "name of the group"
             },
-            size: {
-              type: "number",
-              description:
-                "What percentage of traffic should be passed into this group",
-              minimum: 0,
-              maximum: 100,
+            "size": {
+              "type": "number",
+              "description": "What percentage of traffic should be passed into this group",
+              "minimum": 0,
+              "maximum": 100
             },
-            parameterValues: {
-              type: "object",
-            },
+            "parameterValues": {
+              "type": "object"
+            }
           },
-          required: ["name", "size", "parameterValues"],
-        },
+          "required": [
+            "name",
+            "size",
+            "parameterValues"
+          ]
+        }
       },
-      experiment_id_override: {
-        type: "object",
+      "experiment_id_override": {
+        "type": "object",
         "x-examples": {
           "example-1": {
-            groupID: "Control",
-            ids: ["updated_id_list"],
-          },
+            "groupID": "Control",
+            "ids": [
+              "updated_id_list"
+            ]
+          }
         },
-        properties: {
-          groupID: {
-            type: "string",
-            description: "The experiment group which user will be forced into",
+        "description": "Forces specific users into the desired group.",
+        "required": [
+          "groupID",
+          "ids"
+        ],
+        "properties": {
+          "groupID": {
+            "type": "string",
+            "description": "The experiment group which user will be forced into"
           },
-          ids: {
-            type: "array",
-            description: "The userID(s) to force into an experiment group",
-            items: {
-              type: "string",
-            },
+          "ids": {
+            "type": "array",
+            "description": "The userID(s) to force into an experiment group",
+            "items": {
+              "type": "string"
+            }
           },
-        },
-        required: ["groupID", "ids"],
-        description: "Forces specific users into the desired group.",
+          "environment": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "jr24xy66kjvq3"
+            }
+          },
+          "unitType": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "sui2dupy7xme6"
+            }
+          }
+        }
       },
-      tags: {
-        title: "tags",
+      "tags": {
+        "title": "tags",
         "x-stoplight": {
-          id: "8eiqinzy4oea1",
+          "id": "qdrm8id4o357w"
         },
-        type: ["array"],
-        description: "Override the project tags assigned to this experiment",
-        items: {
-          type: "string",
-          example: "* Core",
-        },
+        "type": [
+          "array"
+        ],
+        "description": "Override the project tags assigned to this experiment",
+        "items": {
+          "type": "string",
+          "example": "* Core"
+        }
       },
-      metricTags: {
-        title: "metricTags",
+      "metricTags": {
+        "title": "metricTags",
         "x-stoplight": {
-          id: "56jou9fw3u95z",
+          "id": "nzcrykklgc29k"
         },
-        type: "array",
-        items: {
-          type: "string",
+        "type": "array",
+        "items": {
+          "type": "string"
         },
-        description: "The name of tags as listed on the /tags endpoint",
-      },
+        "description": "The name of tags as listed on the /tags endpoint"
+      }
     },
-    responses: {
+    "responses": {
       "experiment_404.json": {
-        description: "Example response",
-        content: {
+        "description": "Example response",
+        "content": {
           "application/json": {
-            schema: {
-              type: "object",
+            "schema": {
+              "type": "object",
               "x-examples": {
                 "example-1": {
-                  status: 404,
-                  message: "Experiment not found.",
-                },
+                  "status": 404,
+                  "message": "Experiment not found."
+                }
               },
-              properties: {
-                status: {
-                  $ref: "../models/status.json",
+              "properties": {
+                "status": {
+                  "$ref": "../models/status.json"
                 },
-                message: {
-                  $ref: "../models/message.json",
-                },
-              },
+                "message": {
+                  "$ref": "../models/message.json"
+                }
+              }
             },
-            examples: {
+            "examples": {
               "example-1": {
-                value: {
-                  status: 404,
-                  message: "Experiment not found.",
-                },
-              },
-            },
-          },
-        },
-      },
-    },
+                "value": {
+                  "status": 404,
+                  "message": "Experiment not found."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   },
-  security: [
+  "security": [
     {
-      "STATSIG-API-KEY": [],
-    },
+      "STATSIG-API-KEY": []
+    }
   ],
-  paths: {
+  "paths": {
     "/experiments": {
-      post: {
-        tags: ["Experiments"],
-        summary: "Create Experiment",
-        requestBody: {
-          content: {
+      "post": {
+        "tags": [
+          "Experiments"
+        ],
+        "summary": "Create Experiment",
+        "requestBody": {
+          "content": {
             "application/json": {
-              schema: {
-                type: "object",
+              "schema": {
+                "type": "object",
                 "x-examples": {
                   "example-1": {
-                    name: {
-                      type: "string",
-                      description:
-                        "The display name to give the new experiment",
+                    "name": {
+                      "type": "string",
+                      "description": "The display name to give the new experiment"
                     },
-                    description: {
-                      type: "string",
-                      description: "A summary of what this experiment does",
-                    },
-                  },
+                    "description": {
+                      "type": "string",
+                      "description": "A summary of what this experiment does"
+                    }
+                  }
                 },
-                description: "Experiment Create Contract",
-                properties: {
-                  name: {
-                    type: "string",
-                    description: "The name of the new experiment.",
-                    example: "A experiment",
+                "description": "Experiment Create Contract",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "The name of the new experiment.",
+                    "example": "A experiment"
                   },
-                  description: {
-                    type: "string",
-                    description: "A description of the new experiment.",
-                    example: "A helpful summary of what this experiment does",
+                  "description": {
+                    "type": "string",
+                    "description": "A description of the new experiment.",
+                    "example": "A helpful summary of what this experiment does"
                   },
-                  idType: {
-                    type: "string",
-                    description:
-                      "The idType the experiment will be performed on.",
-                    example: "userID",
+                  "idType": {
+                    "type": "string",
+                    "description": "The idType the experiment will be performed on.",
+                    "example": "userID"
                   },
-                  layerID: {
-                    type: "string",
-                    description: "Which layer to place the experiment into.",
-                    example: "layer_1",
+                  "layerID": {
+                    "type": "string",
+                    "description": "Which layer to place the experiment into.",
+                    "example": "layer_1"
                   },
-                  creatorID: {
-                    type: "string",
+                  "targetingGateID": {
+                    "type": "string",
                     "x-stoplight": {
-                      id: "fqz7tz8qqqzy5",
+                      "id": "9tuxg4fa5zyb8"
                     },
-                    example: "35sClJFs8l0y5uRQhDwUDo",
-                    description:
-                      "The userID of intended creator, defaults to Console API",
+                    "example": "a_layer",
+                    "description": "The ID of the targeting gate for the experiment."
                   },
-                },
-                required: ["name"],
+                  "creatorID": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "6nj10ii43wo7e"
+                    },
+                    "example": "35sClJFs8l0y5uRQhDwUDo",
+                    "description": "The userID of intended creator, defaults to Console API"
+                  },
+                  "team": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "vkn1nh28hie4h"
+                    }
+                  },
+                  "hypothesis": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "2hhy36irjz2hx"
+                    }
+                  },
+                  "primaryMetrics": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "fjn4zo4mhfmah"
+                    },
+                    "items": {
+                      "$ref": "../../models/experiment_metric.json"
+                    }
+                  },
+                  "secondaryMetrics": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "rgax4dtmoq20d"
+                    },
+                    "items": {
+                      "$ref": "../../models/experiment_metric.json"
+                    }
+                  },
+                  "allocation": {
+                    "type": "number",
+                    "x-stoplight": {
+                      "id": "b2hskdp13cebb"
+                    }
+                  },
+                  "tags": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "zj7qbywx8y43s"
+                    },
+                    "items": {
+                      "x-stoplight": {
+                        "id": "jcfcy3lo1zop4"
+                      },
+                      "type": "string"
+                    }
+                  }
+                }
               },
-              examples: {
+              "examples": {
                 "example-1": {
-                  value: {
-                    name: "a_experiment",
-                    description: "helpful summary of what this experiment does",
-                    idType: "userID",
-                    layerID: "a_layer",
-                    creatorID: "35sClJFs8l0y5uRQhDwUDo",
-                  },
-                },
-              },
+                  "value": {
+                    "name": "a_experiment",
+                    "description": "helpful summary of what this experiment does",
+                    "idType": "userID",
+                    "layerID": "a_layer",
+                    "creatorID": "35sClJFs8l0y5uRQhDwUDo"
+                  }
+                }
+              }
             },
             "application/xml": {
-              schema: {
-                type: "object",
+              "schema": {
+                "type": "object",
                 "x-examples": {
                   "example-1": {
-                    name: {
-                      type: "string",
-                      description:
-                        "The display name to give the new experiment",
+                    "name": {
+                      "type": "string",
+                      "description": "The display name to give the new experiment"
                     },
-                    description: {
-                      type: "string",
-                      description: "A summary of what this experiment does",
-                    },
-                  },
+                    "description": {
+                      "type": "string",
+                      "description": "A summary of what this experiment does"
+                    }
+                  }
                 },
-                properties: {
-                  name: {
-                    type: "object",
-                    properties: {
-                      type: {
-                        type: "string",
-                        description: "Name of the new experiment",
+                "properties": {
+                  "name": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "description": "Name of the new experiment"
                       },
-                      description: {
-                        type: "string",
-                        description: "A summary of this experiment purpose",
-                      },
-                    },
-                  },
-                },
-              },
-            },
+                      "description": {
+                        "type": "string",
+                        "description": "A summary of this experiment purpose"
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
-          description: "Create new Experiment",
+          "description": "Create new Experiment"
         },
-        responses: {
-          201: {
-            description: "Created",
-            content: {
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
               "application/json": {
-                schema: {
-                  type: "object",
-                  properties: {
-                    message: {
-                      $ref: "../models/message.json",
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
                     },
-                    data: {
-                      $ref: "../models/experiment.json",
-                    },
-                  },
+                    "data": {
+                      "$ref": "../models/experiment.json"
+                    }
+                  }
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      message: "Experiment created successfully.",
-                      data: {
-                        id: "a_experiment",
-                        description:
-                          "helpful summary of what this experiment does",
-                        lastModifierName: "CONSOLE API",
-                        lastModifierID: "4FKF0sUbi1D7xZFW5vcHWB",
-                        idType: "userID",
-                        status: "setup",
-                        layerID: "a_layer",
-                        hypothesis: "",
-                        primaryMetrics: [],
-                        primaryMetricTags: [],
-                        secondaryMetrics: [],
-                        secondaryMetricTags: [],
-                        groups: [
+                    "value": {
+                      "message": "Experiment created successfully.",
+                      "data": {
+                        "id": "a_experiment",
+                        "description": "helpful summary of what this experiment does",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "4FKF0sUbi1D7xZFW5vcHWB",
+                        "idType": "userID",
+                        "status": "setup",
+                        "layerID": "a_layer",
+                        "hypothesis": "",
+                        "primaryMetrics": [],
+                        "primaryMetricTags": [],
+                        "secondaryMetrics": [],
+                        "secondaryMetricTags": [],
+                        "groups": [
                           {
-                            name: "Control",
-                            size: 50,
-                            parameterValues: {},
+                            "name": "Control",
+                            "size": 50,
+                            "parameterValues": {}
                           },
                           {
-                            name: "Test",
-                            size: 50,
-                            parameterValues: {},
-                          },
+                            "name": "Test",
+                            "size": 50,
+                            "parameterValues": {}
+                          }
                         ],
-                        allocation: 0,
-                        duration: 14,
-                        targetingGateID: "",
-                        defaultConfidenceInterval: "95",
-                        bonferroniCorrection: false,
-                        tags: ["* Core"],
-                        decisionReason: "",
-                      },
-                    },
-                  },
-                },
-              },
-            },
+                        "allocation": 0,
+                        "duration": 14,
+                        "targetingGateID": "",
+                        "defaultConfidenceInterval": "95",
+                        "bonferroniCorrection": false,
+                        "tags": [
+                          "* Core"
+                        ],
+                        "decisionReason": ""
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
-          400: {
-            description: "Bad Request",
-            content: {
+          "400": {
+            "description": "Bad Request",
+            "content": {
               "application/json": {
-                schema: {
-                  type: "object",
+                "schema": {
+                  "type": "object",
                   "x-examples": {
                     "example-1": {
-                      status: {
-                        type: "number",
-                        description: "Status Code",
+                      "status": {
+                        "type": "number",
+                        "description": "Status Code"
                       },
-                      message: {
-                        type: "string",
-                        description: "A summary of what went wrong",
-                      },
-                    },
+                      "message": {
+                        "type": "string",
+                        "description": "A summary of what went wrong"
+                      }
+                    }
                   },
-                  properties: {
-                    status: {
-                      $ref: "../models/status.json",
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
                     },
-                    message: {
-                      $ref: "../models/message.json",
+                    "message": {
+                      "$ref": "../models/message.json"
                     },
-                    error: {
-                      type: "array",
-                      description:
-                        "A list of errors that have occured with the request",
-                      items: {
-                        type: "object",
-                        properties: {
-                          property: {
-                            type: "string",
-                            description:
-                              "Which property of the request body is invalid",
+                    "error": {
+                      "type": "array",
+                      "description": "A list of errors that have occured with the request",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "property": {
+                            "type": "string",
+                            "description": "Which property of the request body is invalid"
                           },
-                          error: {
-                            type: "string",
-                            description: "A description of the problem",
-                          },
-                        },
-                      },
-                    },
+                          "error": {
+                            "type": "string",
+                            "description": "A description of the problem"
+                          }
+                        }
+                      }
+                    }
                   },
-                  required: ["status", "message"],
+                  "required": [
+                    "status",
+                    "message"
+                  ]
                 },
-                examples: {
+                "examples": {
                   "example-0": {
-                    summary: "400 Name Used",
-                    value: {
-                      status: 400,
-                      message: "Name is already in use",
-                    },
+                    "summary": "400 Name Used",
+                    "value": {
+                      "status": 400,
+                      "message": "Name is already in use"
+                    }
                   },
                   "example-1": {
-                    summary: "400 Missing Field",
-                    value: {
-                      status: 400,
-                      message: "Bad Request Exception",
-                      errors: [
+                    "summary": "400 Missing Field",
+                    "value": {
+                      "status": 400,
+                      "message": "Bad Request Exception",
+                      "errors": [
                         {
-                          property: "name",
-                          errorMessage: "Required",
-                        },
-                      ],
-                    },
-                  },
-                },
-              },
-            },
+                          "property": "name",
+                          "errorMessage": "Required"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           },
-          401: {
-            description: "Unauthorized",
-            content: {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
               "application/json": {
-                schema: {
-                  $ref: "../models/error_401.json",
+                "schema": {
+                  "$ref": "../models/error_401.json"
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      status: 401,
-                      message:
-                        "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx",
-                    },
-                  },
-                },
-              },
-            },
-          },
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
-        description: "Create a new experiment",
+        "description": "Create a new experiment"
       },
-      get: {
-        summary: "Read All Experiments",
-        responses: {
-          200: {
-            description: "OK",
-            content: {
+      "get": {
+        "summary": "Read All Experiments",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
               "application/json": {
-                schema: {
-                  type: "object",
-                  properties: {
-                    Message: {
-                      type: "string",
-                      description: "The status of the request",
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "Message": {
+                      "type": "string",
+                      "description": "The status of the request"
                     },
-                    data: {
-                      type: "array",
-                      description: "An array of existing experiment objects",
-                      items: {
-                        $ref: "../models/experiment.json",
-                      },
-                    },
-                  },
+                    "data": {
+                      "type": "array",
+                      "description": "An array of existing experiment objects",
+                      "items": {
+                        "$ref": "../models/experiment.json"
+                      }
+                    }
+                  }
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      message: "Experiments listed successfully.",
-                      data: [
+                    "value": {
+                      "message": "Experiments listed successfully.",
+                      "data": [
                         {
-                          id: "a_experiment",
-                          description:
-                            "A helpful summary of what this experiment does",
-                          lastModifierName: "CONSOLE API",
-                          lastModifierID: "79djvKHavV9djhKHlVCeu",
-                          idType: "userID",
-                          status: "active",
-                          layerID: "test_layer_with_holdout",
-                          hypothesis: "",
-                          primaryMetrics: [],
-                          primaryMetricTags: [],
-                          secondaryMetrics: [],
-                          secondaryMetricTags: ["* Core"],
-                          groups: [
-                            {
-                              name: "Control",
-                              size: 50,
-                              parameterValues: {
-                                key: "1",
-                              },
-                            },
-                            {
-                              name: "Test",
-                              size: 50,
-                              parameterValues: {
-                                key: "0",
-                              },
-                            },
+                          "id": "a_experiment",
+                          "description": "A helpful summary of what this experiment does",
+                          "lastModifierName": "CONSOLE API",
+                          "lastModifierID": "79djvKHavV9djhKHlVCeu",
+                          "idType": "userID",
+                          "status": "active",
+                          "layerID": "test_layer_with_holdout",
+                          "hypothesis": "",
+                          "primaryMetrics": [],
+                          "primaryMetricTags": [],
+                          "secondaryMetrics": [],
+                          "secondaryMetricTags": [
+                            "* Core"
                           ],
-                          allocation: 100,
-                          targetingGateID: "test_public",
-                          defaultConfidenceInterval: "95",
-                          bonferroniCorrection: false,
-                          tags: ["* Core"],
-                          decisionReason: "",
-                        },
-                      ],
-                    },
-                  },
-                },
-              },
-            },
+                          "groups": [
+                            {
+                              "name": "Control",
+                              "size": 50,
+                              "parameterValues": {
+                                "key": "1"
+                              }
+                            },
+                            {
+                              "name": "Test",
+                              "size": 50,
+                              "parameterValues": {
+                                "key": "0"
+                              }
+                            }
+                          ],
+                          "allocation": 100,
+                          "targetingGateID": "test_public",
+                          "defaultConfidenceInterval": "95",
+                          "bonferroniCorrection": false,
+                          "tags": [
+                            "* Core"
+                          ],
+                          "decisionReason": ""
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           },
-          401: {
-            description: "Unauthorized",
-            content: {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
               "application/json": {
-                schema: {
-                  $ref: "../models/error_401.json",
+                "schema": {
+                  "$ref": "../models/error_401.json"
                 },
-                example: {
-                  status: 403,
-                  message: "Forbidden resource",
+                "example": {
+                  "status": 403,
+                  "message": "Forbidden resource"
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      status: 401,
-                      message:
-                        "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx",
-                    },
-                  },
-                },
-              },
-            },
-          },
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
-        operationId: "",
-        description: "Get a list of all experiments",
+        "operationId": "",
+        "description": "Get a list of all experiments",
         "x-code-samples": [
           {
-            lang: "cURL",
-            label: "cURL",
-            source:
-              "curl --request GET 'https://statsigapi.net/console/v1/experiments' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'",
-          },
+            "lang": "cURL",
+            "label": "cURL",
+            "source": "curl --request GET 'https://statsigapi.net/console/v1/experiments' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
+          }
         ],
-        tags: ["Experiments"],
-        parameters: [
+        "tags": [
+          "Experiments"
+        ],
+        "parameters": [
           {
-            schema: {
-              type: "string",
+            "schema": {
+              "type": "string"
             },
-            in: "query",
-            name: "status",
-            description: "Filter by experiment status",
+            "in": "query",
+            "name": "status",
+            "description": "Filter by experiment status"
           },
           {
-            schema: {
-              type: "array",
+            "schema": {
+              "type": "array"
             },
-            in: "query",
-            name: "tags",
-            description: "Filter by experiments with selected tags",
+            "in": "query",
+            "name": "tags",
+            "description": "Filter by experiments with selected tags"
           },
           {
-            schema: {
-              type: "string",
+            "schema": {
+              "type": "string"
             },
-            in: "query",
-            name: "layerID",
-            description: "Filter by experiments inside of the selected layer",
+            "in": "query",
+            "name": "layerID",
+            "description": "Filter by experiments inside of the selected layer"
           },
           {
             "schema": {
@@ -669,408 +769,372 @@ module.exports = {
             "name": "limit",
             "description": "Gates per pagination response"
           }
-        ],
+        ]
       },
-      parameters: [],
+      "parameters": []
     },
     "/experiments/{experiment_id}": {
-      get: {
-        tags: ["Experiments"],
-        summary: "Read Single Experiment",
-        responses: {
-          200: {
-            description: "OK",
-            content: {
+      "get": {
+        "tags": [
+          "Experiments"
+        ],
+        "summary": "Read Single Experiment",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
               "application/json": {
-                schema: {
-                  type: "object",
+                "schema": {
+                  "type": "object",
                   "x-examples": {
                     "example-1": {
-                      message: "Experiment read successfully.",
-                      data: {
-                        id: "a_experiment",
-                        isEnabled: true,
-                        description:
-                          "helpful summary of what this experiment does",
-                        lastModifierName: "CONSOLE API",
-                        lastModifierID: "1vaQaBoLlkauH9iiuOSBP2",
-                        rules: [
+                      "message": "Experiment read successfully.",
+                      "data": {
+                        "id": "a_experiment",
+                        "isEnabled": true,
+                        "description": "helpful summary of what this experiment does",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "rules": [
                           {
-                            name: "All Conditions",
-                            passPercentage: 10,
-                            conditions: [
+                            "name": "All Conditions",
+                            "passPercentage": 10,
+                            "conditions": [
                               {
-                                type: "public",
+                                "type": "public"
                               },
                               {
-                                type: "user_id",
-                                targetValue: ["111", "222"],
-                                operator: "any",
+                                "type": "user_id",
+                                "targetValue": [
+                                  "111",
+                                  "222"
+                                ],
+                                "operator": "any"
                               },
                               {
-                                type: "email",
-                                targetValue: ["@outlook.com", "@gmail.com"],
-                                operator: "str_contains_any",
+                                "type": "email",
+                                "targetValue": [
+                                  "@outlook.com",
+                                  "@gmail.com"
+                                ],
+                                "operator": "str_contains_any"
                               },
                               {
-                                type: "email",
-                                operator: "is_null",
+                                "type": "email",
+                                "operator": "is_null"
                               },
                               {
-                                type: "custom_field",
-                                targetValue: 31,
-                                operator: "gt",
-                                field: "age",
+                                "type": "custom_field",
+                                "targetValue": 31,
+                                "operator": "gt",
+                                "field": "age"
                               },
                               {
-                                type: "app_version",
-                                targetValue: "1.1.1",
-                                operator: "version_gt",
+                                "type": "app_version",
+                                "targetValue": "1.1.1",
+                                "operator": "version_gt"
                               },
                               {
-                                type: "browser_name",
-                                targetValue: ["Android", "Chrome"],
-                                operator: "any",
+                                "type": "browser_name",
+                                "targetValue": [
+                                  "Android",
+                                  "Chrome"
+                                ],
+                                "operator": "any"
                               },
                               {
-                                type: "browser_version",
-                                targetValue: ["94.0.4606.81", "94.0.4606.92"],
-                                operator: "any",
+                                "type": "browser_version",
+                                "targetValue": [
+                                  "94.0.4606.81",
+                                  "94.0.4606.92"
+                                ],
+                                "operator": "any"
                               },
                               {
-                                type: "os_name",
-                                targetValue: ["Android", "Windows"],
-                                operator: "none",
+                                "type": "os_name",
+                                "targetValue": [
+                                  "Android",
+                                  "Windows"
+                                ],
+                                "operator": "none"
                               },
                               {
-                                type: "os_version",
-                                targetValue: "11.0.0",
-                                operator: "version_lte",
+                                "type": "os_version",
+                                "targetValue": "11.0.0",
+                                "operator": "version_lte"
                               },
                               {
-                                type: "country",
-                                targetValue: ["NZ", "US"],
-                                operator: "any",
+                                "type": "country",
+                                "targetValue": [
+                                  "NZ",
+                                  "US"
+                                ],
+                                "operator": "any"
                               },
                               {
-                                type: "passes_experiment",
-                                targetValue: "my_experiment_2",
+                                "type": "passes_experiment",
+                                "targetValue": "my_experiment_2"
                               },
                               {
-                                type: "fails_experiment",
-                                targetValue: "my_experiment_2",
+                                "type": "fails_experiment",
+                                "targetValue": "my_experiment_2"
                               },
                               {
-                                type: "time",
-                                targetValue: 1643070357193,
-                                operator: "after",
+                                "type": "time",
+                                "targetValue": 1643070357193,
+                                "operator": "after"
                               },
                               {
-                                type: "environment_tier",
-                                targetValue: ["production"],
-                                operator: "any",
+                                "type": "environment_tier",
+                                "targetValue": [
+                                  "production"
+                                ],
+                                "operator": "any"
                               },
                               {
-                                type: "passes_segment",
-                                targetValue: "growth_org",
+                                "type": "passes_segment",
+                                "targetValue": "growth_org"
                               },
                               {
-                                type: "fails_segment",
-                                targetValue: "growth_org",
+                                "type": "fails_segment",
+                                "targetValue": "growth_org"
                               },
                               {
-                                type: "ip_address",
-                                targetValue: ["1.1.1.1", "8.8.8.8"],
-                                operator: "any",
-                              },
-                            ],
-                          },
-                        ],
-                      },
-                    },
+                                "type": "ip_address",
+                                "targetValue": [
+                                  "1.1.1.1",
+                                  "8.8.8.8"
+                                ],
+                                "operator": "any"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
                   },
-                  properties: {
-                    message: {
-                      $ref: "../models/message.json",
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
                     },
-                    data: {
-                      $ref: "../models/experiment.json",
-                    },
-                  },
+                    "data": {
+                      "$ref": "../models/experiment.json"
+                    }
+                  }
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      message: "Experiment read successfully.",
-                      data: {
-                        id: "a_experiment",
-                        description: "",
-                        lastModifierName: "CONSOLE API",
-                        lastModifierID: "4FKF0sUbi1D7xZFW5vcHWB",
-                        idType: "userID",
-                        status: "setup",
-                        launchedGroupID: null,
-                        layerID: "statsig::a_experiment_layer",
-                        hypothesis: "",
-                        primaryMetrics: [],
-                        primaryMetricTags: [],
-                        secondaryMetrics: [],
-                        secondaryMetricTags: [],
-                        groups: [
+                    "value": {
+                      "message": "Experiment read successfully.",
+                      "data": {
+                        "id": "a_experiment",
+                        "description": "",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "4FKF0sUbi1D7xZFW5vcHWB",
+                        "idType": "userID",
+                        "status": "setup",
+                        "launchedGroupID": null,
+                        "layerID": "statsig::a_experiment_layer",
+                        "hypothesis": "",
+                        "primaryMetrics": [],
+                        "primaryMetricTags": [],
+                        "secondaryMetrics": [],
+                        "secondaryMetricTags": [],
+                        "groups": [
                           {
-                            name: "Control",
-                            id: "4HbgLdfqlIeN3sHkyMG1qC",
-                            size: 50,
-                            parameterValues: {},
+                            "name": "Control",
+                            "id": "4HbgLdfqlIeN3sHkyMG1qC",
+                            "size": 50,
+                            "parameterValues": {}
                           },
                           {
-                            name: "Test",
-                            size: 50,
-                            parameterValues: {},
-                          },
+                            "name": "Test",
+                            "size": 50,
+                            "parameterValues": {}
+                          }
                         ],
-                        allocation: 100,
-                        duration: 14,
-                        targetingGateID: "",
-                        defaultConfidenceInterval: "95",
-                        bonferroniCorrection: false,
-                        tags: ["* Core"],
-                        decisionReason: "",
-                      },
-                    },
-                  },
-                },
-              },
-            },
+                        "allocation": 100,
+                        "duration": 14,
+                        "targetingGateID": "",
+                        "defaultConfidenceInterval": "95",
+                        "bonferroniCorrection": false,
+                        "tags": [
+                          "* Core"
+                        ],
+                        "decisionReason": ""
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
-          401: {
-            description: "Unauthorized",
-            content: {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
               "application/json": {
-                schema: {
-                  $ref: "../models/error_401.json",
+                "schema": {
+                  "$ref": "../models/error_401.json"
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      status: 401,
-                      message:
-                        "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx",
-                    },
-                  },
-                },
-              },
-            },
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
           },
-          404: {
-            $ref: "#/components/responses/experiment_404.json",
-          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
         },
-        description: "Read data from a single experiment ",
-        parameters: [],
+        "description": "Read data from a single experiment ",
+        "parameters": []
       },
-      post: {
-        tags: ["Experiments"],
-        summary: "Fully Update Experiment",
-        responses: {
-          200: {
-            description: "OK",
-            content: {
+      "post": {
+        "tags": [
+          "Experiments"
+        ],
+        "summary": "Fully Update Experiment",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
               "application/json": {
-                schema: {
-                  type: "object",
-                  properties: {
-                    message: {
-                      $ref: "../models/message.json",
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
                     },
-                    data: {
-                      $ref: "../models/experiment.json",
-                    },
-                  },
+                    "data": {
+                      "$ref": "../models/experiment.json"
+                    }
+                  }
                 },
-                example: {
-                  message: "Experiment updated successfully.",
-                  data: {
-                    id: "a_experiment",
-                    isEnabled: true,
-                    description: "Description Here",
-                    lastModifierName: "CONSOLE API",
-                    lastModifierID: "5rfuqoxLIYTscuSaaCOlB8",
-                    rules: [
+                "example": {
+                  "message": "Experiment updated successfully.",
+                  "data": {
+                    "id": "a_experiment",
+                    "isEnabled": true,
+                    "description": "Description Here",
+                    "lastModifierName": "CONSOLE API",
+                    "lastModifierID": "5rfuqoxLIYTscuSaaCOlB8",
+                    "rules": [
                       {
-                        name: "Specific Users",
-                        passPercentage: 100,
-                        conditions: [
+                        "name": "Specific Users",
+                        "passPercentage": 100,
+                        "conditions": [
                           {
-                            type: "user_id",
-                            targetValue: ["111", "222"],
-                            operator: "any",
-                          },
-                        ],
+                            "type": "user_id",
+                            "targetValue": [
+                              "111",
+                              "222"
+                            ],
+                            "operator": "any"
+                          }
+                        ]
                       },
                       {
-                        name: "Public",
-                        passPercentage: 10,
-                        conditions: [
+                        "name": "Public",
+                        "passPercentage": 10,
+                        "conditions": [
                           {
-                            type: "public",
-                          },
-                        ],
-                      },
-                    ],
-                  },
+                            "type": "public"
+                          }
+                        ]
+                      }
+                    ]
+                  }
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      message: "string",
-                      data: {
-                        id: "a_experiment",
-                        description:
-                          "a helpful summary of what this experiment does",
-                        lastModifierName: "CONSOLE API",
-                        lastModifierID: "f0JAV9dd7KF0sUbi1DHWB",
-                        idType: "userID",
-                        status: "setup",
-                        layerID: "layer1",
-                        hypothesis: "Does 1 or 0 work better?",
-                        primaryMetrics: [
+                    "value": {
+                      "message": "string",
+                      "data": {
+                        "id": "a_experiment",
+                        "description": "a helpful summary of what this experiment does",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "f0JAV9dd7KF0sUbi1DHWB",
+                        "idType": "userID",
+                        "status": "setup",
+                        "layerID": "layer1",
+                        "hypothesis": "Does 1 or 0 work better?",
+                        "primaryMetrics": [
                           {
-                            name: "l14",
-                            type: "user",
-                          },
+                            "name": "l14",
+                            "type": "user"
+                          }
                         ],
-                        primaryMetricTags: [],
-                        secondaryMetrics: [
+                        "primaryMetricTags": [],
+                        "secondaryMetrics": [
                           {
-                            name: "mau_28d",
-                            type: "user",
-                          },
+                            "name": "mau_28d",
+                            "type": "user"
+                          }
                         ],
-                        secondaryMetricTags: [],
-                        groups: [
+                        "secondaryMetricTags": [],
+                        "groups": [
                           {
-                            name: "group1",
-                            size: 50,
-                            parameterValues: {
-                              key: 1,
-                            },
+                            "name": "group1",
+                            "size": 50,
+                            "parameterValues": {
+                              "key": 1
+                            }
                           },
                           {
-                            name: "gruop2",
-                            size: 50,
-                            parameterValues: {
-                              key: 0,
-                            },
-                          },
+                            "name": "gruop2",
+                            "size": 50,
+                            "parameterValues": {
+                              "key": 0
+                            }
+                          }
                         ],
-                        allocation: 50.46,
-                        duration: 14,
-                        targetingGateID: "a_gate",
-                        defaultConfidenceInterval: "95",
-                        bonferroniCorrection: false,
-                        tags: [],
-                      },
-                    },
-                  },
-                },
-              },
-            },
+                        "allocation": 50.46,
+                        "duration": 14,
+                        "targetingGateID": "a_gate",
+                        "defaultConfidenceInterval": "95",
+                        "bonferroniCorrection": false,
+                        "tags": []
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
-          401: {
-            description: "Unauthorized",
-            content: {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
               "application/json": {
-                schema: {
-                  $ref: "../models/error_401.json",
+                "schema": {
+                  "$ref": "../models/error_401.json"
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      status: 401,
-                      message:
-                        "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx",
-                    },
-                  },
-                },
-              },
-            },
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
           },
-          404: {
-            $ref: "#/components/responses/experiment_404.json",
-          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
         },
-        description: "Update all properties of the experiment",
-        requestBody: {
-          content: {
+        "description": "Update all properties of the experiment",
+        "requestBody": {
+          "content": {
             "application/json": {
-              schema: {
-                type: "object",
-                properties: {
-                  description: {
-                    $ref: "#/components/schemas/description",
-                  },
-                  idType: {
-                    $ref: "#/components/schemas/idType",
-                  },
-                  tags: {
-                    $ref: "#/components/schemas/tags",
-                  },
-                  status: {
-                    $ref: "../models/experiment_status.json",
-                  },
-                  hypothesis: {
-                    $ref: "#/components/schemas/hypothesis",
-                  },
-                  primaryMetrics: {
-                    description:
-                      "Main metrics needed to evaluate your hypothesis",
-                    type: "array",
-                    items: {
-                      $ref: "../models/experiment_metric.json",
-                    },
-                  },
-                  primaryMetricTags: {
-                    $ref: "#/components/schemas/metricTags",
-                  },
-                  secondaryMetrics: {
-                    type: "array",
-                    description:
-                      "Additional metric you may want to monitor that might impact the analysis or final decision of the experiment",
-                    items: {
-                      $ref: "../models/experiment_metric.json",
-                    },
-                  },
-                  secondaryMetricTags: {
-                    $ref: "#/components/schemas/metricTags",
-                  },
-                  groups: {
-                    type: "array",
-                    description: "The test groups for your experiment",
-                    items: {
-                      $ref: "#/components/schemas/groups",
-                    },
-                  },
-                  allocation: {
-                    $ref: "#/components/schemas/alloation",
-                  },
-                  duration: {
-                    $ref: "#/components/schemas/duration",
-                  },
-                  targetingGateID: {
-                    $ref: "#/components/schemas/targetingGateID",
-                  },
-                  defaultConfidenceInterval: {
-                    $ref: "#/components/schemas/defaultConfidenceInterval",
-                  },
-                  bonferroniCorrection: {
-                    $ref: "#/components/schemas/bonferroniCorrection",
-                  },
-                  targetApps: {
-                    $ref: "../models/targetApps.json",
-                  },
-                },
-                required: [
+              "schema": {
+                "type": "object",
+                "required": [
                   "description",
                   "idType",
                   "status",
@@ -1082,1812 +1146,2792 @@ module.exports = {
                   "duration",
                   "targetingGateID",
                   "defaultConfidenceInterval",
-                  "bonferroniCorrection",
+                  "bonferroniCorrection"
                 ],
+                "properties": {
+                  "description": {
+                    "$ref": "#/components/schemas/description"
+                  },
+                  "idType": {
+                    "$ref": "#/components/schemas/idType"
+                  },
+                  "tags": {
+                    "$ref": "#/components/schemas/tags"
+                  },
+                  "status": {
+                    "$ref": "../models/experiment_status.json"
+                  },
+                  "hypothesis": {
+                    "$ref": "#/components/schemas/hypothesis"
+                  },
+                  "primaryMetrics": {
+                    "description": "Main metrics needed to evaluate your hypothesis",
+                    "type": "array",
+                    "items": {
+                      "$ref": "../models/experiment_metric.json"
+                    }
+                  },
+                  "primaryMetricTags": {
+                    "$ref": "#/components/schemas/metricTags"
+                  },
+                  "secondaryMetrics": {
+                    "type": "array",
+                    "description": "Additional metric you may want to monitor that might impact the analysis or final decision of the experiment",
+                    "items": {
+                      "$ref": "../models/experiment_metric.json"
+                    }
+                  },
+                  "secondaryMetricTags": {
+                    "$ref": "#/components/schemas/metricTags"
+                  },
+                  "groups": {
+                    "type": "array",
+                    "description": "The test groups for your experiment",
+                    "items": {
+                      "$ref": "#/components/schemas/groups"
+                    }
+                  },
+                  "allocation": {
+                    "$ref": "#/components/schemas/alloation"
+                  },
+                  "duration": {
+                    "$ref": "#/components/schemas/duration"
+                  },
+                  "targetingGateID": {
+                    "$ref": "#/components/schemas/targetingGateID"
+                  },
+                  "defaultConfidenceInterval": {
+                    "$ref": "#/components/schemas/defaultConfidenceInterval"
+                  },
+                  "bonferroniCorrection": {
+                    "$ref": "#/components/schemas/bonferroniCorrection"
+                  },
+                  "targetApps": {
+                    "$ref": "../models/targetApps.json"
+                  },
+                  "team": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "bwbtcm4zp5xhs"
+                    }
+                  }
+                }
               },
-              examples: {
+              "examples": {
                 "example-1": {
-                  value: {
-                    description: "Updated summary of what this experiment does",
-                    idType: "userID",
-                    lastModifierName: "CONSOLE API",
-                    lastModifierID: "66wvNB1zril4QQWFOGvfTP",
-                    tags: ["customTag"],
-                    targetApps: [],
-                    status: "setup",
-                    hypothesis: "Updated hypothesis",
-                    launchedGroupID: null,
-                    startTime: null,
-                    endTime: null,
-                    layerID: null,
-                    primaryMetrics: [],
-                    primaryMetricTags: [],
-                    secondaryMetrics: [],
-                    secondaryMetricTags: [],
-                    groups: [
-                      {
-                        name: "group1",
-                        id: "4HbgLdfqlIeN3sHkyMG1qC",
-                        size: 50,
-                        parameterValues: {
-                          key: 1,
-                        },
-                      },
-                      {
-                        name: "group2",
-                        id: "4HbgLeUsO0ohmSfg9UBEJE",
-                        size: 50,
-                        parameterValues: {},
-                      },
+                  "value": {
+                    "description": "Updated summary of what this experiment does",
+                    "idType": "userID",
+                    "lastModifierName": "CONSOLE API",
+                    "lastModifierID": "66wvNB1zril4QQWFOGvfTP",
+                    "tags": [
+                      "customTag"
                     ],
-                    allocation: 50,
-                    duration: 28,
-                    targetingGateID: "a_gate",
-                    defaultConfidenceInterval: "90",
-                    bonferroniCorrection: false,
-                    decisionReason: "",
-                  },
-                },
-              },
-            },
+                    "targetApps": [],
+                    "status": "setup",
+                    "hypothesis": "Updated hypothesis",
+                    "launchedGroupID": null,
+                    "startTime": null,
+                    "endTime": null,
+                    "layerID": null,
+                    "primaryMetrics": [],
+                    "primaryMetricTags": [],
+                    "secondaryMetrics": [],
+                    "secondaryMetricTags": [],
+                    "groups": [
+                      {
+                        "name": "group1",
+                        "id": "4HbgLdfqlIeN3sHkyMG1qC",
+                        "size": 50,
+                        "parameterValues": {
+                          "key": 1
+                        }
+                      },
+                      {
+                        "name": "group2",
+                        "id": "4HbgLeUsO0ohmSfg9UBEJE",
+                        "size": 50,
+                        "parameterValues": {}
+                      }
+                    ],
+                    "allocation": 50,
+                    "duration": 28,
+                    "targetingGateID": "a_gate",
+                    "defaultConfidenceInterval": "90",
+                    "bonferroniCorrection": false,
+                    "decisionReason": ""
+                  }
+                }
+              }
+            }
           },
-          description: "Update Experiment",
+          "description": "Update Experiment"
         },
-        parameters: [],
+        "parameters": []
       },
-      delete: {
-        tags: ["Experiments"],
-        summary: "Delete Experiment",
-        responses: {
-          200: {
-            description: "OK",
-            content: {
+      "delete": {
+        "tags": [
+          "Experiments"
+        ],
+        "summary": "Delete Experiment",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
               "application/json": {
-                schema: {
-                  type: "object",
+                "schema": {
+                  "type": "object",
                   "x-examples": {
                     "example-1": {
-                      message: "Experiment deleted successfully.",
-                    },
+                      "message": "Experiment deleted successfully."
+                    }
                   },
-                  properties: {
-                    message: {
-                      $ref: "../models/message.json",
-                    },
-                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      message: "Experiment deleted successfully.",
-                    },
-                  },
-                },
-              },
-            },
+                    "value": {
+                      "message": "Experiment deleted successfully."
+                    }
+                  }
+                }
+              }
+            }
           },
-          401: {
-            description: "Unauthorized",
-            content: {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
               "application/json": {
-                schema: {
-                  $ref: "../models/error_401.json",
+                "schema": {
+                  "$ref": "../models/error_401.json"
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      status: 401,
-                      message:
-                        "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx",
-                    },
-                  },
-                },
-              },
-            },
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
           },
-          404: {
-            $ref: "#/components/responses/experiment_404.json",
-          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
         },
-        description: "Delete a experiment",
-        parameters: [],
+        "description": "Delete a experiment",
+        "parameters": []
       },
-      parameters: [
+      "parameters": [
         {
-          schema: {
-            type: "string",
-            example: "a_experiment",
+          "schema": {
+            "type": "string",
+            "example": "a_experiment"
           },
-          name: "experiment_id",
-          in: "path",
-          required: true,
-          description: "experiment ID to query",
-        },
+          "name": "experiment_id",
+          "in": "path",
+          "required": true,
+          "description": "experiment ID to query"
+        }
       ],
-      patch: {
-        summary: "Partially Update Experiment",
-        operationId: "patch-experiments-experiment_id",
-        responses: {
-          200: {
-            description: "OK",
-            content: {
+      "patch": {
+        "summary": "Partially Update Experiment",
+        "operationId": "patch-experiments-experiment_id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
               "application/json": {
-                schema: {
-                  type: "object",
+                "schema": {
+                  "type": "object",
                   "x-examples": {
                     "example-1": {
-                      message: "Experiment updated successfully.",
-                      data: {
-                        id: "a_experiment",
-                        description: "updated summary",
-                        lastModifierName: "CONSOLE API",
-                        lastModifierID: "1vaQaBoLlkauH9iiuOSBP2",
-                        idType: "userID",
-                        status: "setup",
-                        layerID: "statsig::a_experiment_layer",
-                        hypothesis: "updated hypothesis",
-                        primaryMetrics: [],
-                        secondaryMetrics: [],
-                        groups: [
+                      "message": "Experiment updated successfully.",
+                      "data": {
+                        "id": "a_experiment",
+                        "description": "updated summary",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "idType": "userID",
+                        "status": "setup",
+                        "layerID": "statsig::a_experiment_layer",
+                        "hypothesis": "updated hypothesis",
+                        "primaryMetrics": [],
+                        "secondaryMetrics": [],
+                        "groups": [
                           {
-                            name: "group1",
-                            size: 50,
-                            parameterValues: {
-                              key: 1,
-                            },
+                            "name": "group1",
+                            "size": 50,
+                            "parameterValues": {
+                              "key": 1
+                            }
                           },
                           {
-                            name: "gruop2",
-                            size: 50,
-                            parameterValues: {},
-                          },
+                            "name": "gruop2",
+                            "size": 50,
+                            "parameterValues": {}
+                          }
                         ],
-                        allocation: 100,
-                        duration: 14,
-                        targetingGateID: "",
-                        defaultConfidenceInterval: "95",
-                        bonferroniCorrection: true,
-                      },
-                    },
+                        "allocation": 100,
+                        "duration": 14,
+                        "targetingGateID": "",
+                        "defaultConfidenceInterval": "95",
+                        "bonferroniCorrection": true
+                      }
+                    }
                   },
-                  properties: {
-                    message: {
-                      $ref: "../models/message.json",
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
                     },
-                    data: {
-                      $ref: "../models/experiment.json",
-                    },
-                  },
+                    "data": {
+                      "$ref": "../models/experiment.json"
+                    }
+                  }
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      message: "string",
-                      data: {
-                        id: "a_experiment",
-                        description:
-                          "a helpful summary of what this experiment does",
-                        lastModifierName: "CONSOLE API",
-                        lastModifierID: "f0JAV9dd7KF0sUbi1DHWB",
-                        idType: "userID",
-                        status: "setup",
-                        layerID: "layer1",
-                        hypothesis: "Does 1 or 0 work better?",
-                        primaryMetrics: [
+                    "value": {
+                      "message": "string",
+                      "data": {
+                        "id": "a_experiment",
+                        "description": "a helpful summary of what this experiment does",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "f0JAV9dd7KF0sUbi1DHWB",
+                        "idType": "userID",
+                        "status": "setup",
+                        "layerID": "layer1",
+                        "hypothesis": "Does 1 or 0 work better?",
+                        "primaryMetrics": [
                           {
-                            name: "l14",
-                            type: "user",
-                          },
+                            "name": "l14",
+                            "type": "user"
+                          }
                         ],
-                        primaryMetricTags: [],
-                        secondaryMetrics: [
+                        "primaryMetricTags": [],
+                        "secondaryMetrics": [
                           {
-                            name: "mau_28d",
-                            type: "user",
-                          },
+                            "name": "mau_28d",
+                            "type": "user"
+                          }
                         ],
-                        secondaryMetricTags: [],
-                        groups: [
+                        "secondaryMetricTags": [],
+                        "groups": [
                           {
-                            name: "group1",
-                            size: 50,
-                            parameterValues: {
-                              key: 1,
-                            },
+                            "name": "group1",
+                            "size": 50,
+                            "parameterValues": {
+                              "key": 1
+                            }
                           },
                           {
-                            name: "gruop2",
-                            size: 50,
-                            parameterValues: {
-                              key: 0,
-                            },
-                          },
+                            "name": "gruop2",
+                            "size": 50,
+                            "parameterValues": {
+                              "key": 0
+                            }
+                          }
                         ],
-                        allocation: 50.46,
-                        duration: 14,
-                        targetingGateID: "a_gate",
-                        defaultConfidenceInterval: "95",
-                        bonferroniCorrection: false,
-                        tags: [],
-                      },
-                    },
-                  },
-                },
-              },
-            },
+                        "allocation": 50.46,
+                        "duration": 14,
+                        "targetingGateID": "a_gate",
+                        "defaultConfidenceInterval": "95",
+                        "bonferroniCorrection": false,
+                        "tags": []
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
-          401: {
-            description: "Unauthorized",
-            content: {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
               "application/json": {
-                schema: {
-                  $ref: "../models/error_401.json",
+                "schema": {
+                  "$ref": "../models/error_401.json"
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      status: 401,
-                      message:
-                        "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx",
-                    },
-                  },
-                },
-              },
-            },
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
           },
-          404: {
-            description: "Not Found",
-            content: {
+          "404": {
+            "description": "Not Found",
+            "content": {
               "application/json": {
-                schema: {
-                  type: "object",
+                "schema": {
+                  "type": "object",
                   "x-examples": {
                     "example-1": {
-                      status: 404,
-                      message: "Experiment not found.",
-                    },
+                      "status": 404,
+                      "message": "Experiment not found."
+                    }
                   },
-                  properties: {
-                    status: {
-                      $ref: "../models/status.json",
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
                     },
-                    message: {
-                      $ref: "../models/message.json",
-                    },
-                  },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      status: 404,
-                      message: "Experiment not found.",
-                    },
-                  },
-                },
-              },
-            },
-          },
+                    "value": {
+                      "status": 404,
+                      "message": "Experiment not found."
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
-        description: "Update selected properties of the experiment",
-        requestBody: {
-          content: {
+        "description": "Update selected properties of the experiment",
+        "requestBody": {
+          "content": {
             "application/json": {
-              schema: {
-                type: "object",
+              "schema": {
+                "type": "object",
                 "x-examples": {
                   "example-1": {
-                    id: "a_experiment",
-                    description: "updated summary",
-                    idType: "userID",
-                    layerID: "statsig::a_layer",
-                    hypothesis: "updated hypothesis",
-                    primaryMetrics: [
+                    "id": "a_experiment",
+                    "description": "updated summary",
+                    "idType": "userID",
+                    "layerID": "statsig::a_layer",
+                    "hypothesis": "updated hypothesis",
+                    "primaryMetrics": [
                       {
-                        id: "my_custom_metric",
-                        type: "event_count_custom",
-                      },
+                        "id": "my_custom_metric",
+                        "type": "event_count_custom"
+                      }
                     ],
-                    secondaryMetrics: [],
-                    groups: [
+                    "secondaryMetrics": [],
+                    "groups": [
                       {
-                        name: "group1",
-                        size: 50,
-                        parameterValues: {
-                          key: 1,
-                        },
+                        "name": "group1",
+                        "size": 50,
+                        "parameterValues": {
+                          "key": 1
+                        }
                       },
                       {
-                        name: "gruop2",
-                        size: 50,
-                        parameterValues: {},
-                      },
+                        "name": "gruop2",
+                        "size": 50,
+                        "parameterValues": {}
+                      }
                     ],
-                    allocation: 100,
-                    duration: 14,
-                    targetingGateID: "",
-                    defaultConfidenceInterval: "95",
-                    bonferroniCorrection: true,
-                  },
+                    "allocation": 100,
+                    "duration": 14,
+                    "targetingGateID": "",
+                    "defaultConfidenceInterval": "95",
+                    "bonferroniCorrection": true
+                  }
                 },
-                properties: {
-                  id: {
-                    $ref: "#/components/schemas/id",
+                "properties": {
+                  "id": {
+                    "$ref": "#/components/schemas/id"
                   },
-                  description: {
-                    $ref: "#/components/schemas/description",
+                  "description": {
+                    "$ref": "#/components/schemas/description"
                   },
-                  idType: {
-                    $ref: "#/components/schemas/idType",
+                  "idType": {
+                    "$ref": "#/components/schemas/idType"
                   },
-                  tags: {
-                    $ref: "#/components/schemas/tags",
+                  "tags": {
+                    "$ref": "#/components/schemas/tags"
                   },
-                  hypothesis: {
-                    $ref: "#/components/schemas/hypothesis",
+                  "hypothesis": {
+                    "$ref": "#/components/schemas/hypothesis"
                   },
-                  primaryMetrics: {
-                    type: "array",
-                    items: {
-                      $ref: "../models/experiment_metric.json",
-                    },
+                  "primaryMetrics": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "../models/experiment_metric.json"
+                    }
                   },
-                  primaryMetricTags: {
-                    $ref: "#/components/schemas/metricTags",
+                  "primaryMetricTags": {
+                    "$ref": "#/components/schemas/metricTags"
                   },
-                  secondaryMetrics: {
-                    type: "array",
-                    items: {
-                      $ref: "../models/experiment_metric.json",
-                    },
+                  "secondaryMetrics": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "../models/experiment_metric.json"
+                    }
                   },
-                  secondaryMetricTags: {
-                    $ref: "#/components/schemas/metricTags",
+                  "secondaryMetricTags": {
+                    "$ref": "#/components/schemas/metricTags"
                   },
-                  groups: {
-                    type: "array",
-                    items: {
-                      $ref: "#/components/schemas/groups",
-                    },
+                  "groups": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/groups"
+                    }
                   },
-                  allocation: {
-                    $ref: "#/components/schemas/alloation",
+                  "allocation": {
+                    "$ref": "#/components/schemas/alloation"
                   },
-                  duration: {
-                    $ref: "#/components/schemas/duration",
+                  "duration": {
+                    "$ref": "#/components/schemas/duration"
                   },
-                  targetingGateID: {
-                    $ref: "#/components/schemas/targetingGateID",
+                  "targetingGateID": {
+                    "$ref": "#/components/schemas/targetingGateID"
                   },
-                  defaultConfidenceInterval: {
-                    $ref: "#/components/schemas/defaultConfidenceInterval",
+                  "defaultConfidenceInterval": {
+                    "$ref": "#/components/schemas/defaultConfidenceInterval"
                   },
-                  bonferroniCorrection: {
-                    $ref: "#/components/schemas/bonferroniCorrection",
+                  "bonferroniCorrection": {
+                    "$ref": "#/components/schemas/bonferroniCorrection"
                   },
-                  status: {
-                    $ref: "../models/experiment_status.json",
+                  "status": {
+                    "$ref": "../models/experiment_status.json"
                   },
-                  targetApps: {
-                    $ref: "../models/targetApps.json",
+                  "targetApps": {
+                    "$ref": "../models/targetApps.json"
                   },
-                },
+                  "team": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "xlzo1aj1le021"
+                    }
+                  }
+                }
               },
-              examples: {
+              "examples": {
                 "example-1": {
-                  value: {
-                    id: "a_experiment",
-                    description: "updated summary",
-                    idType: "userID",
-                    status: "setup",
-                    tags: ["marketing", "cost_savings"],
-                    targetApps: [],
-                    launchedGroupID: null,
-                    startTime: null,
-                    endTime: null,
-                    layerID: "statsig::a_layer",
-                    hypothesis: "updated hypothesis",
-                    primaryMetrics: [
-                      {
-                        id: "my_custom_metric",
-                        type: "event_count_custom",
-                      },
+                  "value": {
+                    "id": "a_experiment",
+                    "description": "updated summary",
+                    "idType": "userID",
+                    "status": "setup",
+                    "tags": [
+                      "marketing",
+                      "cost_savings"
                     ],
-                    primaryMetricTags: [],
-                    secondaryMetrics: [],
-                    secondaryMetricTags: ["* Core"],
-                    groups: [
+                    "targetApps": [],
+                    "launchedGroupID": null,
+                    "startTime": null,
+                    "endTime": null,
+                    "layerID": "statsig::a_layer",
+                    "hypothesis": "updated hypothesis",
+                    "primaryMetrics": [
                       {
-                        name: "group1",
-                        id: "4HbgLdfqlIeN3sHkyMG1qC",
-                        size: 50,
-                        parameterValues: {
-                          key: 1,
-                        },
-                      },
-                      {
-                        name: "gruop2",
-                        id: "4HbgLeUsO0ohmSfg9UBEJE",
-                        size: 50,
-                        parameterValues: {},
-                      },
+                        "id": "my_custom_metric",
+                        "type": "event_count_custom"
+                      }
                     ],
-                    allocation: 100,
-                    duration: 14,
-                    targetingGateID: "",
-                    defaultConfidenceInterval: "95",
-                    bonferroniCorrection: true,
-                    decisionReason: "",
-                  },
-                },
-              },
-            },
-          },
+                    "primaryMetricTags": [],
+                    "secondaryMetrics": [],
+                    "secondaryMetricTags": [
+                      "* Core"
+                    ],
+                    "groups": [
+                      {
+                        "name": "group1",
+                        "id": "4HbgLdfqlIeN3sHkyMG1qC",
+                        "size": 50,
+                        "parameterValues": {
+                          "key": 1
+                        }
+                      },
+                      {
+                        "name": "gruop2",
+                        "id": "4HbgLeUsO0ohmSfg9UBEJE",
+                        "size": 50,
+                        "parameterValues": {}
+                      }
+                    ],
+                    "allocation": 100,
+                    "duration": 14,
+                    "targetingGateID": "",
+                    "defaultConfidenceInterval": "95",
+                    "bonferroniCorrection": true,
+                    "decisionReason": ""
+                  }
+                }
+              }
+            }
+          }
         },
-        tags: ["Experiments"],
-      },
+        "tags": [
+          "Experiments"
+        ]
+      }
     },
     "/experiments/{experiment_id}/overrides": {
-      parameters: [
+      "parameters": [
         {
-          schema: {
-            type: "string",
-            example: "a_experiment",
+          "schema": {
+            "type": "string",
+            "example": "a_experiment"
           },
-          name: "experiment_id",
-          in: "path",
-          required: true,
-          description: "Experiment ID to query",
-        },
+          "name": "experiment_id",
+          "in": "path",
+          "required": true,
+          "description": "Experiment ID to query"
+        }
       ],
-      get: {
-        summary: "Get Experiment Overrides",
-        tags: ["Experiments"],
-        responses: {
-          200: {
-            description: "OK",
-            content: {
+      "get": {
+        "summary": "Get Experiment Overrides",
+        "tags": [
+          "Experiments"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
               "application/json": {
-                schema: {
-                  type: "object",
+                "schema": {
+                  "type": "object",
                   "x-examples": {
                     "example-1": {
-                      message: "Experiment Overrides read successfully.",
-                      data: {
-                        overrides: [
+                      "message": "Experiment Overrides read successfully.",
+                      "data": {
+                        "overrides": [
                           {
-                            groupID: "4IfTisAzh1ieQ5E1rc9kK2",
-                            name: "b_gate",
-                            type: "gate",
+                            "groupID": "4IfTisAzh1ieQ5E1rc9kK2",
+                            "name": "b_gate",
+                            "type": "gate"
                           },
                           {
-                            groupID: "4IfTiqVwOJ8KwG65Q4dHr0",
-                            name: "",
-                            type: "segment",
+                            "groupID": "4IfTiqVwOJ8KwG65Q4dHr0",
+                            "name": "",
+                            "type": "segment"
                           },
                           {
-                            groupID: "4IfTiqVwOJ8KwG65Q4dHr0",
-                            name: "a_gate",
-                            type: "gate",
-                          },
+                            "groupID": "4IfTiqVwOJ8KwG65Q4dHr0",
+                            "name": "a_gate",
+                            "type": "gate"
+                          }
                         ],
-                        userIDOverrides: [
+                        "userIDOverrides": [
                           {
-                            ids: ["a_user", "b_user"],
-                            groupID: "4IfTisAzh1ieQ5E1rc9kK2",
+                            "ids": [
+                              "a_user",
+                              "b_user"
+                            ],
+                            "groupID": "4IfTisAzh1ieQ5E1rc9kK2"
                           },
                           {
-                            ids: ["c_user"],
-                            groupID: "4IfTiqVwOJ8KwG65Q4dHr0",
-                          },
-                        ],
-                      },
-                    },
+                            "ids": [
+                              "c_user"
+                            ],
+                            "groupID": "4IfTiqVwOJ8KwG65Q4dHr0"
+                          }
+                        ]
+                      }
+                    }
                   },
-                  properties: {
-                    message: {
-                      $ref: "../models/message.json",
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
                     },
-                    data: {
-                      type: "object",
-                      properties: {
-                        overrides: {
-                          type: "array",
-                          items: {
-                            $ref: "#/components/schemas/experiment_override",
-                          },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "overrides": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/experiment_override"
+                          }
                         },
-                        userIDOverrides: {
-                          type: "array",
-                          items: {
-                            $ref: "#/components/schemas/experiment_id_override",
-                          },
-                        },
-                      },
-                    },
-                  },
+                        "userIDOverrides": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/experiment_id_override"
+                          }
+                        }
+                      }
+                    }
+                  }
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      message: "Experiment Overrides read successfully.",
-                      data: {
-                        overrides: [
+                    "value": {
+                      "message": "Experiment Overrides read successfully.",
+                      "data": {
+                        "overrides": [
                           {
-                            groupID: "Control",
-                            name: "a_gate",
-                            type: "gate",
+                            "groupID": "Control",
+                            "name": "a_gate",
+                            "type": "gate"
                           },
                           {
-                            groupID: "test",
-                            name: "a_segment",
-                            type: "segment",
-                          },
+                            "groupID": "test",
+                            "name": "a_segment",
+                            "type": "segment"
+                          }
                         ],
-                        userIDOverrides: [
+                        "userIDOverrides": [
                           {
-                            ids: ["updated_id_list"],
-                            groupID: "Control",
+                            "ids": [
+                              "updated_id_list"
+                            ],
+                            "groupID": "Control"
                           },
                           {
-                            ids: ["updated_id_lists"],
-                            groupID: "Test",
-                          },
-                        ],
-                      },
-                    },
-                  },
-                },
-              },
-            },
+                            "ids": [
+                              "updated_id_lists"
+                            ],
+                            "groupID": "Test"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
-          401: {
-            description: "Unauthorized",
-            content: {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
               "application/json": {
-                schema: {
-                  $ref: "../models/error_401.json",
+                "schema": {
+                  "$ref": "../models/error_401.json"
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      status: 401,
-                      message:
-                        "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx",
-                    },
-                  },
-                },
-              },
-            },
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
           },
-          404: {
-            $ref: "#/components/responses/experiment_404.json",
-          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
         },
-        operationId: "get-experiments-experiment_id-overrides",
-        description: "",
+        "operationId": "get-experiments-experiment_id-overrides",
+        "description": ""
       },
-      post: {
-        summary: "Update Experiment Overrides",
-        operationId: "post-experiments-experiment_id-overrides",
-        responses: {
-          201: {
-            description: "Created",
-            content: {
+      "post": {
+        "summary": "Update Experiment Overrides",
+        "operationId": "post-experiments-experiment_id-overrides",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
               "application/json": {
-                schema: {
-                  type: "object",
+                "schema": {
+                  "type": "object",
                   "x-examples": {
                     "example-1": {
-                      message: "Experiment Overrides updated successfully.",
-                      data: {
-                        overrides: [
+                      "message": "Experiment Overrides updated successfully.",
+                      "data": {
+                        "overrides": [
                           {
-                            type: "segment",
-                            name: "a_segment",
-                            groupID: "Control",
+                            "type": "segment",
+                            "name": "a_segment",
+                            "groupID": "Control"
                           },
                           {
-                            type: "gate",
-                            name: "a_gate",
-                            groupID: "Test",
-                          },
+                            "type": "gate",
+                            "name": "a_gate",
+                            "groupID": "Test"
+                          }
                         ],
-                        userIDOverrides: [
+                        "userIDOverrides": [
                           {
-                            groupID: "Control",
-                            ids: ["updated_id_list"],
+                            "groupID": "Control",
+                            "ids": [
+                              "updated_id_list"
+                            ]
                           },
                           {
-                            groupID: "Test",
-                            ids: ["updated_id_lists"],
-                          },
-                        ],
-                      },
-                    },
+                            "groupID": "Test",
+                            "ids": [
+                              "updated_id_lists"
+                            ]
+                          }
+                        ]
+                      }
+                    }
                   },
-                  properties: {
-                    message: {
-                      type: "string",
+                  "properties": {
+                    "message": {
+                      "type": "string"
                     },
-                    data: {
-                      type: "object",
-                      properties: {
-                        overrides: {
-                          type: "array",
-                          items: {
-                            $ref: "#/components/schemas/experiment_override",
-                          },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "overrides": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/experiment_override"
+                          }
                         },
-                        userIDOverrides: {
-                          type: "array",
-                          items: {
-                            $ref: "#/components/schemas/experiment_id_override",
-                          },
-                        },
-                      },
-                    },
-                  },
+                        "userIDOverrides": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/experiment_id_override"
+                          }
+                        }
+                      }
+                    }
+                  }
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      message: "Experiment Overrides updated successfully.",
-                      data: {
-                        overrides: [
+                    "value": {
+                      "message": "Experiment Overrides updated successfully.",
+                      "data": {
+                        "overrides": [
                           {
-                            type: "segment",
-                            name: "a_segment",
-                            groupID: "Control",
+                            "type": "segment",
+                            "name": "a_segment",
+                            "groupID": "Control"
                           },
                           {
-                            type: "gate",
-                            name: "a_gate",
-                            groupID: "Test",
-                          },
+                            "type": "gate",
+                            "name": "a_gate",
+                            "groupID": "Test"
+                          }
                         ],
-                        userIDOverrides: [
+                        "userIDOverrides": [
                           {
-                            groupID: "Control",
-                            ids: ["updated_user1"],
+                            "groupID": "Control",
+                            "ids": [
+                              "updated_user1"
+                            ]
                           },
                           {
-                            groupID: "Test",
-                            ids: ["updated_user2"],
-                          },
-                        ],
-                      },
-                    },
-                  },
-                },
-              },
-            },
+                            "groupID": "Test",
+                            "ids": [
+                              "updated_user2"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
-          401: {
-            description: "Unauthorized",
-            content: {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
               "application/json": {
-                schema: {
-                  $ref: "../models/error_401.json",
+                "schema": {
+                  "$ref": "../models/error_401.json"
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      status: 401,
-                      message:
-                        "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx",
-                    },
-                  },
-                },
-              },
-            },
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
           },
-          404: {
-            $ref: "#/components/responses/experiment_404.json",
-          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
         },
-        requestBody: {
-          content: {
+        "requestBody": {
+          "content": {
             "application/json": {
-              schema: {
-                type: "object",
+              "schema": {
+                "type": "object",
                 "x-examples": {
                   "example-1": {
-                    overrides: [
+                    "overrides": [
                       {
-                        type: "segment",
-                        name: "a_segment",
-                        groupID: "Control",
+                        "type": "segment",
+                        "name": "a_segment",
+                        "groupID": "Control"
                       },
                       {
-                        type: "gate",
-                        name: "a_gate",
-                        groupID: "Test",
-                      },
+                        "type": "gate",
+                        "name": "a_gate",
+                        "groupID": "Test"
+                      }
                     ],
-                    userIDOverrides: [
+                    "userIDOverrides": [
                       {
-                        groupID: "Control",
-                        ids: ["updated_id_list"],
+                        "groupID": "Control",
+                        "ids": [
+                          "updated_id_list"
+                        ]
                       },
                       {
-                        groupID: "Test",
-                        ids: ["updated_id_lists"],
-                      },
-                    ],
-                  },
+                        "groupID": "Test",
+                        "ids": [
+                          "updated_id_lists"
+                        ]
+                      }
+                    ]
+                  }
                 },
-                properties: {
-                  overrides: {
-                    type: "array",
-                    items: {
-                      $ref: "#/components/schemas/experiment_override",
-                    },
+                "properties": {
+                  "overrides": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/experiment_override"
+                    }
                   },
-                  userIDOverrides: {
-                    type: "array",
-                    items: {
-                      $ref: "#/components/schemas/experiment_id_override",
-                    },
-                  },
-                },
+                  "userIDOverrides": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/experiment_id_override"
+                    }
+                  }
+                }
               },
-              examples: {
+              "examples": {
                 "example-1": {
-                  value: {
-                    overrides: [
+                  "value": {
+                    "overrides": [
                       {
-                        type: "segment",
-                        id: "a_segment",
-                        groupID: "Control",
+                        "type": "segment",
+                        "id": "a_segment",
+                        "groupID": "Control"
                       },
                       {
-                        type: "gate",
-                        id: "a_gate",
-                        groupID: "Test",
-                      },
+                        "type": "gate",
+                        "id": "a_gate",
+                        "groupID": "Test"
+                      }
                     ],
-                    userIDOverrides: [
+                    "userIDOverrides": [
                       {
-                        groupID: "Control",
-                        ids: ["updated_control_id_list"],
+                        "groupID": "Control",
+                        "ids": [
+                          "updated_control_id_list"
+                        ]
                       },
                       {
-                        groupID: "Test",
-                        ids: ["updated_test_id_list"],
-                      },
-                    ],
-                  },
-                },
-              },
-            },
-          },
+                        "groupID": "Test",
+                        "ids": [
+                          "updated_test_id_list"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
         },
-        tags: ["Experiments"],
-        description: "",
+        "tags": [
+          "Experiments"
+        ],
+        "description": ""
       },
-      patch: {
-        summary: "Add Experiment Overrides",
-        operationId: "post-experiments-experiment_id-overrides",
-        responses: {
-          201: {
-            description: "Created",
-            content: {
+      "patch": {
+        "summary": "Add Experiment Overrides",
+        "operationId": "post-experiments-experiment_id-overrides",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
               "application/json": {
-                schema: {
-                  type: "object",
+                "schema": {
+                  "type": "object",
                   "x-examples": {
                     "example-1": {
-                      message: "Experiment Overrides updated successfully.",
-                      data: {
-                        overrides: [
+                      "message": "Experiment Overrides updated successfully.",
+                      "data": {
+                        "overrides": [
                           {
-                            type: "segment",
-                            name: "a_segment",
-                            groupID: "Control",
+                            "type": "segment",
+                            "name": "a_segment",
+                            "groupID": "Control"
                           },
                           {
-                            type: "gate",
-                            name: "a_gate",
-                            groupID: "Test",
-                          },
+                            "type": "gate",
+                            "name": "a_gate",
+                            "groupID": "Test"
+                          }
                         ],
-                        userIDOverrides: [
+                        "userIDOverrides": [
                           {
-                            groupID: "Control",
-                            ids: ["updated_id_list"],
+                            "groupID": "Control",
+                            "ids": [
+                              "updated_id_list"
+                            ]
                           },
                           {
-                            groupID: "Test",
-                            ids: ["updated_id_lists"],
-                          },
-                        ],
-                      },
-                    },
+                            "groupID": "Test",
+                            "ids": [
+                              "updated_id_lists"
+                            ]
+                          }
+                        ]
+                      }
+                    }
                   },
-                  properties: {
-                    message: {
-                      type: "string",
+                  "properties": {
+                    "message": {
+                      "type": "string"
                     },
-                    data: {
-                      type: "object",
-                      properties: {
-                        overrides: {
-                          type: "array",
-                          items: {
-                            $ref: "#/components/schemas/experiment_override",
-                          },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "overrides": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/experiment_override"
+                          }
                         },
-                        userIDOverrides: {
-                          type: "array",
-                          items: {
-                            $ref: "#/components/schemas/experiment_id_override",
-                          },
-                        },
-                      },
-                    },
-                  },
+                        "userIDOverrides": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/experiment_id_override"
+                          }
+                        }
+                      }
+                    }
+                  }
                 },
-                examples: {
+                "examples": {
                   "Adding overrides": {
-                    value: {
-                      message: "Experiment Overrides updated successfully.",
-                      data: {
-                        overrides: [
+                    "value": {
+                      "message": "Experiment Overrides updated successfully.",
+                      "data": {
+                        "overrides": [
                           {
-                            type: "segment",
-                            name: "a_segment",
-                            groupID: "Control",
+                            "type": "segment",
+                            "name": "a_segment",
+                            "groupID": "Control"
                           },
                           {
-                            type: "gate",
-                            id: "a_gate",
-                            groupID: "Test",
-                          },
+                            "type": "gate",
+                            "id": "a_gate",
+                            "groupID": "Test"
+                          }
                         ],
-                        userIDOverrides: [
+                        "userIDOverrides": [
                           {
-                            groupID: "Control",
-                            ids: ["newly_added_id"],
+                            "groupID": "Control",
+                            "ids": [
+                              "newly_added_id"
+                            ]
                           },
                           {
-                            groupID: "Test",
-                            ids: ["id_that_already_existed"],
-                          },
-                        ],
-                      },
-                    },
-                  },
-                },
-              },
-            },
+                            "groupID": "Test",
+                            "ids": [
+                              "id_that_already_existed"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
-          401: {
-            description: "Unauthorized",
-            content: {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
               "application/json": {
-                schema: {
-                  $ref: "../models/error_401.json",
+                "schema": {
+                  "$ref": "../models/error_401.json"
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      status: 401,
-                      message:
-                        "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx",
-                    },
-                  },
-                },
-              },
-            },
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
           },
-          404: {
-            $ref: "#/components/responses/experiment_404.json",
-          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
         },
-        requestBody: {
-          content: {
+        "requestBody": {
+          "content": {
             "application/json": {
-              schema: {
-                type: "object",
+              "schema": {
+                "type": "object",
                 "x-examples": {
                   "example-1": {
-                    overrides: [
+                    "overrides": [
                       {
-                        type: "segment",
-                        name: "a_segment",
-                        groupID: "Control",
+                        "type": "segment",
+                        "name": "a_segment",
+                        "groupID": "Control"
                       },
                       {
-                        type: "gate",
-                        name: "a_gate",
-                        groupID: "Test",
-                      },
+                        "type": "gate",
+                        "name": "a_gate",
+                        "groupID": "Test"
+                      }
                     ],
-                    userIDOverrides: [
+                    "userIDOverrides": [
                       {
-                        groupID: "Control",
-                        ids: ["updated_id_list"],
+                        "groupID": "Control",
+                        "ids": [
+                          "updated_id_list"
+                        ]
                       },
                       {
-                        groupID: "Test",
-                        ids: ["updated_id_lists"],
-                      },
-                    ],
-                  },
+                        "groupID": "Test",
+                        "ids": [
+                          "updated_id_lists"
+                        ]
+                      }
+                    ]
+                  }
                 },
-                properties: {
-                  overrides: {
-                    type: "array",
-                    description: "experiment overrides to be added",
-                    items: {
-                      $ref: "#/components/schemas/experiment_override",
-                    },
+                "properties": {
+                  "overrides": {
+                    "type": "array",
+                    "description": "experiment overrides to be added",
+                    "items": {
+                      "$ref": "#/components/schemas/experiment_override"
+                    }
                   },
-                  userIDOverrides: {
-                    type: "array",
-                    description: "list of ids to add from each selected group",
-                    items: {
-                      $ref: "#/components/schemas/experiment_id_override",
-                    },
-                  },
-                },
+                  "userIDOverrides": {
+                    "type": "array",
+                    "description": "list of ids to add from each selected group",
+                    "items": {
+                      "$ref": "#/components/schemas/experiment_id_override"
+                    }
+                  }
+                }
               },
-              examples: {
+              "examples": {
                 "Adding overrides": {
-                  value: {
-                    overrides: [
+                  "value": {
+                    "overrides": [
                       {
-                        type: "gate",
-                        id: "a_gate",
-                        groupID: "Test",
-                      },
+                        "type": "gate",
+                        "id": "a_gate",
+                        "groupID": "Test"
+                      }
                     ],
-                    userIDOverrides: [
+                    "userIDOverrides": [
                       {
-                        groupID: "Control",
-                        ids: ["newly_added_id"],
-                      },
-                    ],
-                  },
-                },
-              },
-            },
+                        "groupID": "Control",
+                        "ids": [
+                          "newly_added_id"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
           },
-          description:
-            "This endpoint will add overrides to the existing list of overrides.",
+          "description": "This endpoint will add overrides to the existing list of overrides."
         },
-        tags: ["Experiments"],
-        description: "",
+        "tags": [
+          "Experiments"
+        ],
+        "description": ""
       },
-      delete: {
-        summary: "Remove Experiment Overrides",
-        operationId: "post-experiments-experiment_id-overrides",
-        responses: {
-          201: {
-            description: "Created",
-            content: {
+      "delete": {
+        "summary": "Remove Experiment Overrides",
+        "operationId": "post-experiments-experiment_id-overrides",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
               "application/json": {
-                schema: {
-                  type: "object",
+                "schema": {
+                  "type": "object",
                   "x-examples": {
                     "example-1": {
-                      message: "Experiment Overrides updated successfully.",
-                      data: {
-                        overrides: [
+                      "message": "Experiment Overrides updated successfully.",
+                      "data": {
+                        "overrides": [
                           {
-                            type: "segment",
-                            name: "a_segment",
-                            groupID: "Control",
+                            "type": "segment",
+                            "name": "a_segment",
+                            "groupID": "Control"
                           },
                           {
-                            type: "gate",
-                            name: "a_gate",
-                            groupID: "Test",
-                          },
+                            "type": "gate",
+                            "name": "a_gate",
+                            "groupID": "Test"
+                          }
                         ],
-                        userIDOverrides: [
+                        "userIDOverrides": [
                           {
-                            groupID: "Control",
-                            ids: ["updated_id_list"],
+                            "groupID": "Control",
+                            "ids": [
+                              "updated_id_list"
+                            ]
                           },
                           {
-                            groupID: "Test",
-                            ids: ["updated_id_lists"],
-                          },
-                        ],
-                      },
-                    },
+                            "groupID": "Test",
+                            "ids": [
+                              "updated_id_lists"
+                            ]
+                          }
+                        ]
+                      }
+                    }
                   },
-                  properties: {
-                    message: {
-                      type: "string",
+                  "properties": {
+                    "message": {
+                      "type": "string"
                     },
-                    data: {
-                      type: "object",
-                      properties: {
-                        overrides: {
-                          type: "array",
-                          items: {
-                            $ref: "#/components/schemas/experiment_override",
-                          },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "overrides": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/experiment_override"
+                          }
                         },
-                        userIDOverrides: {
-                          type: "array",
-                          items: {
-                            $ref: "#/components/schemas/experiment_id_override",
-                          },
-                        },
-                      },
-                    },
-                  },
+                        "userIDOverrides": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/experiment_id_override"
+                          }
+                        }
+                      }
+                    }
+                  }
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      message: "Experiment Overrides updated successfully.",
-                      data: {
-                        overrides: [
+                    "value": {
+                      "message": "Experiment Overrides updated successfully.",
+                      "data": {
+                        "overrides": [
                           {
-                            type: "segment",
-                            name: "a_segment",
-                            groupID: "Control",
-                          },
+                            "type": "segment",
+                            "name": "a_segment",
+                            "groupID": "Control"
+                          }
                         ],
-                        userIDOverrides: [
+                        "userIDOverrides": [
                           {
-                            groupID: "Control",
-                            ids: ["unaffected_id1", "unaffected_id2"],
+                            "groupID": "Control",
+                            "ids": [
+                              "unaffected_id1",
+                              "unaffected_id2"
+                            ]
                           },
                           {
-                            groupID: "Test",
-                            ids: ["id1", "id2"],
-                          },
-                        ],
-                      },
-                    },
-                  },
-                },
-              },
-            },
+                            "groupID": "Test",
+                            "ids": [
+                              "id1",
+                              "id2"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
-          401: {
-            description: "Unauthorized",
-            content: {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
               "application/json": {
-                schema: {
-                  $ref: "../models/error_401.json",
+                "schema": {
+                  "$ref": "../models/error_401.json"
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      status: 401,
-                      message:
-                        "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx",
-                    },
-                  },
-                },
-              },
-            },
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
           },
-          404: {
-            $ref: "#/components/responses/experiment_404.json",
-          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
         },
-        requestBody: {
-          content: {
+        "requestBody": {
+          "content": {
             "application/json": {
-              schema: {
-                type: "object",
+              "schema": {
+                "type": "object",
                 "x-examples": {
                   "example-1": {
-                    overrides: [
+                    "overrides": [
                       {
-                        type: "segment",
-                        name: "a_segment",
-                        groupID: "Control",
+                        "type": "segment",
+                        "name": "a_segment",
+                        "groupID": "Control"
                       },
                       {
-                        type: "gate",
-                        name: "a_gate",
-                        groupID: "Test",
-                      },
+                        "type": "gate",
+                        "name": "a_gate",
+                        "groupID": "Test"
+                      }
                     ],
-                    userIDOverrides: [
+                    "userIDOverrides": [
                       {
-                        groupID: "Control",
-                        ids: ["updated_id_list"],
+                        "groupID": "Control",
+                        "ids": [
+                          "updated_id_list"
+                        ]
                       },
                       {
-                        groupID: "Test",
-                        ids: ["updated_id_lists"],
-                      },
-                    ],
-                  },
+                        "groupID": "Test",
+                        "ids": [
+                          "updated_id_lists"
+                        ]
+                      }
+                    ]
+                  }
                 },
-                properties: {
-                  overrides: {
-                    type: "array",
-                    description: "experiment overrides to be removed",
-                    items: {
-                      $ref: "#/components/schemas/experiment_override",
-                    },
+                "properties": {
+                  "overrides": {
+                    "type": "array",
+                    "description": "experiment overrides to be removed",
+                    "items": {
+                      "$ref": "#/components/schemas/experiment_override"
+                    }
                   },
-                  userIDOverrides: {
-                    type: "array",
-                    description:
-                      "list of ids to be removed from each selected group",
-                    items: {
-                      $ref: "#/components/schemas/experiment_id_override",
-                    },
-                  },
-                },
+                  "userIDOverrides": {
+                    "type": "array",
+                    "description": "list of ids to be removed from each selected group",
+                    "items": {
+                      "$ref": "#/components/schemas/experiment_id_override"
+                    }
+                  }
+                }
               },
-              examples: {
+              "examples": {
                 "Removing overrides": {
-                  value: {
-                    overrides: [
+                  "value": {
+                    "overrides": [
                       {
-                        type: "gate",
-                        id: "a_gate",
-                        groupID: "Test",
-                      },
+                        "type": "gate",
+                        "id": "a_gate",
+                        "groupID": "Test"
+                      }
                     ],
-                    userIDOverrides: [
+                    "userIDOverrides": [
                       {
-                        groupID: "Control",
-                        ids: ["remove_just_this_id"],
-                      },
-                    ],
-                  },
-                },
-              },
-            },
+                        "groupID": "Control",
+                        "ids": [
+                          "remove_just_this_id"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
           },
-          description:
-            "This endpoint will remove selected overrides while leaving the rest unaffected.",
+          "description": "This endpoint will remove selected overrides while leaving the rest unaffected."
         },
-        tags: ["Experiments"],
-        description: "",
-      },
+        "tags": [
+          "Experiments"
+        ],
+        "description": ""
+      }
     },
     "/experiments/{experiment_id}/start": {
-      parameters: [
+      "parameters": [
         {
-          schema: {
-            type: "string",
+          "schema": {
+            "type": "string"
           },
-          name: "experiment_id",
-          in: "path",
-          required: true,
-        },
+          "name": "experiment_id",
+          "in": "path",
+          "required": true
+        }
       ],
-      put: {
-        summary: "Start Experiment",
-        operationId: "put-experiments-experiment_id-start",
-        responses: {
-          200: {
-            description: "OK",
-            content: {
+      "put": {
+        "summary": "Start Experiment",
+        "operationId": "put-experiments-experiment_id-start",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
               "application/json": {
-                schema: {
-                  type: "object",
+                "schema": {
+                  "type": "object",
                   "x-examples": {
                     "example-1": {
-                      message: "Experiment successfully started.",
-                    },
+                      "message": "Experiment successfully started."
+                    }
                   },
-                  properties: {
-                    message: {
-                      $ref: "../models/message.json",
-                    },
-                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
                 },
-                examples: {
-                  Success: {
-                    value: {
-                      message: "Experiment successfully started.",
-                    },
-                  },
-                },
-              },
-            },
+                "examples": {
+                  "Success": {
+                    "value": {
+                      "message": "Experiment successfully started."
+                    }
+                  }
+                }
+              }
+            }
           },
-          400: {
-            description: "Bad Request",
-            content: {
+          "400": {
+            "description": "Bad Request",
+            "content": {
               "application/json": {
-                schema: {
-                  type: "object",
-                  properties: {
-                    status: {
-                      type: "integer",
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer"
                     },
-                    message: {
-                      type: "string",
-                    },
+                    "message": {
+                      "type": "string"
+                    }
                   },
                   "x-examples": {
                     "example-1": {
-                      status: 400,
-                      message: "Experiment has finished",
-                    },
-                  },
+                      "status": 400,
+                      "message": "Experiment has finished"
+                    }
+                  }
                 },
-                examples: {
+                "examples": {
                   "Experiment already started": {
-                    value: {
-                      status: 400,
-                      message: "Experiment has already started",
-                    },
+                    "value": {
+                      "status": 400,
+                      "message": "Experiment has already started"
+                    }
                   },
                   "Experiment already finished": {
-                    value: {
-                      status: 400,
-                      message: "Experiment has already finished",
-                    },
-                  },
-                },
-              },
-            },
+                    "value": {
+                      "status": 400,
+                      "message": "Experiment has already finished"
+                    }
+                  }
+                }
+              }
+            }
           },
-          401: {
-            description: "Unauthorized",
-            content: {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
               "application/json": {
-                schema: {
-                  $ref: "../models/error_401.json",
+                "schema": {
+                  "$ref": "../models/error_401.json"
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      status: 401,
-                      message:
-                        "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx",
-                    },
-                  },
-                },
-              },
-            },
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
           },
-          404: {
-            $ref: "#/components/responses/experiment_404.json",
-          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
         },
-        tags: ["Experiments"],
-      },
+        "tags": [
+          "Experiments"
+        ]
+      }
     },
     "/experiments/{experiment_id}/make_decision": {
-      parameters: [
+      "parameters": [
         {
-          schema: {
-            type: "string",
+          "schema": {
+            "type": "string"
           },
-          name: "experiment_id",
-          in: "path",
-          required: true,
-        },
+          "name": "experiment_id",
+          "in": "path",
+          "required": true
+        }
       ],
-      put: {
-        summary: "Finish Experiment Early",
-        operationId: "put-experiments-experiment_id-start",
-        responses: {
-          200: {
-            description: "OK",
-            content: {
+      "put": {
+        "summary": "Finish Experiment Early",
+        "operationId": "put-experiments-experiment_id-start",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
               "application/json": {
-                schema: {
-                  type: "object",
+                "schema": {
+                  "type": "object",
                   "x-examples": {
                     "example-1": {
-                      message: "Experiment successfully started.",
-                    },
+                      "message": "Experiment successfully started."
+                    }
                   },
-                  properties: {
-                    message: {
-                      $ref: "../models/message.json",
-                    },
-                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
                 },
-                examples: {
-                  Success: {
-                    value: {
-                      message: "Decision made for Experiment.",
-                    },
-                  },
-                },
-              },
-            },
+                "examples": {
+                  "Success": {
+                    "value": {
+                      "message": "Decision made for Experiment."
+                    }
+                  }
+                }
+              }
+            }
           },
-          400: {
-            description: "Bad Request",
-            content: {
+          "400": {
+            "description": "Bad Request",
+            "content": {
               "application/json": {
-                schema: {
-                  type: "object",
+                "schema": {
+                  "type": "object",
                   "x-examples": {
                     "example-1": {
-                      status: 400,
-                      message: "Experiment has finished",
-                    },
+                      "status": 400,
+                      "message": "Experiment has finished"
+                    }
                   },
-                  properties: {
-                    status: {
-                      $ref: "../models/status.json",
+                  "properties": {
+                    "status": {
+                      "$ref": "../models/status.json"
                     },
-                    message: {
-                      $ref: "../models/message.json",
-                    },
-                  },
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
                 },
-                examples: {
+                "examples": {
                   "Experiment has not yet started": {
-                    value: {
-                      status: 400,
-                      message: "Experiment has not yet started",
-                    },
+                    "value": {
+                      "status": 400,
+                      "message": "Experiment has not yet started"
+                    }
                   },
                   "Experiment already finished": {
-                    value: {
-                      status: 400,
-                      message: "Experiment has already finished",
-                    },
-                  },
-                },
-              },
-            },
+                    "value": {
+                      "status": 400,
+                      "message": "Experiment has already finished"
+                    }
+                  }
+                }
+              }
+            }
           },
-          401: {
-            description: "Unauthorized",
-            content: {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
               "application/json": {
-                schema: {
-                  $ref: "../models/error_401.json",
+                "schema": {
+                  "$ref": "../models/error_401.json"
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      status: 401,
-                      message:
-                        "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx",
-                    },
-                  },
-                },
-              },
-            },
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
           },
-          404: {
-            $ref: "#/components/responses/experiment_404.json",
-          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
         },
-        tags: ["Experiments"],
-        requestBody: {
-          content: {
+        "tags": [
+          "Experiments"
+        ],
+        "requestBody": {
+          "content": {
             "application/json": {
-              schema: {
-                type: "object",
+              "schema": {
+                "type": "object",
                 "x-examples": {
                   "example-1": {
-                    groupID: "red",
-                    decisionReason: "A valid reason to stop early",
-                    removeTargeting: true,
-                  },
+                    "groupID": "red",
+                    "decisionReason": "A valid reason to stop early",
+                    "removeTargeting": true
+                  }
                 },
-                properties: {
-                  groupID: {
-                    type: "string",
-                    description: "The groupID to be selected as the winner",
+                "properties": {
+                  "groupID": {
+                    "type": "string",
+                    "description": "The groupID to be selected as the winner"
                   },
-                  decisionReason: {
-                    type: "string",
-                    description: "Reason for stopping the experiment early",
+                  "decisionReason": {
+                    "type": "string",
+                    "description": "Reason for stopping the experiment early"
                   },
-                  removeTargeting: {
-                    type: "boolean",
-                    description: "Whether targetting gate should be removed",
-                  },
-                },
+                  "removeTargeting": {
+                    "type": "boolean",
+                    "description": "Whether targetting gate should be removed"
+                  }
+                }
               },
-              examples: {
+              "examples": {
                 "example-1": {
-                  value: {
-                    groupID: "red",
-                    decisionReason: "Your reason for stopping early",
-                    removeTargeting: false,
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
+                  "value": {
+                    "groupID": "red",
+                    "decisionReason": "Your reason for stopping early",
+                    "removeTargeting": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "/experiments/{experiment_id}/reset": {
-      parameters: [
+      "parameters": [
         {
-          schema: {
-            type: "string",
+          "schema": {
+            "type": "string"
           },
-          name: "experiment_id",
-          in: "path",
-          required: true,
-        },
+          "name": "experiment_id",
+          "in": "path",
+          "required": true
+        }
       ],
-      put: {
-        summary: "Reset Experiment",
-        operationId: "put-experiments-experiment_id-start",
-        responses: {
-          200: {
-            description: "OK",
-            content: {
+      "put": {
+        "summary": "Reset Experiment",
+        "operationId": "put-experiments-experiment_id-start",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
               "application/json": {
-                schema: {
-                  type: "object",
+                "schema": {
+                  "type": "object",
                   "x-examples": {
                     "example-1": {
-                      message: "Experiment successfully started.",
-                    },
+                      "message": "Experiment successfully started."
+                    }
                   },
-                  properties: {
-                    message: {
-                      $ref: "../models/message.json",
-                    },
-                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
                 },
-                examples: {
-                  Success: {
-                    value: {
-                      message: "Experiment successfully restarted.",
-                    },
-                  },
-                },
-              },
-            },
+                "examples": {
+                  "Success": {
+                    "value": {
+                      "message": "Experiment successfully restarted."
+                    }
+                  }
+                }
+              }
+            }
           },
-          400: {
-            description: "Bad Request",
-            content: {
+          "400": {
+            "description": "Bad Request",
+            "content": {
               "application/json": {
-                schema: {
-                  type: "object",
-                  properties: {
-                    status: {
-                      type: "integer",
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer"
                     },
-                    message: {
-                      type: "string",
-                    },
+                    "message": {
+                      "type": "string"
+                    }
                   },
                   "x-examples": {
                     "example-1": {
-                      status: 400,
-                      message: "Experiment has finished",
-                    },
-                  },
+                      "status": 400,
+                      "message": "Experiment has finished"
+                    }
+                  }
                 },
-                examples: {
+                "examples": {
                   "Experiment has not yet started": {
-                    value: {
-                      status: 400,
-                      message: "Experiment has not yet started",
-                    },
+                    "value": {
+                      "status": 400,
+                      "message": "Experiment has not yet started"
+                    }
                   },
                   "Experiment has not yet finished": {
-                    value: {
-                      status: 400,
-                      message: "Experiment has not yet finished",
-                    },
-                  },
-                },
-              },
-            },
+                    "value": {
+                      "status": 400,
+                      "message": "Experiment has not yet finished"
+                    }
+                  }
+                }
+              }
+            }
           },
-          401: {
-            description: "Unauthorized",
-            content: {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
               "application/json": {
-                schema: {
-                  $ref: "../models/error_401.json",
+                "schema": {
+                  "$ref": "../models/error_401.json"
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      status: 401,
-                      message:
-                        "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx",
-                    },
-                  },
-                },
-              },
-            },
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
           },
-          404: {
-            $ref: "#/components/responses/experiment_404.json",
-          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
         },
-        tags: ["Experiments"],
+        "tags": [
+          "Experiments"
+        ],
         "x-stoplight": {
-          id: "j7v1w5s60ynya",
+          "id": "la4r8wta4m59f"
         },
-        description: "",
-      },
+        "description": ""
+      }
     },
     "/experiments/{experiment_id}/abandon": {
-      parameters: [
+      "parameters": [
         {
-          schema: {
-            type: "string",
+          "schema": {
+            "type": "string"
           },
-          name: "experiment_id",
-          in: "path",
-          required: true,
-        },
+          "name": "experiment_id",
+          "in": "path",
+          "required": true
+        }
       ],
-      put: {
-        summary: "Abandon Experiment",
-        operationId: "put-experiments-experiment_id-start",
-        responses: {
-          200: {
-            description: "OK",
-            content: {
+      "put": {
+        "summary": "Abandon Experiment",
+        "operationId": "put-experiments-experiment_id-start",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
               "application/json": {
-                schema: {
-                  type: "object",
+                "schema": {
+                  "type": "object",
                   "x-examples": {
                     "example-1": {
-                      message: "Experiment successfully started.",
-                    },
+                      "message": "Experiment successfully started."
+                    }
                   },
-                  properties: {
-                    message: {
-                      $ref: "../models/message.json",
-                    },
-                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
                 },
-                examples: {
-                  Success: {
-                    value: {
-                      message: "Experiment successfully abandoned.",
-                    },
-                  },
-                },
-              },
-            },
+                "examples": {
+                  "Success": {
+                    "value": {
+                      "message": "Experiment successfully abandonded."
+                    }
+                  }
+                }
+              }
+            }
           },
-          400: {
-            description: "Bad Request",
-            content: {
+          "400": {
+            "description": "Bad Request",
+            "content": {
               "application/json": {
-                schema: {
-                  type: "object",
-                  properties: {
-                    status: {
-                      type: "integer",
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer"
                     },
-                    message: {
-                      type: "string",
-                    },
+                    "message": {
+                      "type": "string"
+                    }
                   },
                   "x-examples": {
                     "example-1": {
-                      status: 400,
-                      message: "Experiment has finished",
-                    },
-                  },
+                      "status": 400,
+                      "message": "Experiment has finished"
+                    }
+                  }
                 },
-                examples: {
+                "examples": {
                   "Experiment not started": {
-                    value: {
-                      status: 400,
-                      message: "Experiment has not yet started",
-                    },
+                    "value": {
+                      "status": 400,
+                      "message": "Experiment has not yet started"
+                    }
                   },
                   "Experiment already abandoned": {
-                    value: {
-                      status: 400,
-                      message: "Experiment a_experiment is already abandoned",
-                    },
-                  },
-                },
-              },
-            },
+                    "value": {
+                      "status": 400,
+                      "message": "Experiment a_experiment is already abandoned"
+                    }
+                  }
+                }
+              }
+            }
           },
-          401: {
-            description: "Unauthorized",
-            content: {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
               "application/json": {
-                schema: {
-                  $ref: "../models/error_401.json",
+                "schema": {
+                  "$ref": "../models/error_401.json"
                 },
-                examples: {
+                "examples": {
                   "example-1": {
-                    value: {
-                      status: 401,
-                      message:
-                        "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx",
-                    },
-                  },
-                },
-              },
-            },
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
           },
-          404: {
-            $ref: "#/components/responses/experiment_404.json",
-          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
         },
-        tags: ["Experiments"],
+        "tags": [
+          "Experiments"
+        ],
         "x-stoplight": {
-          id: "woa738678jk09",
+          "id": "l84jkqxmrq8wv"
         },
-        requestBody: {
-          content: {
+        "requestBody": {
+          "content": {
             "application/json": {
-              schema: {
-                type: "object",
+              "schema": {
+                "type": "object",
                 "x-examples": {
                   "Example 1": {
-                    removeTargeting: false,
-                    decisionReason: "",
-                  },
+                    "removeTargeting": false,
+                    "decisionReason": ""
+                  }
                 },
-                properties: {
-                  removeTargeting: {
-                    type: "boolean",
-                    description: "Removing targeting on experiment",
+                "properties": {
+                  "removeTargeting": {
+                    "type": "boolean",
+                    "description": "Removing targeting on experiment"
                   },
-                  decisionReason: {
-                    type: "string",
-                    description: "Why the experiment was abandoned",
-                  },
-                },
+                  "decisionReason": {
+                    "type": "string",
+                    "description": "Why the experiment was abandoned"
+                  }
+                }
               },
-              examples: {
-                Example: {
-                  value: {
-                    removeTargeting: false,
-                    decisionReason: "Reason for abandoning the experiment",
-                  },
-                },
-              },
-            },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "removeTargeting": false,
+                    "decisionReason": "Reason for abandoning the experiment"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/experiments/{experiment_id}/archive": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
           },
+          "name": "experiment_id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "Archive Experiment",
+        "operationId": "put-experiments-experiment_id-archive",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Experiment successfully started."
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "$ref": "../models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Success": {
+                    "value": {
+                      "message": "Experiment successfully archived."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/error_401.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/experiment_404.json"
+          }
         },
-      },
+        "tags": [
+          "Experiments"
+        ],
+        "x-stoplight": {
+          "id": "emtim398cufaq"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "archiveReason": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "m73kgehid2a1i"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "/experiments/{experiment_id}/load_pulse": {
-      parameters: [
+      "parameters": [
         {
-          schema: {
-            type: "string",
+          "schema": {
+            "type": "string"
           },
-          name: "experiment_id",
-          in: "path",
-          required: true,
-        },
+          "name": "experiment_id",
+          "in": "path",
+          "required": true
+        }
       ],
-      post: {
-        summary: "Load Pulse",
-        operationId: "post-experiments-experiment_id-load-pulse",
-        responses: {
-          200: {
-            description: "OK",
-            content: {
+      "get": {
+        "summary": "Load Pulse (Warehouse Native)",
+        "tags": [
+          "Experiments (Warehouse Native)"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
               "application/json": {
-                schema: {
-                  type: "object",
-                  "x-examples": {
-                    "example-1": {
-                      message: "Experiment is loading.",
-                    },
-                  },
-                  properties: {
-                    message: {
-                      $ref: "../models/message.json",
-                    },
-                  },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "h8iq6upwtxbfl"
+                      }
+                    }
+                  }
                 },
-                examples: {
-                  Success: {
-                    value: {
-                      message: "Experiment is loading",
-                    },
-                  },
-                },
-              },
-            },
-          },
-          400: {
-            description: "Bad Request",
-            content: {
-              "application/json": {
-                schema: {
-                  type: "object",
-                  properties: {
-                    status: {
-                      type: "integer",
-                    },
-                    message: {
-                      type: "string",
-                    },
-                  },
-                  "x-examples": {
-                    "example-1": {
-                      status: 400,
-                      message: "Experiment has finished",
-                    },
-                  },
-                },
-                examples: {
-                  "Experiment not started": {
-                    value: {
-                      status: 400,
-                      message: "Experiment has not yet started",
-                    },
-                  },
-                  "Experiment already abandoned": {
-                    value: {
-                      status: 400,
-                      message: "Experiment a_experiment has finished",
-                    },
-                  },
-                },
-              },
-            },
-          },
-          401: {
-            description: "Unauthorized",
-            content: {
-              "application/json": {
-                schema: {
-                  $ref: "../models/error_401.json",
-                },
-                examples: {
-                  "example-1": {
-                    value: {
-                      status: 401,
-                      message:
-                        "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx",
-                    },
-                  },
-                },
-              },
-            },
-          },
-          404: {
-            $ref: "#/components/responses/experiment_404.json",
-          },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Experiment is loading."
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
-        tags: ["Experiments"],
+        "operationId": "Load Pulse",
         "x-stoplight": {
-          id: "woa738678jk09",
+          "id": "0w9utb8f51k3p"
         },
-        requestBody: {
-          content: {
+        "requestBody": {
+          "content": {
             "application/json": {
-              schema: {
-                type: "object",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "yjyhjqtrbhxlq"
+                    },
+                    "description": "'full' or 'incremental'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/experiments/assignment_sources": {
+      "get": {
+        "summary": "List Assignment Sources",
+        "tags": [
+          "Experiments (Warehouse Native)"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Assignment Sources listed successfully",
+                      "data": [
+                        {
+                          "name": "statsig_forwarded_exposures",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM `shoppy-sales.statsig_dev_2.exposures`",
+                          "timestampColumn": "timestamp",
+                          "groupIDColumn": "group_id",
+                          "experimentIDColumn": "experiment_id",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            },
+                            {
+                              "statsigUnitID": "stableID",
+                              "column": "stable_id"
+                            },
+                            {
+                              "statsigUnitID": "companyID",
+                              "column": "companyID"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Exposures",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM shoppy-sales.experiment_data.exposures \n",
+                          "timestampColumn": "ts",
+                          "groupIDColumn": "group_id",
+                          "experimentIDColumn": "experiment_name",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            },
+                            {
+                              "statsigUnitID": "deviceID",
+                              "column": "device_id"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Experiment Assignments",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT \n  *\nFROM shoppy-sales.experiment_data.exposures",
+                          "timestampColumn": "ts",
+                          "groupIDColumn": "group_id",
+                          "experimentIDColumn": "experiment_name",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Statsig_Filtered",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM `shoppy-sales.statsig.statsig_forwarded_exposures`\nWHERE DATE(timestamp) < DATE('2023-10-10')",
+                          "timestampColumn": "timestamp",
+                          "groupIDColumn": "group_id",
+                          "experimentIDColumn": "experiment_id",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "test_expo_echidna",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM `shoppy-sales.statsig.statsig_forwarded_exposures`\nWHERE DATE(timestamp) < DATE('2023-10-10')",
+                          "timestampColumn": "user_id",
+                          "groupIDColumn": "stable_id",
+                          "experimentIDColumn": "stable_id",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "nulltimestamp",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM shoppy-sales.experiment_data.exposures ",
+                          "timestampColumn": "!statsig_null_timestamp",
+                          "groupIDColumn": "group_id",
+                          "experimentIDColumn": "experiment_name",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "capi sources",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM shoppy-sales.experiment_data.exposures",
+                          "timestampColumn": "ts",
+                          "groupIDColumn": "group_id",
+                          "experimentIDColumn": "experiment_id",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "stableID",
+                              "column": "user_id"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "tags": {
+                            "type": "array",
+                            "items": {
+                              "type": "object"
+                            }
+                          },
+                          "sql": {
+                            "type": "string"
+                          },
+                          "timestampColumn": {
+                            "type": "string"
+                          },
+                          "groupIDColumn": {
+                            "type": "string"
+                          },
+                          "experimentIDColumn": {
+                            "type": "string"
+                          },
+                          "idTypeMapping": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "statsigUnitID": {
+                                  "type": "string"
+                                },
+                                "column": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Assignment Sources listed successfully",
+                      "data": [
+                        {
+                          "name": "statsig_forwarded_exposures",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM `shoppy-sales.statsig_dev_2.exposures`",
+                          "timestampColumn": "timestamp",
+                          "groupIDColumn": "group_id",
+                          "experimentIDColumn": "experiment_id",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            },
+                            {
+                              "statsigUnitID": "stableID",
+                              "column": "stable_id"
+                            },
+                            {
+                              "statsigUnitID": "companyID",
+                              "column": "companyID"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Exposures",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM shoppy-sales.experiment_data.exposures \n",
+                          "timestampColumn": "ts",
+                          "groupIDColumn": "group_id",
+                          "experimentIDColumn": "experiment_name",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            },
+                            {
+                              "statsigUnitID": "deviceID",
+                              "column": "device_id"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-experiments-assignment_sources",
+        "x-stoplight": {
+          "id": "skm8ymr9fegxx"
+        },
+        "requestBody": {
+          "content": {}
+        }
+      },
+      "post": {
+        "summary": "Create Assignment Source",
+        "tags": [
+          "Experiments (Warehouse Native)"
+        ],
+        "responses": {
+          "2XX": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "tags": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {}
+                          }
+                        },
+                        "sql": {
+                          "type": "string"
+                        },
+                        "timestampColumn": {
+                          "type": "string"
+                        },
+                        "idTypeMapping": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "statsigUnitID": {
+                                "type": "string"
+                              },
+                              "column": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Entity Property Source created successfully",
+                      "data": {
+                        "name": "Gender3",
+                        "description": "",
+                        "tags": [],
+                        "sql": "SELECT * FROM shoppy-sales.setup.user_properties",
+                        "timestampColumn": "timestamp",
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "stableID",
+                            "column": "user_id"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Assignment Source created successfully",
+                      "data": {
+                        "name": "exposures",
+                        "description": "",
+                        "tags": [],
+                        "sql": "SELECT * FROM shoppy-sales.experiment_data.exposures",
+                        "timestampColumn": "ts",
+                        "groupIDColumn": "group_id",
+                        "experimentIDColumn": "experiment_name",
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "stableID",
+                            "column": "user_id"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "post-experiments-assignment_sources",
+        "x-stoplight": {
+          "id": "fqzsw92dm4n6x"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
                 "x-examples": {
                   "Example 1": {
-                    refresh: "full",
-                  },
+                    "name": "expos",
+                    "description": "",
+                    "tags": [],
+                    "sql": "SELECT * FROM shoppy-sales.experiment_data.exposures",
+                    "groupIDColumn": "group_id",
+                    "experimentIDColumn": "experiment_name",
+                    "timestampColumn": "ts",
+                    "idTypeMapping": [
+                      {
+                        "statsigUnitID": "stableID",
+                        "column": "user_id"
+                      }
+                    ]
+                  }
                 },
-                properties: {
-                  refresh: {
-                    type: "string",
-                    description: "Refresh type ('full' or 'incremental')",
+                "required": [
+                  "name",
+                  "description",
+                  "tags",
+                  "sql",
+                  "groupIDColumn",
+                  "experimentIDColumn",
+                  "timestampColumn"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
                   },
-                },
+                  "description": {
+                    "type": "string"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "sql": {
+                    "type": "string"
+                  },
+                  "groupIDColumn": {
+                    "type": "string"
+                  },
+                  "experimentIDColumn": {
+                    "type": "string"
+                  },
+                  "timestampColumn": {
+                    "type": "string"
+                  },
+                  "idTypeMapping": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "statsigUnitID",
+                        "column"
+                      ],
+                      "properties": {
+                        "statsigUnitID": {
+                          "type": "string"
+                        },
+                        "column": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
               },
-              examples: {
-                Example: {
-                  value: {
-                    type: "full",
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "name": "exposures",
+                    "description": "",
+                    "tags": [],
+                    "sql": "SELECT * FROM shoppy-sales.experiment_data.exposures",
+                    "groupIDColumn": "group_id",
+                    "experimentIDColumn": "experiment_name",
+                    "timestampColumn": "ts",
+                    "idTypeMapping": [
+                      {
+                        "statsigUnitID": "stableID",
+                        "column": "user_id"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
-  },
-};
+    "/experiments/entity_properties": {
+      "get": {
+        "summary": "List Entity Property Sources",
+        "tags": [
+          "Experiments (Warehouse Native)"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "tags": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          },
+                          "sql": {
+                            "type": "string"
+                          },
+                          "idTypeMapping": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "statsigUnitID": {
+                                  "type": "string"
+                                },
+                                "column": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "timestampColumn": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Entity Property Sources listed successfully",
+                      "data": [
+                        {
+                          "name": "Gender",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM shoppy-sales.setup.user_properties",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "stableID",
+                              "column": "user_id"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Static Country",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT  \n  *\nFROM shoppy-sales.setup.user_country",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Segmentation Models",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT\n  *\nFROM shoppy-sales.setup.segments",
+                          "timestampColumn": "ds",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Gender2",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM shoppy-sales.setup.user_properties",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "stableID",
+                              "column": "user_id"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Entity Property Sources listed successfully",
+                      "data": [
+                        {
+                          "name": "Gender",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT * FROM shoppy-sales.setup.user_properties",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "stableID",
+                              "column": "user_id"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Static Country",
+                          "description": "",
+                          "tags": [],
+                          "sql": "SELECT  \n  *\nFROM shoppy-sales.setup.user_country",
+                          "idTypeMapping": [
+                            {
+                              "statsigUnitID": "userID",
+                              "column": "user_id"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-experiments-property_sources",
+        "x-stoplight": {
+          "id": "83nr81intighy"
+        }
+      },
+      "post": {
+        "summary": "Create Entity Property Source",
+        "tags": [
+          "Experiments (Warehouse Native)"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "tags": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {}
+                          }
+                        },
+                        "sql": {
+                          "type": "string"
+                        },
+                        "timestampColumn": {
+                          "type": "string"
+                        },
+                        "idTypeMapping": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "statsigUnitID": {
+                                "type": "string"
+                              },
+                              "column": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Entity Property Source created successfully",
+                      "data": {
+                        "name": "Gender",
+                        "description": "",
+                        "tags": [],
+                        "sql": "SELECT * FROM shoppy-sales.setup.user_properties",
+                        "timestampColumn": "timestamp",
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "stableID",
+                            "column": "user_id"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Entity Property Source created successfully",
+                      "data": {
+                        "name": "Gender",
+                        "description": "",
+                        "tags": [],
+                        "sql": "SELECT * FROM shoppy-sales.setup.user_properties",
+                        "timestampColumn": "timestamp",
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "stableID",
+                            "column": "user_id"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "post-experiments-property_sources",
+        "x-stoplight": {
+          "id": "ckibvujsy8mbb"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "Example 1": {
+                    "name": "Gender",
+                    "description": "",
+                    "tags": [],
+                    "sql": "SELECT * FROM shoppy-sales.setup.user_properties",
+                    "timestampColumn": "timestamp",
+                    "idTypeMapping": [
+                      {
+                        "statsigUnitID": "stableID",
+                        "column": "user_id"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "name",
+                  "description",
+                  "tags",
+                  "sql"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        ""
+                      ],
+                      "properties": {
+                        "": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "ckc6iin2hxpj7"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "sql": {
+                    "type": "string"
+                  },
+                  "timestampColumn": {
+                    "type": "string"
+                  },
+                  "idTypeMapping": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "statsigUnitID",
+                        "column"
+                      ],
+                      "properties": {
+                        "statsigUnitID": {
+                          "type": "string"
+                        },
+                        "column": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "name": "Gender",
+                    "description": "",
+                    "tags": [],
+                    "sql": "SELECT * FROM shoppy-sales.setup.user_properties",
+                    "timestampColumn": "timestamp",
+                    "idTypeMapping": [
+                      {
+                        "statsigUnitID": "stableID",
+                        "column": "user_id"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": []
+    }
+  }
+}

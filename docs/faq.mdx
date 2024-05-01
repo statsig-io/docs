@@ -12,7 +12,7 @@ If none of our current SDKs fit your needs, let us know in [slack](https://stats
 
 ## How can I get started with running an A/B Test?
 
-If you have a feature built but not yet released, you can run a simple A/B test by opening up a partial rollout using a [feature gate](/guides/first-feature). This will create test and control groups to measure the impact of your new feature. If you already have a feature in production and want to test different variants, create an [experiment](/guides/abn-tests). Either way, you can analyze the results in the **Pulse Results** tab of your feature gate or experiment.
+If you have a feature built but not yet released, you can run a simple A/B test by opening up a partial rollout using a [feature flag](/guides/first-feature). This will create test and control groups to measure the impact of your new feature. If you already have a feature in production and want to test different variants, create an [experiment](/guides/abn-tests). Either way, you can analyze the results in the **Pulse Results** tab of your feature gate or experiment.
 
 ## Is it possible to add a layer to a running experiment?
 
@@ -20,10 +20,10 @@ Once an experiment has been started you cannot change the layer. Doing so would 
 
 ## Can I target my experiment at a subset of users. e.g users on iOS only? 
 
-Yes you can! When setting up your experiment you can select a Feature Gate that contains targeting rules. 
+Yes you can! When setting up your experiment you can select a Feature Flag that contains targeting rules. 
 ![image](https://user-images.githubusercontent.com/31516123/229173350-a1795b5a-bdef-4c58-afb1-36806dc38f1a.png)
 
-Your Feature Gate can explictly pass only users who meet specific criteria - in this example users on iOS. Learn more about feature gates [here](https://docs.statsig.com/feature-gates/working-with).
+Your Feature Flag can explictly pass only users who meet specific criteria - in this example users on iOS. Learn more about feature flags [here](https://docs.statsig.com/feature-flags/working-with).
 ![image](https://user-images.githubusercontent.com/31516123/229173998-3099feac-64cc-42fc-a1c3-69c9065d2dd0.png)
 
 
@@ -65,11 +65,11 @@ If you find a bug with the rollout, disable the gate, fix the bug and then re-en
 
 
 ## What counts as a [billable event](https://statsig.com/pricing#faq)? 
-Statsig records an event when your application calls the Statsig SDK to check whether a user should be exposed to a feature gate or experiment or to log an event. Additionally, pre-computed metrics ingested to Statsig from a data warehouse or custom metrics created using existing metrics/events also count as billable.
+Statsig records an event when your application calls the Statsig SDK to check whether a user should be exposed to a feature flag or experiment or to log an event. Additionally, pre-computed metrics ingested to Statsig from a data warehouse or custom metrics created using existing metrics/events also count as billable.
 
 Statsig dedupes billable exposure events for the same user and feature/experiment on client (60m window; proxy for session duration) and server SDKs (1m window; proxy for user request handling).
 
-Experiment checks that result in no allocation (e.g. the experiment hasn’t started, or has finished) or Feature Gates that have been disabled (fully shipped or abandoned with no rule evaluation) do not generate billable exposure events.
+Experiment checks that result in no allocation (e.g. the experiment hasn’t started, or has finished) or Feature Flags that have been disabled (fully shipped or abandoned with no rule evaluation) do not generate billable exposure events.
 
 Layer exposures are slightly more nuanced as outlined [here](/layers#a-note-on-exposures).
 
@@ -87,6 +87,8 @@ See the question above for what counts as a billable event. Some tools available
 ![image](https://user-images.githubusercontent.com/31516123/218544792-0c027d19-6c1f-400a-9b8d-2041ad04985e.png)
 
 4. Look for gates that are 0% or 100% pass. These can be launched (always return Pass) or disabled (always return Fail) to stop generating billable events. [More information](https://statsig.com/updates#2/2/2023). With experiments, filter to experiments with Status = In Progress and Created < [day-45] to find long running experiments to make sure these are intentional and not just forgotten.
+
+5. There's a Console API endpoint that lets you download billing and usage data to sync this to your own systems [here](https://docs.statsig.com/console-api/usage-billing).
 
 ## How does bucketing within the Statsig SDKs work?
 Bucketing on Statsig is deterministic. Given the same UserID (or any UnitID) and an experiment/gate a given rollout stage, we'll always evalaute to the same result. This is true even if the evaluation happens in different places - on the client or server. For a peek into how we do this at a high level:

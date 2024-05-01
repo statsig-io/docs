@@ -27,3 +27,5 @@ type Options struct {
   - A string that represents all rules for all feature gates, dynamic configs and experiments. It can be provided to bootstrap the Statsig server SDK at initialization in case your server runs into network issue or Statsig server is down temporarily.
 - **RulesUpdatedCallback**: default nil
   - The callback that gets invoked whenever the rulesets are updated. It's called with a JSON string that represents the rulesets, and a timestamp for when the rules were updated.
+- **UserPersistentStorage**: IUserPersistentStorage default nil
+  - A persistent storage adapter for running sticky experiments.
