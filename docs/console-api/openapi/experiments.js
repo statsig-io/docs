@@ -202,6 +202,11 @@ module.exports = {
             ]
           }
         },
+        "description": "Forces specific users into the desired group.",
+        "required": [
+          "groupID",
+          "ids"
+        ],
         "properties": {
           "groupID": {
             "type": "string",
@@ -213,13 +218,20 @@ module.exports = {
             "items": {
               "type": "string"
             }
+          },
+          "environment": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "jr24xy66kjvq3"
+            }
+          },
+          "unitType": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "sui2dupy7xme6"
+            }
           }
-        },
-        "required": [
-          "groupID",
-          "ids"
-        ],
-        "description": "Forces specific users into the desired group."
+        }
       },
       "tags": {
         "title": "tags",
@@ -335,6 +347,14 @@ module.exports = {
                     "type": "string",
                     "description": "Which layer to place the experiment into.",
                     "example": "layer_1"
+                  },
+                  "targetingGateID": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "9tuxg4fa5zyb8"
+                    },
+                    "example": "a_layer",
+                    "description": "The ID of the targeting gate for the experiment."
                   },
                   "creatorID": {
                     "type": "string",

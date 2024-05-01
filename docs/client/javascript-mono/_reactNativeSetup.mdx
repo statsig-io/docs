@@ -1,0 +1,29 @@
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+## React Native Specific Setup
+
+### Create a Client
+
+Creating a Statsig client when using React Native has a slight
+twist when compared to pure JavaScript environments.
+
+Because storage in React Native is async (See [AsyncStorage](https://reactnative.dev/docs/asyncstorage)), a warming step is required
+to load any cache values from disk. This warming performs some AsyncStorage.getItem operations that block the
+`StatsigProviderRN` from rendering.
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react-native/src/app/snippets/snippet-react-native-warming.tsx" />
+
+### Render the StatsigProvider
+
+Once the Statsig client is created and the warming step started, we can then pass them into
+the `StatsigProviderRN` component for rendering.
+
+```typescript
+export function App(): JSX.Element {
+  return (
+    <StatsigProviderRN client={myStatsigClient} cacheWarming={warming}>
+      {/* Render your App */}
+    </StatsigProviderRN>
+  );
+}
+```

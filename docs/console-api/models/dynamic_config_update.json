@@ -54,6 +54,11 @@
       },
       "example": "an updated summary of what this dynamic config does"
     },
+    "idType": {
+      "type": "string",
+      "description": "The type of ID which the dynamic config is based on.",
+      "example": "userID"
+    },
     "rules": {
       "type": "array",
       "description": " An array of Rule objects.",
@@ -74,6 +79,13 @@
         "id": "9e5x44xhv0yek"
       }
     },
+    "defaultValueJsonC": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "aen0blwsncbmy"
+      },
+      "description": "Same as DefaultValue, but can accept comments. Only accepts valid JSON-C. Either this field or defaultValue must be provided, but providing both will throw an error."
+    },
     "tags": {
       "type": "array",
       "x-stoplight": {
@@ -87,6 +99,13 @@
         "type": "string",
         "example": "a tag"
       }
+    },
+    "schema": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "hywg22syndfwi"
+      },
+      "description": "A schema using JSON Schema Draft 2020-12 to enforce return values of this dynamic config's rules. When submitting a schema, all submitted return values (default value and rule return values) must match the schema.\n"
     }
   }
 }

@@ -57,7 +57,6 @@ Integrating feature flags into a React web application using the Statsig React S
      import ReactDOM from 'react-dom';
      import './index.css';
      import App from './App';
-     import reportWebVitals from './reportWebVitals';
      import { StatsigProvider } from 'statsig-react';
 
      const statsigOptions = {
