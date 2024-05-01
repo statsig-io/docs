@@ -282,7 +282,7 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Analytics",
+      label: "Product Analytics",
       items: [
         "mex/overview",
         {
@@ -314,7 +314,7 @@ module.exports = {
             // other
             "metrics/ingest",
             "metrics/pulse",
-            "metrics/local-metrics", 
+            "metrics/local-metrics",
             "metrics/console",
             "metrics/health-checks",
 
@@ -339,10 +339,18 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Web Analytics",
+      label: "Session Replay",
       items: [
-        "webanalytics/overview",
+        "session-replay/overview",
+        "session-replay/install",
+        "session-replay/configure",
+        "session-replay/watch",
       ],
+    },
+    {
+      type: "category",
+      label: "Web Analytics",
+      items: ["webanalytics/overview"],
     },
     {
       type: "category",
@@ -359,9 +367,12 @@ module.exports = {
             "statsig-warehouse-native/guides/metrics",
             "statsig-warehouse-native/guides/assignment_sources",
             "statsig-warehouse-native/guides/experiments",
+            "statsig-warehouse-native/guides/checklist",
+            "statsig-warehouse-native/guides/sql",
             "statsig-warehouse-native/guides/pulse",
             "statsig-warehouse-native/guides/sdks",
             "statsig-warehouse-native/guides/aatest",
+            "metrics/different-id",
             "statsig-warehouse-native/guides/running_a_poc",
           ],
         },
@@ -403,11 +414,8 @@ module.exports = {
     {
       type: "category",
       label: "SDKs, APIs, Integrations",
-      link: {
-        type: "doc",
-        id: "sdks/sdks-overview",
-      },
       items: [
+        "sdks/getting-started",
         {
           type: "category",
           label: "Client SDKs",
@@ -435,7 +443,8 @@ module.exports = {
                 id: "client/javascript-sdk",
               },
               items: [
-                "client/javascript-mono/MigrationFromOldSDK",
+                "client/javascript-mono/MigrationFromOldJsClient",
+                // "client/javascript-mono/MigrationFromOldReact",
                 // "client/javascript-mono/IntegrationNextJs",
                 // "client/javascript-mono/IntegrationReact",
                 "client/javascript-mono/UsingEvaluationsDataAdapter",
@@ -459,6 +468,19 @@ module.exports = {
               label: "On Device Evaluation",
               items: [
                 "client/jsLocalEvaluationSDK",
+                {
+                  type: "category",
+                  label: "New JavaScript (Beta)",
+                  link: {
+                    type: "doc",
+                    id: "client/js-on-device-eval-client",
+                  },
+                  items: [
+                    "client/js-device-eval-mono/MigrationFromOldSDK",
+                    "client/js-device-eval-mono/UsingSpecsDataAdapter",
+                    "client/js-device-eval-mono/ReactNativeUsage",
+                  ],
+                },
                 "client/swiftOnDeviceEvaluationSDK",
                 "client/androidOnDeviceEvaluationSDK",
               ],
@@ -687,10 +709,7 @@ module.exports = {
             type: "doc",
             id: "org-admin/organization_policies",
           },
-          items: [
-            "org-admin/experiment_policy", 
-            "org-admin/gates_policy",
-          ],
+          items: ["org-admin/experiment_policy", "org-admin/gates_policy"],
         },
         {
           type: "category",

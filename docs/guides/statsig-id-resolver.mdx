@@ -17,11 +17,13 @@ Additionally, after setting up ID Resolver Autocomplete you can begin typing in 
 
 ![image](/img/id_resolver3.png)
 
+ID Resolver can be used in rules, overrides, users tab, and segment ID lists
+
+![image](/img/id_resolver_4.png)
+
 ## Step 1 - Create your ID Resolver Webhook
 
-This webhook should take in an `id` and a possibly null `unit_type` and return `name`.
-
-`unit_type` will come in the form of userID, stableID, or one of your custom ID types
+You will need to create and host your own webhook for this integration. This webhook should take in an `id` and a possibly null `unit_type` and return `name`. `unit_type` will come in the form of userID, stableID, or one of your custom ID types
 
 ```js
   const inputId = req.body.id as string | null;
@@ -77,3 +79,11 @@ This webhook should take in a `name` (the current partially typed name) and a po
     },
   });
 ```
+
+## Step 3 - Integrate your webhooks with Statsig
+
+You can find Statsig ID Resolver under the Integrations tab within Project Settings
+
+![image](/img/id_resolver_setup_1.png)
+
+![image](/img/id_resolver_setup_2.png)
