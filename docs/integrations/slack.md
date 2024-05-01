@@ -35,6 +35,6 @@ You can also filter change updates by the environment affected.
 
 ## Personal Notifications
 To configure personal notifications, go to [Account Notifications](https://console.statsig.com/1RRPcIVb55UNFzW2IHn5im/account_notifications).<br />
-Once enabled, you can select what types of notifications you receive on slack.
+Once enabled, you can select what types of notifications you receive on Slack.
 
 ![image](https://github.com/statsig-io/docs/assets/111380336/ccd12359-806f-4ab3-bb60-27afd7feccb1)
