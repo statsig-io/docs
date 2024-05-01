@@ -4,7 +4,7 @@ title: Slack
 
 ## Overview
 
-The Statsig Slack integration allows you to receive Statsig project updates such as when a gate has been edited as well as personal notifications similar to those you receive on Console.
+The Statsig integration for Slack allows you to receive Statsig project updates such as when a gate has been edited as well as personal notifications similar to those you receive on Console.
 
 ![image](https://github.com/statsig-io/docs/assets/111380336/5f50b18e-9ad9-4477-879a-dc33bb1d135c)
 ![image](https://github.com/statsig-io/docs/assets/111380336/8ebaaf3e-9fb9-477c-be1d-17275690ab56)
@@ -15,7 +15,7 @@ The Statsig Slack integration allows you to receive Statsig project updates such
 If you want to set up only [Project Notifications](#project-notification-settings) or [Personal Notifications](#personal-notification-settings), skip the install step and set up directly from Console.
 :::
 
-1. Click the button below to authorize the Statsig Slack App to your workspace
+1. Click the button below to authorize the Statsig App for Slack to your workspace
 <a href="https://slack.com/oauth/v2/authorize?client_id=1857368318405.2078343039634&scope=chat:write,incoming-webhook&state=docs&user_scope="><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcSet="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
 
 2. Select a channel to direct all project-level messages.
