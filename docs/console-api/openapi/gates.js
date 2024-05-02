@@ -344,7 +344,8 @@ module.exports = {
                         "rules": [
                           {
                             "name": "Ten percent of users",
-                            "id": "38ttpCpzrQFTMKcqFKk02l",
+                            "id": "38ttpCpzrQFTMKcqFKk02l:10.00:1",
+                            "baseID":"38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 10,
                             "conditions": [
                               {
@@ -508,7 +509,8 @@ module.exports = {
                           "rules": [
                             {
                               "name": "a rule",
-                              "id": "38ttpCpzrQFTMKcqFKk02l",
+                              "id": "38ttpCpzrQFTMKcqFKk02l:100.00:1",
+                              "baseID":"38ttpCpzrQFTMKcqFKk02l",
                               "passPercentage": 100,
                               "conditions": [
                                 {
@@ -522,7 +524,8 @@ module.exports = {
                             },
                             {
                               "name": "ten percent of people",
-                              "id": "38ttpCpzrQFTMKcqFKk02m",
+                              "id": "38ttpCpzrQFTMKcqFKk02m:10.00:1",
+                              "baseID": "38ttpCpzrQFTMKcqFKk02m",
                               "passPercentage": 10,
                               "conditions": [
                                 {
@@ -532,7 +535,8 @@ module.exports = {
                             },
                             {
                               "name": "everyone",
-                              "id": "38ttpCpzrQFTMKcqFKk02n",
+                              "id": "38ttpCpzrQFTMKcqFKk02n:100.00:1",
+                              "baseID": "38ttpCpzrQFTMKcqFKk02n",
                               "passPercentage": 100,
                               "conditions": [
                                 {
@@ -826,7 +830,8 @@ module.exports = {
                         "rules": [
                           {
                             "name": "specific users",
-                            "id": "38ttpCpzrQFTMKcqFKk02l",
+                            "id": "38ttpCpzrQFTMKcqFKk02l:100.00:1",
+                            "baseID":"38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 100,
                             "conditions": [
                               {
@@ -840,7 +845,8 @@ module.exports = {
                           },
                           {
                             "name": "ten percent of people",
-                            "id": "38ttpCpzrQFTMKcqFKk02m",
+                            "id": "38ttpCpzrQFTMKcqFKk02m:10.00:1",
+                            "baseID": "38ttpCpzrQFTMKcqFKk02m",
                             "passPercentage": 10,
                             "conditions": [
                               {
@@ -850,7 +856,8 @@ module.exports = {
                           },
                           {
                             "name": "everyone",
-                            "id": "38ttpCpzrQFTMKcqFKk02n",
+                            "id": "38ttpCpzrQFTMKcqFKk02n:100.00:1",
+                              "baseID": "38ttpCpzrQFTMKcqFKk02n",
                             "passPercentage": 100,
                             "conditions": [
                               {
@@ -1128,13 +1135,15 @@ module.exports = {
                         "rules": [
                           {
                             "name": "everyone",
-                            "id": "38ttpCpzrQFTMKcqFKk02l",
+                            "id": "38ttpCpzrQFTMKcqFKk02l:100.00:1",
+                            "baseID":"38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 100,
                             "type": "public"
                           },
                           {
                             "name": "all outlook",
-                            "id": "38ttpCpzrQFTMKcqFKk02m",
+                            "id": "38ttpCpzrQFTMKcqFKk02m:100.00:1",
+                            "baseID": "38ttpCpzrQFTMKcqFKk02m",
                             "passPercentage": 100,
                             "conditions": [
                               {
@@ -1148,7 +1157,8 @@ module.exports = {
                           },
                           {
                             "name": "all outlook and gmail",
-                            "id": "38ttpCpzrQFTMKcqFKk02n",
+                            "id": "38ttpCpzrQFTMKcqFKk02n:100.00:1",
+                              "baseID": "38ttpCpzrQFTMKcqFKk02n",
                             "passPercentage": 100,
                             "conditions": [
                               {
@@ -1350,7 +1360,8 @@ module.exports = {
                         "rules": [
                           {
                             "name": "everyone",
-                            "id": "38ttpCpzrQFTMKcqFKk02l",
+                            "id": "38ttpCpzrQFTMKcqFKk02l:100.00:1",
+                            "baseID":"38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 100,
                             "conditions": [
                               {
@@ -1360,7 +1371,8 @@ module.exports = {
                           },
                           {
                             "name": "all outlook",
-                            "id": "38ttpCpzrQFTMKcqFKk02m",
+                            "id": "38ttpCpzrQFTMKcqFKk02m:100.00:1",
+                            "baseID": "38ttpCpzrQFTMKcqFKk02m",
                             "passPercentage": 100,
                             "conditions": [
                               {
@@ -1374,7 +1386,8 @@ module.exports = {
                           },
                           {
                             "name": "all outlook and gmail",
-                            "id": "38ttpCpzrQFTMKcqFKk02n",
+                            "id": "38ttpCpzrQFTMKcqFKk02n:100.00:1",
+                            "baseID": "38ttpCpzrQFTMKcqFKk02n",
                             "passPercentage": 100,
                             "conditions": [
                               {
@@ -2307,6 +2320,7 @@ module.exports = {
       ],
       "patch": {
         "summary": "Update Gate Rule",
+        "description": "Update one rule using the rule's id or baseID",
         "tags": [
           "Gates"
         ],
@@ -2340,7 +2354,8 @@ module.exports = {
                         "rules": [
                           {
                             "name": "All Conditions",
-                            "id": "38ttpCpzrQFTMKcqFKk02l",
+                            "id": "38ttpCpzrQFTMKcqFKk02l:10.00:1",
+                            "baseID":"38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 10,
                             "conditions": [
                               {
@@ -2492,7 +2507,8 @@ module.exports = {
                 "Example 1": {
                   "value": {
                     "name": "All Conditions",
-                    "id": "38ttpCpzrQFTMKcqFKk02l",
+                    "id": "38ttpCpzrQFTMKcqFKk02l:10.00:1",
+                    "baseID":"38ttpCpzrQFTMKcqFKk02l",
                     "passPercentage": 10,
                     "conditions": [
                       {
