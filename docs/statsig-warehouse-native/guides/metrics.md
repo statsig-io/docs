@@ -30,18 +30,18 @@ We're actively working on adding more metric types - refer to the crosstab below
 
 | Metric Type           | Examples                                            | Metrics Tab Calculation                                | User Level Calculation                                  | Group Calculation Type            | Stats Notes          |
 | --------------------- | --------------------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------- | --------------------------------- | -------------------- |
-| Count                 | clicks, purchases, API requests                     | Count of Metric Source rows                            | "                                                       | Sum of user values                |                      |
-| Sum                   | revenue, time spent, bandwidth                      | Sum of Metric Source values                            | "                                                       | Sum of user values                |                      |
-| Mean                  | average latency, average purchase price             | Average of non-null Metric Source values               | Sum of values, Count of values                          | Sum(values)/Sum(counts)           | Delta Method applied |
-| Count Distinct        | Unique game rooms the user connected to             | Count of distinct user-value pairs                     | Count of distinct values                                | Average of user-level counts      |                      |
-| Unit Count            | Metrics based on users with various configurations  |                                                        |                                                         |                                   |                      |
-| - Daily Participation | Average DAU of exposed users                        | Daily Active Users                                     | 1/0 flag for participation on each day                  | Sum of values / Total Days        |                      |
-| - One Time Event      | Did a user complete an event during the experiment  | Daily Active Users                                     | 1/0 flag for participation across experiment lifespan   | Count of users                    |                      |
-| - Custom Window       | Did a user subscribe between 3-7 days from exposure | Daily Active Users                                     | 1/0 flag for participation within window                | Count of users                    |                      |
-| - Latest Value        | Is the user a subscriber today?                     | Daily Active Users                                     | 1/0 flag for participation on latest available day of data | Count of users                 |                      |
-| Ratio                 | revenue per page hit, revenue per new user          | Value of Numerator/Value of Denominator based on types | Value of numerator, denominator based on types          | Sum(numerators)/Sum(denominators) | Delta Method applied |
-| Funnel                | conversion through a 5-step buy flow                | Value of Numerator/Value of Denominator based on types | For each step, did the user complete all previous steps | Sum(completions)/Sum(step starts) | Delta Method applied |
-| Percentile            | p99.5 latency on page load                          | PX of all daily values observed                        | N/A                                                     | Configured Percentile of value column  | Uses the outer CI method |
+| [**Count**](/guides/metrics.md#count)                 | clicks, purchases, API requests                     | Count of Metric Source rows                            | "                                                       | Sum of user values                |                      |
+| [**Sum**](/guides/metrics.md#sum)                   | revenue, time spent, bandwidth                      | Sum of Metric Source values                            | "                                                       | Sum of user values                |                      |
+| [**Mean**](/guides/metrics.md#mean)                  | average latency, average purchase price             | Average of non-null Metric Source values               | Sum of values, Count of values                          | Sum(values)/Sum(counts)           | Delta Method applied |
+| [**Count Distinct**](/guides/metrics.md#count-distinct)        | Unique game rooms the user connected to             | Count of distinct user-value pairs                     | Count of distinct values                                | Average of user-level counts      |                      |
+| [**Unit Count**](/guides/metrics.md#unit-count)            | Metrics based on users with various configurations  |                                                        |                                                         |                                   |                      |
+| _- Daily Participation_ | Average DAU of exposed users                        | Daily Active Users                                     | 1/0 flag for participation on each day                  | Sum of values / Total Days        |                      |
+| _- One Time Event_      | Did a user complete an event during the experiment  | Daily Active Users                                     | 1/0 flag for participation across experiment lifespan   | Count of users                    |                      |
+| _- Custom Window_       | Did a user subscribe between 3-7 days from exposure | Daily Active Users                                     | 1/0 flag for participation within window                | Count of users                    |                      |
+| _- Latest Value_        | Is the user a subscriber today?                     | Daily Active Users                                     | 1/0 flag for participation on latest available day of data | Count of users                 |                      |
+| [**Ratio**](/guides/metrics.md#ratio)                 | revenue per page hit, revenue per new user          | Value of Numerator/Value of Denominator based on types | Value of numerator, denominator based on types          | Sum(numerators)/Sum(denominators) | Delta Method applied |
+| [**Funnel**](/guides/metrics.md#funnel)                | conversion through a 5-step buy flow                | Value of Numerator/Value of Denominator based on types | For each step, did the user complete all previous steps | Sum(completions)/Sum(step starts) | Delta Method applied |
+| [**Percentile**](/guides/metrics.md#percentile)            | p99.5 latency on page load                          | PX of all daily values observed                        | N/A                                                     | Configured Percentile of value column  | Uses the outer CI method |
 
 You can think of each of these in terms of a SQL query. The means of the experiment groups are either calculated directly (for ratios and mean metrics) or as the group total divided by the group population.
 
@@ -130,7 +130,7 @@ WHERE value IS NOT NULL
 GROUP BY group_id;
 ```
 
-### User Count
+### Unit Count
 ```
 -- User Level
 SELECT
