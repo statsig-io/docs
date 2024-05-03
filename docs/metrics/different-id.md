@@ -16,36 +16,40 @@ We will explain how to set up the first scenario with Warehouse Native in this d
 
 ![Screenshot 2024-04-29 at 3 45 28 PM](https://github.com/statsig-io/docs/assets/139815787/0b75615f-2b66-44f4-b6e0-e0bd3e555199)
 
-## Example
-For the first scenario, we will use a demo to explain, suppose: 
+## Example: Organizations and Users
+
+Scenario: 
 - Your metrics source has both `org_id` and `user_id`.
-- The relationship between `org_id` and `user_id` is 1-to-many. Namely, one org contains several users, but a user cannot be associated with multiple org_ids.
+- The relationship between `org_id` and `user_id` is 1-to-many. A single `org_id` can be associated with multiple users (`user_id`), but a `user_id` is only associated with a single `org_id`.
 - Your experiment is assigned at the `org_id` level.
 - You are interested in understanding the treatment effect at the `user_id` level, such as revenue per user.
 
+### 1. Setup the metric source with `org_id` as an ID type.
 
-First, you should set the metric source with `org_id` as an ID type. In this table, each row of data should have both `org_id` and `user_id`.
+- In this table, each row of data should have both `org_id` and `user_id`.
+
 ![1 metric source](https://github.com/statsig-io/docs/assets/139815787/a99a4577-8be5-4001-ac4d-2297f3b2fff0)
 
 
-Second, choose your assignment source, where the unit of assignment is `org_id`.
+### 2. Choose your assignment source, where the unit of assignment is `org_id`.
+
 ![2 assignment](https://github.com/statsig-io/docs/assets/139815787/16472cd7-1aa1-44a2-9a6b-0f789ac5308e)
 
 
-Then, define your metric of revenue per user_id. Note that your denominator should be `count distinct user_id` instead of `unit count`, because the latter is equivalent to `count distinct org_id` in an `org_id` level experiment.
+### 3. Define your metric of revenue per `user_id`.
 
-Correct definition
+- Your denominator should be `count distinct user_id` instead of `unit count`, because the latter is equivalent to `count distinct org_id` in an `org_id` level experiment.
+
 ![3a right](https://github.com/statsig-io/docs/assets/139815787/ca4c9076-28e1-4cf8-8aa1-2127def7d771)
 
-Wrong definition
-![3b wrong](https://github.com/statsig-io/docs/assets/139815787/7d81e5f7-20b0-440c-a4d8-1281f93c1ece)
 
+### 4. Set up the experiment with `org_id`
 
-Finally, set up the experiment with `org_id`
 ![4 experiment](https://github.com/statsig-io/docs/assets/139815787/02f9c6bb-0b32-4caf-a529-5bacc2a56d44)
 
 
 ## Statistics in the backend
+
 In the Stats Engine, we utilize the delta method to calculate variance and confidence intervals.
 - For mean metrics, we record a value indicating the number of observations per exposed unit in the records column of the staging data. This acts as the denominator or cluster-size value for delta calculations.
 - For general ratio metrics, we monitor the two-component metrics (the ratio and the denominator) as independent metrics and combine them during the pulse analysis to derive a single metric from them.
