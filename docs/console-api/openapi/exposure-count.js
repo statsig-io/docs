@@ -17,9 +17,9 @@ module.exports = {
     "/exposure_count": {
       "parameters": [],
       "get": {
-        "summary": "Read Exposure Count Data",
+        "summary": "Read Exposure Event Count",
         "operationId": "get-users-userId",
-        "description": "Get exposure counts for selected configs over the selected date range",
+        "description": "Get the count of exposure events recently received by Statsig.",
         "responses": {
           "200": {
             "description": "OK",
