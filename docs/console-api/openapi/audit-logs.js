@@ -17,7 +17,50 @@ module.exports = {
         "name": "STATSIG-API-KEY"
       }
     },
-    "schemas": {}
+    "schemas": {},
+    "parameters": {
+      "pagination-limit": {
+        "name": "limit",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "example": 5
+        },
+        "description": "The number of items per page to return"
+      },
+      "pagination-page": {
+        "name": "page",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "example": 1
+        },
+        "description": "The page number to return"
+      },
+      "date-start-string": {
+        "name": "startDate",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "example": "2024-05-01",
+          "format": "date"
+        },
+        "description": "Start date (YYYY-MM-DD)"
+      },
+      "date-end-string": {
+        "name": "endDate",
+        "in": "query",
+        "schema": {
+          "type": "string",
+          "example": "2024-05-01",
+          "format": "date"
+        },
+        "description": "End date (YYYY-MM-DD)"
+      }
+    }
   },
   "security": [
     {
@@ -319,76 +362,79 @@ module.exports = {
         "parameters": [
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "example_audit_log"
             },
             "in": "query",
             "name": "id",
-            "description": "Filter by the 'name' field of the response entity (some for the examples below: test_gate_1, Daniel West, etc.)"
+            "description": "The name of audit log the to be queried"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "id",
+                "name",
+                "changeLog",
+                "actionType",
+                "date",
+                "time",
+                "updatedBy",
+                "updatedByUserID"
+              ],
+              "example": "date",
+              "default": "time"
+            },
+            "in": "query",
+            "name": "sortKey",
+            "description": "Sort by key"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "acs",
+                "desc"
+              ],
+              "default": "desc"
+            },
+            "in": "query",
+            "name": "sortOrder",
+            "description": "Sort by order"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "example": "25KPZcLjTY7AS1uZdBolPZ"
+            },
+            "in": "query",
+            "name": "latestID",
+            "description": "If specified, returns up to the specified audit log (exclusive) "
+          },
+          {
+            "schema": {
+              "type": "array",
+              "example": "[tag1, tag2]"
+            },
+            "in": "query",
+            "name": "tags",
+            "description": "List of tags to filter by"
+          },
+          {
+            "$ref": "#/components/parameters/pagination-limit"
+          },
+          {
+            "$ref": "#/components/parameters/pagination-page"
+          },
+          {
+            "$ref": "#/components/parameters/date-start-string"
+          },
+          {
+            "$ref": "#/components/parameters/date-end-string"
           }
         ]
       },
-      "parameters": [
-        {
-          "schema": {
-            "type": "string",
-            "example": "example_audit_log"
-          },
-          "name": "id",
-          "in": "query",
-          "required": false,
-          "description": "The name of audit log the to be queried"
-        },
-        {
-          "schema": {
-            "type": "number",
-            "example": 5
-          },
-          "name": "limit",
-          "in": "query",
-          "required": false,
-          "description": "The number of items per page to return"
-        },
-        {
-          "schema": {
-            "type": "number",
-            "example": 1
-          },
-          "name": "page",
-          "in": "query",
-          "required": false,
-          "description": "The page number to return"
-        },
-        {
-          "schema": {
-            "type": "string",
-            "example": "time"
-          },
-          "name": "sortKey",
-          "in": "query",
-          "required": false,
-          "description": "The key to sort by (default is time)"
-        },
-        {
-          "schema": {
-            "type": "string",
-            "example": "desc"
-          },
-          "name": "sortOrder",
-          "in": "query",
-          "required": false,
-          "description": "The order to sort in (default is desc)"
-        },
-        {
-          "schema": {
-            "type": "string",
-            "example": "25KPZcLjTY7AS1uZdBolPZ"
-          },
-          "name": "latestID",
-          "in": "query",
-          "required": false,
-          "description": "If specified, returns up to the specified audit log (exclusive) "
-        }
-      ]
+      "parameters": []
     }
   }
 }
