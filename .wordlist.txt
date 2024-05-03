@@ -108,6 +108,7 @@ OIDC
 Okta
 oncalls
 OpenID
+PKCE
 PII
 Pinterest
 Precomputing
