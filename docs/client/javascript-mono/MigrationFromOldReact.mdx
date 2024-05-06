@@ -8,41 +8,17 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
-### Standard Initialize
-
-<Tabs
-  groupId="js-migration-choice"
-  defaultValue="new"
-  values={[
-    {label: 'statsig-js (Legacy)', value: 'legacy'},
-    {label: 'New', value: 'new'},
-  ]}>
-  <TabItem value="legacy">
-
-```typescript
-import Statsig from "statsig-js";
-
-// initialize returns a promise which always resolves
-await Statsig.initialize(
-  "client-sdk-key",
-  { userID: "some_user_id" },
-  { environment: { tier: "staging" } } // optional, pass options here if needed
-);
-```
-
-  </TabItem>
-  <TabItem value="new">
-
-<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-initialize.tsx" />
-
-  </TabItem>
-</Tabs>
-
-### React Initialize [WIP]
-
 :::caution
 The `@statsig/react-bindings` package is still early in development and is subject to change.
 :::
+
+### Initialize
+
+In the old `statsig-react` package, all values needed to be given to the StatsigProvider, 
+which internally would setup the Statsig client instance. This approach lead to issues in managing state between 
+the Statsig client and the StatsigProvider, making it fragile and likely to break if you ever tried using the Statsig client directly.
+
+The new approach is to run everything through the Statsig client instance, and just pass that to the StatsigProvider.
 
 <Tabs
   groupId="js-migration-choice"
@@ -79,6 +55,62 @@ function App() {
 <GitHubEmbed
   language="jsx"
   url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-precomp-initialize.tsx"
+/>
+
+  </TabItem>
+</Tabs>
+
+
+
+
+
+
+
+
+
+### Updating the User
+
+
+<Tabs
+  groupId="js-migration-choice"
+  defaultValue="new"
+  values={[
+    {label: 'statsig-react (Legacy)', value: 'legacy'},
+    {label: 'New', value: 'new'},
+  ]}>
+  <TabItem value="legacy">
+
+```jsx
+import { useContext, useState } from "react";
+import { StatsigUser, StatsigProvider, StatsigContext } from "statsig-react";
+
+function UpdateUserButton() {
+  const { updateUser } = useContext(StatsigContext);
+
+  return <button onClick={() => updateUser({ userID: "b-user" })}>Update</button>
+}
+
+function App() {
+  const [user, setUser] = useState<StatsigUser>({ userID: "a-user" });
+
+  return (
+    <StatsigProvider
+      sdkKey="<STATSIG_CLIENT_SDK_KEY>"
+      user={user}
+      setUser={setUser}
+    >
+      <UpdateUserButton />
+    </StatsigProvider>
+  );
+}
+```
+
+  </TabItem>
+  <TabItem value="new">
+
+<GitHubEmbed
+  language="jsx"
+  url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-precomp-update-user.tsx"
 />
 
   </TabItem>

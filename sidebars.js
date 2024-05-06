@@ -445,10 +445,11 @@ module.exports = {
               },
               items: [
                 "client/javascript-mono/MigrationFromOldJsClient",
-                // "client/javascript-mono/MigrationFromOldReact",
+                "client/javascript-mono/MigrationFromOldReact",
                 // "client/javascript-mono/IntegrationNextJs",
                 // "client/javascript-mono/IntegrationReact",
                 "client/javascript-mono/UsingEvaluationsDataAdapter",
+                "client/javascript-mono/ReactUsage",
                 "client/javascript-mono/ReactNativeUsage",
                 "client/javascript-mono/ExpoUsage",
                 "client/javascript-mono/Examples",
