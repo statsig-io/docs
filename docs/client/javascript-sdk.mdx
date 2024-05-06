@@ -37,6 +37,10 @@ export const MultiInstance = _MultiInstance;
 import * as _prefetchUsers from "./javascript-mono/_prefetchUsers.mdx";
 export const PrefetchUsers = _prefetchUsers;
 
+import * as _asyncTimeouts from "./javascript-mono/_asyncTimeouts.mdx";
+export const AsyncTimeouts = _asyncTimeouts;
+
+
 import CheckGate from "./javascript-mono/_checkGate.mdx";
 import GetConfig from "./javascript-mono/_getConfig.mdx";
 import GetExperiment from "./javascript-mono/_getExperiment.mdx";
@@ -84,11 +88,12 @@ export const Result = SDKDocsBuilder(
     [StatsigUser, {}],
     [UpdateUser, {}],
     [PrefetchUsers, {}],
-    [ClientEventEmitting, {}],
-    [MultiInstance, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [AsyncTimeouts, {}],
     [DataAdapter, {}],
+    [ClientEventEmitting, {}],
+    [MultiInstance, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
   ],
   toc

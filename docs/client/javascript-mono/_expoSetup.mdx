@@ -27,3 +27,13 @@ export function App(): JSX.Element {
   );
 }
 ```
+
+
+## Hooks
+
+All hooks are re-exported from the `@statsig/react-bindings` package (See [Hooks](/client/javascript-sdk/react#hooks)). 
+They can be imported through `@statsig/expo-bindings` or directly through the `@statsig/react-bindings` peer dependency.
+
+```js
+import { useFeatureGate, useStatsigClient } from '@statsig/expo-bindings';
+```

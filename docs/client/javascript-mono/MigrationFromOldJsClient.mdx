@@ -76,12 +76,9 @@ Similar to initialization, the `updateUser` method now supports both synchronous
 ```typescript
 import Statsig from "statsig-js";
 
-// initialize returns a promise which always resolves
-await Statsig.initialize(
-  "client-sdk-key",
-  { userID: "some_user_id" },
-  { environment: { tier: "staging" } } // optional, pass options here if needed
-);
+const user = { userID: "a-user" };
+
+await Statsig.updateUser(user);
 ```
 
   </TabItem>
