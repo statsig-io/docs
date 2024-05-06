@@ -29,8 +29,16 @@
       "x-stoplight": {
         "id": "fh8edschydwyl"
       },
-      "example": "38ttpCpzrQFTMKcqFKk02l",
+      "example": "38ttpCpzrQFTMKcqFKk02l:10.00:1",
       "description": "The Statsig ID of this rule."
+    },
+    "baseID": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "xl5prmcmh32iw"
+      },
+      "example": "38ttpCpzrQFTMKcqFKk02l",
+      "description": "The base ID of this rule, i.e. without any added metadata. Will remain the exact same throughout the lifecycle of a rule."
     },
     "passPercentage": {
       "type": "integer",
@@ -85,7 +93,8 @@
   "examples": [
     {
       "name": "All Conditions",
-      "id": "38ttpCpzrQFTMKcqFKk02l",
+      "id": "38ttpCpzrQFTMKcqFKk02l:10.00:1",
+      "baseID": "38ttpCpzrQFTMKcqFKk02l",
       "passPercentage": 10,
       "conditions": [
         {
