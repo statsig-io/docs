@@ -19,7 +19,8 @@ All **Scorecard** metrics by default have **CUPED** (Controlled-Experiment Using
 
 In the example below, the **Circle** variant has a statistically significant lift in the **add_to_cart** and **product_view** metrics. However, the **Square** variant is not seeing any statistically significant lifts on any metric. This is represented by the gray Overall Lift symbols and large p-values.
 
-![Screen Shot 2022-07-08 at 4 55 25 PM](https://user-images.githubusercontent.com/101903926/178083099-54084949-b35d-4194-b29b-b78d196a373b.png)
+![image](https://github.com/statsig-io/docs/assets/31516123/d1cc2a6b-2a78-4c4c-8196-db4aff0acc52)
+
 
 When you mouse over a metric lift, additional, more detailed information on the metric lifts is displayed. This includes:
 * Unit counts, means, and totals for each experiment group 
