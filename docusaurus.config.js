@@ -43,7 +43,11 @@ module.exports = {
         alt: "Statsig",
         src: "img/logo.svg",
         srcDark: "img/logo_white.svg",
+<<<<<<< Updated upstream
         href: "https://statsig.com",
+=======
+        href: "/",
+>>>>>>> Stashed changes
       },
       items: [
         {
