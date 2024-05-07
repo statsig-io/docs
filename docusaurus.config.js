@@ -211,6 +211,10 @@ module.exports = {
       {
         redirects: [
           {
+            to: "/mex/overview",
+            from: "/mex",
+          },
+          {
             to: "/integrations/terraform/introduction",
             from: "/integrations/terraform",
           },
