@@ -3506,6 +3506,596 @@
         }
       }
     },
+    "/experiments/assignment_source/{name}": {
+      "patch": {
+        "summary": "Partially Update Assignment Source",
+        "tags": ["Experiments (Warehouse Native)"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [],
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "tags": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {}
+                          }
+                        },
+                        "timestampColumn": {
+                          "type": "string"
+                        },
+                        "groupIDColumn": {
+                          "type": "string"
+                        },
+                        "experimentIDColumn": {
+                          "type": "string"
+                        },
+                        "idTypeMapping": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "required":["statsigUnitID", "column"],
+                            "properties": {
+                              "statsigUnitID": {
+                                "type": "string"
+                              },
+                              "column": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Assignment Source updated successfully",
+                      "data": {
+                        "name": "statsig_forwarded_exposures",
+                        "description": "",
+                        "tags": [],
+                        "sql": "SELECT * FROM `shoppy-sales.statsig.statsig_forwarded_exposures`",
+                        "timestampColumn": "timestamp",
+                        "groupIDColumn": "group_id",
+                        "experimentIDColumn": "deviceID",
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "userID",
+                            "column": "user_id"
+                          },
+                          {
+                            "statsigUnitID": "stableID",
+                            "column": "stable_id"
+                          },
+                          {
+                            "statsigUnitID": "UserID",
+                            "column": "UserID"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Assignment Source updated successfully",
+                      "data": {
+                        "name": "statsig_forwarded_exposures",
+                        "description": "",
+                        "tags": [],
+                        "sql": "SELECT * FROM `shoppy-sales.statsig.statsig_forwarded_exposures`",
+                        "timestampColumn": "timestamp",
+                        "groupIDColumn": "group_id",
+                        "experimentIDColumn": "deviceID",
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "userID",
+                            "column": "user_id"
+                          },
+                          {
+                            "statsigUnitID": "stableID",
+                            "column": "stable_id"
+                          },
+                          {
+                            "statsigUnitID": "UserID",
+                            "column": "UserID"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "property": {
+                            "type": "string"
+                          },
+                          "errorMessage": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Bad Request Exception",
+                      "status": 400,
+                      "errors": [
+                        {
+                          "property": "sql",
+                          "errorMessage": "Invalid literal value, expected undefined"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Bad Request Exception",
+                      "status": 400,
+                      "errors": [
+                        {
+                          "property": "sql",
+                          "errorMessage": "Invalid literal value, expected undefined"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "patch-assignment_sources",
+        "x-stoplight": {
+          "id": "siao1k28zox2z"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "Example 1": {
+                    "name": "exposures",
+                    "description": "",
+                    "tags": [],
+                    "sql": "SELECT * FROM shoppy-sales.experiment_data.exposures",
+                    "groupIDColumn": "group_id",
+                    "experimentIDColumn": "experiment_name",
+                    "timestampColumn": "ts",
+                    "idTypeMapping": [
+                      {
+                        "statsigUnitID": "stableID",
+                        "column": "user_id"
+                      }
+                    ]
+                  }
+                },
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "timestampColumn": {
+                    "type": "string"
+                  },
+                  "experimentIDColumn": {
+                    "type": "string"
+                  },
+                  "groupIDColumn": {
+                    "type": "string"
+                  },
+                  "idTypeMapping": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "statsigUnitID": {
+                          "type": "string"
+                        },
+                        "column": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "timestampColumn": "timestamp",
+                    "experimentIDColumn": "deviceID"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Fully Update Assignment Source",
+        "tags": ["Experiments (Warehouse Native)"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [ "sql", "timestampColumn", "groupIDColumn", "experimentIDColumn", "idTypeMapping"],
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "tags": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {}
+                          }
+                        },
+                        "sql": {
+                          "type": "string"
+                        },
+                        "timestampColumn": {
+                          "type": "string"
+                        },
+                        "groupIDColumn": {
+                          "type": "string"
+                        },
+                        "experimentIDColumn": {
+                          "type": "string"
+                        },
+                        "idTypeMapping": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "required": [ "statsigUnitID", "column"],
+                            "properties": {
+                              "statsigUnitID": {
+                                "type": "string"
+                              },
+                              "column": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Assignment Source updated successfully",
+                      "data": {
+                        "name": "statsig_forwarded_exposures",
+                        "description": "",
+                        "tags": [],
+                        "sql": "SELECT * FROM `shoppy-sales.statsig.statsig_forwarded_exposures`",
+                        "timestampColumn": "timestamp",
+                        "groupIDColumn": "group_id",
+                        "experimentIDColumn": "experiment_id",
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "userID",
+                            "column": "user_id"
+                          },
+                          {
+                            "statsigUnitID": "stableID",
+                            "column": "stable_id"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Assignment Source updated successfully",
+                      "data": {
+                        "name": "statsig_forwarded_exposures",
+                        "description": "",
+                        "tags": [],
+                        "sql": "SELECT * FROM `shoppy-sales.statsig.statsig_forwarded_exposures`",
+                        "timestampColumn": "timestamp",
+                        "groupIDColumn": "group_id",
+                        "experimentIDColumn": "experiment_id",
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "userID",
+                            "column": "user_id"
+                          },
+                          {
+                            "statsigUnitID": "stableID",
+                            "column": "stable_id"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "property": {
+                            "type": "string"
+                          },
+                          "errorMessage": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Bad Request Exception",
+                      "status": 400,
+                      "errors": [
+                        {
+                          "property": "idTypeMapping",
+                          "errorMessage": "Required"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Bad Request Exception",
+                      "status": 400,
+                      "errors": [
+                        {
+                          "property": "idTypeMapping",
+                          "errorMessage": "Required"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "post-assignment_sources",
+        "x-stoplight": {
+          "id": "u47w9af9b2pwa"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sql": {
+                    "type": "string"
+                  },
+                  "timestampColumn": {
+                    "type": "string"
+                  },
+                  "experimentIDColumn": {
+                    "type": "string"
+                  },
+                  "groupIDColumn": {
+                    "type": "string"
+                  },
+                  "idTypeMapping": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "statsigUnitID": {
+                          "type": "string"
+                        },
+                        "column": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "x-examples": {
+                  "Example 1": {
+                    "sql": "SELECT * FROM `shoppy-sales.statsig.statsig_forwarded_exposures`",
+                    "timestampColumn": "timestamp",
+                    "experimentIDColumn": "experiment_id",
+                    "groupIDColumn": "group_id",
+                    "idTypeMapping": [
+                      {
+                        "statsigUnitID": "userID",
+                        "column": "user_id"
+                      },
+                      {
+                        "statsigUnitID": "stableID",
+                        "column": "stable_id"
+                      }
+                    ]
+                  }
+                }
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "sql": "SELECT * FROM `shoppy-sales.statsig.statsig_forwarded_exposures`",
+                    "timestampColumn": "timestamp",
+                    "experimentIDColumn": "experiment_id",
+                    "groupIDColumn": "group_id",
+                    "idTypeMapping": [
+                      {
+                        "statsigUnitID": "userID",
+                        "column": "user_id"
+                      },
+                      {
+                        "statsigUnitID": "stableID",
+                        "column": "stable_id"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Assignment Source",
+        "tags": ["Experiments (Warehouse Native)"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Assignment source deleted successfully."
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Assignment source deleted successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "No assignment source was found with the given name",
+                      "status": 404
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "No assignment source was found with the given name",
+                      "status": 404
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "delete-assignment_sources",
+        "x-stoplight": {
+          "id": "1bqp4lis3d2en"
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "name",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/experiments/entity_properties": {
       "get": {
         "summary": "List Entity Property Sources",
