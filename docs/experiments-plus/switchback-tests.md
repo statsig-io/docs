@@ -10,7 +10,7 @@ Switchback tests are an alternative experiment form, whereby an entire populatio
 
 Switchback tests are particularly common in marketplaces, whereby running a traditional A/B on one side- or a small %- of the marketplace would have an unintended consequence on the rest of the marketplace due to network effects, ultimately impacting experiment results.
 
-Another common use case for switchbacks occurs when applying different variants to differnt users is infeasible for fairness, legal, or logistical reasons.
+Another common use case for switchbacks occurs when applying different variants to different users is infeasible for fairness, legal, or logistical reasons.
 
 Switchback tests are often carried out across multiple “buckets”, typically regions or other defined groups that are flipped between test and control treatments over the course of the experiment. 
 
