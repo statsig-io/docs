@@ -379,11 +379,11 @@ module.exports = {
         {
           Features: [
             "statsig-warehouse-native/native-vs-cloud",
+            "statsig-warehouse-native/features/cohort-metrics",
+            "statsig-warehouse-native/features/entity-properties",
+            "statsig-warehouse-native/features/id-resolution",
             "statsig-warehouse-native/features/funnel-metrics",
             "statsig-warehouse-native/features/power-analysis",
-            "statsig-warehouse-native/features/cohort-metrics",
-            "statsig-warehouse-native/features/id-resolution",
-            "statsig-warehouse-native/features/entity-properties",
             "statsig-warehouse-native/features/monitor-an-experiment",
             "statsig-warehouse-native/features/freshness",
             "statsig-warehouse-native/features/stratified-sampling",
