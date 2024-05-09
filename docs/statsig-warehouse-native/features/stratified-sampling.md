@@ -16,7 +16,7 @@ In A/B testing this often shows up in B2B experimentation. First, a successful B
 For B2B tests, or tests where a tail-end of power users drive a large portion of an overall metric value, this feature meaningfully reduces false positive rates and makes your results more consistent and trustworthy. In our simulations, we saw around a 50% decrease in the variance of reported results.
 
 ## How it works
-The Statsig SDKs use a _salt_ to randomize or bucket experiment subjects ([learn more](https://docs.statsig.com/faq#how-does-bucketing-within-the-statsig-sdks-work)). When you enable stratified sampling, we'll try a 1000 different salts and evaluate how "balanced" your groups. We evaluate this balance based on either a metric you pick - or an attribute you give us describing your experiment subjects. We pick the best salt from this set and save this as the salt to use. 
+The Statsig SDKs use a _salt_ to randomize or bucket experiment subjects ([learn more](https://docs.statsig.com/faq#how-does-bucketing-within-the-statsig-sdks-work)). When you enable stratified sampling, we'll try n different salts (100 for now) and evaluate how "balanced" your groups. We evaluate this balance based on either a metric you pick - or an attribute you give us describing your experiment subjects. We pick the best salt from this set and save this as the salt to use. 
 
 ## Enabling Stratified Sampling
 You can enable this on experiment under Advanced Settings on the experiment setup page. There are two ways you can "stratify" on Statsig. 
