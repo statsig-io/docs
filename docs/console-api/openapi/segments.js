@@ -116,6 +116,8 @@ module.exports = {
                           "count": 0,
                           "rules": {
                             "name": "All Conditions",
+                            "id": "38ttpCpzrQFTMKcqFKk02l:10.00:1",
+                            "baseID":"38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 10,
                             "conditions": [
                               {

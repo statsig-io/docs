@@ -36,6 +36,7 @@ import PrefetchUsersMethod from "./js/_prefetchUsersMethod.mdx";
 import Options from "./js/_options.mdx";
 import { Snippets as ManualExposureSnippets } from "./js/_manualExposures.mdx";
 import ShutdownSnippet from "./js/_shutdown.mdx";
+import FlushSnippet from "./js/_shutdown.mdx";
 import LocalOverridesSnippet from "./js/_localOverrides.mdx";
 import { GetStableID, OverrideStableID } from "./js/_stableID.mdx";
 
@@ -72,7 +73,7 @@ export const Result = SDKDocsBuilder(
     ],
     [FetchMode, { addedInVersion: "4.32.0", sdk: "JS" }],
     [StatsigOptions, { options: <Options /> }],
-    [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet />, flush: <FlushSnippet /> }],
     [LocalOverrides, { localOverrides: <LocalOverridesSnippet /> }],
     [ManualExposures, { addedInVersion: "4.28.0", ...ManualExposureSnippets }],
     [

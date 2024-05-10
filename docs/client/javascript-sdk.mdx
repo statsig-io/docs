@@ -17,6 +17,7 @@ import {
   StatsigOptions,
   Shutdown,
   CodeExamples,
+  EvaluationDetails
 } from "./Templates/index.mdx";
 
 import OnDeviceEvalProsAndCons from "./Templates/_OnDeviceEvalProsAndCons.mdx";
@@ -32,6 +33,13 @@ export const ClientEventEmitting = _ClientEventEmitting;
 
 import * as _MultiInstance from "./javascript-mono/_multiInstance.mdx";
 export const MultiInstance = _MultiInstance;
+
+import * as _prefetchUsers from "./javascript-mono/_prefetchUsers.mdx";
+export const PrefetchUsers = _prefetchUsers;
+
+import * as _asyncTimeouts from "./javascript-mono/_asyncTimeouts.mdx";
+export const AsyncTimeouts = _asyncTimeouts;
+
 
 import CheckGate from "./javascript-mono/_checkGate.mdx";
 import GetConfig from "./javascript-mono/_getConfig.mdx";
@@ -69,6 +77,7 @@ export const Result = SDKDocsBuilder(
         logEvent: <LogEvent />,
       },
     ],
+    [EvaluationDetails, { snippetUrl: "https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-evaluation-details.tsx" }],
     [
       CodeExamples,
       {
@@ -78,11 +87,13 @@ export const Result = SDKDocsBuilder(
     ],
     [StatsigUser, {}],
     [UpdateUser, {}],
-    [ClientEventEmitting, {}],
-    [MultiInstance, {}],
+    [PrefetchUsers, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [AsyncTimeouts, {}],
     [DataAdapter, {}],
+    [ClientEventEmitting, {}],
+    [MultiInstance, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
   ],
   toc

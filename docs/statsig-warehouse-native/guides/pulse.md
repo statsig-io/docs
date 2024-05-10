@@ -57,7 +57,6 @@ In the diagnostics tab, the results of Statistical and Data Quality checks are a
 
 ## Explore
 
-The explore tab allows you to use user dimensions to drill down and explore results. This is a powerful tool for diagnostics and hypothesis generation, though it's important to treat these results as inconclusive unless the experiment had a specific hypothesis in mind for your target population.
+The explore tab allows you to use user dimensions to drill down and explore results. This is a powerful tool for diagnostics and hypothesis generation, though it's important to treat these results as inconclusive unless the experiment had a specific hypothesis in mind for your target population. You can also select from "special" tags including **All Metrics** (all metrics in your project) and **Scorecard Metrics** (all metrics on the experiment scorecard). 
+![image](https://github.com/statsig-io/docs/assets/31516123/829cf18b-e3bd-4a8b-ad51-5259bb3eda29)
 
-![Explore Setup](https://user-images.githubusercontent.com/102695539/264086658-209b75ed-3c62-4fca-904d-3af3e59eca44.png)
-![Explore Results](https://user-images.githubusercontent.com/102695539/264086651-2da7f852-14f4-4874-902d-7c629d17347b.png)

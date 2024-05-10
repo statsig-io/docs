@@ -1,0 +1,60 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+## Installation
+
+To add support for React Native, first, add the Statsig JS client outlined [here](/client/javascript-sdk).
+
+Once the Statsig client is installed, you can add the React Native bindings as described below:
+
+<Tabs
+  defaultValue="npm"
+  groupId="js-install-choice"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+  ]}>
+
+  <TabItem value="npm">
+
+```shell
+npm install @statsig/react-native-bindings
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```shell
+yarn add @statsig/react-native-bindings
+```
+
+  </TabItem>
+</Tabs>
+
+### Peer Dependecies
+
+The `@statsig/react-native-bindings` module has peer dependencies which will also need to be installed
+
+<Tabs
+  defaultValue="npm"
+  groupId="js-install-choice"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+  ]}>
+
+  <TabItem value="npm">
+
+```shell
+npm install @react-native-async-storage/async-storage react-native-device-info
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```shell
+yarn add @react-native-async-storage/async-storage react-native-device-info
+```
+
+  </TabItem>
+</Tabs>

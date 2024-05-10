@@ -43,7 +43,7 @@ module.exports = {
         alt: "Statsig",
         src: "img/logo.svg",
         srcDark: "img/logo_white.svg",
-        href: "https://statsig.com",
+        href: "/",
       },
       items: [
         {
@@ -176,7 +176,7 @@ module.exports = {
               {
                 tagName: "script",
                 attributes: {
-                  src: "https://cdn.jsdelivr.net/npm/@statsig/js-client@0.0.1-beta.14/build/statsig-js-client.min.js",
+                  src: "https://cdn.jsdelivr.net/npm/@statsig/js-client@latest/build/statsig-js-client+session-replay+web-analytics.min.js",
                 },
               },
               {
@@ -211,6 +211,10 @@ module.exports = {
       {
         redirects: [
           {
+            to: "/mex/overview",
+            from: "/mex",
+          },
+          {
             to: "/integrations/terraform/introduction",
             from: "/integrations/terraform",
           },
@@ -223,8 +227,8 @@ module.exports = {
             from: "/feature-gates/create-new",
           },
           {
-            to: "/feature-flags",
-            from: "/feature-gates",
+            to: "/feature-flags/working-with",
+            from: ["/feature-gates", "/feature-flags"],
           },
           {
             to: "/feature-flags/add-rule",
@@ -277,6 +281,10 @@ module.exports = {
           {
             to: "/feature-flags/implement/http-api",
             from: "/feature-gates/implement/http-api",
+          },
+          {
+            to: "/mex/overview",
+            from: "/metrics/events-explorer",
           },
         ],
       },
