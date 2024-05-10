@@ -13,17 +13,21 @@ function WarehouseToggle() {
 
   useEffect(() => {
     // Get mode from local storage or url parameter
-    let initialMode;
-    try {
-      initialMode = localStorage.getItem(STORAGE_KEY);
-    } catch (error) {
-      console.error('Error retrieving mode from local storage', error);
-    }
+    let initialMode = window.location.pathname.includes("warehouse-native") ? 'warehouse' : undefined;
     const urlParams = new URLSearchParams(window.location.search);
     const urlMode = urlParams.get(URL_PARAM);
     if (urlMode && ['cloud', 'warehouse'].includes(urlMode)) {
       initialMode = urlMode;
     }
+    
+    try {
+      if (initialMode === undefined) {
+        initialMode = localStorage.getItem(STORAGE_KEY);
+      }
+    } catch (error) {
+      console.error('Error retrieving mode from local storage', error);
+    }
+    
 
     // Set initial state
     setSelectedMode(initialMode || 'cloud');
