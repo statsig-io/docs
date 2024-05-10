@@ -43,7 +43,7 @@ module.exports = {
         alt: "Statsig",
         src: "img/logo.svg",
         srcDark: "img/logo_white.svg",
-        href: "https://statsig.com",
+        href: "/",
       },
       items: [
         {
@@ -211,6 +211,10 @@ module.exports = {
       {
         redirects: [
           {
+            to: "/mex/overview",
+            from: "/mex",
+          },
+          {
             to: "/integrations/terraform/introduction",
             from: "/integrations/terraform",
           },
@@ -277,6 +281,10 @@ module.exports = {
           {
             to: "/feature-flags/implement/http-api",
             from: "/feature-gates/implement/http-api",
+          },
+          {
+            to: "/mex/overview",
+            from: "/metrics/events-explorer",
           },
         ],
       },

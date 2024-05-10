@@ -5,6 +5,7 @@ tags:
 sidebar_label: Overview
 slug: /webanalytics/overview
 ---
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
 # Web Analytics Overview
 
@@ -20,13 +21,9 @@ Follow these simple steps to get started with Web Analytics.
 
 ## Install Statsig script on your website
 
-```html
-<script
-  src="https://cdn.jsdelivr.net/npm/statsig-web-analytics/dist/index.min.js?apikey=[YOUR-API-KEY]">
-</script>
-```
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-simple-script-tag.tsx" />
 
-Your API KEY could be found in your Project Settings -> Keys & Environments. Reveal the Client API Key and copy it.
+Get YOUR_CLIENT_KEY from Project Settings -> Keys & Environments. Reveal the Client API Key, copy, and paste it over the [YOUR-API-KEY] in the snippet above
 
 ![image](https://github.com/statsig-io/js-client/assets/74588208/0180a38a-2b3d-43c6-aa8e-4ea04c8ac751)
 
@@ -36,7 +33,7 @@ Once your changes are live, you'll start to see the events flowing in your metri
 
 # Considerations
 
-For single page apps, or for more complex scenarios, look up how to [log events using Javascript](/client/jsClientSDK#logging-an-event).
+For single page apps, or for more complex scenarios, look up how to [log events using Javascript](/client/javascript-sdk#logging-an-event).
 
 # Exploring using Metrics Explorer
 
@@ -45,3 +42,9 @@ In Metrics Explorer (https://console.statsig.com/metrics/explore), you can dig d
 More information on using Metrics Explorer like [Funnels and Retention is here](/mex/drilldown).
 
 ![image](https://github.com/statsig-io/js-client/assets/74588208/f4ed6f2c-79ce-4e47-ba6d-8dbe69978cc0)
+
+# Advanced Setup
+
+If you need to add additional configurations, metadata about the user, or want to access the full `StatsigClient` to check feature gates and experiments or log events, you can used the advanced setup.  The script tag above will automatically initialize the SDK, but if you remove your SDK key you can manually configure your integration.
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-session-replay-html.tsx" />

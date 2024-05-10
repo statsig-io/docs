@@ -282,7 +282,7 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Analytics",
+      label: "Product Analytics",
       items: [
         "mex/overview",
         {
@@ -314,7 +314,7 @@ module.exports = {
             // other
             "metrics/ingest",
             "metrics/pulse",
-            "metrics/local-metrics", 
+            "metrics/local-metrics",
             "metrics/console",
             "metrics/health-checks",
 
@@ -339,10 +339,18 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Web Analytics",
+      label: "Session Replay",
       items: [
-        "webanalytics/overview",
+        "session-replay/overview",
+        "session-replay/install",
+        "session-replay/configure",
+        "session-replay/watch",
       ],
+    },
+    {
+      type: "category",
+      label: "Web Analytics",
+      items: ["webanalytics/overview"],
     },
     {
       type: "category",
@@ -360,6 +368,7 @@ module.exports = {
             "statsig-warehouse-native/guides/assignment_sources",
             "statsig-warehouse-native/guides/experiments",
             "statsig-warehouse-native/guides/checklist",
+            "statsig-warehouse-native/guides/sql",
             "statsig-warehouse-native/guides/pulse",
             "statsig-warehouse-native/guides/sdks",
             "statsig-warehouse-native/guides/aatest",
@@ -370,12 +379,14 @@ module.exports = {
         {
           Features: [
             "statsig-warehouse-native/native-vs-cloud",
+            "statsig-warehouse-native/features/cohort-metrics",
+            "statsig-warehouse-native/features/entity-properties",
+            "statsig-warehouse-native/features/id-resolution",
             "statsig-warehouse-native/features/funnel-metrics",
             "statsig-warehouse-native/features/power-analysis",
-            "statsig-warehouse-native/features/cohort-metrics",
-            "statsig-warehouse-native/features/id-resolution",
-            "statsig-warehouse-native/features/entity-properties",
             "statsig-warehouse-native/features/monitor-an-experiment",
+            "statsig-warehouse-native/features/freshness",
+            "statsig-warehouse-native/features/stratified-sampling",
             "statsig-warehouse-native/features/autotune",
           ],
         },
@@ -406,7 +417,7 @@ module.exports = {
       type: "category",
       label: "SDKs, APIs, Integrations",
       items: [
-        "sdks/getting-started", 
+        "sdks/getting-started",
         {
           type: "category",
           label: "Client SDKs",
@@ -434,10 +445,12 @@ module.exports = {
                 id: "client/javascript-sdk",
               },
               items: [
-                "client/javascript-mono/MigrationFromOldSDK",
+                "client/javascript-mono/MigrationFromOldJsClient",
+                "client/javascript-mono/MigrationFromOldReact",
                 // "client/javascript-mono/IntegrationNextJs",
                 // "client/javascript-mono/IntegrationReact",
                 "client/javascript-mono/UsingEvaluationsDataAdapter",
+                "client/javascript-mono/ReactUsage",
                 "client/javascript-mono/ReactNativeUsage",
                 "client/javascript-mono/ExpoUsage",
                 "client/javascript-mono/Examples",
@@ -467,8 +480,6 @@ module.exports = {
                   },
                   items: [
                     "client/js-device-eval-mono/MigrationFromOldSDK",
-                    // "client/javascript-mono/IntegrationNextJs",
-                    // "client/javascript-mono/IntegrationReact",
                     "client/js-device-eval-mono/UsingSpecsDataAdapter",
                     "client/js-device-eval-mono/ReactNativeUsage",
                   ],
@@ -701,10 +712,7 @@ module.exports = {
             type: "doc",
             id: "org-admin/organization_policies",
           },
-          items: [
-            "org-admin/experiment_policy", 
-            "org-admin/gates_policy",
-          ],
+          items: ["org-admin/experiment_policy", "org-admin/gates_policy"],
         },
         {
           type: "category",

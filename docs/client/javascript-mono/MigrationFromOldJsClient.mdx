@@ -1,0 +1,183 @@
+---
+title: Migrating From statsig-js
+sidebar_label: Migrating from statsig-js
+slug: /client/javascript-sdk/migrating-from-statsig-js
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+The architecture and majority of the APIs in the updated SDK have been retained; however,
+ modifications have been made to address common pitfalls, resolve existing issues, and streamline the SDK logic.
+
+Below is a list of identified breaking changes that will require manual refactoring:
+
+### Initialization
+
+Previously, the SDK employed a single method for initialization. However, we have recognized that waiting for a method call during app startup can be impractical. Consequently, we have introduced two distinct initialization approaches: one synchronous and one asynchronous.
+
+Synchronous initialization will leverage cache (if available), returning immediately. Data for subsequent sessions will then be fetched in the background.
+
+Asynchronous initialization, on the other hand, is awaitable and ensures that the most current data is fetched and used.
+
+<Tabs
+  groupId="js-migration-choice"
+  defaultValue="new"
+  values={[
+    {label: 'statsig-js (Legacy)', value: 'legacy'},
+    {label: 'New', value: 'new'},
+  ]}>
+  <TabItem value="legacy">
+
+```typescript
+import Statsig from "statsig-js";
+
+// initialize returns a promise which always resolves
+await Statsig.initialize(
+  "client-sdk-key",
+  { userID: "some_user_id" },
+  { environment: { tier: "staging" } } // optional, pass options here if needed
+);
+```
+
+
+  </TabItem>
+  <TabItem value="new">
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-initialize.tsx" />
+
+You can read more about StatsigClient initialization [here](/client/javascript-sdk#initialize-the-sdk).
+
+  </TabItem>
+</Tabs>
+
+
+
+
+
+
+
+
+
+### Updating the User
+
+Similar to initialization, the `updateUser` method now supports both synchronous and asynchronous approaches. Each method functions in the same manner as the initialization process.
+
+<Tabs
+  groupId="js-migration-choice"
+  defaultValue="new"
+  values={[
+    {label: 'statsig-js (Legacy)', value: 'legacy'},
+    {label: 'New', value: 'new'},
+  ]}>
+  <TabItem value="legacy">
+
+```typescript
+import Statsig from "statsig-js";
+
+const user = { userID: "a-user" };
+
+await Statsig.updateUser(user);
+```
+
+  </TabItem>
+  <TabItem value="new">
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-update-user.tsx" />
+
+  </TabItem>
+</Tabs>
+
+
+
+
+
+
+
+
+
+## Static Instance
+
+In the previous SDK version, there was a top-level static interface for using Statsig. To enhance support for multiple instances,
+we have replaced this with a static method that retrieves an instance.
+
+<Tabs
+  groupId="js-migration-choice"
+  defaultValue="new"
+  values={[
+    {label: 'statsig-js (Legacy)', value: 'legacy'},
+    {label: 'New', value: 'new'},
+  ]}>
+  <TabItem value="legacy">
+
+```typescript
+import Statsig from "statsig-js";
+
+await Statsig.initialize(YOUR_CLIENT_KEY, { userID: 'a-user' });
+
+// then later, at some other location in your code base
+if (Statsig.checkGate('a_gate')) { 
+  // do something...
+}
+```
+
+  </TabItem>
+  <TabItem value="new">
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-static-instance.tsx" />
+
+You can read more about StatsigClient multi-instance support [here](/client/javascript-sdk#multiple-client-instances).
+
+  </TabItem>
+</Tabs>
+
+
+
+
+
+
+
+## GDPR
+
+In certain use cases, it is necessary to suspend cache and network usage until the user grants specific 
+permissions. Previously, the method for achieving this was somewhat fragmented. 
+In the new SDK, these functionalities have been consolidated for improved coherence and ease of implementation.
+
+<Tabs
+  groupId="js-migration-choice"
+  defaultValue="new"
+  values={[
+    {label: 'statsig-js (Legacy)', value: 'legacy'},
+    {label: 'New', value: 'new'},
+  ]}>
+  <TabItem value="legacy">
+
+```typescript
+// start the SDK without storage or logging
+Statsig.initialize(
+  'client-key',
+  { userID: 'a_user' },
+  { disableAllLogging: true, disableLocalStorage: true },
+);
+
+// then, once permission was granted
+Statsig.shutdown();
+Statsig.initialize(
+  'client-key',
+  { userID: 'a_user' },
+  { disableAllLogging: false, disableLocalStorage: false },
+);
+
+// or, by manually flipping the related flags
+Statsig.reenableAllLogging();
+StatsigLocalStorage.disabled = false;
+```
+
+  </TabItem>
+  <TabItem value="new">
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-gdpr.tsx" />
+
+  </TabItem>
+</Tabs>

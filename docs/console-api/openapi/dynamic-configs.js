@@ -34,6 +34,11 @@ module.exports = {
                   "description": "A brief summary of what the dynamic config is being used for.",
                   "example": "helpful summary of what this dynamic config does"
                 },
+                "idType": {
+                  "type": "string",
+                  "description": "The type of ID which the dynamic config is based on.",
+                  "example": "userID"
+                },
                 "tags": {
                   "type": "array",
                   "x-stoplight": {
@@ -100,7 +105,14 @@ module.exports = {
         "x-examples": {
           "example-1": "a_dynamic_config"
         }
-      }
+      },
+      "idType": {
+        "type": "string",
+        "description": "The type of ID which the dynamic config is based on.",
+        "x-examples": {
+          "example-1": "userID"
+        }
+      },
     }
   },
   "security": [
@@ -128,13 +140,15 @@ module.exports = {
                       "data": {
                         "id": "a_dynamic_config",
                         "isEnabled": true,
+                        "idType": "userID",
                         "description": "helpful summary of what this dynamic config does",
                         "lastModifierName": "CONSOLE API",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "rules": [
                           {
                             "name": "All Conditions",
-                            "id": "38ttpCpzrQFTMKcqFKk02l",
+                            "id": "38ttpCpzrQFTMKcqFKk02l:10.00:1",
+                            "baseID":"38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 10,
                             "conditions": [
                               {
@@ -168,6 +182,7 @@ module.exports = {
                       "data": {
                         "id": "a_dynamic_config",
                         "description": "helpful summary of what this dynamic config does",
+                        "idType": "userID",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "lastModifierName": "CONSOLE API",
                         "creatorEmail": "johnsmith@mydomain.com",
@@ -178,7 +193,8 @@ module.exports = {
                         "rules": [
                           {
                             "name": "All Conditions",
-                            "id": "38ttpCpzrQFTMKcqFKk02l",
+                            "id": "38ttpCpzrQFTMKcqFKk02l:10.00:1",
+                            "baseID":"38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 10,
                             "conditions": [
                               {
@@ -467,6 +483,7 @@ module.exports = {
                         {
                           "id": "a_dynamic_config",
                           "description": "helpful summary of what this dynamic config does",
+                          "idType": "userID",
                           "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                           "lastModifierName": "CONSOLE API",
                           "creatorEmail": "johnsmith@mydomain.com",
@@ -656,6 +673,7 @@ module.exports = {
                       "data": {
                         "id": "a_dynamic_config",
                         "description": "helpful summary of what this dynamic config does",
+                        "idType": "userID",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "lastModifierName": "CONSOLE API",
                         "creatorEmail": "johnsmith@mydomain.com",
@@ -666,7 +684,8 @@ module.exports = {
                         "rules": [
                           {
                             "name": "All Conditions",
-                            "id": "38ttpCpzrQFTMKcqFKk02l",
+                            "id": "38ttpCpzrQFTMKcqFKk02l:10.00:1",
+                            "baseID":"38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 10,
                             "conditions": [
                               {
@@ -823,6 +842,7 @@ module.exports = {
                       "data": {
                         "id": "a_dynamic_config",
                         "description": "helpful summary of what this dynamic config does",
+                        "idType": "userID",
                         "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
                         "lastModifierName": "CONSOLE API",
                         "creatorEmail": "johnsmith@mydomain.com",
@@ -833,7 +853,8 @@ module.exports = {
                         "rules": [
                           {
                             "name": "All Conditions",
-                            "id": "38ttpCpzrQFTMKcqFKk02l",
+                            "id": "38ttpCpzrQFTMKcqFKk02l:10.00:1",
+                            "baseID":"38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 10,
                             "conditions": [
                               {
@@ -991,7 +1012,8 @@ module.exports = {
                         "rules": [
                           {
                             "name": "All Conditions",
-                            "id": "38ttpCpzrQFTMKcqFKk02l",
+                            "id": "38ttpCpzrQFTMKcqFKk02l:10.00:1",
+                            "baseID":"38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 10,
                             "conditions": [
                               {
@@ -1035,7 +1057,8 @@ module.exports = {
                         "rules": [
                           {
                             "name": "All Conditions",
-                            "id": "38ttpCpzrQFTMKcqFKk02l",
+                            "id": "38ttpCpzrQFTMKcqFKk02l:10.00:1",
+                            "baseID":"38ttpCpzrQFTMKcqFKk02l",
                             "passPercentage": 10,
                             "conditions": [
                               {
@@ -1151,6 +1174,11 @@ module.exports = {
                   "description": {
                     "$ref": "#/components/schemas/description"
                   },
+                  "idType": {
+                    "type": "string",
+                    "description": "The type of ID which the dynamic config is based on.",
+                    "example": "userID"
+                  },
                   "isEnabled": {
                     "$ref": "#/components/schemas/isEnabled"
                   },
@@ -1163,6 +1191,13 @@ module.exports = {
                   "defaultValue": {
                     "type": "object",
                     "description": "The fallback JSON object when no rules are triggered"
+                  },
+                  "defaultValueJsonC": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "tmr6k5uaqzz9a"
+                    },
+                    "description": "Same as `defaultValue`, but can accept comments. Only accepts valid JSON-C. Either this field or `defaultValue` may be provided, but providing both will throw an error."
                   },
                   "tags": {
                     "type": "array",
@@ -1177,6 +1212,13 @@ module.exports = {
                       "type": "string",
                       "example": "a tag"
                     }
+                  },
+                  "schema": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "39eow704856tk"
+                    },
+                    "description": "A schema using JSON Schema Draft 2020-12 to enforce return values of this dynamic config's rules. When submitting a schema, all submitted return values (default value and rule return values) must match the schema. Alternatively, if no default values or rule return values are updated, existing rules and return values must already conform to the schema."
                   }
                 }
               },

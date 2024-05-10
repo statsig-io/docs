@@ -33,7 +33,7 @@ All of the following conditions work on both client and server SDKs.  Client SDK
 In addition, if you do not automatically set an IP or User Agent (UA), the client SDK will infer these attributes from the request IP and UA. Similarly, on mobile, the client SDK will automatically pass your app version and locale to the server so conditions using these attributes can be evaluated without having to set them explicitly.
 
 ### Stability
-Evaluations at a given percentage are *stable* with respect to the userID.  If userID = 4 passes a condition at a 50% rollout, they will always pass at that 50% rollout. Want to reset that stability? See [Resalting](https://docs.statsig.com/feature-flags/conditions#resalting).
+Evaluations at a given percentage are *stable* with respect to the unitID.  For example, if the gate/config/experiment/layer has a unit type of "userID", and userID = 4 passes a condition at a 50% rollout, they will always pass at that 50% rollout. The same applies for `customIDs`, if the unit type of the entity is that `customID`. Want to reset that stability? See [Resalting](https://docs.statsig.com/feature-flags/conditions#resalting).
 
 ### Resalting
 Gate evaluations are stable for a given gate, percentage rollout, and user ID.  This is made possible by the salt associated with a feature gate. If you want to reset a gate, triggering a reshuffle of users, you can "resalt" a gate from the dropdown menu in the top right of the feature gate details page.

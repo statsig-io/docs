@@ -5,6 +5,7 @@ approver
 athena
 Atlassian
 athena
+autocapture
 Autotune
 Autotunes
 Autotune's
@@ -107,6 +108,8 @@ OIDC
 Okta
 oncalls
 OpenID
+PKCE
+PII
 Pinterest
 Precomputing
 Programmatically
@@ -245,6 +248,7 @@ nav
 navbar
 ness
 NextJS
+NPM
 observability
 oidc
 onboarding
@@ -277,9 +281,12 @@ rollout
 rollouts
 rollup
 rollups
+rrweb
+runStatsigAutoCapture
 schemas
 searchbox
 securityadmin
+SessionReplay
 sig
 signalling
 signup
@@ -445,3 +452,6 @@ groupID
 ruleID
 dedupe
 dedupes
+SHA
+Bellevue
+donut
