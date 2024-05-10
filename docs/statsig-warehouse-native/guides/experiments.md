@@ -64,7 +64,7 @@ Statsig has many settings you can configure in your experiment. Defaults for the
 - Turbo Mode
   - You can choose to skip the calculations for time series
   - This is useful if you want to reduce cost and runtime, and you only care about the overall effect 
-- Filter exposures by qualitying event
+- Filter exposures by qualifying event
   - Only applicable in Analyze-only experiments
 
 ## Start The Experiment
