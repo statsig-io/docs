@@ -33,7 +33,7 @@ Now go ahead and finish the rest of the set up as you would for any [user-level 
 
 ### Step 3 - Provide `companyID` on the user object when using Statsig SDK
 
-Now all you need to do is making sure `companyID` is provided when initializing any client SDK, or when getting the experiment configs and logging events if using a server SDK. The Statsig user object has a top level field `customIDs` that is a dictionary of key-value pairs representing the ID type and value for the user:
+Now all you need to do is make sure `companyID` is provided when initializing any client SDK, or when getting the experiment configs and logging events if using a server SDK. The Statsig user object has a top level field `customIDs` that is a dictionary of key-value pairs representing the ID type and value for the user:
 
 ```jsx
 var user = {
