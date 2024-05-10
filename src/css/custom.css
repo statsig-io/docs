@@ -51,7 +51,7 @@ a {
   --ifm-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Helvetica Neue", "Ubuntu", sans-serif;
   --ifm-font-size-base: 0.95em;
-  
+
   --ifm-menu-color-active: #0068b3;
   --ifm-menu-color-background-active: #0068b311;
   --ifm-navbar-background-color: #f7f7f7;
@@ -126,12 +126,12 @@ span.math.math-inline {
   font-size: 150%;
 }
 
-.katex{
+.katex {
   font-size: 80%;
 }
 
 .katex .base {
-  vertical-align: 0em;  /* Adjust this value as needed */
+  vertical-align: 0em; /* Adjust this value as needed */
 }
 
 .math-inline {
@@ -141,13 +141,13 @@ span.math.math-inline {
 .img-center {
   display: flex;
   justify-content: center;
-  width: 100%,
+  width: 100%;
 }
 
-#consoleCTA{
+#consoleCTA {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
     "Helvetica Neue", "Ubuntu", sans-serif;
-  background-color:rgb(25, 75, 125);
+  background-color: rgb(25, 75, 125);
   color: rgb(255, 255, 255);
   font-weight: 600;
   border-radius: 5px;
@@ -166,4 +166,8 @@ span.math.math-inline {
   justify-content: center;
   position: relative;
   box-sizing: border-box;
+}
+
+.warning {
+  margin-bottom: 16px;
 }
