@@ -48,12 +48,24 @@ Here, you can also rename groups or delete irrelevant groups.
 
 Statsig has many settings you can configure in your experiment. Defaults for these can be set at the org level as well. These include:
 
-- Frequentist vs. Bayesian Analysis
+- Frequentist vs. Bayesian analysis
 - Target duration of the experiment
-- Whether or not to apply Sequential Testing adjustments
-- Whether and how to apply bonferroni Correction
-- Confidence Intervals
-- Default rollup windows for result readouts (Cumulative, 1, 7, 14, or 28 days from the analysis date)
+- Whether to apply [Sequential Testing](https://docs.statsig.com/experiments-plus/sequential-testing) adjustments
+- Allocation Duration
+  - You can choose to stop enrolling new users into the experiment after X days
+  - Note that you need to set up [Persistent Assignment](https://docs.statsig.com/client/concepts/persistent_assignment) to retain already-enrolled users to stay in the same group
+- Cohort Duration
+  - You can choose to specify a timeline for collecting metric data
+- Whether to allow cohort metrics to mature after experiment end
+- [ID stitching](https://docs.statsig.com/statsig-warehouse-native/features/id-resolution)
+- Whether and how to apply [Bonferroni Correction](https://docs.statsig.com/stats-engine/methodologies/bonferroni-correction)
+- Default Confidence Intervals
+- Default rollup windows for result readouts (cumulative, 1, 7, 14, or 28 days from the analysis date)
+- Turbo Mode
+  - You can choose to skip the calculations for time series
+  - This is useful if you want to reduce cost and runtime, and you only care about the overall effect 
+- Filter exposures by qualitying event
+  - Only applicable in Analyze-only experiments
 
 ## Start The Experiment
 
