@@ -43,14 +43,21 @@ module.exports = {
         alt: "Statsig",
         src: "img/logo.svg",
         srcDark: "img/logo_white.svg",
-        href: "https://docs.statsig.com/",
+        href: "/",
       },
       items: [
+        {
+          type: 'custom-warehouseToggle', 
+          position: "left",
+        },
         {
           type: "html",
           position: "right",
           value:
             "<button id=\"consoleCTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus(); window.statsig.logEvent({}, 'console_button_click', window.location.pathname, {referrer: document && document.referrer,});\">Get Started</button>",
+          type: 'html',
+          position: 'right',
+          value: '<button id="consoleCTA" onclick="window.open(\'https://console.statsig.com\', \'_blank\').focus(); window.statsig.logEvent({}, \'console_button_click\', window.location.pathname, {referrer: document && document.referrer,});">Get Started</button>',
         },
       ],
     },

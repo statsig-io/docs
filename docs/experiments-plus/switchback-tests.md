@@ -8,7 +8,9 @@ slug: /experiments-plus/switchback-tests
 
 Switchback tests are an alternative experiment form, whereby an entire population is “switched” back and forth between test and control treatments on a set cadence vs. being split and evenly divided between test and control for the duration of the experiment. 
 
-Switchback tests are particularly common in marketplaces, whereby running a traditional A/B on one side- or a small %- of the marketplace would have an unintended consequence on the rest of the marketplace due to network effects, ultimately impacting experiment results. 
+Switchback tests are particularly common in marketplaces, whereby running a traditional A/B on one side- or a small %- of the marketplace would have an unintended consequence on the rest of the marketplace due to network effects, ultimately impacting experiment results.
+
+Another common use case for switchbacks occurs when applying different variants to different users is infeasible for fairness, legal, or logistical reasons.
 
 Switchback tests are often carried out across multiple “buckets”, typically regions or other defined groups that are flipped between test and control treatments over the course of the experiment. 
 
@@ -18,7 +20,7 @@ Let’s say you are a rideshare platform and want to test pricing. You initially
 
 However, you quickly notice that the riders with the lower price are requesting rides at a significantly higher rate, and sucking up all the available driver supply in a given area. This leaves the riders with higher prices with not only a higher ride estimate, but longer ETAs when they open up their app, making them even less likely to request. 
 
-When you look at your experiment results you’re not sure if the decreased ride request rate in the higher price group was due to the higher prices they saw or the fact that their ETAs went up- your experiment results are polluted! 
+When you look at your experiment results you’re not sure if the decreased ride request rate in the higher price group was due to the higher prices they saw or the fact that their ETAs went up- your experiment results are polluted! You've inadvertently introduced *bias* to your results via your experimental design.
 
 In this scenario, you could consider running a Switchback test on your marketplace. To do this, you might switch 100% of your riders and drivers in a given metro in and out of the new pricing plan hourly and understand the impact on overall ride request rates during hours at which rider prices were higher vs. lower. 
 

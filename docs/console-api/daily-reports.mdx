@@ -13,10 +13,9 @@ custom_edit_url: null
 This is available for Enterprise contracts and needs to be enabled for you, once. Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you want this enabled.
 :::
 
-import Rapidoc from "../../src/components/Rapidoc"
+import Rapidoc from "../../src/components/Rapidoc";
 
-<Rapidoc id="reports" entity='reports'/>
-
+<Rapidoc id="reports" entity="reports" />
 
 ## Report Schema - type = first_exposures
 
@@ -37,17 +36,17 @@ import Rapidoc from "../../src/components/Rapidoc"
 | user_dimensions         | string    | JSON-formatted key-value pairs describing the user's attributes at the time of first exposure |
 | inserted_at             | timestamp | The timestamp when this report is generated                                                   |
 | rule_name               | string    | Rule name for gates; 'experiment' for experiments                                             |
-| group_id				  | string    | True/False for gates; group_id for experiments                                                |
+| group_id                | string    | True/False for gates; group_id for experiments                                                |
 
 - After the feature is turned on for you, it will be ready when our pipeline runs. Generally, you can expect it around the time you see cumulative exposures.
 - We commit to maintain the report format including column order and type, but we recommend that you use the column name and cast column type when parsing the file.
 
 ### Egress exposure data to your warehouse
+
 Besides the exposure reports from the API access, we also offer data warehouse export to Snowflake for our enterprise customers.
 
-> **We do NOT support this feature if your warehouse has IP restrictions.**
-1. At the top of your console, tap the "?" icon and navigate to `Tools` -> `Exports`. Under the `Scheduled` tab, create a new connection.
-2. In your Snowflake warehouse, create a custom user for export purpose.
+1. At the top of your console, tap the "?" icon and navigate to `Tools and Resources` -> `Exports List`. Under the `Scheduled` tab, create a new connection.
+2. In your Snowflake warehouse, create a custom user for this export purpose.
 3. Run the script to create the table and grant your user permissions to operate on it.
 
 ```sql
@@ -74,6 +73,7 @@ CREATE OR REPLACE TABLE <database>.<schema>.<exportTableName> (
 -- grant the custom user privileges to operate on the table
 GRANT INSERT, UPDATE, DELETE ON TABLE <database>.<schema>.<exportTableName> TO ROLE <generatedRole>;
 ```
+
 4. Connect. Then StatSig will run tests to make sure all privileges are granted. Once it's successful, you are enrolled in the feature.
 
 ## Report Schema - type = pulse_daily
@@ -102,4 +102,4 @@ GRANT INSERT, UPDATE, DELETE ON TABLE <database>.<schema>.<exportTableName> TO R
 - Metric values are non-CUPED.
 - After the feature is turned on for you, it will be ready when our pipeline runs. Generally, you can expect it around the time you see pulse results.
 
-__Please note that the previous get_daily_reports endpoint has been deprecated. If you were using this endpoint, please migrate to the new version. However, you can find old docs [here](/console-api/daily-reports-deprecated)__
+**Please note that the previous get_daily_reports endpoint has been deprecated. If you were using this endpoint, please migrate to the new version. However, you can find old docs [here](/console-api/daily-reports-deprecated)**
