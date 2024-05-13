@@ -714,7 +714,7 @@ module.exports = {
         "statsig-warehouse-native/features/power-analysis",
         "statsig-warehouse-native/features/monitor-an-experiment",
         "statsig-warehouse-native/features/freshness",
-        "statsig-warehouse-native/features/stratified-sampling",
+        "experiments-plus/stratified-sampling",
         "statsig-warehouse-native/features/autotune",
       ],
     },
