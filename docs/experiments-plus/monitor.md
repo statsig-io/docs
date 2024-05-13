@@ -31,7 +31,7 @@ To monitor the status of your experiment,
 
   Potential reasons that caused crossover units:
 
-  1. if any exposure in the log stream shows up with reason BootstrapStableIDMismatch, that means you have generated the values for a different stableid.
+  1. if any exposure in the log stream shows up with reason `BootstrapStableIDMismatch`, that means you have generated the values for a different stableid.
 
   If you cannot root cause it, you can reach out to us on slack.
 
