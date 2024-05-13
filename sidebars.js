@@ -600,7 +600,10 @@ module.exports = {
         {
           type: "category",
           label: "Notices",
-          items: ["sdks/group-name-breaking-change"],
+          items: [
+            "sdks/group-name-breaking-change",
+            "sdks/pagination-params-breaking-change",
+          ],
         },
       ],
     },
@@ -729,7 +732,7 @@ module.exports = {
         "statsig-warehouse-native/analysis-tools/data-privacy",
         "statsig-warehouse-native/analysis-tools/pipeline-overview",
         "statsig-warehouse-native/guides/best-practices",
-      ]
+      ],
     },
     {
       type: "category",
@@ -742,7 +745,7 @@ module.exports = {
         "statsig-warehouse-native/connecting-your-warehouse/redshift",
         "statsig-warehouse-native/connecting-your-warehouse/athena",
         "statsig-warehouse-native/connecting-your-warehouse/scheduled-reloads",
-      ]
+      ],
     },
     {
       type: "category",
@@ -935,7 +938,7 @@ module.exports = {
         },
       ],
     },
-    
+
     {
       type: "category",
       className: "sb-whn",
@@ -1149,9 +1152,9 @@ module.exports = {
               },
               items: ["integrations/triggers/datadog"],
             },
-          ],  
-        }
-      ]
+          ],
+        },
+      ],
     },
     {
       type: "category",
@@ -1201,12 +1204,12 @@ module.exports = {
             "infrastructure/reliability-faq",
           ],
         },
-      ]
+      ],
     },
     {
       type: "doc",
       id: "faq",
       className: "sb-whn",
-    }
+    },
   ],
 };
