@@ -18,6 +18,9 @@ These domains are used by our SDKs to communicate with our backend for feature g
 - `statsigapi.net`
 - `events.statsigapi.net`
 - `api.statsigcdn.com`
+- `featureassets.org`
+- `assetsconfigcdn.org`
+- `prodregistryv2.org`
 
 ## Statsig User Segment Storage API
 
