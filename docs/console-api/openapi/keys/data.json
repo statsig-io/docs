@@ -1,0 +1,677 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "https://statsigapi.net/console/v1",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://statsigapi.net/console/v1"
+    }
+  ],
+  "security": [
+    {
+      "STATSIG-API-KEY": []
+    }
+  ],
+  "paths": {
+    "/console/v1/keys/:id": {
+      "get": {
+        "tags": ["Keys"],
+        "summary": "Read Key",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeysResponse"
+                },
+                "example": {
+                  "message": "Key read successfully.",
+                  "data": {
+                    "key": "secret-123",
+                    "type": "SERVER",
+                    "description": "Server secret key",
+                    "scopes": [],
+                    "environments": ["production"],
+                    "primaryTargetApp": "primaryApp",
+                    "secondaryTargetApps": ["secondaryApp"]
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeysResponse"
+                },
+                "example": {
+                  "message": "Insufficient permissions."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeysResponse"
+                },
+                "example": {
+                  "message": "Key not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": ["Keys"],
+        "summary": "Update Key",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "description": "Request body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/KeyCreateContract"
+                  },
+                  {
+                    "properties": {
+                      "description": {
+                        "type": "string",
+                        "maxLength": 1000
+                      },
+                      "scopes": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "enum": ["client_download_config_specs"]
+                        }
+                      },
+                      "environments": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "targetAppID": {
+                        "type": ["string", "null"]
+                      },
+                      "secondaryTargetAppIDs": {
+                        "type": ["array", "null"],
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "environments": ["staging"],
+                "targetAppID": "primaryApp",
+                "secondaryTargetAppIDs": null
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeysResponse"
+                },
+                "example": {
+                  "message": "Key updated successfully.",
+                  "data": {
+                    "key": "secret-123",
+                    "type": "SERVER",
+                    "description": "Server secret key",
+                    "scopes": [],
+                    "environments": ["production"],
+                    "primaryTargetApp": "primaryApp",
+                    "secondaryTargetApps": ["secondaryApp"]
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeysResponse"
+                },
+                "example": {
+                  "message": "Insufficient permissions."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeysResponse"
+                },
+                "example": {
+                  "message": "Key not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Keys"],
+        "summary": "Delete Key",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeysResponse"
+                },
+                "example": {
+                  "message": "Key deleted successfully.",
+                  "data": {
+                    "key": "secret-123",
+                    "type": "SERVER",
+                    "description": "Server secret key",
+                    "scopes": [],
+                    "environments": ["production"],
+                    "primaryTargetApp": "primaryApp",
+                    "secondaryTargetApps": ["secondaryApp"]
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeysResponse"
+                },
+                "example": {
+                  "message": "Insufficient permissions."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeysResponse"
+                },
+                "example": {
+                  "message": "Key not found."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/console/v1/keys": {
+      "get": {
+        "tags": ["Keys"],
+        "summary": "List Keys",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeysResponse"
+                },
+                "example": {
+                  "message": "Keys listed successfully.",
+                  "data": [
+                    {
+                      "key": "secret-123",
+                      "type": "SERVER",
+                      "description": "Server secret key",
+                      "scopes": [],
+                      "environments": ["production"],
+                      "primaryTargetApp": "primaryApp",
+                      "secondaryTargetApps": ["secondaryApp"]
+                    },
+                    {
+                      "key": "console-123",
+                      "type": "CONSOLE",
+                      "description": "Console API key",
+                      "scopes": ["omni_read_write", "can_access_keys"]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeysResponse"
+                },
+                "example": {
+                  "message": "Insufficient permissions."
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Keys"],
+        "summary": "Create Key",
+        "requestBody": {
+          "description": "Request body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KeyCreateContract"
+              },
+              "example": {
+                "type": "SERVER",
+                "description": "Server secret key",
+                "environments": ["production"],
+                "targetAppID": "primaryApp",
+                "secondaryTargetAppIDs": ["secondaryApp"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeysResponse"
+                },
+                "example": {
+                  "message": "Key created successfully.",
+                  "data": {
+                    "key": "secret-123",
+                    "type": "SERVER",
+                    "description": "Server secret key",
+                    "scopes": [],
+                    "environments": ["production"],
+                    "primaryTargetApp": "primaryApp",
+                    "secondaryTargetApps": ["secondaryApp"]
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeysResponse"
+                },
+                "example": {
+                  "message": "Insufficient permissions."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/console/v1/keys/:id/rotate": {
+      "patch": {
+        "tags": ["Keys"],
+        "summary": "Rotate Key",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeysResponse"
+                },
+                "example": {
+                  "message": "Key rotated successfully,",
+                  "data": {
+                    "key": "secret-123",
+                    "type": "SERVER",
+                    "description": "Server secret key",
+                    "scopes": [],
+                    "environments": ["production"],
+                    "primaryTargetApp": "primaryApp",
+                    "secondaryTargetApps": ["secondaryApp"]
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeysResponse"
+                },
+                "example": {
+                  "message": "Insufficient permissions."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeysResponse"
+                },
+                "example": {
+                  "message": "Key not found."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/console/v1/keys/:id/deactivate": {
+      "patch": {
+        "tags": ["Keys"],
+        "summary": "Deactivate Keys",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeysResponse"
+                },
+                "example": {
+                  "message": "Key deactivated successfully.",
+                  "data": {
+                    "key": "secret-123",
+                    "type": "SERVER",
+                    "description": "Server secret key",
+                    "scopes": [],
+                    "environments": ["production"],
+                    "primaryTargetApp": "primaryApp",
+                    "secondaryTargetApps": ["secondaryApp"]
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeysResponse"
+                },
+                "example": {
+                  "message": "Insufficient permissions."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeysResponse"
+                },
+                "example": {
+                  "message": "Key not found."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "STATSIG-API-KEY": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "STATSIG-API-KEY"
+      }
+    },
+    "schemas": {
+      "Key": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": ["string", "null"]
+          },
+          "type": {
+            "type": "string",
+            "enum": ["SERVER", "CLIENT", "CONSOLE"]
+          },
+          "description": {
+            "type": "string"
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "omni_read_only",
+                "omni_read_write",
+                "client_download_config_specs",
+                "none_hash_enabled",
+                "can_access_keys"
+              ]
+            }
+          },
+          "environments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "primaryTargetApp": {
+            "type": ["string", "null"]
+          },
+          "secondaryTargetApps": {
+            "type": ["array", "null"],
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": ["key", "type", "description", "scopes"]
+      },
+      "KeysResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "enum": [
+              "Key not found.",
+              "Insufficient permissions.",
+              "Key read successfully.",
+              "Keys listed successfully.",
+              "Key created successfully.",
+              "Key updated successfully.",
+              "Key deleted successfully.",
+              "Key deactivated successfully.",
+              "Key rotated successfully,"
+            ]
+          },
+          "data": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Key"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Key"
+                }
+              }
+            ]
+          }
+        },
+        "required": ["message"]
+      },
+      "KeyParamContract": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": ["id"]
+      },
+      "KeyCreateContract": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "maxLength": 1000
+          },
+          "type": {
+            "type": "string",
+            "enum": ["SERVER", "CLIENT", "CONSOLE"]
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "omni_read_only",
+                "omni_read_write",
+                "client_download_config_specs",
+                "none_hash_enabled"
+              ]
+            }
+          },
+          "environments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "targetAppID": {
+            "type": "string"
+          },
+          "secondaryTargetAppIDs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": ["description", "type"]
+      },
+      "KeyUpdateContract": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "maxLength": 1000
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["client_download_config_specs"]
+            }
+          },
+          "environments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "targetAppID": {
+            "type": ["string", "null"]
+          },
+          "secondaryTargetAppIDs": {
+            "type": ["array", "null"],
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Keys"
+    }
+  ]
+}
