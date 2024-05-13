@@ -167,3 +167,7 @@ span.math.math-inline {
   position: relative;
   box-sizing: border-box;
 }
+
+.warning {
+  margin-bottom: 16px;
+}
