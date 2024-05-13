@@ -29,6 +29,12 @@ To monitor the status of your experiment,
 
   - **Crossover units detected** checks for a high percentage (over 0.1%) of units that were exposed to more than one variant. These units are considered invalid for pulse metric calculation since their responses cannot be reliably attributed to a single group. We include them in the group-level statistics as they don't introduce bias generally, assuming the behavior of crossing over happens across the board. This check is ephemeral, only appearing when the alert is triggered.
 
+  Potential reasons that caused crossover units:
+
+  1. if any exposure in the log stream shows up with reason `BootstrapStableIDMismatch`, that means you have generated the values for a different stable id.
+
+  If you cannot root cause it, you can reach out to us on slack.
+
   - **Default value type mismatch** detects if an experiment's fallback default value type has differed from the set parameter type.
   - **Group assignment healthy** verifies that your SDKs are configured correctly and surfaces if there are a high percentage of checks with assignment reasons like "Uninitialized" or "InvalidBootstrap" which might indicate experiment assignment is not configured correctly. You can view an hourly breakdown of assignment reason via the **View Assignment Reasons** CTA. To better understand what each assignment reason means, see our breakdown [here](https://docs.statsig.com/sdk/debugging).
 
