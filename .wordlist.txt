@@ -53,6 +53,7 @@ deduplication
 Deduplication
 Deduplicate
 deltalake
+discoverable
 Drilldown
 drilldown
 sessionID
