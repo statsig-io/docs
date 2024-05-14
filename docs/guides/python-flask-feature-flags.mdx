@@ -1,0 +1,140 @@
+---
+sidebar_label: How to set up Feature Flags in Python with Flask
+title: How to set up Feature Flags in Python with Flask
+---
+
+Discover how easy and efficient it is to implement feature flags in your Flask applications. Flask, Python's lightweight web framework, is an excellent choice for developers looking to integrate feature flags into their projects. This guide walks you through the process using the [Python Server SDK](https://docs.statsig.com/server/pythonSDK), demonstrating how Statsig's tools can enhance your Flask projects.
+
+Flask's lightweight nature means that we don't have to treat our usage of Statsig much differently than you would with any Python project.
+
+As an example, we'll be making a Flask app that counts the number of times you visit the site.
+
+## Step 1: Getting Started with Flask and Statsig in Python
+
+Begin by setting up your workspace for integrating feature flags with Flask in Python. Here's how you can create a basic Flask application as the foundation for your feature flag implementation:
+
+```zsh
+mkdir Flask-Flags
+cd Flask-Flags
+touch app.py
+```
+
+app.py is the file we'll write all of our code in.
+
+Next, we should install the Flask and Statsig Python packages if you haven't already. Note: Statsig requires you to use Python 3, for more information take a look at our [Python SDK page.](https://docs.statsig.com/server/pythonSDK)
+
+```
+pip3 install Statsig, Flask
+```
+
+## Step 2: Preparing for Feature Flags
+Next, we'll start editing app.py - we'd recommend opening it up in your favorite code editor to get started. If you're new at this, you can open it in any text editor. We'll start with the simplest possible, 6-line flask app. 
+
+```Python 
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return "Hello World!"
+
+app.run(debug=True)
+```
+
+You can run this file in your IDE, or on your command line with:
+
+```zsh
+Python3 app.py
+```
+
+If you navigate to http://127.0.0.1:5000 in your browser, you should see "Hello World!".
+
+Next, we'll add a new endpoint to our Flask app—one that we'll eventually use a feature flag to make accessible to only some users. Add this code below your last route ("Hello World"!) but above the app.run call:
+
+```Python
+visit_count = 0
+@app.route('/secretRoute')
+def secretRoute():
+    global visit_count
+    visit_count += 1
+    return f"This page has been visited {visit_count} times."
+```
+
+After stopping and starting your project again, you'll be able to see this at [http://127.0.0.1:5000/secretRoute](http://127.0.0.1:5000/secretRoute). If you refresh, you should see the number increment. 
+
+But our secret route is still accessible to everyone. We'll have to put it behind a feature flag ("called a "Gate" in Statsig) to make it private.
+
+Setting up a Statsig account and generating your first flag is easy - head to [console.statsig.com](https://console.statsig.com/) to get started. For this example, set up an account and click on "Launch a Feature" in the setups wizard.
+
+On the next page, you'll be able to select Python as your SDK and retrieve your server key. If you don't see these buttons, simply click on the settings gear in your home page then click on Keys & Environments, where you can copy your server key.
+
+## Step 3: Integrating Statsig for Feature Flags in Your Flask App
+
+Now, let's add two lines of code to the top of your Python file to get Statsig set up:
+
+```Python
+from statsig import statsig, StatsigUser
+statsig.initialize("server-secret-key") #insert your server key here!
+```
+
+You now have Statsig set up and just need to wrap your secret route in a feature flag. With Statsig, we call .checkGate to check if a feature is available or not. Let's edit our /secretRoute to include this!
+
+First, we need to set up a feature flag. Feature flags in Statsig are [free up to 500M events](https://www.statsig.com/blog/introducing-free-feature-flags) - let's set one up.
+
+Click next on the Statsig setup page, and you'll be given the opportunity to name your flag (if you don't see this, just click on "Feature Gates" in the Statsig console). I've called mine secret_route, and left "user_id" as the default.
+
+Click next, and set the "rule" on your feature flag to allow "Everyone" (in the dropdown) and leave the "pass percent" at 100%. Click next and you should see an empty log stream (for now). Now, change your secretRoute function to look like this:
+
+![image](/img/everyone_gate.png)
+
+```Python 
+@app.route('/secretRoute')
+def secretRoute():
+    global visit_count
+    user = StatsigUser(user_id=f"12345")
+    if(statsig.check_gate(user, "secret_route")):
+        visit_count += 1
+        return f"This page has been visited {visit_count} times."
+    else:
+        return "failed feature flag"
+```
+
+Now, when we access this route, we'll only be granted access if our gate's rules allow. When you refresh [127.0.0.1:5000/secretRoute](http://127.0.0.1:5000/secretRoute), it should still pass!
+
+But if you head back to your rule and change it to 100% fail, then wait a moment and refresh, you should see "failed feature flag" checking your secretRoute. Congratulations! You've set up your first feature flag.
+
+![image](/img/everyone0_gate.png)
+
+It's important to note that changes with a Server SDK won't be instantaneous; see the architecture diagram on our [Server SDK Introduction Page](https://docs.statsig.com/server/introduction) for more.
+
+## Step 4: Implementing Feature Flags in Flask with Statsig
+
+The true power of feature flags becomes apparent when you can rollout features to specific user group (enabling dogfooding, insider groups, or [canary testing](https://www.statsig.com/glossary/canary-testing)) and even more powerful—measuring the impact that it has on their experience and business metrics.
+
+This is what Statsig calls ["Metric Lifts"](https://docs.statsig.com/feature-flags/view-exposures) in our famous [pulse view](https://docs.statsig.com/pulse/read-pulse).
+
+One of the fundamental concepts that enables this is adding user identifiers to your feature flag checks (or "gate checks"). In the previous example, we added a placeholder user_id of 12345 to the user. A more interesting example is to include an email for the user, then set our rule to only allow certain emails to access the feature. See below:
+
+```Python
+@app.route('/secretRoute')
+def secretRoute():
+    global visit_count
+    email = request.args.get('email')
+    user = StatsigUser(user_id=f"12345", email=email)  # Using the email as user_id
+    if(statsig.check_gate(user, "secret_route")):
+        visit_count += 1
+        return f"This page has been visited {visit_count} times."
+    else:
+        return "failed feature flag"
+```
+
+Now, we've added an email field to our user - which we can pass in in a query parameter, for example, http://127.0.0.1:5000/secretRoute?email=brock@statsig.com. Now, let's go change our rule in the Statsig console (pressing the back button) to show only users where their email contains @statsig.com - and pass 100% of those users.
+
+![image](/img/statsigemail_gate.png)
+
+Now, when we refresh the URL above, we should have access! But if we change the email to not include @statsig.com by even one character, we will no longer have access. This is the fundamental concept of access management, and it unlocks so many more possibilities!
+
+A great next step is to consider implementing [log events](https://docs.statsig.com/guides/logging-events) in your project to measure the impact on users who are exposed and not exposed to a feature. 
+
+Thanks for reading this tutorial! If you have trouble or any other questions, please join our [Slack Group](https://statsig.com/slack).

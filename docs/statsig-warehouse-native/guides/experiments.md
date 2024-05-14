@@ -15,9 +15,10 @@ To create an experiment, you can go to the experiments tab in your console and p
 There's two types of experiments in Statsig Warehouse Native:
 
 - Analyze: these are for 3rd-party or in-house exposure sources
-- Create & Analyze: these are Statsig-configured experiments. You can set up all of the configuration here, implement it through Statsig SDKs, and track results.
+- Assign & Analyze: these are Statsig-configured experiments. You can set up all of the configuration here, implement it through Statsig SDKs, and track results.
 
-![Create Experiment](https://user-images.githubusercontent.com/102695539/264101231-45446c24-f8a9-4ae9-8b44-fff320458615.png)
+![image](https://github.com/statsig-io/docs/assets/31516123/30954be6-7c2e-48f4-8072-f196349adbc3)
+
 
 Next, you'll give the experiment a name, specify your hypothesis, and pick the experiment from your exposure sources. You can sync sources
 if your exposure isn't loaded in the dropdown.
@@ -47,12 +48,24 @@ Here, you can also rename groups or delete irrelevant groups.
 
 Statsig has many settings you can configure in your experiment. Defaults for these can be set at the org level as well. These include:
 
-- Frequentist vs. Bayesian Analysis
+- Frequentist vs. Bayesian analysis
 - Target duration of the experiment
-- Whether or not to apply Sequential Testing adjustments
-- Whether and how to apply bonferroni Correction
-- Confidence Intervals
-- Default rollup windows for result readouts (Cumulative, 1, 7, 14, or 28 days from the analysis date)
+- Whether to apply [Sequential Testing](https://docs.statsig.com/experiments-plus/sequential-testing) adjustments
+- Allocation Duration
+  - You can choose to stop enrolling new users into the experiment after X days
+  - Note that you need to set up [Persistent Assignment](https://docs.statsig.com/client/concepts/persistent_assignment) to retain already-enrolled users to stay in the same group
+- Cohort Duration
+  - You can choose to specify a timeline for collecting metric data
+- Whether to allow cohort metrics to mature after experiment end
+- [ID stitching](https://docs.statsig.com/statsig-warehouse-native/features/id-resolution)
+- Whether and how to apply [Bonferroni Correction](https://docs.statsig.com/stats-engine/methodologies/bonferroni-correction)
+- Default Confidence Intervals
+- Default rollup windows for result readouts (cumulative, 1, 7, 14, or 28 days from the analysis date)
+- Turbo Mode
+  - You can choose to skip the calculations for time series
+  - This is useful if you want to reduce cost and runtime, and you only care about the overall effect 
+- Filter exposures by qualifying event
+  - Only applicable in Analyze-only experiments
 
 ## Start The Experiment
 
@@ -66,3 +79,5 @@ When you press load data, a Pulse analysis will start and you'll be taken to the
 For a Statsig-configured experiment where you're using the Statsig SDKs to generate exposures - the default  is that exposures are batched, deduplicated and written to your warehouse once a day. When you launch an experiment, it's helpful to be able to look at early metric deltas  (to detect crashes or catch an egregious bug). When Pulse is loaded soon after the experiment starts, we'll update exposures in your warehouse before computing Pulse results. This lets you see Pulse results as fresh as ~15m (assuming events and metrics come in at the same speed).
 
 Under the covers, if the # of exposures on an experiment is < 1 million we perform a just-in-time update of exposures in your warehouse when Pulse is loaded.
+
+Note : We only write to your warehouse exposure information that will be used for experiment analysis. We will not write exposures in pre-production environments or from overrides since these are not used in analysis. 

@@ -4,7 +4,9 @@ sidebar_label: Bonferroni Correction
 slug: /stats-engine/methodologies/bonferroni-correction
 ---
 
-## Bonferroni Correction
+## What is Bonferroni Correction?
+
+A Bonferroni Correction is a statistical method that reduces the probability of false positives by adjusting the significance level for multiple comparisons.
 
 If you run a tests with α = 0.05, the probability of a false positive will be 5%. If you run more comparisons at the same significance level, the chance of at least one false positive goes up because each comparison is an additional opportunity for false positive.
 

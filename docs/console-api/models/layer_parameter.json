@@ -11,7 +11,8 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "Name of this parameter."
+      "description": "Name of this parameter.",
+      "example": "a_parameter"
     },
     "type": {
       "type": "string",
@@ -22,7 +23,8 @@
         "object",
         "array"
       ],
-      "description": "The type that this parameter returns."
+      "description": "The type that this parameter returns.",
+      "example": "number"
     },
     "defaultValue": {
       "description": "The default value for this parameter, must match the type provided",
@@ -33,7 +35,8 @@
         "array",
         "object"
       ],
-      "items": {
+      "example": 100,
+      "additionalProperties": {
         "type": [
           "number",
           "string",

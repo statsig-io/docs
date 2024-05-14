@@ -1,0 +1,102 @@
+---
+sidebar_label: New JavaScript (Beta)
+title: New JavaScript Client SDK (Beta)
+---
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  Shutdown,
+  CodeExamples,
+  EvaluationDetails
+} from "./Templates/index.mdx";
+
+import OnDeviceEvalProsAndCons from "./Templates/_OnDeviceEvalProsAndCons.mdx";
+
+import * as _DataAdapter from "./javascript-mono/_dataAdapter.mdx";
+export const DataAdapter = _DataAdapter;
+
+import * as _UpdateUser from "./javascript-mono/_updateUser.mdx";
+export const UpdateUser = _UpdateUser;
+
+import * as _ClientEventEmitting from "./javascript-mono/_clientEventEmitting.mdx";
+export const ClientEventEmitting = _ClientEventEmitting;
+
+import * as _MultiInstance from "./javascript-mono/_multiInstance.mdx";
+export const MultiInstance = _MultiInstance;
+
+import * as _prefetchUsers from "./javascript-mono/_prefetchUsers.mdx";
+export const PrefetchUsers = _prefetchUsers;
+
+import * as _asyncTimeouts from "./javascript-mono/_asyncTimeouts.mdx";
+export const AsyncTimeouts = _asyncTimeouts;
+
+
+import CheckGate from "./javascript-mono/_checkGate.mdx";
+import GetConfig from "./javascript-mono/_getConfig.mdx";
+import GetExperiment from "./javascript-mono/_getExperiment.mdx";
+import Initialize from "./javascript-mono/_initialize.mdx";
+import Install from "./javascript-mono/_install.mdx";
+import LogEvent from "./javascript-mono/_logEvent.mdx";
+import MoreFAQs from "./javascript-mono/_faqs.mdx";
+import Options from "./javascript-mono/_options.mdx";
+import ShutdownSnippet from "./javascript-mono/_shutdown.mdx";
+
+export const Result = SDKDocsBuilder(
+  {},
+  [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/js-client-monorepo",
+      },
+    ],
+    [
+      GettingStarted,
+      {
+        sdkType: "JavaScript Precomputed Evaluations",
+        install: <Install />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+      },
+    ],
+    [EvaluationDetails, { snippetUrl: "https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-evaluation-details.tsx" }],
+    [
+      CodeExamples,
+      {
+        link: "https://github.com/statsig-io/js-client-monorepo/tree/main/samples",
+        trailingMessage: "",
+      },
+    ],
+    [StatsigUser, {}],
+    [UpdateUser, {}],
+    [PrefetchUsers, {}],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [AsyncTimeouts, {}],
+    [DataAdapter, {}],
+    [ClientEventEmitting, {}],
+    [MultiInstance, {}],
+    [FAQ, { faqs: <MoreFAQs /> }],
+  ],
+  toc
+);
+
+<>{Result}</>

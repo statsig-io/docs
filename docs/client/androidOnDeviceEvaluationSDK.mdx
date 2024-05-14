@@ -1,5 +1,5 @@
 ---
-sidebar_label: Android (On Device Evaluation)
+sidebar_label: Android
 title: Android On Device Evaluation
 ---
 
@@ -30,6 +30,7 @@ import LogEvent from "./AndroidOnDeviceEvaluation/_logEvent.mdx";
 import MoreFAQs from "./AndroidOnDeviceEvaluation/_faqs.mdx";
 import Options from "./AndroidOnDeviceEvaluation/_options.mdx";
 import ShutdownSnippet from "./AndroidOnDeviceEvaluation/_shutdown.mdx";
+import * as UsingPersistentValues from "./AndroidOnDeviceEvaluation/_usingPersistentValues.mdx";
 
 export const Result = SDKDocsBuilder(
   {},
@@ -68,6 +69,7 @@ export const Result = SDKDocsBuilder(
     ],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [UsingPersistentValues, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
   ],
   toc

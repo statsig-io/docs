@@ -25,7 +25,7 @@ For client SDKs, these reasons for the value you are seeing can be:
 
 - `Network`: fetched at SDK initialization time from the network
 - `Bootstrap`: derived from bootstrapping the client SDK with a set of values
-- `InvalidBootstrap`: the set of values was for a different user than the SDK was initialized with (See [Fixing InvalidBootstrap](#fixing-invalidbootstrap))
+- `InvalidBootstrap`: the set of values was for a different user than the SDK was initialized with. These are discarded for analysis (See [Fixing InvalidBootstrap](#fixing-invalidbootstrap))
 - `Cache`: loaded from the local storage cache for the current user, and a network result was not available
 - `Prefetch`: fetched from the `prefetchUsers` api (js-client only)
 - `Sticky`: persisted from a sticky evaluation previously
@@ -33,6 +33,17 @@ For client SDKs, these reasons for the value you are seeing can be:
 - `Unrecognized`: the sdk was initialized, but this config did not exist in the set of values
 - `Error`: an unknown error has occured, and was logged to statsig servers
 - `NetworkNotModified`: the network response came back, but the cached values were already up to date for this user
+
+Newer versions of the sdk will contain two tags: one regarding the initialization state of the sdk, and the other qualifying different sources for that value.
+
+So in addition to the reasons above, you may have:
+
+- `Recognized`: the value was recognized in the set of configs the client was operating with
+- `Unrecognized`: the value was not included in the set of configs the client was operating with
+- `Sticky`: the value is from `keepDeviceValue = true` on the method call
+- `LocalOverride`: the value is from a local override set on the sdk
+
+So `Network:Recognized` means the sdk had up to date values from a successful initialization network request, and the gate/config/experiment you were checking was defined in the payload.  If you are not sure why the config was not included in the payload, it could be excluded due to [Target Apps](/sdk-keys/target-apps), or [Client Bootstrapping](/client/concepts/bootstrapping), for example.
 
 For server SDKs, these reasons for the value you are seeing can be:
 
@@ -42,6 +53,8 @@ For server SDKs, these reasons for the value you are seeing can be:
 - `LocalOverride`: from an override set locally on the SDK via an override API
 - `Unrecognized`: the sdk was initialized, but this config did not exist in the set of values
 - `Uninitialized`: the sdk was not yet successfully initialized
+
+Newer versions fothe 
 
 In addition to these reasons, the most recent versions of server SDKs will also give you two times to watch: the time at which config definitions initialized the SDK,
 and the time at which the SDK was currently evaluating those definitions.  When you change a gate/config/experiment, the project time will update
@@ -94,10 +107,11 @@ With this tool, you can see the current User object the SDK is using as well as 
 
 Javascript/React: Via a Chrome Extension https://github.com/statsig-io/statsig-sdk-debugger-chrome-extension
 
+NOTE: Accounts signing in to the Statsig console via Google SSO are not supported by this debugging tool.
+
 iOS: Available with `Statsig.openDebugView()`. Available in [v1.26.0](https://github.com/statsig-io/ios-sdk/releases/tag/v1.26.0) and [above](https://github.com/statsig-io/ios-sdk/releases).
 
-Android: Not yet supported. 
-
+Android: Available with  `Statsig.openDebugView()`. Available in [v4.29.0](https://github.com/statsig-io/android-sdk/releases/tag/4.29.0) and [above](https://github.com/statsig-io/android-sdk/releases/).
 
 |Landing|Gates List|Gate Details|Experiment Details|
 |--|--|--|--|

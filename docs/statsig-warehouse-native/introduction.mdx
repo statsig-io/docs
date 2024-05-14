@@ -5,14 +5,15 @@ sidebar_label: Warehouse Native
 description: Set up your first Statsig Warehouse Native project
 ---
 
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardHeader from "@material-ui/core/CardHeader";
-import Icon from "@material-ui/core/Icon";
-import IconButton from "@material-ui/core/IconButton";
-import Link from "@material-ui/core/Link";
+import Button from "@mui/material/Button";
+import OutlinedCard from "@site/src/components/OutlinedCard";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
+import Icon from "@mui/material/Icon";
+import IconButton from "@mui/material/IconButton";
+import Link from "@mui/material/Link";
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
@@ -35,57 +36,6 @@ export const ArrowButton = ({ link }) => (
       arrow_forward
     </Icon>
   </IconButton>
-);
-
-export const OutlinedCard = ({ title, description, icon, link }) => (
-  <Card
-    style={{
-      minWidth: "240px",
-      margin: "16px",
-      flex: "0 0 28%",
-      display: "flex",
-      flexDirection: "column",
-      padding: "16px",
-      boxShadow: "0 6px 16px rgba(0, 0, 0, 0.06)",
-      border: 0,
-    }}
-  >
-    <div
-      style={{
-        fontWeight: "bold",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "flex-start",
-        alignContent: "space-between",
-        alignItems: "center",
-      }}
-    >
-      <Icon style={{ color: "#194b7d" }}>{icon}</Icon>
-      <div style={{ paddingLeft: "8px" }}>{title}</div>
-    </div>
-    <CardContent
-      style={{
-        padding: 0,
-        paddingTop: "4px",
-        display: "flex",
-        flex: 1,
-        flexDirection: "column",
-        justifyContent: "space-between",
-      }}
-    >
-      <p>{description}</p>
-      <CardActions
-        style={{
-          padding: 0,
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "flex-end",
-        }}
-      >
-        <ArrowButton link={link} />
-      </CardActions>
-    </CardContent>
-  </Card>
 );
 
 Statsig Warehouse Native brings Statsig's to your warehouse. Assess the impact of new features on-demand, on your compute, and mix and match use Statsig's SDKs with your own sources of metric and assignment data.
@@ -130,6 +80,12 @@ This is an appealing option for customers who are privacy sensitive or who are a
     description="Use Statsig's SDK to get easy event logging and rich features like holdouts and mutual exclusion. Export events to your warehouse for analysis"
     link="guides/sdks"
   ></OutlinedCard>
+  <OutlinedCard
+    title="Run a Proof of Concept"
+    icon="biotech"
+    description="Run a Proof of Concept with Statsig's Warehouse Native solution to validate your use cases"
+    link="guides/running_a_poc"
+  ></OutlinedCard>
 </div>
 
 ## Tools
@@ -146,7 +102,7 @@ Statsig Warehouse Native integrates with Statsig's development tools:
     title="Feature Gates"
     icon="tune"
     description="Control access to new functionality and automatically measure how it’s performing with an A/B test before you ship"
-    link="/feature-gates/working-with"
+    link="/feature-flags/working-with"
   ></OutlinedCard>
   <OutlinedCard
     title="Dynamic Configs"

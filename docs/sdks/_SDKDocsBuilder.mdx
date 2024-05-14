@@ -22,12 +22,6 @@ export const SDKDocsBuilder = (
   const result = sections.map(([Section, props], index) => {
     const tocFilters = Section.tocFilter;
     const addTOC = Section.toc.filter((entry) => tocFilters?.includes(entry.id) !== true);
-    console.log(Section.tocFilter)
-    // toc.forEach((item, index) => {
-    //   if (filterFromTOC?.includes(item.id)) {
-    //     toc[index] = null;
-    //   }
-    // });
     toc.push(...addTOC);
     return (
       <React.Fragment key={"" + index}>

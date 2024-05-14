@@ -8,9 +8,7 @@ slug: /mex/overview
 
 # Overview
 
-Metrics Explorer, coupled with Statsig Dashboards, are the primary product analytic surfaces within Statsig. At Statsig, we believe that the journey from data to innovation is fueled by insights. Our product analytics offering is designed to give developers, data scientists, and product leaders the tools to make that journey with confidence. 
-
-![image](https://github.com/statsig-io/docs/assets/3464964/31187a9f-96b3-458d-a5af-7def2a135dd6)
+Statsig product analytics helps you understand how your users experience and interact with your product through the analysis of product data. Metrics Explorer and Dashboards are the primary product analytics surfaces within Statsig. 
 
 
 # Metrics Explorer
@@ -23,9 +21,9 @@ In Metrics Explorer, charts are the primary means of analysis, providing a versa
 
 We offer the following chart types: 
 
-- Metric Drilldown
-- Funnels
-- Retention
+- [Metric Drilldown](/mex/drilldown)
+- [Funnels](/mex/funnels)
+- [Retention](/mex/retention)
 - Distribution
 - User Journeys (Beta)
 
@@ -33,7 +31,7 @@ Get started with Metrics Explorer charts by going to the Metrics in the left-nav
 
 # Dashboards
 
-Dashboards are a great way to share important and interesting insights and information with your team. Any chart that you have built can be saved to a dashboard. You can also save a snapshot of Feature Gates, A/B tests, and experiments to dashboards as well. You can also automatically sync experiments and feature gate snapshots to a dashboard, making it easy to keep people update to date with relevant launches and experiments as they emerge. These dashboards are auto-populated with any entity matching any tag you specify.  
+[Dashboards](/mex/dashboards) are a great way to share important and interesting insights and information with your team. Any chart that you have built can be saved to a dashboard. You can also save a snapshot of Feature Gates, A/B tests, and experiments to dashboards as well. You can also automatically sync experiments and feature gate snapshots to a dashboard, making it easy to keep people update to date with relevant launches and experiments as they emerge. These dashboards are auto-populated with any entity matching any tag you specify.  
 
 ## Charts in Dashboards
 

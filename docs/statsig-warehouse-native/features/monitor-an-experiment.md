@@ -13,7 +13,7 @@ To monitor the status of your experiment,
  - Select the experiment you want to monitor 
  - **Experiment Health Checks** show alerts for problems with the experiment setup.  Hover over the icon and click on a check for more details.
    
-   ![Screen Shot 2023-11-09 at 11 11 07 AM](https://github.com/statsig-io/docs/assets/135062389/375aa506-5dbf-42e5-b238-280c907f499b)
+   ![Diagnostic health check image](https://github.com/statsig-io/docs/assets/5475308/8b557e40-2473-45e1-ac0c-bd61a2eb5208)
 
     - **Pulse metrics available**  monitors availability of Pulse results, which are expected on the day after the experiment starts.  
     - **Exposures are balanced** checks that the number of units exposed in each group matches the expected allocation.  The Sample Ratio Mismatch (SRM) check is performed using a Chi-Squared test of independence. It is possible for experiments to temporarily show small imbalances simply due to the randomness of the user assignment.  These will often resolve on their own after a couple days, while true SRM imbalances that originate from systematic assignment/logging problems tend to persist over time.  The following thresholds are used for displaying SRM alerts:
@@ -35,9 +35,11 @@ To monitor the status of your experiment,
 
     Duplicate mapped IDs happen when the same primary ID is associated with multiple secondary IDs or vice versa. This happens when the primary identifier gets reset, or if there are mutliple conversions from the same primary identifier. Deduplication can reduce your sample size and may impact the overall magnitude of your results.
 
-    - **Deduplication Rate Check** reports the percentage of exposures which have duplicate mapped ids acros primary and secondary IDs. The following thresholds are used for displaying deduplication rate alerts:
+    - **Deduplication Rate Check** reports the percentage of exposures which have duplicate mapped ids across primary and secondary IDs. The following thresholds are used for displaying deduplication rate alerts:
       - **Deduplication rate between 1% and 5%** Warning (yellow) meaning that a number of deduplications have been made which will not be included in analysis, reducing the sample size and potentially impacting the overall magnitude of results. 
       - **Deduplication rate greater than 5%** Alert (red) meaning that a substantial number of deduplications have been made which will not be included in the analysis. This can indicate a problem with the experiment setup
-    - **Deduplication Bias Check** reports the percentage of exposures which have duplicate mapped ids acros primary and secondary IDs in each group and performs a Chi-Squared test of independence. The following thresholds are used for displaying deduplication bias alerts:
+    - **Deduplication Bias Check** reports the percentage of exposures which have duplicate mapped ids across primary and secondary IDs in each group and performs a Chi-Squared test of independence. The following thresholds are used for displaying deduplication bias alerts:
       - **p-value between 0.001 and 0.01**: Warning (yellow) indicating possible bias.The p-value is not low enough to confidently say that there is a real imbalance in deduplication rate between groups. In this case the recommendation is to wait and check again the next day.
       - **p-value < 0.001**: Alert (red) meaning that there is likely a problem with deduplication being applied more to one of the treatment groups and experiment results may not be trustworthy.
+     
+   - **Pre-experimental Bias Check** In some cases, users in two experiment groups can have meaningfully different average behaviors before your experiment applies any intervention to them. If this difference is maintained after your experiment starts, it's possible that experiment analysis will attribute that pre-existing difference to your intervention. This can make a result seem more or less "good" or "bad" than it really is. CUPED is helpful in addressing this bias, but can't totally account for it. [Learn more](https://docs.statsig.com/stats-engine/pre-experiment-bias).
