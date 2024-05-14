@@ -11,12 +11,13 @@ Metric Sources are an interface to connect to your data from Statsig. These act 
 To create a metric source, go to the metric tab in Statsig and go to the Metric Sources pane.
 
 A metric source starts with a SQL query. This can be a flat read of a table or view, or a more complex join:
-![Metric Source SQL](https://user-images.githubusercontent.com/102695539/264088009-f466deb1-cc48-4672-8ff9-76f593637d7e.png)
+![image](https://github.com/statsig-io/docs/assets/31516123/174bf9e4-ed8b-41fa-a8db-3a5f2dbd0985)
+
 
 Running the query validates the syntax and pulls a short set of samples as well as the columns in the result set. Some fields need to be mapped to the fields
 Statsig requires (user identifiers, a `timestamp`, and a `value`).
 
-![Metric Source Mapping](https://user-images.githubusercontent.com/102695539/264088003-9938e02b-c1fb-4a37-a503-e7e49157509a.png)
+![image](https://github.com/statsig-io/docs/assets/31516123/1ed8f45b-19ed-42fb-bb26-5b43fca31a53)
 
 This is fairly flexible and can be used with many data granularities:
 
@@ -27,6 +28,13 @@ This is fairly flexible and can be used with many data granularities:
 For example, if you wanted to calculate a metric for revenue, you could use the raw revenue event
 logging table with the logged value as the value, or use an aggregated and cleaned daily version
 with the calculated daily sum of revenue as the value.
+
+## Tables as a Metric Source
+If you simply want to use an existing table as a metric source, you can point to the table instead of writing a SQL query. This can be both simpler and more performant than operating on top of a SQL query. If you're using semantic layers to materialize metrics in tables, this is likely the interface to use. An added perk with using Tables as a Metric Source is being able to use formulae. You can apply simple SQL transforms (e.g. convert from cents to dollars by dividing by 100) or alias them to make them more discoverable.
+
+![image](https://github.com/statsig-io/docs/assets/31516123/ada794c9-9ebc-480a-85d5-4dd8bc3bc573)
+
+
 
 ## Manage Metric Sources
 
