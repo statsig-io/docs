@@ -30,7 +30,7 @@ logging table with the logged value as the value, or use an aggregated and clean
 with the calculated daily sum of revenue as the value.
 
 ## Tables as a Metric Source
-If you simply want to use an existing table as a metric source, you can point to the table instead of writing a SQL query. This can be both simpler and more performant than operating on top of a SQL query. If you're using semantic layers to materialize metrics in tables, this is likely the interface to use. An added perk with using Tables as a Metric Source is being able to use formulae. You can apply simple SQL transforms (e.g. convert from cents to dollars by dividing by 100).
+If you simply want to use an existing table as a metric source, you can point to the table instead of writing a SQL query. This can be both simpler and more performant than operating on top of a SQL query. If you're using semantic layers to materialize metrics in tables, this is likely the interface to use. An added perk with using Tables as a Metric Source is being able to use formulae. You can apply simple SQL transforms (e.g. convert from cents to dollars by dividing by 100) or alias them to make them more discoverable.
 
 ![image](https://github.com/statsig-io/docs/assets/31516123/ada794c9-9ebc-480a-85d5-4dd8bc3bc573)
 
