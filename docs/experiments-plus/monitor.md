@@ -27,9 +27,10 @@ To monitor the status of your experiment,
 
     Read [more](https://docs.statsig.com/stats-engine/methodologies/srm-checks) on our SRM methodology and Statsig's debugging tool.
 
-  - **Crossover units detected** checks for a high percentage (over 0.1%) of units that were exposed to more than one variant. These units are considered invalid for pulse metric calculation since their responses cannot be reliably attributed to a single group. We include them in the group-level statistics as they don't introduce bias generally, assuming the behavior of crossing over happens across the board. This check is ephemeral, only appearing when the alert is triggered. \
-    \
+  - **Crossover units detected** checks for a high percentage (over 0.1%) of units that were exposed to more than one variant. These units are considered invalid for pulse metric calculation since their responses cannot be reliably attributed to a single group. We include them in the group-level statistics as they don't introduce bias generally, assuming the behavior of crossing over happens across the board. This check is ephemeral, only appearing when the alert is triggered.
+
     Potential reasons that caused crossover units:
+
     1. if any exposure in the log stream shows up with reason `BootstrapStableIDMismatch`, that means you have generated the values for a different stable id.
 
   If you cannot root cause it, you can reach out to us on slack.
