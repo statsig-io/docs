@@ -56,30 +56,17 @@ window.StatsigLogger = (function () {
   };
 
   var checkStatsigReady = function (callback) {
-    var checkerLoop, idx = 1;
-    var killLoop = function () {
-      log('+++ Stop checkStatsigReady after ' + idx + ' checks');
-      try {
-        clearTimeout(checkerLoop);
-      } catch (err) { }
-    };
-    (function checkerFcn() {
-      if (idx >= 10) {
-        killLoop();
-        return;
+    // statsig has already loaded
+    if(typeof StatsigSidecar !== 'undefined' && StatsigSidecar.getStatsigInstance()) {
+      log('+++ Statsig:ready Already loaded');
+      callback(StatsigSidecar.getStatsigInstance());
+    }
+    else {
+      log('+++ Statsig:ready Binded callback');
+      window.postExperimentCallback = function(statsigClient, expIds) {
+        callback(statsigClient);
       }
-      try {
-        log('+++ Check num: ' + idx);
-        if (StatsigSidecar.getStatsigInstance().ready) {
-          log('+++ Statsig Ready!');          
-          killLoop();
-          callback();
-          return;
-        }
-      } catch (err) { }
-      idx++;
-      checkerLoop = setTimeout(checkerFcn, 250);
-    })();
+    }
   };
 
   var handleGTMMessage = function (model, message) {    
@@ -94,19 +81,26 @@ window.StatsigLogger = (function () {
       statsigInstance.logEvent(message.event, message.conversionValue || null, metadata);
     }
     else {
-      log('++ handleGTMMessage / skip');
+      log('++ handleGTMMessage / skip', message);
     }
   }
 
-  checkStatsigReady(function () {
-    log('+++ Statsig:ready');
-    statsigInstance = StatsigSidecar.getStatsigInstance();
+  checkStatsigReady(function (statsigInstanceReady) {
+    statsigInstance = statsigInstanceReady;
     // dataLayer will contain gtm events (~messages) that were fired pre statsig readiness
     new DataLayerHelper(dataLayer, {
       listener: handleGTMMessage,
       listenToPast: true,
     });
   });
+  
+  return {
+    track: function() {
+      try {
+        statsigInstance.logEvent.apply(statsigInstance, arguments);
+      } catch(err) { } 
+    }
+  }
 
 })();
 </script>
