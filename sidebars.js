@@ -888,28 +888,6 @@ module.exports = {
           },
           items: ["layers/js-tutorial"],
         },
-        {
-          type: "category",
-          label: "Landing Page Experiments",
-          items: [
-            "guides/landing-page-experiments/introduction",
-            "guides/landing-page-experiments/setup",
-            "guides/landing-page-experiments/interpreting",
-            "guides/landing-page-experiments/layers",
-            "guides/landing-page-experiments/webflow",
-          ],
-        },
-        {
-          type: "category",
-          label: "Low-code Experiments",
-          items: [
-            "guides/sidecar-experiments/introduction",
-            "guides/sidecar-experiments/setup",
-            "guides/sidecar-experiments/creating-experiments",
-            "guides/sidecar-experiments/publishing-experiments",
-            "guides/sidecar-experiments/integrating-gtm",
-          ],
-        },
         "holdouts/introduction",
         {
           type: "category",
