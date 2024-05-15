@@ -2385,6 +2385,24 @@
               "id": "hkolnyqm8whud"
             },
             "description": "Custom time window end date(Days since exposure)"
+          },
+          "percentile": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "kw173ivbfgy7c"
+            }
+          },
+          "valueThreshold": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "vymqddfs8zs1k"
+            }
+          },
+          "cap": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "a8qmbkfu8dyes"
+            }
           }
         }
       },
