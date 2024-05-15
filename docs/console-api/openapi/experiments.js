@@ -3048,6 +3048,111 @@ module.exports = {
         }
       }
     },
+    "/experiments/{experiment_id}/unarchive": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "experiment_id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "Unarchive Experiment",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "$ref": "./models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Success": {
+                    "value": {
+                      "message": "Experiment successfully archived."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./models/error_401.json"
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "status": 401,
+                      "message": "This endpoint only accepts an active CONSOLE key, but an invalid key was sent. Key: console-xxxXXXxxxXXXxxx"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "$ref": "#/components/schemas/status"
+                    },
+                    "message": {
+                      "$ref": "./models/message.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "status": 404,
+                      "message": "Experiment not found."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "put-experiments-experiment_id-unarchive",
+        "x-stoplight": {
+          "id": "xkudvel0hmck0"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "archiveReason": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "9of1gdwxb3d0s"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/experiments/{experiment_id}/load_pulse": {
       "parameters": [
         {
