@@ -2125,6 +2125,100 @@
         }
       ]
     },
+    "/gates/{gate_id}/rules": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "gate_id",
+          "in": "path",
+          "required": true,
+          "description": "Gate id to query"
+        }
+      ],
+      "patch": {
+        "summary": "Update list of Gate Rules",
+        "description": "Update multiple rules matching on id or baseID, while leaving remaining rules unaffected",
+        "tags": ["Gates"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "$ref": "../../models/message.json"
+                    },
+                    "data": {
+                      "$ref": "../../models/gate.json"
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Gate updated successfully.",
+                      "data": {
+                        "id": "a_gate",
+                        "isEnabled": true,
+                        "description": "helpful summary of what this gate does",
+                        "status": "In Progress",
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierID": "1vaasdfLlkaujjajiuOSBP2",
+                        "rules": [
+                          {
+                            "name": "All Conditions",
+                            "id": "38ttpCpzrQFTMKcqFKk02l:10.00:1",
+                            "baseID": "38ttpCpzrQFTMKcqFKk02l",
+                            "passPercentage": 10,
+                            "conditions": [
+                              {
+                                "type": "user_id",
+                                "targetValue": ["35sClJFs8l0y5uRQhDwUDo"],
+                                "operator": "any"
+                              }
+                            ],
+                            "environments": ["staging"]
+                          }
+                        ],
+                        "tags": ["* Core"]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "patch-gates-gate_id-rules",
+        "x-stoplight": {
+          "id": "cskquc8gs29q7"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "rules": {
+                    "x-stoplight": {
+                      "id": "jwc5zvln0t0ia"
+                    },
+                    "type": "array",
+                    "items": {
+                      "$ref": "../../models/rule.json"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/gates/{gate_id}/rules/{rule_id}": {
       "parameters": [
         {
@@ -2232,30 +2326,6 @@
                         {
                           "property": "rules",
                           "errorMessage": "Duplicate rule name(s) given"
-                        }
-                      ]
-                    }
-                  },
-                  "Duplicate rule ID": {
-                    "value": {
-                      "status": 400,
-                      "message": "Duplicate rule IDs given",
-                      "errors": [
-                        {
-                          "property": "rules",
-                          "errorMessage": "Duplicate rule IDs given"
-                        }
-                      ]
-                    }
-                  },
-                  "Nonexistent rule ID": {
-                    "value": {
-                      "status": 400,
-                      "message": "A provided rule ID does not match an existing rule ID",
-                      "errors": [
-                        {
-                          "property": "rules",
-                          "errorMessage": "A provided rule ID does not match an existing rule ID"
                         }
                       ]
                     }
