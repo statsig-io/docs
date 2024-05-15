@@ -105,7 +105,7 @@ import { StatsigProvider } from '@statsig/react-bindings';
 
 const client = new StatsigClient(sdkKey,
 	{ userID: "some_user_id" },
-  { environment: { tier: "staging" } } // optional, pass options here if needed
+  { environment: { tier: "production" } } // optional, pass options here if needed
 );
 runStatsigSessionReplay(client);
 runStatsigAutoCapture(client);
