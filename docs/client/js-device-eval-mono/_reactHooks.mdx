@@ -8,7 +8,7 @@
 ```typescript
 import { useGateValue } from '@statsig/react-native-bindings';
 
-const gateValue = useGateValue('a_gate'); // <-- Returns the boolean value
+const gateValue = useGateValue('a_gate', { user: {userID: "123"}}); // <-- Returns the boolean value
 if (gateValue) {
   // 
 }
@@ -17,7 +17,7 @@ if (gateValue) {
 ```typescript
 import { useFeatureGate } from '@statsig/react-native-bindings';
 
-const gate = useFeatureGate('a_gate'); // <-- Returns the FeatureGate object
+const gate = useFeatureGate('a_gate', { user: {userID: "123"}}); // <-- Returns the FeatureGate object
 if (gate.value) {
   // 
 }
@@ -29,7 +29,7 @@ if (gate.value) {
 import { useDynamicConfig } from '@statsig/react-native-bindings';
 
 function MyComponent() {
-  const config = useDynamicConfig('a_config'); // <-- Returns the DynamicConfig object
+  const config = useDynamicConfig('a_config', { user: {userID: "123"}}); // <-- Returns the DynamicConfig object
   const bgColor = config.value['bg_color'] as string;
 
   return <View style={{backgroundColor: bgColor}}></View>;
@@ -42,7 +42,7 @@ function MyComponent() {
 import { useExperiment } from '@statsig/react-native-bindings';
 
 function MyComponent() {
-  const experiment = useExperiment('an_experiment'); // <-- Returns the Experiment object
+  const experiment = useExperiment('an_experiment', { user: {userID: "123"}}); // <-- Returns the Experiment object
   const bgColor = experiment.value['bg_color'] as string;
 
   return <View style={{backgroundColor: bgColor}}></View>;
@@ -56,7 +56,7 @@ function MyComponent() {
 import { useLayer } from '@statsig/react-native-bindings';
 
 function MyComponent() {
-  const layer = useLayer('a_layer'); // <-- Returns the Layer object
+  const layer = useLayer('a_layer', { user: {userID: "123"}}); // <-- Returns the Layer object
   const bgColor = layer.getValue('bg_color') as string;
 
   return <View style={{backgroundColor: bgColor}}></View>;
