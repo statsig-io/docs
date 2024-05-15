@@ -87,7 +87,7 @@ import { runStatsigSessionReplay } from '@statsig/session-replay';
 
 const client = new StatsigClient(sdkKey,
 	{ userID: "some_user_id" },
-  { environment: { tier: "staging" } } // optional, pass options here if needed
+  { environment: { tier: "production" } } // optional, pass options here if needed. Session replays are only recorded and stored if the environment is production.
 );
 runStatsigSessionReplay(client);
 runStatsigAutoCapture(client);
@@ -105,7 +105,7 @@ import { StatsigProvider } from '@statsig/react-bindings';
 
 const client = new StatsigClient(sdkKey,
 	{ userID: "some_user_id" },
-  { environment: { tier: "staging" } } // optional, pass options here if needed
+  { environment: { tier: "production" } } // optional, pass options here if needed. Session replays are only recorded and stored if the environment is production.
 );
 runStatsigSessionReplay(client);
 runStatsigAutoCapture(client);
