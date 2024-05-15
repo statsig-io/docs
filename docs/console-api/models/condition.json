@@ -14,10 +14,12 @@
   "description": "Condition object",
   "properties": {
     "type": {
-      "type": "string"
+      "type": "string",
+      "example": "user_id"
     },
     "operator": {
-      "type": "string"
+      "type": "string",
+      "example": "any"
     },
     "targetValue": {
       "type": [
