@@ -19,9 +19,6 @@ import {
   warmCachingFromAsyncStorage,
 } from '@statsig/react-native-bindings';
 
-
-const user = { userID: 'a-user' };
-
 const client = new StatsigOnDeviceEvalClient(YOUR_SDK_KEY);
 const warming = warmCachingFromAsyncStorage(client);
 ```
