@@ -1,0 +1,60 @@
+---
+title: Statsig in Angular
+sidebar_label: Angular Support
+slug: /client/javascript-sdk/angular
+---
+
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  Shutdown,
+  CodeExamples,
+} from "../Templates/index.mdx";
+
+import CheckGate from "./_checkGate.mdx";
+import GetConfig from "./_getConfig.mdx";
+import GetExperiment from "./_getExperiment.mdx";
+import Initialize from "./_initialize.mdx";
+import Install from "./_install.mdx";
+import LogEvent from "./_logEvent.mdx";
+import MoreFAQs from "./_faqs.mdx";
+import Options from "./_options.mdx";
+import ShutdownSnippet from "./_shutdown.mdx";
+
+import * as _ReactInstall from "./_reactInstall.mdx";
+export const ReactInstall = _ReactInstall;
+
+import * as _ReactSetup from "./_reactSetup.mdx";
+export const ReactSetup = _ReactSetup;
+
+import * as _reactHooks from "./_reactHooks.mdx";
+export const ReactHooks = _reactHooks;
+
+export const Result = SDKDocsBuilder(
+  {},
+  [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/js-client-monorepo",
+      },
+    ],
+    [ReactInstall, {}],
+    [ReactSetup, {}],
+    [ReactHooks, {}]
+  ],
+  toc
+);
+
+<>{Result}</>
