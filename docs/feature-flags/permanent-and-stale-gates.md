@@ -51,7 +51,6 @@ In your feature gates catalog, you'll see different **Types** displayed in the S
 
 Using the **Stale** type discussed above, Statsig provides both in-console and external nudges to remind you to cleanup (or make Permanent) your feature gates.
 
-- In-console
-  - See the reminder at the top of the individual feature gate page
+- **In-console:** See the reminder at the top of the individual feature gate page
     ![image](https://user-images.githubusercontent.com/120431069/224457644-16844256-e7f8-4490-b07e-74f0d85eb6ee.png)
-- Email/slack (coming soon!)
+- **Email/Slack:** We will proactively reach out to you with an email/ Slack reminder (if you've enabled the Slack integration) to clean up or mark permanent any stale gates you own. We will send this reminder nudge monthly until the gates are either cleaned up or marked as permanent. 
