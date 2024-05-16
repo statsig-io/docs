@@ -85,6 +85,7 @@
           }
         },
         "type": {
+          "type": "string",
           "x-stoplight": {
             "id": "q9dn1ku4csul8"
           },
@@ -95,6 +96,7 @@
           ]
         },
         "typeReason": {
+          "type": "string",
           "x-stoplight": {
             "id": "s6hlwfzfq7kz7"
           },
