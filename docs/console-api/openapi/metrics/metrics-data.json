@@ -73,6 +73,12 @@
                           "x-stoplight": {
                             "id": "666nzllt5tqun"
                           }
+                        },
+                        "isVerified": {
+                          "type": "boolean",
+                          "x-stoplight": {
+                            "id": "6vh0lanja489w"
+                          }
                         }
                       }
                     }
@@ -293,6 +299,13 @@
                       "id": "d5btfmgb93ri7"
                     },
                     "description": "Enterprise only"
+                  },
+                  "isVerified": {
+                    "type": "boolean",
+                    "x-stoplight": {
+                      "id": "n5q58y88z9hq1"
+                    },
+                    "description": "Used to mark some metrics as \"trustworthy\" within your company. Read more in our [docs](https://docs.statsig.com/metrics/verified#:~:text=Verified%20metrics%20are%20a%20way,overflow%20menu%20on%20the%20Metric)."
                   }
                 }
               },
@@ -1723,11 +1736,7 @@
                     ]
                   }
                 },
-                "required": [
-                  "sql",
-                  "timestampColumn",
-                  "idTypeMapping"
-                ],
+                "required": ["sql", "timestampColumn", "idTypeMapping"],
                 "properties": {
                   "sql": {
                     "type": "string"
