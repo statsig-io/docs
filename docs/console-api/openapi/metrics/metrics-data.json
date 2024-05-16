@@ -1529,53 +1529,258 @@
         }
       ],
       "post": {
-        "summary": "Update Metric Source",
+        "summary": "Fully Update Metric Source",
         "operationId": "post-metrics-metric_source-name",
         "responses": {
-          "200": {
-            "description": "OK"
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "tags": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {}
+                          }
+                        },
+                        "sql": {
+                          "type": "string"
+                        },
+                        "timestampColumn": {
+                          "type": "string"
+                        },
+                        "timestampAsDay": {
+                          "type": "boolean"
+                        },
+                        "idTypeMapping": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "statsigUnitID": {
+                                "type": "string"
+                              },
+                              "column": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Metric source updated successfully.",
+                      "data": {
+                        "name": "Log Events",
+                        "description": "metric source for statsig forwarded exposures",
+                        "tags": [],
+                        "sql": "SELECT * FROM shoppy-sales.logging.events\n",
+                        "timestampColumn": "ts",
+                        "timestampAsDay": false,
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "userID",
+                            "column": "product_category"
+                          },
+                          {
+                            "statsigUnitID": "deviceID",
+                            "column": "device_id"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Metric source updated successfully.",
+                      "data": {
+                        "name": "Log Events",
+                        "description": "metric source for statsig forwarded exposures",
+                        "tags": [],
+                        "sql": "SELECT * FROM shoppy-sales.logging.events\n",
+                        "timestampColumn": "ts",
+                        "timestampAsDay": false,
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "userID",
+                            "column": "product_category"
+                          },
+                          {
+                            "statsigUnitID": "deviceID",
+                            "column": "device_id"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "property": {
+                            "type": "string"
+                          },
+                          "errorMessage": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Bad Request Exception",
+                      "status": 400,
+                      "errors": [
+                        {
+                          "property": "sql",
+                          "errorMessage": "Required"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Bad Request Exception",
+                      "status": 400,
+                      "errors": [
+                        {
+                          "property": "sql",
+                          "errorMessage": "Required"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "x-stoplight": {
-          "id": "dp7ont9iduy88"
+          "id": "sc6z4o7zqfp2d"
         },
-        "description": "Update description and tags of the given metric source",
+        "description": "",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
+                "x-examples": {
+                  "Example 1": {
+                    "sql": "SELECT * FROM `shoppy-sales.statsig.statsig_forwarded_exposures`",
+                    "description": "metric source for statsig forwarded exposures",
+                    "tags": [],
+                    "timestampColumn": "timestamp",
+                    "timestampAsDay": false,
+                    "idTypeMapping": [
+                      {
+                        "statsigUnitID": "userID",
+                        "column": "user_id"
+                      },
+                      {
+                        "statsigUnitID": "stableID",
+                        "column": "stable_id"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "sql",
+                  "timestampColumn",
+                  "idTypeMapping"
+                ],
                 "properties": {
+                  "sql": {
+                    "type": "string"
+                  },
                   "description": {
-                    "type": "string",
-                    "x-stoplight": {
-                      "id": "hkqkzhvzxkepy"
-                    }
+                    "type": "string"
                   },
                   "tags": {
                     "type": "array",
-                    "x-stoplight": {
-                      "id": "dkb8e61zlmi0z"
-                    },
-                    "description": "Updated list of tags. Tag must be created first",
                     "items": {
-                      "x-stoplight": {
-                        "id": "hi62k1flm6dsc"
-                      },
-                      "type": "string"
+                      "type": "object"
+                    }
+                  },
+                  "timestampColumn": {
+                    "type": "string"
+                  },
+                  "timestampAsDay": {
+                    "type": "boolean"
+                  },
+                  "idTypeMapping": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "statsigUnitID": {
+                          "type": "string"
+                        },
+                        "column": {
+                          "type": "string"
+                        }
+                      }
                     }
                   }
                 }
               },
               "examples": {
-                "Update description only": {
+                "Example 1": {
                   "value": {
-                    "description": "Updated description"
-                  }
-                },
-                "Update tags only": {
-                  "value": {
-                    "tags": ["non_production"]
+                    "sql": "SELECT * FROM `shoppy-sales.statsig.statsig_forwarded_exposures`",
+                    "description": "metric source for statsig forwarded exposures",
+                    "tags": [],
+                    "timestampColumn": "timestamp",
+                    "timestampAsDay": false,
+                    "idTypeMapping": [
+                      {
+                        "statsigUnitID": "userID",
+                        "column": "user_id"
+                      },
+                      {
+                        "statsigUnitID": "stableID",
+                        "column": "stable_id"
+                      }
+                    ]
                   }
                 }
               }
