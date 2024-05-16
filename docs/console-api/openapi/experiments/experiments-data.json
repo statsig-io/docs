@@ -3551,7 +3551,6 @@
                           "type": "array",
                           "items": {
                             "type": "object",
-                            "required":["statsigUnitID", "column"],
                             "properties": {
                               "statsigUnitID": {
                                 "type": "string"
@@ -3772,7 +3771,6 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [ "sql", "timestampColumn", "groupIDColumn", "experimentIDColumn", "idTypeMapping"],
                   "properties": {
                     "message": {
                       "type": "string"
@@ -3809,7 +3807,6 @@
                           "type": "array",
                           "items": {
                             "type": "object",
-                            "required": [ "statsigUnitID", "column"],
                             "properties": {
                               "statsigUnitID": {
                                 "type": "string"
@@ -3945,6 +3942,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [ "sql", "timestampColumn", "groupIDColumn", "experimentIDColumn", "idTypeMapping"],
                 "properties": {
                   "sql": {
                     "type": "string"
@@ -3962,6 +3960,7 @@
                     "type": "array",
                     "items": {
                       "type": "object",
+                      "required": ["statsigUnitID", "column"],
                       "properties": {
                         "statsigUnitID": {
                           "type": "string"
