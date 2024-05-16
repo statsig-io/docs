@@ -1,8 +1,8 @@
 ---
-title: Early Diagnostics of Experiments
+title: Data Freshness
 slug: /statsig-warehouse-native/features/early-diagnostics
 sidebar_label: Early Diagnostics
-description: Early Diagnostics of Experiments
+description: Data Freshness 
 ---
 
 ## Just-in-time updates for the first 1 million exposures
