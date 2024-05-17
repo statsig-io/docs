@@ -70,6 +70,13 @@
         "id": "3ycuq3pkzsrpv"
       }
     },
+    "returnValueJson5": {
+      "type": "object",
+      "description": "Can include comments. If provided with returnValue, must parse to the same JSON",
+      "x-stoplight": {
+        "id": "3ycuq3pkzsrpv"
+      }
+    },
     "environments": {
       "type": "array",
       "x-stoplight": {
@@ -84,12 +91,7 @@
       }
     }
   },
-  "required": [
-    "name",
-    "passPercentage",
-    "conditions",
-    "returnValue"
-  ],
+  "required": ["name", "passPercentage", "conditions", "returnValue"],
   "examples": [
     {
       "name": "All Conditions",
@@ -108,9 +110,7 @@
       "returnValue": {
         "key": true
       },
-      "environments": [
-        "staging"
-      ]
+      "environments": ["staging"]
     }
   ]
 }

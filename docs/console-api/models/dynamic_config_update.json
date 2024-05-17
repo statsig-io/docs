@@ -3,10 +3,7 @@
   "x-stoplight": {
     "id": "x64soe4pj4o8y"
   },
-  "x-tags": [
-    "dynamic config",
-    "entity"
-  ],
+  "x-tags": ["dynamic config", "entity"],
   "type": "object",
   "description": "Fields which can be updated in a dynamic config",
   "examples": [
@@ -30,16 +27,12 @@
         }
       ],
       "defaultValue": {},
-      "tags": [
-        "a tag"
-      ]
+      "tags": ["a tag"]
     }
   ],
   "properties": {
     "isEnabled": {
-      "type": [
-        "boolean"
-      ],
+      "type": ["boolean"],
       "description": "Is the dynamic config enabled.",
       "x-stoplight": {
         "id": "a32nh72y8vula"
@@ -79,12 +72,12 @@
         "id": "9e5x44xhv0yek"
       }
     },
-    "defaultValueJsonC": {
+    "defaultValueJson5": {
       "type": "string",
       "x-stoplight": {
         "id": "aen0blwsncbmy"
       },
-      "description": "Same as DefaultValue, but can accept comments. Only accepts valid JSON-C. Either this field or defaultValue must be provided, but providing both will throw an error."
+      "description": "Can include comments. If provided with defaultValue, must parse to the same JSON"
     },
     "tags": {
       "type": "array",
@@ -106,6 +99,13 @@
         "id": "hywg22syndfwi"
       },
       "description": "A schema using JSON Schema Draft 2020-12 to enforce return values of this dynamic config's rules. When submitting a schema, all submitted return values (default value and rule return values) must match the schema.\n"
+    },
+    "schemaJson5": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "sfn6h3gveb25s"
+      },
+      "description": "`schema` except with Json5 comments. Optional and should parse to same json as `schema`.\n\n"
     }
   }
 }

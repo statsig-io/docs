@@ -76,12 +76,12 @@
             "id": "u4gan1b6frg27"
           }
         },
-        "defaultValueJsonC": {
+        "defaultValueJson5": {
           "type": "string",
           "x-stoplight": {
             "id": "akiipa6lbqvak"
           },
-          "description": "Same as `defaultValue`, but may include comments if default value was updated with comments using JSON-C."
+          "description": "Can include comments. If provided with defaultValue, must parse to the same JSON"
         },
         "tags": {
           "type": "array",
@@ -104,12 +104,12 @@
           },
           "description": "A schema using JSON Schema Draft 2020-12 to enforce return values of this dynamic config's rules."
         },
-        "schemaJsonC": {
+        "schemaJson5": {
           "type": "string",
           "x-stoplight": {
             "id": "sfn6h3gveb25s"
           },
-          "description": "Same as `schema`, but may include comments if default value was updated with comments using JSON-C.\n\n"
+          "description": "`schema` except with Json5 comments. Optional and should parse to same json as `schema`.\n\n"
         }
       }
     }
@@ -145,9 +145,7 @@
         }
       ],
       "defaultValue": {},
-      "tags": [
-        "a tag"
-      ]
+      "tags": ["a tag"]
     }
   ]
 }
