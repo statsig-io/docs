@@ -8,7 +8,7 @@ import Initialize from '../client/js/_initialize.mdx'
 import GetExperiment from '../client/js/_getExperiment.mdx' 
 import LogEvent from '../client/js/_logEvent.mdx'
 
-In this guide, you will create and implement your first A/B/n test. While you can use Statsig's [Feature Gates](https://docs.statsig.com/guides/first-feature) to roll out new features, Statsig's Experiments enable you to run all kinds of A/B tests, from simple bivariant (A vs. B) experiments to multi-variant experiments ( A vs. B/C/D/n) and mutually exclusive experiments.
+In this guide, you will create and implement your first A/B/n test. While you can use Statsig's [Feature Flags](https://docs.statsig.com/guides/first-feature) to roll out new features, Statsig's Experiments enable you to run all kinds of A/B tests, from simple bivariant (A vs. B) experiments to multi-variant experiments ( A vs. B/C/D/n) and mutually exclusive experiments.
 
 :::info This guide is for a **user-level** experiment
 
@@ -79,7 +79,7 @@ Now when a user renders this page in their client application, you will automati
 
 ![image](https://user-images.githubusercontent.com/1315028/139113152-7d19afa1-733f-4ee4-b788-3d39cecedae1.png)
 
-At this stage, you may also want to track downstream events to measure how your users are responding to different variants of the experiment. To do this, call the `LogEvent` API with the key measure that you may want to aggregate as well as other metadata that you may use as additional dimensions to breakdown the aggregate results.
+At this stage, you may also want to track downstream events to measure how your users are responding to different variants of the experiment. To do this, call the `LogEvent` API with the key measure that you may want to aggregate as well as other metadata that you may use as additional dimensions to breakdown the aggregate results.  Events logged to Statsig are associated with the user identifiers, and not experiment-specific.
 
 ```jsx
 statsig.logEvent('add_to_cart', 'groceries', {'price': '9.99', 'SKU_ID': 'SKU-123'});

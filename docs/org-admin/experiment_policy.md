@@ -1,12 +1,13 @@
 ---
-title: Organization Experiment Policy
+title:  Experiment Policy
+slug: /org-admin/experiment_policy
 ---
 
 :::info
-Organization Experiment Policies is an Enterprise only feature.
+Organization level Experiment Policies are an Enterprise only feature.
 :::
 
-##  Experiment policy grants organization admins the ability to:
+##  Experiment Policy grants organization admins the ability to:
 
 * Set defaults for new experiments: While Statsig aims to provide an intuitive platform for all users, we understand the unique requirements of every organization. Now, data scientists and experts can decide on experiment best practices for their business, such as default experiment duration and use of sequential testing.
 * Enforce these defaults: This ensures consistency across all experiments, and that best practices are enforced for experimenters.

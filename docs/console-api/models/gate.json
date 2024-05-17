@@ -85,8 +85,9 @@
           }
         },
         "type": {
+          "type": "string",
           "x-stoplight": {
-            "id": "eg24v1j9ljv3o"
+            "id": "q9dn1ku4csul8"
           },
           "enum": [
             "TEMPORARY",
@@ -95,8 +96,9 @@
           ]
         },
         "typeReason": {
+          "type": "string",
           "x-stoplight": {
-            "id": "rz8nfjs24j1xh"
+            "id": "s6hlwfzfq7kz7"
           },
           "enum": [
             "NONE",
@@ -105,6 +107,13 @@
             "STALE_NO_RULES",
             "STALE_PROBABLY_DEAD_CHECK"
           ]
+        },
+        "team": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "ro1ndy7f1zq0d"
+          },
+          "description": "Enterprise only"
         }
       }
     }

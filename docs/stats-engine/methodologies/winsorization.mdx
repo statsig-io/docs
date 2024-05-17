@@ -1,0 +1,22 @@
+---
+title: Winsorization
+sidebar_label: Winsorization
+slug: /stats-engine/methodologies/winsorization
+---
+
+import DocumentationFork from "@site/src/components/DocumentationFork";
+import Cloud from "./winsorization_variants/cloud.mdx";
+import Warehouse from "./winsorization_variants/warehouse.mdx";
+
+## Winsorization 
+
+Winsorization is a common technique for removing noise in experiment results, specifically from outliers.
+
+Winsorization refers to the practice of measuring the percentile Px of a metric and setting all values over Px to Px.
+
+<DocumentationFork
+  cloud={<Cloud />}
+  warehouse={<Warehouse />}
+/>
+
+

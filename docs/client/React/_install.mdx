@@ -1,6 +1,13 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
+NOTE:  v2.X.X+ of the SDK updated the default domains that the SDK hits for initialization and event logging.
+
+To initialize, the SDK will hit: https://featureassets.org
+To log events, the SDK will hit: https://prodregistryv2.org
+
+Consider if you need to allow these domains in your CSP, VPN, or any other services when updating to this SDK version.
+
 You can install the Statsig React SDK via npm or yarn.
 
 <Tabs

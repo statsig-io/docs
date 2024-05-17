@@ -96,18 +96,6 @@ html[data-theme="dark"] {
   font-size: 14px;
 }
 
-.menu__link--active {
-  font-weight: 600;
-}
-
-.menu__caret:before {
-  background: var(--ifm-menu-link-sublist-icon) 50% / 1.5rem 1.5rem;
-}
-
-.pagination-nav__label {
-  font-weight: 600;
-}
-
 .alert--info {
   --ifm-alert-background-color: #2196f333;
   --ifm-alert-border-color: #2196f3;
@@ -178,4 +166,8 @@ span.math.math-inline {
   justify-content: center;
   position: relative;
   box-sizing: border-box;
+}
+
+.warning {
+  margin-bottom: 16px;
 }

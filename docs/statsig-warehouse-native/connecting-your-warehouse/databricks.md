@@ -27,7 +27,7 @@ For users who use databricks and a dbfs-based deltalake as their primary warehou
 
 <br />
 
-2. Follow [these instructions](https://docs.databricks.com/dev-tools/auth.html#databricks-personal-access-tokens) to get the personal access token that will be used to calculate experiment results on your warehouse.
+2. Follow [these instructions](https://docs.databricks.com/dev-tools/auth.html#databricks-personal-access-tokens) to get the personal access token that will be used to calculate experiment results on your warehouse. Alternatively, you can follow [these instructions](https://docs.databricks.com/en/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) to get a personal access token for a service principal. 
 
 ![databricks info](https://user-images.githubusercontent.com/108023879/188731186-ecdc0872-de06-4576-b387-fa08bdca447d.png)
 

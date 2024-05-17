@@ -12,7 +12,7 @@ If none of our current SDKs fit your needs, let us know in [slack](https://stats
 
 ## How can I get started with running an A/B Test?
 
-If you have a feature built but not yet released, you can run a simple A/B test by opening up a partial rollout using a [feature gate](/guides/first-feature). This will create test and control groups to measure the impact of your new feature. If you already have a feature in production and want to test different variants, create an [experiment](/guides/abn-tests). Either way, you can analyze the results in the **Pulse Results** tab of your feature gate or experiment.
+If you have a feature built but not yet released, you can run a simple A/B test by opening up a partial rollout using a [feature flag](/guides/first-feature). This will create test and control groups to measure the impact of your new feature. If you already have a feature in production and want to test different variants, create an [experiment](/guides/abn-tests). Either way, you can analyze the results in the **Pulse Results** tab of your feature gate or experiment.
 
 ## Is it possible to add a layer to a running experiment?
 
@@ -20,10 +20,10 @@ Once an experiment has been started you cannot change the layer. Doing so would 
 
 ## Can I target my experiment at a subset of users. e.g users on iOS only? 
 
-Yes you can! When setting up your experiment you can select a Feature Gate that contains targeting rules. 
+Yes you can! When setting up your experiment you can select a Feature Flag that contains targeting rules. 
 ![image](https://user-images.githubusercontent.com/31516123/229173350-a1795b5a-bdef-4c58-afb1-36806dc38f1a.png)
 
-Your Feature Gate can explictly pass only users who meet specific criteria - in this example users on iOS. Learn more about feature gates [here](https://docs.statsig.com/feature-gates/working-with).
+Your Feature Flag can explictly pass only users who meet specific criteria - in this example users on iOS. Learn more about feature flags [here](https://docs.statsig.com/feature-flags/working-with).
 ![image](https://user-images.githubusercontent.com/31516123/229173998-3099feac-64cc-42fc-a1c3-69c9065d2dd0.png)
 
 
@@ -57,19 +57,13 @@ Projects have distinct boundaries - nothing is shared between them. Create a new
 
 If you have a distinct marketing website (only sees anonymous users) from a product (only sees signed in users), you can create distinct projects for them. However if you want to track success across them, you'll want to manage them in the same project. An example of this is measuring user signup on the marketing website, where the success metric is new users created who're still active users 30 days after account creation.
 
-## When I increase the rollout % of a rule on a feature gate, will users who were passing the rule continue to pass?
-
-Yes. For example, if your rule was passing 10%, and you increase it to 20%, the original 10% users will still pass, and an additional 10% will change from fail to pass.
-
-If you find a bug with the rollout, disable the gate, fix the bug and then re-enable the gate - Statsig will maintain the set of users exposed to the rollout. Reducing the rollout % and then increasing it will cause users to be shuffled and we don't recommend doing this. 
-
 
 ## What counts as a [billable event](https://statsig.com/pricing#faq)? 
-Statsig records an event when your application calls the Statsig SDK to check whether a user should be exposed to a feature gate or experiment or to log an event. Additionally, pre-computed metrics ingested to Statsig from a data warehouse or custom metrics created using existing metrics/events also count as billable.
+Statsig records an event when your application calls the Statsig SDK to check whether a user should be exposed to a feature flag or experiment or to log an event. Additionally, pre-computed metrics ingested to Statsig from a data warehouse or custom metrics created using existing metrics/events also count as billable.
 
 Statsig dedupes billable exposure events for the same user and feature/experiment on client (60m window; proxy for session duration) and server SDKs (1m window; proxy for user request handling).
 
-Experiment checks that result in no allocation (e.g. the experiment hasn’t started, or has finished) or Feature Gates that have been disabled (fully shipped or abandoned with no rule evaluation) do not generate billable exposure events.
+Experiment checks that result in no allocation (e.g. the experiment hasn’t started, or has finished) or Feature Flags that have been disabled (fully shipped or abandoned with no rule evaluation) do not generate billable exposure events.
 
 Layer exposures are slightly more nuanced as outlined [here](/layers#a-note-on-exposures).
 
@@ -88,6 +82,8 @@ See the question above for what counts as a billable event. Some tools available
 
 4. Look for gates that are 0% or 100% pass. These can be launched (always return Pass) or disabled (always return Fail) to stop generating billable events. [More information](https://statsig.com/updates#2/2/2023). With experiments, filter to experiments with Status = In Progress and Created < [day-45] to find long running experiments to make sure these are intentional and not just forgotten.
 
+5. There's a Console API endpoint that lets you download billing and usage data to sync this to your own systems [here](https://docs.statsig.com/console-api/usage-billing).
+
 ## How does bucketing within the Statsig SDKs work?
 Bucketing on Statsig is deterministic. Given the same UserID (or any UnitID) and an experiment/gate a given rollout stage, we'll always evalaute to the same result. This is true even if the evaluation happens in different places - on the client or server. For a peek into how we do this at a high level:
 - Salt Creation: For each experiment or feature gate, a unique salt is generated.
@@ -97,6 +93,13 @@ Bucketing on Statsig is deterministic. Given the same UserID (or any UnitID) and
 - This ensures a randomized yet deterministic bucketing of units across different experiments or feature gates, while the unique salt ensures that the same unit can be assigned to different buckets in different experiments.
 You can also peek into our open source SDKs [here](https://github.com/statsig-io/node-js-server-sdk/blob/main/src/Evaluator.ts).
 
+## When I increase the rollout % of a rule on a feature gate, will users who were passing the rule continue to pass?
+
+Yes. For example, if your rule was passing 10%, and you increase it to 20%, the original 10% users will still pass, and an additional 10% will change from fail to pass. 
+
+If you find a bug with the rollout, disable the gate, fix the bug and then re-enable the gate - Statsig will maintain the set of users exposed to the rollout. Reducing the rollout % and then increasing it will cause users to be shuffled and we don't recommend doing this. 
+
+
 
 ## What domains do I need to whitelist for Content Security Policy (CSP)?  
 If your web app configures strict Content Security Policy (CSP), adjust the policy to whitelist these two Statsig domains 
@@ -104,4 +107,6 @@ If your web app configures strict Content Security Policy (CSP), adjust the poli
 - https://events.statsigapi.net (SDKs log events here) 
 
 ## Why am I not seeing my exposures and custom events logged in Statsig?
-If you are executing Statsig in a short-lived process (ie a script or edge worker environment), it's likely the process is exiting prior to the event queue being flushed to Statsig. To ensure your exposures and events are sent to Statsig, make sure to call `statsig.flush()` before your process exits. Some edge providers offer utility methods to elegantly handle this situation to ensure events are flushed without blocking the response to the client ([example](https://docs.statsig.com/server/nodejsServerSDK#flushing-events-)). In a long-lived process like a webserver this is typically not required, but some customers choose to hook into the process's shutdown signal to flush events. 
+If you are executing Statsig in a short-lived process (ie a script or edge worker environment), it's likely the process is exiting prior to the event queue being flushed to Statsig. To ensure your exposures and events are sent to Statsig, make sure to call `statsig.flush()` before your process exits. Some edge providers offer utility methods to elegantly handle this situation to ensure events are flushed without blocking the response to the client ([example](https://docs.statsig.com/server/nodejsServerSDK#flushing-events-)). In a long-lived process like a webserver this is typically not required, but some customers choose to hook into the process's shutdown signal to flush events.
+
+If you are not seeing a specific custom event, make sure you check the event name is valid.  Statsig drops events that match this regex/contain this character set: `"\\[\]{}<>#=;&$%|\u0000\n\r"`

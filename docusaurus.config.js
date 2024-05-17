@@ -43,14 +43,22 @@ module.exports = {
         alt: "Statsig",
         src: "img/logo.svg",
         srcDark: "img/logo_white.svg",
-        href: "https://statsig.com",
+        href: "/",
       },
       items: [
         {
+          type: 'custom-warehouseToggle', 
+          position: "left",
+        },
+        {
+          type: "html",
+          position: "right",
+          value:
+            "<button id=\"consoleCTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus(); window.statsig.logEvent({}, 'console_button_click', window.location.pathname, {referrer: document && document.referrer,});\">Get Started</button>",
           type: 'html',
           position: 'right',
           value: '<button id="consoleCTA" onclick="window.open(\'https://console.statsig.com\', \'_blank\').focus(); window.statsig.logEvent({}, \'console_button_click\', window.location.pathname, {referrer: document && document.referrer,});">Get Started</button>',
-        }
+        },
       ],
     },
     footer: {
@@ -90,6 +98,8 @@ module.exports = {
       copyright: `Copyright (c) ${new Date().getFullYear()} Statsig, Inc. | Thanks Docusaurus`,
     },
     prism: {
+      theme: require("prism-react-renderer/themes/github"),
+      darkTheme: require("prism-react-renderer/themes/dracula"),
       additionalLanguages: [
         "swift",
         "java",
@@ -106,15 +116,6 @@ module.exports = {
     },
   },
   plugins: [
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        hashed: true,
-        indexBlog: false,
-        indexDocs: true,
-        docsRouteBasePath: "/",
-      },
-    ],
     function statsig() {
       const isProd = process.env.NODE_ENV === "production";
       const tier = isProd ? "production" : "development";
@@ -127,18 +128,8 @@ module.exports = {
         injectHtmlTags() {
           return {
             headTags: [
-              // Google Tag Manager - gtm.js
               {
-                tagName: 'script',
-                attributes: {
-                  async: true,
-                  src: 'https://www.googletagmanager.com/gtm.js?id=GTM-NRDCWNF',
-                  // include the nonce attribute as needed
-                },
-              },
-              // Inline script to initialize dataLayer and GTM
-              {
-                tagName: 'script',
+                tagName: "script",
                 innerHTML: `
                   (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -148,23 +139,19 @@ module.exports = {
                   })(window,document,'script','dataLayer','GTM-NRDCWNF');
                 `,
                 attributes: {
-                  type: 'text/javascript',
-                  // include the nonce attribute as needed
+                  type: "text/javascript",
                 },
               },
-              // Global site tag (gtag.js) - Google Analytics
               {
-                tagName: 'script',
+                tagName: "script",
                 attributes: {
                   async: true,
                   defer: true,
-                  src: 'https://www.googletagmanager.com/gtag/js?id=G-EM5RHE1RHW',
-                  // include the nonce attribute as needed
+                  src: "https://www.googletagmanager.com/gtag/js?id=G-EM5RHE1RHW",
                 },
               },
-              // Inline script to initialize gtag
               {
-                tagName: 'script',
+                tagName: "script",
                 innerHTML: `
                   window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);}
@@ -172,18 +159,8 @@ module.exports = {
                   gtag('config', 'G-EM5RHE1RHW');
                 `,
                 attributes: {
-                  type: 'text/javascript',
-                  // include the nonce attribute as needed
+                  type: "text/javascript",
                 },
-              },
-              {
-                tagName: 'script',
-                attributes: {
-                  type: 'text/javascript',
-                  async: true,
-                  src: 'https://www.googletagmanager.com/gtag/js?id=G-EM5RHE1RHW',
-                  // Add other attributes as needed, like 'nonce' if you use it
-                }
               },
               {
                 tagName: 'script',
@@ -227,6 +204,12 @@ module.exports = {
               },
               {
                 tagName: "script",
+                attributes: {
+                  src: "https://cdn.jsdelivr.net/npm/@statsig/js-client@latest/build/statsig-js-client+session-replay+web-analytics.min.js",
+                },
+              },
+              {
+                tagName: "script",
                 innerHTML: `window.statsigTier="${tier}"`,
               },
               {
@@ -257,9 +240,98 @@ module.exports = {
       {
         redirects: [
           {
+            to: "/mex/overview",
+            from: "/mex",
+          },
+          {
             to: "/integrations/terraform/introduction",
             from: "/integrations/terraform",
           },
+          {
+            to: "/feature-flags/working-with",
+            from: "/feature-gates/working-with",
+          },
+          {
+            to: "/feature-flags/create-new",
+            from: "/feature-gates/create-new",
+          },
+          {
+            to: "/feature-flags/working-with",
+            from: ["/feature-gates", "/feature-flags"],
+          },
+          {
+            to: "/feature-flags/add-rule",
+            from: "/feature-gates/add-rule",
+          },
+          {
+            to: "/feature-flags/test-gate",
+            from: "/feature-gates/test-gate",
+          },
+          {
+            to: "/feature-flags/overrides",
+            from: "/feature-gates/overrides",
+          },
+          {
+            to: "/feature-flags/scheduled-rollouts",
+            from: "/feature-gates/scheduled-rollouts",
+          },
+          {
+            to: "/feature-flags/conditions",
+            from: "/feature-gates/conditions",
+          },
+          {
+            to: "/feature-flags/view-exposures",
+            from: "/feature-gates/view-exposures",
+          },
+          {
+            to: "/feature-flags/feature-flags-lifecycle",
+            from: "/feature-gates/feature-gates-lifecycle",
+          },
+          {
+            to: "/feature-flags/permanent-and-stale-gates",
+            from: "/feature-gates/permanent-and-stale-gates",
+          },
+          {
+            to: "/feature-flags/best-practices",
+            from: "/feature-gates/best-practices",
+          },
+          {
+            to: "/feature-flags/implement",
+            from: "/feature-gates/implement",
+          },
+          {
+            to: "/feature-flags/implement/client",
+            from: "/feature-gates/implement/client",
+          },
+          {
+            to: "/feature-flags/implement/server",
+            from: "/feature-gates/implement/server",
+          },
+          {
+            to: "/feature-flags/implement/http-api",
+            from: "/feature-gates/implement/http-api",
+          },
+          {
+            to: "/mex/overview",
+            from: "/metrics/events-explorer",
+          },
+        ],
+      },
+    ],
+  ],
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        indexBlog: false,
+        indexDocs: true,
+        docsRouteBasePath: "/",
+        ignoreFiles: [
+          /client\/_[^\/]*\.mdx/i,
+          /server\/_[^\/]*\.mdx/i,
+          /client\/(Android|AndroidOnDeviceEvaluation|Dart|React|ReactNative|Roku|SwiftOnDeviceEval|Templates|Unity|dotnet|iOS|js|jslocal)\/?/i,
+          /server\/(Templates|java|node|cpp|dotnet|erlang|go|php|python|ruby|rust)\/?/i,
         ],
       },
     ],

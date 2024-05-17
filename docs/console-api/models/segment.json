@@ -14,6 +14,14 @@
     }
   },
   "description": "A Segment object",
+  "required": [
+    "id",
+    "isEnabled",
+    "description",
+    "lastModifierName",
+    "lastModifierID",
+    "type"
+  ],
   "properties": {
     "id": {
       "type": "string",
@@ -57,10 +65,7 @@
     },
     "type": {
       "type": "string",
-      "enum": [
-        "id_list",
-        "rule_based"
-      ],
+      "enum": ["id_list", "rule_based"],
       "description": "id_list | rule_based",
       "x-stoplight": {
         "id": "5sfnxwxqzmr13"
@@ -80,14 +85,12 @@
       "x-stoplight": {
         "id": "vvzbfo8c78y5a"
       }
+    },
+    "team": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "hvj6ao0cj372r"
+      }
     }
-  },
-  "required": [
-    "id",
-    "isEnabled",
-    "description",
-    "lastModifierName",
-    "lastModifierID",
-    "type"
-  ]
+  }
 }

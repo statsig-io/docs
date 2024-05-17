@@ -4,7 +4,7 @@ import AsyncDisclaimer from "./_AsyncDisclaimer.mdx";
 
 ### Checking a Gate
 
-Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-gates). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
+Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-flags/working-with). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
 
 From this point on, all APIs will require you to specify the user (see [Statsig user](#statsig-user)) associated with the request. For example, check a gate for a certain user like this:
 
@@ -29,3 +29,9 @@ Then we have **Layers/Experiments**, which you can use to run A/B/n experiments.
 Now that you have a Feature Gate or an Experiment set up, you may want to track some custom events and see how your new features or different experiment groups affect these events. This is super easy with Statsig - simply call the Log Event API and specify the user and event name to log; you additionally provide some value and/or an object of metadata to be logged together with the event:
 
 <div>{props.logEvent}</div>
+
+### Retrieving Feature Gate Metadata
+
+In certain scenarios, it's beneficial to access detailed information about a feature gate, such as its current state for a specific user or additional contextual data. This can be accomplished effortlessly through the Get Feature Gate API. By providing the necessary user details and the name of the feature gate you're interested in, you can fetch this metadata to inform your application's behavior or for analytical purposes.
+
+<div>{props.getFeatureGate}</div>

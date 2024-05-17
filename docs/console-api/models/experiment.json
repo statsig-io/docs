@@ -51,7 +51,7 @@
           "description": "Target apps assigned to this experiment",
           "items": {
             "x-stoplight": {
-              "id": "v8bmxd9220htx"
+              "id": "3ry9hz2297ly8"
             },
             "type": "string"
           }
@@ -187,7 +187,7 @@
             "null"
           ],
           "x-stoplight": {
-            "id": "5qr4wojsv4un8"
+            "id": "qvgprtlr1cwir"
           },
           "description": "Reason for shipping or abandoning an experiment"
         },
@@ -197,29 +197,29 @@
             "null"
           ],
           "x-stoplight": {
-            "id": "w53ws3pftl61p"
+            "id": "19dkrlxbqfx5d"
           },
           "description": "Unix Millisecond Timestamp of when a descision (shipping a group / abandoning) was made for the experiment"
         },
         "healthChecks": {
           "type": "array",
           "x-stoplight": {
-            "id": "zhaa2e7qbwyck"
+            "id": "pboifc6ulq352"
           },
           "items": {
             "$ref": "./experiment_health_check.json",
             "x-stoplight": {
-              "id": "vyyaisnkyj3s6"
+              "id": "lha7z6mscfwie"
             }
           }
         },
-        "isAnalyisOnly": {
+        "isAnalysisOnly": {
           "type": "boolean",
           "description": "For Warehouse Native"
         },
         "subtype": {
           "x-stoplight": {
-            "id": "u1kpwzv3b6jjp"
+            "id": "n1fyv083hap3l"
           },
           "type": "string",
           "description": "For Warehouse Native",
@@ -232,16 +232,23 @@
         "externalExperimentName": {
           "type": "string",
           "x-stoplight": {
-            "id": "3fzyo1wt510e7"
+            "id": "ku6i2xck01omd"
           },
           "description": "For Warehouse Native"
         },
         "assignmentSourceName": {
           "type": "string",
           "x-stoplight": {
-            "id": "bmv96pm1lvoz3"
+            "id": "cvbscpxjdv6i0"
           },
           "description": "For Warehouse Native"
+        },
+        "team": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "05t18fg9m27wf"
+          },
+          "description": "Enterprise only"
         }
       }
     }
