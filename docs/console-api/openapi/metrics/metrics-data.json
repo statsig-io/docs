@@ -1382,14 +1382,136 @@
         "operationId": "post-metrics-metric_source",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "tags": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {}
+                          }
+                        },
+                        "sql": {
+                          "type": "string"
+                        },
+                        "timestampColumn": {
+                          "type": "string"
+                        },
+                        "timestampAsDay": {
+                          "type": "boolean"
+                        },
+                        "idTypeMapping": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "statsigUnitID": {
+                                "type": "string"
+                              },
+                              "column": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Metric source created successfully.",
+                      "data": {
+                        "name": "test_metric_source",
+                        "description": "Test description for metric source",
+                        "tags": [],
+                        "sql": "SELECT * FROM shoppy-sales.logging.events WHERE event = 'visit'",
+                        "timestampColumn": "ts",
+                        "timestampAsDay": true,
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "userID",
+                            "column": "user_id"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Metric source created successfully.",
+                      "data": {
+                        "name": "test_metric_source",
+                        "description": "Test description for metric source",
+                        "tags": [
+                          "non_production"
+                        ],
+                        "sql": "SELECT * FROM shoppy-sales.logging.events WHERE event = 'visit'",
+                        "timestampColumn": "ts",
+                        "timestampAsDay": true,
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "userID",
+                            "column": "user_id"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "Example 2": {
+                    "value": {
+                      "message": "Metric source created successfully.",
+                      "data": {
+                        "name": "log_events_table_source",
+                        "description": "",
+                        "tags": [],
+                        "sql": "",
+                        "timestampColumn": "ts",
+                        "timestampAsDay": false,
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "userID",
+                            "column": "user_id"
+                          }
+                        ],
+                        "sourceType": "table",
+                        "tableName": "shoppy-sales.logging.events",
+                        "customFieldMapping": [
+                          {
+                            "key": "price_cent",
+                            "formula": "price_usd*100"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad Request"
           }
         },
         "x-stoplight": {
-          "id": "z2ujt3x6wa3qw"
+          "id": "c7t11990gk7n2"
         },
         "description": "Create Warehouse Native Metric Source.\n \nSee [guidance](https://docs.statsig.com/statsig-warehouse-native/guides/metric-sources)",
         "requestBody": {
@@ -1397,85 +1519,99 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "x-examples": {
+                  "Example 1": {
+                    "name": "LogEventsTableSource",
+                    "description": "",
+                    "tags": [],
+                    "sql": "",
+                    "timestampColumn": "ts",
+                    "timestampAsDay": false,
+                    "idTypeMapping": [
+                      {
+                        "statsigUnitID": "userID",
+                        "column": "user_id"
+                      }
+                    ],
+                    "sourceType": "table",
+                    "tableName": "shoppy-sales.logging.events",
+                    "customFieldMapping": [
+                      {
+                        "key": "price_cent",
+                        "formula": "price_usd*100"
+                      }
+                    ]
+                  }
+                },
                 "required": [
                   "name",
                   "description",
-                  "timestampColumn",
                   "sql",
+                  "timestampColumn",
                   "idTypeMapping"
                 ],
                 "properties": {
                   "name": {
-                    "type": "string",
-                    "x-stoplight": {
-                      "id": "nbn893ry37uql"
-                    }
+                    "type": "string"
                   },
                   "description": {
-                    "type": "string",
-                    "x-stoplight": {
-                      "id": "mq127hfj2b285"
-                    }
+                    "type": "string"
                   },
                   "tags": {
                     "type": "array",
-                    "x-stoplight": {
-                      "id": "fgb7312xpqbzd"
-                    },
-                    "description": "List of tags. Tag must already exists in your project",
                     "items": {
-                      "x-stoplight": {
-                        "id": "61rgo7jk9qhgf"
-                      },
-                      "type": "string"
+                      "type": "object"
                     }
                   },
-                  "timestampColumn": {
-                    "type": "string",
-                    "x-stoplight": {
-                      "id": "y11nc7rnf43pt"
-                    },
-                    "description": "Timestamp "
-                  },
                   "sql": {
-                    "type": "string",
-                    "x-stoplight": {
-                      "id": "9deuqlyvy2ee6"
-                    },
-                    "description": "SQL query you want to "
+                    "type": "string"
+                  },
+                  "timestampColumn": {
+                    "type": "string"
+                  },
+                  "timestampAsDay": {
+                    "type": "boolean"
                   },
                   "idTypeMapping": {
                     "type": "array",
-                    "x-stoplight": {
-                      "id": "mjzy1qweouv0k"
-                    },
                     "items": {
-                      "x-stoplight": {
-                        "id": "e7zr5k7cc3dhm"
-                      },
                       "type": "object",
+                      "required": [
+                        "statsigUnitID",
+                        "column"
+                      ],
                       "properties": {
                         "statsigUnitID": {
-                          "type": "string",
-                          "x-stoplight": {
-                            "id": "lnnmj60odzi6j"
-                          },
-                          "description": "Type of Unit ID this column represents. Configure a custom ID in project settings. [View Documentation](https://docs.statsig.com/guides/experiment-on-custom-id-types)"
+                          "type": "string"
                         },
                         "column": {
-                          "type": "string",
-                          "x-stoplight": {
-                            "id": "cxhq14p63ln00"
-                          },
-                          "description": "Column name containing this unit type's values"
+                          "type": "string"
                         }
                       }
                     }
                   },
-                  "timestampAsDay": {
-                    "type": "boolean",
-                    "x-stoplight": {
-                      "id": "yy9e9ngw5du3c"
+                  "sourceType": {
+                    "type": "string"
+                  },
+                  "tableName": {
+                    "type": "string"
+                  },
+                  "customFieldMapping": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "key",
+                        "formula"
+                      ],
+                      "properties": {
+                        "key": {
+                          "type": "string"
+                        },
+                        "formula": {
+                          "type": "string"
+                        }
+                      }
                     }
                   }
                 }
@@ -1485,7 +1621,9 @@
                   "value": {
                     "name": "test_metric_source",
                     "description": "Test description for metric source",
-                    "tags": ["non_production"],
+                    "tags": [
+                      "non_production"
+                    ],
                     "sql": "SELECT * FROM shoppy-sales.logging.events WHERE event = 'visit'",
                     "idTypeMapping": [
                       {
@@ -1495,6 +1633,30 @@
                     ],
                     "timestampColumn": "ts",
                     "timestampAsDay": true
+                  }
+                },
+                "Example 2": {
+                  "value": {
+                    "name": "log_events_table_source",
+                    "description": "",
+                    "tags": [],
+                    "sql": "",
+                    "timestampColumn": "ts",
+                    "timestampAsDay": false,
+                    "idTypeMapping": [
+                      {
+                        "statsigUnitID": "userID",
+                        "column": "user_id"
+                      }
+                    ],
+                    "sourceType": "table",
+                    "tableName": "shoppy-sales.logging.events",
+                    "custom_field_mapping_json": [
+                      {
+                        "key": "price_cent",
+                        "formula": "price_usd*100"
+                      }
+                    ]
                   }
                 }
               }
@@ -1518,7 +1680,7 @@
                   "": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "sinsnklxlrxvn"
+                      "id": "t805dpyajru1e"
                     }
                   }
                 }
@@ -1527,7 +1689,9 @@
           },
           "description": ""
         },
-        "tags": ["Metric Source (Warehouse Native)"]
+        "tags": [
+          "Metric Source (Warehouse Native)"
+        ]
       }
     },
     "/metrics/metric_source/{name}": {
@@ -1644,6 +1808,33 @@
                         ]
                       }
                     }
+                  },
+                  "Example 2": {
+                    "value": {
+                      "message": "Metric source updated successfully.",
+                      "data": {
+                        "name": "log_events_table_source",
+                        "description": "Metric source tracking logging events",
+                        "tags": [],
+                        "sql": "",
+                        "timestampColumn": "ts",
+                        "timestampAsDay": false,
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "userID",
+                            "column": "user_id"
+                          }
+                        ],
+                        "sourceType": "table",
+                        "tableName": "shoppy-sales.logging.events",
+                        "customFieldMapping": [
+                          {
+                            "key": "price_cent",
+                            "formula": "price_usd*100"
+                          }
+                        ]
+                      }
+                    }
                   }
                 }
               }
@@ -1717,38 +1908,24 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "x-examples": {
-                  "Example 1": {
-                    "sql": "SELECT * FROM `shoppy-sales.statsig.statsig_forwarded_exposures`",
-                    "description": "metric source for statsig forwarded exposures",
-                    "tags": [],
-                    "timestampColumn": "timestamp",
-                    "timestampAsDay": false,
-                    "idTypeMapping": [
-                      {
-                        "statsigUnitID": "userID",
-                        "column": "user_id"
-                      },
-                      {
-                        "statsigUnitID": "stableID",
-                        "column": "stable_id"
-                      }
-                    ]
-                  }
-                },
-                "required": ["sql", "timestampColumn", "idTypeMapping"],
+                "required": [
+                  "sql",
+                  "timestampColumn",
+                  "idTypeMapping"
+                ],
                 "properties": {
-                  "sql": {
-                    "type": "string"
-                  },
                   "description": {
                     "type": "string"
                   },
                   "tags": {
                     "type": "array",
                     "items": {
-                      "type": "object"
+                      "type": "object",
+                      "properties": {}
                     }
+                  },
+                  "sql": {
+                    "type": "string"
                   },
                   "timestampColumn": {
                     "type": "string"
@@ -1760,6 +1937,7 @@
                     "type": "array",
                     "items": {
                       "type": "object",
+                      "required":["statsigUnitID", "column"],
                       "properties": {
                         "statsigUnitID": {
                           "type": "string"
@@ -1769,6 +1947,50 @@
                         }
                       }
                     }
+                  },
+                  "sourceType": {
+                    "type": "string"
+                  },
+                  "tableName": {
+                    "type": "string"
+                  },
+                  "customFieldMapping": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required":["key", "formula"],
+                      "properties": {
+                        "key": {
+                          "type": "string"
+                        },
+                        "formula": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "x-examples": {
+                  "Example 1": {
+                    "description": "Metric source tracking logging events",
+                    "tags": [],
+                    "sql": "",
+                    "timestampColumn": "ts",
+                    "timestampAsDay": false,
+                    "idTypeMapping": [
+                      {
+                        "statsigUnitID": "userID",
+                        "column": "user_id"
+                      }
+                    ],
+                    "sourceType": "table",
+                    "tableName": "shoppy-sales.logging.events",
+                    "customFieldMapping": [
+                      {
+                        "key": "price_cent",
+                        "formula": "price_usd*100"
+                      }
+                    ]
                   }
                 }
               },
@@ -1791,13 +2013,38 @@
                       }
                     ]
                   }
+                },
+                "Example 2": {
+                  "value": {
+                    "description": "Metric source tracking logging events",
+                    "tags": [],
+                    "sql": "",
+                    "timestampColumn": "ts",
+                    "timestampAsDay": false,
+                    "idTypeMapping": [
+                      {
+                        "statsigUnitID": "userID",
+                        "column": "user_id"
+                      }
+                    ],
+                    "sourceType": "table",
+                    "tableName": "shoppy-sales.logging.events",
+                    "customFieldMapping": [
+                      {
+                        "key": "price_cent",
+                        "formula": "price_usd*100"
+                      }
+                    ]
+                  }
                 }
               }
             }
           },
           "description": ""
         },
-        "tags": ["Metric Source (Warehouse Native)"]
+        "tags": [
+          "Metric Source (Warehouse Native)"
+        ]
       }
     },
     "/metrics/metric_source/list": {
