@@ -1188,12 +1188,12 @@
                     "type": "object",
                     "description": "The fallback JSON object when no rules are triggered"
                   },
-                  "defaultValueJsonC": {
+                  "defaultValueJson5": {
                     "type": "string",
                     "x-stoplight": {
                       "id": "tmr6k5uaqzz9a"
                     },
-                    "description": "Same as `defaultValue`, but can accept comments. Only accepts valid JSON-C. Either this field or `defaultValue` may be provided, but providing both will throw an error."
+                    "description": "Can include comments. If provided with defaultValue, must parse to the same JSON"
                   },
                   "tags": {
                     "type": "array",
@@ -1215,6 +1215,13 @@
                       "id": "39eow704856tk"
                     },
                     "description": "A schema using JSON Schema Draft 2020-12 to enforce return values of this dynamic config's rules. When submitting a schema, all submitted return values (default value and rule return values) must match the schema. Alternatively, if no default values or rule return values are updated, existing rules and return values must already conform to the schema."
+                  },
+                  "schemaJson5": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "39eow704856tk"
+                    },
+                    "description": "`schema` except with Json5 comments. Optional and should parse to same json as `schema`.\n\n"
                   }
                 }
               },
