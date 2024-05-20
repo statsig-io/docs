@@ -144,6 +144,12 @@
       "x-stoplight": {
         "id": "4su95u8yuduk5"
       }
+    },
+    "team": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "gi392hj0tbxkb"
+      }
     }
   }
 }
