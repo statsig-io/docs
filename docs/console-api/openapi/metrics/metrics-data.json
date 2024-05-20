@@ -1460,9 +1460,7 @@
                       "data": {
                         "name": "test_metric_source",
                         "description": "Test description for metric source",
-                        "tags": [
-                          "non_production"
-                        ],
+                        "tags": ["non_production"],
                         "sql": "SELECT * FROM shoppy-sales.logging.events WHERE event = 'visit'",
                         "timestampColumn": "ts",
                         "timestampAsDay": true,
@@ -1576,10 +1574,7 @@
                     "type": "array",
                     "items": {
                       "type": "object",
-                      "required": [
-                        "statsigUnitID",
-                        "column"
-                      ],
+                      "required": ["statsigUnitID", "column"],
                       "properties": {
                         "statsigUnitID": {
                           "type": "string"
@@ -1591,19 +1586,19 @@
                     }
                   },
                   "sourceType": {
+                    "enum": ["table", "query"],
                     "type": "string"
                   },
                   "tableName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the table (for table-based sources)"
                   },
                   "customFieldMapping": {
                     "type": "array",
+                    "description": "Aliases (for table-based sources)",
                     "items": {
                       "type": "object",
-                      "required": [
-                        "key",
-                        "formula"
-                      ],
+                      "required": ["key", "formula"],
                       "properties": {
                         "key": {
                           "type": "string"
@@ -1621,9 +1616,7 @@
                   "value": {
                     "name": "test_metric_source",
                     "description": "Test description for metric source",
-                    "tags": [
-                      "non_production"
-                    ],
+                    "tags": ["non_production"],
                     "sql": "SELECT * FROM shoppy-sales.logging.events WHERE event = 'visit'",
                     "idTypeMapping": [
                       {
@@ -1689,9 +1682,7 @@
           },
           "description": ""
         },
-        "tags": [
-          "Metric Source (Warehouse Native)"
-        ]
+        "tags": ["Metric Source (Warehouse Native)"]
       }
     },
     "/metrics/metric_source/{name}": {
@@ -1715,6 +1706,29 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Metric source updated successfully.",
+                      "data": {
+                        "name": "Log Events",
+                        "description": "metric source for statsig forwarded exposures",
+                        "tags": [],
+                        "sql": "SELECT * FROM shoppy-sales.logging.events\n",
+                        "timestampColumn": "ts",
+                        "timestampAsDay": false,
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "userID",
+                            "column": "product_category"
+                          },
+                          {
+                            "statsigUnitID": "deviceID",
+                            "column": "device_id"
+                          }
+                        ]
+                      }
+                    }
+                  },
                   "properties": {
                     "message": {
                       "type": "string"
@@ -1731,8 +1745,7 @@
                         "tags": {
                           "type": "array",
                           "items": {
-                            "type": "object",
-                            "properties": {}
+                            "type": "object"
                           }
                         },
                         "sql": {
@@ -1757,30 +1770,47 @@
                               }
                             }
                           }
-                        }
-                      }
-                    }
-                  },
-                  "x-examples": {
-                    "Example 1": {
-                      "message": "Metric source updated successfully.",
-                      "data": {
-                        "name": "Log Events",
-                        "description": "metric source for statsig forwarded exposures",
-                        "tags": [],
-                        "sql": "SELECT * FROM shoppy-sales.logging.events\n",
-                        "timestampColumn": "ts",
-                        "timestampAsDay": false,
-                        "idTypeMapping": [
-                          {
-                            "statsigUnitID": "userID",
-                            "column": "product_category"
+                        },
+                        "sourceType": {
+                          "x-stoplight": {
+                            "id": "r2b1yhzi3i9nh"
                           },
-                          {
-                            "statsigUnitID": "deviceID",
-                            "column": "device_id"
+                          "enum": ["table", "query"],
+                          "type": "string"
+                        },
+                        "tableName": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "27gcgxke03tzg"
                           }
-                        ]
+                        },
+                        "customFieldMapping": {
+                          "type": "array",
+                          "x-stoplight": {
+                            "id": "elsn9ukm965rz"
+                          },
+                          "uniqueItems": true,
+                          "items": {
+                            "x-stoplight": {
+                              "id": "l5xou9vtqxr51"
+                            },
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string",
+                                "x-stoplight": {
+                                  "id": "sgk598pi6w1ps"
+                                }
+                              },
+                              "formula": {
+                                "type": "string",
+                                "x-stoplight": {
+                                  "id": "g9czlretwtln9"
+                                }
+                              }
+                            }
+                          }
+                        }
                       }
                     }
                   }
@@ -1908,68 +1938,6 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "sql",
-                  "timestampColumn",
-                  "idTypeMapping"
-                ],
-                "properties": {
-                  "description": {
-                    "type": "string"
-                  },
-                  "tags": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {}
-                    }
-                  },
-                  "sql": {
-                    "type": "string"
-                  },
-                  "timestampColumn": {
-                    "type": "string"
-                  },
-                  "timestampAsDay": {
-                    "type": "boolean"
-                  },
-                  "idTypeMapping": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "required":["statsigUnitID", "column"],
-                      "properties": {
-                        "statsigUnitID": {
-                          "type": "string"
-                        },
-                        "column": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  },
-                  "sourceType": {
-                    "type": "string"
-                  },
-                  "tableName": {
-                    "type": "string"
-                  },
-                  "customFieldMapping": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "required":["key", "formula"],
-                      "properties": {
-                        "key": {
-                          "type": "string"
-                        },
-                        "formula": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                },
                 "x-examples": {
                   "Example 1": {
                     "description": "Metric source tracking logging events",
@@ -1991,6 +1959,66 @@
                         "formula": "price_usd*100"
                       }
                     ]
+                  }
+                },
+                "required": ["sql", "timestampColumn", "idTypeMapping"],
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "sql": {
+                    "type": "string"
+                  },
+                  "timestampColumn": {
+                    "type": "string"
+                  },
+                  "timestampAsDay": {
+                    "type": "boolean"
+                  },
+                  "idTypeMapping": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": ["statsigUnitID", "column"],
+                      "properties": {
+                        "statsigUnitID": {
+                          "type": "string"
+                        },
+                        "column": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "sourceType": {
+                    "enum": ["table", "query"],
+                    "type": "string"
+                  },
+                  "tableName": {
+                    "type": "string",
+                    "description": "Name of the table (for table-based sources)"
+                  },
+                  "customFieldMapping": {
+                    "type": "array",
+                    "description": "Aliases (for table-based sources)",
+                    "items": {
+                      "type": "object",
+                      "required": ["key", "formula"],
+                      "properties": {
+                        "key": {
+                          "type": "string"
+                        },
+                        "formula": {
+                          "type": "string"
+                        }
+                      }
+                    }
                   }
                 }
               },
@@ -2042,9 +2070,7 @@
           },
           "description": ""
         },
-        "tags": [
-          "Metric Source (Warehouse Native)"
-        ]
+        "tags": ["Metric Source (Warehouse Native)"]
       }
     },
     "/metrics/metric_source/list": {
