@@ -21,18 +21,17 @@ Hit the *New Experiment* button and fill out the details.  This will create a lo
 
 ![image](https://github.com/statsig-io/.github/assets/74588208/d8cfc8bb-43e9-4a64-8ca8-002c579e7fff)
 
-Once it's created your Sidecar panel would look like this.  Notice that the Experiment is now in "Draft" state.
-
-![image](https://github.com/statsig-io/.github/assets/74588208/0f2d1392-f4b3-49c3-b9f2-be3963d189fb)
-
-
 ### Step 3 (Optional): Add url filter
 
-You have the option to select what pages this experiment is valid by choosing a regex.  This regex will be matched against page urls, and the experiment will only be active for those urls that match.
+You have the option to select what pages the experiment will run on. <br />This will be evaluated prior to any targeting rules you configure on the experiment within Statsig console.
 
-For example, `(http|https):\/\/www.statsig.com\/pricing` matches pages `http://www.statsig.com/pricing` or `https://www.statsig.com/pricing`, and will activate this experiment on those pages.
+_You can configure URL targeting using the following methods:_
+* All Pages - anywhere Sidecar client is installed
+* Contains - The page URL must contain the value as a substring
+* Exact Match - The page URL must match the exact value specified here. 
+* Regex - Regular expressions, for example `(http|https):\/\/www.statsig.com\/pricing` matches pages `http://www.statsig.com/pricing` or `https://www.statsig.com/pricing`, and will activate this experiment on those pages.
 
-![image](https://github.com/statsig-io/.github/assets/74588208/8909cdc4-41a0-45ad-b947-583d22734a99)
+![image](/img/sidecaruls.png)
 
 
 ### Step 4: Add actions
@@ -41,7 +40,7 @@ Click the *Add Action* button and you'll see a list of actions you can perform w
 
 Go ahead and choose *Change content of an element*.  This will set you up to run an A/B test changing the content of an HTML element - like Headlines, descriptions, CTA, etc.
 
-![image](https://github.com/statsig-io/.github/assets/74588208/f91f6878-3a3a-4120-86e6-da1982f35e09)
+![image](/img/sidecaraddaction.png)
 
 
 ### Step 5: Select an element
@@ -65,15 +64,15 @@ Now, you can choose the two different text content you want to A/B test.  In the
 
 You can validate these changes in realtime by clicking on the &#x25B6; button above the text box for each variant.  This will immediately change the element's content so you can visually inspect how things look before publishing.
 
-![image](https://github.com/statsig-io/.github/assets/74588208/508adf9e-ca18-4939-b394-db6d768a3c12)
+![image](/img/sidecarupdatelt.png)
 
 ### Step 7: Add more actions
 
 Feel free to add more actions within the same experiment and play with the capabilities of the tool
 
-![image](https://github.com/statsig-io/.github/assets/74588208/060c06e4-f77c-4057-ac51-b99cf5af0777)
+![image](/img/sidecar2ndaction.png)
 
 #### Congratulations!  You have created your first no-code experiment
 
-## Next up: [Publishing Experiments](./publishing-experiments)
+## Next up: [Measuring Experiments](./measuring-experiments)
 

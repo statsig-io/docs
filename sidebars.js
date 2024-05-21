@@ -250,6 +250,7 @@ module.exports = {
             "guides/sidecar-experiments/introduction",
             "guides/sidecar-experiments/setup",
             "guides/sidecar-experiments/creating-experiments",
+            "guides/sidecar-experiments/measuring-experiments",
             "guides/sidecar-experiments/publishing-experiments",
             "guides/sidecar-experiments/integrating-gtm",
           ],
