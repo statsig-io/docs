@@ -288,7 +288,7 @@ module.exports = {
       type: "category",
       label: "Product Analytics",
       className: "sb-cloud",
-      label: "Analytics",
+      label: "Product Analytics",
       items: [
         "mex/overview",
         {
