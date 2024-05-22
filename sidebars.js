@@ -2,7 +2,6 @@ module.exports = {
   cloud: [
     {
       type: "category",
-      className: "sb-cloud",
       label: "Getting Started",
       link: {
         type: "doc",
@@ -94,7 +93,6 @@ module.exports = {
     },
     {
       type: "category",
-      className: "sb-cloud",
       label: "Feature Flags",
       items: [
         {
@@ -157,7 +155,6 @@ module.exports = {
     },
     {
       type: "category",
-      className: "sb-cloud",
       label: "Experimentation",
       items: [
         {
@@ -287,8 +284,6 @@ module.exports = {
     {
       type: "category",
       label: "Product Analytics",
-      className: "sb-cloud",
-      label: "Product Analytics",
       items: [
         "product-analytics/overview",
         {
@@ -345,7 +340,74 @@ module.exports = {
     },
     {
       type: "category",
-      className: "sb-cloud",
+      label: "Statsig Warehouse Native",
+      link: {
+        type: "doc",
+        id: "statsig-warehouse-native/introduction",
+      },
+      items: [
+        {
+          type: "category",
+          label: "Guides",
+          items: [
+            "statsig-warehouse-native/guides/connect",
+            "statsig-warehouse-native/guides/metric_sources",
+            "statsig-warehouse-native/guides/metrics",
+            "statsig-warehouse-native/guides/assignment_sources",
+            "statsig-warehouse-native/guides/experiments",
+            "statsig-warehouse-native/guides/checklist",
+            "statsig-warehouse-native/guides/sql",
+            "statsig-warehouse-native/guides/pulse",
+            "statsig-warehouse-native/guides/sdks",
+            "statsig-warehouse-native/guides/aatest",
+            "metrics/different-id",
+            "statsig-warehouse-native/guides/running_a_poc",
+          ],
+        },
+        {
+          type: "category",
+          label: "Features",
+          items: [
+            "statsig-warehouse-native/native-vs-cloud",
+            "statsig-warehouse-native/features/cohort-metrics",
+            "statsig-warehouse-native/features/entity-properties",
+            "statsig-warehouse-native/features/id-resolution",
+            "statsig-warehouse-native/features/funnel-metrics",
+            "statsig-warehouse-native/features/power-analysis",
+            "statsig-warehouse-native/features/monitor-an-experiment",
+            "statsig-warehouse-native/features/freshness",
+            "statsig-warehouse-native/features/stratified-sampling",
+            "statsig-warehouse-native/features/autotune",
+          ],
+        },
+        {
+          type: "category",
+          label: "Data Overview",
+          items: [
+            // "statsig-warehouse-native/analysis-tools/pulse",
+            // "statsig-warehouse-native/analysis-tools/settings",
+            "statsig-warehouse-native/analysis-tools/data-sources",
+            "statsig-warehouse-native/analysis-tools/data-privacy",
+            "statsig-warehouse-native/analysis-tools/pipeline-overview",
+            "statsig-warehouse-native/guides/best-practices",
+          ]
+        },
+        {
+          type: "category",
+          label: "Connecting Your Warehouse",
+          items: [
+            "statsig-warehouse-native/connecting-your-warehouse/bigquery",
+            "statsig-warehouse-native/connecting-your-warehouse/snowflake",
+            "statsig-warehouse-native/connecting-your-warehouse/databricks",
+            "statsig-warehouse-native/connecting-your-warehouse/redshift",
+            "statsig-warehouse-native/connecting-your-warehouse/athena",
+            "statsig-warehouse-native/connecting-your-warehouse/scheduled-reloads",
+          ]
+        },
+      ]
+    },
+    {
+      type: "category",
       label: "Session Replay",
       items: [
         "session-replay/overview",
@@ -356,13 +418,11 @@ module.exports = {
     },
     {
       type: "category",
-      className: "sb-cloud",
       label: "Web Analytics",
       items: ["webanalytics/overview"],
     },
     {
       type: "category",
-      className: "sb-cloud",
       label: "SDKs, APIs, Integrations",
       items: [
         "sdks/getting-started",
@@ -610,7 +670,6 @@ module.exports = {
     },
     {
       type: "category",
-      className: "sb-cloud",
       label: "Admin",
       items: [
         {
@@ -680,516 +739,6 @@ module.exports = {
     {
       type: "doc",
       id: "faq",
-      className: "sb-cloud",
-    },
-    {
-      type: "category",
-      className: "sb-whn",
-      label: "Getting Started",
-      link: {
-        type: "doc",
-        id: "statsig-warehouse-native/introduction",
-      },
-      items: [
-        "statsig-warehouse-native/guides/connect",
-        "statsig-warehouse-native/guides/metric_sources",
-        "statsig-warehouse-native/guides/metrics",
-        "statsig-warehouse-native/guides/assignment_sources",
-        "statsig-warehouse-native/guides/experiments",
-        "statsig-warehouse-native/guides/checklist",
-        "statsig-warehouse-native/guides/sql",
-        "statsig-warehouse-native/guides/pulse",
-        "statsig-warehouse-native/guides/sdks",
-        "statsig-warehouse-native/guides/aatest",
-        "metrics/different-id",
-        "statsig-warehouse-native/guides/running_a_poc",
-        "guides/statsig-id-resolver",
-      ],
-    },
-    {
-      type: "category",
-      className: "sb-whn",
-      label: "Features",
-      items: [
-        "statsig-warehouse-native/native-vs-cloud",
-        "statsig-warehouse-native/features/cohort-metrics",
-        "statsig-warehouse-native/features/entity-properties",
-        "statsig-warehouse-native/features/id-resolution",
-        "statsig-warehouse-native/features/funnel-metrics",
-        "statsig-warehouse-native/features/power-analysis",
-        "statsig-warehouse-native/features/monitor-an-experiment",
-        "statsig-warehouse-native/features/freshness",
-        "experiments-plus/stratified-sampling",
-        "statsig-warehouse-native/features/autotune",
-      ],
-    },
-    {
-      type: "category",
-      className: "sb-whn",
-      label: "Data Overview",
-      items: [
-        // "statsig-warehouse-native/analysis-tools/pulse",
-        // "statsig-warehouse-native/analysis-tools/settings",
-        "statsig-warehouse-native/analysis-tools/data-sources",
-        "statsig-warehouse-native/analysis-tools/data-privacy",
-        "statsig-warehouse-native/analysis-tools/pipeline-overview",
-        "statsig-warehouse-native/guides/best-practices",
-      ],
-    },
-    {
-      type: "category",
-      className: "sb-whn",
-      label: "Connecting Your Warehouse",
-      items: [
-        "statsig-warehouse-native/connecting-your-warehouse/bigquery",
-        "statsig-warehouse-native/connecting-your-warehouse/snowflake",
-        "statsig-warehouse-native/connecting-your-warehouse/databricks",
-        "statsig-warehouse-native/connecting-your-warehouse/redshift",
-        "statsig-warehouse-native/connecting-your-warehouse/athena",
-        "statsig-warehouse-native/connecting-your-warehouse/scheduled-reloads",
-      ],
-    },
-    {
-      type: "category",
-      className: "sb-whn",
-      label: "Feature Flags",
-      items: [
-        {
-          type: "category",
-          label: "Feature Flags",
-          link: {
-            type: "doc",
-            id: "feature-flags/working-with",
-          },
-          items: [
-            "feature-flags/create-new",
-            "feature-flags/add-rule",
-            "feature-flags/test-gate",
-            "feature-flags/overrides",
-            "feature-flags/scheduled-rollouts",
-            {
-              Implement: [
-                "feature-flags/implement",
-                "feature-flags/implement/client",
-                "feature-flags/implement/server",
-                "feature-flags/implement/http-api",
-              ],
-            },
-            "feature-flags/conditions",
-            "feature-flags/view-exposures",
-            "feature-flags/feature-flags-lifecycle",
-            "feature-flags/permanent-and-stale-gates",
-            "feature-flags/best-practices",
-          ],
-        },
-        {
-          type: "category",
-          label: "Dynamic Config",
-          link: {
-            type: "doc",
-            id: "dynamic-config/introduction",
-          },
-          items: [
-            "dynamic-config/working-with",
-            "dynamic-config/create-new",
-            "dynamic-config/add-rule",
-            "dynamic-config/implement",
-          ],
-        },
-        {
-          type: "category",
-          label: "Segments",
-          link: {
-            type: "doc",
-            id: "segments/introduction",
-          },
-          items: [
-            "segments/create-new",
-            "segments/add-rule",
-            "segments/add-id-list",
-            "segments/use-segment",
-          ],
-        },
-      ],
-    },
-    {
-      type: "category",
-      className: "sb-whn",
-      label: "Experimentation",
-      items: [
-        {
-          type: "category",
-          label: "Experiments",
-          link: {
-            type: "doc",
-            id: "experiments-plus/introduction",
-          },
-          items: [
-            "experiments-plus/working-with",
-            "experiments-plus/create-new",
-            "experiments-plus/power-analysis",
-            "experiments-plus/implement",
-            "experiments-plus/rules",
-            "experiments-plus/getting-group",
-            "experiments-plus/monitor",
-            "experiments-plus/read-results",
-            "experiments-plus/sequential-testing",
-            "experiments-plus/make-decision",
-            "experiments-plus/overrides",
-            "experiments-plus/stratified-sampling",
-            "experiments-plus/abandon",
-            "experiments-plus/ending-experiment",
-            "experiments-plus/disable-group",
-            "experiments-plus/bayesian",
-            "experiments-plus/switchback-tests",
-            {
-              Experimentation: [
-                "experiments-plus/experimentation/why-experiment",
-                "experiments-plus/experimentation/scenarios",
-                "experiments-plus/experimentation/best-practices",
-                "experiments-plus/experimentation/common-terms",
-                "experiments-plus/experimentation/choosing-randomization-unit",
-              ],
-            },
-          ],
-        },
-        {
-          type: "category",
-          label: "Stats Engine",
-          link: {
-            type: "doc",
-            id: "stats-engine/introduction",
-          },
-          items: [
-            "stats-engine/metric-deltas",
-            "stats-engine/variance",
-            "stats-engine/confidence-intervals",
-            "stats-engine/p-value",
-            "stats-engine/topline-impact",
-            "stats-engine/variance-reduction",
-            "stats-engine/offlineaa",
-            "stats-engine/pre-experiment-bias",
-            {
-              "Methodologies Used": [
-                "stats-engine/methodologies/bonferroni-correction",
-                "stats-engine/methodologies/cuped",
-                "stats-engine/methodologies/delta-method",
-                "stats-engine/methodologies/srm-checks",
-                "stats-engine/methodologies/winsorization",
-              ],
-            },
-          ],
-        },
-        {
-          type: "category",
-          label: "Layers",
-          link: {
-            type: "doc",
-            id: "layers/introduction",
-          },
-          items: ["layers/js-tutorial"],
-        },
-        "holdouts/introduction",
-        {
-          type: "category",
-          label: "Autotune",
-          link: {
-            type: "doc",
-            id: "autotune/introduction",
-          },
-          items: ["autotune/setup", "autotune/monitoring"],
-        },
-
-        {
-          type: "category",
-          label: "Pulse",
-          link: {
-            type: "doc",
-            id: "pulse/introduction",
-          },
-          items: [
-            "pulse/read-pulse",
-            "pulse/drill-down",
-            "pulse/custom-queries",
-            "pulse/export",
-            "pulse/best-practices",
-            "pulse/faq",
-          ],
-        },
-      ],
-    },
-
-    {
-      type: "category",
-      className: "sb-whn",
-      label: "SDKs, APIs, Integrations",
-      items: [
-        "sdks/getting-started",
-        {
-          type: "category",
-          label: "Client SDKs",
-          link: {
-            type: "doc",
-            id: "client/introduction",
-          },
-          items: [
-            {
-              Concepts: [
-                "client/concepts/user",
-                "client/concepts/initialize",
-                "client/concepts/bootstrapping",
-                "client/concepts/persistent_assignment",
-                "sdks/debugging",
-                "sdk-keys/target-apps",
-              ],
-            },
-            "client/jsClientSDK",
-            {
-              type: "category",
-              label: "New JavaScript (Beta)",
-              link: {
-                type: "doc",
-                id: "client/javascript-sdk",
-              },
-              items: [
-                "client/javascript-mono/MigrationFromOldJsClient",
-                "client/javascript-mono/MigrationFromOldReact",
-                // "client/javascript-mono/IntegrationNextJs",
-                // "client/javascript-mono/IntegrationReact",
-                "client/javascript-mono/UsingEvaluationsDataAdapter",
-                "client/javascript-mono/ReactUsage",
-                "client/javascript-mono/ReactNativeUsage",
-                "client/javascript-mono/ExpoUsage",
-                "client/javascript-mono/Examples",
-              ],
-            },
-            "client/reactSDK",
-            "client/reactNativeSDK",
-            "client/reactNativeExpoSDK",
-            "client/iosClientSDK",
-            "client/androidClientSDK",
-            "client/dotnetSDK",
-            "client/rokuSDK",
-            "client/unitySDK",
-            "client/dartSDK",
-            "client/cpp-client-sdk",
-            {
-              type: "category",
-              label: "On Device Evaluation",
-              items: [
-                "client/jsLocalEvaluationSDK",
-                {
-                  type: "category",
-                  label: "New JavaScript (Beta)",
-                  link: {
-                    type: "doc",
-                    id: "client/js-on-device-eval-client",
-                  },
-                  items: [
-                    "client/js-device-eval-mono/MigrationFromOldSDK",
-                    "client/js-device-eval-mono/UsingSpecsDataAdapter",
-                    "client/js-device-eval-mono/ReactNativeUsage",
-                  ],
-                },
-                "client/swiftOnDeviceEvaluationSDK",
-                "client/androidOnDeviceEvaluationSDK",
-              ],
-            },
-          ],
-        },
-        {
-          type: "category",
-          label: "Server SDKs",
-          link: {
-            type: "doc",
-            id: "server/introduction",
-          },
-          items: [
-            {
-              Concepts: [
-                "server/concepts/user",
-                "messages/serverRequiredUserID",
-                "server/concepts/data_store",
-                "server/concepts/persistent_assignment",
-                "sdks/debugging",
-                "sdk-keys/target-apps",
-              ],
-            },
-            "server/nodejsServerSDK",
-            "server/javaSdk",
-            "server/pythonSDK",
-            "server/golangSDK",
-            "server/rubySDK",
-            "server/dotnetSDK",
-            "server/phpSDK",
-            "server/erlangSDK",
-            "server/rustSDK",
-            "server/cppSDK",
-            "server/deprecation-notices",
-          ],
-        },
-        "http-api",
-        {
-          type: "category",
-          label: "Console API",
-          link: {
-            type: "doc",
-            id: "console-api/introduction",
-          },
-          items: [
-            "console-api/gates",
-            "console-api/segments",
-            "console-api/dynamic-configs",
-            "console-api/experiments",
-            "console-api/holdouts",
-            "console-api/layers",
-            "console-api/users",
-            "console-api/metrics",
-            "console-api/audit-logs",
-            "console-api/exposure-count",
-            "console-api/autotunes",
-            "console-api/target-apps",
-            "console-api/ingestions",
-            "console-api/tags",
-            "console-api/keys",
-            {
-              Reports: [
-                "console-api/daily-reports",
-                "console-api/daily-reports-deprecated",
-              ],
-            },
-            "console-api/all-endpoints",
-            "console-api/usage-billing",
-            "console-api/rules",
-          ],
-        },
-        {
-          type: "category",
-          label: "Integrations",
-          link: {
-            type: "doc",
-            id: "integrations/introduction",
-          },
-          items: [
-            {
-              "Data Connectors": [
-                "integrations/data-connectors/census",
-                "integrations/data-connectors/google-analytics",
-                "integrations/data-connectors/fivetran",
-                "integrations/data-connectors/heap",
-                "integrations/data-connectors/hightouch",
-                "integrations/data-connectors/mparticle",
-                "integrations/data-connectors/revenuecat",
-                "integrations/data-connectors/segment",
-                "integrations/data-connectors/rudderstack",
-                "integrations/data-connectors/stitch",
-                "integrations/data-connectors/mixpanel",
-                "integrations/data-connectors/amplitude",
-              ],
-            },
-            {
-              "Data Imports (Deprecated)": [
-                "integrations/data-imports/overview-deprecated",
-                "integrations/data-imports/bigquery-deprecated",
-                "integrations/data-imports/redshift-deprecated",
-                "integrations/data-imports/snowflake-deprecated",
-                "integrations/data-imports/azure_upload-deprecated",
-              ],
-            },
-            {
-              "Data Exports": ["integrations/data-exports/overview"],
-            },
-            "integrations/event_filtering",
-            "integrations/event_webhook",
-            "integrations/jira",
-            "integrations/vercel",
-            "integrations/cloudflare",
-            "integrations/fastly",
-            "integrations/vscode",
-            "integrations/datadog",
-            "integrations/github_code_references",
-            "integrations/slack",
-            "integrations/openai",
-            "integrations/gtm",
-            {
-              type: "category",
-              label: "Terraform",
-              link: {
-                type: "doc",
-                id: "integrations/terraform/introduction",
-              },
-              items: [
-                "integrations/terraform/terraform_gate",
-                "integrations/terraform/terraform_experiment",
-              ],
-            },
-            {
-              type: "category",
-              label: "Triggers",
-              link: {
-                type: "doc",
-                id: "integrations/triggers/introduction",
-              },
-              items: ["integrations/triggers/datadog"],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      type: "category",
-      className: "sb-whn",
-      label: "Admin",
-      items: [
-        {
-          type: "category",
-          label: "Access Management",
-          link: {
-            type: "doc",
-            id: "access-management/introduction",
-          },
-          items: [
-            "access-management/projects",
-            "access-management/organizations",
-            {
-              "Single Sign-On": [
-                "access-management/sso/overview",
-                "access-management/sso/okta_sso",
-                "access-management/sso/azuread",
-                "access-management/sso/google",
-              ],
-            },
-          ],
-        },
-        {
-          type: "category",
-          label: "Compliance",
-          link: {
-            type: "doc",
-            id: "compliance/introduction",
-          },
-          items: ["compliance/user_data_deletion_requests"],
-        },
-        {
-          type: "category",
-          label: "Infrastructure",
-          link: {
-            type: "doc",
-            id: "infrastructure/introduction",
-          },
-          items: [
-            "infrastructure/statsig_ip_ranges",
-            "infrastructure/statsig_domains",
-            "infrastructure/custom_proxy",
-            "infrastructure/reliability-faq",
-          ],
-        },
-      ],
-    },
-    {
-      type: "doc",
-      id: "faq",
-      className: "sb-whn",
     },
   ],
 };

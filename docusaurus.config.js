@@ -47,10 +47,6 @@ module.exports = {
       },
       items: [
         {
-          type: 'custom-warehouseToggle', 
-          position: "left",
-        },
-        {
           type: "html",
           position: "right",
           value:
