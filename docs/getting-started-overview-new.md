@@ -4,7 +4,7 @@ title: Getting Started
 ---
 
 # Statsig Platform Overview
-Statsig has three core product lines- [**Feature Flags**](/feature-flags/working-with), [**Experiments**](/experiments-plus), and [**Analytics**](/mex/overview)- all of which sit on top of our suite of SDKs, APIs, and integrations that enable you to (1) manage assignment, and (2) log or import events and exposures. 
+Statsig has three core product lines- [**Feature Flags**](/feature-flags/working-with), [**Experiments**](/experiments-plus), and [**Analytics**](/product-analytics/overview)- all of which sit on top of our suite of SDKs, APIs, and integrations that enable you to (1) manage assignment, and (2) log or import events and exposures. 
 
 Here’s how the Statsig ecosystem looks at the highest-level: 
 
