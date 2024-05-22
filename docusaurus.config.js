@@ -218,7 +218,31 @@ module.exports = {
       {
         redirects: [
           {
-            to: "/mex/overview",
+            to: "/product-analytics/drilldown",
+            from: "/mex/drilldown",
+          },
+          {
+            to: "/product-analytics/dashboards",
+            from: "/mex/dashboards",
+          },
+          {
+            to: "/product-analytics/funnels",
+            from: "/mex/funnels",
+          },
+          {
+            to: "/product-analytics/retention",
+            from: "/mex/retention",
+          },
+          {
+            to: "/product-analytics/overview",
+            from: "/mex/overview",
+          },
+          {
+            to: "/product-analytics/overview",
+            from: "/product-analytics",
+          },
+          {
+            to: "/product-analytics/overview",
             from: "/mex",
           },
           {
@@ -290,7 +314,7 @@ module.exports = {
             from: "/feature-gates/implement/http-api",
           },
           {
-            to: "/mex/overview",
+            to: "/product-analytics/overview",
             from: "/metrics/events-explorer",
           },
         ],
