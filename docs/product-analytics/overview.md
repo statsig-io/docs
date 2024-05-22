@@ -3,7 +3,7 @@ title: Statsig Product Analytics Overview
 tags:
 - Statsig Cloud 
 sidebar_label: Overview
-slug: /mex/overview
+slug: /product-analytics/overview
 ---
 
 # Overview
