@@ -18,7 +18,18 @@ In order to improve the efficiency and performance of our API endpoints, we are 
 
 ## How
 
-Starting from August 1, 2024, all list requests should include the pagination parameters `page` and `limit`. If no parameters are provided, the request will default to `page=1&limit=100`. This change will affect the following endpoints among others: `/gates`, `/metrics`, `/experiments`...
+Starting from August 1, 2024, all list requests should include the pagination parameters `page` and `limit`. If no parameters are provided, the request will default to `page=1&limit=100`. This change will affect the following endpoints among others:
+
+- `/gates`
+- `/metrics`
+- `/experiments`
+- `/audit_logs`
+- `/events`
+- `/dynamic_configs`
+- `/autotunes`
+- `/holdouts`
+- `/layers`
+- `/metrics/list`
 
 If you are currently using any of these endpoints without pagination parameters, please update your requests to include these parameters.
 
