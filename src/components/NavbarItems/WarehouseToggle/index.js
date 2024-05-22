@@ -33,7 +33,8 @@ function WarehouseToggle() {
     setSelectedMode(initialMode || 'cloud');
   }, []);
 
-  const handleToggleClick = () => {
+  const handleToggleClick = (value, meta, third) => {
+    console.log(value, meta, third);
     const newMode = selectedMode === 'warehouse' ? 'cloud' : 'warehouse';
     setSelectedMode(newMode);
     localStorage.setItem(STORAGE_KEY, newMode);
