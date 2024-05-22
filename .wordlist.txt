@@ -33,8 +33,10 @@ Changelog
 CLI
 CloudFront
 Cloudflare
+cloudflare
 CodeLens
 CustomIDs
+ctx
 DAU
 dbfs
 de
@@ -63,6 +65,7 @@ Deduplicating
 deduplicating
 docsRevamp
 Environments
+env
 ETAs
 ETLs
 Ecommerce
@@ -321,6 +324,7 @@ unlaunched
 unmonitored
 unsampled
 updateUser
+url
 userID
 userIDs
 userbase
@@ -457,3 +461,4 @@ SHA
 Bellevue
 donut
 whn
+www
