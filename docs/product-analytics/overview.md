@@ -21,7 +21,7 @@ In Metrics Explorer, charts are the primary means of analysis, providing a versa
 
 We offer the following chart types: 
 
-- [Metric Drilldown](/product-analytyics/drilldown)
+- [Metric Drilldown](/product-analytics/drilldown)
 - [Funnels](/product-analytics/funnels)
 - [Retention](/product-analytics/retention)
 - Distribution
