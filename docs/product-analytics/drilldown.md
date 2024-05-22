@@ -3,7 +3,7 @@ title: Metric Drilldown Charts
 tags:
 - Statsig Cloud 
 sidebar_label: Metric Drilldown
-slug: /mex/drilldown
+slug: /product-analytics/drilldown
 ---
 
 # Metric Drilldown
