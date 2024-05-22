@@ -314,7 +314,7 @@ module.exports = {
             from: "/feature-gates/implement/http-api",
           },
           {
-            to: "/mex/overview",
+            to: "/product-analytics/overview",
             from: "/metrics/events-explorer",
           },
         ],
