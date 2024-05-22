@@ -288,15 +288,15 @@ module.exports = {
       type: "category",
       label: "Product Analytics",
       className: "sb-cloud",
-      label: "Analytics",
+      label: "Product Analytics",
       items: [
-        "mex/overview",
+        "product-analytics/overview",
         {
           type: "category",
           label: "Metric Explorer",
-          items: ["mex/drilldown", "mex/funnels", "mex/retention"],
+          items: ["product-analytics/drilldown", "product-analytics/funnels", "product-analytics/retention"],
         },
-        "mex/dashboards",
+        "product-analytics/dashboards",
         {
           type: "category",
           label: "Metrics",
