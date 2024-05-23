@@ -2909,7 +2909,7 @@
                   "type": "object",
                   "properties": {
                     "message": {
-                      "$ref": "./models/message.json"
+                      "$ref": "../../models/message.json"
                     }
                   }
                 },
@@ -2928,7 +2928,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./models/error_401.json"
+                  "$ref": "../../models/error_401.json"
                 },
                 "examples": {
                   "Example 1": {
@@ -2952,7 +2952,7 @@
                       "$ref": "#/components/schemas/status"
                     },
                     "message": {
-                      "$ref": "./models/message.json"
+                      "$ref": "../../models/message.json"
                     }
                   }
                 },
@@ -3942,7 +3942,13 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": [ "sql", "timestampColumn", "groupIDColumn", "experimentIDColumn", "idTypeMapping"],
+                "required": [
+                  "sql",
+                  "timestampColumn",
+                  "groupIDColumn",
+                  "experimentIDColumn",
+                  "idTypeMapping"
+                ],
                 "properties": {
                   "sql": {
                     "type": "string"
