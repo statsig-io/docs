@@ -3,9 +3,11 @@ import TabItem from "@theme/TabItem";
 
 ## Installation
 
-To add support for Expo, first, add the Statsig JS client outlined [here](/client/javascript-sdk).
+Statsig uses a multi-package strategy, so you will need to install both the Statsig client and the Expo
+specific bindings.
 
-Once the Statsig client is installed, you can add the Expo bindings as described below:
+Documentation for `@statsig/js-client` can be found [here](/client/javascript-sdk).
+
 
 <Tabs
   defaultValue="npm"
@@ -26,6 +28,36 @@ npm install @statsig/js-client @statsig/expo-bindings
 
 ```shell
 yarn add @statsig/js-client @statsig/expo-bindings
+```
+
+  </TabItem>
+</Tabs>
+
+
+
+### Peer Dependecies
+
+The `@statsig/expo-bindings` package has peer dependencies which will also need to be installed.
+
+<Tabs
+  defaultValue="npm"
+  groupId="js-install-choice"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+  ]}>
+
+  <TabItem value="npm">
+
+```shell
+npm install expo-device expo-application
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```shell
+yarn add expo-device expo-application
 ```
 
   </TabItem>

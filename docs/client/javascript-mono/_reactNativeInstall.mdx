@@ -3,9 +3,10 @@ import TabItem from "@theme/TabItem";
 
 ## Installation
 
-To add support for React Native, first, add the Statsig JS client outlined [here](/client/javascript-sdk).
+Statsig uses a multi-package strategy, so you will need to install both the Statsig client and the Expo
+specific bindings.
 
-Once the Statsig client is installed, you can add the React Native bindings as described below:
+Documentation for `@statsig/js-client` can be found [here](/client/javascript-sdk).
 
 <Tabs
   defaultValue="npm"
@@ -33,7 +34,7 @@ yarn add @statsig/js-client @statsig/react-native-bindings
 
 ### Peer Dependecies
 
-The `@statsig/react-native-bindings` module has peer dependencies which will also need to be installed
+The `@statsig/react-native-bindings` package has peer dependencies which will also need to be installed.
 
 <Tabs
   defaultValue="npm"
