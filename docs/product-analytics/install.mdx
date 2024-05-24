@@ -22,7 +22,6 @@ Statsig product analytics helps you understand how your users experience and int
   ]}>
   <TabItem value="javascript">
 
-## JavaScript
 
 <Tabs
   defaultValue="script"
@@ -60,9 +59,28 @@ yarn add @statsig/js-client
   </TabItem>
 </Tabs>
 
+<Tabs
+  defaultValue="typescript"
+  values={[
+    {label: 'Typescript', value: 'typescript'},
+    {label: 'Javascript', value: 'javascript'}
+  ]}>
+  <TabItem value="typescript">
+
 ## Initialize
 
-### Typescript
+```jsx
+import { StatsigClient } from '@statsig/js-client'
+await statsig.initialize(
+  "client-GmFQTKCSeaftEpVEpJuglUPkYRgGIQYCzmYDEQl3iZ2",
+  { userID: "user-id" },
+);
+```
+
+  </TabItem>
+  <TabItem value="javascript">
+
+## Initialize
 
 ```jsx
 import { StatsigClient } from '@statsig/js-client'
@@ -72,15 +90,8 @@ await statsig.initialize(
 );
 ```
 
-### Javascript
-
-```jsx
-import { StatsigClient } from '@statsig/js-client'
-await statsig.initialize(
-  "client-GmFQTKCSeaftEpVEpJuglUPkYRgGIQYCzmYDEQl3iZ2",
-  { userID: "user-id" },
-);
-```
+  </TabItem>
+</Tabs>
 
 ## Log Events
 
@@ -94,8 +105,6 @@ statsig.flushEvents(); // optional, but will send events immediately
 
   </TabItem>
   <TabItem value="react_native">
-
-## React Native
 
 <Tabs
   defaultValue="npm"
