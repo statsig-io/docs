@@ -1,0 +1,161 @@
+---
+title: Install, Initialize, and Log Events
+sidebar_label: Install
+slug: /product-analytics/install
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+# **Overview**
+
+Statsig product analytics helps you understand how your users experience and interact with your product through the analysis of product data. Metrics Explorer and Dashboards are the primary product analytics surfaces within Statsig.
+
+# Install, Initialize, and Log Events
+
+<Tabs
+  defaultValue="javascript"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'React Native', value: 'react_native'},
+  ]}>
+  <TabItem value="javascript">
+
+## JavaScript
+
+<Tabs
+  defaultValue="script"
+  values={[
+    {label: 'Script', value: 'script'},
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'}
+  ]}>
+  <TabItem value="script">
+
+### Install via Script
+
+```jsx
+<script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@latest/build/statsig-js-client.min.js"></script>
+```
+
+  </TabItem>
+  <TabItem value="npm">
+
+### Install via NPM
+
+```jsx
+npm install @statsig/js-client
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+### Install via Yarn
+
+```jsx
+yarn add @statsig/js-client
+```
+
+  </TabItem>
+</Tabs>
+
+## Initialize
+
+### Typescript
+
+```jsx
+import { StatsigClient } from '@statsig/js-client'
+await statsig.initialize(
+  "client-GmFQTKCSeaftEpVEpJuglUPkYRgGIQYCzmYDEQl3iZ2",
+  { userID: "user-id" },
+);
+```
+
+### Javascript
+
+```jsx
+import { StatsigClient } from '@statsig/js-client'
+await statsig.initialize(
+  "client-GmFQTKCSeaftEpVEpJuglUPkYRgGIQYCzmYDEQl3iZ2",
+  { userID: "user-id" },
+);
+```
+
+## Log Events
+
+```jsx
+statsig.logEvent("add_to_cart", "SKU_12345", {
+  price: "9.99",
+  item_name: "diet_coke_48_pack",
+});
+statsig.flushEvents(); // optional, but will send events immediately
+```
+
+  </TabItem>
+  <TabItem value="react_native">
+
+## React Native
+
+<Tabs
+  defaultValue="npm"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'}
+  ]}>
+  <TabItem value="npm">
+
+### Install via NPM
+
+```jsx
+npm install statsig-react-native
+npm install @react-native-async-storage/async-storage react-native-device-info react-native-get-random-values
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+### Install via Yarn
+
+```jsx
+yarn add statsig-react-native
+yarn add @react-native-async-storage/async-storage react-native-device-info react-native-get-random-values
+\```
+
+  </TabItem>
+</Tabs>
+
+## Initialize
+
+```jsx
+import { StatsigProvider } from "statsig-react-native";
+function App() {
+  return (
+    <StatsigProvider
+      sdkKey="client-GmFQTKCSeaftEpVEpJuglUPkYRgGIQYCzmYDEQl3iZ2"
+      waitForInitialization={true}
+    >
+      <div className="App">{/* Rest of App ... */}</div>
+    </StatsigProvider>
+  );
+}
+```
+
+## Log Events
+
+```jsx
+import { Statsig } from 'statsig-react-native';
+export default function MyComponent(): JSX.Element {
+  return <Button
+    onClick={() => {
+      statsig.logEvent("add_to_cart", "SKU_12345", {
+        price: "9.99",
+        item_name: "diet_coke_48_pack",
+      });
+    }}
+  />;
+}
+```
+
+  </TabItem>
+</Tabs>
