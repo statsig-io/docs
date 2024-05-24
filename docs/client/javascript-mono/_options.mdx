@@ -1,28 +1,64 @@
-You can configure certain aspects of the SDKs behavior by passing a StatsigOptions object during initialization.
+import NetworkConfig from "./_networkConfig.mdx";
 
-- **api**: `string`
-  - The API to use for all SDK network requests. You should not need to override this unless you have another API that implements the Statsig API endpoints.
-- **logEventUrl**: `string`
-  - The URL used to flush queued events via a POST request. Takes precedence over `StatsigOptions.api`.
-- **logEventBeaconUrl**: `string`
-  - The URL used to flush queued events via `window.navigator.sendBeacon` (web only). Takes precedence over `StatsigOptionsCommon.api`.
-- **initializeUrl**: `string`, default `https://api.statsig.com/v1/initialize`
-  - The URL used to fetch the latest evaluations for a given user. Takes precedence over `StatsigOptions.api`.
-- **environment**: `StatsigEnvironment`
-  - An object you can use to set environment variables that apply to all of your users in the same session.
-- **overrideStableID**: `string`
-  - Overrides the auto-generated StableID that is set for the device.
-- **logLevel**: `LogLevel`, default `LogLevel.Warn`
-  - How much information is allowed to be printed to the console.
-- **dataAdapter**: `EvaluationsDataAdapter`, default `StatsigEvaluationsDataAdapter`
-  - Implementing this type allows customization of the initialization/update flow. See [Using EvaluationsDataAdapter](/client/javascript-sdk/using-evaluations-data-adapter) to learn more.
-- **networkTimeoutMs**: `number`, default `10,000`
-  - The maximum amount of time (in milliseconds) that any network request can take before timing out.
-- **loggingBufferMaxSize**: `number`, default `50`
-  - The maximum number of events to batch before flushing logs to Statsig.
-- **loggingIntervalMs**: `number`, default `10,000`
-  - How often (in milliseconds) to flush logs to Statsig.
-- **overrideAdapter**: `OverrideAdapter`
-  - An implementor of `OverrideAdapter`, used to alter evaluations before its returned 
-  to the caller of a check api (checkGate/getExperiment etc).
+#### **disableLogging** `boolean` 
+> Prevents sending any events over the network.
 
+#### **disableStorage** `boolean`
+> Prevents writing anything to storage. 
+>
+> Note: caching will not work if storage is disabled
+
+
+#### **networkConfig** `object`
+> Allows for fine grained control over which api or urls are hit for specific Statsig network requests
+
+<details>
+  <summary>See NetworkConfig object</summary>
+  <NetworkConfig />
+</details>
+
+#### **environment** `StatsigEnvironment`
+> An object you can use to set environment variables that apply to all of your users in the same session.
+
+#### **logLevel** `LogLevel`
+> How much information is allowed to be printed to the console. 
+>
+> default: `LogLevel.Warn`
+
+#### **loggingBufferMaxSize** `number`
+> The maximum number of events to batch before flushing logs to Statsig. 
+>
+> default: `50`
+
+#### **loggingIntervalMs** `number`
+> How often (in milliseconds) to flush logs to Statsig. 
+>
+> default: `10,000 ms` (10 seconds)
+
+#### **overrideAdapter** `OverrideAdapter`
+> An implementor of OverrideAdapter, used to alter evaluations before its returned to the caller of a check api (checkGate/getExperiment etc).
+
+#### **includeCurrentPageUrlWithEvents** `boolean`
+> (Web only) Should the 'current page' url be included with logged events. 
+>
+> default: `true`
+
+#### **disableStatsigEncoding** `boolean`
+> Whether or not Statsig should use raw JSON for network requests where possible. 
+>
+> default: `false`
+
+#### **disableCompression** `boolean`
+> Whether or not Statsig should compress JSON bodies for network requests where possible. 
+>
+> default: `false`
+
+#### **dataAdapter** `EvaluationsDataAdapter`
+> An implementor of EvaluationsDataAdapter, used to customize the initialization/update flow. 
+>
+> default: `StatsigEvaluationsDataAdapter`
+
+#### **customUserCacheKeyFunc** `CustomCacheKeyGenerator`
+> Overrides the default cache key generation. Given the SDKKey and current StatsigUser, return a key to be used for storing values related to that user.
+>
+> default: Cache key is a hash of the `sdkKey` + `user.userID` + `user.customIDs`.
