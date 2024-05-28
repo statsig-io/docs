@@ -26,7 +26,10 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": ["type", "dataset"],
+              "required": [
+                "type",
+                "dataset"
+              ],
               "properties": {
                 "type": {
                   "$ref": "#/components/schemas/Ingestion-type"
@@ -52,7 +55,10 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": ["type", "dataset"],
+              "required": [
+                "type",
+                "dataset"
+              ],
               "properties": {
                 "type": {
                   "$ref": "#/components/schemas/Ingestion-type"
@@ -131,7 +137,11 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": ["type", "dataset", "source_name"],
+              "required": [
+                "type",
+                "dataset",
+                "source_name"
+              ],
               "properties": {
                 "type": {
                   "$ref": "#/components/schemas/Ingestion-type"
@@ -224,7 +234,10 @@
         },
         "type": "object",
         "x-examples": {},
-        "required": ["id", "type"],
+        "required": [
+          "id",
+          "type"
+        ],
         "properties": {
           "id": {
             "type": "string",
@@ -393,8 +406,13 @@
             "lastUpdatedAt": "2023-12-14T02:47:00.321Z",
             "createdAt": "2023-12-14T02:31:46.896Z",
             "trigger": "scheduled",
-            "sources": ["Events 1", "Events 2"],
-            "dateStamps": ["2023-12-12"],
+            "sources": [
+              "Events 1",
+              "Events 2"
+            ],
+            "dateStamps": [
+              "2023-12-12"
+            ],
             "runHistory": [
               {
                 "statusTimestamp": "2023-12-14T02:47:01.422Z",
@@ -484,8 +502,12 @@
             "lastUpdatedAt": "2023-12-14T04:18:54.603Z",
             "createdAt": "2023-12-14T02:30:27.217Z",
             "trigger": "scheduled",
-            "sources": ["Metrics 1"],
-            "dateStamps": ["2023-12-12"],
+            "sources": [
+              "Metrics 1"
+            ],
+            "dateStamps": [
+              "2023-12-12"
+            ],
             "runHistory": [
               {
                 "statusTimestamp": "2023-12-14T04:18:55.556Z",
@@ -669,7 +691,10 @@
             }
           }
         },
-        "required": ["runID", "latestStatus"]
+        "required": [
+          "runID",
+          "latestStatus"
+        ]
       },
       "Ingestion-type": {
         "title": "Ingestion-type",
@@ -695,7 +720,11 @@
         "x-stoplight": {
           "id": "ewavhqtgwoccm"
         },
-        "enum": ["Metrics", "Events", "export_exposures"],
+        "enum": [
+          "Metrics",
+          "Events",
+          "export_exposures"
+        ],
         "type": "string",
         "example": "Metrics",
         "description": "Ingestion dataset"
@@ -705,7 +734,10 @@
         "x-stoplight": {
           "id": "8u564r0ncixle"
         },
-        "enum": ["pulse-summary", "exposures"],
+        "enum": [
+          "pulse-summary",
+          "exposures"
+        ],
         "type": "string",
         "example": "pulse-summary"
       },
@@ -716,7 +748,12 @@
         },
         "type": "object",
         "description": "Column mapping schema for metric ingestions",
-        "required": ["unit_id", "id_type", "dateid", "metric_name"],
+        "required": [
+          "unit_id",
+          "id_type",
+          "dateid",
+          "metric_name"
+        ],
         "properties": {
           "unit_id": {
             "type": "string",
@@ -770,7 +807,10 @@
         },
         "type": "object",
         "description": "Column mapping schema for event dataset ingestions",
-        "required": ["event_name", "timestamp"],
+        "required": [
+          "event_name",
+          "timestamp"
+        ],
         "properties": {
           "unit_id": {
             "type": "string",
@@ -799,7 +839,11 @@
         },
         "type": "object",
         "description": "Column mapping schema for exposure ingestions",
-        "required": ["experiment", "group_id", "timestamp"],
+        "required": [
+          "experiment",
+          "group_id",
+          "timestamp"
+        ],
         "properties": {
           "experiment": {
             "type": "string",
@@ -856,7 +900,11 @@
         "required": true,
         "schema": {
           "type": "string",
-          "enum": ["Events", "Metrics", "export_exposures"],
+          "enum": [
+            "Events",
+            "Metrics",
+            "export_exposures"
+          ],
           "example": "Events"
         },
         "description": "Ingestion dataset type"
@@ -887,7 +935,9 @@
     "/ingestion": {
       "get": {
         "summary": "Read Ingestion",
-        "tags": ["Ingestions"],
+        "tags": [
+          "Ingestions"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -923,7 +973,9 @@
                       ]
                     }
                   },
-                  "required": ["message"]
+                  "required": [
+                    "message"
+                  ]
                 },
                 "examples": {
                   "Example 1": {
@@ -957,7 +1009,9 @@
       },
       "patch": {
         "summary": "Update Ingestion",
-        "tags": ["Ingestions"],
+        "tags": [
+          "Ingestions"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -993,7 +1047,9 @@
                       ]
                     }
                   },
-                  "required": ["message"]
+                  "required": [
+                    "message"
+                  ]
                 }
               }
             }
@@ -1012,7 +1068,9 @@
       },
       "delete": {
         "summary": "Delete Ingestion Source",
-        "tags": ["Ingestions"],
+        "tags": [
+          "Ingestions"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -1059,7 +1117,9 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": ["message"],
+                  "required": [
+                    "message"
+                  ],
                   "properties": {
                     "message": {
                       "type": "string",
@@ -1087,7 +1147,9 @@
         "requestBody": {
           "$ref": "#/components/requestBodies/Ingestion-create"
         },
-        "tags": ["Ingestions"]
+        "tags": [
+          "Ingestions"
+        ]
       }
     },
     "/ingestion/connection/databricks": {
@@ -1101,7 +1163,9 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": ["message"],
+                  "required": [
+                    "message"
+                  ],
                   "properties": {
                     "message": {
                       "type": "string",
@@ -1159,12 +1223,18 @@
                     }
                   }
                 },
-                "required": ["token", "host", "path"]
+                "required": [
+                  "token",
+                  "host",
+                  "path"
+                ]
               }
             }
           }
         },
-        "tags": ["Ingestion Connections"]
+        "tags": [
+          "Ingestion Connections"
+        ]
       },
       "parameters": []
     },
@@ -1199,10 +1269,12 @@
                     },
                     "ingestion_dataset": {
                       "type": "string",
+                      "description": "Dataset for ingestion (e.g. Events)",
                       "nullable": true
                     },
                     "ingestion_source": {
                       "type": "string",
+                      "description": "Type of ingestion source (e.g. Databricks)",
                       "nullable": true
                     },
                     "status": {
@@ -1214,6 +1286,10 @@
                         "id": "olukg1nzo84xw"
                       },
                       "description": "number of rows imported"
+                    },
+                    "source_name": {
+                      "type": "string",
+                      "description": "Name of ingestion source"
                     }
                   }
                 },
@@ -1257,7 +1333,10 @@
                           "conditions": [
                             {
                               "type": "user_id",
-                              "targetValue": ["111", "222"],
+                              "targetValue": [
+                                "111",
+                                "222"
+                              ],
                               "operator": "any"
                             }
                           ]
@@ -1286,7 +1365,10 @@
                           "conditions": [
                             {
                               "type": "user_id",
-                              "targetValue": ["111", "222"],
+                              "targetValue": [
+                                "111",
+                                "222"
+                              ],
                               "operator": "any"
                             }
                           ]
@@ -1326,7 +1408,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../../models/error_401.json"
+                  "$ref": "../models/error_401.json"
                 },
                 "example": {
                   "status": 403,
@@ -1371,31 +1453,48 @@
               "type": "string"
             },
             "in": "query",
-            "name": "ingestion_source",
-            "description": "Filter for selected ingestion sources"
+            "name": "source",
+            "description": "Filter for selected ingestion source"
           },
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "Events",
+                "Metrics",
+                "export_exposures"
+              ],
+              "example": "Events"
             },
             "in": "query",
-            "name": "ingestion_dataset",
-            "description": "Filter for selected datasets"
+            "name": "dataset",
+            "description": "Filter for selected dataset"
           },
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "IMPORT_SUCCESSFUL"
             },
             "in": "query",
             "name": "status",
             "description": "Filter for selected status"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "statuses",
+            "description": "Filter for multiple statuses"
           }
         ],
         "requestBody": {
           "content": {}
         },
         "description": "",
-        "tags": ["Ingestion Status"]
+        "tags": [
+          "Ingestion Status"
+        ]
       }
     },
     "/ingestion/runs": {
@@ -1410,7 +1509,7 @@
                   "type": "object",
                   "properties": {
                     "message": {
-                      "$ref": "../../models/message.json"
+                      "$ref": "../models/message.json"
                     },
                     "data": {
                       "x-stoplight": {
@@ -1422,7 +1521,7 @@
                       }
                     },
                     "pagination": {
-                      "$ref": "../../models/pagination.json"
+                      "$ref": "../models/pagination.json"
                     }
                   }
                 },
@@ -1437,8 +1536,13 @@
                           "lastUpdatedAt": "2023-12-14T02:47:00.321Z",
                           "createdAt": "2023-12-14T02:31:46.896Z",
                           "trigger": "scheduled",
-                          "sources": ["Events 1", "Events 2"],
-                          "dateStamps": ["2023-12-12"],
+                          "sources": [
+                            "Events 1",
+                            "Events 2"
+                          ],
+                          "dateStamps": [
+                            "2023-12-12"
+                          ],
                           "runHistory": [
                             {
                               "statusTimestamp": "2023-12-14T02:47:01.422Z",
@@ -1528,8 +1632,12 @@
                           "lastUpdatedAt": "2023-12-14T04:18:54.603Z",
                           "createdAt": "2023-12-14T02:30:27.217Z",
                           "trigger": "scheduled",
-                          "sources": ["Metrics 1"],
-                          "dateStamps": ["2023-12-12"],
+                          "sources": [
+                            "Metrics 1"
+                          ],
+                          "dateStamps": [
+                            "2023-12-12"
+                          ],
                           "runHistory": [
                             {
                               "statusTimestamp": "2023-12-14T04:18:55.556Z",
@@ -1636,8 +1744,13 @@
                           "lastUpdatedAt": "2023-12-13T02:44:23.790Z",
                           "createdAt": "2023-12-13T02:30:55.992Z",
                           "trigger": "scheduled",
-                          "sources": ["Events 1", "Events 2"],
-                          "dateStamps": ["2023-12-11"],
+                          "sources": [
+                            "Events 1",
+                            "Events 2"
+                          ],
+                          "dateStamps": [
+                            "2023-12-11"
+                          ],
                           "runHistory": [
                             {
                               "statusTimestamp": "2023-12-13T02:44:24.865Z",
@@ -1727,8 +1840,12 @@
                           "lastUpdatedAt": "2023-12-13T03:47:23.504Z",
                           "createdAt": "2023-12-13T02:29:32.793Z",
                           "trigger": "scheduled",
-                          "sources": ["Metrics 1"],
-                          "dateStamps": ["2023-12-11"],
+                          "sources": [
+                            "Metrics 1"
+                          ],
+                          "dateStamps": [
+                            "2023-12-11"
+                          ],
                           "runHistory": [
                             {
                               "statusTimestamp": "2023-12-13T03:47:24.548Z",
@@ -1851,8 +1968,13 @@
                           "lastUpdatedAt": "2023-12-12T02:43:29.739Z",
                           "createdAt": "2023-12-12T02:30:41.989Z",
                           "trigger": "scheduled",
-                          "sources": ["Events 1", "Events 2"],
-                          "dateStamps": ["2023-12-10"],
+                          "sources": [
+                            "Events 1",
+                            "Events 2"
+                          ],
+                          "dateStamps": [
+                            "2023-12-10"
+                          ],
                           "runHistory": [
                             {
                               "statusTimestamp": "2023-12-12T02:43:30.735Z",
@@ -1942,8 +2064,12 @@
                           "lastUpdatedAt": "2023-12-12T03:50:41.473Z",
                           "createdAt": "2023-12-12T02:29:22.966Z",
                           "trigger": "scheduled",
-                          "sources": ["Metrics 1"],
-                          "dateStamps": ["2023-12-10"],
+                          "sources": [
+                            "Metrics 1"
+                          ],
+                          "dateStamps": [
+                            "2023-12-10"
+                          ],
                           "runHistory": [
                             {
                               "statusTimestamp": "2023-12-12T03:50:42.631Z",
@@ -2165,8 +2291,13 @@
                           "lastUpdatedAt": "2023-12-12T05:23:34.419Z",
                           "createdAt": "2023-12-11T02:30:09.748Z",
                           "trigger": "scheduled",
-                          "sources": ["Events 1", "Events 2"],
-                          "dateStamps": ["2023-12-09"],
+                          "sources": [
+                            "Events 1",
+                            "Events 2"
+                          ],
+                          "dateStamps": [
+                            "2023-12-09"
+                          ],
                           "runHistory": [
                             {
                               "statusTimestamp": "2023-12-11T02:43:14.831Z",
@@ -2264,8 +2395,12 @@
                           "lastUpdatedAt": "2023-12-11T10:00:43.391Z",
                           "createdAt": "2023-12-11T02:29:04.866Z",
                           "trigger": "scheduled",
-                          "sources": ["Metrics 1"],
-                          "dateStamps": ["2023-12-09"],
+                          "sources": [
+                            "Metrics 1"
+                          ],
+                          "dateStamps": [
+                            "2023-12-09"
+                          ],
                           "runHistory": [
                             {
                               "statusTimestamp": "2023-12-11T10:00:44.621Z",
@@ -2511,7 +2646,9 @@
           }
         ],
         "description": "List ingestion runs sorted by the timestamp they were triggered",
-        "tags": ["Ingestion Runs"]
+        "tags": [
+          "Ingestion Runs"
+        ]
       }
     },
     "/ingestion/runs/{run_id}": {
@@ -2526,7 +2663,7 @@
                   "type": "object",
                   "properties": {
                     "message": {
-                      "$ref": "../../models/message.json"
+                      "$ref": "../models/message.json"
                     },
                     "data": {
                       "$ref": "#/components/schemas/ingestion-run"
@@ -2543,8 +2680,13 @@
                         "lastUpdatedAt": "2023-12-13T02:44:23.790Z",
                         "createdAt": "2023-12-13T02:30:55.992Z",
                         "trigger": "scheduled",
-                        "sources": ["Events 1", "Events 2"],
-                        "dateStamps": ["2023-12-11"],
+                        "sources": [
+                          "Events 1",
+                          "Events 2"
+                        ],
+                        "dateStamps": [
+                          "2023-12-11"
+                        ],
                         "runHistory": [
                           {
                             "statusTimestamp": "2023-12-13T02:44:24.865Z",
@@ -2639,7 +2781,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../../models/error_401.json"
+                  "$ref": "../models/error_401.json"
                 },
                 "examples": {
                   "Example 1": {
@@ -2667,10 +2809,10 @@
                   },
                   "properties": {
                     "statusCode": {
-                      "$ref": "../../models/status.json"
+                      "$ref": "../models/status.json"
                     },
                     "message": {
-                      "$ref": "../../models/message.json"
+                      "$ref": "../models/message.json"
                     },
                     "error": {
                       "type": "string"
@@ -2706,7 +2848,9 @@
           }
         ],
         "description": "Get a selected run_id",
-        "tags": ["Ingestion Runs"]
+        "tags": [
+          "Ingestion Runs"
+        ]
       },
       "parameters": [
         {
@@ -2731,7 +2875,9 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": ["message"],
+                  "required": [
+                    "message"
+                  ],
                   "properties": {
                     "message": {
                       "type": "string",
@@ -2829,13 +2975,17 @@
         "x-stoplight": {
           "id": "jt8tz6wycutnc"
         },
-        "tags": ["Ingestion Backfills"]
+        "tags": [
+          "Ingestion Backfills"
+        ]
       }
     },
     "/ingestion/events/count": {
       "get": {
         "summary": "Read Ingestion Event Counts",
-        "tags": ["Ingestion Events"],
+        "tags": [
+          "Ingestion Events"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -2843,7 +2993,10 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": ["message", "data"],
+                  "required": [
+                    "message",
+                    "data"
+                  ],
                   "properties": {
                     "message": {
                       "type": "string",
@@ -2917,7 +3070,10 @@
                               "id": "la3o1l4htdr4g"
                             },
                             "type": "object",
-                            "required": ["date", "events"],
+                            "required": [
+                              "date",
+                              "events"
+                            ],
                             "properties": {
                               "date": {
                                 "type": "string",
@@ -3041,7 +3197,9 @@
     "/ingestion/events/delta": {
       "get": {
         "summary": "Read Ingestion Event Deltas",
-        "tags": ["Ingestion Events"],
+        "tags": [
+          "Ingestion Events"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -3049,7 +3207,10 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": ["message", "data"],
+                  "required": [
+                    "message",
+                    "data"
+                  ],
                   "properties": {
                     "message": {
                       "type": "string",
@@ -3158,7 +3319,10 @@
                               "id": "72c1yjtins9gq"
                             },
                             "type": "object",
-                            "required": ["date", "events"],
+                            "required": [
+                              "date",
+                              "events"
+                            ],
                             "properties": {
                               "date": {
                                 "type": "string",
