@@ -1,6 +1,8 @@
 
 ```cpp
-#include <statsig.h>
+#include <statsig/statsig.h>
+
+using namespace statsig;
 
 StatsigUser user;
 user.user_id = "a-user";
@@ -45,4 +47,21 @@ StatsigClient::Shared().InitializeAsync(
     }, 
     user
 );
+```
+
+
+**Optional** - Configuration via StatsigOptions
+
+It is possible to adjust certain aspects of how the SDK works via a [StatsigOptions](#statsig-options) struct.
+Just pass in a StatsigOptions struct during intialization.
+
+```cpp
+StatsigOptions options;
+options.environment = StatsigEnvironment{"staging"};
+
+client.InitializeSync(..., options);
+
+// or
+
+client.InitializeAsync(..., options);
 ```
