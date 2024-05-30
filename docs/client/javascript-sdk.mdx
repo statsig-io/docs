@@ -50,6 +50,8 @@ import LogEvent from "./javascript-mono/_logEvent.mdx";
 import MoreFAQs from "./javascript-mono/_faqs.mdx";
 import Options from "./javascript-mono/_options.mdx";
 import ShutdownSnippet from "./javascript-mono/_shutdown.mdx";
+import * as _typedGetters from "./javascript-mono/_typedGetters.mdx";
+export const TypedGetters = _typedGetters;
 
 export const Result = SDKDocsBuilder(
   {},
@@ -77,6 +79,7 @@ export const Result = SDKDocsBuilder(
         logEvent: <LogEvent />,
       },
     ],
+    [TypedGetters, {}],
     [EvaluationDetails, { snippetUrl: "https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-evaluation-details.tsx" }],
     [
       CodeExamples,
