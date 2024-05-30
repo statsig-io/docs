@@ -26,7 +26,7 @@ The impact of an active experiment on the overall topline metric depends on:
 * The metric lifts caused by the experiment.  This is the test vs. control comparison you see in Pulse.
 * The number of users participating in the test group, which depends upon the targeting gate, layer allocation, and test group size.  A large relative lift from a small experiment may have negligible impact on the topline metric.  
 
-We calculate **Topline Effect %** and **Absoluate Effect** to measure the impacts. They are computed daily and averaged over the selected date.  The exact calculation depends on whether the metric represents an absolute quantity or a ratio.
+We calculate **Topline Effect %** and **Absolute Effect** to measure the impacts. They are computed daily and averaged over the selected date.  The exact calculation depends on whether the metric represents an absolute quantity or a ratio.
 
 ![Screen Shot 2024-05-30 at 10 48 43 AM](https://github.com/statsig-io/docs/assets/167142706/09212042-3d75-41c4-bbb1-d92ae303b880)
 
