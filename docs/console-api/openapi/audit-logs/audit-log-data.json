@@ -356,6 +356,21 @@
             "name": "tags",
             "description": "List of tags to filter by"
           },
+          {
+            "schema": { "type": "string", "example": "gate_create" },
+            "in": "query",
+            "name": "actionType",
+            "description": "Action type to filter by"
+          },
+          {
+            "schema": {
+              "type": "array",
+              "example": "[gate_create, gate_update]"
+            },
+            "in": "query",
+            "name": "actionTypes",
+            "description": "List of action types to filter "
+          },
           { "$ref": "#/components/parameters/pagination-limit" },
           { "$ref": "#/components/parameters/pagination-page" },
           { "$ref": "#/components/parameters/date-start-string" },
