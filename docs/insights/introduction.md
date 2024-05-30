@@ -12,27 +12,30 @@ Insights presents a reverse perspective of the [Pulse](/pulse) view. While Pulse
 ## How to read Insights
 1.	Navigate to the Insights section on the Statsig console: https://console.statsig.com/ 
 2.	Select a metric that you want to observe from the selector drop down at the top of the page. 
-3.	Select the time window that you want to observe.   
-4.	The **Feature Lifts** panel shows two numbers. The number in parentheses is the absolute change in the metric driven by the users in the test group. The **Delta %** is percentage change relative to the topline value of the metric. Both numbers represent the daily average impact over the time window you have selected.
+3.	(Cloud only) Select the time window that you want to observe. 
+4.	The **Feature Lifts** panel shows two numbers. The number in parentheses is the absolute change in the metric driven by the users in the test group. The delta % is percentage change relative to the topline value of the metric. 
 
 In the example below, the **new_search_algo_v2** is driving an additional 65,070 **add_to_cart** events per day over the last 30 days.  This is equivalent to a 5.98% average daily lift in this metric, which has oscillated between 1M and 1.3M events per day during this time period. 
 
 ![image](https://user-images.githubusercontent.com/90343952/167211755-4e87e8e2-2bb4-4bd6-a50f-56f3e5ce68b0.png)
 
 
-## How lifts are calculated
+## How lifts are calculated (for Cloud)
 
 The impact of an active experiment on the overall topline metric depends on:
 * The metric lifts caused by the experiment.  This is the test vs. control comparison you see in Pulse.
 * The number of users participating in the test group, which depends upon the targeting gate, layer allocation, and test group size.  A large relative lift from a small experiment may have negligible impact on the topline metric.  
 
-The topline impact is computed daily and averaged over the selected date.  The exact calculation depends on whether the metric represents an absolute quantity or a ratio.
+We calculate **Topline Effect %** and **Absoluate Effect** to measure the impacts. They are computed daily and averaged over the selected date.  The exact calculation depends on whether the metric represents an absolute quantity or a ratio.
+
+![Screen Shot 2024-05-30 at 10 48 43 AM](https://github.com/statsig-io/docs/assets/167142706/09212042-3d75-41c4-bbb1-d92ae303b880)
+
 
 **Count and sum metrics (event_count, event_dau, sum)**
 
 The absolute impact is derived directly from the experiment results:
 
-![image](https://user-images.githubusercontent.com/90343952/167228987-f7aa186f-ee7b-4944-b4ee-9163cf95d2b4.png)
+![Screen Shot 2024-05-30 at 12 12 18 PM](https://github.com/statsig-io/docs/assets/167142706/f6db4f59-8dfe-41c4-91da-a4d647321b79)
 
 where *&mu;<sub>t</sub>* and *&mu;<sub>c</sub>* represent the mean metric value for the test and control group, respectively, and *N<sub>t</sub>* is the number of users in the test group.
 
@@ -55,5 +58,28 @@ The relative impact for ratio metrics is obtained by dividing the absolute impac
 To determined whether the impact from a given experiment is statistically significant, we calculate the confidence intervals for each of the impact equations shown above.  The variance is obtained using the Delta method. This properly accounts for the correlation between the various numerator and denominator terms and leverages Taylor expansion to linearize expressions containing non-linear combinations of experiment variables.   
 
 
+## How lifts are calculated (for Warehouse Native)
 
+We calculate **Relative Effect %** and **Absolute Effect** to measure the impacts. The exact calculation depends on whether the metric represents an absolute quantity or a ratio.
 
+![Screen Shot 2024-05-30 at 10 55 13 AM](https://github.com/statsig-io/docs/assets/167142706/5c0323eb-23ed-4bc1-936b-64141fd4de85)
+
+**Count and sum metrics**
+
+The relative effect and absolute effect are derived directly from the experiment results:
+
+![Screen Shot 2024-05-30 at 12 12 18 PM](https://github.com/statsig-io/docs/assets/167142706/f6db4f59-8dfe-41c4-91da-a4d647321b79)
+
+![Screen Shot 2024-05-30 at 12 23 11 PM](https://github.com/statsig-io/docs/assets/167142706/9ac3cc6f-b7c9-454e-b9e4-0fe4845be6e5)
+
+where *&mu;<sub>t</sub>* and *&mu;<sub>c</sub>* represent the mean metric value for the test and control group, respectively, and *N<sub>t</sub>* is the number of users in the test group.
+
+**Ratio and mean metrics**
+
+The relative effect and absolute effect are derived directly from the experiment results:
+
+![Screen Shot 2024-05-30 at 1 16 03 PM](https://github.com/statsig-io/docs/assets/167142706/37e3d622-2dfc-4bf2-bdde-504583417bd2)
+
+![Screen Shot 2024-05-30 at 1 13 06 PM](https://github.com/statsig-io/docs/assets/167142706/015158e6-fb8d-47cb-b1ef-10c8b8670d53)
+
+where *&mu;<sub>X,t</sub>* and *&mu;<sub>Y,t</sub>* represent the average numerator and denominator values for the test group, and similarly for the control group.
