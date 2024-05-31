@@ -5,7 +5,7 @@ sidebar_label: Early Diagnostics
 description: Data Freshness 
 ---
 
-## Just-in-time updates for the first 1 million exposures
+## Exposures from Statsig SDKs : Just-in-time updates for the first 1 million exposures/experiment, daily after
 
 After launching an experiment, you may want to check certain results -- such as page load time, impressions on key pages, and business-critical metrics -- as early as possible to detect crashes or catch a bug.
 
@@ -13,6 +13,6 @@ If you are using the Statsig SDK to generate exposures, when Pulse is loaded soo
 
 Under the covers, we perform a just-in-time update of exposures in your warehouse when Pulse is loaded, for the first 1 million exposures. After that, the exposures are batched, deduplicated and written to your warehouse once a day.
 
-## Hourly Exports of Custom Events from the SDK
+## Custom Events from Statsig SDKs : Hourly Exports of Custom Events from the SDK
 
-If you're using our SDKs to capture events, we'll export these events to your warehouse hourly to let you see Pulse results on metrics derived from those events **as fresh as ~1hour**. 
+If you're using our SDKs to capture events, we'll export these events to your warehouse hourly. You can see Pulse results on metrics derived from those events **as fresh as ~1hour**. 
