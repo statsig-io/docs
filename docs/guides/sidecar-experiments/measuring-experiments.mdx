@@ -13,6 +13,19 @@ _Autocapture includes:_
 * Form Submission Events (`auto_capture::form_submit`)
 * Page Performance data (`auto_capture::performance`)
 
+## Setting User Identity and Attributes
+
+By default, Autocapture uses `stableID` (an auto-generated device-level guid that gets stored in the user's localStorage) for tracking purposes. If you wish to enrich autocapture events with known user identities and attributes, you can define the following object _prior_ to autocapture/sidecar being loaded.
+
+```
+window.statsigUser = {
+  userID: "<USER ID>",
+  custom: { // optional attributes object
+     isLoggedIn: false 
+  }
+}
+```
+
 ## Using the tracking API
 
 You can track events manually for actions that are not autocaptured by the feature described above. 
