@@ -78,7 +78,7 @@ where *&mu;<sub>t</sub>* and *&mu;<sub>c</sub>* represent the mean metric value 
 
 The relative effect and absolute effect are derived directly from the experiment results:
 
-![Screen Shot 2024-05-30 at 1 16 03 PM](https://github.com/statsig-io/docs/assets/167142706/37e3d622-2dfc-4bf2-bdde-504583417bd2)
+![Screen Shot 2024-05-31 at 10 47 14 AM](https://github.com/statsig-io/docs/assets/167142706/95e02071-30c2-412f-8fd7-4ae9dd95ae17)
 
 ![Screen Shot 2024-05-30 at 1 13 06 PM](https://github.com/statsig-io/docs/assets/167142706/015158e6-fb8d-47cb-b1ef-10c8b8670d53)
 
