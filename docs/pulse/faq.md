@@ -43,4 +43,4 @@ This normally happens when your company is both using the SDK or event imports, 
 
 ## Our external source shows more exposure events than Statsig. Are data missing?
 
-Exposures on the last day (the day you made a decision) are not counted as exposures. Please filter out that day when you analyze your external data. Be sure to cast to the timezone Statsig uses too. (US Pacific)
+Exposures on the last day (the day you made a decision) are not counted as exposures. Please filter out that day when you analyze your external data.  By default, Statsig uses UTC-0800 to define a "day".
