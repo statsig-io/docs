@@ -106,7 +106,7 @@
             }
           },
           "passingCustomIDs": {
-            "type": ["array"],
+            "type": "array",
             "description": "Custom IDs that are added will be part of the Holdout. Only present if the Holdout's idType is not \"userID\"",
             "items": {
               "type": "string"
@@ -118,9 +118,46 @@
             "items": {
               "type": "string"
             }
+          },
+          "environmentOverrides": {
+            "type": "array",
+            "description": "",
+            "items": {
+              "$ref": "#/components/schemas/environment_overrides"
+            }
           }
         },
         "required": ["passingUserIDs", "failingUserIDs"]
+      },
+      "environment_overrides": {
+        "title": "environment_overrides",
+        "type": "object",
+        "properties": {
+          "environment": {
+            "type": "string",
+            "description": "Which environment(s) the override is to be applied, Null implies all environments.",
+            "nullable": true
+          },
+          "unitID": {
+            "type": "string",
+            "description": "Which unit ID the override is being applied to."
+          },
+          "passingIDs": {
+            "type": "array",
+            "description": "IDs that are forced to be part of the Holdout",
+            "items": {
+              "type": "string"
+            }
+          },
+          "failingIDs": {
+            "type": "array",
+            "description": "IDs that are forced to be excluded from the Holdout",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": ["environment", "unitID", "passingIDs", "failingIDs"]
       }
     }
   },
@@ -175,7 +212,7 @@
             },
             "in": "query",
             "name": "limit",
-            "description": "Gates per pagination response (must also pass page)",
+            "description": "Holdouts per pagination response (must also pass page)",
             "required": true
           }
         ],
