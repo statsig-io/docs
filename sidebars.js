@@ -444,7 +444,6 @@ module.exports = {
                 "sdk-keys/target-apps",
               ],
             },
-            "client/jsClientSDK",
             {
               type: "category",
               label: "New JavaScript (Beta)",
@@ -464,9 +463,6 @@ module.exports = {
                 "client/javascript-mono/Examples",
               ],
             },
-            "client/reactSDK",
-            "client/reactNativeSDK",
-            "client/reactNativeExpoSDK",
             "client/iosClientSDK",
             "client/androidClientSDK",
             "client/dotnetSDK",
@@ -495,6 +491,16 @@ module.exports = {
                 "client/swiftOnDeviceEvaluationSDK",
                 "client/androidOnDeviceEvaluationSDK",
               ],
+            },
+            {
+              type: "category",
+              label: "JavaScript - Maintainance Mode",
+              items: [
+                "client/jsClientSDK",
+                "client/reactSDK",
+                "client/reactNativeSDK",
+                "client/reactNativeExpoSDK",
+              ]
             },
           ],
         },
