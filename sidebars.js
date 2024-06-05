@@ -289,7 +289,11 @@ module.exports = {
         {
           type: "category",
           label: "Metric Explorer",
-          items: ["product-analytics/drilldown", "product-analytics/funnels", "product-analytics/retention"],
+          items: [
+            "product-analytics/drilldown",
+            "product-analytics/funnels",
+            "product-analytics/retention",
+          ],
         },
         "product-analytics/dashboards",
         {
@@ -390,7 +394,7 @@ module.exports = {
             "statsig-warehouse-native/analysis-tools/data-privacy",
             "statsig-warehouse-native/analysis-tools/pipeline-overview",
             "statsig-warehouse-native/guides/best-practices",
-          ]
+          ],
         },
         {
           type: "category",
@@ -402,9 +406,9 @@ module.exports = {
             "statsig-warehouse-native/connecting-your-warehouse/redshift",
             "statsig-warehouse-native/connecting-your-warehouse/athena",
             "statsig-warehouse-native/connecting-your-warehouse/scheduled-reloads",
-          ]
+          ],
         },
-      ]
+      ],
     },
     {
       type: "category",
@@ -460,6 +464,7 @@ module.exports = {
                 "client/javascript-mono/ReactUsage",
                 "client/javascript-mono/ReactNativeUsage",
                 "client/javascript-mono/ExpoUsage",
+                "client/javascript-mono/NextJSUsage",
                 "client/javascript-mono/Examples",
               ],
             },

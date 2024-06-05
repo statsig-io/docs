@@ -1,0 +1,60 @@
+---
+title: Statsig in Next.js
+sidebar_label: Next.js Example
+slug: /client/javascript-sdk/next-js
+---
+
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  Shutdown,
+  CodeExamples,
+} from "../Templates/index.mdx";
+
+import CheckGate from "./_checkGate.mdx";
+import GetConfig from "./_getConfig.mdx";
+import GetExperiment from "./_getExperiment.mdx";
+import Initialize from "./_initialize.mdx";
+import Install from "./_install.mdx";
+import LogEvent from "./_logEvent.mdx";
+import MoreFAQs from "./_faqs.mdx";
+import Options from "./_options.mdx";
+import ShutdownSnippet from "./_shutdown.mdx";
+
+import * as _nextJsInstall from "./_nextJsInstall.mdx";
+export const NextJsInstall = _nextJsInstall;
+
+import * as _nextJsBootstrap from "./_nextJsBootstrap.mdx";
+export const NextJsBootstrap = _nextJsBootstrap;
+
+import * as _nextJsApiProxy from "./_nextJsApiProxy.mdx";
+export const NextJsApiProxy = _nextJsApiProxy;
+
+export const Result = SDKDocsBuilder(
+  {},
+  [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/js-client-monorepo",
+      },
+    ],
+    [NextJsInstall, {}],
+    [NextJsBootstrap, {}],
+    [NextJsApiProxy, {}],
+  ],
+  toc
+);
+
+<>{Result}</>
