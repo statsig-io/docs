@@ -450,7 +450,7 @@ module.exports = {
             },
             {
               type: "category",
-              label: "New JavaScript (Beta)",
+              label: "JavaScript, React, React Native",
               link: {
                 type: "doc",
                 id: "client/javascript-sdk",
