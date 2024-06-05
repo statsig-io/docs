@@ -47,6 +47,19 @@ module.exports = {
       },
       items: [
         {
+          type: 'doc',
+          position: 'left',
+          docId: 'getting-started',
+          label: 'Statsig Cloud'
+        },
+        {
+          type: 'doc',
+          position: 'left',
+          docId: 'introduction',
+          docsPluginId: 'statsig-warehouse-native',
+          label: 'Statsig Warehouse Native'
+        },
+        {
           type: "html",
           position: "right",
           value:
@@ -112,6 +125,15 @@ module.exports = {
     },
   },
   plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'statsig-warehouse-native',
+        path: 'statsig-warehouse-native',
+        routeBasePath: 'statsig-warehouse-native',
+        sidebarPath: './sidebars-whn.js',
+      },
+    ],
     function statsig() {
       const isProd = process.env.NODE_ENV === "production";
       const tier = isProd ? "production" : "development";
