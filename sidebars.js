@@ -216,6 +216,7 @@ module.exports = {
                 "stats-engine/methodologies/delta-method",
                 "stats-engine/methodologies/srm-checks",
                 "stats-engine/methodologies/winsorization",
+                "stats-engine/methodologies/one-sided-test",
               ],
             },
           ],
