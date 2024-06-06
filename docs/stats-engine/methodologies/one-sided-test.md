@@ -1,6 +1,6 @@
 ---
 title: One Sided Test
-sidebar_label: One Sided Test
+sidebar_label: One Sided Tests
 slug: /stats-engine/methodologies/one-sided-test
 ---
 
