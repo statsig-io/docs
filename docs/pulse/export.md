@@ -69,7 +69,7 @@ There are three types of export:
 
 | Column Name                       | Description                                                                                   |
 | --------------------------------- | --------------------------------------------------------------------------------------------- |
-| user_id / stable_id / <custom_id> | Refers to the unit identifier used in the experiment                                          |
+| user_id / stable_id / `<custom_id>` | Refers to the unit identifier used in the experiment                                          |
 | name                              | The name of the gate/experiment                                                               |
 | rule                              | For gates, this refers to the rule name                                                       |
 | experiment_group                  | The group the user was assigned to                                                            |

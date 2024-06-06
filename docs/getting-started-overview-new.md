@@ -8,13 +8,12 @@ Statsig has three core product lines- [**Feature Flags**](/feature-flags/working
 
 Here’s how the Statsig ecosystem looks at the highest-level: 
 
-![statsig product overview](/img/products_overview_light.png)
-
+<img src="/img/products_overview_light.png" alt="statsig product overview"/>
 
 # Statsig Models 
 There are two ways to leverage Statsig's core products: Statsig Cloud (we host your data) and Statsig Warehouse Native (you host your data in your warehouse). 
 
-![statsig banner](/img/statsig_banner_light.png)
+<img src="/img/statsig_banner_light.png" alt="statsig banner"/>
 
 - **Statsig Cloud:** Set up ***Statsig SDK***, configure **events logging**. Everything else is handled by us.
     - You get feature flags and 1 million metered events for free, as well as many analytics tools such as Dashboard, Metrics Explorer, and Insights. Here is [a link](https://www.statsig.com/pricing) to our pricing details.

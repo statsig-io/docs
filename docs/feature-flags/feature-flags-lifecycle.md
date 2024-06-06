@@ -42,7 +42,7 @@ There are 3 points throughout the gate's lifecycle when you'd want to take actio
 ![image](https://user-images.githubusercontent.com/120431069/216169769-23062719-92da-4ae5-a437-935b2ef5b05c.png)
 
 
-**1) The gate has been fully rolled out or rolled back, and you're ready to skip rule evaluation and assign default value (stop incurring costs for your gates)**
+**1. The gate has been fully rolled out or rolled back, and you're ready to skip rule evaluation and assign default value (stop incurring costs for your gates)**
 
   - Go to the feature gate page and click on “…” menu on the upper right corner to select **Launch or Disable**. It will open up the following window -
     - **In Progress → Launch**: when the gate has been rolled out to 100% a while ago (we recommend >30 days), and you feel comfortable with the gate always returning TRUE
@@ -54,11 +54,11 @@ There are 3 points throughout the gate's lifecycle when you'd want to take actio
       - Click on filter icon:
         - Status = In Progress
         - Pass Rate = 100% AND 0%
-    - In the search bar: “Modified: <YYYY/MM-DD;” (update the date to be 30 days ago)
+    - In the search bar: “Modified: `<YYYY/MM-DD;`” (update the date to be 30 days ago)
     
       ![image](https://user-images.githubusercontent.com/120431069/216164917-85a7da7a-2ee6-4ba5-8ca6-c6ced99516ee.png)
 
-**2) You’re ready to clean up the gate reference from your codebase**
+**2. You’re ready to clean up the gate reference from your codebase**
 Confirm that the gate has been set to either **Launched** or **Disabled** (i.e. returning a default value) for a while (we recommend >60 days) so you don’t unintentionally break any rule evaluation and you’ve had enough time to ensure no negative impact on your metrics before you clean up the gate reference. Once confirmed,  
   
   - Go to your codebase and
@@ -70,12 +70,12 @@ Confirm that the gate has been set to either **Launched** or **Disabled** (i.e. 
   - To find *all* gates that are good candidates to be removed from your codebase (i.e. have been **Launched** or **Disabled** more than 60 days ago)
     - Go to Feature Gates catalog
       - Click on filter icon: Status = **Launched** AND **Disabled**
-      - In search bar: “Modified: <YYYY/MM-DD;” (update the date to be 60 days ago)
+      - In search bar: “Modified:` <YYYY/MM-DD;`” (update the date to be 60 days ago)
 
       ![image](https://user-images.githubusercontent.com/120431069/216166227-7e36df55-f540-4c74-a899-e0bfdfb808f6.png)
 
 
-**3) After you’ve cleaned up the gate reference from your codebase**
+**3. After you’ve cleaned up the gate reference from your codebase**
 
 - **Launched or Disabled → Archived:** you’ll want to update this status to mark that the gate has been removed from your codebase, so that it will be filtered out from the list of candidate gates to be cleaned up for the future (as part of step #2)
   - Go to the feature gate page and click on “…” menu on the upper right corner to select “Archive”. 
