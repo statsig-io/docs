@@ -1,0 +1,28 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+
+<Tabs
+  defaultValue="npm"
+  groupId="js-client-approach"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'CDN / <script>', value: 'script'}, 
+  ]}>
+
+  <TabItem value="script">
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-initialize-html.tsx" />
+
+  </TabItem>
+  <TabItem value="npm">
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-initialize.tsx" />
+
+  </TabItem>
+</Tabs>
+
+- In advanced use cases, you may want to Prefetch or Bootstrap (Provide) values for initialization. See [Using EvaluationsDataAdapter](/client/javascript-sdk/using-evaluations-data-adapter) to learn how this can be achieved.
+
+- It is possible to apply a timeout to async operations. See [Foo](#).

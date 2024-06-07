@@ -1,0 +1,360 @@
+import Button from "@mui/material/Button";
+import OutlinedCard from "@site/src/components/OutlinedCard";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
+import Icon from "@mui/material/Icon";
+import IconButton from "@mui/material/IconButton";
+import Link from "@mui/material/Link";
+
+import LogOnClick from "@site/src/components/LogOnClick";
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+Statsig is the world’s most advanced experimentation platform. It enables your entire company to run experiments collaboratively and quickly, with minimal engineering effort.
+
+There are two ways to seamlessly integrate Statsig into your product development:
+
+- **Statsig Cloud:** Set up ***Statsig SDK***, configure **events logging**. Everything else is handled by us.
+    - You get feature gates and 1 million metered events for free, as well as many analytics tools such as Dashboard, Metrics Explorer, and Insights. Here is [a link](https://www.statsig.com/pricing) to our pricing details.
+- **Warehouse Native:** If the events or metrics you want to experiment on are already in your warehouse, you may want to consider [Warehouse Native](https://docs.statsig.com/statsig-warehouse-native/introduction) (WHN).
+    - With WHN, you can host Statsig’s Stats Engine within your own Data Warehouse, calculating metric lifts on your own datasets. This is particularly useful for teams with strong privacy contraints.
+    - You can use non-Statsig SDKs for feature assignment and provide us exposures in a table (you randomize), or use our SDKs (we randomize and write into your warehouse). The former helps you scale analysis; the latter helps you [10x experimentation velocity](https://www.statsig.com/blog/features-to-10x-experiment-velocity).
+    - Today’s this option is only available with Enterprise contracts. Check [this link](https://docs.statsig.com/statsig-warehouse-native/introduction) for more details or [Schedule a demo](https://www.statsig.com/contact/demo) with our sales team.
+
+This page gives you an organized overview of how to set up the SDK. SDK can help you log events, and assignments, which will light up **feature gate**, **experiments**, and **analytics** within half an hour.
+
+
+# Overview: What is Statsig, and what is needed to set it up?
+
+Statsig provides three tightly-integrated core capabilities:
+
+1. **Experimentation**: Run **AB tests** with minimal engineering efforts (two lines of code), and make decisions as a team with a powerful and intuitive **Console.**
+2. **Feature Gating**: **Decouple code deployment** and **feature deployment,** giving you **full control** of your users’ experiences, including the ability to rollout or rollback features in a single click.
+3. **User Analytics**: Dashboards, charts, funnels, retention; from logged events to all sorts of business metrics.
+
+Statsig helps you generate two core outputs — **metrics** and **exposures** — metrics summarizes user behaviors that are meaningful to your business; exposure tells us, and allows us to control, what features each user is exposed to.
+
+**Logging Events** is the foundation for **metrics**, and **Feature assignment** is the foundation for **exposuress**. Statsig has best-in-class **SDKs** built with experimentation as a first-class citizen, that once turned on, can create logging events and feature assignments to power all Statsig features. The SDK is strongly recommended for as it’s reliable, resilient, and have many experimentation best practices built in.
+
+*You can use Statsig without its SDK. For example, **metrics** can come from raw events table, metric definitions, or a precomputed metrics table; **assignments** can come from 3rd party tool, or in-house assignment tool. Statsig is modulated to work with other tools you are currently using.*
+
+Now, let’s walk through how to use Statsig SDK to turn on events logging.
+
+# Three Steps to Turn on Statsig Cloud
+
+## Step 1. Integrate with our SDK
+export const ArrowButton = ({ link }) => (
+  <IconButton
+    style={{
+      color: "#194b7d",
+      border: "1px solid rgba(0, 0, 0, 0.12)",
+      borderRadius: "16px",
+      padding: "4px",
+    }}
+    href={link}
+  >
+    <Icon
+      style={{
+        color: "#194b7d",
+      }}
+    >
+      arrow_forward
+    </Icon>
+  </IconButton>
+);
+
+export const SDKCard = ({ language, image, link }) => (
+  <Card
+    style={{
+      minWidth: "240px",
+      margin: "16px",
+      flex: "0 0 28%",
+      display: "flex",
+      flexDirection: "column",
+      padding: "16px",
+      boxShadow: "0 6px 16px rgba(0, 0, 0, 0.06)",
+      border: 0,
+    }}
+  >
+    <div
+      style={{
+        fontWeight: "bold",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-start",
+        alignContent: "space-between",
+      }}
+    >
+      {language}
+    </div>
+    <CardActions
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "flex-end",
+      }}
+    >
+      <img height="80px" src={image} />
+      <ArrowButton link={link} />
+    </CardActions>
+  </Card>
+);
+
+<Tabs
+  defaultValue="client"
+  values={[
+    { label: "Client", value: "client" },
+    { label: "Server", value: "server" },
+  ]}
+>
+  <TabItem value="client">
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+      }}
+    >
+      <SDKCard
+        language="Javascript"
+        image="/img/sdk/sdk_js.png"
+        link="/client/jsClientSDK"
+      ></SDKCard>
+      <SDKCard
+        language="React"
+        image="/img/sdk/sdk_react.png"
+        link="/client/reactSDK"
+      ></SDKCard>
+      <SDKCard
+        language="React Native"
+        image="/img/sdk/sdk_rn.png"
+        link="/client/reactNativeSDK"
+      ></SDKCard>
+      <SDKCard
+        language="Expo"
+        image="/img/sdk/sdk_expo.png"
+        link="/client/reactNativeExpoSDK"
+      ></SDKCard>
+      <SDKCard
+        language="iOS"
+        image="/img/sdk/sdk_swift.png"
+        link="/client/iosClientSDK"
+      ></SDKCard>
+      <SDKCard
+        language="Android"
+        image="/img/sdk/sdk_android.png"
+        link="/client/androidClientSDK"
+      ></SDKCard>
+      <SDKCard
+        language=".NET"
+        image="/img/sdk/sdk_dotnet.png"
+        link="/client/dotnetSDK"
+      ></SDKCard>
+    </div>
+  </TabItem>
+  <TabItem value="server">
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+      }}
+    >
+      <SDKCard
+        language="Node js"
+        image="/img/sdk/sdk_node.png"
+        link="/server/nodejsServerSDK"
+      ></SDKCard>
+      <SDKCard
+        language="Java/Kotlin"
+        image="/img/sdk/sdk_java.png"
+        link="/server/javaSdk"
+      ></SDKCard>
+      <SDKCard
+        language="Ruby"
+        image="/img/sdk/sdk_ruby.png"
+        link="/server/rubySDK"
+      ></SDKCard>
+      <SDKCard
+        language=".NET"
+        image="/img/sdk/sdk_dotnet_server.png"
+        link="/server/dotnetSDK"
+      ></SDKCard>
+      <SDKCard
+        language="Go"
+        image="/img/sdk/sdk_golang.png"
+        link="/server/golangSDK"
+      ></SDKCard>
+      <SDKCard
+        language="Python"
+        image="https://github.com/statsig-io/docs/assets/139815787/a90b92ff-c053-43d5-8126-47e19835f003"
+        link="/server/pythonSDK"
+      ></SDKCard>
+      <SDKCard
+        language="C++"
+        image="/img/sdk/sdk_cpp.png"
+        link="/server/cppSDK"
+      ></SDKCard>
+    </div>
+  </TabItem>
+</Tabs>
+
+We also provide an HTTP API. Our API is a great choice if an SDK isn't
+available for your environment yet, as you can use it in any type of
+application:
+
+- [HTTP API](/http-api)
+## Step 2. Set Up Your First Feature Gate
+
+Check [this page](https://docs.statsig.com/guides/first-feature) for a full walkthrough
+
+![fg_setup](https://github.com/statsig-io/docs/assets/139815787/4a320c20-c060-4dc2-a493-178f9e7855e9)
+
+## Step 3. Start Logging Events
+
+Check [this page](https://docs.statsig.com/guides/logging-events) for a full walkthrough
+
+![logging_setup](https://github.com/statsig-io/docs/assets/139815787/219f2980-6bae-418d-896a-1305d5bb52c2)
+
+## Hooray!
+
+Now, **events** are **logged** and passed to Statsig Cloud via the SDK. They will start being computed as metrics in your ***Metrics Catalog***:
+
+![metrics](https://github.com/statsig-io/docs/assets/139815787/f810a6e4-eca8-4ed4-be96-76f134f14397)
+
+Which you can add to a [***Dashboard***](https://docs.statsig.com/metrics):
+
+![dashboard](https://github.com/statsig-io/docs/assets/139815787/cd6b2f71-8ca0-4d77-8d7c-a2b081bbbc8e)
+
+Or even start trying to optimize via ***Experiments***:
+
+![experiment](https://github.com/statsig-io/docs/assets/139815787/cf61372a-9429-4594-936b-dfea825eacd9)
+
+# Need more help?
+
+Statsig strives to provide the best support possible. You can
+
+- Join our slack support channel for live supports: <LogOnClick event="slack_click"> <a href="https://statsigcommunity.slack.com/archives/C01RAKM10TD">Join our slack support</a> </LogOnClick>
+- Schedule a live demo: <LogOnClick event="demo_click"> <a href="https://www.statsig.com/contact/demo">Schedule a demo</a> </LogOnClick> 
+
+## Walkthrough Guides
+
+<div
+  style={{
+    display: "flex",
+    flexWrap: "wrap",
+  }}
+>
+  <OutlinedCard
+    title="Your First Feature"
+    icon="tune"
+    description="Let's build a new feature with Feature Gates, targeting and rollout."
+    link="/guides/first-feature"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Your First A/B Test"
+    icon="science"
+    description="Running an A/B experiment should not be difficult. Let's set one up in minutes."
+    link="/guides/abn-tests"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Logging Events"
+    icon="filter_list"
+    description="Useful product metrics are computed from discrete events that you log.  Let's get started on logging events."
+    link="/guides/logging-events"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Your first Holdout"
+    icon="flaky"
+    description="Sometimes it helps to measure cumulative impact of a set of features.  Let's set up a Holdout to do that."
+    link="/guides/first-holdout"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Making Code Dynamic"
+    icon="dynamic_form"
+    description="You don't always have to ship new code for customizing your experience, or even shipping new features.  Let's learn about dynamic configs."
+    link="/guides/first-dynamic-config"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Statsig in Your Warehouse"
+    icon="warehouse"
+    description="You can calculate experiment results on existing data in your warehouse.  Let's explore Statsig Warehouse Native."
+    link="/statsig-warehouse-native/introduction"
+  ></OutlinedCard>
+</div>
+
+## Tools
+
+<div
+  style={{
+    display: "flex",
+    flexWrap: "wrap",
+  }}
+>
+  <OutlinedCard
+    title="Feature Gates"
+    icon="tune"
+    description="Control access to new functionality and automatically measure how it’s performing with an A/B test before you ship"
+    link="/feature-flags"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Dynamic Configs"
+    icon="dns"
+    description="Dynamically configure user experience with configuration parameters instead of hard-coded constants"
+    link="/dynamic-config"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Segments"
+    icon="donut_small"
+    description="Define a reusable set of rules to target a group of users"
+    link="/segments"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Experiments+"
+    icon="science"
+    description="Run sophisticated experiments with multiple variants (A/B/n tests) or mutual exclusion"
+    link="/experiments-plus"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Autotune"
+    icon="model_training"
+    description="Automatically optimize for a single metric by testing a number of variants"
+    link="autotune"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Metrics"
+    icon="speed"
+    description="View metrics automatically derived from all gate checks and events logged with Statsig"
+    link="/metrics"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Users"
+    icon="people"
+    description="View users exposed to all gate checks and events logged with Statsig"
+    link="/users"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Pulse"
+    icon="assessment"
+    description="View how your experiments impact your metrics"
+    link="/pulse"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Insights"
+    icon="donut_small"
+    description="View all experiments that have impacted a metric"
+    link="/insights"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Holdouts"
+    icon="flaky"
+    description="Measure the cumulative impact of all features shipped over a period of time"
+    link="/holdouts"
+  ></OutlinedCard>
+</div>
+
+## Filing bugs
+
+You can file bug reports or feature requests via github issues in our <LogOnClick event="feedback_click"> <a href="https://github.com/statsig-io/statsig-feedback/issues">Statsig Feedback repository</a> </LogOnClick>

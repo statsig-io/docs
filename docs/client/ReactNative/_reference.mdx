@@ -1,3 +1,5 @@
+import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
+
 ### `Statsig` {#statsig-interface}
 
 You can import the global `Statsig` singleton to call SDK functions outside of a component tree or in callbacks/loops/or wherever else you are unable to use hooks. For all SDK functions, see the [statsig-js sdk docs](/client/jsClientSDK).
@@ -48,7 +50,7 @@ StatsigContext is a [react context](https://reactjs.org/docs/context.html) used 
   - If you'd like to use your own ID in place of Statsig's stableID, then you can pass the ID as an option here.
   - Once a value is passed, the SDK will store this ID in the local storage for the browser for future use as well.
 - **localMode** - boolean, default false
-  - Pass true to this option to turn on Local Mode for the SDK, which will stop the SDK from issuing any network requests and make it only operate with only local overrides and cache.
+  - <LocalModeSnippet type="client" />
 - **initTimeoutMs** - number, default 3000
   - This option configures the maximum time (in milliseconds) the SDK would wait for the network request made by `initialize()` to respond before it resolves.
   - If the SDK resolves before the network request has completed due to the timeout, it will continue work with local overrides, cached values, and then default values set in code.

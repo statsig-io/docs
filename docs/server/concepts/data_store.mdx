@@ -15,15 +15,18 @@ This is what we built the `DataAdapter`/`DataStore` for.
 
 ## DataAdapter (or DataStore)
 
-DataAdapters allow you to plug in your own storage solution as a cache for the Statsig server sdk.
+DataAdapters allow you to plug in your own storage solution as a cache that the Statsig Server SDKs use to load your project configurations (ie; all experiments, configs, gates and their targeting/allocation rules). Some of the key use-cases for Data Adapter are: reducing dependency on Statsig servers for initialization, improving initialization time by loading config from a local data store, and providing customers with controls for minimizing network I/O. Data Adapters define a simple API that you have to implement: `initialize`, `get`, `set`, and `shutdown` for setup, reading, writing, and closing.
 
-They define a simple API that you have to implement: `initialize`, `get`, `set`, and `shutdown` for setup, reading, writing, and closing.
-When a Statsig SDK is initialized with a `DataAdapter`, it will rely on that first as the source of truth for the project definition, before reaching out to Statsig servers. Whenever it gets an up to date version of the project from our api, it will cache it locally using the DataAdapter.
+### Data Adapter Logic
+- When the Statsig SDK is initialized with a DataAdapter, it will rely on the DataAdapter as the source of truth for your project config. The SDK client will attempt to load config via `DataAdapter.get` and use that if the entry is available, but if entry does not exist, will fetch an updated config over network from Statsig and write that back to the data store (via `DataAdapter.set`)
+- Post-initialization, the SDK will continue to poll Statsig servers for updates and whenever it fetches an updated version of the config, it will save it to your data store via `DataAdapter.set`, unless you explicitly configure the DataAdapter to be used as the source of truth for polling (by implementing the `supportsPollingUpdatesFor` method on the adapter to return `true`).
+- If the SDK client is initialized with `localMode=true`, this will disable fallback to fetching the config across the network from Statsig.
+- The cache key is `statsig.cache` for config specs, `statsig.id_lists` for lookup of id lists, and `statsig.id_lists::{list_name}` for for actual id lists.
 
 :::info
 NOTE: Most DataAdapters are currently only used for the `initialize` path for getting a project definition.
 
-At the time of this writing, only `Node.js`, `Ruby`, and `.NET` support polling for updates. If you're interested in using a DataAdapter as the source of truth indefinitely, please reach out and let us know which language this would be useful for!
+At the time of this writing, only `Node.js`, `Ruby`, `Go`, `Java` and `.NET` support polling for updates. If you're interested in using a DataAdapter as the source of truth indefinitely, please reach out and let us know which language this would be useful for!
 :::
 
 For information on your specific SDK language, see the language specific docs in the left hand column.

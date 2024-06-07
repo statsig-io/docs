@@ -9,7 +9,7 @@ SSO is an Enterprise feature.  Please reach out to our [support team](mailto:sup
 
 *This documentation assumes that you already have an OIDC Provider up and running.*
 
-SSO with OIDC can be configured for your Statsig Organization to continue using your company's identity store with Statsig and simplify the process for inviting your team to your Projects. Organizations are an Enterprise Tier feature.
+SSO with OIDC can be configured for your Statsig Organization to continue using your company's identity store with Statsig and simplify the process for inviting your team to your Projects. New users will be automatically provisioned, once authenticated by your Identity Provider. Organizations are an Enterprise Tier feature.
 
 ## Configuration
 
@@ -42,3 +42,7 @@ Once you have obtained all of the information mentioned above:
 Users that sign in through an SSO link will automatically join any Projects that have SSO enabled with the same OIDC Provider, and have access only to those Projects. Users that sign in through an SSO link will also not be able to edit or view any of their personal account settings.
 
 Enabling `Strict SSO` will require that all members of a Project besides the `Owner` must log in to the Statsig Console through SSO with the configured provider to access the Project.
+
+## Break Glass Scenarios
+
+If you have configured SSO to be required, but corrupt your SSO config this will block people from logging in. In case of emergency, the user with the Owner role in the organization can use the break glass URL to sign in with a password (bypassing SSO). The break glass URL is [https://console.statsig.com/login?method=password-only](https://console.statsig.com/login?method=password-only)

@@ -7,11 +7,9 @@ slug: /experiments-plus/read-results
 
 ### Reading experiment results
 
-To read the results of your experiment, go to the **Results** tab, where you will see your experiment exposures, and then **Metric Lifts**. The **Metric Lifts** section has two main tabs- **Scorecard** and **All Metrics**. 
+To read the results of your experiment, go to the **Results** tab, where you will see your experiment exposures, and then **Metric Lifts**. **Scorecard** shows the metric lifts for all Primary and Secondary metrics you set up at experiment creation as part of the Scorecard. 
 
-**Scorecard** shows the metric lifts for all Primary and Secondary metrics you set up at experiment creation as part of the Scorecard. **All Metrics** shows the experiment impact for all metrics in your Metric Catalog, regardless of whether they were included in the Scorecard or not. 
-
-* **Experiment results are computed for the first 90 days**: By default, Statsig will compute Pulse Results for your experiment for only the first 90 days of your experiment. You will be notified via e-mail as you approach the 90 days cap, at which point will be able to extend this compute window for another 14 days at a time. Your user assignment will continue to run as expected even if the compute window is not extended, until you make a decision on the experiment. 
+* **Experiment results are computed for the first 90 days**: By default, Statsig will compute Pulse Results for your experiment for only the first 90 days of your experiment. You will be notified via e-mail as you approach the 90 days cap, at which point will be able to extend this compute window for another 30 days at a time. Your user assignment will continue to run as expected even if the compute window is not extended, until you make a decision on the experiment. 
 
 
 #### Scorecard 
@@ -21,7 +19,8 @@ All **Scorecard** metrics by default have **CUPED** (Controlled-Experiment Using
 
 In the example below, the **Circle** variant has a statistically significant lift in the **add_to_cart** and **product_view** metrics. However, the **Square** variant is not seeing any statistically significant lifts on any metric. This is represented by the gray Overall Lift symbols and large p-values.
 
-![Screen Shot 2022-07-08 at 4 55 25 PM](https://user-images.githubusercontent.com/101903926/178083099-54084949-b35d-4194-b29b-b78d196a373b.png)
+![image](https://github.com/statsig-io/docs/assets/31516123/d1cc2a6b-2a78-4c4c-8196-db4aff0acc52)
+
 
 When you mouse over a metric lift, additional, more detailed information on the metric lifts is displayed. This includes:
 * Unit counts, means, and totals for each experiment group 
@@ -32,11 +31,6 @@ Read more about how to interpret the detailed Pulse results presented in the hov
 
 ![Screen Shot 2022-07-08 at 4 59 22 PM](https://user-images.githubusercontent.com/101903926/178083262-a64257b4-d033-409e-88e1-a3cc07a54f1f.png)
 
-
-#### All Metrics 
-The **All Metrics** tab shows the metric lifts across all the metrics in your Metrics Catalog. To prevent a metric from showing up in Pulse, you can hide it via **Metrics** tab. Simply search for the metric in the **Metrics Catalog**, tap on it to go to the **Metric Detail View**, tap the **...** menu in the upper right-hand corner, and select **Hide**. 
-
-![Screen Shot 2022-07-08 at 5 12 55 PM](https://user-images.githubusercontent.com/101903926/178083939-61b7f283-4313-4c10-84d1-7e5a6467441f.png)
 
 ### Significance Level Settings
 

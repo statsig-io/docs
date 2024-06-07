@@ -1,0 +1,19 @@
+#### How can I mock the SDK/override gates in tests?
+
+The SDK has a few key features to make testing easier:
+
+- `localMode` - a parameter in `StatsigOptions` which disables all network requests to Statsig servers. This makes the SDK operate only locally, so your tests don't need network access
+
+We recommend mocking results for your gates and experiments for programmatic testing, via jest or your test framework of choice.
+
+#### What kind of browser support can I expect from the SDK? {#what-kind-of-browser-support-can-i-expect-from-the-sdk}
+
+We strive to keep the SDK as lightweight as possible, while supporting as many browsers as possible. The primary feature that our SDK relies on which may not be supported by all browsers is a javascript Promise. You may wish to [polyfill](https://developer.mozilla.org/en-US/docs/Glossary/Polyfill) a Promise library to ensure maximum browser compatibility. We recommend [taylorhakes/promise-polyfill](https://github.com/taylorhakes/promise-polyfill) for its small size and compatibility.
+
+The SDK has not been tested on IE. Note that [Mcrosoft is retiring IE11 in June, 2022](https://blogs.windows.com/windowsexperience/2021/05/19/the-future-of-internet-explorer-on-windows-10-is-in-microsoft-edge/)
+
+#### Does the SDK use the browser local storage or cookies? If so, for what purposes?
+
+The SDK does not use any cookies.
+
+It does use the local storage for feature targeting and experimentation purposes only. Values for feature gates, dynamic configs and experiments are cached in the local storage, which are used as a backup in the event that your website/app cannot reach the Statsig server to fetch the latest values. If any events were logged but could not be sent to Statsig server due to issues like network failure, we also save them in the local storage to be sent again when network restores.

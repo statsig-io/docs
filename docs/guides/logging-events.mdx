@@ -56,6 +56,25 @@ StatsigClient.LogEvent(
 We encourage you to log as many events as you can and want. The more events there are, the more holistic picture you will get when you are building and releasing new features.
 :::
 
+:::info Size limits on event payload
+Note that there are limits to how large each event field can be.
+Object fields have an overall limit of 4096 on its stringified length.
+String fields have a limit of 64 on its length.
+:::
+
+### Best practices
+
+#### Naming conventions
+
+The most important aspect is consistency - you should pick a convention and stick with it. Your events and metrics catalogue can quickly become messy and difficult to navigate when there are similiar events with different conventions. Technically speaking, Statsig can accept any type of name convention - E.g.; "Page View", "PageView", "Page-view" and "page_view". Practically speaking, we recommend using "page_view" — that is, to avoid spacing, special characters, and to use all lowercase characters. This will ensure there are no duplicate entries with different casing, and ensure other downstream systems connected via integration can accept and process the event properly given this is the most universally-compatible convention. 
+
+#### What to measure
+
+In general, if you're doing normal experimentation/product analytics, you'll want events that correspond to user actions. How you classify them will depend on what you're trying to do.  In general, keep the following in mind:
+1. Events should not have high cardinality if you don't have a lot of users. Otherwise, experimental/metrics data will be too sparse. E.g.; an eCommerce website should not log a separate event name for every single product page. But instead, should have a generic "product_page_view" event and include contextual page information within the `optional_event_metadata` object. 
+2. If you have a well-defined user funnel, you'll want each step to be a separate event.
+3. If you have a less defined user journey, you'll want to log generic events (eg. "page_view"), and add more details to either the value field (which should be the primary dimension of interest), or the `optional_event_metadata` object.
+
 ### Where do these events end up?
 
 The events you log is aggregated and analyzed by Statsig to give you useful metrics.  These can be viewed in the [Metrics Tab](/metrics).

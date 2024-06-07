@@ -1,10 +1,10 @@
 ---
-title: Metric Dimensions
-sidebar_label: Metric Dimensions
+title: Event Property
+sidebar_label:  Event Property
 slug: /metrics/metric-dimensions
 ---
 
-# Metric Dimensions
+#  Event Property
 
 Statsig enables you to breakdown metrics into a single set of non-overlapping dimensions for deep dive analyses. 
 
@@ -18,6 +18,8 @@ Providing custom dimensions with logged events allows you to break down the impa
 
 ![image](https://user-images.githubusercontent.com/1315028/162332284-259ea614-8cb6-4c9d-aebd-3e41f9092a64.png)
 
-Statsig recommends keeping the options used for all custom dimensions to fewer than 8.Console will prioritize tracking the most common dimensions and consolidate less frequent values into an "other" bucket.
+Statsig recommends keeping the options used for all custom dimensions to fewer than 8. Console will prioritize tracking the most common dimensions and consolidate less frequent values into an "other" bucket.
 
 Statsig also supports metric dimensions for custom metrics that are **Aggregations**. To set this up, log your dimension as a **value** and the number to be tallied as a metadata field. 
+
+This is the old metric dimension page. We renamed it to Event Property.

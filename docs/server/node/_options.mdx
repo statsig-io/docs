@@ -1,3 +1,5 @@
+import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
+
 `statsig.initialize()` takes an optional parameter `options` in addition to the secret key that you can provide to customize the Statsig client. Here are the current options and we are always adding more to the list:
 
 - **api**: string, default `https://statsigapi.net/v1`
@@ -8,27 +10,40 @@
   - The most common usage is to set the environment tier ('production', 'staging' or 'development'), e.g. `{ tier: 'staging' }`, and have feature gates pass/fail for specific environments.
 
 - **bootstrapValues**: string, default null
-  - a string that represents all rules for all feature gates, dynamic configs and experiments. It can be provided to bootstrap the Statsig server SDK at initialization in case your server runs into network issue or Statsig server is down temporarily.
+  - A string that represents all rules for all feature gates, dynamic configs and experiments. It can be provided to bootstrap the Statsig server SDK at initialization in case your server runs into network issue or Statsig server is down temporarily.
 - **rulesUpdatedCallback**: function, default null
 
-  - a callback function that's called whenever we have an update for the rules; it's called with a JSON string (used as is for `bootstrapValues` mentioned above) and a timestamp, like below:
+  - A callback function that's called whenever we have an update for the rules; it's called with a JSON string (used as is for `bootstrapValues` mentioned above) and a timestamp, like below:
 
     ```
     options.rulesUpdatedCallback(specsString, timeStamp)
     ```
-
+- **logger**: LoggerInterface, default `console.log`
+  - The logger interface to use for printing to stdout/stderr
 - **localMode**: boolean, default false
-  - disables all network access, so the SDK will only return default (or overridden) values. Useful in testing
+  - <LocalModeSnippet type="server" />
+  - Disables all network access, so the SDK will only return default (or overridden) values. Useful in testing.
 - **initTimeoutMs**: number, default 0
-  - sets a maximum time to wait for the config download network request to resolve before considering the SDK initialized and resolving the call to `initialize()`
+  - Sets a maximum time to wait for the config download network request to resolve before considering the SDK initialized and resolving the call to `initialize()`
 - **dataAdapter**: IDataAdapter, default null
   - An adapter with custom storage behavior for config specs. Can be used to bootstrap Statsig server (takes priority over `bootstrapValues`). Can also be used to continously fetch updates in place of the Statsig network. See [Data Stores](/server/concepts/data_store).
   - For example, see our 1P implementation via Redis [statsig-node-redis](https://github.com/statsig-io/node-js-server-sdk-redis).
 - **rulesetsSyncIntervalMs**: number, default 10,000
-  - sets the polling interval for the SDK to ask Statsig backend for changes on the rulesets.
+  - Sets the polling interval for the SDK to ask Statsig backend for changes on the rulesets.
 - **idListsSyncIntervalMs**: number, default 60,000
-  - sets the polling interval for the SDK to ask Statsig backend for changes on the ID Lists.
+  - Sets the polling interval for the SDK to ask Statsig backend for changes on the ID Lists.
 - **loggingIntervalMs**: number, default 60,000
-  - sets the interval for the SDK to periodically flush all logging events to Statsig backend.
+  - Sets the interval for the SDK to periodically flush all logging events to Statsig backend.
 - **loggingMaxBufferSize**: number, default 1,000
-  - sets the maximum number of events the SDK's logger will batch before flushing them all to Statsig backend.
+  - Sets the maximum number of events the SDK's logger will batch before flushing them all to Statsig backend.
+- **disableDiagnostics**: boolean, default false
+  - Disables diagnostics events from being logged and sent to Statsig
+- **initStrategyForIP3Country**: 'await' | 'lazy' | 'none', default 'await'
+  - Method of initializing IP to country lookup on `statsig.initialize()`.
+- **initStrategyForIDLists**: 'await' | 'lazy' | 'none', default 'await'
+  - Method of initializing ID lists on `statsig.initialize()`.
+- **postLogsRetryLimit**: number, default 5
+  - The maximum number of retry attempts when sending `/log_event` requests to Statsig server
+- **postLogsRetryBackoff**: number | (retry: number) => number, default 1,000
+  - A fixed number or callback on the retry attempt number to configure the time in ms to wait between each `/log_event` retry.
+  - If using a fixed number, a 10x multiplier will be applied on each subsequent retry

@@ -1,3 +1,5 @@
+import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
+
 ### `Statsig` {#statsig-interface}
 
 You can import the global `Statsig` singleton to call SDK functions outside of a component tree or in callbacks/loops/or wherever else you are unable to use hooks. For all SDK functions, see the [statsig-js sdk docs](/client/jsClientSDK).
@@ -5,6 +7,48 @@ You can import the global `Statsig` singleton to call SDK functions outside of a
 :::caution
 If you are calling methods on the global `Statsig` like `initialize` or `updateUser`, the user object tracked by the provider and the user object used outside the component tree can get out of sync. You are responsible for maintaining the state of the `user` and keeping it consistent with the `StatsigProvider` in these cases. The `statsig-react` SDK uses the global `Statsig` class to serve gate/config/experiment checks, but these are memoized in the hooks the SDK provides. Updates to the user which impact flag values that are made outside the context of the react component tree will not be reflected in the component tree unless the updated user is passed in to the `StatsigProvider`.
 :::
+
+Due to the above limitation, the main use case for using the singleton `Statsig` class is typically event logging.
+
+```
+static logEvent(eventName: string, value: string | number | null = null, metadata: Record<string, string> | null = null): void
+```
+Logs a custom event with optional value and metadata.  Note that prior to v1.38.0, this method could throw if you did not specify to `waitForInitialization` or `waitForCache` if the method was called prior to the sdk initialization (which would happen on the first render path).  To avoid this, you should check the `const { initStarted } = useContext(StatsigContext);` field of the `StatsigContext` and only log events after `initStarted` is true.
+
+Parameters:
+`eventName`: The name of the event to log.
+`value`: An optional value associated with the event.
+`metadata`: Optional metadata for the event as a record of key-value pairs.
+
+```
+static checkGate(gateName: string, ignoreOverrides = false): boolean
+```
+Checks the status of a feature gate for the current user.
+
+Parameters:
+`gateName`: The name of the feature gate to check.
+`ignoreOverrides`: Whether to ignore any local overrides for this gate.
+Returns: true if the gate is open for the user, false otherwise.
+
+```
+static getConfig(configName: string, ignoreOverrides = false): DynamicConfig
+```
+Retrieves a dynamic configuration by name.
+
+Parameters:
+`configName`: The name of the dynamic config to retrieve.
+`ignoreOverrides`: Whether to ignore any local overrides for this config.
+Returns: A `DynamicConfig` object representing the retrieved configuration.
+
+```
+static getExperiment(experimentName: string, keepDeviceValue = false, ignoreOverrides = false): DynamicConfig
+```
+Retrieves an experiment configuration by name.
+
+Parameters:
+`experimentName`: The name of the experiment to retrieve.
+`keepDeviceValue`: optional. Whether to keep the value constant for the device, even as the user may fall out of targeting criteria or allocation percentages
+`ignoreOverrides`: Whether to ignore any local overrides for this experiment.
 
 ### `StatsigProvider` {#statsig-provider}
 
@@ -59,7 +103,7 @@ StatsigContext is a [react context](https://reactjs.org/docs/context.html) used 
   - If you'd like to use your own ID in place of Statsig's stableID, then you can pass the ID as an option here.
   - Once a value is passed, the SDK will store this ID in the local storage for the browser for future use as well.
 - **localMode** - boolean, default false
-  - Pass true to this option to turn on Local Mode for the SDK, which will stop the SDK from issuing any network requests and make it only operate with only local overrides and cache.
+    - <LocalModeSnippet type="client" />
 - **initTimeoutMs** - number, default 3000
   - This option configures the maximum time (in milliseconds) the SDK would wait for the network request made by `initialize()` to respond before it resolves.
   - If the SDK resolves before the network request has completed due to the timeout, it will continue work with local overrides, cached values, and then default values set in code.
@@ -149,3 +193,18 @@ A react hook to prefetch an array of StatsigUser objects. This will call the und
 Parameters:
 
 - `users: StatsigUser[]`
+
+
+### `StatsigContext` {#statsig-context}
+
+```
+export interface TStatsigContext {
+  initialized: boolean; // whether the Statsig singleton is now initialized
+  statsigPromise: React.MutableRefObject<Promise<void>> | null; // a reference to the initialization promise for Statsig
+  userVersion: number; // a counter for the version of the user object used for memoizing values to the StatsigUser
+  initStarted: boolean; // whether initialization has started (and therefore SDK methods on the Statsig singleton can be called without throwing)
+  updateUser: UpdateUserFunc; // A method to consume and call in child components to refetch values for a new StatsigUser object
+  initValuesTime: string | null; // The time field on the initializeValues - for bootstrapping or the StatsigSynchronousProvider only
+}
+```
+

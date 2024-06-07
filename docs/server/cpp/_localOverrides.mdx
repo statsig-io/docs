@@ -1,0 +1,10 @@
+```cpp
+// Adding gate overrides
+statsig::overrideGate("a_gate_name", true)
+
+// Adding config overrides
+std::unordered_map<std::string, JSON::any> overrideValue = {
+    {"overridden key", "overridden field"},
+};
+statsig::overrideConfig("a_config_name", overrideValue)
+```

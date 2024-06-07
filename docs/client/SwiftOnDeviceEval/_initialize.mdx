@@ -1,0 +1,60 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="swift-ondevice-sdk-lang-choice"
+  defaultValue="async-swift"
+  values={[
+    {label: 'Async (Swift)', value: 'async-swift'},
+    {label: 'Synchronous (Swift)', value: 'sync-swift'},
+  ]}>
+
+  <TabItem value="async-swift">
+
+```swift
+import StatsigOnDeviceEvaluations
+
+ // (optional) Configure the SDK if needed
+let opts = StatsigOptions()
+opts.environment.tier = "staging"
+
+Statsig.shared.initialize("client-sdk-key", options: opts) { err in
+    if let err = err {
+        print("Error \(err)")
+    }
+}
+
+// or, create your own instance
+
+let myStatsigInstance = Statsig()
+myStatsigInstance.initialize("client-sdk-key", options: opts) { err in
+    if let err = err {
+        print("Error \(err)")
+    }
+}
+
+```
+
+  </TabItem>
+  <TabItem value="sync-swift">
+
+
+```swift
+import StatsigOnDeviceEvaluations
+
+ // (optional) Configure the SDK if needed
+let opts = StatsigOptions()
+opts.environment.tier = "staging"
+
+let specs: NSString = "..." // JSON string of your configurations
+
+let error = client.initializeSync("client-sdk-key", initialSpecs: specs)
+if let err = error {
+    print("Error \(err)")
+}
+```
+
+  </TabItem>
+</Tabs>
+
+

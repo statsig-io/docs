@@ -1,0 +1,48 @@
+---
+title: Bootstrapping
+sidebar_label: Bootstrapping
+---
+
+## Overview
+
+Bootstrapping the Client SDKs is a pattern used to provide the precomputed user assignments directly to the SDK for initialization, rather than relying on the default SDK behavior of downloading the configurations over the network from Statsig servers. This approach is beneficial if you're looking to remove the network dependency on Statsig and consolidate the download of the payload into the initial load to reduce latency. 
+
+## Technical details 
+
+With this approach, your server will be responsible for serving the configuration payload to your client app on pageload (for web implementations) or during app launch (for mobile implementations).
+
+This architecture requires running a server SDK that supports the `getClientInitializeResponse` method. 
+Your server SDK will maintain a fresh configuration in memory and when a request hits your route handler, you should call `getClientInitializeResponse(<user>)`, passing in a StatsigUser Object to generate the configuration object that gets passed to the client SDK as the `initializeValues` [initialization option](https://docs.statsig.com/client/jsClientSDK#statsig-options).
+
+#### Additional Considerations
+
+* You should pass the same user object on both the server and client side.
+* The `initializeValues` option should be an Object.
+* This approach allows the client SDK to initialize synchronously.
+* In the client SDK, you may consider setting the [`StatsigOptions.fetchMode`](https://docs.statsig.com/client/reactSDK#statsig-options) to `cache-or-network`. This will make it so that when the user object has changed, the SDK will only make a network request to fetch updated values for the user if the SDK doesn’t already have cached values from the current session or a previous session. How it determines that is by looking at all of the IDs on the user object, where the cache key is a combination of them all.
+
+## NodeJS example
+
+_Server-side Node express.js route_
+```js
+app.get('/', async (req, res) => { 
+  const userObj = { 
+    userID: user.id
+  }   
+  const initializeValues = await statsig.getClientInitializeResponse(userObj);
+  // render page.hbs using two variables
+  res.render('page.hbs', {    
+    initializeValues: JSON.stringify(initializeValues),
+    userObj: JSON.stringify(userObj),
+  });
+});
+```
+
+_Client-side JS within page.hbs_
+```js
+// pass both the userObject and initializeValues payloads as Object.
+// The triple curly-brace in handlebars will unescape the JSON string
+await statsig.initialize('<CLIENT_SIDE_KEY>', {{{ userObj }}}, {
+  initializeValues: {{{ initializeValues }}},
+});  
+```

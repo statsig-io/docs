@@ -60,5 +60,6 @@ export interface IDataAdapter {
   set(key: string, value: string, time?: number): Promise<void>;
   initialize(): Promise<void>;
   shutdown(): Promise<void>;
+  supportsPollingUpdatesFor(key: DataAdapterKey): boolean;
 }
 ```

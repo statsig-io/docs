@@ -2,10 +2,21 @@
 require 'statsig'
 
 Statsig.initialize('server-secret-key')
+```
 
+
+```
 # Or, if you want to initialize with certain options
-options = StatsigOptions.new({'tier' => 'staging'})
-Statsig.initialize('server-secret-key', options)
+options = StatsigOptions.new({'tier' => 'staging'}, network_timeout: 5)
+
+# And a callback when the initialization network request fails
+  def error_callback(e)
+    puts e
+  end
+
+
+...
+Statsig.initialize('server-secret-key', options, method(:error_callback))
 ```
 
 ### Initializing Statsig in a Rails Application

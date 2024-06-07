@@ -1,0 +1,76 @@
+---
+title: Target Apps
+sidebar_label: Target Apps
+---
+
+:::info
+NOTE: Target Apps are an Enterprise-only feature. To upgrade to Enterprise, reach out to our Sales team [here](https://statsig.com/contact/demo). 
+:::
+
+## Motivation
+
+There are two main attributes you can add to SDK Keys which restrict their access to certain configs or config definitions - Environments and Target Apps.  A “Target App” is a user defined abstraction tied to entities in your Statsig Project which can be linked to one or more SDK Keys.
+Target apps should be things like your "Android" or "iOS" apps, or could be more restricted to specific services like "Search" and "Feed" which may span both client and server usage.
+
+Defining and using Target Apps is a best practice when using Statsig at large scale, and has two main benefits:
+- Performance: removing unused entities from the payload to your Statsig SDK integration will speed up the initialization time and reduce the amount of data that is stored in any local caches or data stores
+- Security: you may not want to expose certain gates/experiments/configs to the client side, or to the client key which is easily found in your client app. Specifying a target app for your client key and ONLY linking that to client specific gates/configs/experiments hides those from prying eyes
+
+:::info
+NOTE: Before using target apps as a solution, consider if you can instead use separate projects for your Statsig integrations.  Note that gates/experiments/metrics are restricted to a single Statsig project, so if you need to share any of those across apps or services, its best to use a Target App instead. But if your services or apps always have distinct gates/experiments/metrics, using a separate project might be a better solution.
+:::
+
+If you have an existing Statsig project with multiple SDK integrations, Statsig will help you to bootstrap your Target Apps by suggesting existing entities to tag which have historically recorded checks from that specific SDK.
+
+
+## Configuring Target Apps
+
+### Project Setup
+
+Start by going to **Project Settings** > **Keys and Environments**.  There you will find a **Target Apps** section.
+
+![Screen Shot 2023-07-26 at 4 18 46 PM](https://github.com/statsig-io/js-client/assets/74584483/6a2d9fa5-b3f9-4fd3-91e5-3487ebd02618)
+
+Create a target app, or use one that is suggested based on your current SDK exposure logs.
+
+![Screen Shot 2023-07-26 at 5 17 53 PM](https://github.com/statsig-io/docs/assets/74584483/719a399d-66f2-48a5-bf42-20f383758c7f)
+
+### Associating a Feature Gate with a Target App
+
+If you wish to verify the suggestions you added in the initial setup, or add additional entities to the target app, you can do so from that entity itself.
+
+For example, navigate to the **Feature Gates** tab, and then select a specific gate.
+
+In the header for that gate, you can view and edit the target app(s) applied to that gate.
+
+![Screen Shot 2023-07-26 at 4 19 21 PM](https://github.com/statsig-io/docs/assets/74584483/9ef90688-7aff-41b6-b495-f64e692774be)
+
+Repeat this flow for the Dynamic Configs and Experiments that are used by this Target App.
+
+### Associating an SDK Key with a Target App
+
+Finally, return to your Project Settings > Keys and Environments page. You're ready to restrict a certain key to a certain target app.
+
+Select the SDK Key you wish to restrict to the set of Target App entities.
+
+Under **Actions**, trigger the dropdown menu
+
+![Screen Shot 2023-07-26 at 5 23 17 PM](https://github.com/statsig-io/docs/assets/74584483/9e44aa27-4034-45c9-a5fb-94d613c7d2ab)
+
+Then select the target app(s) to apply to that key.
+
+![Screen Shot 2023-07-26 at 5 23 21 PM](https://github.com/statsig-io/docs/assets/74584483/e9559312-71af-4d70-85b4-a618e76c0008)
+
+:::warn
+NOTE: If you are using a server SDK to bootstrap your client integration, you need the server SDK Key to have access to both the client and server definitions.  This means you should associate both the client and server target apps with that SDK Key.  You will have to pass in the client key for which you wish to initialize when calling getClientInitializeResponse - this behavior is only supported in:
+- node v5.8.2+
+- ruby v1.26.0+
+
+And is coming soon to python, java, and other server SDKs.
+:::
+
+### Debugging
+
+To debug SDK evaluations which may be impacted by your Target App configuration, use the **Diagnostics** tab for any entity.
+
+In this Feature Gate example, the Exposure Stream at the bottom will show the Target App associated with any checks if the SDK key used to check it has a Target App applied.  If any exposures for that entity do not have a matching Target App, it will be flagged with a warning.

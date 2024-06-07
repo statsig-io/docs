@@ -3,6 +3,8 @@ title: Introduction
 slug: /integrations/introduction
 ---
 
+_For Warehouse Integrations, go to this [page](https://docs.statsig.com/data-warehouse-ingestion/introduction)._
+
 The following data connectors are available for use now, and we're adding more every week:
 
 ### Events
@@ -19,6 +21,7 @@ Forward any events logged via Statsig APIs or SDKs to the following providers:
 - mParticle
 - RudderStack
 - Webhook
+- Google Tag Manager (GTM)
 
 ### Changelog
 Update the following places when Feature Gates/Experiments/Dynamic Configs change:

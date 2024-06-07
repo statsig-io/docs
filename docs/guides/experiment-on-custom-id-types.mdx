@@ -1,20 +1,19 @@
 ---
-sidebar_label: Experiment on custom ID types
-title: Experiment on custom ID types
+sidebar_label: Experiment on custom Unit ID types
+title: Experiment on custom Unit ID types
 ---
 
-Sometimes you may want to randomize experiment bucketing based on a ID other than the user ID, or the Statsig generated Stable ID. For example, say your company builds tasks management tools for other companies to use - you
-need to run an experiment to test different experiences for a tool, but you want to make sure everyone in the same company gets the same experience, so that you can understand how
-the different experiences differ in improving overall productivity for a company. In this case, you want the unit ID on your experiment to be `companyID` instead of `userID`, so that
+Sometimes you may want to randomize experiment bucketing based on a Unit ID other than the user ID, or the Statsig generated Stable ID. For example, say your company builds tasks management tools for other companies to use - you need to run an experiment to test different experiences for a tool, but you want to make sure everyone in the same company gets the same experience, so that you can understand how
+the different experiences differ in improving overall productivity for a company. In this case, you want the Unit ID on your experiment to be `companyID` instead of `userID`, so that
 every user with the same `companyID` is in the same group for the experiment.
 
 It takes just 3 easy steps to set up an experiment like this. Below we will use `companyID` as an example, but you can replace it with any name that suits your use case.
 
-**Note that the same steps also work for feature gates, and doing so on feature gates allow you to partially rollout a feature using custom IDs.**
+**Note that the same steps also work for feature gates, and doing so on feature gates allow you to partially rollout a feature using custom Unit IDs.**
 
-### Step 1 - Add `companyID` as a new ID Type in your project settings
+### Step 1 - Add `companyID` as a new custom Unit ID in your project settings
 
-Log into the Statsig console at https://console.statsig.com/ and navigate to Project Settings in top-right panel, and then find "Custom ID Types" section under the "Basic Settings" tab.
+Log into the Statsig console at https://console.statsig.com/ and navigate to Project Settings in top-right panel, and then find "Custom Unit IDs" section under the "Basic Settings" tab.
 
 ![Screen Shot 2022-06-26 at 10 53 06 AM](https://user-images.githubusercontent.com/74584483/175827590-147ff9c8-ca02-4298-bca5-96583904aec5.png)
 
@@ -34,7 +33,7 @@ Now go ahead and finish the rest of the set up as you would for any [user-level 
 
 ### Step 3 - Provide `companyID` on the user object when using Statsig SDK
 
-Now all you need to do is making sure `companyID` is provided when initializing any client SDK, or when getting the experiment configs and logging events if using a server SDK. The Statsig user object has a top level field `customIDs` that is a dictionary of key-value pairs representing the ID type and value for the user:
+Now all you need to do is make sure `companyID` is provided when initializing any client SDK, or when getting the experiment configs and logging events if using a server SDK. The Statsig user object has a top level field `customIDs` that is a dictionary of key-value pairs representing the ID type and value for the user:
 
 ```jsx
 var user = {

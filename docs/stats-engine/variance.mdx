@@ -4,10 +4,10 @@ sidebar_label: Standard Error
 slug: /stats-engine/variance
 ---
 
-The standard error of the means is required for computing the confidence interval and p-value of a metric delta. It can be obtained by dividing the sample standard deviation of _X_ by the number of users in the group.
+The standard error of the means is required for computing the confidence interval and p-value of a metric delta. It can be obtained by dividing the sample standard deviation of _X_ by the square root of the number of users in the group.
 
 $
-\sigma_{\overline X} = \frac{\sigma_{X}}{N} = \sqrt{\frac{var(X)}{N}}
+\sigma_{\overline X} = \frac{\sigma_{X}}{\sqrt{N}} = \sqrt{\frac{var(X)}{N}}
 $
 
 Note that standard deviation is the square root of the variance. Since variances are easier to manipulate algebraically, here we derive the variance for each metric type and then take the square root to obtain the confidence intervals.

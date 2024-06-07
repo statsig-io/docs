@@ -10,7 +10,7 @@ export const SDKDocsBuilder = (
   { lastSDKDocsUpdate },
   sections,
   toc,
-  appendTOC
+  appendTOC,
 ) => {
   toc.length = 0;
   toc.push({
@@ -20,7 +20,9 @@ export const SDKDocsBuilder = (
   });
   //
   const result = sections.map(([Section, props], index) => {
-    toc.push(...Section.toc);
+    const tocFilters = Section.tocFilter;
+    const addTOC = Section.toc.filter((entry) => tocFilters?.includes(entry.id) !== true);
+    toc.push(...addTOC);
     return (
       <React.Fragment key={"" + index}>
         <Section.default {...props} />

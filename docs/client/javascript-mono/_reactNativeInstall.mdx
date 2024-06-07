@@ -1,0 +1,61 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+## Installation
+
+Statsig uses a multi-package strategy, so you will need to install both the Statsig client and the Expo
+specific bindings.
+
+Documentation for `@statsig/js-client` can be found [here](/client/javascript-sdk).
+
+<Tabs
+  defaultValue="npm"
+  groupId="js-install-choice"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+  ]}>
+
+  <TabItem value="npm">
+
+```shell
+npm install @statsig/js-client @statsig/react-native-bindings
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```shell
+yarn add @statsig/js-client @statsig/react-native-bindings
+```
+
+  </TabItem>
+</Tabs>
+
+### Peer Dependecies
+
+The `@statsig/react-native-bindings` package has peer dependencies which will also need to be installed.
+
+<Tabs
+  defaultValue="npm"
+  groupId="js-install-choice"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+  ]}>
+
+  <TabItem value="npm">
+
+```shell
+npm install @react-native-async-storage/async-storage react-native-device-info
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```shell
+yarn add @react-native-async-storage/async-storage react-native-device-info
+```
+
+  </TabItem>
+</Tabs>

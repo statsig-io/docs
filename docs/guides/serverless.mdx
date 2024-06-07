@@ -12,7 +12,7 @@ Statsig server SDKs can be used in serverless environments.  If you are unable t
 
 After this point, all checks should be locally evaluated in the function.
 
-Finally, if you need to force Statsig to flush logs, you should `shutdown` the SDK before the function exits.
+Finally, you'll need to ensure any enqueued events (exposure and custom events) are flushed to Statsig prior to the function exiting. You'll need to call `statsig.flush()` as demonstrated [here](https://docs.statsig.com/server/nodejsServerSDK#flushing-events-) using the Cloudflare flavor. 
 
 ### Example
 

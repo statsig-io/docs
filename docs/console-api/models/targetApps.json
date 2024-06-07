@@ -1,0 +1,15 @@
+{
+    "title": "targetApps",
+    "x-stoplight": {
+      "id": "rbxgbc8gt4g93"
+    },
+    "type": "array",
+    "items": {
+      "x-stoplight": {
+        "id": "dh4fhscli2lh0"
+      },
+      "type": "string",
+      "example": "\"mobile-app\""
+    },
+    "description": "Target apps narrow down which apps a config is sent to."
+  }

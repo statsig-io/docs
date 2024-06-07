@@ -1,0 +1,21 @@
+If you are using CMake, add the following to a `.cmake` file
+
+```cmake
+FetchContent_Declare(statsig
+        GIT_REPOSITORY    https://github.com/statsig-io/cpp-server-sdk.git
+        GIT_TAG           v0.1.0
+)
+
+FetchContent_MakeAvailable(statsig)
+```
+
+And include the following in your `CMakeLists.txt` file
+
+```cmake
+cmake_minimum_required(VERSION 3.11)
+
+include(FetchContent)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/statsig.cmake)
+```
+
+Check out the latest versions on [https://github.com/statsig-io/cpp-server-sdk/releases/latest](https://github.com/statsig-io/cpp-server-sdk/releases/latest)

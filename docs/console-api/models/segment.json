@@ -1,7 +1,7 @@
 {
   "type": "object",
   "x-stoplight": {
-    "id": "c73023b049758"
+    "id": "ki1ex4oirb73s"
   },
   "x-examples": {
     "example-1": {
@@ -9,48 +9,88 @@
       "isEnabled": true,
       "description": "helpful summary of what this segment is",
       "lastModifierName": "CONSOLE API",
-      "lastModifierID": "ahKwUoaNauHu9AmJPc2",
+      "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
       "type": "id_list"
     }
   },
-  "examples": [
-    {
-      "id": "a_segment",
-      "isEnabled": true,
-      "description": "helpful summary of what this segment is",
-      "lastModifierName": "CONSOLE API",
-      "lastModifierID": "ahKwUoaNauHu9AmJPc2",
-      "type": "id_list"
-    }
-  ],
   "description": "A Segment object",
+  "required": [
+    "id",
+    "isEnabled",
+    "description",
+    "lastModifierName",
+    "lastModifierID",
+    "type"
+  ],
   "properties": {
     "id": {
       "type": "string",
-      "description": "The name that was originally given to the segment on creation but formatted as an ID (\"A Segment\" -> \"a_segment\")."
+      "description": "The name that was originally given to the segment on creation but formatted as an ID (\"A Segment\" -> \"a_segment\").",
+      "x-stoplight": {
+        "id": "k0zwxuxmceeex"
+      },
+      "example": "a_segment"
     },
     "isEnabled": {
       "type": "boolean",
-      "description": "Is the segment enabled."
+      "description": "Is the segment enabled.",
+      "x-stoplight": {
+        "id": "sxbcjr1cajru1"
+      },
+      "default": true
     },
     "description": {
       "type": "string",
-      "description": "A brief summary of what the segment is being used for."
+      "description": "A brief summary of what the segment is being used for.",
+      "x-stoplight": {
+        "id": "yka6i37xb5zmj"
+      },
+      "example": "helpful summary of what this segment is"
     },
     "lastModifierName": {
       "type": "string",
-      "description": "The Statsig Username of the last modifier of this segment."
+      "description": "The Statsig Username of the last modifier of this segment.",
+      "x-stoplight": {
+        "id": "vawhmnzohw4fy"
+      },
+      "example": "CONSOLE API"
     },
     "lastModifierID": {
       "type": "string",
-      "description": "The Statsig UserID of the last modifier of this segment."
+      "description": "The Statsig UserID of the last modifier of this segment.",
+      "x-stoplight": {
+        "id": "4hstffph9l9vm"
+      },
+      "example": "ahKwUoaNauHu9AmJPc2"
     },
     "type": {
       "type": "string",
-      "enum": [
-        "id_list",
-        "rule_based"
-      ]
+      "enum": ["id_list", "rule_based"],
+      "description": "id_list | rule_based",
+      "x-stoplight": {
+        "id": "5sfnxwxqzmr13"
+      }
+    },
+    "count": {
+      "type": "integer",
+      "description": "For id_list segments: the length of the ID list",
+      "x-stoplight": {
+        "id": "3e5g1oetq4gld"
+      },
+      "example": "0"
+    },
+    "rules": {
+      "$ref": "./rule.json",
+      "description": "For rule_based segments: A list of the segment's rules",
+      "x-stoplight": {
+        "id": "vvzbfo8c78y5a"
+      }
+    },
+    "team": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "hvj6ao0cj372r"
+      }
     }
   }
 }

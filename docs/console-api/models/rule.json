@@ -1,7 +1,7 @@
 {
   "type": "object",
   "x-stoplight": {
-    "id": "5501baf894752"
+    "id": "b3wvx0g2u84wt"
   },
   "x-examples": {
     "example-1": {
@@ -18,30 +18,99 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "The name of this rule."
+      "description": "The name of this rule.",
+      "x-stoplight": {
+        "id": "jytmgdw8e7zux"
+      },
+      "example": "All Conditions"
+    },
+    "id": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "fh8edschydwyl"
+      },
+      "example": "38ttpCpzrQFTMKcqFKk02l:10.00:1",
+      "description": "The Statsig ID of this rule."
+    },
+    "baseID": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "xl5prmcmh32iw"
+      },
+      "example": "38ttpCpzrQFTMKcqFKk02l",
+      "description": "The base ID of this rule, i.e. without any added metadata. Will remain the exact same throughout the lifecycle of a rule."
     },
     "passPercentage": {
       "type": "integer",
       "description": "Of the users that meet the conditions of this rule, what percent should return true.",
       "minimum": 0,
-      "maximum": 100
+      "maximum": 100,
+      "x-stoplight": {
+        "id": "7q6cwyew01xwj"
+      },
+      "example": 10
     },
     "conditions": {
       "type": "array",
       "description": "An array of Condition objects.",
+      "x-stoplight": {
+        "id": "vw9ybs90886bu"
+      },
       "items": {
-        "$ref": "./condition.json"
+        "$ref": "./condition.json",
+        "x-stoplight": {
+          "id": "5mp6i9ira5jy9"
+        }
       }
     },
     "returnValue": {
       "type": "object",
-      "description": "The JSON object returned when this rule is triggered."
+      "description": "The JSON object returned when this rule is triggered.",
+      "x-stoplight": {
+        "id": "3ycuq3pkzsrpv"
+      }
+    },
+    "returnValueJson5": {
+      "type": "object",
+      "description": "Can include comments. If provided with returnValue, must parse to the same JSON",
+      "x-stoplight": {
+        "id": "3ycuq3pkzsrpv"
+      }
+    },
+    "environments": {
+      "type": "array",
+      "x-stoplight": {
+        "id": "u7unbb4bnq7ij"
+      },
+      "description": "The environments this rule is enabled for.",
+      "items": {
+        "x-stoplight": {
+          "id": "t5rruea648bqf"
+        },
+        "type": "string"
+      }
     }
   },
-  "required": [
-    "name",
-    "passPercentage",
-    "conditions",
-    "returnValue"
+  "required": ["name", "passPercentage", "conditions", "returnValue"],
+  "examples": [
+    {
+      "name": "All Conditions",
+      "id": "38ttpCpzrQFTMKcqFKk02l:10.00:1",
+      "baseID": "38ttpCpzrQFTMKcqFKk02l",
+      "passPercentage": 10,
+      "conditions": [
+        {
+          "type": "public",
+          "operator": "string",
+          "targetValue": 0,
+          "field": "string",
+          "customID": "string"
+        }
+      ],
+      "returnValue": {
+        "key": true
+      },
+      "environments": ["staging"]
+    }
   ]
 }

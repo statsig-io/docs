@@ -26,51 +26,24 @@ When enabled, an adjustment is automatically applied to results calculated befor
 
 The dashed line represents the expanded confidence interval resulting from the adjustment.  The solid bar is the standard confidence interval computed without any adjustments.  If the adjusted confidence interval overlaps with zero, this means the metric delta is not stat-sig at the moment, and the experiment should continue its course as planned. 
 
-Hover over a metric and click **View Details** to review the progression of the sequential test.  
-
-![image](https://user-images.githubusercontent.com/90343952/193104948-c702a3b1-e0e1-4fda-9691-c5252e919d22.png)
-
-The **Sequential Testing Z-Statistic** time series contains the following information for a metric:
-
-* **Efficacy Boundaries** (solid red and green curves): The thresholds for positive and negative statistical significance.  These start out high, signifying the increased confidence needed for making an early decision. When the target duration is reached, they converge to the standard Z-score for the selected significance level (dashed lines).
-* **Measurement Z-score** (dots): These are the Z-scores computed each day for the test vs. control comparison.  A Z-score higher than the upper efficacy boundary is stat-sig positive.  One lower than the bottom boundary is stat-sig negative.  
-
+Sequential testing is a reliable way to make an early decision, particularly for early detection of regressions.  One should be mindful that early decision-making will often result in underpowered lift estimates with a high degree of uncertainty.  If making the right decision is important, you can use statistically-significant sequential testing results.  If an accurate measurement is important, you should wait for full power as estimated by your pre-experimental power calculation.  We do not calculate statistical power on post-hoc experimental results (See section "Post-hoc Power Calculations are Noisy and Misleading" in [Kohavi, Deng, and Vermeer, A/B Testing Intuition Busters](https://bit.ly/ABTestingIntuitionBusters).
 
 ## Statsig's Implementation of Sequential Testing
 
-We use an adjustment factor *q<sub>n</sub>* that's determined by the number of days *n* the experiment has been running:
+Statsig uses mSPRT based on the the approach proposed by Zhao et al. in this [paper](https://arxiv.org/pdf/1905.10493.pdf).  The two-sided Sequential Testing confidence interval with significance level  $\alpha$ is given by:
 
-![image](https://user-images.githubusercontent.com/90343952/191127696-c8cbbf6f-8757-439e-86df-c7d7dd13ef36.png)
+![image](https://github.com/statsig-io/docs/assets/90343952/d50bc6c4-fd72-4ac3-b3d7-e2d802ab6cfa)
 
-When the target duration is reached, *q<sub>n</sub> = 1* and no more adjustments are applied.  This method has 2 benefits:
-* Simplicity: The calculation of the adjustment factor is easy to understand.  It also satisfies the intuitive expectation that the significance threshold be higher early on.
-* Power: When the target duration is reached, the efficacy boundary converges with the standard Z-score for the selected significance level.  Therefore, there is no loss in statistical power when doing a metrics readout at the conclusion of the pre-determined experiment duration. We selected this approach because we believe the primary value of sequential testing is to provide higher confidence when making early decisions based on unexpected metric movements, such as ending an experiment early due to a large regression.  However, in most cases it's best make a decision based on the complete set of relevant metrics at the end of the experiment, without any adjustments that reduce power. 
+Here *V* is the variance of the difference in means, which can be obtained from the sample variance of the test and control group means:
 
-### Efficacy Boundary and Z-score Calculation
-On any given day *n*, the **efficacy boundary** is given by
+![image](https://github.com/statsig-io/docs/assets/90343952/cbee704f-75fd-4947-a49a-6e256a76dfae)
 
-![image](https://user-images.githubusercontent.com/90343952/191126482-959246fe-5298-4c4d-a8ae-fb238e3157be.png)
+$\tau$ is the mixing parameter given by:
 
-where *Z* is the standard Z-score for the desired significance level (e.g.: 1.96 for two-sided test with $\alpha$ = 0.05).  This determines the Z-score threshold for statistical significance on day *n*.  
+![image](https://github.com/statsig-io/docs/assets/90343952/24fb4569-925e-4c39-bc2b-233efc7c7008)
 
-The Z-statistic for a metric comparison (*Z<sub>X</sub>*) is computed in the [standard way](https://docs.statsig.com/stats-engine/p-value):
+We have validated that this parameter satisfies the expected False Positive Rate and provides enough power to detect large effects early.  More details on this analysis are available [here](https://www.statsig.com/blog/sequential-testing-on-statsig).
 
-![image](https://user-images.githubusercontent.com/90343952/191580477-c7210afc-9e73-439c-bcd8-67cea65c40ea.png)
 
-A metric is stat-sig when the calculated Z-score falls outside of the efficacy boundary.  Specifically:
-* *Z<sub>X</sub> > Z<sub>n</sub>* is stat-sig positive even after Sequential Testing adjustment
-* *Z<sub>X</sub> < -Z<sub>n</sub>* is stat-sig negative even after Sequential Testing adjustment
-* *Z<sub>n</sub> > Z<sub>X</sub> > Z* or *-Z<sub>n</sub> < Z<sub>X</sub> < -Z* is not stat-sig with the adjustment, but would be stat-sig without it.  These are possible false positive that can be avoided with Sequential Testing
-* *Z > Z<sub>X</sub> > -Z* is not stat-sig
-
-### Adjusted p-values and Confidence Intervals
-
-The p-value calculation for day *n* is similar to the standard calculation, but with the Z-score scaled by a factor of *q<sub>n</sub>*.  This leads to higher p-values, meaning the bar for statistical significance is higher.
-
-![image](https://user-images.githubusercontent.com/90343952/191584741-d223dee4-1ce8-4f1f-bf22-11e3f1027ecc.png)
-
-Similarly, the confidence intervals (CI) are adjusted by a factor of *1/q<sub>n</sub>*, leading to larger CIs when *q<sub>n</sub> < 1*.
-
-![image](https://user-images.githubusercontent.com/90343952/191585493-659ddb9b-cd7a-4ed2-a39c-85751dad49c8.png)
 
 

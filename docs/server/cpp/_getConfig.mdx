@@ -1,0 +1,7 @@
+```cpp
+statsig::DynamicConfig config = statsig::get_config(user, 'awesome_product_details')
+
+auto item_name = config.value['product_name'];
+auto price = config.value['price'];
+auto shouldDiscount = config.value['discount'];
+```

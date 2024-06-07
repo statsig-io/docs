@@ -1,0 +1,70 @@
+---
+sidebar_label: Publishing Experiments
+title: Taking your experiments to production
+---
+
+With the experiment configuration out of the way, we need to take this to production.  Sidecar makes this easy with just a few clicks.
+
+:::info
+This guide assumes you have followed the previous steps of creating an experiment in Sidecar.  Check out [Creating Experiments](./creating-experiments) for those instructions.
+:::
+
+### Step 1: Publish the experiments
+
+Once you are satisfied with the experiment configuration, go ahead and hit the green *Publish* button.  This will push all the experiment changes to Statsig.  If you want to make sure these changes are published, you can on the `...` menu and choose *Go to Experiment console*
+
+![statsig banner](/img/sidecarconsole.png)
+
+The experiment console will look like this, and allows you to configure rich targeting, metrics, and tweak advanced statistical knobs.  More on this later.
+
+<img src="https://github.com/statsig-io/.github/assets/74588208/22f57816-6fdd-422c-87a9-90a5c08f36a5" width="50%" />
+
+
+### Step 2: Add script code
+
+Now that you have created and configured your first experiment, all that remains is to activate it on your website.  You will need to add a single line of code in the &lt;HEAD&gt; portion of your website.  
+
+There are many ways to add this script code to your website.  Most website builders will allow you to add script tags on your website.  Here are some common website builder examples:
+
+* [Webflow](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags?topics=site-settings)
+* [Wordpress](https://wordpress.com/go/website-building/how-to-properly-add-javascript-to-wordpress-3-top-methods/)
+* [Wix](https://support.wix.com/en/article/embedding-custom-code-on-your-site)
+* [Squarespace](https://support.squarespace.com/hc/en-us/articles/205815928-Adding-custom-code-to-your-site)
+* [Weebly](https://weeblytutorials.com/embed-javascript-weebly)
+
+The code itself would look like this with your API Key switched.
+
+```
+<script src="https://cdn.jsdelivr.net/npm/statsig-sidecar/dist/index.min.js?apikey=client-xxx"></script>
+```
+
+![statsig banner](/img/sidecargetscript.png)
+
+![image](https://github.com/statsig-io/.github/assets/74588208/48d5681a-c438-41f1-bd9a-9794e69e3a10)
+
+### Step 3: Preview & QA the experiment
+
+At this point, your experiment is in a pre-started state, meaning your experiment will not be active to your site visitors.
+You can pass a query string to your test page url by using the `overrideuser` query string parameter.
+
+The override method uses the following convention to force a test & test group:<br />
+`https://www.DOMAIN.com/?overrideuser=<EXPERIMENT_ID>_<TEST_GROUP_ID>`
+
+The image below depicts where you can find the expeirment ID and each variation ID. Based on this example, you can force a preview of the Test Group by visiting the following URL:<br />
+`https://www.DOMAIN.com/?overrideuser=name_color_test_1`
+
+![statsig banner](/img/sidecarqa.png)
+
+
+### Step 4: Start the experiment
+
+Refresh the page on your browser with the script embedded.  Sidecar will automatically pick up the experiment you have published and display all the experiment properties.
+
+You can now start the experiment by clicking on the `...` menu and clicking on *Start Experiment*.  This will automatically start the experiment, serve the right variants for control and test, and start collecting metrics on your behalf.
+
+![statsig banner](/img/sidecarstartexp.png)
+
+
+### Congratulations!  You have successfully built and shipped an experiment &#x1F389;
+
+

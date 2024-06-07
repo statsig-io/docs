@@ -49,23 +49,21 @@ jobs:
         run: echo ${{ steps.docker_build.outputs.digest }}
 
       - name: Deploy to Latest Cluster
-        uses: statsig-io/kubectl-via-akscli@main
+        uses: statsig-io/kubectl-via-gcloud@main
         env:
-          app_id: ${{ secrets.AZ_LATEST_SERVICE_PRINCIPLE_APP_ID }}
-          password: ${{ secrets.AZ_LATEST_SERVICE_PRINCIPLE_PASSWORD }}
-          tenant: ${{ secrets.AZ_LATEST_SERVICE_PRINCIPLE_TENANT }}
-          region: az-centralus
-          tier: staging
+          CLUSTER_NAME: staging-gke-us-central1
+          CLUSTER_REGION: us-central1
+          CLUSTER_PROJECT: statsig-services
+          GCLOUD_CREDENTIAL: ${{ secrets.GCP_GCLOUD_CREDENTIAL }}
         with:
           args: rollout restart deployment/docs
 
       - name: Validate Deployment
-        uses: statsig-io/kubectl-via-akscli@main
+        uses: statsig-io/kubectl-via-gcloud@main
         env:
-          app_id: ${{ secrets.AZ_LATEST_SERVICE_PRINCIPLE_APP_ID }}
-          password: ${{ secrets.AZ_LATEST_SERVICE_PRINCIPLE_PASSWORD }}
-          tenant: ${{ secrets.AZ_LATEST_SERVICE_PRINCIPLE_TENANT }}
-          region: az-centralus
-          tier: staging
+          CLUSTER_NAME: staging-gke-us-central1
+          CLUSTER_REGION: us-central1
+          CLUSTER_PROJECT: statsig-services
+          GCLOUD_CREDENTIAL: ${{ secrets.GCP_GCLOUD_CREDENTIAL }}
         with:
           args: rollout status deployment/docs

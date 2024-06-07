@@ -4,29 +4,100 @@ title: Segment
 
 import StatsigEnvironmentFormat from "../snippets/integration_statsig_env_format.mdx";
 
-## Overview
+# Overview
 
 Enabling the Segment integration for Statsig will allow Statsig to pull in your Segment events. This allows you to run your experiment analysis on Statsig with all of your existing events from Segment without requiring any additional logging.
 
 When Statsig receives events from Segment, these will be visible and aggregated in the [Metrics](/metrics) tab in the Statsig console. These events will automatically be included in your [Pulse](/pulse) results for A/B tests with Statsig's feature gates as well as all your [Experiment](/experiments-plus/monitor) results.
 
-## Configuring Incoming Events
+### Supported Segment Event Types
+- [Track](https://segment.com/docs/connections/spec/track/)
+- [Page](https://segment.com/docs/connections/spec/page/)
+- [Group](https://segment.com/docs/connections/spec/group/)
+- [Screen](https://segment.com/docs/connections/spec/screen/)
+- [Identify*](https://segment.com/docs/connections/spec/identify/)
 
-To ingest your events from Segment,
+:::info
+Identify calls are only supported for syncing Segment Engage Audiences with Statsig Segments
+:::
 
-1. In the Segment App, click **Add Destination** in the Destinations catalog page.
-2. Search for “Statsig” in the Destinations Catalog, and select the “Statsig” destination.
-3. Choose which Source should send data to the “Statsig” destination.
-4. From the [Statsig dashboard](https://console.statsig.com/api_keys), copy the Statsig "Server Secret Key”.
-5. Enter the Statsig “Server Secret Key” in the “Statsig” destination settings in Segment.
-6. On the Statsig [Integration page](https://console.statsig.com/integrations) enable the Segment integration.
+### Benefits of using the Segment integration
+Using the Segment integration has several benefits over other methods of event ingestion:
+  * Customers who are ingesting customer data with Segment will be able to quickly populate Statsig with metrics and can typically get up and running within a day 
+    * Customers will only have to use Statsig's assignment SDKs (gate/experiment allocation), simplifying your code and engineer workflows
+    * Additional logging can be done via the [event logging SDKs](/guides/logging-events#logging-events-via-sdks) but will and additional code orchestration and a collection window
+  * With [event filtering](/integrations/event_filtering) you can control which events are ingested and make billing more predictable
+  * If you have [Segment Replay](https://segment.com/docs/guides/what-is-replay/), you can send Statsig your historical events for analysis
+
+## Configuring Inbound Events into Statsig
+To send events collected from Segment into Statsig, you must configure the Statsig Destination within the your Segment account:
+
+### Using OAuth
+
+The easiest way to connect Statsig to Segment is via OAuth. 
+
+1. To get started, within the Statsig Console, go to **project settings → integrations → Segment → Enable**
+2. Click “Configure Segment OAuth”
+    
+    ![](https://user-images.githubusercontent.com/125311112/262495276-2fa7d870-0f02-44cf-aa29-9f04b0b12220.png)
+    
+3. Select the workspace and source that will send data to Statsig. Click “Allow”:
+    
+    ![](https://user-images.githubusercontent.com/125311112/262495274-71e8dbf3-590f-44bf-90bd-5723dd3c60ed.png)
+    
+4. After the integration has been enabled, you can configure event filtering and map additional identifiers. This is useful for mapping device level identifiers as well as `anonymousIds` generated from Segment. 
+We recommend creating a custom ID called `segmentAnonymousId` and mapping the `anonymousId` from Segment to it.
+    ![](https://user-images.githubusercontent.com/125311112/279802493-6956e8f7-28f1-4ac9-88d1-96710240373b.png)
+### Manual Configuration
+
+If you are unable to connect to Segment via OAuth, you can still manually connect Statsig to Segment by configuring 
+
+1. Within the [Segment App](https://app.segment.com), navigate to your Destinations, and select "**Add Destination**"
+2. Search for “**Statsig**” and select the destination
+    
+    ![](https://user-images.githubusercontent.com/125311112/262495271-68b0959b-b1d8-4041-a413-e0b2c3802377.png)
+    
+3. Select "Statsig" from the list of available integrations, and then select **sources** that will send data to Statsig.
+    ![](https://user-images.githubusercontent.com/125311112/262495270-832e8d93-1896-4c24-bf42-c56f627eecbc.png)
+    
+4. You must provide a Statsig Server SDK key. You can copy an existing server key or create a new one from the [Statsig console settings](https://console.statsig.com/api_keys). 
+    - Create or copy a server SDK key
+
+        ![](https://user-images.githubusercontent.com/125311112/262495269-88b47af6-7313-47e9-a767-e1eb12b4e47b.png)
+        ![](https://user-images.githubusercontent.com/125311112/262504950-c5b21cc0-5b51-4a55-997a-74b8a45b2807.png)
+        
+    - Put your Server Secret Key in the “API Key” field in the Statsig Destination
+
+        ![](https://user-images.githubusercontent.com/125311112/262506044-77bef6e4-c79d-47b2-94cc-3f6b3dc06489.png)
+        
+5. In order to set up mappings you must enable the Segment Integration on the Statsig . Go to the Statsig Console > Project Settings > Integrations Tab > Segment > Click **Enable**:
+    ![](https://user-images.githubusercontent.com/125311112/262506930-12225ae2-a12e-4b0d-9efc-34c03a840f9f.png)
+    
+    - After the integration has been enabled, you can configure event filtering and map additional identifiers. This is useful for mapping device level identifiers as well as `anonymousIds` generated from Segment.
+        ![](https://user-images.githubusercontent.com/125311112/279802493-6956e8f7-28f1-4ac9-88d1-96710240373b.png)
+        
+6. Now we can verify that events are being properly sent to Statsig using the [Segment Event Tester](https://segment.com/docs/connections/test-connections/).
+    - In the event tester, send a test event that can verify any filtering and/or mapping you have set up:
+        
+        ![](https://user-images.githubusercontent.com/125311112/262495256-5097e8a0-ca4f-4e1a-b2b6-3337d6fe7bff.png)
+        
+    - In the your [Statsig Console Events Explorer](https://console.statsig.com/metrics/events), click on the test event in the log stream and verify the event:
+        
+        ![](https://user-images.githubusercontent.com/125311112/262501895-001d1179-510a-4171-9ab9-f14544c94374.png)
+        
+    - Note: In this example the `anonymousId` is mapped to Statsig’s `segmentAnonymousId` based on the above mapping. The User ID is inferred from the Segment `userID` field
+        
+        ![](https://user-images.githubusercontent.com/125311112/279802493-6956e8f7-28f1-4ac9-88d1-96710240373b.png)
+        
 7. As your Segment events flow into Statsig, you'll see a live **Log Stream** in the [Metrics](/metrics) tab in the Statsig console. You can click one of these events to see the details that are logged as part of the event.
+    ![](https://user-images.githubusercontent.com/1315028/150830169-17564060-816b-4c5c-ade9-10bf6274265a.png)
 
-![image](https://user-images.githubusercontent.com/1315028/150830169-17564060-816b-4c5c-ade9-10bf6274265a.png)
+## Working with Users
+Statsig will join incomming user identifiers to whichever [unit of randomization](/experiments-plus/experimentation/choosing-randomization-unit) you choose. This allows you to be flexible with your experimentation and enables testing on known (userID) and unknown (anonymousID) traffic as well as any custom identifiers your team may have (deviceID, companyID, vehicleID, etc).
 
 ### User IDs and Custom IDs
 
-Statsig automatically detects the `event` and `userId` fields that you log through your Segment [`track`](https://segment.com/docs/connections/spec/track/) event. If you're running an experiment with the user as your unit type, this userID should match the user identifer that you log with the Statsig SDK, for example when you expose the the user to a Statsig feature gate or experiment.
+Statsig automatically detects the `event` and `userId` fields that are logged through your Segment events (see [`track`](https://segment.com/docs/connections/spec/track/) for an example). If you're running an experiment with the userId as your unit type, this `userID` should match the user identifer that you log with the Statsig SDK.
 
 If you're using a [custom ID](https://docs.statsig.com/guides/experiment-on-custom-id-types) as the unit type for your experiment, you can provide this identifier using the key `statsigCustomIDs` as part of the Segment `properties` field as shown below.
 
@@ -41,54 +112,89 @@ If you're using a [custom ID](https://docs.statsig.com/guides/experiment-on-cust
 
 The `statsigCustomIDs` field in properties should be an array, where the even index is the name of the user ID type and the odd index is the value of the previous element in the array. Assuming you've created this custom ID type on Statsig (under **ID Type Settings** in your [Project Settings](https://console.statsig.com/settings)), Statsig will automatically recognize these custom identifiers to compute your experiment results appropriately.
 
-### Custom ID Mapping
-The Segment integration also allows the mapping of top level fields to Statsig Custom IDs. To do this, visit the Segment panel on the Statsig Integrations page and look for the "Map Identifier" section. Here you can choose fields you would like mapped to a Custom ID.
 
-For example, if you're running experiments on anonymous users, you can use Segment's `anonymousId` as the unit of randomization. First, you will want to [add a new customer identifer to Statsig](https://docs.statsig.com/guides/experiment-on-custom-id-types#step-1---add-companyid-as-a-new-id-type-in-your-project-settings). For this example, we'll call our new custom ID `segmentAnonymousID`. Then, when [initializing](https://docs.statsig.com/client/jsClientSDK#initialize-the-sdk) the Statsig SDK, if you have access to the Segment `anonymousId` you will want to pass it to Statsig as a custom ID. For example, your Statsig initialization may look like this:
+### Anonymous Users
+
+#### Mapping anonymous users
+The Segment integration also allows the mapping of top level fields to custom IDs you define in Statsig. To do this, visit the Segment panel on the Statsig Integrations page and look for the "Map Identifier" section. Here you can choose fields you would like mapped to a [Custom ID](/guides/experiment-on-custom-id-types).
+This is particularly useful for working with the [Segment anonymous ID](https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/identity/#anonymous-ids), which is passed as an event field `anonymousId`. By defining a custom ID called `segmentAnonymousId`, Statsig can easily map your anonymous Segment traffic to your metric data.
+
+:warning: **Warning:** values passed in `properties.statsigCustomIDs` will take precedence over mapped identifiers below:
+
+<img src="https://user-images.githubusercontent.com/125311112/279802493-6956e8f7-28f1-4ac9-88d1-96710240373b.png"/>
+
+#### Experimenting on anonymous traffic
+For example, if you're running experiments on anonymous users, you can use Segment's `anonymousId` as the unit of randomization. First, you will want to [add a new customer identifer to Statsig](https://docs.statsig.com/guides/experiment-on-custom-id-types#step-1---add-companyid-as-a-new-id-type-in-your-project-settings). In the above example, we call our new custom ID `segmentAnonymousId`. Then, when [initializing](https://docs.statsig.com/client/jsClientSDK#initialize-the-sdk) the Statsig SDK, if you have access to the Segment `anonymousId` you will want to pass it to Statsig as a custom ID. For example, your Statsig initialization may look like this:
 
 ```jsx
 const Statsig = require("statsig-js");
 
 await Statsig.initialize(
   "client-sdk-key",
-  { userID: "some_user_id" },
-  { customIDs: { segmentAnonymousID: "some_segment_anonymous_id" } } 
+  { userID: "some_user_id",
+    customIDs: { segmentAnonymousId: analytics.user().anonymousId()} } 
 );
 ```
 
-You can access Segment's `anonymousId` using `analytics.user().anonymousId()` as [outlined in the Segment docs here](https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/identity/). It's important to note, that the Segment SDK may initialize after Statsig SDK, and the `anonymousId` may not be available in that scenario. It's important to check this in your specific implementation. If you're using vanilla javascript, you may want to wait for the `anonymousId` from the Segment SDK after initialization and call the `updateUser()` method on the Statsig SDK to update this ID.
+You can access Segment's `anonymousId` using `analytics.user().anonymousId()` as [outlined in the Segment docs here](https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/identity/).
+:::note 
+It's important to note, that the Segment SDK may initialize after Statsig SDK, and the `anonymousId` may not be available in that scenario. It's important to check this in your specific implementation. If you're using vanilla javascript, you may want to wait for the `anonymousId` from the Segment SDK after initialization and call the `updateUser()` method on the Statsig SDK to update this ID. 
+:::
 
-Then, you will map the `anonymousId` to the `stableId` (or another CustomID you're using) in the Segment integration modal in Statsig.
 
-:warning: **Warning:** values passed in `properties.statsigCustomIDs` will take precedence over mapped identifiers below.
+#### Example Mapping Flow
 
-<img src="https://user-images.githubusercontent.com/5475308/232928291-8b292fa0-d191-4e5c-8bbb-9c94a0581158.png"/>
+Refer to the following diagram to help orient you to mapping `anonymousIds` in Segment to a custom ID representing anonymous users in Statsig:
 
-<StatsigEnvironmentFormat />
+![](https://user-images.githubusercontent.com/125311112/283278011-3c22e6e8-ab36-4844-aee2-b6630ecda4de.png)
 
-### Syncing Statsig Segment ID Lists with Segment Personas Audiences
+1. Initialize the Statsig SDK with your [Statsig User](/client/concepts/user) which will contain an optional `userID` value and a `customID` that you've created in the Statsig UI - `segmentAnonymousId` in this example.
+2. As you orchestrate features/experiments, Statsig will associate this user to a variant using the unit of randomization chosen. For anonymous users, we'll use `segmentAnonymousId`.
+3. Your existing Segment implementation tracks user traffic and associates anonymous users to the top-level field `anonymousId`. 
+4. This `anonymousId` is mapped in Statsig (to `segmentAnonymousId`), properly associating the identifier used in experiment exposures to the same identifier used to track user actions.
 
-By using [Segment Personas Audiences](https://segment.com/docs/personas/audiences/) you are able to maintain a list of users that can be used for targeting using [Statsig Feature Gates](/feature-gates). To configure this:
+### Syncing Statsig Segment ID Lists with Segment Engage Audiences
+
+By using [Segment Engage Audiences](https://segment.com/docs/engage/audiences/) you are able to maintain a list of users that can be used for targeting using [Statsig Feature Flags](/feature-flags/working-with). To configure this:
 
 1. Create a [Statsig ID List Segment](/segments/create-new) on the Statsig Console.
-2. Follow the [Segment guide for Audiences](https://segment.com/docs/personas/audiences/) to create a new Audience and choose `Statsig` as a Destination. The `audience_key` must match the ID of the `Statsig ID List Segment` created.
+2. Follow the [Segment guide for Audiences](https://segment.com/docs/engage/audiences/) to create a new Audience and choose `Statsig` as a Destination. The `audience_key` must match the ID of the `Statsig ID List Segment` created.
 
 Once these steps have been completed, your Segment Audience will be synced, and you will be able to target those users for features you develop or experiments you run.
 
-## Configuring Outbound Events
+### Custom Properties
+Passing [custom properties to a Statsig User](/client/concepts/user#user-attributes) (see `custom` field) enables targeting on specific cohorts of your users in feature gates and experimentation. 
+Providing custom user properties also allows you to drill down your results to specific populations (ex: android/iOS, isVIP, etc) when [reading pulse results](/pulse/custom-queries#running-a-custom-query).
+
+If you're using custom fields to [target users](/feature-flags/conditions#custom) in your feature gates, you can provide these properties through Segment using the key `statsigCustom` as part of the Segment `properties` 
+field, as an array of key value pairs: `[key1, value1, key2, value2, ...]`. An example is shown below:
+
+```bash title="JSON Body"
+{
+  ...
+  properties: {
+    "statsigCustom": [ "isVIP", "true", "marketing_campaign", "abx343", ...]
+  }
+}
+```
+
+## Configuring Outbound Events to Segment
 
 To export your Statsig events to Segment,
 
-1. Create an [HTTP API](https://segment.com/docs/connections/sources/catalog/libraries/server/http-api/) source on the Segment dashboard.
-2. Select your HTTP API source and select the 'Settings' tab, then on the side bar, select API Keys.
+1. In your Segment app, add a new source → search for Statsig → click **Next**
+    
+  ![](https://user-images.githubusercontent.com/125311112/263066497-1856270d-adb9-4ca7-9349-1b4b393b1aa2.png)
+    
+2. Name your source → Create Source → click **Done**:
 
-   ![Screen Shot 2022-07-07 at 11 36 37 AM](https://user-images.githubusercontent.com/95646168/177846106-0b17fda2-bad7-47b2-9e75-4036b2075fed.png)
+  ![](https://user-images.githubusercontent.com/125311112/263066506-cbe5beca-5971-4baf-ae41-571bd7c1ae52.png)
 
 3. Locate your **Write Key** and copy it.
 4. Log into the Statsig console and navigate to the [**Integrations**](https://console.statsig.com/integrations) page.
 5. Click on the **Segment** card and switch to the **Outbound** tab, paste the **Write Key** into the **API Key** text box shown below, and click **Enable**.
 
-![image](https://user-images.githubusercontent.com/1315028/150827399-333d9064-de1c-4f4e-bc33-51a46a83531d.png)
+  ![image](https://user-images.githubusercontent.com/1315028/150827399-333d9064-de1c-4f4e-bc33-51a46a83531d.png)
 
 ### Outbound event schema
 
@@ -139,6 +245,26 @@ Config Change events follow this schema:
   },
 },
 ```
+
+## Environments
+<StatsigEnvironmentFormat />
+
+
+## Working with Segment Metrics in the Statsig UI
+
+Segment events are piped into Statsig and are accessible in the metrics console like any other event. Furthermore, these metrics will be accessible to use as monitoring metrics in your feature gates and experiments so you can utilize your existing
+metric collection via Segment with Statsig's experimentation platform.
+
+:::note
+Segment events are prepended with `segment::` so they can be easily distinguished from other sources
+:::
+
+![](https://user-images.githubusercontent.com/125311112/263068916-a7bb398b-dd5f-4a0c-9c72-924f384a54b7.png)
+
+These metrics will be reported in pulse results among other monitoring metrics:
+
+![](https://user-images.githubusercontent.com/125311112/263068905-12265a7e-e13a-4350-8bda-76ecfb3a805c.png)
+
 
 ## Filtering Events
 

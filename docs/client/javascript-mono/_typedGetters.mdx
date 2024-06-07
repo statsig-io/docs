@@ -1,0 +1,25 @@
+### Typed Getters
+
+The `Layer`, `Experiment` and `DynamicConfig` objects all support a "typed" `get` method. This method can help avoid issues where a 
+value is not the type you expect.
+
+For example, imagine we have a Dynamic Config with a single `number` value called `"my_value"`:
+
+```typescript
+// { "my_value": 1 }
+
+const myDynamicConfig = myStatsigClient.getDynamicConfig("a_config");
+
+const myFallbackValue = myDynamicConfig.get("my_value", "fallback"); // returns: "fallback"
+const myTypedValue = myDynamicConfig.get("my_value", 0); // returns: 1
+const myRawValue = myDynamicConfig.get("my_value"); // returns: 1
+```
+
+Because `"my_value"` points to a `number` but in the `myFallbackValue` case, 
+we are calling `.get` with a `string` fallback value, the fallback is being returned.
+
+In the `myTypedValue` case, we are passing a `number` fallback value, and since `"my_value"` is 
+also a `number`, the actual value of `1` is returned.
+
+If typing is not important to you, the fallback argument can be omitted, and 
+the SDK will simply return the value. This is highlighted in the `myRawValue` case.

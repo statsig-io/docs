@@ -12,7 +12,7 @@ GDPR and similar laws may require that you delete a user's data when they reques
 
 ### How to use the API
 
-All requests must include the STATSIG-API-KEY field in the header. The value should be a Console API Key which can be created in the Project Settings on console.statsig.com/api_keys.
+All requests must include the STATSIG-API-KEY field in the header. The value should be a SERVER API Key which can be created in the Project Settings on console.statsig.com/api_keys.
 
 ## Sending Requests
 

@@ -1,0 +1,52 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+To use the SDK in your project, you must add Statsig as a dependency.
+
+<Tabs
+  defaultValue="spm"
+  values={[
+    {label: 'Swift Package Manager', value: 'spm'}, 
+    {label: 'Cocoapods', value: 'pods'},
+  ]}>
+
+  <TabItem value="spm">
+
+In your Xcode, select File > Swift Packages > Add Package Dependency
+and enter the URL https://github.com/statsig-io/swift-on-device-evaluations-sdk.git.
+
+You can also include it directly in your project's Package.swift. Find out the latest release version on our [GitHub page](https://github.com/statsig-io/swift-on-device-evaluations-sdk/releases).
+
+```swift
+//...
+dependencies: [
+    // see the latest version on https://github.com/statsig-io/swift-on-device-evaluations-sdk/releases
+    .package(url: "https://github.com/statsig-io/swift-on-device-evaluations-sdk.git", .upToNextMinor("X.Y.Z")),
+],
+//...
+targets: [
+    .target(
+        name: "YOUR_TARGET",
+        dependencies: ["StatsigOnDeviceEvaluations"]
+    )
+],
+//...
+```
+
+  </TabItem>
+  <TabItem value="pods">
+
+If you are using CocoaPods, our pod name is 'StatsigOnDeviceEvaluations', and you can include the following line to your Podfile:
+
+```ruby
+use_frameworks!
+target 'TargetName' do
+  //...
+  pod 'StatsigOnDeviceEvaluations', '~> X.Y.Z'
+end
+```
+
+Find the latest versions by searching [cocoapods.org](https://cocoapods.org/) or on [Github](https://github.com/statsig-io/swift-on-device-evaluations-sdk/releases).
+
+  </TabItem>
+</Tabs>

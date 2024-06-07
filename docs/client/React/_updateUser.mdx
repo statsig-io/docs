@@ -5,7 +5,43 @@ if `waitForInitialization` is false, and no [mountKey](#mount-key) is set on the
 re-render for the new user with default values, followed by a render when the values have been updated.
 
 ```js
+const [user, setUser] = useState({userID: 'initial-user'});
+
+return (
+  <StatsigProvider
+    sdkKey="CLIENT_KEY_HERE"
+    waitForInitialization={false}
+    user={user}
+  >
+    <GateTwo />
+  </StatsigProvider>
+);
+
+// Some time later
 setUser({ userID: "another-user" });
 ```
 
-There also exists am `updateUser` method on the [Statsig](#statsig-interface) interface, but calling this directly may lead to issues with the StatsigProvider.
+If you do not want to pass your `setUser` function down to the component that needs to update the user, you can use the provided `useUpdateUser` hook to pull it off of the `StatsigContext`.
+
+```js
+const [user, setUser] = useState({userID: 'initial-user'});
+
+return (
+  <StatsigProvider
+    sdkKey="CLIENT_KEY_HERE"
+    waitForInitialization={false}
+    user={user}
+    setUser={setUser} // <-- This is required for the hook to work
+  >
+    <GateTwo />
+  </StatsigProvider>
+);
+
+// Some time later
+import { useUpdateUser } from "statsig-react";
+
+const updateUser = useUpdateUser(); // <-- This retrieves the same setUser function given to the StatsigProvider
+updateUser({ userID: "another-user" });
+```
+
+There's also an `updateUser` method on the [Statsig](#statsig-interface) interface, but calling this directly may lead to issues with the StatsigProvider.

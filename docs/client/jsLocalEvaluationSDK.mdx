@@ -1,0 +1,91 @@
+---
+sidebar_label: JavaScript
+title: JavaScript On Device Evaluation
+---
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStartedRulesets,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  PrefetchUsers,
+  Shutdown,
+  LocalOverrides,
+  StableID,
+  FetchMode,
+  UserPersistentStorage,
+} from "./Templates/index.mdx";
+
+import OnDeviceEvalProsAndCons from "./Templates/_OnDeviceEvalProsAndCons.mdx";
+
+import AdditionalWelcome from "./jslocal/_additionalWelcome.mdx";
+import Initialize from "./jslocal/_initialize.mdx";
+import Install from "./jslocal/_install.mdx";
+import CheckGate from "./jslocal/_checkGate.mdx";
+import GetConfig from "./jslocal/_getConfig.mdx";
+import GetExperiment from "./jslocal/_getExperiment.mdx";
+import LogEvent from "./jslocal/_logEvent.mdx";
+import MoreFAQs from "./jslocal/_faqs.mdx";
+import Options from "./jslocal/_options.mdx";
+import ShutdownSnippet from "./jslocal/_shutdown.mdx";
+import PersistentStorageInterface from "./jslocal/_persistentStorageInterface.mdx";
+import PersistentStorageExample from "./jslocal/_persistentStorageExample.mdx";
+import { GetStableID, OverrideStableID } from "./jslocal/_stableID.mdx";
+
+export const Result = SDKDocsBuilder(
+  {},
+  [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/js-local-eval",
+      },
+    ],
+    [
+      GettingStartedRulesets,
+      {
+        additionalWelcomeMessage:  <OnDeviceEvalProsAndCons
+            sdkName="JavascriptOnDeviceEvaluations"
+            otherSDK={{
+              name: "Javascript Precomputed Evaluations SDK",
+              link: "/client/jsClientSDK",
+            }}
+          />,
+        sdkType: "JS Local Evaluation",
+        install: <Install />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+      },
+    ],
+    [StatsigUser, {excludeMentionToDirectUpdateUser: true}],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [
+      StableID,
+      { getSnippet: <GetStableID />, overrideSnippet: <OverrideStableID /> },
+    ],
+    [
+      UserPersistentStorage,
+      { interface: <PersistentStorageInterface />, example: <PersistentStorageExample /> },
+    ],
+    [FAQ, { faqs: <MoreFAQs /> }],
+  ],
+  toc
+);
+
+<>{Result}</>

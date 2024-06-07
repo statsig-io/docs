@@ -1,0 +1,308 @@
+import Button from "@mui/material/Button";
+import OutlinedCard from "@site/src/components/OutlinedCard";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
+import Icon from "@mui/material/Icon";
+import IconButton from "@mui/material/IconButton";
+import Link from "@mui/material/Link";
+
+import LogOnClick from "@site/src/components/LogOnClick";
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+Statsig is an experimentation platform that enables you to quickly assess the impact of new functionality and deliver products that your customers love. Start shipping faster with Statsig’s getting started guides, code samples, and documentation.
+
+export const ArrowButton = ({ link }) => (
+  <IconButton
+    style={{
+      color: "#194b7d",
+      border: "1px solid rgba(0, 0, 0, 0.12)",
+      borderRadius: "16px",
+      padding: "4px",
+    }}
+    href={link}
+  >
+    <Icon
+      style={{
+        color: "#194b7d",
+      }}
+    >
+      arrow_forward
+    </Icon>
+  </IconButton>
+);
+
+<object type="image/svg+xml" data="/img/navigation.svg"></object>
+
+## Walkthrough Guides
+
+<div
+  style={{
+    display: "flex",
+    flexWrap: "wrap",
+  }}
+>
+  <OutlinedCard
+    title="Your First Feature"
+    icon="tune"
+    description="Let's build a new feature with Feature Gates, targeting and rollout."
+    link="/guides/first-feature"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Your First A/B Test"
+    icon="science"
+    description="Running an A/B experiment should not be difficult. Let's set one up in minutes."
+    link="/guides/abn-tests"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Logging Events"
+    icon="filter_list"
+    description="Useful product metrics are computed from discrete events that you log.  Let's get started on logging events."
+    link="/guides/logging-events"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Your first Holdout"
+    icon="flaky"
+    description="Sometimes it helps to measure cumulative impact of a set of features.  Let's set up a Holdout to do that."
+    link="/guides/first-holdout"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Making Code Dynamic"
+    icon="dynamic_form"
+    description="You don't always have to ship new code for customizing your experience, or even shipping new features.  Let's learn about dynamic configs."
+    link="/guides/first-dynamic-config"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Statsig in Your Warehouse"
+    icon="warehouse"
+    description="You can calculate experiment results on existing data in your warehouse.  Let's explore Statsig Warehouse Native."
+    link="/statsig-warehouse-native/introduction"
+  ></OutlinedCard>
+</div>
+
+## SDKs
+
+export const SDKCard = ({ language, image, link }) => (
+  <Card
+    style={{
+      minWidth: "240px",
+      margin: "16px",
+      flex: "0 0 28%",
+      display: "flex",
+      flexDirection: "column",
+      padding: "16px",
+      boxShadow: "0 6px 16px rgba(0, 0, 0, 0.06)",
+      border: 0,
+    }}
+  >
+    <div
+      style={{
+        fontWeight: "bold",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-start",
+        alignContent: "space-between",
+      }}
+    >
+      {language}
+    </div>
+    <CardActions
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "flex-end",
+      }}
+    >
+      <img height="80px" src={image} />
+      <ArrowButton link={link} />
+    </CardActions>
+  </Card>
+);
+
+<Tabs
+  defaultValue="client"
+  values={[
+    { label: "Client", value: "client" },
+    { label: "Server", value: "server" },
+  ]}
+>
+  <TabItem value="client">
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+      }}
+    >
+      <SDKCard
+        language="Javascript"
+        image="/img/sdk/sdk_js.png"
+        link="/client/jsClientSDK"
+      ></SDKCard>
+      <SDKCard
+        language="React"
+        image="/img/sdk/sdk_react.png"
+        link="/client/reactSDK"
+      ></SDKCard>
+      <SDKCard
+        language="React Native"
+        image="/img/sdk/sdk_rn.png"
+        link="/client/reactNativeSDK"
+      ></SDKCard>
+      <SDKCard
+        language="Expo"
+        image="/img/sdk/sdk_expo.png"
+        link="/client/reactNativeExpoSDK"
+      ></SDKCard>
+      <SDKCard
+        language="iOS"
+        image="/img/sdk/sdk_swift.png"
+        link="/client/iosClientSDK"
+      ></SDKCard>
+      <SDKCard
+        language="Android"
+        image="/img/sdk/sdk_android.png"
+        link="/client/androidClientSDK"
+      ></SDKCard>
+      <SDKCard
+        language=".NET"
+        image="/img/sdk/sdk_dotnet.png"
+        link="/client/dotnetSDK"
+      ></SDKCard>
+    </div>
+  </TabItem>
+  <TabItem value="server">
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+      }}
+    >
+      <SDKCard
+        language="Node js"
+        image="/img/sdk/sdk_node.png"
+        link="/server/nodejsServerSDK"
+      ></SDKCard>
+      <SDKCard
+        language="Java/Kotlin"
+        image="/img/sdk/sdk_java.png"
+        link="/server/javaSdk"
+      ></SDKCard>
+      <SDKCard
+        language="Ruby"
+        image="/img/sdk/sdk_ruby.png"
+        link="/server/rubySDK"
+      ></SDKCard>
+      <SDKCard
+        language=".NET"
+        image="/img/sdk/sdk_dotnet_server.png"
+        link="/server/dotnetSDK"
+      ></SDKCard>
+      <SDKCard
+        language="Go"
+        image="/img/sdk/sdk_golang.png"
+        link="/server/golangSDK"
+      ></SDKCard>
+      <SDKCard
+        language="Python"
+        image="https://github.com/statsig-io/docs/assets/139815787/a90b92ff-c053-43d5-8126-47e19835f003"
+        link="/server/pythonSDK"
+      ></SDKCard>
+      <SDKCard
+        language="C++"
+        image="/img/sdk/sdk_cpp.png"
+        link="/server/cppSDK"
+      ></SDKCard>
+    </div>
+  </TabItem>
+</Tabs>
+
+We also provide an HTTP API. Our API is a great choice if an SDK isn't
+available for your environment yet, as you can use it in any type of
+application:
+
+- [HTTP API](/http-api)
+
+## Tools
+
+<div
+  style={{
+    display: "flex",
+    flexWrap: "wrap",
+  }}
+>
+  <OutlinedCard
+    title="Feature Flags"
+    icon="tune"
+    description="Control access to new functionality and automatically measure how it’s performing with an A/B test before you ship"
+    link="/feature-flags"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Dynamic Configs"
+    icon="dns"
+    description="Dynamically configure user experience with configuration parameters instead of hard-coded constants"
+    link="/dynamic-config"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Segments"
+    icon="donut_small"
+    description="Define a reusable set of rules to target a group of users"
+    link="/segments"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Experiments+"
+    icon="science"
+    description="Run sophisticated experiments with multiple variants (A/B/n tests) or mutual exclusion"
+    link="/experiments-plus"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Autotune"
+    icon="model_training"
+    description="Automatically optimize for a single metric by testing a number of variants"
+    link="autotune"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Metrics"
+    icon="speed"
+    description="View metrics automatically derived from all gate checks and events logged with Statsig"
+    link="/metrics"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Users"
+    icon="people"
+    description="View users exposed to all gate checks and events logged with Statsig"
+    link="/users"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Pulse"
+    icon="assessment"
+    description="View how your experiments impact your metrics"
+    link="/pulse"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Insights"
+    icon="donut_small"
+    description="View all experiments that have impacted a metric"
+    link="/insights"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Holdouts"
+    icon="flaky"
+    description="Measure the cumulative impact of all features shipped over a period of time"
+    link="/holdouts"
+  ></OutlinedCard>
+</div>
+
+## Filing bugs
+
+You can file bug reports or feature requests via github issues in our <LogOnClick event="feedback_click"> <a href="https://github.com/statsig-io/statsig-feedback/issues">Statsig Feedback repository</a> </LogOnClick>
+
+ # Need more help?
+
+Statsig strives to provide the best support possible. You can
+
+- Join our slack support channel for live supports: <LogOnClick event="slack_click"> <a href="https://statsigcommunity.slack.com/archives/C01RAKM10TD">Join our slack support</a> </LogOnClick>
+- Schedule a live demo: <LogOnClick event="demo_click"> <a href="https://www.statsig.com/contact/demo">Schedule a demo</a> </LogOnClick> 

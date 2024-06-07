@@ -23,7 +23,8 @@
       "successEventValue": "",
       "explorationWindow": "1hr",
       "attributionWindow": "2hrs",
-      "winnerThreshold": "99%"
+      "winnerThreshold": "99%",
+      "idType": "userID"
     }
   },
   "description": "Autotune object",
@@ -48,7 +49,8 @@
       "successEvent": "purchase_item",
       "explorationWindow": "1hr",
       "attributionWindow": "2hr",
-      "winnerThreshold": "99%"
+      "winnerThreshold": "99%",
+      "idType": "stableID"
     }
   ],
   "properties": {
@@ -123,6 +125,13 @@
         "98%",
         "99%"
       ]
+    },
+    "idType": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "59t342978zj5h"
+      },
+      "description": "idType of the autotune (userID, stableID, or a customID). Defaults to userID if not provided"
     }
   }
 }

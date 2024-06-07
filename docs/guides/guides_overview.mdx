@@ -1,0 +1,135 @@
+
+import Button from "@mui/material/Button";
+import OutlinedCard from "@site/src/components/OutlinedCard";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
+import Icon from "@mui/material/Icon";
+import IconButton from "@mui/material/IconButton";
+import Link from "@mui/material/Link";
+
+import LogOnClick from "@site/src/components/LogOnClick";
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+---
+sidebar_label: Overview
+title: Overview
+---
+
+## Statsig Walkthrough Guides
+
+<div
+  style={{
+    display: "flex",
+    flexWrap: "wrap",
+  }}
+>
+  <OutlinedCard
+    title="Your First Feature"
+    icon="tune"
+    description="Let's build a new feature with Feature Gates, targeting and rollout."
+    link="/guides/first-feature"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Your First A/B Test"
+    icon="science"
+    description="Running an A/B experiment should not be difficult. Let's set one up in minutes."
+    link="/guides/abn-tests"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Logging Events"
+    icon="filter_list"
+    description="Useful product metrics are computed from discrete events that you log.  Let's get started on logging events."
+    link="/guides/logging-events"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Your first Holdout"
+    icon="flaky"
+    description="Sometimes it helps to measure cumulative impact of a set of features.  Let's set up a Holdout to do that."
+    link="/guides/first-holdout"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Making Code Dynamic"
+    icon="dynamic_form"
+    description="You don't always have to ship new code for customizing your experience, or even shipping new features.  Let's learn about dynamic configs."
+    link="/guides/first-dynamic-config"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Statsig in Your Warehouse"
+    icon="warehouse"
+    description="You can calculate experiment results on existing data in your warehouse.  Let's explore Statsig Warehouse Native."
+    link="/statsig-warehouse-native/introduction"
+  ></OutlinedCard>
+</div>
+
+## Tools
+
+<div
+  style={{
+    display: "flex",
+    flexWrap: "wrap",
+  }}
+>
+  <OutlinedCard
+    title="Feature Gates"
+    icon="tune"
+    description="Control access to new functionality and automatically measure how it’s performing with an A/B test before you ship"
+    link="/feature-gates"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Dynamic Configs"
+    icon="dns"
+    description="Dynamically configure user experience with configuration parameters instead of hard-coded constants"
+    link="/dynamic-config"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Segments"
+    icon="donut_small"
+    description="Define a reusable set of rules to target a group of users"
+    link="/segments"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Experiments+"
+    icon="science"
+    description="Run sophisticated experiments with multiple variants (A/B/n tests) or mutual exclusion"
+    link="/experiments-plus"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Autotune"
+    icon="model_training"
+    description="Automatically optimize for a single metric by testing a number of variants"
+    link="autotune"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Metrics"
+    icon="speed"
+    description="View metrics automatically derived from all gate checks and events logged with Statsig"
+    link="/metrics"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Users"
+    icon="people"
+    description="View users exposed to all gate checks and events logged with Statsig"
+    link="/users"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Pulse"
+    icon="assessment"
+    description="View how your experiments impact your metrics"
+    link="/pulse"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Insights"
+    icon="donut_small"
+    description="View all experiments that have impacted a metric"
+    link="/insights"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Holdouts"
+    icon="flaky"
+    description="Measure the cumulative impact of all features shipped over a period of time"
+    link="/holdouts"
+  ></OutlinedCard>
+</div>

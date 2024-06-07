@@ -10,17 +10,9 @@
       "lastModifierName": "CONSOLE API",
       "lastModifierID": "pz52mHS48hyce",
       "passPercentage": 10,
-      "gateIDs": [
-        "a_gate",
-        "b_gate"
-      ],
-      "experimentIDs": [
-        "a_experiment",
-        "b_experiment"
-      ],
-      "layerIDs": [
-        "a_layer"
-      ]
+      "gateIDs": ["a_gate", "b_gate"],
+      "experimentIDs": ["a_experiment", "b_experiment"],
+      "layerIDs": ["a_layer"]
     }
   },
   "examples": [
@@ -33,17 +25,9 @@
       "lastModifierName": "CONSOLE API",
       "lastModifierID": "pz52mHS48hyce",
       "passPercentage": 10,
-      "gateIDs": [
-        "a_gate",
-        "b_gate"
-      ],
-      "experimentIDs": [
-        "a_experiment",
-        "b_experiment"
-      ],
-      "layerIDs": [
-        "a_layer"
-      ]
+      "gateIDs": ["a_gate", "b_gate"],
+      "experimentIDs": ["a_experiment", "b_experiment"],
+      "layerIDs": ["a_layer"]
     }
   ],
   "description": "Holdout object",
@@ -72,9 +56,21 @@
       "type": "string",
       "description": "The Statsig Username of the last modifier of this holdout."
     },
+    "lastModifiedTime": {
+      "type": "number",
+      "x-stoplight": {
+        "id": "04w48httol959"
+      }
+    },
     "lastModifierID": {
       "type": "string",
       "description": "The Statsig UserID of the last modifier of this holdout."
+    },
+    "lastModifierEmail": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "r8h9xmj3rixp8"
+      }
     },
     "passPercentage": {
       "type": "integer",
@@ -99,6 +95,60 @@
       "description": "An array of layersIDs which this holdout is to be applied.",
       "items": {
         "type": "string"
+      }
+    },
+    "creatorID": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "w2xsen04aoo76"
+      }
+    },
+    "createdTime": {
+      "type": "number",
+      "x-stoplight": {
+        "id": "qo6xo3xen5bvp"
+      }
+    },
+    "creatorName": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "eg7emw86tnwyq"
+      }
+    },
+    "creatorEmail": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "j4tkvww8tfcp0"
+      }
+    },
+    "targetApps": {
+      "$ref": "./targetApps.json",
+      "x-stoplight": {
+        "id": "jw6n7oe9p089b"
+      }
+    },
+    "tags": {
+      "type": "array",
+      "x-stoplight": {
+        "id": "penmat69t9eos"
+      },
+      "items": {
+        "x-stoplight": {
+          "id": "a98zxhd4rwqt7"
+        },
+        "type": "string"
+      }
+    },
+    "targetingGateID": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "4su95u8yuduk5"
+      }
+    },
+    "team": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "gi392hj0tbxkb"
       }
     }
   }

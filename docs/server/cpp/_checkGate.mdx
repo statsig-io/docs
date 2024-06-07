@@ -1,0 +1,11 @@
+```cpp
+statsig::User user;
+user.userID = "some_user_id"
+if (statsig::checkGate(user, 'use_new_feature'))
+{
+  // Gate is on, enable new feature
+}
+else {
+  // Gate is off
+}
+```

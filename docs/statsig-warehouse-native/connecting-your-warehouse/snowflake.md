@@ -68,7 +68,7 @@ BEGIN;
   USE ROLE sysadmin;
 
   -- create a warehouse, database, schema and tables for Statsig
-  CREATE OR REPLACE WAREHOUSE STATSIG WITH warehouse_size='XSMALL';
+  CREATE OR REPLACE WAREHOUSE STATSIG WITH warehouse_size='XLARGE'; -- adjust based on your data size
   CREATE DATABASE IF NOT EXISTS STATSIG_STAGING;
   CREATE SCHEMA IF NOT EXISTS STATSIG_STAGING.STATSIG_TABLES;
 
@@ -110,3 +110,6 @@ BEGIN;
 
 COMMIT;
 ```
+### What IP addresses will Statsig access data warehouses from?
+
+[See FAQ](https://docs.statsig.com/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from)

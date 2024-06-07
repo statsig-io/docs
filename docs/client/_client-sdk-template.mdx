@@ -51,7 +51,7 @@ The 3rd parameter is optional and allows you to pass in a [StatsigOptions](#stat
 
 #### Step 4 - Fetch Feature Gates, Dynamic Configs or Layers/Experiments {#step-4---fetch-values}
 
-Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-gates). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
+Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-flags/working-with). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
 
 <div>{props.checkGate}</div>
 
@@ -81,7 +81,7 @@ You should provide a StatsigUser object whenever possible when initializing the 
 
 Besides `userID`, we also have `email`, `ip`, `userAgent`, `country`, `locale` and `appVersion` as top-level fields on StatsigUser. In addition, you can pass any key-value pairs in an object/dictionary to the `custom` field and be able to create targeting based on them.
 
-Once the user logs in or has an update/changed, make sure to call `updateUser` with the updated `userID` and/or any other updated user attributes:
+Note that in order to update all the evaluations for the gates/configs/experiments/layers for the current user, the SDK needs to make a network request to statsig to get the up to date values.  If you don't wait for this API to complete, you won't be operating on the most up to date values.
 
 <div>{props.updateUser}</div>
 
@@ -106,13 +106,18 @@ For example, if you have feature gates that should only pass for users with emai
 
 ## Shutting down Statsig
 
-In order to save users' data and battery usage, as well as prevent logged events from being dropped, we keep event logs in client cache and flush periodically. Because of this, some events may not have been sent when your app shuts down. To make sure all logged events are properly flushed or saved locally, you should tell Statsig to shutdown when your app is closing:
+In order to save users' data and battery usage, as well as prevent logged events from being dropped, we keep event logs in client cache and flush periodically. Because of this, some events may not have been sent when your app shuts down. To make sure all logged events are properly flushed or saved locally, you should tell Statsig to flush events when your app is closing:
 
-<div>{props.shutdown}</div>
+<div>{props.flush ? props.flush : props.shutdown}</div>
 
 <>{props.manualExposures}</>
 
 ## FAQ {#faq}
+
+#### How does the SDK cache locally?
+
+The SDK will cache evaluations fetched from the server locally, so we have default values to use in future sessions in the event the Statsig API is unreachable.  The key for this cache is the userID and set of all customIDs { userID, ...customIDs }.  This means that while other attributes may change, if that key remains contstant, the SDK will treat it as the same user.  This means cached values could be shared across different user objects.  Once the SDK is able to download up to date values for the entire user object, they should be up to date with regards to all user properties.
+
 
 #### How do I run experiments for logged out users? {#logged-out-experiments}
 

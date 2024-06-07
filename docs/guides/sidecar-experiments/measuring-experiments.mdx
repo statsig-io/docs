@@ -1,0 +1,65 @@
+---
+sidebar_label: Measuring Experiments
+title: Measuring Experiments
+---
+
+## Using Autocapture
+Sidecar comes loaded with an event collection tool that will autocapture various web activities, allowing you to create both simple and complex Metrics within Statsig console without writing a line of code.
+
+_Autocapture includes:_
+* Click events with click target info, current page url (`auto_capture::click`)
+* Page View Events with page url and query string values ((`auto_capture::page_view`))
+* Page view duration, page scroll depth (`auto_capture::page_view_end`)
+* Form Submission Events (`auto_capture::form_submit`)
+* Page Performance data (`auto_capture::performance`)
+
+## Setting User Identity and Attributes
+
+By default, Autocapture uses `stableID` (an auto-generated device-level guid that gets stored in the user's localStorage) for tracking purposes. If you wish to enrich autocapture events with known user identities and attributes, you can define the following object _prior_ to autocapture/sidecar being loaded.
+
+```js
+window.statsigUser = {
+  userID: "<USER ID>",
+  custom: { // optional attributes object
+     isLoggedIn: false 
+  }
+}
+```
+
+## Using the tracking API
+
+You can track events manually for actions that are not autocaptured by the feature described above. 
+To track events back to Statsig, you can call `StatsigSidecar.logEvent` which takes the same arguments as the Statsig JS SDK as documented [here](https://docs.statsig.com/client/jsClientSDK#logging-an-event). This method can be called prior to completion of the init routine. 
+
+```js
+// example order event
+StatsigSidecar.logEvent('Order', null, {
+  total: 54.66,
+  units: 3,
+  unitAvgCost: 18.22
+});
+```
+
+## Post-Experiment Callback for outbound integrations
+You can bind a callback that gets invoked after Sidecar has run experiments (also gets called when there are no experiments), 
+allowing you to run code that processes the experiment assignments as needed.
+
+_This method should be defined anywhere prior to the Sidecar client script._
+
+```js
+window.postExperimentCallback = function(statsigClient, experimentIds) {
+  /** 
+   * add your own callback routine here
+   * ie; annotating 3rd party analytics tools with assignment info
+      
+    var evarValue = [];
+    experimentIds.forEach(function(expId) {
+      var inExp = statsigClient.getExperimentWithExposureLoggingDisabled(expId).getGroupName();
+      if(inExp) {
+        evarValue.push(expId + ':' + inExp);
+      }
+    });
+    evarValue = evarValue.join(',');
+   */
+}
+```

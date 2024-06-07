@@ -1,0 +1,85 @@
+---
+sidebar_label: Swift
+title: Swift On Device Evaluation
+---
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStartedRulesets,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  Shutdown,
+  CodeExamples,
+} from "./Templates/index.mdx";
+
+import OnDeviceEvalProsAndCons from "./Templates/_OnDeviceEvalProsAndCons.mdx";
+
+import CheckGate from "./SwiftOnDeviceEval/_checkGate.mdx";
+import CreateStatsigUser from "./SwiftOnDeviceEval/_createStatsigUser.mdx";
+import GetConfig from "./SwiftOnDeviceEval/_getConfig.mdx";
+import GetExperiment from "./SwiftOnDeviceEval/_getExperiment.mdx";
+import Initialize from "./SwiftOnDeviceEval/_initialize.mdx";
+import Install from "./SwiftOnDeviceEval/_install.mdx";
+import LogEvent from "./SwiftOnDeviceEval/_logEvent.mdx";
+import MoreFAQs from "./SwiftOnDeviceEval/_faqs.mdx";
+import Options from "./SwiftOnDeviceEval/_options.mdx";
+import ShutdownSnippet from "./SwiftOnDeviceEval/_shutdown.mdx";
+
+export const Result = SDKDocsBuilder(
+  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
+  [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/swift-on-device-evaluations-sdk",
+      },
+    ],
+    [
+      GettingStartedRulesets,
+      {
+        additionalWelcomeMessage: (
+          <OnDeviceEvalProsAndCons
+            sdkName="SwiftOnDeviceEvaluations"
+            otherSDK={{
+              name: "Swift Precomputed Evaluations SDK",
+              link: "/client/iosClientSDK",
+            }}
+          />
+        ),
+        sdkType: "Swift On Device Evaluation",
+        install: <Install />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+      },
+    ],
+    [
+      CodeExamples,
+      {
+        link: "https://github.com/statsig-io/swift-on-device-evaluations-sdk/tree/main/Sample/App/Examples/OnDeviceEvaluations",
+        trailingMessage: "Included are both Swift and Objective C uses.",
+      },
+    ],
+    [StatsigUser, { excludeMentionToDirectUpdateUser: true, isOnDeviceEval: true, snippet: <CreateStatsigUser /> }],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [FAQ, { faqs: <MoreFAQs /> }],
+  ],
+  toc,
+);
+
+<>{Result}</>

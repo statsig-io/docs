@@ -14,9 +14,33 @@ At the top of Pulse is the Exposures Chart. Exposures are the unique experimenta
 
 ### Metric Lifts
 
-![Screen Shot 2022-12-29 at 1 47 32 PM](https://user-images.githubusercontent.com/101903926/210014132-cfe6d82c-d451-4deb-8834-971412d482d4.png)
+#### Immediately Post-experiment Start 
 
-The **Metric Lifts** section, a.k.a. **Pulse** calculates the difference between the comparable randomization groups (eg. test and control) across your company's suite of metrics, and applies a statistical test to the results. You can read more about Statsig's stats engine [here](https://docs.statsig.com/stats-engine). 
+For up to the first 24 hours after starting your experiment (before our daily Pulse run), the **Metric Lifts** section, a.k.a. Pulse, is calculated in near real-time. This more real-time Pulse is designed to enable you to confirm that exposures and metrics are being calculated as expected and debug your experiment or gate setup if needed. 
+
+Please note that you should **not** make any experiment decisions based on more real-time Pulse data in this first 24 hour window after experiment start. Experiments should only be called once the experiment has hit target duration, as set by your primary metric(s) hitting experimental power. Read more about target duration [here](https://docs.statsig.com/experiments-plus/create-new#target-duration). 
+
+<img width="1205" alt="Screen Shot 2023-06-19 at 3 29 13 PM" src="https://github.com/statsig-io/docs/assets/101903926/c148deb6-b20d-4f36-af1a-83836d23371b"/>
+
+
+Given data during this early post-experiment start window is designed for diagnostic, not decision-making purposes, you will notice a few key differences between this Pulse view and the Pulse results that will start showing after daily runs have initiated: 
+
+- Metric lifts do not have confidence intervals
+- No time-series view of metric trends
+- No projected topline impact analysis
+- No option to apply more advanced statistical tactics, such as CUPED or Sequential Testing 
+
+<img width="992" alt="Screen Shot 2023-06-19 at 3 32 13 PM" src="https://github.com/statsig-io/docs/assets/101903926/c34d4358-c92d-488f-ae49-d073904065d0"/>
+
+
+
+All of these are available in daily Pulse results, which will start showing in the next daily Pulse run. 
+
+#### Post-first Day Metric Lifts  
+
+<img width="1194" alt="Screen Shot 2023-09-20 at 11 35 05 AM" src="https://github.com/statsig-io/docs/assets/101903926/85fdc847-8d70-4215-a6ad-5a1f2d49c5e7"/>
+
+The Pulse daily run calculates the difference between the comparable randomization groups (eg. test and control) across your company's suite of metrics, and applies a statistical test to the results. You can read more about Statsig's stats engine [here](https://docs.statsig.com/stats-engine). 
 
 For every metric, we will show you:
 
@@ -34,6 +58,21 @@ Delta(%) = (Test - Control) / Control
 Confidence intervals are reported at the selected significance level (95% by default). In a typical two-sided Z-test, we show the confidence interval as +/- 1.96 \* standard error. 
 
 99.9% winsorization is automatically applied to event_count, event_count_custom, and sum metrics. This caps extreme outlier values to reduce their impact on experiment results. For metrics added to the **Scorecard** or **Monitoring Metrics** sections of your experiment or gate, you can also apply other optional statistical treatments, such as CUPED (pre-experiment bias reduction) and sequential testing adapted confidence intervals. Read more [here](https://docs.statsig.com/stats-engine). 
+
+### Pulse Views 
+There are a few different views to see your Pulse metric lifts, namely: 
+
+- Cumulative results (default view)
+- Daily results
+- Days since exposure
+
+Cumulative results includes a detailed view on hover, where you can additionally view the raw statistics used in the Pulse metric lift calculations, as well as topline impact.
+
+<img width="1282" alt="Screen Shot 2023-09-20 at 11 35 16 AM" src="https://github.com/statsig-io/docs/assets/101903926/1509479e-b5c6-416f-8d2a-ac0672165dd1"/>
+
+
+<img width="1194" alt="Screen Shot 2023-09-20 at 11 35 35 AM" src="https://github.com/statsig-io/docs/assets/101903926/9cdb7294-c979-4e0d-b26c-e20c86794d2b"/>
+
 
 ### Dimensions
 

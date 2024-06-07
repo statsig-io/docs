@@ -15,6 +15,7 @@ We currently support ingestion from the following providers:
 4. [Databricks](databricks.mdx)
 5. [Synapse](synapse.mdx)
 6. [S3](s3.mdx)
+6. [Athena](athena.mdx)
 
 ### How it works
 
@@ -27,7 +28,7 @@ In Statsig console, you can:
 
 Ingestion is set up on a daily schedule. Statsig will run a query you provide on your data warehouse, download the result set, and materialize the results into your console the same as those that came in through the SDK.
 
-If data lands late or is updated, Statsig will detect this change (currently via listening for row count changes) on a rolling window and reload the data for that day.
+If data lands late or is updated, Statsig will detect this change and reload the data for that day (details below).
 
 ### How to Begin Data Ingestion
 
@@ -60,7 +61,7 @@ See [here](data_mapping.mdx) for more information.
 
 Statsig supports multiple schedules for ingestion. At the scheduled window, we will check if data is present in your warehouse for the latest date, and load if it exists.
 
-At several follow-up windows we will check if the data has changed, and reload it if there's a change larger than 5%.
+We will check the underlying source table for changes.  For up to 3 days after initial ingestion, we will check for >5% changes in row counts and reload the data.
 
 We also support a user-triggered backfill. This could be useful if a specific metric definition has changed, or you want to resync data older than a few days.
 
@@ -91,7 +92,6 @@ Note that this is rate limited to once every two hours, and there may be a few m
 
 1. **Does event data from ingestion count towards Statsig's [User Accounting Metrics](/metrics/user) such as DAU or Retention?**
 
-
 No, event data from ingestions does not count towards Statsig's User Accounting Metrics such as DAU or Retention. Customers typically send Statsig a subset of their events, which could result in multiple competing values for "fact" data such as daily active users in your Statsig project. Statsig recommends sending your own precomputed metric for DAU or as a daily event per user (1 'daily_active' event if a user was active that day).
 
 2. **How long does the data take to load?**
@@ -121,3 +121,8 @@ Statsig shows the status of your daily ingestion on the console under the **Inge
 - ingestion failed for a given day
 
 Statsig also sends email notifications with these status updates to the Statsig user who set up the ingestion. This user can also enable Slack direct message (DM) notifications to themselves in their Statsig [Account Settings](https://console.statsig.com/account_notifications).
+
+
+7. **Does Statsig automatically backfill data**
+
+ Statsig looks back at data for 3 days from the initial ingestion to see data has changed (>5% increase in the number of rows) to automatically trigger a backfill. Outside of this window, we expect the customer to trigger backfill for the range of dates.

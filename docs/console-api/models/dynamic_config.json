@@ -1,96 +1,151 @@
 {
-  "type": "object",
-  "x-stoplight": {
-    "id": "59f0b367bb487"
-  },
-  "x-examples": {
-    "example-1": {
-      "id": "a_dynamic_config",
-      "isEnabled": false,
-      "description": "helpful summary of what this dynamic config does",
-      "lastModifierName": "CONSOLE API",
-      "lastModifierID": "ahKwUoaNauHu9AmJPc2",
-      "rules": [
-        {
-          "name": "All Conditions",
-          "passPercentage": 10,
-          "conditions": [
-            {
-              "type": "public"
-            }
-          ],
-          "returnValue": {
-            "key": true
+  "allOf": [
+    {
+      "$ref": "./config_common.json",
+      "x-stoplight": {
+        "id": "kwqcapa4no8pa"
+      }
+    },
+    {
+      "type": "object",
+      "x-stoplight": {
+        "id": "n0iwou66bjljv"
+      },
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The name that was originally given to the dynamic config on creation but formatted as an ID (\"A Dynamic Config\" -> \"a_dynamic_config\")",
+          "x-stoplight": {
+            "id": "op257jbmc5uct"
           }
+        },
+        "isEnabled": {
+          "type": "boolean",
+          "description": "Is the dynamic config enabled",
+          "x-stoplight": {
+            "id": "te9hkvcrn7qlj"
+          },
+          "default": true
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief summary of what the dynamic config is being used for",
+          "x-stoplight": {
+            "id": "9qrsq4dy4lz7c"
+          },
+          "example": "helpful summary of what this dynamic config does"
+        },
+        "lastModifierName": {
+          "type": "string",
+          "description": "The Statsig Username of the last modifier of this dynamic config",
+          "x-stoplight": {
+            "id": "k0tcrfwmcn9mm"
+          },
+          "example": "CONSOLE API"
+        },
+        "idType": {
+          "type": "string",
+          "description": "The type of ID which the dynamic config is based on.",
+          "example": "userID"
+        },
+        "lastModifierID": {
+          "type": "string",
+          "description": "The Statsig UserID of the last modifier of this dynamic config",
+          "x-stoplight": {
+            "id": "3c1aqrmg7e7ej"
+          },
+          "example": "1vaQaBoLlkauH9iiuOSBP2"
+        },
+        "rules": {
+          "type": "array",
+          "description": "An array of Rule objects",
+          "x-stoplight": {
+            "id": "24n8dit1i4qp9"
+          },
+          "items": {
+            "$ref": "./rule.json",
+            "x-stoplight": {
+              "id": "wm60hl85q2dmg"
+            }
+          }
+        },
+        "defaultValue": {
+          "type": "object",
+          "description": "The fallback JSON object when no rules are triggered",
+          "x-stoplight": {
+            "id": "u4gan1b6frg27"
+          }
+        },
+        "defaultValueJson5": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "akiipa6lbqvak"
+          },
+          "description": "Can include comments. If provided with defaultValue, must parse to the same JSON"
+        },
+        "tags": {
+          "type": "array",
+          "x-stoplight": {
+            "id": "i8xe0aihuxws2"
+          },
+          "description": "the list of tag names attached to the dynamic config",
+          "items": {
+            "x-stoplight": {
+              "id": "jea9qor1b4hub"
+            },
+            "type": "string",
+            "example": "a tag"
+          }
+        },
+        "schema": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "rp4egcpvxiqt5"
+          },
+          "description": "A schema using JSON Schema Draft 2020-12 to enforce return values of this dynamic config's rules."
+        },
+        "schemaJson5": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "sfn6h3gveb25s"
+          },
+          "description": "`schema` except with Json5 comments. Optional and should parse to same json as `schema`.\n\n"
         }
-      ],
-      "defaultValue": {
-        "key": true
       }
     }
+  ],
+  "x-stoplight": {
+    "id": "p0rk1sy9po2hd"
   },
   "examples": [
     {
-      "id": "a_dynamic_config",
+      "id": "string",
+      "description": "string",
+      "lastModifierID": "string",
+      "lastModifierName": "string",
+      "creatorEmail": "johnsmith@mydomain.com",
+      "creatorName": "John Smith",
+      "createdTime": 1674769467002,
+      "holdoutIDs": [],
       "isEnabled": true,
-      "description": "helpful summary of what this dynamic config does",
-      "lastModifierName": "CONSOLE API",
-      "lastModifierID": "ja739Hi83H",
       "rules": [
         {
-          "name": "Public",
-          "passPercentage": 100,
-          "returnValue": {
-            "key": "value"
-          },
+          "name": "string",
+          "passPercentage": 0,
           "conditions": [
             {
-              "type": "public"
+              "type": "string",
+              "operator": "string",
+              "targetValue": 0,
+              "field": "string",
+              "customID": "string"
             }
-          ]
+          ],
+          "returnValue": {}
         }
       ],
-      "defaultValue": {
-        "key": "the default value"
-      }
+      "defaultValue": {},
+      "tags": ["a tag"]
     }
-  ],
-  "description": "Dynamic Config object",
-  "x-tags": [
-    "dynamic config",
-    "entity"
-  ],
-  "properties": {
-    "id": {
-      "type": "string",
-      "description": "The name that was originally given to the dynamic config on creation but formatted as an ID (\"A Dynamic Config\" -> \"a_dynamic_config\")"
-    },
-    "isEnabled": {
-      "type": "boolean",
-      "description": "Is the dynamic config enabled"
-    },
-    "description": {
-      "type": "string",
-      "description": "A brief summary of what the dynamic config is being used for"
-    },
-    "lastModifierName": {
-      "type": "string",
-      "description": "The Statsig Username of the last modifier of this dynamic config"
-    },
-    "lastModifierID": {
-      "type": "string",
-      "description": "The Statsig UserID of the last modifier of this dynamic config"
-    },
-    "rules": {
-      "type": "array",
-      "description": "An array of Rule objects",
-      "items": {
-        "$ref": "./rule.json"
-      }
-    },
-    "defaultValue": {
-      "type": "object",
-      "description": "The fallback JSON object when no rules are triggered"
-    }
-  }
+  ]
 }

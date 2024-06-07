@@ -1,0 +1,21 @@
+```cpp
+// Values via getLayer
+
+statsig::Layer layer = statsig::getLayer(user, "user_promo_experiments")
+auto title = layer.get("title", "Welcome to Statsig!")
+auto discount = layer.get("discount")
+
+// or, via getExperiment
+
+statsig::DynamicConfig title_exp = statsig::getExperiment(user, "new_user_promo_title")
+statsig::DynamicConfig price_exp = statsig::getExperiment(user, "new_user_promo_price")
+
+title = title_exp.value["title"]
+discount = price_exp.value["discount"]
+
+...
+
+price = msrp * (1 - discount)
+
+
+```

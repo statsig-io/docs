@@ -13,28 +13,68 @@ custom_edit_url: null
 This is available for Enterprise contracts and needs to be enabled for you, once. Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you want this enabled.
 :::
 
-import Rapidoc from "../../src/components/Rapidoc"
+import Rapidoc from "../../src/components/Rapidoc";
 
-<Rapidoc id="reports" entity='reports'/>
-
+<Rapidoc id="reports" entity="reports" />
 
 ## Report Schema - type = first_exposures
 
-| Column Name             | Description                                                                                   |
-| ----------------------- | --------------------------------------------------------------------------------------------- |
-| company_id              |                                                                                               |
-| unit_id                 | Refers to the unit identifier used in the experiment                                          |
-| exposure_type           | Statsig Product used: "check_gate" for Feature Gates, and "get_experiment" for Experiments    |
-| name                    | The name of the gate/experiment                                                               |
-| rule                    | rule id for both gates; 'experiment' for experiments                                          |
-| rule_name               | rule name for gates; 'experiment' for experiments                                             |
-| experiment_group        | The group the user was assigned to                                                            |
-| first_exposure_utc      | The UTC timestamp when the user was first assigned to the experiment                          |
-| first_exposure_pst_date | The date in PST when the user was first assigned to the experiment                            |
-| as_of_pst_date          | The date this data was generated                                                              |
-| percent                 | Group's rollout percent. This is the rule-level pass-rate, or the experiment's group size     |
-| rollout                 | Rollout version number                                                                        |
-| user_dimensions         | JSON-formatted key-value pairs describing the user's attributes at the time of first exposure |
+| Column Name             | Data Type | Description                                                                                   |
+| ----------------------- | --------- | --------------------------------------------------------------------------------------------- |
+| company_id              | string    |                                                                                               |
+| unit_id                 | string    | Refers to the unit identifier used in the experiment                                          |
+| unit_type               | string    | Refers to the unit type used in the experiment                                                |
+| exposure_type           | string    | Statsig Product used: "check_gate" for Feature Gates, and "get_experiment" for experiments    |
+| name                    | string    | The name of the gate/experiment                                                               |
+| rule                    | string    | rule id for both gates; 'experiment' for experiments                                          |
+| experiment_group        | string    | The group the user was assigned to                                                            |
+| first_exposure_utc      | timestamp | The UTC timestamp when the user was first assigned to the experiment                          |
+| first_exposure_pst_date | date      | The date in PST when the user was first assigned to the experiment                            |
+| as_of_pst_date          | date      | The date this data was generated                                                              |
+| percent                 | float     | Group's rollout percent. This is the rule-level pass-rate, or the experiment's group size     |
+| rollout                 | int       | Rollout version number                                                                        |
+| user_dimensions         | string    | JSON-formatted key-value pairs describing the user's attributes at the time of first exposure |
+| inserted_at             | timestamp | The timestamp when this report is generated                                                   |
+| rule_name               | string    | Rule name for gates; 'experiment' for experiments                                             |
+| group_id                | string    | True/False for gates; group_id for experiments                                                |
+
+- After the feature is turned on for you, it will be ready when our pipeline runs. Generally, you can expect it around the time you see cumulative exposures.
+- We commit to maintain the report format including column order and type, but we recommend that you use the column name and cast column type when parsing the file.
+
+### Egress exposure data to your warehouse
+
+Besides the exposure reports from the API access, we also offer data warehouse export to Snowflake for our enterprise customers.
+
+1. At the top of your console, tap the "?" icon and navigate to `Tools and Resources` -> `Exports List`. Under the `Scheduled` tab, create a new connection.
+2. In your Snowflake warehouse, create a custom user for this export purpose.
+3. Run the script to create the table and grant your user permissions to operate on it.
+
+```sql
+-- create the table
+CREATE OR REPLACE TABLE <database>.<schema>.<exportTableName> (
+	COMPANY_ID VARCHAR(16777216),
+	UNIT_ID VARCHAR(16777216),
+	UNIT_TYPE VARCHAR(16777216),
+	EXPOSURE_TYPE VARCHAR(16777216),
+	NAME VARCHAR(16777216),
+	RULE VARCHAR(16777216),
+	EXPERIMENT_GROUP VARCHAR(16777216),
+	FIRST_EXPOSURE_UTC TIMESTAMP_NTZ(9),
+	FIRST_EXPOSURE_PST_DATE DATE,
+	AS_OF_PST_DATE DATE,
+	PERCENT FLOAT,
+	ROLLOUT NUMBER(38,0),
+	USER_DIMENSIONS VARCHAR(16777216),
+	INSERTED_AT TIMESTAMP_NTZ(9) NOT NULL,
+	RULE_NAME VARCHAR(16777216),
+	GROUP_ID VARCHAR(16777216)
+);
+
+-- grant the custom user privileges to operate on the table
+GRANT INSERT, UPDATE, DELETE ON TABLE <database>.<schema>.<exportTableName> TO ROLE <generatedRole>;
+```
+
+4. Connect. Then StatSig will run tests to make sure all privileges are granted. Once it's successful, you are enrolled in the feature.
 
 ## Report Schema - type = pulse_daily
 
@@ -58,5 +98,8 @@ import Rapidoc from "../../src/components/Rapidoc"
 | varpop              | DOUBLE, the varpop of this metric                                                                  |
 
 - New columns may be added in the future.
+- Exposures on the day when a decision is made are excluded from the report, as they are not part of the experiment.
+- Metric values are non-CUPED.
+- After the feature is turned on for you, it will be ready when our pipeline runs. Generally, you can expect it around the time you see pulse results.
 
-__Please note that the previous get_daily_reports endpoint has been deprecated. If you were using this endpoint, please migrate to the new version. However, you can find old docs [here](/console-api/daily-reports-deprecated)__
+**Please note that the previous get_daily_reports endpoint has been deprecated. If you were using this endpoint, please migrate to the new version. However, you can find old docs [here](/console-api/daily-reports-deprecated)**

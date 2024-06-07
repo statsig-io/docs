@@ -16,4 +16,8 @@ discount := priceExperiment.GetNumber("discount", 0.1);
 ...
 
 price := msrp * (1 - discount);
+
+// getting the layer name that an experiment belongs to
+
+userPromoLayer := Statsig.GetExperimentLayer("new_user_promo_title");
 ```

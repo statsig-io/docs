@@ -46,6 +46,41 @@ If you mistakenly archived a metric you can undo your Archival.
 
 Since the grace period has ended and the metric has stopped being computed already, its calculation will restart from scratch and history will not be restored. 
 
+### Auto-Archival
+
+To combat metric clutter, Statsig offers a default auto-archival feature that cleans up metrics that have not been in-use for at least 60 days. Metric creators and admins will get a warning about a week before archival happens, at which time they can either choose to extend the metric for another 60 days or mark it as permanent. The entire process is outlined below:
+
+![state graph](https://github.com/statsig-io/docs/assets/132317445/c7912507-636f-4f33-9555-70180dfd205e)
+
+#### How do we measure activity?
+
+Statsig counts the number of times the custom metric is used in one or more of the following components:
+1. *Scorecard*: Used in experiments, pulse reports, holdouts, etc.
+2. *Dashboards*: Used to build dashboards and other analytical assets
+3. *Other Metrics*: Used to calculate other composite metrics
+
+If a metric is in use, it will be considered as active. You can see a summary of a metric’s usage on the metric’s main page:
+
+![Metric References](https://github.com/statsig-io/docs/assets/132317445/6f7eb3db-399a-45c8-be19-794e89dd349d)
+
+At the same time, we are also detecting (1) any edits to the metrics, including changing any fields in the setup or restoring a previous version, (2) adding tags to the metrics, or (3) creating or modifying an alert on the metric. Any such interaction would restart the 60 day clock.
+
+#### How to Pause / Stop Auto-Archiving
+
+Any tracked action above (adding it to a scorecard, etc) will also take the metric out of the archival queue. Outside of that, if you want to pause the archival process, you may simply extend the metric for another 60 days. We also give you an option to mark it as permanent, which takes it out of the auto-archival process entirely. We recommend this only for the most important and widely reused metrics.
+
+![Banner](https://github.com/statsig-io/docs/assets/132317445/d7378d7b-a588-496b-ae35-24f38c6d5b6a)
+
+
+Another way to mark it as permanent by clicking into the setup dropdown from the metrics page and selecting “Mark as Permanent”
+
+![Dropdown](https://github.com/statsig-io/docs/assets/132317445/2a570a92-76d6-41b3-aea5-ebdd53469856)
+
+If you’d like to turn off auto-archiving entirely for your project, you may do so in the Project Settings page
+
+![Project Settings](https://github.com/statsig-io/docs/assets/132317445/74cd5575-e1bb-4f69-87f9-1feece5eb73f)
+
+
 # Deleting Metrics 
 
 ### Deleting a Metric 
@@ -71,4 +106,6 @@ _As soon as **Delete** button is clicked_
 _After the 24-hour grace period has ended,_
 - Deleted metrics and their history will be removed from Statsig, and cannot be restored. 
 - Deleted metrics will be removed from Pulse, including any time the deleted metric has been added to the Scorecard of an experiment or the Monitoring Metrics section of a Feature Gate 
+
+
 

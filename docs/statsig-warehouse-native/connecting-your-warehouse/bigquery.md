@@ -8,11 +8,11 @@ sidebar_label: BigQuery
 
 To set up connection with BigQuery, we need the following:
 
-- Granting Permissions to a Statsig-owned Service Account
+- Grant Permissions to a Statsig-owned Service Account
 - Your BigQuery Project ID
 - The dataset Statsig will use to save temporary tables and materialized results
 
-Start by enabling the BigQuery source under Metrics -> Ingestion -> Add Source.
+Start by enabling the BigQuery source in your project settings.
 
 ## Grant Permissions to Statsig's Service Account
 
@@ -44,3 +44,10 @@ Find your BigQuery Project ID below
 2. Copy and paste relevant Project ID from the modal pop-up.
 
 ![Frame 5](https://user-images.githubusercontent.com/108023879/187517901-9e7fd237-8325-4254-a1bd-c75f0ea08497.png)
+
+### What is Statsig's Customer ID on BigQuery
+C01d5f80s
+
+### What IP addresses will Statsig access data warehouses from?
+
+[See FAQ](https://docs.statsig.com/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from)

@@ -30,3 +30,7 @@ Service Provider(SP)-Initiated Authentication for Single Sign-On (SSO) using OID
 Once these steps have been completed, the Statsig OIDC Application in Okta has been successfully configured. Following this, you will need to follow the steps [here to enable configuration of SSO on your Statsig Project](/access-management/sso/overview#configuration).
 
 _Note when adding the Statsig OIDC Application in Okta, the sign-in and sign-out redirect URIs are automatically configured._
+
+### Proof Key for Code Exchange (PKCE)
+
+Statsig does not currently support the PKCE Flow, so you will need to turn off the feature in Okta when you enable SSO with Statsig.

@@ -1,3 +1,5 @@
+import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
+
 You can specify optional parameters with `options` when initializing using `InitializeWithOptions()`
 
 ```go
@@ -15,11 +17,8 @@ type Options struct {
 - **Environment**: default nil
   - An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
   - The most common usage is to set the environment tier (string), and have feature gates pass/fail for specific environments. The accepted values are "production", "staging" and "development".
-- **Environment**: default nil
-  - An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
-  - The most common usage is to set the environment tier (string), and have feature gates pass/fail for specific environments. The accepted values are "production", "staging" and "development".
 - **LocalMode**: default false
-  - Disables all network requests from the SDK, so it will only return default values. Useful in tests/non production environments.
+  - <LocalModeSnippet type="server" />
 - **ConfigSyncInterval**: default 10 seconds
   - The interval to poll for gate/experiment/config changes.
 - **IDListSyncInterval**: default 1 minute
@@ -28,3 +27,5 @@ type Options struct {
   - A string that represents all rules for all feature gates, dynamic configs and experiments. It can be provided to bootstrap the Statsig server SDK at initialization in case your server runs into network issue or Statsig server is down temporarily.
 - **RulesUpdatedCallback**: default nil
   - The callback that gets invoked whenever the rulesets are updated. It's called with a JSON string that represents the rulesets, and a timestamp for when the rules were updated.
+- **UserPersistentStorage**: IUserPersistentStorage default nil
+  - A persistent storage adapter for running sticky experiments.

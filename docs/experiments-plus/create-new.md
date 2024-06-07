@@ -39,11 +39,19 @@ For **Allocation**, enter the percentage of users that you want to allocate to t
 
 <img width="1495" alt="Screen Shot 2022-11-23 at 10 21 21 AM" src="https://user-images.githubusercontent.com/101903926/203620564-028c7244-c77b-4f51-92e1-40f522a03902.png"/>
 
-If you want to use a targeting gate in your experiment, tap on **All Allocated Users** in the **Targeting** section to select a Feature Gate from the drop-down. A targeting gate will restrict the users eligible for the experiment to those who pass the list of conditions defined in the linked Feature Gate. This continues to apply after making a decision on an experiment in the Statsig UI. 
+If you want to configure experiment targeting criteria, tap on **All Allocated Users** in the **Targeting** section to either configure new targeting criteria or leverage an existing Feature Gate to target against. Defining targeting criteria here- either from scratch or by leveraging an existing Feature Gate- will restrict the users eligible for the experiment to those who pass the list of conditions defined. 
 
-<img width="1504" alt="Screen Shot 2022-11-23 at 10 37 52 AM" src="https://user-images.githubusercontent.com/101903926/203623193-9137bd21-54c5-4cae-a462-831c7ad9833b.png"/>
+![Screen Shot 2024-05-22 at 4 27 53 PM](https://github.com/statsig-io/docs/assets/101903926/8bff476d-8974-4091-8958-e66581710f51)
 
-By default, no Feature Gate is selected and your experiment will use all allocated users (up to the Allocation % specified in the previous step) within either your exposed userbase or within the Layer you have selected. 
+![Screen Shot 2024-05-22 at 4 29 14 PM](https://github.com/statsig-io/docs/assets/101903926/a6eeb94a-9b8c-498c-882f-e6dd5a0c9049)
+
+
+If your targeting criteria is relatively straightforward, creating this criteria inline is a great solution. However, if you need to configure any more advanced targeting criteria (such as progressive rollouts) or want to preserve your targeting criteria when you launch your experiment (i.e. only launch the winning variant to users who fit the targeting criteria), you should reference an existing Feature Gate. 
+
+![Screen Shot 2024-05-22 at 4 28 18 PM](https://github.com/statsig-io/docs/assets/101903926/bd2b5795-abf1-4799-a3eb-f84bc801563d)
+
+
+By default, no targeting criteria is selected and your experiment will use all allocated users (up to the Allocation % specified in the previous step) within either your exposed userbase or within the Layer you have selected. 
 
 When configuring your Groups and Parameters, we recommend adding your test parameter(s) first. Parameters are what actually control the different experiment variants in code. Enter the values that the experiment parameter will take for each variant. Read more about Groups vs. Parameters [here](https://docs.statsig.com/experiments-plus/getting-group). Please note that you cannot start your experiment without adding at least one parameter. 
 

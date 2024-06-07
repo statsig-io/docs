@@ -1,0 +1,10 @@
+```cpp
+#include <statsig.h>
+
+statsig::initialize('server-secret-key');
+
+// Or, if you want to initialize with certain options
+statsig::Options options;
+options.localMode = true
+statsig::initialize('server-secret-key', options)
+```

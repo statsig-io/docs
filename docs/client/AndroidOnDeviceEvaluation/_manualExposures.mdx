@@ -1,0 +1,104 @@
+import CodeBlock from "@theme/CodeBlock";
+
+export const Snippets = {
+  // Gates
+  gateSnippet: (
+    <CodeBlock language="swift">
+      {`// Kotlin
+val user = StatsigUser("user_id")
+val result = Statsig.checkGate(user, "a_gate_name", CheckGateOption(disableExposureLogging = true))
+\t
+// Java
+StatsigUser user = new StatsigUser("user_id")
+CheckGateOption option = new CheckGateOption(true)
+boolean result = Statsig.checkGate(user, "a_gate_name", option);
+`}
+    </CodeBlock>
+  ),
+  gateExposureSnippet: (
+    <CodeBlock language="swift">
+      {`// Kotlin
+Statsig.logGateExposure(user, "a_gate_name")
+\t
+// Java
+Statsig.logGateExposure(user, "a_gate_name");
+`}
+    </CodeBlock>
+  ),
+  // Configs
+  configSnippet: (
+    <CodeBlock language="swift">
+      {`// Kotlin
+val user = StatsigUser("user_id")
+val config = Statsig.getConfig(user, "a_config_name", GetConfigOption(disableExposureLogging = true))
+\t
+// Java
+StatsigUser user = new StatsigUser("user_id")
+GetConfigOption option = new GetConfigOption(true)
+DynamicConfig config = Statsig.getConfig(user, "a_config_name", option);
+`}
+    </CodeBlock>
+  ),
+  configExposureSnippet: (
+    <CodeBlock language="swift">
+      {`// Kotlin
+Statsig.logConfigExposure(user, "a_config_name")
+\t
+// Java
+Statsig.logConfigExposure(user, "a_config_name");
+`}
+    </CodeBlock>
+  ),
+  // Experiment
+  experimentSnippet: (
+    <CodeBlock language="swift">
+      {`// Kotlin
+val user = StatsigUser("user_id")
+val option = GetExperimentOption(true)
+val experiment = Statsig.getExperiment(user, "an_experiment_name", option)
+\t
+// Java
+StatsigUser user = new StatsigUser("user_id")
+GetConfigOption option = new GetExperimentOption(true)
+DynamicConfig experiment = Statsig.getExperiment(user, "an_experiment_name", option);
+`}
+    </CodeBlock>
+  ),
+  experimentExposureSnippet: (
+    <CodeBlock language="swift">
+      {`// Kotlin
+Statsig.logExperimentExposure(user, "an_experiment_name")
+\t
+// Java
+Statsig.logExperimentExposure(user, "an_experiment_name");
+`}
+    </CodeBlock>
+  ),
+  // Layer
+  layerSnippet: (
+    <CodeBlock language="swift">
+      {`// Kotlin
+val user = StatsigUser("user_id")
+val option = GetExperimentOption(true)
+val layer = Statsig.getLayer(user, "a_layer_name", option)
+val results = layer.getString("a_parameter_name", "fallback")
+\t
+// Java
+StatsigUser user = new StatsigUser("user_id")
+GetConfigOption option = new GetExperimentOption(true)
+Layer layer = Statsig.getLayer(user, "a_layer_name", option);
+String result = layer.getString("a_parameter_name", "fallback");
+`}
+    </CodeBlock>
+  ),
+  layerExposureSnippet: (
+    <CodeBlock language="swift">
+      {`// Kotlin
+Statsig.logLayerParameterExposure(user, "a_layer_name", "a_parameter_name")
+\t
+// Java
+Statsig.logLayerParameterExposure(user, "a_layer_name", "a_parameter_name");
+`}
+    </CodeBlock>
+  ),
+};

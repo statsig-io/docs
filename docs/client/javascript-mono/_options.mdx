@@ -1,0 +1,64 @@
+import NetworkConfig from "./_networkConfig.mdx";
+
+#### **disableLogging** `boolean` 
+> Prevents sending any events over the network.
+
+#### **disableStorage** `boolean`
+> Prevents writing anything to storage. 
+>
+> Note: caching will not work if storage is disabled
+
+
+#### **networkConfig** `object`
+> Allows for fine grained control over which api or urls are hit for specific Statsig network requests
+
+<details>
+  <summary>See NetworkConfig object</summary>
+  <NetworkConfig />
+</details>
+
+#### **environment** `StatsigEnvironment`
+> An object you can use to set environment variables that apply to all of your users in the same session.
+
+#### **logLevel** `LogLevel`
+> How much information is allowed to be printed to the console. 
+>
+> default: `LogLevel.Warn`
+
+#### **loggingBufferMaxSize** `number`
+> The maximum number of events to batch before flushing logs to Statsig. 
+>
+> default: `50`
+
+#### **loggingIntervalMs** `number`
+> How often (in milliseconds) to flush logs to Statsig. 
+>
+> default: `10,000 ms` (10 seconds)
+
+#### **overrideAdapter** `OverrideAdapter`
+> An implementor of OverrideAdapter, used to alter evaluations before its returned to the caller of a check api (checkGate/getExperiment etc).
+
+#### **includeCurrentPageUrlWithEvents** `boolean`
+> (Web only) Should the 'current page' url be included with logged events. 
+>
+> default: `true`
+
+#### **disableStatsigEncoding** `boolean`
+> Whether or not Statsig should use raw JSON for network requests where possible. 
+>
+> default: `false`
+
+#### **disableCompression** `boolean`
+> Whether or not Statsig should compress JSON bodies for network requests where possible. 
+>
+> default: `false`
+
+#### **dataAdapter** `EvaluationsDataAdapter`
+> An implementor of EvaluationsDataAdapter, used to customize the initialization/update flow. 
+>
+> default: `StatsigEvaluationsDataAdapter`
+
+#### **customUserCacheKeyFunc** `CustomCacheKeyGenerator`
+> Overrides the default cache key generation. Given the SDKKey and current StatsigUser, return a key to be used for storing values related to that user.
+>
+> default: Cache key is a hash of the `sdkKey` + `user.userID` + `user.customIDs`.

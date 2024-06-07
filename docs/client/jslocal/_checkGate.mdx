@@ -1,0 +1,31 @@
+```typescript
+if (Statsig.checkGate({userID: "123"}, "new_homepage_design")) {
+  // Gate is on, show new home page
+} else {
+  // Gate is off, show old home page
+}
+
+// Check with different properties without a network request to update sdk state
+Statsig.checkGate(
+  {
+    email: "docs@statsig.com",
+    customIDs: {deviceID: "abc"}
+  },
+  "new_homepage_design",
+)
+```
+
+The checkGate API takes an optional third parameter with a set of parameters for that check.
+
+```
+export type CheckGateOptions = {
+  disableExposureLogging: boolean;
+};
+```
+
+To check a gate with exposure logging disabled, you can set that field in the options.  Exposure logging will be disabled for that check only 
+ - you must pass that parameter with every check you wish to disable exposure logging for.
+
+```
+Statsig.checkGate(User, "my_feature", { disableExposureLogging: true });
+```

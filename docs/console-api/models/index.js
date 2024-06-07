@@ -1,12 +1,15 @@
 export default {
   error_401: require("./error_401.json"),
   autotune: require("./autotune.json"),
+  config_common: require("./config_common.json"),
   dynamic_config: require("./dynamic_config.json"),
   dynamic_config_update: require("./dynamic_config_update.json"),
+  experiment_status: require("./experiment_status.json"),
   layer: require("./layer.json"),
   layer_parameter: require("./layer_parameter.json"),
   experiment: require("./experiment.json"),
   experiment_metric: require("./experiment_metric.json"),
+  experiment_health_check: require("./experiment_health_check.json"),
   segment: require("./segment.json"),
   error: require("./error.json"),
   holdout: require("./holdout.json"),
@@ -17,5 +20,7 @@ export default {
   condition: require("./condition.json"),
   variant: require("./variant.json"),
   audit_log: require("./audit_log.json"),
-  pagination: require("./pagination.json")
+  pagination: require("./pagination.json"),
+  targetApps: require("./targetApps.json"),
+  tag: require("./tag.json")
 };

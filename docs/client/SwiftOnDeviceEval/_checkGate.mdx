@@ -1,0 +1,17 @@
+```swift
+// Simple Pass/Fail check
+
+let isPassing: Bool = Statsig.shared.checkGate("my_gate", user)
+
+
+// or, the verbose FeatureGate check
+
+print(gate.evaluationDetails.reason) // "Network" | "Cache" | "Unrecognized"
+let isPassing: Bool = gate.value;
+
+
+// or, using Objective C
+
+BOOL isPassing = [[Statsig sharedInstance] checkGate:@"my_gate" forUser:user];
+
+```

@@ -1,0 +1,30 @@
+---
+title: Google Analytics
+---
+# Overview
+Enabling the Google Analytics 4 integration allows Statsig to send logged events and exposures to GA4. This enhances your existing Google Analytics tracking with additional data collected by Statsig's logging SDKs.
+
+Once enabled, Statsig will forward exposures and logged events to a configured Data Stream. These events can be filtered with [event filtering.](/integrations/data-connectors/google-analytics#filtering-events)
+
+### Benefits of using the Google Analytics 4 integration
+Using the GA4 Integration allows you to log additional events without having the orchestrate two libraries, thus simplifying your code. Furthermore by implementing this integration, you'll be able to join data about experiments you create in Statsig to existing analytics events you care about in Google Analytics, giving you greater insights into different experiments' impact on your user interactions.
+
+## Configuring outbound events to Google Analytics 4
+To send events collected by Statsig's SDKs to GA4, you must configure a Data Stream and provide a few pieces of information.
+
+1. Navigate to the GA4 admin settings. Under your app's property click Data Streams and select the stream you'd like to use. If you don't have a stream you'll need to create one.
+2. Statsig requires an API secret to send the data to your stream, navigate to your stream and create a new secret:
+    ![](https://user-images.githubusercontent.com/125311112/263364181-a672aec0-15c1-4030-a4c8-2e2a58083d7e.png)
+    ![](https://user-images.githubusercontent.com/125311112/263364616-65a054d6-c0b7-48ba-84ee-cbdb7f5eaa9a.png)
+    ![](https://user-images.githubusercontent.com/125311112/263364730-b419ac78-01cb-453c-8cd3-c0b5f7a3cb6a.png)
+    ![](https://user-images.githubusercontent.com/125311112/263364942-1fb5da05-dbfc-4362-86f8-8d77bdd23cd4.png)
+
+3. Once created, copy the API secret and the measurement ID (optional). Navigate to your Statsig Project -> Project Settings -> Integrations -> Google Analytics (click enable) -> Google Analytics 4.
+
+    Provide your API Secret and measurement ID from the previous step and click *confirm*:
+    ![](https://user-images.githubusercontent.com/125311112/263366565-c9f97636-8bd3-428f-b2ee-e542776b50ab.png)
+
+## Filtering Events 
+Once the outgoing integration has been enabled, you can optionally configure event filtering to control whch events are populating the GA4 Data Stream:
+
+![](https://user-images.githubusercontent.com/125311112/264458718-69f0d248-7df3-4360-bdb4-dcffb1503e3c.png)
