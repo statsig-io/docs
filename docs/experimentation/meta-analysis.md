@@ -5,7 +5,7 @@ slug: /experimentation/meta-analysis
 ---
 
 ## The Concept
-As teams run a number of experients, it is possible to glean learning across these experiments. This is meta-analysis. We're rolling out a suite of meta-analysis features this summer - feel free to reach out to help influence our roadmap here. 
+As teams run a number of experiments, it is possible to glean learning across these experiments. This is meta-analysis. We're rolling out a suite of meta-analysis features this summer - feel free to reach out to help influence our roadmap here. 
 
 ## Experiment Timeline View
 This view lets you to filter down to experiments a team has run. At a glance you can answer questions like
