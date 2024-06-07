@@ -263,7 +263,7 @@ module.exports = {
           },
           items: ["autotune/setup", "autotune/monitoring"],
         },
-
+      /experimentation/meta-analysis,
         {
           type: "category",
           label: "Pulse",
