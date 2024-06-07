@@ -263,7 +263,6 @@ module.exports = {
           },
           items: ["autotune/setup", "autotune/monitoring"],
         },
-      /experimentation/meta-analysis,
         {
           type: "category",
           label: "Pulse",
@@ -383,6 +382,7 @@ module.exports = {
             "statsig-warehouse-native/features/freshness",
             "experiments-plus/stratified-sampling",
             "statsig-warehouse-native/features/autotune",
+            "/experimentation/meta-analysis",
           ],
         },
         {
