@@ -263,7 +263,7 @@ module.exports = {
           },
           items: ["autotune/setup", "autotune/monitoring"],
         },
-        -
+        
         {
           type: "category",
           label: "Pulse",
