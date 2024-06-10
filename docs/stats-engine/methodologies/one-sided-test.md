@@ -9,7 +9,7 @@ slug: /stats-engine/methodologies/one-sided-test
 A one-sided test (or one-tailed test), lets you test for a metric moving in only in one direction which you specify in advance. This differs from the standard Pulse results which show two-sided results by default. One-sided analysis is useful when you want to detect a movement in a single direction only. Examples of this include testing for regressions in guardrail metrics and testing for a change in which only one direction has any meaningful business impact. e.g. You're less interested in detecting if new features reduce crash rates, but are very interested in learning if new features are increasing crash rates. 
 
 :::warning
-One-sided tests completely disregard the possibility of detecting the metric moving in the direction that isn't specified; but they give you higher sensitivity in the direction you are looking. (This allots all your alpha to testing statistical significance in the one direction of interest). This results in one-sided Confidence Intervals that are narrower in the direction of interest than their two-sided counterparts.
+One-sided tests trade-off the possibility of detecting the metric moving in the direction that isn't specified; but  give you higher sensitivity in the direction you are looking. (They allot all your alpha to testing statistical significance in the one direction of interest). This results in one-sided Confidence Intervals that are narrower in the direction of interest than their two-sided counterparts.
 :::
 
 ## How to enable this
