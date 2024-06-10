@@ -9,7 +9,7 @@
 type User struct {
 	UserID             string                 `json:"userID"`
 	Email              string                 `json:"email"`
-	IpAddress          string                 `json:"ip"`
+	IpAddress          string                 `json:"ip"` // Many jurisdictions categorize this as PII; verify whether you should log this. 
 	UserAgent          string                 `json:"userAgent"`
 	Country            string                 `json:"country"`
 	Locale             string                 `json:"locale"`
