@@ -14,6 +14,7 @@ Holdouts measure the aggregate impact of multiple features. A "holdout" is a gro
 5.	You must set the percentage of users to be held-out between 1% to 10%. Statsig recommends a small holdout percentage to limit the number of customers who don’t see new features. 
 
 ![image](https://github.com/statsig-io/docs/assets/31516123/132d09c3-c113-426e-9698-ef58214371f7)
+![image](https://github.com/statsig-io/docs/assets/31516123/82ee59dc-9adf-4c14-89cf-28c957e77862)
 
 
 ## How to read Holdouts
