@@ -25,12 +25,8 @@
         "type": "object",
         "x-examples": {
           "example-1": {
-            "passingUserIDs": [
-              "passing-user"
-            ],
-            "failingUserIDs": [
-              "failing-user"
-            ]
+            "passingUserIDs": ["passing-user"],
+            "failingUserIDs": ["failing-user"]
           }
         },
         "description": "Forces users which pass a gate or are in a segment into the desired group.",
@@ -38,10 +34,7 @@
         "properties": {
           "type": {
             "type": "string",
-            "enum": [
-              "segment",
-              "gate"
-            ]
+            "enum": ["segment", "gate"]
           },
           "id": {
             "type": "string",
@@ -52,11 +45,7 @@
             "description": "The experiment group which user will be forced into"
           }
         },
-        "required": [
-          "type",
-          "id",
-          "groupID"
-        ]
+        "required": ["type", "id", "groupID"]
       },
       "description": {
         "title": "description",
@@ -95,11 +84,7 @@
         },
         "type": "string",
         "description": "The current status of the experiment.",
-        "enum": [
-          "setup",
-          "active",
-          "decision_made"
-        ]
+        "enum": ["setup", "active", "decision_made"]
       },
       "hypothesis": {
         "title": "hypothesis",
@@ -143,13 +128,7 @@
         },
         "type": "string",
         "description": "Default error margin used for results",
-        "enum": [
-          "80",
-          "90",
-          "95",
-          "98",
-          "99"
-        ]
+        "enum": ["80", "90", "95", "98", "99"]
       },
       "bonferroniCorrection": {
         "title": "bonferroniCorrection",
@@ -184,11 +163,7 @@
               "type": "object"
             }
           },
-          "required": [
-            "name",
-            "size",
-            "parameterValues"
-          ]
+          "required": ["name", "size", "parameterValues"]
         }
       },
       "experiment_id_override": {
@@ -196,16 +171,11 @@
         "x-examples": {
           "example-1": {
             "groupID": "Control",
-            "ids": [
-              "updated_id_list"
-            ]
+            "ids": ["updated_id_list"]
           }
         },
         "description": "Forces specific users into the desired group.",
-        "required": [
-          "groupID",
-          "ids"
-        ],
+        "required": ["groupID", "ids"],
         "properties": {
           "groupID": {
             "type": "string",
@@ -237,9 +207,7 @@
         "x-stoplight": {
           "id": "qdrm8id4o357w"
         },
-        "type": [
-          "array"
-        ],
+        "type": ["array"],
         "description": "Override the project tags assigned to this experiment",
         "items": {
           "type": "string",
@@ -301,9 +269,7 @@
   "paths": {
     "/experiments": {
       "post": {
-        "tags": [
-          "Experiments"
-        ],
+        "tags": ["Experiments"],
         "summary": "Create Experiment",
         "requestBody": {
           "content": {
@@ -323,9 +289,7 @@
                   }
                 },
                 "description": "Experiment Create Contract",
-                "required": [
-                  "name"
-                ],
+                "required": ["name"],
                 "properties": {
                   "name": {
                     "type": "string",
@@ -510,9 +474,7 @@
                         "targetingGateID": "",
                         "defaultConfidenceInterval": "95",
                         "bonferroniCorrection": false,
-                        "tags": [
-                          "* Core"
-                        ],
+                        "tags": ["* Core"],
                         "decisionReason": ""
                       }
                     }
@@ -564,10 +526,7 @@
                       }
                     }
                   },
-                  "required": [
-                    "status",
-                    "message"
-                  ]
+                  "required": ["status", "message"]
                 },
                 "examples": {
                   "example-0": {
@@ -655,9 +614,7 @@
                           "primaryMetrics": [],
                           "primaryMetricTags": [],
                           "secondaryMetrics": [],
-                          "secondaryMetricTags": [
-                            "* Core"
-                          ],
+                          "secondaryMetricTags": ["* Core"],
                           "groups": [
                             {
                               "name": "Control",
@@ -678,9 +635,7 @@
                           "targetingGateID": "test_public",
                           "defaultConfidenceInterval": "95",
                           "bonferroniCorrection": false,
-                          "tags": [
-                            "* Core"
-                          ],
+                          "tags": ["* Core"],
                           "decisionReason": ""
                         }
                       ]
@@ -722,9 +677,7 @@
             "source": "curl --request GET 'https://statsigapi.net/console/v1/experiments' --header 'STATSIG-API-KEY: console-xxxxXXXXxxxxXXXXxxxx'"
           }
         ],
-        "tags": [
-          "Experiments"
-        ],
+        "tags": ["Experiments"],
         "parameters": [
           {
             "schema": {
@@ -776,9 +729,7 @@
     },
     "/experiments/{experiment_id}": {
       "get": {
-        "tags": [
-          "Experiments"
-        ],
+        "tags": ["Experiments"],
         "summary": "Read Single Experiment",
         "responses": {
           "200": {
@@ -806,18 +757,12 @@
                               },
                               {
                                 "type": "user_id",
-                                "targetValue": [
-                                  "111",
-                                  "222"
-                                ],
+                                "targetValue": ["111", "222"],
                                 "operator": "any"
                               },
                               {
                                 "type": "email",
-                                "targetValue": [
-                                  "@outlook.com",
-                                  "@gmail.com"
-                                ],
+                                "targetValue": ["@outlook.com", "@gmail.com"],
                                 "operator": "str_contains_any"
                               },
                               {
@@ -837,26 +782,17 @@
                               },
                               {
                                 "type": "browser_name",
-                                "targetValue": [
-                                  "Android",
-                                  "Chrome"
-                                ],
+                                "targetValue": ["Android", "Chrome"],
                                 "operator": "any"
                               },
                               {
                                 "type": "browser_version",
-                                "targetValue": [
-                                  "94.0.4606.81",
-                                  "94.0.4606.92"
-                                ],
+                                "targetValue": ["94.0.4606.81", "94.0.4606.92"],
                                 "operator": "any"
                               },
                               {
                                 "type": "os_name",
-                                "targetValue": [
-                                  "Android",
-                                  "Windows"
-                                ],
+                                "targetValue": ["Android", "Windows"],
                                 "operator": "none"
                               },
                               {
@@ -866,10 +802,7 @@
                               },
                               {
                                 "type": "country",
-                                "targetValue": [
-                                  "NZ",
-                                  "US"
-                                ],
+                                "targetValue": ["NZ", "US"],
                                 "operator": "any"
                               },
                               {
@@ -887,9 +820,7 @@
                               },
                               {
                                 "type": "environment_tier",
-                                "targetValue": [
-                                  "production"
-                                ],
+                                "targetValue": ["production"],
                                 "operator": "any"
                               },
                               {
@@ -902,10 +833,7 @@
                               },
                               {
                                 "type": "ip_address",
-                                "targetValue": [
-                                  "1.1.1.1",
-                                  "8.8.8.8"
-                                ],
+                                "targetValue": ["1.1.1.1", "8.8.8.8"],
                                 "operator": "any"
                               }
                             ]
@@ -959,9 +887,7 @@
                         "targetingGateID": "",
                         "defaultConfidenceInterval": "95",
                         "bonferroniCorrection": false,
-                        "tags": [
-                          "* Core"
-                        ],
+                        "tags": ["* Core"],
                         "decisionReason": ""
                       }
                     }
@@ -996,9 +922,7 @@
         "parameters": []
       },
       "post": {
-        "tags": [
-          "Experiments"
-        ],
+        "tags": ["Experiments"],
         "summary": "Fully Update Experiment",
         "responses": {
           "200": {
@@ -1031,10 +955,7 @@
                         "conditions": [
                           {
                             "type": "user_id",
-                            "targetValue": [
-                              "111",
-                              "222"
-                            ],
+                            "targetValue": ["111", "222"],
                             "operator": "any"
                           }
                         ]
@@ -1225,9 +1146,7 @@
                     "idType": "userID",
                     "lastModifierName": "CONSOLE API",
                     "lastModifierID": "66wvNB1zril4QQWFOGvfTP",
-                    "tags": [
-                      "customTag"
-                    ],
+                    "tags": ["customTag"],
                     "targetApps": [],
                     "status": "setup",
                     "hypothesis": "Updated hypothesis",
@@ -1271,9 +1190,7 @@
         "parameters": []
       },
       "delete": {
-        "tags": [
-          "Experiments"
-        ],
+        "tags": ["Experiments"],
         "summary": "Delete Experiment",
         "responses": {
           "200": {
@@ -1619,10 +1536,7 @@
                     "description": "updated summary",
                     "idType": "userID",
                     "status": "setup",
-                    "tags": [
-                      "marketing",
-                      "cost_savings"
-                    ],
+                    "tags": ["marketing", "cost_savings"],
                     "targetApps": [],
                     "launchedGroupID": null,
                     "startTime": null,
@@ -1637,9 +1551,7 @@
                     ],
                     "primaryMetricTags": [],
                     "secondaryMetrics": [],
-                    "secondaryMetricTags": [
-                      "* Core"
-                    ],
+                    "secondaryMetricTags": ["* Core"],
                     "groups": [
                       {
                         "name": "group1",
@@ -1668,9 +1580,7 @@
             }
           }
         },
-        "tags": [
-          "Experiments"
-        ]
+        "tags": ["Experiments"]
       }
     },
     "/experiments/{experiment_id}/overrides": {
@@ -1688,9 +1598,7 @@
       ],
       "get": {
         "summary": "Get Experiment Overrides",
-        "tags": [
-          "Experiments"
-        ],
+        "tags": ["Experiments"],
         "responses": {
           "200": {
             "description": "OK",
@@ -1721,16 +1629,11 @@
                         ],
                         "userIDOverrides": [
                           {
-                            "ids": [
-                              "a_user",
-                              "b_user"
-                            ],
+                            "ids": ["a_user", "b_user"],
                             "groupID": "4IfTisAzh1ieQ5E1rc9kK2"
                           },
                           {
-                            "ids": [
-                              "c_user"
-                            ],
+                            "ids": ["c_user"],
                             "groupID": "4IfTiqVwOJ8KwG65Q4dHr0"
                           }
                         ]
@@ -1779,15 +1682,11 @@
                         ],
                         "userIDOverrides": [
                           {
-                            "ids": [
-                              "updated_id_list"
-                            ],
+                            "ids": ["updated_id_list"],
                             "groupID": "Control"
                           },
                           {
-                            "ids": [
-                              "updated_id_lists"
-                            ],
+                            "ids": ["updated_id_lists"],
                             "groupID": "Test"
                           }
                         ]
@@ -1852,15 +1751,11 @@
                         "userIDOverrides": [
                           {
                             "groupID": "Control",
-                            "ids": [
-                              "updated_id_list"
-                            ]
+                            "ids": ["updated_id_list"]
                           },
                           {
                             "groupID": "Test",
-                            "ids": [
-                              "updated_id_lists"
-                            ]
+                            "ids": ["updated_id_lists"]
                           }
                         ]
                       }
@@ -1909,15 +1804,11 @@
                         "userIDOverrides": [
                           {
                             "groupID": "Control",
-                            "ids": [
-                              "updated_user1"
-                            ]
+                            "ids": ["updated_user1"]
                           },
                           {
                             "groupID": "Test",
-                            "ids": [
-                              "updated_user2"
-                            ]
+                            "ids": ["updated_user2"]
                           }
                         ]
                       }
@@ -1971,15 +1862,11 @@
                     "userIDOverrides": [
                       {
                         "groupID": "Control",
-                        "ids": [
-                          "updated_id_list"
-                        ]
+                        "ids": ["updated_id_list"]
                       },
                       {
                         "groupID": "Test",
-                        "ids": [
-                          "updated_id_lists"
-                        ]
+                        "ids": ["updated_id_lists"]
                       }
                     ]
                   }
@@ -2017,15 +1904,11 @@
                     "userIDOverrides": [
                       {
                         "groupID": "Control",
-                        "ids": [
-                          "updated_control_id_list"
-                        ]
+                        "ids": ["updated_control_id_list"]
                       },
                       {
                         "groupID": "Test",
-                        "ids": [
-                          "updated_test_id_list"
-                        ]
+                        "ids": ["updated_test_id_list"]
                       }
                     ]
                   }
@@ -2034,9 +1917,7 @@
             }
           }
         },
-        "tags": [
-          "Experiments"
-        ],
+        "tags": ["Experiments"],
         "description": ""
       },
       "patch": {
@@ -2068,15 +1949,11 @@
                         "userIDOverrides": [
                           {
                             "groupID": "Control",
-                            "ids": [
-                              "updated_id_list"
-                            ]
+                            "ids": ["updated_id_list"]
                           },
                           {
                             "groupID": "Test",
-                            "ids": [
-                              "updated_id_lists"
-                            ]
+                            "ids": ["updated_id_lists"]
                           }
                         ]
                       }
@@ -2125,15 +2002,11 @@
                         "userIDOverrides": [
                           {
                             "groupID": "Control",
-                            "ids": [
-                              "newly_added_id"
-                            ]
+                            "ids": ["newly_added_id"]
                           },
                           {
                             "groupID": "Test",
-                            "ids": [
-                              "id_that_already_existed"
-                            ]
+                            "ids": ["id_that_already_existed"]
                           }
                         ]
                       }
@@ -2187,15 +2060,11 @@
                     "userIDOverrides": [
                       {
                         "groupID": "Control",
-                        "ids": [
-                          "updated_id_list"
-                        ]
+                        "ids": ["updated_id_list"]
                       },
                       {
                         "groupID": "Test",
-                        "ids": [
-                          "updated_id_lists"
-                        ]
+                        "ids": ["updated_id_lists"]
                       }
                     ]
                   }
@@ -2230,9 +2099,7 @@
                     "userIDOverrides": [
                       {
                         "groupID": "Control",
-                        "ids": [
-                          "newly_added_id"
-                        ]
+                        "ids": ["newly_added_id"]
                       }
                     ]
                   }
@@ -2242,9 +2109,7 @@
           },
           "description": "This endpoint will add overrides to the existing list of overrides."
         },
-        "tags": [
-          "Experiments"
-        ],
+        "tags": ["Experiments"],
         "description": ""
       },
       "delete": {
@@ -2276,15 +2141,11 @@
                         "userIDOverrides": [
                           {
                             "groupID": "Control",
-                            "ids": [
-                              "updated_id_list"
-                            ]
+                            "ids": ["updated_id_list"]
                           },
                           {
                             "groupID": "Test",
-                            "ids": [
-                              "updated_id_lists"
-                            ]
+                            "ids": ["updated_id_lists"]
                           }
                         ]
                       }
@@ -2328,17 +2189,11 @@
                         "userIDOverrides": [
                           {
                             "groupID": "Control",
-                            "ids": [
-                              "unaffected_id1",
-                              "unaffected_id2"
-                            ]
+                            "ids": ["unaffected_id1", "unaffected_id2"]
                           },
                           {
                             "groupID": "Test",
-                            "ids": [
-                              "id1",
-                              "id2"
-                            ]
+                            "ids": ["id1", "id2"]
                           }
                         ]
                       }
@@ -2392,15 +2247,11 @@
                     "userIDOverrides": [
                       {
                         "groupID": "Control",
-                        "ids": [
-                          "updated_id_list"
-                        ]
+                        "ids": ["updated_id_list"]
                       },
                       {
                         "groupID": "Test",
-                        "ids": [
-                          "updated_id_lists"
-                        ]
+                        "ids": ["updated_id_lists"]
                       }
                     ]
                   }
@@ -2435,9 +2286,7 @@
                     "userIDOverrides": [
                       {
                         "groupID": "Control",
-                        "ids": [
-                          "remove_just_this_id"
-                        ]
+                        "ids": ["remove_just_this_id"]
                       }
                     ]
                   }
@@ -2447,9 +2296,7 @@
           },
           "description": "This endpoint will remove selected overrides while leaving the rest unaffected."
         },
-        "tags": [
-          "Experiments"
-        ],
+        "tags": ["Experiments"],
         "description": ""
       }
     },
@@ -2555,9 +2402,7 @@
             "$ref": "#/components/responses/experiment_404.json"
           }
         },
-        "tags": [
-          "Experiments"
-        ]
+        "tags": ["Experiments"]
       }
     },
     "/experiments/{experiment_id}/make_decision": {
@@ -2662,9 +2507,7 @@
             "$ref": "#/components/responses/experiment_404.json"
           }
         },
-        "tags": [
-          "Experiments"
-        ],
+        "tags": ["Experiments"],
         "requestBody": {
           "content": {
             "application/json": {
@@ -2678,9 +2521,9 @@
                   }
                 },
                 "properties": {
-                  "groupID": {
+                  "id": {
                     "type": "string",
-                    "description": "The groupID to be selected as the winner"
+                    "description": "The id to be selected as the winner"
                   },
                   "decisionReason": {
                     "type": "string",
@@ -2695,7 +2538,7 @@
               "examples": {
                 "example-1": {
                   "value": {
-                    "groupID": "red",
+                    "id": "red",
                     "decisionReason": "Your reason for stopping early",
                     "removeTargeting": false
                   }
@@ -2808,9 +2651,7 @@
             "$ref": "#/components/responses/experiment_404.json"
           }
         },
-        "tags": [
-          "Experiments"
-        ],
+        "tags": ["Experiments"],
         "x-stoplight": {
           "id": "la4r8wta4m59f"
         },
@@ -2919,9 +2760,7 @@
             "$ref": "#/components/responses/experiment_404.json"
           }
         },
-        "tags": [
-          "Experiments"
-        ],
+        "tags": ["Experiments"],
         "x-stoplight": {
           "id": "l84jkqxmrq8wv"
         },
@@ -3024,9 +2863,7 @@
             "$ref": "#/components/responses/experiment_404.json"
           }
         },
-        "tags": [
-          "Experiments"
-        ],
+        "tags": ["Experiments"],
         "x-stoplight": {
           "id": "emtim398cufaq"
         },
@@ -3167,9 +3004,7 @@
       ],
       "get": {
         "summary": "Load Pulse (Warehouse Native)",
-        "tags": [
-          "Experiments (Warehouse Native)"
-        ],
+        "tags": ["Experiments (Warehouse Native)"],
         "responses": {
           "200": {
             "description": "OK",
@@ -3224,9 +3059,7 @@
     "/experiments/assignment_sources": {
       "get": {
         "summary": "List Assignment Sources",
-        "tags": [
-          "Experiments (Warehouse Native)"
-        ],
+        "tags": ["Experiments (Warehouse Native)"],
         "responses": {
           "200": {
             "description": "OK",
@@ -3358,9 +3191,7 @@
                       ]
                     }
                   },
-                  "required": [
-                    "data"
-                  ],
+                  "required": ["data"],
                   "properties": {
                     "message": {
                       "type": "string"
@@ -3478,9 +3309,7 @@
       },
       "post": {
         "summary": "Create Assignment Source",
-        "tags": [
-          "Experiments (Warehouse Native)"
-        ],
+        "tags": ["Experiments (Warehouse Native)"],
         "responses": {
           "2XX": {
             "description": "Success",
@@ -3640,10 +3469,7 @@
                     "type": "array",
                     "items": {
                       "type": "object",
-                      "required": [
-                        "statsigUnitID",
-                        "column"
-                      ],
+                      "required": ["statsigUnitID", "column"],
                       "properties": {
                         "statsigUnitID": {
                           "type": "string"
@@ -3683,9 +3509,7 @@
     "/experiments/assignment_source/{name}": {
       "patch": {
         "summary": "Partially Update Assignment Source",
-        "tags": [
-          "Experiments (Warehouse Native)"
-        ],
+        "tags": ["Experiments (Warehouse Native)"],
         "responses": {
           "200": {
             "description": "OK",
@@ -3939,9 +3763,7 @@
       },
       "post": {
         "summary": "Fully Update Assignment Source",
-        "tags": [
-          "Experiments (Warehouse Native)"
-        ],
+        "tags": ["Experiments (Warehouse Native)"],
         "responses": {
           "200": {
             "description": "OK",
@@ -4144,10 +3966,7 @@
                     "type": "array",
                     "items": {
                       "type": "object",
-                      "required": [
-                        "statsigUnitID",
-                        "column"
-                      ],
+                      "required": ["statsigUnitID", "column"],
                       "properties": {
                         "statsigUnitID": {
                           "type": "string"
@@ -4204,9 +4023,7 @@
       },
       "delete": {
         "summary": "Delete Assignment Source",
-        "tags": [
-          "Experiments (Warehouse Native)"
-        ],
+        "tags": ["Experiments (Warehouse Native)"],
         "responses": {
           "200": {
             "description": "OK",
@@ -4287,9 +4104,7 @@
     "/experiments/entity_properties": {
       "get": {
         "summary": "List Entity Property Sources",
-        "tags": [
-          "Experiments (Warehouse Native)"
-        ],
+        "tags": ["Experiments (Warehouse Native)"],
         "responses": {
           "200": {
             "description": "OK",
@@ -4297,6 +4112,52 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "tags": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          },
+                          "sql": {
+                            "type": "string"
+                          },
+                          "idTypeMapping": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "statsigUnitID": {
+                                  "type": "string"
+                                },
+                                "column": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "timestampColumn": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
                   "x-examples": {
                     "Example 1": {
                       "message": "Entity Property Sources listed successfully",
@@ -4352,57 +4213,6 @@
                         }
                       ]
                     }
-                  },
-                  "properties": {
-                    "message": {
-                      "type": "string"
-                    },
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "name": {
-                            "type": "string"
-                          },
-                          "description": {
-                            "type": "string"
-                          },
-                          "tags": {
-                            "type": "array",
-                            "items": {
-                              "type": "object"
-                            }
-                          },
-                          "sql": {
-                            "type": "string"
-                          },
-                          "idTypeMapping": {
-                            "type": "array",
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "statsigUnitID": {
-                                  "type": "string"
-                                },
-                                "column": {
-                                  "type": "string"
-                                }
-                              }
-                            }
-                          },
-                          "timestampColumn": {
-                            "type": "string"
-                          },
-                          "timestampAsDay": {
-                            "type": "boolean",
-                            "x-stoplight": {
-                              "id": "3lsmblynv54fe"
-                            }
-                          }
-                        }
-                      }
-                    }
                   }
                 },
                 "examples": {
@@ -4449,9 +4259,7 @@
       },
       "post": {
         "summary": "Create Entity Property Source",
-        "tags": [
-          "Experiments (Warehouse Native)"
-        ],
+        "tags": ["Experiments (Warehouse Native)"],
         "responses": {
           "200": {
             "description": "OK",
@@ -4569,12 +4377,7 @@
                     ]
                   }
                 },
-                "required": [
-                  "name",
-                  "description",
-                  "tags",
-                  "sql"
-                ],
+                "required": ["name", "description", "tags", "sql"],
                 "properties": {
                   "name": {
                     "type": "string"
@@ -4586,9 +4389,7 @@
                     "type": "array",
                     "items": {
                       "type": "object",
-                      "required": [
-                        ""
-                      ],
+                      "required": [""],
                       "properties": {
                         "": {
                           "type": "string",
@@ -4609,10 +4410,7 @@
                     "type": "array",
                     "items": {
                       "type": "object",
-                      "required": [
-                        "statsigUnitID",
-                        "column"
-                      ],
+                      "required": ["statsigUnitID", "column"],
                       "properties": {
                         "statsigUnitID": {
                           "type": "string"
@@ -4621,12 +4419,6 @@
                           "type": "string"
                         }
                       }
-                    }
-                  },
-                  "timestampAsDay": {
-                    "type": "boolean",
-                    "x-stoplight": {
-                      "id": "qmbyvjfe649xw"
                     }
                   }
                 }
