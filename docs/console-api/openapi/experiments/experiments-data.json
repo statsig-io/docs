@@ -2662,9 +2662,7 @@
             "$ref": "#/components/responses/experiment_404.json"
           }
         },
-        "tags": [
-          "Experiments"
-        ],
+        "tags": ["Experiments"],
         "requestBody": {
           "content": {
             "application/json": {
@@ -2678,9 +2676,9 @@
                   }
                 },
                 "properties": {
-                  "groupID": {
+                  "id": {
                     "type": "string",
-                    "description": "The groupID to be selected as the winner"
+                    "description": "The id of the group to be selected as the winner"
                   },
                   "decisionReason": {
                     "type": "string",
@@ -2695,7 +2693,7 @@
               "examples": {
                 "example-1": {
                   "value": {
-                    "groupID": "red",
+                    "id": "34RLl9bjstsTESTvBxTe4N",
                     "decisionReason": "Your reason for stopping early",
                     "removeTargeting": false
                   }
