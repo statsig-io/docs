@@ -7,13 +7,14 @@ slug: /holdouts
 Holdouts measure the aggregate impact of multiple features. A "holdout" is a group of users that are held back from a set of features to measure the aggregate impact of this feature set. While each A/B test or experiment you run compares control and test groups for that feature, a holdout compares a ‘global’ control group with users who have been exposed to a subset of the features. 
 
 ## How to use Holdouts
-1.	To create a new holdout, navigate to the Holdouts section on the Statsig console: https://console.statsig.com/ 
+1.	To create a new holdout, navigate to the Holdouts section on the Statsig console (it is a specialized kind of experiment): https://console.statsig.com/ 
 2.	Click the Create New button and enter the name and description of the holdout that you want to create. 
 3.	You can choose to either create a global or a selected holdout. A global holdout captures the aggregate impact of all features developed after the holdout began. A selected holdout captures the aggregate impact of a specific selection of features that you want to hold off. 
 4.	By default Holdouts apply to a % of all users (Population = Everyone). You can optionally target the Holdout at a subset of users by applying a Targeting Gate (Population = Targeting Gate). e.g. If you wanted an iOS users only Holdout, you could apply a Targeting Gate that only passes iOS users.    
 5.	You must set the percentage of users to be held-out between 1% to 10%. Statsig recommends a small holdout percentage to limit the number of customers who don’t see new features. 
 
-![image](https://github.com/statsig-io/docs/assets/31516123/f949e687-ee6e-49aa-bdc3-23159030a510)
+![image](https://github.com/statsig-io/docs/assets/31516123/132d09c3-c113-426e-9698-ef58214371f7)
+
 
 ## How to read Holdouts
 The Metric Lifts section shows the comparison of *Not in Holdout* vs. *In Holdout*.  In other words, it represents the cumulative impact of launched and active experiments and gates relative to the Holdout group, which doesn't see any of these changes.  In the example below, the new features are having an overall negative effect on many metrics.
