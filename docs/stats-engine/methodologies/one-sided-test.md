@@ -27,4 +27,5 @@ Reading one-sided CIs can be a bit confusing at first. They either extend to inf
 #### Why can't I just run two one-sided tests?
 It could be tempting to do this, but in reality it would result in less-powerful test. One-sided tests work by allocating the entirety of our Type I error (alpha/significance) to one direction. If we were to add additional one-sided test in the other direction, we would be re-introducing chance of making a Type I error in that direction. Doing so would mean we claiming tighter Confidence Intervals around metric results that actually result in higher rates of decision error than the specified confidence level (default: 95%).
 
-#### Why use a one-sided tests rather than a two-sided testThis comes down to your use case, metric of interest, and business impact of any decision. Selecting one-sided vs. two-sided tests depends on how you plan to interpret any change in the metric and whether detecting changes in either direction are equally valuable.
+#### Why use a one-sided tests rather than a two-sided test
+This comes down to your use case, metric of interest, and business impact of any decision. Selecting one-sided vs. two-sided tests depends on how you plan to interpret any change in the metric and whether detecting changes in either direction are equally valuable.
