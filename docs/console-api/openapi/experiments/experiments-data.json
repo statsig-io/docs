@@ -3161,9 +3161,17 @@
           "name": "experiment_id",
           "in": "path",
           "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "query",
+          "name": "refresh",
+          "description": "enum: 'full' | 'incremental'"
         }
       ],
-      "get": {
+      "post": {
         "summary": "Load Pulse (Warehouse Native)",
         "tags": [
           "Experiments (Warehouse Native)"
@@ -3198,24 +3206,6 @@
         "operationId": "Load Pulse",
         "x-stoplight": {
           "id": "0w9utb8f51k3p"
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "x-stoplight": {
-                      "id": "yjyhjqtrbhxlq"
-                    },
-                    "description": "'full' or 'incremental'"
-                  }
-                }
-              }
-            }
-          }
         }
       }
     },
