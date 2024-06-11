@@ -1,7 +1,7 @@
 ---
-title: Data Privacy
+title: Egress & Privacy
 slug: /statsig-warehouse-native/data-privacy
-sidebar_label: Data Privacy
+sidebar_label: Egress & Privacy
 description: Understand what leaves your warehouse
 ---
 
@@ -47,4 +47,3 @@ During analysis, data stays in your warehouse. Intermediate tables and results a
 
 Customer data contained within exposure events when using the SDK for assignment is retained for a maximum of 30 days purely for diagnostics and debugging purposes.
 Statsig will automatically remove any customer data no longer than 30 days after the events are sent to our system.
-
