@@ -5,14 +5,14 @@ sidebar_label: Funnel
 
 ## Summary
 
-Funnel metrics measure user journeys through a series of steps. There are rich docs [here](/statisg-warehouse-native/features/funnel-metrics) on how to configure and use these.
+Funnel metrics measure user journeys through a series of steps. There's more guides [here](/statsig-warehouse-native/features/funnel-metrics) on how to configure and use funnel metrics.
 
 ### Use Cases
 
 Funnel metrics are a powerful tool to understand how users move through your product. For example, you might want to measure:
 
 - User conversion through a subscription flow, e.g. Start -> Description Page -> Payment Info -> Confirm, so you can measure if an experiment causes users to drop of less, and at which steps
-- User conversion from "logged out visitor" to "first logged-in-article-read" leveraging Statsig's [ID Resolution](/statisg-warehouse-native/features/funnel-metrics)
+- User conversion from "logged out visitor" to "first logged-in-article-read" leveraging Statsig's [ID Resolution](/statsig-warehouse-native/features/funnel-metrics)
 - Session-level conversion of checking out a vacation property, so you can understand what the conversion looks like for every unique checkout flow -- not just at the user level
 
 ## Calculation
@@ -21,7 +21,7 @@ At the unit level, funnel metrics will calculate, for each step of the funnel, i
 
 If using session funnels, those step flags are instead counts of unique sessions.
 
-At the group level, the stepwise mean is calculated as the units for the next step divided by the units for the current step. The overall mean is calcualted as the units/sessions that completed the funnel divided by the unit/sessions that started the funnel.
+At the group level, the stepwise mean is calculated as the units for the next step divided by the units for the current step. The overall mean is calculated as the units/sessions that completed the funnel divided by the unit/sessions that started the funnel.
 
 This would like like the SQL below:
 

@@ -88,7 +88,7 @@ If everything worked, you should see:
 
 There's a lot of features here - please explore the product and the docs to learn more!
 
-- Click into a result's error bar to view raw statistics, timeseries, and projected [timeline impact](/stats-engine/topline-impacted)
+- Click into a result's error bar to view raw statistics, timeseries, and projected [timeline impact](/stats-engine/topline-impact)
 - Hover over a metric to get detailed context on its inputs and how the pulse result was calculated
 - Navigate to the diagnostics tab to see the [checks](/statsig-warehouse-native/features/monitor-an-experiment) Statsig automatically ran to make sure your experiment results were valid
 - Click into the reloaded timestamp to see the run time and query cost of your pulse analysis, as well as the SQL queries used to calculate the pulse results

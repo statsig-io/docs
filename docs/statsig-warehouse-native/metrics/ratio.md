@@ -17,7 +17,7 @@ Ratio metrics are also used to normalize metrics. For example, if you're a compa
 
 At the unit level, ratio metrics will calculate both component metric's unit level aggregation.
 
-At the group level, the mean is calculated as the total group calculation of the first metric, divided by the total group value of the seocnd metric.
+At the group level, the mean is calculated as the total group calculation of the first metric, divided by the total group value of the second metric.
 
 Note that the denominator is **not** the number of units in the experiment; the normalization is by the denominator metric.
 

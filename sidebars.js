@@ -511,6 +511,10 @@ module.exports = {
             {
               type: "category",
               label: "Statistics",
+              link: {
+                type: "doc",
+                id: "statsig-warehouse-native/features/statistics",
+              },
               items: [
                 "stats-engine/metric-deltas",
                 "stats-engine/variance",
@@ -810,6 +814,15 @@ module.exports = {
           ],
         },
       ],
+    },
+    {
+      type: "category",
+      label: "Statsig CLI",
+      link: {
+        type: "doc",
+        id: "siggy/introduction",
+      },
+      items: ["siggy/commands"],
     },
     {
       type: "category",

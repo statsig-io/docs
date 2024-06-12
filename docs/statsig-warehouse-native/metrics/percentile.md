@@ -15,7 +15,7 @@ Percentiles are popular for guardrail metrics around performance regression, as 
 
 ## Calculation
 
-For percentile metrics, there is no unit-level calculation; the analysis is just dont at the group level.
+For percentile metrics, there is no unit-level calculation; the analysis is run at the group level.
 
 This would like like the SQL below:
 

@@ -12,7 +12,7 @@ Count distinct metrics calculate the unique values observed in a column of a met
 Count distinct metrics have two primary use cases:
 
 - Measuring interactions and surface area. For example, you might to count the number of entities a user has engaged with on a video streaming platform, or measure if your new recommendation engine increases the diversity of products clicked
-- As a denominator in ratio metrics, especially common when you want to normalize by a unit other than your expeirment's unit of analysis. For example, a B2B experiment might run an experiment at the company level, but measure "Clicks per USER" by making a ratio metric of COUNT(clicks)/COUNT_DISTINCT(user_id).
+- As a denominator in ratio metrics, especially common when you want to normalize by a unit other than your experiment's unit of analysis. For example, a B2B experiment might run an experiment at the company level, but measure "Clicks per USER" by making a ratio metric of COUNT(clicks)/COUNT_DISTINCT(user_id).
 
 ## Calculation
 

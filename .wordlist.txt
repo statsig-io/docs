@@ -126,6 +126,7 @@ RoI
 Rollouts
 RudderStack
 runtime
+scritable
 SDK
 SDKs
 SEO
@@ -141,6 +142,7 @@ Sendgrid
 Spotify
 Statsig
 Statsig's
+statsigcli
 StatsigOptions
 StatsigUser
 Terraform
@@ -253,6 +255,7 @@ navbar
 ness
 NextJS
 NPM
+npm
 observability
 oidc
 onboarding
@@ -292,12 +295,14 @@ searchbox
 securityadmin
 SessionReplay
 sig
+siggy
 signalling
 signup
 signups
 sql
 srm
 sso
+scriptable
 stableID
 statsig
 stderr
@@ -469,3 +474,13 @@ deduplications
 chargebacks
 CMAB
 MABs
+Thresholding
+CUPED's
+lookback
+winsorize
+outsizedsharded
+Totalling
+DISTINCTs
+dropoff
+sharded
+outsized

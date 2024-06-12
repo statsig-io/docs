@@ -4,9 +4,9 @@ slug: /statsig-warehouse-native/configuration/tags-and-teams
 sidebar_label: Tags & Teams
 ---
 
-Statsig offers tools to enrich data sources, metrics, and entities with team ownership as well as arbitrary tags. These provide a powerful way to organize your data configuration, and also feed into advanced analytics tools like [meta-analysis](/experiments/meta-analysis).
+Statsig offers tools to enrich data sources, metrics, and entities with team ownership as well as arbitrary tags. These provide a powerful way to organize your data configuration, and also feed into advanced analytics tools like [meta-analysis](/experiments/meta-analysis.md).
 
-# Teams
+## Tags
 
 Experiments, Metrics, and Sources can all be tagged for easy discovery, search, and context. Metrics which share a tag can be bulk-added to scorecard or guardrail metric sets.
 

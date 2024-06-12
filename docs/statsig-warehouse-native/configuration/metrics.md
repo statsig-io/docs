@@ -9,6 +9,9 @@ sidebar_label: Metrics
 Metrics are measures of user or system behavior that are used as evaluation criteria for
 experiments and for performing analysis.
 
+Metrics are organized within your Metrics Catalog.
+![Screenshot 2024-06-12 at 11 31 44 AM](https://github.com/statsig-io/docs/assets/102695539/8cc2781c-23ac-46d2-b270-0d5d359c8f5b)
+
 ## Creating Metrics
 
 Metrics are a combination a metric source, an aggregation, and optional filters and advanced settings. The metric source provides the raw data, and the aggregation defines how Statsig aggregates data across different granularities like user-level, group-level, or for daily timeseries.
@@ -17,21 +20,29 @@ Metrics can support multiple units of analysis - for example a revenue metric ca
 
 Filters are also a core component of metrics. Statsig offers a rich set of filtering options, including SQL-based filters, so you can reuse the same metric source for many use cases.
 
+![Screenshot 2024-06-12 at 11 35 00 AM](https://github.com/statsig-io/docs/assets/102695539/b57ae00f-d993-4e0f-b073-b8dea91d7f90)
+
 ## Using Metrics
 
-Metrics can be used for standalone analysis, as part of your experiment scorecard, or as guardrails for feature releases. They can also be put into collections based on Tags for easy addition on these various surfaces.
+Metrics can be used for standalone analysis, as part of your experiment scorecard, or as guardrails for feature releases. They can also be put into collections based on Tags for easy addition on these various surfaces. Metrics can also be configured to fire alerts globally if any experiment or gate causes a regression.
 
 Statsig's recommendation is to use tags heavily - a combination of team-level and surface or product-level tags ensures easy discovery of metrics
 
-To view details about a metric, you can navigate to the Metrics page where you can the definition, related experiments, and a timeseries of the metric value. In [insights tab](/insights/introduction) and in [meta-analysis](/experiments/meta-analysis), you can perform more detailed analysis of how experiments have impacted a metric, and how the metric relates to other metrics in your catalog.
+To view details about a metric, you can navigate to the Metrics page where you can the definition, related experiments, and a timeseries of the metric value.
+
+![Screenshot 2024-06-12 at 11 33 11 AM](https://github.com/statsig-io/docs/assets/102695539/88b163e0-608e-4349-bc4f-28ac30528506)
+
+In the [insights tab](/insights/introduction.md) and in [meta-analysis](/experiments/meta-analysis.md), you can perform more detailed analysis of how experiments have impacted a metric, and how the metric relates to other metrics in your catalog.
+
+![Screenshot 2024-06-12 at 11 33 20 AM](https://github.com/statsig-io/docs/assets/102695539/97fce3be-56c2-47da-af7d-4ed5e06566fb)
 
 ## Metric Management
 
 Without a well-managed Metric Catalog, it's hard to trust results as end users don't understand if they can trust a metric, or the nuances of how it's defined. Statsig helps you solve this with a variety of tools:
 
 - [Verified Metrics] and programmatic management allow you to vet your core metrics and make it clear which metrics set the gold standard
-- [RBAC and Team Ownership] can be enabled to help limit the number of potential editors for Metrics, keeping control of core definitons in the experiment team's hands
-- [Local Metrics] in Pulse or Explore queries allow you to make experiment-scoped and clearly-labelled changes to metric definitions without adding a large amount of single-user metrics to your metrics catalog
+- [RBAC and Team Ownership] can be enabled to help limit the number of potential editors for Metrics, keeping control of core definitions in the experiment team's hands
+- [Local Metrics] in Pulse or Explore queries allow you to make experiment-scoped and clearly-labeled changes to metric definitions without adding a large amount of single-user metrics to your metrics catalog
 - Scorecard hover-over definitions make it trivial to discover, in-context, what settings were applied to a metric and how the calculation was performed.
 
 ## Metric Types
@@ -40,17 +51,17 @@ Statsig offers the largest coverage of metric types of any enterprise platform. 
 
 ### Aggregations
 
-Aggregations are basic unit-level counts or sums measuring user behavior. These are often used as inputs to ratios, especially for [cluster-based experiments]("statsig-warehouse-native/guides/metrics/different-id") where you want to normalize measures.
+Aggregations are basic unit-level counts or sums measuring user behavior. These are often used as inputs to ratios, especially for [cluster-based experiments](/metrics/different-id) where you want to normalize measures.
 
 Aggregations are aggregated at the unit-level, and are then averaged across all units in the experiment during Pulse analysis.
 
-Support aggregations are:
+Supported aggregations are:
 
 - [Count](../metrics/count)
 - [Sum](../metrics/sum)
 - [Count Distinct](../metrics/count-distinct)
 - Thresholds
-  - special cases of sum/count which measure a 1/0 flag for if a user passed a threshold value during the experiment - e.g., "the number of users who spent more than $100"
+  - A special cases of sum/count which measure a 1/0 flag for if a user passed a threshold value during the experiment - e.g., "the number of users who spent more than $100"
 
 ### Unit Counts, Retention, and Conversion
 
@@ -65,7 +76,7 @@ These all fall under the "Unit Count" type, with rollups specifying details of t
 Supported unit count types are:
 
 - [One-Time Event](../metrics/unit-count-once), measuring if a user performed an action at all during the experiment
-- [Windowed](../metrics/unit-count-windowed), measuring if a user performed an action within some time window after exposure
+- [Windowed](../metrics/unit-count-window), measuring if a user performed an action within some time window after exposure
 - [Latest Participation](../metrics/unit-count-latest), measuring if a user fulfilled some criteria on their latest recorded record (e.g. is this user currently a subscriber)
 - [Daily Participation](../metrics/unit-count-rate), the rate at which units were daily active users during the experiment
 
@@ -73,7 +84,7 @@ Supported unit count types are:
 
 Ratios and funnel measures rates or conversion. These are aggregated differently, and measure the total of a numerator metric divided by the total of a denominator metric across each experiment group. These also apply the delta method to correct for covariance between the component metrics.
 
-[Ratio Metrics](../metrics/ratio) allow you to measure ratios of two differnet metrics, giving nuance to results and helping you to normalize results by another measure - for example:
+[Ratio Metrics](../metrics/ratio) allow you to measure ratios of two different metrics, giving nuance to results and helping you to normalize results by another measure - for example:
 
 - B2C: Average purchase revenue (`SUM(Revenue) / COUNT(orders)`)
 - B2B: Revenue per User (`SUM(Revenue) / COUNT_DISTINCT(user_id)`)
@@ -82,7 +93,7 @@ Ratios and funnel measures rates or conversion. These are aggregated differently
 
 ### Performance Metrics
 
-Teams working on performance problems use Statsig to analyze the impact of their changes at a system level. These metric types can also be useful for user behavior. The types most commonly used here are
+Teams working on performance problems use Statsig to analyze the impact of their changes at a system level. These metric types can also be useful for user behavior. The types most commonly used here are:
 
 - [Percentile Metrics](../metrics/percentile.md) allow you to measure changes in values like the P99.9 - useful for measuring improvements or regressions in latency, TTL, or measuring median change when the mean is skewed
 - [Mean Metrics](../metrics/mean) are an easy shorthand for ratio metrics summing an event-level value and dividing by the total records

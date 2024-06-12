@@ -14,5 +14,5 @@ There are a few settings:
 
 - Qualifying Event: the event source to qualify exposures with. This can be filtered, so you can pick specific target events within a qualifying event source
 - Exclude matching units: whether to include, or exclude units who triggered the event
-- Use qualifying event timestamp for first exposures: if the actual intervention occured when the unit triggered the qualifying event, check this so that Statsig knows to override the exposure timestamp with the qualifying event timestamp
+- Use qualifying event timestamp for first exposures: if the actual intervention occurred when the unit triggered the qualifying event, check this so that Statsig knows to override the exposure timestamp with the qualifying event timestamp
 - Filter events by time window: restrict the qualifying event matching to events that happened within X days/minutes of the unit's exposure event

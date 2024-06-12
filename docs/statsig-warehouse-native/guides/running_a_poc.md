@@ -7,9 +7,9 @@ The purpose of this guide is to give a general overview of how to plan a proof o
 **Statsig Warehouse Native** enables customers with existing metric logs to quickly run analysis on their existing metric data, and optionally bring previous assignment data/offline experiments into the platform quickly. Statsig WHN has has two types of experiments:
 
 1. **Assign and Analyze**: You can run an experiment on **web/mobile/app** and use Statsig’s SDKs to assign (bucket or randomize) users, and then analyze results.
-2. **Analyze**: You can run an experiment elsewhere (**_your own SDK, email, direct mail, sms, ivr, etc._**) and use Statsig to analyze that data and calculate experiment results. This assignment data can be read from your warehouse in [this format](/statsig-warehouse-native/data-sources#assignment-sources) - we call these [Assignment Sources](/statsig-warehouse-native/guides/assignment-sources).
+2. **Analyze**: You can run an experiment elsewhere (**_your own SDK, email, direct mail, sms, ivr, etc._**) and use Statsig to analyze that data and calculate experiment results. This assignment data can be read from your warehouse in [this format](/statsig-warehouse-native/configuration/assignment-sources#example-data) - we call these [Assignment Sources](/statsig-warehouse-native/configuration/assignment-sources).
 
-If you have a pre-existing experiment in your warehouse, we recommend getting started first with an **Analyze** experiment. This is an effective and quick way (<1 day) to get comfortable with establishing a connection between Statsig and your warehouse, and the experience of consuming [experiment results](/statsig-warehouse-native/guides/pulse) in the Statsig console. Then, we recommend running a **Assign and Analyze** experiment using Statsig's SDKs; typically an A/A test. With the A/A **Assign and Analyze** experiment, you can test Statsig's SDKs and implementation process with your engineering and product team.
+If you have a pre-existing experiment in your warehouse, we recommend getting started first with an **Analyze** experiment. This is an effective and quick way (<1 day) to get comfortable with establishing a connection between Statsig and your warehouse, and the experience of consuming [experiment results](/pulse/read-pulse) in the Statsig console. Then, we recommend running a **Assign and Analyze** experiment using Statsig's SDKs; typically an A/A test. With the A/A **Assign and Analyze** experiment, you can test Statsig's SDKs and implementation process with your engineering and product team.
 
 # Steps to running an effective Proof of Concept with Warehouse Native
 
@@ -56,7 +56,7 @@ Keep these high level steps in mind as you begin your planning your Warehouse Na
    - Create your hypothesis and select the **experiment (assignment) source**
      - If using the SDK for assignment, the SDK itself will be the assignment source
    - [Custom IDs](/guides/experiment-on-custom-id-types) can be used but they must first be configured - ex: device_id, vehicleId, etc
-   - Check out [advanced settings](/statsig-warehouse-native/guides/experiments#advanced-settings) to see the many ways you can configure your experiment
+   - Check out [advanced settings](/statsig-warehouse-native/features/configure-an-experiment#advanced-settings) to see the many ways you can configure your experiment
    - As you rollout your experiment, you can [monitor the status with health checks](/statsig-warehouse-native/features/monitor-an-experiment) and get a readout of live exposures as they come through the SDK.
    - If you’re hoping to quickly validate the platform, you can create and run a [quick A/A test](/statsig-warehouse-native/guides/AATest).
 

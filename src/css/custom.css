@@ -21,10 +21,11 @@ h1 {
   font-size: 1.7rem;
 }
 h2 {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 }
 h3 {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem !important;
 }
 h4 {
   font-size: 1rem;
@@ -34,7 +35,7 @@ h5 {
   font-size: 1rem;
 }
 a {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* You can override the default Infima variables here. */
@@ -52,9 +53,11 @@ a {
     "Roboto", "Helvetica Neue", "Ubuntu", sans-serif;
   --ifm-font-size-base: 0.95em;
   
+  --ifm-menu-color: #222;
   --ifm-menu-color-active: #0068b3;
   --ifm-menu-color-background-active: #0068b311;
   --ifm-navbar-background-color: #f7f7f7;
+  --ifm-menu-link-padding-vertical: 0.5rem;
 }
 
 html[data-theme="dark"] {
@@ -63,7 +66,7 @@ html[data-theme="dark"] {
   /* any other colors you wish to overwrite */
 
   --ifm-link-color: #2196f3;
-  --ifm-menu-color: #aaa;
+  --ifm-menu-color: #ccc;
   --ifm-menu-color-active: #fff;
   --ifm-menu-color-background-active: #194b7d99;
 
@@ -94,6 +97,12 @@ html[data-theme="dark"] {
 .menu {
   text-transform: none;
   font-size: 14px;
+}
+
+.navbar__inner {
+  width: 90rem;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .alert--info {
@@ -132,6 +141,19 @@ span.math.math-inline {
 
 .katex .base {
   vertical-align: 0em;  /* Adjust this value as needed */
+}
+
+.main-wrapper {
+  margin: 0 auto;
+  width: 90rem;
+  max-width: 100%;
+}
+
+.menu__caret:before,
+.menu__link--sublist-caret:before,
+.menu__link--sublist-caret:after {
+  background-size: 1.2rem 1.2rem;
+  filter: drop-shadow(0 0 0 #000);
 }
 
 .math-inline {
