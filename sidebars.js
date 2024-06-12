@@ -687,7 +687,7 @@ module.exports = {
         type: "doc",
         id: "siggy/introduction",
       },
-      items: ["siggy/commands"],
+      items: ["siggy/commands", "siggy/gate-management"],
     },
     {
       type: "category",

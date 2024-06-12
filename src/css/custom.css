@@ -35,7 +35,7 @@ h5 {
   font-size: 1rem;
 }
 a {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* You can override the default Infima variables here. */
@@ -53,11 +53,13 @@ a {
     "Roboto", "Helvetica Neue", "Ubuntu", sans-serif;
   --ifm-font-size-base: 0.95em;
   
-  --ifm-menu-color: #222;
+  --ifm-menu-color: #000;
   --ifm-menu-color-active: #0068b3;
   --ifm-menu-color-background-active: #0068b311;
   --ifm-navbar-background-color: #f7f7f7;
-  --ifm-menu-link-padding-vertical: 0.5rem;
+  --ifm-menu-link-padding-vertical: 0.4rem;
+
+  --ifm-transition-fast: 100ms;  
 }
 
 html[data-theme="dark"] {
@@ -105,6 +107,10 @@ html[data-theme="dark"] {
   margin: 0 auto;
 }
 
+.alert {
+  margin-left: 20px;
+}
+
 .alert--info {
   --ifm-alert-background-color: #2196f333;
   --ifm-alert-border-color: #2196f3;
@@ -126,13 +132,10 @@ html[data-theme="dark"] {
   --ra-admonition-icon-color: #f44336;
 }
 
-.sdk-toc-header {
-  background-color: blue;
-  color: red;
-}
-
-span.math.math-inline {
-  font-size: 150%;
+.img-center {
+  display: flex;
+  justify-content: center;
+  width: 100%,
 }
 
 .katex{
@@ -149,6 +152,10 @@ span.math.math-inline {
   max-width: 100%;
 }
 
+.menu__link {
+  font-size: 0.9rem;
+}
+
 .menu__caret:before,
 .menu__link--sublist-caret:before,
 .menu__link--sublist-caret:after {
@@ -160,10 +167,18 @@ span.math.math-inline {
   line-height: 1;
 }
 
-.img-center {
-  display: flex;
-  justify-content: center;
-  width: 100%,
+.prism-code {
+  border: 1px solid #ddd;
+  font-size: 0.85rem;
+}
+
+.sdk-toc-header {
+  background-color: blue;
+  color: red;
+}
+
+span.math.math-inline {
+  font-size: 150%;
 }
 
 #consoleCTA{
