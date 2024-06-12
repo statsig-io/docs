@@ -20,7 +20,7 @@ At the unit level, count distinct metrics use COUNT_DISTINCT on their input colu
 
 At the group level, the mean is calculated as the SUM of the unit-level COUNT_DISTINCTs, divided by the count of UNIQUE UNITS exposed to the experiment.
 
-This would like like the SQL below:
+This would look like the SQL below:
 
 ```
 -- Unit Level

@@ -21,7 +21,7 @@ At the group level, the mean is calculated as the total group calculation of the
 
 Note that the denominator is **not** the number of units in the experiment; the normalization is by the denominator metric.
 
-This would like like the SQL below:
+This would look like the SQL below:
 
 ```
 -- Denominator (Checkouts)

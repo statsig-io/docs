@@ -20,7 +20,7 @@ At the unit level, sum metrics take the SUM of their input column.
 
 At the group level, the mean is calculated as the SUM of the unit-level sums, divided by the count of UNIQUE UNITS exposed to the experiment.
 
-This would like like the SQL below:
+This would look like the SQL below:
 
 ```
 -- Unit Level

@@ -23,7 +23,7 @@ If using session funnels, those step flags are instead counts of unique sessions
 
 At the group level, the stepwise mean is calculated as the units for the next step divided by the units for the current step. The overall mean is calculated as the units/sessions that completed the funnel divided by the unit/sessions that started the funnel.
 
-This would like like the SQL below:
+This would look like the SQL below:
 
 ```
 -- Unit Level, per step
