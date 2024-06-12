@@ -72,7 +72,8 @@ export async function getStatsigValues(user: StatsigUser): Promise<string> {
     user,
     MY_STATSIG_CLIENT_KEY, // <- Client Key
     {
-      hash: "djb2",
+      // !!! IMPORTANT - the @statsig/js-client requires djb2 hashed config names, and by default this method won't generate those
+      hash: "djb2", 
     }
   );
 
