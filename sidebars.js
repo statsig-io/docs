@@ -682,6 +682,15 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Statsig CLI",
+      link: {
+        type: "doc",
+        id: "siggy/introduction",
+      },
+      items: ["siggy/commands"],
+    },
+    {
+      type: "category",
       label: "Admin",
       items: [
         {
