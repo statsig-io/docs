@@ -302,6 +302,7 @@ signups
 sql
 srm
 sso
+scriptable
 stableID
 statsig
 stderr
