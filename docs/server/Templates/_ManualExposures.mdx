@@ -1,6 +1,6 @@
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
 import { useColorMode } from "@docusaurus/theme-common";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
 
 export const Badge = ({ version }) => {
   const isDarkTheme = useColorMode().colorMode === "dark";
@@ -42,11 +42,9 @@ Manually logging exposures can be tricky and may lead to an imbalance in exposur
     {label: 'Get Layer', value: 'layer'},
   ]}>
 
-<TabItem value="gate"
-/*
-Check Gate
-*/
->
+{/* Check Gate */}
+
+<TabItem value="gate">
 
 To check a gate without an exposure being logged, call the following.
 
@@ -58,11 +56,10 @@ Later, if you would like to expose this gate, you can call the following.
 
 </TabItem>
 
-<TabItem value="config" 
-/*
-Get Config
-*/
->
+
+{/* Get Config */}
+
+<TabItem value="config" >
 
 To get a dynamic config without an exposure being logged, call the following.
 
@@ -74,11 +71,10 @@ Later, if you would like to expose the dynamic config, you can call the followin
 
 </TabItem>
 
-<TabItem value="experiment"
-/*
-Get Experiment
-*/
->
+
+{/* Get Experiment */}
+
+<TabItem value="experiment">
 
 To get an experiment without an exposure being logged, call the following.
 
@@ -90,11 +86,9 @@ Later, if you would like to expose the experiment, you can call the following.
 
 </TabItem>
 
-<TabItem value="layer"
-/*
-Get Layer
-*/
->
+{/* Get Layer */}
+
+<TabItem value="layer">
 
 To get a layer parameter without an exposure being logged, call the following.
 

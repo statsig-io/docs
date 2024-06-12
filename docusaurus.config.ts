@@ -1,10 +1,15 @@
+import type { Config } from "@docusaurus/types";
+
 const sdkDateExtractor = require("./src/plugins/rehype-sdk-date-extractor");
 const path = require("path");
 const math = require("remark-math");
 const katex = require("rehype-katex");
 
-/** @type {import('@docusaurus/types').DocusaurusConfig} */
-module.exports = {
+const { themes } = require("prism-react-renderer");
+const lightTheme = themes.github;
+const darkTheme = themes.dracula;
+
+const config: Config = {
   title: "Statsig Docs",
   tagline: "Ship faster!",
   url: "https://docs.statsig.com",
@@ -51,9 +56,6 @@ module.exports = {
           position: "right",
           value:
             "<button id=\"consoleCTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus(); window.statsig.logEvent({}, 'console_button_click', window.location.pathname, {referrer: document && document.referrer,});\">Get Started</button>",
-          type: 'html',
-          position: 'right',
-          value: '<button id="consoleCTA" onclick="window.open(\'https://console.statsig.com\', \'_blank\').focus(); window.statsig.logEvent({}, \'console_button_click\', window.location.pathname, {referrer: document && document.referrer,});">Get Started</button>',
         },
       ],
     },
@@ -94,8 +96,9 @@ module.exports = {
       copyright: `Copyright (c) ${new Date().getFullYear()} Statsig, Inc. | Thanks Docusaurus`,
     },
     prism: {
-      theme: require("prism-react-renderer/themes/github"),
-      darkTheme: require("prism-react-renderer/themes/dracula"),
+      themes: themes,
+      darkTheme: darkTheme,
+      lightTheme: lightTheme,
       additionalLanguages: [
         "swift",
         "java",
@@ -363,4 +366,12 @@ module.exports = {
       crossorigin: "anonymous",
     },
   ],
+  markdown: {
+    mdx1Compat: {
+      comments: true,
+      admonitions: true,
+      headingIds: true,
+    },
+  },
 };
+export default config;

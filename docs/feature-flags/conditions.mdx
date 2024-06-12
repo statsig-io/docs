@@ -79,7 +79,7 @@ Example usage: 50/50 rollout to A/B test a new feature.  Or 0% to hide the featu
 ### App Version {#app-version}
 Usage: User's on a particular version of your app/website will pass.  Particularly useful for mobile app development, where a feature may not be fully ready (or maybe be broken) in a particular app version.
 
-Supported Operators: >=, >, <, <=, any of, none of
+Supported Operators: `>=, >, <, <=, any of, none of`
 
 Example: Turn off a feature for all users on app versions 3.0.0 through 3.1.0 as it was broken.
 
@@ -88,7 +88,7 @@ Example: Turn off a feature for all users on app versions 3.0.0 through 3.1.0 as
 ### Browser Version {#browser-version}
 Usage: A particular version of a browser, parsed from the user agent.  Should likely be combined with the browser name condition.
 
-Supported Operators: >=, >, <, <=, any of, none of
+Supported Operators: `>=, >, <, <=, any of, none of`
 
 Example: Turn off a feature for old versions of chrome which don't support a certain API
 
@@ -110,7 +110,7 @@ Usage: A particular browser, parsed from the user agent:
     'Safari').
 Often combined with the Browser Version condition.
 
-Supported Operators: >=, >, <, <=, any of, none of
+Supported Operators: `>=, >, <, <=, any of, none of`
 
 Example: Turn off a feature for old versions of chrome which don't support a certain API
 
@@ -121,7 +121,7 @@ To test: The Browser Name is inferred from the `userAgent`, but if you need to s
 ### OS Version {#os-version}
 Usage: A particular os version the user is on, parsed from the user agent.  Should likely be combined with the Operating System condition.
 
-Supported Operators: >=, >, <, <=, any of, none of
+Supported Operators: `>=, >, <, <=, any of, none of`
 
 Example: Turn off a feature for versions of macOS which don't support a certain API
 

@@ -6,7 +6,7 @@ title: Vercel Edge Config
 By leveraging [Vercel Edge Functions](https://vercel.com/features/edge-functions), you can easily and performantly deliver personalized content to your website's visitors. These functions are deployed globally via [Vercel's Edge Network](https://vercel.com/docs/concepts/edge-network/overview) and allow you to move server-side logic to the Edge, giving your visitors faster access. With [NextJS](https://nextjs.org/) applications on [Vercel](https://vercel.com/), you can experiment at the edge using Statsig's feature flags and experimentation capabilities. The Statsig Vercel integration lets you easily bootstrap your Vercel projects by directly pushing Statsig Configs to Vercel's Edge Config.
 
 ## Configuration
-Go to the [Vercel Marketplace](https://vercel.com/integrations/statsig) to install the Statsig app for Vercel. In the setup, you'll be able to map Statsig projects <-> Edge Configs, and Statsig will keep project configs synced with the specified Edge Config.
+Go to the [Vercel Marketplace](https://vercel.com/integrations/statsig) to install the Statsig app for Vercel. In the setup, you'll be able to map Statsig projects `<->` Edge Configs, and Statsig will keep project configs synced with the specified Edge Config.
 
 <img src="https://user-images.githubusercontent.com/87334575/205374493-08dfc561-2095-45f2-be10-bba1a1958bf9.png" width="474" height="400" />
 

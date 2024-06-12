@@ -29,17 +29,17 @@ Statsig lets you run your pipeline in a few different ways:
 
 ## Artifacts and Entity Relationships
 
-The following tables will be generated and stored in your warehouse per-experiment. You have full access to these data sources for your own analysis, models, or visualizations. For experiments, `experiment_id` will be the name of the experiment; for Feature Gates, `experiment_id` will be the name of the gate along with the specific rule ID (e.g. `chatbot_llm_model_switch_31e9jwlgO1bSSznKntb2gp_exposures_summary`)
+The following tables will be generated and stored in your warehouse per-experiment. You have full access to these data sources for your own analysis, models, or visualizations. For experiments, `experiment_id` will be the name of the experiment; for Feature Gates, `experiment_id` will be the name of the gate along with the specific rule ID (e.g. `chatbot_llm_model_switch_31e9jwlgO1bSSznKntb2gp_exposures_summary`).
 
-| Table                                                           | Description                                                                                                                     | Notes                                                      |
-| --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| <experiment_id\>\_first_exposures                               | Deduplicated and stitched (for experiments with ID resolution) first exposure events                                            | Useful for ad-hoc analysis                                 |
-| <experiment_id\>\_exposures_summary                             | Timeseries of exposures per group for display in Pulse                                                                          |                                                            |
-| <experiment_id\>\_user_level_aggregations                       | User-day level metric aggregations table                                                                                        | Useful for ad-hoc analysis                                 |
-| <experiment_id\>\_user_level_aggregations_for_pre_exposure_data | User-level pre-experiment aggregations for regression adjustment/CUPED                                                          |                                                            |
-| <experiment_id\>\_funnel_events                                 | Staging table for running funnel analysis                                                                                       |                                                            |
-| windowed_metrics\_<experiment_id\>                              | Staging table for generating running totals when restating Pulse                                                                |                                                            |
-| <experiment_id\>\_results\_<rollup\>                            | Outputs of Statistical Analysis for different rollups (e.g. daily, days-since-exposure, cumulative, 7-day). Exported to Statsig | Pulse inputs - useful for replicating Statistical analysis |
+| Table                                                       | Description                                                                                                                     | Notes                                                      |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| `<experiment_id>_first_exposures`                             | Deduplicated and stitched (for experiments with ID resolution) first exposure events                                            | Useful for ad-hoc analysis                                 |
+| `<experiment_id>_exposures_summary`                           | Timeseries of exposures per group for display in Pulse                                                                          |                                                            |
+| `<experiment_id>_user_level_aggregations`                     | User-day level metric aggregations table                                                                                        | Useful for ad-hoc analysis                                 |
+| `<experiment_id>_user_level_aggregations_for_pre_exposure_data` | User-level pre-experiment aggregations for regression adjustment/CUPED                                                          |                                                            |
+| `<experiment_id>_funnel_events`                               | Staging table for running funnel analysis                                                                                       |                                                            |
+| `windowed_metrics_<experiment_id>`                            | Staging table for generating running totals when restating Pulse                                                                |                                                            |
+| `<experiment_id>_results_<rollup>`                            | Outputs of Statistical Analysis for different rollups (e.g. daily, days-since-exposure, cumulative, 7-day). Exported to Statsig | Pulse inputs - useful for replicating Statistical analysis |
 
 The high level relationships/contents of these tables are represented below - refer to the Main Steps image below for scheduling details.
 
@@ -63,21 +63,17 @@ Clicking into the history icon on your pulse results, you'll be able to see the 
 
 This will also be fully transparent from your own Warehouse's history and usage management, but having the costs in console is helpful knowledge for the cross-functional experimentation teams running the analysis.
 
-
 ## Exposure Export Table
 Statsig dedupes and records each user's first exposure to an experiment into a table in your warehouse. This table name is configurable in the Data Connection setup and defaults to statsig_forwarded_exposures. This table contains each user's first exposure to an experiment. For feature gates, we dedupe and record exposures for partial rollouts (e.g. 5% or 50% rollouts - but not 0% or 100% rollouts).
-
-
 
 | Column Name             | Data Type | Description                                                                                   |
 | ----------------------- | --------- | --------------------------------------------------------------------------------------------- |
 | experiment_id           | string    | The identifier for the gate/experiment                                                        |
-| group_id				        | string    | groupID for experiments; ruleID+Pass/Fail for gates                                           |
-| group_name  		        | string    | Name of the experiment group (e.g. Control vs Test) (Coming soon, ETA April 15                |
+| group_id                | string    | groupID for experiments; ruleID+Pass/Fail for gates                                           |
+| group_name              | string    | Name of the experiment group (e.g. Control vs Test) (Coming soon, ETA April 15)               |
 | user_id                 | string    | The ID passed in as the Statsig userID                                                        |
 | stable_id               | string    | Statsig Client SDK managed stable device identifier                                           |
-| \[your custom ids]       | string    | One column for every custom unitID you use on Statsig                                        |
+| [your custom ids]       | string    | One column for every custom unitID you use on Statsig                                         |
 | timestamp               | timestamp | Statsig Client SDK managed stable device identifier                                           |
 | user_dimensions         | object    | Warehouse specific object with all the user dimensions                                        |
 | ts                      | timestamp | Timestamp of the first exposure                                                               |
-

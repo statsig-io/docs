@@ -15,28 +15,30 @@
     "write-heading-ids": "docusaurus write-heading-ids"
   },
   "dependencies": {
-    "@docusaurus/core": "2.4.3",
-    "@docusaurus/plugin-client-redirects": "^2.4.3",
-    "@docusaurus/preset-classic": "2.4.3",
-    "@docusaurus/theme-common": "2.4.3",
-    "@mdx-js/react": "^1.6.22",
+    "@docusaurus/core": "3.4.0",
+    "@docusaurus/plugin-client-redirects": "^3.4.0",
+    "@docusaurus/preset-classic": "3.4.0",
+    "@docusaurus/theme-common": "3.4.0",
     "@easyops-cn/docusaurus-search-local": "^0.27.2",
-    "@emotion/react": "^11.11.3",
-    "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.15.3",
-    "@mui/styles": "^5.15.3",
-    "clsx": "^1.1.1",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mdx-js/react": "^1.6.22",
+    "@mui/material": "^5.15.19",
+    "@mui/styles": "^5.15.19",
+    "clsx": "^1.2.1",
     "hast-util-is-element": "1.1.0",
     "lunr": "^2.3.9",
-        "prismjs": "^1.29.0",
-    "rapidoc": "^9.3.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "prism-react-renderer": "^2.3.1",
+    "prismjs": "^1.29.0",
+    "ramda": "^0.30.1",
+    "rapidoc": "^9.3.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-gist": "^1.2.4",
-    "react-query": "^3.39.1",
-    "rehype-extract-meta": "^2.0.4",
-    "rehype-katex": "5",
-    "remark-math": "3"
+    "react-query": "^3.39.3",
+    "rehype-extract-meta": "^2.1.0",
+    "rehype-katex": "^7.0.0",
+    "remark-math": "^6.0.0"
   },
   "browserslist": {
     "production": [
@@ -62,11 +64,14 @@
     }
   },
   "devDependencies": {
-    "@algolia/client-search": "^4.22.0",
-    "@types/react": "^18.0.9",
-    "quill-delta": "^5",
-    "rxjs": "7",
-    "search-insights": "^2.13.0",
-    "typescript": "^4.6.4"
+    "@algolia/client-search": "^4.23.3",
+    "@docusaurus/module-type-aliases": "^3.4.0",
+    "@docusaurus/tsconfig": "^3.4.0",
+    "@docusaurus/types": "^3.4.0",
+    "@types/react": "^18.3.3",
+    "quill-delta": "^5.1.0",
+    "rxjs": "^7.8.1",
+    "search-insights": "^2.14.0",
+    "typescript": "^4.9.5"
   }
 }
