@@ -586,7 +586,7 @@ module.exports = {
             },
             {
               type: "category",
-              label: "New JavaScript (Beta)",
+              label: "New JavaScript",
               link: {
                 type: "doc",
                 id: "client/javascript-sdk",
@@ -618,7 +618,7 @@ module.exports = {
                 "client/jsLocalEvaluationSDK",
                 {
                   type: "category",
-                  label: "New JavaScript (Beta)",
+                  label: "New JavaScript",
                   link: {
                     type: "doc",
                     id: "client/js-on-device-eval-client",
@@ -822,7 +822,7 @@ module.exports = {
         type: "doc",
         id: "siggy/introduction",
       },
-      items: ["siggy/commands"],
+      items: ["siggy/commands", "siggy/gate-management"],
     },
     {
       type: "category",

@@ -44,6 +44,13 @@ $ siggy --version
 If you get a `command not found` error, you might need to add your node global bin folder to your path.
 
 One way to do that is by running `export PATH=$PATH:$(npm get prefix -g)/bin`
+
+If that doesn't work, as a workaround, you could run the CLI by prefixing `npx` in the command line
+
+``` bash
+$ npx siggy --version
+```
+
 :::
 
 2. Configure the API keys by running:
