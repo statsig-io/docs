@@ -55,6 +55,7 @@ a {
   --ifm-menu-color-active: #0068b3;
   --ifm-menu-color-background-active: #0068b311;
   --ifm-navbar-background-color: #f7f7f7;
+  --ifm-menu-link-padding-vertical: 0.5rem;
 }
 
 html[data-theme="dark"] {
@@ -96,6 +97,11 @@ html[data-theme="dark"] {
   font-size: 14px;
 }
 
+.navbar__inner {
+  max-width: 90rem;
+  margin: 0 auto;
+}
+
 .alert--info {
   --ifm-alert-background-color: #2196f333;
   --ifm-alert-border-color: #2196f3;
@@ -132,6 +138,26 @@ span.math.math-inline {
 
 .katex .base {
   vertical-align: 0em;  /* Adjust this value as needed */
+}
+
+.main-wrapper {
+  margin: 0 auto;
+  max-width: 90rem;
+}
+
+.menu__link {
+  color: #222;
+}
+
+.menu__link--active {
+  color: #0068b3;
+}
+
+.menu__caret:before,
+.menu__link--sublist-caret:before,
+.menu__link--sublist-caret:after {
+  background-size: 1.2rem 1.2rem;
+  filter: drop-shadow(0 0 0 #000);
 }
 
 .math-inline {
