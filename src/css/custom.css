@@ -52,6 +52,7 @@ a {
     "Roboto", "Helvetica Neue", "Ubuntu", sans-serif;
   --ifm-font-size-base: 0.95em;
   
+  --ifm-menu-color: #222;
   --ifm-menu-color-active: #0068b3;
   --ifm-menu-color-background-active: #0068b311;
   --ifm-navbar-background-color: #f7f7f7;
@@ -64,7 +65,7 @@ html[data-theme="dark"] {
   /* any other colors you wish to overwrite */
 
   --ifm-link-color: #2196f3;
-  --ifm-menu-color: #aaa;
+  --ifm-menu-color: #ccc;
   --ifm-menu-color-active: #fff;
   --ifm-menu-color-background-active: #194b7d99;
 
@@ -143,14 +144,6 @@ span.math.math-inline {
 .main-wrapper {
   margin: 0 auto;
   max-width: 90rem;
-}
-
-.menu__link {
-  color: #222;
-}
-
-.menu__link--active {
-  color: #0068b3;
 }
 
 .menu__caret:before,
