@@ -80,7 +80,7 @@ See the question above for what counts as a billable event. Some tools available
 3. Admins will be proactively alerted when Enterprise Contracts hit 25/ 50/ 75/ 100% usage of their contracted events.
 ![image](https://user-images.githubusercontent.com/31516123/218544792-0c027d19-6c1f-400a-9b8d-2041ad04985e.png)
 
-4. Look for gates that are 0% or 100% pass. These can be launched (always return Pass) or disabled (always return Fail) to stop generating billable events. [More information](https://statsig.com/updates#2/2/2023). With experiments, filter to experiments with Status = In Progress and Created < [day-45] to find long running experiments to make sure these are intentional and not just forgotten.
+4. Look for gates that are 0% or 100% pass. These can be launched (always return Pass) or disabled (always return Fail) to stop generating billable events. With experiments, filter to experiments with Status = In Progress and Created < [day-45] to find long running experiments to make sure these are intentional and not just forgotten.
 
 5. There's a Console API endpoint that lets you download billing and usage data to sync this to your own systems [here](https://docs.statsig.com/console-api/usage-billing).
 
