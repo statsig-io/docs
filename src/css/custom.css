@@ -21,10 +21,11 @@ h1 {
   font-size: 1.7rem;
 }
 h2 {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 }
 h3 {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem !important;
 }
 h4 {
   font-size: 1rem;
@@ -34,7 +35,7 @@ h5 {
   font-size: 1rem;
 }
 a {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* You can override the default Infima variables here. */
@@ -99,7 +100,8 @@ html[data-theme="dark"] {
 }
 
 .navbar__inner {
-  max-width: 90rem;
+  width: 90rem;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -143,7 +145,8 @@ span.math.math-inline {
 
 .main-wrapper {
   margin: 0 auto;
-  max-width: 90rem;
+  width: 90rem;
+  max-width: 100%;
 }
 
 .menu__caret:before,
