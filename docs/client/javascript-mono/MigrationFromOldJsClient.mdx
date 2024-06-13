@@ -218,10 +218,13 @@ The options to parameterize initialization of the SDK have changed.  In some cas
 > This is now referred to as `StatsigOptions.disableLogging`
 
 #### disableCurrentPageLogging
-> Moved to optional package [`@statsig/web-anayltics`](#https://www.npmjs.com/package/@statsig/web-analytics)
+> This is now referred to as `StatsigOptions.includeCurrentPageUrlWithEvents`
+
+#### disableLocalStorage
+> This is now referred to as `StatsigOptions.disableStorage`
 
 #### localMode
-> Now controlled via `{ networkConfig: { preventAllNetworkTraffic: enabled } }`
+> This is now referred to as  `StatsigOptions.networkConfig.preventAllNetworkTraffic`
 
 #### loggingIntervalMillis
 > This is now referred to as `StatsigOptions.loggingIntervalMs`
@@ -247,3 +250,42 @@ SDKs and helps avoid mis-configuration between client and server
 >
 > eg:
 > `myStatsigClient.initializeAsync(1000); // 1 sec timeout`
+
+#### initializeValues
+> Replaced by the usage of [StatsigEvaluationsDataAdapter](/client/javascript-sdk/using-evaluations-data-adapter)
+
+#### eventLoggingApi
+> Replaced by `StatsigOptions.networkConfig.logEventUrl`
+
+#### prefetchUsers
+> Replaced by the usage of [StatsigEvaluationsDataAdapter](/client/javascript-sdk/using-evaluations-data-adapter)
+
+#### initCompletionCallback
+> Replaced by the usage of [StatsigClientEventEmitter](/client/javascript-sdk#client-event-emitter)
+
+#### updateUserCompletionCallback
+> Replaced by the usage of [StatsigClientEventEmitter](/client/javascript-sdk#client-event-emitter)
+
+#### fetchMode
+> Replaced by the usage of [StatsigEvaluationsDataAdapter](/client/javascript-sdk/using-evaluations-data-adapter)
+
+#### disableDiagnosticsLogging
+> There currently is no diagnostics logging in the new SDK
+
+#### initRequestRetries
+> This is has been completely removed. Network requests can be controlled with `StatsigOptions.networkConfig.networkOverrideFunc`
+
+#### ignoreWindowUndefined
+> No longer applicable
+
+#### disableHashing
+> Not yet supported
+
+#### logLevel
+> This has not been changed, but the enum values are no longer `UPPERCASED`.
+
+#### logger
+> Not yet supported
+
+#### evaluationCallback
+> Replaced by the usage of [StatsigClientEventEmitter](/client/javascript-sdk#client-event-emitter)
