@@ -205,9 +205,45 @@ StatsigLocalStorage.disabled = false;
 </Tabs>
 
 
-## StatsigOptions
+## Legacy StatsigOptions
 The options to parameterize initialization of the SDK have changed.  In some cases, the underlying features were removed or moved and can be enabled/disabled in a different way. In other scenarios, there is a new API for managing them.  The following is a mapping of old options to their equivalents in the new sdk.
 
-- disableErrorLogging - this feature no longer exists in the new sdk, so there is no option to disable
-- disableAutoMetricsLogging - this feature is now in a separate package @statsig/web-anayltics (or +web-analytics in the `script` include).  By not including a version of the SDK with web analtics, you are opting out of automatically captured events
-- localMode - now controlled via `{ networkConfig: { preventAllNetworkTraffic: enabled } }`
+#### disableErrorLogging
+> This feature does not exist in the new Javascript SDK, so there is no option to disable it.
+
+#### disableAutoMetricsLogging
+> Moved to optional package [`@statsig/web-anayltics`](#https://www.npmjs.com/package/@statsig/web-analytics)
+
+#### disableAllLogging
+> This is now referred to as `StatsigOptions.disableLogging`
+
+#### disableCurrentPageLogging
+> Moved to optional package [`@statsig/web-anayltics`](#https://www.npmjs.com/package/@statsig/web-analytics)
+
+#### localMode
+> Now controlled via `{ networkConfig: { preventAllNetworkTraffic: enabled } }`
+
+#### loggingIntervalMillis
+> This is now referred to as `StatsigOptions.loggingIntervalMs`
+
+#### loggingBufferMaxSize
+> Unchanged
+
+#### environment
+> Unchanged
+
+#### disableNetworkKeepalive
+> This is has been completely removed. Network requests can be controlled with `StatsigOptions.networkConfig.networkOverrideFunc`
+
+#### api
+> This is now referred to as `StatsigOptions.networkConfig.api`
+
+#### overrideStableID
+> StableID is now just part of `StatsigUser.customIDs`. This brings it inline with Statsig server 
+SDKs and helps avoid mis-configuration between client and server
+
+#### initTimeoutMs
+> Timeouts now live as part of the `async` call. 
+>
+> eg:
+> `myStatsigClient.initializeAsync(1000); // 1 sec timeout`
