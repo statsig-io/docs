@@ -3953,8 +3953,7 @@
                         "tags": {
                           "type": "array",
                           "items": {
-                            "type": "object",
-                            "properties": {}
+                            "type": "string"
                           }
                         },
                         "sql": {
@@ -3991,8 +3990,10 @@
                       "message": "Assignment Source updated successfully",
                       "data": {
                         "name": "statsig_forwarded_exposures",
-                        "description": "",
-                        "tags": [],
+                        "description": "This is an assignment source for sales",
+                        "tags": [
+                          "newTag2"
+                        ],
                         "sql": "SELECT * FROM `shoppy-sales.statsig.statsig_forwarded_exposures`",
                         "timestampColumn": "timestamp",
                         "groupIDColumn": "group_id",
@@ -4017,8 +4018,10 @@
                       "message": "Assignment Source updated successfully",
                       "data": {
                         "name": "statsig_forwarded_exposures",
-                        "description": "",
-                        "tags": [],
+                        "description": "This is an assignment source for sales",
+                        "tags": [
+                          "newTag2"
+                        ],
                         "sql": "SELECT * FROM `shoppy-sales.statsig.statsig_forwarded_exposures`",
                         "timestampColumn": "timestamp",
                         "groupIDColumn": "group_id",
@@ -4119,6 +4122,15 @@
                   "sql": {
                     "type": "string"
                   },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "description": {
+                    "type": "string"
+                  },
                   "timestampColumn": {
                     "type": "string"
                   },
@@ -4150,6 +4162,10 @@
                 "x-examples": {
                   "Example 1": {
                     "sql": "SELECT * FROM `shoppy-sales.statsig.statsig_forwarded_exposures`",
+                    "tags": [
+                      "Sales"
+                    ],
+                    "description": "This is an assignment source for sales",
                     "timestampColumn": "timestamp",
                     "experimentIDColumn": "experiment_id",
                     "groupIDColumn": "group_id",
@@ -4170,6 +4186,10 @@
                 "Example 1": {
                   "value": {
                     "sql": "SELECT * FROM `shoppy-sales.statsig.statsig_forwarded_exposures`",
+                    "tags": [
+                      "Sales"
+                    ],
+                    "description": "This is an assignment source for sales",
                     "timestampColumn": "timestamp",
                     "experimentIDColumn": "experiment_id",
                     "groupIDColumn": "group_id",
