@@ -17,7 +17,7 @@ At the unit level, mean metrics SUM their value column, and COUNT records where 
 
 At the group level, the mean is calculated as the SUM of the unit-level sums, and the SUM of the unit-level counts.
 
-This would like like the SQL below:
+This would look like the SQL below:
 
 ```
 -- Unit Level
