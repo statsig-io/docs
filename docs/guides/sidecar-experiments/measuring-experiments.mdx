@@ -63,3 +63,18 @@ window.postExperimentCallback = function(statsigClient, experimentIds) {
    */
 }
 ```
+
+## Persisting stableID across subdomains
+Statsig uses `localStorage` as the preferred mechanism for storing the user's stableID. Localstorage keys do not persist across any origin boundaries including across subdomains. For example, a user visiting `https://example.com`, `https://show.example.com` and `https://account.example.com` would be issued three distinct stableIDs. 
+
+If you are assigning a user to a test on one subdomain, and tracking behavior for metrics purposes on a different subdomain, you'll need to have this solution in place to ensure Statsig can properly attribute cross-origin behavior to the Test Group assignment that took place on the initial experiment domain. 
+
+To install, simply paste the first script tag shown below directly above your Sidecar script.
+
+```html
+<!-- cross domain id script -->
+<script>function getUUID(){if(crypto&&crypto.randomUUID)return crypto.randomUUID();let t=()=>Math.floor(65536*Math.random()).toString(16).padStart(4,"0");return`${t()}${t()}-${t()}-4${t().substring(1)}-${t()}-${t()}${t()}${t()}`}function setUUICookie(t){var a=new Date;a.setMonth(a.getMonth()+12);var o=window.location.host.split(".");o.length>2&&o.shift();var s=`.${o.join(".")}`;document.cookie=`statsiguuid=${t||getUUID()};Expires=${a};Domain=${s}`}var statsigUUIDCookieVal=null,statsigUUIDLocalStorageVal=localStorage.getItem("STATSIG_LOCAL_STORAGE_STABLE_ID")||null;if(document.cookie.match(/statsiguuid=([\w-]+);?/))var[,statsigUUIDCookieVal]=document.cookie.match(/statsiguuid=([\w-]+);?/);if(statsigUUIDCookieVal&&statsigUUIDLocalStorageVal&&statsigUUIDCookieVal===statsigUUIDLocalStorageVal);else if(statsigUUIDCookieVal&&statsigUUIDLocalStorageVal&&statsigUUIDCookieVal!==statsigUUIDLocalStorageVal)localStorage.setItem("STATSIG_LOCAL_STORAGE_STABLE_ID",statsigUUIDCookieVal);else if(statsigUUIDCookieVal&&!statsigUUIDLocalStorageVal)localStorage.setItem("STATSIG_LOCAL_STORAGE_STABLE_ID",statsigUUIDCookieVal);else{var t=getUUID();localStorage.setItem("STATSIG_LOCAL_STORAGE_STABLE_ID",t),setUUICookie(t)}</script>
+
+<!-- sidecar script below -->
+<script src="https://cdn.jsdelivr.net/npm/statsig-sidecar/dist/index.min.js?apikey=[client-YOUR-STATSIG-CLIENT-KEY]"></script>
+```
