@@ -63,3 +63,18 @@ window.postExperimentCallback = function(statsigClient, experimentIds) {
    */
 }
 ```
+
+## Persisting stableID across subdomains
+Statsig uses `localStorage` as the preferred mechanism for storing the user's stableID. Localstorage keys do not persist across any origin boundaries including across subdomains. For example, a user visiting `https://example.com`, `https://show.example.com` and `https://account.example.com` would be issued three distinct stableIDs. 
+
+If you are assigning a user to a test on one subdomain, and tracking behavior for metrics purposes on a different subdomain, you'll need to have this solution in place to ensure Statsig can properly attribute cross-origin behavior to the Test Group assignment that took place on the initial experiment domain. 
+
+To install, simply paste the first script tag shown below directly above your Sidecar script.
+
+```html
+<!-- cross domain id script -->
+<script>!function(){let t="STATSIG_LOCAL_STORAGE_STABLE_ID";function e(){if(crypto&&crypto.randomUUID)return crypto.randomUUID();let t=()=>Math.floor(65536*Math.random()).toString(16).padStart(4,"0");return`${t()}${t()}-${t()}-4${t().substring(1)}-${t()}-${t()}${t()}${t()}`}let i=null,n=localStorage.getItem(t)||null;if(document.cookie.match(/statsiguuid=([\w-]+);?/)&&([,i]=document.cookie.match(/statsiguuid=([\w-]+);?/)),i&&n&&i===n);else if(i&&n&&i!==n)localStorage.setItem(t,i);else if(i&&!n)localStorage.setItem(t,i);else{let o=e();localStorage.setItem(t,o),function t(i){let n=new Date;n.setMonth(n.getMonth()+12);let o=window.location.host.split(".");o.length>2&&o.shift();let s=`.${o.join(".")}`;document.cookie=`statsiguuid=${i||e()};Expires=${n};Domain=${s}`}(o)}}();</script>
+
+<!-- sidecar script below -->
+<script src="https://cdn.jsdelivr.net/npm/statsig-sidecar/dist/index.min.js?apikey=[client-YOUR-STATSIG-CLIENT-KEY]"></script>
+```
