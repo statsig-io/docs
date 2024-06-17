@@ -20,7 +20,7 @@ At the unit level, count metrics run a COUNT(1) across their metric source.
 
 At the group level, the mean is calculated as the SUM of the unit-level count, divided by the count of UNIQUE UNITS exposed to the experiment.
 
-This would like like the SQL below:
+This would look like the SQL below:
 
 ```
 -- Unit Level

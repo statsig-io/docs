@@ -17,7 +17,7 @@ At the unit level, unit count metrics create a 1/0 flag for if they participated
 
 At the group level, the mean is calculated as the SUM of the unit-level flags, divided by the count of UNIQUE UNITS exposed to the experiment.
 
-This would like like the SQL below:
+This would look like the SQL below:
 
 ```
 -- Unit Level
