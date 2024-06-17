@@ -1,5 +1,5 @@
 ---
-title: Percentile Metrics Metrics
+title: Percentile Metrics
 sidebar_label: Percentile
 ---
 
