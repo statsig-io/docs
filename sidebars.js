@@ -357,6 +357,7 @@ module.exports = {
           items: [
             "statsig-warehouse-native/guides/quick-start",
             "statsig-warehouse-native/guides/running_a_poc",
+            "statsig-warehouse-native/guides/playground_eval",
             // "statsig-warehouse-native/guides/connect",
             // "statsig-warehouse-native/guides/experiments",
             // "statsig-warehouse-native/guides/sql",
