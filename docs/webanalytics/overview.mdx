@@ -31,7 +31,14 @@ Get YOUR_CLIENT_KEY from Project Settings -> Keys & Environments. Reveal the Cli
 
 Once your changes are live, you'll start to see the events flowing in your metrics page: https://console.statsig.com/metrics/events
 
-# Considerations
+# Event Capture
+
+Out of the box, autocapture includes:
+* Click events with click target info, current page url (`auto_capture::click`)
+* Page View Events with page url and query string values ((`auto_capture::page_view`))
+* Page view duration, page scroll depth (`auto_capture::page_view_end`)
+* Form Submission Events (`auto_capture::form_submit`)
+* Page Performance data (`auto_capture::performance`)
 
 For single page apps, or for more complex scenarios, look up how to [log events using Javascript](/client/javascript-sdk#logging-an-event).
 
