@@ -54,9 +54,16 @@ You can read more about StatsigClient initialization [here](/client/javascript-s
 
 
 
+### getConfig is now getDynamicConfig
+Make sure you update your `getConfig` callsites to call the new method, `getDynamicConfig`.  In addition, `DynamicConfig` and `Layer` are no longer classes, but javascript objects.  There are still convenience `get` methods, which should remain unchanged.
 
+```js
+// old
+statsig.getConfig('config_name');
 
-
+// new
+statsigClient.getDynamicConfig('config_name');
+```
 
 
 
