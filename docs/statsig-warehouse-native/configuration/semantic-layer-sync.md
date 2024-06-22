@@ -44,4 +44,4 @@ To use this example template, follow these steps:
 <img width="1031" alt="Untitled" src="https://github.com/statsig-io/semantic_layer/assets/5475308/4442dd9d-313f-4b16-a978-59513e4e8469" />
 
 <br/>
-This example serves as a basic template. We encourage testing and further development to meet production standards. Please share any feedback or improvements you've made to this workflow to our [support team](mailto:support@statsig.com). Thank you for any contributions!
+This example serves as a basic template. We encourage testing and further development to meet production standards. Please share any feedback or improvements you've made to this workflow with us in [Slack](https://statsig.com/slack) or on [email](mailto:support@statsig.com). Thank you for any contributions!
