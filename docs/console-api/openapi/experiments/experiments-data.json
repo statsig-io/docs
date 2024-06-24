@@ -410,6 +410,24 @@
                       },
                       "type": "string"
                     }
+                  },
+                  "isAnalysisOnly": {
+                    "type": "boolean",
+                    "x-stoplight": {
+                      "id": "4c0bgsq6dkv6q"
+                    }
+                  },
+                  "assignmentSourceExperimentName": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "14j7ty9atvpf0"
+                    }
+                  },
+                  "assignmentSourceName": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "fbk00ybhkztff"
+                    }
                   }
                 }
               },
@@ -421,6 +439,38 @@
                     "idType": "userID",
                     "layerID": "a_layer",
                     "creatorID": "35sClJFs8l0y5uRQhDwUDo"
+                  }
+                },
+                "example-2": {
+                  "value": {
+                    "name": "analysis_only_experiment",
+                    "description": "helpful summary of what this experiment does",
+                    "idType": "userID",
+                    "layerID": "a_layer",
+                    "isAnalysisOnly": true,
+                    "assignmentSourceExperimentName": "assignment_source_experiment",
+                    "assignmentSourceName": "statsig_forwarded_exposures",
+                    "creatorID": "1SlBSAxsWWWh1MxHGCG6hZ",
+                    "groups": [
+                      {
+                        "name": "some_group_name",
+                        "size": 50,
+                        "parameterValues": {},
+                        "description": ""
+                      },
+                      {
+                        "name": "control",
+                        "size": 50,
+                        "parameterValues": {
+                          "campaign_experiment_group_id": "6658ef8759989ef904d88287",
+                          "is_good": true,
+                          "metadata": {
+                            "key1": "val1"
+                          }
+                        },
+                        "description": ""
+                      }
+                    ]
                   }
                 }
               }
