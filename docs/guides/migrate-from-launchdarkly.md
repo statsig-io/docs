@@ -15,9 +15,9 @@ Statsig has **two migration tools** to automate recreating feature flags you alr
 ### The distinction between experiments and feature flags
 Statsig deliberately distinguishes between feature flags (for immediate action) and experiments (for deeper inquiry). They can be used together or separately. 
 
-**On LaunchDarkly, everything is a feature flag**, and feature flags may have variants and return different types.
+1. **On LaunchDarkly, everything is a feature flag**, and feature flags may have variants and return different types.
 
-**On Statsig, feature gates are purely boolean.** When deciding to ship a feature, this becomes a matter of flipping a switch. There are no variables within the feature that must be altered or replaced.
+2. **On Statsig, feature gates are purely boolean.** When deciding to ship a feature, this becomes a matter of flipping a switch. There are no variables within the feature that must be altered or replaced.
 
 In relation to multi-type flags on LaunchDarkly, Statsig supports two important a structures:
 [Dynamic Configurations](https://docs.statsig.com/dynamic-config) for pure configurations or entitlements types of use cases. Supports multi-type return values.
@@ -25,11 +25,9 @@ In relation to multi-type flags on LaunchDarkly, Statsig supports two important 
 
 In comparison to boolean flags, multi-type flags offered by LaunchDarkly introduce a layer of complexity that can obscure the path to full implementation.
 
-When the time comes to transition to full deployment and remove the flag, references to those multi-type configurations need to be replaced, introducing potential points of failure and delaying the shipping process. This necessitates extra diligence and refactoring that could have been avoided with a simple boolean check. And, as we all know, teams may already be slow in cleaning up feature gates.
+When the time comes to transition to full deployment and remove the flag, references to those multi-type configurations need to be replaced, introducing potential points of failure and delaying the shipping process. This necessitates extra diligence and refactoring that could have been avoided with a simple boolean check. And, as we all know, teams may already be slow in cleaning up feature gates. More than a matter of convenience, this is a strategic approach that enhances decision-making clarity, accelerates the release process, and helps cultivate true experiment culture without slowing down development speed.
 
-More than a matter of convenience, this is a strategic approach that enhances decision-making clarity, accelerates the release process, and helps cultivate true experiment culture without slowing down development speed.
-
-## Environments
+### Environments
 In Statsig, the hierarchy is designed with **a single project that contains multiple environments**, such as development, staging, and production. This structure allows for centralized management of feature flags and experiments across different stages within the same project, thus simplifying governance. Here's an example of a flag which is only on in development, which was imported using our [open source migration script](https://docs.statsig.com/guides/open-source-script) from LaunchDarkly:
 
 ![image](https://github.com/statsig-io/docs/assets/173515951/76489c32-3c65-4096-9d07-de55f4332faf)
