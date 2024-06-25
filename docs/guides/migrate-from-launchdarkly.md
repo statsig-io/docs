@@ -3,7 +3,7 @@ sidebar_label: Migrate from LaunchDarkly
 title: Migrate your feature flags from LaunchDarkly
 ---
 
-Migrating from LaunchDarkly to Statsig is a strategic move that can lead to more efficient feature flag management and a stronger experimentation culture. By following this guide, you'll be well-equipped to make the transition with confidence.
+Migrating from LaunchDarkly to Statsig is a strategic move that can lead to more efficient feature flag management and a stronger experimentation culture. By following this guide, you'll be well equipped to make the transition with confidence.
 
 Statsig has **two migration tools** to automate recreating feature flags you already have in LaunchDarkly:
 
@@ -52,6 +52,6 @@ Currently, [we haven’t hooked role definition into auto provisioning yet.](htt
 
 If your **project** within the **organization** is set to open, users will default to having access. For private projects, they must request access.
 
-Each JIT-provisioned user would have member access. You will to [update their roles manually](https://docs.statsig.com/access-management/projects)/via API. It’s a similar pattern with teams and roles right now.
+Each JIT-provisioned user would have member access. You will need to [update their roles manually](https://docs.statsig.com/access-management/projects)/via API. It’s a similar pattern with teams and roles right now.
 
 This is on our roadmap!
