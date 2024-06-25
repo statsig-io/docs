@@ -2,6 +2,7 @@
 sidebar_label: UI Based Tool
 title: UI-Based Tool
 ---
+You can follow this guide to use Statsig's built in Launchdarkly migration tool. Please note that this UI-based tool only imports the "production" environment at the moment.
 
 ## **What you need[](https://docs.statsig.com/guides/migrate-from-launchdarkly#what-you-need)**
 
