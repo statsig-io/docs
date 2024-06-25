@@ -23,7 +23,7 @@ In relation to multi-type flags on LaunchDarkly, Statsig supports two important 
 [Dynamic Configurations](https://docs.statsig.com/dynamic-config) for pure configurations or entitlements types of use cases. Supports multi-type return values.
 [Experiments](https://docs.statsig.com/experiments-plus) for measuring performance between different variations. Supports multi-type return values.
 
-In comparison to boolean flags, multi-type flags offered by Launchdarkly introduce a layer of complexity that can obscure the path to full implementation.
+In comparison to boolean flags, multi-type flags offered by LaunchDarkly introduce a layer of complexity that can obscure the path to full implementation.
 
 When the time comes to transition to full deployment and remove the flag, references to those multi-type configurations need to be replaced, introducing potential points of failure and delaying the shipping process. This necessitates extra diligence and refactoring that could have been avoided with a simple boolean check. And, as we all know, teams may already be slow in cleaning up feature gates.
 
@@ -48,7 +48,7 @@ Currently, `false` is the global default option for feature flags in Statsig's S
 ### Authentication
 Are you using SSO? Are you assigning custom roles via SSO? If so, read on.
 
-Currently, [we haven’t hooked role definition into auto provisioning yet.](https://docs.launchdarkly.com/home/account/okta#assigning-custom-roles-in-okta) For automatic provisioning with SSO, new users authenticated by Okta can be automatically provisioned into a Statsig **organization**.
+Currently, [we haven’t hooked role definition into auto provisioning yet.](https://docs.LaunchDarkly.com/home/account/okta#assigning-custom-roles-in-okta) For automatic provisioning with SSO, new users authenticated by Okta can be automatically provisioned into a Statsig **organization**.
 
 If your **project** within the **organization** is set to open, users will default to having access. For private projects, they must request access.
 
