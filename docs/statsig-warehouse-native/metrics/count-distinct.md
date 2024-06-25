@@ -5,7 +5,7 @@ sidebar_label: Count Distinct
 
 ## Summary
 
-Count distinct metrics calculate the unique values observed in a column of a metric source. This is calculate per-unit, so the total is the number of unique unit-value pairs.
+Count distinct metrics calculate the unique values observed in a column of a metric source. This is calculated per-unit, so the total is the number of unique unit-value pairs.
 
 ### Use Cases
 
