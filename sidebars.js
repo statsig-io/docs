@@ -61,6 +61,19 @@ module.exports = {
                 "guides/nextjs-page-router-feature-flags",
               ],
             },
+            {
+              type: "category",
+              label: "Migrate from LaunchDarkly",
+              link: {
+                type: "doc",
+                id: "guides/migrate-from-launchdarkly",
+              },
+              items: [
+                "guides/open-source-script",
+                "guides/ui-based-tool"
+              ]
+
+            },
             "guides/synchronized-launch",
             "guides/featureflags-or-experiments",
             "guides/experimentation-program",
