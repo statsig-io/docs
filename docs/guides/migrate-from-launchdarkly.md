@@ -15,13 +15,13 @@ Statsig has **two migration tools** to automate recreating feature flags you alr
 ### The distinction between experiments and feature flags
 Statsig deliberately distinguishes between feature flags (for immediate action) and experiments (for deeper inquiry). They can be used together or separately. 
 
-1. **On LaunchDarkly, everything is a feature flag**, and feature flags may have variants and return different types.
-
-2. **On Statsig, feature gates are purely boolean.** When deciding to ship a feature, this becomes a matter of flipping a switch. There are no variables within the feature that must be altered or replaced.
+- **On LaunchDarkly, everything is a feature flag**, and feature flags may have variants and return different types.
+- **On Statsig, feature gates are purely boolean.** When deciding to ship a feature, this becomes a matter of flipping a switch. There are no variables within the feature that must be altered or replaced.
 
 In relation to multi-type flags on LaunchDarkly, Statsig supports two important a structures:
-[Dynamic Configurations](https://docs.statsig.com/dynamic-config) for pure configurations or entitlements types of use cases. Supports multi-type return values.
-[Experiments](https://docs.statsig.com/experiments-plus) for measuring performance between different variations. Supports multi-type return values.
+
+- [Dynamic Configurations](https://docs.statsig.com/dynamic-config) for pure configurations or entitlements types of use cases. Supports multi-type return values.
+- [Experiments](https://docs.statsig.com/experiments-plus) for measuring performance between different variations. Supports multi-type return values.
 
 In comparison to boolean flags, multi-type flags offered by LaunchDarkly introduce a layer of complexity that can obscure the path to full implementation.
 
