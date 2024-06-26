@@ -7,7 +7,7 @@ sidebar_label: Count Distinct
 
 Count distinct metrics calculate the unique values observed in a column of a metric source. This is calculated per-unit, so the total is the number of unique unit-value pairs.
 
-Note: for retention metrics, or other metrics where you want to count distinct occurences of the experiment's unit of assignment (e.g. the user_id in a user_id experiment), you should use unit_count metrics instead. These achieve the same result, but more efficiently calculate and store the metric data.
+Note: for retention metrics, or other metrics where you want to count distinct occurrences of the experiment's unit of assignment (e.g. the user_id in a user_id experiment), you should use unit_count metrics instead. These achieve the same result, but more efficiently calculate and store the metric data.
 
 ### Use Cases
 
