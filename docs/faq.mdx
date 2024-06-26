@@ -95,12 +95,15 @@ You can also peek into our open source SDKs [here](https://github.com/statsig-io
 
 A lot of times people assume that we keep track of a list of all ids and what group they were assigned to for experiments, or which IDs passed a certain feature gate.  While our data pipelines keep track of which users were exposed to which experiment variant in order to generate experiment results, we do not cache previous evaluations and maintain distributed evaluation state across client and server sdks.  That model doesn't scale - we've even talked to customers who were using an implementation like that in the past, and were paying more for a Redis instance to maintain that state than they ended up paying to use Statsig instead.
 
-## When I increase the rollout % of a rule on a feature gate, will users who were passing the rule continue to pass?
+## When I increase/decrease the rollout percentage of a rule on a feature gate, will users who were passing the rule continue to pass?
 
-Yes. For example, if your rule was passing 10%, and you increase it to 20%, the original 10% users will still pass, and an additional 10% will change from fail to pass. 
+Yes. For example, if your rule was passing 10%, and you increase it to 20%, the original 10% users will still pass, and an additional 10% will change from fail to pass. When reducing the rollout percentage from 20% back to 10%, the original 10% of passing users will be restored. If you want to force those 10% to be reshuffled, you need to "resalt" the gate.
 
-If you find a bug with the rollout, disable the gate, fix the bug and then re-enable the gate - Statsig will maintain the set of users exposed to the rollout. Reducing the rollout % and then increasing it will cause users to be shuffled and we don't recommend doing this. 
+## When I increase/decrease the allocation percentage of an experiment, will users who were allocated continue to be allocated?
 
+When increasing the allocation percentage of an experiment, users who were not allocated will be added to the existing set of allocated users up to the newly defined allocation percentage.
+
+When *decreasing* the allocation percentage of an experiment, the eligible users are reshuffled, so the same users who were allocated may no longer be allocated to the experiment at a given percentage rollout.
 
 
 ## What domains do I need to whitelist for Content Security Policy (CSP)?  
