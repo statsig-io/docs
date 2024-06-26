@@ -2,7 +2,7 @@
 sidebar_label: Open Source Script
 title: Open-Source Script
 ---
-This script is designed to help automate some of the migration of feature flags from LaunchDarkly to Statsig. It fetches feature flags from LaunchDarkly, translates them into Statsig's format, and creates corresponding feature gates in Statsig. Additionally, it tracks the migration status and details in a CSV file.
+[This script](https://github.com/statsig-io/launchDarkly_migration_script_template) is designed to help automate some of the migration of feature flags from LaunchDarkly to Statsig. It fetches feature flags from LaunchDarkly, translates them into Statsig's format, and creates corresponding feature gates in Statsig. Additionally, it tracks the migration status and details in a CSV file.
 
 ## Considerations
 This script should work out of the box. I'd suggesting getting started with a test environment of 5-10 flags. However, before running the script on a large scale, consider the following:
