@@ -8,6 +8,9 @@ sidebar_label: Loading Pulse
 
 Statsig's experimentation engine runs the necessary setup, diagnostics, and transformations required to generate the data points that power statistical experiment analysis. In Warehouse Native, this consists of a series of query jobs (referred to as a DAG, or Directed Acyclic Graph) that take data from your sources and metric configurations to a final result set.
 
+Controls for reloads are available on the pulse results page:
+![Pulse Load Controls](https://github.com/statsig-io/docs/assets/102695539/f6c1aa47-8d6e-4b21-96ac-f2281d0d0491)
+
 ### Types of Reloads
 
 Statsig offers a number of ways to reload data:
