@@ -27,8 +27,8 @@ of each step is clear to end users, and you can easily pull from multiple source
 When you analyze an experiment with a Funnel metric, you'll see the overall conversion impact for the funnel as well as step-wise conversion rate changes. This is a powerful way to understand
 where your gains in a given funnel come from, and if increased conversion in one step leads to lower conversion further down.
 
-* **Overall Results** - The upper-most "OVERALL" metric represents the number of users that entered the funnel (by viewing a "Product Page") and fully completed the funnel (by converting on the final event, "Purchase").
-* **Stepwise Results** - Each subsequent step in the funnel is represented by  _prior step => next step_. In the example below, we can see that the final step is _checkout page => purchase_, which in plain english indicates "how many users that visited the checkout page proceeded with the purchase". 
+- **Overall Results** - The upper-most "OVERALL" metric represents the number of users that entered the funnel (by viewing a "Product Page") and fully completed the funnel (by converting on the final event, "Purchase").
+- **Stepwise Results** - Each subsequent step in the funnel is represented by _prior step => next step_. In the example below, we can see that the final step is _checkout page => purchase_, which in plain english indicates "how many users that visited the checkout page proceeded with the purchase".
 
 In the funnel metrics below, there are two test groups, both of which are outperforming the control group. It's clear at a glance that this increase was driven by increased conversion on the Call To Action button.
 
