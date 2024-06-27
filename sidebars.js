@@ -61,6 +61,19 @@ module.exports = {
                 "guides/nextjs-page-router-feature-flags",
               ],
             },
+            {
+              type: "category",
+              label: "Migrate from LaunchDarkly",
+              link: {
+                type: "doc",
+                id: "guides/migrate-from-launchdarkly",
+              },
+              items: [
+                "guides/open-source-script",
+                "guides/ui-based-tool"
+              ]
+
+            },
             "guides/synchronized-launch",
             "guides/featureflags-or-experiments",
             "guides/experimentation-program",
@@ -71,7 +84,6 @@ module.exports = {
             "guides/testing",
             "guides/uptime",
             "guides/fomo",
-            "guides/migrate-from-launchdarkly",
             "guides/statsig-id-resolver",
           ],
         },
@@ -357,6 +369,7 @@ module.exports = {
           items: [
             "statsig-warehouse-native/guides/quick-start",
             "statsig-warehouse-native/guides/running_a_poc",
+            "statsig-warehouse-native/guides/playground_eval",
             // "statsig-warehouse-native/guides/connect",
             // "statsig-warehouse-native/guides/experiments",
             // "statsig-warehouse-native/guides/sql",
