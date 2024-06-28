@@ -178,10 +178,11 @@ You can log one or more exposure events with this API.
 user: object, // must have a userID or a customID to match with event data.
 experimentName: string,
 group: string,
+ruleID: string,
 time?: number | string, // unix timestamp, optional (request time used if not set)
 ```
 
-For each exposure object, the `"group"` parameter should match the name of your Test Group in your experiment config.
+For each exposure object, either the `"group"` or `"ruleID"` parameter must be provided. The `"group"` parameter should match the exact name of the group in your experiment's config.
 [![Test group name](https://user-images.githubusercontent.com/2018204/234073412-92dde2b7-7a5d-442f-a539-0c9c1b426a5a.png)
 
 _example experiment exposure_
@@ -201,11 +202,12 @@ curl \
 user: object, // must have a userID or a customID to match with event data.
 gateName: string,
 group: string,
+ruleID: string,
 passes: boolean,
 time?: number | string, // unix timestamp, optional (request time used if not set)
 ```
 
-For each exposure object, the `"group"` parameter should match the name of your Rule in your gate config.
+For each exposure object, either the `"group"` or `"ruleID"` parameter must be provided. The `"group"` should match the exact name of your Rule in your gate config.
 ![Gate Rule Name](https://user-images.githubusercontent.com/2018204/234073618-e5f1e3c0-9766-4bd3-b927-bad155bbea05.png)
 
 
