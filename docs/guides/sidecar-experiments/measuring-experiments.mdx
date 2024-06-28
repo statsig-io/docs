@@ -9,15 +9,17 @@ Sidecar comes loaded with an event collection tool that will autocapture various
 #### Autocapture tracks the following events and properties automatically:
 
 **`auto_capture::click`**
+
 |Property|description|example value (strings)|
-|----|----|----|
+|--------|----------|-------------|
 |value|Tag name of clicked element|button|
 |metadata.content|`innerText` value of the clicked element|Add to Cart|
 |metadata.page_url|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
 
 **`auto_capture::page_view`**
+
 |Property|description|example value (strings)|
-|----|----|----|
+|--------|----------|-------------|
 |value|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
 |metadata.page_url|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
 |metadata.queryParams|A json representation of query string params| {\"utm\":\"FALL_2024\"}|
@@ -25,8 +27,9 @@ Sidecar comes loaded with an event collection tool that will autocapture various
 |metadata.title|Title of the current webpage from `<title>`|Homepage|
 
 **`auto_capture::page_view_end`**
+
 |Property|description|example value (strings)|
-|----|----|----|
+|--------|----------|-------------|
 |value|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
 |metadata.pageViewLength|total number of seconds spent on the page|6137|
 |metadata.page_url|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
