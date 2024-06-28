@@ -29,9 +29,12 @@ export type StatsigUser =
 ```typescript
 export type StatsigOptions = {
   api: string;
+  apiForDownloadConfigSpecs: string;
+  apiForGetIdLists: string;
   bootstrapValues: string | null;
   environment: StatsigEnvironment | null;
   rulesUpdatedCallback: RulesUpdatedCallback | null;
+  logger: LoggerInterface;
   localMode: boolean;
   initTimeoutMs: number;
   dataAdapter: IDataAdapter | null;
@@ -39,7 +42,34 @@ export type StatsigOptions = {
   idListsSyncIntervalMs: number;
   loggingIntervalMs: number;
   loggingMaxBufferSize: number;
+  disableDiagnostics: boolean;
+  initStrategyForIP3Country: InitStrategy;
+  initStrategyForIDLists: InitStrategy;
+  postLogsRetryLimit: number;
+  postLogsRetryBackoff: RetryBackoffFunc | number;
+  disableRulesetsSync: boolean;
+  disableIdListsSync: boolean;
+  disableAllLogging: boolean;
 };
+
+export type RulesUpdatedCallback = (rulesJSON: string, time: number) => void;
+export type RetryBackoffFunc = (retriesRemaining: number) => number;
+
+export type StatsigEnvironment = {
+  tier?: 'production' | 'staging' | 'development' | string;
+  [key: string]: string | undefined;
+};
+
+export type InitStrategy = 'await' | 'lazy' | 'none';
+
+export interface LoggerInterface {
+  debug?(message?: any, ...optionalParams: any[]): void;
+  info?(message?: any, ...optionalParams: any[]): void;
+  warn(message?: any, ...optionalParams: any[]): void;
+  error(message?: any, ...optionalParams: any[]): void;
+  logLevel: 'none' | 'debug' | 'info' | 'warn' | 'error';
+}
+
 ```
 
 ### Type StatsigEnvironment
@@ -52,6 +82,60 @@ export type StatsigEnvironment = {
 };
 ```
 
+### Type FeatureGate
+
+```typescript
+export type FeatureGate = {
+  readonly name: string;
+  readonly ruleID: string;
+  readonly idType: string | null;
+  readonly value: boolean;
+  readonly evaluationDetails: EvaluationDetails | null;
+  readonly groupName: null; // deprecated
+};
+```
+
+### Type DynamicConfig
+
+```typescript
+export default class DynamicConfig {
+  name: string;
+  value: Record<string, unknown>;
+  get<T>(
+    key: string,
+    defaultValue: T,
+    typeGuard: ((value: unknown) => value is T | null) | null = null,
+  ): T;
+  getValue(
+    key: string,
+    defaultValue?: boolean | number | string | object | Array<any> | null,
+  ): unknown | null;
+  getRuleID(): string;
+  getGroupName(): string | null;
+  getIDType(): string | null;
+  getEvaluationDetails(): EvaluationDetails | null;
+```
+
+### Type Layer
+
+```typescript
+export default class Layer {
+  name: string;
+  public get<T>(
+    key: string,
+    defaultValue: T,
+    typeGuard: ((value: unknown) => value is T) | null = null,
+  ): T;
+  getValue(
+    key: string,
+    defaultValue?: boolean | number | string | object | Array<any> | null,
+  ): unknown | null;
+  getRuleID(): string;
+  getGroupName(): string | null;
+  getAllocatedExperimentName(): string | null;
+  getEvaluationDetails(): EvaluationDetails | null;
+```
+
 ### DataAdapter
 
 ```typescript
@@ -62,4 +146,28 @@ export interface IDataAdapter {
   shutdown(): Promise<void>;
   supportsPollingUpdatesFor(key: DataAdapterKey): boolean;
 }
+```
+
+### EvaluationDetails
+
+```typescript
+export class EvaluationDetails {
+  readonly configSyncTime: number;
+  readonly initTime: number;
+  readonly serverTime: number;
+  readonly reason: EvaluationReason;
+}
+```
+
+### EvaluationReason
+
+```typescript
+export type EvaluationReason =
+  | 'Network'
+  | 'LocalOverride'
+  | 'Unrecognized'
+  | 'Uninitialized'
+  | 'Bootstrap'
+  | 'DataAdapter'
+  | 'Unsupported';
 ```
