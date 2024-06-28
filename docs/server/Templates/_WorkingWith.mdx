@@ -32,6 +32,6 @@ Now that you have a Feature Gate or an Experiment set up, you may want to track 
 
 ### Retrieving Feature Gate Metadata
 
-In certain scenarios, it's beneficial to access detailed information about a feature gate, such as its current state for a specific user or additional contextual data. This can be accomplished effortlessly through the Get Feature Gate API. By providing the necessary user details and the name of the feature gate you're interested in, you can fetch this metadata to inform your application's behavior or for analytical purposes.
+In certain scenarios, you may need more information about a gate evaluation than just a boolean value.  For additional metadata about the evaluation, use the Get Feature Gate API, which returns a FeatureGate object
 
 <div>{props.getFeatureGate}</div>
