@@ -1,6 +1,6 @@
 ---
 title: Heterogeneous Treatment Effects
-sidebar_label: Het. Treatment Effects
+sidebar_label: Heterogeneous Effects
 slug: /experiments-plus/hte
 ---
 
