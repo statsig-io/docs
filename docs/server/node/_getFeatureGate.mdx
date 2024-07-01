@@ -1,0 +1,9 @@
+```jsx
+const showNewDesign = Statsig.getFeatureGate(user, 'new_homepage_design');
+// using updated network values
+if (showNewDesign.value && showNewDesign.evaluationDetails?.reason === 'Network') {
+  // show new design here
+} else {
+  // show old design here
+}
+```

@@ -1,0 +1,7 @@
+```py
+gate = statsig.get_feature_gate(StatsigUser("user-id"), "gate-name")
+details = gate.get_evaluation_details()
+if (details is not None and details.reason == "Unrecognized") {
+  // gate was not defined in the payload that initialized the sdk
+}
+```
