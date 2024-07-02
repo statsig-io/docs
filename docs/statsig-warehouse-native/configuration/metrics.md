@@ -128,3 +128,16 @@ These operators are similar to a SQL `LIKE` operator:
 This filter allows you to specify a **secondary** date/timestamp field that has to come after the user's enrollment to the experiment.
 
 By default, Statsig only considers metric data where the primary metric timestamp is after the user first saw the experimental intervention. However, you might have another field like "first_saw_content_at". You can use `Is After Exposure` to enforce that this secondary timestamp also takes place after the user's exposure.
+
+### SQL Filters
+
+SQL filters allow you to inject any SQL filter string into your metric definition, which will be validated before being saved. This is flexible and lets you interact with complex objects or do complex logic operations as needed to define your metrics.
+
+For example, the sql filter `(weight_lb)/pow(height_inches, 2) > 25` would be added to your metric source query for this metric as:
+
+```
+  SELECT
+    <columns>
+  FROM <source_table>
+  WHERE <other_filters> AND ((weight_lb)/pow(height_inches, 2) > 25)
+```
