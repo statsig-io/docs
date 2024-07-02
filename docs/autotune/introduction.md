@@ -17,7 +17,7 @@ Autotune is Statsig's [Bayesian Multi-Armed Bandit](./multi-armed-bandit.md), an
 Both Autotune products will test and measure different variations and their effect on a target metric.
 
 - The multi-armed bandit continuously adjusts traffic towards the best performing variations until it can confidently pick the best variation. The winning variation will then receive 100% of traffic.
-- The contextual bandit personalizes what variant a user sees based on "context" - or provided user/interaction attributes - to serve each user the variation predicted to be best (ie. personalization).
+- The contextual bandit personalizes what variant a user sees based on "context" - or provided user/interaction attributes - to serve each user the variation predicted to be best (i.e. personalization).
 
 Contextual Bandits are a subset of Multi-Armed Bandits; both seek to balance the "explore"/"exploit" problem - balancing between "exploiting" the current best known solution versus "exploring" to get more information about other solutions.
 
@@ -58,4 +58,4 @@ Autotune should be avoided in the following scenarios:
 1. When you have a complex ecosystem and want to understand secondary effects, tradeoffs between variants, and user behavior.
 2. When you are optimizing for complex metrics or delayed effects.
 
-For these cases, we recommend A/B testing with [Experiments\*](/experiments-plus). In general, it is also a best practice to run Autotunes within an experiment with a small (1-10%) holdout group to measure the impact of the Autotune.
+For these cases, we recommend A/B testing with [Experiments\*](/experiments-plus). In general, it is also a best practice to run Autotune within an experiment with a small (1-10%) holdout group to measure the impact of the Autotune.
