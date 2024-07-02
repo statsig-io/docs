@@ -1,0 +1,36 @@
+---
+title: Forward Proxy - Beta
+sidebar_label: Forward Proxy
+slug: /server/concepts/forward_proxy
+---
+
+
+## Statsig Forward Proxy 
+// TODO(eric) to fill
+
+### Use Case
+[TODO]
+1. Reduced dependency on Statsig Infrastructure Availability
+2. Improved performance through localization of download_config_spec to your cluster
+3. Support "push" config changes model
+
+### How Forward Proxy works
+
+## Integration with SDK 
+// TODO(xin): to fill
+:::info
+NOTE:  
+
+`Java/Kotlin`, `Python`, and `NodeJS` SDKs have beta versions which support a full integration with Statsig Forward Proxy including GRPC Mode integration with Statsig Forward Proxy.
+For other server sdks, there is no support on full integration yet, you can override download_config_spec api in StatsigOptions in order to integrate. You should use carefully and consult us. 
+:::
+You can now configure SDK network using different network protocol to integrate with Forward Proxy for different endpoints. 
+There are 3 network endpoints, download_config_specs,
+#### Example usage
+```typescript
+Statsig.initialize(server_key, )
+```
+
+```typescript
+```
+For information on your specific SDK language, see the language specific docs in the left hand column.
