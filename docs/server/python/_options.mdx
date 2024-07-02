@@ -6,7 +6,9 @@
   - You can set an environment tier with the `StatsigEnvironmentTier` enum or just as a `str`
 
 - **timeout**: `timeout: int = None`
-  - Enforces a minimum timeout on network requests from the SDK
+  - Enforces a minimum timeout on network requests from the SDK (unit = seconds)
+- **init_timeout**: `init_timeout: int = None`
+  - Sets the maximum timeout on download config specs and id lists network requests for initialization (unit = seconds)
 - **rulesets_sync_interval**: `rulesets_sync_interval: int = 10`
   - How often the SDK updates rulesets from Statsig servers
 - **idlists_sync_interval**: `idlists_sync_interval: int = 60`
