@@ -489,3 +489,5 @@ JIT
 hte
 substring
 casted
+AddToCart
+ViewItemDetail
