@@ -486,3 +486,8 @@ sharded
 outsized
 yml
 JIT
+hte
+substring
+casted
+AddToCart
+ViewItemDetail
