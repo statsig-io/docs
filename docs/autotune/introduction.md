@@ -14,10 +14,10 @@ Autotune and Autotune AI are Multi-Armed Bandit solutions that automatically fin
 
 Autotune is Statsig's [Bayesian Multi-Armed Bandit](./multi-armed-bandit.md), and Autotune AI is Statsig's [Contextual Bandit](./contextual-bandit.md).
 
-Autotunes will test and measure different variations and their effect on a target metric.
+Both Autotune products will test and measure different variations and their effect on a target metric.
 
-- The multi-armed bandit continuously adjusts traffic towards the best performing variations until it can confidently pick the best variation. The winning variation will then receive 100% of traffic
-- The contextual bandit personalizes what variant a user sees based on "context" - or provided user/interaction attributes - to serve each user the variation predicted to be best
+- The multi-armed bandit continuously adjusts traffic towards the best performing variations until it can confidently pick the best variation. The winning variation will then receive 100% of traffic.
+- The contextual bandit personalizes what variant a user sees based on "context" - or provided user/interaction attributes - to serve each user the variation predicted to be best (ie. personalization).
 
 Contextual Bandits are a subset of Multi-Armed Bandits; both seek to balance the "explore"/"exploit" problem - balancing between "exploiting" the current best known solution versus "exploring" to get more information about other solutions.
 
@@ -32,13 +32,13 @@ Our blog posts on [Multi-Armed Bandits](https://docs.statsig.com/autotune) and [
 | Identifies Best Variant    | Yes        | Yes                           | No                               | No                                       |
 | Consistent User Assignment | Yes        | No                            | No                               | No                                       |
 
-## Implementing Autotunes
+## Implementing Autotune
 
 Implementing an Autotune is as simple as checking an experiment in Statsig. After initialization, or on server SDKs, this comes with sub-millisecond latency.
 
-Autotunes have a JSON config associated with each variant, which will be returned by the SDK and can be used to modify elements of your webpage (e.g. an image URL or button color), or simply identify the variant so that you know which code to use.
+Autotune will have a JSON config associated with each variant, which will be returned by the SDK and can be used to modify elements of your webpage (e.g. an image URL or button color), or simply identify the variant so that you know which code to use.
 
-## When to use Autotunes
+## When to use Autotune
 
 Autotune has two major differences from A/B testing (Statsig Experiments):
 
@@ -47,7 +47,7 @@ Autotune has two major differences from A/B testing (Statsig Experiments):
 
 Because of these differences, Statsig recommends Autotune in the following scenarios:
 
-1. The cost of exposing users to a losing treatment is high. For example, sending new users to a landing page that is inferior may result in lost revenue or churn. While this may be a one-time loss, testing two user registration flows may result in users that never sign up. In this case, Autotune avoids permanently losing users since it can quickly adapt to feedback unlike a static A/B test
+1. The cost of exposing users to a losing treatment is high. For example, sending new users to a landing page that is inferior may result in lost revenue or churn. While this may be a one-time loss, testing two user registration flows may result in users that never sign up. In this case, Autotune avoids permanently losing users since it can quickly adapt to feedback unlike a static A/B test.
 2. You want the decision to be automated. Because Autotune automatically selects the winner, it requires no human decision-making. This is great for launching dozens of simultaneous tests, or for running a long-term unmonitored test.
 3. When it's okay for users to be exposed to different experiences upon return visits. For example, changing text or recommendation algorithms.
 4. When you have one simple metric to optimize for (eg. click-through rate) that has is an immediate effect of the test.
