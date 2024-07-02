@@ -68,11 +68,7 @@ module.exports = {
                 type: "doc",
                 id: "guides/migrate-from-launchdarkly",
               },
-              items: [
-                "guides/open-source-script",
-                "guides/ui-based-tool"
-              ]
-
+              items: ["guides/open-source-script", "guides/ui-based-tool"],
             },
             "guides/synchronized-launch",
             "guides/featureflags-or-experiments",
@@ -267,16 +263,6 @@ module.exports = {
           ],
         },
         "holdouts/introduction",
-        {
-          type: "category",
-          label: "Autotune",
-          link: {
-            type: "doc",
-            id: "autotune/introduction",
-          },
-          items: ["autotune/setup", "autotune/monitoring"],
-        },
-
         {
           type: "category",
           label: "Pulse",
@@ -575,6 +561,20 @@ module.exports = {
       type: "category",
       label: "Web Analytics",
       items: ["webanalytics/overview"],
+    },
+    {
+      type: "category",
+      label: "Autotune (Bandits)",
+      link: {
+        type: "doc",
+        id: "autotune/introduction",
+      },
+      items: [
+        "autotune/contextual-bandit",
+        "autotune/multi-armed-bandit",
+        "autotune/setup",
+        "autotune/monitoring",
+      ],
     },
     {
       type: "category",

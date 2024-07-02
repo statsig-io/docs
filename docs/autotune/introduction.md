@@ -1,10 +1,10 @@
 ---
-title: Autotune
+title: Autotune (Bandits)
 sidebar_label: Introduction
 slug: /autotune
 ---
 
-Autotune and Autotune AI automatically find the best variant among a group of candidates, while dynamically allocating traffic to optimize for a single target metric.
+Autotune and Autotune AI are Multi-Armed Bandit solutions that automatically find the best variant among a group of candidates, while dynamically allocating traffic to optimize for a single target metric.
 
 [Autotune](./multi-armed-bandit.md) (the Multi-Armed Bandit solution) allocates traffic towards high-performing variants and can eventually identify a winning variant.
 
@@ -14,7 +14,7 @@ Autotune and Autotune AI automatically find the best variant among a group of ca
 
 Autotune is Statsig's [Bayesian Multi-Armed Bandit](./multi-armed-bandit.md), and Autotune AI is Statsig's [Contextual Bandit](./contextual-bandit.md).
 
-Autotune will test and measure different variations and their effect on a target metric.
+Autotunes will test and measure different variations and their effect on a target metric.
 
 - The multi-armed bandit continuously adjusts traffic towards the best performing variations until it can confidently pick the best variation. The winning variation will then receive 100% of traffic
 - The contextual bandit personalizes what variant a user sees based on "context" - or provided user/interaction attributes - to serve each user the variation predicted to be best
