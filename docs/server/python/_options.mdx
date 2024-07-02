@@ -1,14 +1,16 @@
 `statsig.initialize()` takes an optional parameter `options` in addition to the secret key that you can provide to customize the Statsig client. Create a `StatsigOptions` class to pass in with the following available parameters:
 
+(unit of measure for time related options is seconds)
+
 - **tier**: `StatsigEnvironmentTier | str`, default `None`
 
   - Sets the environment tier (for gates to evaluate differently in development and production)
   - You can set an environment tier with the `StatsigEnvironmentTier` enum or just as a `str`
 
 - **timeout**: `timeout: int = None`
-  - Enforces a minimum timeout on network requests from the SDK (unit = seconds)
+  - Enforces a minimum timeout on network requests from the SDK
 - **init_timeout**: `init_timeout: int = None`
-  - Sets the maximum timeout on download config specs and id lists network requests for initialization (unit = seconds)
+  - Sets the maximum timeout on download config specs and id lists network requests for initialization
 - **rulesets_sync_interval**: `rulesets_sync_interval: int = 10`
   - How often the SDK updates rulesets from Statsig servers
 - **idlists_sync_interval**: `idlists_sync_interval: int = 60`
