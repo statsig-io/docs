@@ -13,12 +13,12 @@ For example, if Autotune AI has two variants and for user "Bob" they have the fo
 - Variant A: 6% ± 0.5%
 - Variant B: 4% ± 3%
 
-The user will be served model B, even though A has a higher prediction, because the "upside" of the prediction is 7% vs. A's 6.5%. A variant's prediction usually has higher variance when there's low sample, or when the relationship between features and outcome is still fuzzy. As more traffic is delivered, the uncertainty will shrink. After more samples, the values might go to:
+The user will be served model B, even though A has a higher prediction, because the "upside" of B's prediction is 7% vs. A's 6.5%. A variant's prediction usually has higher variance when there's low sample, or when the relationship between features and outcome is still fuzzy. As more traffic is delivered, the uncertainty will shrink. After more samples, the values might go to:
 
 - Variant A: 5.9% ± 0.4%
 - Variant B: 4.2% ± 1.5%
 
-In which case we'd pick A, since 6.3% > 5.7%.
+In which case Autotune would serve A, since 6.3% > 5.7%.
 
 Some helpful references:
 
