@@ -13,11 +13,13 @@ Rather than thinking in terms of Statsig entities (Feature Gates, Experiments, L
 Here is a suggested workflow:
 1. Create a parameter store for you team or project.  Parameter Stores are an object to hold related parameters.
 2. As you are adding to your mobile app, consider which variables you'd like to be controlled on the server-side, rather than hard coded into your app. These can be things like:
-   a. A boolean parameter to control access to a new feature.  Even though you may be used to using Feature Gates for boolean based feature management, start with a boolean parameter instead
-   b. A string parameter for a text resource that you may want to swap or experiment with
-   c. A number parameter that you use as input to an onboarding flow (onboarding_steps), a list length to truncate at, etc
-   ... and many more
-3. You can start simple with a static value for that paramter - whatever you would have hard coded into your app can be the static value
+
+- A boolean parameter to control access to a new feature.  Even though you may be used to using Feature Gates for boolean based feature management, start with a boolean parameter instead
+- A string parameter for a text resource that you may want to swap or experiment with
+- A number parameter that you use as input to an onboarding flow (onboarding_steps), a list length to truncate at, etc
+... and many more
+
+3. You can start simple with a static value for that parameter - whatever you would have hard coded into your app can be the static value
 4. Later, when your app is shipped and the feature is ready, you can remap that parameter to a feature gate/experiment/dynamic config/layer in order to test different variants, or target different variants
 5. When you are done experimenting, you can update the static value, or gate it to particular app versions, all in real time across you mobile apps that are already released.
 
@@ -25,6 +27,6 @@ Here is a suggested workflow:
 If you've had this problem already, you'll recognize the power immediately.  If you're just getting started using a Statsig SDK in your mobile app - start with Parameter Stores from the beginning.  Parameter Stores are inspired by [Facebook's Mobile Config](https://atscaleconference.com/mobile-configuration-at-meta-the-key-to-mobile-agile-development-at-scale/). [Uber's engineering blog](https://www.uber.com/blog/supercharging-a-b-testing-at-uber/) explains this same idea.  [Firebase Remote Config](https://firebase.google.com/docs/remote-config) works similarly.  The most serious companies in mobile use this to move faster, maintain backwards compatibility, and experiment more freely.  The extra configuration in the Statsig console is not as convenient as creating a gate, but it saves you in the future when your app version is shipped and does not hard code any Statsig entity values.  That's why we are only introducting Parameter Stores for mobile - your backend or website can usually be updated much more quickly, so you can swap out Statsig entities as you please.
 
 Parameter Stores are available in:
-- Android SDK v4.X.X+
-- iOS SDK vX.X.X+
-- @statsig/js-client v1.X.X+
+- Android SDK v4.33.0+
+- iOS SDK v1.45.0+
+- @statsig/js-client v1.4.0+
