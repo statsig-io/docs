@@ -34,6 +34,6 @@ Please out to our [support team](mailto:support@statsig.com), or in slack, if yo
 
 - [Autotune](/statsig-warehouse-native/features/autotune) is Statsig's multi-armed bandit solution, which balances explore and exploit to deliver the optimal global treatment to your users. This is a useful way to explore a high number of options and dynamically adjust traffic to avoid over-delivering underperforming variants.
 
-- Statsig also offers a Contextual Multi Armed Bandit [Alpha], which extends the multi-armed bandit by personalizing which experience is served to users depending on "context", or user/event attributes provided to the Statsig SDK. This balances explore-and exploit by optimizing for potential upside in its predictions.
+- Statsig also offers a Contextual Multi Armed Bandit, which extends the multi-armed bandit by personalizing which experience is served to users depending on "context", or user/event attributes provided to the Statsig SDK. This balances explore-and exploit by optimizing for potential upside in its predictions.
 
 Using both MABs is as simple as calling Statsig's getExperiment, and providing relevant attributes to the user object for the CMAB approach. Please out to our [support team](mailto:support@statsig.com), or in slack, if you're interested in exploring Contextual Multi-Armed Bandits.
