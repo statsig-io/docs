@@ -47,6 +47,16 @@ module.exports = {
             },
             {
               type: "category",
+              label: "Technology Guides",
+              items: [
+                "tech-guides/using-feature-flags-in-python",
+                "tech-guides/using-feature-flags-in-go",
+                "tech-guides/using-feature-flags-in-java",
+                "tech-guides/using-feature-flags-in-node",
+              ],
+            },
+            {
+              type: "category",
               label: "Technology-Specific Guides",
               link: {
                 type: "doc",
