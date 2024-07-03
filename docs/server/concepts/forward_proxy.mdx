@@ -24,13 +24,46 @@ NOTE:
 `Java/Kotlin`, `Python`, and `NodeJS` SDKs have beta versions which support a full integration with Statsig Forward Proxy including GRPC Mode integration with Statsig Forward Proxy.
 For other server sdks, there is no support on full integration yet, you can override download_config_spec api in StatsigOptions in order to integrate. You should use carefully and consult us. 
 :::
-You can now configure SDK network using different network protocol to integrate with Forward Proxy for different endpoints. 
-There are 3 network endpoints, download_config_specs,
-#### Example usage
+You can now configure SDK network using different network protocol to integrate with Statsig Forward Proxy for different endpoints. 
+There are 3 network endpoints SDK make requests to download_config_specs,get_id_lists, and log_events, and you can configure each endpoint 1. protocol being used 2. proxy address.
+
+#### Network protocol for different endpoints
+For `downlaod_config_specs` endpoint, where we get specs on evaluating gates/layers/experiments/configs 
+1. `http`: the default protocol. If SDK is initialized with http, it will poll config updates in background thread.
+2. `grpc_websocket`: Establish a grpc streaming from SDK to statsig forward proxy, and listen to updates being pushed from proxy servers. You have to use statsig forward proxy or have a similar proxy server in order to use grpc streaming.
+3. `grpc`: Unary RPC, behave similarly to HTTP protocol, after initialization, SDK poll changes from forward proxy server in background thread.  
+
+
+:::warning
+We are still adding support for log_events and get_id_lists endpoint within Forward Proxy
+::: 
+For `get_id_lists` endpoint, where we get big idlists 
+1. `http`: the default protocol. If SDK is initialized with http, it will poll idlists from forward proxy server or statsig server.
+2. `grpc_websocket`: Not supported
+3. `grpc`: Not supported
+
+
+For `log_events` endpoint, where we post exposure events and custom events.
+1. `http`: the default protocol. SDK will make POST Http request to flush all events to Statsig server, forward proxy server does not support this endpoint. 
+2. `grpc_websocket`: Not supported yet. 
+3. `grpc`: Not supported yet
+
+#### Listen to Config Change Example
 ```typescript
-Statsig.initialize(server_key, )
+const statsigOptions = {
+  proxyConfigs: {
+    downlaod_config_specs:  {
+      proxyAddress: proxyAddress // Your proxy address
+      protocol: "grpc_websocket"
+    }
+  }
+}
+Statsig.initialize(server_key, statsigOptions)
+// Statsig will use listen for config updates from statsig forward proxy using grpc_websocket protocl. And use http to get idlists and post log events from statsig servers.
 ```
 
-```typescript
-```
 For information on your specific SDK language, see the language specific docs in the left hand column.
+
+
+#### Coordinate SDK DataAdapater / DataStore with Forward Proxy Cache service
+In order to increase reliability of SDK during initialization, setup DataStore will help in case Forward Proxy is not available when initialized. If DataStore is set, SDK will try initailize with values from dataStore, and sync (listen or polling depends on setup) from forward proxy in background after initialization. It's recommended for SDK and Forward Proxy to share the same cache service for consistency and reduce cache I/O. 
