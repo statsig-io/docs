@@ -4,8 +4,12 @@ import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
 The `react-bindings` package exposes some hooks for convenience.
 
-:::warn
-When a hook is called, an exposure log is automatically triggered.  If the check only happens conditionally, or later in a dialog, you will over expose your experiment!  We recommend using the `useStatsigClient` for these cases where you need the value conditionally, and then issuing the check inline later.  Read on for more details.
+:::caution
+When a hook is called, an exposure log is automatically triggered. 
+If the check only happens conditionally, or later in a dialog, you will over expose your experiment!  
+
+We recommend using the `useStatsigClient` for these cases where you need the value conditionally, and then issuing the check inline later. 
+Read on for more details.
 :::
 
 ### FeatureGate Hooks

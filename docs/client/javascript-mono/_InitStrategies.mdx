@@ -1,0 +1,63 @@
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+## Overview
+
+When initializing `@statsig/js-client`'s `StatsigClient`, it's important to balance the need for the latest feature values with the need for immediate rendering of your application. The following strategies outline different initialization approaches and their trade-offs.
+
+If you require both "immediate rendering" and "latest values", we recommend [**Bootstrap Initialization**](#1-bootstrap-initialization).
+
+For other approaches:
+
+- [**Synchronous Initialization**](#2-synchronous-initialization): Provides immediate rendering with cached values (Possibly stale or no values initially).
+  - Will always be have "NoValues" for first time users
+- [**Asynchronous Initialization (Awaited)**](#3-asynchronous-initialization---awaited): Ensures the latest values but delays rendering until values are fetched.
+- [**Asynchronous Initialization (Not Awaited)**](#4-asynchronous-initialization---not-awaited): Provides immediate rendering with stale or no values initially, which update to the latest values mid-session. Values may switch when checked a second time after the latest values have been loaded. This mimics the old behavior of `StatsigProvider.waitForInitialization=false`
+
+### 1. Bootstrap Initialization
+> Offers latest values with immediate rendering
+
+Bootstrapping allows you to initialize the client with a JSON string. This approach ensures that values are immediately available without the client making any network requests. Note that you will be responsible for keeping these values up to date.
+
+Example:
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-init-strat-bootstrap.tsx" />
+
+### 2. Synchronous Initialization
+> Offers cached values and immediate rendering
+
+When calling `StatsigClient.initializeSync`, the client uses cached values if they are available. The client fetches new values in the background and updates the cache. This approach provides immediate rendering, but the values might be stale or absent during the first session.
+
+Example:
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-init-strat-cache.tsx" />
+
+### 3. Asynchronous Initialization - Awaited
+> Offers latest values but requires a loading state
+
+When calling `StatsigClient.initializeAsync`, the client loads values from the cache and fetches the latest values from the network. This approach waits for the latest values before rendering, which means it is not immediate but ensures the values are up-to-date.
+
+Example:
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-init-strat-await-async.tsx" />
+
+
+### 4. Asynchronous Initialization - Not Awaited
+
+If you want to fetch the latest values without awaiting the asynchronous call, you can call `initializeAsync` and catch the promise. 
+This approach provides immediate rendering with cached values initially, which will update to the latest values mid-session. 
+
+:::caution
+Be aware that the values may switch when checked a second time after the latest values have been loaded.
+:::
+
+Example:
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-init-strat-unawait-async.tsx" />
+
+These strategies help you balance the need for the latest feature values with the need for immediate application rendering based on your specific requirements.
+
+
+
+
+
+
