@@ -882,6 +882,7 @@ module.exports = {
           items: [
             "infrastructure/statsig_ip_ranges",
             "infrastructure/statsig_domains",
+            "infrastructure/managed-proxy",
             "infrastructure/custom_proxy",
             "infrastructure/reliability-faq",
           ],
