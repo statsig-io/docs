@@ -1,0 +1,26 @@
+---
+title: Initialization Strategies
+sidebar_label: Initialization Strategies
+slug: /client/javascript-sdk/init-strategies
+---
+
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../../sdks/_SDKDocsBuilder.mdx";
+
+import * as _InitStrats from "./_InitStrategies.mdx";
+export const InitStrats = _InitStrats;
+
+
+export const Result = SDKDocsBuilder(
+  {},
+  [
+    [InitStrats, {}]
+  ],
+  toc
+);
+
+<>{Result}</>
