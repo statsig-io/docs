@@ -51,6 +51,8 @@ type EvaluationCallbacks struct {
 	ConfigEvaluationCallback     func(name string, result DynamicConfig, exposure *ExposureEvent)
 	ExperimentEvaluationCallback func(name string, result DynamicConfig, exposure *ExposureEvent)
 	LayerEvaluationCallback      func(name string, param string, result DynamicConfig, exposure *ExposureEvent)
+	ExposureCallback             func(name string, exposure *ExposureEvent)
+	IncludeDisabledExposures     bool
 }
 
 type OutputLoggerOptions struct {
