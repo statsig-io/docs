@@ -17,7 +17,8 @@ import {
   StatsigOptions,
   Shutdown,
   CodeExamples,
-  EvaluationDetails
+  EvaluationDetails,
+  ParameterStore,
 } from "./Templates/index.mdx";
 
 import OnDeviceEvalProsAndCons from "./Templates/_OnDeviceEvalProsAndCons.mdx";
@@ -51,6 +52,9 @@ import MoreFAQs from "./javascript-mono/_faqs.mdx";
 import Options from "./javascript-mono/_options.mdx";
 import ShutdownSnippet from "./javascript-mono/_shutdown.mdx";
 import * as _typedGetters from "./javascript-mono/_typedGetters.mdx";
+import GetParameterStore from "./javascript-mono/_getParameterStore.mdx";
+import GetParameter from "./javascript-mono/_getParameter.mdx";
+
 export const TypedGetters = _typedGetters;
 
 export const Result = SDKDocsBuilder(
@@ -87,6 +91,10 @@ export const Result = SDKDocsBuilder(
         link: "https://github.com/statsig-io/js-client-monorepo/tree/main/samples",
         trailingMessage: "",
       },
+    ],
+    [
+      ParameterStore,
+      { getParameterStore: <GetParameterStore />, getParameter: <GetParameter /> },
     ],
     [StatsigUser, {}],
     [UpdateUser, {}],
