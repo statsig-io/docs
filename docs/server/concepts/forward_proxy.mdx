@@ -6,15 +6,25 @@ slug: /server/concepts/forward_proxy
 
 
 ## Statsig Forward Proxy 
-// TODO(eric) to fill
 
-### Use Case
-[TODO]
+The Statsig Forward Proxy is a service that we developed to be hosted and run in your own infrastructure. If SDKs are configured to use the foward proxy, it provides a closer, but also more reliable hop for retrieving Statsig dependent configurations from within your infrastructure instead of reaching out to our networks.
+
+The expected benefits of using the proxy are:
 1. Reduced dependency on Statsig Infrastructure Availability
 2. Improved performance through localization of download_config_spec to your cluster
-3. Support "push" config changes model
+3. Improved cost savings and reduced network overhead through minimizing requests to Statsig Infrastructure
+4. Improved consistency of configurations, as the forward proxy becomes an articulation point for serving configs
+5. Support for cool features such as a streaming API through GRPC
+
+If you're interested in deploying the proxy, you can find more details in the public repository (here)[https://github.com/statsig-io/statsig-forward-proxy].
+
+If you have any questions about how to deploy, or need assistance, feel free to reachout to us on our slack channel or create a new github issue.
 
 ### How Forward Proxy works
+
+The forward proxy works by setting up a local http or grpc server. When requests are made to the forward proxy, only the initial request is blocking, after that, a background loop is spawned which keeps configurations up to date without impacting the hot path for serving configurations.
+
+While providing this capability, the forward proxy also provides other benefits such the ability to enable backup caches and monitoring through technologies such as Redis and Statsd.
 
 ## Integration with SDK 
 // TODO(xin): to fill
