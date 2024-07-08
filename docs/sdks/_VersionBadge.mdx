@@ -1,9 +1,10 @@
 import { useColorMode } from "@docusaurus/theme-common";
 
-export const VersionBadge = ({ version }) => {
+export const VersionBadge = ({ version, includeAboveVersion = true }) => {
   if (!version) {
-    return null;
+    return null; 
   }
+  const plus = includeAboveVersion? "+":"";
   return (
     <span
       style={{
@@ -14,7 +15,7 @@ export const VersionBadge = ({ version }) => {
         marginLeft: 10,
       }}
     >
-      v{version}+
+      v{version}{plus}
     </span>
   );
 };

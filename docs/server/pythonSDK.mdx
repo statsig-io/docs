@@ -20,9 +20,11 @@ import {
   ClientInitResponse,
   LocalOverrides,
   Reference,
+  ProxyConfigs,
 } from "./Templates/index.mdx";
 
 import Install from "./python/_install.mdx";
+import InstallBeta from "./python/_installBeta.mdx";
 import Initialize from "./python/_initialize.mdx";
 import CheckGate from "./python/_checkGate.mdx";
 import GetFeatureGate from "./python/_getFeatureGate.mdx";
@@ -36,6 +38,7 @@ import ShutdownSnippet from "./python/_shutdown.mdx";
 import OverridesSnippet from "./python/_localOverrides.mdx";
 import * as ReferenceSnippets from "./python/_reference.mdx";
 import ClientInitResponseSnippet from "./python/_clientInitResponse.mdx";
+import ForwardProxyExample from "./python/_forwardProxyExample.mdx";
 
 export const Result = SDKDocsBuilder(
   { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
@@ -76,12 +79,16 @@ export const Result = SDKDocsBuilder(
         signature: () => <code>get_client_initialize_response</code>,
       },
     ],
+    [ProxyConfigs, {addedInVersion: "0.36.0b1", installation: <InstallBeta />, code: 
+    <ForwardProxyExample />
+    }],
     [
       LocalOverrides,
       {
         snippet: <OverridesSnippet />,
       },
     ],
+    
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
   ],
