@@ -4712,43 +4712,11 @@
       }
     },
     "/experiments/entity_property/{name}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "name",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "name",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "name",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "name",
-          "in": "path",
-          "required": true
-        }
-      ],
       "post": {
         "summary": "Full Update Entity Property",
-        "tags": [],
+        "tags": [
+          "Experiments (Warehouse Native)"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -4942,7 +4910,9 @@
       },
       "patch": {
         "summary": "Partially Update Entity Property",
-        "tags": [],
+        "tags": [
+          "Experiments (Warehouse Native)"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -5125,7 +5095,9 @@
       },
       "delete": {
         "summary": "Delete Entity Property",
-        "tags": [],
+        "tags": [
+          "Experiments (Warehouse Native)"
+        ],
         "responses": {
           "200": {
             "description": "OK",
