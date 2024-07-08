@@ -1,8 +1,8 @@
 ---
-title: Data Freshness
+title: Early Diagnostics
 slug: /statsig-warehouse-native/features/early-diagnostics
 sidebar_label: Early Diagnostics
-description: Data Freshness 
+description: Data Freshness
 ---
 
 ## Exposures from Statsig SDKs : Just-in-time updates for the first 1 million exposures/experiment, daily after
@@ -15,4 +15,4 @@ Under the covers, we perform a just-in-time update of exposures in your warehous
 
 ## Custom Events from Statsig SDKs : Hourly Exports of Custom Events from the SDK
 
-If you're using our SDKs to capture events, we'll export these events to your warehouse hourly. You can see Pulse results on metrics derived from those events **as fresh as ~1hour**. 
+If you're using our SDKs to capture events, we'll export these events to your warehouse hourly. You can see Pulse results on metrics derived from those events **as fresh as ~1hour**.

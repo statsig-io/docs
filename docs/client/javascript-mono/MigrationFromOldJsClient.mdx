@@ -54,9 +54,16 @@ You can read more about StatsigClient initialization [here](/client/javascript-s
 
 
 
+### getConfig is now getDynamicConfig
+Make sure you update your `getConfig` callsites to call the new method, `getDynamicConfig`.  In addition, `DynamicConfig` and `Layer` are no longer classes, but javascript objects.  There are still convenience `get` methods, which should remain unchanged.
 
+```js
+// old
+statsig.getConfig('config_name');
 
-
+// new
+statsigClient.getDynamicConfig('config_name');
+```
 
 
 
@@ -203,3 +210,89 @@ StatsigLocalStorage.disabled = false;
 
   </TabItem>
 </Tabs>
+
+
+## Legacy StatsigOptions
+The options to parameterize initialization of the SDK have changed.  In some cases, the underlying features were removed or moved and can be enabled/disabled in a different way. In other scenarios, there is a new API for managing them.  The following is a mapping of old options to their equivalents in the new sdk.
+
+#### disableErrorLogging
+> This feature does not exist in the new Javascript SDK, so there is no option to disable it.
+
+#### disableAutoMetricsLogging
+> Moved to optional package [`@statsig/web-anayltics`](#https://www.npmjs.com/package/@statsig/web-analytics)
+
+#### disableAllLogging
+> This is now referred to as `StatsigOptions.disableLogging`
+
+#### disableCurrentPageLogging
+> This is now referred to as `StatsigOptions.includeCurrentPageUrlWithEvents`
+
+#### disableLocalStorage
+> This is now referred to as `StatsigOptions.disableStorage`
+
+#### localMode
+> This is now referred to as  `StatsigOptions.networkConfig.preventAllNetworkTraffic`
+
+#### loggingIntervalMillis
+> This is now referred to as `StatsigOptions.loggingIntervalMs`
+
+#### loggingBufferMaxSize
+> Unchanged
+
+#### environment
+> Unchanged
+
+#### disableNetworkKeepalive
+> This is has been completely removed. Network requests can be controlled with `StatsigOptions.networkConfig.networkOverrideFunc`
+
+#### api
+> This is now referred to as `StatsigOptions.networkConfig.api`
+
+#### overrideStableID
+> StableID is now just part of `StatsigUser.customIDs`. This brings it inline with Statsig server 
+SDKs and helps avoid mis-configuration between client and server
+
+#### initTimeoutMs
+> Timeouts now live as part of the `async` call. 
+>
+> eg:
+> `myStatsigClient.initializeAsync(1000); // 1 sec timeout`
+
+#### initializeValues
+> Replaced by the usage of [StatsigEvaluationsDataAdapter](/client/javascript-sdk/using-evaluations-data-adapter)
+
+#### eventLoggingApi
+> Replaced by `StatsigOptions.networkConfig.logEventUrl`
+
+#### prefetchUsers
+> Replaced by the usage of [StatsigEvaluationsDataAdapter](/client/javascript-sdk/using-evaluations-data-adapter)
+
+#### initCompletionCallback
+> Replaced by the usage of [StatsigClientEventEmitter](/client/javascript-sdk#client-event-emitter)
+
+#### updateUserCompletionCallback
+> Replaced by the usage of [StatsigClientEventEmitter](/client/javascript-sdk#client-event-emitter)
+
+#### fetchMode
+> Replaced by the usage of [StatsigEvaluationsDataAdapter](/client/javascript-sdk/using-evaluations-data-adapter)
+
+#### disableDiagnosticsLogging
+> There currently is no diagnostics logging in the new SDK
+
+#### initRequestRetries
+> This is has been completely removed. Network requests can be controlled with `StatsigOptions.networkConfig.networkOverrideFunc`
+
+#### ignoreWindowUndefined
+> No longer applicable
+
+#### disableHashing
+> Not yet supported
+
+#### logLevel
+> This has not been changed, but the enum values are no longer `UPPERCASED`.
+
+#### logger
+> Not yet supported
+
+#### evaluationCallback
+> Replaced by the usage of [StatsigClientEventEmitter](/client/javascript-sdk#client-event-emitter)

@@ -410,6 +410,24 @@
                       },
                       "type": "string"
                     }
+                  },
+                  "isAnalysisOnly": {
+                    "type": "boolean",
+                    "x-stoplight": {
+                      "id": "4c0bgsq6dkv6q"
+                    }
+                  },
+                  "assignmentSourceExperimentName": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "14j7ty9atvpf0"
+                    }
+                  },
+                  "assignmentSourceName": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "fbk00ybhkztff"
+                    }
                   }
                 }
               },
@@ -421,6 +439,38 @@
                     "idType": "userID",
                     "layerID": "a_layer",
                     "creatorID": "35sClJFs8l0y5uRQhDwUDo"
+                  }
+                },
+                "example-2": {
+                  "value": {
+                    "name": "analysis_only_experiment",
+                    "description": "helpful summary of what this experiment does",
+                    "idType": "userID",
+                    "layerID": "a_layer",
+                    "isAnalysisOnly": true,
+                    "assignmentSourceExperimentName": "assignment_source_experiment",
+                    "assignmentSourceName": "statsig_forwarded_exposures",
+                    "creatorID": "1SlBSAxsWWWh1MxHGCG6hZ",
+                    "groups": [
+                      {
+                        "name": "some_group_name",
+                        "size": 50,
+                        "parameterValues": {},
+                        "description": ""
+                      },
+                      {
+                        "name": "control",
+                        "size": 50,
+                        "parameterValues": {
+                          "campaign_experiment_group_id": "6658ef8759989ef904d88287",
+                          "is_good": true,
+                          "metadata": {
+                            "key1": "val1"
+                          }
+                        },
+                        "description": ""
+                      }
+                    ]
                   }
                 }
               }
@@ -2662,9 +2712,7 @@
             "$ref": "#/components/responses/experiment_404.json"
           }
         },
-        "tags": [
-          "Experiments"
-        ],
+        "tags": ["Experiments"],
         "requestBody": {
           "content": {
             "application/json": {
@@ -2678,9 +2726,9 @@
                   }
                 },
                 "properties": {
-                  "groupID": {
+                  "id": {
                     "type": "string",
-                    "description": "The groupID to be selected as the winner"
+                    "description": "The id of the group to be selected as the winner"
                   },
                   "decisionReason": {
                     "type": "string",
@@ -2695,7 +2743,7 @@
               "examples": {
                 "example-1": {
                   "value": {
-                    "groupID": "red",
+                    "id": "34RLl9bjstsTESTvBxTe4N",
                     "decisionReason": "Your reason for stopping early",
                     "removeTargeting": false
                   }
@@ -3163,9 +3211,17 @@
           "name": "experiment_id",
           "in": "path",
           "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "query",
+          "name": "refresh",
+          "description": "enum: 'full' | 'incremental'"
         }
       ],
-      "get": {
+      "post": {
         "summary": "Load Pulse (Warehouse Native)",
         "tags": [
           "Experiments (Warehouse Native)"
@@ -3200,24 +3256,6 @@
         "operationId": "Load Pulse",
         "x-stoplight": {
           "id": "0w9utb8f51k3p"
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "x-stoplight": {
-                      "id": "yjyhjqtrbhxlq"
-                    },
-                    "description": "'full' or 'incremental'"
-                  }
-                }
-              }
-            }
-          }
         }
       }
     },
@@ -3965,8 +4003,7 @@
                         "tags": {
                           "type": "array",
                           "items": {
-                            "type": "object",
-                            "properties": {}
+                            "type": "string"
                           }
                         },
                         "sql": {
@@ -4003,8 +4040,10 @@
                       "message": "Assignment Source updated successfully",
                       "data": {
                         "name": "statsig_forwarded_exposures",
-                        "description": "",
-                        "tags": [],
+                        "description": "This is an assignment source for sales",
+                        "tags": [
+                          "newTag2"
+                        ],
                         "sql": "SELECT * FROM `shoppy-sales.statsig.statsig_forwarded_exposures`",
                         "timestampColumn": "timestamp",
                         "groupIDColumn": "group_id",
@@ -4029,8 +4068,10 @@
                       "message": "Assignment Source updated successfully",
                       "data": {
                         "name": "statsig_forwarded_exposures",
-                        "description": "",
-                        "tags": [],
+                        "description": "This is an assignment source for sales",
+                        "tags": [
+                          "newTag2"
+                        ],
                         "sql": "SELECT * FROM `shoppy-sales.statsig.statsig_forwarded_exposures`",
                         "timestampColumn": "timestamp",
                         "groupIDColumn": "group_id",
@@ -4131,6 +4172,15 @@
                   "sql": {
                     "type": "string"
                   },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "description": {
+                    "type": "string"
+                  },
                   "timestampColumn": {
                     "type": "string"
                   },
@@ -4162,6 +4212,10 @@
                 "x-examples": {
                   "Example 1": {
                     "sql": "SELECT * FROM `shoppy-sales.statsig.statsig_forwarded_exposures`",
+                    "tags": [
+                      "Sales"
+                    ],
+                    "description": "This is an assignment source for sales",
                     "timestampColumn": "timestamp",
                     "experimentIDColumn": "experiment_id",
                     "groupIDColumn": "group_id",
@@ -4182,6 +4236,10 @@
                 "Example 1": {
                   "value": {
                     "sql": "SELECT * FROM `shoppy-sales.statsig.statsig_forwarded_exposures`",
+                    "tags": [
+                      "Sales"
+                    ],
+                    "description": "This is an assignment source for sales",
                     "timestampColumn": "timestamp",
                     "experimentIDColumn": "experiment_id",
                     "groupIDColumn": "group_id",
