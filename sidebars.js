@@ -597,6 +597,7 @@ module.exports = {
                 "client/concepts/persistent_assignment",
                 "sdks/debugging",
                 "sdk-keys/target-apps",
+                "client/concepts/parameter_stores",
               ],
             },
             {
