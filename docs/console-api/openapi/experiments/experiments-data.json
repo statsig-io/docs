@@ -4709,8 +4709,450 @@
             }
           }
         }
+      }
+    },
+    "/experiments/entity_property/{name}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "name",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "name",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "name",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "name",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Full Update Entity Property",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "tags": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "sql": {
+                          "type": "string"
+                        },
+                        "timestampColumn": {
+                          "type": "string"
+                        },
+                        "idTypeMapping": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "statsigUnitID": {
+                                "type": "string"
+                              },
+                              "column": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Entity Property Source updated successfully",
+                      "data": {
+                        "name": "Countries",
+                        "description": "Property source table for user data",
+                        "tags": [
+                          "★ Core"
+                        ],
+                        "sql": "SELECT * FROM shoppy-sales.experiment_data.exposures",
+                        "timestampColumn": "ts",
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "userID",
+                            "column": "user_id"
+                          },
+                          {
+                            "statsigUnitID": "stableID",
+                            "column": "country"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "message": "string",
+                      "data": {
+                        "name": "string",
+                        "description": "string",
+                        "tags": [
+                          "string"
+                        ],
+                        "sql": "string",
+                        "timestampColumn": "string",
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "string",
+                            "column": "string"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "post-experiments-entity_property-name",
+        "x-stoplight": {
+          "id": "iywdqg6qarh3a"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "Example 1": {
+                    "sql": "SELECT * FROM shoppy-sales.experiment_data.exposures",
+                    "timestampColumn": "ts",
+                    "description": "Property source table for user data",
+                    "idTypeMapping": [
+                      {
+                        "statsigUnitID": "userID",
+                        "column": "user_id"
+                      },
+                      {
+                        "statsigUnitID": "stableID",
+                        "column": "country"
+                      }
+                    ],
+                    "timestampAsDay": true,
+                    "tags": [
+                      "★ Core"
+                    ]
+                  }
+                },
+                "required": [
+                  "sql"
+                ],
+                "properties": {
+                  "sql": {
+                    "type": "string"
+                  },
+                  "timestampColumn": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "idTypeMapping": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "statsigUnitID": {
+                          "type": "string"
+                        },
+                        "column": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "timestampAsDay": {
+                    "type": "boolean"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "sql": "string",
+                    "timestampColumn": "string",
+                    "description": "string",
+                    "idTypeMapping": [
+                      {
+                        "statsigUnitID": "string",
+                        "column": "string"
+                      }
+                    ],
+                    "timestampAsDay": "boolean",
+                    "tags": [
+                      "string"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
       },
-      "parameters": []
+      "patch": {
+        "summary": "Partially Update Entity Property",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "tags": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "sql": {
+                          "type": "string"
+                        },
+                        "timestampColumn": {
+                          "type": "string"
+                        },
+                        "idTypeMapping": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "statsigUnitID": {
+                                "type": "string"
+                              },
+                              "column": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "timestampAsDay": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Entity Property Source updated successfully",
+                      "data": {
+                        "name": "Countries",
+                        "description": "Property source table for user data",
+                        "tags": [
+                          "★ Core"
+                        ],
+                        "sql": "SELECT * FROM shoppy-sales.experiment_data.exposures",
+                        "timestampColumn": "ts",
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "userID",
+                            "column": "user_id"
+                          }
+                        ],
+                        "timestampAsDay": false
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "message": "string",
+                      "data": {
+                        "name": "string",
+                        "description": "string",
+                        "tags": [
+                          "string"
+                        ],
+                        "sql": "string",
+                        "timestampColumn": "string",
+                        "idTypeMapping": [
+                          {
+                            "statsigUnitID": "string",
+                            "column": "string"
+                          }
+                        ],
+                        "timestampAsDay": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "patch-experiments-entity_property-name",
+        "x-stoplight": {
+          "id": "x3tm5jhnizao6"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "timestampColumn": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "idTypeMapping": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "statsigUnitID": {
+                          "type": "string"
+                        },
+                        "column": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "timestampAsDay": {
+                    "type": "boolean"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "x-examples": {
+                  "Example 1": {
+                    "timestampColumn": "ts",
+                    "description": "Property source table for user data",
+                    "idTypeMapping": [
+                      {
+                        "statsigUnitID": "userID",
+                        "column": "user_id"
+                      }
+                    ],
+                    "timestampAsDay": false,
+                    "tags": [
+                      "★ Core"
+                    ]
+                  }
+                }
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "timestampColumn": "string",
+                    "description": "string",
+                    "idTypeMapping": [
+                      {
+                        "statsigUnitID": "string",
+                        "column": "string"
+                      }
+                    ],
+                    "timestampAsDay": "boolean",
+                    "tags": [
+                      "string"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Entity Property",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "message": "Entity property source deleted successfully."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "delete-experiments-entity_property-name",
+        "x-stoplight": {
+          "id": "5hk7vhqixgzwk"
+        }
+      }
     }
   }
 }
