@@ -4713,7 +4713,7 @@
     },
     "/experiments/entity_property/{name}": {
       "post": {
-        "summary": "Full Update Entity Property",
+        "summary": "Fully Update Entity Property Source",
         "tags": [
           "Experiments (Warehouse Native)"
         ],
@@ -4909,7 +4909,7 @@
         }
       },
       "patch": {
-        "summary": "Partially Update Entity Property",
+        "summary": "Partially Update Entity Property Source",
         "tags": [
           "Experiments (Warehouse Native)"
         ],
@@ -5094,7 +5094,7 @@
         }
       },
       "delete": {
-        "summary": "Delete Entity Property",
+        "summary": "Delete Entity Property Source",
         "tags": [
           "Experiments (Warehouse Native)"
         ],
