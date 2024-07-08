@@ -20,6 +20,7 @@ import {
   Shutdown,
   LocalOverrides,
   StableID,
+  ParameterStore,
 } from "./Templates/index.mdx";
 
 import Install from "./iOS/_install.mdx";
@@ -36,6 +37,8 @@ import ShutdownSnippet from "./iOS/_shutdown.mdx";
 import LocalOverridesSnippet from "./iOS/_localOverrides.mdx";
 import * as StatsigListening from "./iOS/_statsigListening.mdx";
 import { GetStableID, OverrideStableID } from "./iOS/_stableID.mdx";
+import GetParameterStore from "./iOS/_getParameterStore.mdx";
+import GetParameter from "./iOS/_getParameter.mdx";
 
 export const Result = SDKDocsBuilder(
   { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
@@ -62,6 +65,10 @@ export const Result = SDKDocsBuilder(
         getExperiment: <GetExperiment />,
         logEvent: <LogEvent />,
       },
+    ],
+    [
+      ParameterStore,
+      { getParameterStore: <GetParameterStore />, getParameter: <GetParameter /> },
     ],
     [StatsigUser, { updateUser: <UpdateUser /> }],
     [StatsigOptions, { options: <Options /> }],
