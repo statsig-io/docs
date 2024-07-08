@@ -539,6 +539,18 @@
                       "example": "john@mydomain.com",
                       "format": "email"
                     }
+                  },
+                  "teams": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "a3n70603cnxcu"
+                    },
+                    "items": {
+                      "x-stoplight": {
+                        "id": "m4g67hb8hpkw1"
+                      },
+                      "type": "string"
+                    }
                   }
                 }
               },

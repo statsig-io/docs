@@ -597,6 +597,7 @@ module.exports = {
                 "client/concepts/persistent_assignment",
                 "sdks/debugging",
                 "sdk-keys/target-apps",
+                "client/concepts/parameter-stores",
               ],
             },
             {
@@ -609,13 +610,12 @@ module.exports = {
               items: [
                 "client/javascript-mono/MigrationFromOldJsClient",
                 "client/javascript-mono/MigrationFromOldReact",
-                // "client/javascript-mono/IntegrationNextJs",
-                // "client/javascript-mono/IntegrationReact",
                 "client/javascript-mono/UsingEvaluationsDataAdapter",
                 "client/javascript-mono/ReactUsage",
                 "client/javascript-mono/ReactNativeUsage",
                 "client/javascript-mono/ExpoUsage",
                 "client/javascript-mono/NextJSUsage",
+                "client/javascript-mono/InitStrategies",
                 "client/javascript-mono/Examples",
               ],
             },
@@ -884,6 +884,7 @@ module.exports = {
           items: [
             "infrastructure/statsig_ip_ranges",
             "infrastructure/statsig_domains",
+            "infrastructure/managed-proxy",
             "infrastructure/custom_proxy",
             "infrastructure/reliability-faq",
           ],
