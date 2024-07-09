@@ -51,4 +51,4 @@ Effective experimentation relies on having trustworthy results in a short amount
 Some examples of features focused on the power of Statsig's stats engine are:
 
 - [CUPED](https://www.statsig.com/blog/cuped), which can significantly reduce experiment run-times and account for pre-experiment bias
-- [Stratified Sampling](experiments-plus/stratified-sampling), which makes experiment results much more accurate and consistent, meaning you can trust the effects you see
+- [Stratified Sampling](/experiments-plus/stratified-sampling), which makes experiment results much more accurate and consistent, meaning you can trust the effects you see
