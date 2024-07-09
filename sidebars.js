@@ -673,6 +673,7 @@ module.exports = {
                 "server/concepts/user",
                 "messages/serverRequiredUserID",
                 "server/concepts/data_store",
+                "server/concepts/forward_proxy",
                 "server/concepts/persistent_assignment",
                 "sdks/debugging",
                 "sdk-keys/target-apps",
