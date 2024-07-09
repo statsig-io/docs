@@ -25,14 +25,14 @@ where optimal $\theta$ is found as
 
 $$
 \LARGE
-\frac{Cov(\frac{Y}{N}, \frac{X}{M})}{var(\frac{X}{M})}
+\frac{Cov(\frac{Y}{N}, \frac{X}{M})}{Var(\frac{X}{M})}
 $$
 
 expanded to
 
 $$
 \LARGE
-\frac{Cov(\frac{Y}{\mu_N}-\frac{\mu_Y N}{\mu^2_N}, \frac{X}{\mu_M}-\frac{\mu_X M}{\mu^2_M})}{var(\frac{X}{\mu_M}-\frac{\mu_X M}{\mu^2_M})}
+\frac{Cov(\frac{Y}{\mu_N}-\frac{\mu_Y N}{\mu^2_N}, \frac{X}{\mu_M}-\frac{\mu_X M}{\mu^2_M})}{Var(\frac{X}{\mu_M}-\frac{\mu_X M}{\mu^2_M})}
 $$
 
 Using the optimal $\theta$, we are hoping to reduce group-level variance by plugging the parameter back in to calculate the adjustment. Please note that across-group $\theta$ does not necessarily reduce variance for one group, or the sum of variances of all groups, but in most cases it does. Our simulation shows that 98.3% of metrics saw a decrease by CUPED.
