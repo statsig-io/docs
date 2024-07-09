@@ -505,3 +505,5 @@ Schapire
 Thresholded
 Agrawal
 Goyal
+Cov
+cv
