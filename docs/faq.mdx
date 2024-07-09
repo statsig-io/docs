@@ -6,26 +6,22 @@ sidebar_label: FAQ
 
 And for everything else, there's always the FAQ. We'll try to keep this list updated with more recent and common questions, and move those answers to their respective places in the docs over time.
 
-## I don't see my client or server language listed, can I still use Statsig?
+# SDKs and APIs
 
-If none of our current SDKs fit your needs, let us know in [slack](https://statsig.com/slack)!
+## How does bucketing within the Statsig SDKs work?
+Bucketing on Statsig is deterministic. Given the same user object, and the same state of the experiment/gate, we'll always evalaute to the same result. This is true even if the evaluation happens in different places - on the client or server. For a peek into how we do this at a high level:
+- Salt Creation: For each experiment or feature gate, a unique salt is generated.
+- Hashing: The chosen unit (e.g., userId, organizationId, etc.) is passed through a hashing function (SHA256) along with the unique salt which produces a big int.
+- Bucket Assignment: The big int is subjected to a modulus operation with the number 10000. This results in a value between 0 and 9999. (Layers use 1000)
+- Determination: The result from step 3 represents the specific bucket (out of the 10000 possible) that the unit is assigned to.
+- This ensures a randomized yet deterministic bucketing of units across different experiments or feature gates, while the unique salt ensures that the same unit can be assigned to different buckets in different experiments.
+You can also peek into our open source SDKs [here](https://github.com/statsig-io/node-js-server-sdk/blob/main/src/Evaluator.ts).
 
-## How can I get started with running an A/B Test?
-
-If you have a feature built but not yet released, you can run a simple A/B test by opening up a partial rollout using a [feature flag](/guides/first-feature). This will create test and control groups to measure the impact of your new feature. If you already have a feature in production and want to test different variants, create an [experiment](/guides/abn-tests). Either way, you can analyze the results in the **Pulse Results** tab of your feature gate or experiment.
+A lot of times people assume that we keep track of a list of all ids and what group they were assigned to for experiments, or which IDs passed a certain feature gate.  While our data pipelines keep track of which users were exposed to which experiment variant in order to generate experiment results, we do not cache previous evaluations and maintain distributed evaluation state across client and server sdks.  That model doesn't scale - we've even talked to customers who were using an implementation like that in the past, and were paying more for a Redis instance to maintain that state than they ended up paying to use Statsig instead.
 
 ## Is it possible to add a layer to a running experiment?
 
 Once an experiment has been started you cannot change the layer. Doing so would impact the integrity of the experiment. Once an experiment has been created, you can no longer change the layer (we may allow this in the future)
-
-## Can I target my experiment at a subset of users. e.g users on iOS only? 
-
-Yes you can! When setting up your experiment you can select a Feature Flag that contains targeting rules. 
-![image](https://user-images.githubusercontent.com/31516123/229173350-a1795b5a-bdef-4c58-afb1-36806dc38f1a.png)
-
-Your Feature Flag can explictly pass only users who meet specific criteria - in this example users on iOS. Learn more about feature flags [here](https://docs.statsig.com/feature-flags/working-with).
-![image](https://user-images.githubusercontent.com/31516123/229173998-3099feac-64cc-42fc-a1c3-69c9065d2dd0.png)
-
 
 ## Why should I define parameters for my experiments and get them in code, instead of just getting the group?
 
@@ -51,12 +47,119 @@ In the first set up, if you want to test a new color, say "Green", you will need
 
 In the second set up using Statsig, you can simply change your experiment to add a new group that returns "GREEN" and be done. No code change or waiting for release cycle needed!
 
-## When should I create a new Project?
+## Why am I not seeing my exposures and custom events logged in Statsig?
+If you are executing Statsig in a short-lived process (ie a script or edge worker environment), it's likely the process is exiting prior to the event queue being flushed to Statsig. To ensure your exposures and events are sent to Statsig, make sure to call `statsig.flush()` before your process exits. Some edge providers offer utility methods to elegantly handle this situation to ensure events are flushed without blocking the response to the client ([example](https://docs.statsig.com/server/nodejsServerSDK#flushing-events-)). In a long-lived process like a webserver this is typically not required, but some customers choose to hook into the process's shutdown signal to flush events.
 
-Projects have distinct boundaries - nothing is shared between them. Create a new project when you're managing a distinct product with it's own distinct userIDs and metrics. If your app has web, iOS and Android endpoints - you should manage them in one project so you can measure metrics like DAU across them.
+If you are not seeing a specific custom event, make sure you check the event name is valid.  Statsig drops events that match this regex/contain this character set: `"\\[\]{}<>#=;&$%|\u0000\n\r"`
 
-If you have a distinct marketing website (only sees anonymous users) from a product (only sees signed in users), you can create distinct projects for them. However if you want to track success across them, you'll want to manage them in the same project. An example of this is measuring user signup on the marketing website, where the success metric is new users created who're still active users 30 days after account creation.
+## I don't see my client or server language listed, can I still use Statsig?
 
+If none of our current SDKs fit your needs, let us know in [slack](https://statsig.com/slack)!
+
+# Feature Flags
+
+## When I increase/decrease the rollout percentage of a rule on a feature gate, will users who were passing the rule continue to pass?
+
+Yes. For example, if your rule was passing 10%, and you increase it to 20%, the original 10% users will still pass, and an additional 10% will change from fail to pass. When reducing the rollout percentage from 20% back to 10%, the original 10% of passing users will be restored. If you want to force those 10% to be reshuffled, you need to "resalt" the gate.
+
+# Statistics
+
+## What statistical tests does Statsig use?
+
+We use two-sample Z test for most experiments, and Welch’s t-test for experiments with small sample, to [calculate p-value](https://docs.statsig.com/stats-engine/p-value). This is the industry-standard approach, which we chose based on literature research and  simulations based on large amount of experiments. We are open to exploring other tests, and we want to maintain a high bar for them producing trustworthy results. If there’s another method you’d like to consider, we’d love to discuss and evaluate.
+
+## How does Statsig handle low sample size?
+
+For small sample sizes, we use [Welch's t-test](https://docs.statsig.com/stats-engine/p-value#welchs-t-test) instead of a standard z-test. This statistical test is a better choice for handling samples of unequal size or variance without increasing the false positive rate.
+
+Additionally, we support CUPED and winsorization, which are powerful tools for increasing the power of smaller tests.
+
+## What is the type II error Statsig uses?
+
+We don't directly set type II error in the pulse analysis, as we don't know the source of truth, i.e. we cannot know what is the actual impact from a feature. There are some ways that we can control it by adjusting the p value - though keep in mind that there is a trade off between type I and type II error.
+
+## When should I use one-sided tests vs two-sided?
+
+Generally speaking, you should use one-sided tests if you are confident that you only care about metric movement in a specific direction. Under the same significance level, one-sided tests will give you more power. The tradeoff is that you lose some visibility into secondary and guardrail metric drops.
+
+## How does Statsig deal with ‘the peeking problem’?
+
+We use mSPRT for [sequential testing](https://docs.statsig.com/experiments-plus/sequential-testing) where we adjust the confidence interval based on the variance and sample size. We have validated that this parameter satisfies the expected False Positive Rate and provides enough power to detect large effects early.
+
+## Does Statsig support mixed effect model?
+
+We don’t support Mixed Effect Models at this time. Mixed effect models require specific business and product context to prevent introducing bias into your analysis. 
+
+## Does Statsig support synthetic control?
+
+We don’t support generalized synthetic controls at this time. Synthetic controls require specific and product context to prevent introducing bias into your analysis.
+
+However, if you have set up synthetic controls yourself, in our Warehouse Native product you can set those assignment up in a table and link to an [Assignment Source](https://docs.statsig.com/statsig-warehouse-native/configuration/assignment-sources); from there, Statsig will handle the statistical analysis based on your synthetic assignments.
+
+## How does Statsig handle skewed distribution / long tail?
+
+We offer a feature called [stratified sampling](https://docs.statsig.com/experiments-plus/stratified-sampling) which is designed to deal with skewed distribution. Based on either a metric or an attribute you chose, we pick the best salt and balance the test and control group accordingly. This feature meaningfully reduces both false positive rates and false discovery rates, making your results more consistent and trustworthy. 
+
+Beyond that, you can also leverage a combination of winsorization, capping, and the attributes of the central limit theorem for testing. We have evaluated some tests which partners have thought to be better in skewed cases, but found that in simulations these did not produce reliable or trustworthy results.
+
+## How do you deal with family-wise error rate (FWER)?
+
+We use [Bonferroni Correction](https://docs.statsig.com/stats-engine/methodologies/bonferroni-correction) to control the family-wise error rate. It’s relatively conservative but can effectively reduce the probability of false positives by adjusting the significance level for multiple comparisons. You can apply it based on one or both of the number of test groups and the number of metrics in scorecards.
+
+## What is CUPED?
+
+[CUPED](https://docs.statsig.com/stats-engine/methodologies/cuped), which stands for Controlled-experiment Using Pre-Experiment Data, is one of the most powerful algorithmic tools for increasing the speed and accuracy of experimentation. It leverages pre-experiment data and use that as a covariate in the analysis, so that it will reduce the variance of the estimator, thereby increasing the velocity of the experiment.
+
+## How can I reduce variance / increase power / accelerate decision making?
+
+The commonly used methods to reduce AB test variance is [CUPED](https://docs.statsig.com/stats-engine/methodologies/cuped) and [winsorization](https://docs.statsig.com/stats-engine/methodologies/winsorization). CUPED leverages pre-experiment data to reduce variance; winsorization is a configurable way to remove outliners from dataset so that the result is cleaner. Additionally, we also have MAB (Autotune). This is a method where you can dynamically allocate traffic to optimize for the chosen metric, which can accelerate the decision making process.
+
+## Does Statsig offer metric sensitivity analysis / cross-exp analysis / exp impact analysis?
+
+Yes, we have a new feature called [meta-analysis](https://docs.statsig.com/experimentation/meta-analysis) that serves for this purpose. It enables you to learn from experiments and the metric impact they’ve had (e.g. How easy is it to move metric X) and systematically manage the experiment programs (e.g. Which teams frequently abandon experiments because of flawed setup). Reach out to us if you are interested in learning more!
+
+## How eas is it to export a customer report?
+
+Statsig automatically generates experiment [summary](https://docs.statsig.com/statsig-warehouse-native/features/reports) and you can easily export it as a report. You can customize for every experiment. If you use a combination of experiment notes and template, you can configure the contents as well.
+
+## Does Statsig support targeting tests to certain users?
+
+Yes. Experiments integrate natively with Statsig's Feature Gates product in order to target interventions. Feature gates provide a rich language for targeting users by properties or segments. You can set up experiments using a targeting gate to only test an intervention on units which pass that gate.
+
+## Does Statsig support power analysis?
+
+Yes. We have a flexible [power analysis tool](https://docs.statsig.com/experiments-plus/power-analysis) which leverages the known mean and variance of a metric and the observed traffic volume. Given any two of minimum detectable effect (MDE), experiment duration and traffic allocation, this tool will automatically calculate the third one. We provide flexibility to define the population in different ways, and configurable settings w.r.t. one or two sided test, significance level, power, etc. 
+
+## How does Statsig handle ratio metrics in statistical test?
+
+We use the [delta method](https://docs.statsig.com/stats-engine/methodologies/delta-method) when calculating the variance for variables that have a numerator and denominator. This is a well-researched and proven method to handle  variance the variance of ratios when the numerator and denominator variables are correlated.
+
+## How can I slice and dice to dive deeper into pulse result?
+
+We provide the flexibility to break down scorecard metrics by user properties and event properties - you can simply click the little + button next to the metric and slice the results. You could use the [Custom Pulse Query](https://docs.statsig.com/pulse/custom-queries) to deep dive into the metrics of interest, to apply certain filters to the experiment results.
+
+
+# Experimentation
+
+## How can I get started with running an A/B Test?
+
+If you have a feature built but not yet released, you can run a simple A/B test by opening up a partial rollout using a [feature flag](/guides/first-feature). This will create test and control groups to measure the impact of your new feature. If you already have a feature in production and want to test different variants, create an [experiment](/guides/abn-tests). Either way, you can analyze the results in the **Pulse Results** tab of your feature gate or experiment.
+
+## Can I target my experiment at a subset of users. e.g users on iOS only? 
+
+Yes you can! When setting up your experiment you can select a Feature Flag that contains targeting rules. 
+![image](https://user-images.githubusercontent.com/31516123/229173350-a1795b5a-bdef-4c58-afb1-36806dc38f1a.png)
+
+Your Feature Flag can explictly pass only users who meet specific criteria - in this example users on iOS. Learn more about feature flags [here](https://docs.statsig.com/feature-flags/working-with).
+![image](https://user-images.githubusercontent.com/31516123/229173998-3099feac-64cc-42fc-a1c3-69c9065d2dd0.png)
+
+## When I increase/decrease the allocation percentage of an experiment, will users who were allocated continue to be allocated?
+
+When increasing the allocation percentage of an experiment, users who were not allocated will be added to the existing set of allocated users up to the newly defined allocation percentage.
+
+When *decreasing* the allocation percentage of an experiment, the eligible users are reshuffled, so the same users who were allocated may no longer be allocated to the experiment at a given percentage rollout.
+
+# Billing
 
 ## What counts as a [billable event](https://statsig.com/pricing#faq)? 
 Statsig records an event when your application calls the Statsig SDK to check whether a user should be exposed to a feature flag or experiment or to log an event. Additionally, pre-computed metrics ingested to Statsig from a data warehouse or custom metrics created using existing metrics/events also count as billable.
@@ -84,34 +187,15 @@ See the question above for what counts as a billable event. Some tools available
 
 5. There's a Console API endpoint that lets you download billing and usage data to sync this to your own systems [here](https://docs.statsig.com/console-api/usage-billing).
 
-## How does bucketing within the Statsig SDKs work?
-Bucketing on Statsig is deterministic. Given the same user object, and the same state of the experiment/gate, we'll always evalaute to the same result. This is true even if the evaluation happens in different places - on the client or server. For a peek into how we do this at a high level:
-- Salt Creation: For each experiment or feature gate, a unique salt is generated.
-- Hashing: The chosen unit (e.g., userId, organizationId, etc.) is passed through a hashing function (SHA256) along with the unique salt which produces a big int.
-- Bucket Assignment: The big int is subjected to a modulus operation with the number 10000. This results in a value between 0 and 9999. (Layers use 1000)
-- Determination: The result from step 3 represents the specific bucket (out of the 10000 possible) that the unit is assigned to.
-- This ensures a randomized yet deterministic bucketing of units across different experiments or feature gates, while the unique salt ensures that the same unit can be assigned to different buckets in different experiments.
-You can also peek into our open source SDKs [here](https://github.com/statsig-io/node-js-server-sdk/blob/main/src/Evaluator.ts).
+# Platform Usability
 
-A lot of times people assume that we keep track of a list of all ids and what group they were assigned to for experiments, or which IDs passed a certain feature gate.  While our data pipelines keep track of which users were exposed to which experiment variant in order to generate experiment results, we do not cache previous evaluations and maintain distributed evaluation state across client and server sdks.  That model doesn't scale - we've even talked to customers who were using an implementation like that in the past, and were paying more for a Redis instance to maintain that state than they ended up paying to use Statsig instead.
+## When should I create a new Project?
 
-## When I increase/decrease the rollout percentage of a rule on a feature gate, will users who were passing the rule continue to pass?
+Projects have distinct boundaries - nothing is shared between them. Create a new project when you're managing a distinct product with it's own distinct userIDs and metrics. If your app has web, iOS and Android endpoints - you should manage them in one project so you can measure metrics like DAU across them.
 
-Yes. For example, if your rule was passing 10%, and you increase it to 20%, the original 10% users will still pass, and an additional 10% will change from fail to pass. When reducing the rollout percentage from 20% back to 10%, the original 10% of passing users will be restored. If you want to force those 10% to be reshuffled, you need to "resalt" the gate.
-
-## When I increase/decrease the allocation percentage of an experiment, will users who were allocated continue to be allocated?
-
-When increasing the allocation percentage of an experiment, users who were not allocated will be added to the existing set of allocated users up to the newly defined allocation percentage.
-
-When *decreasing* the allocation percentage of an experiment, the eligible users are reshuffled, so the same users who were allocated may no longer be allocated to the experiment at a given percentage rollout.
-
+If you have a distinct marketing website (only sees anonymous users) from a product (only sees signed in users), you can create distinct projects for them. However if you want to track success across them, you'll want to manage them in the same project. An example of this is measuring user signup on the marketing website, where the success metric is new users created who're still active users 30 days after account creation.
 
 ## What domains do I need to whitelist for Content Security Policy (CSP)?  
 If your web app configures strict Content Security Policy (CSP), adjust the policy to whitelist these two Statsig domains 
 - https://featuregates.org (SDKs initialize and download config from here) and
 - https://events.statsigapi.net (SDKs log events here) 
-
-## Why am I not seeing my exposures and custom events logged in Statsig?
-If you are executing Statsig in a short-lived process (ie a script or edge worker environment), it's likely the process is exiting prior to the event queue being flushed to Statsig. To ensure your exposures and events are sent to Statsig, make sure to call `statsig.flush()` before your process exits. Some edge providers offer utility methods to elegantly handle this situation to ensure events are flushed without blocking the response to the client ([example](https://docs.statsig.com/server/nodejsServerSDK#flushing-events-)). In a long-lived process like a webserver this is typically not required, but some customers choose to hook into the process's shutdown signal to flush events.
-
-If you are not seeing a specific custom event, make sure you check the event name is valid.  Statsig drops events that match this regex/contain this character set: `"\\[\]{}<>#=;&$%|\u0000\n\r"`
