@@ -47,24 +47,24 @@ The timestamp provided should:
 - Be a unix timestamp
 - Represent the latest point in time for which all metrics before have been uploaded.
 
-Any future calls to this API with an earlier timestamp will be invalid. Statsig doesn't guarantee correct behavior if you record the same metric with an earlier timestamp with another API call. 
+Any future calls to this API with an earlier timestamp will be invalid. Statsig doesn't guarantee correct behavior if you record the same metric with an earlier timestamp with another API call.
 
 Statsig processes metrics as a full day in the PST timezone and wait until a full day is marked as ready before processing that day.
 
 ### Uploading Data to Azure Blob
 
-You can also import data into Statsig by uploading your data into a [Statsig-owned Azure Blob container](https://docs.statsig.com/integrations/data-imports/azure_upload). To learn more, hit up the Statsig team on the [Statsig Slack channel](https://statsig.com/slack). 
+You can also import data into Statsig by uploading your data into a Statsig-owned Azure Blob container. To learn more, hit up the Statsig team on the [Statsig Slack channel](https://statsig.com/slack).
 
-## Debugging Precomputed Metrics 
+## Debugging Precomputed Metrics
 
-Statsig creates a metric detail page for all precomputed metrics that you import from your data warehouse or ingest using the HTTP API. These metric detail pages take a few hours to generate post-import or ingestion. The fastest way to start seeing and debugging your precomputed metrics is via the **Metrics Logstream** in the **Metrics Catalog** tab within **Metrics**. 
+Statsig creates a metric detail page for all precomputed metrics that you import from your data warehouse or ingest using the HTTP API. These metric detail pages take a few hours to generate post-import or ingestion. The fastest way to start seeing and debugging your precomputed metrics is via the **Metrics Logstream** in the **Metrics Catalog** tab within **Metrics**.
 
 ![Screen Shot 2022-07-13 at 4 22 46 PM](https://user-images.githubusercontent.com/101903926/178854882-730ef0d5-8eb2-4344-88ab-33111301e712.png)
 
-The **Metrics Stream** will surface all ingested, precomputed metrics in real-time as they are ingested, enabling you to check metric name, metric value, unit identifier, ID type, and ingestion date. 
+The **Metrics Stream** will surface all ingested, precomputed metrics in real-time as they are ingested, enabling you to check metric name, metric value, unit identifier, ID type, and ingestion date.
 
 :::info Tip
-Customers can trip up on ensuring that their precomputed metrics have the right ID type. Pay extra attention to this column! 
+Customers can trip up on ensuring that their precomputed metrics have the right ID type. Pay extra attention to this column!
 :::
 
 Statsig also offers the ability to include test metrics, tagged with **isTest**. You can toggle these on/ off while debugging in the **Metrics Stream**. The **isTest** flag is currently available for precomputed metrics ingested via Statsig's APIs. Support for this flag via our integrations with Snowflake, BigQuery, and Redshift is coming soon.
