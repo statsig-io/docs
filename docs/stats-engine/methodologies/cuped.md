@@ -16,15 +16,24 @@ CUPED for ratios metrics, where each experiment unit is represented by a numerat
 
 Denote the numerator, denominator, pre-experiment numerator, and pre-experiment denominator as $Y$, $N$, $X$, and $M$, respectively. Using the CUPED-reduced variance formula,
 
-$$Var(\frac{Y_{cv}}{N_{cv}})=Var(\frac{Y}{N})+\theta^2 Var(\frac{X}{M})-2\theta Cov(\frac{Y}{N}, \frac{X}{M})$$
+$$
+\LARGE
+Var(\frac{Y_{cv}}{N_{cv}})=Var(\frac{Y}{N})+\theta^2 Var(\frac{X}{M})-2\theta Cov(\frac{Y}{N}, \frac{X}{M})
+$$
 
 where optimal $\theta$ is found as
 
-$$\frac{Cov(\frac{Y}{N}, \frac{X}{M})}{var(\frac{X}{M})}$$
+$$
+\LARGE
+\frac{Cov(\frac{Y}{N}, \frac{X}{M})}{var(\frac{X}{M})}
+$$
 
 expanded to
 
-$$\frac{Cov(\frac{Y}{\mu_N}-\frac{\mu_Y N}{\mu^2_N}, \frac{X}{\mu_M}-\frac{\mu_X M}{\mu^2_M})}{var(\frac{X}{\mu_M}-\frac{\mu_X M}{\mu^2_M})}$$
+$$
+\LARGE
+\frac{Cov(\frac{Y}{\mu_N}-\frac{\mu_Y N}{\mu^2_N}, \frac{X}{\mu_M}-\frac{\mu_X M}{\mu^2_M})}{var(\frac{X}{\mu_M}-\frac{\mu_X M}{\mu^2_M})}
+$$
 
 Using the optimal $\theta$, we are hoping to reduce group-level variance by plugging the parameter back in to calculate the adjustment. Please note that across-group $\theta$ does not necessarily reduce variance for one group, or the sum of variances of all groups, but in most cases it does. Our simulation shows that 98.3% of metrics saw a decrease by CUPED.
 
