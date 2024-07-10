@@ -1,4 +1,4 @@
----
+cm---
 title: FAQ
 slug: /faq
 sidebar_label: FAQ
@@ -86,16 +86,6 @@ Generally speaking, you should use one-sided tests if you are confident that you
 
 We use mSPRT for [sequential testing](https://docs.statsig.com/experiments-plus/sequential-testing) where we adjust the confidence interval based on the variance and sample size. We have validated that this parameter satisfies the expected False Positive Rate and provides enough power to detect large effects early.
 
-## Does Statsig support mixed effect model?
-
-We don’t support Mixed Effect Models at this time. Mixed effect models require specific business and product context to prevent introducing bias into your analysis. 
-
-## Does Statsig support synthetic control?
-
-We don’t support generalized synthetic controls at this time. Synthetic controls require specific and product context to prevent introducing bias into your analysis.
-
-However, if you have set up synthetic controls yourself, in our Warehouse Native product you can set those assignment up in a table and link to an [Assignment Source](https://docs.statsig.com/statsig-warehouse-native/configuration/assignment-sources); from there, Statsig will handle the statistical analysis based on your synthetic assignments.
-
 ## How does Statsig handle skewed distribution / long tail?
 
 We offer a feature called [stratified sampling](https://docs.statsig.com/experiments-plus/stratified-sampling) which is designed to deal with skewed distribution. Based on either a metric or an attribute you chose, we pick the best salt and balance the test and control group accordingly. This feature meaningfully reduces both false positive rates and false discovery rates, making your results more consistent and trustworthy. 
@@ -175,10 +165,8 @@ See the question above for what counts as a billable event. Some tools available
 1. Go to the Usage and Billing tab within your Project Settings to download a CSV file that details what gate/experiment checks or events are contributing to your event volume. Open it in Excel and create a Pivot Table using this data to quickly sort and look at top event volume drivers.
 ![image](https://user-images.githubusercontent.com/31516123/218547079-ba33751c-43f0-4ff7-8733-501711596333.png)
 
-
 2. The CSV is the richest way to explore usage data. There is some ability to see what gates/experiments or events consume the most events in the Usage and Billing Tab (within Project Settings). 
 ![image](https://user-images.githubusercontent.com/31516123/218545373-ac447ba7-1afd-4a0b-99f8-6698c8b2c045.png)
-
 
 3. Admins will be proactively alerted when Enterprise Contracts hit 25/ 50/ 75/ 100% usage of their contracted events.
 ![image](https://user-images.githubusercontent.com/31516123/218544792-0c027d19-6c1f-400a-9b8d-2041ad04985e.png)
