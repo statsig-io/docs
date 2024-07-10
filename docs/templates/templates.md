@@ -16,19 +16,19 @@ There are two primary ways to create a new template-
 2. From a gate/ experiment you want to turn into a new template
 
 ### Creating Templates from Project Settings 
-To create a new template from Project Settings, navigate to **Settings** -> **Project Settings** -> **Templates** and click the **+Create New** CTA, then select whether you want to create a gate or experiment template. 
+To create a new template from Project Settings, navigate to **Settings** -> **Project Settings** -> **Templates** and click the **+Create New** CTA, then select whether you want to create a gate or experiment template. Org and Project Admins and Owners are able to create Templates from the Project Settings.
 
 ![Screen Shot 2024-03-26 at 1 54 16 PM](https://github.com/statsig-io/docs/assets/101903926/dee2680f-18b9-414e-a7a4-a4fd5c823b22)
 
 ### Converting an Existing Config into a Template 
-If you create a new config that you think would be useful to more folks on the team as a template, you can convert an existing (or currently being created) config into a template. To do this, in the config you wish to convert to a template, tap the "..." menu and select **Save as Template**. This will prompt you to name your template and add a description before saving. 
+If you create a new config that you think would be useful to more folks on the team as a template, you can convert an existing (or currently being created) config into a template. To do this, in the config you wish to convert to a template, tap the "..." menu and select **Save as Template**. This will prompt you to name your template and add a description before saving. Org and Project Admins and Owners, as well as the creator of the existing config, are able to create Templates from existing configs.
 
 ![Screen Shot 2024-03-26 at 1 55 55 PM](https://github.com/statsig-io/docs/assets/101903926/4768129f-f91a-4697-aaf7-d9950cdde4d2)
 
 ![Screen Shot 2024-03-26 at 1 56 21 PM](https://github.com/statsig-io/docs/assets/101903926/790ed73e-d014-4163-abc2-caffaefaadc3)
 
 ## Managing Templates 
-Templates can be managed via the **Templates** tab within **Project Settings**. Note that permissions for who can/ can't create or modify templates are managed via Statsig's Role-based Access Controls in the **Project Settings** -> **Members** -> **Roles**. By default Org and Project Admins can modify or delete any Template. 
+Templates can be managed via the **Templates** tab within **Project Settings**. Note that permissions for who can/ can't create or modify templates are managed via Statsig's Role-based Access Controls in the **Project Settings** -> **Members** -> **Roles**. By default Org and Project Admins and Owners can modify or delete any Template. 
 
 ![Screen Shot 2024-03-26 at 5 39 33 PM](https://github.com/statsig-io/docs/assets/101903926/0e77d362-a730-4939-844f-228a2982dbea)
 
