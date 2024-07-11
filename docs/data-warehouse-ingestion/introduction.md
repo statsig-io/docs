@@ -15,7 +15,7 @@ We currently support ingestion from the following providers:
 4. [Databricks](databricks.mdx)
 5. [Synapse](synapse.mdx)
 6. [S3](s3.mdx)
-6. [Athena](athena.mdx)
+7. [Athena](athena.mdx)
 
 ### How it works
 
@@ -61,13 +61,13 @@ See [here](data_mapping.mdx) for more information.
 
 Statsig supports multiple schedules for ingestion. At the scheduled window, we will check if data is present in your warehouse for the latest date, and load if it exists.
 
-We will check the underlying source table for changes.  For up to 3 days after initial ingestion, we will check for >5% changes in row counts and reload the data.
+We will check the underlying source table for changes. For up to 3 days after initial ingestion, we will check for >5% changes in row counts and reload the data.
 
 We also support a user-triggered backfill. This could be useful if a specific metric definition has changed, or you want to resync data older than a few days.
 
 <img src="https://user-images.githubusercontent.com/87334575/199854289-dec60731-b54e-43d1-92a0-2fbd53f47087.png" width="400"/>
 
-Reloading data and backfilling metrics and events is billed as any other [custom event](metrics/raw-events#billing)
+Reloading data and backfilling metrics and events is billed as any other [custom event](/metrics/raw-events#billing)
 
 Note: Auto-generated **User Accounting Metrics** are not supported today for data warehouse ingestions.
 
@@ -122,7 +122,6 @@ Statsig shows the status of your daily ingestion on the console under the **Inge
 
 Statsig also sends email notifications with these status updates to the Statsig user who set up the ingestion. This user can also enable Slack direct message (DM) notifications to themselves in their Statsig [Account Settings](https://console.statsig.com/account_notifications).
 
-
 7. **Does Statsig automatically backfill data**
 
- Statsig looks back at data for 3 days from the initial ingestion to see data has changed (>5% increase in the number of rows) to automatically trigger a backfill. Outside of this window, we expect the customer to trigger backfill for the range of dates.
+Statsig looks back at data for 3 days from the initial ingestion to see data has changed (>5% increase in the number of rows) to automatically trigger a backfill. Outside of this window, we expect the customer to trigger backfill for the range of dates.
