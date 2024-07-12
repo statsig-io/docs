@@ -37,7 +37,7 @@ module.exports = {
             {
               "Common Use Cases": [
                 "guides/aa-test",
-                "guides/first-shopify-abtest",
+                "guides/shopify-ab-test",
                 "guides/sendgrid-email-abtest",
                 "guides/customer-io-email-abtest",
                 "guides/email-campaign-test",

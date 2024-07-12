@@ -1,0 +1,55 @@
+---
+sidebar_label: A/B Testing on Shopify
+title: A/B Testing on Shopify
+---
+
+## Use cases &amp; considerations
+
+Shopify provides solutions for commerce businesses to build and manage all aspects of their online storefront, including product catalogue, inventory, site content, marketing, and user experience. 
+
+For experimenting with the more static aspects of the store experience (static landing pages, visual aspects), we recommend using [Statsig Sidecar](https://docs.statsig.com/guides/sidecar-experiments/introduction) to both build your test treatments and to assign users to experiments when they land on your site — all without writing any code.
+
+Customers looking to experiment on the more dynamic aspects of their online store (ie; your product catalogue, search capabilities) should use [Shopify Headless Commerce](https://www.shopify.com/plus/solutions/headless-commerce) and integrate our [SDKs](https://docs.statsig.com/sdks/getting-started) to unlock full control for experimenting within business logic.
+
+## Using Traditional Shopify + Sidecar for No-code testing
+
+The traditional Shopify service is a fully-managed platform for businesses that provides both a backend adminstration tool for managing your product catalogue &amp; site content, and powers the storefront experience for your shoppers.
+
+While Statsig does not have an integration in the Shopify App Store today, you can easily integrate Sidecar for running simple UX experiments on the storefront. The below steps will guide you through the process of setting up Sidecar within the traditional Shopify stack.  
+
+#### Install Sidecar chrome extension
+[Follow this guide](https://docs.statsig.com/guides/sidecar-experiments/setup) on installing the Sidecar Chrome extension.
+This simple, lightweight Chrome extension will allow non-technical users to build experiments and their treatments. You can easily indicate where the test should run based on URL, and then configure treatments such as content changes, style changes, image swaps, as well as injecting arbitrary JavaScript for more sophisticated use-cases where the visual editor tools cannot accommodate. 
+
+#### Add Sidecar JS to your Storefront's page source
+
+- Log in to your Shopify dashboard
+- click on **Online Store**, then Themes
+- locate and click the elipses menu [...], find the **Edit Code** option
+
+![statsig product overview](/img/shopify-customize-1.png)
+
+- [Locate your Sidecar script tag](https://docs.statsig.com/guides/sidecar-experiments/publishing-experiments#step-2-add-script-code) and copy the script tag to your clipboard
+- Navigate to the `theme.liquid` file in your Shopfiy theme editor
+- Paste the Sidecar script tag toward the top of the page `<head>` as shown below.
+
+![statsig product overview](/img/shopify-customize-2.png)
+- Save your `theme.liquid` file.
+- Sidecar is now installed across your entire website 🎉.
+
+#### Configure event tracking and metrics
+There are a number of approaches for instrumenting event tracking when using Sidecar, including:
+- Using the out-of-the-box ["Autocapture" tracking](https://docs.statsig.com/guides/sidecar-experiments/measuring-experiments#using-autocapture) that loads with Sidecar
+- [Instrumenting custom event logging](https://docs.statsig.com/guides/sidecar-experiments/measuring-experiments#using-the-tracking-api) (for things like purchases, revenue, and AOV tracking for example).
+- Using the [GTM Integration](https://docs.statsig.com/guides/sidecar-experiments/integrating-gtm)
+
+## Using Shopify Headless + Statsig SDKs for deeper experimentation
+
+Using [Shopify Headless](https://shopify.dev/docs/storefronts/headless) gives you full control over customizing your storefront by decoupling the Shopify admin backend and the storefront application. This means that Shopify effectively serves as a data store, providing APIs to fetch &amp; serve products, content, and manage the entire shopping experience using code.
+
+Whether you're using Shopify's [Hydrogen app](https://shopify.dev/docs/storefronts/headless/hydrogen/fundamentals) and its frameworks or a [custom headless stack](https://shopify.dev/docs/storefronts/headless/bring-your-own-stack), you can integrate Statsigs SDK as needed in order to assign users to experiments. Integrating Statsig in this architecture will follow a similiar pattern to our recommendation to [integrating with headless CMS platforms](https://docs.statsig.com/guides/cms-integrations).
+
+#### Integrating data sources for experiment metrics
+Along with the measuring simple clickstream and point-of-sale behavior as [outlined here](http://localhost:3004/guides/first-shopify-abtest#configure-event-tracking-and-metrics), commerce businesses performing deeper experimentation often want to integrate offline data systems and measure experiments using existing metrics that the broader business uses. 
+
+Commonly, the Data Warehouse is the source of truth for user purchase data and other categories of offline data. This affords customers the ability to define more [bespoke metrics](https://docs.statsig.com/statsig-warehouse-native/configuration/metrics#metric-types) using filtering, aggregations and incorporating other datasets in the warehouse for segmenting experiment results.   
