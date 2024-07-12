@@ -16,7 +16,6 @@ Statsig allows you to ingest raw events that are computed into metrics in the fo
 Statsig allows you to ingest any of your precomputed product and business metrics in the following ways:
 
 - Importing metrics from a data warehouse like [Snowflake](https://docs.statsig.com/integrations/data-imports/snowflake), [BigQuery](https://docs.statsig.com/integrations/data-imports/bigquery) or [Redshift](https://docs.statsig.com/integrations/data-imports/redshift)
-- Exporting metrics to a [Statsig-owned azure blob container](https://docs.statsig.com/integrations/data-imports/azure_upload) that we'll import data from
 -  Logging precomputed metrics using Statsig's [HTTP API](https://docs.statsig.com/http-api)
 
 ### Logging Precomputed Metrics using the [HTTP API](https://docs.statsig.com/http-api)

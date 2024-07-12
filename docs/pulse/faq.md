@@ -17,7 +17,7 @@ There's a number of reasons this can happen:
 - The population that saw the experiment early early on is somehow different than the slower adopters. This happens frequently - a daily user will likely see your experiment before someone who users your product once a month. You can look at the time series view to get more insight on this
 - There was some sort of novelty effect that made the experiment meaningful early on, but fall off. Imagine changing a button - people might click on it early out of curiosity or novelty, but once that effect goes away they'll behave like before. You can use the days-since-exposure view to get more insight on this
 
-Best practice for timing is to pick a readout date when you launch your experiment (based on a [power analysis](experiments-plus/power-analysis)), and to disregard the statistical interpretation of results until then. This is because reading results multiple times before then dramatically increases the rate at which you'll get false positives.
+Best practice for timing is to pick a readout date when you launch your experiment (based on a [power analysis](/experiments-plus/power-analysis)), and to disregard the statistical interpretation of results until then. This is because reading results multiple times before then dramatically increases the rate at which you'll get false positives.
 
 ## How should I start with interpreting results?
 
@@ -43,4 +43,4 @@ This normally happens when your company is both using the SDK or event imports, 
 
 ## Our external source shows more exposure events than Statsig. Are data missing?
 
-Exposures on the last day (the day you made a decision) are not counted as exposures. Please filter out that day when you analyze your external data.  By default, Statsig uses UTC-0800 to define a "day".
+Exposures on the last day (the day you made a decision) are not counted as exposures. Please filter out that day when you analyze your external data. By default, Statsig uses UTC-0800 to define a "day".
