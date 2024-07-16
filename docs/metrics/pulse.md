@@ -55,7 +55,11 @@ When creating a custom ratio metric, use event_count to include all events (coun
 
 ## Winsorization
 
-To reduce the impact of outliers, Statsig caps _event_count_ and _sum_ metric types at the 99.9th percentile. This mitigates the risk of bots and extreme values significantly swaying experiment results.
+To reduce the impact of outliers, Statsig caps _event_count_ and _sum_ metric types at the 99.9th percentile (by default). This mitigates the risk of bots and extreme values significantly swaying experiment results.
+
+The winsorization 99.9th percentile is computed using all non-zero and non-null values of the metric, and then all values of exceeding this limit are replaced with it.
+
+Warehouse-Native (WHN) allows for more customization of winsorization by metric and by percentile.
 
 ## Frequently Asked Questions
 
