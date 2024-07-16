@@ -185,7 +185,7 @@ module.exports = {
             "experiments-plus/make-decision",
             "experiments-plus/overrides",
             "experiments-plus/stratified-sampling",
-            "experiments-plus/hte",
+            "experiments-plus/differential-impact-detection",
             "experiments-plus/abandon",
             "experiments-plus/ending-experiment",
             "experiments-plus/disable-group",
