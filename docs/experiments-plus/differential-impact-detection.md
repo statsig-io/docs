@@ -5,7 +5,7 @@ slug: /experiments-plus/differential-impact-detection
 ---
 
 ## What is Differential Impact Detection?
-This often also referred to as as Heterogeneous Treatment Effect or Segments of Interest. Experiments can have interesting effects on sub-populations that are easily missed. They might have a bug that impacts only a certain browser, OS, or country. If the topline impact isn't significant or is canceled out by other changes - these are missed.  
+Experiments can have interesting effects on sub-populations that are easily missed. They might have a bug that impacts only a certain browser, OS, or country. If the topline impact isn't significant or is canceled out by other changes - these are missed.  
 
 Statsig will automatically flag experiments when extreme differential impacts are detected for any sub-population you have configured. Once configured, experiments are analyzed for differential impact  when Pulse is loaded after Day 1, Day 3 and when the Target Duration is met.
 
@@ -14,6 +14,8 @@ On Statsig Warehouse Native, configure the "Segments of Interest" you want autom
 
 ![image](https://github.com/statsig-io/docs/assets/31516123/0ee87ff3-f276-4f8e-88a8-fab3ff9d58e0)
 ![image](https://github.com/statsig-io/docs/assets/31516123/c216d7f1-dec5-4f39-926a-cc5034a0f738)
+
+This feature is also  also referred to as as **Heterogeneous Treatment Effect** or **Segments of Interest**. 
 
 ## Methodology
 
@@ -48,3 +50,5 @@ $
 \text{some chance of HTE, } \alpha = \frac{0.05}{\text{number of comparisons}}
 $
 
+
+##
