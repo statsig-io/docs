@@ -37,7 +37,7 @@ You can now configure SDK network using different network protocol to integrate 
 There are 3 network endpoints SDK make requests to download_config_specs,get_id_lists, and log_events, and you can configure each endpoint 1. protocol being used 2. proxy address.
 
 #### Network protocol for different endpoints
-For `downlaod_config_specs` endpoint, where we get specs on evaluating gates/layers/experiments/configs 
+For `download_config_specs` endpoint, where we get specs on evaluating gates/layers/experiments/configs 
 1. `http`: the default protocol. If SDK is initialized with http, it will poll config updates in background thread.
 2. `grpc_websocket`: Establish a grpc streaming from SDK to statsig forward proxy, and listen to updates being pushed from proxy servers. You have to use statsig forward proxy or have a similar proxy server in order to use grpc streaming.
 3. `grpc`: Unary RPC, behave similarly to HTTP protocol, after initialization, SDK poll changes from forward proxy server in background thread.  
@@ -61,7 +61,7 @@ For `log_events` endpoint, where we post exposure events and custom events.
 ```typescript
 const statsigOptions = {
   proxyConfigs: {
-    downlaod_config_specs:  {
+    download_config_specs:  {
       proxyAddress: proxyAddress // Your proxy address
       protocol: "grpc_websocket"
     }
