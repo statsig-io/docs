@@ -723,7 +723,6 @@ module.exports = {
                 "console-api/daily-reports-deprecated",
               ],
             },
-            "console-api/all-endpoints",
             "console-api/usage-billing",
             "console-api/rules",
           ],
