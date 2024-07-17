@@ -214,6 +214,10 @@ module.exports = {
       {
         redirects: [
           {
+            to: "/guides/shopify-ab-test",
+            from: "/guides/first-shopify-abtest",
+          },
+          {
             to: "/product-analytics/drilldown",
             from: "/mex/drilldown",
           },

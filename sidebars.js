@@ -37,7 +37,7 @@ module.exports = {
             {
               "Common Use Cases": [
                 "guides/aa-test",
-                "guides/first-shopify-abtest",
+                "guides/shopify-ab-test",
                 "guides/sendgrid-email-abtest",
                 "guides/customer-io-email-abtest",
                 "guides/email-campaign-test",
@@ -185,7 +185,7 @@ module.exports = {
             "experiments-plus/make-decision",
             "experiments-plus/overrides",
             "experiments-plus/stratified-sampling",
-            "experiments-plus/hte",
+            "experiments-plus/differential-impact-detection",
             "experiments-plus/abandon",
             "experiments-plus/ending-experiment",
             "experiments-plus/disable-group",
@@ -474,7 +474,7 @@ module.exports = {
                 "statsig-warehouse-native/features/power-analysis",
                 "holdouts/introduction",
                 "experiments-plus/stratified-sampling",
-                "experiments-plus/hte",
+                "experiments-plus/differential-impact-detection",
                 "statsig-warehouse-native/features/targeting",
                 "statsig-warehouse-native/features/id-resolution",
                 "statsig-warehouse-native/features/filtering-exposures",
