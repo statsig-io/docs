@@ -18,3 +18,4 @@ Organization level Experiment Policies are an Enterprise only feature.
 Organization Experiment Policies can be managed by visiting the _Organization Info_ page at the bottom of your [Org Settings page](https://console.statsig.com/organization/settings). Only organization admins have the ability to modify these settings.
 
 ![Experiment policies](/img/org_exp_policies.png)
+
