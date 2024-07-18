@@ -142,7 +142,6 @@ module.exports = {
             "dynamic-config/working-with",
             "dynamic-config/create-new",
             "dynamic-config/add-rule",
-            "dynamic-config/implement",
           ],
         },
         {
