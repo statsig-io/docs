@@ -60,6 +60,48 @@ function App() {
 
 
 
+### waitForInitialization and initializingComponent
+
+In the older versions of the `StatsigProvider`, it was possible to set the `waitForInitialization` to block children from rendering until after the latest 
+values were fetched from Statsig and if a `initializeComponent` was set, this was displayed while the latest values were fetched.
+
+It was also possible to set `waitForInitialization` to `false`, meaning the StatsigProvider would render immediately, before values were ready. This was not recommended as it meant values could change between checks, resulting in unexpected layout changes.
+
+
+**Where did waitForInitialization go?**
+
+In the newer `StatsigProvider` this is no longer an option as we want to prevent developers from unintentionally allowing values to change mid-session.
+It is still possible to get the same behavior as setting `waitForInitialization` to false, but we recommend against it.
+
+Read the [Initialization Strategies](/client/javascript-sdk/init-strategies) guide to learn how to replicate the `waitForInitialization=false` behavior, as well as the recommended approaches to synchronous initialization.
+
+
+
+
+
+
+
+
+### Bootstrapping the StatsigClient
+If you are using a Statsig Server SDK to bootstrap the Statsig Client used by your React app, you may need to make some updates to how your server SDK generates values.
+One of the optimizations we made with the `@statsig/js-client` SDK was to remove the `sha256` library for hashing gate/experiment names. 
+Instead, we use a `djb2` hash. 
+
+By default, all server SDKs generate `sha256` hashes of gate/experiment names in the `getClientInitializeResponse` method.
+You will need to set the hash algorithm parameter to that method call to `"djb2"` instead in order to bootstrap this new client SDK. 
+One of the benefits to this hashing algorithm is it will make the entire payload smaller as well, so its a net win on package size, speed, and payload size for the SDK.
+
+For example, if you are bootstrapping from the Statsig Node SDK, you will need to do:
+
+```js
+statsig.getClientInitializeResponse(
+  user,
+  '[client-key]',
+  {
+    hash: 'djb2', // <- New Hashing Algorithm
+  },
+);
+```
 
 
 

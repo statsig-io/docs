@@ -1,8 +1,8 @@
 ---
-title: Data Privacy
+title: Egress, Privacy, & Storage
 slug: /statsig-warehouse-native/data-privacy
-sidebar_label: Data Privacy
-description: Understand what leaves your warehouse
+sidebar_label: Egress, Privacy, & Storage
+description: Understand how Statsig uses your warehouse
 ---
 
 One advantage of using Statsig Warehouse Native is that user-level data comes directly from your source of truth without needing to be copied or leave your warehouse. This page walks through how Statsig interacts with your warehouse.
@@ -43,8 +43,15 @@ During analysis, data stays in your warehouse. Intermediate tables and results a
 
 ![Analysis Flow](https://user-images.githubusercontent.com/102695539/264110212-b9e07098-cd3a-4107-aa3f-6740fc3d8b7a.png)
 
-## Data Retention
+## Data Retention in Statsig
 
 Customer data contained within exposure events when using the SDK for assignment is retained for a maximum of 30 days purely for diagnostics and debugging purposes.
 Statsig will automatically remove any customer data no longer than 30 days after the events are sent to our system.
 
+## Storage Management
+Experimentation staging datasets can generate a lot of data, since they can potentially blow up your data by the number of experiments you run; for example, if you have user-day data and run 100 experiments that all expose every user, you'd end up with 100 copies of the data with slight differences based on when users were exposed to the various experiments.
+
+To help manage this, Statsig has a table management system to help manage storage costs and visibility:
+- Temporary artifacts (tables generated as part of explore queries or pulse results) are dropped 2-7 days after creation. This gives some buffer to debug, but they won't maintain long-term copies of data 
+- When you finish an experiment by making a decision, you're prompted to delete the tables. By default, Statsig leaves the result sets (on the order of kilobytes) in your warehouse for reference, but you can override this setting.
+- At any time, you can drop tables for your experiment from the three-dot menu in the experiment.

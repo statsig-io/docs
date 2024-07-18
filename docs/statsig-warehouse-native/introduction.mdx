@@ -38,135 +38,83 @@ export const ArrowButton = ({ link }) => (
   </IconButton>
 );
 
-Statsig Warehouse Native brings Statsig's to your warehouse. Assess the impact of new features on-demand, on your compute, and mix and match use Statsig's SDKs with your own sources of metric and assignment data.
+Statsig Warehouse Native is an enterprise-grade experimentation platform that
+runs analysis in your data warehouse. It integrates easily with your existing
+datasets and any source of experiment assignment data - including a powerful
+integration with Statsig's SDKs and real-time logging infrastructure.
 
-This is an appealing option for customers who are privacy sensitive or who are already using other solutions for experiment assignment. Our [support team](mailto:support@statsig.com) can help you decide if Statsig Warehouse Native is a good fit for your experimentation needs.
+Warehouse Native has a shared core feature set with Statsig Cloud. This section of the documentation deals with specifics around setting up and running experiments on top of your warehouse.
 
-## Walkthrough Guides
+### Use Cases for Statsig Warehouse Native
 
-<div
-  style={{
-    display: "flex",
-    flexWrap: "wrap",
-  }}
->
-  <OutlinedCard
-    title="Connect Your Warehouse"
-    icon="warehouse"
-    description="Connect Statsig to your warehouse to start analyzing experiments"
-    link="guides/connect"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Create Metrics"
-    icon="speed"
-    description="Connect to a metric source and configure metrics for analysis in Statsig"
-    link="guides/metric-sources"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Start an Experiment"
-    icon="science"
-    description="Connect to your assignment data in minutes, and start testing hypotheses"
-    link="guides/assignment-sources"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Run Pulse"
-    icon="assessment"
-    description="Calculate and explore experiment results in your warehouse"
-    link="guides/pulse"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Use Statsig SDKs"
-    icon="flaky"
-    description="Use Statsig's SDK to get easy event logging and rich features like holdouts and mutual exclusion. Export events to your warehouse for analysis"
-    link="guides/sdks"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Run a Proof of Concept"
-    icon="biotech"
-    description="Run a Proof of Concept with Statsig's Warehouse Native solution to validate your use cases"
-    link="guides/running_a_poc"
-  ></OutlinedCard>
-</div>
+- An end-to-end experimentation platform covering targeting, experiment setup and assignment, and analysis
+  - Includes Feature Flagging, Automated/Protected Rollouts, Native Holdouts, Mutual Exlusion, and the analysis tools below
+- A modern statistical engine to run analysis on top of existing experiment from third-party or internal systems
+  - Statsig provides a complete suite of experiment measurement tools, ranging from user accounting to percentiles, and offers the most experimentation tools on the market - including CUPED, Stratified Sampling, Switchback Tests, and more
 
-## Tools
+Statsig also offers a cloud solution, which is an ideal fit for customers who are primarily using Statsig for Feature Flagging, or don't have a mature data warehouse and/or metric catalog. Our [support team](mailto:support@statsig.com) can help you decide if Statsig Warehouse Native or Statsig Cloud is a better fit for your experimentation needs.
 
-Statsig Warehouse Native integrates with Statsig's development tools:
+## How It All Works
 
-<div
-  style={{
-    display: "flex",
-    flexWrap: "wrap",
-  }}
->
-  <OutlinedCard
-    title="Feature Gates"
-    icon="tune"
-    description="Control access to new functionality and automatically measure how it’s performing with an A/B test before you ship"
-    link="/feature-flags/working-with"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Dynamic Configs"
-    icon="dns"
-    description="Dynamically configure user experience with configuration parameters instead of hard-coded constants"
-    link="/dynamic-config"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Segments"
-    icon="donut_small"
-    description="Define a reusable set of rules to target a group of users"
-    link="/segments"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Experiments+"
-    icon="science"
-    description="Run sophisticated experiments with multiple variants (A/B/n tests) or mutual exclusion"
-    link="/experiments-plus/working-with"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Users"
-    icon="people"
-    description="View users exposed to all gate checks and events logged with Statsig"
-    link="/users"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Pulse"
-    icon="assessment"
-    description="View how your experiments impact your metrics"
-    link="statsig-warehouse-native/guides/pulse"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Insights"
-    icon="donut_small"
-    description="View all experiments that have impacted a metric"
-    link="/insights"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Holdouts"
-    icon="flaky"
-    description="Measure the cumulative impact of all features shipped over a period of time"
-    link="/holdouts"
-  ></OutlinedCard>
-</div>
+Statsig Warehouse Native runs experimentation compute jobs in your data warehouse, leveraging your core datasets in order to calculate metrics and enrich experiment analysis that much your existing source of truth.
 
-## What Statsig Warehouse Native Does
+### SDKs
 
-With Statsig Warehouse Native, you set up connections to your source data using basic SQL queries and define Metrics as measures on top of that source data. Statsig will run a SQL-based [data pipeline](analysis-tools/pipeline-overview.md) in your warehouse to run experimental analysis on your raw data. At the end, Statsig downloads a small result set with no user identifiers - just group-level summary data.
+Using SDKs with Statsig Warehouse Native is identical to integrating with Statsig Cloud. Statsig's SDKs cover dozens of languages, and are used by thousands of customers. The basic steps are to:
 
-![Simple-view](https://user-images.githubusercontent.com/102695539/236989885-a30c24d8-26c9-4f8e-b596-3565a0be018d.png)
+- Set up targeting and experiments in the Statsig console
+- Initialize the Statsig SDK on a client or server-side application
+- Call the Statsig SDK to get user targeting and assignment
+  - Provide a logging callback to log to your own warehouse, or
+  - Leverage Statsig's real-time infra to get instant diagnostics and roll out features safely with real-time guardrail reports
 
-This process is fully transparent. The queries and cost data are available in the Statsig console, and algorithms like CUPED and winsorization are run in SQL to avoid black boxes and inconsistent results.
+The resulting assignment (and optional event logging) data ends up in your warehouse, where it can be connected to other datasets in order to generate experiment analyses. If you choose to log to Statsig, data is exported on-demand for real-time analysis, as well as in hourly/daily batch jobs.
 
-Nonetheless, the Statsig Warehouse Native pipeline supports many of the advanced features offered in Statsig, such as:
+### Analysis
 
-- Support for multiple unit types - the same event can be used in experiments for a user_id, company_id, etc.
-- Timeseries and days-since-exposure breakdowns
-- Dimensional breakdowns - set up metrics to calculate dimensional breakdowns as well as a topline view
-- Custom queries - filter and group results by user-level attributes
-- Advanced metrics and corresponding statistics tools like Ratio Metrics, Funnels, and the Delta Method to adjust for metric covariance
-- CUPED, Sequential Testing, Outlier Removal, and more
+Statsig's data analysis runs in your data warehouse. All of the queries, intermediate datasets, and results that Statsig runs will be available in your warehouse for auditing and any custom analysis.
 
-You can also integrate Statsig's feature gates, rollout scheduling, holdouts, and layers (mutual exclusion) with Warehouse Native and still store and process the data in your warehouse.
+Running experiments looks like:
+
+- Connecting Statsig to your warehouse
+- Creating metrics by pointing to input data and configuring experiment metrics
+- Creating an experiment and logging exposures with Statsig, or pointing to existing assignments that you already have
+- Stating a hypothesis, and picking scorecard metrics to evaluate your hypothesis
+- Running a Pulse analysis to test your hypotheses and measure the impact your change had on your scorecard metrics
+- Using Statsig's advanced diagnostics, explore tools, and meta-analysis to start building and sharing organizational knowledge
+
+In addition to experiment analysis, Statsig also offers Metrics Explorer - a powerful tool to visualize your experiment metrics over your entire population and drill down into user behavior. This is part of a broad suite of product observability that comes with Statsig as an experimentation platform, with features like Session Replay, advanced filtering, and dashboards.
+
+## Next Steps
 
 :::info
-Statsig Warehouse Native is only available for Enterprise contracts. Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you are interested in evaluating Statsig Warehouse Native.
+Don't get blocked! We love to help people use Statsig. Reach out to support or chat with us in Slack!
 :::
+
+Check our getting started guides to start running or analyzing an experiment in minutes.
+
+<div
+  style={{
+    display: "flex",
+    flexWrap: "wrap",
+  }}
+>
+  <OutlinedCard
+    title="Quick Start"
+    icon="speed"
+    description="Connect Statsig to your warehouse and get test results in minutes"
+    link="guides/quick-start"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Evaluate Statsig"
+    icon="warehouse"
+    description="Evaluate how Statsig Warehouse Native can work for you"
+    link="guides/running_a_poc"
+  ></OutlinedCard>
+  <OutlinedCard
+    title="Learn About Experimentation"
+    icon="science"
+    description="Learn about Statsig's modern Stats Engine"
+    link="features/statistics"
+  ></OutlinedCard>
+</div>

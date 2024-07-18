@@ -1,0 +1,8 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+```python
+  proxyAddress = "0.0.0.0:50051" // local address update to your address
+  Statsig.initialize(secret_key, StatsigOptions(proxy_configs={
+            NetworkEndpoint.DOWNLOAD_CONFIG_SPECS: ProxyConfig(NetworkProtocol.GRPC_WEBSOCKET, proxyAddress)}))
+```

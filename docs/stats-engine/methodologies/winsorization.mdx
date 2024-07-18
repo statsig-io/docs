@@ -14,6 +14,8 @@ Winsorization is a common technique for removing noise in experiment results, sp
 
 Winsorization refers to the practice of measuring the percentile Px of a metric and setting all values over Px to Px.
 
+Statsig computes the Px value using all non-zero and non-null values of the metric.
+
 <DocumentationFork
   cloud={<Cloud />}
   warehouse={<Warehouse />}

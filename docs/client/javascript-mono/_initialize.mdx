@@ -25,4 +25,13 @@ import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
 - In advanced use cases, you may want to Prefetch or Bootstrap (Provide) values for initialization. See [Using EvaluationsDataAdapter](/client/javascript-sdk/using-evaluations-data-adapter) to learn how this can be achieved.
 
-- It is possible to apply a timeout to async operations. See [Foo](#).
+- It is possible to apply a timeout to async operations. See [Async timeouts](/client/javascript-sdk#async-timeouts).
+
+**[Recommended] Asynchronous Initialization (Network)**
+
+When calling `StatsigClient.initializeAsync`, the client will load values
+from cache and provide them to the client. The client will then fetch the latest values from the network,
+providing the ability to await the latest values from Statsig.
+
+If you want the latest values, but do not want to await the asynchronous call, you may call `initializeAsync` and simply `.catch` the promise. Note that
+this could lead to values changing mid-session as newer values arrive from the network.  Alternatively, you can use `initializeSync` to initialize with cached values and update the cache in the background. To learn more about sync vs async initialization and how it can be customized, see [Using EvaluationsDataAdapter](/client/javascript-sdk/using-evaluations-data-adapter)

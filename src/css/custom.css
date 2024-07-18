@@ -21,10 +21,11 @@ h1 {
   font-size: 1.7rem;
 }
 h2 {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 }
 h3 {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem !important;
 }
 h4 {
   font-size: 1rem;
@@ -52,9 +53,13 @@ a {
     "Roboto", "Helvetica Neue", "Ubuntu", sans-serif;
   --ifm-font-size-base: 0.95em;
   
+  --ifm-menu-color: #000;
   --ifm-menu-color-active: #0068b3;
   --ifm-menu-color-background-active: #0068b311;
   --ifm-navbar-background-color: #f7f7f7;
+  --ifm-menu-link-padding-vertical: 0.4rem;
+
+  --ifm-transition-fast: 100ms;  
 }
 
 html[data-theme="dark"] {
@@ -63,7 +68,7 @@ html[data-theme="dark"] {
   /* any other colors you wish to overwrite */
 
   --ifm-link-color: #2196f3;
-  --ifm-menu-color: #aaa;
+  --ifm-menu-color: #ccc;
   --ifm-menu-color-active: #fff;
   --ifm-menu-color-background-active: #194b7d99;
 
@@ -96,6 +101,16 @@ html[data-theme="dark"] {
   font-size: 14px;
 }
 
+.navbar__inner {
+  width: 90rem;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.alert {
+  margin-left: 20px;
+}
+
 .alert--info {
   --ifm-alert-background-color: #2196f333;
   --ifm-alert-border-color: #2196f3;
@@ -117,13 +132,10 @@ html[data-theme="dark"] {
   --ra-admonition-icon-color: #f44336;
 }
 
-.sdk-toc-header {
-  background-color: blue;
-  color: red;
-}
-
-span.math.math-inline {
-  font-size: 150%;
+.img-center {
+  display: flex;
+  justify-content: center;
+  width: 100%,
 }
 
 .katex{
@@ -134,14 +146,39 @@ span.math.math-inline {
   vertical-align: 0em;  /* Adjust this value as needed */
 }
 
+.main-wrapper {
+  margin: 0 auto;
+  width: 90rem;
+  max-width: 100%;
+}
+
+.menu__link {
+  font-size: 0.9rem;
+}
+
+.menu__caret:before,
+.menu__link--sublist-caret:before,
+.menu__link--sublist-caret:after {
+  background-size: 1.2rem 1.2rem;
+  filter: drop-shadow(0 0 0 #000);
+}
+
 .math-inline {
   line-height: 1;
 }
 
-.img-center {
-  display: flex;
-  justify-content: center;
-  width: 100%,
+.prism-code {
+  border: 1px solid #ddd;
+  font-size: 0.85rem;
+}
+
+.sdk-toc-header {
+  background-color: blue;
+  color: red;
+}
+
+span.math.math-inline {
+  font-size: 150%;
 }
 
 #consoleCTA{
