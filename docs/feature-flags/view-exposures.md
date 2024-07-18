@@ -41,7 +41,7 @@ In addition, bot filtering is done on all types of exposures data, not just feat
 
 :::info Opting-Out of Bot Filtering
 
-If you prefer to not remove bots from exposures data
+Bot filtering is done at the company level. Companies can opt out of filtering through their console settings.
 
 :::
 
