@@ -21,4 +21,7 @@ Statsig computes the Px value using all non-zero and non-null values of the metr
   warehouse={<Warehouse />}
 />
 
+## Metric Capping
+This is a very simple, but  effective technique to handle outliers. With this capability, you can define max values for a metric for whatever unit type(s) are configured for this metric. Any value surpassing the set cap will automatically be adjusted downward to match it.
 
+For instance, if you determine that purchases greater than $10,000 per day on your E-commerce platform should not skew analysis, any transaction exceeding this threshold will be adjusted downward to this limit, ensuring the integrity of your experiment analysis. Capped metrics are available for Event Count and Aggregation (sum) metric types.  
