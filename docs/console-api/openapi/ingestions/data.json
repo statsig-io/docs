@@ -3481,6 +3481,108 @@
           }
         ]
       }
+    },
+    "/ingestion/schedule": {
+      "post": {
+        "summary": "Update Ingestion Schedule",
+        "tags": [
+          "Ingestion Schedule"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Ingestion schedule updated successfully."
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "dataset": {
+                          "$ref": "#/components/schemas/Ingestion-dataset"
+                        },
+                        "scheduled_hour_pst": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 23,
+                          "example": 10
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "post-ingestion-schedule",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Dataset"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 23,
+              "default": 10
+            },
+            "in": "query",
+            "name": "scheduled_hour_pst",
+            "required": true,
+            "description": "Scheduled hour in PST (24h format)"
+          }
+        ]
+      },
+      "get": {
+        "summary": "Read Ingestion Schedule",
+        "tags": [
+          "Ingestion Schedule"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Ingestion schedule read successfully."
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "dataset": {
+                          "$ref": "#/components/schemas/Ingestion-dataset"
+                        },
+                        "scheduled_hour_pst": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 23,
+                          "example": 10
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-ingestion-schedule",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Dataset"
+          }
+        ]
+      }
     }
   }
 }

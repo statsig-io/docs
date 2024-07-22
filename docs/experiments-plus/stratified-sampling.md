@@ -41,3 +41,9 @@ When you use the Statsig SDK for assignment, it takes care of randomization. Whe
 
 ![image](https://user-images.githubusercontent.com/31516123/230964234-8cc81f66-f4f8-4f37-b6df-6d36d0d7ab98.png)
 
+
+## Additional reading
+
+[Morgan and Rubin 2012](https://projecteuclid.org/journals/annals-of-statistics/volume-40/issue-2/Rerandomization-to-improve-covariate-balance-in-experiments/10.1214/12-AOS1008.full) walks through the history, the philosophy, and the proofs of re-randomization, especially how re-randomization reduces the randomization variance of the difference in means. It's worth noting that "Standard asymptotic-based analysis procedures that do not take the re-randomization into account will be statistically conservative" was called out in the paper. However, to maintain consistent and comparable results across different methods, we stay conservative with the t-test.
+
+[Lin & Ding 2019](https://arxiv.org/abs/1906.11291) is another interesting read for your reference.

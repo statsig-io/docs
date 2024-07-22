@@ -12,7 +12,7 @@ The Statsig integration for Slack allows you to receive Statsig project updates 
 
 ## Project Notifications
 To configure project notifications go to [Integrations](https://console.statsig.com/integrations).<br />
-Navigate to the Slack integration and follow the instructions to install.<br />
+Navigate to the integration for Slack and follow the instructions to install.<br />
 Once enabled, you can opt-in to optional notifications like [Health Checks](https://docs.statsig.com/statsig-warehouse-native/guides/pulse#health-checks) and Statsig system [Status Reports](https://status.statsig.com/).<br />
 You can also filter change updates by the environment affected.
 
