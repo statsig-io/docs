@@ -28,6 +28,36 @@ export function App(): JSX.Element {
 }
 ```
 
+### Android networking
+We have seen reports that the default networking client on react native for android can error out with:
+
+```
+ERROR  [Statsig] A networking error occured during POST request to https://featureassets.org/v1/initialize
+```
+
+Please let us know if you hit this, but for now the suggested workaround is to append this `content-type` for all requests:
+```
+const customFetcher = (uri, args) => {
+  args.headers = {
+    'Content-Type': 'application/json',
+    ...args.headers,
+  };
+  return fetch(uri, args);
+};
+
+const myStatsigClient = new StatsigClient(
+  'YOUR_KEY',
+  {
+    userID: "YOUR_USER_ID",
+  },
+  {
+    networkConfig: {
+      networkOverrideFunc: customFetcher,
+    },
+  }
+);
+```
+
 
 ## Hooks
 
