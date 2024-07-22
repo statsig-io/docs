@@ -220,6 +220,7 @@ module.exports = {
             {
               "Methodologies Used": [
                 "stats-engine/methodologies/bonferroni-correction",
+                "stats-engine/methodologies/benajimini-hochberg-procedure",
                 "stats-engine/methodologies/cuped",
                 "stats-engine/methodologies/delta-method",
                 "stats-engine/methodologies/srm-checks",
@@ -527,6 +528,7 @@ module.exports = {
                 {
                   "Methodologies Used": [
                     "stats-engine/methodologies/bonferroni-correction",
+                    "stats-engine/methodologies/benajimini-hochberg-procedure",
                     "stats-engine/methodologies/cuped",
                     "stats-engine/methodologies/delta-method",
                     "stats-engine/methodologies/srm-checks",
