@@ -2499,6 +2499,85 @@
           "id": "t5iej5olk0qgp"
         }
       }
+    },
+    "/gates/{gate_name}/load_pulse": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "gate_name",
+          "in": "path"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "query",
+          "name": "refresh",
+          "description": "enum: 'full' | 'incremental'"
+        }
+      ],
+      "post": {
+        "summary": "Load Pulse (Warehouse Native)",
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ruleId": {
+                    "type": "string",
+                    "description": "ID of the gate rule"
+                  },
+                  "refresh": {
+                    "type": "string",
+                    "description": "enum: 'full' | 'incremental'"
+                  },
+                  "turboMode": {
+                    "type": "boolean",
+                    "description": "Load pulse with turbo mode?: true | false"
+                  }
+                },
+                "required": ["ruleId"]
+              }
+            }
+          }
+        },
+        "tags": ["Gates (Warehouse Native)"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "h8iq6upwtxbfl"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "message": "Experiment is loading."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "Load Pulse",
+        "x-stoplight": {
+          "id": "0w9utb8f51k3p"
+        }
+      }
     }
   }
 }
