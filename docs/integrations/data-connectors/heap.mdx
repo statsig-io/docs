@@ -14,10 +14,10 @@ Statsig will send events to Heap when a client SDK is initialized and will also 
 
 Statsig sends the following events to your Heap app every time you call the `initialize` API from a Statsig client SDK.
 
-| Event Name            | Properties                                                                                                                                                                                                     |
-| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Statsig Feature Gates | For each [Statsig Feature flag](feature-flags/working-with), this field contains a property that maps the name of the feature gate to `true` or `false`, stating whether the user passes or does not pass the feature gate. |
-| Statsig Experiments   | For each [Statsig Experiment](/experiments-plus), this field contains a property that maps the name of the experiment to the variant that the user is assigned to.                                             |
+| Event Name            | Properties                                                                                                                                                                                                                   |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Statsig Feature Gates | For each [Statsig Feature flag](/feature-flags/working-with), this field contains a property that maps the name of the feature gate to `true` or `false`, stating whether the user passes or does not pass the feature gate. |
+| Statsig Experiments   | For each [Statsig Experiment](/experiments-plus), this field contains a property that maps the name of the experiment to the variant that the user is assigned to.                                                           |
 
 ## Exposures and Custom Event Forwarding
 

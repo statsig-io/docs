@@ -97,3 +97,47 @@ Teams working on performance problems use Statsig to analyze the impact of their
 
 - [Percentile Metrics](../metrics/percentile.md) allow you to measure changes in values like the P99.9 - useful for measuring improvements or regressions in latency, TTL, or measuring median change when the mean is skewed
 - [Mean Metrics](../metrics/mean) are an easy shorthand for ratio metrics summing an event-level value and dividing by the total records
+
+## Filters
+
+Statsig offers a large variety of ways to filter your data. You can, of course, write filters in SQL, but leaving metric sources broad and allowing users to construct filters in the UI or through semantic layer syncs gives a high degree of 'no-code' flexibility to metric creation and follow-up analysis, especially using [local metrics](/metrics/local-metrics).
+
+### Any of / None of
+
+These are the equivalent to a SQL `IN` or `NOT IN` statement, and can also be used for equality/inequality. You can supply 1 to N values to the filter that will be included or excluded from your result set.
+
+### Inequalities
+
+You can compare numerical values using `=`, `>`, `<`, `>=`, or `<=`. Equality can also be used to compare non-numerical values, which will be evaluated as a string-casted comparison.
+
+### Null Checks
+
+Statsig supports checks for `Is Null` or `Non Null`, which can be useful for identifying if a flag was logged or for filtering out partial data.
+
+### Contains/Does Not Contain/Starts With/Ends With
+
+These operators are similar to a SQL `LIKE` operator:
+
+- Contains checks for if a substring is in a string, e.g. `field LIKE '%search_string%'
+- Does Not Contain checks for if a substring is in a string, e.g. `field not LIKE '%search_string%'
+- Starts With checks for if a substring starts the field, e.g. `field LIKE 'search_string%'
+- Ends With checks for if a substring ends the field, e.g. `field LIKE '%search_string'
+
+### Is After Exposure
+
+This filter allows you to specify a **secondary** date/timestamp field that has to come after the user's enrollment to the experiment.
+
+By default, Statsig only considers metric data where the primary metric timestamp is after the user first saw the experimental intervention. However, you might have another field like "first_saw_content_at". You can use `Is After Exposure` to enforce that this secondary timestamp also takes place after the user's exposure.
+
+### SQL Filters
+
+SQL filters allow you to inject any SQL filter string into your metric definition, which will be validated before being saved. This is flexible and lets you interact with complex objects or do complex logic operations as needed to define your metrics.
+
+For example, the sql filter `(weight_lb)/pow(height_inches, 2) > 25` would be added to your metric source query for this metric as:
+
+```
+  SELECT
+    <columns>
+  FROM <source_table>
+  WHERE <other_filters> AND ((weight_lb)/pow(height_inches, 2) > 25)
+```

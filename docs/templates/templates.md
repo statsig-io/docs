@@ -54,3 +54,4 @@ At the team-level, you can configure which templates members of that team can ch
 To configure team-specific templates, navigate to **Settings** -> **Project Settings** -> **Members** -> **Teams** -> choose a team -> **Settings** and then choose which templates are allowed for experiments and gates respectively. 
 
 ![Screen Shot 2024-03-26 at 6 05 40 PM](https://github.com/statsig-io/docs/assets/101903926/08d38cb7-3a4d-4220-afa8-419bfedc531e)
+

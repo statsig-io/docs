@@ -14,9 +14,14 @@ Winsorization is a common technique for removing noise in experiment results, sp
 
 Winsorization refers to the practice of measuring the percentile Px of a metric and setting all values over Px to Px.
 
+Statsig computes the Px value using all non-zero and non-null values of the metric.
+
 <DocumentationFork
   cloud={<Cloud />}
   warehouse={<Warehouse />}
 />
 
+## Metric Capping
+This is a very simple, but  effective technique to handle outliers. With this capability, you can define max values for a metric for whatever unit type(s) are configured for this metric. Any value surpassing the set cap will automatically be adjusted downward to match it.
 
+For instance, if you determine that purchases greater than $10,000 per day on your E-commerce platform should not skew analysis, any transaction exceeding this threshold will be adjusted downward to this limit, ensuring the integrity of your experiment analysis. Capped metrics are available for Event Count and Aggregation (sum) metric types.  

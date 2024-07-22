@@ -9,9 +9,10 @@ To create a segment,
 - On the left-hand navigation panel, select **Segments**
 - Click on the **Create** button 
 - Enter a name and description for your segment
-- Select the type of segment you want to create: **Conditional** or **ID List**, and click **Create**
+- Select the type of segment you want to create: **Conditional** or **ID List**, and click **Create** (Conditional is selected by default)
 
-![image](https://user-images.githubusercontent.com/1315028/146094845-ed5c517b-ed06-4170-bf4e-46a4a4a537dc.png)
+![image](https://github.com/user-attachments/assets/e2dd3e0e-a003-4772-8426-cb02738f4017)
+
 
 For **Conditional Segments**, you can **[Add Rules](https://docs.statsig.com/segments/add-rule)** to complete the segment's definition. 
 

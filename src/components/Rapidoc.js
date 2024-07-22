@@ -110,7 +110,7 @@ export default function Rapidoc(props) {
 
       switch (entity) {
         case "all-endpoints-generated":
-          rapidoc.loadSpec("https://statsigapi.net/console/v1/open_api");
+          rapidoc.loadSpec("https://docs.statsig.com/openapi");
           return;
         case "all-endpoints":
           data = loadAllEndpoints();
