@@ -5,4 +5,4 @@ slug: /stats-engine/methodologies/benjamini–hochberg-procedure
 ---
 
 ## Coming soon
-This is current in beta
+Currently in beta. Reach out in Slack if you're having it turned on for your company now.
