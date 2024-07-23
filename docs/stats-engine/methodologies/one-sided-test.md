@@ -17,7 +17,7 @@ One-sided tests completely disregard the possibility of detecting the metric mov
 ## How to enable this
 
 When setting up an experiment and identifying metrics to measure, the default setting is to run a two-sided test. If you want to modify this, simply click on the metric name on the experiment setup screen. This will open a popup where you can modify the test type and indicate a desired direction you seek to measure.
-Note that our V1 doesn't support sequential testing w/ one-sided testing yet. If you enable sequential testing, all metrics will be using two-sided testing.
+Note that our V1 doesn't support sequential testing or Bayesian testing yet.
 
 ![image](https://github.com/statsig-io/docs/assets/31516123/8df18328-5248-41a1-8e83-6ee0fb55031d)
 
