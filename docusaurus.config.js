@@ -214,7 +214,7 @@ module.exports = {
                 innerHTML: `
                   document.addEventListener('DOMContentLoaded', function() {
                     var copilot = document.createElement('co-pilot');
-                    copilot.setAttribute('copilot_id', 'your-copilot-id-here');
+                    copilot.setAttribute('copilot_id', '6f8EwgjiL');
                     document.body.appendChild(copilot);
         
                     var script = document.createElement('script');
