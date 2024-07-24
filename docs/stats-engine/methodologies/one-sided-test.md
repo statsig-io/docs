@@ -28,7 +28,7 @@ Note that our V1 doesn't support sequential testing or Bayesian testing yet.
 Metrics using one-sided tests will show up in Pulse very similarly to two-sided tests. The only difference will be that we show a one-sided CI rather than a two-sided CI. 
 
 Reading one-sided CIs can be a bit confusing at first. They either extend to infinity or negative infinity, which is a bit unusual, but this is entirely expected since we only detect changes in the other direction. As usual with CIs, they indicate that the real mean value of the metric likely falls into this range. Since the CI for the one-sided metric analyzed is so wide, it can be equally useful to read the results as having high confidence the mean value does not fall in the range outside the CI.
-![image](https://github.com/statsig-io/docs/assets/31516123/0e5a8cb5-fa53-4171-9361-80b8f6adc4f7)
+![image](https://github.com/user-attachments/assets/7ab3d680-b4c4-4321-b1fc-cc506b0ab21b)
 
 
 ## FAQ
