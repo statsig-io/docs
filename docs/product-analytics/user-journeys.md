@@ -23,7 +23,7 @@ The User Journeys charts show you the many paths users are taking through your p
 
 ### **Step 1: Choose an starting or ending event**
 
-The selected event will indicate where you want your analysis to begin. You can choose whether you want to explore a journey that either starts or ends with a specfic event. This allows you to understand where people go from some starting event, or where people come from for some ending event. 
+The selected event will indicate where you want your analysis to begin. You can choose whether you want to explore a journey that either starts or ends with a specific event. This allows you to understand where people go from some starting event, or where people come from for some ending event. 
 
 Starting events are often some “top-of-funnel” event such as sign-up or log-in but can also be an event trigger for any new feature you introduce into your product. 
 
@@ -39,7 +39,7 @@ Under the “Measured as” section, you can further refine your analysis by cho
 
 Next, you can specify the duration of your observation. Defaulted to 1 hour, you can change the length of time users have to convert to the next event. This is can help validate if users are passing through flows at a pace you expect
 
-You can gain additional context by breaking the User Journey out by an event property. This allows you to choose a specific event property and view the user journey granularly expanded by the different property values of the select property. This is similar to a group-by. For example, you can view user journeys split out by operating system.  
+You can gain additional context by breaking the User Journey out by an event property. This allows you to choose a specific event property and view the user journey granularity expanded by the different property values of the select property. This is similar to a group-by. For example, you can view user journeys split out by operating system.  
 
 Finally, you can further filter down your exploration by excluding user paths that include a specified event. 
 
