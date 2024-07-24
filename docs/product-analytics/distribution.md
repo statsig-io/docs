@@ -2,8 +2,8 @@
 title: Dashboards
 tags:
 - Statsig Cloud 
-sidebar_label: Dashboards
-slug: /product-analytics/dashboards
+sidebar_label: Distribution
+slug: /product-analytics/distribution
 ---
 
 # Distribution Charts
