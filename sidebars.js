@@ -293,6 +293,7 @@ module.exports = {
             "product-analytics/drilldown",
             "product-analytics/funnels",
             "product-analytics/retention",
+            "product-analytics/distribution",
           ],
         },
         "product-analytics/dashboards",
