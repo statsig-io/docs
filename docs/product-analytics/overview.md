@@ -24,7 +24,7 @@ We offer the following chart types:
 - [Metric Drilldown](/product-analytics/drilldown)
 - [Funnels](/product-analytics/funnels)
 - [Retention](/product-analytics/retention)
-- Distribution
+- [Distribution](/product-analytics/distribution)
 - User Journeys (Beta)
 
 Get started with Metrics Explorer charts by going to the Metrics in the left-nav and landing on the “Explore” tab. 
