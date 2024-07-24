@@ -44,10 +44,13 @@ There are just a few primitives that you need to get going on your way. The APIs
 curl \
   --header "statsig-api-key: <YOUR-SDK-KEY>" \
   --header "Content-Type: application/json" \
+  --header "STATSIG-CLIENT-TIME: <local_time>" \
   --request POST \
   --data '{"events": [{"user": { "userID": "42" }, "time": 1616826986211, "eventName": "test_api_event"}]}' \
   "https://events.statsigapi.net/v1/log_event"
 ```
+
+> NOTE: STATSIG-CLIENT-TIME is required to normalize the timestamp for events against our server time. If you don't set this, you may see weird timestamps for client SDKs which can have extremely variable client clocks. Here is [an example](https://github.com/statsig-io/cpp-client-sdk/blob/a62df973388a56669de2a05f0630a65570a775bd/src/statsig/internal/network_service.hpp#L148) for how we do it in one of our SDKS.
 
 *Schema*
 ```ts
@@ -99,6 +102,7 @@ Useful when you are operating in multiple environments like dev, staging, produc
 curl \
   --header "statsig-api-key: <YOUR-SDK-KEY>" \
   --header "Content-Type: application/json" \
+  --header "STATSIG-CLIENT-TIME: <local_time>" \
   --request POST \
   --data '{"events": [{"user": { "userID": "42", "statsigEnvironment": {"tier": "staging"} }, "time": 1616826986211, "eventName": "test_api_event"}]}' \
   "https://events.statsigapi.net/v1/log_event"
