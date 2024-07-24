@@ -26,7 +26,7 @@ The first step to creating a distribution chart is to decide if you want to use 
 
 ### **Step 2: Refine your bucket size**
 
-As a default, the bucket size will be set to 1 with a minimum value of 0 and a maximum value of 10. Note that the buckets are always lower inclusive and upper exclusive. If your range exceeds the initial max bucket value, we exhibit the data as “10+”. You can refine your bucket sizes, mins, and maxes to find the best view of your data.
+As a default, the bucket size will be set to 1 with a minimum value of 0 and a maximum value of 10. Note that the buckets are always lower inclusive and upper exclusive. If your range exceeds the initial max bucket value, we exhibit the data as “10+”. You can refine your bucket sizes, minimums, and maximums to find the best view of your data.
 
 ## Interpreting your Distribution Chart
 
