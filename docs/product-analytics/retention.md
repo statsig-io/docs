@@ -22,27 +22,27 @@ For our Retention Chart in Metrics Explorer, you can unlock a deeper understandi
 - **Stickiness of Specific Features:** Understand which of your product features users derive value from and correlate with them coming back to use your service.
 - **Sub-population Analysis:** Uncover the engagement of different sub-populations of your users by filtering your retention analysis to groups of interest.
 
-# Creating a Retention Chart
+## Creating a Retention Chart
 
 Retention charts are primarily defined by a start event, a return event, and a return window. This allows you to answer the question, “For users who did some starting event, what percentage of those users performed the return event within the given conversion window, over successive days or weeks?” Below we describe how you can create your own retention chart.
 
-## Step 1: Define a Start Event
+### Step 1: Define a Start Event
 
 The start event (or trigger event) is what indicates that a user has started using the product or service. Depending on the question you are trying to answer, this is often some “top-of-funnel” event such as sign-up, any active event, or an event that represents using the feature you are interested in understanding the retention of.
 
 If you’re interested in understanding the retention of a specific group of users, you can optionally add a filter to scope your analysis.
 
-## Step 2: Define a Return Event
+### Step 2: Define a Return Event
 
 The return event is the event that indicates the user is getting the value you expect from your service. Depending on the question you are trying to answer, this can be simply coming back to your product (another active event), or use of a specific feature.
 
 Once again, you can add a filter to the selected event based on user or event properties.
 
-## Step 3: Choose an ID Type
+### Step 3: Choose an ID Type
 
 Statsig allows you to perform individual or group analytics. This enables you to analyze the retention of users, or the retention of whole groups such as organizations or companies.
 
-## Step 4: Choose a Return Time Window
+### Step 4: Choose a Return Time Window
 
 This step allows you to choose whether you want to understand daily or weekly retention. For example, when you don’t expect an user to engage in a behavior on a daily basis to be considered an “active” user of that feature, it may be more helpful to use a weekly return window. This allows you to answer the question, “for users who perform the Start event, how many perform the return event within 1 _week._”
 
@@ -50,17 +50,17 @@ Choosing daily retention defines each of your retention cohorts as users who per
 
 Choosing weekly retention defines each of your retention cohorts as user who performed the start event within a calendar week. Each cohort compared will span successive weeks. The chart will then show you over your selected time range (e.g. 30 days) what percent of users in the cohort returned during that week, for each week in your team range.
 
-## Step 5 (Optional): Choose a Chart Granularity for Weekly Retention Charts
+### Step 5 (Optional): Choose a Chart Granularity for Weekly Retention Charts
 
 When you select weekly retention we optionally allow you to change to the granularity of the chart. You can do this by selecting “Daily” from the granularity dropdown in the top left of the chart.
 
 Note, this is distinct from the Return Time Window. When you create a weekly retention chart and select “Daily Granularity”, the chart now shows on a given day, what percent of the cohort performed the return event within the last week. E.g. day 12 weekly granularity will indicate what percent of the cohort performed the return event between the 7 days spanning day 6 and day 12, inclusive.
 
-# Understanding a Retention Chart
+## Understanding a Retention Chart
 
 [Retention charts](https://www.youtube.com/watch?v=mqlHpYimik8) in Statsig are divided into two main sections, the **retention graph (j-curve)** and the **retention table (triangle chart)**.
 
-## Retention Table (Triangle Chart)
+### Retention Table (Triangle Chart)
 
 A Retention Table, or Triangle Chart, visually represents how well you are retaining users after their first interaction with your product or service. It tracks cohorts of users based on their first engagement date (as defined by your start event) and shows the percentage of these users returning (as defined by your return event) over subsequent days or weeks.
 
@@ -76,11 +76,11 @@ When viewing retention chart analyzing weekly retention with weekly granularity 
 
 When viewing retention chart analyzing weekly retention with daily granularity for a given cohort, each subsequent column indicates the percentage of the cohort that performed the return event on that calendar day or within the 6 days prior.
 
-# Retention Graph
+### Retention Graph
 
 A Retention Graph typically plots the percentage of retained users against time, offering a visual representation of user retention. The X-axis represents time, segmented into daily or weekly intervals since the users' first interaction with the product. The Y-axis indicates the percentage of the original users who remain active (performed the return event).
 
-## **Reading the Graph**
+**Reading the Graph**
 
 The Retention Graph provides insights into user behavior by illustrating the rate at which users disengage over time.
 
