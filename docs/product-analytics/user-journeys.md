@@ -8,7 +8,7 @@ slug: /product-analytics/user-journeys
 
 # User Journeys
 
-The User Journeys charts show you the many paths users are taking through your product so you can better understand the end-user experience. 
+The User Journeys chart shows you the many paths users are taking through your product so you can better understand the end-user experience. 
 
 ![image](https://github.com/user-attachments/assets/75660cfc-c0cd-4114-8f99-34c0df67728e)
 
