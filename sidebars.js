@@ -294,6 +294,7 @@ module.exports = {
             "product-analytics/funnels",
             "product-analytics/retention",
             "product-analytics/distribution",
+            "product-analytics/user-journeys",
           ],
         },
         "product-analytics/dashboards",
