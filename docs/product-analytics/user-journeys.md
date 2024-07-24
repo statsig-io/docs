@@ -8,12 +8,14 @@ slug: /product-analytics/user-journeys
 
 # User Journeys
 
+## Overview
+
 The User Journeys chart shows you the many paths users are taking through your product so you can better understand the end-user experience. 
 
 ![image](https://github.com/user-attachments/assets/75660cfc-c0cd-4114-8f99-34c0df67728e)
 
 
-## Use cases
+### Use cases
 
 - **Event Pathways:** Follow along the most common paths users are taking through your product
 - **Identifying Drop-off Points:** Pinpoint where users are dropping off within key product flows
@@ -21,7 +23,7 @@ The User Journeys chart shows you the many paths users are taking through your p
 
 ## Creating a User Journeys Chart
 
-### **Step 1: Choose an starting or ending event**
+### Step 1: Choose an starting or ending event
 
 The selected event will indicate where you want your analysis to begin. You can choose whether you want to explore a journey that either starts or ends with a specific event. This allows you to understand where people go from some starting event, or where people come from for some ending event. 
 
@@ -29,11 +31,11 @@ Starting events are often some “top-of-funnel” event such as sign-up or log-
 
 You can optionally add filters to the event to scope your analysis to a specific group.
 
-### **Step 2: Choose an ID type**
+### Step 2: Choose an ID type
 
 Statsig allows you to perform individual or group analytics. This enables you to analyze the paths of registered users with User IDs, Stable IDs, or your own custom IDs. 
 
-### **Step 3: Define your measurement criteria**
+### Step 3: Define your measurement criteria
 
 Under the “Measured as” section, you can further refine your analysis by choosing between total conversions or unique conversions. Under total conversions, users can re-enter the flow every time they trigger the start event. Under unique conversions, the users will only show up in the path once. 
 

@@ -8,9 +8,11 @@ slug: /product-analytics/distribution
 
 # Distribution Charts
 
+## Overview
+
 Distribution charts in Metric Explorer help you visualize the range of user experiences across your product. These charts are a great way to generalize central tendencies, evaluate product health, and identify outlying behavior.
 
-## Use Cases
+### Use Cases
 
 Imagine you’re an e-commerce company with a purchase_completed event logging purchases on your website. You’ve configured purchase_completed to track the monetary value of each purchase. Distributions can help you:
 
