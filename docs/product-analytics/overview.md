@@ -27,7 +27,7 @@ We offer the following chart types:
 - [Distribution](/product-analytics/distribution)
 - [User Journeys](/product-analytics/user-journeys)
 
-Get started with Metrics Explorer charts by going to the Metrics in the left-nav and landing on the “Explore” tab. 
+Get started with Metrics Explorer charts by Navigating to **Analytics** section the navigation menu and selecting Metrics Explorer. 
 
 # Dashboards
 
