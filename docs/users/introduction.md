@@ -36,13 +36,13 @@ You can also switch to a session-centric view of users events by switching from 
 ![image](https://github.com/user-attachments/assets/7ac4a9f8-a3d4-485b-9a8a-8ce972ba6cda)
 
 
-# Overrides[](https://docs.statsig.com/users#override-controls-from-the-users-tab)
+# Overrides
 
 Under the Overrides tab, you have the ability to override an ID into a given experiment variant or feature gate rollout. If there is already an active override for an ID on a particular entity, this will be surfaced within this section (and can be modified inline). Any overrides set in the Users Tab will be synced to the "Overrides" section of the entity in question (and can be edited/ removed from this interface as well).
 
 # Session Replays
 
-Under Session Replays, you can quickly jump to a sample of session replays the particular user has triggered to get even more insight into their behavior. To learn more about session replays, check out our documentation on [session replays](/session-replay/overview).
+Under Session Replays, you can quickly jump to a sample of session replays the particular user has triggered to get even more insight into their behavior. To learn more, check out our documentation on [Session Replays](/session-replay/overview).
 
 
 
