@@ -37,7 +37,7 @@ In the example below, the rises in *product view count* and *purchase event coun
 
 :::info Opting-Out of Bot Filtering
 
-Bot filtering is done at the company level. Companies can opt out of filtering through their console settings.
+Bot filtering is done at the project level. Admins can opt out of filtering through their console settings.
 
 :::
 
