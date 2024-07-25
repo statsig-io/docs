@@ -126,6 +126,7 @@ RoI
 Rollouts
 RudderStack
 runtime
+sankey
 scritable
 SDK
 SDKs

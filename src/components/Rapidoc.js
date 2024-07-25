@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 
+import { useColorMode } from "@docusaurus/theme-common";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 import Models from "../../docs/console-api/models/index";
-import { useColorMode } from "@docusaurus/theme-common";
 
 const supportedEntities = [
   "gates",
@@ -127,6 +127,44 @@ export default function Rapidoc(props) {
     }, 30);
   }, []);
 
+  let descripion = (
+    <div>
+      <Alert severity="warning" className="warning">
+        <AlertTitle>
+          For latest changes please refer to <a href="/console-api/all-endpoints-generated">OpenAPI Specification</a>
+        </AlertTitle>
+        We are working on updating this page to autogenerate from our OpenAPI spec.
+      </Alert>
+      <h2>Description</h2>
+      {getDescription(entity)}
+      <h2>Authorization</h2>
+      <p>
+        All requests must include the <code>STATSIG-API-KEY</code> field in
+        the header. The value should be a Console API Key which can be created
+        in <code>'Project Settings' {">"} 'API Keys' tab</code>. <br />
+        To use the 'try it' section on this page, enter your Console API into
+        the box below.
+      </p>
+      <hr />
+
+    </div>
+  );
+  if(entity === "all-endpoints-generated") {
+    descripion = (
+      <div>
+        <h2>Authorization</h2>
+        <p>
+          All requests must include the <code>STATSIG-API-KEY</code> field in
+          the header. The value should be a Console API Key which can be created
+          in <code>Project Settings {">"} API Keys tab</code>. 
+          <br />
+          To use the 'Try' function on this page, enter your Console API into
+          the box below.
+        </p>
+      </div>
+    );
+  } 
+
   return (
     <rapi-doc
       id={id}
@@ -153,31 +191,18 @@ export default function Rapidoc(props) {
         "sans-serif",
       ]}
     >
-      <div>
-        <Alert severity="info" className="warning">
-          <AlertTitle>
-            Pagination parameters required from August 1st 2024
-          </AlertTitle>
-          List requests without page and limit parameter will default to{" "}
-          <code>page=1&limit=100</code>
-        </Alert>
-        <h2>Description</h2>
-        {getDescription(entity)}
-        <h2>Authorization</h2>
-        <p>
-          All requests must include the <code>STATSIG-API-KEY</code> field in
-          the header. The value should be a Console API Key which can be created
-          in <code>'Project Settings' {">"} 'API Keys' tab</code>. <br />
-          To use the 'try it' section on this page, enter your Console API into
-          the box below.
-        </p>
-        <hr />
-      </div>
-
+      {descripion}
       <Alert severity="warning" slot="auth">
         You will be directly modifying the project connected to the api-key
         provided. We suggest creating a temporary project when testing our API
         below.
+      </Alert>
+      <Alert severity="info" className="warning" slot="auth">
+        <AlertTitle>
+          Pagination parameters required from August 1st 2024
+        </AlertTitle>
+        List requests without page and limit parameter will default to{" "}
+        <code>page=1&limit=100</code>
       </Alert>
     </rapi-doc>
   );

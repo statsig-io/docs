@@ -167,6 +167,38 @@ You can read more about StatsigClient multi-instance support [here](/client/java
 
 
 
+
+
+## Overrides
+
+Previously, the client had top level methods for managing overrides for gates/configs/experiments/layers, etc.  Now, this has been removed from the main SDK and is in its own package.  You can implement your own overrides, or use `@statsig/js-local-overrides` and plug it in as the local override adapter in `StatsigOptions`
+
+```
+import { StatsigClient } from '@statsig/js-client';
+import { LocalOverrideAdapter } from '@statsig/js-local-overrides';
+
+const overrideAdapter = new LocalOverrideAdapter();
+overrideAdapter.overrideGate('gate_a', false);
+overrideAdapter.overrideGate('gate_b', true);
+
+const client = new StatsigClient(
+  DEMO_CLIENT_KEY,
+  { userID: 'a-user' },
+  {
+    overrideAdapter,
+  },
+);
+```
+
+Full example here:
+
+https://github.com/statsig-io/js-client-monorepo/blob/0e7201635f71e77633de04c4c19c1006030a3a81/samples/next-js/src/app/override-adapter-example/OverrideAdapterExample.tsx#L14
+
+
+
+
+
+
 ## GDPR
 
 In certain use cases, it is necessary to suspend cache and network usage until the user grants specific 
