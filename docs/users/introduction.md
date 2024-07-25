@@ -25,16 +25,15 @@ A Users Tab query surfaces the following information:
 
 ### Log Streams
 
-Under the Events tab, you can see into the events and exposures this user was triggered by seeing their event log stream. Here, you can diagnose what features this user was most interested in or what experiment group they were in.
+Under the Events tab, you can see into the events and exposures this user triggered by seeing their event log stream. Here, you can diagnose what features this user was most interested in or what experiment group they were in.
 
 ![image](https://github.com/user-attachments/assets/38820863-6330-4ed0-9809-ec595ffc82e5)
 
 ### Session Streams
 
-You can also switch to a session-centric view of users events by switching from “**Log Stream**” to “**Session Stream**” to get an in-depth look at all events the user has triggered during each of their sessions. You can dive further into these two explorations by changing the time window, hiding noisy or interesting events, and filtering to view only events or experiment / gate exposures. 
+You can also switch to a session-centric view of users events by switching from “**Log Stream**” to “**Session Stream**” to get an in-depth look at all events the user has triggered during each of their sessions. You can dive further into these two explorations by changing the time window, hiding noisy or uninteresting events, and filtering to view only events or experiment / gate exposures. 
 
 ![image](https://github.com/user-attachments/assets/efdabd87-e906-4257-bc84-37ea2bbddafc)
-
 
 
 ## Overrides[](https://docs.statsig.com/users#override-controls-from-the-users-tab)
