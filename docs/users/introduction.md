@@ -6,11 +6,11 @@ slug: /users
 
 # Users
 
-## Overview
+# Overview
 
 The Users section of Statsig gives you an event-by-event level understanding of how users (and other Unit IDs) are leveraging your product. This allows you to diagnose issues and understand user behavior at an extremely granular level with event logs, session streams, and session replays. It is also a singular place to manage feature rollout and experiment overrides. 
 
-## Exploring the Users Tab
+# Exploring the Users Tab
 
 When you enter the Users tab, you need to input a specific ID. Be sure to also select the matching Unit ID type to the ID you are looking for. There are also many context specific entry points to the Users Tab within Statsig.
 
@@ -21,25 +21,25 @@ A Users Tab query surfaces the following information:
 - **Overrides-** The ability to manually override an ID into a given feature gate or experiment variant
 - **Session Replays-** A sample of session replays the user has triggered
 
-## Events
+# Events
 
-### Log Streams
+## Log Streams
 
 Under the Events tab, you can see into the events and exposures this user triggered by seeing their event log stream. Here, you can diagnose what features this user was most interested in or what experiment group they were in.
 
-![image](https://github.com/user-attachments/assets/38820863-6330-4ed0-9809-ec595ffc82e5)
+<img width="1374" alt="image" src="https://github.com/user-attachments/assets/1ff4af6a-c467-4dc1-8b9e-fb58818cb67b">
 
-### Session Streams
+## Session Streams
 
 You can also switch to a session-centric view of users events by switching from “**Log Stream**” to “**Session Stream**” to get an in-depth look at all events the user has triggered during each of their sessions. You can dive further into these two explorations by changing the time window, hiding noisy or uninteresting events, and filtering to view only events or experiment / gate exposures. 
 
-![image](https://github.com/user-attachments/assets/efdabd87-e906-4257-bc84-37ea2bbddafc)
+![image](https://github.com/user-attachments/assets/7ac4a9f8-a3d4-485b-9a8a-8ce972ba6cda)
 
 
-## Overrides[](https://docs.statsig.com/users#override-controls-from-the-users-tab)
+# Overrides[](https://docs.statsig.com/users#override-controls-from-the-users-tab)
 
 Under the Overrides tab, you have the ability to override an ID into a given experiment variant or feature gate rollout. If there is already an active override for an ID on a particular entity, this will be surfaced within this section (and can be modified inline). Any overrides set in the Users Tab will be synced to the "Overrides" section of the entity in question (and can be edited/ removed from this interface as well).
 
-## Session Replays
+# Session Replays
 
 Under Session Replays, you can quickly jump to a sample of session replays the particular user has triggered to get even more insight into their behavior. To learn more about session replays, check out our documentation on [session replays](https://docs.statsig.com/session-replay/overview).
