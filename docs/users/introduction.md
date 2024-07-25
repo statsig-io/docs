@@ -43,3 +43,6 @@ Under the Overrides tab, you have the ability to override an ID into a given exp
 # Session Replays
 
 Under Session Replays, you can quickly jump to a sample of session replays the particular user has triggered to get even more insight into their behavior. To learn more about session replays, check out our documentation on [session replays](/session-replay/overview).
+
+
+
