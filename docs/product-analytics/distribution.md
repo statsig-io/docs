@@ -16,7 +16,7 @@ Distribution charts in Metric Explorer help you visualize the range of user expe
 
 - **Analyze the Range of User Experiences:** Study the distribution of event values to identify any outliers or trends
 - **Measure Feature Engagement:** Visualize how often each user is interacting with a critical event
-- **Montitor Product Performance:** Ensure that your product isn't experiencing performance issues like unusual latency times
+- **Monitor Product Performance:** Ensure that your product isn't experiencing performance issues like unusual latency times
 
 # Creating a Distribution Chart
 
