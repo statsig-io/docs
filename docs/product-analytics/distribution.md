@@ -1,5 +1,5 @@
 ---
-title: Dashboards
+title: Distributions
 tags:
 - Statsig Cloud 
 sidebar_label: Distribution
