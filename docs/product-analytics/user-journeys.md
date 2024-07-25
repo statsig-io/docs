@@ -1,5 +1,5 @@
 ---
-title: Dashboards
+title: User Journeys
 tags:
 - Statsig Cloud 
 sidebar_label: User Journeys
