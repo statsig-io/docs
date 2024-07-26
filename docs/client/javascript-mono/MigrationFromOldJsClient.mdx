@@ -1,0 +1,330 @@
+---
+title: Migrating From statsig-js
+sidebar_label: Migrating from statsig-js
+slug: /client/javascript-sdk/migrating-from-statsig-js
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+The architecture and majority of the APIs in the updated SDK have been retained; however,
+ modifications have been made to address common pitfalls, resolve existing issues, and streamline the SDK logic.
+
+Below is a list of identified breaking changes that will require manual refactoring:
+
+### Initialization
+
+Previously, the SDK employed a single method for initialization. However, we have recognized that waiting for a method call during app startup can be impractical. Consequently, we have introduced two distinct initialization approaches: one synchronous and one asynchronous.
+
+Synchronous initialization will leverage cache (if available), returning immediately. Data for subsequent sessions will then be fetched in the background.
+
+Asynchronous initialization, on the other hand, is awaitable and ensures that the most current data is fetched and used.
+
+<Tabs
+  groupId="js-migration-choice"
+  defaultValue="new"
+  values={[
+    {label: 'statsig-js (Legacy)', value: 'legacy'},
+    {label: 'New', value: 'new'},
+  ]}>
+  <TabItem value="legacy">
+
+```typescript
+import Statsig from "statsig-js";
+
+// initialize returns a promise which always resolves
+await Statsig.initialize(
+  "client-sdk-key",
+  { userID: "some_user_id" },
+  { environment: { tier: "staging" } } // optional, pass options here if needed
+);
+```
+
+
+  </TabItem>
+  <TabItem value="new">
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-initialize.tsx" />
+
+You can read more about StatsigClient initialization [here](/client/javascript-sdk#initialize-the-sdk).
+
+  </TabItem>
+</Tabs>
+
+
+
+### getConfig is now getDynamicConfig
+Make sure you update your `getConfig` callsites to call the new method, `getDynamicConfig`.  In addition, `DynamicConfig` and `Layer` are no longer classes, but javascript objects.  There are still convenience `get` methods, which should remain unchanged.
+
+```js
+// old
+statsig.getConfig('config_name');
+
+// new
+statsigClient.getDynamicConfig('config_name');
+```
+
+
+
+### Bootstrapping
+If you are using a server SDK to bootstrap your js/react app, you will need to make some updates to how your server SDK generates values.  One of the optimizations we made with this new js-client SDK was to remove the `sha256` library for hashing gate/experiment names.  Instead, we use a `djb2` hash.  By default, all server SDKs generate `sha256` hashes of gate/experiment names in the `getClientInitializeResponse` method.  You will need to set the hash algorithm parameter to that method call to `"djb2"` instead in order to bootstrap this new client SDK.  One of the benefits to this hashing algorithm is it will make the entire payload smaller as well, so its a net win on package size, speed, and payload size for the SDK.
+
+For example, if you are bootstrapping from a nodejs app, you will need to do:
+
+```js
+statsig.getClientInitializeResponse(
+  user,
+  '[client-key]',
+  {
+    hash: 'djb2',
+  },
+);
+```
+
+
+
+
+
+
+
+
+### Updating the User
+
+Similar to initialization, the `updateUser` method now supports both synchronous and asynchronous approaches. Each method functions in the same manner as the initialization process.
+
+<Tabs
+  groupId="js-migration-choice"
+  defaultValue="new"
+  values={[
+    {label: 'statsig-js (Legacy)', value: 'legacy'},
+    {label: 'New', value: 'new'},
+  ]}>
+  <TabItem value="legacy">
+
+```typescript
+import Statsig from "statsig-js";
+
+const user = { userID: "a-user" };
+
+await Statsig.updateUser(user);
+```
+
+  </TabItem>
+  <TabItem value="new">
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-update-user.tsx" />
+
+  </TabItem>
+</Tabs>
+
+
+
+
+
+
+
+
+
+## Static Instance
+
+In the previous SDK version, there was a top-level static interface for using Statsig. To enhance support for multiple instances,
+we have replaced this with a static method that retrieves an instance.
+
+<Tabs
+  groupId="js-migration-choice"
+  defaultValue="new"
+  values={[
+    {label: 'statsig-js (Legacy)', value: 'legacy'},
+    {label: 'New', value: 'new'},
+  ]}>
+  <TabItem value="legacy">
+
+```typescript
+import Statsig from "statsig-js";
+
+await Statsig.initialize(YOUR_CLIENT_KEY, { userID: 'a-user' });
+
+// then later, at some other location in your code base
+if (Statsig.checkGate('a_gate')) { 
+  // do something...
+}
+```
+
+  </TabItem>
+  <TabItem value="new">
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-static-instance.tsx" />
+
+You can read more about StatsigClient multi-instance support [here](/client/javascript-sdk#multiple-client-instances).
+
+  </TabItem>
+</Tabs>
+
+
+
+
+
+
+
+
+
+## Overrides
+
+Previously, the client had top level methods for managing overrides for gates/configs/experiments/layers, etc.  Now, this has been removed from the main SDK and is in its own package.  You can implement your own overrides, or use `@statsig/js-local-overrides` and plug it in as the local override adapter in `StatsigOptions`
+
+```
+import { StatsigClient } from '@statsig/js-client';
+import { LocalOverrideAdapter } from '@statsig/js-local-overrides';
+
+const overrideAdapter = new LocalOverrideAdapter();
+overrideAdapter.overrideGate('gate_a', false);
+overrideAdapter.overrideGate('gate_b', true);
+
+const client = new StatsigClient(
+  DEMO_CLIENT_KEY,
+  { userID: 'a-user' },
+  {
+    overrideAdapter,
+  },
+);
+```
+
+Full example here:
+
+https://github.com/statsig-io/js-client-monorepo/blob/0e7201635f71e77633de04c4c19c1006030a3a81/samples/next-js/src/app/override-adapter-example/OverrideAdapterExample.tsx#L14
+
+
+
+
+
+
+## GDPR
+
+In certain use cases, it is necessary to suspend cache and network usage until the user grants specific 
+permissions. Previously, the method for achieving this was somewhat fragmented. 
+In the new SDK, these functionalities have been consolidated for improved coherence and ease of implementation.
+
+<Tabs
+  groupId="js-migration-choice"
+  defaultValue="new"
+  values={[
+    {label: 'statsig-js (Legacy)', value: 'legacy'},
+    {label: 'New', value: 'new'},
+  ]}>
+  <TabItem value="legacy">
+
+```typescript
+// start the SDK without storage or logging
+Statsig.initialize(
+  'client-key',
+  { userID: 'a_user' },
+  { disableAllLogging: true, disableLocalStorage: true },
+);
+
+// then, once permission was granted
+Statsig.shutdown();
+Statsig.initialize(
+  'client-key',
+  { userID: 'a_user' },
+  { disableAllLogging: false, disableLocalStorage: false },
+);
+
+// or, by manually flipping the related flags
+Statsig.reenableAllLogging();
+StatsigLocalStorage.disabled = false;
+```
+
+  </TabItem>
+  <TabItem value="new">
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-gdpr.tsx" />
+
+  </TabItem>
+</Tabs>
+
+
+## Legacy StatsigOptions
+The options to parameterize initialization of the SDK have changed.  In some cases, the underlying features were removed or moved and can be enabled/disabled in a different way. In other scenarios, there is a new API for managing them.  The following is a mapping of old options to their equivalents in the new sdk.
+
+#### disableErrorLogging
+> This feature does not exist in the new Javascript SDK, so there is no option to disable it.
+
+#### disableAutoMetricsLogging
+> Moved to optional package [`@statsig/web-anayltics`](#https://www.npmjs.com/package/@statsig/web-analytics)
+
+#### disableAllLogging
+> This is now referred to as `StatsigOptions.disableLogging`
+
+#### disableCurrentPageLogging
+> This is now referred to as `StatsigOptions.includeCurrentPageUrlWithEvents`
+
+#### disableLocalStorage
+> This is now referred to as `StatsigOptions.disableStorage`
+
+#### localMode
+> This is now referred to as  `StatsigOptions.networkConfig.preventAllNetworkTraffic`
+
+#### loggingIntervalMillis
+> This is now referred to as `StatsigOptions.loggingIntervalMs`
+
+#### loggingBufferMaxSize
+> Unchanged
+
+#### environment
+> Unchanged
+
+#### disableNetworkKeepalive
+> This is has been completely removed. Network requests can be controlled with `StatsigOptions.networkConfig.networkOverrideFunc`
+
+#### api
+> This is now referred to as `StatsigOptions.networkConfig.api`
+
+#### overrideStableID
+> StableID is now just part of `StatsigUser.customIDs`. This brings it inline with Statsig server 
+SDKs and helps avoid mis-configuration between client and server
+
+#### initTimeoutMs
+> Timeouts now live as part of the `async` call. 
+>
+> eg:
+> `myStatsigClient.initializeAsync(1000); // 1 sec timeout`
+
+#### initializeValues
+> Replaced by the usage of [StatsigEvaluationsDataAdapter](/client/javascript-sdk/using-evaluations-data-adapter)
+
+#### eventLoggingApi
+> Replaced by `StatsigOptions.networkConfig.logEventUrl`
+
+#### prefetchUsers
+> Replaced by the usage of [StatsigEvaluationsDataAdapter](/client/javascript-sdk/using-evaluations-data-adapter)
+
+#### initCompletionCallback
+> Replaced by the usage of [StatsigClientEventEmitter](/client/javascript-sdk#client-event-emitter)
+
+#### updateUserCompletionCallback
+> Replaced by the usage of [StatsigClientEventEmitter](/client/javascript-sdk#client-event-emitter)
+
+#### fetchMode
+> Replaced by the usage of [StatsigEvaluationsDataAdapter](/client/javascript-sdk/using-evaluations-data-adapter)
+
+#### disableDiagnosticsLogging
+> There currently is no diagnostics logging in the new SDK
+
+#### initRequestRetries
+> This is has been completely removed. Network requests can be controlled with `StatsigOptions.networkConfig.networkOverrideFunc`
+
+#### ignoreWindowUndefined
+> No longer applicable
+
+#### disableHashing
+> Not yet supported
+
+#### logLevel
+> This has not been changed, but the enum values are no longer `UPPERCASED`.
+
+#### logger
+> Not yet supported
+
+#### evaluationCallback
+> Replaced by the usage of [StatsigClientEventEmitter](/client/javascript-sdk#client-event-emitter)

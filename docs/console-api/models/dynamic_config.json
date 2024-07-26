@@ -43,6 +43,11 @@
           },
           "example": "CONSOLE API"
         },
+        "idType": {
+          "type": "string",
+          "description": "The type of ID which the dynamic config is based on.",
+          "example": "userID"
+        },
         "lastModifierID": {
           "type": "string",
           "description": "The Statsig UserID of the last modifier of this dynamic config",
@@ -71,6 +76,13 @@
             "id": "u4gan1b6frg27"
           }
         },
+        "defaultValueJson5": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "akiipa6lbqvak"
+          },
+          "description": "Can include comments. If provided with defaultValue, must parse to the same JSON"
+        },
         "tags": {
           "type": "array",
           "x-stoplight": {
@@ -84,6 +96,20 @@
             "type": "string",
             "example": "a tag"
           }
+        },
+        "schema": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "rp4egcpvxiqt5"
+          },
+          "description": "A schema using JSON Schema Draft 2020-12 to enforce return values of this dynamic config's rules."
+        },
+        "schemaJson5": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "sfn6h3gveb25s"
+          },
+          "description": "`schema` except with Json5 comments. Optional and should parse to same json as `schema`.\n\n"
         }
       }
     }
@@ -119,9 +145,7 @@
         }
       ],
       "defaultValue": {},
-      "tags": [
-        "a tag"
-      ]
+      "tags": ["a tag"]
     }
   ]
 }

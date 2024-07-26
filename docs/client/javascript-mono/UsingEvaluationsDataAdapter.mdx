@@ -8,24 +8,29 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
-The `EvaluationsDataAdapter` is the default `StatsigDataAdapter` used by the `PrecomputedEvaluationsClient`.
-It handles caching and fetching values from Statsig. If required, you can create your own custom `StatsigDataAdapter`
+The `StatsigEvaluationsDataAdapter` is the default `EvaluationsDataAdapter` used by a `StatsigClient` instance.
+
+It handles fetching and caching values from Statsig's servers. If required, you can create your own custom `EvaluationsDataAdapter`
 and provide it to the Statsig client via [StatsigOptions.dataAdapter](/client/javascript-sdk#statsig-options).
 
 ## Overview
 
 ### Synchronous Behavior (Cache)
 
-When callling `PrecomputedEvaluationsClient.initalizeSync`, the `EvaluationsDataAdapter` will load values
+When callling `StatsigClient.initalizeSync`, the `StatsigEvaluationsDataAdapter` will load values
 from Cache and provide them to the client. The client will also call refresh in the background via
-`EvaluationsDataAdapter.getDataAsync`, leading to values lagging until
-the next time `initializeSync` or `updateUserSync` is called.
+`StatsigEvaluationsDataAdapter.getDataAsync`, leading to values lagging until the next time `initializeSync` or `updateUserSync` is called.
+
+In practice (Unless an additional update call is made), this means that for the very first session of a given user, there will be no values, and not until the next session will the cache have values.
 
 ### Asynchronous Behavior (Network)
 
-When callling `PrecomputedEvaluationsClient.initializeAsync`, the `EvaluationsDataAdapter` will load values
-from Cache and provide them to the client. The client will then block on a call to `EvaluationsDataAdapter.getDataAsync`,
+When callling `StatsigClient.initializeAsync`, the `StatsigEvaluationsDataAdapter` will load values
+from Cache and provide them to the client. The client will then block on a call to `StatsigEvaluationsDataAdapter.getDataAsync`,
 allowing the ability to await the latest values from Statsig.
+
+If you want the latest values, but do not want to await the asynchronous call, you may call `initializeAsync` and simply `.catch` the promise. Note that
+this could lead to values changing mid-session as newer values arrive from the network.
 
 ## Advanced Usage
 
@@ -35,12 +40,85 @@ allowing the ability to await the latest values from Statsig.
 
 ### Bootstrapping
 
-Bootstrapping allows you to provide data for a given StatsigUser. This can be useful if you are are running a
+Bootstrapping allows you to provide data for a given `StatsigUser`. This can be useful if you are are running a
 Statsig Server SDK on your backend and do not wish to make unneccesary network calls (See [statsig-node](/server/nodejsServerSDK#bootstrap)'s getClientInitializeResponse).
-This approach can also be useful if you are bundling values with your application and want to load from a local file.
+
+This approach can also be useful if you are building a mobile app and want to bundle values with your application. Then you can load the values from a local file at startup and provide them to the data adapter.
 
 <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-bootstrap.tsx" />
 
 ### Prefetching
 
 <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-prefetch.tsx" />
+
+### Custom Implementation
+
+If you would like to customize when and how data is fetched, as well as where it is stored, you can create your own class the conforms to the `EvaluationsDataAdapter` type.
+
+The `EvaluationsDataAdapter` type outlines the following functions:
+
+`attach` - Called when the `EvaluationsDataAdapter` is passed into a `StatsigClient` via `StatsigOptions`. This allows the `EvaluationsDataAdapter` to use
+  the same SDK Key and `StatsigOptions` as the `StatsigClient` instance.
+
+```typescript
+attach: (
+  sdkKey: string, 
+  options: StatsigOptionsCommon | null
+) => void
+```
+
+---
+
+`getDataSync` - Synchronously get evaluation data for the given user. Called during initializeSync and/or updateUserSync. It is also called during
+  async update operations before StatsigDataAdapter.getDataAsync is called.
+
+```typescript
+getDataSync: (user: StatsigUser) => DataAdapterResult | null;
+```
+
+---
+
+`getDataAsync` - Asynchronously get evaluation data for the given user. Called during initializeAsync and/or updateUserAsync.
+```typescript
+getDataAsync: (
+  current: DataAdapterResult | null, 
+  user: StatsigUser
+) => Promise<DataAdapterResult | null>;
+```
+
+---
+
+`prefetchData` - Manually trigger a fetch for new evaluations data for the given user.
+```typescript
+prefetchData: (user: StatsigUser) => Promise<void>;
+```
+
+---
+
+`setData` - Manually set the evaluations data from a JSON string received from a Statsig Server SDK's `getClientInitializeResponse` method.
+
+```typescript
+setData: (data: string) => Promise<void>;
+```
+Note: You can use <code>setDataLegacy</code> if your Server SDK is outdated.
+<details>
+  <summary>setData is supported by the following Statsig Server SDKs</summary>
+   <ul>
+    <li>node-js-server-sdk@5.20.0</li>
+    <li>java-server-sdk@1.18.0</li>
+    <li>ruby-sdk@1.34.0</li>
+    <li>dotnet-sdk@1.25.0</li>
+    <li>php-sdk@3.2.0</li>
+   </ul>
+</details>
+
+
+---
+
+`setDataLegacy` - Manually set evaluations data for the given user.
+
+This method is **deprecated** and is provided only to support older versions of Statsig server SDKs.
+
+```typescript
+setDataLegacy: (data: string, user: StatsigUser) => void;
+```

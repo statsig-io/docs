@@ -158,7 +158,7 @@ We’ve created a step-by-step guide on metric ingestion [here](https://docs.sta
     For each feature/experiment, you’ll want to answer a few questions:  
     
     - Who are the users you’re going to roll this feature/experiment out to?
-        - What [conditions](https://docs.statsig.com/feature-gates/conditions) will we use to qualify users?
+        - What [conditions](https://docs.statsig.com/feature-flags/conditions) will we use to qualify users?
             - ex: release a new feature to LATAM Android users only
     - What are the metrics you’re going to use to validate and/or test your features/experiments?
         - What are you hoping to affect with this feature/experiment
@@ -173,14 +173,14 @@ We’ve created a step-by-step guide on metric ingestion [here](https://docs.sta
     - [Build your first feature](https://docs.statsig.com/guides/first-feature#step-1---create-a-new-feature-gate)
     - [Your first A/B test](https://docs.statsig.com/guides/abn-tests)
 
-3. **Implement Feature Gate / Experiment in your app**
+3. **Implement Feature Flags / Experiments in your app**
     
     Aside from the console setup, your team must implement the code that is actually being instrumented within your app. Statsig SDKs enable you to record feature/experiment exposures 
     
     - Ensure your engineering/implementation team has a clear idea of how to implement Statsig’s SDKs into your software
     - Ensure you are sharing the name and strategy for each feature/experiment so your team is on the same page
     - Here are some code implementation resources
-        - [Implementing Feature Gates](https://docs.statsig.com/feature-gates/implement)
+        - [Implementing Feature Flags](https://docs.statsig.com/feature-flags/implement)
         - [Implement an Experiment](https://docs.statsig.com/experiments-plus/implement)
     
     Once the code has been implemented, have your team [verify](https://docs.statsig.com/guides/testing) that Statsig is properly running as expected. Next, we’ll move onto phase 2 where we will rollout Statsig into production systems.
@@ -190,11 +190,11 @@ We’ve created a step-by-step guide on metric ingestion [here](https://docs.sta
 
 At this point your team has done all the work necessary to get Statsig into your systems and now need to deploy these changes as a release into your larger systems. Typically customers will rollout Statsig changes like any other internal code release, using an internal CI/CD pipeline or the equivalent to deploy the SDKs.
 
-After deployment, you should expect to see some exposure data available in the diagnostics tabs for both [features](https://docs.statsig.com/feature-gates/test-gate#3-using-diagnostics-tab) and experiments. If there are any issues, we’re here to help in the [slack community](https://statsig.com/community)!
+After deployment, you should expect to see some exposure data available in the diagnostics tabs for both [features](https://docs.statsig.com/feature-flags/test-gate#3-using-diagnostics-tab) and experiments. If there are any issues, we’re here to help in the [slack community](https://statsig.com/community)!
 
 Here are some guiding pieces of documentation to help:
 
-- [Best Practices: Deployment of Feature Gates](https://docs.statsig.com/feature-gates/best-practices#development)
+- [Best Practices: Deployment of Feature Gates](https://docs.statsig.com/feature-flags/best-practices#development)
 - Review the [Product Experimentation Best Practices](https://statsig.com/blog/product-experimentation-best-practices), particularly step 2 (Monitoring Phase)
 
 ### Phase 3: Collect Data & Read Results

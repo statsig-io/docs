@@ -10,8 +10,8 @@
     },
     "type": {
       "type": "string",
-      "description": "ID type used for this metric",
-      "example": "userID"
+      "description": "Metric type",
+      "example": "sum"
     }
   },
   "required": [

@@ -1,0 +1,26 @@
+#### **api** string
+> The API to use for all SDK network requests. You should not need to override this unless you have a custom API that implements the Statsig endpoints.
+
+#### **logEventUrl** string
+> The URL used to flush queued events via a POST request. Takes precedence over `NetworkConfig.api`. 
+>
+> default: `https://prodregistryv2.org/v1/rgstr`
+
+#### **networkTimeoutMs** number
+> The maximum amount of time (in milliseconds) that any network request can take before timing out. 
+>
+> default: `10,000 ms` (10 seconds)
+
+#### **preventAllNetworkTraffic** boolean
+> Intended for testing purposes. Prevents any network requests being made.
+
+#### **networkOverrideFunc** function
+> Overrides the default networking layer used by the Statsig client. 
+> By default, the client use `fetch`, but overriding this you could use `axios` or raw `XMLHttpRequest` 
+>
+> default: `fetch`
+
+#### **initializeUrl** string
+> The URL used to fetch the latest evaluations for a given user. Takes precedence over `NetworkConfig.api`. 
+>
+> default: `https://featureassets.org/v1/initialize`

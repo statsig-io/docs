@@ -9,7 +9,7 @@
 type User struct {
 	UserID             string                 `json:"userID"`
 	Email              string                 `json:"email"`
-	IpAddress          string                 `json:"ip"`
+	IpAddress          string                 `json:"ip"` // Many jurisdictions categorize this as PII; verify whether you should log this. 
 	UserAgent          string                 `json:"userAgent"`
 	Country            string                 `json:"country"`
 	Locale             string                 `json:"locale"`
@@ -26,17 +26,71 @@ type User struct {
 ```go
 // Advanced options for configuring the Statsig SDK
 type Options struct {
-	API                  string
-	Environment          environment
-	LocalMode            bool
-	ConfigSyncInterval   time.Duration
-	IDListSyncInterval   time.Duration
-	LoggingInterval      time.Duration
-	LoggingMaxBufferSize int
-	BootstrapValues      string
-	RulesUpdatedCallback func(rules string, time int64)
-	InitTimeout          time.Duration
-	DataAdapter          IDataAdapter
+	API                   string      `json:"api"`
+	Environment           Environment `json:"environment"`
+	LocalMode             bool        `json:"localMode"`
+	ConfigSyncInterval    time.Duration
+	IDListSyncInterval    time.Duration
+	LoggingInterval       time.Duration
+	LoggingMaxBufferSize  int
+	BootstrapValues       string
+	RulesUpdatedCallback  func(rules string, time int64)
+	InitTimeout           time.Duration
+	DataAdapter           IDataAdapter
+	OutputLoggerOptions   OutputLoggerOptions
+	StatsigLoggerOptions  StatsigLoggerOptions
+	EvaluationCallbacks   EvaluationCallbacks
+	DisableCDN            bool // Disables use of CDN for downloading config specs
+	UserPersistentStorage IUserPersistentStorage
+	IPCountryOptions      IPCountryOptions
+	UAParserOptions       UAParserOptions
+}
+
+type EvaluationCallbacks struct {
+	GateEvaluationCallback       func(name string, result bool, exposure *ExposureEvent)
+	ConfigEvaluationCallback     func(name string, result DynamicConfig, exposure *ExposureEvent)
+	ExperimentEvaluationCallback func(name string, result DynamicConfig, exposure *ExposureEvent)
+	LayerEvaluationCallback      func(name string, param string, result DynamicConfig, exposure *ExposureEvent)
+	ExposureCallback             func(name string, exposure *ExposureEvent)
+	IncludeDisabledExposures     bool
+}
+
+type OutputLoggerOptions struct {
+	LogCallback            func(message string, err error)
+	EnableDebug            bool
+	DisableInitDiagnostics bool
+	DisableSyncDiagnostics bool
+}
+
+type StatsigLoggerOptions struct {
+	DisableInitDiagnostics bool
+	DisableSyncDiagnostics bool
+	DisableApiDiagnostics  bool
+	DisableAllLogging      bool
+}
+
+type IPCountryOptions struct {
+	Disabled     bool // Fully disable IP to country lookup
+	LazyLoad     bool // Load in background
+	EnsureLoaded bool // Wait until loaded when needed
+}
+
+type UAParserOptions struct {
+	Disabled     bool // Fully disable UA parser
+	LazyLoad     bool // Load in background
+	EnsureLoaded bool // Wait until loaded when needed
+}
+
+// See https://docs.statsig.com/guides/usingEnvironments
+type Environment struct {
+	Tier   string            `json:"tier"`
+	Params map[string]string `json:"params"`
+}
+
+// options for getClientInitializeResponse
+type GCIROptions struct {
+	IncludeLocalOverrides bool
+	ClientKey             string
 }
 ```
 
@@ -49,6 +103,76 @@ type Event struct {
 	Value     string            `json:"value"`
 	Metadata  map[string]string `json:"metadata"`
 	Time      int64             `json:"time"`
+}
+```
+
+### FeatureGate
+
+```go
+type FeatureGate struct {
+	Name              string             `json:"name"`
+	Value             bool               `json:"value"`
+	RuleID            string             `json:"rule_id"`
+	GroupName         string             `json:"group_name"`
+	EvaluationDetails *EvaluationDetails `json:"evaluation_details"`
+}
+```
+
+### DynamicConfig
+
+```go
+type DynamicConfig struct {
+	Name              string                 `json:"name"`
+	Value             map[string]interface{} `json:"value"`
+	RuleID            string                 `json:"rule_id"`
+	GroupName         string                 `json:"group_name"`
+	EvaluationDetails *EvaluationDetails     `json:"evaluation_details"`
+  AllocatedExperimentName string           `json:"allocated_experiment_name"`
+  GetString(key string, fallback string) string
+  GetNumber(key string, fallback float64) float64
+  GetBool(key string, fallback bool) bool
+  GetSlice(key string, fallback []interface{}) []interface{}
+  GetMap(key string, fallback map[string]interface{}) map[string]interface{}
+}
+```
+
+### Layer
+
+```go
+type Layer struct {
+	Name              string                 `json:"name"`
+	Value             map[string]interface{} `json:"value"`
+	RuleID            string                 `json:"rule_id"`
+	GroupName         string                 `json:"group_name"`
+	EvaluationDetails *EvaluationDetails     `json:"evaluation_details"`
+  AllocatedExperimentName string           `json:"allocated_experiment_name"`
+  GetString(key string, fallback string) string
+  GetNumber(key string, fallback float64) float64
+  GetBool(key string, fallback bool) bool
+  GetSlice(key string, fallback []interface{}) []interface{}
+  GetMap(key string, fallback map[string]interface{}) map[string]interface{}
+}
+```
+
+### EvaluationDetails
+
+```go
+const (
+	reasonNetwork            evaluationReason = "Network"
+	reasonBootstrap          evaluationReason = "Bootstrap"
+	reasonLocalOverride      evaluationReason = "LocalOverride"
+	reasonUnrecognized       evaluationReason = "Unrecognized"
+	reasonUninitialized      evaluationReason = "Uninitialized"
+	reasonDataAdapter        evaluationReason = "DataAdapter"
+	reasonNetworkNotModified evaluationReason = "NetworkNotModified"
+	reasonPersisted          evaluationReason = "Persisted"
+)
+
+type EvaluationDetails struct {
+	Reason         evaluationReason
+	ConfigSyncTime int64
+	InitTime       int64
+	ServerTime     int64
 }
 ```
 

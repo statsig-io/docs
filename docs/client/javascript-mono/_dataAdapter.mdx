@@ -1,35 +1,9 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-## Data Adapter
+### Data Adapter
 
-The `StatsigDataAdapter` type outlines
-how the PrecomputedEvaluationsClient should cache and fetch data during initialize and update operations. By default, the PrecomputedEvaluationsClient uses `EvaluationsDataAdapter` which
+The `EvaluationsDataAdapter` type outlines how the `StatsigClient` should fetch and cache data during initialize and update operations.
+By default, the `StatsigClient` uses `StatsigEvaluationsDataAdapter`, a Statsig provided implementor of the `EvaluationsDataAdapter` type. `StatsigEvaluationsDataAdapter`
 provides ways to fetch data synchronously from Local Storage and asynchronously from Statsig's servers.
 See [Using EvaluationsDataAdapter](/client/javascript-sdk/using-evaluations-data-adapter) to learn more and see example usage.
-
-It provides three functions:
-
-- `attach` - Called when the StatsigDataAdapter passed into a Statsig client via StatsigOptions. This allows the StatsigDataAdapter to use
-  the same SDK Key and StatsigOptions as the Statsig client.
-
-  - ```typescript
-    attach: (sdkKey: string, options: StatsigOptionsCommon | null) => void
-    ```
-
-- `getDataSync` - Called during initializeSync and/or updateUserSync. It is also called during async update operations before StatsigDataAdapter.getDataAsync is called.
-  A synchronous way to get values for the given StatsigUser. Useful for things like caching and bootstrapping.
-
-  - ```typescript
-    getDataSync: (user?: StatsigUser) => StatsigDataAdapterResult | null;
-    ```
-
-- `getDataAsync` - Called during initializeAsync and/or updateUserAsync. An asynchronous way to get values for the given StatsigUser. Useful for things like
-  fetching latest values from network.
-
-  - ```typescript
-    getDataAsync: (
-      current: StatsigDataAdapterResult | null,
-      user?: StatsigUser
-    ) => Promise<StatsigDataAdapterResult | null>;
-    ```

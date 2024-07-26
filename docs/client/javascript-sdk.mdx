@@ -1,6 +1,6 @@
 ---
-sidebar_label: New JavaScript (Beta)
-title: New JavaScript Client SDK (Beta)
+sidebar_label: JavaScript/React/RN
+title: JavaScript, React, React Native Client SDK
 ---
 
 import {
@@ -17,6 +17,8 @@ import {
   StatsigOptions,
   Shutdown,
   CodeExamples,
+  EvaluationDetails,
+  ParameterStore,
 } from "./Templates/index.mdx";
 
 import OnDeviceEvalProsAndCons from "./Templates/_OnDeviceEvalProsAndCons.mdx";
@@ -33,6 +35,13 @@ export const ClientEventEmitting = _ClientEventEmitting;
 import * as _MultiInstance from "./javascript-mono/_multiInstance.mdx";
 export const MultiInstance = _MultiInstance;
 
+import * as _prefetchUsers from "./javascript-mono/_prefetchUsers.mdx";
+export const PrefetchUsers = _prefetchUsers;
+
+import * as _asyncTimeouts from "./javascript-mono/_asyncTimeouts.mdx";
+export const AsyncTimeouts = _asyncTimeouts;
+
+
 import CheckGate from "./javascript-mono/_checkGate.mdx";
 import GetConfig from "./javascript-mono/_getConfig.mdx";
 import GetExperiment from "./javascript-mono/_getExperiment.mdx";
@@ -42,6 +51,11 @@ import LogEvent from "./javascript-mono/_logEvent.mdx";
 import MoreFAQs from "./javascript-mono/_faqs.mdx";
 import Options from "./javascript-mono/_options.mdx";
 import ShutdownSnippet from "./javascript-mono/_shutdown.mdx";
+import * as _typedGetters from "./javascript-mono/_typedGetters.mdx";
+import GetParameterStore from "./javascript-mono/_getParameterStore.mdx";
+import GetParameter from "./javascript-mono/_getParameter.mdx";
+
+export const TypedGetters = _typedGetters;
 
 export const Result = SDKDocsBuilder(
   {},
@@ -69,6 +83,8 @@ export const Result = SDKDocsBuilder(
         logEvent: <LogEvent />,
       },
     ],
+    [TypedGetters, {}],
+    [EvaluationDetails, { snippetUrl: "https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-evaluation-details.tsx" }],
     [
       CodeExamples,
       {
@@ -76,13 +92,19 @@ export const Result = SDKDocsBuilder(
         trailingMessage: "",
       },
     ],
+    [
+      ParameterStore,
+      { getParameterStore: <GetParameterStore />, getParameter: <GetParameter /> },
+    ],
     [StatsigUser, {}],
     [UpdateUser, {}],
-    [ClientEventEmitting, {}],
-    [MultiInstance, {}],
+    [PrefetchUsers, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [AsyncTimeouts, {}],
     [DataAdapter, {}],
+    [ClientEventEmitting, {}],
+    [MultiInstance, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
   ],
   toc

@@ -1,0 +1,16 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+## Advanced
+
+
+### Async timeouts
+
+For the Statsig client calls that hit the network (initializeAsync and updateUserAsync), it is possible to specify a maximum amount of time (in milliseconds) that the method is allowed to take before the promise is resolved.
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-initialize-timeouts.tsx" />
+
+
+If this timeout is hit, the promise will resolve and cached values will be used (If any are available). 
+The network request will continue and upon a response, will write values to cache so the will be available for subsequent calls.

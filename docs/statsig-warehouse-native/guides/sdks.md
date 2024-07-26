@@ -1,7 +1,7 @@
 ---
-title: SDKs
+title: Working With the SDK
 slug: /statsig-warehouse-native/guides/sdks
-sidebar_label: SDKs
+sidebar_label: Working With the SDK
 ---
 
 Warehouse Native Works with any of Statsig's SDKs for logging events and getting feature flags or experiment assignments.
@@ -13,7 +13,7 @@ Refer to the [client](../../client/introduction) or [server](../../server/introd
 
 When you first set up your data connection, Statsig will create tables to forward datasets to, and generate an assignment/metric sources which includes any user-level metadata fields you log as part of your evaluation.
 
-You can find the configuration for these datasets and the table we create/output data to in the advanced section of the warehouse connection page. 
+You can find the configuration for these datasets and the table we create/output data to in the advanced section of the warehouse connection page.
 ![Choose Groups](/img/data_forwarding_whn.png)
 
 ## Exposures
@@ -22,4 +22,4 @@ Statsig calculates deduplicated first-exposure rollups for you on a daily basis 
 
 ## Log Events
 
-You can also use Statsig's powerful event logging to send events to the Statsig SDK and have them later exported to your warehouse for analysis. (In beta, broadly available soon)
+You can also use Statsig's powerful event logging to send events to the Statsig SDK and have them later exported to your warehouse for analysis.

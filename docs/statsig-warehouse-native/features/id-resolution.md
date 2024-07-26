@@ -54,11 +54,8 @@ When creating an assignment source, provide a column for both ID types. It is as
 
 ![ID Resolution Assignment Source](https://github.com/statsig-io/docs/assets/102695539/8cbdd8cc-2ea6-4bf8-a620-0428051989d1)
 
-When you create an analysis-only experiment or power analysis with this ID type, you can optionally select a Secondary ID. If you do so, you can now use metrics from either ID type in your analysis.
+When you create an analysis-only experiment or power analysis with this ID type, you can optionally select a Secondary ID. If you do so, you can now use metrics from either ID type in your analysis. For E2E experiments that use the Statsig SDK, this is configurable on the experiment setup page, under Advanced settings. 
 
-![ID Resolution Experiment Setup](https://github.com/statsig-io/docs/assets/102695539/1f77213f-6ab8-4e29-aee0-86d9834190c7)
-
-For E2E experiments that use the Statsig SDK, this is configurable on the experiment setup page, under Advanced settings. 
 
 Behind the scenes, Statsig will:
 

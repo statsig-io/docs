@@ -8,10 +8,7 @@ The **topline impact** is the measured effect that an active experiment has on t
 
 ## Computing Topline Impact
 
-The topline impact is computed over rollup windows of 7, 14, 28 days, and the impact over an arbitrary date range is approximated by that of closest largest rollup windows. This gives the most accurate estimate and tight confidence interval. 
->For example, the impact over the recent 30 days is estimated by the impact of 28-day rollup; 12-day window is estimated by that of 7-day rollup.
-
-The exact calculation depends on whether the metric represents an absolute quantity or a ratio:
+The topline impact is computed over the duration when the experiment has been running. This gives the most accurate estimate and tight confidence interval. The exact calculation depends on whether the metric represents an absolute quantity or a ratio:
 
 ### Count and Sum Metrics (event_count, event_dau, sum)
 

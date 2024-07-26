@@ -43,7 +43,7 @@ module.exports = {
         alt: "Statsig",
         src: "img/logo.svg",
         srcDark: "img/logo_white.svg",
-        href: "https://statsig.com",
+        href: "/",
       },
       items: [
         {
@@ -51,6 +51,9 @@ module.exports = {
           position: "right",
           value:
             "<button id=\"consoleCTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus(); window.statsig.logEvent({}, 'console_button_click', window.location.pathname, {referrer: document && document.referrer,});\">Get Started</button>",
+          type: 'html',
+          position: 'right',
+          value: '<button id="consoleCTA" onclick="window.open(\'https://console.statsig.com\', \'_blank\').focus(); window.statsig.logEvent({}, \'console_button_click\', window.location.pathname, {referrer: document && document.referrer,});">Get Started</button>',
         },
       ],
     },
@@ -176,7 +179,7 @@ module.exports = {
               {
                 tagName: "script",
                 attributes: {
-                  src: "https://cdn.jsdelivr.net/npm/@statsig/precomputed-evaluations@0.0.1-beta.8/build/precomputed-evaluations.min.js",
+                  src: "https://cdn.jsdelivr.net/npm/@statsig/js-client@1/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=client-c1fEjmA7JETNimhlFhKf2M1qMRFNkl9ipDfxYEatlYJ",
                 },
               },
               {
@@ -231,8 +234,108 @@ module.exports = {
       {
         redirects: [
           {
+            to: "/guides/shopify-ab-test",
+            from: "/guides/first-shopify-abtest",
+          },
+          {
+            to: "/product-analytics/drilldown",
+            from: "/mex/drilldown",
+          },
+          {
+            to: "/product-analytics/dashboards",
+            from: "/mex/dashboards",
+          },
+          {
+            to: "/product-analytics/funnels",
+            from: "/mex/funnels",
+          },
+          {
+            to: "/product-analytics/retention",
+            from: "/mex/retention",
+          },
+          {
+            to: "/product-analytics/overview",
+            from: "/mex/overview",
+          },
+          {
+            to: "/product-analytics/overview",
+            from: "/product-analytics",
+          },
+          {
+            to: "/product-analytics/overview",
+            from: "/mex",
+          },
+          {
             to: "/integrations/terraform/introduction",
             from: "/integrations/terraform",
+          },
+          {
+            to: "/feature-flags/working-with",
+            from: "/feature-gates/working-with",
+          },
+          {
+            to: "/feature-flags/create-new",
+            from: "/feature-gates/create-new",
+          },
+          {
+            to: "/feature-flags/working-with",
+            from: ["/feature-gates", "/feature-flags"],
+          },
+          {
+            to: "/feature-flags/add-rule",
+            from: "/feature-gates/add-rule",
+          },
+          {
+            to: "/feature-flags/test-gate",
+            from: "/feature-gates/test-gate",
+          },
+          {
+            to: "/feature-flags/overrides",
+            from: "/feature-gates/overrides",
+          },
+          {
+            to: "/feature-flags/scheduled-rollouts",
+            from: "/feature-gates/scheduled-rollouts",
+          },
+          {
+            to: "/feature-flags/conditions",
+            from: "/feature-gates/conditions",
+          },
+          {
+            to: "/feature-flags/view-exposures",
+            from: "/feature-gates/view-exposures",
+          },
+          {
+            to: "/feature-flags/feature-flags-lifecycle",
+            from: "/feature-gates/feature-gates-lifecycle",
+          },
+          {
+            to: "/feature-flags/permanent-and-stale-gates",
+            from: "/feature-gates/permanent-and-stale-gates",
+          },
+          {
+            to: "/feature-flags/best-practices",
+            from: "/feature-gates/best-practices",
+          },
+          {
+            to: "/feature-flags/implement",
+            from: "/feature-gates/implement",
+          },
+          {
+            to: "/feature-flags/implement/client",
+            from: "/feature-gates/implement/client",
+          },
+          {
+            to: "/feature-flags/implement/server",
+            from: "/feature-gates/implement/server",
+          },
+          {
+            to: "/feature-flags/implement/http-api",
+            from: "/feature-gates/implement/http-api",
+          },
+          {
+            to: "/product-analytics/overview",
+            from: "/metrics/events-explorer",
           },
         ],
       },

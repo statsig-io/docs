@@ -1,5 +1,5 @@
 module.exports = {
-  docsRevamp: [
+  cloud: [
     {
       type: "category",
       label: "Getting Started",
@@ -37,7 +37,7 @@ module.exports = {
             {
               "Common Use Cases": [
                 "guides/aa-test",
-                "guides/first-shopify-abtest",
+                "guides/shopify-ab-test",
                 "guides/sendgrid-email-abtest",
                 "guides/customer-io-email-abtest",
                 "guides/email-campaign-test",
@@ -61,8 +61,17 @@ module.exports = {
                 "guides/nextjs-page-router-feature-flags",
               ],
             },
+            {
+              type: "category",
+              label: "Migrate from LaunchDarkly",
+              link: {
+                type: "doc",
+                id: "guides/migrate-from-launchdarkly",
+              },
+              items: ["guides/open-source-script", "guides/ui-based-tool"],
+            },
             "guides/synchronized-launch",
-            "guides/featuregates-or-experiments",
+            "guides/featureflags-or-experiments",
             "guides/experimentation-program",
             "guides/serverless",
             "guides/config-history",
@@ -71,7 +80,7 @@ module.exports = {
             "guides/testing",
             "guides/uptime",
             "guides/fomo",
-            "guides/migrate-from-launchdarkly",
+            "guides/statsig-id-resolver",
           ],
         },
         {
@@ -92,34 +101,34 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Feature Gates",
+      label: "Feature Flags",
       items: [
         {
           type: "category",
-          label: "Feature Gates",
+          label: "Feature Flags",
           link: {
             type: "doc",
-            id: "feature-gates/working-with",
+            id: "feature-flags/working-with",
           },
           items: [
-            "feature-gates/create-new",
-            "feature-gates/add-rule",
-            "feature-gates/test-gate",
-            "feature-gates/overrides",
-            "feature-gates/scheduled-rollouts",
+            "feature-flags/create-new",
+            "feature-flags/add-rule",
+            "feature-flags/test-gate",
+            "feature-flags/overrides",
+            "feature-flags/scheduled-rollouts",
             {
               Implement: [
-                "feature-gates/implement",
-                "feature-gates/implement/client",
-                "feature-gates/implement/server",
-                "feature-gates/implement/http-api",
+                "feature-flags/implement",
+                "feature-flags/implement/client",
+                "feature-flags/implement/server",
+                "feature-flags/implement/http-api",
               ],
             },
-            "feature-gates/conditions",
-            "feature-gates/view-exposures",
-            "feature-gates/feature-gates-lifecycle",
-            "feature-gates/permanent-and-stale-gates",
-            "feature-gates/best-practices",
+            "feature-flags/conditions",
+            "feature-flags/view-exposures",
+            "feature-flags/feature-flags-lifecycle",
+            "feature-flags/permanent-and-stale-gates",
+            "feature-flags/best-practices",
           ],
         },
         {
@@ -133,7 +142,6 @@ module.exports = {
             "dynamic-config/working-with",
             "dynamic-config/create-new",
             "dynamic-config/add-rule",
-            "dynamic-config/implement",
           ],
         },
         {
@@ -176,6 +184,7 @@ module.exports = {
             "experiments-plus/make-decision",
             "experiments-plus/overrides",
             "experiments-plus/stratified-sampling",
+            "experiments-plus/differential-impact-detection",
             "experiments-plus/abandon",
             "experiments-plus/ending-experiment",
             "experiments-plus/disable-group",
@@ -211,10 +220,12 @@ module.exports = {
             {
               "Methodologies Used": [
                 "stats-engine/methodologies/bonferroni-correction",
+                "stats-engine/methodologies/benjamini–hochberg-procedure",
                 "stats-engine/methodologies/cuped",
                 "stats-engine/methodologies/delta-method",
                 "stats-engine/methodologies/srm-checks",
                 "stats-engine/methodologies/winsorization",
+                "stats-engine/methodologies/one-sided-test",
               ],
             },
           ],
@@ -246,20 +257,12 @@ module.exports = {
             "guides/sidecar-experiments/introduction",
             "guides/sidecar-experiments/setup",
             "guides/sidecar-experiments/creating-experiments",
+            "guides/sidecar-experiments/measuring-experiments",
             "guides/sidecar-experiments/publishing-experiments",
+            "guides/sidecar-experiments/integrating-gtm",
           ],
         },
         "holdouts/introduction",
-        {
-          type: "category",
-          label: "Autotune",
-          link: {
-            type: "doc",
-            id: "autotune/introduction",
-          },
-          items: ["autotune/setup", "autotune/monitoring"],
-        },
-
         {
           type: "category",
           label: "Pulse",
@@ -280,15 +283,21 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Analytics",
+      label: "Product Analytics",
       items: [
-        "mex/overview",
+        "product-analytics/overview",
         {
           type: "category",
           label: "Metric Explorer",
-          items: ["mex/drilldown", "mex/funnels", "mex/retention"],
+          items: [
+            "product-analytics/drilldown",
+            "product-analytics/funnels",
+            "product-analytics/retention",
+            "product-analytics/distribution",
+            "product-analytics/user-journeys",
+          ],
         },
-        "mex/dashboards",
+        "product-analytics/dashboards",
         {
           type: "category",
           label: "Metrics",
@@ -312,6 +321,7 @@ module.exports = {
             // other
             "metrics/ingest",
             "metrics/pulse",
+            "metrics/local-metrics",
             "metrics/console",
             "metrics/health-checks",
 
@@ -336,67 +346,244 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Statsig Warehouse Native",
+      label: "Warehouse Native",
       link: {
         type: "doc",
         id: "statsig-warehouse-native/introduction",
       },
       items: [
         {
-          Guides: [
-            "statsig-warehouse-native/guides/connect",
-            "statsig-warehouse-native/guides/metric_sources",
-            "statsig-warehouse-native/guides/metrics",
-            "statsig-warehouse-native/guides/assignment_sources",
-            "statsig-warehouse-native/guides/experiments",
-            "statsig-warehouse-native/guides/pulse",
+          type: "category",
+          label: "Guides",
+          items: [
+            "statsig-warehouse-native/guides/quick-start",
+            "statsig-warehouse-native/guides/running_a_poc",
+            "statsig-warehouse-native/guides/playground_eval",
+            // "statsig-warehouse-native/guides/connect",
+            // "statsig-warehouse-native/guides/experiments",
+            // "statsig-warehouse-native/guides/sql",
+            // "statsig-warehouse-native/guides/pulse",
             "statsig-warehouse-native/guides/sdks",
             "statsig-warehouse-native/guides/aatest",
-            "statsig-warehouse-native/guides/running_a_poc",
+            "metrics/different-id",
+            {
+              type: "category",
+              label: "Debugging",
+              items: [
+                "statsig-warehouse-native/guides/checklist",
+                "statsig-warehouse-native/guides/debugging",
+                "statsig-warehouse-native/guides/sql",
+              ],
+            },
           ],
         },
+        // {
+        //   type: "category",
+        //   label: "Features",
+        //   items: [
+        //     "statsig-warehouse-native/native-vs-cloud",
+        //     "statsig-warehouse-native/features/cohort-metrics",
+        //     "statsig-warehouse-native/features/entity-properties",
+        //     "statsig-warehouse-native/features/funnel-metrics",
+        //     "statsig-warehouse-native/features/monitor-an-experiment",
+        //     "statsig-warehouse-native/features/freshness",
+        //     "experiments-plus/stratified-sampling",
+        //     "statsig-warehouse-native/features/autotune",
+        //   ],
+        // },
         {
-          Features: [
-            "statsig-warehouse-native/native-vs-cloud",
-            "statsig-warehouse-native/features/funnel-metrics",
-            "statsig-warehouse-native/features/power-analysis",
-            "statsig-warehouse-native/features/cohort-metrics",
-            "statsig-warehouse-native/features/id-resolution",
-            "statsig-warehouse-native/features/entity-properties",
-            "statsig-warehouse-native/features/monitor-an-experiment",
-            "statsig-warehouse-native/features/autotune",
-          ],
-        },
-        {
-          "Data Overview": [
-            // "statsig-warehouse-native/analysis-tools/pulse",
-            // "statsig-warehouse-native/analysis-tools/settings",
-            "statsig-warehouse-native/analysis-tools/data-sources",
+          type: "category",
+          label: "Warehouse Integration",
+          items: [
+            {
+              type: "category",
+              label: "Connect Your Warehouse",
+              link: {
+                type: "doc",
+                id: "statsig-warehouse-native/guides/connect",
+              },
+              items: [
+                "statsig-warehouse-native/connecting-your-warehouse/bigquery",
+                "statsig-warehouse-native/connecting-your-warehouse/snowflake",
+                "statsig-warehouse-native/connecting-your-warehouse/databricks",
+                "statsig-warehouse-native/connecting-your-warehouse/redshift",
+                "statsig-warehouse-native/connecting-your-warehouse/athena",
+              ],
+            },
+            "statsig-warehouse-native/connecting-your-warehouse/forwarded-data",
             "statsig-warehouse-native/analysis-tools/data-privacy",
-            "statsig-warehouse-native/analysis-tools/pipeline-overview",
             "statsig-warehouse-native/guides/best-practices",
           ],
         },
-
         {
-          "Connecting Your Warehouse": [
-            "statsig-warehouse-native/connecting-your-warehouse/bigquery",
-            "statsig-warehouse-native/connecting-your-warehouse/snowflake",
-            "statsig-warehouse-native/connecting-your-warehouse/databricks",
-            "statsig-warehouse-native/connecting-your-warehouse/redshift",
-            "statsig-warehouse-native/connecting-your-warehouse/scheduled-reloads",
+          type: "category",
+          label: "Data & Semantic Layer",
+          link: {
+            type: "doc",
+            id: "statsig-warehouse-native/configuration/data-and-semantic-layer",
+          },
+          items: [
+            "statsig-warehouse-native/configuration/metric-sources",
+            {
+              type: "category",
+              label: "Metrics",
+              link: {
+                type: "doc",
+                id: "statsig-warehouse-native/configuration/metrics",
+              },
+              items: [
+                "statsig-warehouse-native/metrics/sum",
+                "statsig-warehouse-native/metrics/count",
+                "statsig-warehouse-native/metrics/count-distinct",
+                "statsig-warehouse-native/metrics/unit-count-once",
+                "statsig-warehouse-native/metrics/unit-count-window",
+                "statsig-warehouse-native/metrics/unit-count-latest",
+                "statsig-warehouse-native/metrics/unit-count-rate",
+                "statsig-warehouse-native/metrics/mean",
+                "statsig-warehouse-native/metrics/ratio",
+                "statsig-warehouse-native/metrics/funnel",
+                "statsig-warehouse-native/metrics/ratio",
+                "statsig-warehouse-native/metrics/percentile",
+              ],
+            },
+            "statsig-warehouse-native/configuration/assignment-sources",
+            "statsig-warehouse-native/configuration/entity-properties",
+            "statsig-warehouse-native/configuration/qualifying-events",
+            "statsig-warehouse-native/configuration/tags-and-teams",
+            "metrics/verified",
+            "statsig-warehouse-native/configuration/query-tools",
+            {
+              type: "category",
+              label: "Programmatic Management",
+              items: [
+                "statsig-warehouse-native/configuration/console-api",
+                "statsig-warehouse-native/configuration/semantic-layer-sync",
+              ],
+            },
+            "statsig-warehouse-native/features/roles-and-access",
           ],
         },
+        {
+          type: "category",
+          label: "Experiment Analysis",
+          items: [
+            {
+              type: "category",
+              label: "Setup",
+              items: [
+                "statsig-warehouse-native/features/configure-an-experiment",
+                "statsig-warehouse-native/features/types-of-experiments",
+                "statsig-warehouse-native/features/power-analysis",
+                "holdouts/introduction",
+                "experiments-plus/stratified-sampling",
+                "experiments-plus/differential-impact-detection",
+                "statsig-warehouse-native/features/targeting",
+                "statsig-warehouse-native/features/id-resolution",
+                "statsig-warehouse-native/features/filtering-exposures",
+              ],
+            },
+            {
+              type: "category",
+              label: "Loading Results",
+              link: {
+                type: "doc",
+                id: "statsig-warehouse-native/features/reloads",
+              },
+              items: [
+                "statsig-warehouse-native/features/full-reloads",
+                "statsig-warehouse-native/features/incremental-reloads",
+                "statsig-warehouse-native/features/metric-reloads",
+                "statsig-warehouse-native/connecting-your-warehouse/scheduled-reloads",
+                "statsig-warehouse-native/analysis-tools/pipeline-overview",
+                "statsig-warehouse-native/features/freshness",
+              ],
+            },
+            {
+              type: "category",
+              label: "Interpreting Results",
+              items: [
+                "pulse/read-pulse",
+                "pulse/drill-down",
+                "pulse/custom-queries",
+                "pulse/export",
+                "pulse/best-practices",
+                "pulse/faq",
+                "statsig-warehouse-native/features/monitor-an-experiment",
+              ],
+            },
+            {
+              type: "category",
+              label: "Statistics",
+              link: {
+                type: "doc",
+                id: "statsig-warehouse-native/features/statistics",
+              },
+              items: [
+                "stats-engine/metric-deltas",
+                "stats-engine/variance",
+                "stats-engine/confidence-intervals",
+                "stats-engine/p-value",
+                "stats-engine/topline-impact",
+                "stats-engine/variance-reduction",
+                // "stats-engine/offlineaa",
+                "stats-engine/pre-experiment-bias",
+                {
+                  "Methodologies Used": [
+                    "stats-engine/methodologies/bonferroni-correction",
+                    "stats-engine/methodologies/benjamini–hochberg-procedure",
+                    "stats-engine/methodologies/cuped",
+                    "stats-engine/methodologies/delta-method",
+                    "stats-engine/methodologies/srm-checks",
+                    "stats-engine/methodologies/winsorization",
+                    "stats-engine/methodologies/one-sided-test",
+                  ],
+                },
+              ],
+            },
+            "experiments/meta-analysis",
+            "statsig-warehouse-native/features/reports",
+            "statsig-warehouse-native/features/autotune",
+          ],
+        },
+        "statsig-warehouse-native/features/mex-on-warehouse-native",
+        "statsig-warehouse-native/features/other-useful-features",
+        "statsig-warehouse-native/native-vs-cloud",
+      ],
+    },
+    {
+      type: "category",
+      label: "Session Replay",
+      items: [
+        "session-replay/overview",
+        "session-replay/install",
+        "session-replay/configure",
+        "session-replay/watch",
+      ],
+    },
+    {
+      type: "category",
+      label: "Web Analytics",
+      items: ["webanalytics/overview"],
+    },
+    {
+      type: "category",
+      label: "Autotune (Bandits)",
+      link: {
+        type: "doc",
+        id: "autotune/introduction",
+      },
+      items: [
+        "autotune/contextual-bandit",
+        "autotune/multi-armed-bandit",
+        "autotune/setup",
+        "autotune/monitoring",
       ],
     },
     {
       type: "category",
       label: "SDKs, APIs, Integrations",
-      link: {
-        type: "doc",
-        id: "sdks/sdks-overview",
-      },
       items: [
+        "sdks/getting-started",
         {
           type: "category",
           label: "Client SDKs",
@@ -413,26 +600,28 @@ module.exports = {
                 "client/concepts/persistent_assignment",
                 "sdks/debugging",
                 "sdk-keys/target-apps",
+                "client/concepts/parameter-stores",
               ],
             },
-            "client/jsClientSDK",
             {
               type: "category",
-              label: "New JavaScript (Beta)",
+              label: "New JavaScript",
               link: {
                 type: "doc",
                 id: "client/javascript-sdk",
               },
               items: [
-                "client/javascript-mono/MigrationFromOldSDK",
-                // "client/javascript-mono/IntegrationNextJs",
-                // "client/javascript-mono/IntegrationReact",
+                "client/javascript-mono/MigrationFromOldJsClient",
+                "client/javascript-mono/MigrationFromOldReact",
                 "client/javascript-mono/UsingEvaluationsDataAdapter",
+                "client/javascript-mono/ReactUsage",
+                "client/javascript-mono/ReactNativeUsage",
+                "client/javascript-mono/ExpoUsage",
+                "client/javascript-mono/NextJSUsage",
+                "client/javascript-mono/InitStrategies",
+                "client/javascript-mono/Examples",
               ],
             },
-            "client/reactSDK",
-            "client/reactNativeSDK",
-            "client/reactNativeExpoSDK",
             "client/iosClientSDK",
             "client/androidClientSDK",
             "client/dotnetSDK",
@@ -445,8 +634,31 @@ module.exports = {
               label: "On Device Evaluation",
               items: [
                 "client/jsLocalEvaluationSDK",
+                {
+                  type: "category",
+                  label: "New JavaScript",
+                  link: {
+                    type: "doc",
+                    id: "client/js-on-device-eval-client",
+                  },
+                  items: [
+                    "client/js-device-eval-mono/MigrationFromOldSDK",
+                    "client/js-device-eval-mono/UsingSpecsDataAdapter",
+                    "client/js-device-eval-mono/ReactNativeUsage",
+                  ],
+                },
                 "client/swiftOnDeviceEvaluationSDK",
                 "client/androidOnDeviceEvaluationSDK",
+              ],
+            },
+            {
+              type: "category",
+              label: "JavaScript - Maintainance Mode",
+              items: [
+                "client/jsClientSDK",
+                "client/reactSDK",
+                "client/reactNativeSDK",
+                "client/reactNativeExpoSDK",
               ],
             },
           ],
@@ -464,6 +676,7 @@ module.exports = {
                 "server/concepts/user",
                 "messages/serverRequiredUserID",
                 "server/concepts/data_store",
+                "server/concepts/forward_proxy",
                 "server/concepts/persistent_assignment",
                 "sdks/debugging",
                 "sdk-keys/target-apps",
@@ -491,6 +704,7 @@ module.exports = {
             id: "console-api/introduction",
           },
           items: [
+            "console-api/autogenerated",
             "console-api/gates",
             "console-api/segments",
             "console-api/dynamic-configs",
@@ -512,7 +726,6 @@ module.exports = {
                 "console-api/daily-reports-deprecated",
               ],
             },
-            "console-api/all-endpoints",
             "console-api/usage-billing",
             "console-api/rules",
           ],
@@ -564,6 +777,7 @@ module.exports = {
             "integrations/github_code_references",
             "integrations/slack",
             "integrations/openai",
+            "integrations/gtm",
             {
               type: "category",
               label: "Terraform",
@@ -613,9 +827,21 @@ module.exports = {
         {
           type: "category",
           label: "Notices",
-          items: ["sdks/group-name-breaking-change"],
+          items: [
+            "sdks/group-name-breaking-change",
+            "sdks/pagination-params-breaking-change",
+          ],
         },
       ],
+    },
+    {
+      type: "category",
+      label: "Statsig CLI",
+      link: {
+        type: "doc",
+        id: "siggy/introduction",
+      },
+      items: ["siggy/commands", "siggy/gate-management"],
     },
     {
       type: "category",
@@ -661,21 +887,34 @@ module.exports = {
           items: [
             "infrastructure/statsig_ip_ranges",
             "infrastructure/statsig_domains",
+            "infrastructure/managed-proxy",
             "infrastructure/custom_proxy",
             "infrastructure/reliability-faq",
           ],
         },
         {
           type: "category",
-          label: "Organization Experiment Policy",
+          label: "Organization Policies",
           link: {
             type: "doc",
-            id: "org-admin/experiment_policy",
+            id: "org-admin/organization_policies",
+          },
+          items: ["org-admin/experiment_policy", "org-admin/gates_policy"],
+        },
+        {
+          type: "category",
+          label: "Templates",
+          link: {
+            type: "doc",
+            id: "templates/templates",
           },
           items: [],
         },
       ],
     },
-    "faq",
+    {
+      type: "doc",
+      id: "faq",
+    },
   ],
 };

@@ -32,6 +32,7 @@ The **Metrics User Guide** consists of [Metrics 101](/metrics/101), [201](/metri
 - [Creating Metrics](metrics/create)
 - [Tagging Metrics](metrics/create-metric-tags)
 - [User Metrics](metrics/user)
+- [Assignment ID != Analysis ID](metrics/different-id)
 
 # Metrics 301 - Advanced Topics
 

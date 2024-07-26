@@ -1,0 +1,64 @@
+
+
+## React Hooks
+
+
+### useGateValue or useFeatureGate
+
+```typescript
+import { useGateValue } from '@statsig/react-native-bindings';
+
+const gateValue = useGateValue('a_gate', { user: {userID: "123"}}); // <-- Returns the boolean value
+if (gateValue) {
+  // 
+}
+```
+
+```typescript
+import { useFeatureGate } from '@statsig/react-native-bindings';
+
+const gate = useFeatureGate('a_gate', { user: {userID: "123"}}); // <-- Returns the FeatureGate object
+if (gate.value) {
+  // 
+}
+```
+
+### useDynamicConfig
+
+```typescript
+import { useDynamicConfig } from '@statsig/react-native-bindings';
+
+function MyComponent() {
+  const config = useDynamicConfig('a_config', { user: {userID: "123"}}); // <-- Returns the DynamicConfig object
+  const bgColor = config.value['bg_color'] as string;
+
+  return <View style={{backgroundColor: bgColor}}></View>;
+}
+```
+
+### useExperiment
+
+```typescript
+import { useExperiment } from '@statsig/react-native-bindings';
+
+function MyComponent() {
+  const experiment = useExperiment('an_experiment', { user: {userID: "123"}}); // <-- Returns the Experiment object
+  const bgColor = experiment.value['bg_color'] as string;
+
+  return <View style={{backgroundColor: bgColor}}></View>;
+}
+```
+
+
+### useLayer
+
+```typescript
+import { useLayer } from '@statsig/react-native-bindings';
+
+function MyComponent() {
+  const layer = useLayer('a_layer', { user: {userID: "123"}}); // <-- Returns the Layer object
+  const bgColor = layer.getValue('bg_color') as string;
+
+  return <View style={{backgroundColor: bgColor}}></View>;
+}
+```

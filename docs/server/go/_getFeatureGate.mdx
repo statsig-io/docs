@@ -1,0 +1,8 @@
+```go
+user := statsig.User{UserID: "some_user_id"}
+feature := statsig.GetGate(user, "use_new_feature")
+if feature.Value {
+  // Gate is on, enable new feature
+  fmt.Print(feature.EvaluationDetails.Reason)
+}
+```

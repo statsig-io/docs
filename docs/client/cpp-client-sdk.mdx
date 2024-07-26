@@ -27,13 +27,16 @@ import CheckGate from "./cpp/_checkGate.mdx";
 import GetConfig from "./cpp/_getConfig.mdx";
 import GetExperiment from "./cpp/_getExperiment.mdx";
 import LogEvent from "./cpp/_logEvent.mdx";
-import UpdateUser from "./cpp/_updateUser.mdx";
+import UserObject from "./cpp/_userObject.mdx";
 import MoreFAQs from "./cpp/_faqs.mdx";
 import Options from "./cpp/_options.mdx";
 import ShutdownSnippet from "./cpp/_shutdown.mdx";
 
+import * as _UpdateUser from "./cpp/_updateUser.mdx";
+export const UpdateUser = _UpdateUser;
+
 export const Result = SDKDocsBuilder(
-  {  },
+  {},
   [
     [
       Repository,
@@ -58,7 +61,8 @@ export const Result = SDKDocsBuilder(
         logEvent: <LogEvent />,
       },
     ],
-    [StatsigUser, { updateUser: <UpdateUser /> }],
+    [StatsigUser, { updateUser: <UserObject /> }],
+    [UpdateUser, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [FAQ, { faqs: <MoreFAQs /> }],

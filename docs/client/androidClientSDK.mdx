@@ -20,6 +20,7 @@ import {
   Shutdown,
   LocalOverrides,
   StableID,
+  ParameterStore,
 } from "./Templates/index.mdx";
 
 import Install from "./Android/_install.mdx";
@@ -35,6 +36,8 @@ import LocalOverridesSnippet from "./Android/_localOverrides.mdx";
 import ShutdownSnippet from "./Android/_shutdown.mdx";
 import { GetStableID, OverrideStableID } from "./Android/_stableID.mdx";
 import { Snippets as ManualExposureSnippets } from "./Android/_manualExposures.mdx";
+import GetParameterStore from "./Android/_getParameterStore.mdx";
+import GetParameter from "./Android/_getParameter.mdx";
 
 export const Result = SDKDocsBuilder(
   { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
@@ -61,6 +64,10 @@ export const Result = SDKDocsBuilder(
         getExperiment: <GetExperiment />,
         logEvent: <LogEvent />,
       },
+    ],
+    [
+      ParameterStore,
+      { getParameterStore: <GetParameterStore />, getParameter: <GetParameter /> },
     ],
     [StatsigUser, { updateUser: <UpdateUser /> }],
     [StatsigOptions, { options: <Options /> }],
