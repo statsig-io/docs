@@ -202,6 +202,26 @@ module.exports = {
                 },
               },
             ],
+            postBodyTags: [
+              {
+                tagName: 'script',
+                attributes: {
+                  type: 'text/javascript',
+                },
+                innerHTML: `
+                  document.addEventListener('DOMContentLoaded', function() {
+                    var copilot = document.createElement('co-pilot');
+                    copilot.setAttribute('copilot_id', '6f8EwgjiL');
+                    document.body.appendChild(copilot);
+        
+                    var script = document.createElement('script');
+                    script.setAttribute('type', 'module');
+                    script.setAttribute('src', 'https://ui.scoutos.com/copilot.js');
+                    document.body.appendChild(script);
+                  });
+                `,
+              },
+            ],
           };
         },
       };
