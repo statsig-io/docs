@@ -140,6 +140,7 @@ module.exports = {
           },
           items: [
             "dynamic-config/working-with",
+            "dynamic-config/enforce-schema",
             "dynamic-config/create-new",
             "dynamic-config/add-rule",
           ],
