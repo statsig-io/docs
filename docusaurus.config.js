@@ -325,6 +325,7 @@ module.exports = {
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
       {
+        explicitSearchResultPath: true,
         hashed: true,
         indexBlog: false,
         indexDocs: true,
