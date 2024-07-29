@@ -66,6 +66,14 @@ statsigClient.getDynamicConfig('config_name');
 ```
 
 
+### Endpoints
+If you are migrating from v4.x.x of the js-client sdk, or v1.x.x of the react SDK, you may need to account for new default apis that the SDK will hit to initialize and log events.
+
+- event logging endpoint: https://prodregistryv2.org/v1/rgstr
+- initialize endpoint: https://featureassets.org/v1/initialize
+
+See also: [https://docs.statsig.com/client/javascript-sdk#networkconfig-object](/client/javascript-sdk#networkconfig-object)
+
 
 ### Bootstrapping
 If you are using a server SDK to bootstrap your js/react app, you will need to make some updates to how your server SDK generates values.  One of the optimizations we made with this new js-client SDK was to remove the `sha256` library for hashing gate/experiment names.  Instead, we use a `djb2` hash.  By default, all server SDKs generate `sha256` hashes of gate/experiment names in the `getClientInitializeResponse` method.  You will need to set the hash algorithm parameter to that method call to `"djb2"` instead in order to bootstrap this new client SDK.  One of the benefits to this hashing algorithm is it will make the entire payload smaller as well, so its a net win on package size, speed, and payload size for the SDK.
