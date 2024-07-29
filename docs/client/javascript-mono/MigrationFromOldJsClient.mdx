@@ -13,7 +13,7 @@ The architecture and majority of the APIs in the updated SDK have been retained;
 
 Below is a list of identified breaking changes that will require manual refactoring:
 
-### Initialization
+## Initialization
 
 Previously, the SDK employed a single method for initialization. However, we have recognized that waiting for a method call during app startup can be impractical. Consequently, we have introduced two distinct initialization approaches: one synchronous and one asynchronous.
 
@@ -54,7 +54,7 @@ You can read more about StatsigClient initialization [here](/client/javascript-s
 
 
 
-### getConfig is now getDynamicConfig
+## getConfig is now getDynamicConfig
 Make sure you update your `getConfig` callsites to call the new method, `getDynamicConfig`.  In addition, `DynamicConfig` and `Layer` are no longer classes, but javascript objects.  There are still convenience `get` methods, which should remain unchanged.
 
 ```js
@@ -66,16 +66,7 @@ statsigClient.getDynamicConfig('config_name');
 ```
 
 
-### Endpoints
-If you are migrating from v4.x.x of the js-client sdk, or v1.x.x of the react SDK, you may need to account for new default apis that the SDK will hit to initialize and log events.
-
-- event logging endpoint: https://prodregistryv2.org/v1/rgstr
-- initialize endpoint: https://featureassets.org/v1/initialize
-
-See also: [https://docs.statsig.com/client/javascript-sdk#networkconfig-object](/client/javascript-sdk#networkconfig-object)
-
-
-### Bootstrapping
+## Bootstrapping
 If you are using a server SDK to bootstrap your js/react app, you will need to make some updates to how your server SDK generates values.  One of the optimizations we made with this new js-client SDK was to remove the `sha256` library for hashing gate/experiment names.  Instead, we use a `djb2` hash.  By default, all server SDKs generate `sha256` hashes of gate/experiment names in the `getClientInitializeResponse` method.  You will need to set the hash algorithm parameter to that method call to `"djb2"` instead in order to bootstrap this new client SDK.  One of the benefits to this hashing algorithm is it will make the entire payload smaller as well, so its a net win on package size, speed, and payload size for the SDK.
 
 For example, if you are bootstrapping from a nodejs app, you will need to do:
@@ -91,13 +82,7 @@ statsig.getClientInitializeResponse(
 ```
 
 
-
-
-
-
-
-
-### Updating the User
+## Updating the User
 
 Similar to initialization, the `updateUser` method now supports both synchronous and asynchronous approaches. Each method functions in the same manner as the initialization process.
 
@@ -125,12 +110,6 @@ await Statsig.updateUser(user);
 
   </TabItem>
 </Tabs>
-
-
-
-
-
-
 
 
 
@@ -168,12 +147,6 @@ You can read more about StatsigClient multi-instance support [here](/client/java
 
   </TabItem>
 </Tabs>
-
-
-
-
-
-
 
 
 
@@ -250,6 +223,18 @@ StatsigLocalStorage.disabled = false;
 
   </TabItem>
 </Tabs>
+
+
+
+## Endpoints
+If you are migrating from v4.x.x of the js-client sdk, or v1.x.x of the react SDK, you may need to account for new default apis that the SDK will hit to initialize and log events.
+
+- event logging endpoint: https://prodregistryv2.org/v1/rgstr
+- initialize endpoint: https://featureassets.org/v1/initialize
+
+See also: [https://docs.statsig.com/client/javascript-sdk#networkconfig-object](/client/javascript-sdk#networkconfig-object)
+
+
 
 
 ## Legacy StatsigOptions
