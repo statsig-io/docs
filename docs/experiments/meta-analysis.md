@@ -30,6 +30,11 @@ In this hypothetical example - "Checkouts" is the metric you want to move, but i
 
 ![image](https://github.com/statsig-io/docs/assets/31516123/c29e5d7d-d8b6-4841-acaf-8d521a5db398)
 
+## Metric Impact (Batting Average)
+The "batting average" view lets you look at how easy or hard a metric is to move. You can filter to a set of shipped experiments and see how many experiments moved a metric by 1% vs 10%. This quickly gives you a sense for whether betting your next experiment will move this by 15% is a good idea. Like with other meta-analysis views, you can filter down to a team, a tag or even if results were statistically significant. 
+
+![image](https://github.com/user-attachments/assets/6e1807aa-42e1-4c98-86cb-e09e3c2c4a90)
+
 
 ## Metric Insights
 This view lets you pick a metric and see all experiments and feature rollouts that impact this metric. [Learn more](https://docs.statsig.com/insights).
