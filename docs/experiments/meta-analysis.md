@@ -33,7 +33,7 @@ In this hypothetical example - "Checkouts" is the metric you want to move, but i
 ## Metric Impact (Batting Average)
 The "batting average" view lets you look at how easy or hard a metric is to move. You can filter to a set of shipped experiments and see how many experiments moved a metric by 1% vs 10%. This quickly gives you a sense for whether betting your next experiment will move this by 15% is a good idea. Like with other meta-analysis views, you can filter down to a team, a tag or even if results were statistically significant. 
 
-![image](https://github.com/user-attachments/assets/6e1807aa-42e1-4c98-86cb-e09e3c2c4a90)
+![image](https://github.com/user-attachments/assets/72f987a4-02ba-4937-9f3d-06892c55e4e9)
 
 
 ## Metric Insights
