@@ -31,6 +31,8 @@ Statsig lets you run your pipeline in a few different ways:
 
 The following tables will be generated and stored in your warehouse per-experiment. You have full access to these data sources for your own analysis, models, or visualizations. For experiments, `experiment_id` will be the name of the experiment; for Feature Gates, `experiment_id` will be the name of the gate along with the specific rule ID (e.g. `chatbot_llm_model_switch_31e9jwlgO1bSSznKntb2gp_exposures_summary`)
 
+This is not an exhaustive list, but includes most of the core result/staging tables that you might be interested in using for your own analysis.
+
 | Table                                                           | Description                                                                                                                     | Notes                                                      |
 | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
 | first\_exposures\_<experiment_id\>                               | Deduplicated and stitched (for experiments with ID resolution) first exposure events                                            | Useful for ad-hoc analysis                                 |
@@ -38,7 +40,9 @@ The following tables will be generated and stored in your warehouse per-experime
 | unit\_day\_metrics\_<experiment_id\>                              | User-day level metric aggregations table                                                                                        | Useful for ad-hoc analysis                                 |
 | unit\_covariate\_metrics_<experiment_id\>                        | User-level pre-experiment aggregations for regression adjustment/CUPED                                                          |                                                            |
 | funnel\_events\_<experiment_id>                                | Staging table for running funnel analysis                                                                                       |                                                            |
+| percentile\_values\_<experiment_id>                                | Staging table for running funnel analysis                                                                                       |                                                            |
 | windowed\_metrics\_<experiment_id\>                              | Staging table for generating running totals when restating Pulse                                                                |                                                            |
+| ratio\_aggregations\_<experiment_id\>                              | Staging table for generating running totals when restating Pulse                                                                |                                                            |
 | results\_<rollup\>_<experiment_id\>                            | Outputs of Statistical Analysis for different rollups (e.g. daily, days-since-exposure, cumulative, 7-day). Exported to Statsig | Pulse inputs - useful for replicating Statistical analysis |
 | ratio\_results\_<rollup\>\_<experiment_id\>                      | Outputs of Statistical Analysis for ratio metrics in different rollups (e.g. daily, days-since-exposure, cumulative, 7-day). Exported to Statsig | Pulse inputs - useful for replicating Statistical analysis |
 
