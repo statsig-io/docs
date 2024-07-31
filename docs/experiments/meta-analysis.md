@@ -43,4 +43,5 @@ This view lets you pick a metric and see all experiments and feature rollouts th
 
 ## Knowledge Bank
 (Coming soon) is a searchable view across all your experiments. Make it easy for new team mates to explore and find experiments a team ran, or where a topic was mentioned. In general the meta-analysis tools offer more structured and powerful means to discover and look across your experiment corpus, but when you do want free text search, this exists. 
-![image](https://github.com/user-attachments/assets/3c4a30d5-e240-4526-8cc2-fe488334e9bf)
+![image](https://github.com/user-attachments/assets/0f23ef58-7d97-4508-8f1a-441a583e813d)
+
