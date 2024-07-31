@@ -40,3 +40,7 @@ The "batting average" view lets you look at how easy or hard a metric is to move
 This view lets you pick a metric and see all experiments and feature rollouts that impact this metric. [Learn more](https://docs.statsig.com/insights).
 
 ![image](https://github.com/statsig-io/docs/assets/31516123/6f7daa5e-adf3-4e3c-a9dd-53f7cb8e5498)
+
+## Knowledge Bank
+(Coming soon) is a searchable view across all your experiments. Make it easy for new team mates to explore and find experiments a team ran, or where a topic was mentioned. In general the meta-analysis tools offer more structured and powerful means to discover and look across your experiment corpus, but when you do want free text search, this exists. 
+![image](https://github.com/user-attachments/assets/3c4a30d5-e240-4526-8cc2-fe488334e9bf)
