@@ -51,9 +51,10 @@ module.exports = {
           position: "right",
           value:
             "<button id=\"consoleCTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus(); window.statsig.logEvent({}, 'console_button_click', window.location.pathname, {referrer: document && document.referrer,});\">Get Started</button>",
-          type: 'html',
-          position: 'right',
-          value: '<button id="consoleCTA" onclick="window.open(\'https://console.statsig.com\', \'_blank\').focus(); window.statsig.logEvent({}, \'console_button_click\', window.location.pathname, {referrer: document && document.referrer,});">Get Started</button>',
+          type: "html",
+          position: "right",
+          value:
+            "<button id=\"consoleCTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus(); window.statsig.logEvent({}, 'console_button_click', window.location.pathname, {referrer: document && document.referrer,});\">Get Started</button>",
         },
       ],
     },
@@ -156,12 +157,6 @@ module.exports = {
                 `,
                 attributes: {
                   type: "text/javascript",
-                },
-              },
-              {
-                tagName: "script",
-                attributes: {
-                  src: "/js/datadog.js",
                 },
               },
               {
