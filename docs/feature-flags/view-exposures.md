@@ -53,3 +53,5 @@ Statsig doesn't block bots from getting your feature flags. We simply filter out
 :::
 
 Once bot data is filtered from your exposures data, it will not be viewable in the Statsig console. We're exploring how to better surface this information in the future. Please reach out via slack support if you have additional questions.
+![image](https://github.com/user-attachments/assets/4c171000-6733-4136-a383-4cfd2b738ccb)
+
