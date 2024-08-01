@@ -71,7 +71,7 @@ We hope this is helpful. If you have a use case that is not covered in these sce
 
 ### Time-based conditions
 
-All SDKs support unix timestamps to evaluate time based conditions (After time, before time).  Without knowing all possible variations of DateTime formats, we have to normalize on something, so its best to convert your DateTime field into a standard format for evaluation.
+All SDKs support unix timestamps in milliseconds to evaluate time based conditions (After time, before time).  Without knowing all possible variations of DateTime formats, we have to normalize on something, so its best to convert your DateTime field into a standard format for evaluation.
 
 We have added support for ISO timestamps to some server SDKs.
 - The `java-server` sdk, as of `v1.6.0` supports [DateTime fields in the format of `ISO_INSTANT`](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#ISO_INSTANT)
