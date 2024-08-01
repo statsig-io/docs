@@ -161,12 +161,6 @@ module.exports = {
               {
                 tagName: "script",
                 attributes: {
-                  src: "/js/datadog.js",
-                },
-              },
-              {
-                tagName: "script",
-                attributes: {
                   src: "https://api.statsigcdn.com/v1/download_config_specs/client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps.js",
                 },
               },

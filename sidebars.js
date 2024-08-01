@@ -243,7 +243,7 @@ module.exports = {
         },
         {
           type: "category",
-          label: "Landing Page Experiments",
+          label: "Landing Page Experiments (deprecated)",
           items: [
             "guides/landing-page-experiments/introduction",
             "guides/landing-page-experiments/setup",
