@@ -9,7 +9,7 @@ slug: /experiments-plus/read-results
 
 To read the results of your experiment, go to the **Results** tab, where you will see your experiment exposures, and then **Metric Lifts**. **Scorecard** shows the metric lifts for all Primary and Secondary metrics you set up at experiment creation as part of the Scorecard. 
 
-* **Experiment results are computed for the first 90 days**: By default, Statsig will compute Pulse Results for your experiment for only the first 90 days of your experiment. You will be notified via e-mail as you approach the 90 days cap, at which point will be able to extend this compute window for another 30 days at a time. Your user assignment will continue to run as expected even if the compute window is not extended, until you make a decision on the experiment. 
+* **Experiment results are computed for the first 90 days**: By default, Statsig will compute Pulse Results for your experiment for only the first 90 days of your experiment. You will be notified via e-mail as you approach the 90 days cap, at which point will be able to extend this compute window for another 30 days at a time. New users will stop enrolling into the experiment but existing user assignment will continue to run as expected even if the compute window is not extended, until you make a decision on the experiment. 
 
 
 #### Scorecard 
