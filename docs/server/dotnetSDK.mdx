@@ -21,6 +21,7 @@ import {
   LocalOverrides,
   Reference,
   DataStore,
+  Instances,
 } from "./Templates/index.mdx";
 
 import Install from "./dotnet/_install.mdx";
@@ -36,6 +37,7 @@ import DataStoreInterface from "./dotnet/_dataStoreInterface.mdx";
 import RedisDataStore from "./dotnet/_redisDataStore.mdx";
 import * as ReferenceSnippets from "./dotnet/_reference.mdx";
 import OverridesSnippet from "./dotnet/_localOverrides.mdx";
+import MultiInstanceExample from "./dotnet/_multiInstanceExample.mdx";
 
 export const Result = SDKDocsBuilder(
   { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
@@ -74,6 +76,7 @@ export const Result = SDKDocsBuilder(
       LocalOverrides,
       { addedInVersion: "1.21.0", snippet: <OverridesSnippet /> },
     ],
+    [Instances, { constructor: <MultiInstanceExample /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
   ],

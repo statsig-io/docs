@@ -21,6 +21,7 @@ import {
   LocalOverrides,
   Reference,
   ProxyConfigs,
+  Instances,
 } from "./Templates/index.mdx";
 
 import Preamble from "./java/_preamble.mdx";
@@ -39,6 +40,7 @@ import OverridesSnippet from "./java/_localOverrides.mdx";
 import * as ReferenceSnippets from "./java/_reference.mdx";
 import ClientInitResponseSnippet from "./java/_clientInitResponse.mdx";
 import ForwardProxyExample from "./java/_forwardProxyExample.mdx";
+import MultiInstanceExample from "./java/_multiInstanceExample.mdx";
 
 export const Result = SDKDocsBuilder(
   { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
@@ -86,6 +88,7 @@ export const Result = SDKDocsBuilder(
         snippet: <OverridesSnippet />,
       },
     ],
+    [Instances, { constructor: <MultiInstanceExample /> }],
     [ProxyConfigs, {addedInVersion: "0.24.0", installation: <InstallBeta />, code: 
       <ForwardProxyExample />
     }],

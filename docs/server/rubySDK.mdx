@@ -21,6 +21,7 @@ import {
   LocalOverrides,
   Reference,
   UserPersistentStorage,
+  Instances,
 } from "./Templates/index.mdx";
 
 import Install from "./ruby/_install.mdx";
@@ -37,6 +38,7 @@ import PersistentStorageInterface from "./ruby/_persistentStorageInterface.mdx";
 import PersistentStorageExample from "./ruby/_persistentStorageExample.mdx";
 import * as ReferenceSnippets from "./ruby/_reference.mdx";
 import ClientInitResponseSnippet from "./ruby/_clientInitResponse.mdx";
+import MultiInstanceExample from "./ruby/_multiInstanceExample.mdx";
 
 export const Result = SDKDocsBuilder(
   { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
@@ -87,6 +89,7 @@ export const Result = SDKDocsBuilder(
       UserPersistentStorage,
       { interface: <PersistentStorageInterface />, example: <PersistentStorageExample />},
     ],
+    [Instances, { constructor: <MultiInstanceExample /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
   ],
