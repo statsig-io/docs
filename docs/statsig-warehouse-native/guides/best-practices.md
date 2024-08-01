@@ -124,6 +124,9 @@ If a pulse load fails, you can find all of the SQL queries and associated error 
 - A query attempting to access a field that no longer exists on a table
 - A table not existing - usually due to the Statsig user not having permission on a new table
 
+## Turbo Mode
+Turbo Mode  skips some enrichment calculations (in particular some time series rollups) in order to very cheaply compute the latest snapshot of your data. With this, customers have run experiments on 150+ million users in less than 5 minutes on a snowflake S cluster. 
+
 ### Ask!
 
 Statsig's support is very responsive, and will be happy to help you fix your issue and build tools to prevent it in the future - whether it's due to system or user error.
