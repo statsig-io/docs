@@ -21,7 +21,8 @@ import {
   LocalOverrides,
   Reference,
   EnvironmentSpecific,
-  ProxyConfigs
+  ProxyConfigs,
+  Instances,
 } from "./Templates/index.mdx";
 
 import Install from "./node/_install.mdx";
@@ -42,6 +43,7 @@ import OverridesSnippet from "./node/_localOverrides.mdx";
 import * as RefSnippets from "./node/_reference.mdx";
 import CloudflareSetup from "./node/_cloudflareSetup.mdx";
 import ForwardProxyExample from "./node/_forwardProxyExample.mdx";
+import MultiInstanceExample from "./node/_multiInstanceExample.mdx";
 
 export const Result = SDKDocsBuilder(
   { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
@@ -88,6 +90,7 @@ export const Result = SDKDocsBuilder(
     ],
     [ManualExposures, { addedInVersion: "5.0.0", ...ManualExposureSnippets }],
     [EnvironmentSpecific, {cloudflare: <CloudflareSetup />}],
+    [Instances, { constructor: <MultiInstanceExample /> }],
     [ProxyConfigs, {addedInVersion: "5.21.1-beta.2z", installation: <InstallBeta />, code: 
       <ForwardProxyExample />
     }],

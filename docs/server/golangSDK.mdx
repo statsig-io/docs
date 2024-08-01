@@ -22,6 +22,7 @@ import {
   Reference,
   DataStore,
   UserPersistentStorage,
+  Instances,
 } from "./Templates/index.mdx";
 
 import Install from "./go/_install.mdx";
@@ -40,7 +41,7 @@ import DataStoreExample from "./go/_dataStoreExample.mdx";
 import PersistentStorageInterface from "./go/_persistentStorageInterface.mdx";
 import PersistentStorageExample from "./go/_persistentStorageExample.mdx";
 import * as ReferenceSnippets from "./go/_reference.mdx";
-
+import MultiInstanceExample from "./go/_multiInstanceExample.mdx";
 
 export const Result = SDKDocsBuilder(
   { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
@@ -87,6 +88,7 @@ export const Result = SDKDocsBuilder(
       UserPersistentStorage,
       { interface: <PersistentStorageInterface />, example: <PersistentStorageExample /> },
     ],
+    [Instances, { constructor: <MultiInstanceExample /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
   ],

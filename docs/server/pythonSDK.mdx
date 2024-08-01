@@ -21,6 +21,7 @@ import {
   LocalOverrides,
   Reference,
   ProxyConfigs,
+  Instances,
 } from "./Templates/index.mdx";
 
 import Install from "./python/_install.mdx";
@@ -39,6 +40,7 @@ import OverridesSnippet from "./python/_localOverrides.mdx";
 import * as ReferenceSnippets from "./python/_reference.mdx";
 import ClientInitResponseSnippet from "./python/_clientInitResponse.mdx";
 import ForwardProxyExample from "./python/_forwardProxyExample.mdx";
+import MultiInstanceExample from "./python/_multiInstanceExample.mdx";
 
 export const Result = SDKDocsBuilder(
   { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
@@ -79,6 +81,7 @@ export const Result = SDKDocsBuilder(
         signature: () => <code>get_client_initialize_response</code>,
       },
     ],
+    [Instances, { constructor: <MultiInstanceExample /> }],
     [ProxyConfigs, {addedInVersion: "0.36.0b1", installation: <InstallBeta />, code: 
     <ForwardProxyExample />
     }],
