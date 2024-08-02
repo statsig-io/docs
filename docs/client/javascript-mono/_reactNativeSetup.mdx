@@ -15,11 +15,34 @@ to load any cache values from disk. This warming performs some AsyncStorage.getI
 
 ### Render the StatsigProvider
 
-Once the Statsig client is created and the warming step started, we can then pass them into
+Once the Statsig client is created and the warming step started, you need to initialize the sdk from the network to get the latest values.
+
+Finally, pass the client and cache warming into
 the `StatsigProviderRN` component for rendering.
 
 ```typescript
+function useAsyncClient(): { isLoading: boolean; client: StatsigClient } {
+  const [isLoading, setIsLoading] = useState(true);
+  const client = useMemo(() => {
+    const instance = new StatsigClient(DEMO_CLIENT_KEY, { userID: 'a-user' });
+    instance
+      .initializeAsync()
+      .then(() => {
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    return instance;
+  }, []);
+  
+  const warming = warmCachingFromAsyncStorage(myStatsigClient);
+
+  return { client, isLoading, warming };
+}
+
 export function App(): JSX.Element {
+  const { client, isLoading, warming } = useAsyncClient();
   return (
     <StatsigProviderRN client={myStatsigClient} cacheWarming={warming}>
       {/* Render your App */}
