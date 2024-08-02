@@ -60,10 +60,12 @@ When you create an analysis-only experiment or power analysis with this ID type,
 Behind the scenes, Statsig will:
 
 - Deduplicate records with multiple mappings to ensure a 1:1 mapping to your experiment's unit of analysis
-- For metric sources with the primary ID, metrics will be joined to exposures based on that ID
+- For metric sources with the primary ID, metrics will be joined to exposures based on that primary ID
 - For metric sources with only the secondary ID, metric will be joined to exposures based on that Secondary ID
 
 This works natively across Metric Sources, so you can easily set up funnel or ratio metrics across the two ID types.
+
+Analysis is done using the primary ID - this process associates metric values that are on an associated secondary ID. 
 
 ## Considerations
 
