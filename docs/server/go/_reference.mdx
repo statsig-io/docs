@@ -27,6 +27,7 @@ type User struct {
 // Advanced options for configuring the Statsig SDK
 type Options struct {
 	API                   string      `json:"api"`
+	APIOverrides          APIOverrides `json:"api_overrides"`
 	Environment           Environment `json:"environment"`
 	LocalMode             bool        `json:"localMode"`
 	ConfigSyncInterval    time.Duration
@@ -44,6 +45,12 @@ type Options struct {
 	UserPersistentStorage IUserPersistentStorage
 	IPCountryOptions      IPCountryOptions
 	UAParserOptions       UAParserOptions
+}
+
+type APIOverrides struct {
+	DownloadConfigSpecs string `json:"download_config_specs"`
+	GetIDLists          string `json:"get_id_lists"`
+	LogEvent            string `json:"log_event"`
 }
 
 type EvaluationCallbacks struct {
@@ -91,6 +98,7 @@ type Environment struct {
 type GCIROptions struct {
 	IncludeLocalOverrides bool
 	ClientKey             string
+	HashAlgorithm         string 	//supports "sha256", "djb2", "none", default "sha256"
 }
 ```
 
