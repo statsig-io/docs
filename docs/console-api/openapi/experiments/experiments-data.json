@@ -2157,7 +2157,7 @@
               }
             }
           },
-          "description": "This endpoint will add overrides to the existing list of overrides."
+          "description": "This endpoint will add overrides to the existing list of overrides. If there are overrides already exists, they will be replaced with new ones."
         },
         "tags": ["Experiments"],
         "description": ""
