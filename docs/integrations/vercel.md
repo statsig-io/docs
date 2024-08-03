@@ -18,6 +18,6 @@ After setting up the configuration, you can go to Project Settings -> Integratio
 
 ## Known Limitations
 
-Vercel Edge Config has maximum size limits that may prevent Statsig from pushing configs into your Edge Config. See [here](https://vercel.com/docs/concepts/edge-network/edge-config/edge-config-limits) for the latest Vercel Edge Config limits.
+Vercel Edge Config has maximum size limits that may prevent Statsig from pushing configs into your Edge Config. See [here](https://vercel.com/docs/storage/edge-config/edge-config-limits) for the latest Vercel Edge Config limits.
 
 Statsig ID Lists are not currently synced into the Edge Config.
