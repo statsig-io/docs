@@ -2,7 +2,6 @@
 title: Stratified Sampling
 sidebar_label: Stratified Sampling
 slug: /experiments-plus/stratified-sampling
-displayed_sidebar: cloud
 ---
 
 ## What is Stratified Sampling
