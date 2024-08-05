@@ -41,21 +41,27 @@ Bot filtering is done on all types of exposures data, not just feature flags. Yo
 
 Once bot data is filtered from your exposures data, it will not be viewable in the Statsig console. We're exploring how to better surface this information in the future. Please reach out via slack support if you have additional questions.
 
-### Controlling Gates for Bots
+### Controlling Gates and Experiments for Bots
 
 By design, Statsig doesn't block bots from getting your feature flags and experiments. We simply filter out their exposures from any analysis data and the count of exposures that you see in Pulse. There are no changes in the API or SDK results for bots, and they will be served configs and variants following your setup.
 
-You might want to purposefully restrict what features bots see. For example, you're testing a new homepage variant but you don't want search engines to index it yet. In this case, there is an easy way to do so via Segments:
+You might, however, want to purposefully restrict what features bots see. For example, you're testing a new homepage variant but you don't want search engines to index it yet. In this case, there is an easy way to do so via Segments:
 
-1. Create a "Known Bots" Segment for your project.
+1. Create a "Known Bots" Segment for your project:
+
+    This common segment can then be used for all your launches. You can find our list of known bot browser names here: TBD
   
-   ![Screenshot 2024-08-05 at 11 15 24 AM](https://github.com/user-attachments/assets/bf86f861-4cf6-4b5d-a402-d554087fd5b1)
+    ![Screenshot 2024-08-05 at 11 15 24 AM](https://github.com/user-attachments/assets/bf86f861-4cf6-4b5d-a402-d554087fd5b1)
 
-   You can find our list of known bot browser names here: TBD
+2. Apply the Segment to your Gates and Experiments:
 
-3. When creating new feature gates or experiments, create a Conditional Override that forces units in this segment to recieve whatever version you want.
+    For Gates, create a new rule that controls the bot experience.
 
-   ![Screenshot 2024-08-05 at 11 17 32 AM](https://github.com/user-attachments/assets/97ec1bcd-6f03-4b51-b0fe-9859f11559b1)
+    ![Screenshot 2024-08-05 at 11 25 35 AM](https://github.com/user-attachments/assets/d6b51af0-ecfc-49c4-9e48-73bd276836ef)
+
+    For experiments, create a Conditional Override that forces units in this segment to recieve whatever version you want.
+
+    ![Screenshot 2024-08-05 at 11 17 32 AM](https://github.com/user-attachments/assets/97ec1bcd-6f03-4b51-b0fe-9859f11559b1)
 
 ### Opting Out of Bot Filtering
 
