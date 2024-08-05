@@ -3,6 +3,7 @@ title: Experiment Diagnostics
 slug: /statsig-warehouse-native/features/monitor-an-experiment
 sidebar_label: Diagnostics
 description: Monitor the health of experiments
+displayed_sidebar: cloud
 ---
 
 Once you turn on your experiment, you can monitor the health of your experiment and view the exposures for the control and variants groups.
