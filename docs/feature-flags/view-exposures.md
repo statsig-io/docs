@@ -33,7 +33,7 @@ In the example below, the rises in *product view count* and *purchase event coun
 
 <img width="1420" alt="Screen Shot 2024-02-19 at 2 50 30 PM" src="https://github.com/statsig-io/docs/assets/101903926/01207199-5a5a-4505-a0af-7e6354b4590d"/>
 
-## Bots & Filtering (Coming Soon - August 2024)
+## Bots & Filtering
 
 One common source of frustration when monitoring gate traffic is online bot traffic from sources like search engines and AI scrapers. These can make it harder to see how many "real" users are seeing your changes. Statsig has bot filtering in place to remove known bots from your exposures data, meaning the exposure counts you see and any analytics you do will be clean. You won't have to worry if the data you're looking at is influenced by bots or real users.
 
