@@ -49,7 +49,7 @@ You might, however, want to purposefully restrict what features bots see. For ex
 
 1. Create a "Known Bots" Segment for your project:
 
-    This common segment can then be used for all your launches. You can find our list of known bot browser names here: TBD
+    This common segment can then be used for all your launches. You can find our list of known bot browser names here: NOTE, TO ADD.
   
     ![Screenshot 2024-08-05 at 11 15 24 AM](https://github.com/user-attachments/assets/bf86f861-4cf6-4b5d-a402-d554087fd5b1)
 
@@ -59,7 +59,7 @@ You might, however, want to purposefully restrict what features bots see. For ex
 
     ![Screenshot 2024-08-05 at 11 25 35 AM](https://github.com/user-attachments/assets/d6b51af0-ecfc-49c4-9e48-73bd276836ef)
 
-    For experiments, create a Conditional Override that forces units in this segment to recieve whatever version you want.
+    For experiments, create a Conditional Override that forces units in this segment to receive whatever version you want.
 
     ![Screenshot 2024-08-05 at 11 17 32 AM](https://github.com/user-attachments/assets/97ec1bcd-6f03-4b51-b0fe-9859f11559b1)
 
