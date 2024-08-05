@@ -3,6 +3,7 @@ title: Entity Properties
 slug: /statsig-warehouse-native/features/entity-properties
 sidebar_label: Entity Properties
 description: Provide additional details about given entity
+displayed_sidebar: cloud
 ---
 
 # Entity Properties

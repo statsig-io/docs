@@ -3,6 +3,7 @@ title: Early Diagnostics
 slug: /statsig-warehouse-native/features/early-diagnostics
 sidebar_label: Early Diagnostics
 description: Data Freshness
+displayed_sidebar: cloud
 ---
 
 ## Exposures from Statsig SDKs
