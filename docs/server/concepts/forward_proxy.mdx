@@ -73,6 +73,36 @@ Statsig.initialize(server_key, statsigOptions)
 
 For information on your specific SDK language, see the language specific docs in the left hand column.
 
+#### Failover behavior
+**Initializaiton** 
+SDK remains the same behavior when forward proxy is being used. But there are several configurations you can use to improve the data availability during initialization.
+Default behavior is SDK will get from forward proxy. If DataAdapater is presented, get from DataAdapter first, and fallback to Forward Proxy if there is no value served from data adapter. 
+There are several ways you can configure the behavior here. 
+1. Set `DataAdapter.should_be_use_as_initialization_backup_source = true`, use forward proxy as primary source, if it fails, fallback to dataAdapter.
+2. Set `defaultToStatsigAPI = true`, if you want to default to statsig api when both sources failed. 
+
+**Config Sync (Post initialization)** 
+If sdk is using `grpc_websocket` protocol, meaning sdk is in a listening mode for any config changes, it will 
+1. Retry connecting to forward proxy, with exponenetial backoff, 10s, 50s, 250s, 1250s ... until it reconnects, limit fo
+r retry is 10 times.  
+2. If 4th retry still fails, sdk will start polling from from Statsig endpoint. Use StatsigOptions.pollingInterval to control how often it 
+3. While sdk polling from Statsig endpoint, sdk will keep retrying until it connected, 
 
 #### Coordinate SDK DataAdapater / DataStore with Forward Proxy Cache service
 In order to increase reliability of SDK during initialization, setup DataStore will help in case Forward Proxy is not available when initialized. If DataStore is set, SDK will try initailize with values from dataStore, and sync (listen or polling depends on setup) from forward proxy in background after initialization. It's recommended for SDK and Forward Proxy to share the same cache service for consistency and reduce cache I/O. 
+Example on DataStore setup in python:
+``` py
+class DataAdapter(IDataStore):
+def __init__(self):
+  self.redis_cache = ExampleCache()
+
+def get(self, key: str):
+  self.cache.get(key)
+
+def set(self, key: str):
+  # Don't implement set method if you are share the same cache between forward proxy and sdk, forward proxy will write to cache 
+  pass
+
+def shutdown(self):
+  self.cache.shutdown()
+```
