@@ -173,13 +173,24 @@ class NetworkEndpoint(Enum):
     DOWNLOAD_CONFIG_SPECS = "download_config_specs"
     GET_ID_LISTS = "get_id_lists"
     ALL = "all"
-```
 
-### DataSources
-```py
-class DataSource(str, Enum):
-    DATASTORE = "datastore"
-    BOOTSTRAP = "bootstrap"
-    NETWORK = "network"
-    STATSIG_NETWORK = "statsig_network"
+class ProxyConfig:
+    def __init__(
+        self,
+        protocol: NetworkProtocol,
+        proxy_address: str,
+        # Websocket worker failover config
+        max_retry_attempt: Optional[int] = None, # default is 10
+        retry_backoff_multiplier: Optional[int] = None, # default is # default is 5
+        retry_backoff_base_ms: Optional[int] = None, # default is 10,000 ms
+        # Push worker failback to polling threshold, fallback immediate set 0,
+        # n means fallback after n retry failed
+        push_worker_failover_threshold: Optional[int] = None, # default is 4, about 30 minutes
+    ):
+        self.proxy_address = proxy_address
+        self.protocol = protocol
+        self.max_retry_attempt = max_retry_attempt
+        self.retry_backoff_multiplier = retry_backoff_multiplier
+        self.retry_backoff_base_ms = retry_backoff_base_ms
+        self.push_worker_failover_threshold = push_worker_failover_threshold
 ```
