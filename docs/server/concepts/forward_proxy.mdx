@@ -90,6 +90,7 @@ r retry is 10 times.
 
 #### Coordinate SDK DataAdapater / DataStore with Forward Proxy Cache service
 In order to increase reliability of SDK during initialization, setup DataStore will help in case Forward Proxy is not available when initialized. If DataStore is set, SDK will try initailize with values from dataStore, and sync (listen or polling depends on setup) from forward proxy in background after initialization. It's recommended for SDK and Forward Proxy to share the same cache service for consistency and reduce cache I/O. 
+
 Example on DataStore setup in python:
 ``` py
 class DataAdapter(IDataStore):
