@@ -17,7 +17,7 @@ The permissions Statsig requires are:
 - Read, Write, Delete access in a Statsig Staging environment you specify
   - In Bigquery this is a dataset
   - In Snowflake and Redshift this is a schema
-  - In Databricks this is a database
+  - In Databricks this is a database, or a database within a separate workspace with a scoped delta share to your production datasets
 
 Best practice is to create a new dataset for Statsig Staging to make sure this environment is isolated. Statsig only modifies tables it creates as part of analysis.
 
