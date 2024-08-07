@@ -21,6 +21,7 @@ import {
   LocalOverrides,
   StableID,
   ParameterStore,
+  Instances,
 } from "./Templates/index.mdx";
 
 import Install from "./Android/_install.mdx";
@@ -38,6 +39,7 @@ import { GetStableID, OverrideStableID } from "./Android/_stableID.mdx";
 import { Snippets as ManualExposureSnippets } from "./Android/_manualExposures.mdx";
 import GetParameterStore from "./Android/_getParameterStore.mdx";
 import GetParameter from "./Android/_getParameter.mdx";
+import MultiInstance from "./Android/_multiInstance.mdx";
 
 export const Result = SDKDocsBuilder(
   { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
@@ -77,6 +79,10 @@ export const Result = SDKDocsBuilder(
     [
       StableID,
       { getSnippet: <GetStableID />, overrideSnippet: <OverrideStableID /> },
+    ],
+    [
+      Instances,
+      { example: <MultiInstance /> }
     ],
     [FAQ, { faqs: <MoreFAQs /> }],
   ],
