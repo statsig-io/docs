@@ -2,7 +2,7 @@
 title: ID Resolution
 slug: /statsig-warehouse-native/features/id-resolution
 sidebar_label: ID Resolution
-description: Map cross-platform IDs in experiment analysis
+description: Map cross-platform IDs in experiment analysis and analyze anonymous user experiments
 ---
 
 ## The identity challenge
@@ -14,7 +14,9 @@ In these scenarios, the experimenter will have a logged-out identifier (e.g. a c
 Because business metrics are generally calculated at the grain of userID, it's common to want to run an experiment where the unit of analysis is a logged out identifier, but the evaluation criteria
 for the experiment is a logged-in metric (e.g. subscription rate, or estimated Lifetime Value).
 
-Many people handle this probably in an ad-hoc way. Usually, this means running ad-hoc queries to join and deduplicate exposures, or tagging userID metrics with an associated logged-out identifier. Statsig Warehouse Native offers an easy solution for connecting identifiers across this boundary in a centralized and reproducible way.
+Many people handle this probably in an ad-hoc way. Usually, this means running ad-hoc queries to join and deduplicate exposures, or tagging userID metrics with an associated logged-out identifier. This is tractable, but leads to you having to manage and debug fairly complex queries resolving identifiers across timestamps and joining mapping tables to your source-of-truth fact tables.
+
+Statsig Warehouse Native offers an easy, no-code solution for connecting identifiers across this boundary in a centralized and reproducible way.
 
 ## Supported Mapping Schema
 
