@@ -159,6 +159,28 @@ module.exports = {
                 },
               },
               {
+                tagName: 'script',
+                attributes: {
+                  type: 'text/javascript',
+                  async: true,
+                  src: 'https://www.googletagmanager.com/gtag/js?id=G-EM5RHE1RHW',
+                  // Add other attributes as needed, like 'nonce' if you use it
+                }
+              },
+              {
+                tagName: "co-pilot",
+                attributes: {
+                  copilot_id: "6f8EwgjiL",
+                },
+              },
+              {
+                tagName: "script",
+                attributes: {
+                  type: "module",
+                  src: "https://ui.scoutos.com/copilot.js"
+                },
+              },
+              {
                 tagName: "script",
                 attributes: {
                   src: "https://api.statsigcdn.com/v1/download_config_specs/client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps.js",
