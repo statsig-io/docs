@@ -1,0 +1,27 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
+StatsigClient client = new StatsigClient();
+client.initializeAsync(application, sdkKey, user, callback, options);
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+var client: StatsigClient = StatsigClient()
+client.initialize(application, sdkKey, user, options)
+```
+
+  </TabItem>
+</Tabs>

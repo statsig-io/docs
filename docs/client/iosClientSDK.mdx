@@ -21,6 +21,7 @@ import {
   LocalOverrides,
   StableID,
   ParameterStore,
+  Instances,
 } from "./Templates/index.mdx";
 
 import Install from "./iOS/_install.mdx";
@@ -39,6 +40,7 @@ import * as StatsigListening from "./iOS/_statsigListening.mdx";
 import { GetStableID, OverrideStableID } from "./iOS/_stableID.mdx";
 import GetParameterStore from "./iOS/_getParameterStore.mdx";
 import GetParameter from "./iOS/_getParameter.mdx";
+import MultiInstance from "./iOS/_multiInstance.mdx";
 
 export const Result = SDKDocsBuilder(
   { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
@@ -80,6 +82,10 @@ export const Result = SDKDocsBuilder(
       { getSnippet: <GetStableID />, overrideSnippet: <OverrideStableID /> },
     ],
     [StatsigListening, {}],
+    [
+      Instances,
+      { example: <MultiInstance /> }
+    ],
     [FAQ, { faqs: <MoreFAQs /> }],
   ],
   toc
