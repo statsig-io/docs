@@ -38,7 +38,7 @@ These user metrics can be very useful in understanding the long-term behavior of
 
 # Customizing the DAU Definition
 
-You can customize the definition of DAU within the Statsig Console and specify or exclude a set of Statsig and custom events.  You can find this in Metrics > Charts at the top of the page (Current Active User Definition).  If you have privileges, you can edit this.
+You can customize the definition of DAU within the Statsig Console and specify or exclude a set of Statsig and custom events.  You can find this in the Settings button > Project Dropdown > Project Info at the top right of the page.  If you have privileges, you can edit this.
 
 ![edit_active_user_definition](https://user-images.githubusercontent.com/77478319/137034274-e41b2117-fe7e-4809-82a8-5e9be4be183f.png)
 
