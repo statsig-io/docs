@@ -35,37 +35,9 @@ In the example below, the rises in *product view count* and *purchase event coun
 
 ## Bots & Filtering
 
-One common source of frustration when monitoring gate traffic is online bot traffic from sources like search engines and AI scrapers. These can make it harder to see how many "real" users are seeing your changes. Statsig has bot filtering in place to remove known bots from your exposures data, meaning the exposure counts you see and any analytics you do will be clean. You won't have to worry if the data you're looking at is influenced by bots or real users.
+:::important
 
-Bot filtering is done on all types of exposures data, not just feature flags. You can be sure that anytime you're looking at analysis results for feature flags, holdouts, layers, and experiments bots have been filtered out. This ensures that you're looking at results for users and not web scrapers in your rollouts.
+Information on Bots & Filtering has been moved to its [own page](../feature-flags/bots.md)
 
-Once bot data is filtered from your exposures data, it will not be viewable in the Statsig console. We're exploring how to better surface this information in the future. Please reach out via slack support if you have additional questions.
-
-### Controlling Gates and Experiments for Bots
-
-By design, Statsig doesn't block bots from getting your feature flags and experiments. We simply filter out their exposures from any analysis data and the count of exposures that you see in Pulse. There are no changes in the API or SDK results for bots, and they will be served configs and variants following your setup.
-
-You might, however, want to purposefully restrict what features bots see. For example, you're testing a new homepage variant but you don't want search engines to index it yet. In this case, there is an easy way to do so via Segments:
-
-1. Create a "Known Bots" Segment for your project:
-
-    This common segment can then be used for all your launches. You can find our list of known bot browser names here: NOTE, TO ADD.
-  
-    ![Screenshot 2024-08-05 at 11 15 24 AM](https://github.com/user-attachments/assets/bf86f861-4cf6-4b5d-a402-d554087fd5b1)
-
-2. Apply the Segment to your Gates and Experiments:
-
-    For Gates, create a new rule that controls the bot experience.
-
-    ![Screenshot 2024-08-05 at 11 25 35 AM](https://github.com/user-attachments/assets/d6b51af0-ecfc-49c4-9e48-73bd276836ef)
-
-    For experiments, create a Conditional Override that forces units in this segment to receive whatever version you want.
-
-    ![Screenshot 2024-08-05 at 11 17 32 AM](https://github.com/user-attachments/assets/97ec1bcd-6f03-4b51-b0fe-9859f11559b1)
-
-### Opting Out of Bot Filtering
-
-Bot filtering is done at the project level. Admins can opt out of filtering through their console settings.
-
-![image](https://github.com/user-attachments/assets/4c171000-6733-4136-a383-4cfd2b738ccb)
+:::
 
