@@ -122,8 +122,25 @@ curl \
   "https://api.statsig.com/v1/check_gate"
 ```
 
+##### Check multiple Feature Gate(s) {#check-multiple-feature-gates}
+
+```bash
+curl \
+  --header "statsig-api-key: <YOUR-SDK-KEY>" \
+  --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"user": { "userID": "42" },"gateNames":["<YOUR-GATE-NAME-1>", "<YOUR-GATE-NAME-2>"}' \
+  "https://api.statsig.com/v1/check_gate"
+```
+
+
 Response:
-`{"name":"YOUR-GATE-NAME","value":false,"rule_id":"123","group_name":"group123"}`
+```
+{
+  {"name":"YOUR-GATE-NAME-1","value":false,"rule_id":"123","group_name":"group123"},
+  {"name":"YOUR-GATE-NAME-2","value":false,"rule_id":"123","group_name":"group123"}
+}
+```
 
 ##### Get a Dynamic Config value {#get-a-dynamic-config-value}
 
