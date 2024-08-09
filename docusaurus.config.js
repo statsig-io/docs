@@ -212,10 +212,6 @@ module.exports = {
             from: "/guides/first-shopify-abtest",
           },
           {
-            to: "/guides/webflow-sidecar-ab-test",
-            from: "/guides/webflow-sidecar-ab-test",
-          },
-          {
             to: "/product-analytics/drilldown",
             from: "/mex/drilldown",
           },
