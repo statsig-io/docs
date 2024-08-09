@@ -47,6 +47,20 @@ This approach can also be useful if you are building a mobile app and want to bu
 
 <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-bootstrap.tsx" />
 
+If you are using a server SDK to bootstrap your js/react app, you will need to make some updates to how your server SDK generates values.  One of the optimizations we made with this new js-client SDK was to remove the `sha256` library for hashing gate/experiment names.  Instead, we use a `djb2` hash.  By default, all server SDKs generate `sha256` hashes of gate/experiment names in the `getClientInitializeResponse` method.  You will need to set the hash algorithm parameter to that method call to `"djb2"` instead in order to bootstrap this new client SDK.  One of the benefits to this hashing algorithm is it will make the entire payload smaller as well, so its a net win on package size, speed, and payload size for the SDK.
+
+For example, if you are bootstrapping from a nodejs app, you will need to do:
+
+```js
+statsig.getClientInitializeResponse(
+  user,
+  '[client-key]',
+  {
+    hash: 'djb2',
+  },
+);
+```
+
 ### Prefetching
 
 <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-prefetch.tsx" />
