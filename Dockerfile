@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FROM node:16-alpine as builder
+FROM node:18-alpine as builder
 RUN apk add --no-cache git
 
 WORKDIR /usr/app
