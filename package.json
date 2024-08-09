@@ -20,7 +20,7 @@
     "@docusaurus/preset-classic": "2.4.3",
     "@docusaurus/theme-common": "2.4.3",
     "@mdx-js/react": "^1.6.22",
-    "@easyops-cn/docusaurus-search-local": "^0.44.4",
+    "@easyops-cn/docusaurus-search-local": "^0.37.2",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.15.3",
