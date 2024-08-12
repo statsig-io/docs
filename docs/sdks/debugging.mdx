@@ -32,6 +32,7 @@ For client SDKs, these reasons for the value you are seeing can be:
 - `LocalOverride`: from an override set locally on the SDK via an override API
 - `Unrecognized`: the sdk was initialized, but this config did not exist in the set of values
 - `Error`: an unknown error has occured, and was logged to statsig servers
+- `Error:NoClient`: No client was found in StatsigContext. Likely a call to a Statsig hook outside of the StatsigProvider. (js-client-only)
 - `NetworkNotModified`: the network response came back, but the cached values were already up to date for this user
 
 Newer versions of the sdk will contain two tags: one regarding the initialization state of the sdk, and the other qualifying different sources for that value.
