@@ -242,3 +242,40 @@ curl \
   "https://events.statsigapi.net/v1/log_custom_exposure"
 ```
 
+##### Secondary Exposures
+```
+// Secondary Exposure Events
+gate: string, // Name of holdout, targeting gate, etc.
+gateValue: string, // "true" or "false"
+ruleID: string,
+```
+
+Secondary exposures are logged alongside other exposure events. These are generally exposures for holdouts or targeting gates. They can be accessed from the SDK-evaluated `DynamicConfig`.
+
+_example experiment exposure with secondary exposures_
+```bash
+curl \
+  --header "statsig-api-key: <YOUR-SDK-KEY>" \
+  --header "Content-Type: application/json" \
+  --request POST \
+  --data '{
+  "exposures": [
+    {
+      "user": {
+        "userID": "user_id_12345"
+      },
+      "gateName": "saleBanner",
+      "group": "Controls Access",
+      "passes": true,
+      "secondaryExposures": [
+        {
+          "gate": "test_holdout",
+          "gateValue": "true",
+          "ruleID": "3CQWjvi4HXcHsGIuuffKoe:10.00:2"
+        }
+      ]
+    }
+  ]
+}' \
+  "https://events.statsigapi.net/v1/log_custom_exposure"
+```
