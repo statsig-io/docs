@@ -39,7 +39,7 @@ Statsig allows you to perform individual or group analytics. This enables you to
 
 Under the “Measured as” section, you can further refine your analysis by choosing between total conversions or unique conversions. Under total conversions, users can re-enter the flow every time they trigger the start event. Under unique conversions, the users will only show up in the path once. 
 
-Next, you can specify the duration of your observation. Defaulted to 1 hour, you can change the length of time users have to convert to the next event. This is can help validate if users are passing through flows at a pace you expect
+Next, you can specify the duration of your observation. Defaulted to 1 hour, you can change the length of time users have to convert to the next event. This is can help validate if users are passing through flows at a pace you expect.
 
 You can gain additional context by breaking the User Journey out by an event property. This allows you to choose a specific event property and view the user journey granularity expanded by the different property values of the select property. This is similar to a group-by. For example, you can view user journeys split out by operating system.  
 
