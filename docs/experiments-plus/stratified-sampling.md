@@ -25,7 +25,7 @@ If you choose a metric to stratify using, we'll use that to balance the group.
 ![image](https://github.com/statsig-io/docs/assets/31516123/0cfc499d-4fdf-44a8-ba2a-3537ba5bb904)
 
 If you instead choose an attribute or a classification (e.g. S, M, L, XL) we'll use that to balance the group. 
-- On Statsig Cloud, you'll upload a CSV (in Beta)
+- On Statsig Cloud, you'll upload a CSV
 - On Statsig Warehouse Native, you'll use Entity Properties
 ![image](https://github.com/statsig-io/docs/assets/31516123/102a839f-37fd-4443-807a-4b269f137490)
 
