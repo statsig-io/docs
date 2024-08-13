@@ -69,7 +69,7 @@ The example below shows creating a metric for **Items per Cart**. You can track 
 ![Screen Shot 2023-09-12 at 1 30 28 PM](https://github.com/statsig-io/docs/assets/101903926/cf6e6777-a154-4eeb-9a2d-81893810a31d)
 
 :::info A Word of Caution
-In experimentation, ratio metrics are a frequent source of misleading information. It's possible to see an increase in **click through rate** alongside a net _decrease_ in total clicks (the opposite may also happen). This situation can occur if the number of unique users viewing a button (denominator) decreases. As a best practice, Statsig recommends tracking the numerator and denominator as independent metrics when monitoring ratio indicator. Ratio metrics are often subject to statistical noise and can be tricky to use for obtaining a statistically significant result.
+In experimentation, ratio metrics are a frequent source of misleading information. It's possible to see an increase in **click through rate** alongside a net _decrease_ in total clicks (the opposite may also happen). This situation can occur if the number of unique users viewing a button (denominator) decreases. As a best practice, Statsig recommends tracking the numerator and denominator as independent metrics when monitoring ratio indicator. Ratio metrics are often subject to statistical noise and can be tricky to use for obtaining a statistically significant result. In addition, for the numerator in ratios, we exclude units which don't have a denominator value.
 :::
 
 ### 5. Funnel Metrics
