@@ -39,6 +39,8 @@ You can also combine multiple events into a single step. This is especially usef
 
 Repeat these steps as needed. You can define a step as a combination of up to 5 events.
 
+![image](https://github.com/user-attachments/assets/59e030ba-5e99-499a-b917-2e54a3a15b72)
+
 
 
 ### **Filtering to the first time a user performed an event[](https://docs.statsig.com/product-analytics/funnels#filtering-to-the-first-time-a-user-performed-an-event)**
@@ -47,6 +49,8 @@ It is sometimes useful to understand the first-time user experience, which may h
 
 1. Click “…” next to the event in question.
 2. Select the “**Apply First-time Filter**”.
+
+![image](https://github.com/user-attachments/assets/ace0f8cd-986a-4ac3-97df-68c206161091)
 
 
 ### **Renaming Steps[](https://docs.statsig.com/product-analytics/funnels#renaming-steps)**
@@ -121,8 +125,11 @@ Under each funnel step, you’ll see a quick summary that helps demystify your f
 
 Next, in the conversion table, you’ll find the percentage and number of units that have converted relative to the first step of the funnel and relative to the previous step. Again, this feature is particularly useful when grouping by a certain property in which you want to compare conversions between user groups. 
 
+![image](https://github.com/user-attachments/assets/52e661ee-0b54-43aa-98a5-c832d14b83d8)
 
 ## User Exploration
 
 Finally, by clicking any bar in the funnel, you have the option to download all users in that segment who dropped off or converted as a CSV file. You also have the option to view session streams to get a granular, event-by-event understanding of a user’s experience before and after the data point in question.
+
+![image](https://github.com/user-attachments/assets/d699ddcf-acd7-4910-aff8-204a6c30b308)
 
