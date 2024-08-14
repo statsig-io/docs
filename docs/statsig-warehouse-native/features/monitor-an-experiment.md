@@ -3,6 +3,7 @@ title: Experiment Diagnostics
 slug: /statsig-warehouse-native/features/monitor-an-experiment
 sidebar_label: Diagnostics
 description: Monitor the health of experiments
+displayed_sidebar: cloud
 ---
 
 Once you turn on your experiment, you can monitor the health of your experiment and view the exposures for the control and variants groups.
@@ -17,7 +18,7 @@ To monitor the status of your experiment,
 
   ![Diagnostic health check image](https://github.com/statsig-io/docs/assets/5475308/8b557e40-2473-45e1-ac0c-bd61a2eb5208)
 
-  - **Pulse metrics available** monitors availability of Pulse results, which are expected on the day after the experiment starts.
+  - **Pulse metrics available** monitors availability of Pulse results, which are expected on the day after the experiment starts assuming your metrics have landed.
   - **Exposures are balanced** checks that the number of units exposed in each group matches the expected allocation. The Sample Ratio Mismatch (SRM) check is performed using a Chi-Squared test of independence. It is possible for experiments to temporarily show small imbalances simply due to the randomness of the user assignment. These will often resolve on their own after a couple days, while true SRM imbalances that originate from systematic assignment/logging problems tend to persist over time. The following thresholds are used for displaying SRM alerts:
     - **p-value between 0.001 and 0.01**: Warning (yellow) for possible imbalance. The p-value is not low enough to confidently say that there is a real imbalance. In this case the recommendation is to wait and check again the next day.
     - **p-value < 0.01 and group size differs from expected size by less than 0.1% absolute**: Warning (yellow) indicating that an imbalance is possible, but the impact to the experiment is expected to be small. This scenario typically occurs in large web experiments (1M+ users) where small variations in performance across groups can cause a small fraction of exposures to be dropped for certain groups more than others.
@@ -46,3 +47,4 @@ To monitor the status of your experiment,
     - **p-value < 0.001**: Alert (red) meaning that there is likely a problem with deduplication being applied more to one of the treatment groups and experiment results may not be trustworthy.
 
   - **Pre-experimental Bias Check** In some cases, users in two experiment groups can have meaningfully different average behaviors before your experiment applies any intervention to them. If this difference is maintained after your experiment starts, it's possible that experiment analysis will attribute that pre-existing difference to your intervention. This can make a result seem more or less "good" or "bad" than it really is. CUPED is helpful in addressing this bias, but can't totally account for it. [Learn more](https://docs.statsig.com/stats-engine/pre-experiment-bias).
+  - **Outlier Check** In some cases, your metrics can be materially influenced by a few outliers. This check will alert you when this is the case, so you can evaluate if using tools like Winsorization or Capping is appropriate. It will also make sure capping is not unduly influencing results if already applied.

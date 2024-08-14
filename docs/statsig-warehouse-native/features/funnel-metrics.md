@@ -3,6 +3,7 @@ title: Funnel Metrics
 slug: /statsig-warehouse-native/features/funnel-metrics
 sidebar_label: Funnel Metrics
 description: Use funnel metrics to understand user journeys
+displayed_sidebar: cloud
 ---
 
 Funnel metrics are highly customizable Statsig Warehouse Native. You can easily set up a user journey and understand how your changes influence each step - at the user level, or at the session level.

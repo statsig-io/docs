@@ -5,9 +5,13 @@ slug: /custom_proxy
 
 ## Overview
 
-Instead of sending API requests directly to Statsig, you can set up your own environment that proxies requests from your custom domain name to Statsig.
+Instead of sending API requests directly to Statsig, you can set up your own environment that proxies requests from your custom domain name to Statsig.  This makes it less likely for tracking blockers to intercept your APIs, and allows you to capture more data.
 
 There are many ways to set up custom proxies. We are showing instructions for a few common service providers here.
+
+:::info
+If you just want statsig to manage your proxy, you can use our [Managed API Proxy](/infrastructure/managed-proxy)
+:::
 
 ## Approaches
 
@@ -127,9 +131,9 @@ Once you have a proxy setup, you will need to take its URL and apply it to the S
 The following is pseudo code of what initializing with a proxy looks like:
 
 ```typescript
-Statsig.initialize(mySdkKey, myUser, { api: "https://my-statsig-proxy.com" });
+Statsig.initialize(mySdkKey, myUser, { api: "https://my-statsig-proxy.com/v1" });
 ```
 
 :::note
-Depending on the SDK type, version, and proxy approach you are using, you may need to append `'/v1'` to the end of your api string. eg `"https://my-statsig-proxy.com/v1"`
+Depending on the SDK type, version, and proxy approach you are using, you may not need to append `'/v1'` to the end of your api string. eg `"https://my-statsig-proxy.com"`
 :::

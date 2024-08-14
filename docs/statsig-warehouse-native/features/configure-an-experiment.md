@@ -65,6 +65,8 @@ Statsig has many settings you can configure in your experiment. Defaults for the
   - This is useful if you want to reduce cost and runtime, and you only care about the overall effect
 - Filter exposures by qualifying event
   - Only applicable in Analyze-only experiments
+- Filter assignment source
+  - Add optional, additional filters on the experiment's assignment source. By default, the assignment source is filtered to the experiment and groups being analyzed. This setting can be used to make the primary scorecard ignore known bad actors, or analyze a sub-population in the main scorecard.
 
 ## Start The Experiment
 

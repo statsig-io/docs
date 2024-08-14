@@ -20,10 +20,13 @@ import {
   ClientInitResponse,
   LocalOverrides,
   Reference,
+  ProxyConfigs,
+  Instances,
 } from "./Templates/index.mdx";
 
 import Preamble from "./java/_preamble.mdx";
 import Install from "./java/_install.mdx";
+import InstallBeta from "./java/_installBeta.mdx";
 import Initialize from "./java/_initialize.mdx";
 import CheckGate from "./java/_checkGate.mdx";
 import GetConfig from "./java/_getConfig.mdx";
@@ -36,6 +39,8 @@ import ShutdownSnippet from "./java/_shutdown.mdx";
 import OverridesSnippet from "./java/_localOverrides.mdx";
 import * as ReferenceSnippets from "./java/_reference.mdx";
 import ClientInitResponseSnippet from "./java/_clientInitResponse.mdx";
+import ForwardProxyExample from "./java/_forwardProxyExample.mdx";
+import MultiInstanceExample from "./java/_multiInstanceExample.mdx";
 
 export const Result = SDKDocsBuilder(
   { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
@@ -83,6 +88,10 @@ export const Result = SDKDocsBuilder(
         snippet: <OverridesSnippet />,
       },
     ],
+    [Instances, { constructor: <MultiInstanceExample /> }],
+    [ProxyConfigs, {addedInVersion: "0.24.0", includeAboveVersion: false, installation: <InstallBeta />, code: 
+      <ForwardProxyExample />
+    }],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
   ],

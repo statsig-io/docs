@@ -30,3 +30,4 @@ Feature Gates Policy grants organization admins the ability to:
 Organization Gate Policy can be managed by visiting the **Organization Info** page at the bottom of your [Org Settings page](https://console.statsig.com/organization/settings). Only organization admins have the ability to modify these settings.
 
 ![Screen Shot 2024-03-26 at 1 23 59 PM](https://github.com/statsig-io/docs/assets/101903926/d34d31ca-6731-418d-b3d0-39d13ac8f2a1)
+

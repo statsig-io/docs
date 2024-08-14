@@ -38,7 +38,7 @@ After installation, you will need to initialize the SDK using a Client SDK key f
 These Client SDK Keys are intended to be embedded in client side applications. If need be, you can invalidate or create new SDK Keys for other applications/SDK integrations.
 
 :::info
-Do NOT embed your Server Secret Key in client side applications
+Do NOT embed your Server Secret Key in client-side applications, or expose it in any external-facing documents. However, if you accidentally expose it, you can create a new one in the Statsig console.
 :::
 
 In addition to the SDK key, you should also pass in a [Statsig user](#statsig-user) for feature gate targeting and experimentation grouping purposes.

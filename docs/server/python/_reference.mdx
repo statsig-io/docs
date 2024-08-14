@@ -29,20 +29,118 @@ class StatsigOptions:
 
     def __init__(
         self,
-        api: str = "https://statsigapi.net/v1/",
+        api: Optional[str] = None,
+        api_for_download_config_specs: Optional[str] = None,
+        api_for_get_id_lists: Optional[str] = None,
+        api_for_log_event: Optional[str] = None,
         tier: Union[str, StatsigEnvironmentTier, None] = None,
         init_timeout: Optional[int] = None,
         timeout: Optional[int] = None,
-        rulesets_sync_interval: int = 10,
-        idlists_sync_interval: int = 60,
+        rulesets_sync_interval: int = DEFAULT_RULESET_SYNC_INTERVAL,
+        idlists_sync_interval: int = DEFAULT_IDLIST_SYNC_INTERVAL,
         local_mode: bool = False,
         bootstrap_values: Optional[str] = None,
         rules_updated_callback: Optional[Callable] = None,
-        event_queue_size: Optional[int] = 500,
+        event_queue_size: Optional[int] = DEFAULT_EVENT_QUEUE_SIZE,
         data_store: Optional[IDataStore] = None,
-        idlists_thread_limit: int = 3,
-        logging_interval: int = 60
+        idlists_thread_limit: int = DEFAULT_IDLISTS_THREAD_LIMIT,
+        logging_interval: int = DEFAULT_LOGGING_INTERVAL, #deprecated
+        disable_diagnostics: bool = False,
+        custom_logger: Optional[OutputLogger] = None,
+        enable_debug_logs = False,
+        disable_all_logging = False,
+        evaluation_callback: Optional[Callable[[Union[Layer, DynamicConfig, FeatureGate]], None]] = None,
+        retry_queue_size: int = DEFAULT_RETRY_QUEUE_SIZE,
+        proxy_configs: Optional[Dict[NetworkEndpoint, ProxyConfig]] = None,
+        fallback_to_statsig_api: Optional[bool] = False,
+        initialize_sources: Optional[List[DataSource]] = None,
+        config_sync_sources: Optional[List[DataSource]] = None,
     ):
+```
+
+### FeatureGate
+
+```py
+class FeatureGate:
+
+    def get_value(self):
+        """Returns the underlying value of this FeatureGate"""
+
+    def get_name(self):
+        """Returns the name of this FeatureGate"""
+
+    def get_evaluation_details(self):
+        """Returns the evaluation detail of this FeatureGate"""
+```
+
+### DynamicConfig
+
+```py
+class DynamicConfig:
+    def get(self, key, default=None):
+        """Returns the value of the config at the given key
+        or the provided default if the key is not found
+        """
+
+    def get_typed(self, key, default=None):
+        """Returns the value of the config at the given key
+        iff the type matches the type of the provided default.
+        Otherwise, returns the default value
+        """
+
+    def get_value(self):
+        """Returns the underlying value of this DynamicConfig"""
+
+    def get_name(self):
+        """Returns the name of this DynamicConfig"""
+
+    def get_evaluation_details(self):
+        """Returns the evaluation detail of this DynamicConfig"""
+```
+
+### Layer
+
+```py
+class Layer:
+    def get(self, key, default=None):
+        """Returns the value of the layer at the given key
+        or the provided default if the key is not found
+        """
+
+    def get_typed(self, key, default=None):
+        """Returns the value of the layer at the given key
+        iff the type matches the type of the provided default.
+        Otherwise, returns the default value
+        """
+
+    def get_name(self):
+        """Returns the name of this Layer"""
+
+    def get_values(self):
+        """Returns all the values in this Layer but does not trigger an exposure log"""
+
+    def get_evaluation_details(self):
+        """Returns the evaluation detail of this Layer"""
+```
+
+### EvaluationDetails
+
+```py
+class EvaluationDetails:
+    reason: EvaluationReason
+    config_sync_time: int
+    init_time: int
+    server_time: int
+
+class EvaluationReason(str, Enum):
+    network = "Network"
+    local_override = "LocalOverride"
+    unrecognized = "Unrecognized"
+    uninitialized = "Uninitialized"
+    bootstrap = "Bootstrap"
+    data_adapter = "DataAdapter"
+    unsupported = "Unsupported"
+    error = "error"
 ```
 
 ### DataStore
@@ -60,4 +158,39 @@ class IDataStore:
 
     def should_be_used_for_querying_updates(self, key: str) -> bool:
         return False
+```
+
+### ForwardProxy - ProxyConfig
+```py
+class NetworkProtocol(Enum):
+    HTTP = "http"
+    GRPC = "grpc"
+    GRPC_WEBSOCKET = "grpc_websocket"
+
+
+class NetworkEndpoint(Enum):
+    LOG_EVENT = "log_event"
+    DOWNLOAD_CONFIG_SPECS = "download_config_specs"
+    GET_ID_LISTS = "get_id_lists"
+    ALL = "all"
+
+class ProxyConfig:
+    def __init__(
+        self,
+        protocol: NetworkProtocol,
+        proxy_address: str,
+        # Websocket worker failover config
+        max_retry_attempt: Optional[int] = None, # default is 10
+        retry_backoff_multiplier: Optional[int] = None, # default is # default is 5
+        retry_backoff_base_ms: Optional[int] = None, # default is 10,000 ms
+        # Push worker failback to polling threshold, fallback immediate set 0,
+        # n means fallback after n retry failed
+        push_worker_failover_threshold: Optional[int] = None, # default is 4, about 30 minutes
+    ):
+        self.proxy_address = proxy_address
+        self.protocol = protocol
+        self.max_retry_attempt = max_retry_attempt
+        self.retry_backoff_multiplier = retry_backoff_multiplier
+        self.retry_backoff_base_ms = retry_backoff_base_ms
+        self.push_worker_failover_threshold = push_worker_failover_threshold
 ```

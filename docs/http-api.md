@@ -44,10 +44,13 @@ There are just a few primitives that you need to get going on your way. The APIs
 curl \
   --header "statsig-api-key: <YOUR-SDK-KEY>" \
   --header "Content-Type: application/json" \
+  --header "STATSIG-CLIENT-TIME: <local_time>" \
   --request POST \
   --data '{"events": [{"user": { "userID": "42" }, "time": 1616826986211, "eventName": "test_api_event"}]}' \
   "https://events.statsigapi.net/v1/log_event"
 ```
+
+> NOTE: STATSIG-CLIENT-TIME is required to normalize the timestamp for events against our server time. If you don't set this, you may see weird timestamps for client SDKs which can have extremely variable client clocks. Here is [an example](https://github.com/statsig-io/cpp-client-sdk/blob/a62df973388a56669de2a05f0630a65570a775bd/src/statsig/internal/network_service.hpp#L148) for how we do it in one of our SDKS.
 
 *Schema*
 ```ts
@@ -99,6 +102,7 @@ Useful when you are operating in multiple environments like dev, staging, produc
 curl \
   --header "statsig-api-key: <YOUR-SDK-KEY>" \
   --header "Content-Type: application/json" \
+  --header "STATSIG-CLIENT-TIME: <local_time>" \
   --request POST \
   --data '{"events": [{"user": { "userID": "42", "statsigEnvironment": {"tier": "staging"} }, "time": 1616826986211, "eventName": "test_api_event"}]}' \
   "https://events.statsigapi.net/v1/log_event"
@@ -118,8 +122,25 @@ curl \
   "https://api.statsig.com/v1/check_gate"
 ```
 
+##### Check multiple Feature Gate(s) {#check-multiple-feature-gates}
+
+```bash
+curl \
+  --header "statsig-api-key: <YOUR-SDK-KEY>" \
+  --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"user": { "userID": "42" },"gateNames":["<YOUR-GATE-NAME-1>", "<YOUR-GATE-NAME-2>"}' \
+  "https://api.statsig.com/v1/check_gate"
+```
+
+
 Response:
-`{"name":"YOUR-GATE-NAME","value":false,"rule_id":"123","group_name":"group123"}`
+```
+{
+  {"name":"YOUR-GATE-NAME-1","value":false,"rule_id":"123","group_name":"group123"},
+  {"name":"YOUR-GATE-NAME-2","value":false,"rule_id":"123","group_name":"group123"}
+}
+```
 
 ##### Get a Dynamic Config value {#get-a-dynamic-config-value}
 
@@ -178,10 +199,11 @@ You can log one or more exposure events with this API.
 user: object, // must have a userID or a customID to match with event data.
 experimentName: string,
 group: string,
+ruleID: string,
 time?: number | string, // unix timestamp, optional (request time used if not set)
 ```
 
-For each exposure object, the `"group"` parameter should match the name of your Test Group in your experiment config.
+For each exposure object, either the `"group"` or `"ruleID"` parameter must be provided. The `"group"` parameter should match the exact name of the group in your experiment's config.
 [![Test group name](https://user-images.githubusercontent.com/2018204/234073412-92dde2b7-7a5d-442f-a539-0c9c1b426a5a.png)
 
 _example experiment exposure_
@@ -201,11 +223,12 @@ curl \
 user: object, // must have a userID or a customID to match with event data.
 gateName: string,
 group: string,
+ruleID: string,
 passes: boolean,
 time?: number | string, // unix timestamp, optional (request time used if not set)
 ```
 
-For each exposure object, the `"group"` parameter should match the name of your Rule in your gate config.
+For each exposure object, either the `"group"` or `"ruleID"` parameter must be provided. The `"group"` should match the exact name of your Rule in your gate config.
 ![Gate Rule Name](https://user-images.githubusercontent.com/2018204/234073618-e5f1e3c0-9766-4bd3-b927-bad155bbea05.png)
 
 
@@ -219,3 +242,40 @@ curl \
   "https://events.statsigapi.net/v1/log_custom_exposure"
 ```
 
+##### Secondary Exposures
+```
+// Secondary Exposure Events
+gate: string, // Name of holdout, targeting gate, etc.
+gateValue: string, // "true" or "false"
+ruleID: string,
+```
+
+Secondary exposures are logged alongside other exposure events. These are generally exposures for holdouts or targeting gates. They can be accessed from the SDK-evaluated `DynamicConfig`.
+
+_example experiment exposure with secondary exposures_
+```bash
+curl \
+  --header "statsig-api-key: <YOUR-SDK-KEY>" \
+  --header "Content-Type: application/json" \
+  --request POST \
+  --data '{
+  "exposures": [
+    {
+      "user": {
+        "userID": "user_id_12345"
+      },
+      "gateName": "saleBanner",
+      "group": "Controls Access",
+      "passes": true,
+      "secondaryExposures": [
+        {
+          "gate": "test_holdout",
+          "gateValue": "true",
+          "ruleID": "3CQWjvi4HXcHsGIuuffKoe:10.00:2"
+        }
+      ]
+    }
+  ]
+}' \
+  "https://events.statsigapi.net/v1/log_custom_exposure"
+```

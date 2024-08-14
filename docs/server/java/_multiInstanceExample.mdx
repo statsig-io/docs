@@ -1,0 +1,28 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="java-server-sdk-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
+StatsigServer sdkInstance = new StatsigServer();
+Future initFuture = sdkInstance.initializeAsync(serverSecret, options);
+initFuture.get();
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+val statsigServer = StatsigServer.create()
+async { statsigServer.initialize(serverSecret, options) }.await()
+```
+
+  </TabItem>
+</Tabs>

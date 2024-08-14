@@ -31,7 +31,16 @@ You will find an **event_count** metric for each event type that you record in t
 ![Screen Shot 2022-08-01 at 1 48 36 PM](https://user-images.githubusercontent.com/1315028/182260179-a1bfc2b7-e6bf-4d5a-8c04-7acb344e5b35.gif)
 
 ## Event DAU Metric
-Like **event_count**, Statsig automatically creates an **event_dau** metric that measures the number of unique users who trigger a specific event on a given day. Each user can have a value of 1 or 0 corresponding to active or inactive, based on whether they trigger an event or not. This metric counts the number of users who are marked as active (or "1"). This metric works well in experimentation as it minimizes outliers, has tighter confidence intervals, and enables a simple measure to describe a user's breadth of activity across different events.
+Like **event_count**, Statsig automatically creates an **event_dau** metric that measures the number of unique users who trigger a specific event on a given day. Each user can have a value of 1 or 0 corresponding to active or inactive, based on whether they trigger an event or not, on a given day. This metric counts the number of users who are marked as active ("1") or not ("0").
+
+It's important to note that an **event_dau** metrics produces a value per user per day. When the metric is is aggregated for users across the duration of an experiment, it is known as the "Event Participation Rate" as this can be interpreted as the probability a unit is DAU for that event. As such, **event_dau** metrics are always between 0 and 1 for a user, since they are computed as "# Days with the Event" / "# Days Being Considered".
+
+> [!TIP]
+> Sometimes you might want a metric similar to **event_dau** but not normalized by a number of days.
+>
+> If you're looking for a metric that measures if the user has an event over the entire duration of the experiment, try a "Unit Count" custom metric with "One-Time Event" rollup mode.
+
+This metric works well in experimentation as it minimizes outliers, has tighter confidence intervals, and enables a simple measure to describe a user's breadth of activity across different events.
 
 Statsig computes the **event_dau** for each unit ID that you define in your Statsig Project. For example, given User IDs, **event_dau** counts the number of distinct users that triggered the event. Given Stable IDs, *event_dau* counts the number of distinct devices using your application.
 

@@ -37,7 +37,8 @@ module.exports = {
             {
               "Common Use Cases": [
                 "guides/aa-test",
-                "guides/first-shopify-abtest",
+                "guides/shopify-ab-test",
+                "guides/webflow-sidecar-ab-test",
                 "guides/sendgrid-email-abtest",
                 "guides/customer-io-email-abtest",
                 "guides/email-campaign-test",
@@ -61,6 +62,15 @@ module.exports = {
                 "guides/nextjs-page-router-feature-flags",
               ],
             },
+            {
+              type: "category",
+              label: "Migrate from LaunchDarkly",
+              link: {
+                type: "doc",
+                id: "guides/migrate-from-launchdarkly",
+              },
+              items: ["guides/open-source-script", "guides/ui-based-tool"],
+            },
             "guides/synchronized-launch",
             "guides/featureflags-or-experiments",
             "guides/experimentation-program",
@@ -71,7 +81,6 @@ module.exports = {
             "guides/testing",
             "guides/uptime",
             "guides/fomo",
-            "guides/migrate-from-launchdarkly",
             "guides/statsig-id-resolver",
           ],
         },
@@ -132,9 +141,9 @@ module.exports = {
           },
           items: [
             "dynamic-config/working-with",
+            "dynamic-config/enforce-schema",
             "dynamic-config/create-new",
             "dynamic-config/add-rule",
-            "dynamic-config/implement",
           ],
         },
         {
@@ -177,6 +186,7 @@ module.exports = {
             "experiments-plus/make-decision",
             "experiments-plus/overrides",
             "experiments-plus/stratified-sampling",
+            "experiments-plus/differential-impact-detection",
             "experiments-plus/abandon",
             "experiments-plus/ending-experiment",
             "experiments-plus/disable-group",
@@ -212,6 +222,7 @@ module.exports = {
             {
               "Methodologies Used": [
                 "stats-engine/methodologies/bonferroni-correction",
+                "stats-engine/methodologies/benjamini–hochberg-procedure",
                 "stats-engine/methodologies/cuped",
                 "stats-engine/methodologies/delta-method",
                 "stats-engine/methodologies/srm-checks",
@@ -232,7 +243,7 @@ module.exports = {
         },
         {
           type: "category",
-          label: "Landing Page Experiments",
+          label: "Landing Page Experiments (deprecated)",
           items: [
             "guides/landing-page-experiments/introduction",
             "guides/landing-page-experiments/setup",
@@ -254,16 +265,6 @@ module.exports = {
           ],
         },
         "holdouts/introduction",
-        {
-          type: "category",
-          label: "Autotune",
-          link: {
-            type: "doc",
-            id: "autotune/introduction",
-          },
-          items: ["autotune/setup", "autotune/monitoring"],
-        },
-
         {
           type: "category",
           label: "Pulse",
@@ -294,6 +295,8 @@ module.exports = {
             "product-analytics/drilldown",
             "product-analytics/funnels",
             "product-analytics/retention",
+            "product-analytics/distribution",
+            "product-analytics/user-journeys",
           ],
         },
         "product-analytics/dashboards",
@@ -357,10 +360,7 @@ module.exports = {
           items: [
             "statsig-warehouse-native/guides/quick-start",
             "statsig-warehouse-native/guides/running_a_poc",
-            // "statsig-warehouse-native/guides/connect",
-            // "statsig-warehouse-native/guides/experiments",
-            // "statsig-warehouse-native/guides/sql",
-            // "statsig-warehouse-native/guides/pulse",
+            "statsig-warehouse-native/guides/playground_eval",            
             "statsig-warehouse-native/guides/sdks",
             "statsig-warehouse-native/guides/aatest",
             "metrics/different-id",
@@ -375,20 +375,6 @@ module.exports = {
             },
           ],
         },
-        // {
-        //   type: "category",
-        //   label: "Features",
-        //   items: [
-        //     "statsig-warehouse-native/native-vs-cloud",
-        //     "statsig-warehouse-native/features/cohort-metrics",
-        //     "statsig-warehouse-native/features/entity-properties",
-        //     "statsig-warehouse-native/features/funnel-metrics",
-        //     "statsig-warehouse-native/features/monitor-an-experiment",
-        //     "statsig-warehouse-native/features/freshness",
-        //     "experiments-plus/stratified-sampling",
-        //     "statsig-warehouse-native/features/autotune",
-        //   ],
-        // },
         {
           type: "category",
           label: "Warehouse Integration",
@@ -474,6 +460,7 @@ module.exports = {
                 "statsig-warehouse-native/features/power-analysis",
                 "holdouts/introduction",
                 "experiments-plus/stratified-sampling",
+                "experiments-plus/differential-impact-detection",
                 "statsig-warehouse-native/features/targeting",
                 "statsig-warehouse-native/features/id-resolution",
                 "statsig-warehouse-native/features/filtering-exposures",
@@ -527,6 +514,7 @@ module.exports = {
                 {
                   "Methodologies Used": [
                     "stats-engine/methodologies/bonferroni-correction",
+                    "stats-engine/methodologies/benjamini–hochberg-procedure",
                     "stats-engine/methodologies/cuped",
                     "stats-engine/methodologies/delta-method",
                     "stats-engine/methodologies/srm-checks",
@@ -563,6 +551,20 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Autotune (Bandits)",
+      link: {
+        type: "doc",
+        id: "autotune/introduction",
+      },
+      items: [
+        "autotune/contextual-bandit",
+        "autotune/multi-armed-bandit",
+        "autotune/setup",
+        "autotune/monitoring",
+      ],
+    },
+    {
+      type: "category",
       label: "SDKs, APIs, Integrations",
       items: [
         "sdks/getting-started",
@@ -582,6 +584,7 @@ module.exports = {
                 "client/concepts/persistent_assignment",
                 "sdks/debugging",
                 "sdk-keys/target-apps",
+                "client/concepts/parameter-stores",
               ],
             },
             {
@@ -594,13 +597,12 @@ module.exports = {
               items: [
                 "client/javascript-mono/MigrationFromOldJsClient",
                 "client/javascript-mono/MigrationFromOldReact",
-                // "client/javascript-mono/IntegrationNextJs",
-                // "client/javascript-mono/IntegrationReact",
                 "client/javascript-mono/UsingEvaluationsDataAdapter",
                 "client/javascript-mono/ReactUsage",
                 "client/javascript-mono/ReactNativeUsage",
                 "client/javascript-mono/ExpoUsage",
                 "client/javascript-mono/NextJSUsage",
+                "client/javascript-mono/InitStrategies",
                 "client/javascript-mono/Examples",
               ],
             },
@@ -658,6 +660,7 @@ module.exports = {
                 "server/concepts/user",
                 "messages/serverRequiredUserID",
                 "server/concepts/data_store",
+                "server/concepts/forward_proxy",
                 "server/concepts/persistent_assignment",
                 "sdks/debugging",
                 "sdk-keys/target-apps",
@@ -685,6 +688,7 @@ module.exports = {
             id: "console-api/introduction",
           },
           items: [
+            "console-api/autogenerated",
             "console-api/gates",
             "console-api/segments",
             "console-api/dynamic-configs",
@@ -706,7 +710,6 @@ module.exports = {
                 "console-api/daily-reports-deprecated",
               ],
             },
-            "console-api/all-endpoints",
             "console-api/usage-billing",
             "console-api/rules",
           ],
@@ -868,6 +871,7 @@ module.exports = {
           items: [
             "infrastructure/statsig_ip_ranges",
             "infrastructure/statsig_domains",
+            "infrastructure/managed-proxy",
             "infrastructure/custom_proxy",
             "infrastructure/reliability-faq",
           ],

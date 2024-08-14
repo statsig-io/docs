@@ -24,7 +24,9 @@ You can enable this on experiment under Advanced Settings on the experiment setu
 If you choose a metric to stratify using, we'll use that to balance the group. 
 ![image](https://github.com/statsig-io/docs/assets/31516123/0cfc499d-4fdf-44a8-ba2a-3537ba5bb904)
 
-If you instead choose an attribute or a classification (e.g. S, M, L, XL) we'll use that to balance the group. On Statsig Cloud you'll upload a CSV, on Statsig Warehouse Native, you'll use Entity Properties.
+If you instead choose an attribute or a classification (e.g. S, M, L, XL) we'll use that to balance the group. 
+- On Statsig Cloud, you'll upload a CSV (in Beta)
+- On Statsig Warehouse Native, you'll use Entity Properties
 ![image](https://github.com/statsig-io/docs/assets/31516123/102a839f-37fd-4443-807a-4b269f137490)
 
 Once you press the Stratify button, we'll analyze a set of salts and pick the best one. 
@@ -41,3 +43,9 @@ When you use the Statsig SDK for assignment, it takes care of randomization. Whe
 
 ![image](https://user-images.githubusercontent.com/31516123/230964234-8cc81f66-f4f8-4f37-b6df-6d36d0d7ab98.png)
 
+
+## Additional reading
+
+[Morgan and Rubin 2012](https://projecteuclid.org/journals/annals-of-statistics/volume-40/issue-2/Rerandomization-to-improve-covariate-balance-in-experiments/10.1214/12-AOS1008.full) walks through the history, the philosophy, and the proofs of re-randomization, especially how re-randomization reduces the randomization variance of the difference in means. It's worth noting that "Standard asymptotic-based analysis procedures that do not take the re-randomization into account will be statistically conservative" was called out in the paper. However, to maintain consistent and comparable results across different methods, we stay conservative with the t-test.
+
+[Lin & Ding 2019](https://arxiv.org/abs/1906.11291) is another interesting read for your reference.

@@ -161,12 +161,6 @@ module.exports = {
               {
                 tagName: "script",
                 attributes: {
-                  src: "/js/datadog.js",
-                },
-              },
-              {
-                tagName: "script",
-                attributes: {
                   src: "https://api.statsigcdn.com/v1/download_config_specs/client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps.js",
                 },
               },
@@ -179,7 +173,7 @@ module.exports = {
               {
                 tagName: "script",
                 attributes: {
-                  src: "https://cdn.jsdelivr.net/npm/@statsig/js-client@latest/build/statsig-js-client+session-replay+web-analytics.min.js",
+                  src: "https://cdn.jsdelivr.net/npm/@statsig/js-client@1/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=client-c1fEjmA7JETNimhlFhKf2M1qMRFNkl9ipDfxYEatlYJ",
                 },
               },
               {
@@ -213,6 +207,10 @@ module.exports = {
       "@docusaurus/plugin-client-redirects",
       {
         redirects: [
+          {
+            to: "/guides/shopify-ab-test",
+            from: "/guides/first-shopify-abtest",
+          },
           {
             to: "/product-analytics/drilldown",
             from: "/mex/drilldown",
@@ -321,6 +319,7 @@ module.exports = {
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
       {
+        explicitSearchResultPath: true,
         hashed: true,
         indexBlog: false,
         indexDocs: true,

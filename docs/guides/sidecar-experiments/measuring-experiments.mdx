@@ -6,12 +6,56 @@ title: Measuring Experiments
 ## Using Autocapture
 Sidecar comes loaded with an event collection tool that will autocapture various web activities, allowing you to create both simple and complex Metrics within Statsig console without writing a line of code.
 
-_Autocapture includes:_
-* Click events with click target info, current page url (`auto_capture::click`)
-* Page View Events with page url and query string values ((`auto_capture::page_view`))
-* Page view duration, page scroll depth (`auto_capture::page_view_end`)
-* Form Submission Events (`auto_capture::form_submit`)
-* Page Performance data (`auto_capture::performance`)
+#### Autocapture tracks the following events and properties automatically:
+
+**`auto_capture::click`**
+
+|Property|description|example value (strings)|
+|--------|----------|-------------|
+|value|Tag name of clicked element|button|
+|metadata.content|`innerText` value of the clicked element|Add to Cart|
+|metadata.page_url|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
+
+**`auto_capture::page_view`**
+
+|Property|description|example value (strings)|
+|--------|----------|-------------|
+|value|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
+|metadata.page_url|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
+|metadata.queryParams|A json representation of query string params| {\"utm\":\"FALL_2024\"}|
+|metadata.referrer|URL of the prior page|https://www.google.com|
+|metadata.title|Title of the current webpage from `<title>`|Homepage|
+
+**`auto_capture::page_view_end`**
+
+|Property|description|example value (strings)|
+|--------|----------|-------------|
+|value|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
+|metadata.pageViewLength|total number of seconds spent on the page|6137|
+|metadata.page_url|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
+|metadata.scrollDepth|percentage of page scrolled (integer 0-100)|47|
+
+**`auto_capture::form_submit`**
+
+|Property|description|example value (strings)|
+|----|----|----|
+|value|Fixed string|"form"|
+|metadata.action|`action` attribute on the form element|/submit.php|
+|metadata.formId|`id` attribute on the form element|user-info|
+|metadata.formName|`name` attribute on the form element|user-info|
+|metadata.method|Http method on the form element|POST|
+|metadata.page_url|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
+
+**`auto_capture::performance`**
+
+|Property|description|example value (strings)|
+|----|----|----|
+|value|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
+|metadata.dom_interactive_time_ms|Time until DOM is qualified as interactive as implemented by [browser performanceTiming API](https://developer.mozilla.org/en-US/docs/Web/Performance/Navigation_and_resource_timings)|1807.90|
+|metadata.first_contentful_paint_time_ms|First contentful paint metric as implemented by [browser performanceTiming API](https://developer.mozilla.org/en-US/docs/Web/Performance/Navigation_and_resource_timings)|1523.90|
+|metadata.load_time_ms|Total load time as implemented by [browser performanceTiming API](https://developer.mozilla.org/en-US/docs/Web/Performance/Navigation_and_resource_timings)|2766.90|
+|metadata.page_url|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
+|metadata.transfer_bytes|Total number of bytes transfered in document body as implemented by [browser performanceTiming API](https://developer.mozilla.org/en-US/docs/Web/Performance/Navigation_and_resource_timings)|48360|
 
 ## Setting User Identity and Attributes
 
@@ -62,4 +106,19 @@ window.postExperimentCallback = function(statsigClient, experimentIds) {
     evarValue = evarValue.join(',');
    */
 }
+```
+
+## Persisting stableID across subdomains
+Statsig uses `localStorage` as the preferred mechanism for storing the user's stableID. Localstorage keys do not persist across any origin boundaries including across subdomains. For example, a user visiting `https://example.com`, `https://show.example.com` and `https://account.example.com` would be issued three distinct stableIDs. 
+
+If you are assigning a user to a test on one subdomain, and tracking behavior for metrics purposes on a different subdomain, you'll need to have this solution in place to ensure Statsig can properly attribute cross-origin behavior to the Test Group assignment that took place on the initial experiment domain. 
+
+To install, simply paste the first script tag shown below directly above your Sidecar script.
+
+```html
+<!-- cross domain id script -->
+<script>!function(){let t="STATSIG_LOCAL_STORAGE_STABLE_ID";function e(){if(crypto&&crypto.randomUUID)return crypto.randomUUID();let t=()=>Math.floor(65536*Math.random()).toString(16).padStart(4,"0");return`${t()}${t()}-${t()}-4${t().substring(1)}-${t()}-${t()}${t()}${t()}`}let i=null,n=localStorage.getItem(t)||null;if(document.cookie.match(/statsiguuid=([\w-]+);?/)&&([,i]=document.cookie.match(/statsiguuid=([\w-]+);?/)),i&&n&&i===n);else if(i&&n&&i!==n)localStorage.setItem(t,i);else if(i&&!n)localStorage.setItem(t,i);else{let o=e();localStorage.setItem(t,o),function t(i){let n=new Date;n.setMonth(n.getMonth()+12);let o=window.location.host.split(".");o.length>2&&o.shift();let s=`.${o.join(".")}`;document.cookie=`statsiguuid=${i||e()};Expires=${n};Domain=${s}`}(o)}}();</script>
+
+<!-- sidecar script below -->
+<script src="https://cdn.jsdelivr.net/npm/statsig-sidecar/dist/index.min.js?apikey=[client-YOUR-STATSIG-CLIENT-KEY]"></script>
 ```

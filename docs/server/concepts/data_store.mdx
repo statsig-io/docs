@@ -4,7 +4,7 @@ sidebar_label: Data Stores
 slug: /server/concepts/data_store
 ---
 
-One common question when configuring Statsig is how to design your integration around handling potential points of failure. For example - in case of a statsig api outage, can my integration continue to function?
+One common question when configuring Statsig is how to design your integration around handling potential points of failure. For example - in case of a Statsig API outage, can my integration continue to function?
 
 The short answer is yes. Your server SDK will continue to operate normally, serving the most recent set of known values in response to calls like `checkGate`, `getConfig`, `getExperiment`, and `getLayer`.
 Once the api is back up and operating normally, your SDK will automatically refetch the most up to date version of your project.

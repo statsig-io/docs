@@ -48,7 +48,7 @@ Select "Count" and save - or, feel free to pause here and explore the options he
 
 Next, you'll connect to experiment data. If you have a table with exposures you've already logged, feel free to use that. You'll just need to make sure that you've logged the same identifier there as you used in your metric source.
 
-Otherwise, you can quickly follow our guide to setting up an [A/A test](/statsig-warehouse-native/guides/aatest), using the same data you used for your exposures. This should generate a neutral experiment result.
+Otherwise, you can quickly follow our guide to setting up an [A/A test](/guides/aa-test), using the same data you used for your exposures. This should generate a neutral experiment result.
 
 Navigate to Assignment Sources and create a new one.
 

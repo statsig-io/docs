@@ -2,7 +2,7 @@
 title: ID Resolution
 slug: /statsig-warehouse-native/features/id-resolution
 sidebar_label: ID Resolution
-description: Map cross-platform IDs in experiment analysis
+description: Map cross-platform IDs in experiment analysis and analyze anonymous user experiments
 ---
 
 ## The identity challenge
@@ -14,7 +14,9 @@ In these scenarios, the experimenter will have a logged-out identifier (e.g. a c
 Because business metrics are generally calculated at the grain of userID, it's common to want to run an experiment where the unit of analysis is a logged out identifier, but the evaluation criteria
 for the experiment is a logged-in metric (e.g. subscription rate, or estimated Lifetime Value).
 
-Many people handle this probably in an ad-hoc way. Usually, this means running ad-hoc queries to join and deduplicate exposures, or tagging userID metrics with an associated logged-out identifier. Statsig Warehouse Native offers an easy solution for connecting identifiers across this boundary in a centralized and reproducible way.
+Many people handle this probably in an ad-hoc way. Usually, this means running ad-hoc queries to join and deduplicate exposures, or tagging userID metrics with an associated logged-out identifier. This is tractable, but leads to you having to manage and debug fairly complex queries resolving identifiers across timestamps and joining mapping tables to your source-of-truth fact tables.
+
+Statsig Warehouse Native offers an easy, no-code solution for connecting identifiers across this boundary in a centralized and reproducible way.
 
 ## Supported Mapping Schema
 
@@ -60,10 +62,12 @@ When you create an analysis-only experiment or power analysis with this ID type,
 Behind the scenes, Statsig will:
 
 - Deduplicate records with multiple mappings to ensure a 1:1 mapping to your experiment's unit of analysis
-- For metric sources with the primary ID, metrics will be joined to exposures based on that ID
+- For metric sources with the primary ID, metrics will be joined to exposures based on that primary ID
 - For metric sources with only the secondary ID, metric will be joined to exposures based on that Secondary ID
 
 This works natively across Metric Sources, so you can easily set up funnel or ratio metrics across the two ID types.
+
+Analysis is done using the primary ID - this process associates metric values that are on an associated secondary ID. 
 
 ## Considerations
 

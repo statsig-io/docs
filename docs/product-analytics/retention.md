@@ -8,13 +8,13 @@ slug: /product-analytics/retention
 
 # Retention Chart
 
-## Overview
+# Overview
 
 Retention charts in Metrics Explorer help you understand how effectively your product or service maintains user interest and engagement over time. It’s a great way to measure product-market fit and critical for overall product growth.
 
 By analyzing user retention patterns, you can identify whether your product or certain features are resonating with your audience, and which areas might need improvement. This insight is invaluable for making strategic decisions aimed at enhancing user experience and boosting long-term engagement.
 
-### Use Cases
+## Use Cases
 
 For our Retention Chart in Metrics Explorer, you can unlock a deeper understanding of user engagement and loyalty over time. This chart type is essential for tracking how well your product retains users after their initial interaction.
 
@@ -76,11 +76,11 @@ When viewing retention chart analyzing weekly retention with weekly granularity 
 
 When viewing retention chart analyzing weekly retention with daily granularity for a given cohort, each subsequent column indicates the percentage of the cohort that performed the return event on that calendar day or within the 6 days prior.
 
-# Retention Graph
+## Retention Graph
 
 A Retention Graph typically plots the percentage of retained users against time, offering a visual representation of user retention. The X-axis represents time, segmented into daily or weekly intervals since the users' first interaction with the product. The Y-axis indicates the percentage of the original users who remain active (performed the return event).
 
-## **Reading the Graph**
+**Reading the Graph**
 
 The Retention Graph provides insights into user behavior by illustrating the rate at which users disengage over time.
 
@@ -94,6 +94,6 @@ Key aspects to observe:
 2. **Long-term Engagement:** The slope in the later stages of the graph shows the long-term user engagement. A flatter slope at this stage means better user retention.
 3. **Trends Over Time:** Comparing multiple graphs over different time periods can reveal the impact of product changes or external factors on retention.
 
-## Scoping to Specific Cohorts
+# Scoping to Specific Cohorts
 
 You can view plots for specific or many cohorts. By default only the “All cohorts” retention curve is plotted. To scope to a single specific cohort, click anywhere on the row in the table associated with that cohorts. To scope to many specified cohorts, leverage the check boxes on the left most portion of the table to select the cohorts that you would like to compare retention curves of.

@@ -1,5 +1,7 @@
 `statsig.initialize()` takes an optional parameter `options` in addition to the secret key that you can provide to customize the Statsig client. Create a `StatsigOptions` class to pass in with the following available parameters:
 
+(unit of measure for time related options is seconds)
+
 - **tier**: `StatsigEnvironmentTier | str`, default `None`
 
   - Sets the environment tier (for gates to evaluate differently in development and production)
@@ -7,6 +9,8 @@
 
 - **timeout**: `timeout: int = None`
   - Enforces a minimum timeout on network requests from the SDK
+- **init_timeout**: `init_timeout: int = None`
+  - Sets the maximum timeout on download config specs and id lists network requests for initialization
 - **rulesets_sync_interval**: `rulesets_sync_interval: int = 10`
   - How often the SDK updates rulesets from Statsig servers
 - **idlists_sync_interval**: `idlists_sync_interval: int = 60`
@@ -22,6 +26,14 @@
   - Note that events are also batched every minute by a background thread
 - **data_store**: `data_store: IDataStore = None`
   - A data store with custom storage behavior for config specs. Can be used to bootstrap Statsig server (takes priority over `bootstrap_values`).
+- **proxy_configs*: `*proxy_configs: Optional[Dict[NetworkEndpoint, ProxyConfig]] = None`,
+  - Configuration network for each endpoint, for example, download_config_spec, get_id_lists
+- **fallback_to_statsig_api**: fallback_to_statsig_api: Optional[bool] = False,
+  - Fallback to Statsig CDN for download config specs and get id lists if it overrided api failed.  
+- **initialize_sources**: initialize_sources: Optional[List[DataSource]] = None,
+  - List of sources SDK tries to get download_config_specs from when initialize. The list is ordered, SDK tries to get source from first element, and stops when getting dcs successfully
+- **config_sync_sources**: config_sync_sources: Optional[List[DataSource]] = None,
+  - List of sources SDK tries to get download_config_specs from when downloading. The list is ordered, SDK tries to get source from first element, and stops when getting dcs successfully
 
 Example:
 

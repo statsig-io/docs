@@ -6,8 +6,6 @@ sidebar_label: Athena
 
 ## Overview
 
-** Athena Warehouse Native is in beta, please message the team to get early access **
-
 To set up connection with Athena, Statsig needs the following
 
 - Region
