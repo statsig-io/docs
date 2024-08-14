@@ -360,7 +360,7 @@ module.exports = {
           items: [
             "statsig-warehouse-native/guides/quick-start",
             "statsig-warehouse-native/guides/running_a_poc",
-            "statsig-warehouse-native/guides/playground_eval",            
+            "statsig-warehouse-native/guides/playground_eval",
             "statsig-warehouse-native/guides/sdks",
             "statsig-warehouse-native/guides/aatest",
             "metrics/different-id",
@@ -601,7 +601,8 @@ module.exports = {
                 "client/javascript-mono/ReactUsage",
                 "client/javascript-mono/ReactNativeUsage",
                 "client/javascript-mono/ExpoUsage",
-                "client/javascript-mono/NextJSUsage",
+                "client/javascript-mono/NextJsAppRouterUsage",
+                "client/javascript-mono/NextJsPageRouterUsage",
                 "client/javascript-mono/InitStrategies",
                 "client/javascript-mono/Examples",
               ],

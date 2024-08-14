@@ -3,10 +3,35 @@ import TabItem from "@theme/TabItem";
 
 <br />
 
-The following is a guide that outlines how to use Statsig with Next.js. 
-If you just want to see the finished product, it is located in [`statsig-io/js-client-monorepo/samples`](https://github.com/statsig-io/js-client-monorepo/tree/main/samples/next-js/src/app/statsig-demo).
 
-Note: This guide assumes you are using the [Next.js App Router](https://nextjs.org/docs/app). If you just want to create a new project to follow the guide, you can run `npx create-next-app@latest` (See [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app)).
+
+<>{!props.isPageRouter && <span>
+  <div>The following is a guide that outlines how to use Statsig with Next.js. 
+  If you just want to see the finished product, it is located in <a href="https://github.com/statsig-io/js-client-monorepo/tree/main/samples/next-js/src/app/statsig-demo">statsig-io/js-client-monorepo/samples</a>.</div>
+  <br />
+  This guide assumes you are using the <a href="https://nextjs.org/docs/app">Next.js App Router</a> (There is also a specific guide for <a href="/client/javascript-sdk/next-js-pages-router">Pages Router</a>). 
+  If you just want to create a new project to follow the guide, you can run <code>
+    npx create-next-app@latest
+  </code> (See <a href="https://nextjs.org/docs/app/api-reference/create-next-app">create-next-app</a>).
+
+  <br />
+  <br />
+  <div>When using <code>npx create-next-app@latest</code>, be sure to select <code>Yes</code> when asked "Would you like to use App Router?"</div>
+</span>
+}</>
+
+<>{props.isPageRouter && <span>
+  The following is a guide that outlines how to use Statsig with Next.js <a href="https://nextjs.org/docs/pages">Pages Router</a>. (There is also a specific guide for <a href="/client/javascript-sdk/next-jsr">App Router</a>). 
+  If you just want to create a new project to follow the guide, you can run <code>
+    npx create-next-app@latest
+  </code> (See <a href="https://nextjs.org/docs/pages/api-reference/create-next-app">create-next-app</a>).
+  
+  <br />
+  <br />
+  <div>When using <code>npx create-next-app@latest</code>, be sure to select <code>No</code> when asked "Would you like to use App Router?"</div>
+</span>
+}</>
+
 
 ## Installation
 
