@@ -7,14 +7,14 @@ slug: /holdouts
 Holdouts measure the aggregate impact of multiple features. A "holdout" is a group of users that are held back from a set of features to measure the aggregate impact of this feature set. While each A/B test or experiment you run compares control and test groups for that feature, a holdout compares a ‘global’ control group with users who have been exposed to a subset of the features. 
 
 ## How to use Holdouts
-1.	To create a new holdout, navigate to the Holdouts section on the Statsig console (it is a specialized kind of experiment): https://console.statsig.com/ 
+1.	To create a new holdout, navigate to the Holdouts section on the Statsig console (it is a specialized kind of experiment): https://console.statsig.com/holdouts
 2.	Click the Create New button and enter the name and description of the holdout that you want to create. 
 3.	You can choose to either create a global or a selected holdout. A global holdout captures the aggregate impact of all features developed after the holdout began. A selected holdout captures the aggregate impact of a specific selection of features that you want to hold off. 
 4.	By default Holdouts apply to a % of all users (Population = Everyone). You can optionally target the Holdout at a subset of users by applying a Targeting Gate (Population = Targeting Gate). e.g. If you wanted an iOS users only Holdout, you could apply a Targeting Gate that only passes iOS users.    
 5.	You must set the percentage of users to be held-out between 1% to 10%. Statsig recommends a small holdout percentage to limit the number of customers who don’t see new features. 
 
-![image](https://github.com/statsig-io/docs/assets/31516123/132d09c3-c113-426e-9698-ef58214371f7)
-![image](https://github.com/statsig-io/docs/assets/31516123/82ee59dc-9adf-4c14-89cf-28c957e77862)
+![image](https://github.com/user-attachments/assets/81b634c7-f05e-493e-88c1-4c58d770a1d4)
+![image](https://github.com/user-attachments/assets/82c06037-7a12-4335-9ebf-81156a54d798)
 
 
 ## How to read Holdouts
@@ -30,7 +30,8 @@ The Metric Lifts section shows the comparison of *Not in Holdout* vs. *In Holdou
 ## Unit ID Types
 By default, holdouts are based on User ID.  To use a different ID type, select it from the drop down menu during the holdout creation.  Note that holdouts can only be applied to Experiments and Feature Gates that use the same randomization unit.  If a team plans to run experiments on both User ID and Stable ID, two separate holdouts are required to evaluate the cumulative impact of each type of experiment.
 
-![image](https://user-images.githubusercontent.com/90343952/149035806-6764f5f5-cd72-49f9-8c8e-9c0eac217155.png)
+![image](https://github.com/user-attachments/assets/cb2125f0-7fe2-4fbe-b6a3-3405dc300715)
+
 
 ## Holdout effects on Gates & Experiments SDK methods
 ### Gates
