@@ -97,7 +97,7 @@ To better understand how conversion varies between different groups of users, yo
 
 In general, the power of funnels lies in understanding whether or not users completed a specific set of events in a specific order. This is the most common scenario, and you can achieve this by toggling “Ordered” on. This is the default.
 
-Ordered funnels require that a user completes the selected events in the specified order to be counted as converted. The user may still perform other events between the specified events, including events in the funnel, and still be counted as converted. For example, if an ordered funnel is defined with events A, B, C, and D, the following sequence will count as converted: A→B→B→A→C→K→D.
+Ordered funnels require that a user completes the selected events in the specified order to be counted as converted. The user may still perform other events between the specified events, including events in the funnel, and still be counted as converted. For example, if an ordered funnel is defined with events A, B, C, and D, the following sequence will count as converted: A→B→B→A→C→D.
 
 Sometimes, you just want to know whether a user has completed all a given set of events, regardless of the order they completed them in. You can achieve this by toggling “Ordered” off in the advanced settings. Unordered funnels only require that the user completes the specified events within the given time range to be counted as converted.
 
@@ -111,7 +111,7 @@ When toggled on, this calculates funnel conversions per calendar day. A given un
 
 # Interpreting your User Funnel
 
-## Conversion rate vs. Number o Conversions
+## Conversion rate vs. Number of Conversions
 
 At the top right of the funnel chart, you’ll see the Conversion Rate vs. Conversions selector. This selector allows you to switch between viewing the y-axis of your funnel as a conversion rate or the number of conversions. This feature is particularly powerful when used in conjunction with a group by. Toggling between conversion rate and number of conversions, you can see both the relative and absolute scales in conversions across different user groups. 
 
