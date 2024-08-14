@@ -11,7 +11,8 @@ Layers (a.k.a. Universes) allow us to create experiments that are mutually exclu
 ![image](https://github.com/statsig-io/docs/assets/146870406/8e555dd1-093f-4500-baee-2ec2ad93ba5e)
 
 You can add experiments to a layer (or create a layer) during experiment creation.
-![image](https://user-images.githubusercontent.com/31516123/177894600-a5921bdb-cec8-49d6-9b05-64f66fbf37a0.png)
+![image](https://github.com/user-attachments/assets/94948291-bc41-4ae7-a57a-e2f635737571)
+
 
 Once you create a layer, you'll be able to manage them on the layer management tab under Experiments.
 ![image](https://user-images.githubusercontent.com/31516123/177894503-0118879e-790f-4368-978a-36a4fe90a427.png)
