@@ -315,24 +315,24 @@ module.exports = {
       },
     ],
   ],
-  themes: [
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        explicitSearchResultPath: true,
-        hashed: true,
-        indexBlog: false,
-        indexDocs: true,
-        docsRouteBasePath: "/",
-        ignoreFiles: [
-          /client\/_[^\/]*\.mdx/i,
-          /server\/_[^\/]*\.mdx/i,
-          /client\/(Android|AndroidOnDeviceEvaluation|Dart|React|ReactNative|Roku|SwiftOnDeviceEval|Templates|Unity|dotnet|iOS|js|jslocal)\/?/i,
-          /server\/(Templates|java|node|cpp|dotnet|erlang|go|php|python|ruby|rust)\/?/i,
-        ],
-      },
-    ],
-  ],
+  // themes: [
+  //   [
+  //     require.resolve("@easyops-cn/docusaurus-search-local"),
+  //     {
+  //       explicitSearchResultPath: true,
+  //       hashed: true,
+  //       indexBlog: false,
+  //       indexDocs: true,
+  //       docsRouteBasePath: "/",
+  //       ignoreFiles: [
+  //         /client\/_[^\/]*\.mdx/i,
+  //         /server\/_[^\/]*\.mdx/i,
+  //         /client\/(Android|AndroidOnDeviceEvaluation|Dart|React|ReactNative|Roku|SwiftOnDeviceEval|Templates|Unity|dotnet|iOS|js|jslocal)\/?/i,
+  //         /server\/(Templates|java|node|cpp|dotnet|erlang|go|php|python|ruby|rust)\/?/i,
+  //       ],
+  //     },
+  //   ],
+  // ],
   presets: [
     [
       "@docusaurus/preset-classic",
