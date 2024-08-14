@@ -6,6 +6,8 @@ slug: /stats-engine/topline-impact
 
 The **topline impact** is the measured effect that an active experiment has on the overall topline metric over the rollup windows.  This is the real impact that results from running the experiment with its current allocation.  The **projected launch impact** is an estimate of the topline impact we expect to see if a decision is made and the test group is launched to all users. This impact is computed relative to the expected baseline value of the topline metric if the experiment wasn't running at all.
 
+Topline Impact and Projected Launch Impact currently do not use CUPED when measuring any impact induced by your experiment.
+
 ## Computing Topline Impact
 
 The topline impact is computed over the duration when the experiment has been running. This gives the most accurate estimate and tight confidence interval. The exact calculation depends on whether the metric represents an absolute quantity or a ratio:
