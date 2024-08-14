@@ -17,7 +17,7 @@ To create a new feature gate,
 - Enter the name and the description of the feature gate you want to create
 - Click **Create** to complete creating your feature gate
 
- ![image](https://github.com/statsig-io/docs/assets/31516123/d058b0cb-153f-4e84-b7d6-e8db77cc1c49)
+![image](https://github.com/user-attachments/assets/a14bc4f3-b768-4e6c-a84a-7bae449b2c7c)
  
 Calls to check this feature gate for a user evaluate the rules that you define for this feature gate. This check returns a **true** or **false** depending on whether that user matches these rules. If no rules are defined, the gate check returns **false** by default.
  
