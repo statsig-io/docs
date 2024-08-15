@@ -842,7 +842,15 @@ module.exports = {
           items: [
             "access-management/organizations",
             "access-management/projects",
-            "access-management/teams",
+            {
+              type: "category",
+              label: "Teams",
+              link: {
+                type: "doc",
+                id: "access-management/teams/introduction",
+              },
+              items: [],
+            },
             {
               "Single Sign-On": [
                 "access-management/sso/overview",
