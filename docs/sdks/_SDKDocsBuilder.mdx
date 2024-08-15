@@ -1,17 +1,22 @@
 import Gap from "./_Gap.mdx";
 import React from "react";
-
-import SDKDocTOCHeader, {
-  SDKDocTOCHeaderAsString,
-} from "@site/src/components/SDKDocTOCHeader";
-
 export const HOOK__SDKDocUpdate = "<SDK_DOC_UPDATE_HOOK>";
+import TOCCollapsible from '@theme/TOCCollapsible';
 
 export const SDKDocsBuilder = ({ sections }) => {
-  return sections.map(([Section, props], index) => (
-    <React.Fragment key={index}>
+  const toc = [];
+  const result = sections.map(([Section, props], index) => {
+    const tocFilters = Section.tocFilter;
+    const addToc = Section.toc.filter((entry) => tocFilters?.includes(entry.id) !== true);
+    toc.push(...addToc);
+    return <React.Fragment key={index}>
       <Section.default {...props} />
       <Gap />
     </React.Fragment>
-  ));
+  });
+  
+  return [
+    <TOCCollapsible toc={toc} />,
+    ...result
+  ];
 };
