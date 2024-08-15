@@ -1,8 +1,6 @@
 name: docs.statsig.com deployment
 
 on:
-  pull_request:
-    branches: [main]
   push:
     branches: [main]
 
@@ -45,7 +43,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: statsig/docs:newest
+          tags: statsig/docs:latest
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
