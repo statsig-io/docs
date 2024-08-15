@@ -42,9 +42,9 @@ import ClientInitResponseSnippet from "./python/_clientInitResponse.mdx";
 import ForwardProxyExample from "./python/_forwardProxyExample.mdx";
 import MultiInstanceExample from "./python/_multiInstanceExample.mdx";
 
-export const Result = SDKDocsBuilder(
-  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
-  [
+<>
+  <SDKDocsBuilder
+    sections={[
     [
       Repository,
       {
@@ -94,9 +94,6 @@ export const Result = SDKDocsBuilder(
     
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
-  ],
-  toc,
-  [...ReferenceSnippets.toc]
-);
-
-<>{Result}</>
+  ]}
+  />
+</>

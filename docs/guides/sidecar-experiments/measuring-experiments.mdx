@@ -10,14 +10,17 @@ Sidecar comes loaded with an event collection tool that will autocapture various
 
 **`auto_capture::click`**
 
+```
 |Property|description|example value (strings)|
 |--------|----------|-------------|
 |value|Tag name of clicked element|button|
 |metadata.content|`innerText` value of the clicked element|Add to Cart|
 |metadata.page_url|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
+```
 
 **`auto_capture::page_view`**
 
+```
 |Property|description|example value (strings)|
 |--------|----------|-------------|
 |value|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
@@ -25,18 +28,22 @@ Sidecar comes loaded with an event collection tool that will autocapture various
 |metadata.queryParams|A json representation of query string params| {\"utm\":\"FALL_2024\"}|
 |metadata.referrer|URL of the prior page|https://www.google.com|
 |metadata.title|Title of the current webpage from `<title>`|Homepage|
+```
 
 **`auto_capture::page_view_end`**
 
+```
 |Property|description|example value (strings)|
 |--------|----------|-------------|
 |value|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
 |metadata.pageViewLength|total number of seconds spent on the page|6137|
 |metadata.page_url|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
 |metadata.scrollDepth|percentage of page scrolled (integer 0-100)|47|
+```
 
 **`auto_capture::form_submit`**
 
+```
 |Property|description|example value (strings)|
 |----|----|----|
 |value|Fixed string|"form"|
@@ -45,9 +52,11 @@ Sidecar comes loaded with an event collection tool that will autocapture various
 |metadata.formName|`name` attribute on the form element|user-info|
 |metadata.method|Http method on the form element|POST|
 |metadata.page_url|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
+```
 
 **`auto_capture::performance`**
 
+```
 |Property|description|example value (strings)|
 |----|----|----|
 |value|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
@@ -56,6 +65,7 @@ Sidecar comes loaded with an event collection tool that will autocapture various
 |metadata.load_time_ms|Total load time as implemented by [browser performanceTiming API](https://developer.mozilla.org/en-US/docs/Web/Performance/Navigation_and_resource_timings)|2766.90|
 |metadata.page_url|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
 |metadata.transfer_bytes|Total number of bytes transfered in document body as implemented by [browser performanceTiming API](https://developer.mozilla.org/en-US/docs/Web/Performance/Navigation_and_resource_timings)|48360|
+```
 
 ## Setting User Identity and Attributes
 

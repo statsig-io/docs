@@ -13,7 +13,6 @@ Layers (a.k.a. Universes) allow us to create experiments that are mutually exclu
 You can add experiments to a layer (or create a layer) during experiment creation.
 ![image](https://github.com/user-attachments/assets/94948291-bc41-4ae7-a57a-e2f635737571)
 
-
 Once you create a layer, you'll be able to manage them on the layer management tab under Experiments.
 ![image](https://user-images.githubusercontent.com/31516123/177894503-0118879e-790f-4368-978a-36a4fe90a427.png)
 ![image](https://user-images.githubusercontent.com/31516123/177894553-118c7de5-40b7-4e95-a4b3-d59b3b727347.png)

@@ -46,6 +46,7 @@ Please make sure your data conforms to the following schemas.
 
 <b>Events</b>
 
+```
 | Column         | Description                                                                                                       | Rules                                                                                                   |
 | -------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | timestamp      | UNIX timestamp of the event                                                                                       | UTC timestamp                                                                                           |
@@ -54,6 +55,7 @@ Please make sure your data conforms to the following schemas.
 | event_metadata | A dictionary<string, string> in the form of a JSON string, containing named metadata for the event                | String format                                                                                           |
 | user           | A JSON object representing the user this event was logged for; see below                                          | Escaped JSON string including the keys 'custom' and 'customIDs'. A userID or customID must be provided. |
 | timeuuid       | A unique UUID or timeUUID used for deduping. If omitted, will be generated but will not be effective for deduping | UUID format                                                                                             |
+```
 
 Please refer to docs for the [Statsig User Object](https://docs.statsig.com/client/concepts/user#user-attributes) for available fields. An example would look like:
 

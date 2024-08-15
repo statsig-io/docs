@@ -38,9 +38,9 @@ import * as UpdateUser from "./ReactNative/_updateUser.mdx";
 import MoreFAQs from "./ReactNative/_faqs.mdx";
 import * as ReferenceSnippets from "./ReactNative/_reference.mdx";
 
-export const Result = SDKDocsBuilder(
-  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
-  [
+<>
+  <SDKDocsBuilder
+    sections={[
     [
       Repository,
       {
@@ -73,9 +73,6 @@ export const Result = SDKDocsBuilder(
     [UpdateUser, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
-  ],
-  toc,
-  [...ReferenceSnippets.toc]
-);
-
-<>{Result}</>
+  ]}
+  />
+</>

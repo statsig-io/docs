@@ -41,9 +41,9 @@ import GetParameterStore from "./Android/_getParameterStore.mdx";
 import GetParameter from "./Android/_getParameter.mdx";
 import MultiInstance from "./Android/_multiInstance.mdx";
 
-export const Result = SDKDocsBuilder(
-  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
-  [
+<>
+  <SDKDocsBuilder
+    sections={[
     [
       Repository,
       {
@@ -85,8 +85,6 @@ export const Result = SDKDocsBuilder(
       { example: <MultiInstance /> }
     ],
     [FAQ, { faqs: <MoreFAQs /> }],
-  ],
-  toc
-);
-
-<>{Result}</>
+  ]}
+  />
+</>
