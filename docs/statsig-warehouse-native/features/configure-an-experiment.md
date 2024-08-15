@@ -24,7 +24,7 @@ if your exposure isn't loaded in the dropdown.
 
 You'll need to specify the control group as well as the ID type the experiment is using here.
 
-![Configure Experiment](https://user-images.githubusercontent.com/102695539/264101227-e3a1e76a-6a3b-4089-87be-5a4b6e7dd662.png)
+![Configure Experiment](https://github.com/user-attachments/assets/7984bdd3-e2bf-4322-8230-18e3222077e9)
 
 ## Choose Metrics
 
@@ -40,8 +40,7 @@ You'll land in the setup page for the experiment. Here, you can further refine y
 Statsig infers the groups and group splits in your experiment, but you should check and correct the splits to make sure SRM checks can work as intended.
 
 Here, you can also rename groups or delete irrelevant groups.
-
-![Choose Groups](https://user-images.githubusercontent.com/102695539/264101203-d9d4feef-653a-45ae-b6f1-f6e888e2762d.png)
+![Choose Groups](https://github.com/user-attachments/assets/33de7e4f-a0f8-4fcd-bde0-850a57055b71)
 
 ## Advanced Settings
 
