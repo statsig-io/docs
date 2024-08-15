@@ -32,9 +32,9 @@ import Options from "./erlang/_options.mdx";
 import ShutdownSnippet from "./erlang/_shutdown.mdx";
 import * as RefSnippets from "./erlang/_reference.mdx";
 
-export const Result = SDKDocsBuilder(
-  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
-  [
+<>
+  <SDKDocsBuilder
+    sections={[
     [
       Repository,
       {
@@ -63,9 +63,6 @@ export const Result = SDKDocsBuilder(
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [Reference, { snippets: <RefSnippets.default /> }]
-  ],
-  toc,
-  [...RefSnippets.toc]
-);
-
-<>{Result}</>
+  ]}
+  />
+</>

@@ -33,9 +33,9 @@ import Options from "./Dart/_options.mdx";
 import ShutdownSnippet from "./Dart/_shutdown.mdx";
 import * as FlutterLifecycle from "./Dart/_flutterLifecycle.mdx";
 
-export const Result = SDKDocsBuilder(
-  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
-  [
+<>
+  <SDKDocsBuilder
+    sections={[
     [
       Repository,
       {
@@ -64,8 +64,6 @@ export const Result = SDKDocsBuilder(
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [FlutterLifecycle, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
-  ],
-  toc
-);
-
-<>{Result}</>
+  ]}
+  />
+</>

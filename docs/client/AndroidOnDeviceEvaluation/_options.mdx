@@ -1,32 +1,32 @@
 You can pass in an optional parameter `options` in addition to `sdkKey` and `user` during initialization to customize the Statsig client. Here are the current options and we are always adding more to the list:
 
-- **configSpecAPI** - String, default https://api.statsigcdn.com/v1/download_config_specs/
+- **configSpecAPI** - `String`, default https://api.statsigcdn.com/v1/download_config_specs/
 
   - The endpoint to use for downloading config spec network requests. You should not need to override this (unless you have another API that implements the Statsig API endpoints)
 
-- **eventLoggingAPI** - String, default https://events.statsigapi.net/v1/rgstr
+- **eventLoggingAPI** - `String`, default https://events.statsigapi.net/v1/rgstr
 
   - The endpoint to use for log events. You should not need to override this (unless you have another API that implements the Statsig API endpoints)
 
-- **initTimeoutMs**: Long, default `3000`
+- **initTimeoutMs**: `Long`, default `3000`
 
   - used to decide how long the Statsig client waits for the initial network request to respond before calling the completion block. The Statsig client will return either cached values (if any) or default values if checkGate/getConfig/getExperiment is called before the initial network request completes.
   - if you always want to wait for the latest values fetched from Statsig server, you should set this to 0 so we do not timeout the network request.
   - unit is milliseconds.
 
-- **overrideStableID**: String?, default `null`
+- **overrideStableID**: `String?`, default `null`
 
   - overrides the `stableID` in the SDK that is set for the user
 
-- **loadCacheAsync**: Boolean, default `false`
+- **loadCacheAsync**: `Boolean`, default `false`
 
   - Whether or not the SDK should block on loading saved values from disk.
 
-- **initializeValues**: Map<String, Any>?, default `null`
+- **initializeValues**: `Map<String, Any>?`, default `null`
 
   - Provide the `initialize response` values directly to the Android SDK to synchronously initialize the client. You can generate these values from a Statsig Server SDK like the [NodeJS Server SDK](https://docs.statsig.com/server/nodejsServerSDK#bootstrap)
 
-- **disableDiagnosticsLogging**:boolean?, default `false`
+- **disableDiagnosticsLogging**: `boolean?`, default `false`
 
   - Prevent the SDK from sending useful debug information to Statsig
 

@@ -33,6 +33,7 @@ The following tables will be generated and stored in your warehouse per-experime
 
 This is not an exhaustive list, but includes most of the core result/staging tables that you might be interested in using for your own analysis.
 
+```
 | Table                                                           | Description                                                                                                                     | Notes                                                      |
 | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
 | first\_exposures\_<experiment_id\>                               | Deduplicated and stitched (for experiments with ID resolution) first exposure events                                            | Useful for ad-hoc analysis                                 |
@@ -45,6 +46,7 @@ This is not an exhaustive list, but includes most of the core result/staging tab
 | ratio\_aggregations\_<experiment_id\>                              | Staging table for generating running totals when restating Pulse                                                                |                                                            |
 | results\_<rollup\>_<experiment_id\>                            | Outputs of Statistical Analysis for different rollups (e.g. daily, days-since-exposure, cumulative, 7-day). Exported to Statsig | Pulse inputs - useful for replicating Statistical analysis |
 | ratio\_results\_<rollup\>\_<experiment_id\>                      | Outputs of Statistical Analysis for ratio metrics in different rollups (e.g. daily, days-since-exposure, cumulative, 7-day). Exported to Statsig | Pulse inputs - useful for replicating Statistical analysis |
+```
 
 The high level relationships/contents of these tables are represented below - refer to the Main Steps image below for scheduling details.
 

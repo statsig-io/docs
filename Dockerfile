@@ -7,9 +7,8 @@ WORKDIR /usr/app
 
 COPY ./ ./
 
-RUN npm install -g pnpm@8.15.4
-RUN pnpm install
-RUN pnpm build
+RUN npm install
+RUN npm run build
 
 ## production environment
 FROM nginx:1-alpine

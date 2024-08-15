@@ -27,6 +27,6 @@ Note that playground projects do not come with any assign-and-analyze experiment
 
 ## Evaluation
 
-We recommend following steps 2+ from the [quick start](./quick-start.md) guide, starting with the tables available to the playground project. This will give you a sense of what it takes to run experiments and manage metrics in Statsig.
+We recommend following steps 2+ from the [quick start](/statsig-warehouse-native/guides/quick-start) guide, starting with the tables available to the playground project. This will give you a sense of what it takes to run experiments and manage metrics in Statsig.
 
-Once that's done, refer to the [POC guide](./running_a_poc.md) and simulate the steps that are relevant to your evaluation. Customers have also found it useful to explore the Pulse UI together - the Statsig team is always happy to chat about any questions or feedback.
+Once that's done, refer to the [POC guide](/statsig-warehouse-native/guides/running_a_poc) and simulate the steps that are relevant to your evaluation. Customers have also found it useful to explore the Pulse UI together - the Statsig team is always happy to chat about any questions or feedback.

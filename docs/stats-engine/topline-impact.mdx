@@ -16,35 +16,35 @@ The topline impact is computed over the duration when the experiment has been ru
 
 The absolute topline impact is derived directly from the experiment results. It depends on the difference in means between test and control, and the average number of users in the test group per day.
 
-$
+$$
 Impact_{abs}=(\bar{X_t}-\bar{X_c}) \cdot N_t
-$
+$$
 
 Knowing the absolute impact and the overall metric value (as seen in the [metrics dashboard](/metrics/console)), we can compute the relative impact.  This is the percentage change in the overall metric value over the rollup window that is attributed to the active experiment.
 
-$
+$$
 Impact_{rel}=\frac{Impact_{abs}}{Topline_\_Value-Impact_{abs}} \times 100\%
-$
+$$
 
 ### Ratio and Mean Metrics
 
 To properly derive the topline impact on a ratio metric we must understand the impact on the numerator (*X*) and denominator (*Y*) separately.  The topline impact is the current value of the ratio metric minus the baseline value we obtain by subtracting the numerator and denominator impacts:
 
-$
+$$
 Impact_{abs}=\frac{Topline\_X}{Topline\_Y}-Baseline\_Value
-$
+$$
 
 Where the baseline value is the expected value of the topline metric if the experiment wasn't running:
 
-$
+$$
 Baseline\_Value=\frac{Topline\_X-(\bar{X_t}-\bar{X_c}) \cdot N_t}{Topline\_Y-(\bar{Y_t}-\bar{Y_c}) \cdot N_t}
-$
+$$
 
 The relative impact for ratio metrics is obtained by dividing the absolute impact by the baseline value:
 
-$
+$$
 Impact_{rel}=\frac{Impact_{abs}}{Baseline\_Value} \times 100\%
-$
+$$
 
 ## Computing Projected Launch Impact
 
@@ -52,9 +52,9 @@ The layer allocation of the experiment and the size of the test group are used t
 
 The launch factor over a rollup window is calculated as
 
-$
+$$
 m_{rollup}=\frac{1}{\sum_{1}^{rollup}{layer\_alloc \times group\_pct}} \times rollup
-$
+$$
 
 to accommodate changes in allocation during the experiment.
 
@@ -64,56 +64,56 @@ Note that the targeting gate isn't factored in.  The projected impact calculatio
 
 For count and sum metrics, the projected absolute impact is simply the current topline impact scaled by a factor of *m*.  For example: Consider an experiment running with 50% layers allocation and 50/50 test/control split, so that 25% of all users are in the test group.  If the topline impact is currently +10 events per day, then launching the experiment would lead to +40 events per day. 
 
-$
+$$
 Projected_{abs}=Impact_{abs} \times m
-$
+$$
 
 The relative projected impact is expected percentage change in the topline metric, relative to the baseline value of the metric without the experiment running.
 
-$
+$$
 Projected_{rel}=\frac{Projected_{abs}}{Topline\_Value-Impact_{abs}} \times 100\% = Impact_{rel} \times m
-$
+$$
 
 ### Ratio and Mean Metrics
 
 Similar to the topline impact calculation above, the projected impact of ratio metrics depends on the numerator and denominator impacts.  We use the same scaling factor *m* to obtain the projected impact for each term:
 
-$
+$$
 Projected_{abs}=\frac{Topline\_X+(m-1) \cdot (\bar{X_t}-\bar{X_c}) \cdot N_t}{Topline\_Y+(m-1) \cdot (\bar{Y_t}-\bar{Y_c}) \cdot N_t} - Baseline\_Value
-$
+$$
 
 Where the first term represents the projected metric value after launch. 
 
 Finally, the projected relative impact of a ratio metric is the projected absolute impact divided by the baseline value of the ratio: 
 
-$
+$$
 Projected_{rel}=(\frac{Projected_{abs}}{Baseline\_Value}) \times 100\%
-$
+$$
 
 ## Confidence intervals
 
 The confidence intervals for topline and projected impact are computed in the same way as the [confidence intervals](https://docs.statsig.com/stats-engine/confidence-intervals) for experiment deltas.  
 
-$
+$$
 CI(Impact) = Impact \pm Z \cdot \sqrt{var(Impact)}
-$
+$$
 
 In the case of absolute impact of count and sum metrics, the variance calculation is simply a linear combination of the test and control variances:  
 
-$
+$$
 var(Impact_{abs})=[var(\bar{X_t})+var({\bar{X_c}})] \cdot N_t^2
-$
+$$
 
 And for projected launch impact we get:
 
-$
+$$
 var(Projected_{abs})=var(Impact_{abs}) \cdot m^2
-$
+$$
 
 For ratio metrics and relative impacts, the variance is calculated using the Delta method.  This properly accounts for the correlation between the various numerator and denominator terms, leveraging Taylor expansion to linearize expressions containing non-linear combinations of experiment variables.  
 
 For example, the variance in the relative impact of a count metric is given by:
 
-$
+$$
 var(Impact_{rel})=var(Impact_{abs}) \cdot \frac{(Topline\_Value - 2 \cdot Impact_{abs})^2}{(Topline\_Value - Impact_{abs})^4}
-$
+$$
