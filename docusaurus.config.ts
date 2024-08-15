@@ -33,7 +33,6 @@ const config: Config = {
           routeBasePath: "/",
           remarkPlugins: [sdkDateExtractor, remarkMath],
           rehypePlugins: [rehypeKatex],
-          docItemComponent: '@theme/DocItem',
         },
         theme: {
           customCss: './src/css/custom.css',
