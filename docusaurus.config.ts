@@ -27,14 +27,13 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/statsig-io/docs/edit/main/',
           showLastUpdateTime: true,
           routeBasePath: "/",
           remarkPlugins: [sdkDateExtractor, remarkMath],
           rehypePlugins: [rehypeKatex],
+          docItemComponent: '@theme/DocItem',
         },
         theme: {
           customCss: './src/css/custom.css',
