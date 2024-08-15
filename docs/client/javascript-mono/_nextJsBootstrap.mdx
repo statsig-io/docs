@@ -19,7 +19,6 @@ import { getStatsigValues } from "./StatsigHelpers"; // todo: Get values from st
 
 // todo: Use values in @statsig/js-client
 import BootstrappedStatsigProvider from "./BootstrappedStatsigProvider";
-import { MY_STATSIG_CLIENT_KEY } from "./constants";
 
 export default async function StatsigDemoLayout({
   children,
@@ -31,7 +30,7 @@ export default async function StatsigDemoLayout({
 
   return (
     <BootstrappedStatsigProvider
-      clientSdkKey={MY_STATSIG_CLIENT_KEY}
+      clientSdkKey={process.env["STATSIG_CLIENT_KEY"] }
       values={values}
       user={user}
     >
@@ -41,11 +40,12 @@ export default async function StatsigDemoLayout({
 }
 ```
 
-This step assumes you have some file `constants.ts` that houses your keys, perhaps something like:
+This step assumes you have your Statsig SDK keys stored as environment variables.
 
-```tsx
-export const MY_STATSIG_SERVER_KEY = process.env["statsig_server_key"]; // secret-***
-export const MY_STATSIG_CLIENT_KEY = process.env["statsig_client_key"]; // client-***
+Something like this:
+
+```bash
+STATSIG_SERVER_KEY="secret-***" STATSIG_CLIENT_KEY="client-***" npm start
 ```
 
 If you run this now, you will get a bunch of errors related to the imports that do not yet exists. Lets create those next.
@@ -61,16 +61,15 @@ Create this function in the following `StatsigHelpers.ts` file:
 // app/statsig-demo/StatsigHelpers.ts
 
 import Statsig, { StatsigUser } from "statsig-node";
-import { MY_STATSIG_CLIENT_KEY, MY_STATSIG_SERVER_KEY } from "./constants";
 
-const isStatsigReady = Statsig.initialize(MY_STATSIG_SERVER_KEY); // <- Server Key
+const isStatsigReady = Statsig.initialize(process.env["STATSIG_SERVER_KEY"]); // <- Server Key
 
 export async function getStatsigValues(user: StatsigUser): Promise<string> {
   await isStatsigReady;
 
   const values = Statsig.getClientInitializeResponse(
     user,
-    MY_STATSIG_CLIENT_KEY, // <- Client Key
+    process.env["STATSIG_CLIENT_KEY"], // <- Client Key
     {
       // !!! IMPORTANT - the @statsig/js-client requires djb2 hashed config names, and by default this method won't generate those
       hash: "djb2", 
