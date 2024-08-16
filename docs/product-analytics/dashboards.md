@@ -16,7 +16,7 @@ Statsig’s dashboards are the most effective way to consume, share, and save th
 
 There are two ways to create a dashboard:
 
-1. Navigate to the Dashboards tab and click Create. Here, you have the option to choose one of Statsig’s Dashboard Templates or create a custom new one
+1. Navigate to the Dashboards tab and click Create. Here, you have the option to choose one of Statsig’s [Dashboard Templates](https://docs.statsig.com/product-analytics/dashboards#dashboard-templates) or create a custom new one
     
 ![image](https://github.com/user-attachments/assets/15696f0e-17b8-4413-a5fe-ab68f6c5c7c7)
 
@@ -29,24 +29,6 @@ There are two ways to create a dashboard:
 
 ![image](https://github.com/user-attachments/assets/012d7dc0-a09b-4424-af10-ab8a714040cb)
 
-
-## Dashboard Templates
-
-Dashboard templates are a great way to reduce the time to insights. Statsig compiles industry-standard metrics to ensure your data visualization is focused on critical success indicators. You can start with a template and add on any additional insights you find helpful. Currently, Statsig offers the following templates:
-
-- Product Growth
-    - Use Statsig’s built-in metrics like DAU, WAU, Stickiness, etc. to track long-term product health
-- Feature Success
-    - Input a feature usage event, like form_submit or purchase_completed, to evaluate the success of your feature rollout with usage and retention metrics
-    - Optionally, you can add a feature adoption event or related feature flag to broaden the scope of your tracking
-- B2B SaaS Topline Metrics
-    - Input a key feature event and user subscription events to monitor product usage, user retention and subscription conversion rates over time
-- Web Analytics
-    - Available with Autocapture, track essential web metrics like page views, clicks, and sessions duration. See more on Autocapture [here](https://docs.statsig.com/guides/sidecar-experiments/measuring-experiments#using-autocapture)
-- Create from Gate or Experiment
-    - Input your Gate or Experiment of interest to generate a focused dashboard with related monitoring metrics
-- Create from Tag
-    - Utilize Statsig’s project tagging to create and easily maintain a dashboard with the metrics, experiments, and feature flags you care about
 
 ## Adding Charts, Feature Gates, and Experiments to a Dashboard
 
@@ -103,8 +85,27 @@ If you want to save changes to a chart on the dashboard, configure the chart as 
 
 ![image](https://github.com/user-attachments/assets/e8d21373-33f2-43f9-a984-f25365b73080)
 
+# Tips
 
-# Finding Dashboards
+## Dashboard Templates [](https://docs.statsig.com/product-analytics/dashboards#dashboard-templates)
+
+Dashboard templates are a great way to reduce the time to insights. Statsig compiles industry-standard metrics to ensure your data visualization is focused on critical success indicators. You can start with a template and add on any additional insights you find helpful. Currently, Statsig offers the following templates:
+
+- Product Growth
+    - Use Statsig’s built-in metrics like DAU, WAU, Stickiness, etc. to track long-term product health
+- Feature Success
+    - Input a feature usage event, like form_submit or purchase_completed, to evaluate the success of your feature rollout with usage and retention metrics
+    - Optionally, you can add a feature adoption event or related feature flag to broaden the scope of your tracking
+- B2B SaaS Topline Metrics
+    - Input a key feature event and user subscription events to monitor product usage, user retention and subscription conversion rates over time
+- Web Analytics
+    - Available with Autocapture, track essential web metrics like page views, clicks, and sessions duration. See more on Autocapture [here](https://docs.statsig.com/guides/sidecar-experiments/measuring-experiments#using-autocapture)
+- Create from Gate or Experiment
+    - Input your Gate or Experiment of interest to generate a focused dashboard with related monitoring metrics
+- Create from Tag
+    - Utilize Statsig’s project tagging to create and easily maintain a dashboard with the metrics, experiments, and feature flags you care about
+
+## Finding Dashboards
 
 Once you’ve created a dashboard you may want to quickly find the charts that matter to you. Heading to the Dashboards tab will give you several ways to find a dashboard.
 
