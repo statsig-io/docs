@@ -16,7 +16,7 @@ Statsig’s dashboards are the most effective way to consume, share, and save th
 
 There are two ways to create a dashboard:
 
-1. Navigate to the Dashboards tab and click Create. Here, you have the option to choose one of Statsig’s [Dashboard Templates](https://docs.statsig.com/product-analytics/dashboards#dashboard-templates) or create a custom new one
+1. Navigate to the Dashboards tab and click Create. Here, you have the option to choose one of Statsig’s [Dashboard Templates](#dashboard-templates) or create a custom new one
     
 ![image](https://github.com/user-attachments/assets/15696f0e-17b8-4413-a5fe-ab68f6c5c7c7)
 
@@ -87,7 +87,7 @@ If you want to save changes to a chart on the dashboard, configure the chart as 
 
 # Tips
 
-## Dashboard Templates [](https://docs.statsig.com/product-analytics/dashboards#dashboard-templates)
+## Dashboard Templates {#dashboard-templates}
 
 Dashboard templates are a great way to reduce the time to insights. Statsig compiles industry-standard metrics to ensure your data visualization is focused on critical success indicators. You can start with a template and add on any additional insights you find helpful. Currently, Statsig offers the following templates:
 
