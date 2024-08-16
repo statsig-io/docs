@@ -5,8 +5,9 @@ title: Running an A/A (aa) Test using Sidecar
 
 In this guide, we will walk you through how to leverage Statsig’s sidecar to run an A/A test on your product.  
 
-:::info This guide assumes that you have successfully set up and configured Statsig Sidecar. For a step-by-step guide on how to do this, see our [“setting up Sidecar”](https://docs.statsig.com/guides/sidecar-experiments/setup) guide.:::
+:::info info This guide assumes that you have successfully set up and configured Statsig Sidecar. For a step-by-step guide on how to do this, see our [“setting up Sidecar”](https://docs.statsig.com/guides/sidecar-experiments/setup) guide.
 
+:::
 
 ## Why run an A/A (aa) test?  
 
@@ -18,18 +19,18 @@ There are many reasons to run an A/A test, one of the most common being to valid
 
 Navigate to the page on your website that you want to run an A/A Test. Open the Statsig Side car extenstion and click on 'New Experiment'. Fill in the title of your A/A test. 
 
-(Image on the screenshot of the sidecar with 'AA test'). 
+![image](/img/sidecar_aa_setup.png)
 
 Then, determine of the URI filter (i.e. All Pages, contains, etc.). After you have configured the URI, it is time to set up the variants. 
 
 With the variant 'Control', pick an action. In this example we are simply changing the content of an element, specifically the title, 'Getting Started is Simple'. 
 
 
-(Image of screenshot of the clicking of the element)
+![image](/img/sidecar_aa_select.png)
 
 Repeating the step above, you'll do the exact same action for the variant 'Test'. Your set up should look like the following. 
 
-(Image of screenshot of the set up of sidecar experiment)
+![image](/img/sidecar_aa_final.png)
 
 From there, all you'll need to do is click 'Publish', this will push out the experiment to Statsig as a draft. 
 
@@ -39,8 +40,6 @@ Once the experiment is pushed out to end users, you will need to edit the scorec
 
 In the Setup tab, you can fill out the scorecard for the experiment Hypothesis, and any primary metrics you are interested in watching. While Statsig will show you experiment results for all your metrics, these key metrics represent your hypothesis for the experiment. Establishing a hypothesis upfront ensures that the experiment serves to improve your understanding of users rather than simply serving data points to bolster the case for shipping or not shipping your experiment.
 
-(Add this image, but remove the groups: https://user-images.githubusercontent.com/74584483/174388696-4db2e3ce-69a0-400a-9cc3-b0d67bf1b097.png)
-
 In the Allocation and Targeting section, for an AA test, we recommend to allocate 100% of users to the experiment while targeting everyone. 
 
 Then, make sure to save and push your experiment. Your test is now set up to start measuring metrics associated with the A/A Test! 
@@ -49,12 +48,9 @@ Then, make sure to save and push your experiment. Your test is now set up to sta
 
 Within 24 hours of starting your experiment, you'll see the cumulative exposures in the **Pulse Results** tab of your experiment.
 
-(Image of the pulse results)
-
 his will break down your logged exposures (as well as the distribution of the logged exposures). If something looks off, check the **Diagnostics** tab for more granular, day-by-day exposure breakdowns at both the Checks and User level.  
 
 In the **Scorecard** panel, you can see the full picture of how all your tagged metrics are performing.  
-
 
 ![pulse_results_empty](https://user-images.githubusercontent.com/101903926/163248267-7bd7419a-59e0-4d58-b8e5-8ace95ed74d9.png)
 
