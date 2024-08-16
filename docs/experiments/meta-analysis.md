@@ -18,6 +18,12 @@ This view lets you to filter down to experiments a team has run. At a glance you
 7. How much do they impact key business metrics?
 ![image](https://github.com/statsig-io/docs/assets/31516123/215f42b0-f3a1-46cd-a396-c2a2f3fd6561)
 
+## Metric Impact (Batting Average)
+The "batting average" view lets you look at how easy or hard a metric is to move. You can filter to a set of shipped experiments and see how many experiments moved a metric by 1% vs 10%. This quickly gives you a sense for whether betting your next experiment will move this by 15% is a good idea. Like with other meta-analysis views, you can filter down to a team, a tag or even if results were statistically significant. 
+
+![image](https://github.com/user-attachments/assets/72f987a4-02ba-4937-9f3d-06892c55e4e9)
+
+
 ## Metric Correlation View
 This view lets you visualize two metrics (each data point is an experiment) and visually inspect them for correlation. 
 
@@ -29,11 +35,6 @@ In this hypothetical example - "Checkouts" is the metric you want to move, but i
 ![image](https://github.com/statsig-io/docs/assets/31516123/016285b0-cdc4-46a4-8fdf-204b20b5b0e4)
 
 ![image](https://github.com/statsig-io/docs/assets/31516123/c29e5d7d-d8b6-4841-acaf-8d521a5db398)
-
-## Metric Impact (Batting Average)
-The "batting average" view lets you look at how easy or hard a metric is to move. You can filter to a set of shipped experiments and see how many experiments moved a metric by 1% vs 10%. This quickly gives you a sense for whether betting your next experiment will move this by 15% is a good idea. Like with other meta-analysis views, you can filter down to a team, a tag or even if results were statistically significant. 
-
-![image](https://github.com/user-attachments/assets/72f987a4-02ba-4937-9f3d-06892c55e4e9)
 
 
 ## Metric Insights
