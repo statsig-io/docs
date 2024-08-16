@@ -21,36 +21,36 @@ Please note that we will cast fields into the appropriate type. For example, Sta
 Events that are emitted by your application to measure the ongoing impact of your features and experiments.
 
 #### Required
-```
+
 | Column     | Description                            | Format/Rules                                                                      |
 | ---------- | -------------------------------------- | --------------------------------------------------------------------------------- |
 | timestamp  | The unix time your event was logged at | BIGINT. please cast timestamps into epoch time in seconds                         |
 | event_name | The name of the event                  | STRING/VARCHAR. Not null. Length < 128 characters                                 |
 | unit_id    | Unique unit identifier                 | STRING/VARCHAR. User ID, Stable ID, etc. The same event row can have multiple IDs |
-```
+
 
 #### Optional
-```
+
 | Column         | Description                      | Rules                                                                                                            |
 | -------------- | -------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | event_value    | The value of the event           | STRING/VARCHAR. Length < 128 characters. Statsig will detect numeric values                                      |
 | event_metadata | Metadata columns about the event | (MANY) STRING:STRING. Statsig will generate a metadata json field from however many metadata columns you provide |
 | metadata_json  | Metadata json about the event    | JSON STRING. Statsig will unpack this json 1 level deep. Nested values will be stored as strings                 |
-```
+
 
 <br />
 
 An example dataset for events might look like this:
 
-```
+
 | unit_id | visit_id | event    | timestamp  | value | metadata_blob                                            | user_type       |
 | ------- | -------- | -------- | ---------- | ----- | -------------------------------------------------------- | --------------- |
-| 331444  |          | click    | 1676484875 |       | {"click_target": "exit_details_button"}                  | power_user      |
-| 331444  |          | click    | 1676484860 |       | {"click_target": "open_details_button"}                  | power_user      |
-| 265113  |          | click    | 1676484333 |       | {"click_target": "button", "button_color": "green"}      | churn_risk_user |
-| 445332  | aeeer43d | visit    | 1676483821 |       | {"page": "landing_page"}                                 | new_user        |
-| 224448  |          | checkout | 1676482222 | 33.22 | {"product_id": "11eefj", "product_category": "clothing"} | power_user      |
-```
+| 331444  |          | click    | 1676484875 |       | `{"click_target": "exit_details_button"}`                  | power_user      |
+| 331444  |          | click    | 1676484860 |       | `{"click_target": "open_details_button"}`                  | power_user      |
+| 265113  |          | click    | 1676484333 |       | `{"click_target": "button", "button_color": "green"}`      | churn_risk_user |
+| 445332  | aeeer43d | visit    | 1676483821 |       | `{"page": "landing_page"}`                                 | new_user        |
+| 224448  |          | checkout | 1676482222 | 33.22 | `{"product_id": "11eefj", "product_category": "clothing"}` | power_user      |
+
 
 Note that:
 
@@ -69,7 +69,7 @@ Precomputed metrics are a powerful way to leverage statsig for experiment result
 Precomputed metrics in statsig are expected to be calculated at a user-day granularity.
 
 #### Required
-```
+
 | Column       | Description                                                                                                                   | Format/Rules                                                                                                                                                     |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | unit_id      | The unique user identifier this metric is for. This might not necessarily be a user_id - it could be a custom_id of some kind | STRING                                                                                                                                                           |
@@ -79,18 +79,18 @@ Precomputed metrics in statsig are expected to be calculated at a user-day granu
 | metric_value | A numeric value for the metric                                                                                                | DOUBLE/NUMERIC. Metric value <br/><b>OR</b><br/> Both of numerator/denominator need to be provided for Statsig to process the metric.                            |
 | numerator    | Numerator for metric calculation                                                                                              | DOUBLE/NUMERIC. If present along with a denominator in any record, the metric will be treated as ratio and only calculated for users with non-null denominators. |
 | denominator  | Denominator for metric calculation                                                                                            | DOUBLE/NUMERIC. If present along with a numerator in any record, the metric will be treated as ratio and only calculated for users with non-null denominators.   |
-```
+
 <br />
 
 An example dataset for metrics might look like this:
-```
+
 | unit_id  | unit_type | date       | metric_name             | metric_value | numerator | denominator |
 | -------- | --------- | ---------- | ----------------------- | ------------ | --------- | ----------- |
 | 331444   | user_id   | 2023-02-13 | clicks                  | 2            |           |             |
 | aeeer43d | visit_id  | 2023-02-13 | visits                  | 1            |           |             |
 | 224448   | user_id   | 2023-02-13 | checkout_rate           |              | 2         | 15          |
 | 224448   | user_id   | 2023-02-13 | clothing_checkout_value | 33.22        |           |             |
-```
+
 Note that:
 
 - In this dataset, unit types are in different rows from each other
@@ -110,18 +110,18 @@ NOTE: Exposure event import is deprectated. If this is an important use case, se
 Exposure events are generated by your assignment tool, when it assigns your users to a certain variant of an experiment (e.g., show ad vs. hide ad).
 
 #### Required
-```
+
 | Column     | Description                                 | Format/Rules                                                                      |
 | ---------- | ------------------------------------------- | --------------------------------------------------------------------------------- |
 | timestamp  | The unix time your event was logged at      | BIGINT. please cast timestamps into timezoneless unix time                        |
 | experiment | Your experiment identifier                  | STRING/VARCHAR. Not null. Length < 128 characters                                 |
 | group_id   | Unique identifier for the experiment groups | STRING/VARCHAR. Not null.                                                         |
 | unit_id    | Unique user identifier                      | STRING/VARCHAR. User ID, Stable ID, etc. The same event row can have multiple IDs |
-```
+
 
 #### Optional
-```
+
 | Column        | Description                   | Rules                                                                                            |
 | ------------- | ----------------------------- | ------------------------------------------------------------------------------------------------ |
 | metadata_json | Metadata json about the event | JSON STRING. Statsig will unpack this json 1 level deep. Nested values will be stored as strings |
-```
+
