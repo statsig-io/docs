@@ -28,6 +28,7 @@ There are three types of export:
 
 ### Pulse Summary File Description - For Feature Gates
 
+
 | Column Name      | Description                                                                                                                                                                                                            |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | name             | Name of the Experiment or Feature Gate                                                                                                                                                                                 |
@@ -49,7 +50,9 @@ There are three types of export:
 | rel_stderr       | The estimated standard error of rel_delta (abs_delta/ctrl_mean)                                                                                                                                                        |
 | z_score          | The calculated Z-score                                                                                                                                                                                                 |
 
+
 ### Pulse Summary File Description - For Experiments
+
 
 | Column Name      | Description                                                                                                                                                                                                            |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -69,7 +72,7 @@ There are three types of export:
 
 | Column Name                       | Description                                                                                   |
 | --------------------------------- | --------------------------------------------------------------------------------------------- |
-| user_id / stable_id / <custom_id> | Refers to the unit identifier used in the experiment                                          |
+| user_id / stable_id / custom_id | Refers to the unit identifier used in the experiment                                          |
 | name                              | The name of the gate/experiment                                                               |
 | rule                              | For gates, this refers to the rule name                                                       |
 | experiment_group                  | The group the user was assigned to                                                            |
@@ -78,7 +81,9 @@ There are three types of export:
 | as_of_pst_date                    | The date this data was generated                                                              |
 | user_dimensions                   | JSON-formatted key-value pairs describing the user's attributes at the time of first exposure |
 
+
 ### Unit Metrics File Description
+
 
 | Column Name         | Description                                                                                 |
 | ------------------- | ------------------------------------------------------------------------------------------- |
@@ -90,3 +95,4 @@ There are three types of export:
 | metric_value        | The numeric value of the metric                                                             |
 | numerator           | For some metrics, we track the numerator                                                    |
 | denominator         | For some metrics, we track the denominator                                                  |
+

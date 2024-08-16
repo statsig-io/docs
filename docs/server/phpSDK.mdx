@@ -36,9 +36,9 @@ import * as RefSnippets from "./php/_reference.mdx";
 import * as _CronJobs from "./php/_CronJobs.mdx";
 export const CronJobs = _CronJobs;
 
-export const Result = SDKDocsBuilder(
-  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
-  [
+<>
+  <SDKDocsBuilder
+    sections={[
     [
       Repository,
       {
@@ -70,9 +70,6 @@ export const Result = SDKDocsBuilder(
     [ShutdownSnippet, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <RefSnippets.default /> }],
-  ],
-  toc,
-  [...RefSnippets.toc]
-);
-
-<>{Result}</>
+  ]}
+  />
+</>

@@ -14,13 +14,10 @@ import {
 import * as _InitStrats from "./_InitStrategies.mdx";
 export const InitStrats = _InitStrats;
 
-
-export const Result = SDKDocsBuilder(
-  {},
-  [
+<>
+  <SDKDocsBuilder
+    sections={[
     [InitStrats, {}]
-  ],
-  toc
-);
-
-<>{Result}</>
+  ]}
+  />
+</>

@@ -39,9 +39,9 @@ import PersistentStorageInterface from "./jslocal/_persistentStorageInterface.md
 import PersistentStorageExample from "./jslocal/_persistentStorageExample.mdx";
 import { GetStableID, OverrideStableID } from "./jslocal/_stableID.mdx";
 
-export const Result = SDKDocsBuilder(
-  {},
-  [
+<>
+  <SDKDocsBuilder
+    sections={[
     [
       Repository,
       {
@@ -84,8 +84,6 @@ export const Result = SDKDocsBuilder(
       { interface: <PersistentStorageInterface />, example: <PersistentStorageExample /> },
     ],
     [FAQ, { faqs: <MoreFAQs /> }],
-  ],
-  toc
-);
-
-<>{Result}</>
+  ]}
+  />
+</>

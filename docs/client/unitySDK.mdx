@@ -32,9 +32,9 @@ import MoreFAQs from "./Unity/_faqs.mdx";
 import Options from "./Unity/_options.mdx";
 import ShutdownSnippet from "./Unity/_shutdown.mdx";
 
-export const Result = SDKDocsBuilder(
-  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
-  [
+<>
+  <SDKDocsBuilder
+    sections={[
     [
       Repository,
       {
@@ -62,8 +62,6 @@ export const Result = SDKDocsBuilder(
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
-  ],
-  toc
-);
-
-<>{Result}</>
+  ]}
+  />
+</>

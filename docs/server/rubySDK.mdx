@@ -40,9 +40,9 @@ import * as ReferenceSnippets from "./ruby/_reference.mdx";
 import ClientInitResponseSnippet from "./ruby/_clientInitResponse.mdx";
 import MultiInstanceExample from "./ruby/_multiInstanceExample.mdx";
 
-export const Result = SDKDocsBuilder(
-  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
-  [
+<>
+  <SDKDocsBuilder
+    sections={[
     [
       Repository,
       {
@@ -92,9 +92,6 @@ export const Result = SDKDocsBuilder(
     [Instances, { constructor: <MultiInstanceExample /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
-  ],
-  toc,
-  [...ReferenceSnippets.toc]
-);
-
-<>{Result}</>
+  ]}
+  />
+</>

@@ -54,7 +54,7 @@ There are 3 points throughout the gate's lifecycle when you'd want to take actio
       - Click on filter icon:
         - Status = In Progress
         - Pass Rate = 100% AND 0%
-    - In the search bar: “Modified: <YYYY/MM-DD;” (update the date to be 30 days ago)
+    - In the search bar: “Modified: `<YYYY/MM-DD;`” (update the date to be 30 days ago)
     
       ![image](https://user-images.githubusercontent.com/120431069/216164917-85a7da7a-2ee6-4ba5-8ca6-c6ced99516ee.png)
 
@@ -70,7 +70,7 @@ Confirm that the gate has been set to either **Launched** or **Disabled** (i.e. 
   - To find *all* gates that are good candidates to be removed from your codebase (i.e. have been **Launched** or **Disabled** more than 60 days ago)
     - Go to Feature Gates catalog
       - Click on filter icon: Status = **Launched** AND **Disabled**
-      - In search bar: “Modified: <YYYY/MM-DD;” (update the date to be 60 days ago)
+      - In search bar: “Modified: `<YYYY/MM-DD;`” (update the date to be 60 days ago)
 
       ![image](https://user-images.githubusercontent.com/120431069/216166227-7e36df55-f540-4c74-a899-e0bfdfb808f6.png)
 

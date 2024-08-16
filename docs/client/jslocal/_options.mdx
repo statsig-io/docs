@@ -26,7 +26,7 @@ import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
   - Maximum number of events to buffer before flushing events to statsig
 
 ### Initialization
-- **initializeValues?** Record<string, any> | null, default null
+- **initializeValues?** `Record<string, any> | null`, default null
   - Provide the `download_config_specs` values directly to the Javascript SDK to synchronously initialize the client
   - You may wish to fetch this from the default `js` snippet we provide on our cdn.  See "Synchronous Initialization" for more details
   - Only used when calling `statsig.initialize()`

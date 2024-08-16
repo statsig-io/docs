@@ -52,7 +52,7 @@ You can use this to validate that a new feature does not regress existing metric
 ### User ID {#userid}
 Usage: Simple lists of User IDs to explicitly target or exclude from a gate.
 
-Supported Operators: Any of, none of
+Supported Operators: `Any of, none of`
 
 Example usage: Add yourself (or a small group like your team) when you just start building a new feature.  Or exclude your designer until it's ready for their eyes.
 
@@ -61,7 +61,7 @@ Example usage: Add yourself (or a small group like your team) when you just star
 ### Email {#email}
 Usage: Target based on the email of the user
 
-Supported Operators: any of, none of, contains any of, contains none of
+Supported Operators: `any of, none of, contains any of, contains none of`
 
 Example: Show new feature to people in the Statsig company with an authenticated @statsig.com email address
 
@@ -70,7 +70,7 @@ Example: Show new feature to people in the Statsig company with an authenticated
 ### Everyone {#everyone}
 Usage: Percentage rollout on the remainder of users that reach this condition.  Think of it as "everybody else" - there could be a dozen other rules/conditions above it, but for everyone else, what percentage do you want to pass?
 
-Supported Operators: None. Percentage based only.
+Supported Operators: `None. Percentage based only.`
 
 Example usage: 50/50 rollout to A/B test a new feature.  Or 0% to hide the feature for all people not matching a set of rules. Or 100% to show the feature to the remaining users who did not meet a condition above.
 
@@ -79,7 +79,7 @@ Example usage: 50/50 rollout to A/B test a new feature.  Or 0% to hide the featu
 ### App Version {#app-version}
 Usage: User's on a particular version of your app/website will pass.  Particularly useful for mobile app development, where a feature may not be fully ready (or maybe be broken) in a particular app version.
 
-Supported Operators: >=, >, <, <=, any of, none of
+Supported Operators: `>=, >, <, <=, any of, none of`
 
 Example: Turn off a feature for all users on app versions 3.0.0 through 3.1.0 as it was broken.
 
@@ -88,7 +88,7 @@ Example: Turn off a feature for all users on app versions 3.0.0 through 3.1.0 as
 ### Browser Version {#browser-version}
 Usage: A particular version of a browser, parsed from the user agent.  Should likely be combined with the browser name condition.
 
-Supported Operators: >=, >, <, <=, any of, none of
+Supported Operators: `>=, >, <, <=, any of, none of`
 
 Example: Turn off a feature for old versions of chrome which don't support a certain API
 
@@ -110,7 +110,7 @@ Usage: A particular browser, parsed from the user agent:
     'Safari').
 Often combined with the Browser Version condition.
 
-Supported Operators: >=, >, <, <=, any of, none of
+Supported Operators: `>=, >, <, <=, any of, none of`
 
 Example: Turn off a feature for old versions of chrome which don't support a certain API
 
@@ -121,7 +121,7 @@ To test: The Browser Name is inferred from the `userAgent`, but if you need to s
 ### OS Version {#os-version}
 Usage: A particular os version the user is on, parsed from the user agent.  Should likely be combined with the Operating System condition.
 
-Supported Operators: >=, >, <, <=, any of, none of
+Supported Operators: `>=, >, <, <=, any of, none of`
 
 Example: Turn off a feature for versions of macOS which don't support a certain API
 
@@ -132,7 +132,7 @@ Usage: A particular operating system, parsed from the user agent:
     ('Android', 'iOS', 'Linux', 'Mac OS X', 'Windows').
 Often combined with the OS Version condition.
 
-Supported Operators: any of, none of
+Supported Operators: `any of, none of`
 
 Example: Turn off a feature for versions of macOS which don't support a certain API
 
@@ -143,7 +143,7 @@ To test: The OS is inferred from the `userAgent`, but if you need to set it expl
 ### Device Model {#device-model}
 Usage: The device model of the mobile device the user is on.
 
-Supported Operators: any of, none of, is null, is not null, contains any of, contains none of, regex
+Supported Operators: `any of, none of, is null, is not null, contains any of, contains none of, regex`
 
 Example: Turn off a feature for older device models that your app does not support.
 
@@ -154,7 +154,7 @@ To test: The Device Model is automatically inferred by the SDK, but if you need 
 ### Country  {#country}
 Usage: A 2 letter country code, either passed as the user's country or determined by the IP address.
 
-Supported Operators: any of, none of
+Supported Operators: `any of, none of`
 
 Example: Show a cookie consent banner for users accessing your service from the EU.
 
@@ -163,7 +163,7 @@ Example: Show a cookie consent banner for users accessing your service from the 
 ### IP address  {#ip}
 Usage: An IP address string
 
-Supported Operators: any of, none of
+Supported Operators: `any of, none of`
 
 Example: Show a different about us page on www.statsig.com to people in a certain IP address range
 
@@ -172,7 +172,7 @@ Example: Show a different about us page on www.statsig.com to people in a certai
 ### Passes Target gate {#gate}
 Usage: The condition passes if the referenced gate passes for the given user
 
-Supported Operators: gate_id
+Supported Operators: `gate_id`
 
 Example: Only show feature X to people who also see feature Y: Only show a toggle to turn off ranking to people who also pass the new ranking algorithm gate.
 
@@ -181,7 +181,7 @@ Example: Only show feature X to people who also see feature Y: Only show a toggl
 ### Fails Target gate
 Usage: Inverse of passes target gate: the condition passes if the referenced gate returns false for the given user
 
-Supported Operators: gate_id
+Supported Operators: `gate_id`
 
 Example: Only show a new UI element to people who are not using the redesigned UI.
 
@@ -190,7 +190,7 @@ Example: Only show a new UI element to people who are not using the redesigned U
 ### User in Segment {#segment}
 Usage: The condition passes if the user passes the rules defining the referenced segment. See the [segments guide](/guides/using-environments) for more information on segments.
 
-Supported Operators: segment_id
+Supported Operators: `segment_id`
 
 Example: Only show a new UI element to people who are not using the redesigned UI.
 
@@ -199,7 +199,7 @@ Example: Only show a new UI element to people who are not using the redesigned U
 ### User not in Segment
 Usage: The condition passes if the user fails the rules defining the referenced segment. See the [segments guide](/guides/using-environments) for more information on segments.
 
-Supported Operators: segment_id
+Supported Operators: `segment_id`
 
 Example: Only show a feature to people who are not in the premium/paid tier.
 
@@ -208,7 +208,7 @@ Example: Only show a feature to people who are not in the premium/paid tier.
 ### Environment Tier {#environment}
 Usage: The condition passes if the evaluation is happening in the given environment tier (development/staging/prod). See the [environments guide](/guides/using-environments) for more information on environments.
 
-Supported Operators: development/staging/prod/(other)
+Supported Operators: `development/staging/prod/(other)`
 
 Example: Only show a feature on development builds
 
@@ -219,10 +219,10 @@ Example: Only show a feature on development builds
 Usage: Specify the key in the custom object to fetch the value use on the left hand side of a comparison
 
 Supported Operators:
-- string: any of, none of, contains any of, contains none of
-- number: any of, none of, less than, greater than
-- version: any of, none of, less than, greater than, less than or equal to, greater than or equal to
-- date: before, after
+- string: `any of, none of, contains any of, contains none of`
+- number: `any of, none of, less than, greater than`
+- version: ``any of, none of, less than, greater than, less than or equal to, greater than or equal to`
+- date: `before, after`
 
 Example: Only show a feature to user's who have turned on dark mode, as marked by the custom object having "darkmode": true.
 
@@ -232,7 +232,7 @@ Example: Only show a feature to user's who have turned on dark mode, as marked b
 
 Usage: Select custom ids to explicitly target or exclude from a gate.
 
-Supported Operators: any of, none of, is null, is not null, contains any of, contains none of, regex
+Supported Operators: `any of, none of, is null, is not null, contains any of, contains none of, regex`
 
 Example: Add yourself (or a small group like your team) when you just start building a new feature.
 
@@ -242,7 +242,7 @@ Example: Add yourself (or a small group like your team) when you just start buil
 
 Usage: Evaluate a gate relative to the current time (in PST for client SDKs, or your server time for server SDKs)
 
-Supported Operators: after time, before time, on date
+Supported Operators: `after time, before time, on date`
 
 Value: unix timestamp.  Some server SDKs support additional formats - see the full list on the [server user]/server/concepts/user#time-based-conditions) documentation.
 

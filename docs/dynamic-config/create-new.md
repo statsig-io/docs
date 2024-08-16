@@ -10,6 +10,5 @@ To create a dynamic config,
 - Click the **Create New** button
 - Enter a name and description, and click **Create**
 
-![image](https://user-images.githubusercontent.com/1315028/129111632-81143e41-db97-44f6-89b8-ff45763791f5.png)
-
+![image](https://github.com/user-attachments/assets/f44b281f-be49-46ce-b60d-e68a647274ab)
 
