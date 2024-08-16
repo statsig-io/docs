@@ -9,7 +9,6 @@ When calling APIs that require a StatsigUser object, you should pass as much inf
 
 ## User Attributes
 
-```
 | Attributes        | Description                                                                                                                                                                                                          | Example                                                                                                                    |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | User ID           | ID representing a unique user. This ID will be used to guarantee consistency of targeting for Feature Gates and Experiments and will be used to evaluate experiment results.                                         | `your_user_id`                                                                                                             |
@@ -22,7 +21,6 @@ When calling APIs that require a StatsigUser object, you should pass as much inf
 | Custom            | Dictionary that can contain key/value pairs that can be used for Feature Gate targeting. The content of this dictionary will be stored and available after targeting                                                 | `{current_page: "/homepage", ...}`                                                                                         |
 | Private Attibutes | Dictionary that can contain key/value pairs that can be used to evaluate feature gate conditions and segment conditions. The content of this dictionary will **not** be stored after used for targeting and will be removed from any log_event calls | `{sensitive_field: "sensitive_information", ...}`                                                                          |
 | Custom IDs        | Dictionary that can contain key/value pairs used as the randomization unit ID for experiments that are set up using these IDs instead of the `User ID`                                                               | `{account_id: "23456555", company_id: "company_xyz"}`                                                                      |
-```
 
 ### What fields can I override to set "Operating System" and "Browser" explicitly?
 
