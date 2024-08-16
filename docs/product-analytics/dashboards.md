@@ -6,13 +6,13 @@ sidebar_label: Dashboards
 slug: /product-analytics/dashboards
 ---
 
-# **Dashboards**
+# Dashboards
 
-# **Overview**
+# Overview
 
 Statsig’s dashboards are the most effective way to consume, share, and save the insights that matter most for your product. Metrics Explorer is how you start creating insights; dashboards are where those insights can live in an ongoing capacity to be absorbed by the entire team.
 
-# **Creating a Dashboard**
+# Creating a Dashboard
 
 There are two ways to create a dashboard:
 
@@ -48,7 +48,7 @@ Dashboard templates are a great way to reduce the time to insights. Statsig comp
 - Create from Tag
     - Utilize Statsig’s project tagging to create and easily maintain a dashboard with the metrics, experiments, and feature flags you care about
 
-## **Adding Charts, Feature Gates, and Experiments to a Dashboard**
+## Adding Charts, Feature Gates, and Experiments to a Dashboard
 
 Dashboards are designed to help teams share and absorb product insights of all types. To that end, it is possible to add Metric Charts and keep track of ongoing pulse results from A/B tests & feature launches.
 
@@ -74,7 +74,7 @@ There are several types of dashboard widgets you can add or create including:
 
 # Exploring your Dashboard
 
-## **Edit Date Ranges[](https://docs.statsig.com/product-analytics/dashboards#dashboard-date-ranges)**
+## Edit Date Ranges[](https://docs.statsig.com/product-analytics/dashboards#dashboard-date-ranges)
 
 By default, the charts and widgets on a dashboard are synced with the date range set for the entire dashboard. To update this default date range, click the pencil icon in the top right corner of the dashboard. In the settings that appear, you can modify the dashboard's title, description, and "Default Date Lookback Range." This selection will determine the date range that is automatically applied each time you open the dashboard. Choosing the "Chart Default" option allows each chart to revert to the date range originally set when it was first added to the dashboard, offering greater customization to your dashboard.
 
@@ -93,7 +93,7 @@ Each dashboard is constructed as a grid over which you you can place, move, and 
 
 Resize the the widget by clicking and holding the the bottom right edge of the widget dragging to the desire size.
 
-## **View and Edit a Chart in a Dashboard**
+## View and Edit a Chart in a Dashboard
 
 All of the charts we support in Metrics Explorer can be added to a dashboard. In addition, dashboard charts are not static.
 
@@ -104,7 +104,7 @@ If you want to save changes to a chart on the dashboard, configure the chart as 
 ![image](https://github.com/user-attachments/assets/e8d21373-33f2-43f9-a984-f25365b73080)
 
 
-# **Finding Dashboards**
+# Finding Dashboards
 
 Once you’ve created a dashboard you may want to quickly find the charts that matter to you. Heading to the Dashboards tab will give you several ways to find a dashboard.
 
