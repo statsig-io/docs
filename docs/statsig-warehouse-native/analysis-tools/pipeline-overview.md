@@ -31,7 +31,7 @@ Statsig lets you run your pipeline in a few different ways:
 
 The following tables will be generated and stored in your warehouse per-experiment. You have full access to these data sources for your own analysis, models, or visualizations. For experiments, `experiment_id` will be the name of the experiment; for Feature Gates, `experiment_id` will be the name of the gate along with the specific rule ID (e.g. `chatbot_llm_model_switch_31e9jwlgO1bSSznKntb2gp_exposures_summary`)
 
-This is not an exhaustive list, but includes most of the core result/staging tables that you might be interested in using for your own analysis.
+This is not an exhaustive list, but includes most of the core result/staging tables that you might be interested in using for your own analysis. Note - These are internal tables and will change as the product evolves. Changes will be documented here. 
 
 | Table                                                           | Description                                                                                                                     | Notes                                                      |
 | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
