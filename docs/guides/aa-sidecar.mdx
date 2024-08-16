@@ -7,13 +7,14 @@ In this guide, we will walk you through how to leverage Statsig’s sidecar to r
 
 :::info This guide assumes that you have successfully set up and configured Statsig Sidecar. For a step-by-step guide on how to do this, see our [“setting up Sidecar”](https://docs.statsig.com/guides/sidecar-experiments/setup) guide.:::
 
+
 ## Why run an A/A (aa) test?  
 
 There are many reasons to run an A/A test, one of the most common being to validate a new experimentation engine you may be integrating with (in this case Statsig).  For new users just getting started with Statsig, we often recommend running an A/A test to provide a “low-stakes” first test environment, ensuring that you’ve got your metrics set up correctly and are seeing exposures flowing through as expected before kicking off your first real A/B test. 
 
-### How to run an A/A test
+## How to run an A/A test
 
-## Step 1: Create a new Experiment in Sidecar
+### Step 1: Create a new Experiment in Sidecar
 
 Navigate to the page on your website that you want to run an A/A Test. Open the Statsig Side car extenstion and click on 'New Experiment'. Fill in the title of your A/A test. 
 
@@ -32,7 +33,7 @@ Repeating the step above, you'll do the exact same action for the variant 'Test'
 
 From there, all you'll need to do is click 'Publish', this will push out the experiment to Statsig as a draft. 
 
-## Step 2: Configure Experiment Scorecard in Statsig Console
+### Step 2: Configure Experiment Scorecard in Statsig Console
 
 Once the experiment is pushed out to end users, you will need to edit the scorecard to your experiment within the console. Navigate to the console, click on the Experiments tab, and go into the experiment you just created. 
 
@@ -44,7 +45,7 @@ In the Allocation and Targeting section, for an AA test, we recommend to allocat
 
 Then, make sure to save and push your experiment. Your test is now set up to start measuring metrics associated with the A/A Test! 
 
-## Step 3: Review A/A test results 
+### Step 3: Review A/A test results 
 
 Within 24 hours of starting your experiment, you'll see the cumulative exposures in the **Pulse Results** tab of your experiment.
 
@@ -52,7 +53,7 @@ Within 24 hours of starting your experiment, you'll see the cumulative exposures
 
 his will break down your logged exposures (as well as the distribution of the logged exposures). If something looks off, check the **Diagnostics** tab for more granular, day-by-day exposure breakdowns at both the Checks and User level.  
 
-In the **Metric Lifts** panel, you can see the full picture of how all your tagged metrics are performing.  
+In the **Scorecard** panel, you can see the full picture of how all your tagged metrics are performing.  
 
 
 ![pulse_results_empty](https://user-images.githubusercontent.com/101903926/163248267-7bd7419a-59e0-4d58-b8e5-8ace95ed74d9.png)
