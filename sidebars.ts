@@ -670,6 +670,7 @@ const sidebars: SidebarsConfig = {
                 "server/concepts/persistent_assignment",
                 "sdks/debugging",
                 "sdk-keys/target-apps",
+                "server/concepts/all_assignments",
               ],
             },
             "server/nodejsServerSDK",
