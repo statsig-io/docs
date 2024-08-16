@@ -12,6 +12,6 @@ For this reason, we recommend leveraging the standard approach of calling `getEx
 Often times, customers have the desire to capture all assignments (experiment, gates) in a single call on the server for a each user at the start of their session.
 This practice is commonly done as a means to pass assignment information to the client-side a single time, in order to inform the client app of the test groups and features it should apply.
 
-For this use-case, we recommend using the [Client Bootstrapping](/client/concepts/bootstrapping) approach via the `getClientInitializeResponse` server sdk call to generate the full assignments payload (note that the experiment and feature keys within are hashed for privacy) that gets passed down to the client SDK. 
+For this use-case, we recommend using the `getClientInitializeResponse` server sdk method to generate the full assignments payload. Note that this method is designed to [bootstrap](/client/concepts/bootstrapping) the client SDKs, and as such, will hash the experiment and feature keys returned in the payload, obfuscating their names to mitigate the possibility of end-users spoofing into features &amp; gates.
 
 
