@@ -18,28 +18,28 @@ The **Metrics User Guide** consists of [Metrics 101](/metrics/101), [201](/metri
 
 ## Metrics 101 - An Overview
 
-- [Introduction](metrics/101)
-- [Raw Events](metrics/raw-events)
-- [Raw Event Metrics](metrics/metrics-from-events)
-- [Custom Metrics](metrics/custom-metrics)
-- [Precomputed Metrics](metrics/precomputed-metrics)
-- [Pulse Metrics](metrics/pulse)
-- [Metric Dimensions](metrics/metric-dimensions)
+- [Introduction](/metrics/101)
+- [Raw Events](/metrics/raw-events)
+- [Raw Event Metrics](/metrics/metrics-from-events)
+- [Custom Metrics](/metrics/custom-metrics)
+- [Precomputed Metrics](/metrics/precomputed-metrics)
+- [Pulse Metrics](/metrics/pulse)
+- [Metric Dimensions](/metrics/metric-dimensions)
 
 # Metrics 201 - Diving deeper
 
-- [Introduction](metrics/201)
-- [Creating Metrics](metrics/create)
-- [Tagging Metrics](metrics/create-metric-tags)
-- [User Metrics](metrics/user)
-- [Assignment ID != Analysis ID](metrics/different-id)
+- [Introduction](/metrics/201)
+- [Creating Metrics](/metrics/create)
+- [Tagging Metrics](/metrics/create-metric-tags)
+- [User Metrics](/metrics/user)
+- [Assignment ID != Analysis ID](/metrics/different-id)
 
 # Metrics 301 - Advanced Topics
 
-- [Introduction](metrics/301)
-- [Events Explorer](metrics/events-explorer)
-- [User Funnels](metrics/create-user-funnels)
-- [User Flows](metrics/create-user-flows)
+- [Introduction](/metrics/301)
+- [Metrics Explorer](/product-analytics/overview)
+- [User Funnels](/metrics/create-user-funnels)
+- [User Flows](/metrics/create-user-flows)
 
 Statsig combines product experimentation with real-time analytics to help you achieve 360° **product observability**. 
 

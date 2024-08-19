@@ -40,9 +40,9 @@ import FlushSnippet from "./js/_shutdown.mdx";
 import LocalOverridesSnippet from "./js/_localOverrides.mdx";
 import { GetStableID, OverrideStableID } from "./js/_stableID.mdx";
 
-export const Result = SDKDocsBuilder(
-  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
-  [
+<>
+  <SDKDocsBuilder
+    sections={[
     [
       Repository,
       {
@@ -81,8 +81,6 @@ export const Result = SDKDocsBuilder(
       { getSnippet: <GetStableID />, overrideSnippet: <OverrideStableID /> },
     ],
     [FAQ, { faqs: <MoreFAQs /> }],
-  ],
-  toc
-);
-
-<>{Result}</>
+  ]}
+  />
+</>

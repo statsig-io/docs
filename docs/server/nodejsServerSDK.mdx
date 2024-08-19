@@ -48,9 +48,9 @@ import MultiInstanceExample from "./node/_multiInstanceExample.mdx";
 import PersistentStorageInterface from "./node/_persistentStorageInterface.mdx";
 import PersistentStorageExample from "./node/_persistentStorageExample.mdx";
 
-export const Result = SDKDocsBuilder(
-  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
-  [
+<>
+  <SDKDocsBuilder
+    sections={[
     [
       Repository,
       {
@@ -103,9 +103,6 @@ export const Result = SDKDocsBuilder(
     }],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <RefSnippets.default /> }],
-  ],
-  toc,
-  [...RefSnippets.toc]
-);
-
-<>{Result}</>
+  ]}
+  />
+</>

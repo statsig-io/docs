@@ -41,9 +41,9 @@ export const ReactNativeSetup = _ReactNativeSetup;
 import * as _reactHooks from "./_reactHooks.mdx";
 export const ReactHooks = _reactHooks;
 
-export const Result = SDKDocsBuilder(
-  {},
-  [
+<>
+  <SDKDocsBuilder
+    sections={[
     [
       Repository,
       {
@@ -53,8 +53,6 @@ export const Result = SDKDocsBuilder(
     [ReactNativeInstall, {}],
     [ReactNativeSetup, {}],
     [ReactHooks, {}]
-  ],
-  toc
-);
-
-<>{Result}</>
+  ]}
+  />
+</>

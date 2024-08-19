@@ -1,7 +1,7 @@
 ---
-title: Statsig in React
-sidebar_label: React Support
-slug: /client/javascript-sdk/react
+title: Statsig in Next.js App Router
+sidebar_label: Next.js Example (App Router)
+slug: /client/javascript-sdk/next-js
 ---
 
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
@@ -32,14 +32,14 @@ import MoreFAQs from "./_faqs.mdx";
 import Options from "./_options.mdx";
 import ShutdownSnippet from "./_shutdown.mdx";
 
-import * as _ReactInstall from "./_reactInstall.mdx";
-export const ReactInstall = _ReactInstall;
+import * as _nextJsInstall from "./_nextJsInstall.mdx";
+export const NextJsInstall = _nextJsInstall;
 
-import * as _ReactSetup from "./_reactSetup.mdx";
-export const ReactSetup = _ReactSetup;
+import * as _nextJsBootstrap from "./_nextJsBootstrap.mdx";
+export const NextJsBootstrap = _nextJsBootstrap;
 
-import * as _reactHooks from "./_reactHooks.mdx";
-export const ReactHooks = _reactHooks;
+import * as _nextJsApiProxy from "./_nextJsApiProxy.mdx";
+export const NextJsApiProxy = _nextJsApiProxy;
 
 <>
   <SDKDocsBuilder
@@ -50,9 +50,9 @@ export const ReactHooks = _reactHooks;
         repo: "https://github.com/statsig-io/js-client-monorepo",
       },
     ],
-    [ReactInstall, {}],
-    [ReactSetup, {}],
-    [ReactHooks, {}]
+    [NextJsInstall, {}],
+    [NextJsBootstrap, {}],
+    [NextJsApiProxy, {}],
   ]}
   />
 </>

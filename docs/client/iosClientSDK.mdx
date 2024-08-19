@@ -42,9 +42,9 @@ import GetParameterStore from "./iOS/_getParameterStore.mdx";
 import GetParameter from "./iOS/_getParameter.mdx";
 import MultiInstance from "./iOS/_multiInstance.mdx";
 
-export const Result = SDKDocsBuilder(
-  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
-  [
+<>
+  <SDKDocsBuilder
+    sections={[
     [
       Repository,
       {
@@ -87,8 +87,6 @@ export const Result = SDKDocsBuilder(
       { example: <MultiInstance /> }
     ],
     [FAQ, { faqs: <MoreFAQs /> }],
-  ],
-  toc
-);
-
-<>{Result}</>
+  ]}
+  />
+</>
