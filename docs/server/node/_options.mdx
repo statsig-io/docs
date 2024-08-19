@@ -28,6 +28,8 @@ import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
 - **dataAdapter**: IDataAdapter, default null
   - An adapter with custom storage behavior for config specs. Can be used to bootstrap Statsig server (takes priority over `bootstrapValues`). Can also be used to continously fetch updates in place of the Statsig network. See [Data Stores](/server/concepts/data_store).
   - For example, see our 1P implementation via Redis [statsig-node-redis](https://github.com/statsig-io/node-js-server-sdk-redis).
+- **UserPersistentStorage**: IUserPersistentStorage default nil
+  - A persistent storage adapter for running sticky experiments. See [examples](/server/nodejsServerSDK#user-persistent-storage).
 - **rulesetsSyncIntervalMs**: number, default 10,000
   - Sets the polling interval for the SDK to ask Statsig backend for changes on the rulesets.
 - **idListsSyncIntervalMs**: number, default 60,000
