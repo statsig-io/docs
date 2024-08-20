@@ -18,6 +18,6 @@ The following warehouses/tools are currently supported in Statsig Warehouse Nati
 - [Databricks](../connecting-your-warehouse/databricks.md)
 - [Redshift](../connecting-your-warehouse/redshift.md)
 - [Snowflake](../connecting-your-warehouse/snowflake.md)
-- [Athena](../connecting-your-warehouse/athena.md)
+- [Athena](../connecting-your-warehouse/athena.md) (β - limited functionality)
 
-Note that databricks is also an easy connector to use for generically connecting to existing datalakes.
+Note that Databricks is also an easy connector to use for generically connecting to existing datalakes.
