@@ -4,6 +4,11 @@ slug: /statsig-warehouse-native/connecting-your-warehouse/athena
 sidebar_label: Athena
 ---
 
+:::info
+Statsig Warehouse Native is in Beta. Some features available elsewhere (Metric Explorer, Assign & Analyze Experiments) are coming to Athena based on customer interest.  
+:::
+
+
 ## Overview
 
 To set up connection with Athena, Statsig needs the following
