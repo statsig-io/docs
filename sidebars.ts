@@ -1,4 +1,4 @@
-import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
+import type { SidebarsConfig } from "@docusaurus/plugin-content-docs";
 
 const sidebars: SidebarsConfig = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
@@ -366,7 +366,7 @@ const sidebars: SidebarsConfig = {
           items: [
             "statsig-warehouse-native/guides/quick-start",
             "statsig-warehouse-native/guides/running_a_poc",
-            "statsig-warehouse-native/guides/playground_eval",            
+            "statsig-warehouse-native/guides/playground_eval",
             "statsig-warehouse-native/guides/sdks",
             "statsig-warehouse-native/guides/aatest",
             "metrics/different-id",
@@ -436,6 +436,7 @@ const sidebars: SidebarsConfig = {
                 "statsig-warehouse-native/metrics/percentile",
               ],
             },
+            "statsig-warehouse-native/configuration/dimensional-analysis",
             "statsig-warehouse-native/configuration/assignment-sources",
             "statsig-warehouse-native/configuration/entity-properties",
             "statsig-warehouse-native/configuration/qualifying-events",
