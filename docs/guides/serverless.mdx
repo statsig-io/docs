@@ -31,3 +31,13 @@ For example, you could create a background function which fetches your definitio
 Then, when initializing a Statsig server SDK, you can fetch the values from your database, rather than issuing a request to Statsig servers.
 
 [Reach out to us in Slack](https://www.statsig.com/slack) if you want to talk through how to make Statsig play nicely with your architecture and requirements!
+
+### Fastly Implementation
+
+Depending on your Fastly account settings, you may have an extra layer of security enabled which requires a custom `fetch` method to be implemented for any network requests that need to be made to 3rd party domains. You must implement a custom `fetch` method that uses Fastly's required [backend parameter](https://js-compute-reference-docs.edgecompute.app/docs/globals/fetch).
+
+To solve for this, first define a module in its own file that implements a global override of `fetch`:
+<Gist id="b5d09f889465021f999582d1f48ef187" />
+
+Next, in the main function entrypoint, simply import the fetch override module prior to importing the Statsig SDK:
+<Gist id="f4a61c369ea03b24ffb8aecb9175bdcb" />
