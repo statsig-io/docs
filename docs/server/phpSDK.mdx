@@ -27,6 +27,7 @@ import GetExperiment from "./php/_getExperiment.mdx";
 import LogEvent from "./php/_logEvent.mdx";
 import MoreFAQs from "./php/_faqs.mdx";
 import Options from "./php/_options.mdx";
+import { Snippets as ManualExposureSnippets } from "./php/_manualExposures.mdx";
 import * as _ShutdownSnippet from "./php/_shutdown.mdx";
 export const ShutdownSnippet = _ShutdownSnippet;
 
@@ -39,37 +40,38 @@ export const CronJobs = _CronJobs;
 <>
   <SDKDocsBuilder
     sections={[
-    [
-      Repository,
-      {
-        repo: "https://github.com/statsig-io/php-sdk",
-      },
-    ],
-    [
-      GettingStarted,
-      {
-        sdkType: "PHP",
-        install: <Install />,
-        skipStatsigOptionsDescription: true,
-        initialize: <Initialize />,
-        skipInitializeDescription: true,
-      },
-    ],
-    [
-      WorkingWith,
-      {
-        checkGate: <CheckGate />,
-        getConfig: <GetConfig />,
-        getExperiment: <GetExperiment />,
-        logEvent: <LogEvent />,
-      },
-    ],
-    [CronJobs, {}],
-    [StatsigUser, {}],
-    [StatsigOptions, { options: <Options /> }],
-    [ShutdownSnippet, {}],
-    [FAQ, { faqs: <MoreFAQs /> }],
-    [Reference, { snippets: <RefSnippets.default /> }],
-  ]}
+      [
+        Repository,
+        {
+          repo: "https://github.com/statsig-io/php-sdk",
+        },
+      ],
+      [
+        GettingStarted,
+        {
+          sdkType: "PHP",
+          install: <Install />,
+          skipStatsigOptionsDescription: true,
+          initialize: <Initialize />,
+          skipInitializeDescription: true,
+        },
+      ],
+      [
+        WorkingWith,
+        {
+          checkGate: <CheckGate />,
+          getConfig: <GetConfig />,
+          getExperiment: <GetExperiment />,
+          logEvent: <LogEvent />,
+        },
+      ],
+      [ManualExposures, { addedInVersion: "3.4.0", ...ManualExposureSnippets }],
+      [CronJobs, {}],
+      [StatsigUser, {}],
+      [StatsigOptions, { options: <Options /> }],
+      [ShutdownSnippet, {}],
+      [FAQ, { faqs: <MoreFAQs /> }],
+      [Reference, { snippets: <RefSnippets.default /> }],
+    ]}
   />
 </>
