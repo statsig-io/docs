@@ -1,0 +1,53 @@
+import CodeBlock from "@theme/CodeBlock";
+
+import ManualExposuresTemplate from "../../sdks/_manual-exposures-template.mdx";
+
+export const Snippets = {
+  // Gates
+  gateSnippet: (
+    <CodeBlock language="php">
+      {`$result = $this->statsig->checkGateWithExposureLoggingDisabled($user, 'a_gate_name');`}
+    </CodeBlock>
+  ),
+  gateExposureSnippet: (
+    <CodeBlock language="php">
+      {`$this->statsig->manuallyLogGateExposure($user, 'a_gate_name');`}
+    </CodeBlock>
+  ),
+  // Configs
+  configSnippet: (
+    <CodeBlock language="php">
+      {`$config = $this->statsig->getConfigWithExposureLoggingDisabled($user, 'a_dynamic_config_name');`}
+    </CodeBlock>
+  ),
+  configExposureSnippet: (
+    <CodeBlock language="php">
+      {`$this->statsig->manuallyLogConfigExposure($user, 'a_dynamic_config_name');`}
+    </CodeBlock>
+  ),
+  // Experiment
+  experimentSnippet: (
+    <CodeBlock language="php">
+      {`$experiment = $this->statsig->getExperimentWithExposureLoggingDisabled($user, 'an_experiment_name');`}
+    </CodeBlock>
+  ),
+  experimentExposureSnippet: (
+    <CodeBlock language="php">
+      {`$this->statsig->manuallyLogExperimentExposure($user, 'an_experiment_name');`}
+    </CodeBlock>
+  ),
+  // Layer
+  layerSnippet: (
+    <CodeBlock language="php">
+      {`$layer = $this->statsig->getLayerWithExposureLoggingDisabled($user, 'a_layer_name');
+const paramValue = $layer->get('a_param_name', 'fallback_value');`}
+    </CodeBlock>
+  ),
+  layerExposureSnippet: (
+    <CodeBlock language="php">
+      {`$this->statsig->manuallyLogLayerParameterExposure($user, 'a_layer_name', 'a_param_name');`}
+    </CodeBlock>
+  ),
+};
+
+;
