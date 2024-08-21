@@ -17,7 +17,7 @@ and provide it to the Statsig client via [StatsigOptions.dataAdapter](/client/ja
 
 ### Synchronous Behavior (Cache)
 
-When callling `StatsigClient.initalizeSync`, the `StatsigEvaluationsDataAdapter` will load values
+When calling `StatsigClient.initializeSync`, the `StatsigEvaluationsDataAdapter` will load values
 from Cache and provide them to the client. The client will also call refresh in the background via
 `StatsigEvaluationsDataAdapter.getDataAsync`, leading to values lagging until the next time `initializeSync` or `updateUserSync` is called.
 
@@ -25,7 +25,7 @@ In practice (Unless an additional update call is made), this means that for the 
 
 ### Asynchronous Behavior (Network)
 
-When callling `StatsigClient.initializeAsync`, the `StatsigEvaluationsDataAdapter` will load values
+When calling `StatsigClient.initializeAsync`, the `StatsigEvaluationsDataAdapter` will load values
 from Cache and provide them to the client. The client will then block on a call to `StatsigEvaluationsDataAdapter.getDataAsync`,
 allowing the ability to await the latest values from Statsig.
 

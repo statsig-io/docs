@@ -62,6 +62,6 @@ export default function AsyncInitializeExample(): JSX.Element {
 
 ### Synchronous Initialization (Cache)
 
-When calling StatsigClient.initalizeSync, the client will attempt to use cache values if they are available. The client will also fetch new values in the background and update the cache (not the current in-use values). In practice, unless an additional update call is made, this means that for the very first session of a given user, there will be no values, and not until the next session will the cache have values.
+When calling StatsigClient.initializeSync, the client will attempt to use cache values if they are available. The client will also fetch new values in the background and update the cache (not the current in-use values). In practice, unless an additional update call is made, this means that for the very first session of a given user, there will be no values, and not until the next session will the cache have values.
 
 <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-precomp-initialize.tsx" />
