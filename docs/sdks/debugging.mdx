@@ -34,6 +34,8 @@ For client SDKs, these reasons for the value you are seeing can be:
 - `Error`: an unknown error has occured, and was logged to statsig servers
 - `Error:NoClient`: No client was found in StatsigContext. Likely a call to a Statsig hook outside of the StatsigProvider. (js-client-only)
 - `NetworkNotModified`: the network response came back, but the cached values were already up to date for this user
+- `NoValues`: The sdk was initialized, but there were no values in the cache for the user (and nothing fetched from the network). Commonly caused by calling `initializeSync` rather than waiting for `initializeAsync`
+- `Loading`: Initialize was called, but the sdk is still waiting for the network request to resolve with updated values.  You should `await` initialization before issuing checks
 
 Newer versions of the sdk will contain two tags: one regarding the initialization state of the sdk, and the other qualifying different sources for that value.
 
