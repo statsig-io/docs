@@ -596,7 +596,7 @@ const sidebars: SidebarsConfig = {
             },
             {
               type: "category",
-              label: "New JavaScript",
+              label: "JavaScript/React",
               link: {
                 type: "doc",
                 id: "client/javascript-sdk",
