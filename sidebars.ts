@@ -44,6 +44,7 @@ const sidebars: SidebarsConfig = {
                 "guides/aa-test",
                 "guides/shopify-ab-test",
                 "guides/webflow-sidecar-ab-test",
+                "guides/aa-sidecar",
                 "guides/sendgrid-email-abtest",
                 "guides/customer-io-email-abtest",
                 "guides/email-campaign-test",

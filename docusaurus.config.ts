@@ -91,18 +91,6 @@ const config: Config = {
               {
                 tagName: "script",
                 attributes: {
-                  src: "https://api.statsigcdn.com/v1/download_config_specs/client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps.js",
-                },
-              },
-              {
-                tagName: "script",
-                attributes: {
-                  src: "https://cdn.jsdelivr.net/npm/statsig-js-local-eval@1.0.0/build/statsig-prod-web-sdk.min.js",
-                },
-              },
-              {
-                tagName: "script",
-                attributes: {
                   src: "https://cdn.jsdelivr.net/npm/@statsig/js-client@1/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=client-c1fEjmA7JETNimhlFhKf2M1qMRFNkl9ipDfxYEatlYJ",
                 },
               },
