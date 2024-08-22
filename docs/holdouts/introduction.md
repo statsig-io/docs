@@ -20,7 +20,8 @@ Holdouts measure the aggregate impact of multiple features. A "holdout" is a gro
 ## How to read Holdouts
 The Metric Lifts section shows the comparison of *Not in Holdout* vs. *In Holdout*.  In other words, it represents the cumulative impact of launched and active experiments and gates relative to the Holdout group, which doesn't see any of these changes.  In the example below, the new features are having an overall negative effect on many metrics.
 
-![image](https://user-images.githubusercontent.com/1315028/131407825-23f00cd3-8e64-429c-91a4-48a8eaa8555a.png)
+![image](https://github.com/user-attachments/assets/97a5e7b3-512c-4440-beb9-fe99773dae55)
+
 
 ## Best Practices
 1. **Size** - Statsig recommends a small holdout percentage, say 1% – 2%, to limit the number of customers who don’t see new features. 
