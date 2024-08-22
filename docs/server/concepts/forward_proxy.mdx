@@ -1,5 +1,5 @@
 ---
-title: Forward Proxy - Beta
+title: Forward Proxy
 sidebar_label: Forward Proxy
 slug: /server/concepts/forward_proxy
 ---
@@ -39,7 +39,7 @@ There are 3 network endpoints SDK make requests to download_config_specs,get_id_
 #### Network protocol for different endpoints
 For `download_config_specs` endpoint, where we get specs on evaluating gates/layers/experiments/configs 
 1. `http`: the default protocol. If SDK is initialized with http, it will poll config updates in background thread.
-2. `grpc_websocket`: Establish a grpc streaming from SDK to statsig forward proxy, and listen to updates being pushed from proxy servers. You have to use statsig forward proxy or have a similar proxy server in order to use grpc streaming.
+2. `grpc_websocket`: Establish a grpc streaming from SDK to statsig forward proxy, and listen to updates being pushed from proxy servers. You have to use statsig forward proxy or have a similar proxy server in order to use grpc streaming. Note: Not all SDKs support GRPC yet, if you have an SDK you want support for please reachout to our support channel on slack.
 3. `grpc`: Unary RPC, behave similarly to HTTP protocol, after initialization, SDK poll changes from forward proxy server in background thread.  
 
 
