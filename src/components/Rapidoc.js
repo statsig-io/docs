@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 
-import { useColorMode } from "@docusaurus/theme-common";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 import Models from "../../docs/console-api/models/index";
+import { useColorMode } from "@docusaurus/theme-common";
 
 const supportedEntities = [
   "gates",
@@ -103,38 +103,32 @@ export default function Rapidoc(props) {
 
   const isDarkTheme = useColorMode().colorMode === "dark";
 
-  useEffect(() => {
-    setTimeout(() => {
-      var data;
-      const rapidoc = document.getElementById(id);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     var data;
+  //     const rapidoc = document.getElementById(id);
 
-      switch (entity) {
-        case "all-endpoints-generated":
-          rapidoc.loadSpec("https://docs.statsig.com/openapi");
-          return;
-        case "all-endpoints":
-          data = loadAllEndpoints();
-          break;
-        default:
-          data = require(`../../docs/console-api/openapi/${entity}`);
-      }
+  //     switch (entity) {
+  //       case "all-endpoints-generated":
+  //         rapidoc.loadSpec("https://docs.statsig.com/openapi");
+  //         return;
+  //       case "all-endpoints":
+  //         data = loadAllEndpoints();
+  //         break;
+  //       default:
+  //         data = require(`../../docs/console-api/openapi/${entity}`);
+  //     }
 
-      data = updateCodeSnippets(data, entity);
+  //     data = updateCodeSnippets(data, entity);
 
-      loadReferences(data);
+  //     loadReferences(data);
 
-      rapidoc.loadSpec(data);
-    }, 30);
-  }, []);
+  //     rapidoc.loadSpec("https://docs.statsig.com/openapi");
+  //   }, 30);
+  // }, []);
 
   let descripion = (
     <div>
-      <Alert severity="warning" className="warning">
-        <AlertTitle>
-          For latest changes please refer to <a href="/console-api/all-endpoints-generated">OpenAPI Specification</a>
-        </AlertTitle>
-        We are working on updating this page to autogenerate from our OpenAPI spec.
-      </Alert>
       <h2>Description</h2>
       {getDescription(entity)}
       <h2>Authorization</h2>
@@ -175,6 +169,9 @@ export default function Rapidoc(props) {
       allow-search={false}
       render-style="view" // Controls how to api gets rendered
       layout="column"
+      spec-url="https://docs.statsig.com/openapi"
+      sort-tags={true}
+      sort-schemas={true}
       allow-try={true} // Enable ability for users to run commands
       allow-server-selection={false}
       show-info={false} // Disable the info section
