@@ -8,6 +8,7 @@ all of the domains below or select domains based on the features you use.
 ## Statsig Console
 
 - `console.statsig.com`
+- `cdn.console.statsig.com`
 - `console.statsigcdn.com`
 
 ## Statsig API Services
