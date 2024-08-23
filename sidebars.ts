@@ -597,21 +597,19 @@ const sidebars: SidebarsConfig = {
             {
               type: "category",
               label: "JavaScript/React",
-              link: {
-                type: "doc",
-                id: "client/javascript-sdk",
-              },
               items: [
-                "client/javascript-mono/MigrationFromOldJsClient",
-                "client/javascript-mono/MigrationFromOldReact",
-                "client/javascript-mono/UsingEvaluationsDataAdapter",
+                "client/javascript-sdk",
                 "client/javascript-mono/ReactUsage",
                 "client/javascript-mono/ReactNativeUsage",
                 "client/javascript-mono/ExpoUsage",
                 "client/javascript-mono/NextJsAppRouterUsage",
                 "client/javascript-mono/NextJsPageRouterUsage",
+                "client/javascript-mono/UsingEvaluationsDataAdapter",
                 "client/javascript-mono/InitStrategies",
                 "client/javascript-mono/Examples",
+                "client/javascript-mono/MigrationFromOldJsClient",
+                "client/javascript-mono/MigrationFromOldReact",
+                
               ],
             },
             "client/iosClientSDK",
