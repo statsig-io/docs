@@ -37,11 +37,53 @@ This simple, lightweight Chrome extension will allow non-technical users to buil
 - Save your `theme.liquid` file.
 - Sidecar is now installed across your entire website 🎉.
 
-#### Configure event tracking and metrics
-There are a number of approaches for instrumenting event tracking when using Sidecar, including:
-- Using the out-of-the-box ["Autocapture" tracking](https://docs.statsig.com/guides/sidecar-experiments/measuring-experiments#using-autocapture) that loads with Sidecar
-- [Instrumenting custom event logging](https://docs.statsig.com/guides/sidecar-experiments/measuring-experiments#using-the-tracking-api) (for things like purchases, revenue, and AOV tracking for example).
-- Using the [GTM Integration](https://docs.statsig.com/guides/sidecar-experiments/integrating-gtm)
+### Configure event tracking
+
+Shopify's [Custom Pixel framework](https://help.shopify.com/en/manual/promoting-marketing/pixels/custom-pixels) is ideal for tracking customer events to Statsig. 
+The custom pixel framework offers a [wide set of events](https://shopify.dev/docs/api/web-pixels-api/standard-events) you can subscribe to, and namely, the ability to perform tracking during the checkout experience.
+Note that code deployed outside the scope of a custom pixel will not fire during checkout experience as documented [here](https://help.shopify.com/en/manual/promoting-marketing/pixels/overview#pixels-sandbox-environment).
+
+![configure shopify pixel](/img/shopify-pixel.png)
+
+Below is boilerplate custom pixel code that provides a function to send events back to Statsig. You should subscribe to the various events and event metadata necessary for your experimentation practices. This [sample GTM pixel](https://help.shopify.com/en/manual/promoting-marketing/pixels/custom-pixels/gtm-tutorial) shows some of the common events and metadata that you can capture and track to Statsig.
+```js
+/**
+* Util function for tracking events back to statsig
+*/
+const statsigEvent = async (eventKey, eventValue = null, metadata = {}, userObject = {}) => {
+  Object.assign(userObject, {
+    customIDs: {stableID: localStorage.getItem('STATSIG_LOCAL_STORAGE_STABLE_ID')} // attach stableID automatically
+  });
+  await fetch('https://events.statsigapi.net/v1/log_event', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'statsig-api-key': 'client-STATSIG_CLIENT_KEY' },
+    body: JSON.stringify({
+      "events": [{"user": userObject, "eventName": eventKey, "metadata": metadata}]
+    })
+  });
+}
+
+analytics.subscribe("checkout_completed", event => {
+  statsigEvent('checkout', null, {
+    orderId: event.data?.checkout?.order?.id,
+    currency: event.data?.checkout?.currencyCode,
+    subtotal: event.data?.checkout?.subtotalPrice?.amount,
+    shipping: event.data?.checkout?.shippingLine?.price?.amount,
+    value: event.data?.checkout?.totalPrice?.amount,
+    tax: event.data?.checkout?.totalTax?.amount,
+  });
+});
+
+analytics.subscribe("product_viewed", (event) => {
+  statsigEvent('product_viewed', null, {
+    product_title: event.data?.productVariant?.title,
+  });
+});
+```
+
+For tracking behaviors in the main storefront experience, you can also leverage the following:
+- [Autocapture](https://docs.statsig.com/guides/sidecar-experiments/measuring-experiments#using-autocapture) loads by default with Sidecar, and will automatically collect various user behaviors.
+- [Instrumenting custom event logging](https://docs.statsig.com/guides/sidecar-experiments/measuring-experiments#using-the-tracking-api) to track behaviors using code. 
 
 ## Using Shopify Headless + Statsig SDKs for deeper experimentation
 
