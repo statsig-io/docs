@@ -240,15 +240,15 @@ Example: Add yourself (or a small group like your team) when you just start buil
 
 ### Time
 
-Usage: Evaluate a gate relative to the current time (in PST for client SDKs, or your server time for server SDKs)
+Usage: Evaluate a gate relative to the current time
 
-Supported Operators: `after time, before time, on date`
+Supported Operators: `after time, before time`
 
-Value: unix timestamp.  Some server SDKs support additional formats - see the full list on the [server user]/server/concepts/user#time-based-conditions) documentation.
+Value: time (displayed and input on Console in your browser's local time, but converted to a unix timestamp for evaluation)
 
-Example: Show the black friday sale banner on black friday
+Example: Show the labor day sale banner on labor day
 
-![Time example](https://user-images.githubusercontent.com/74584483/137403991-a2a2fe50-c912-42fc-bc11-6aa1eb5097c2.png)
+![Time example](https://github.com/user-attachments/assets/65097c87-c2c4-440a-920f-b029b9f104f2)
 
 ### Private Attributes
 Usage: Any user field conditions, or custom field conditions, can be used via a private attribute.  If you are targeting an email, but don't want it to be logged, 
