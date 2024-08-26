@@ -44,3 +44,7 @@ This normally happens when your company is both using the SDK or event imports, 
 ## Our external source shows more exposure events than Statsig. Are data missing?
 
 Exposures on the last day (the day you made a decision) are not counted as exposures. Please filter out that day when you analyze your external data. By default, Statsig uses UTC-0800 to define a "day".
+
+## We log categorical metadata for a custom event, but Pulse doesn't show these breakouts. What's wrong?
+
+Pulse is only able to show experimental results for various sub-groups of your metric (e.g. iOS vs. Android) when you've configured your metadata as a Dimension. [Value Dimensions](https://docs.statsig.com/pulse/read-pulse#value-dimensions) are the most common dimension type as their metadata get logged directly with your custom events. However, value dimensions must be defined in your [custom event setup](https://docs.statsig.com/metrics/metric-dimensions).
