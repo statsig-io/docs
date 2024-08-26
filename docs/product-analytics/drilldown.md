@@ -130,7 +130,7 @@ To support this we allow you to define event-based cohorts. You can select an ev
 
 You can also define the window in which a user performed the event for inclusion, as well as filter to some property in order to be as granular as needed when defining the cohort. 
 
-We are planning to ship support for saving cohorts for reuse in early 2024. 
+You can also save cohorts to be able to easily reuse them. 
 
 ## Exploring a Metric Drilldown Chart
 
