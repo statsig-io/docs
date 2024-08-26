@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
-
+import { useColorMode } from "@docusaurus/theme-common";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
-import Models from "../../docs/console-api/models/index";
-import { useColorMode } from "@docusaurus/theme-common";
+import { useEffect } from "react";
 
 // Map entities to their corresponding OpenAPI tags
 const entityToTagMap = {
@@ -27,30 +25,6 @@ const entityToTagMap = {
   keys: "Keys",
 };
 
-function loadReferences(spec) {
-  for (const key in spec) {
-    if (!Object.hasOwnProperty.call(spec, key)) {
-      continue;
-    }
-
-    let value = spec[key];
-    if (value?.["$ref"] && typeof value["$ref"] === "string") {
-      const filename = value["$ref"].split("/").pop();
-      if (filename.endsWith(".json")) {
-        const name = filename.split(".").shift();
-        const model = Models[name];
-        if (model) {
-          spec[key] = model;
-        }
-      }
-    }
-
-    value = spec[key];
-    if (!!value && typeof value === "object") {
-      loadReferences(value);
-    }
-  }
-}
 
 function filterPathsByTag(spec, tag) {
   const filteredPaths = {};
@@ -96,7 +70,6 @@ export default function Rapidoc(props) {
         if (tag) {
           // Filter paths by tag
           const filteredData = filterPathsByTag(data, tag);
-          loadReferences(filteredData);
           rapidoc.loadSpec(filteredData);
         } else {
           // If tag is not found, load the full spec

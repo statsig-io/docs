@@ -1,8 +1,0 @@
-{
-  "title": "message",
-  "x-stoplight": {
-    "id": "o7tttbi10kjzq"
-  },
-  "type": "string",
-  "description": "A simple string explaining the result of the operation."
-}
