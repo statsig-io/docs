@@ -23,7 +23,7 @@ The User Journeys chart shows you the many paths users are taking through your p
 
 ## Creating a User Journeys Chart
 
-### Step 1: Choose an starting or ending event
+### Step 1: Choose a starting or ending event
 
 The selected event will indicate where you want your analysis to begin. You can choose whether you want to explore a journey that either starts or ends with a specific event. This allows you to understand where people go from some starting event, or where people come from for some ending event. 
 
