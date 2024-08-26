@@ -153,3 +153,14 @@ signature_basestring
 
 5. Compare the resulting signature to the 'X-Statsig-Signature' header on the request
 
+### Developing and Testing Webhooks
+:::info
+The actual event payload may look different than the examples above. <br />
+To test webhook configuration and see payloads before starting development, you can use a local HTTP tunnel (e.g. ngrok).
+:::
+
+You can also use the **Debug** tool to
+1. See requests made to the webhook, including diagnostic information such as number of events forwarded/filtered, request header & body, and more.
+2. Send example requests to the webhook using any recently logged event or exposure
+
+![Debug Tool](https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/ak7zkUsSoHh2VQAhtjtL/5e14e128-1fd4-46f9-8543-364f9b9819bb.png)
