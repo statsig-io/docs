@@ -1,9 +1,0 @@
-{
-  "title": "status",
-  "x-stoplight": {
-    "id": "oefvfedxb1rh8"
-  },
-  "type": "number",
-  "description": "The status of the request",
-  "x-internal": true
-}
