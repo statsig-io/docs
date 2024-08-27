@@ -57,9 +57,8 @@ import GetParameter from "./javascript-mono/_getParameter.mdx";
 
 export const TypedGetters = _typedGetters;
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -106,6 +105,10 @@ export const TypedGetters = _typedGetters;
     [ClientEventEmitting, {}],
     [MultiInstance, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

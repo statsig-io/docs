@@ -40,9 +40,8 @@ import * as ReferenceSnippets from "./ruby/_reference.mdx";
 import ClientInitResponseSnippet from "./ruby/_clientInitResponse.mdx";
 import MultiInstanceExample from "./ruby/_multiInstanceExample.mdx";
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -87,11 +86,15 @@ import MultiInstanceExample from "./ruby/_multiInstanceExample.mdx";
     ],
     [
       UserPersistentStorage,
-      { interface: <PersistentStorageInterface />, example: <PersistentStorageExample />},
+      { interface: <PersistentStorageInterface />, example: <PersistentStorageExample /> },
     ],
     [Instances, { constructor: <MultiInstanceExample /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

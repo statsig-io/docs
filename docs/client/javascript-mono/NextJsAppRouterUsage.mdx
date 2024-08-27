@@ -41,9 +41,8 @@ export const NextJsBootstrap = _nextJsBootstrap;
 import * as _nextJsApiProxy from "./_nextJsApiProxy.mdx";
 export const NextJsApiProxy = _nextJsApiProxy;
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -53,6 +52,10 @@ export const NextJsApiProxy = _nextJsApiProxy;
     [NextJsInstall, {}],
     [NextJsBootstrap, {}],
     [NextJsApiProxy, {}],
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

@@ -39,9 +39,8 @@ import PersistentStorageInterface from "./jslocal/_persistentStorageInterface.md
 import PersistentStorageExample from "./jslocal/_persistentStorageExample.mdx";
 import { GetStableID, OverrideStableID } from "./jslocal/_stableID.mdx";
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -51,13 +50,13 @@ import { GetStableID, OverrideStableID } from "./jslocal/_stableID.mdx";
     [
       GettingStartedRulesets,
       {
-        additionalWelcomeMessage:  <OnDeviceEvalProsAndCons
-            sdkName="JavascriptOnDeviceEvaluations"
-            otherSDK={{
-              name: "Javascript Precomputed Evaluations SDK",
-              link: "/client/jsClientSDK",
-            }}
-          />,
+        additionalWelcomeMessage: <OnDeviceEvalProsAndCons
+          sdkName="JavascriptOnDeviceEvaluations"
+          otherSDK={{
+            name: "Javascript Precomputed Evaluations SDK",
+            link: "/client/jsClientSDK",
+          }}
+        />,
         sdkType: "JS Local Evaluation",
         install: <Install />,
         initialize: <Initialize />,
@@ -72,7 +71,7 @@ import { GetStableID, OverrideStableID } from "./jslocal/_stableID.mdx";
         logEvent: <LogEvent />,
       },
     ],
-    [StatsigUser, {excludeMentionToDirectUpdateUser: true}],
+    [StatsigUser, { excludeMentionToDirectUpdateUser: true }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [
@@ -84,6 +83,10 @@ import { GetStableID, OverrideStableID } from "./jslocal/_stableID.mdx";
       { interface: <PersistentStorageInterface />, example: <PersistentStorageExample /> },
     ],
     [FAQ, { faqs: <MoreFAQs /> }],
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

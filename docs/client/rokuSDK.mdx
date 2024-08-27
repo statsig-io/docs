@@ -28,9 +28,8 @@ import {
 import Install from "./Roku/_install.mdx";
 import Initialize from "./Roku/_initialize.mdx";
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -46,6 +45,10 @@ import Initialize from "./Roku/_initialize.mdx";
         initialize: <Initialize />,
       },
     ],
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

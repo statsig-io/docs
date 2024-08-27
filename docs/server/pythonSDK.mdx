@@ -42,9 +42,8 @@ import ClientInitResponseSnippet from "./python/_clientInitResponse.mdx";
 import ForwardProxyExample from "./python/_forwardProxyExample.mdx";
 import MultiInstanceExample from "./python/_multiInstanceExample.mdx";
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -82,8 +81,9 @@ import MultiInstanceExample from "./python/_multiInstanceExample.mdx";
       },
     ],
     [Instances, { constructor: <MultiInstanceExample /> }],
-    [ProxyConfigs, {includeAboveVersion: true, addedInVersion: "0.39.0", code: 
-    <ForwardProxyExample />
+    [ProxyConfigs, {
+      includeAboveVersion: true, addedInVersion: "0.39.0", code:
+        <ForwardProxyExample />
     }],
     [
       LocalOverrides,
@@ -91,9 +91,13 @@ import MultiInstanceExample from "./python/_multiInstanceExample.mdx";
         snippet: <OverridesSnippet />,
       },
     ],
-    
+
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

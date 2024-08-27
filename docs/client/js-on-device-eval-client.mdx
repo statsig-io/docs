@@ -42,9 +42,8 @@ import Options from "./js-device-eval-mono/_options.mdx";
 import ShutdownSnippet from "./js-device-eval-mono/_shutdown.mdx";
 
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -89,6 +88,10 @@ import ShutdownSnippet from "./js-device-eval-mono/_shutdown.mdx";
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [DataAdapter, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

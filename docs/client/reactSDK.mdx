@@ -40,9 +40,8 @@ import * as Testing from "./React/_testing.mdx";
 import * as SSR from "./React/_ssr.mdx";
 import { Snippets as ManualExposureSnippets } from "./React/_manualExposures.mdx";
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -77,6 +76,10 @@ import { Snippets as ManualExposureSnippets } from "./React/_manualExposures.mdx
     [Testing, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

@@ -41,9 +41,8 @@ export const ReactSetup = _ReactSetup;
 import * as _reactHooks from "./_reactHooks.mdx";
 export const ReactHooks = _reactHooks;
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -53,6 +52,9 @@ export const ReactHooks = _reactHooks;
     [ReactInstall, {}],
     [ReactSetup, {}],
     [ReactHooks, {}]
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>

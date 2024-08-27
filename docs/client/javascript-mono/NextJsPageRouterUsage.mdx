@@ -41,18 +41,21 @@ export const NextJsBootstrap = _nextJsPageRouterBootstrap;
 import * as _nextJsPageRouterApiProxy from "./_nextJsPageRouterApiProxy.mdx";
 export const NextJsApiProxy = _nextJsPageRouterApiProxy;
 
-<>
-  <SDKDocsBuilder
-    sections={[
-      [
-        Repository,
-        {
-          repo: "https://github.com/statsig-io/js-client-monorepo",
-        },
-      ],
-      [NextJsInstall, { isPageRouter: true }],
-      [NextJsBootstrap, {}],
-      [NextJsApiProxy, {}],
-    ]}
-  />
-</>
+export const Builder = SDKDocsBuilder({
+  sections: [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/js-client-monorepo",
+      },
+    ],
+    [NextJsInstall, { isPageRouter: true }],
+    [NextJsBootstrap, {}],
+    [NextJsApiProxy, {}],
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+
