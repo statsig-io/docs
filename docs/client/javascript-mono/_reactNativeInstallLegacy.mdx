@@ -1,12 +1,17 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-import ReactNativeInstallLegacy from './_reactNativeInstallLegacy.mdx'
+
+:::warning
+This is Deprecated
+:::
+
 
 Note since the `@statsig/react-native-bindings` works in conjuction with `@statsig/react-bindings` and `@statsig/js-client`, 
 documentation on those packages is also relevant for React Native implementations:
 
 - [@statsig/js-client documentation](/client/javascript-sdk)
 - [@statsig/react-bindings documentation](/client/javascript-sdk)
+
 
 ## Installation
 
@@ -52,21 +57,17 @@ The `@statsig/react-native-bindings` package has peer dependencies which will al
   <TabItem value="npm">
 
 ```shell
-npm install react-native-device-info
+npm install @react-native-async-storage/async-storage react-native-device-info
 ```
 
   </TabItem>
   <TabItem value="yarn">
 
 ```shell
-yarn add react-native-device-info
+yarn add @react-native-async-storage/async-storage react-native-device-info
 ```
 
   </TabItem>
 </Tabs>
 
 
-<details>
-  <summary>Older versions (1.x.x) used async storage</summary>
-  <ReactNativeInstallLegacy />
-</details>

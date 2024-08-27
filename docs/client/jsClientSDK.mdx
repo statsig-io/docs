@@ -40,6 +40,10 @@ import FlushSnippet from "./js/_shutdown.mdx";
 import LocalOverridesSnippet from "./js/_localOverrides.mdx";
 import { GetStableID, OverrideStableID } from "./js/_stableID.mdx";
 
+
+import * as _deprecationNotice from "./js/_deprecationNotice.mdx";
+export const DeprecationNotice = _deprecationNotice;
+
 export const Builder = SDKDocsBuilder({
   sections: [
     [
@@ -48,6 +52,7 @@ export const Builder = SDKDocsBuilder({
         repo: "https://github.com/statsig-io/js-client",
       },
     ],
+    [DeprecationNotice, {}],
     [
       GettingStarted,
       {
