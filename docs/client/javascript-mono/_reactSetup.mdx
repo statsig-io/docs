@@ -5,53 +5,23 @@ import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
 To use Statsig in React, you first must create an instance of the Statsig client and then pass it as a Prop to a StatsigProvider.
 
-This will set your client as part of the [StatsigContext](https://github.com/statsig-io/js-client-monorepo/blob/main/packages/react-bindings/src/StatsigContext.ts) and make it available to all Statsig [hooks](#hooks).
+This will set your client as part of the [StatsigContext](https://github.com/statsig-io/js-client-monorepo/blob/main/packages/react-bindings/src/StatsigContext.ts) 
+and make it available to all Statsig [hooks](#hooks).
 
 ### Initialize the SDK
 
-When calling StatsigClient.initializeAsync, the client will load values from cache and provide them to the client. The client will then fetch the latest values from the network.  You need to await this call to get the most up to date feature gate and experiment values.
+The easiest way to get up and running with Statsig in React environments is to use the "setup" hooks provided by
+the `@statsig/react-bindings` package.
+
+The following utilizes the `useClientAsyncInit` hook to create and initialize a StatsigClient instance. 
+Under the hood, `useClientAsyncInit` calls `StatsigClient.initializeAsync`. This call will load values from cache and provide them to 
+the client. The client will then fetch the latest values from the network.  
+
+There is also a `isLoading` flag returned by this hook. You need to wait until this is true to get the most up to date feature gate and experiment values.
 
 
-```js
-function Content() {
-  const gate = useFeatureGate('a_gate');
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-init-strat-await-async.tsx" />
 
-  return <div>a_gate: {gate.value ? 'Passing' : 'Failing'}</div>;
-}
 
-function useAsyncClient(): { isLoading: boolean; client: StatsigClient } {
-  const [isLoading, setIsLoading] = useState(true);
-
-  const client = useMemo(() => {
-    const instance = new StatsigClient(DEMO_CLIENT_KEY, { userID: 'a-user' });
-
-    instance
-      .initializeAsync()
-      .then(() => {
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-
-    return instance;
-  }, []);
-
-  return { client, isLoading };
-}
-
-export default function AsyncInitializeExample(): JSX.Element {
-  const { client, isLoading } = useAsyncClient();
-
-  if (isLoading) {
-    return <div>Statsig Loading...</div>;
-  }
-
-  return (
-    <StatsigProvider client={client}>
-      <Content />
-    </StatsigProvider>
-  );
-}
-```
-
+**Note**: There are a few different ways to initialize the StatsigClient, with trade-offs between latency and up-to-date values.
+You can read [Initialization Strategies](init-strategies) to learn more.
