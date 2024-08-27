@@ -32,9 +32,8 @@ import MoreFAQs from "./SwiftOnDeviceEval/_faqs.mdx";
 import Options from "./SwiftOnDeviceEval/_options.mdx";
 import ShutdownSnippet from "./SwiftOnDeviceEval/_shutdown.mdx";
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -78,6 +77,10 @@ import ShutdownSnippet from "./SwiftOnDeviceEval/_shutdown.mdx";
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

@@ -38,9 +38,8 @@ export const ReactNativeInstall = _ReactNativeInstall;
 import * as _ReactNativeSetup from "./_reactNativeSetup.mdx";
 export const ReactNativeSetup = _ReactNativeSetup;
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -49,6 +48,10 @@ export const ReactNativeSetup = _ReactNativeSetup;
     ],
     [ReactNativeInstall, {}],
     [ReactNativeSetup, {}],
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

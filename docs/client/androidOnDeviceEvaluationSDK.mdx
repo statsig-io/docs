@@ -32,9 +32,8 @@ import Options from "./AndroidOnDeviceEvaluation/_options.mdx";
 import ShutdownSnippet from "./AndroidOnDeviceEvaluation/_shutdown.mdx";
 import * as UsingPersistentValues from "./AndroidOnDeviceEvaluation/_usingPersistentValues.mdx";
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -71,6 +70,10 @@ import * as UsingPersistentValues from "./AndroidOnDeviceEvaluation/_usingPersis
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [UsingPersistentValues, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

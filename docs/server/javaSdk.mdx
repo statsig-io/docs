@@ -42,9 +42,8 @@ import ClientInitResponseSnippet from "./java/_clientInitResponse.mdx";
 import ForwardProxyExample from "./java/_forwardProxyExample.mdx";
 import MultiInstanceExample from "./java/_multiInstanceExample.mdx";
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -89,11 +88,16 @@ import MultiInstanceExample from "./java/_multiInstanceExample.mdx";
       },
     ],
     [Instances, { constructor: <MultiInstanceExample /> }],
-    [ProxyConfigs, {addedInVersion: "0.24.0", includeAboveVersion: false, installation: <InstallBeta />, code: 
-      <ForwardProxyExample />
+    [ProxyConfigs, {
+      addedInVersion: "0.24.0", includeAboveVersion: false, installation: <InstallBeta />, code:
+        <ForwardProxyExample />
     }],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

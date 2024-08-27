@@ -39,9 +39,8 @@ import * as ReferenceSnippets from "./dotnet/_reference.mdx";
 import OverridesSnippet from "./dotnet/_localOverrides.mdx";
 import MultiInstanceExample from "./dotnet/_multiInstanceExample.mdx";
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -79,6 +78,10 @@ import MultiInstanceExample from "./dotnet/_multiInstanceExample.mdx";
     [Instances, { constructor: <MultiInstanceExample /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

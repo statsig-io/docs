@@ -38,9 +38,8 @@ export const ExpoInstall = _ExpoInstall;
 import * as _ExpoSetup from "./_expoSetup.mdx";
 export const ExpoSetup = _ExpoSetup;
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -49,6 +48,10 @@ export const ExpoSetup = _ExpoSetup;
     ],
     [ExpoInstall, {}],
     [ExpoSetup, {}],
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+
