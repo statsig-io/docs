@@ -1,9 +1,8 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
-import type * as Preset from '@docusaurus/preset-classic';
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
-import sdkDateExtractor from './src/plugins/rehype-sdk-date-extractor';
+import { themes as prismThemes } from "prism-react-renderer";
+import type { Config } from "@docusaurus/types";
+import type * as Preset from "@docusaurus/preset-classic";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 
 const config: Config = {
   title: "Statsig Docs",
@@ -17,25 +16,24 @@ const config: Config = {
   projectName: "statsig-io/docs", // Usually your repo name.
 
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: "en",
+    locales: ["en"],
   },
 
   presets: [
     [
-      'classic',
+      "classic",
       {
         docs: {
-          sidebarPath: './sidebars.ts',
-          editUrl:
-            'https://github.com/statsig-io/docs/edit/main/',
+          sidebarPath: "./sidebars.ts",
+          editUrl: "https://github.com/statsig-io/docs/edit/main/",
           showLastUpdateTime: true,
           routeBasePath: "/",
-          remarkPlugins: [sdkDateExtractor, remarkMath],
+          remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: "./src/css/custom.css",
         },
       } satisfies Preset.Options,
     ],
@@ -233,7 +231,7 @@ const config: Config = {
       },
     ],
   ],
-  
+
   themes: [
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
@@ -255,9 +253,9 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docs_meta_q3_2023.png',
+    image: "img/docs_meta_q3_2023.png",
     navbar: {
-      title: '',
+      title: "",
       logo: {
         alt: "Statsig",
         src: "img/logo.svg",
@@ -274,7 +272,7 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',
+      style: "dark",
       links: [
         {
           title: "Docs",
@@ -313,9 +311,9 @@ const config: Config = {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
       additionalLanguages: [
-        'bash',
-        'diff',
-        'json',
+        "bash",
+        "diff",
+        "json",
         "swift",
         "java",
         "ruby",

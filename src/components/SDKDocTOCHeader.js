@@ -2,15 +2,20 @@ import React, { useEffect } from "react";
 import ReactDOMServer from "react-dom/server";
 import ReactDOM from "react-dom/client";
 
-function Header({ lastUpdated }) {
-  const epoch = parseInt(lastUpdated);
+function Header() {
   let updated = null;
-  if (epoch && !isNaN(epoch)) {
-    updated = new Date(epoch * 1000).toLocaleDateString("en-us", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    });
+  try {
+    // simulated in dev for perf reasons
+    const found = document.querySelector(".theme-last-updated > b > time");
+    if (found && found.dateTime != null) {
+      updated = new Date(found.dateTime).toLocaleDateString("en-us", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      });
+    }
+  } catch (_e) {
+    // ignored
   }
 
   return (
@@ -26,12 +31,17 @@ function Header({ lastUpdated }) {
         color: "var(--ifm-color-content)",
       }}
     >
-      {(!lastUpdated || updated) && (
+      {updated && (
         <div style={{ marginBottom: 5 }}>Last Updated: {updated ?? "..."}</div>
       )}
       <a
         onClick={() =>
-          window.open("https://statsig.com/community", "_blank").focus()
+          window
+            .open(
+              "https://statsig.com/community?ref=statsig_docs_toc",
+              "_blank"
+            )
+            .focus()
         }
         href="#"
       >
@@ -51,7 +61,7 @@ export default function SDKDocTOCHeader() {
       const root = ReactDOM.createRoot(
         document.getElementById("sdk-toc-header")
       );
-      root.render(<Header lastUpdated={node.getAttribute("x-last-updated")} />);
+      root.render(<Header />);
     }
   }, []);
   return <></>;
