@@ -1,38 +1,35 @@
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
-import ReactHooks from "./_reactHooks.mdx";
 
 ## React Native Specific Setup
 
-### Create a Client
+The setup for a ReactNative environment is very similar to a plain [React environment](/client/javascript-sdk/react). 
+The only difference is that you need to use the ReactNative specific `StatsigProviderRN`. 
+This automatically switches out the storage layer used by the SDK, utilizing [`react-native-mmkv`](https://github.com/mrousavy/react-native-mmkv) instead of LocalStorage (which isn't available in RN environments).
 
-Creating a Statsig client when using React Native has a slight
-twist when compared to pure JavaScript environments.
-
-Because storage in React Native is async (See [AsyncStorage](https://reactnative.dev/docs/asyncstorage)), a warming step is required
-to load any cache values from disk. This warming performs some AsyncStorage.getItem operations that block the
-`StatsigProviderRN` from rendering.
 
 ```typescript
-import { StatsigOnDeviceEvalClient } from '@statsig/js-on-device-eval-client';
 import {
   StatsigProviderRN,
-  warmCachingFromAsyncStorage,
+  useOnDeviceClientAsyncInit,
+  useFeatureGate,
 } from '@statsig/react-native-bindings';
 
-const client = new StatsigOnDeviceEvalClient(YOUR_SDK_KEY);
-const warming = warmCachingFromAsyncStorage(client);
-```
+function Content() {
+  const gate = useFeatureGate('a_gate');
 
-### Render the StatsigProvider
+  return <div>Reason: {gate.details.reason}</div>; // Reason: Network or NetworkNotModified
+}
 
-Once the Statsig client is created and the warming step started, we can then pass them into
-the `StatsigProviderRN` component for rendering.
+function App() {
+  const { client, isLoading } = useOnDeviceClientAsyncInit(YOUR_CLIENT_KEY);
 
-```typescript
-export function App(): JSX.Element {
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <StatsigProviderRN client={myStatsigClient} cacheWarming={warming}>
-      {/* Render your App */}
+    <StatsigProviderRN client={client}>
+      <Content />
     </StatsigProviderRN>
   );
 }

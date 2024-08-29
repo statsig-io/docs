@@ -40,6 +40,7 @@ yarn add @statsig/js-client @statsig/react-native-bindings
 ### Peer Dependecies
 
 The `@statsig/react-native-bindings` package has peer dependencies which will also need to be installed.
+[`react-native-mmkv`](https://github.com/mrousavy/react-native-mmkv?tab=readme-ov-file#react-native) is utilized to allow for synchronous storage, similar to LocalStorage in web environments.
 
 <Tabs
   defaultValue="npm"
@@ -52,14 +53,14 @@ The `@statsig/react-native-bindings` package has peer dependencies which will al
   <TabItem value="npm">
 
 ```shell
-npm install react-native-device-info
+npm install react-native-device-info react-native-mmkv
 ```
 
   </TabItem>
   <TabItem value="yarn">
 
 ```shell
-yarn add react-native-device-info
+yarn add react-native-device-info react-native-mmkv
 ```
 
   </TabItem>
