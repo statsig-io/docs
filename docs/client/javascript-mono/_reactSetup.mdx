@@ -3,25 +3,76 @@ import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
 ## Setup
 
-To use Statsig in React, you first must create an instance of the Statsig client and then pass it as a Prop to a StatsigProvider.
+In your `App.js` file, import `StatsigProvider` and wrap your app's content within it.  Replace the `sdkKey` with your Client API key, which you can find in the ["API Keys" tab on the Statsig console](https://console.statsig.com/api_keys).
 
-This will set your client as part of the [StatsigContext](https://github.com/statsig-io/js-client-monorepo/blob/main/packages/react-bindings/src/StatsigContext.ts) 
-and make it available to all Statsig [hooks](#hooks).
+```js
+import { StatsigProvider } from "@statsig/react-bindings";
 
-### Initialize the SDK
+function App() {
+  return (
+    <StatsigProvider sdkKey="client-KEY">
+      <div>Hello world</div>
+    </StatsigProvider>
+  );
+}
 
-The easiest way to get up and running with Statsig in React environments is to use the "setup" hooks provided by
-the `@statsig/react-bindings` package.
+export default App;
+```
 
-The following utilizes the `useClientAsyncInit` hook to create and initialize a StatsigClient instance. 
-Under the hood, `useClientAsyncInit` calls `StatsigClient.initializeAsync`. This call will load values from cache and provide them to 
-the client. The client will then fetch the latest values from the network.  
+### Adding a user object
 
-There is also a `isLoading` flag returned by this hook. You need to wait until this is true to get the most up to date feature gate and experiment values.
+At this point, your app should be ready to run.  You can optionally provide a user object that sets user properties like so:
+
+```js
+import { StatsigProvider } from "@statsig/react-bindings";
+
+function App() {
+  return (
+    <StatsigProvider sdkKey="client-KEY" user={{ userID: "1234", email: "example@statsig.com" }}>
+      <div>Hello world</div>
+    </StatsigProvider>
+  );
+}
+
+export default App;
+```
+
+### A typical React app
+
+A typical React application will enclose top-level child/children, which means the `StatsigProvider` will usually wrap a `MainPage` or `RootPage` like this:
+
+```js
+// App.js
+import RootPage from "./RootPage";
+import { StatsigProvider } from "@statsig/react-bindings";
+
+function App() {
+  return (
+    <StatsigProvider
+      sdkKey="client-YOUR-CLIENT-API"
+      user={{ userID: "1234", email: "example@statsig.com" }}
+    >
+      <RootPage />
+    </StatsigProvider>
+  );
+}
+
+export default App;
+```
+
+```js
+// RootPage.js
+function RootPage() {
+  return (
+    <div>Hello World</div>
+  );
+}
+
+export default RootPage;
+```
 
 
-<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-init-strat-await-async.tsx" />
-
-
-**Note**: There are a few different ways to initialize the StatsigClient, with trade-offs between latency and up-to-date values.
+:::info
+**Advanced:** There are a few different ways to initialize the StatsigClient, with trade-offs between latency and up-to-date values.
 You can read [Initialization Strategies](init-strategies) to learn more.
+:::
