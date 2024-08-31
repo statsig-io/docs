@@ -48,10 +48,7 @@ import { StatsigProvider } from "@statsig/react-bindings";
 
 function App() {
   return (
-    <StatsigProvider
-      sdkKey="client-YOUR-CLIENT-API"
-      user={{ userID: "1234", email: "example@statsig.com" }}
-    >
+    <StatsigProvider sdkKey="client-KEY" user={{ userID: "1234" }}>
       <RootPage />
     </StatsigProvider>
   );
