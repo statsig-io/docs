@@ -52,6 +52,9 @@ This view lets you pick a metric and see all experiments and feature rollouts th
 ![image](https://github.com/statsig-io/docs/assets/31516123/6f7daa5e-adf3-4e3c-a9dd-53f7cb8e5498)
 
 ## Knowledge Bank
-(Coming soon) is a searchable view across all your experiments. Make it easy for new team mates to explore and find experiments a team ran, or where a topic was mentioned. In general the meta-analysis tools offer more structured and powerful means to discover and look across your experiment corpus, but when you do want free text search, this exists. 
-![image](https://github.com/user-attachments/assets/0f23ef58-7d97-4508-8f1a-441a583e813d)
+The KB acts as a searchable repository of experiment learning across teams. It helps you find shipped, healthy experiments and gain context on past effort and generate ideas on new things to try. 
+
+Make it easy for new team mates to explore and find experiments a team ran, or where a topic was mentioned. Our meta-analysis tools offer more structured  means to discover and look across your experiment corpus, but when you do want free text search, this exists. 
+![image](https://github.com/user-attachments/assets/860430c4-a754-4ff8-aa85-8bf49a755801)
+
 
