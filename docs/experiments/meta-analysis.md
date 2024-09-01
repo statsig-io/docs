@@ -5,7 +5,12 @@ slug: /experimentation/meta-analysis
 ---
 
 ## The Concept
-As teams run a number of experiments, it is possible to glean learning across these experiments. This is meta-analysis. We're rolling out a suite of meta-analysis features this summer - feel free to reach out to help influence our roadmap in Slack. 
+As teams run a number of experiments, it is possible to glean learning across these experiments. This is meta-analysis. Examples of learning people seek to derive include
+- How hard is a metric to move
+- Are there more sensitive proxies for the metric we care about?
+- How are teams doing relative to each other)?
+
+We've worked with multiple companies to get them to thousands of trustworthy experiments a year. Our inspiration here was looking at what they were trying to learn across these tests. We've built this to be useful whether you're running 50 experiments a year or 5000. Feel free to reach out to help influence our roadmap in [Slack](https://statsig.com/slack).
 
 ## Experiment Timeline View
 This view lets you to filter down to experiments a team has run. At a glance you can answer questions like
@@ -16,10 +21,14 @@ This view lets you to filter down to experiments a team has run. At a glance you
 5. Do experiments run for their planned duration - or much longer or shorter?
 6. Do experiments impact key business metrics - or only shallow or team level metrics?
 7. How much do they impact key business metrics?
-![image](https://github.com/statsig-io/docs/assets/31516123/215f42b0-f3a1-46cd-a396-c2a2f3fd6561)
+![image](https://github.com/user-attachments/assets/d1e1db49-18b4-46af-93f7-4c0e58c5bdb0)
+
 
 ## Metric Impact (Batting Average)
-The "batting average" view lets you look at how easy or hard a metric is to move. You can filter to a set of shipped experiments and see how many experiments moved a metric by 1% vs 10%. This quickly gives you a sense for whether betting your next experiment will move this by 15% is a good idea. Like with other meta-analysis views, you can filter down to a team, a tag or even if results were statistically significant. 
+The "batting average" view lets you look at how easy or hard a metric is to move. You can filter to a set of shipped experiments and see how many experiments moved a metric by 1% vs 10%. Like with other meta-analysis views, you can filter down to a team, a tag or even if results were statistically significant. 
+Common ways to use this include
+- Sniff testing whether the claim that the next experiment will move this metric by 15% is a good idea.
+- Establishing reasonable goals, based on past ability to move this metric
 
 ![image](https://github.com/user-attachments/assets/72f987a4-02ba-4937-9f3d-06892c55e4e9)
 
