@@ -1,7 +1,7 @@
 ---
-title: Managed ID Resolution
+title: Advanced ID Resolution
 slug: /statsig-warehouse-native/features/id-resolution
-sidebar_label: Managed ID Resolution
+sidebar_label: Advanced ID Resolution
 description: Map cross-platform IDs in experiment analysis and analyze anonymous user experiments
 ---
 
@@ -12,7 +12,7 @@ Common scenarios where this is used are:
 - Exposing logged out users and analyzing logged-in metrics like revenue or a funnel going from logged-out marketing page landing -> to a logged-in subscription purchase
 - Utilizing one:many relationships, e.g. a single user owns multiple accounts. ID resolution lets you aggregate metric from the user's mapped accounts
 
-ID resolution is a common need in experimentation; generally the responsibility for this mapping is put onto data users or PMs running experiment analysis, which leads to inconsistent results and expensive query logic. Using managed ID resolution streamlines the process, making it consistent and performant and allowing all users to point to trusted identity tables.
+ID resolution is a common need in experimentation; generally the responsibility for this mapping is put onto data users or PMs running experiment analysis, which leads to inconsistent results and expensive query logic. Using Advanced ID Resolution streamlines the process, making it consistent and performant and allowing all users to point to trusted identity tables.
 
 ## The Identity Challenge
 
@@ -28,7 +28,7 @@ Statsig Warehouse Native offers an easy, no-code solution for connecting identif
 
 ## Mapping Modes
 
-When using managed identity resolution, you can choose between modes:
+When using Advanced ID resolution, you can choose between modes:
 
 - Strict 1:1 mapping enforces that identities have a singular mapping. If you have a mapping between two IDs that are always 1:1, this mode enforces that the mapping is singular and warns you if there's data where that's to the case. Users with a single identity can use downstream metrics from the secondary identity, and multi-mapped users are considered corrupted and discarded from the analysis
 - First-touch mapping is for cases where units might have multiple mappings, in either direction. For example, a single user may have multiple "profiles", or someone may have logged into the same account from several devices or web sessions. In this case, units will use the experiment group of their first exposure for analysis, and aggregate metrics from all of their associated secondary IDs.
