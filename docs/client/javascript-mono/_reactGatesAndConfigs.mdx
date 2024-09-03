@@ -4,6 +4,12 @@ import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
 You can get an instance of the StatsigClient to check gates, experiments, dynamic configs, layers, and log events.
 
+```
+import { useStatsigClient } from "@statsig/react-bindings";
+
+const { client } = useStatsigClient();
+```
+
 ### Checking a Gate
 You can evaluate a gate by getting the client with the `useStatsigClient` hook,
 and then calling `checkGate`
@@ -43,7 +49,7 @@ export default RootPage;
 ```
 
 ### Logging an Event
-You can get the client with the useStatsigClient hook, and then call `logEvent`
+You can get the client with the `useStatsigClient` hook, and then call `logEvent`
 
 ```js
 // RootPage.js
