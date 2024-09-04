@@ -7,12 +7,13 @@ const sidebars: SidebarsConfig = {
   cloud: [
     {
       type: "category",
-      label: "Getting Started",
+      label: "Start Here",
       link: {
         type: "doc",
         id: "getting-started",
       },
       items: [
+        "understanding-platform",
         {
           type: "category",
           label: "Walkthrough Guides",
