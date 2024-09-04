@@ -1,0 +1,38 @@
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+## Gates
+
+Evaluating a gate is done using the `useGateValue` hook like this:
+
+```js
+// RootPage.js
+import { useGateValue } from "@statsig/react-bindings";
+
+function RootPage() {
+  const gateValue = useGateValue("check_user");
+  return (
+    <div>Gate is {gateValue ? 'passing' : 'failing'}.</div>
+  );
+}
+
+export default RootPage;
+```
+
+
+## Experiments
+
+You can reach into the experiment variant and access parameters that are assigned to the specific user by using the `useExperiment` hook like this:
+
+```js
+// RootPage.js
+import { useExperiment } from "@statsig/react-bindings";
+
+function RootPage() {
+  const experiment = useExperiment("headline_test");
+  return (
+    <div>Headline Parameter: {experiment.get('headline', 'Default')}.</div>
+  );
+}
+
+export default RootPage;
+```

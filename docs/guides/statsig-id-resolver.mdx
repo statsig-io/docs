@@ -23,7 +23,7 @@ ID Resolver can be used wherever you enter IDs, for example in Feature Gate rule
 
 ## Step 1 - Create your ID Resolver Webhook
 
-You will need to create and host your own webhook for this integration. This webhook should take in an `id` and a possibly null `unit_type` and return `name`. `unit_type` will come in the form of userID, stableID, or one of your custom ID types
+You will need to create and host your own webhook for this integration. This webhook should take in an `id` and a possibly null `unit_type` and return `name`. `unit_type` will come in the form of userID, stableID, or one of your custom ID types. The length of `name` should be under 100 characters.
 
 ```js
   const inputId = req.body.id as string | null;
@@ -49,7 +49,7 @@ You will need to create and host your own webhook for this integration. This web
 
 ## Step 2 - Create your ID Resolver Autocomplete Webhook
 
-This webhook should take in a `name` (the current partially typed name) and a possibly null `unit_type` and return the array `results` which contains potential matches in the shape of `{name: string, id: string}`
+This webhook should take in a `name` (the current partially typed name) and a possibly null `unit_type` and return the array `results` which contains potential matches in the shape of `{name: string, id: string}`. It should return at most 100 results, and the length per item should be under 100 characters.
 
 ```js
   const partialName = req.body.name as string | null;
@@ -66,7 +66,7 @@ This webhook should take in a `name` (the current partially typed name) and a po
 
   const results = IDResolverDatabase.filter((d) =>
     d.name.match(new RegExp(`^${partialName}`))
-  );
+  ).limit(100);
   res.status(200).json({
     success: true,
     data: {
