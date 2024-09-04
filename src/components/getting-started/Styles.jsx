@@ -14,6 +14,7 @@ const Styles = () => (
         flex-wrap: wrap;
         gap: 12px;
         justify-content: left;
+        padding-bottom: 16px;
       }
 
       .card {

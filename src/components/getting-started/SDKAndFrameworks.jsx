@@ -1,6 +1,4 @@
 import React from 'react';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 const sdkGroups = [
   {
@@ -14,15 +12,15 @@ const sdkGroups = [
       { name: 'Next.js (Page Router)', img: '/img/sdk/sdk_nextjs.svg', link: '/client/javascript-sdk/next-js-pages-router' },
       { name: 'Swift', img: '/img/sdk/sdk_swift.png', link: '/client/iosClientSDK' },
       { name: 'Android', img: '/img/sdk/sdk_android.png', link: '/client/androidClientSDK' },
-      { name: '.NET', img: '/img/sdk/sdk_dotnet.png', link: '/client/dotnetSDK' },
+      { name: '.NET Client', img: '/img/sdk/sdk_dotnet.png', link: '/client/dotnetSDK' },
       { name: 'Roku', img: '/img/sdk/sdk_roku.png', link: '/client/rokuSDK' },
       { name: 'Unity', img: '/img/sdk/sdk_unity.png', link: '/client/unitySDK' },
       { name: 'Dart/Flutter', img: '/img/sdk/sdk_flutter.svg', link: '/client/dartSDK' },
-      { name: 'C++', img: '/img/sdk/sdk_cpp.png', link: '/client/cpp-client-sdk' }
+      { name: 'C++ Client', img: '/img/sdk/sdk_cpp.png', link: '/client/cpp-client-sdk' }
     ]
   },
   {
-    label: 'Server Side   SDKs',
+    label: 'Server Side SDKs',
     value: 'server-sdks',
     items: [
       { name: 'Node.js', img: '/img/sdk/sdk_node.png', link: '/server/nodejsServerSDK' },
@@ -30,11 +28,11 @@ const sdkGroups = [
       { name: 'Python', img: '/img/sdk/sdk_python.png', link: '/server/pythonSDK' },
       { name: 'Go', img: '/img/sdk/sdk_golang.png', link: '/server/golangSDK' },
       { name: 'Ruby', img: '/img/sdk/sdk_ruby.png', link: '/server/rubySDK' },
-      { name: '.NET', img: '/img/sdk/sdk_dotnet.png', link: '/server/dotnetSDK' },
+      { name: '.NET Server', img: '/img/sdk/sdk_dotnet.png', link: '/server/dotnetSDK' },
       { name: 'PHP', img: '/img/sdk/sdk_php.svg', link: '/server/phpSDK' },
       { name: 'Erlang/Elixir', img: '/img/sdk/sdk_elixir.svg', link: '/server/erlangSDK' },
       { name: 'Rust', img: '/img/sdk/sdk_rust.svg', link: '/server/rustSDK' },
-      { name: 'C++', img: '/img/sdk/sdk_cpp.png', link: '/server/cppSDK' }
+      { name: 'C++ Server', img: '/img/sdk/sdk_cpp.png', link: '/server/cppSDK' }
     ]
   },
   {
@@ -59,20 +57,18 @@ const SDKItem = ({ name, img, link }) => (
 );
 
 const SDKAndFrameworks = () => (
-  <Tabs
-    defaultValue="client-sdks"
-    values={sdkGroups.map((group) => ({ label: group.label, value: group.value }))}
-  >
+  <div>
     {sdkGroups.map((group) => (
-      <TabItem key={group.value} value={group.value}>
+      <div key={group.value}>
+        <h2>{group.label}</h2>
         <div className="sdk-grid">
           {group.items.map((item) => (
             <SDKItem key={item.name} {...item} />
           ))}
         </div>
-      </TabItem>
+      </div>
     ))}
-  </Tabs>
+  </div>
 );
 
 export default SDKAndFrameworks;
