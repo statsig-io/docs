@@ -7,12 +7,13 @@ const sidebars: SidebarsConfig = {
   cloud: [
     {
       type: "category",
-      label: "Getting Started",
+      label: "Start Here",
       link: {
         type: "doc",
         id: "getting-started",
       },
       items: [
+        "understanding-platform",
         {
           type: "category",
           label: "Walkthrough Guides",
@@ -43,6 +44,7 @@ const sidebars: SidebarsConfig = {
               "Common Use Cases": [
                 "guides/aa-test",
                 "guides/shopify-ab-test",
+                "guides/framer-analytics",
                 "guides/webflow-sidecar-ab-test",
                 "guides/aa-sidecar",
                 "guides/sendgrid-email-abtest",
