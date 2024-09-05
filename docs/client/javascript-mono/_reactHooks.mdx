@@ -1,8 +1,6 @@
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
-## More Hooks
-
-The `react-bindings` package exposes some hooks for convenience.
+## Other methods and hooks
 
 :::caution
 When a hook is called to fetch a value, an exposure log is automatically triggered. 
@@ -12,36 +10,7 @@ We recommend using the `useStatsigClient` hook for these cases where you need th
 Read on for more details.
 :::
 
-### Client Initialization Hooks
-
-To make setup easier, there are a few different hooks provided. These should be used outside of the `StatsigProvider` and should only need to be used once.
-
-- (recommend): `useClientAsyncInit` - Returns a client that asynchornously fetches the latest values from Statsig.
-- `useClientBootstrapInit` - Returns a client loaded with the values provided to through the hook. 
-Values can be generated through the use of a Statsig server SDK.
-
-**Note**: You do not need to use the provided hooks to initialize a `StatsigClient`, and instead can opt to write you own initialization logic. See [Initialization Strategies](init-strategies).
-
-### Client Retriveval Hooks
-
-While there are all the other hooks documented here for get values/configurations, sometimes you still need to access the StatsigClient directly.
-
-To get the StatsigClient instance that is being used inside a `StatsigProvider`, you can call the `useStatsigClient` hook. 
-This will return an object containing the `client` ([`StatsigClient`](/client/javascript-sdk)) instance as well as the other hoisted functions outlined below.
-
-```tsx
-import {
-  useStatsigClient,
-} from '@statsig/react-bindings';
-
-// Get the Client instance
-const { client } = useStatsigClient();
-
-// Call any arbitrary function on StatsigClient
-console.log("StableID", client.getContext().stableID);
-```
-
-### FeatureGate Hooks
+### Feature Gate Hooks
 
 There are three different ways to check a gate using hooks:
 
@@ -54,10 +23,10 @@ Note: `useGateValue` and `useFeatureGate` will log an exposure on render. `useSt
 <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-precomp-gate-hooks.tsx" />
 
 
-### DynamicConfig Hooks
+### Dynamic Config Hooks
 
 - (recommended): `useStatsigClient.getDynamicConfig` will trigger an exposure only when called
-- `useDynamicConfig` is a convience hook that returns the boolean value and is the most basic way to check if a gate is enabled.
+- `useDynamicConfig` returns a DynamicConfig object and logs an exposure on render
 
 Note: `useDynamicConfig` will log an exposure on render. `useStatsigClient.getDynamicConfig` will log an exposure when the function is called.
 
@@ -90,3 +59,37 @@ Using the `useStatsigClient` hook, it is possible to get hold of the `logEvent` 
 This hooks provides a way to get the current `StatsigUser` as well as providing methods for updating that user.
 
 <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-precomp-user-hooks.tsx" />
+
+
+### Client Retriveval Hooks
+
+While there are all the other hooks documented here for get values/configurations, sometimes you still need to access the StatsigClient directly.
+
+To get the StatsigClient instance that is being used inside a `StatsigProvider`, you can call the `useStatsigClient` hook. 
+This will return an object containing the `client` ([`StatsigClient`](/client/javascript-sdk)) instance as well as the other hoisted functions outlined below.
+
+```tsx
+import {
+  useStatsigClient,
+} from '@statsig/react-bindings';
+
+// Get the Client instance
+const { client } = useStatsigClient();
+
+// Call any arbitrary function on StatsigClient
+console.log("StableID", client.getContext().stableID);
+```
+
+
+The `client` instance that is returned is the `StatsigClient` defined in the [@statsig/js-client](/client/javascript-sdk) package.  Refer to that documentation for full methods
+
+### Client Initialization Hooks
+
+To make setup easier, there are a few different hooks provided. These should be used outside of the `StatsigProvider` and should only need to be used once.
+
+- (recommend): `useClientAsyncInit` - Returns a client that asynchornously fetches the latest values from Statsig.
+- `useClientBootstrapInit` - Returns a client loaded with the values provided to through the hook. 
+Values can be generated through the use of a Statsig server SDK.
+
+**Note**: You do not need to use the provided hooks to initialize a `StatsigClient`, and instead can opt to write you own initialization logic. See [Initialization Strategies](init-strategies).
+
