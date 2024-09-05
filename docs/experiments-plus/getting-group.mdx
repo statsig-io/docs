@@ -20,7 +20,7 @@ In code, if you tried to use experiment groups, your function might end up looki
 ```ts
 async function getSearchItems(user: StatsigUser, searchTerm: String): String[] {
     const results = index.get(searchTerm);
-    const experiment = await statsig.getExperiment(user, 'search_results');
+    const experiment = statsig.getExperimentSync(user, 'search_results');
     // NOTE - these APIs don't actually exist - this is for the sake of an example
     if (experiment.groupName === 'Sorted Long List') {
       return results.sort().slice(10);
@@ -42,7 +42,7 @@ So instead, this is what the code would look like using experiment parameters di
 ```ts
 async function getSearchItems(user: StatsigUser, searchTerm: String): String[] {
     let results = index.get(searchTerm);
-    const experiment = await statsig.getExperiment(user, 'search_results');
+    const experiment = statsig.getExperimentSync(user, 'search_results');
     results = experiment.get("sorted", false) ? results.sort() : results;
     const numItems = experiment.get("length", 0);
     return numItems > 0 ? results.slice(numItems) : results;
