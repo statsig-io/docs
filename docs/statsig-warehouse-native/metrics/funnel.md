@@ -1,11 +1,17 @@
 ---
-title: Funnel Metrics
-sidebar_label: Funnel
+title: Funnel++
+sidebar_label: Funnel++
 ---
 
 ## Summary
 
-Funnel metrics measure user journeys through a series of steps. There's more guides [here](/statsig-warehouse-native/features/funnel-metrics) on how to configure and use funnel metrics.
+Funnel metrics measure user journeys through a series of steps. There's additional guidance [here](/statsig-warehouse-native/features/funnel-metrics) on how to configure and use funnel metrics.
+
+Statsig allows you to use advanced functionalities - normally reserved for product analytics tools - within the rigorous statistical framework used in pulse analysis. This includes:
+
+- Configurable completion windows per-step
+- Session controls - going beyond user-based conversion
+- Built-in allowance for timestamp noise
 
 ### Use Cases
 
@@ -22,6 +28,8 @@ At the unit level, funnel metrics will calculate, for each step of the funnel, i
 If using session funnels, those step flags are instead counts of unique sessions.
 
 At the group level, the stepwise mean is calculated as the units for the next step divided by the units for the current step. The overall mean is calculated as the units/sessions that completed the funnel divided by the unit/sessions that started the funnel.
+
+Note that for each step, the _first_ occurrence after the previous step is treated as the canonical trigger and timestamp for that event going forward for subsequent timestamp comparisons.
 
 This would look like the SQL below:
 
@@ -52,7 +60,15 @@ By default, Statsig only includes numerators from metrics with non-null, non-zer
 
 ## Options
 
+- Conversion window
+  - A step-level setting specifying how long this step has to occur after the previous step. For example, in the funnel A->B->C, if B has a conversion window of one hour, it will only be counted if it occurs within 1 hour of A.
+- Use Strict Event Ordering
+  - Whether to use >= or > when comparing step timestamps. Strict mode allows you to have two subsequent steps of the same event without it "automatically" passing
+- Timestamp Allowance
+  - Allow some amount of buffer, in milliseconds, between funnel steps. Event logs can have noise on timestamps, so sometimes events may be logged slightly out of order. This setting helps to correct for this issue.
 - Count Distinct Mode
   - Whether to count sessions or units. For sessions, you must provide a session identifier field on each step
 - Calculation window (optional)
   - How long a unit has to complete the funnel, once started, and if the funnel starts when the unit is exposed to the experiment or when they trigger the first event in the funnel
+- Treat Exposure as Initial Funnel Event
+  - With this setting enabled, the first step of the funnel is the exposure event of the experiment. This makes it easy to measure the conversion rate to the first event, and additionally normalizes the final outcome per experiment-user. Note that this is incompatible with session-based funnels.

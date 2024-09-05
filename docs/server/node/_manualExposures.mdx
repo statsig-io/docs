@@ -17,7 +17,7 @@ export const Snippets = {
   // Configs
   configSnippet: (
     <CodeBlock language="jsx">
-      {`const config = await Statsig.getConfigWithExposureLoggingDisabled(aUser, 'a_dynamic_config_name');`}
+      {`const config = Statsig.getConfigWithExposureLoggingDisabledSync(aUser, 'a_dynamic_config_name');`}
     </CodeBlock>
   ),
   configExposureSnippet: (
@@ -28,7 +28,7 @@ export const Snippets = {
   // Experiment
   experimentSnippet: (
     <CodeBlock language="jsx">
-      {`const experiment = await Statsig.getExperimentWithExposureLoggingDisabled(aUser, 'an_experiment_name');`}
+      {`const experiment = Statsig.getExperimentWithExposureLoggingDisabledSync(aUser, 'an_experiment_name');`}
     </CodeBlock>
   ),
   experimentExposureSnippet: (
@@ -39,7 +39,7 @@ export const Snippets = {
   // Layer
   layerSnippet: (
     <CodeBlock language="jsx">
-      {`const layer = await Statsig.getLayerWithExposureLoggingDisabled(aUser, 'a_layer_name');
+      {`const layer = Statsig.getLayerWithExposureLoggingDisabledSync(aUser, 'a_layer_name');
 const paramValue = layer.get('a_param_name', 'fallback_value');`}
     </CodeBlock>
   ),
