@@ -1,17 +1,27 @@
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
-## Gates
+## The Basics
 
-Evaluating a gate is done using the `useGateValue` hook like this:
+You can get an instance of the StatsigClient to check gates, experiments, dynamic configs, layers, and log events.
+
+```
+import { useStatsigClient } from "@statsig/react-bindings";
+
+const { client } = useStatsigClient();
+```
+
+### Checking a Gate
+You can evaluate a gate by getting the client with the `useStatsigClient` hook,
+and then calling `checkGate`
 
 ```js
 // RootPage.js
-import { useGateValue } from "@statsig/react-bindings";
+import { useStatsigClient } from "@statsig/react-bindings";
 
 function RootPage() {
-  const gateValue = useGateValue("check_user");
+  const { client } = useStatsigClient();
   return (
-    <div>Gate is {gateValue ? 'passing' : 'failing'}.</div>
+    <div>Gate is {client.checkGate('check_user') ? 'passing' : 'failing'}.</div>
   );
 }
 
@@ -19,19 +29,35 @@ export default RootPage;
 ```
 
 
-## Experiments
-
-You can reach into the experiment variant and access parameters that are assigned to the specific user by using the `useExperiment` hook like this:
+### Getting an Experiment
+You can access the experiment variant and parameters for the user by getting the client with the `useStatsigClient` hook,
+and then calling `getExperiment`.
 
 ```js
 // RootPage.js
-import { useExperiment } from "@statsig/react-bindings";
+import { useStatsigClient } from "@statsig/react-bindings";
 
 function RootPage() {
-  const experiment = useExperiment("headline_test");
+  const { client } = useStatsigClient();
+  const experiment = client.getExperiment('headline_test');
   return (
     <div>Headline Parameter: {experiment.get('headline', 'Default')}.</div>
   );
+}
+
+export default RootPage;
+```
+
+### Logging an Event
+You can get the client with the `useStatsigClient` hook, and then call `logEvent`
+
+```js
+// RootPage.js
+import { useStatsigClient } from "@statsig/react-bindings";
+
+function RootPage() {
+  const { client } = useStatsigClient();
+  return <button onClick={() => client.logEvent("button_click")}>Click Me</button>
 }
 
 export default RootPage;
