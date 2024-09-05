@@ -19,6 +19,7 @@ import {
   CodeExamples,
   EvaluationDetails,
   ParameterStore,
+  ManualExposures,
 } from "./Templates/index.mdx";
 
 import OnDeviceEvalProsAndCons from "./Templates/_OnDeviceEvalProsAndCons.mdx";
@@ -54,6 +55,7 @@ import ShutdownSnippet from "./javascript-mono/_shutdown.mdx";
 import * as _typedGetters from "./javascript-mono/_typedGetters.mdx";
 import GetParameterStore from "./javascript-mono/_getParameterStore.mdx";
 import GetParameter from "./javascript-mono/_getParameter.mdx";
+import { Snippets as ManualExposureSnippets } from "./javascript-mono/_manualExposures.mdx";
 
 export const TypedGetters = _typedGetters;
 
@@ -99,6 +101,7 @@ export const Builder = SDKDocsBuilder({
     [UpdateUser, {}],
     [PrefetchUsers, {}],
     [StatsigOptions, { options: <Options /> }],
+    [ManualExposures, { ...ManualExposureSnippets }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [AsyncTimeouts, {}],
     [DataAdapter, {}],

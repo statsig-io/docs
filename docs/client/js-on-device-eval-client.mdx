@@ -17,6 +17,7 @@ import {
   StatsigOptions,
   Shutdown,
   CodeExamples,
+  ManualExposures,
 } from "./Templates/index.mdx";
 
 import OnDeviceEvalProsAndCons from "./Templates/_OnDeviceEvalProsAndCons.mdx";
@@ -40,6 +41,7 @@ import LogEvent from "./js-device-eval-mono/_logEvent.mdx";
 import MoreFAQs from "./js-device-eval-mono/_faqs.mdx";
 import Options from "./js-device-eval-mono/_options.mdx";
 import ShutdownSnippet from "./js-device-eval-mono/_shutdown.mdx";
+import { Snippets as ManualExposureSnippets } from "./js-device-eval-mono/_manualExposures.mdx";
 
 
 export const Builder = SDKDocsBuilder({
@@ -85,6 +87,7 @@ export const Builder = SDKDocsBuilder({
     [StatsigUser, {}],
     [ClientEventEmitting, {}],
     [StatsigOptions, { options: <Options /> }],
+    [ManualExposures, { ...ManualExposureSnippets }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [DataAdapter, {}],
     [FAQ, { faqs: <MoreFAQs /> }],

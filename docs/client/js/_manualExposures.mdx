@@ -4,7 +4,7 @@ export const Snippets = {
   // Gates
   gateSnippet: (
     <CodeBlock language="jsx">
-      {`const result = await Statsig.checkGateWithExposureLoggingDisabled('a_gate_name');`}
+      {`const result = Statsig.checkGateWithExposureLoggingDisabled('a_gate_name');`}
     </CodeBlock>
   ),
   gateExposureSnippet: (
@@ -15,7 +15,7 @@ export const Snippets = {
   // Configs
   configSnippet: (
     <CodeBlock language="jsx">
-      {`const config = await Statsig.getConfigWithExposureLoggingDisabled('a_dynamic_config_name');`}
+      {`const config = Statsig.getConfigWithExposureLoggingDisabled('a_dynamic_config_name');`}
     </CodeBlock>
   ),
   configExposureSnippet: (
@@ -26,7 +26,7 @@ export const Snippets = {
   // Experiment
   experimentSnippet: (
     <CodeBlock language="jsx">
-      {`const experiment = await Statsig.getExperimentWithExposureLoggingDisabled('an_experiment_name');`}
+      {`const experiment = Statsig.getExperimentWithExposureLoggingDisabled('an_experiment_name');`}
     </CodeBlock>
   ),
   experimentExposureSnippet: (
@@ -37,7 +37,7 @@ export const Snippets = {
   // Layer
   layerSnippet: (
     <CodeBlock language="jsx">
-      {`const layer = await Statsig.getLayerWithExposureLoggingDisabled('a_layer_name');
+      {`const layer = Statsig.getLayerWithExposureLoggingDisabled('a_layer_name');
 const paramValue = layer.get('a_param_name', 'fallback_value');`}
     </CodeBlock>
   ),
