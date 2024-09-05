@@ -1,37 +1,37 @@
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
-## React Native Specific Setup
+## React Native + React Specific Setup
 
 The setup for a ReactNative environment is very similar to a plain [React environment](/client/javascript-sdk/react). 
 The only difference is that you need to use the ReactNative specific `StatsigProviderRN`. 
-This automatically switches out the storage layer used by the SDK, utilizing [`react-native-mmkv`](https://github.com/mrousavy/react-native-mmkv) instead of LocalStorage (which isn't available in RN environments).
+This automatically switches out the storage layer used by the SDK, utilizing [AsyncStorage](https://github.com/react-native-async-storage) instead of LocalStorage (which isn't available in RN environments).
 
 
-```typescript
+```tsx
 import {
   StatsigProviderRN,
-  useClientAsyncInit,
   useFeatureGate,
 } from '@statsig/react-native-bindings';
 
 function Content() {
   const gate = useFeatureGate('a_gate');
 
-  return <div>Reason: {gate.details.reason}</div>; // Reason: Network or NetworkNotModified
+  // Reason: Network or NetworkNotModified
+  return (
+    <View>
+      <Text>Value: {gate.value ? "Pass" : "Fail"}</Text> 
+      <Text>Reason: {gate.details.reason}</Text> 
+    </View>
+  );
 }
 
 function App() {
-  const { client, isLoading } = useClientAsyncInit(YOUR_CLIENT_KEY, {
-    userID: 'a-user',
-  });
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   return (
-    <StatsigProviderRN client={client}>
-      <Content />
+    <StatsigProviderRN 
+      sdkKey={YOUR_CLIENT_KEY}
+      user={{ userID: "a-user" }}
+      loadingComponent={<Text>Loading...</Text>}>
+        <Content />
     </StatsigProviderRN>
   );
 }
@@ -39,6 +39,38 @@ function App() {
 
 **Note**: There are a few different ways to initialize the StatsigClient, with trade-offs between latency and up-to-date values.
 You can read [Initialization Strategies](init-strategies) to learn more.
+
+## StatsigClient Outside the Component Tree
+
+In some scenarios, you may need to use the `StatsigClient` when you are not in the React component tree. Things like background tasks or handling notifications. 
+For these, you can use the Expo specific `StatsigClientRN`.
+
+```typescript
+import { StatsigClientRN } from '@statsig/react-native-bindings';
+
+const myClient = new StatsigClientRN(
+  YOUR_CLIENT_KEY,
+  { userID: "a-user" }
+);
+
+await myClient.initializeAsync();
+
+if (myClient.checkGate("my_gate")) {
+  // do something cool
+}
+```
+
+## Hooks
+
+All hooks are re-exported from the `@statsig/react-bindings` package (See [Hooks](/client/javascript-sdk/react#hooks)). 
+They can be imported through `@statsig/react-native-bindings` or directly through the `@statsig/react-bindings` peer dependency.
+
+```js
+import { useFeatureGate, useStatsigClient } from '@statsig/react-native-bindings';
+```
+
+## Advanced
+
 
 ### Android networking
 We have seen reports that the default networking client on react native for android can error out with:
@@ -48,7 +80,8 @@ ERROR  [Statsig] A networking error occured during POST request to https://featu
 ```
 
 Please let us know if you hit this, but for now the suggested workaround is to append this `content-type` for all requests:
-```
+
+```typescript
 const customFetcher = (uri, args) => {
   args.headers = {
     'Content-Type': 'application/json',
@@ -57,7 +90,7 @@ const customFetcher = (uri, args) => {
   return fetch(uri, args);
 };
 
-const myStatsigClient = new StatsigClient(
+const myStatsigClient = new StatsigClientRN(
   'YOUR_KEY',
   {
     userID: "YOUR_USER_ID",
@@ -70,12 +103,42 @@ const myStatsigClient = new StatsigClient(
 );
 ```
 
+### Synchronous Storage with MMKV
 
-## Hooks
+If you are utilizing [MMKV](https://github.com/mrousavy/react-native-mmkv) in your project, and would prefer to use that instead of the default ([AsyncStorage](https://github.com/react-native-async-storage)). 
+You can provide you own `StorageProvider` via `StatsigOptions`. 
 
-All hooks are re-exported from the `@statsig/react-bindings` package (See [Hooks](/client/javascript-sdk/react#hooks)). 
-They can be imported through `@statsig/react-native-bindings` or directly through the `@statsig/react-bindings` peer dependency.
+Something like:
+```tsx
+import { MMKV } from "react-native-mmkv";
+import { StorageProvider } from "@statsig/client-core";
+import { StatsigProviderRN } from '@statsig/react-native-bindings';
 
-```js
-import { useFeatureGate, useStatsigClient } from '@statsig/react-native-bindings';
+function App() {
+    const [storageProvider] = useState<StorageProvider>(() => {
+      const mmkv = new MMKV();
+
+      return {
+        isReady: () => true,
+        isReadyResolver: () => null,
+        getProviderName: () => "MMKV",
+        getAllKeys: () => mmkv.getAllKeys(),
+        getItem: (key: string) => mmkv.getString(key) ?? null,
+        setItem: (key: string, value: string) => mmkv.set(key, value),
+        removeItem: (key: string) => mmkv.delete(key),
+      };
+    });
+
+   return (
+    <StatsigProviderExpo
+      sdkKey={YOUR_CLIENT_KEY}
+      user={{ userID: "a-user" }}
+      options={{
+        storageProvider, // <- Passed into StatsigOptions
+      }}
+    >
+      <Text>...</Text>
+    </StatsigProviderExpo>
+   );
+}
 ```
