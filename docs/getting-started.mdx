@@ -8,6 +8,12 @@ import ImportantConcepts from '../src/components/getting-started/ImportantConcep
 import Styles from '../src/components/getting-started/Styles';
 
 <Styles />
+# What is Statsig?
+Statsig is the single platform to ship, test and analyze new features. Statsig provides the most advanced [Experimentation](/experiments-plus) and [Feature Flagging](/feature-flags/working-with) tools available, in a platform with full-featured [Product Analytics](/product-analytics/overview), [Session Replay](/session-replay/overview), and more. We believe the best way to build products is with data, and [our mission](https://statsig.com/company) is to democratize data across companies of all sizes. 
+
+You can use Statsig with our infrastructure, or plug into your existing metrics with our Warehouse Native product:
+
+<ImportantConcepts />
 
 # Getting Started with Statsig
 ## JavaScript Snippet
@@ -17,16 +23,11 @@ The easiest way to get started is to add the Statsig JS script to your website, 
 Paste the below code into the `<head>` section of your website, replacing "YOUR_CLIENT_KEY" with a Client API Key from your Statsig project, which you can find at [console.statsig.com/api_keys](https://console.statsig.com/api_keys). This will start [recording events](/webanalytics/overview) & [session replays](/session-replay/overview), and give you access to [experiments](/experiments-plus) & [feature flags](/feature-flags/working-with) right away.
 
 ```
-<script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@1/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=[YOUR_CLIENT_KEY]"></script>
+<script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@2/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=[YOUR_CLIENT_KEY]"></script>
 ```
 
 ## Quickstart Installation
 
-Statsig supports >30 SDKs and Frameworks - select the one you'd like below, and if you don't see the one you want - let us know in [Slack](https://statsig.com/slack) and try out the [HTTP API](/http-api) for now. 
+Statsig supports >30 SDKs and Frameworks - select the one you'd like below, and if you don't see the one you want - let us know in [Slack](https://statsig.com/slack).
 
 <SDKAndFrameworks />
-
-### Other Resources:
-Understand how Statsig works, our Warehouse Native model, or join our Support Slack:
-
-<ImportantConcepts />

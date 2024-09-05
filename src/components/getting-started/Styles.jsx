@@ -46,6 +46,7 @@ const Styles = () => (
         display: flex;
         gap: 16px;
         justify-content: space-around;
+        padding-bottom: 16px;
       }
 
       .concept-card {

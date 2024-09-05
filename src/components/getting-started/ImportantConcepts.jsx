@@ -1,9 +1,9 @@
 import React from 'react';
 
 const concepts = [
-  { name: 'Statsig Warehouse Native vs. Cloud', icon: '/img/icons/icon-warehouse.svg', link: 'https://www.statsig.com/blog/deciding-cloud-hosted-versus-warehouse-native-experimentation-platforms' },
   { name: 'The Statsig Platform & Architecture', icon: '/img/icons/icon-how-statsig-works.svg', link: '/understanding-platform' },
-  { name: 'Our World-Class Support', icon: '/img/icons/icon-support.svg', link: 'https://statsig.com/slack' }
+  { name: 'Statsig Warehouse Native vs. Cloud', icon: '/img/icons/icon-warehouse.svg', link: 'https://www.statsig.com/blog/deciding-cloud-hosted-versus-warehouse-native-experimentation-platforms' },
+
 ];
 
 const ImportantConcepts = () => (

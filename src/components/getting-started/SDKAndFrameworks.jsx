@@ -36,7 +36,7 @@ const sdkGroups = [
     ]
   },
   {
-    label: 'Framework Integration Guides',
+    label: 'Integrations',
     value: 'frameworks',
     items: [
       { name: 'Webflow', img: '/img/framework/webflow.svg', link: '/guides/webflow-sidecar-ab-test' },
