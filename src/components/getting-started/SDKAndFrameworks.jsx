@@ -44,7 +44,8 @@ const sdkGroups = [
       { name: 'Segment', img: '/img/framework/segment.svg', link: '/integrations/data-connectors/segment' },
       { name: 'Rudderstack', img: '/img/framework/rudderstack.svg', link: '/integrations/data-connectors/rudderstack' },
       { name: 'Hightouch', img: '/img/framework/hightouch.png', link: '/integrations/data-connectors/hightouch' },
-      { name: 'mParticle', img: '/img/framework/mparticle.svg', link: '/integrations/data-connectors/mparticle' }
+      { name: 'mParticle', img: '/img/framework/mparticle.svg', link: '/integrations/data-connectors/mparticle' },
+      { name: 'Framer', img: '/img/framework/framer.svg', link: '/guides/framer-analytics' }
     ]
   }
 ];

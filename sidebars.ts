@@ -44,6 +44,7 @@ const sidebars: SidebarsConfig = {
               "Common Use Cases": [
                 "guides/aa-test",
                 "guides/shopify-ab-test",
+                "guides/framer-analytics",
                 "guides/webflow-sidecar-ab-test",
                 "guides/aa-sidecar",
                 "guides/sendgrid-email-abtest",
