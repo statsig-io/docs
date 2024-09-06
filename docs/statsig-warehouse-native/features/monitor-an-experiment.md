@@ -42,7 +42,8 @@ To monitor the status of your experiment,
 
   - **Deduplication Rate Check** reports the percentage of exposures which have duplicate mapped ids across primary and secondary IDs. The following thresholds are used for displaying deduplication rate alerts:
     - **Deduplication rate between 1% and 5%** Warning (yellow) meaning that a number of deduplications have been made which will not be included in analysis, reducing the sample size and potentially impacting the overall magnitude of results.
-    - **Deduplication rate greater than 5%** Alert (red) meaning that a substantial number of deduplications have been made which will not be included in the analysis. This can indicate a problem with the experiment setup
+    - **Deduplication rate greater than 5%** Alert (red) meaning that a substantial number of deduplications have been made which will not be included in the analysis. This can indicate a problem with the experiment setup or 1-many mapping between the two IDs.
+    - Note that Statsig now supports 1-many and many-many mapping in our Advanced ID Resolution, in addition to 1-1 mapping. Click [here](https://docs.statsig.com/statsig-warehouse-native/features/id-resolution) to learn more about Advanced ID Resolution.
   - **Deduplication Bias Check** reports the percentage of exposures which have duplicate mapped ids across primary and secondary IDs in each group and performs a Chi-Squared test of independence. The following thresholds are used for displaying deduplication bias alerts:
 
     - **p-value between 0.001 and 0.01**: Warning (yellow) indicating possible bias.The p-value is not low enough to confidently say that there is a real imbalance in deduplication rate between groups. In this case the recommendation is to wait and check again the next day.
