@@ -2,17 +2,19 @@ import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
 ## React Native Specific Setup
 
-The setup for a ReactNative environment is very similar to a plain [React environment](/client/javascript-sdk/react). 
-The only difference is that you need to use the ReactNative specific `StatsigProviderRN`. 
-This automatically switches out the storage layer used by the SDK, utilizing [`react-native-mmkv`](https://github.com/mrousavy/react-native-mmkv) instead of LocalStorage (which isn't available in RN environments).
+To get setup with Statsig in a ReactNative component tree, 
+you should use the RN specific `StatsigProviderOnDeviceEvalRN`.
+This automatically switches out the storage layer used by the SDK, utilizing 
+[AsyncStorage](https://github.com/react-native-async-storage) instead of LocalStorage 
+(which isn't available in RN environments).
 
 
-```typescript
+
+```tsx
 import {
-  StatsigProviderRN,
-  useOnDeviceClientAsyncInit,
+  StatsigProviderOnDeviceEvalRN,
   useFeatureGate,
-} from '@statsig/react-native-bindings';
+} from '@statsig/react-native-bindings-on-device-eval';
 
 function Content() {
   const gate = useFeatureGate('a_gate');
@@ -21,16 +23,13 @@ function Content() {
 }
 
 function App() {
-  const { client, isLoading } = useOnDeviceClientAsyncInit(YOUR_CLIENT_KEY);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   return (
-    <StatsigProviderRN client={client}>
+    <StatsigProviderOnDeviceEvalRN
+      sdkKey={YOUR_CLIENT_KEY}
+      loadingComponent={<Text>...</Text>}
+    >
       <Content />
-    </StatsigProviderRN>
+    </StatsigProviderOnDeviceEvalRN>
   );
 }
 ```
