@@ -38,6 +38,9 @@ export const NextJsInstall = _nextJsInstall;
 import * as _nextJsPageRouterBootstrap from "./_nextJsPageRouterBootstrap.mdx";
 export const NextJsBootstrap = _nextJsPageRouterBootstrap;
 
+import * as _nextJsPageRouterSimpleProvider from "./_nextJsPageRouterSimpleProvider.mdx";
+export const NextJsPageRouterSimpleProvider = _nextJsPageRouterSimpleProvider;
+
 import * as _nextJsPageRouterApiProxy from "./_nextJsPageRouterApiProxy.mdx";
 export const NextJsApiProxy = _nextJsPageRouterApiProxy;
 
@@ -50,6 +53,7 @@ export const Builder = SDKDocsBuilder({
       },
     ],
     [NextJsInstall, { isPageRouter: true }],
+    [NextJsPageRouterSimpleProvider, {}],
     [NextJsBootstrap, {}],
     [NextJsApiProxy, {}],
   ]

@@ -26,7 +26,9 @@ To monitor the status of your experiment,
   - **Crossover users** monitors the percentage of units which are exposed to more than one experiment group for a given experiment. Statsig discards crossover users from the experiment analysis, which may reduce your sample size and statistical power. The following thresholds are used for displaying crossover users alerts:
     - **Crossover user percentage between 1% and 10%**: Warning (yellow) meaning that the presence of a number of crossover users has been detected, but the impact on the experiment is expected to be relatively small.
     - **Crossover user percentage over 10%**: Alert (red) indicating that there are a substantial number of crossover users, which can indicate a problem with you experiment setup.
-  - **User metrics were computed** This check confirms that we were able to join exposure data to metric data and produce experiment results.
+  - **User metrics were computed** confirms that we were able to join exposure data to metric data and produce experiment results.
+  - **Metrics Available for Topline Impact** checks whether there is sufficient metric data to calculate topline impacts for each metric. Click [here](https://docs.statsig.com/stats-engine/topline-impact) to learn more information about topline impact.
+  - **Differential Impact Detection completed** checks whether the differential impact detection has finished and flags if extreme differential impacts are detected for any sub-population per your configuration. Click [here](https://docs.statsig.com/experiments-plus/differential-impact-detection) to learn more about differential impact detection.
 
   Some health checks are relevant only to end-to-end statsig experiments where the statsig sdk is used for assignment, while some are only relevant for analysis experiments where assignment is handled outside of statsig.
 

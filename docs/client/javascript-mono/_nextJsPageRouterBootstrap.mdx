@@ -5,6 +5,36 @@ import TabItem from "@theme/TabItem";
 
 Since Next.js supports Server Side Rendering (SSR), we could setup Statsig to take advantage of this.
 
+### Install
+
+If you intend to use fully utilize Statsig across Next.js, you will need both Server and Client SDKs installed. 
+[`@statsig/js-client`](/client/javascript-sdk) and [`@statsig/react-bindings`](/client/javascript-sdk/react) for the client side and [`statsig-node`](/server/nodejsServerSDK) for the server side.
+
+
+<Tabs
+  defaultValue="npm"
+  groupId="js-install-choice"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+  ]}>
+
+  <TabItem value="npm">
+
+```shell
+npm install @statsig/js-client @statsig/react-bindings statsig-node
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```shell
+yarn add @statsig/js-client @statsig/react-bindings statsig-node
+```
+
+  </TabItem>
+</Tabs>
+
 ### Create StatsigServerUtil.ts
 
 Let's start by create a util function to get values from the Statsig Node SDK.
