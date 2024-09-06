@@ -10,20 +10,17 @@ documentation on those packages is also relevant for Expo implementations:
 
 ## Installation
 
-Statsig uses a multi-package strategy, so you will need to install both the Statsig client and the Expo
-specific bindings.
+To use Statsig in Expo, you will need to install the Statsig Expo specific bindings.
 
 ```shell
-npx expo install @statsig/js-client @statsig/expo-bindings
+npx expo install @statsig/expo-bindings
 ```
 
 
 ### Peer Dependecies
 
-The `@statsig/expo-bindings` package has peer dependencies which will also need to be installed. 
-[`react-native-mmkv`](https://github.com/mrousavy/react-native-mmkv?tab=readme-ov-file#expo) is utilized to allow for synchronous storage, similar to LocalStorage in web environments.
+The `@statsig/expo-bindings` package has peer dependencies which may also need to be installed if they are not already in your project.
 
 ```shell
-npx expo install expo-device expo-application react-native-mmkv
-npx expo prebuild
+npx expo install expo-device expo-application @react-native-async-storage/async-storage
 ```
