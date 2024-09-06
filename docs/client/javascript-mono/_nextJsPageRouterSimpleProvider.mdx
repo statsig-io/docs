@@ -1,48 +1,31 @@
 ## Usage
 
-In the App Router model, you would need to create a stand-alone provider that will provide the context for Statsig.  So go ahead and create a `customProviders.tsx` in the `src/app` folder as such:
+In the Page Router model, you will need to wrap your app in `StatsigProvider` which will provide Statsig context throughout your NextJS app.  
+
+Modify your `_app.tsx` to match the following
 
 ```js
-// customProviders.tsx
-'use client';
+// _app.tsx
+import type { AppProps } from "next/app";
 import { StatsigProvider } from "@statsig/react-bindings";
 
-export function CustomProviders({ children }) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <StatsigProvider sdkKey="client-KEY" user={{ userID: "20" }}>
-      {children}
+      <Component {...pageProps} />
     </StatsigProvider>
   );
 }
 ```
 
-Next, you'll need to update `layout.tsx` to use the newly created provider
-
-```js
-// layout.tsx
-import { CustomProviders } from "./customProviders";
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body>
-        <CustomProviders>{children}</CustomProviders>
-      </body>
-    </html>
-  );
-}
-```
-
-Now, you're all set to use Statsig gates, experiments and configs.
+With that wrapper, you're all set to use Statsig gates, experiments and configs.
 
 ## Gates
 
 You can check gates by using `useGateValue` hook in any client side rendered page.  In this case, let's modify `page.tsx` to check for a gate value:
 
 ```js
-// page.tsx
-'use client';
-
+// index.tsx
 import { useGateValue } from "@statsig/react-bindings";
 
 export default function Home() {
@@ -60,9 +43,7 @@ export default function Home() {
 You can reach into the experiment variant and access parameters that are assigned to the specific user by using the useExperiment hook like this:
 
 ```js
-// page.tsx
-'use client';
-
+// index.tsx
 import { useExperiment } from "@statsig/react-bindings";
 
 export default function Home() {
@@ -71,18 +52,18 @@ export default function Home() {
     <div>
       Headline Parameter: {experiment.get('headline', 'Default')}
     </div>
-  );
+  )
 }
 ```
 
 ## Updating user properties
 
-Sometimes you'll need to update user properties, say when the user logs in and a `userID` is assigned, or a set of new properties have been identified.  This would require Statsig to go fetch new values for all the gates, experiments and config evaluations.  This is achieved by the `useStatsigUser` hook. 
+Sometimes you'll need to update user properties, say when the user logs in and a `userID` is assigned, or a set of new properties have been identified.  This would require Statsig to go fetch new values for all the gates, experiments and config evaluations.  This is achieved by the `useStatsigUser` hook.
 
-Create the file `src/app/login/page.tsx` and put this code in.  Click on the Login button to update the user.
+Create the file `pages/login.tsx` and put this code in.  Click on the Login button to update the user.
 
 ```js
-// login/page.tsx
+// pages/login.tsx
 import { useGateValue, useStatsigUser } from "@statsig/react-bindings";
 
 export default function LoginPage() {
