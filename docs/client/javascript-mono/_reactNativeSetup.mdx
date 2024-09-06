@@ -105,6 +105,8 @@ const myStatsigClient = new StatsigClientRN(
 
 ### Synchronous Storage with MMKV
 
+Due to the lack of LocalStorage in ReactNative environments, by default the SDK will prefetch all Statsig cache entries during initialization.
+
 If you are utilizing [MMKV](https://github.com/mrousavy/react-native-mmkv) in your project, and would prefer to use that instead of the default ([AsyncStorage](https://github.com/react-native-async-storage)). 
 You can provide you own `StorageProvider` via `StatsigOptions`. 
 

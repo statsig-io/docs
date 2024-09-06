@@ -4,7 +4,7 @@ import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
 You can get an instance of the StatsigClient to check gates, experiments, dynamic configs, layers, and log events.
 
-```
+```typescript
 import { useStatsigClient } from "@statsig/react-bindings";
 
 const { client } = useStatsigClient();
@@ -14,12 +14,13 @@ const { client } = useStatsigClient();
 You can evaluate a gate by getting the client with the `useStatsigClient` hook,
 and then calling `checkGate`
 
-```js
+```tsx
 // RootPage.js
 import { useStatsigClient } from "@statsig/react-bindings";
 
 function RootPage() {
   const { client } = useStatsigClient();
+  
   return (
     <div>Gate is {client.checkGate('check_user') ? 'passing' : 'failing'}.</div>
   );
@@ -33,13 +34,14 @@ export default RootPage;
 You can access the experiment variant and parameters for the user by getting the client with the `useStatsigClient` hook,
 and then calling `getExperiment`.
 
-```js
+```tsx
 // RootPage.js
 import { useStatsigClient } from "@statsig/react-bindings";
 
 function RootPage() {
   const { client } = useStatsigClient();
   const experiment = client.getExperiment('headline_test');
+ 
   return (
     <div>Headline Parameter: {experiment.get('headline', 'Default')}.</div>
   );
@@ -51,12 +53,13 @@ export default RootPage;
 ### Logging an Event
 You can get the client with the `useStatsigClient` hook, and then call `logEvent`
 
-```js
+```tsx
 // RootPage.js
 import { useStatsigClient } from "@statsig/react-bindings";
 
 function RootPage() {
   const { client } = useStatsigClient();
+ 
   return <button onClick={() => client.logEvent("button_click")}>Click Me</button>
 }
 

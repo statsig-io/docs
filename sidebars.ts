@@ -611,7 +611,6 @@ const sidebars: SidebarsConfig = {
                 "client/javascript-mono/Examples",
                 "client/javascript-mono/MigrationFromOldJsClient",
                 "client/javascript-mono/MigrationFromOldReact",
-                
               ],
             },
             "client/iosClientSDK",
@@ -625,10 +624,9 @@ const sidebars: SidebarsConfig = {
               type: "category",
               label: "On Device Evaluation",
               items: [
-                "client/jsLocalEvaluationSDK",
                 {
                   type: "category",
-                  label: "New JavaScript",
+                  label: "JavaScript",
                   link: {
                     type: "doc",
                     id: "client/js-on-device-eval-client",
@@ -651,6 +649,7 @@ const sidebars: SidebarsConfig = {
                 "client/reactSDK",
                 "client/reactNativeSDK",
                 "client/reactNativeExpoSDK",
+                "client/jsLocalEvaluationSDK",
               ],
             },
           ],

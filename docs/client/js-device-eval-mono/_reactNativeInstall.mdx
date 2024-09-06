@@ -1,11 +1,10 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-Note since the `@statsig/react-native-bindings` works in conjuction with `@statsig/react-bindings` and `@statsig/js-on-device-eval-client`, 
+Note since the `@statsig/react-native-bindings-on-device-eval` works in conjuction with `@statsig/js-on-device-eval-client`, 
 documentation on those packages is also relevant for React Native implementations:
 
 - [@statsig/js-on-device-eval-client documentation](/client/js-on-device-eval-client)
-- [@statsig/react-bindings documentation](/client/javascript-sdk)
 
 ## Installation
 
@@ -23,14 +22,14 @@ specific bindings.
   <TabItem value="npm">
 
 ```shell
-npm install @statsig/js-client @statsig/react-native-bindings
+npm install @statsig/react-native-bindings-on-device-eval
 ```
 
   </TabItem>
   <TabItem value="yarn">
 
 ```shell
-yarn add @statsig/js-client @statsig/react-native-bindings
+yarn add @statsig/react-native-bindings-on-device-eval
 ```
 
   </TabItem>
@@ -38,8 +37,7 @@ yarn add @statsig/js-client @statsig/react-native-bindings
 
 ### Peer Dependecies
 
-The `@statsig/react-native-bindings` package has peer dependencies which will also need to be installed.
-[`react-native-mmkv`](https://github.com/mrousavy/react-native-mmkv?tab=readme-ov-file#react-native) is utilized to allow for synchronous storage, similar to LocalStorage in web environments.
+The `@statsig/react-native-bindings-on-device-eval` package has peer dependencies which may also need to be installed if they are not already in your project.
 
 <Tabs
   defaultValue="npm"
@@ -52,14 +50,14 @@ The `@statsig/react-native-bindings` package has peer dependencies which will al
   <TabItem value="npm">
 
 ```shell
-npm install react-native-device-info react-native-mmkv
+npm install @react-native-async-storage/async-storage
 ```
 
   </TabItem>
   <TabItem value="yarn">
 
 ```shell
-yarn add react-native-device-info react-native-mmkv
+yarn add @react-native-async-storage/async-storage
 ```
 
   </TabItem>
