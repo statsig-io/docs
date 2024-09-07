@@ -6,7 +6,8 @@ composer require statsig/statsigsdk
 
 The SDK is also [open source and hosted on github](https://github.com/statsig-io/php-sdk). The package is published to [packagist](https://packagist.org/packages/statsig/statsigsdk).
 
-To successfully use the PHP SDK, you also need to 
-1. Provide a storage adapter to store cache config and event logs (defaults to local file adapter)
-2. Schedule a Cron job to poll for config changes and flush event logs to Statsig
-3. Initialize and use the SDK
+To successfully use the PHP SDK, you need to
+1. Install it
+2. Provide a storage adapter to cache config and event logs (easy default exists)
+3. Schedule a Cron job to poll for config changes and flush event logs to Statsig
+4. Initialize and use the SDK
