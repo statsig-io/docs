@@ -70,7 +70,9 @@ You can also change the date range of the dashboard on the fly by modifying the 
 
 If you want to share a static version of your dashboard, print it, or save it for any other purpose, you can easily export a copy of your dashboard with the present data by clicking the settings dropdown "..." in the top right corner, and then clicking on the "Export as PDF" button. After a few seconds, a PDF of your dashboard will be generated and downloaded automatically.
 
-![image](https://github.com/user-attachments/assets/90f9a918-766d-40e0-9a72-5a9d083b423f)
+<img width="1577" alt="image" src="https://github.com/user-attachments/assets/37e8b00d-981e-4bc2-a375-a975b6d4d302">
+
+
 
 ### Cloning your Dashboard
 
