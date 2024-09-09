@@ -24,6 +24,7 @@ function App() {
     <StatsigProviderExpo 
       sdkKey={YOUR_CLIENT_KEY}
       user={{userID: 'a-user'}}
+      options={{ environment: { tier: 'development' } }} // (Optional)
       loadingComponent={<Text>Loading...</Text>}>
       <Content />
     </StatsigProviderExpo>
