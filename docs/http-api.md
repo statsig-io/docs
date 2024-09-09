@@ -216,7 +216,7 @@ curl \
   "https://events.statsigapi.net/v1/log_custom_exposure"
 ```
 
-##### Gates
+##### Feature Gates
 
 ```
 // Gate Exposure Events
