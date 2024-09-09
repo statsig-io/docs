@@ -66,6 +66,17 @@ You can also change the date range of the dashboard on the fly by modifying the 
 
 ![image](https://github.com/user-attachments/assets/1c038930-f9bd-4d94-9bb4-4ba84a417dda)
 
+### Exporting your Dashboard
+
+If you want to share a static version of your dashboard, print it, or save it for any other purpose, you can easily export a copy of your dashboard with the present data by clicking the settings dropdown "..." in the rop right corner, and then clicking on the "Export as PDF" button. After a few seconds, a PDF of your dashboard will be generated and downloaded automatically.
+
+<img width="1622" alt="Screenshot 2024-09-09 at 3 38 03 PM" src="https://github.com/user-attachments/assets/90f9a918-766d-40e0-9a72-5a9d083b423f">
+
+### Cloning your Dashboard
+
+If you want to duplicate or clone any of your dashboards, open the desired dashboard, and click the settings dropdown "..." in the top right corner, then click on the "Clone" button. This will bring up the dialog for you to clone your dashboard, and take you there upon success.
+
+<img width="1616" alt="Screenshot 2024-09-09 at 3 36 07 PM" src="https://github.com/user-attachments/assets/abf7b681-5859-4a0e-b63e-d6fe16ea6e77">
 
 ### Organize your Dashboard
 
