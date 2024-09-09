@@ -78,6 +78,12 @@ If you want to duplicate or clone any of your dashboards, open the desired dashb
 
 ![image](https://github.com/user-attachments/assets/abf7b681-5859-4a0e-b63e-d6fe16ea6e77)
 
+### Filtering your Dashboard
+
+You can click on the filters button below the dashboard name to add a global filter to your dashboard. The filter will be applied across all widgets and you can quickly view updated results across all widgets, rather than having to filter each widget individually.
+
+![image](https://github.com/user-attachments/assets/9539d980-c647-4c6e-892d-0d1bb5f7f390)
+
 ### Organize your Dashboard
 
 A well-made dashboard helps easily convey a narrative around what information is most important and the relationship between items on the dashboard. To facilitate this, we make it easy to move and resize dashboard widgets in place.
