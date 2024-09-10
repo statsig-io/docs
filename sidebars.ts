@@ -195,6 +195,7 @@ const sidebars: SidebarsConfig = {
             "experiments-plus/overrides",
             "experiments-plus/stratified-sampling",
             "experiments-plus/differential-impact-detection",
+            "experiments-plus/pause-assignment",
             "experiments-plus/abandon",
             "experiments-plus/ending-experiment",
             "experiments-plus/disable-group",
