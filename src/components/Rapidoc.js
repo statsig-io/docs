@@ -1,6 +1,6 @@
-import { useColorMode } from "@docusaurus/theme-common";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
+import { useColorMode } from "@docusaurus/theme-common";
 import { useEffect } from "react";
 
 // Map entities to their corresponding OpenAPI tags
@@ -9,12 +9,12 @@ const entityToTagMap = {
   events: "Events",
   segments: "Segments",
   "dynamic-configs": "Dynamic Configs",
-  experiments: "Experiments",
+  experiments: ["Experiments", "Experiments (Warehouse Native)"],
   holdouts: "Holdouts",
   layers: "Layers",
   autotunes: "Autotunes",
   users: "Users",
-  metrics: "Metrics",
+  metrics: ["Metrics", "Metrics (Warehouse Native)"],
   "audit-logs": "Audit Logs",
   "exposure-count": "Configs",
   reports: "Reports",
@@ -25,15 +25,14 @@ const entityToTagMap = {
   keys: "Keys",
 };
 
-
-function filterPathsByTag(spec, tag) {
+function filterPathsByTag(spec, tags) {
   const filteredPaths = {};
   Object.keys(spec.paths).forEach((pathKey) => {
     const pathItem = spec.paths[pathKey];
     const methods = Object.keys(pathItem);
 
     methods.forEach((method) => {
-      if (pathItem[method]?.tags?.includes(tag)) {
+      if (tags.some((tag) => pathItem[method]?.tags?.includes(tag))) {
         if (!filteredPaths[pathKey]) {
           filteredPaths[pathKey] = {};
         }
@@ -69,7 +68,10 @@ export default function Rapidoc(props) {
       .then((data) => {
         if (tag) {
           // Filter paths by tag
-          const filteredData = filterPathsByTag(data, tag);
+          const filteredData = filterPathsByTag(
+            data,
+            Array.isArray(tag) ? tag : [tag]
+          );
           rapidoc.loadSpec(filteredData);
         } else {
           // If tag is not found, load the full spec
@@ -153,8 +155,6 @@ export default function Rapidoc(props) {
     </rapi-doc>
   );
 }
-
-
 
 function getDescription(entity) {
   switch (entity) {
