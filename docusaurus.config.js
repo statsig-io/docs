@@ -1,10 +1,10 @@
-import { themes as prismThemes } from "prism-react-renderer";
-import type { Config } from "@docusaurus/types";
-import type * as Preset from "@docusaurus/preset-classic";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
+const sdkDateExtractor = require("./src/plugins/rehype-sdk-date-extractor");
+const path = require("path");
+const math = require("remark-math");
+const katex = require("rehype-katex");
 
-const config: Config = {
+/** @type {import('@docusaurus/types').DocusaurusConfig} */
+module.exports = {
   title: "Statsig Docs",
   tagline: "Ship faster!",
   url: "https://docs.statsig.com",
@@ -14,31 +14,103 @@ const config: Config = {
   favicon: "img/favicon.ico",
   organizationName: "statsig", // Usually your GitHub org/user name.
   projectName: "statsig-io/docs", // Usually your repo name.
-
-  i18n: {
-    defaultLocale: "en",
-    locales: ["en"],
-  },
-
-  presets: [
-    [
-      "classic",
+  themeConfig: {
+    metadata: [
       {
-        docs: {
-          sidebarPath: "./sidebars.ts",
-          editUrl: "https://github.com/statsig-io/docs/edit/main/",
-          showLastUpdateTime: true,
-          routeBasePath: "/",
-          remarkPlugins: [remarkMath],
-          rehypePlugins: [rehypeKatex],
-        },
-        theme: {
-          customCss: "./src/css/custom.css",
-        },
-      } satisfies Preset.Options,
+        name: "og:image",
+        content: "/img/docs_meta_q3_2023.png",
+      },
+      {
+        name: "og:type",
+        content: "websiteg",
+      },
+      {
+        name: "twitter:card",
+        content: "summary_large_image",
+      },
+      {
+        name: "og:image:type",
+        content: "image/jpg",
+      },
+      {
+        name: "twitter:image",
+        content: "/img/docs_meta_q3_2023.png",
+      },
     ],
-  ],
-
+    navbar: {
+      title: "",
+      logo: {
+        alt: "Statsig",
+        src: "img/logo.svg",
+        srcDark: "img/logo_white.svg",
+        href: "/",
+      },
+      items: [
+        {
+          type: "html",
+          position: "right",
+          value:
+            "<button id=\"consoleCTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus(); window.statsig.logEvent({}, 'console_button_click', window.location.pathname, {referrer: document && document.referrer,});\">Get Started</button>",
+          type: 'html',
+          position: 'right',
+          value: '<button id="consoleCTA" onclick="window.open(\'https://console.statsig.com\', \'_blank\').focus(); window.statsig.logEvent({}, \'console_button_click\', window.location.pathname, {referrer: document && document.referrer,});">Get Started</button>',
+        },
+      ],
+    },
+    footer: {
+      style: "dark",
+      links: [
+        {
+          title: "Docs",
+          items: [
+            {
+              label: "Getting Started",
+              to: "/",
+            },
+          ],
+        },
+        {
+          title: "More",
+          items: [
+            {
+              label: "Statsig Home",
+              href: "https://statsig.com",
+            },
+            {
+              label: "Blog",
+              href: "https://statsig.com/blog",
+            },
+            {
+              label: "Slack Community",
+              href: "https://statsig.com/slack",
+            },
+            {
+              label: "Code",
+              href: "https://github.com/statsig-io",
+            },
+          ],
+        },
+      ],
+      copyright: `Copyright (c) ${new Date().getFullYear()} Statsig, Inc. | Thanks Docusaurus`,
+    },
+    prism: {
+      theme: require("prism-react-renderer/themes/github"),
+      darkTheme: require("prism-react-renderer/themes/dracula"),
+      additionalLanguages: [
+        "swift",
+        "java",
+        "ruby",
+        "csharp",
+        "jsx",
+        "go",
+        "python",
+        "kotlin",
+        "erlang",
+        "dart",
+        "rust",
+      ],
+    },
+  },
   plugins: [
     function statsig() {
       const isProd = process.env.NODE_ENV === "production";
@@ -47,7 +119,7 @@ const config: Config = {
         name: "docusaurus-plugin-statsig",
         getClientModules() {
           // statsig client sdk initialization
-          return [];
+          return [path.resolve(__dirname, "./statsig")];
         },
         injectHtmlTags() {
           return {
@@ -89,6 +161,18 @@ const config: Config = {
               {
                 tagName: "script",
                 attributes: {
+                  src: "https://api.statsigcdn.com/v1/download_config_specs/client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps.js",
+                },
+              },
+              {
+                tagName: "script",
+                attributes: {
+                  src: "https://cdn.jsdelivr.net/npm/statsig-js-local-eval@1.0.0/build/statsig-prod-web-sdk.min.js",
+                },
+              },
+              {
+                tagName: "script",
+                attributes: {
                   src: "https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=client-c1fEjmA7JETNimhlFhKf2M1qMRFNkl9ipDfxYEatlYJ",
                 },
               },
@@ -114,6 +198,7 @@ const config: Config = {
                   src: "/js/koala.js",
                 },
               },
+              
             ],
           };
         },
@@ -231,7 +316,6 @@ const config: Config = {
       },
     ],
   ],
-
   themes: [
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
@@ -250,84 +334,25 @@ const config: Config = {
       },
     ],
   ],
-
-  themeConfig: {
-    // Replace with your project's social card
-    image: "img/docs_meta_q3_2023.png",
-    navbar: {
-      title: "",
-      logo: {
-        alt: "Statsig",
-        src: "img/logo.svg",
-        srcDark: "img/logo_white.svg",
-        href: "/",
+  presets: [
+    [
+      "@docusaurus/preset-classic",
+      {
+        docs: {
+          sidebarPath: require.resolve("./sidebars.js"),
+          routeBasePath: "/",
+          editUrl: "https://github.com/statsig-io/docs/edit/main/",
+          showLastUpdateTime: true,
+          rehypePlugins: [sdkDateExtractor, katex],
+          remarkPlugins: [math],
+        },
+        blog: false,
+        theme: {
+          customCss: require.resolve("./src/css/custom.css"),
+        },
       },
-      items: [
-        {
-          type: "html",
-          position: "right",
-          value:
-            "<button id=\"consoleCTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus(); window.statsig.logEvent({}, 'console_button_click', window.location.pathname, {referrer: document && document.referrer,});\">Get Started</button>",
-        },
-      ],
-    },
-    footer: {
-      style: "dark",
-      links: [
-        {
-          title: "Docs",
-          items: [
-            {
-              label: "Getting Started",
-              to: "/",
-            },
-          ],
-        },
-        {
-          title: "More",
-          items: [
-            {
-              label: "Statsig Home",
-              href: "https://statsig.com",
-            },
-            {
-              label: "Blog",
-              href: "https://statsig.com/blog",
-            },
-            {
-              label: "Slack Community",
-              href: "https://statsig.com/slack",
-            },
-            {
-              label: "Code",
-              href: "https://github.com/statsig-io",
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright (c) ${new Date().getFullYear()} Statsig, Inc. | Thanks Docusaurus`,
-    },
-    prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
-      additionalLanguages: [
-        "bash",
-        "diff",
-        "json",
-        "swift",
-        "java",
-        "ruby",
-        "csharp",
-        "jsx",
-        "go",
-        "python",
-        "kotlin",
-        "erlang",
-        "dart",
-        "rust",
-      ],
-    },
-  } satisfies Preset.ThemeConfig,
+    ],
+  ],
   stylesheets: [
     "https://fonts.googleapis.com/icon?family=Material+Icons",
     {
@@ -339,5 +364,3 @@ const config: Config = {
     },
   ],
 };
-
-export default config;
