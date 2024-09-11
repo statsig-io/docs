@@ -2,6 +2,8 @@ import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
 
 `Initialize()` takes an optional parameter `options` in addition to `sdkKey` and `user` that you can provide to customize the Statsig client. Here are the current options and we are always adding more to the list:
 
+- **apiUrlBase**: string, default null
+  - Allows you to override the API url base path, enabling custom/internal proxy forwarding.
 - **environment**: StatsigEnvironment, default null
   - An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
   - The most common usage is to set the environment tier (EnvironmentTier), e.g. `new StatsigEnvironment(EnvironmentTier.Staging)`, and have feature gates pass/fail for specific environments.
