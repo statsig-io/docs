@@ -50,12 +50,21 @@ const sdkGroups = [
   }
 ];
 
-const SDKItem = ({ name, img, link }) => (
-  <a href={link} className="sdk-item card">
-    <img src={img} alt={`${name} logo`} className="sdk-icon" />
-    <span>{name}</span>
-  </a>
-);
+const SDKItem = ({ name, img, link }) => {
+  const handleClick = () => {
+    window.__STATSIG__.instance().logEvent({
+      eventName: 'sdk_click',
+      value: name
+    });
+  };
+
+  return (
+    <a href={link} className="sdk-item card" onClick={handleClick}>
+      <img src={img} alt={`${name} logo`} className="sdk-icon" />
+      <span>{name}</span>
+    </a>
+  );
+};
 
 const SDKAndFrameworks = () => (
   <div>
