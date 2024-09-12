@@ -1,3 +1,5 @@
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
 #### Does the SDK use the browser local storage or cookies? If so, for what purposes?
 
 The SDK does not use any cookies.
@@ -20,40 +22,4 @@ to log a custom event.
 In certain use cases, it is necessary to suspend cache and network usage until the user grants specific 
 permissions. You can now start the SDK without storage or logging and enable this only after the user grants permission. 
 
-<Tabs
-  groupId="js-migration-choice"
-  defaultValue="new"
-  values={[
-    {label: 'statsig-js (Legacy)', value: 'legacy'},
-    {label: 'New', value: 'new'},
-  ]}>
-  <TabItem value="legacy">
-
-```typescript
-// start the SDK without storage or logging
-Statsig.initialize(
-  'client-key',
-  { userID: 'a_user' },
-  { disableAllLogging: true, disableLocalStorage: true },
-);
-
-// then, once permission was granted
-Statsig.shutdown();
-Statsig.initialize(
-  'client-key',
-  { userID: 'a_user' },
-  { disableAllLogging: false, disableLocalStorage: false },
-);
-
-// or, by manually flipping the related flags
-Statsig.reenableAllLogging();
-StatsigLocalStorage.disabled = false;
-```
-
-  </TabItem>
-  <TabItem value="new">
-
 <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-gdpr.tsx" />
-
-  </TabItem>
-</Tabs>
