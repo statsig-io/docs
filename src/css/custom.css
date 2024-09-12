@@ -101,12 +101,6 @@ html[data-theme="dark"] {
   font-size: 14px;
 }
 
-.navbar__inner {
-  width: 90rem;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
 .alert {
   margin-left: 20px;
 }
@@ -144,12 +138,6 @@ html[data-theme="dark"] {
 
 .katex .base {
   vertical-align: 0em;  /* Adjust this value as needed */
-}
-
-.main-wrapper {
-  margin: 0 auto;
-  width: 90rem;
-  max-width: 100%;
 }
 
 .menu__link {
