@@ -128,7 +128,7 @@ Dashboard templates are a great way to reduce the time to insights. Statsig comp
 
 Once you’ve created a dashboard you may want to quickly find the charts that matter to you. Heading to the Dashboards tab will give you several ways to find a dashboard.
 
-1. Find dashboards you’ve created quickly by navigating to the Dashboard tab, clicking into the search box, and selecting “My dashboards”.
-2. Navigate to the Dashboard tab and click the filter icon to scope to Dashboards with specific tags or created by specific team members.
-3. Navigate to the Dashboard tab and simply search for the name of the dashboard you would like to find.
+1. Find dashboards you’ve created quickly by navigating to the Dashboards tab, clicking into the search box, and selecting “My dashboards”.
+2. Navigate to the Dashboards tab and click the filter icon to scope to Dashboards with specific tags or created by specific team members.
+3. Navigate to the Dashboards tab and simply search for the name of the dashboard you would like to find.
 4. Anywhere within Statsig you can bring up global search with “cmd+k” and type in the name of the dashboard.
