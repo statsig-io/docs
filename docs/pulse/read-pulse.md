@@ -16,7 +16,7 @@ At the top of Pulse is the Exposures Chart. Exposures are the unique experimenta
 
 #### Immediately Post-experiment Start 
 
-For up to the first 24 hours after starting your experiment (before our daily Pulse run), the **Metric Lifts** section, a.k.a. Pulse, is calculated in near real-time. This more real-time Pulse is designed to enable you to confirm that exposures and metrics are being calculated as expected and debug your experiment or gate setup if needed. 
+For up to the first 24 hours after starting your experiment (before our daily Pulse run), the **Metric Lifts** section, a.k.a. Pulse, is calculated in near real-time (this only applies to Statsig Cloud, for WHN projects you will need to reload pulse on demand or set up a daily schedule). This more real-time Pulse is designed to enable you to confirm that exposures and metrics are being calculated as expected and debug your experiment or gate setup if needed. 
 
 Please note that you should **not** make any experiment decisions based on more real-time Pulse data in this first 24 hour window after experiment start. Experiments should only be called once the experiment has hit target duration, as set by your primary metric(s) hitting experimental power. Read more about target duration [here](https://docs.statsig.com/experiments-plus/create-new#target-duration). 
 
