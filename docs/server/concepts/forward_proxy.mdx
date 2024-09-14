@@ -34,28 +34,13 @@ NOTE:
 For other server sdks, there is no support on full integration yet, you can override download_config_spec api in StatsigOptions in order to integrate. You should use carefully and consult us. 
 :::
 You can now configure SDK network using different network protocol to integrate with Statsig Forward Proxy for different endpoints. 
-There are 3 network endpoints SDK make requests to download_config_specs,get_id_lists, and log_events, and you can configure each endpoint 1. protocol being used 2. proxy address.
+There are 3 network endpoints SDK make requests to download_config_specs,get_id_lists, and log_events, and you can currently configure the download_config_specs to use the proxy. We are actively developing the latter two.
 
 #### Network protocol for different endpoints
 For `download_config_specs` endpoint, where we get specs on evaluating gates/layers/experiments/configs 
 1. `http`: the default protocol. If SDK is initialized with http, it will poll config updates in background thread.
 2. `grpc_websocket`: Establish a grpc streaming from SDK to statsig forward proxy, and listen to updates being pushed from proxy servers. You have to use statsig forward proxy or have a similar proxy server in order to use grpc streaming. Note: Not all SDKs support GRPC yet, if you have an SDK you want support for please reachout to our support channel on slack.
-3. `grpc`: Unary RPC, behave similarly to HTTP protocol, after initialization, SDK poll changes from forward proxy server in background thread.  
-
-
-:::warning
-We are still adding support for log_events and get_id_lists endpoint within Forward Proxy
-::: 
-For `get_id_lists` endpoint, where we get big idlists 
-1. `http`: the default protocol. If SDK is initialized with http, it will poll idlists from forward proxy server or statsig server.
-2. `grpc_websocket`: Not supported
-3. `grpc`: Not supported
-
-
-For `log_events` endpoint, where we post exposure events and custom events.
-1. `http`: the default protocol. SDK will make POST Http request to flush all events to Statsig server, forward proxy server does not support this endpoint. 
-2. `grpc_websocket`: Not supported yet. 
-3. `grpc`: Not supported yet
+3. `grpc`: Unary RPC, behave similarly to HTTP protocol, after initialization, SDK poll changes from forward proxy server in background thread. 
 
 #### Listen to Config Change Example
 ```typescript
