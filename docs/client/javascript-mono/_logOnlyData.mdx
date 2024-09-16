@@ -1,0 +1,68 @@
+### Partial User Matching
+
+In some advanced flows, you may have data that you want on your user objects, but do not want to make a network request to re-evaluate the user.
+
+To achieve this, you can call `updateUserSync` with a altered user object and use `StatsigOptions.customUserCacheKeyFunc` to only match on the original user properties.
+
+```tsx
+
+const originalUser = {
+  customIDs: {
+    analyticsID: "some-analytics-id-here"
+  },
+}
+
+const myCustomCacheKey = (sdkKey: string, user: StatsigUser) => {
+  const analyticsID = user.customIDs?.analyticsID;
+  return `sdkKey:${sdkKey}:analyticsID:${analyticsID}`; // <- Only match on analyticsID
+}
+
+const myStatsigClient = new StatsigClient("client-key-here", originalUser, { 
+    customUserCacheKeyFunc: myCustomCacheKey // <- Pass in the custom cache key function
+});
+await myStatsigClient.initializeAsync();
+
+someAsyncFunctionThatTakesAWhile().then((newData) => {
+    const alteredUser = {
+        ...originalUser,
+        userID: newData.userID,
+        email: newData.email,
+    };
+
+    myStatsigClient.updateUserSync(alteredUser);
+});
+```
+
+
+:::warning
+Because we are only using `analyticsID` in the cache key, we will get cache hits for any user object with this ID. Potentially leading to incorrect evaluations.
+
+For example, if we had a gate `is_internal_user` that was evaluating to true for all users with a specific UserID, but we were using a partial cache key, 
+we would get a cache hit for all users with the same `analyticsID`.
+
+```tsx
+await myStatsigClient.updateUserAsync({
+  userID: "internal_user_123",
+  customIDs: {
+    analyticsID: "MY_ANALYTICS_ID"
+  },
+});
+
+myStatsigClient.checkGate("is_internal_user"); // <- returns true
+// ...
+
+// Somewhere else in the code
+
+
+myStatsigClient.updateUserSync({
+  userID: "prod_user_123",
+  customIDs: {
+    analyticsID: "MY_ANALYTICS_ID" // <- Same myAnalyticsID as internal_user_123
+  },
+});
+
+myStatsigClient.checkGate("is_internal_user"); // <- Still returns true because we got a cache hit from the internal user.
+```
+
+If you want to ensure you are always working with the latest values for the current user, you should await the call to `updateUserAsync`.
+:::
