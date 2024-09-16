@@ -30,7 +30,6 @@ const sdkGroups = [
       { name: 'Ruby', img: '/img/sdk/sdk_ruby.png', link: '/server/rubySDK' },
       { name: '.NET Server', img: '/img/sdk/sdk_dotnet.png', link: '/server/dotnetSDK' },
       { name: 'PHP', img: '/img/sdk/sdk_php.svg', link: '/server/phpSDK' },
-      { name: 'Erlang/Elixir', img: '/img/sdk/sdk_elixir.svg', link: '/server/erlangSDK' },
       { name: 'Rust', img: '/img/sdk/sdk_rust.svg', link: '/server/rustSDK' },
       { name: 'C++ Server', img: '/img/sdk/sdk_cpp.png', link: '/server/cppSDK' }
     ]
