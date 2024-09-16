@@ -4,15 +4,14 @@ sidebar_label: Confidence Intervals
 slug: /stats-engine/confidence-intervals
 ---
 
-Confidence intervals are an intuitive way to quantify the uncertainty in the observed metric deltas.  A 95% confidence interval should contain the true effect 95% of the time.  This means that if we ran an experiment 100 times, the true value of the metric delta should be inside the confidence intervals 95 times.  
+Confidence intervals are an intuitive way to quantify the uncertainty in the observed metric deltas. A 95% confidence interval should contain the true effect 95% of the time. This means that if we ran an experiment 100 times, the true value of the metric delta should be inside the confidence intervals 95 times.
 
 ![image](https://user-images.githubusercontent.com/90343952/168382034-73afed14-d9f5-42cb-ade1-034526002a0b.png)
 
-In practical terms, a 95% confidence interval that doesn't contain zero (the green bar above) represents a statistically significant result (with *&alpha; = 0.05*). Only 5% of the time would we expect to see that confidence interval if the true effect was zero (a false positive).  Larger confidence intervals imply less certainty in the exact size of the effect with a larger range of likely values.  
 
 ## Computing Confidence Intervals
 
-Confidence intervals are calculated using a two-sample z-test.  This requires knowledge of the variance in the metric delta we're measuring, which is derived differently depending on the type of metric (details [here](https://docs.statsig.com/stats-engine/variance)).    
+Confidence intervals are calculated using a two-sample z-test. This requires knowledge of the variance in the metric delta we're measuring, which is derived differently depending on the type of metric (details [here](https://docs.statsig.com/stats-engine/variance)).
 
 For the **absolute metric delta**, the confidence interval is given by:
 
@@ -20,9 +19,10 @@ $
 CI(\Delta \overline X) = \Delta \overline X \pm Z \cdot\sqrt{{var(\Delta \overline X)}}  
 $
 
-where: 
-* *Z* is the z-statistic for the desired significance level (1.96 for two-sided 95% confidence interval)
-* *var(&Delta;X-bar)* is the variance of the absolute delta
+where:
+
+- _Z_ is the z-statistic for the desired significance level (1.96 for two-sided 95% confidence interval)
+- _var(&Delta;X-bar)_ is the variance of the absolute delta
 
 Similarly, the confidence interval for the **relative metric delta** is:
 
@@ -30,13 +30,22 @@ $
 CI(\Delta \overline X\%) = \Delta \overline X\% \pm Z \cdot\sqrt{{var(\Delta \overline X\%)}} = \Delta \overline X\% \pm Z \cdot\frac{\sqrt{{var\left(\Delta \overline X\right)}}}{\overline X_c} \cdot100\% 
 $
 
-
 ## Welch's T-test for Small Sample Sizes
 
-For small sample sizes, we use Welch's t-test instead of a standard z-test.  This statistical test is a better choice for handling samples of unequal size or variance without increasing the false positive rate.  The structure of the confidence interval calculation remains the same as above, but instead of the z-statistic we use the t-statistic with degrees of freedom *&nu;* given by:
+For small sample sizes, we use Welch's t-test instead of a standard z-test. This statistical test is a better choice for handling samples of unequal size or variance without increasing the false positive rate. The structure of the confidence interval calculation remains the same as above, but instead of the z-statistic we use the t-statistic with degrees of freedom _&nu;_ given by:
 
 $
 \nu = \frac{\left(var(\overline X_t) + var(\overline X_c)\right)^2}{\frac{var(\overline X_t)^2}{N_t - 1}+\frac{var(\overline X_c)^2}{N_c - 1}}
 $
 
-Where *N<sub>t</sub>* and *N<sub>c</sub>* are the number of user in the test and control groups, respectively.  Note that for large number of degrees of freedom, the t-statistic converges with the z-statistic.  Therefore, Welch's t-test is used only when *&nu; < 100*.
+Where _N<sub>t</sub>_ and _N<sub>c</sub>_ are the number of user in the test and control groups, respectively. Note that for large number of degrees of freedom, the t-statistic converges with the z-statistic. Therefore, Welch's t-test is used only when _&nu; < 100_.
+
+## Compare Experiment Data to a Fixed Baseline: One-sample T-test
+
+Sometimes we want to answer questions like "Does my test variant lead to a click through rate higher than 0.5?". You can define a fixed-baseline comparison when adding metrics to the experiment.
+
+The confidence interval is calculated by
+
+$$
+CI(\Delta \overline X) = (\overline X_{group} - fixed \ value) \pm Z \cdot\sqrt{{var( \overline X_{group})}}
+$$
