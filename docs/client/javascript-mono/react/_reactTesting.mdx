@@ -1,0 +1,13 @@
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+## Testing
+
+When writing tests for your React components, you can use jest to mock Statsig packages.
+
+Consider the following component. We render a simple app that checks a single gate and gets an experiment value.
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-jest-setup.tsx" />
+
+In our jest test, we can mock the underlying hooks being used in the component to return the values we want.
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-jest-test.tsx" />

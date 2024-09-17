@@ -50,6 +50,9 @@ export const ReactHooks = _reactHooks;
 import * as _reactLoadingState from "./react/_reactLoadingState.mdx";
 export const ReactLoadingState = _reactLoadingState;
 
+import * as _reactTesting from "./react/_reactTesting.mdx";
+export const ReactTesting = _reactTesting;
+
 export const Builder = SDKDocsBuilder({
   sections: [
     [
@@ -63,9 +66,10 @@ export const Builder = SDKDocsBuilder({
     [ReactGatesAndConfigs, {}],
     [ReactUpdateUser, {}],
     [ReactLoadingState, {}],
-    [ReactHooks, {}]
-  ]
-})
+    [ReactHooks, {}],
+    [ReactTesting, {}],
+  ],
+});
 
 export const toc = Builder.toc
 
