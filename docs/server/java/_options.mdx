@@ -21,7 +21,9 @@ You can pass in an optional parameter `options` in addition to the server secret
 - **rulesetsSyncIntervalMs** - Long, default 10 * 1000
 - **idListsSyncIntervalMs** - Long, default 60 * 1000
 - **dataStore**
-  - [Data Store/Adapter Concept](https://docs.statsig.com/server/concepts/data_store)
+  - [Data Store/Adapter Concept](concepts/data_store)
+- **userPersistentStorage**: IUserPersistentStorage default nil
+  - A persistent storage adapter for running sticky experiments. See [Persistent Assignment](concepts/persistent_assignment)
 - **customLogger** - LoggerInterface
 - **disableAllLogging** - Boolean, default false
 - **proxyConfig** - ProxyConfig
