@@ -58,6 +58,8 @@ Conversion metrics require adjustment due to potential unit-level covariance bet
 
 By default, Statsig only includes numerators from metrics with non-null, non-zero denominators. This is configurable in the advanced settings.
 
+Funnels in experiment-analysis order strictly. For example, in the funnel A->B->C, all subsequent timestamp comparisons are based on the FIRST occurence of A. If a user has an A event on day 0, with no other events, and then A/B/C all occur in order on day 5, this funnel will not count as completed if there is a 1-day conversion window from A->B since the time from the first A to the first B is 5 days.
+
 ## Options
 
 - Conversion window
@@ -72,3 +74,5 @@ By default, Statsig only includes numerators from metrics with non-null, non-zer
   - How long a unit has to complete the funnel, once started, and if the funnel starts when the unit is exposed to the experiment or when they trigger the first event in the funnel
 - Treat Exposure as Initial Funnel Event
   - With this setting enabled, the first step of the funnel is the exposure event of the experiment. This makes it easy to measure the conversion rate to the first event, and additionally normalizes the final outcome per experiment-user. Note that this is incompatible with session-based funnels.
+- Measure time to complete
+  - Switches the funnel mode into measuring the average time for users to complete a funnel. This will create a ratio metric, where the numerator is the sum of funnel seconds-to-complete, and the denominator is the number of completed funnels. This can be useful in isolation, or when paired with 
