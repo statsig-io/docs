@@ -58,7 +58,7 @@ Conversion metrics require adjustment due to potential unit-level covariance bet
 
 By default, Statsig only includes numerators from metrics with non-null, non-zero denominators. This is configurable in the advanced settings.
 
-Funnels in experiment-analysis order strictly. For example, in the funnel A->B->C, all subsequent timestamp comparisons are based on the FIRST occurence of A. If a user has an A event on day 0, with no other events, and then A/B/C all occur in order on day 5, this funnel will not count as completed if there is a 1-day conversion window from A->B since the time from the first A to the first B is 5 days.
+Funnels in experiment-analysis order strictly. For example, in the funnel A->B->C, all subsequent timestamp comparisons are based on the FIRST occurrence of A. If a user has an A event on day 0, with no other events, and then A/B/C all occur in order on day 5, this funnel will not count as completed if there is a 1-day conversion window from A->B since the time from the first A to the first B is 5 days.
 
 ## Options
 
