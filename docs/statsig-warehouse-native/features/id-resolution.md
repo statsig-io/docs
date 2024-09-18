@@ -39,12 +39,12 @@ For both modes, an experiment can currently only have one mapped ID type - e.g. 
 
 ## ID Logic Data Details
 
-All modes will require a full reload, so that there's not data inconsistentcy due to historical mappings being changed or new mappings introduced.
+All modes will require a full reload, so that there's not data inconsistency due to historical mappings being changed or new mappings introduced.
 
-The property source or assignment source used to provide mappings will be filtered to records within the experimental timeframe. If a mapping is "evergreen", or not scoped to a specific time period, you can omit the timestamp on the entity property source.
+The property source or assignment source used to provide mappings will be filtered to records within the experiment's date range. If a mapping is "evergreen", or not scoped to a specific time period, you can omit the timestamp on the entity property source.
 
 ### Strict Mode
-All potential mappings between identifiers within the experiment timeframe and exposed population are collected. If the primary ID has multiple secondary IDs, or vice versa, it is considered polluted and dropped from the analysis.
+All potential mappings between identifiers within the experiment date range, on the exposed population, are collected. If the primary ID has multiple secondary IDs, or vice versa, it is considered polluted and dropped from the analysis.
 
 ### First Touch Mode
 
@@ -55,6 +55,8 @@ Data is attributed to the group of the first associated primary ID seen in the e
 Multiple secondary IDs attached to one primary ID still count as "one" experimental primary ID; the metric values will be merged across records from the different secondary IDs - e.g. added in a sum metric or counted in a count metric.
 
 Primary ID records that are associated with another Primary ID, but are not the first observed records, are dropped from the analysis. If a user is exposed twice on different primary IDs that resolve to the same secondary IDs, only the primary ID metrics from the first-exposed user will be kept in the analysis.
+
+This is a complex mode, and may not cover every use case - we're happy to partner with customers to extend functionality to allow them to measure the right thing in their experiments.
 
 
 #### Example of a supported schema
