@@ -3,7 +3,7 @@ There is also a parameter `options` that requires you to pass in a storage adapt
 :::caution
 #### v3.0+
 You must setup ConfigAdapter and ensure configs are ready before initialize SDK. SDK does not make any network request call to download configs (and IDLists) anymore. 
-Configs fetching should be handled by chron jobs and pre-initialization
+Config fetching should be handled by a job that runs out of band, and pre-initialization.  The default implementation here suggests a local file and a cron job, but you can implement an adapter in your stack to use redis/a caching layer and some sort of scheduled job to keep it up to date.
 :::
 
 ```php
@@ -20,15 +20,11 @@ $options = new StatsigOptions($config_adapter, $logging_adapter);
 $this->statsig = new StatsigServer("server-sdk-key", $options);
 ```
 
-### 🔥 Warning - You need to schedule a cron job 🔥
+### 🔥 Warning - You need a job to update the config definition 🔥
 
 :::caution
 #### V3.0+
-If you do not configure a cron job, SDK does not fire a network request to fetch the latest config value anymore, instead, config values fetched earlier will be used.
-#### < V3.0
-If you do not configure a cron job, your request performance may be impacted.
-A check for configuration freshness is made before evaluation (checkGate/getConfig/getExperiment).
-If your configurations are over 1 minute old, a network request will be fired to Statsig to update them.
+If you do not configure a job that keeps your config definition up to date, the SDK does not fire a network request to fetch the latest config value anymore.  Config values fetched earlier will be used.
 :::
 
-See [Cron Jobs](#cron-jobs)
+By default, we document how to do this using a local file and [Cron Jobs](#cron-jobs).  You can implement an adapter in your stack to use a caching layer and some sort of scheduled job to keep it up to date.
