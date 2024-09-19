@@ -37,6 +37,28 @@ We strongly recommend using an [Entity Property Source](/statsig-warehouse-nativ
 
 For both modes, an experiment can currently only have one mapped ID type - e.g. secondary_id->user_id, or secondary_id->account_id, but not both.
 
+## ID Logic Data Details
+
+All modes will require a full reload, so that there's not data inconsistency due to historical mappings being changed or new mappings introduced.
+
+The property source or assignment source used to provide mappings will be filtered to records within the experiment's date range. If a mapping is "evergreen", or not scoped to a specific time period, you can omit the timestamp on the entity property source.
+
+### Strict Mode
+All potential mappings between identifiers within the experiment date range, on the exposed population, are collected. If the primary ID has multiple secondary IDs, or vice versa, it is considered polluted and dropped from the analysis.
+
+### First Touch Mode
+
+The direction of first-touch mapping will be based on the experiment; all secondary IDs resolve to 1 primary ID, and a single primary ID can have multiple mapped secondary IDs. If your aim is to only have one secondary ID, you can manage that logic inside the entity property source today, but feel free to reach out to support if there's specific logic you would like to request.
+
+Data is attributed to the group of the first associated primary ID seen in the exposure. If a secondary ID has multiple associated primary IDs, the group of the first primary ID will be used. Note that this means users that cross groups are not discarded from analysis but instead are assigned based on the the first experience they had.
+
+Multiple secondary IDs attached to one primary ID still count as "one" experimental primary ID; the metric values will be merged across records from the different secondary IDs - e.g. added in a sum metric or counted in a count metric.
+
+Primary ID records that are associated with another Primary ID, but are not the first observed records, are dropped from the analysis. If a user is exposed twice on different primary IDs that resolve to the same secondary IDs, only the primary ID metrics from the first-exposed user will be kept in the analysis.
+
+This is a complex mode, and may not cover every use case - we're happy to partner with customers to extend functionality to allow them to measure the right thing in their experiments.
+
+
 #### Example of a supported schema
 
 if your assignment source data contains:<br  />`{stableID: 'unknown_123', exp_id: 'PDP Test', test_group: 'Control'}`
@@ -47,7 +69,7 @@ Your Entity Source or Assignment source must contain the secondary identity (in 
 `{stableID: 'unknown_123', userID: 'known_abc', country: 'USA'}`
 
 :::info
-We are interested in supporting more complex 1-to-many relationships of identities, where a user can be represented with several different identities across your metric sources. We are eager to partner with customers to develop these capabilities if this more advanced use-case is required.
+We are interested in supporting more complex 1-to-many relationships of identities and are eager to partner with customers to develop these capabilities if a more advanced use-case is required.
 :::
 
 ## How it Works

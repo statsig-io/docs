@@ -42,6 +42,14 @@ export const PrefetchUsers = _prefetchUsers;
 import * as _asyncTimeouts from "./javascript-mono/_asyncTimeouts.mdx";
 export const AsyncTimeouts = _asyncTimeouts;
 
+import * as _logOnlyData from "./javascript-mono/_logOnlyData.mdx";
+export const LogOnlyData = _logOnlyData;
+
+import * as _testing from "./javascript-mono/_testing.mdx";
+export const Testing = _testing;
+
+import * as _sessionReplayAutoCapture from "./javascript-mono/_sessionReplayAutoCapture.mdx";
+export const SessionReplayAutoCapture = _sessionReplayAutoCapture;
 
 import CheckGate from "./javascript-mono/_checkGate.mdx";
 import GetConfig from "./javascript-mono/_getConfig.mdx";
@@ -103,10 +111,13 @@ export const Builder = SDKDocsBuilder({
     [StatsigOptions, { options: <Options /> }],
     [ManualExposures, { ...ManualExposureSnippets }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [Testing, {}],
+    [SessionReplayAutoCapture, {}],
     [AsyncTimeouts, {}],
     [DataAdapter, {}],
     [ClientEventEmitting, {}],
     [MultiInstance, {}],
+    [LogOnlyData, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]
 })

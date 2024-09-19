@@ -5,7 +5,7 @@ import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
 In your `App.js` file, import `StatsigProvider` and wrap your app's content within it.  Replace the `sdkKey` with your Client API key, which you can find in the ["API Keys" tab on the Statsig console](https://console.statsig.com/api_keys).
 
-```js
+```tsx
 import { StatsigProvider } from "@statsig/react-bindings";
 
 function App() {
@@ -21,15 +21,17 @@ export default App;
 
 ### Adding a user object
 
-At this point, your app should be ready to run.  You can optionally provide a user object that sets user properties like so:
+At this point, if you run your app, you will get a type error related to the `user` prop. To fix this, you can add the user object that sets user properties like so:
 
-```js
+```tsx
 import { StatsigProvider } from "@statsig/react-bindings";
 
 function App() {
   return (
-    <StatsigProvider sdkKey="client-KEY" user={{ userID: "1234", email: "example@statsig.com" }}>
-      <div>Hello world</div>
+    <StatsigProvider 
+      sdkKey="client-KEY" 
+      user={{ userID: "1234", email: "example@statsig.com" }}>
+        <div>Hello world</div>
     </StatsigProvider>
   );
 }
