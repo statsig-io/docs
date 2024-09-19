@@ -6,6 +6,8 @@ slug: /client/javascript-sdk/react
 
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
+import { FeaturePillList } from '@site/src/components/FeaturePillList';
+
 import {
   SDKDocsBuilder,
   HOOK__SDKDocUpdate,
@@ -77,4 +79,16 @@ export const Builder = SDKDocsBuilder({
 
 export const toc = Builder.toc
 
+<FeaturePillList
+    features={[
+      { name: "Feature Gates", link: "#feature-gates" },
+      { name: "Experiments", link: "#experiments" },
+      { name: "Dynamic Configs", link: "#dynamic-configs" },
+      { name: "Layers", link: "#layers" },
+      { name: "Event Logging", link: "#event-logging" },
+      { name: "Session Replay", link: "#session-replay" },
+      { name: "Auto Capture", link: "#autocapture" },
+    ]
+  }
+/>
 <>{Builder.result}</>
