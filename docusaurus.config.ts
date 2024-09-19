@@ -232,28 +232,41 @@ const config: Config = {
     ],
   ],
 
-  themes: [
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        explicitSearchResultPath: true,
-        hashed: true,
-        indexBlog: false,
-        indexDocs: true,
-        docsRouteBasePath: "/",
-        ignoreFiles: [
-          /client\/_[^\/]*\.mdx/i,
-          /server\/_[^\/]*\.mdx/i,
-          /client\/(Android|AndroidOnDeviceEvaluation|Dart|React|ReactNative|Roku|SwiftOnDeviceEval|Templates|Unity|dotnet|iOS|js|jslocal)\/?/i,
-          /server\/(Templates|java|node|cpp|dotnet|erlang|go|php|python|ruby|rust)\/?/i,
-        ],
-      },
-    ],
-  ],
+  themes: [],
 
   themeConfig: {
     // Replace with your project's social card
     image: "img/docs_meta_q3_2023.png",
+    algolia: {
+      // The application ID provided by Algolia
+      appId: 'JOWHDNMZRN',
+
+      // Public API key: it is safe to commit it
+      apiKey: '2a538120ca7db3411698786731f3c2f6',
+
+      indexName: 'statsig',
+
+      // Optional: see doc section below
+      // contextualSearch: true,
+
+      // // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+      // externalUrlRegex: 'external\\.com|domain\\.com',
+
+      // // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+      // replaceSearchResultPathname: {
+      //   from: '/docs/', // or as RegExp: /\/docs\//
+      //   to: '/',
+      // },
+
+      // // Optional: Algolia search parameters
+      // searchParameters: {},
+
+      // // Optional: path for search page that enabled by default (`false` to disable it)
+      // searchPagePath: 'search',
+
+      // // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
+      // insights: false,
+    },
     navbar: {
       title: "",
       logo: {
