@@ -68,6 +68,6 @@ If running multiple bandits, there's currently no attribution logic; if n bandit
 ### Exploration
 During the explore period, all units will be assigned a random variant. Afterwards, a small portion of traffic will still be sent a managed "Explore"/Random variant in order to keep the model from becoming stale. This decreases to a terminal 1% based on timeline and samples observed. The explore traffic is distributed inversely to the current distribution, so "rare" variants are up-sampled - this does generally mean underperforming variants are over-represented in explore to give them a chance.
 
-Exploration explores can be seem in the autotune's log stream, with :explore appended.
+Exploration explores can be seem in the log stream, with :explore appended.
 
 
