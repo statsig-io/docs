@@ -435,7 +435,6 @@ const sidebars: SidebarsConfig = {
                 "statsig-warehouse-native/metrics/mean",
                 "statsig-warehouse-native/metrics/ratio",
                 "statsig-warehouse-native/metrics/funnel",
-                "statsig-warehouse-native/metrics/ratio",
                 "statsig-warehouse-native/metrics/percentile",
               ],
             },
