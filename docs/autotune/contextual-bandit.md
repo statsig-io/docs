@@ -63,11 +63,11 @@ Contextual Bandits can start personalizing with extremely minimal traffic (10s o
 ### Attribution
 Attribution is done by joining the target event to downstream events within the attribution window. The first event observed, by logging timestamp, is the one used for metadata in metadata-based contextual bandits. For binary bandits (did an event happen), the flag is 1/0 for if there are more than 0 events during the attribution window.
 
-If running multiple bandits, there's currently no attribution logic; if n bandits share the same outcome event in their attribution window, all bandits would consider that eventa as part of their outcome space.
+If running multiple bandits, there's currently no attribution logic; if n bandits share the same outcome event in their attribution window, all bandits would consider that event as part of their outcome space.
 
 ### Exploration
-During the explore period, all units will be assigned a random variant. Afterwards, a small portion of traffic will still be sent a managed "Explore"/Random variant in order to keep the model from becoming stale. This decreases to a terminal 1% based on timeline and samples observed. The explore traffic is distributed inversely to the current distribution, so "rare" variants are up-sampled - this does generally mean underperforming variants are overrepresented in explore to give them a chance.
+During the explore period, all units will be assigned a random variant. Afterwards, a small portion of traffic will still be sent a managed "Explore"/Random variant in order to keep the model from becoming stale. This decreases to a terminal 1% based on timeline and samples observed. The explore traffic is distributed inversely to the current distribution, so "rare" variants are up-sampled - this does generally mean underperforming variants are over-represented in explore to give them a chance.
 
-Exploration explores can be seem in the logstream, with :explore appended.
+Exploration explores can be seem in the autotune's log stream, with :explore appended.
 
 
