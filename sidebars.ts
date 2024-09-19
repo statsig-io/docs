@@ -609,6 +609,7 @@ const sidebars: SidebarsConfig = {
                 "client/javascript-mono/NextJsPageRouterUsage",
                 "client/javascript-mono/UsingEvaluationsDataAdapter",
                 "client/javascript-mono/InitStrategies",
+                "client/javascript-mono/StableIdConsistency",
                 "client/javascript-mono/Examples",
                 "client/javascript-mono/MigrationFromOldJsClient",
                 "client/javascript-mono/MigrationFromOldReact",

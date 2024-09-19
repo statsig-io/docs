@@ -1,0 +1,107 @@
+---
+title: Working With Stable ID
+sidebar_label: Stable ID
+slug: /client/javascript-sdk/stable-id
+---
+
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../../sdks/_SDKDocsBuilder.mdx";
+
+
+
+## Overview
+
+StableID is a concept in Statsig that allows us to have a consistent identifier for a single device. 
+This allows us to run [experiments on logged out](/guides/first-device-level-experiment) users (Users without a User ID) 
+as well as target gates on the device level rather than the user level.
+
+
+## How it works
+
+The first time you initialize the SDK, we will check if you have a StableID set in local storage. If not, we will generate a new StableID and set it in local storage. 
+Then the next time you initialize the SDK, we will check for the StableID in local storage and reuse it.
+
+The StableID is written to local storage under the key `statsig.stable_id.<SDK_KEY_HASH>`. This means that if you have multiple SDK keys, each key will have its own StableID.
+
+## Accessing the StableID
+
+You can access StableID that the Statsig client is using by calling `getContext()` and then checking.
+
+<Tabs
+  defaultValue="js"
+  groupId="language-choice"
+  values={[
+    {label: 'Javascript', value: 'js'},
+    {label: 'React', value: 'react'},
+  ]}>
+
+  <TabItem value="js">
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-access-stable-id.tsx" />
+
+
+  </TabItem>
+  <TabItem value="react">
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-precomp-access-stable-id.tsx" />
+
+
+  </TabItem>
+</Tabs>
+
+## Overriding StableID
+
+If your app already has something similar to a StableID and you would prefer to use that instead, 
+you can override the default behavior by simply passing your value in as part of the `StatsigUser` object.
+
+
+<Tabs
+  defaultValue="js"
+  groupId="language-choice"
+  values={[
+    {label: 'Javascript', value: 'js'},
+    {label: 'React', value: 'react'},
+  ]}>
+
+  <TabItem value="js">
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-stable-id-overrride.tsx" />
+
+
+  </TabItem>
+  <TabItem value="react">
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-stable-id-override.tsx" />
+
+
+  </TabItem>
+</Tabs>
+
+
+:::note
+
+Once overridden, the new StableID will be persisted to local storage so it will be used for future sessions.
+
+:::
+
+
+
+## Keeping StableID Consistent
+
+If you have a backend service running a Statsig SDK as well as using the Statsig client in your frontend, 
+you may need to have the same StableID accessible in both environments.
+
+It is highly dependent on your setup, but usually you can send the StableID up with any requests from your frontend. 
+If the backend ever receives a request without a StableID, it can generate one and have the client store it for future requests.
+
+Because Server SDKs are designed to handle multiple Users, they do not generate their own StableIDs.
+
+Here is an example using a shared StableID to bootstrap the Statsig client SDK.
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-bootstrap-full.tsx" />
