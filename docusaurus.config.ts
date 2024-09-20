@@ -338,6 +338,7 @@ const config: Config = {
         "erlang",
         "dart",
         "rust",
+        "objectivec",
       ],
     },
   } satisfies Preset.ThemeConfig,
