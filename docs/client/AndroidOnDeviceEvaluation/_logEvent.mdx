@@ -11,8 +11,10 @@ import TabItem from "@theme/TabItem";
   <TabItem value="java">
 
 ```java
-StatsigUser user = new StatsigUser("user_id")
-Statsig.logEvent(user, "purchase", 2.99, Map.of("item_name", "remove_ads"));
+StatsigUser user = new StatsigUser("user_id");
+StatsigClient client = Statsig.INSTANCE.getClient();
+
+client.logEvent(user, "purchase", 2.99, Map.of("item_name", "remove_ads"));
 ```
 
   </TabItem>
@@ -20,7 +22,7 @@ Statsig.logEvent(user, "purchase", 2.99, Map.of("item_name", "remove_ads"));
 
 ```kotlin
 val user = StatsigUser("user_id")
-Statsig.logEvent(user, "purchase", 2.99, Map.of("item_name" to "remove_ads"))
+Statsig.client.logEvent(user, "purchase", 2.99, Map.of("item_name" to "remove_ads"))
 ```
 
   </TabItem>
