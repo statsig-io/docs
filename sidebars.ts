@@ -560,18 +560,26 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Autotune (Bandits)",
-      link: {
-        type: "doc",
-        id: "autotune/introduction",
-      },
+      label: "AI/ML",
       items: [
-        "autotune/contextual-bandit",
-        "autotune/multi-armed-bandit",
-        "autotune/setup",
-        "autotune/monitoring",
+        "ai-ml/ai-prompt-experiment",
+        {
+          type: "category",
+          label: "Autotune (Bandits)",
+          link: {
+            type: "doc",
+            id: "autotune/introduction",
+          },
+          items: [
+            "autotune/contextual-bandit",
+            "autotune/multi-armed-bandit",
+            "autotune/setup",
+            "autotune/monitoring",
+          ],
+        },
       ],
     },
+    
     {
       type: "category",
       label: "SDKs, APIs, Integrations",
