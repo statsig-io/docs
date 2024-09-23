@@ -13,5 +13,5 @@ In Server SDKs, you may see an error message indicating that initialization fail
 ### Error syncing
 
 Server SDKs poll for changes to the definitions of your gates/configs/experiments every 10s, and changes to ID lists every 1 minute.
-If one of these fails, after a few retries, the SDK may output a warning indicating this is happening.  The SDK will continue to operate with the last known defintion of your project, and usually is able
+If one of these fails, after a few retries, the SDK may output a warning indicating this is happening.  The SDK will continue to operate with the last known definition of your project, and usually is able
 to resolve any issues by the next network request.  In the case of a complete outage of Statsig API, the SDK will continue to operate offline with the last known set of feature gate and experiment definitions, and continue to retry connecting in the background..

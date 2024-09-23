@@ -31,7 +31,7 @@ import time
 
 openai.api_key = "your_openai_key"  # Replace with your own key
 statsig.initialize("your_statsig_secret")  # Replace with your Statsig secret
-user = StatsigUser("user-id") #This is a placeholder ID - in a normal experiment Statsig recommends using a user's actual unique ID for consistency in targetting. See https://docs.statsig.com/client/concepts/user
+user = StatsigUser("user-id") #This is a placeholder ID - in a normal experiment Statsig recommends using a user's actual unique ID for consistency in targeting. See https://docs.statsig.com/client/concepts/user
 ```
 
 ### The ask_question Function
@@ -121,7 +121,7 @@ import time
 
 openai.api_key = "your_openai_key"
 statsig.initialize("your_statsig_secret")
-user = StatsigUser("user-id") #This is a placeholder ID - in a normal experiment Statsig recommends using a user's actual unique ID for consistency in targetting. See https://docs.statsig.com/client/concepts/user
+user = StatsigUser("user-id") #This is a placeholder ID - in a normal experiment Statsig recommends using a user's actual unique ID for consistency in targeting. See https://docs.statsig.com/client/concepts/user
 
 def ask_question():
 

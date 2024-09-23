@@ -6,7 +6,7 @@ import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
   - An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
   - The most common usage is to set the environment tier ('production', 'staging' or 'development'), e.g. `{ tier: 'staging' }`, and have feature gates pass/fail for specific environments.
 - **disableAllLogging** `boolean` default `false`
-  - Disables all logging by the SDK.  Useful in complaince situations before getting user consent.  You can then re-enable logging with `Statsig.reenableAllLogging`
+  - Disables all logging by the SDK.  Useful in compliance situations before getting user consent.  You can then re-enable logging with `Statsig.reenableAllLogging`
 - **disableCurrentPageLogging** boolean, default false.
   - By default, the sdk appends the current page for log events to the event payload to generate user journey/funnel analytics
 - **loggingIntervalMillis**: `number`, default 5000 (5s), min 1000, max 60000. sdk v4.1.0+

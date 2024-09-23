@@ -21,7 +21,7 @@
    - Use file caching instead of UserDefaults. Useful if you are running into size limits with UserDefaults (ie tvOS).
 
 -  **initializeValues**: [String: Any], default `nil`
-   - Provide a Dictionary representing the "initiailize response" required  to synchronously initialize the SDK.
+   - Provide a Dictionary representing the "initialize response" required  to synchronously initialize the SDK.
      This value can be obtained from a Statsig server SDK.
 
 -  **disableDiagnostics**: Bool, default `false`
@@ -33,4 +33,4 @@
 
 -  **shutdownOnBackground**: Bool, default `true`
    - The SDK automatically shuts down when an app is put into the background.
-     If you need to use the SDK while your app is backgrounded, set this to false.
+     If you need to use the SDK while your app is in the background, set this to false.

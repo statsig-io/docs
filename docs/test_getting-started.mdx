@@ -20,7 +20,7 @@ There are two ways to seamlessly integrate Statsig into your product development
 - **Statsig Cloud:** Set up ***Statsig SDK***, configure **events logging**. Everything else is handled by us.
     - You get feature gates and 1 million metered events for free, as well as many analytics tools such as Dashboard, Metrics Explorer, and Insights. Here is [a link](https://www.statsig.com/pricing) to our pricing details.
 - **Warehouse Native:** If the events or metrics you want to experiment on are already in your warehouse, you may want to consider [Warehouse Native](https://docs.statsig.com/statsig-warehouse-native/introduction) (WHN).
-    - With WHN, you can host Statsig’s Stats Engine within your own Data Warehouse, calculating metric lifts on your own datasets. This is particularly useful for teams with strong privacy contraints.
+    - With WHN, you can host Statsig’s Stats Engine within your own Data Warehouse, calculating metric lifts on your own datasets. This is particularly useful for teams with strong privacy constraints.
     - You can use non-Statsig SDKs for feature assignment and provide us exposures in a table (you randomize), or use our SDKs (we randomize and write into your warehouse). The former helps you scale analysis; the latter helps you [10x experimentation velocity](https://www.statsig.com/blog/features-to-10x-experiment-velocity).
     - Today’s this option is only available with Enterprise contracts. Check [this link](https://docs.statsig.com/statsig-warehouse-native/introduction) for more details or [Schedule a demo](https://www.statsig.com/contact/demo) with our sales team.
 
@@ -37,7 +37,7 @@ Statsig provides three tightly-integrated core capabilities:
 
 Statsig helps you generate two core outputs — **metrics** and **exposures** — metrics summarizes user behaviors that are meaningful to your business; exposure tells us, and allows us to control, what features each user is exposed to.
 
-**Logging Events** is the foundation for **metrics**, and **Feature assignment** is the foundation for **exposuress**. Statsig has best-in-class **SDKs** built with experimentation as a first-class citizen, that once turned on, can create logging events and feature assignments to power all Statsig features. The SDK is strongly recommended for as it’s reliable, resilient, and have many experimentation best practices built in.
+**Logging Events** is the foundation for **metrics**, and **Feature assignment** is the foundation for **exposures**. Statsig has best-in-class **SDKs** built with experimentation as a first-class citizen, that once turned on, can create logging events and feature assignments to power all Statsig features. The SDK is strongly recommended for as it’s reliable, resilient, and have many experimentation best practices built in.
 
 *You can use Statsig without its SDK. For example, **metrics** can come from raw events table, metric definitions, or a precomputed metrics table; **assignments** can come from 3rd party tool, or in-house assignment tool. Statsig is modulated to work with other tools you are currently using.*
 

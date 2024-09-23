@@ -52,7 +52,7 @@ Let's go ahead and choose **Operating System** is **Any of** and pick **Android*
 
 Now hit the **Add Rule** button and you should now see the new rule in the Feature Gate details page.
 
-Go ahead and hit **Save Changes** on the top right to commit these changes. New rules and conditions are staged at first, and the changes are only commited when you finalize them by clicking "Save Changes"
+Go ahead and hit **Save Changes** on the top right to commit these changes. New rules and conditions are staged at first, and the changes are only committed when you finalize them by clicking "Save Changes"
 
 ![Screen Shot 2021-06-14 at 5 04 26 PM](https://user-images.githubusercontent.com/82126616/121974079-7ed75700-cd33-11eb-98b3-cbadb34eaecf.png)
 
@@ -130,7 +130,7 @@ Now that we have initialized Statsig, we can go ahead and make a call to our new
 statsig.checkGate("mobile_registration");
 ```
 
-You should get a response 'false' back - we didnt initialize from a mobile client, nor with an email containing `@statsig.com`.
+You should get a response 'false' back - we didn't initialize from a mobile client, nor with an email containing `@statsig.com`.
 
 ![image](https://user-images.githubusercontent.com/74588208/117421778-b270c700-aed3-11eb-8574-af05119b9b22.png)
 
@@ -160,7 +160,7 @@ This time, you should see `true`, meaning that this feature is now available on 
 
 ### Step 7 - Let's try a different check
 
-Let's toggle the mobile device to off, so we're now back to Desktop device. This time let's try a different check - one that uses the user email as the condition. When we update the user this time, we will prodive an employee email address.
+Let's toggle the mobile device to off, so we're now back to Desktop device. This time let's try a different check - one that uses the user email as the condition. When we update the user this time, we will provide an employee email address.
 
 Type the following code in your console:
 

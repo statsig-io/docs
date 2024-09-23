@@ -32,7 +32,7 @@ You can pass in an optional parameter `options` in addition to `sdkKey` and `use
   - Note: This requires special authorization from Statsig. Reach out to us if you are interested in this feature.
 
 - **customCacheKey**: `((sdkKey: String, user: StatsigUser) -> String)`, default: `{ sdkKey, user -> "${user.getCacheKey()}:$sdkKey" },` v4.26.0+
-  - By default, client SDKs define a "user" for caching as the set of all IDs (the UserID and CustomIDs) and the sdkKey (so multiple instances dont colide)
+  - By default, client SDKs define a "user" for caching as the set of all IDs (the UserID and CustomIDs) and the sdkKey (so multiple instances don't collide)
   - This can mean that a different set of fields will map to the same cached user.  The intent is to improve cache hit rate, and provide better defaults
   - If you have critical fields that define a user differently which are not considered IDs, you can override the cache key we generate using this function
 

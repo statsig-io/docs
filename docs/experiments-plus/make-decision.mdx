@@ -5,7 +5,7 @@ slug: /experiments-plus/make-decision
 ---
 
 Making a decision for an experiment enables you to 'ship' the winning group to all your users. 
-After you make the decision, the variant that your users see depends on whether you're using a **targeting gate** for your experiment. The results for your experiment will still be accesible after you make a decision, but they will stop updating.  The last day of metrics will be the day you "make a decision" on the experiment.
+After you make the decision, the variant that your users see depends on whether you're using a **targeting gate** for your experiment. The results for your experiment will still be accessible after you make a decision, but they will stop updating.  The last day of metrics will be the day you "make a decision" on the experiment.
 
 
 ## Experiments With No Targeting Gate
@@ -48,19 +48,19 @@ When you decide ship a group in an experiment configured with a targeting gate, 
 Note that if you decide to continue targeting, shipping a group will not update the default value of any layer parameters.
 ::: 
 
-For example, suppose **Demo Experiment** in a **Demo Layer** that has a parameter called **targetted_layer_param**, whose default value is set to 
-_targetted_layer_default_value_. 
+For example, suppose **Demo Experiment** in a **Demo Layer** that has a parameter called **targeted_layer_param**, whose default value is set to 
+_targeted_layer_default_value_. 
 
 When you decide to ship **Demo Experiment**, if you discontinue targeting, 
-**targetted_layer_param** will now take on the value from the **Control** group, _targetted_layer_control_, as its default. 
+**targeted_layer_param** will now take on the value from the **Control** group, _targeted_layer_control_, as its default. 
 
 <img width="454" alt="image" src="https://user-images.githubusercontent.com/1315028/162630927-e4b147a3-5b68-41d0-a439-f90ab001d737.png" />
 
 On the other hand, if you decide to continue targeting, 
-**targetted_layer_param** will now acquire an override so that:
+**targeted_layer_param** will now acquire an override so that:
 - all users who **pass** the targeting gate will see the _overridden_ value of the parameter
 - all users who **fail** the targeting gate will see the _default_ value of the parameter
 
-In this case, the default value of **targetted_layer_param** in **Demo Layer** will not change. Also, any users who pass the targeting gate will not be eligible for future experiments run in this layer. For this reason, we do not encourage shipping experiments with targeting on, especially when the experiment is in a layer.
+In this case, the default value of **targeted_layer_param** in **Demo Layer** will not change. Also, any users who pass the targeting gate will not be eligible for future experiments run in this layer. For this reason, we do not encourage shipping experiments with targeting on, especially when the experiment is in a layer.
 
 <img width="454" alt="image" src="https://user-images.githubusercontent.com/1315028/162634627-ae327d9e-81a9-42f9-8171-836808cb6ffb.png" />

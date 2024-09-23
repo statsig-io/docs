@@ -17,7 +17,7 @@ Service Provider(SP)-Initiated Authentication for Single Sign-On (SSO) using OID
 ### Adding the Statsig OIDC Application in Okta
 
 1. Navigate to your Okta portal.
-2. On your Okta portal, click on `Applcations` on the left-hand-column, and click into `Applications` in the dropdown.
+2. On your Okta portal, click on `Applications` on the left-hand-column, and click into `Applications` in the dropdown.
    ![img](https://user-images.githubusercontent.com/75151332/129780676-c04bd2fb-83ed-4d17-9ae2-4e286f2b3b52.png)
 3. On the Applications page, click on the `Browse App Catalog` button.
    ![img](https://user-images.githubusercontent.com/75151332/129780681-c48a6012-a882-475a-bbc9-924ec1391126.png)

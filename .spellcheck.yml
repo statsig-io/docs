@@ -24,4 +24,3 @@ matrix:
       - 'token'
   sources:
   - 'docs/**/*.md'
-  - 'docs/**/*.mdx'

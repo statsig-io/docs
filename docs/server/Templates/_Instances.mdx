@@ -4,7 +4,7 @@
 Our documentation up to this point guides you through setting up your Statsig integration via the singleton Statsig.
 
 There are cases where you may need to create multiple instances of the Statsig SDK.  Each SDK supports this as well - the Statsig singleton wraps a single instance of the SDK that you can instantiate.
-NOTE: currently all sdk instances will use the same keys when interacting with a [Data Store/Data Adpater](/server/concepts/data_store).  You will not be able to isolate multiple instances of the sdk in your data store.
+NOTE: currently all sdk instances will use the same keys when interacting with a [Data Store/Data Adapter](/server/concepts/data_store).  You will not be able to isolate multiple instances of the sdk in your data store.
 
 All top level static methods from the singleton carry over as instance methods.  To create an instance of the Statsig sdk:
 
