@@ -13,7 +13,7 @@ Customers looking to experiment on the more dynamic aspects of their online stor
 
 ## Using Traditional Shopify + Sidecar for No-code testing
 
-The traditional Shopify service is a fully-managed platform for businesses that provides both a backend adminstration tool for managing your product catalogue &amp; site content, and powers the storefront experience for your shoppers.
+The traditional Shopify service is a fully-managed platform for businesses that provides both a backend administration tool for managing your product catalogue &amp; site content, and powers the storefront experience for your shoppers.
 
 While Statsig does not have an integration in the Shopify App Store today, you can easily integrate Sidecar for running simple UX experiments on the storefront. The below steps will guide you through the process of setting up Sidecar within the traditional Shopify stack.  
 
@@ -25,12 +25,12 @@ This simple, lightweight Chrome extension will allow non-technical users to buil
 
 - Log in to your Shopify dashboard
 - click on **Online Store**, then Themes
-- locate and click the elipses menu [...], find the **Edit Code** option
+- locate and click the more menu [...], find the **Edit Code** option
 
 ![statsig product overview](/img/shopify-customize-1.png)
 
 - [Locate your Sidecar script tag](https://docs.statsig.com/guides/sidecar-experiments/publishing-experiments#step-2-add-script-code) and copy the script tag to your clipboard
-- Navigate to the `theme.liquid` file in your Shopfiy theme editor
+- Navigate to the `theme.liquid` file in your Shopify theme editor
 - Paste the Sidecar script tag toward the top of the page `<head>` as shown below.
 
 ![statsig product overview](/img/shopify-customize-2.png)
@@ -89,9 +89,9 @@ For tracking behaviors in the main storefront experience, you can also leverage 
 
 Using [Shopify Headless](https://shopify.dev/docs/storefronts/headless) gives you full control over customizing your storefront by decoupling the Shopify admin backend and the storefront application. This means that Shopify effectively serves as a data store, providing APIs to fetch &amp; serve products, content, and manage the entire shopping experience using code.
 
-Whether you're using Shopify's [Hydrogen app](https://shopify.dev/docs/storefronts/headless/hydrogen/fundamentals) and its frameworks or a [custom headless stack](https://shopify.dev/docs/storefronts/headless/bring-your-own-stack), you can integrate Statsigs SDK as needed in order to assign users to experiments. Integrating Statsig in this architecture will follow a similiar pattern to our recommendation to [integrating with headless CMS platforms](https://docs.statsig.com/guides/cms-integrations).
+Whether you're using Shopify's [Hydrogen app](https://shopify.dev/docs/storefronts/headless/hydrogen/fundamentals) and its frameworks or a [custom headless stack](https://shopify.dev/docs/storefronts/headless/bring-your-own-stack), you can integrate Statsig's SDK as needed in order to assign users to experiments. Integrating Statsig in this architecture will follow a similar pattern to our recommendation to [integrating with headless CMS platforms](https://docs.statsig.com/guides/cms-integrations).
 
 #### Integrating data sources for experiment metrics
-Along with the measuring simple clickstream and point-of-sale behavior as [outlined here](http://localhost:3004/guides/first-shopify-abtest#configure-event-tracking-and-metrics), commerce businesses performing deeper experimentation often want to integrate offline data systems and measure experiments using existing metrics that the broader business uses. 
+Along with the measuring simple click stream and point-of-sale behavior as [outlined here](http://localhost:3004/guides/first-shopify-abtest#configure-event-tracking-and-metrics), commerce businesses performing deeper experimentation often want to integrate offline data systems and measure experiments using existing metrics that the broader business uses. 
 
 Commonly, the Data Warehouse is the source of truth for user purchase data and other categories of offline data. This affords customers the ability to define more [bespoke metrics](https://docs.statsig.com/statsig-warehouse-native/configuration/metrics#metric-types) using filtering, aggregations and incorporating other datasets in the warehouse for segmenting experiment results.   

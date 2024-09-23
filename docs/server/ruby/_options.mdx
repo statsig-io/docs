@@ -20,7 +20,7 @@ You can specify optional parameters with `options` when initializing.
 - **rules_updated_callback**: function, default nil
   - a callback function that's called whenever we have an update for the rules; it's called with a logical timestamp and a JSON string (used as is for bootstrapValues mentioned above). Note that as of v0.6.0, this will be called from a background thread that the SDK uses to update config values.
 - **data_store**: IDataStore, default nil
-  - A data store with custom storage behavior for config specs. Can be used to bootstrap Statsig server (takes priority over `bootstrap_values`). Can also be used to continously fetch updates in place of the Statsig network. See [Data Stores](/server/concepts/data_store).
+  - A data store with custom storage behavior for config specs. Can be used to bootstrap Statsig server (takes priority over `bootstrap_values`). Can also be used to continuously fetch updates in place of the Statsig network. See [Data Stores](/server/concepts/data_store).
 - **user_persistent_storage**: IUserPersistentStorage default nil
   - A persistent storage adapter for running sticky experiments.
 - **network_timeout**: Number, default nil

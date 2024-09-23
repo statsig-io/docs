@@ -62,7 +62,7 @@ window.StatsigLogger = (function () {
       callback(StatsigSidecar.getStatsigInstance());
     }
     else {
-      log('+++ Statsig:ready Binded callback');
+      log('+++ Statsig:ready callback');
       window.postExperimentCallback = function(statsigClient, expIds) {
         callback(statsigClient);
       }

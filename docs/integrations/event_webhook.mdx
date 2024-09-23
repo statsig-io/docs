@@ -141,7 +141,7 @@ Follow the following steps to verify the signature:
 v0:1671672194836:{"data":[{"user":{"name":"Joe Zeng","email":"joe@statsig.com"},"timestamp":1671672134833,"eventName":"statsig::config_change","metadata":{"type":"Gate","name":"test","description":"- Updated Rule test rollout from 100.00% to 10.00%","environment":"production"}}]}
 ```
 
-4. Hash the signature basestring, using the signing secret as a key, and take the hex digest of the hash. Create the full signature by prefixing the hex digest with the version number ("v0") and an equals sign. See sample psuedo code below.
+4. Hash the signature basestring, using the signing secret as a key, and take the hex digest of the hash. Create the full signature by prefixing the hex digest with the version number ("v0") and an equals sign. See sample pseudo code below.
 
 ```
 statsig_signature = 'v0=' + hmac.compute_hash_sha256(

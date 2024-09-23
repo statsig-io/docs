@@ -19,7 +19,7 @@ The `key` string is a combination of ID and ID Type: e.g. "123:userID" or "abc:s
 You can use this interface to persist evaluations synchronously to local storage.  If you need an async interface, read on.
 
 #### Asynchronous Persistent Evaluations
-The `UserPersistentStorageInterface` exposes two methods for asyncronous persistent evaluations. Because the `getExperiment` call is synchronous, you must load the value first, and pass it in as `userPersistedValues`
+The `UserPersistentStorageInterface` exposes two methods for asynchronous persistent evaluations. Because the `getExperiment` call is synchronous, you must load the value first, and pass it in as `userPersistedValues`
 
 ```kotlin
 interface UserPersistentStorageInterface {
@@ -44,26 +44,26 @@ val userPersistedValues = Statsig.client.loadUserPersistedValuesAsync(
 );
 
 // Synchronous load values 
-val userPersistedvalues = Statsig.client.loaduserPersistedValues(
+val userPersistedvalues = Statsig.client.loadUserPersistedValues(
     user: StatsigUser,
   idType: string, // userID, stableID, customIDxyz, etc
 )
 ```
 
-Putting it all together, assuming you have implemented the `UserPersistentStorageInterface` and set it on `StatsigOptions`, your callsite will look like this:
+Putting it all together, assuming you have implemented the `UserPersistentStorageInterface` and set it on `StatsigOptions`, your call site will look like this:
 ```kotlin 
 // Asynchronous 
 val callback = object: IPersistentStorageCallback {
     @override
     fun onLoaded(values: PersistedValues) {
-        Statsig.getExperiment(user, "sample_experiment", GetExprimentOptions(userPersistedValues = values))
+        Statsig.getExperiment(user, "sample_experiment", GetExperimentOptions(userPersistedValues = values))
     }
 }
 val userValues = Statsig.client.loadUserPersistedValuesAsync(user, "userID", callback)
 
 // Synchronous
 val user = StatsigUser(userID = "user123")
-val userValues = Statsig.client.loaduserPersistedValues(user, 'userID');
+val userValues = Statsig.client.loadUserPersistedValues(user, 'userID');
 const experiment = statsig.getExperiment({userID: "123"}, 'the_allocated_experiment', { userPersistedValues: userValues });
 ```
 If you are using java, you can only override loadAsync function and ignore load function as empty. 

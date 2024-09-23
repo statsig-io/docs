@@ -76,7 +76,7 @@ import { useFeatureGate, useStatsigClient } from '@statsig/react-native-bindings
 We have seen reports that the default networking client on react native for android can error out with:
 
 ```
-ERROR  [Statsig] A networking error occured during POST request to https://featureassets.org/v1/initialize
+ERROR  [Statsig] A networking error occurred during POST request to https://featureassets.org/v1/initialize
 ```
 
 Please let us know if you hit this, but for now the suggested workaround is to append this `content-type` for all requests:
