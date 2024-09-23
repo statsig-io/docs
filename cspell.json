@@ -623,7 +623,8 @@
         "okhttp",
         "typealias",
         "autoload",
-        "dataclass"
+        "dataclass",
+        "androidlocalevalsdk"
     ],
     "ignorePaths": [
         "node_modules/**",
