@@ -1,3 +1,6 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 ## Local Overrides
 
 It is possible to override the values returned by the Statsig SDK. This can be useful in unit testing or for enabling features for local development.
@@ -7,23 +10,76 @@ To get setup with local overrides, you can use pass an instance of `LocalOverrid
 Note: it is possible to write your own override adapter. You can implement the [`IOverrideAdapter`](https://github.com/statsig-io/android-local-eval/blob/main/src/main/java/com/statsig/androidlocalevalsdk/IOverrideAdapter.kt) interface and pass that in instead.
 
 
-```swift
-let user = StatsigUser(userID: "a-user")
 
-let overrides = LocalOverrideAdapter()
+<Tabs
+  groupId="swift-ondevice-sdk-lang-choice"
+  defaultValue="kotlin"
+  values={[
+    {label: 'Kotlin', value: 'kotlin'},
+    {label: 'Java', value: 'java'},
+  ]}>
+
+  <TabItem value="kotlin">
+
+```kotlin
+val user = StatsigUser("user-a")
+
+val overrides = LocalOverrideAdapter()
 
 // Override a gate
-overrides.setGate(user, FeatureGate.create("local_override_gate", true))
+overrides.setGate(user, "local_override_gate", true)
 
 // Override a dynamic config (Similar for Layer and Experiment)
-overrides.setDynamicConfig(user, DynamicConfig.create("local_override_dynamic_config", ["foo": "bar"]))
+val config = DynamicConfig("local_override_dynamic_config", mapOf("key" to "val"))
+overrides.setConfig(user, config)
 
-let opts = StatsigOptions()
+val opts = StatsigOptions()
 opts.overrideAdapter = overrides
 
-Statsig.shared.initialize(YOUR_SDK_KEY, options: opts) { _ in
-    let gate = Statsig.shared.getFeatureGate("local_override_gate", user)
-    print("Result: \(gate.value) (\(gate.evaluationDetails.reason))")
-}
+Statsig.client.initializeAsync(
+  app, 
+  YOUR_SDK_KEY, 
+  callback, 
+  opts // <- Pass in StatsigOptions
+)
 ```
+
+  </TabItem>
+  <TabItem value="java">
+
+
+```java
+StatsigUser user = new StatsigUser("a-user");
+
+LocalOverrideAdapter overrides = new LocalOverrideAdapter();
+
+// Override a gate
+overrides.setGate(user, "local_override_gate", true);
+
+// Override a dynamic config (Similar for Layer and Experiment)
+HashMap<String, Object> configValue = new HashMap<String, Object>() {};
+DynamicConfig config = new DynamicConfig(
+  "local_override_dynamic_config",
+  configValue,
+  "local_override",
+  null,
+  new ArrayList<Map<String, String>>(),
+  null
+);
+overrides.setConfig(user, config);
+
+StatsigOptions opts = new StatsigOptions();
+opts.setOverrideAdapter(overrides);
+
+StatsigClient client = Statsig.INSTANCE.getClient();
+client.initializeAsync(
+  app,
+  YOUR_SDK_KEY,
+  callback,
+  opts // <- Pass in StatsigOptions
+);
+```
+
+  </TabItem>
+</Tabs>
 
