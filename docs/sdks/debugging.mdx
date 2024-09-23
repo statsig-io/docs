@@ -55,8 +55,6 @@ For server SDKs, these reasons for the value you are seeing can be:
 - `Unrecognized`: the sdk was initialized, but this config did not exist in the set of values
 - `Uninitialized`: the sdk was not yet successfully initialized
 
-Newer versions fothe 
-
 In addition to these reasons, the most recent versions of server SDKs will also give you two times to watch: the time at which config definitions initialized the SDK,
 and the time at which the SDK was currently evaluating those definitions.  When you change a gate/config/experiment, the project time will update
 and server SDKs will download the new definition.  If you have not changed your project in two hours, and the evalation time is saying
