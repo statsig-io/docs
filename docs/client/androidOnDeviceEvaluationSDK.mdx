@@ -32,6 +32,9 @@ import Options from "./AndroidOnDeviceEvaluation/_options.mdx";
 import ShutdownSnippet from "./AndroidOnDeviceEvaluation/_shutdown.mdx";
 import * as UsingPersistentValues from "./AndroidOnDeviceEvaluation/_usingPersistentValues.mdx";
 
+import * as _LocalOverrides from "./AndroidOnDeviceEvaluation/_localOverrides.mdx";
+export const LocalOverrides = _LocalOverrides;
+
 export const Builder = SDKDocsBuilder({
   sections: [
     [
@@ -69,6 +72,7 @@ export const Builder = SDKDocsBuilder({
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [UsingPersistentValues, {}],
+    [LocalOverrides, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]
 })
