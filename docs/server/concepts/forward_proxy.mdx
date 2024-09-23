@@ -59,7 +59,8 @@ Statsig.initialize(server_key, statsigOptions)
 For information on your specific SDK language, see the language specific docs in the left hand column.
 
 #### Failover behavior
-**Initializaiton** 
+**Initialization**
+
 SDK remains the same behavior when forward proxy is being used. But there are several configurations you can use to improve the data availability during initialization.
 Default behavior is SDK will get from forward proxy. If DataAdapater is presented, get from DataAdapter first, and fallback to Forward Proxy if there is no value served from data adapter. 
 There are several ways you can configure the behavior here. 
