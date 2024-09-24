@@ -294,6 +294,10 @@ const config: Config = {
               label: "Getting Started",
               to: "/",
             },
+            {
+              label: "FAQ",
+              to: "/faq",
+            },
           ],
         },
         {

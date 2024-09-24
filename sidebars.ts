@@ -94,6 +94,10 @@ const sidebars: SidebarsConfig = {
                 "guides/uptime",
                 "guides/fomo",
                 "guides/statsig-id-resolver",
+                {
+                  type: "doc",
+                  id: "faq",
+                },
               ],
             },
             {
@@ -263,6 +267,15 @@ const sidebars: SidebarsConfig = {
                 "console-api/usage-billing",
                 "console-api/rules",
               ],
+            },
+            {
+              type: "category",
+              label: "Statsig CLI",
+              link: {
+                type: "doc",
+                id: "siggy/introduction",
+              },
+              items: ["siggy/commands", "siggy/gate-management"],
             },
             {
               type: "category",
