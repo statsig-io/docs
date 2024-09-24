@@ -624,7 +624,11 @@
         "typealias",
         "autoload",
         "dataclass",
-        "androidlocalevalsdk"
+        "androidlocalevalsdk",
+        "AI/ML",
+        "KPIs",
+        "click-through",
+        "Chatbots"
     ],
     "ignorePaths": [
         "node_modules/**",
