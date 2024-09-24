@@ -4,16 +4,16 @@ title: Getting Started
 ---
 
 # Statsig Platform Overview
-Statsig offers two flexible ways to leverage its core products based on your needs: **Statsig Cloud** (where we host your data) and **Statsig Warehouse Native** (where you host your data in your own warehouse).
+Statsig offers two flexible ways to leverage its core products based on your needs: Statsig Cloud (where we host your data) and Statsig Warehouse Native (where you host your data in your own warehouse).
 
 ---
 
 ### **Statsig Cloud**:
 
-With Statsig Cloud, setting up is simple. Install the Statsig SDK and configure event logging—**we handle everything else**.
+With Statsig Cloud, setting up is simple. Install the Statsig SDK and configure event logging—we handle everything else.
 
-- You get **feature flags** and **1 million metered events** for free.
-- Enjoy powerful analytics tools such as the **Dashboard**, **Metrics Explorer**, and **Insights**.
+- You get feature flags and 1 million metered events for free.
+- Enjoy powerful analytics tools such as the Dashboard, Metrics Explorer, and Insights.
 - For more details on the pricing, check [our pricing page](https://www.statsig.com/pricing).
 
 Statsig Cloud is a great choice for those who want to get started quickly without needing to manage infrastructure or data warehousing.
@@ -22,14 +22,14 @@ Statsig Cloud is a great choice for those who want to get started quickly withou
 
 ### **Statsig Warehouse Native (WHN)**:
 
-If your events and metrics already reside in your own data warehouse and you have a dedicated data team, **Statsig Warehouse Native (WHN)** may be a better option.
+If your events and metrics already reside in your own data warehouse and you have a dedicated data team, Statsig Warehouse Native (WHN) may be a better option.
 
-- WHN allows you to host Statsig’s **Stats Engine** within your warehouse, enabling you to **calculate metric lifts** on your pre-existing datasets.
+- WHN allows you to host Statsig’s Stats Engine within your warehouse, enabling you to calculate metric lifts on your pre-existing datasets.
 - You can choose between two methods:
     1. **Using 3rd party or your own SDKs**: You handle feature assignment and provide us exposure data (you randomize the users).
     2. **Using Statsig SDKs**: We handle randomization and write data into your warehouse for you.
 
-The first method helps you **scale analysis**, while the second can **10x your experimentation velocity**.
+The first method helps you scale analysis, while the second can 10x your experimentation velocity.
 
 > Note: WHN is available only with Enterprise contracts. If you’re interested in this option, check [this link](https://docs.statsig.com/statsig-warehouse-native/introduction) or [schedule a demo](https://www.statsig.com/contact/demo) with our Sales team.
 > 
@@ -50,9 +50,9 @@ Below is a summary of key criteria to consider when making your decision between
 
 If you are still not sure, read more [here](https://docs.statsig.com/statsig-warehouse-native/guides/quick-start) for more information that will help in deciding between the two models.
 
-Once you've decided whether **Statsig Cloud** or **Statsig Warehouse Native** fits your organization’s needs, choose the appropriate **Getting Started** guide for your first use case:
+Once you've decided whether Statsig Cloud or Statsig Warehouse Native fits your organization’s needs, choose the appropriate *getting started* guide for your first use case:
 
-- [Getting Started with Statsig Cloud](https://docs.statsig.com/feature-flags/working-with)
+- [Getting Started with Statsig Cloud](https://docs.statsig.com/sdks/getting-started)
 - [Getting Started with Statsig Warehouse Native](https://docs.statsig.com/statsig-warehouse-native/guides/quick-start)
 
 :::info
