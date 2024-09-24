@@ -237,6 +237,11 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: "img/docs_meta_q3_2023.png",
+    docs: {
+      sidebar: {
+        autoCollapseCategories: true,
+      }
+    },
     algolia: {
       // The application ID provided by Algolia
       appId: 'JOWHDNMZRN',
