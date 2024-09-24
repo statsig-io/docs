@@ -196,3 +196,15 @@ span.math.math-inline {
 .warning {
   margin-bottom: 16px;
 }
+
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible{
+  /* border-bottom: 1px solid #e0e0e0;  */
+  border-top: 1px solid #e0e0e0; 
+  /* padding-bottom: 5px; */
+  margin-top: 15px;
+  padding-top: 15px;
+
+  .menu__link{
+    color: gray;
+  }
+}
