@@ -8,7 +8,7 @@ import EventFormats from "./snippets/integration_event_formats.mdx";
 
 The Statsig Event Webhook allows you to log event data to Statsig from third party apps or other external sources to provide additional insights to your Statsig experiments and metrics.
 
-Before using the Webhook, you will need to obtain your Projects' [server secret key](/#account-sign-up-and-api-key). An example call to the Statsig Event Webhook should look like the following:
+Before using the Webhook, you will need to obtain your Projects' server secret key. An example call to the Statsig Event Webhook should look like the following:
 
 ```bash title="HTTP"
 POST https://api.statsig.com/v1/webhooks/event_webhook
@@ -61,7 +61,7 @@ In the dialog that appears, enter the url of you destination webhook and then hi
 
 ![integration-dialog](https://user-images.githubusercontent.com/95646168/162327234-c9a683af-3c36-4da9-a66d-d16bf0ad09bc.png)
 
-You can then set which events you want forwarded to your webhook using the [Event Filtering](#event-filtering-dialog) dialog.
+You can then set which events you want forwarded to your webhook using the [Event Filtering](#filtering-events) dialog.
 
 ### Runtime event webhooks
 
