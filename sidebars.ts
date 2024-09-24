@@ -38,6 +38,7 @@ const sidebars: SidebarsConfig = {
                 "guides/using-environments",
                 "guides/setting-up-reviews",
                 "guides/private-attributes",
+                "guides/cdn-edge-testing",
               ],
             },
             {
