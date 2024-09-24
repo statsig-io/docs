@@ -18,6 +18,7 @@ import {
   PrefetchUsers,
   ManualExposures,
   Shutdown,
+  ParameterStore,
   LocalOverrides,
 } from "./Templates/index.mdx";
 
@@ -31,6 +32,8 @@ import UpdateUser from "./Dart/_updateUser.mdx";
 import MoreFAQs from "./Dart/_faqs.mdx";
 import Options from "./Dart/_options.mdx";
 import ShutdownSnippet from "./Dart/_shutdown.mdx";
+import GetParameterStore from "./Dart/_getParameterStore.mdx";
+import GetParameter from "./Dart/_getParameter.mdx";
 import * as FlutterLifecycle from "./Dart/_flutterLifecycle.mdx";
 
 export const Builder = SDKDocsBuilder({
@@ -57,6 +60,10 @@ export const Builder = SDKDocsBuilder({
         getExperiment: <GetExperiment />,
         logEvent: <LogEvent />,
       },
+    ],
+    [
+      ParameterStore,
+      { getParameterStore: <GetParameterStore />, getParameter: <GetParameter /> },
     ],
     [StatsigUser, { updateUser: <UpdateUser /> }],
     [StatsigOptions, { options: <Options /> }],

@@ -116,7 +116,7 @@ In order to save users' data and battery usage, as well as prevent logged events
 
 #### How does the SDK cache locally?
 
-The SDK will cache evaluations fetched from the server locally, so we have default values to use in future sessions in the event the Statsig API is unreachable.  The key for this cache is the userID and set of all customIDs `{ userID, ...customIDs }`.  This means that while other attributes may change, if that key remains contstant, the SDK will treat it as the same user.  This means cached values could be shared across different user objects.  Once the SDK is able to download up to date values for the entire user object, they should be up to date with regards to all user properties.
+The SDK will cache evaluations fetched from the server locally, so we have default values to use in future sessions in the event the Statsig API is unreachable.  The key for this cache is the userID and set of all customIDs `{ userID, ...customIDs }`.  This means that while other attributes may change, if that key remains constant, the SDK will treat it as the same user.  This means cached values could be shared across different user objects.  Once the SDK is able to download up to date values for the entire user object, they should be up to date with regards to all user properties.
 
 #### How do I run experiments for logged out users? {#logged-out-experiments}
 

@@ -9,7 +9,7 @@ Bootstrapping the Client SDKs is a pattern used to provide the precomputed user 
 
 ## Technical details 
 
-With this approach, your server will be responsible for serving the configuration payload to your client app on pageload (for web implementations) or during app launch (for mobile implementations).
+With this approach, your server will be responsible for serving the configuration payload to your client app on page load (for web implementations) or during app launch (for mobile implementations).
 
 This architecture requires running a server SDK that supports the `getClientInitializeResponse` method. 
 Your server SDK will maintain a fresh configuration in memory and when a request hits your route handler, you should call `getClientInitializeResponse(<user>)`, passing in a StatsigUser Object to generate the configuration object that gets passed to the client SDK as the `initializeValues` [initialization option](https://docs.statsig.com/client/jsClientSDK#statsig-options).

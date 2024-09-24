@@ -56,8 +56,8 @@ $ npx siggy --version
 2. Configure the API keys by running:
 
 ``` bash
-$ siggy -c <console-api-key>
-$ siggy -k <client-api-key>
+$ siggy config -c <console-api-key>
+$ siggy config -k <client-api-key>
 ```
 
 :::info
