@@ -1,5 +1,5 @@
 ---
-sidebar_label: Using Flags or Experiments
+sidebar_label: Choosing Flags or Experiments
 title: When to use Feature Flags vs. Experiments?
 ---
 
