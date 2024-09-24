@@ -16,7 +16,7 @@ StatsigClient client;
 // Initialize synchronously using cached values from the previous session
 client.InitializeSync("client-{YOUR_CLIENT_SDK_KEY}", user);
 
-// or, Initialize asynchronosly from network
+// or, Initialize asynchronously from network
 client.InitializeAsync(
     "client-{YOUR_CLIENT_SDK_KEY}", 
     [](StatsigResultCode result) {
@@ -33,13 +33,13 @@ Data for subsequent sessions will then be fetched in the background.
 current data to be fetched.
 
 
-For convnience, there is also a singleton instance that can be accessed via `StatsigClient::Shared()`.
+For convenience, there is also a singleton instance that can be accessed via `StatsigClient::Shared()`.
 
 ```cpp
 // Initialize synchronously using cached values from the previous session
 StatsigClient::Shared().InitializeSync("client-{YOUR_CLIENT_SDK_KEY}", user);
 
-// or, Initialize asynchronosly from network
+// or, Initialize asynchronously from network
 StatsigClient::Shared().InitializeAsync(
     "client-{YOUR_CLIENT_SDK_KEY}", 
     [](StatsigResultCode result) {
@@ -53,7 +53,7 @@ StatsigClient::Shared().InitializeAsync(
 **Optional** - Configuration via StatsigOptions
 
 It is possible to adjust certain aspects of how the SDK works via a [StatsigOptions](#statsig-options) struct.
-Just pass in a StatsigOptions struct during intialization.
+Just pass in a StatsigOptions struct during initialization.
 
 ```cpp
 StatsigOptions options;

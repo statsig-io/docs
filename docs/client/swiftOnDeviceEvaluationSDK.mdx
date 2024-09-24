@@ -1,5 +1,5 @@
 ---
-sidebar_label: Swift
+sidebar_label: Swift / Objective C
 title: Swift On Device Evaluation
 ---
 
@@ -31,6 +31,9 @@ import LogEvent from "./SwiftOnDeviceEval/_logEvent.mdx";
 import MoreFAQs from "./SwiftOnDeviceEval/_faqs.mdx";
 import Options from "./SwiftOnDeviceEval/_options.mdx";
 import ShutdownSnippet from "./SwiftOnDeviceEval/_shutdown.mdx";
+
+import * as _LocalOverrides from "./SwiftOnDeviceEval/_localOverrides.mdx";
+export const LocalOverrides = _LocalOverrides;
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -76,6 +79,7 @@ export const Builder = SDKDocsBuilder({
     [StatsigUser, { excludeMentionToDirectUpdateUser: true, isOnDeviceEval: true, snippet: <CreateStatsigUser /> }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [LocalOverrides, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]
 })

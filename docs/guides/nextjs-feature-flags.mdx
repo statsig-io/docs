@@ -130,7 +130,7 @@ export default async function Index(): Promise<JSX.Element> {
 }
 ```
 
-You'll now be bucketed either into the gate or not and get a corresponding experience.  It should look like this, depending on if the userID passes or fais the gate.  Change the ID in the page.tsx to try out both experiences:
+You'll now be bucketed either into the gate or not and get a corresponding experience.  It should look like this, depending on if the userID passes or fails the gate.  Change the ID in the page.tsx to try out both experiences:
 
 ![Failing experience](https://github.com/statsig-io/docs/assets/74584483/fce851ac-588a-465e-a17d-5f29b1469294)
 ![Passing experience](https://github.com/statsig-io/docs/assets/74584483/b2c54ce8-0a1b-41a2-9a44-3668f6db0719)
@@ -250,7 +250,7 @@ export default async function Index(): Promise<JSX.Element> {
 
 ```
 
-You should still get the same experience as above, but now with server generated values!  If you want to look at the diagnostic information for this gate in the console, navigate to the diagnositcs tab of the gate:
+You should still get the same experience as above, but now with server generated values!  If you want to look at the diagnostic information for this gate in the console, navigate to the diagnostics tab of the gate:
 
 ![Diagnostics tab](https://github.com/statsig-io/docs/assets/74584483/6ff0a447-bce9-499c-84fd-a35d9978cd6d)
 

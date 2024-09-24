@@ -6,6 +6,7 @@ let isPassing: Bool = Statsig.shared.checkGate("my_gate", user)
 
 // or, the verbose FeatureGate check
 
+let gate = Statsig.shared.getFeatureGate("my_gate", user)
 print(gate.evaluationDetails.reason) // "Network" | "Cache" | "Unrecognized"
 let isPassing: Bool = gate.value;
 

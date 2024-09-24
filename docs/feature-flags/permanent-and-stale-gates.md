@@ -36,8 +36,7 @@ In your feature gates catalog, you'll see different **Types** displayed in the S
     - Gates created less than 30 days ago, modified in the last 30 days, or referenced by other gates/experiments/dynamic configs are never consider stale
     - Otherwise, any of the following conditions make a gate stale:
       - The gate has had 0 checks within last 30 days
-      - All of the gates rules are rolled out to 100% or 0% and its earliest check was at least 30 days ago
-      - The gate has any rule passing between 0% and 100% and its earliest check was at least 30 days ago
+      - The gate is still being checked but its earliest check was at least 30 days ago
   - Implications of gates being marked as **Stale**
     - No change in the gate’s behavior when called
     - Easy filtering on Feature Gates catalog

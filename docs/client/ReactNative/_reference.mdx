@@ -28,7 +28,7 @@ StatsigContext is a [react context](https://reactjs.org/docs/context.html) used 
 - `initialized: boolean;` the initialization state of the SDK
 - `statsigPromise: React.MutableRefObject<Promise<void>> | null;` a reference to a promise which resolves once SDK initialization is complete
 - `initStarted: boolean` whether the singleton `Statsig` has had `initialize` called on it, meaning the SDK is now usable and can serve checks from cache and queue log events
-- `userVersion: number` used interally by the SDK to memoize SDK functions based on the user. Increments when the user object is changed and updateUser is called.
+- `userVersion: number` used internally by the SDK to memoize SDK functions based on the user. Increments when the user object is changed and updateUser is called.
 
 ### `StatsigOptions` {#statsig-options}
 
