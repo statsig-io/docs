@@ -18,7 +18,7 @@ This pattern is optimal for testing with cached content without sacrificing cach
 - Use a provider-specific Data Adapter — This will allow the Statsig SDK to initialize using the configuration stored at the edge near your function. Links for each provider provided below.
 - Use [statsig-node-lite](https://www.npmjs.com/package/statsig-node-lite) — This is a slimmed down version of the Node SDK, which includes only the essentials and dramatically improves initialization performance for cold-starts requests.
 - Persist a uuid — As always, you'll need some sort of user identifier that can be used to consistently assign a user to your test buckets. This can typically be solved by generating a uuid in your function and setting it to a cookie. 
-- Persist assignments in a cookie — Some customers will set assignemnts to a cookie for the purpose of a performance optimization, allowing your code to skip sdk calls if the user is already assigned to a test. This is best defined as a session-cookie (a cookie that expires when user closes their browser).
+- Persist assignments in a cookie — Some customers will set assignments to a cookie for the purpose of a performance optimization, allowing your code to skip sdk calls if the user is already assigned to a test. This is best defined as a session-cookie (a cookie that expires when user closes their browser).
 - Persist client instance — [This pattern](https://docs.statsig.com/guides/serverless#usage) allows the Statsig client instance to persists across requests when the edge function remains warm and will improve performance.
 - Use [Target Apps](https://docs.statsig.com/sdk-keys/target-apps) — Target apps will allow you to sync a specific subset of experiments/gates to your edge function, reducing the footprint of your project config and improving performance. Target Apps are compatible with all of the "config sync" integrations.   
 - Consider [peaking at experiment assignments](https://github.com/statsig-io/node-js-lite-server-sdk/blob/d88aab788a16d0d38adf851e67c21bb846f12d24/src/index.ts#L191) and avoid logging exposures. You should only log exposure events once a user has been exposed to the treatment, otherwise your test results may become polluted with users that didn't see the treatment.
@@ -31,7 +31,7 @@ Cloudflare allows its users to easily stand up a serverless edge worker that wil
 
 The Cloudflare Worker runtime allows you to install [Statsig Node Lite SDK](https://github.com/statsig-io/node-js-lite-server-sdk) as a dependency and use it to determine test assignment to determine how to fetch a given resource. 
 
-We offer both an [integration with Cloudflare KV](https://docs.statsig.com/integrations/cloudflare), and a pre-built [KV Data Adapter](https://github.com/statsig-io/cloudflare-data-adapter-node/tree/master), ensuring that SDK initialization is performant and doens't depend on requests over the network back to Statsig.
+We offer both an [integration with Cloudflare KV](https://docs.statsig.com/integrations/cloudflare), and a pre-built [KV Data Adapter](https://github.com/statsig-io/cloudflare-data-adapter-node/tree/master), ensuring that SDK initialization is performant and doesn't depend on requests over the network back to Statsig.
 
 {/* Cloudflare promotes a standard pattern for determining test assignment at the edge as described [here](https://developers.cloudflare.com/pages/functions/examples/ab-testing/).  */}
 
@@ -47,11 +47,11 @@ Statsig offers both a Config-Sync for Fastly KV as well as a [KV DataAdapter](ht
 We initially built the [integration with Fastly's ConfigStore](https://docs.statsig.com/integrations/fastly), which was their only offering at the time. ConfigStore values are limited to 8 kilobytes, which will be met rather quickly as the number of gates and tests in your project increases.  This will be paired with our [Fastly Config Store Data Adapter](https://www.npmjs.com/package/statsig-node-fastly), allow the SDK to initialize from ConfigStore rather than making a request over the the network back to Statsig.
 
 ### Recommended pattern
-The Fastly pattern is a bit different than some of the other providers — as recommended by [the Fastly AB Testing guide](https://www.fastly.com/documentation/solutions/tutorials/ab-testing-edge-compute/#use-the-allocations-on-your-origin-server), it does not invole modifying the cache-key (resource URL), but instead attaching `Fastly-ABTest-<TEST ID>` headers, which will tell your origin server how to render the resource, and the origin response should include a `Vary` response header to tell Fastly CDN  what to cache. This approach is documented thoroughly by Fastly, and it's recommended that their guide serves as the source of truth for the design pattern.
+The Fastly pattern is a bit different than some of the other providers — as recommended by [the Fastly AB Testing guide](https://www.fastly.com/documentation/solutions/tutorials/ab-testing-edge-compute/#use-the-allocations-on-your-origin-server), it does not involve modifying the cache-key (resource URL), but instead attaching `Fastly-ABTest-<TEST ID>` headers, which will tell your origin server how to render the resource, and the origin response should include a `Vary` response header to tell Fastly CDN  what to cache. This approach is documented thoroughly by Fastly, and it's recommended that their guide serves as the source of truth for the design pattern.
 
 :::info
 ### Fastly VCL Implementation
-Their legacy Varnish-based platform only supports configuration based cachine and minimal scripting at the edge using VCL scripting language. 
+Their legacy Varnish-based platform only supports configuration based caching and minimal scripting at the edge using VCL scripting language. 
 
 Practically speaking, there is no Statsig SDK (or any SDK for that matter) support at the edge for this reason. In this instance, the Statsig SDK must be implemented on the origin server, and cache rules must be configured to force a cache-miss and allow assignments to take place on the origin server.
 
