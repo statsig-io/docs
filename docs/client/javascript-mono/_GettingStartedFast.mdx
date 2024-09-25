@@ -1,0 +1,73 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+## Getting Started
+
+<Tabs
+  defaultValue="script"
+  groupId="js-client-init-method"
+  values={[
+    {label: 'Script', value: 'script'},
+    {label: 'Package Manager', value: 'package-manager'},
+  ]}>
+  <TabItem value="script">
+The quickest way to get up and running with Statsig is to use the CDN/script tag.
+
+Simply add the following to your `<head>` tag and replace `[YOUR_CLIENT_KEY]` with your [actual Client SDK Key](https://console.statsig.com/api_keys):
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=[YOUR_CLIENT_KEY]"></script>
+```
+
+And thats it!  This will automatically initialize the SDK, start logging autocapture events, and record session replays.
+  </TabItem>
+  <TabItem value="package-manager">
+If you are using a bundler like Vite, Next.js, or Webpack, you need to install the SDK via npm or yarn:
+<!--  -->
+
+You can install the Statsig SDK via npm, yarn or jsdelivr:
+
+<Tabs
+  defaultValue="npm"
+  groupId="js-client-bundler"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'yarn', value: 'yarn'},
+  ]}>
+
+  <TabItem value="npm">
+
+```shell
+npm install @statsig/js-client @statsig/session-replay @statsig/web-analytics
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```shell
+yarn add @statsig/js-client @statsig/session-replay @statsig/web-analytics
+```
+
+  </TabItem>
+</Tabs>
+
+After installing the SDK, you can initialize it using the following code:
+
+```jsx
+import { StatsigClient } from '@statsig/js-client';
+import { runStatsigSessionReplay } from '@statsig/session-replay';
+import { runStatsigAutoCapture } from '@statsig/web-analytics';
+
+const client = new StatsigClient(sdkKey,
+	{ userID: "some_user_id" }, // see [StatsigUser](#statsig-user) for more details
+  { environment: { tier: "production" } } // optional, pass [StatsigOptions](#statsig-options) here if needed
+);
+runStatsigSessionReplay(client);
+runStatsigAutoCapture(client);
+await client.initializeAsync();
+``` 
+
+  </TabItem>
+</Tabs>
+
