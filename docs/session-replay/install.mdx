@@ -85,6 +85,7 @@ Next, following the [instructions for the Statsig Javascript SDK](https://docs.s
 ```jsx
 import { StatsigClient } from '@statsig/js-client';
 import { runStatsigSessionReplay } from '@statsig/session-replay';
+import { runStatsigAutoCapture } from '@statsig/web-analytics';
 
 const client = new StatsigClient(sdkKey,
 	{ userID: "some_user_id" },
@@ -102,6 +103,7 @@ await client.initializeAsync();
 ```jsx
 import { StatsigClient } from '@statsig/js-client';
 import { runStatsigSessionReplay } from '@statsig/session-replay';
+import { runStatsigAutoCapture } from '@statsig/web-analytics';
 import { StatsigProvider } from '@statsig/react-bindings';
 
 const client = new StatsigClient(sdkKey,
