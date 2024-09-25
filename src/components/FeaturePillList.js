@@ -55,7 +55,6 @@ const FeaturePill = ({ name, link }) => (
   
 
 export const FeaturePillList = ({ features }) => {
-  console.log(features);
   return   <div style={{ display: 'flex', flexWrap: 'wrap', marginBottom: '20px' }}>
     <h2>Supported Features</h2>
     <br />
