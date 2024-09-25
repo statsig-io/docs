@@ -64,121 +64,9 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
-          label: "SDKs & APIs",
+          label: "SDKs",
           items: [
             "sdks/getting-started",
-            {
-              type: "category",
-              label: "Client SDKs",
-              link: {
-                type: "doc",
-                id: "client/introduction",
-              },
-              items: [
-                {
-                  type: "category",
-                  label: "JavaScript/React",
-                  items: [
-                    "client/javascript-sdk",
-                    "client/javascript-mono/ReactUsage",
-                    "client/javascript-mono/ReactNativeUsage",
-                    "client/javascript-mono/ExpoUsage",
-                    "client/javascript-mono/NextJsAppRouterUsage",
-                    "client/javascript-mono/NextJsPageRouterUsage",
-                    "client/javascript-mono/UsingEvaluationsDataAdapter",
-                    "client/javascript-mono/InitStrategies",
-                    "client/javascript-mono/Examples",
-                    "client/javascript-mono/MigrationFromOldJsClient",
-                    "client/javascript-mono/MigrationFromOldReact",
-                  ],
-                },
-                "client/iosClientSDK",
-                "client/androidClientSDK",
-                "client/dotnetSDK",
-                "client/rokuSDK",
-                "client/unitySDK",
-                "client/dartSDK",
-                "client/cpp-client-sdk",
-                {
-                  type: "category",
-                  label: "On Device Evaluation",
-                  items: [
-                    {
-                      type: "category",
-                      label: "JavaScript",
-                      link: {
-                        type: "doc",
-                        id: "client/js-on-device-eval-client",
-                      },
-                      items: [
-                        "client/js-device-eval-mono/MigrationFromOldSDK",
-                        "client/js-device-eval-mono/UsingSpecsDataAdapter",
-                        "client/js-device-eval-mono/ReactNativeUsage",
-                      ],
-                    },
-                    "client/swiftOnDeviceEvaluationSDK",
-                    "client/androidOnDeviceEvaluationSDK",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "JavaScript - Maintainance Mode",
-                  items: [
-                    "client/jsClientSDK",
-                    "client/reactSDK",
-                    "client/reactNativeSDK",
-                    "client/reactNativeExpoSDK",
-                    "client/jsLocalEvaluationSDK",
-                  ],
-                },
-              ],
-            },
-            {
-              type: "category",
-              label: "Server SDKs",
-              link: {
-                type: "doc",
-                id: "server/introduction",
-              },
-              items: [
-                {
-                  type: "category",
-                  label: "Node.JS",
-                  link: {
-                    type: "doc",
-                    id: "server/nodejsServerSDK",
-                  },
-                  items: [
-                    "server/nodejsServerSDK",
-                    "guides/node-express-feature-flags",
-                    "guides/node-express-abtests",
-                  ],
-                },
-                "server/javaSdk",
-                {
-                  type: "category",
-                  label: "Python",
-                  link: {
-                    type: "doc",
-                    id: "server/pythonSDK",
-                  },
-                  items: [
-                    "server/pythonSDK",
-                    "guides/python-flask-feature-flags",
-                    "guides/python-flask-abtests",
-                  ],
-                },
-
-                "server/golangSDK",
-                "server/rubySDK",
-                "server/dotnetSDK",
-                "server/phpSDK",
-                "server/erlangSDK",
-                "server/rustSDK",
-                "server/cppSDK",
-                "server/deprecation-notices",
-              ],
-            },
             {
               Concepts: [
                 "client/concepts/user",
@@ -194,8 +82,108 @@ const sidebars: SidebarsConfig = {
                 "server/concepts/all_assignments",
                 "sdk-keys/api-keys",
                 "sdk-keys/target-apps",
+                "server/deprecation-notices",
               ],
             },
+            {
+              type: "category",
+              label: "JavaScript/React/RN",
+              items: [
+                "client/javascript-sdk",
+                "client/javascript-mono/ReactUsage",
+                "client/javascript-mono/ReactNativeUsage",
+                "client/javascript-mono/ExpoUsage",
+                "client/javascript-mono/UsingEvaluationsDataAdapter",
+                "client/javascript-mono/InitStrategies",
+                "client/javascript-mono/Examples",
+                "client/javascript-mono/MigrationFromOldJsClient",
+                "client/javascript-mono/MigrationFromOldReact",
+              ],
+            },
+            "client/androidClientSDK",
+            "client/cpp-client-sdk",
+            "server/cppSDK",
+            "client/dartSDK",
+            "client/iosClientSDK",
+            "server/erlangSDK",
+            "server/golangSDK",
+            "server/javaSdk",
+            {
+              type: "category",
+              label: "Python",
+              link: {
+                type: "doc",
+                id: "server/pythonSDK",
+              },
+              items: [
+                "server/pythonSDK",
+                "guides/python-flask-feature-flags",
+                "guides/python-flask-abtests",
+              ],
+            },
+            "client/dotnetSDK",
+            "server/dotnetSDK",
+            "client/javascript-mono/NextJsAppRouterUsage",
+            "client/javascript-mono/NextJsPageRouterUsage",
+            {
+              type: "category",
+              label: "Node.JS",
+              link: {
+                type: "doc",
+                id: "server/nodejsServerSDK",
+              },
+              items: [
+                "server/nodejsServerSDK",
+                "guides/node-express-feature-flags",
+                "guides/node-express-abtests",
+              ],
+            },
+            "server/phpSDK",
+            "client/rokuSDK",
+            "server/rubySDK",
+            "server/rustSDK",
+            "client/unitySDK",
+            {
+              type: "category",
+              label: "On Device Client SDKs",
+              items: [
+                {
+                  type: "category",
+                  label: "JavaScript",
+                  link: {
+                    type: "doc",
+                    id: "client/js-on-device-eval-client",
+                  },
+                  items: [
+                    "client/js-device-eval-mono/MigrationFromOldSDK",
+                    "client/js-device-eval-mono/UsingSpecsDataAdapter",
+                    "client/js-device-eval-mono/ReactNativeUsage",
+                  ],
+                },
+                "client/swiftOnDeviceEvaluationSDK",
+                "client/androidOnDeviceEvaluationSDK",
+              ],
+            },
+            
+            {
+              type: "category",
+              label: "JavaScript - Maintainance Mode",
+              items: [
+                "client/jsClientSDK",
+                "client/reactSDK",
+                "client/reactNativeSDK",
+                "client/reactNativeExpoSDK",
+                "client/jsLocalEvaluationSDK",
+              ],
+            },
+            
+          ]
+        },
+        {
+          type: "category",
+          label: "APIs",
+          items: [
+            "sdks/getting-started",
             "http-api",
             {
               type: "category",
