@@ -68,24 +68,6 @@ const sidebars: SidebarsConfig = {
           items: [
             "sdks/getting-started",
             {
-              Concepts: [
-                "client/concepts/user",
-                "sdks/debugging",
-                "client/concepts/initialize",
-                "client/concepts/bootstrapping",
-                "client/concepts/persistent_assignment",
-                "client/concepts/parameter-stores",
-                "messages/serverRequiredUserID",
-                "server/concepts/data_store",
-                "server/concepts/forward_proxy",
-                "server/concepts/persistent_assignment",
-                "server/concepts/all_assignments",
-                "sdk-keys/api-keys",
-                "sdk-keys/target-apps",
-                "server/deprecation-notices",
-              ],
-            },
-            {
               type: "category",
               label: "JavaScript/React/RN",
               items: [
@@ -164,7 +146,6 @@ const sidebars: SidebarsConfig = {
                 "client/androidOnDeviceEvaluationSDK",
               ],
             },
-            
             {
               type: "category",
               label: "JavaScript - Maintainance Mode",
@@ -176,14 +157,31 @@ const sidebars: SidebarsConfig = {
                 "client/jsLocalEvaluationSDK",
               ],
             },
-            
+            {
+              Concepts: [
+                "sdks/client-vs-server",
+                "client/concepts/user",
+                "sdks/debugging",
+                "client/concepts/initialize",
+                "client/concepts/bootstrapping",
+                "client/concepts/persistent_assignment",
+                "client/concepts/parameter-stores",
+                "messages/serverRequiredUserID",
+                "server/concepts/data_store",
+                "server/concepts/forward_proxy",
+                "server/concepts/persistent_assignment",
+                "server/concepts/all_assignments",
+                "sdk-keys/api-keys",
+                "sdk-keys/target-apps",
+                "server/deprecation-notices",
+              ],
+            },
           ]
         },
         {
           type: "category",
           label: "APIs",
           items: [
-            "sdks/getting-started",
             "http-api",
             {
               type: "category",
