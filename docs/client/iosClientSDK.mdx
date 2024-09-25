@@ -8,6 +8,8 @@ import {
   HOOK__SDKDocUpdate,
 } from "../sdks/_SDKDocsBuilder.mdx";
 
+import { FeaturePillList } from '@site/src/components/FeaturePillList';
+
 import {
   Repository,
   GettingStarted,
@@ -91,5 +93,16 @@ export const Builder = SDKDocsBuilder({
 
 export const toc = Builder.toc
 
+<FeaturePillList
+    features={[
+      { name: "Feature Gates", link: "#feature-gates" },
+      { name: "Experiments", link: "#layers" },
+      { name: "Dynamic Configs", link: "#dynamic-configs" },
+      { name: "Layers", link: "#layers" },
+      { name: "Event Logging", link: "#event-logging" },
+      { name: "Parameter Stores", link: "#parameter-stores" }
+    ]
+  }
+/>
 <>{Builder.result}</>
 
