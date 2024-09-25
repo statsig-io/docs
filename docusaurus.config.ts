@@ -1,8 +1,8 @@
-import { themes as prismThemes } from "prism-react-renderer";
-import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
-import remarkMath from "remark-math";
+import type { Config } from "@docusaurus/types";
+import { themes as prismThemes } from "prism-react-renderer";
 import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
 
 const config: Config = {
   title: "Statsig Docs",
@@ -123,7 +123,6 @@ const config: Config = {
       "@docusaurus/plugin-client-redirects",
       {
         redirects: [
-          
           {
             to: "/client/javascript-sdk/next-js",
             from: "/guides/nextjs-feature-flags",
@@ -234,6 +233,10 @@ const config: Config = {
             to: "/product-analytics/overview",
             from: "/metrics/events-explorer",
           },
+          {
+            to: "/experiments-plus/stop-assignments",
+            from: "/experiments-plus/pause-assignment",
+          },
         ],
       },
     ],
@@ -247,16 +250,16 @@ const config: Config = {
     docs: {
       sidebar: {
         autoCollapseCategories: true,
-      }
+      },
     },
     algolia: {
       // The application ID provided by Algolia
-      appId: 'JOWHDNMZRN',
+      appId: "JOWHDNMZRN",
 
       // Public API key: it is safe to commit it
-      apiKey: '2a538120ca7db3411698786731f3c2f6',
+      apiKey: "2a538120ca7db3411698786731f3c2f6",
 
-      indexName: 'statsig',
+      indexName: "statsig",
 
       // Optional: see doc section below
       // contextualSearch: true,

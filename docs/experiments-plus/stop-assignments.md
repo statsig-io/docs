@@ -1,7 +1,7 @@
 ---
 title: Stop Assignments
 sidebar_label: Stop Assignments
-slug: /experiments-plus/stop-assignment
+slug: /experiments-plus/stop-assignments
 ---
 
 
