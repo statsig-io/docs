@@ -123,10 +123,17 @@ const config: Config = {
       "@docusaurus/plugin-client-redirects",
       {
         redirects: [
+          
           {
-            to: "/guides/shopify-ab-test",
-            from: "/guides/first-shopify-abtest",
+            to: "/client/javascript-sdk/next-js",
+            from: "/guides/nextjs-feature-flags",
           },
+
+          {
+            to: "/client/javascript-sdk/next-js",
+            from: "/guides/nextjs-page-router-feature-flags",
+          },
+
           {
             to: "/product-analytics/drilldown",
             from: "/mex/drilldown",
