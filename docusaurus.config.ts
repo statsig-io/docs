@@ -123,10 +123,17 @@ const config: Config = {
       "@docusaurus/plugin-client-redirects",
       {
         redirects: [
+          
           {
-            to: "/guides/shopify-ab-test",
-            from: "/guides/first-shopify-abtest",
+            to: "/client/javascript-sdk/next-js",
+            from: "/guides/nextjs-feature-flags",
           },
+
+          {
+            to: "/client/javascript-sdk/next-js",
+            from: "/guides/nextjs-page-router-feature-flags",
+          },
+
           {
             to: "/product-analytics/drilldown",
             from: "/mex/drilldown",
@@ -237,6 +244,11 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: "img/docs_meta_q3_2023.png",
+    docs: {
+      sidebar: {
+        autoCollapseCategories: true,
+      }
+    },
     algolia: {
       // The application ID provided by Algolia
       appId: 'JOWHDNMZRN',
