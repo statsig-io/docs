@@ -20,7 +20,7 @@ Client API keys have access to the following:
 - /initialize endpoint, which returns all evaluated gates/configs/experiments/layers for a given user, with the names hashed.
 - /log_event endpoint, which logs events to Statsig.
 
-Because they cannot access unhashed names, and because the gates/configs/experiments/layers are all pre-evaluated, the project definition is not accessible via a Client API Key.  This means that any conditions you create in the console, say, for a gate to pass for certain users or email addresses, will not be accessible via a Client API Key.
+Because they cannot access the actual names, and because the gates/configs/experiments/layers are all pre-evaluated, the project definition is not accessible via a Client API Key.  This means that any conditions you create in the console, say, for a gate to pass for certain users or email addresses, will not be accessible via a Client API Key.
 
 ### Server Secret Keys
 
