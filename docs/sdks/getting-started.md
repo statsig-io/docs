@@ -23,7 +23,7 @@ You can [learn more here](/sdks/client-vs-server) about the differences between 
 - [.Net](/client/dotnetSDK)
 - [Unity](/client/unitySDK)
 - [Roku](/client/rokuSDK)
-- [C++](/client/cppSDK)
+- [C++](/client/cpp-client-sdk)
 - [Dart/flutter](/client/dartSDK)
 
 ### Server SDKs
