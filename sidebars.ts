@@ -926,6 +926,8 @@ const sidebars: SidebarsConfig = {
           "access-management/organizations",
           "access-management/projects",
           "access-management/teams",
+          "access-management/discussions",
+          "access-management/tags",
           "guides/setting-up-reviews",
           {
             "Single Sign-On": [
