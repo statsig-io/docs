@@ -5,13 +5,15 @@
  * work well for content-centric websites.
  */
 
+body {
+  font-family: 'Inter', sans-serif;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5 {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Helvetica Neue", "Ubuntu", sans-serif;
   font-weight: 700;
 }
 article header h1 {
@@ -49,7 +51,7 @@ a {
   --ifm-color-primary-lightest: #129dff;
   --ifm-link-color: #0068b3;
   --ifm-code-font-size: 95%;
-  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI",
+  --ifm-font-family-base: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Helvetica Neue", "Ubuntu", sans-serif;
   --ifm-font-size-base: 0.95em;
   
@@ -170,8 +172,6 @@ span.math.math-inline {
 }
 
 #consoleCTA{
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Helvetica Neue", "Ubuntu", sans-serif;
   background-color:rgb(25, 75, 125);
   color: rgb(255, 255, 255);
   font-weight: 600;
@@ -206,5 +206,112 @@ span.math.math-inline {
 
   .menu__link{
     color: gray;
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
   }
+}
+
+.menu__link{
+  font-weight: 600;
+}
+
+.sidebar-icon {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-icon::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  margin-left: 8px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar-icon:has(> .menu__link--active){
+  background-color: var(--ifm-menu-color-background-active)
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  background-color: unset;
+}
+
+.rocket-icon::before{
+  background-image: url('/img/icons/sidebar/rocket.svg');
+}
+
+.doc-icon::before{
+  background-image: url('/img/icons/sidebar/doc.svg');
+}
+
+.key-icon::before{
+  background-image: url('/img/icons/sidebar/key.svg');
+}
+
+.integrations-icon::before{
+  background-image: url('/img/icons/sidebar/integrations.svg');
+}
+
+.xp-icon::before{
+  background-image: url('/img/icons/sidebar/xp.svg');
+}
+
+.feature-icon::before{
+  background-image: url('/img/icons/sidebar/feature.svg');
+}
+
+.chart-icon::before{
+  background-image: url('/img/icons/sidebar/chart.svg');
+}
+
+.play-icon::before{
+  background-image: url('/img/icons/sidebar/play.svg');
+}
+
+.web-icon::before{
+  background-image: url('/img/icons/sidebar/web.svg');
+}
+
+.data-icon::before{
+  background-image: url('/img/icons/sidebar/data.svg');
+}
+
+.help-icon::before{
+  background-image: url('/img/icons/sidebar/help.svg');
+}
+
+
+.question-icon::before{
+  background-image: url('/img/icons/sidebar/help.svg');
+}
+
+.lightbulb-icon::before{
+  background-image: url('/img/icons/sidebar/concept.svg');
+}
+
+.ai-icon::before{
+  background-image: url('/img/icons/sidebar/ai.svg');
+}
+
+.whn-icon::before{
+  background-image: url('/img/icons/sidebar/whn.svg');
+}
+
+.team-icon::before{
+  background-image: url('/img/icons/sidebar/team.svg');
+}
+
+.infra-icon::before{
+  background-image: url('/img/icons/sidebar/infra.svg');
+}
+
+.admin-icon::before{
+  background-image: url('/img/icons/sidebar/admin.svg');
+}
+
+.template-icon::before{
+  background-image: url('/img/icons/sidebar/template.svg');
 }

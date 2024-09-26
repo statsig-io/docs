@@ -97,6 +97,20 @@ const config: Config = {
                 innerHTML: `window.statsigTier="${tier}"`,
               },
               {
+                tagName: 'link',
+                attributes: {
+                  rel: 'stylesheet',
+                  href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+                },
+              },
+              {
+                tagName: 'link',
+                attributes: {
+                  rel: 'stylesheet',
+                  href: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap',
+                },
+              },
+              {
                 tagName: "script",
                 attributes: {
                   src: "/js/rapidoc-min.js",
