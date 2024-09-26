@@ -19,7 +19,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
-          label: "Platform",
+          label: "Platform & Concepts",
           collapsed: true,
           className: "lightbulb-icon sidebar-icon",
           items: [
