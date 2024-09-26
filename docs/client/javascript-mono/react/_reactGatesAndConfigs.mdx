@@ -10,7 +10,7 @@ import { useStatsigClient } from "@statsig/react-bindings";
 const { client } = useStatsigClient();
 ```
 
-### Checking a Feature Flag/Gate
+### Checking a Feature Flag/Gate {#basics-check-gate}
 You can evaluate a gate by getting the client with the `useStatsigClient` hook,
 and then calling `checkGate`
 
@@ -29,8 +29,43 @@ function RootPage() {
 export default RootPage;
 ```
 
+### Getting a DyanmicConfig {#basics-get-config}
+You can get a DynamicConfig value by getting the client with the `useStatsigClient` hook,
+and then calling `getConfig`
 
-### Getting an Experiment
+```tsx
+// RootPage.js
+import { useStatsigClient } from "@statsig/react-bindings";
+
+function RootPage() {
+  const { client } = useStatsigClient();
+  const config = client.getConfig('app_properties');
+  
+  return (
+    <div>{config.get('title', 'Default Title')}</div>
+  );
+}
+
+export default RootPage;
+```
+
+### Logging an Event {#basics-log-event}
+You can get the client with the `useStatsigClient` hook, and then call `logEvent`
+
+```tsx
+// RootPage.js
+import { useStatsigClient } from "@statsig/react-bindings";
+
+function RootPage() {
+  const { client } = useStatsigClient();
+ 
+  return <button onClick={() => client.logEvent("button_click")}>Click Me</button>
+}
+
+export default RootPage;
+```
+
+### Getting an Experiment {#basics-get-experiment}
 You can access the experiment variant and parameters for the user by getting the client with the `useStatsigClient` hook,
 and then calling `getExperiment`.
 
@@ -50,8 +85,9 @@ function RootPage() {
 export default RootPage;
 ```
 
-### Logging an Event
-You can get the client with the `useStatsigClient` hook, and then call `logEvent`
+### Getting a Layer {#basics-get-layer}
+You can access layers and layer parameters for the user by getting the client with the `useStatsigClient` hook,
+and then calling `getLayer`.
 
 ```tsx
 // RootPage.js
@@ -59,8 +95,11 @@ import { useStatsigClient } from "@statsig/react-bindings";
 
 function RootPage() {
   const { client } = useStatsigClient();
+  const layer = client.getLayer('homepage_layer');
  
-  return <button onClick={() => client.logEvent("button_click")}>Click Me</button>
+  return (
+    <div>Headline Parameter: {layer.get('hero_text', 'Welcome')}.</div>
+  );
 }
 
 export default RootPage;
