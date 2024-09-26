@@ -9,6 +9,10 @@ Instead of sending API requests directly to Statsig, you can set up your own env
 
 There are many ways to set up custom proxies. We are showing instructions for a few common service providers here.
 
+:::warning
+Regardless of implementation, we strongly advise your proxy simply does passthrough and does not try to deserialize the payload. This will improve robustness by reducing risk of integration issues from Server SDk -> Proxy -> Client SDK, as well as, improve efficiency of the proxy.
+:::
+
 :::info
 If you just want statsig to manage your proxy, you can use our [Managed API Proxy](/infrastructure/managed-proxy)
 :::
