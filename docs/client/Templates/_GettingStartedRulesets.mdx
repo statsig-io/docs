@@ -3,40 +3,17 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
 
-## Getting Started
-
-<span>
-  The following will outline how to get up and running with Statsig for{" "}
-  {props.sdkType}.
-</span>
-
-<>{props.additionalWelcomeMessage}</>
-
-<!--  -->
-
-<Gap />
-
-### Create an Account
-
-To work with the SDK, you will need a Statsig account. If you don't yet have an account, go ahead and [sign up](https://console.statsig.com/sign_up) for a free account now.
-
-<!--  -->
-
-<Gap />
-
-### Installation
+## Installation
 
 <div>{props.install}</div>
 
 <Gap />
 
-### Initialize the SDK
+## Initialize the SDK
 
 Initialize the SDK using a Client SDK key from the ["API Keys" tab on the Statsig console](https://console.statsig.com/api_keys).  When creating the key, or using an existing key,
 you will need to add the "Allow Download Config Specs" scope.  Client keys, by default, are not able to download the project definition to do on device evaluation.  You must opt in
 to allow your client key to access your full project definition on our cdn.
-
-
 
 
 <Tabs
