@@ -86,32 +86,14 @@ const sidebars: SidebarsConfig = {
                 "server/deprecation-notices",
               ],
             },
-            {
-              type: "category",
-              label: "JavaScript",
-              items: [
-                "client/javascript-sdk",
-                "client/javascript-mono/Examples",
-                "client/javascript-mono/UsingEvaluationsDataAdapter",
-                "client/javascript-mono/InitStrategies",
-                "client/javascript-mono/MigrationFromOldJsClient",
-                "client/javascript-mono/MigrationFromOldReact",
-              ],
-            },
+            "client/javascript-sdk",
             "client/javascript-mono/ReactUsage",
             "client/androidClientSDK",
             "client/iosClientSDK",
             "client/javascript-mono/NextJsAppRouterUsage",
             "client/javascript-mono/NextJsPageRouterUsage",
-            {
-              type: "category",
-              label: "Node.JS",
-              items: [
-                "server/nodejsServerSDK",
-                "guides/node-express-feature-flags",
-                "guides/node-express-abtests",
-              ],
-            },
+            "server/nodejsServerSDK",
+            
             {
               type: "category",
               label: "More Client SDKs",
@@ -153,6 +135,8 @@ const sidebars: SidebarsConfig = {
                     "client/reactNativeSDK",
                     "client/reactNativeExpoSDK",
                     "client/jsLocalEvaluationSDK",
+                    "client/javascript-mono/MigrationFromOldJsClient",
+                    "client/javascript-mono/MigrationFromOldReact",
                   ],
                 },
               ],
@@ -161,28 +145,25 @@ const sidebars: SidebarsConfig = {
               type: "category",
               label: "More Server SDKs",
               items: [
-                
                 "server/dotnetSDK",
                 "server/cppSDK",
                 "server/erlangSDK",
                 "server/golangSDK",
                 "server/javaSdk",
-                {
-                  type: "category",
-                  label: "Python",
-                  link: {
-                    type: "doc",
-                    id: "server/pythonSDK",
-                  },
-                  items: [
-                    "server/pythonSDK",
-                    "guides/python-flask-feature-flags",
-                    "guides/python-flask-abtests",
-                  ],
-                },
+                "server/pythonSDK",
                 "server/phpSDK",
                 "server/rubySDK",
                 "server/rustSDK",
+              ],
+            },
+            {
+              type: "category",
+              label: "Other Frameworks",
+              items: [
+                "guides/node-express-feature-flags",
+                "guides/node-express-abtests",
+                "guides/python-flask-feature-flags",
+                "guides/python-flask-abtests",
               ],
             },
           ]
