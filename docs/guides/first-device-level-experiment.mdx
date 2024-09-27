@@ -31,7 +31,7 @@ Finally, don't forget to click on the **Save** button at the top right hand side
 
 ### Step 2 - Use your experiment configuration in the client-side of your application
 
-Once you have installed a client SDK of your choice (see [Javascript example](https://docs.statsig.com/client/jsClientSDK)),
+Once you have installed a client SDK of your choice (see [Javascript example](https://docs.statsig.com/client/javascript-sdk)),
 you must `initialize` the SDK using your client SDK key as shown below.
 For device-level experiments, you do **not** have to include the user ID as you would with more traditional experiments if the user is not yet known/signed-in.
 
@@ -44,7 +44,12 @@ const user = {
     }
 };
 
-await statsig.initialize('client-sdk-key', user);
+const client = new StatsigClient(sdkKey,
+  user,
+{ environment: { tier: "production" } } // optional
+);
+
+await client.initializeAsync();
 ```
 
 ### Step 3 (Optional) - Add user identifiers for other experiments involving signed-in users
@@ -55,5 +60,5 @@ Once the user creates an account or logs into your application, you can also cal
 user.userID = realUserID;
 user.email = signUpEmail;
 
-await statsig.updateUser(user);
+await client.updateUserAsync(user);
 ```
