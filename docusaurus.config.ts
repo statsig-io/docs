@@ -143,11 +143,15 @@ const config: Config = {
           },
           {
             from: "/client/reactSDK",
-            to: "/client/javascript-mono/ReactUsage"
+            to: "/client/javascript-mono/react"
           },
           {
             from: "/client/reactNativeSDK",
-            to: "/client/javascript-mono/ReactNativeUsage"
+            to: "/client/javascript-mono/react-native"
+          },
+          {
+            from: "/client/reactNativeExpoSDK",
+            to: "/client/javascript-mono/expo"
           },
           {
             to: "/",
