@@ -97,6 +97,20 @@ const config: Config = {
                 innerHTML: `window.statsigTier="${tier}"`,
               },
               {
+                tagName: 'link',
+                attributes: {
+                  rel: 'stylesheet',
+                  href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+                },
+              },
+              {
+                tagName: 'link',
+                attributes: {
+                  rel: 'stylesheet',
+                  href: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap',
+                },
+              },
+              {
                 tagName: "script",
                 attributes: {
                   src: "/js/rapidoc-min.js",
@@ -290,16 +304,23 @@ const config: Config = {
       title: "",
       logo: {
         alt: "Statsig",
-        src: "img/logo.svg",
+        src: "img/logo-new.svg",
         srcDark: "img/logo_white.svg",
         href: "/",
       },
       items: [
         {
+          type: 'search',
+        },
+        {
           type: "html",
-          position: "right",
           value:
-            "<button id=\"consoleCTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus(); window.statsig.logEvent({}, 'console_button_click', window.location.pathname, {referrer: document && document.referrer,});\">Get Started</button>",
+            "<button class=\"loginCTA CTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus();\">Log In</button>",
+        },
+        {
+          type: "html",
+          value:
+            "<button class=\"signupCTA CTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus();\">Get Started</button>",
         },
       ],
     },
