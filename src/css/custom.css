@@ -208,27 +208,30 @@ span.math.math-inline {
     color: gray;
     font-size: 12px;
     font-family: 'Open Sans', sans-serif;
+    margin-left: 8px;
   }
 }
 
 .menu__link{
   font-weight: 600;
+  margin-left: 25px;
 }
 
 .sidebar-icon {
-  display: flex;
   align-items: center;
+  position: relative;
 }
 
 .sidebar-icon::before {
   content: '';
-  display: inline-block;
+  position: absolute;
   width: 16px;
   height: 16px;
   margin-right: 8px;
   margin-left: 8px;
   background-size: contain;
   background-repeat: no-repeat;
+  margin: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
 }
 
 .sidebar-icon:has(> .menu__link--active){
