@@ -785,6 +785,7 @@ const sidebars: SidebarsConfig = {
                     "experiments-plus/stratified-sampling",
                     "experiments-plus/differential-impact-detection",
                     "statsig-warehouse-native/features/targeting",
+                    "statsig-warehouse-native/features/id-resolution",
                     "statsig-warehouse-native/features/filtering-exposures",
                   ],
                 },

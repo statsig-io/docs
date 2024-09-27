@@ -124,6 +124,10 @@ const config: Config = {
       {
         redirects: [
           {
+            to: "/",
+            from: "/category/walkthrough-guides"
+          },
+          {
             to: "/client/javascript-sdk/next-js",
             from: "/guides/nextjs-feature-flags",
           },
