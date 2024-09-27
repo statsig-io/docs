@@ -56,8 +56,9 @@ const FeaturePill = ({ name, link }) => (
 
 export const FeaturePillList = ({ features }) => {
   return   <div style={{ display: 'flex', flexWrap: 'wrap', marginBottom: '20px' }}>
-    <h2>Supported Features</h2>
-    <br />
+    <div style={{ display: 'block', width: '100%'}}>
+      <h2>Supported Features</h2>
+    </div>
     <div>
         {features.map((feature, index) => (
         <FeaturePill key={index} {...feature} />
