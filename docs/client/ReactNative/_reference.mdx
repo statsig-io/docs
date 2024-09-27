@@ -2,7 +2,7 @@ import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
 
 ### `Statsig` {#statsig-interface}
 
-You can import the global `Statsig` singleton to call SDK functions outside of a component tree or in callbacks/loops/or wherever else you are unable to use hooks. For all SDK functions, see the [statsig-js sdk docs](/client/jsClientSDK).
+You can import the global `Statsig` singleton to call SDK functions outside of a component tree or in callbacks/loops/or wherever else you are unable to use hooks. For all SDK functions, see the [statsig-js sdk docs](/client/deprecated/jsClientSDK).
 
 :::caution
 If you are calling methods on the global `Statsig` like `initialize` or `updateUser`, the user object tracked by the provider and the user object used outside the component tree can get out of sync. You are responsible for maintaining the state of the `user` and keeping it consistent with the `StatsigProvider` in these cases. The `statsig-react-native` SDK uses the global `Statsig` class to serve gate/config/experiment checks, but these are memoized in the hooks the SDK provides. Updates to the user which impact flag values that are made outside the context of the react component tree will not be reflected in the component tree unless the updated user is passed in to the `StatsigProvider`.
@@ -89,7 +89,7 @@ Parameters:
 Returns `ConfigResult`:
 
 - `isLoading: boolean;` - the loading/initializing state of the SDK
-- `config: DynamicConfig` - the backing `DynamicConfig` (see the [statsig-js sdk docs](/client/jsClientSDK) for more information)
+- `config: DynamicConfig` - the backing `DynamicConfig` (see the [statsig-js sdk docs](/client/deprecated/jsClientSDK) for more information)
 
 ### `useExperiment`
 
@@ -102,7 +102,7 @@ Parameters:
 Returns `ConfigResult`:
 
 - `isLoading: boolean;` - the loading/initializing state of the SDK
-- `config: DynamicConfig` - the backing `DynamicConfig` (see the [statsig-js sdk docs](/client/jsClientSDK) for more information)
+- `config: DynamicConfig` - the backing `DynamicConfig` (see the [statsig-js sdk docs](/client/deprecated/jsClientSDK) for more information)
 
 ### `useLayer`
 
@@ -115,7 +115,7 @@ Parameters:
 Returns `LayerResult`:
 
 - `isLoading: boolean;` - the loading/initializing state of the SDK
-- `layer: Layer` - the backing `Layer` (see the [statsig-js sdk docs](/client/jsClientSDK) for more information)
+- `layer: Layer` - the backing `Layer` (see the [statsig-js sdk docs](/client/deprecated/jsClientSDK) for more information)
 
 ### `useStatsigLogEffect`
 

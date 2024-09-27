@@ -19,7 +19,6 @@ Your server SDK will maintain a fresh configuration in memory and when a request
 * You should pass the same user object on both the server and client side.
 * The `initializeValues` option should be an Object.
 * This approach allows the client SDK to initialize synchronously.
-* In the client SDK, you may consider setting the [`StatsigOptions.fetchMode`](https://docs.statsig.com/client/reactSDK#statsig-options) to `cache-or-network`. This will make it so that when the user object has changed, the SDK will only make a network request to fetch updated values for the user if the SDK doesn’t already have cached values from the current session or a previous session. How it determines that is by looking at all of the IDs on the user object, where the cache key is a combination of them all.
 
 ## NodeJS example
 
