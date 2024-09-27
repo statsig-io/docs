@@ -6,7 +6,7 @@
  */
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif;;
 }
 
 h1,
@@ -56,9 +56,9 @@ a {
   --ifm-font-size-base: 0.95em;
   
   --ifm-menu-color: #000;
-  --ifm-menu-color-active: #0068b3;
+  --ifm-menu-color-active: #1B63D2;
   --ifm-menu-color-background-active: #0068b311;
-  --ifm-navbar-background-color: #f7f7f7;
+  --ifm-navbar-background-color: #FFFFFF;
   --ifm-menu-link-padding-vertical: 0.4rem;
 
   --ifm-transition-fast: 100ms;  
@@ -69,7 +69,7 @@ html[data-theme="dark"] {
   --ifm-color-primary-dark: #007bd2;
   /* any other colors you wish to overwrite */
 
-  --ifm-link-color: #2196f3;
+  --ifm-link-color: #1B63D2;
   --ifm-menu-color: #ccc;
   --ifm-menu-color-active: #fff;
   --ifm-menu-color-background-active: #194b7d99;
@@ -171,17 +171,14 @@ span.math.math-inline {
   font-size: 150%;
 }
 
-#consoleCTA{
-  background-color:rgb(25, 75, 125);
-  color: rgb(255, 255, 255);
+.CTA{
   font-weight: 600;
   border-radius: 5px;
   text-transform: none;
   white-space: nowrap;
-  min-width: 100px;
-  font-size: 15px;
+  font-size: 14px;
   padding: 6px 16px;
-  min-height: 32px;
+  min-height: 34px;
   cursor: pointer;
   border: 0px;
   display: inline-flex;
@@ -191,6 +188,39 @@ span.math.math-inline {
   justify-content: center;
   position: relative;
   box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+.signupCTA{
+  background-color:#1B63D2;
+  color: rgb(255, 255, 255);
+}
+
+.loginCTA{
+  background-color: transparent;
+  color: #1B63D2;;
+}
+
+.navbar__items>div:has(.DocSearch){
+  margin-left:  auto;
+  margin-right: 40px;
+}
+
+.DocSearch-Button-Key{
+  background: white !important;
+  box-shadow: none !important;
+}
+
+.DocSearch-Button{
+  min-width: 350px;;
+}
+
+.DocSearch-Button-Placeholder{
+  font-family: "Open Sans", sans-serif;
+}
+
+.col{
+  padding: 0px 60px;
 }
 
 .warning {
@@ -212,9 +242,19 @@ span.math.math-inline {
   }
 }
 
+.menu__list > .menu__list-item:first-child .menu__list-item-collapsible {
+  border-top: none; /* Remove border-top for the first element */
+  padding-top: 0; /* Adjust padding if necessary */
+}
+
 .menu__link{
   font-weight: 600;
   margin-left: 25px;
+}
+
+.navbar__logo{
+  height:25px;
+  margin-left:5px;
 }
 
 .sidebar-icon {
