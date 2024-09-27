@@ -138,16 +138,16 @@ const config: Config = {
       {
         redirects: [
           {
-            from: "client/jsClientSDK",
+            from: "/client/jsClientSDK",
             to: "/client/javascript-sdk"
           },
           {
-            from: "client/reactSDK",
-            to: "client/javascript-mono/ReactUsage"
+            from: "/client/reactSDK",
+            to: "/client/javascript-mono/ReactUsage"
           },
           {
-            from: "client/reactNativeSDK",
-            to: "client/javascript-mono/ReactNativeUsage"
+            from: "/client/reactNativeSDK",
+            to: "/client/javascript-mono/ReactNativeUsage"
           },
           {
             to: "/",
