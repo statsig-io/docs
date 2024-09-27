@@ -82,16 +82,15 @@ const sidebars: SidebarsConfig = {
             "client/javascript-mono/NextJsAppRouterUsage",
             "client/javascript-mono/NextJsPageRouterUsage",
             "server/nodejsServerSDK",
-            
             {
               type: "category",
               label: "More Client SDKs",
               items: [
-                "client/javascript-mono/ReactNativeUsage",
-                "client/javascript-mono/ExpoUsage",
                 "client/cpp-client-sdk",
                 "client/dartSDK",
                 "client/dotnetSDK",
+                "client/javascript-mono/ExpoUsage",
+                "client/javascript-mono/ReactNativeUsage",
                 "client/rokuSDK",
                 "client/unitySDK",
                 {
@@ -119,10 +118,10 @@ const sidebars: SidebarsConfig = {
                   type: "category",
                   label: "JavaScript - Maintainance Mode",
                   items: [
-                    "client/jsClientSDK",
-                    "client/reactSDK",
-                    "client/reactNativeSDK",
-                    "client/reactNativeExpoSDK",
+                    "client/deprecated/jsClientSDK",
+                    "client/deprecated/reactSDK",
+                    "client/deprecated/reactNativeSDK",
+                    "client/deprecated/reactNativeExpoSDK",
                     "client/jsLocalEvaluationSDK",
                     "client/javascript-mono/MigrationFromOldJsClient",
                     "client/javascript-mono/MigrationFromOldReact",
