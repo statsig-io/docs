@@ -6,7 +6,9 @@
  */
 
 body {
-  font-family: 'Inter', sans-serif;;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1,
@@ -237,13 +239,13 @@ span.math.math-inline {
   /* padding-bottom: 5px; */
   margin-top: 15px;
   padding-top: 15px;
+}
 
-  .menu__link{
-    color: gray;
-    font-size: 12px;
-    font-family: 'Open Sans', sans-serif;
-    margin-left: 8px;
-  }
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link{
+  color: gray;
+  font-size: 12px;
+  font-family: 'Open Sans', sans-serif;
+  margin-left: 8px;
 }
 
 .menu__list > .menu__list-item:first-child .menu__list-item-collapsible {
