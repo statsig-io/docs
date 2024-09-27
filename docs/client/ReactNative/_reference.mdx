@@ -15,7 +15,7 @@ StatsigProvider is a [react context provider](https://reactjs.org/docs/context.h
 - `children: React.ReactNode | React.ReactNode[];` - One or more child components
 - `sdkKey: string;` - A client SDK key from the Statsig Console
 - `user: StatsigUser;` - A [Statsig User](/client/concepts/user) object. Changing this will update the user and Gate values, causing a re-initialization
-- `options?: StatsigOptions;` - See [StatsigOptions](/client/reactNativeSDK#statsig-options). An optional bag of initialization properties (shared with the statsig-js sdk) for advanced configuration.
+- `options?: StatsigOptions;` - See [StatsigOptions](/client/deprecated/reactNativeSDK#statsig-options). An optional bag of initialization properties (shared with the statsig-js sdk) for advanced configuration.
 - `waitForInitialization?: boolean;` - Waits for the SDK to initialize with updated values before rendering child components
 - `initializingComponent?: React.ReactNode | React.ReactNode[];` - A loading component to render iff waitForInitialization is set to true and the SDK is initializing
 - `mountKey?: string` - A key for stable mounting/unmounting when updating the user. If this key is set and changes when the user object changes (or if it is not provided) Then the children of StatsigProvider will unmount/remount with the async update. If this key is set and does not change, then the children of StatsigProvider will continue to be mounted, and it will trigger a rerender after updateUser completes.
