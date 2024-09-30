@@ -24,9 +24,9 @@ When running an experiment, it is common you are trying to test an explicit hypo
 
 **Primary Metrics** are the metrics you are looking to influence directly with your experiment. **Secondary metrics** are the set of metrics you may want to monitor or ensure don't regress with your test, but aren't directly trying to move. 
 
-Configuring the Scorecard is optional, but is especially helpful to ensure other members of your team viewing your experiment have context on the hypothesis being tested and how success is being measured. Additionally, all metrics added to the Scorecard are pre-computed daily, as well as eligible for more advanced statistical treatments like [CUPED](https://docs.statsig.com/stats-engine/methodologies/cuped) and [Sequential Testing](https://docs.statsig.com/experiments-plus/sequential-testing#what-is-sequential-testing).
+Configuring the Scorecard is optional, but is especially helpful to ensure other members of your team viewing your experiment have context on the hypothesis being tested and how success is being measured. Additionally, all metrics added to the Scorecard are pre-computed daily, as well as eligible for more advanced statistical treatments like [CUPED](/stats-engine/methodologies/cuped) and [Sequential Testing](/experiments-plus/sequential-testing#what-is-sequential-testing).
 
-Read more about best practices for configuring your Scorecard [here](https://docs.statsig.com/experiments-plus/read-results#reading-experiment-results).  
+Read more about best practices for configuring your Scorecard [here](/experiments-plus/read-results#reading-experiment-results).  
 
 
 ### Configure Allocation and Targeting
@@ -44,7 +44,7 @@ If your targeting criteria is relatively straightforward, creating this criteria
 By default, no targeting criteria is selected and your experiment will use all allocated users (up to the Allocation % specified in the previous step) within either your exposed userbase or within the Layer you have selected. 
 
 ### Configure Your Groups and Parameters
-When configuring your Groups and Parameters, we recommend adding your test parameter(s) first. Parameters are what actually control the different experiment variants in code. Enter the values that the experiment parameter will take for each variant. Read more about Groups vs. Parameters [here](https://docs.statsig.com/experiments-plus/getting-group). Please note that you cannot start your experiment without adding at least one parameter. 
+When configuring your Groups and Parameters, we recommend adding your test parameter(s) first. Parameters are what actually control the different experiment variants in code. Enter the values that the experiment parameter will take for each variant. Read more about Groups vs. Parameters [here](/experiments-plus/getting-group). Please note that you cannot start your experiment without adding at least one parameter. 
 
 <img width="1497" alt="Screen Shot 2022-11-23 at 10 42 05 AM" src="https://user-images.githubusercontent.com/101903926/203623897-5ae52609-80cc-4927-a64b-5e3af0005fd0.png"/>
 

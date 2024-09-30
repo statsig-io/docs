@@ -12,7 +12,7 @@ Statsig offers 20+ SDKs, with both client-side and server-side SDK options. At t
 ## Client vs. Server-side SDKs
 If you’ve decided to use Statsig’s SDKs, the next step is to decide how best to integrate Statsig with your client & server architecture. 
 
-Statsig SDKs come in two main variants, **[Client SDKs](https://docs.statsig.com/client/introduction)** and **[Server SDKs](https://docs.statsig.com/server/introduction)**. These two sets of SDKs serve different purposes and are used in different parts of the feature flagging and experimentation process. The following highlights some of the key differences between them:
+Statsig SDKs come in two main variants, **[Client SDKs](/client/introduction)** and **[Server SDKs](/server/introduction)**. These two sets of SDKs serve different purposes and are used in different parts of the feature flagging and experimentation process. The following highlights some of the key differences between them:
 
 ||Server| Client |
 |--|--|--|

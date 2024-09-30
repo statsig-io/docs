@@ -5,6 +5,6 @@ StatsigOptions is a common configuration parameter across Statsig SDKs. For the 
 
 You can also configure:
 
-- The environment (see [using environments](https://docs.statsig.com/guides/using-environments)) via `setEnvironmentTier("production" | "staging" | "development")`
+- The environment (see [using environments](/guides/using-environments)) via `setEnvironmentTier("production" | "staging" | "development")`
 - The event queue size (How many events to track before they are sent to Statsig) via `setEventQueueSize(int $size)`.
 - The freshness (how old in milliseconds) config definitions are allowed to be before a network request is issued to refetch them.  Default 1 minute. Public `config_freshness_threshold_ms` member on `StatsigOptions`

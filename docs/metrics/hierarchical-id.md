@@ -19,6 +19,6 @@ In the Stats Engine, we apply the delta method to calculate variance and confide
 - For mean metrics, we store a value indicating the number of observations per **exposed** unit in the **records** column of the staging data. This serves as the denominator or cluster-size value for delta calculations.
 - For general ratio metrics, we track the two component metrics (the ratio and the denominator) as independent metrics and combine them during the pulse analysis to derive a single metric from them.
 
-For details on how we apply the delta method, visit: [Statsig - Delta Method Methodology](https://docs.statsig.com/stats-engine/methodologies/delta-method).
+For details on how we apply the delta method, visit: [Statsig - Delta Method Methodology](/stats-engine/methodologies/delta-method).
 
 This logic also applies to analyzing event-level outcomes, such as average purchase value, where each session represents a leaf, but randomization occurs at the user level.

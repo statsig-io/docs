@@ -14,7 +14,7 @@ A tooltip with key statistics and deeper information is shown if you hover over 
 - **Units**: The number of distinct units included in the metric. E.g.: Distinct users for user_id experiments, devices for stable_id experiments, etc.
 - **Mean**: The average per-unit value of the metric for each group.
 - **Total**: The total metric value across all units in the group, over the time period of the analysis.
-- **p-Value**: The probability that such an extreme difference can arise by random chance when the experiment or test actually has no effect. A low p-value implies the observed difference is unlikely due to random chance. In hypothesis testing, a p-value threshold is used to determine which results are due to a real effect and which are plausibly due to random chance. ([p-value calculation](https://docs.statsig.com/stats-engine/p-value))
+- **p-Value**: The probability that such an extreme difference can arise by random chance when the experiment or test actually has no effect. A low p-value implies the observed difference is unlikely due to random chance. In hypothesis testing, a p-value threshold is used to determine which results are due to a real effect and which are plausibly due to random chance. ([p-value calculation](/stats-engine/p-value))
 
 The exact calculation for each of the above depends on the metric type: 
 
@@ -57,7 +57,7 @@ In this view, select and drag as needed to zoom-in on different time ranges.  Th
 
 ### Raw Data
 
-This view shows the group level statistics needed to compute the metric deltas and confidence interval.  Includes Units, Mean, and Total (explained above), as well as the Standard Error of the mean (Std Err).  Details on the statistical calculations are available [here](https://docs.statsig.com/stats-engine).
+This view shows the group level statistics needed to compute the metric deltas and confidence interval.  Includes Units, Mean, and Total (explained above), as well as the Standard Error of the mean (Std Err).  Details on the statistical calculations are available [here](/stats-engine).
 
 ### Impact
 
@@ -68,7 +68,7 @@ This view shows the group level statistics needed to compute the metric deltas a
 - **Topline Impact**: The measured effect that experiment is having on the overall topline metric each day, on average.  Computed on a daily basis and averaged across days in the analysis window.  The absolute value is the net daily increase or decrease in the metric, while the relative value is the daily percentage change.
 - **Projected Launch Impact**: An estimate of the daily topline impact we expect to see if a decision is made and the test group is launched to all users.  This takes into account the layer allocation and the size of the test group.  Assumes the targeting gate (if there is one) remains the same after launch.
 
-See [here](https://docs.statsig.com/stats-engine/topline-impact) for details on the exact calculation for topline and projected impact.
+See [here](/stats-engine/topline-impact) for details on the exact calculation for topline and projected impact.
 
 **FAQs about topline impact**
 
