@@ -225,8 +225,14 @@ span.math.math-inline {
   font-family: "Open Sans", sans-serif;
 }
 
-.col{
-  padding: 0px 60px;
+.col {
+  padding: 0px 16px;
+}
+
+@media (min-width: 768px) {
+  .col {
+    padding: 0px 60px;
+  }
 }
 
 .warning {
