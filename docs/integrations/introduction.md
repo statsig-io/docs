@@ -3,7 +3,7 @@ title: Introduction
 slug: /integrations/introduction
 ---
 
-_For Warehouse Integrations, go to this [page](https://docs.statsig.com/data-warehouse-ingestion/introduction)._
+_For Warehouse Integrations, go to this [page](/data-warehouse-ingestion/introduction)._
 
 The following data connectors are available for use now, and we're adding more every week:
 

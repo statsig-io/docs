@@ -47,7 +47,7 @@ In this hypothetical example - "Checkouts" is the metric you want to move, but i
 
 
 ## Metric Insights
-This view lets you pick a metric and see all experiments and feature rollouts that impact this metric. [Learn more](https://docs.statsig.com/insights).
+This view lets you pick a metric and see all experiments and feature rollouts that impact this metric. [Learn more](/insights).
 
 ![image](https://github.com/statsig-io/docs/assets/31516123/6f7daa5e-adf3-4e3c-a9dd-53f7cb8e5498)
 

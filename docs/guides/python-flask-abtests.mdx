@@ -5,7 +5,7 @@ title: Run an A/B Test with Python Flask
 
 Python Flask, a popular lightweight framework, is not only user-friendly but also robust enough for consumer-facing applications. One of the exciting capabilities it offers is the ability to conduct A/B tests efficiently. In this guide, we'll demonstrate how you can A/B test with Python Flask using Statsig's free tier, an essential tool for dynamic web application development.
 
-Today we'll use our [Python Server SDK](https://docs.statsig.com/server/pythonSDK) - which works well with Flask out-of-the-box given Flask's limited abstraction on top of Python. Our goal today is to create a website path or "route" in Flask that returns different results based on who the user_id - effectively creating an A/B test. 
+Today we'll use our [Python Server SDK](/server/pythonSDK) - which works well with Flask out-of-the-box given Flask's limited abstraction on top of Python. Our goal today is to create a website path or "route" in Flask that returns different results based on who the user_id - effectively creating an A/B test. 
 
 ## Step 1: Initial Setup for A/B Testing with Flask and Statsig
 
@@ -17,7 +17,7 @@ cd Flask-Flags
 touch app.py
 ```
 
-app.py is the file we'll write all of our code in. Next, we should install the Flask and Statsig Python packages if you haven't already. Note, Statsig requires you to use Python 3; for more information, take a look at our [Python SDK page.](https://docs.statsig.com/server/pythonSDK)
+app.py is the file we'll write all of our code in. Next, we should install the Flask and Statsig Python packages if you haven't already. Note, Statsig requires you to use Python 3; for more information, take a look at our [Python SDK page.](/server/pythonSDK)
 
 ```
 pip3 install Statsig, Flask

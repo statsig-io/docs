@@ -22,7 +22,7 @@ across sessions and devices. It doesn't depend on client-side cookies, which may
 ---
 **Learn More**
 
-You can supply a user ID as part of the ``StatsigUser`` object when you implement an feature gate or experiment on Statsig. See [Statsig Docs](https://docs.statsig.com/client/concepts/user) to learn more.   
+You can supply a user ID as part of the ``StatsigUser`` object when you implement an feature gate or experiment on Statsig. See [Statsig Docs](/client/concepts/user) to learn more.   
 
 ---
 

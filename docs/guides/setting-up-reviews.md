@@ -44,7 +44,7 @@ For (a), see section **Turning on Change Reviews for a Project** to turn on proj
 
 
 ### Configuring Review Settings for Different Environments 
-Many teams build, test, and launch new features and experiments across multiple development environments. Statsig makes creating and using environments in feature launches easy via our [Environments support](https://docs.statsig.com/guides/using-environments#configuring-environments). 
+Many teams build, test, and launch new features and experiments across multiple development environments. Statsig makes creating and using environments in feature launches easy via our [Environments support](/guides/using-environments#configuring-environments). 
 
 You can also configure which environments require reviews via your **Project Settings**. To do so, go to **Project Settings** --> **Keys & Environments**  --> tap **Edit** on **Environments**. 
 

@@ -56,7 +56,7 @@ There are several types of dashboard widgets you can add or create including:
 
 ## Exploring your Dashboard
 
-### Edit Date Ranges[](https://docs.statsig.com/product-analytics/dashboards#dashboard-date-ranges)
+### Edit Date Ranges[](/product-analytics/dashboards#dashboard-date-ranges)
 
 By default, the charts and widgets on a dashboard are synced with the date range set for the entire dashboard. To update this default date range, click the pencil icon in the top right corner of the dashboard. In the settings that appear, you can modify the dashboard's title, description, and "Default Date Lookback Range." This selection will determine the date range that is automatically applied each time you open the dashboard. Choosing the "Chart Default" option allows each chart to revert to the date range originally set when it was first added to the dashboard, offering greater customization to your dashboard.
 
@@ -118,7 +118,7 @@ Dashboard templates are a great way to reduce the time to insights. Statsig comp
 - B2B SaaS Topline Metrics
     - Input a key feature event and user subscription events to monitor product usage, user retention and subscription conversion rates over time
 - Web Analytics
-    - Available with Autocapture, track essential web metrics like page views, clicks, and sessions duration. See more on Autocapture [here](https://docs.statsig.com/guides/sidecar-experiments/measuring-experiments#using-autocapture)
+    - Available with Autocapture, track essential web metrics like page views, clicks, and sessions duration. See more on Autocapture [here](/guides/sidecar-experiments/measuring-experiments#using-autocapture)
 - Create from Gate or Experiment
     - Input your Gate or Experiment of interest to generate a focused dashboard with related monitoring metrics
 - Create from Tag
