@@ -1,6 +1,7 @@
 ---
 sidebar_label: Commonly Used Features
 title: Commonly Used Features on Statsig for Enterprise Customers
+displayed_sidebar: cloud
 ---
 
 # Commonly Used Features on Statsig for Enterprise Customers

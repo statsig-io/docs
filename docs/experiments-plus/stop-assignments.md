@@ -1,7 +1,7 @@
 ---
 title: Stop Assignments
 sidebar_label: Stop Assignments
-slug: /experiments-plus/stop-assignment
+slug: /experiments-plus/stop-assignments
 ---
 
 
@@ -15,7 +15,7 @@ With the Stop Assignment option, you can do exactly that. You can stop assignmen
 You will need to configure [Persistent Assignment](https://docs.statsig.com/server/concepts/persistent_assignment) for this feature to work.
 :::
 
-![Stop Assignment](/img/pause_assignment.png)
+![Stop Assignment](/img/stop_assignment.png)
 
 
 Things you should keep in mind when stopping assignments for an experiment:

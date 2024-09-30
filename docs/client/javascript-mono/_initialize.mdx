@@ -5,18 +5,25 @@ import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
 <Tabs
   defaultValue="npm"
-  groupId="js-client-approach"
+  groupId="js-client-init-approach"
   values={[
-    {label: 'NPM', value: 'npm'},
-    {label: 'CDN / <script>', value: 'script'}, 
+    {label: 'CDN / <script>', value: 'script'},
+    {label: 'javascript', value: 'npm'},
+    {label: 'yarn', value: 'yarn'},
   ]}>
 
   <TabItem value="script">
 
-<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-initialize-html.tsx" />
+If you are using the CDN / `<script>` tag, simply adding `?apikey=[YOUR_CLIENT_KEY]` will automatically initialize the SDK, start logging autocapture events, and record session replays.
+  </TabItem>
+
+  <TabItem value="npm">
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-initialize.tsx" />
 
   </TabItem>
-  <TabItem value="npm">
+
+  <TabItem value="yarn">
 
 <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-initialize.tsx" />
 

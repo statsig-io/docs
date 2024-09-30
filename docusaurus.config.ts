@@ -1,8 +1,8 @@
-import { themes as prismThemes } from "prism-react-renderer";
-import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
-import remarkMath from "remark-math";
+import type { Config } from "@docusaurus/types";
+import { themes as prismThemes } from "prism-react-renderer";
 import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
 
 const config: Config = {
   title: "Statsig Docs",
@@ -97,6 +97,20 @@ const config: Config = {
                 innerHTML: `window.statsigTier="${tier}"`,
               },
               {
+                tagName: 'link',
+                attributes: {
+                  rel: 'stylesheet',
+                  href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+                },
+              },
+              {
+                tagName: 'link',
+                attributes: {
+                  rel: 'stylesheet',
+                  href: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap',
+                },
+              },
+              {
                 tagName: "script",
                 attributes: {
                   src: "/js/rapidoc-min.js",
@@ -124,9 +138,35 @@ const config: Config = {
       {
         redirects: [
           {
-            to: "/guides/shopify-ab-test",
-            from: "/guides/first-shopify-abtest",
+            from: "/client/jsClientSDK",
+            to: "/client/javascript-sdk"
           },
+          {
+            from: "/client/reactSDK",
+            to: "/client/javascript-sdk/react"
+          },
+          {
+            from: "/client/reactNativeSDK",
+            to: "/client/javascript-sdk/react-native"
+          },
+          {
+            from: "/client/reactNativeExpoSDK",
+            to: "/client/javascript-sdk/expo"
+          },
+          {
+            to: "/",
+            from: "/category/walkthrough-guides"
+          },
+          {
+            to: "/client/javascript-sdk/next-js",
+            from: "/guides/nextjs-feature-flags",
+          },
+
+          {
+            to: "/client/javascript-sdk/next-js",
+            from: "/guides/nextjs-page-router-feature-flags",
+          },
+
           {
             to: "/product-analytics/drilldown",
             from: "/mex/drilldown",
@@ -227,6 +267,10 @@ const config: Config = {
             to: "/product-analytics/overview",
             from: "/metrics/events-explorer",
           },
+          {
+            to: "/experiments-plus/stop-assignments",
+            from: "/experiments-plus/pause-assignment",
+          },
         ],
       },
     ],
@@ -240,16 +284,16 @@ const config: Config = {
     docs: {
       sidebar: {
         autoCollapseCategories: true,
-      }
+      },
     },
     algolia: {
       // The application ID provided by Algolia
-      appId: 'JOWHDNMZRN',
+      appId: "JOWHDNMZRN",
 
       // Public API key: it is safe to commit it
-      apiKey: '2a538120ca7db3411698786731f3c2f6',
+      apiKey: "2a538120ca7db3411698786731f3c2f6",
 
-      indexName: 'statsig',
+      indexName: "statsig",
 
       // Optional: see doc section below
       // contextualSearch: true,
@@ -276,16 +320,23 @@ const config: Config = {
       title: "",
       logo: {
         alt: "Statsig",
-        src: "img/logo.svg",
+        src: "img/logo-new.svg",
         srcDark: "img/logo_white.svg",
         href: "/",
       },
       items: [
         {
+          type: 'search',
+        },
+        {
           type: "html",
-          position: "right",
           value:
-            "<button id=\"consoleCTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus(); window.statsig.logEvent({}, 'console_button_click', window.location.pathname, {referrer: document && document.referrer,});\">Get Started</button>",
+            "<button class=\"loginCTA CTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus();\">Log In</button>",
+        },
+        {
+          type: "html",
+          value:
+            "<button class=\"signupCTA CTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus();\">Get Started</button>",
         },
       ],
     },
