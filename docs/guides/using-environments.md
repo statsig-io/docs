@@ -3,84 +3,112 @@ sidebar_label: Environments
 title: Using Environments for Conditional Evaluation outside of Production
 ---
 
-All of our SDKs allow you to set the environment tier your app is currently in during initialization. 
+All of Statsig’s SDKs allow you to set the environment tier your app is running in during initialization. This lets you evaluate feature gates, dynamic configs, and experiments with different values across environments, such as **Development**, **Staging**, and **Production**.
 
-If you'd like to evaluate feature gates, dynamic configs, and/or experiments to different values in lower environments vs. Production, you simply need to set the correct environment in your code when initializing and configure the corresponding Feature Gate rules in the Statsig Console to evaluate differently for a given environment tier. The sections below detail how to do this. 
+To apply different rules in lower environments vs. Production, set the correct environment in your code when initializing the SDK, and configure the corresponding rules in the Statsig Console to evaluate differently for each environment. Below are detailed steps on how to achieve this.
+
+---
 
 ## SDK Usage
 
-There are two main levers for setting environment- 
-1. **Environment-specific SDK keys**- used to control which rules are downloaded to a given SDK 
-2. **Environment tier at SDK initialization**- used for evaluating rules   
+There are two primary ways to configure environments in Statsig SDKs:
+1. **Environment-specific SDK keys**: Used to control which rules are downloaded to a given SDK based on the environment.
+2. **Environment tier at SDK initialization**: Used to evaluate rules based on the current environment.
 
 ### Environment-specific SDK Keys
-Configuring an environment-specific SDK key enables you to control which rule-sets are sent to a given SDK based on environment. For example, if an SDK is initialized with an API key set to development, it will not know about any rules that have been set for any other environment. For more information, see the [Per-Environment API keys section](#per-environment-api-keys) further down this page.
 
-### Environment Tier Parameter 
-It's important to note that SDK keys can correspond to multiple environments, so you need to set the environment tier on SDK initialization explicitly, even if you are using an environment-specific SDK key. You can set the environment via the `StatsigOptions` parameter.  All SDKs accept an SDK key and an (optional) `StatsigOptions` dictionary of parameters.
+Configuring an environment-specific SDK key allows you to control which rule-sets are sent to a given SDK based on the environment. For instance, if an SDK is initialized with a **development** API key, it will only download rules for the development environment and will not have access to rules for other environments.
 
-One of these options is the `environment` parameter, which has a `tier` field. The `tier` can be any of your pre-configured environments (see below for how to configure new environments).  If the environment tier is unset, all checks and event logs are considered "production" data.
+For more information, see the [Per-Environment API keys section](#per-environment-api-keys) further down this page.
 
-Please note, that per-environment API keys do not affect the evaluation context of feature gates, dynamic configs or experiments: they only restrict which rules the SDK can download. 
+### Environment Tier Parameter
 
-For this example, lets say we are setting the parameter for our development environment/app.
+While SDK keys can correspond to multiple environments, you still need to explicitly set the environment tier during SDK initialization. You can do this via the `StatsigOptions` parameter. All SDKs accept an SDK key and an optional `StatsigOptions` dictionary of parameters.
 
-Client SDKs take an SDK Key, User, and StatsigOptions parameter:
+One of these options is the `environment` parameter, which has a `tier` field. The `tier` can be any of your pre-configured environments (more on how to configure environments later). If the environment tier is left unset, all checks and event logs are treated as "production" data by default.
 
-```js
-await statsig.initialize(<SDK_KEY>, user, {environment: {tier: 'development'}})
-```
+> **Important**: Per-environment API keys only restrict which rules the SDK can download; they do not affect the evaluation context of feature gates, dynamic configs, or experiments.
 
-Server SDKs take just an SDK Key and StatsigOptions parameter:
+#### Example: Setting the Environment Tier
 
-```js
-await statsig.initialize(<SDK_KEY>, {environment: {tier: 'development'}})
-```
+In this example, we set the environment tier to `development` for both Client SDKs and Server SDKs.
 
-These examples in js and node illustrate the general pattern - refer to your language's specific SDK documentation for more information.
+- **Client SDKs**: SDK Key, User, and StatsigOptions are passed.
+  ```js
+  await statsig.initialize(<SDK_KEY>, user, {environment: {tier: 'development'}});
+  ```
 
-## Using Environments in Feature Gates 
+- **Server SDKs**: SDK Key and StatsigOptions are passed.
+  ```js
+  await statsig.initialize(<SDK_KEY>, {environment: {tier: 'development'}});
+  ```
 
-Head on over to the Console and create a new Feature Gate.  For this example, I'll call mine "development mode." It will only pass for our development apps.
+These JavaScript and Node.js examples show the general pattern. For more details on how to apply this in other languages, refer to your specific SDK documentation.
 
-<img width="486" alt="Screen Shot 2023-02-26 at 3 10 09 PM" src="https://user-images.githubusercontent.com/101903926/221443079-59d81448-d070-4da0-a010-f038016a6b09.png"/>
+---
 
-At rule creation, you will have the opportunity to configure the target environments for that rule. Check the **Specify Environments** checkbox and choose which environments you want your rule to be enabled for. By default unless otherwise specified, a rule is enabled for ALL environments. 
+## Using Environments in Feature Gates
 
- <img width="490" alt="Screen Shot 2023-02-26 at 3 12 31 PM" src="https://user-images.githubusercontent.com/101903926/221443202-de70eab5-68d5-4173-8f6d-7c680762212e.png"/>
+To use environments with feature gates:
 
-Press "Save" and that's it! You can now see which environment(s) your rule is enabled for inline, directly below the rule name. 
+1. **Create a New Feature Gate**  
+   Go to the Statsig Console and create a new Feature Gate. For this example, we'll name it **"development mode"** to ensure it only passes for development environments.
 
-<img width="1497" alt="Screen Shot 2023-02-26 at 3 14 59 PM" src="https://user-images.githubusercontent.com/101903926/221443319-597f1e1e-facc-41a0-8b7a-dcff0fec4405.png"/>
+   ![Feature Gate Creation](https://user-images.githubusercontent.com/101903926/221443079-59d81448-d070-4da0-a010-f038016a6b09.png)
 
-You can also easily filter rule-sets by environment via environment filters in the upper right-hand corner of your rule-set within your Feature Gate. 
+2. **Configure Target Environments**  
+   During rule creation, select the **Specify Environments** checkbox and choose which environments should be enabled for this rule. By default, rules apply to **all environments** unless specified otherwise.
 
-<img width="1490" alt="Screen Shot 2023-02-26 at 3 19 04 PM" src="https://user-images.githubusercontent.com/101903926/221443466-92616326-bdb3-4025-99de-9fa3fd2af558.png"/>
+   ![Specify Environments](https://user-images.githubusercontent.com/101903926/221443202-de70eab5-68d5-4173-8f6d-7c680762212e.png)
 
-A rule's target environment(s) can be edited at any time. To do so, tap the "..." on the rule. Then select "Edit Rule" and specify any environment changes you want to make. 
+3. **Save the Rule**  
+   After saving, you’ll see which environments your rule applies to directly below the rule name.
 
+   ![Rule Environments](https://user-images.githubusercontent.com/101903926/221443319-597f1e1e-facc-41a0-8b7a-dcff0fec4405.png)
 
-<img width="1498" alt="Screen Shot 2023-02-26 at 3 16 42 PM" src="https://user-images.githubusercontent.com/101903926/221443425-c8a5e4fe-f49a-47f9-96a7-568ef2f2dd5d.png"/>
+4. **Filter by Environment**  
+   You can filter rule-sets by environment using the environment filters in the upper right-hand corner of your Feature Gate rule-set.
 
-## Configuring Environments  
+   ![Filter by Environment](https://user-images.githubusercontent.com/101903926/221443466-92616326-bdb3-4025-99de-9fa3fd2af558.png)
 
-By default, your Statsig Project will have three environments configured- Development, Staging, and Production. If you would like to add more environments or rename these default environments you can do so via Project Settings. The only environment you cannot modify or delete is Production, which must exist within every Project. 
+5. **Edit the Environment at Any Time**  
+   To modify the environments for a rule, click the **...** button on the rule, select **Edit Rule**, and update the environment settings.
 
-To add or edit environments, go to **Project Settings** -> **Environments & Keys**
+   ![Edit Rule](https://user-images.githubusercontent.com/101903926/221443425-c8a5e4fe-f49a-47f9-96a7-568ef2f2dd5d.png)
 
-<img width="1549" alt="Screen Shot 2023-02-26 at 5 08 55 PM" src="https://user-images.githubusercontent.com/101903926/221449870-797a2f0f-9310-48ce-b299-d4aaf9bd61fb.png"/>
+---
 
-Tap **Edit** to configure your environments, as well as reorder the hierarchy of environments via drag-and-drop. Note- the order of environments has no impact on any configured rule logic within your Feature Gate, but is rather meant as a tool to convey to your teams the rollout order/ relative hierarchy between environments. 
+## Configuring Environments
 
-<img width="489" alt="Screen Shot 2023-02-26 at 5 09 38 PM" src="https://user-images.githubusercontent.com/101903926/221449939-0ba6e53f-bad1-4600-ac99-1833d55230be.png"/>
+By default, each Statsig project has three environments: **Development**, **Staging**, and **Production**. You can add more environments or rename these defaults, but **Production** must always exist and cannot be deleted or modified.
 
-### Per-Environment API keys
+### How to Add or Edit Environments
 
-For privacy and security reasons, you can also configure per-environment API keys via this tab. This means that any SDK initialized with the API keys generated here, will only see the rules for which it has access. For example, if an SDK it initialized with an API key set to development, it will not know about any rules that have been set for any other environment.
+1. **Go to Project Settings**  
+   Navigate to **Project Settings** -> **Environments & Keys** in the Statsig Console.
 
-To generate a new, environment-specific key tap **Generate New Key** and specify the target environments. Please note that the three default environments that are built into all new Projects on Statsig share the same server and client-side API keys. 
+   ![Project Settings](https://user-images.githubusercontent.com/101903926/221449870-797a2f0f-9310-48ce-b299-d4aaf9bd61fb.png)
 
-<img width="1534" alt="Screen Shot 2023-02-26 at 5 15 29 PM" src="https://user-images.githubusercontent.com/101903926/221450416-44348e77-631a-4ae1-98d1-00d5a4c282ad.png"/>
+2. **Edit Environment Settings**  
+   Tap **Edit** to add new environments or reorder existing ones via drag-and-drop. Note that the environment order does not affect feature gate logic but serves to convey rollout hierarchy to your team.
 
+   ![Edit Environments](https://user-images.githubusercontent.com/101903926/221449939-0ba6e53f-bad1-4600-ac99-1833d55230be.png)
 
+---
+
+## Per-Environment API Keys
+
+For security and privacy reasons, you can generate per-environment API keys to ensure that SDKs only have access to rules for specific environments. For example, an SDK initialized with a **development** API key will only see rules for the development environment.
+
+### Generating a New API Key
+
+1. **Generate API Key**  
+   To generate a new API key for a specific environment, tap **Generate New Key** in the **Environments & Keys** section, and specify the target environments.
+
+2. **Default Keys**  
+   Note that the three default environments (Development, Staging, and Production) share the same server and client-side API keys in new projects.
+
+   ![Generate API Key](https://user-images.githubusercontent.com/101903926/221450416-44348e77-631a-4ae1-98d1-00d5a4c282ad.png)
+
+---
 
