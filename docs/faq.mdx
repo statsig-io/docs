@@ -5,9 +5,8 @@ sidebar_label: FAQ
 ---
 
 For additional guidance, explore this page, where we've compiled answers to common questions. We'll continue to update this list and integrate relevant answers into the documentation as needed.
----
 
-# SDKs and APIs
+## SDKs and APIs
 
 ## How does bucketing within the Statsig SDKs work?
 
@@ -61,7 +60,7 @@ In the first case, adding a new color (e.g., "GREEN") requires a code change and
 
 If Statsig is executing in a **short-lived process** (e.g., a script or edge worker environment), it’s likely that the process exits before the event queue is flushed. To ensure all events are sent to Statsig, call `statsig.flush()` before the process exits.
 
-Some edge providers offer utilities to ensure events are flushed without blocking the response to the client. [Learn more](https://docs.statsig.com/server/nodejsServerSDK#flushing-events).
+Some edge providers offer utilities to ensure events are flushed without blocking the response to the client. [Learn more](/server/nodejsServerSDK#flushing-events).
 
 Additionally, if a specific custom event is missing, check whether its name is valid. Statsig drops events matching this regex or containing invalid characters: `"\\[\]{}<>#=;&$%|\u0000\n\r"`.
 
@@ -89,13 +88,13 @@ Yes. For example:
 
 Statsig primarily uses a **two-sample Z-test** for most experiments and **Welch’s t-test** for smaller samples. This combination is based on extensive literature research and simulations, ensuring trustworthy and reliable results.
 
-For more details, see how we [calculate p-values](https://docs.statsig.com/stats-engine/p-value).
+For more details, see how we [calculate p-values](/stats-engine/p-value).
 
 ---
 
 ## How does Statsig handle low sample size?
 
-For small sample sizes, Statsig uses [Welch's t-test](https://docs.statsig.com/stats-engine/p-value#welchs-t-test) to handle unequal sample sizes or variances while maintaining low false positive rates.
+For small sample sizes, Statsig uses [Welch's t-test](/stats-engine/p-value#welchs-t-test) to handle unequal sample sizes or variances while maintaining low false positive rates.
 
 We also offer:
 - **CUPED**: A powerful tool that leverages pre-experiment data to reduce variance and increase experiment velocity.
@@ -105,13 +104,13 @@ We also offer:
 
 ## How does Statsig deal with ‘the peeking problem’?
 
-Statsig uses **mSPRT** for [sequential testing](https://docs.statsig.com/experiments-plus/sequential-testing). This method dynamically adjusts the confidence interval based on the variance and sample size, ensuring a controlled false positive rate while detecting significant effects early.
+Statsig uses **mSPRT** for [sequential testing](/experiments-plus/sequential-testing). This method dynamically adjusts the confidence interval based on the variance and sample size, ensuring a controlled false positive rate while detecting significant effects early.
 
 ---
 
 ## What is CUPED?
 
-[CUPED](https://docs.statsig.com/stats-engine/methodologies/cuped) stands for **Controlled-experiment Using Pre-Experiment Data**. It’s a technique that reduces the variance of estimates by using pre-experiment data as a covariate in the analysis. This boosts the speed and accuracy of experiments.
+[CUPED](/stats-engine/methodologies/cuped) stands for **Controlled-experiment Using Pre-Experiment Data**. It’s a technique that reduces the variance of estimates by using pre-experiment data as a covariate in the analysis. This boosts the speed and accuracy of experiments.
 
 ---
 
@@ -142,7 +141,7 @@ Yes! When setting up an experiment, you can use a **Feature Flag** to target use
 
 ![iOS Targeting Example](https://user-images.githubusercontent.com/31516123/229173350-a1795b5a-bdef-4c58-afb1-36806dc38f1a.png)
 
-Learn more about working with feature flags [here](https://docs.statsig.com/feature-flags/working-with).
+Learn more about working with feature flags [here](/feature-flags/working-with).
 
 ---
 
@@ -167,7 +166,7 @@ To manage billable event volume:
 
 ![Event Usage](https://user-images.githubusercontent.com/31516123/218547079-ba33751c-43f0-4ff7-8733-501711596333.png)
 
-For more details, check the [Console API](https://docs.statsig.com/console-api/usage-billing) for downloading usage data.
+For more details, check the [Console API](/console-api/usage-billing) for downloading usage data.
 
 ---
 
