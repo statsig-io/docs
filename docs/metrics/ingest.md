@@ -3,22 +3,22 @@ title: Ingesting Metrics
 sidebar_label: Ingesting Metrics
 slug: /metrics/ingest
 ---
-## Ingesting [Metrics](https://docs.statsig.com/metrics)
+## Ingesting [Metrics](/metrics)
 
 Statsig allows you to ingest raw events that are computed into metrics in the following ways:
 
-- Using either our [client](https://docs.statsig.com/client/introduction) or [server](https://docs.statsig.com/server/introduction) SDKs to log events to Statsig.
-- Ingesting metrics from your data tools such as [Segment](https://docs.statsig.com/integrations/data-connectors/segment), [mParticle](https://docs.statsig.com/integrations/data-connectors/mparticle), [RudderStack](https://docs.statsig.com/integrations/data-connectors/rudderstack) and [Census](https://docs.statsig.com/integrations/data-connectors/census)
--  Logging metrics using Statsig's [HTTP API](https://docs.statsig.com/http-api)
+- Using either our [client](/client/introduction) or [server](/server/introduction) SDKs to log events to Statsig.
+- Ingesting metrics from your data tools such as [Segment](/integrations/data-connectors/segment), [mParticle](/integrations/data-connectors/mparticle), [RudderStack](/integrations/data-connectors/rudderstack) and [Census](/integrations/data-connectors/census)
+-  Logging metrics using Statsig's [HTTP API](/http-api)
 
 ## Ingesting Precomputed Metrics
 
 Statsig allows you to ingest any of your precomputed product and business metrics in the following ways:
 
-- Importing metrics from a data warehouse like [Snowflake](https://docs.statsig.com/integrations/data-imports/snowflake), [BigQuery](https://docs.statsig.com/integrations/data-imports/bigquery) or [Redshift](https://docs.statsig.com/integrations/data-imports/redshift)
--  Logging precomputed metrics using Statsig's [HTTP API](https://docs.statsig.com/http-api)
+- Importing metrics from a data warehouse like [Snowflake](/integrations/data-imports/snowflake), [BigQuery](/integrations/data-imports/bigquery) or [Redshift](/integrations/data-imports/redshift)
+-  Logging precomputed metrics using Statsig's [HTTP API](/http-api)
 
-### Logging Precomputed Metrics using the [HTTP API](https://docs.statsig.com/http-api)
+### Logging Precomputed Metrics using the [HTTP API](/http-api)
 
 You can log one or more precomputed metrics with Statsig using the `log_custom_metric` API as shown below. The API call requires an **ID type** and should either (a) include a **metric_value**, or (b) provide a numerator and denominator of the metrics (if it's a ratio metric).
 

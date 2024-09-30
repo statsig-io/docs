@@ -72,7 +72,7 @@ Make a copy of the [POC tracker template](https://docs.google.com/spreadsheets/d
     
 - What parts of our tech stack will host the solution and can Statsig support those services?
     
-    Statsig is a full-stack solution so we can cover your client, server, and mobile applications in most cases. Ensure the systems you are implementing internally are supported by Statsig. We also [integrate](https://docs.statsig.com/integrations/introduction) with a lot of internal tools that customers are already using today!
+    Statsig is a full-stack solution so we can cover your client, server, and mobile applications in most cases. Ensure the systems you are implementing internally are supported by Statsig. We also [integrate](/integrations/introduction) with a lot of internal tools that customers are already using today!
     
 - Define the **timeline** for the POC
     
@@ -98,18 +98,18 @@ Make a copy of the [POC tracker template](https://docs.google.com/spreadsheets/d
     
     We pride ourselves in providing [excellent customer support](https://statsig.com/blog/why-people-love-statsig-customer-support). At Statsig there is no formal ticketing process for support, instead the [slack community](https://statsig.com/community) gives you access to the engineers & data scientists who build the product. This format not only allows for fast response times, but also increases the likelihood of productive discourse and community engagement. We get some of our best feedback there!
     
-    Since you’re already here, [our documentation](https://docs.statsig.com) makes getting information on implementation easy so feel free to start exploring! The search function is also particularly useful.
+    Since you’re already here, [our documentation]() makes getting information on implementation easy so feel free to start exploring! The search function is also particularly useful.
     
     Find some suggested starting points for each role below:
     
     * **Engineer/Data**
-        * [Client SDK Docs](https://docs.statsig.com/client/introduction)
-        * [Server SDK Docs](https://docs.statsig.com/server/introduction)
-        * [Metrics Overview](https://docs.statsig.com/metrics)
+        * [Client SDK Docs](/client/introduction)
+        * [Server SDK Docs](/server/introduction)
+        * [Metrics Overview](/metrics)
 
     * **Product**
-        * [Bootstrapping Your Experimentation Program](https://docs.statsig.com/guides/experimentation-program)
-        * [Metrics Overview](https://docs.statsig.com/metrics)
+        * [Bootstrapping Your Experimentation Program](/guides/experimentation-program)
+        * [Metrics Overview](/metrics)
         * [Product Experimentation Best Practices](https://statsig.com/blog/product-experimentation-best-practices) has a great overview of the planning and evaluation process
     
 - Where to start **sandboxing** to get familiar with Statsig?
@@ -118,9 +118,9 @@ Make a copy of the [POC tracker template](https://docs.google.com/spreadsheets/d
     
     Here’s a list of recommended evaluation exercises in order to get properly acquainted with the platform: 
     
-    - [Your First Feature](https://docs.statsig.com/guides/first-feature)
-    - [Running an A/A Experiment](https://docs.statsig.com/guides/aa-test#why-run-an-aa-aa-test)
-    - [Logging Events](https://docs.statsig.com/guides/logging-events)
+    - [Your First Feature](/guides/first-feature)
+    - [Running an A/A Experiment](/guides/aa-test#why-run-an-aa-aa-test)
+    - [Logging Events](/guides/logging-events)
 
 ### Phase 1: Implementation Steps
 
@@ -134,20 +134,20 @@ Here’s a general (non-exhaustive) overview of a the statsig platform:
 
 :::note
 
-If you’ve already connected your [metric](https://docs.statsig.com/metrics) data as part of the preparation phase, you can jump right into feature gating and experimentation! If not, this is typically the first step.
+If you’ve already connected your [metric](/metrics) data as part of the preparation phase, you can jump right into feature gating and experimentation! If not, this is typically the first step.
 
 :::
 
-We’ve created a step-by-step guide on metric ingestion [here](https://docs.statsig.com/metrics/ingest) which you can read/pass onto your team to develop a deeper understanding of metrics, but here is the high level overview so you know what to expect:
+We’ve created a step-by-step guide on metric ingestion [here](/metrics/ingest) which you can read/pass onto your team to develop a deeper understanding of metrics, but here is the high level overview so you know what to expect:
 
 - Metrics can be ingested into Statsig through several mechanisms
-    - [Server](https://docs.statsig.com/server/introduction), [Client SDKs](https://docs.statsig.com/client/introduction) and the [HTTP API](https://docs.statsig.com/http-api)
-    - [Integrations](https://docs.statsig.com/integrations/introduction)
-    - [Data Warehouse Ingestion](https://docs.statsig.com/data-warehouse-ingestion/introduction)
-    - Our new [Data Warehouse Native Solution](https://docs.statsig.com/statsig-warehouse-native/introduction) (enterprise contracts only)
-- Debug ingestion issues by using the [Metrics Dashboard](https://docs.statsig.com/metrics/console)
-- You can create [custom metrics](https://docs.statsig.com/metrics/create) from your event data for more sophisticated analysis within the platform
-- Metrics are [joined](https://docs.statsig.com/metrics/how-metrics-work) with your exposure events for experiment analysis
+    - [Server](/server/introduction), [Client SDKs](/client/introduction) and the [HTTP API](/http-api)
+    - [Integrations](/integrations/introduction)
+    - [Data Warehouse Ingestion](/data-warehouse-ingestion/introduction)
+    - Our new [Data Warehouse Native Solution](/statsig-warehouse-native/introduction) (enterprise contracts only)
+- Debug ingestion issues by using the [Metrics Dashboard](/metrics/console)
+- You can create [custom metrics](/metrics/create) from your event data for more sophisticated analysis within the platform
+- Metrics are [joined](/metrics/how-metrics-work) with your exposure events for experiment analysis
     
     Once you have successfully imported data into Statsig, we can move forward with implementation of a feature gate or experiment.
     
@@ -158,7 +158,7 @@ We’ve created a step-by-step guide on metric ingestion [here](https://docs.sta
     For each feature/experiment, you’ll want to answer a few questions:  
     
     - Who are the users you’re going to roll this feature/experiment out to?
-        - What [conditions](https://docs.statsig.com/feature-flags/conditions) will we use to qualify users?
+        - What [conditions](/feature-flags/conditions) will we use to qualify users?
             - ex: release a new feature to LATAM Android users only
     - What are the metrics you’re going to use to validate and/or test your features/experiments?
         - What are you hoping to affect with this feature/experiment
@@ -170,8 +170,8 @@ We’ve created a step-by-step guide on metric ingestion [here](https://docs.sta
     
     Now you’ll want to go into the [Statsig Console](https://console.statsig.com) and implement your features and experiments! Reminder that we have a few guides that walk through the UI:
     
-    - [Build your first feature](https://docs.statsig.com/guides/first-feature#step-1---create-a-new-feature-gate)
-    - [Your first A/B test](https://docs.statsig.com/guides/abn-tests)
+    - [Build your first feature](/guides/first-feature#step-1---create-a-new-feature-gate)
+    - [Your first A/B test](/guides/abn-tests)
 
 3. **Implement Feature Flags / Experiments in your app**
     
@@ -180,37 +180,37 @@ We’ve created a step-by-step guide on metric ingestion [here](https://docs.sta
     - Ensure your engineering/implementation team has a clear idea of how to implement Statsig’s SDKs into your software
     - Ensure you are sharing the name and strategy for each feature/experiment so your team is on the same page
     - Here are some code implementation resources
-        - [Implementing Feature Flags](https://docs.statsig.com/feature-flags/implement)
-        - [Implement an Experiment](https://docs.statsig.com/experiments-plus/implement)
+        - [Implementing Feature Flags](/feature-flags/implement)
+        - [Implement an Experiment](/experiments-plus/implement)
     
-    Once the code has been implemented, have your team [verify](https://docs.statsig.com/guides/testing) that Statsig is properly running as expected. Next, we’ll move onto phase 2 where we will rollout Statsig into production systems.
+    Once the code has been implemented, have your team [verify](/guides/testing) that Statsig is properly running as expected. Next, we’ll move onto phase 2 where we will rollout Statsig into production systems.
     
 
 ### Phase 2: Rollout & Test
 
 At this point your team has done all the work necessary to get Statsig into your systems and now need to deploy these changes as a release into your larger systems. Typically customers will rollout Statsig changes like any other internal code release, using an internal CI/CD pipeline or the equivalent to deploy the SDKs.
 
-After deployment, you should expect to see some exposure data available in the diagnostics tabs for both [features](https://docs.statsig.com/feature-flags/test-gate#3-using-diagnostics-tab) and experiments. If there are any issues, we’re here to help in the [slack community](https://statsig.com/community)!
+After deployment, you should expect to see some exposure data available in the diagnostics tabs for both [features](/feature-flags/test-gate#3-using-diagnostics-tab) and experiments. If there are any issues, we’re here to help in the [slack community](https://statsig.com/community)!
 
 Here are some guiding pieces of documentation to help:
 
-- [Best Practices: Deployment of Feature Gates](https://docs.statsig.com/feature-flags/best-practices#development)
+- [Best Practices: Deployment of Feature Gates](/feature-flags/best-practices#development)
 - Review the [Product Experimentation Best Practices](https://statsig.com/blog/product-experimentation-best-practices), particularly step 2 (Monitoring Phase)
 
 ### Phase 3: Collect Data & Read Results
 
-With everything instrumented and rolled out according to the plan above, we must now wait for data to populate into the system. Typically we’ll advise customers to allow 2 weeks minimum for data to be collected and for metrics to move towards statistical significance. You can monitor this process using our log event stream within the [metrics dashboard](https://docs.statsig.com/metrics/console) and you’ll also want to ensure your [health checks](https://docs.statsig.com/experiments-plus/monitor#monitoring-experiment-health) are passing. 
+With everything instrumented and rolled out according to the plan above, we must now wait for data to populate into the system. Typically we’ll advise customers to allow 2 weeks minimum for data to be collected and for metrics to move towards statistical significance. You can monitor this process using our log event stream within the [metrics dashboard](/metrics/console) and you’ll also want to ensure your [health checks](/experiments-plus/monitor#monitoring-experiment-health) are passing. 
 
-- You can [monitor your experiments](https://docs.statsig.com/experiments-plus/monitor) as they rollout
-- [Reading Experiment Results](https://docs.statsig.com/experiments-plus/read-results)
+- You can [monitor your experiments](/experiments-plus/monitor) as they rollout
+- [Reading Experiment Results](/experiments-plus/read-results)
 
 Ideally, your results will come back with a clear winner but that’s not always the case. The nature of experimentation and feature analysis leads to interesting insights that can help your product team make better decisions in the future.
 
 ### Phase 4: Validate Statsig’s Engine
 
-We don’t just want you to take our word for the results, we encourage our users to validate the findings of their results. That’s why we make [data exports](https://docs.statsig.com/integrations/data-exports/overview#validating-data) easy and allow you to compare our [stats engine](https://docs.statsig.com/stats-engine#statsig-stats-engine) to any internal/existing tools you might be using. 
+We don’t just want you to take our word for the results, we encourage our users to validate the findings of their results. That’s why we make [data exports](/integrations/data-exports/overview#validating-data) easy and allow you to compare our [stats engine](/stats-engine#statsig-stats-engine) to any internal/existing tools you might be using. 
 
-- [Validating Data](https://docs.statsig.com/integrations/data-exports/overview#validating-data)
+- [Validating Data](/integrations/data-exports/overview#validating-data)
 
 Once your team has done their due diligence in evaluating the Statsig platform, from the ease of use to the reliability of the analysis and so on, you’ll be able to decide if the tool is the right fit for your needs. 
 
@@ -218,4 +218,4 @@ Once your team has done their due diligence in evaluating the Statsig platform, 
 
 Upon completion of an evaluation, if you found the platform to be a useful tool for up-leveling your experimentation/feature gating processes the next step is to prepare your POC for a full rollout. Follow this guide to see what steps are required to rollout Statsig to a broader production deployment.
 
-- [From POC to Production](https://docs.statsig.com/guides/production)
+- [From POC to Production](/guides/production)

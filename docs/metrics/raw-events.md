@@ -25,9 +25,9 @@ You can ingest raw events into Statsig in three ways.
 
 ![image](https://user-images.githubusercontent.com/1315028/182466148-a40ad007-a60a-47b8-9cd3-9b27d0af82ed.png)
 
-1. Integrate with Statsig's [client](https://docs.statsig.com/client/introduction) or [server](https://docs.statsig.com/server/introduction) SDKs or [HTTP](https://docs.statsig.com/http-api) API
-2. Set up Statsig as a destination in a data connector such as [Segment](https://docs.statsig.com/integrations/data-connectors/segment#configuring-incoming-events), [mParticle](https://docs.statsig.com/integrations/data-connectors/mparticle#configuring-incoming-events), [RudderStack](https://docs.statsig.com/integrations/data-connectors/rudderstack#configuring-incoming-events) and [Census](https://docs.statsig.com/integrations/data-connectors/census#configuring-incoming-events)
-3. Import from your data warehouse such as [Snowflake](https://docs.statsig.com/integrations/data-imports/snowflake#direct-ingestion-from-snowflake), [BigQuery](https://docs.statsig.com/integrations/data-imports/bigquery), and [Redshift](https://docs.statsig.com/integrations/data-imports/redshift#direct-ingestion).
+1. Integrate with Statsig's [client](/client/introduction) or [server](/server/introduction) SDKs or [HTTP](/http-api) API
+2. Set up Statsig as a destination in a data connector such as [Segment](/integrations/data-connectors/segment#configuring-incoming-events), [mParticle](/integrations/data-connectors/mparticle#configuring-incoming-events), [RudderStack](/integrations/data-connectors/rudderstack#configuring-incoming-events) and [Census](/integrations/data-connectors/census#configuring-incoming-events)
+3. Import from your data warehouse such as [Snowflake](/integrations/data-imports/snowflake#direct-ingestion-from-snowflake), [BigQuery](/integrations/data-imports/bigquery), and [Redshift](/integrations/data-imports/redshift#direct-ingestion).
 
 Note that when processing events, event names that contain this regex/character set are dropped `"\\[\]{}<>#=;&$%|\u0000\n\r`
 
@@ -40,7 +40,7 @@ You can toggle between a list view or chart view of your events to view the tren
 
 ![Screen Shot 2022-06-07 at 12 00 22 PM](https://user-images.githubusercontent.com/101903926/172461387-a3d42641-2c2c-4128-aabc-fc2b5dba2ed9.png)
 
-Statsig provides two unit identifiers by default: **User ID** and **Stable ID**. Select a unit identifier from the drop down to view all events that include the selected unit identifier. See the [guide to create custom ID type](https://docs.statsig.com/guides/experiment-on-custom-id-types#step-1---add-companyid-as-a-new-id-type-in-your-project-settings) to create additional unit identifiers for your project. 
+Statsig provides two unit identifiers by default: **User ID** and **Stable ID**. Select a unit identifier from the drop down to view all events that include the selected unit identifier. See the [guide to create custom ID type](/guides/experiment-on-custom-id-types#step-1---add-companyid-as-a-new-id-type-in-your-project-settings) to create additional unit identifiers for your project. 
 
 ![Screen Shot 2022-06-07 at 10 58 26 AM](https://user-images.githubusercontent.com/101903926/172450890-4a4c95eb-a362-49a6-90ad-68f3460a933f.png)
 

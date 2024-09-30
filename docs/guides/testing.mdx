@@ -9,7 +9,7 @@ Statsig enhances your engineering velocity by offering tools and features that a
 
 ## Overrides: Testing a Specific Feature or Experiment
 
-Overrides enable you to manually configure [features](https://docs.statsig.com/feature-flags/overrides#adding-an-override), [experiments](https://docs.statsig.com/experiments-plus/overrides), or [holdouts](https://docs.statsig.com/holdouts) for testing purposes. This allows you to test without affecting live production data or skewing experiment results. Overrides are **excluded from Pulse analysis** to prevent biased results.
+Overrides enable you to manually configure [features](/feature-flags/overrides#adding-an-override), [experiments](/experiments-plus/overrides), or [holdouts](/holdouts) for testing purposes. This allows you to test without affecting live production data or skewing experiment results. Overrides are **excluded from Pulse analysis** to prevent biased results.
 
 - You can use **Segments** to target overrides to pre-production environments or specific groups, such as employees, for testing purposes.
 
@@ -17,9 +17,9 @@ Overrides enable you to manually configure [features](https://docs.statsig.com/f
 ![Experiment Override Example](https://user-images.githubusercontent.com/31516123/184234596-3099e18b-69c3-4885-9e04-06b4ba1e6fb6.png)
 
 For more information on adding overrides, see the links below:
-- [Feature Overrides](https://docs.statsig.com/feature-flags/overrides#adding-an-override)
-- [Experiment Overrides](https://docs.statsig.com/experiments-plus/overrides)
-- [Holdout Overrides](https://docs.statsig.com/holdouts)
+- [Feature Overrides](/feature-flags/overrides#adding-an-override)
+- [Experiment Overrides](/experiments-plus/overrides)
+- [Holdout Overrides](/holdouts)
 
 ---
 
@@ -54,7 +54,7 @@ For example, to override a gate for testing purposes, you could call:
 statsig.overrideGate("example_gate", true);
 ```
 
-- For detailed usage, refer to [Node.js Server SDK](https://docs.statsig.com/server/nodejsServerSDK#how-can-i-mock-statsig-for-testing) or the [JavaScript Client SDK](/client/javascript-sdk#testing).
+- For detailed usage, refer to [Node.js Server SDK](/server/nodejsServerSDK#how-can-i-mock-statsig-for-testing) or the [JavaScript Client SDK](/client/javascript-sdk#testing).
 
 ---
 
