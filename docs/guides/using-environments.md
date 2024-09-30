@@ -43,7 +43,7 @@ In this example, we set the environment tier to `development` for both Client SD
   await statsig.initialize(<SDK_KEY>, {environment: {tier: 'development'}});
   ```
 
-These JavaScript and Node.js examples show the general pattern. For more details on how to apply this in other languages, refer to your specific SDK documentation.
+These JavaScript and Node.js examples show the general pattern. For more details on how to apply this in other languages, refer to your [specific SDK documentation](/sdks/getting-started).
 
 ---
 
