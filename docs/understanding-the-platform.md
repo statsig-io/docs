@@ -3,12 +3,11 @@ sidebar_label: Getting Started
 title: Getting Started
 ---
 
-# Statsig Platform Overview
 Statsig offers two flexible ways to leverage its core products based on your needs: Statsig Cloud (where we host your data) and Statsig Warehouse Native (where you host your data in your own warehouse).
 
 ---
 
-### **Statsig Cloud**:
+## Statsig Cloud
 
 With Statsig Cloud, setting up is simple. Install the Statsig SDK and configure event logging—we handle everything else.
 
@@ -20,7 +19,7 @@ Statsig Cloud is a great choice for those who want to get started quickly withou
 
 ---
 
-### **Statsig Warehouse Native (WHN)**:
+## Statsig Warehouse Native (WHN)
 
 If your events and metrics already reside in your own data warehouse and you have a dedicated data team, Statsig Warehouse Native (WHN) may be a better option.
 
@@ -36,7 +35,7 @@ The first method helps you scale analysis, while the second can 10x your experim
 
 ---
 
-### Which Model is Right for You?
+## Which Model is Right for You?
 
 Below is a summary of key criteria to consider when making your decision between the two modes of deployment:
 
@@ -48,13 +47,14 @@ Below is a summary of key criteria to consider when making your decision between
 | Costs | TCO is slightly lower. No warehouse costs involved. | TCO includes Statsig license + costs incurred for computation and storage in your warehouse. |
 | Modularity | An integrated end-to-end platform that spans SDKs for feature rollout, experiment execution, analysis, and experiment readouts. | Modular: You can opt for the integrated end-to-end platform or choose to use only a subset of capabilities, such as assignment or experiment analysis. |
 
-Still unsure! read a blog post on [statsig cloud vs warehouse native](https://www.statsig.com/blog/deciding-cloud-hosted-versus-warehouse-native-experimentation-platforms).
+Still unsure! Read this blog post for further information: [Statsig Cloud vs Warehouse Native](https://www.statsig.com/blog/deciding-cloud-hosted-versus-warehouse-native-experimentation-platforms).
 
+## Next steps
 Once you've decided whether Statsig Cloud or Statsig Warehouse Native fits your organization’s needs, choose the appropriate *getting started* guide for your first use case:
 
 - [Getting Started with Statsig Cloud](/sdks/getting-started.md)
 - [Getting Started with Statsig Warehouse Native](/statsig-warehouse-native/guides/quick-start)
 
 :::info
-Have a question or need help getting set up? Our Eng, Data, and Product teams are ready to answer questions in our [Slack community](https://www.statsig.com/slack).
+Have a question or need help getting set up? Our Engineering, Data, and Product teams are ready to answer questions in our [Slack community](https://www.statsig.com/slack).
 :::
