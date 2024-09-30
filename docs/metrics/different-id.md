@@ -10,7 +10,7 @@ There are two common scenarios where the experiment assignment unit differs from
 
 1. Measuring session-level metrics for a user-level experiment. Ratio metrics are commonly used to solve this (this doc).
 2. Measuring logged-in metrics (eg. revenue) on a logged-out experiment. There are two solutions:
-   a. Running the experiment at the [device-level](https://docs.statsig.com/experiments-plus/experimentation/choosing-randomization-unit#other-stable-identifiers), with device-level metrics collected even after the user is logged-in.
+   a. Running the experiment at the [device-level](/experiments-plus/experimentation-fundamentals#other-stable-identifiers), with device-level metrics collected even after the user is logged-in.
    b. Using [ID resolution](https://docs.statsig.com/statsig-warehouse-native/features/id-resolution).
 
 We will explain how to set up the first scenario with Warehouse Native in this doc.

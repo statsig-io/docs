@@ -4,95 +4,107 @@ sidebar_label: Experimentation Fundamentals
 slug: /experiments-plus/experimentation-fundamentals
 ---
 
-Experimentation is the most reliable scientific method to establish causality between product features and customer impact. By running controlled experiments, you ensure that you only ship features that improve the user experience, making experimentation a key driver of your **innovation pace**. 
+Experimentation is the most reliable scientific method to establish causality between product features and customer impact. Controlled experiments ensure that only features which improve the user experience are shipped, making experimentation a key driver of your **pace of innovation**. 
 
-Experiments also enable you to measure the success of your changes, uncover unexpected side effects, and **make data-driven business decisions**. This page covers the core concepts of experimentation, when and why to experiment, and how to choose the right randomization unit to ensure reliable results.
-
----
-
-## Why Experiment
-
-Controlled experiments allow you to directly measure the causal relationship between a change and its effect on user behavior, product performance, or business outcomes. They enable:
-- **Faster Iteration**: You can quickly test new ideas, measure their impact, and make decisions based on evidence.
-- **Risk Mitigation**: By running experiments on a subset of users, you reduce the risk of a negative impact when rolling out new features.
-- **Improved Decision Making**: Experimentation helps establish key business drivers, allowing you to iterate and innovate based on measurable results.
-
-In comparison, relationships observed in historical metrics are often influenced by many uncaptured internal and external factors, which only establish **correlation, not causation**. Controlled experiments give you a clearer understanding of how your features impact user behavior.
+As your innovation pace grows, experimentation also enables you to measure the success of the features you ship and uncover unexpected side effects with every code change. This allows you to iterate faster, establish key business drivers, and **make better, evidence-driven decisions** every day. In contrast, historical metrics only provide correlation, not causation, because they are influenced by multiple uncaptured external and internal factors.
 
 ---
 
 ## Scenarios for Experimentation
 
-Statsig sees two broad scenarios for using experimentation:
+Statsig sees two broad scenarios where experimentation plays a key role in driving business outcomes:
 
 ### 1. Experiment to Grow Faster
 
-Experiments can help you optimize your current strategy by identifying the most effective ways to improve user experience and performance. For example:
-- **Optimize User Experience**: Test different versions of features to find the most effective one.
-- **Iterate on Functionality**: Improve the underlying algorithms or infrastructure that matter most to your users.
-- **Maximize ROI**: Identify ideas that yield the highest return on investment.
+Experiments can help you find the optimal solution based on your current strategy and product portfolio. For example:
+- **Optimize the User Experience**: Experiments allow you to test different versions of a feature to find the best one.
+- **Iterate on Key Features**: By running experiments, you can iterate on the functionality, algorithms, and infrastructure that matter the most to your users and your business.
+- **Maximize Efficiency**: Experiments can help identify which ideas offer the highest return for the effort required.
 
-Defining key metrics and guardrails ensures you measure what matters and avoid unintended regressions.
+Identifying the right metrics that align with your strategic goals and are sensitive to changes ensures that you don’t waste resources. At the same time, defining **guardrail metrics** ensures that key aspects of your product’s performance don't regress when you make changes.
 
 ### 2. Experiment to Discover New Opportunities
 
-Experiments also help explore new opportunities, beyond incremental improvements:
-- **Longer-Term Tests**: Run experiments over longer periods to mitigate novelty effects and observe adoption trends.
-- **Gradual Ramps**: Progressively ramp up experiments to limit risk and ensure accurate results before full-scale launch.
-- **Hypothesis Testing**: Run multiple experiments to test related hypotheses and explore new business strategies.
+Experiments also help develop a portfolio of ideas that can lead to larger opportunities. Navigating bigger, more ambitious changes requires:
+- **Longer Experiment Durations**: Running experiments for longer periods helps mitigate novelty effects and allows new versions of products enough time to build adoption.
+- **Gradual Ramps**: Slowly ramping experiments up to more users limits risk and builds statistical power before full-scale launch.
+- **Hypothesis Testing**: Running many experiments that test related hypotheses allows you to refine or establish new business strategies.
 
 ---
 
 ## Common Terms in Experimentation
 
-- **Control Variable**: A variable in an experiment that is manipulated to observe its effect on key metrics. Simple A/B experiments often use a single control variable with two values (e.g., A and B).
-- **Variant**: The specific version of a product or feature being tested (e.g., A and B in an A/B test).
-- **Randomization Unit**: The most granular unit in an experiment, usually a user or session, which is randomly assigned to control or treatment groups.
-- **Statistical Significance**: A measure of whether the observed results are likely to be due to the change being tested, rather than random chance. The **p-value** and **confidence interval** are commonly used to assess significance.
+Understanding key terms is crucial to running successful experiments. Here are the foundational concepts you need to know:
 
-  - **P-value**: Measures the probability of observing the results (or more extreme results) assuming there is no true effect.
-  - **Confidence Interval**: Indicates the range within which the true effect lies, typically set at 95%.
+- **Control Variable**: A variable that influences the key metrics of interest. In a simple A/B test, this variable is assigned two values, but more complex tests can assign multiple values (e.g., A, B, C, D). Multivariate experiments evaluate multiple control variables to discover the global optimum when variables interact.
+  
+- **Variant**: A product or feature version being tested. In a simple A/B test, **A** and **B** are the two variants (often referred to as Control and Treatment).
+  
+- **Randomization Unit**: The smallest unit eligible to participate in an experiment. Each unit is randomly assigned to a variant, allowing for causality to be determined with high probability. Common randomization units include users, sessions, or devices. **Statsig recommends using users as the randomization unit** in most controlled experiments.
+  
+- **Statistical Significance**: The probability that the observed metric lift (or a more extreme value) is not due to chance. Two common methods for evaluating statistical significance are:
+
+  - **P-value**: The p-value measures the likelihood of observing the metric lift assuming the variant has no effect. A p-value less than 0.05 is typically used to determine if the effect is statistically significant. A p-value < 0.05 indicates that there's less than a 5% chance of seeing the observed lift if the variant has no effect.
+  
+  - **Confidence Interval**: The range of values within which the true difference between the variant and the control is likely to fall. A 95% confidence interval covers the true difference 95% of the time. It is centered around the observed delta between the variant and control and extends 1.96 standard errors on either side.
 
 ---
 
 ## Choosing the Right Randomization Unit
 
-When designing an experiment, it’s crucial to select the correct **randomization unit**, as it impacts both the user experience and the accuracy of your results.
+When designing an experiment, selecting the correct **randomization unit** is critical. The randomization unit determines who or what is randomly assigned to control and treatment groups. The right unit ensures a consistent user experience and reliable experiment results.
 
 ### User Identifiers
 
-The most commonly used unit is the **user ID**, which is tied to registered users. It ensures a consistent experience across sessions and devices, making it ideal for most controlled experiments. Registered user IDs don’t rely on cookies, which can be cleared, ensuring stability throughout the experiment.
+**Registered User IDs** are the most common randomization unit. When a user registers with your application and creates an account, a unique user ID is generated. This ID remains stable as long as the user stays signed in, making it ideal for long-term experiments. It also ensures consistency across sessions and devices, and it doesn’t rely on client-side cookies, which may be cleared by users.
 
-- **Best Use Case**: When the experiment targets registered users and aims to track long-term behavior or conversions.
+- **Best Use Case**: Experiments targeting registered users, where you need consistent tracking across sessions and devices.
 
-### Device or Anonymous User Identifiers
+---
 
-For users who haven’t registered, you can use **device IDs** or **anonymous user IDs**. These stable identifiers allow you to track behavior across a user’s journey, even before they register.
+**Learn More**  
+You can provide a user ID as part of the `StatsigUser` object when implementing a feature gate or experiment on Statsig. See the [Statsig Docs](/client/concepts/user) to learn more.
 
-- **Best Use Case**: Experiments that focus on early user engagement or behaviors like landing page optimization for non-registered users.
+---
+
+### Other Stable Identifiers
+
+For experiments involving users who haven’t registered or signed in, you can use **Device IDs** or **Anonymous User IDs**. These identifiers provide a stable way to track users across multiple sessions before they register.
+
+- **Best Use Case**: Experiments that test early user interactions, such as landing page optimizations, where users haven’t yet registered.
 
 #### Drawbacks:
-- The identifier won’t track the same user across multiple devices.
+- These identifiers won’t track users across multiple devices.
 - Multiple users sharing a device could skew results.
+
+---
+
+**Learn More**  
+- Learn more about [User-level vs. Device-level experiments](https://blog.statsig.com/user-level-vs-device-level-experiments-with-statsig-338d48a81778) and how different identifiers impact experiment outcomes.  
+- Statsig client SDKs automatically generate **Stable IDs** when you run device-level experiments. See the [Statsig Guide for Device Experiments](../../guides/first-device-level-experiment) for more details.
 
 ---
 
 ### Session Identifiers
 
-In certain cases, you may use **session IDs** when behavior is tracked within individual sessions. For example, session IDs work well for guest checkout flows where each session is independent of previous ones.
+In cases where user behavior is measured within a single session, **Session IDs** can be used as the randomization unit. This approach works well for experiments focused on guest checkouts or other interactions that are session-based and don’t rely on long-term user behavior.
 
-- **Best Use Case**: Experiments that optimize behavior within a session, such as increasing conversion during guest checkouts.
+- **Best Use Case**: Experiments where each session is assumed to be independent, such as optimizing guest checkout flows.
 
 #### Drawbacks:
-- Assuming session independence can be risky for experiments targeting users who might continue their journey across sessions.
+- Assuming session independence may not hold true in all experiments. If a user interacts with the product in one session and returns later, they could end up being assigned to a different group, skewing results.
 
 ---
 
 ## Using Multiple Identifiers in Experiments
 
-In some scenarios, you might need to use multiple identifiers across experiments. For example, you could use a device ID for an experiment focused on new user registrations while using a user ID to track subsequent behavior, such as upgrades to paid accounts.
+In some experiments, you may need to use different identifiers depending on the context. For example, when running multiple experiments, one may track the user’s entire journey using a **Device ID**, while another focuses on registered users using a **User ID**.
 
-- **Scenario**: You’re running two experiments: one optimizing the registration flow and the other testing conversion rates for paid upgrades. Use a **device ID** for the registration experiment and a **user ID** for the upgrade experiment.
+### Example:
+- **Experiment A**: Tests the impact of a new mobile registration flow and uses a device ID as the randomization unit.
+- **Experiment B**: Focuses on converting registered users to paid subscribers and uses a user ID as the randomization unit.
+
+Both experiments can run simultaneously, and you can track how changes in one experiment affect outcomes in another (e.g., how the mobile registration flow impacts downstream conversion rates).
 
 ![Device Level Experiments](https://user-images.githubusercontent.com/74588208/141707011-95c0c859-c60f-45f8-a6da-d31664f05e06.png)
 
@@ -100,8 +112,8 @@ In some scenarios, you might need to use multiple identifiers across experiments
 
 ## Conclusion
 
-Experimentation is a powerful tool for driving innovation, optimizing product features, and making data-driven decisions. Whether you’re running short-term tests to optimize a specific feature or long-term experiments to discover new opportunities, the key is choosing the right metrics, identifying the best randomization unit, and using sound experimental design.
+Experimentation is a powerful tool for driving innovation, optimizing product performance, and making data-driven decisions. Whether you're running short-term tests to optimize specific features or long-term experiments to explore new business strategies, choosing the right metrics, randomization units, and experimental design is critical to success.
 
-To learn more about experimentation strategies and best practices, explore this [article](https://statsig.com/blog/product-experimentation-best-practices).
+By understanding the building blocks of experimentation, you can iterate faster, grow smarter, and ensure your products are always improving based on real user data.
 
 ---
