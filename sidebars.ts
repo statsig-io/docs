@@ -488,15 +488,7 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/disable-group",
                 "experiments-plus/bayesian",
                 "experiments-plus/switchback-tests",
-                {
-                  Experimentation: [
-                    "experiments-plus/experimentation/why-experiment",
-                    "experiments-plus/experimentation/scenarios",
-                    "experiments-plus/experimentation/best-practices",
-                    "experiments-plus/experimentation/common-terms",
-                    "experiments-plus/experimentation/choosing-randomization-unit",
-                  ],
-                },
+                "experiments-plus/experimentation-fundamentals",
               ],
             },
             {
