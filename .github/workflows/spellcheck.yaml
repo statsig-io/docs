@@ -16,4 +16,4 @@ jobs:
       run: npm install -g cspell
 
     - name: Run spellcheck
-      run: cspell "**/*.md*"
+      run: cspell "**/*.md*" --quiet --show-suggestions
