@@ -26,7 +26,7 @@ Custom Query fields:
   - Careful! This option can easily lead to erroneous and biased results. You will need to make sure the segment is defined based on the user's status _before_ they were exposed to the experiment or feature gate.
   - Similarly, you can choose to _exclude_ a certain ID list segment, for example if you want to exclude a set of users who have been retroactively identified as bad actors from your lifts analysis.
 - **(Advanced) Filter by Exposure Date:** For WHN users, you can also filter the results by Exposure Date which can give you more flexibility. You can choose only include certain days anchoring on first exposure date, include/exclude users based on when they first got exposed to the experiment.
-  - This is useful when your metrics have novelty effect, delayed impact, or specific scenarios where you only want to filter your results to certain users. Use it cauriously because it can lead to biased results.  
+  - This is useful when your metrics have novelty effect, delayed impact, or specific scenarios where you only want to filter your results to certain users. Use it cautiously because it can lead to biased results.  
 
 > Note: User data in this tool is based off of first-touch attribution. The filters and grouping applied will be based on the user attributes collected at the time of first exposure.
 
