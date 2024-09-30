@@ -461,7 +461,7 @@ const sidebars: SidebarsConfig = {
           label: "Experimentation",
           className: "xp-icon sidebar-icon",
           items: [
-            "experimentation-fundamentals",
+            "experiments-basics/experimentation-fundamentals",
             {
               type: "category",
               label: "Experiments",
