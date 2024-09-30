@@ -461,6 +461,7 @@ const sidebars: SidebarsConfig = {
           label: "Experimentation",
           className: "xp-icon sidebar-icon",
           items: [
+            "experimentation-fundamentals",
             {
               type: "category",
               label: "Experiments",
@@ -488,7 +489,7 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/disable-group",
                 "experiments-plus/bayesian",
                 "experiments-plus/switchback-tests",
-                "experiments-plus/experimentation-fundamentals",
+                // "experiments-plus/experimentation-fundamentals",
               ],
             },
             {

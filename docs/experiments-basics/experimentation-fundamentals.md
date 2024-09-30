@@ -1,7 +1,7 @@
 ---
 title: The Building Blocks of Experimentation
 sidebar_label: Experimentation Fundamentals
-slug: /experiments-plus/experimentation-fundamentals
+slug: /experiments-basics
 ---
 
 Experimentation is the most reliable scientific method to establish causality between product features and customer impact. Controlled experiments ensure that only features which improve the user experience are shipped, making experimentation a key driver of your **pace of innovation**. 
