@@ -48,12 +48,12 @@ Below is a summary of key criteria to consider when making your decision between
 | Costs | TCO is slightly lower. No warehouse costs involved. | TCO includes Statsig license + costs incurred for computation and storage in your warehouse. |
 | Modularity | An integrated end-to-end platform that spans SDKs for feature rollout, experiment execution, analysis, and experiment readouts. | Modular: You can opt for the integrated end-to-end platform or choose to use only a subset of capabilities, such as assignment or experiment analysis. |
 
-If you are still not sure, read more [here](https://docs.statsig.com/statsig-warehouse-native/guides/quick-start) for more information that will help in deciding between the two models.
+Still unsure! read a blog post on [statsig cloud vs warehouse native](https://www.statsig.com/blog/deciding-cloud-hosted-versus-warehouse-native-experimentation-platforms).
 
 Once you've decided whether Statsig Cloud or Statsig Warehouse Native fits your organization’s needs, choose the appropriate *getting started* guide for your first use case:
 
-- [Getting Started with Statsig Cloud](https://docs.statsig.com/sdks/getting-started)
-- [Getting Started with Statsig Warehouse Native](https://docs.statsig.com/statsig-warehouse-native/guides/quick-start)
+- [Getting Started with Statsig Cloud](/sdks/getting-started.md)
+- [Getting Started with Statsig Warehouse Native](/statsig-warehouse-native/guides/quick-start)
 
 :::info
 Have a question or need help getting set up? Our Eng, Data, and Product teams are ready to answer questions in our [Slack community](https://www.statsig.com/slack).
