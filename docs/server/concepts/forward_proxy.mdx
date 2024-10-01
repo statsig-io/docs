@@ -103,7 +103,7 @@ def shutdown(self):
 #### Deployment
 
 Given that every use case for the proxy is different, we don't have strict recommendations. However, we do have general recommendations:
-1. Understand what your general QPS to Statsig is. If you need help understanding this, feel free to reachout.
+1. Understand what your general QPS to Statsig is. If you need help understanding this, feel free to reach out.
 2. If possibly using your payload, get a sense of what throughput can be supported by a single pod and then calculate how much you need to scale out by to support your traffic.
 3. Pre-scale the proxy for your max QPS and then begin to gradually rollout the proxy to services.
 4. Configure your auto-scaling, for most folks, scaling up at 70% utilization for CPU and memory is typically sufficient, but depending on your usage this might need to be tweaked.

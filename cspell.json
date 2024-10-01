@@ -628,7 +628,9 @@
         "AI/ML",
         "KPIs",
         "click-through",
-        "Chatbots"
+        "Chatbots",
+        "hashlib",
+        "hget"
     ],
     "ignorePaths": [
         "node_modules/**",

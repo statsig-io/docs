@@ -38,9 +38,8 @@ Integrating feature flags into a React Native app using Expo and the Statsig SDK
 1. **Install Statsig SDK**:
    - In your project directory, install the Statsig React Native SDK by running:
      ```sh
-     npm install statsig-react-native
+     npm install @statsig/expo-bindings @statsig/react-bindings @statsig/js-client
      ```
-   - Since React Native 0.60 and higher link libraries automatically, you shouldn't need to link the package manually. If you're using an older version of React Native, you may need to run `react-native link statsig-react-native`.
 
 2. **Initialize Statsig in Your App**:
    - Open `App.js` and import `Statsig` at the top of the file.
@@ -52,32 +51,28 @@ Integrating feature flags into a React Native app using Expo and the Statsig SDK
    ```jsx
    import React, { useEffect, useState } from 'react';
    import { StyleSheet, Text, View } from 'react-native';
-   import Statsig from 'statsig-react-native';
-
-   const App = () => {
-     const [featureEnabled, setFeatureEnabled] = useState(false);
-
-     useEffect(() => {
-       async function initializeStatsig() {
-         await Statsig.initialize('your-client-sdk-key', {
-           userID: 'a_unique_user_id', // Optional: Identify the user with a unique ID
-         });
-
-         const enabled = await Statsig.checkGate('example_feature_flag');
-         setFeatureEnabled(enabled);
-       }
-
-       initializeStatsig();
-
-       return () => Statsig.shutdown(); // Cleanup on component unmount
-     }, []);
+   import { StatsigProviderExpo } from "@statsig/expo-bindings";
+   import { useStatsigClient } from "@statsig/react-bindings";
+   
+   const Component = () => {
+     const { client } = useStatsigClient();
 
      return (
        <View style={styles.container}>
-         <Text>{featureEnabled ? 'Feature Enabled!' : 'Hello, World!'}</Text>
+         <Text>{client.checkGate('example_feature_flag') ? 'Feature Enabled!' : 'Hello, World!'}</Text>
        </View>
      );
    };
+
+   const App = () {
+   return (
+      <StatsigProviderExpo
+        sdkKey={YOUR_CLIENT_KEY}
+        user={{ userID: "a-user" }}>
+        <Component />
+      </StatsigProviderExpo>
+   );
+   }
 
    const styles = StyleSheet.create({
      container: {
@@ -99,11 +94,11 @@ Integrating feature flags into a React Native app using Expo and the Statsig SDK
 2. **Create a New Project**:
    - In the Statsig console, create a new project for your application.
 
-3. **Navigate to Feature Flags**:
-   - Go to the "Feature Flags" section from the dashboard.
+3. **Navigate to Feature Gates**:
+   - Go to the "Feature Gates" section from the dashboard.
 
 4. **Create a New Feature Flag**:
-   - Click "Create Feature Flag".
+   - Click "Create".
    - Enter a name for your feature flag, such as `example_feature_flag`.
    - Configure targeting rules as needed.
    - Save your feature flag.
