@@ -84,7 +84,13 @@ def __init__(self):
   self.redis_cache = ExampleCache()
 
 def get(self, key: str):
-  self.cache.get(key)
+  # IDlist isn't currently supported by proxy, so do normal lookup
+  if "statsig.id_lists" in key:
+    return self.cache.get(key)
+  # This logic must stay in sync with statsig-forward-proxy
+  else:
+    hashed_key = "statsig::" + hashlib.sha256(key.encode()).hexdigest()
+    return self.cache.hget(hashed_key, 'config')
 
 def set(self, key: str):
   # Don't implement set method if you are share the same cache between forward proxy and sdk, forward proxy will write to cache 
@@ -93,3 +99,15 @@ def set(self, key: str):
 def shutdown(self):
   self.cache.shutdown()
 ```
+
+#### Deployment
+
+Given that every use case for the proxy is different, we don't have strict recommendations. However, we do have general recommendations:
+1. Understand what your general QPS to Statsig is. If you need help understanding this, feel free to reachout.
+2. If possibly using your payload, get a sense of what throughput can be supported by a single pod and then calculate how much you need to scale out by to support your traffic.
+3. Pre-scale the proxy for your max QPS and then begin to gradually rollout the proxy to services.
+4. Configure your auto-scaling, for most folks, scaling up at 70% utilization for CPU and memory is typically sufficient, but depending on your usage this might need to be tweaked.
+
+If you are seeing scaling issues that can't be resolved by scaling out horizontally, we recommend fronting it with nginx to help with flow control.
+
+If you need any help, we are happy to collaborate and work closely, just send a message to our slack channel to get further assistance.
