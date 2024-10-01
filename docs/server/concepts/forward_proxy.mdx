@@ -84,7 +84,13 @@ def __init__(self):
   self.redis_cache = ExampleCache()
 
 def get(self, key: str):
-  self.cache.get(key)
+  # IDlist isn't currently supported by proxy, so do normal lookup
+  if "statsig.id_lists" in key:
+    return self.cache.get(key)
+  # This logic must stay in sync with statsig-forward-proxy
+  else:
+    hashed_key = "statsig::" + hashlib.sha256(key.encode()).hexdigest()
+    return self.cache.hget(hashed_key, 'config')
 
 def set(self, key: str):
   # Don't implement set method if you are share the same cache between forward proxy and sdk, forward proxy will write to cache 
