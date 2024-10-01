@@ -207,19 +207,11 @@ span.math.math-inline {
   color: #fff;
 }
 
-.navbar__items>div:has(.DocSearch){
-  margin-left:  auto;
-  margin-right: 40px;
-}
-
 .DocSearch-Button-Key{
   background: white !important;
   box-shadow: none !important;
 }
 
-.DocSearch-Button{
-  min-width: 350px;;
-}
 
 .DocSearch-Button-Placeholder{
   font-family: "Open Sans", sans-serif;
@@ -232,6 +224,17 @@ span.math.math-inline {
 @media (min-width: 768px) {
   .col {
     padding: 0px 60px;
+  }
+  .navbar__items>div:has(.DocSearch){
+    margin-left:  auto;
+    margin-right: 40px;
+  }
+  .navbar__logo{
+    height:25px;
+    margin-left:5px;
+  }
+  .DocSearch-Button{
+    min-width: 350px;
   }
 }
 
@@ -262,11 +265,6 @@ span.math.math-inline {
 .menu__link{
   font-weight: 600;
   margin-left: 25px;
-}
-
-.navbar__logo{
-  height:25px;
-  margin-left:5px;
 }
 
 .sidebar-icon {
