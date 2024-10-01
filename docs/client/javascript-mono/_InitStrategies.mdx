@@ -1,4 +1,6 @@
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 ## Overview
 
@@ -10,7 +12,7 @@ Below are the various strategies summarized at a high level, ordered from most c
 - [**Bootstrap Initialization**](#2-bootstrap-initialization): It's best of both worlds in terms of latency and availability of fresh assignments. Use Sync bootstrapping if your architecture permits and you have the engineering bandwidth to implement the server-sdk to generate the client init payload.
 - [**Asynchronous Initialization (Not Awaited)**](#3-asynchronous-initialization---not-awaited): This ensures immediate rendering, but in a state that reflects stale assignments or no assignments available (resulting in default values being used). 
   - After initialization, the client will then fetch fresh assignments over the network from Statsig. Subsequent calls to check assignments may result in different assignments than the initial state and therefore render a different treatment (_this is referred to as "flicker"_). This mimics the old behavior of `StatsigProvider.waitForInitialization=false`.
-- [**Synchronous Initialization**](#4-synchronous-initialization): Ensures immediate rendering but with stale or no assignments available. First-visit users will never be assigned to gates and experiments. These users will only see updated assignments after they do a hard-refresh of the website. Effectly, all assignment information is 1 pageload stale.
+- [**Synchronous Initialization**](#4-synchronous-initialization): Ensures immediate rendering but with stale or no assignments available. First-visit users will never be assigned to gates and experiments. These users will only see updated assignments after they do a hard-refresh of the website. Effectively, all assignment information is 1 page load stale.
 
 ### 1. Asynchronous Initialization - Awaited
 > Ensures latest assignments but requires a loading state
@@ -19,7 +21,22 @@ When calling `StatsigClient.initializeAsync`, the client loads values from the c
 
 Example:
 
-<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-init-strat-await-async.tsx" />
+<Tabs
+  defaultValue="react"
+  groupId="language-choice"
+  values={[
+    {label: 'React', value: 'react'},
+    {label: 'Javascript', value: 'js'},
+  ]}>
+  <TabItem value="react">
+    <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-init-strat-await-async.tsx" />
+  </TabItem>
+  <TabItem value="js">
+    <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-initialize.tsx" />
+  </TabItem>
+</Tabs>
+
+
 
 ### 2. Bootstrap Initialization
 > Ensures both latest assignments with no rendering latency
@@ -28,7 +45,23 @@ Bootstrapping allows you to initialize the client with a JSON string. This appro
 
 Example:
 
-<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-init-strat-bootstrap.tsx" />
+<Tabs
+  defaultValue="react"
+  groupId="language-choice"
+  values={[
+    {label: 'React', value: 'react'},
+    {label: 'Javascript', value: 'js'},
+  ]}>
+  <TabItem value="react">
+    <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-init-strat-bootstrap.tsx" />
+  </TabItem>
+  <TabItem value="js">
+    <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-bootstrap.tsx" />
+  </TabItem>
+</Tabs>
+
+
+
 
 ### 3. Asynchronous Initialization - Not Awaited
 

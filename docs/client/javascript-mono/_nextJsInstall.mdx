@@ -57,33 +57,3 @@ yarn add @statsig/js-client @statsig/react-bindings
   </TabItem>
 </Tabs>
 
-### Server side rendering
-
-If you intend to use ServerTo fully utilize Statsig across Next.js, you will need both Server and Client SDKs installed. 
-[`@statsig/js-client`](/client/javascript-sdk) and [`@statsig/react-bindings`](/client/javascript-sdk/react) for the client side and [`statsig-node`](/server/nodejsServerSDK) for the server side.
-
-
-<Tabs
-  defaultValue="npm"
-  groupId="js-install-choice"
-  values={[
-    {label: 'NPM', value: 'npm'},
-    {label: 'Yarn', value: 'yarn'},
-  ]}>
-
-  <TabItem value="npm">
-
-```shell
-npm install @statsig/js-client @statsig/react-bindings statsig-node
-```
-
-  </TabItem>
-  <TabItem value="yarn">
-
-```shell
-yarn add @statsig/js-client @statsig/react-bindings statsig-node
-```
-
-  </TabItem>
-</Tabs>
-

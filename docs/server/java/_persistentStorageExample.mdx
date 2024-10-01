@@ -1,0 +1,19 @@
+```kotlin
+class KongUserPersistedStorageAdapter() : IUserPersistentStorage {
+    private var value: MutableMap<String, UserPersistedValues> = mutableMapOf()
+
+    override suspend fun load(key: String): UserPersistedValues {
+        return value[key] ?: mapOf()
+    }
+
+    override fun save(key: String, experimentName: String, data: StickyValues) {
+        val userPersistedValue = (value[key] ?: mutableMapOf()) as MutableMap<String, StickyValues>
+        userPersistedValue[experimentName] = data
+        value[key] = userPersistedValue
+    }
+
+    override fun delete(key: String, experiment: String) {
+        value.remove(key)
+    }
+}
+```

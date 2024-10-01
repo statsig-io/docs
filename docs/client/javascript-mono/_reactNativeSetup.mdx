@@ -1,81 +1,38 @@
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
-## React Native Specific Setup
+## React Native + React Specific Setup
 
 The setup for a ReactNative environment is very similar to a plain [React environment](/client/javascript-sdk/react). 
 The only difference is that you need to use the ReactNative specific `StatsigProviderRN`. 
-This automatically switches out the storage layer used by the SDK, utilizing [`react-native-mmkv`](https://github.com/mrousavy/react-native-mmkv) instead of LocalStorage (which isn't available in RN environments).
+This automatically switches out the storage layer used by the SDK, utilizing [AsyncStorage](https://github.com/react-native-async-storage) instead of LocalStorage (which isn't available in RN environments).
 
 
-```typescript
+```tsx
 import {
   StatsigProviderRN,
-  useClientAsyncInit,
   useFeatureGate,
 } from '@statsig/react-native-bindings';
 
 function Content() {
   const gate = useFeatureGate('a_gate');
 
-  return <div>Reason: {gate.details.reason}</div>; // Reason: Network or NetworkNotModified
+  // Reason: Network or NetworkNotModified
+  return (
+    <View>
+      <Text>Value: {gate.value ? "Pass" : "Fail"}</Text> 
+      <Text>Reason: {gate.details.reason}</Text> 
+    </View>
+  );
 }
 
 function App() {
-  const { client, isLoading } = useClientAsyncInit(YOUR_CLIENT_KEY, {
-    userID: 'a-user',
-  });
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   return (
-    <StatsigProviderRN client={client}>
-      <Content />
+    <StatsigProviderRN 
+      sdkKey={YOUR_CLIENT_KEY}
+      user={{ userID: "a-user" }}
+      loadingComponent={<Text>Loading...</Text>}>
+        <Content />
     </StatsigProviderRN>
   );
 }
-```
-
-**Note**: There are a few different ways to initialize the StatsigClient, with trade-offs between latency and up-to-date values.
-You can read [Initialization Strategies](init-strategies) to learn more.
-
-### Android networking
-We have seen reports that the default networking client on react native for android can error out with:
-
-```
-ERROR  [Statsig] A networking error occured during POST request to https://featureassets.org/v1/initialize
-```
-
-Please let us know if you hit this, but for now the suggested workaround is to append this `content-type` for all requests:
-```
-const customFetcher = (uri, args) => {
-  args.headers = {
-    'Content-Type': 'application/json',
-    ...args.headers,
-  };
-  return fetch(uri, args);
-};
-
-const myStatsigClient = new StatsigClient(
-  'YOUR_KEY',
-  {
-    userID: "YOUR_USER_ID",
-  },
-  {
-    networkConfig: {
-      networkOverrideFunc: customFetcher,
-    },
-  }
-);
-```
-
-
-## Hooks
-
-All hooks are re-exported from the `@statsig/react-bindings` package (See [Hooks](/client/javascript-sdk/react#hooks)). 
-They can be imported through `@statsig/react-native-bindings` or directly through the `@statsig/react-bindings` peer dependency.
-
-```js
-import { useFeatureGate, useStatsigClient } from '@statsig/react-native-bindings';
 ```

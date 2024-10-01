@@ -8,7 +8,7 @@ import EventFormats from "./snippets/integration_event_formats.mdx";
 
 The Statsig Event Webhook allows you to log event data to Statsig from third party apps or other external sources to provide additional insights to your Statsig experiments and metrics.
 
-Before using the Webhook, you will need to obtain your Projects' [server secret key](/#account-sign-up-and-api-key). An example call to the Statsig Event Webhook should look like the following:
+Before using the Webhook, you will need to obtain your Projects' server secret key. An example call to the Statsig Event Webhook should look like the following:
 
 ```bash title="HTTP"
 POST https://api.statsig.com/v1/webhooks/event_webhook
@@ -61,7 +61,7 @@ In the dialog that appears, enter the url of you destination webhook and then hi
 
 ![integration-dialog](https://user-images.githubusercontent.com/95646168/162327234-c9a683af-3c36-4da9-a66d-d16bf0ad09bc.png)
 
-You can then set which events you want forwarded to your webhook using the [Event Filtering](#event-filtering-dialog) dialog.
+You can then set which events you want forwarded to your webhook using the [Event Filtering](#filtering-events) dialog.
 
 ### Runtime event webhooks
 
@@ -141,7 +141,7 @@ Follow the following steps to verify the signature:
 v0:1671672194836:{"data":[{"user":{"name":"Joe Zeng","email":"joe@statsig.com"},"timestamp":1671672134833,"eventName":"statsig::config_change","metadata":{"type":"Gate","name":"test","description":"- Updated Rule test rollout from 100.00% to 10.00%","environment":"production"}}]}
 ```
 
-4. Hash the signature basestring, using the signing secret as a key, and take the hex digest of the hash. Create the full signature by prefixing the hex digest with the version number ("v0") and an equals sign. See sample psuedo code below.
+4. Hash the signature basestring, using the signing secret as a key, and take the hex digest of the hash. Create the full signature by prefixing the hex digest with the version number ("v0") and an equals sign. See sample pseudo code below.
 
 ```
 statsig_signature = 'v0=' + hmac.compute_hash_sha256(

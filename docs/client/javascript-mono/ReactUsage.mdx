@@ -1,10 +1,12 @@
 ---
 title: Statsig in React
-sidebar_label: React Support
+sidebar_label: React
 slug: /client/javascript-sdk/react
 ---
 
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+import { FeaturePillList } from '@site/src/components/FeaturePillList';
 
 import {
   SDKDocsBuilder,
@@ -32,20 +34,29 @@ import MoreFAQs from "./_faqs.mdx";
 import Options from "./_options.mdx";
 import ShutdownSnippet from "./_shutdown.mdx";
 
-import * as _ReactInstall from "./_reactInstall.mdx";
+import * as _ReactInstall from "./react/_reactInstall.mdx";
 export const ReactInstall = _ReactInstall;
 
-import * as _ReactSetup from "./_reactSetup.mdx";
+import * as _ReactSetup from "./react/_reactSetup.mdx";
 export const ReactSetup = _ReactSetup;
 
-import * as _reactGatesAndConfigs from "./_reactGatesAndConfigs.mdx";
+import * as _reactGatesAndConfigs from "./react/_reactGatesAndConfigs.mdx";
 export const ReactGatesAndConfigs = _reactGatesAndConfigs;
 
-import * as _reactUpdateUser from "./_reactUpdateUser.mdx";
+import * as _reactUpdateUser from "./react/_reactUpdateUser.mdx";
 export const ReactUpdateUser = _reactUpdateUser;
 
-import * as _reactHooks from "./_reactHooks.mdx";
+import * as _reactHooks from "./react/_reactHooks.mdx";
 export const ReactHooks = _reactHooks;
+
+import * as _reactLoadingState from "./react/_reactLoadingState.mdx";
+export const ReactLoadingState = _reactLoadingState;
+
+import * as _reactTesting from "./react/_reactTesting.mdx";
+export const ReactTesting = _reactTesting;
+
+import * as _reactSessionReplay from "./react/_reactSessionReplay.mdx";
+export const ReactSessionReplay = _reactSessionReplay;
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -59,10 +70,25 @@ export const Builder = SDKDocsBuilder({
     [ReactSetup, {}],
     [ReactGatesAndConfigs, {}],
     [ReactUpdateUser, {}],
-    [ReactHooks, {}]
-  ]
-})
+    [ReactLoadingState, {}],
+    [ReactHooks, {}],
+    [ReactTesting, {}],
+    [ReactSessionReplay, {}],
+  ],
+});
 
 export const toc = Builder.toc
 
+<FeaturePillList
+    features={[
+      { name: "Feature Gates", link: "#feature-gates" },
+      { name: "Experiments", link: "#experiments" },
+      { name: "Dynamic Configs", link: "#dynamic-configs" },
+      { name: "Layers", link: "#layers" },
+      { name: "Event Logging", link: "#event-logging" },
+      { name: "Session Replay", link: "#session-replay" },
+      { name: "Auto Capture", link: "#autocapture" },
+    ]
+  }
+/>
 <>{Builder.result}</>

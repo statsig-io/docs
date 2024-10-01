@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
 
 Now, you're all set to use Statsig gates, experiments and configs.
 
-## Gates
+## Feature Flags/Gates
 
 You can check gates by using `useGateValue` hook in any client side rendered page.  In this case, let's modify `page.tsx` to check for a gate value:
 
@@ -70,6 +70,30 @@ export default function Home() {
   return (
     <div>
       Headline Parameter: {experiment.get('headline', 'Default')}
+    </div>
+  );
+}
+```
+
+## Updating user properties (e.g., Login)
+
+Sometimes you'll need to update user properties, say when the user logs in and a `userID` is assigned, or a set of new properties have been identified.  This would require Statsig to go fetch new values for all the gates, experiments and config evaluations.  This is achieved by the `useStatsigUser` hook. 
+
+Create the file `src/app/login/page.tsx` and put this code in.  Click on the Login button to update the user.
+
+```js
+// login/page.tsx
+import { useGateValue, useStatsigUser } from "@statsig/react-bindings";
+
+export default function LoginPage() {
+  const gateValue = useGateValue("check_user");
+  const { updateUserAsync } = useStatsigUser();
+  return (
+    <div>
+      <div>Gate is {gateValue ? 'passing' : 'failing'}.</div>
+      <button onClick={() => updateUserAsync({ userID: "2" })}>
+        Login
+      </button>
     </div>
   );
 }

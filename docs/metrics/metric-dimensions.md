@@ -8,7 +8,7 @@ slug: /metrics/metric-dimensions
 
 Statsig enables you to breakdown metrics into a single set of non-overlapping dimensions for deep dive analyses.
 
-For example, you can breakdown an event such as **add-to-cart** into product categories such as _sports_, _toys_, _appliances_, _electronics_. To do this, you would simply log **add-to-cart** events and provide the product category in the event's **value** field. See the [Statsig SDK reference guide](/client/jsClientSDK#step5) to learn more.
+For example, you can breakdown an event such as **add-to-cart** into product categories such as _sports_, _toys_, _appliances_, _electronics_. To do this, you would simply log **add-to-cart** events and provide the product category in the event's **value** field. See the [Statsig SDK reference guide](/client/javascript-sdk#event-logging) to learn more.
 
 Statsig enables you to define up to four custom dimensions for an event (one via the **value** field and three via **metadata** fields). To configure these custom event fields, go to **Metrics** --> **Events**, select the event you want to configure, and then go to the **Setup** tab for that event.
 

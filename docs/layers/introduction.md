@@ -19,7 +19,7 @@ Once you create a layer, you'll be able to manage them on the layer management t
 
 In addition to that, **Layers are key to improving engineering efficiency and iteration velocity** for product teams. In a Layer, parameters exist at the Layer level, and can be shared across experiments within the Layer. Due to this characteristic, we can abstract the concept of "Experiment" away from the SDKs so that users only need to deal with parameters in code, which makes it super easy to run multiple experiments that change the same thing and iterate on the same experiment without any code changes.
 
-Let's say your product has an important sign up dialog, which contains some text that your team runs a lot of tests on, some of which were ran in parallel, and some were iterations of previous experiments. If you work with Experiments directly, your code will look like this over time:
+Let's say your product has an important signup dialog, which contains some text that your team runs a lot of tests on, some of which were run in parallel, and some were iterations of previous experiments. If you work with Experiments directly, your code will look like this over time:
 
 ```jsx
 let signUpText = DEFAULT_SIGNUP_TEXT;

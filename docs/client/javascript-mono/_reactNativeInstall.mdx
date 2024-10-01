@@ -1,8 +1,7 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-import ReactNativeInstallLegacy from './_reactNativeInstallLegacy.mdx'
 
-Note since the `@statsig/react-native-bindings` works in conjuction with `@statsig/react-bindings` and `@statsig/js-client`, 
+Note since the `@statsig/react-native-bindings` works in conjunction with `@statsig/react-bindings` and `@statsig/js-client`, 
 documentation on those packages is also relevant for React Native implementations:
 
 - [@statsig/js-client documentation](/client/javascript-sdk)
@@ -24,23 +23,22 @@ specific bindings.
   <TabItem value="npm">
 
 ```shell
-npm install @statsig/js-client @statsig/react-native-bindings
+npm install @statsig/react-native-bindings @statsig/react-bindings @statsig/js-client
 ```
 
   </TabItem>
   <TabItem value="yarn">
 
 ```shell
-yarn add @statsig/js-client @statsig/react-native-bindings
+yarn add @statsig/react-native-bindings @statsig/react-bindings @statsig/js-client
 ```
 
   </TabItem>
 </Tabs>
 
-### Peer Dependecies
+### Peer Dependencies
 
-The `@statsig/react-native-bindings` package has peer dependencies which will also need to be installed.
-[`react-native-mmkv`](https://github.com/mrousavy/react-native-mmkv?tab=readme-ov-file#react-native) is utilized to allow for synchronous storage, similar to LocalStorage in web environments.
+The `@statsig/react-native-bindings` package has peer dependencies which may also need to be installed if they are not already in your project.
 
 <Tabs
   defaultValue="npm"
@@ -53,21 +51,17 @@ The `@statsig/react-native-bindings` package has peer dependencies which will al
   <TabItem value="npm">
 
 ```shell
-npm install react-native-device-info react-native-mmkv
+npm install react-native-device-info @react-native-async-storage/async-storage
 ```
 
   </TabItem>
   <TabItem value="yarn">
 
 ```shell
-yarn add react-native-device-info react-native-mmkv
+yarn add react-native-device-info @react-native-async-storage/async-storage
 ```
 
   </TabItem>
 </Tabs>
 
 
-<details>
-  <summary>Older versions (1.x.x) used async storage</summary>
-  <ReactNativeInstallLegacy />
-</details>

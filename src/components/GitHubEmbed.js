@@ -120,14 +120,14 @@ export default function GitHubEmbed({ url, language }) {
       }}
     >
       {content == null && (
-        <CodeBlock language={language ?? "typescript"}>
+        <CodeBlock language={language ?? "tsx"}>
           <div style={{ textAlign: "center", padding: "50px 0px 50px 0px" }}>
             ...
           </div>
         </CodeBlock>
       )}
       {content != null && (
-        <CodeBlock language={language ?? "typescript"}>{content}</CodeBlock>
+        <CodeBlock language={language ?? "tsx"}>{content}</CodeBlock>
       )}
     </div>
   );

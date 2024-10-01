@@ -66,6 +66,25 @@ You can also change the date range of the dashboard on the fly by modifying the 
 
 ![image](https://github.com/user-attachments/assets/1c038930-f9bd-4d94-9bb4-4ba84a417dda)
 
+### Exporting your Dashboard
+
+If you want to share a static version of your dashboard, print it, or save it for any other purpose, you can easily export a copy of your dashboard with the present data by clicking the settings dropdown "..." in the top right corner, and then clicking on the "Export as PDF" button. After a few seconds, a PDF of your dashboard will be generated and downloaded automatically.
+
+<img width="1577" alt="image" src="https://github.com/user-attachments/assets/37e8b00d-981e-4bc2-a375-a975b6d4d302" />
+
+
+
+### Cloning your Dashboard
+
+If you want to duplicate or clone any of your dashboards, open the desired dashboard, and click the settings dropdown "..." in the top right corner, then click on the "Clone" button. This will bring up the dialog for you to clone your dashboard, and take you there upon success.
+
+![image](https://github.com/user-attachments/assets/abf7b681-5859-4a0e-b63e-d6fe16ea6e77)
+
+### Filtering your Dashboard
+
+You can click on the filters button below the dashboard name to add a global filter to your dashboard. The filter will be applied across all eligible widgets and you can quickly view updated results across all widgets, rather than having to filter each widget individually.
+
+![image](https://github.com/user-attachments/assets/9539d980-c647-4c6e-892d-0d1bb5f7f390)
 
 ### Organize your Dashboard
 
@@ -109,7 +128,7 @@ Dashboard templates are a great way to reduce the time to insights. Statsig comp
 
 Once you’ve created a dashboard you may want to quickly find the charts that matter to you. Heading to the Dashboards tab will give you several ways to find a dashboard.
 
-1. Find dashboards you’ve created quickly by navigating to the Dashboard tab, clicking into the search box, and selecting “My dashboards”.
-2. Navigate to the Dashboard tab and click the filter icon to scope to Dashboards with specific tags or created by specific team members.
-3. Navigate to the Dashboard tab and simply search for the name of the dashboard you would like to find.
+1. Find dashboards you’ve created quickly by navigating to the Dashboards tab, clicking into the search box, and selecting “My dashboards”.
+2. Navigate to the Dashboards tab and click the filter icon to scope to Dashboards with specific tags or created by specific team members.
+3. Navigate to the Dashboards tab and simply search for the name of the dashboard you would like to find.
 4. Anywhere within Statsig you can bring up global search with “cmd+k” and type in the name of the dashboard.

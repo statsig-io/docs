@@ -1,51 +1,33 @@
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
-## Expo Specific Setup
+## Expo + React Specific Setup
 
 The setup for an Expo environment is very similar to a plain [React environment](/client/javascript-sdk/react). 
 The only difference is that you need to use the Expo specific `StatsigProviderExpo`. 
-This automatically switches out the storage layer used by the SDK, utilizing [`react-native-mmkv`](https://github.com/mrousavy/react-native-mmkv) instead of LocalStorage (which isn't available in RN environments).
+This automatically switches out the storage layer used by the SDK, utilizing [AsyncStorage](https://github.com/react-native-async-storage) instead of LocalStorage (which isn't available in RN environments).
 
 
-```typescript
+```tsx
 import {
   StatsigProviderExpo,
-  useClientAsyncInit,
   useFeatureGate,
 } from '@statsig/expo-bindings';
 
 function Content() {
   const gate = useFeatureGate('a_gate');
 
-  return <div>Reason: {gate.details.reason}</div>; // Reason: Network or NetworkNotModified
+  return <Text>Reason: {gate.details.reason}</Text>; // Reason: Network or NetworkNotModified
 }
 
 function App() {
-  const { client, isLoading } = useClientAsyncInit(YOUR_CLIENT_KEY, {
-    userID: 'a-user',
-  });
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   return (
-    <StatsigProviderExpo client={client}>
+    <StatsigProviderExpo 
+      sdkKey={YOUR_CLIENT_KEY}
+      user={{userID: 'a-user'}}
+      options={{ environment: { tier: 'development' } }} // (Optional)
+      loadingComponent={<Text>Loading...</Text>}>
       <Content />
     </StatsigProviderExpo>
   );
 }
-```
-
-**Note**: There are a few different ways to initialize the StatsigClient, with trade-offs between latency and up-to-date values.
-You can read [Initialization Strategies](init-strategies) to learn more.
-
-
-## Hooks
-
-All hooks are re-exported from the `@statsig/react-bindings` package (See [Hooks](/client/javascript-sdk/react#hooks)). 
-They can be imported through `@statsig/expo-bindings` or directly through the `@statsig/react-bindings` peer dependency.
-
-```js
-import { useFeatureGate, useStatsigClient } from '@statsig/expo-bindings';
 ```

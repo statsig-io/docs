@@ -2,6 +2,7 @@
 title: Using EvaluationsDataAdapter
 sidebar_label: EvaluationsDataAdapter
 slug: /client/javascript-sdk/using-evaluations-data-adapter
+displayed_sidebar: cloud
 ---
 
 import Tabs from "@theme/Tabs";
@@ -19,7 +20,7 @@ and provide it to the Statsig client via [StatsigOptions.dataAdapter](/client/ja
 
 When calling `StatsigClient.initializeSync`, the `StatsigEvaluationsDataAdapter` will load values
 from Cache and provide them to the client. The client will also call refresh in the background via
-`StatsigEvaluationsDataAdapter.getDataAsync`, leading to values lagging until the next time `initializeSync` or `updateUserSync` is called.
+`StatsigEvaluationsDataAdapter.getDataAsync`, leading to values lagging until the next time `initializeSync` or `updateUserSync` is called. If you do not want this background refresh to happen, you can pass in `disableBackgroundCacheRefresh` in the options when calling `initializeSync`.
 
 In practice (Unless an additional update call is made), this means that for the very first session of a given user, there will be no values, and not until the next session will the cache have values.
 
@@ -41,7 +42,7 @@ this could lead to values changing mid-session as newer values arrive from the n
 ### Bootstrapping
 
 Bootstrapping allows you to provide data for a given `StatsigUser`. This can be useful if you are are running a
-Statsig Server SDK on your backend and do not wish to make unneccesary network calls (See [statsig-node](/server/nodejsServerSDK#bootstrap)'s getClientInitializeResponse).
+Statsig Server SDK on your backend and do not wish to make unnecessary network calls (See [statsig-node](/server/nodejsServerSDK#bootstrap)'s getClientInitializeResponse).
 
 This approach can also be useful if you are building a mobile app and want to bundle values with your application. Then you can load the values from a local file at startup and provide them to the data adapter.
 

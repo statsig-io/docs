@@ -1,8 +1,8 @@
-import { themes as prismThemes } from "prism-react-renderer";
-import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
-import remarkMath from "remark-math";
+import type { Config } from "@docusaurus/types";
+import { themes as prismThemes } from "prism-react-renderer";
 import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
 
 const config: Config = {
   title: "Statsig Docs",
@@ -89,12 +89,26 @@ const config: Config = {
               {
                 tagName: "script",
                 attributes: {
-                  src: "https://cdn.jsdelivr.net/npm/@statsig/js-client@1/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=client-c1fEjmA7JETNimhlFhKf2M1qMRFNkl9ipDfxYEatlYJ",
+                  src: "https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=client-c1fEjmA7JETNimhlFhKf2M1qMRFNkl9ipDfxYEatlYJ",
                 },
               },
               {
                 tagName: "script",
                 innerHTML: `window.statsigTier="${tier}"`,
+              },
+              {
+                tagName: 'link',
+                attributes: {
+                  rel: 'stylesheet',
+                  href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+                },
+              },
+              {
+                tagName: 'link',
+                attributes: {
+                  rel: 'stylesheet',
+                  href: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap',
+                },
               },
               {
                 tagName: "script",
@@ -124,9 +138,35 @@ const config: Config = {
       {
         redirects: [
           {
-            to: "/guides/shopify-ab-test",
-            from: "/guides/first-shopify-abtest",
+            from: "/client/jsClientSDK",
+            to: "/client/javascript-sdk"
           },
+          {
+            from: "/client/reactSDK",
+            to: "/client/javascript-sdk/react"
+          },
+          {
+            from: "/client/reactNativeSDK",
+            to: "/client/javascript-sdk/react-native"
+          },
+          {
+            from: "/client/reactNativeExpoSDK",
+            to: "/client/javascript-sdk/expo"
+          },
+          {
+            to: "/",
+            from: "/category/walkthrough-guides"
+          },
+          {
+            to: "/client/javascript-sdk/next-js",
+            from: "/guides/nextjs-feature-flags",
+          },
+
+          {
+            to: "/client/javascript-sdk/next-js",
+            from: "/guides/nextjs-page-router-feature-flags",
+          },
+
           {
             to: "/product-analytics/drilldown",
             from: "/mex/drilldown",
@@ -227,47 +267,76 @@ const config: Config = {
             to: "/product-analytics/overview",
             from: "/metrics/events-explorer",
           },
+          {
+            to: "/experiments-plus/stop-assignments",
+            from: "/experiments-plus/pause-assignment",
+          },
         ],
       },
     ],
   ],
 
-  themes: [
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        explicitSearchResultPath: true,
-        hashed: true,
-        indexBlog: false,
-        indexDocs: true,
-        docsRouteBasePath: "/",
-        ignoreFiles: [
-          /client\/_[^\/]*\.mdx/i,
-          /server\/_[^\/]*\.mdx/i,
-          /client\/(Android|AndroidOnDeviceEvaluation|Dart|React|ReactNative|Roku|SwiftOnDeviceEval|Templates|Unity|dotnet|iOS|js|jslocal)\/?/i,
-          /server\/(Templates|java|node|cpp|dotnet|erlang|go|php|python|ruby|rust)\/?/i,
-        ],
-      },
-    ],
-  ],
+  themes: [],
 
   themeConfig: {
     // Replace with your project's social card
     image: "img/docs_meta_q3_2023.png",
+    docs: {
+      sidebar: {
+        autoCollapseCategories: true,
+      },
+    },
+    algolia: {
+      // The application ID provided by Algolia
+      appId: "JOWHDNMZRN",
+
+      // Public API key: it is safe to commit it
+      apiKey: "2a538120ca7db3411698786731f3c2f6",
+
+      indexName: "statsig",
+
+      // Optional: see doc section below
+      // contextualSearch: true,
+
+      // // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+      // externalUrlRegex: 'external\\.com|domain\\.com',
+
+      // // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+      // replaceSearchResultPathname: {
+      //   from: '/docs/', // or as RegExp: /\/docs\//
+      //   to: '/',
+      // },
+
+      // // Optional: Algolia search parameters
+      // searchParameters: {},
+
+      // // Optional: path for search page that enabled by default (`false` to disable it)
+      // searchPagePath: 'search',
+
+      // // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
+      // insights: false,
+    },
     navbar: {
       title: "",
       logo: {
         alt: "Statsig",
-        src: "img/logo.svg",
+        src: "img/logo-new.svg",
         srcDark: "img/logo_white.svg",
         href: "/",
       },
       items: [
         {
+          type: 'search',
+        },
+        {
           type: "html",
-          position: "right",
           value:
-            "<button id=\"consoleCTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus(); window.statsig.logEvent({}, 'console_button_click', window.location.pathname, {referrer: document && document.referrer,});\">Get Started</button>",
+            "<button class=\"loginCTA CTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus();\">Log In</button>",
+        },
+        {
+          type: "html",
+          value:
+            "<button class=\"signupCTA CTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus();\">Get Started</button>",
         },
       ],
     },
@@ -280,6 +349,10 @@ const config: Config = {
             {
               label: "Getting Started",
               to: "/",
+            },
+            {
+              label: "FAQ",
+              to: "/faq",
             },
           ],
         },
@@ -325,6 +398,7 @@ const config: Config = {
         "erlang",
         "dart",
         "rust",
+        "objectivec",
       ],
     },
   } satisfies Preset.ThemeConfig,

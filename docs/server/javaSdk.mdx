@@ -1,5 +1,5 @@
 ---
-sidebar_label: Java/Kotlin
+sidebar_label: Java/Kotlin Server
 title: Java/Kotlin Server SDK
 ---
 
@@ -18,6 +18,7 @@ import {
   ManualExposures,
   Shutdown,
   ClientInitResponse,
+  UserPersistentStorage,
   LocalOverrides,
   Reference,
   ProxyConfigs,
@@ -41,6 +42,8 @@ import * as ReferenceSnippets from "./java/_reference.mdx";
 import ClientInitResponseSnippet from "./java/_clientInitResponse.mdx";
 import ForwardProxyExample from "./java/_forwardProxyExample.mdx";
 import MultiInstanceExample from "./java/_multiInstanceExample.mdx";
+import PersistentStorageInterface from "./java/_persistentStorageInterface.mdx";
+import PersistentStorageExample from "./java/_persistentStorageExample.mdx";
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -86,6 +89,10 @@ export const Builder = SDKDocsBuilder({
       {
         snippet: <OverridesSnippet />,
       },
+    ],
+    [
+      UserPersistentStorage,
+      { interface: <PersistentStorageInterface />, example: <PersistentStorageExample /> },
     ],
     [Instances, { constructor: <MultiInstanceExample /> }],
     [ProxyConfigs, {

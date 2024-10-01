@@ -8,9 +8,10 @@ import {
   HOOK__SDKDocUpdate,
 } from "../sdks/_SDKDocsBuilder.mdx";
 
+import { FeaturePillList } from '@site/src/components/FeaturePillList';
+
 import {
   Repository,
-  GettingStarted,
   FAQ,
   WorkingWith,
   StatsigUser,
@@ -42,12 +43,19 @@ export const PrefetchUsers = _prefetchUsers;
 import * as _asyncTimeouts from "./javascript-mono/_asyncTimeouts.mdx";
 export const AsyncTimeouts = _asyncTimeouts;
 
+import * as _logOnlyData from "./javascript-mono/_logOnlyData.mdx";
+export const LogOnlyData = _logOnlyData;
+
+import * as _testing from "./javascript-mono/_testing.mdx";
+export const Testing = _testing;
+
+import * as _sessionReplayAutoCapture from "./javascript-mono/_sessionReplayAutoCapture.mdx";
+export const SessionReplayAutoCapture = _sessionReplayAutoCapture;
 
 import CheckGate from "./javascript-mono/_checkGate.mdx";
 import GetConfig from "./javascript-mono/_getConfig.mdx";
 import GetExperiment from "./javascript-mono/_getExperiment.mdx";
-import Initialize from "./javascript-mono/_initialize.mdx";
-import Install from "./javascript-mono/_install.mdx";
+import * as GettingStartedFast from "./javascript-mono/_GettingStartedFast.mdx";
 import LogEvent from "./javascript-mono/_logEvent.mdx";
 import MoreFAQs from "./javascript-mono/_faqs.mdx";
 import Options from "./javascript-mono/_options.mdx";
@@ -67,14 +75,7 @@ export const Builder = SDKDocsBuilder({
         repo: "https://github.com/statsig-io/js-client-monorepo",
       },
     ],
-    [
-      GettingStarted,
-      {
-        sdkType: "JavaScript",
-        install: <Install />,
-        initialize: <Initialize />,
-      },
-    ],
+    [GettingStartedFast, {}],
     [
       WorkingWith,
       {
@@ -103,15 +104,30 @@ export const Builder = SDKDocsBuilder({
     [StatsigOptions, { options: <Options /> }],
     [ManualExposures, { ...ManualExposureSnippets }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [Testing, {}],
+    [SessionReplayAutoCapture, {}],
     [AsyncTimeouts, {}],
     [DataAdapter, {}],
     [ClientEventEmitting, {}],
     [MultiInstance, {}],
+    [LogOnlyData, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]
 })
 
-export const toc = Builder.toc
+export const toc = Builder.toc;
 
+<FeaturePillList
+    features={[
+      { name: "Feature Gates", link: "#feature-gates" },
+      { name: "Experiments", link: "#layers" },
+      { name: "Dynamic Configs", link: "#dynamic-configs" },
+      { name: "Layers", link: "#layers" },
+      { name: "Event Logging", link: "#event-logging" },
+      { name: "Session Replay", link: "#session-replay" },
+      { name: "Auto Capture", link: "#autocapture" },
+      { name: "Parameter Stores", link: "#parameter-stores" }
+    ]
+  }
+/>
 <>{Builder.result}</>
-

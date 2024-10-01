@@ -30,7 +30,6 @@ const sdkGroups = [
       { name: 'Ruby', img: '/img/sdk/sdk_ruby.png', link: '/server/rubySDK' },
       { name: '.NET Server', img: '/img/sdk/sdk_dotnet.png', link: '/server/dotnetSDK' },
       { name: 'PHP', img: '/img/sdk/sdk_php.svg', link: '/server/phpSDK' },
-      { name: 'Erlang/Elixir', img: '/img/sdk/sdk_elixir.svg', link: '/server/erlangSDK' },
       { name: 'Rust', img: '/img/sdk/sdk_rust.svg', link: '/server/rustSDK' },
       { name: 'C++ Server', img: '/img/sdk/sdk_cpp.png', link: '/server/cppSDK' }
     ]
@@ -50,12 +49,21 @@ const sdkGroups = [
   }
 ];
 
-const SDKItem = ({ name, img, link }) => (
-  <a href={link} className="sdk-item card">
-    <img src={img} alt={`${name} logo`} className="sdk-icon" />
-    <span>{name}</span>
-  </a>
-);
+const SDKItem = ({ name, img, link }) => {
+  const handleClick = () => {
+    window.__STATSIG__.instance().logEvent({
+      eventName: 'sdk_click',
+      value: name
+    });
+  };
+
+  return (
+    <a href={link} className="sdk-item card" onClick={handleClick}>
+      <img src={img} alt={`${name} logo`} className="sdk-icon" />
+      <span>{name}</span>
+    </a>
+  );
+};
 
 const SDKAndFrameworks = () => (
   <div>

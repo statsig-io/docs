@@ -33,6 +33,23 @@ myStatsigInstance.initialize("client-sdk-key", options: opts) { err in
     }
 }
 
+
+// or, with Objective C
+
+StatsigOptions *options = [StatsigOptions new];
+
+StatsigEnvironment *env = [StatsigEnvironment new];
+env.tier = @"staging";
+options.environment = env;
+
+[[Statsig sharedInstance] 
+  initializeWithSDKKey:@"client-sdk-key"
+  options:options
+  completion:^(NSError * _Nullable error) {
+    if (error != nil) {
+        NSLog(@"Error %@", error);
+    }
+}];
 ```
 
   </TabItem>
@@ -53,6 +70,9 @@ if let err = error {
     print("Error \(err)")
 }
 ```
+
+Note: You can get a copy of your current specs data by visiting: `https://api.statsigcdn.com/v1/download_config_specs/client-{YOUR_SDK_KEY}.json`
+
 
   </TabItem>
 </Tabs>

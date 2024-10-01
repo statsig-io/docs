@@ -1,5 +1,5 @@
 ---
-sidebar_label: JavaScript
+sidebar_label: On Device Evaluation 
 title: JavaScript On Device Evaluation
 ---
 
@@ -39,6 +39,11 @@ import PersistentStorageInterface from "./jslocal/_persistentStorageInterface.md
 import PersistentStorageExample from "./jslocal/_persistentStorageExample.mdx";
 import { GetStableID, OverrideStableID } from "./jslocal/_stableID.mdx";
 
+import * as _deprecationNotice from "./jslocal/_deprecationNotice.mdx";
+export const DeprecationNotice = _deprecationNotice;
+
+
+
 export const Builder = SDKDocsBuilder({
   sections: [
     [
@@ -47,6 +52,7 @@ export const Builder = SDKDocsBuilder({
         repo: "https://github.com/statsig-io/js-local-eval",
       },
     ],
+    [DeprecationNotice, {}],
     [
       GettingStartedRulesets,
       {
@@ -54,7 +60,7 @@ export const Builder = SDKDocsBuilder({
           sdkName="JavascriptOnDeviceEvaluations"
           otherSDK={{
             name: "Javascript Precomputed Evaluations SDK",
-            link: "/client/jsClientSDK",
+            link: "/client/javascript-sdk",
           }}
         />,
         sdkType: "JS Local Evaluation",

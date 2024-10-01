@@ -1,0 +1,44 @@
+---
+title: API Keys
+sidebar_label: API Keys
+---
+
+## Overview
+
+There are three main types of API keys:
+
+1. **Client API Key**: Intended for getting configuration and logging events on the client side.
+2. **Server Secret Key**: Intended for getting configuration and logging events on the server side.
+3. **Console API Key**: The most powerful key, intended for server side use for full CRUD operations on your Statsig project.
+
+### Client API Keys
+
+Client API keys are required to initialize all Statsig client SDKs.  They are intended to be used in a client environment, such as a mobile app or a web app, where the key itself cannot be secret.
+
+Client API keys have access to the following:
+
+- /initialize endpoint, which returns all evaluated gates/configs/experiments/layers for a given user, with the names hashed.
+- /log_event endpoint, which logs events to Statsig.
+
+Because they cannot access the actual names, and because the gates/configs/experiments/layers are all pre-evaluated, the project definition is not accessible via a Client API Key.  This means that any conditions you create in the console, say, for a gate to pass for certain users or email addresses, will not be accessible via a Client API Key.
+
+### Server Secret Keys
+
+Server Secret Keys are required to initialize all Statsig server SDKs. They are intended to be used on webservers or in server scripts, and have access to the following:
+
+- /download_config_specs endpoint, which downloads the configuration for a project
+- /log_event endpoint, which logs events to Statsig.
+
+### Console API Keys
+
+Console API Keys should be treated as the most powerful keys in your project. Not only can they read all project configuration, they can also create, update, and delete entities in your project.
+
+They have access to the entire suite of [console api](/console-api/all-endpoints-generated) endpoints.
+
+### Additional Considerations
+
+You can use [target apps](/sdk-keys/target-apps) in combination with server secret keys and client api keys to control which gates/configs/experiments/layers are accessible via each key.
+
+Both client and server secret keys can also be used to access individual entities via the http api (/check_gate, /get_config, /get_layer)
+
+Client keys can also get access to the download_config_specs endpoint via a scope you can add to the key. This is intended only for client local evaluation sdks, like the [js-on-device-eval sdk](/client/js-on-device-eval-client).

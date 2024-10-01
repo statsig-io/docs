@@ -22,7 +22,7 @@ Follow these simple steps to get started with Web Analytics.
 ## Install Statsig script on your website
 
 ```
-<script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@1/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=[YOUR_CLIENT_KEY]"></script>
+<script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=[YOUR_CLIENT_KEY]"></script>
 ```
 
 Get YOUR_CLIENT_KEY from Project Settings -> Keys & Environments. Reveal the Client API Key, copy, and paste it over the [YOUR-API-KEY] in the snippet above
@@ -42,7 +42,11 @@ Out of the box, autocapture includes:
 * Form Submission Events `auto_capture::form_submit`
 * Page Performance data `auto_capture::performance`
 
-For single page apps, or for more complex scenarios, look up how to [log events using Javascript](/client/javascript-sdk#logging-an-event).
+For single page apps, or for more complex scenarios, look up how to [log events using Javascript](/client/javascript-sdk#event-logging).
+
+You can also disable a subset of these events from the Statsig console under Project Settings > Auto Capture
+
+![screenshot_2024-09-16_at_8 05 21___am](https://github.com/user-attachments/assets/1cba9cbc-9fbe-4024-9a7f-43184efc37b9)
 
 # Exploring using Metrics Explorer
 
@@ -51,6 +55,8 @@ In [Metrics Explorer](https://console.statsig.com/metrics/explore), you can dig 
 More information on using Metrics Explorer like [Funnels and Retention is here](/product-analytics/overview).
 
 ![image](https://github.com/statsig-io/js-client/assets/74588208/f4ed6f2c-79ce-4e47-ba6d-8dbe69978cc0)
+
+You can see some example autocapture event details [here](https://docs.statsig.com/guides/sidecar-experiments/measuring-experiments).
 
 # Advanced Setup
 

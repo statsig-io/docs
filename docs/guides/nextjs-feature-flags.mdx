@@ -1,6 +1,7 @@
 ---
 sidebar_label: How to set up Feature Flags with Next.js (App Router)
 title: How to set up Feature Flags with Next.js (App Router)
+displayed_sidebar: cloud
 ---
 
 import Tabs from "@theme/Tabs";
@@ -10,7 +11,7 @@ Next.js, a leading React framework, provides a robust foundation for developing 
 
 This guide dives into the integration of feature flags with Next.js, leveraging Statsig's React Client SDK and NodeJS Server SDK. By incorporating feature flags into your Next.js app, you can control feature access and dynamically tailor user experiences. Follow along to learn how to set up feature flags in your Next.js project and enhance your application's flexibility and user engagement.
 
-In this tutorial, we'll integrate our [React Client SDK](https://docs.statsig.com/client/reactSDK) and [NodeJS Server SDK](https://docs.statsig.com/server/nodejsServerSDK) into a simple Next.js app with App Router and check a feature gate to determine if the end-user should see a new feature. 
+In this tutorial, we'll integrate our [React Client SDK](/client/deprecated/reactSDK) and [NodeJS Server SDK](https://docs.statsig.com/server/nodejsServerSDK) into a simple Next.js app with App Router and check a feature gate to determine if the end-user should see a new feature. 
 
 ## Create a Feature Gate in Statsig for Your Next.js Project
 
@@ -47,7 +48,7 @@ You should see the following app in your localhost:
 
 ## Setup the Statsig React SDK on the client side
 
-First install the Statsig [React SDK](https://docs.statsig.com/client/reactSDK)
+First install the Statsig [React SDK](/client/deprecated/reactSDK)
 
 <Tabs
   defaultValue="npm"
@@ -130,7 +131,7 @@ export default async function Index(): Promise<JSX.Element> {
 }
 ```
 
-You'll now be bucketed either into the gate or not and get a corresponding experience.  It should look like this, depending on if the userID passes or fais the gate.  Change the ID in the page.tsx to try out both experiences:
+You'll now be bucketed either into the gate or not and get a corresponding experience.  It should look like this, depending on if the userID passes or fails the gate.  Change the ID in the page.tsx to try out both experiences:
 
 ![Failing experience](https://github.com/statsig-io/docs/assets/74584483/fce851ac-588a-465e-a17d-5f29b1469294)
 ![Passing experience](https://github.com/statsig-io/docs/assets/74584483/b2c54ce8-0a1b-41a2-9a44-3668f6db0719)
@@ -250,7 +251,7 @@ export default async function Index(): Promise<JSX.Element> {
 
 ```
 
-You should still get the same experience as above, but now with server generated values!  If you want to look at the diagnostic information for this gate in the console, navigate to the diagnositcs tab of the gate:
+You should still get the same experience as above, but now with server generated values!  If you want to look at the diagnostic information for this gate in the console, navigate to the diagnostics tab of the gate:
 
 ![Diagnostics tab](https://github.com/statsig-io/docs/assets/74584483/6ff0a447-bce9-499c-84fd-a35d9978cd6d)
 

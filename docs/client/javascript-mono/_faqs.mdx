@@ -1,5 +1,25 @@
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
 #### Does the SDK use the browser local storage or cookies? If so, for what purposes?
 
 The SDK does not use any cookies.
 
 It does use the local storage for feature targeting and experimentation purposes only. Values for feature gates, dynamic configs and experiments are cached in the local storage, which are used as a backup in the event that your website/app cannot reach the Statsig server to fetch the latest values. If any events were logged but could not be sent to Statsig server due to issues like network failure, we also save them in the local storage to be sent again when network restores.
+
+
+#### Can I reference the SDK instance globally?  What if I initialized using the Javascript snippet, how can I get a reference to the initialized instance?
+
+You can get a reference to the initialized instance via `window.__STATSIG__.instance()`.  
+
+For example, if you initialize using a script tag in the head of your webpage, you can use the following to log a custom event.
+
+```tsx
+window.__STATSIG__.instance().logEvent("test_event")
+```
+
+#### How do I handle GDPR compliance and Consent Management? 
+
+In certain use cases, it is necessary to suspend cache and network usage until the user grants specific 
+permissions. You can now start the SDK without storage or logging and enable this only after the user grants permission. 
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-gdpr.tsx" />

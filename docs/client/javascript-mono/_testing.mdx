@@ -1,0 +1,13 @@
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+## Testing
+
+When writing tests, you can use jest to mock Statsig packages.
+
+Consider the following example function. We take in a string as input and based on some Statsig configurations, we edit the string and return the result.
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-jest-setup.tsx" />
+
+In our jest test, we can mock the StatsigClient to return the values we want.
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-jest-test.tsx" />

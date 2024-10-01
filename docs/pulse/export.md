@@ -8,7 +8,7 @@ slug: /pulse/export
 
 ![Finding Export Report](https://user-images.githubusercontent.com/77478319/163510492-e6bff7cf-9d7c-46b2-a276-ec2e550aa9a1.png)
 
-You can export your Pulse Results for Feature Gates and Experiments. Simply navigate to the relevant "Pulse Results" page, and click "Export Report". Exporting results can take up to 10 minutes. A notification and an email will be sent when the report is ready, and a link will be available under under Project Settings -> Reports.
+You can export your Pulse Results for Feature Gates and Experiments. Simply navigate to the relevant "Pulse Results" page, and click "Export Report". Exporting results can take up to 10 minutes. A notification and an email will be sent when the report is ready, and a link will be available under under Project Settings -> Reports. You can export results only if your Pulse screen has results.
 
 ![Export Pulse Report Menu](https://user-images.githubusercontent.com/77478319/163458999-bcf599ec-4564-460a-87ba-c08975589b3b.png)
 
