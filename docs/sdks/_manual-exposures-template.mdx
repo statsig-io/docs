@@ -7,8 +7,11 @@ import TabItem from "@theme/TabItem";
 Manually logging exposures can be tricky and may lead to an imbalance in exposure events. For example, only triggering exposures for users in the Test group of an experiment will imbalance the experiment, making it useless.
 :::
 
-Added in version <props.addedInVersion />, you can now query your gates/experiments
-without triggering an exposure as well as manually logging your exposures.
+<div>
+  {props.addedInVersion ? "Added in version " : null}
+  <props.addedInVersion />.
+  You can query your gates/experiments without triggering an exposure as well as manually logging your exposures.
+</div>
 
 <Tabs
   defaultValue="gate"
