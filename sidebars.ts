@@ -154,7 +154,7 @@ const sidebars: SidebarsConfig = {
                 "guides/python-flask-abtests",
               ],
             },
-          ]
+          ],
         },
         {
           type: "category",
@@ -853,7 +853,6 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: [
         {
-
           className: "template-icon sidebar-icon",
           type: "category",
           label: "Templates & Policies",
@@ -879,7 +878,6 @@ const sidebars: SidebarsConfig = {
           ],
         },
         {
-
           className: "team-icon sidebar-icon",
           type: "category",
           label: "Team/Access Management",
