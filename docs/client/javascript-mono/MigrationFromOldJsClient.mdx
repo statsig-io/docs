@@ -1,6 +1,6 @@
 ---
-title: Migrating From statsig-js
-sidebar_label: Migrating from statsig-js
+title: Migrating to @statsig/js-client
+sidebar_label: Migrating to @statsig/js-client
 slug: /client/javascript-sdk/migrating-from-statsig-js
 ---
 
@@ -55,7 +55,7 @@ You can read more about StatsigClient initialization [here](/client/javascript-s
 
 
 ### getConfig is now getDynamicConfig
-Make sure you update your `getConfig` callsites to call the new method, `getDynamicConfig`.  In addition, `DynamicConfig` and `Layer` are no longer classes, but javascript objects.  There are still convenience `get` methods, which should remain unchanged.
+Make sure you update your `getConfig` call sites to call the new method, `getDynamicConfig`.  In addition, `DynamicConfig` and `Layer` are no longer classes, but javascript objects.  There are still convenience `get` methods, which should remain unchanged.
 
 ```js
 // old
@@ -68,7 +68,7 @@ statsigClient.getDynamicConfig('config_name');
 
 
 ### Bootstrapping
-If you are using a server SDK to bootstrap your js/react app, you will need to make some updates to how your server SDK generates values.  One of the optimizations we made with this new js-client SDK was to remove the `sha256` library for hashing gate/experiment names.  Instead, we use a `djb2` hash.  By default, all server SDKs generate `sha256` hashes of gate/experiment names in the `getClientInitializeResponse` method.  You will need to set the hash algorithm parameter to that method call to `"djb2"` instead in order to bootstrap this new client SDK.  One of the benefits to this hashing algorithm is it will make the entire payload smaller as well, so its a net win on package size, speed, and payload size for the SDK.
+If you are using a server SDK to bootstrap your js/react app, you will need to make some updates to how your server SDK generates values.  One of the optimizations we made with this new js-client SDK was to remove the `sha256` library for hashing gate/experiment names.  Instead, we use a `djb2` hash.  By default, all server SDKs generate `sha256` hashes of gate/experiment names in the `getClientInitializeResponse` method.  You will need to set the hash algorithm parameter to that method call to `"djb2"` instead in order to bootstrap this new client SDK.  One of the benefits to this hashing algorithm is it will make the entire payload smaller as well, so its a net win on package size, speed, and payload size for the SDK.  This does not change any of the bucketing logic, only the obfuscation method used for the payload.
 
 For example, if you are bootstrapping from a nodejs app, you will need to do:
 
@@ -254,7 +254,7 @@ The options to parameterize initialization of the SDK have changed.  In some cas
 > This feature does not exist in the new Javascript SDK, so there is no option to disable it.
 
 #### disableAutoMetricsLogging
-> Moved to optional package [`@statsig/web-anayltics`](#https://www.npmjs.com/package/@statsig/web-analytics)
+> Moved to optional package [`@statsig/web-analytics`](https://www.npmjs.com/package/@statsig/web-analytics)
 
 #### disableAllLogging
 > This is now referred to as `StatsigOptions.disableLogging`

@@ -6,4 +6,7 @@ statsig.initialize("server-secret-key")
 # or with StatsigOptions
 options = StatsigOptions(tier=StatsigEnvironmentTier.development)
 statsig.initialize("server-secret-key", options)
+
+# check if sdk is initialized
+initialized = statsig.is_initialized()
 ```

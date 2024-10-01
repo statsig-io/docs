@@ -29,7 +29,7 @@
 - **proxy_configs*: `*proxy_configs: Optional[Dict[NetworkEndpoint, ProxyConfig]] = None`,
   - Configuration network for each endpoint, for example, download_config_spec, get_id_lists
 - **fallback_to_statsig_api**: fallback_to_statsig_api: Optional[bool] = False,
-  - Fallback to Statsig CDN for download config specs and get id lists if it overrided api failed.  
+  - Fallback to Statsig CDN for download config specs and get id lists if the overridden api failed.  
 - **initialize_sources**: initialize_sources: Optional[List[DataSource]] = None,
   - List of sources SDK tries to get download_config_specs from when initialize. The list is ordered, SDK tries to get source from first element, and stops when getting dcs successfully
 - **config_sync_sources**: config_sync_sources: Optional[List[DataSource]] = None,
@@ -50,6 +50,6 @@ You can also use the `set_environment_parameter` function, but that takes in str
 from statsig import statsig, StatsigEnvironmentTier, StatsigOptions
 
 options = StatsigOptions()
-options.set_evironment_parameter("tier", StatsigEnvironmentTier.development.value)
+options.set_environment_parameter("tier", StatsigEnvironmentTier.development.value)
 statsig.initialize("secret-key", options)
 ```

@@ -1,6 +1,6 @@
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
-## React Hooks
+## React Hooks {#hooks}
 
 :::caution
 When a hook is called to fetch a value, an exposure log is automatically triggered. 
@@ -10,12 +10,12 @@ We recommend using the `useStatsigClient` hook for these cases where you need th
 Read on for more details.
 :::
 
-### Feature Gate Hooks
+### Feature Gate Hooks  {#feature-gates}
 
 There are three different ways to check a gate using hooks:
 
 - (recommended): `useStatsigClient.checkGate` is the safest way to check a gate, as it forces you to issue the check (and hence log the exposure) as close to the actual difference in experience as possible
-- `useGateValue` is a convience hook that returns the boolean value and is the most basic way to check if a gate is enabled.
+- `useGateValue` is a convenience hook that returns the boolean value and is the most basic way to check if a gate is enabled.
 - `useFeatureGate` returns the `FeatureGate` object, if you need to check more information about the gate.
 
 Note: `useGateValue` and `useFeatureGate` will log an exposure on render. `useStatsigClient.checkGate` will log an exposure when the function is called.
@@ -23,7 +23,7 @@ Note: `useGateValue` and `useFeatureGate` will log an exposure on render. `useSt
 <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-precomp-gate-hooks.tsx" />
 
 
-### Dynamic Config Hooks
+### Dynamic Config Hooks {#dynamic-configs}
 
 - (recommended): `useStatsigClient.getDynamicConfig` will trigger an exposure only when called
 - `useDynamicConfig` returns a DynamicConfig object and logs an exposure on render
@@ -33,22 +33,22 @@ Note: `useDynamicConfig` will log an exposure on render. `useStatsigClient.getDy
 <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-precomp-dc-hooks.tsx" />
 
 
-### Experiment Hooks
+### Experiment Hooks {#experiments}
 
 - (recommended): `useStatsigClient.getExperiment` is the safest way to check an experiment, as it forces you to issue the check (and hence log the exposure) as close to the actual difference in experience as possible
-- `useExperiment` is a convience hook that returns the experiment and logs an exposure on render
+- `useExperiment` is a convenience hook that returns the experiment and logs an exposure on render
 
 <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-precomp-exp-hooks.tsx" />
 
 
-### Layer Hooks
+### Layer Hooks {#layers}
 - (recommended): `useStatsigClient.getLayer` in line with our other recommendations, but matters less for layers as exposures are triggered only when calling `.get` on a parameter
-- `useLayer` is a convience hook that returns the layer.  This does not log an exposure
+- `useLayer` is a convenience hook that returns the layer.  This does not log an exposure
 
 <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-precomp-layer-hooks.tsx" />
 
 
-### Log Event Hook
+### Log Event {#event-logging}
 
 Using the `useStatsigClient` hook, it is possible to get hold of the `logEvent` function.
 
@@ -61,7 +61,7 @@ This hooks provides a way to get the current `StatsigUser` as well as providing 
 <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-precomp-user-hooks.tsx" />
 
 
-### Client Retriveval Hooks
+### Client Retrieval Hooks
 
 While there are all the other hooks documented here for get values/configurations, sometimes you still need to access the StatsigClient directly.
 
@@ -87,7 +87,7 @@ The `client` instance that is returned is the `StatsigClient` defined in the [@s
 
 To make setup easier, there are a few different hooks provided. These should be used outside of the `StatsigProvider` and should only need to be used once.
 
-- (recommend): `useClientAsyncInit` - Returns a client that asynchornously fetches the latest values from Statsig.
+- (recommend): `useClientAsyncInit` - Returns a client that asynchronously fetches the latest values from Statsig.
 - `useClientBootstrapInit` - Returns a client loaded with the values provided to through the hook. 
 Values can be generated through the use of a Statsig server SDK.
 

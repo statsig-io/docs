@@ -1,0 +1,133 @@
+# AI Prompt Experiment
+
+## Introduction
+
+Statsig's **AI Prompt Experiment** empowers prompt engineers to run experiments on their AI prompts to determine which ones perform best in achieving their goals. Leveraging Statsig's robust experimentation platform, you can optimize your prompts using data-driven insights.
+
+<div align="center">
+    <video controls autoplay loop muted style={{
+        maxWidth: "100%",
+        height: "auto",
+    }}>
+    <source src="/img/ai/tutorial.webm" type="video/webm" />
+    Your browser does not support the video tag.
+    </video>
+</div>
+
+## Common Use Cases
+
+Here are real-life examples where AI Prompt Experiments can be effectively utilized:
+
+- **Enhancing Customer Support Chatbots**
+    - *Example*: Test different greeting prompts to improve user engagement.
+        - Variant A: "Hello! How can I assist you today?"
+        - Variant B: "Hi there! What brings you here today?"
+    - *Goal*: Determine which prompt leads to faster resolution times and higher customer satisfaction scores.
+- **Optimizing AI-Generated Marketing Content**
+    - *Example*: Experiment with prompts for generating product descriptions.
+        - Variant A: "Write a detailed description highlighting the features of our new smartwatch."
+        - Variant B: "Create a compelling narrative that showcases how our new smartwatch enhances daily life."
+    - *Goal*: Identify which prompt produces content that results in higher click-through rates and conversions.
+
+---
+
+By applying AI Prompt Experiments in these scenarios, you can fine-tune your AI models to better meet user needs and achieve specific business objectives.
+
+## Key Features
+
+- **A/B Testing for Prompts**: Compare different AI prompts to identify the most effective one.
+- **Seamless Integration**: Utilize Statsig's existing experiment flow and engine.
+- **Real-Time Analytics**: Monitor experiment results live to make informed decisions.
+- **Scalability**: Test prompts across various user segments and scales.
+
+## Getting Started
+
+### Prerequisites
+
+- Basic understanding of experimentation.
+- Set up metric recording in your codebase. You can utilize web analytics to gather basic metrics without additional setup.
+
+### Accessing the AI Prompt Experiment Feature
+
+1. Log in to your Statsig dashboard.
+2. Navigate to the **AI/ML** section from the left-side navigation menu.
+3. Select **Prompt Experiment**.
+![Screenshot 2024-09-20 at 1.24.39 PM.png](/img/ai/prompt-experiment-icon.png)
+4. Click on **Create Experiment**.
+![Screenshot 2024-09-20 at 1.24.39 PM.png](/img/ai/create-prompt-exp.png)
+
+### Setting Up an AI Prompt Experiment
+
+#### Step 1: Define Experiment Goals
+
+- **Metrics**: Select the key performance indicators (KPIs) that will measure success.
+    
+![Screenshot 2024-09-20 at 1.25.42 PM.png](/img/ai/scorecard.png)
+
+#### Step 2: Configure Experiment Parameters
+
+- **Traffic Allocation**: Decide how much traffic you want to allocate for the experiment.
+- **Targeting Criteria**: Choose the user segments for the experiment.
+    
+![Screenshot 2024-09-20 at 1.26.16 PM.png](/img/ai/allocation.png)
+
+#### Step 3: Create Prompt Variants
+
+- Add different AI prompt versions you wish to test.
+- Ensure each variant is uniquely identifiable.
+- You can generate AI-generated prompts by clicking the top-left icon. This will create a new prompt based on the initial one.
+    
+![Screenshot 2024-09-20 at 1.28.09 PM.png](/img/ai/prompt-variants.png)
+
+#### Step 4: Add the Code Snippet to Retrieve the Prompt
+
+- Copy the code snippet to get the prompt for your Generative AI Model.
+
+![Screenshot 2024-09-20 at 1.32.40 PM.png](/img/ai/snippet.png)
+
+#### Step 5: Launch the Experiment
+
+- Review all settings.
+- Click **Start** to begin data collection at the top right.
+    
+![Screenshot 2024-09-20 at 1.28.58 PM.png](/img/ai/start.png)
+
+## Monitoring and Analysis
+
+### Real-Time Dashboard
+
+- On the **Diagnostics** tab:
+    - Check your **Experiment Health Check** card to ensure the experiment is performing as intended.
+        
+![Screenshot 2024-09-20 at 1.36.20 PM.png](/img/ai/health.png)
+        
+    - Access live data on how each prompt variant is distributed.
+        
+![Screenshot 2024-09-20 at 1.36.59 PM.png](/img/ai/exposure.png)
+
+### Statistical Significance
+
+- On the **Pulse Result** tab:
+    - Statsig automatically calculates the statistical significance of your results.
+    - Indicators show when a variant is confidently outperforming others.
+        
+![Screenshot 2024-09-20 at 1.40.06 PM.png](/img/ai/pulse.png)
+
+### Reporting
+
+- On the **Summary** tab:
+    - Generate detailed reports for stakeholders.
+    - Export data for further analysis if needed.
+        
+![Screenshot 2024-09-20 at 1.39.34 PM.png](/img/ai/summary.png)
+
+## Best Practices
+
+- **Limit Variables**: Change only one element at a time to isolate effects.
+- **Adequate Sample Size**: Run the experiment long enough to collect sufficient data.
+- **Avoid Bias**: Randomize user assignment to prompt variants.
+- **Iterate**: Use insights to refine prompts and re-test.
+
+## Conclusion
+
+Unlock the full potential of your AI applications by optimizing prompts through experimentation. Statsig's AI Prompt Experiment feature provides the tools you need to make data-driven decisions and achieve your goals.

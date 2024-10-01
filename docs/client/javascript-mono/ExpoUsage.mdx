@@ -1,10 +1,12 @@
 ---
 title: Statsig in Expo
-sidebar_label: Expo Support
+sidebar_label: Expo
 slug: /client/javascript-sdk/expo
 ---
 
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+import { FeaturePillList } from '@site/src/components/FeaturePillList';
 
 import {
   SDKDocsBuilder,
@@ -38,6 +40,12 @@ export const ExpoInstall = _ExpoInstall;
 import * as _ExpoSetup from "./_expoSetup.mdx";
 export const ExpoSetup = _ExpoSetup;
 
+import * as _ExpoAdvanced from "./_expoAdvanced.mdx";
+export const ExpoAdvanced = _ExpoAdvanced;
+
+import * as _reactGatesAndConfigs from "./react/_reactGatesAndConfigs.mdx";
+export const ReactGatesAndConfigs = _reactGatesAndConfigs;
+
 export const Builder = SDKDocsBuilder({
   sections: [
     [
@@ -48,10 +56,22 @@ export const Builder = SDKDocsBuilder({
     ],
     [ExpoInstall, {}],
     [ExpoSetup, {}],
+    [ReactGatesAndConfigs, {}],
+    [ExpoAdvanced, {}],
   ]
 })
 
 export const toc = Builder.toc
 
+<FeaturePillList
+    features={[
+      { name: "Feature Gates", link: "#basics-check-gate" },
+      { name: "Experiments", link: "#basics-get-experiment" },
+      { name: "Dynamic Configs", link: "#basics-get-config" },
+      { name: "Layers", link: "#basics-get-layer" },
+      { name: "Event Logging", link: "#basics-log-event" },
+    ]
+  }
+/>
 <>{Builder.result}</>
 

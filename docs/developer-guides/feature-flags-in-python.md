@@ -2,6 +2,7 @@
 title: How to set up Feature Flags in Python
 sidebar_label: Feature Flags in Python
 slug: /developer-guides/feature-flags-in-python
+displayed_sidebar: cloud
 ---
 
 Using feature flags in a Python application with Statsig involves a few steps, starting from setting up a simple Python app to integrating Statsig and using its SDK to manage feature flags. Here's how to go about it:

@@ -9,7 +9,7 @@ And for everything else, there's always the FAQ. We'll try to keep this list upd
 # SDKs and APIs
 
 ## How does bucketing within the Statsig SDKs work?
-Bucketing on Statsig is deterministic. Given the same user object, and the same state of the experiment/gate, we'll always evalaute to the same result. This is true even if the evaluation happens in different places - on the client or server. For a peek into how we do this at a high level:
+Bucketing on Statsig is deterministic. Given the same user object, and the same state of the experiment/gate, we'll always evaluate to the same result. This is true even if the evaluation happens in different places - on the client or server. For a peek into how we do this at a high level:
 - Salt Creation: For each experiment or feature gate, a unique salt is generated.
 - Hashing: The chosen unit (e.g., userId, organizationId, etc.) is passed through a hashing function (SHA256) along with the unique salt which produces a big int.
 - Bucket Assignment: The big int is subjected to a modulus operation with the number 10000. This results in a value between 0 and 9999. (Layers use 1000)
@@ -102,7 +102,7 @@ We use [Bonferroni Correction](https://docs.statsig.com/stats-engine/methodologi
 
 ## How can I reduce variance / increase power / accelerate decision making?
 
-The commonly used methods to reduce AB test variance is [CUPED](https://docs.statsig.com/stats-engine/methodologies/cuped) and [winsorization](https://docs.statsig.com/stats-engine/methodologies/winsorization). CUPED leverages pre-experiment data to reduce variance; winsorization is a configurable way to remove outliners from dataset so that the result is cleaner. Additionally, we also have MAB (Autotune). This is a method where you can dynamically allocate traffic to optimize for the chosen metric, which can accelerate the decision making process.
+The commonly used methods to reduce AB test variance is [CUPED](https://docs.statsig.com/stats-engine/methodologies/cuped) and [winsorization](https://docs.statsig.com/stats-engine/methodologies/winsorization). CUPED leverages pre-experiment data to reduce variance; winsorization is a configurable way to remove outliers from dataset so that the result is cleaner. Additionally, we also have MAB (Autotune). This is a method where you can dynamically allocate traffic to optimize for the chosen metric, which can accelerate the decision making process.
 
 ## Does Statsig offer metric sensitivity analysis / cross-exp analysis / exp impact analysis?
 
@@ -140,7 +140,7 @@ If you have a feature built but not yet released, you can run a simple A/B test 
 Yes you can! When setting up your experiment you can select a Feature Flag that contains targeting rules. 
 ![image](https://user-images.githubusercontent.com/31516123/229173350-a1795b5a-bdef-4c58-afb1-36806dc38f1a.png)
 
-Your Feature Flag can explictly pass only users who meet specific criteria - in this example users on iOS. Learn more about feature flags [here](https://docs.statsig.com/feature-flags/working-with).
+Your Feature Flag can explicitly pass only users who meet specific criteria - in this example users on iOS. Learn more about feature flags [here](https://docs.statsig.com/feature-flags/working-with).
 ![image](https://user-images.githubusercontent.com/31516123/229173998-3099feac-64cc-42fc-a1c3-69c9065d2dd0.png)
 
 ## When I increase/decrease the allocation percentage of an experiment, will users who were allocated continue to be allocated?
@@ -158,7 +158,7 @@ Statsig dedupes billable exposure events for the same user and feature/experimen
 
 Experiment checks that result in no allocation (e.g. the experiment hasn’t started, or has finished) or Feature Flags that have been disabled (fully shipped or abandoned with no rule evaluation) do not generate billable exposure events.
 
-Layer exposures are slightly more nuanced as outlined [here](/layers#a-note-on-exposures).
+Layer exposures are slightly more nuanced as outlined [here](/layers#a-word-on-exposures).
 
 ## How do I manage my billable event volume?  
 See the question above for what counts as a billable event. Some tools available to keep an eye on your event volume include

@@ -31,7 +31,7 @@ function overrideConfig(
 ): void
 ```
 
-See example on [Node.js Server SDK](https://docs.statsig.com/server/nodejsServerSDK#how-can-i-mock-statsig-for-testing) or[ JavaScript Client SDK](https://docs.statsig.com/client/jsClientSDK#how-can-i-mock-the-sdkoverride-gates-in-tests).
+See example on [Node.js Server SDK](https://docs.statsig.com/server/nodejsServerSDK#how-can-i-mock-statsig-for-testing) or [JavaScript Client SDK](/client/javascript-sdk#testing).
 
 ## Environments 
 If there is no environment associated with feature or experiment checks or metrics, Statsig assumes they're for Production. You can explicitly add an environment to checks and metrics and target them using rules in Feature Gates or Segments. Non-production events are visible in diagnostics, but are not included in Pulse results. 

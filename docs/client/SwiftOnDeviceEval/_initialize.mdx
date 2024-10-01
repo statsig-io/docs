@@ -33,6 +33,23 @@ myStatsigInstance.initialize("client-sdk-key", options: opts) { err in
     }
 }
 
+
+// or, with Objective C
+
+StatsigOptions *options = [StatsigOptions new];
+
+StatsigEnvironment *env = [StatsigEnvironment new];
+env.tier = @"staging";
+options.environment = env;
+
+[[Statsig sharedInstance] 
+  initializeWithSDKKey:@"client-sdk-key"
+  options:options
+  completion:^(NSError * _Nullable error) {
+    if (error != nil) {
+        NSLog(@"Error %@", error);
+    }
+}];
 ```
 
   </TabItem>

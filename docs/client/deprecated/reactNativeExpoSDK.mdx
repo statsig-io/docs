@@ -1,0 +1,100 @@
+---
+sidebar_label: React Native (Expo)
+title: React Native Expo Client SDK
+slug: /client/deprecated/reactNativeExpoSDK
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+:::warning DEPRECATED
+To get started with Statsig in Expo, you should use the new [`Statsig Expo SDK`](/client/javascript-sdk/expo).
+
+This version of the SDK is deprecated and will only receive major bug fixes going forward.
+
+If you already use this deprecated version, you should check out the [migration docs](/client/javascript-sdk/migrating-from-statsig-react).
+:::
+
+
+Statsig client side SDK for applications in React Native using Expo. If you are not using Expo, check out our plain [React Native SDK](./reactNativeSDK). This SDK is based on our [JavaScript client SDK](https://github.com/statsig-io/js-client).
+
+## Installation {#installation}
+
+You can install the SDK via npm or yarn. In your project directory, run:
+
+<Tabs
+  defaultValue="npm"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+  ]}>
+  <TabItem value="npm">
+
+```shell
+npm install statsig-react-native-expo
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```shell
+yarn add statsig-react-native-expo
+```
+
+  </TabItem>
+</Tabs>
+
+Next you can import Statsig in your code and use it away!
+
+```jsx
+import {
+  StatsigProvider,
+  useGate,
+  useExperiment,
+  useConfig,
+  Statsig,
+} from "statsig-react-native-expo";
+```
+
+If you run into build errors, see the FAQ below.
+
+## Usage {#usage}
+
+v4.X.X of our react-native-expo SDK wraps the [statsig-react](./reactSDK) sdk. It contains the same React Context, Providers, and Hooks, used in the same way. Get started with our [suggested usage](./reactSDK#usage) or the [Provider and Hooks](/client/deprecated/reactSDK#more-details) details.
+
+:::info
+Be sure to update the imports from the examples on the react SDK docs to use "statsig-react-native-expo" instead of "statsig-react"
+:::
+
+### FAQ
+If you get build errors when trying to install and use the SDK for the first time, you may need to install a few dependencies and rebuild with a clean cache.  We've only encountered these errors when using `eas` to build an expo app, but perhaps there are other build tools that will be missing these dependencies.
+
+For example:
+
+```
+Error: [@RNC/AsyncStorage]: NativeModule: AsyncStorage is null
+```
+
+Means you need to install the AsyncStorage dependency
+
+```
+npx expo install @react-native-async-storage/async-storage
+```
+
+And this:
+```
+ERROR  [Statsig] An unexpected exception occurred. [TypeError: Cannot read property 'getRandomBase64String' of undefined]
+```
+Means you need to install the random values depedency:
+
+```
+npx expo install expo-random
+```
+
+Finally, you can clear the cache in an `eas` build like this:
+
+```
+eas build -p ios --clear-cache
+```
+
+For non `eas` users, you may need to do a `pod install` in the `ios` folder of your app as well.

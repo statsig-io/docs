@@ -2,6 +2,7 @@
 title: Using EvaluationsDataAdapter
 sidebar_label: EvaluationsDataAdapter
 slug: /client/javascript-sdk/using-evaluations-data-adapter
+displayed_sidebar: cloud
 ---
 
 import Tabs from "@theme/Tabs";
@@ -41,7 +42,7 @@ this could lead to values changing mid-session as newer values arrive from the n
 ### Bootstrapping
 
 Bootstrapping allows you to provide data for a given `StatsigUser`. This can be useful if you are are running a
-Statsig Server SDK on your backend and do not wish to make unneccesary network calls (See [statsig-node](/server/nodejsServerSDK#bootstrap)'s getClientInitializeResponse).
+Statsig Server SDK on your backend and do not wish to make unnecessary network calls (See [statsig-node](/server/nodejsServerSDK#bootstrap)'s getClientInitializeResponse).
 
 This approach can also be useful if you are building a mobile app and want to bundle values with your application. Then you can load the values from a local file at startup and provide them to the data adapter.
 

@@ -1,21 +1,9 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-import { useColorMode } from "@docusaurus/theme-common";
 
 export const Badge = ({ version }) => {
-  const isDarkTheme = useColorMode().colorMode === "dark";
   return (
-    <span
-      style={{
-        padding: "5px 10px",
-        color: isDarkTheme ? "white" : "black",
-        backgroundColor: isDarkTheme
-          ? "rgba(255,255,255,0.2)"
-          : "rgba(0,0,0,0.3)",
-        borderRadius: 30,
-        marginLeft: 10,
-      }}
-    >
+    <span>
       v{version}+
     </span>
   );

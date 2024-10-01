@@ -44,6 +44,7 @@ All modes will require a full reload, so that there's not data inconsistency due
 The property source or assignment source used to provide mappings will be filtered to records within the experiment's date range. If a mapping is "evergreen", or not scoped to a specific time period, you can omit the timestamp on the entity property source.
 
 ### Strict Mode
+
 All potential mappings between identifiers within the experiment date range, on the exposed population, are collected. If the primary ID has multiple secondary IDs, or vice versa, it is considered polluted and dropped from the analysis.
 
 ### First Touch Mode
@@ -58,6 +59,7 @@ Primary ID records that are associated with another Primary ID, but are not the 
 
 This is a complex mode, and may not cover every use case - we're happy to partner with customers to extend functionality to allow them to measure the right thing in their experiments.
 
+![ID Resolution Modes](image.png)
 
 #### Example of a supported schema
 
