@@ -372,6 +372,7 @@ const sidebars: SidebarsConfig = {
 
             // 201
             "metrics/create",
+            "metrics/custom-dau",
             "metrics/archiving-metrics",
             "metrics/create-metric-tags",
             "metrics/metric-alerts",
