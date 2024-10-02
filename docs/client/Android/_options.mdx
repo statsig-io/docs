@@ -37,7 +37,7 @@ You can pass in an optional parameter `options` in addition to `sdkKey` and `use
   - If you have critical fields that define a user differently which are not considered IDs, you can override the cache key we generate using this function
 
 - **evaluationCallback**: `((config: BaseConfig) -> Unit)`, v4.24.0+
-  - A function that can be supplied to the sdk that will be called whenever a gate, config, experiment or layer is checked. The function takes a BaseConfig as the only parameter which is the result of the check made.
+  - A function that can be supplied to the sdk that will be called whenever a gate, config, experiment or layer is checked. The function takes a BaseConfig, which will be one of FeatureGate, DynamicConfig, Layer, as the only parameter which is the result of the check made.
 
 
 #### Methods
