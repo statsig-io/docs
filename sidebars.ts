@@ -44,10 +44,6 @@ const sidebars: SidebarsConfig = {
                 "guides/production",
               ],
             },
-            {
-              type: "doc",
-              id: "faq",
-            },
           ],
         },
         {
@@ -845,6 +841,10 @@ const sidebars: SidebarsConfig = {
             "statsig-warehouse-native/features/other-useful-features",
             "statsig-warehouse-native/native-vs-cloud",
           ],
+        },
+        {
+          type: "doc",
+          id: "faq",
         },
       ],
     },
