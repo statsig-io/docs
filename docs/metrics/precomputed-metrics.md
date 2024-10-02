@@ -16,7 +16,7 @@ Statsig integrates natively with cloud data warehouses such as [Snowflake](/data
 
 ### Logging Precomputed Metrics using HTTP API
 
-You can also ingest these metrics using Statsig's [HTTP API](https://docs.statsig.com/http-api). As shown below, the `log_custom_metric` API call requires an **Unit Identifier** (e.g. user_id, stable_id) and the corresponding **ID type**. The API call should also include either a **metric_value** or (if it's a ratio metric) provide a numerator and denominator of the metric.
+You can also ingest these metrics using Statsig's [HTTP API](/http-api). As shown below, the `log_custom_metric` API call requires an **Unit Identifier** (e.g. user_id, stable_id) and the corresponding **ID type**. The API call should also include either a **metric_value** or (if it's a ratio metric) provide a numerator and denominator of the metric.
 
 ```bash
 curl \

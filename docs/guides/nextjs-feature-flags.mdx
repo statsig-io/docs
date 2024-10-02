@@ -11,13 +11,13 @@ Next.js, a leading React framework, provides a robust foundation for developing 
 
 This guide dives into the integration of feature flags with Next.js, leveraging Statsig's React Client SDK and NodeJS Server SDK. By incorporating feature flags into your Next.js app, you can control feature access and dynamically tailor user experiences. Follow along to learn how to set up feature flags in your Next.js project and enhance your application's flexibility and user engagement.
 
-In this tutorial, we'll integrate our [React Client SDK](/client/deprecated/reactSDK) and [NodeJS Server SDK](https://docs.statsig.com/server/nodejsServerSDK) into a simple Next.js app with App Router and check a feature gate to determine if the end-user should see a new feature. 
+In this tutorial, we'll integrate our [React Client SDK](/client/deprecated/reactSDK) and [NodeJS Server SDK](/server/nodejsServerSDK) into a simple Next.js app with App Router and check a feature gate to determine if the end-user should see a new feature. 
 
 ## Create a Feature Gate in Statsig for Your Next.js Project
 
 Create a Statsig account and obtain an SDK key: [Signup for free](https://www.statsig.com/signup)!
 
-The below command can be run to automatically create the simple `nextjs_app_bg` gate in Statsig that gets used throughout this integration guide and demo app. The gate randomizes based on `userID` and has a 50/50 allocation. Make sure to replace the authorization key in the header with your key generated in Statsig project settings as documented [here](https://docs.statsig.com/console-api/introduction).
+The below command can be run to automatically create the simple `nextjs_app_bg` gate in Statsig that gets used throughout this integration guide and demo app. The gate randomizes based on `userID` and has a 50/50 allocation. Make sure to replace the authorization key in the header with your key generated in Statsig project settings as documented [here](/console-api/introduction).
 ```bash
 curl --request POST 'https://statsigapi.net/console/v1/gates' \
 --header 'STATSIG-API-KEY: console-REPLACE_WITH_YOURS' \
@@ -141,7 +141,7 @@ You'll now be bucketed either into the gate or not and get a corresponding exper
 
 To improve performance for the client side feature gates check pattern, we can evaluate feature flag values on the server and pass results to the client. 
 
-First install the Statsig [Node SDK](https://docs.statsig.com/server/nodejsServerSDK)
+First install the Statsig [Node SDK](/server/nodejsServerSDK)
 
 <Tabs
   defaultValue="npm"

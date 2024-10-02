@@ -3,7 +3,7 @@ title: Managing Gates With Terraform
 sidebar_label: Managing Gates
 ---
 
-You can create a .tf file (Terraform File) to configure your Statsig feature gates. All features of [console/v1/gates](https://docs.statsig.com/console-api/gates) are supported. The layout is very similar to the JSON body of a /gates request.
+You can create a .tf file (Terraform File) to configure your Statsig feature gates. All features of [console/v1/gates](/console-api/gates) are supported. The layout is very similar to the JSON body of a /gates request.
 
 Requiring the Statsig provider. (You will need to change the version).
 
@@ -42,7 +42,7 @@ resource "statsig_gate" "my_gate" {
 
 All Console API conditions are supported but the syntax needs a little tweaking.
 
-- **type** | string | The [type](https://docs.statsig.com/console-api/rules#all-conditions) of condition it is.
+- **type** | string | The [type](/console-api/rules#all-conditions) of condition it is.
 - **operator** | string | What form of evaluation should be run against the **target_value**.
 - **target_value** | [string] | The value or values you wish to evaluate. Note: This must be an array, and elements should be of string type. (You can put quotes on numbers. 31 -> "31")
 - **field** | string | Only for custom_field condition type. The name of the field you wish to pull for evaluation from the "custom" object on a user.
@@ -56,6 +56,6 @@ conditions {
 }
 ```
 
-See the full list of conditions [here](https://docs.statsig.com/console-api/rules#all-conditions).
+See the full list of conditions [here](/console-api/rules#all-conditions).
 
 A full gate example is included in the open source Github repo https://github.com/statsig-io/terraform-provider-statsig/blob/main/statsig/test_resources/gate_full.tf

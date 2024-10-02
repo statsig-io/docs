@@ -82,4 +82,4 @@ cargo run
 ```
 
 
-By following these steps, you've set up a Rust application that utilizes Statsig to run an A/B test! You can use this sample to dynamically serve different content based on the experiment's variant, across all of your rust applications. See our [Rust SDK](https://docs.statsig.com/server/rustSDK) for more details, or join [the Statsig Slack community.](https://statsig.com/slack)
+By following these steps, you've set up a Rust application that utilizes Statsig to run an A/B test! You can use this sample to dynamically serve different content based on the experiment's variant, across all of your rust applications. See our [Rust SDK](/server/rustSDK) for more details, or join [the Statsig Slack community.](https://statsig.com/slack)
