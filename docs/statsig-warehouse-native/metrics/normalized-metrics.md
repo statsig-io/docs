@@ -17,4 +17,4 @@ If you wanted to, you could also create this ratio metric yourself and use it in
 ## How to do it
 You can create Normalized Metrics when adding metrics to an Experiment. ![image](https://github.com/user-attachments/assets/a440ccfa-0271-4fbd-ba9d-7bb858f3e180)
 You can select the unitID to normalize using next. 
-<!-- ![Uploading image.png…]() -->
+ <!-- ![Uploading image.png…]() -->
