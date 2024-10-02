@@ -3,47 +3,83 @@ sidebar_label: Custom ID Types
 title: Experiment on custom Unit ID types
 ---
 
-Sometimes you may want to randomize experiment bucketing based on a Unit ID other than the user ID, or the Statsig generated Stable ID. For example, say your company builds tasks management tools for other companies to use - you need to run an experiment to test different experiences for a tool, but you want to make sure everyone in the same company gets the same experience, so that you can understand how
-the different experiences differ in improving overall productivity for a company. In this case, you want the Unit ID on your experiment to be `companyID` instead of `userID`, so that
-every user with the same `companyID` is in the same group for the experiment.
+In certain cases, you may want to randomize experiment bucketing using a custom Unit ID instead of the default `userID` or Statsig-generated Stable ID. For instance, if you're running a task management tool for companies and want to experiment on company-wide behaviors, you might use `companyID` as the Unit ID. This ensures all users from the same company get the same experience, allowing you to measure overall productivity impacts at a company level.
 
-It takes just 3 easy steps to set up an experiment like this. Below we will use `companyID` as an example, but you can replace it with any name that suits your use case.
+Custom ID types allow for this flexibility in your experiments and feature gates, enabling you to randomize and control rollouts based on any identifier you need.
 
-**Note that the same steps also work for feature gates, and doing so on feature gates allow you to partially rollout a feature using custom Unit IDs.**
+### When to use custom Unit IDs:
+- **Organization-wide experiments**: Group users by `companyID` for company-wide consistency.
+- **Session-based experiments**: Use a session or device ID to control the experiment within a specific session.
+- **Group-level rollouts**: Target teams, regions, or other specific cohorts using a relevant ID type.
 
-### Step 1 - Add `companyID` as a new custom Unit ID in your project settings
+Follow these three simple steps to set up an experiment with a custom Unit ID. In the following examples, we will use `companyID`, but you can replace it with any ID relevant to your use case.
 
-Log into the Statsig console at https://console.statsig.com/ and navigate to Project Settings in top-right panel, and then find "Custom Unit IDs" section under the "Basic Settings" tab.
+> **Note**: These steps also apply to feature gates, allowing you to partially roll out features based on custom Unit IDs.
 
-![Screen Shot 2022-06-26 at 10 53 06 AM](https://user-images.githubusercontent.com/74584483/175827590-147ff9c8-ca02-4298-bca5-96583904aec5.png)
+---
 
-By default, every project has "User ID" and "Stable ID" types, but you can add additional ID types by clicking "Edit" and adding the new ID type and description:
+### Step 1: Add `companyID` as a Custom Unit ID
 
-![Screen Shot 2022-06-26 at 10 56 17 AM](https://user-images.githubusercontent.com/74584483/175827554-8862e10a-4171-4028-9aa4-9f314718b39d.png)
+1. **Log into the Statsig Console**: Head over to [Statsig Console](https://console.statsig.com/) and navigate to **Project Settings** in the top-right corner of the dashboard.
+   
+2. **Find Custom Unit IDs**: Under the **Basic Settings** tab, look for the **Custom Unit IDs** section.
 
-Once the new ID type is added, you can use it for all new experiments going forward - no need to repeat this step again!
+    ![Custom Unit ID Settings](https://user-images.githubusercontent.com/74584483/175827590-147ff9c8-ca02-4298-bca5-96583904aec5.png)
 
-### Step 2 - Select `companyID` as the ID Type for your new experiment
+3. **Add a New Custom Unit ID**:
+    - Click the **Edit** button.
+    - Enter `companyID` as the new ID type and provide a description.
+    - Save the changes.
 
-When you create the experiment, simply select `companyID` under the "ID Type" dropdown:
+    ![Add Custom ID](https://user-images.githubusercontent.com/74584483/175827554-8862e10a-4171-4028-9aa4-9f314718b39d.png)
 
-![Screen Shot 2022-06-26 at 10 58 11 AM](https://user-images.githubusercontent.com/74584483/175827625-bc79a7a9-0725-48fd-acf9-686610ea1f6a.png)
+Once added, this custom Unit ID can be used across all your experiments. You only need to configure it once for your project!
 
-Now go ahead and finish the rest of the set up as you would for any [user-level experiment](./abn-tests).
+---
 
-### Step 3 - Provide `companyID` on the user object when using Statsig SDK
+### Step 2: Select `companyID` as the ID Type in Your Experiment
 
-Now all you need to do is make sure `companyID` is provided when initializing any client SDK, or when getting the experiment configs and logging events if using a server SDK. The Statsig user object has a top level field `customIDs` that is a dictionary of key-value pairs representing the ID type and value for the user:
+1. **Create a New Experiment**:
+    - Navigate to **Experiments+** in the Statsig Console.
+    - When setting up a new experiment, find the **ID Type** dropdown and select `companyID`.
 
-```jsx
+    ![Select Custom ID Type](https://user-images.githubusercontent.com/74584483/175827625-bc79a7a9-0725-48fd-acf9-686610ea1f6a.png)
+
+2. **Complete Experiment Setup**:
+    - Finish configuring your experiment as you would for any [user-level experiment](./abn-tests).
+    - Define your hypothesis, metrics, and target audience.
+   
+    Once done, click **Save** to finalize the setup.
+
+> **Tip**: Choosing the right custom Unit ID ensures that all users with the same `companyID` are placed in the same experiment group, making it easier to measure performance at the group level (e.g., company-wide performance).
+
+---
+
+### Step 3: Provide `companyID` in the Statsig SDK
+
+To use the custom Unit ID in your application, ensure it is provided when initializing the Statsig SDK. The `customIDs` field in the Statsig user object allows you to pass the `companyID` (or any other custom ID) along with the usual user information.
+
+#### Example (JavaScript):
+
+```javascript
 var user = {
-    userID: "some_user_id",
+    userID: "some_user_id",       // Standard user identifier
     customIDs: {
-        companyID: "some_company_id",
-        ...
+        companyID: "some_company_id"  // Custom ID for grouping
     },
-    ...
-}
+    // Other attributes (optional)
+    email: "user@example.com",
+    appVersion: "1.0.0"
+};
+
+// Initialize the Statsig Client
+const client = new StatsigClient(sdkKey, user);
+
+await client.initializeAsync();
 ```
 
-That's it! Now go ahead and start your experiment!
+- **`customIDs` field**: This allows you to pass a dictionary of custom IDs, including `companyID`, to ensure the experiment targets users based on that ID.
+
+Once you've provided the necessary IDs in the SDK, you can start logging events and fetching experiment configurations based on the custom Unit ID.
+
+---
