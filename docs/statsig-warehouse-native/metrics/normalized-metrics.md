@@ -1,4 +1,3 @@
-![image](https://github.com/user-attachments/assets/27b0a947-1a2f-4d86-bb83-3150a809582f)---
 title: Normalized Metrics (aka Clustered Experiments)
 slug: /statsig-warehouse-native/metrics/normalized-metrics
 sidebar_label: Normalized Metrics
