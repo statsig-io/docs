@@ -99,7 +99,7 @@ Statsig will join incoming user identifiers to whichever [unit of randomization]
 
 Statsig automatically detects the `event` and `userId` fields that are logged through your Segment events (see [`track`](https://segment.com/docs/connections/spec/track/) for an example). If you're running an experiment with the userId as your unit type, this `userID` should match the user identifier that you log with the Statsig SDK.
 
-If you're using a [custom ID](https://docs.statsig.com/guides/experiment-on-custom-id-types) as the unit type for your experiment, you can provide this identifier using the key `statsigCustomIDs` as part of the Segment `properties` field as shown below.
+If you're using a [custom ID](/guides/experiment-on-custom-id-types) as the unit type for your experiment, you can provide this identifier using the key `statsigCustomIDs` as part of the Segment `properties` field as shown below.
 
 ```bash title="JSON Body"
 {
@@ -124,7 +124,7 @@ This is particularly useful for working with the [Segment anonymous ID](https://
 <img src="https://user-images.githubusercontent.com/125311112/279802493-6956e8f7-28f1-4ac9-88d1-96710240373b.png"/>
 
 #### Experimenting on anonymous traffic
-For example, if you're running experiments on anonymous users, you can use Segment's `anonymousId` as the unit of randomization. First, you will want to [add a new customer identifier to Statsig](https://docs.statsig.com/guides/experiment-on-custom-id-types#step-1---add-companyid-as-a-new-id-type-in-your-project-settings). In the above example, we call our new custom ID `segmentAnonymousId`. Then, when [initializing](/client/javascript-sdk) the Statsig SDK, if you have access to the Segment `anonymousId` you will want to pass it to Statsig as a custom ID. For example, your Statsig initialization may look like this:
+For example, if you're running experiments on anonymous users, you can use Segment's `anonymousId` as the unit of randomization. First, you will want to [add a new customer identifier to Statsig](/guides/experiment-on-custom-id-types#step-1---add-companyid-as-a-new-id-type-in-your-project-settings). In the above example, we call our new custom ID `segmentAnonymousId`. Then, when [initializing](/client/javascript-sdk) the Statsig SDK, if you have access to the Segment `anonymousId` you will want to pass it to Statsig as a custom ID. For example, your Statsig initialization may look like this:
 
 ```jsx
 const Statsig = require("statsig-js");

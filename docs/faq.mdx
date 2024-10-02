@@ -48,7 +48,7 @@ In the first set up, if you want to test a new color, say "Green", you will need
 In the second set up using Statsig, you can simply change your experiment to add a new group that returns "GREEN" and be done. No code change or waiting for release cycle needed!
 
 ## Why am I not seeing my exposures and custom events logged in Statsig?
-If you are executing Statsig in a short-lived process (ie a script or edge worker environment), it's likely the process is exiting prior to the event queue being flushed to Statsig. To ensure your exposures and events are sent to Statsig, make sure to call `statsig.flush()` before your process exits. Some edge providers offer utility methods to elegantly handle this situation to ensure events are flushed without blocking the response to the client ([example](https://docs.statsig.com/server/nodejsServerSDK#flushing-events-)). In a long-lived process like a webserver this is typically not required, but some customers choose to hook into the process's shutdown signal to flush events.
+If you are executing Statsig in a short-lived process (ie a script or edge worker environment), it's likely the process is exiting prior to the event queue being flushed to Statsig. To ensure your exposures and events are sent to Statsig, make sure to call `statsig.flush()` before your process exits. Some edge providers offer utility methods to elegantly handle this situation to ensure events are flushed without blocking the response to the client ([example](/server/nodejsServerSDK#flushing-events-)). In a long-lived process like a webserver this is typically not required, but some customers choose to hook into the process's shutdown signal to flush events.
 
 If you are not seeing a specific custom event, make sure you check the event name is valid.  Statsig drops events that match this regex/contain this character set: `"\\[\]{}<>#=;&$%|\u0000\n\r"`
 
@@ -66,11 +66,11 @@ Yes. For example, if your rule was passing 10%, and you increase it to 20%, the 
 
 ## What statistical tests does Statsig use?
 
-We use two-sample Z test for most experiments, and Welch’s t-test for experiments with small sample, to [calculate p-value](https://docs.statsig.com/stats-engine/p-value). This is the industry-standard approach, which we chose based on literature research and  simulations based on large amount of experiments. We are open to exploring other tests, and we want to maintain a high bar for them producing trustworthy results. If there’s another method you’d like to consider, we’d love to discuss and evaluate.
+We use two-sample Z test for most experiments, and Welch’s t-test for experiments with small sample, to [calculate p-value](/stats-engine/p-value). This is the industry-standard approach, which we chose based on literature research and  simulations based on large amount of experiments. We are open to exploring other tests, and we want to maintain a high bar for them producing trustworthy results. If there’s another method you’d like to consider, we’d love to discuss and evaluate.
 
 ## How does Statsig handle low sample size?
 
-For small sample sizes, we use [Welch's t-test](https://docs.statsig.com/stats-engine/p-value#welchs-t-test) instead of a standard z-test. This statistical test is a better choice for handling samples of unequal size or variance without increasing the false positive rate.
+For small sample sizes, we use [Welch's t-test](/stats-engine/p-value#welchs-t-test) instead of a standard z-test. This statistical test is a better choice for handling samples of unequal size or variance without increasing the false positive rate.
 
 Additionally, we support CUPED and winsorization, which are powerful tools for increasing the power of smaller tests.
 
@@ -84,33 +84,33 @@ Generally speaking, you should use one-sided tests if you are confident that you
 
 ## How does Statsig deal with ‘the peeking problem’?
 
-We use mSPRT for [sequential testing](https://docs.statsig.com/experiments-plus/sequential-testing) where we adjust the confidence interval based on the variance and sample size. We have validated that this parameter satisfies the expected False Positive Rate and provides enough power to detect large effects early.
+We use mSPRT for [sequential testing](/experiments-plus/sequential-testing) where we adjust the confidence interval based on the variance and sample size. We have validated that this parameter satisfies the expected False Positive Rate and provides enough power to detect large effects early.
 
 ## How does Statsig handle skewed distribution / long tail?
 
-We offer a feature called [stratified sampling](https://docs.statsig.com/experiments-plus/stratified-sampling) which is designed to deal with skewed distribution. Based on either a metric or an attribute you chose, we pick the best salt and balance the test and control group accordingly. This feature meaningfully reduces both false positive rates and false discovery rates, making your results more consistent and trustworthy. 
+We offer a feature called [stratified sampling](/experiments-plus/stratified-sampling) which is designed to deal with skewed distribution. Based on either a metric or an attribute you chose, we pick the best salt and balance the test and control group accordingly. This feature meaningfully reduces both false positive rates and false discovery rates, making your results more consistent and trustworthy. 
 
 Beyond that, you can also leverage a combination of winsorization, capping, and the attributes of the central limit theorem for testing. We have evaluated some tests which partners have thought to be better in skewed cases, but found that in simulations these did not produce reliable or trustworthy results.
 
 ## How do you deal with family-wise error rate (FWER)?
 
-We use [Bonferroni Correction](https://docs.statsig.com/stats-engine/methodologies/bonferroni-correction) to control the family-wise error rate. It’s relatively conservative but can effectively reduce the probability of false positives by adjusting the significance level for multiple comparisons. You can apply it based on one or both of the number of test groups and the number of metrics in scorecards.
+We use [Bonferroni Correction](/stats-engine/methodologies/bonferroni-correction) to control the family-wise error rate. It’s relatively conservative but can effectively reduce the probability of false positives by adjusting the significance level for multiple comparisons. You can apply it based on one or both of the number of test groups and the number of metrics in scorecards.
 
 ## What is CUPED?
 
-[CUPED](https://docs.statsig.com/stats-engine/methodologies/cuped), which stands for Controlled-experiment Using Pre-Experiment Data, is one of the most powerful algorithmic tools for increasing the speed and accuracy of experimentation. It leverages pre-experiment data and use that as a covariate in the analysis, so that it will reduce the variance of the estimator, thereby increasing the velocity of the experiment.
+[CUPED](/stats-engine/methodologies/cuped), which stands for Controlled-experiment Using Pre-Experiment Data, is one of the most powerful algorithmic tools for increasing the speed and accuracy of experimentation. It leverages pre-experiment data and use that as a covariate in the analysis, so that it will reduce the variance of the estimator, thereby increasing the velocity of the experiment.
 
 ## How can I reduce variance / increase power / accelerate decision making?
 
-The commonly used methods to reduce AB test variance is [CUPED](https://docs.statsig.com/stats-engine/methodologies/cuped) and [winsorization](https://docs.statsig.com/stats-engine/methodologies/winsorization). CUPED leverages pre-experiment data to reduce variance; winsorization is a configurable way to remove outliers from dataset so that the result is cleaner. Additionally, we also have MAB (Autotune). This is a method where you can dynamically allocate traffic to optimize for the chosen metric, which can accelerate the decision making process.
+The commonly used methods to reduce AB test variance is [CUPED](/stats-engine/methodologies/cuped) and [winsorization](/stats-engine/methodologies/winsorization). CUPED leverages pre-experiment data to reduce variance; winsorization is a configurable way to remove outliers from dataset so that the result is cleaner. Additionally, we also have MAB (Autotune). This is a method where you can dynamically allocate traffic to optimize for the chosen metric, which can accelerate the decision making process.
 
 ## Does Statsig offer metric sensitivity analysis / cross-exp analysis / exp impact analysis?
 
-Yes, we have a new feature called [meta-analysis](https://docs.statsig.com/experimentation/meta-analysis) that serves for this purpose. It enables you to learn from experiments and the metric impact they’ve had (e.g. How easy is it to move metric X) and systematically manage the experiment programs (e.g. Which teams frequently abandon experiments because of flawed setup). Reach out to us if you are interested in learning more!
+Yes, we have a new feature called [meta-analysis](/experimentation/meta-analysis) that serves for this purpose. It enables you to learn from experiments and the metric impact they’ve had (e.g. How easy is it to move metric X) and systematically manage the experiment programs (e.g. Which teams frequently abandon experiments because of flawed setup). Reach out to us if you are interested in learning more!
 
 ## How easy is it to export a customer report?
 
-Statsig automatically generates experiment [summary](https://docs.statsig.com/statsig-warehouse-native/features/reports) and you can easily export it as a report. You can customize for every experiment. If you use a combination of experiment notes and template, you can configure the contents as well.
+Statsig automatically generates experiment [summary](/statsig-warehouse-native/features/reports) and you can easily export it as a report. You can customize for every experiment. If you use a combination of experiment notes and template, you can configure the contents as well.
 
 ## Does Statsig support targeting tests to certain users?
 
@@ -118,15 +118,15 @@ Yes. Experiments integrate natively with Statsig's Feature Gates product in orde
 
 ## Does Statsig support power analysis?
 
-Yes. We have a flexible [power analysis tool](https://docs.statsig.com/experiments-plus/power-analysis) which leverages the known mean and variance of a metric and the observed traffic volume. Given any two of minimum detectable effect (MDE), experiment duration and traffic allocation, this tool will automatically calculate the third one. We provide flexibility to define the population in different ways, and configurable settings w.r.t. one or two sided test, significance level, power, etc. 
+Yes. We have a flexible [power analysis tool](/experiments-plus/power-analysis) which leverages the known mean and variance of a metric and the observed traffic volume. Given any two of minimum detectable effect (MDE), experiment duration and traffic allocation, this tool will automatically calculate the third one. We provide flexibility to define the population in different ways, and configurable settings w.r.t. one or two sided test, significance level, power, etc. 
 
 ## How does Statsig handle ratio metrics in statistical test?
 
-We use the [delta method](https://docs.statsig.com/stats-engine/methodologies/delta-method) when calculating the variance for variables that have a numerator and denominator. This is a well-researched and proven method to handle  variance the variance of ratios when the numerator and denominator variables are correlated.
+We use the [delta method](/stats-engine/methodologies/delta-method) when calculating the variance for variables that have a numerator and denominator. This is a well-researched and proven method to handle  variance the variance of ratios when the numerator and denominator variables are correlated.
 
 ## How can I slice and dice to dive deeper into pulse result?
 
-We provide the flexibility to break down scorecard metrics by user properties and event properties - you can simply click the little + button next to the metric and slice the results. You could use the [Custom Pulse Query](https://docs.statsig.com/pulse/custom-queries) to deep dive into the metrics of interest, to apply certain filters to the experiment results.
+We provide the flexibility to break down scorecard metrics by user properties and event properties - you can simply click the little + button next to the metric and slice the results. You could use the [Custom Pulse Query](/pulse/custom-queries) to deep dive into the metrics of interest, to apply certain filters to the experiment results.
 
 
 # Experimentation
@@ -140,7 +140,7 @@ If you have a feature built but not yet released, you can run a simple A/B test 
 Yes you can! When setting up your experiment you can select a Feature Flag that contains targeting rules. 
 ![image](https://user-images.githubusercontent.com/31516123/229173350-a1795b5a-bdef-4c58-afb1-36806dc38f1a.png)
 
-Your Feature Flag can explicitly pass only users who meet specific criteria - in this example users on iOS. Learn more about feature flags [here](https://docs.statsig.com/feature-flags/working-with).
+Your Feature Flag can explicitly pass only users who meet specific criteria - in this example users on iOS. Learn more about feature flags [here](/feature-flags/working-with).
 ![image](https://user-images.githubusercontent.com/31516123/229173998-3099feac-64cc-42fc-a1c3-69c9065d2dd0.png)
 
 ## When I increase/decrease the allocation percentage of an experiment, will users who were allocated continue to be allocated?
@@ -173,7 +173,7 @@ See the question above for what counts as a billable event. Some tools available
 
 4. Look for gates that are 0% or 100% pass. These can be launched (always return Pass) or disabled (always return Fail) to stop generating billable events. [More information](https://statsig.com/updates#2/2/2023). With experiments, filter to experiments with Status = In Progress and Created < [day-45] to find long running experiments to make sure these are intentional and not just forgotten.
 
-5. There's a Console API endpoint that lets you download billing and usage data to sync this to your own systems [here](https://docs.statsig.com/console-api/usage-billing).
+5. There's a Console API endpoint that lets you download billing and usage data to sync this to your own systems [here](/console-api/usage-billing).
 
 # Platform Usability
 

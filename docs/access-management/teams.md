@@ -39,7 +39,7 @@ Within each team, there are a number of settings you can configure:
 
 **Default Allowed Reviewers:** This setting enables more granular control of *who* is allowed to review and approve changes to a team's configs. There are three options here- "Anyone in the Project" (least restrictive), "Team Members Only" (keep reviews within the team), and "Team or Project Admins Only" (most restrictive). 
 
-Note that team-based review configurations layer on top of [role-based review settings](https://docs.statsig.com/guides/setting-up-reviews#enforcing-team-reviews). For example, if your role has permission to approve reviews and your team has review settings set to “Team members only”, then an approver would need to both be in a role with review approval permission AND be on the team to approve a review pending for that team’s config. 
+Note that team-based review configurations layer on top of [role-based review settings](/guides/setting-up-reviews#enforcing-team-reviews). For example, if your role has permission to approve reviews and your team has review settings set to “Team members only”, then an approver would need to both be in a role with review approval permission AND be on the team to approve a review pending for that team’s config. 
 
 <img width="924" alt="Screen Shot 2024-02-17 at 4 24 50 PM" src="https://github.com/statsig-io/docs/assets/101903926/39263840-cb37-4286-b30a-c6d255f218d0"/>
 

@@ -12,16 +12,16 @@ In this guide, we introduce you to transitioning from a proof of concept or limi
 ![image](https://user-images.githubusercontent.com/31516123/184998486-094beff1-f41f-417c-bd36-89700b0c014c.png)
 
 4. Seed your project with a set of tags to use across gates, experiments and metrics.
-5. Create [Segments](https://docs.statsig.com/segments) to identify internal employees so you can easily override them into feature rollouts and experiments.
+5. Create [Segments](/segments) to identify internal employees so you can easily override them into feature rollouts and experiments.
 
 ## 2. Setup SSO to ease onboarding
 
-Instead of having to invite each user and remembering to deactivate them if they leave your company, set up [Single Sign On](https://docs.statsig.com/access-management/introduction) with your identity provider. Statsig supports OIDC - a modern protocol that most identity providers support. Employees (your identity provider verifies) will have a Statsig account created on first use. Once you do this, make your project "Open" so new users verified by SSO default to having access to your projects. If you choose to keep your project closed, you can explicitly approve new requests.
+Instead of having to invite each user and remembering to deactivate them if they leave your company, set up [Single Sign On](/access-management/introduction) with your identity provider. Statsig supports OIDC - a modern protocol that most identity providers support. Employees (your identity provider verifies) will have a Statsig account created on first use. Once you do this, make your project "Open" so new users verified by SSO default to having access to your projects. If you choose to keep your project closed, you can explicitly approve new requests.
 ![image](https://user-images.githubusercontent.com/31516123/175362892-862d0cf5-012f-484a-8e39-22489011029e.png)
 
 ## 3. Decide on change management policies for production
 
-Statsig lets you [require reviews](https://docs.statsig.com/guides/setting-up-reviews) before making changes in production. This is a best practice similar to requiring code reviews when developing software. You can also create [Review Groups](https://docs.statsig.com/guides/setting-up-reviews#creating-review-groups) (to notify) and apply more granular permissions to specific feature gates and experiments. Check out our[ recommended approach to managing  non-production environments](https://blog.statsig.com/environments-on-statsig-6a818805b3c2) like dev and staging. 
+Statsig lets you [require reviews](/guides/setting-up-reviews) before making changes in production. This is a best practice similar to requiring code reviews when developing software. You can also create [Review Groups](/guides/setting-up-reviews#creating-review-groups) (to notify) and apply more granular permissions to specific feature gates and experiments. Check out our[ recommended approach to managing  non-production environments](https://blog.statsig.com/environments-on-statsig-6a818805b3c2) like dev and staging. 
 
 ![image](https://user-images.githubusercontent.com/31516123/179292011-5a6bcb75-9bb7-47d4-b876-28c2510315fe.png)
 ![image](https://user-images.githubusercontent.com/31516123/179292033-d6e10544-08f6-418a-9fdb-32156487e6da.png)
@@ -30,19 +30,19 @@ Statsig lets you [require reviews](https://docs.statsig.com/guides/setting-up-re
 
 ## 4. Set up Key Metrics and Dimensions
 
-You should make sure [metrics](https://docs.statsig.com/metrics) and dimensions you want to experiment on are set up and correct before starting experiments. Some things to consider/explore while determining this include
+You should make sure [metrics](/metrics) and dimensions you want to experiment on are set up and correct before starting experiments. Some things to consider/explore while determining this include
 
-- [Custom Metrics](https://docs.statsig.com/metrics/create) that build on top of other metrics (e.g. aggregations, ratios)
+- [Custom Metrics](/metrics/create) that build on top of other metrics (e.g. aggregations, ratios)
 - User Dimensions to be able to slice experiment results by Geo, User etc.
-- [Metric Dimensions](https://docs.statsig.com/metrics#metric-dimensions) to be able to able slice metrics (eg. add-to-cart events by Product Category)
-- [Funnels](https://docs.statsig.com/metrics/create-user-funnels)
-- [Tag metrics](https://docs.statsig.com/metrics/create-metric-tags) so that frequently used collections of metrics are easy to bring into experiments
+- [Metric Dimensions](/metrics#metric-dimensions) to be able to able slice metrics (eg. add-to-cart events by Product Category)
+- [Funnels](/metrics/create-user-funnels)
+- [Tag metrics](/metrics/create-metric-tags) so that frequently used collections of metrics are easy to bring into experiments
 
 ![image](https://user-images.githubusercontent.com/31516123/178082121-bb258851-29e5-4732-bd2a-af87833f7570.png)
 
-Decide if you want to [export data from Statsig](https://docs.statsig.com/integrations/data-exports/overview) back into your systems.
+Decide if you want to [export data from Statsig](/integrations/data-exports/overview) back into your systems.
 
-Consider if you want to [customize Statsig's DAU definition](https://docs.statsig.com/metrics/user#definition-of-a-daily-active-user) to include only meaningful events. The default is to count a user as active if they generate any event.
+Consider if you want to [customize Statsig's DAU definition](/metrics/user#definition-of-a-daily-active-user) to include only meaningful events. The default is to count a user as active if they generate any event.
 ![image](https://user-images.githubusercontent.com/31516123/196256669-aae1a8a7-687b-429e-b2f3-c15d4d1e4f61.png)
 
 
@@ -57,11 +57,11 @@ Most experiments or feature rollouts on Statsig target users (identified by user
     b. VIN or vehicleIDs if you're controlling features on cars
     c. creatorID if you have a two sides marketplace with creators and consumers (regular users) and want to control by either
     
-[Read more](https://docs.statsig.com/guides/experiment-on-custom-id-types)
+[Read more](/guides/experiment-on-custom-id-types)
 
 ## 6. Set up integrations
 
-You might already have set up [integrations](https://docs.statsig.com/integrations/introduction) to bring data into Statsig. Consider other integrations that may be helpful -
+You might already have set up [integrations](/integrations/introduction) to bring data into Statsig. Consider other integrations that may be helpful -
 
 - Export assignment data from Statsig to your data warehouse
 - Export Change History to Slack, Teams or Datadog (overlay over operational dashboards)

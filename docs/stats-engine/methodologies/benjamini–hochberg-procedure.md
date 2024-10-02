@@ -5,7 +5,7 @@ slug: /stats-engine/methodologies/benjamini–hochberg-procedure
 ---
 
 ## What it is
-The Benjamini-Hochberg procedure is a statistical method that reduces the probability of false positives by adjusting the significance level for multiple comparisons. It is not as extreme as a [Bonferroni Correction](https://docs.statsig.com/stats-engine/methodologies/bonferroni-correction), because instead of controlling the chance of at least one false positive (Family Wise Error Rate), this controls the expected value of false positives when the null hypothesis has been rejected (False Discovery Rate).
+The Benjamini-Hochberg procedure is a statistical method that reduces the probability of false positives by adjusting the significance level for multiple comparisons. It is not as extreme as a [Bonferroni Correction](/stats-engine/methodologies/bonferroni-correction), because instead of controlling the chance of at least one false positive (Family Wise Error Rate), this controls the expected value of false positives when the null hypothesis has been rejected (False Discovery Rate).
 
 Like with other analysis settings, you can configure this per experiment (or configure global Experiment Settings to default it). 
 ![image](https://github.com/user-attachments/assets/c865494e-0ae4-489c-a416-45848b4d10bc)

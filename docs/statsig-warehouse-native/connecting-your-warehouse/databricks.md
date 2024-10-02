@@ -39,4 +39,4 @@ spark.sql(f"CREATE DATABASE IF NOT EXISTS {staging_database_name}")
 ```
 ### What IP addresses will Statsig access data warehouses from?
 
-[See FAQ](https://docs.statsig.com/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from)
+[See FAQ](/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from)

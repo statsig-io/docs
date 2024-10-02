@@ -23,7 +23,7 @@ In the health checks, an SRM check will flag if exposures are imbalanced in a si
 
 The scorecard is the core view of pulse.
 
-Below, we'll summarize what's in this page. For a deeper look, go to the [stats engine docs](https://docs.statsig.com/stats-engine).
+Below, we'll summarize what's in this page. For a deeper look, go to the [stats engine docs](/stats-engine).
 
 For every metric, we will show you:
 

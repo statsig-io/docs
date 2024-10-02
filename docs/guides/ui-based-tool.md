@@ -4,13 +4,13 @@ title: UI-Based Tool
 ---
 You can follow this guide to use Statsig's built in LaunchDarkly migration tool. Please note that this UI-based tool only imports the "production" environment at the moment.
 
-## **What you need[](https://docs.statsig.com/guides/migrate-from-launchdarkly#what-you-need)**
+## **What you need[](/guides/migrate-from-launchdarkly#what-you-need)**
 
 1. You will need your project key. Projects in LaunchDarkly have a Name (e.g. "My Mobile App") and a Key (e.g.my_mobile_app).
 2. You'll need a read-only access token for this project. You can create one in LaunchDarkly -> Account Settings -> Authorization and limit scope to be read-only.
 3. A Statsig project to use. We recommend trying this in a test project first.
 
-## **How it works[](https://docs.statsig.com/guides/migrate-from-launchdarkly#how-it-works)**
+## **How it works[](/guides/migrate-from-launchdarkly#how-it-works)**
 
 1. You will be prompted to Import Feature Gates if you don't have any feature gates in your project.
 ![image](/img/ui-based-tool1.png)

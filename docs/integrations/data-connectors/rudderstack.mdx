@@ -28,7 +28,7 @@ To ingest your events from RudderStack,
 
 Statsig automatically detects the `event` and `userID` fields that you log through your RudderStack events. If you're running an experiment with the user as your unit type, this userID should match the user identifier that you log with the Statsig SDK.
 
-If you're using a [custom ID](https://docs.statsig.com/guides/experiment-on-custom-id-types) as the unit type for your experiment, you can provide this identifier using the key `statsigCustomIDs` as part of the RudderStack `properties` field as shown below.
+If you're using a [custom ID](/guides/experiment-on-custom-id-types) as the unit type for your experiment, you can provide this identifier using the key `statsigCustomIDs` as part of the RudderStack `properties` field as shown below.
 
 ```bash title="JSON Body"
 {

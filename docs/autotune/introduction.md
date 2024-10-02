@@ -21,7 +21,7 @@ Both Autotune products will test and measure different variations and their effe
 
 Contextual Bandits are a subset of Multi-Armed Bandits; both seek to balance the "explore"/"exploit" problem - balancing between "exploiting" the current best known solution versus "exploring" to get more information about other solutions.
 
-Our blog posts on [Multi-Armed Bandits](https://docs.statsig.com/autotune) and [Contextual Bandits](https://www.statsig.com/blog/statsig-autotune-contextual-bandits-personalization) go into depth on use cases and considerations.
+Our blog posts on [Multi-Armed Bandits](/autotune) and [Contextual Bandits](https://www.statsig.com/blog/statsig-autotune-contextual-bandits-personalization) go into depth on use cases and considerations.
 
 |                            | A/B/n Test | Multi-Armed Bandit (Autotune) | Contextual Bandit (Autotune AI)  | Ranking Engine                           |
 | -------------------------- | ---------- | ----------------------------- | -------------------------------- | ---------------------------------------- |

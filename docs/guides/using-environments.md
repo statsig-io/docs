@@ -81,6 +81,3 @@ For privacy and security reasons, you can also configure per-environment API key
 To generate a new, environment-specific key tap **Generate New Key** and specify the target environments. Please note that the three default environments that are built into all new Projects on Statsig share the same server and client-side API keys. 
 
 <img width="1534" alt="Screen Shot 2023-02-26 at 5 15 29 PM" src="https://user-images.githubusercontent.com/101903926/221450416-44348e77-631a-4ae1-98d1-00d5a4c282ad.png"/>
-
-
-

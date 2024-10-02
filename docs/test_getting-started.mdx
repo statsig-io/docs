@@ -19,10 +19,10 @@ There are two ways to seamlessly integrate Statsig into your product development
 
 - **Statsig Cloud:** Set up ***Statsig SDK***, configure **events logging**. Everything else is handled by us.
     - You get feature gates and 1 million metered events for free, as well as many analytics tools such as Dashboard, Metrics Explorer, and Insights. Here is [a link](https://www.statsig.com/pricing) to our pricing details.
-- **Warehouse Native:** If the events or metrics you want to experiment on are already in your warehouse, you may want to consider [Warehouse Native](https://docs.statsig.com/statsig-warehouse-native/introduction) (WHN).
+- **Warehouse Native:** If the events or metrics you want to experiment on are already in your warehouse, you may want to consider [Warehouse Native](/statsig-warehouse-native/introduction) (WHN).
     - With WHN, you can host Statsig’s Stats Engine within your own Data Warehouse, calculating metric lifts on your own datasets. This is particularly useful for teams with strong privacy constraints.
     - You can use non-Statsig SDKs for feature assignment and provide us exposures in a table (you randomize), or use our SDKs (we randomize and write into your warehouse). The former helps you scale analysis; the latter helps you [10x experimentation velocity](https://www.statsig.com/blog/features-to-10x-experiment-velocity).
-    - Today’s this option is only available with Enterprise contracts. Check [this link](https://docs.statsig.com/statsig-warehouse-native/introduction) for more details or [Schedule a demo](https://www.statsig.com/contact/demo) with our sales team.
+    - Today’s this option is only available with Enterprise contracts. Check [this link](/statsig-warehouse-native/introduction) for more details or [Schedule a demo](https://www.statsig.com/contact/demo) with our sales team.
 
 This page gives you an organized overview of how to set up the SDK. SDK can help you log events, and assignments, which will light up **feature gate**, **experiments**, and **analytics** within half an hour.
 
@@ -208,13 +208,13 @@ application:
 - [HTTP API](/http-api)
 ## Step 2. Set Up Your First Feature Gate
 
-Check [this page](https://docs.statsig.com/guides/first-feature) for a full walkthrough
+Check [this page](/guides/first-feature) for a full walkthrough
 
 ![fg_setup](https://github.com/statsig-io/docs/assets/139815787/4a320c20-c060-4dc2-a493-178f9e7855e9)
 
 ## Step 3. Start Logging Events
 
-Check [this page](https://docs.statsig.com/guides/logging-events) for a full walkthrough
+Check [this page](/guides/logging-events) for a full walkthrough
 
 ![logging_setup](https://github.com/statsig-io/docs/assets/139815787/219f2980-6bae-418d-896a-1305d5bb52c2)
 
@@ -224,7 +224,7 @@ Now, **events** are **logged** and passed to Statsig Cloud via the SDK. They wil
 
 ![metrics](https://github.com/statsig-io/docs/assets/139815787/f810a6e4-eca8-4ed4-be96-76f134f14397)
 
-Which you can add to a [***Dashboard***](https://docs.statsig.com/metrics):
+Which you can add to a [***Dashboard***](/metrics):
 
 ![dashboard](https://github.com/statsig-io/docs/assets/139815787/cd6b2f71-8ca0-4d77-8d7c-a2b081bbbc8e)
 

@@ -10,11 +10,11 @@ For one reason or another, your experiment has come to an end. This could be for
 - Your experiment has a problem, and you need to stop it
 
 ## Making a Decision
-To ship any of the groups in your experiment, including control, to all your users - you should [Make a Decision](https://docs.statsig.com/experiments-plus/make-decision) on the experiment. This will ship the parameters of the variant you selected to all users, and if in a layer will update the layer defaults to reflect your shipped experience.
+To ship any of the groups in your experiment, including control, to all your users - you should [Make a Decision](/experiments-plus/make-decision) on the experiment. This will ship the parameters of the variant you selected to all users, and if in a layer will update the layer defaults to reflect your shipped experience.
 
 ## Stopping an Experiment
 If your experiment has a problem and you need to stop it, there are two routes you can take.
-- If the problem means you no longer wish to run this test, you can [Abandon the experiment](https://docs.statsig.com/experiments-plus/abandon). This will put the experiment in a finished state, and all users will fall back to defaults in code. You can still Reset this later, if you decide to revisit the experiment.
+- If the problem means you no longer wish to run this test, you can [Abandon the experiment](/experiments-plus/abandon). This will put the experiment in a finished state, and all users will fall back to defaults in code. You can still Reset this later, if you decide to revisit the experiment.
 - If one of the groups has a bug you plan to fix, and you wish to later restart the experiment, you can Reset the experiment.
 
 Resetting will put the experiment into an unstarted state. Every user will get the default experience - either the value defined in code or the layer default. Additionally, the "salt" used to randomize a user's group will be changed. This means that when you start the experiment again, your users will be randomly assigned to a group that is not necessarily the same group they were in prior to the experiment being reset. This is important because it makes sure that the new result for the group that was not performing well due to an issue like a bug or bad experience in the previous run, is not negatively affected even after the issue is addressed in the new version.

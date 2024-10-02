@@ -49,4 +49,4 @@ To see which metrics already have the **Core** tag applied, filter by the **Core
 ## Setting Alert Thresholds for your Core Metrics 
 Often when rolling out a new feature or experiment, you may want to be notified if any new rollouts or experiments negatively impact a key business metric. Statsig enables you to set alerts at the per-metric level, whereby you will be alerted if any currently running experiment or feature gate regresses the metric beyond the set threshold.
 
-Given the importance of Core Metrics, it is recommended to configure threshold alerts for Core Metrics via the metrics Catalog. For more on metric alert configuration, see [here](https://docs.statsig.com/metrics/metric-alerts).
+Given the importance of Core Metrics, it is recommended to configure threshold alerts for Core Metrics via the metrics Catalog. For more on metric alert configuration, see [here](/metrics/metric-alerts).
