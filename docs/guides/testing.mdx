@@ -3,36 +3,19 @@ sidebar_label: Testing Your Setup
 title: Testing your Configurations on Statsig
 ---
 
-Statsig enhances your engineering velocity by offering tools and features that allow you to test configurations quickly while ensuring reliable outcomes. This page highlights key features across the product to help you test efficiently.
+Statsig increases your engineering velocity. This page has pointers to features across the product that enable you to test while moving fast. 
 
----
+## Overrides: Testing a specific feature or experiment
+You can create overrides for [features](https://docs.statsig.com/feature-flags/overrides#adding-an-override), [experiments](https://docs.statsig.com/experiments-plus/overrides) or [holdouts](https://docs.statsig.com/holdouts). Overrides are excluded from analysis in Pulse results so they don't bias results. Experiments overrides can include Segments that target pre-prod environments or employees.
 
-## Overrides: Testing a Specific Feature or Experiment
-
-Overrides enable you to manually configure [features](/feature-flags/overrides#adding-an-override), [experiments](/experiments-plus/overrides), or [holdouts](/holdouts) for testing purposes. This allows you to test without affecting live production data or skewing experiment results. Overrides are **excluded from Pulse analysis** to prevent biased results.
-
-- You can use **Segments** to target overrides to pre-production environments or specific groups, such as employees, for testing purposes.
-
-![Feature Override Example](https://user-images.githubusercontent.com/31516123/184234368-3d714df2-d6f2-4c72-8b45-81f46d5597cc.png)
-![Experiment Override Example](https://user-images.githubusercontent.com/31516123/184234596-3099e18b-69c3-4885-9e04-06b4ba1e6fb6.png)
-
-For more information on adding overrides, see the links below:
-- [Feature Overrides](/feature-flags/overrides#adding-an-override)
-- [Experiment Overrides](/experiments-plus/overrides)
-- [Holdout Overrides](/holdouts)
-
----
+![image](https://user-images.githubusercontent.com/31516123/184234368-3d714df2-d6f2-4c72-8b45-81f46d5597cc.png)
+![image](https://user-images.githubusercontent.com/31516123/184234596-3099e18b-69c3-4885-9e04-06b4ba1e6fb6.png)
 
 ## Unit Tests
 
-Statsig's **Server SDKs** provide a `localMode` feature that prevents the SDK from accessing the network, making it ideal for unit testing. This ensures your tests run in isolation and do not send any data to production.
+Server SDKs let you enable `localMode` which causes the SDK to never hit the network, and only return default values. This is perfect for dummy environments or test environments that should not access the network. You can set `overrideGate` and `overrideConfig` APIs to set overrides for a specific user, or for all users.
 
-When `localMode` is enabled, the SDK returns default values, allowing you to mock features and experiments in your test environments.
-
-### Override APIs for Testing
-You can use the `overrideGate` and `overrideConfig` APIs to set overrides for specific users or globally.
-
-```js
+```
 function overrideGate(
     gateName: string,
     value: boolean,
@@ -40,7 +23,7 @@ function overrideGate(
 ): void;
 ```
 
-```js
+```
 function overrideConfig(
     configName: string,
     value: object,
@@ -48,27 +31,11 @@ function overrideConfig(
 ): void
 ```
 
-For example, to override a gate for testing purposes, you could call:
+See example on [Node.js Server SDK](https://docs.statsig.com/server/nodejsServerSDK#how-can-i-mock-statsig-for-testing) or [JavaScript Client SDK](/client/javascript-sdk#testing).
 
-```js
-statsig.overrideGate("example_gate", true);
-```
+## Environments 
+If there is no environment associated with feature or experiment checks or metrics, Statsig assumes they're for Production. You can explicitly add an environment to checks and metrics and target them using rules in Feature Gates or Segments. Non-production events are visible in diagnostics, but are not included in Pulse results. 
 
-- For detailed usage, refer to [Node.js Server SDK](/server/nodejsServerSDK#how-can-i-mock-statsig-for-testing) or the [JavaScript Client SDK](/client/javascript-sdk#testing).
+You can choose to map your environments to the environments directly supported in Statsig - Development, Staging and Production or override them and use what you want. Many customers choose to create a logical mapping (e.g. Dev One boxes to Development, Early Access (special 1% slice of production) to Production).
 
----
-
-## Environments
-
-Statsig allows you to set environments for feature and experiment checks. By default, Statsig assumes all checks without an explicitly defined environment are for **Production**. You can assign environments (such as Development, Staging, or Production) to checks, metrics, and events, and target these environments in your **Feature Gates** or **Segments**.
-
-- Non-production events are visible in diagnostics but are excluded from Pulse results, ensuring only production data is considered in the final analysis.
-
-### Mapping Custom Environments
-You can either use the built-in environments in Statsig (Development, Staging, Production) or map your own custom environments. Some customers choose to create a **logical mapping**, such as:
-- Mapping Dev One boxes to **Development**.
-- Assigning an **Early Access** slice (e.g., 1% of production users) to **Production** for more controlled releases.
-
-For more details on environments, check out this [Statsig blog post](https://blog.statsig.com/environments-on-statsig-6a818805b3c2).
-
----
+[Learn more](https://blog.statsig.com/environments-on-statsig-6a818805b3c2).

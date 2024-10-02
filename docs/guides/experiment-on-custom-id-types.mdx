@@ -1,76 +1,49 @@
 ---
 sidebar_label: Custom ID Types 
-title: Experiment on custom Unit ID Types
+title: Experiment on custom Unit ID types
 ---
 
-Sometimes you may want to randomize experiment bucketing based on a Unit ID other than the user ID or the Statsig-generated Stable ID. For example, if your company builds task management tools for other companies, you may need to run an experiment that tests different experiences at the **company level** rather than for individual users. In this case, you’d want the Unit ID to be `companyID` instead of `userID`, so that all users within the same company are placed in the same experimental group.
+Sometimes you may want to randomize experiment bucketing based on a Unit ID other than the user ID, or the Statsig generated Stable ID. For example, say your company builds tasks management tools for other companies to use - you need to run an experiment to test different experiences for a tool, but you want to make sure everyone in the same company gets the same experience, so that you can understand how
+the different experiences differ in improving overall productivity for a company. In this case, you want the Unit ID on your experiment to be `companyID` instead of `userID`, so that
+every user with the same `companyID` is in the same group for the experiment.
 
-This is helpful when you want to evaluate the impact of different experiences on a company’s overall productivity, rather than just on individual users.
+It takes just 3 easy steps to set up an experiment like this. Below we will use `companyID` as an example, but you can replace it with any name that suits your use case.
 
-### Use Cases:
-- **Company-level experiments**: As in the example above, this approach helps you understand how changes affect entire organizations rather than individuals.
-- **Team-level experiments**: You can apply the same logic to any group of users (e.g., `teamID`, `projectID`).
+**Note that the same steps also work for feature gates, and doing so on feature gates allow you to partially rollout a feature using custom Unit IDs.**
 
-You can set up experiments with custom Unit IDs in three simple steps. Below, we'll use `companyID` as an example, but you can replace it with any custom ID that fits your use case.
+### Step 1 - Add `companyID` as a new custom Unit ID in your project settings
 
-> **Note**: The same steps also work for feature gates, allowing you to partially roll out a feature using custom Unit IDs.
+Log into the Statsig console at https://console.statsig.com/ and navigate to Project Settings in top-right panel, and then find "Custom Unit IDs" section under the "Basic Settings" tab.
 
----
+![Screen Shot 2022-06-26 at 10 53 06 AM](https://user-images.githubusercontent.com/74584483/175827590-147ff9c8-ca02-4298-bca5-96583904aec5.png)
 
-## Step 1: Add `companyID` as a Custom Unit ID in Project Settings
+By default, every project has "User ID" and "Stable ID" types, but you can add additional ID types by clicking "Edit" and adding the new ID type and description:
 
-1. **Log into the Statsig Console**  
-   Head to the [Statsig console](https://console.statsig.com/) and navigate to **Project Settings** from the top-right panel. Then find the **Custom Unit IDs** section under the **Basic Settings** tab.
+![Screen Shot 2022-06-26 at 10 56 17 AM](https://user-images.githubusercontent.com/74584483/175827554-8862e10a-4171-4028-9aa4-9f314718b39d.png)
 
-   ![Custom Unit ID Settings](https://user-images.githubusercontent.com/74584483/175827590-147ff9c8-ca02-4298-bca5-96583904aec5.png)
+Once the new ID type is added, you can use it for all new experiments going forward - no need to repeat this step again!
 
-2. **Add `companyID` as a New ID Type**  
-   By default, every project includes **User ID** and **Stable ID** types. To add a custom Unit ID type:
-   - Click **Edit**.
-   - Add the new ID type and a description.
+### Step 2 - Select `companyID` as the ID Type for your new experiment
 
-   ![Add New ID Type](https://user-images.githubusercontent.com/74584483/175827554-8862e10a-4171-4028-9aa4-9f314718b39d.png)
+When you create the experiment, simply select `companyID` under the "ID Type" dropdown:
 
-   > **Tip**: Once added, the new ID type can be used in any future experiments. You won’t need to repeat this step.
+![Screen Shot 2022-06-26 at 10 58 11 AM](https://user-images.githubusercontent.com/74584483/175827625-bc79a7a9-0725-48fd-acf9-686610ea1f6a.png)
 
----
+Now go ahead and finish the rest of the set up as you would for any [user-level experiment](./abn-tests).
 
-## Step 2: Select `companyID` as the ID Type for Your Experiment
+### Step 3 - Provide `companyID` on the user object when using Statsig SDK
 
-1. **Create a New Experiment**  
-   When setting up the experiment, select `companyID` from the **ID Type** dropdown.
-
-   ![Select Custom ID](https://user-images.githubusercontent.com/74584483/175827625-bc79a7a9-0725-48fd-acf9-686610ea1f6a.png)
-
-2. **Complete Experiment Setup**  
-   Now, finish configuring the experiment just as you would for a [user-level experiment](./abn-tests). You can define experiment groups, metrics, and other settings as needed.
-
----
-
-## Step 3: Provide `companyID` in the Statsig SDK
-
-To ensure the experiment buckets users by `companyID`, make sure this custom ID is provided in the Statsig SDK. You’ll do this by passing `companyID` in the `customIDs` field of the Statsig user object.
-
-- For client-side SDKs, provide `companyID` during initialization.
-- For server-side SDKs, pass `companyID` when fetching experiment configs or logging events.
-
-### Example (Client SDK):
+Now all you need to do is make sure `companyID` is provided when initializing any client SDK, or when getting the experiment configs and logging events if using a server SDK. The Statsig user object has a top level field `customIDs` that is a dictionary of key-value pairs representing the ID type and value for the user:
 
 ```jsx
 var user = {
     userID: "some_user_id",
     customIDs: {
         companyID: "some_company_id",
-        // Other custom IDs if needed
+        ...
     },
-    // Other user fields
-};
+    ...
+}
 ```
 
-> **Note**: The `customIDs` field is a dictionary where each key is the custom Unit ID type (like `companyID`) and the value is the specific ID for that user.
-
----
-
-That's it! Your experiment will now bucket users based on `companyID` instead of `userID`. This approach ensures that users from the same company or group are assigned the same experience.
-
----
+That's it! Now go ahead and start your experiment!
