@@ -844,6 +844,7 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "Management & Admin",
       collapsed: false,
+      collapsible: false,
       items: [
         {
           className: "template-icon sidebar-icon",
