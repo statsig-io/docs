@@ -12,10 +12,6 @@ jobs:
         with:
           lfs: true
       - run: git lfs pull
-      - uses: pnpm/action-setup@v2.4.1
-        with:
-          version: latest
-          run_install: false
       - run: |
           npm install
       - run: |

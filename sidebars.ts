@@ -471,6 +471,7 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/overrides",
                 "experiments-plus/stratified-sampling",
                 "experiments-plus/differential-impact-detection",
+                "experiments-plus/interaction-detection",
                 "experiments-plus/stop-assignments",
                 "experiments-plus/abandon",
                 "experiments-plus/ending-experiment",
@@ -844,6 +845,7 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "Management & Admin",
       collapsed: false,
+      collapsible: false,
       items: [
         {
           className: "template-icon sidebar-icon",
@@ -890,6 +892,15 @@ const sidebars: SidebarsConfig = {
               ],
             },
             "guides/config-history",
+            {
+              type: "category",
+              label: "SCIM User Provisioning",
+              link: {
+                type: "doc",
+                id: "access-management/scim/okta_scim",
+              },
+              items: ["access-management/scim/scim_changelog"],
+            },
           ],
         },
         {
