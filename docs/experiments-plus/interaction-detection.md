@@ -26,12 +26,12 @@ Interaction Detection is available as a special custom query on an experiment. Y
 
 $$
 \LARGE
-\delta_{treatment_effect} = (\overline{X_{test \cdot test}} - \overline{X_{test \cdot control}}) - (\overline{X_{control \cdot test}} - \overline{X_{control \cdot control}})
+\delta_{\text{treatment effect}} = (\overline{X_{test \cdot test}} - \overline{X_{test \cdot control}}) - (\overline{X_{control \cdot test}} - \overline{X_{control \cdot control}})
 $$
 
 $$
 \LARGE
-\delta_{treatment_effect}{\%} = \frac{\delta_{treatment_effect}}{(\overline{X_{control \cdot test}} - \overline{X_{control \cdot control}})}
+\delta_{\text{treatment effect}}{\%} = \frac{\delta_{\text{treatment effect}}}{(\overline{X_{control \cdot test}} - \overline{X_{control \cdot control}})}
 $$
 
 $$
