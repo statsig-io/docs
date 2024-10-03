@@ -9,7 +9,7 @@ Device-level experiments are ideal in scenarios such as:
 - **Anonymous or first-time users**: When users haven't signed in yet or are browsing anonymously.
 - **Cross-device consistency**: Ensuring the same experience on the same device, regardless of user sign-in status.
 
-You can implement a device-level experiment almost exactly like a traditional user-level experiment. The key difference is setting the experiment’s ID type to **Stable ID**.
+You can implement a device-level experiment almost exactly like a [traditional user-level experiment](./user-level-experiments.mdx). The key difference is setting the experiment’s ID type to **Stable ID**.
 
 ### Step 1: Create a Device-level Experiment
 
@@ -38,7 +38,7 @@ You can implement a device-level experiment almost exactly like a traditional us
 
 ### Step 2: Initialize the SDK in Your Application
 
-After setting up your experiment in the Statsig console, the next step is to integrate it into your client application using one of Statsig’s SDKs.
+After setting up your experiment in the Statsig console, the next step is to integrate it into your client application using one of [Statsig's SDKs](../sdks/client-sdks-overview.mdx).
 
 Here’s an example of how to initialize the SDK in a **Javascript** application. It's recommended to use your own cookie or logged-out ID as the `userID` when available. If you don't have any identifier, the client SDK will automatically generate a stable ID.
 
@@ -67,7 +67,7 @@ await client.initializeAsync();
 - **Fallback to Stable ID**: If you don't have any identifier, Statsig will automatically generate a stable ID.
 - **User attributes**: You can pass additional attributes like `ip`, `appVersion`, and `custom` properties for experiment targeting.
 
-> **Tip**: If your app collects other relevant attributes (e.g., device type, region), pass them in the `user` object to improve experiment precision.
+> **Tip**: If your app collects other relevant attributes (e.g., device type, region), pass them in the `user` object to improve experiment precision. Learn more about [user attributes](./user-attributes.mdx).
 
 ### Step 3 (Optional): Update User Info for Logged-in Users
 
@@ -84,5 +84,9 @@ await client.updateUserAsync(user);
 ```
 
 > **Note**: Updating the user with a `userID` will only impact user-level experiments and feature gates. Device-level experiment evaluations will remain based on the stable ID.
+
+---
+
+For more information on experiments, check out our [Experiments Overview](../experiments/experiments-overview.mdx) guide.
 
 ---
