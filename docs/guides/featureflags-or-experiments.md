@@ -3,17 +3,17 @@ sidebar_label: Choosing Flags or Experiments
 title: When to use Feature Flags vs. Experiments?
 ---
 
+With Statsig, you can create control and test groups and compare them using A/B testing via either **feature gates** or **experiments**. This guide helps clarify when to use a feature gate versus an experiment, depending on your needs.
+
 :::note
 In Statsig, _feature flags_ are referred to as **feature gates** in the UI and SDKs.
 :::
-
-With Statsig, you can create control and test groups and compare them using A/B testing via either **feature gates** or **experiments**. This guide helps clarify when to use a feature gate versus an experiment, depending on your needs.
 
 ---
 
 ## What Do You Need?
 
-- **Feature Gate**: Use this if you want to measure the impact of a feature and roll it out gradually.
+- **Feature Gate**: Use this if you want to measure the impact of a feature or/and roll it out gradually.
 - **Experiment**: Use this when you want to test hypotheses between multiple product variants.
 
 ---
@@ -32,8 +32,8 @@ Here are a few important considerations when deciding between a feature gate or 
    - **Experiment**: Returns a JSON config that helps configure your app experience for the user's assigned group.
 
 3. **Ramping Up**:
-   - **Feature Gate**: Increase the **Pass%** to gradually roll out a feature to more users.
-   - **Experiment**: Increase the **Allocation%** to add more users to your test.
+   - **Feature Gate**: Increase the **Pass%** to gradually roll out a feature to more users. You can go up to 99% vs 1% with feature gates.
+   - **Experiment**: Increase the **Allocation%** to add more users to your test. Experiments are limited to a maximum 50/50 split.
    - In both cases, once users are assigned to a group, they continue to receive the same experience, meaning ramping up **Pass%** or **Allocation%** will not reshuffle users (i.e., no **resalt** occurs).
 
 ![image](https://user-images.githubusercontent.com/1315028/158034863-71cc65ea-8833-47e8-a277-89119f7a00ab.png)
