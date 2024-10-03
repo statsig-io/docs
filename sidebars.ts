@@ -352,7 +352,15 @@ const sidebars: SidebarsConfig = {
                 "metrics/101",
                 "metrics/how-metrics-work",
                 "metrics/raw-events",
-                "metrics/raw-event-metrics",
+                {
+                  type: "category",
+                  label: "Auto-generated Metrics",
+                  link: {
+                    type: "doc",
+                    id: "metrics/raw-event-metrics",
+                  },
+                  items: ["metrics/deprecate-event-dau"],
+                },
                 "metrics/custom-metrics",
                 "metrics/precomputed-metrics",
                 "metrics/user-dimensions",
