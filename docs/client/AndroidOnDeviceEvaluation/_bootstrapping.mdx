@@ -1,0 +1,9 @@
+## Bootstrapping
+
+You may wish to bootstrap the SDK with local values, or from a server integration.  This would provide default values in the case where the network is completely unavailable, or prior to a successful network request.
+
+Often, this is implemented as a local file that is bundled with your application, and provided to the SDK during initialization.
+
+To bootstrap the SDK you can use `initializeValues` field in the `StatsigOptions` object to pass the config definition.  `initializeValues` is a `String` that contains the JSON definition of the config.
+
+You can get a copy of your current config file from the cdn here: https://api.statsigcdn.com/v1/download_config_specs/{YOUR_SDK_KEY}.json

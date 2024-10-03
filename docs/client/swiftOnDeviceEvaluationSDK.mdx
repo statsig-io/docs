@@ -32,6 +32,9 @@ import MoreFAQs from "./SwiftOnDeviceEval/_faqs.mdx";
 import Options from "./SwiftOnDeviceEval/_options.mdx";
 import ShutdownSnippet from "./SwiftOnDeviceEval/_shutdown.mdx";
 
+import * as _Bootstrapping from "./SwiftOnDeviceEval/_Bootstrapping.mdx";
+export const Bootstrapping = _Bootstrapping;
+
 import * as _LocalOverrides from "./SwiftOnDeviceEval/_localOverrides.mdx";
 export const LocalOverrides = _LocalOverrides;
 
@@ -79,6 +82,7 @@ export const Builder = SDKDocsBuilder({
     [StatsigUser, { excludeMentionToDirectUpdateUser: true, isOnDeviceEval: true, snippet: <CreateStatsigUser /> }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [Bootstrapping, {}],
     [LocalOverrides, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]
