@@ -7,32 +7,14 @@ slug: /metrics/ingest
 
 Statsig allows you to ingest raw events that are computed into metrics in the following ways:
 
-- Using either our [client](/client/introduction) or [server](/server/introduction) SDKs to log events to Statsig.
-- Ingesting metrics from your data tools such as [Segment](/integrations/data-connectors/segment), [mParticle](/integrations/data-connectors/mparticle), [RudderStack](/integrations/data-connectors/rudderstack) and [Census](/integrations/data-connectors/census)
--  Logging metrics using Statsig's [HTTP API](/http-api)
+- Using either our [client](/client/introduction) or [server](/server/introduction) SDKs to log events to Statsig.  
+- Ingesting events from your data tools such as [Segment](/integrations/data-connectors/segment), [mParticle](/integrations/data-connectors/mparticle), [RudderStack](/integrations/data-connectors/rudderstack) and [Census](/integrations/data-connectors/census)
+
+Metrics can be created and defined through the Statsig UI, where Statsig will handle the transformation and daily computation.
 
 ## Ingesting Precomputed Metrics
 
-Statsig allows you to ingest any of your precomputed product and business metrics in the following ways:
-
-- Importing metrics from a data warehouse like [Snowflake](/integrations/data-imports/snowflake), [BigQuery](/integrations/data-imports/bigquery) or [Redshift](/integrations/data-imports/redshift)
--  Logging precomputed metrics using Statsig's [HTTP API](/http-api)
-
-### Logging Precomputed Metrics using the [HTTP API](/http-api)
-
-You can log one or more precomputed metrics with Statsig using the `log_custom_metric` API as shown below. The API call requires an **ID type** and should either (a) include a **metric_value**, or (b) provide a numerator and denominator of the metrics (if it's a ratio metric).
-
-```bash
-curl \
-  “https://events.statsigapi.net/v1/log_custom_metric” \
-  --header “statsig-api-key: <YOUR-SDK-KEY>” \
-  --header “Content-Type: application/json” \
-  --request POST \
-  --data “{“metrics": [{"user_id": "1237", "metric_name": "test_metric", "id_type": "user_id", "metric_value": 90}, {"user_id": "4568", "metric_name": "ratio", "id_type": "stable_id", "numerator": 3, "denominator": 15}]}”
-```
-
-With response:
-`{"success":true}`
+Statsig allows you to ingest any of your precomputed product and business metrics using our data warehouse connector (Metrics Imports).  Integrations like [Snowflake](/integrations/data-imports/snowflake), [BigQuery](/integrations/data-imports/bigquery) and [Redshift](/integrations/data-imports/redshift) are supported.
 
 Statsig does not automatically process these metrics until you mark them as ready, as it's possible you might land data out of order. Once you are finished loading data for a period, you mark the data as ready by hitting the `mark_data_ready` API:
 
