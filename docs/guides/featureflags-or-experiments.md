@@ -3,40 +3,63 @@ sidebar_label: Choosing Flags or Experiments
 title: When to use Feature Flags vs. Experiments?
 ---
 
+With Statsig, you can create control and test groups and compare them using A/B testing via either **feature gates** or **experiments**. This guide helps clarify when to use a feature gate versus an experiment, depending on your needs.
+
 :::note
-
-Usually referred to online as _feature flags_, the Statsig UI and SDKs call them _feature gates_.
-
+In Statsig, _feature flags_ are referred to as **feature gates** in the UI and SDKs.
 :::
 
-With Statsig, you can create control and test groups, and compare these groups as an A/B test using either a feature flag (gate) or an experiment. 
-If you're wondering when to use a feature flag vs. an experiment, this guide is for you.  
+---
 
-## What do you need?
-In short, 
- - Want to measure the impact of a feature (and roll it out gradually)? Use a **Feature Gate**.
- - Want to test your hypotheses between product variants? Create an **Experiment**.
+## What Do You Need?
 
-## What to expect?
-As you design your A/B test, here are three further details to consider:
- - A Feature Gate can offer only two variants (feature on vs. feature off); an Experiment can offer multiple variants
-      - NOTE that when you look at your Feature Gate exposures you'll see your exposures divided up into three groups- "Pass", "Fail", and "Fail- not in analysis". While all units will be bucketed into either Pass/ Fail, for the purposes of metric lifts analysis, we compare a matching % of your Fail group against your Pass group and do not use the remainder of the Fail group for analysis. You can read more about this "balanced gates" methodology [here](/feature-flags/view-exposures#gate-exposures).
- - A Feature Gate exposure check returns a boolean (true/false) to assign the user to either the control or test group; an Experiment exposure check returns a JSON config to help you configure your app experience based on the group that the user is assigned to
- - To ramp up, you will increase the Pass% in a Feature Gate, and increase the Allocation% in an Experiment. In both cases, users in each group will continue to receive their first assigned experience i.e. ramping up Pass% or Allocation% does not resalt (or reshuffle) users. 
+- **Feature Gate**: Use this if you want to measure the impact of a feature or/and roll it out gradually.
+- **Experiment**: Use this when you want to test hypotheses between multiple product variants.
+
+---
+
+## Key Differences
+
+Here are a few important considerations when deciding between a feature gate or an experiment for your A/B test:
+
+1. **Number of Variants**:
+   - **Feature Gate**: Provides only two variants (feature on vs. feature off).
+   - **Experiment**: Can handle multiple variants for more complex A/B testing.
+   - **Important Note**: When viewing feature gate exposures, you'll see three groups: "Pass," "Fail," and "Fail-Not in Analysis." While all users are bucketed into "Pass" or "Fail," only a balanced portion of the "Fail" group is used for metric analysis. You can read more about this in our [balanced gates methodology](/feature-flags/view-exposures#gate-exposures).
+
+2. **Exposure Results**:
+   - **Feature Gate**: Returns a boolean (`true` or `false`) to assign users to the control (off) or test (on) group.
+   - **Experiment**: Returns a JSON config that helps configure your app experience for the user's assigned group.
+
+3. **Ramping Up**:
+   - **Feature Gate**: Increase the **Pass%** to gradually roll out a feature to more users. You can go up to 99% vs 1% with feature gates.
+   - **Experiment**: Increase the **Allocation%** to add more users to your test. Experiments are limited to a maximum 50/50 split.
+   - In both cases, once users are assigned to a group, they continue to receive the same experience, meaning ramping up **Pass%** or **Allocation%** will not reshuffle users (i.e., no **resalt** occurs).
 
 ![image](https://user-images.githubusercontent.com/1315028/158034863-71cc65ea-8833-47e8-a277-89119f7a00ab.png)
 
+---
 
 ## Other Considerations
-### Using Experiments
-Statsig's Experiments offer more capabilities than Feature Gates for advanced experiment designs. For example, with Experiments you can: 
-1. Analyze variants using stable IDs for situations when users have not yet signed-up (or signed-in), or using custom IDs to analyze user groups, pages, sessions, workspaces, cities, and so on
-2. Run multiple isolated experiments concurrently 
 
-### Using Feature Gates
-While Feature Gates are independently useful to measure impact during feature roll outs, you can also use a Feature Gate with [targeting rules](/feature-flags/conditions) as a **targeting gate** within an Experiment.
-In this case, the targeting gate serves to constrain the target audience of your experiment. The Allocation% of the Experiment selects a share of this eligible target audience for participation in the experiment. The Split% of the Experiment further splits these participating users into different test groups.
+### When to Use Experiments
 
-Once you _make a decision_ for the Experiment and ship a variant, Statsig lifts the targeting gate constraint and delivers the "winning" variant to all users.   
+Statsig's **Experiments** offer advanced capabilities beyond feature gates. Some key features include:
+1. **Analyzing Variants Using Stable IDs**: This is useful for testing when users are not yet signed up or signed in. You can also use custom IDs to analyze user groups, sessions, workspaces, or even geographical data like cities.
+2. **Running Multiple Isolated Experiments**: You can run multiple experiments concurrently without interference, ensuring reliable data for each.
 
+### When to Use Feature Gates
 
+Feature gates are great for measuring the impact of a feature during gradual rollouts, but they can also serve as **targeting gates** within experiments. Here’s how they work in that context:
+- **Targeting Gate**: Constrains the audience for the experiment based on specific targeting rules.
+- **Experiment Allocation%**: Determines the share of the target audience that will participate in the experiment.
+- **Experiment Split%**: Splits the participating users into various test groups.
+
+Once a decision is made on which variant to ship, Statsig will lift the targeting gate and deliver the "winning" variant to all users.
+
+---
+
+### Final Thoughts
+If you're focusing on **gradual feature rollouts**, start with a **Feature Gate**. If you need to **test multiple product variants** and analyze performance, go with an **Experiment**. Keep in mind that you can use both in combination to control target audiences and run more complex, segmented tests.
+
+---
