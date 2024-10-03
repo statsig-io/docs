@@ -138,6 +138,22 @@ const config: Config = {
       {
         redirects: [
           {
+            from: "feature-flags/implement",
+            to: "/"
+          },
+          {
+            from: "feature-flags/implement/client",
+            to: "/"
+          },
+          {
+            from: "feature-flags/implement/server",
+            to: "/"
+          },
+          {
+            from: "feature-flags/implement/http-api",
+            to: "/"
+          },
+          {
             from: "/client/jsClientSDK",
             to: "/client/javascript-sdk"
           },

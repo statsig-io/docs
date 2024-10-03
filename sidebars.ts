@@ -407,14 +407,6 @@ const sidebars: SidebarsConfig = {
                 "feature-flags/test-gate",
                 "feature-flags/overrides",
                 "feature-flags/scheduled-rollouts",
-                {
-                  Implement: [
-                    "feature-flags/implement",
-                    "feature-flags/implement/client",
-                    "feature-flags/implement/server",
-                    "feature-flags/implement/http-api",
-                  ],
-                },
                 "feature-flags/conditions",
                 "feature-flags/view-exposures",
                 "feature-flags/feature-flags-lifecycle",
@@ -430,11 +422,11 @@ const sidebars: SidebarsConfig = {
                 id: "dynamic-config/introduction",
               },
               items: [
-                "guides/first-dynamic-config",
                 "dynamic-config/working-with",
                 "dynamic-config/enforce-schema",
                 "dynamic-config/create-new",
                 "dynamic-config/add-rule",
+                "guides/first-dynamic-config",
               ],
             },
             {
