@@ -4,6 +4,8 @@ sidebar_label: Interaction Detection
 slug: /experiments-plus/interaction-detection
 ---
 
+> This feature is only available to warehouse native customers now.
+
 ## What is Interaction Detection
 
 When you run overlapping experiments, it is possible for them to interfere with each other. Interaction Detection lets you pick two experiments and evaluate them for interaction. This helps you understand if people exposed to both experiments behave very differently from people who're exposed to either one of the experiments.
