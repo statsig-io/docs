@@ -18,7 +18,7 @@ ID resolution is a common need in experimentation; generally the responsibility 
 
 A common problem in experimentation is trying to connect different user identifiers before or after some event boundary, most frequently signups.
 
-In these scenarios, the experimenter will have a logged-out identifier (e.g. a cookie or a Statsig StableID) as well as - for those who do sign up - a userID generated after the user signs up.
+In these scenarios, the experimenter will have a logged-out identifier (e.g. a cookie or a Statsig stableID) as well as - for those who do sign up - a userID generated after the user signs up.
 
 Because business metrics are generally calculated at the grain of userID, it's common to want to run an experiment where the unit of analysis is a logged out identifier, but the evaluation criteria for the experiment is a logged-in metric (e.g. subscription rate, or estimated Lifetime Value).
 

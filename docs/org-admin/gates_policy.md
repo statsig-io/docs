@@ -16,7 +16,7 @@ Feature Gates Policy grants organization admins the ability to:
 ![Screen Shot 2024-03-26 at 1 19 40 PM](https://github.com/statsig-io/docs/assets/101903926/394b586d-22aa-45e9-96be-10ba2270c010)
 
 
-**Configure allowed Targeting Criteria for Feature Gates:** With this setting, admins can select which targeting criteria will surface as options during gate creation for end users. These allowed targeting criteria are defined at the ID type as well, enabling you to, for example, create one set of targeting criteria for logged-in (UserID) vs. logged-out (StableID) feature rollouts.
+**Configure allowed Targeting Criteria for Feature Gates:** With this setting, admins can select which targeting criteria will surface as options during gate creation for end users. These allowed targeting criteria are defined at the ID type as well, enabling you to, for example, create one set of targeting criteria for logged-in (UserID) vs. logged-out (stableID) feature rollouts.
 
 ![Screen Shot 2024-03-26 at 1 23 18 PM](https://github.com/statsig-io/docs/assets/101903926/e94ca308-49e3-422f-ad42-3647dc910773)
 
