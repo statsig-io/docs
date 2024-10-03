@@ -25,13 +25,16 @@ Interaction Detection is available as a special custom query on an experiment. Y
 ## Methodology
 
 $$
-\delta_{treatment effect} = (\overline{X_{test \cdot test}} - \overline{X_{test \cdot control}}) - (\overline{X_{control \cdot test}} - \overline{X_{control \cdot control}})
+\LARGE
+\delta_{treatment_effect} = (\overline{X_{test \cdot test}} - \overline{X_{test \cdot control}}) - (\overline{X_{control \cdot test}} - \overline{X_{control \cdot control}})
 $$
 
 $$
-\delta_{treatment effect}{\%} = \frac{\delta_{treatment effect}}{(\overline{X_{control \cdot test}} - \overline{X_{control \cdot control}})}
+\LARGE
+\delta_{treatment_effect}{\%} = \frac{\delta_{treatment_effect}}{(\overline{X_{control \cdot test}} - \overline{X_{control \cdot control}})}
 $$
 
 $$
+\LARGE
 variance = \frac{Var(X_{test \cdot test})}{n_{test \cdot test}} + \frac{Var(X_{test \cdot control})}{n_{test \cdot control}} + \frac{Var(X_{control \cdot test})}{n_{control \cdot test}} + \frac{Var(X_{control \cdot control})}{n_{control \cdot control}}
 $$
