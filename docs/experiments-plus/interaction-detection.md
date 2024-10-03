@@ -20,6 +20,12 @@ You can find it from Experiment -> Pulse Results -> Explore -> Interaction Effec
 
 Interaction Detection is available as a special custom query on an experiment. You can pick a second experiment to analyze (along with metrics) and we will show you a quick summary.
 
+In each section:
+
+- By Groups: gives you the unit counts based on the collective slice of group assignment
+- Metric Summary Results: shows you the estimated intervals of difference in metric lift
+- Overlapping Unique Users: offers an overview of the general traffic intersection of the two experiments
+
 ![image](https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/jZMgd0DwQQ1ecgiZmsNS/dd24b23b-d562-4a4e-9b0a-6443b083f24a.png)
 
 ## Methodology
