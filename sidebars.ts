@@ -891,6 +891,15 @@ const sidebars: SidebarsConfig = {
               ],
             },
             "guides/config-history",
+            {
+              type: "category",
+              label: "SCIM User Provisioning",
+              link: {
+                type: "doc",
+                id: "access-management/scim/okta_scim",
+              },
+              items: ["access-management/scim/scim_changelog"],
+            },
           ],
         },
         {
