@@ -55,7 +55,7 @@ export default function Rapidoc(props) {
     const rapidoc = document.getElementById(id);
 
     if (entity === "all-endpoints-generated") {
-      rapidoc.loadSpec("https://docs.statsig.com/openapi");
+      rapidoc.loadSpec("https://api.statsig.com/openapi");
       return;
     }
 
@@ -63,7 +63,7 @@ export default function Rapidoc(props) {
     const tag = entityToTagMap[entity];
 
     // Fetch and filter the spec by tag
-    fetch("https://docs.statsig.com/openapi")
+    fetch("https://api.statsig.com/openapi")
       .then((response) => response.json())
       .then((data) => {
         if (tag) {
