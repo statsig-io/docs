@@ -19,23 +19,28 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
-          label: "Platform & Concepts",
+          label: "Quickstart Guides",
+          collapsed: true,
+          className: "rocket-icon sidebar-icon",
+          items: [
+              "guides/first-feature",
+              "guides/logging-events",
+              "guides/abn-tests",
+              ],
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "Core Concepts & Setup",
           collapsed: true,
           className: "lightbulb-icon sidebar-icon",
           items: [
             "understanding-platform",
-
             "guides/first-device-level-experiment",
             "guides/experiment-on-custom-id-types",
             "guides/using-environments",
             "guides/testing",
-            {
-              "Beginner's Guides": [
-                "guides/first-feature",
-                "guides/logging-events",
-                "guides/abn-tests",
-              ],
-            },
             "guides/featureflags-or-experiments",
             {
               "Enterprise Concepts": [
