@@ -62,6 +62,7 @@ const sidebars: SidebarsConfig = {
                 "client/concepts/persistent_assignment",
                 "client/concepts/parameter-stores",
                 "messages/serverRequiredUserID",
+                "server/concepts/user",
                 "server/concepts/data_store",
                 "server/concepts/forward_proxy",
                 "server/concepts/persistent_assignment",
