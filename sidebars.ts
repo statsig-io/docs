@@ -677,11 +677,8 @@ const sidebars: SidebarsConfig = {
                 {
                   type: "category",
                   label: "Connect Your Warehouse",
-                  link: {
-                    type: "doc",
-                    id: "statsig-warehouse-native/guides/connect",
-                  },
                   items: [
+                    "statsig-warehouse-native/guides/connect",
                     "statsig-warehouse-native/connecting-your-warehouse/bigquery",
                     "statsig-warehouse-native/connecting-your-warehouse/snowflake",
                     "statsig-warehouse-native/connecting-your-warehouse/databricks",
@@ -697,20 +694,14 @@ const sidebars: SidebarsConfig = {
             {
               type: "category",
               label: "Data & Semantic Layer",
-              link: {
-                type: "doc",
-                id: "statsig-warehouse-native/configuration/data-and-semantic-layer",
-              },
               items: [
+                "statsig-warehouse-native/configuration/data-and-semantic-layer",
                 "statsig-warehouse-native/configuration/metric-sources",
                 {
                   type: "category",
                   label: "Metrics",
-                  link: {
-                    type: "doc",
-                    id: "statsig-warehouse-native/configuration/metrics",
-                  },
                   items: [
+                    "statsig-warehouse-native/configuration/metrics",
                     "statsig-warehouse-native/metrics/sum",
                     "statsig-warehouse-native/metrics/count",
                     "statsig-warehouse-native/metrics/count-distinct",
@@ -793,11 +784,8 @@ const sidebars: SidebarsConfig = {
                 {
                   type: "category",
                   label: "Statistics",
-                  link: {
-                    type: "doc",
-                    id: "statsig-warehouse-native/features/statistics",
-                  },
                   items: [
+                    "statsig-warehouse-native/features/statistics",
                     "stats-engine/metric-deltas",
                     "stats-engine/variance",
                     "stats-engine/confidence-intervals",
