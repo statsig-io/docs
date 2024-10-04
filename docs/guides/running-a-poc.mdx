@@ -3,153 +3,124 @@ sidebar_label: Running a POC
 title: Running a Proof of Concept
 ---
 
-## Introduction
+### Introduction
 
-At Statsig, we encourage customers to try our platform by running a proof of concept (POC) or a limited test. Typically, this evaluation consists of implementing 1-2 low-risk features and/or experiments. This guide provides planning steps to help you run an effective POC, allowing you to evaluate Statsig’s capabilities and assess its value for your team.
+At Statsig, we encourage customers to try us out by running a proof of concept (POC) or a limited test. Typically, this involves implementing 1-2 low-risk features or experiments. This guide suggests some planning steps to assist in running an effective proof of concept.
 
-## Steps to Running an Effective Proof of Concept with Statsig
+### Steps to Running an Effective Proof of Concept with Statsig
 
-Running a meaningful POC requires planning and coordination. Here are the key steps to help you structure the process effectively:
+Running a meaningful proof of concept requires some planning.
 
 ![POC Timeline](/img/poc_timeline.png)
 
-### 1. Plan: Define Your Goals & Measures of Success
+#### 1. Plan: Define Your Overall Goals & Measures of Success
 
-Start by determining **why** you're running the POC and how you’ll measure success. A solution is valuable only if it solves the problem you're targeting, so it's important to define effective measures of success.
+First, determine **why** you're creating a POC and how you'll measure its success. A solution is only as good as the problem it solves. Make sure you target effective success measures.
 
-**Examples:**
-- “We want to build out an experimentation platform and have a few ideas for initial tests.”
-- “Our internal feature flagging tool lacks scheduled rollouts and metric impact measurement. We’d like to test Statsig’s feature flagging on our new web service and see if the additional features provide value.”
-- “I want to evaluate if using Statsig’s stats engine will free up data scientists to focus on more sophisticated analysis.”
+Examples:
 
-Once you’ve established your goals, select 1-2 low-risk features or experiments to validate the platform.
+- “We want to start building out an experimentation platform and have a few ideas for early test experiments."
+- “Our internal feature flagging tool doesn’t have scheduled rollouts, and we can't measure the impact. We'd like to test Statsig’s feature flagging solution on our new web service.”
+- “I want to see if Statsig’s stats engine will free up data scientist time for more sophisticated analysis.”
 
-**Examples:**
-- “I want to A/B/C test two new website layouts against the current version and validate that these changes increase user engagement.”
+Once you’ve set your goals, target 1-2 low-risk features or experiments to validate the platform.
+
+Examples:
+
+- “I want to test two new website layouts against the current one through an A/B/C test to validate an increase in user engagement.”
 - “We want to roll out a new search algorithm and measure its performance impact.”
-- “We’ve run experiments before and want to validate past results using Statsig’s stats engine.”
+- “We’ve run experiments before and want to validate their results using your stats engine.”
 
-### 2. Scope & Prepare Your POC
+#### 2. Phase 0: Scope & Prepare Your POC
 
-Once you’ve defined **why** you're trying Statsig and outlined your success metrics, it's time to plan **how** you’ll achieve your goals.
+Now that you have clear goals and success measures, it's time to plan out how to achieve them.
 
-Here are some considerations:
+When choosing **what** to POC, consider:
 
-- What’s the **path of least resistance** to implement Statsig and test the required capabilities?
-- Are there any upcoming experiments or features in your roadmap that could serve as a POC?
-- Is there a part of your app that is commonly tested and can be used for this POC?
+- What path allows for easy Statsig implementation while testing the necessary capabilities?
+- What does your near-term experimentation roadmap look like?
+- Are there common testing areas in your app that would be a good fit?
 
-:::note
-Make a copy of the [POC tracker template](https://docs.google.com/spreadsheets/d/1SzHRXwcMbMVYzkZNAC-gXYKM6kkgz5in6z0H1MlFY4A/) to help guide your POC with clear goals and timelines!
-:::
+**Who** will work on this POC?
 
-#### Team Structure and Roles
+Statsig is collaborative, involving data, engineering, and product stakeholders. In smaller organizations, one person may handle multiple roles.
 
-Ensure each relevant team is represented during the POC. For smaller organizations, these roles may overlap:
+**Typical Role Breakdown:**
 
-**Traditional Team Structure:**
-- **Engineer/Data**: Responsible for SDK implementation, data pipelining, feature orchestration, and analysis.
-- **Product**: Responsible for planning and executing features/experiments, and validating results.
+- **Engineer/Data**: Responsible for implementation and orchestration, including SDK integration, data pipelining, and analysis.
+- **Product**: In charge of planning and executing features/experiments and validating test results.
 
-#### Tech Stack
+**Consider the Tech Stack:** Make sure the parts of your tech stack that will host the solution are supported by Statsig, whether client, server, or mobile applications.
 
-Ensure Statsig supports your tech stack. Statsig is a full-stack solution that covers client, server, and mobile applications, and it [integrates](/integrations/introduction) with many tools.
-
-#### Timeline
-
-We recommend a 2-4 week timeline for the POC. This ensures quick setup and testing while providing enough time to measure the value of Statsig.
+**Define the Timeline:** We recommend a timeline of 2-4 weeks for the proof of concept.
 
 **Example Timeline:**
 
-- **Weeks 1-2**: 
-   - Implement the Statsig SDK.
-   - Set up metric ingestion pipelines.
-   - Begin rollouts.
+- **Weeks 1-2:**
+  - Instrument the Statsig SDK into your app.
+  - Set up metric ingestion pipelines.
+  - Begin rollouts.
 
-- **Weeks 3-4**:
-   - Finalize rollouts.
-   - Collect data.
-   - Analyze results and complete the POC.
+- **Weeks 3-4:**
+  - Finalize rollouts.
+  - Collect data.
+  - Analyze results.
+  - Finalize the POC.
 
-#### Get Help When Needed
+**Get Help When You Need It:** Join our [Slack community](https://statsig.com/community) to interact with engineers and data scientists, or browse [our documentation](https://docs.statsig.com).
 
-Statsig provides [excellent customer support](https://statsig.com/blog/why-people-love-statsig-customer-support). You can join the [Slack community](https://statsig.com/community) to access engineers and data scientists for fast, productive assistance. Additionally, the [documentation](https://docs.statsig.com) is a helpful resource for exploring implementation details.
+**Sandboxing:** [Sign up for a free account](https://statsig.com/signup) to start tinkering with the platform. Here's a list of recommended evaluation exercises:
 
-**Suggested Starting Points:**
-- **Engineer/Data**: 
-   - [Client SDK Docs](/client/introduction)
-   - [Server SDK Docs](/server/introduction)
-   - [Metrics Overview](/metrics)
-- **Product**: 
-   - [Bootstrapping Your Experimentation Program](/guides/experimentation-program)
-   - [Product Experimentation Best Practices](https://statsig.com/blog/product-experimentation-best-practices)
-
-#### Sandbox Setup
-
-[Sign up for a free account](https://statsig.com/signup) to access the Statsig platform and start experimenting.
-
-**Recommended Evaluation Exercises:**
 - [Your First Feature](/guides/first-feature)
 - [Running an A/A Experiment](/guides/aa-test#why-run-an-aa-aa-test)
 - [Logging Events](/guides/logging-events)
 
-### 3. Implement Your POC
+#### 3. Phase 1: Implementation Steps
 
-Once your team has a solid understanding of the platform, it's time to implement the Statsig solution.
+Now that you're familiar with the platform, it's time to implement Statsig.
 
-#### Metric Ingestion
+Here’s a general overview of the Statsig platform:
 
-If you haven’t already connected your metric data, follow the [metric ingestion guide](/metrics/ingest) to start. Metrics can be ingested via:
-- [Server](/server/introduction), [Client SDKs](/client/introduction), and [HTTP API](/http-api)
-- [Integrations](/integrations/introduction)
-- [Data Warehouse Ingestion](/data-warehouse-ingestion/introduction)
-- [Warehouse Native Solution](/statsig-warehouse-native/introduction) (enterprise customers only)
+![architecture-w-statsig](/img/statsig_architecture.png)
 
-#### Set Up Feature Gates/Experiments
+- **Metric Ingestion into Statsig:** If you haven't yet, you’ll need to set up metric ingestion. We provide multiple options:
+  - [Server](/server/introduction), [Client SDKs](/client/introduction), and [HTTP API](/http-api)
+  - [Integrations](/integrations/introduction)
+  - [Data Warehouse Ingestion](/data-warehouse-ingestion/introduction)
+  - [Warehouse Native Solution](/statsig-warehouse-native/introduction) (Enterprise only)
 
-In the Statsig console, set up your features or experiments:
+  Check the [Metrics Dashboard](/metrics/console) to debug any ingestion issues.
 
-1. **User Targeting**: 
-   - Who will you roll out the feature/experiment to?
-   - Example: Release a feature to LATAM Android users only.
-   
-2. **Metrics**: 
-   - What metrics will you use to validate success?
-   - Example: User engagement, performance metrics.
-   
-3. **Hypothesis**: 
-   - What is the hypothesis you'll test?
-   - Example: “If I release a new user flow, I expect a 5-10% increase in user engagement.”
-   
-4. **Deployment**: 
-   - Plan where the code will be deployed to avoid delays.
+- **Set up Feature Gates / Experiments in the Console:** Decide who the users will be, what metrics to track, and where the code will be deployed. Use the following guides for help:
+  - [Build your first feature](/guides/first-feature#step-1---create-a-new-feature-gate)
+  - [Your first A/B test](/guides/abn-tests)
 
-Use the following guides for setup assistance:
-- [Build Your First Feature](/guides/first-feature#step-1---create-a-new-feature-gate)
-- [Run Your First A/B Test](/guides/abn-tests)
+- **Implement Feature Flags / Experiments in Your App:** Integrate Statsig’s SDKs into your software and verify the implementation with [testing guides](/guides/testing).
 
-#### Implement in Your App
+#### 4. Phase 2: Rollout & Test
 
-Integrate Statsig’s SDK into your app to log feature/experiment exposures. Ensure your team is aligned on implementation plans and refer to the [SDK Documentation](/sdks/getting-started) for help. Once implemented, verify that Statsig is functioning as expected using the [testing guide](/guides/testing).
+Deploy your changes through your internal CI/CD pipeline or equivalent. After deployment, monitor exposure data via the [diagnostics tabs](/feature-flags/test-gate#3-using-diagnostics-tab).
 
-### 4. Rollout & Test
+For more information, see:
 
-After implementation, deploy the SDKs as part of your normal release process. Monitor exposure data in the diagnostics tab for [features](/feature-flags/test-gate#3-using-diagnostics-tab) and experiments. If any issues arise, the [Slack community](https://statsig.com/community) is available for support.
+- [Best Practices: Deployment of Feature Gates](/feature-flags/best-practices#development)
+- [Product Experimentation Best Practices](https://statsig.com/blog/product-experimentation-best-practices)
 
-### 5. Collect Data & Read Results
+#### 5. Phase 3: Collect Data & Read Results
 
-Allow at least two weeks for data collection to achieve statistical significance. Monitor data through the [metrics dashboard](/metrics/console) and ensure that your [health checks](/experiments-plus/monitor#monitoring-experiment-health) are passing.
+After rolling out Statsig, wait for 2 weeks for data collection. Use the [metrics dashboard](/metrics/console) to track progress, and ensure your [health checks](/experiments-plus/monitor#monitoring-experiment-health) are passing.
 
-For more details:
-- [Monitor Experiments](/experiments-plus/monitor)
-- [Read Experiment Results](/experiments-plus/read-results)
+You can:
+- [Monitor experiments](/experiments-plus/monitor)
+- [Read experiment results](/experiments-plus/read-results)
 
-### 6. Validate Statsig’s Engine
+#### 6. Phase 4: Validate Statsig’s Engine
 
-To ensure the accuracy of your results, Statsig makes it easy to [export data](/integrations/data-exports/overview#validating-data) and compare it to your internal tools. Validate the results against your own methods to confirm their reliability.
+We encourage you to validate the results by exporting the data and comparing it with your internal tools.
 
-## Next Steps
+- [Validating Data](/integrations/data-exports/overview#validating-data)
+- [Statsig Stats Engine](/stats-engine#statsig-stats-engine)
 
-If you find Statsig useful for enhancing your experimentation and feature gating processes, you can begin planning for a full rollout. For guidance, follow the [From POC to Production](/guides/production) guide.
+#### Next Steps
 
----
+If your evaluation shows that Statsig is a good fit, follow our guide to [roll out Statsig to production](/guides/production).
