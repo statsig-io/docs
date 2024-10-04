@@ -6,7 +6,7 @@ slug: /metrics/custom-metrics
 
 # Custom Metrics
 You can create **Custom Metrics** using the custom events you ingest by filtering or aggregating events based on event metadata. You must include metadata along with the custom events when you log these events with Statsig.
-For example, in addition to tracking overall **event_count** and **event_dau** for all events of type *purchase_event*, you may want to filter these metrics only for events where your users purchase a specific product category. 
+For example, in addition to tracking overall **event_count** for all events of type *purchase_event*, you may want to filter these metrics only for events where your users purchase a specific product category. 
 
 Statsig supports four types of custom metrics:
 
