@@ -632,7 +632,10 @@
         "hashlib",
         "hget",
         "Entra",
-        "SCIM"
+        "SCIM",
+        "statsig",
+        "Statsig",
+        "stating"
     ],
     "ignorePaths": [
         "node_modules/**",
