@@ -6,7 +6,7 @@ slug: /metrics/deprecate-event-dau
 
 ### Deprecation Details
 
-From Wednesday, October 16, 2024, we will stop auto-generating new event_dau metrics for incoming events into Statsig. We will continue to auto-generate an event_count metric for each logged event as we do today.
+From Wednesday, October 16, 2024, we will stop auto-generating new event_dau metrics for incoming events into Statsig. We will continue to auto-generate an event_count metric for each logged event as we do today. **Note: This change will only affect Statsig Cloud customers, Warehouse Native customers will not be impacted.**
 
 - Any existing event_dau metrics that have been used in a gate, experiment, dashboard, other Custom Metrics will NOT be affected by this change.
 
