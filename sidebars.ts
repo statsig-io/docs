@@ -44,10 +44,6 @@ const sidebars: SidebarsConfig = {
                 "guides/production",
               ],
             },
-            {
-              type: "doc",
-              id: "faq",
-            },
           ],
         },
         {
@@ -66,6 +62,7 @@ const sidebars: SidebarsConfig = {
                 "client/concepts/persistent_assignment",
                 "client/concepts/parameter-stores",
                 "messages/serverRequiredUserID",
+                "server/concepts/user",
                 "server/concepts/data_store",
                 "server/concepts/forward_proxy",
                 "server/concepts/persistent_assignment",
@@ -356,7 +353,15 @@ const sidebars: SidebarsConfig = {
                 "metrics/101",
                 "metrics/how-metrics-work",
                 "metrics/raw-events",
-                "metrics/raw-event-metrics",
+                {
+                  type: "category",
+                  label: "Auto-generated Metrics",
+                  link: {
+                    type: "doc",
+                    id: "metrics/raw-event-metrics",
+                  },
+                  items: ["metrics/deprecate-event-dau"],
+                },
                 "metrics/custom-metrics",
                 "metrics/precomputed-metrics",
                 "metrics/user-dimensions",
@@ -385,6 +390,11 @@ const sidebars: SidebarsConfig = {
             "guides/statsig-id-resolver",
           ],
         },
+        {
+          type: "doc",
+          id: "faq",
+          className: "question-icon sidebar-icon",
+        },
       ],
     },
     {
@@ -411,14 +421,6 @@ const sidebars: SidebarsConfig = {
                 "feature-flags/test-gate",
                 "feature-flags/overrides",
                 "feature-flags/scheduled-rollouts",
-                {
-                  Implement: [
-                    "feature-flags/implement",
-                    "feature-flags/implement/client",
-                    "feature-flags/implement/server",
-                    "feature-flags/implement/http-api",
-                  ],
-                },
                 "feature-flags/conditions",
                 "feature-flags/view-exposures",
                 "feature-flags/feature-flags-lifecycle",
@@ -434,11 +436,11 @@ const sidebars: SidebarsConfig = {
                 id: "dynamic-config/introduction",
               },
               items: [
-                "guides/first-dynamic-config",
                 "dynamic-config/working-with",
                 "dynamic-config/enforce-schema",
                 "dynamic-config/create-new",
                 "dynamic-config/add-rule",
+                "guides/first-dynamic-config",
               ],
             },
             {
@@ -483,6 +485,7 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/overrides",
                 "experiments-plus/stratified-sampling",
                 "experiments-plus/differential-impact-detection",
+                "experiments-plus/interaction-detection",
                 "experiments-plus/stop-assignments",
                 "experiments-plus/abandon",
                 "experiments-plus/ending-experiment",
@@ -544,15 +547,7 @@ const sidebars: SidebarsConfig = {
                 },
               ],
             },
-            {
-              type: "category",
-              label: "Layers",
-              link: {
-                type: "doc",
-                id: "layers/introduction",
-              },
-              items: ["layers/js-tutorial"],
-            },
+            "layers/introduction",
             {
               type: "category",
               label: "Landing Page Experiments (deprecated)",
@@ -852,6 +847,7 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "Management & Admin",
       collapsed: false,
+      collapsible: false,
       items: [
         {
           className: "template-icon sidebar-icon",
@@ -898,6 +894,15 @@ const sidebars: SidebarsConfig = {
               ],
             },
             "guides/config-history",
+            {
+              type: "category",
+              label: "SCIM User Provisioning",
+              link: {
+                type: "doc",
+                id: "access-management/scim/okta_scim",
+              },
+              items: ["access-management/scim/scim_changelog"],
+            },
           ],
         },
         {

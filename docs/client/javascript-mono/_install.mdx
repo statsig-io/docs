@@ -7,28 +7,9 @@ You can install the Statsig SDK via npm, yarn or jsdelivr:
   defaultValue="npm"
   groupId="js-client-approach"
   values={[
-    {label: 'CDN / <script>', value: 'script'},
     {label: 'NPM', value: 'npm'},
     {label: 'yarn', value: 'yarn'},
   ]}>
-
-  <TabItem value="script">
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=[YOUR_CLIENT_KEY]"></script>
-```
-
-Statsig is hosted on the [jsDelivr](https://www.jsdelivr.com/package/npm/@statsig/js-client) CDN.
-
-To access the current primary JavaScript bundle, use:
-
-`https://cdn.jsdelivr.net/npm/@statsig/js-client/build/statsig-js-client.min.js`
-
-To access specific files/versions:
-
-`https://cdn.jsdelivr.net/npm/@statsig/js-client@{version}/build/statsig-js-client.min.js`
-
-  </TabItem>
   <TabItem value="npm">
 
 ```shell

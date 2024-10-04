@@ -1,5 +1,5 @@
 ---
-sidebar_label: Make Your Code Dynamic
+sidebar_label: Guided Tutorial 
 title: Making Your Code More Flexible with Dynamic Config
 ---
 
@@ -7,13 +7,13 @@ Now that you have created your Statsig account, and perhaps even your [first fea
 
 :::info
 NOTE: This guide focuses on a client-side example, as it is easier to illustrate how Dynamic Configs work and can be used. You can and still should use
-Dynamic Config on the server side as well. Whether it be for server-side rendered UI, rate limiting configurations, ranking systems, algorithms, etc. Dynamic Config can help you update things on the fly.
+Dynamic Config on the server side as well. Whether it be for server-side rendered UI, rate limiting configurations, ranking systems, algorithms, etc. Dynamic Config can help you update configuration on the fly.
 :::
 
 In this guide, we will be building a front page banner - something that may show up on an ecommerce site to advertise an upcoming sale, for instance.
-Here, I will apply it to a stripped down version of the Statsig homepage. It will look something like this blue banner when we are finished:
+Here, I will apply it to a stripped down version of the Statsig homepage. It will look something like this green banner when we are finished:
 
-![ui for windows users CROPPED](https://user-images.githubusercontent.com/74584483/118710635-67a85680-b7d3-11eb-9211-897a9dacb0c3.jpg)
+![ui for mac users](https://github.com/user-attachments/assets/b82e808a-99b5-4922-90f7-727d9e5d942a)
 
 :::info Codepen Example
 This example is implemented in [a codepen](https://codepen.io/tore-statsig/pen/mdWEajo) where you can see the actual code, or fork it to quickly test your own Dynamic Configs.
@@ -21,11 +21,9 @@ This example is implemented in [a codepen](https://codepen.io/tore-statsig/pen/m
 
 ### Step 1 - Create a new Dynamic Config
 
-Start by creating a new Dynamic Config. Pick a name related to the set of variables this config will hold. Since we are building a homepage banner, let's call it "Banner Config":
+Start by creating a new Dynamic Config. Dynamic Configs live under the "Feature Management" tab in the Statsig Console.Pick a name related to the set of variables this config will hold. Since we are building a homepage banner, let's call it "Banner Config":
 
-![Screen Shot 2022-06-17 at 11 53 46 AM](https://user-images.githubusercontent.com/74584483/174385529-287687a5-e23d-48ca-adfb-465f01c6ddb2.png)
-
-![Screen Shot 2022-06-17 at 11 54 14 AM](https://user-images.githubusercontent.com/74584483/174385719-0312a8d0-8da9-46e0-ad13-e86c4eee459e.png)
+![Create Dynamic Config](https://github.com/user-attachments/assets/c0564d86-a83c-45c7-a3c3-62397ae00448)
 
 Great! We have created an (empty) Dynamic Config. It returns the default value (an empty JSON object) whenever it is evaluated. For our example, we are going to add some options to populate a homepage banner. The end goal is to show a targeted banner to a few different sets of developers: those likely to use a .NET SDK, and those more likely to use a Swift SDK. Let's keep our targeting simple here: we want to promote the new .NET SDK to anyone that is browsing our site on the Windows operating system, and the new Swift SDK to anyone browsing on MacOS. That takes us to steps 2 and 3.
 
@@ -33,7 +31,7 @@ Great! We have created an (empty) Dynamic Config. It returns the default value (
 
 First, let's add the Window's rule.  Select "Add Targeting", and then "Add new Rule":
 
-![Screen Shot 2022-06-17 at 11 55 23 AM](https://user-images.githubusercontent.com/74584483/174385876-24f9e6b9-10c2-4b6f-a62e-c4de8ad28f01.png)
+![Add Rule](https://github.com/user-attachments/assets/9011708a-24e0-43c9-8e4d-468d57476413)
 
 Though Feature Gates and Dynamic Config share the same powerful user segmentation and targeting tools, they differ in what you return for those different sets of users. Feature Gates are intended to be super lightweight, and only return a boolean indicating the user matched one of the rules. Dynamic Configs, on the other hand, can return a different JSON blob of data for each rule!
 
@@ -63,18 +61,15 @@ Let's edit the return value for the windows rule, and fill it in.  Under "Return
 }
 ```
 
-![Screen Shot 2022-06-17 at 11 57 15 AM](https://user-images.githubusercontent.com/74584483/174386214-c36d4c26-ca1b-4fe1-9e08-d001f73896f4.png)
+![Return Value](https://github.com/user-attachments/assets/a2dc7b2a-98f4-4570-86db-34b390d80a89)
 
-Remember to hit "Save Changes" - now your config should look like this:
+Remember to hit "Save" in the bottom right.
 
-![Screen Shot 2022-06-17 at 11 57 34 AM](https://user-images.githubusercontent.com/74584483/174386190-3182bd62-f6e5-47d7-a03a-7324b926db9c.png)
+![Config with one rule](https://github.com/user-attachments/assets/b6e0eb73-c623-4a05-b605-ad9eb2c42792)
 
+Let's repeat this process for people using Mac OS. Adding the the same OS rule, but this time select "Mac OS X".
 
-Let's repeat this process for people using Mac OS. Adding the rule:
-
-![Screen Shot 2021-06-14 at 5 15 52 PM](https://user-images.githubusercontent.com/82126616/121974697-cd392580-cd34-11eb-910a-79088e0bb439.png)
-
-Updating the return value:
+Then, lets update the return value:
 
 ```js
 {
@@ -85,26 +80,24 @@ Updating the return value:
 }
 ```
 
-![Screen Shot 2022-06-17 at 11 58 44 AM](https://user-images.githubusercontent.com/74584483/174386362-6dbfb98d-9069-49bc-b9aa-e6297354df04.png)
+Once again, don't forget to click "Save" to apply these new rules to your config. Your Dynamic Config should now look something like this:
 
-Once again, don't forget to click "Save Changes" to apply these new rules to your config. Your Dynamic Config should now look something like this:
+![Dynamic Config with two rules](https://github.com/user-attachments/assets/a04575a8-6afb-4380-8cb6-77052a2d5943)
 
-![Screen Shot 2022-06-17 at 11 59 19 AM](https://user-images.githubusercontent.com/74584483/174386422-68467c95-e6d8-4661-8ff7-5c52838deaac.png)
-
-### Step 4 - Call getConfig In Your App
+### Step 4 - Call getDynamicConfig In Your App
 
 Now let's use this Dynamic Config to create a different landing page experience for different sets of developers. Check out this [codepen](https://codepen.io/tore-statsig/pen/mdWEajo) to follow along. If you fork the code and put in the API Key from your Statsig project, you should be able to see the banner for your platform.
 
-After adding the SDK to the webpage via the [jsdelivr cdn](https://www.jsdelivr.com/package/npm/statsig-js), we initialize the SDK:
+After adding the SDK to the webpage via the [jsdelivr cdn](https://www.jsdelivr.com/package/npm/@statsig/js-client), we initialize the SDK:
 
 ```js
-await statsig.initialize("<CLIENT-SDK-KEY>");
+const client = new window.__STATSIG__.StatsigClient("<CLIENT-SDK-KEY>, {});
 ```
 
 Now, let's fetch our config and construct the banner:
 
 ```js
-const bannerConfig = statsig.getConfig("banner_config");
+const bannerConfig = client.getDynamicConfig("banner_config");
 const text = bannerConfig.get("text", null);
 const backgroundColor = bannerConfig.get("backgroundColor", "black");
 const color = bannerConfig.get("color", "white");
@@ -132,6 +125,7 @@ And that's it! With just a handful of javascript, we integrated with the Statsig
 
 Here's what it looks like for me, viewing this webpage in chrome on a Mac:
 
-![ui for mac users](https://user-images.githubusercontent.com/74584483/118565632-70435300-b727-11eb-96c3-fb512d89f928.png)
+![ui for mac users](https://github.com/user-attachments/assets/b82e808a-99b5-4922-90f7-727d9e5d942a)
+
 
 We hope this inspires some ideas of what you could do with your app/website/backend service, and we can't wait to see what you build.
