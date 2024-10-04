@@ -16,11 +16,11 @@ From Wednesday, October 16, 2024, we will stop auto-generating new event_dau met
 
 If you have any questions or concerns, please don’t hesitate to reach out!
 
-### *Motivation for This Change*
+### Motivation for This Change
 
 Historically, we have auto generated an event_count and event_dau metric for every incoming event into Statsig. After working closely with hundreds of customers, we have seen that auto generating two metrics for every event causes confusion and clutter inside projects. The proposed change will lead to cleaner Metrics Catalog and faster Console performance, while still retaining your ability to create event_dau metrics for the events you care about most.
 
-### *Next steps*
+### Next steps
 
 If you wish to keep any unused event_dau metrics going forward, you can earmark those metrics by performing any of the actions below:
 
