@@ -1,0 +1,315 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+
+## Client Bootstrapping
+
+To fully take advantage of Next.js with Statsig, we should bootstrap the Statsig client with the values 
+it needs. This way, the client does not need to make a separate network request to fetch these values.
+
+
+### Install `statsig-node`
+
+To generate the required values, we can use the Statsig server SDK (`statsig-node`) on our backend.
+
+```bash
+npm install statsig-node
+# or
+yarn add statsig-node
+# or
+pnpm add statsig-node
+```
+
+next, add a Server key to your `.env` file. Note that this one is private and does not start with `NEXT_PUBLIC_`. 
+You can find your key at which you can find at [console.statsig.com/api_keys](https://console.statsig.com/api_keys).
+
+```bash
+# .env.local
+NEXT_PUBLIC_STATSIG_CLIENT_KEY= # No Change
+STATSIG_SERVER_KEY=secret-<REPLACE_WITH_YOUR_SERVER_KEY> # <- Added this line
+```
+
+
+
+
+
+
+### Integrate the Backend Logic
+
+
+<Tabs
+  defaultValue="app-router"
+  groupId="router-choice"
+  values={[
+    {label: 'App Router', value: 'app-router'},
+    {label: 'Page Router', value: 'page-router'},
+  ]}>
+
+
+{/* App Router */}
+
+
+    <TabItem value="app-router">
+In our App Router example, we should add a new file `statsig-backend.ts` to our `app` folder. 
+This file will contain the logic to initialize our Statsig server SDK and generate the bootstrap values.
+
+```ts
+// app/statsig-backend.ts
+
+import Statsig, { StatsigUser } from "statsig-node";
+
+const isStatsigReady = Statsig.initialize(process.env.STATSIG_SERVER_KEY!, {
+  environment: { tier: "development" },
+});
+
+export async function generateBootstrapValues(): Promise<{
+  data: string;
+  user: StatsigUser;
+  key: string;
+}> {
+  await isStatsigReady;
+
+  const user = { userID: "a-user" };
+  const key = process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!;
+
+  const values = Statsig.getClientInitializeResponse(user, key, {
+    hash: "djb2", //🔥 'djb2' is required. By default this would be 'sha256'.
+  });
+
+  return {
+    data: JSON.stringify(values),
+    user,
+    key,
+  };
+}
+```
+
+    </TabItem>
+
+
+
+
+
+{/* Page Router */}
+
+
+    <TabItem value="page-router">
+
+In our Page Router example, we should add a new file `statsig-backend.ts` to our `pages` folder
+This file will contain the logic to initialize our Statsig server SDK and generate the bootstrap values.
+
+```ts
+// pages/statsig-backend.ts
+
+import Statsig, { StatsigUser } from "statsig-node";
+
+export const isStatsigReady = Statsig.initialize(
+  process.env.STATSIG_SERVER_KEY!,
+  {
+    environment: { tier: "development" },
+  }
+);
+
+export type StatsigServerProps = {
+  user: StatsigUser;
+  data: string;
+  key: string;
+};
+
+export async function getStatsigServerProps(): Promise<StatsigServerProps> {
+  await isStatsigReady;
+
+  const user = { userID: "a-user" };
+  const key = process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!;
+
+  const values = Statsig.getClientInitializeResponse(user, key, {
+    hash: "djb2", //🔥 'djb2' is required. By default this would be 'sha256'.
+  });
+
+  return {
+    data: JSON.stringify(values),
+    user,
+    key,
+  };
+}
+```
+
+    </TabItem>
+
+</Tabs>
+
+
+
+
+### Apply the Bootstrap Values
+
+
+
+<Tabs
+  defaultValue="app-router"
+  groupId="router-choice"
+  values={[
+    {label: 'App Router', value: 'app-router'},
+    {label: 'Page Router', value: 'page-router'},
+  ]}>
+
+
+{/* App Router */}
+
+
+    <TabItem value="app-router">
+
+
+We now need to refactor our Root `layout.tsx` to call the `generateBootstrapValues` function and pass it to the client side.
+
+```tsx
+// app/layout.tsx
+
+// ...
+import { generateBootstrapValues } from "./statsig-backend";
+// ...
+
+export default async function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const bootstrapValues = await generateBootstrapValues();
+
+  return (
+    <html lang="en">
+      <MyStatsig bootstrapValues={bootstrapValues}>
+        <body>
+          {children}
+        </body>
+      </MyStatsig>
+    </html>
+  );
+}
+```
+
+Finally, update the `MyStatsig` component to accept the `bootstrapValues` prop, 
+swapping out useClientAsyncInit for useClientBootstrapInit.
+
+```tsx
+// app/my-statsig.tsx
+
+"use client";
+
+import {
+  LogLevel,
+  StatsigProvider,
+  StatsigUser,
+  // useClientAsyncInit, // <- Remove this
+  useClientBootstrapInit, // <- Add this
+} from "@statsig/react-bindings";
+import { runStatsigAutoCapture } from "@statsig/web-analytics";
+import React, { useEffect } from "react";
+
+export default function MyStatsig({
+  children,
+  bootstrapValues,
+}: {
+  bootstrapValues: { data: string; user: StatsigUser; key: string };
+  children: React.ReactNode;
+}) {
+  // Update to using useClientBootstrapInit instead of useClientAsyncInit
+  const client = useClientBootstrapInit(
+    bootstrapValues.key,
+    bootstrapValues.user,
+    bootstrapValues.data,
+    { logLevel: LogLevel.Debug } // Optional - Prints debug logs to the console
+  );
+
+  useEffect(() => {
+    runStatsigAutoCapture(client);
+  }, [client]);
+
+  return <StatsigProvider client={client}>{children}</StatsigProvider>;
+}
+```
+
+If you load the app now, you should see that same as before, 
+but this time we aren't issuing any unnecessary requests.
+
+    </TabItem>
+
+
+
+
+
+{/* Page Router */}
+
+
+    <TabItem value="page-router">
+
+Since we want to interact with our backend script to generate values before they reach the client side, 
+we need to utlize Page Router's `getServerSideProps`. This will ensure that our logic 
+only runs on the backend.
+
+On any page you wish to use Statsig, you can add a call to our `getStatsigServerProps` function. 
+Here is an example of using it in our Home page:
+
+```tsx
+// pages/index.tsx
+
+export const getServerSideProps = async () => {
+  const statsigProps = await getStatsigServerProps();
+
+  return { props: { statsigProps } };
+};
+
+export default function Home() {
+  // No Change
+}
+```
+
+With these props generated, we then need to pass them to the StatsigClient in our `_app.tsx` file. 
+We do this conditionally, so that Statsig only runs on pages that call `getStatsigServerProps`.
+
+```tsx
+// pages/_app.tsx
+
+export default function App({ Component, pageProps }: AppProps) {
+  const clientRef = useRef<StatsigClient | null>();
+
+  const client = useMemo(() => {
+    if (!pageProps.statsigProps) {
+      return null;
+    }
+
+    if (clientRef.current) {
+      return clientRef.current;
+    }
+
+    const { key, user, data } = pageProps.statsigProps;
+    const inst = new StatsigClient(
+      key,
+      user,
+      { logLevel: LogLevel.Debug } // Optional - Prints debug logs to the console
+    );
+    clientRef.current = inst;
+
+    inst.dataAdapter.setData(data);
+    inst.initializeSync();
+
+    runStatsigAutoCapture(inst);
+    return inst;
+  }, [pageProps.statsigProps, clientRef.current]);
+
+  if (client) {
+    return (
+      <StatsigProvider client={client}>
+        <Component {...pageProps} />
+      </StatsigProvider>
+    );
+  }
+
+  return <Component {...pageProps} />;
+}
+
+```
+
+    </TabItem>
+
+</Tabs>

@@ -1,0 +1,76 @@
+---
+title: Statsig in Next.js
+sidebar_label: Next.js
+slug: /client/javascript-sdk/next-js
+---
+
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+import { FeaturePillList } from '@site/src/components/FeaturePillList';
+
+import {
+    SDKDocsBuilder,
+    HOOK__SDKDocUpdate,
+} from "../../../sdks/_SDKDocsBuilder.mdx";
+
+import {
+    Repository,
+    GettingStarted,
+    FAQ,
+    WorkingWith,
+    StatsigUser,
+    StatsigOptions,
+    Shutdown,
+    CodeExamples,
+} from "../../Templates/index.mdx";
+
+import * as Install from "./_nextJsInstall.mdx";
+import * as Keys from "./_nextJsKeys.mdx";
+import * as PageVsAppRouter from "./_nextJSPageVsAppRouter.mdx";
+import * as Bootstrap from "./_nextJsBootstrap.mdx";
+import * as CheckGate from "./_nextJsCheckGate.mdx";
+import * as GetDynamicConfig from "./_nextJsDynamicConfig.mdx";
+import * as GetExperiment from "./_nextJsGetExperiment.mdx";
+import * as GetParamStore from "./_nextJsParamStore.mdx";
+import * as Proxy from "./_nextJsProxy.mdx";
+import * as LogEvent from "./_nextJsLogEvent.mdx";
+import * as SrAndAc from "../_sessionReplayAutoCapture.mdx";
+
+export const Builder = SDKDocsBuilder({
+    sections: [
+        [
+            Repository,
+            {
+                repo: "https://github.com/statsig-io/js-client-monorepo",
+            },
+        ],
+        [Install, {}],
+        [Keys, {}],
+        [PageVsAppRouter, {}],
+        [CheckGate, {}],
+        [GetDynamicConfig, {}],
+        [GetExperiment, {}],
+        [GetParamStore, {}],
+        [LogEvent, {}],
+        [Bootstrap, {}],
+        [Proxy, {}],
+        [SrAndAc, {}]
+    ]
+})
+
+export const toc = Builder.toc
+
+<FeaturePillList
+    features={[
+      { name: "Feature Gates", link: "#checking-a-gate" },
+      { name: "Experiments", link: "#getting-an-experiment" },
+      { name: "Dynamic Configs", link: "#getting-a-dynamic-config" },
+      { name: "Layers", link: "#getting-an-experiment" },
+      { name: "Event Logging", link: "#logging-an-event" },
+      { name: "Session Replay", link: "#session-replay" },
+      { name: "Auto Capture", link: "#autocapture" },
+      { name: "Parameter Stores", link: "#getting-a-parameter-store" }
+    ]
+  }
+/>
+<>{Builder.result}</>
+
