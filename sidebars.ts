@@ -65,6 +65,7 @@ const sidebars: SidebarsConfig = {
                 "client/concepts/persistent_assignment",
                 "client/concepts/parameter-stores",
                 "messages/serverRequiredUserID",
+                "server/concepts/user",
                 "server/concepts/data_store",
                 "server/concepts/forward_proxy",
                 "server/concepts/persistent_assignment",
@@ -530,15 +531,7 @@ const sidebars: SidebarsConfig = {
                 },
               ],
             },
-            {
-              type: "category",
-              label: "Layers",
-              link: {
-                type: "doc",
-                id: "layers/introduction",
-              },
-              items: ["layers/js-tutorial"],
-            },
+            "layers/introduction",
             {
               type: "category",
               label: "Landing Page Experiments (deprecated)",
@@ -826,6 +819,50 @@ const sidebars: SidebarsConfig = {
       collapsible: false,
       items: [
         {
+          className: "team-icon sidebar-icon",
+          type: "category",
+          label: "Workspace & Management",
+          items: [
+            {
+              "Workspace": [
+                "access-management/organizations",
+                "access-management/projects",
+                "access-management/teams",
+              ],
+            },
+            {
+              type: "category",
+              label: "Access Management",
+              items: [
+                {
+                  "Single Sign-On": [
+                    "access-management/sso/overview",
+                    "access-management/sso/okta_sso",
+                    "access-management/sso/azuread",
+                    "access-management/sso/google",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "SCIM User Provisioning",
+                  items: [
+                    "access-management/scim/overview",
+                    "access-management/scim/okta_scim",
+                  ],
+                },
+              ],
+            },
+            {
+              "Collaboration": [
+                "access-management/discussions",
+                "access-management/tags",
+                "guides/setting-up-reviews",
+                "guides/config-history",
+              ],
+            },
+          ],
+        },
+        {
           className: "template-icon sidebar-icon",
           type: "category",
           label: "Templates & Policies",
@@ -847,37 +884,6 @@ const sidebars: SidebarsConfig = {
                 id: "templates/templates",
               },
               items: [],
-            },
-          ],
-        },
-        {
-          className: "team-icon sidebar-icon",
-          type: "category",
-          label: "Team/Access Management",
-          items: [
-            "access-management/organizations",
-            "access-management/projects",
-            "access-management/teams",
-            "access-management/discussions",
-            "access-management/tags",
-            "guides/setting-up-reviews",
-            {
-              "Single Sign-On": [
-                "access-management/sso/overview",
-                "access-management/sso/okta_sso",
-                "access-management/sso/azuread",
-                "access-management/sso/google",
-              ],
-            },
-            "guides/config-history",
-            {
-              type: "category",
-              label: "SCIM User Provisioning",
-              link: {
-                type: "doc",
-                id: "access-management/scim/okta_scim",
-              },
-              items: ["access-management/scim/scim_changelog"],
             },
           ],
         },

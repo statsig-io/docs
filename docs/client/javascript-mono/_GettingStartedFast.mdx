@@ -5,26 +5,6 @@ import JSSnippets from "@site/src/components/JSSnippets";
 
 ## Getting Started
 
-<Tabs
-  defaultValue="script"
-  groupId="js-client-init-method"
-  values={[
-    {label: 'Script', value: 'script'},
-    {label: 'Package Manager', value: 'package-manager'},
-  ]}>
-  <TabItem value="script">
-The quickest way to get up and running with Statsig is to use the CDN/script tag.
-
-Simply add the following to your `<head>` tag and replace `[YOUR_CLIENT_KEY]` with your [actual Client SDK Key](https://console.statsig.com/api_keys):
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=[YOUR_CLIENT_KEY]"></script>
-```
-
-And thats it!  This will automatically initialize the SDK, start logging autocapture events, and record session replays.  To remove session replay or auto capture, remove the +session-replay or +web-analytics from the end of the script tag.
-  </TabItem>
-  <TabItem value="package-manager">
-
 You can install the Statsig SDK via npm, yarn:
 
 <Tabs
@@ -54,6 +34,3 @@ yarn add @statsig/js-client @statsig/session-replay @statsig/web-analytics
 After installing the SDK, you can initialize it using the following code:
 
 <JSSnippets />
-
-  </TabItem>
-</Tabs>

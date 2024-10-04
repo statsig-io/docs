@@ -107,6 +107,7 @@ const client = new window.__STATSIG__.StatsigClient(
   "YOUR_SDK_KEY",
   {},
 );
+await client.initializeAsync();
 ```
 
 Now that we have initialized Statsig, we can go ahead and make a call to our newly created Feature Gate. Copy and paste the following code in the console.
@@ -116,8 +117,6 @@ client.checkGate("mobile_registration");
 ```
 
 You should get a response 'false' back - we didn't initialize from a mobile client, nor with an email containing `@statsig.com`.
-
-![Initializing and checking a gate](https://github.com/user-attachments/assets/0483ccfb-2f49-455b-8628-141cb99bdaac)
 
 This is because we are not running this code on iOS or Android. And the way we configured our Feature Gate, the feature is only available on mobile.
 

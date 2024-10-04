@@ -3,105 +3,63 @@ title: Parameter Stores
 sidebar_label: Parameter Stores
 slug: /client/concepts/parameter-stores
 ---
+
 :::info
-Only available for Statsig Mobile Client SDKs
+Parameter Stores are only available for Statsig Client SDKs.
 :::
 
-### **Parameter Stores: Simplifying Your Mobile App Configuration Management**
+Parameter Stores provide a new way to organize and manage parameters in your web or mobile app via the Statsig console. They are now available for the Statsig JS, React, React Native, Android, iOS, and Dart SDKs.
 
-As a developer, hardcoded configuration values in mobile apps can become a bottleneck. Whether you're tweaking onboarding flows, changing UI elements, or managing feature rollouts, constantly updating your codebase and waiting for release cycles isn't efficient. **Parameter Stores** offer a flexible, real-time approach to managing configurations directly through the Statsig Console.
+## **What is a Parameter Store?**
 
----
+Rather than thinking in terms of Statsig entities like Feature Gates, Experiments, Layers, or Dynamic Configs, Parameter Stores let you focus on **parameters**—the values in your app that need to be configurable remotely. 
 
-### **What Exactly is a Parameter Store?**
+Parameter Stores decouple your code from the configuration, much like Statsig Layers decouple your code from specific experiments. This level of abstraction allows you to run experiments, adjust gating, or change values on the fly—**without hardcoding experiment names** in your app. 
 
-Parameter Stores let you manage the parameters driving features in your app (boolean flags, text resources, numerical settings) without hardcoding them into your code. This allows you to dynamically adjust app behavior by decoupling configuration from code.
+Each parameter can be remapped between Statsig entities (as long as the parameter type remains the same). These parameters will receive dynamic values depending on the `StatsigUser` the SDK is initialized with, and they can be updated anytime without requiring a mobile code change or waiting for your mobile release cycle.
 
-Unlike Feature Gates, Experiments, or Dynamic Configs tied to specific workflows, Parameter Stores offer the flexibility to define and manage parameters independently, which can be remapped to these features later.
+## **How to Use Parameter Stores**
 
----
+Here’s a suggested workflow:
 
-### **How to Use Parameter Stores: A Practical Example**
+1. **Create a Parameter Store**: 
+   Set up a Parameter Store for your team or project. Parameter Stores are designed to hold related parameters in one object.
 
-Let’s say you want to implement a new onboarding flow, but only for users on the latest version of your app. Here’s how Parameter Stores help without needing constant code updates:
+2. **Identify Server-Side Variables**:
+   Consider which variables you want to control server-side rather than hardcoding them in your app. These could include:
+   
+   - A boolean parameter to control access to a new feature. Even if you're used to using Feature Gates for boolean feature management, start with a boolean parameter instead.
+   - A string parameter for text resources that you may want to swap or experiment with.
+   - A number parameter for inputs such as the number of onboarding steps, a list length to truncate, and more.
 
-1. **Create a Boolean Parameter**
+3. **Start with Static Values**: 
+   Begin with a static value for each parameter (what you would have hardcoded in the app). Use this static value initially.
 
-   In the Statsig Console, create a boolean parameter called `enable_new_onboarding` and set its default value to `false`. This will be your feature toggle.
+4. **Remap When Ready**: 
+   Once your app is shipped and the feature is ready, remap the parameter to a Feature Gate, Experiment, Dynamic Config, or Layer. This allows you to test and target different variants.
 
-2. **Use the Parameter in Your Code**
+5. **Update in Real-Time**: 
+   After experimenting, you can update the static value or gate the feature for specific app versions. This can be done in real time across mobile apps that are already released.
 
-   Fetch the value of the parameter in your app using the Statsig SDK:
+## **Why Use Parameter Stores?**
 
-   ```java
-   boolean newOnboardingEnabled = StatsigClient.getConfig("enable_new_onboarding").getBoolean("value", false);
-   if (newOnboardingEnabled) showNewOnboardingFlow();
-   else showOldOnboardingFlow();
-   ```
+If you’ve encountered this problem before, you’ll immediately recognize the power of Parameter Stores. For developers just starting with a Statsig SDK in their mobile apps, it’s beneficial to use Parameter Stores from the outset.
 
-   The app reacts dynamically based on whether the new onboarding flow is enabled, without hardcoding the condition.
+Parameter Stores are inspired by solutions like Facebook's Mobile Config, Uber's approach to experimentation, and Firebase Remote Config. These are used by leading mobile companies to:
 
-3. **Map the Parameter to a Feature Gate**
+- Move faster
+- Maintain backward compatibility
+- Experiment more freely
 
-   Once you're ready to roll out the new onboarding flow to a specific user segment, remap the `enable_new_onboarding` parameter to a Feature Gate that targets users on the latest version.
+While the extra setup in the Statsig console may seem less convenient than creating a gate, it saves time later. Once your app version is shipped, Parameter Stores ensure that no Statsig entity values are hardcoded, giving you flexibility to update parameters without the need for a new release. This is particularly valuable for mobile apps, where app store release cycles create delays—unlike backends or websites, which can be updated quickly.
 
-4. **Control Updates in Real-Time**
+## **Supported SDK Versions**
 
-   When you're ready to release the new flow to more users, simply update the parameter in the Statsig Console—no need to release a new app version.
+Parameter Stores are available in the following SDKs:
 
----
-
-### **Best Practices for Using Parameter Stores**
-
-- **Start Small**: Begin with a simple, non-critical feature like `show_promo_banner` and create a boolean parameter to control it remotely.
-- **Experiment with Dynamic Configs**: Remap parameters to Dynamic Configs when you need real-time changes based on user behavior or app version.
-- **Stay Organized**: Group related parameters (e.g., all settings for onboarding) into a single Parameter Store. This simplifies management as your app scales.
-
----
-
-### **Code Example: Feature Toggle**
-
-Here’s a quick example for Android:
-
-```java
-StatsigClient.initialize(context, "client-sdk-key", statsigUser, new IStatsigCallback() {
-    @Override
-    public void onStatsigInitialize() {
-        boolean featureEnabled = StatsigClient.checkGate("enable_new_feature");
-        if (featureEnabled) {
-            showNewFeature();
-        } else {
-            showOldFeature();
-        }
-    }
-});
-```
-
-You can update the value of `enable_new_feature` directly in the Statsig Console, without touching your app’s code.
+- **Android SDK** v4.33.0+
+- **iOS SDK** v1.45.0+
+- **@statsig/js-client** and **@statsig/react-bindings** v1.4.0+
+- **Dart SDK** v1.2.1+
 
 ---
-
-### **Key Benefits of Parameter Stores**
-
-Parameter Stores simplify how you manage configurations, giving you flexibility and control without hardcoded values. Here’s how they streamline your workflow:
-
-- **Avoid Hardcoding**: Centralize feature flags and configurations, making it easier to maintain and update.
-- **Real-Time Adjustments**: Change parameters like feature toggles or UI text instantly from the console, without waiting for app releases or redeploying code.
-- **Feature Rollouts**: Remotely toggle features for a limited set of users with boolean parameters, avoiding hardcoded flags.
-- **Long-Term Flexibility for Mobile Apps**: While configuring Parameter Stores in the Statsig console may require slightly more effort compared to creating a gate, it offers significant long-term benefits. Once your app version is shipped, Parameter Stores ensure that you avoid hardcoding entity values, giving you the flexibility to update parameters remotely without needing a new release. This is especially valuable for mobile apps, where updates depend on app store release cycles, unlike backends or websites, which can be updated more quickly.
-- **Safe Experimentation**: Remap parameters to Feature Gates, Experiments, or Dynamic Configs to test features without affecting your main codebase.
-- **Backward Compatibility**: Maintain control over configurations for both old and new app versions, ensuring a smooth user experience.
-- **Content Updates**: Dynamically update text resources or messages with string parameters, eliminating the need for redeployment.
-- **Config Adjustments**: Experiment with different values (e.g., list lengths, step counts) by updating the parameter in the console.
-- **Faster Iteration**: Respond quickly to feedback or evolving requirements by updating configurations instantly.
-
----
-
-### **Next Steps for Maximizing Parameter Stores**
-
-Now that you understand how Parameter Stores work, here’s how you can take full advantage of them:
-
-- **Scale Your Usage**: Start with simple implementations like feature toggles, and gradually use Parameter Stores for more advanced scenarios such as A/B testing or feature rollouts.
-- **Integrate with Other Statsig Tools**: Parameter Stores work seamlessly with Feature Gates, Dynamic Configs, and Experiments. Combining these tools enables greater flexibility and control over your app's behavior.
-- **Monitor and Adjust**: Use Statsig’s built-in analytics to track how parameter changes affect your app. Make real-time adjustments based on user feedback and experiment results.
-```

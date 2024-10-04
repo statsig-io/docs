@@ -138,6 +138,10 @@ const config: Config = {
       {
         redirects: [
           {
+            from: "/layers/js-tutorial",
+            to: "/client/javascript-sdk#layers"
+          },
+          {
             from: "/feature-flags/implement",
             to: "/"
           },
