@@ -102,7 +102,7 @@ This guide outlines the process for setting up SCIM (System for Cross-domain Ide
 ## Step 7: Manage User Assignments
 
 - Use the "Assignments" tab in Okta to add or remove users from Statsig
-- Assigning a user will add them to Statsig; unassigning will deactivate them in Statsig
+- Adding a user assignment in Okta will create the user in Statsig, while removing the assignment will deactivate the user's Statsig account
 
 ![img](/img/okta_scim_steps/step7-manage-user-assignments.png)
 
@@ -111,7 +111,7 @@ This guide outlines the process for setting up SCIM (System for Cross-domain Ide
 - User full name, password, and email management is not enabled on SCIM yet.
 - Project and role management is still a work in progress. Some groups will populate on Okta, we ask that you do not use them for now.
 - The Org Owner cannot be removed via SCIM, it will throw an error. This is prevent accidents on the Okta side.
-- Removing a user on Statsig will unassign them on Okta. Unassigning/deactivating a user on Okta will remove them from the Statsig Org.
+- When a user is removed from Statsig, they will be automatically unassigned in Okta. Conversely, if a user is unassigned or deactivated in Okta, they will be removed from the Statsig Organization.
 - Role management for users at the org level must still be done via Statsig. We will implement org role management on Okta soon.
 
 ## Troubleshooting
