@@ -15,7 +15,7 @@ We try to make this easy in a few ways:
 
 For general guidance on event logging and core concepts, read on, or jump to the [logging events via SDKs](#log-via-sdk) section.
 
-## Identifying Users and the "StatsigUser" object
+## Identifying Users and the "StatsigUser" object {#identifying-users}
 Many analytics platforms have a concept of "identifying" a user.  In Statsig, this is the StatsigUser object that is set a initialization time in client SDKs, or with each event in Server SDKs.
 
 The [`StatsigUser`](/client/concepts/user) is a set of properties that describe the user.  It roughly has the same json definition across all SDKs and integrations:
@@ -41,7 +41,7 @@ The `userID` field is reserved for a unique identifier for the user.  This shoul
 
 The other fields are fairly self explanatory, and power not just targeting and evaluation for feature flags, but can also be used for custom metrics and data queries in metrics explorer.
 
-## Group Analytics
+## Group Analytics {#group-analytics}
 Another core concept in analytics is the idea of different "groups".  For example, a user could belong to a certain company, organization, page, subreddit, facebook group, etc.
 
 In Statsig, groups are represented by the `customIDs` field.  This is a dictionary that can contain multiple IDs for a single user.  For example, a user could have the following customIDs:
@@ -72,8 +72,17 @@ To set up a new "group" or "customID":
 3. Name the new customID and give it a description so other people in your project know what it means
 4. Start logging events with that customID in the `customIDs` field of the StatsigUser object
 
+NOTE: you must provide the set of all IDs on each StatsigUser object.  Statsig does not 
 
 ## Best practices
+
+### Set all known IDs on each StatsigUser object
+In order to generate metrics for each user/group, Statsig needs to know the set of all IDs on each StatsigUser object.  Whether this is at client sdk initialization time, or when calling `logEvent` in a server SDK, you need to pass each identifier for the user for it to contribute to those metrics.
+
+If you use a logged out identifier for anonymous users, you should continue to pass that identifier even after the user logs in and you populate the logged in userID.  This will enable any gates or experiments on the logged out identifier to continue to bucket the user appropriately, and calculate metrics at both the logged out and logged in level.
+
+### Deduplicating custom events
+At the moment, Statsig does not provide a way to deduplicate custom events that you log.
 
 ### Naming conventions
 
