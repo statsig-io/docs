@@ -31,7 +31,7 @@ Client/single user environment SDKs send the user object with the `initialize` c
 *privateAttributes will be sent with this call but will not be stored or logged on Statsig servers*.  In order to evaluate the conditions and rules for a gate, config, or experiment, Statsig servers need to know the privateAttributes field.  It will be stripped from the users for any logging on Statsig servers.
 Client SDKs will remove privateAttributes before any events are logged - they are only needed for gate evaluation.
 
-Example with the `statsig-js` SDK: https://github.com/statsig-io/js-client/blob/1ad8a553c6be090e75f0e4c2478b75ac5edbef66/src/LogEvent.ts#L38
+Example with the `@statsig/js-client` SDK: https://github.com/statsig-io/js-client-monorepo/blob/17fb70f1bea00d07e156cf6ff03b8024bbc1b197/packages/client-core/src/EventLogger.ts#L325
 
 If this does not meet your needs, our Server SDKs are able to make a stronger guarantee - `privateAttributes` will never leave your server.  Statsig server SDKs
 download the definition of each gate/config/experiment and evaluate them locally.
