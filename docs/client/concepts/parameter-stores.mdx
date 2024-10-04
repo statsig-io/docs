@@ -64,10 +64,16 @@ Let’s say you want to implement a new onboarding flow, but only for users on t
 Here’s a quick example for Android:
 
 ```java
-StatsigClient.initialize(context, "client-sdk-key", statsigUser, () -> {
-    boolean featureEnabled = StatsigClient.getFeatureGate("enable_new_feature").isEnabled();
-    if (featureEnabled) showNewFeature();
-    else showOldFeature();
+StatsigClient.initialize(context, "client-sdk-key", statsigUser, new IStatsigCallback() {
+    @Override
+    public void onStatsigInitialize() {
+        boolean featureEnabled = StatsigClient.checkGate("enable_new_feature");
+        if (featureEnabled) {
+            showNewFeature();
+        } else {
+            showOldFeature();
+        }
+    }
 });
 ```
 
