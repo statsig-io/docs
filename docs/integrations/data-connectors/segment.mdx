@@ -127,13 +127,22 @@ This is particularly useful for working with the [Segment anonymous ID](https://
 For example, if you're running experiments on anonymous users, you can use Segment's `anonymousId` as the unit of randomization. First, you will want to [add a new customer identifier to Statsig](/guides/experiment-on-custom-id-types#step-1---add-companyid-as-a-new-id-type-in-your-project-settings). In the above example, we call our new custom ID `segmentAnonymousId`. Then, when [initializing](/client/javascript-sdk) the Statsig SDK, if you have access to the Segment `anonymousId` you will want to pass it to Statsig as a custom ID. For example, your Statsig initialization may look like this:
 
 ```jsx
-const Statsig = require("statsig-js");
+import { StatsigClient } from '@statsig/js-client';
 
 await Statsig.initialize(
   "client-sdk-key",
-  { userID: "some_user_id",
-    customIDs: { segmentAnonymousId: analytics.user().anonymousId()} } 
+  
 );
+const client = new StatsigClient(sdkKey,
+  {
+    userID: "some_user_id",
+    customIDs: {
+      segmentAnonymousId: analytics.user().anonymousId()
+    }
+  },
+  { environment: { tier: "production" } }
+);
+
 ```
 
 You can access Segment's `anonymousId` using `analytics.user().anonymousId()` as [outlined in the Segment docs here](https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/identity/).

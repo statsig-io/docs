@@ -546,15 +546,7 @@ const sidebars: SidebarsConfig = {
                 },
               ],
             },
-            {
-              type: "category",
-              label: "Layers",
-              link: {
-                type: "doc",
-                id: "layers/introduction",
-              },
-              items: ["layers/js-tutorial"],
-            },
+            "layers/introduction",
             {
               type: "category",
               label: "Landing Page Experiments (deprecated)",
