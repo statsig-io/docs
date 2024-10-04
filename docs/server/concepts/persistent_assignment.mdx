@@ -4,6 +4,9 @@ sidebar_label: Server Persistent Assignment
 slug: /server/concepts/persistent_assignment
 ---
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 Persistent assignment allows you to ensure that a user's variant stays consistent while an experiment is running, regardless of changes to allocation or targeting.
 
 ## Persistent Storage Adapter
@@ -21,7 +24,52 @@ Currently only supported in `Go`, `Ruby`, `Node`, `Kotlin`
   - **save** the evaluation of the current user **on first evaluation**
   - **load** the previously saved evaluation of a persisted user **on subsequent evaluations**
 
+### Persistent Assignment Options
+- **Enforce Targeting**: `boolean`, default: `false`
+  - Whether or not to enforce targeting rules before assigning persisted values
+
+<Tabs
+  groupId="server-sdk-lang-choice"
+  defaultValue="node"
+  values={[
+    {label: 'Node JS', value: 'node'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="kotlin">
+```kotlin
+val options = GetExperimentOptions(
+  ...
+  persistentAssignmentOptions = PersistentAssignmentOptions(
+    enforceTargeting = true,
+  )
+)
+```
+  </TabItem>
+  <TabItem value="node">
+```ts
+const options: GetExperimentOptions = {
+  ...
+  persistentAssignmentOptions: {
+    enforceTargeting: true,
+  }
+}
+
+```
+  </TabItem>
+</Tabs>
+
 ### Example usage
+
+<Tabs
+  groupId="server-sdk-lang-choice"
+  defaultValue="ruby"
+  values={[
+    {label: 'Node JS', value: 'node'},
+    {label: 'Kotlin', value: 'kotlin'},
+    {label: 'Ruby', value: 'ruby'},
+    {label: 'Go', value: 'go'}
+  ]}>
+  <TabItem value="ruby">
 ```ruby
 Statsig.initialize(
   'secret-key',
@@ -47,3 +95,86 @@ exp = Statsig.get_experiment( # User evaluates using values from persisted stora
 )
 puts exp.group_name # 'Control'
 ```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+runBlocking {
+  Statsig.initialize(
+    "secret-key",
+    StatsigOptions(userPersistentStorage = MyPersistentStorageAdapter())
+  )
+}
+val persistedUser = StatsigUser("test-123")
+var exp = Statsig.getExperimentSync(
+  persistedUser,
+  "active_experiment",
+  GetExperimentOptions(
+    userPersistedValues = Statsig.getUserPersistedValues(persistedUser, "userID"),
+  ),
+)
+println(exp.groupName) // "Control"
+exp = Statsig.getExperimentSync(
+  StatsigUser("unknown"),
+  "active_experiment",
+  GetExperimentOptions(
+    userPersistedValues = Statsig.getUserPersistedValues(persistedUser, "userID"),
+  ),
+)
+println(exp.groupName) // "Control"
+```
+  </TabItem>
+  <TabItem value="node">
+```ts
+await Statsig.initialize(
+  "secret-key",
+  {
+    userPersistentStorage: new MyPersistentStorageAdapter() 
+  }
+)
+const persistedUser: StatsigUser = { userID: "123" }
+let exp = Statsig.getExperimentSync(
+  persistedUser,
+  "active_experiment",
+  { 
+    userPersistedValues: Statsig.getUserPersistedValues(user, "userID")
+  },
+)
+console.log(exp.getGroupName()) // "Control"
+exp = Statsig.getExperimentSync(
+  { userID: "unknown" },
+  "active_experiment",
+  { 
+    userPersistedValues: Statsig.getUserPersistedValues(user, "userID")
+  },
+)
+console.log(exp.getGroupName()) // "Control"
+```
+  </TabItem>
+  <TabItem value="go">
+```go
+InitializeWithOptions(
+  "secret-key",
+  &Options{
+    UserPersistentStorage: persistentStorage,
+  }
+)
+persistedUser := User{UserID: "123"}
+exp := GetExperimentWithOptions(
+  persistedUser,
+  "active_experiment",
+  &GetExperimentOptions{
+    PersistedValues: GetUserPersistedValues(persistedUser, "userID")
+  }
+)
+fmt.Println(exp.GroupName) // "Control"
+exp = GetExperimentWithOptions(
+  User{UserID: "unknown"},
+  "active_experiment",
+  &GetExperimentOptions{
+    PersistedValues: GetUserPersistedValues(persistedUser, "userID")
+  }
+)
+fmt.Println(exp.GroupName) // "Control"
+```
+  </TabItem>
+</Tabs>

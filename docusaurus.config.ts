@@ -138,6 +138,26 @@ const config: Config = {
       {
         redirects: [
           {
+            from: "/layers/js-tutorial",
+            to: "/client/javascript-sdk#layers"
+          },
+          {
+            from: "/feature-flags/implement",
+            to: "/"
+          },
+          {
+            from: "/feature-flags/implement/client",
+            to: "/"
+          },
+          {
+            from: "/feature-flags/implement/server",
+            to: "/"
+          },
+          {
+            from: "/feature-flags/implement/http-api",
+            to: "/"
+          },
+          {
             from: "/client/jsClientSDK",
             to: "/client/javascript-sdk"
           },
@@ -248,19 +268,19 @@ const config: Config = {
             from: "/feature-gates/best-practices",
           },
           {
-            to: "/feature-flags/implement",
+            to: "/",
             from: "/feature-gates/implement",
           },
           {
-            to: "/feature-flags/implement/client",
+            to: "/",
             from: "/feature-gates/implement/client",
           },
           {
-            to: "/feature-flags/implement/server",
+            to: "/",
             from: "/feature-gates/implement/server",
           },
           {
-            to: "/feature-flags/implement/http-api",
+            to: "/",
             from: "/feature-gates/implement/http-api",
           },
           {

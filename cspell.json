@@ -630,7 +630,9 @@
         "click-through",
         "Chatbots",
         "hashlib",
-        "hget"
+        "hget",
+        "Entra",
+        "SCIM"
     ],
     "ignorePaths": [
         "node_modules/**",
@@ -642,6 +644,7 @@
         "<img\\s+width=\"\\d+\"\\s+alt=\"[^\"]*\"\\s+src=\"/img/[^\"]+\"/>",
         "\\$[^$\\n]+\\$",
         "`[^`\n]+`",
-        "/\\[.*?\\]\\(.*?\\)/"
+        "/\\[.*?\\]\\(.*?\\)/",
+        "```[\\s\\S]*?```"
     ]
 }
