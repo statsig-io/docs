@@ -389,6 +389,11 @@ const sidebars: SidebarsConfig = {
             "guides/statsig-id-resolver",
           ],
         },
+        {
+          type: "doc",
+          id: "faq",
+          className: "question-icon sidebar-icon",
+        },
       ],
     },
     {
@@ -842,10 +847,6 @@ const sidebars: SidebarsConfig = {
             "statsig-warehouse-native/features/other-useful-features",
             "statsig-warehouse-native/native-vs-cloud",
           ],
-        },
-        {
-          type: "doc",
-          id: "faq",
         },
       ],
     },
