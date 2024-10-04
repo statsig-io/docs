@@ -3,10 +3,10 @@ sidebar_label: Your First A/B Test
 title: Your First A/B Test
 ---
 
-import Install from '../client/js/_install.mdx' 
-import Initialize from '../client/js/_initialize.mdx' 
-import GetExperiment from '../client/js/_getExperiment.mdx' 
-import LogEvent from '../client/js/_logEvent.mdx'
+import Install from '../client/javascript-mono/_install.mdx' 
+import Initialize from '../client/javascript-mono/_initialize.mdx' 
+import GetExperiment from '../client/javascript-mono/_getExperiment.mdx' 
+import LogEvent from '../client/javascript-mono/_logEvent.mdx'
 
 In this guide, you will create and implement your first A/B/n test. While you can use Statsig's [Feature Flags](/guides/first-feature) to roll out new features, Statsig's Experiments enable you to run all kinds of A/B tests, from simple bivariant (A vs. B) experiments to multi-variant experiments ( A vs. B/C/D/n) and mutually exclusive experiments.
 
@@ -27,34 +27,44 @@ This is a common question that comes up in the context of A/B tests. Most assume
 
 Log into the Statsig console at https://console.statsig.com/ and navigate to Experiments in the left-hand navigation panel.
 
-Click on the **Create** button and enter the name and description for your experiment. Click **Create**.
+Click on the **Create** button and enter the name and hypothesis for your experiment.
 
-![Screen Shot 2022-06-17 at 12 14 50 PM](https://user-images.githubusercontent.com/74584483/174388297-9ce44f6f-7557-4873-b208-62501a25f4c8.png)
+We are naming this experiment:
+```
+onboarding_banner
+```
 
-In the Setup tab, you can fill out the scorecard for the experiment Hypothesis, and any primary metrics you are interested in watching.  While Statsig will show you experiment results for all your metrics, these key metrics represent your hypothesis for the experiment. Establishing a hypothesis
-upfront ensures that the experiment serves to improve your understanding of users rather than simply serving data points to bolster the case for shipping or not shipping your experiment.   
+And the hypothesis:
+```
+A new onboarding banner will improve the onboarding flow completion rate
+```
 
-![Screen Shot 2022-06-17 at 12 17 17 PM](https://user-images.githubusercontent.com/74584483/174388696-4db2e3ce-69a0-400a-9cc3-b0d67bf1b097.png)
+Click **Create**.
 
-Then, define the test groups for this experiment. You can define what percentage of users should receive the group's configured values. First, click on "Add Parameter."  Here, I'll add a Boolean parameter called "enable feature".
+In the Setup tab, you can fill out the scorecard for the primary metrics you are interested in watching. These key metrics should reflect your hypothesis for the experiment. Establishing a hypothesis
+upfront ensures that the experiment serves to improve your understanding of users.
 
-![Screen Shot 2022-06-17 at 12 18 39 PM](https://user-images.githubusercontent.com/74584483/174388767-0944b5b4-7c30-40a4-a8d4-5f6263e9f8cb.png)
+Since you havent logged any events for this fictional example, lets just set "dau (daily active users)" as the primary metric.
 
-Now you can set the value for your Test and Control groups.  An easy way to double check your statsig integration is to start with an A/A test - meaning, there is no difference between the test and control groups.  In that case, the parameter values will be the same:
+Underneath the scorecard, you can see a tree view of the experiment configuration which illustrates how users will be assigned to different variants.
 
-![Screen Shot 2022-06-17 at 12 20 12 PM](https://user-images.githubusercontent.com/74584483/174388919-e1cb424d-1c62-43d5-a90f-e6a6dfcb5083.png)
+First, you can set the allocation percentage of this experiment (default 100%).  This controls the percentage of users that will be considered for this experiment.
 
-In the **Allocation** panel, enter the percentage of users that you want to allocate to this experiment. By default, this is allocated to 100% of your users.
+Then, you can set targeting criteria.  If you only want this experiment to run on a specific app version, or for a specific segment of users, use this criteria to filter down to which users should be assigned a group.
 
-![Screen Shot 2022-06-17 at 12 20 52 PM](https://user-images.githubusercontent.com/74584483/174388979-5fbbcaa7-9b72-4cf6-be91-449c74ae556c.png)
+Next, set the number of experiment groups and the percentage of users to allocate to each group.  In this example, we will keep the default 2 groups.
 
-Finally, don't forget to scroll back up and click on the **Save** button at the top right hand side of the page to complete your experiment setup.
+Finally, there are parameters.  These are the values in code that will be different for each group.  In this example, we will create a parameter called "enable_banner", a boolean.  Create that parameter, and then set it to false for the test group and true for the experiment group.
 
-![Screen Shot 2022-06-17 at 12 21 58 PM](https://user-images.githubusercontent.com/74584483/174389126-c666be40-db36-44be-b02a-af29258e374f.png)
+Here's what our setup looks like.  Don't forget to hit "Save" in the bottom right to finalize this setup.
+
+![Experiment Setup](https://github.com/user-attachments/assets/96d1cf77-dffb-4be7-9869-c808c577dd0f)
+
+Once you have your experiment setup, it won't run until you hit "Start" at the top of the page.  This will make production traffic eligible for the experiment. You can test the configuration in non production environments first, but you won't get results until you start the experiment.
 
 ## Step 2: Install and Initialize the Statsig SDK
 
-In this guide, we use the Statsig Javascript client SDK. See the Statsig [client or server SDKs docs](/#sdks) for your desired programming language and technology.
+In this guide, we use the Statsig Javascript client SDK. See the Statsig [client or server SDKs docs](/sdks/getting-started) for your desired programming language and technology.
 
 <Install />
 
@@ -69,20 +79,19 @@ In addition to the Client API key, you must also pass in a `Statsig User ID` to 
 Get your experiment's configuration parameters to enable the user to see the experience you want to create with each variant. In this case, we fetch the value of the shape parameter that we had created earlier.
 
 ```jsx
-const expConfig = statsig.getExperiment("onboarding_banner");
+const expConfig = myStatsigClient.getExperiment("onboarding_banner");
 
 const showBanner = expConfig.get("enable feature", false);
- 
 ```
 
 Now when a user renders this page in their client application, you will automatically start to see a live log stream in the Statsig console when you navigate to your experiment and select the **Diagnostics** tab.
 
-![image](https://user-images.githubusercontent.com/1315028/139113152-7d19afa1-733f-4ee4-b788-3d39cecedae1.png)
+![Experiment Diagnostics](https://github.com/user-attachments/assets/b0ab8c0e-4f13-4b2b-bf58-1f8a09d8d4a7)
 
-At this stage, you may also want to track downstream events to measure how your users are responding to different variants of the experiment. To do this, call the `LogEvent` API with the key measure that you may want to aggregate as well as other metadata that you may use as additional dimensions to breakdown the aggregate results.  Events logged to Statsig are associated with the user identifiers, and not experiment-specific.
+If you want to measure how your users are responding to different variants of the experiment, you need to log events to Statsig. To do this, call the `LogEvent` API with the key measure that you may want to aggregate as well as other metadata that you may use as additional dimensions to breakdown the aggregate results.  Events logged to Statsig are associated with the user identifiers, and not experiment-specific.
 
 ```jsx
-statsig.logEvent('add_to_cart', 'groceries', {'price': '9.99', 'SKU_ID': 'SKU-123'});
+myStatsigClient.logEvent('add_to_cart', 'groceries', {'price': '9.99', 'SKU_ID': 'SKU-123'});
 ```
 
 As the experiment progresses, you will see how many experiment checks occur and how many events are logged on an hourly basis in the **Diagnostics** tab.
@@ -90,14 +99,13 @@ As the experiment progresses, you will see how many experiment checks occur and 
 
 ## Step 4: Review experiment results
 
-Within 24 hours of starting your experiment, you'll see the cumulative exposures in the **Results** tab.
+Within 24 hours of starting your experiment, you'll see the cumulative exposures in the *Pulse Results** tab
 
-![image](https://user-images.githubusercontent.com/1315028/154574304-79b564b3-0833-49d5-bc65-427b59051343.png)
+You will also start to see the key results for each test group compared to the control. In the **Scorecard** panel, you can see the full picture of how all your tagged metrics have shifted in the experiment.
+Here's a sample of what that looks like:
 
-You will also start to see the key results for each test group compared to the control in the **Results** tab. In the **Metric Lifts** panel, you can see the full picture of how all your tagged metrics have shifted in the experiment.
+![Example experiment results](https://github.com/user-attachments/assets/7e203d73-dbf9-4f27-87fb-b05269dd4173)
 
-![Screen Shot 2022-06-17 at 12 24 29 PM](https://user-images.githubusercontent.com/74584483/174389478-2c0c306a-38c8-4c11-998d-f914778d20c6.png)
-
-After your experiment has run for your predetermined duration, you can start to make a decision based on the results in the Metric Lifts panel.
+After your experiment has run for your predetermined duration, you can start to make a decision based on the results in the Scorecard panel.
 
 Alternatively, you can choose to ramp up the experiment to a larger user base by increasing the allocation in the **Setup** tab. We recommend scaling up allocation slowly in the initial stages, and then by a larger margin in later stages, say 0% -> 2% -> 10% -> 50% -> 100%. This helps you get more data and build more confidence before you decide to ship the experiment. 
