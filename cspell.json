@@ -630,7 +630,9 @@
         "click-through",
         "Chatbots",
         "hashlib",
-        "hget"
+        "hget",
+        "Entra",
+        "SCIM"
     ],
     "ignorePaths": [
         "node_modules/**",
