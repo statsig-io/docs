@@ -203,11 +203,8 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "Integrations",
           className: "integrations-icon sidebar-icon",
-          link: {
-            type: "doc",
-            id: "integrations/introduction",
-          },
           items: [
+            "integrations/introduction",
             {
               "Data Into Statsig": [
                 {

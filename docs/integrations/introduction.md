@@ -1,5 +1,6 @@
 ---
 title: Introduction
+sidebar_label: Overview
 slug: /integrations/introduction
 ---
 

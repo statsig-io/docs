@@ -1,6 +1,6 @@
 ---
 title: Statsig CLI ("Siggy")
-sidebar_label: Introduction
+sidebar_label: Overview
 slug: /statsigcli
 ---
 
