@@ -2,6 +2,8 @@
 title: HTTP API
 ---
 
+> **⚠️ Important:** While this HTTP API is available for direct use, we strongly recommend using one of our official SDKs for your programming language whenever possible. SDKs offer better performance, automatic error handling, and type safety. They also provide a more idiomatic integration with your codebase. Only use this HTTP API directly if there isn't an SDK available for your language or if you have a specific use case that requires direct API access.
+
 Before you can start calling the server APIs, you need to take care of the following steps:
 
 1. [Create a free account on statsig.com](#step1)
@@ -18,8 +20,7 @@ An account will let you use the Statsig Console, where you can manage all of you
 
 ### Step 2 - Get an API key from the [Statsig Console](https://console.statsig.com/)
 
-An API key is required in every API request. There are two types of API keys:
-
+An API key is required in every API request. There are two types of API keys you can use with the HTTP API:
 - **Server-side secret Key**: Used only from secure servers and should never be exposed in client-side code.
 - **Client-SDK Key**: Safe to embed in mobile apps and front-end web apps.
 

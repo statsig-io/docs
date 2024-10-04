@@ -14,7 +14,7 @@ const sidebars: SidebarsConfig = {
         {
           type: "doc",
           id: "getting-started",
-          label: "Docs Overview",
+          label: "Overview",
           className: "rocket-icon sidebar-icon",
         },
         {
