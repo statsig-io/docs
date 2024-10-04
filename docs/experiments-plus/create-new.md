@@ -25,7 +25,7 @@ When running an experiment, it’s common to test a specific hypothesis using a 
 - **Primary Metrics** are those you expect to be directly impacted by the experiment.
 - **Secondary Metrics** are important to monitor to ensure there are no unintended side effects, but they aren’t the primary focus of your experiment.
 
-Configuring the Scorecard is optional but recommended. It provides your team with clear context on what is being tested and how success is measured. Metrics added to the Scorecard are computed daily and eligible for advanced treatments like [CUPED](/stats-engine/methodologies/cuped) and [Sequential Testing](/experiments-plus/sequential-testing#what-is-sequential-testing).
+Configuring the Scorecard is a required step when creating an experiment. It provides your team with clear context on what is being tested and how success is measured. You must enter your hypothesis and select at least one primary metric. Metrics added to the Scorecard are computed daily and eligible for advanced treatments like [CUPED](/stats-engine/methodologies/cuped) and [Sequential Testing](/experiments-plus/sequential-testing#what-is-sequential-testing).
 
 For best practices on configuring your Scorecard, read more [here](/experiments-plus/read-results#reading-experiment-results).
 
