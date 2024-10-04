@@ -876,11 +876,8 @@ const sidebars: SidebarsConfig = {
                 {
                   type: "category",
                   label: "SCIM User Provisioning",
-                  link: {
-                    type: "doc",
-                    id: "access-management/scim/index",
-                  },
                   items: [
+                    "access-management/scim/overview",
                     "access-management/scim/okta_scim",
                   ],
                 },
