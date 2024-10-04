@@ -403,11 +403,8 @@ const sidebars: SidebarsConfig = {
             {
               type: "category",
               label: "Feature Flags",
-              link: {
-                type: "doc",
-                id: "feature-flags/working-with",
-              },
               items: [
+                "feature-flags/working-with",
                 "feature-flags/create-new",
                 "feature-flags/add-rule",
                 "feature-flags/test-gate",
@@ -423,11 +420,8 @@ const sidebars: SidebarsConfig = {
             {
               type: "category",
               label: "Dynamic Config",
-              link: {
-                type: "doc",
-                id: "dynamic-config/introduction",
-              },
               items: [
+                "dynamic-config/introduction",
                 "dynamic-config/working-with",
                 "dynamic-config/enforce-schema",
                 "dynamic-config/create-new",
@@ -438,11 +432,8 @@ const sidebars: SidebarsConfig = {
             {
               type: "category",
               label: "Segments",
-              link: {
-                type: "doc",
-                id: "segments/introduction",
-              },
               items: [
+                "segments/introduction",
                 "segments/create-new",
                 "segments/add-rule",
                 "segments/add-id-list",
@@ -656,11 +647,8 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "Warehouse Native",
           className: "whn-icon sidebar-icon",
-          link: {
-            type: "doc",
-            id: "statsig-warehouse-native/introduction",
-          },
           items: [
+            "statsig-warehouse-native/introduction",
             {
               type: "category",
               label: "Guides",

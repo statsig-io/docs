@@ -1,6 +1,6 @@
 ---
 title: Segments
-sidebar_label: Introduction
+sidebar_label: Overview
 slug: /segments
 ---
 ## What is a segment?
