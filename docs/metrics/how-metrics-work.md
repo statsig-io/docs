@@ -14,7 +14,7 @@ For example, say a user made two purchases on September 1st. This value can be a
 ## Two Sources of Statsig Metrics 
 
 There are two sources of metrics in Statsig:
-1. **Raw Events** - Statsig [auto-generates certain metrics](/metrics/metrics-from-events) such as _event_count_ and _event_dau_ from these events; you can also convert these events into metrics via [Custom Metrics](/metrics/create)
+1. **Raw Events** - Statsig [auto-generates certain metrics](/metrics/metrics-from-events) such as **event_count** and **event_dau** from these events. Statsig stopped auto computing **event_dau** metric after October 16, 2024. However, you can create your own metric that function like event_dau via [Custom Metrics](/metrics/custom-dau)
 2. **Precomputed Metrics** - you can provide these pre-computed values to Statsig 
 
 Statsig's Stats Engine joins these metrics with your exposure events from feature gates and experiments to compute experiment results and analytics.
