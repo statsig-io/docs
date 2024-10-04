@@ -72,7 +72,3 @@ When calling `getLayer(LayerName<string>)` you won't see any exposure logged, ho
 - If the user is assigned to an experiment within the Layer, the `statsig::layer_exposure` exposure event is billable.
 - If the user is not assigned an experiment within the Layer, the `statsig::layer_exposure` exposure event is not billable.
   > You will see multiple exposure events logged for each parameters accessed, but these are de-duped on Statsig servers.
-
-## See it in Action
-
-To learn about all that you can do with Layers with an E2E example, see the Statsig tutorial [on Layers in JS](/layers/js-tutorial).
