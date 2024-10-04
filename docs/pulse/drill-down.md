@@ -21,7 +21,7 @@ The exact calculation for each of the above depends on the metric type:
 | Metric Type      | Total Calculation       | Mean           | Units          |
 |------------------|-------------------------|----------------|----------------|
 | event_count      | Sum of events (99.9% winsorization)           | Average events per user (99.9% winsorization)  | All users  |
-| event_dau        | Sum of event DAU (distinct user-day pairs) | Average event_dau value per user per day. Note that we call this "Event Participation Rate" as this can be interpreted as the probability a user is DAU for that event.  | All users |
+| event_dau (Deprecated as of October 16, 2024)        | Sum of event DAU (distinct user-day pairs) | Average event_dau value per user per day. Note that we call this "Event Participation Rate" as this can be interpreted as the probability a user is DAU for that event.  | All users |
 | ratio            | Overall ratio: sum(numerator values)/sum(denominator values)  | Overall ratio  |  Participating users |
 | sum              | Total sum of values (99.9% winsorization)     | Average value per user (99.9% winsorization)   | All users |
 | mean             | Overall mean value    | Overall mean value   | Participating users |
