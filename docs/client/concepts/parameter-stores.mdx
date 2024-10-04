@@ -4,10 +4,10 @@ sidebar_label: Parameter Stores
 slug: /client/concepts/parameter-stores
 ---
 :::info
-Only available for Statsig Mobile Client SDKs
+Only available for Statsig Client SDKs
 :::
 
-Parameter Stores are a new way of organizing and managing parameters in your mobile app via the Statsig console.  They are now available for Statsig Android, iOS, and React Native sdks.
+Parameter Stores are a new way of organizing and managing parameters in your web or mobile app via the Statsig console.  They are now available for Statsig JS, React, React Native, Android, iOS, and Dart sdks.
 
 ## What is a Parameter Store?
 Rather than thinking in terms of Statsig entities (Feature Gates, Experiments, Layers, Dynamic Configs), Parameter Stores allow you to think in terms of *parameters* - things in your app that you want to be configurable remotely.  Parameters decouple your code from the configuration, much like Statsig Layers decouple your code from the specific experiment.  It is a level of indirection that allows you to run any set of experiments, or change gating or values on the fly, without hardcoding an experiment name in your app.  Each of these parameters that you define and check can be remapped at will between statsig entities - provided you maintain the same type for that parameter.  As a result, the parameters will receive different values depending on the `StatsigUser` you initialize the SDK with.  These dynamic values can be updated at any time, without a mobile code change, and without waiting for your mobile release cycle.
@@ -32,5 +32,5 @@ If you've had this problem already, you'll recognize the power immediately.  If 
 Parameter Stores are available in:
 - Android SDK v4.33.0+
 - iOS SDK v1.45.0+
-- @statsig/js-client v1.4.0+
-- Dart SDK v1.2.0+
+- @statsig/js-client and @statisg/react-bindings v1.4.0+
+- Dart SDK v1.2.1+
