@@ -1,0 +1,123 @@
+---
+sidebar_label: Okta SCIM Provisioning
+title: Statsig SCIM Integration with Okta Guide
+---
+
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
+
+# Provision Statsig users with SCIM
+
+<Alert severity="info" style={{paddingBottom: "-4rem"}}>
+  <AlertTitle>
+    SCIM is currently a work in progress feature and in Closed Beta. 
+  </AlertTitle>
+    For any questions or support, feel free to reach out to us through Slack.
+</Alert>
+
+## Introduction
+SCIM (System for Cross-domain Identity Management) is a standardized protocol that simplifies the automation of user provisioning and management across multiple platforms.
+By integrating SCIM with your preferred Identity Provider (IdP), such as Okta or Microsoft Entra,
+you can securely and efficiently manage user creation, updates, and de-provisioning within Statsig.
+We currently only offer an Okta SCIM integration.
+
+## Current SCIM Offering
+We are actively developing SCIM functionality and have rolled out the following features:
+
+- Statsig Org level provisioning: Create new users and deactivate existing users in Statsig
+- Statsig Org User Imports: Import existing users on Statsig to Idp
+
+## Features Currently Not Available
+The following features are under development and will be released in future updates
+
+- Statsig Org level role management: Users can be assigned to organization roles in Statsig
+- Statsig Project level provisioning: Users can be assigned to projects and roles in Statsig
+
+## Changelog
+- See [Changelog](/docs/access-management/scim/scim_changelog.md) for updates on SCIM functionality.
+
+<div style={{borderBottom: "1px solid", marginBottom: "2rem", marginTop: "2rem"}} />
+# Okta Integration
+
+This guide outlines the process for setting up SCIM (System for Cross-domain Identity Management) integration between Statsig and Okta. This integration allows for automated user provisioning and management.
+
+## Prerequisites
+
+- An Okta account with admin access
+- A SCIM Key from Statsig. Contact us to request for a new SCIM key.
+
+## Step 1: Create a New App Integration in Okta
+
+- Log in to your Okta admin console
+- Navigate to Applications > Applications > Create App Integration
+- Select "SWA - Secure Web Authentication"
+
+![img](/img/okta_scim_steps/step1-create-new-custom-integration.png)
+
+## Step 2: Configure App Settings
+
+- Set the App name to "Statsig SCIM"
+- Enter a placeholder URL for the App Login Page (this is a required field but not used for SCIM)
+
+![img](/img/okta_scim_steps/step2-configure-app-settings.png)
+
+## Step 3: Enable SCIM Provisioning
+
+- After creating the integration, go to the "General" tab
+- Click on "Edit" in the "Provisioning" section
+- Enable "SCIM Provisioning"
+
+![img](/img/okta_scim_steps/step3-enable-scim.png)
+
+## Step 4: Configure SCIM Settings
+
+- Navigate to the "Provisioning" tab
+- Set the SCIM connector base URL to: [https://statsigapi.net/scim](https://statsigapi.net/scim)
+- Set "Unique identifier field for users" to "userName"
+- Enable
+  - `Import New Users and Profile Update`
+  - `Push New Users`
+  - `Push Profile Updates`
+- Set the authentication mode to "HTTP Header"
+- For the authorization header, use the SCIM Bearer token provided to you by statsig
+
+![img](/img/okta_scim_steps/step4.png)
+
+## Step 5: Configure Okta to Statsig Settings
+
+- Enable "Create Users"
+- Enable "Deactivate Users"
+- Do not enable "Update User Attributes" or "Sync Password"
+
+![img](/img/okta_scim_steps/step5-configure-okta-to-statsig-settings.png)
+
+## Step 6: Import Existing Statsig Users
+
+- In Okta, go to the Statsig app's "Import" tab
+- Click "Import Now" to fetch existing Statsig users
+- Process the imported users as needed
+
+![img](/img/okta_scim_steps/step6-import-existing-users.png)
+
+## Step 7: Manage User Assignments
+
+- Use the "Assignments" tab in Okta to add or remove users from Statsig
+- Adding a user assignment in Okta will create the user in Statsig, while removing the assignment will deactivate the user's Statsig account
+
+![img](/img/okta_scim_steps/step7-manage-user-assignments.png)
+
+## Important Notes
+
+- User full name, password, and email management is not enabled on SCIM yet.
+- Project and role management is still a work in progress. Some groups will populate on Okta, we ask that you do not use them for now.
+- The Org Owner cannot be removed via SCIM, it will throw an error. This is prevent accidents on the Okta side.
+- When a user is removed from Statsig, they will be automatically unassigned in Okta. Conversely, if a user is unassigned or deactivated in Okta, they will be removed from the Statsig Organization.
+- Role management for users at the org level must still be done via Statsig. We will implement org role management on Okta soon.
+
+## Troubleshooting
+
+- Ensure the SCIM Bearer token is correctly entered and has not expired
+- Check Okta's System Log for any synchronization errors
+- Verify that user attributes are correctly mapped between Okta and Statsig
+
+For further assistance, please contact Statsig support.

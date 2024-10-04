@@ -25,7 +25,7 @@ You can pass in an optional parameter `options` in addition to `sdkKey` and `use
   - Whether or not the SDK should block on loading saved values from disk.
 
 - **initializeValues**: `Map<String, Any>?`, default `null`
-  - Provide the `initialize response` values directly to the Android SDK to synchronously initialize the client. You can generate these values from a Statsig Server SDK like the [NodeJS Server SDK](https://docs.statsig.com/server/nodejsServerSDK#bootstrap)
+  - Provide the `initialize response` values directly to the Android SDK to synchronously initialize the client. You can generate these values from a Statsig Server SDK like the [NodeJS Server SDK](/server/nodejsServerSDK#bootstrap)
 
 - **disableHashing**: `Boolean?`, default `false`
   - When disabled, the SDK will not hash gate/config/experiment names, instead they will be readable as plain text.
@@ -35,6 +35,9 @@ You can pass in an optional parameter `options` in addition to `sdkKey` and `use
   - By default, client SDKs define a "user" for caching as the set of all IDs (the UserID and CustomIDs) and the sdkKey (so multiple instances don't collide)
   - This can mean that a different set of fields will map to the same cached user.  The intent is to improve cache hit rate, and provide better defaults
   - If you have critical fields that define a user differently which are not considered IDs, you can override the cache key we generate using this function
+
+- **evaluationCallback**: `((config: BaseConfig) -> Unit)`, v4.24.0+
+  - A function that can be supplied to the sdk that will be called whenever a gate, config, experiment or layer is checked. The function takes a BaseConfig, which will be one of FeatureGate, DynamicConfig, or Layer, as the only parameter which is the result of the check made.
 
 
 #### Methods

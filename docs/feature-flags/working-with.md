@@ -29,7 +29,7 @@ The following tutorials show how you can perform common tasks with feature gates
 
 - [Create a feature flag](/feature-flags/create-new)
 - [Create a rules for a feature flag](/feature-flags/add-rule)
-- [Use a language-specific Statsig SDK to implement a feature gate in your application](/feature-flags/implement)
+- [Use a language-specific Statsig SDK to implement a feature gate in your application](/sdks/getting-started)
 - [Test a feature flag](/feature-flags/test-gate)
 - [Override a feature flag](/feature-flags/overrides)
 - [View feature flag exposures](/feature-flags/view-exposures)

@@ -28,7 +28,7 @@ app.get('/', async (req, res) => {
   const userObj = { 
     userID: user.id
   }   
-  const initializeValues = Statsig.getClientInitializeResponse(userObj);
+  const initializeValues = Statsig.getClientInitializeResponse(userObj, null, {hash: "djb2"});
   // render page.hbs using two variables
   res.render('page.hbs', {    
     initializeValues: JSON.stringify(initializeValues),
@@ -41,7 +41,7 @@ _Client-side JS within page.hbs_
 ```js
 // pass both the userObject and initializeValues payloads as Object.
 // The triple curly-brace in handlebars will unescape the JSON string
-await statsig.initialize('<CLIENT_SIDE_KEY>', {{{ userObj }}}, {
-  initializeValues: {{{ initializeValues }}},
-});  
+const client = new StatsigClient('<CLIENT_SIDE_KEY>' userObj);
+client.dataAdapter.setData(bootstrapObject, user);
+client.initializeSync();
 ```

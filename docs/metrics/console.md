@@ -4,7 +4,7 @@ sidebar_label: Metrics Dashboard
 slug: /metrics/console
 ---
 
-Metrics are available for all unit types enabled in the project.  User ID and Stable ID are provided by default and others can be added following [these steps](https://docs.statsig.com/guides/experiment-on-custom-id-types#step-1---add-companyid-as-a-new-id-type-in-your-project-settings).  Make a selection from the drop down to view event DAU and user accounting metrics calculated based on the desired unit type.
+Metrics are available for all unit types enabled in the project.  User ID and Stable ID are provided by default and others can be added following [these steps](/guides/experiment-on-custom-id-types#step-1---add-companyid-as-a-new-id-type-in-your-project-settings).  Make a selection from the drop down to view event DAU and user accounting metrics calculated based on the desired unit type.
 
 ![Screen Shot 2022-06-07 at 10 58 26 AM](https://user-images.githubusercontent.com/101903926/172450890-4a4c95eb-a362-49a6-90ad-68f3460a933f.png)
 
@@ -22,7 +22,7 @@ From here you can drill into each event and see a detailed view of the logs, bro
 ![Screen Shot 2022-06-07 at 12 05 35 PM](https://user-images.githubusercontent.com/101903926/172462231-ff2f3063-0c4e-49fd-af17-7147bd09d3d1.png)
 
 ## Metrics Catalog
-The **Metrics Catalog** tab allows you to search and tag your metrics, as well as [create custom metrics](https://docs.statsig.com/metrics/create). Tags enable you organize your metrics and create collections of metrics that are associated in some way. For example, you could tag a set of metrics focused on a product area, business function, business objective, and so on. You can also create a loose collection of guardrail metrics that teams check in every experiment to ensure there are causing no unexpected effects in other parts of the business. Once you create a tagged collection of metrics, you can easily pull up this set of metrics when viewing your experiment results and zoom into the context that you want to focus on. 
+The **Metrics Catalog** tab allows you to search and tag your metrics, as well as [create custom metrics](/metrics/create). Tags enable you organize your metrics and create collections of metrics that are associated in some way. For example, you could tag a set of metrics focused on a product area, business function, business objective, and so on. You can also create a loose collection of guardrail metrics that teams check in every experiment to ensure there are causing no unexpected effects in other parts of the business. Once you create a tagged collection of metrics, you can easily pull up this set of metrics when viewing your experiment results and zoom into the context that you want to focus on. 
 
 ![Screen Shot 2022-06-07 at 12 08 08 PM](https://user-images.githubusercontent.com/101903926/172462680-68a6de4e-17bf-4b11-920d-6d7830551012.png)
 

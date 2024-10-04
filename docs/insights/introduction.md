@@ -31,7 +31,7 @@ We calculate **Topline Effect %** and **Absolute Effect** to measure the impacts
 ![Screen Shot 2024-05-30 at 10 48 43 AM](https://github.com/statsig-io/docs/assets/167142706/09212042-3d75-41c4-bbb1-d92ae303b880)
 
 
-**Count and sum metrics (event_count, event_dau, sum)**
+**Count and sum metrics (event_count, sum)**
 
 The absolute impact is derived directly from the experiment results:
 

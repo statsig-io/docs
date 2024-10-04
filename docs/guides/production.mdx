@@ -3,83 +3,84 @@ sidebar_label: POC to Production
 title: Moving from POC to Production
 ---
 
-In this guide, we introduce you to transitioning from a proof of concept or limited test on Statsig to a broader production deployment.
+This guide introduces the steps for transitioning from a proof of concept (POC) or limited test on Statsig to a full-scale production deployment.
 
-## 1. Check project name/structure
+## 1. Check Project Name/Structure
 
-1. Rename the project if needed. Most teams continue to use the project they used during trial.
-2. Decide if you need more than one project. Tools like tags and granular permissions let you to manage many teams within a project. Create a new project only for a separate product - when the definition of a user (and DAU) is distinct and no metrics need to be shared. You can require Admins to create new projects so this doesn't happen accidentally. 
+1. **Rename the project if needed**: Most teams continue using the project created during the trial, but it's a good time to rename it if necessary.
+2. **Decide if you need multiple projects**: Tools like tags and granular permissions allow you to manage multiple teams within a single project. Create a new project only if you're working on a completely separate product where the definition of a user (and DAU) is distinct, and no metrics need to be shared across projects. To avoid accidental creation of projects, you can restrict this to Admins.
+   
 ![image](https://user-images.githubusercontent.com/31516123/184998486-094beff1-f41f-417c-bd36-89700b0c014c.png)
 
-4. Seed your project with a set of tags to use across gates, experiments and metrics.
-5. Create [Segments](https://docs.statsig.com/segments) to identify internal employees so you can easily override them into feature rollouts and experiments.
+3. **Seed your project**: Set up tags to use consistently across feature gates, experiments, and metrics.
+4. **Create Segments**: Identify internal employees or testers by creating [Segments](/segments) so you can easily override them into feature rollouts and experiments.
 
-## 2. Setup SSO to ease onboarding
+## 2. Set Up SSO for Easy Onboarding
 
-Instead of having to invite each user and remembering to deactivate them if they leave your company, set up [Single Sign On](https://docs.statsig.com/access-management/introduction) with your identity provider. Statsig supports OIDC - a modern protocol that most identity providers support. Employees (your identity provider verifies) will have a Statsig account created on first use. Once you do this, make your project "Open" so new users verified by SSO default to having access to your projects. If you choose to keep your project closed, you can explicitly approve new requests.
+To streamline user onboarding and deactivation, set up [Single Sign-On (SSO)](/access-management/introduction) with your identity provider. Statsig supports OIDC, a modern protocol compatible with most identity providers. Once SSO is set up, employees verified by your identity provider will automatically have Statsig accounts created upon their first login.
+
+You can also make your project **Open** so that new users verified by SSO automatically gain access, or keep it **Closed** and manually approve new access requests.
+
 ![image](https://user-images.githubusercontent.com/31516123/175362892-862d0cf5-012f-484a-8e39-22489011029e.png)
 
-## 3. Decide on change management policies for production
+## 3. Define Change Management Policies for Production
 
-Statsig lets you [require reviews](https://docs.statsig.com/guides/setting-up-reviews) before making changes in production. This is a best practice similar to requiring code reviews when developing software. You can also create [Review Groups](https://docs.statsig.com/guides/setting-up-reviews#creating-review-groups) (to notify) and apply more granular permissions to specific feature gates and experiments. Check out our[ recommended approach to managing  non-production environments](https://blog.statsig.com/environments-on-statsig-6a818805b3c2) like dev and staging. 
+To ensure safe production changes, Statsig allows you to [require reviews](/guides/setting-up-reviews) before implementing changes. This is similar to requiring code reviews for software development. You can create [Review Groups](/guides/setting-up-reviews#creating-review-groups) to notify key stakeholders and set up granular permissions for specific feature gates and experiments.
+
+For non-production environments like dev or staging, follow our [recommended approach](https://blog.statsig.com/environments-on-statsig-6a818805b3c2) to manage environments effectively.
 
 ![image](https://user-images.githubusercontent.com/31516123/179292011-5a6bcb75-9bb7-47d4-b876-28c2510315fe.png)
 ![image](https://user-images.githubusercontent.com/31516123/179292033-d6e10544-08f6-418a-9fdb-32156487e6da.png)
 
+## 4. Set Up Key Metrics and Dimensions
 
+Before starting experiments, ensure that the [metrics](/metrics) and dimensions you want to experiment on are correctly set up.
 
-## 4. Set up Key Metrics and Dimensions
+Consider the following:
+- **[Custom Metrics](/metrics/create)**: Build custom metrics from existing ones (e.g., aggregations, ratios).
+- **User Dimensions**: Enable slicing results by Geo, User, etc.
+- **[Metric Dimensions](/metrics#metric-dimensions)**: For example, analyzing "add-to-cart" events by Product Category.
+- **[Funnels](/metrics/create-user-funnels)**: Create funnels to track user journeys.
+- **[Tag Metrics](/metrics/create-metric-tags)**: Group frequently used metrics for easy experiment integration.
 
-You should make sure [metrics](https://docs.statsig.com/metrics) and dimensions you want to experiment on are set up and correct before starting experiments. Some things to consider/explore while determining this include
-
-- [Custom Metrics](https://docs.statsig.com/metrics/create) that build on top of other metrics (e.g. aggregations, ratios)
-- User Dimensions to be able to slice experiment results by Geo, User etc.
-- [Metric Dimensions](https://docs.statsig.com/metrics#metric-dimensions) to be able to able slice metrics (eg. add-to-cart events by Product Category)
-- [Funnels](https://docs.statsig.com/metrics/create-user-funnels)
-- [Tag metrics](https://docs.statsig.com/metrics/create-metric-tags) so that frequently used collections of metrics are easy to bring into experiments
+Also, decide whether to [export data from Statsig](/integrations/data-exports/overview) back into your systems and if you want to [customize the DAU definition](/metrics/user#definition-of-a-daily-active-user) to better reflect your business needs (e.g., only counting meaningful events).
 
 ![image](https://user-images.githubusercontent.com/31516123/178082121-bb258851-29e5-4732-bd2a-af87833f7570.png)
 
-Decide if you want to [export data from Statsig](https://docs.statsig.com/integrations/data-exports/overview) back into your systems.
+## 5. Determine IDs for Experimentation
 
-Consider if you want to [customize Statsig's DAU definition](https://docs.statsig.com/metrics/user#definition-of-a-daily-active-user) to include only meaningful events. The default is to count a user as active if they generate any event.
-![image](https://user-images.githubusercontent.com/31516123/196256669-aae1a8a7-687b-429e-b2f3-c15d4d1e4f61.png)
+Most Statsig experiments and feature rollouts target users by **userID**, but Statsig also allows experimentation using other "units of assignment."
 
+Here are your options:
+1. **userID**: Identifies individual users.
+2. **stableID**: A Statsig SDK-managed ID, typically used to experiment on anonymous users (e.g., unique to devices).
+3. **Custom IDs**: You can create arbitrary IDs based on your use case, such as:
+   - **organizationID** for B2B customers
+   - **vehicleID** for controlling features in vehicles
+   - **creatorID** for two-sided marketplaces, controlling features for creators vs. consumers
 
-## 5. Decide what IDs to experiment on
+For more, see [Experiment on Custom ID Types](/guides/experiment-on-custom-id-types).
 
-Most experiments or feature rollouts on Statsig target users (identified by userID). Statsig also allows you choose arbitrary "units of assignment" beyond userID.
+## 6. Set Up Integrations
 
-1. userID: Identifies users.
-2. stableID: This is a Statsig client SDK managed ID that is unique to a device. It is typically used to experiment on anonymous users.
-3. You can also create arbitrary units of assignment. Examples include
-    a. organizationID for B2Bs
-    b. VIN or vehicleIDs if you're controlling features on cars
-    c. creatorID if you have a two sides marketplace with creators and consumers (regular users) and want to control by either
-    
-[Read more](https://docs.statsig.com/guides/experiment-on-custom-id-types)
+If you haven't already, explore the [integrations](/integrations/introduction) available to bring data into Statsig. Additionally, consider setting up these integrations:
+- **Data Warehouse Export**: Export assignment data from Statsig to your data warehouse.
+- **Change History Exports**: Export change history to Slack, Teams, or Datadog to overlay with operational dashboards.
 
-## 6. Set up integrations
+## 7. Best Practices, Forums, and Training
 
-You might already have set up [integrations](https://docs.statsig.com/integrations/introduction) to bring data into Statsig. Consider other integrations that may be helpful -
+Create a repository for **best practices** and a forum for experimenters to share insights, get feedback, and seek help. Provide guidance to your teams on when to use Feature Gates versus Experiments.
 
-- Export assignment data from Statsig to your data warehouse
-- Export Change History to Slack, Teams or Datadog (overlay over operational dashboards)
+If you're on Statsig’s **Enterprise Support**, consider organizing specific training for subject matter experts (SMEs):
+- Start with **train-the-trainer** sessions, allowing SMEs to drill into key topics.
+- Use these sessions to create tailored guidelines for your teams.
+- Switch to using the **Slack Support** channel with an SLA for faster assistance.
 
-## 7. Best practices, Forums and Training
-
-Set up a best practice repo and a forum for experimenters to share best practices, get feedback and seek help. Have guidance available to your teams on when to use Feature Gates vs Experiments.
-
-If you've contracted with Statsig for Enterprise Support
-
-- consider what training specific to your SMEs might be useful and ask for this. Start with train the trainer sessions so your SMEs can drill deeper into topics and then use this to construct guidance relevant to your use
-- Switch support communication to the Slack Support channel with an SLA
-
-Here're some ideas on potential topics to engage on
+Some useful topics for engaging teams:
 ![image](https://user-images.githubusercontent.com/31516123/180329958-315e2719-5951-4698-82c1-0221353ead95.png)
 
+## 8. Plan Your Migration Strategy (If Applicable)
 
+If you're migrating from another experimentation platform, decide on a migration strategy. Set a date after which new experiments and gates are created on Statsig. Let any ongoing experiments or ephemeral gates on legacy systems conclude there, and migrate only gates expected to persist long-term.
 
-## 8. Determine migration strategy (if any)
-
-Pick a date after which new experiment and gates are created on Statsig. Allow experiments and ephemeral gates on legacy systems to conclude and wind down there. Move over only gates that are expected to persist for extended periods.
+---

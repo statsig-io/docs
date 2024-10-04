@@ -15,7 +15,7 @@ To read the results of your experiment, go to the **Results** tab, where you wil
 #### Scorecard 
 The **Scorecard** panel shows how your Primary and Secondary experiment metrics for each variant compare against the control. These Primary and Secondary metrics are in the context of the experiment hypothesis, which is also prominently highlighted at the top of the **Scorecard** tab. 
 
-All **Scorecard** metrics by default have **CUPED** (Controlled-Experiment Using Pre Experiment Data) applied to them. **CUPED** is a statistical technique first popularized for online testing by Microsoft in 2013 that leverages pre-experimental data to reduce variance and pre-exposure bias in experiment results. Tactically, **CUPED** can significantly shrink confidence intervals and p-values, ultimately reducing the sample size and duration required to run an experiment. To read more about **CUPED**, see [this blog post](https://blog.statsig.com/cuped-on-statsig-d57f23122d0e) as well as our docs on [variance reduction](https://docs.statsig.com/stats-engine/variance_reduction).  
+All **Scorecard** metrics by default have **CUPED** (Controlled-Experiment Using Pre Experiment Data) applied to them. **CUPED** is a statistical technique first popularized for online testing by Microsoft in 2013 that leverages pre-experimental data to reduce variance and pre-exposure bias in experiment results. Tactically, **CUPED** can significantly shrink confidence intervals and p-values, ultimately reducing the sample size and duration required to run an experiment. To read more about **CUPED**, see [this blog post](https://blog.statsig.com/cuped-on-statsig-d57f23122d0e) as well as our docs on [variance reduction](/stats-engine/variance_reduction).  
 
 In the example below, the **Circle** variant has a statistically significant lift in the **add_to_cart** and **product_view** metrics. However, the **Square** variant is not seeing any statistically significant lifts on any metric. This is represented by the gray Overall Lift symbols and large p-values.
 
@@ -27,7 +27,7 @@ When you mouse over a metric lift, additional, more detailed information on the 
 * Ability to see a time series of how the lift has trended by day, days since exposure, and cumulatively
 * Raw data for the lifts
 * Topline metric impact and projected topline impact at launch (if this experiment were to roll out to 100%) 
-Read more about how to interpret the detailed Pulse results presented in the hovercard [here](https://docs.statsig.com/pulse/drill-down).  
+Read more about how to interpret the detailed Pulse results presented in the hovercard [here](/pulse/drill-down).  
 
 ![Screen Shot 2022-07-08 at 4 59 22 PM](https://user-images.githubusercontent.com/101903926/178083262-a64257b4-d033-409e-88e1-a3cc07a54f1f.png)
 

@@ -7,7 +7,7 @@ title: Open-Source Script
 ## Considerations
 This script should work out of the box. I'd suggesting getting started with a test environment of 5-10 flags. However, before running the script on a large scale, consider the following:
 
-- **IMPORTANT**: If you don't want/need to customize this import script, you may consider using [Statsig's built in LaunchDarkly migration tool.](https://docs.statsig.com/guides/ui-based-tool)
+- **IMPORTANT**: If you don't want/need to customize this import script, you may consider using [Statsig's built in LaunchDarkly migration tool.](/guides/ui-based-tool)
 - Depending on the number of flags you're looking to migrate, you may run into rate limiting issues. You'll need to rate limit accordingly. We will be adding rate limiting into the script soon.
 - The script migrates boolean flags from LaunchDarkly. Non-boolean flags require manual migration.
 - The script uses a tag (`Migration Script`) to identify migrated flags in Statsig. Ensure this tag is unique and recognizable.

@@ -30,7 +30,7 @@ If your events and metrics already reside in your own data warehouse and you hav
 
 The first method helps you scale analysis, while the second can 10x your experimentation velocity.
 
-> Note: WHN is available only with Enterprise contracts. If you’re interested in this option, check [this link](https://docs.statsig.com/statsig-warehouse-native/introduction) or [schedule a demo](https://www.statsig.com/contact/demo) with our Sales team.
+> Note: WHN is available only with Enterprise contracts. If you’re interested in this option, check [this link](/statsig-warehouse-native/introduction) or [schedule a demo](https://www.statsig.com/contact/demo) with our Sales team.
 > 
 
 ---

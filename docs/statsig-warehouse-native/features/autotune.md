@@ -4,7 +4,7 @@ slug: /statsig-warehouse-native/features/autotune
 sidebar_label: Autotune
 ---
 
-Autotune Experiments in Warehouse Native have a very similar setup to cloud [Autotunes](https://docs.statsig.com/autotune). In Warehouse Native, Autotune success events will be pulled from a Metric Source, and computation of results will happen in your warehouse.
+Autotune Experiments in Warehouse Native have a very similar setup to cloud [Autotunes](/autotune). In Warehouse Native, Autotune success events will be pulled from a Metric Source, and computation of results will happen in your warehouse.
 
 :::info Note
 Autotune in WHN is currently in beta, please contact the team to get it enabled in your account

@@ -16,7 +16,7 @@ The readme within details the steps on installing the app and its dependencies, 
 ## Creating Your First Experiment with Statsig in NodeJS ExpressJS
 The below command can be run to automatically create the simple `express_app_test` experiment in Statsig that gets used throughout this integration guide and demo app. 
 The experiment randomizes based on `userID`, has a 50/50 test group split, and implements a single parameter. 
-Make sure to replace the authorization key in the header with your key generated in Statsig project settings as documented [here](https://docs.statsig.com/console-api/introduction).
+Make sure to replace the authorization key in the header with your key generated in Statsig project settings as documented [here](/console-api/introduction).
 ```bash
 curl --request POST 'https://statsigapi.net/console/v1/experiments' \
 --header 'STATSIG-API-KEY: console-REPLACE_WITH_YOURS' \
@@ -91,7 +91,7 @@ app.use(async (req, res, next) => {
 ```
 
 ## Assign user to experiment
-In your route handler, you will have access to the global `statsig` singleton. Whenever you need to assign a user to an experiment and access the Test Group parameters, you can simply call `statsig.getExperiment` and pass in the user object. This will return an object that contains the experiment config, where you can access the assigned parameters using `get("<param key>", <default value>)`. You can read more on this approach and the best practices [here](https://docs.statsig.com/server/nodejsServerSDK#getting-an-layerexperiment).
+In your route handler, you will have access to the global `statsig` singleton. Whenever you need to assign a user to an experiment and access the Test Group parameters, you can simply call `statsig.getExperiment` and pass in the user object. This will return an object that contains the experiment config, where you can access the assigned parameters using `get("<param key>", <default value>)`. You can read more on this approach and the best practices [here](/server/nodejsServerSDK#getting-an-layerexperiment).
 ```js
 app.get('/', async (req, res) => {
   const user = {
