@@ -821,7 +821,7 @@ const sidebars: SidebarsConfig = {
         {
           className: "team-icon sidebar-icon",
           type: "category",
-          label: "Workspace & Management",
+          label: "Workspace Management",
           items: [
             {
               "Workspace": [
@@ -852,39 +852,41 @@ const sidebars: SidebarsConfig = {
                 },
               ],
             },
-            {
-              "Collaboration": [
-                "access-management/discussions",
-                "access-management/tags",
-                "guides/setting-up-reviews",
-                "guides/config-history",
-              ],
-            },
           ],
         },
         {
           className: "template-icon sidebar-icon",
           type: "category",
-          label: "Templates & Policies",
+          label: "Collaboration",
           items: [
             {
               type: "category",
-              label: "Organization Policies",
-              link: {
-                type: "doc",
-                id: "org-admin/organization_policies",
-              },
-              items: ["org-admin/experiment_policy", "org-admin/gates_policy"],
+              label: "Templates & Policies",
+              items: [
+                {
+                  type: "category",
+                  label: "Organization Policies",
+                  link: {
+                    type: "doc",
+                    id: "org-admin/organization_policies",
+                  },
+                  items: ["org-admin/experiment_policy", "org-admin/gates_policy"],
+                },
+                {
+                  type: "category",
+                  label: "Templates",
+                  link: {
+                    type: "doc",
+                    id: "templates/templates",
+                  },
+                  items: [],
+                },
+              ],
             },
-            {
-              type: "category",
-              label: "Templates",
-              link: {
-                type: "doc",
-                id: "templates/templates",
-              },
-              items: [],
-            },
+            "access-management/discussions",
+            "access-management/tags",
+            "guides/setting-up-reviews",
+            "guides/config-history",
           ],
         },
         {
