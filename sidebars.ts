@@ -15,7 +15,7 @@ const sidebars: SidebarsConfig = {
           type: "doc",
           id: "getting-started",
           label: "Overview",
-          className: "rocket-icon sidebar-icon",
+          className: "compass-icon sidebar-icon",
         },
         {
           type: "category",
@@ -35,18 +35,10 @@ const sidebars: SidebarsConfig = {
           className: "lightbulb-icon sidebar-icon",
           items: [
             "understanding-platform",
-
             "guides/first-device-level-experiment",
             "guides/experiment-on-custom-id-types",
             "guides/using-environments",
             "guides/testing",
-            {
-              "Beginner's Guides": [
-                "guides/first-feature",
-                "guides/logging-events",
-                "guides/abn-tests",
-              ],
-            },
             "guides/featureflags-or-experiments",
             {
               "Enterprise Concepts": [
