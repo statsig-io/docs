@@ -180,7 +180,7 @@ function getDescription(entity) {
       return (
         <>
           <p>
-            A feature <a href="../feature-flags/working-with">gate</a> is a
+            A <a href="../feature-flags/working-with">feature gate</a> is a
             mechanism for teams to configure what system behavior is visible to
             users without changing application code. This page describes how
             gates can be created and modified through the Console API.
@@ -188,8 +188,8 @@ function getDescription(entity) {
           <p>
             For more detail on creating user targeting based on Statsig-derived
             environment attributes such as location, client device, browser
-            type, and client app version, see the Console API{" "}
-            <a href="./rules#rule">Rules</a> page where all conditions are
+            type, and client app version, see the {" "}
+            <a href="./rules#rule">Console APIRules</a> page where all conditions are
             listed.
           </p>
         </>
