@@ -1,6 +1,7 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
+
 <Tabs
   groupId="java-server-sdk-lang-choice"
   defaultValue="java"
@@ -11,7 +12,6 @@ import TabItem from "@theme/TabItem";
   <TabItem value="java">
 
 ```java
-
   String address = "0.0.0.0:50051";
   Map<NetworkEndpoint, ForwardProxyConfig> proxyConfigs = new HashMap();
   proxyConfigs.put(NetworkEndpoint.DOWNLOAD_CONFIG_SPECS, new ForwardProxyConfig(address, NetworkProtocol.GRPC_WEBSOCKET));
