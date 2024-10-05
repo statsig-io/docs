@@ -3,18 +3,9 @@ title: Ingesting Metrics
 sidebar_label: Ingesting Metrics
 slug: /metrics/ingest
 ---
-## Ingesting [Metrics](/metrics)
+## Ingesting Precomputed [Metrics](/metrics)
 
-Statsig allows you to ingest raw events that are computed into metrics in the following ways:
-
-- Using either our [client](/client/introduction) or [server](/server/introduction) SDKs to log events to Statsig.  
-- Ingesting events from your data tools such as [Segment](/integrations/data-connectors/segment), [mParticle](/integrations/data-connectors/mparticle), [RudderStack](/integrations/data-connectors/rudderstack) and [Census](/integrations/data-connectors/census)
-
-Metrics can be created and defined through the Statsig UI, where Statsig will handle the transformation and daily computation.
-
-## Ingesting Precomputed Metrics
-
-Statsig allows you to ingest any of your precomputed product and business metrics using our data warehouse connector (Metrics Imports).  Integrations like [Snowflake](/integrations/data-imports/snowflake), [BigQuery](/integrations/data-imports/bigquery) and [Redshift](/integrations/data-imports/redshift) are supported.
+Statsig can ingest your precomputed product and business metrics using our data warehouse connector (Metrics Imports).  Integrations like [Snowflake](/integrations/data-imports/snowflake), [BigQuery](/integrations/data-imports/bigquery) and [Redshift](/integrations/data-imports/redshift) are supported.
 
 Statsig does not automatically process these metrics until you mark them as ready, as it's possible you might land data out of order. Once you are finished loading data for a period, you mark the data as ready by hitting the `mark_data_ready` API:
 
