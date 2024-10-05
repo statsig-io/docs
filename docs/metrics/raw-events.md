@@ -21,7 +21,8 @@ You must include at least one unit identifier when you record any raw events wit
 2. Join exposure events with all custom events triggered by a given user to compute experiment results
 
 ## Ingesting Raw Events
-You can ingest raw events into Statsig in three ways.
+
+There are three ways to send raw events into Statsig.
 
 ![image](https://user-images.githubusercontent.com/1315028/182466148-a40ad007-a60a-47b8-9cd3-9b27d0af82ed.png)
 
