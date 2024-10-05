@@ -44,6 +44,7 @@ import ForwardProxyExample from "./java/_forwardProxyExample.mdx";
 import MultiInstanceExample from "./java/_multiInstanceExample.mdx";
 import PersistentStorageInterface from "./java/_persistentStorageInterface.mdx";
 import PersistentStorageExample from "./java/_persistentStorageExample.mdx";
+import GrpcTLSExample from "./java/_grpcTLS.mdx";
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -96,8 +97,9 @@ export const Builder = SDKDocsBuilder({
     ],
     [Instances, { constructor: <MultiInstanceExample /> }],
     [ProxyConfigs, {
-      addedInVersion: "0.24.0", includeAboveVersion: false, installation: <InstallBeta />, code:
-        <ForwardProxyExample />
+      addedInVersion: "1.24.0", installation: <InstallBeta />, code:
+        <ForwardProxyExample />,
+        tlsExample: <GrpcTLSExample/>, tlsAddedInVersion: "1.30.0"
     }],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
