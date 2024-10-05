@@ -8,7 +8,7 @@ slug: /layers
 
 Layers (a.k.a. Universes) allow us to create experiments that are mutually exclusive to each other. Each layer has a logical representation of all your users and can have experiments created "within" this layer. Users that are in one experiment of a layer, cannot also be in another experiment in the same layer.
 
-![image](https://github.com/user-attachments/assets/eac0b2e5-65d6-4786-add6-23d1975a64fa)
+![image](https://github.com/user-attachments/assets/7320a5ba-7a8f-482f-9366-cb3bf041c8eb)
 
 You can add experiments to a layer (or create a layer) during experiment creation.
 ![image](https://github.com/user-attachments/assets/94948291-bc41-4ae7-a57a-e2f635737571)
