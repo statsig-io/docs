@@ -4,7 +4,7 @@ sidebar_label: Creating Custom Metrics
 slug: /metrics/create
 ---
 
-To create custom metrics, navigate to **Metrics** from the left-hand navigation panel, then to the **Metrics Catalog** tab. Tap on the **Create** button.
+Custom metrics are computed by Statsig from your raw events.  To create custom metrics, navigate to **Metrics** from the left-hand navigation panel, then to the **Metrics Catalog** tab. Tap on the **Create** button.
 
 ![Screen Shot 2023-09-12 at 12 53 05 PM](https://github.com/statsig-io/docs/assets/101903926/4148f4b8-f9e4-4a37-98df-35663650d76f)
 
