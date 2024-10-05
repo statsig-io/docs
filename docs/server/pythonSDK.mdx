@@ -41,6 +41,7 @@ import * as ReferenceSnippets from "./python/_reference.mdx";
 import ClientInitResponseSnippet from "./python/_clientInitResponse.mdx";
 import ForwardProxyExample from "./python/_forwardProxyExample.mdx";
 import MultiInstanceExample from "./python/_multiInstanceExample.mdx";
+import GrpcTLSExample from "./python/_grpcTLS.mdx";
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -82,8 +83,8 @@ export const Builder = SDKDocsBuilder({
     ],
     [Instances, { constructor: <MultiInstanceExample /> }],
     [ProxyConfigs, {
-      includeAboveVersion: true, addedInVersion: "0.39.0", code:
-        <ForwardProxyExample />
+      includeAboveVersion: true, addedInVersion: "0.39.0", tlsAddedInVersion: "0.45.0",
+       code: <ForwardProxyExample />, tlsExample: <GrpcTLSExample/>
     }],
     [
       LocalOverrides,
