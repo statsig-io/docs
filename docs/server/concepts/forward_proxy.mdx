@@ -64,15 +64,35 @@ For information on your specific SDK language, see the language specific docs in
 SDK remains the same behavior when forward proxy is being used. But there are several configurations you can use to improve the data availability during initialization.
 Default behavior is SDK will get from forward proxy. If DataAdapter is presented, get from DataAdapter first, and fallback to Forward Proxy if there is no value served from data adapter. 
 There are several ways you can configure the behavior here. 
-1. Set `DataAdapter.should_be_use_as_initialization_backup_source = true`, use forward proxy as primary source, if it fails, fallback to dataAdapter.
-2. Set `defaultToStatsigAPI = true`, if you want to default to statsig api when both sources failed. 
+1. set fallbackToStatsigAPI = true. If you want to fallback to statsig api when initialization or config sync from original sources is false
+2. If you want to customize your own order of initialization set initializeSources to have multiple sources,for example initializeSources=[DataSource.Network, DataSource.DataAdapter, DataSource.StatsigNetwork] will fetch from 3 sources sequentially until it successfully find one
 
 **Config Sync (Post initialization)** 
-If sdk is using `grpc_websocket` protocol, meaning sdk is in a listening mode for any config changes, it will 
+
+If sdk is using pulling model, `grpc` or `http`
+1. Set fallbackToStatsigAPI=true
+2. Set configSyncSources to have multiple sources,for example initializeSources=[DataSource.Network, DataSource.StatsigNetwork] will fetch from 3 sources sequentially until it successfully find one
+(Note if you are using streaming, config sync sources does not matter here)
+
+If sdk is using `grpc_websocket` protocol, meaning sdk is in a listening mode for any config changes, by default it will 
 1. Retry connecting to forward proxy, with exponential backoff, 10s, 50s, 250s, 1250s ... until it reconnects, limit fo
 r retry is 10 times.  
 2. If 4th retry still fails, sdk will start polling from from Statsig endpoint. Use StatsigOptions.pollingInterval to control how often it 
 3. While sdk polling from Statsig endpoint, sdk will keep retrying until it connected, 
+Everything mentioned above is configurable with StatsigOptions
+
+#### Streaming failover in depth
+Within SDK, when exceptions being thrown, for example, connection is dropped or forward proxy server is down, grpc will return error to SDK and we start falling back behavior.
+Python will check if the channel is idle every 2 hours to ensure channel is not idle, this is to prevent some unknown corner case behavior within python grpc library. 
+
+
+#### TLS -- Advanced network authentication
+Forward proxy support TLS and mTLS when use GRPC server, so all grpc network (streaming and unary call) are encrypted
+
+To enable it:
+1. Setup forward proxy server with valid certifications, more details to be found [here](https://github.com/statsig-io/statsig-forward-proxy?tab=readme-ov-file#deploying) 
+2. Setup SDK with valid certifications. more details to be found within SDK page [python example](https://docs.statsig.com/server/pythonSDK). 
+   a. If certifications are misconfigured, SDK will treat as exception and started failing over behavior you configured. For example, fallback to statsig api, retry to connect and start falling back behavior. 
 
 #### Coordinate SDK DataAdapter / DataStore with Forward Proxy Cache service
 In order to increase reliability of SDK during initialization, setup DataStore will help in case Forward Proxy is not available when initialized. If DataStore is set, the SDK will try to initialize with values from dataStore, and sync (listen or polling depends on setup) from forward proxy in background after initialization. It's recommended for SDK and Forward Proxy to share the same cache service for consistency and reduce cache I/O. 

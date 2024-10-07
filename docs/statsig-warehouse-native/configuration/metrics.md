@@ -1,7 +1,7 @@
 ---
 title: Metrics
 slug: /statsig-warehouse-native/configuration/metrics
-sidebar_label: Metrics
+sidebar_label: Overview
 ---
 
 ## Metrics

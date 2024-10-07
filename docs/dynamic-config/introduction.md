@@ -1,6 +1,6 @@
 ---
 title: Dynamic Config
-sidebar_label: Introduction
+sidebar_label: Overview
 slug: /dynamic-config
 ---
 

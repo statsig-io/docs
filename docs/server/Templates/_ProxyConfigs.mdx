@@ -6,6 +6,12 @@ Advance SDK Network setup, provide options to configure network protocol and pro
 This option is provided for better integration with **[Statsig Forward Proxy](/server/concepts/forward_proxy)** 
 
 <div>
+#### Authentication <VersionBadge version={props.tlsAddedInVersion}/>
+With more advanced requirements on security, we also support TLS and mTLS for grpc streaming (`protocol=GRPC_WEBSOCKET`)
+You need to configure ProxyConfig for each endpoint
+{props.tlsExample}
+</div>
+<div>
 {props.installation && (
   <div>
 
