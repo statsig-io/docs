@@ -55,7 +55,7 @@ Integrating feature flags into a React web application using the Statsig React S
 1. **Install Statsig React SDK**:
    - Install the Statsig SDK for javascript and the react bindings by running:
      ```
-     npm install @statsig/js-client @statsig/react-bindings
+     npm install @statsig/react-bindings
      ```
 
 2. **Initialize Statsig in Your Application**:
