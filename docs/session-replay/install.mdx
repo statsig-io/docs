@@ -101,10 +101,9 @@ await client.initializeAsync();
   <TabItem value="react">
 
 ```jsx
-import { StatsigClient } from '@statsig/react-bindings';
 import { runStatsigSessionReplay } from '@statsig/session-replay';
 import { runStatsigAutoCapture } from '@statsig/web-analytics';
-import { StatsigProvider } from '@statsig/react-bindings';
+import { StatsigClient, StatsigProvider } from '@statsig/react-bindings';
 
 const client = new StatsigClient(sdkKey,
 	{ userID: "some_user_id" },
