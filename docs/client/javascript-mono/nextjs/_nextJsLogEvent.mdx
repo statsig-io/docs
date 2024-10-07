@@ -1,0 +1,82 @@
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+## Logging an Event
+
+
+<Tabs
+  defaultValue="app-router"
+  groupId="router-choice"
+  values={[
+    {label: 'App Router', value: 'app-router'},
+    {label: 'Page Router', value: 'page-router'},
+  ]}>
+
+
+
+
+{/* App Router */}
+
+
+<TabItem value="app-router">
+
+
+```tsx
+'use client';
+
+import { useStatsigClient } from "@statsig/react-bindings";
+
+export default function Home() {
+  const { client } = useStatsigClient();
+
+  return (
+    <div>
+      <button onClick={() => client.logEvent("my_custom_event")}>
+        Click Me
+      </button>
+    </div>
+  );
+}
+```
+
+Note: In an App Router app, you need to use the 
+[`use client` directive](https://nextjs.org/docs/app/building-your-application/rendering/client-components) to ensure your logic runs on the frontend.
+
+</TabItem>
+
+
+
+
+
+
+
+
+
+{/* Page Router */}
+
+<TabItem value="page-router">
+
+```tsx
+import { useStatsigClient } from "@statsig/react-bindings";
+
+export default function Home() {
+  const { client } = useStatsigClient();
+
+  return (
+    <div>
+      <button onClick={() => client.logEvent("my_custom_event")}>
+        Click Me
+      </button>
+    </div>
+  );
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+
+
+

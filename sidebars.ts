@@ -51,7 +51,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
-          label: "SDKs",
+          label: "SDKs & Frameworks",
           className: "doc-icon sidebar-icon",
           items: [
             "sdks/getting-started",
@@ -79,8 +79,7 @@ const sidebars: SidebarsConfig = {
             "client/javascript-mono/ReactUsage",
             "client/androidClientSDK",
             "client/iosClientSDK",
-            "client/javascript-mono/NextJsAppRouterUsage",
-            "client/javascript-mono/NextJsPageRouterUsage",
+            "client/javascript-mono/nextjs/NextJsUsage",
             "server/nodejsServerSDK",
             {
               type: "category",

@@ -1,0 +1,78 @@
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+## Getting a Dynamic Config
+
+
+<Tabs
+  defaultValue="app-router"
+  groupId="router-choice"
+  values={[
+    {label: 'App Router', value: 'app-router'},
+    {label: 'Page Router', value: 'page-router'},
+  ]}>
+
+
+
+
+{/* App Router */}
+
+
+<TabItem value="app-router">
+
+
+```tsx
+'use client';
+
+import { useDynamicConfig } from "@statsig/react-bindings";
+
+export default function Home() {
+  const config = useDynamicConfig("my_dynamic_config");
+
+  return (
+    <div>
+      Title: {config.get('title', 'Fallback Title')}
+    </div>
+  );
+}
+```
+
+Note: In an App Router app, you need to use the 
+[`use client` directive](https://nextjs.org/docs/app/building-your-application/rendering/client-components) to ensure your logic runs on the frontend.
+
+</TabItem>
+
+
+
+
+
+
+
+
+
+{/* Page Router */}
+
+<TabItem value="page-router">
+
+```tsx
+import { useDynamicConfig } from "@statsig/react-bindings";
+
+export default function Home() {
+  const config = useDynamicConfig("my_dynamic_config");
+
+  return (
+    <div>
+      Title: {config.get('title', 'Fallback Title')}
+    </div>
+  );
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+
+
+
