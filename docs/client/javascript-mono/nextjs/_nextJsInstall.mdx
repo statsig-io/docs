@@ -1,11 +1,41 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 ## Installation
 
 To use Statsig with Next.js, install the `@statsig/react-bindings` and `@statsig/web-analytics` packages:
 
+
+<Tabs
+  defaultValue="npm"
+  groupId="package-manager-choice"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+    {label: 'PNPM', value: 'pnpm'},
+  ]}>
+
+
+
+
+<TabItem value="npm">
 ```bash
 npm install @statsig/react-bindings @statsig/web-analytics
-# or
-yarn add @statsig/react-bindings @statsig/web-analytics 
-# or
+```
+</TabItem>
+
+<TabItem value="yarn">
+```bash
+yarn add @statsig/react-bindings @statsig/web-analytics
+```
+</TabItem>
+
+<TabItem value="pnpm">
+```bash
 pnpm add @statsig/react-bindings @statsig/web-analytics
 ```
+</TabItem>
+
+
+
+</Tabs>

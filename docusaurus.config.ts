@@ -97,17 +97,17 @@ const config: Config = {
                 innerHTML: `window.statsigTier="${tier}"`,
               },
               {
-                tagName: 'link',
+                tagName: "link",
                 attributes: {
-                  rel: 'stylesheet',
-                  href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+                  rel: "stylesheet",
+                  href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
                 },
               },
               {
-                tagName: 'link',
+                tagName: "link",
                 attributes: {
-                  rel: 'stylesheet',
-                  href: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap',
+                  rel: "stylesheet",
+                  href: "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap",
                 },
               },
               {
@@ -139,54 +139,52 @@ const config: Config = {
         redirects: [
           {
             from: "/layers/js-tutorial",
-            to: "/client/javascript-sdk#layers"
+            to: "/client/javascript-sdk#layers",
           },
           {
             from: "/feature-flags/implement",
-            to: "/"
+            to: "/",
           },
           {
             from: "/feature-flags/implement/client",
-            to: "/"
+            to: "/",
           },
           {
             from: "/feature-flags/implement/server",
-            to: "/"
+            to: "/",
           },
           {
             from: "/feature-flags/implement/http-api",
-            to: "/"
+            to: "/",
           },
           {
             from: "/client/jsClientSDK",
-            to: "/client/javascript-sdk"
+            to: "/client/javascript-sdk",
           },
           {
             from: "/client/reactSDK",
-            to: "/client/javascript-sdk/react"
+            to: "/client/javascript-sdk/react",
           },
           {
             from: "/client/reactNativeSDK",
-            to: "/client/javascript-sdk/react-native"
+            to: "/client/javascript-sdk/react-native",
           },
           {
             from: "/client/reactNativeExpoSDK",
-            to: "/client/javascript-sdk/expo"
+            to: "/client/javascript-sdk/expo",
           },
           {
             to: "/",
-            from: "/category/walkthrough-guides"
+            from: "/category/walkthrough-guides",
           },
           {
             to: "/client/javascript-sdk/next-js",
             from: "/guides/nextjs-feature-flags",
           },
-
           {
             to: "/client/javascript-sdk/next-js",
             from: "/guides/nextjs-page-router-feature-flags",
           },
-
           {
             to: "/product-analytics/drilldown",
             from: "/mex/drilldown",
@@ -346,7 +344,7 @@ const config: Config = {
       },
       items: [
         {
-          type: 'search',
+          type: "search",
         },
         {
           type: "html",

@@ -12,13 +12,44 @@ it needs. This way, the client does not need to make a separate network request 
 
 To generate the required values, we can use the Statsig server SDK (`statsig-node`) on our backend.
 
+<Tabs
+  defaultValue="npm"
+  groupId="package-manager-choice"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+    {label: 'PNPM', value: 'pnpm'},
+  ]}>
+
+
+
+
+<TabItem value="npm">
 ```bash
 npm install statsig-node
-# or
+```
+</TabItem>
+
+<TabItem value="yarn">
+```bash
 yarn add statsig-node
-# or
+```
+</TabItem>
+
+<TabItem value="pnpm">
+```bash
 pnpm add statsig-node
 ```
+</TabItem>
+
+
+
+</Tabs>
+
+
+
+
+
 
 next, add a Server key to your `.env` file. Note that this one is private and does not start with `NEXT_PUBLIC_`. 
 You can find your key at which you can find at [console.statsig.com/api_keys](https://console.statsig.com/api_keys).
