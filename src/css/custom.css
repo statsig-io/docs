@@ -382,3 +382,8 @@ span.math.math-inline {
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%)
     contrast(0%);
 }
+
+[data-theme="dark"] .menu__link--sublist-caret::after {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%)
+    contrast(0%);
+}
