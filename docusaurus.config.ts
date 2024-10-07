@@ -186,6 +186,14 @@ const config: Config = {
             from: "/guides/nextjs-page-router-feature-flags",
           },
           {
+            to: "/client/javascript-sdk/next-js",
+            from: "/client/javascript-sdk/next-js-app-router",
+          },
+          {
+            to: "/client/javascript-sdk/next-js",
+            from: "/client/javascript-sdk/next-js-pages-router",
+          },
+          {
             to: "/product-analytics/drilldown",
             from: "/mex/drilldown",
           },
