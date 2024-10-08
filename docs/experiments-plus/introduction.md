@@ -8,6 +8,7 @@ slug: /experiments-plus
 Experimentation is a powerful tool for making data-driven decisions that improve product outcomes and customer experiences. In this guide, you'll learn how to set up, run, and analyze controlled experiments using Statsig's experimentation platform. We'll cover key concepts such as control variables, randomization units, and statistical significance, helping you understand the science behind A/B testing and multivariate experiments.
 
 By the end of this guide, you'll know how to use experiments to validate product changes, discover new opportunities, and drive business impact. Whether you're optimizing existing features or exploring new ideas, these fundamentals will equip you to run effective experiments and iterate faster with confidence.
+
 ## What Are Experiments?
 
 Experiments enable you to run randomized controlled trials (A/B or A/B/n tests) with minimal effort, allowing you to measure the impact of product changes on key metrics. Statsig’s experimentation platform is designed to make it easy to create, manage, and analyze experiments, ensuring you ship features that deliver value to your users and business.
@@ -17,7 +18,8 @@ Experiments are ideal when you want to:
 - Run mutually exclusive experiments in parallel.
 - Measure the direct impact of changes on product and business metrics.
 
-For a deeper understanding of using experiments in Statsig, see [Statsig’s Experiments tutorial](experiments-plus/working-with).
+For a deeper understanding of using experiments in Statsig, see "[Working with Experiments](experiments-plus/working-with)" section.
+
 ---
 
 ## Why Experiment?
