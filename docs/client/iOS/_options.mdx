@@ -13,7 +13,7 @@
 
 - **evaluationCallback**: EvaluationCallbackData, default `nil`
   - EvaluationCallback provides a callback when an evaluation is made against one of your configurations
-  (gate, dynamic config, experiment, layer config and parameter stores). This is useful when you want to trigger specific actions or log evaluations based on the results received from Statsig.
+  (gate, dynamic config, experiment, layer and parameter stores). This is useful when you want to trigger specific actions or log evaluations based on the results received from Statsig.
   - To use the EvaluationCallback, you need to provide a callback function during the SDK initialization via the StatsigOptions. The callback is invoked every time an evaluation occurs for feature gates, dynamic configs, experiments, layers, or parameter stores.
   - The EvaluationCallbackData enum defines the different types of data that can be returned in the evaluationCallback when the Statsig iOS SDK evaluates feature gates, dynamic configs, experiments, layers, or parameter stores.
 
