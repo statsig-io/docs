@@ -483,20 +483,20 @@ const sidebars: SidebarsConfig = {
                 },
               ],
             },
-            {
-              type: "category",
-              label: "Autotune (Bandits)",
-              link: {
-                type: "doc",
-                id: "autotune/introduction",
-              },
-              items: [
-                "autotune/contextual-bandit",
-                "autotune/multi-armed-bandit",
-                "autotune/setup",
-                "autotune/monitoring",
-              ],
-            },
+            // {
+            //   type: "category",
+            //   label: "Autotune (Bandits)",
+            //   link: {
+            //     type: "doc",
+            //     id: "autotune/introduction",
+            //   },
+              // items: [
+              //   "autotune/contextual-bandit",
+              //   "autotune/multi-armed-bandit",
+              //   "autotune/setup",
+              //   "autotune/monitoring",
+              // ],
+            // },
             {
               type: "category",
               label: "Stats Engine",
@@ -733,7 +733,7 @@ const sidebars: SidebarsConfig = {
                     "statsig-warehouse-native/features/configure-an-experiment",
                     "statsig-warehouse-native/features/types-of-experiments",
                     "statsig-warehouse-native/features/power-analysis",
-                    "holdouts/introduction",
+                    // "holdouts/introduction",
                     "experiments-plus/stratified-sampling",
                     "experiments-plus/differential-impact-detection",
                     "statsig-warehouse-native/features/targeting",
