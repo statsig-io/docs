@@ -612,7 +612,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
-          label: "AI/ML",
+          label: "AI/ML Optimization",
           className: "ai-icon sidebar-icon",
           items: [
             "ai-ml/ai-prompt-experiment",
