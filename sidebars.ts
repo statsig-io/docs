@@ -472,15 +472,15 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/disable-group",
                 "experiments-plus/bayesian",
                 "experiments-plus/switchback-tests",
-                {
-                  Experimentation: [
-                    "experiments-plus/experimentation/why-experiment",
-                    "experiments-plus/experimentation/scenarios",
-                    "experiments-plus/experimentation/best-practices",
-                    "experiments-plus/experimentation/common-terms",
-                    "experiments-plus/experimentation/choosing-randomization-unit",
-                  ],
-                },
+                // {
+                //   Experimentation: [
+                //     "experiments-plus/experimentation/why-experiment",
+                //     "experiments-plus/experimentation/scenarios",
+                //     "experiments-plus/experimentation/best-practices",
+                //     "experiments-plus/experimentation/common-terms",
+                //     "experiments-plus/experimentation/choosing-randomization-unit",
+                //   ],
+                // },
               ],
             },
             // {
@@ -530,17 +530,6 @@ const sidebars: SidebarsConfig = {
             "layers/introduction",
             {
               type: "category",
-              label: "Landing Page Experiments (deprecated)",
-              items: [
-                "guides/landing-page-experiments/introduction",
-                "guides/landing-page-experiments/setup",
-                "guides/landing-page-experiments/interpreting",
-                "guides/landing-page-experiments/layers",
-                "guides/landing-page-experiments/webflow",
-              ],
-            },
-            {
-              type: "category",
               label: "Low-code Experiments",
               items: [
                 "guides/sidecar-experiments/introduction",
@@ -567,6 +556,17 @@ const sidebars: SidebarsConfig = {
                 "pulse/export",
                 "pulse/best-practices",
                 "pulse/faq",
+              ],
+            },
+            {
+              type: "category",
+              label: "Landing Page Experiments (deprecated)",
+              items: [
+                "guides/landing-page-experiments/introduction",
+                "guides/landing-page-experiments/setup",
+                "guides/landing-page-experiments/interpreting",
+                "guides/landing-page-experiments/layers",
+                "guides/landing-page-experiments/webflow",
               ],
             },
           ],
