@@ -86,6 +86,12 @@ You can click on the filters button below the dashboard name to add a global fil
 
 ![image](https://github.com/user-attachments/assets/9539d980-c647-4c6e-892d-0d1bb5f7f390)
 
+### Refreshing your Dashboard Widgets
+
+If you want to ensure the data you're looking at on your dashboard is up to date, you can now refresh all dashboard widgets with one click by clicking on the refresh button shown in the image below.
+
+![image](https://github.com/user-attachments/assets/901cb3c9-6ad1-47e3-9d44-627cb2ac11d4)
+
 ### Organize your Dashboard
 
 A well-made dashboard helps easily convey a narrative around what information is most important and the relationship between items on the dashboard. To facilitate this, we make it easy to move and resize dashboard widgets in place.
