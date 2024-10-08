@@ -450,11 +450,8 @@ const sidebars: SidebarsConfig = {
             {
               type: "category",
               label: "Experiments",
-              link: {
-                type: "doc",
-                id: "experiments-plus/introduction",
-              },
               items: [
+                "experiments-plus/introduction",
                 "experiments-plus/working-with",
                 "experiments-plus/create-new",
                 "experiments-plus/power-analysis",

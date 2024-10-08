@@ -1,15 +1,13 @@
 ---
-title: Introduction
-sidebar_label: Introduction
+title: Experimentation Fundamentals
+
+sidebar_label: Fundamentals
 slug: /experiments-plus
 ---
 
-Certainly! Below is the full page with the structure focused on "Experiments: Fundamentals," while seamlessly incorporating the concept of the randomization unit within the overall flow.
+Experimentation is a powerful tool for making data-driven decisions that improve product outcomes and customer experiences. In this guide, you'll learn how to set up, run, and analyze controlled experiments using Statsig's experimentation platform. We'll cover key concepts such as control variables, randomization units, and statistical significance, helping you understand the science behind A/B testing and multivariate experiments.
 
----
-
-# Experiments: Fundamentals
-
+By the end of this guide, you'll know how to use experiments to validate product changes, discover new opportunities, and drive business impact. Whether you're optimizing existing features or exploring new ideas, these fundamentals will equip you to run effective experiments and iterate faster with confidence.
 ## What Are Experiments?
 
 Experiments enable you to run randomized controlled trials (A/B or A/B/n tests) with minimal effort, allowing you to measure the impact of product changes on key metrics. Statsig’s experimentation platform is designed to make it easy to create, manage, and analyze experiments, ensuring you ship features that deliver value to your users and business.
