@@ -11,6 +11,43 @@
    - StatsigEnvironment is a class for you to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
    - e.g. passing in a value of `StatsigEnvironment(tier: .Staging)` will allow your users to pass any condition that pass for the staging environment tier, and fail any condition that only passes for other environment tiers.
 
+- **evaluationCallback**: EvaluationCallbackData, default `nil`
+  - EvaluationCallback provides a callback when an evaluation is made against one of your configurations
+  (gate, dynamic config, experiment, layer and parameter stores). This is useful when you want to trigger specific actions or log evaluations based on the results received from Statsig.
+  - To use the EvaluationCallback, you need to provide a callback function during the SDK initialization via the StatsigOptions. The callback is invoked every time an evaluation occurs for feature gates, dynamic configs, experiments, layers, or parameter stores.
+  - The EvaluationCallbackData enum defines the different types of data that can be returned in the evaluationCallback when the Statsig iOS SDK evaluates feature gates, dynamic configs, experiments, layers, or parameter stores.
+
+   Here is the structure of the enum:
+   ```
+      public enum EvaluationCallbackData {
+         case gate (FeatureGate)
+         case config (DynamicConfig)
+         case experiment (DynamicConfig)
+         case layer (Layer)
+         case parameterStore (ParameterStore)
+      }
+   ```
+   Here's an example of how to set up an evaluation callback:
+  ```
+      func callback(data: StatsigOptions.EvaluationCallbackData) {
+         switch data {
+         case .gate(let gate):
+            // Handle gate evaluation
+         case .config(let config):
+            // Handle dynamic config evaluation
+         case .experiment(let experiment):
+            // Handle experiment evaluation
+         case .layer(let layer):
+            // Handle layer evaluation
+         case .parameterStore(let paramStore):
+            // Handle parameter store evaluation
+         }
+      }
+
+      let opts = StatsigOptions(evaluationCallback: callback)
+      Statsig.start(sdkKey: "client-key", options: opts)
+   ```
+
 -  **enableAutoValueUpdate**: Bool, default `false`
    - by default, feature values for a user is fetched once during `Statsig.start` and don't change throughout the session. Setting this value to true will turn on the feature for Statsig to periodically fetch updated values for the current user.
 
