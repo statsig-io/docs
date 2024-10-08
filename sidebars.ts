@@ -450,11 +450,8 @@ const sidebars: SidebarsConfig = {
             {
               type: "category",
               label: "Experiments",
-              link: {
-                type: "doc",
-                id: "experiments-plus/introduction",
-              },
               items: [
+                "experiments-plus/introduction",
                 "experiments-plus/working-with",
                 "experiments-plus/create-new",
                 "experiments-plus/power-analysis",
@@ -475,31 +472,31 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/disable-group",
                 "experiments-plus/bayesian",
                 "experiments-plus/switchback-tests",
-                {
-                  Experimentation: [
-                    "experiments-plus/experimentation/why-experiment",
-                    "experiments-plus/experimentation/scenarios",
-                    "experiments-plus/experimentation/best-practices",
-                    "experiments-plus/experimentation/common-terms",
-                    "experiments-plus/experimentation/choosing-randomization-unit",
-                  ],
-                },
+                // {
+                //   Experimentation: [
+                //     "experiments-plus/experimentation/why-experiment",
+                //     "experiments-plus/experimentation/scenarios",
+                //     "experiments-plus/experimentation/best-practices",
+                //     "experiments-plus/experimentation/common-terms",
+                //     "experiments-plus/experimentation/choosing-randomization-unit",
+                //   ],
+                // },
               ],
             },
-            {
-              type: "category",
-              label: "Autotune (Bandits)",
-              link: {
-                type: "doc",
-                id: "autotune/introduction",
-              },
-              items: [
-                "autotune/contextual-bandit",
-                "autotune/multi-armed-bandit",
-                "autotune/setup",
-                "autotune/monitoring",
-              ],
-            },
+            // {
+            //   type: "category",
+            //   label: "Autotune (Bandits)",
+            //   link: {
+            //     type: "doc",
+            //     id: "autotune/introduction",
+            //   },
+              // items: [
+              //   "autotune/contextual-bandit",
+              //   "autotune/multi-armed-bandit",
+              //   "autotune/setup",
+              //   "autotune/monitoring",
+              // ],
+            // },
             {
               type: "category",
               label: "Stats Engine",
@@ -530,18 +527,6 @@ const sidebars: SidebarsConfig = {
                 },
               ],
             },
-            "layers/introduction",
-            {
-              type: "category",
-              label: "Landing Page Experiments (deprecated)",
-              items: [
-                "guides/landing-page-experiments/introduction",
-                "guides/landing-page-experiments/setup",
-                "guides/landing-page-experiments/interpreting",
-                "guides/landing-page-experiments/layers",
-                "guides/landing-page-experiments/webflow",
-              ],
-            },
             {
               type: "category",
               label: "Low-code Experiments",
@@ -555,6 +540,7 @@ const sidebars: SidebarsConfig = {
                 "guides/aa-sidecar",
               ],
             },
+            "layers/introduction",
             "holdouts/introduction",
             {
               type: "category",
@@ -570,6 +556,17 @@ const sidebars: SidebarsConfig = {
                 "pulse/export",
                 "pulse/best-practices",
                 "pulse/faq",
+              ],
+            },
+            {
+              type: "category",
+              label: "Landing Page Experiments (deprecated)",
+              items: [
+                "guides/landing-page-experiments/introduction",
+                "guides/landing-page-experiments/setup",
+                "guides/landing-page-experiments/interpreting",
+                "guides/landing-page-experiments/layers",
+                "guides/landing-page-experiments/webflow",
               ],
             },
           ],
@@ -736,7 +733,7 @@ const sidebars: SidebarsConfig = {
                     "statsig-warehouse-native/features/configure-an-experiment",
                     "statsig-warehouse-native/features/types-of-experiments",
                     "statsig-warehouse-native/features/power-analysis",
-                    "holdouts/introduction",
+                    // "holdouts/introduction",
                     "experiments-plus/stratified-sampling",
                     "experiments-plus/differential-impact-detection",
                     "statsig-warehouse-native/features/targeting",
