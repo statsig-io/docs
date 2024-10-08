@@ -19,8 +19,7 @@ Experiments are ideal when you want to:
 - Run mutually exclusive experiments in parallel.
 - Measure the direct impact of changes on product and business metrics.
 
-For a deeper understanding of using experiments in Statsig, see [Statsig’s Experiments tutorial](/guides/working-with-experiments).
-
+For a deeper understanding of using experiments in Statsig, see [Statsig’s Experiments tutorial](experiments-plus/working-with).
 ---
 
 ## Why Experiment?
@@ -124,15 +123,5 @@ Use exploratory experiments to discover entirely new directions. These experimen
 - Run experiments over longer durations to account for novelty effects and adoption time.
 - Slowly ramp up experiments to minimize risk and build statistical power.
 - Test multiple related hypotheses to explore a broader business strategy.
-
----
-
-## Conclusion
-
-Understanding the fundamentals of experimentation, including selecting the right randomization unit, is key to driving innovation and making data-driven decisions. Statsig provides powerful tools that make it easy to set up, manage, and analyze your experiments. Whether you're aiming to optimize existing features or explore new opportunities, Statsig’s platform offers the flexibility and insights you need to succeed.
-
-For more guidance:
-- [Learn about User-Level vs. Device-Level Experiments](https://blog.statsig.com/user-level-vs-device-level-experiments-with-statsig-338d48a81778).
-- Explore [Statsig's Experimentation Documentation](../../guides/first-ab-test).
 
 ---
