@@ -8,28 +8,60 @@ import ImportantConcepts from '../src/components/getting-started/ImportantConcep
 import Styles from '../src/components/getting-started/Styles';
 
 <Styles />
-# What is Statsig?
-Statsig is the single platform to ship, test and analyze new features. Statsig provides the most advanced [Experimentation](/experiments-plus) and [Feature Flagging](/feature-flags/working-with) tools available, in a platform with full-featured [Product Analytics](/product-analytics/overview), [Session Replay](/session-replay/overview), and more. We believe the best way to build products is with data, and [our mission](https://statsig.com/company) is to democratize data across companies of all sizes. 
+# Welcome to Statsig Documentation
+Statsig is the complete platform for product growth, empowering your team to build and innovate like the best tech companies in the world. 
 
-You can use Statsig with our infrastructure, or plug into your existing metrics with our Warehouse Native product:
+# The Product Growth Kit
+Statsig offers a comprehensive toolkit designed to support every stage of product development and growth:
 
-<ImportantConcepts />
+- **Feature Flags**: Easily manage feature rollouts, run safe deployments, and control feature access in real-time.
+- **Experimentation**: Set up and run controlled experiments (A/B/n, multivariate) to measure the impact of product changes.
+- **Product Analytics**: Track key metrics that drive your product and business success.
+- **Web Analytics**: Understand how users interact with your web properties, track traffic, and analyze performance.
+- **Session Replays**: Watch replays of user sessions to see exactly how users interact with your product and identify opportunities to improve.
+- **Autotune AI & AI Prompt Experiments**: Automatically optimize experiments and track the performance of AI prompts with Statsig’s AI capabilities.
+- **Statsig Warehouse Native**: Integrate directly with your data warehouse to run experiments on top of your existing datasets.
 
-<hr />
 
 # Getting Started with Statsig
-## JavaScript Snippet
+Statsig supports over **30 SDKs and frameworks**, allowing you to quickly integrate with your application, whether you’re building for the web, mobile, or server environments. Follow these simple steps to get started in minutes:
 
-The easiest way to get started is to add the Statsig JS script to your website, which takes only a few seconds. 
+### 1. Add Statsig to Your Website (JavaScript Snippet)
 
-Paste the below code into the `<head>` section of your website, replacing "YOUR_CLIENT_KEY" with a Client API Key from your Statsig project, which you can find at [console.statsig.com/api_keys](https://console.statsig.com/api_keys). This will start [recording events](/webanalytics/overview) & [session replays](/session-replay/overview), and give you access to [experiments](/experiments-plus) & [feature flags](/feature-flags/working-with) right away.
+The easiest way to get up and running is by adding the Statsig JavaScript snippet to your website. This setup takes just a few seconds.
 
-```
+#### Steps:
+1. Paste the following code into the `<head>` section of your website, replacing `"YOUR_CLIENT_KEY"` with your project’s **Client API Key**, which you can find in the [Statsig Console](https://console.statsig.com/api_keys).
+
+```html
 <script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=[YOUR_CLIENT_KEY]"></script>
 ```
 
-## Quickstart Installation
+2. Once installed, you’ll be able to:
+   - Start **recording events**.
+   - Use **session replays**.
+   - Leverage Statsig’s **experiments** and **feature flags** right away.
 
-Statsig supports >30 SDKs and Frameworks - select the one you'd like below, and if you don't see the one you want - let us know in [Slack](https://statsig.com/slack).
+### 2. Install the SDK for Your Platform
+
+For more advanced use cases and greater control, Statsig offers SDKs for a wide variety of platforms, including JavaScript, Python, iOS, Android, and more.
+
+- Select the SDK that fits your project from our [SDK Overview](SDK overview link), and follow the installation guide.
 
 <SDKAndFrameworks />
+
+- If you don’t see the SDK or framework you need, feel free to reach out directly in our [Slack Community](https://statsig.com/slack).
+
+---
+
+# Learn More and Get Help
+
+We provide a variety of resources to help you make the most of Statsig:
+
+- **Docs**: Explore our detailed guides and API documentation to dive deep into each feature and capability.
+- **Community**: Join our [Slack Community](https://statsig.com/slack) to connect with other users and get help from the Statsig team.
+- **Support**: Check out our [Help Center](https://help.statsig.com) for answers to common questions and troubleshooting tips.
+- **Blog**: Stay updated with the latest developments in product experimentation and feature management on our [Blog](https://statsig.com/blog).
+
+---
+
