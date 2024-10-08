@@ -306,76 +306,152 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/rocket.svg");
 }
 
+.rocket-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/rocket-active.svg");
+}
+
 .doc-icon::before {
   background-image: url("/img/icons/sidebar/doc.svg");
+}
+
+.doc-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/doc-active.svg");
 }
 
 .key-icon::before {
   background-image: url("/img/icons/sidebar/key.svg");
 }
 
+.key-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/key-active.svg");
+}
+
 .integrations-icon::before {
   background-image: url("/img/icons/sidebar/integrations.svg");
+}
+
+.integrations-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/integrations-active.svg");
 }
 
 .xp-icon::before {
   background-image: url("/img/icons/sidebar/xp.svg");
 }
 
+.xp-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/xp-active.svg");
+}
+
 .feature-icon::before {
   background-image: url("/img/icons/sidebar/feature.svg");
+}
+
+.feature-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/feature-active.svg");
 }
 
 .chart-icon::before {
   background-image: url("/img/icons/sidebar/chart.svg");
 }
 
+.chart-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/chart-active.svg");
+}
+
 .play-icon::before {
   background-image: url("/img/icons/sidebar/play.svg");
+}
+
+.play-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/play-active.svg");
 }
 
 .web-icon::before {
   background-image: url("/img/icons/sidebar/web.svg");
 }
 
+.web-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/web-active.svg");
+}
+
 .data-icon::before {
   background-image: url("/img/icons/sidebar/data.svg");
+}
+
+.data-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/data-active.svg");
 }
 
 .help-icon::before {
   background-image: url("/img/icons/sidebar/help.svg");
 }
 
+.help-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/help-active.svg");
+}
+
 .question-icon::before {
   background-image: url("/img/icons/sidebar/help.svg");
+}
+
+.question-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/help-active.svg");
 }
 
 .lightbulb-icon::before {
   background-image: url("/img/icons/sidebar/concept.svg");
 }
 
+.lightbulb-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/concept-active.svg");
+}
+
 .ai-icon::before {
   background-image: url("/img/icons/sidebar/ai.svg");
+}
+
+.ai-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/ai-active.svg");
 }
 
 .whn-icon::before {
   background-image: url("/img/icons/sidebar/whn.svg");
 }
 
+.whn-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/whn-active.svg");
+}
+
 .team-icon::before {
   background-image: url("/img/icons/sidebar/team.svg");
+}
+
+.team-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/team-active.svg");
 }
 
 .infra-icon::before {
   background-image: url("/img/icons/sidebar/infra.svg");
 }
 
+.infra-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/infra-active.svg");
+}
+
 .admin-icon::before {
   background-image: url("/img/icons/sidebar/admin.svg");
 }
 
+.admin-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/admin-active.svg");
+}
+
 .template-icon::before {
   background-image: url("/img/icons/sidebar/template.svg");
+}
+
+.template-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/template-active.svg");
 }
 
 [data-theme="dark"] .sidebar-icon::before {
