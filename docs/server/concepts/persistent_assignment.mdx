@@ -15,16 +15,18 @@ The persistent storage adapter allows you to plug in your own storage solution t
 The storage interface consists of just a `load` and `save` API for read/write operations.
 
 :::info
-Currently only supported in `Go`, `Ruby`, `Node`, `Kotlin`
+Currently only supported in `Go`, `Ruby`, `Node`, `Kotlin`, `.Net`
 :::
 
 ### Persistent Storage Logic
+
 - Providing a storage adapter on Statsig initialization will give the SDK access to read & write on your custom storage
 - Providing user persisted values to `get_experiment` will inform the SDK to
   - **save** the evaluation of the current user **on first evaluation**
   - **load** the previously saved evaluation of a persisted user **on subsequent evaluations**
 
 ### Persistent Assignment Options
+
 - **Enforce Targeting**: `boolean`, default: `false`
   - Whether or not to enforce targeting rules before assigning persisted values
 
@@ -54,7 +56,7 @@ const options: GetExperimentOptions = {
   }
 }
 
-```
+````
   </TabItem>
 </Tabs>
 
@@ -67,7 +69,8 @@ const options: GetExperimentOptions = {
     {label: 'Node JS', value: 'node'},
     {label: 'Kotlin', value: 'kotlin'},
     {label: 'Ruby', value: 'ruby'},
-    {label: 'Go', value: 'go'}
+    {label: 'Go', value: 'go'},
+    {label: '.Net, value: 'dotnet'}
   ]}>
   <TabItem value="ruby">
 ```ruby
@@ -94,7 +97,8 @@ exp = Statsig.get_experiment( # User evaluates using values from persisted stora
   )
 )
 puts exp.group_name # 'Control'
-```
+````
+
   </TabItem>
   <TabItem value="kotlin">
 ```kotlin
@@ -177,4 +181,25 @@ exp = GetExperimentWithOptions(
 fmt.Println(exp.GroupName) // "Control"
 ```
   </TabItem>
+    <TabItem value="dotnet">
+```csharp
+var options = new StatsigServerOptions();
+options.UserPersistentStorage = new MyPersistentStorageAdapter()
+await StatsigServer.Initialize("server-secret-key", options);
+
+var persistedUser = new StatsigUser { UserID = "123" };
+var values = await StatsigServer.GetUserPersistedValues(persistedUser, "userID");
+var getExpOptions = new StatsigGetExperimentOptions(values);
+var exp = StatsigServer.GetExperimentSync(persistedUser, "active_experiment", getExpOptions);
+Console.WriteLine(exp.GroupName); // "Control"
+
+var newValues = await StatsigServer.GetUserPersistedValues(persistedUser, "userID");
+var newGetExpOptions = StatsigGetExperimentOptions(newValues);
+
+var newExp = StatsigServer.GetExperimentSync(new StatsigUser {UserID = "unknown"}, "active_experiment", newGetExpOptions);
+Console.WriteLine(newExp.GroupName); // "Control"
+
+```
+  </TabItem>
 </Tabs>
+```
