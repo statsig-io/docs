@@ -527,7 +527,6 @@ const sidebars: SidebarsConfig = {
                 },
               ],
             },
-            "layers/introduction",
             {
               type: "category",
               label: "Low-code Experiments",
@@ -541,6 +540,7 @@ const sidebars: SidebarsConfig = {
                 "guides/aa-sidecar",
               ],
             },
+            "layers/introduction",
             "holdouts/introduction",
             {
               type: "category",
