@@ -24,7 +24,7 @@ If there's any confusion, or if a feature is critical for your evaluation, we're
 |                                     | Frequentist vs Bayesian                   | Identical                                          |
 |                                     | Sequential Testing                        | Identical                                          |
 |                                     | BF Correction                             | Identical                                          |
-|                                     | Power Analysis                            | Identical [Planned Extensions to WHN Capabilities] |
+|                                     | Power Analysis                            | Identical                                          |
 |                                     | Custom Queries                            | Identical                                          |
 |                                     | Guardrail Metric Alerts                   | Available in WHN, based on your pipeline cadence   |
 |                                     | Export to CSV                             | Identical                                          |
@@ -39,15 +39,18 @@ If there's any confusion, or if a feature is critical for your evaluation, we're
 |                                     | SRM Checks                                | Identical                                          |
 |                                     | View SQL                                  | WHN-only                                           |
 | Layers                              | All                                       | Identical                                          |
-| Insights                            | Relative Impact                           | Identical                                          |
-|                                     | Topline Impact                            | Coming to WHN                                      |
+| Insights                            | Experiment Timeline                       | Identical                                          |
+|                                     | Knowledge Bank                            | Identical                                          |
+|                                     | Metric Insights                           | Identical                                          |
+|                                     | Metric Correlations                       | Identical                                          |
+|                                     | Metric Impacts                            | Identical                                          |
 |                                     | Active feature analysis                   | Identical                                          |
 |                                     | Historic feature analysis                 | Identical                                          |
 | Dynamic Config                      | All                                       | Identical                                          |
 | Dashboards                          | All                                       | Identical                                          |
 | Segments                            | All                                       | Identical                                          |
-| Holdouts                            | All                                       | Identical                                     |
-| Metrics                             | Metrics Explorer                          | Cloud only for now                                 |
+| Holdouts                            | All                                       | Identical                                          |
+| Metrics                             | Metrics Explorer                          | Cloud has additional                               |
 |                                     | SDK Events Logstream                      | Identical                                          |
 |                                     | Autocreate metric from SDK Events         | Cloud only for now                                 |
 |                                     | User Accounting Metrics (DAU, Stickiness) | Cloud only for now                                 |
