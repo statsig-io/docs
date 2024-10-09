@@ -12,6 +12,7 @@ To set up a connection with Databricks, you will need the following:
 - An HTTP Path to a Cluster or SQL Warehouse
 - A staging database for writing results and intermediate tables into
 - An access token with read access on your experiment data and write access to the staging database
+- Use either Serverless SQL Warehouse or an always-on cluster. Statsig uses interactive queries during setup (and some analysis) which will fail if the cluster takes several minutes to start up.
 
 Start by enabling the Databricks source in your project settings.
 
