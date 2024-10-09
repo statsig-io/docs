@@ -65,7 +65,7 @@ opts.environment.tier = "staging"
 
 let specs: NSString = "..." // JSON string of your configurations
 
-let error = client.initializeSync("client-sdk-key", initialSpecs: specs)
+let error = client.initializeSync("client-sdk-key", initialSpecs: specs, options: opts)
 if let err = error {
     print("Error \(err)")
 }
