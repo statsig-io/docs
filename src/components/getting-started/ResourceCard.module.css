@@ -1,8 +1,9 @@
 .resourceContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, auto);
-    gap: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
     padding: 16px;
 }
 
@@ -21,9 +22,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 160px;
-    height: 130px;
-    padding: 16px;
+    width: 140px;
+    height: 110px;
+    padding: 12px;
     background-color: white;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -34,13 +35,13 @@
 }
 
 .resourceIcon {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 12px;
+    width: 32px;
+    height: 32px;
+    margin-bottom: 8px;
 }
 
 .resourceText {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     font-weight: 600;
     text-align: center;
     overflow: hidden;

@@ -11,12 +11,12 @@ export function LandingResources() {
     {
       resourceText: "Feature Flags",
       icon: <GatesResourceIcon className={styles.resourceIcon} />,
-      url: "feature-flags/working-with",
+      url: "/feature-flags/feature-flags",
     },
     {
       resourceText: "Experimentation",
       icon: <ExperimentationResourceIcon className={styles.resourceIcon} />,
-      url: "/experiments-plus",
+      url: "/experimentation/experiments",
     },
     {
       resourceText: "Product Analytics",
@@ -26,12 +26,12 @@ export function LandingResources() {
     {
       resourceText: "Session Replay",
       icon: <SessionReplayResourceIcon className={styles.resourceIcon} />,
-      url: "session-replay/overview"
+      url: "/session-replay"
     },
     {
       resourceText: "Web Analytics",
       icon: <WebAnalyticsResourceIcon className={styles.resourceIcon} />,
-      url: "webanalytics/overview"
+      url: "/web-analytics"
     },
   ]
 
@@ -52,13 +52,10 @@ export function LandingResources() {
 function ResourceCard({ resourceText, icon, url }) {
   return (
     <a href={url} className={styles.resourceLink}>
-      <Button
-        variant="outline"
-        className={styles.resourceCard}
-      >
+      <div className={styles.resourceCard}>
         {icon}
         <span className={styles.resourceText}>{resourceText}</span>
-      </Button>
+      </div>
     </a>
   );
 }
