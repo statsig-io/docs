@@ -15,7 +15,7 @@ const sidebars: SidebarsConfig = {
           type: "doc",
           id: "getting-started",
           label: "Overview",
-          className: "home-icon sidebar-icon",
+          className: "doc-icon sidebar-icon",
         },
         {
           type: "category",
