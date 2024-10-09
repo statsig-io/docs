@@ -34,7 +34,7 @@ Statsig offers both **client-side** and **server-side** SDKs, each suited to dif
 
 For a detailed comparison, refer to the [Client vs Server SDK Overview](/sdks/client-vs-server).
 
-Additionally, for frameworks like **Next.js** that bridge client and server-side logic, we offer specialized SDKs like the [Next.js SDK](/client/javascript-sdk/nextjs) for seamless integration.
+Additionally, for frameworks like **Next.js** that bridge client and server-side logic, we offer specialized SDKs like the [Next.js SDK](client/javascript-sdk/next-js) for seamless integration.
 
 ---
 
