@@ -115,7 +115,7 @@ function randomIntFromInterval(min, max) { // min and max included
 }
 ```
 
-If you want to check on the evaluations you are getting, yyou can go to the gate you created for this example and look at the evaluations in the Diagnostics tab.
+If you want to check on the evaluations you are getting, you can go to the gate you created for this example and look at the evaluations in the Diagnostics tab.
 
 ![Diagnostics Stream](https://github.com/user-attachments/assets/1cc865ed-e15c-41a4-8979-24e1d457a7b1)
 
