@@ -8,7 +8,7 @@ Statsig’s Cloudflare integration pushes Statsig Configs to Cloudflare KV, prov
 ## Configure Integration
 First, enable the Cloudflare integration in the Statsig Console.
 
-Nagivgate to [Project Settings** -> Integrations](https://console.statsig.com/integrations), and then select Cloudflare
+Navigate to [Project Settings** -> Integrations](https://console.statsig.com/integrations), and then select Cloudflare
 
 You will need to input the following:
 - Cloudflare Account ID: Can be found in Cloudflare portal under **Account Home** -> **Workers**, on the right hand side
