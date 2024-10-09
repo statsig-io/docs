@@ -5,7 +5,7 @@ slug: /sdks/sdks-overview
 ---
 
 ## Configuration Options
-Statsig offers 20+ SDKs, with both client-side and server-side SDK options. At their core, Statsig’s SDKs enable two key functions: 
+Statsig offers 30+ SDKs, with both client-side and server-side SDK options. At their core, Statsig’s SDKs enable two key functions: 
 1. **Targeting & Assignment-** Assigning users to an experiment variant or targeting new feature roll-outs based on a user’s attributes. Target with any user or environment-level attribute you log.  
 2. **Logging-** Log events for user or system-level actions, which are translated into computed Metrics for analysis within your Statsig Console.
 

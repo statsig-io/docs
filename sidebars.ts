@@ -15,7 +15,7 @@ const sidebars: SidebarsConfig = {
           type: "doc",
           id: "getting-started",
           label: "Overview",
-          className: "home-icon sidebar-icon",
+          className: "doc-icon sidebar-icon",
         },
         {
           type: "category",
@@ -612,7 +612,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
-          label: "AI/ML",
+          label: "AI/ML Optimization",
           className: "ai-icon sidebar-icon",
           items: [
             "ai-ml/ai-prompt-experiment",
