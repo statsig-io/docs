@@ -16,7 +16,7 @@ export function LandingResources() {
     {
       resourceText: "Experimentation",
       icon: <ExperimentationResourceIcon className={styles.resourceIcon} />,
-      url: "/experimentation/experiments",
+      url: "/experiments-plus",
     },
     {
       resourceText: "Product Analytics",
