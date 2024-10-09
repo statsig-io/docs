@@ -900,7 +900,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
-          label: "Networking & Reliability",
+          label: "Infrastructure Operations",
           className: "infra-icon sidebar-icon",
           link: {
             type: "doc",
