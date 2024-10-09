@@ -120,7 +120,7 @@ You can create different metrics by summing and filtering on those daily fields.
 
 
 ## (Very) Slow Metric Sources
-Statsig uses techniques like Statsig macros, push-down-filters (predicate filters) and using partition keys to make queries in your warehouse efficient. While Metric Sources can include joins or complex queries, they should be performant. If they are not - using any metrics based off this metric source will become expensive (or cause timeouts and failures).
+Statsig uses techniques like Statsig macros, push-down-filters (predicate filters) and using partition keys to make queries in your warehouse efficient. While Metric Sources can include joins or complex queries, they should be performant. If they are not - using any metrics based off this metric source will become expensive (or cause timeouts and failures). The same is true for assignment sources.
 
 Statsig will flag a metric source as slow if it takes more than 30 seconds to retrieve a sample of up to 100 records from the table. If the query is expensive, we recommend considering the following steps in sequence to optimize for your metric source:
 - Include filters based off partition column
