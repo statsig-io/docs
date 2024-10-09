@@ -11,12 +11,12 @@ export function LandingResources() {
     {
       resourceText: "Feature Flags",
       icon: <GatesResourceIcon className={styles.resourceIcon} />,
-      url: "/feature-flags/feature-flags",
+      url: "/feature-flags/working-with",
     },
     {
       resourceText: "Experimentation",
       icon: <ExperimentationResourceIcon className={styles.resourceIcon} />,
-      url: "/experimentation/experiments",
+      url: "/experiments-plus",
     },
     {
       resourceText: "Product Analytics",
@@ -26,12 +26,12 @@ export function LandingResources() {
     {
       resourceText: "Session Replay",
       icon: <SessionReplayResourceIcon className={styles.resourceIcon} />,
-      url: "/session-replay"
+      url: "/session-replay/overview"
     },
     {
       resourceText: "Web Analytics",
       icon: <WebAnalyticsResourceIcon className={styles.resourceIcon} />,
-      url: "/web-analytics"
+      url: "/webanalytics/overview"
     },
   ]
 
