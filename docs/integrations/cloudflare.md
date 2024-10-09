@@ -8,20 +8,18 @@ Statsig’s Cloudflare integration pushes Statsig Configs to Cloudflare KV, prov
 ## Configure Integration
 First, enable the Cloudflare integration in the Statsig Console.
 
-Navigate to [Project Settings** -> Integrations](https://console.statsig.com/integrations), and then select Cloudflare
+Navigate to [Project Settings -> Integrations](https://console.statsig.com/integrations), and then select Cloudflare
 
 You will need to input the following:
-- Cloudflare Account ID: Can be found in Cloudflare portal under **Account Home** -> **Workers**, on the right hand side
-- KV Namespace ID: We recommend creating a new KV namespace for your Statsig integration.  Then, you can find the namespace ID under **Account Home** -> **Workers** -> **KV**, and copy it from the table view.
-- Cloudflare API Key: Can be found in Cloudflare portal under **Account Home** -> **Profile** -> **API Tokens**. We need a token with Account.Workers KV Storage Edit Permissions.
+- **Cloudflare Account ID**: Can be found in Cloudflare portal under **Account Home** -> **Workers**, on the right hand side
+- **KV Namespace ID**: We recommend creating a new KV namespace for your Statsig integration.  Then, you can find the namespace ID under **Account Home** -> **Workers** -> **KV**, and copy it from the table view.
+- **Cloudflare API Key**: Can be found in Cloudflare portal under **Account Home** -> **Profile** -> **API Tokens**. We need a token with Account.Workers KV Storage Edit Permissions.
 
 There is also an option to filter the configs that are synced into your KV namespace by a [/sdk-keys/target-apps](Target App).  You may wish to enable this in the future as the size of your config payload grows.  For now, you can leave this unchecked.
 
 After filling this out, click **Enable**.
 
-Within a minute, the Statsig backend should generate a config payload from your statsig project and push it into your KV namespace.
-
-Under your KV namespace, navigate to **KV Pairs** - you should see an entry starting with the prefix `statsig-`.  The next part of that is your project ID.  You'll need this later.
+Within a minute, the Statsig backend should generate a config payload from your statsig project and push it into your KV namespace.  Under your KV namespace, navigate to **KV Pairs** - you should see an entry starting with the prefix `statsig-`.  The next part of that is your project ID.  You'll need this later.
 
 ## Add the Statsig SDK to your Worker
 Now lets hook up the SDK to read that config payload and use it for gate and experiment checks in your worker.  If you've never created a worker before, you can follow the instructions [here](https://developers.cloudflare.com/workers/).
@@ -35,21 +33,59 @@ npm install statsig-node statsig-node-cloudflare-kv
 ```
 
 Then, you need to hook it all up.  This involves:
-1. Creating a new CloudflareKVDataAdapter with the namespace you set up previously and your statsig project id
-2. Initialize the statsig sdk with the data adapter
-3. Check a gate/experiment/config
+1. Creating a new `CloudflareKVDataAdapter` with the namespace you set up previously and your statsig project id
+2. Initializing the statsig sdk with the DataAdapter
+3. Checking a Gate
+4. Flushing events to statsig
 
 If you've used a statsig sdk in the past, step 2 should be familiar, though you'll be telling the sdk to initialize from the KV store instead of from the statsig backend.
 
 In our example, we are checking a gate called "test_cloudflare_sync" that is set to pass for 50% of everyone.  We create a random userID on every request, and we should see it evaluate to true 50% of the time.
 
-The `CloudflareKVDataAdapter` takes two arguments:
+### 1. The `CloudflareKVDataAdapter`
+```
+const dataAdapter = new CloudflareKVDataAdapter(env.STATSIG_KV, 'statsig-YOUR_COMPANY_ID');
+```
+
+The adapter takes two arguments:
 - The KV namespace you set up previously.  This must be accessible and [configured as a binding for the worker](https://developers.cloudflare.com/kv/concepts/kv-bindings/)
 - Your statsig project id.  This is the string that comes after `statsig-` in the KV namespace prefix.  You can also find it in any url when you are on the Statsig Console.  For example, `https://console.statsig.com/7LhuarZImmfNdtl9IsDJeX/gates/test_cloudflare_sync/diagnostics` has a project ID of `7LhuarZImmfNdtl9IsDJeX`
 
-The SDK initialization takes two arguments:
+
+### 2. SDK Initialization
+SDK initialization takes two arguments:
 - Your statsig secret key.  This is available from the [Project Settings](https://console.statsig.com/api_keys) page in the Statsig Console.  This is used to authenticate your requests to the statsig backend.  In this example, we've configured it as an environment variable
 - An options object.  We are using the `dataAdapter` property to hook up the Cloudflare KV store to the SDK.
+
+```
+const res = await statsig.initialize(
+    env.STATSIG_SECRET_KEY,
+    { dataAdapter: dataAdapter },
+);
+```
+
+### 3. Checking a Gate
+
+```
+const result = statsig.checkGateSync(
+  {
+    userID: String(randomIntFromInterval(1, 10000000)),
+  },
+  "test_cloudflare_sync",
+);
+```
+
+This is a gate check in code.  The first parameter is the `StatsigUser` object you are checking, and the second is the gate name.  Refer to the [node sdk documentation](/server/nodejsServerSDK) for how to check other entities like experiments and dynamic configs.  Here, we have created a user with a random userID for every evaluation to illustrate a gate with a partial rollout working.
+
+### 4. Flushing Events
+
+```
+ctx.waitUntil(statsig.flush());
+```
+
+This flushes all events from the sdk to statsig.  Without this, you wont be able to get diagnostic information in the Statsig Console, nor any event data you logged.
+
+### Putting it all together
 
 ```
 import { CloudflareKVDataAdapter } from 'statsig-node-cloudflare-kv';
@@ -79,36 +115,7 @@ function randomIntFromInterval(min, max) { // min and max included
 }
 ```
 
-Lets break down some of the code here:
-
-```
-const dataAdapter = new CloudflareKVDataAdapter(env.STATSIG_KV, 'statsig-YOUR_COMPANY_ID');
-const res = await statsig.initialize(
-  env.STATSIG_SECRET_KEY,
-  { dataAdapter: dataAdapter },
-);
-```
-
-This piece hooks up the Cloudflare KV store as the source for the SDK to get your latest project definition.  This is what allows Statsig evaluate gates and experiments synchronously, with low latency, and without making an external HTTP request.
-
-```
-const result = statsig.checkGateSync(
-  {
-    userID: String(randomIntFromInterval(1, 10000000)),
-  },
-  "test_cloudflare_sync",
-);
-```
-
-This is a gate check in code.  The first parameter is the `StatsigUser` object you are checking, and the second is the gate name.  Refer to the [node sdk documentation](/server/nodejsServerSDK) for how to check other entities like experiments and dynamic configs.  Here, we have created a user with a random userID for every evaluation to illustrate a gate with a partial rollout working.
-
-```
-ctx.waitUntil(statsig.flush());
-```
-
-This flushes all events from the sdk to statsig.  Without this, you wont be able to get diagnostic information in the Statsig Console, nor any event data you logged.
-
-For example, I can go to the gate I created for this example and look at the evaluations in the Diagnostics tab.
+If you want to check on the evaluations you are getting, yyou can go to the gate you created for this example and look at the evaluations in the Diagnostics tab.
 
 ![Diagnostics Stream](https://github.com/user-attachments/assets/1cc865ed-e15c-41a4-8979-24e1d457a7b1)
 
