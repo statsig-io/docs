@@ -907,12 +907,24 @@ const sidebars: SidebarsConfig = {
             id: "infrastructure/introduction",
           },
           items: [
-            "infrastructure/statsig_ip_ranges",
-            "infrastructure/statsig_domains",
-            "infrastructure/managed-proxy",
-            "infrastructure/custom_proxy",
-            "infrastructure/reliability-faq",
-            "guides/uptime",
+            {
+              "Domains & IP": [
+                "infrastructure/statsig_ip_ranges",
+                "infrastructure/statsig_domains",
+              ],
+            },
+            {
+              "API Proxy": [
+                "infrastructure/managed-proxy",
+                "infrastructure/custom_proxy",
+              ],
+            },
+            {
+              "Reliabiliy": [
+                "infrastructure/reliability-faq",
+                "guides/uptime",
+              ],
+            },
           ],
         },
       ],
