@@ -354,11 +354,11 @@ const config: Config = {
         {
           type: "search",
         },
-        {
-          type: "html",
-          value:
-            "<button class=\"loginCTA CTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus();\">Log In</button>",
-        },
+        // {
+        //   type: "html",
+        //   value:
+        //     "<button class=\"loginCTA CTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus();\">Log In</button>",
+        // },
         {
           type: "html",
           value:
