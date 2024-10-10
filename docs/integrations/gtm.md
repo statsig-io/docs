@@ -17,13 +17,14 @@ The tracking code within GTM will need to know when the Statsig client is ready 
 #### Using @statsig/js-client
 ```js
 const statsigClient = new Statsig.StatsigClient('<CLIENT-SDK-KEY>', {/* USER */}, {/* OPTIONS */});
-statsigClient.on('values_updated', function(evt) {
+statsigClient.on('values_updated', function(evt) { // bind before init is called
   if(evt.status && evt.status === 'Ready') {
     window.dispatchEvent(new CustomEvent("statsig:ready", {
       detail: { statsig: statsigClient }
     }));        
   }
-});    
+});
+await statsigClient.initializeAsync();
 ```
 #### Using statsig-js
 ```js
