@@ -30,7 +30,7 @@ You need to grant some permissions for Statsig from your AWS console in order fo
    (**A**) IAM Role
       - In your AWS IAM Dashboard, select the Roles page under the Access Management tab
       - Create a new Role
-      - Under the Trust Relationships tab of this newly created Role, edit the trust policy to include the Assume Role action for the provided Statsig Service Account. Optionally, add an External ID condition for added security ([AWS External ID Docs](https://aws.amazon.com/blogs/security/how-to-use-external-id-when-granting-access-to-your-aws-resources/))
+      - Under the Trust Relationships tab of this newly created Role, edit the trust policy to include the Assume Role action for the provided Statsig Service Account. Optionally, add a condition using the provided External ID for added security ([AWS External ID Docs](https://aws.amazon.com/blogs/security/how-to-use-external-id-when-granting-access-to-your-aws-resources/))
          ```
          {
             "Version": "2012-10-17",
