@@ -44,7 +44,7 @@ There is also an option to filter the configs that are synced into your KV names
 
 After filling this out, click **Enable**.
 
-Within a minute, the Statsig backend should generate a config payload from your statsig project and push it into your store.  Under your Config or KV Store, look for a key starting with the prefix `statsig-`.  The endping part of that key is your project ID.  You'll need this later.
+Within a minute, the Statsig backend should generate a config payload from your statsig project and push it into your store.  Under your Config or KV Store, look for a key starting with the prefix `statsig-`.  The ending part of that key is your project ID.  You'll need this later.
 
 ## Add the Statsig SDK to your Worker
 Now lets hook up the SDK to read that config payload and use it for gate and experiment checks in your fastly compute.
