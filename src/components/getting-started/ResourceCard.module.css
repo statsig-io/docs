@@ -23,7 +23,7 @@
     align-items: center;
     justify-content: center;
     width: 140px;
-    height: 110px;
+    height: 125px;
     padding: 12px;
     background-color: white;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
@@ -41,11 +41,12 @@
 }
 
 .resourceText {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 600;
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    color: black;
     max-width: 100%;
+    margin-top: 10px;
 }
