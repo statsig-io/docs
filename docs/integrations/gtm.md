@@ -100,6 +100,7 @@ window.StatsigLogger = (function () {
   
   if(clientReady) {
     // if client is already initialized, proceed
+    statsigInstance = statsig;
     init('pre-GTM');
   }
   else {

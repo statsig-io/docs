@@ -900,19 +900,37 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
-          label: "Networking & Reliability",
+          label: "Infrastructure Operations",
           className: "infra-icon sidebar-icon",
           link: {
             type: "doc",
             id: "infrastructure/introduction",
           },
           items: [
-            "infrastructure/statsig_ip_ranges",
-            "infrastructure/statsig_domains",
-            "infrastructure/managed-proxy",
-            "infrastructure/custom_proxy",
-            "infrastructure/reliability-faq",
-            "guides/uptime",
+            {
+              "Domains & IP": [
+                "infrastructure/statsig_ip_ranges",
+                "infrastructure/statsig_domains",
+              ],
+            },
+            {
+              type: "category",
+              label: "API Proxy",
+              link: {
+                type: "doc",
+                id: "infrastructure/api_proxy/introduction",
+              },
+              items: [
+                "infrastructure/api_proxy/managed-proxy",
+                "infrastructure/api_proxy/custom_proxy",
+              ],
+            },
+            {
+              "Reliabiliy": [
+                "infrastructure/reliability-faq",
+                "guides/uptime",
+              ],
+            },
           ],
         },
       ],
