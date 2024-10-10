@@ -914,9 +914,15 @@ const sidebars: SidebarsConfig = {
               ],
             },
             {
-              "API Proxy": [
-                "infrastructure/managed-proxy",
-                "infrastructure/custom_proxy",
+              type: "category",
+              label: "API Proxy",
+              link: {
+                type: "doc",
+                id: "infrastructure/api_proxy/introduction",
+              },
+              items: [
+                "infrastructure/api_proxy/managed-proxy",
+                "infrastructure/api_proxy/custom_proxy",
               ],
             },
             {
