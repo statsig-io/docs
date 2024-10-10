@@ -305,6 +305,12 @@ SDKs and helps avoid mis-configuration between client and server
 #### initCompletionCallback
 > Replaced by the usage of [StatsigClientEventEmitter](/client/javascript-sdk#client-event-emitter)
 
+```js
+statsigClient.on('values_updated', function(evt) {
+  if(evt.status && evt.status === 'Ready') { /* client has initialized */ } 
+});    
+```
+
 #### updateUserCompletionCallback
 > Replaced by the usage of [StatsigClientEventEmitter](/client/javascript-sdk#client-event-emitter)
 
