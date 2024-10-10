@@ -30,13 +30,13 @@ All SDKs accept an `SDK Key` and an optional `StatsigOptions` dictionary. The `S
 
 Here’s an example of setting the environment tier in your code for the **development** environment:
 
-#### Example (Client SDK):
+#### Example (JS Client SDK):
 
 ```javascript
-await statsig.initialize(<SDK_KEY>, user, { environment: { tier: 'development' } });
+const client = new StatsigClient(<SDK_KEY>, user, { environment: { tier: 'development' } });
 ```
 
-#### Example (Server SDK):
+#### Example (Node Server SDK):
 
 ```javascript
 await statsig.initialize(<SDK_KEY>, { environment: { tier: 'development' } });
