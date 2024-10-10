@@ -14,7 +14,7 @@ Regardless of implementation, we strongly advise your proxy simply does passthro
 :::
 
 :::info
-If you just want statsig to manage your proxy, you can use our [Managed API Proxy](/infrastructure/api_proxy/managed-proxy)
+If you just want statsig to manage your proxy, you can use our [Managed API Proxy](/infrastructure/managed-proxy)
 :::
 
 ## Approaches
