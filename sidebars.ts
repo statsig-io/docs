@@ -819,6 +819,7 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "Workspace Management",
           items: [
+            "access-management/introduction",
             {
               "Workspace": [
                 "access-management/organizations",
