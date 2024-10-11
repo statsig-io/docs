@@ -53,19 +53,17 @@ The adapter takes two arguments:
 
 
 ### 2. SDK Initialization
-SDK initialization takes two arguments:
-- Your statsig secret key.  This is available from the [Project Settings](https://console.statsig.com/api_keys) page in the Statsig Console.  This is used to authenticate your requests to the statsig backend.  In this example, we've configured it as an environment variable
-- An options object.  We are using the `dataAdapter` property to hook up the Cloudflare KV store to the SDK.
-
 ```
 const res = await statsig.initialize(
     env.STATSIG_SECRET_KEY,
     { dataAdapter: dataAdapter },
 );
 ```
+SDK initialization takes two arguments:
+- Your statsig secret key.  This is available from the [Project Settings](https://console.statsig.com/api_keys) page in the Statsig Console.  This is used to authenticate your requests to the statsig backend.  In this example, we've configured it as an environment variable
+- An options object.  We are using the `dataAdapter` property to hook up the Cloudflare KV store to the SDK.
 
 ### 3. Checking a Gate
-
 ```
 const result = statsig.checkGateSync(
   {
@@ -131,7 +129,7 @@ For example, you could persist the last time you synced, and define an interval 
 ```
 if (env.lastSyncTime < Date.now() - env.syncInterval) {
   env.lastSyncTime = Date.now();
-  context.waitUntil(Statsig.syncConfigSpecs());
+  context.waitUntil(statsig.syncConfigSpecs());
 }
 ```
 
@@ -139,7 +137,7 @@ if (env.lastSyncTime < Date.now() - env.syncInterval) {
 The SDK enqueues logged events and flushes them in batches. In order to ensure events are properly flushed, we recommend calling flush using context.waitUntil. This will keep the request handler alive until events are flushed without blocking the response.
 
 ```
-context.waitUntil(Statsig.flush());
+context.waitUntil(statsig.flush());
 ```
 
 ### Size Limits

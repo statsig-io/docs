@@ -4,6 +4,9 @@ sidebar_label: Client Persistent Assignment
 slug: /client/concepts/persistent_assignment
 ---
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 Persistent assignment allows you to ensure that a user's variant stays consistent while an experiment is running, regardless of changes to allocation or targeting.
 
 ## Persistent Storage
@@ -12,7 +15,7 @@ The persistent storage adapter allows you to plug in your own storage solution t
 The user persistent storage interface consists of just a `load`/`loadAsync`, `save`, `delete` API for read/write operations.
 
 :::info
-Currently only supported in `Javascript`, `iOS` and `Android`
+Currently only supported in `Javascript`, `iOS` and `Android` On Device Evaluation SDKs
 :::
 
 ### Persistent Storage Logic
@@ -25,15 +28,50 @@ Currently only supported in `Javascript`, `iOS` and `Android`
 
 ### Example usage
 
+<Tabs
+  groupId="client-sdk-lang-choice"
+  defaultValue="js-mono"
+  values={[
+    {label: 'Javascript', value: 'js-mono'},
+    {label: 'Javascript (legacy)', value: 'js'},
+  ]}>
+  <TabItem value="js-mono">
 ```typescript
-await statsig.initialize('client-key', {userPersistentStorage: new CustomStorageAdapter()});
+const storage = new CustomStorageAdapter(); // Need to implement
+const adapter = new UserPersistentOverrideAdapter(storage);
+const client = new StatsigOnDeviceEvalClient(
+  'client-key', 
+  { overrideAdapter: adapter }
+);
+await client.initializeAsync();
 
-const user = { userID: "123" };
-const userPersistedValues = await statsig.loadUserPersistedValuesAsync(user, 'userID');
+const userInControl = { userID: "123" }
+const userInUnknown = { userID: "unknown" }
+const userPersistedValues = adapter.loadUserPersistedValues(user, 'userID');
 
-let experiment = statsig.getExperiment({userID: "123"}, 'the_allocated_experiment', { userPersistedValues: userPersistedValues });
+let experiment = client.getExperiment('active_experiment', user, { userPersistedValues });
 console.log(experiment.getGroupName()) // 'Control'
 
-experiment = statsig.getExperiment({userID: "unknown"}, 'the_allocated_experiment', { userPersistedValues: userPersistedValues });
+experiment = client.getExperiment('active_experiment', userInUnknown, { userPersistedValues });
 console.log(experiment.getGroupName()) // 'Control'
 ```
+  </TabItem>
+  <TabItem value="js">
+```typescript
+await statsig.initialize(
+  'client-key',
+  { userPersistentStorage: new CustomStorageAdapter() } // Need to implement
+);
+
+const userInControl = { userID: "123" }
+const userInUnknown = { userID: "unknown" }
+const userPersistedValues = await statsig.loadUserPersistedValuesAsync(userInControl, 'userID');
+
+let experiment = statsig.getExperiment(userInControl, 'active_experiment', { userPersistedValues });
+console.log(experiment.getGroupName()) // 'Control'
+
+experiment = statsig.getExperiment(userInUnknown, 'active_experiment', { userPersistedValues });
+console.log(experiment.getGroupName()) // 'Control'
+```
+  </TabItem>
+</Tabs>

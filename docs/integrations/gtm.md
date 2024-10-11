@@ -14,6 +14,19 @@ _(statsig log stream showing GTM events flowing in)_
 ### Step 1: Broadcast Statsig client readiness to GTM
 The tracking code within GTM will need to know when the Statsig client is ready to use for tracking. To do so, you'll need to broadcast a window-level event and pass the statsig instance for the GTM tag code to use. In your initialize call, implement the `initCompletionCallback` callback as follows:
 
+#### Using @statsig/js-client
+```js
+const statsigClient = new Statsig.StatsigClient('<CLIENT-SDK-KEY>', {/* USER */}, {/* OPTIONS */});
+statsigClient.on('values_updated', function(evt) { // bind before init is called
+  if(evt.status && evt.status === 'Ready') {
+    window.dispatchEvent(new CustomEvent("statsig:ready", {
+      detail: { statsig: statsigClient }
+    }));        
+  }
+});
+await statsigClient.initializeAsync();
+```
+#### Using statsig-js
 ```js
 await statsig.initialize('<CLIENT-SDK-KEY>', '<USER-OBJECT>', {
   initCompletionCallback: function (duration, success, message) {
@@ -100,6 +113,7 @@ window.StatsigLogger = (function () {
   
   if(clientReady) {
     // if client is already initialized, proceed
+    statsigInstance = statsig;
     init('pre-GTM');
   }
   else {
