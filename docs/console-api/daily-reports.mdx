@@ -76,6 +76,26 @@ GRANT INSERT, UPDATE, DELETE ON TABLE <database>.<schema>.<exportTableName> TO R
 
 4. Connect. Then StatSig will run tests to make sure all privileges are granted. Once it's successful, you are enrolled in the feature.
 
+### Egress event data to your warehouse
+
+We also offer custom event exports to Snowflake for our enterprise customers.
+
+Create a table with the following schema and follow the same steps in the above exposure exports instructions to enabled
+
+```sql
+CREATE OR REPLACE TABLE <DATABASE>.<SCHEMA>.<TABLE> (
+    USER_ID STRING,
+    STABLE_ID STRING,
+    CUSTOM_IDS VARIANT,
+    TIMESTAMP TIMESTAMP_NTZ,
+    EVENT_NAME STRING,
+    EVENT_VALUE STRING,
+    USER_OBJECT VARIANT,
+    STATSIG_METADATA VARIANT,
+    COMPANY_METADATA VARIANT
+);
+```
+
 ## Report Schema - type = pulse_daily
 
 | Column Name         | Description                                                                                        |
