@@ -20,4 +20,4 @@ The Benjamini-Hochberg Procedure can be applied based on:
 - The number of metrics in the scorecard. For each variant aggregate the list of p-values from each metric and complete the Benjamini-Hochberg procedure.
 - Both the number of test groups and number of metrics in the scorecard. All p-values are aggregated to complete the Benjamini-Hochberg procedure.
 
-Statsig does not apply BH procedure when evaluating the p-values of any event-dimesion or user-property experiment metric results. Only the top-line metric results are compared to the new significance level.
+Statsig does not apply BH procedure when evaluating the p-values of any event-dimension or user-property experiment metric results. Only the top-line metric results are compared to the new significance level.
