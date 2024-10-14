@@ -22,19 +22,4 @@ The **Metrics Stream** will surface all ingested, precomputed metrics in real-ti
 Customers can trip up on ensuring that their precomputed metrics have the right ID type. Pay extra attention to this column!
 :::
 
-Statsig also offers the ability to include test metrics, tagged with **isTest**. You can toggle these on/ off while debugging in the **Metrics Stream**. The **isTest** flag is currently available for precomputed metrics ingested via Statsig's APIs. Support for this flag via our integrations with Snowflake, BigQuery, and Redshift is coming soon.
-
-To mark a batch of metrics as test metrics the **isTest** parameter needs to be set to true as part of the data for the request as seen below.
-
-```bash
-curl \
-  “https://events.statsigapi.net/v1/log_custom_metric” \
-  --header “statsig-api-key: <YOUR-SDK-KEY>” \
-  --header “Content-Type: application/json” \
-  --request POST \
-  --data “{"isTest": true, “metrics": [{"user_id": "1237", "metric_name": "test_metric", "id_type": "user_id", "metric_value": 90}, {"user_id": "4568", "metric_name": "ratio", "id_type": "stable_id", "numerator": 3, "denominator": 15}]}”
-```
-
-![292825183_585502089655173_8192569048240569580_n](https://user-images.githubusercontent.com/101903926/179048336-ebdde45b-17e7-47ad-bb81-01f8f032b978.png)
-
 Finally, the **Metrics Stream** only appears if you're actively ingesting precomputed metrics. If you're not seeing it appear at the bottom of your **Metrics Catalog**, Statsig likely is not receiving your precomputed metrics due to a connection issue or an invalid schema.
