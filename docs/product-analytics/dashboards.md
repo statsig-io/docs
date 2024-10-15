@@ -88,7 +88,7 @@ You can click on the filters button below the dashboard name to add a global fil
 
 ### Refreshing your Dashboard Widgets
 
-If you want to ensure the data you're looking at on your dashboard is up to date, you can now refresh all dashboard widgets with one click by clicking on the refresh button shown in the image below.
+To ensure your dashboard data is up to date, simply click the refresh button shown in the image below to refresh all dashboard widgets at once.
 
 ![image](https://github.com/user-attachments/assets/901cb3c9-6ad1-47e3-9d44-627cb2ac11d4)
 
@@ -132,7 +132,7 @@ Dashboard templates are a great way to reduce the time to insights. Statsig comp
 
 ### Finding Dashboards
 
-Once you’ve created a dashboard you may want to quickly find the charts that matter to you. Heading to the Dashboards tab will give you several ways to find a dashboard.
+Once you’ve created a dashboard, you may want to quickly find the charts that matter to you. Heading to the Dashboards tab will give you several ways to find a dashboard.
 
 1. Find dashboards you’ve created quickly by navigating to the Dashboards tab, clicking into the search box, and selecting “My dashboards”.
 2. Navigate to the Dashboards tab and click the filter icon to scope to Dashboards with specific tags or created by specific team members.
