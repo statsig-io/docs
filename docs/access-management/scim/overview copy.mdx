@@ -1,0 +1,42 @@
+---
+sidebar_label: Overview
+title: SCIM User Provisioning
+---
+
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
+
+# SCIM User Provisioning
+
+<Alert severity="info" style={{paddingBottom: "-4rem"}}>
+  <AlertTitle>
+    SCIM is currently a work in progress feature and in Closed Beta. 
+  </AlertTitle>
+    For any questions or support, feel free to reach out to us through Slack.
+</Alert>
+
+## Introduction
+SCIM (System for Cross-domain Identity Management) is a standardized protocol that simplifies the automation of user provisioning and management across multiple platforms.
+By integrating SCIM with your preferred Identity Provider (IdP), such as Okta or Microsoft Entra,
+you can securely and efficiently manage user creation, updates, and de-provisioning within Statsig.
+We currently only offer an Okta SCIM integration.
+
+## Current SCIM Offering
+We are actively developing SCIM functionality and have rolled out the following features:
+
+- Statsig Org level provisioning: Create new users and deactivate existing users in Statsig
+- Statsig Org User Imports: Import existing users on Statsig to Idp
+
+## Features Currently Not Available
+The following features are under development and will be released in future updates
+
+- Statsig Org level role management: Users can be assigned to organization roles in Statsig
+- Statsig Project level provisioning: Users can be assigned to projects and roles in Statsig
+
+## Changelog
+
+| Date | Title | Log |
+|------|-------|-----|
+| 10/3/24 | Okta Org-level User Provisioning | - Users can be imported from Statsig into Okta<br/>- Users can be provisioned and deprovisioned via Okta |
+| 10/21/24 | Project x Role | - Role at each Project level of Statsig synced with Okta Group Role |
+
