@@ -1,100 +1,99 @@
-import { useState } from 'react';
-import CodeBlock from '@theme/CodeBlock';
+import CodeBlock from "@theme/CodeBlock";
 
-export default function JSSnippets() {
-    const [sessionReplayToggle, setSessionReplayToggle] = useState(true);
-    const [autoCaptureToggle, setAutoCaptureToggle] = useState(true);
+function Both() {
+  return (
+    <CodeBlock language="jsx">
+      {`import { StatsigClient, StatsigOptions, StatsigUser } from '@statsig/js-client';
+import { StatsigSessionReplayPlugin } from '@statsig/session-replay';
+import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
 
-    return (
-      <>
-        <div>
-          <label>
-            <input 
-              type="checkbox" 
-              checked={sessionReplayToggle}
-              onChange={(e) => setSessionReplayToggle(e.target.checked)}
-            /> Include Session Replay
-          </label>
-          <br />
-          <label>
-            <input 
-              type="checkbox" 
-              checked={autoCaptureToggle}
-              onChange={(e) => setAutoCaptureToggle(e.target.checked)}
-            /> Include Auto Capture
-          </label>
-        </div>
-        <br />
-        {!sessionReplayToggle && !autoCaptureToggle && (
-          <CodeBlock language="jsx">
-            {`
-import { StatsigClient } from '@statsig/js-client';
+const user: StatsigUser = { userID: 'some_user_id' };
 
-const client = new StatsigClient(sdkKey,
-{ userID: "some_user_id" },
-{ environment: { tier: "production" } } // optional
-);
+const options: StatsigOptions = {
+  plugins: [
+    new StatsigSessionReplayPlugin(),
+    new StatsigAutoCapturePlugin(),
+  ],
+  { environment: { tier: "production" } } // Optionally set the environment
+};
 
-await client.initializeAsync();
-            `}
-          </CodeBlock>
-        )}
+const myStatsigClient = new StatsigClient(YOUR_SDK_KEY, user, options);
+await myStatsigClient.initializeAsync();`}
+    </CodeBlock>
+  );
+}
 
-        {sessionReplayToggle && !autoCaptureToggle && (
-          <CodeBlock language="jsx">
-            {`
-import { StatsigClient } from '@statsig/js-client';
-import { runStatsigSessionReplay } from '@statsig/session-replay';
+function AutoCaptureOnly() {
+  return (
+    <CodeBlock language="jsx">
+      {`import { StatsigClient, StatsigOptions, StatsigUser } from '@statsig/js-client';
+import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
 
-const client = new StatsigClient(sdkKey,
-{ userID: "some_user_id" },
-{ environment: { tier: "production" } } // optional
-);
+const user: StatsigUser = { userID: 'some_user_id' };
 
-runStatsigSessionReplay(client);
+const options: StatsigOptions = {
+  plugins: [
+    new StatsigAutoCapturePlugin(),
+  ],
+  { environment: { tier: "production" } } // Optionally set the environment
+};
 
-await client.initializeAsync();
-            `}
-          </CodeBlock>
-        )}
+const myStatsigClient = new StatsigClient(YOUR_SDK_KEY, user, options);
+await myStatsigClient.initializeAsync();`}
+    </CodeBlock>
+  );
+}
 
-        {!sessionReplayToggle && autoCaptureToggle && (
-          <CodeBlock language="jsx">
-            {`
-import { StatsigClient } from '@statsig/js-client';
-import { runStatsigAutoCapture } from '@statsig/web-analytics';
+function SessionReplayOnly() {
+  return (
+    <CodeBlock language="jsx">
+      {`import { StatsigClient, StatsigOptions, StatsigUser } from '@statsig/js-client';
+import { StatsigSessionReplayPlugin } from '@statsig/session-replay';
 
-const client = new StatsigClient(sdkKey,
-{ userID: "some_user_id" },
-{ environment: { tier: "production" } } // optional
-);
+const user: StatsigUser = { userID: 'some_user_id' };
 
-runStatsigAutoCapture(client);
+const options: StatsigOptions = {
+  plugins: [
+    new StatsigSessionReplayPlugin(),
+  ],
+  { environment: { tier: "production" } } // Optionally set the environment
+};
 
-await client.initializeAsync();
-            `}
-          </CodeBlock>
-        )}
+const myStatsigClient = new StatsigClient(YOUR_SDK_KEY, user, options);
+await myStatsigClient.initializeAsync();`}
+    </CodeBlock>
+  );
+}
 
-        {sessionReplayToggle && autoCaptureToggle && (
-          <CodeBlock language="jsx">
-            {`
-import { StatsigClient } from '@statsig/js-client';
-import { runStatsigSessionReplay } from '@statsig/session-replay';
-import { runStatsigAutoCapture } from '@statsig/web-analytics';
+function NoPlugins() {
+  return (
+    <CodeBlock language="jsx">
+      {`import { StatsigClient, StatsigOptions, StatsigUser } from '@statsig/js-client';
 
-const client = new StatsigClient(sdkKey,
-{ userID: "some_user_id" },
-{ environment: { tier: "production" } } // optional
-);
+const user: StatsigUser = { userID: 'some_user_id' };
 
-runStatsigSessionReplay(client);
-runStatsigAutoCapture(client);
+const options: StatsigOptions = {
+  { environment: { tier: "production" } } // Optionally set the environment
+};
 
-await client.initializeAsync();
-            `}
-          </CodeBlock>
-        )}
-      </>
-    );
-  };
+const myStatsigClient = new StatsigClient(YOUR_SDK_KEY, user, options);
+await myStatsigClient.initializeAsync();`}
+    </CodeBlock>
+  );
+}
+
+export default function JSSnippets({ sessionReplayToggle, autoCaptureToggle }) {
+  if (sessionReplayToggle && autoCaptureToggle) {
+    return <Both />;
+  }
+
+  if (autoCaptureToggle) {
+    return <AutoCaptureOnly />;
+  }
+
+  if (sessionReplayToggle) {
+    return <SessionReplayOnly />;
+  }
+
+  return <NoPlugins />;
+}
