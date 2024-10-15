@@ -195,7 +195,11 @@ const sidebars: SidebarsConfig = {
             {
               type: "category",
               label: "Statsig CLI",
-              items: ["siggy/introduction","siggy/commands", "siggy/gate-management"],
+              items: [
+                "siggy/introduction",
+                "siggy/commands",
+                "siggy/gate-management",
+              ],
             },
           ],
         },
@@ -490,12 +494,12 @@ const sidebars: SidebarsConfig = {
             //     type: "doc",
             //     id: "autotune/introduction",
             //   },
-              // items: [
-              //   "autotune/contextual-bandit",
-              //   "autotune/multi-armed-bandit",
-              //   "autotune/setup",
-              //   "autotune/monitoring",
-              // ],
+            // items: [
+            //   "autotune/contextual-bandit",
+            //   "autotune/multi-armed-bandit",
+            //   "autotune/setup",
+            //   "autotune/monitoring",
+            // ],
             // },
             {
               type: "category",
@@ -820,7 +824,7 @@ const sidebars: SidebarsConfig = {
           items: [
             "access-management/introduction",
             {
-              "Workspace": [
+              Workspace: [
                 "access-management/organizations",
                 "access-management/projects",
                 "access-management/teams",
@@ -866,7 +870,10 @@ const sidebars: SidebarsConfig = {
                     type: "doc",
                     id: "org-admin/organization_policies",
                   },
-                  items: ["org-admin/experiment_policy", "org-admin/gates_policy"],
+                  items: [
+                    "org-admin/experiment_policy",
+                    "org-admin/gates_policy",
+                  ],
                 },
                 {
                   type: "category",
@@ -926,10 +933,7 @@ const sidebars: SidebarsConfig = {
               ],
             },
             {
-              "Reliabiliy": [
-                "infrastructure/reliability-faq",
-                "guides/uptime",
-              ],
+              Reliabiliy: ["infrastructure/reliability-faq", "guides/uptime"],
             },
           ],
         },
