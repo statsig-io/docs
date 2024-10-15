@@ -88,7 +88,7 @@ You can click on the filters button below the dashboard name to add a global fil
 
 ### Refreshing your Dashboard Widgets
 
-If you want to ensure the data you're looking at on your dashboard is up to date, you can now refresh all dashboard widgets with one click by clicking on the refresh button shown in the image below.
+To ensure your dashboard data is up to date, simply click the refresh button shown in the image below to refresh all dashboard widgets at once.
 
 ![image](https://github.com/user-attachments/assets/901cb3c9-6ad1-47e3-9d44-627cb2ac11d4)
 
