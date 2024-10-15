@@ -2,10 +2,49 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 import JSSnippets from "@site/src/components/JSSnippets";
+import { useState } from 'react';
+import CodeBlock from "@theme/CodeBlock";
+
+export const OptionalDepsToggle = () => {
+  const [sessionReplayToggle, setSessionReplayToggle] = useState(true);
+  const [autoCaptureToggle, setAutoCaptureToggle] = useState(true);
+
+  return {
+    sessionReplayToggle,
+    autoCaptureToggle,
+    content: (
+      <>
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              checked={sessionReplayToggle}
+              onChange={(e) => setSessionReplayToggle(e.target.checked)}
+            /> Include <a href="#session-replay">Session Replay</a>
+          </label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              checked={autoCaptureToggle}
+              onChange={(e) => setAutoCaptureToggle(e.target.checked)}
+            /> Include <a href="#autocapture">Auto Capture</a>
+          </label>
+        </div>
+        <br />
+      </>
+    )
+  }
+}
+
 
 ## Getting Started
 
-You can install the Statsig SDK via npm, yarn:
+To get up and running with Statsig in JS, you can install the Statsig client SDK via npm or yarn.
+
+Optional features:
+<input type="hidden" value={window.jsMonoOptDeps=OptionalDepsToggle()}/>
+{window.jsMonoOptDeps.content}
 
 <Tabs
   defaultValue="npm"
@@ -17,20 +56,28 @@ You can install the Statsig SDK via npm, yarn:
 
   <TabItem value="npm">
 
-```shell
-npm install @statsig/js-client @statsig/session-replay @statsig/web-analytics
-```
+
+<CodeBlock language="shell" >
+{`npm install @statsig/js-client` 
++ (window.jsMonoOptDeps.sessionReplayToggle ? ` @statsig/session-replay` : "") 
++ (window.jsMonoOptDeps.autoCaptureToggle ? ` @statsig/web-analytics` : "")
+}
+</CodeBlock>
 
   </TabItem>
   <TabItem value="yarn">
 
-```shell
-yarn add @statsig/js-client @statsig/session-replay @statsig/web-analytics
-```
+<CodeBlock language="shell" >
+{
+`yarn add @statsig/js-client` 
++ (window.jsMonoOptDeps.sessionReplayToggle ? ` @statsig/session-replay` : "") 
++ (window.jsMonoOptDeps.autoCaptureToggle ? ` @statsig/web-analytics` : "")
+}
+</CodeBlock>
 
   </TabItem>
 </Tabs>
 
 After installing the SDK, you can initialize it using the following code:
 
-<JSSnippets />
+<JSSnippets sessionReplayToggle={window.jsMonoOptDeps.sessionReplayToggle} autoCaptureToggle={window.jsMonoOptDeps.autoCaptureToggle} />
