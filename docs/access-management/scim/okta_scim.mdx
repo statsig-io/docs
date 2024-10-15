@@ -56,6 +56,7 @@ allows for automated user provisioning and management.
   - `Import New Users and Profile Update`
   - `Push New Users`
   - `Push Profile Updates`
+  - `Push Groups`
 - Set the authentication mode to "HTTP Header"
 - For the authorization header, use the SCIM Bearer token provided to you by statsig
 
@@ -64,15 +65,15 @@ allows for automated user provisioning and management.
 ## Step 5: Configure Okta to Statsig Settings
 
 - Enable "Create Users"
+- Enable "Update User Attributes"
 - Enable "Deactivate Users"
-- Do not enable "Update User Attributes" or "Sync Password"
 
 ![img](/img/okta_scim_steps/step5-configure-okta-to-statsig-settings.png)
 
-## Step 6: Import Existing Statsig Users
+## Step 6: Import Existing Statsig Users and Groups
 
 - In Okta, go to the Statsig app's "Import" tab
-- Click "Import Now" to fetch existing Statsig users
+- Click "Import Now" to fetch existing Statsig users and groups
 - Process the imported users as needed
 
 ![img](/img/okta_scim_steps/step6-import-existing-users.png)
@@ -84,13 +85,34 @@ allows for automated user provisioning and management.
 
 ![img](/img/okta_scim_steps/step7-manage-user-assignments.png)
 
+## Step 8: Push Groups to Statsig
+
+1. In Okta, go to the Statsig Integration's "Push Groups" tab
+   ![img](/img/okta_scim_steps/step8-push-groups-1.png)
+
+2. Click the settings button and disable "Rename Groups"
+   ![img](/img/okta_scim_steps/step8-push-groups-2.png)
+
+3. Click "Push Groups" and select the method for finding groups in Okta.
+   ![img](/img/okta_scim_steps/step8-push-groups-3.png)
+
+4. Type in and select the Okta group that will push to a Statsig Project x Role Group.
+   ![img](/img/okta_scim_steps/step8-push-groups-4.png)
+
+5. Change "Match Result & Push Action" to "Link Group"
+   ![img](/img/okta_scim_steps/step8-push-groups-5.png)
+
+6. Select the Statsig Project x Role Group that the Okta group will push to. We display the Statsig Project x Role Group with the format `Statsig-<Project Name>-<Role Name>` on Okta.
+   ![img](/img/okta_scim_steps/step8-push-groups-6.png)
+
+7. Then link the Okta group to a Statsig Project x Role Group. On save the group should push to Statsig. All future group changes on Okta will be pushed to Statsig.
+   ![img](/img/okta_scim_steps/step8-push-groups-7.png)
+
 ## Important Notes
 
-- User full name, password, and email management is not enabled on SCIM yet.
-- Project and role management is still a work in progress. Some groups will populate on Okta, we ask that you do not use them for now.
+- User email management is not enabled on SCIM yet.
 - The Org Owner cannot be removed via SCIM, it will throw an error. This is prevent accidents on the Okta side.
 - When a user is removed from Statsig, they will be automatically unassigned in Okta. Conversely, if a user is unassigned or deactivated in Okta, they will be removed from the Statsig Organization.
-- Role management for users at the org level must still be done via Statsig. We will implement org role management on Okta soon.
 
 ## Troubleshooting
 
