@@ -75,11 +75,13 @@ The results show the minimum number of weeks needed to reach this MDE for differ
 
 
 Advanced settings to customize the analysis:
-* **One-sided or Two-sided test**: Toggle this setting to select the type of z-test to use for the analysis.  
-* **Number of Experiment Groups**: The total number of groups in the experiment, including control.
-* **Test Group Size**: Default is 1, meaning the test and control groups are the same size.  For different sized groups, enter the multiplier applied to the test group size.  E.g.: 0.5 means the test group is half the size of the control group. 
-* **ID Type**: The Unit ID type that the experiment will be based on.
-* **Custom Date Range**: The date range for past data used to obtain the metric mean, variance, and estimate of the total available traffic.  By default, the most recent 7 days are used.  Use this feature to exclude holidays or other events that are not representative of typical data trends expected during the experiment.  A 7 day period is recommended to account for weekly seasonality.  
+- **Number of Experiment Groups**: The total number of groups in the experiment, including control.
+- **Control Group %**: What percent of users will be in the control group, e.g. 50% if half of all users will be control.
+- **Fixed Allocation or Fixed MDE Analysis**: Different types of analyses you want to run. See [here](https://docs.statsig.com/experiments-plus/power-analysis/#analysis-types) for more details.
+- **One-sided or Two-sided test**: Toggle this setting to select the type of z-test to use for the analysis.
+- **Significant Level (α)**
+- **Power (1-β)**
+- **Bonferroni Correction Per Variant**: Whether to include α correction for multiple tests in power analysis.
 
 ## Calculation Details
 
