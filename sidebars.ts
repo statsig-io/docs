@@ -847,6 +847,7 @@ const sidebars: SidebarsConfig = {
                   label: "SCIM User Provisioning",
                   items: [
                     "access-management/scim/overview",
+                    "access-management/scim/concepts",
                     "access-management/scim/okta_scim",
                   ],
                 },
