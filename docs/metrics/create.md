@@ -4,7 +4,7 @@ sidebar_label: Creating Custom Metrics
 slug: /metrics/create
 ---
 
-Custom metrics are computed by Statsig from your raw events.  To create custom metrics, navigate to **Metrics** from the left-hand navigation panel, then to the **Metrics Catalog** tab. Tap on the **Create** button.
+Custom metrics are computed by Statsig from your raw events. To create custom metrics, navigate to **Metrics** from the left-hand navigation panel, then to the **Metrics Catalog** tab. Tap on the **Create** button.
 
 ![Screen Shot 2023-09-12 at 12 53 05 PM](https://github.com/statsig-io/docs/assets/101903926/4148f4b8-f9e4-4a37-98df-35663650d76f)
 
@@ -55,6 +55,12 @@ Two time window options are available for user count metrics
 The example below shows a **Total Revenue** metric that sums the _value_ associated with all purchase events.
 
 ![Screen Shot 2023-09-12 at 1 24 49 PM](https://github.com/statsig-io/docs/assets/101903926/f0d4d21b-08ae-405d-a156-4d29f96ab298)
+
+**[In Beta] Currency Sum**
+
+eCommerce customers can span multiple currency types and typically log payments in the currency and amounts the user actually pays. Currency sums allow for payments that are recorded in different currencies to be converted to one common currency.
+
+Statsig supports currency sums upon request.
 
 ### 4. Ratio Metrics
 

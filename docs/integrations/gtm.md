@@ -85,9 +85,9 @@ window.StatsigLogger = (function () {
     if (typeof message === 'object' && typeof message.event === 'string') {
       var metadata = {};
       for (var prop in message) {
-        if (prop.includes('gtm.') && !!message[prop] && (typeof message[prop] === 'number' || typeof message[prop] === 'boolean' || typeof message[prop] === 'string')) {
-          metadata[prop] = message[prop];
-        }
+          if(!(message[prop] instanceof HTMLElement) && typeof(message[prop]) !== 'object') {
+            metadata[prop] = message[prop];
+          }
       }
       log('++ handleGTMMessage', message.event, message.conversionValue || null, metadata);
       statsigInstance.logEvent(message.event, message.conversionValue || null, metadata);
