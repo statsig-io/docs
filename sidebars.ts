@@ -802,6 +802,7 @@ const sidebars: SidebarsConfig = {
                 "experiments/meta-analysis",
                 "statsig-warehouse-native/features/reports",
                 "statsig-warehouse-native/features/autotune",
+                "statsig-warehouse-native/features/use-case",
               ],
             },
             "statsig-warehouse-native/features/mex-on-warehouse-native",
