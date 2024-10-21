@@ -64,7 +64,7 @@ AWS has a variety of serverless solutions, below we will detail the recommended 
 ### Lambda@Edge Implementation
 Lambda@Edge are Lambda functions that are designed to be triggered by CloudFront events. 
 Lambda@Edge implementations carry a few unique challenges:
-- At the time of writing this, AWS does not offer a KV store solution compatible with Lambda@Edge. Their [KeyValueStore](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/kvs-with-functions.html) offering is only compatible with Cloudflare Functions. This means, you will either have to: 
+- At the time of writing this, AWS does not offer a KV store solution compatible with Lambda@Edge. Their [KeyValueStore](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/kvs-with-functions.html) offering is only compatible with Cloudfront Functions. This means, you will either have to: 
     - Use the default Statsig SDK initialization, which will incur a hit over the network to Statsig to load configurations
     - Bundle your project config statically into the function package. You can consider using our [Config-Change Webhook](/integrations/event_webhook#config-change-webhooks) to automate this.
     - Store your project config in S3 and use Cloudfront as means to serve it optimally when fetching it from your Lambda@Edge function.
