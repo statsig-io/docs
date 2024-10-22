@@ -16,15 +16,15 @@ The tracking code within GTM will need to know when the Statsig client is ready 
 
 #### Using @statsig/js-client
 ```js
-const statsigClient = new Statsig.StatsigClient('<CLIENT-SDK-KEY>', {/* USER */}, {/* OPTIONS */});
-statsigClient.on('values_updated', function(evt) { // bind before init is called
+window.statsig = new Statsig.StatsigClient('<CLIENT-SDK-KEY>', {/* USER */}, {/* OPTIONS */});
+statsig.on('values_updated', function(evt) { // bind before init is called
   if(evt.status && evt.status === 'Ready') {
     window.dispatchEvent(new CustomEvent("statsig:ready", {
-      detail: { statsig: statsigClient }
+      detail: { statsig: statsig }
     }));        
   }
 });
-await statsigClient.initializeAsync();
+await statsig.initializeAsync();
 ```
 #### Using statsig-js
 ```js
@@ -60,7 +60,9 @@ After saving the tag, and publishing your updated GTM tag, tracking will be done
 To debug the integration, you can set a local storage entry `debug_ss_gtm` with any value on your webpage. Now, you'll console log statements for each tracking call being dispatched to Statsig. You can also inspect your browser's network traffic to see events being tracked.
 
 ### GTM Code
-
+:::info
+The code below assumes that the statsig client lives at `window.statsig`
+:::
 ```html
 <script type="text/javascript">
 /* dataLayer helper */
@@ -108,7 +110,8 @@ window.StatsigLogger = (function () {
 
   var clientReady = false;
   try {
-    clientReady = statsig.getClientX().ready;
+    // The code below assumes that the statsig client lives at `window.statsig`
+    clientReady = (statsig && statsig.getClientX && statsig.getClientX().ready) || statsig.loadingStatus === 'Ready';
   } catch(err) { }
   
   if(clientReady) {
