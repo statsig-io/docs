@@ -935,7 +935,7 @@ const sidebars: SidebarsConfig = {
               ],
             },
             {
-              Reliabiliy: ["infrastructure/reliability-faq", "guides/uptime"],
+              Reliability: ["infrastructure/reliability-faq", "guides/uptime"],
             },
           ],
         },
