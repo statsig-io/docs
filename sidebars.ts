@@ -471,7 +471,7 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/differential-impact-detection",
                 "experiments-plus/interaction-detection",
                 "experiments-plus/stop-assignments",
-                "experiments-plus/conclude-experiment",
+                "experiments-plus/conclude-experiment-defer-decision",
                 "experiments-plus/abandon",
                 "experiments-plus/ending-experiment",
                 "experiments-plus/disable-group",
