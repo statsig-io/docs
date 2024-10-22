@@ -1,0 +1,26 @@
+## Post Init Syncing
+
+### From Network
+
+By default, the SDK will only sync during initialization. If you would like to re-sync after initialization, you can call the `Statsig.client.updateAsync` method.
+This will trigger a network call to fetch the latest changes from the server.
+
+```kotlin
+val details = Statsig.client.updateAsync()
+```
+
+### Scheduled Polling
+
+If you would like the SDK to regularly poll for updates, you can start the polling task with `Statsig.client.scheduleBackgroundUpdates()`.
+This will hit the network and pull down the latest changes.
+
+```kotlin
+val pollingTask = Statsig.cloent.scheduleBackgroundUpdates() // Defaults to 1 hour interval
+
+// or, specify a custom interval
+val intervalSeconds = 300
+val pollingTask = Statsig.client.scheduleBackgroundUpdates(intervalSeconds)
+
+// and, if you need to cancel it later
+pollingTask?.cancel()
+```
