@@ -35,6 +35,9 @@ import ShutdownSnippet from "./SwiftOnDeviceEval/_shutdown.mdx";
 import * as _LocalOverrides from "./SwiftOnDeviceEval/_localOverrides.mdx";
 export const LocalOverrides = _LocalOverrides;
 
+import * as PostInitSyncing from "./SwiftOnDeviceEval/_postInitSyncing.mdx";
+import * as GlobalUser from "./SwiftOnDeviceEval/_globalUser.mdx";
+
 export const Builder = SDKDocsBuilder({
   sections: [
     [
@@ -77,8 +80,10 @@ export const Builder = SDKDocsBuilder({
       },
     ],
     [StatsigUser, { excludeMentionToDirectUpdateUser: true, isOnDeviceEval: true, snippet: <CreateStatsigUser /> }],
+    [GlobalUser, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [PostInitSyncing, {}],
     [LocalOverrides, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]
