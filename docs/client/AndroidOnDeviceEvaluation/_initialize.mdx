@@ -77,3 +77,35 @@ client.initializeAsync(...)
 
   </TabItem>
 </Tabs>
+
+### Synchronous Initialization
+
+```kotlin
+import com.statsig.androidlocalevalsdk.*
+
+ // (optional) Configure the SDK if needed
+val opts = StatsigOptions()
+opts.environment.tier = "staging"
+
+val specs = "..." // JSON string of your configurations
+
+let details = Statsig.client.initializeSync(application, "client-YOUR_CLIENT_SDK_KEY", specs, opts)
+```
+
+It is possible to configure the SDK to use cached values if they are newer than the local file.
+This can be useful if you ship your app with a local file, but would like it to only be used for the first session.
+In the following example, the SDK will only use initialSpecs if there is no cache or if the cache is older than initialSpecs.
+
+```kotlin
+val options = StatsigOptions()
+options.useNewerCacheValuesOverProvidedValues = true
+
+Statsig.client.initializeSync(
+  application,
+  "client-YOUR_CLIENT_SDK_KEY",
+  specs,
+  options
+)
+```
+
+Note: You can get a copy of your current specs data by visiting: `https://api.statsigcdn.com/v1/download_config_specs/client-{YOUR_SDK_KEY}.json`
