@@ -6,7 +6,7 @@ slug: /metrics/pulse
 
 # Pulse Metrics
 
-Experiments with Statsig use **Pulse** to compute and communicate results. The metric type is important in computing and interpretting the final result.
+Experiments with Statsig use **Pulse** to compute and communicate results. The metric type is important in computing and interpreting the final result.
 
 Most metric types are aggregated across all users in the group; however, some metric types that use ratios are only aggregated across participating users (users that have non-null value for that metric). We'll walk through the various types of metrics available in experiments and how to interpret their pulse results.
 
