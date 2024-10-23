@@ -51,6 +51,20 @@
 -  **enableAutoValueUpdate**: Bool, default `false`
    - by default, feature values for a user is fetched once during `Statsig.start` and don't change throughout the session. Setting this value to true will turn on the feature for Statsig to periodically fetch updated values for the current user.
 
+- **storageProvider**: StorageProvider, default `nil`
+  - Allows users to implement their own caching strategy by passing an
+object that conforms to the `StorageProvider` protocol.
+
+  - Default cache key: `com.statsig.cache`
+
+   ```swift
+      @objc public protocol StorageProvider {
+         @objc func read(_ key: String) -> Data?
+         @objc func write(_ value: Data, _ key: String)
+         @objc func remove(_ key: String)
+      }
+   ```
+   
 -  **overrideStableID**: String, default `nil`
    - Overrides the auto generated StableID that is set for the device.
 
