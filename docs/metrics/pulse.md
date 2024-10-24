@@ -27,13 +27,11 @@ Most metric types are aggregated across all users in the group; however, some me
 | user: retention metrics               | Overall average retention rate                                           | Overall average retention rate                                                                                                                                          | Participating users |
 | user: L7, L14, L28                    | Not shown                                                                | Average L-ness value per user per day                                                                                                                                   | All users           |
 
-An example event_count metric:
+**Some example metric breakdowns in Pulse:**
 
-![Screenshot 2024-10-23 at 4 04 19 PM](https://github.com/user-attachments/assets/589bce0f-730f-4b21-a814-9a657ecd81a9)
+![pulse 1](https://github.com/user-attachments/assets/aa7e1063-6473-4e4e-9ca4-7074f5a0c450)
 
-An example metric using ratios:
-
-![pulse 2](https://github.com/user-attachments/assets/5de46374-303b-4d3f-bdf2-adf6b44e2cf0)
+![pulse 2](https://github.com/user-attachments/assets/7b0b1d99-c720-480e-8671-f5f696485500)
 
 ## Event Count and Event DAU in Pulse
 
