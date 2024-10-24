@@ -133,3 +133,12 @@ Android: Available with  `Statsig.openDebugView()`. Available in [v4.29.0](https
 |Landing|Gates List|Gate Details|Experiment Details|
 |--|--|--|--|
 |![client-debugger-landing](https://github.com/statsig-io/statsig-sdk-debugger-chrome-extension/assets/95646168/fa6d7237-eb47-4f09-896c-696cfd5c956c)|![client-debugger-gates-list](https://github.com/statsig-io/statsig-sdk-debugger-chrome-extension/assets/95646168/161d8f35-a9b8-4ff9-b549-e04d04acac8a)|![client-debugger-gate-info](https://github.com/statsig-io/statsig-sdk-debugger-chrome-extension/assets/95646168/ab15e586-5259-4475-8f5c-018b2ab6e8db)|![client-debugger-experiment-details](https://github.com/statsig-io/statsig-sdk-debugger-chrome-extension/assets/95646168/920a6e8a-eb84-4d37-bf77-bb909a575d58)|
+
+
+## SDK Dropping Events
+
+SDKs batches and flushes events in the background to our server. When the volume of input event is higher than the flushing volume, the SDK can drop events after so many retries. There are several things you can tune in statsig options to minimize event loss. 
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+- event_queue_size: how many events to send in a single batch.
+- retry_queue_size: how many batches of events to hold and retry for.
+
