@@ -58,18 +58,20 @@ For server SDKs, these reasons for the value you are seeing can be:
 - `Uninitialized`: the sdk was not yet successfully initialized
 
 In newer server SDKs, the reasons will be a combination of initialization source and evaluation reason:
-| Initialization Sources | Evaluation Reason |
-|------------------------|-------------------|
-| Network                | LocalOverride     |
-| Bootstrap              | Unrecognized      |
-| DataAdapter            | Unsupported       |
-| StatsigNetwork         | error             |
-| Uninitialized          | ""                |
-
+**Initialization Source**
+- `Network`
+- `Bootstrap`
+- `DataAdapter`
+- `Uninitialized`
 - `StatsigNetwork`: this refers to when custom proxy/grpc streaming has triggered the fallback behavior, thus falling back to statsig api. 
    * If no network config/overrides were used, the sdk default uses statsig apis but the reason will be Network.
+
+**Evaluation Reason**
+- `LocalOverride`
+- `Unrecognized`
+- `Unsupported`
 - `error`: an error happened during evaluation
-- `""`: no evaluation reason means a successful check using the values from the source.
+- no reason: successful evaluation
 
 In addition to these reasons, the most recent versions of server SDKs will also give you two times to watch: the time at which config definitions initialized the SDK,
 and the time at which the SDK was currently evaluating those definitions.  When you change a gate/config/experiment, the project time will update
