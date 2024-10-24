@@ -66,7 +66,8 @@ In newer server SDKs, the reasons will be a combination of initialization source
 | StatsigNetwork         | error             |
 | Uninitialized          | ""                |
 
-- `StatsigNetwork`: fetched from statsig API, most likely due to fallback behavior
+- `StatsigNetwork`: this refers to when custom proxy/grpc streaming has triggered the fallback behavior, thus falling back to statsig api. 
+   * If no network config/overrides were used, the sdk default uses statsig apis but the reason will be Network.
 - `error`: an error happened during evaluation
 - `""`: no evaluation reason means a successful check using the values from the source.
 
