@@ -707,6 +707,7 @@ const sidebars: SidebarsConfig = {
                     "statsig-warehouse-native/metrics/funnel",
                     "statsig-warehouse-native/metrics/percentile",
                     "statsig-warehouse-native/metrics/log",
+                    "statsig-warehouse-native/metrics/latest-value",
                   ],
                 },
                 "statsig-warehouse-native/configuration/dimensional-analysis",

@@ -59,7 +59,9 @@ Supported aggregations are:
 
 - [Count](../metrics/count)
 - [Sum](../metrics/sum)
+- [Logged Sums and Counts](../metrics/log)
 - [Count Distinct](../metrics/count-distinct)
+- [Latest Value](../metrics/latest-value.md)
 - Thresholds
   - A special cases of sum/count which measure a 1/0 flag for if a user passed a threshold value during the experiment - e.g., "the number of users who spent more than $100"
 
