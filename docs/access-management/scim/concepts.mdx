@@ -1,0 +1,46 @@
+---
+sidebar_label: Concepts
+title: SCIM Concepts
+---
+
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
+
+# SCIM Concepts for Statsig
+
+<Alert severity="info" style={{ paddingBottom: "-4rem" }}>
+  <AlertTitle>
+    SCIM is currently a work in progress feature and in Closed Beta.
+  </AlertTitle>
+  For any questions or support, feel free to reach out to us through Slack.
+</Alert>
+<br />
+Our SCIM implementation represents both Statsig users at the Organization level
+and Project level with their associated roles. There are two major resources in
+our SCIM implementation: Users and Groups.
+
+## Users
+
+Users in SCIM correspond to Statsig users at the Organization level.
+Users that are part of the Statsig Organization and have the organization email domain will be recognized as SCIM users.
+Each user has the following attributes:
+
+- First name
+- Last name
+- Email address (main identifier, must be unique within the IdP)
+- Statsig ID (used by the IDP to identify the user in the Statsig SCIM API)
+
+## Groups
+
+![img](/img/okta_scim_steps/okta-statsig-group.png)
+
+Groups in SCIM represent Statsig Projects with specific roles.
+For example, a Project named "Project A" with a role of "Admin" would be represented as a group in SCIM.
+The group name for this example project would be `Statsig-ProjectA-Admin`.
+
+Important notes about groups:
+
+- We do not allow group deletion via SCIM
+- Group names cannot be updated through SCIM
+- SCIM identifies groups with a unique ID in the format `Statsig-{ProjectID}-{RoleID}`
+
