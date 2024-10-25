@@ -463,3 +463,10 @@ span.math.math-inline {
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%)
     contrast(0%);
 }
+
+.no-background {
+  --ifm-alert-background-color: transparent;
+  --ifm-alert-border-color: black;
+  --ifm-tabs-color-active-border:var(--ifm-color-primary-light);
+  --ifm-tabs-color-active:var(--ifm-color-primary-light);
+}
