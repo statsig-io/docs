@@ -83,6 +83,19 @@ You need to grant some permissions for Statsig from your AWS console in order fo
          {
             "Effect": "Allow",
             "Action": [
+               "glue:GetTable",
+               "glue:GetDatabase",
+               "glue:GetPartition",
+               "glue:GetPartitions"
+            ],
+            "Resource": [
+               "arn:aws:glue:<REGION>:<ACCOUNT_ID>:database/<EVENTS_AND_EXPOSURES_DATABASE>",
+               "arn:aws:glue:<REGION>:<ACCOUNT_ID>:table/<EVENTS_AND_EXPOSURES_DATABASE>/*"
+            ]
+         },
+         {
+            "Effect": "Allow",
+            "Action": [
                "s3:GetObject",
                "s3:PutObject",
                "s3:DeleteObject",
@@ -107,8 +120,8 @@ You need to grant some permissions for Statsig from your AWS console in order fo
                "arn:aws:s3:::<S3_BUCKET>/<STATSIG_S3_FOLDER>/*",
                "arn:aws:athena:<REGION>:<ACCOUNT_ID>:workgroup/<ATHENA_WORKGROUP>",
                "arn:aws:glue:<REGION>:<ACCOUNT_ID>:catalog",
-               "arn:aws:glue:<REGION>:<ACCOUNT_ID>:database/<ATHENA_DATABASE>",
-               "arn:aws:glue:<REGION>:<ACCOUNT_ID>:table/<ATHENA_DATABASE>/*"
+               "arn:aws:glue:<REGION>:<ACCOUNT_ID>:database/<GLUE_STAGING_DATABASE>",
+               "arn:aws:glue:<REGION>:<ACCOUNT_ID>:table/<GLUE_STAGING_DATABASE>/*"
             ]
          }
       ]
