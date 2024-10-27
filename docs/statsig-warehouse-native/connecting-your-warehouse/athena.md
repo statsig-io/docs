@@ -5,7 +5,7 @@ sidebar_label: Athena
 ---
 
 :::info
-Statsig Warehouse Native is in Beta. Some features available elsewhere (Custom Pulse Queries, Incremental Reloads and Metrics Explorer) are not available on Athena.  
+Statsig Warehouse Native on Athena is in Beta. Some features available elsewhere (Custom Pulse Queries, Incremental Reloads and Metrics Explorer) are not available for this warehouse just yet but are coming soon.  
 :::
 
 
@@ -23,7 +23,10 @@ In place of granting Athena Access Permissions to a Statsig-owned Service Accoun
 
 ## Grant Permissions to Statsig
 
-You need to grant some permissions for Statsig from your AWS console in order for us to access your Athena data.
+You need to grant some permissions for Statsig from your AWS console in order for us to access your Athena data. Statsig requires
+ - READ on any tables you are using for experimentation
+- USAGE/WRITE on a Statsig-specific Schema we'll use to materialize temp tables and results. This enables us to cache data and perform incremental loads. 
+
 
 1. Create an (**A**) IAM Role, or (**B**) IAM User
 
