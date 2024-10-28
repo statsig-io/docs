@@ -1,6 +1,6 @@
 ---
 title: Reconciling Experiment Results
-sidebar_label: Validating Results
+sidebar_label: Reconciling Experiment Results
 slug: /experiments-plus/reconciling-experiment-results
 ---
 ## Motivation
