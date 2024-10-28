@@ -547,7 +547,6 @@ const sidebars: SidebarsConfig = {
             },
             "layers/introduction",
             "holdouts/introduction",
-            "experiments-plus/reconciling-experiment-results",
             {
               type: "category",
               label: "Pulse",
@@ -564,6 +563,7 @@ const sidebars: SidebarsConfig = {
                 "pulse/faq",
               ],
             },
+            "experiments-plus/reconciling-experiment-results",
             {
               type: "category",
               label: "Landing Page Experiments (deprecated)",
