@@ -1,7 +1,7 @@
 ---
-title: Athena
+title: Athena (β)
 slug: /statsig-warehouse-native/connecting-your-warehouse/athena
-sidebar_label: Athena
+sidebar_label: Athena (β)
 ---
 
 :::info
