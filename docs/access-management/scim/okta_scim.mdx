@@ -9,14 +9,17 @@ import AlertTitle from "@mui/material/AlertTitle";
 # Okta SCIM Provisioning
 
 :::info
+
 ### Closed Beta
-   SCIM is currently a work in progress feature and in Closed Beta.
-   For any questions or support, feel free to reach out to us through Slack.
+
+SCIM is currently a work in progress feature and in Closed Beta.
+For any questions or support, feel free to reach out to us through Slack.
 :::
+
 <br />
-This guide outlines the process for setting up SCIM (System for Cross-domain
-Identity Management) integration between Statsig and Okta. This integration
-allows for automated user provisioning and management.
+This guide outlines the process for setting up SCIM (System for Cross-domain Identity
+Management) integration between Statsig and Okta. This integration allows for automated
+user provisioning and management.
 
 ## Prerequisites
 
@@ -24,10 +27,12 @@ allows for automated user provisioning and management.
 - A SCIM Key from Statsig. Contact us to request for a new SCIM key.
 
 :::note
+
 ### Integration Notes
+
 - User email management is not enabled on SCIM yet.
 - When a user is removed from Statsig, they will be automatically unassigned in Okta. Conversely, if a user is unassigned or deactivated in Okta, they will be removed from the Statsig Organization.
-:::
+  :::
 
 ## Step 1: Create a New App Integration in Okta
 
@@ -98,22 +103,25 @@ allows for automated user provisioning and management.
 2. Click the settings button and disable "Rename Groups"
    ![img](/img/okta_scim_steps/step8-push-groups-2.png)
 
-3. Click "Push Groups" and select the method for finding groups in Okta. 
+3. Click "Push Groups" and select the method for finding groups in Okta.
    ![img](/img/okta_scim_steps/step8-push-groups-3.png)
 
-4. Type in and select the Okta group that will push to a Statsig Project x Role Group. 
+4. Type in and select the Okta group that will push to a Statsig Project x Role Group.
+
 - You can find Groups in left nav of Okta: `Directory > Groups`. In there, you will see the groups created from Okta and groups created by Statsig.
 - The required groups are groups you created from Okta. You can filter by choosing `Group source type` and set to `Okta groups`. If you don't have any, go ahead and create it with members as well.
-   ![img](/img/okta_scim_steps/step8-push-groups-4.png)
+  ![img](/img/okta_scim_steps/step8-push-groups-4.png)
 
 5. Now let's link/assign Okta group you created from Okta to the Statsig groups with role you want.
-- Change `Match Result & Push Action` to `Link Group`
-   ![img](/img/okta_scim_steps/step8-push-groups-5.png)
 
-6. Select the Statsig Project x Role Group that the Okta group will push to. 
+- Change `Match Result & Push Action` to `Link Group`
+  ![img](/img/okta_scim_steps/step8-push-groups-5.png)
+
+6. Select the Statsig Project x Role Group that the Okta group will push to.
+
 - We display the Statsig Project x Role Group with the format `Statsig-<Project Name>-<Role Name>` on Okta.
 - By default Okta only allows you to map 1 Okta Group to 1 Statsig Group.
-   ![img](/img/okta_scim_steps/step8-push-groups-6.png)
+  ![img](/img/okta_scim_steps/step8-push-groups-6.png)
 
 7. Then link the Okta group to a Statsig Project x Role Group. On save the group should push to Statsig. All future group changes on Okta will be pushed to Statsig.
    ![img](/img/okta_scim_steps/step8-push-groups-7.png)
@@ -133,8 +141,9 @@ Scroll down and press `Add Attribute` and fill out the new attribute to have the
 
 Now Navigate to the `Statsig SCIM Integration's User Profile` in the `Profile Editor`.
 Add an new attribute that matches the following format:
+
 - Variable name: `statsigOrgRole`
-- External namespace: `urn.ietf:params:scim:scemas:core:2.0:User`
+- External namespace: `urn:ietf:params:scim:schemas:core:2.0:User`
 
 ![img](/img/okta_scim_steps/org_steps/step2.png)
 
@@ -146,7 +155,6 @@ Scroll down to the new attribute `statsigOrgRole` and map `user.statsigOrgRole` 
 ![img](/img/okta_scim_steps/org_steps/step3.png)
 
 Now all users will be synced with their organization role. On the Statsig SCIM integration you can modify a user's role directly as well.
-
 
 ## Troubleshooting
 
