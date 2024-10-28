@@ -547,6 +547,7 @@ const sidebars: SidebarsConfig = {
             },
             "layers/introduction",
             "holdouts/introduction",
+            "experiments-plus/reconciling-experiment-results",
             {
               type: "category",
               label: "Pulse",
