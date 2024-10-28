@@ -58,7 +58,7 @@ HAVING COUNT(distinct group_id) = 1;
 When comparing a platform analysis to an **existing** experiment analysis that may have been run in the past, it's possible that the underlying data has since fallen out of retention or has been otherwise deleted. To check this, you can compare the table's retention policy to the analysis dates used in your original experiment analysis to make sure the data still exists.
 Additionally, you should make sure your experiment in the vendor console is configured to analyze the same time range your original analysis used. 
 ### Validation
-The validation procedure for the initial metric data and join is to use the query provided in Timestamps section, modifying it to run on both platforms to evaluate that a target metric has the same totals per group across both platforms. 
+The validation procedure for the initial metric data and join is to use the query provided in [Timestamps](https://docs.statsig.com/experiments-plus/reconciling-experiment-results#timestamps) section, modifying it to run on both platforms to evaluate that a target metric has the same totals per group across both platforms. 
 Warehouse Native platforms have an advantage here in that the SQL dialect and source data will generally be the same in both Vendor code and in your in-house code, making comparisons simpler.
 We recommend picking one metric of interest, validating this data, and resolving any differences before checking in on Statistical/Metric methodologies.
 ## Statistical Features
