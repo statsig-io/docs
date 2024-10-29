@@ -89,6 +89,7 @@ You need to grant some permissions for Statsig from your AWS console in order fo
             "Action": [
                "glue:GetTable",
                "glue:GetDatabase",
+               "glue:GetDatabases",
                "glue:GetPartition",
                "glue:GetPartitions"
             ],
@@ -117,12 +118,14 @@ You need to grant some permissions for Statsig from your AWS console in order fo
                "glue:DeletePartition",
                "glue:BatchCreatePartition",
                "glue:BatchDeletePartition",
-               "glue:GetDatabase"
+               "glue:GetDatabase",
+               "glue:GetDatabases"
             ],
             "Resource": [
-               "arn:aws:s3:::<S3_BUCKET>/<PATH_TO_QUERY_RESULTS_FOLDER>/*",
+               "arn:aws:s3:::<S3_BUCKET>/<PATH_TO_S3_QUERY_RESULTS_FOLDER>/*",
                "arn:aws:s3:::<S3_BUCKET>/<STATSIG_S3_FOLDER>/*",
                "arn:aws:athena:<REGION>:<ACCOUNT_ID>:workgroup/<ATHENA_WORKGROUP>",
+               "arn:aws:athena:<REGION>:<ACCOUNT_ID>:datacatalog/*",
                "arn:aws:glue:<REGION>:<ACCOUNT_ID>:catalog",
                "arn:aws:glue:<REGION>:<ACCOUNT_ID>:database/<GLUE_STAGING_DATABASE>",
                "arn:aws:glue:<REGION>:<ACCOUNT_ID>:table/<GLUE_STAGING_DATABASE>/*"
