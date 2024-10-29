@@ -14,7 +14,7 @@ Statsig Warehouse Native on Athena is in Beta. Some features available elsewhere
 To set up connection with Athena, Statsig needs the following
 
 - A Glue Database for staging
-- An S3 Bucket (can be new or existing)
+- An S3 Bucket
 - An S3 Query Result Location (can be specified explicitly or as part of an Athena Workgroup)
 - Athena Access Permissions (can be via an AWS Role or an AWS User)
 
