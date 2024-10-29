@@ -13,9 +13,9 @@ Statsig Warehouse Native on Athena is in Beta. Some features available elsewhere
 
 To set up connection with Athena, Statsig needs the following
 
-- AWS Region
 - A Glue Database for staging
-- An S3 Query Result Location (can be specified explicitly or via an Athena Workgroup)
+- An S3 Bucket (can be new or existing)
+- An S3 Query Result Location (can be specified explicitly or as part of an Athena Workgroup)
 - Athena Access Permissions (can be via an AWS Role or an AWS User)
 
 ## Grant Permissions to Statsig
@@ -133,13 +133,11 @@ You need to grant some permissions for Statsig from your AWS console in order fo
 
 ## Setup Athena Query Flow
 
-1. Create or choose an Athena database to use
+1. Create or choose a Glue Database (can be `default`). Statsig will use this as a staging Database to manage created tables.
 
-   ![image](https://github.com/statsig-io/docs/assets/152932686/e10aafc4-3583-400e-9c7b-8a8b891a23e9)
-
-2. Choose an S3 location folder for query results to be stored
-
-   ![image](https://github.com/statsig-io/docs/assets/152932686/4bec0c87-5ccd-4936-997e-7a0bb8b9ccb3)
+2. Choose an S3 Query Result Location folder. This S3 location will act as the Output Location for queries run in your Athena Warehouse. This Location can be given either:
+   - Explicitly as an S3 location (ex: `s3://my_bucket/my_query_results_folder/`)
+   - OR as part of a setting within an Athena Workgroup
 
 ### What IP addresses will Statsig access data warehouses from?
 
