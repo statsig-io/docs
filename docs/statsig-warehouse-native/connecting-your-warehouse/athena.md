@@ -139,6 +139,8 @@ You need to grant some permissions for Statsig from your AWS console in order fo
    - Explicitly as an S3 location (ex: `s3://my_bucket/my_query_results_folder/`)
    - OR as part of a setting within an Athena Workgroup
 
+3. Specify your AWS Organization region. It is expected that all of your AWS resources in Athena/Glue exist under 1 region.
+
 ### What IP addresses will Statsig access data warehouses from?
 
 [See FAQ](/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from)
