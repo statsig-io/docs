@@ -15,6 +15,8 @@ Bucketing in Statsig is deterministic. Given the same user object and the same s
 
 This process ensures a randomized but deterministic bucketing of users across different experiments or feature gates. The unique salt ensures that the same user can be assigned to different buckets in different experiments.
 
+A lot of times people assume that we keep track of a list of all ids and what group they were assigned to for experiments, or which IDs passed a certain feature gate.  While our data pipelines keep track of which users were exposed to which experiment variant in order to generate experiment results, we do not cache previous evaluations and maintain distributed evaluation state across client and server sdks.  That model doesn't scale - we've even talked to customers who were using an implementation like that in the past, and were paying more for a Redis instance to maintain that state than they ended up paying to use Statsig instead.
+
 For more details, check our open-source SDKs [here](https://github.com/statsig-io/node-js-server-sdk/blob/main/src/Evaluator.ts).
 
 ---
