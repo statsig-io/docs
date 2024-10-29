@@ -22,7 +22,7 @@ In Sequential Testing, the experimental results for each preliminary analysis wi
 
 In the **Setup** tab of your experiment, with Frequentist selected as your Analysis type, you can enable Sequential Testing under the Analysis Settings section. This setting can be toggled at any time during the life of the experiment, and it does not need to be enabled prior to the start of the experiment.
 
-<img width="1019" alt="Screenshot 2024-10-29 at 11 40 59 AM" src="https://github.com/user-attachments/assets/c6576717-a27d-4461-9ebb-cdb2b24c899a"></img>
+![image](/img/enable_freq_sequential_testing.png)
 
 ## Quick Guide: Interpreting Sequential Testing Results
 
