@@ -18,6 +18,12 @@ In Sequential Testing, the experimental results for each preliminary analysis wi
 * Unexpected regressions: Sometimes experiments have bugs or unintended consequences that severely impact key metrics.  Sequential testing helps identify these regressions early and distinguishes significant effects from random fluctuations.
 * Opportunity cost: This arises when a significant loss may be incurred by delaying the experiment decision, such as launching a new feature ahead of a major event or fixing a bug.  If sequential testing shows an improvement in the key metrics, an early decision could be made.  But use caution: An early stat-sig result for certain metrics doesn't guarantee sufficient power to detect regressions in other metrics.  Limit this approach to cases where only a small number of metrics are relevant to the decision.    
 
+## Quick Guide: Enabling Sequential Testing Results
+
+In the **Setup** tab of your experiment, with Frequentist selected as your Analysis type, you can enable Sequential Testing under the Analysis Settings section. This setting can be toggled at any time during the life of the experiment, and it does not need to be enabled prior to the start of the experiment.
+
+<img width="1019" alt="Screenshot 2024-10-29 at 11 40 59 AM" src="https://github.com/user-attachments/assets/c6576717-a27d-4461-9ebb-cdb2b24c899a">
+
 ## Quick Guide: Interpreting Sequential Testing Results
 
 Click on Edit at the top of the metrics section in Pulse to toggle Sequential Testing on/off.
