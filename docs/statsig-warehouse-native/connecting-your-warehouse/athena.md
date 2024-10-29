@@ -41,12 +41,13 @@ You need to grant some permissions for Statsig from your AWS console in order fo
                  "Principal": {
                     "AWS": "<STATSIG_SERVICE_ACCOUNT>"
                  },
-                 "Action": "sts:AssumeRole",
-                 "Condition": {
-                    "StringEquals": {
-                       "sts:ExternalId": "<ROLE_EXTERNAL_ID>"
-                    }
-                 }
+                 // optionally, add the following condition with ROLE_EXTERNAL_ID replaced
+                 // "Condition": {
+                 //    "StringEquals": {
+                 //       "sts:ExternalId": "<ROLE_EXTERNAL_ID>"
+                 //    }
+                 // },
+                 "Action": "sts:AssumeRole"
               }
            ]
         }
