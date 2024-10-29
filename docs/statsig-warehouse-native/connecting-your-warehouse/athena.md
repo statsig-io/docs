@@ -13,24 +13,22 @@ Statsig Warehouse Native on Athena is in Beta. Some features available elsewhere
 
 To set up connection with Athena, Statsig needs the following
 
-- Region
-- Granting Athena Access Permissions to a Statsig-owned Service Account through an IAM Role
-
-In place of granting Athena Access Permissions to a Statsig-owned Service Account, you can also provide the following:
-
-- IAM User Access Key
-- IAM Secret Access Key
+- AWS Region
+- A Glue Database for staging
+- An S3 Query Result Location (can be specified explicitly or via an Athena Workgroup)
+- Athena Access Permissions (can be via an AWS Role or an AWS User)
 
 ## Grant Permissions to Statsig
 
 You need to grant some permissions for Statsig from your AWS console in order for us to access your Athena data. Statsig requires
  - READ on any tables you are using for experimentation
-- USAGE/WRITE on a Statsig-specific Schema we'll use to materialize temp tables and results. This enables us to cache data and perform incremental loads. 
+ - USAGE/WRITE on a Statsig-specific Schema we'll use to materialize temp tables and results. This enables us to cache data and perform incremental loads. 
 
 
 1. Create an (**A**) IAM Role, or (**B**) IAM User
 
    (**A**) IAM Role
+   With an IAM Role, Statsig will assume your created IAM Role via a Statsig Service Account. The ARN for this service account is provided in your Data Connection settings in the Statsig Console. Statsig will run queries through this IAM Role in the form of temporary sessions via the AWS SDK.
       - In your AWS IAM Dashboard, select the Roles page under the Access Management tab
       - Create a new Role
       - Under the Trust Relationships tab of this newly created Role, edit the trust policy to include the Assume Role action for the provided Statsig Service Account. Optionally, add a condition using the provided External ID for added security ([AWS External ID Docs](https://aws.amazon.com/blogs/security/how-to-use-external-id-when-granting-access-to-your-aws-resources/))
@@ -53,16 +51,18 @@ You need to grant some permissions for Statsig from your AWS console in order fo
             ]
          }
          ```
+         - Add the ARN for this IAM Role into the Data Connection setup in the Statsig console
 
    (**B**) IAM User
+   With an IAM User, Statsig will use AWS Access Keys to gain access to this IAM User. Statsig will run queries directly on behalf of this IAM User via the AWS SDK.
       - In your AWS IAM Dashboard, select the Users page under the Access Management tab
       - Create a new User
       - Under the Security Credentials tab of this newly created User, find the Access Keys block
       - Select Create Access Key, and choose 'Application running outside AWS' from the Use Case options
-
    ![image](https://github.com/statsig-io/docs/assets/152932686/c0f762fe-2963-45ca-9424-5399671d53e5)
+      - Add the Access Key and Secret Access Key into the Data Connection setup in the Statsig console
 
-2. Under the Permissions tab for your newly created Role/User, add the Permission Policies outlined below:
+3. Under the Permissions tab for your newly created Role/User, add the Permission Policies outlined below:
    ```
    {
       "Version": "2012-10-17",
