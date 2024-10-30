@@ -4,23 +4,34 @@ sidebar_label: p-Values
 slug: /stats-engine/p-value
 ---
 
-In hypothesis testing, the p-value is the probability of observing an effect larger than or equal to the measured metric delta, under the assumption that the null hypothesis is true.  In practice, a p-value that's lower than your pre-defined threshold is treated as evidence for there being a true effect.
+In hypothesis testing, the p-value is the probability of observing an effect larger than or equal to the measured metric delta, under the assumption that the null hypothesis is true.  In practice, a p-value that's lower than your pre-defined threshold ($\alpha$) is treated as evidence for there being a true effect.
 
-The methodology used for p-value calculation depends on the number of degrees of freedom (*&nu;*).  A two-sample z-test is appropriate for most experiments.  Welch's t-test is used for smaller experiments with *&nu; < 100*.  In both cases, the p-value depends on the metric [mean](/stats-engine/metric-deltas) and [variance](/stats-engine/variance) computed for the test and control groups.
+The methodology used for p-value calculation depends on the number of degrees of freedom ($\nu$).  A two-sample z-test is appropriate for most experiments.  Welch's t-test is used for smaller experiments with $\nu < 100$.  In both cases, the p-value depends on the metric [mean](/stats-engine/metric-deltas) and [variance](/stats-engine/variance) computed for the test and control groups.
 
-### Two-Sample Z-Test
+## Two-Sample, Two-Sided Tests
 
-The z-statistic of a two-sample z-test is:
+The z-statistic (a.k.a. z-score) of a two-sample, two-sided z-test can be computed in multiple equivalent formats:
 
-$
-Z = \frac{\overline X_t - \overline X_c}{\sqrt{var(\overline X_t)+ var(\overline X_c)}}
-$
+$$\Large
+\begin{split}
+Z &= \frac{\overline X_t - \overline X_c}{\sqrt{var(\overline X_t)+ var(\overline X_c)}} \\
+&= \frac{\overline X_t - \overline X_c}{\sqrt{var(\Delta \overline{X})}} \\
+&= \frac{\overline X_t - \overline X_c}{\sqrt{\sigma_{\overline{X}_t}^2 + \sigma_{\overline{X}_c}^2}}
+\end{split}
+$$
+
+where:
+
+- $Z$ is the observed z-statistic (not the z-critical value $Z_{\alpha/s}$)
+- $var(\Delta \overline{X})$ is the variance of the absolute delta of means
+- $var(\overline{X}_i)$ is the variance of sample means either control or treatment group (details [here](/stats-engine/variance))
+- $\sigma_{\overline{X}_t}$ is the standard error of the mean of either control or treatment group
 
 The two-sided p-value is obtained from the standard normal cumulative distribution function:
 
-$
+$$\Large
 p-value = 2\cdot \frac{1}{\sqrt{2\pi}} \int \limits _{-\infty}^{-|Z|}{e^{-t^2/2}dt}
-$
+$$
 
 ### Welch's t-test
 
@@ -28,12 +39,12 @@ For smaller sample sizes, Welch's t-test is the preferred statistical test for l
 
 The t-statistic is computed in the same way as the two-sample z-statistic above.  Additionally, we compute the degrees of freedom *&nu;* using:
 
-$
+$$\Large
 \nu = \frac{\left(var(\overline X_t) + var(\overline X_c)\right)^2}{\frac{var(\overline X_t)^2}{N_t - 1}+\frac{var(\overline X_c)^2}{N_c - 1}}
-$
+= \frac{var(\Delta\overline{X})^2}{\frac{var(\overline X_t)^2}{N_t - 1}+\frac{var(\overline X_c)^2}{N_c - 1}}
+$$
 
 The p-value is then obtained from the t-distribution with *&nu;* degrees of freedom.
 
 
-
-
+## One-Sided Test
