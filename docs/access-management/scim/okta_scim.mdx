@@ -129,6 +129,7 @@ user provisioning and management.
 ## Step 9 (Optional): Update Okta User Org Role
 
 For every user, Statsig surfaces a SCIM field named `statsigOrgRole`. Through this field, you can manage organization user roles.
+Currently, Okta can only push role updates to Statsig.
 
 ### A. Create the Custom Attribute in Okta
 
@@ -154,7 +155,35 @@ Scroll down to the new attribute `statsigOrgRole` and map `user.statsigOrgRole` 
 
 ![img](/img/okta_scim_steps/org_steps/step3.png)
 
+### D. Create a mapping from Okta to Statsig for the Custom Attribute
+
+Now navigate to the Okta User to Statsig SCIM user mapping.
+![img](/img/okta_scim_steps/org_steps/step4_1.png)
+
+Scroll down to the `statsigOrgRole` attribute and map `user.statsigOrgRole` to the Okta attribute `statsigOrgRole`.
+
+![img](/img/okta_scim_steps/org_steps/step4_2.png)
+
 Now all users will be synced with their organization role. On the Statsig SCIM integration you can modify a user's role directly as well.
+
+### E. Modify Integration Mappings
+
+Navigate to the Statsig SCIM integration provisioning section.
+Under the "To App" tab, scroll down to the `statsigOrgRole` attribute.
+
+![img](/img/okta_scim_steps/org_steps/step5_1.png)
+Set the attribute value to `Map from Okta Profile` and `statsigOrgRole`.
+Set apply on `Create and update`.
+
+![img](/img/okta_scim_steps/org_steps/step5_2.png)]
+
+Navigate to the "To Okta" tab and scroll down to the `statsigOrgRole` attribute.
+![img](/img/okta_scim_steps/org_steps/step5_3.png)
+
+Set the attribute value to `Map from Statsig Profile` and `statsigOrgRole`.
+Set apply on `Create`.
+
+![img](/img/okta_scim_steps/org_steps/step5_4.png)
 
 ## Troubleshooting
 
