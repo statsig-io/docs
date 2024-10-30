@@ -1,6 +1,6 @@
 ---
 sidebar_label: SSO with Azure AD
-title: Single Sign-On With Azure AD
+title: Single Sign-On With Azure AD/Office 365
 ---
 ## Requirements
 
