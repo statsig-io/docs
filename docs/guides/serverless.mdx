@@ -3,10 +3,62 @@ sidebar_label: Serverless
 title: Using Statsig in Serverless Environments
 ---
 
-In this guide, we will walk you through how to leverage Statsig’s platform in serverless environments.  The examples in this guide use the `statsig-node` SDK in a Google Cloud Function.
-These details shouldn't matter - but you may have to adjust your implementation based on your cloud provider of choice.
+If you are trying to integrate Statsig into a serverless architecture, there are a few keys you should be aware of.
 
-### Usage
+First, Statsig offers first party integrations for the following serverless providers which simplify the setup to get you the best performing integration:
+
+- [Cloudflare](/integrations/cloudflare)
+- [Fastly](/integrations/fastly)
+- [Vercel](/integrations/vercel)
+
+Each of these integrations follows the patterns and best practices described here, but handle parts of the integration out of the box.  If you are using google cloud functions, aws lambda, azure edge functions, or another serverless provider, read on for more details on how to set up a performant integration.
+
+
+## Best Practices
+
+### Feature Gating and Experimentation
+If you are trying to integrate Statsig into your serverless backend for feature gating or experimentation purposes, there are a few steps to follow for the best performance.  If you simply follow an existing SDK guide, you will end up incurring one or more network round trips to statsig servers for each function invocation, which adds unnecessary and unacceptable latency to your integration.
+
+First, it's important to understand how Statsig server SDKs are designed.  They are primarily intended for long running webservers, and as such, follow a simple lifecycle:
+
+1. At initialization time, download the project definition (all gates, experiments, layers, etc)
+2. At check time, evaluate a gate/dynamic config/experiment/layer for the set of properties passed in, locally, without a network request
+...
+In the background:
+1. Poll for updates to the project definition (all gates, experiments, layers, etc)
+2. Batch events and exposures and periodically flush them to Statsig servers
+
+In a long running webserver, the integration is much simpler.  At startup, initialize Statsig.  Let is configuring intervals to poll for updates and flush events to Statsig servers. In a serverless environment, you need to hook into the initialization step to remove the network round trip.  Thereafter, evaluating gates/experiments can be done synchronously and locally. Our server SDKs provide support for this pattern via a "Data Store" or "Data Adapter."  Implementing a [Data Adpater](/server/concepts/data_store) allows you to configure where the SDK should get the project definition from.
+
+The best serverless integrations get the project definition from something as close to the function as possible - either a low latency KV Store, a caching instance like Redis, or whatever database is accessible in your function.
+
+For AWS Lambda, consider DynamoDB or MemoryDB.
+For Google Cloud users, [Bigtable] or [Memorystore](https://cloud.google.com/memorystore/) is a good fit.
+For Azure functions, consider [CosmosDB] or [Azure Redis Cache]
+
+If you use a different database or in memory cache, that can work as well - these are merely suggestions based on the implementation guides from the above cloud providers.
+
+For now, lets assume that we have our project definition saved in a database that we can access from our cloud function.
+
+Lets define a data adapter that can read that data.  If you are looking for an example, see the [`statsig-io/cloudflare-data-adapter-node` github repository](https://github.com/statsig-io/cloudflare-data-adapter-node/blob/master/CloudflareKVDataAdapter.ts)
+
+The adapter interface looks like this:
+
+```
+export interface IDataAdapter {
+  initialize(): Promise<void>;
+  get(key: string): Promise<AdapterResponse>;
+  set(key: string, value: string, time?: number): Promise<void>;
+  shutdown(): Promise<void>;
+  supportsPollingUpdatesFor(key: DataAdapterKey): boolean;
+}
+```
+
+The only methods you need to implement for a serverless function to read the project definition are `initialize` and `get(key)`.
+
+In initialize, setup a database or memory store connection to retrieve the project definition.
+
+In `get(key)`, read the provided key from your database.
 
 Statsig server SDKs can be used in serverless environments.  If you are unable to `initialize` Statsig outside of a serverless function, you will incur a server round trip to Statsig servers to initialize the SDK in every function.
 
