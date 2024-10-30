@@ -8,9 +8,11 @@ In hypothesis testing, the p-value is the probability of observing an effect lar
 
 The methodology used for p-value calculation depends on the number of degrees of freedom ($\nu$).  A two-sample z-test is appropriate for most experiments.  Welch's t-test is used for smaller experiments with $\nu < 100$.  In both cases, the p-value depends on the metric [mean](/stats-engine/metric-deltas) and [variance](/stats-engine/variance) computed for the test and control groups.
 
-## Two-Sample, Two-Sided Tests
+## Two-Sample Tests
 
-The z-statistic (a.k.a. z-score) of a two-sample, two-sided z-test can be computed in multiple equivalent formats:
+### Two-Sided z-Test
+
+The z-statistic (a.k.a. z-score) of a two-sample z-test can be computed in multiple equivalent formats:
 
 $$\Large
 \begin{split}
@@ -46,5 +48,19 @@ $$
 
 The p-value is then obtained from the t-distribution with $\nu$ degrees of freedom.
 
-## One-Sided Test
+### One-Sided Z-Test
 
+The procedure for a one-sided z-test computes the z-statistic $Z$ in the same way as a two-sided test above.
+
+The one-sided p-value is obtained from the standard normal cumulative distribution function as well, but with slight differences:
+
+$$\Large
+p-value =
+\begin{cases} 1 - \frac{1}{\sqrt{2\pi}} \int \limits _{-\infty}^{Z}{e^{-t^2/2}dt} &\text{if right-sided test}\\
+\frac{1}{\sqrt{2\pi}} \int \limits _{-\infty}^{Z}{e^{-t^2/2}dt} &\text{if left-sided test}
+\end{cases}
+$$
+
+where:
+
+- $Z$ is computed above in the two-sided test. Note: this uses the signed z-statistic, not the absolute value of the z-statistic as in the two-sided p-value
