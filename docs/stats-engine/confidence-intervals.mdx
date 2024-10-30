@@ -16,9 +16,9 @@ Confidence intervals are calculated using a two-sample z-test. This requires kno
 
 For the **absolute metric delta**, the confidence interval is given by:
 
-$
+$$
 CI(\Delta \overline X) = \Delta \overline X \pm Z \cdot\sqrt{{var(\Delta \overline X)}}  
-$
+$$
 
 where:
 
@@ -27,17 +27,17 @@ where:
 
 Similarly, the confidence interval for the **relative metric delta** is:
 
-$
+$$
 CI(\Delta \overline X\%) = \Delta \overline X\% \pm Z \cdot\sqrt{{var(\Delta \overline X\%)}} = \Delta \overline X\% \pm Z \cdot\frac{\sqrt{{var\left(\Delta \overline X\right)}}}{\overline X_c} \cdot100\% 
-$
+$$
 
 ## Welch's T-test for Small Sample Sizes
 
 For small sample sizes, we use Welch's t-test instead of a standard z-test. This statistical test is a better choice for handling samples of unequal size or variance without increasing the false positive rate. The structure of the confidence interval calculation remains the same as above, but instead of the z-statistic we use the t-statistic with degrees of freedom _&nu;_ given by:
 
-$
+$$
 \nu = \frac{\left(var(\overline X_t) + var(\overline X_c)\right)^2}{\frac{var(\overline X_t)^2}{N_t - 1}+\frac{var(\overline X_c)^2}{N_c - 1}}
-$
+$$
 
 Where _N<sub>t</sub>_ and _N<sub>c</sub>_ are the number of user in the test and control groups, respectively. Note that for large number of degrees of freedom, the t-statistic converges with the z-statistic. Therefore, Welch's t-test is used only when _&nu; < 100_.
 
