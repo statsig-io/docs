@@ -22,7 +22,7 @@ $$
 
 where:
 
-- _Z_ is the z-statistic for the desired significance level (1.96 for two-sided 95% confidence interval)
+- _Z_ is the z-critical value for the desired significance level (1.96 for two-sided 95% confidence interval)
 - _var(&Delta;X-bar)_ is the variance of the absolute delta
 
 Similarly, the confidence interval for the **relative metric delta** is:
@@ -39,7 +39,7 @@ $$
 \nu = \frac{\left(var(\overline X_t) + var(\overline X_c)\right)^2}{\frac{var(\overline X_t)^2}{N_t - 1}+\frac{var(\overline X_c)^2}{N_c - 1}}
 $$
 
-Where _N<sub>t</sub>_ and _N<sub>c</sub>_ are the number of user in the test and control groups, respectively. Note that for large number of degrees of freedom, the t-statistic converges with the z-statistic. Therefore, Welch's t-test is used only when _&nu; < 100_.
+Where _N<sub>t</sub>_ and _N<sub>c</sub>_ are the number of users in the test and control groups, respectively. Note that for large number of degrees of freedom, the t-statistic converges with the z-statistic. Therefore, Welch's t-test is used only when _&nu; < 100_.
 
 ## Compare Experiment Data to a Fixed Baseline: One-sample T-test
 
