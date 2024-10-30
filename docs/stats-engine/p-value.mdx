@@ -25,26 +25,26 @@ where:
 - $Z$ is the observed z-statistic (not the z-critical value $Z_{\alpha/s}$)
 - $var(\Delta \overline{X})$ is the variance of the absolute delta of means
 - $var(\overline{X}_i)$ is the variance of sample means either control or treatment group (details [here](/stats-engine/variance))
-- $\sigma_{\overline{X}_t}$ is the standard error of the mean of either control or treatment group
+- $\sigma_{\overline{X}_t}$ is the standard error of the mean of either control or treatment group (these are the terms you can find in Pulse under the Statistics tab of a metric)
 
 The two-sided p-value is obtained from the standard normal cumulative distribution function:
 
 $$\Large
-p-value = 2\cdot \frac{1}{\sqrt{2\pi}} \int \limits _{-\infty}^{-|Z|}{e^{-t^2/2}dt}
+p-value = 2 \cdot \frac{1}{\sqrt{2\pi}} \int \limits _{-\infty}^{-|Z|}{e^{-t^2/2}dt}
 $$
 
 ### Welch's t-test
 
-For smaller sample sizes, Welch's t-test is the preferred statistical test for lower false positive rates in cases of unequal sizes and variances.  In Pulse, Welch's t-test is automatically applied when the degrees of freedom *&nu; < 100*.  
+For smaller sample sizes, Welch's t-test is the preferred statistical test for lower false positive rates in cases of unequal sizes and variances.  In Pulse, Welch's t-test is automatically applied when the degrees of freedom $\nu < 100$.  
 
-The t-statistic is computed in the same way as the two-sample z-statistic above.  Additionally, we compute the degrees of freedom *&nu;* using:
+We compute the t-statistic (a.k.a. t-score) identically as the two-sample z-statistic above.  Additionally, we compute the degrees of freedom $\nu$ using:
 
 $$\Large
 \nu = \frac{\left(var(\overline X_t) + var(\overline X_c)\right)^2}{\frac{var(\overline X_t)^2}{N_t - 1}+\frac{var(\overline X_c)^2}{N_c - 1}}
 = \frac{var(\Delta\overline{X})^2}{\frac{var(\overline X_t)^2}{N_t - 1}+\frac{var(\overline X_c)^2}{N_c - 1}}
 $$
 
-The p-value is then obtained from the t-distribution with *&nu;* degrees of freedom.
-
+The p-value is then obtained from the t-distribution with $\nu$ degrees of freedom.
 
 ## One-Sided Test
+
