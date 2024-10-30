@@ -84,7 +84,7 @@ You need to grant some permissions for Statsig from your AWS console in order fo
          {
             "Effect": "Allow",
             "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::<S3_BUCKET>/<PATH_TO_EVENTS_AND_EXPOSURES_DATA>/*"
+            "Resource": "arn:aws:s3:::<S3_BUCKET>/<PATH_TO_YOUR_READONLY_DATA>/*"
          },
          {
             "Effect": "Allow",
@@ -96,8 +96,8 @@ You need to grant some permissions for Statsig from your AWS console in order fo
                "glue:GetPartitions"
             ],
             "Resource": [
-               "arn:aws:glue:<REGION>:<ACCOUNT_ID>:database/<EVENTS_AND_EXPOSURES_DATABASE>",
-               "arn:aws:glue:<REGION>:<ACCOUNT_ID>:table/<EVENTS_AND_EXPOSURES_DATABASE>/*"
+               "arn:aws:glue:<REGION>:<ACCOUNT_ID>:database/<YOUR_READONLY_DATABASE>",
+               "arn:aws:glue:<REGION>:<ACCOUNT_ID>:table/<YOUR_READONLY_DATABASE>/*"
             ]
          },
          {
