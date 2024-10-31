@@ -42,20 +42,24 @@ $$\Large
 \overline{X}=\frac{1}{N} \sum_{i=0}^N \sum_{d=0}^{n_i} X_{i, d}
 $$
 
-where 
+where:
 - $N$ is the number of users in the group
 - $n_i$ is the number of days during the analysis period that user $i$ was the experiment
 - $X_{i,d}$ is the metric value for user $i$ on day $d$  
 
 Note that only user metrics recorded after a user has been exposed to the experiment are included in the group mean.
 
-###  Event DAU and User Accounting Metrics
+###  User Accounting and Event User Metrics (and legacy Event DAU)
 
-Event DAU metrics capture the number of distinct users that have the event each day.  In Pulse results, they are normalized by the number of days the user has been in the experiment.  This represents the probability that a user is daily active for that event, i.e. the daily participation rate.  In the terms defined above, the event DAU group mean is given by:
+Event User metrics set to "Daily Participation Rate" capture the number of distinct users that have the event each day.  In Pulse results, they are normalized by the number of days the user has been in the experiment.  This represents the probability that a user is daily active for that event, i.e. the daily participation rate.  In the terms defined above, the group mean is given by:
 
 $$\Large
 \overline{X}=\frac{1}{N} \sum_{i=0}^N \frac{1}{n_i} \sum_{d=0}^{n_i} X_{i, d}
 $$
+
+where:
+
+- $X_{i,d}$ takes value 0 or 1 depending on if user $i$ has the event on a given day $d$.
 
 The following user accounting metrics are computed in the same may: *DAU, WAU, MAU_28day, L7, L14, L28*
 
@@ -66,6 +70,12 @@ $$\Large
 $$
 
 Where $\max(X_i)$ is the maximum value of the new xAU metric for user $i$.
+
+:::important event_dau Legacy Support
+
+**event_dau** metrics are now in legacy support only and are no longer created for new events. Existing event_dau metrics will continue to be available for any of your new experiments and will continue to be computed daily. For all new events, you should create an event_user metric to measure daily active users.
+
+:::
 
 ### Custom Ratios, Means, Retention and Stickiness Metrics
 
@@ -81,3 +91,15 @@ Different approaches exist for dealing with ratio metrics in experiments.  This 
 - $R$ is the ratio of two means of independent observations: A set of user-level $X$ values and a set of user-level $Y$ values.  This means the central limit theorem can be used to separately obtain the summary statistics of $X$ and $Y$.          
 - The group means are computed in the same way as the topline metric value, making it easier to interpret the means and relate them to the topline metric.
 
+### Event User One-Time Event
+
+For custom **event_user** metrics with "One-Time Event" selected, statsig computes how many users have the event at any time after the user has been in the experiment. This result is not normalized by the number of days a user is in the expeirment. The group mean is given by:
+
+$$\Large
+\overline{X}=\frac{1}{N} \sum_{i=0}^N X_{i}
+$$
+
+where:
+
+- $N$ is the number of users in the group
+- $X_{i}$ takes value 0 or 1 depending on if user $i$ has the event at any point after entering the experiment 
