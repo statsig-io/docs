@@ -40,7 +40,7 @@ Just a few simple events can help you measure how people are moving through a ce
 
 
 ## Testing in a lower environment
-Once experiments are launched, you can't edit the groups without restarting the experiment, as users are already being allocated to each group. We therefore recommend testing each experiment in lower environments before starting. You can do this by clicking "Experiment Checklist" and "Test your Experiment", then selecting an environment and clicking enable. These environments should match your [SDK environment setup]("/using-environments/#configuring-environments"). Testing in a lower environment, [overrides]("https://docs.statsig.com/experiments-plus/overrides") can help you manually set your experiment "group" to properly test each variant.
+Once experiments are launched, you can't edit the groups without restarting the experiment, as users are already being allocated to each group. We therefore recommend testing each experiment in lower environments before starting. You can do this by clicking "Experiment Checklist" and "Test your Experiment", then selecting an environment and clicking enable. These environments should match your [SDK environment setup]("/using-environments/#configuring-environments"). Testing in a lower environment, [overrides]("/experiments-plus/overrides") can help you manually set your experiment "group" to properly test each variant.
 
 ![Export-1730404362916](https://github.com/user-attachments/assets/e3534b10-1b45-412c-a4b3-f13b861376bc)
 
