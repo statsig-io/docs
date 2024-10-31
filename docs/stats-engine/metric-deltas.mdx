@@ -9,7 +9,7 @@ slug: /stats-engine/metric-deltas
 A metric delta refers to the difference in metric values between two groups, by default the test and control groups.  This is usually the impact we care about when looking at experiment results.  To account for the different number of users (or units) that constitute each group, we compare the mean metric value per user, not the total.  
 
 :::note Selecting Groups
-We define all deltas here to be the difference between a "treatment" group as compared to a presumably unchaged "control" group. However, Statsig enables comparison between any two groups as desired.
+We define all deltas here to be the difference between a "treatment" group as compared to a presumably unchanged "control" group. However, Statsig enables comparison between any two groups as desired.
 :::
 
 Two different metric deltas are available in Pulse.  The **absolute delta** is simply the difference between the two means:  
@@ -93,7 +93,7 @@ Different approaches exist for dealing with ratio metrics in experiments.  This 
 
 ### Event User One-Time Event
 
-For custom **event_user** metrics with "One-Time Event" selected, statsig computes how many users have the event at any time after the user has been in the experiment. This result is not normalized by the number of days a user is in the expeirment. The group mean is given by:
+For custom **event_user** metrics with "One-Time Event" selected, statsig computes how many users have the event at any time after the user has been in the experiment. This result is not normalized by the number of days a user is in the experiment. The group mean is given by:
 
 $$\Large
 \overline{X}=\frac{1}{N} \sum_{i=0}^N X_{i}
