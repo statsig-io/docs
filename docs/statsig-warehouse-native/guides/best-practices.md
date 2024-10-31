@@ -11,6 +11,8 @@ Statsig's pipelines leverage many SQL best practices in order to reduce cost, an
 
 Following these best practices will help keep costs under control and consistent.
 
+Skip ahead to[ Compute Cost Transparency](https://docs.statsig.com/statsig-warehouse-native/guides/best-practices#compute-cost-transparency) if you want to see how much compute time you experiments use.
+
 ### Follow SQL Best Practices
 
 Statsig uses your SQL to connect to your source data. Here's some common issues:
@@ -130,3 +132,16 @@ Turbo Mode  skips some enrichment calculations (in particular some time series r
 ### Ask!
 
 Statsig's support is very responsive, and will be happy to help you fix your issue and build tools to prevent it in the future - whether it's due to system or user error.
+
+
+## Compute Cost Transparency
+Statsig Warehouse Native now lets you get a birds eye view across the compute time experiment analysis incurs in your warehouse. Break this down by experiment, metric source or type of query to find what to optimize.
+Common customers we've designed the dashboard to be able to address include
+What Metric Sources take the most compute time (useful to focus optimization effort here; see tips here)
+What is the split of compute time between full loads vs incremental loads vs custom queries?
+How is compute time distributed across experiments? (useful to make sure value realized and compute costs incurred are roughly aligned)
+
+You can find this dashboard in the Left Nav under Analytics -> Dashboards -> Pipeline Overview
+![image](https://github.com/user-attachments/assets/684ae633-8054-4f41-8443-7df63fe81253)
+
+This is built using Statsig Product Analytics - you can customize any of these charts, or build new ones yourself. A favorite is to add in your average compute cost, so you can turn slot time per experiment into $ cost per experiment.
