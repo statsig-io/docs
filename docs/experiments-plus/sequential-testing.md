@@ -107,18 +107,16 @@ where $Z$ is the observed z-statistic as usual.
 We can modify each step for one-sided sequential testing.
 
 $$\Large
-
 CI^*(\Delta \overline{X}) = \begin{cases}
-\left[\Delta \overline{X}, \quad \Delta \overline{X} + Z^*_{\alpha} \cdot \sqrt{V}\right] & \text{if right-sided test} \\
+\left[\Delta \overline{X} - Z^*_{\alpha} \cdot \sqrt{V}, \quad +\infty \right) & \text{if right-sided test} \\
 \\
-\left[\Delta \overline{X} - Z^*_{\alpha} \cdot \sqrt{V}, \quad \Delta \overline{X}\right] & \text{if left-sided test} \\
+\left(- \infty, \quad \Delta \overline{X} + Z^*_{\alpha} \cdot \sqrt{V} \:\right] & \text{if left-sided test} \\
 \end{cases}
 $$
 
 $$\Large
-
 \text{p-value}^* = \begin{cases}
-\frac{1}{\sqrt{2\pi}} \int \limits _{Z}^{\infty} \frac{e^{- \frac{t^2}{{2\sigma^2}}}}{\sigma}dt  \quad \text{if right-sided test} \\
+1 - \frac{1}{\sqrt{2\pi}} \int \limits _{-\infty}^{Z} \frac{e^{- \frac{t^2}{{2\sigma^2}}}}{\sigma}dt  \quad \text{if right-sided test} \\
 \\
 \frac{1}{\sqrt{2\pi}} \int \limits _{-\infty}^{Z} \frac{e^{- \frac{t^2}{{2\sigma^2}}}}{\sigma}dt  \quad \text{if left-sided test} \\
 \end{cases}
@@ -151,3 +149,5 @@ $$\Large
 \frac{- Z_{\alpha}^*}{\sqrt{2} \cdot erf^{-1}(2 \alpha - 1)} & \text{if left-sided test}
 \end{cases}
 $$
+
+- $Z$ is the (signed) observed z-statistic as usual
