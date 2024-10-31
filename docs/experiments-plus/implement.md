@@ -29,3 +29,4 @@ statsig.logEvent(user, "demo_completed");
 ```
 
 Just a few simple events can help you measure how people are moving through a certain funnel in your product, and enable you to experiment on those flows to increase conversion.
+![Export-1730403727289](https://github.com/user-attachments/assets/d041cf6f-d1fa-476d-a48a-c5db94bf041c)
