@@ -167,7 +167,7 @@ You need to grant some permissions for Statsig from your AWS console in order fo
          "arn:aws:glue:<REGION>:<ACCOUNT_ID>:database/<YOUR_READONLY_DATABASE>",
          "arn:aws:glue:<REGION>:<ACCOUNT_ID>:table/<YOUR_READONLY_DATABASE>/*"
       ]
-   },
+   }
    ```
 2. Give Statsig read-access to your S3 Bucket locations of the tables you need Statsig to read from. Add this to your AWS IAM Role/User's Permissions Policy:
    ```
@@ -175,10 +175,22 @@ You need to grant some permissions for Statsig from your AWS console in order fo
       "Effect": "Allow",
       "Action": "s3:GetObject",
       "Resource": "arn:aws:s3:::<S3_BUCKET>/<PATH_TO_YOUR_READONLY_DATA>/*"
-   },
+   }
    ```
 3. Read data in Statsig when setting up Metric/Assignment Sources by selecting from these tables using `"database"."table"` format.
 4. Repeat for any additional tables, or whenever you need to read a new table from Statsig.
+
+## Additional Guides
+
+### S3 Bucket Encryption
+
+Statsig supports all accessed S3 Buckets being encrypted. Steps to allow Statsig encrypting S3 Buckets while giving Statsig access are as follows:
+
+1. From the AWS Key Management Service console, create a new KMS Key using the below cryptographic configuration settings. [AWS SSE KMS Docs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html?icmpid=docs_s3_hp_batch_ops_create_job_encryption_key_type)
+   ![image](https://github.com/user-attachments/assets/046a6736-20c3-4010-99bf-a6eb0fad912b)
+2. From the Key Policy tab of your newly created KMS Key, find the Key Administrators box. Click Add, and select the AWS IAM Role/User provided to Statsig as an administrator.
+3. Navigate to your S3 Bucket. From your S3 Bucket Properties tab, find the Default Encryption box. Click Edit, and select the below default encryption settings. Add your newly created KMS Key ARN here.
+   ![image](https://github.com/user-attachments/assets/bcd4e1de-c813-4de6-ae98-47c3eb93179c)
 
 ### What IP addresses will Statsig access data warehouses from?
 
