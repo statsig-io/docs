@@ -13,16 +13,17 @@ Statsig Warehouse Native on Athena is in Beta. Some features available elsewhere
 
 To set up connection with Athena, Statsig needs the following
 
-- A Glue Database for staging
-- An S3 Bucket
-- An S3 Query Result Location (can be specified explicitly or as part of an Athena Workgroup)
-- Athena Access Permissions (can be via an AWS Role or an AWS User)
+ - A Glue Database for staging
+ - An S3 Bucket
+ - An S3 Query Result Location (can be specified explicitly or as part of an Athena Workgroup)
+ - Athena Access Permissions (can be via an AWS Role or an AWS User)
 
 ## Grant Permissions to Statsig
 
 You need to grant some permissions for Statsig from your AWS console in order for us to access your Athena data. Statsig requires
+
  - READ on any tables you are using for experimentation
- - USAGE/WRITE on a Statsig-specific Schema we'll use to materialize temp tables and results. This enables us to cache data and perform incremental loads. 
+ - USAGE/WRITE on a Statsig-specific schema we'll use to materialize temp tables and results. This enables us to cache data and perform incremental loads. You will specify which Glue Database and S3 Bucket to use, and we will create a Statsig S3 Subfolder to do our staging operations
 
 
 1. Create an (**A**) IAM Role, or (**B**) IAM User
@@ -70,6 +71,7 @@ You need to grant some permissions for Statsig from your AWS console in order fo
    {
       "Version": "2012-10-17",
       "Statement": [
+         // Allow Statsig to recognize your staging S3 Bucket
          {
             "Effect": "Allow",
             "Action": [
@@ -81,11 +83,13 @@ You need to grant some permissions for Statsig from your AWS console in order fo
             ],
             "Resource": "arn:aws:s3:::<S3_BUCKET>"
          },
+         // Allow Statsig to read events/exposures data from your S3 Buckets
          {
             "Effect": "Allow",
             "Action": "s3:GetObject",
             "Resource": "arn:aws:s3:::<S3_BUCKET>/<PATH_TO_YOUR_READONLY_DATA>/*"
          },
+         // Allow Statsig to read events/exposures tables from your Glue Databases
          {
             "Effect": "Allow",
             "Action": [
@@ -100,6 +104,7 @@ You need to grant some permissions for Statsig from your AWS console in order fo
                "arn:aws:glue:<REGION>:<ACCOUNT_ID>:table/<YOUR_READONLY_DATABASE>/*"
             ]
          },
+         // Allow Statsig to read/write/use data and tables in an isolated staging S3 subfolder
          {
             "Effect": "Allow",
             "Action": [
@@ -137,15 +142,43 @@ You need to grant some permissions for Statsig from your AWS console in order fo
    }
    ```
 
-## Setup Athena Query Flow
+## Setup Statsig Staging Structure
 
-1. Create or choose a Glue Database (can be `default`). Statsig will use this as a staging Database to manage created tables.
-
-2. Choose an S3 Query Result Location folder. This S3 location will act as the Output Location for queries run in your Athena Warehouse. This Location can be given either:
+1. Create or choose a Glue Database (can be `default`). Statsig will use this as a staging Database to create and manage tables.
+2. Choose an S3 Query Result Location folder. This S3 location will act as the Output Location for SELECT queries run in your Athena Warehouse. This Location can be given either:
    - Explicitly as an S3 location (ex: `s3://my_bucket/my_query_results_folder/`)
    - OR as part of a setting within an Athena Workgroup
-
 3. Specify your AWS Organization region. It is expected that all of your AWS resources in Athena/Glue exist under 1 region.
+
+## Setup Reading Data from your Events/Exposures Tables
+
+1. Give Statsig read-access to your Glue Database containing any tables you need to Statsig to read from. Do this by adding the following to your AWS IAM Role/User's Permissions Policy:
+   ```
+   {
+      "Effect": "Allow",
+      "Action": [
+         "glue:GetTable",
+         "glue:GetDatabase",
+         "glue:GetDatabases",
+         "glue:GetPartition",
+         "glue:GetPartitions"
+      ],
+      "Resource": [
+         "arn:aws:glue:<REGION>:<ACCOUNT_ID>:database/<YOUR_READONLY_DATABASE>",
+         "arn:aws:glue:<REGION>:<ACCOUNT_ID>:table/<YOUR_READONLY_DATABASE>/*"
+      ]
+   },
+   ```
+2. Give Statsig read-access to your S3 Bucket locations of the tables you need Statsig to read from. Add this to your AWS IAM Role/User's Permissions Policy:
+   ```
+   {
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::<S3_BUCKET>/<PATH_TO_YOUR_READONLY_DATA>/*"
+   },
+   ```
+3. Read data in Statsig when setting up Metric/Assignment Sources by selecting from these tables using `"database"."table"` format.
+4. Repeat for any additional tables, or whenever you need to read a new table from Statsig.
 
 ### What IP addresses will Statsig access data warehouses from?
 
