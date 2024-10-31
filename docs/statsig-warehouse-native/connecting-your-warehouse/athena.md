@@ -43,12 +43,12 @@ You need to grant some permissions for Statsig from your AWS console in order fo
                  "Principal": {
                     "AWS": "<STATSIG_SERVICE_ACCOUNT>"
                  },
-                 // optionally, add the following condition with ROLE_EXTERNAL_ID replaced
-                 // "Condition": {
-                 //    "StringEquals": {
-                 //       "sts:ExternalId": "<ROLE_EXTERNAL_ID>"
-                 //    }
-                 // },
+                 // optionally require External ID condition
+                 "Condition": {
+                    "StringEquals": {
+                       "sts:ExternalId": "<ROLE_EXTERNAL_ID>"
+                    }
+                 },
                  "Action": "sts:AssumeRole"
               }
            ]
@@ -63,7 +63,6 @@ You need to grant some permissions for Statsig from your AWS console in order fo
       - Create a new User
       - Under the Security Credentials tab of this newly created User, find the Access Keys block
       - Select Create Access Key, and choose 'Application running outside AWS' from the Use Case options
-   ![image](https://github.com/statsig-io/docs/assets/152932686/c0f762fe-2963-45ca-9424-5399671d53e5)
       - Add the Access Key and Secret Access Key into the Data Connection setup in the Statsig console
 
 3. Under the Permissions tab for your newly created Role/User, add the Permission Policies outlined below:
@@ -186,11 +185,18 @@ You need to grant some permissions for Statsig from your AWS console in order fo
 
 Statsig supports all accessed S3 Buckets being encrypted. Steps to allow Statsig encrypting S3 Buckets while giving Statsig access are as follows:
 
-1. From the AWS Key Management Service console, create a new KMS Key using the below cryptographic configuration settings. [AWS SSE KMS Docs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html?icmpid=docs_s3_hp_batch_ops_create_job_encryption_key_type)
-   ![image](https://github.com/user-attachments/assets/046a6736-20c3-4010-99bf-a6eb0fad912b)
+1. From the AWS Key Management Service console, create a new KMS Key using the below cryptographic configuration settings: ([AWS SSE KMS Docs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html?icmpid=docs_s3_hp_batch_ops_create_job_encryption_key_type))
+   - Key Type: Symmetric
+   - Key Usage: Encrypt and Decrypt
+   - Advanced Options
+     * Key Material Origin = KMS
+     * Regionality = Single-Region Key
 2. From the Key Policy tab of your newly created KMS Key, find the Key Administrators box. Click Add, and select the AWS IAM Role/User provided to Statsig as an administrator.
-3. Navigate to your S3 Bucket. From your S3 Bucket Properties tab, find the Default Encryption box. Click Edit, and select the below default encryption settings. Add your newly created KMS Key ARN here.
-   ![image](https://github.com/user-attachments/assets/bcd4e1de-c813-4de6-ae98-47c3eb93179c)
+3. Navigate to your S3 Bucket. From your S3 Bucket Properties tab, find the Default Encryption box. Click Edit, and select the below default encryption settings:
+   - Encryption Type: SSE-KMS
+   - AWS KMS Key: Enter AWS KMS Key ARN
+     * (enter your newly created KMS Key ARN in the box)
+   - Bucket Key: Enable
 
 ### What IP addresses will Statsig access data warehouses from?
 
