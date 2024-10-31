@@ -42,11 +42,11 @@ $$
 When running one-sided tests, the form of of the confidence interval calculation changes slightly to account for a redistribution of desired false positive rate when looking for increases or decreases in the metric:
 
 $$\Large
-\begin{split}
-CI(\Delta \overline{X}) &= \left(\Delta \overline{X}, \Delta \overline{X} + Z_{\alpha} \cdot \sqrt{{var(\Delta \overline{X})}}  \right)\\
-&or\\
-&= \left(\Delta \overline{X} - Z_{\alpha} \cdot \sqrt{{var(\Delta \overline{X})}}  , \Delta \overline{X}\right)
-\end{split}
+CI(\Delta \overline{X}) = \begin{cases}
+\left[\Delta \overline{X} - Z_{\alpha} \cdot \sqrt{{var(\Delta \overline{X})}}, \quad +\infty  \right) & \text{if right-hand test}\\
+\\
+\left(-\infty, \quad \Delta \overline{X} + Z_{\alpha} \cdot \sqrt{{var(\Delta \overline{X})}} \: \right] & \text{if left-hand test}
+\end{cases}
 $$
 
 where:
