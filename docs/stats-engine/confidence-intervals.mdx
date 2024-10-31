@@ -8,38 +8,69 @@ Confidence intervals are an intuitive way to quantify the uncertainty in the obs
 
 ![image](https://user-images.githubusercontent.com/90343952/168382034-73afed14-d9f5-42cb-ade1-034526002a0b.png)
 
-In practical terms, a 95% confidence interval that doesn't contain zero (the green bar above) represents a statistically significant result (with _&alpha; = 0.05_). Only 5% of the time would we expect to see that confidence interval if the true effect was zero (a false positive). Larger confidence intervals imply less certainty in the exact size of the effect with a larger range of likely values.
+In practical terms, a 95% confidence interval that doesn't contain zero (the green bar above) represents a statistically significant result (with _&alpha; = 0.05_). Only 5% of the time would we expect to see the confidence interval exclude zero if the true effect was zero (a.k.a. a false positive). Larger confidence intervals imply less certainty in the exact size of the effect with a larger range of likely values.
 
 ## Computing Confidence Intervals
 
-Confidence intervals are calculated using a two-sample z-test. This requires knowledge of the variance in the metric delta we're measuring, which is derived differently depending on the type of metric (details [here](/stats-engine/variance)).
+Confidence intervals in Statsig are calculated using a two-sample z-test. This test requires knowledge of the variance in the metric delta we're measuring, which is derived differently depending on the type of metric (details [here](/stats-engine/variance)).
+
+Once we've established the variance of the delta, it's straightforward to compute the confidence intervals.
+
+### Two-Sided Tests
 
 For the **absolute metric delta**, the confidence interval is given by:
 
-$
-CI(\Delta \overline X) = \Delta \overline X \pm Z \cdot\sqrt{{var(\Delta \overline X)}}  
-$
+$$\Large
+CI(\Delta \overline{X}) = \Delta \overline{X} \pm Z_{\alpha/2} \cdot \sqrt{{var(\Delta \overline{X})}}  
+$$
 
 where:
 
-- _Z_ is the z-statistic for the desired significance level (1.96 for two-sided 95% confidence interval)
-- _var(&Delta;X-bar)_ is the variance of the absolute delta
+- $Z_{\alpha/2}$ is the z-critical value for the desired significance level (1.96 for the standard $\alpha=0.05$ and 95% confidence interval) and we run a two-sided test
+- $var(\Delta \overline{X})$ is the variance of the absolute delta (details [here](/stats-engine/variance))
 
 Similarly, the confidence interval for the **relative metric delta** is:
 
-$
-CI(\Delta \overline X\%) = \Delta \overline X\% \pm Z \cdot\sqrt{{var(\Delta \overline X\%)}} = \Delta \overline X\% \pm Z \cdot\frac{\sqrt{{var\left(\Delta \overline X\right)}}}{\overline X_c} \cdot100\% 
-$
+$$\Large
+CI(\Delta \overline X\%)
+= \Delta \overline X\% \pm Z_{\alpha/2} \cdot\sqrt{{var(\Delta \overline X\%)}}
+= \Delta \overline X\% \pm Z_{\alpha/2} \cdot\frac{\sqrt{{var\left(\Delta \overline X\right)}}}{\overline X_c} \cdot 100\% 
+$$
+
+### One-Sided Tests
+
+When running one-sided tests, the form of of the confidence interval calculation changes slightly to account for a redistribution of desired false positive rate when looking for increases or decreases in the metric:
+
+$$\Large
+\begin{split}
+CI(\Delta \overline{X}) &= \left(\Delta \overline{X}, \Delta \overline{X} + Z_{\alpha} \cdot \sqrt{{var(\Delta \overline{X})}}  \right)\\
+&or\\
+&= \left(\Delta \overline{X} - Z_{\alpha} \cdot \sqrt{{var(\Delta \overline{X})}}  , \Delta \overline{X}\right)
+\end{split}
+$$
+
+where:
+
+- $Z_{\alpha}$ is the z-critical value for the desired significance level (1.645 for the standard $\alpha=0.05$ and 95% confidence interval) and we run a one-sided test
+- $var(\Delta \overline{X})$ is the same as for two-sided tests
+- the choice of confidence interval depends on if the one-sided test is looking for increases or decreases in the metric
 
 ## Welch's T-test for Small Sample Sizes
 
-For small sample sizes, we use Welch's t-test instead of a standard z-test. This statistical test is a better choice for handling samples of unequal size or variance without increasing the false positive rate. The structure of the confidence interval calculation remains the same as above, but instead of the z-statistic we use the t-statistic with degrees of freedom _&nu;_ given by:
+For small sample sizes, we use Welch's t-test instead of a standard z-test. This statistical test is a better choice for handling samples of unequal size or variance without increasing the false positive rate. The structure of the confidence interval calculation remains the same as above (depending on 1- or 2-sided test), replacing the z-critical value with the t-critical value with degrees of freedom $\nu$.
 
-$
+For a two-sided test, the confidence interval is therefore:
+
+$$\Large
+CI(\Delta \overline{X}) = \Delta \overline{X} \pm t_{\alpha/2} \cdot \sqrt{{var(\Delta \overline{X})}}  
+$$
+
+$$\Large
 \nu = \frac{\left(var(\overline X_t) + var(\overline X_c)\right)^2}{\frac{var(\overline X_t)^2}{N_t - 1}+\frac{var(\overline X_c)^2}{N_c - 1}}
-$
+= \frac{var(\Delta\overline{X})^2}{\frac{var(\overline X_t)^2}{N_t - 1}+\frac{var(\overline X_c)^2}{N_c - 1}}
+$$
 
-Where _N<sub>t</sub>_ and _N<sub>c</sub>_ are the number of user in the test and control groups, respectively. Note that for large number of degrees of freedom, the t-statistic converges with the z-statistic. Therefore, Welch's t-test is used only when _&nu; < 100_.
+Where $N_t$ and $N_c$ are the number of users in the test and control groups, respectively. Note that for large number of degrees of freedom, the t-statistic converges with the z-statistic. Therefore, Welch's t-test is used only when $\nu < 100$.
 
 ## Compare Experiment Data to a Fixed Baseline: One-sample T-test
 
@@ -47,6 +78,6 @@ Sometimes we want to answer questions like "Does my test variant lead to a click
 
 The confidence interval is calculated by
 
-$$
+$$\Large
 CI(\Delta \overline X) = (\overline X_{group} - fixed \ value) \pm Z \cdot\sqrt{{var( \overline X_{group})}}
 $$
