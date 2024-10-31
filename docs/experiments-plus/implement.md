@@ -10,7 +10,7 @@ To deploy your experiment, you'll need to:
 3. Test your experiment in development or a lower environment
 4. Click "Start"!
 
-##Pulling experiment configurations from Statsig
+## Pulling experiment configurations from Statsig
 In the code snippets below, we illustrate experimenting on a product demo flow, where you might experiment to improve conversion through the funnel to demo completion. For more examples, see this guide on [your first a/b test](/guides/abn-tests), or check out the SDK documentation for the languages you'll be using.
 
 ```js
@@ -26,7 +26,7 @@ const title = demoConfiguration.get("title", "Start Demo");
 banner.setTitle(title);
 ```
 
-##Logging events for your scorecard
+## Logging events for your scorecard
 In order to get experiment results for the events and metrics you care about, you should instrument the experience with the proper event logging (or set up an event integration/data warehouse import to send events to Statsig experimentation stats engine). If you'd like to use our SDKs, your code might look like this:
 
 ```
