@@ -43,8 +43,7 @@ Just a few simple events can help you measure how people are moving through a ce
 ## Testing in a lower environment
 Once experiments are launched, you can't edit the groups without restarting the experiment, as users are already being allocated to each group. We therefore recommend testing each experiment in lower environments before starting. You can do this by clicking "Experiment Checklist" and "Test your Experiment", then selecting an environment and clicking enable. These environments should match your [SDK environment setup](/guides/using-environments/#configuring-environments). Testing in a lower environment, [overrides](/experiments-plus/overrides) can help you manually set your experiment "group" to properly test each variant.
 
-![Export-1730404362916](https://github.com/user-attachments/assets/e3534b10-1b45-412c-a4b3-f13b861376bc)
-
+![Export-1730409584578](https://github.com/user-attachments/assets/1cd30747-68fc-43f6-8dcf-0c0a7977dc52)
 
 ## Starting your experiment
 Once your experiment has metrics, parameters, and a hypothesis - and you've tested it in a lower environment, you're ready to launch! Click the "Start" button and your experiment will be immediately live in Production. 
