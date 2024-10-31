@@ -169,7 +169,7 @@ You need to grant some permissions for Statsig from your AWS console in order fo
       ]
    },
    ```
-2. Give Statsig read-access to your S3 Bucket locations of the tables you need Statsig to read from. Add these to your AWS IAM Role/User's Permissions Policy:
+2. Give Statsig read-access to your S3 Bucket locations of the tables you need Statsig to read from. Add this to your AWS IAM Role/User's Permissions Policy:
    ```
    {
       "Effect": "Allow",
@@ -177,7 +177,8 @@ You need to grant some permissions for Statsig from your AWS console in order fo
       "Resource": "arn:aws:s3:::<S3_BUCKET>/<PATH_TO_YOUR_READONLY_DATA>/*"
    },
    ```
-3. Repeat for any additional tables, or whenever you need to read a new table from Statsig.
+3. Read data in Statsig when setting up Metric/Assignment Sources by selecting from these tables using `"database"."table"` format.
+4. Repeat for any additional tables, or whenever you need to read a new table from Statsig.
 
 ### What IP addresses will Statsig access data warehouses from?
 
