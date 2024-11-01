@@ -563,7 +563,6 @@ const sidebars: SidebarsConfig = {
                 "pulse/faq",
               ],
             },
-            "experiments-plus/reconciling-experiment-results",
             {
               type: "category",
               label: "Landing Page Experiments (deprecated)",
@@ -678,7 +677,6 @@ const sidebars: SidebarsConfig = {
                     "statsig-warehouse-native/connecting-your-warehouse/snowflake",
                     "statsig-warehouse-native/connecting-your-warehouse/databricks",
                     "statsig-warehouse-native/connecting-your-warehouse/redshift",
-                    "statsig-warehouse-native/connecting-your-warehouse/athena",
                   ],
                 },
                 "statsig-warehouse-native/connecting-your-warehouse/forwarded-data",
@@ -710,6 +708,7 @@ const sidebars: SidebarsConfig = {
                     "statsig-warehouse-native/metrics/percentile",
                     "statsig-warehouse-native/metrics/log",
                     "statsig-warehouse-native/metrics/latest-value",
+                    "statsig-warehouse-native/metrics/retention",
                   ],
                 },
                 "statsig-warehouse-native/configuration/dimensional-analysis",
