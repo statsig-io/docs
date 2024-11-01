@@ -1,6 +1,6 @@
 ---
 title: Frequentist Sequential Testing
-sidebar_label: Frequentist Sequential Testing
+sidebar_label: Sequential Testing
 slug: /experiments-plus/sequential-testing
 ---
 
@@ -14,9 +14,13 @@ Peeking, however well-intentioned, will always introduce some amount of selectio
 
 ## What is Frequentist Sequential Testing?
 
-In Sequential Testing, the experimental results for each preliminary analysis window are adjusted to compensate for the increased false positive rate associated with peeking.  The goal is to enable early decision making when there's sufficiently strong observations that outweigh the random fluctuations while limiting the risk of false positives.  While peeking is typically discouraged, regular monitoring of experiments with sequential testing is particularly valuable in some cases.  For example:
-* Unexpected regressions: Sometimes experiments have bugs or unintended consequences that severely impact key metrics.  Sequential testing helps identify these regressions early and distinguishes significant effects from random fluctuations.
-* Opportunity cost: This arises when a significant loss may be incurred by delaying the experiment decision, such as launching a new feature ahead of a major event or fixing a bug.  If sequential testing shows an improvement in the key metrics, an early decision could be made.  But use caution: An early stat-sig result for certain metrics doesn't guarantee sufficient power to detect regressions in other metrics.  Limit this approach to cases where only a small number of metrics are relevant to the decision.    
+In Sequential Testing, the experimental results for each preliminary analysis window are adjusted to compensate for the increased false positive rate associated with peeking.
+
+![image](/img/sequential_testing_example.png)
+
+The goal is to enable early decision making when there's sufficiently strong observations that outweigh the random fluctuations while limiting the risk of false positives.  While peeking is typically discouraged, regular monitoring of experiments with sequential testing is particularly valuable in some cases.  For example:
+- Unexpected regressions: Sometimes experiments have bugs or unintended consequences that severely impact key metrics.  Sequential testing helps identify these regressions early and distinguishes significant effects from random fluctuations.
+- Opportunity cost: This arises when a significant loss may be incurred by delaying the experiment decision, such as launching a new feature ahead of a major event or fixing a bug.  If sequential testing shows an improvement in the key metrics, an early decision could be made.  But use caution: An early stat-sig result for certain metrics doesn't guarantee sufficient power to detect regressions in other metrics.  Limit this approach to cases where only a small number of metrics are relevant to the decision.    
 
 ## Quick Guide: Enabling Sequential Testing Results
 
@@ -40,20 +44,110 @@ Sequential testing is a reliable way to make an early decision, particularly for
 
 ## Statsig's Implementation of Sequential Testing
 
-Statsig uses mSPRT based on the the approach proposed by Zhao et al. in this [paper](https://arxiv.org/pdf/1905.10493.pdf).  The two-sided Sequential Testing confidence interval with significance level  $\alpha$ is given by:
+### Two-Sided Tests
 
-![image](https://github.com/statsig-io/docs/assets/90343952/d50bc6c4-fd72-4ac3-b3d7-e2d802ab6cfa)
+#### Confidence Intervals
 
-Here *V* is the variance of the difference in means, which can be obtained from the sample variance of the test and control group means:
+Statsig uses mSPRT based on the the approach proposed by Zhao et al. in this [paper](https://arxiv.org/pdf/1905.10493.pdf). The two-sided Sequential Testing confidence interval with significance level $\alpha$ is given by:
 
-![image](https://github.com/statsig-io/docs/assets/90343952/cbee704f-75fd-4947-a49a-6e256a76dfae)
+$$\Large
+CI^*(\Delta \overline{X}) = \Delta \overline{X} \pm Z^*_{\alpha/2} \cdot \sqrt{V}
+$$
 
-$\tau$ is the mixing parameter given by:
+where
+- $Z^*_{\alpha/2}$ is the z-critical value, modified for sequential testing:
 
-![image](https://github.com/statsig-io/docs/assets/90343952/24fb4569-925e-4c39-bc2b-233efc7c7008)
+$$\Large
+Z^*_{\alpha/2} = \sqrt{\frac{(V+\tau)}{\tau}\left(-2\ln(\alpha/2)-\ln(\frac{V}{V+\tau})\right)}
+$$
+
+- $V$ is the standard variance of the delta of means when computing [variance](/stats-engine/variance). It can be obtained from the sample variance of the test and control group means:
+
+$$\Large
+V = var(\Delta \overline X)
+= var(\overline X_t) + var(\overline X_c)
+= \frac{var(X_t)}{N_t} + \frac{var(X_c)}{N_c}
+$$
+
+- $\tau$ is the mixing parameter given by:
+
+$$\Large
+\tau
+=(Z_{\alpha/2})^2\cdot\frac{var(X_t)+var(X_c)}{N_t+N_c}
+$$
+
+- $Z_{\alpha/2}$ is the z-critical value used in the non-sequential test, for the desired significance level (1.96 for the standard $\alpha = 0.05$)
 
 We have validated that this parameter satisfies the expected False Positive Rate and provides enough power to detect large effects early.  More details on this analysis are available [here](https://www.statsig.com/blog/sequential-testing-on-statsig).
 
+#### p-Values
 
+It's possible to produce p-values for sequential testing that are consistent with the expanded confidence intervals above by modifying our [p-value methods](/stats-engine/p-value).
 
+We want to evaluate the mSPRT test so that our Type I error remains approximately equal to $\alpha$, and so that the sequential testing p-value is consistent with the expanded confidence interval. (I.e. A CI that includes 0.0% should have p-value ≥ $\alpha$, and one that excludes 0.0% should have p-value < $\alpha$.)
 
+Our observed z-statistic remains unchanged. Instead of evaluating $Z$ on a standard-normal distribution $N(0, 1)$ as we usually do, we evaluate against some other normal distribution $N(0, \sigma^2)$ with mean of zero and standard deviation $\sigma$. For a two-sided test, since we want the probability of an observed $Z$ exceeding $Z^*_{\alpha/2}$ (assuming the null hypothesis to be true) to be limited to $\alpha$, we can find the unknown parameter by solving for $\sigma$:
+
+$$\Large
+\sigma=\frac{Z_{\alpha/2}^*}{\sqrt{2} \cdot erf^{-1}(1-\alpha)}
+$$
+
+where $erf^{-1}$ is the inverse error function.
+
+From here we can compute the two-sided sequential testing p-value as:
+
+$$\Large
+\text{p-value}^* = 2 \cdot \frac{1}{\sqrt{2\pi}} \int \limits _{-\infty}^{-|Z|} \frac{e^{- \frac{t^2}{{2\sigma^2}}}}{\sigma}dt
+$$
+
+where $Z$ is the observed z-statistic as usual.
+
+### One-Sided Tests
+
+We can modify each step for one-sided sequential testing.
+
+$$\Large
+CI^*(\Delta \overline{X}) = \begin{cases}
+\left[\Delta \overline{X} - Z^*_{\alpha} \cdot \sqrt{V}, \quad +\infty \right) & \text{if right-sided test} \\
+\\
+\left(- \infty, \quad \Delta \overline{X} + Z^*_{\alpha} \cdot \sqrt{V} \:\right] & \text{if left-sided test} \\
+\end{cases}
+$$
+
+$$\Large
+\text{p-value}^* = \begin{cases}
+1 - \frac{1}{\sqrt{2\pi}} \int \limits _{-\infty}^{Z} \frac{e^{- \frac{t^2}{{2\sigma^2}}}}{\sigma}dt  \quad \text{if right-sided test} \\
+\\
+\frac{1}{\sqrt{2\pi}} \int \limits _{-\infty}^{Z} \frac{e^{- \frac{t^2}{{2\sigma^2}}}}{\sigma}dt  \quad \text{if left-sided test} \\
+\end{cases}
+$$
+
+where
+- $Z^*_{\alpha}$ is the one-sided test z-critical value, modified for sequential testing:
+
+$$\Large
+Z^*_{\alpha} = \sqrt{\frac{(V+\tau)}{\tau}\left(-2\ln(\alpha)-\ln(\frac{V}{V+\tau})\right)}
+$$
+
+- $V$ is the the same as for two-sided tests.
+
+- $\tau$ is the mixing parameter given by:
+
+$$\Large
+\tau
+=(Z_{\alpha})^2\cdot\frac{var(X_t)+var(X_c)}{N_t+N_c}
+$$
+
+- $Z_{\alpha}$ is the one-sided z-critical value used in the non-sequential test, for the desired significance level (1.645 for the standard $\alpha = 0.05$)
+
+- $\sigma$ is solved via:
+
+$$\Large
+\sigma = \begin{cases}
+\frac{Z_{\alpha}^*}{\sqrt{2} \cdot erf^{-1}(1 - 2 \alpha)} & \text{if right-sided test} \\
+\\
+\frac{- Z_{\alpha}^*}{\sqrt{2} \cdot erf^{-1}(2 \alpha - 1)} & \text{if left-sided test}
+\end{cases}
+$$
+
+- $Z$ is the (signed) observed z-statistic as usual

@@ -4,19 +4,21 @@ sidebar_label: Standard Error
 slug: /stats-engine/variance
 ---
 
-The standard error of the means is required for computing the confidence interval and p-value of a metric delta. It can be obtained by dividing the sample standard deviation of _X_ by the square root of the number of users in the group.
+The standard error (sometimes denoted "SE" or "std err") of the mean of each group is required for computing the confidence interval and p-value of a metric delta between those groups. The standard error of the mean can be obtained by dividing the sample standard deviation of $X$ by the square root of the number of users in the group.
 
-$$
+$$\Large
 \sigma_{\overline X} = \frac{\sigma_{X}}{\sqrt{N}} = \sqrt{\frac{var(X)}{N}}
 $$
 
 Note that standard deviation is the square root of the variance. Since variances are easier to manipulate algebraically, here we derive the variance for each metric type and then take the square root to obtain the confidence intervals.
 
+Pulse displays the standard error of the mean of each group alongside the units and mean of each group.
+
 ## Computing Variance
 
 The variance of the absolute metric delta is simply the sum of the variances of the test and control means:
 
-$$
+$$\Large
 var(\Delta \overline X) =var(\overline X_t - \overline X_c) = var(\overline X_t) + var(\overline X_c)
 $$
 
@@ -26,27 +28,31 @@ In other words, it comes down to correctly calculating the variance of the means
 
 For count and sum metrics, the variance of the sample mean for a given group is obtained directly from the sample variance:
 
-$$
-var(\overline X) = \frac{var(X)}{N} = \frac{\frac{1}{N-1}\sum_{i=0}^{N}(X_i-\overline X)^2}{N}
+$$\Large
+var(\overline{X}) = \frac{var(X)}{N} = \frac{\frac{1}{N-1}\sum_{i=0}^{N}(X_i-\overline{X})^2}{N}
 $$
 
 Where:
 
-- _N_ is the number of users in the group
-- _X<sub>i</sub>_ is the metric value for user _i_
-- _X-bar_ is the user-level average of _X_ for users in that group
+- $N$ is the number of users in the group
+- $X_i$ is the metric value for user $i$
+- $\overline{X}$ is the user-level average of $X$ for users in that group
 
 ### Ratio and Mean Metrics
 
-The variance of ratio and mean metrics depends upon the numerator and denominator variables, which are typically correlated. For example, consider a _clicks per session_ metric. The number of clicks and the number of sessions are two sets of observations coming from the same group of users, so they are not independent from each other. To properly account for this correlation, the variance of the mean of a ratio metric _R_ is obtained using the delta method:
+Some metrics like ratio and mean metrics combines multiple variables $X$ and $Y$ instead of a single variable $X$. The variance of these metrics depends upon both the numerator and denominator variables, which are typically correlated. We'll call the metric of interest $R$ and we can compute the group mean $\overline{R}$ and group variance of the mean $var(\overline{R}$).
 
-$$
+For example, consider a _clicks per session_ metric. The number of clicks and the number of sessions are two sets of observations coming from the same group of users, so they are not independent from each other.
+
+To properly account for any correlation, the variance of the mean of a ratio metric $R$ is obtained using the delta method:
+
+$$\Large
 var(\overline R) = var\left(\frac{\overline X}{\overline Y}\right) 
 = \left(\frac{\overline X}{\overline Y}\right)^2 \cdot \left(\frac{var(\overline X)}{\overline X^2} + \frac{var(\overline Y)}{\overline Y^2} - 2 \cdot \frac{covar(\overline X, \overline Y)}{\overline X\cdot \overline Y} \right)
 $$
 
 where the variance of the numerator and denominator means are computed in the same way as detailed above for count metrics, and the covariance is
 
-$$
+$$\Large
 covar(\overline X, \overline Y) = \frac{covar(X, Y)}{N} = \frac{\frac{1}{N-1}\sum_{i=0}^{N}(X_i-\overline X)\cdot (Y_i-\overline Y)}{N}
 $$
