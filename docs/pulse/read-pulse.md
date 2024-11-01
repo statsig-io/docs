@@ -76,19 +76,21 @@ Cumulative results includes a detailed view on hover, where you can additionally
 
 ### Dimensions
 
-There are two ways in which we can breakdown a given Pulse metric - one is by user dimension, the other is by value dimension.
+There are two ways in which we can breakdown a given Pulse metric - one is by a **User Dimension**, the other is by an **Event Dimension**.
 
 #### User Dimensions
 
-User dimensions refer to user level attributes that are either part of the user object you log, or additional metadata that Statsig extracts. Examples of these attributes are operating system, country, and region.
+User Dimensions refer to user level attributes that are either part of the user object you log, or additional metadata that Statsig extracts. Examples of these user attributes could be operating system, country, and region.
 
 You can create [custom queries](/pulse/custom-queries) to create queries that _filter on_ or _group by_ available user dimensions. For example, you could "See results for users in the US", or "See results for users using iOS, grouped by their country".
 
-#### Value dimensions
+#### Event dimensions
 
-Value Dimensions refer to the set of distinct values logged alongside a given metric. If you want to see Pulse results for a metric further broken down by categories that are specific to that metric, specify the dimension you want to break down by in the **value** or **metadata** attributes when you log the event. For example, when you log a click event on your web or mobile application, you may also log the target category using the **value** attribute as shown below. Pulse will automatically generate results for each category in addition to the top level metric. 
+Events Dimensions refer to the value or metadata logged as part of a custom event that is used to define the metric. If you want to see Pulse results for a metric broken down by categories that are specific to that metric, [specify the dimension](/metrics/metric-dimensions) you want to break down by in the **value** or **metadata** attributes when you log the source event. For example, when you log a "click" event on your web or mobile application, you may also log the target category using the **value** attribute as shown below. Pulse will automatically generate results for each category in addition to the top level metric. 
 
-To see the Pulse result breakdowns for all categories within a metric, click on the (+) sign next to the metric. Read more about configuring metric dimensions [here](/metrics/metric-dimensions). 
+To see the Pulse result breakdowns for all categories within a metric, click on the (+) sign next to the metric.
+
+![!image](/img/dimension_button.png)
 
 ![image](https://user-images.githubusercontent.com/88338316/158864531-be7f4527-6f83-4f9c-9b9d-2de4f34ec77f.png)
 ![image](https://user-images.githubusercontent.com/1315028/134992035-1bfa67f2-73a0-4b88-ac1d-688fa6ef0b33.png)
