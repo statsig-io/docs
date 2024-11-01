@@ -635,7 +635,8 @@
         "SCIM",
         "statsig",
         "Statsig",
-        "stating"
+        "stating",
+        "edgeconfig"
     ],
     "ignorePaths": [
         "node_modules/**",
