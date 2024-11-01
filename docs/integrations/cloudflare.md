@@ -56,12 +56,17 @@ The adapter takes two arguments:
 ```
 const res = await statsig.initialize(
     env.STATSIG_SECRET_KEY,
-    { dataAdapter: dataAdapter },
+    { 
+      dataAdapter: dataAdapter,
+      initStrategyForIDLists: 'none',
+      disableIdListsSync: true
+    },
 );
 ```
 SDK initialization takes two arguments:
 - Your statsig secret key.  This is available from the [Project Settings](https://console.statsig.com/api_keys) page in the Statsig Console.  This is used to authenticate your requests to the statsig backend.  In this example, we've configured it as an environment variable
-- An options object.  We are using the `dataAdapter` property to hook up the Cloudflare KV store to the SDK.
+- An options object.  We are using the `dataAdapter` property to hook up the Cloudflare KV store to the SDK. We're also disabling the ID list sync to speed up initialization
+
 
 ### 3. Checking a Gate
 ```
@@ -78,10 +83,10 @@ This is a gate check in code.  The first parameter is the `StatsigUser` object y
 ### 4. Flushing Events
 
 ```
-ctx.waitUntil(statsig.flush());
+ctx.waitUntil(statsig.flush(1000));
 ```
 
-This flushes all events from the sdk to statsig.  Without this, you wont be able to get diagnostic information in the Statsig Console, nor any event data you logged.
+This flushes all events from the sdk to statsig.  Without this, you wont be able to get diagnostic information in the Statsig Console, nor any event data you logged. We also set a 1s timeout to ensure the flush wont block the response.
 
 ### Putting it all together
 
@@ -94,7 +99,11 @@ export default {
     const dataAdapter = new CloudflareKVDataAdapter(env.STATSIG_KV, 'statsig-YOUR_COMPANY_ID');
     const res = await statsig.initialize(
       env.STATSIG_SECRET_KEY,
-      { dataAdapter: dataAdapter },
+      { 
+        dataAdapter: dataAdapter,
+        initStrategyForIDLists: 'none',
+        disableIdListsSync: true
+    },
     );
 
     const result = statsig.checkGateSync(
@@ -103,7 +112,7 @@ export default {
       },
       "test_cloudflare_sync",
     );
-    ctx.waitUntil(statsig.flush());
+    ctx.waitUntil(statsig.flush(1000));
     return new Response('Hello World! + ' + JSON.stringify(result));
   },
 };
