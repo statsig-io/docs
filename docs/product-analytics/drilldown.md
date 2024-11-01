@@ -104,6 +104,8 @@ Leveraging a Group-By makes it easy to disaggregate plotted metrics and events b
 
 A metric can be grouped-by event properties, user properties, experiment group, or feature gate group. 
 
+Group-By limits can be added by first adding a group-by, clicking the "..." button, and then selecting "Add Group-By Limit". You can use this to further drill down on your top X categories (up to 50). This feature is available for line charts, stacked-line charts, bar charts, and stacked-bar charts.
+
 **Feature Gate  and Experiment Groups**
 
 At Statsig we believe in the power of experimentation. To that end, you can also select one of your Feature Gate or Experiments in order to split out a metric by the different groups in the selected test. 
