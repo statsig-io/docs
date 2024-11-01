@@ -69,6 +69,39 @@ Sidecar comes loaded with an event collection tool that will autocapture various
 #### Disabling Autocapture
 To disable autocapture, simply append the following query string parameter to the Sidecar script URL: `&autostart=0`. 
 
+## Auto Capturing Data Attributes
+
+Data attribute tags will automatically be added to the event metadata object. Note that this is available for `click` events only for now!
+
+The metadata will be in the format of data-(camelCasedAttributeName). For example:
+  
+```html
+<button data-button-attribute="important button attribute">Add to Cart</button>
+<a href="/checkout" data-a-tag-attribute="important a tag attribute">Checkout</a>
+```
+
+Metadata on the events tab will be 
+```
+{
+  "content": "Add to Cart",
+  "data-buttonAttribute": "important button attribute",
+  "page_url": "http://localhost:4200/",
+  "sessionID": "7ccb4e03-3599-443e-8d41-4b89f7168728",
+  "tagName": "button"
+}
+```
+```
+{
+  "content": "Checkout",
+  "data-aTagAttribute": "important a tag attribute",
+  "href": "/checkout",
+  "page_url": "http://localhost:4200/",
+  "sessionID": "7ccb4e03-3599-443e-8d41-4b89f7168728",
+  "tagName": "a"
+}
+```
+
+
 ## Setting User Identity and Attributes
 
 By default, Autocapture uses `stableID` (an auto-generated device-level guid that gets stored in the user's localStorage) for tracking purposes. If you wish to enrich autocapture events with known user identities and attributes, you can define the following object _prior_ to autocapture/sidecar being loaded.
