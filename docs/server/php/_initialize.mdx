@@ -1,10 +1,8 @@
-There is also a parameter `options` that requires you to pass in a storage adapter for storing configurations and event logs. In this below example, we use a local file storage adapter, but you can write your own to plug in Redis or another storage solution. Create an adapter that implements `Statsig\Adapters\IConfigAdapter` if you do not want to use the local file storage adapter.
+There is also a parameter `options` that requires you to pass in a storage adapter for storing configurations and event logs. In this below example, we use a local file storage adapter, but you can write your own to plug in Redis or another storage solution.
 
-:::caution
-#### v3.0+
-You must setup ConfigAdapter and ensure configs are ready before initialize SDK. SDK does not make any network request call to download configs (and IDLists) anymore. 
-Configs fetching should be handled by chron jobs and pre-initialization
-:::
+You should create an adapter that implements `Statsig\Adapters\IConfigAdapter` that hooks up to your caching solution.  By default, we provide a local file solution that can be useful for first time setup but is challenging to work with in production settings.
+
+For help with the interface and implementing an adapter, browse the [adapters directory](https://github.com/statsig-io/php-sdk/tree/main/src/Adapters) in the open source SDK repository.
 
 ```php
 require_once __DIR__ . '/vendor/autoload.php'; // path to installation folder
@@ -20,15 +18,11 @@ $options = new StatsigOptions($config_adapter, $logging_adapter);
 $this->statsig = new StatsigServer("server-sdk-key", $options);
 ```
 
-### 🔥 Warning - You need to schedule a cron job 🔥
+### 🔥 Warning - You need to schedule a job 🔥
 
 :::caution
 #### V3.0+
-If you do not configure a cron job, SDK does not fire a network request to fetch the latest config value anymore, instead, config values fetched earlier will be used.
-#### < V3.0
-If you do not configure a cron job, your request performance may be impacted.
-A check for configuration freshness is made before evaluation (checkGate/getConfig/getExperiment).
-If your configurations are over 1 minute old, a network request will be fired to Statsig to update them.
+If you do not configure a job to update the config values, SDK does not fire a network request to fetch the latest config value anymore, instead, config values fetched earlier will be used.
 :::
 
 See [Cron Jobs](#cron-jobs)

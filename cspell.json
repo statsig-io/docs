@@ -636,7 +636,8 @@
         "statsig",
         "Statsig",
         "stating",
-        "edgeconfig"
+        "edgeconfig",
+        "Laravel"
     ],
     "ignorePaths": [
         "node_modules/**",
