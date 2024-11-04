@@ -547,6 +547,21 @@ const sidebars: SidebarsConfig = {
             },
             "layers/introduction",
             "holdouts/introduction",
+            "ai-ml/ai-prompt-experiment",
+            {
+              type: "category",
+              label: "Autotune (Bandits)",
+              link: {
+                type: "doc",
+                id: "autotune/introduction",
+              },
+              items: [
+                "autotune/contextual-bandit",
+                "autotune/multi-armed-bandit",
+                "autotune/setup",
+                "autotune/monitoring",
+              ],
+            },
             {
               type: "category",
               label: "Pulse",
@@ -613,28 +628,6 @@ const sidebars: SidebarsConfig = {
             "session-replay/install",
             "session-replay/configure",
             "session-replay/watch",
-          ],
-        },
-        {
-          type: "category",
-          label: "AI/ML Optimization",
-          className: "ai-icon sidebar-icon",
-          items: [
-            "ai-ml/ai-prompt-experiment",
-            {
-              type: "category",
-              label: "Autotune (Bandits)",
-              link: {
-                type: "doc",
-                id: "autotune/introduction",
-              },
-              items: [
-                "autotune/contextual-bandit",
-                "autotune/multi-armed-bandit",
-                "autotune/setup",
-                "autotune/monitoring",
-              ],
-            },
           ],
         },
         {
