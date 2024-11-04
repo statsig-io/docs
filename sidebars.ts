@@ -477,6 +477,7 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/disable-group",
                 "experiments-plus/bayesian",
                 "experiments-plus/switchback-tests",
+                "experiments-plus/reconciling-experiment-results",
                 // {
                 //   Experimentation: [
                 //     "experiments-plus/experimentation/why-experiment",
