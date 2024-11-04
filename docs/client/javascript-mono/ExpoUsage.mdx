@@ -43,6 +43,9 @@ export const ExpoSetup = _ExpoSetup;
 import * as _ExpoAdvanced from "./_expoAdvanced.mdx";
 export const ExpoAdvanced = _ExpoAdvanced;
 
+import * as _ExpoDebugging from "./_expoDebugging.mdx";
+export const ExpoDebugging = _ExpoDebugging;
+
 import * as _reactGatesAndConfigs from "./react/_reactGatesAndConfigs.mdx";
 export const ReactGatesAndConfigs = _reactGatesAndConfigs;
 
@@ -58,6 +61,7 @@ export const Builder = SDKDocsBuilder({
     [ExpoSetup, {}],
     [ReactGatesAndConfigs, { packageName: "react-native-expo" }],
     [ExpoAdvanced, {}],
+    [ExpoDebugging, {}],
   ]
 })
 
