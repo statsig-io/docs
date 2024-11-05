@@ -18,6 +18,17 @@ To set up connection with Athena, Statsig needs the following
  - An S3 Query Result Location (can be specified explicitly or as part of an Athena Workgroup)
  - Athena Access Permissions (can be via an AWS Role or an AWS User)
 
+
+## Setup Statsig Staging Structure
+
+1. Create or choose a Glue Database (can be `default`) to specify in the Data Connection settings in the Statsig console. Statsig will use this as a staging Database to create and manage tables.
+2. Create or choose an S3 Bucket to specify in the Data Connection settings.
+3. Choose an S3 Query Result Location folder within this S3 Bucket to specify in the Data Connection settings. This S3 location will act as the Output Location for SELECT queries run in your Athena Warehouse. This Location can be given either:
+   - Explicitly as an S3 location (ex: `s3://my_bucket/my_query_results_folder/`)
+   - OR as part of a setting within an Athena Workgroup
+4. Specify your AWS Organization region in the Data Connection settings. It is expected that all of your AWS resources in Athena/Glue exist under 1 region.
+
+
 ## Grant Permissions to Statsig
 
 You need to grant some permissions for Statsig from your AWS console in order for us to access your Athena data. Statsig requires
@@ -141,13 +152,6 @@ You need to grant some permissions for Statsig from your AWS console in order fo
    }
    ```
 
-## Setup Statsig Staging Structure
-
-1. Create or choose a Glue Database (can be `default`). Statsig will use this as a staging Database to create and manage tables.
-2. Choose an S3 Query Result Location folder. This S3 location will act as the Output Location for SELECT queries run in your Athena Warehouse. This Location can be given either:
-   - Explicitly as an S3 location (ex: `s3://my_bucket/my_query_results_folder/`)
-   - OR as part of a setting within an Athena Workgroup
-3. Specify your AWS Organization region. It is expected that all of your AWS resources in Athena/Glue exist under 1 region.
 
 ## Setup Reading Data from your Events/Exposures Tables
 
@@ -178,6 +182,7 @@ You need to grant some permissions for Statsig from your AWS console in order fo
    ```
 3. Read data in Statsig when setting up Metric/Assignment Sources by selecting from these tables using `"database"."table"` format.
 4. Repeat for any additional tables, or whenever you need to read a new table from Statsig.
+
 
 ## Additional Guides
 
