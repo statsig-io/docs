@@ -23,7 +23,7 @@ When you run Pulse analysis, raw exposures for the experiment you're loading wil
 
 Under the covers, we perform a just-in-time update of exposures in your warehouse when Pulse is loaded, for the first 1 million exposures. After that, the exposures are batched, deduplicated and written to your warehouse once a day.
 
-These fast-forwarded exposures are not deduplicated, and will have some fields (group_name in particular) missing. These fields will be provided in the subsequent daily load.
+These fast-forwarded exposures are not deduplicated, and will have some fields (`user_dimensions` in particular) missing. These fields will be provided in the subsequent daily load.
 
 Each day, a deduplicated digest will be exported to your warehouse to ensure consistency. This will be deduplicated with the above as part of the standard Pulse Pipeline.
 
