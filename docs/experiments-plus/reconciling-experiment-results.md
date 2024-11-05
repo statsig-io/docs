@@ -15,11 +15,11 @@ By going through these in order, data teams evaluating a platform can quickly un
 Based on our observational data, differences in experiment results most often stem from how exposure data is joined with metric data. At the end of this section we will cover a basic check for confirming this isn't occurring.
 
 ### ID Formats
-In some cases, people log IDs in different formats to different places. For example, the binary id `4TLCtqzctSqusYcQljJLJE` maps to the UUID `a0fb4ef0-9d9e-11eb-9462-7bfc2b9a6ff2`, so a company might have the binary ID in their production enviromnment and log that, while their data users work with the equivalnet UUIDs.
+In some cases, people log IDs in different formats to different places. For example, the binary id `4TLCtqzctSqusYcQljJLJE` maps to the UUID `a0fb4ef0-9d9e-11eb-9462-7bfc2b9a6ff2`, so a company might have the binary ID in their production environment and log that, while their data users work with the equivalent UUIDs.
 
 This means that the exposures logged using the binary ID would *not* be able to join with the metric data using the UUID, and results would be empty. As suggested on the 'User Metrics not Calculated' health check, you can check samples for both the metric source in question and the assignment source or diagnostic logstream to confirm that the identifiers are in the same format.
 
-ID Resolution can be used to bridge ID type gaps, but is not intended to solve for this scenario; ID Resolution helps you connect identifiers across logged-out/logged-in sessions, or other scenarios where users will comingle their identifiers because of switching identifiers during the experiment.
+ID Resolution can be used to bridge ID type gaps, but is not intended to solve for this scenario; ID Resolution helps you connect identifiers across logged-out/logged-in sessions, or other scenarios where users will commingle their identifiers because of switching identifiers during the experiment.
 
 ### Timestamps
 It is important to analyze metric data only after a user has been exposed to the experiment. Pre-experiment data should have no average treatment effect, and therefore its inclusion dilutes results. Statsig employs a timestamp-based join for this purpose, with an option for a date-based join for daily data. This should look like the SQL snippet below:
