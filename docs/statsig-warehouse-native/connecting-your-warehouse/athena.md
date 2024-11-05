@@ -21,11 +21,12 @@ To set up connection with Athena, Statsig needs the following
 
 ## Setup Statsig Staging Structure
 
-1. Create or choose a Glue Database (can be `default`) to specify in the Data Connection settings. Statsig will use this as a staging Database to create and manage tables.
-2. Choose an S3 Query Result Location folder to specify in the Data Connection settings. This S3 location will act as the Output Location for SELECT queries run in your Athena Warehouse. This Location can be given either:
+1. Create or choose a Glue Database (can be `default`) to specify in the Data Connection settings in the Statsig console. Statsig will use this as a staging Database to create and manage tables.
+2. Create or choose an S3 Bucket to specify in the Data Connection settings.
+3. Choose an S3 Query Result Location folder to specify in the Data Connection settings. This S3 location will act as the Output Location for SELECT queries run in your Athena Warehouse. This Location can be given either:
    - Explicitly as an S3 location (ex: `s3://my_bucket/my_query_results_folder/`)
    - OR as part of a setting within an Athena Workgroup
-3. Specify your AWS Organization region in the Data Connection settings. It is expected that all of your AWS resources in Athena/Glue exist under 1 region.
+4. Specify your AWS Organization region in the Data Connection settings. It is expected that all of your AWS resources in Athena/Glue exist under 1 region.
 
 
 ## Grant Permissions to Statsig
