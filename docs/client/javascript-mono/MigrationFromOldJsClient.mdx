@@ -251,7 +251,13 @@ StatsigLocalStorage.disabled = false;
 
 The key for the stableID in local storage has changed. It is now a function of the SDK key used to initialize the sdk, which enables multiple instances of the SDK to coexist on a single page and not overlap with cached data.  If you wish to keep the existing stableID, you should access it in local storage from the old key `STATSIG_LOCAL_STORAGE_STABLE_ID`, and set it in `customIDs` to override the stableID.
 
+
+
+
+
+## Cached Values
 The structure of cached values has changed significantly, and there is no supported way to migrate from the old cached values to the new format.  If you wish to prepopulate cached values, we recommend running the new SDK without issuing checks against it for some time before swapping to use it for all checks.
+
 
 
 
