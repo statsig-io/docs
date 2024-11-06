@@ -82,7 +82,7 @@ If you want to duplicate or clone any of your dashboards, open the desired dashb
 
 ### Filtering your Dashboard
 
-You can click on the filters button below the dashboard name to add a global filter to your dashboard. The filter will be applied across all eligible widgets and you can quickly view updated results across all widgets, rather than having to filter each widget individually. You can also write freeform text to apply filters for values that are more generic, such as emails that contain "@gmail.com".
+You can click on the filters button below the dashboard name to add a global filter to your dashboard. The filter will be applied across all eligible widgets and you can quickly view updated results across all widgets, rather than having to filter each widget individually. You can also write free-form text to apply filters for values that are more generic, such as emails that contain "@gmail.com".
 
 ![image](https://github.com/user-attachments/assets/9539d980-c647-4c6e-892d-0d1bb5f7f390)
 
