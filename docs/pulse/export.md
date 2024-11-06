@@ -72,7 +72,7 @@ There are three types of export:
 
 | Column Name                       | Description                                                                                   |
 | --------------------------------- | --------------------------------------------------------------------------------------------- |
-| user_id / stable_id / custom_id | Refers to the unit identifier used in the experiment                                          |
+| unit_id                           | Refers to the unit identifier used in the experiment (eg. user_id, stable_id, org_id)         |
 | name                              | The name of the gate/experiment                                                               |
 | rule                              | For gates, this refers to the rule name                                                       |
 | experiment_group                  | The group the user was assigned to                                                            |
@@ -88,7 +88,7 @@ There are three types of export:
 | Column Name         | Description                                                                                 |
 | ------------------- | ------------------------------------------------------------------------------------------- |
 | pst_ds              | The 24hr window the the data refers to. All dates are anchored from 12:00a -> 11:59p PST.   |
-| user_id / stable_id | Refers to the unit identifier used in the experiment                                        |
+| unit_id             | Refers to the unit identifier used in the experiment (eg. user_id, stable_id, org_id)       |
 | metric_type         | The category of the metric                                                                  |
 | metric_name         | The name of the metric                                                                      |
 | metric_dimension    | The name of the metric dimension. '!statsig_topline' is the overall metric with no slicing. |
