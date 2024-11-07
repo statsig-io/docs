@@ -1,6 +1,6 @@
 ---
-title: Migrating From statsig-js
-sidebar_label: Migrating from statsig-js
+title: Migrating to @statsig/js-client
+sidebar_label: Migrating to @statsig/js-client
 slug: /client/javascript-sdk/migrating-from-statsig-js
 ---
 
@@ -55,7 +55,7 @@ You can read more about StatsigClient initialization [here](/client/javascript-s
 
 
 ### getConfig is now getDynamicConfig
-Make sure you update your `getConfig` callsites to call the new method, `getDynamicConfig`.  In addition, `DynamicConfig` and `Layer` are no longer classes, but javascript objects.  There are still convenience `get` methods, which should remain unchanged.
+Make sure you update your `getConfig` call sites to call the new method, `getDynamicConfig`.  In addition, `DynamicConfig` and `Layer` are no longer classes, but javascript objects.  There are still convenience `get` methods, which should remain unchanged.
 
 ```js
 // old
@@ -68,7 +68,7 @@ statsigClient.getDynamicConfig('config_name');
 
 
 ### Bootstrapping
-If you are using a server SDK to bootstrap your js/react app, you will need to make some updates to how your server SDK generates values.  One of the optimizations we made with this new js-client SDK was to remove the `sha256` library for hashing gate/experiment names.  Instead, we use a `djb2` hash.  By default, all server SDKs generate `sha256` hashes of gate/experiment names in the `getClientInitializeResponse` method.  You will need to set the hash algorithm parameter to that method call to `"djb2"` instead in order to bootstrap this new client SDK.  One of the benefits to this hashing algorithm is it will make the entire payload smaller as well, so its a net win on package size, speed, and payload size for the SDK.
+If you are using a server SDK to bootstrap your js/react app, you will need to make some updates to how your server SDK generates values.  One of the optimizations we made with this new js-client SDK was to remove the `sha256` library for hashing gate/experiment names.  Instead, we use a `djb2` hash.  By default, all server SDKs generate `sha256` hashes of gate/experiment names in the `getClientInitializeResponse` method.  You will need to set the hash algorithm parameter to that method call to `"djb2"` instead in order to bootstrap this new client SDK.  One of the benefits to this hashing algorithm is it will make the entire payload smaller as well, so its a net win on package size, speed, and payload size for the SDK.  This does not change any of the bucketing logic, only the obfuscation method used for the payload.
 
 For example, if you are bootstrapping from a nodejs app, you will need to do:
 
@@ -201,7 +201,7 @@ https://github.com/statsig-io/js-client-monorepo/blob/0e7201635f71e77633de04c4c1
 
 ## GDPR
 
-In certain use cases, it is necessary to suspend cache and network usage until the user grants specific 
+In certain use cases (consent management), it is necessary to suspend cache and network usage until the user grants specific 
 permissions. Previously, the method for achieving this was somewhat fragmented. 
 In the new SDK, these functionalities have been consolidated for improved coherence and ease of implementation.
 
@@ -244,8 +244,23 @@ StatsigLocalStorage.disabled = false;
 </Tabs>
 
 
-## getStableID
-`statsig.getStableID()` no longer exists. You can get the stableID like this: `myStatsigClient.getAsyncContext().then((x) => x.stableID)`
+
+
+## stableID and getStableID
+`statsig.getStableID()` no longer exists. You can get the stableID like this: `myStatsigClient.getContext().stableID`
+
+The key for the stableID in local storage has changed. It is now a function of the SDK key used to initialize the sdk, which enables multiple instances of the SDK to coexist on a single page and not overlap with cached data.  If you wish to keep the existing stableID, you should access it in local storage from the old key `STATSIG_LOCAL_STORAGE_STABLE_ID`, and set it in `customIDs` to override the stableID.
+
+
+
+
+
+## Cached Values
+The structure of cached values has changed significantly, and there is no supported way to migrate from the old cached values to the new format.  If you wish to pre-populate cached values, we recommend running the new SDK without issuing checks against it for some time before swapping to use it for all checks.
+
+
+
+
 
 ## Legacy StatsigOptions
 The options to parameterize initialization of the SDK have changed.  In some cases, the underlying features were removed or moved and can be enabled/disabled in a different way. In other scenarios, there is a new API for managing them.  The following is a mapping of old options to their equivalents in the new sdk.
@@ -254,7 +269,7 @@ The options to parameterize initialization of the SDK have changed.  In some cas
 > This feature does not exist in the new Javascript SDK, so there is no option to disable it.
 
 #### disableAutoMetricsLogging
-> Moved to optional package [`@statsig/web-anayltics`](#https://www.npmjs.com/package/@statsig/web-analytics)
+> Moved to optional package [`@statsig/web-analytics`](https://www.npmjs.com/package/@statsig/web-analytics)
 
 #### disableAllLogging
 > This is now referred to as `StatsigOptions.disableLogging`
@@ -284,7 +299,7 @@ The options to parameterize initialization of the SDK have changed.  In some cas
 > This is now referred to as `StatsigOptions.networkConfig.api`
 
 #### overrideStableID
-> StableID is now just part of `StatsigUser.customIDs`. This brings it inline with Statsig server 
+> stableID is now just part of `StatsigUser.customIDs`. This brings it inline with Statsig server 
 SDKs and helps avoid mis-configuration between client and server
 
 #### initTimeoutMs
@@ -304,6 +319,12 @@ SDKs and helps avoid mis-configuration between client and server
 
 #### initCompletionCallback
 > Replaced by the usage of [StatsigClientEventEmitter](/client/javascript-sdk#client-event-emitter)
+
+```js
+statsigClient.on('values_updated', function(evt) {
+  if(evt.status && evt.status === 'Ready') { /* client has initialized */ } 
+});    
+```
 
 #### updateUserCompletionCallback
 > Replaced by the usage of [StatsigClientEventEmitter](/client/javascript-sdk#client-event-emitter)

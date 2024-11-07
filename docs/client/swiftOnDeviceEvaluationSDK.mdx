@@ -1,5 +1,5 @@
 ---
-sidebar_label: Swift
+sidebar_label: Swift / Objective C
 title: Swift On Device Evaluation
 ---
 
@@ -32,9 +32,14 @@ import MoreFAQs from "./SwiftOnDeviceEval/_faqs.mdx";
 import Options from "./SwiftOnDeviceEval/_options.mdx";
 import ShutdownSnippet from "./SwiftOnDeviceEval/_shutdown.mdx";
 
-<>
-  <SDKDocsBuilder
-    sections={[
+import * as _LocalOverrides from "./SwiftOnDeviceEval/_localOverrides.mdx";
+export const LocalOverrides = _LocalOverrides;
+
+import * as PostInitSyncing from "./SwiftOnDeviceEval/_postInitSyncing.mdx";
+import * as GlobalUser from "./SwiftOnDeviceEval/_globalUser.mdx";
+
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -75,9 +80,16 @@ import ShutdownSnippet from "./SwiftOnDeviceEval/_shutdown.mdx";
       },
     ],
     [StatsigUser, { excludeMentionToDirectUpdateUser: true, isOnDeviceEval: true, snippet: <CreateStatsigUser /> }],
+    [GlobalUser, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [PostInitSyncing, {}],
+    [LocalOverrides, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

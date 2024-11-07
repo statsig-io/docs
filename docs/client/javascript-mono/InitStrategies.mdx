@@ -2,6 +2,8 @@
 title: Initialization Strategies
 sidebar_label: Initialization Strategies
 slug: /client/javascript-sdk/init-strategies
+displayed_sidebar: cloud
+# cspell:disable
 ---
 
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
@@ -14,10 +16,13 @@ import {
 import * as _InitStrats from "./_InitStrategies.mdx";
 export const InitStrats = _InitStrats;
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [InitStrats, {}]
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

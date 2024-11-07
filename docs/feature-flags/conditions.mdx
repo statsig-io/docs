@@ -33,7 +33,7 @@ All of the following conditions work on both client and server SDKs.  Client SDK
 In addition, if you do not automatically set an IP or User Agent (UA), the client SDK will infer these attributes from the request IP and UA. Similarly, on mobile, the client SDK will automatically pass your app version and locale to the server so conditions using these attributes can be evaluated without having to set them explicitly.
 
 ### Stability
-Evaluations at a given percentage are *stable* with respect to the unitID.  For example, if the gate/config/experiment/layer has a unit type of "userID", and userID = 4 passes a condition at a 50% rollout, they will always pass at that 50% rollout. The same applies for `customIDs`, if the unit type of the entity is that `customID`. Want to reset that stability? See [Resalting](https://docs.statsig.com/feature-flags/conditions#resalting).
+Evaluations at a given percentage are *stable* with respect to the unitID.  For example, if the gate/config/experiment/layer has a unit type of "userID", and userID = 4 passes a condition at a 50% rollout, they will always pass at that 50% rollout. The same applies for `customIDs`, if the unit type of the entity is that `customID`. Want to reset that stability? See [Resalting](/feature-flags/conditions#resalting).
 
 ### Resalting
 Gate evaluations are stable for a given gate, percentage rollout, and user ID.  This is made possible by the salt associated with a feature gate. If you want to reset a gate, triggering a reshuffle of users, you can "resalt" a gate from the dropdown menu in the top right of the feature gate details page.
@@ -221,7 +221,7 @@ Usage: Specify the key in the custom object to fetch the value use on the left h
 Supported Operators:
 - string: `any of, none of, contains any of, contains none of`
 - number: `any of, none of, less than, greater than`
-- version: ``any of, none of, less than, greater than, less than or equal to, greater than or equal to`
+- version: `any of, none of, less than, greater than, less than or equal to, greater than or equal to`
 - date: `before, after`
 
 Example: Only show a feature to user's who have turned on dark mode, as marked by the custom object having "darkmode": true.
@@ -240,15 +240,15 @@ Example: Add yourself (or a small group like your team) when you just start buil
 
 ### Time
 
-Usage: Evaluate a gate relative to the current time (in PST for client SDKs, or your server time for server SDKs)
+Usage: Evaluate a gate relative to the current time
 
-Supported Operators: `after time, before time, on date`
+Supported Operators: `after time, before time`
 
-Value: unix timestamp.  Some server SDKs support additional formats - see the full list on the [server user]/server/concepts/user#time-based-conditions) documentation.
+Value: time (displayed and input on Console in your browser's local time, but converted to a unix timestamp for evaluation)
 
-Example: Show the black friday sale banner on black friday
+Example: Show the labor day sale banner on labor day
 
-![Time example](https://user-images.githubusercontent.com/74584483/137403991-a2a2fe50-c912-42fc-bc11-6aa1eb5097c2.png)
+![Time example](https://github.com/user-attachments/assets/65097c87-c2c4-440a-920f-b029b9f104f2)
 
 ### Private Attributes
 Usage: Any user field conditions, or custom field conditions, can be used via a private attribute.  If you are targeting an email, but don't want it to be logged, 

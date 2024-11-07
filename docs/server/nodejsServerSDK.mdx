@@ -48,9 +48,8 @@ import MultiInstanceExample from "./node/_multiInstanceExample.mdx";
 import PersistentStorageInterface from "./node/_persistentStorageInterface.mdx";
 import PersistentStorageExample from "./node/_persistentStorageExample.mdx";
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -92,17 +91,22 @@ import PersistentStorageExample from "./node/_persistentStorageExample.mdx";
       { addedInVersion: "4.8.0", snippet: <OverridesSnippet /> },
     ],
     [ManualExposures, { addedInVersion: "5.0.0", ...ManualExposureSnippets }],
-    [EnvironmentSpecific, {cloudflare: <CloudflareSetup />}],
+    [EnvironmentSpecific, { cloudflare: <CloudflareSetup /> }],
     [
       UserPersistentStorage,
       { interface: <PersistentStorageInterface />, example: <PersistentStorageExample /> },
     ],
     [Instances, { constructor: <MultiInstanceExample /> }],
-    [ProxyConfigs, {addedInVersion: "5.21.1-beta.2z", installation: <InstallBeta />, code: 
-      <ForwardProxyExample />
+    [ProxyConfigs, {
+      addedInVersion: "5.21.1-beta.2z", installation: <InstallBeta />, code:
+        <ForwardProxyExample />
     }],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <RefSnippets.default /> }],
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

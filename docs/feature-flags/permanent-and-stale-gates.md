@@ -10,7 +10,7 @@ Usually referred to online as _feature flags_, the Statsig UI and SDKs call them
 
 :::
 
-It is important for your codebase and team to bring feature gates to a final state (i.e. flags now permanently part of your codebase or completely removed) when they have served their purpose, as described [here](https://docs.statsig.com/feature-flags/feature-flags-lifecycle). On Statsig, you can use feature gate **Types** to easily keep track of your flags that might be ready to brought to their final state.
+It is important for your codebase and team to bring feature gates to a final state (i.e. flags now permanently part of your codebase or completely removed) when they have served their purpose, as described [here](/feature-flags/feature-flags-lifecycle). On Statsig, you can use feature gate **Types** to easily keep track of your flags that might be ready to brought to their final state.
 
 ## Types
 
@@ -32,10 +32,11 @@ In your feature gates catalog, you'll see different **Types** displayed in the S
   - You will be able to change the gate back to **Temporary** at any point.
     - All newly created feature gates are marked as **Temporary**, unless marked otherwise (i.e. Permanent). Therefore, Statsig will not display the phrase **Temporary** in the feature gates Catalog or within the individual gates page.
 - **Stale Gates** (set by Statsig)
-  - **Stale feature gates** indicate to your team that these gates could be a good candidate for cleanup. Statsig automatically marks gates as stale based on the following definition (excludes Permanent and newly created gates) -
-    - 0 checks within last 30 days OR
-    - no modifications within the last 30 days
-    - gate rolled out to 100% or 0%
+  - **Stale feature gates** indicate to your team that these gates could be a good candidate for cleanup. Statsig automatically marks gates as stale based on the following definition (excludes Permanent and archived gates)
+    - Gates created less than 30 days ago, modified in the last 30 days, or referenced by other gates/experiments/dynamic configs are never consider stale
+    - Otherwise, any of the following conditions make a gate stale:
+      - The gate has had 0 checks within last 30 days
+      - The gate is still being checked but its earliest check was at least 30 days ago
   - Implications of gates being marked as **Stale**
     - No change in the gate’s behavior when called
     - Easy filtering on Feature Gates catalog

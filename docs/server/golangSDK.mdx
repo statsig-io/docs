@@ -43,9 +43,8 @@ import PersistentStorageExample from "./go/_persistentStorageExample.mdx";
 import * as ReferenceSnippets from "./go/_reference.mdx";
 import MultiInstanceExample from "./go/_multiInstanceExample.mdx";
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -91,6 +90,10 @@ import MultiInstanceExample from "./go/_multiInstanceExample.mdx";
     [Instances, { constructor: <MultiInstanceExample /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

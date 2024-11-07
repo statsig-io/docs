@@ -1,5 +1,5 @@
 ---
-sidebar_label: C++
+sidebar_label: C++ Server
 title: C++ Server SDK
 ---
 
@@ -31,9 +31,8 @@ import ShutdownSnippet from "./cpp/_shutdown.mdx";
 import OverridesSnippet from "./cpp/_localOverrides.mdx";
 import * as ReferenceSnippets from "./cpp/_reference.mdx";
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -69,6 +68,10 @@ import * as ReferenceSnippets from "./cpp/_reference.mdx";
       },
     ],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

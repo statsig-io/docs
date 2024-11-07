@@ -1,10 +1,22 @@
 import Gap from "./_Gap.mdx";
 import React from "react";
-export const HOOK__SDKDocUpdate = "<SDK_DOC_UPDATE_HOOK>";
-import TOCCollapsible from '@theme/TOCCollapsible';
 
-export const SDKDocsBuilder = ({ sections }) => {
+import SDKDocTOCHeader, {
+  SDKDocTOCHeaderAsString,
+} from "@site/src/components/SDKDocTOCHeader";
+
+export const HOOK__SDKDocUpdate = "<SDK_DOC_UPDATE_HOOK>";
+
+export const SDKDocsBuilder = (props) => {
+  const sections = props.sections;
   const toc = [];
+
+  toc.push({
+    value: `<div id="sdk-toc-header" x-last-updated="${props.lastSDKDocsUpdate}"><div style="min-height: 65px; cursor: default; padding: 10px 20px; background-color: var(--ifm-navbar-background-color); border-radius: 10px; font-size: 12px; margin-bottom: 15px; color: var(--ifm-color-content);">...</div></div>`,
+    id: "0",
+    level: 2,
+  });
+
   const result = sections.map(([Section, props], index) => {
     const tocFilters = Section.tocFilter;
     const addToc = Section.toc.filter((entry) => tocFilters?.includes(entry.id) !== true);
@@ -14,9 +26,9 @@ export const SDKDocsBuilder = ({ sections }) => {
       <Gap />
     </React.Fragment>
   });
-  
-  return [
-    <TOCCollapsible toc={toc} />,
-    ...result
-  ];
+
+  return {
+    result: [<SDKDocTOCHeader key="header" />, ...result],
+    toc
+  }
 };

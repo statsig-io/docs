@@ -1,67 +1,20 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-Note since the `@statsig/expo-bindings` works in conjuction with `@statsig/react-bindings` and `@statsig/js-client`, 
-documentation on those packages is also relevant for Expo implementations:
-
-- [@statsig/js-client documentation](/client/javascript-sdk)
-- [@statsig/react-bindings documentation](/client/javascript-sdk)
 
 ## Installation
 
-Statsig uses a multi-package strategy, so you will need to install both the Statsig client and the Expo
-specific bindings.
-
-<Tabs
-  defaultValue="npm"
-  groupId="js-install-choice"
-  values={[
-    {label: 'NPM', value: 'npm'},
-    {label: 'Yarn', value: 'yarn'},
-  ]}>
-
-  <TabItem value="npm">
+To use Statsig in Expo, you will need to install the Statsig Expo specific bindings.
 
 ```shell
-npm install @statsig/js-client @statsig/expo-bindings
+npx expo install @statsig/expo-bindings
 ```
 
-  </TabItem>
-  <TabItem value="yarn">
+
+### Peer Dependencies
+
+The `@statsig/expo-bindings` package has peer dependencies which may also need to be installed if they are not already in your project.
 
 ```shell
-yarn add @statsig/js-client @statsig/expo-bindings
+npx expo install expo-device expo-application @react-native-async-storage/async-storage
 ```
-
-  </TabItem>
-</Tabs>
-
-
-
-### Peer Dependecies
-
-The `@statsig/expo-bindings` package has peer dependencies which will also need to be installed.
-
-<Tabs
-  defaultValue="npm"
-  groupId="js-install-choice"
-  values={[
-    {label: 'NPM', value: 'npm'},
-    {label: 'Yarn', value: 'yarn'},
-  ]}>
-
-  <TabItem value="npm">
-
-```shell
-npm install expo-device expo-application
-```
-
-  </TabItem>
-  <TabItem value="yarn">
-
-```shell
-yarn add expo-device expo-application
-```
-
-  </TabItem>
-</Tabs>

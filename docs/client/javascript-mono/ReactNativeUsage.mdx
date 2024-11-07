@@ -1,10 +1,12 @@
 ---
 title: Statsig in React Native
-sidebar_label: React Native Support
+sidebar_label: React Native
 slug: /client/javascript-sdk/react-native
 ---
 
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+import { FeaturePillList } from '@site/src/components/FeaturePillList';
 
 import {
   SDKDocsBuilder,
@@ -38,9 +40,14 @@ export const ReactNativeInstall = _ReactNativeInstall;
 import * as _ReactNativeSetup from "./_reactNativeSetup.mdx";
 export const ReactNativeSetup = _ReactNativeSetup;
 
-<>
-  <SDKDocsBuilder
-    sections={[
+import * as _ReactNativeAdvanced from "./_reactNativeAdvanced.mdx";
+export const ReactNativeAdvanced = _ReactNativeAdvanced;
+
+import * as _reactGatesAndConfigs from "./react/_reactGatesAndConfigs.mdx";
+export const ReactGatesAndConfigs = _reactGatesAndConfigs;
+
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -49,6 +56,22 @@ export const ReactNativeSetup = _ReactNativeSetup;
     ],
     [ReactNativeInstall, {}],
     [ReactNativeSetup, {}],
-  ]}
-  />
-</>
+    [ReactGatesAndConfigs, { packageName: "react-native" }],
+    [ReactNativeAdvanced, {}],
+  ]
+})
+
+export const toc = Builder.toc
+
+<FeaturePillList
+    features={[
+      { name: "Feature Gates", link: "#basics-check-gate" },
+      { name: "Experiments", link: "#basics-get-experiment" },
+      { name: "Dynamic Configs", link: "#basics-get-config" },
+      { name: "Layers", link: "#basics-get-layer" },
+      { name: "Event Logging", link: "#basics-log-event" },
+    ]
+  }
+/>
+<>{Builder.result}</>
+

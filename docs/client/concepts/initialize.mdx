@@ -20,7 +20,7 @@ If asynchronous initialization is not an option for your performance requirement
 The client SDK still needs to know the gate and experiment values for the given user at initialization time, but you can use a server SDK to generate those values, so when your first network roundtrip completes, you can initialize the statsig SDK synchronously rather than waiting for a network round trip to Statsig servers.
 The server SDK will take in a user object and use its local evaluation to generate the same response that the `/initialize` network call would generate.
 
-This integration requires a client sdk and a server SDK, so it is a bit more setup, but it will give you the most performant way to integrate Statsig in your website. We currently only support this on the `statsig-js` or `statsig-react` sdks, but let us know in slack if you have another use case.
+This integration requires a client sdk and a server SDK, so it is a bit more setup, but it will give you the most performant way to integrate Statsig in your website. We currently only support this on the web (js, react) and mobile (react native, expo, android, ios) SDKs.
 
 ### Schema of /initialize response
 ```typescript

@@ -6,23 +6,40 @@ slug: /metrics/pulse
 
 # Pulse Metrics
 
-Statsig computes experiment results, also known as Statsig's **Pulse** results, depending on the metric type. Most metrics are aggregated across all users in the group. Some ratio type metrics are only aggregated across participating users (users that have non-null value for that metric).
+Experiments with Statsig use **Pulse** to compute and communicate results. The metric type is important in computing and interpreting the final result.
+
+Most metric types are aggregated across all users in the group; however, some metric types that use ratios are only aggregated across participating users (users that have non-null value for that metric). We'll walk through the various types of metrics available in experiments and how to interpret their pulse results.
 
 ## Pulse Statistics by Metric Type
 
-| Metric Type                           | Total Calculation                                                        | Mean                                                                                                                                                                    | Units               |
+
+| Metric Type                           | Total                                                                    | Mean                                                                                                                                                                    | Units               |
 | ------------------------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| event_count                           | Sum of events (99.9% winsorization)                                      | Average events per user (99.9% winsorization)                                                                                                                           | All users           |
+| event_count                           | Sum of events (99.9% winsorization applied)                              | Average events per user (99.9% winsorization applied)                                                                                                                   | All users           |
 | event_dau                             | Sum of event DAU (distinct user-day pairs)                               | Average event_dau value per user per day. Note that we call this "Event Participation Rate" as this can be interpreted as the probability a user is DAU for that event. | All users           |
-| ratio                                 | Overall ratio: sum(numerator values)/sum(denominator values)             | Overall ratio                                                                                                                                                           | Participating users |
 | sum                                   | Total sum of values (99.9% winsorization)                                | Average value per user (99.9% winsorization)                                                                                                                            | All users           |
 | mean                                  | Overall mean value                                                       | Overall mean value                                                                                                                                                      | Participating users |
+| event_user                            | Count of distinct users that have had the event.                         | Average metric value per user per day. Depending on Rollup Mode, can be a one-time event or daily participation rate.                                           | All users           |
+| ratio                                 | Not shown                                                                | Overall ratio: sum(numerator values)/sum(denominator values)                                                                                                            | Participating users |
+| funnel                                | Not shown                                                                | Overall ratio: sum(numerator values)/sum(denominator values)                                                                                                            | Participating users |
 | user: dau, wau, mau_28day             | Not shown                                                                | Average metric value per user per day. The probability that a user is xAU                                                                                               | All users           |
 | user: new_dau, new_wau, new_mau_28day | Count of distinct users that are new xAU at some point in the experiment | Fraction of users that are new xAU                                                                                                                                      | All users           |
 | user: retention metrics               | Overall average retention rate                                           | Overall average retention rate                                                                                                                                          | Participating users |
 | user: L7, L14, L28                    | Not shown                                                                | Average L-ness value per user per day                                                                                                                                   | All users           |
 
+**Some example metric breakdowns in Pulse:**
+
+![pulse 1](https://github.com/user-attachments/assets/aa7e1063-6473-4e4e-9ca4-7074f5a0c450)
+
+![pulse 2](https://github.com/user-attachments/assets/7b0b1d99-c720-480e-8671-f5f696485500)
+
 ## Event Count and Event DAU in Pulse
+
+:::important event_dau Legacy Support
+
+event_dau metrics are now in legacy support only and are no longer created for new events. Existing event_dau metrics will continue to be available for any of your new experiments and will continue to be computed daily. For all new events, you should create an event_user metric to measure daily active users.
+
+:::
 
 From [Metrics 101](/metrics/metrics-from-events),
 
@@ -49,7 +66,7 @@ To measure the change in engagement for a call to action link or button, use eve
 
 :::info Event Count and Event DAU in Custom Metrics
 
-When creating a custom ratio metric, use event_count to include all events (counting all events triggered by the same user). Use event_dau to count unique active users on a given day (all events triggered by the same user are counted as one).
+When creating a custom ratio metric, use event_count to include all events (counting all events triggered by the same user). Use event_user (or event_dau, if available) to count unique active users on a given day (all events triggered by the same user are counted as one).
 
 :::
 

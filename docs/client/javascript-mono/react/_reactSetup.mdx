@@ -1,0 +1,77 @@
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+
+## Setup
+
+In your `App.js` file, import `StatsigProvider` and wrap your app's content within it.  Replace the `sdkKey` with your Client API key, which you can find in the ["API Keys" tab on the Statsig console](https://console.statsig.com/api_keys).
+
+```tsx
+import { StatsigProvider } from "@statsig/react-bindings";
+
+function App() {
+  return (
+    <StatsigProvider sdkKey="client-KEY">
+      <div>Hello world</div>
+    </StatsigProvider>
+  );
+}
+
+export default App;
+```
+
+### Adding a user object
+
+At this point, if you run your app, you will get a type error related to the `user` prop. To fix this, you can add the user object that sets user properties like so:
+
+```tsx
+import { StatsigProvider } from "@statsig/react-bindings";
+
+function App() {
+  return (
+    <StatsigProvider 
+      sdkKey="client-KEY" 
+      user={{ userID: "1234", email: "example@statsig.com" }}>
+        <div>Hello world</div>
+    </StatsigProvider>
+  );
+}
+
+export default App;
+```
+
+### A typical React app
+
+A typical React application will enclose top-level child/children, which means the `StatsigProvider` will usually wrap a `MainPage` or `RootPage` like this:
+
+```js
+// App.js
+import RootPage from "./RootPage";
+import { StatsigProvider } from "@statsig/react-bindings";
+
+function App() {
+  return (
+    <StatsigProvider sdkKey="client-KEY" user={{ userID: "1234" }}>
+      <RootPage />
+    </StatsigProvider>
+  );
+}
+
+export default App;
+```
+
+```js
+// RootPage.js
+function RootPage() {
+  return (
+    <div>Hello World</div>
+  );
+}
+
+export default RootPage;
+```
+
+
+:::info
+**Advanced:** There are a few different ways to initialize the StatsigClient, with trade-offs between latency and up-to-date values.
+You can read [Initialization Strategies](/client/javascript-sdk/init-strategies) to learn more.
+:::

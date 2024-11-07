@@ -1,6 +1,6 @@
 ---
-title: Introduction
-sidebar_label: Introduction
+title: Introduction to Layers
+sidebar_label: Layers
 slug: /layers
 ---
 
@@ -8,18 +8,18 @@ slug: /layers
 
 Layers (a.k.a. Universes) allow us to create experiments that are mutually exclusive to each other. Each layer has a logical representation of all your users and can have experiments created "within" this layer. Users that are in one experiment of a layer, cannot also be in another experiment in the same layer.
 
-![image](https://github.com/statsig-io/docs/assets/146870406/8e555dd1-093f-4500-baee-2ec2ad93ba5e)
+![image](https://github.com/user-attachments/assets/7320a5ba-7a8f-482f-9366-cb3bf041c8eb)
 
 You can add experiments to a layer (or create a layer) during experiment creation.
 ![image](https://github.com/user-attachments/assets/94948291-bc41-4ae7-a57a-e2f635737571)
 
 Once you create a layer, you'll be able to manage them on the layer management tab under Experiments.
-![image](https://user-images.githubusercontent.com/31516123/177894503-0118879e-790f-4368-978a-36a4fe90a427.png)
-![image](https://user-images.githubusercontent.com/31516123/177894553-118c7de5-40b7-4e95-a4b3-d59b3b727347.png)
+![Layers Tab](https://github.com/user-attachments/assets/85a0ac12-b5f7-47b0-a8f2-4ebf29f31bc9)
+![Layer details](https://github.com/user-attachments/assets/b96e1519-bc70-4ca4-9f69-51db255bc0e9)
 
 In addition to that, **Layers are key to improving engineering efficiency and iteration velocity** for product teams. In a Layer, parameters exist at the Layer level, and can be shared across experiments within the Layer. Due to this characteristic, we can abstract the concept of "Experiment" away from the SDKs so that users only need to deal with parameters in code, which makes it super easy to run multiple experiments that change the same thing and iterate on the same experiment without any code changes.
 
-Let's say your product has an important sign up dialog, which contains some text that your team runs a lot of tests on, some of which were ran in parallel, and some were iterations of previous experiments. If you work with Experiments directly, your code will look like this over time:
+Let's say your product has an important signup dialog, which contains some text that your team runs a lot of tests on, some of which were run in parallel, and some were iterations of previous experiments. If you work with Experiments directly, your code will look like this over time:
 
 ```jsx
 let signUpText = DEFAULT_SIGNUP_TEXT;
@@ -72,7 +72,3 @@ When calling `getLayer(LayerName<string>)` you won't see any exposure logged, ho
 - If the user is assigned to an experiment within the Layer, the `statsig::layer_exposure` exposure event is billable.
 - If the user is not assigned an experiment within the Layer, the `statsig::layer_exposure` exposure event is not billable.
   > You will see multiple exposure events logged for each parameters accessed, but these are de-duped on Statsig servers.
-
-## See it in Action
-
-To learn about all that you can do with Layers with an E2E example, see the Statsig tutorial [on Layers in JS](/layers/js-tutorial).

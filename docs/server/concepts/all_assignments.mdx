@@ -9,9 +9,15 @@ Our SDKs are designed to be invoked in your code at the point where you're servi
 For this reason, we recommend leveraging the standard approach of calling `getExperiment`, `checkGate`, or `getLayer` supplying the user object and the key as needed to determine what to serve. 
 :::
 
-Often times, customers have the desire to capture all assignments (experiment, gates) in a single call on the server for a each user at the start of their session.
-This practice is commonly done as a means to pass assignment information to the client-side a single time, in order to inform the client app of the test groups and features it should apply.
+Often times, customers have the desire to capture all assignments (experiment, gates) in a single call in an edge function or on the server for a each user at the start of their session. This practice is commonly done as a means to pass assignment information to other applications, or to use assignment information as cache-keys for the CDN + edge compute use-case. 
 
-For this use-case, we recommend using the `getClientInitializeResponse` server sdk method to generate the full assignments payload. Note that this method is designed to [bootstrap](/client/concepts/bootstrapping) the client SDKs, and as such, will hash the experiment and feature keys returned in the payload, obfuscating their names to mitigate the possibility of end-users spoofing into features &amp; gates.
+For this use-case, we recommend using the `getClientInitializeResponse` server sdk method to generate the full assignments payload. 
 
+#### Example of capturing all assignments in Node
+
+Note that this method is designed to [bootstrap](/client/concepts/bootstrapping) the client SDKs, and as such, will hash the experiment and feature keys returned in the payload, obfuscating their names to mitigate the possibility of end-users spoofing into features &amp; gates. You can now provide an optional `hash` parameter, allowing you to disable hashing and capture all group names and values in plain text — [Node](https://github.com/statsig-io/node-js-server-sdk/blob/ea116142221c1aa83b46eff8b5f2292c8f8e2d54/src/StatsigServer.ts#L597), [Python](https://github.com/statsig-io/node-js-server-sdk/blob/ea116142221c1aa83b46eff8b5f2292c8f8e2d54/src/StatsigServer.ts#L597), [Java](https://github.com/statsig-io/java-server-sdk/blob/7443c357c78616142de9257af9e4c55c877ca700/src/main/kotlin/com/statsig/sdk/StatsigServer.kt#L83), [Go](https://github.com/statsig-io/go-sdk/blob/3d7edcbe468efb0fc7a04b0d10202243403dce5f/client.go#L282). 
+
+```node
+const assignments = statsig.getClientInitializeResponse(userObj, "client-key", {hash: "none"});
+```
 

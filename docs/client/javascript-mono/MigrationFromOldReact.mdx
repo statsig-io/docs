@@ -1,6 +1,6 @@
 ---
-title: Migrating From statsig-react
-sidebar_label: Migrating from statsig-react/rn
+title: Migrating to @statsig/react-bindings
+sidebar_label: Migrating to @statsig/react-bindings
 slug: /client/javascript-sdk/migrating-from-statsig-react
 ---
 
@@ -85,7 +85,7 @@ Read the [Initialization Strategies](/client/javascript-sdk/init-strategies) gui
 ### Bootstrapping the StatsigClient
 If you are using a Statsig Server SDK to bootstrap the Statsig Client used by your React app, you may need to make some updates to how your server SDK generates values.
 One of the optimizations we made with the `@statsig/js-client` SDK was to remove the `sha256` library for hashing gate/experiment names. 
-Instead, we use a `djb2` hash. 
+Instead, we use a `djb2` hash. This does not change any of the bucketing logic, only the obfuscation method used for the payload.
 
 By default, all server SDKs generate `sha256` hashes of gate/experiment names in the `getClientInitializeResponse` method.
 You will need to set the hash algorithm parameter to that method call to `"djb2"` instead in order to bootstrap this new client SDK. 

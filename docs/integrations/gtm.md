@@ -14,6 +14,19 @@ _(statsig log stream showing GTM events flowing in)_
 ### Step 1: Broadcast Statsig client readiness to GTM
 The tracking code within GTM will need to know when the Statsig client is ready to use for tracking. To do so, you'll need to broadcast a window-level event and pass the statsig instance for the GTM tag code to use. In your initialize call, implement the `initCompletionCallback` callback as follows:
 
+#### Using @statsig/js-client
+```js
+window.statsig = new Statsig.StatsigClient('<CLIENT-SDK-KEY>', {/* USER */}, {/* OPTIONS */});
+statsig.on('values_updated', function(evt) { // bind before init is called
+  if(evt.status && evt.status === 'Ready') {
+    window.dispatchEvent(new CustomEvent("statsig:ready", {
+      detail: { statsig: statsig }
+    }));        
+  }
+});
+await statsig.initializeAsync();
+```
+#### Using statsig-js
 ```js
 await statsig.initialize('<CLIENT-SDK-KEY>', '<USER-OBJECT>', {
   initCompletionCallback: function (duration, success, message) {
@@ -47,7 +60,9 @@ After saving the tag, and publishing your updated GTM tag, tracking will be done
 To debug the integration, you can set a local storage entry `debug_ss_gtm` with any value on your webpage. Now, you'll console log statements for each tracking call being dispatched to Statsig. You can also inspect your browser's network traffic to see events being tracked.
 
 ### GTM Code
-
+:::info
+The code below assumes that the statsig client lives at `window.statsig`
+:::
 ```html
 <script type="text/javascript">
 /* dataLayer helper */
@@ -72,9 +87,9 @@ window.StatsigLogger = (function () {
     if (typeof message === 'object' && typeof message.event === 'string') {
       var metadata = {};
       for (var prop in message) {
-        if (prop.includes('gtm.') && !!message[prop] && (typeof message[prop] === 'number' || typeof message[prop] === 'boolean' || typeof message[prop] === 'string')) {
-          metadata[prop] = message[prop];
-        }
+          if(!(message[prop] instanceof HTMLElement) && typeof(message[prop]) !== 'object') {
+            metadata[prop] = message[prop];
+          }
       }
       log('++ handleGTMMessage', message.event, message.conversionValue || null, metadata);
       statsigInstance.logEvent(message.event, message.conversionValue || null, metadata);
@@ -95,11 +110,13 @@ window.StatsigLogger = (function () {
 
   var clientReady = false;
   try {
-    clientReady = statsig.getClientX().ready;
+    // The code below assumes that the statsig client lives at `window.statsig`
+    clientReady = (statsig && statsig.getClientX && statsig.getClientX().ready) || statsig.loadingStatus === 'Ready';
   } catch(err) { }
   
   if(clientReady) {
     // if client is already initialized, proceed
+    statsigInstance = statsig;
     init('pre-GTM');
   }
   else {

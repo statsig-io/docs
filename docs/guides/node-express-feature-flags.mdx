@@ -1,11 +1,11 @@
 ---
-sidebar_label: Feature Flags in NodeJS ExpressJS
+sidebar_label: ExpressJS Feature Flags
 title: Feature Flags in NodeJS ExpressJS
 ---
 
 ExpressJS, renowned for its efficiency and minimalist design, is a cornerstone framework for NodeJS developers. This guide focuses on integrating feature flags in NodeJS ExpressJS applications using Statsig's NodeJS Server SDK. Discover how to enhance your ExpressJS app with feature flags for flexible and dynamic user experiences.
 
-For this tutorial, let's integrate our [NodeJS Server SDK](https://docs.statsig.com/server/nodejsServerSDK) into a simple expressJS app and check a feature gate to determine if the end-user should see a new feature. 
+For this tutorial, let's integrate our [NodeJS Server SDK](/server/nodejsServerSDK) into a simple expressJS app and check a feature gate to determine if the end-user should see a new feature. 
 
 :::tip
 [ExpressJS + Statsig Sample App source code here](https://github.com/statsig-io/samples/tree/node-express/node-express#node-express-statsig-demo-app). 
@@ -16,7 +16,7 @@ The readme within details the steps on installing the app and its dependencies, 
 ## Create Feature Gate in Statsig for NodeJS ExpressJS Applications
 The below command can be run to automatically create the simple `express_app_bg` gate in Statsig that gets used throughout this integration guide and demo app.
 
-The gate randomizes based on `userID` and has a 50/50 allocation. Make sure to replace the authorization key in the header with your key generated in Statsig project settings as documented [here](https://docs.statsig.com/console-api/introduction).
+The gate randomizes based on `userID` and has a 50/50 allocation. Make sure to replace the authorization key in the header with your key generated in Statsig project settings as documented [here](/console-api/introduction).
 ```bash
 curl --request POST 'https://statsigapi.net/console/v1/gates' \
 --header 'STATSIG-API-KEY: console-REPLACE_WITH_YOURS' \

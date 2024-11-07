@@ -6,15 +6,27 @@ slug: /stats-engine/metric-deltas
 
 ## Computing Metric Deltas
 
-A metric delta refers to the difference in metric values between the test and control groups.  This is usually the impact we care about when looking at experiment results.  To account for the different number of users (or units) that constitute each group, we compare the mean metric value per user, not the total.  
+A metric delta refers to the difference in metric values between two groups, by default the test and control groups.  This is usually the impact we care about when looking at experiment results.  To account for the different number of users (or units) that constitute each group, we compare the mean metric value per user, not the total.  
 
-Two different metric deltas are available in Pulse.  The **absolute delta** is simply the difference between the two means:
+:::note Selecting Groups
+We define all deltas here to be the difference between a "treatment" group as compared to a presumably unchanged "control" group. However, Statsig enables comparison between any two groups as desired.
+:::
 
-$\Delta \bar{X}=\overline{X_t}-\overline{X_c}$
+Two different metric deltas are available in Pulse.  The **absolute delta** is simply the difference between the two means:  
+
+$$\Large
+\Delta \overline{X}=\overline{X}_t-\overline{X}_c
+$$
 
 It's often helpful to understand the impact relative to the baseline value of the metric. For example, an absolute delta of +1 clicks/user has different meanings with a baseline value of 1 (+100% increase) vs. a baseline value of 100 (+1% increase).  The **relative delta** is computed using the mean of the control group as the baseline:
 
-$\Delta \bar{X} \%=\frac{\bar{X}_t-\bar{X}_c}{\bar{X}_c} \times 100 \%$
+$$\Large
+\Delta \overline{X} \%=\frac{\overline{X}_t-\overline{X}_c}{\overline{X}_c} \times 100 \%
+$$
+
+:::important Reversing Group Order
+If you reverse the order of group comparison in Pulse to be "control" vs "treatment", then all deltas will be reversed and the direction of change will be inverted.
+:::
 
 ## Computing Means
 
@@ -24,40 +36,70 @@ Properly computing the groups means is critical for obtained meaningful metric d
 
 These metrics represent totals: Number of times an event occurs, sum of time spent, total purchase amount, etc.  The mean is the average user-level total during the time period of the analysis.
 
-The mean value of the metric *X* is given by:  
+The mean value of the metric $X$ for a group is given by:  
 
-$\bar{X}=\frac{1}{N} \sum_{i=0}^N \sum_{d=0}^{n_i} X_{i, d}$
+$$\Large
+\overline{X}=\frac{1}{N} \sum_{i=0}^N \sum_{d=0}^{n_i} X_{i, d}
+$$
 
-where 
-* *N* is the number of users in the group 
-* *n<sub>i</sub>* is the number of days during the analysis period that user *i* was the experiment
-* *X<sub>i,d</sub>* is the metric value for user *i* on day *d*  
+where:
+- $N$ is the number of users in the group
+- $n_i$ is the number of days during the analysis period that user $i$ was the experiment
+- $X_{i,d}$ is the metric value for user $i$ on day $d$  
 
 Note that only user metrics recorded after a user has been exposed to the experiment are included in the group mean.
 
-###  Event DAU and User Accounting Metrics
+###  User Accounting and Event User Metrics (and legacy Event DAU)
 
-Event DAU metrics capture the number of distinct users that have the event each day.  In Pulse results, they are normalized by the number of days the user has been in the experiment.  This represents the probability that a user is daily active for that event, i.e. the daily participation rate.  In the terms defined above, the event DAU group mean is given by:
+Event User metrics set to "Daily Participation Rate" capture the number of distinct users that have the event each day.  In Pulse results, they are normalized by the number of days the user has been in the experiment.  This represents the probability that a user is daily active for that event, i.e. the daily participation rate.  In the terms defined above, the group mean is given by:
 
-$\bar{X}=\frac{1}{N} \sum_{i=0}^N \frac{1}{n_i} \sum_{d=0}^{n_i} X_{i, d}$
+$$\Large
+\overline{X}=\frac{1}{N} \sum_{i=0}^N \frac{1}{n_i} \sum_{d=0}^{n_i} X_{i, d}
+$$
+
+where:
+
+- $X_{i,d}$ takes value 0 or 1 depending on if user $i$ has the event on a given day $d$.
 
 The following user accounting metrics are computed in the same may: *DAU, WAU, MAU_28day, L7, L14, L28*
 
 For new user accounting (*new_DAU, new_WAU, new_MAU_28day*) we count users that are new xAU at some point during the analysis window.  So the group mean is given by:
 
-$\bar{X}=\frac{1}{N} \sum_{i=0}^N \max \left(X_i\right)$
+$$\Large
+\overline{X}=\frac{1}{N} \sum_{i=0}^N \max \left(X_i\right)
+$$
 
-Where *max(X<sub>i</sub>)* is the maximum value of the new xAU metric for user *i*.
+Where $\max(X_i)$ is the maximum value of the new xAU metric for user $i$.
+
+:::important event_dau Legacy Support
+
+**event_dau** metrics are now in legacy support only and are no longer created for new events. Existing event_dau metrics will continue to be available for any of your new experiments and will continue to be computed daily. For all new events, you should create an event_user metric to measure daily active users.
+
+:::
 
 ### Custom Ratios, Means, Retention and Stickiness Metrics
 
-These are metrics such as click through rate, average purchase value, sessions per user, etc. They're obtained by diving a numerator value, *X*, by a denominator value, *Y*.  The mean value of a ratio metric *R* for an experiment group is given by:
+These are metrics such as click through rate, average purchase value, sessions per user, etc. They're obtained by diving a numerator value, $X$, by a denominator value, $Y$.  The mean value of a ratio metric $R$ for an experiment group is given by:
 
-$\bar{R}=\frac{\frac{1}{N} \sum_{i=0}^N \sum_{d=0}^{n_i} X_{i, d}}{\frac{1}{N} \sum_{i=0}^N \sum_{d=0}^{n_i} Y_{i, d}}=\frac{\bar{X}}{\bar{Y}}$
+$$\Large
+\overline{R}=\frac{\frac{1}{N} \sum_{i=0}^N \sum_{d=0}^{n_i} X_{i, d}}{\frac{1}{N} \sum_{i=0}^N \sum_{d=0}^{n_i} Y_{i, d}}=\frac{\overline{X}}{\overline{Y}}
+$$
 
-Where *N* is the number of users in the experiment group that participate in the metric, i.e. have a non-zero denominator value. *X<sub>i,d</sub>* and  *Y<sub>i,d</sub>* are the *X* and *Y* values for user *i* on day *d*. 
+Where $N$ is the number of users in the experiment group that participate in the metric, i.e. have a non-zero denominator value. $X_{i,d}$ and $Y_{i,d}$ are the $X$ and $Y$ values for user $i$ on day $d$. 
 
 Different approaches exist for dealing with ratio metrics in experiments.  This implementation was selected because it's statistically sound as well as interpretable, given that:  
-* *R* is the ratio of two means of independent observations: A set of user-level *X* values and a set of user-level *Y* values.  This means the central limit theorem can be used to separately obtain the summary statistics of *X* and *Y*.          
-* The group means are computed in the same way as the topline metric value, making it easier to interpret the means and relate them to the topline metric.
+- $R$ is the ratio of two means of independent observations: A set of user-level $X$ values and a set of user-level $Y$ values.  This means the central limit theorem can be used to separately obtain the summary statistics of $X$ and $Y$.          
+- The group means are computed in the same way as the topline metric value, making it easier to interpret the means and relate them to the topline metric.
 
+### Event User One-Time Event
+
+For custom **event_user** metrics with "One-Time Event" selected, statsig computes how many users have the event at any time after the user has been in the experiment. This result is not normalized by the number of days a user is in the experiment. The group mean is given by:
+
+$$\Large
+\overline{X}=\frac{1}{N} \sum_{i=0}^N X_{i}
+$$
+
+where:
+
+- $N$ is the number of users in the group
+- $X_{i}$ takes value 0 or 1 depending on if user $i$ has the event at any point after entering the experiment 

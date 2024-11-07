@@ -1,9 +1,9 @@
 ---
-sidebar_label: How to set up Feature Flags in Python with Flask
+sidebar_label: Flask Feature Flags
 title: How to set up Feature Flags in Python with Flask
 ---
 
-Discover how easy and efficient it is to implement feature flags in your Flask applications. Flask, Python's lightweight web framework, is an excellent choice for developers looking to integrate feature flags into their projects. This guide walks you through the process using the [Python Server SDK](https://docs.statsig.com/server/pythonSDK), demonstrating how Statsig's tools can enhance your Flask projects.
+Discover how easy and efficient it is to implement feature flags in your Flask applications. Flask, Python's lightweight web framework, is an excellent choice for developers looking to integrate feature flags into their projects. This guide walks you through the process using the [Python Server SDK](/server/pythonSDK), demonstrating how Statsig's tools can enhance your Flask projects.
 
 Flask's lightweight nature means that we don't have to treat our usage of Statsig much differently than you would with any Python project.
 
@@ -21,7 +21,7 @@ touch app.py
 
 app.py is the file we'll write all of our code in.
 
-Next, we should install the Flask and Statsig Python packages if you haven't already. Note: Statsig requires you to use Python 3, for more information take a look at our [Python SDK page.](https://docs.statsig.com/server/pythonSDK)
+Next, we should install the Flask and Statsig Python packages if you haven't already. Note: Statsig requires you to use Python 3, for more information take a look at our [Python SDK page.](/server/pythonSDK)
 
 ```
 pip3 install Statsig, Flask
@@ -106,13 +106,13 @@ But if you head back to your rule and change it to 100% fail, then wait a moment
 
 ![image](/img/everyone0_gate.png)
 
-It's important to note that changes with a Server SDK won't be instantaneous; see the architecture diagram on our [Server SDK Introduction Page](https://docs.statsig.com/server/introduction) for more.
+It's important to note that changes with a Server SDK won't be instantaneous; see the architecture diagram on our [Server SDK Introduction Page](/server/introduction) for more.
 
 ## Step 4: Implementing Feature Flags in Flask with Statsig
 
 The true power of feature flags becomes apparent when you can rollout features to specific user group (enabling dogfooding, insider groups, or [canary testing](https://www.statsig.com/glossary/canary-testing)) and even more powerful—measuring the impact that it has on their experience and business metrics.
 
-This is what Statsig calls ["Metric Lifts"](https://docs.statsig.com/feature-flags/view-exposures) in our famous [pulse view](https://docs.statsig.com/pulse/read-pulse).
+This is what Statsig calls ["Metric Lifts"](/feature-flags/view-exposures) in our famous [pulse view](/pulse/read-pulse).
 
 One of the fundamental concepts that enables this is adding user identifiers to your feature flag checks (or "gate checks"). In the previous example, we added a placeholder user_id of 12345 to the user. A more interesting example is to include an email for the user, then set our rule to only allow certain emails to access the feature. See below:
 
@@ -135,6 +135,6 @@ Now, we've added an email field to our user - which we can pass in in a query pa
 
 Now, when we refresh the URL above, we should have access! But if we change the email to not include @statsig.com by even one character, we will no longer have access. This is the fundamental concept of access management, and it unlocks so many more possibilities!
 
-A great next step is to consider implementing [log events](https://docs.statsig.com/guides/logging-events) in your project to measure the impact on users who are exposed and not exposed to a feature. 
+A great next step is to consider implementing [log events](/guides/logging-events) in your project to measure the impact on users who are exposed and not exposed to a feature. 
 
 Thanks for reading this tutorial! If you have trouble or any other questions, please join our [Slack Group](https://statsig.com/slack).

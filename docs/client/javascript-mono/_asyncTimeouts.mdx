@@ -14,3 +14,5 @@ For the Statsig client calls that hit the network (initializeAsync and updateUse
 
 If this timeout is hit, the promise will resolve and cached values will be used (If any are available). 
 The network request will continue and upon a response, will write values to cache so the will be available for subsequent calls.
+
+If you'd like to avoid a network request entirely, see [initialization strategies](/client/javascript-sdk/init-strategies) for more options.

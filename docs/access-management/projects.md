@@ -3,7 +3,7 @@ sidebar_label: Projects
 title: Project Access Management
 ---
 :::info 
-Note- This guide applies only to our on-demand customers. If you are an organization who has set up SSO, this guide will not apply to you. Please see our [SSO Guides](https://docs.statsig.com/access-management/sso/overview) for more information about how to manage access permissions through SSO. 
+Note- This guide applies only to our on-demand customers. If you are an organization who has set up SSO, this guide will not apply to you. Please see our [SSO Guides](/access-management/sso/overview) for more information about how to manage access permissions through SSO. 
 
 :::
 
@@ -17,8 +17,8 @@ The different Project Roles available are:
 |-----------|-------------|
 | Read-Only | Users with this role only have access to read data on the Project. This includes reading gate and dynamic config configurations, experiment data, and metrics. Any actions users with these roles take that attempt to edit the configuration for the Project will fail. |
 | Member | Users with this role are able read data for a Project and are able to edit configurations within the Project. This includes being able to create and modify: Feature Gates, Dynamic Configs, Holdouts, Experiments+, etc. |
-| Admin | Users with this role have the same access as `Members` but are additionally able to modify Project Access settings. This includes inviting new users to the Project and changing Roles for existing users of the Project. |
-| Owner | Only the user that has created a project is given the Role of `Owner`. The Owner of a Project have the same access as `Admins` but are additionally able to delete the Project and configure automatic invitations for the Project. If you need to change the Owner of a project, the current owner can change it by going to Settings -> Project Members & Invites -> select the person and edit role to be Owner. |
+| Admin | Users with this role have the same access as `Member` but are additionally able to modify Project Access settings. This includes inviting new users to the Project and changing Roles for existing users of the Project. |
+| Owner | Only the user that has created a project is given the Role of `Owner`. The Owner of a Project has the same access as `Admin` but is additionally able to delete the Project and configure automatic invitations for the Project. If you need to change the Owner of a project, the current owner can change it by going to Settings -> Project Members & Invites -> select the person and edit role to be Owner. |
 
 ## Custom Roles
 Enterprise customers can customize roles used to assign permissions in Statsig. You can create new roles beyond Admin, Member and Read-Only and choose what permissions these roles have. Common use cases include creating a Metrics Admin role or a Warehouse Admin role (for Statsig Warehouse Native).

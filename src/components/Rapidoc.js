@@ -1,169 +1,115 @@
-import React, { useEffect } from "react";
-
-import { useColorMode } from "@docusaurus/theme-common";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
-import Models from "../../docs/console-api/models/index";
+import { useColorMode } from "@docusaurus/theme-common";
+import { useEffect } from "react";
 
-const supportedEntities = [
-  "gates",
-  "events",
-  "segments",
-  "dynamic-configs",
-  "experiments",
-  "holdouts",
-  "layers",
-  "autotunes",
-  "users",
-  "metrics",
-  "audit-logs",
-  "exposure-count",
-  "reports",
-  "usage-billing",
-  "target-apps",
-  "ingestions",
-  "tags",
-  "keys",
-];
+// Map entities to their corresponding OpenAPI tags
+const entityToTagMap = {
+  gates: "Gates",
+  events: "Events",
+  segments: "Segments",
+  "dynamic-configs": "Dynamic Configs",
+  experiments: ["Experiments", "Experiments (Warehouse Native)"],
+  holdouts: "Holdouts",
+  layers: "Layers",
+  autotunes: "Autotunes",
+  users: "Users",
+  metrics: ["Metrics", "Metrics (Warehouse Native)"],
+  "audit-logs": "Audit Logs",
+  "exposure-count": "Configs",
+  reports: "Reports",
+  "usage-billing": "Usage",
+  "target-apps": "Target App",
+  ingestions: "Ingestions",
+  tags: "Tags",
+  keys: "Keys",
+};
 
-function updateCodeSnippets(data, entity) {
-  let snippet;
-  try {
-    snippet = require(
-      `../../docs/console-api/openapi/snippets/x-code-samples/${entity}`,
-    );
-  } catch (e) {
-    return data;
-  }
-  for (let path in snippet) {
-    for (let command in snippet[path]) {
-      data["paths"][path][command]["x-code-samples"] = snippet[path][command];
-    }
-  }
-  return data;
-}
+function filterPathsByTag(spec, tags) {
+  const filteredPaths = {};
+  Object.keys(spec.paths).forEach((pathKey) => {
+    const pathItem = spec.paths[pathKey];
+    const methods = Object.keys(pathItem);
 
-function loadAllEndpoints() {
-  let allEndpoints = require("../../docs/console-api/openapi/all-endpoints");
-
-  for (const entity of supportedEntities) {
-    const entityData = require(`../../docs/console-api/openapi/${entity}`);
-
-    // Add endpoints
-    for (const idx in entityData["paths"]) {
-      allEndpoints["paths"][idx] = entityData["paths"][idx];
-    }
-
-    // Add components ie 'requestBodies', 'schemas', etc...
-    for (const component in entityData["components"]) {
-      if (component === "securitySchemes") {
-        continue;
-      }
-
-      if (allEndpoints["components"][component] === undefined) {
-        allEndpoints["components"][component] = {};
-      }
-
-      for (const scheme in entityData["components"][component]) {
-        allEndpoints["components"][component][scheme] =
-          entityData["components"][component][scheme];
-      }
-    }
-  }
-  return allEndpoints;
-}
-
-function loadReferences(spec) {
-  for (const key in spec) {
-    if (!Object.hasOwnProperty.call(spec, key)) {
-      continue;
-    }
-
-    let value = spec[key];
-    if (value?.["$ref"] && typeof value["$ref"] === "string") {
-      const filename = value["$ref"].split("/").pop();
-      if (filename.endsWith(".json")) {
-        const name = filename.split(".").shift();
-        const model = Models[name];
-        if (model) {
-          spec[key] = model;
+    methods.forEach((method) => {
+      if (tags.some((tag) => pathItem[method]?.tags?.includes(tag))) {
+        if (!filteredPaths[pathKey]) {
+          filteredPaths[pathKey] = {};
         }
+        filteredPaths[pathKey][method] = pathItem[method];
       }
-    }
+    });
+  });
 
-    value = spec[key];
-    if (!!value && typeof value === "object") {
-      loadReferences(value);
-    }
-  }
+  return {
+    ...spec,
+    paths: filteredPaths,
+  };
 }
 
 export default function Rapidoc(props) {
   const { id, entity } = props;
-
   const isDarkTheme = useColorMode().colorMode === "dark";
 
   useEffect(() => {
-    setTimeout(() => {
-      var data;
-      const rapidoc = document.getElementById(id);
+    const rapidoc = document.getElementById(id);
 
-      switch (entity) {
-        case "all-endpoints-generated":
-          rapidoc.loadSpec("https://docs.statsig.com/openapi");
-          return;
-        case "all-endpoints":
-          data = loadAllEndpoints();
-          break;
-        default:
-          data = require(`../../docs/console-api/openapi/${entity}`);
-      }
+    if (entity === "all-endpoints-generated") {
+      rapidoc.loadSpec("https://api.statsig.com/openapi");
+      return;
+    }
 
-      data = updateCodeSnippets(data, entity);
+    // Get the corresponding OpenAPI tag for the entity
+    const tag = entityToTagMap[entity];
 
-      loadReferences(data);
+    // Fetch and filter the spec by tag
+    fetch("https://api.statsig.com/openapi")
+      .then((response) => response.json())
+      .then((data) => {
+        if (tag) {
+          // Filter paths by tag
+          const filteredData = filterPathsByTag(
+            data,
+            Array.isArray(tag) ? tag : [tag]
+          );
+          rapidoc.loadSpec(filteredData);
+        } else {
+          // If tag is not found, load the full spec
+          rapidoc.loadSpec(data);
+        }
+      });
+  }, [entity]);
 
-      rapidoc.loadSpec(data);
-    }, 30);
-  }, []);
-
-  let descripion = (
+  let description = (
     <div>
-      <Alert severity="warning" className="warning">
-        <AlertTitle>
-          For latest changes please refer to <a href="/console-api/all-endpoints-generated">OpenAPI Specification</a>
-        </AlertTitle>
-        We are working on updating this page to autogenerate from our OpenAPI spec.
-      </Alert>
       <h2>Description</h2>
       {getDescription(entity)}
       <h2>Authorization</h2>
       <p>
-        All requests must include the <code>STATSIG-API-KEY</code> field in
-        the header. The value should be a Console API Key which can be created
-        in <code>'Project Settings' {">"} 'API Keys' tab</code>. <br />
+        All requests must include the <code>STATSIG-API-KEY</code> field in the
+        header. The value should be a Console API Key which can be created in{" "}
+        <code>'Project Settings' {">"} 'API Keys' tab</code>. <br />
         To use the 'try it' section on this page, enter your Console API into
         the box below.
       </p>
       <hr />
-
     </div>
   );
-  if(entity === "all-endpoints-generated") {
-    descripion = (
+
+  if (entity === "all-endpoints-generated") {
+    description = (
       <div>
         <h2>Authorization</h2>
         <p>
           All requests must include the <code>STATSIG-API-KEY</code> field in
           the header. The value should be a Console API Key which can be created
-          in <code>Project Settings {">"} API Keys tab</code>. 
-          <br />
+          in <code>Project Settings {">"} API Keys tab</code>. <br />
           To use the 'Try' function on this page, enter your Console API into
           the box below.
         </p>
       </div>
     );
-  } 
+  }
 
   return (
     <rapi-doc
@@ -173,14 +119,16 @@ export default function Rapidoc(props) {
       bg-color={isDarkTheme ? "#1b1b1d" : "#ffffff"}
       style={{ height: "100%" }}
       allow-search={false}
-      render-style="view" // Controls how to api gets rendered
+      render-style="view"
       layout="column"
-      allow-try={true} // Enable ability for users to run commands
+      sort-tags={true}
+      sort-schemas={true}
+      allow-try={true}
       allow-server-selection={false}
-      show-info={false} // Disable the info section
-      server-url="https://statsigapi.net/console/v1" // Default server url
-      show-header={false} // Disable user changing api spec file
-      allow-authentication={true} // Enable user passing STATSIG-API-KEY at top of file
+      show-info={false}
+      server-url="https://statsigapi.net/console/v1"
+      show-header={false}
+      allow-authentication={true}
       regular-font={[
         "-apple-system",
         "BlinkMacSystemFont",
@@ -191,7 +139,7 @@ export default function Rapidoc(props) {
         "sans-serif",
       ]}
     >
-      {descripion}
+      {description}
       <Alert severity="warning" slot="auth">
         You will be directly modifying the project connected to the api-key
         provided. We suggest creating a temporary project when testing our API
@@ -199,10 +147,10 @@ export default function Rapidoc(props) {
       </Alert>
       <Alert severity="info" className="warning" slot="auth">
         <AlertTitle>
-          Pagination parameters required from August 1st 2024
+          Pagination parameters required from August 1st, 2024
         </AlertTitle>
-        List requests without page and limit parameter will default to{" "}
-        <code>page=1&limit=100</code>
+        List requests without page and limit parameters will default to{" "}
+        <code>page=1&limit=100</code>.
       </Alert>
     </rapi-doc>
   );
@@ -232,7 +180,7 @@ function getDescription(entity) {
       return (
         <>
           <p>
-            A feature <a href="../feature-flags/working-with">gate</a> is a
+            A <a href="../feature-flags/working-with">feature gate</a> is a
             mechanism for teams to configure what system behavior is visible to
             users without changing application code. This page describes how
             gates can be created and modified through the Console API.
@@ -240,8 +188,8 @@ function getDescription(entity) {
           <p>
             For more detail on creating user targeting based on Statsig-derived
             environment attributes such as location, client device, browser
-            type, and client app version, see the Console API{" "}
-            <a href="./rules#rule">Rules</a> page where all conditions are
+            type, and client app version, see the {" "}
+            <a href="./rules#rule">Console APIRules</a> page where all conditions are
             listed.
           </p>
         </>

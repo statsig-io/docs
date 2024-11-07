@@ -1,5 +1,5 @@
 ---
-title: Access Management
+title: Overview
 slug: /access-management/introduction
 ---
 
@@ -10,3 +10,23 @@ We have simple settings like automatically adding new users with the same email 
 To get started, learn more about Statsig's [organization](/access-management/organizations) and [project](/access-management/projects) abstractions.
 
 Then, if you're looking for SSO, read our [SSO docs](/access-management/sso/overview).
+
+----
+## SSO vs SCIM
+In many enterprise environments, SSO and SCIM are used together to enhance both security and usability.
+- SSO handles the authentication aspect, allowing users to log in once to access multiple applications.
+- SCIM ensures that user accounts and permissions are consistently managed across those applications.
+
+### Example Scenario:
+- Onboarding a New Employee:
+    - SCIM: Automatically provisions the employee’s user accounts in all necessary applications based on their role.
+    - SSO: Allows the employee to access all these applications with a single set of login credentials.
+- Offboarding an Employee:
+    - SCIM: Automatically deactivates or deletes user accounts, removing access.
+    - SSO: No longer authenticates the user since their credentials are disabled.
+
+### Summary:
+- SSO focuses on simplifying the user login experience by centralizing authentication across multiple applications.
+- SCIM focuses on automating the management of user identities and attributes across different systems.
+
+By using both SSO and SCIM, organizations can achieve a more secure, efficient, and user-friendly approach to identity and access management.

@@ -1,6 +1,6 @@
 ---
-sidebar_label: New JavaScript (Beta)
-title: New JavaScript Client SDK (Beta)
+sidebar_label: JavaScript
+title: JavaScript Client SDK
 ---
 
 import {
@@ -17,6 +17,7 @@ import {
   StatsigOptions,
   Shutdown,
   CodeExamples,
+  ManualExposures,
 } from "./Templates/index.mdx";
 
 import OnDeviceEvalProsAndCons from "./Templates/_OnDeviceEvalProsAndCons.mdx";
@@ -40,11 +41,11 @@ import LogEvent from "./js-device-eval-mono/_logEvent.mdx";
 import MoreFAQs from "./js-device-eval-mono/_faqs.mdx";
 import Options from "./js-device-eval-mono/_options.mdx";
 import ShutdownSnippet from "./js-device-eval-mono/_shutdown.mdx";
+import { Snippets as ManualExposureSnippets } from "./js-device-eval-mono/_manualExposures.mdx";
 
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -86,9 +87,14 @@ import ShutdownSnippet from "./js-device-eval-mono/_shutdown.mdx";
     [StatsigUser, {}],
     [ClientEventEmitting, {}],
     [StatsigOptions, { options: <Options /> }],
+    [ManualExposures, { ...ManualExposureSnippets }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [DataAdapter, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

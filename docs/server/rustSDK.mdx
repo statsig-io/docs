@@ -34,38 +34,41 @@ import ShutdownSnippet from "./rust/_shutdown.mdx";
 import * as ReferenceSnippets from "./rust/_reference.mdx";
 
 
-<>
-  <SDKDocsBuilder
-    sections={[
-      [
-        Repository,
-        {
-          repo: "https://github.com/statsig-io/rust-sdk",
-        },
-      ],
-      [
-        GettingStarted,
-        {
-          sdkType: "Rust",
-          install: <Install />,
-          initialize: <Initialize />,
-        },
-      ],
-      [
-        WorkingWith,
-        {
-          checkGate: <CheckGate />,
-          getConfig: <GetConfig />,
-          getExperiment: <GetExperiment />,
-          logEvent: <LogEvent />,
-          hideAsyncDisclaimer: true,
-        },
-      ],
-      [StatsigUser, {}],
-      [StatsigOptions, { options: <Options /> }],
-      [Shutdown, { shutdown: <ShutdownSnippet /> }],
-      [FAQ, { faqs: <MoreFAQs /> }],
-      [Reference, { snippets: <ReferenceSnippets.default /> }],
-    ]}
-  />
-</>
+export const Builder = SDKDocsBuilder({
+  sections: [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/rust-sdk",
+      },
+    ],
+    [
+      GettingStarted,
+      {
+        sdkType: "Rust",
+        install: <Install />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+        hideAsyncDisclaimer: true,
+      },
+    ],
+    [StatsigUser, {}],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [FAQ, { faqs: <MoreFAQs /> }],
+    [Reference, { snippets: <ReferenceSnippets.default /> }],
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

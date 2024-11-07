@@ -1,5 +1,5 @@
 ---
-sidebar_label: .NET
+sidebar_label: .NET Client
 title: .NET Client SDK
 ---
 
@@ -32,9 +32,8 @@ import MoreFAQs from "./dotnet/_faqs.mdx";
 import Options from "./dotnet/_options.mdx";
 import ShutdownSnippet from "./dotnet/_shutdown.mdx";
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -62,6 +61,10 @@ import ShutdownSnippet from "./dotnet/_shutdown.mdx";
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

@@ -5,6 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
+    "dev": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
@@ -15,26 +16,32 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@docusaurus/core": "3.5.2",
+    "@docusaurus/core": "^3.5.2",
     "@docusaurus/plugin-client-redirects": "^3.5.2",
     "@docusaurus/preset-classic": "3.5.2",
+    "@docusaurus/theme-common": "^3.5.2",
+    "@docusaurus/theme-search-algolia": "^3.5.2",
     "@easyops-cn/docusaurus-search-local": "^0.44.5",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
     "@mdx-js/react": "^3.0.0",
     "@mui/material": "^5.16.7",
+    "@radix-ui/react-slot": "^1.1.0",
+    "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "prism-react-renderer": "^2.3.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-gist": "^1.2.4",
     "rehype-katex": "^7.0.0",
-    "remark-math": "^6.0.0"
+    "remark-math": "^6.0.0",
+    "tailwind-merge": "^2.5.3"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.5.2",
     "@docusaurus/tsconfig": "3.5.2",
     "@docusaurus/types": "3.5.2",
+    "cspell": "^8.14.4",
     "typescript": "~5.5.2"
   },
   "browserslist": {
@@ -51,5 +58,11 @@
   },
   "engines": {
     "node": ">=18.0"
-  }
+  },
+  "overrides": {
+    "path-to-regexp@0": "0.1.10",
+    "path-to-regexp@1": "1.9.0",
+    "body-parser": "1.20.3"
+  },
+  "packageManager": "pnpm@9.6.0+sha512.38dc6fba8dba35b39340b9700112c2fe1e12f10b17134715a4aa98ccf7bb035e76fd981cf0bb384dfa98f8d6af5481c2bef2f4266a24bfa20c34eb7147ce0b5e"
 }

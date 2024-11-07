@@ -1,9 +1,8 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
-import type * as Preset from '@docusaurus/preset-classic';
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
-import sdkDateExtractor from './src/plugins/rehype-sdk-date-extractor';
+import type * as Preset from "@docusaurus/preset-classic";
+import type { Config } from "@docusaurus/types";
+import { themes as prismThemes } from "prism-react-renderer";
+import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
 
 const config: Config = {
   title: "Statsig Docs",
@@ -17,25 +16,24 @@ const config: Config = {
   projectName: "statsig-io/docs", // Usually your repo name.
 
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: "en",
+    locales: ["en"],
   },
 
   presets: [
     [
-      'classic',
+      "classic",
       {
         docs: {
-          sidebarPath: './sidebars.ts',
-          editUrl:
-            'https://github.com/statsig-io/docs/edit/main/',
+          sidebarPath: "./sidebars.ts",
+          editUrl: "https://github.com/statsig-io/docs/edit/main/",
           showLastUpdateTime: true,
           routeBasePath: "/",
-          remarkPlugins: [sdkDateExtractor, remarkMath],
+          remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: "./src/css/custom.css",
         },
       } satisfies Preset.Options,
     ],
@@ -91,24 +89,33 @@ const config: Config = {
               {
                 tagName: "script",
                 attributes: {
-                  src: "https://api.statsigcdn.com/v1/download_config_specs/client-LAx5juseYG9kxnB2vHLxFluaFmZVv9aAKPmw1NB8rps.js",
+                  src: "https://www.statsig.com/js/single-id.js",
+                  onload: "setupStatsigSingleId('docs')",
                 },
               },
               {
                 tagName: "script",
                 attributes: {
-                  src: "https://cdn.jsdelivr.net/npm/statsig-js-local-eval@1.0.0/build/statsig-prod-web-sdk.min.js",
-                },
-              },
-              {
-                tagName: "script",
-                attributes: {
-                  src: "https://cdn.jsdelivr.net/npm/@statsig/js-client@1/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=client-c1fEjmA7JETNimhlFhKf2M1qMRFNkl9ipDfxYEatlYJ",
+                  src: "https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=client-XlqSMkAavOmrePNeWfD0fo2cWcjxkZ0cJZz64w7bfHX",
                 },
               },
               {
                 tagName: "script",
                 innerHTML: `window.statsigTier="${tier}"`,
+              },
+              {
+                tagName: "link",
+                attributes: {
+                  rel: "stylesheet",
+                  href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+                },
+              },
+              {
+                tagName: "link",
+                attributes: {
+                  rel: "stylesheet",
+                  href: "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap",
+                },
               },
               {
                 tagName: "script",
@@ -138,8 +145,60 @@ const config: Config = {
       {
         redirects: [
           {
-            to: "/guides/shopify-ab-test",
-            from: "/guides/first-shopify-abtest",
+            from: "/layers/js-tutorial",
+            to: "/client/javascript-sdk#layers",
+          },
+          {
+            from: "/feature-flags/implement",
+            to: "/",
+          },
+          {
+            from: "/feature-flags/implement/client",
+            to: "/",
+          },
+          {
+            from: "/feature-flags/implement/server",
+            to: "/",
+          },
+          {
+            from: "/feature-flags/implement/http-api",
+            to: "/",
+          },
+          {
+            from: "/client/jsClientSDK",
+            to: "/client/javascript-sdk",
+          },
+          {
+            from: "/client/reactSDK",
+            to: "/client/javascript-sdk/react",
+          },
+          {
+            from: "/client/reactNativeSDK",
+            to: "/client/javascript-sdk/react-native",
+          },
+          {
+            from: "/client/reactNativeExpoSDK",
+            to: "/client/javascript-sdk/expo",
+          },
+          {
+            to: "/",
+            from: "/category/walkthrough-guides",
+          },
+          {
+            to: "/client/javascript-sdk/next-js",
+            from: "/guides/nextjs-feature-flags",
+          },
+          {
+            to: "/client/javascript-sdk/next-js",
+            from: "/guides/nextjs-page-router-feature-flags",
+          },
+          {
+            to: "/client/javascript-sdk/next-js",
+            from: "/client/javascript-sdk/next-js-app-router",
+          },
+          {
+            to: "/client/javascript-sdk/next-js",
+            from: "/client/javascript-sdk/next-js-pages-router",
           },
           {
             to: "/product-analytics/drilldown",
@@ -222,71 +281,100 @@ const config: Config = {
             from: "/feature-gates/best-practices",
           },
           {
-            to: "/feature-flags/implement",
+            to: "/",
             from: "/feature-gates/implement",
           },
           {
-            to: "/feature-flags/implement/client",
+            to: "/",
             from: "/feature-gates/implement/client",
           },
           {
-            to: "/feature-flags/implement/server",
+            to: "/",
             from: "/feature-gates/implement/server",
           },
           {
-            to: "/feature-flags/implement/http-api",
+            to: "/",
             from: "/feature-gates/implement/http-api",
           },
           {
             to: "/product-analytics/overview",
             from: "/metrics/events-explorer",
           },
-        ],
-      },
-    ],
-  ],
-  
-  themes: [
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        explicitSearchResultPath: true,
-        hashed: true,
-        indexBlog: false,
-        indexDocs: true,
-        docsRouteBasePath: "/",
-        ignoreFiles: [
-          /client\/_[^\/]*\.mdx/i,
-          /server\/_[^\/]*\.mdx/i,
-          /client\/(Android|AndroidOnDeviceEvaluation|Dart|React|ReactNative|Roku|SwiftOnDeviceEval|Templates|Unity|dotnet|iOS|js|jslocal)\/?/i,
-          /server\/(Templates|java|node|cpp|dotnet|erlang|go|php|python|ruby|rust)\/?/i,
+          {
+            to: "/experiments-plus/stop-assignments",
+            from: "/experiments-plus/pause-assignment",
+          },
         ],
       },
     ],
   ],
 
+  themes: [],
+
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docs_meta_q3_2023.png',
+    image: "img/docs_meta_q3_2023.png",
+    docs: {
+      sidebar: {
+        autoCollapseCategories: true,
+      },
+    },
+    algolia: {
+      // The application ID provided by Algolia
+      appId: "JOWHDNMZRN",
+
+      // Public API key: it is safe to commit it
+      apiKey: "2a538120ca7db3411698786731f3c2f6",
+
+      indexName: "statsig",
+
+      // Optional: see doc section below
+      // contextualSearch: true,
+
+      // // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+      // externalUrlRegex: 'external\\.com|domain\\.com',
+
+      // // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+      // replaceSearchResultPathname: {
+      //   from: '/docs/', // or as RegExp: /\/docs\//
+      //   to: '/',
+      // },
+
+      // // Optional: Algolia search parameters
+      // searchParameters: {},
+
+      // // Optional: path for search page that enabled by default (`false` to disable it)
+      // searchPagePath: 'search',
+
+      // // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
+      // insights: false,
+    },
     navbar: {
-      title: '',
+      title: "",
       logo: {
         alt: "Statsig",
-        src: "img/logo.svg",
+        src: "img/logo-new.svg",
         srcDark: "img/logo_white.svg",
         href: "/",
       },
       items: [
         {
+          type: "search",
+        },
+        // {
+        //   type: "html",
+        //   value:
+        //     "<button class=\"loginCTA CTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus();\">Log In</button>",
+        // },
+        {
           type: "html",
-          position: "right",
           value:
-            "<button id=\"consoleCTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus(); window.statsig.logEvent({}, 'console_button_click', window.location.pathname, {referrer: document && document.referrer,});\">Get Started</button>",
+            "<button class=\"signupCTA CTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus();\">Get Started</button>",
         },
       ],
     },
     footer: {
-      style: 'dark',
+      style: "dark",
       links: [
         {
           title: "Docs",
@@ -294,6 +382,10 @@ const config: Config = {
             {
               label: "Getting Started",
               to: "/",
+            },
+            {
+              label: "FAQ",
+              to: "/faq",
             },
           ],
         },
@@ -325,9 +417,9 @@ const config: Config = {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
       additionalLanguages: [
-        'bash',
-        'diff',
-        'json',
+        "bash",
+        "diff",
+        "json",
         "swift",
         "java",
         "ruby",
@@ -339,6 +431,7 @@ const config: Config = {
         "erlang",
         "dart",
         "rust",
+        "objectivec",
       ],
     },
   } satisfies Preset.ThemeConfig,

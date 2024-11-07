@@ -277,7 +277,7 @@ Since the calculation window is set to 7, the user would have 7 days to complete
 
 ### When Analysis Units and Assignment Units Are Different
 
-[Analysis with Different ID](https://docs.statsig.com/metrics/different-id)
+[Analysis with Different ID](/metrics/different-id)
 
 ## Viewing your Metric
 

@@ -1,8 +1,11 @@
 ---
-title: Persistent Assignment
-sidebar_label: Persistent Assignment
+title: Server Persistent Assignment
+sidebar_label: Server Persistent Assignment
 slug: /server/concepts/persistent_assignment
 ---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 Persistent assignment allows you to ensure that a user's variant stays consistent while an experiment is running, regardless of changes to allocation or targeting.
 
@@ -12,16 +15,64 @@ The persistent storage adapter allows you to plug in your own storage solution t
 The storage interface consists of just a `load` and `save` API for read/write operations.
 
 :::info
-Currently only supported in `Go`, `Ruby`, `Node`
+Currently only supported in `Go`, `Ruby`, `Node`, `Kotlin`, `.Net`
 :::
 
 ### Persistent Storage Logic
+
 - Providing a storage adapter on Statsig initialization will give the SDK access to read & write on your custom storage
 - Providing user persisted values to `get_experiment` will inform the SDK to
   - **save** the evaluation of the current user **on first evaluation**
   - **load** the previously saved evaluation of a persisted user **on subsequent evaluations**
 
+### Persistent Assignment Options
+
+- **Enforce Targeting**: `boolean`, default: `false`
+  - Whether or not to enforce targeting rules before assigning persisted values
+
+<Tabs
+  groupId="server-sdk-lang-choice"
+  defaultValue="node"
+  values={[
+    {label: 'Node JS', value: 'node'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="kotlin">
+```kotlin
+val options = GetExperimentOptions(
+  ...
+  persistentAssignmentOptions = PersistentAssignmentOptions(
+    enforceTargeting = true,
+  )
+)
+```
+  </TabItem>
+  <TabItem value="node">
+```ts
+const options: GetExperimentOptions = {
+  ...
+  persistentAssignmentOptions: {
+    enforceTargeting: true,
+  }
+}
+
+````
+  </TabItem>
+</Tabs>
+
 ### Example usage
+
+<Tabs
+  groupId="server-sdk-lang-choice"
+  defaultValue="ruby"
+  values={[
+    {label: 'Node JS', value: 'node'},
+    {label: 'Kotlin', value: 'kotlin'},
+    {label: 'Ruby', value: 'ruby'},
+    {label: 'Go', value: 'go'},
+    {label: '.Net', value: 'dotnet'}
+  ]}>
+  <TabItem value="ruby">
 ```ruby
 Statsig.initialize(
   'secret-key',
@@ -46,4 +97,109 @@ exp = Statsig.get_experiment( # User evaluates using values from persisted stora
   )
 )
 puts exp.group_name # 'Control'
+````
+
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+runBlocking {
+  Statsig.initialize(
+    "secret-key",
+    StatsigOptions(userPersistentStorage = MyPersistentStorageAdapter())
+  )
+}
+val persistedUser = StatsigUser("test-123")
+var exp = Statsig.getExperimentSync(
+  persistedUser,
+  "active_experiment",
+  GetExperimentOptions(
+    userPersistedValues = Statsig.getUserPersistedValues(persistedUser, "userID"),
+  ),
+)
+println(exp.groupName) // "Control"
+exp = Statsig.getExperimentSync(
+  StatsigUser("unknown"),
+  "active_experiment",
+  GetExperimentOptions(
+    userPersistedValues = Statsig.getUserPersistedValues(persistedUser, "userID"),
+  ),
+)
+println(exp.groupName) // "Control"
+```
+  </TabItem>
+  <TabItem value="node">
+```ts
+await Statsig.initialize(
+  "secret-key",
+  {
+    userPersistentStorage: new MyPersistentStorageAdapter() 
+  }
+)
+const persistedUser: StatsigUser = { userID: "123" }
+let exp = Statsig.getExperimentSync(
+  persistedUser,
+  "active_experiment",
+  { 
+    userPersistedValues: Statsig.getUserPersistedValues(user, "userID")
+  },
+)
+console.log(exp.getGroupName()) // "Control"
+exp = Statsig.getExperimentSync(
+  { userID: "unknown" },
+  "active_experiment",
+  { 
+    userPersistedValues: Statsig.getUserPersistedValues(user, "userID")
+  },
+)
+console.log(exp.getGroupName()) // "Control"
+```
+  </TabItem>
+  <TabItem value="go">
+```go
+InitializeWithOptions(
+  "secret-key",
+  &Options{
+    UserPersistentStorage: persistentStorage,
+  }
+)
+persistedUser := User{UserID: "123"}
+exp := GetExperimentWithOptions(
+  persistedUser,
+  "active_experiment",
+  &GetExperimentOptions{
+    PersistedValues: GetUserPersistedValues(persistedUser, "userID")
+  }
+)
+fmt.Println(exp.GroupName) // "Control"
+exp = GetExperimentWithOptions(
+  User{UserID: "unknown"},
+  "active_experiment",
+  &GetExperimentOptions{
+    PersistedValues: GetUserPersistedValues(persistedUser, "userID")
+  }
+)
+fmt.Println(exp.GroupName) // "Control"
+```
+  </TabItem>
+    <TabItem value="dotnet">
+```csharp
+var options = new StatsigServerOptions();
+options.UserPersistentStorage = new MyPersistentStorageAdapter()
+await StatsigServer.Initialize("server-secret-key", options);
+
+var persistedUser = new StatsigUser { UserID = "123" };
+var values = await StatsigServer.GetUserPersistedValues(persistedUser, "userID");
+var getExpOptions = new StatsigGetExperimentOptions(values);
+var exp = StatsigServer.GetExperimentSync(persistedUser, "active_experiment", getExpOptions);
+Console.WriteLine(exp.GroupName); // "Control"
+
+var newValues = await StatsigServer.GetUserPersistedValues(persistedUser, "userID");
+var newGetExpOptions = StatsigGetExperimentOptions(newValues);
+
+var newExp = StatsigServer.GetExperimentSync(new StatsigUser {UserID = "unknown"}, "active_experiment", newGetExpOptions);
+Console.WriteLine(newExp.GroupName); // "Control"
+
+```
+  </TabItem>
+</Tabs>
 ```

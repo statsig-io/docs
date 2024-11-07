@@ -9,7 +9,6 @@ slug: /experiments-plus/disable-group
 Sometimes you start an experiment with multiple test groups, only to find that one of the groups is performing very poorly or creating bad user experiences. The other test groups are fine and you want to keep them running, but stop the bad experiences. For these situations, we allow you to disable an experiment group.
 
 :::info Note
-- Once a group is disabled, it cannot be re-enabled!
 - The group will continue to show up in diagnostics charts, exposures stream, and Pulse - but the users will be seeing the control experience. We keep showing the group and logging exposures so that you can verify that the user experiences have recovered after the group was disabled.
 :::
 

@@ -1,11 +1,15 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
+Note since the `@statsig/react-native-bindings-on-device-eval` works in conjunction with `@statsig/js-on-device-eval-client`, 
+documentation on those packages is also relevant for React Native implementations:
+
+- [@statsig/js-on-device-eval-client documentation](/client/js-on-device-eval-client)
+
 ## Installation
 
-To add support for React Native, first, add the Statsig JS client outlined [here](/client/javascript-sdk).
-
-Once the Statsig client is installed, you can add the React Native bindings as described below:
+Statsig uses a multi-package strategy, so you will need to install both the Statsig client and the React Native
+specific bindings.
 
 <Tabs
   defaultValue="npm"
@@ -18,22 +22,22 @@ Once the Statsig client is installed, you can add the React Native bindings as d
   <TabItem value="npm">
 
 ```shell
-npm install @statsig/react-native-bindings
+npm install @statsig/react-native-bindings-on-device-eval
 ```
 
   </TabItem>
   <TabItem value="yarn">
 
 ```shell
-yarn add @statsig/react-native-bindings
+yarn add @statsig/react-native-bindings-on-device-eval
 ```
 
   </TabItem>
 </Tabs>
 
-### Peer Dependecies
+### Peer Dependencies
 
-The `@statsig/react-native-bindings` module has peer dependencies which will also need to be installed
+The `@statsig/react-native-bindings-on-device-eval` package has peer dependencies which may also need to be installed if they are not already in your project.
 
 <Tabs
   defaultValue="npm"
@@ -46,14 +50,14 @@ The `@statsig/react-native-bindings` module has peer dependencies which will als
   <TabItem value="npm">
 
 ```shell
-npm install @react-native-async-storage/async-storage react-native-device-info
+npm install @react-native-async-storage/async-storage
 ```
 
   </TabItem>
   <TabItem value="yarn">
 
 ```shell
-yarn add @react-native-async-storage/async-storage react-native-device-info
+yarn add @react-native-async-storage/async-storage
 ```
 
   </TabItem>

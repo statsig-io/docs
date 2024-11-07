@@ -1,5 +1,5 @@
 ---
-sidebar_label: Java/Kotlin
+sidebar_label: Java/Kotlin Server
 title: Java/Kotlin Server SDK
 ---
 
@@ -18,6 +18,7 @@ import {
   ManualExposures,
   Shutdown,
   ClientInitResponse,
+  UserPersistentStorage,
   LocalOverrides,
   Reference,
   ProxyConfigs,
@@ -41,10 +42,12 @@ import * as ReferenceSnippets from "./java/_reference.mdx";
 import ClientInitResponseSnippet from "./java/_clientInitResponse.mdx";
 import ForwardProxyExample from "./java/_forwardProxyExample.mdx";
 import MultiInstanceExample from "./java/_multiInstanceExample.mdx";
+import PersistentStorageInterface from "./java/_persistentStorageInterface.mdx";
+import PersistentStorageExample from "./java/_persistentStorageExample.mdx";
+import GrpcTLSExample from "./java/_grpcTLS.mdx";
 
-<>
-  <SDKDocsBuilder
-    sections={[
+export const Builder = SDKDocsBuilder({
+  sections: [
     [
       Repository,
       {
@@ -88,12 +91,22 @@ import MultiInstanceExample from "./java/_multiInstanceExample.mdx";
         snippet: <OverridesSnippet />,
       },
     ],
+    [
+      UserPersistentStorage,
+      { interface: <PersistentStorageInterface />, example: <PersistentStorageExample /> },
+    ],
     [Instances, { constructor: <MultiInstanceExample /> }],
-    [ProxyConfigs, {addedInVersion: "0.24.0", includeAboveVersion: false, installation: <InstallBeta />, code: 
-      <ForwardProxyExample />
+    [ProxyConfigs, {
+      addedInVersion: "1.24.0", installation: <InstallBeta />, code:
+        <ForwardProxyExample />,
+        tlsExample: <GrpcTLSExample/>, tlsAddedInVersion: "1.30.0"
     }],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
-  ]}
-  />
-</>
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

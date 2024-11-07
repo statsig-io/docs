@@ -5,13 +5,17 @@
  * work well for content-centric websites.
  */
 
+body {
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5 {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Helvetica Neue", "Ubuntu", sans-serif;
   font-weight: 700;
 }
 article header h1 {
@@ -49,17 +53,17 @@ a {
   --ifm-color-primary-lightest: #129dff;
   --ifm-link-color: #0068b3;
   --ifm-code-font-size: 95%;
-  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI",
+  --ifm-font-family-base: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Helvetica Neue", "Ubuntu", sans-serif;
   --ifm-font-size-base: 0.95em;
-  
+
   --ifm-menu-color: #000;
-  --ifm-menu-color-active: #0068b3;
+  --ifm-menu-color-active: #1b63d2;
   --ifm-menu-color-background-active: #0068b311;
-  --ifm-navbar-background-color: #f7f7f7;
+  --ifm-navbar-background-color: #ffffff;
   --ifm-menu-link-padding-vertical: 0.4rem;
 
-  --ifm-transition-fast: 100ms;  
+  --ifm-transition-fast: 100ms;
 }
 
 html[data-theme="dark"] {
@@ -67,7 +71,7 @@ html[data-theme="dark"] {
   --ifm-color-primary-dark: #007bd2;
   /* any other colors you wish to overwrite */
 
-  --ifm-link-color: #2196f3;
+  --ifm-link-color: #1b63d2;
   --ifm-menu-color: #ccc;
   --ifm-menu-color-active: #fff;
   --ifm-menu-color-background-active: #194b7d99;
@@ -101,12 +105,6 @@ html[data-theme="dark"] {
   font-size: 14px;
 }
 
-.navbar__inner {
-  width: 90rem;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
 .alert {
   margin-left: 20px;
 }
@@ -135,21 +133,15 @@ html[data-theme="dark"] {
 .img-center {
   display: flex;
   justify-content: center;
-  width: 100%,
+  width: 100%;
 }
 
-.katex{
+.katex {
   font-size: 80%;
 }
 
 .katex .base {
-  vertical-align: 0em;  /* Adjust this value as needed */
-}
-
-.main-wrapper {
-  margin: 0 auto;
-  width: 90rem;
-  max-width: 100%;
+  vertical-align: 0em; /* Adjust this value as needed */
 }
 
 .menu__link {
@@ -181,19 +173,14 @@ span.math.math-inline {
   font-size: 150%;
 }
 
-#consoleCTA{
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Helvetica Neue", "Ubuntu", sans-serif;
-  background-color:rgb(25, 75, 125);
-  color: rgb(255, 255, 255);
+.CTA {
   font-weight: 600;
   border-radius: 5px;
   text-transform: none;
   white-space: nowrap;
-  min-width: 100px;
-  font-size: 15px;
+  font-size: 14px;
   padding: 6px 16px;
-  min-height: 32px;
+  min-height: 34px;
   cursor: pointer;
   border: 0px;
   display: inline-flex;
@@ -203,8 +190,283 @@ span.math.math-inline {
   justify-content: center;
   position: relative;
   box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+.signupCTA {
+  background-color: #1b63d2;
+  color: rgb(255, 255, 255);
+}
+
+.loginCTA {
+  background-color: transparent;
+  color: #1b63d2;
+}
+
+[data-theme="dark"] .loginCTA {
+  color: #fff;
+}
+
+.DocSearch-Button-Key {
+  background: white !important;
+  box-shadow: none !important;
+}
+
+.DocSearch-Button-Placeholder {
+  font-family: "Open Sans", sans-serif;
+}
+
+.col {
+  padding: 0px 16px;
+}
+
+@media (min-width: 768px) {
+  .col {
+    padding: 0px 60px;
+  }
+  .navbar__items > div:has(.DocSearch) {
+    margin-left: auto;
+    margin-right: 40px;
+  }
+  .navbar__logo {
+    height: 25px;
+    margin-left: 5px;
+  }
+  .DocSearch-Button {
+    min-width: 350px;
+  }
 }
 
 .warning {
   margin-bottom: 16px;
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible {
+  /* border-bottom: 1px solid #e0e0e0;  */
+  border-top: 1px solid #e0e0e0;
+  /* padding-bottom: 5px; */
+  margin-top: 15px;
+  padding-top: 15px;
+}
+
+.theme-doc-sidebar-item-category-level-1
+  > .menu__list-item-collapsible
+  > .menu__link {
+  color: gray;
+  font-size: 12px;
+  font-family: "Open Sans", sans-serif;
+  margin-left: 8px;
+}
+
+.menu__list > .menu__list-item:first-child .menu__list-item-collapsible {
+  border-top: none; /* Remove border-top for the first element */
+  padding-top: 0; /* Adjust padding if necessary */
+}
+
+.menu__link {
+  font-weight: 600;
+  margin-left: 25px;
+}
+
+.sidebar-icon {
+  align-items: center;
+  position: relative;
+}
+
+.sidebar-icon::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  margin-left: 8px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: var(--ifm-menu-link-padding-vertical)
+    var(--ifm-menu-link-padding-horizontal);
+}
+
+/* 
+[data-theme="dark"] .menu__link--sublist-caret::after, .sidebar-icon::before .menu__caret:before {
+  filter: var(--ifm-menu-link-sublist-icon-filter);
+} */
+
+.sidebar-icon:has(> .menu__link--active) {
+  background-color: var(--ifm-menu-color-background-active);
+}
+.menu__caret:before {
+  filter: var(--ifm-menu-link-sublist-icon-filter);
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  background-color: unset;
+}
+
+.rocket-icon::before {
+  background-image: url("/img/icons/sidebar/rocket.svg");
+}
+
+.rocket-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/rocket-active.svg");
+}
+
+.doc-icon::before {
+  background-image: url("/img/icons/sidebar/doc.svg");
+}
+
+.doc-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/doc-active.svg");
+}
+
+.key-icon::before {
+  background-image: url("/img/icons/sidebar/key.svg");
+}
+
+.key-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/key-active.svg");
+}
+
+.integrations-icon::before {
+  background-image: url("/img/icons/sidebar/integrations.svg");
+}
+
+.integrations-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/integrations-active.svg");
+}
+
+.xp-icon::before {
+  background-image: url("/img/icons/sidebar/xp.svg");
+}
+
+.xp-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/xp-active.svg");
+}
+
+.feature-icon::before {
+  background-image: url("/img/icons/sidebar/feature.svg");
+}
+
+.feature-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/feature-active.svg");
+}
+
+.chart-icon::before {
+  background-image: url("/img/icons/sidebar/chart.svg");
+}
+
+.chart-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/chart-active.svg");
+}
+
+.play-icon::before {
+  background-image: url("/img/icons/sidebar/play.svg");
+}
+
+.play-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/play-active.svg");
+}
+
+.web-icon::before {
+  background-image: url("/img/icons/sidebar/web.svg");
+}
+
+.web-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/web-active.svg");
+}
+
+.data-icon::before {
+  background-image: url("/img/icons/sidebar/data.svg");
+}
+
+.data-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/data-active.svg");
+}
+
+.help-icon::before {
+  background-image: url("/img/icons/sidebar/help.svg");
+}
+
+.help-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/help-active.svg");
+}
+
+.question-icon::before {
+  background-image: url("/img/icons/sidebar/help.svg");
+}
+
+.question-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/help-active.svg");
+}
+
+.lightbulb-icon::before {
+  background-image: url("/img/icons/sidebar/concept.svg");
+}
+
+.lightbulb-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/concept-active.svg");
+}
+
+.ai-icon::before {
+  background-image: url("/img/icons/sidebar/ai.svg");
+}
+
+.ai-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/ai-active.svg");
+}
+
+.whn-icon::before {
+  background-image: url("/img/icons/sidebar/whn.svg");
+}
+
+.whn-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/whn-active.svg");
+}
+
+.team-icon::before {
+  background-image: url("/img/icons/sidebar/team.svg");
+}
+
+.team-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/team-active.svg");
+}
+
+.infra-icon::before {
+  background-image: url("/img/icons/sidebar/infra.svg");
+}
+
+.infra-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/infra-active.svg");
+}
+
+.admin-icon::before {
+  background-image: url("/img/icons/sidebar/admin.svg");
+}
+
+.admin-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/admin-active.svg");
+}
+
+.template-icon::before {
+  background-image: url("/img/icons/sidebar/template.svg");
+}
+
+.template-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/template-active.svg");
+}
+
+[data-theme="dark"] .sidebar-icon::before {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%)
+    contrast(0%);
+}
+
+[data-theme="dark"] .menu__link--sublist-caret::after {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%)
+    contrast(0%);
+}
+
+.no-background {
+  --ifm-alert-background-color: transparent;
+  --ifm-alert-border-color: black;
+  --ifm-tabs-color-active-border:var(--ifm-color-primary-light);
+  --ifm-tabs-color-active:var(--ifm-color-primary-light);
 }

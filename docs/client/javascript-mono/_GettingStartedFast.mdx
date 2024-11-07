@@ -1,0 +1,10 @@
+import GettingStartedFastImpl from "./_GettingStartedFastImpl.mdx";
+import BrowserOnly from '@docusaurus/BrowserOnly';
+
+export const GettingStartedFast = () => {
+  return <BrowserOnly>
+  {() => <GettingStartedFastImpl />}
+  </BrowserOnly>
+}
+
+<GettingStartedFast />

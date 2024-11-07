@@ -1,0 +1,56 @@
+## Debugging
+
+If you run into issues when implementing Statsig, or are receiving values you do not understand, you can try some of the following to get yourself unstuck.
+
+### Enable Debug Logging
+
+By setting the log level to the most verbose (`Debug`), the SDK will print more information around the internal operations it is performing.
+
+```ts
+import { LogLevel, StatsigClient, StatsigOptions } from '@statsig/js-client';
+
+const client = new StatsigClient(YOUR_CLIENT_KEY, { userID: 'a-user'}, {
+    logLevel: LogLevel.Debug, // <- Print Everything
+});
+```
+
+
+### Access \_\_STATSIG\_\_ Global
+
+If you see issues appearing, but only for certain environments, 
+it can be useful to open the web browsers debugger and view the Statsig client instance. 
+
+- Open the web browsers console. In Chrome, this is under `View > Developer > JavaScript Console`.
+- In the console, enter `__STATSIG__`. This will print the global Statsig state object, containing all internal state of the SDK.
+- eg `__STATSIG__.instance()._logger._queue` is the queued events array
+
+![__STATSIG__-global](https://github.com/user-attachments/assets/5803cb08-9db4-4056-9b18-26656afe6adb)
+
+### View Network Logs
+
+To see all traffic that is being sent via the Statsig SDK, 
+you can filter your browsers network logs to those containing your client SDK key.
+
+In Chrome, going to the `Network` tab of the developer tools and filtering to 'client-' is enough to show all the requests:
+
+![network-logs](https://github.com/user-attachments/assets/5a2b1672-a86f-429d-aa4b-b8c8a578eeae)
+
+
+### Check Evaluation Reason
+
+When you get a value that you don't fully understand, you can check the `details` field to see how that value was received.
+
+For example, if you have a feature gate, you can check the `.details.reason` field:
+```ts
+const gate = myStatsigClient.getFeatureGate('a_gate');
+console.log(gate.details.reason); // <- Prints the reason for this evaluation
+```
+
+Reasons can be any of the following:
+- `Network` | `NetworkNotModified` - The latest value from a network requests
+- `Cache` - Values loaded from local storage
+- `NoValues` - No cache and no successful network request
+- `Bootstrap` - Values found and loaded after a `dataAdapter.setData` call
+- `Prefetch` - Values found and loaded after a `dataAdapter.prefetchData` call
+
+`FeatureGate`, `DynamicConfig`, `Experiment` and `Layer` types all have this `details` object. (Learn more at [Debugging > Reasons](/sdk/debugging#reasons))

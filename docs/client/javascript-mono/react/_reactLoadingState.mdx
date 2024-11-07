@@ -1,0 +1,58 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+
+## Loading State
+
+Dependent on your setup, you may want to wait for the latest values before checking a gate or experiment. 
+If you are using the `StatsigProvider`, you can pass in a `loadingComponent` prop to display a loading state while the SDK is initializing. 
+If you are using the `useClientAsyncInit` hook, you can check the `isLoading` prop to determine if the SDK is still loading.
+
+
+<Tabs
+  defaultValue="provider"
+  groupId="react-usage-choice"
+  values={[
+    {label: 'StatsigProvider', value: 'provider'},
+    {label: 'useClientAsyncInit', value: 'client'},
+  ]}>
+
+  <TabItem value="provider">
+
+```tsx
+export function App() {
+  const loadingComponent = <div>Loading...</div>;
+
+  return (
+    <StatsigProvider
+      ...
+      loadingComponent={loadingComponent} // <- Pass in the loading component
+    > 
+        <YourComponent />
+    </StatsigProvider>
+  );
+}
+```
+
+  </TabItem>
+  <TabItem value="client">
+
+```tsx
+export function App() {
+  const { client, isLoading } = useClientAsyncInit(...);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <StatsigProvider client={client}>
+      <YourComponent />
+    </StatsigProvider>
+  );
+}
+```
+
+  </TabItem>
+</Tabs>
+

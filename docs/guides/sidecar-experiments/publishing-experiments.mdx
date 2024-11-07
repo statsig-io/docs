@@ -9,20 +9,9 @@ With the experiment configuration out of the way, we need to take this to produc
 This guide assumes you have followed the previous steps of creating an experiment in Sidecar.  Check out [Creating Experiments](./creating-experiments) for those instructions.
 :::
 
-### Step 1: Publish the experiments
+### Step 1: Add script code
 
-Once you are satisfied with the experiment configuration, go ahead and hit the green *Publish* button.  This will push all the experiment changes to Statsig.  If you want to make sure these changes are published, you can on the `...` menu and choose *Go to Experiment console*
-
-![statsig banner](/img/sidecarconsole.png)
-
-The experiment console will look like this, and allows you to configure rich targeting, metrics, and tweak advanced statistical knobs.  More on this later.
-
-<img src="https://github.com/statsig-io/.github/assets/74588208/22f57816-6fdd-422c-87a9-90a5c08f36a5" width="50%" />
-
-
-### Step 2: Add script code
-
-Now that you have created and configured your first experiment, all that remains is to activate it on your website.  You will need to add a single line of code in the &lt;HEAD&gt; portion of your website.  
+You will need to add a single line of code in the &lt;HEAD&gt; portion of your website.  
 
 There are many ways to add this script code to your website.  Most website builders will allow you to add script tags on your website.  Here are some common website builder examples:
 
@@ -40,7 +29,17 @@ The code itself would look like this with your API Key switched.
 
 ![statsig banner](/img/sidecargetscript.png)
 
-![image](https://github.com/statsig-io/.github/assets/74588208/48d5681a-c438-41f1-bd9a-9794e69e3a10)
+
+### Step 2: Publish the experiments
+
+Once you have installed sidecar into your code, you are able to start the experimentation configuration. Once you are satisfied with the experiment configuration, go ahead and hit the green *Publish* button.  This will push all the experiment changes to Statsig.  If you want to make sure these changes are published, you can on the `...` menu and choose *Go to Experiment console*
+
+![statsig banner](/img/sidecarconsole.png)
+
+The experiment console will look like this, and allows you to configure rich targeting, metrics, and tweak advanced statistical knobs.  More on this later.
+
+<img src="https://github.com/statsig-io/.github/assets/74588208/22f57816-6fdd-422c-87a9-90a5c08f36a5" width="50%" />
+
 
 ### Step 3: Preview & QA the experiment
 
@@ -50,7 +49,7 @@ You can pass a query string to your test page url by using the `overrideuser` qu
 The override method uses the following convention to force a test & test group:<br />
 `https://www.DOMAIN.com/?overrideuser=<EXPERIMENT_ID>_<TEST_GROUP_ID>`
 
-The image below depicts where you can find the expeirment ID and each variation ID. Based on this example, you can force a preview of the Test Group by visiting the following URL:<br />
+The image below depicts where you can find the experiment ID and each variation ID. Based on this example, you can force a preview of the Test Group by visiting the following URL:<br />
 `https://www.DOMAIN.com/?overrideuser=name_color_test_1`
 
 ![statsig banner](/img/sidecarqa.png)

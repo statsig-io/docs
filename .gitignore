@@ -3,6 +3,8 @@
 
 # Production
 /build
+# Production build does not use pnpm
+pnpm-lock.yaml
 
 # Generated files
 .docusaurus

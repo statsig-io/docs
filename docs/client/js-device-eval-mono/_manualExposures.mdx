@@ -4,46 +4,47 @@ export const Snippets = {
   // Gates
   gateSnippet: (
     <CodeBlock language="jsx">
-      {`const result = await Statsig.checkGateWithExposureLoggingDisabled('a_gate_name');`}
+      {`const result = myStatsigClient.checkGate('a_gate_name', { user, disableExposureLog: true });`}
     </CodeBlock>
   ),
   gateExposureSnippet: (
     <CodeBlock language="jsx">
-      {`Statsig.manuallyLogGateExposure('a_gate_name');`}
+      {`myStatsigClient.checkGate('a_gate_name', { user });`}
     </CodeBlock>
   ),
   // Configs
   configSnippet: (
     <CodeBlock language="jsx">
-      {`const config = await Statsig.getConfigWithExposureLoggingDisabled('a_dynamic_config_name');`}
+      {`const config = myStatsigClient.getConfig('a_dynamic_config_name', { user, disableExposureLog: true });`}
     </CodeBlock>
   ),
   configExposureSnippet: (
     <CodeBlock language="jsx">
-      {`Statsig.manuallyLogConfigExposure('a_dynamic_config_name');`}
+      {`myStatsigClient.getConfig('a_dynamic_config_name', { user });`}
     </CodeBlock>
   ),
   // Experiment
   experimentSnippet: (
     <CodeBlock language="jsx">
-      {`const experiment = await Statsig.getExperimentWithExposureLoggingDisabled('an_experiment_name');`}
+      {`const experiment = myStatsigClient.getExperiment('an_experiment_name', { user, disableExposureLog: true });`}
     </CodeBlock>
   ),
   experimentExposureSnippet: (
     <CodeBlock language="jsx">
-      {`Statsig.manuallyLogExperimentExposure('an_experiment_name');`}
+      {`myStatsigClient.getExperiment('an_experiment_name', { user });`}
     </CodeBlock>
   ),
   // Layer
   layerSnippet: (
     <CodeBlock language="jsx">
-      {`const layer = await Statsig.getLayerWithExposureLoggingDisabled('a_layer_name');
+      {`const layer = myStatsigClient.getLayer('a_layer_name', { user, disableExposureLog: true });
 const paramValue = layer.get('a_param_name', 'fallback_value');`}
     </CodeBlock>
   ),
   layerExposureSnippet: (
     <CodeBlock language="jsx">
-      {`Statsig.manuallyLogLayerParameterExposure('a_layer_name', 'a_param_name');`}
+      {`const layer = myStatsigClient.getLayer('a_layer_name', { user });
+const paramValue = layer.get('a_param_name', 'fallback_value');`}
     </CodeBlock>
   ),
 };

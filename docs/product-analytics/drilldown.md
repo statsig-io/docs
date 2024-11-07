@@ -104,6 +104,10 @@ Leveraging a Group-By makes it easy to disaggregate plotted metrics and events b
 
 A metric can be grouped-by event properties, user properties, experiment group, or feature gate group. 
 
+Group-By limits can be added by first adding a group-by, clicking the "..." button, and then selecting "Add Group-By Limit". You can use this to further drill down on your top X categories (up to 50). This feature is available for line charts, stacked-line charts, bar charts, and stacked-bar charts.
+
+When you have a Group-By applied, you can view the results as raw numbers, or as a percentage. 
+
 **Feature Gate  and Experiment Groups**
 
 At Statsig we believe in the power of experimentation. To that end, you can also select one of your Feature Gate or Experiments in order to split out a metric by the different groups in the selected test. 
@@ -130,7 +134,7 @@ To support this we allow you to define event-based cohorts. You can select an ev
 
 You can also define the window in which a user performed the event for inclusion, as well as filter to some property in order to be as granular as needed when defining the cohort. 
 
-We are planning to ship support for saving cohorts for reuse in early 2024. 
+You can also save cohorts to be able to easily reuse them. 
 
 ## Exploring a Metric Drilldown Chart
 

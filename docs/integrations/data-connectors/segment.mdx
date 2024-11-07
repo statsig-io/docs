@@ -93,13 +93,13 @@ If you are unable to connect to Segment via OAuth, you can still manually connec
     ![](https://user-images.githubusercontent.com/1315028/150830169-17564060-816b-4c5c-ade9-10bf6274265a.png)
 
 ## Working with Users
-Statsig will join incomming user identifiers to whichever [unit of randomization](/experiments-plus/experimentation/choosing-randomization-unit) you choose. This allows you to be flexible with your experimentation and enables testing on known (userID) and unknown (anonymousID) traffic as well as any custom identifiers your team may have (deviceID, companyID, vehicleID, etc).
+Statsig will join incoming user identifiers to whichever [unit of randomization](/experiments-plus/experimentation/choosing-randomization-unit) you choose. This allows you to be flexible with your experimentation and enables testing on known (userID) and unknown (anonymousID) traffic as well as any custom identifiers your team may have (deviceID, companyID, vehicleID, etc).
 
 ### User IDs and Custom IDs
 
-Statsig automatically detects the `event` and `userId` fields that are logged through your Segment events (see [`track`](https://segment.com/docs/connections/spec/track/) for an example). If you're running an experiment with the userId as your unit type, this `userID` should match the user identifer that you log with the Statsig SDK.
+Statsig automatically detects the `event` and `userId` fields that are logged through your Segment events (see [`track`](https://segment.com/docs/connections/spec/track/) for an example). If you're running an experiment with the userId as your unit type, this `userID` should match the user identifier that you log with the Statsig SDK.
 
-If you're using a [custom ID](https://docs.statsig.com/guides/experiment-on-custom-id-types) as the unit type for your experiment, you can provide this identifier using the key `statsigCustomIDs` as part of the Segment `properties` field as shown below.
+If you're using a [custom ID](/guides/experiment-on-custom-id-types) as the unit type for your experiment, you can provide this identifier using the key `statsigCustomIDs` as part of the Segment `properties` field as shown below.
 
 ```bash title="JSON Body"
 {
@@ -124,16 +124,25 @@ This is particularly useful for working with the [Segment anonymous ID](https://
 <img src="https://user-images.githubusercontent.com/125311112/279802493-6956e8f7-28f1-4ac9-88d1-96710240373b.png"/>
 
 #### Experimenting on anonymous traffic
-For example, if you're running experiments on anonymous users, you can use Segment's `anonymousId` as the unit of randomization. First, you will want to [add a new customer identifer to Statsig](https://docs.statsig.com/guides/experiment-on-custom-id-types#step-1---add-companyid-as-a-new-id-type-in-your-project-settings). In the above example, we call our new custom ID `segmentAnonymousId`. Then, when [initializing](https://docs.statsig.com/client/jsClientSDK#initialize-the-sdk) the Statsig SDK, if you have access to the Segment `anonymousId` you will want to pass it to Statsig as a custom ID. For example, your Statsig initialization may look like this:
+For example, if you're running experiments on anonymous users, you can use Segment's `anonymousId` as the unit of randomization. First, you will want to [add a new customer identifier to Statsig](/guides/experiment-on-custom-id-types#step-1---add-companyid-as-a-new-id-type-in-your-project-settings). In the above example, we call our new custom ID `segmentAnonymousId`. Then, when [initializing](/client/javascript-sdk) the Statsig SDK, if you have access to the Segment `anonymousId` you will want to pass it to Statsig as a custom ID. For example, your Statsig initialization may look like this:
 
 ```jsx
-const Statsig = require("statsig-js");
+import { StatsigClient } from '@statsig/js-client';
 
 await Statsig.initialize(
   "client-sdk-key",
-  { userID: "some_user_id",
-    customIDs: { segmentAnonymousId: analytics.user().anonymousId()} } 
+  
 );
+const client = new StatsigClient(sdkKey,
+  {
+    userID: "some_user_id",
+    customIDs: {
+      segmentAnonymousId: analytics.user().anonymousId()
+    }
+  },
+  { environment: { tier: "production" } }
+);
+
 ```
 
 You can access Segment's `anonymousId` using `analytics.user().anonymousId()` as [outlined in the Segment docs here](https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/identity/).

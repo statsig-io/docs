@@ -17,7 +17,7 @@ and provide it to the Statsig client via [StatsigOptions.dataAdapter](/client/js
 
 ### Synchronous Behavior (Cache)
 
-When callling `StatsigOnDeviceEvalClient.initalizeSync`, the `StatsigSpecsDataAdapter` will load values
+When calling `StatsigOnDeviceEvalClient.initializeSync`, the `StatsigSpecsDataAdapter` will load values
 from Cache and provide them to the client. The client will also call refresh in the background via
 `StatsigSpecsDataAdapter.getDataAsync`, leading to values lagging until the next time `initializeSync`.
 
@@ -25,7 +25,7 @@ In practice, this means that for the very first session, there will be no values
 
 ### Asynchronous Behavior (Network)
 
-When callling `StatsigOnDeviceEvalClient.initializeAsync`, the `StatsigSpecsDataAdapter` will load values
+When calling `StatsigOnDeviceEvalClient.initializeAsync`, the `StatsigSpecsDataAdapter` will load values
 from Cache and provide them to the client. The client will then block on a call to `StatsigSpecsDataAdapter.getDataAsync`,
 allowing the ability to await the latest values from Statsig.
 
