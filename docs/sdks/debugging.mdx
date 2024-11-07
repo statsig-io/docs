@@ -48,8 +48,7 @@ When debugging why a certain user got a certain value, there are a number of too
             - `NetworkNotModified`: the network response came back, but the cached values were already up to date for this user
             - `NoValues`: The sdk was initialized, but there were no values in the cache for the user (and nothing fetched from the network). Commonly caused by calling `initializeSync` rather than waiting for `initializeAsync`
             - `Loading`: Initialize was called, but the sdk is still waiting for the network request to resolve with updated values.  You should `await` initialization before issuing checks
-    </TabItem>
-    <TabItem value="client-new" label="Client SDKs (New)">
+
         Newer versions of the sdk will contain two tags: one regarding the initialization state of the sdk, and the other qualifying different sources for that value.
 
         So in addition to the reasons above, you may have:
@@ -70,8 +69,7 @@ When debugging why a certain user got a certain value, there are a number of too
         - `LocalOverride`: from an override set locally on the SDK via an override API
         - `Unrecognized`: the sdk was initialized, but this config did not exist in the set of values
         - `Uninitialized`: the sdk was not yet successfully initialized
-    </TabItem>
-    <TabItem value="server-new" label="Server SDKS (New)">
+
         In newer server SDKs, the reasons will be a combination of initialization source and evaluation reason:
         **Initialization Source**
         - `Network`: fetched at SDK initialization time from the network
