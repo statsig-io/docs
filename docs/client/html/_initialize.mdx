@@ -1,0 +1,10 @@
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+Simply providing your client API key in the url is enough to auto initialize the SDK.
+
+The HTML snippet we provide wraps an instance of the statsig javascript sdk.  You can access the instance of the SDK via `window.__STATSIG__.instance()` for all other methods.  If you are looking for additional customizations to the user object or options the SDK is initialized with, remove your kep from the url and see the [Javascript SDK Getting Started Guide](https://docs.statsig.com/client/javascript-sdk#getting-started).  You will need to create your own instance differently than if you were installing the sdk via npm:
+
+```js
+const client = new window.__STATSIG__.StatsigClient("client-test", { userID: "123"}, {});
+```
+

@@ -1,0 +1,79 @@
+---
+sidebar_label: HTML Snippet
+title: HTML Snippet SDK
+---
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
+
+import { FeaturePillList } from '@site/src/components/FeaturePillList';
+
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  PrefetchUsers,
+  ManualExposures,
+  Shutdown,
+  LocalOverrides,
+  StableID,
+  ParameterStore,
+  Instances,
+} from "./Templates/index.mdx";
+
+import Install from "./html/_install.mdx";
+import Initialize from "./html/_initialize.mdx";
+import CheckGate from "./html/_checkGate.mdx";
+import GetConfig from "./html/_getConfig.mdx";
+import GetExperiment from "./html/_getExperiment.mdx";
+import LogEvent from "./html/_logEvent.mdx";
+import MoreFAQs from "./html/_faqs.mdx";
+
+export const Builder = SDKDocsBuilder({
+  sections: [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/js-client-monorepo",
+      },
+    ],
+    [
+      GettingStarted,
+      {
+        sdkType: "html snippet",
+        install: <Install />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+      },
+    ],
+    [FAQ, { faqs: <MoreFAQs /> }],
+  ]
+})
+
+export const toc = Builder.toc
+
+<FeaturePillList
+    features={[
+      { name: "Feature Gates", link: "#feature-gates" },
+      { name: "Experiments", link: "#layers" },
+      { name: "Dynamic Configs", link: "#dynamic-configs" },
+      { name: "Layers", link: "#layers" },
+      { name: "Event Logging", link: "#event-logging" }
+    ]
+  }
+/>
+<>{Builder.result}</>
+

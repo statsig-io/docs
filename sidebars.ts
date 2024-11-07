@@ -75,6 +75,7 @@ const sidebars: SidebarsConfig = {
                 "server/deprecation-notices",
               ],
             },
+            "client/html-snippet",
             "client/javascript-sdk",
             "client/javascript-mono/ReactUsage",
             "client/androidClientSDK",
