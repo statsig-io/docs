@@ -145,3 +145,24 @@ You can find this dashboard in the Left Nav under Analytics -> Dashboards -> Pip
 ![image](https://github.com/user-attachments/assets/684ae633-8054-4f41-8443-7df63fe81253)
 
 This is built using Statsig Product Analytics - you can customize any of these charts, or build new ones yourself. A favorite is to add in your average compute cost, so you can turn slot time per experiment into $ cost per experiment.
+
+At the end of every Pulse load / DAG, we'll upload a single row to the `pipeline_overview` table for each job executed as part of that run. This table has the following schema:
+
+|Column | Type | Description|
+|-|-|-|
+| ts | timestamp | Timestamp at which the DAG was created. |
+| job_type | string | Job type (see [Pipeline Overview](https://docs.statsig.com/statsig-warehouse-native/pipeline-overview/)) |
+| metric_source_id | string | Only applicable for 'Unit-Day Calculations' jobs - the ID of the metric source |
+| assignment_source_id | string | The Assignment Source ID of the experiment for which Pulse was loaded. |
+| job_status | string | The final state of the job (`fail` or `success`) |
+| metrics | string | Metrics processed by the job |
+| dag_state | string | Final state of the DAG (`success`, `partial_failure`, or `failure`) |
+| dag_type | string | Type of DAG (`full`, `incremental`, `metric`, `power`, `custom_query`, `autotune`, `assignment_source`, `stratified_sampling`)|
+| experiment_id | string | ID of the experiment for which Pulse was loaded, if applicable |
+| dag_start_ds | string | Start of the date range being loaded |
+| dag_end_ds | string | End of the date range being loaded |
+| wall_time | number | Total time elapsed between DAG start and finish, in milliseconds |
+| turbo_mode | boolean | Whether the DAG was run in Turbo Mode |
+| dag_id | string | Internal identifier for the DAG |
+| dag_duration | number | Number of days in the date range being loaded |
+| is_scheduled | boolean | Whether the DAG was triggered by a scheduled run |
