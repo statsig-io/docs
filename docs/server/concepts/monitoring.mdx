@@ -15,24 +15,18 @@ The Statsig SDK uses multiple logging levels to communicate various types of inf
 - Debug: Detailed logs useful for new users onboarding with the SDK and for diagnosing potential issues, such as:
     - Messages when a feature gate does not exist
     - Tracking process flows within the SDK
-    - Network request statuses, showing requests and their responses for additional visibility
 - Info: General information about the SDK’s operation, typically relevant to regular usage, such as:
-    - Messages confirming successful SDK initialization
+    - Messages regarding SDK initialization, including source and version information
     - Notifications when the configuration store is populated
-    - Environment details, such as defaulting to production mode if no specific environment is set
 - Warning: Logs about unusual events that may impact functionality but are automatically managed and recovered, such as:
     - Messages indicating fallback behavior was triggered
     - Notifications about reconnection attempts to gRPC services
 - Error: Critical logs about issues that severely impact the SDK’s functionality, such as:
     - Messages about initialization failures or timeouts
-    - Notifications indicating gRPC fallback, suggesting gRPC is unavailable
-    - TLS file read errors that affect secure communication with gRPC
+    - Notifications indicating gRPC fallback, suggesting gRPC is unavailable or incorrect configuration
 
 ## SDK Metrics
 Some Statsig SDK provides built-in metrics to help you monitor its performance and impact on your application. The specific implementation may vary by programming language, refer to the documentation for the language-specific SDK interface.
-
-
-List of Metrics
 
 ### Metric Interface Methods
 
