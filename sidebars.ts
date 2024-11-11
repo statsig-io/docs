@@ -59,6 +59,7 @@ const sidebars: SidebarsConfig = {
               Concepts: [
                 "sdks/client-vs-server",
                 "client/concepts/user",
+                "server/concepts/monitoring",
                 "sdks/debugging",
                 "client/concepts/initialize",
                 "client/concepts/bootstrapping",
