@@ -40,12 +40,12 @@ When debugging why a certain user got a certain value, there are a number of too
     <TabItem value="client" label="Client SDKs">
 
         ### #1. Initialization State
-        For client SDKs, these reasons for the value you are seeing can be:
+        For client SDKs, the evaluation state can be:
             - `Network`: fetched at SDK initialization time from Statsig's servers
             - `Bootstrap`: from bootstrapping the client SDK with a set of values (often from a Statsig Server SDK instance, see [here](/client/javascript-sdk/init-strategies/#2-bootstrap-initialization))
             - `InvalidBootstrap`: the set of values was for a different user than the SDK was initialized with. These are discarded for analysis (See [Fixing InvalidBootstrap](#invalid-bootstrap))
             - `Cache`: loaded from the local storage cache for the current user, and network result was not available. A network request may be in-flight, but you performed a "check" before it returned.
-            - `Prefetch`: fetched from the `prefetchUsers` api (js-client only), see [here](client/javascript-sdk/#prefetching-users)
+            - `Prefetch`: fetched from the `prefetchUsers` api (js-client only), see [here](/client/javascript-sdk/#prefetching-users)
             - `Error`: an unknown error has occurred, and was logged to statsig servers
             - `Error:NoClient (js-client-only)`: No client was found in StatsigContext. Likely a call to a Statsig hook outside of a `<StatsigProvider>`
             - `NetworkNotModified`: A request to the Statsig network was successful, but the cached values were already up to date for this user
@@ -68,7 +68,7 @@ When debugging why a certain user got a certain value, there are a number of too
     <TabItem value="server" label="Server SDKS">
 
         ### #1. Initialization State
-        For server SDKs, reasons for the value you are seeing can be:
+        For server SDKs, the evaluation state can be:
         - `Network`: configurations fetched at SDK initialization time from Statsig's servers
         - `Bootstrap`: from bootstrapping the server SDK with a set of values
         - `DataAdapter`: derived from the provided data adapter or data store, see [here](https://docs.statsig.com/server/concepts/data_store/#dataadapter-or-datastore) for more
