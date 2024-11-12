@@ -32,16 +32,16 @@ When debugging why a certain user got a certain value, there are a number of too
 
 
 ### Evaluation Reason
-    **Evaluation reasons** are a way to understand why a certain value was returned for a given check. All SDKs provide the [Initialization State](/client/javascript-sdk/init-strategies/) - which is where your Statsig Client/Server instance is getting its data. Newer SDKs also provide a value source, which lets you know if an individual check was valid or overridden versus how you've initialized. These reasons are intended to be used for debugging and internal logging purposes only, and are sometimes updated in new SDK versions.
+    **Evaluation reasons** are a way to understand why a certain value was returned for a given check. All SDKs provide the [Data Source](/client/javascript-sdk/init-strategies/) - which is where your Statsig Client/Server instance is getting its data. Newer SDKs also provide a Reason, which lets you know if an individual check was valid or overridden versus how you've initialized. These reasons are intended to be used for debugging and internal logging purposes only, and are sometimes updated in new SDK versions.
 
-    <img src="/img/evaldetails2.png" width="500px" />
+    <img src="/img/evaldetails.png" width="500px" />
 
 <Tabs groupId="evalReasons">
     <TabItem value="client" label="Client SDKs">
 
-        ### #1. Initialization State
+        ### #1. Data Source
         For client SDKs, the evaluation state can be:
-        | State Name           | Description| Type | Debugging Suggestions|
+        | Source Name           | Description| Type | Debugging Suggestions|
         |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------|
         | `Network`              | Fetched at SDK initialization time from Statsig's servers.| Normal||
         | `Bootstrap`            | From bootstrapping the client SDK with a set of values (often from a Statsig Server SDK instance, see [here](/client/javascript-sdk/init-strategies/#2-bootstrap-initialization)). | Normal||
@@ -56,9 +56,9 @@ When debugging why a certain user got a certain value, there are a number of too
         | `Unrecognized` (old SDKs) | The SDK was initialized, but this gate/experiment/config did not exist in the set of values.| Error| Confirm the experiment or gate is configured in the Statsig console and you're using the correct API key.|
 
 
-        ### #2. Value Source (new SDKs only)
+        ### #2. Reason (new SDKs only)
         Newer versions of the sdk will contain both the above initialization state and the source of an individual value that was returned.
-        | State Name           | Description| Type | Debugging Suggestions|
+        | Reason Name           | Description| Type | Debugging Suggestions|
         |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------|
         |`Recognized`|The value was recognized in the set of configs the client was operating with |Normal ||
         |`Sticky`| The value is from `keepDeviceValue = true` on the method call|Normal ||
@@ -71,9 +71,9 @@ When debugging why a certain user got a certain value, there are a number of too
     </TabItem>
     <TabItem value="server" label="Server SDKS">
 
-        ### #1. Initialization State
+        ### #1. Data Source
         For server SDKs, the evaluation state can be:
-        | State Name           | Description| Type | Debugging Suggestions|
+        | Source Name           | Description| Type | Debugging Suggestions|
         |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------|
         | `Network`              | Configurations fetched at SDK initialization time from Statsig's servers.| Normal||
         | `Bootstrap`            | From bootstrapping the server SDK with a set of values.| Normal||
@@ -83,8 +83,8 @@ When debugging why a certain user got a certain value, there are a number of too
         | `Uninitialized`        | The SDK was not yet successfully initialized.| Error|  Revisit your [Initialization Strategy](/client/javascript-sdk/init-strategies/), as you're checking configs before initialization is complete. |
         | `Unrecognized` (old SDKs only) | The SDK was initialized, but this gate/experiment/config did not exist in the set of values.| Error| Confirm the experiment or gate is configured in the Statsig console and you're using the correct API key.|
 
-        ### #2. Value Source (new SDKs only)
-        | State Name           | Description| Type | Debugging Suggestions|
+        ### #2. Reason (new SDKs only)
+        | Reason Name           | Description| Type | Debugging Suggestions|
         |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------|
         | `LocalOverride`        | From an override set locally on the SDK via an override API.| Normal||
         | None                   | Successful evaluation.| Normal||
