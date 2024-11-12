@@ -24,13 +24,14 @@ This would look like the SQL below:
 SELECT
   unit_id,
   group_id,
-  MAX(is_latest_date, 1, 0) as value
+  if(passes_filter, 1, 0) as value
 FROM (
     SELECT
         *,
         date = MAX(date) over (partition by unit_id, group_id) as is_latest_date
     FROM source_data
 )
+WHERE is_latest_date = 1
 GROUP BY unit_id, group_id;
 
 -- Experiment
