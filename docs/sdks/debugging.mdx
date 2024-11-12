@@ -41,25 +41,29 @@ When debugging why a certain user got a certain value, there are a number of too
 
         ### #1. Initialization State
         For client SDKs, the evaluation state can be:
-            - `Network`: fetched at SDK initialization time from Statsig's servers
-            - `Bootstrap`: from bootstrapping the client SDK with a set of values (often from a Statsig Server SDK instance, see [here](/client/javascript-sdk/init-strategies/#2-bootstrap-initialization))
-            - `InvalidBootstrap`: the set of values was for a different user than the SDK was initialized with. These are discarded for analysis (See [Fixing InvalidBootstrap](#invalid-bootstrap))
-            - `Cache`: loaded from the local storage cache for the current user, and network result was not available. A network request may be in-flight, but you performed a "check" before it returned.
-            - `Prefetch`: fetched from the `prefetchUsers` api (js-client only), see [here](/client/javascript-sdk/#prefetching-users)
-            - `Error`: an unknown error has occurred, and was logged to statsig servers
-            - `Error:NoClient (js-client-only)`: No client was found in StatsigContext. Likely a call to a Statsig hook outside of a `<StatsigProvider>`
-            - `NetworkNotModified`: A request to the Statsig network was successful, but the cached values were already up to date for this user
-            - `Sticky (old SDKs only)`: persisted from a sticky evaluation previously
-            - `LocalOverride (old SDKs only)`: from an override set locally on the SDK via an override API
-            - `Unrecognized (old SDKs only)`: the sdk was initialized, but this gate/experiment/config did not exist in the set of values
+        | State Name           | Description| Type | Debugging Suggestions|
+        |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------|
+        | `Network`              | Fetched at SDK initialization time from Statsig's servers.| Normal||
+        | `Bootstrap`            | From bootstrapping the client SDK with a set of values (often from a Statsig Server SDK instance, see [here](/client/javascript-sdk/init-strategies/#2-bootstrap-initialization)). | Normal||
+        | `Prefetch`             | Fetched from the `prefetchUsers` API (js-client only), see [here](/client/javascript-sdk/#prefetching-users).| Normal||
+        | `NetworkNotModified`   | A request to the Statsig network was successful, but the cached values were already up to date for this user.| Normal||
+        | `Sticky` (old SDKs)    | Persisted from a sticky evaluation previously.| Normal||
+        | `LocalOverride` (old SDKs) | From an override set locally on the SDK via an override API.| Normal||
+        | `Cache`                | Loaded from the local storage cache for the current user, and network result was not available.| Normal| Not explicitly an error state, but you may be checking a config before initialize returns.|
+        | `InvalidBootstrap`     | The set of values was for a different user than the SDK was initialized with. These are discarded for analysis. | Error| See [Fixing InvalidBootstrap](#invalid-bootstrap)|
+        | `Error`                | An unknown error has occurred, and was logged to Statsig servers.| Error| Reach out to us in [Slack](https://statsig.com/slack) for support. |
+        | `Error:NoClient` (js-client-only)       | No client was found in your StatsigContext. | Error |  You've likely made a call to a Statsig hook outside of a `<StatsigProvider>`, verify your setup and try again. |
+        | `Unrecognized` (old SDKs) | The SDK was initialized, but this gate/experiment/config did not exist in the set of values.| Error| Confirm the experiment or gate is configured in the Statsig console and you're using the correct API key.|
+
 
         ### #2. Value Source (new SDKs only)
         Newer versions of the sdk will contain both the above initialization state and the source of an individual value that was returned.
-
-        - `Recognized`: the value was recognized in the set of configs the client was operating with
-        - `Unrecognized`: the value was not included in the set of configs the client was operating with
-        - `Sticky`: the value is from `keepDeviceValue = true` on the method call
-        - `LocalOverride`: the value is from a local override set on the sdk
+        | State Name           | Description| Type | Debugging Suggestions|
+        |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------|
+        |`Recognized`|The value was recognized in the set of configs the client was operating with |Normal ||
+        |`Sticky`| The value is from `keepDeviceValue = true` on the method call|Normal ||
+        |`LocalOverride`|The value is from a local override set on the sdk|Normal ||
+        |`Unrecognized`|The value was not included in the set of configs the client was operating with|Error|Confirm the experiment or gate is configured in the Statsig console and you're using the correct API key.|
 
         For example: `Network:Recognized` means the sdk had up to date values from a successful initialization network request, and the gate/config/experiment you were checking was defined in the payload.
 
@@ -69,21 +73,24 @@ When debugging why a certain user got a certain value, there are a number of too
 
         ### #1. Initialization State
         For server SDKs, the evaluation state can be:
-        - `Network`: configurations fetched at SDK initialization time from Statsig's servers
-        - `Bootstrap`: from bootstrapping the server SDK with a set of values
-        - `DataAdapter`: derived from the provided data adapter or data store, see [here](https://docs.statsig.com/server/concepts/data_store/#dataadapter-or-datastore) for more
-        - `Uninitialized`: the sdk was not yet successfully initialized
-        - `StatsigNetwork`: this refers to when custom proxy/grpc streaming has triggered the fallback behavior, thus falling back to statsig api.
-            * If no network config/overrides were used, the sdk default uses statsig apis with the reason Network - "StatsigNetwork" indicates a fallback.
-        - `LocalOverride (old SDKs only)`: from an override set locally on the SDK via an override API
-        - `Unrecognized (old SDKs only)`: the sdk was initialized, but this gate/experiment/config did not exist in the set of values
+        | State Name           | Description| Type | Debugging Suggestions|
+        |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------|
+        | `Network`              | Configurations fetched at SDK initialization time from Statsig's servers.| Normal||
+        | `Bootstrap`            | From bootstrapping the server SDK with a set of values.| Normal||
+        | `DataAdapter`          | Values come from the provided data adapter or data store, see [here](https://docs.statsig.com/server/concepts/data_store/#dataadapter-or-datastore) for more.| Normal||
+        | `LocalOverride` (old SDKs only) | From an override set locally on the SDK via an override API.| Normal||
+        | `StatsigNetwork`       | Custom proxy/GRPC streaming has triggered the fallback behavior, thus falling back to Statsig API. | Fallback | Review your [proxy setup](/server/concepts/forward_proxy/), your values are up-to-date but not using the expected methodology. |
+        | `Uninitialized`        | The SDK was not yet successfully initialized.| Error|  Revisit your [Initialization Strategy](/client/javascript-sdk/init-strategies/), as you're checking configs before initialization is complete. |
+        | `Unrecognized` (old SDKs only) | The SDK was initialized, but this gate/experiment/config did not exist in the set of values.| Error| Confirm the experiment or gate is configured in the Statsig console and you're using the correct API key.|
 
         ### #2. Value Source (new SDKs only)
-        - `LocalOverride`: from an override set locally on the SDK via an override API
-        - `Unrecognized`: this gate/experiment/config did not exist in the set of values
-        - `Unsupported`: the sdk does not support this type of condition type/operator. Usually this means the sdk is out of date and missing new features
-        - `error`: an error happened during evaluation
-        - no reason: successful evaluation
+        | State Name           | Description| Type | Debugging Suggestions|
+        |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------|
+        | `LocalOverride`        | From an override set locally on the SDK via an override API.| Normal||
+        | None                   | Successful evaluation.| Normal||
+        | `Unrecognized`         | This gate/experiment/config did not exist in the set of values.| Error| Confirm the experiment or gate is configured in the Statsig console and you're using the correct API key.|
+        | `Unsupported`          | The SDK does not support this type of condition type/operator. Usually, this means the SDK is out of date and missing new features.| Error| Update your SDK to the latest version.|
+        | `Error`                | An unknown error occured during evaluation.| Error| Reach out to us in [Slack](https://statsig.com/slack) for support.|
 
         So `Network` means the sdk was initialized with values from the network, and the evaluation was successful. `Network:Unrecognized`, means the sdk was initialized with values from the network, but the gate/config/experiment you were checking was not included in the payload.
 
