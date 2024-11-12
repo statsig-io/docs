@@ -33,7 +33,7 @@ Some Statsig SDK provides built-in metrics to help you monitor its performance a
 The following interface methods are provided by the Statsig SDK to track various metrics:
 
 - **Initialization (`init`)**: This method is called on sdk initialization and allows users to initialize their observability client (such as StatsD, OpenTelemetry, etc.), preparing the SDK to send metrics and logs to the chosen observability tool.
-- **Shutdown (`shutdown`)**: This method is called on sdk shutdown, and allow users to performe any actions to ensure graceful shutdown of the observability client, such as ensuring that any pending metrics or logs are properly handled and sent before the SDK is terminated.
+- **Shutdown (`shutdown`)**: This method is called on sdk shutdown, and allow users to perform any actions to ensure graceful shutdown of the observability client, such as ensuring that any pending metrics or logs are properly handled and sent before the SDK is terminated.
 - **Counter**: A method that counts occurrences of specific events, providing insight into event frequency.
 - **Gauge**: A method used to record point-in-time values, such as the number of active connections or other metrics that don’t accumulate over time.
 - **Distribution**: A method that tracks distributions of numerical data over time, such as latency or response times.
