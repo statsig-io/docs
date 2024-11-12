@@ -12,7 +12,7 @@ You have been running an experiment for a while. Your users are split across var
 With the Stop Assignment option, you can do exactly that. You can stop assignment for an experiment by clicking the Make Decision dropdown as shown below.
 
 :::info 
-You will need to configure [Persistent Assignment](/server/concepts/persistent_assignment) for this feature to work.
+You will need to configure [Persistent Assignment](/server/concepts/persistent_assignment) for this feature to work. If you don't configure this, people already exposed to the treatment groups will no longer get the treatment experience.
 :::
 
 ![Stop Assignment](/img/stop_assignment.png)
