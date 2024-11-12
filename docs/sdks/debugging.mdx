@@ -90,7 +90,7 @@ When debugging why a certain user got a certain value, there are a number of too
         | None                   | Successful evaluation.| Normal||
         | `Unrecognized`         | This gate/experiment/config did not exist in the set of values.| Error| Confirm the experiment or gate is configured in the Statsig console and you're using the correct API key.|
         | `Unsupported`          | The SDK does not support this type of condition type/operator. Usually, this means the SDK is out of date and missing new features.| Error| Update your SDK to the latest version.|
-        | `Error`                | An unknown error occured during evaluation.| Error| Reach out to us in [Slack](https://statsig.com/slack) for support.|
+        | `Error`                | An unknown error occurred during evaluation.| Error| Reach out to us in [Slack](https://statsig.com/slack) for support.|
 
         So `Network` means the sdk was initialized with values from the network, and the evaluation was successful. `Network:Unrecognized`, means the sdk was initialized with values from the network, but the gate/config/experiment you were checking was not included in the payload.
 
