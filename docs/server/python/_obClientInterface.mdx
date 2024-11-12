@@ -1,0 +1,58 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+```python
+class ObservabilityClient:
+    """
+    An interface for observability clients that allows users to plug in their
+    own observability integration for metrics collection and monitoring.
+    """
+
+    def init(self, *args, **kwargs):
+        """
+        Initializes the observability client with necessary configuration.
+
+        :param args: Positional arguments for initialization.
+        :param kwargs: Keyword arguments for initialization.
+        """
+
+    def increment(self, metric_name: str, value: int = 1, tags: Optional[Dict[str, Any]] = None) -> None:
+        """
+        Increment a counter metric.
+
+        :param metric_name: The name of the metric to increment.
+        :param value: The value by which the counter should be incremented (default is 1).
+        :param tags: Optional dictionary of tags for metric dimensions.
+        """
+
+    def gauge(self, metric_name: str, value: float, tags: Optional[Dict[str, Any]] = None) -> None:
+        """
+        Set a gauge metric.
+
+        :param metric_name: The name of the metric to set.
+        :param value: The value to set the gauge to.
+        :param tags: Optional dictionary of tags for metric dimensions.
+        """
+
+    def distribution(self, metric_name: str, value: float, tags: Optional[Dict[str, Any]] = None) -> None:
+        """
+        Record a distribution metric for tracking statistical data.
+
+        :param metric_name: The name of the metric to record.
+        :param value: The recorded value for the distribution metric.
+        :param tags: Optional dictionary of tags that represent dimensions to associate with the metric.
+        """
+
+    def should_enable_high_cardinality_for_this_tag(self, tag: str) -> bool:
+        """
+        Determine if a high cardinality tag should be logged
+
+        :param tag: The tag to check for high cardinality enabled.
+        """
+        return False
+
+    def shutdown(self) -> None:
+        """
+        Shutdown the observability client.
+        """
+```

@@ -1,0 +1,17 @@
+import { VersionBadge } from "../../sdks/_VersionBadge.mdx";
+
+## MetricsCollection <VersionBadge version={props.addedInVersion} includeAboveVersion={props.includeAboveVersion}/>
+
+The SDK provide an option to integrate with your preferred observability tool to monitor the SDK's behavior and performance. For detailed information and metrics emitted, please see **[sdk monitoring](https://docs.statsig.com/server/concepts/sdk_monitoring)** 
+
+#### Observability client interface
+The SDK provides the following interface methods to track various metrics:
+<div>
+{props.interface} 
+</div>
+
+#### Setup
+Example of setting up metrics collection with statsd
+<div>
+{props.code}
+</div>
