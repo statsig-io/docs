@@ -22,7 +22,7 @@ import {
   Reference,
   ProxyConfigs,
   Instances,
-  MetricsCollection,
+  SDKMonitoring,
 } from "./Templates/index.mdx";
 
 import Install from "./python/_install.mdx";
@@ -85,7 +85,7 @@ export const Builder = SDKDocsBuilder({
       },
     ],
     [Instances, { constructor: <MultiInstanceExample /> }],
-    [MetricsCollection, { addedInVersion: "0.49.0", interface: <ObClientInterface />, code: <ObClientInitExample /> }],
+    [SDKMonitoring, { addedInVersion: "0.49.0", interface: <ObClientInterface />, code: <ObClientInitExample /> }],
     [ProxyConfigs, {
       includeAboveVersion: true, addedInVersion: "0.39.0", tlsAddedInVersion: "0.45.0",
        code: <ForwardProxyExample />, tlsExample: <GrpcTLSExample/>
