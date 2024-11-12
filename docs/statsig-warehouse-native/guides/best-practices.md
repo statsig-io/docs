@@ -83,7 +83,7 @@ SELECT
     ts,
     dt
 FROM log_table
-WHERE dt BETWEEN `{statsig_start_date}` AND `{statsig_end_date}`
+WHERE dt BETWEEN {statsig_start_date} AND {statsig_end_date}
 ```
 
 resolves to
@@ -95,7 +95,7 @@ SELECT
     ts,
     dt
 FROM log_table
-WHERE dt BETWEEN DATE('2023-09-01') AND DATE('2023-09-03)
+WHERE dt BETWEEN DATE('2023-09-01') AND DATE('2023-09-03')
 ```
 
 This is a powerful tool since you can inject filters into queries with joins or CTEs and be confident that the initial scan will be pruned.

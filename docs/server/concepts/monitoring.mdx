@@ -32,12 +32,12 @@ Some Statsig SDKs provide built-in metrics to help you monitor its performance a
 
 The following interface methods are provided by the Statsig SDK to track various metrics:
 
-- **Initialization (`init`)**: This method allows users to initialize their observability client (such as StatsD, OpenTelemetry, etc.), preparing the SDK to send metrics and logs to the chosen observability tool.
-- **Shutdown (`shutdown`)**: This method is used to gracefully shut down the observability client when sdk is shutting down, ensuring that any pending metrics or logs are properly handled and sent before the SDK is terminated.
-- **Counter**: A method that counts occurrences of specific events, providing insight into event frequency.
+- **Initialization (`init`)**: This method is called on sdk initialization and allows users to initialize their observability client (such as StatsD, OpenTelemetry, etc.), preparing the SDK to send metrics and logs to the chosen observability tool.
+- **Shutdown (`shutdown`)**: This method is called on sdk shutdown, and allow users to perform any actions to ensure graceful shutdown of the observability client, such as ensuring that any pending metrics or logs are properly handled and sent before the SDK is terminated.
+- **Counter**: A method that tracks occurrences of specific events.
 - **Gauge**: A method used to record point-in-time values, such as the number of active connections or other metrics that don’t accumulate over time.
-- **Distribution**: A method that tracks distributions of numerical data over time, such as latency or response times, providing insights into variation and performance.
-- **Should Enable High Cardinality Tags**: This method allows users to define if certain high cardinality tags (which can generate large data volumes) should be enabled for detailed tracking. By default, these tags are disabled to control data load but can be selectively enabled as needed.
+- **Distribution**: A method that tracks distributions of numerical data over time, such as latency or response times.
+- **Should Enable High Cardinality Tags**: This method is called on high cardinality tags and allows users to define if certain high cardinality tags (which can generate large data volumes) should be enabled for detailed tracking. By default, all high cardinality tags are disabled.
 
 ### List of Metrics
 
@@ -46,8 +46,19 @@ Below is a list of the primary metrics currently available in the SDK:
 
 | **Metric Name**               | **Type**       | **Tags**                                          | **Description**                                                                                   |
 |-------------------------------|----------------|---------------------------------------------------|---------------------------------------------------------------------------------------------------|
-| `initialization`              | distribution   | `success`, `init_source`, `init_source_api`, `store_populated` | Tracks SDK initialization duration, including whether initialization was successful and if the configuration store was populated. |
-| `config_propagation_diff`     | distribution   | `source`, `source_api`, `lcut*`, `prev_lcut*`     | Measures the time difference in configuration propagation, providing insight into potential delays in updating configurations from different sources. |
-| `config_no_update`            | counter        | `source`, `source_api`                            | Tracks occurrences where no configuration updates were received, along with metadata on the source and version timestamps. |
+| `initialization`              | distribution   | `success`, `init_source`, `init_source_api`, `store_populated` | Tracks SDK initialization duration. |
+| `config_propagation_diff`     | distribution   | `source`, `source_api`, `lcut*`, `prev_lcut*`     | Measures the time difference between the last config updated time vs the time that sdk received the config. |
+| `config_no_update`            | counter        | `source`, `source_api`                            | Tracks occurrences of no configuration updates. |
+> **Note**: Tags marked with `*` (such as `lcut` and `prev_lcut`) are high cardinality tags.
 
-> **Note**: Tags marked with `*` (such as `lcut` and `prev_lcut`) are high cardinality tags. By default, these tags are disabled to reduce data volume but can be enabled as needed for detailed tracking.
+### Metric Tags
+
+High cardinality tags are tags that can generate large data dimensions when enabled. These tags are disabled by default, but can be enabled as through `Should Enable High Cardinality Tags` method on the observability client interface. High cardinality tags include:
+- `lcut`: The last configuration update timestamp.
+- `prev_lcut`: The previous configuration update timestamp.
+
+Metric Tags:
+- `source`: The source of the configuration update, such as network/bootstrap/datastore.
+- `source_api`: The API endpoint used to fetch the configuration update.
+- `success`: Indicates whether the initialization was successful.
+- `store_populated`: Indicates whether the configuration store was populated.
