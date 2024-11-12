@@ -90,6 +90,7 @@ const sidebars: SidebarsConfig = {
                 "client/dotnetSDK",
                 "client/javascript-mono/ExpoUsage",
                 "client/javascript-mono/ReactNativeUsage",
+                "client/javascript-mono/AngularUsage",
                 "client/rokuSDK",
                 "client/unitySDK",
                 {
