@@ -64,5 +64,7 @@ By default, Statsig only includes numerators from metrics with non-null, non-zer
     - **Only include units with a completed window** can be selected to remove units out of pulse analysis for this metric until the cohort window has completed
 - Include units which do not have a denominator
   - Control whether you want to include numerators from units which don't have a denominator value
+- Winsorization
+  - Specify a lower and/or upper percentile bound to winsorize at. These can be different thresholds for the numerator and denominator. All values below the lower threshold, or above the upper threshold, will be clamped to that threshold to reduce the outsized impact of outliers on your analysis
 - Baked Metrics
   - Baked metrics allow you to specify how long a metric needs to mature. This is common in situations like chargebacks or cancellations. Statsig will delay loading the data until the window has elapsed, and only calculate pulse results for that metric of a unit's metric has matured.
