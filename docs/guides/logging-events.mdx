@@ -3,13 +3,99 @@ sidebar_label: Logging Events
 title: Logging Events
 ---
 
-After creating your first gate, you want to start logging events in order for the system to understand what you care about. These events are then automatically derived into metrics and used to quantify the impact of your features on the health of the overall product.
+## Overview
 
-### How to log events
+The first step towards building better products is tracking events.  As the saying goes, "If you can't measure something, you can't understand it. If you can't understand it, you can't control it. If you can't control it, you can't improve it."
+Regardless of if you plan to use Statsig for web or product analytics, or for experimentation, defining the key events and metrics for your product is the best place to start.  Event data is consumable in [metrics explorer](/product-analytics/overview), can be turned into [custom metrics](/metrics/how-metrics-work), visualized in [dashboards](/product-analytics/dashboards), and used in [experiment results](/metrics/pulse) to show the impact of your experiments on the metrics you care about.
 
-There are a few ways Statsig can ingest events: via one of our Server/Client SDKs, connecting to a 3rd party like Segment, mParticle, or other Analytics provider listed in our [Integrations](/integrations/introduction), or via our metrics import http APIs.
+We try to make this easy in a few ways:
+1. Our web SDKs offer [autocaptured web analytics](/webanalytics/overview) to automatically log common events like pageviews, clicks, and more.
+2. We offer [integrations](https://docs.statsig.com/integrations/introduction) to connect your existing event data in Segment, mParticle, and other sources
+3. All of our client and server SDKs provide a simple `logEvent` API to instrument your own events in your app or webserver.
 
-#### Logging events via SDKs
+For general guidance on event logging and core concepts, read on, or jump to the [logging events via SDKs](#log-via-sdk) section.
+
+## Identifying Users and the "StatsigUser" object {#identifying-users}
+Many analytics platforms have a concept of "identifying" a user.  In Statsig, this is the StatsigUser object that is set a initialization time in client SDKs, or with each event in Server SDKs.
+
+The [`StatsigUser`](/client/concepts/user) is a set of properties that describe the user.  It roughly has the same json definition across all SDKs and integrations:
+
+```json
+{
+  userID,
+  customIDs,
+  email,
+  ip,
+  userAgent,
+  country,
+  locale,
+  appVersion,
+  custom,
+  privateAttributes,
+}
+```
+
+The `userID` field is reserved for a unique identifier for the user.  This should be the ID of the logged in user.
+
+`customIDs` are explained in "Group Analytics" below.
+
+The other fields are fairly self explanatory, and power not just targeting and evaluation for feature flags, but can also be used for custom metrics and data queries in metrics explorer.
+
+## Group Analytics {#group-analytics}
+Another core concept in analytics is the idea of different "groups".  For example, a user could belong to a certain company, organization, page, subreddit, facebook group, etc.
+
+In Statsig, groups are represented by the `customIDs` field.  This is a dictionary that can contain multiple IDs for a single user.  For example, a user could have the following customIDs:
+
+```json
+{
+  "userID": "123",
+  "customIDs": {
+    "companyID": "456",
+    "projectID": "abc",
+  }
+}
+```
+
+Statsig computes all metrics at the user level, but also for each custom identifier.  This means you can run experiments at a company level, where all users in a company will get the same experience, and compare the impact of company level metrics.
+
+You can also use metrics explorer to slice and dice metrics at the company level, rather than the user level, if you set up a customID for it. For example, in the Statsig project, I can look at the console page views at a user or company level in metrics explorer:
+
+![Viewing Console Page Views at a User Level](https://github.com/user-attachments/assets/67719f66-63cb-41c7-8d83-d2a567738a84)
+
+To set up a new "group" or "customID":
+
+1. Go to your [project settings] (https://console.statsig.com/settings)
+2. Locate the "Custom IDs" section and hit "edit"
+
+![CustomIDs in project settings](https://github.com/user-attachments/assets/e26cc341-13c2-4b78-898f-02d56bfc2474)
+
+3. Name the new customID and give it a description so other people in your project know what it means
+4. Start logging events with that customID in the `customIDs` field of the StatsigUser object
+
+NOTE: you must provide the set of all IDs on each StatsigUser object.  Statsig does not 
+
+## Best practices
+
+### Set all known IDs on each StatsigUser object
+In order to generate metrics for each user/group, Statsig needs to know the set of all IDs on each StatsigUser object.  Whether this is at client sdk initialization time, or when calling `logEvent` in a server SDK, you need to pass each identifier for the user for it to contribute to those metrics.
+
+If you use a logged out identifier for anonymous users, you should continue to pass that identifier even after the user logs in and you populate the logged in userID.  This will enable any gates or experiments on the logged out identifier to continue to bucket the user appropriately, and calculate metrics at both the logged out and logged in level.
+
+### Deduplicating custom events
+At the moment, Statsig does not provide a way to deduplicate custom events that you log.
+
+### Naming conventions
+
+The most important aspect is consistency - you should pick a convention and stick with it. Your events and metrics catalogue can quickly become messy and difficult to navigate when there are similar events with different conventions. Technically speaking, Statsig can accept any type of name convention - E.g.; "Page View", "PageView", "Page-view" and "page_view". Practically speaking, we recommend using "page_view" — that is, to avoid spacing, and to use all lowercase characters. One thing to note, special characters cannot be used in event names. Statsig drops events that match this regex/contain this character set: `"\\[\]{}<>#=;&$%|\u0000\n\r"`. This will ensure there are no duplicate entries with different casing, and ensure other downstream systems connected via integration can accept and process the event properly given this is the most universally-compatible convention. 
+
+### What to measure
+
+In general, if you're doing normal experimentation/product analytics, you'll want events that correspond to user actions. How you classify them will depend on what you're trying to do.  In general, keep the following in mind:
+1. Events should not have high cardinality if you don't have a lot of users. Otherwise, experimental/metrics data will be too sparse. E.g.; an eCommerce website should not log a separate event name for every single product page. But instead, should have a generic "product_page_view" event and include contextual page information within the `optional_event_metadata` object. 
+2. If you have a well-defined user funnel, you'll want each step to be a separate event.
+3. If you have a less defined user journey, you'll want to log generic events (eg. "page_view"), and add more details to either the value field (which should be the primary dimension of interest), or the `optional_event_metadata` object.
+
+## Logging events via SDKs {#log-via-sdk}
 
 All our SDKs provide a very simple API to log events. They look like this:
 
@@ -23,7 +109,8 @@ statsig.logEvent(
 
 Where event name describes a notable event in your product, like `sign_up`, `achievement_unlocked`, `add_to_cart`, `check_out`, etc.
 
-These events can optionally take an event value.  For instance, you can use this field to specify the type of achievement that was unlocked, or the name of the product that was added to cart, or the price of the item that was purchased.  
+These events can optionally take an event value.  For instance, you can use this field to specify the type of achievement that was unlocked, or the name of the product that was added to cart, or the price of the item that was purchased.
+In experiments, the "value" will generate an automatic breakdown of the event if there are fewer than 8 distinct values.
 
 And finally, the metadata field allows you to specify even more details about the event.  Here's an couple examples of how a ```logEvent``` call looks like:
 
@@ -52,41 +139,10 @@ StatsigClient.LogEvent(
 );
 ```
 
-:::info Log as much as you want
-We encourage you to log as many events as you can and want. The more events there are, the more holistic picture you will get when you are building and releasing new features.
-:::
-
 :::info Size limits on event payload
 Note that there are limits to how large each event field can be.
 Object fields have an overall limit of 4096 on its stringified length.
 String fields have a limit of 64 on its length.
 :::
 
-### Best practices
-
-#### Naming conventions
-
-The most important aspect is consistency - you should pick a convention and stick with it. Your events and metrics catalogue can quickly become messy and difficult to navigate when there are similiar events with different conventions. Technically speaking, Statsig can accept any type of name convention - E.g.; "Page View", "PageView", "Page-view" and "page_view". Practically speaking, we recommend using "page_view" — that is, to avoid spacing, and to use all lowercase characters. One thing to note, special characters cannot be used in event names. Statsig drops events that match this regex/contain this character set: `"\\[\]{}<>#=;&$%|\u0000\n\r"`. This will ensure there are no duplicate entries with different casing, and ensure other downstream systems connected via integration can accept and process the event properly given this is the most universally-compatible convention. 
-
-#### What to measure
-
-In general, if you're doing normal experimentation/product analytics, you'll want events that correspond to user actions. How you classify them will depend on what you're trying to do.  In general, keep the following in mind:
-1. Events should not have high cardinality if you don't have a lot of users. Otherwise, experimental/metrics data will be too sparse. E.g.; an eCommerce website should not log a separate event name for every single product page. But instead, should have a generic "product_page_view" event and include contextual page information within the `optional_event_metadata` object. 
-2. If you have a well-defined user funnel, you'll want each step to be a separate event.
-3. If you have a less defined user journey, you'll want to log generic events (eg. "page_view"), and add more details to either the value field (which should be the primary dimension of interest), or the `optional_event_metadata` object.
-
-### Where do these events end up?
-
-The events you log is aggregated and analyzed by Statsig to give you useful metrics.  These can be viewed in the [Metrics Tab](/metrics).
-
-![Screen Shot 2022-06-17 at 11 46 12 AM](https://user-images.githubusercontent.com/74584483/174369069-d829d97e-8eed-4d2e-8207-e6dd92de27ff.png)
-
-Statsig also provides a view into a set of derived user metrics like DAU, WAU, Stickiness, etc. just based on the events you log.  Here's a view of those metrics available in the **Charts** page in Metrics Tab.
-
-![Screen Shot 2022-06-17 at 11 47 14 AM](https://user-images.githubusercontent.com/74584483/174371316-cd1443a5-70a1-483c-8d36-a16b4d451891.png)
-
-### Metrics for Experiments
-
-Metrics will also make their way into your experiment results.  When analyzing the impact of one of your experiments, you will need to send Statsig event data to join with the different groups that users were assigned to in an experiment.  The experiment results section will then show the difference in metrics between groups, and whether that difference is considered "Statistically Significant" - or Statsig, as we like to say :)
-
-![Screen Shot 2022-06-17 at 11 48 34 AM](https://user-images.githubusercontent.com/74584483/174374052-44804949-d565-499a-9555-807646439f89.png)
+See the [SDK reference](/sdks/getting-started) for more details on logging events in the language of your choice.

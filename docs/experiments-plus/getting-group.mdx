@@ -4,7 +4,7 @@ sidebar_label: Getting the Group
 slug: /experiments-plus/getting-group
 ---
 
-One common misconception when working with experiments on Statsig is trying to check the experiment group in code.  Checking the experiment group _in code_ is actually an anti-pattern.  Its not necessary with Statsig, and it will limit your ability to quickly test different variants.
+One common misconception when working with experiments on Statsig is trying to check the experiment group in code.  Checking the experiment group _in code_ is actually an anti-pattern.  It's not necessary with Statsig, and it will limit your ability to quickly test different variants.
 
 Experiment groups are very useful for understanding what a set of parameters represents in the Statsig console.  Comparing "Sorted Long List" vs "Default Search Results"
 is easier to discuss than trying to understand what the `sorted = true, length = 10` parameters represent.
@@ -20,7 +20,7 @@ In code, if you tried to use experiment groups, your function might end up looki
 ```ts
 async function getSearchItems(user: StatsigUser, searchTerm: String): String[] {
     const results = index.get(searchTerm);
-    const experiment = await statsig.getExperiment(user, 'search_results');
+    const experiment = statsig.getExperimentSync(user, 'search_results');
     // NOTE - these APIs don't actually exist - this is for the sake of an example
     if (experiment.groupName === 'Sorted Long List') {
       return results.sort().slice(10);
@@ -42,7 +42,7 @@ So instead, this is what the code would look like using experiment parameters di
 ```ts
 async function getSearchItems(user: StatsigUser, searchTerm: String): String[] {
     let results = index.get(searchTerm);
-    const experiment = await statsig.getExperiment(user, 'search_results');
+    const experiment = statsig.getExperimentSync(user, 'search_results');
     results = experiment.get("sorted", false) ? results.sort() : results;
     const numItems = experiment.get("length", 0);
     return numItems > 0 ? results.slice(numItems) : results;

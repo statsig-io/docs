@@ -9,18 +9,7 @@ Insights shows the impact that active experiments and feature gates are having o
 Insights presents a reverse perspective of the [Pulse](/pulse) view. While Pulse measures the impact of a new feature on all your metrics, Insights allows you to focus on a single metric and identify which tests are impacting it the most. 
 
 
-## How to read Insights
-1.	Navigate to the Insights section on the Statsig console: https://console.statsig.com/ 
-2.	Select a metric that you want to observe from the selector drop down at the top of the page. 
-3.	(Cloud only) Select the time window that you want to observe. 
-4.	The **Feature Lifts** panel shows two numbers. The number in parentheses is the absolute change in the metric driven by the users in the test group. The delta % is percentage change relative to the topline value of the metric. 
-
-In the example below, the **new_search_algo_v2** is driving an additional 65,070 **add_to_cart** events per day over the last 30 days.  This is equivalent to a 5.98% average daily lift in this metric, which has oscillated between 1M and 1.3M events per day during this time period. 
-
-![image](https://user-images.githubusercontent.com/90343952/167211755-4e87e8e2-2bb4-4bd6-a50f-56f3e5ce68b0.png)
-
-
-## How lifts are calculated (for Cloud)
+# How lifts are calculated (for Cloud)
 
 The impact of an active experiment on the overall topline metric depends on:
 * The metric lifts caused by the experiment.  This is the test vs. control comparison you see in Pulse.
@@ -31,7 +20,7 @@ We calculate **Topline Effect %** and **Absolute Effect** to measure the impacts
 ![Screen Shot 2024-05-30 at 10 48 43 AM](https://github.com/statsig-io/docs/assets/167142706/09212042-3d75-41c4-bbb1-d92ae303b880)
 
 
-**Count and sum metrics (event_count, event_dau, sum)**
+**Count and sum metrics (event_count, sum)**
 
 The absolute impact is derived directly from the experiment results:
 
@@ -57,8 +46,18 @@ The relative impact for ratio metrics is obtained by dividing the absolute impac
 **Confidence intervals**
 To determined whether the impact from a given experiment is statistically significant, we calculate the confidence intervals for each of the impact equations shown above.  The variance is obtained using the Delta method. This properly accounts for the correlation between the various numerator and denominator terms and leverages Taylor expansion to linearize expressions containing non-linear combinations of experiment variables.   
 
+### How to read Insights
+1.	Navigate to the Insights section on the Statsig console: https://console.statsig.com/ 
+2.	Select a metric that you want to observe from the selector drop down at the top of the page. 
+3.	Select the time window that you want to observe.
+4.	With Relative Lifts toggle ON, it will show the delta that is observed in gate/experiment. Note that all results are without CUPED.
+5.	With Relative Lifts toggle OFF, it will show you the daily topline delta. You can find how these numbers are calculated below.
 
-## How lifts are calculated (for Warehouse Native)
+In the example below, the **product_larger_image** is driving an additional 94 **dau** per day over the last 30 days.  This is equivalent to a 0.16% average daily lift in this metric. 
+
+![Screen Shot 2024-10-18 at 5 18 42 PM](https://github.com/user-attachments/assets/cb87479b-2468-49ec-9733-ddeac9b2fa0e)
+
+# How lifts are calculated (for Warehouse Native)
 
 We calculate **Relative Effect %** and **Absolute Effect** to measure the impacts. The exact calculation depends on whether the metric represents an absolute quantity or a ratio.
 
@@ -83,3 +82,12 @@ The relative effect and absolute effect are derived directly from the experiment
 ![Screen Shot 2024-05-30 at 1 13 06 PM](https://github.com/statsig-io/docs/assets/167142706/015158e6-fb8d-47cb-b1ef-10c8b8670d53)
 
 where *&mu;<sub>X,t</sub>* and *&mu;<sub>Y,t</sub>* represent the average numerator and denominator values for the test group, and similarly for the control group.
+
+### How to read Insights
+1.	Navigate to the Insights section on the Statsig console: https://console.statsig.com/ 
+2.	Select a metric that you want to observe from the selector drop down at the top of the page. 
+3.	The **Feature Lifts** panel shows two numbers. The number in parentheses is the absolute change in the metric driven by the users in the test group. The delta % is percentage change relative to the topline value of the metric. 
+
+In the example below, the **new_search_algo_v2** is driving an additional 65,070 **add_to_cart** events per day over the last 30 days.  This is equivalent to a 5.98% average daily lift in this metric, which has oscillated between 1M and 1.3M events per day during this time period. 
+
+![image](https://user-images.githubusercontent.com/90343952/167211755-4e87e8e2-2bb4-4bd6-a50f-56f3e5ce68b0.png)

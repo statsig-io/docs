@@ -12,6 +12,6 @@ You can configure Organization-level Experiment and Gate policies via your **Org
 
 Read more about- 
 
-- [Experiment Policy](https://docs.statsig.com/org-admin/experiment_policy)
-- [Feature Gate Policy](https://docs.statsig.com/org-admin/gates_policy) 
+- [Experiment Policy](/org-admin/experiment_policy)
+- [Feature Gate Policy](/org-admin/gates_policy) 
 

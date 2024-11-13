@@ -3,13 +3,19 @@ import { VersionBadge } from "../../sdks/_VersionBadge.mdx";
 ## Proxy Configurations <VersionBadge version={props.addedInVersion} includeAboveVersion={props.includeAboveVersion}/>
 
 Advance SDK Network setup, provide options to configure network protocol and proxy address for individual network endpoint. 
-This option is provided for better integration with **[Statsig Forward Proxy](https://docs.statsig.com/server/concepts/forward_proxy)** 
+This option is provided for better integration with **[Statsig Forward Proxy](/server/concepts/forward_proxy)** 
 
+<div>
+#### Authentication <VersionBadge version={props.tlsAddedInVersion}/>
+With more advanced requirements on security, we also support TLS and mTLS for grpc streaming (`protocol=GRPC_WEBSOCKET`)
+You need to configure ProxyConfig for each endpoint
+{props.tlsExample}
+</div>
 <div>
 {props.installation && (
   <div>
 
-  #### Installation
+  <h4>Installation</h4>
   We are still in the testing phase of this feature. Package deployment / installation will be different.
   <div>
   {props.installation}
@@ -19,7 +25,7 @@ This option is provided for better integration with **[Statsig Forward Proxy](ht
 )}
 </div>
 
-#### Initialization
+<h4>Initialization</h4>
 To setup grpc streaming for download config spec. And use default behavior for get_id_lists and log_events endpoints.
 <div>
 {props.code}

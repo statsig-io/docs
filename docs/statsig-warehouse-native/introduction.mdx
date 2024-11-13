@@ -1,7 +1,7 @@
 ---
 title: Getting Started with Statsig Warehouse Native
 slug: /statsig-warehouse-native/introduction
-sidebar_label: Warehouse Native
+sidebar_label: Getting Started
 description: Set up your first Statsig Warehouse Native project
 ---
 
@@ -38,60 +38,58 @@ export const ArrowButton = ({ link }) => (
   </IconButton>
 );
 
-Statsig Warehouse Native is an enterprise-grade experimentation platform that
-runs analysis in your data warehouse. It integrates easily with your existing
-datasets and any source of experiment assignment data - including a powerful
-integration with Statsig's SDKs and real-time logging infrastructure.
+Statsig Warehouse Native is an enterprise-grade experimentation platform that runs analysis in your data warehouse. It integrates easily with your existing datasets and any source of experiment assignment data – including a powerful integration with Statsig's SDKs and real-time logging infrastructure.
 
-Warehouse Native has a shared core feature set with Statsig Cloud. This section of the documentation deals with specifics around setting up and running experiments on top of your warehouse.
+Warehouse Native shares core features with Statsig Cloud but focuses on specific scenarios around running experiments on top of your warehouse.
 
 ### Use Cases for Statsig Warehouse Native
 
-- An end-to-end experimentation platform covering targeting, experiment setup and assignment, and analysis
-  - Includes Feature Flagging, Automated/Protected Rollouts, Native Holdouts, Mutual Exlusion, and the analysis tools below
-- A modern statistical engine to run analysis on top of existing experiment from third-party or internal systems
-  - Statsig provides a complete suite of experiment measurement tools, ranging from user accounting to percentiles, and offers the most experimentation tools on the market - including CUPED, Stratified Sampling, Switchback Tests, and more
+- End-to-end experimentation platform covering targeting, experiment setup and assignment, and analysis.
+  - Features include Feature Flagging, Automated/Protected Rollouts, Native Holdouts, Mutual Exclusion, and comprehensive analysis tools.
+- Modern statistical engine for running analyses on existing experiments from third-party or internal systems.
+  - Statsig offers a full suite of experiment measurement tools, including CUPED, Stratified Sampling, Switchback Tests, and more.
 
-Statsig also offers a cloud solution, which is an ideal fit for customers who are primarily using Statsig for Feature Flagging, or don't have a mature data warehouse and/or metric catalog. Our [support team](mailto:support@statsig.com) can help you decide if Statsig Warehouse Native or Statsig Cloud is a better fit for your experimentation needs.
+If you’re unsure whether Statsig Warehouse Native or Statsig Cloud is a better fit for your experimentation needs, [reach out to our support team](mailto:support@statsig.com), and we'll help you decide.
 
 ## How It All Works
 
-Statsig Warehouse Native runs experimentation compute jobs in your data warehouse, leveraging your core datasets in order to calculate metrics and enrich experiment analysis that much your existing source of truth.
+Statsig Warehouse Native runs experimentation compute jobs directly in your data warehouse, using your existing datasets to calculate metrics and enrich experiment analysis based on your data.
 
-### SDKs
+### SDK Integration
 
-Using SDKs with Statsig Warehouse Native is identical to integrating with Statsig Cloud. Statsig's SDKs cover dozens of languages, and are used by thousands of customers. The basic steps are to:
+Using [Statsig SDKs](/sdks/getting-started) with Statsig Warehouse Native is similar to integrating with Statsig Cloud. Here’s a quick overview of the process:
 
-- Set up targeting and experiments in the Statsig console
-- Initialize the Statsig SDK on a client or server-side application
-- Call the Statsig SDK to get user targeting and assignment
-  - Provide a logging callback to log to your own warehouse, or
-  - Leverage Statsig's real-time infra to get instant diagnostics and roll out features safely with real-time guardrail reports
+1. **Set Up Targeting and Experiments**: Create and manage experiments using the Statsig console.
+2. **Initialize the SDK**: Integrate the Statsig SDK on your client or server-side applications.
+3. **Targeting and Assignment**: Call the Statsig SDK to assign users to variants.
+   - Optionally provide a logging callback to store logs in your warehouse or use Statsig's real-time infrastructure for instant diagnostics and safe rollouts.
 
-The resulting assignment (and optional event logging) data ends up in your warehouse, where it can be connected to other datasets in order to generate experiment analyses. If you choose to log to Statsig, data is exported on-demand for real-time analysis, as well as in hourly/daily batch jobs.
+The resulting assignment and (optional) event logging data ends up in your warehouse, where you can connect it to other datasets for analysis. If you log to Statsig, data is exported on-demand for real-time analysis or in scheduled batch jobs.
 
-### Analysis
+### Experiment Setup
 
-Statsig's data analysis runs in your data warehouse. All of the queries, intermediate datasets, and results that Statsig runs will be available in your warehouse for auditing and any custom analysis.
+Running experiments on Warehouse Native involves several key steps:
 
-Running experiments looks like:
+1. **Connect Statsig to Your Warehouse**: Integrate Statsig with your data warehouse to access relevant datasets.
+2. **Create Metrics**: Define the input data and configure experiment metrics.
+3. **Log Exposures**: Log experiment exposures with Statsig or point to existing assignments in your warehouse.
+4. **State Your Hypothesis**: Formulate a hypothesis and choose scorecard metrics to evaluate the experiment.
+5. **Run Pulse Analysis**: Execute a Pulse analysis to test your hypotheses and measure the impact on scorecard metrics.
 
-- Connecting Statsig to your warehouse
-- Creating metrics by pointing to input data and configuring experiment metrics
-- Creating an experiment and logging exposures with Statsig, or pointing to existing assignments that you already have
-- Stating a hypothesis, and picking scorecard metrics to evaluate your hypothesis
-- Running a Pulse analysis to test your hypotheses and measure the impact your change had on your scorecard metrics
-- Using Statsig's advanced diagnostics, explore tools, and meta-analysis to start building and sharing organizational knowledge
+### Advanced Analysis Tools
 
-In addition to experiment analysis, Statsig also offers Metrics Explorer - a powerful tool to visualize your experiment metrics over your entire population and drill down into user behavior. This is part of a broad suite of product observability that comes with Statsig as an experimentation platform, with features like Session Replay, advanced filtering, and dashboards.
+Statsig’s [data analysis tools](/pulse/read-pulse) run directly in your data warehouse. All queries, intermediate datasets, and final results generated by Statsig will be available in your warehouse for auditing and custom analysis.
+
+- **Pulse Analysis**: Pulse helps you test your hypotheses and measure the impact of changes on your scorecard metrics.
+- **Metrics Explorer**: Visualize experiment metrics for your entire population and drill down into user behavior. Metrics Explorer is part of a broader suite of product observability tools, including Session Replay, advanced filtering, and custom dashboards.
 
 ## Next Steps
 
 :::info
-Don't get blocked! We love to help people use Statsig. Reach out to support or chat with us in Slack!
+Don't get blocked! We love helping people use Statsig. Reach out to support or chat with us in Slack!
 :::
 
-Check our getting started guides to start running or analyzing an experiment in minutes.
+Check our getting started guides to start running or analyzing an experiment in minutes:
 
 <div
   style={{
@@ -118,3 +116,5 @@ Check our getting started guides to start running or analyzing an experiment in 
     link="features/statistics"
   ></OutlinedCard>
 </div>
+
+---

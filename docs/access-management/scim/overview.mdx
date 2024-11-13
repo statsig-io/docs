@@ -1,0 +1,64 @@
+---
+sidebar_label: Overview
+title: SCIM User Provisioning
+---
+
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
+
+# SCIM User Provisioning
+
+:::info
+
+### Open Beta
+
+SCIM is now available in Open Beta. Contact us to get started. For support, reach out to us on Slack.
+:::
+
+## Introduction
+
+SCIM (System for Cross-domain Identity Management) is a standardized protocol that simplifies the automation of user provisioning and management across multiple platforms.
+By integrating SCIM with your preferred Identity Provider (IdP), such as Okta or Microsoft Entra,
+you can securely and efficiently manage user creation, updates, and de-provisioning within Statsig.
+We currently only offer an Okta SCIM integration.
+
+## How To Obtain SCIM Auth Key
+
+![img](/img/okta_scim_steps/scim-access.png)
+
+1. Navigate to Organization Access Management:
+Go to Settings > Organization > Organization Info > Access Management.
+2. Generate a Key:
+If SCIM is not yet enabled, generate a new authentication key.
+3. Deactivate the Key:
+To disable the key, select Deactivate.
+4. Regenerate the Key:
+If you suspect the key has been compromised, you can regenerate a new one to replace it.
+
+
+
+## Current SCIM Offering
+
+We are actively developing SCIM functionality and have rolled out the following features:
+
+- Statsig Org level provisioning: Create new users and deactivate existing users in Statsig
+- Okta Full Name Sync: Full Name synced from Okta to Statsig
+- Statsig Org User Imports: Import existing users on Statsig to Idp
+- Okta Org Role management: Users' organization roles can be managed in Okta
+- Okta Project Role management: Users' project roles can be managed in Okta
+
+## Features Currently Not Available
+
+The following features are under development and will be released in future updates
+
+- Statsig Team level provisioning: Users can be assigned to teams and roles in Statsig
+
+## Changelog
+
+| Date     | Title                            | Log                                                                                                      |
+| -------- | -------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| 10/3/24  | Okta Org-level User Provisioning | - Users can be imported from Statsig into Okta<br/>- Users can be provisioned and deprovisioned via Okta |
+| 10/12/24 | Okta Full Name Sync              | - Full Name synced from Okta to Statsig                                                                  |
+| 10/16/24 | Project x Role                   | - Role at each Project level of Statsig synced with Okta Group Role                                      |
+| 10/23/24 | Self-serve SCIM UI               | - Clients can generate and manage SCIM auth key on Console UI                                            |
+| 10/24/24 | Okta Org Role management         | - Users' organization roles can be managed in Okta                                                       |

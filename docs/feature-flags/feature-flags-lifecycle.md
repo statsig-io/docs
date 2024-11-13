@@ -79,9 +79,7 @@ Confirm that the gate has been set to either **Launched** or **Disabled** (i.e. 
 
 - **Launched or Disabled → Archived:** you’ll want to update this status to mark that the gate has been removed from your codebase, so that it will be filtered out from the list of candidate gates to be cleaned up for the future (as part of step #2)
   - Go to the feature gate page and click on “…” menu on the upper right corner to select “Archive”. 
-  
-_Note: You can only archive feature gates that have not had any checks in the last 7 days, and archival cannot be undone._
-  
+    
 - To find _all_ gates that should be marked as **Archived**:
     - Go to Feature Gates catalog
       - Click the filter icon:
@@ -100,10 +98,10 @@ _Note: You can only archive feature gates that have not had any checks in the la
 - Consistent with any other changes to a gate, anyone will be able to make a change, but it will require the same review process for the change to be approved.
 
 **Once my gate has been launched or disabled, can I re-enable rule evaluation for it?**
-- Yes, once the feature gate is **Launched** or **Disabled**, you will see a banner with an option to re-enable rule evaluation. However, please note that once the feature gate has been **Archived**, it cannot be reversed.
+- Yes, once the feature gate is **Launched** or **Disabled**, you will see a banner with an option to re-enable rule evaluation.
 
 **Just in case...What value will be returned if an archived feature gate is ever referenced from a codebase?**
-- In that case, Statsig will return whatever the last default value was (if the flag was Launched or Disabled) or by default FALSE (if the flag went from In Progress -> Archived, and therefore never had a default value).
+- In that case, Statsig will return false. Unarchive the gate and make it permanent if you will need to reference it indefinitely (i.e. from an older version of a mobile app that still has users).
 
 **When would I delete a feature gate?**
 - We recommend that you use Delete only for mistakes. Deletion removes the gate and its history from Statsig, and having your Feature Gate Catalog retain history of your gates will help you see valuable information like velocity of your team’s feature releases, # of launches decisions made, etc.

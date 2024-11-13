@@ -7,7 +7,7 @@ import { VersionBadge } from "../../sdks/_VersionBadge.mdx";
   <code>{props.addedInVersion}</code> supports generating the{" "}
   <code>initializeValues</code> needed to bootstrap a Statsig Client SDK
   preventing a round trip to Statsig servers. This can also be used with web [
-  <code>statsig-js</code>, <code> statsig-react</code>] SDKs to perform server
+  <code>@statsig/js-client</code>, <code>@statsig/react-bindings</code>] SDKs to perform server
   side rendering (SSR).
 </div>
 
@@ -21,7 +21,7 @@ If you want to use conditions like IP, or conditions which are inferred from the
 Browser Name or Version, OS Name or Version, Country, you must manually set the `ip` and `userAgent`
 field on the user object when calling <props.signature />.
 
-### Working with StableID
+### Working with stableID
 
 There is no auto-generated `stableID` for device based experimentation,
 since the server generates the initialize response without any information from the client SDK.

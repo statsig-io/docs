@@ -19,7 +19,7 @@ If your website uses canvas elements to display content, we don't currently supp
 
 ## Option 1 - No code - Add Javascript Snippet to your website
 ```
-<script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@1/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=[YOUR_CLIENT_KEY]"></script>
+<script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=[YOUR_CLIENT_KEY]"></script>
 ```
 
 Get YOUR_CLIENT_KEY from Project Settings -> Keys & Environments. Reveal the Client API Key, copy, and paste it over the [YOUR-API-KEY] in the snippet above.
@@ -57,13 +57,13 @@ yarn add @statsig/js-client @statsig/session-replay @statsig/web-analytics
 **npm**
 
 ```jsx
-npm install @statsig/js-client @statsig/session-replay @statsig/web-analytics @statsig/react-bindings
+npm install @statsig/session-replay @statsig/web-analytics @statsig/react-bindings
 ```
 
 **yarn**
 
 ```jsx
-yarn add @statsig/js-client @statsig/session-replay @statsig/web-analytics @statsig/react-bindings
+yarn add @statsig/session-replay @statsig/web-analytics @statsig/react-bindings
 ```
 
   </TabItem>
@@ -71,7 +71,7 @@ yarn add @statsig/js-client @statsig/session-replay @statsig/web-analytics @stat
 
 We recommend using autocapture as a great way to get started, but if you don’t want to automatically log and send events, you can remove the runStatsigAutoCapture option from the Javascript snippet or skip the `@statsig/web-analytics` package installation.
 
-Next, following the [instructions for the Statsig Javascript SDK](https://docs.statsig.com/client/javascript-sdk), initialize Statsig with your SDK key, [user](https://docs.statsig.com/client/concepts/user) and options:
+Next, following the [instructions for the Statsig Javascript SDK](/client/javascript-sdk), initialize Statsig with your SDK key, [user](/client/concepts/user) and options:
 
 <Tabs
   groupId="session-replay-js-framework"
@@ -85,6 +85,7 @@ Next, following the [instructions for the Statsig Javascript SDK](https://docs.s
 ```jsx
 import { StatsigClient } from '@statsig/js-client';
 import { runStatsigSessionReplay } from '@statsig/session-replay';
+import { runStatsigAutoCapture } from '@statsig/web-analytics';
 
 const client = new StatsigClient(sdkKey,
 	{ userID: "some_user_id" },
@@ -100,9 +101,9 @@ await client.initializeAsync();
   <TabItem value="react">
 
 ```jsx
-import { StatsigClient } from '@statsig/js-client';
 import { runStatsigSessionReplay } from '@statsig/session-replay';
-import { StatsigProvider } from '@statsig/react-bindings';
+import { runStatsigAutoCapture } from '@statsig/web-analytics';
+import { StatsigClient, StatsigProvider } from '@statsig/react-bindings';
 
 const client = new StatsigClient(sdkKey,
 	{ userID: "some_user_id" },

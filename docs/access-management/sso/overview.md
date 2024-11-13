@@ -39,7 +39,7 @@ Once you have obtained all of the information mentioned above:
 
 ![image](https://user-images.githubusercontent.com/75151332/128761399-0cd83086-2f7b-4861-a463-da596c327f17.png)
 
-Users that sign in through an SSO link will automatically join any Projects that have SSO enabled with the same OIDC Provider, and have access only to those Projects. Users that sign in through an SSO link will also not be able to edit or view any of their personal account settings.
+Users that sign in through an SSO link will automatically join any Projects that have SSO enabled with the same OIDC Provider, and have access only to those Projects. Users that sign in through an SSO link will also not be able to edit or view any of their personal account settings. By default, users who are provisioned via SSO will be assigned the "Member" Role. 
 
 Enabling `Strict SSO` will require that all members of a Project besides the `Owner` must log in to the Statsig Console through SSO with the configured provider to access the Project.
 

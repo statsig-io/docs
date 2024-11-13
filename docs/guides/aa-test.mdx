@@ -5,7 +5,7 @@ title: Running an A/A (aa) Test
 
 In this guide, we will walk you through how to leverage Statsig’s platform to run an A/A test on your product.  
 
-:::info This guide assumes that you have successfully set up and configured your Statsig SDK. For a step-by-step guide on how to do this, see our [“Your first feature”](https://docs.statsig.com/guides/first-feature) guide.
+:::info This guide assumes that you have successfully set up and configured your Statsig SDK. For a step-by-step guide on how to do this, see our [“Your first feature”](/guides/first-feature) guide.
 
 :::
 
@@ -17,7 +17,7 @@ Here at Statsig, we are continuously running both live and offline simulation A/
 
 ## How to run an A/A test
 
-The easiest way to run an A/A test in Statsig is by leveraging a [Feature Flag](https://docs.statsig.com/feature-flags/working-with). You can also leverage an [Experiment](https://docs.statsig.com/guides/abn-tests) to run an A/A, but we chose to use a Feature Gate for this tutorial for simplicity. 
+The easiest way to run an A/A test in Statsig is by leveraging a [Feature Flag](/feature-flags/working-with). You can also leverage an [Experiment](/guides/abn-tests) to run an A/A, but we chose to use a Feature Gate for this tutorial for simplicity. 
 
 ## Step 1: Create a new feature gate in the Statsig console
 
@@ -48,7 +48,7 @@ Check that it is working as expected by typing in some dummy user IDs into the c
 
 ## Step 2: Check the feature gate in your application and log an event 
 
-Copy the code snippet in the upper righthand corner of your feature gate page under the **< >** symbol and drop it into your application at the point you want to call the A/A check.  
+Copy the code snippet in the upper right hand corner of your feature gate page under the **< >** symbol and drop it into your application at the point you want to call the A/A check.  
 
 ```jsx
 statsig.checkGate("aatest_example") 

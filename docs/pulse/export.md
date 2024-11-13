@@ -8,7 +8,7 @@ slug: /pulse/export
 
 ![Finding Export Report](https://user-images.githubusercontent.com/77478319/163510492-e6bff7cf-9d7c-46b2-a276-ec2e550aa9a1.png)
 
-You can export your Pulse Results for Feature Gates and Experiments. Simply navigate to the relevant "Pulse Results" page, and click "Export Report". Exporting results can take up to 10 minutes. A notification and an email will be sent when the report is ready, and a link will be available under under Project Settings -> Reports.
+You can export your Pulse Results for Feature Gates and Experiments. Simply navigate to the relevant "Pulse Results" page, and click "Export Report". Exporting results can take up to 10 minutes. A notification and an email will be sent when the report is ready, and a link will be available under under Project Settings -> Reports. You can export results only if your Pulse screen has results.
 
 ![Export Pulse Report Menu](https://user-images.githubusercontent.com/77478319/163458999-bcf599ec-4564-460a-87ba-c08975589b3b.png)
 
@@ -72,7 +72,7 @@ There are three types of export:
 
 | Column Name                       | Description                                                                                   |
 | --------------------------------- | --------------------------------------------------------------------------------------------- |
-| user_id / stable_id / custom_id | Refers to the unit identifier used in the experiment                                          |
+| unit_id                           | Refers to the unit identifier used in the experiment (eg. user_id, stable_id, org_id)         |
 | name                              | The name of the gate/experiment                                                               |
 | rule                              | For gates, this refers to the rule name                                                       |
 | experiment_group                  | The group the user was assigned to                                                            |
@@ -88,7 +88,7 @@ There are three types of export:
 | Column Name         | Description                                                                                 |
 | ------------------- | ------------------------------------------------------------------------------------------- |
 | pst_ds              | The 24hr window the the data refers to. All dates are anchored from 12:00a -> 11:59p PST.   |
-| user_id / stable_id | Refers to the unit identifier used in the experiment                                        |
+| unit_id             | Refers to the unit identifier used in the experiment (eg. user_id, stable_id, org_id)       |
 | metric_type         | The category of the metric                                                                  |
 | metric_name         | The name of the metric                                                                      |
 | metric_dimension    | The name of the metric dimension. '!statsig_topline' is the overall metric with no slicing. |

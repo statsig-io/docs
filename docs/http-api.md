@@ -2,43 +2,43 @@
 title: HTTP API
 ---
 
-Before you can start calling the server APIs you need to take care of the following steps first:
+> **⚠️ Important:** While this HTTP API is available for direct use, we strongly recommend using one of our official SDKs for your programming language whenever possible. SDKs offer better performance, automatic error handling, and type safety. They also provide a more idiomatic integration with your codebase. Only use this HTTP API directly if there isn't an SDK available for your language or if you have a specific use case that requires direct API access.
+
+Before you can start calling the server APIs, you need to take care of the following steps:
 
 1. [Create a free account on statsig.com](#step1)
-2. Get an API key from the admin console
-3. Issue API requests
+2. [Get an API key from the admin console](#step2)
+3. [Issue API requests](#step3)
 
-<a name="step1"></a>
+---
 
-#### Step 1 - Create a free account on [statsig.com](https://console.statsig.com/sign_up) {#step-1---create-a-free-account-on-statsigcom}
+### Step 1 - Create a free account on the [Statsig sign-up page](https://console.statsig.com/sign_up)
 
-An account will let you use the Statsig Console, where you can manage all of
-your Feature Gates and Dynamic Configs. Note that you will be able to invite
-others to your Statsig Projects, so they can also interact with your gates and
-configs.
+An account will let you use the Statsig Console, where you can manage all of your **Feature Gates**, **Dynamic Configs**, and **Experiments**. Note that you will also be able to invite others to collaborate on your Statsig Projects, so they can interact with your gates and configs.
 
-<a name="step2"></a>
+---
 
-#### Step 2 - Get an API key from [statsig.com](https://console.statsig.com/) {#step-2---get-an-api-key-from-statsigcom}
+### Step 2 - Get an API key from the [Statsig Console](https://console.statsig.com/)
 
-An API key is required in every API request. There are two different types of API keys:
+An API key is required in every API request. There are two types of API keys you can use with the HTTP API:
+- **Server-side secret Key**: Used only from secure servers and should never be exposed in client-side code.
+- **Client-SDK Key**: Safe to embed in mobile apps and front-end web apps.
 
-- **Server-side secret Key** which should only be used from a secure server and never shipped on clients.
-- **Client-SDK Key** which can be embedded inside mobile apps and front-end client web apps.
+💡 **Tip:** If you're working with server-side logic or sensitive data, use the **Server-side secret Key**. If you’re in doubt or working with public-facing code, use the **Client-SDK Key**.
 
-If you are in doubt, use the Client-SDK key.
+---
 
-<a name="step3"></a>
+### Step 3 - Issue API request
 
-#### Step 3 - Issue API request {#step-3---issue-api-request}
+Our API is built on top of HTTPS, and you can authenticate via the `statsig-api-key` header. All API requests use the `POST` method, and parameters are set by passing a JSON object in the request body.
 
-Our API is built on top of HTTPS. You can authenticate via header
-`statsig-api-key`. All of our APIs use method `POST`, and you can set parameters
-by using a JSON object as the request data.
+💡 **Why `POST`?** Even for fetching data, we use `POST` to ensure secure and flexible transmission of user-specific data (e.g., configurations or experiment results).
 
-There are just a few primitives that you need to get going on your way. The APIs automatically log exposure whenever you call them and Statsig will use these exposure events to attribute downstream events to compute analytics lift.
+Statsig automatically logs **exposure events** whenever you call the APIs. These exposure events help attribute downstream events to experiments or feature gates, which are used to calculate metrics like analytics lift.
 
-##### Log an event {#log-an-event}
+---
+
+### Log an Event
 
 ```bash
 curl \
@@ -50,9 +50,10 @@ curl \
   "https://events.statsigapi.net/v1/log_event"
 ```
 
-> NOTE: STATSIG-CLIENT-TIME is required to normalize the timestamp for events against our server time. If you don't set this, you may see weird timestamps for client SDKs which can have extremely variable client clocks. Here is [an example](https://github.com/statsig-io/cpp-client-sdk/blob/a62df973388a56669de2a05f0630a65570a775bd/src/statsig/internal/network_service.hpp#L148) for how we do it in one of our SDKS.
+> **NOTE:** `STATSIG-CLIENT-TIME` is required to normalize the timestamp for events against server time. Without it, you may see inconsistent timestamps for client SDKs with varying client clocks. Here’s [an example](https://github.com/statsig-io/cpp-client-sdk/blob/a62df973388a56669de2a05f0630a65570a775bd/src/statsig/internal/network_service.hpp#L148) from one of our SDKs.
 
-*Schema*
+#### Event Schema
+
 ```ts
 // json
 {
@@ -70,33 +71,30 @@ curl \
 
 // StatsigUser - object
 {
-  userID: string;
-  email?: string;
-  ip?: string;
-  userAgent?: string;
-  country?: string;
-  locale?: string;
-  appVersion?: string;
-  custom?: Record<
-    string,
-    string | number | boolean | Array<string> | undefined
-  >;
-  privateAttributes?: Record<
-    string,
-    string | number | boolean | Array<string> | undefined
-  >;
-  customIDs?: Record<string, string>;
-  statsigEnvironment: {
-    tier: string
-  };
+  userID: string; // Required
+  email?: string; // Optional user email
+  ip?: string; // Optional user IP address
+  userAgent?: string; // Optional user agent string for device info
+  country?: string; // Optional country code for location-based targeting
+  locale?: string; // Optional language/locale info
+  appVersion?: string; // Optional app version
+  custom?: Record<string, string | number | boolean | Array<string> | undefined>; // Optional custom user attributes
+  privateAttributes?: Record<string, string | number | boolean | Array<string> | undefined>; // Optional private user attributes
+  customIDs?: Record<string, string>; // Optional custom identifiers
+  statsigEnvironment?: { tier: string }; // Defines the environment (dev, staging, production)
 };
 ```
+
 Response:
-`{"success":true}`, status `202`
+```json
+{"success": true}, status 202
+```
 
-##### Log an event with custom environment {#log-an-event-with-environment}
+---
 
-Useful when you are operating in multiple environments like dev, staging, production.
+### Log an Event with Custom Environment
+
+Useful when you operate in multiple environments like dev, staging, and production.
 
 ```bash
 curl \
@@ -109,54 +107,65 @@ curl \
 ```
 
 Response:
-`{"success":true}`
+```json
+{"success": true}
+```
 
-##### Check a Feature Gate {#check-a-feature-gate}
+---
+
+### Check a Feature Gate
 
 ```bash
 curl \
   --header "statsig-api-key: <YOUR-SDK-KEY>" \
   --header "Content-Type: application/json" \
   --request POST \
-  --data '{"user": { "userID": "42" },"gateName":"<YOUR-GATE-NAME>"}' \
+  --data '{"user": { "userID": "42" }, "gateName": "<YOUR-GATE-NAME>"}' \
   "https://api.statsig.com/v1/check_gate"
 ```
 
-##### Check multiple Feature Gate(s) {#check-multiple-feature-gates}
+---
+
+### Check Multiple Feature Gates
 
 ```bash
 curl \
   --header "statsig-api-key: <YOUR-SDK-KEY>" \
   --header "Content-Type: application/json" \
   --request POST \
-  --data '{"user": { "userID": "42" },"gateNames":["<YOUR-GATE-NAME-1>", "<YOUR-GATE-NAME-2>"}' \
+  --data '{"user": { "userID": "42" }, "gateNames": ["<YOUR-GATE-NAME-1>", "<YOUR-GATE-NAME-2>"]}' \
   "https://api.statsig.com/v1/check_gate"
 ```
-
 
 Response:
-```
-{
+```json
+[
   {"name":"YOUR-GATE-NAME-1","value":false,"rule_id":"123","group_name":"group123"},
   {"name":"YOUR-GATE-NAME-2","value":false,"rule_id":"123","group_name":"group123"}
-}
+]
 ```
 
-##### Get a Dynamic Config value {#get-a-dynamic-config-value}
+---
+
+### Get a Dynamic Config Value
 
 ```bash
 curl \
   --header "statsig-api-key: <YOUR-SDK-KEY>" \
   --header "Content-Type: application/json" \
   --request POST \
-  --data '{"user": { "userID": "42" },"configName":"<YOUR-CONFIG-NAME>"}' \
+  --data '{"user": { "userID": "42" }, "configName":"<YOUR-CONFIG-NAME>"}' \
   "https://api.statsig.com/v1/get_config"
 ```
 
 Response:
-`{"name":"YOUR-CONFIG-NAME","value":{"a":1,"b":2},"group":"123","rule_id":"123","group_name":"group123"}`
+```json
+{"name":"YOUR-CONFIG-NAME","value":{"a":1,"b":2},"group":"123","rule_id":"123","group_name":"group123"}
+```
 
-##### Fetch Experiment Config {#fetch-experiment-config}
+---
+
+### Fetch Experiment Config
 
 Getting an experiment config is similar to fetching a dynamic configuration. The system will automatically log the right exposure based on the name of the config.
 
@@ -165,14 +174,18 @@ curl \
   --header "statsig-api-key: <YOUR-SDK-KEY>" \
   --header "Content-Type: application/json" \
   --request POST \
-  --data '{"user": { "userID": "42" },"configName":"<YOUR-EXPERIMENT-NAME>"}' \
+  --data '{"user": { "userID": "42" }, "configName":"<YOUR-EXPERIMENT-NAME>"}' \
   "https://api.statsig.com/v1/get_config"
 ```
 
 Response:
-`{"name":"YOUR-EXPERIMENT-NAME","value":{"color":"blue","shape":"circle"},"group":"123","rule_id":"123","group_name":"group123}`
+```json
+{"name":"YOUR-EXPERIMENT-NAME","value":{"color":"blue","shape":"circle"},"group":"123","rule_id":"123","group_name":"group123"}
+```
 
-##### Fetch Layer Value {#fetch-layer-config}
+---
+
+### Fetch Layer Value
 
 The system will automatically log the right exposure based on the name of the config.
 
@@ -181,32 +194,23 @@ curl \
   --header "statsig-api-key: <YOUR-SDK-KEY>" \
   --header "Content-Type: application/json" \
   --request POST \
-  --data '{"user": { "userID": "42" },"layerName":"<YOUR-LAYER-NAME>"}' \
+  --data '{"user": { "userID": "42" }, "layerName":"<YOUR-LAYER-NAME>"}' \
   "https://statsigapi.net/v1/get_layer"
 ```
 
 Response:
-`{"name":"YOUR-LAYER-NAME","value":{"color":"blue","shape":"circle"},"ruleID":"2OZdhuDfq3w1UIHovUFRBM", "allocatedExperimentName": "a_experiment"}`
-
-#### Log an exposure event {#log-exposure-event}
-You can log one or more exposure events with this API. 
-
-##### Experiments
-
-```
-// Experiment Exposure Events
-// See https://docs.statsig.com/client/concepts/user for full list of user fields
-user: object, // must have a userID or a customID to match with event data.
-experimentName: string,
-group: string,
-ruleID: string,
-time?: number | string, // unix timestamp, optional (request time used if not set)
+```json
+{"name":"YOUR-LAYER-NAME","value":{"color":"blue","shape":"circle"},"ruleID":"2OZdhuDfq3w1UIHovUFRBM", "allocatedExperimentName": "a_experiment"}
 ```
 
-For each exposure object, either the `"group"` or `"ruleID"` parameter must be provided. The `"group"` parameter should match the exact name of the group in your experiment's config.
-[![Test group name](https://user-images.githubusercontent.com/2018204/234073412-92dde2b7-7a5d-442f-a539-0c9c1b426a5a.png)
+---
 
-_example experiment exposure_
+### Log an Exposure Event
+
+You can log one or more exposure events with this API. Exposure events help Statsig track what users are exposed to during experiments or feature gate interactions, helping calculate downstream effects and performance.
+
+#### Log Experiment Exposure
+
 ```bash
 curl \
   --header "statsig-api-key: <YOUR-SDK-KEY>" \
@@ -216,23 +220,8 @@ curl \
   "https://events.statsigapi.net/v1/log_custom_exposure"
 ```
 
-##### Gates
+#### Log Feature Gate Exposure
 
-```
-// Gate Exposure Events
-user: object, // must have a userID or a customID to match with event data.
-gateName: string,
-group: string,
-ruleID: string,
-passes: boolean,
-time?: number | string, // unix timestamp, optional (request time used if not set)
-```
-
-For each exposure object, either the `"group"` or `"ruleID"` parameter must be provided. The `"group"` should match the exact name of your Rule in your gate config.
-![Gate Rule Name](https://user-images.githubusercontent.com/2018204/234073618-e5f1e3c0-9766-4bd3-b927-bad155bbea05.png)
-
-
-_example gate exposure_
 ```bash
 curl \
   --header "statsig-api-key: <YOUR-SDK-KEY>" \
@@ -242,20 +231,17 @@ curl \
   "https://events.statsigapi.net/v1/log_custom_exposure"
 ```
 
-##### Secondary Exposures
-```
-// Secondary Exposure Events
-gate: string, // Name of holdout, targeting gate, etc.
-gateValue: string, // "true" or "false"
-ruleID: string,
-```
+---
 
-Secondary exposures are logged alongside other exposure events. These are generally exposures for holdouts or targeting gates. They can be accessed from the SDK-evaluated `DynamicConfig`.
+### Log Secondary Exposures
 
-_example experiment exposure with secondary exposures_
+Secondary exposures are logged alongside other exposure events. They typically represent holdouts or targeting gates.
+
 ```bash
 curl \
-  --header "statsig-api-key: <YOUR-SDK-KEY>" \
+ 
+
+ --header "statsig-api-key: <YOUR-SDK-KEY>" \
   --header "Content-Type: application/json" \
   --request POST \
   --data '{
@@ -279,3 +265,5 @@ curl \
 }' \
   "https://events.statsigapi.net/v1/log_custom_exposure"
 ```
+
+---

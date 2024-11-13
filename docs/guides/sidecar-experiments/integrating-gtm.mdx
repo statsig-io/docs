@@ -62,7 +62,7 @@ window.StatsigLogger = (function () {
       callback(StatsigSidecar.getStatsigInstance());
     }
     else {
-      log('+++ Statsig:ready Binded callback');
+      log('+++ Statsig:ready callback');
       window.postExperimentCallback = function(statsigClient, expIds) {
         callback(statsigClient);
       }
@@ -73,7 +73,7 @@ window.StatsigLogger = (function () {
     if (typeof message === 'object' && typeof message.event === 'string') {
       var metadata = {};
       for (var prop in message) {
-        if (prop.includes('gtm.') && !!message[prop] && (typeof message[prop] === 'number' || typeof message[prop] === 'boolean' || typeof message[prop] === 'string')) {
+        if(!(message[prop] instanceof HTMLElement) && typeof(message[prop]) !== 'object') {
           metadata[prop] = message[prop];
         }
       }
@@ -81,7 +81,7 @@ window.StatsigLogger = (function () {
       statsigInstance.logEvent(message.event, message.conversionValue || null, metadata);
     }
     else {
-      log('++ handleGTMMessage / skip', message);
+      log('++ handleGTMMessage / skip');
     }
   }
 

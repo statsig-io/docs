@@ -6,16 +6,18 @@ slug: /metrics/how-metrics-work
 
 # How Metrics Work on Statsig
 
-A metric in Statsig is a numeric value for each user on a given day. This value can be aggregated across the entire user base or a subset, such as the test group of an experiment. 
+A metric in Statsig is a numeric value for each user on a given day. This value can be aggregated across the entire user base or a subset, such as the test or control group of an experiment. 
 
-For example, say a user made two purchases on September 1st. This value can be aggregated across multiple users to calculate the total number of purchases across all users on September 1st.
+For example, say one user made two purchases on September 1st, and another made only one. These values can be aggregated across multiple users to calculate the total number of purchases across all users on September 1st.
 
 
 ## Two Sources of Statsig Metrics 
 
-There are two sources of metrics in Statsig:
-1. **Raw Events** - Statsig [auto-generates certain metrics](/metrics/metrics-from-events) such as _event_count_ and _event_dau_ from these events; you can also convert these events into metrics via [Custom Metrics](/metrics/create)
-2. **Precomputed Metrics** - you can provide these pre-computed values to Statsig 
+There are two fundamental sources of metrics in Statsig:
+1. **Raw Events** 
+    - Statsig [auto-generates certain metrics](/metrics/metrics-from-events) such as **event_count** and user accounting metrics from these events
+    - You can also define [custom metrics](/metrics/custom-dau) using your logged raw events
+2. **Precomputed Metrics** - You can provide these pre-computed values to Statsig 
 
 Statsig's Stats Engine joins these metrics with your exposure events from feature gates and experiments to compute experiment results and analytics.
 

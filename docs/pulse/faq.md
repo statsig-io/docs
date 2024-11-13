@@ -47,4 +47,4 @@ Exposures on the last day (the day you made a decision) are not counted as expos
 
 ## We log categorical metadata for a custom event, but Pulse doesn't show these breakouts. What's wrong?
 
-Pulse is only able to show experimental results for various sub-groups of your metric (e.g. iOS vs. Android) when you've configured your metadata as a Dimension. [Value Dimensions](https://docs.statsig.com/pulse/read-pulse#value-dimensions) are the most common dimension type as their metadata get logged directly with your custom events. However, value dimensions must be defined in your [custom event setup](https://docs.statsig.com/metrics/metric-dimensions).
+Pulse is only able to show experimental results for various sub-groups of your metric (e.g. iOS vs. Android) when you've configured your metadata as a Dimension. [Value Dimensions](/pulse/read-pulse#value-dimensions) are the most common dimension type as their metadata get logged directly with your custom events. However, value dimensions must be defined in your [custom event setup](/metrics/metric-dimensions).

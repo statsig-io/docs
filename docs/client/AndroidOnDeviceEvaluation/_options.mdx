@@ -24,7 +24,7 @@ You can pass in an optional parameter `options` in addition to `sdkKey` and `use
 
 - **initializeValues**: `Map<String, Any>?`, default `null`
 
-  - Provide the `initialize response` values directly to the Android SDK to synchronously initialize the client. You can generate these values from a Statsig Server SDK like the [NodeJS Server SDK](https://docs.statsig.com/server/nodejsServerSDK#bootstrap)
+  - Provide the `download_config_specs response` values directly to the Android SDK to synchronously initialize the client. Note: You can get a copy of your current specs data by visiting: https://api.statsigcdn.com/v1/download_config_specs/client-{YOUR_SDK_KEY}.json 
 
 - **disableDiagnosticsLogging**: `boolean?`, default `false`
 

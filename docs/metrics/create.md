@@ -4,7 +4,7 @@ sidebar_label: Creating Custom Metrics
 slug: /metrics/create
 ---
 
-To create custom metrics, navigate to **Metrics** from the left-hand navigation panel, then to the **Metrics Catalog** tab. Tap on the **Create** button.
+Custom metrics are computed by Statsig from your raw events. To create custom metrics, navigate to **Metrics** from the left-hand navigation panel, then to the **Metrics Catalog** tab. Tap on the **Create** button.
 
 ![Screen Shot 2023-09-12 at 12 53 05 PM](https://github.com/statsig-io/docs/assets/101903926/4148f4b8-f9e4-4a37-98df-35663650d76f)
 
@@ -46,7 +46,7 @@ The example below creates a metric to count the **number of unique users** who v
 
 Two time window options are available for user count metrics
 
-- Daily Participation Rate: This works just like the default event_dau metrics. It counts the total number of days that a user has the selected event, divided by the number of days the user is in the experiment. The result is a metric value between 0 and 1, which represents the probably of a user having the event on a daily basis. It works best for events that are expected to occur repeatedly for a given user.
+- Daily Participation Rate: It counts the total number of days that a user has the selected event, divided by the number of days the user is in the experiment. The result is a metric value between 0 and 1, which represents the probably of a user having the event on a daily basis. It works best for events that are expected to occur repeatedly for a given user.
 - One Time Event: This checks if a user has the selected event at least once during their time in the experiment. The result is a binary metric with value 0 or 1 for each user. This is ideal for events that are only expected once per user, such as sign up events.
 - Custom Attribution Window: Allows you to define a custom window after exposure to count an event towards a metric calculation.
 
@@ -55,6 +55,12 @@ Two time window options are available for user count metrics
 The example below shows a **Total Revenue** metric that sums the _value_ associated with all purchase events.
 
 ![Screen Shot 2023-09-12 at 1 24 49 PM](https://github.com/statsig-io/docs/assets/101903926/f0d4d21b-08ae-405d-a156-4d29f96ab298)
+
+**[In Beta] Currency Sum**
+
+eCommerce customers can span multiple currency types and typically log payments in the currency and amounts the user actually pays. Currency sums allow for payments that are recorded in different currencies to be converted to one common currency.
+
+Statsig supports currency sums upon request.
 
 ### 4. Ratio Metrics
 

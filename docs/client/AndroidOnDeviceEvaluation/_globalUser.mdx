@@ -1,0 +1,11 @@
+### Setting a Global User
+
+To avoid needing to pass the user object to every single evaluation call, you can set a global user. Then, when checking a gate/experiment/layer, provide "null" for the user to use the global user.
+This user will be used for all evaluations unless otherwise specified.
+
+```kotlin
+Statsig.client.setGlobalUser(myGlobalUser)
+
+Statsig.client.checkGate(null, "my_gate") // <- Will use myGlobalUser
+Statsig.client.checkGate(StatsigUser(userID: "user-123"), "my_gate") // <- Will NOT use myGlobalUser
+```

@@ -13,7 +13,7 @@ With large numbers, randomization typically solves this. However in B2B scenario
 ## Automated Stratified Sampling
 
 ### How it works
-The Statsig SDKs use a _salt_ to randomize or bucket experiment subjects ([learn more](https://docs.statsig.com/faq#how-does-bucketing-within-the-statsig-sdks-work)). When you enable stratified sampling, we'll try n different salts (100 for now) and evaluate how "balanced" your groups. We evaluate this balance based on either a metric you pick - or an attribute you give us describing your experiment subjects. We pick the best salt from this set and save this as the salt to use. [Learn more](https://statsig.com/blog/introducing-stratified-sampling).
+The Statsig SDKs use a _salt_ to randomize or bucket experiment subjects ([learn more](/faq#how-does-bucketing-within-the-statsig-sdks-work)). When you enable stratified sampling, we'll try n different salts (100 for now) and evaluate how "balanced" your groups. We evaluate this balance based on either a metric you pick - or an attribute you give us describing your experiment subjects. We pick the best salt from this set and save this as the salt to use. [Learn more](https://statsig.com/blog/introducing-stratified-sampling).
 ![image](https://github.com/statsig-io/docs/assets/31516123/99f72b83-9f14-45a3-aa6e-ffcbd6211ec7)
 
 The selection space for the salts is sufficiently large - stratifying multiple experiments on the same metric will not result in overlap. In the simulations we ran, the groups were as independent as expected which matched up with the literature here.

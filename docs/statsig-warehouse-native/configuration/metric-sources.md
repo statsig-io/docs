@@ -85,7 +85,8 @@ When this setting is **not** enabled, the system performs a timestamp-based join
 
 On the other hand, if the "Treat Timestamp as Date" setting is enabled, the system performs a date-based join. In this case, all events occurring on the same calendar day as the exposure, regardless of the time, will be included in the experiment results. This includes data from the first day of exposures, ensuring that day-1 metrics are not omitted from the analysis.
 
-## Example Data
+
+
 
 All Statsig needs to create metrics is a timestamp or date, and a unit (or user) identifier. Context fields let you pull multiple metrics from
 the same base query, and select values to sum, mean, or group by.
@@ -116,3 +117,15 @@ As another example, you might pre-calculate some metrics yourself at a user-day 
 | 2023-10-10 | my_user_18828 | c_190887   | DE      | 0          | null               | 22.1        | 0               |
 
 You can create different metrics by summing and filtering on those daily fields.
+
+
+## (Very) Slow Metric Sources 
+Statsig uses techniques like Statsig macros, push-down-filters (predicate filters) and using partition keys to make queries in your warehouse efficient. While Metric Sources can include joins or complex queries, they should be performant. If they are not - using any metrics based off this metric source will become expensive (or cause timeouts and failures). The same is true for assignment sources.
+
+Statsig will flag a metric source as slow if it takes more than 30 seconds to retrieve a sample of up to 100 records from the table. If the query is expensive, we recommend considering the following steps in sequence to optimize for your metric source:
+- Include filters based off partition column
+- Use [Statsig macros](https://docs.statsig.com/statsig-warehouse-native/guides/best-practices#use-statsigs-macros) in SQL
+- Pre-calculate some of the metrics to avoid joins or complex queries
+- (Do this cautiously) Upgrade your computing resources if you are on a very small cluster.
+
+(Note: if you were flagged for a slow Assignment Source, the same guidance here applies to that too!)

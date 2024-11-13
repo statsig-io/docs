@@ -4,21 +4,80 @@ sidebar_label: Getting Started
 slug: /sdks/getting-started
 ---
 
-## Configuration Options
-Statsig offers 20+ SDKs, with both client-side and server-side SDK options. At their core, Statsig’s SDKs enable two key functions: 
-1. **Targeting & Assignment-** Assigning users to an experiment variant or targeting new feature roll-outs based on a user’s attributes. Target with any user or environment-level attribute you log.  
-2. **Logging-** Log events for user or system-level actions, which are translated into computed Metrics for analysis within your Statsig Console.
+Statsig provides a comprehensive set of SDKs to integrate experimentation, feature flagging, and logging into your applications. With support for over **30 platforms**, Statsig’s SDKs enable you to control feature rollouts and experiments seamlessly, whether you're building for **web**, **mobile**, or **server-side** environments.
 
-## Client vs. Server-side SDKs
-If you’ve decided to use Statsig’s SDKs, the next step is to decide how best to integrate Statsig with your client & server architecture. 
+---
 
-Statsig SDKs come in two main variants, **[Client SDKs](https://docs.statsig.com/client/introduction)** and **[Server SDKs](https://docs.statsig.com/server/introduction)**. These two sets of SDKs serve different purposes and are used in different parts of the feature flagging and experimentation process. The following highlights some of the key differences between them:
+## Why Use Statsig SDKs?
 
-||Server| Client |
-|--|--|--|
-|Purpose | A Statsig Server SDK is used on the server-side of your application or service. It is responsible for managing feature gates, configurations, and experiments at the backend| A Statsig Client SDK is used on the client-side of your application, which could be in a mobile, web, or any other client-facing part of your product. It allows you to communicate with the Statsig servers (or a Statsig Server SDK) and make runtime decisions based on feature gates and experiments|
-|Privacy | All evaluation is done on your own server, meaning users will only see what you send back to them in the response|All evaluations are precomputed on Statsig servers and sent down to you client applications. Names are obfuscated, but a savvy user may be able to glean information from the raw response|
-|Performance | Evaluations are done real-time, this means that performance is directly tied to the size of your configurations. In practice however, this is rarely an issue and we strive to make our SDKs as performant as possible|As all evaluation is precomputed, gate and experiment checks are mostly a dictionary lookup with some computation used for creating and flushing exposure events|
-|Propagation | The SDK will continually poll for any changes to your configurations, updating its internal state when a change is detected| Client SDKs only pull changes once during initialization. In practice, this means changes will not be observed until after an updateUser call or session restart (re-initialize)|
-|Users|Server SDKs are designed to run against multiple users, and all SDK methods require a user object up front to work|Client SDKs are designed to be run with one user at a time. All evaluations are loaded once up front during initialization|
-|Infrastructure | Server SDKs require you to host your own backend services| Client SDKs run entirely on the client and utilize Statsig's servers|
+Statsig SDKs are designed to provide two key functionalities that help you make data-driven product decisions:
+
+### 1. **Targeting & Assignment**
+Effortlessly manage who sees new features and which users are assigned to experiment variants. You can target based on any **user attributes** (e.g., location, device type) or **environment-level attributes** you log. This lets you control the feature rollout experience and experiment assignments dynamically.
+
+### 2. **Logging Events**
+Automatically log user actions and system events for in-depth analysis. The event logs feed into Statsig’s platform to generate key **metrics** for your experiments and features, which can be analyzed in the **Statsig Console**.
+
+For web-based platforms (e.g., JavaScript, React), Statsig also supports:
+- **[Autocaptured Events for Web Analytics](/webanalytics/overview)**: Automatically track user interactions without manual instrumentation.
+- **[Session Replay](/session-replay/overview)**: Capture detailed session recordings to better understand how users interact with your product.
+
+---
+
+## Choosing the Right SDK: Client vs. Server
+
+Statsig offers both **client-side** and **server-side** SDKs, each suited to different use cases:
+
+- **Client-Side SDKs**: Designed for user-facing applications where events are logged directly from the browser or mobile app. These SDKs work in real-time, providing instant feedback on user behavior.
+  
+- **Server-Side SDKs**: Ideal for backend services, allowing you to control experiments, feature flags, and log server-side events. Server-side SDKs offer more control, especially for use cases involving system-level actions or business logic.
+
+For a detailed comparison, refer to the [Client vs Server SDK Overview](/sdks/client-vs-server).
+
+Additionally, for frameworks like **Next.js** that bridge client and server-side logic, we offer specialized SDKs like the [Next.js SDK](/client/javascript-sdk/next-js) for seamless integration.
+
+---
+
+## Client-Side SDKs
+
+Our client-side SDKs are designed for front-end applications, enabling instant event logging, feature gating, and user assignments. Whether you're building for mobile, web, or other client platforms, Statsig offers SDKs tailored for your needs:
+
+- [JavaScript](/client/javascript-sdk)
+- [React](/client/javascript-sdk/react)
+- [React Native](/client/javascript-sdk/react-native)
+- [Expo](/client/javascript-sdk/expo)
+- [iOS](/client/iosClientSDK)
+- [Android](/client/androidClientSDK)
+- [.NET](/client/dotnetSDK)
+- [Unity](/client/unitySDK)
+- [Roku](/client/rokuSDK)
+- [C++](/client/cpp-client-sdk)
+- [Dart/Flutter](/client/dartSDK)
+
+---
+
+## Server-Side SDKs
+
+Server-side SDKs allow you to manage experiments and feature flags from your backend, providing more control and reliability. They’re especially useful for server-driven features, background processes, and system events:
+
+- [Node.js](/server/nodejsServerSDK)
+- [Java](/server/javaSdk)
+- [Python](/server/pythonSDK)
+- [Go](/server/golangSDK)
+- [Ruby](/server/rubySDK)
+- [.NET](/server/dotnetSDK)
+- [PHP](/server/phpSDK)
+- [C++](/server/cppSDK)
+- [Rust](/server/rustSDK)
+
+---
+
+## Next Steps: Installing Your SDK
+
+1. **Select Your SDK**: Choose the client or server SDK that fits your platform from the lists above.
+2. **Follow the Installation Guide**: Each SDK has an installation guide that walks you through the setup, ensuring a smooth integration with your app.
+3. **Start Experimenting**: Once integrated, you can begin setting up feature flags, running experiments, and logging events for analysis.
+
+If you run into any questions or need help with installation, feel free to reach out via our [Slack Community](https://statsig.com/slack).
+
+---

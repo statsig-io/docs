@@ -50,4 +50,4 @@ C01d5f80s
 
 ### What IP addresses will Statsig access data warehouses from?
 
-[See FAQ](https://docs.statsig.com/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from)
+[See FAQ](/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from)

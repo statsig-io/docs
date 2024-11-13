@@ -4,7 +4,7 @@ slug: /statsig-warehouse-native/configuration/semantic-layer-sync
 sidebar_label: Semantic Layer Sync
 ---
 
-If you have centrally defined metrics, Statsig offers the ability to sync its data sources and metrics as part of your data version management workflow. Using Statsig's [Console API](https://docs.statsig.com/console-api/metrics) you can automatically sync changes you make to the matching definitions on Statsig, and you can optionally make the metrics read-only in the Statsig console.
+If you have centrally defined metrics, Statsig offers the ability to sync its data sources and metrics as part of your data version management workflow. Using Statsig's [Console API](/console-api/metrics) you can automatically sync changes you make to the matching definitions on Statsig, and you can optionally make the metrics read-only in the Statsig console.
 
 We have a demonstration [GitHub repository](https://github.com/statsig-io/semantic_layer) that utilizes [a script](https://github.com/statsig-io/semantic_layer/blob/main/.github/scripts/statsig_sync.py) executed by [a GitHub Action](https://github.com/statsig-io/semantic_layer/blob/main/.github/workflows/statsig_sync.yml). This setup automatically synchronizes changes to .yml files located in the /metrics or /metric_sources directories in the repo. This means that whenever you create or update these files, the script either updates existing metrics or metric sources in Statsig or creates new ones accordingly.
 
@@ -29,7 +29,7 @@ To use this example template, follow these steps:
 
 3. Metric definitions reside within the `./metrics` directory, and metric source definitions are found in the `./metric_sources/` directory. To customize:
 
-   - Utilize the Statsig Console API to fetch an existing **metric_source** or **metric** using GET requests for [metric sources](https://docs.statsig.com/console-api/metrics#post-/metrics/metric_source/-name-) and [metrics](https://docs.statsig.com/console-api/metrics#get-/metrics/-metric_id-).
+   - Utilize the Statsig Console API to fetch an existing **metric_source** or **metric** using GET requests for [metric sources](/console-api/metrics#post-/metrics/metric_source/-name-) and [metrics](/console-api/metrics#get-/metrics/-metric_id-).
    - Remove the provided example metrics and metric sources, and replace them with your definitions in `./metric_sources/*.yml` and `./metrics/*.yml`.
 
 *Note:* For enhanced readability, we modified `metric.warehouseNative[]` to `metric.metricDefinition[]` in our examples. You can see this change [here](https://github.com/statsig-io/semantic_layer/blob/1611a68703caf18d7fa32088ff06d568d8b3b03a/.github/scripts/statsig_sync.py#L38). Feel free to adjust the translations or revert to using `metric.warehouseNative[]` in your definitions.

@@ -1,6 +1,5 @@
 import { useColorMode } from "@docusaurus/theme-common";
 import Alert from "@mui/material/Alert";
-import AlertTitle from "@mui/material/AlertTitle";
 import { useEffect } from "react";
 
 // Map entities to their corresponding OpenAPI tags
@@ -9,12 +8,12 @@ const entityToTagMap = {
   events: "Events",
   segments: "Segments",
   "dynamic-configs": "Dynamic Configs",
-  experiments: "Experiments",
+  experiments: ["Experiments", "Experiments (Warehouse Native)"],
   holdouts: "Holdouts",
   layers: "Layers",
   autotunes: "Autotunes",
   users: "Users",
-  metrics: "Metrics",
+  metrics: ["Metrics", "Metrics (Warehouse Native)"],
   "audit-logs": "Audit Logs",
   "exposure-count": "Configs",
   reports: "Reports",
@@ -25,15 +24,14 @@ const entityToTagMap = {
   keys: "Keys",
 };
 
-
-function filterPathsByTag(spec, tag) {
+function filterPathsByTag(spec, tags) {
   const filteredPaths = {};
   Object.keys(spec.paths).forEach((pathKey) => {
     const pathItem = spec.paths[pathKey];
     const methods = Object.keys(pathItem);
 
     methods.forEach((method) => {
-      if (pathItem[method]?.tags?.includes(tag)) {
+      if (tags.some((tag) => pathItem[method]?.tags?.includes(tag))) {
         if (!filteredPaths[pathKey]) {
           filteredPaths[pathKey] = {};
         }
@@ -56,7 +54,7 @@ export default function Rapidoc(props) {
     const rapidoc = document.getElementById(id);
 
     if (entity === "all-endpoints-generated") {
-      rapidoc.loadSpec("https://docs.statsig.com/openapi");
+      rapidoc.loadSpec("https://api.statsig.com/openapi");
       return;
     }
 
@@ -64,12 +62,15 @@ export default function Rapidoc(props) {
     const tag = entityToTagMap[entity];
 
     // Fetch and filter the spec by tag
-    fetch("https://docs.statsig.com/openapi")
+    fetch("https://api.statsig.com/openapi")
       .then((response) => response.json())
       .then((data) => {
         if (tag) {
           // Filter paths by tag
-          const filteredData = filterPathsByTag(data, tag);
+          const filteredData = filterPathsByTag(
+            data,
+            Array.isArray(tag) ? tag : [tag]
+          );
           rapidoc.loadSpec(filteredData);
         } else {
           // If tag is not found, load the full spec
@@ -78,14 +79,20 @@ export default function Rapidoc(props) {
       });
   }, [entity]);
 
-  let description = (
+  const description = (
     <div>
-      <h2>Description</h2>
-      {getDescription(entity)}
+      {entity === "all-endpoints-generated" && (
+        <div>
+          <h2>Description</h2>
+          {getDescription(entity)}
+        </div>
+      )}
+
       <h2>Authorization</h2>
       <p>
         All requests must include the <code>STATSIG-API-KEY</code> field in the
-        header. The value should be a Console API Key which can be created in{" "}
+        header.<br />
+        The value should be a Console API Key which can be created in{" "}
         <code>'Project Settings' {">"} 'API Keys' tab</code>. <br />
         To use the 'try it' section on this page, enter your Console API into
         the box below.
@@ -93,21 +100,6 @@ export default function Rapidoc(props) {
       <hr />
     </div>
   );
-
-  if (entity === "all-endpoints-generated") {
-    description = (
-      <div>
-        <h2>Authorization</h2>
-        <p>
-          All requests must include the <code>STATSIG-API-KEY</code> field in
-          the header. The value should be a Console API Key which can be created
-          in <code>Project Settings {">"} API Keys tab</code>. <br />
-          To use the 'Try' function on this page, enter your Console API into
-          the box below.
-        </p>
-      </div>
-    );
-  }
 
   return (
     <rapi-doc
@@ -143,18 +135,9 @@ export default function Rapidoc(props) {
         provided. We suggest creating a temporary project when testing our API
         below.
       </Alert>
-      <Alert severity="info" className="warning" slot="auth">
-        <AlertTitle>
-          Pagination parameters required from August 1st, 2024
-        </AlertTitle>
-        List requests without page and limit parameters will default to{" "}
-        <code>page=1&limit=100</code>.
-      </Alert>
     </rapi-doc>
   );
 }
-
-
 
 function getDescription(entity) {
   switch (entity) {
@@ -180,7 +163,7 @@ function getDescription(entity) {
       return (
         <>
           <p>
-            A feature <a href="../feature-flags/working-with">gate</a> is a
+            A <a href="../feature-flags/working-with">feature gate</a> is a
             mechanism for teams to configure what system behavior is visible to
             users without changing application code. This page describes how
             gates can be created and modified through the Console API.
@@ -188,8 +171,8 @@ function getDescription(entity) {
           <p>
             For more detail on creating user targeting based on Statsig-derived
             environment attributes such as location, client device, browser
-            type, and client app version, see the Console API{" "}
-            <a href="./rules#rule">Rules</a> page where all conditions are
+            type, and client app version, see the {" "}
+            <a href="./rules#rule">Console APIRules</a> page where all conditions are
             listed.
           </p>
         </>

@@ -3,7 +3,7 @@ sidebar_label: Projects
 title: Project Access Management
 ---
 :::info 
-Note- This guide applies only to our on-demand customers. If you are an organization who has set up SSO, this guide will not apply to you. Please see our [SSO Guides](https://docs.statsig.com/access-management/sso/overview) for more information about how to manage access permissions through SSO. 
+Note- This guide applies only to our on-demand customers. If you are an organization who has set up SSO, this guide will not apply to you. Please see our [SSO Guides](/access-management/sso/overview) for more information about how to manage access permissions through SSO. 
 
 :::
 

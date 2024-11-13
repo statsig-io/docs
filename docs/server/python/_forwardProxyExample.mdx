@@ -7,7 +7,7 @@ Basic setup to stream download config spec from forward proxy
   Statsig.initialize(secret_key, StatsigOptions(proxy_configs={
             NetworkEndpoint.DOWNLOAD_CONFIG_SPECS: ProxyConfig(NetworkProtocol.GRPC_WEBSOCKET, proxyAddress)}))
 ```
-When SDK disconnected from forward proxy when use grpc_websocket, sdk will retry connection with exponenetial backoff, after `push_worker_failover_threshold` retries, sdk will start polling from Statsig until reconnet to forward proxy.
+When the SDK is disconnected from forward proxy when use grpc_websocket, the sdk will retry connection with exponential backoff, after `push_worker_failover_threshold` retries, the sdk will start polling from Statsig until reconnecting to the forward proxy.
 You can customize Streaming Failover Behavior. You can also define the sources/endpoints SDK poll from, SDK will try from source at index 0, and stops trying if get a response. 
 
 ```py

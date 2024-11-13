@@ -7,7 +7,7 @@ slug: /server/concepts/forward_proxy
 
 ## Statsig Forward Proxy 
 
-The Statsig Forward Proxy is a service that we developed to be hosted and run in your own infrastructure. If SDKs are configured to use the foward proxy, it provides a closer, but also more reliable hop for retrieving Statsig dependent configurations from within your infrastructure instead of reaching out to our networks.
+The Statsig Forward Proxy is a service that we developed to be hosted and run in your own infrastructure. If SDKs are configured to use the forward proxy, it provides a closer, but also more reliable hop for retrieving Statsig dependent configurations from within your infrastructure instead of reaching out to our networks.
 
 The expected benefits of using the proxy are:
 1. Reduced dependency on Statsig Infrastructure Availability
@@ -18,7 +18,7 @@ The expected benefits of using the proxy are:
 
 If you're interested in deploying the proxy, you can find more details in the public repository [here](https://github.com/statsig-io/statsig-forward-proxy).
 
-If you have any questions about how to deploy, or need assistance, feel free to reachout to us on our slack channel or create a new github issue.
+If you have any questions about how to deploy, or need assistance, feel free to reach out to us on our slack channel or create a new github issue.
 
 ### How Forward Proxy works
 
@@ -34,28 +34,13 @@ NOTE:
 For other server sdks, there is no support on full integration yet, you can override download_config_spec api in StatsigOptions in order to integrate. You should use carefully and consult us. 
 :::
 You can now configure SDK network using different network protocol to integrate with Statsig Forward Proxy for different endpoints. 
-There are 3 network endpoints SDK make requests to download_config_specs,get_id_lists, and log_events, and you can configure each endpoint 1. protocol being used 2. proxy address.
+There are 3 network endpoints SDK make requests to download_config_specs,get_id_lists, and log_events, and you can currently configure the download_config_specs to use the proxy. We are actively developing the latter two.
 
 #### Network protocol for different endpoints
 For `download_config_specs` endpoint, where we get specs on evaluating gates/layers/experiments/configs 
 1. `http`: the default protocol. If SDK is initialized with http, it will poll config updates in background thread.
-2. `grpc_websocket`: Establish a grpc streaming from SDK to statsig forward proxy, and listen to updates being pushed from proxy servers. You have to use statsig forward proxy or have a similar proxy server in order to use grpc streaming. Note: Not all SDKs support GRPC yet, if you have an SDK you want support for please reachout to our support channel on slack.
-3. `grpc`: Unary RPC, behave similarly to HTTP protocol, after initialization, SDK poll changes from forward proxy server in background thread.  
-
-
-:::warning
-We are still adding support for log_events and get_id_lists endpoint within Forward Proxy
-::: 
-For `get_id_lists` endpoint, where we get big idlists 
-1. `http`: the default protocol. If SDK is initialized with http, it will poll idlists from forward proxy server or statsig server.
-2. `grpc_websocket`: Not supported
-3. `grpc`: Not supported
-
-
-For `log_events` endpoint, where we post exposure events and custom events.
-1. `http`: the default protocol. SDK will make POST Http request to flush all events to Statsig server, forward proxy server does not support this endpoint. 
-2. `grpc_websocket`: Not supported yet. 
-3. `grpc`: Not supported yet
+2. `grpc_websocket`: Establish a grpc streaming from SDK to statsig forward proxy, and listen to updates being pushed from proxy servers. You have to use statsig forward proxy or have a similar proxy server in order to use grpc streaming. Note: Not all SDKs support GRPC yet, if you have an SDK you want support for please reach out to our support channel on slack.
+3. `grpc`: Unary RPC, behave similarly to HTTP protocol, after initialization, SDK poll changes from forward proxy server in background thread. 
 
 #### Listen to Config Change Example
 ```typescript
@@ -68,28 +53,49 @@ const statsigOptions = {
   }
 }
 Statsig.initialize(server_key, statsigOptions)
-// Statsig will use listen for config updates from statsig forward proxy using grpc_websocket protocl. And use http to get idlists and post log events from statsig servers.
+// Statsig will use listen for config updates from statsig forward proxy using grpc_websocket protocol. And use http to get idlists and post log events from statsig servers.
 ```
 
 For information on your specific SDK language, see the language specific docs in the left hand column.
 
 #### Failover behavior
-**Initializaiton** 
+**Initialization**
+
 SDK remains the same behavior when forward proxy is being used. But there are several configurations you can use to improve the data availability during initialization.
-Default behavior is SDK will get from forward proxy. If DataAdapater is presented, get from DataAdapter first, and fallback to Forward Proxy if there is no value served from data adapter. 
+Default behavior is SDK will get from forward proxy. If DataAdapter is presented, get from DataAdapter first, and fallback to Forward Proxy if there is no value served from data adapter. 
 There are several ways you can configure the behavior here. 
-1. Set `DataAdapter.should_be_use_as_initialization_backup_source = true`, use forward proxy as primary source, if it fails, fallback to dataAdapter.
-2. Set `defaultToStatsigAPI = true`, if you want to default to statsig api when both sources failed. 
+1. set fallbackToStatsigAPI = true. If you want to fallback to statsig api when initialization or config sync from original sources is false
+2. If you want to customize your own order of initialization set initializeSources to have multiple sources,for example initializeSources=[DataSource.Network, DataSource.DataAdapter, DataSource.StatsigNetwork] will fetch from 3 sources sequentially until it successfully find one
 
 **Config Sync (Post initialization)** 
-If sdk is using `grpc_websocket` protocol, meaning sdk is in a listening mode for any config changes, it will 
-1. Retry connecting to forward proxy, with exponenetial backoff, 10s, 50s, 250s, 1250s ... until it reconnects, limit fo
+
+If sdk is using pulling model, `grpc` or `http`
+1. Set fallbackToStatsigAPI=true
+2. Set configSyncSources to have multiple sources,for example initializeSources=[DataSource.Network, DataSource.StatsigNetwork] will fetch from 3 sources sequentially until it successfully find one
+(Note if you are using streaming, config sync sources does not matter here)
+
+If sdk is using `grpc_websocket` protocol, meaning sdk is in a listening mode for any config changes, by default it will 
+1. Retry connecting to forward proxy, with exponential backoff, 10s, 50s, 250s, 1250s ... until it reconnects, limit fo
 r retry is 10 times.  
 2. If 4th retry still fails, sdk will start polling from from Statsig endpoint. Use StatsigOptions.pollingInterval to control how often it 
 3. While sdk polling from Statsig endpoint, sdk will keep retrying until it connected, 
+Everything mentioned above is configurable with StatsigOptions
 
-#### Coordinate SDK DataAdapater / DataStore with Forward Proxy Cache service
-In order to increase reliability of SDK during initialization, setup DataStore will help in case Forward Proxy is not available when initialized. If DataStore is set, SDK will try initailize with values from dataStore, and sync (listen or polling depends on setup) from forward proxy in background after initialization. It's recommended for SDK and Forward Proxy to share the same cache service for consistency and reduce cache I/O. 
+#### Streaming failover in depth
+Within SDK, when exceptions being thrown, for example, connection is dropped or forward proxy server is down, grpc will return error to SDK and we start falling back behavior.
+Python will check if the channel is idle every 2 hours to ensure channel is not idle, this is to prevent some unknown corner case behavior within python grpc library. 
+
+
+#### TLS -- Advanced network authentication
+Forward proxy support TLS and mTLS when use GRPC server, so all grpc network (streaming and unary call) are encrypted
+
+To enable it:
+1. Setup forward proxy server with valid certifications, more details to be found [here](https://github.com/statsig-io/statsig-forward-proxy?tab=readme-ov-file#deploying) 
+2. Setup SDK with valid certifications. more details to be found within SDK page [python example](https://docs.statsig.com/server/pythonSDK). 
+   a. If certifications are misconfigured, SDK will treat as exception and started failing over behavior you configured. For example, fallback to statsig api, retry to connect and start falling back behavior. 
+
+#### Coordinate SDK DataAdapter / DataStore with Forward Proxy Cache service
+In order to increase reliability of SDK during initialization, setup DataStore will help in case Forward Proxy is not available when initialized. If DataStore is set, the SDK will try to initialize with values from dataStore, and sync (listen or polling depends on setup) from forward proxy in background after initialization. It's recommended for SDK and Forward Proxy to share the same cache service for consistency and reduce cache I/O. 
 
 Example on DataStore setup in python:
 ``` py
@@ -98,7 +104,13 @@ def __init__(self):
   self.redis_cache = ExampleCache()
 
 def get(self, key: str):
-  self.cache.get(key)
+  # IDlist isn't currently supported by proxy, so do normal lookup
+  if "statsig.id_lists" in key:
+    return self.cache.get(key)
+  # This logic must stay in sync with statsig-forward-proxy
+  else:
+    hashed_key = "statsig::" + hashlib.sha256(key.encode()).hexdigest()
+    return self.cache.hget(hashed_key, 'config')
 
 def set(self, key: str):
   # Don't implement set method if you are share the same cache between forward proxy and sdk, forward proxy will write to cache 
@@ -107,3 +119,15 @@ def set(self, key: str):
 def shutdown(self):
   self.cache.shutdown()
 ```
+
+#### Deployment
+
+Given that every use case for the proxy is different, we don't have strict recommendations. However, we do have general recommendations:
+1. Understand what your general QPS to Statsig is. If you need help understanding this, feel free to reach out.
+2. If possibly using your payload, get a sense of what throughput can be supported by a single pod and then calculate how much you need to scale out by to support your traffic.
+3. Pre-scale the proxy for your max QPS and then begin to gradually rollout the proxy to services.
+4. Configure your auto-scaling, for most folks, scaling up at 70% utilization for CPU and memory is typically sufficient, but depending on your usage this might need to be tweaked.
+
+If you are seeing scaling issues that can't be resolved by scaling out horizontally, we recommend fronting it with nginx to help with flow control.
+
+If you need any help, we are happy to collaborate and work closely, just send a message to our slack channel to get further assistance.

@@ -1,17 +1,16 @@
 ```jsx
 // Values via getLayer
 
-const layer = await Statsig.getLayer(user, "user_promo_experiments");
+const layer = Statsig.getLayerSync(user, "user_promo_experiments");
 const promoTitle = layer.get("title", "Welcome to Statsig!");
 const discount = layer.get("discount", 0.1);
 
 // or, via getExperiment
 
-const titleExperiment = await Statsig.getExperiment(user, "new_user_promo_title");
-const priceExperiment = await Statsig.getExperiment(user, "new_user_promo_price");
+const promoExperiment = Statsig.getExperimentSync(user, "new_user_promo");
 
-const promoTitle = titleExperiment.get("title", "Welcome to Statsig!");
-const discount = priceExperiment.get("discount", 0.1);
+const promoTitle = promoExperiment.get("title", "Welcome to Statsig!");
+const discount = promoExperiment.get("discount", 0.1);
 
 ...
 

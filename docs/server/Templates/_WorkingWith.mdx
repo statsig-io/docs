@@ -2,7 +2,7 @@ import AsyncDisclaimer from "./_AsyncDisclaimer.mdx";
 
 ## Working with the SDK
 
-### Checking a Gate
+### Checking a Feature Flag/Gate
 
 Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-flags/working-with). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
 
@@ -29,6 +29,8 @@ Then we have **Layers/Experiments**, which you can use to run A/B/n experiments.
 Now that you have a Feature Gate or an Experiment set up, you may want to track some custom events and see how your new features or different experiment groups affect these events. This is super easy with Statsig - simply call the Log Event API and specify the user and event name to log; you additionally provide some value and/or an object of metadata to be logged together with the event:
 
 <div>{props.logEvent}</div>
+
+Learn more about identifying users, group analytics, and best practices for logging events in the [logging events guide](/guides/logging-events).
 
 ### Retrieving Feature Gate Metadata
 

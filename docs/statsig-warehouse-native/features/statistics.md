@@ -1,7 +1,7 @@
 ---
 title: Statistics
 slug: /statsig-warehouse-native/features/statistics
-sidebar_label: Statistics
+sidebar_label: Overview
 ---
 
 Statsig's statistics engine is designed to deliver the best analysis of experiment results in the market. We have four core values around our Stats Engine: Transparency, Trust, Flexibility, and Power

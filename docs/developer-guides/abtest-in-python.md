@@ -2,6 +2,7 @@
 title: How to run an AB Test in Python
 sidebar_label: First AB Test in Python
 slug: /developer-guides/abtest-in-python
+displayed_sidebar: cloud
 ---
 
 Running a simple A/B experiment in a web page with Python and the Statsig SDK involves a few distinct steps, including creating a basic web server, integrating with Statsig for A/B testing, and configuring the experiment via the Statsig console. Below is a step-by-step guide.

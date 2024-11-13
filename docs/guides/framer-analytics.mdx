@@ -1,0 +1,47 @@
+---
+sidebar_label: Integrating Statsig with Framer
+title: Integrating Statsig with Framer
+---
+
+## Introduction
+
+Framer allows you to create interactive prototypes and websites with ease. By integrating Statsig, you can capture user behavior, and log custom events, directly within your Framer projects.
+
+This guide will walk you through integrating Statsig into your Framer project using the JavaScript SDK.
+
+## Installation
+
+To start tracking user interactions with Statsig in your Framer project, follow these steps:
+
+1. Copy your web snippet from Statsig, replacing "YOUR_CLIENT_KEY" with a Client API Key from your Statsig project, which you can find at [console.statsig.com/api_keys](https://console.statsig.com/api_keys).
+```html
+<script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=[YOUR_CLIENT_KEY]"></script>
+```
+Go to your Framer project settings by clicking the gear icon in the top right corner - note you'll have to be on the "mini" site plan or above above to enable custom code.
+In the General tab, scroll down to the Custom Code section and paste your Statsig snippet into the end of `<head>` tag section. Save your changes and publish your site, then Statsig will be ready to track basic user interactions.
+
+## Capture Custom Events
+To track custom events within your Framer project, you can use window.statsig.logEvent() inside a custom component.
+
+Go to the Assets tab in your Framer project.
+Click the plus icon next to Code and create a new code component.
+Name the file CaptureButton and select New Component.
+Replace the default code in the file with the following:
+
+```js
+
+export default function CaptureButton() {
+    const handleClick = () => {
+        window.statsig.logEvent("click", "button");
+    };
+
+    return (
+        <button id="capture-button" onClick={handleClick}>
+            Click me
+        </button>
+    );
+}
+```
+Save your changes (Cmd/Ctrl + S).
+Drag your new CaptureButton component from the Code tab onto your Framer page, where you'd like it.
+After publishing your site and clicking the button, after a couple minutes you should see the event show up in your Statsig metrics. 

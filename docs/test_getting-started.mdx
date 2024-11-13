@@ -19,10 +19,10 @@ There are two ways to seamlessly integrate Statsig into your product development
 
 - **Statsig Cloud:** Set up ***Statsig SDK***, configure **events logging**. Everything else is handled by us.
     - You get feature gates and 1 million metered events for free, as well as many analytics tools such as Dashboard, Metrics Explorer, and Insights. Here is [a link](https://www.statsig.com/pricing) to our pricing details.
-- **Warehouse Native:** If the events or metrics you want to experiment on are already in your warehouse, you may want to consider [Warehouse Native](https://docs.statsig.com/statsig-warehouse-native/introduction) (WHN).
-    - With WHN, you can host Statsig’s Stats Engine within your own Data Warehouse, calculating metric lifts on your own datasets. This is particularly useful for teams with strong privacy contraints.
+- **Warehouse Native:** If the events or metrics you want to experiment on are already in your warehouse, you may want to consider [Warehouse Native](/statsig-warehouse-native/introduction) (WHN).
+    - With WHN, you can host Statsig’s Stats Engine within your own Data Warehouse, calculating metric lifts on your own datasets. This is particularly useful for teams with strong privacy constraints.
     - You can use non-Statsig SDKs for feature assignment and provide us exposures in a table (you randomize), or use our SDKs (we randomize and write into your warehouse). The former helps you scale analysis; the latter helps you [10x experimentation velocity](https://www.statsig.com/blog/features-to-10x-experiment-velocity).
-    - Today’s this option is only available with Enterprise contracts. Check [this link](https://docs.statsig.com/statsig-warehouse-native/introduction) for more details or [Schedule a demo](https://www.statsig.com/contact/demo) with our sales team.
+    - Today’s this option is only available with Enterprise contracts. Check [this link](/statsig-warehouse-native/introduction) for more details or [Schedule a demo](https://www.statsig.com/contact/demo) with our sales team.
 
 This page gives you an organized overview of how to set up the SDK. SDK can help you log events, and assignments, which will light up **feature gate**, **experiments**, and **analytics** within half an hour.
 
@@ -37,7 +37,7 @@ Statsig provides three tightly-integrated core capabilities:
 
 Statsig helps you generate two core outputs — **metrics** and **exposures** — metrics summarizes user behaviors that are meaningful to your business; exposure tells us, and allows us to control, what features each user is exposed to.
 
-**Logging Events** is the foundation for **metrics**, and **Feature assignment** is the foundation for **exposuress**. Statsig has best-in-class **SDKs** built with experimentation as a first-class citizen, that once turned on, can create logging events and feature assignments to power all Statsig features. The SDK is strongly recommended for as it’s reliable, resilient, and have many experimentation best practices built in.
+**Logging Events** is the foundation for **metrics**, and **Feature assignment** is the foundation for **exposures**. Statsig has best-in-class **SDKs** built with experimentation as a first-class citizen, that once turned on, can create logging events and feature assignments to power all Statsig features. The SDK is strongly recommended for as it’s reliable, resilient, and have many experimentation best practices built in.
 
 *You can use Statsig without its SDK. For example, **metrics** can come from raw events table, metric definitions, or a precomputed metrics table; **assignments** can come from 3rd party tool, or in-house assignment tool. Statsig is modulated to work with other tools you are currently using.*
 
@@ -121,22 +121,22 @@ export const SDKCard = ({ language, image, link }) => (
       <SDKCard
         language="Javascript"
         image="/img/sdk/sdk_js.png"
-        link="/client/jsClientSDK"
+        link="/client/javascript-sdk"
       ></SDKCard>
       <SDKCard
         language="React"
         image="/img/sdk/sdk_react.png"
-        link="/client/reactSDK"
+        link="client/javascript-mono/ReactUsage"
       ></SDKCard>
       <SDKCard
         language="React Native"
         image="/img/sdk/sdk_rn.png"
-        link="/client/reactNativeSDK"
+        link="client/javascript-mono/ReactNativeUsage"
       ></SDKCard>
       <SDKCard
         language="Expo"
         image="/img/sdk/sdk_expo.png"
-        link="/client/reactNativeExpoSDK"
+        link="client/javascript-mono/ExpoUsage"
       ></SDKCard>
       <SDKCard
         language="iOS"
@@ -208,13 +208,13 @@ application:
 - [HTTP API](/http-api)
 ## Step 2. Set Up Your First Feature Gate
 
-Check [this page](https://docs.statsig.com/guides/first-feature) for a full walkthrough
+Check [this page](/guides/first-feature) for a full walkthrough
 
 ![fg_setup](https://github.com/statsig-io/docs/assets/139815787/4a320c20-c060-4dc2-a493-178f9e7855e9)
 
 ## Step 3. Start Logging Events
 
-Check [this page](https://docs.statsig.com/guides/logging-events) for a full walkthrough
+Check [this page](/guides/logging-events) for a full walkthrough
 
 ![logging_setup](https://github.com/statsig-io/docs/assets/139815787/219f2980-6bae-418d-896a-1305d5bb52c2)
 
@@ -224,7 +224,7 @@ Now, **events** are **logged** and passed to Statsig Cloud via the SDK. They wil
 
 ![metrics](https://github.com/statsig-io/docs/assets/139815787/f810a6e4-eca8-4ed4-be96-76f134f14397)
 
-Which you can add to a [***Dashboard***](https://docs.statsig.com/metrics):
+Which you can add to a [***Dashboard***](/metrics):
 
 ![dashboard](https://github.com/statsig-io/docs/assets/139815787/cd6b2f71-8ca0-4d77-8d7c-a2b081bbbc8e)
 

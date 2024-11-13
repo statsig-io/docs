@@ -7,9 +7,15 @@ You can pass in an optional parameter `options` in addition to the server secret
   - used to decide how long the Statsig client waits for the initial network request to respond before calling the completion block. The Statsig client will return either cached values (if any) or default values if checkGate/getConfig/getExperiment is called before the initial network request completes.
   - if you always want to wait for the latest values fetched from Statsig server, you should set this to 0 so we do not timeout the network request.
   - unit is milliseconds.
-- **environment tier**: Tier (enum), default null
-  - used to signal the environment tier the user is currently in, and can be PRODUCTION, STAGING or DEVELOPMENT;
-  - e.g. passing in a value of `Tier.Staging` will allow your users to pass any condition that pass for the staging environment tier, and fail any condition that only passes for other environment tiers.
+- **environment tier**: string, default null
+  - used to signal the environment tier the user is currently in
+  - e.g. passing in a value of `"staging"` will allow your users to pass any condition that pass for the staging environment tier, and fail any condition that only passes for other environment tiers.
+  - example:
+```
+val options = StatsigOptions()
+options.setTier("staging")
+```
+
 - **bootstrapValues**: string?, default null
   - a string that represents all rules for all feature gates, dynamic configs and experiments. It can be provided to bootstrap the Statsig server SDK at initialization in case your server runs into network issue or Statsig server is down temporarily.
 - **rulesUpdatedCallback**: ((rules: String) -> Unit)?, default null
@@ -21,7 +27,9 @@ You can pass in an optional parameter `options` in addition to the server secret
 - **rulesetsSyncIntervalMs** - Long, default 10 * 1000
 - **idListsSyncIntervalMs** - Long, default 60 * 1000
 - **dataStore**
-  - [Data Store/Adapter Concept](https://docs.statsig.com/server/concepts/data_store)
+  - [Data Store/Adapter Concept](/server/concepts/data_store)
+- **userPersistentStorage**: IUserPersistentStorage default nil
+  - A persistent storage adapter for running sticky experiments. See [Persistent Assignment](/server/concepts/persistent_assignment)
 - **customLogger** - LoggerInterface
 - **disableAllLogging** - Boolean, default false
 - **proxyConfig** - ProxyConfig

@@ -1,7 +1,7 @@
 ---
 title: Metrics
 slug: /statsig-warehouse-native/configuration/metrics
-sidebar_label: Metrics
+sidebar_label: Overview
 ---
 
 ## Metrics
@@ -59,7 +59,10 @@ Supported aggregations are:
 
 - [Count](../metrics/count)
 - [Sum](../metrics/sum)
+- [Logged Sums and Counts](../metrics/log)
 - [Count Distinct](../metrics/count-distinct)
+- [First Value](../metrics/latest-value.md)
+- [Latest Value](../metrics/latest-value.md)
 - Thresholds
   - A special cases of sum/count which measure a 1/0 flag for if a user passed a threshold value during the experiment - e.g., "the number of users who spent more than $100"
 
@@ -79,6 +82,7 @@ Supported unit count types are:
 - [Windowed](../metrics/unit-count-window), measuring if a user performed an action within some time window after exposure
 - [Latest Participation](../metrics/unit-count-latest), measuring if a user fulfilled some criteria on their latest recorded record (e.g. is this user currently a subscriber)
 - [Daily Participation](../metrics/unit-count-rate), the rate at which units were daily active users during the experiment
+- [Retention](../metrics/retention.md), the rolling rate of retention on an action or set of actions with a configurable time window
 
 ### Ratios and Funnels
 

@@ -16,9 +16,9 @@ At the top of Pulse is the Exposures Chart. Exposures are the unique experimenta
 
 #### Immediately Post-experiment Start 
 
-For up to the first 24 hours after starting your experiment (before our daily Pulse run), the **Metric Lifts** section, a.k.a. Pulse, is calculated in near real-time. This more real-time Pulse is designed to enable you to confirm that exposures and metrics are being calculated as expected and debug your experiment or gate setup if needed. 
+For up to the first 24 hours after starting your experiment (before our daily Pulse run), the **Metric Lifts** section, a.k.a. Pulse, is calculated in near real-time (this only applies to Statsig Cloud, for WHN projects you will need to reload pulse on demand or set up a daily schedule). This more real-time Pulse is designed to enable you to confirm that exposures and metrics are being calculated as expected and debug your experiment or gate setup if needed. 
 
-Please note that you should **not** make any experiment decisions based on more real-time Pulse data in this first 24 hour window after experiment start. Experiments should only be called once the experiment has hit target duration, as set by your primary metric(s) hitting experimental power. Read more about target duration [here](https://docs.statsig.com/experiments-plus/create-new#target-duration). 
+Please note that you should **not** make any experiment decisions based on more real-time Pulse data in this first 24 hour window after experiment start. Experiments should only be called once the experiment has hit target duration, as set by your primary metric(s) hitting experimental power. Read more about target duration [here](/experiments-plus/create-new#target-duration). 
 
 <img width="1205" alt="Screen Shot 2023-06-19 at 3 29 13 PM" src="https://github.com/statsig-io/docs/assets/101903926/c148deb6-b20d-4f36-af1a-83836d23371b"/>
 
@@ -40,7 +40,7 @@ All of these are available in daily Pulse results, which will start showing in t
 
 <img width="1194" alt="Screen Shot 2023-09-20 at 11 35 05 AM" src="https://github.com/statsig-io/docs/assets/101903926/85fdc847-8d70-4215-a6ad-5a1f2d49c5e7"/>
 
-The Pulse daily run calculates the difference between the comparable randomization groups (eg. test and control) across your company's suite of metrics, and applies a statistical test to the results. You can read more about Statsig's stats engine [here](https://docs.statsig.com/stats-engine). 
+The Pulse daily run calculates the difference between the comparable randomization groups (eg. test and control) across your company's suite of metrics, and applies a statistical test to the results. You can read more about Statsig's stats engine [here](/stats-engine). 
 
 For every metric, we will show you:
 
@@ -57,7 +57,7 @@ Delta(%) = (Test - Control) / Control
 
 Confidence intervals are reported at the selected significance level (95% by default). In a typical two-sided Z-test, we show the confidence interval as +/- 1.96 \* standard error. 
 
-99.9% winsorization is automatically applied to event_count, event_count_custom, and sum metrics. This caps extreme outlier values to reduce their impact on experiment results. For metrics added to the **Scorecard** or **Monitoring Metrics** sections of your experiment or gate, you can also apply other optional statistical treatments, such as CUPED (pre-experiment bias reduction) and sequential testing adapted confidence intervals. Read more [here](https://docs.statsig.com/stats-engine). 
+99.9% winsorization is automatically applied to event_count, event_count_custom, and sum metrics. This caps extreme outlier values to reduce their impact on experiment results. For metrics added to the **Scorecard** or **Monitoring Metrics** sections of your experiment or gate, you can also apply other optional statistical treatments, such as CUPED (pre-experiment bias reduction) and sequential testing adapted confidence intervals. Read more [here](/stats-engine). 
 
 ### Pulse Views 
 There are a few different views to see your Pulse metric lifts, namely: 
@@ -76,19 +76,21 @@ Cumulative results includes a detailed view on hover, where you can additionally
 
 ### Dimensions
 
-There are two ways in which we can breakdown a given Pulse metric - one is by user dimension, the other is by value dimension.
+There are two ways in which we can breakdown a given Pulse metric - one is by a **User Dimension**, the other is by an **Event Dimension**.
 
 #### User Dimensions
 
-User dimensions refer to user level attributes that are either part of the user object you log, or additional metadata that Statsig extracts. Examples of these attributes are operating system, country, and region.
+User Dimensions refer to user level attributes that are either part of the user object you log, or additional metadata that Statsig extracts. Examples of these user attributes could be operating system, country, and region.
 
 You can create [custom queries](/pulse/custom-queries) to create queries that _filter on_ or _group by_ available user dimensions. For example, you could "See results for users in the US", or "See results for users using iOS, grouped by their country".
 
-#### Value dimensions
+#### Event dimensions
 
-Value Dimensions refer to the set of distinct values logged alongside a given metric. If you want to see Pulse results for a metric further broken down by categories that are specific to that metric, specify the dimension you want to break down by in the **value** or **metadata** attributes when you log the event. For example, when you log a click event on your web or mobile application, you may also log the target category using the **value** attribute as shown below. Pulse will automatically generate results for each category in addition to the top level metric. 
+Events Dimensions refer to the value or metadata logged as part of a custom event that is used to define the metric. If you want to see Pulse results for a metric broken down by categories that are specific to that metric, [specify the dimension](/metrics/metric-dimensions) you want to break down by in the **value** or **metadata** attributes when you log the source event. For example, when you log a "click" event on your web or mobile application, you may also log the target category using the **value** attribute as shown below. Pulse will automatically generate results for each category in addition to the top level metric. 
 
-To see the Pulse result breakdowns for all categories within a metric, click on the (+) sign next to the metric. Read more about configuring metric dimensions [here](https://docs.statsig.com/metrics/metric-dimensions). 
+To see the Pulse result breakdowns for all categories within a metric, click on the (+) sign next to the metric.
+
+![!image](/img/dimension_button.png)
 
 ![image](https://user-images.githubusercontent.com/88338316/158864531-be7f4527-6f83-4f9c-9b9d-2de4f34ec77f.png)
 ![image](https://user-images.githubusercontent.com/1315028/134992035-1bfa67f2-73a0-4b88-ac1d-688fa6ef0b33.png)

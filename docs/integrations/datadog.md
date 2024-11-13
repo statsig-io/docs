@@ -5,7 +5,7 @@ title: Datadog
 ### Overview
 
 There are two aspects to the Datadog integration, forwarding event counts and change config changes. The goal of this integration is to allow monitoring of Statsig usage for billing purposes and alerts for config changes.
-We also offer a [Datadog trigger](https://docs.statsig.com/integrations/triggers/datadog) integration.
+We also offer a [Datadog trigger](/integrations/triggers/datadog) integration.
 
 ### Connecting to Datadog
 
