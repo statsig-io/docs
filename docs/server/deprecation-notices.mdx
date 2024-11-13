@@ -11,7 +11,7 @@ Starting December 2nd, 2024, Statsig will **switch to a more dependable method o
 This may result in different evaluations for some client-side checks, which will be directionally more correct than the previous method. You may see a greater number of users passing country rules, as this new method will begin to resolve countries for IPV6 user, which represent an increasing volume of users.
 
 ### Conflicts with Server-Side Checks
-If you check some configs on both the Client and Server side, it is possible that a small number of users may pass targeting on the client side and fail on the server, or vice versa, as we'll continue to rely on [IP3Country](https://github.com/statsig-io/ip3country) for server-side country resolution. **To minimize evaluation mismatch between Statsig client and server instances,** we recommend using your cloud provider's country resolution (often available in a load balancer) and passing that to Statsig in targeting scenarios as "Country" metadata.
+If you check some configs on both the Client and Server side, it is possible that a small number of users may pass targeting on the client side and fail on the server, or vice versa, as we'll continue to rely on [IP3Country](https://github.com/statsig-io/ip3country) for server-side country resolution. **To minimize evaluation mismatch between Statsig client and server instances,** we recommend using your cloud provider's country resolution (often available in a load balancer) and setting that as the "country" field on the StatsigUser object for your evaluations.
 
 ## Async Evaluation Functions
 
