@@ -33,6 +33,8 @@ When using Advanced ID resolution, you can choose between modes:
 - Strict 1:1 mapping enforces that identities have a singular mapping. If you have a mapping between two IDs that are always 1:1, this mode enforces that the mapping is singular and warns you if there's data where that's to the case. Users with a single identity can use downstream metrics from the secondary identity, and multi-mapped users are considered corrupted and discarded from the analysis
 - First-touch attribution mapping is for cases where units might have multiple mappings, in either direction. For example, a single user may have multiple "profiles", or someone may have logged into the same account from several devices or web sessions. In this case, units will use the experiment group of their first exposure for analysis, and aggregate metrics from all of their associated secondary IDs.
 
+![Enforced1to1Mapping](/img/Docs_IDresolution_Enforced1to1Mapping_111224.gif) 
+
 ### Strict 1:1 Mapping
 
 All potential mappings between identifiers within the experiment date range, on the exposed population, are collected. If the primary ID has multiple secondary IDs, or vice versa, it is considered polluted and dropped from the analysis.
