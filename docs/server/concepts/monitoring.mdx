@@ -19,7 +19,7 @@ The Statsig SDK uses multiple logging levels to communicate various information 
     - Messages regarding SDK initialization, including source and version information
     - Notifications when the configuration store is populated
 - Warning: Logs about unusual events that may impact functionality but are automatically managed and recovered, such as:
-    - Messages indicating fallback behavior was triggered
+    - Messages on non critical errors caught by the SDK
     - Notifications about reconnection attempts to gRPC services
 - Error: Critical logs about issues that severely impact the SDK’s functionality, such as:
     - Messages about initialization failures or timeouts
