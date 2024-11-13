@@ -5,7 +5,7 @@ sidebar_label: Percentile
 
 ## Summary
 
-Percentile metrics calculate a customizable Nth percentile of a column from a metric source.
+Percentile metrics calculate a customizable Nth percentile of a column from a metric source across experiment groups.
 
 ### Use Cases
 
