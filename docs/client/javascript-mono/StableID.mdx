@@ -2,6 +2,7 @@
 title: Working With Stable ID
 sidebar_label: Stable ID
 slug: /client/javascript-sdk/stable-id
+displayed_sidebar: cloud
 ---
 
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
@@ -34,8 +35,7 @@ Each SDK key has its own StableID, meaning that if you're using multiple SDK key
 It's important to note that local storage is not shared across different domains or subdomains. 
 This means that if you are working across multiple domains or subdomains, the StableID will be isolated to each domain's local storage.
 
-If you need a StableID to persist across domains, you'll need to implement your own mechanism to store and retrieve the StableID, such as using a cookie. 
-By setting the StableID in a cookie with a shared domain scope, you can ensure that the same ID is accessible across multiple domains.
+If you need a StableID to persist across domains, you'll need to implement your own mechanism to store and retrieve the StableID, such as using a cookie as [demonstrated here](#persisting-stableid-across-subdomain). 
 
 The Statsig SDK does not use any cookies itself.
 
@@ -100,9 +100,28 @@ Once overridden, the new StableID will be persisted to local storage so it will 
 
 :::
 
+### Persisting StableID across subdomain
 
+If you are assigning a user to a test on one subdomain, and tracking behavior for metrics purposes on a different subdomain, you'll need to have this solution in place to ensure Statsig can properly attribute cross-origin behavior to the Test Group assignment that took place on the initial experiment domain. 
 
-### Keeping StableID Consistent
+To install, simply paste the first script tag prior to SDK initialization and include code that manually pulls the stableID onto the user object.
+
+```html
+<!-- cross domain id script -->
+<script>!function(){let t="STATSIG_LOCAL_STORAGE_STABLE_ID";function e(){if(crypto&&crypto.randomUUID)return crypto.randomUUID();let t=()=>Math.floor(65536*Math.random()).toString(16).padStart(4,"0");return`${t()}${t()}-${t()}-4${t().substring(1)}-${t()}-${t()}${t()}${t()}`}let i=null,n=localStorage.getItem(t)||null;if(document.cookie.match(/statsiguuid=([\w-]+);?/)&&([,i]=document.cookie.match(/statsiguuid=([\w-]+);?/)),i&&n&&i===n);else if(i&&n&&i!==n)localStorage.setItem(t,i);else if(i&&!n)localStorage.setItem(t,i);else{let o=e();localStorage.setItem(t,o),function t(i){let n=new Date;n.setMonth(n.getMonth()+12);let o=window.location.host.split(".");o.length>2&&o.shift();let s=`.${o.join(".")}`;document.cookie=`statsiguuid=${i||e()};Expires=${n};Domain=${s}`}(o)}}();</script>
+
+<!-- Manually attach stableID to user object -->
+<script>
+const userObj = {};
+if(localStorage.getItem('STATSIG_LOCAL_STORAGE_STABLE_ID')) {
+  userObj.customIDs = {stableID: localStorage.getItem('STATSIG_LOCAL_STORAGE_STABLE_ID')};
+}
+const statsigClient = new Statsig.StatsigClient('<client-sdk-key>', userObj, {/* OPTIONS */});
+</script>
+```
+<center><small>(please use the above code at your discretion and test thoroughly)</small></center>
+
+### Keeping StableID Consistent across Client & Server
 
 If you have a backend service running a Statsig SDK as well as using the Statsig client in your frontend, 
 you may need to have the same StableID accessible in both environments.
