@@ -3,6 +3,16 @@ title: Deprecation Notices
 sidebar_label: Deprecation Notices
 ---
 
+## New Method for Country Resolution
+
+Starting December 1st, 2024, Statsig will **switch to a more dependable method of resolving IP Addresses to country codes in our client SDKs**, which may result in different gate behavior for some users. Statsig currently depends on a [homegrown package](https://github.com/statsig-io/ip3country) for country resolution on both Client and Server SDKs, which lacks IPV6 support. To resolve countries without bloating our SDK sizes, we'll begin to rely on our cloud provider's country resolution.
+
+### Potential Changes in Client Evaluations
+This may result in different evaluations for some client-side checks, which will be directionally more correct than the previous method. You may see a greater number of users passing country rules, as this new method will begin to resolve countries for IPV6 user, which represent an increasing volume of users.
+
+### Conflicts with Server-Side Checks
+If you check some configs on both the Client and Server side, it is possible that a small number of users may pass targeting on the client side and fail on the server, or vice versa, as we'll continue to rely on [IP3Country](https://github.com/statsig-io/ip3country) for server-side country resolution. **To minimize evaluation mismatch between Statsig client and server instances,** we recommend using your cloud provider's country resolution (often available in a load balancer) and passing that to Statsig in targeting scenarios as "Country" metadata.
+
 ## Async Evaluation Functions
 
 #### Reason
