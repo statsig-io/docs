@@ -35,7 +35,7 @@ When using Advanced ID resolution, you can choose between modes:
 
 | Strict 1:1 Mapping                                                             | First Touch Mapping                                                                |
 |--------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| ![Enforced1to1Mapping](/img/Docs_IDresolution_Enforced1to1Mapping_111224.gif)  | ![FirstTouchAttribution](/img/Docs_IDresolution_FirstTouchAttribution_111224.gif)  |
+| ![Enforced1to1Mapping](/img/Docs_IDresolution_Enforced1to1Mapping_111324.gif)  | ![FirstTouchAttribution](/img/Docs_IDresolution_FirstTouchAttribution_111324.gif)  |
 
 
 
