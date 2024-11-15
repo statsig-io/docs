@@ -1,6 +1,5 @@
-import Alert from "@mui/material/Alert";
-import AlertTitle from "@mui/material/AlertTitle";
 import { useColorMode } from "@docusaurus/theme-common";
+import Alert from "@mui/material/Alert";
 import { useEffect } from "react";
 
 // Map entities to their corresponding OpenAPI tags
@@ -49,7 +48,7 @@ function filterPathsByTag(spec, tags) {
 
 export default function Rapidoc(props) {
   const { id, entity } = props;
-  const isDarkTheme = useColorMode().colorMode === "dark";
+  const isDarkTheme = false;
 
   useEffect(() => {
     const rapidoc = document.getElementById(id);
@@ -80,14 +79,20 @@ export default function Rapidoc(props) {
       });
   }, [entity]);
 
-  let description = (
+  const description = (
     <div>
-      <h2>Description</h2>
-      {getDescription(entity)}
+      {entity === "all-endpoints-generated" && (
+        <div>
+          <h2>Description</h2>
+          {getDescription(entity)}
+        </div>
+      )}
+
       <h2>Authorization</h2>
       <p>
         All requests must include the <code>STATSIG-API-KEY</code> field in the
-        header. The value should be a Console API Key which can be created in{" "}
+        header.<br />
+        The value should be a Console API Key which can be created in{" "}
         <code>'Project Settings' {">"} 'API Keys' tab</code>. <br />
         To use the 'try it' section on this page, enter your Console API into
         the box below.
@@ -95,21 +100,6 @@ export default function Rapidoc(props) {
       <hr />
     </div>
   );
-
-  if (entity === "all-endpoints-generated") {
-    description = (
-      <div>
-        <h2>Authorization</h2>
-        <p>
-          All requests must include the <code>STATSIG-API-KEY</code> field in
-          the header. The value should be a Console API Key which can be created
-          in <code>Project Settings {">"} API Keys tab</code>. <br />
-          To use the 'Try' function on this page, enter your Console API into
-          the box below.
-        </p>
-      </div>
-    );
-  }
 
   return (
     <rapi-doc
@@ -144,13 +134,6 @@ export default function Rapidoc(props) {
         You will be directly modifying the project connected to the api-key
         provided. We suggest creating a temporary project when testing our API
         below.
-      </Alert>
-      <Alert severity="info" className="warning" slot="auth">
-        <AlertTitle>
-          Pagination parameters required from August 1st, 2024
-        </AlertTitle>
-        List requests without page and limit parameters will default to{" "}
-        <code>page=1&limit=100</code>.
       </Alert>
     </rapi-doc>
   );

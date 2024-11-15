@@ -59,6 +59,7 @@ const sidebars: SidebarsConfig = {
               Concepts: [
                 "sdks/client-vs-server",
                 "client/concepts/user",
+                "server/concepts/monitoring",
                 "sdks/debugging",
                 "client/concepts/initialize",
                 "client/concepts/bootstrapping",
@@ -151,6 +152,22 @@ const sidebars: SidebarsConfig = {
                 "guides/node-express-abtests",
                 "guides/python-flask-feature-flags",
                 "guides/python-flask-abtests",
+              ],
+            },
+            {
+              type: "category",
+              label: "Azure AI",
+              link: {
+                type: "doc",
+                id: "azureai/introduction",
+              },
+              items: [
+                "azureai/getting-started",
+                "azureai/model-client",
+                "azureai/completions",
+                "azureai/embeddings",
+                "azureai/capturing-metrics",
+                "azureai/running-experiments",
               ],
             },
           ],
@@ -477,6 +494,7 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/disable-group",
                 "experiments-plus/bayesian",
                 "experiments-plus/switchback-tests",
+                "experiments-plus/reconciling-experiment-results",
                 // {
                 //   Experimentation: [
                 //     "experiments-plus/experimentation/why-experiment",
@@ -547,6 +565,21 @@ const sidebars: SidebarsConfig = {
             },
             "layers/introduction",
             "holdouts/introduction",
+            "ai-ml/ai-prompt-experiment",
+            {
+              type: "category",
+              label: "Autotune (Bandits)",
+              link: {
+                type: "doc",
+                id: "autotune/introduction",
+              },
+              items: [
+                "autotune/contextual-bandit",
+                "autotune/multi-armed-bandit",
+                "autotune/setup",
+                "autotune/monitoring",
+              ],
+            },
             {
               type: "category",
               label: "Pulse",
@@ -563,7 +596,6 @@ const sidebars: SidebarsConfig = {
                 "pulse/faq",
               ],
             },
-            "experiments-plus/reconciling-experiment-results",
             {
               type: "category",
               label: "Landing Page Experiments (deprecated)",
@@ -614,28 +646,6 @@ const sidebars: SidebarsConfig = {
             "session-replay/install",
             "session-replay/configure",
             "session-replay/watch",
-          ],
-        },
-        {
-          type: "category",
-          label: "AI/ML Optimization",
-          className: "ai-icon sidebar-icon",
-          items: [
-            "ai-ml/ai-prompt-experiment",
-            {
-              type: "category",
-              label: "Autotune (Bandits)",
-              link: {
-                type: "doc",
-                id: "autotune/introduction",
-              },
-              items: [
-                "autotune/contextual-bandit",
-                "autotune/multi-armed-bandit",
-                "autotune/setup",
-                "autotune/monitoring",
-              ],
-            },
           ],
         },
         {
@@ -709,6 +719,7 @@ const sidebars: SidebarsConfig = {
                     "statsig-warehouse-native/metrics/percentile",
                     "statsig-warehouse-native/metrics/log",
                     "statsig-warehouse-native/metrics/latest-value",
+                    "statsig-warehouse-native/metrics/retention",
                   ],
                 },
                 "statsig-warehouse-native/configuration/dimensional-analysis",

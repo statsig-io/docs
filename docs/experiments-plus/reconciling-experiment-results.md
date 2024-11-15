@@ -1,6 +1,6 @@
 ---
 title: Reconciling Experiment Results
-sidebar_label: Validating Results
+sidebar_label: Reconciling Experiment Results
 slug: /experiments-plus/reconciling-experiment-results
 ---
 ## Motivation
@@ -13,6 +13,13 @@ When companies are evaluating an experimentation vendor, it's common to observe 
 By going through these in order, data teams evaluating a platform can quickly understand and address gaps, or understand the gap and make a decision on if the vendor's approach is acceptable to them.
 ## Joining Data
 Based on our observational data, differences in experiment results most often stem from how exposure data is joined with metric data. At the end of this section we will cover a basic check for confirming this isn't occurring.
+### ID Formats
+In some cases, people log IDs in different formats to different places. For example, the binary id `4TLCtqzctSqusYcQljJLJE` maps to the UUID `a0fb4ef0-9d9e-11eb-9462-7bfc2b9a6ff2`, so a company might have the binary ID in their production environment and log that, while their data users work with the equivalent UUIDs.
+
+This means that the exposures logged using the binary ID would *not* be able to join with the metric data using the UUID, and results would be empty. As suggested on the 'User Metrics not Calculated' health check, you can check samples for both the metric source in question and the assignment source or diagnostic logstream to confirm that the identifiers are in the same format.
+
+ID Resolution can be used to bridge ID type gaps, but is not intended to solve for this scenario; ID Resolution helps you connect identifiers across logged-out/logged-in sessions, or other scenarios where users will commingle their identifiers because of switching identifiers during the experiment.
+
 ### Timestamps
 It is important to analyze metric data only after a user has been exposed to the experiment. Pre-experiment data should have no average treatment effect, and therefore its inclusion dilutes results. Statsig employs a timestamp-based join for this purpose, with an option for a date-based join for daily data. This should look like the SQL snippet below:
 ```
@@ -58,7 +65,7 @@ HAVING COUNT(distinct group_id) = 1;
 When comparing a platform analysis to an **existing** experiment analysis that may have been run in the past, it's possible that the underlying data has since fallen out of retention or has been otherwise deleted. To check this, you can compare the table's retention policy to the analysis dates used in your original experiment analysis to make sure the data still exists.
 Additionally, you should make sure your experiment in the vendor console is configured to analyze the same time range your original analysis used. 
 ### Validation
-The validation procedure for the initial metric data and join is to use the query provided in Timestamps section, modifying it to run on both platforms to evaluate that a target metric has the same totals per group across both platforms. 
+The validation procedure for the initial metric data and join is to use the query provided in [Timestamps](https://docs.statsig.com/experiments-plus/reconciling-experiment-results#timestamps) section, modifying it to run on both platforms to evaluate that a target metric has the same totals per group across both platforms. 
 Warehouse Native platforms have an advantage here in that the SQL dialect and source data will generally be the same in both Vendor code and in your in-house code, making comparisons simpler.
 We recommend picking one metric of interest, validating this data, and resolving any differences before checking in on Statistical/Metric methodologies.
 ## Statistical Features

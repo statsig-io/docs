@@ -151,7 +151,7 @@ export default async function handler(
 <TabItem value="app-router">
 
 ```ts
-// app/statsig-proxy/initialize/route.ts
+// app/statsig-proxy/log_event/route.ts
 
 import { LogEventObject } from "statsig-node";
 
@@ -186,24 +186,36 @@ export async function POST(request: Request): Promise<Response> {
 
 
 ```ts
-// pages/api/statsig-proxy/initialize.ts
+// pages/api/statsig-proxy/log_event.ts
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { LogEventObject } from 'statsig-node';
 
-import { getStatsigValues } from "@/pages/statsig-backend";
-import type { NextApiRequest, NextApiResponse } from "next";
-import { StatsigUser } from "statsig-node";
+import { logEvents } from '../../../lib/statsig-backend';
+
+type LogEventBody = {
+  events: LogEventObject[];
+};
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<string>
 ) {
-  if (req.method !== "POST") {
-    res.status(400).send("/initialize only supports POST");
+  if (req.method !== 'POST') {
+    res.status(400).send('/log_event only supports POST');
     return;
   }
 
-  const { user } = JSON.parse(req.body) as { user: StatsigUser };
-  const values = await getStatsigValues(user);
-  res.status(200).send(values);
+  const body: unknown = req.body;
+  if (!body || typeof body !== 'string') {
+    res.status(400).send('Request body is required');
+    return;
+  }
+
+  const { events } = JSON.parse(body) as LogEventBody;
+
+  await logEvents(events);
+
+  res.status(202).send('{"success": true}');
 }
 ```
 
@@ -241,13 +253,11 @@ const inst = new StatsigClient(
   user,
   { 
     networkConfig: {
-      networkConfig: {
-        logEventUrl: "/statsig-proxy/log_event",
-        initializeUrl: "/statsig-proxy/initialize",
-      },
-      disableCompression: true,
-      disableStatsigEncoding: true,
+      logEventUrl: "/statsig-proxy/log_event",
+      initializeUrl: "/statsig-proxy/initialize",
     },
+    disableCompression: true,
+    disableStatsigEncoding: true,
 
     // Optional - Prints debug logs to the console
     logLevel: LogLevel.Debug 
@@ -271,13 +281,11 @@ const inst = new StatsigClient(
   user,
   { 
     networkConfig: {
-      networkConfig: {
-        logEventUrl: "/statsig-proxy/log_event",
-        initializeUrl: "/statsig-proxy/initialize",
-      },
-      disableCompression: true,
-      disableStatsigEncoding: true,
+      logEventUrl: "/statsig-proxy/log_event",
+      initializeUrl: "/statsig-proxy/initialize",
     },
+    disableCompression: true,
+    disableStatsigEncoding: true,
 
     // Optional - Prints debug logs to the console
     logLevel: LogLevel.Debug 

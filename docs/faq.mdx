@@ -15,6 +15,8 @@ Bucketing in Statsig is deterministic. Given the same user object and the same s
 
 This process ensures a randomized but deterministic bucketing of users across different experiments or feature gates. The unique salt ensures that the same user can be assigned to different buckets in different experiments.
 
+A lot of times people assume that we keep track of a list of all ids and what group they were assigned to for experiments, or which IDs passed a certain feature gate.  While our data pipelines keep track of which users were exposed to which experiment variant in order to generate experiment results, we do not cache previous evaluations and maintain distributed evaluation state across client and server sdks.  That model doesn't scale - we've even talked to customers who were using an implementation like that in the past, and were paying more for a Redis instance to maintain that state than they ended up paying to use Statsig instead.
+
 For more details, check our open-source SDKs [here](https://github.com/statsig-io/node-js-server-sdk/blob/main/src/Evaluator.ts).
 
 ---
@@ -116,6 +118,14 @@ Billable events occur when the Statsig SDK checks if a user is exposed to a feat
 3. Admins receive proactive alerts at 25/50/75/100% of their contracted events.
 
 ![Billing Usage](https://user-images.githubusercontent.com/31516123/218547079-ba33751c-43f0-4ff7-8733-501711596333.png)
+
+---
+
+### How Many Projects Can I Create With a Single Pro Subscription?
+
+Pro subscriptions are limited to one project each. You can create more projects within Statsig, but if you want to have access to pro features and 5M events, you will need to upgrade each project independently. You can read more about our Pro plans [here](https://statsig.com/pricing).
+
+Enterprise plans can support multiple projects. If you might be interest in this, [contact us here](https://statsig.com/contact/demo)!
 
 ---
 

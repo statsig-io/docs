@@ -56,13 +56,17 @@ The adapter takes two arguments:
 ```
 const res = await statsig.initialize(
     env.STATSIG_SECRET_KEY,
-    { dataAdapter: dataAdapter },
+    { 
+      dataAdapter: dataAdapter,
+      initStrategyForIDLists: 'none',
+      disableIdListsSync: true
+    },
 );
 ```
 
 SDK initialization takes two arguments:
 - Your statsig secret key.  This is available from the [Project Settings](https://console.statsig.com/api_keys) page in the Statsig Console.  This is used to authenticate your requests to the statsig backend.  In this example, we've configured it as an environment variable
-- An options object.  We are using the `dataAdapter` property to hook up the Fastly KV store to the SDK.
+- An options object.  We are using the `dataAdapter` property to hook up the Fastly KV store to the SDK.  We're also disabling the ID list sync to speed up initialization
 
 
 
@@ -81,10 +85,10 @@ This is a gate check in code.  The first parameter is the `StatsigUser` object y
 ### 4. Flushing Events
 
 ```
-event.waitUntil(statsig.flush());
+event.waitUntil(statsig.flush(1000));
 ```
 
-This flushes all events from the sdk to statsig.  Without this, you wont be able to get diagnostic information in the Statsig Console, nor any event data you logged.
+This flushes all events from the sdk to statsig.  Without this, you wont be able to get diagnostic information in the Statsig Console, nor any event data you logged.  We also set a 1s timeout to ensure the flush wont block the response.
 
 ### Putting it all together
 
@@ -98,10 +102,11 @@ async function handleRequest(event) {
   const dataAdapter = new FastlyDataAdapter(<KV_STORE_NAME>, 'statsig-<PROJECT_ID>');
 
   await statsig.initialize(
-    STATSIG_SERVER_SECRET_KEY,
+    env.STATSIG_SECRET_KEY,
     { 
       dataAdapter: dataAdapter,
       initStrategyForIDLists: 'none',
+      disableIdListsSync: true
     },
   );
 
@@ -111,7 +116,7 @@ async function handleRequest(event) {
     },
     "test_fastly",
   );
-  event.waitUntil(statsig.flush());
+  event.waitUntil(statsig.flush(1000));
   return new Response(JSON.stringify(result), {
     status: 200,
     headers: new Headers({ "Content-Type": "text/html; charset=utf-8" }),

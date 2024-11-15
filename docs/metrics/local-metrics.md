@@ -36,7 +36,7 @@ Here are the supported types of Local Metrics:
 |-------------|-----------------------|---------|
 | Event Count | **Total count of events** filtered by the _value_ and _metadata_ properties of an event type | **Add to Cart** event filtered by category type |
 | User Count |  **Number of unique users** that trigger events filtered by the _value_ and _metadata_ of an event type| **Active Users** based on their views of a product category |
-| Aggregation       | **Sum or Average** of the _value_ or _metadata_ property of an event type  | **Total Revenue** |
+| Aggregation       | **Sum or Average** of the _value_ of an event type  | **Total Revenue** |
 | Ratio  | **Rates** (e.g. cart conversion rate, purchase rate),  **Normalized Values** (e.g. sessions per user, items per cart) | **Cart Conversion Rate**, **Sessions per User** |
 
 The one type of Custom Metric that you cannot (yet) create as a Local Metric are funnels. 
