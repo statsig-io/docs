@@ -13,6 +13,68 @@ Click on the settings icon in the top right of the Statsig console to navigate t
 
 ![image](https://github.com/statsig-io/docs/assets/3464964/3d4fc8e2-7490-4060-87f5-3aeb5f6dff90)
 
+## Forcing a Recording on Demand
+
+You may have a use case where you need to make sure a session is recorded (based on a trigger, or a particular user that has interesting characteristics or behavior). To do this, we offer the forceStartRecording API which will begin recording as soon as you call it.
+
+<Tabs
+  groupId="session-replay-js-force-recording"
+  defaultValue="js"
+  values={[
+    {label: 'js', value: 'js'},
+    {label: 'react', value: 'react'},
+  ]}>
+  <TabItem value="js">
+
+```jsx
+import { StatsigClient } from '@statsig/js-client';
+import { runStatsigSessionReplay } from '@statsig/session-replay';
+import { runStatsigAutoCapture } from '@statsig/web-analytics';
+
+const client = new StatsigClient(sdkKey,
+	{ userID: "some_user_id" },
+  { environment: { tier: "production" } } // optional, pass options here if needed. Session replays are only recorded and stored if the environment is production.
+);
+runStatsigSessionReplay(client);
+runStatsigAutoCapture(client);
+await client.initializeAsync();
+
+if (someCondition) {
+  new SessionReplay(client).forceStartRecording();
+}
+
+```
+ </TabItem>
+  <TabItem value="react">
+
+```jsx
+import { runStatsigSessionReplay } from '@statsig/session-replay';
+import { runStatsigAutoCapture } from '@statsig/web-analytics';
+import { StatsigClient, StatsigProvider } from '@statsig/react-bindings';
+
+const client = new StatsigClient(sdkKey,
+	{ userID: "some_user_id" },
+  { environment: { tier: "production" } } // optional, pass options here if needed. Session replays are only recorded and stored if the environment is production.
+);
+runStatsigSessionReplay(client);
+runStatsigAutoCapture(client);
+await client.initializeAsync();
+
+if (someCondition) {
+  new SessionReplay(client).forceStartRecording();
+}
+
+function App() {
+  return (
+    <StatsigProvider client={myStatsigClient}>
+      <Content />
+    </StatsigProvider>
+  );
+}
+```
+ </TabItem>
+</Tabs>
+
 
 ## Configure Recording Privacy/PII Options
 
