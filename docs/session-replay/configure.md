@@ -28,7 +28,7 @@ You may have a use case where you need to make sure a session is recorded (based
 
 ```jsx
 import { StatsigClient } from '@statsig/js-client';
-import { runStatsigSessionReplay } from '@statsig/session-replay';
+import { runStatsigSessionReplay, SessionReplay } from '@statsig/session-replay';
 import { runStatsigAutoCapture } from '@statsig/web-analytics';
 
 const client = new StatsigClient(sdkKey,
@@ -48,7 +48,7 @@ if (someCondition) {
   <TabItem value="react">
 
 ```jsx
-import { runStatsigSessionReplay } from '@statsig/session-replay';
+import { runStatsigSessionReplay, SessionReplay } from '@statsig/session-replay';
 import { runStatsigAutoCapture } from '@statsig/web-analytics';
 import { StatsigClient, StatsigProvider } from '@statsig/react-bindings';
 
