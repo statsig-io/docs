@@ -1,0 +1,110 @@
+---
+title: Running A/B Tests
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+
+AzureAI SDK helps you easily and quickly run A/B tests to measure the effectiveness of different models and related parameters.  By leveraging Statsig's powerful stats engine, you can gain real-time insights into model performance, optimizing for metrics like cost, accuracy, and latency. This integration enables you to experiment with various configurations, such as model type, prompt settings, or response parameters, and make data-driven decisions to enhance your application's efficiency and user experience.
+
+## Example: Test GPT4o vs. GPT4o-mini
+
+### Step 1: Create configs
+
+Create two dynamic configs, one named `gpt-4o` and another named `gpt-4o-mini`.  In the **Value** section add the endpoint, key and other default paramters like this:
+
+![image](https://github.com/user-attachments/assets/3770f081-d68f-478e-8b3d-a36ef65d49c7)
+
+These will serve as the base deployment configs for our tests, and also allow you to modify it on the fly as you launch
+
+### Step 2: Create some metrics to track
+
+Let's take the example of a metric like **latency** and see how to create it in Statsig.
+
+Navigate to the **Metrics Catalog** page (https://staging.console.statsig.com/metrics/metrics_catalog) and click on **Create** button.
+
+![image](https://github.com/user-attachments/assets/89841414-6140-41f4-89ee-b09b83f2846c)
+
+Now, in the **Metric Definition** section, choose:
+
+
+| Property | Value |
+| --- | --- |
+| Metric Type: | **Aggregation** |
+| ID Type: | **User ID** |
+| Aggregation Using: | **Events** |
+| Aggregation Type: | **Average** |
+| Rollup Mode: | **Total Experiment** |
+| Event: | **usage** |
+| Average Using: | **Metadata** => **latency_ms** |
+
+This will create a metric that averages **latency** across all **usage** events coming from chat completions.
+
+![image](https://github.com/user-attachments/assets/0317d30a-a479-498d-8dd0-666f2db616e3)
+
+### Step 3: Create an experiment
+
+Create a new experiment in the Statsig console from https://console.statsig.com/experiments
+
+![image](https://github.com/user-attachments/assets/f1a93738-355f-4647-8444-9b6abfb72ffc)
+
+In the **Setup** page, add the metrics you created in Step #2 in the **Primary Metrics** field.
+
+![image](https://github.com/user-attachments/assets/eb47ec6c-bd9a-47d9-bca6-a6ce0ea4148b)
+
+### Step 4: Set up the variations
+
+You can now create the control and test variants for the experiment you want to run.  In our case, let's split them evenly 50/50.
+
+In the **Groups and Parameters** section, click on **Add Parameter** button and name the parameter _model_name_, with _String_ type
+
+![image](https://github.com/user-attachments/assets/4837063a-9dde-4c0b-8bca-584d98adae47)
+
+Now add the two configs we created in Step #1, one each to Control and Test parameters like this:
+
+![image](https://github.com/user-attachments/assets/b54a41de-a442-4870-870c-81ff949ecceb)
+
+### Step 5: Save and start the experiment
+
+Now, hit the **Save** button at the bottom of the page. You will now see a **Start** button appear at the top of the experiment page.  Go ahead and click it - this will start the allocation process for the experiment.
+
+### Step 6: Let's write some code
+
+The code below:
+
+1. Fetches the experiment configuration from server for a given user.  You can pass down the **userID** from your client application or use one from your database.  The code below generates a random one for testing purposes.
+2. Gets the **config name** from the experiment variant - either from control or test
+3. Create a model client using the config that we just fetched
+4. Uses that model client to complete text.
+
+```js
+async function testExperiments() {
+  await AzureAI.initialize(statsigServerKey);
+
+  const experiment = Statsig.getExperimentSync(
+    { userID: Math.random().toString() }, // use a valid userID here
+    "model_experiment_gpt4o_vs_gpt4o-mini",
+  );
+  const configName = experiment.get("model_name", "gpt-4o");
+  console.log(`Using model: ${configName}`);
+
+  const modelClient = AzureAI.getModelClient(configName);
+  const result = await modelClient.complete([{
+    role: "user",
+    content: "Recite the first 10 digits of pi."
+  }]);
+  result.choices.forEach((choice, i) => {
+    console.log(choice.message.content);
+  });
+  
+  await AzureAI.shutdown();
+}
+```
+
+### Step 7: Run the experiment and verify results
+
+Run this experiment for several days, and you will now be able to measure latency profiles of **gpt-4o** compared with **gpt-4o-mini** in Statsig console. You can choose whichever one suits your needs.
+
+The above is just a simple experiment to test models against each other. You could also tweak other parameters like _templerature_, _frequency_penalty_, _max_tokens_, etc. but modifying the config.  This could all be done without needing to update code.
+
