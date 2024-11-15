@@ -12,7 +12,7 @@ AzureAI SDK helps you easily and quickly run A/B tests to measure the effectiven
 
 ### Step 1: Create configs
 
-Create two dynamic configs, one named `gpt-4o` and another named `gpt-4o-mini`.  In the **Value** section add the endpoint, key and other default paramters like this:
+Create two dynamic configs, one named `gpt-4o` and another named `gpt-4o-mini`.  In the **Value** section add the endpoint, key and other default parameters like this:
 
 ![image](https://github.com/user-attachments/assets/3770f081-d68f-478e-8b3d-a36ef65d49c7)
 
@@ -22,7 +22,7 @@ These will serve as the base deployment configs for our tests, and also allow yo
 
 Let's take the example of a metric like **latency** and see how to create it in Statsig.
 
-Navigate to the **Metrics Catalog** page (https://staging.console.statsig.com/metrics/metrics_catalog) and click on **Create** button.
+Navigate to the **Metrics Catalog** page (https://console.statsig.com/metrics/metrics_catalog) and click on **Create** button.
 
 ![image](https://github.com/user-attachments/assets/89841414-6140-41f4-89ee-b09b83f2846c)
 
@@ -106,5 +106,5 @@ async function testExperiments() {
 
 Run this experiment for several days, and you will now be able to measure latency profiles of **gpt-4o** compared with **gpt-4o-mini** in Statsig console. You can choose whichever one suits your needs.
 
-The above is just a simple experiment to test models against each other. You could also tweak other parameters like _templerature_, _frequency_penalty_, _max_tokens_, etc. but modifying the config.  This could all be done without needing to update code.
+The above is just a simple experiment to test models against each other. You could also tweak other parameters like _templerature_, _frequency_penalty_, _max_tokens_, etc. by modifying the config.  This could all be done without needing to update code.
 
