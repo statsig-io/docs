@@ -58,7 +58,7 @@ The example below shows a **Total Revenue** metric that sums the _value_ associa
 
 **[In Beta] Currency Sum**
 
-eCommerce customers can span multiple currency types and typically log payments in the currency and amounts the user actually pays. Currency sums allow for payments that are recorded in different currencies to be converted to one common currency. You will need to log two pieces of metadata in your event - a currency code and a value. Example metatdata - _{"currency_code": "USD", "currency_value": 123.45}_
+eCommerce customers can span multiple currency types and typically log payments in the currency and amounts the user actually pays. Currency sums allow for payments that are recorded in different currencies to be converted to one common currency. You will need to log two pieces of metadata in your event - a currency code and a value. Example metadata - _{"currency_code": "USD", "currency_value": 123.45}_
 
 Statsig supports currency sums upon request. Please ask in [Slack](https://statsig.com/slack). 
 
