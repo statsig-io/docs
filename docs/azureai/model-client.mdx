@@ -1,0 +1,101 @@
+---
+title: AI Model Client
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+In order to invoke Azure AI methods, you'll need to instantiate a Model Client.  You have two ways of instantiating a Model Client
+
+## Option 1: (Recommended) Using Statsig Dynamic Config
+
+Using Statsig's Dynamic Config is a clean way to configure your AI Client, which provides maximum flexibility in being able to adjust the AI invocation parameters and even the endpoint without needing to modify code.
+
+In your Statsig console, create a new **Dynamic Config** by going to: https://console.statsig.com/dynamic_configs, and clicking on **Create** button.
+
+![image](https://github.com/user-attachments/assets/29357d6f-c356-461c-afc7-e1673ba97f92)
+
+Once created, you can fill in the properties of this deployment like this:
+
+![image](https://github.com/user-attachments/assets/e4d20573-9d1f-4d62-af11-408435d02f90)
+
+The JSON of this looks like this:
+
+```
+{
+  endpoint: "https://FILL_IN_YOUR_ENDPOINT",
+  key: "FILL_IN_YOUR_KEY",
+  completion_defaults: {
+    frequency_penalty: 0,
+    presence_penalty: 0,
+    temperature: 1,
+    top_p: 1,
+    max_tokens: 0,
+    stop: [],
+    seed: 0,
+  },
+}
+```
+
+Once this is done, you can instantiate your Model Client directly by using the **id** of this Dynamic Config like this:
+
+<Tabs
+  groupId="language-choice"
+  defaultValue="nodejs"
+  values={[
+    {label: 'NodeJS', value: 'nodejs'},
+    {label: 'Python', value: 'python'},
+    {label: '.Net', value: 'dotnet'},
+  ]}>
+  <TabItem value="nodejs">
+```js
+const client = AzureAI.getModelClient("<dynamic_config_id>");
+```
+  </TabItem>
+  <TabItem value="python">
+```python
+client = AzureAI.get_model_client("<dynamic_config_id>")
+```
+  </TabItem>
+  <TabItem value="dotnet">
+```csharp
+var client = Server.GetModelClient("<dynamic_config_id>");
+```
+  </TabItem>
+</Tabs>
+
+## Option 2: Using hard-coded endpoint and key
+
+This is the most direct way of instantiating an AI model client.  However, this would mean you'll have to embed the endpoint and key in your code, or use another way (like an environment variable) to get the model endpoint and key into the process.
+
+<Tabs
+  groupId="language-choice"
+  defaultValue="nodejs"
+  values={[
+    {label: 'NodeJS', value: 'nodejs'},
+    {label: 'Python', value: 'python'},
+    {label: '.Net', value: 'dotnet'},
+  ]}>
+  <TabItem value="nodejs">
+```js
+const modelClient = AzureAI.getModelClientFromEndpoint(
+    "<DEPLOYMENT_ENDPOINT_URL>",
+    "<DEPLOYMENT_KEY>"
+);
+```
+  </TabItem>
+  <TabItem value="python">
+```python
+modelClient = AzureAI.get_model_client_from_endpoint("<DEPLOYMENT_ENDPOINT_URL>", "<DEPLOYMENT_KEY>")
+```
+  </TabItem>
+  <TabItem value="dotnet">
+```csharp
+var modelClient = Server.GetModelClientFromEndpoint(
+    "<DEPLOYMENT_ENDPOINT_URL>",
+    "<DEPLOYMENT_KEY>"
+);
+```
+  </TabItem>
+</Tabs>
+

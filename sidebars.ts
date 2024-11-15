@@ -154,6 +154,22 @@ const sidebars: SidebarsConfig = {
                 "guides/python-flask-abtests",
               ],
             },
+            {
+              type: "category",
+              label: "Azure AI",
+              link: {
+                type: "doc",
+                id: "azureai/introduction",
+              },
+              items: [
+                "azureai/getting-started",
+                "azureai/model-client",
+                "azureai/completions",
+                "azureai/embeddings",
+                "azureai/capturing-metrics",
+                "azureai/running-experiments",
+              ],
+            },
           ],
         },
         {

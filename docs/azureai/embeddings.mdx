@@ -1,0 +1,58 @@
+---
+title: Text Embeddings
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+
+Embeddings are numerical representations of data (like text, images, or audio) that capture their essential features in a compact form, typically as vectors. For text, embeddings map words or sentences to vector spaces, where similar items are closer together, enabling comparisons and efficient searches. Developers use embeddings in tasks like semantic search, recommendation engines, and clustering, as they allow for analyzing and processing unstructured data with machine learning models that recognize and work with these patterns.
+
+## Generate text embeddings
+
+<Tabs
+  groupId="language-choice"
+  defaultValue="nodejs"
+  values={[
+    {label: 'NodeJS', value: 'nodejs'},
+    {label: 'Python', value: 'python'},
+    {label: '.Net', value: 'dotnet'},
+  ]}>
+  <TabItem value="nodejs">
+```js
+const result = await modelClient.getEmbeddings([
+  "Hello, world!",
+  "Goodbye, world!",
+]);
+for (const data of result.data) {
+  console.log(`Embedding: ${data.embedding}`);
+}
+```
+  </TabItem>
+  <TabItem value="python">
+```python
+response = modelClient.get_embeddings(["Hello, world!", "Goodbye, world!"])
+
+for item in response.data:
+    length = len(item.embedding)
+    print(
+        f"data[{item.index}]: length={length}, [{item.embedding[0]}, {item.embedding[1]}, "
+        f"..., {item.embedding[length-2]}, {item.embedding[length-1]}]"
+    )
+```
+  </TabItem>
+  <TabItem value="dotnet">
+```csharp
+var embedding = await client.GetEmbeddings(["Hello, world!", "Goodbye, world!"]);
+Console.WriteLine(embedding.First().ToArray());
+Console.WriteLine(embedding.Last().ToArray());
+```
+  </TabItem>
+</Tabs>
+
+<div className="box code">
+
+#### Output
+
+Embedding: -0.01918462,-0.025279032,-0.0017195191,0.018848283,-0.033795066,-0.019695852,-0.020947022,0.05158053,-0.03212684,-0.03037789,-0.0021458254,-0.028978731,-0.0024737532,-0.031481072,0.01033225,0.018606123,-0.046145335,0.041463535,0.00044186175,0.041221373,0.053679265,0.001873393,0.004567446,0.01002282,0.047867376,0.0022013208,-0.009834472,0.03847687,0.00089213194,-0.052118666,0.051150016,-0.03255735,-0.0140319485,-0.01263279, .....
+</div>
