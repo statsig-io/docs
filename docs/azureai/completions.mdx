@@ -1,0 +1,134 @@
+---
+title: Completions
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+
+Chat completions are AI-generated responses used to generate text. They could enable generic text completion, or interactive dialogue based on a given prompt or message history. In a completion, the AI model considers the sequence of messages exchanged and provides a response that fits naturally within the conversation flow. 
+
+## Simple completions
+
+<Tabs
+  groupId="language-choice"
+  defaultValue="nodejs"
+  values={[
+    {label: 'NodeJS', value: 'nodejs'},
+    {label: 'Python', value: 'python'},
+    {label: '.Net', value: 'dotnet'},
+  ]}>
+  <TabItem value="nodejs">
+```js
+const messages = [
+  { role: "system", content: "You are a helpful assistant. You will talk like a pirate." },
+  { role: "user", content: "What is the best way to train a parrot?" },
+];
+
+const result = await modelClient.complete(messages);
+for (const choice of result.choices) {
+  console.log(choice.message.content);
+}
+```
+  </TabItem>
+  <TabItem value="python">
+```python
+response = modelClient.complete([
+    SystemMessage(content="You are a helpful assistant. You will talk like a pirate."),
+    UserMessage(content="What is the best way to train a parrot?")
+])
+self.assertIsNotNone(response, "Expected response to not be None")
+
+for item in response.choices:
+    content = item.message.content
+    print(content)
+```
+  </TabItem>
+  <TabItem value="dotnet">
+```csharp
+var completion = await modelClient.Complete(
+  "You are a helpful assistant that speaks like a pirate",
+  "How do you train a parrot in 10 easy steps?"
+);
+
+Console.WriteLine(completion);
+```
+  </TabItem>
+</Tabs>
+
+#### Output
+```
+Arrr, trainin’ a parrot be quite the adventure, savvy? Here be some tips fer ye:
+
+1. **Build Trust**: Spend time with yer feathered matey, talk to ‘im in a gentle voice, and let ‘im get used to yer presence.
+
+2. **Positive Reinforcement**: Reward yer parrot with treats or affection when it learns a trick or obeys a command. Parrots, like all creatures, respond well to praise!
+
+3. **Consistent Commands**: Use the same words or phrases fer commands each time. Repeatin’ yerself helps the parrot make connections.
+
+4. **Short Training Sessions**: Keep yer sessions short and sweet, perhaps 5 to 10 minutes. Parrots have short attention spans, ye see!
+
+5. **Be Patient**: Not every parrot learns at the same pace. Keep yer cool, and don't lose yer temper; patience be key!
+
+6. **Fun and Play**: Incorporate games into yer training to keep it interestin’. A happy parrot be a learnin’ parrot!
+
+Keep these tips in yer captain’s log, and yer parrot’ll be squawkin’ like a true pirate in no time! Arrr!
+```
+
+## Streaming Completions
+
+Sometimes you want to start streaming the AI responses back to your client, to reduce latency and increase responsiveness.  You can accomplish that by using the Streaming API
+
+<Tabs
+  groupId="language-choice"
+  defaultValue="nodejs"
+  values={[
+    {label: 'NodeJS', value: 'nodejs'},
+    {label: 'Python', value: 'python'},
+    {label: '.Net', value: 'dotnet'},
+  ]}>
+  <TabItem value="nodejs">
+```js
+const messages = [
+  { role: "system", content: "You are a helpful assistant. You will talk like a pirate." },
+  { role: "user", content: "What is the best way to train a parrot?" },
+];
+
+const stream = await modelClient.streamComplete(messages);
+for await (const event of stream) {
+  if (event.data === "[DONE]") {
+    return;
+  }
+  for (const choice of JSON.parse(event.data)?.choices) {
+    process.stdout.write(choice.delta?.content ?? "");
+  }
+}
+```
+  </TabItem>
+  <TabItem value="python">
+```python
+response = modelClient.stream_complete([
+    SystemMessage(content="You are a helpful assistant. You will talk like a pirate."),
+    UserMessage(content="What is the best way to train a parrot?")
+])
+
+for update in response:
+    print(update.choices[0].delta.content or "", end="", flush=True)
+```
+  </TabItem>
+  <TabItem value="dotnet">
+```csharp
+var completion = await modelClient.StreamComplete(
+  "You are a helpful assistant that speaks like a pirate",
+  "How do you train a parrot in 10 easy steps?"
+);
+
+await foreach (var update in completion) {
+  if (!string.IsNullOrEmpty(update.ContentUpdate)) {
+    Console.Write(update.ContentUpdate);
+  }
+}
+```
+  </TabItem>
+</Tabs>
+
