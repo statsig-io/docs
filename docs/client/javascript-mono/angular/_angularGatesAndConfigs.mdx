@@ -1,0 +1,143 @@
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+## The Basics
+
+Once you have provided the statsig config token, you can now inject the service into a component or another service and use it.
+```ts
+// example.component.ts
+import { Component } from '@angular/core';
+import { StatsigService } from '@statsig/angular-bindings';
+
+@Component({
+  selector: 'app-example',
+  template: `...`,
+})
+export class ExampleComponent {
+  constructor(private statsigService: StatsigService) {}
+}
+```
+
+### Checking a Feature Flag/Gate {#basics-check-gate}
+```ts
+// feature-gate.component.ts
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { StatsigService } from '@statsig/angular-bindings';
+
+@Component({
+  selector: 'app-feature-gate',
+  imports: [CommonModule],
+  template: `<div *ngIf="isFeatureEnabled">Feature is enabled!</div>`,
+})
+export class FeatureGateComponent implements OnInit {
+  isFeatureEnabled = false;
+
+  constructor(private statsigService: StatsigService) {}
+
+  ngOnInit(): void {
+    this.isFeatureEnabled = this.statsigService.checkGate('feature_gate_name');
+  }
+}
+```
+
+### Getting a DynamicConfig {#basics-get-config}
+```ts
+// dynamic-config.component.ts
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { StatsigService } from '@statsig/angular-bindings';
+
+@Component({
+  selector: 'app-dynamic-config',
+  imports: [CommonModule],
+  template: `<div *ngIf="configValue">Config Value: {{ configValue }}</div>`,
+})
+export class DynamicConfigComponent implements OnInit {
+  configValue: string | null = null;
+
+  constructor(private statsigService: StatsigService) {}
+
+  ngOnInit(): void {
+    const dynamicConfig = this.statsigService.getDynamicConfig('config_name');
+    this.configValue = dynamicConfig.get('key', 'default_value');
+  }
+}
+```
+
+### Getting an Experiment {#basics-get-experiment}
+```ts
+// experiment.component.ts
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { StatsigService } from '@statsig/angular-bindings';
+
+@Component({
+  selector: 'app-experiment',
+  imports: [CommonModule],
+  template: `<div *ngIf="experimentValue">Experiment Value: {{ experimentValue }}</div>`,
+})
+export class ExperimentComponent implements OnInit {
+  experimentValue: string | null = null;
+
+  constructor(private statsigService: StatsigService) {}
+
+  ngOnInit(): void {
+    const experiment = this.statsigService.getExperiment('experiment_name');
+    this.experimentValue = experiment.get('experiment_key', 'default');
+  }
+}
+```
+
+### Getting a Layer {#basics-get-layer}
+```ts
+// layer.component.ts
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { StatsigService } from '@statsig/angular-bindings';
+
+@Component({
+  selector: 'app-layer',
+  imports: [CommonModule],
+  template: `<div *ngIf="layerValue">Layer Value: {{ layerValue }}</div>`,
+})
+export class LayerComponent implements OnInit {
+  layerValue: string | null = null;
+
+  constructor(private statsigService: StatsigService) {}
+
+  ngOnInit(): void {
+    const layer = this.statsigService.getLayer('layer_name');
+    this.layerValue = layer.get('layer_key', 'default_layer_value');
+  }
+}
+```
+
+### Logging an Event {#basics-log-event}
+```ts
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { StatsigService } from '@statsig/angular-bindings';
+
+@Component({
+  selector: 'app-log-event',
+  imports: [CommonModule],
+  template: `
+    <button (click)="logUserAction()">Click Me</button>
+    <p *ngIf="message">{{ message }}</p>
+  `,
+})
+export class LogEventComponent {
+  message: string | null = null;
+
+  constructor(private statsigService: StatsigService) {}
+
+  logUserAction(): void {
+    this.statsigService.logEvent('UserClickedButton', 1, {
+      buttonColor: 'blue',
+      buttonText: 'Click Me',
+    });
+
+    this.message = 'Event logged: UserClickedButton';
+  }
+}
+```
