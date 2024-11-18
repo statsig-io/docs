@@ -25,6 +25,7 @@ import { Component, OnInit } from '@angular/core';
 import { StatsigService } from '@statsig/angular-bindings';
 
 @Component({
+  standalone: true,
   selector: 'app-feature-gate',
   imports: [CommonModule],
   template: `<div *ngIf="isFeatureEnabled">Feature is enabled!</div>`,
@@ -48,6 +49,7 @@ import { CommonModule } from '@angular/common';
 import { StatsigService } from '@statsig/angular-bindings';
 
 @Component({
+  standalone: true,
   selector: 'app-dynamic-config',
   imports: [CommonModule],
   template: `<div *ngIf="configValue">Config Value: {{ configValue }}</div>`,
@@ -72,6 +74,7 @@ import { CommonModule } from '@angular/common';
 import { StatsigService } from '@statsig/angular-bindings';
 
 @Component({
+  standalone: true,
   selector: 'app-experiment',
   imports: [CommonModule],
   template: `<div *ngIf="experimentValue">Experiment Value: {{ experimentValue }}</div>`,
@@ -96,6 +99,7 @@ import { CommonModule } from '@angular/common';
 import { StatsigService } from '@statsig/angular-bindings';
 
 @Component({
+  standalone: true,
   selector: 'app-layer',
   imports: [CommonModule],
   template: `<div *ngIf="layerValue">Layer Value: {{ layerValue }}</div>`,
@@ -119,6 +123,7 @@ import { CommonModule } from '@angular/common';
 import { StatsigService } from '@statsig/angular-bindings';
 
 @Component({
+  standalone: true,
   selector: 'app-log-event',
   imports: [CommonModule],
   template: `
