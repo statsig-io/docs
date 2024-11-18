@@ -5,7 +5,7 @@ const user = {
   ...
 };
 
-const showNewDesign = Statsig.checkGateSync(user, 'new_homepage_design');
+const showNewDesign = Statsig.checkGate(user, 'new_homepage_design');
 if (showNewDesign) {
   // show new design here
 } else {

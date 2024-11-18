@@ -7,7 +7,7 @@ import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
 - **environment**: StatsigEnvironment, default null
 
   - An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
-  - The most common usage is to set the environment tier ('production', 'staging' or 'development'), e.g. `{ tier: 'staging' }`, and have feature gates pass/fail for specific environments.
+  - The most common usage is to set the environment tier ('production', 'staging' or 'development'), e.g. `{ tier: 'staging' }`, and have feature gates pass/fail for specific environments. Since v6.0.0 default environment tier is production
 
 - **bootstrapValues**: string, default null
   - A string that represents all rules for all feature gates, dynamic configs and experiments. It can be provided to bootstrap the Statsig server SDK at initialization in case your server runs into network issue or Statsig server is down temporarily.

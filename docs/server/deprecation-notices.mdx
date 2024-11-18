@@ -28,8 +28,11 @@ for sync vs async functions is worth it and will be removing the asynchronous fu
 
 ```java
 var result = await Statsig.checkGate("my_gate"); // Bad
-
+// For node v6.0.0
+var result = Statsig.checkGate("my_gate") // Good
+// For .Net and Java
 var result = Statsig.checkGateSync("my_gate"); // Good
+
 ```
 
 #### SDKs
