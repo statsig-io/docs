@@ -1,0 +1,90 @@
+---
+title: Statsig in Angular
+sidebar_label: Angular
+slug: /client/javascript-sdk/AngularUsage
+---
+
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+import { FeaturePillList } from '@site/src/components/FeaturePillList';
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  Shutdown,
+  CodeExamples,
+} from "../Templates/index.mdx";
+
+import CheckGate from "./_checkGate.mdx";
+import GetConfig from "./_getConfig.mdx";
+import GetExperiment from "./_getExperiment.mdx";
+import Initialize from "./_initialize.mdx";
+import Install from "./_install.mdx";
+import LogEvent from "./_logEvent.mdx";
+import MoreFAQs from "./_faqs.mdx";
+import Options from "./_options.mdx";
+import ShutdownSnippet from "./_shutdown.mdx";
+
+import * as _AngularInstall from "./angular/_angularInstall.mdx";
+export const AngularInstall = _AngularInstall;
+
+import * as _AngularSetup from "./angular/_angularSetup.mdx";
+export const AngularSetup = _AngularSetup;
+
+import * as _angularGatesAndConfigs from "./angular/_angularGatesAndConfigs.mdx";
+export const AngularGatesAndConfigs = _angularGatesAndConfigs;
+
+import * as _angularUpdateUser from "./angular/_angularUpdateUser.mdx";
+export const AngularUpdateUser = _angularUpdateUser;
+
+import * as _angularLoadingState from "./angular/_angularLoadingState.mdx";
+export const AngularLoadingState = _angularLoadingState;
+
+import * as _angularDirectives from "./angular/_angularDirectives.mdx";
+export const AngularDirectives = _angularDirectives;
+
+import * as _angularSessionReplay from "./angular/_angularSessionReplay.mdx";
+export const AngularSessionReplay = _angularSessionReplay;
+
+export const Builder = SDKDocsBuilder({
+  sections: [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/js-client-monorepo",
+      },
+    ],
+    [AngularInstall, {}],
+    [AngularSetup, {}],
+    [AngularGatesAndConfigs, {}],
+    [AngularUpdateUser, {}],
+    [AngularLoadingState, {}],
+    [AngularDirectives, {}],
+    [AngularSessionReplay, {}],
+  ],
+});
+
+export const toc = Builder.toc
+
+<FeaturePillList
+    features={[
+      { name: "Feature Gates", link: "#feature-gates" },
+      { name: "Experiments", link: "#experiments" },
+      { name: "Dynamic Configs", link: "#dynamic-configs" },
+      { name: "Layers", link: "#layers" },
+      { name: "Event Logging", link: "#event-logging" },
+      { name: "Session Replay", link: "#session-replay" },
+      { name: "Auto Capture", link: "#autocapture" },
+    ]
+  }
+/>
+<>{Builder.result}</>
