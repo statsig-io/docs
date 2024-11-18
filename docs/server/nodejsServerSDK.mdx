@@ -24,6 +24,7 @@ import {
   UserPersistentStorage,
   ProxyConfigs,
   Instances,
+  BreakingChangesSection
 } from "./Templates/index.mdx";
 
 import Install from "./node/_install.mdx";
@@ -103,6 +104,7 @@ export const Builder = SDKDocsBuilder({
     }],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <RefSnippets.default /> }],
+    [BreakingChangesSection, {items: [{title:"V5.x.x to V6.x.x", link:"/server/nodejsServerSDK/upgrade_guide/v5ToV6" }]}]
   ]
 })
 
