@@ -1,0 +1,37 @@
+``` python
+class ExampleObservationClient(ObservabilityClient):
+    def init(self):
+        options = {
+            "your options here"
+        }
+        initialize(**options)
+
+    def increment(self, metric_name: str, value: int = 1, tags: Optional[Dict[str, Any]] = None) -> None:
+        formatted_tags = format_tags(tags)
+        statsd.increment(metric_name, value, tags=formatted_tags)
+
+    def gauge(self, metric_name: str, value: float, tags: Optional[Dict[str, Any]] = None) -> None:
+        formatted_tags = format_tags(tags)
+        statsd.gauge(metric_name, value, tags=formatted_tags)
+
+    def distribution(self, metric_name: str, value: float, tags: Optional[Dict[str, Any]] = None) -> None:
+        formatted_tags = format_tags(tags)
+        statsd.distribution(metric_name, value, tags=formatted_tags)
+
+    def should_enable_high_cardinality_for_this_tag(self, tag: str) -> bool:
+        return True
+
+    def shutdown(self) -> None:
+        pass
+
+def format_tags(tags: Optional[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
+    if not tags:
+        return None
+    return [f"{key}:{value}" for key, value in tags.items()]
+
+options = StatsigOptions(
+    observability_client=ExampleObservationClient(),
+)
+statsig.initialize(secret_key, options)
+
+```

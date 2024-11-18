@@ -1,0 +1,91 @@
+---
+title: Getting Started
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+## Step 1: Install the SDK in your server app
+
+Start by installing the Statsig Azure AI SDK.  Depending on your language/framework you would use the right package manager to install the SDK in your project
+
+<Tabs
+  groupId="language-choice"
+  defaultValue="nodejs"
+  values={[
+    {label: 'NodeJS', value: 'nodejs'},
+    {label: 'Python', value: 'python'},
+    {label: '.Net', value: 'dotnet'},
+  ]}>
+  <TabItem value="nodejs">
+```shell
+npm i @statsig/azure-ai
+```
+  </TabItem>
+  <TabItem value="python">
+```shell
+pip install azureai-statsig
+```
+  </TabItem>
+  <TabItem value="dotnet">
+```shell
+dotnet add package StatsigAzureAI
+```
+  </TabItem>
+</Tabs>
+
+## Step 2: Create a model deployment in Azure AI Studio
+
+Log into your Azure AI Studio console and create a new deployment that you'd like to use.
+
+![image](https://github.com/user-attachments/assets/3172d6f9-176e-4a3b-817f-3a5bd3af4291)
+
+Once confirmed, you will be taken to the details page of that model.  
+
+![image](https://github.com/user-attachments/assets/b8f46ed9-ce02-486f-b6f7-1d09f7b62f33)
+
+Now, copy the **Target URI** (this will be your _endpoint_ in code) and the **Key** - you'll need this in the SDK to call the APIs.
+
+## Step 3: Get Statsig server SDK key
+
+:::info
+This guide assumes you have an existing Statsig account. Please go here to create a new free account if you don't already have one: https://statsig.com/signup
+:::
+
+Go to your **Project Settings** and choose the **Keys & Environments** tab on the left.  Scroll down to **API Keys** section and copy the Server Secret Key.  If one doesn't exist, you will have to create one, or ask your project admin to create one for you.
+
+![image](https://github.com/user-attachments/assets/f60f6f2b-60d0-4804-8db5-b82d4ac96bcf)
+
+
+## Step 4: Initialize Azure AI Server
+
+<Tabs
+  groupId="language-choice"
+  defaultValue="nodejs"
+  values={[
+    {label: 'NodeJS', value: 'nodejs'},
+    {label: 'Python', value: 'python'},
+    {label: '.Net', value: 'dotnet'},
+  ]}>
+  <TabItem value="nodejs">
+```js
+import { AzureAI } from "@statsig/azure-ai";
+
+await AzureAI.initialize("<STATSIG_SERVER_KEY>");
+```
+  </TabItem>
+  <TabItem value="python">
+```python
+AzureAI.initialize("<STATSIG_SERVER_KEY>")
+```
+  </TabItem>
+  <TabItem value="dotnet">
+```csharp
+using Statsig;
+using Statsig.AzureAI;
+
+await Server.Initialize("<STATSIG_SERVER_KEY>");
+```
+  </TabItem>
+</Tabs>
+
