@@ -7,6 +7,7 @@ This feature is useful for debugging and understanding user behavior. Read more 
 
 ```ts
 import { STATSIG_INIT_CONFIG } from '@statsig/angular-bindings';
+import { StatsigSessionReplayPlugin } from '@statsig/session-replay';
 
 const StatsigConfig = {
         sdkKey: "client-KEY",
@@ -23,6 +24,7 @@ Read more about [Web Analytics](/webanalytics/overview).
 
 ```ts
 import { STATSIG_INIT_CONFIG } from '@statsig/angular-bindings';
+import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
 
 const StatsigConfig = {
         sdkKey: "client-KEY",
