@@ -48,7 +48,7 @@ function filterPathsByTag(spec, tags) {
 
 export default function Rapidoc(props) {
   const { id, entity } = props;
-  const isDarkTheme = useColorMode().colorMode === "dark";
+  const isDarkTheme = false;
 
   useEffect(() => {
     const rapidoc = document.getElementById(id);
