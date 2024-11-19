@@ -866,6 +866,7 @@ const sidebars: SidebarsConfig = {
                     "access-management/scim/overview",
                     "access-management/scim/concepts",
                     "access-management/scim/okta_scim",
+                    "access-management/scim/scim-endpoints",
                   ],
                 },
               ],
