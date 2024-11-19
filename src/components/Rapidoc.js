@@ -1,6 +1,4 @@
 import Alert from "@mui/material/Alert";
-import AlertTitle from "@mui/material/AlertTitle";
-import { useColorMode } from "@docusaurus/theme-common";
 import { useEffect } from "react";
 
 // Map entities to their corresponding OpenAPI tags
@@ -25,31 +23,9 @@ const entityToTagMap = {
   keys: "Keys",
 };
 
-function filterPathsByTag(spec, tags) {
-  const filteredPaths = {};
-  Object.keys(spec.paths).forEach((pathKey) => {
-    const pathItem = spec.paths[pathKey];
-    const methods = Object.keys(pathItem);
-
-    methods.forEach((method) => {
-      if (tags.some((tag) => pathItem[method]?.tags?.includes(tag))) {
-        if (!filteredPaths[pathKey]) {
-          filteredPaths[pathKey] = {};
-        }
-        filteredPaths[pathKey][method] = pathItem[method];
-      }
-    });
-  });
-
-  return {
-    ...spec,
-    paths: filteredPaths,
-  };
-}
-
 export default function Rapidoc(props) {
   const { id, entity } = props;
-  const isDarkTheme = useColorMode().colorMode === "dark";
+  const isDarkTheme = false;
 
   useEffect(() => {
     const rapidoc = document.getElementById(id);
@@ -80,37 +56,6 @@ export default function Rapidoc(props) {
       });
   }, [entity]);
 
-  let description = (
-    <div>
-      <h2>Description</h2>
-      {getDescription(entity)}
-      <h2>Authorization</h2>
-      <p>
-        All requests must include the <code>STATSIG-API-KEY</code> field in the
-        header. The value should be a Console API Key which can be created in{" "}
-        <code>'Project Settings' {">"} 'API Keys' tab</code>. <br />
-        To use the 'try it' section on this page, enter your Console API into
-        the box below.
-      </p>
-      <hr />
-    </div>
-  );
-
-  if (entity === "all-endpoints-generated") {
-    description = (
-      <div>
-        <h2>Authorization</h2>
-        <p>
-          All requests must include the <code>STATSIG-API-KEY</code> field in
-          the header. The value should be a Console API Key which can be created
-          in <code>Project Settings {">"} API Keys tab</code>. <br />
-          To use the 'Try' function on this page, enter your Console API into
-          the box below.
-        </p>
-      </div>
-    );
-  }
-
   return (
     <rapi-doc
       id={id}
@@ -139,21 +84,51 @@ export default function Rapidoc(props) {
         "sans-serif",
       ]}
     >
-      {description}
+      <div>
+        <div>
+          {getDescription(entity)}
+        </div>
+
+        <h2>Authorization</h2>
+        <p>
+          All requests must include the <code>STATSIG-API-KEY</code> field in the
+          header.<br />
+          The value should be a Console API Key which can be created in{" "}
+          <code>'Project Settings' {">"} 'API Keys' tab</code>. <br />
+          To use the 'try it' section on this page, enter your Console API into
+          the box below.
+        </p>
+        <hr />
+      </div>
       <Alert severity="warning" slot="auth">
         You will be directly modifying the project connected to the api-key
         provided. We suggest creating a temporary project when testing our API
         below.
       </Alert>
-      <Alert severity="info" className="warning" slot="auth">
-        <AlertTitle>
-          Pagination parameters required from August 1st, 2024
-        </AlertTitle>
-        List requests without page and limit parameters will default to{" "}
-        <code>page=1&limit=100</code>.
-      </Alert>
     </rapi-doc>
   );
+}
+
+function filterPathsByTag(spec, tags) {
+  const filteredPaths = {};
+  Object.keys(spec.paths).forEach((pathKey) => {
+    const pathItem = spec.paths[pathKey];
+    const methods = Object.keys(pathItem);
+
+    methods.forEach((method) => {
+      if (tags.some((tag) => pathItem[method]?.tags?.includes(tag))) {
+        if (!filteredPaths[pathKey]) {
+          filteredPaths[pathKey] = {};
+        }
+        filteredPaths[pathKey][method] = pathItem[method];
+      }
+    });
+  });
+
+  return {
+    ...spec,
+    paths: filteredPaths,
+  };
 }
 
 function getDescription(entity) {

@@ -59,6 +59,7 @@ const sidebars: SidebarsConfig = {
               Concepts: [
                 "sdks/client-vs-server",
                 "client/concepts/user",
+                "server/concepts/monitoring",
                 "sdks/debugging",
                 "client/concepts/initialize",
                 "client/concepts/bootstrapping",
@@ -90,6 +91,7 @@ const sidebars: SidebarsConfig = {
                 "client/dotnetSDK",
                 "client/javascript-mono/ExpoUsage",
                 "client/javascript-mono/ReactNativeUsage",
+                "client/javascript-mono/AngularUsage",
                 "client/rokuSDK",
                 "client/unitySDK",
                 {
@@ -151,6 +153,22 @@ const sidebars: SidebarsConfig = {
                 "guides/node-express-abtests",
                 "guides/python-flask-feature-flags",
                 "guides/python-flask-abtests",
+              ],
+            },
+            {
+              type: "category",
+              label: "Azure AI",
+              link: {
+                type: "doc",
+                id: "azureai/introduction",
+              },
+              items: [
+                "azureai/getting-started",
+                "azureai/model-client",
+                "azureai/completions",
+                "azureai/embeddings",
+                "azureai/capturing-metrics",
+                "azureai/running-experiments",
               ],
             },
           ],
@@ -848,6 +866,7 @@ const sidebars: SidebarsConfig = {
                     "access-management/scim/overview",
                     "access-management/scim/concepts",
                     "access-management/scim/okta_scim",
+                    "access-management/scim/scim-endpoints",
                   ],
                 },
               ],

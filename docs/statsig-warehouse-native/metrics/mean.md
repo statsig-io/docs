@@ -46,6 +46,8 @@ Mean metrics have the delta method applied to account for covariance between uni
 
 - Metric Breakdowns
   - You can configure Metadata Columns to group results by, getting easy access to dimensional views in pulse results
+- Winsorization
+  - Specify a lower and/or upper percentile bound to winsorize at. All values below the lower threshold, or above the upper threshold, will be clamped to that threshold to reduce the outsized impact of outliers on your analysis
 - Cohort Windows
   - You can specify a window for data collection after a unit's exposure. For example, a 0-1 day cohort window would only count actions from days 0 and 1 after a unit was exposed to an experiment
     - **Only include units with a completed window** can be selected to remove units out of pulse analysis for this metric until the cohort window has completed

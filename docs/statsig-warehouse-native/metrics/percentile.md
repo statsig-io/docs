@@ -5,7 +5,7 @@ sidebar_label: Percentile
 
 ## Summary
 
-Percentile metrics calculate a customizable Nth percentile of a column from a metric source.
+Percentile metrics calculate a customizable Nth percentile of a column from a metric source across experiment groups.
 
 ### Use Cases
 
@@ -33,6 +33,8 @@ GROUP BY group_id;
 ### Methodology Notes
 
 Percentile metrics use the outer CI method to estimate a confidence interval and significance. Deng Et. Al. have a good description of the methodology in section 4 of [this paper](https://arxiv.org/pdf/1803.06336).
+
+Note that some metrics are not well formed for this approach; there's an assumption that the underlying distribution is continuous. For example, if your data has 1/3 of its rows with a value of 0, 1/3 with a value of 5, and 1/3 with a value of 10, we will not calculate results for significance for a median or p99 metric since there's no local variability.
 
 ## Options
 
