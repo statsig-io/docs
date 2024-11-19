@@ -263,7 +263,7 @@ function getDescription(entity) {
         <>
           <p>
             Audit Logs {"('Project settings'->'Audit Logs')"} keeps a history of
-            all changes made to the entities withing the Project.
+            all changes made to the entities within the Project.
           </p>
         </>
       );
