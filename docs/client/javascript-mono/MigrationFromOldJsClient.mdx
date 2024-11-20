@@ -9,11 +9,20 @@ import TabItem from "@theme/TabItem";
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
 The architecture and majority of the APIs in the updated SDK have been retained; however,
- modifications have been made to address common pitfalls, resolve existing issues, and streamline the SDK logic.
+ modifications have been made to address common pitfalls, resolve existing issues, and streamline the SDK logic, resulting in some breaking changes
 
-Below is a list of identified breaking changes that will require manual refactoring:
+## Breaking Changes
+* The SDK now offers both a synchronous and asynchronous [initialization](/client/javascript-sdk/migrating-from-statsig-js#initialization) and [updateUser](/client/javascript-sdk/migrating-from-statsig-js#updating-the-user) methods.
+* The "getConfig" method has [changed to "getDynamicConfig"](/client/javascript-sdk/migrating-from-statsig-js#getconfig-is-now-getdynamicconfig)
+* When Bootstrapping, you'll now have to [pass the hash parameter as 'djb2'](/client/javascript-sdk/migrating-from-statsig-js#bootstrapping)
+* The top-level static instance has moved to a static method, [StatsigClient.instance()](/client/javascript-sdk/migrating-from-statsig-js#static-instance)
+* Overrides have moved into their own package: [js-local-overrides](/client/javascript-sdk/migrating-from-statsig-js#overrides)
+* Parameters for GDPR compliance have [changed and been centralized](/client/javascript-sdk/migrating-from-statsig-js#gdpr)
+* The method to retreive a stableID [has changed](/client/javascript-sdk/migrating-from-statsig-js#stableid-and-getstableid)
+* The structure of [cached values has changed](/client/javascript-sdk/migrating-from-statsig-js#cached-values), with implications on first-run experience
+* Several StatsigOptions [have changed](/client/javascript-sdk/migrating-from-statsig-js#legacy-statsigoptions)
 
-### Initialization
+### Initialization 
 
 Previously, the SDK employed a single method for initialization. However, we have recognized that waiting for a method call during app startup can be impractical. Consequently, we have introduced two distinct initialization approaches: one synchronous and one asynchronous.
 

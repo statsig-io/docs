@@ -8,6 +8,16 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
+:::note
+
+Also refer to our [migration from js-client guide](/client/javascript-sdk/migrating-from-statsig-js), which lists other impacts on statsig-react installations.
+
+:::
+
+Breaking Changes:
+* Our [initialization pattern](/client/javascript-sdk/migrating-from-statsig-react#initialize) has changed, along with [waitForInitialization and initializeComponent](/client/javascript-sdk/migrating-from-statsig-react#waitforinitialization-and-initializingcomponent)
+* Bootstrapping has changed, now requiring a new hashing parameter: [Bootstrapping the StatsigClient](/client/javascript-sdk/migrating-from-statsig-react#bootstrapping-the-statsigclient)
+
 
 ### Initialize
 
