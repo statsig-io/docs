@@ -92,7 +92,7 @@ If you need SHA256 for specific reasons, set `ClientInitializeResponseOptions.ha
 **Context**
 We have seen many confusions over environment tier 
 **Changes**
-If no environment tier is being set, e.g `StatsigOptions.environment.tier`, SDK will be auto-set to be production.
+If no environment tier is being set, e.g `StatsigOptions.environment.tier`, SDK now has a default value assigned to it. Default value will be your sdk key if it's being set. Otherwise default to production
 
 **Migration**
 Notes: If you have call-site which does not set environment tier, for rules which have non-production env tier, it will be failing now.
