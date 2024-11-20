@@ -58,11 +58,11 @@ We also embedded the compress encoding format we are using, right now we are onl
 **Changes**
 - Change cache key for config_specs from `statsig.cache` to 
 
- `statsig|v1/download_config_specs|{compressEncoding // plain text for now}|{SHA256HashedBase64(secretkey)}`
+ `statsig|/v1/download_config_specs|{compressEncoding // plain text for now}|{SHA256HashedBase64(secretkey)}`
 
 - Change cache key for get_id_list_sources from `statsig.id_lists` to be:
 
-`statsig|get_id_lists|{compressEncoding // plain text for now}|{SHA256HashedBase64(secretkey)}`
+`statsig|/v1/get_id_lists|{compressEncoding // plain text for now}|{SHA256HashedBase64(secretkey)}`
 
 - Change cache key for individual id list to be 
 
