@@ -52,12 +52,12 @@ You need to grant some permissions for Statsig from your AWS console in order fo
               {
                  "Effect": "Allow",
                  "Principal": {
-                    "AWS": "<STATSIG_SERVICE_ACCOUNT>"
+                    "AWS": "__STATSIG_SERVICE_ACCOUNT__"
                  },
                  // optionally require External ID condition
                  "Condition": {
                     "StringEquals": {
-                       "sts:ExternalId": "<ROLE_EXTERNAL_ID>"
+                       "sts:ExternalId": "__ROLE_EXTERNAL_ID__"
                     }
                  },
                  "Action": "sts:AssumeRole"
@@ -91,13 +91,13 @@ You need to grant some permissions for Statsig from your AWS console in order fo
                "s3:PutObject",
                "s3:DeleteObject"
             ],
-            "Resource": "arn:aws:s3:::<S3_BUCKET>"
+            "Resource": "arn:aws:s3:::__S3_BUCKET__"
          },
          // Allow Statsig to read events/exposures data from your S3 Buckets
          {
             "Effect": "Allow",
             "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::<S3_BUCKET>/<PATH_TO_YOUR_READONLY_DATA>/*"
+            "Resource": "arn:aws:s3:::__S3_BUCKET__/__PATH_TO_YOUR_READONLY_DATA__/*"
          },
          // Allow Statsig to read events/exposures tables from your Glue Databases
          {
@@ -110,8 +110,8 @@ You need to grant some permissions for Statsig from your AWS console in order fo
                "glue:GetPartitions"
             ],
             "Resource": [
-               "arn:aws:glue:<REGION>:<ACCOUNT_ID>:database/<YOUR_READONLY_DATABASE>",
-               "arn:aws:glue:<REGION>:<ACCOUNT_ID>:table/<YOUR_READONLY_DATABASE>/*"
+               "arn:aws:glue:__REGION__:__ACCOUNT_ID__:database/__YOUR_READONLY_DATABASE__",
+               "arn:aws:glue:__REGION__:__ACCOUNT_ID__:table/__YOUR_READONLY_DATABASE__/*"
             ]
          },
          // Allow Statsig to read/write/use data and tables in an isolated staging S3 subfolder
@@ -139,12 +139,12 @@ You need to grant some permissions for Statsig from your AWS console in order fo
                "glue:GetDatabases"
             ],
             "Resource": [
-               "arn:aws:s3:::<S3_BUCKET>/<PATH_TO_S3_QUERY_RESULTS_FOLDER>/*",
-               "arn:aws:s3:::<S3_BUCKET>/<STATSIG_S3_FOLDER>/*",
-               "arn:aws:athena:<REGION>:<ACCOUNT_ID>:workgroup/*",
-               "arn:aws:glue:<REGION>:<ACCOUNT_ID>:catalog",
-               "arn:aws:glue:<REGION>:<ACCOUNT_ID>:database/<GLUE_STAGING_DATABASE>",
-               "arn:aws:glue:<REGION>:<ACCOUNT_ID>:table/<GLUE_STAGING_DATABASE>/*"
+               "arn:aws:s3:::__S3_BUCKET__/__PATH_TO_S3_QUERY_RESULTS_FOLDER__/*",
+               "arn:aws:s3:::__S3_BUCKET__/__STATSIG_S3_FOLDER__/*",
+               "arn:aws:athena:__REGION__:__ACCOUNT_ID__:workgroup/*",
+               "arn:aws:glue:__REGION__:__ACCOUNT_ID__:catalog",
+               "arn:aws:glue:__REGION__:__ACCOUNT_ID__:database/__GLUE_STAGING_DATABASE__",
+               "arn:aws:glue:__REGION__:__ACCOUNT_ID__:table/__GLUE_STAGING_DATABASE__/*"
             ]
          }
       ]
@@ -166,8 +166,8 @@ You need to grant some permissions for Statsig from your AWS console in order fo
          "glue:GetPartitions"
       ],
       "Resource": [
-         "arn:aws:glue:<REGION>:<ACCOUNT_ID>:database/<YOUR_READONLY_DATABASE>",
-         "arn:aws:glue:<REGION>:<ACCOUNT_ID>:table/<YOUR_READONLY_DATABASE>/*"
+         "arn:aws:glue:__REGION__:__ACCOUNT_ID__:database/__YOUR_READONLY_DATABASE__",
+         "arn:aws:glue:__REGION__:__ACCOUNT_ID__:table/__YOUR_READONLY_DATABASE__/*"
       ]
    }
    ```
@@ -176,7 +176,7 @@ You need to grant some permissions for Statsig from your AWS console in order fo
    {
       "Effect": "Allow",
       "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::<S3_BUCKET>/<PATH_TO_YOUR_READONLY_DATA>/*"
+      "Resource": "arn:aws:s3:::__S3_BUCKET__/__PATH_TO_YOUR_READONLY_DATA__/*"
    }
    ```
 3. Read data in Statsig when setting up Metric/Assignment Sources by selecting from these tables using `"database"."table"` format.
