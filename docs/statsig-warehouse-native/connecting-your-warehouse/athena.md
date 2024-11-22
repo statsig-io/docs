@@ -141,8 +141,7 @@ You need to grant some permissions for Statsig from your AWS console in order fo
             "Resource": [
                "arn:aws:s3:::<S3_BUCKET>/<PATH_TO_S3_QUERY_RESULTS_FOLDER>/*",
                "arn:aws:s3:::<S3_BUCKET>/<STATSIG_S3_FOLDER>/*",
-               "arn:aws:athena:<REGION>:<ACCOUNT_ID>:workgroup/<ATHENA_WORKGROUP>",
-               "arn:aws:athena:<REGION>:<ACCOUNT_ID>:datacatalog/*",
+               "arn:aws:athena:<REGION>:<ACCOUNT_ID>:workgroup/*",
                "arn:aws:glue:<REGION>:<ACCOUNT_ID>:catalog",
                "arn:aws:glue:<REGION>:<ACCOUNT_ID>:database/<GLUE_STAGING_DATABASE>",
                "arn:aws:glue:<REGION>:<ACCOUNT_ID>:table/<GLUE_STAGING_DATABASE>/*"
