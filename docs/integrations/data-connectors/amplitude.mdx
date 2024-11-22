@@ -17,21 +17,27 @@ The following steps outline how to forward events from Amplitude into Statsig.
 2. Go to Amplitude and navigate to the Data Destinations page. Click the
    "Add Destination" button in the top right.
 
+   <!--replace with amp-1.png -->
+
    ![](https://console.statsig.com/img/integrations/amplitude:incoming_integration_steps/step_1.png)
 
 3. From the Destinations Catalog, search for and select the Statsig Event
-   Streaming destination.
+   Streaming destination. Click "Add Destination".
+
+   <!--replace with amp-2.png -->
 
    ![](https://console.statsig.com/img/integrations/amplitude:incoming_integration_steps/step_2.png)
 
 4. Give this destination a name and click "Create Sync".
 
+   <!--replace with amp-3.png -->
    ![](https://console.statsig.com/img/integrations/amplitude:incoming_integration_steps/step_3.png)
 
 5. Enter the "Server Secret Key" you copied in Step 1 into the provided
-   field. Select the events you wish to send to Statsig. Ensure that the
-   Status is set to "Enabled" and then click "Save".
+   field. Select the events and any additional properties you wish to send to Statsig. Ensure that the
+   Status is set to "Enabled" and then click "Save". The Test Connection dialog displays. Click Send Test Event to verify the connection. Once verified, click Finish.
 
+   <!--replace with amp-4.png -->
    ![](https://console.statsig.com/img/integrations/amplitude:incoming_integration_steps/step_4.png)
 
 6. *Enable the integration* - On the Integrations page for your Statsig project, enable the Amplitude Incoming integration.
@@ -41,8 +47,10 @@ The following steps outline how to forward events from Amplitude into Statsig.
 
 ## Outgoing - Sending Statsig Events to Amplitude
 
-1. Navigate to Amplitude and click on the Settings button in the
-   bottom-left corner.
+1. Navigate to Amplitude and click on the Settings icon in the
+   upper-right corner. Select Organization settings.
+
+   <!--replace with amp-6.png -->
 
    ![](https://console.statsig.com/img/integrations/amplitude_integration_steps/settings.png)
 
@@ -86,7 +94,7 @@ For a comprehensive view, you can obtain the raw first exposure data in CSV form
 
 ## Cohort Sync - Syncing Amplitude Cohorts to Statsig Segments
 
-For up to date configuration information on syncing Cohorts (aka Segments) from Amplitude to Statsig, please take a look at Amplitude's documentation [here](https://www.docs.developers.amplitude.com/data/destinations/statsig-cohort/).
+For up to date configuration information on syncing Cohorts (aka Segments) from Amplitude to Statsig, please take a look at Amplitude's documentation [here](https://amplitude.com/docs/data/destination-catalog/statsig-cohort-sync).
 
 ## Filtering Events
 
