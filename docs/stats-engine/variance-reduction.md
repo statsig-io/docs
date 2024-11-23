@@ -30,15 +30,15 @@ Extending this observation, the more correlated the pre-experiment information i
 ### Where CUPED is less effective
 
 - CUPED does not work on new users, because there is not pre-exposure data to leverage
-- CUPED will not be applied historically for newly created metrics, or metrics that were added to Key Metrics partway through an experiment, but will be calculated for exposed users after the metric is added
 - CUPED is less effective if a user's metric value is uncorrelated with historical behavior
+- On Statsig Cloud : CUPED will not be applied historically for newly created metrics, or metrics that were added to Key Metrics partway through an experiment, but will be calculated for exposed users after the metric is added
 - CUPED is applied to common metric types, but not all. Today, funnel metrics, ratio metrics, and "event user" metrics (# users who had an event 1+ time in a given time window) are CUPED-ineligible. We're working on rolling CUPED out to more metric types. 
 
 ## Winsorization
 
 Another common technique for reducing noise is Winsorization, which is a way to manage the influence of outliers.
 
-Winsorization refers to the practice of measuring the percentile _P<sub>x</sub>_ of a metric and setting all values over _P<sub>x</sub>_ to _P<sub>x</sub>_. At Statsig, the default percentile for winsorization is 99.9%. This reduces the influence of extreme outliers caused by factors such as logging errors or bad actors.
+Winsorization refers to the practice of measuring the percentile _P<sub>x</sub>_ of a metric and setting all values over _P<sub>x</sub>_ to _P<sub>x</sub>_. At Statsig, the default percentile for winsorization is 99.9%. This reduces the influence of extreme outliers caused by factors such as logging errors or bad actors. ([more](https://docs.statsig.com/stats-engine/methodologies/winsorization/))
 
 ## Literature
 
