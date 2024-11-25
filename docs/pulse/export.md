@@ -26,6 +26,8 @@ There are three types of export:
    1. `<experiment\>_first_exposures.csv` - contains a list of users and their first exposure to the experiment. If this is the only file you are interested in, you can get this by exporting an "Exposures" report which will be much smaller in size.
    2. `<experiment\>_user_metrics.csv` - contains a list of experimental users, and their calculated metrics for each day they were enrolled in the experiment.
 
+The availability of these exports are subject to our retention policy.  We hold exposures data for up-to 90 days after an experiment is concluded.  We hold raw user-level metrics data for 90 days.
+
 ### Pulse Summary File Description - For Feature Gates
 
 

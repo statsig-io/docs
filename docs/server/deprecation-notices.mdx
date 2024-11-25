@@ -5,10 +5,10 @@ sidebar_label: Deprecation Notices
 
 ## New Method for Country Resolution
 
-Starting December 2nd, 2024, Statsig will **switch to a more dependable method of resolving IP Addresses to country codes in our client SDKs**, which may result in different gate behavior for some users. Statsig currently depends on a [homegrown package](https://github.com/statsig-io/ip3country) for country resolution on both Client and Server SDKs, which lacks IPV6 support. To resolve countries without bloating our SDK sizes, we'll begin to rely on our cloud provider's country resolution when serving requests to the /initialize endpoint.
+Starting December 9th, 2024, Statsig will **switch to a method of resolving IP Addresses to country codes in our client SDKs with greatly improved accuracy**, which may result in different gate behavior for some users. Statsig currently depends on a [homegrown package](https://github.com/statsig-io/ip3country) for country resolution on both Client and Server SDKs, which lacks IPV6 support. To resolve countries without bloating our SDK sizes, we'll begin to rely on our cloud provider's country resolution when serving requests to the /initialize endpoint.
 
 ### Potential Changes in Client Evaluations
-This may result in different evaluations for some client-side checks, which will be directionally more correct than the previous method. You may see a greater number of users passing country rules, as this new method will begin to resolve countries for IPV6 user, which represent an increasing volume of users.
+This may result in different evaluations for some client-side checks, which will be significantly more accurate and complete than the previous method. You may see a greater number of users passing country rules, as this new method will begin to resolve countries for IPV6 users, which now represent a large share of many customers' user base. 
 
 ### Conflicts with Server-Side Checks
 If you check some configs on both the Client and Server side, it is possible that a small number of users may pass targeting on the client side and fail on the server, or vice versa, as we'll continue to rely on [IP3Country](https://github.com/statsig-io/ip3country) for server-side country resolution when a country is not explicitly provided on the `StatsigUser` object. We recommend using your cloud provider's country resolution (often available in a load balancer) and setting that as the "country" field on the `StatsigUser` object.  This applies to any evaluations for gates/configs/experiments/layers, and also for `getClientInitializeResponse` if you are generating the payload for your client sdk.
@@ -28,8 +28,11 @@ for sync vs async functions is worth it and will be removing the asynchronous fu
 
 ```java
 var result = await Statsig.checkGate("my_gate"); // Bad
-
+// For node v6.0.0
+var result = Statsig.checkGate("my_gate") // Good
+// For .Net and Java
 var result = Statsig.checkGateSync("my_gate"); // Good
+
 ```
 
 #### SDKs

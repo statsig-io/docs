@@ -56,7 +56,7 @@ On your [AWS CloudFront console](https://console.aws.amazon.com/cloudfront/),
 You can use the following javascript code snippet in your Lambda@Edge function:
 
 ```javascript
-exports.handler = (event, context, callback) => {
+export const handler = async (event, context, callback) => {
   const request = event.Records[0].cf.request;
   request.headers.host[0].value = "api.statsig.com";
   return callback(null, request);

@@ -5,6 +5,9 @@ slug: /session-replay/configure
 ---
 # Configuration and Limits
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 ## Configure Recording Sampling Rate
 
 In the Statsig Console, you can configure your session recording sampling rate. This determines the percentage of all user sessions that are recorded. Since there is (currently) a limit of 10,000 session recordings every month, this can help ensure you space out running against that limit. The default sampling rate is 100% which is great for smaller companies and projects. 
@@ -12,6 +15,68 @@ In the Statsig Console, you can configure your session recording sampling rate. 
 Click on the settings icon in the top right of the Statsig console to navigate to Project and Organization Settings. Under Project Settings, click on Session Replay and set the sampling rate. You must be a project admin to modify the sampling rate.
 
 ![image](https://github.com/statsig-io/docs/assets/3464964/3d4fc8e2-7490-4060-87f5-3aeb5f6dff90)
+
+## Forcing a Recording on Demand
+
+You may have a use case where you need to make sure a session is recorded (based on a trigger, or a particular user that has interesting characteristics or behavior). To do this, we offer the forceStartRecording API which will begin recording as soon as you call it.
+
+<Tabs
+  groupId="session-replay-js-force-recording"
+  defaultValue="js"
+  values={[
+    {label: 'js', value: 'js'},
+    {label: 'react', value: 'react'},
+  ]}>
+  <TabItem value="js">
+
+```jsx
+import { StatsigClient } from '@statsig/js-client';
+import { runStatsigSessionReplay, SessionReplay } from '@statsig/session-replay';
+import { runStatsigAutoCapture } from '@statsig/web-analytics';
+
+const client = new StatsigClient(sdkKey,
+	{ userID: "some_user_id" },
+  { environment: { tier: "production" } } // optional, pass options here if needed. Session replays are only recorded and stored if the environment is production.
+);
+runStatsigSessionReplay(client);
+runStatsigAutoCapture(client);
+await client.initializeAsync();
+
+if (someCondition) {
+  new SessionReplay(client).forceStartRecording();
+}
+
+```
+ </TabItem>
+  <TabItem value="react">
+
+```jsx
+import { runStatsigSessionReplay, SessionReplay } from '@statsig/session-replay';
+import { runStatsigAutoCapture } from '@statsig/web-analytics';
+import { StatsigClient, StatsigProvider } from '@statsig/react-bindings';
+
+const client = new StatsigClient(sdkKey,
+	{ userID: "some_user_id" },
+  { environment: { tier: "production" } } // optional, pass options here if needed. Session replays are only recorded and stored if the environment is production.
+);
+runStatsigSessionReplay(client);
+runStatsigAutoCapture(client);
+await client.initializeAsync();
+
+if (someCondition) {
+  new SessionReplay(client).forceStartRecording();
+}
+
+function App() {
+  return (
+    <StatsigProvider client={client}>
+      <Content />
+    </StatsigProvider>
+  );
+}
+```
+ </TabItem>
+</Tabs>
 
 
 ## Configure Recording Privacy/PII Options

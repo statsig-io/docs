@@ -42,13 +42,14 @@ The following interface methods are provided by the Statsig SDK to track various
 ### List of Metrics
 
 Below is a list of the primary metrics currently available in the SDK:
+All metrics are prefixed with `statsig.sdk`
 
 
 | **Metric Name**               | **Type**       | **Tags**                                          | **Description**                                                                                   |
 |-------------------------------|----------------|---------------------------------------------------|---------------------------------------------------------------------------------------------------|
-| `initialization`              | distribution   | `success`, `init_source`, `init_source_api`, `store_populated` | Tracks SDK initialization duration. |
-| `config_propagation_diff`     | distribution   | `source`, `source_api`, `lcut*`, `prev_lcut*`     | Measures the time difference between the last config updated time vs the time that sdk received the config. |
-| `config_no_update`            | counter        | `source`, `source_api`                            | Tracks occurrences of no configuration updates. |
+| `statsig.sdk.initialization`              | distribution   | `success`, `init_source`, `init_source_api`, `store_populated` | Tracks SDK initialization duration. |
+| `statsig.sdk.config_propagation_diff`     | distribution   | `source`, `source_api`, `lcut*`, `prev_lcut*`     | Measures the time difference between the last config updated time vs the time that sdk received the config. |
+| `statsig.sdk.config_no_update`            | counter        | `source`, `source_api`                            | Tracks occurrences of no configuration updates. |
 > **Note**: Tags marked with `*` (such as `lcut` and `prev_lcut`) are high cardinality tags.
 
 ### Metric Tags
