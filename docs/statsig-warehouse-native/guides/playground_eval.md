@@ -4,6 +4,10 @@ slug: /statsig-warehouse-native/guides/dummy_evaluation
 sidebar_label: Playground Evaluation
 ---
 
+:::info
+Due to the effort involved in setting this up, this section only applies to Enterprise tier evaluations (not for free or pro tier)
+:::
+
 # Why Run a Playground Evaluation
 
 Many users who evaluate Statsig have sensitive data and long lead times on testing with production data due to privacy reviews and other data security processes. Statsig offers a read-only [Demo Project](https://console.statsig.com/whn_demo), but this doesn't allow you to really experience the warehouse native product.
