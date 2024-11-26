@@ -690,6 +690,7 @@ const sidebars: SidebarsConfig = {
                     "statsig-warehouse-native/connecting-your-warehouse/snowflake",
                     "statsig-warehouse-native/connecting-your-warehouse/databricks",
                     "statsig-warehouse-native/connecting-your-warehouse/redshift",
+                    "statsig-warehouse-native/connecting-your-warehouse/athena",
                   ],
                 },
                 "statsig-warehouse-native/connecting-your-warehouse/forwarded-data",
