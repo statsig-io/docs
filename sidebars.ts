@@ -759,6 +759,7 @@ const sidebars: SidebarsConfig = {
                     "statsig-warehouse-native/features/targeting",
                     "statsig-warehouse-native/features/id-resolution",
                     "statsig-warehouse-native/features/filtering-exposures",
+                    "statsig-warehouse-native/metrics/normalized-metrics",
                   ],
                 },
                 {
