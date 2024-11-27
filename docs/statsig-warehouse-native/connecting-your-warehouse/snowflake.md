@@ -57,9 +57,7 @@ Provide the Schema and corresponding Database where Statsig will be able to mate
 To set up key-pair authentication, first follow the [snowflake documentation](https://docs.snowflake.com/en/user-guide/key-pair-auth) to generate the private and public keys, and then set the public key on the service user.
 
 The private key can then be provided here
-<img width="1073" alt="image" src="https://github.com/user-attachments/assets/b511a4b2-5398-402f-8191-3e2121214507">
-
-
+![image](https://github.com/user-attachments/assets/1fa7bda1-5d9c-414b-8e2f-7e36b900acfb)
 
 ### Boilerplate Setup SQL
 
