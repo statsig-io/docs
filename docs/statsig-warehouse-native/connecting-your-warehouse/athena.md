@@ -5,7 +5,7 @@ sidebar_label: Athena (β)
 ---
 
 :::info
-Statsig Warehouse Native on Athena is in Beta. Some features available elsewhere (Custom Pulse Queries, Incremental Reloads and Metrics Explorer) are not available for this warehouse just yet but are coming soon.  
+Statsig Warehouse Native on Athena is in Beta. Some features available elsewhere (Metrics Explorer) are not available for this warehouse just yet but are coming soon.  
 :::
 
 
