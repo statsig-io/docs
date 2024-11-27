@@ -12,7 +12,11 @@ To set up Warehouse Native connection with Snowflake, Statsig needs the followin
 - Database Name
 - Schema Name
 - Service User Name
-- Service User Password
+- If authenticating via login credentials:
+  - Service User Password
+- If authenticating via key-pair authentication:
+  - Private Key
+  - Private Key Passphrase (Optional)
 
 The service user needs the following permissions:
 
@@ -47,6 +51,13 @@ For the Account Name field, you can also enter your Snowflake [account identifie
 Provide the Schema and corresponding Database where Statsig will be able to materialize results
 
 ![Frame 7](https://user-images.githubusercontent.com/108023879/187517225-017b4626-eaea-443b-a042-59fd474ae657.png)
+
+### Key-Pair Authentication
+
+To set up key-pair authentication, first follow the [snowflake documentation](https://docs.snowflake.com/en/user-guide/key-pair-auth) to generate the private and public keys, and then set the public key on the service user.
+
+The private key can then be provided here
+![image](https://github.com/user-attachments/assets/1fa7bda1-5d9c-414b-8e2f-7e36b900acfb)
 
 ### Boilerplate Setup SQL
 
