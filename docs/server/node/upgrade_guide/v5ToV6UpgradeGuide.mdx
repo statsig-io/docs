@@ -58,11 +58,11 @@ We also embedded the compress encoding format we are using, right now we are onl
 **Changes**
 - Change cache key for config_specs from `statsig.cache` to 
 
- `statsig|v1/download_config_specs|{compressEncoding // plain text for now}|{SHA256HashedBase64(secretkey)}`
+ `statsig|/v1/download_config_specs|{compressEncoding // plain text for now}|{SHA256HashedBase64(secretkey)}`
 
 - Change cache key for get_id_list_sources from `statsig.id_lists` to be:
 
-`statsig|get_id_lists|{compressEncoding // plain text for now}|{SHA256HashedBase64(secretkey)}`
+`statsig|/v1/get_id_lists|{compressEncoding // plain text for now}|{SHA256HashedBase64(secretkey)}`
 
 - Change cache key for individual id list to be 
 
@@ -92,7 +92,7 @@ If you need SHA256 for specific reasons, set `ClientInitializeResponseOptions.ha
 **Context**
 We have seen many confusions over environment tier 
 **Changes**
-If no environment tier is being set, e.g `StatsigOptions.environment.tier`, SDK will be auto-set to be production.
+If no environment tier is being set, e.g `StatsigOptions.environment.tier`, SDK now has a default value assigned to it. Default value will be your sdk key if it's being set. Otherwise default to production
 
 **Migration**
 Notes: If you have call-site which does not set environment tier, for rules which have non-production env tier, it will be failing now.

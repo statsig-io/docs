@@ -20,9 +20,9 @@ There are two primary ways to create a new template-
 
 ### Creating Templates from Project Settings
 
-To create a new template from Project Settings, navigate to **Settings** -> **Project Settings** -> **Templates** and click the **+Create New** CTA, then select whether you want to create a gate or experiment template.
+To create a new template from Project Settings, navigate to **Settings** -> **Project Settings** -> **Templates** and click the **+Create New** CTA, then select whether you want to create a gate, experiment, or dynamic config template.
 
-![Screen Shot 2024-03-26 at 1 54 16 PM](https://github.com/statsig-io/docs/assets/101903926/dee2680f-18b9-414e-a7a4-a4fd5c823b22)
+![Template Creation](/img/templates/create-template.png)
 
 ### Converting an Existing Config into a Template
 
@@ -42,7 +42,7 @@ Templates can be managed via the **Templates** tab within **Project Settings**. 
 
 To create a config using a template, at the time of config creation, select a template to apply from the template selector. If templates are required at the Organization or Team-level, the user will be blocked from proceeding with config creation until they've selected an approved template. The list of template options in the drop-down is configured at the team level (see below).
 
-![Screen Shot 2024-03-26 at 5 52 15 PM](https://github.com/statsig-io/docs/assets/101903926/b6287605-3740-49a5-acf2-224642e0499b)
+![Template Selection](/img/templates/template-selection.png)
 
 ## Managing Templates- Settings & Permissions
 

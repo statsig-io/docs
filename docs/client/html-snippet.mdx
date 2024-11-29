@@ -1,0 +1,38 @@
+---
+sidebar_label: HTML Snippet
+title: HTML Snippet SDK
+---
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  FAQ,
+  StatsigUser,
+  StatsigOptions,
+} from "./Templates/index.mdx";
+
+import Install from "./html/_install.mdx";
+import Initialize from "./html/_initialize.mdx";
+import MoreFAQs from "./html/_faqs.mdx";
+
+export const Builder = SDKDocsBuilder({
+  sections: [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/js-client-monorepo",
+      },
+    ],
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+<Install />
+<Initialize />
+

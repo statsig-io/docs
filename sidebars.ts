@@ -76,6 +76,7 @@ const sidebars: SidebarsConfig = {
                 "server/deprecation-notices",
               ],
             },
+            "client/html-snippet",
             "client/javascript-sdk",
             "client/javascript-mono/ReactUsage",
             "client/androidClientSDK",
@@ -689,6 +690,7 @@ const sidebars: SidebarsConfig = {
                     "statsig-warehouse-native/connecting-your-warehouse/snowflake",
                     "statsig-warehouse-native/connecting-your-warehouse/databricks",
                     "statsig-warehouse-native/connecting-your-warehouse/redshift",
+                    "statsig-warehouse-native/connecting-your-warehouse/athena",
                   ],
                 },
                 "statsig-warehouse-native/connecting-your-warehouse/forwarded-data",
@@ -758,6 +760,7 @@ const sidebars: SidebarsConfig = {
                     "statsig-warehouse-native/features/targeting",
                     "statsig-warehouse-native/features/id-resolution",
                     "statsig-warehouse-native/features/filtering-exposures",
+                    "statsig-warehouse-native/metrics/normalized-metrics",
                   ],
                 },
                 {
