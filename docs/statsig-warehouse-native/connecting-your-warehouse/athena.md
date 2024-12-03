@@ -19,9 +19,9 @@ To set up connection with Athena, Statsig needs the following
 
 ## Setup Statsig Staging Structure
 
-1. Create or choose an S3 Bucket. Statsig will use a subfolder inside this S3 Bucket to store all staging data. Statsig will only have write-access to this scoped subfolder of this S3 Bucket (specifically labeled `Statsig S3 Folder` in your Data Connection settings).
-2. Create or choose a Glue Database (can be `default`). Statsig will use this as a staging Database to create and manage tables. Statsig will only be able to drop/create tables within this staging Database.
-3. Choose an S3 Query Result Location folder within the S3 Bucket. This S3 location will act as the Output Location for SELECT queries run in your Athena Warehouse. This Location can be given either:
+1. Create or choose an S3 Bucket. Statsig will use a subfolder inside this S3 Bucket to store all staging data. Statsig will have write-access to ONLY this scoped subfolder of this S3 Bucket (specifically labeled `Statsig S3 Folder` in your Data Connection settings in the Statsig Console).
+2. Create or choose a Glue Database (can be `default`). Statsig will use this as a staging Database to create and manage tables. Statsig will be able to drop/create tables within ONLY this staging Database.
+3. Choose an S3 Query Result Location folder within the S3 Bucket. This S3 location will act as the Output Location for `SELECT` queries run in your Athena Warehouse. This Location can be given either:
    - Explicitly as an S3 location (ex: `s3://my_bucket/my_query_results_folder/`)
    - OR as part of a setting within an Athena Workgroup
      - NOTE that your workgroup must have the 'Query result location' field populated accordingly
@@ -198,9 +198,9 @@ You need to grant some permissions for Statsig from your AWS console in order fo
 3. Read data in Statsig when setting up Metric/Assignment Sources by selecting from these tables using `"database"."table"` format.
 4. Repeat for any additional tables, or whenever you need to read a new table from Statsig.
 
-## Additional Guides
+## Additional Resources
 
-### S3 Bucket Encryption
+### S3 Bucket Encryption Guide
 
 Statsig supports all accessed S3 Buckets being encrypted. Steps to allow Statsig encrypting S3 Buckets while giving Statsig access are as follows:
 
@@ -216,6 +216,30 @@ Statsig supports all accessed S3 Buckets being encrypted. Steps to allow Statsig
    - AWS KMS Key: Enter AWS KMS Key ARN
      - (enter your newly created KMS Key ARN in the box)
    - Bucket Key: Enable
+  
+### Statsig Staging Architecture Details
+
+Statsig will create all of its staging tables within the Glue Staging Database that you create and provide. All of the tables created from Statsig will be of table-type `ICEBERG` (with the exception of the forwarded exposures/events tables, which will be regular `EXTERNAL` Athena tables).
+
+Statsig stores all staging data within the `Statsig S3 Folder` of your S3 Bucket. Statsig will handle the creation of the structure within this subfolder. The folder structure is as follows:
+
+- S3 Bucket (you create and provide Statsig the name)
+  - Statsig S3 Folder (Statsig creates and names, name provided in the Data Connection settings in your Statsig Console)
+    - Experiment Folder(s) (Statsig will create a subfolder for each unique experiment you run. These will be named `experiment-<ID>`)
+      - Staging Tables Folders (Statsig will put data for each staging table it creates in its own subfolder. These will be named intuitively as to the data they contain)
+        - `metadata/`
+          - Iceberg Table Metadata
+        - `data/`
+          - Table Data Files (stored as Parquet)
+    - `statsig_forwarded_exposures/`
+      - Forwarded Exposures Table Subfolder (named in the Data Connection settings in your Statsig Console)
+        - Dates (This table is partitioned by date, and there will be a subfolder for each date that has exposure data sent through Statsig in `YYYY-MM-DD` format)
+          - Forwarded Exposure Data
+    - `statsig_forwarded_events/`
+      - Forwarded Events Table Subfolder (named in the Data Connection settings in your Statsig Console)
+        - Dates
+          - Forwarded Event Data
+   
 
 ### What IP addresses will Statsig access data warehouses from?
 
