@@ -226,18 +226,18 @@ Statsig stores all staging data within the `Statsig S3 Folder` of your S3 Bucket
 - S3 Bucket (you create and provide Statsig the name)
   - Statsig S3 Folder (Statsig creates and names, name provided in the Data Connection settings in your Statsig Console)
     - Experiment Folder(s) (Statsig will create a subfolder for each unique experiment you run. These will be named `experiment-<ID>`)
-      - Staging Tables Folders (Statsig will put data for each staging table it creates in its own subfolder. These will be named intuitively as to the data they contain)
+      - Staging Tables Folders (Statsig will put data for each created staging table in its own subfolder. These will be named intuitively after the data they contain)
         - `metadata/`
           - Iceberg Table Metadata
         - `data/`
           - Table Data Files (stored as Parquet)
     - `statsig_forwarded_exposures/`
       - Forwarded Exposures Table Subfolder (named in the Data Connection settings in your Statsig Console)
-        - Dates (This table is partitioned by date, and there will be a subfolder for each date that has exposure data sent through Statsig in `YYYY-MM-DD` format)
+        - Dates in `YYYY-MM-DD` format (This table is partitioned by date, and there will be a subfolder for each date that has exposure data sent through Statsig)
           - Forwarded Exposure Data
     - `statsig_forwarded_events/`
       - Forwarded Events Table Subfolder (named in the Data Connection settings in your Statsig Console)
-        - Dates
+        - Dates in `YYYY-MM-DD` format
           - Forwarded Event Data
    
 
