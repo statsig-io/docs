@@ -15,6 +15,12 @@ The "Conclude Experiment and Defer Decision" feature allows you to effectively c
 
 ![Conclude Experiment](/img/conclude_experiment.png)
 
+### Enabling this Option 
+The "Conclude Experiment and Defer Decision" option must first be enabled in Project Settings to show as an option in the Make Decision modal. To enable this option, head to **Settings** --> **Project Info** and toggle on the **Enable Conclude Experiment and Defer Decision** setting.
+
+<img width="692" alt="Screen Shot 2024-12-04 at 12 10 28 PM" src="https://github.com/user-attachments/assets/26ce509b-aed8-4bcb-8c4e-f2f03518d3be"/>
+
+
 ### Key Details
 
 Things you should keep in mind when concluding an experiment:
