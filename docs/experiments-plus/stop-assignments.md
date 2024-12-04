@@ -9,7 +9,16 @@ slug: /experiments-plus/stop-assignments
 
 You have been running an experiment for a while. Your users are split across various control and treatment groups. But now you want to stop enrolling more users into your experiment and going forward analyze only the users who have been exposed thus far.
 
-With the Stop Assignment option, you can do exactly that. You can stop assignment for an experiment by clicking the Make Decision dropdown as shown below.
+With the Stop Assignment option, you can do exactly that. 
+
+## Enabling Stop Assignment Option
+The **Stop Assignment** option must first be enabled in Project Settings to show as an option in the **Make Decision** modal. To enable this option, head to **Settings** --> **Project Info** and toggle on the **Enable stop new user assignments for experiments** setting. 
+
+<img width="692" alt="Screen Shot 2024-12-04 at 12 10 28 PM" src="https://github.com/user-attachments/assets/cd4bf488-9f9f-486e-b152-123a35a0204e">
+
+
+## How it Works
+You can stop assignment for an experiment by clicking the Make Decision dropdown as shown below.
 
 :::info 
 You will need to configure [Persistent Assignment](/server/concepts/persistent_assignment) for this feature to work. If you don't configure this, people already exposed to the treatment groups will no longer get the treatment experience.
