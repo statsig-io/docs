@@ -16,11 +16,11 @@ Our general guidance is to run overlapping experiments. People seeing your landi
 
 ## How to use it
 
-You can find it from Experiment -> Pulse Results -> Explore -> Interaction Effect Detection
+You can initiate an Interaction Detection analysis as a special type of custom query on top of an Experiment (Experiment ->  Results -> Explore -> Interaction Effect Detection)
 
 ![image](https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/jZMgd0DwQQ1ecgiZmsNS/b49e62b2-ba95-4db3-8d5a-3ce3f08b620d.png)
 
-Interaction Detection is available as a special custom query on an experiment. You can pick a second experiment to analyze (along with metrics) and we will show you a quick summary.
+ You can pick a second experiment to analyze (along with metrics) and we will show you a quick summary.
 
 In each section:
 
@@ -28,7 +28,7 @@ In each section:
 - Metric Summary Results: shows you the estimated intervals of difference in metric lift
 - Overlapping Unique Users: offers an overview of the general traffic intersection of the two experiments
 
-![image](https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/jZMgd0DwQQ1ecgiZmsNS/dd24b23b-d562-4a4e-9b0a-6443b083f24a.png)
+![image](https://github.com/user-attachments/assets/ebbb4383-8abe-4b9b-9132-fb543e6b33ac)
 
 ## Methodology
 
