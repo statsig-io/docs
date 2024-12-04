@@ -14,7 +14,7 @@ With the Stop Assignment option, you can do exactly that.
 ## Enabling Stop Assignment Option
 The **Stop Assignment** option must first be enabled in Project Settings to show as an option in the **Make Decision** modal. To enable this option, head to **Settings** --> **Project Info** and toggle on the **Enable stop new user assignments for experiments** setting. 
 
-<img width="692" alt="Screen Shot 2024-12-04 at 12 10 28 PM" src="https://github.com/user-attachments/assets/cd4bf488-9f9f-486e-b152-123a35a0204e">
+<img width="692" alt="Screen Shot 2024-12-04 at 12 10 28 PM" src="https://github.com/user-attachments/assets/cd4bf488-9f9f-486e-b152-123a35a0204e"/>
 
 
 ## How it Works
