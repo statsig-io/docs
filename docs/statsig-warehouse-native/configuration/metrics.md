@@ -57,12 +57,12 @@ Aggregations are aggregated at the unit-level, and are then averaged across all 
 
 Supported aggregations are:
 
-- [Count](../metrics/count)
-- [Sum](../metrics/sum)
-- [Logged Sums and Counts](../metrics/log)
-- [Count Distinct](../metrics/count-distinct)
-- [First Value](../metrics/latest-value.md)
-- [Latest Value](../metrics/latest-value.md)
+- [Count](/statsig-warehouse-native/metrics/count)
+- [Sum](/statsig-warehouse-native/metrics/sum)
+- [Logged Sums and Counts](/statsig-warehouse-native/metrics/log)
+- [Count Distinct](/statsig-warehouse-native/metrics/count-distinct)
+- [First Value](/statsig-warehouse-native/metrics/latest-value.md)
+- [Latest Value](/statsig-warehouse-native/metrics/latest-value.md)
 - Thresholds
   - A special cases of sum/count which measure a 1/0 flag for if a user passed a threshold value during the experiment - e.g., "the number of users who spent more than $100"
 
@@ -78,29 +78,29 @@ These all fall under the "Unit Count" type, with rollups specifying details of t
 
 Supported unit count types are:
 
-- [One-Time Event](../metrics/unit-count-once), measuring if a user performed an action at all during the experiment
-- [Windowed](../metrics/unit-count-window), measuring if a user performed an action within some time window after exposure
-- [Latest Participation](../metrics/unit-count-latest), measuring if a user fulfilled some criteria on their latest recorded record (e.g. is this user currently a subscriber)
-- [Daily Participation](../metrics/unit-count-rate), the rate at which units were daily active users during the experiment
-- [Retention](../metrics/retention.md), the rolling rate of retention on an action or set of actions with a configurable time window
+- [One-Time Event](/statsig-warehouse-native/metrics/unit-count-once), measuring if a user performed an action at all during the experiment
+- [Windowed](/statsig-warehouse-native/metrics/unit-count-window), measuring if a user performed an action within some time window after exposure
+- [Latest Participation](/statsig-warehouse-native/metrics/unit-count-latest), measuring if a user fulfilled some criteria on their latest recorded record (e.g. is this user currently a subscriber)
+- [Daily Participation](/statsig-warehouse-native/metrics/unit-count-rate), the rate at which units were daily active users during the experiment
+- [Retention](/statsig-warehouse-native/metrics/retention.md), the rolling rate of retention on an action or set of actions with a configurable time window
 
 ### Ratios and Funnels
 
 Ratios and funnel measures rates or conversion. These are aggregated differently, and measure the total of a numerator metric divided by the total of a denominator metric across each experiment group. These also apply the delta method to correct for covariance between the component metrics.
 
-[Ratio Metrics](../metrics/ratio) allow you to measure ratios of two different metrics, giving nuance to results and helping you to normalize results by another measure - for example:
+[Ratio Metrics](/statsig-warehouse-native/metrics/ratio) allow you to measure ratios of two different metrics, giving nuance to results and helping you to normalize results by another measure - for example:
 
 - B2C: Average purchase revenue (`SUM(Revenue) / COUNT(orders)`)
 - B2B: Revenue per User (`SUM(Revenue) / COUNT_DISTINCT(user_id)`)
 
-[Funnel Metrics](../metrics/funnel) allow you to analyze user-conversion through multi-step flows at an overall and stepwise level. This helps you to identify dropoff points in your user journeys, and are a critical measurement tool for increasing user conversion. Statsig offers session-level funnels, going beyond user conversion to conversion within distinct checkout flows, support conversations, or viewing sessions.
+[Funnel Metrics](/statsig-warehouse-native/metrics/funnel) allow you to analyze user-conversion through multi-step flows at an overall and stepwise level. This helps you to identify dropoff points in your user journeys, and are a critical measurement tool for increasing user conversion. Statsig offers session-level funnels, going beyond user conversion to conversion within distinct checkout flows, support conversations, or viewing sessions.
 
 ### Performance Metrics
 
 Teams working on performance problems use Statsig to analyze the impact of their changes at a system level. These metric types can also be useful for user behavior. The types most commonly used here are:
 
-- [Percentile Metrics](../metrics/percentile.md) allow you to measure changes in values like the P99.9 - useful for measuring improvements or regressions in latency, TTL, or measuring median change when the mean is skewed
-- [Mean Metrics](../metrics/mean) are an easy shorthand for ratio metrics summing an event-level value and dividing by the total records
+- [Percentile Metrics](/statsig-warehouse-native/metrics/percentile.md) allow you to measure changes in values like the P99.9 - useful for measuring improvements or regressions in latency, TTL, or measuring median change when the mean is skewed
+- [Mean Metrics](/statsig-warehouse-native/metrics/mean) are an easy shorthand for ratio metrics summing an event-level value and dividing by the total records
 
 ## Filters
 
