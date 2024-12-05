@@ -62,7 +62,7 @@ Supported aggregations are:
 - [Logged Sums and Counts](/statsig-warehouse-native/metrics/log)
 - [Count Distinct](/statsig-warehouse-native/metrics/count-distinct)
 - [First Value](/statsig-warehouse-native/metrics/latest-value.md)
-- [Latest Value](statsig-warehouse-native/metrics/latest-value.md)
+- [Latest Value](/statsig-warehouse-native/metrics/latest-value.md)
 - Thresholds
   - A special cases of sum/count which measure a 1/0 flag for if a user passed a threshold value during the experiment - e.g., "the number of users who spent more than $100"
 
