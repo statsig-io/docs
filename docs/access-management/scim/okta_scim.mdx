@@ -23,7 +23,7 @@ user provisioning and management.
 ## Prerequisites
 
 - An Okta account with admin access
-- A SCIM Key from Statsig. Contact us to request for a new SCIM key.
+- [A SCIM Key from Statsig](/access-management/scim/overview#how-to-obtain-scim-auth-key)
 
 :::note
 
@@ -58,6 +58,12 @@ user provisioning and management.
 
 ## Step 4: Configure SCIM Settings
 
+:::info
+
+`Import Groups` requires an Okta flag `SELECTIVE_APP_IMPORT_PLATFORM`. If this flag is enabled for your organization, please select this option. If it is not, leave it unchecked.
+
+:::
+
 - Navigate to the `Provisioning` tab
 - Set the SCIM connector base URL to: [https://statsigapi.net/scim](https://statsigapi.net/scim)
 - Set "Unique identifier field for users" to `userName`
@@ -66,7 +72,6 @@ user provisioning and management.
   - `Push New Users`
   - `Push Profile Updates`
   - `Push Groups`
-- `Import Groups` requires an Okta flag `SELECTIVE_APP_IMPORT_PLATFORM`. If this flag is enabled for your organization, please select this option. If it is not, leave it unchecked.
 - Set the authentication mode to "HTTP Header"
 - For the authorization header, use the SCIM Bearer token provided to you by statsig
 
@@ -190,5 +195,7 @@ Set apply on `Create`.
 - Ensure the SCIM Bearer token is correctly entered and has not expired
 - Check Okta's System Log for any synchronization errors
 - Verify that user attributes are correctly mapped between Okta and Statsig
+- Ensure that the key includes the `scim` prefix.
+- Okta organizations with the `SELECTIVE_APP_IMPORT_PLATFORM` flag must enable `Import Groups` in the SCIM integration settings to sync groups properly. Organizations without this flag cannot enable `Import Groups`, however groups will still be synced.
 
 For further assistance, please contact Statsig support.
