@@ -1,5 +1,7 @@
 #### **api** string
 > The API to use for all SDK network requests. You should not need to override this unless you have a custom API that implements the Statsig endpoints.
+>
+> Note: You need to include /v1 on the end of your custom API. eg `https://my-custom-api.com/v1`
 
 #### **logEventUrl** string
 > The URL used to flush queued events via a POST request. Takes precedence over `NetworkConfig.api`. 
