@@ -15,9 +15,6 @@ You can pass in an optional parameter `options` in addition to `sdkKey` and `use
   - if you always want to wait for the latest values fetched from Statsig server, you should set this to 0 so we do not timeout the network request.
   - unit is milliseconds.
 
-- **enableAutoValueUpdate**: `Boolean`, default `false`
-  - by default, Statsig will only fetch the gates/configs for the user when initialize() is called. This ensures a consistent experience for the duration of a session. If you want to override this behavior and have flags/configs update in near real time, pass `true` instead.
-
 - **overrideStableID**: `String?`, default `null`
   - overrides the `stableID` in the SDK that is set for the user
 
