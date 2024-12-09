@@ -48,9 +48,6 @@
       Statsig.start(sdkKey: "client-key", options: opts)
    ```
 
--  **enableAutoValueUpdate**: Bool, default `false`
-   - by default, feature values for a user is fetched once during `Statsig.start` and don't change throughout the session. Setting this value to true will turn on the feature for Statsig to periodically fetch updated values for the current user.
-
 - **storageProvider**: StorageProvider, default `nil`
   - Allows users to implement their own caching strategy by passing an
 object that conforms to the `StorageProvider` protocol.
