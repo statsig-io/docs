@@ -68,7 +68,6 @@ const sidebars: SidebarsConfig = {
                 "messages/serverRequiredUserID",
                 "server/concepts/user",
                 "server/concepts/data_store",
-                "server/concepts/forward_proxy",
                 "server/concepts/persistent_assignment",
                 "server/concepts/all_assignments",
                 "sdk-keys/api-keys",
@@ -76,25 +75,85 @@ const sidebars: SidebarsConfig = {
                 "server/deprecation-notices",
               ],
             },
-            "client/html-snippet",
-            "client/javascript-sdk",
-            "client/javascript-mono/ReactUsage",
-            "client/androidClientSDK",
-            "client/iosClientSDK",
-            "client/javascript-mono/nextjs/NextJsUsage",
-            "server/nodejsServerSDK",
+            {
+              className: "html-icon sidebar-icon sdk-icon",
+              type: "doc",
+              id: "client/html-snippet",
+            },
+            {
+              className: "js-icon sidebar-icon sdk-icon",
+              type: "doc",
+              id: "client/javascript-sdk",
+            },
+            {
+              className: "react-icon sidebar-icon sdk-icon",
+              type: "doc",
+              id: "client/javascript-mono/ReactUsage",
+            },
+            {
+              className: "next-icon sidebar-icon sdk-icon",
+              type: "doc",
+              id: "client/javascript-mono/nextjs/NextJsUsage",
+            },
+            {
+              className: "android-icon sidebar-icon sdk-icon",
+              type: "doc",
+              id: "client/androidClientSDK",
+            },
+            {
+              className: "ios-icon sidebar-icon sdk-icon",
+              type: "doc",
+              id: "client/iosClientSDK",
+            },
+            {
+              className: "node-icon sidebar-icon sdk-icon",
+              type: "doc",
+              id: "server/nodejsServerSDK",
+            },
             {
               type: "category",
               label: "More Client SDKs",
               items: [
-                "client/cpp-client-sdk",
-                "client/dartSDK",
-                "client/dotnetSDK",
-                "client/javascript-mono/ExpoUsage",
-                "client/javascript-mono/ReactNativeUsage",
-                "client/javascript-mono/AngularUsage",
-                "client/rokuSDK",
-                "client/unitySDK",
+                {
+                  className: "cpp-icon sidebar-icon sdk-icon",
+                  type: "doc",
+                  id: "client/cpp-client-sdk"
+                },
+                {
+                  className: "flutter-icon sidebar-icon sdk-icon",
+                  type: "doc",
+                  id: "client/dartSDK"
+                },
+                {
+                  className: "dotnet-icon sidebar-icon sdk-icon",
+                  type: "doc",
+                  id: "client/dotnetSDK"
+                },
+                {
+                  className: "expo-icon sidebar-icon sdk-icon",
+                  type: "doc",
+                  id: "client/javascript-mono/ExpoUsage"
+                },
+                {
+                  className: "react-icon sidebar-icon sdk-icon",
+                  type: "doc",
+                  id: "client/javascript-mono/ReactNativeUsage"
+                },
+                {
+                  className: "angular-icon sidebar-icon sdk-icon",
+                  type: "doc",
+                  id: "client/javascript-mono/AngularUsage"
+                },
+                {
+                  className: "roku-icon sidebar-icon sdk-icon",
+                  type: "doc",
+                  id: "client/rokuSDK"
+                },
+                {
+                  className: "unity-icon sidebar-icon sdk-icon",
+                  type: "doc",
+                  id: "client/unitySDK"
+                },
                 {
                   type: "category",
                   label: "On Device Client SDKs",
@@ -135,16 +194,53 @@ const sidebars: SidebarsConfig = {
               type: "category",
               label: "More Server SDKs",
               items: [
-                "server/dotnetSDK",
-                "server/cppSDK",
-                "server/erlangSDK",
-                "server/golangSDK",
-                "server/javaSdk",
-                "server/pythonSDK",
-                "server/phpSDK",
-                "server/rubySDK",
-                "server/rustSDK",
-              ],
+                {
+                  className: "dotnet-icon sidebar-icon sdk-icon",
+                  type: "doc",
+                  id: "server/dotnetSDK"
+                },
+                {
+                  className: "cpp-icon sidebar-icon sdk-icon",
+                  type: "doc",
+                  id: "server/cppSDK"
+                },
+                {
+                  className: "elixir-icon sidebar-icon sdk-icon",
+                  type: "doc",
+                  id: "server/erlangSDK"
+                },
+                {
+                  className: "golang-icon sidebar-icon sdk-icon",
+                  type: "doc",
+                  id: "server/golangSDK"
+                },
+                {
+                  className: "java-icon sidebar-icon sdk-icon",
+                  type: "doc",
+                  id: "server/javaSdk"
+                },
+                {
+                  className: "python-icon sidebar-icon sdk-icon",
+                  type: "doc",
+                  id: "server/pythonSDK"
+                },
+                {
+                  className: "php-icon sidebar-icon sdk-icon",
+                  type: "doc",
+                  id: "server/phpSDK"
+                },
+                {
+                  className: "ruby-icon sidebar-icon sdk-icon",
+                  type: "doc",
+                  id: "server/rubySDK"
+                },
+                {
+                  className: "rust-icon sidebar-icon sdk-icon",
+                  type: "doc",
+                  id: "server/rustSDK"
+                }
+              ]
+              
             },
             {
               type: "category",
@@ -944,7 +1040,7 @@ const sidebars: SidebarsConfig = {
             },
             {
               type: "category",
-              label: "API Proxy",
+              label: "API Proxies",
               link: {
                 type: "doc",
                 id: "infrastructure/api_proxy/introduction",
@@ -952,6 +1048,7 @@ const sidebars: SidebarsConfig = {
               items: [
                 "infrastructure/api_proxy/managed-proxy",
                 "infrastructure/api_proxy/custom_proxy",
+                "server/concepts/forward_proxy",
               ],
             },
             {

@@ -302,9 +302,9 @@ span.math.math-inline {
   filter: var(--ifm-menu-link-sublist-icon-filter);
 } */
 
-.sidebar-icon:has(> .menu__link--active) {
+/* .sidebar-icon:has(> .menu__link--active) {
   background-color: var(--ifm-menu-color-background-active);
-}
+} */
 .menu__caret:before {
   filter: var(--ifm-menu-link-sublist-icon-filter);
 }
@@ -457,12 +457,108 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/admin-active.svg");
 }
 
+.next-icon::before {
+  background-image: url("/img/sdk/sdk_nextjs.svg");
+}
+
+.node-icon::before {
+  background-image: url("/img/sdk/sdk_node.png");
+}
+
+.react-icon::before {
+  background-image: url("/img/sdk/sdk_react.png");
+}
+
+.android-icon::before {
+  background-image: url("/img/sdk/sdk_android.png");
+}
+
+.ios-icon::before {
+  background-image: url("/img/sdk/sdk_ios.png");
+}
+
+.js-icon::before {
+  background-image: url("/img/sdk/sdk_js.png");
+}
+
+.html-icon::before {
+  background-image: url("/img/sdk/sdk_html.png");
+}
+
+.angular-icon::before {
+  background-image: url("/img/sdk/sdk_angular.png");
+}
+
+.cpp-icon::before {
+  background-image: url("/img/sdk/sdk_cpp.png");
+}
+
+.dotnet-icon::before {
+  background-image: url("/img/sdk/sdk_dotnet.png");
+}
+
+.elixir-icon::before {
+  background-image: url("/img/sdk/sdk_elixir.svg");
+}
+
+.expo-icon::before {
+  background-image: url("/img/sdk/sdk_expo.png");
+}
+
+.flutter-icon::before {
+  background-image: url("/img/sdk/sdk_flutter.svg");
+}
+
+.golang-icon::before {
+  background-image: url("/img/sdk/sdk_golang.png");
+}
+
+.java-icon::before {
+  background-image: url("/img/sdk/sdk_java.png");
+}
+
+.php-icon::before {
+  background-image: url("/img/sdk/sdk_php.svg");
+}
+
+.python-icon::before {
+  background-image: url("/img/sdk/sdk_python.png");
+}
+
+.rn-icon::before {
+  background-image: url("/img/sdk/sdk_rn.png");
+}
+
+.roku-icon::before {
+  background-image: url("/img/sdk/sdk_roku.png");
+}
+
+.ruby-icon::before {
+  background-image: url("/img/sdk/sdk_ruby.png");
+}
+
+.rust-icon::before {
+  background-image: url("/img/sdk/sdk_rust.svg");
+}
+
+.swift-icon::before {
+  background-image: url("/img/sdk/sdk_swift.png");
+}
+
+.unity-icon::before {
+  background-image: url("/img/sdk/sdk_unity.png");
+}
+
 .template-icon::before {
   background-image: url("/img/icons/sidebar/template.svg");
 }
 
 .template-icon:has(.menu__link--active)::before {
   background-image: url("/img/icons/sidebar/template-active.svg");
+}
+
+.sdk-icon{
+  padding-left:24px;
 }
 
 [data-theme="dark"] .sidebar-icon::before {
