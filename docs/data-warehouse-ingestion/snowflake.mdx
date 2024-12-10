@@ -10,7 +10,11 @@ To set up connection with Snowflake, Statsig needs the following
 - Database Name
 - Schema Name
 - Admin User Name
-- Admin User Password
+- If authenticating via login credentials:
+  - Admin User Password
+- If authenticating via key-pair authentication:
+  - Private Key
+  - Private Key Passphrase (Optional)
 
 <b>
 Admin user name and password will be used by Statsig to create a user with restricted access to query from your data warehouse. If you don't want to use this, skip ahead [here](/data-warehouse-ingestion/snowflake#custom-user-privileges)
@@ -44,6 +48,13 @@ For the Account Name field, you can also enter your Snowflake [account identifie
 For each data type, provide the database/schema of the table(s) you will be ingesting from.
 
 ![Frame 7](https://user-images.githubusercontent.com/108023879/187517225-017b4626-eaea-443b-a042-59fd474ae657.png)
+
+### Key-Pair Authentication
+
+To set up key-pair authentication, first follow the [snowflake documentation](https://docs.snowflake.com/en/user-guide/key-pair-auth) to generate the private and public keys, and then set the public key on the service user.
+
+The private key can then be provided here
+![image](https://github.com/user-attachments/assets/8bb56be6-1aca-4d8a-98de-6b82d251d59b)
 
 ### Custom User Privileges
 
