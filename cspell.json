@@ -639,7 +639,9 @@
     "stating",
     "edgeconfig",
     "Laravel",
-    "evaldetails"
+    "evaldetails",
+    "psuedo-ID",
+    "psuedo"
   ],
   "ignorePaths": [
     "node_modules/**",
