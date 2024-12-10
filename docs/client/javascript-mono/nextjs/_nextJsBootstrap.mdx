@@ -265,6 +265,7 @@ If you load the app now, you should see the same values as your previous impleme
 ### Managing StableIDs
 
 Statsig generates [StableIDs](/client/javascript-sdk/stable-id/) as a psuedo-ID for logged-out experiments and user management. StableIDs are generated client-side, but when boostrapping, values are generated on the server, creating undesireable side-effects like stableIDs regenerating more than logical for any one device/user. A simple cookie can solve this problem, with an implementation pattern suggested [here](/client/javascript-sdk#keeping-stableid-consistent-across-client--server).
+
     </TabItem>
 
 
