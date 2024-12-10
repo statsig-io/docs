@@ -284,6 +284,8 @@ Here is an example of using it in our Home page:
 ```tsx
 // pages/index.tsx
 
+import { getStatsigServerProps } from "./statsig-backend";
+
 export const getServerSideProps = async () => {
   const statsigProps = await getStatsigServerProps();
 
