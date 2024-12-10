@@ -2,10 +2,10 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
 
-## Client Bootstrapping
+## Client Bootstrapping (Optional but Recommended)
 
-To fully take advantage of Next.js with Statsig, we should bootstrap the Statsig client with the values 
-it needs. This way, the client does not need to make a separate network request to fetch these values.
+Bootstrapping is a method of keeping updated values on your server (in the case of Next, your node webserver), and sending them down with the frontend code when a request is made. This has the advantage of preventing an additional network request before your content is displayed, improving your site's responsiveness. This also enables Statsig usage on server-rendered components. 
+While the performance gains are appealing, bootstrapping requires some additional setup effort, and is strictly optional.
 
 
 ### Install `statsig-node`
@@ -260,9 +260,11 @@ export default function MyStatsig({
 }
 ```
 
-If you load the app now, you should see that same as before, 
-but this time we aren't issuing any unnecessary requests.
+If you load the app now, you should see the same values as your previous implementation, this time without any additional network requests.
 
+### Managing StableIDs
+
+Statsig generates [StableIDs](/client/javascript-sdk/stable-id/) as a psuedo-ID for logged-out experiments and user management. StableIDs are generated client-side, but when boostrapping, values are generated on the server, creating undesireable side-effects like stableIDs regenerating more than logical for any one device/user. A simple cookie can solve this problem, with an implementation pattern suggested [here](/client/javascript-sdk#keeping-stableid-consistent-across-client--server).
     </TabItem>
 
 
