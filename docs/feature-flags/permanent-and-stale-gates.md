@@ -44,8 +44,8 @@ In your feature gates catalog, you'll see different **Types** displayed in the S
   - **Stale Reasons** are the reason why a gate has been set as stale. This information can be queried on the [Console API](/console-api/gates).
     - **None** No Stale Gates should have their reason set as None, this is exclusively for **Temporary** or **Permanent** gates.
     - **STALE_PROBABLY_DEAD_CHECK** There have been no checks in the last 30 days.
-    - **STALE_PROBABLY_LAUNCHED** The Gate is disabled and has likely launched.
-    - **STALE_PROBABLY_UNLAUNCHED** The Gate is disabled and has no default value.
+    - **STALE_PROBABLY_LAUNCHED** The Gate is marked as launched or has an everyone rule passing 100% (rollout rate of 100%).
+    - **STALE_PROBABLY_UNLAUNCHED** The Gate is marked as disabled or has an everyone rule passing 0% (rollout rate of 0%).
     - **STALE_NO_RULES** The Gate has no set rules.
 
 ## Nudges to clean up Stale gates

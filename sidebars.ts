@@ -76,37 +76,37 @@ const sidebars: SidebarsConfig = {
               ],
             },
             {
-              className: "html-icon sidebar-icon sdk-icon",
+              className: "html-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
               id: "client/html-snippet",
             },
             {
-              className: "js-icon sidebar-icon sdk-icon",
+              className: "js-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
               id: "client/javascript-sdk",
             },
             {
-              className: "react-icon sidebar-icon sdk-icon",
+              className: "react-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
               id: "client/javascript-mono/ReactUsage",
             },
             {
-              className: "next-icon sidebar-icon sdk-icon",
+              className: "next-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
               id: "client/javascript-mono/nextjs/NextJsUsage",
             },
             {
-              className: "android-icon sidebar-icon sdk-icon",
+              className: "android-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
               id: "client/androidClientSDK",
             },
             {
-              className: "ios-icon sidebar-icon sdk-icon",
+              className: "ios-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
               id: "client/iosClientSDK",
             },
             {
-              className: "node-icon sidebar-icon sdk-icon",
+              className: "node-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
               id: "server/nodejsServerSDK",
             },
@@ -115,42 +115,42 @@ const sidebars: SidebarsConfig = {
               label: "More Client SDKs",
               items: [
                 {
-                  className: "cpp-icon sidebar-icon sdk-icon",
+                  className: "cpp-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "client/cpp-client-sdk"
                 },
                 {
-                  className: "flutter-icon sidebar-icon sdk-icon",
+                  className: "flutter-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "client/dartSDK"
                 },
                 {
-                  className: "dotnet-icon sidebar-icon sdk-icon",
+                  className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "client/dotnetSDK"
                 },
                 {
-                  className: "expo-icon sidebar-icon sdk-icon",
+                  className: "expo-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "client/javascript-mono/ExpoUsage"
                 },
                 {
-                  className: "react-icon sidebar-icon sdk-icon",
+                  className: "react-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "client/javascript-mono/ReactNativeUsage"
                 },
                 {
-                  className: "angular-icon sidebar-icon sdk-icon",
+                  className: "angular-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "client/javascript-mono/AngularUsage"
                 },
                 {
-                  className: "roku-icon sidebar-icon sdk-icon",
+                  className: "roku-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "client/rokuSDK"
                 },
                 {
-                  className: "unity-icon sidebar-icon sdk-icon",
+                  className: "unity-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "client/unitySDK"
                 },
@@ -195,47 +195,47 @@ const sidebars: SidebarsConfig = {
               label: "More Server SDKs",
               items: [
                 {
-                  className: "dotnet-icon sidebar-icon sdk-icon",
+                  className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "server/dotnetSDK"
                 },
                 {
-                  className: "cpp-icon sidebar-icon sdk-icon",
+                  className: "cpp-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "server/cppSDK"
                 },
                 {
-                  className: "elixir-icon sidebar-icon sdk-icon",
+                  className: "elixir-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "server/erlangSDK"
                 },
                 {
-                  className: "golang-icon sidebar-icon sdk-icon",
+                  className: "golang-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "server/golangSDK"
                 },
                 {
-                  className: "java-icon sidebar-icon sdk-icon",
+                  className: "java-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "server/javaSdk"
                 },
                 {
-                  className: "python-icon sidebar-icon sdk-icon",
+                  className: "python-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "server/pythonSDK"
                 },
                 {
-                  className: "php-icon sidebar-icon sdk-icon",
+                  className: "php-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "server/phpSDK"
                 },
                 {
-                  className: "ruby-icon sidebar-icon sdk-icon",
+                  className: "ruby-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "server/rubySDK"
                 },
                 {
-                  className: "rust-icon sidebar-icon sdk-icon",
+                  className: "rust-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "server/rustSDK"
                 }
