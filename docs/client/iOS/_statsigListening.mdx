@@ -8,14 +8,14 @@ export const AddedInVersion = "1.14.0";
   In version v{AddedInVersion}+, you can now listen for changes in Statsig
   values.
 </>
-This can be useful if you have one location that calls Statsig.start or Statsig.updateUser
+This can be useful if you have one location that calls Statsig.initialize or Statsig.updateUser
 and you would like these changes to flow to separate locations.
 
 To use this API, simply have the class you wish to respond to these changes implement the `StatsigListening` protocol and add it as a listener.
 
 The StatsigListening protocol has two methods that can be implemented:
 
-`onInitialized` - Will be called when the initialize request is returned in Statsig.start().
+`onInitialized` - Will be called when the initialize request is returned in Statsig.initialize().
 An error string may be passed to this function if something went wrong with the network request.
 
 `onUserUpdated` - Will be called when the network request for Statsig.updateUser is returned.
