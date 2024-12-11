@@ -363,7 +363,7 @@ const config: Config = {
       // searchPagePath: 'search',
 
       // // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
-      // insights: false,
+      insights: true,
     },
     navbar: {
       title: "",
