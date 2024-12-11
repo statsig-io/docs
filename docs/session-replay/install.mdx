@@ -109,7 +109,7 @@ function App() {
   return (
     <StatsigProvider
       sdkKey={YOUR_CLIENT_KEY}
-      user={ userID: 'a-user' }
+      user={{ userID: 'a-user' }}
       loadingComponent={<div>Loading...</div>}
       options={{
         plugins: [ new StatsigSessionReplayPlugin(), new StatsigAutoCapturePlugin() ]
