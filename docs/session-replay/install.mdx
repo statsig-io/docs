@@ -101,21 +101,19 @@ await client.initializeAsync();
   <TabItem value="react">
 
 ```jsx
-import { runStatsigSessionReplay } from '@statsig/session-replay';
-import { runStatsigAutoCapture } from '@statsig/web-analytics';
-import { StatsigClient, StatsigProvider } from '@statsig/react-bindings';
-
-const client = new StatsigClient(sdkKey,
-	{ userID: "some_user_id" },
-  { environment: { tier: "production" } } // optional, pass options here if needed. Session replays are only recorded and stored if the environment is production.
-);
-runStatsigSessionReplay(client);
-runStatsigAutoCapture(client);
-await client.initializeAsync();
+import { StatsigProvider, useClientAsyncInit } from '@statsig/react-bindings';
+import { StatsigSessionReplayPlugin } from '@statsig/session-replay';
+import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
 
 function App() {
+  const { client } = useClientAsyncInit(
+    YOUR_CLIENT_KEY,
+    { userID: 'a-user' },
+    { plugins: [ new StatsigSessionReplayPlugin(), new StatsigAutoCapturePlugin() ] },
+  );
+
   return (
-    <StatsigProvider client={client}>
+    <StatsigProvider client={client} loadingComponent={<div>Loading...</div>}>
       <Content />
     </StatsigProvider>
   );
@@ -126,6 +124,6 @@ function App() {
 </Tabs>
 
 
-As a side effect of creating the SessionReplay, Statsig will begin recording if the session is sampled (see below). 
+As a side effect of creating the SessionReplay, Statsig will begin recording if the session is sampled (see Configure to learn more). 
 
 That’s it! In the future, we will be adding robust ways to control other scenarios in which you may or may not want to record the session, but at this time, this is all you need to do.
