@@ -230,7 +230,6 @@ import {
   LogLevel,
   StatsigProvider,
   StatsigUser,
-  // useClientAsyncInit, // <- Remove this
   useClientBootstrapInit, // <- Add this
 } from "@statsig/react-bindings";
 import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
@@ -253,10 +252,6 @@ export default function MyStatsig({
       plugins: [ new StatsigAutoCapturePlugin() ]
     }
   );
-
-  useEffect(() => {
-    runStatsigAutoCapture(client);
-  }, [client]);
 
   return <StatsigProvider client={client}>{children}</StatsigProvider>;
 }
@@ -307,6 +302,14 @@ We do this conditionally, so that Statsig only runs on pages that call `getStats
 
 ```tsx
 // pages/_app.tsx
+
+import {
+  LogLevel,
+  StatsigProvider,
+  StatsigUser,
+} from "@statsig/react-bindings";
+import { runStatsigAutoCapture } from '@statsig/web-analytics';
+import React, { useEffect } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
   const clientRef = useRef<StatsigClient | null>();
