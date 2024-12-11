@@ -1,14 +1,18 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
+## Advanced Setup
 
-## Client Bootstrapping (Optional but Recommended)
+We offer deeper integrations with Next.js that improve the performance and stability of your Statsig integration.  We recommend using Client Bootstrapping at a minimum, but if you were just trying to log an event or check your first gate, your project is configured with the above basic setup instructions.
+
+
+### Client Bootstrapping (Optional but Recommended)
 
 Bootstrapping is a method of keeping updated values on your server (in the case of Next, your node webserver), and sending them down with the frontend code when a request is made. This has the advantage of preventing an additional network request before your content is displayed, improving your site's responsiveness. This also enables Statsig usage on server-rendered components. 
-While the performance gains are appealing, bootstrapping requires some additional setup effort, and is strictly optional.
+While the performance gains are appealing, bootstrapping requires some additional setup effort, and you must be mindful of which code you are running server side and client side.
 
 
-### Install `statsig-node`
+#### Install `statsig-node`
 
 To generate the required values, we can use the Statsig server SDK (`statsig-node`) on our backend.
 
@@ -65,7 +69,7 @@ STATSIG_SERVER_KEY=secret-<REPLACE_WITH_YOUR_SERVER_KEY> # <- Added this line
 
 
 
-### Integrate the Backend Logic
+#### Integrate the Backend Logic
 
 
 <Tabs
@@ -172,7 +176,7 @@ export async function getStatsigServerProps(): Promise<StatsigServerProps> {
 
 
 
-### Apply the Bootstrap Values
+#### Apply the Bootstrap Values
 
 
 
@@ -244,7 +248,7 @@ export default function MyStatsig({
   bootstrapValues: { data: string; user: StatsigUser; key: string };
   children: React.ReactNode;
 }) {
-  // Update to using useClientBootstrapInit instead of useClientAsyncInit
+  // Update to using useClientBootstrapInit instead of auto initializing in the provider
   const client = useClientBootstrapInit(
     bootstrapValues.key,
     bootstrapValues.user,

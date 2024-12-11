@@ -106,14 +106,14 @@ import { StatsigSessionReplayPlugin } from '@statsig/session-replay';
 import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
 
 function App() {
-  const { client } = useClientAsyncInit(
-    YOUR_CLIENT_KEY,
-    { userID: 'a-user' },
-    { plugins: [ new StatsigSessionReplayPlugin(), new StatsigAutoCapturePlugin() ] },
-  );
-
   return (
-    <StatsigProvider client={client} loadingComponent={<div>Loading...</div>}>
+    <StatsigProvider
+      sdkKey={YOUR_CLIENT_KEY}
+      user={ userID: 'a-user' }
+      loadingComponent={<div>Loading...</div>}
+      options={{
+        plugins: [ new StatsigSessionReplayPlugin(), new StatsigAutoCapturePlugin() ]
+      }}>
       <Content />
     </StatsigProvider>
   );
