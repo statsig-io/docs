@@ -234,7 +234,7 @@ import {
   // useClientAsyncInit, // <- Remove this
   useClientBootstrapInit, // <- Add this
 } from "@statsig/react-bindings";
-import { runStatsigAutoCapture } from "@statsig/web-analytics";
+import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
 import React, { useEffect } from "react";
 
 export default function MyStatsig({
@@ -249,7 +249,10 @@ export default function MyStatsig({
     bootstrapValues.key,
     bootstrapValues.user,
     bootstrapValues.data,
-    { logLevel: LogLevel.Debug } // Optional - Prints debug logs to the console
+    {
+      logLevel: LogLevel.debug,
+      plugins: [ new StatsigAutoCapturePlugin() ]
+    }
   );
 
   useEffect(() => {

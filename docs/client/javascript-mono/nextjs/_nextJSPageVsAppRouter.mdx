@@ -37,18 +37,17 @@ import {
   StatsigProvider,
   useClientAsyncInit,
 } from "@statsig/react-bindings";
-import { runStatsigAutoCapture } from "@statsig/web-analytics";
+import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
 
 export default function MyStatsig({ children }: { children: React.ReactNode }) {
   const { client } = useClientAsyncInit(
     process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!,
     { userID: "a-user" },
-    { logLevel: LogLevel.Debug } // Optional - Prints debug logs to the console
+    {
+      logLevel: LogLevel.Debug,
+      plugins: [ new StatsigAutoCapturePlugin() ],
+    }
   );
-
-  useEffect(() => {
-    runStatsigAutoCapture(client);
-  }, [client]);
 
   return <StatsigProvider client={client}>{children}</StatsigProvider>;
 }
@@ -107,18 +106,17 @@ import {
   StatsigProvider,
   useClientAsyncInit,
 } from "@statsig/react-bindings";
-import { runStatsigAutoCapture } from "@statsig/web-analytics";
+import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
 
 export default function App({ Component, pageProps }: AppProps) {
   const { client } = useClientAsyncInit(
     process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!,
     { userID: "a-user" },
-    { logLevel: LogLevel.Debug } // Optional - Prints debug logs to the console
+    {
+      logLevel: LogLevel.Debug,
+      plugins: [ new StatsigAutoCapturePlugin() ],
+    }
   );
-
-  useEffect(() => {
-    runStatsigAutoCapture(client);
-  }, [client]);
 
   return (
     <StatsigProvider client={client}>
