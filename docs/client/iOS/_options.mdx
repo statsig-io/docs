@@ -82,3 +82,17 @@ object that conforms to the `StorageProvider` protocol.
 -  **shutdownOnBackground**: Bool, default `true`
    - The SDK automatically shuts down when an app is put into the background.
      If you need to use the SDK while your app is in the background, set this to false.
+
+-  **initializationURL**: URL, default `nil`
+   - Override the URL used to initialize the SDK. Learn more at https://docs.statsig.com/custom_proxy
+
+      ```swift
+         StatsigOptions(initializationURL: URL(string: "https://example.com/setup"))
+      ```
+
+-  **eventLoggingURL**: URL, default `nil`
+   - Override the URL used to log events. Learn more at https://docs.statsig.com/custom_proxy
+
+      ```swift
+         StatsigOptions(eventLoggingURL: URL(string: "https://example.com/info"))
+      ```
