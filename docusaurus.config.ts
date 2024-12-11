@@ -145,6 +145,22 @@ const config: Config = {
       {
         redirects: [
           {
+            from: "/js-migration",
+            to: "/client/javascript-sdk/migrating-from-statsig-js",
+          },
+          {
+            from: "/js-migration-rn",
+            to: "/client/javascript-sdk/migrating-from-statsig-js",
+          },
+          {
+            from: "/js-migration-expo",
+            to: "/client/javascript-sdk/migrating-from-statsig-js",
+          },
+          {
+            from: "/js-migration-react",
+            to: "/client/javascript-sdk/migrating-from-statsig-react",
+          },
+          {
             from: "/layers/js-tutorial",
             to: "/client/javascript-sdk#layers",
           },
