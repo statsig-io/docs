@@ -104,11 +104,12 @@ Resize the the widget by clicking and holding the the bottom right edge of the w
 
 All of the charts we support in Metrics Explorer can be added to a dashboard. In addition, dashboard charts are not static.
 
-To dive into a chart on the dashboard, click the [ ] icon. Once expanded, you can switch to the “Edit Query and Chart” tab to get the full power of Metrics Explorer, allowing you to modify the overall query and the date range. These modifications enable further exploration without permanently altering the chart on the dashboard. You can then navigate to the "Widget Settings" tab to change the chart title and display additional metadata for more context.
+To dive into a chart on the dashboard, click the [ ] icon. Once expanded, you get the full power of Metrics Explorer, allowing you to modify the overall query, the date range and the chart title. These modifications enable further exploration without permanently altering the chart on the dashboard.
 
 If you want to save changes to a chart on the dashboard, configure the chart as desired and click "Save" to update the existing chart, or "Save As" to create a new chart on your dashboard.
 
-![image](https://github.com/user-attachments/assets/e8d21373-33f2-43f9-a984-f25365b73080)
+![image](https://github.com/user-attachments/assets/aa563da7-eab1-4578-a081-1ad1f343cc5c)
+
 
 ## Tips
 
