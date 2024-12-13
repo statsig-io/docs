@@ -50,7 +50,7 @@ const sdkGroups = [
 
 const SDKItem = ({ name, img, link }) => {
   const handleClick = () => {
-    window.__STATSIG__.instance().logEvent({
+    window.Statsig.instance().logEvent({
       eventName: 'sdk_click',
       value: name
     });
