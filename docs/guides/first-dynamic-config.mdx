@@ -91,7 +91,7 @@ Now let's use this Dynamic Config to create a different landing page experience 
 After adding the SDK to the webpage via the [jsdelivr cdn](https://www.jsdelivr.com/package/npm/@statsig/js-client), we initialize the SDK:
 
 ```js
-const client = new window.__STATSIG__.StatsigClient("<CLIENT-SDK-KEY>, {});
+const client = new window.Statsig.StatsigClient("<CLIENT-SDK-KEY>, {});
 ```
 
 Now, let's fetch our config and construct the banner:

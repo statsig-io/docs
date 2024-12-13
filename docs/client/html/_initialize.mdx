@@ -14,11 +14,15 @@ To manually initialize an instance of the sdk, remove the key parameter from the
 
 
 ```js
-const client = new window.__STATSIG__.StatsigClient(
-    "client-test",
-    { userID: "123"},  // StatsigUser
-    {},                // StatsigOptions
+const { StatsigClient, runStatsigAutoCapture, runStatsigSessionReplay } = window.Statsig;
+    
+const client = new StatsigClient(
+    'client-rfLvYGag3eyU0jYW5zcIJTQip7GXxSrhOFN69IGMjvq', 
+    { userID: 'a-user' }
 );
+
+runStatsigSessionReplay(client);
+runStatsigAutoCapture(client);
 
 await client.initializeAsync();
 

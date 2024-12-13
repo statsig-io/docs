@@ -42,7 +42,7 @@ In your `app.js`, write the following JavaScript code:
 
 ```javascript
 document.addEventListener('DOMContentLoaded', function () {
-    const client = new window.__STATSIG__.StatsigClient(
+    const client = new window.Statsig.StatsigClient(
         "your-client-sdk-key",
         {
             userID: 'user_unique_id',
