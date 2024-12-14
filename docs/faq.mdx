@@ -26,6 +26,11 @@ No. Once an experiment is started, you cannot change the layer. This restriction
 
 ---
 
+### Can you change an experiment or gate name after creating it?
+No. We've intentionally decided to not allow any Statsig config (Feature Gate, Experiment, Layer, etc.) to be renamed - as renaming a config that is already integrated in your code can have serious undesirable consequences. The exception to this is Metrics, which have display names not used in code. 
+
+---
+
 ### Why should I define parameters for my experiments instead of just getting the group?
 
 Defining parameters for experiments provides flexibility and speed in iteration. Many companies, such as Facebook, Uber, and Airbnb, follow this approach in their experimentation platforms because it allows:
