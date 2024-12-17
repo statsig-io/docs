@@ -6,11 +6,11 @@ slug: /pulse/export
 
 ## How to Export Pulse Data
 
-![Finding Export Report](https://user-images.githubusercontent.com/77478319/163510492-e6bff7cf-9d7c-46b2-a276-ec2e550aa9a1.png)
+![Finding Export Report](https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/CbjKvuo40oMU45psWLvG/a2d68701-6828-47d2-8fde-b44a5cea4abb.png)
 
 You can export your Pulse Results for Feature Gates and Experiments. Simply navigate to the relevant "Pulse Results" page, and click "Export Report". Exporting results can take up to 10 minutes. A notification and an email will be sent when the report is ready, and a link will be available under under Project Settings -> Reports. You can export results only if your Pulse screen has results.
 
-![Export Pulse Report Menu](https://user-images.githubusercontent.com/77478319/163458999-bcf599ec-4564-460a-87ba-c08975589b3b.png)
+![Export Pulse Report Menu](https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/CbjKvuo40oMU45psWLvG/5af19e59-f2b7-492b-9dc2-9439e447dbcc.png)
 
 ## Report Types
 
@@ -26,10 +26,9 @@ There are three types of export:
    1. `<experiment\>_first_exposures.csv` - contains a list of users and their first exposure to the experiment. If this is the only file you are interested in, you can get this by exporting an "Exposures" report which will be much smaller in size.
    2. `<experiment\>_user_metrics.csv` - contains a list of experimental users, and their calculated metrics for each day they were enrolled in the experiment.
 
-The availability of these exports are subject to our retention policy.  We hold exposures data for up-to 90 days after an experiment is concluded.  We hold raw user-level metrics data for 90 days.
+The availability of these exports are subject to our retention policy. We hold exposures data for up-to 90 days after an experiment is concluded. We hold raw user-level metrics data for 90 days.
 
 ### Pulse Summary File Description - For Feature Gates
-
 
 | Column Name      | Description                                                                                                                                                                                                            |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -52,9 +51,7 @@ The availability of these exports are subject to our retention policy.  We hold 
 | rel_stderr       | The estimated standard error of rel_delta (abs_delta/ctrl_mean)                                                                                                                                                        |
 | z_score          | The calculated Z-score                                                                                                                                                                                                 |
 
-
 ### Pulse Summary File Description - For Experiments
-
 
 | Column Name      | Description                                                                                                                                                                                                            |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -72,29 +69,26 @@ The availability of these exports are subject to our retention policy.  We hold 
 
 ### First Exposures File Description
 
-| Column Name                       | Description                                                                                   |
-| --------------------------------- | --------------------------------------------------------------------------------------------- |
-| unit_id                           | Refers to the unit identifier used in the experiment (eg. user_id, stable_id, org_id)         |
-| name                              | The name of the gate/experiment                                                               |
-| rule                              | For gates, this refers to the rule name                                                       |
-| experiment_group                  | The group the user was assigned to                                                            |
-| first_exposure_utc                | The UTC timestamp when the user was first assigned to the experiment                          |
-| first_exposure_pst_date           | The date in PST when the user was first assigned to the experiment                            |
-| as_of_pst_date                    | The date this data was generated                                                              |
-| user_dimensions                   | JSON-formatted key-value pairs describing the user's attributes at the time of first exposure |
-
+| Column Name             | Description                                                                                   |
+| ----------------------- | --------------------------------------------------------------------------------------------- |
+| unit_id                 | Refers to the unit identifier used in the experiment (eg. user_id, stable_id, org_id)         |
+| name                    | The name of the gate/experiment                                                               |
+| rule                    | For gates, this refers to the rule name                                                       |
+| experiment_group        | The group the user was assigned to                                                            |
+| first_exposure_utc      | The UTC timestamp when the user was first assigned to the experiment                          |
+| first_exposure_pst_date | The date in PST when the user was first assigned to the experiment                            |
+| as_of_pst_date          | The date this data was generated                                                              |
+| user_dimensions         | JSON-formatted key-value pairs describing the user's attributes at the time of first exposure |
 
 ### Unit Metrics File Description
 
-
-| Column Name         | Description                                                                                 |
-| ------------------- | ------------------------------------------------------------------------------------------- |
-| pst_ds              | The 24hr window the the data refers to. All dates are anchored from 12:00a -> 11:59p PST.   |
-| unit_id             | Refers to the unit identifier used in the experiment (eg. user_id, stable_id, org_id)       |
-| metric_type         | The category of the metric                                                                  |
-| metric_name         | The name of the metric                                                                      |
-| metric_dimension    | The name of the metric dimension. '!statsig_topline' is the overall metric with no slicing. |
-| metric_value        | The numeric value of the metric                                                             |
-| numerator           | For some metrics, we track the numerator                                                    |
-| denominator         | For some metrics, we track the denominator                                                  |
-
+| Column Name      | Description                                                                                 |
+| ---------------- | ------------------------------------------------------------------------------------------- |
+| pst_ds           | The 24hr window the the data refers to. All dates are anchored from 12:00a -> 11:59p PST.   |
+| unit_id          | Refers to the unit identifier used in the experiment (eg. user_id, stable_id, org_id)       |
+| metric_type      | The category of the metric                                                                  |
+| metric_name      | The name of the metric                                                                      |
+| metric_dimension | The name of the metric dimension. '!statsig_topline' is the overall metric with no slicing. |
+| metric_value     | The numeric value of the metric                                                             |
+| numerator        | For some metrics, we track the numerator                                                    |
+| denominator      | For some metrics, we track the denominator                                                  |
