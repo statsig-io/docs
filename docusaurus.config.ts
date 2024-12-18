@@ -320,6 +320,10 @@ const config: Config = {
             to: "/experiments-plus/stop-assignments",
             from: "/experiments-plus/pause-assignment",
           },
+          {
+            to: "https://statsig.com/blog/product-experimentation-best-practices",
+            from: "/experiments-plus/experimentation/best-practices/",
+          },
         ],
       },
     ],
