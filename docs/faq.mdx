@@ -137,8 +137,12 @@ Enterprise plans can support multiple projects. If you might be interest in this
 ## Platform Usability
 
 ### When should I create a new project?
-Projects have distinct boundaries. Create a new project when you're managing a separate product with unique user IDs and metrics.
+Projects have distinct boundaries. If you're using the same userIDs and metrics across surfaces, apps or environments, put them in the same project. Create a new project when you're managing a separate product with unique user IDs and metrics. 
 
-For example, if you have a marketing website (anonymous users) and a product (signed-in users), you may want to separate them. However, if you want to track success across both, you should manage them in the same project.
+For example, if you have a marketing website (anonymous users) and a product (signed-in users), you may want to separate them. However, if you want to track success across both you should manage them in the same project. (e.g. from user signup on the marketing website to user engagement within the product)
+
+Some reasons to NOT create a new project
+- to segregate by environment. Statsig has rich support for environments - you can even customize these. You can turn features or experiments on and off by environment.
+- to segregate by platform. If you have an iOS app and Web app - it's helpful to have both collect data in the same project and capture metadata on platform. This lets you look at data by platform, but also understand if you've increased the overall metric - or just cannibalized users (pushed the same users from platform to the other platform).
 
 ---
