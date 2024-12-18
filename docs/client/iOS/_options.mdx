@@ -1,4 +1,4 @@
-`Statsig.start()` takes an optional parameter `options` in addition to `sdkKey` and `user` that you can provide to customize the Statsig client. Here are the current options and we are always adding more to the list:
+`Statsig.initialize()` takes an optional parameter `options` in addition to `sdkKey` and `user` that you can provide to customize the Statsig client. Here are the current options and we are always adding more to the list:
 
 - **initTimeout**: Double, default `3.0`
    - used to decide how long the Statsig client waits for the initial network request to respond before calling the completion block. The Statsig client will return either cached values (if any) or default values if checkGate/getConfig/getExperiment is called before the initial network request completes.
@@ -45,7 +45,7 @@
       }
 
       let opts = StatsigOptions(evaluationCallback: callback)
-      Statsig.start(sdkKey: "client-key", options: opts)
+      Statsig.initialize(sdkKey: "client-key", options: opts)
    ```
 
 - **storageProvider**: StorageProvider, default `nil`
