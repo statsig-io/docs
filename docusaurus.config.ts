@@ -319,7 +319,7 @@ const config: Config = {
           {
             to: "/experiments-plus/stop-assignments",
             from: "/experiments-plus/pause-assignment",
-          },
+          }
         ],
       },
     ],
