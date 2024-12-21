@@ -1,0 +1,34 @@
+:::note
+This SDK is in Beta, and some instructions here may change over time. **This guide follows setup in the [slim framework](https://www.slimframework.com/) as an example**, you may need to adjust given your setup. See a full, working example [here](https://github.com/daniel-statsig/statsig-php-core-slim-example). If you need help or would like guidance specific to another framework, reach out in the Statsig [Slack](https://statsig.com/slack).
+:::
+
+### 1. Install and Add as a Dependency
+You can install the new PHP Core SDK using composer:
+
+```shell
+composer require statsig/statsig-core-php
+```
+
+### 2. Add Scripts & Cron Job
+
+Add post-install and post-update scripts in composer.json: 
+
+```json
+"post-install-cmd": [
+  "cd vendor/statsig/statsig-core-php && php post-install.php"
+],
+"post-update-cmd": [
+  "cd vendor/statsig/statsig-core-php && php post-install.php"
+]
+```
+
+Next, you'll want to add a script to sync your Statsig configs and flush your events, see example files on Statsig's Github [here](https://github.com/daniel-statsig/statsig-php-core-slim-example/tree/main/bin)
+
+You'll also want to setup cron jobs to run these scripts periodically:
+
+```shell
+*/10 * * * * /usr/bin/php /var/www/example.com/bin/StatsigSyncConfig.php 1>> /dev/null 2>&1
+*/1 * * * * /usr/bin/php /var/www/example.com/bin/StatsigFlushEvents.php 1>> /dev/null 2>&1
+```
+
+Also, be sure to run the StatsigSyncConfig.php cron job at least once before proceeding. 
