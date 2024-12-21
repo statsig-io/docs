@@ -9,15 +9,6 @@ You can install the new PHP Core SDK using composer:
 composer require statsig/statsig-core-php
 ```
 
-In the case of the slim framework, you'll also need to add Statsig as a dependency in `app/dependencies.php`. If you're using something like Laravel, this may look different.
-
-```php
-use Statsig\Statsig;
-use Statsig\StatsigOptions;
-use Statsig\StatsigLocalFileEventLoggingAdapter;
-use Statsig\StatsigLocalFileSpecsAdapter;
-```
-
 ### 2. Add Scripts & Cron Job
 
 Add post-install and post-update scripts in composer.json: 

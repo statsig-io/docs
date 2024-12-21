@@ -3,5 +3,5 @@ use Statsig\Statsig;
 use Statsig\StatsigUserBuilder;
 
 $user = StatsigUserBuilder::withUserID('my_user')->build();
-$passed = $statsig->checkGate($user, 'an_experiment');
+$passed = $statsig->checkGate($user, 'my_gate');
 ```

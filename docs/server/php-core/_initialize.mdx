@@ -4,9 +4,19 @@ You'll want to add your client secret key to the environment, by adding to a .en
 export STATSIG_SECRET_KEY=secret-123456789
 ```
 
-In the dependencies.php container builder, add your initialization logic: 
+In the case of the slim framework, we initialize our SDK in dependencies.php:
 
-```PHP
+In the case of the slim framework, you'll also need to add Statsig as a dependency in `app/dependencies.php`. If you're using something like Laravel, this may look different.
+
+```php
+// At the top of your file
+use Statsig\Statsig;
+use Statsig\StatsigOptions;
+use Statsig\StatsigLocalFileEventLoggingAdapter;
+use Statsig\StatsigLocalFileSpecsAdapter;
+
+//In the case of slim framework, in container builder definitions:
+
 Statsig::class => function (ContainerInterface $c) {
     $sdk_key = getenv("STATSIG_SECRET_KEY");
 
