@@ -1,0 +1,24 @@
+You'll want to add your client secret key to the environment, by adding to a .env file, or directly on the command line: 
+
+```shell
+export STATSIG_SECRET_KEY=secret-123456789
+```
+
+In the dependencies.php container builder, add your initialization logic: 
+
+```PHP
+Statsig::class => function (ContainerInterface $c) {
+    $sdk_key = getenv("STATSIG_SECRET_KEY");
+
+    $options = new StatsigOptions(
+        null,
+        null,
+        new StatsigLocalFileSpecsAdapter($sdk_key, "/tmp"),
+        new StatsigLocalFileEventLoggingAdapter($sdk_key, "/tmp")
+    );
+
+    $statsig = new Statsig($sdk_key, $options);
+    $statsig->initialize();
+    return $statsig;
+},
+```
