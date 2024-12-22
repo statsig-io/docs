@@ -54,6 +54,9 @@ When debugging why a certain user got a certain value, there are a number of too
         | `Error`                | An unknown error has occurred, and was logged to Statsig servers.| Error| Reach out to us in [Slack](https://statsig.com/slack) for support. |
         | `Error:NoClient` (js-client-only)       | No client was found in your StatsigContext. | Error |  You've likely made a call to a Statsig hook outside of a `<StatsigProvider>`, verify your setup and try again. |
         | `Unrecognized` (old SDKs) | The SDK was initialized, but this gate/experiment/config did not exist in the set of values.| Error| Confirm the experiment or gate is configured in the Statsig console and you're using the correct API key.|
+        | `NoValues`             | You've attempted to initialize, but it didn't successfully retrieve values. | Error | You're either calling initializeSync before users have cached values, or your call to initializeAsync has failed (check that your client key is correct!) |
+        | `Loading`              | You've tried to initialize, but it hasn't finished yet. | Error | If you're using initializeAsync, you may need to await it, or otherwise prevent config checks before values are loaded. |        
+        | `Uninitialized`        | You haven't attempted to initialize yet. | Error | Ensure you're explicitly calling initializeAsync() or initializeSync(), or check if you've passed any StatsigOptions that could prevent network requests from happening. |
 
 
         ### #2. Reason (new SDKs only)
@@ -81,7 +84,6 @@ When debugging why a certain user got a certain value, there are a number of too
         | `LocalOverride` (old SDKs only) | From an override set locally on the SDK via an override API.| Normal||
         | `StatsigNetwork`       | Custom proxy/GRPC streaming has triggered the fallback behavior, thus falling back to Statsig API. | Fallback | Review your [proxy setup](/server/concepts/forward_proxy/), your values are up-to-date but not using the expected methodology. |
         | `Uninitialized`        | The SDK was not yet successfully initialized.| Error|  Revisit your [Initialization Strategy](/client/javascript-sdk/init-strategies/), as you're checking configs before initialization is complete. |
-        | `NoValues`             | You've attempted to initialize, but it didn't successfully retrieve values. You're either calling initializeSync which is failing for users without cached values, or your call to initializeAsync has failed (check that your client key is correct!) |
         | `Unrecognized` (old SDKs only) | The SDK was initialized, but this gate/experiment/config did not exist in the set of values.| Error| Confirm the experiment or gate is configured in the Statsig console and you're using the correct API key.|
 
         ### #2. Reason (new SDKs only)
