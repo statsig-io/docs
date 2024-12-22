@@ -34,7 +34,7 @@ When debugging why a certain user got a certain value, there are a number of too
 ### Evaluation Reason
     **Evaluation reasons** are a way to understand why a certain value was returned for a given check. All SDKs provide the [Data Source](/client/javascript-sdk/init-strategies/) - which is where your Statsig Client/Server instance is getting its data. Newer SDKs also provide a Reason, which lets you know if an individual check was valid or overridden versus how you've initialized. These reasons are intended to be used for debugging and internal logging purposes only, and are sometimes updated in new SDK versions.
 
-    <img src="/img/evaldetails2.png" width="500px" />
+    <img src="/img/evaldetails.png" width="500px" />
 
 <Tabs groupId="evalReasons">
     <TabItem value="client" label="Client SDKs">
@@ -54,6 +54,9 @@ When debugging why a certain user got a certain value, there are a number of too
         | `Error`                | An unknown error has occurred, and was logged to Statsig servers.| Error| Reach out to us in [Slack](https://statsig.com/slack) for support. |
         | `Error:NoClient` (js-client-only)       | No client was found in your StatsigContext. | Error |  You've likely made a call to a Statsig hook outside of a `<StatsigProvider>`, verify your setup and try again. |
         | `Unrecognized` (old SDKs) | The SDK was initialized, but this gate/experiment/config did not exist in the set of values.| Error| Confirm the experiment or gate is configured in the Statsig console and you're using the correct API key.|
+        | `NoValues`             | You've attempted to initialize, but it didn't successfully retrieve values. | Error | You're either calling initializeSync before users have cached values, or your call to initializeAsync has failed (check that your client key is correct!) |
+        | `Loading`              | You've tried to initialize, but it hasn't finished yet. | Error | If you're using initializeAsync, you may need to await it, or otherwise prevent config checks before values are loaded. |        
+        | `Uninitialized`        | You haven't attempted to initialize yet. | Error | Ensure you're explicitly calling initializeAsync() or initializeSync(), or check if you've passed any StatsigOptions that could prevent network requests from happening. |
 
 
         ### #2. Reason (new SDKs only)
