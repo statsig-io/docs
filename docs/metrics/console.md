@@ -30,10 +30,3 @@ The **Metrics Catalog** tab allows you to search and tag your metrics, as well a
  
  ![Screen Shot 2022-06-07 at 12 09 40 PM](https://user-images.githubusercontent.com/101903926/172462947-877bbcc7-46b3-45cd-ac57-d0dc2c949d7d.png)
 
-
-## Charts
-The **Charts** tab shows a set of user-level metric charts that are automatically created based on the events that you log, such as daily/ weekly/ monthly active users, user stickiness, and retention. You can also create custom charts that enable you to visualize customer journeys through your application. 
-
-
-![Screen Shot 2022-06-07 at 12 55 08 PM](https://user-images.githubusercontent.com/101903926/172470741-af6294d0-a84a-4630-80f8-827de7e0c03b.png)
-
