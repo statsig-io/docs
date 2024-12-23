@@ -4,19 +4,25 @@ sidebar_label: Parameter Stores
 slug: /client/concepts/parameter-stores
 ---
 
-:::info
-Parameter Stores are only available for Statsig Client SDKs.
-:::
-
-Parameter Stores provide a new way to organize and manage parameters in your web or mobile app via the Statsig console. They are now available for the Statsig JS, React, React Native, Android, iOS, and Dart SDKs.
+Parameter Stores provide a new way to organize and manage parameters in your web or mobile app via the Statsig console. Now available for JS, React, React Native, Android, iOS, and Dart SDKs with Server SDKs coming soon - let us know in [Slack](https://statsig.com/slack) if you'd like support in a certain language soon.
 
 ## **What is a Parameter Store?**
 
 Rather than thinking in terms of Statsig entities like Feature Gates, Experiments, Layers, or Dynamic Configs, Parameter Stores let you focus on **parameters**—the values in your app that need to be configurable remotely. 
 
-Parameter Stores decouple your code from the configuration, much like Statsig Layers decouple your code from specific experiments. This level of abstraction allows you to run experiments, adjust gating, or change values on the fly—**without hardcoding experiment names** in your app. 
+Parameter Stores **decouple your code from configuration, indefinitely**. This abstraction allows you to run experiments, adjust gating, or change values on the fly— **without hardcoding any experiment/gate names**. Instead you define *parameters* that can be remapped remotely to any value or any Statsig entity. 
 
-Each parameter can be remapped between Statsig entities (as long as the parameter type remains the same). These parameters will receive dynamic values depending on the `StatsigUser` the SDK is initialized with, and they can be updated anytime without requiring a mobile code change or waiting for your mobile release cycle.
+## **An Example: Parameterizing the Statsig Website**
+
+While usually release cycles are more painful on platforms like mobile, take the example of the Statsig Website - perhaps our marketing team asks for frequent updates, so we'd prefer to parameterize the text, images, buttons, colors and more: 
+
+ <img src="/img/param_stores_mapping.png"/>
+
+
+When the time comes to run an experiment, we can point these variables directly at experiments - starting an A/B test without writing a line of code:
+
+<img src="/img/param_stores.gif" />
+
 
 ## **How to Use Parameter Stores**
 
