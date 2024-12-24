@@ -1,6 +1,6 @@
 ---
 title: Debugging
-sidebar_label: Debugging your SDK
+sidebar_label: Debugging
 slug: /sdk/debugging
 ---
 
@@ -22,6 +22,23 @@ When debugging why a certain user got a certain value, there are a number of too
     <u>Note:</u> To see logs from non-production environments, toggle the "Show non-production logs" in the upper right corner.
 
     ![Screen Shot 2023-04-27 at 11 20 14 AM](https://user-images.githubusercontent.com/74584483/234956317-e65f7fd3-d87d-4616-b905-ee4df097863e.png)
+
+### Logging Levels and Expected Information
+Log-line feedback is one of the simplest tools you have to understand how your SDK is behaving. Our SDKs have multiple log levels to decide what information you'd like to receive: 
+
+- Debug: Detailed logs useful for new users onboarding with the SDK and for diagnosing potential issues, such as:
+    - Messages when a feature gate does not exist
+    - Tracking process flows within the SDK
+- Info: General information about the SDK’s operation, typically relevant to regular usage, such as:
+    - Messages regarding SDK initialization, including source and version information
+    - Notifications when the configuration store is populated
+- Warning: Logs about unusual events that may impact functionality but are automatically managed and recovered, such as:
+    - Messages on non critical errors caught by the SDK
+    - Notifications about reconnection attempts to gRPC services
+- Error: Critical logs about issues that severely impact the SDK’s functionality, such as:
+    - Messages about initialization failures or timeouts
+    - Notifications indicating gRPC fallback, suggesting gRPC is unavailable or incorrect configuration
+
 
 
 ## Evaluation Details
@@ -70,7 +87,7 @@ When debugging why a certain user got a certain value, there are a number of too
 
         For example: `Network:Recognized` means the sdk had up to date values from a successful initialization network request, and the gate/config/experiment you were checking was defined in the payload.
 
-        If you are not sure why a config was not included (resulting in an "Unrecognized" source), it could be excluded due to [Target Apps](/sdk-keys/target-apps), or [Client Bootstrapping](/client/concepts/bootstrapping).
+        If you are not sure why a config was not included (resulting in an "Unrecognized" source), it could be excluded due to [Target Apps](/sdk-keys/target-apps), or [Client Bootstrapping](/client/concepts/initialize#bootstrapping-overview).
     </TabItem>
     <TabItem value="server" label="Server SDKS">
 

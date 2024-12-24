@@ -43,7 +43,7 @@ Evaluation happening locally to the server on `privateAttributes` in the `statsi
 Don't just take our word for it - all of our SDKs are open source and [available on github](https://github.com/statsig-io).  Feel free to dive in to the implementation of `privateAttributes` in the SDK you are using, or reach out to us on [slack](https://www.statsig.com/slack) and we can point you in the right direction.
 
 :::info
-To ensure that user PII is never transmitted over the network back to Statsig during Client SDK initialization, you should use [Client Boostrapping](/client/concepts/bootstrapping) and provide the `privateAttributes` as part of the user object on the server to the `getClientInitializeResponse(<user object>)` call. This will generate all of the assignments locally on your server, and these assignments can then be passed as `initializeValues` to the client SDK, negating the need to send any user attributes from the client device to Statsig. 
+To ensure that user PII is never transmitted over the network back to Statsig during Client SDK initialization, you should use [Client Boostrapping](/client/concepts/initialize#bootstrapping-overview) and provide the `privateAttributes` as part of the user object on the server to the `getClientInitializeResponse(<user object>)` call. This will generate all of the assignments locally on your server, and these assignments can then be passed as `initializeValues` to the client SDK, negating the need to send any user attributes from the client device to Statsig. 
 :::
 
 ## Event Logging

@@ -65,6 +65,7 @@ For details on flushing, check the [Node.js Server SDK documentation](/server/no
 ---
 
 ### I don't see my client or server language listed. Can I still use Statsig?
+
 If none of our current SDKs meet your needs, please let us know via our [Slack community](https://statsig.com/slack)! 
 
 ---
@@ -77,7 +78,7 @@ If you need all hypothetical assignments, you can consider using the `getClientI
 
 #### Example of capturing all assignments in Node
 
-Note, this method is designed to [bootstrap](/client/concepts/bootstrapping) client SDKs, and as such, will hash the experiment and feature keys returned in the payload, obfuscating their names for security. You can provide an optional `hash` parameter, allowing you to disable hashing and capture all values in plain text: [Node](https://github.com/statsig-io/node-js-server-sdk/blob/ea116142221c1aa83b46eff8b5f2292c8f8e2d54/src/StatsigServer.ts#L597), [Python](https://github.com/statsig-io/node-js-server-sdk/blob/ea116142221c1aa83b46eff8b5f2292c8f8e2d54/src/StatsigServer.ts#L597), [Java](https://github.com/statsig-io/java-server-sdk/blob/7443c357c78616142de9257af9e4c55c877ca700/src/main/kotlin/com/statsig/sdk/StatsigServer.kt#L83), [Go](https://github.com/statsig-io/go-sdk/blob/3d7edcbe468efb0fc7a04b0d10202243403dce5f/client.go#L282). 
+Note, this method is designed to [bootstrap](/client/concepts/initialize#bootstrapping-overview) client SDKs, and as such, will hash the experiment and feature keys returned in the payload, obfuscating their names for security. You can provide an optional `hash` parameter, allowing you to disable hashing and capture all values in plain text: [Node](https://github.com/statsig-io/node-js-server-sdk/blob/ea116142221c1aa83b46eff8b5f2292c8f8e2d54/src/StatsigServer.ts#L597), [Python](https://github.com/statsig-io/node-js-server-sdk/blob/ea116142221c1aa83b46eff8b5f2292c8f8e2d54/src/StatsigServer.ts#L597), [Java](https://github.com/statsig-io/java-server-sdk/blob/7443c357c78616142de9257af9e4c55c877ca700/src/main/kotlin/com/statsig/sdk/StatsigServer.kt#L83), [Go](https://github.com/statsig-io/go-sdk/blob/3d7edcbe468efb0fc7a04b0d10202243403dce5f/client.go#L282). 
 
 ```node
 const assignments = statsig.getClientInitializeResponse(userObj, "client-key", {hash: "none"});

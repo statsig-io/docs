@@ -1,6 +1,6 @@
 ---
-title: Initializing a Client SDK
-sidebar_label: Initializing your SDK
+title: Initializing SDKs
+sidebar_label: Initializing
 ---
 
 One of the first steps in using a Statsig client SDK is to call the asynchronous `initialize()` method in the SDK language of your choice.
@@ -104,3 +104,48 @@ evaluated_keys: {
 /** The hashing algorithm used */
 hash_used: string; 
 ```
+
+
+## Bootstrapping Overview
+
+Bootstrapping the Client SDKs is a pattern used to provide the precomputed user assignments directly to the SDK for initialization, rather than relying on the default SDK behavior of downloading the configurations over the network from Statsig servers. This approach is beneficial if you're looking to remove the network dependency on Statsig and consolidate the download of the payload into the initial load to reduce latency. 
+
+### Technical details 
+
+With this approach, your server will be responsible for serving the configuration payload to your client app on page load (for web implementations) or during app launch (for mobile implementations).
+
+This architecture requires running a server SDK that supports the `getClientInitializeResponse` method. 
+Your server SDK will maintain a fresh configuration in memory and when a request hits your route handler, you should call `getClientInitializeResponse(<user>)`, passing in a StatsigUser Object to generate the configuration object that gets passed to the client SDK for synchronous initialization.
+
+#### Additional Considerations
+
+* You should pass the same user object on both the server and client side.
+* The `initializeValues` option should be an Object.
+* This approach allows the client SDK to initialize synchronously.
+
+## NodeJS example
+
+_Server-side Node express.js route_
+```js
+app.get('/', async (req, res) => { 
+  const userObj = { 
+    userID: user.id
+  }   
+  const initializeValues = Statsig.getClientInitializeResponse(userObj, null, {hash: "djb2"});
+  // render page.hbs using two variables
+  res.render('page.hbs', {    
+    initializeValues: JSON.stringify(initializeValues),
+    userObj: JSON.stringify(userObj),
+  });
+});
+```
+
+_Client-side JS within page.hbs_
+```js
+// pass both the userObject and initializeValues payloads as Object.
+// The triple curly-brace in handlebars will unescape the JSON string
+const client = new StatsigClient('<CLIENT_SIDE_KEY>' userObj);
+client.dataAdapter.setData(bootstrapObject, user);
+client.initializeSync();
+```
+
