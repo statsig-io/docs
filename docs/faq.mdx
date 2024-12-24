@@ -71,7 +71,7 @@ If none of our current SDKs meet your needs, please let us know via our [Slack c
 
 ### How do I get all exposures for a user?
 
-If you're interested in historical exposures, the console's [users tab](https://console.statsig.com/users) may server your needs.
+If you're interested in historical exposures, the console's [users tab](https://console.statsig.com/users) may serve your needs.
 
 If you need all hypothetical assignments, you can consider using the `getClientInitializeResponse` server sdk method. Statsig's SDKs should ideally be invoked at the time you're serving an experiment treatment, so that an exposure can be logged. If that's not possible in your case (perhaps you need to pass assignment information to other applications, or to use assignment information as cache-keys for the CDN + edge), this approach could work.
 
