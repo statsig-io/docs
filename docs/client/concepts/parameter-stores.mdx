@@ -23,6 +23,12 @@ When the time comes to run an experiment, we can point these variables directly 
 
 <img src="/img/param_stores.gif" />
 
+Now, you've begun an experiment on your tagline, without ever making a code change. You continue to access the parameter in-code like this:
+
+```javascript
+const homepageStore = StatsigClient.getParameterStore("www_homepage");
+const tagline = homepageStore.get("tagline", <optional_default_value>);
+```
 
 ## **How to Use Parameter Stores**
 
