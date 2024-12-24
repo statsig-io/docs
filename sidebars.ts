@@ -58,15 +58,13 @@ const sidebars: SidebarsConfig = {
             {
               Concepts: [
                 "sdks/client-vs-server",
-                "client/concepts/user",
-                "server/concepts/monitoring",
-                "sdks/debugging",
+                "server/concepts/user",
                 "client/concepts/initialize",
+                "sdks/debugging",
+                "server/concepts/monitoring",
                 "client/concepts/bootstrapping",
                 "client/concepts/persistent_assignment",
                 "client/concepts/parameter-stores",
-                "messages/serverRequiredUserID",
-                "server/concepts/user",
                 "server/concepts/data_store",
                 "server/concepts/persistent_assignment",
                 "server/concepts/all_assignments",
