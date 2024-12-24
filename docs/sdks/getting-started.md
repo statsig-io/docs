@@ -1,6 +1,6 @@
 ---
-title: Getting Started with Statsig's SDKs
-sidebar_label: Getting Started
+title: SDK Overview
+sidebar_label: SDK Overview
 slug: /sdks/getting-started
 ---
 

@@ -1,29 +1,12 @@
 ---
 title: Monitoring the SDK
-sidebar_label: SDK Monitoring
-slug: /server/concepts/sdk_monitoring
+sidebar_label: SDK Monitoring Integrations
+slug: /sdk_monitoring
 ---
-Statsig SDKs provide two main ways of monitoring the SDK's behavior and performance:
-1. **Logs**: The SDK logs important events and errors to help you understand event-by-event how Statsig is behaving in your application.
-2. **Metrics**: The SDK emits metrics to help you understand the aggregate performance of the SDK its impact on your application.
 
-**Supported SDKs**: Most SDKs have some level of logging, but our latest release of structured logging and metrics, is currently only [available by the Python SDK](/server/pythonSDK/#sdk-monitoring-).
-
-## Logging Levels and Expected Information
-The Statsig SDK uses multiple logging levels to communicate various information types. Here’s what each logging level represents and what kind of details you can expect:
-
-- Debug: Detailed logs useful for new users onboarding with the SDK and for diagnosing potential issues, such as:
-    - Messages when a feature gate does not exist
-    - Tracking process flows within the SDK
-- Info: General information about the SDK’s operation, typically relevant to regular usage, such as:
-    - Messages regarding SDK initialization, including source and version information
-    - Notifications when the configuration store is populated
-- Warning: Logs about unusual events that may impact functionality but are automatically managed and recovered, such as:
-    - Messages on non critical errors caught by the SDK
-    - Notifications about reconnection attempts to gRPC services
-- Error: Critical logs about issues that severely impact the SDK’s functionality, such as:
-    - Messages about initialization failures or timeouts
-    - Notifications indicating gRPC fallback, suggesting gRPC is unavailable or incorrect configuration
+:::note
+This latest release of structured logging and metrics, is currently only [available by the Python SDK](/server/pythonSDK/#sdk-monitoring-). Want it in another? Reach out in our [Support Slack](https://statsig.com/slack).
+:::
 
 ## SDK Metrics
 Some Statsig SDKs provide built-in metrics to help you monitor its performance and impact on your application. The specific implementation may vary by programming language, refer to the documentation for the language-specific SDK interface.
