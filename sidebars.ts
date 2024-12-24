@@ -67,7 +67,6 @@ const sidebars: SidebarsConfig = {
                 "client/concepts/parameter-stores",
                 "server/concepts/data_store",
                 "server/concepts/persistent_assignment",
-                "server/concepts/all_assignments",
                 "sdk-keys/api-keys",
                 "sdk-keys/target-apps",
                 "server/deprecation-notices",

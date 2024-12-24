@@ -114,7 +114,7 @@ In Server SDKs, a StatsigUser with a userID (or customID) is required for checkG
 Still don't want to pass an ID? Here are our suggestions for different use cases:
 
 1. If you plan to only use one/off feature gates, or non-percent-based rules (like countries)
-While you're still losing functionality, you can **pass any non-empty identifier, hard coded string, or **a random ID less than 100 if you do not have the actual user ID.** Don't pass a purely random ID - as we won't be able to dedupe your events, you'll explode your event usage, and your Statsig bill.
+While you're still losing functionality, you can pass any non-empty identifier, hard coded string, or **a random ID less than 100 if you do not have the actual user ID.** Don't pass a purely random ID - as we won't be able to dedupe your events, you'll explode your event usage, and your Statsig bill.
 
 2. If you want to rollout a feature partially, check for regressions, then roll out to everyone, you must pass an ID in your checkGate/getConfig/getExperiment calls, as well as any logEvent calls you make. Otherwise, we're not able to attribute the events you log to the correct users who saw or didn't see your new feature, or calculate metrics correctly to help you see any regressions.
 
