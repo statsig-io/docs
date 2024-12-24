@@ -15,12 +15,12 @@ As shown in the diagram below, implementing an experiment using a Statsig client
 
 ### 1. Initialization
 
-- The client SDK's `initialize` call takes the **client SDK key** and a [**StatsigUser**](/client/concepts/user) object.  First, it checks for cached values from a previous initialize in local storage, and then it makes a network request to Statsig servers; this network call fetches precomputed configuration parameters for the specified user from Statsig servers and stores these parameters in local storage on the client device.
+- The client SDK's `initialize` call takes the **client SDK key** and a [**StatsigUser**](/server/concepts/user) object.  First, it checks for cached values from a previous initialize in local storage, and then it makes a network request to Statsig servers; this network call fetches precomputed configuration parameters for the specified user from Statsig servers and stores these parameters in local storage on the client device.
 If the request fails, the previous cached values are used.
 
 -	Statsig's server latency to service `initialize` calls is generally 10ms (p50); the latency for given client may vary depending on how far the device is from Statsig's servers; the client SDK has a built-in timeout of 3 seconds that you can configure using **StatsigOptions** when you initialize the SDK
 
--	The [**StatsigUser**](/client/concepts/user) object that you provide in the `initialize` call should include the user identifier, _userID_, that you use to identify the end-user of your application; the client SDK also generates a device identifier called _stableID_ to enable experiments where users aren’t signed in and a _userID_ is not available; you can choose to override this _stableID_ through **StatsigOptions** using the _overrideStableID_ parameter when you initialize the SDK
+-	The [**StatsigUser**](/server/concepts/user) object that you provide in the `initialize` call should include the user identifier, _userID_, that you use to identify the end-user of your application; the client SDK also generates a device identifier called _stableID_ to enable experiments where users aren’t signed in and a _userID_ is not available; you can choose to override this _stableID_ through **StatsigOptions** using the _overrideStableID_ parameter when you initialize the SDK
 
 ### 2. Checking an Experiment
 
@@ -49,7 +49,7 @@ If the request fails, the previous cached values are used.
 
 :::info Best Practices
 
-**Using [**StatsigUser**](/client/concepts/user)**
+**Using [**StatsigUser**](/server/concepts/user)**
 
 Learn how to use [StatsigUser](/server/concepts/user) while using a client SDK. 
 

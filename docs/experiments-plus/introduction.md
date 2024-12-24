@@ -80,7 +80,7 @@ Advantages:
 - Persistent across sessions and devices.
 - Independent of client-side cookies, which can be cleared by users.
 
-For more details on using User IDs with Statsig, see [Statsig Docs on User Identifiers](/client/concepts/user).
+For more details on using User IDs with Statsig, see [Statsig Docs on User Identifiers](/server/concepts/user).
 
 ### 2. Device Identifiers
 
