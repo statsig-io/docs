@@ -158,7 +158,7 @@ const config: Config = {
           },
           {
             from: "/experiments-plus/experimentation/choosing-randomization-unit",
-            to: "/experiments-plus/#choosing-the-right-randomization-unit",
+            to: "/experiments-plus#choosing-the-right-randomization-unit",
           },
           {
             from: "/js-migration",
