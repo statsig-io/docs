@@ -157,7 +157,7 @@ const config: Config = {
             to: "/experiments-plus#key-concepts-in-experimentation",
           },
           {
-            from: "/experiments-plus/experimentation/choosing-randomization-unit/",
+            from: "/experiments-plus/experimentation/choosing-randomization-unit",
             to: "/experiments-plus/#choosing-the-right-randomization-unit",
           },
           {
