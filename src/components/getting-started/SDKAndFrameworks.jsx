@@ -9,6 +9,7 @@ const sdkGroups = [
       { name: 'React', img: '/img/sdk/sdk_react.png', link: '/client/javascript-sdk/react' },
       { name: 'React Native', img: '/img/sdk/sdk_rn.png', link: '/client/javascript-sdk/react-native' },
       { name: 'Next.js', img: '/img/sdk/sdk_nextjs.svg', link: '/client/javascript-sdk/next-js' },
+      { name: 'Angular', img: '/img/sdk/sdk_angular.png', link: '/client/javascript-sdk/Angular' },
       { name: 'Swift', img: '/img/sdk/sdk_swift.png', link: '/client/iosClientSDK' },
       { name: 'Android', img: '/img/sdk/sdk_android.png', link: '/client/androidClientSDK' },
       { name: '.NET Client', img: '/img/sdk/sdk_dotnet.png', link: '/client/dotnetSDK' },

@@ -52,7 +52,7 @@ Still unsure! Read this blog post for further information: [Statsig Cloud vs War
 ## Next steps
 Once you've decided whether Statsig Cloud or Statsig Warehouse Native fits your organization’s needs, choose the appropriate *getting started* guide for your first use case:
 
-- [Getting Started with Statsig Cloud](/sdks/getting-started.md)
+- [Getting Started with Statsig Cloud](/sdks/getting-started)
 - [Getting Started with Statsig Warehouse Native](/statsig-warehouse-native/guides/quick-start)
 
 :::info
