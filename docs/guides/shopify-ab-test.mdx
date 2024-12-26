@@ -49,10 +49,16 @@ Below is boilerplate custom pixel code that provides a function to send events b
 ```js
 /**
 * Util function for tracking events back to statsig
+* Find the user's stableID checking js-sdk >= v2 then fallback to v1 storage key
 */
+const stableID = (function () {
+  for (var key in localStorage) {
+    if (key.includes('statsig.stable_id.')) return localStorage.getItem(key);
+  }
+})() || localStorage.getItem('STATSIG_LOCAL_STORAGE_STABLE_ID');
 const statsigEvent = async (eventKey, eventValue = null, metadata = {}, userObject = {}) => {
   Object.assign(userObject, {
-    customIDs: {stableID: localStorage.getItem('STATSIG_LOCAL_STORAGE_STABLE_ID')} // attach stableID automatically
+    customIDs: {stableID: stableID} // attach stableID automatically
   });
   await fetch('https://events.statsigapi.net/v1/log_event', {
     method: 'POST',
