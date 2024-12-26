@@ -153,10 +153,6 @@ const config: Config = {
             to: "/experiments-plus#scenarios-for-experimentation",
           },
           {
-            from: "/experiments-plus/experimentation/best-practices",
-            to: "https://statsig.com/blog/product-experimentation-best-practices",
-          },
-          {
             from: "/experiments-plus/experimentation/common-terms",
             to: "/experiments-plus#key-concepts-in-experimentation",
           },
