@@ -145,6 +145,26 @@ const config: Config = {
       {
         redirects: [
           {
+            from: "/experiments-plus/experimentation/why-experiment",
+            to: "/experiments-plus#why-experiment",
+          },
+          {
+            from: "/experiments-plus/experimentation/scenarios",
+            to: "/experiments-plus#scenarios-for-experimentation",
+          },
+          {
+            from: "/experiments-plus/experimentation/best-practices",
+            to: "https://statsig.com/blog/product-experimentation-best-practices",
+          },
+          {
+            from: "/experiments-plus/experimentation/common-terms",
+            to: "/experiments-plus#key-concepts-in-experimentation",
+          },
+          {
+            from: "/experiments-plus/experimentation/choosing-randomization-unit/",
+            to: "/experiments-plus/#choosing-the-right-randomization-unit",
+          },
+          {
             from: "/js-migration",
             to: "/client/javascript-sdk/migrating-from-statsig-js",
           },
