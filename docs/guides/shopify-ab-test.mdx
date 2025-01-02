@@ -53,7 +53,7 @@ Below is boilerplate custom pixel code that provides a function to send events b
 */
 const stableID = (function () {
   for (var key in localStorage) {
-    if (key.includes('statsig.stable_id.')) return localStorage.getItem(key);
+    if (key.includes('statsig.stable_id.')) return localStorage.getItem(key).replace(/"/gi, '');
   }
 })() || localStorage.getItem('STATSIG_LOCAL_STORAGE_STABLE_ID');
 const statsigEvent = async (eventKey, eventValue = null, metadata = {}, userObject = {}) => {
