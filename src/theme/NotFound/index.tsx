@@ -1,14 +1,21 @@
-import React, { useEffect } from 'react';
-import NotFound from '@theme-original/NotFound';
-import type NotFoundType from '@theme/NotFound';
-import type {WrapperProps} from '@docusaurus/types';
+import React from 'react';
+import {translate} from '@docusaurus/Translate';
+import {PageMetadata} from '@docusaurus/theme-common';
+import Layout from '@theme/Layout';
+import NotFoundContent from '@theme/NotFound/Content';
 
-type Props = WrapperProps<typeof NotFoundType>;
-
-export default function NotFoundWrapper(props: Props): JSX.Element {
+export default function Index(): JSX.Element {
+  
+  const title = translate({
+    id: 'theme.NotFound.title',
+    message: 'Page Not Found',
+  });
   return (
     <>
-      <NotFound {...props} />
+      <PageMetadata title={title} />
+      <Layout>
+        <NotFoundContent />
+      </Layout>
     </>
   );
 }
