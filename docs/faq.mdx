@@ -90,7 +90,7 @@ const assignments = statsig.getClientInitializeResponse(userObj, "client-key", {
 
 ### When I change the rollout percentage of a rule on a feature gate, will users who passed continue to pass?
 
-Yes. If you increase the rollout percentage (e.g., from 10% to 20%), the original 10% will continue to pass, while an additional 10% will start passing. Reducing the percentage will restore the original 10%. The same behavior exists if you reduce then re-increase the pass percentage. To reshuffle users, you'll need to "resalt" the gate.
+Yes. If you increase the rollout percentage (e.g., from 10% to 20%), the original 10% will continue to pass, while an additional 10% will start passing. Reducing the percentage will restore the original 10%. The same behavior exists if you reduce then re-increase the pass percentage. To reshuffle users, you'll need to "resalt" the gate. This is only true of the same "rule" per gate, if you create a new rules with the same pass percentage as another one, it will pass a different set of users. 
 
 Note - this behavior does not exist for inline allocation percentage on Experiments. When you change your allocation percentage, a different set of users will pass it. 
 
