@@ -146,6 +146,10 @@ const config: Config = {
         redirects: [
           {
             from: "/client/concepts/bootstrapping",
+            to: "/sdk_monitoring/",
+          },
+          {
+            from: "/client/concepts/bootstrapping",
             to: "/client/concepts/initialize/#2-bootstrap-initialization",
           },
           {
