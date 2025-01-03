@@ -86,6 +86,12 @@ const assignments = statsig.getClientInitializeResponse(userObj, "client-key", {
 
 ---
 
+### What happens if I check a config with a non-existent name?
+
+You'll receive default values - false for feature flags, and the in-code defaults for experiments or layer parameters. You should expect to see "Unrecognized" evaluation reasons - see our [Debugging Section](/sdk/debugging#evaluation-reason)
+
+---
+
 ## Feature Flags
 
 ### When I change the rollout percentage of a rule on a feature gate, will users who passed continue to pass?
