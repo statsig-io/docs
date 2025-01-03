@@ -145,6 +145,10 @@ const config: Config = {
       {
         redirects: [
           {
+            from: "/client/concepts/bootstrapping",
+            to: "/client/concepts/initialize/#2-bootstrap-initialization",
+          },
+          {
             from: "/experiments-plus/experimentation/why-experiment",
             to: "/experiments-plus#why-experiment",
           },
