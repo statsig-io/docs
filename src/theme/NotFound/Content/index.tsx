@@ -12,12 +12,9 @@ declare const Statsig: {
 
 export default function NotFoundContent({className}: Props): JSX.Element {
   useEffect(() => {
-    console.log("NotFoundWrapper useEffect is running"); // Add this line
     try {
       Statsig.instance().logEvent('PageNotFound', window.location.href);
-      console.log("Successfully logged PageNotFound event");
     } catch (error) {
-      console.error("Error logging PageNotFound event:", error);
     }
   }, []);
   return (
