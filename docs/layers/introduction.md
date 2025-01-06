@@ -1,5 +1,5 @@
 ---
-title: Introduction to Layers
+title: Layers
 sidebar_label: Layers
 slug: /layers
 ---

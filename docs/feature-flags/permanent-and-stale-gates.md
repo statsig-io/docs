@@ -46,6 +46,7 @@ In your feature gates catalog, you'll see different **Types** displayed in the S
     - **STALE_PROBABLY_DEAD_CHECK** There have been no checks in the last 30 days.
     - **STALE_PROBABLY_LAUNCHED** The Gate is marked as launched or has an everyone rule passing 100% (rollout rate of 100%).
     - **STALE_PROBABLY_UNLAUNCHED** The Gate is marked as disabled or has an everyone rule passing 0% (rollout rate of 0%).
+    - **STALE_PROBABLY_FORGOTTEN** This gate appears to have been only partially launched for some time. You might want to launch/disable it, or make it permanent if you need to keep it around.
     - **STALE_NO_RULES** The Gate has no set rules.
 
 ## Nudges to clean up Stale gates

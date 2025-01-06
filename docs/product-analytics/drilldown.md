@@ -21,7 +21,7 @@ The Metric Drilldown chart in Metrics Explorer is a versatile tool for understan
 - **Filtering**: Focus on specific segments or cohorts that are of particular interest. This filtering capability allows for a more targeted analysis, helping you to understand the behaviors and needs of specific user groups.
 - **Statistical Understanding:** Understand how the average, median, or other percentile value (e.g. p99, p95) of a metric changes over time.
 - **Dynamic Metric Creation with Formulas**: Craft new metrics on the fly using custom formulas. This flexibility is useful in deriving ad-hoc insights with minimal effort.
-- **Flexible Visualization Options**: Choose from a range of visualization formats, like line charts, bar charts, or stacked bar charts, to best represent your data. The right visualization can make complex data more understandable and actionable.
+- **Flexible Visualization Options**: Choose from a range of visualization formats, like line charts, bar charts, horizontal bar charts, and stacked bar charts, to best represent your data. The right visualization can make complex data more understandable and actionable.
 - **Event Samples for Debugging**: Quickly access and analyze a metric’s underlying sample events, and the granular user-level information attached to the event. This feature is particularly useful for troubleshooting and understanding the root causes of trends or anomalies in your data.
 - **Detailed Data Control**: Adjust the granularity of your data analysis, from high-level overviews to detailed breakdowns. Use features like rolling averages to smooth data for more accurate trend analysis and decision-making.
 

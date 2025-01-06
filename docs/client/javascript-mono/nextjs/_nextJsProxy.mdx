@@ -2,7 +2,9 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-## Proxying Network Traffic
+### Proxying Network Traffic (Optional)
+
+If you want to harden your integration and protect your feature gating/experimentation values/event logging from being blocked by ad blockers, you can set up a network proxy.
 
 It is possible to route all Statsig network traffic through your Next.js server. 
 There are a few reasons why you might want to set this up.
@@ -56,7 +58,7 @@ We will need to setup Next.js [`API Routes`](https://nextjs.org/docs/pages/build
 
 
 
-### Add Route `/initialize`
+#### Add Route `/initialize`
 
 
 
@@ -136,7 +138,7 @@ export default async function handler(
 
 
 
-### Add Route `/log_event`
+#### Add Route `/log_event`
 
 <Tabs
   defaultValue="app-router"
@@ -225,7 +227,7 @@ export default async function handler(
 
 
 
-### Assign Urls
+#### Assign Urls
 
 Now that we have endpoints for handling `/initialize` and `/log_event`, 
 we need to configure that Statsig client to use them.

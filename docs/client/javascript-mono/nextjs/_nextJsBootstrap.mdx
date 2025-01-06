@@ -1,14 +1,13 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-
-## Client Bootstrapping (Optional but Recommended)
+### Client Bootstrapping (Recommended)
 
 Bootstrapping is a method of keeping updated values on your server (in the case of Next, your node webserver), and sending them down with the frontend code when a request is made. This has the advantage of preventing an additional network request before your content is displayed, improving your site's responsiveness. This also enables Statsig usage on server-rendered components. 
-While the performance gains are appealing, bootstrapping requires some additional setup effort, and is strictly optional.
+While the performance gains are appealing, bootstrapping requires some additional setup effort, and you must be mindful of which code you are running server side and client side.
 
 
-### Install `statsig-node`
+#### Install `statsig-node`
 
 To generate the required values, we can use the Statsig server SDK (`statsig-node`) on our backend.
 
@@ -65,7 +64,7 @@ STATSIG_SERVER_KEY=secret-<REPLACE_WITH_YOUR_SERVER_KEY> # <- Added this line
 
 
 
-### Integrate the Backend Logic
+#### Integrate the Backend Logic
 
 
 <Tabs
@@ -172,7 +171,7 @@ export async function getStatsigServerProps(): Promise<StatsigServerProps> {
 
 
 
-### Apply the Bootstrap Values
+#### Apply the Bootstrap Values
 
 
 
@@ -231,10 +230,9 @@ import {
   LogLevel,
   StatsigProvider,
   StatsigUser,
-  // useClientAsyncInit, // <- Remove this
   useClientBootstrapInit, // <- Add this
 } from "@statsig/react-bindings";
-import { runStatsigAutoCapture } from "@statsig/web-analytics";
+import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
 import React, { useEffect } from "react";
 
 export default function MyStatsig({
@@ -244,17 +242,16 @@ export default function MyStatsig({
   bootstrapValues: { data: string; user: StatsigUser; key: string };
   children: React.ReactNode;
 }) {
-  // Update to using useClientBootstrapInit instead of useClientAsyncInit
+  // Update to using useClientBootstrapInit instead of auto initializing in the provider
   const client = useClientBootstrapInit(
     bootstrapValues.key,
     bootstrapValues.user,
     bootstrapValues.data,
-    { logLevel: LogLevel.Debug } // Optional - Prints debug logs to the console
+    {
+      logLevel: LogLevel.debug,
+      plugins: [ new StatsigAutoCapturePlugin() ]
+    }
   );
-
-  useEffect(() => {
-    runStatsigAutoCapture(client);
-  }, [client]);
 
   return <StatsigProvider client={client}>{children}</StatsigProvider>;
 }
@@ -262,7 +259,7 @@ export default function MyStatsig({
 
 If you load the app now, you should see the same values as your previous implementation, this time without any additional network requests.
 
-### Managing StableIDs
+#### Managing StableIDs
 
 Statsig generates [StableIDs](/client/javascript-sdk/stable-id/) as a pseudo-ID for logged-out experiments and user management. StableIDs are generated client-side, but when boostrapping, values are generated on the server, creating undesirable side-effects like stableIDs regenerating more than logical for any one device/user. A simple cookie can solve this problem, with an implementation pattern suggested [here](/client/javascript-sdk#keeping-stableid-consistent-across-client--server).
 
@@ -305,6 +302,14 @@ We do this conditionally, so that Statsig only runs on pages that call `getStats
 
 ```tsx
 // pages/_app.tsx
+
+import {
+  LogLevel,
+  StatsigProvider,
+  StatsigUser,
+} from "@statsig/react-bindings";
+import { runStatsigAutoCapture } from '@statsig/web-analytics';
+import React, { useEffect } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
   const clientRef = useRef<StatsigClient | null>();

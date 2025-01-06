@@ -35,6 +35,7 @@ const sidebars: SidebarsConfig = {
           className: "lightbulb-icon sidebar-icon",
           items: [
             "understanding-platform",
+            "client/concepts/parameter-stores",
             "guides/first-device-level-experiment",
             "guides/experiment-on-custom-id-types",
             "guides/using-environments",
@@ -55,26 +56,10 @@ const sidebars: SidebarsConfig = {
           className: "doc-icon sidebar-icon",
           items: [
             "sdks/getting-started",
-            {
-              Concepts: [
-                "sdks/client-vs-server",
-                "client/concepts/user",
-                "server/concepts/monitoring",
-                "sdks/debugging",
-                "client/concepts/initialize",
-                "client/concepts/bootstrapping",
-                "client/concepts/persistent_assignment",
-                "client/concepts/parameter-stores",
-                "messages/serverRequiredUserID",
-                "server/concepts/user",
-                "server/concepts/data_store",
-                "server/concepts/persistent_assignment",
-                "server/concepts/all_assignments",
-                "sdk-keys/api-keys",
-                "sdk-keys/target-apps",
-                "server/deprecation-notices",
-              ],
-            },
+            "sdks/client-vs-server",
+            "server/concepts/user",
+            "client/concepts/initialize",
+            "sdks/debugging",
             {
               className: "html-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
@@ -242,16 +227,7 @@ const sidebars: SidebarsConfig = {
               ]
               
             },
-            {
-              type: "category",
-              label: "Other Frameworks",
-              items: [
-                "guides/node-express-feature-flags",
-                "guides/node-express-abtests",
-                "guides/python-flask-feature-flags",
-                "guides/python-flask-abtests",
-              ],
-            },
+
             {
               type: "category",
               label: "Azure AI",
@@ -268,6 +244,28 @@ const sidebars: SidebarsConfig = {
                 "azureai/running-experiments",
               ],
             },
+            {
+              type: "category",
+              label: "Advanced SDK Methods",
+              items: [
+                {
+                  type: "category",
+                  label: "Other Frameworks",
+                  items: [
+                    "guides/node-express-feature-flags",
+                    "guides/node-express-abtests",
+                    "guides/python-flask-feature-flags",
+                    "guides/python-flask-abtests",
+                  ],
+                },
+                "client/concepts/persistent_assignment",
+                "server/concepts/persistent_assignment",
+                "server/concepts/data_store",
+                "sdk-keys/target-apps",
+
+              ]
+            },
+            "server/deprecation-notices",
           ],
         },
         {
@@ -939,6 +937,7 @@ const sidebars: SidebarsConfig = {
           label: "Workspace Management",
           items: [
             "access-management/introduction",
+            "sdk-keys/api-keys",
             {
               Workspace: [
                 "access-management/organizations",
@@ -1052,7 +1051,11 @@ const sidebars: SidebarsConfig = {
               ],
             },
             {
-              Reliability: ["infrastructure/reliability-faq", "guides/uptime"],
+              Reliability: [
+                "infrastructure/reliability-faq", 
+                "guides/uptime",
+                "infrastructure/monitoring",
+              ],
             },
           ],
         },

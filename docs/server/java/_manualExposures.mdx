@@ -1,0 +1,53 @@
+import CodeBlock from "@theme/CodeBlock";
+
+import ManualExposuresTemplate from "../../sdks/_manual-exposures-template.mdx";
+
+export const Snippets = {
+  // Gates
+  gateSnippet: (
+    <CodeBlock language="java">
+      {`val passed_or_failed = Statsig.checkGateWithExposureLoggingDisabled(user, "a_gate");`}
+    </CodeBlock>
+  ),
+  gateExposureSnippet: (
+    <CodeBlock language="java">
+      {`Statsig.manuallyLogGateExposure(user, "a_gate");`}
+    </CodeBlock>
+  ),
+  // Configs
+  configSnippet: (
+    <CodeBlock language="java">
+      {`val config = Statsig.getConfigWithExposureLoggingDisabled(user, "awesome_product_details")`}
+    </CodeBlock>
+  ),
+  configExposureSnippet: (
+    <CodeBlock language="java">
+      {`Statsig.manuallyLogConfigExposure(user, "awesome_product_details");`}
+    </CodeBlock>
+  ),
+  // Experiment
+  experimentSnippet: (
+    <CodeBlock language="java">
+      {`val titleExperiment = Statsig.getExperimentWithExposureLoggingDisabled(user, "new_user_promo_title")`}
+    </CodeBlock>
+  ),
+  experimentExposureSnippet: (
+    <CodeBlock language="java">
+      {`Statsig.manuallyLogConfigExposure(user, "new_user_promo_title");`}
+    </CodeBlock>
+  ),
+  // Layer
+  layerSnippet: (
+    <CodeBlock language="java">
+      {`val layer = Statsig.getLayerWithExposureLoggingDisabled(user, "user_promo_experiments")
+val promoTitle = layer.getString("title", "Welcome to Statsig!")`}
+    </CodeBlock>
+  ),
+  layerExposureSnippet: (
+    <CodeBlock language="java">
+      {`Statsig.manuallyLogLayerParameterExposure(user, "user_promo_experiments");`}
+    </CodeBlock>
+  ),
+};
+
+;

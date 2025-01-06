@@ -1,0 +1,72 @@
+---
+sidebar_label: PHP Core (Beta)
+title: PHP Core Server SDK (Beta)
+slug: /server/phpCoreSDK
+displayed_sidebar: cloud
+---
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
+
+import * as _ServerCore from "./_server_core.mdx";
+export const ServerCore = _ServerCore;
+
+import * as _Notes from "./php-core/_notes.mdx";
+export const Notes = _Notes;
+
+import Install from "./php-core/_install.mdx"
+import Initialize from "./php-core/_initialize.mdx"
+import CheckGate from "./php-core/_checkGate.mdx";
+import GetConfig from "./php-core/_getConfig.mdx";
+import GetExperiment from "./php-core/_getExperiment.mdx";
+import LogEvent from "./php-core/_logEvent.mdx";
+
+
+import {
+  Repository,
+  GettingStarted,
+  WorkingWith
+} from "./Templates/index.mdx";
+
+
+
+export const Builder = SDKDocsBuilder({
+  sections: [
+    [
+
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/statsig-server-core",
+      },
+    ],
+    [ServerCore, {}],
+    [
+      GettingStarted,
+      {
+        sdkType: "PHP",
+        install: <Install />,
+        skipStatsigOptionsDescription: true,
+        initialize: <Initialize />,
+        skipInitializeDescription: true,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+        hideAsyncDisclaimer: true,
+      },
+    ],
+    [Notes, {}],
+  ]
+});
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

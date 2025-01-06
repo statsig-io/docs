@@ -8,12 +8,12 @@ sidebar_label: FAQs
 
 ### How does bucketing within the Statsig SDKs work?
 Bucketing in Statsig is deterministic. Given the same user object and the same state of the experiment or feature gate, Statsig always returns the same result, even when evaluated on different platforms (client or server). Here's how it works:
-1. **Salt Creation**: Each experiment or feature gate generates a unique salt.
+1. **Salt Creation**: Each experiment or feature gate rule generates a unique salt.
 2. **Hashing**: The user identifier (e.g., userId, organizationId) is passed through a SHA256 hashing function, combined with the salt, which produces a large integer.
 3. **Bucket Assignment**: The large integer is then subjected to a modulus operation with 10000 (or 1000 for layers), assigning the user to a bucket.
 4. **Bucket Determination**: The result defines the specific bucket out of 10000 (or 1000 for layers) where the user is placed.
 
-This process ensures a randomized but deterministic bucketing of users across different experiments or feature gates. The unique salt ensures that the same user can be assigned to different buckets in different experiments.
+This process ensures a randomized but deterministic bucketing of users across different experiments or feature gates. The unique salt per-experiment or feature gate rule ensures that the same user can be assigned to different buckets in different experiments. This also means that if you rollout a feature gate rule to 50% - then back to 0% - then back to 50%, the same 50% of users will be re-exposed, **so long as you reuse the same rule** - and not create a new one. See [here](/faq/#when-i-change-the-rollout-percentage-of-a-rule-on-a-feature-gate-will-users-who-passed-continue-to-pass).
 
 A lot of times people assume that we keep track of a list of all ids and what group they were assigned to for experiments, or which IDs passed a certain feature gate.  While our data pipelines keep track of which users were exposed to which experiment variant in order to generate experiment results, we do not cache previous evaluations and maintain distributed evaluation state across client and server sdks.  That model doesn't scale - we've even talked to customers who were using an implementation like that in the past, and were paying more for a Redis instance to maintain that state than they ended up paying to use Statsig instead.
 
@@ -23,6 +23,11 @@ For more details, check our open-source SDKs [here](https://github.com/statsig-i
 
 ### Is it possible to add a layer to a running experiment?
 No. Once an experiment is started, you cannot change the layer. This restriction ensures the integrity of the experiment. We may support this feature in the future.
+
+---
+
+### Can you change an experiment or gate name after creating it?
+No. We've intentionally decided to not allow any Statsig config (Feature Gate, Experiment, Layer, etc.) to be renamed - as renaming a config that is already integrated in your code can have serious undesirable consequences. The exception to this is Metrics, which have display names not used in code. 
 
 ---
 
@@ -60,7 +65,30 @@ For details on flushing, check the [Node.js Server SDK documentation](/server/no
 ---
 
 ### I don't see my client or server language listed. Can I still use Statsig?
-If none of our current SDKs meet your needs, please let us know via our [Slack community](https://statsig.com/slack)!
+
+If none of our current SDKs meet your needs, please let us know via our [Slack community](https://statsig.com/slack)! 
+
+---
+
+### How do I get all exposures for a user?
+
+If you're interested in historical exposures, the console's [users tab](https://console.statsig.com/users) may serve your needs.
+
+If you need all hypothetical assignments, you can consider using the `getClientInitializeResponse` server sdk method. Statsig's SDKs should ideally be invoked at the time you're serving an experiment treatment, so that an exposure can be logged. If that's not possible in your case (perhaps you need to pass assignment information to other applications, or to use assignment information as cache-keys for the CDN + edge), this approach could work.
+
+#### Example of capturing all assignments in Node
+
+Note, this method is designed to [bootstrap](/client/concepts/initialize#bootstrapping-overview) client SDKs, and as such, will hash the experiment and feature keys returned in the payload, obfuscating their names for security. You can provide an optional `hash` parameter, allowing you to disable hashing and capture all values in plain text: [Node](https://github.com/statsig-io/node-js-server-sdk/blob/ea116142221c1aa83b46eff8b5f2292c8f8e2d54/src/StatsigServer.ts#L597), [Python](https://github.com/statsig-io/node-js-server-sdk/blob/ea116142221c1aa83b46eff8b5f2292c8f8e2d54/src/StatsigServer.ts#L597), [Java](https://github.com/statsig-io/java-server-sdk/blob/7443c357c78616142de9257af9e4c55c877ca700/src/main/kotlin/com/statsig/sdk/StatsigServer.kt#L83), [Go](https://github.com/statsig-io/go-sdk/blob/3d7edcbe468efb0fc7a04b0d10202243403dce5f/client.go#L282). 
+
+```node
+const assignments = statsig.getClientInitializeResponse(userObj, "client-key", {hash: "none"});
+```
+
+---
+
+### What happens if I check a config with a non-existent name?
+
+You'll receive default values - false for feature flags, and the in-code defaults for experiments or layer parameters. You should expect to see "Unrecognized" evaluation reasons - see our [Debugging Section](/sdk/debugging#evaluation-reason). This behavior will be the same on a non-existent config vs. one that is deleted, one that is archived, or one that your current SDK instance can't see because of [target apps](/sdk-keys/target-apps/). 
 
 ---
 
@@ -68,7 +96,11 @@ If none of our current SDKs meet your needs, please let us know via our [Slack c
 
 ### When I change the rollout percentage of a rule on a feature gate, will users who passed continue to pass?
 
-Yes. If you increase the rollout percentage (e.g., from 10% to 20%), the original 10% will continue to pass, while an additional 10% will start passing. Reducing the percentage will restore the original 10%. To reshuffle users, you'll need to "resalt" the gate.
+Yes. If you increase the rollout percentage (e.g., from 10% to 20%), the original 10% will continue to pass, while an additional 10% will start passing. Reducing the percentage will restore the original 10%. The same behavior exists if you reduce then re-increase the pass percentage. To reshuffle users, you'll need to "resalt" the gate. 
+
+This is only true of the same "rule" per gate, if you create a new rule with the same pass percentage as another one, it will pass a different set of users. 
+
+Note - today, increasing the allocation percentage of an experiment is not guaranteed to behave the same as the above - if you'd like to have dependably deterministic allocations, we recommend using targeting gates. 
 
 ---
 
@@ -132,8 +164,12 @@ Enterprise plans can support multiple projects. If you might be interest in this
 ## Platform Usability
 
 ### When should I create a new project?
-Projects have distinct boundaries. Create a new project when you're managing a separate product with unique user IDs and metrics.
+Projects have distinct boundaries. If you're using the same userIDs and metrics across surfaces, apps or environments, put them in the same project. Create a new project when you're managing a separate product with unique user IDs and metrics. 
 
-For example, if you have a marketing website (anonymous users) and a product (signed-in users), you may want to separate them. However, if you want to track success across both, you should manage them in the same project.
+For example, if you have a marketing website (anonymous users) and a product (signed-in users), you may want to separate them. However, if you want to track success across both you should manage them in the same project. (e.g. from user signup on the marketing website to user engagement within the product)
+
+Some reasons to NOT create a new project
+- to segregate by environment. Statsig has rich support for environments - you can even customize these. You can turn features or experiments on and off by environment.
+- to segregate by platform. If you have an iOS app and Web app - it's helpful to have both collect data in the same project and capture metadata on platform. This lets you look at data by platform, but also understand if you've increased the overall metric - or just cannibalized users (pushed the same users from platform to the other platform).
 
 ---
