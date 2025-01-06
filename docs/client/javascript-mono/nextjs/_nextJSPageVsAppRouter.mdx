@@ -31,7 +31,7 @@ to render the `StatsigProvider` on the client side.
 
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import {
   LogLevel,
   StatsigProvider,
@@ -95,7 +95,6 @@ There is a [full example](https://github.com/statsig-io/private-js-client-monore
 ```tsx
 // pages/_app.tsx
 
-import { useEffect } from "react";
 import type { AppProps } from "next/app";
 
 import {
