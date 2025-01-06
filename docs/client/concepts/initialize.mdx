@@ -92,8 +92,8 @@ This architecture requires running a server SDK that supports the `getClientInit
 Your server SDK will maintain a fresh configuration in memory and when a request hits your route handler, you should call `getClientInitializeResponse(<user>)`, passing in a StatsigUser Object to generate the configuration object that gets passed to the client SDK for synchronous initialization.
 
 #### Implementation Notes:
-* You should pass the same user object on both the server and client side.
-* The `initializeValues` option should be an Object.
+* You should pass the same user object on both the server and client side - take care that these stay in sync. This can become particularly hairy in the case of keeping stableID in sync, as it'll re-generate when it doesn't exist. See [here](https://docs.statsig.com/client/javascript-sdk#keeping-stableid-consistent-across-client--server).
+* The `initializeValues` option should be an Object - except in our js SDK, where its expected to be a string. Calling .stringify() on the object should work.
 
 Example:
 
