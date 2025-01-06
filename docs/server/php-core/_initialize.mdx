@@ -1,0 +1,32 @@
+You'll want to add your client secret key to the environment, by adding to a .env file, or directly on the command line: 
+
+```shell
+export STATSIG_SECRET_KEY=secret-123456789
+```
+
+In the case of the slim framework, you'll also need to add Statsig as a dependency in `app/dependencies.php`. In other frameworks you'll need to initialize elsewhere, [reach out in Slack](https://statsig.com/slack) if you need help.
+
+```java
+// At the top of your file
+use Statsig\Statsig;
+use Statsig\StatsigOptions;
+use Statsig\StatsigLocalFileEventLoggingAdapter;
+use Statsig\StatsigLocalFileSpecsAdapter;
+
+//In the case of slim framework, in container builder definitions:
+
+Statsig::class => function (ContainerInterface $c) {
+    $sdk_key = getenv("STATSIG_SECRET_KEY");
+
+    $options = new StatsigOptions(
+        null,
+        null,
+        new StatsigLocalFileSpecsAdapter($sdk_key, "/tmp"),
+        new StatsigLocalFileEventLoggingAdapter($sdk_key, "/tmp")
+    );
+
+    $statsig = new Statsig($sdk_key, $options);
+    $statsig->initialize();
+    return $statsig;
+},
+```

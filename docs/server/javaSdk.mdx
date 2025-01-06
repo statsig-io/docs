@@ -40,6 +40,7 @@ import ShutdownSnippet from "./java/_shutdown.mdx";
 import OverridesSnippet from "./java/_localOverrides.mdx";
 import * as ReferenceSnippets from "./java/_reference.mdx";
 import ClientInitResponseSnippet from "./java/_clientInitResponse.mdx";
+import { Snippets as ManualExposureSnippets } from "./java/_manualExposures.mdx";
 import ForwardProxyExample from "./java/_forwardProxyExample.mdx";
 import MultiInstanceExample from "./java/_multiInstanceExample.mdx";
 import PersistentStorageInterface from "./java/_persistentStorageInterface.mdx";
@@ -91,6 +92,7 @@ export const Builder = SDKDocsBuilder({
         snippet: <OverridesSnippet />,
       },
     ],
+    [ManualExposures, { addedInVersion: "0.11.0", ...ManualExposureSnippets }],
     [
       UserPersistentStorage,
       { interface: <PersistentStorageInterface />, example: <PersistentStorageExample /> },

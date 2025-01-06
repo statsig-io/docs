@@ -2,6 +2,7 @@
 title: Metrics
 slug: /statsig-warehouse-native/guides/metrics
 sidebar_label: Metrics
+displayed_sidebar: cloud
 ---
 
 # Deprecation Notice

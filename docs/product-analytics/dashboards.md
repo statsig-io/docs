@@ -84,13 +84,15 @@ If you want to duplicate or clone any of your dashboards, open the desired dashb
 
 You can click on the filters button below the dashboard name to add a global filter to your dashboard. The filter will be applied across all eligible widgets and you can quickly view updated results across all widgets, rather than having to filter each widget individually. You can also use free-form text to apply filters for more generic values, such as filtering emails that contain '@gmail.com'.
 
-![image](https://github.com/user-attachments/assets/9539d980-c647-4c6e-892d-0d1bb5f7f390)
+![image](https://github.com/user-attachments/assets/397d0197-632d-4f25-a8be-a5413575173f)
+
 
 ### Refreshing your Dashboard Widgets
 
 To ensure your dashboard data is up to date, simply click the refresh button shown in the image below to refresh all dashboard widgets at once.
 
-![image](https://github.com/user-attachments/assets/901cb3c9-6ad1-47e3-9d44-627cb2ac11d4)
+![image](https://github.com/user-attachments/assets/2799df0e-2a71-454b-8fee-df0420cdf68b)
+
 
 ### Organize your Dashboard
 
@@ -104,11 +106,12 @@ Resize the the widget by clicking and holding the the bottom right edge of the w
 
 All of the charts we support in Metrics Explorer can be added to a dashboard. In addition, dashboard charts are not static.
 
-To dive into a chart on the dashboard, click the [ ] icon. Once expanded, you can switch to the “Edit Query and Chart” tab to get the full power of Metrics Explorer, allowing you to modify the overall query and the date range. These modifications enable further exploration without permanently altering the chart on the dashboard. You can then navigate to the "Widget Settings" tab to change the chart title and display additional metadata for more context.
+To dive into a chart on the dashboard, click the [ ] icon. Once expanded, you get the full power of Metrics Explorer, allowing you to modify the overall query, the date range and the chart title. These modifications enable further exploration without permanently altering the chart on the dashboard.
 
 If you want to save changes to a chart on the dashboard, configure the chart as desired and click "Save" to update the existing chart, or "Save As" to create a new chart on your dashboard.
 
-![image](https://github.com/user-attachments/assets/e8d21373-33f2-43f9-a984-f25365b73080)
+![image](https://github.com/user-attachments/assets/aa563da7-eab1-4578-a081-1ad1f343cc5c)
+
 
 ## Tips
 

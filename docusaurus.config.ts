@@ -145,6 +145,30 @@ const config: Config = {
       {
         redirects: [
           {
+            from: "/client/concepts/bootstrapping",
+            to: "/sdk_monitoring/",
+          },
+          {
+            from: "/client/concepts/bootstrapping",
+            to: "/client/concepts/initialize/#2-bootstrap-initialization",
+          },
+          {
+            from: "/experiments-plus/experimentation/why-experiment",
+            to: "/experiments-plus#why-experiment",
+          },
+          {
+            from: "/experiments-plus/experimentation/scenarios",
+            to: "/experiments-plus#scenarios-for-experimentation",
+          },
+          {
+            from: "/experiments-plus/experimentation/common-terms",
+            to: "/experiments-plus#key-concepts-in-experimentation",
+          },
+          {
+            from: "/experiments-plus/experimentation/choosing-randomization-unit",
+            to: "/experiments-plus#choosing-the-right-randomization-unit",
+          },
+          {
             from: "/js-migration",
             to: "/client/javascript-sdk/migrating-from-statsig-js",
           },
@@ -319,7 +343,7 @@ const config: Config = {
           {
             to: "/experiments-plus/stop-assignments",
             from: "/experiments-plus/pause-assignment",
-          },
+          }
         ],
       },
     ],
@@ -363,7 +387,7 @@ const config: Config = {
       // searchPagePath: 'search',
 
       // // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
-      // insights: false,
+      insights: true,
     },
     navbar: {
       title: "",

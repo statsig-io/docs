@@ -24,6 +24,19 @@ To send events collected by Statsig's SDKs to GA4, you must configure a Data Str
     Provide your API Secret and measurement ID from the previous step and click *confirm*:
     ![](https://user-images.githubusercontent.com/125311112/263366565-c9f97636-8bd3-428f-b2ee-e542776b50ab.png)
 
+4. Verify that you are receiving events now by checking the Realtime overview report for the event with name `statsig`. Account for a couple days of delay for events to be available in other reports.
+
+5. You can also add the following custom event dimensions. Other custom IDs and custom user attributes are available as user dimensions
+<ul>
+    <li>`config` - Name of the experiment/gate/dynamic config</li>
+    <li>`group` - Name of the exposed group (e.g. Control)</li>
+    <li>`value` - Value for custom events</li>
+    <li>`statsig_session_id` - Session ID</li>
+    <li>`category` - Type of exposure or name of the custom event (e.g. `statsig_gate_exposure`)</li>
+    <li>`unit_id` - Value of the unit ID (e.g. '123')</li>
+    <li>`unit_id_type` - Type of the unit ID (e.g. 'stableID')</li>
+</ul>
+
 ## Filtering Events 
 Once the outgoing integration has been enabled, you can optionally configure event filtering to control whch events are populating the GA4 Data Stream:
 

@@ -7,5 +7,17 @@ Yes, you can remove the client API key from the url and see the [Javascript SDK 
 You will need to create your own instance differently than if you were installing the sdk via npm:
 
 ```js
-const client = new window.__STATSIG__.StatsigClient("client-test", { userID: "123"}, {});
+const { StatsigClient, runStatsigAutoCapture, runStatsigSessionReplay } = window.Statsig;
+    
+const client = new StatsigClient(
+    '<CLIENT-SDK-KEY>', 
+    { userID: 'a-user' }
+);
+
+runStatsigSessionReplay(client);
+runStatsigAutoCapture(client);
+
+await client.initializeAsync();
+
+// check gates, configs, experiments, or log events
 ```

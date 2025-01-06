@@ -1,7 +1,7 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-## Integrating with Next.js
+## Basic Usage with Next.js
 
 Statsig supports both the [Page Router](https://nextjs.org/docs/pages) and [App Router](https://nextjs.org/docs/app) in Next.js. 
 There are some differences in how you integrate Statsig into each.
@@ -35,22 +35,21 @@ import React, { useEffect } from "react";
 import {
   LogLevel,
   StatsigProvider,
-  useClientAsyncInit,
 } from "@statsig/react-bindings";
-import { runStatsigAutoCapture } from "@statsig/web-analytics";
+import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
 
 export default function MyStatsig({ children }: { children: React.ReactNode }) {
-  const { client } = useClientAsyncInit(
-    process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!,
-    { userID: "a-user" },
-    { logLevel: LogLevel.Debug } // Optional - Prints debug logs to the console
+  return (
+    <StatsigProvider 
+      sdkKey={process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!}
+      user={{ userID: "a-user" }}
+      options={{
+        logLevel: LogLevel.Debug,
+        plugins: [ new StatsigAutoCapturePlugin() ],
+      }}>
+      {children}
+    </StatsigProvider>
   );
-
-  useEffect(() => {
-    runStatsigAutoCapture(client);
-  }, [client]);
-
-  return <StatsigProvider client={client}>{children}</StatsigProvider>;
 }
 ```
 
@@ -86,9 +85,6 @@ export default function RootLayout({
 
 
 
-
-
-
 {/* Page Router */}
 
     <TabItem value="page-router">
@@ -105,25 +101,20 @@ import type { AppProps } from "next/app";
 import {
   LogLevel,
   StatsigProvider,
-  useClientAsyncInit,
 } from "@statsig/react-bindings";
-import { runStatsigAutoCapture } from "@statsig/web-analytics";
+import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
 
 export default function App({ Component, pageProps }: AppProps) {
-  const { client } = useClientAsyncInit(
-    process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!,
-    { userID: "a-user" },
-    { logLevel: LogLevel.Debug } // Optional - Prints debug logs to the console
-  );
-
-  useEffect(() => {
-    runStatsigAutoCapture(client);
-  }, [client]);
-
   return (
-    <StatsigProvider client={client}>
-      <Component {...pageProps} />
-    </StatsigProvider>
+    <StatsigProvider 
+      sdkKey={process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!}
+      user={{ userID: "a-user" }}
+      options={{
+        logLevel: LogLevel.Debug,
+        plugins: [ new StatsigAutoCapturePlugin() ],
+      }}>
+      {children}
+    </StatsigProvider>;
   );
 }
 ```

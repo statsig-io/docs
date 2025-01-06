@@ -26,7 +26,7 @@ Next, you can initialize the library in your init() function, and add a listener
     m.statsig.initialize("<STATSIG_CLIENT_SDK_KEY>", user)
 ```
 
-For more information on all of the user fields you can use, see the [StatsigUser docs](/client/concepts/user).
+For more information on all of the user fields you can use, see the [StatsigUser docs](/server/concepts/user).
 
 Before the SDK has loaded the updated values, all APIs will return default values (false for gates, empty configs and experiments).  
 To implement a callback handler for statsig being ready, and tell the SDK to load the updated values in the `onStatsigReady` function observed above:

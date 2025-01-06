@@ -1,5 +1,5 @@
 ---
-sidebar_label: Publishing Experiments
+sidebar_label: Launching Experiments
 title: Taking your experiments to production
 ---
 
@@ -32,7 +32,12 @@ The code itself would look like this with your API Key switched.
 
 ### Step 2: Publish the experiments
 
-Once you have installed sidecar into your code, you are able to start the experimentation configuration. Once you are satisfied with the experiment configuration, go ahead and hit the green *Publish* button.  This will push all the experiment changes to Statsig.  If you want to make sure these changes are published, you can on the `...` menu and choose *Go to Experiment console*
+Once you are satisfied with the experiment configuration, go ahead and hit the blue *Publish* button. This is essentially a way to store all of your configurations in Statsig. If you want to make sure these changes have been stored successfully, you can on the `...` menu and choose *Go to Experiment Console*.
+
+Publishing changes will not start any experiments, it will do the following:
+* Sync any unsaved changes to Statsig (making them accessible in Console where you can configure Metrics and other targeting conditions if applicable).
+* Include any configured tests in the Sidecar script installed on your website.
+* Allow you to QA experiments on your site while they're in an Unstarted state.  
 
 ![statsig banner](/img/sidecarconsole.png)
 
