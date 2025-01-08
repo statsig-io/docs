@@ -40,7 +40,7 @@ class MyViewController: UIViewController, StatsigListening {
     }
 
     private func render() {
-        var showNewUI = Statsig.checkGate("new_ui_enabled", false)
+        var showNewUI = Statsig.checkGate("new_ui_enabled")
         if showNewUI {
             // Render the new
         } else {
@@ -55,8 +55,9 @@ class MyViewController: UIViewController, StatsigListening {
     // StatsigListening Implementation
 
     func onInitializedWithResult(_ error: StatsigClientError?) {
-        if (error) {
+        if let error = error {
             renderError(error)
+            return
         }
         render()
     }
