@@ -7,7 +7,13 @@ slug: /metrics/metrics-from-events
 # Auto-generated Metrics
 Metrics are critical for monitoring the health and usage of your product as well as the impact of new features and experiments. 
 
-Statsig automatically generates an event_count metric for each uniquely named **custom event** you that log. This metric consists of three elements:
+Statsig automatically generates an event_count metric for each uniquely named **custom event** you that log. This happens daily and any newly logged custom event should have an event_count metric created within 24 hours of logging their first events.
+
+This auto-generated metric consists of three elements:
+
+1. **Roll-up Window** - Statsig computes metrics from custom events aggregated over a 24-hour day, with the hours depending on your company's setting. These hours do not change with daylight saving time. This prevents some days from having 23 and 25 hours which can cause a +/-4% change to some metrics on a biannual basis.
+2. **Unit Identifier** - While you can record custom events with and without a unique user identifier, Statsig requires a unit identifier (usually a user_id) to track a user across multiple events and sessions to support Experiments, Pulse (experiment results), and Autotune. If you don't have access to a user_id when logging a custom event, create a temporary identifier to track users at a session or device-level. 
+3. **Metric Value** - Statsig automatically computes values for **event_count**, which measures the number of times an event is triggered. 
 
 :::note
 
@@ -18,10 +24,6 @@ Users should create an event_user [custom metric](/metrics/custom-dau) with Roll
 Please see the [deprecation details](/metrics/deprecate-event-dau) for more information.
 
 :::
-
-1. **Roll-up Window** - Statsig computes metrics from custom events aggregated over a 24-hour day, with the hours depending on your company's setting. These hours do not change with daylight saving time. This prevents some days from having 23 and 25 hours which can cause a +/-4% change to some metrics on a biannual basis.
-2. **Unit Identifier** - While you can record custom events with and without a unique user identifier, Statsig requires a unit identifier (usually a user_id) to track a user across multiple events and sessions to support Experiments, Pulse (experiment results), and Autotune. If you don't have access to a user_id when logging a custom event, create a temporary identifier to track users at a session or device-level. 
-3. **Metric Value** - Statsig automatically computes values for **event_count**, which measures the number of times an event is triggered. 
 
 Up until October 16, 2024, Statsig also auto-computed values for an  **event_dau** metric that measures the number of unique users that triggered the event. While Statsig no longer auto-compute an **event_dau** metric for every logged event, you can create your own metrics that function like **event_dau** via [Custom Metrics](/metrics/custom-dau).
 
