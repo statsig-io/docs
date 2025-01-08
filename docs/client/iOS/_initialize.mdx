@@ -30,7 +30,7 @@ Statsig.initialize(
 
 ```swift
 StatsigUser *user = [[StatsigUser alloc] initWithUserID:@"my_user_id"];
-[Statsig initializeWithSDKKey:@"my_client_sdk_key", user:user, completion:^(StatsigClientError * error) {
+[Statsig initializeWithSDKKey:@"my_client_sdk_key" user:user completion:^(StatsigClientError * error) {
   // Statsig has finished fetching the latest feature gate and experiment values for your user.
   // If you need the most recent values, you can get them now.
 
