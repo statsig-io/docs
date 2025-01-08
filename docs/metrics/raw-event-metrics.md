@@ -7,7 +7,7 @@ slug: /metrics/metrics-from-events
 # Auto-generated Metrics
 Metrics are critical for monitoring the health and usage of your product as well as the impact of new features and experiments. 
 
-Statsig automatically generates an event_count metric for each uniquely named **custom event** you that log. This happens daily and any newly logged custom event should have an event_count metric created within 24 hours of logging their first events.
+Statsig automatically generates an event_count metric for each uniquely named **custom event** that you log. This happens daily and any newly logged custom event should have an event_count metric created within 24 hours of logging their first events.
 
 This auto-generated metric consists of three elements:
 
