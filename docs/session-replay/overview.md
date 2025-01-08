@@ -9,4 +9,4 @@ Session Replay allows you to record users using your website or product, and pla
 
 A session recording plays back like a video in the Statsig Console, but is actually a serialized representation of your website and all of the events and interactions that occurred while the user was interacting with it. The recordings are captured using the [rrweb open source recording library](https://github.com/rrweb-io/rrweb). Recordings using this strategy are performant and space efficient, with options to apply user privacy filters to what is happening on screen.
 
-![image](https://github.com/statsig-io/docs/assets/31516123/eef053d6-dceb-481e-a460-c28911797865)
+![image](https://github.com/user-attachments/assets/b194dba5-696c-452f-8195-9c982d4654fa)
