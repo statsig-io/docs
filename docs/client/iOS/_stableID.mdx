@@ -10,7 +10,7 @@ export const GetStableID = () => (
 export const OverrideStableID = () => (
   <CodeBlock language="swift">
     {`let opts = StatsigOptions(overrideStableID: "my_stable_id")
-Statsig.start(sdkKey: "client-xyx", options: opts)
+Statsig.initialize(sdkKey: "client-xyx", options: opts)
 `}
   </CodeBlock>
 );
