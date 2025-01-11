@@ -38,7 +38,7 @@ At a high level, here are some of the key differences between the two types of S
 
 **Client SDKs:**
 - Use a **client SDK key**
-- Take a [StatsigUser](/server/concepts/user) object
+- Take a [StatsigUser](/concepts/user) object
 - Check for cached values in local storage
 - Fetch precomputed configuration parameters for the specified user
 
@@ -55,7 +55,7 @@ At a high level, here are some of the key differences between the two types of S
 
 **Server SDKs:**
 - Evaluate rules locally for each user
-- Require a [StatsigUser](/server/concepts/user) object with a userID for checks
+- Require a [StatsigUser](/concepts/user) object with a userID for checks
 - Automatically flush exposure checks every 60 seconds
 
 ### 3. Logging Custom Events

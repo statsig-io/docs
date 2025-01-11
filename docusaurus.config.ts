@@ -157,7 +157,7 @@ const config: Config = {
             to: "/product-analytics/drilldown",
           },
           {
-            from: "/server/concepts/user/",
+            from: "/concepts/user/",
             to: "/concepts/user",
           },
           {
