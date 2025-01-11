@@ -162,7 +162,7 @@ const config: Config = {
           },
           {
             from: "/client/concepts/user/",
-            to: "/server/concepts/user",
+            to: "/concepts/user",
           },
           {
             from: "/client/javascript-sdk/react/init-strategies",
@@ -170,7 +170,7 @@ const config: Config = {
           },
           {
             from: "/client/concepts/bootstrapping",
-            to: "/client/concepts/initialize/#2-bootstrap-initialization",
+            to: "/client/concepts/initialize",
           },
           {
             from: "/experiments-plus/experimentation/why-experiment",
