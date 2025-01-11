@@ -145,6 +145,26 @@ const config: Config = {
       {
         redirects: [
           {
+            from: "/events-explorer",
+            to: "/product-analytics/drilldown",
+          },
+          {
+            from: "/server/concepts/user/",
+            to: "/concepts/user",
+          },
+          {
+            from: "/client/concepts/user/",
+            to: "/server/concepts/user",
+          },
+          {
+            from: "/client/concepts/bootstrapping",
+            to: "/client/concepts/initialize#2-bootstrap-initialization",
+          },
+          {
+            from: "/client/javascript-sdk/react/init-strategies",
+            to: "/client/concepts/initialize",
+          },
+          {
             from: "/client/concepts/bootstrapping",
             to: "/sdk_monitoring/",
           },
@@ -211,6 +231,10 @@ const config: Config = {
           {
             from: "/client/reactSDK",
             to: "/client/javascript-sdk/react",
+          },
+          {
+            from: "/client/reactNative",
+            to: "/client/javascript-sdk/react-native",
           },
           {
             from: "/client/reactNativeSDK",
