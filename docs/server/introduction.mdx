@@ -26,11 +26,11 @@ Here’s how the typical workflow with Statsig's server SDK looks:
 
 ### 2. Checking an Experiment
 
-- Use the `getExperiment` call with a [**StatsigUser**](/server/concepts/user) object (which includes a user identifier). This returns the assigned variant for the user. You can retrieve the parameter values from the `config` object using the `get` method.
+- Use the `getExperiment` call with a [**StatsigUser**](/concepts/user) object (which includes a user identifier). This returns the assigned variant for the user. You can retrieve the parameter values from the `config` object using the `get` method.
   
-- For **Layer-based experiments**, use the `getLayer` call with a [**StatsigUser**](/server/concepts/user) to return the assigned layer and retrieve variant parameters.
+- For **Layer-based experiments**, use the `getLayer` call with a [**StatsigUser**](/concepts/user) to return the assigned layer and retrieve variant parameters.
 
-- Use `checkGate` with a [**StatsigUser**](/server/concepts/user) to return a boolean (_true_ or _false_) based on whether the user passes the configured feature gate rules.
+- Use `checkGate` with a [**StatsigUser**](/concepts/user) to return a boolean (_true_ or _false_) based on whether the user passes the configured feature gate rules.
 
 - Call `getConfig` to retrieve dynamic configurations for the user. This fetches values from the returned `config` object.
 
@@ -50,7 +50,7 @@ Here’s how the typical workflow with Statsig's server SDK looks:
 
 **Why is `StatsigUser` with a `userID` required for server SDKs?**
 
-Check out the [UserID Requirements](/messages/serverRequiredUserID) to understand why having a unique `userID` in the [**StatsigUser**](/server/concepts/user) object is critical for server SDK usage.
+Check out the [UserID Requirements](/messages/serverRequiredUserID) to understand why having a unique `userID` in the [**StatsigUser**](/concepts/user) object is critical for server SDK usage.
 
 **Setting Default Values for Parameters**
 

@@ -57,7 +57,7 @@ const sidebars: SidebarsConfig = {
           items: [
             "sdks/getting-started",
             "sdks/client-vs-server",
-            "server/concepts/user",
+            "concepts/user",
             "client/concepts/initialize",
             "sdks/debugging",
             {
