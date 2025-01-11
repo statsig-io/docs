@@ -145,6 +145,14 @@ const config: Config = {
       {
         redirects: [
           {
+            from: "/client/introduction/javascript-sdk",
+            to: "/client/javascript-sdk",
+          },
+          {
+            from: "/guides/landing-page-experiments",
+            to: "/guides/sidecar-experiments/introduction",
+          },
+          {
             from: "/events-explorer",
             to: "/product-analytics/drilldown",
           },
