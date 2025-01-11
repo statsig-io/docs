@@ -165,16 +165,8 @@ const config: Config = {
             to: "/server/concepts/user",
           },
           {
-            from: "/client/concepts/bootstrapping",
-            to: "/client/concepts/initialize#2-bootstrap-initialization",
-          },
-          {
             from: "/client/javascript-sdk/react/init-strategies",
             to: "/client/concepts/initialize",
-          },
-          {
-            from: "/client/concepts/bootstrapping",
-            to: "/sdk_monitoring/",
           },
           {
             from: "/client/concepts/bootstrapping",
