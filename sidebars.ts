@@ -577,6 +577,7 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/getting-group",
                 "experiments-plus/monitor",
                 "experiments-plus/read-results",
+                "pulse/user_properties",
                 "experiments-plus/sequential-testing",
                 "experiments-plus/make-decision",
                 "experiments-plus/overrides",
