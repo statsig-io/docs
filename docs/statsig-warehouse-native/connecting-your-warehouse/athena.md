@@ -8,7 +8,7 @@ sidebar_label: Athena (β)
 Statsig Warehouse Native on Athena is in Beta. Some features available elsewhere (Metrics Explorer) are not available for this warehouse just yet but are coming soon.  
 :::
 
-## Overview
+## Athena Warehouse Native Overview
 
 To set up connection with Athena, Statsig needs the following
 
@@ -198,7 +198,7 @@ You need to grant some permissions for Statsig from your AWS console in order fo
 3. Read data in Statsig when setting up Metric/Assignment Sources by selecting from these tables using `"database"."table"` format.
 4. Repeat for any additional tables, or whenever you need to read a new table from Statsig.
 
-## Additional Resources
+## Additional Athena Resources
 
 ### S3 Bucket Encryption Guide
 
