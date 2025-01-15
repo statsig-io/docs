@@ -649,7 +649,7 @@ const sidebars: SidebarsConfig = {
             },
             {
               type: "category",
-              label: "Low-code Experiments",
+              label: "Low-code (Sidecar)",
               items: [
                 "guides/sidecar-experiments/introduction",
                 "guides/sidecar-experiments/setup",
