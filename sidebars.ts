@@ -57,7 +57,7 @@ const sidebars: SidebarsConfig = {
           items: [
             "sdks/getting-started",
             "sdks/client-vs-server",
-            "server/concepts/user",
+            "concepts/user",
             "client/concepts/initialize",
             "sdks/debugging",
             {
@@ -577,6 +577,7 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/getting-group",
                 "experiments-plus/monitor",
                 "experiments-plus/read-results",
+                "pulse/userproperties",
                 "experiments-plus/sequential-testing",
                 "experiments-plus/make-decision",
                 "experiments-plus/overrides",
@@ -648,7 +649,7 @@ const sidebars: SidebarsConfig = {
             },
             {
               type: "category",
-              label: "Low-code Experiments",
+              label: "Low-code (Sidecar)",
               items: [
                 "guides/sidecar-experiments/introduction",
                 "guides/sidecar-experiments/setup",
