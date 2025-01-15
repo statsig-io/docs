@@ -161,7 +161,7 @@ Statsig uses `localStorage` as the preferred mechanism for storing the user's st
 
 If you are assigning a user to a test on one subdomain, and tracking behavior for metrics purposes on a different subdomain, you'll need to have this solution in place to ensure Statsig can properly attribute cross-origin behavior to the Test Group assignment that took place on the initial experiment domain. 
 
-To install, simply paste the first script tag shown below directly above your Sidecar script.
+To install, simply paste the following in your HEAD section.
 
 ```html
 <!-- cross domain id script -->
