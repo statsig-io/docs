@@ -1,5 +1,5 @@
 ---
-title: Warehouse Native Vs. Cloud
+title: Comparing Warehouse Native and Cloud
 slug: /statsig-warehouse-native/native-vs-cloud
 sidebar_label: Native vs Cloud
 description: Understand the different Statsig products
