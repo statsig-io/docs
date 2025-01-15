@@ -145,6 +145,10 @@ const config: Config = {
       {
         redirects: [
           {
+            from: "/messages/serverRequiredUserID/",
+            to: "/concepts/user#why-is-an-id-always-required-for-server-sdks",
+          },
+          {
             from: "/client/introduction/javascript-sdk",
             to: "/client/javascript-sdk",
           },
