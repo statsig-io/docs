@@ -18,7 +18,7 @@ export default function CustomLayout(props) {
         Statsig.instance().logEvent('NoSidebarPageLoad', window.location.href);
       }
       const docsearchRankingConfig = Statsig.instance().getDynamicConfig('docsearch_ranking_manual');
-      const url = window.location.href.replace(/^https?:\/\//, '');
+      const url = window.location.href.replace(/^https?:\/\//, '').replace(/\/+$/, '');
       const docsearchRankingManual = docsearchRankingConfig.get(url, 0);
       document.querySelectorAll('.docsearch-ranking-manual').forEach(el => el.remove());
       const newElement = document.createElement('div');
