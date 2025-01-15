@@ -18,15 +18,12 @@ export default function CustomLayout(props) {
         Statsig.instance().logEvent('NoSidebarPageLoad', window.location.href);
       }
       const docsearchRankingConfig = Statsig.instance().getDynamicConfig('docsearch_ranking_manual');
-      console.log('docsearchRankingConfig', docsearchRankingConfig);
       const url = window.location.href.replace(/^https?:\/\//, '');
-      console.log('url', url);
       const docsearchRankingManual = docsearchRankingConfig.get(url, 0);
-      console.log('docsearchRankingManual', docsearchRankingManual);
       const newElement = document.createElement('div');
       newElement.setAttribute('ranking', docsearchRankingManual);
       newElement.classList.add('docsearch-ranking-manual');
-      document.body.appendChild(newElement);
+      document.body.appendChild(newElement); //We'll consume this in the algolia crawler
     }, 0);
   }, [location]);
 
