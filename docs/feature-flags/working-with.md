@@ -1,5 +1,5 @@
 ---
-title: What is a feature flag (feature gate)?
+title: Feature flags (feature gates) - what are they?
 sidebar_label: Overview
 slug: /feature-flags/working-with
 ---
