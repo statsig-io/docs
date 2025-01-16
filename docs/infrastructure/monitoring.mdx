@@ -35,7 +35,7 @@ Below is a list of the primary metrics currently available in the SDK:
 | `sdk_exceptions_count`        | counter | N/A | Tracks occurrences of unexpected exceptions caught. |
 
 **Note**: 
-- All metrics are prefixed by `statsig.sdk.`.
+- All metrics are prefixed by `statsig.sdk.`, for example, the full initialization metric name in your integration will be `statsig.sdk.initialization`.
 - While `sdk_exceptions_count` metric captures all exceptions, certain errors (e.g., temporary network connectivity issues or timeouts) are expected to occur occasionally and are generally not cause for concern. Use this metric to identify unexpected or persistent issues that may require investigation.
 - Tags marked with `*` (such as `lcut` and `prev_lcut`) are high cardinality tags.
 
