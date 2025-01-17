@@ -27,12 +27,16 @@ const FloatingDialog = () => {
     setShowThanks(false);
     setHasSpentEnoughTime(false);
     setClickedButton(null);
+    setHoveredButton(null);
+
+    const feedbackTimeoutConfig = Statsig.instance().getDynamicConfig('how_long_before_show_feedback_docs')
+    const timeoutBeforeShow = feedbackTimeoutConfig.get('timeout', 30000)
 
     const timer = setTimeout(() => {
       setHasSpentEnoughTime(true);
-    }, 2000); // 30 seconds
+    }, timeoutBeforeShow); 
 
-    return () => clearTimeout(timer); // Cleanup
+    return () => clearTimeout(timer); 
   }, [location]);
 
   async function sendDocsFeedback(url, feedback, assignee) {
@@ -62,8 +66,6 @@ const FloatingDialog = () => {
     if (direction === 'down') {
       setShowFeedback(true);
     } else if (direction === 'up') {
-      console.log('up clicked');
-      // Add delay before showing thanks message
       setTimeout(() => {
         setShowThanks(true);
         setTimeout(() => {
@@ -76,14 +78,10 @@ const FloatingDialog = () => {
       direction: direction,
       url: window.location.href,
     });
-    console.log(`Thumb clicked: ${direction}`);
   };
 
   const handleSubmitFeedback = () => {
     const currentUrl = window.location.href;
-
-    // Logic to send feedback to a Statsig engineer
-    console.log('Feedback submitted:', feedback);
     setShowFeedback(false);
     setTimeout(() => {
       setIsOpen(false)
@@ -92,19 +90,16 @@ const FloatingDialog = () => {
     setFeedback('');
     setShowFeedbackThanks(true);
     Statsig.instance().logEvent('FeedbackSubmitted', feedback);
-    //save window.location.href without https://, http://, www., or a trailing slash. Or any query params. Remove it all.
     const url = window.location.href
       .replace(/^https?:\/\/|^www\./g, '')  // Remove protocol and www
       .replace(/\?.*$/, '')                 // Remove query parameters
       .replace(/\/$/, '');                  // Remove trailing slash only
     const assigneeConfig = Statsig.instance().getDynamicConfig('docs_url_assignments');
-    console.log(url);
     const assignee = assigneeConfig.get(url, 'U087FSV8F0S');
-    console.log(assignee);
     sendDocsFeedback(window.location.href, feedback, assignee);
   };
 
-  if (!isOpen || !hasSpentEnoughTime || (hasInteractedBefore() && (!showFeedback && !showThanks))) return null;
+  if ( !Statsig.instance().checkGate('docs_feedback_enabled') || !isOpen || !hasSpentEnoughTime || (hasInteractedBefore() && (!showFeedback && !showThanks))) return null;
 
 
   return (
