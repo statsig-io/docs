@@ -1,6 +1,8 @@
 import React, { useEffect, useLayoutEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Layout from '@theme-original/Layout';
+import FloatingThumbs from '../../components/FloatingThumbs/FloatingThumbs';
+
 
 export default function CustomLayout(props) {
   const location = useLocation();
@@ -28,5 +30,10 @@ export default function CustomLayout(props) {
     }, 0);
   }, [location]);
 
-  return <Layout {...props} />;
+  return (
+    <>
+      <Layout {...props} />
+      <FloatingThumbs />
+    </>
+  );
 }
