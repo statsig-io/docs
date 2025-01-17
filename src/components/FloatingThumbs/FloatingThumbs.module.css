@@ -1,0 +1,56 @@
+/* src/components/FloatingDialog.module.css */
+.dialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.contentHolder {
+  margin: 1px 0;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.icon {
+  background-color: rgba(51, 115, 204, 1);
+  height: 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  /* filter: brightness(0) invert(1); */
+}
+
+.closeButton {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
+  cursor: pointer;
+}
