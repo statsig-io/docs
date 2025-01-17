@@ -4,7 +4,10 @@ import styles from './FloatingThumbs.module.css'; // Optional: use CSS Modules
 import { useLocation } from 'react-router-dom';
 
 const getStatsig = () => {
-  return Statsig.instances['client-XlqSMkAavOmrePNeWfD0fo2cWcjxkZ0cJZz64w7bfHX']
+  if (typeof window === 'undefined' || !window.Statsig?.instances) {
+    return null;
+  }
+  return window.Statsig.instances['client-XlqSMkAavOmrePNeWfD0fo2cWcjxkZ0cJZz64w7bfHX'];
 }
 
 const hasInteractedBefore = () => {
@@ -33,8 +36,10 @@ const FloatingDialog = () => {
     setClickedButton(null);
     setHoveredButton(null);
 
-    const feedbackTimeoutConfig = getStatsig().getDynamicConfig('how_long_before_show_feedback_docs')
-    const timeoutBeforeShow = feedbackTimeoutConfig.get('timeout', 30000)
+    const statsig = getStatsig();
+    const timeoutBeforeShow = statsig 
+      ? statsig.getDynamicConfig('how_long_before_show_feedback_docs').get('timeout', 30000)
+      : 30000;
 
     const timer = setTimeout(() => {
       setHasSpentEnoughTime(true);
@@ -78,10 +83,13 @@ const FloatingDialog = () => {
         }, 2000); // Close after 2 seconds
       }, 300); // Wait 500ms to show the thanks message
     }
-    getStatsig().logEvent('ThumbClick', direction,{
-      direction: direction,
-      url: window.location.href,
-    });
+    const statsig = getStatsig();
+    if (statsig) {
+      statsig.logEvent('ThumbClick', direction, {
+        direction: direction,
+        url: window.location.href,
+      });
+    }
   };
 
   const handleSubmitFeedback = () => {
@@ -93,17 +101,24 @@ const FloatingDialog = () => {
     }, 2000);    
     setFeedback('');
     setShowFeedbackThanks(true);
-    getStatsig().logEvent('FeedbackSubmitted', feedback);
+    const statsig = getStatsig();
+    if (statsig) {
+      statsig.logEvent('FeedbackSubmitted', feedback);
+    }
     const url = window.location.href
       .replace(/^https?:\/\/|^www\./g, '')  // Remove protocol and www
       .replace(/\?.*$/, '')                 // Remove query parameters
       .replace(/\/$/, '');                  // Remove trailing slash only
-    const assigneeConfig = getStatsig().getDynamicConfig('docs_url_assignments');
-    const assignee = assigneeConfig.get(url, 'U087FSV8F0S');
+    const DEFAULT_ASSIGNEE = 'U087FSV8F0S';
+    const assignee = statsig 
+      ? statsig.getDynamicConfig('docs_url_assignments').get(url, DEFAULT_ASSIGNEE)
+      : DEFAULT_ASSIGNEE;
     sendDocsFeedback(window.location.href, feedback, assignee);
   };
-  if ( !getStatsig().checkGate('docs_feedback_enabled') || !isOpen || !hasSpentEnoughTime || (hasInteractedBefore() && (!showFeedback && !showThanks))) return null;
+  const statsig = getStatsig();
+  const isFeedbackEnabled = statsig ? statsig.checkGate('docs_feedback_enabled') : false;
 
+  if (!isFeedbackEnabled || !isOpen || !hasSpentEnoughTime || (hasInteractedBefore() && (!showFeedback && !showThanks))) return null;
 
   return (
     <div className={showFeedback ? styles.feedbackDialog : styles.dialog}>
