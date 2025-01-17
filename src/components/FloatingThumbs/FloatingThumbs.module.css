@@ -8,49 +8,176 @@
   bottom: 20px;
   right: 20px;
   background: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid RGB(212,215,220);
   z-index: 1000;
   padding: 16px;
   border-radius: 8px;
+  width: 200px;
+  height: 140px;
+}
+
+.feedbackDialog{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: white;
+  border: 1px solid RGB(212,215,220);
+  z-index: 1000;
+  padding: 16px;
+  border-radius: 8px;
+  width: 326px;
+  height: 187px;
+
+}
+
+.greyCorners {
+  border-radius: 8px;
+  border: 1px solid RGB(212,215,220);
+}
+
+.iconContainer {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   position: relative;
+  height: 100%;
 }
 
-.contentHolder {
-  margin: 1px 0;
+.thanksContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  position: relative;
+  height: 100%;
 }
 
 .title {
-  font-size: 16px;
-  font-weight: bold;
-  text-align: left;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
 }
 
 .icons {
   display: flex;
   justify-content: space-around;
   width: 100%;
+  gap: 10px;
 }
 
 .icon {
-  background-color: rgba(51, 115, 204, 1);
   height: 24px;
-  border-radius: 6px;
-  cursor: pointer;
-  /* filter: brightness(0) invert(1); */
+  border: none;
+}
+
+.thanksMessage {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #1F2328;
 }
 
 .closeButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  z-index: 1001;
+  height: 20px;
+  width: 20px;
+}
+
+.clickedUp {
+  border: 1px solid rgba(62,166,83, 1);
+  background-color: rgba(237, 251, 240, 1);
+}
+
+.clickedDown {
+  border: 1px solid rgba(179, 38, 30, 1);
+  background-color: rgba(255, 242, 242, 1);
+}
+
+.icon.clickedUp,
+.icon.clickedDown {
+  border: none;
+}
+
+.iconContainerUp:hover {
+  border: 1px solid rgba(62,166,83, 1);
+  background-color: rgba(237, 251, 240, 1);
+}
+
+.iconContainerDown:hover {
+  border: 1px solid rgba(179, 38, 30, 1);
+  background-color: rgba(255, 242, 242, 1);
+}
+
+.feedbackInput{
+  width: 282px;
+  height: 74px;
+  border-radius: 8px;
+  border: 1px solid RGB(212,215,220);
+  padding: 4px 4px 4px 4px;  /* Added padding: top right bottom left */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  resize: none;  /* This prevents the textarea from being resizable */
+}
+
+.feedbackInput::placeholder {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  color: #959BA3;
+}
+
+.submitButton{
   display: flex;
   flex-direction: row;
-  width: 100%;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px;
+  gap: 10px;
+  
+  width: 72px;
+  height: 36px;
+  
+  background: #1B63D2;
+  border-radius: 6px;
+  border: none;
+  color: white;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
   cursor: pointer;
+  
 }

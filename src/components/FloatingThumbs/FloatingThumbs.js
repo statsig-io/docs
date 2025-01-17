@@ -14,18 +14,23 @@ const FloatingDialog = () => {
   const [showFeedback, setShowFeedback] = useState(false);
   const [feedback, setFeedback] = useState('');
   const [showThanks, setShowThanks] = useState(false);
+  const [showFeedbackThanks, setShowFeedbackThanks] = useState(false);
   const [hasSpentEnoughTime, setHasSpentEnoughTime] = useState(false);
+  const [clickedButton, setClickedButton] = useState(null);
+  const [hoveredButton, setHoveredButton] = useState(null);
 
   useEffect(() => {
     setIsOpen(true);
     setShowFeedback(false);
+    setShowFeedbackThanks(false);
     setFeedback('');
     setShowThanks(false);
     setHasSpentEnoughTime(false);
+    setClickedButton(null);
 
     const timer = setTimeout(() => {
       setHasSpentEnoughTime(true);
-    }, 5000); // 30 seconds
+    }, 2000); // 30 seconds
 
     return () => clearTimeout(timer); // Cleanup
   }, [location]);
@@ -51,14 +56,21 @@ const FloatingDialog = () => {
   }
 
   const handleThumbClick = (direction) => {
+    setClickedButton(direction);
     const currentUrl = window.location.href;
-    localStorage.setItem(currentUrl, direction); // Save interaction to local storage
+    
     if (direction === 'down') {
       setShowFeedback(true);
     } else if (direction === 'up') {
       console.log('up clicked');
-      setShowThanks(true);
-      setTimeout(() => setIsOpen(false), 2000); // Close after 2 seconds
+      // Add delay before showing thanks message
+      setTimeout(() => {
+        setShowThanks(true);
+        setTimeout(() => {
+          setIsOpen(false);
+          localStorage.setItem(currentUrl, 'up');
+        }, 200000); // Close after 2 seconds
+      }, 300); // Wait 500ms to show the thanks message
     }
     Statsig.instance().logEvent('ThumbClick', direction,{
       direction: direction,
@@ -68,11 +80,17 @@ const FloatingDialog = () => {
   };
 
   const handleSubmitFeedback = () => {
+    const currentUrl = window.location.href;
+
     // Logic to send feedback to a Statsig engineer
     console.log('Feedback submitted:', feedback);
     setShowFeedback(false);
-    setTimeout(() => setIsOpen(false), 2000);    setFeedback('');
-    setShowThanks(true);
+    setTimeout(() => {
+      setIsOpen(false)
+      localStorage.setItem(currentUrl, 'down');
+    }, 2000);    
+    setFeedback('');
+    setShowFeedbackThanks(true);
     Statsig.instance().logEvent('FeedbackSubmitted', feedback);
     //save window.location.href without https://, http://, www., or a trailing slash. Or any query params. Remove it all.
     const url = window.location.href
@@ -88,54 +106,92 @@ const FloatingDialog = () => {
 
   if (!isOpen || !hasSpentEnoughTime || (hasInteractedBefore() && (!showFeedback && !showThanks))) return null;
 
+
   return (
-    <div className={styles.dialog}>
-      <div className={styles.content}>
-        <div className={styles.closeButton + " " + styles.contentHolder}>
-          <div onClick={() => {
-            setIsOpen(false);
-            const currentUrl = window.location.href;
-            localStorage.setItem(currentUrl, 'closed');
-          }}>X</div>
+    <div className={showFeedback ? styles.feedbackDialog : styles.dialog}>
+      <div className={styles.closeButton}>
+        <div onClick={() => {
+          setIsOpen(false);
+          const currentUrl = window.location.href;
+          localStorage.setItem(currentUrl, 'closed');
+        }}>
+          <img
+            src='/img/icons/icon-x.png'
+            alt='Close'
+            width='20'
+            height='20'
+          />
         </div>
-        {showThanks ? (
-          <div className={styles.thanksMessage}>Thanks!</div>
+      </div>
+      <div className={(showThanks || showFeedbackThanks) ? styles.thanksContent : styles.content}>
+        {showThanks || showFeedbackThanks ? (
+          <>
+          <img
+            src={showFeedbackThanks ? '/img/icons/icon-sent.png' : '/img/icons/icon-heart.png'}
+            alt='Sent'
+            width='24'
+            height='24'
+          />
+              <div className={styles.thanksMessage}>{showThanks ? 'Thank You!' : 'Thanks! Your message was sent.'}</div>
+          <img 
+              className={styles.statsigLogo}
+              src='/img/icons/statsig-disabled.png'
+              alt='Statsig'
+              width='60'
+            />
+          </>
         ) : (
           <>
             {!showFeedback && (
               <>
                 <div className={styles.contentHolder + " " + styles.title}>Like this doc?</div>
                 <div className={styles.icons + " " + styles.contentHolder}>
-                  <img
-                    className={styles.icon}
-                    src="/img/icons/icon-thumbs-up.png"
-                    alt="Thumbs Up"
-                    width="24"
-                    height="24"
+                  <div 
+                    className={`${styles.greyCorners} ${styles.iconContainerUp}  ${styles.iconContainer} ${clickedButton === 'up' ? styles.clickedUp : ''}`}
                     onClick={() => handleThumbClick('up')}
-                  />
-                  <img
-                    className={styles.icon}
-                    src="/img/icons/icon-thumbs-down.png"
-                    alt="Thumbs Down"
-                    width="24"
-                    height="24"
+                    onMouseEnter={() => setHoveredButton('up')}
+                    onMouseLeave={() => setHoveredButton(null)}
+                  >
+                    <img
+                      className={`${styles.icon} ${styles.iconUp} ${clickedButton === 'up' ? styles.clickedUp : ''}`}
+                      src={clickedButton === 'up' || hoveredButton === 'up' ? "/img/icons/icon-thumbs-up-green.png" : "/img/icons/icon-thumbs-up.png"}
+                      alt="Thumbs Up"
+                      width="24"
+                      height="24"
+                    />
+                  </div>
+                  <div 
+                    className={`${styles.greyCorners} ${styles.iconContainerDown} ${styles.iconContainer} ${clickedButton === 'down' ? styles.clickedDown : ''}`}
                     onClick={() => handleThumbClick('down')}
-                  />
+                    onMouseEnter={() => setHoveredButton('down')}
+                    onMouseLeave={() => setHoveredButton(null)}
+                  >
+                    <img
+                      className={`${styles.icon} ${styles.iconDown} ${clickedButton === 'down' ? styles.clickedDown : ''}`}
+                      src={clickedButton === 'down' || hoveredButton === 'down' ? "/img/icons/icon-thumbs-down-red.png" : "/img/icons/icon-thumbs-down.png"}
+                      alt="Thumbs Down"
+                      width="24"
+                      height="24"
+                    />
+                  </div>
                 </div>
+                  <img 
+                    className={styles.statsigLogo}
+                    src='/img/icons/statsig-disabled.png'
+                    alt='Statsig'
+                    width='60'
+                  />
               </>
             )}
             {showFeedback && (
-              <div className={styles.feedbackForm}>
-                <div className={styles.feedbackTitle}>What went wrong?</div>
+              <div className={styles.feedbackDialog}>
+                <div className={styles.title}>What went wrong?</div>
                 <textarea
                   value={feedback}
                   onChange={(e) => setFeedback(e.target.value)}
                   className={styles.feedbackInput}
+                  placeholder="Your message gets sent to a Statsig engineer"
                 />
-                <div className={styles.feedbackNote}>
-                  <em>Your message gets sent to a Statsig engineer</em>
-                </div>
                 <button onClick={handleSubmitFeedback} className={styles.submitButton}>
                   Submit
                 </button>
