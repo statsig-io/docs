@@ -1,6 +1,7 @@
 // src/components/FloatingDialog.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './FloatingThumbs.module.css'; // Optional: use CSS Modules
+import { useLocation } from 'react-router-dom';
 
 const hasInteractedBefore = () => {
   const currentUrl = window.location.href;
@@ -8,21 +9,37 @@ const hasInteractedBefore = () => {
 };
 
 const FloatingDialog = () => {
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(true);
   const [showFeedback, setShowFeedback] = useState(false);
   const [feedback, setFeedback] = useState('');
   const [showThanks, setShowThanks] = useState(false);
+  const [hasSpentEnoughTime, setHasSpentEnoughTime] = useState(false);
 
-  async function sendDocsFeedback(url, feedback) {
+  useEffect(() => {
+    setIsOpen(true);
+    setShowFeedback(false);
+    setFeedback('');
+    setShowThanks(false);
+    setHasSpentEnoughTime(false);
+
+    const timer = setTimeout(() => {
+      setHasSpentEnoughTime(true);
+    }, 5000); // 30 seconds
+
+    return () => clearTimeout(timer); // Cleanup
+  }, [location]);
+
+  async function sendDocsFeedback(url, feedback, assignee) {
     const endpoint = "https://us-central1-y42bq-368018.cloudfunctions.net/send-docs-feedback";
-    const payload = { URL: url, Feedback: feedback };
+    const payload = { URL: url, Feedback: feedback, Assignee: assignee };
   
     const response = await fetch(endpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
     });
   
     if (!response.ok) {
@@ -54,13 +71,22 @@ const FloatingDialog = () => {
     // Logic to send feedback to a Statsig engineer
     console.log('Feedback submitted:', feedback);
     setShowFeedback(false);
-    setIsOpen(false);
-    setFeedback('');
+    setTimeout(() => setIsOpen(false), 2000);    setFeedback('');
+    setShowThanks(true);
     Statsig.instance().logEvent('FeedbackSubmitted', feedback);
-    sendDocsFeedback(window.location.href, feedback);
+    //save window.location.href without https://, http://, www., or a trailing slash. Or any query params. Remove it all.
+    const url = window.location.href
+      .replace(/^https?:\/\/|^www\./g, '')  // Remove protocol and www
+      .replace(/\?.*$/, '')                 // Remove query parameters
+      .replace(/\/$/, '');                  // Remove trailing slash only
+    const assigneeConfig = Statsig.instance().getDynamicConfig('docs_url_assignments');
+    console.log(url);
+    const assignee = assigneeConfig.get(url, 'U087FSV8F0S');
+    console.log(assignee);
+    sendDocsFeedback(window.location.href, feedback, assignee);
   };
 
-  if (!isOpen || (hasInteractedBefore() && (!showFeedback && !showThanks))) return null;
+  if (!isOpen || !hasSpentEnoughTime || (hasInteractedBefore() && (!showFeedback && !showThanks))) return null;
 
   return (
     <div className={styles.dialog}>
@@ -82,7 +108,7 @@ const FloatingDialog = () => {
                 <div className={styles.icons + " " + styles.contentHolder}>
                   <img
                     className={styles.icon}
-                    src="img/icons/icon-thumbs-up.png"
+                    src="/img/icons/icon-thumbs-up.png"
                     alt="Thumbs Up"
                     width="24"
                     height="24"
@@ -90,7 +116,7 @@ const FloatingDialog = () => {
                   />
                   <img
                     className={styles.icon}
-                    src="img/icons/icon-thumbs-down.png"
+                    src="/img/icons/icon-thumbs-down.png"
                     alt="Thumbs Down"
                     width="24"
                     height="24"
