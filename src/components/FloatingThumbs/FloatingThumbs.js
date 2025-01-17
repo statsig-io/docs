@@ -1,4 +1,3 @@
-// src/components/FloatingDialog.js
 import React, { useState, useEffect } from 'react';
 import styles from './FloatingThumbs.module.css'; // Optional: use CSS Modules
 import { useLocation } from 'react-router-dom';
@@ -15,7 +14,7 @@ const hasInteractedBefore = () => {
   return localStorage.getItem(currentUrl) !== null;
 };
 
-const FloatingDialog = () => {
+const FloatingThumbs = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(true);
   const [showFeedback, setShowFeedback] = useState(false);
@@ -217,4 +216,4 @@ const FloatingDialog = () => {
   );
 };
 
-export default FloatingDialog;
+export default FloatingThumbs;
