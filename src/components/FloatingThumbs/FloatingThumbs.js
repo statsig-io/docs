@@ -3,6 +3,10 @@ import React, { useState, useEffect } from 'react';
 import styles from './FloatingThumbs.module.css'; // Optional: use CSS Modules
 import { useLocation } from 'react-router-dom';
 
+const getStatsig = () => {
+  return Statsig.instances['client-XlqSMkAavOmrePNeWfD0fo2cWcjxkZ0cJZz64w7bfHX']
+}
+
 const hasInteractedBefore = () => {
   const currentUrl = window.location.href;
   return localStorage.getItem(currentUrl) !== null;
@@ -29,7 +33,7 @@ const FloatingDialog = () => {
     setClickedButton(null);
     setHoveredButton(null);
 
-    const feedbackTimeoutConfig = Statsig.instance().getDynamicConfig('how_long_before_show_feedback_docs')
+    const feedbackTimeoutConfig = getStatsig().getDynamicConfig('how_long_before_show_feedback_docs')
     const timeoutBeforeShow = feedbackTimeoutConfig.get('timeout', 30000)
 
     const timer = setTimeout(() => {
@@ -71,10 +75,10 @@ const FloatingDialog = () => {
         setTimeout(() => {
           setIsOpen(false);
           localStorage.setItem(currentUrl, 'up');
-        }, 200000); // Close after 2 seconds
+        }, 2000); // Close after 2 seconds
       }, 300); // Wait 500ms to show the thanks message
     }
-    Statsig.instance().logEvent('ThumbClick', direction,{
+    getStatsig().logEvent('ThumbClick', direction,{
       direction: direction,
       url: window.location.href,
     });
@@ -89,17 +93,16 @@ const FloatingDialog = () => {
     }, 2000);    
     setFeedback('');
     setShowFeedbackThanks(true);
-    Statsig.instance().logEvent('FeedbackSubmitted', feedback);
+    getStatsig().logEvent('FeedbackSubmitted', feedback);
     const url = window.location.href
       .replace(/^https?:\/\/|^www\./g, '')  // Remove protocol and www
       .replace(/\?.*$/, '')                 // Remove query parameters
       .replace(/\/$/, '');                  // Remove trailing slash only
-    const assigneeConfig = Statsig.instance().getDynamicConfig('docs_url_assignments');
+    const assigneeConfig = getStatsig().getDynamicConfig('docs_url_assignments');
     const assignee = assigneeConfig.get(url, 'U087FSV8F0S');
     sendDocsFeedback(window.location.href, feedback, assignee);
   };
-
-  if ( !Statsig.instance().checkGate('docs_feedback_enabled') || !isOpen || !hasSpentEnoughTime || (hasInteractedBefore() && (!showFeedback && !showThanks))) return null;
+  if ( !getStatsig().checkGate('docs_feedback_enabled') || !isOpen || !hasSpentEnoughTime || (hasInteractedBefore() && (!showFeedback && !showThanks))) return null;
 
 
   return (
