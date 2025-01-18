@@ -22,4 +22,4 @@ You must have these prerequisites:
 
 ## Additional Links
 [Akamai EdgeWorkers](https://developer.akamai.com/akamai-edgeworkers-overview)
-[Statsig Akamai Edge KV Repo](https://github.com/statsig-io/akamai-statsig-example?tab=readme-ov-file#getting-started
+[Statsig Akamai Edge KV Repo](https://github.com/statsig-io/akamai-statsig-example?tab=readme-ov-file#getting-started)
