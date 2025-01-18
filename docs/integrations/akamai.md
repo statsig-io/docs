@@ -3,10 +3,10 @@ title: Akamai Edge KV
 ---
 
 ## Overview
-Statsig’s Akamai Edge KV integration pushes Statsig Configs to Edge KV, providing low latency for gate and experiment evaluations directly in Akamai Edge KV. If you have the correct prerequisites - this should take ~60 minutes to get to the point where your're able to check experiments or gates on Akamai.
+Statsig’s Akamai Edge KV integration pushes Statsig Configs to Edge KV, providing low latency for gate and experiment evaluations directly in Akamai Edge KV. If you have the correct prerequisites - this should take ~60 minutes to get to the point where you are able to check experiments or gates on Akamai.
 
 ## Prerequisites
-You must have these prerequisites :
+You must have these prerequisites:
 
 1. An Akamai account with [EdgeWorkers added to your contract](https://techdocs.akamai.com/edgeworkers/docs/add-edgeworkers-to-contract) and a Statsig account
 2. [The Akamai CLI](https://developer.akamai.com/getting-started/cli)
