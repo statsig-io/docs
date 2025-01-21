@@ -14,7 +14,7 @@ const options: StatsigOptions = {
     new StatsigSessionReplayPlugin(),
     new StatsigAutoCapturePlugin(),
   ],
-  { environment: { tier: "production" } } // Optionally set the environment
+  environment: { tier: "production" } // Optionally set the environment
 };
 
 const myStatsigClient = new StatsigClient(YOUR_SDK_KEY, user, options);

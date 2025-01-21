@@ -145,12 +145,36 @@ const config: Config = {
       {
         redirects: [
           {
-            from: "/client/concepts/bootstrapping",
-            to: "/sdk_monitoring/",
+            from: "/messages/serverRequiredUserID/",
+            to: "/concepts/user#why-is-an-id-always-required-for-server-sdks",
+          },
+          {
+            from: "/client/introduction/javascript-sdk",
+            to: "/client/javascript-sdk",
+          },
+          {
+            from: "/guides/landing-page-experiments",
+            to: "/guides/sidecar-experiments/introduction",
+          },
+          {
+            from: "/events-explorer",
+            to: "/product-analytics/drilldown",
+          },
+          {
+            from: "/server/concepts/user/",
+            to: "/concepts/user",
+          },
+          {
+            from: "/client/concepts/user/",
+            to: "/concepts/user",
+          },
+          {
+            from: "/client/javascript-sdk/react/init-strategies",
+            to: "/client/concepts/initialize",
           },
           {
             from: "/client/concepts/bootstrapping",
-            to: "/client/concepts/initialize/#2-bootstrap-initialization",
+            to: "/client/concepts/initialize",
           },
           {
             from: "/experiments-plus/experimentation/why-experiment",
@@ -211,6 +235,10 @@ const config: Config = {
           {
             from: "/client/reactSDK",
             to: "/client/javascript-sdk/react",
+          },
+          {
+            from: "/client/reactNative",
+            to: "/client/javascript-sdk/react-native",
           },
           {
             from: "/client/reactNativeSDK",

@@ -28,10 +28,16 @@ Below is a list of the primary metrics currently available in the SDK:
 
 | **Metric Name**               | **Type**       | **Tags**                                          | **Description**                                                                                   |
 |-------------------------------|----------------|---------------------------------------------------|---------------------------------------------------------------------------------------------------|
-| `statsig.sdk.initialization`              | distribution   | `success`, `init_source`, `init_source_api`, `store_populated` | Tracks SDK initialization duration. |
-| `statsig.sdk.config_propagation_diff`     | distribution   | `source`, `source_api`, `lcut*`, `prev_lcut*`     | Measures the time difference between the last config updated time vs the time that sdk received the config. |
-| `statsig.sdk.config_no_update`            | counter        | `source`, `source_api`                            | Tracks occurrences of no configuration updates. |
-> **Note**: Tags marked with `*` (such as `lcut` and `prev_lcut`) are high cardinality tags.
+| `initialization`              | distribution   | `success`, `init_source`, `init_source_api`, `store_populated` | Tracks SDK initialization duration. |
+| `config_propagation_diff`     | distribution   | `source`, `source_api`, `lcut*`, `prev_lcut*`     | Measures the time difference between the last config updated time vs the time that sdk received the config. |
+| `config_no_update`            | counter        | `source`, `source_api`                            | Tracks occurrences of no configuration updates. |
+| `events_successfully_sent_count`              | counter        | N/A                           | Tracks number of events sent successfully to the Statsig server. |
+| `sdk_exceptions_count`        | counter | N/A | Tracks occurrences of unexpected exceptions caught. |
+
+**Note**: 
+- All metrics are prefixed by `statsig.sdk.`, for example, the full initialization metric name in your integration will be `statsig.sdk.initialization`.
+- While `sdk_exceptions_count` metric captures all exceptions, certain errors (e.g., temporary network connectivity issues or timeouts) are expected to occur occasionally and are generally not cause for concern. Use this metric to identify unexpected or persistent issues that may require investigation.
+- Tags marked with `*` (such as `lcut` and `prev_lcut`) are high cardinality tags.
 
 ### Metric Tags
 

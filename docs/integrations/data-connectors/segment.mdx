@@ -4,7 +4,7 @@ title: Segment
 
 import StatsigEnvironmentFormat from "../snippets/integration_statsig_env_format.mdx";
 
-# Overview
+# Segment Overview
 
 Enabling the Segment integration for Statsig will allow Statsig to pull in your Segment events. This allows you to run your experiment analysis on Statsig with all of your existing events from Segment without requiring any additional logging.
 
@@ -157,7 +157,7 @@ Refer to the following diagram to help orient you to mapping `anonymousIds` in S
 
 ![](https://user-images.githubusercontent.com/125311112/283278011-3c22e6e8-ab36-4844-aee2-b6630ecda4de.png)
 
-1. Initialize the Statsig SDK with your [Statsig User](/server/concepts/user) which will contain an optional `userID` value and a `customID` that you've created in the Statsig UI - `segmentAnonymousId` in this example.
+1. Initialize the Statsig SDK with your [Statsig User](/concepts/user) which will contain an optional `userID` value and a `customID` that you've created in the Statsig UI - `segmentAnonymousId` in this example.
 2. As you orchestrate features/experiments, Statsig will associate this user to a variant using the unit of randomization chosen. For anonymous users, we'll use `segmentAnonymousId`.
 3. Your existing Segment implementation tracks user traffic and associates anonymous users to the top-level field `anonymousId`. 
 4. This `anonymousId` is mapped in Statsig (to `segmentAnonymousId`), properly associating the identifier used in experiment exposures to the same identifier used to track user actions.
@@ -172,7 +172,7 @@ By using [Segment Engage Audiences](https://segment.com/docs/engage/audiences/) 
 Once these steps have been completed, your Segment Audience will be synced, and you will be able to target those users for features you develop or experiments you run.
 
 ### Custom Properties
-Passing [custom properties to a Statsig User](/server/concepts/user#user-attributes) (see `custom` field) enables targeting on specific cohorts of your users in feature gates and experimentation. 
+Passing [custom properties to a Statsig User](/concepts/user#user-attributes) (see `custom` field) enables targeting on specific cohorts of your users in feature gates and experimentation. 
 Providing custom user properties also allows you to drill down your results to specific populations (ex: android/iOS, isVIP, etc) when [reading pulse results](/pulse/custom-queries#running-a-custom-query).
 
 If you're using custom fields to [target users](/feature-flags/conditions#custom) in your feature gates, you can provide these properties through Segment using the key `statsigCustom` as part of the Segment `properties` 

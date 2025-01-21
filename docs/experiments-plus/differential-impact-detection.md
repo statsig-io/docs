@@ -11,7 +11,7 @@ Statsig will automatically flag experiments when extreme differential impacts ar
 ![image](https://github.com/user-attachments/assets/9783ba7a-812b-4fea-97af-4e3344f8345f)
 
 ## Enabling this
-On Statsig Warehouse Native, configure the "Segments of Interest" you want automatically evaluated for Differential Impact Detection. These will either have to be configured as [Entity Properties](/statsig-warehouse-native/features/entity-properties) or passed in by a Statsig SDK as user properties in the [User Object](/server/concepts/user).
+On Statsig Warehouse Native, configure the "Segments of Interest" you want automatically evaluated for Differential Impact Detection. These will either have to be configured as [Entity Properties](/statsig-warehouse-native/features/entity-properties) or passed in by a Statsig SDK as user properties in the [User Object](/concepts/user).
 
 ![image](https://github.com/user-attachments/assets/c1bc4f51-2c8c-4db7-87f5-7a883f7e0fcf)
 

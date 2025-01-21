@@ -47,9 +47,9 @@ We plan to provide 1st class integration of privacy controls with the Statsig SD
 
 Sessions will end after four hours total or if the user returns from inactive time greater than 30 minutes later.
 
-### 10,000 Sessions Per Month
+### 50,000 Sessions Per Month
 
-Every Statsig project can store up to 10,000 sessions per month, after which time the SDK will stop further recordings from taking place by preventing clients from taking new recordings. You can check how many replays you have used in your org settings: 
+Every Statsig project can store up to 50,000 sessions per month, after which time the SDK will stop further recordings from taking place by preventing clients from taking new recordings. You can check how many replays you have used in your org settings: 
 
 ### **Replay Availability Time**
 
