@@ -3,6 +3,8 @@ sidebar_label: Introduction
 title: Sidecar Introduction (Low-code Experiments)
 ---
 
+## Overview
+
 A/B testing, or split testing, is a fundamental method in digital marketing for validating various strategies and website designs. It involves comparing two versions of a webpage to see which performs better with a target audience. 
 
 Traditionally, implementing A/B tests required substantial technical skills, often necessitating collaboration between marketers and developers. This could lead to longer implementation times, impacting the agility of marketing initiatives. 
@@ -20,5 +22,11 @@ Combined with the most powerful statistical engine, Sidecar helps you in making 
 :::info
 This guide assumes you have an existing Statsig account.  Please go here to create a new free account if you don't already have one: https://statsig.com/signup
 :::
+
+## A Word on performance
+
+Sidecar (along with any type of client side tooling you install, be it open-source or via experimenation providers) will introduce some degree of page load latency. We recommend taking Sidecar for a spin and determining if the impact of your performance metrics fall within your acceptable threshold.
+
+Customers that are very performance-minded typically use our [JS-SDK](client/javascript-sdk) for testing on the web. When using the JS/React SDKs with [Client Boostrapping](client/javascript-sdk/init-strategies/#2-bootstrap-initialization), the latency introduced is very minimal since there are no network requests required for initialization.
 
 ## Next up: [Setup](/guides/sidecar-experiments/setup)
