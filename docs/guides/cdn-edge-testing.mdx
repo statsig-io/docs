@@ -84,5 +84,5 @@ SDKs are not supported here. Cloudfront Functions have 1ms max runtime and 10KB 
 ## Akamai Implementation
 [Akamai has a documented pattern](https://www.akamai.com/blog/developers/better-a-b-testing-with-edgeworkes-edgekv) of using EdgeWorkers and EdgeKV for running AB tests using cached content, providing both code samples, as well as an overview of the [architecture](https://www.akamai.com/solutions/edge/serverless-computing/use-cases). You’ll need to add the Statsig SDK to the worker function as a dependency and call it for assignment (rather than the rudimentary coin flip using `Math.random()` shown in their code examples).
 
-You can now use our [Akamai Edge integration](/integrations/akamai), which includes an integration with EdgeKV as well as a Node package that how been tested and validated within Akamai edge runtime. 
+You can now use our [Akamai Edge integration](/integrations/akamai), which includes an integration with EdgeKV as well as a Node package that has been tested and validated within Akamai edge runtime. 
 
