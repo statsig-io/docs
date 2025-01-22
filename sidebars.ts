@@ -399,6 +399,7 @@ const sidebars: SidebarsConfig = {
                 "integrations/vercel",
                 "integrations/cloudflare",
                 "integrations/fastly",
+                "integrations/akamai",
               ],
             },
             {
