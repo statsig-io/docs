@@ -89,6 +89,10 @@ GROUP BY ALL
 
 Retention metrics are [ratio metrics](./ratio.md) for the purposes of pulse calculations; the only distinction is that the metric date is attributed to the denominator date.
 
+The ratio components for retention metrics reflect the rolling metric definition:
+- the denominator is the average number of days per user where the "retention start" event was triggered
+- the numerator is the average number of days per user where a "retention start" event had a corresponding "retention end" event in its retention period.
+
 ## Options
 
 - Metric Breakdowns
