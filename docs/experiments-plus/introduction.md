@@ -18,7 +18,7 @@ Experiments are ideal when you want to:
 - Run mutually exclusive experiments in parallel.
 - Measure the direct impact of changes on product and business metrics.
 
-For a deeper understanding of using experiments in Statsig, see "[Working with Experiments](experiments-plus/working-with)" section.
+For a deeper understanding of using experiments in Statsig, see "[Working with Experiments](/experiments-plus/working-with)" section.
 
 ---
 
