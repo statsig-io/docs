@@ -1,0 +1,10 @@
+```rust
+let config = Statsig::get_config(&user, "a_config").ok().unwrap();
+let item_name = config.get("product_name", "Awesome Product v1".to_string());
+let price = config.get("price", 10.0);
+let should_discount = config.get("discount", false);
+
+// or just get the whole value object backing this config if you prefer
+
+let value = config.value;
+```

@@ -1,0 +1,61 @@
+## StatsigOptions Class
+
+The `statsig.initialize()` method takes an optional parameter `options` to customize the Statsig client. Below is the structure of the `StatsigOptions` class, including available parameters and their descriptions:
+
+### Parameters
+
+- **`specs_url`**: `Optional[str]`  
+  Custom URL for fetching feature specifications.
+
+- **`specs_sync_interval_ms`**: `Optional[int]`  
+  How often the SDK updates specifications from Statsig servers (in milliseconds).
+
+- **`init_timeout_ms`**: `Optional[int]`  
+  Sets the maximum timeout for initialization requests (in milliseconds).
+
+- **`log_event_url`**: `Optional[str]`  
+  Custom URL for logging events.
+
+- **`disable_all_logging`**: `Optional[bool]`  
+  When `true`, disables all event logging.
+
+- **`event_logging_flush_interval_ms`**: `Optional[int]`  
+  How often events are flushed to Statsig servers (in milliseconds).
+
+- **`event_logging_max_queue_size`**: `Optional[int]`  
+  Maximum number of events to queue before forcing a flush.
+
+- **`enable_id_lists`**: `Optional[bool]`  
+  Enable/disable ID list functionality.
+
+- **`id_lists_url`**: `Optional[str]`  
+  Custom URL for fetching ID lists.
+
+- **`id_lists_sync_interval_ms`**: `Optional[int]`  
+  How often the SDK updates ID lists from Statsig servers (in milliseconds).
+
+- **`fallback_to_statsig_api`**: `Optional[bool]`  
+  Whether to fallback to the Statsig API if custom endpoints fail.
+
+- **`environment`**: `Optional[str]`  
+  Environment parameter for evaluation.
+
+- **`output_log_level`**: `Optional[str]`  
+  Controls the verbosity of SDK logs.
+
+---
+
+### Example Usage
+
+```python
+from statsig import StatsigOptions
+
+# Initialize StatsigOptions with custom parameters
+options = StatsigOptions()
+options.environment = "development"
+options.init_timeout_ms = 3000
+options.disable_all_logging = False
+
+# Pass the options object into statsig.initialize()
+statsig.initialize("secret-key", options)
+```

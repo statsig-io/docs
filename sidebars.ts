@@ -180,6 +180,14 @@ const sidebars: SidebarsConfig = {
               label: "More Server SDKs",
               items: [
                 {
+                  type: "category",
+                  label: "Statsig Server Core",
+                  items: [
+                    "server-core/node-core",
+                    "server-core/python-core",
+                  ]
+                },
+                {
                   className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "server/dotnetSDK"

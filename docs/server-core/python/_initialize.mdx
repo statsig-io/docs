@@ -1,0 +1,17 @@
+```rust
+from statsig_python_core import Statsig, StatsigOptions
+
+# Simple initialization
+statsig = Statsig("secret-key")
+statsig.initialize().wait()
+
+# Or with StatsigOptions
+options = StatsigOptions()
+options.environment = {"tier": "staging"}
+
+statsig = Statsig("secret-key", options)
+statsig.initialize().wait()
+
+# Don't forget to shutdown when done
+statsig.shutdown().wait()
+```
