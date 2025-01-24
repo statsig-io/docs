@@ -1,0 +1,16 @@
+### Usage in Java Core
+
+```java
+StatsigUser user = new StatsigUser.Builder()
+    .setUserID("user_id")
+    .setCustomIDs(Map.of("external_id", "abc123"))
+    .setEmail("user@example.com")
+    .setIp("192.168.0.1")
+    .setLocale("en-US")
+    .setAppVersion("1.0.0")
+    .setUserAgent("Mozilla/5.0")
+    .setCountry("USA")
+    .setPrivateAttributes(Map.of("is_beta_user", "true"))
+    .setCustom(Map.of("subscription", "premium"))
+    .build();
+```

@@ -233,6 +233,7 @@ const sidebars: SidebarsConfig = {
               items: [
                 "server-core/node-core",
                 "server-core/python-core",
+                "server-core/java-core",
               ]
             },
 
