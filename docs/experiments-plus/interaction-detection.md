@@ -4,7 +4,6 @@ sidebar_label: Interaction Detection
 slug: /experiments-plus/interaction-detection
 ---
 
-> This feature is only available to warehouse native customers now.
 
 ## What is Interaction Detection
 
@@ -29,6 +28,8 @@ In each section:
 - Overlapping Unique Users: offers an overview of the general traffic intersection of the two experiments
 
 ![image](https://github.com/user-attachments/assets/ebbb4383-8abe-4b9b-9132-fb543e6b33ac)
+
+See more examples in this [article](https://www.statsig.com/blog/interaction-effect-detection).
 
 ## Methodology
 
