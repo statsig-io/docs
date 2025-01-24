@@ -1,0 +1,41 @@
+## StatsigOptions Class
+
+The `StatsigOptions` class is used to specify optional parameters when initializing the Statsig client.
+
+### Parameters
+
+- **`specsUrl`**: `Optional<string>`  
+  Custom URL for fetching feature specifications.
+
+- **`specsSyncIntervalMs`**: `Optional<number>`  
+  How often the SDK updates specifications from Statsig servers (in milliseconds).
+
+- **`initTimeoutMs`**: `Optional<number>`  
+  Sets the maximum timeout for initialization requests (in milliseconds).
+
+- **`logEventUrl`**: `Optional<string>`  
+  Custom URL for logging events.
+
+- **`disableAllLogging`**: `Optional<boolean>`  
+  When `true`, disables all event logging.
+
+- **`eventLoggingFlushIntervalMs`**: `Optional<number>`  
+  How often events are flushed to Statsig servers (in milliseconds).
+
+- **`eventLoggingMaxQueueSize`**: `Optional<number>`  
+  Maximum number of events to queue before forcing a flush.
+
+- **`environment`**: `Optional<string>`  
+  Environment parameter for evaluation.
+
+---
+
+```typescript
+// Example usage:
+const options = new StatsigOptions();
+options.environment = "staging";
+options.initTimeoutMs = 3000;
+
+const statsig = new Statsig("secret-key", options);
+await statsig.initialize();
+```

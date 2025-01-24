@@ -1,0 +1,18 @@
+
+### **Initialize the SDK**
+
+After installation, you will need to initialize the SDK with customized Configuration using a [**Server Secret Key from the statsig console**](https://console.statsig.com/api_keys).
+
+```java
+import com.statsig.*;
+
+// All StatsigOptions are optional, feel free to adjust them as needed
+StatsigOptions options = new StatsigOptions.Builder()
+                    .setSpecsSyncIntervalMs(10000)
+                    .setEventLoggingFlushIntervalMs(10000)
+                    .setOutputLoggerLevel(OutputLogger.LogLevel.INFO)
+                    .build();
+
+Statsig myStasigServer = new Statsig(SECRET_KEY, options);
+statsig.initialize().get();
+```

@@ -1,0 +1,12 @@
+```java
+// Method signature
+public CompletableFuture<Void> flushEvents()
+
+// example usage
+try {
+    statsig.flushEvents().get();
+    System.out.println("All events have been successfully flushed.");
+} catch (InterruptedException | ExecutionException e) {
+    System.err.println("Failed to flush events: " + e.getMessage());
+}
+```

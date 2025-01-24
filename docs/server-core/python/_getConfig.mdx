@@ -1,0 +1,7 @@
+```Python
+config = statsig.get_dynamic_config(StatsigUser("my_user"), "a_config")
+
+item_name = config.get_string("product_name", "Awesome Product v1")
+price = config.get_float("price", 10.0)
+should_discount = config.get_boolean("discount", False)
+```
