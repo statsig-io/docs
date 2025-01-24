@@ -49,3 +49,14 @@ import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
 - **postLogsRetryBackoff**: number | (retry: number) => number, default 1,000
   - A fixed number or callback on the retry attempt number to configure the time in ms to wait between each `/log_event` retry.
   - If using a fixed number, a 10x multiplier will be applied on each subsequent retry
+- **evaluationCallbacks**: EvaluationCallbacks, default `{}`
+  - Provides callback functions for handling custom logic during evaluations of gates, dynamic configs, experiments, or layers. You can provide specific callbacks for each evaluation type to perform tasks such as custom logging (if you prefer not to use Statsig's default logging), or side effects.
+  **Note:** if you'd like to turn off Statsig's default logging, set `disableExposureLogging: true` when making checks.
+  - Available callbacks:
+    ```
+    gateCallback?: (gate: FeatureGate, user: StatsigUser, event: LogEvent) => void;
+    dynamicConfigCallback?: (config: DynamicConfig, user: StatsigUser, event: LogEvent) => void;
+    experimentCallback?: (config: DynamicConfig, user: StatsigUser, event: LogEvent) => void;
+    layerCallback?: (layer: Layer, user: StatsigUser) => void;
+    layerParamCallback?: (layer: Layer, paramName: string, user: StatsigUser, event: LogEvent) => void;
+    ```

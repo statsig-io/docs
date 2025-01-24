@@ -92,7 +92,7 @@ $$\Large
 \sigma=\frac{Z_{\alpha/2}^*}{\sqrt{2} \cdot erf^{-1}(1-\alpha)}
 $$
 
-where $erf^{-1}$ is the inverse error function.
+where $erf^{-1}$ is the [inverse error function](https://en.wikipedia.org/wiki/Error_function#Inverse_functions).
 
 From here we can compute the two-sided sequential testing p-value as:
 
