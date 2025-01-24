@@ -1,5 +1,6 @@
+import { useEffect, useState } from "react";
+
 import Alert from "@mui/material/Alert";
-import { useEffect } from "react";
 
 // Map entities to their corresponding OpenAPI tags
 const entityToTagMap = {
@@ -23,15 +24,43 @@ const entityToTagMap = {
   keys: "Keys",
 };
 
+export const apiVersions = [
+  '20240601',
+];
+
+export function getSpecUrlForApiVersion(version) {
+  return `https://api.statsig.com/openapi/${version}.json`;
+}
+
+const SELECTED_API_VERSION_STORAGE_KEY = 'statsig_api_version';
+
 export default function Rapidoc(props) {
   const { id, entity } = props;
   const isDarkTheme = false;
+  const [apiVersion, setApiVersion] = useState(null);
+  const specUrl = apiVersion ? getSpecUrlForApiVersion(apiVersion) : null;
+
+  const setApiVersionToStorage = (version) => {
+    localStorage.setItem(SELECTED_API_VERSION_STORAGE_KEY, version);
+    setApiVersion(version);
+  }
 
   useEffect(() => {
+    if (!apiVersion) {
+      // Can't have this in the useState init because it prevents this from being server renderable.
+      setApiVersion(localStorage.getItem(SELECTED_API_VERSION_STORAGE_KEY) ?? apiVersions[0]);
+    }
+  }, [apiVersion]);
+
+  useEffect(() => {
+    if (!specUrl) {
+      return;
+    }
+
     const rapidoc = document.getElementById(id);
 
     if (entity === "all-endpoints-generated") {
-      rapidoc.loadSpec("https://api.statsig.com/openapi");
+      rapidoc.loadSpec(specUrl);
       return;
     }
 
@@ -39,7 +68,7 @@ export default function Rapidoc(props) {
     const tag = entityToTagMap[entity];
 
     // Fetch and filter the spec by tag
-    fetch("https://api.statsig.com/openapi")
+    fetch(specUrl)
       .then((response) => response.json())
       .then((data) => {
         if (tag) {
@@ -54,7 +83,7 @@ export default function Rapidoc(props) {
           rapidoc.loadSpec(data);
         }
       });
-  }, [entity]);
+  }, [specUrl, entity]);
 
   return (
     <rapi-doc
@@ -74,6 +103,9 @@ export default function Rapidoc(props) {
       server-url="https://statsigapi.net/console/v1"
       show-header={false}
       allow-authentication={true}
+      api-key-name="STATSIG-API-VERSION"
+      api-key-location="header"
+      api-key-value={apiVersion}
       regular-font={[
         "-apple-system",
         "BlinkMacSystemFont",
@@ -89,6 +121,17 @@ export default function Rapidoc(props) {
           {getDescription(entity)}
         </div>
 
+        <p>
+          API Version:{' '}
+          <select value={apiVersion} onChange={(e) => setApiVersionToStorage(e.target.value)}>
+            {apiVersions.map((version, idx) => (
+              <option value={version}>{version}{idx === 0 ? ' (latest)' : ''}</option>
+            ))}
+          </select>
+          {' '}
+          <a href={specUrl} download={specUrl} class="download-button"><button>Download OpenAPI Specification</button></a>
+        </p>
+
         <h2>Authorization</h2>
         <p>
           All requests must include the <code>STATSIG-API-KEY</code> field in the
@@ -97,6 +140,16 @@ export default function Rapidoc(props) {
           <code>'Project Settings' {">"} 'API Keys' tab</code>. <br />
           To use the 'try it' section on this page, enter your Console API into
           the box below.
+        </p>
+        <h2>API Version</h2>
+        <p>
+          The Console API is versioned. Each version is guaranteed to not break
+          existing usage; each new version introduces breaking changes. There is
+          currently only one version: <code>20240601</code>.
+          <br />
+          Pass the version in the <code>STATSIG-API-VERSION</code> field in the
+          header. For now, this is optional; in the future, this will be
+          required.
         </p>
         <hr />
       </div>
