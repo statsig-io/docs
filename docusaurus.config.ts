@@ -145,6 +145,18 @@ const config: Config = {
       {
         redirects: [
           {
+            from: "/sdks/sdks-overview",
+            to: "/sdks/getting-started",
+          },
+          {
+            from: "/statsig-warehouse-native",
+            to: "/statsig-warehouse-native/introduction",
+          },
+          {
+            from: "/debugging",
+            to: "/sdk/debugging",
+          },
+          {
             from: "/messages/serverRequiredUserID/",
             to: "/concepts/user#why-is-an-id-always-required-for-server-sdks",
           },
