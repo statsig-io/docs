@@ -1,0 +1,11 @@
+
+```java
+StatsigUser user = new StatsigUser("user123");
+String eventName = "purchase";
+String value = "100";
+Map<String, String> metadata = new HashMap<>();
+metadata.put("item_id", "12345");
+metadata.put("category", "electronics");
+
+statsig.logEvent(user, eventName, value, metadata);
+```

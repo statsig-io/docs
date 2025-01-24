@@ -1,0 +1,13 @@
+```java
+// Method signature
+public CompletableFuture<Void> shutdown()
+
+// example usage
+try {
+    statsig.shutdown().get();
+    System.out.println("Statsig instance have been successfully shutdown.");
+} catch (InterruptedException | ExecutionException e) {
+    System.err.println(e.getMessage());
+}
+```
+

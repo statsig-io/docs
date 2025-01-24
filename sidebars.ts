@@ -227,6 +227,13 @@ const sidebars: SidebarsConfig = {
               ]
               
             },
+            {
+              type: "category",
+              label: "Statsig Server Core",
+              items: [
+                "server-core/java-core",
+              ]
+            },
 
             {
               type: "category",
