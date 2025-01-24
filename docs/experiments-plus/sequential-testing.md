@@ -86,7 +86,7 @@ It's possible to produce p-values for sequential testing that are consistent wit
 
 We want to evaluate the mSPRT test so that our Type I error remains approximately equal to $\alpha$, and so that the sequential testing p-value is consistent with the expanded confidence interval. (I.e. A CI that includes 0.0% should have p-value ≥ $\alpha$, and one that excludes 0.0% should have p-value < $\alpha$.)
 
-Our observed z-statistic remains unchanged. Instead of evaluating $Z$ on a standard-normal distribution $N(0, 1)$ as we usually do, we evaluate against some other normal distribution $N(0, \sigma^2)$ with mean of zero and standard deviation $\sigma$. For a two-sided test, since we want the probability of an observed $Z$ exceeding $Z^*_{\alpha/2}$ (assuming the null hypothesis to be true) to be limited to $\alpha$, we can find the unknown parameter by solving for $\sigma$:
+Our observed z-statistic (i.e. z-score) remains unchanged. Instead of evaluating $Z$ on a standard-normal distribution $N(0, 1)$ as we usually do, we evaluate against some other normal distribution $N(0, \sigma^2)$ with mean of zero and standard deviation $\sigma$. For a two-sided test, since we want the probability of an observed $Z$ exceeding $Z^*_{\alpha/2}$ (assuming the null hypothesis to be true) to be limited to $\alpha$, we can find the unknown parameter by solving for $\sigma$:
 
 $$\Large
 \sigma=\frac{Z_{\alpha/2}^*}{\sqrt{2} \cdot erf^{-1}(1-\alpha)}
@@ -100,7 +100,7 @@ $$\Large
 \text{p-value}^* = 2 \cdot \frac{1}{\sqrt{2\pi}} \int \limits _{-\infty}^{-|Z|} \frac{e^{- \frac{t^2}{{2\sigma^2}}}}{\sigma}dt
 $$
 
-where $Z$ is the observed z-statistic as usual.
+where $Z$ is the observed z-statistic (i.e. z-score) as usual.
 
 ### One-Sided Tests
 
@@ -150,4 +150,4 @@ $$\Large
 \end{cases}
 $$
 
-- $Z$ is the (signed) observed z-statistic as usual
+- $Z$ is the (signed) observed z-statistic as usual (i.e. z-score)
