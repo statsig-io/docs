@@ -177,14 +177,6 @@ const sidebars: SidebarsConfig = {
             },
             {
               type: "category",
-              label: "Statsig Server Core",
-              items: [
-                "server-core/node-core",
-                "server-core/python-core",
-              ]
-            },
-            {
-              type: "category",
               label: "More Server SDKs",
               items: [
                 {
@@ -234,6 +226,14 @@ const sidebars: SidebarsConfig = {
                 }
               ]
               
+            },
+            {
+              type: "category",
+              label: "Statsig Server Core",
+              items: [
+                "server-core/node-core",
+                "server-core/python-core",
+              ]
             },
 
             {
