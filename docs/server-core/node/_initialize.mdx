@@ -1,17 +1,12 @@
-```rust
-use statsig::{Statsig};
-
-Statsig::initialize("secret-key").await;
+```jsx
+// Basic initialization
+const statsig = new Statsig("secret-key");
+await statsig.initialize();
 
 // or with StatsigOptions
+const options = new StatsigOptions();
+options.environment = "staging";
 
-use statsig::{Statsig, StatsigOptions};
-
-let env = HashMap::from([("tier".to_string(), "staging".to_string())]);
-let opts = StatsigOptions {
-    environment: Some(env),
-    ..StatsigOptions::default()
-};
-
-Statsig::initialize_with_options("secret-key", opts).await;
+const statsigWithOptions = new Statsig("secret-key", options);
+await statsigWithOptions.initialize();
 ```

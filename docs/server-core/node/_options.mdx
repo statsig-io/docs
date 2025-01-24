@@ -1,23 +1,41 @@
-You can specify optional parameters with `options` when initializing.
+## StatsigOptions Class
 
-- **environment** | `Option<HashMap<String, String>>`
-  - a HashMap you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
-  - The most common usage is to set the "tier" (string), and have feature gates pass/fail for specific environments. e.g.
-  ```rust
-  let environment = Some(HashMap::from([("tier".to_string(), "staging".to_string())]));
-  StatsigOptions{environment, ..StatsigOptions::default()};
-  ```
-- **api_override** `String`, default `"https://statsigapi.net/v1"`
+The `StatsigOptions` class is used to specify optional parameters when initializing the Statsig client.
 
-  - The base url to use for network requests from the SDK
+### Parameters
 
-- **rulesets_sync_interval_ms**: `u32`, default `10_000`
+- **`specsUrl`**: `Optional<string>`  
+  Custom URL for fetching feature specifications.
 
-  - The interval to poll for changes to your gate and config definition changes
+- **`specsSyncIntervalMs`**: `Optional<number>`  
+  How often the SDK updates specifications from Statsig servers (in milliseconds).
 
-- **logger_flush_interval_ms**: `u32`, default `60_000`
+- **`initTimeoutMs`**: `Optional<number>`  
+  Sets the maximum timeout for initialization requests (in milliseconds).
 
-  - The default interval to flush logs to Statsig servers
+- **`logEventUrl`**: `Optional<string>`  
+  Custom URL for logging events.
 
-- **logger_max_queue_size**: `u32`, default `500`, can be set lower but anything over 1000 will be dropped on the server
-  - The maximum number of events to batch before flushing logs to the server
+- **`disableAllLogging`**: `Optional<boolean>`  
+  When `true`, disables all event logging.
+
+- **`eventLoggingFlushIntervalMs`**: `Optional<number>`  
+  How often events are flushed to Statsig servers (in milliseconds).
+
+- **`eventLoggingMaxQueueSize`**: `Optional<number>`  
+  Maximum number of events to queue before forcing a flush.
+
+- **`environment`**: `Optional<string>`  
+  Environment parameter for evaluation.
+
+---
+
+```typescript
+// Example usage:
+const options = new StatsigOptions();
+options.environment = "staging";
+options.initTimeoutMs = 3000;
+
+const statsig = new Statsig("secret-key", options);
+await statsig.initialize();
+```

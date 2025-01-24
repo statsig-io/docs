@@ -1,10 +1,12 @@
-```rust
-let config = Statsig::get_config(&user, "a_config").ok().unwrap();
-let item_name = config.get("product_name", "Awesome Product v1".to_string());
-let price = config.get("price", 10.0);
-let should_discount = config.get("discount", false);
+```jsx
+// Get the dynamic config
+const config = statsig.getDynamicConfig(user, "a_config");
 
-// or just get the whole value object backing this config if you prefer
+// Get typed values using the get() method
+const itemName = config.get("product_name", "Awesome Product v1");
+const price = config.get<number>("price", 10.0);
+const shouldDiscount = config.get<boolean>("discount", false);
 
-let value = config.value;
+// Or access the entire value object directly
+const value = config.value;
 ```
