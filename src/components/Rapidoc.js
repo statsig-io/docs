@@ -353,14 +353,6 @@ function getDescription(entity) {
         </>
       );
 
-    case "all-endpoints":
-      return (
-        <>
-          <p>
-            This page lists out all Console API endpoints currently available.
-          </p>
-        </>
-      );
     case "keys":
     case "tags":
     default:
