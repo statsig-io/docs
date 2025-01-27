@@ -21,7 +21,7 @@ Logging exposures with Statsig means you'll get real-time diagnostics on the Sta
 
 When you run Pulse analysis, raw exposures for the experiment you're loading will be fast-forwarded to catch up with the real-time stream. This means you'll get all of the users in your experiment and see Pulse results as fresh as ~15m (assuming events and metrics come in at the same speed).
 
-Under the covers, we perform a just-in-time update of exposures in your warehouse when Pulse is loaded, for the first 1 million exposures that have are logged to the experiment. After that, the exposures are batched, deduplicated and written to your warehouse once a day.
+Under the covers, we perform a just-in-time update of exposures in your warehouse when Pulse is loaded, for the first 1 million exposures that are logged to the experiment. After that, the exposures are batched, deduplicated and written to your warehouse once a day.
 
 These fast-forwarded exposures are not deduplicated, and will have some fields (`user_dimensions` in particular) missing. These fields will be provided in the subsequent daily load.
 
