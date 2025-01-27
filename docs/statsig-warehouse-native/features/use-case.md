@@ -53,7 +53,7 @@ Each suited to different business scenarios, two commonly used approaches for ac
 
 **- First Touch Mapping:** For cases where a logged-in ID maps to multiple logged-out IDs, retain only the first association and discard the rest. It is better suited for scenarios where you want to preserve as much data as possible, and duplications are common in your business settings (e.g., users frequently access the website from multiple devices or sessions).
 
-For whichever mapping approach, you will need to create a mapping between the logged-out id and the logged-in id by either setting up an Entity Property with both IDs present or creating an exposure assigment source with columns for both ID types.
+For whichever mapping approach, you will need to create a mapping between the logged-out id and the logged-in id by either setting up an Entity Property with both IDs present or creating an exposure assignment source with columns for both ID types.
 
 #### Step 1 - Advanced settings for your experiments 
 When setting up your experiment, under the *Setup* tab within your experiments, go to *Advanced Settings* and pick your Secondary ID type. 
