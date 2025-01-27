@@ -383,7 +383,11 @@ const config: Config = {
           {
             to: "/experiments-plus/stop-assignments",
             from: "/experiments-plus/pause-assignment",
-          }
+          },
+          {
+            to: "/console-api/all-endpoints-generated",
+            from: "/console-api/all-endpoints",
+          },
         ],
       },
     ],
