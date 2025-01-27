@@ -49,7 +49,7 @@ When a user decides to sign up, a new and unique logged-in user ID will be gener
 ### Solution
 Each suited to different business scenarios, two commonly used approaches for achieving the mapping supported by Statsig are:
 
-**- Strict 1:1 Mapping:**  This approach only keep records where there is a *unique, unambiguous* mapping between the logged-out ID and the logged-in ID. Any records with duplication (e.g., multiple logged-out IDs mapping to the same logged-in ID or vice versa) are discarded. It's recommended when accuracy and clarity are the top priorities for your experiments, and when data duplication is rare. 
+**- Strict 1:1 Mapping:**  This approach only keeps records where there is a *unique, unambiguous* mapping between the logged-out ID and the logged-in ID. Any records with duplication (e.g., multiple logged-out IDs mapping to the same logged-in ID or vice versa) are discarded. It's recommended when accuracy and clarity are the top priorities for your experiments, and when data duplication is rare. 
 
 **- First Touch Mapping:** For cases where a logged-in ID maps to multiple logged-out IDs, retain only the first association and discard the rest. It is better suited for scenarios where you want to preserve as much data as possible, and duplications are common in your business settings (e.g., users frequently access the website from multiple devices or sessions).
 
