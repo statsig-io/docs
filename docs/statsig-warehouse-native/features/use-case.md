@@ -16,6 +16,7 @@ Assuming you have a logging table which contains every time when a user visits t
 select distinct
   user_id,
   'new' as new_user,
+
   timestamp('1900-01-01') as timestamp
 from user -- you can add filters here to include only targeted population only
 union all
@@ -31,6 +32,51 @@ Click Run Query and will return a table like this. Click Save Results, then you 
 | ------------- | -------------- | ------------------------- |
 |       A       |       new      | 1900-01-01T00:00:00+00:00 |
 |       A       |       old      | 2024-01-01T10:10:18+00:00 |
-|       B       |       new      | 1900-01-01T00:00:00+00:00 |
+|       B       |       new      | 1900-01-01T00:00:00+00:00 |  
 
-testing...
+
+
+------
+
+
+## How can I analyze logged-in metrics (e.g., Revenue, Subscription) when my experiment exposures are at logged-out grain? 
+
+### Scenario
+I want to run an experiment to find out which version of my website design leads to a higher signup rate among new visitors. The experiment assignment will occur when a logged-out user visits my website, and they will be exposed to one of the design variants.
+
+When a user decides to sign up, a new and unique logged-in user ID will be generated for them. To calculate the conversion rate (CVR) accurately and consistently, I need a reliable way to map the logged-out IDs to the corresponding logged-in IDs. This will allow me to attribute each signup to the correct experiment variant and evaluate which design performs better in driving conversions. 
+
+### Solution
+Each suited to different business scenarios, two commonly used approaches for achieving the mapping supported by Statsig are:
+
+**- Strict 1:1 Mapping:**  This approach only keep records where there is a *unique, unambiguous* mapping between the logged-out ID and the logged-in ID. Any records with duplication (e.g., multiple logged-out IDs mapping to the same logged-in ID or vice versa) are discarded. It's recommended when accuracy and clarity are the top priorities for your experiments, and when data duplication is rare. 
+
+**- First Touch Mapping:** For cases where a logged-in ID maps to multiple logged-out IDs, retain only the first association and discard the rest. It is better suited for scenarios where you want to preserve as much data as possible, and duplications are common in your business settings (e.g., users frequently access the website from multiple devices or sessions).
+
+For whichever mapping approach, you will need to create a mapping between the logged-out id and the logged-in id by either setting up an Entity Property with both IDs present or creating an exposure assigment source with columns for both ID types.
+
+#### Step 1 - Advanced settings for your experiments 
+When setting up your experiment, under the *Setup* tab within your experiments, go to *Advanced Settings* and pick your Secondary ID type. 
+![Screenshot 2025-01-27 at 11 44 05 AM](https://github.com/user-attachments/assets/76f83c44-0389-4441-a5fc-bf29b9cab119)
+
+#### Step 2 - Identify the mapping mode that suits your need 
+![Screenshot 2025-01-27 at 11 47 59 AM](https://github.com/user-attachments/assets/e49a030e-4933-4019-80f3-812c46cdd493)
+
+#### Step 3 - Choose your Entity Property Source 
+![Screenshot 2025-01-27 at 12 23 52 PM](https://github.com/user-attachments/assets/105f1f66-17e2-42c6-b6e7-6f80fd3638d5)
+
+- **[Recommended]** Create a new Entity Property Source for your ID Resolution mapping if you haven't already.
+
+  Go to Data -> Entity Properties. Follow the steps, you can either enter an existing table with the ID mappings or write a new query to create the mappings with the following logic:
+  ```
+  SELECT stable_id, user_id, timestamp
+  FROM id_mapping
+  ```
+
+- You can also choose **"None"** by using your assignment source for the mapping.
+
+  Create your new assignment source by going to Data -> Assignment Sources. When creating an assignment source, provide a column for both ID types. It is assumed that your 'Primary ID' will be non-null for exposure records. Your secondary ID can be null. If your secondary ID is sparse (some records are null, and some are not due to logging), Statsig will back-attribute any identified secondary ID to other records from the same Primary ID.
+  ![image](https://github.com/user-attachments/assets/07f35534-fb0f-481f-97fe-f69c1c681b7f)
+
+
+
