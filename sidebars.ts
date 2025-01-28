@@ -732,7 +732,7 @@ const sidebars: SidebarsConfig = {
               type: "category",
               label: "Users",
               className: "users-icon sidebar-icon",
-              items: ["users/introduction"],
+              items: ["users/introduction", "users/user-profiles"],
             },
             "insights/introduction",
           ],
