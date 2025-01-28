@@ -365,6 +365,10 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/chart.svg");
 }
 
+.users-icon::before {
+  background-image: url("/img/icons/sidebar/users.svg");
+}
+
 .chart-icon:has(.menu__link--active)::before {
   background-image: url("/img/icons/sidebar/chart-active.svg");
 }
@@ -557,8 +561,8 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/template-active.svg");
 }
 
-.sdk-sidebar-icon{
-  padding-left:24px;
+.sdk-sidebar-icon {
+  padding-left: 24px;
 }
 
 [data-theme="dark"] .sidebar-icon:not(.sdk-sidebar-icon)::before {
@@ -574,6 +578,6 @@ span.math.math-inline {
 .no-background {
   --ifm-alert-background-color: transparent;
   --ifm-alert-border-color: black;
-  --ifm-tabs-color-active-border:var(--ifm-color-primary-light);
-  --ifm-tabs-color-active:var(--ifm-color-primary-light);
+  --ifm-tabs-color-active-border: var(--ifm-color-primary-light);
+  --ifm-tabs-color-active: var(--ifm-color-primary-light);
 }
