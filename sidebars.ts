@@ -102,42 +102,42 @@ const sidebars: SidebarsConfig = {
                 {
                   className: "cpp-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/cpp-client-sdk"
+                  id: "client/cpp-client-sdk",
                 },
                 {
                   className: "flutter-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/dartSDK"
+                  id: "client/dartSDK",
                 },
                 {
                   className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/dotnetSDK"
+                  id: "client/dotnetSDK",
                 },
                 {
                   className: "expo-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/javascript-mono/ExpoUsage"
+                  id: "client/javascript-mono/ExpoUsage",
                 },
                 {
                   className: "react-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/javascript-mono/ReactNativeUsage"
+                  id: "client/javascript-mono/ReactNativeUsage",
                 },
                 {
                   className: "angular-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/javascript-mono/AngularUsage"
+                  id: "client/javascript-mono/AngularUsage",
                 },
                 {
                   className: "roku-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/rokuSDK"
+                  id: "client/rokuSDK",
                 },
                 {
                   className: "unity-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/unitySDK"
+                  id: "client/unitySDK",
                 },
                 {
                   type: "category",
@@ -182,57 +182,54 @@ const sidebars: SidebarsConfig = {
                 {
                   className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/dotnetSDK"
+                  id: "server/dotnetSDK",
                 },
                 {
                   className: "cpp-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/cppSDK"
+                  id: "server/cppSDK",
                 },
                 {
                   className: "elixir-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/erlangSDK"
+                  id: "server/erlangSDK",
                 },
                 {
                   className: "golang-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/golangSDK"
+                  id: "server/golangSDK",
                 },
                 {
                   className: "java-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/javaSdk"
+                  id: "server/javaSdk",
                 },
                 {
                   className: "python-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/pythonSDK"
+                  id: "server/pythonSDK",
                 },
                 {
                   className: "php-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/phpSDK"
+                  id: "server/phpSDK",
                 },
                 {
                   className: "ruby-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/rubySDK"
+                  id: "server/rubySDK",
                 },
                 {
                   className: "rust-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/rustSDK"
-                }
-              ]
-              
+                  id: "server/rustSDK",
+                },
+              ],
             },
             {
               type: "category",
               label: "Statsig Server Core",
-              items: [
-                "server-core/java-core",
-              ]
+              items: ["server-core/java-core"],
             },
 
             {
@@ -269,8 +266,7 @@ const sidebars: SidebarsConfig = {
                 "server/concepts/persistent_assignment",
                 "server/concepts/data_store",
                 "sdk-keys/target-apps",
-
-              ]
+              ],
             },
             "server/deprecation-notices",
           ],
@@ -732,7 +728,12 @@ const sidebars: SidebarsConfig = {
               ],
             },
             "product-analytics/dashboards",
-            "users/introduction",
+            {
+              type: "category",
+              label: "Users",
+              className: "users-icon sidebar-icon",
+              items: ["users/introduction", "users/user-profiles"],
+            },
             "insights/introduction",
           ],
         },
@@ -1061,7 +1062,7 @@ const sidebars: SidebarsConfig = {
             },
             {
               Reliability: [
-                "infrastructure/reliability-faq", 
+                "infrastructure/reliability-faq",
                 "guides/uptime",
                 "infrastructure/monitoring",
               ],
