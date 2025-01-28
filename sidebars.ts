@@ -732,7 +732,14 @@ const sidebars: SidebarsConfig = {
               ],
             },
             "product-analytics/dashboards",
-            "users/introduction",
+            {
+              type: "category",
+              label: "Users",
+              className: "chart-icon sidebar-icon",
+              items: [
+                "users/introduction",
+              ],
+            },
             "insights/introduction",
           ],
         },
