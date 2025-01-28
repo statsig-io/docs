@@ -39,7 +39,7 @@ Click Run Query and will return a table like this. Click Save Results, then you 
 ------
 
 
-## How can I analyze logged-in metrics (e.g., Revenue, Subscription) when my experiment exposures are at logged-out grain? 
+## How can I analyze logged-in metrics when my experiment exposures are at logged-out grain? 
 
 ### Scenario
 I want to run an experiment to find out which version of my website design leads to a higher signup rate among new visitors. The experiment assignment will occur when a logged-out user visits my website, and they will be exposed to one of the design variants.
@@ -56,14 +56,14 @@ Each suited to different business scenarios, two commonly used approaches for ac
 For whichever mapping approach, you will need to create a mapping between the logged-out id and the logged-in id by either setting up an Entity Property with both IDs present or creating an exposure assignment source with columns for both ID types.
 
 #### Step 1 - Advanced settings for your experiments 
-When setting up your experiment, under the *Setup* tab within your experiments, go to *Advanced Settings* and pick your Secondary ID type. 
+When setting up your experiment, under the *Setup* tab within your experiments, go to *Advanced Settings* and pick your Secondary ID type (the log-in userid in this scenario). 
 ![Screenshot 2025-01-27 at 11 44 05 AM](https://github.com/user-attachments/assets/76f83c44-0389-4441-a5fc-bf29b9cab119)
 
 #### Step 2 - Identify the mapping mode that suits your need 
 ![Screenshot 2025-01-27 at 11 47 59 AM](https://github.com/user-attachments/assets/e49a030e-4933-4019-80f3-812c46cdd493)
 
 #### Step 3 - Choose your Entity Property Source 
-![Screenshot 2025-01-27 at 12 23 52 PM](https://github.com/user-attachments/assets/105f1f66-17e2-42c6-b6e7-6f80fd3638d5)
+<img width="1014" alt="Screenshot 2025-01-27 at 4 51 47 PM" src="https://github.com/user-attachments/assets/abceaaf3-b15d-481e-9e7f-abc8a5c2cef3" />
 
 - **[Recommended]** Create a new Entity Property Source for your ID Resolution mapping if you haven't already.
 
@@ -74,9 +74,8 @@ When setting up your experiment, under the *Setup* tab within your experiments, 
   ```
 
 - You can also choose **"None"** by using your assignment source for the mapping.
-
-  Create your new assignment source by going to Data -> Assignment Sources. When creating an assignment source, provide a column for both ID types. It is assumed that your 'Primary ID' will be non-null for exposure records. Your secondary ID can be null. If your secondary ID is sparse (some records are null, and some are not due to logging), Statsig will back-attribute any identified secondary ID to other records from the same Primary ID.
-  ![image](https://github.com/user-attachments/assets/07f35534-fb0f-481f-97fe-f69c1c681b7f)
+  
+  Create your new assignment source by going to Data -> Assignment Sources. Note that this is not recommended because it can get more complex to manage if you start to increase the scale of your experiments. 
 
 
 
