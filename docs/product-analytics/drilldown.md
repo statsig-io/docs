@@ -102,7 +102,7 @@ In addition to plotting metrics, you may want to drill into your metrics to iden
 
 Leveraging a Group-By makes it easy to disaggregate plotted metrics and events by a selected property or group. Doing so allows you to compare how an action or user behavior may correlate with a specific property. Adding a Group-By will split the the plotted metric(s) into several plots. By default we only show the top ten groups by value on the chart, but you can select more groups. You can select 50 groups when the chart is set to daily granularity. 
 
-A metric can be grouped-by event properties, user properties, experiment group, or feature gate group. 
+A metric can be grouped-by event properties, user profile properties, experiment group, or feature gate group. 
 
 Group-By limits can be added by first adding a group-by, clicking the "..." button, and then selecting "Add Group-By Limit". You can use this to further drill down on your top X categories (up to 50). This feature is available for line charts, stacked-line charts, bar charts, and stacked-bar charts.
 
