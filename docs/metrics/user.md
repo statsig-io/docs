@@ -4,9 +4,9 @@ sidebar_label: User Accounting Metrics
 slug: /metrics/user
 ---
 
-## Definition of a Daily Active User
+## Definition of a Daily Active User (DAU)
 
-Statsig automatically creates a standard set of user accounting metrics to track common product-wide engagement metrics like daily active users, new users, and retention.  We also track more sophisticated metrics like L-ness, retention and stickiness metrics.  All of these rely on a company-wide definition of a daily active user.  By default, any Statsig SDK event/request (check_gate, get_config, log_event) associated with a user will automatically designate that user as being active for that day.  You can customize this set of events.
+Statsig automatically creates a standard set of user accounting metrics to track common product-wide engagement metrics like daily active users (DAU), new users, and retention.  We also track more sophisticated metrics like L-ness, retention and stickiness metrics.  All of these rely on a company-wide definition of a daily active user.  By default, any Statsig SDK event/request (check_gate, get_config, log_event) associated with a user will automatically designate that user as being active for that day.  You can customize this set of events.
 
 ### Notation and Conventions
 
