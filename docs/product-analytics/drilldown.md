@@ -107,6 +107,7 @@ A metric can be grouped-by event properties, user profile properties, experiment
 Group-By limits can be added by first adding a group-by, clicking the "..." button, and then selecting "Add Group-By Limit". You can use this to further drill down on your top X categories (up to 50). This feature is available for line charts, stacked-line charts, bar charts, and stacked-bar charts.
 
 When you have a Group-By applied, you can view the results as raw numbers, or as a percentage. 
+![image](https://github.com/user-attachments/assets/b2375dfa-2203-4f93-be34-ed77ca309d83)
 
 **Feature Gate  and Experiment Groups**
 
