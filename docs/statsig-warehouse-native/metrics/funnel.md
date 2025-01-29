@@ -78,7 +78,7 @@ Funnels in experiment-analysis order strictly. For example, in the funnel A->B->
   - Switches the funnel mode into measuring the average time for users to complete a funnel. This will create a ratio metric, where the numerator is the sum of funnel seconds-to-complete, and the denominator is the number of completed funnels. This can be useful in isolation, or when paired with a conversion measurement to understand the change to both completion rate and time to complete.
  
 ## Visualization
-In addition to breaking down lift by funnel steps, it is also possible to create  funnel visualizations by step. 
+In addition to breaking down lift by funnel steps, it is also possible to create funnel visualizations by step. 
 ![image](https://github.com/user-attachments/assets/c38ca372-5323-408f-89b6-121300b4e60c)
 
 ![image](https://github.com/user-attachments/assets/8e10442f-be78-455e-84a3-053e4a61434a)
