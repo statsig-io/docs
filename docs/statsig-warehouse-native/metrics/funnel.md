@@ -80,5 +80,6 @@ Funnels in experiment-analysis order strictly. For example, in the funnel A->B->
 ## Visualization
 In addition to breaking down lift by funnel steps, it is also possible to create native funnel vizualations by step. 
 ![image](https://github.com/user-attachments/assets/c38ca372-5323-408f-89b6-121300b4e60c)
+
 ![image](https://github.com/user-attachments/assets/8e10442f-be78-455e-84a3-053e4a61434a)
 
