@@ -8,7 +8,15 @@ slug: /users/profiles
 
 # Overview
 
-User profiles allow you to streamline event tracking and enhance analysis by storing and leveraging user properties without the need to resend them with every event. For example, you could imagine a social network where each user has a friend count, but it might not make sense to send that friend count on every single event. In this example, you would update the information periodically as part of the user’s profile, and then be able to leverage that in analysis scenarios. With user profiles, you can easily analyze user data based on properties that aren't sent on every event.
+User Profiles are a collection of properties about the people using your product. In Metrics Explorer, you can join these profile properties with any event for analysis and segmentation. Previously, user properties had to be present on each event you wanted to analyze. Now they live independently on the user profile, letting you:
+
+- Update user properties once, not with every event
+- Join profile data with any event during analysis
+- Keep user context and event data separate
+
+This gives you cleaner event logging and more flexible analysis since user properties are stored in one reliable place.
+
+For example, you could imagine a social network where each user has a friend count, but it might not make sense to send that friend count on every single event. In this example, you would update the information periodically as part of the user’s profile, and then be able to leverage that in analysis scenarios. With user profiles, you can easily analyze user data based on properties that aren't sent on every event.
 
 Whenever you call .logEvent() with updated user properties, we’ll automatically update the user profile. New properties are added, and existing ones are updated as needed.
 
