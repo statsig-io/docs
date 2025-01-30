@@ -15,7 +15,7 @@ Configure the "Segments of Interest" you want automatically evaluated for Differ
 
 ![image](https://github.com/user-attachments/assets/c9bb5e56-dbc8-4fc2-a33b-92974f867120)
 
-This feature is also also referred to as as **Heterogeneous Treatment Effect** or **Segments of Interest**. 
+This feature is also referred to as as **Heterogeneous Treatment Effect** or **Segments of Interest**. 
 
 ## Seeing Differential Impacts
 If extreme outliers are found for a segment you have configured, Statsig will flag this when you're looking at Pulse results. You will be able to see the data broken out by segments in the Explore section of your Pulse results. 
