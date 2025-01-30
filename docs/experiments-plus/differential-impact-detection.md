@@ -11,11 +11,9 @@ Statsig will automatically flag experiments when extreme differential impacts ar
 ![image](https://github.com/user-attachments/assets/9783ba7a-812b-4fea-97af-4e3344f8345f)
 
 ## Enabling this
-On Statsig Warehouse Native, configure the "Segments of Interest" you want automatically evaluated for Differential Impact Detection. These will either have to be configured as [Entity Properties](/statsig-warehouse-native/features/entity-properties) or passed in by a Statsig SDK as user properties in the [User Object](/concepts/user).
+Configure the "Segments of Interest" you want automatically evaluated for Differential Impact Detection. On Statsig Cloud, these are  user properties in the [User Object](/concepts/user) you configure when using the Statsig SDK. On Statsig Warehouse Native they can be configured as an [Entity Properties](/statsig-warehouse-native/features/entity-properties) too.
 
-![image](https://github.com/user-attachments/assets/c1bc4f51-2c8c-4db7-87f5-7a883f7e0fcf)
-
-![image](https://github.com/statsig-io/docs/assets/31516123/c216d7f1-dec5-4f39-926a-cc5034a0f738)
+![image](https://github.com/user-attachments/assets/c9bb5e56-dbc8-4fc2-a33b-92974f867120)
 
 This feature is also  also referred to as as **Heterogeneous Treatment Effect** or **Segments of Interest**. 
 
