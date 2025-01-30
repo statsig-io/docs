@@ -5,13 +5,13 @@ slug: /experiments-plus/differential-impact-detection
 ---
 
 ## What is Differential Impact Detection?
-Experiments can have interesting effects on sub-populations that are easily missed. They might have a bug that impacts only a certain browser, OS, or country. If the topline impact isn't significant or is canceled out by other changes - these are missed.  
+Experiments can have interesting effects on sub-populations that are easily missed. They might have a bug that impacts only a certain browser, OS, or country. If the topline impact isn't significant or is canceled out by other changes - these are missed.
 
 Statsig will automatically flag experiments when extreme differential impacts are detected for any sub-population you have configured. Once configured, experiments are analyzed for differential impact when Pulse is loaded after Day 1, Day 3 and when the Target Duration is met.
 ![image](https://github.com/user-attachments/assets/9783ba7a-812b-4fea-97af-4e3344f8345f)
 
 ## Enabling this
-Configure the "Segments of Interest" you want automatically evaluated for Differential Impact Detection. On Statsig Cloud, these are  user properties in the [User Object](/concepts/user) you configure when using the Statsig SDK. On Statsig Warehouse Native they can be configured as an [Entity Property](/statsig-warehouse-native/features/entity-properties) too.
+Configure the "Segments of Interest" you want automatically evaluated for Differential Impact Detection. On Statsig Cloud, these are user properties in the [User Object](/concepts/user) you configure when using the Statsig SDK. On Statsig Warehouse Native they can be configured as an [Entity Property](/statsig-warehouse-native/features/entity-properties) too.
 
 ![image](https://github.com/user-attachments/assets/c9bb5e56-dbc8-4fc2-a33b-92974f867120)
 
