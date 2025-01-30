@@ -18,7 +18,7 @@ This gives you cleaner event logging and more flexible analysis since user prope
 
 For example, you could imagine a social network where each user has a friend count, but it might not make sense to send that friend count on every single event. In this example, you would update the information periodically as part of the user’s profile, and then be able to leverage that in analysis scenarios. With user profiles, you can easily analyze user data based on properties that aren't sent on every event.
 
-Whenever you call .logEvent() with updated user properties, we’ll automatically update the user profile. New properties are added, and existing ones are updated as needed.
+Whenever you call .logEvent() with user properties, we’ll automatically update the user profile. New properties are added, and existing ones are updated as needed. This means you don't need to send the same user properties on every event, and you can simplify .logEvent() calls.
 
 Now, when you’re querying on Metrics Explorer, you’ll be able to take advantage of user profile properties through filters or group-bys. Because we join your events with the user profile table in the background, queries in Metrics Explorer may take slightly longer to process.
 
