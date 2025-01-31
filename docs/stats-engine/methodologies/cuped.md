@@ -4,13 +4,15 @@ sidebar_label: CUPED
 slug: /stats-engine/methodologies/cuped
 ---
 
-> Our robust stats engine enables us to apply CUPED to metrics of both SUM/COUNT type and RATIO type.
-
 ## CUPED - Controlled-experiment Using Pre-Existing Data
 
 CUPED (short for Controlled-experiment Using Pre-Existing Data) is a technique which leverages user information from before an experiment to reduce the variance, and increase confidence in experimental metrics. This can help to debias experiments which have meaningful pre-exposure bias (e.g. the groups were randomly different before any treatment was applied).
 
 See more at the [Variance Reduction](../variance-reduction.md) page.
+
+## CUPED for Simple Aggregations
+
+The methodology for simple aggregations is described in the original [Microsoft paper](https://www.exp-platform.com/Documents/2013-02-CUPED-ImprovingSensitivityOfControlledExperiments.pdf), as well as our in-depth [article](https://www.statsig.com/blog/cuped) on the technique.
 
 ## CUPED for Ratio Metrics
 
