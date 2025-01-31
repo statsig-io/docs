@@ -13,6 +13,8 @@ To set up connection with Redshift, Statsig needs the following information
 - A service user Password
 - A staging schema that Statsig can write results to
 
+Note: SHA256 passwords are not currently supported, please utilize MD5 to avoid issues. 
+
 You can find this information in your aws console within your specific cluster, as shown in the image below. (Open image in new tab for a bigger image). The service user should be able to read necessary experiment data, and be able to write to the Statsig staging schema you specify.
 
 ![Frame 1](https://user-images.githubusercontent.com/108023879/187515405-17fa7d90-44e1-422f-87a7-cfde090637ed.png)
