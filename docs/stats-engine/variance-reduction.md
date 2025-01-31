@@ -40,9 +40,13 @@ Another common technique for reducing noise is Winsorization, which is a way to 
 
 Winsorization refers to the practice of measuring the percentile _P<sub>x</sub>_ of a metric and setting all values over _P<sub>x</sub>_ to _P<sub>x</sub>_. At Statsig, the default percentile for winsorization is 99.9%. This reduces the influence of extreme outliers caused by factors such as logging errors or bad actors. ([learn more](https://docs.statsig.com/stats-engine/methodologies/winsorization/))
 
+## Metric Selection
+
+The metrics you use can dramatically influence the sensitivity of your analysis. The transformations above, in addition to techniques like creating threshold-based flags, can let you trade-off exact numbers for significantly more power. Please refer to our [blog post](https://www.statsig.com/blog/understanding-and-reducing-variance-and-standard-deviation) on the topic for more information.
+
 ## Literature
 
-Here's a short list of useful content for understanding more about this technique and its applications
+Here's a short list of useful content for understanding more about these techniques and its applications
 
 - [Deng, Xu, Kohavi, & Walker](https://exp-platform.com/Documents/2013-02-CUPED-ImprovingSensitivityOfControlledExperiments.pdf) is the seminal paper on using this technique for online controlled experiments
 - [Booking.com](https://booking.ai/how-booking-com-increases-the-power-of-online-experiments-with-cuped-995d186fff1d) has an excellent blog post on the theory and practice of CUPED
