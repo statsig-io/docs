@@ -26,6 +26,7 @@ import Initialize from "./python/_initialize.mdx";
 import CheckGate from "./python/_checkGate.mdx";
 import GetConfig from "./python/_getConfig.mdx";
 import GetExperiment from "./python/_getExperiment.mdx";
+import GetFeatureGate from "./python/_getFeatureGate.mdx";
 import LogEvent from "./python/_logEvent.mdx";
 import MoreFAQs from "./python/_faqs.mdx";
 import Options from "./python/_options.mdx";
@@ -57,6 +58,7 @@ export const Builder = SDKDocsBuilder({
         getExperiment: <GetExperiment />,
         logEvent: <LogEvent />,
         hideAsyncDisclaimer: true,
+        getFeatureGate: <GetFeatureGate />,
       },
     ],
     [StatsigUser, {}],

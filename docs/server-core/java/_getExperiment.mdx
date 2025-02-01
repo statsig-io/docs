@@ -1,20 +1,8 @@
-### Getting a Layer
-
 ```java
 Layer layer = statsig.getLayer(user, "layer_name");
 ```
 
-
-### Experiment & DynamicConfig class
-
-In this SDK, we now have two classes: **Experiment** and **DynamicConfig**, both of which help you manage feature flags and configurations for your users. These classes are similar to the ones in the Kotlin SDK, but are tailored for use in Java.
-
-While both `Experiment` and `DynamicConfig` classes share similar functionalities (i.e., retrieving configuration values), their underlying structures and intended use cases differ slightly:
-
-### Config/Experiment Usage
-
 ```java
-DynamicConfig config = statsig.getDynamicConfig(user, "awesome_product_details");
-
 Experiment experiment = statsig.getExperiment(user, "sample_exp")
 ```
+
