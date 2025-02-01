@@ -1,9 +1,10 @@
 ```python
-from statsig_python_core import Statsig, StatsigOptions
+from statsig_python_core import Statsig, StatsigOptions #note, import statement has underscores while install has dashes
+
 
 # Simple initialization
 statsig = Statsig("secret-key")
-statsig.initialize()
+statsig.initialize().wait()
 
 # Or with StatsigOptions
 options = StatsigOptions()
@@ -13,5 +14,5 @@ statsig = Statsig("secret-key", options)
 statsig.initialize()
 
 # Don't forget to shutdown when done
-statsig.shutdown()
+statsig.shutdown().wait()
 ```

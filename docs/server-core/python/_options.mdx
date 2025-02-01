@@ -48,7 +48,7 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
 ### Example Usage
 
 ```python
-from statsig import StatsigOptions
+from statsig_python_core import StatsigOptions
 
 # Initialize StatsigOptions with custom parameters
 options = StatsigOptions()
@@ -57,5 +57,6 @@ options.init_timeout_ms = 3000
 options.disable_all_logging = False
 
 # Pass the options object into statsig.initialize()
-statsig.initialize("secret-key", options)
+statsig = Statsig("secret-key", options)
+statsig.initialize().wait()
 ```
