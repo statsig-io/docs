@@ -8,7 +8,7 @@ statsig.initialize().wait()
 
 # Or with StatsigOptions
 options = StatsigOptions()
-options.environment = {"tier": "staging"}
+options.environment = "development"
 
 statsig = Statsig("secret-key", options)
 statsig.initialize()
