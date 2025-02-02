@@ -24,6 +24,7 @@ These domains are used by our SDKs to communicate with our backend for feature g
 - `assetsconfigcdn.org`
 - `prodregistryv2.org`
 - `cloudflare-dns.com`
+- `beyondwickedmapping.org`
 
 ## Statsig User Segment Storage API
 
