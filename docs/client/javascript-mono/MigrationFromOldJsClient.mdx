@@ -27,6 +27,7 @@ The architecture and majority of the APIs in the updated SDK have been retained;
 * The method to retrieve a stableID [has changed](/client/javascript-sdk/migrating-from-statsig-js#stableid-and-getstableid)
 * The structure of [cached values has changed](/client/javascript-sdk/migrating-from-statsig-js#cached-values), with implications on first-run experience
 * Several StatsigOptions [have changed](/client/javascript-sdk/migrating-from-statsig-js#legacy-statsigoptions)
+* Manual exposure logging methods have been deprecated (`getExperimentWithExposureLoggingDisabled`, `checkGateWithExposureLoggingDisabled`). The checkGate and getExperiment methods now support a second argument to suppress exposure logging [as shown here](https://docs.statsig.com/client/javascript-sdk/#manual-exposures-).
 
 ### Initialization 
 
