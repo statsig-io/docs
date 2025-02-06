@@ -65,27 +65,27 @@ In this case, the default value of **targeted_layer_param** in **Demo Layer** wi
 
 <img width="454" alt="image" src="https://user-images.githubusercontent.com/1315028/162634627-ae327d9e-81a9-42f9-8171-836808cb6ffb.png" />
 
-## Shipping with a Holdout
+## Shipping with a Holdback
 
-Shipping with holdout lets you release an experiment variant (the “shipped” group) to most of your users while keeping a percentage in the control group for ongoing comparisons. Here’s how it works:
+Shipping with holdback lets you release an experiment variant (the “shipped” group) to most of your users while keeping a percentage in the control group for ongoing comparisons. Here’s how it works:
 
 1. Make a decision and select a group to ship: From the Make Decision dropdown, choose which variant you want to ship.
-2. Turn on the Ship with Holdout option and specify the percentage of users you want to remain in the control (holdout) group.
+2. Turn on the Ship with holdback option and specify the percentage of users you want to remain in the control (holdback) group.
 
 ![image](https://github.com/user-attachments/assets/0f45e69f-d48b-4608-9473-9ade66e93cab)
 
 3. Allocation of users:
-        The control (holdout) group is set to your specified percentage.
+        The control (holdback) group is set to your specified percentage.
         The remaining users are assigned to the shipped experience.
 4. Splitting the shipped group:
         The shipped group is divided into two segments: Test and Launched.
-        The Test segment matches the same percentage allocation as the holdout group, allowing a direct head-to-head comparison with control.
+        The Test segment matches the same percentage allocation as the holdback group, allowing a direct head-to-head comparison with control.
         The Launched segment no longer appears in pulse results, but continues to receive the shipped experience.
 
 ![image](https://github.com/user-attachments/assets/3299d15c-f777-42a4-9b32-fcd0be0d7e5d)
 
-5. Continue monitoring the pulse results evaluating the Test segment vs. Control (holdout)
+5. Continue monitoring the pulse results evaluating the Test segment vs. Control (holdback)
 
 > **Note** that some users currently in control will move to the shipped group to achieve the desired allocation. However, any user who has previously been in a test or shipped group will not be reassigned to control. New users—those who have never been exposed to the experiment will be assigned based on the allocation percentages of each group.
 
-By using shipping with holdout, you maintain a dedicated, stable control group alongside a representative test segment of the shipped experience, making it easy to measure ongoing performance and user behavior post-launch.
+By using shipping with holdback, you maintain a dedicated, stable control group alongside a representative test segment of the shipped experience, making it easy to measure ongoing performance and user behavior post-launch.
