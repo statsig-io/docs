@@ -16,10 +16,8 @@ You can export your Pulse Results for Feature Gates and Experiments. Simply navi
 
 Experiment results export feature in WHN lets you access metric results across all experiments directly in your warehouse through SQL View or in your Statsig project through your metric source. With the SQL View, you have access to values that include experiment metadata like experiment team, experiment tags, target duration, and experiment settings like CUPED and Sequential testing, then each metric’s metadata like metric tags, and all of the metric lifts-same set of results you see on the Console copy. If you want to start using this feature, simply enable it in your project setting Project Settings > Data Connection > Export. Once you have this enabled, we will automatically handle the setup of SQL view in your warehouse as well as the metric source in your Statsig project. We will then automatically export scorecard metric results to your data warehouse each time an experiment is loaded.
 
-# Schema of the Pulse Data Export Table
 
-| Column                    | Type                | Description                                                                                                 |
-|-|-|-|
+## Schema of the Pulse Data Export Table
 
 | Column | Type | Description |
 |-|-|-|
@@ -31,17 +29,17 @@ Experiment results export feature in WHN lets you access metric results across a
 | experimentStartTs | number | Start timestamp of the experiment, in milliseconds |
 | experimentEndTs | number | End timestamp of the experiment, in milliseconds |
 | targetExposures | number | The target number of exposures for the experiment |
-| targetDuration | number | The target duration (in minutes) of the experiment |
-| actualDuration | number | The actual duration (in minutes) the experiment ran |
+| targetDuration | number | The target duration  of the experiment |
+| actualDuration | number | The actual duration  the experiment ran |
 | controlGroupName | string | Name of the control group in the experiment |
 | testGroupName | string | Name of the test group in the experiment |
-| useCUPED | boolean | Whether CUPED was applied in the experiment (true/false) |
-| useSequential | boolean | Whether sequential testing was applied in the experiment (true/false) |
+| useCUPED | boolean | Whether CUPED was applied in the experiment  |
+| useSequential | boolean | Whether sequential testing was applied in the experiment  |
 | metricName | string | Name of the metric being measured in the experiment |
-| metricType | string | Type of metric (e.g., continuous, binary) |
+| metricType | string | Type of metric |
 | metricTags | array of strings | Tags associated with the metric, represented as an array of strings |
-| higherIsBetter | boolean | Whether a higher value of the metric is better (true/false) |
-| isVerifiedMetric | boolean | Whether the metric is verified (true/false) |
+| higherIsBetter | boolean | Whether a higher value of the metric is better |
+| isVerifiedMetric | boolean | Whether the metric is verified |
 | metricTeam | string | Team responsible for the metric |
 | absoluteDelta | number | The absolute change in the metric value between control and test groups |
 | absoluteDeltaCI | number | Confidence interval for the absolute delta |
@@ -62,53 +60,9 @@ Experiment results export feature in WHN lets you access metric results across a
 | testTotal | number | Total value for the test group metric |
 | controlMean | number | The mean value for the control group |
 | testMean | number | The mean value for the test group |
-| sequentialTestingAbsoluteDeltaCI | number (optional) | Confidence interval for the absolute delta in sequential testing |
-| sequentialTestingRelativeDeltaCI | number (optional) | Confidence interval for the relative delta in sequential testing |
-| sequentialTestingAbsoluteDeltaPValue | number (optional) | P-value for the absolute delta in sequential testing |
-
-| experimentName            | string              | Name of the experiment.                                                                                     |
-| experimentCreator         | string              | Creator of the experiment.                                                                                  |
-| experimentTeam            | string              | Team conducting the experiment.                                                                              |
-| experimentTags            | array of strings    | Tags associated with the experiment, represented as an array of strings.                                      |
-| experimentStartTs         | number              | Start timestamp of the experiment, in milliseconds.                                                          |
-| experimentEndTs           | number              | End timestamp of the experiment, in milliseconds.                                                            |
-| targetExposures           | number              | The target number of exposures for the experiment.                                                          |
-| targetDuration            | number              | The target duration (in minutes) of the experiment.                                                          |
-| actualDuration            | number              | The actual duration (in minutes) the experiment ran.                                                         |
-| controlGroupName          | string              | Name of the control group in the experiment.                                                                |
-| testGroupName             | string              | Name of the test group in the experiment.                                                                   |
-| useCUPED                  | boolean             | Whether CUPED was applied in the experiment (true/false).                                                    |
-| useSequential             | boolean             | Whether sequential testing was applied in the experiment (true/false).                                      |
-| metricName                | string              | Name of the metric being measured in the experiment.                                                        |
-| metricType                | string              | Type of metric (e.g., continuous, binary).                                                                  |
-| metricTags                | array of strings    | Tags associated with the metric, represented as an array of strings.                                         |
-| higherIsBetter            | boolean             | Whether a higher value of the metric is better (true/false).                                                 |
-| isVerifiedMetric          | boolean             | Whether the metric is verified (true/false).                                                                 |
-| metricTeam                | string              | Team responsible for the metric.                                                                             |
-| absoluteDelta             | number              | The absolute change in the metric value between control and test groups.                                     |
-| absoluteDeltaCI           | number              | Confidence interval for the absolute delta.                                                                  |
-| relativeDelta             | number              | The relative change in the metric value between control and test groups.                                     |
-| relativeDeltaCI           | number              | Confidence interval for the relative delta.                                                                  |
-| absoluteDeltaPValue       | number              | P-value associated with the absolute delta metric result.                                                    |
-| toplineAbs                | number              | The absolute topline metric value for the experiment.                                                        |
-| toplineAbsCI              | number              | Confidence interval for the absolute topline metric.                                                        |
-| toplineRel                | number              | The relative topline metric value for the experiment.                                                       |
-| toplineRelCI              | number              | Confidence interval for the relative topline metric.                                                        |
-| projectedTopline          | number              | Projected topline metric value based on current data.                                                       |
-| projectedToplineCI        | number              | Confidence interval for the projected topline metric.                                                       |
-| projectedToplineRel       | number              | Projected relative topline metric value based on current data.                                              |
-| projectedToplineRelCI     | number              | Confidence interval for the projected relative topline metric.                                              |
-| controlUnits              | number              | The number of control group units.                                                                           |
-| testUnits                 | number              | The number of test group units.                                                                              |
-| controlTotal              | number              | Total value for the control group metric.                                                                   |
-| testTotal                 | number              | Total value for the test group metric.                                                                      |
-| controlMean               | number              | The mean value for the control group.                                                                        |
-| testMean                  | number              | The mean value for the test group.                                                                           |
-| sequentialTestingAbsoluteDeltaCI | number (optional) | Confidence interval for the absolute delta in sequential testing.                                           |
-| sequentialTestingRelativeDeltaCI | number (optional) | Confidence interval for the relative delta in sequential testing.                                           |
-| sequentialTestingAbsoluteDeltaPValue | number (optional) | P-value for the absolute delta in sequential testing.                                                      |
-
-
+| sequentialTestingAbsoluteDeltaCI | number (optional) | Confidence interval for the absolute delta with sequential testing enabled|
+| sequentialTestingRelativeDeltaCI | number (optional) | Confidence interval for the relative delta with sequential testing enabled|
+| sequentialTestingAbsoluteDeltaPValue | number (optional) | P-value for the absolute delta with sequential testing enabled|
 
 
 ## Report Types
