@@ -20,9 +20,9 @@ As a Project Admin, you can configure your project to require reviews for any ch
 
 - Reviewers will now see a notification on the Statsig console as shown below. When they click on **View Proposed Changes**, they will see a diff of the *current version* in production and *new version*. Reviewers can now **Approve** or **Reject** the submitted changes.
 
-<img width="871" alt="image" src="https://user-images.githubusercontent.com/1315028/166675031-43a138eb-c1ec-4272-ad51-bed66c6379b6.png"/>
+![propsed changes](/img/proposed_changes.png)
 
-![Screen Shot 2021-12-15 at 4 19 18 PM](https://user-images.githubusercontent.com/1315028/146821955-57fb8ca5-844c-45d8-8c19-280b5f196cc8.png)
+![example review](/img/example_review_page.png)
 
 
 ### Teams
