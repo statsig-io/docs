@@ -3,9 +3,9 @@ sidebar_label: Config History
 title: Config History
 ---
 
-Config history for things like Feature Gates, Experiments, Dynamic Configs, and Segments can be accessed by clicking the "History" button on the top right of the page.
+History for entities like Feature Gates, Experiments, Dynamic Configs, and Segments can be accessed by clicking the "History" button on the top right of the page.
 
-![Screen Shot 2022-05-23 at 11 57 53 AM](https://user-images.githubusercontent.com/77301670/169888209-0def03c4-f079-45c7-8f6b-427ad54283e5.png)
+![Config History](/img/config_history.png)
 
 This page shows each change to a given config and the time that change was published.
 
@@ -14,6 +14,9 @@ This page shows each change to a given config and the time that change was publi
 For Feature Gates and Dynamic Configs, there is also a "Preview" and "Restore" option. These are meant to make it easy to revert to a previous state, particularly if you start rolling something out that is causing issues in production. The "preview" action will show a diff view between the current state of the gate and the previous state you selected, so you can make sure you are reverting to the correct state.
 
 ![Screen Shot 2022-05-23 at 12 02 38 PM](https://user-images.githubusercontent.com/77301670/169888598-df6f94ee-0194-4f09-906e-d85ed89cd554.png)
+
+For Gates, Dynamic Configs, and Segments, you can also select two different versions, and compare the differences between the states of the entity between the two versions. 
+![Compare Configs](/img/config_history_compare_changes.png)
 
 :::info Note that changes in nested configs are not listed (e.g. if this gate references another gate or segment via a "Passes Target Gate" or "User in Segment" condition, changes to the other gate or segment will not show in the history view.
 :::
