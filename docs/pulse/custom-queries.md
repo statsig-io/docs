@@ -12,9 +12,9 @@ Be careful with statistical interpretation of Custom Queries, especially when gr
 
 ### Running a Custom Query
 
-To run a Custom Query, navigate to the **Pulse** tab within your experiment, and then look for the **Explore** tab within **Metric Lifts** (you'll find this unit directly below the cumulative exposures chart).
+To run a Custom Query, navigate to the **Explore** tab within your experiment.
 
-![Screen Shot 2023-12-01 at 5 39 17 PM](https://github.com/statsig-io/docs/assets/101903926/99e60c5a-e8d7-4991-aeec-08c03bfbcbd9)
+<img width="467" alt="Screenshot 2025-02-06 at 6 49 18 PM" src="https://github.com/user-attachments/assets/b2737ba1-dbf4-4235-a806-afea5dfe9a78" />
 
 Custom Query fields: 
 
@@ -25,7 +25,7 @@ Custom Query fields:
 - **(Advanced) ID List Segment filters:** You can choose an ID-list based [Segment](/segments), and your results will only be calculated for users who are in that segment. This can be useful if you forgot to log an important user dimension that you want to filter to, or realized that you only care about a sub-population that you've defined in your own data warehouse. 
   - Careful! This option can easily lead to erroneous and biased results. You will need to make sure the segment is defined based on the user's status _before_ they were exposed to the experiment or feature gate.
   - Similarly, you can choose to _exclude_ a certain ID list segment, for example if you want to exclude a set of users who have been retroactively identified as bad actors from your lifts analysis.
-- **(Advanced) Filter by Exposure Date:** For WHN users, you can also filter the results by Exposure Date which can give you more flexibility. You can choose only include certain days anchoring on first exposure date, include/exclude users based on when they first got exposed to the experiment.
+- **(Advanced) Filter by Exposure Date:** You can also filter the results by Exposure Date which can give you more flexibility. You can choose only include or exclude a date range, or in WHN, you can additionally include/exclude users based on when they were first exposed to the experiment.
   - This is useful when your metrics have novelty effect, delayed impact, or specific scenarios where you only want to filter your results to certain users. Use it cautiously because it can lead to biased results.  
 
 > Note: User data in this tool is based off of first-touch attribution. The filters and grouping applied will be based on the user attributes collected at the time of first exposure.
@@ -37,18 +37,19 @@ Custom Query fields:
 
 ### Viewing a Custom Query in Explore
 
-These queries take a few minutes to run (don't worry, we'll send you an email once your results are ready in case you want to hop to another task), but once complete the results will be visible in the **History** section of the **Explore** interface. All historical queries (across your team) will be stored here. You can also give your query a display name inline for easier future identification. 
+These queries take a few minutes to run (don't worry, we'll send you an email once your results are ready in case you want to hop to another task), but once complete the results will be visible in the **Query History** section of the **Explore** interface. All historical queries (across your team) will be stored here. You can also give your query a display name inline for easier future identification. 
 
-![Screen Shot 2023-12-01 at 5 53 55 PM](https://github.com/statsig-io/docs/assets/101903926/2d128a50-5805-4e17-b560-888af508c2b5)
+<img width="1345" alt="Screenshot 2025-02-06 at 6 52 42 PM" src="https://github.com/user-attachments/assets/76d8f99a-668f-4218-95b4-91c0814f254b" />
 
 
 ### Scheduling a Custom Query
 
 If you want a daily refresh of a given Custom Query, you can schedule your Custom Query directly from the **Explore** tab. To do this, author the Custom Query you wish to schedule, then tap the "..." menu, then **Schedule**. This Custom Query will now run daily and live in the **Scheduled** tab of your Metric Lifts. 
 
-![Screen Shot 2023-12-01 at 5 54 31 PM](https://github.com/statsig-io/docs/assets/101903926/05fad46f-6b3f-4811-b76e-49c1e2566218)
+<img width="1347" alt="Screenshot 2025-02-06 at 6 53 16 PM" src="https://github.com/user-attachments/assets/9ecb39c0-0cd0-478f-8ef6-ff9150cbb11b" />
 
-![Screen Shot 2023-12-01 at 5 54 45 PM](https://github.com/statsig-io/docs/assets/101903926/ad4d838d-21b0-4845-8496-7518e0178307)
+<img width="505" alt="Screenshot 2025-02-06 at 6 53 33 PM" src="https://github.com/user-attachments/assets/fad0c8ce-3f9c-46be-a09c-52263e124259" />
+
 
 
 
