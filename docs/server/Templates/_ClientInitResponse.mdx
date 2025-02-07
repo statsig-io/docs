@@ -40,3 +40,14 @@ Alternatively, if you wish to use the `stableID` field rather than a custom ID, 
 - Override the `stableID` in the client SDK by getting the value from the cookie and setting the `overrideStableID`
   parameter in `StatsigOptions`
 - Set the `stableID` field on the `StatsigUser` object in the `customIDs` map when generating the initialize response from the SDK
+
+
+### getClientInitializeResponse and the legacy JS SDK
+
+If you are migrating from the legacy JS Client, you will need to make some updates to 
+how your server SDK generates values. 
+The default hashing algorithm was changed from `sha256` to `djb2` for performance and size reasons. 
+
+See the [Bootstrapping Migration Docs](https://docs.statsig.com/client/javascript-sdk/migrating-from-statsig-js/#bootstrapping) for more.
+
+
