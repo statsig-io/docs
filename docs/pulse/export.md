@@ -20,7 +20,52 @@ Experiment results export feature in WHN lets you access metric results across a
 
 | Column                    | Type                | Description                                                                                                 |
 |-|-|-|
-| ds                        | date                | The date when the data was recorded.                                                                        |
+
+| Column | Type | Description |
+|-|-|-|
+| ds | date | The date when the data was recorded |
+| experimentName | string | Name of the experiment |
+| experimentCreator | string | Creator of the experiment |
+| experimentTeam | string | Team conducting the experiment |
+| experimentTags | array of strings | Tags associated with the experiment, represented as an array of strings |
+| experimentStartTs | number | Start timestamp of the experiment, in milliseconds |
+| experimentEndTs | number | End timestamp of the experiment, in milliseconds |
+| targetExposures | number | The target number of exposures for the experiment |
+| targetDuration | number | The target duration (in minutes) of the experiment |
+| actualDuration | number | The actual duration (in minutes) the experiment ran |
+| controlGroupName | string | Name of the control group in the experiment |
+| testGroupName | string | Name of the test group in the experiment |
+| useCUPED | boolean | Whether CUPED was applied in the experiment (true/false) |
+| useSequential | boolean | Whether sequential testing was applied in the experiment (true/false) |
+| metricName | string | Name of the metric being measured in the experiment |
+| metricType | string | Type of metric (e.g., continuous, binary) |
+| metricTags | array of strings | Tags associated with the metric, represented as an array of strings |
+| higherIsBetter | boolean | Whether a higher value of the metric is better (true/false) |
+| isVerifiedMetric | boolean | Whether the metric is verified (true/false) |
+| metricTeam | string | Team responsible for the metric |
+| absoluteDelta | number | The absolute change in the metric value between control and test groups |
+| absoluteDeltaCI | number | Confidence interval for the absolute delta |
+| relativeDelta | number | The relative change in the metric value between control and test groups |
+| relativeDeltaCI | number | Confidence interval for the relative delta |
+| absoluteDeltaPValue | number | P-value associated with the absolute delta metric result |
+| toplineAbs | number | The absolute topline metric value for the experiment |
+| toplineAbsCI | number | Confidence interval for the absolute topline metric |
+| toplineRel | number | The relative topline metric value for the experiment |
+| toplineRelCI | number | Confidence interval for the relative topline metric |
+| projectedTopline | number | Projected topline metric value based on current data |
+| projectedToplineCI | number | Confidence interval for the projected topline metric |
+| projectedToplineRel | number | Projected relative topline metric value based on current data |
+| projectedToplineRelCI | number | Confidence interval for the projected relative topline metric |
+| controlUnits | number | The number of control group units |
+| testUnits | number | The number of test group units |
+| controlTotal | number | Total value for the control group metric |
+| testTotal | number | Total value for the test group metric |
+| controlMean | number | The mean value for the control group |
+| testMean | number | The mean value for the test group |
+| sequentialTestingAbsoluteDeltaCI | number (optional) | Confidence interval for the absolute delta in sequential testing |
+| sequentialTestingRelativeDeltaCI | number (optional) | Confidence interval for the relative delta in sequential testing |
+| sequentialTestingAbsoluteDeltaPValue | number (optional) | P-value for the absolute delta in sequential testing |
+
 | experimentName            | string              | Name of the experiment.                                                                                     |
 | experimentCreator         | string              | Creator of the experiment.                                                                                  |
 | experimentTeam            | string              | Team conducting the experiment.                                                                              |
