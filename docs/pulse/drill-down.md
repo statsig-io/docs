@@ -8,7 +8,7 @@ slug: /pulse/drill-down
 
 A tooltip with key statistics and deeper information is shown if you hover over a metric in Pulse.
 
-![image](https://user-images.githubusercontent.com/90343952/171743900-23d84368-2eaf-4402-9267-3710b4dd3b19.png)
+![Screenshot 2025-02-06 at 6 39 09 PM](https://github.com/user-attachments/assets/767a8861-6034-4a60-966b-6d3ad94b843b)
 
 - **Group**: The name of the group of users. For Feature Gates, the "Pass" group is considered the test group while the "Fail" group is the control. In Experiments, these will be the variant names.
 - **Units**: The number of distinct units included in the metric. E.g.: Distinct users for user_id experiments, devices for stable_id experiments, etc.
@@ -21,7 +21,7 @@ The exact calculation for each of the above depends on the metric type:
 | Metric Type      | Total Calculation       | Mean           | Units          |
 |------------------|-------------------------|----------------|----------------|
 | event_count      | Sum of events (99.9% winsorization)           | Average events per user (99.9% winsorization)  | All users  |
-| event_dau (Deprecated as of October 16, 2024)        | Sum of event DAU (distinct user-day pairs) | Average event_dau value per user per day. Note that we call this "Event Participation Rate" as this can be interpreted as the probability a user is DAU for that event.  | All users |
+| event_user       | Sum of event DAU (distinct user-day pairs) | Average event_dau value per user per day. Note that we call this "Event Participation Rate" as this can be interpreted as the probability a user is DAU for that event.  | All users |
 | ratio            | Overall ratio: sum(numerator values)/sum(denominator values)  | Overall ratio  |  Participating users |
 | sum              | Total sum of values (99.9% winsorization)     | Average value per user (99.9% winsorization)   | All users |
 | mean             | Overall mean value    | Overall mean value   | Participating users |
@@ -44,15 +44,15 @@ In this view, select and drag as needed to zoom-in on different time ranges.  Th
 
 **Daily**: The metric impact on each calendar day without aggregating days together.  This is useful for assessing the variability of the metric day-over-day and the impact of specific events.  It's the recommended time series view for Holdouts, since it highlights the impact over time as new features are launched. 
 
-![image](https://user-images.githubusercontent.com/90343952/171748363-20d7819c-e264-4135-a126-93341e4bb717.png)
+![Screenshot 2025-02-06 at 6 41 14 PM](https://github.com/user-attachments/assets/f42453a6-e413-47d5-b176-bb3e9b49a915)
 
 **Cumulative**: Shows how the aggregated metric lift and confidence intervals evolve over time. 
 
-![image](https://user-images.githubusercontent.com/90343952/171912879-ad3ac78a-c8b2-4ccd-95d6-728fd4975817.png)
+![Screenshot 2025-02-06 at 6 41 34 PM](https://github.com/user-attachments/assets/b2e9aea9-98fb-4e29-bccf-abae356d0173)
  
 **Days Since Exposure**: Shows the metric impact broken down by the number of days users have been in the experiment, which helps distinguish between novelty effects and sustained impact.  For key metrics, this view also shows pre-experiment metrics to identify an differences that existed between groups even before the experiment started.  
 
-![image](https://user-images.githubusercontent.com/90343952/171913487-9e8d7068-dbc1-4f78-9106-b61bb242eb3f.png)
+![Screenshot 2025-02-06 at 6 41 49 PM](https://github.com/user-attachments/assets/17eeb054-43d8-424c-b43a-85c682bfcfb8)
 
 
 ### Raw Data
