@@ -14,7 +14,7 @@ You can export your Pulse Results for Feature Gates and Experiments. Simply navi
 
 ## Report Types
 
-There are three types of export:
+There are three types of exports:
 
 1. Exposures - A table of all exposed users and their first exposures. This is useful for joining on your own internal data, and running custom queries within your own data warehouse. This can also be used to verify who was in the experiment, what group they were assigned to, and when they were first exposed (around 1-25MB). This will contain:
    1. `<experiment\>_first_exposures.csv` - contains a list of users and their first exposure to the experiment.
@@ -26,7 +26,7 @@ There are three types of export:
    1. `<experiment\>_first_exposures.csv` - contains a list of users and their first exposure to the experiment. If this is the only file you are interested in, you can get this by exporting an "Exposures" report which will be much smaller in size.
    2. `<experiment\>_user_metrics.csv` - contains a list of experimental users, and their calculated metrics for each day they were enrolled in the experiment.
 
-The availability of these exports are subject to our retention policy. We hold exposures data for up-to 90 days after an experiment is concluded. We hold raw user-level metrics data for 90 days.
+In WHN, only the Pulse Summary may be exported, as the other two types of data are only stored [in your warehouse](https://docs.statsig.com/statsig-warehouse-native/pipeline-overview/#artifacts-and-entity-relationships). The availability of these exports are subject to our retention policy. We hold exposures data for up-to 90 days after an experiment is concluded. We hold raw user-level metrics data for 90 days.
 
 ### Pulse Summary File Description - For Feature Gates
 
