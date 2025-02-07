@@ -29,7 +29,7 @@ Configuring the Scorecard is a required step when creating an experiment. It pro
 
 For best practices on configuring your Scorecard, read more [here](/experiments-plus/read-results#reading-experiment-results).
 
-![image](https://user-images.githubusercontent.com/101903926/203614214-1d7a45d4-a701-43e6-955c-025fd29c4903.png)
+<img width="1086" alt="Screenshot 2025-02-06 at 6 34 00 PM" src="https://github.com/user-attachments/assets/cf3e3be7-61d5-4079-bb0f-6b6685f72f01" />
 
 ### Configure Allocation and Targeting
 
@@ -96,12 +96,12 @@ By default, Pulse results display with 95% confidence intervals and without Bonf
 
 ### Target Duration
 
-Setting a target duration is optional, but it helps ensure that you wait long enough for the experiment to reach full power. You can set the target as either a specific number of days or a number of exposures, and use the **Power Analysis Calculator** to determine what target duration works best for your metrics.
+Setting a target duration is optional, but it helps ensure that you wait long enough for the experiment to reach full power. You can set the target as either a specific number of days or a number of exposures, and use the **Power Analysis Calculator** to determine what target works best for your metrics.
 
 💡 **Target durations longer than 90 days:** By default, Statsig computes Pulse results for the first 90 days, though the experiment itself can run longer. Before setting a duration beyond 90 days, ask yourself if results past that period will still be relevant, and if earlier data might already provide the insights you need.
 
-![image](https://user-images.githubusercontent.com/101903926/203634126-811bd508-8fc4-4f87-ab63-df5626344331.png)
+<img width="991" alt="Screenshot 2025-02-06 at 6 35 03 PM" src="https://github.com/user-attachments/assets/371f7de7-f428-41d5-ad0e-8fdf9d223982" />
 
-Once set, you can track progress against the target duration in the experiment header. You’ll also receive notifications via email and Slack (if integrated) when the target duration is reached.
+Once set, you can track progress against the target duration/exposures in the experiment header. You’ll also receive notifications via email and Slack (if integrated) when the target is reached.
 
 ---
