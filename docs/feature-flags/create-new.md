@@ -21,7 +21,7 @@ To create a new feature gate,
  
 Calls to check this feature gate for a user evaluate the rules that you define for this feature gate. This check returns a **true** or **false** depending on whether that user matches these rules. If no rules are defined, the gate check returns **false** by default.
  
-![image](https://github.com/statsig-io/docs/assets/31516123/bb35e7ce-72ba-4643-8343-fdeccbf36c7f)
+<img width="1183" alt="Screenshot 2025-02-06 at 6 44 30 PM" src="https://github.com/user-attachments/assets/64a7bc9a-bd3e-4d98-a853-4f91f16ef82e" />
 
 You can also Launch (pass 100%) or Disable (fail 100%) the gate using the More Options menu (...).
 
