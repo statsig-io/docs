@@ -332,18 +332,18 @@ const sidebars: SidebarsConfig = {
               "Data Into Statsig": [
                 {
                   "Data Connectors": [
+                    "integrations/data-connectors/amplitude",
                     "integrations/data-connectors/census",
-                    "integrations/data-connectors/google-analytics",
                     "integrations/data-connectors/fivetran",
+                    "integrations/data-connectors/google-analytics",
                     "integrations/data-connectors/heap",
                     "integrations/data-connectors/hightouch",
+                    "integrations/data-connectors/mixpanel",
                     "integrations/data-connectors/mparticle",
                     "integrations/data-connectors/revenuecat",
-                    "integrations/data-connectors/segment",
                     "integrations/data-connectors/rudderstack",
+                    "integrations/data-connectors/segment",
                     "integrations/data-connectors/stitch",
-                    "integrations/data-connectors/mixpanel",
-                    "integrations/data-connectors/amplitude",
                   ],
                 },
                 {
