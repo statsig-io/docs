@@ -10,7 +10,7 @@ import TabItem from "@theme/TabItem";
 
 ## Configure Recording Sampling Rate
 
-In the Statsig Console, you can configure your session recording sampling rate. This determines the percentage of all user sessions that are recorded. Since there is (currently) a limit of 10,000 session recordings every month, this can help ensure you space out running against that limit. The default sampling rate is 100% which is great for smaller companies and projects. 
+In the Statsig Console, you can configure your session recording sampling rate. This determines the percentage of all user sessions that are recorded. Since there is (currently) a limit of 50,000 session recordings every month, this can help ensure you space out running against that limit. The default sampling rate is 100% which is great for smaller companies and projects. 
 
 Click on the settings icon in the top right of the Statsig console to navigate to Project and Organization Settings. Under Project Settings, click on Session Replay and set the sampling rate. You must be a project admin to modify the sampling rate.
 

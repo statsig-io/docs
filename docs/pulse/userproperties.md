@@ -12,3 +12,6 @@ For Statsig Cloud, these user properties are captured (and frozen) from the prop
 ## Pre-Computed User Properties
 User properties that are frequently used to slice results can be pre-computed. To do this, you can configure these properties to be pre-computed on the experiment setup page, under the advanced settings. It's also possible to configure team-level defaults for this - or pre-configure it on an experiment template.
 ![image](https://github.com/user-attachments/assets/196bd217-dd29-4b63-9f1b-d08639e0d36d)
+
+Once configured, you can also apply filters to all metrics on your results.
+![image](https://github.com/user-attachments/assets/8b5c6dcc-feac-46c9-a6fa-331daafc4864)
