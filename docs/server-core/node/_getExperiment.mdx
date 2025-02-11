@@ -1,13 +1,15 @@
 ```jsx
-// Get values via Layer
-const layer = statsig.getLayer(user, "user_promo_experiments");
-const title = layer.get("title", "Welcome to Statsig!");
-const discount = layer.get<number>("discount", 0.1);
-
 // Or, via individual experiments
 const titleExp = statsig.getExperiment(user, "new_user_promo_title");
 const priceExp = statsig.getExperiment(user, "new_user_promo_price");
 
 const experimentTitle = titleExp.get("title", "Welcome to Statsig!");
 const experimentDiscount = priceExp.get<number>("discount", 0.1);
+
+// Get values via Layer
+const layer = statsig.getLayer(user, "user_promo_experiments");
+const title = layer.get("title", "Welcome to Statsig!");
+const discount = layer.get<number>("discount", 0.1);
+
+
 ```

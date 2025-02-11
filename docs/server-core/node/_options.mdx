@@ -4,20 +4,26 @@ The `StatsigOptions` class is used to specify optional parameters when initializ
 
 ### Parameters
 
+- **`environment`**: `Optional<string>`  
+  Environment parameter for evaluation.
+
 - **`specsUrl`**: `Optional<string>`  
   Custom URL for fetching feature specifications.
 
 - **`specsSyncIntervalMs`**: `Optional<number>`  
   How often the SDK updates specifications from Statsig servers (in milliseconds).
 
-- **`initTimeoutMs`**: `Optional<number>`  
-  Sets the maximum timeout for initialization requests (in milliseconds).
+- **`fallbackToStatsig`**: `Optional<bool>`  
+  Default off. Turn this one on if you are proxying download_config_specs / get_id_lists endpoint and wish to fallback to statsig default endpoint to increase reliability. 
 
 - **`logEventUrl`**: `Optional<string>`  
   Custom URL for logging events.
 
-- **`disableAllLogging`**: `Optional<boolean>`  
-  When `true`, disables all event logging.
+- **`disableAllLogging`**: `Optional<bool>`  
+  Default off. If turned on, SDK will not collect any loggings within the sessions, including custom events and config check exposure events.
+
+- **`enableIDLists`**: `Optional<bool>`  
+  By default off. You need to turn this on if you are using legacy Big ID Lists.
 
 - **`eventLoggingFlushIntervalMs`**: `Optional<number>`  
   How often events are flushed to Statsig servers (in milliseconds).
@@ -25,8 +31,19 @@ The `StatsigOptions` class is used to specify optional parameters when initializ
 - **`eventLoggingMaxQueueSize`**: `Optional<number>`  
   Maximum number of events to queue before forcing a flush.
 
-- **`environment`**: `Optional<string>`  
-  Environment parameter for evaluation.
+- **`dataStore`**: `Optional<DataStore>`  
+  An adapter with custom storage behavior for config specs. 
+  
+  Can also be used to continuously fetch updates in place of the Statsig network. See [Data Stores](https://docs.statsig.com/server/concepts/data_store/).
+  
+  For example, see our 1P implementation via Redis [statsig-node-redis](https://github.com/statsig-io/node-js-server-sdk-redis).
+
+- **`specsAdapterConfig`**: `Optional<SpecAdapterConfig>`  
+  More advanced settings to config SDK to fetch from different sources: for example, [statsig forward proxy](https://docs.statsig.com/server/concepts/forward_proxy/), your own proxy server, data store. 
+  Or using different network protocol, http vs grpc streaming.
+
+- **`observabilityClient`**: `Optional<ObservabilityClient>`  
+  Interface for you to integrate observability metrics exposed by SDK, including, config propagation delay, initialization time spent. See [details](https://docs.statsig.com/sdk_monitoring/)
 
 ---
 
