@@ -37,7 +37,7 @@ In the example below, the rises in *product view count* and *purchase event coun
 
 :::important
 
-Information on Bots & Filtering has been moved to its [own page](../feature-flags/bots.md)
+Information on Bots & Filtering has been moved to its [own page](../experiments-plus/bots.md)
 
 :::
 
