@@ -600,31 +600,9 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/bayesian",
                 "experiments-plus/switchback-tests",
                 "experiments-plus/reconciling-experiment-results",
-                // {
-                //   Experimentation: [
-                //     "experiments-plus/experimentation/why-experiment",
-                //     "experiments-plus/experimentation/scenarios",
-                //     "experiments-plus/experimentation/best-practices",
-                //     "experiments-plus/experimentation/common-terms",
-                //     "experiments-plus/experimentation/choosing-randomization-unit",
-                //   ],
-                // },
+                "experiments-plus/bots",
               ],
             },
-            // {
-            //   type: "category",
-            //   label: "Autotune (Bandits)",
-            //   link: {
-            //     type: "doc",
-            //     id: "autotune/introduction",
-            //   },
-            // items: [
-            //   "autotune/contextual-bandit",
-            //   "autotune/multi-armed-bandit",
-            //   "autotune/setup",
-            //   "autotune/monitoring",
-            // ],
-            // },
             {
               type: "category",
               label: "Stats Engine",
