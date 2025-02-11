@@ -29,14 +29,14 @@ import LogEvent from "./node/_logEvent.mdx";
 import MoreFAQs from "./node/_faqs.mdx";
 import Options from "./node/_options.mdx";
 import ShutdownSnippet from "./node/_shutdown.mdx";
-
+import { Snippets as ManualExposureSnippets } from "./node/_manualExposures.mdx";
 
 export const Builder = SDKDocsBuilder({
   sections: [
     [
       Repository,
       {
-        repo: "https://github.com/statsig-io/statsig-server-core/tree/main/statsig-napi",
+        repo: "https://github.com/statsig-io/statsig-server-core/tree/main/statsig-node",
       },
     ],
     [
@@ -58,6 +58,7 @@ export const Builder = SDKDocsBuilder({
         hideAsyncDisclaimer: true,
       },
     ],
+    [ManualExposures, { ...ManualExposureSnippets }],
     [StatsigUser, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
