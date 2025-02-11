@@ -93,7 +93,7 @@ const sidebars: SidebarsConfig = {
             {
               className: "node-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
-              id: "server/nodejsServerSDK",
+              id: "server-core/node-core",
             },
             {
               type: "category",
@@ -202,12 +202,12 @@ const sidebars: SidebarsConfig = {
                 {
                   className: "java-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/javaSdk",
+                  id: "server-core/java-core",
                 },
                 {
                   className: "python-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/pythonSDK",
+                  id: "server-core/python-core",
                 },
                 {
                   className: "php-icon sidebar-icon sdk-sidebar-icon",
@@ -228,14 +228,29 @@ const sidebars: SidebarsConfig = {
             },
             {
               type: "category",
-              label: "🆕 Statsig Server Core",
+              label: "Legacy Server SDKs",
+              link: {
+                type: "doc",
+                id: "server-core/legacy-sdks",
+              },
               items: [
-                "server-core/java-core",
-                "server-core/python-core",
-                "server-core/node-core",
+                {
+                  className: "node-icon sidebar-icon sdk-sidebar-icon",
+                  type: "doc",
+                  id: "server/nodejsServerSDK",
+                },
+                {
+                  className: "python-icon sidebar-icon sdk-sidebar-icon",
+                  type: "doc",
+                  id: "server/pythonSDK",
+                },
+                {
+                  className: "java-icon sidebar-icon sdk-sidebar-icon",
+                  type: "doc",
+                  id: "server/javaSdk",
+                },
               ],
             },
-
             {
               type: "category",
               label: "Azure AI",
