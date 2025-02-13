@@ -676,6 +676,7 @@ const sidebars: SidebarsConfig = {
                 "autotune/multi-armed-bandit",
                 "autotune/setup",
                 "autotune/monitoring",
+                "autotune/using-bandits",
               ],
             },
             {
