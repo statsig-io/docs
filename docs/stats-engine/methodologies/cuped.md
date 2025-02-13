@@ -8,6 +8,8 @@ slug: /stats-engine/methodologies/cuped
 
 CUPED (short for Controlled-experiment Using Pre-Existing Data) is a technique which leverages user information from before an experiment to reduce the variance, and increase confidence in experimental metrics. This can help to debias experiments which have meaningful pre-exposure bias (e.g. the groups were randomly different before any treatment was applied).
 
+Our Cloud product uses a 7-day window for CUPED calculation. For Warehouse Native customers, a 7-day window is recommended, but you have the flexibility to customize it to any length.
+
 See more at the [Variance Reduction](../variance-reduction.md) page.
 
 ## CUPED for Simple Aggregations

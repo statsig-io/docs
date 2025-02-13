@@ -32,7 +32,7 @@ Extending this observation, the more correlated the pre-experiment information i
 - CUPED does not work on new users, because there is not pre-exposure data to leverage
 - CUPED is less effective if a user's metric value is uncorrelated with historical behavior
 - On Statsig Cloud : CUPED will not be applied historically for newly created metrics, or metrics that were added to Key Metrics partway through an experiment, but will be calculated for exposed users after the metric is added.
-- CUPED is applied to common metric types, but not all. Today, funnel metrics, ratio metrics, and "event user" metrics (# users who had an event 1+ time in a given time window) are CUPED-ineligible. We're working on rolling CUPED out to more metric types. 
+- CUPED is applied to most metric types, but not all. Today, funnel metrics and "event user" metrics (# users who had an event 1+ time in a given time window) are CUPED-ineligible. We're working on rolling CUPED out to more metric types.
 
 ## Winsorization
 
