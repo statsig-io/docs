@@ -21,10 +21,6 @@ Shipping with a ruleset presents security concerns, but given that the experimen
 
 The Local Eval Adapter, with proper attention to security, and maintainenance of the ruleset in your application, **addresses the downsides of other experiment-at-launch strategies**. 
 
-:::info
-The local evaluation adapter is for Enterprise and Pro Tier companies only.  If you are trying to follow these instructions but do not meet that criteria, some of the setup steps may not work.
-:::
-
 The Adapter manifests as a StatsigOptions object seeded with a ruleset payload:
 <Tabs>
   <TabItem value="ios" label="iOS">
@@ -86,8 +82,6 @@ The Adapter manifests as a StatsigOptions object seeded with a ruleset payload:
 
 ### Example Ruleset "Config Spec"
 
-The ruleset is a JSON object that contains the following fields:
-
 ```json
 {
   "feature_gates": [],
@@ -96,4 +90,3 @@ The ruleset is a JSON object that contains the following fields:
   "time": 1735718400000
 }
 ```
-Your ruleset can be retrieved by API, and we recommend using target apps to scope the ruleset to only the experiments and feature gates you need on startup. If you need help, reach out to us in your Slack Channel or our [community Slack](https://statsig.com/slack).
