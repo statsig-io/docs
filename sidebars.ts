@@ -282,6 +282,7 @@ const sidebars: SidebarsConfig = {
                   ],
                 },
                 "client/concepts/persistent_assignment",
+                "client/concepts/local-eval-adapter",
                 "server/concepts/persistent_assignment",
                 "server/concepts/data_store",
                 "sdk-keys/target-apps",
