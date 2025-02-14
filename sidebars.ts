@@ -616,6 +616,7 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/switchback-tests",
                 "experiments-plus/reconciling-experiment-results",
                 "experiments-plus/bots",
+                "experiments/quality-score",
               ],
             },
             {
@@ -921,6 +922,7 @@ const sidebars: SidebarsConfig = {
                   ],
                 },
                 "experiments/meta-analysis",
+                "experiments/quality-score",
                 "statsig-warehouse-native/features/reports",
                 "statsig-warehouse-native/features/autotune",
                 "statsig-warehouse-native/features/use-case",
