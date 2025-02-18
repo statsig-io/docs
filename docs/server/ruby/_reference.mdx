@@ -42,9 +42,13 @@ end
 ```ruby
 class StatsigOptions
   attr_accessor :environment
-  attr_accessor :api_url_base
+  attr_accessor :download_config_specs_url
+  attr_accessor :log_event_url
+  attr_accessor :get_id_lists_url
   attr_accessor :rulesets_sync_interval
   attr_accessor :idlists_sync_interval
+  attr_accessor :disable_rulesets_sync
+  attr_accessor :disable_idlists_sync
   attr_accessor :logging_interval_seconds
   attr_accessor :logging_max_buffer_size
   attr_accessor :local_mode
@@ -52,23 +56,38 @@ class StatsigOptions
   attr_accessor :rules_updated_callback
   attr_accessor :data_store
   attr_accessor :idlist_threadpool_size
+  attr_accessor :logger_threadpool_size
   attr_accessor :disable_diagnostics_logging
   attr_accessor :disable_sorbet_logging_handlers
+  attr_accessor :network_timeout
+  attr_accessor :post_logs_retry_limit
+  attr_accessor :post_logs_retry_backoff
+  attr_accessor :user_persistent_storage
 
   def initialize(
-    environment: T.any(T::Hash[String, String], NilClass),
-    api_url_base: String,
-    rulesets_sync_interval: T.any(Float, Integer),
-    idlists_sync_interval: T.any(Float, Integer),
-    logging_interval_seconds: T.any(Float, Integer),
-    logging_max_buffer_size: Integer,
-    local_mode: T::Boolean,
-    bootstrap_values: T.any(String, NilClass),
-    rules_updated_callback: T.any(Method, Proc, NilClass),
-    data_store: T.any(Statsig::Interfaces::IDataStore, NilClass),
-    idlist_threadpool_size: Integer,
-    disable_diagnostics_logging: T::Boolean,
-    disable_sorbet_logging_handlers: T::Boolean)
+    environment: T.any(T::Hash[String, String], NilClass) = nil,
+    download_config_specs_url: T.nilable(String) = nil,
+    log_event_url: T.nilable(String) = nil,
+    get_id_lists_url: T.nilable(String) = nil,
+    rulesets_sync_interval: T.any(Float, Integer) = 10,
+    idlists_sync_interval: T.any(Float, Integer) = 60,
+    disable_rulesets_sync: T::Boolean = false,
+    disable_idlists_sync: T::Boolean = false,
+    logging_interval_seconds: T.any(Float, Integer) = 60,
+    logging_max_buffer_size: Integer = 1000,
+    local_mode: T::Boolean = false,
+    bootstrap_values: T.nilable(String) = nil,
+    rules_updated_callback: T.any(Method, Proc, NilClass) = nil,
+    data_store: T.any(Statsig::Interfaces::IDataStore, NilClass) = nil,
+    idlist_threadpool_size: Integer = 3,
+    logger_threadpool_size: Integer = 3,
+    disable_diagnostics_logging: T::Boolean = false,
+    disable_sorbet_logging_handlers: T::Boolean = false,
+    network_timeout: T.nilable(Integer) = nil,
+    post_logs_retry_limit: Integer = 3,
+    post_logs_retry_backoff: T.nilable(Integer) = nil,
+    user_persistent_storage: T.nilable(Object) = nil
+  )
   end
 end
 ```
