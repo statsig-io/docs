@@ -145,6 +145,22 @@ const config: Config = {
       {
         redirects: [
           {
+            from: "/guides/experiment-analysis/",
+            to: "/statsig-warehouse-native/introduction",
+          },
+          {
+            from: "/sdks/sdks-overview",
+            to: "/sdks/getting-started",
+          },
+          {
+            from: "/statsig-warehouse-native",
+            to: "/statsig-warehouse-native/introduction",
+          },
+          {
+            from: "/debugging",
+            to: "/sdk/debugging",
+          },
+          {
             from: "/messages/serverRequiredUserID/",
             to: "/concepts/user#why-is-an-id-always-required-for-server-sdks",
           },
@@ -371,7 +387,11 @@ const config: Config = {
           {
             to: "/experiments-plus/stop-assignments",
             from: "/experiments-plus/pause-assignment",
-          }
+          },
+          {
+            to: "/console-api/all-endpoints-generated",
+            from: "/console-api/all-endpoints",
+          },
         ],
       },
     ],

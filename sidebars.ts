@@ -93,7 +93,7 @@ const sidebars: SidebarsConfig = {
             {
               className: "node-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
-              id: "server/nodejsServerSDK",
+              id: "server-core/node-core",
             },
             {
               type: "category",
@@ -102,42 +102,42 @@ const sidebars: SidebarsConfig = {
                 {
                   className: "cpp-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/cpp-client-sdk"
+                  id: "client/cpp-client-sdk",
                 },
                 {
                   className: "flutter-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/dartSDK"
+                  id: "client/dartSDK",
                 },
                 {
                   className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/dotnetSDK"
+                  id: "client/dotnetSDK",
                 },
                 {
                   className: "expo-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/javascript-mono/ExpoUsage"
+                  id: "client/javascript-mono/ExpoUsage",
                 },
                 {
                   className: "react-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/javascript-mono/ReactNativeUsage"
+                  id: "client/javascript-mono/ReactNativeUsage",
                 },
                 {
                   className: "angular-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/javascript-mono/AngularUsage"
+                  id: "client/javascript-mono/AngularUsage",
                 },
                 {
                   className: "roku-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/rokuSDK"
+                  id: "client/rokuSDK",
                 },
                 {
                   className: "unity-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/unitySDK"
+                  id: "client/unitySDK",
                 },
                 {
                   type: "category",
@@ -182,52 +182,75 @@ const sidebars: SidebarsConfig = {
                 {
                   className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/dotnetSDK"
+                  id: "server/dotnetSDK",
                 },
                 {
                   className: "cpp-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/cppSDK"
+                  id: "server/cppSDK",
                 },
                 {
                   className: "elixir-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/erlangSDK"
+                  id: "server/erlangSDK",
                 },
                 {
                   className: "golang-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/golangSDK"
+                  id: "server/golangSDK",
                 },
                 {
                   className: "java-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/javaSdk"
+                  id: "server-core/java-core",
                 },
                 {
                   className: "python-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/pythonSDK"
+                  id: "server-core/python-core",
                 },
                 {
                   className: "php-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/phpSDK"
+                  id: "server/phpSDK",
                 },
                 {
                   className: "ruby-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/rubySDK"
+                  id: "server/rubySDK",
                 },
                 {
                   className: "rust-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/rustSDK"
-                }
-              ]
-              
+                  id: "server/rustSDK",
+                },
+              ],
             },
-
+            {
+              type: "category",
+              label: "Legacy Server SDKs",
+              link: {
+                type: "doc",
+                id: "server-core/legacy-sdks",
+              },
+              items: [
+                {
+                  className: "node-icon sidebar-icon sdk-sidebar-icon",
+                  type: "doc",
+                  id: "server/nodejsServerSDK",
+                },
+                {
+                  className: "python-icon sidebar-icon sdk-sidebar-icon",
+                  type: "doc",
+                  id: "server/pythonSDK",
+                },
+                {
+                  className: "java-icon sidebar-icon sdk-sidebar-icon",
+                  type: "doc",
+                  id: "server/javaSdk",
+                },
+              ],
+            },
             {
               type: "category",
               label: "Azure AI",
@@ -259,11 +282,11 @@ const sidebars: SidebarsConfig = {
                   ],
                 },
                 "client/concepts/persistent_assignment",
+                "client/concepts/local-eval-adapter",
                 "server/concepts/persistent_assignment",
                 "server/concepts/data_store",
                 "sdk-keys/target-apps",
-
-              ]
+              ],
             },
             "server/deprecation-notices",
           ],
@@ -326,18 +349,18 @@ const sidebars: SidebarsConfig = {
               "Data Into Statsig": [
                 {
                   "Data Connectors": [
+                    "integrations/data-connectors/amplitude",
                     "integrations/data-connectors/census",
-                    "integrations/data-connectors/google-analytics",
                     "integrations/data-connectors/fivetran",
+                    "integrations/data-connectors/google-analytics",
                     "integrations/data-connectors/heap",
                     "integrations/data-connectors/hightouch",
+                    "integrations/data-connectors/mixpanel",
                     "integrations/data-connectors/mparticle",
                     "integrations/data-connectors/revenuecat",
-                    "integrations/data-connectors/segment",
                     "integrations/data-connectors/rudderstack",
+                    "integrations/data-connectors/segment",
                     "integrations/data-connectors/stitch",
-                    "integrations/data-connectors/mixpanel",
-                    "integrations/data-connectors/amplitude",
                   ],
                 },
                 {
@@ -399,6 +422,7 @@ const sidebars: SidebarsConfig = {
                 "integrations/vercel",
                 "integrations/cloudflare",
                 "integrations/fastly",
+                "integrations/akamai",
               ],
             },
             {
@@ -592,31 +616,10 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/bayesian",
                 "experiments-plus/switchback-tests",
                 "experiments-plus/reconciling-experiment-results",
-                // {
-                //   Experimentation: [
-                //     "experiments-plus/experimentation/why-experiment",
-                //     "experiments-plus/experimentation/scenarios",
-                //     "experiments-plus/experimentation/best-practices",
-                //     "experiments-plus/experimentation/common-terms",
-                //     "experiments-plus/experimentation/choosing-randomization-unit",
-                //   ],
-                // },
+                "experiments-plus/bots",
+                "experiments/quality-score",
               ],
             },
-            // {
-            //   type: "category",
-            //   label: "Autotune (Bandits)",
-            //   link: {
-            //     type: "doc",
-            //     id: "autotune/introduction",
-            //   },
-            // items: [
-            //   "autotune/contextual-bandit",
-            //   "autotune/multi-armed-bandit",
-            //   "autotune/setup",
-            //   "autotune/monitoring",
-            // ],
-            // },
             {
               type: "category",
               label: "Stats Engine",
@@ -675,6 +678,7 @@ const sidebars: SidebarsConfig = {
                 "autotune/multi-armed-bandit",
                 "autotune/setup",
                 "autotune/monitoring",
+                "autotune/using-bandits",
               ],
             },
             {
@@ -724,7 +728,12 @@ const sidebars: SidebarsConfig = {
               ],
             },
             "product-analytics/dashboards",
-            "users/introduction",
+            {
+              type: "category",
+              label: "Users",
+              className: "users-icon sidebar-icon",
+              items: ["users/introduction", "users/user-profiles"],
+            },
             "insights/introduction",
           ],
         },
@@ -914,6 +923,7 @@ const sidebars: SidebarsConfig = {
                   ],
                 },
                 "experiments/meta-analysis",
+                "experiments/quality-score",
                 "statsig-warehouse-native/features/reports",
                 "statsig-warehouse-native/features/autotune",
                 "statsig-warehouse-native/features/use-case",
@@ -1053,7 +1063,7 @@ const sidebars: SidebarsConfig = {
             },
             {
               Reliability: [
-                "infrastructure/reliability-faq", 
+                "infrastructure/reliability-faq",
                 "guides/uptime",
                 "infrastructure/monitoring",
               ],

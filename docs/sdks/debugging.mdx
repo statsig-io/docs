@@ -1,5 +1,5 @@
 ---
-title: Debugging
+title: SDK Debugging
 sidebar_label: Debugging
 slug: /sdk/debugging
 ---
@@ -114,17 +114,30 @@ Log-line feedback is one of the simplest tools you have to understand how your S
 
         So `Network` means the sdk was initialized with values from the network, and the evaluation was successful. `Network:Unrecognized`, means the sdk was initialized with values from the network, but the gate/config/experiment you were checking was not included in the payload.
 
-        ### Server Details
+    </TabItem>
+</Tabs>
 
-        ![Screen Shot 2023-04-27 at 11 15 50 AM](https://user-images.githubusercontent.com/74584483/234955366-0e39adbf-c5a2-4a52-b9bb-ae0df9f15819.png)
+### Evaluation Times
+Evaluation times can help you understand the age of the configuration values the SDK is operating with, and if they might be causing unexpected results.
 
-        In addition to these reasons, the most recent versions of server SDKs will also give you two times to watch: the time at which config definitions initialized the SDK,
-        and the time at which the SDK was currently evaluating those definitions.  When you change a gate/config/experiment, the project time will update
-        and server SDKs will download the new definition.  If you have not changed your project in two hours, and the evaluation time is saying
-        the SDK is up to date as of 2 hours ago, then you're evaluating the most up to date definition of that gate/experiment.
+#### LCUT: Last Config Updated Time
+Whenever you modify a gate, config, or experiment, the LCUT (Last Config Updated Time) for your project is updated to the current time. This timestamp indicates the most recent changes that all SDKs should reflect to ensure they are using the latest configurations. If you've made no changes to your project in the last 2 hours, and your SDK is showing an LCUT (on client SDKs) or configSyncTime (on server SDKs) as of 2 hours ago, then you're evaluating the most up to date definition of that gate/experiment. 
+If the LCUT is older than that, your SDK is operating with stale values. Outdated values on a client SDK usually indicate that the user hasn't encountered a recent initialize() or updateUser() call (e.g., they have a long-lived browser tab), which is common and expected. On Server SDKs, it could mean an issue with a data adapter, or a configuration propagation delay.
 
-        In this example, the project was last updated yesterday, and the SDK was initialized with those values.  The project has not updated since that time,
-        and the SDK is still using that same set of definitions which it fetched from the network.  You can also see the SDK type and version associated with a given check.
+<Tabs groupId="evalReasons">
+    <TabItem value="client" label="Client SDKs">
+    | Time Field | Description | SDKs Available In |
+    |------------|-------------|-------------------|
+    | LCUT (Last Config Updated Time) | LCUT is the last time a configuration change was made in the Statsig console - this field represents the last config change that the SDK is operating with. | Javascript (incl. React, RN), iOS, Dart. |
+    | receivedAt | When the SDK received the configuration values for this user. | Javascript (incl. React, RN), iOS, Dart. |
+
+    </TabItem>
+    <TabItem value="server" label="Server SDKs">
+    | Time Field | Description | SDKs Available In |
+    |------------|-------------|-------------------|
+    | initTime | The last config update time (LCUT) received when the SDK was first initialized (typically, on server startup) | All Server SDKs except Rust |
+    | configSyncTime | The current last config update time (LCUT) that the SDK is operating with, I.E., the time up until which it has received updates from the network. | All Server SDKs except Rust |
+    | serverTime | The current time on your server (Date.now()) when an evaluation is made. | All Server SDKs except Rust |
 
     </TabItem>
 </Tabs>

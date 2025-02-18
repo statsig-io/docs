@@ -102,10 +102,12 @@ Metadata on the events tab will be
 ```
 
 
-## Setting User Identity and Attributes
+## Advanced Targeting & Segmentation
+This approach allows you to set User Identity and Attributes for Sidecar, enabling you to perform more advanced targeting and results segmentation. 
 
-By default, Autocapture uses `stableID` (an auto-generated device-level guid that gets stored in the user's localStorage) for tracking purposes. If you wish to enrich autocapture events with known user identities and attributes, you can define the following object _prior_ to autocapture/sidecar being loaded.
+By default, Sidecar & Autocapture use `stableID` (an auto-generated device-level guid that gets stored in the user's localStorage) for tracking purposes. If you wish to enrich autocapture events with known user identities and attributes, you can define the following object _prior_ to autocapture/sidecar being loaded.
 
+Watch this [video tutorial](https://tinyurl.com/sidecar-targeting) on how to configure more advanced targeting for your Sidecar experiments.
 ```js
 window.statsigUser = {
   userID: "<USER ID>",
@@ -143,7 +145,7 @@ window.postExperimentCallback = function(statsigClient, experimentIds) {
       
     var evarValue = [];
     experimentIds.forEach(function(expId) {
-      var inExp = statsigClient.getExperimentWithExposureLoggingDisabled(expId).getGroupName();
+      var inExp = statsigClient.getExperiment(expId, { disableExposureLog: true }).groupName;
       if(inExp) {
         evarValue.push(expId + ':' + inExp);
       }
@@ -165,7 +167,7 @@ To install, simply paste the following in your HEAD section.
 
 ```html
 <!-- cross domain id script -->
-<script>!function(){let t="STATSIG_LOCAL_STORAGE_STABLE_ID";function e(){if(crypto&&crypto.randomUUID)return crypto.randomUUID();let t=()=>Math.floor(65536*Math.random()).toString(16).padStart(4,"0");return`${t()}${t()}-${t()}-4${t().substring(1)}-${t()}-${t()}${t()}${t()}`}let i=null,n=localStorage.getItem(t)||null;if(document.cookie.match(/statsiguuid=([\w-]+);?/)&&([,i]=document.cookie.match(/statsiguuid=([\w-]+);?/)),i&&n&&i===n);else if(i&&n&&i!==n)localStorage.setItem(t,i);else if(i&&!n)localStorage.setItem(t,i);else{let o=e();localStorage.setItem(t,o),function t(i){let n=new Date;n.setMonth(n.getMonth()+12);let o=window.location.host.split(".");o.length>2&&o.shift();let s=`.${o.join(".")}`;document.cookie=`statsiguuid=${i||e()};Expires=${n};Domain=${s}`}(o)}}();</script>
+<script>!function(){let t="STATSIG_LOCAL_STORAGE_STABLE_ID";function e(){if(crypto&&crypto.randomUUID)return crypto.randomUUID();let t=()=>Math.floor(65536*Math.random()).toString(16).padStart(4,"0");return`${t()}${t()}-${t()}-4${t().substring(1)}-${t()}-${t()}${t()}${t()}`}let i=null,n=localStorage.getItem(t)||null;if(document.cookie.match(/statsiguuid=([\w-]+);?/)&&([,i]=document.cookie.match(/statsiguuid=([\w-]+);?/)),i&&n&&i===n);else if(i&&n&&i!==n)localStorage.setItem(t,i);else if(i&&!n)localStorage.setItem(t,i);else{let o=e();localStorage.setItem(t,o),function t(i){let n=new Date;n.setMonth(n.getMonth()+12);let o=window.location.host.split(".");o.length>2&&o.shift();let s=`.${o.join(".")}`;document.cookie=`statsiguuid=${i||e()};Expires=${n};Domain=${s};Path=/`}(o)}}();</script>
 
 <!-- Manually attach stableID from local storage -->
 <script>

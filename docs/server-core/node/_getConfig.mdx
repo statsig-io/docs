@@ -1,0 +1,12 @@
+```jsx
+// Get the dynamic config
+const config = statsig.getDynamicConfig(user, "a_config");
+
+// Get typed values using the get() method
+const itemName = config.get("product_name", "Awesome Product v1");
+const price = config.get<number>("price", 10.0);
+const shouldDiscount = config.get<boolean>("discount", false);
+
+// Or access the entire value object directly
+const value = config.value;
+```

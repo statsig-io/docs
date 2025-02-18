@@ -39,9 +39,10 @@ We offer both an [integration with Cloudflare KV](/integrations/cloudflare), and
 
 Fastly Compute platform supports Functions at the Edge, affording customers the ability to handle assignment at the edge. 
 
-### KV (recommended)
+### KV (fully supported)
 [Fastly's KV storage solution](https://www.fastly.com/blog/be-among-the-first-to-try-the-greatest-kv-store-ever-made) is touted as being highly-performant and is now their recommended solution over their legacy ConfigStore documented below.
-Statsig offers both a Config-Sync for Fastly KV as well as a [KV DataAdapter](https://www.npmjs.com/package/statsig-node-fastly-kv) that should be installed in your function for performant initialization.
+
+Statsig offers both a Config-Sync for Fastly KV as well as a KV DataAdapter which can be found [here](/integrations/fastly).
 
 ### ConfigStore (not recommended)
 We initially built the [integration with Fastly's ConfigStore](/integrations/fastly), which was their only offering at the time. ConfigStore values are limited to 8 kilobytes, which will be met rather quickly as the number of gates and tests in your project increases.  This will be paired with our [Fastly Config Store Data Adapter](https://www.npmjs.com/package/statsig-node-fastly), allow the SDK to initialize from ConfigStore rather than making a request over the the network back to Statsig.
@@ -83,7 +84,5 @@ SDKs are not supported here. Cloudfront Functions have 1ms max runtime and 10KB 
 ## Akamai Implementation
 [Akamai has a documented pattern](https://www.akamai.com/blog/developers/better-a-b-testing-with-edgeworkes-edgekv) of using EdgeWorkers and EdgeKV for running AB tests using cached content, providing both code samples, as well as an overview of the [architecture](https://www.akamai.com/solutions/edge/serverless-computing/use-cases). You’ll need to add the Statsig SDK to the worker function as a dependency and call it for assignment (rather than the rudimentary coin flip using `Math.random()` shown in their code examples).
 
-:::info
-#### In progress 
-At the time of writing this, we are currently working on validating SDK usage within their EdgeWorker environment and building both the Config-Sync for Akamai EdgeKV as well as the accompanying Data Adapter.
-:::
+You can now use our [Akamai Edge integration](/integrations/akamai), which includes an integration with EdgeKV as well as a Node package that has been tested and validated within Akamai edge runtime. 
+

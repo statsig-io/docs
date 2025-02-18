@@ -94,6 +94,7 @@ Your server SDK will maintain a fresh configuration in memory and when a request
 #### Implementation Notes:
 * You should pass the same user object on both the server and client side - take care that these stay in sync. This can become particularly hairy in the case of keeping stableID in sync, as it'll re-generate when it doesn't exist. See [here](https://docs.statsig.com/client/javascript-sdk#keeping-stableid-consistent-across-client--server).
 * The `initializeValues` option should be an Object - except in our js SDK, where its expected to be a string. Calling .stringify() on the object should work.
+* If you're using Statsig's new JS SDK, ensure that set the hashing algorithm as DJB2 when calling getClientInitializeResponse(), as the new JS SDK uses DJB2 by default.
 
 Example:
 

@@ -23,9 +23,9 @@ const sdkGroups = [
     label: 'Server Side SDKs',
     value: 'server-sdks',
     items: [
-      { name: 'Node.js', img: '/img/sdk/sdk_node.png', link: '/server/nodejsServerSDK' },
-      { name: 'Java/Kotlin', img: '/img/sdk/sdk_java.png', link: '/server/javaSdk' },
-      { name: 'Python', img: '/img/sdk/sdk_python.png', link: '/server/pythonSDK' },
+      { name: 'Node Core', img: '/img/sdk/sdk_node.png', link: '/server-core/node-core' },
+      { name: 'Java Core', img: '/img/sdk/sdk_java.png', link: '/server-core/java-core' },
+      { name: 'Python Core', img: '/img/sdk/sdk_python.png', link: '/server-core/python-core' },
       { name: 'Go', img: '/img/sdk/sdk_golang.png', link: '/server/golangSDK' },
       { name: 'Ruby', img: '/img/sdk/sdk_ruby.png', link: '/server/rubySDK' },
       { name: '.NET Server', img: '/img/sdk/sdk_dotnet.png', link: '/server/dotnetSDK' },

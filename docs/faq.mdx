@@ -19,6 +19,8 @@ A lot of times people assume that we keep track of a list of all ids and what gr
 
 For more details, check our open-source SDKs [here](https://github.com/statsig-io/node-js-server-sdk/blob/main/src/Evaluator.ts).
 
+This is not generally recommended, but for advanced use cases - e.g. a series of related experiments that needs to reuse the control and test buckets, we now expose the ability to copy and set the salts used for deterministic hashing. This is meant to be used with care and is only available to Project Administrators. It is available in the Overflow (...) menu in Experiments.
+
 ---
 
 ### Is it possible to add a layer to a running experiment?

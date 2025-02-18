@@ -1,5 +1,5 @@
 ---
-title: Statsig Session Replay Overview
+title: Session Replay Overview
 sidebar_label: Overview
 slug: /session-replay/overview
 ---

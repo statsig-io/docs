@@ -1,0 +1,13 @@
+```Python
+# Values via get_layer
+layer = statsig.get_layer(StatsigUser("my_user"), "user_promo_experiments")
+title = layer.get_string("title", "Welcome to Statsig!")
+discount = layer.get_float("discount", 0.1)
+
+# Via get_experiment
+title_exp = statsig.get_experiment(StatsigUser("my_user"), "new_user_promo_title")
+price_exp = statsig.get_experiment(StatsigUser("my_user"), "new_user_promo_price")
+
+title = title_exp.get_string("title", "Welcome to Statsig!")
+discount = price_exp.get_float("discount", 0.1)
+```
