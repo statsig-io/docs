@@ -697,6 +697,7 @@ const sidebars: SidebarsConfig = {
                 "pulse/faq",
               ],
             },
+            "experiments/statsig-lite",
             {
               type: "category",
               label: "Landing Page Experiments (deprecated)",
