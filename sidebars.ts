@@ -697,6 +697,7 @@ const sidebars: SidebarsConfig = {
                 "pulse/faq",
               ],
             },
+            "experimentation/statsig-lite",
             {
               type: "category",
               label: "Landing Page Experiments (deprecated)",
@@ -708,10 +709,8 @@ const sidebars: SidebarsConfig = {
                 "guides/landing-page-experiments/webflow",
               ],
             },
-           "experiments/statsig-lite",
           ],
         },
-       
         {
           type: "category",
           label: "Product Analytics",
