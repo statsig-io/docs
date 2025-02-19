@@ -14,7 +14,7 @@ On Statsig Warehouse Native, metric alerts are evaluated every time Pulse is loa
 
 Finally, all stats methodologies you've enabled for your experiment/ gate rollout (CUPED, Sequential Testing, etc.) will be applied to alert calculations post-the first 24 hours (once the alert becomes daily). 
 
-NOTE: Metric alerts do not alert at the **topline metric value** level, but rather at **the experiment/ feature gate level**. This means that even if you have an experiment allocated to 10% of your users, but the metric change within that 10% allocation breaches the set threshold, you will be alerted. All alerts you receive will be in the context of a specific experiment or feature gate and to debug/ resolve the alert you will be directed to the offending experiment or gate in question.
+NOTE: Metric alerts do not alert at the **topline metric value** level, but rather at **the experiment/feature gate level**. This means that even if you have an experiment allocated to 10% of your users, but the metric change within that 10% allocation breaches the set threshold, you will be alerted. All alerts you receive will be in the context of a specific experiment or feature gate and to debug/ resolve the alert you will be directed to the offending experiment or gate in question.
 
 ## Setting up a Metric Alert
 To set up a metric alert, go to the **Metrics** tab  —>  **Metrics Catalog** and search for the desired metric. 
