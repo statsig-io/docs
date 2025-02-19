@@ -1,6 +1,6 @@
 ---
 sidebar_label: Contentful
-title: Guide to  Contentful
+title: Guide to Contentful
 slug: /guides/contentful
 ---
 The Statsig Contentful integration lets you create A/B/n tests and test different content blocks against each other directly from within Contentful. You can assess impact using business metrics on Statsig Cloud or Warehouse Native. Marketers can optimize content, obtain insights, and iterate continuously right from within Contentful.
