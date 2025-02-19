@@ -426,6 +426,7 @@
     "didFinishLaunchingWithOptions",
     "func",
     "launchOptions",
+    "Contentful",
     "ContentView",
     "featureEnabled",
     "DispatchQueue",
