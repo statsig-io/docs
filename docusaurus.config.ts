@@ -145,6 +145,10 @@ const config: Config = {
       {
         redirects: [
           {
+            from: "/statsig-warehouse-native/guides/assignment-sources/",
+            to: "/statsig-warehouse-native/configuration/assignment-sources",
+          },
+          {
             from: "/guides/experiment-analysis/",
             to: "/statsig-warehouse-native/introduction",
           },
