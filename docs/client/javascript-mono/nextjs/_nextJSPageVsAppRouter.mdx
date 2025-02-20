@@ -24,7 +24,7 @@ There are some differences in how you integrate Statsig into each.
 
 To integrate Statsig into your App Router app you need to use the 
 [`use client` directive](https://nextjs.org/docs/app/building-your-application/rendering/client-components) 
-to render the `StatsigProvider` on the client side.
+to render the `StatsigProvider` on the client side. [Further along in this guide](/client/javascript-sdk/next-js#client-bootstrapping-recommended), we discuss methods for server-side rendering with Statsig.
 
 ```tsx
 // app/my-statsig.tsx
@@ -88,7 +88,7 @@ export default function RootLayout({
 {/* Page Router */}
 
     <TabItem value="page-router">
-To integrate Statsig into your Page Router app you can add the `StatsigProvider` to your `_app.tsx` file.
+To integrate Statsig into your Page Router app you can add the `StatsigProvider` to your `_app.tsx` file. 
 
 There is a [full example](https://github.com/statsig-io/private-js-client-monorepo/tree/main/samples/next-js-pages-router-sample) in the samples directory of the javascript sdk.
 
