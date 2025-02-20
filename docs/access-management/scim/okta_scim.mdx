@@ -24,6 +24,7 @@ user provisioning and management.
 
 - User email management is not enabled on SCIM yet.
 - When a user is removed from Statsig, they will be automatically unassigned in Okta. Conversely, if a user is unassigned or deactivated in Okta, they will be removed from the Statsig Organization.
+- Creation of Statsig Projects and Roles is not supported via SCIM.
   :::
 
 ## Step 1: Create a New App Integration in Okta
@@ -65,6 +66,7 @@ user provisioning and management.
   - `Push New Users`
   - `Push Profile Updates`
   - `Push Groups`
+  - `Import Groups` (Only if your organization has the `SELECTIVE_APP_IMPORT_PLATFORM` flag enabled, see note above)
 - Set the authentication mode to "HTTP Header"
 - For the authorization header, use the SCIM Bearer token provided to you by statsig
 
