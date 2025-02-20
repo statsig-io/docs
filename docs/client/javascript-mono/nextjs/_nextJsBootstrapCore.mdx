@@ -7,9 +7,9 @@ Bootstrapping is a method of keeping updated values on your server (in the case 
 While the performance gains are appealing, bootstrapping requires some additional setup effort, and you must be mindful of which code you are running server side and client side.
 
 
-#### Install `statsig-node`
+#### Install `@statsig/statsig-node-core`
 
-To generate the required values, we can use the Statsig server SDK (`statsig-node`) on our backend.
+To generate the required values, we can use the Statsig server SDK (`@statsig/statsig-node-core`) on our backend.
 
 <Tabs
   defaultValue="npm"
@@ -50,7 +50,7 @@ pnpm add @statsig/statsig-node-core
 
 
 
-next, add a Server key to your `.env` file. Note that this one is private and does not start with `NEXT_PUBLIC_`. 
+Next, add a Server key to your `.env` file. Note that this one is private and does not start with `NEXT_PUBLIC_`. 
 You can find your key at which you can find at [console.statsig.com/api_keys](https://console.statsig.com/api_keys).
 
 ```bash
@@ -123,7 +123,7 @@ This file will contain the logic to initialize our Statsig server SDK and genera
 ```ts
 // pages/statsig-backend.ts
 
-import Statsig, { StatsigUser } from "statsig-node";
+import Statsig, { StatsigUser } from "statsig-node"; //Note, recommended page-router implementations still use our legacy SDK.
 
 export const isStatsigReady = Statsig.initialize(
   process.env.STATSIG_SERVER_KEY!,
@@ -186,6 +186,7 @@ We now need to refactor our Root `layout.tsx` to call the `generateBootstrapValu
 
 ```tsx
 // app/layout.tsx
+// Note, this file calls into statsig-backend.ts - wherever you implement this logic, it should be on the server side.
 
 // ...
 import { generateBootstrapValues } from "./statsig-backend";

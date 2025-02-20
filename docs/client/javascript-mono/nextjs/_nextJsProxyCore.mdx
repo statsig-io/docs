@@ -79,9 +79,10 @@ We will need to setup Next.js [`API Routes`](https://nextjs.org/docs/pages/build
 ```ts
 // app/statsig-proxy/initialize/route.ts
 
-import { StatsigUser } from "statsig-node";
+import { StatsigUser } from '@statsig/statsig-node-core';
 
-import { generateBootstrapValues } from "@/app/statsig-backend";
+
+import { generateBootstrapValues } from "./statsig-backend";
 
 export async function POST(request: Request): Promise<Response> {
   const json = await request.json();
@@ -90,9 +91,7 @@ export async function POST(request: Request): Promise<Response> {
     return new Response(null, { status: 400 });
   }
 
-  const body = json as { user: StatsigUser };
-
-  const { data } = await generateBootstrapValues(body.user);
+  const data = await generateBootstrapValues();
   return new Response(data);
 }
 ```
@@ -108,7 +107,7 @@ export async function POST(request: Request): Promise<Response> {
 
 import { getStatsigValues } from "@/pages/statsig-backend";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { StatsigUser } from "statsig-node";
+import { StatsigUser } from "statsig-node";  //Note, recommended page-router implementations still use our legacy SDK.
 
 export default async function handler(
   req: NextApiRequest,
@@ -155,9 +154,14 @@ export default async function handler(
 ```ts
 // app/statsig-proxy/log_event/route.ts
 
-import { LogEventObject } from "statsig-node";
-
 import { logEvents } from "@/app/statsig-backend";
+
+export type LogEventObject = {
+  eventName: string;
+  user: StatsigUser;
+  value?: string | number | null;
+  metadata?: Record<string, unknown> | null;
+};
 
 type LogEventBody = {
   events: LogEventObject[];
@@ -170,11 +174,39 @@ export async function POST(request: Request): Promise<Response> {
     return new Response(null, { status: 400 });
   }
 
+  json.events.forEach((event: any) => {
+    // Assemble the StatsigUser object manually
+    const user = new StatsigUser({
+      userID: event.user.userID, // Assuming 'id' is the property for user ID
+      customIDs: event.user.customIDs,
+    });
+
+    // Update the event object to include the user
+    event.user = user;
+  });
+
   const body = json as LogEventBody;
 
   await logEvents(body.events);
 
   return new Response(JSON.stringify({ success: true }));
+}
+```
+
+You'll also need to make a small change to add the LogEvents function in the backend:
+
+```ts
+// statsig-backend.ts
+export async function logEvents(events: LogEventObject[]): Promise<void> {
+  await initialize;
+  events.forEach((event) => {
+    statsig.logEvent(
+      event.user,
+      event.eventName,
+      event.value,
+
+    );
+  });
 }
 ```
 
@@ -190,7 +222,7 @@ export async function POST(request: Request): Promise<Response> {
 ```ts
 // pages/api/statsig-proxy/log_event.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { LogEventObject } from 'statsig-node';
+import { LogEventObject } from 'statsig-node'; //Note, recommended page-router implementations still use our legacy SDK.
 
 import { logEvents } from '../../../lib/statsig-backend';
 
