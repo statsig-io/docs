@@ -16,6 +16,7 @@ config = statsig.get_dynamic_config(user, "a_config", options)
 # The config object also provides metadata about the evaluation
 print(config.rule_id)  # The ID of the rule that served this config
 print(config.id_type)  # The type of the evaluation (experiment, config, etc)
+```
 
 The `get_dynamic_config()` method returns a DynamicConfig object that allows you to:
 - Fetch typed values with fallback defaults using `get_string()`, `get_float()`, `get_boolean()`, and `get_integer()`
