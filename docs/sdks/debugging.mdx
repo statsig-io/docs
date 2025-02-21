@@ -68,6 +68,7 @@ Log-line feedback is one of the simplest tools you have to understand how your S
         | `LocalOverride` (old SDKs) | From an override set locally on the SDK via an override API.| Normal||
         | `Cache`                | Loaded from the local storage cache for the current user, and network result was not available.| Normal| Not explicitly an error state, but you may be checking a config before initialize returns.|
         | `InvalidBootstrap`     | The set of values was for a different user than the SDK was initialized with. These are discarded for analysis. | Error| See [Fixing InvalidBootstrap](#invalid-bootstrap)|
+        | `BootstrapStableIDMismatch`     | The stableID of the user was different for the user added on the client side than the one you bootstrapped with on the server-side. If your experiment or gate is not StableID based, this can be treated as a warning. These exposures are not discarded for analysis. | Error| See [Fixing BootstrapStableIDMismatch](#bootstrapstableidmismatch)|
         | `Error`                | An unknown error has occurred, and was logged to Statsig servers.| Error| Reach out to us in [Slack](https://statsig.com/slack) for support. |
         | `Error:NoClient` (js-client-only)       | No client was found in your StatsigContext. | Error |  You've likely made a call to a Statsig hook outside of a `<StatsigProvider>`, verify your setup and try again. |
         | `Unrecognized` (old SDKs) | The SDK was initialized, but this gate/experiment/config did not exist in the set of values.| Error| Confirm the experiment or gate is configured in the Statsig console and you're using the correct API key.|
@@ -204,6 +205,33 @@ For more sdk specific questions, check out the FAQs on the respective SDK pages.
     ```js
     userA = { userID: 'user-a' };
     userAExt = { userID: 'user-a', customIDs: { employeeID: 'employee-a' }};
+    ```
+
+### BootstrapStableIDMismatch
+
+    This error is similar to InvalidBootstrap - but isolated to the StableID of the user. In a StableID based experiment or Gate, this is a meaningful issue - as we will bucket users based on StableID, meaning their buckets could be incorrect. A common situation that this occurs in is when you use a user object on both the client and server side that doesn't have an explicitly set StableID: client SDKs will generate a StableID for the user, but the server SDK will not - creating a mismatch.
+
+    A similar example to the InvalidBootstrap can cause this issue:
+
+    ```js
+    // Server Side
+
+    userA = {};
+    bootstrapValues = Statsig.getClientInitializeResponse(userA);
+
+    // Client Side
+
+    bootstrapValues = fetchStatsigValuesFromMyServers(); // <- Network request that executes the above logic
+
+    userB = { stableID: '12345' }; // <- This will generate a StableID mismatch, as the server-side user does not have a StableID.
+    Statsig.initialize("client-key", userB, { initializeValues: bootstrapValues });
+    ```
+
+    As mentioned above, Statsig's client-side SDKs will also generate a StableID for the user if one is not provided, so an empty user object could trigger this error - even when the server and client-side user objects are the same:
+
+    ```js
+    userC = {}; // <- despite being the same as userA, the client SDK will generate a StableID for userC, causing a mismatch.
+    Statsig.initialize("client-key", userC, { initializeValues: bootstrapValues });
     ```
 
 ### Environments
