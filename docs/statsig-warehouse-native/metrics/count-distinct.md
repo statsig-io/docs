@@ -58,7 +58,7 @@ GROUP BY group_id;
 
 ### Methodology Notes
 
-After enough data size, the methodology switches to using APPROX_COUNT_DISTINCT (or equivalent) to avoid massive compute jobs on analytical count distinct, and because the approximate error becomes acceptably small.
+In the metrics page view, we use APPROX_COUNT_DISTINCT (or equivalent) to avoid massive compute jobs on analytical count distinct, and because the approximate error becomes acceptably small for the topline estimate. For experiment result loads, the calculation is analytical and exact to avoid jitter or bias from approximation error.
 
 ## Options
 
