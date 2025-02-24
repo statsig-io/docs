@@ -92,7 +92,7 @@ By default, Pulse results display with 95% confidence intervals and without Bonf
 - **Bonferroni Correction:** Apply this to reduce the risk of false positives in experiments with multiple test groups. The significance level (*α*) is divided by the number of test variants.
 - **Default Confidence Interval:** Choose a lower confidence interval (e.g., 80%) if you prefer faster results with higher tolerance for false positives, or stick with 95% for greater certainty.
 
-![image](https://user-images.githubusercontent.com/101903926/203636982-0cb5a388-b2a7-40e1-8b99-81b3fdab5cb7.png)
+![image](https://github.com/user-attachments/assets/a6019d56-5c7f-43de-9679-dbf3579483e1)
 
 ### Target Duration
 
