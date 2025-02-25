@@ -974,7 +974,18 @@ const sidebars: SidebarsConfig = {
                   items: [
                     "access-management/scim/overview",
                     "access-management/scim/concepts",
-                    "access-management/scim/okta_scim",
+                    
+                    {
+                      type: "category",
+                      label: "Okta Guide",
+                      items: [
+                        "access-management/scim/okta_scim_setup",
+                        "access-management/scim/okta_scim_user_management",
+                        "access-management/scim/okta_scim_org_roles",
+                        "access-management/scim/okta_scim_troubleshooting",
+                      
+                      ],
+                    },
                     "access-management/scim/scim-endpoints",
                   ],
                 },

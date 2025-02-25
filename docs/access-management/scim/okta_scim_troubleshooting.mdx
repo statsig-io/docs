@@ -1,0 +1,33 @@
+---
+sidebar_label: Troubleshooting
+title: Okta SCIM Troubleshooting
+---
+
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
+
+
+# Okta SCIM Troubleshooting
+
+## Common SCIM Errors
+
+| Error | Solution |
+|-------|----------|
+| User userID is not allowed to be created in this organization | Ensure that the users you are assigning to Statsig have the correct email domain. We require users to have the org's email domain. |
+| Owner cannot be modified | The owner of the organization can only be replaced by another user. |
+| Cannot set multiple owners | We do not allow multiple owners for an organization. Ensure that you are not trying to set multiple owners for the organization. |
+| Project creation is not supported via SCIM | Project creation is not supported via SCIM. Please create projects in the Statsig Console. |
+| Project deletion is not supported via SCIM | Project deletion is not supported via SCIM. Please delete projects in the Statsig Console. |
+
+
+## Common Issues
+
+- I'm not seeing any Statsig groups in Okta
+  - Your organization may have the Okta flag `SELECTIVE_APP_IMPORT_PLATFORM` enabled. If this is the case, you will need to select `Import Groups` in the SCIM integration settings. See the [setup page](/access-management/scim/okta_scim_setup) for more info.
+- I can't select `Import Groups` in the SCIM integration settings
+  - Your organization may have the Okta flag `SELECTIVE_APP_IMPORT_PLATFORM` disabled. If this is the case, you cannot select `Import Groups` in the SCIM integration settings. However, when importing you will see the groups in the Okta SCIM integration.
+- I'm trying to push groups but not seeing users populate those groups
+  - Ensure that the users you are pushing to Statsig are assigned to the integration.
+  - If the users are assigned, verify that the groups you are pushing to Statsig are the Statsig Groups generated on import.
+- I don't want to use Statsig generated groups, can I use my own?
+  - You can use your own groups in the push groups section. However, you will need to push these groups to a specific Statsig Project x Role Group. There is no way to push your own groups without pushing to a Statsig Project x Role Group.
