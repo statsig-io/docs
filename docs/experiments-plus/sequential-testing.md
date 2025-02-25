@@ -4,31 +4,45 @@ sidebar_label: Sequential Testing
 slug: /experiments-plus/sequential-testing
 ---
 
-## What's the problem with looking early?
+## What's the problem with looking early in a "standard" A/B test?
 
-Traditional A/B testing best practices (t-tests, z-tests, etc.) dictate that the readout of experiment metrics should occur only once, when the target sample size of the experiment has been reached.  Continuous experiment monitoring for the purpose of decision making results in inflated false positive rates (a.k.a. *the peeking problem*) which are much higher than expected based on the desired significance level. 
+Traditional A/B testing best practices (t-tests, z-tests, etc.) dictate that the readout of experiment metrics should occur only once, when the target sample size of the experiment has been reached (i.e. your design duration has been reached and you reach the desired sample size).  We call this a "Fixed Horizon Test", because when designing an experiment you set the amount of desired units you wish to observe and (ideally) commit to analyzing the results only once this dataset is complete.
 
-Continuous monitoring leads to inflated false positives because metric values and p-values always fluctuate to some extent due to noise, and their results are likely to pop into and out of statistical significance just by random chance, even when there is no real effect. These noisy fluctuations can be caused by random unit assignment and random human behavior we can't predict, and they can't be entirely removed from an experiment. Not every test is subject to the same amount of experimental noise, however, and like so many things it's dependent on what you're testing and who your users are. Tests also vary over time in the amount of noise they see, especially as adding more users and observing them for longer tends to help the random fluctuations even out.
+Continuous experiment monitoring (i.e. "peeking") for the purpose of decision making, however, results in inflated false positive rates (a.k.a. *the peeking problem*) which can be much higher than that expected from your desired significance level.
 
-Peeking, however well-intentioned, will always introduce some amount of selection bias by allowing us to adjust the date of a readout. When an experimenter makes any early decision about results (e.g. is the result stat-sig, can we ship a variant?) they've increased the chances that their decision is based on a temporary snapshot of always fluctuating results. They are essentially cherry-picking a stat-sig result that might never have been observed if the data were to be analyzed only once using the full, pre-determined duration of the experiment. Unfortunately, this process can only increase the false positive rate (declaring an experimental effect when there really is none), even when the intention is to make a less-biased decision based on the statistics.
+## How does peeking increase decision error rates?
 
-## What is Frequentist Sequential Testing?
+Continuous monitoring leads to inflated false positives because any time you consider ending an experiment early you are at risk of making a conclusion that is incorrect. Remember, at the core of a standard hypothesis test, you are deciding if you should "accept the null" hypothesis or "reject the null" hypothesis and accept the alternative. As an A/B practitioner, you must decide between rejecting or not rejecting the null. Any time you look early and allow the possibility of making a decision early, you are potentially rejecting the null hypothesis even when the null hypothesis is actually correct.
 
-In Sequential Testing, the experimental results for each preliminary analysis window are adjusted to compensate for the increased false positive rate associated with peeking.
+## Why would early results be "wrong"?
+
+Metric values and p-values always fluctuate to some extent due to noise during any experiment, and results can transition into and out of statistical significance due to this noise, even when there is no real underlying effect. These noisy fluctuations can be caused by random unit assignment and random human behavior we can't predict, and the effects can't be entirely removed from an experiment. Not every test is subject to the same amount of experimental noise, however, and like so many things it's dependent on what you're testing and who your users are. Tests also vary over time in the amount of noise they see, especially as adding more users and observing them for longer tends to help the random fluctuations even out.
+
+Peeking, however well-intentioned, will always introduce some amount of selection bias if we adjust the date of a readout. When an experimenter makes any early decision about results (e.g. "is the result stat-sig, can we ship a variant early?") they've increased the chances that their decision is based on a temporary snapshot of always fluctuating results. They are potentially cherry-picking a stat-sig result that might never be seen if the data were analyzed only once at the full, pre-determined completion of the experiment. Unfortunately, when running frequentist A/B test procedures this early decision can only increase the false positive rate (declaring an experimental effect when there really is none), even when the intention is to make a less-biased decision based on the statistics.
+
+## What is Sequential Testing for an A/B test?
+
+In the variety of Sequential Testing on Statsig, the experimental results for each preliminary analysis window are adjusted to compensate for the increased false positive rate associated with peeking. Statsig adjusts your p-values and confidence intervals automatically, and you can see this in the Results tab:
 
 ![image](/img/sequential_testing_example.png)
+*In this example, the confidence intervals for each metric are expanded using the "wings" or "tabs". This serves as a quick visual indicator that sequential testing is enabled and shows you how much the intervals have been expanded.*
 
-The goal is to enable early decision making when there's sufficiently strong observations that outweigh the random fluctuations while limiting the risk of false positives.  While peeking is typically discouraged, regular monitoring of experiments with sequential testing is particularly valuable in some cases.  For example:
+![Screenshot 2025-02-24 at 10 17 04 AM](https://github.com/user-attachments/assets/c233dc78-fc61-46cb-8068-e657853a3a1d)
+*In this real-world example, you can see for the indicated result that the sequential testing adjust makes the difference between declaring the result stat-sig or not.*
+
+The goal of Sequential Testing is to enable early decision making when there's sufficiently strong observations that outweigh the random fluctuations while limiting the risk of false positives.  While peeking is typically discouraged, regular monitoring of experiments with sequential testing is particularly valuable in some cases.  For example:
 - Unexpected regressions: Sometimes experiments have bugs or unintended consequences that severely impact key metrics.  Sequential testing helps identify these regressions early and distinguishes significant effects from random fluctuations.
-- Opportunity cost: This arises when a significant loss may be incurred by delaying the experiment decision, such as launching a new feature ahead of a major event or fixing a bug.  If sequential testing shows an improvement in the key metrics, an early decision could be made.  But use caution: An early stat-sig result for certain metrics doesn't guarantee sufficient power to detect regressions in other metrics.  Limit this approach to cases where only a small number of metrics are relevant to the decision.    
+- Opportunity cost: This arises when a significant loss may be incurred by delaying the experiment decision, such as launching a new feature ahead of a major event or fixing a bug.  If sequential testing shows an improvement in the key metrics, an early decision could be made.  But use caution: An early stat-sig result for certain metrics doesn't guarantee sufficient power to detect regressions in other metrics.  Limit this approach to cases where only a small number of metrics are relevant to the decision.
 
-## Quick Guide: Enabling Sequential Testing Results
+## Quick Guides
+
+### Enabling Sequential Testing Results
 
 In the **Setup** tab of your experiment, with Frequentist selected as your Analytics Type, you can enable Sequential Testing under the Analysis Settings section. This setting can be toggled at any time during the life of the experiment, and it does not need to be enabled prior to the start of the experiment.
 
 ![image](/img/enable_freq_sequential_testing.png)
 
-## Quick Guide: Interpreting Sequential Testing Results
+### Interpreting Sequential Testing Results
 
 Click on Edit at the top of the metrics section in Pulse to toggle Sequential Testing on/off.
 
