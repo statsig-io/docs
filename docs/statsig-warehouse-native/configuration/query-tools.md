@@ -30,7 +30,7 @@ SELECT
     ts,
     dt
 FROM log_table
-WHERE dt BETWEEN DATE('2023-09-01') AND DATE('2023-09-03)
+WHERE dt BETWEEN DATE('2023-09-01') AND DATE('2023-09-03')
 ```
 
 This is a powerful tool since you can inject filters into queries with joins or CTEs and be confident that the initial scan will be pruned.
