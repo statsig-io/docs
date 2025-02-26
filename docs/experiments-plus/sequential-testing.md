@@ -34,6 +34,10 @@ The goal of Sequential Testing is to enable early decision making when there's s
 - Unexpected regressions: Sometimes experiments have bugs or unintended consequences that severely impact key metrics.  Sequential testing helps identify these regressions early and distinguishes significant effects from random fluctuations.
 - Opportunity cost: This arises when a significant loss may be incurred by delaying the experiment decision, such as launching a new feature ahead of a major event or fixing a bug.  If sequential testing shows an improvement in the key metrics, an early decision could be made.  But use caution: An early stat-sig result for certain metrics doesn't guarantee sufficient power to detect regressions in other metrics.  Limit this approach to cases where only a small number of metrics are relevant to the decision.
 
+:::tip
+Sequential testing can be used anywhere you do an experimental analysis. This includes your main experimental Results page as well as any [custom queries](/pulse/custom-queries/).
+:::
+
 ## Quick Guides
 
 ### Enabling Sequential Testing Results
