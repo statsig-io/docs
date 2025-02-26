@@ -18,10 +18,14 @@ To run a Custom Query, navigate to the **Explore** tab within your experiment.
 
 Custom Query fields: 
 
-- **Date range:** The date range you're running your analysis on
-- **Metric(s):** The metric(s) you want to analyze. You can select a single metric, a few metrics, or a Metric Tag. Adding a Tag will include all the metrics within that Tag in your Custom Query. There are two "default" Tags included as shortcuts- "All Metrics" (every metric in your Metrics Catalog), and "Scorecard Metrics" (the metrics included in the Primary/ Secondary Metrics sections of your experiment setup). 
-- **Filter:** You can filter each individual metric by either Event or User dimensions. For example, if you wanted to look at your experiment results for Canadian users only, you could filter to "Country = CA". 
+- **Metric(s):** The metric(s) you want to analyze. You can select a single metric, a few metrics, or a Metric Tag. Adding a Tag will include all the metrics within that Tag in your Custom Query. There are three "default" metric selections included as shortcuts:
+  -  "Scorecard Metrics", all metrics included in your experiment setup's Primary and Secondary Metrics sections
+  -  "Primary Metrics"
+  -  "Secondary Metrics"
+- **Metric Filter:** With metrics selected, you can filter metrics by either Event or User dimensions using the "Add Filter" dropdown. For example, if you wanted to look at your experiment results for Canadian users only, you could filter to "Country = CA".
+  ![Screenshot 2025-02-26 at 10 29 27 AM](https://github.com/user-attachments/assets/f56b4259-4d18-44d1-9646-9d7aa2f8f847)
 - **Group By:** You can group your Custom Query results by either an Event or User dimension. Whereas Custom Query filters can be applied at the *per-metric* level, the Group By action is at the *query* level (so all included metrics will have whatever Group By you select applied to them). 
+- **Time Range for Metric Data:** The date range you're running your analysis on. By default this will be the "Full date range" of your experiment data.
 - **(Advanced) ID List Segment filters:** You can choose an ID-list based [Segment](/segments), and your results will only be calculated for users who are in that segment. This can be useful if you forgot to log an important user dimension that you want to filter to, or realized that you only care about a sub-population that you've defined in your own data warehouse. 
   - Careful! This option can easily lead to erroneous and biased results. You will need to make sure the segment is defined based on the user's status _before_ they were exposed to the experiment or feature gate.
   - Similarly, you can choose to _exclude_ a certain ID list segment, for example if you want to exclude a set of users who have been retroactively identified as bad actors from your lifts analysis.
