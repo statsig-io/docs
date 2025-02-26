@@ -16,7 +16,7 @@ Yes. Please use anonymized data with Statsig Lite - there's no reason to do othe
 We will email you a link to your results (with a secret embedded). You can choose to share this link with anyone you want to have access. 
 
 **Why would I do this**
-The most common case for this is teams that use tools Optimizely for experiment assignment, but can't use the same tool for experiment analysis. This often happens because the data that needs to be analyzed sits in a warehouse or a system Optimizely can't access and teams fall back to manual analysis. Statsig can now automate that for you. 
+The most common case for this is teams that use tools like Optimizely for experiment assignment, but can't use the same tool for experiment analysis. This often happens because the data that needs to be analyzed sits in a warehouse or a system Optimizely can't access and teams fall back to manual analysis for experiments. Statsig can now automate that for you. 
 
 It is also a way to quickly get a sense for what your experimental data will look like on Statsig in a few minutes. 
 
