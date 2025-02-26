@@ -36,7 +36,9 @@ Custom Query fields:
 - **(Advanced) Filter by Exposure Date:** You can also filter the results by Exposure Date which can give you more flexibility. You can choose only include or exclude a date range, or in WHN, you can additionally include/exclude users based on when they were first exposed to the experiment.
   - This is useful when your metrics have novelty effect, delayed impact, or specific scenarios where you only want to filter your results to certain users. Use it cautiously because it can lead to biased results.  
 
-> Note: User data in this tool is based off of first-touch attribution. The filters and grouping applied will be based on the user attributes collected at the time of first exposure.
+:::note
+User groups in experiment results are based off of first-touch attribution. The filters and grouping applied will be based on the user attributes collected at the time of first exposure in the gate/experiment/layer check.
+:::
 
 ![Screen Shot 2023-12-01 at 5 46 04 PM](https://github.com/statsig-io/docs/assets/101903926/6f65f611-44ba-4d97-ad19-f73ba3c3b8d8)
 
