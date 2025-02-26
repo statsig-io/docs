@@ -3,12 +3,16 @@ title: Custom Pulse Queries
 sidebar_label: Custom Queries
 slug: /pulse/custom-queries
 ---
-
+[balanced gates methodology](/feature-flags/view-exposures#gate-exposures)
 ## Custom Queries
 
-Custom queries can be run on Pulse results in order to gain deeper insights from your experiments and feature roll-outs. These allow you to filter or group metrics by event or user dimensions, or filter to a specific set of users to see how an experiment or launch has impacted these users' experience.
+Custom queries are a way to run additional custom experiment analyses on your existing data beyond what is in your main Results tab. You may run them to gain deeper insights from your experiments and feature roll-outs, debug interesting results, or scope down your results to interesting sub-groups. Custom queries allow you to filter or group metrics by event or user dimensions, or filter to a specific set of users to see how an experiment or launch has impacted these users' experience.
 
-Be careful with statistical interpretation of Custom Queries, especially when grouping by a dimension with lots of options. This can increase your chance of seeing a false-positive statistically significant result.
+Custom queries are experimental analyses just like in the main Results tab, and all the same statistical procedures apply. Results are computed as p-values and confidence intervals for your metric deltas, and advanced statistical methods like [CUPED](/stats-engine/methodologies/cuped) and [Sequential Testing](/experiments-plus/sequential-testing) can be used.
+
+:::important
+Be careful when drawing your inferences of Custom Queries, especially when grouping by a dimension with lots of options. This can increase your chance of seeing a false-positive statistically significant result.
+:::
 
 ### Running a Custom Query
 
