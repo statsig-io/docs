@@ -54,6 +54,20 @@ If you want a daily refresh of a given Custom Query, you can schedule your Custo
 
 <img width="505" alt="Screenshot 2025-02-06 at 6 53 33 PM" src="https://github.com/user-attachments/assets/fad0c8ce-3f9c-46be-a09c-52263e124259" />
 
+### Reviewing Custom Query Results
+
+Custom query results look a lot like the main Results tab, because the statistical methods are the same. Statsig uses the same experimental analyses practices on your custom analysis as we do on your main Results.
+
+One main point of difference, however, is that your custom query result is a snapshot in time. Once run, the analyses results are saved and will not update if more metric data is collected. If you do want to update your results, you can run a new custom query or schedule custom queries to run at a regular cadence.
+
+#### Sequential Testing and Custom Queries
+
+If [Sequential Testing](/experiments-plus/sequential-testing) is enabled for your experiment, it can be applied to your custom query results as well. How much and whether to adjust your confidence intervals and p-values will depend on the regular rules of sequential testing. If your custom query doesn't satisfy the experiment's target Days or Unique Exposures from your setup, sequential testing adjustments will be made to your results to account for the under-powered state of the experiment.
+
+![Screenshot 2025-02-26 at 8 43 10 AM](https://github.com/user-attachments/assets/df7c4087-82c3-41fb-8f5d-124094ec4526)
+
+
+
 
 
 
