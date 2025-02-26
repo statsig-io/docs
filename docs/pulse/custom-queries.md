@@ -64,7 +64,7 @@ One main point of difference, however, is that your custom query result is a sna
 
 If [Sequential Testing](/experiments-plus/sequential-testing) is enabled for your experiment, it can be applied to your custom query results as well. How much and whether to adjust your confidence intervals and p-values will depend on the regular rules of sequential testing: if your custom query doesn't satisfy the experiment's target Days or Unique Exposures from your setup, sequential testing adjustments will be made to your results to account for the under-powered state of the experiment.
 
-Since custom queries are computed as a snapshot in time, sequential testing adjustments are computed for that specific analysis only. If you run additional custom queries with more or less data (e.g. more days in the analysis, more unique users in the experiment), the sequential testing adjustments will change according. Some custom queries may have no sequential adjustments applied at all if they meet the configured minimum Days or Unique Exposures.
+Since custom queries are computed as a snapshot in time, sequential testing adjustments are computed for that specific analysis only. If you run additional custom queries with more or less data (e.g. more days in the analysis, more unique users in the experiment), the sequential testing adjustments will change accordingly. Some custom queries may have no sequential adjustments applied at all if they meet the configured minimum Days or Unique Exposures.
 
 ![Screenshot 2025-02-26 at 8 43 10 AM](https://github.com/user-attachments/assets/df7c4087-82c3-41fb-8f5d-124094ec4526)
 
