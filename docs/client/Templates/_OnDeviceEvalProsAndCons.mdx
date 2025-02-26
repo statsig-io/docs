@@ -13,7 +13,7 @@ It is a Client SDK that behaves more like a Server SDK. Rather than requiring a 
 - Lower latency to download configs cached at the edge, rather than evaluated for a given user (which cannot be cached as much)
 
 ### Cons
-- Entire project definition is available client side - the names and configurations of all experiments and feature flags accessible by your client key are exposed.
+- Entire project definition is available client side - the names and configurations of all experiments and feature flags accessible by your client key are exposed. See our [client key with server permission best practices](/sdk-keys/api-keys/#client-keys-with-server-permissions)
 - <>Payload size is strictly larger than what is required for the <a href={props.otherSDK.link}>{props.otherSDK.name}</a>.</>
 - Evaluation performance is slightly slower - rather than looking up the value, the SDK must actually evaluate targeting conditions and an allocation decision
 - Does not support ID list segments with > 1000 IDs
