@@ -19,9 +19,14 @@ In the application page, you'll be able to go to your newly created Statsig proj
 
 ![image](/img/vercel_marketplace_view.png)
 
-## Add the Statsig SDK to your Edge Function
+## Using Flags SDK in NextJS
 
-Now lets hook up the SDK to read that config payload and use it for gate and experiment checks in your edge function.
+If you're using NextJS in your Vercel project, you can use Statsig through Flags SDK and take advantage of built in precompute patterns for improved performance. See the [Statsig Adapter for Flags SDK docs](https://flags-sdk.dev/docs/api-reference/adapters/statsig) for steps on how to get started.
+Note that the marketplace app sets all required environment variables for the Flags SDK by default for a quick setup process.
+
+## Using the Statsig SDK
+
+If you aren't using NextJS, or prefer to use Statsig SDK's directly, you can follow the following steps to use Statsig SDK in your Vercel project.
 
 First up, you'll need to install the statsig sdk and the vercel edge config data adapter.
 
