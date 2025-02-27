@@ -794,8 +794,8 @@ const sidebars: SidebarsConfig = {
                     "statsig-warehouse-native/connecting-your-warehouse/athena",
                     "statsig-warehouse-native/connecting-your-warehouse/bigquery",
                     "statsig-warehouse-native/connecting-your-warehouse/databricks",
-                    "statsig-warehouse-native/connecting-your-warehouse/redshift",                      
-                    "statsig-warehouse-native/connecting-your-warehouse/snowflake",                                      
+                    "statsig-warehouse-native/connecting-your-warehouse/redshift",
+                    "statsig-warehouse-native/connecting-your-warehouse/snowflake",
                   ],
                 },
                 "statsig-warehouse-native/connecting-your-warehouse/forwarded-data",
@@ -975,7 +975,7 @@ const sidebars: SidebarsConfig = {
                   items: [
                     "access-management/scim/overview",
                     "access-management/scim/concepts",
-                    
+
                     {
                       type: "category",
                       label: "Okta Guide",
@@ -984,7 +984,6 @@ const sidebars: SidebarsConfig = {
                         "access-management/scim/okta_scim_user_management",
                         "access-management/scim/okta_scim_org_roles",
                         "access-management/scim/okta_scim_troubleshooting",
-                      
                       ],
                     },
                     "access-management/scim/scim-endpoints",
