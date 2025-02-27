@@ -390,6 +390,7 @@ const sidebars: SidebarsConfig = {
                 "integrations/event_filtering",
                 "integrations/event_webhook",
                 "integrations/openai",
+                "experiments/statsiglite",
                 {
                   type: "category",
                   label: "Migrate from LaunchDarkly",
@@ -620,7 +621,6 @@ const sidebars: SidebarsConfig = {
                 "experiments/meta-analysis",
                 "insights/introduction",
                 "experiments/quality-score",
-                "experiments/statsig-lite",
               ],
             },
             {
