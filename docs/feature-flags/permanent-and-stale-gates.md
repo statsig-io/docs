@@ -48,6 +48,10 @@ In your feature gates catalog, you'll see different **Types** displayed in the S
     - **STALE_PROBABLY_UNLAUNCHED** The Gate is marked as disabled or has an everyone rule passing 0% (rollout rate of 0%).
     - **STALE_PROBABLY_FORGOTTEN** This gate appears to have been only partially launched for some time. You might want to launch/disable it, or make it permanent if you need to keep it around.
     - **STALE_NO_RULES** The Gate has no set rules.
+    - **STALE_ALL_TRUE** The Gate has been returning true every time it has been checked for the last 30 days (or number of days configured in project settings). It could probably be removed.
+    - **STALE_ALL_FALSE** The Gate has been returning false every time it has been checked for the last 30 days (or number of days configured in project settings). It could probably be removed.
+    - **STALE_EMPTY_CHECKS** The Gate has been returning empty (probably indicating an error) every time it has been checked for the last 30 days (or number of days configured in project settings). It could probably be removed or might need to be investigated.
+
 
 ## Nudges to clean up Stale gates
 

@@ -1,12 +1,12 @@
 ---
-title: Statsig Product Analytics Overview
+title: Product Analytics Overview
 tags:
 - Statsig Cloud 
 sidebar_label: Overview
 slug: /product-analytics/overview
 ---
 
-# Overview
+# Product Analytics Overview
 
 Statsig product analytics helps you understand how your users experience and interact with your product through the analysis of product data. Metrics Explorer and Dashboards are the primary product analytics surfaces within Statsig. 
 

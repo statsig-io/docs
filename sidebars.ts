@@ -35,6 +35,7 @@ const sidebars: SidebarsConfig = {
           className: "lightbulb-icon sidebar-icon",
           items: [
             "understanding-platform",
+            "client/concepts/parameter-stores",
             "guides/first-device-level-experiment",
             "guides/experiment-on-custom-id-types",
             "guides/using-environments",
@@ -55,26 +56,10 @@ const sidebars: SidebarsConfig = {
           className: "doc-icon sidebar-icon",
           items: [
             "sdks/getting-started",
-            {
-              Concepts: [
-                "sdks/client-vs-server",
-                "client/concepts/user",
-                "server/concepts/monitoring",
-                "sdks/debugging",
-                "client/concepts/initialize",
-                "client/concepts/bootstrapping",
-                "client/concepts/persistent_assignment",
-                "client/concepts/parameter-stores",
-                "messages/serverRequiredUserID",
-                "server/concepts/user",
-                "server/concepts/data_store",
-                "server/concepts/persistent_assignment",
-                "server/concepts/all_assignments",
-                "sdk-keys/api-keys",
-                "sdk-keys/target-apps",
-                "server/deprecation-notices",
-              ],
-            },
+            "sdks/client-vs-server",
+            "concepts/user",
+            "client/concepts/initialize",
+            "sdks/debugging",
             {
               className: "html-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
@@ -108,7 +93,7 @@ const sidebars: SidebarsConfig = {
             {
               className: "node-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
-              id: "server/nodejsServerSDK",
+              id: "server-core/node-core",
             },
             {
               type: "category",
@@ -117,42 +102,42 @@ const sidebars: SidebarsConfig = {
                 {
                   className: "cpp-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/cpp-client-sdk"
+                  id: "client/cpp-client-sdk",
                 },
                 {
                   className: "flutter-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/dartSDK"
+                  id: "client/dartSDK",
                 },
                 {
                   className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/dotnetSDK"
+                  id: "client/dotnetSDK",
                 },
                 {
                   className: "expo-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/javascript-mono/ExpoUsage"
+                  id: "client/javascript-mono/ExpoUsage",
                 },
                 {
                   className: "react-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/javascript-mono/ReactNativeUsage"
+                  id: "client/javascript-mono/ReactNativeUsage",
                 },
                 {
                   className: "angular-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/javascript-mono/AngularUsage"
+                  id: "client/javascript-mono/AngularUsage",
                 },
                 {
                   className: "roku-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/rokuSDK"
+                  id: "client/rokuSDK",
                 },
                 {
                   className: "unity-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "client/unitySDK"
+                  id: "client/unitySDK",
                 },
                 {
                   type: "category",
@@ -197,59 +182,73 @@ const sidebars: SidebarsConfig = {
                 {
                   className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/dotnetSDK"
+                  id: "server/dotnetSDK",
                 },
                 {
                   className: "cpp-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/cppSDK"
+                  id: "server/cppSDK",
                 },
                 {
                   className: "elixir-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/erlangSDK"
+                  id: "server/erlangSDK",
                 },
                 {
                   className: "golang-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/golangSDK"
+                  id: "server/golangSDK",
                 },
                 {
                   className: "java-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/javaSdk"
+                  id: "server-core/java-core",
                 },
                 {
                   className: "python-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/pythonSDK"
+                  id: "server-core/python-core",
                 },
                 {
                   className: "php-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/phpSDK"
+                  id: "server/phpSDK",
                 },
                 {
                   className: "ruby-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/rubySDK"
+                  id: "server/rubySDK",
                 },
                 {
                   className: "rust-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/rustSDK"
-                }
-              ]
-              
+                  id: "server/rustSDK",
+                },
+              ],
             },
             {
               type: "category",
-              label: "Other Frameworks",
+              label: "Legacy Server SDKs",
+              link: {
+                type: "doc",
+                id: "server-core/legacy-sdks",
+              },
               items: [
-                "guides/node-express-feature-flags",
-                "guides/node-express-abtests",
-                "guides/python-flask-feature-flags",
-                "guides/python-flask-abtests",
+                {
+                  className: "node-icon sidebar-icon sdk-sidebar-icon",
+                  type: "doc",
+                  id: "server/nodejsServerSDK",
+                },
+                {
+                  className: "python-icon sidebar-icon sdk-sidebar-icon",
+                  type: "doc",
+                  id: "server/pythonSDK",
+                },
+                {
+                  className: "java-icon sidebar-icon sdk-sidebar-icon",
+                  type: "doc",
+                  id: "server/javaSdk",
+                },
               ],
             },
             {
@@ -268,6 +267,28 @@ const sidebars: SidebarsConfig = {
                 "azureai/running-experiments",
               ],
             },
+            {
+              type: "category",
+              label: "Advanced SDK Methods",
+              items: [
+                {
+                  type: "category",
+                  label: "Other Frameworks",
+                  items: [
+                    "guides/node-express-feature-flags",
+                    "guides/node-express-abtests",
+                    "guides/python-flask-feature-flags",
+                    "guides/python-flask-abtests",
+                  ],
+                },
+                "client/concepts/persistent_assignment",
+                "client/concepts/local-eval-adapter",
+                "server/concepts/persistent_assignment",
+                "server/concepts/data_store",
+                "sdk-keys/target-apps",
+              ],
+            },
+            "server/deprecation-notices",
           ],
         },
         {
@@ -328,18 +349,18 @@ const sidebars: SidebarsConfig = {
               "Data Into Statsig": [
                 {
                   "Data Connectors": [
+                    "integrations/data-connectors/amplitude",
                     "integrations/data-connectors/census",
-                    "integrations/data-connectors/google-analytics",
                     "integrations/data-connectors/fivetran",
+                    "integrations/data-connectors/google-analytics",
                     "integrations/data-connectors/heap",
                     "integrations/data-connectors/hightouch",
+                    "integrations/data-connectors/mixpanel",
                     "integrations/data-connectors/mparticle",
                     "integrations/data-connectors/revenuecat",
-                    "integrations/data-connectors/segment",
                     "integrations/data-connectors/rudderstack",
+                    "integrations/data-connectors/segment",
                     "integrations/data-connectors/stitch",
-                    "integrations/data-connectors/mixpanel",
-                    "integrations/data-connectors/amplitude",
                   ],
                 },
                 {
@@ -401,6 +422,7 @@ const sidebars: SidebarsConfig = {
                 "integrations/vercel",
                 "integrations/cloudflare",
                 "integrations/fastly",
+                "integrations/akamai",
               ],
             },
             {
@@ -579,6 +601,7 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/getting-group",
                 "experiments-plus/monitor",
                 "experiments-plus/read-results",
+                "pulse/userproperties",
                 "experiments-plus/sequential-testing",
                 "experiments-plus/make-decision",
                 "experiments-plus/overrides",
@@ -593,31 +616,12 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/bayesian",
                 "experiments-plus/switchback-tests",
                 "experiments-plus/reconciling-experiment-results",
-                // {
-                //   Experimentation: [
-                //     "experiments-plus/experimentation/why-experiment",
-                //     "experiments-plus/experimentation/scenarios",
-                //     "experiments-plus/experimentation/best-practices",
-                //     "experiments-plus/experimentation/common-terms",
-                //     "experiments-plus/experimentation/choosing-randomization-unit",
-                //   ],
-                // },
+                "experiments-plus/bots",
+                "experiments/meta-analysis",
+                "insights/introduction",
+                "experiments/quality-score",
               ],
             },
-            // {
-            //   type: "category",
-            //   label: "Autotune (Bandits)",
-            //   link: {
-            //     type: "doc",
-            //     id: "autotune/introduction",
-            //   },
-            // items: [
-            //   "autotune/contextual-bandit",
-            //   "autotune/multi-armed-bandit",
-            //   "autotune/setup",
-            //   "autotune/monitoring",
-            // ],
-            // },
             {
               type: "category",
               label: "Stats Engine",
@@ -650,7 +654,7 @@ const sidebars: SidebarsConfig = {
             },
             {
               type: "category",
-              label: "Low-code Experiments",
+              label: "Low-code (Sidecar)",
               items: [
                 "guides/sidecar-experiments/introduction",
                 "guides/sidecar-experiments/setup",
@@ -676,6 +680,7 @@ const sidebars: SidebarsConfig = {
                 "autotune/multi-armed-bandit",
                 "autotune/setup",
                 "autotune/monitoring",
+                "autotune/using-bandits",
               ],
             },
             {
@@ -725,8 +730,12 @@ const sidebars: SidebarsConfig = {
               ],
             },
             "product-analytics/dashboards",
-            "users/introduction",
-            "insights/introduction",
+            {
+              type: "category",
+              label: "Users",
+              className: "users-icon sidebar-icon",
+              items: ["users/introduction", "users/user-profiles"],
+            },
           ],
         },
         {
@@ -782,11 +791,11 @@ const sidebars: SidebarsConfig = {
                   label: "Connect Your Warehouse",
                   items: [
                     "statsig-warehouse-native/guides/connect",
+                    "statsig-warehouse-native/connecting-your-warehouse/athena",
                     "statsig-warehouse-native/connecting-your-warehouse/bigquery",
-                    "statsig-warehouse-native/connecting-your-warehouse/snowflake",
                     "statsig-warehouse-native/connecting-your-warehouse/databricks",
                     "statsig-warehouse-native/connecting-your-warehouse/redshift",
-                    "statsig-warehouse-native/connecting-your-warehouse/athena",
+                    "statsig-warehouse-native/connecting-your-warehouse/snowflake",
                   ],
                 },
                 "statsig-warehouse-native/connecting-your-warehouse/forwarded-data",
@@ -915,6 +924,8 @@ const sidebars: SidebarsConfig = {
                   ],
                 },
                 "experiments/meta-analysis",
+                "insights/introduction",
+                "experiments/quality-score",
                 "statsig-warehouse-native/features/reports",
                 "statsig-warehouse-native/features/autotune",
                 "statsig-warehouse-native/features/use-case",
@@ -939,6 +950,7 @@ const sidebars: SidebarsConfig = {
           label: "Workspace Management",
           items: [
             "access-management/introduction",
+            "sdk-keys/api-keys",
             {
               Workspace: [
                 "access-management/organizations",
@@ -964,7 +976,17 @@ const sidebars: SidebarsConfig = {
                   items: [
                     "access-management/scim/overview",
                     "access-management/scim/concepts",
-                    "access-management/scim/okta_scim",
+
+                    {
+                      type: "category",
+                      label: "Okta Guide",
+                      items: [
+                        "access-management/scim/okta_scim_setup",
+                        "access-management/scim/okta_scim_user_management",
+                        "access-management/scim/okta_scim_org_roles",
+                        "access-management/scim/okta_scim_troubleshooting",
+                      ],
+                    },
                     "access-management/scim/scim-endpoints",
                   ],
                 },
@@ -1052,7 +1074,11 @@ const sidebars: SidebarsConfig = {
               ],
             },
             {
-              Reliability: ["infrastructure/reliability-faq", "guides/uptime"],
+              Reliability: [
+                "infrastructure/reliability-faq",
+                "guides/uptime",
+                "infrastructure/monitoring",
+              ],
             },
           ],
         },

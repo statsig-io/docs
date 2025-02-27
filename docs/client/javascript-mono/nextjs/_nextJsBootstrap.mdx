@@ -233,7 +233,6 @@ import {
   useClientBootstrapInit, // <- Add this
 } from "@statsig/react-bindings";
 import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
-import React, { useEffect } from "react";
 
 export default function MyStatsig({
   children,
@@ -248,7 +247,7 @@ export default function MyStatsig({
     bootstrapValues.user,
     bootstrapValues.data,
     {
-      logLevel: LogLevel.debug,
+      logLevel: LogLevel.Debug,
       plugins: [ new StatsigAutoCapturePlugin() ]
     }
   );
@@ -309,7 +308,6 @@ import {
   StatsigUser,
 } from "@statsig/react-bindings";
 import { runStatsigAutoCapture } from '@statsig/web-analytics';
-import React, { useEffect } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
   const clientRef = useRef<StatsigClient | null>();

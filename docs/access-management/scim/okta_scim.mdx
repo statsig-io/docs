@@ -8,13 +8,6 @@ import AlertTitle from "@mui/material/AlertTitle";
 
 # Okta SCIM Provisioning
 
-:::info
-
-### Open Beta
-
-SCIM is now available in Open Beta. Contact us to get started. For support, reach out to us on Slack.
-:::
-
 <br />
 This guide outlines the process for setting up SCIM (System for Cross-domain Identity
 Management) integration between Statsig and Okta. This integration allows for automated
@@ -23,7 +16,7 @@ user provisioning and management.
 ## Prerequisites
 
 - An Okta account with admin access
-- [A SCIM Key from Statsig](/access-management/scim/overview#how-to-obtain-scim-auth-key)
+- A SCIM Key from the [Statsig Console](/access-management/scim/overview#how-to-obtain-scim-auth-key) (requires Statsig Org Admin rights)
 
 :::note
 
@@ -31,6 +24,7 @@ user provisioning and management.
 
 - User email management is not enabled on SCIM yet.
 - When a user is removed from Statsig, they will be automatically unassigned in Okta. Conversely, if a user is unassigned or deactivated in Okta, they will be removed from the Statsig Organization.
+- Creation of Statsig Projects and Roles is not supported via SCIM.
   :::
 
 ## Step 1: Create a New App Integration in Okta
@@ -72,8 +66,9 @@ user provisioning and management.
   - `Push New Users`
   - `Push Profile Updates`
   - `Push Groups`
+  - `Import Groups` (Only if your organization has the `SELECTIVE_APP_IMPORT_PLATFORM` flag enabled, see note above)
 - Set the authentication mode to "HTTP Header"
-- For the authorization header, use the SCIM Bearer token provided to you by statsig
+- For the authorization header, use the SCIM Bearer token generated in Statsig by your Org Admin. See [How to Obtain SCIM Auth Key](/access-management/scim/overview#how-to-obtain-scim-auth-key) for more details.
 
 ![img](/img/okta_scim_steps/step4.png)
 

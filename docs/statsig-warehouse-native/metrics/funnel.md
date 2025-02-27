@@ -76,3 +76,10 @@ Funnels in experiment-analysis order strictly. For example, in the funnel A->B->
   - With this setting enabled, the first step of the funnel is the exposure event of the experiment. This makes it easy to measure the conversion rate to the first event, and additionally normalizes the final outcome per experiment-user. Note that this is incompatible with session-based funnels.
 - Measure time to complete
   - Switches the funnel mode into measuring the average time for users to complete a funnel. This will create a ratio metric, where the numerator is the sum of funnel seconds-to-complete, and the denominator is the number of completed funnels. This can be useful in isolation, or when paired with a conversion measurement to understand the change to both completion rate and time to complete.
+ 
+## Visualization
+In addition to breaking down lift by funnel steps, it is also possible to create funnel visualizations by step. 
+![image](https://github.com/user-attachments/assets/c38ca372-5323-408f-89b6-121300b4e60c)
+
+![image](https://github.com/user-attachments/assets/8e10442f-be78-455e-84a3-053e4a61434a)
+

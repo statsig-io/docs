@@ -42,9 +42,13 @@ end
 ```ruby
 class StatsigOptions
   attr_accessor :environment
-  attr_accessor :api_url_base
+  attr_accessor :download_config_specs_url
+  attr_accessor :log_event_url
+  attr_accessor :get_id_lists_url
   attr_accessor :rulesets_sync_interval
   attr_accessor :idlists_sync_interval
+  attr_accessor :disable_rulesets_sync
+  attr_accessor :disable_idlists_sync
   attr_accessor :logging_interval_seconds
   attr_accessor :logging_max_buffer_size
   attr_accessor :local_mode
@@ -52,23 +56,38 @@ class StatsigOptions
   attr_accessor :rules_updated_callback
   attr_accessor :data_store
   attr_accessor :idlist_threadpool_size
+  attr_accessor :logger_threadpool_size
   attr_accessor :disable_diagnostics_logging
   attr_accessor :disable_sorbet_logging_handlers
+  attr_accessor :network_timeout
+  attr_accessor :post_logs_retry_limit
+  attr_accessor :post_logs_retry_backoff
+  attr_accessor :user_persistent_storage
 
   def initialize(
-    environment: T.any(T::Hash[String, String], NilClass),
-    api_url_base: String,
-    rulesets_sync_interval: T.any(Float, Integer),
-    idlists_sync_interval: T.any(Float, Integer),
-    logging_interval_seconds: T.any(Float, Integer),
-    logging_max_buffer_size: Integer,
-    local_mode: T::Boolean,
-    bootstrap_values: T.any(String, NilClass),
-    rules_updated_callback: T.any(Method, Proc, NilClass),
-    data_store: T.any(Statsig::Interfaces::IDataStore, NilClass),
-    idlist_threadpool_size: Integer,
-    disable_diagnostics_logging: T::Boolean,
-    disable_sorbet_logging_handlers: T::Boolean)
+    environment = nil,
+    download_config_specs_url: nil,
+    log_event_url: nil,
+    get_id_lists_url: nil,
+    rulesets_sync_interval: 10,
+    idlists_sync_interval: 60,
+    disable_rulesets_sync: false,
+    disable_idlists_sync: false,
+    logging_interval_seconds: 60,
+    logging_max_buffer_size: 1000,
+    local_mode: false,
+    bootstrap_values: nil,
+    rules_updated_callback: nil,
+    data_store: nil,
+    idlist_threadpool_size: 3,
+    logger_threadpool_size: 3,
+    disable_diagnostics_logging: false,
+    disable_sorbet_logging_handlers: false,
+    network_timeout: nil,
+    post_logs_retry_limit: 3,
+    post_logs_retry_backoff: nil,
+    user_persistent_storage: nil
+  )
   end
 end
 ```

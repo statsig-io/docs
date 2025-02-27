@@ -8,13 +8,15 @@ slug: /metrics/metric-alerts
 When rolling out a new feature or experiment, you may want to be notified if your rollout or experiment regresses a metric beyond a pre-set threshold. Statsig enables this via metric alerts.
 
 ## Overview
-On Statsig Cloud, metric alerts are hourly for the first 24 hours post experiment/ gate rollout (this includes new gate rules/ rollouts), and then daily thereafter. This is to help provide more real-time visibility during the most critical phase of a rollout; in those first 24 hours post-going live. Alerts only trigger if the metric delta is statistically significant lower/ higher than your threshold, which helps reduce alert noisiness. 
+On Statsig Cloud, metric alerts are hourly for the first 24 hours post experiment/gate rollout (this includes new gate rules/rollouts), and then daily thereafter. This is to help provide more real-time visibility during the most critical phase of a rollout; in those first 24 hours post-going live. Alerts only trigger if the metric delta is statistically significant lower/higher than your threshold, which helps reduce alert noisiness. 
 
-On Statsig Warehouse Native, metric alerts are evaluated every time Pulse is loaded. Loading Pulse on the first day of rollout will help provide more real-time visibility during this window. Alerts only trigger if the metric delta is statistically significant lower/ higher than your threshold, which helps reduce alert noisiness. 
+On Statsig Warehouse Native, metric alerts are evaluated every time Pulse is loaded. Loading Pulse on the first day of rollout will help provide more real-time visibility during this window. Alerts only trigger if the metric delta is statistically significant lower/higher than your threshold, which helps reduce alert noisiness. 
 
-Finally, all stats methodologies you've enabled for your experiment/ gate rollout (CUPED, Sequential Testing, etc.) will be applied to alert calculations post-the first 24 hours (once the alert becomes daily). 
+Finally, all stats methodologies you've enabled for your experiment/gate rollout (CUPED, Sequential Testing, etc.) will be applied to alert calculations post-the first 24 hours (once the alert becomes daily). 
 
-NOTE: Metric alerts do not alert at the **topline metric value** level, but rather at **the experiment/ feature gate level**. This means that even if you have an experiment allocated to 10% of your users, but the metric change within that 10% allocation breaches the set threshold, you will be alerted. All alerts you receive will be in the context of a specific experiment or feature gate and to debug/ resolve the alert you will be directed to the offending experiment or gate in question.
+:::info 
+NOTE: Metric alerts do not alert at the **topline metric value** level, but rather at **the experiment/feature gate level**. This means that even if you have an experiment allocated to 10% of your users, but the metric change within that 10% allocation breaches the set threshold, you will be alerted. All alerts you receive will be in the context of a specific experiment or feature gate and to debug/resolve the alert you will be directed to the offending experiment or gate in question.
+:::
 
 ## Setting up a Metric Alert
 To set up a metric alert, go to the **Metrics** tab  —>  **Metrics Catalog** and search for the desired metric. 
@@ -23,9 +25,9 @@ To set up a metric alert, go to the **Metrics** tab  —>  **Metrics Catalog** a
 
 Once in the Metric Detail View, go to the **Alerts** tab, and tap **+ Create Alert**. As part of Metric Alert configuration, you will be asked to configure the following inputs-
 - **% Change-** The metric delta threshold after which you want to trigger an automated alert. As noted above, this delta is *in the context of the feature gate rollout or experiment the metric is being measured in* and is not a top-line metric value change across your whole user-base.
-- **Minimum Participating Units-** You can set a minimum threshold of exposures you want to log before triggering an alert. We surface the 25/ 50/ 75th percentiles of exposure volume across your gates/ experiments to help you choose a reasonable threshold. 
+- **Minimum Participating Units-** You can set a minimum threshold of exposures you want to log before triggering an alert. We surface the 25/ 50/ 75th percentiles of exposure volume across your gates/experiments to help you choose a reasonable threshold. 
 - **Direction-** Positive or negative, depending on whether you want to be alerted based on your metric *exceeding* vs. *dropping below* a target threshold.
-- **Subscribers-** By default, all creators of a feature gate/ experiment with a metric that has an alert configured will be notified if an alert is fired. You can also add additional, global subscribers to a metric alert, who will be notified if *any* feature gate or experiment regresses the metric beyond the target threshold. Note that in a large project adding yourself as a global subscriber of a metric risks being noisy.
+- **Subscribers-** By default, all creators of a feature gate/experiment with a metric that has an alert configured will be notified if an alert is fired. You can also add additional, global subscribers to a metric alert, who will be notified if *any* feature gate or experiment regresses the metric beyond the target threshold. Note that in a large project adding yourself as a global subscriber of a metric risks being noisy.
 
 <img width="1430" alt="Screen Shot 2022-12-06 at 9 41 03 AM" src="https://user-images.githubusercontent.com/101903926/205983421-a50e4373-29b7-4110-91de-a0246f87fe5d.png"/>
 
@@ -36,14 +38,14 @@ To help you configure the right threshold for your metric alert, there is a prev
 
 ![Screen Shot 2024-03-20 at 2 24 48 PM](https://github.com/statsig-io/docs/assets/101903926/2a0434fe-e708-497d-b5bd-53c7b609cd47)
 
-To see how a given metric has trended over a longer period of time, hover over the metric delta for a given feature gate/ experiment, and tap on a data point to view more details. This will open the time-series for the metric, with a configurable date range picker.
+To see how a given metric has trended over a longer period of time, hover over the metric delta for a given feature gate/experiment, and tap on a data point to view more details. This will open the time-series for the metric, with a configurable date range picker.
 
 ![Screen Shot 2024-03-20 at 2 28 58 PM](https://github.com/statsig-io/docs/assets/101903926/a57599b6-044f-42b6-97fc-e6fb8bb3435c)
 
 ![Screen Shot 2024-03-20 at 2 28 50 PM](https://github.com/statsig-io/docs/assets/101903926/f4b0e8a2-c5aa-4bb3-b57d-36930e906e5d)
 
 ## Alert UX 
-If a Metric Alert is triggered, all subscribers and the relevant gate/ experiment creator(s) will receive a notification via email, in the Statsig Console, and via Slack for users who have configured Slack notifications for their Statsig accounts. 
+If a Metric Alert is triggered, all subscribers and the relevant gate/experiment creator(s) will receive a notification via email, in the Statsig Console, and via Slack for users who have configured Slack notifications for their Statsig accounts. 
 
 <img width="609" alt="Screen Shot 2022-12-06 at 9 42 11 AM" src="https://user-images.githubusercontent.com/101903926/205983664-14d2715d-924b-429e-b4a3-40365c4a26af.png"/>
 
@@ -53,7 +55,7 @@ Tapping on **View Alert** will take you into the Diagnostics page of the offendi
 
 <img width="1474" alt="Screen Shot 2022-12-06 at 9 43 45 AM" src="https://user-images.githubusercontent.com/101903926/205983990-6ccbd888-acd4-47e3-96ef-8b3a513a26bf.png"/>
 
-Once in the Diagnostics section, scroll to the **Metric Delta Alerts** section and select the active alert. You will see the metric delta trend with the threshold overlayed. To resolve the alert, tap **Resolve** inline, which will give you the option to either resolve the alert (+ provide an explanation), or snooze the alert for a specified period of time. The alert will show as resolved both inline in the **Metric Delta Alerts** section, as well as on the top of the Pulse page for the given gate/ experiment. 
+Once in the Diagnostics section, scroll to the **Metric Delta Alerts** section and select the active alert. You will see the metric delta trend with the threshold overlayed. To resolve the alert, tap **Resolve** inline, which will give you the option to either resolve the alert (+ provide an explanation), or snooze the alert for a specified period of time. The alert will show as resolved both inline in the **Metric Delta Alerts** section, as well as on the top of the Pulse page for the given gate/experiment. 
 
 <img width="1473" alt="Screen Shot 2022-12-06 at 9 46 19 AM" src="https://user-images.githubusercontent.com/101903926/205984434-f60e7d21-8356-499d-95e8-0c551f82a74d.png"/>
 

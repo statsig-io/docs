@@ -1,0 +1,138 @@
+### FeatureGate Class Structure:
+
+```java
+class FeatureGate {
+	String name; // gate name
+	boolean value; // evluation boolean result
+	String ruleID; // rule id for this gate
+	EvaluationDetails evaluationDetails; // evluation details
+	String rawJson; // in case you might intersted in a raw Json string of 
+									// this feature gate
+}
+```
+
+### Experiment Class Structure:
+
+```java
+class Experiment {
+    String name;                    // Name of the experiment
+    String ruleID;                  // ID of the rule used in the experiment
+    Map<String, JsonElement> value; // Configuration values specific to the experiment
+    String groupName;               // The group name the user falls into within the experiment
+    EvaluationDetails evaluationDetails; // Details about how the experiment was evaluated
+    String rawJson;                 // Raw JSON representation of the experiment
+}
+```
+
+### DynamicConfig Class Structure:
+
+```java
+class Experiment {
+    String name;                    // Name of the experiment
+    String ruleID;                  // ID of the rule used in the experiment
+    Map<String, JsonElement> value; // Configuration values specific to the experiment
+    EvaluationDetails evaluationDetails; // Details about how the experiment was evaluated
+    String rawJson;                 // Raw JSON representation of the experiment
+}
+```
+
+### Methods for both **Experiment** and **DynamicConfig**
+
+```java
+
+public String getString(String key, String fallbackValue)
+
+public boolean getBoolean(String key, Boolean fallbackValue)
+
+public double getDouble(String key, double fallbackValue)
+
+public int getInt(String key, int fallbackValue)
+
+public long getLong(String key, long fallbackValue)
+
+public Object[] getArray(String key, Object[] fallbackValue)
+
+public Map<String, Object> getMap(String key, Map<String, Object> fallbackValue)
+```
+
+
+### Layer
+
+```py
+Layer {
+    String name; // layer name
+    String ruleID; // rule id for this rule
+    String groupName; 
+    Map<String, JsonElement> value;
+    String allocatedExperimentName;
+    EvaluationDetails evaluationDetails;
+    String rawJson; // raw JSON string representation of Layer Object
+}
+```
+
+### Layer Methods
+
+```java
+/**
+ * Retrieves a string value from the layer based on the specified key.
+ * If the key is not found, the fallback value is returned.
+ *
+ * @example
+ * String value = layer.getString("feature_name", "default_value");
+ */
+public String getString(String key, String fallbackValue)
+
+/**
+ * Retrieves a boolean value from the layer based on the specified key.
+ * If the key is not found, the fallback value is returned.
+ *
+ * @example
+ * Boolean isEnabled = layer.getBoolean("is_enabled", false);
+ */
+public boolean getBoolean(String key, Boolean fallbackValue)
+
+/**
+ * Retrieves a double value from the layer based on the specified key.
+ * If the key is not found, the fallback value is returned.
+ *
+ * @example
+ * double ratio = layer.getDouble("conversion_ratio", 1.0);
+ */
+public double getDouble(String key, double fallbackValue)
+
+/**
+ * Retrieves an integer value from the layer based on the specified key.
+ * If the key is not found, the fallback value is returned.
+ *
+ * @example
+ * int maxAttempts = layer.getInt("max_attempts", 3);
+ */
+public int getInt(String key, int fallbackValue)
+
+/**
+ * Retrieves a long value from the layer based on the specified key.
+ * If the key is not found, the fallback value is returned.
+ *
+ * @example
+ * long timestamp = layer.getLong("start_timestamp", 1627389483L);
+ */
+public long getLong(String key, long fallbackValue)
+
+/**
+ * Retrieves an array of objects from the layer based on the specified key.
+ * If the key is not found, the fallback value is returned.
+ *
+ * @example
+ * Object[] items = layer.getArray("item_list", new Object[] {});
+ */
+public Object[] getArray(String key, Object[] fallbackValue)
+
+/**
+ * Retrieves a Map object from the layer based on the specified key.
+ * If the key is not found, the fallback value is returned.
+ *
+ * @example
+ * Map<String, Object> items = layer.getMap("item_list", new Object[] {});
+ */
+public Map<String, Object> getMap(String key, Map<String, Object> fallbackValue)
+```

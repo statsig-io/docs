@@ -1,0 +1,25 @@
+## Overrides (OverrideAdapter)
+
+In the new javascript SDKs, we provide an OverrideAdapter interface that you can customize, plus a ready-to-use version called LocalOverrideAdapter that should work for most use cases. Add it to your instance at initialization time, and it should behave intuitively, allowing you to override any config. 
+
+```jsx
+const overrideAdapter = new LocalOverrideAdapter(); // <-- instantiate here 
+overrideAdapter.overrideGate('gate_a', false);
+overrideAdapter.overrideGate('gate_b', true);
+
+const client = new StatsigClient(
+    DEMO_CLIENT_KEY,
+    { userID: 'a-user' },
+    {
+    logLevel: LogLevel.Debug,
+    overrideAdapter, //<-- Add to your instance here
+    },
+);
+```
+
+### Making these overrides "sticky"
+In other client SDKs, overrides persist on an individual device between sessions. The LocalOverrideAdapter supports this - but given that the SDK also supports [Multi-Instance](#multiple-client-instances), you should pass your SDK key into the LocalOverrideAdapter to serve as a unique key for each instance's overrides in storage. 
+
+```jsx
+const overrideAdapter = new LocalOverrideAdapter("client-XXXXXXXXX"); // <-- adding the client key enables persistent overriding.
+```

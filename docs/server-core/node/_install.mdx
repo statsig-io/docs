@@ -1,0 +1,22 @@
+To use the Statsig Server Core SDK, install the `@statsig/statsig-node-core` package.
+
+```shell
+npm i @statsig/statsig-node-core
+```
+
+or
+```
+dependencies {
+    "statsig/statsig-node-core": "0.0.6-beta.2" 
+}
+```
+
+SDKs are pre-built, compiled according to different os and cpu architectures, for most of cases you don't need to worry about which version to use. But if your service is locking you dependency with package-lock.json (e.g. using pnpm-lock.yml). You need to be aware that you are installing all packages (architectures and system specific versions). For example, you need to run the service locally (macOS) and deployed service to linux, then you need to include both packages.
+```
+// For example
+dependencies {
+    "statsig/statsig-node-core-darwin-arm64": "0.0.6-beta.2" // for macOS
+    "statsig/statsig-node-core-linux-x64-gnu": "0.0.6-beta.2" // for linux x64 machines
+}
+```
+

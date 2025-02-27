@@ -21,7 +21,7 @@ Each team has a **Members** and **Settings** tab. Within **Members** you can see
 
 ## Configuring Team Settings 
 
-At the Project-level, you can require all config creations are associated with a team via the "Require teams" setting under **Settings** -> **Project Settings** -> **Project Info**. Note that this will block anyone who isn't yet assigned to a team from creating a config, so should only be enabled after all members of the project have been added to (at least) one team. 
+At the Project-level, you can require all config creations are associated with a team via the "Require teams" setting under **Settings** -> **Product Configuration** -> **General**. Note that this will block anyone who isn't yet assigned to a team from creating a config, so should only be enabled after all members of the project have been added to (at least) one team. 
 
 ![Screen Shot 2024-04-24 at 4 35 31 PM](https://github.com/statsig-io/docs/assets/101903926/d11ed451-7fff-4031-b117-4cd05cb3b960)
 
@@ -32,7 +32,7 @@ Within each team, there are a number of settings you can configure:
 
 <img width="881" alt="Screen Shot 2024-02-17 at 4 24 12 PM" src="https://github.com/statsig-io/docs/assets/101903926/16f0ccfd-05d6-4fb2-8992-ec8780ff3778"/>
 
-**Require Reviews:** If reviews are not already required at the Project-level, this setting enables you to require reviews at the individual team level. Note that this setting won't appear if you're already requiring reviews at the Project level (controlled via **Settings** -> **Project Settings** -> **Reviews**).  
+**Require Reviews:** If reviews are not already required at the Project-level, this setting enables you to require reviews at the individual team level. Note that this setting won't appear if you're already requiring reviews at the Project level (controlled via **Settings** -> **Product Configuration** -> **Reviews**).  
 
 ![Screen Shot 2024-04-24 at 4 41 39 PM](https://github.com/statsig-io/docs/assets/101903926/554e0f6a-c9ce-466a-b5a4-db94b0cb24fa)
 

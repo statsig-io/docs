@@ -8,13 +8,6 @@ import AlertTitle from "@mui/material/AlertTitle";
 
 # SCIM Concepts for Statsig
 
-:::info
-
-### Open Beta
-
-SCIM is now available in Open Beta. Contact us to get started. For support, reach out to us on Slack.
-:::
-
 <br />
 Our SCIM implementation represents both Statsig users at the Organization level and
 Project level with their associated roles. There are two major resources in our SCIM
@@ -33,8 +26,6 @@ Each user has the following attributes:
 
 ## Groups
 
-![img](/img/okta_scim_steps/okta-statsig-group.png)
-
 Groups in SCIM represent Statsig Projects with specific roles.
 For example, a Project named "Project A" with a role of "Admin" would be represented as a group in SCIM.
 The group name for this example project would be `Statsig-ProjectA-Admin`.
@@ -43,4 +34,9 @@ Important notes about groups:
 
 - We do not allow group deletion via SCIM
 - Group names cannot be updated through SCIM
-- SCIM identifies groups with a unique ID in the format `Statsig-{ProjectID}-{RoleID}`
+
+### General Mapping Between SCIM and Statsig
+
+![img](/img/okta_scim_steps/okta-statsig-group.png)
+
+

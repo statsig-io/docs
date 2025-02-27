@@ -3,7 +3,7 @@
 ### StatsigClient Outside the Component Tree
 
 In some scenarios, you may need to use the `StatsigClient` when you are not in the React component tree. Things like background tasks or handling notifications. 
-For these, you can use the Expo specific `StatsigClientRN`.
+For these, you can use the RN-specific `StatsigClientRN`.
 
 ```typescript
 import { StatsigClientRN } from '@statsig/react-native-bindings';
@@ -20,36 +20,23 @@ if (myClient.checkGate("my_gate")) {
 }
 ```
 
-### Android networking
-We have seen reports that the default networking client on react native for android can error out with:
-
-```
-ERROR  [Statsig] A networking error occurred during POST request to https://featureassets.org/v1/initialize
-```
-
-Please let us know if you hit this, but for now the suggested workaround is to append this `content-type` for all requests:
+If you would like to access the StatsigClient instance that was created by the StatsigProvider outside of the component tree, you can use the `StatsigClientRN.instance()` method. 
+This will return the first StatsigClient instance that was created. If you have multiple instances, you can pass in the SDK key to get a specific instance.
 
 ```typescript
-const customFetcher = (uri, args) => {
-  args.headers = {
-    'Content-Type': 'application/json',
-    ...args.headers,
-  };
-  return fetch(uri, args);
-};
+// Inside the component tree
+function App() {
+  return <StatsigProviderRN sdkKey={YOUR_CLIENT_KEY} user={{ userID: "a-user" }}>
+    <Text>...</Text>
+  </StatsigProviderRN>
+}
 
-const myStatsigClient = new StatsigClientRN(
-  'YOUR_KEY',
-  {
-    userID: "YOUR_USER_ID",
-  },
-  {
-    networkConfig: {
-      networkOverrideFunc: customFetcher,
-    },
-  }
-);
+// Outside the component tree
+const client = StatsigClientRN.instance(); // get the first created instance
+
+const client = StatsigClientRN.instance(YOUR_CLIENT_KEY); // get a specific instance by SDK key
 ```
+
 
 ### Synchronous Storage with MMKV
 

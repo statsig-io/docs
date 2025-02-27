@@ -1,0 +1,48 @@
+import Gap from "./_Gap.mdx";
+
+<>{props.preamble && <div style={{ marginTop: 20 }}>{props.preamble}</div>}</>
+
+## Installation
+
+<div>{props.install}</div>
+
+<Gap />
+
+## Initialize the SDK
+
+After installation, you will need to initialize the SDK using a [Server Secret Key from the statsig console](https://console.statsig.com/api_keys).
+
+:::info
+Do NOT embed your Server Secret Key in client-side applications, or expose it in any external-facing documents. However, if you accidentally expose it, you can create a new one in the Statsig console.
+:::
+
+<>
+  {props.skipStatsigOptionsDescription || (
+    <div>
+      There is also an optional parameter named <code>options</code> that allows
+      you to pass in a <a href="#statsig-options">StatsigOptions</a> to
+      customize the SDK.
+    </div>
+  )}
+</>
+
+<div>{props.initialize}</div>
+
+<>
+  {props.skipInitializeDescription || (
+    <div>
+      <code>initialize</code> will perform a network request. After{" "}
+      <code>initialize</code> completes, virtually all SDK operations will be
+      synchronous (See{" "}
+      <a href="https://blog.statsig.com/evaluating-feature-gates-in-the-statsig-sdk-a6f8881a1ad8">
+        Evaluating Feature Gates in the Statsig SDK
+      </a>
+      ). The SDK will fetch updates from Statsig in the background, independently
+      of your API calls.
+    </div>
+  )}
+</>
+
+<!--  -->
+
+<Gap />

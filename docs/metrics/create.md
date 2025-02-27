@@ -10,13 +10,13 @@ Custom metrics are computed by Statsig from your raw events. To create custom me
 
 Statsig supports five types of custom metrics:
 
-| Metric Type | Description                                                                                                          | Examples                                                    |
-| ----------- | -------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| Event Count | **Total count of events** filtered by the _value_ and _metadata_ properties of an event type                         | **Add to Cart** event filtered by category type             |
-| User Count  | **Number of unique users** that trigger events filtered by the _value_ and _metadata_ of an event type               | **Active Users** based on their views of a product category |
-| Aggregation | **Sum or Average** of the _value_ or _metadata_ property of an event type                                            | **Total Revenue**                                           |
-| Ratio       | **Rates** (e.g. cart conversion rate, purchase rate), **Normalized Values** (e.g. sessions per user, items per cart) | **Cart Conversion Rate**, **Sessions per User**             |
-| Funnel      | **Funnels**- funnel of multiple events with conversion tracking                                                      | **Sign-up Funnel**, **Checkout Funnel**                     |
+| Metric Type | Description                                                                                                           | Examples                                                    |
+| ----------- | --------------------------------------------------------------------------------------------------------------------  | ----------------------------------------------------------- |
+| Event Count | **Total count of events** filtered by the _Value_, _Metadata_, or _User Object_ properties of an event type           | **Add to Cart** event filtered by category type             |
+| User Count  | **Number of unique users** that trigger events filtered by the _Value_, _Metadata_, or _User Object_ of an event type | **Active Users** based on their views of a product category |
+| Aggregation | **Sum or Average** of the _Value_, _Metadata_, and _User Object_ property of an event type                            | **Total Revenue**                                           |
+| Ratio       | **Rates** (e.g. cart conversion rate, purchase rate), **Normalized Values** (e.g. sessions per user, items per cart)  | **Cart Conversion Rate**, **Sessions per User**             |
+| Funnel      | **Funnels**- funnel of multiple events with conversion tracking                                                       | **Sign-up Funnel**, **Checkout Funnel**                     |
 
 Statsig computes custom metrics on a per day basis for your **Metrics** dashboard, and rolled up for the duration of the experiment in your **Pulse Results** delivered with your Feature Gates and Experiments. After you create a custom metric, it will not populate until the next day (and will not backfill to previous days). Statsig will only calculate it moving forward from the creation date.
 

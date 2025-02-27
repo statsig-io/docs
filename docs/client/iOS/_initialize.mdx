@@ -11,16 +11,16 @@ import TabItem from "@theme/TabItem";
   <TabItem value="swift">
 
 ```swift
-Statsig.start(
+Statsig.initialize(
     sdkKey: "my_client_sdk_key",
     user: StatsigUser(userID: "my_user_id"),
     options: StatsigOptions(environment: StatsigEnvironment(tier: .Staging)))
-{ errorMessage in
+{ error in
 
   // Statsig has finished fetching the latest feature gate and experiment values for your user.
   // If you need the most recent values, you can get them now.
 
-  // You can also check errorMessage for any debugging information.
+  // You can also check error.message and error.code for any debugging information.
 
 }
 ```
@@ -30,11 +30,11 @@ Statsig.start(
 
 ```swift
 StatsigUser *user = [[StatsigUser alloc] initWithUserID:@"my_user_id"];
-[Statsig startWithSDKKey:@"my_client_sdk_key", user:user, completion:^(NSString * errorMessage) {
+[Statsig initializeWithSDKKey:@"my_client_sdk_key" user:user completion:^(StatsigClientError * error) {
   // Statsig has finished fetching the latest feature gate and experiment values for your user.
   // If you need the most recent values, you can get them now.
 
-  // You can also check errorMessage for any debugging information.
+  // You can also check error.message and error.code for any debugging information.
 }];
 ```
 

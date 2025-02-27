@@ -44,14 +44,14 @@ a {
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #0068b3;
+  --ifm-color-primary: #1b63d2;
   --ifm-color-primary-dark: #005693;
   --ifm-color-primary-darker: #0069b3;
   --ifm-color-primary-darkest: #006fbd;
   --ifm-color-primary-light: #0087e7;
   --ifm-color-primary-lighter: #008df1;
   --ifm-color-primary-lightest: #129dff;
-  --ifm-link-color: #0068b3;
+  --ifm-link-color: #1b63d2;
   --ifm-code-font-size: 95%;
   --ifm-font-family-base: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Helvetica Neue", "Ubuntu", sans-serif;
@@ -365,6 +365,10 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/chart.svg");
 }
 
+.users-icon::before {
+  background-image: url("/img/icons/sidebar/users.svg");
+}
+
 .chart-icon:has(.menu__link--active)::before {
   background-image: url("/img/icons/sidebar/chart-active.svg");
 }
@@ -557,11 +561,11 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/template-active.svg");
 }
 
-.sdk-sidebar-icon{
-  padding-left:24px;
+.sdk-sidebar-icon {
+  padding-left: 24px;
 }
 
-[data-theme="dark"] .sidebar-icon::before {
+[data-theme="dark"] .sidebar-icon:not(.sdk-sidebar-icon)::before {
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%)
     contrast(0%);
 }
@@ -574,6 +578,6 @@ span.math.math-inline {
 .no-background {
   --ifm-alert-background-color: transparent;
   --ifm-alert-border-color: black;
-  --ifm-tabs-color-active-border:var(--ifm-color-primary-light);
-  --ifm-tabs-color-active:var(--ifm-color-primary-light);
+  --ifm-tabs-color-active-border: var(--ifm-color-primary-light);
+  --ifm-tabs-color-active: var(--ifm-color-primary-light);
 }

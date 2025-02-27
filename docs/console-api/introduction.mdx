@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: Console API Overview
 slug: /console-api/introduction
 ---
 
@@ -13,4 +13,10 @@ All requests must include the **STATSIG-API-KEY** field in the header. The value
 
 ## Rate Limiting
 
-Mutation requests (POST/PATCH/PUT/DELETE) to the Console API are limited to ~ 100 requests / 10 seconds and ~ 900 requests / 15 minutes.
+Mutation requests (POST/PATCH/PUT/DELETE) to the Console API are limited to ~ 100 requests / 10 seconds and ~ 900 requests / 15 minutes, per project.
+
+## API Version
+
+The Console API is versioned. Each version is guaranteed to not break existing usage; each new version introduces breaking changes. There is currently only one version: `20240601`.
+
+Pass the version in the **STATSIG-API-VERSION** field in the header. For now, this is optional; in the future, this will be required.

@@ -1,4 +1,4 @@
-`Statsig.start()` takes an optional parameter `options` in addition to `sdkKey` and `user` that you can provide to customize the Statsig client. Here are the current options and we are always adding more to the list:
+`Statsig.initialize()` takes an optional parameter `options` in addition to `sdkKey` and `user` that you can provide to customize the Statsig client. Here are the current options and we are always adding more to the list:
 
 - **initTimeout**: Double, default `3.0`
    - used to decide how long the Statsig client waits for the initial network request to respond before calling the completion block. The Statsig client will return either cached values (if any) or default values if checkGate/getConfig/getExperiment is called before the initial network request completes.
@@ -45,7 +45,7 @@
       }
 
       let opts = StatsigOptions(evaluationCallback: callback)
-      Statsig.start(sdkKey: "client-key", options: opts)
+      Statsig.initialize(sdkKey: "client-key", options: opts)
    ```
 
 - **storageProvider**: StorageProvider, default `nil`
@@ -82,3 +82,17 @@ object that conforms to the `StorageProvider` protocol.
 -  **shutdownOnBackground**: Bool, default `true`
    - The SDK automatically shuts down when an app is put into the background.
      If you need to use the SDK while your app is in the background, set this to false.
+
+-  **initializationURL**: URL, default `nil`
+   - Override the URL used to initialize the SDK. Learn more at https://docs.statsig.com/custom_proxy
+
+      ```swift
+         StatsigOptions(initializationURL: URL(string: "https://example.com/setup"))
+      ```
+
+-  **eventLoggingURL**: URL, default `nil`
+   - Override the URL used to log events. Learn more at https://docs.statsig.com/custom_proxy
+
+      ```swift
+         StatsigOptions(eventLoggingURL: URL(string: "https://example.com/info"))
+      ```
