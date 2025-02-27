@@ -620,6 +620,7 @@ const sidebars: SidebarsConfig = {
                 "experiments/meta-analysis",
                 "insights/introduction",
                 "experiments/quality-score",
+                "experiments/statsig-lite",
               ],
             },
             {
