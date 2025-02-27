@@ -618,6 +618,7 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/reconciling-experiment-results",
                 "experiments-plus/bots",
                 "experiments/meta-analysis",
+                "insights/introduction",
                 "experiments/quality-score",
               ],
             },
@@ -735,7 +736,6 @@ const sidebars: SidebarsConfig = {
               className: "users-icon sidebar-icon",
               items: ["users/introduction", "users/user-profiles"],
             },
-            "insights/introduction",
           ],
         },
         {
@@ -924,6 +924,7 @@ const sidebars: SidebarsConfig = {
                   ],
                 },
                 "experiments/meta-analysis",
+                "insights/introduction",
                 "experiments/quality-score",
                 "statsig-warehouse-native/features/reports",
                 "statsig-warehouse-native/features/autotune",
