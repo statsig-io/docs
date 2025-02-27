@@ -30,10 +30,17 @@ Groups in SCIM represent Statsig Projects with specific roles.
 For example, a Project named "Project A" with a role of "Admin" would be represented as a group in SCIM.
 The group name for this example project would be `Statsig-ProjectA-Admin`.
 
+### Team x Role Groups
+
+Team x Role Groups are a special type of group that represent Statsig Teams with specific roles.
+For example, a Team named "Team A" with a role of "Admin" would be represented as a group in SCIM.
+The group name for this example team would be `Statsig-ProjectName-TeamA-Admin`.
+
+
 Important notes about groups:
 
-- We do not allow group deletion via SCIM
-- Group names cannot be updated through SCIM
+- We do not allow project level deletion via SCIM, we do support team level deletion.
+- We currently do not support updating group names via SCIM.
 
 ### General Mapping Between SCIM and Statsig
 

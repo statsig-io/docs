@@ -1,0 +1,89 @@
+---
+sidebar_label: Okta SCIM Team Management
+title: Okta SCIM Team Management
+---
+
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
+
+## Import Existing Statsig Teams
+
+:::note
+Teams are specific Statsig groups that exist within projects. They are not shared across projects. They also have two possible roles: `Admin` and `Member`.
+:::
+
+## Setup
+- Ensure you have some teams created in Statsig.
+- Navigate to the Statsig Project and create a team if you have none.
+
+![img](/img/okta_scim_steps/team_steps/step1-create-team.png)
+
+## Import Existing Groups
+
+- In Okta, go to the Statsig app's "Import" tab
+- Click "Import Now" to fetch existing Statsig users, groups, and teams
+- After importing, you should see the group in your Okta groups following the format `Statsig-ProjectName-TeamName-RoleName`.
+
+![img](/img/okta_scim_steps/team_steps/step2-verify-import.png)
+
+## Create a Mapping Group
+
+- To push a group of Okta users to a Statsig team, you must first create a mapping group.
+- This group will contain the Okta members which will be part of the Team x Role Group.
+
+![img](/img/okta_scim_steps/team_steps/step3-create-mapping-group.png)
+
+## Push Teams to Statsig
+
+1. In Okta, go to the Statsig Integration's "Push Teams" tab and select "Push Groups". Then pick the mapping group created in the previous step.
+   ![img](/img/okta_scim_steps/team_steps/step4-push-teams-1.png)
+
+2. Change the Match result & push action to Link group. Then select the Statsig team you want to push to. It should follow the format `Statsig-ProjectName-TeamName-RoleName`.
+
+![img](/img/okta_scim_steps/team_steps/step4-push-teams-2.png)
+
+3. When you are finished setting up the push, click "Save".
+
+## Verify the Push
+
+- Navigate to the Statsig Project and verify that the team has the new members.
+- This could take some time for Okta to push the members to the team.
+
+![img](/img/okta_scim_steps/team_steps/step5-verify-push.png)
+
+
+## Delete the Team
+
+- On Okta, navigate to push groups and find the pushed group that maps to the Statsig team.
+- Click the push status section and select "Unlink Group".
+![img](/img/okta_scim_steps/team_steps/step6-delete-1.png)
+
+- When prompted to delete the group or leave it in the app, select "Delete".
+- After Okta pushes the deletion, the team should be deleted from Statsig. This may take a few minutes to complete.
+
+![img](/img/okta_scim_steps/team_steps/step6-delete-2.png)
+
+## Optional: Create a Team Via SCIM
+
+- Find an existing Okta group with the members for a new Statsig Team.
+- Navigate to Push Groups and Select "Push Groups".
+- Select the group you want to push to Statsig.
+- Change the Match result & push action to Create Group.
+- The naming for this group must match the format `Statsig-ProjectName-TeamName-Member`.
+![img](/img/okta_scim_steps/team_steps/step7-create-1.png)
+
+- When you are finished setting up the push, click "Save".
+- Afterwards, you should see the new team in the Statsig Project you specified.
+
+![img](/img/okta_scim_steps/team_steps/step7-create-2.png)
+
+
+
+
+
+
+
+
+
+
+

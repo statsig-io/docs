@@ -985,6 +985,7 @@ const sidebars: SidebarsConfig = {
                         "access-management/scim/okta_scim_setup",
                         "access-management/scim/okta_scim_user_management",
                         "access-management/scim/okta_scim_org_roles",
+                        "access-management/scim/okta_scim_team_management",
                         "access-management/scim/okta_scim_troubleshooting",
                       ],
                     },
