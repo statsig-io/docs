@@ -618,6 +618,8 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/switchback-tests",
                 "experiments-plus/reconciling-experiment-results",
                 "experiments-plus/bots",
+                "experiments/meta-analysis",
+                "insights/introduction",
                 "experiments/quality-score",
               ],
             },
@@ -735,7 +737,6 @@ const sidebars: SidebarsConfig = {
               className: "users-icon sidebar-icon",
               items: ["users/introduction", "users/user-profiles"],
             },
-            "insights/introduction",
           ],
         },
         {
@@ -791,11 +792,11 @@ const sidebars: SidebarsConfig = {
                   label: "Connect Your Warehouse",
                   items: [
                     "statsig-warehouse-native/guides/connect",
+                    "statsig-warehouse-native/connecting-your-warehouse/athena",
                     "statsig-warehouse-native/connecting-your-warehouse/bigquery",
-                    "statsig-warehouse-native/connecting-your-warehouse/snowflake",
                     "statsig-warehouse-native/connecting-your-warehouse/databricks",
                     "statsig-warehouse-native/connecting-your-warehouse/redshift",
-                    "statsig-warehouse-native/connecting-your-warehouse/athena",
+                    "statsig-warehouse-native/connecting-your-warehouse/snowflake",
                   ],
                 },
                 "statsig-warehouse-native/connecting-your-warehouse/forwarded-data",
@@ -924,6 +925,7 @@ const sidebars: SidebarsConfig = {
                   ],
                 },
                 "experiments/meta-analysis",
+                "insights/introduction",
                 "experiments/quality-score",
                 "statsig-warehouse-native/features/reports",
                 "statsig-warehouse-native/features/autotune",
@@ -975,7 +977,7 @@ const sidebars: SidebarsConfig = {
                   items: [
                     "access-management/scim/overview",
                     "access-management/scim/concepts",
-                    
+
                     {
                       type: "category",
                       label: "Okta Guide",
@@ -984,7 +986,6 @@ const sidebars: SidebarsConfig = {
                         "access-management/scim/okta_scim_user_management",
                         "access-management/scim/okta_scim_org_roles",
                         "access-management/scim/okta_scim_troubleshooting",
-                      
                       ],
                     },
                     "access-management/scim/scim-endpoints",

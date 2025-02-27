@@ -9,7 +9,7 @@ Insights shows the impact that active experiments and feature gates are having o
 Insights presents a reverse perspective of the [Pulse](/pulse) view. While Pulse measures the impact of a new feature on all your metrics, Insights allows you to focus on a single metric and identify which tests are impacting it the most. 
 
 
-# How lifts are calculated (for Cloud)
+## How lifts are calculated (for Cloud)
 
 The impact of an active experiment on the overall topline metric depends on:
 * The metric lifts caused by the experiment.  This is the test vs. control comparison you see in Pulse.
@@ -53,11 +53,12 @@ To determined whether the impact from a given experiment is statistically signif
 4.	With Relative Lifts toggle ON, it will show the delta that is observed in gate/experiment. Note that all results are without CUPED.
 5.	With Relative Lifts toggle OFF, it will show you the daily topline delta. You can find how these numbers are calculated below.
 
-In the example below, the **product_larger_image** is driving an additional 94 **dau** per day over the last 30 days.  This is equivalent to a 0.16% average daily lift in this metric. 
+In the example below, the group 'Item You May Like' in **homepage_banner** is driving an 0.66% average daily lift in this metric, which contributes to 0.11% increase of topline value and estimated launch impact of 0.64%. 
 
-![Screen Shot 2024-10-18 at 5 18 42 PM](https://github.com/user-attachments/assets/cb87479b-2468-49ec-9733-ddeac9b2fa0e)
+<img width="1263" alt="Screen Shot 2025-02-26 at 11 43 47 PM" src="https://github.com/user-attachments/assets/ce5ca33b-d6e4-4dcd-80c5-e55a9e86fd9e" />
 
-# How lifts are calculated (for Warehouse Native)
+
+## How lifts are calculated (for Warehouse Native)
 
 We calculate **Relative Effect %** and **Absolute Effect** to measure the impacts. The exact calculation depends on whether the metric represents an absolute quantity or a ratio.
 
@@ -88,6 +89,7 @@ where *&mu;<sub>X,t</sub>* and *&mu;<sub>Y,t</sub>* represent the average numera
 2.	Select a metric that you want to observe from the selector drop down at the top of the page. 
 3.	The **Feature Lifts** panel shows two numbers. The number in parentheses is the absolute change in the metric driven by the users in the test group. The delta % is percentage change relative to the topline value of the metric. 
 
-In the example below, the **new_search_algo_v2** is driving an additional 65,070 **add_to_cart** events per day over the last 30 days.  This is equivalent to a 5.98% average daily lift in this metric, which has oscillated between 1M and 1.3M events per day during this time period. 
+In the example below, the **halloween_email_campaign_v3** is driving an 145% average daily lift in this metric, which contributes to 7.8% increase of topline value and estimated launch impact of 15.6%. 
 
-![image](https://user-images.githubusercontent.com/90343952/167211755-4e87e8e2-2bb4-4bd6-a50f-56f3e5ce68b0.png)
+<img width="1255" alt="Screen Shot 2025-02-26 at 11 49 07 PM" src="https://github.com/user-attachments/assets/7444b54d-3eba-4179-ad41-752135da86ce" />
+
