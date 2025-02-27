@@ -617,6 +617,7 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/switchback-tests",
                 "experiments-plus/reconciling-experiment-results",
                 "experiments-plus/bots",
+                "experiments/meta-analysis",
                 "experiments/quality-score",
               ],
             },
