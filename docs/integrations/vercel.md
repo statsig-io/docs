@@ -189,4 +189,4 @@ Use the 'Connect Account' flow in the [Vercel Marketplace](https://vercel.com/in
 
 <img src="https://user-images.githubusercontent.com/87334575/205374493-08dfc561-2095-45f2-be10-bba1a1958bf9.png" width="474" height="400" />
 
-After setting up the mapping, you'll be given an Edge Config Connection String, and Edge Config Item Key. Copy these values for use in env vars in the code snippets aboce - but if you need them again, you can always get back to it in the Statsig console by navigating to [Project Settings -> Integrations](https://console.statsig.com/integrations), and then select **Vercel Edge Config**
+After setting up the mapping, you'll be given an Edge Config Connection String, and Edge Config Item Key. Copy these values for use in env vars in the code snippets above - but if you need them again, you can always get back to it in the Statsig console by navigating to [Project Settings -> Integrations](https://console.statsig.com/integrations), and then select **Vercel Edge Config**
