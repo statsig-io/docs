@@ -188,8 +188,6 @@ Statsig ID Lists are not currently synced into Vercel Edge Config. If you rely o
 
 ## Connect an Existing Account
 
-## Install Integration
-
 Use the 'Connect Account' flow in the [Vercel Marketplace](https://vercel.com/integrations/statsig) app. In the setup, you'll be able to map Statsig projects to Edge Configs, and Statsig will keep project configs synced with the specified Edge Config.
 
 <img src="https://user-images.githubusercontent.com/87334575/205374493-08dfc561-2095-45f2-be10-bba1a1958bf9.png" width="474" height="400" />
