@@ -390,7 +390,7 @@ const sidebars: SidebarsConfig = {
                 "integrations/event_filtering",
                 "integrations/event_webhook",
                 "integrations/openai",
-                "experiments/statsig-lite",
+                "experimentation/statsig-lite",
                 {
                   type: "category",
                   label: "Migrate from LaunchDarkly",
