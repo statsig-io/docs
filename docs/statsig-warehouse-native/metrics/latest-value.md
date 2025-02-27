@@ -5,7 +5,7 @@ sidebar_label: First/Latest Value
 
 ## Summary
 
-First (or Latest( Value metrics calculate the first/latest value of a metric source for each unit, and then average it over the experiment population.
+First (or Latest) Value metrics calculate the first/latest value of a metric source for each unit, and then average it over the experiment population.
 
 ### Use Cases
 
