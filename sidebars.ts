@@ -190,11 +190,6 @@ const sidebars: SidebarsConfig = {
                   id: "server/cppSDK",
                 },
                 {
-                  className: "elixir-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server/erlangSDK",
-                },
-                {
                   className: "golang-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "server/golangSDK",
@@ -208,6 +203,11 @@ const sidebars: SidebarsConfig = {
                   className: "python-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "server-core/python-core",
+                },
+                {
+                  className: "elixir-icon sidebar-icon sdk-sidebar-icon",
+                  type: "doc",
+                  id: "server-core/elixir-core",
                 },
                 {
                   className: "php-icon sidebar-icon sdk-sidebar-icon",
@@ -243,6 +243,11 @@ const sidebars: SidebarsConfig = {
                   className: "python-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "server/pythonSDK",
+                },
+                {
+                  className: "elixir-icon sidebar-icon sdk-sidebar-icon",
+                  type: "doc",
+                  id: "server/erlangSDK",
                 },
                 {
                   className: "java-icon sidebar-icon sdk-sidebar-icon",
