@@ -36,6 +36,10 @@ In the [insights tab](/insights/introduction.md) and in [meta-analysis](/experim
 
 ![Screenshot 2024-06-12 at 11 33 20 AM](https://github.com/statsig-io/docs/assets/102695539/97fce3be-56c2-47da-af7d-4ed5e06566fb)
 
+## Loading Metrics
+
+To use metrics to measure topline impact, or for ongoing tracking in the metrics page, you'll want to schedule loads of the metric values. This can be done ad-hoc by clicking load on the metric page, or scheduled from there (3 dot menu -> edit scheduled reload). You can also set this as a project level setting in your settings under Data Connection.
+
 ## Metric Management
 
 Without a well-managed Metric Catalog, it's hard to trust results as end users don't understand if they can trust a metric, or the nuances of how it's defined. Statsig helps you solve this with a variety of tools:
