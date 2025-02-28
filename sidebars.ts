@@ -514,7 +514,7 @@ const sidebars: SidebarsConfig = {
             "metrics/custom-dau",
             "metrics/archiving-metrics",
             "metrics/create-metric-tags",
-            "metrics/metric-alerts",
+            "metrics/rollout-alerts",
             "metrics/user",
 
             // 301
