@@ -10,7 +10,7 @@ Min Metrics calculate the minimum of a column from the metric source at the unit
 
 ### Use Cases
 
-Max/min metrics allow you to easily track users' extremes during an an experiment.  
+Max/min metrics allow you to easily track users' extremes during an experiment.  
 
 Common examples are:
 
@@ -26,7 +26,7 @@ At the unit level, max/min metrics take the max/min of their input column.
 
 At the group level, the max/min is calculated as the MEAN of the unit-level sums, divided by the count of UNIQUE UNITS exposed to the experiment.
 
-The MAX would like the SQL below:
+The MAX would look like the SQL below:
 
 ```
 -- Unit Level
@@ -100,4 +100,4 @@ Max/min metrics are simple and there are many advanced options you can apply.
   - You can specify a window for data collection after a unit's exposure. For example, a 0-1 day cohort window would only count actions from days 0 and 1 after a unit was exposed to an experiment
     - **Only include units with a completed window** can be selected to remove units out of pulse analysis for this metric until the cohort window has completed
 - Baked Metrics
-  - Baked metrics allow you to specify how long a metric needs to mature. This is common in situations like chargebacks or cancellations. Statsig will delay loading the data until the window has elapsed, and only calculate pulse results for that metric of a unit's metric has matured.
+  - Baked metrics allow you to specify how long a metric needs to mature. This is common in situations like chargebacks or cancellations. Statsig will delay loading the data until the window has elapsed, and only calculate pulse results for that metric if a unit's metric has matured.
