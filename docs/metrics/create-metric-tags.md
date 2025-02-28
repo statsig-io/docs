@@ -46,7 +46,7 @@ To see which metrics already have the **Core** tag applied, filter by the **Core
 
 <img width="1100" alt="Screen Shot 2022-12-10 at 5 48 25 PM" src="https://user-images.githubusercontent.com/101903926/206882708-399dbb67-098e-463c-aa56-df62fc5c780a.png"/>
 
-## Setting Alert Thresholds for your Core Metrics 
-Often when rolling out a new feature or experiment, you may want to be notified if any new rollouts or experiments negatively impact a key business metric. Statsig enables you to set alerts at the per-metric level, whereby you will be alerted if any currently running experiment or feature gate regresses the metric beyond the set threshold.
+## Setting Rollout Alert Thresholds for your Core Metrics 
+Often when rolling out a new feature or experiment, you may want to be notified if any new rollouts or experiments negatively impact a key business metric. Statsig enables you to set Rollout Alerts at the per-metric level, whereby you will be alerted if any currently running experiment or feature gate regresses the metric beyond the set threshold.
 
-Given the importance of Core Metrics, it is recommended to configure threshold alerts for Core Metrics via the metrics Catalog. For more on metric alert configuration, see [here](/metrics/metric-alerts).
+Given the importance of Core Metrics, it is recommended to configure Rollout Alerts for Core Metrics via the metrics Catalog. For more on Rollout Alert configuration, see [here](/metrics/rollout-alerts).
