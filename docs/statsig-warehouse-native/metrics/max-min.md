@@ -54,7 +54,7 @@ USING (group_id)
 GROUP BY group_id;
 ```
 
-The MIN would like the SQL below:
+The MIN would look like the SQL below:
 
 ```
 -- Unit Level
