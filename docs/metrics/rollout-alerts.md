@@ -1,24 +1,24 @@
 ---
-title: Metric Alerts
-sidebar_label: Metric Alerts
-slug: /metrics/metric-alerts
+title: Rollout Alerts
+sidebar_label: Rollout Alerts
+slug: /metrics/rollout-alerts
 ---
 
-# Metric Alerts
-When rolling out a new feature or experiment, you may want to be notified if your rollout or experiment regresses a metric beyond a pre-set threshold. Statsig enables this via metric alerts.
+# Rollout Alerts
+When rolling out a new feature or experiment, you may want to be notified if your rollout or experiment regresses a metric beyond a pre-set threshold. Statsig enables this via Rollout Alerts.
 
 ## Overview
-On Statsig Cloud, metric alerts are hourly for the first 24 hours post experiment/gate rollout (this includes new gate rules/rollouts), and then daily thereafter. This is to help provide more real-time visibility during the most critical phase of a rollout; in those first 24 hours post-going live. Alerts only trigger if the metric delta is statistically significant lower/higher than your threshold, which helps reduce alert noisiness. 
+On Statsig Cloud, Rollout Alerts are hourly for the first 24 hours post experiment/gate rollout (this includes new gate rules/rollouts), and then daily thereafter. This is to help provide more real-time visibility during the most critical phase of a rollout; in those first 24 hours post-going live. Alerts only trigger if the metric delta is statistically significant lower/higher than your threshold, which helps reduce alert noisiness. 
 
-On Statsig Warehouse Native, metric alerts are evaluated every time Pulse is loaded. Loading Pulse on the first day of rollout will help provide more real-time visibility during this window. Alerts only trigger if the metric delta is statistically significant lower/higher than your threshold, which helps reduce alert noisiness. 
+On Statsig Warehouse Native, Rollout Alerts are evaluated every time Pulse is loaded. Loading Pulse on the first day of a rollout will help provide more real-time visibility during this window. Alerts only trigger if the metric delta is statistically significant lower/higher than your threshold, which helps reduce alert noisiness. 
 
 Finally, all stats methodologies you've enabled for your experiment/gate rollout (CUPED, Sequential Testing, etc.) will be applied to alert calculations post-the first 24 hours (once the alert becomes daily). 
 
 :::info 
-NOTE: Metric alerts do not alert at the **topline metric value** level, but rather at **the experiment/feature gate level**. This means that even if you have an experiment allocated to 10% of your users, but the metric change within that 10% allocation breaches the set threshold, you will be alerted. All alerts you receive will be in the context of a specific experiment or feature gate and to debug/resolve the alert you will be directed to the offending experiment or gate in question.
+NOTE: Rollout Alerts do not alert at the **topline metric value** level, but rather at **the experiment/feature gate level**. This means that even if you have an experiment allocated to 10% of your users, but the metric change within that 10% allocation breaches the set threshold, you will be alerted. All alerts you receive will be in the context of a specific experiment or feature gate and to debug/resolve the alert you will be directed to the offending experiment or gate in question.
 :::
 
-## Setting up a Metric Alert
+## Setting up a Rollout Alert
 To set up a metric alert, go to the **Metrics** tab  —>  **Metrics Catalog** and search for the desired metric. 
 
 <img width="1508" alt="Screen Shot 2022-12-06 at 9 37 23 AM" src="https://user-images.githubusercontent.com/101903926/205982663-f5eabaf6-733b-410f-bba1-63268f3af31a.png"/>
@@ -31,10 +31,10 @@ Once in the Metric Detail View, go to the **Alerts** tab, and tap **+ Create Ale
 
 <img width="1430" alt="Screen Shot 2022-12-06 at 9 41 03 AM" src="https://user-images.githubusercontent.com/101903926/205983421-a50e4373-29b7-4110-91de-a0246f87fe5d.png"/>
 
-Once a metric alert has been configured for a given metric, you will see an “alert” alarm bell icon next to the metric inline in the Metrics Catalog. You can also filter for metrics with alerts set on them via the standard metrics filtering affordance next to the search bar.
+Once a Rollout Alert has been configured for a given metric, you will see an “alert” alarm bell icon next to the metric inline in the Metrics Catalog. You can also filter for metrics with alerts set on them via the standard metrics filtering affordance next to the search bar.
 
 ## Determining the Right Threshold 
-To help you configure the right threshold for your metric alert, there is a preview of how much the metric has moved in the context of any feature gates or experiments containing that metric in the Scorecard. 
+To help you configure the right threshold for your Rollout Alert, there is a preview of how much the metric has moved in the context of any feature gates or experiments containing that metric in the Scorecard. 
 
 ![Screen Shot 2024-03-20 at 2 24 48 PM](https://github.com/statsig-io/docs/assets/101903926/2a0434fe-e708-497d-b5bd-53c7b609cd47)
 
@@ -45,17 +45,17 @@ To see how a given metric has trended over a longer period of time, hover over t
 ![Screen Shot 2024-03-20 at 2 28 50 PM](https://github.com/statsig-io/docs/assets/101903926/f4b0e8a2-c5aa-4bb3-b57d-36930e906e5d)
 
 ## Alert UX 
-If a Metric Alert is triggered, all subscribers and the relevant gate/experiment creator(s) will receive a notification via email, in the Statsig Console, and via Slack for users who have configured Slack notifications for their Statsig accounts. 
+If a Rollout Alert is triggered, all subscribers and the relevant gate/experiment creator(s) will receive a notification via email, in the Statsig Console, and via Slack for users who have configured Slack notifications for their Statsig accounts. 
 
 <img width="609" alt="Screen Shot 2022-12-06 at 9 42 11 AM" src="https://user-images.githubusercontent.com/101903926/205983664-14d2715d-924b-429e-b4a3-40365c4a26af.png"/>
 
 <img width="752" alt="Screen Shot 2022-12-06 at 9 42 59 AM" src="https://user-images.githubusercontent.com/101903926/205983817-6a569919-7e2b-4716-9862-aa406c9db843.png"/>
 
-Tapping on **View Alert** will take you into the Diagnostics page of the offending feature gate or experiment that triggered the metric alert.
+Tapping on **View Alert** will take you into the Diagnostics page of the offending feature gate or experiment that triggered the Rollout Alert.
 
 <img width="1474" alt="Screen Shot 2022-12-06 at 9 43 45 AM" src="https://user-images.githubusercontent.com/101903926/205983990-6ccbd888-acd4-47e3-96ef-8b3a513a26bf.png"/>
 
-Once in the Diagnostics section, scroll to the **Metric Delta Alerts** section and select the active alert. You will see the metric delta trend with the threshold overlayed. To resolve the alert, tap **Resolve** inline, which will give you the option to either resolve the alert (+ provide an explanation), or snooze the alert for a specified period of time. The alert will show as resolved both inline in the **Metric Delta Alerts** section, as well as on the top of the Pulse page for the given gate/experiment. 
+Once in the Diagnostics section, scroll to the **Rollout Alerts** section and select the active alert. You will see the metric delta trend with the threshold overlayed. To resolve the alert, tap **Resolve** inline, which will give you the option to either resolve the alert (+ provide an explanation), or snooze the alert for a specified period of time. The alert will show as resolved both inline in the **Rollout Alerts** section, as well as on the top of the Pulse page for the given gate/experiment. 
 
 <img width="1473" alt="Screen Shot 2022-12-06 at 9 46 19 AM" src="https://user-images.githubusercontent.com/101903926/205984434-f60e7d21-8356-499d-95e8-0c551f82a74d.png"/>
 
