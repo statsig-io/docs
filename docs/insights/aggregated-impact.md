@@ -1,6 +1,6 @@
 ---
 title: Aggregated Impact Estimate
-sidebar_label: Aggregated Impact Estimate
+sidebar_label: Aggregated Impact
 slug: /aggregated-impact
 ---
 The aggregated impact estimate is a powerful tool to understand the overall impacts from multiple experiments on a given metric.
