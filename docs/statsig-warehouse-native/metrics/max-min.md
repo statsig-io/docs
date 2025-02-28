@@ -14,13 +14,13 @@ Max/min metrics allow you to easily track users' extremes during an experiment.
 
 Common examples are:
 
-- Measuring the impact of performance changes on users’ worst experiences by analyzing the 99th percentile of latency.
+- Measuring the impact of performance changes on users' worst experiences by analyzing the maximum latency per user.
 
 - Measuring the effect of game changes on user performance by calculating the peak high score per user.
 
 - Counting the number of users who ever left a 2-star review or lower by applying MIN(review_score) with a threshold condition.
 
-## Calculation for MAX
+## Calculation for MAX/MIN
 
 At the unit level, max/min metrics take the max/min of their input column.
 
