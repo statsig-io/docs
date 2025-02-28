@@ -67,4 +67,4 @@ By default, Statsig only includes numerators from metrics with non-null, non-zer
 - Include units which do not have a denominator
   - Control whether you want to include numerators from units which don't have a denominator value
 - Baked Metrics
-  - Baked metrics allow you to specify how long a metric needs to mature. This is common in situations like chargebacks or cancellations. Statsig will delay loading the data until the window has elapsed, and only calculate pulse results for that metric of a unit's metric has matured.
+  - Baked metrics allow you to specify how long a metric needs to mature. This is common in situations like chargebacks or cancellations. Statsig will delay loading the data until the window has elapsed, and only calculate pulse results for that metric if a unit's metric has matured.
