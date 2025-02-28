@@ -6,7 +6,7 @@ sidebar_label: Max/Min
 ## Summary
 
 Max metrics calculate the maximum of a column from the metric source at the unit level. 
-Min Metrics calclute the minimum of a column from the metric source at the unit level. 
+Min Metrics calculate the minimum of a column from the metric source at the unit level. 
 
 ### Use Cases
 
