@@ -1,10 +1,10 @@
 ---
-title: Custom Pulse Queries
-sidebar_label: Custom Queries
+title: Custom "Explore" Queries
+sidebar_label: Custom "Explore" Queries
 slug: /pulse/custom-queries
 ---
 [balanced gates methodology](/feature-flags/view-exposures#gate-exposures)
-## Custom Queries
+## Custom "Explore" Queries
 
 Custom queries are a way to run additional custom experiment analyses on your existing data beyond what is in your main Results tab. You may run them to gain deeper insights from your experiments and feature roll-outs, debug interesting results, or scope down your results to interesting sub-groups. Custom queries allow you to filter or group metrics by event or user dimensions, or filter to a specific set of users to see how an experiment or launch has impacted these users' experience.
 
