@@ -829,6 +829,7 @@ const sidebars: SidebarsConfig = {
                     "statsig-warehouse-native/metrics/log",
                     "statsig-warehouse-native/metrics/latest-value",
                     "statsig-warehouse-native/metrics/retention",
+                    "statsig-warehouse-native/metrics/max-min",
                   ],
                 },
                 "statsig-warehouse-native/configuration/dimensional-analysis",
