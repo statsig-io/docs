@@ -8,7 +8,7 @@ The aggregated impact estimate is a powerful tool to understand the overall impa
 ## When it is useful
 There are two typical use cases for this feature:
 - When you want to understand how much impact you or your team have made. This feature will answer questions like "how much revenue increase my team has driven in the past quarter".
-- When you want to set a reasonable goal for your team/company. this feature will answer questions like "what should be the goal for my team for next quarter?" by looking at historical impacts previous experiements have driven.
+- When you want to set a reasonable goal for your team/company. this feature will answer questions like "what should be the goal for my team for next quarter?" by looking at historical impacts that previous experiments have driven.
 
 ## Where it can be found
 The aggregated impact estimate can be found in [meta-analysis](https://docs.statsig.com/experimentation/meta-analysis), as well as in the insight tab for each metric.
@@ -16,7 +16,7 @@ The aggregated impact estimate can be found in [meta-analysis](https://docs.stat
 <img width="1003" alt="Screen Shot 2025-02-27 at 11 20 05 PM" src="https://github.com/user-attachments/assets/430563dc-4794-4d69-a314-36c76a6fcf74" />
 
 ## How the math works
-We sum up projected launch impact and adjust it based on false positive risk ("winner's curse"). To estimate false positive risk, we use the methodology in this [paper](https://dl.acm.org/doi/10.1145/3534678.3539160) which is widely adopted acorss the industry. Specifically:
+We sum up projected launch impact and adjust it based on false positive risk ("winner's curse"). To estimate false positive risk, we use the methodology in this [paper](https://dl.acm.org/doi/10.1145/3534678.3539160) which is widely adopted across the industry. Specifically:
 
 $$
 Aggregated Impact=\sum_{i}{(1 - FPR_i) \times Projected Launch Impact_i}
