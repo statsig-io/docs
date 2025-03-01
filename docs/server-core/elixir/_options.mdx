@@ -1,0 +1,51 @@
+## StatsigOptions Class
+
+### Parameters
+
+  - **`environment:`**: 
+    The environment you're operating in (e.g., Production)
+
+  - **`output_log_level:`**: 
+    The type of logs you'd like exposed. (e.g., Debug)
+
+  - **`init_timeout_ms:`**: 
+    How long it should take for initialization to time out.
+
+  - **`event_logging_flush_interval_ms:`**: 
+    How often events should flush to the Statsig servers.
+
+  - **`event_logging_max_queue_size:`**: 
+    How many events should be buffered before flushing to the Statsig servers.
+
+  - **`log_event_url:`**: 
+    The URL events should be logged to
+
+  - **`specs_sync_interval_ms:`**: 
+    How often specs should sync from the Statsig servers
+
+  - **`specs_url:`**: 
+    The URL Statsig should download specs from
+
+  - **`enable_id_lists:`**: 
+    If ID list download should be enabled
+
+  - **`id_lists_url:`**: 
+    The URL ID lists should be downloaded from
+
+  - **`id_lists_sync_interval_ms:`**: 
+    How often ID lists should be synced. 
+
+---
+
+### Example Usage
+
+```elixir
+# Initialize StatsigOptions with custom parameters
+statsig_options = %StatsigOptions{
+  enable_id_lists: true
+}
+
+# Pass the options object into statsig.initialize()
+{:ok, _} = Statsig.start_link(sdk_key, statsig_options)
+Statsig.initialize()
+```
