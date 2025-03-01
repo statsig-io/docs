@@ -743,6 +743,7 @@ const sidebars: SidebarsConfig = {
               className: "users-icon sidebar-icon",
               items: ["users/introduction", "users/user-profiles"],
             },
+            "product-analytics/alerts",  
           ],
         },
         {
