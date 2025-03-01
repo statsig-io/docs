@@ -70,4 +70,4 @@ Sum metrics are simple, and will use the sql SUM aggregation. However, there are
   - You can specify a window for data collection after a unit's exposure. For example, a 0-1 day cohort window would only count actions from days 0 and 1 after a unit was exposed to an experiment
     - **Only include units with a completed window** can be selected to remove units out of pulse analysis for this metric until the cohort window has completed
 - Baked Metrics
-  - Baked metrics allow you to specify how long a metric needs to mature. This is common in situations like chargebacks or cancellations. Statsig will delay loading the data until the window has elapsed, and only calculate pulse results for that metric of a unit's metric has matured.
+  - Baked metrics allow you to specify how long a metric needs to mature. This is common in situations like chargebacks or cancellations. Statsig will delay loading the data until the window has elapsed, and only calculate pulse results for that metric if a unit's metric has matured.

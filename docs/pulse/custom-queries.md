@@ -1,10 +1,10 @@
 ---
-title: Custom Pulse Queries
-sidebar_label: Custom Queries
+title: Custom "Explore" Queries
+sidebar_label: Custom "Explore" Queries
 slug: /pulse/custom-queries
 ---
 [balanced gates methodology](/feature-flags/view-exposures#gate-exposures)
-## Custom Queries
+## Custom "Explore" Queries
 
 Custom queries are a way to run additional custom experiment analyses on your existing data beyond what is in your main Results tab. You may run them to gain deeper insights from your experiments and feature roll-outs, debug interesting results, or scope down your results to interesting sub-groups. Custom queries allow you to filter or group metrics by event or user dimensions, or filter to a specific set of users to see how an experiment or launch has impacted these users' experience.
 
@@ -59,6 +59,22 @@ If you want a daily refresh of a given Custom Query, you can schedule your Custo
 <img width="1347" alt="Screenshot 2025-02-06 at 6 53 16 PM" src="https://github.com/user-attachments/assets/9ecb39c0-0cd0-478f-8ef6-ff9150cbb11b" />
 
 <img width="505" alt="Screenshot 2025-02-06 at 6 53 33 PM" src="https://github.com/user-attachments/assets/fad0c8ce-3f9c-46be-a09c-52263e124259" />
+
+### Reviewing Custom Query Results
+
+Custom query results look a lot like the main Results tab, because the statistical methods are the same. Statsig uses the same experimental analyses practices on your custom analysis as we do on your main Results.
+
+One main point of difference, however, is that your custom query result is a snapshot in time. Once run, the analyses results are saved and will not update if more metric data is collected. If you do want to update your results, you can run a new custom query or schedule custom queries to run at a regular cadence.
+
+#### Sequential Testing and Custom Queries
+
+If [Sequential Testing](/experiments-plus/sequential-testing) is enabled for your experiment, it can be applied to your custom query results as well. How much and whether to adjust your confidence intervals and p-values will depend on the regular rules of sequential testing: if your custom query doesn't satisfy the experiment's target Days or Unique Exposures from your setup, sequential testing adjustments will be made to your results to account for the under-powered state of the experiment.
+
+Since custom queries are computed as a snapshot in time, sequential testing adjustments are computed for that specific analysis only. If you run additional custom queries with more or less data (e.g. more days in the analysis, more unique users in the experiment), the sequential testing adjustments will change accordingly. Some custom queries may have no sequential adjustments applied at all if they meet the configured minimum Days or Unique Exposures.
+
+![Screenshot 2025-02-26 at 8 43 10 AM](https://github.com/user-attachments/assets/df7c4087-82c3-41fb-8f5d-124094ec4526)
+
+
 
 
 
