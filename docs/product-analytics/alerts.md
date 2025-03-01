@@ -5,19 +5,18 @@ slug: /metrics/alerts
 ---
 
 # Alerts 
-Statsig offers two types of alerts on the platform today: 
-1. **Topline Metric Alerts**- These are alerts on a metric's topline value, independent of any experiment or gate. 
-2. **Rollout Alerts**- These are alerts on a metric's value _in the context of_ a gate or experiment rollout.
+Statsig offers two types of alerts on the platform today:
+1. **Rollout Alerts**- These are alerts on a metric's value _in the context of_ a gate or experiment rollout.
+2. **Topline Metric Alerts**- These are alerts on a metric's topline value, independent of any experiment or gate. 
+
 
 Topline Alerts are useful for keeping tabs on topline trends and ensuring you know if key product and business metrics are trending in a concerning direction. Rollout Alerts are helpful to confirm no key metrics are regressing when you start rolling out a new feature or experiment.  
 
-NOTE- Topline Alerts are only available on Statsig Cloud right now. Support for Warehouse Native is coming soon. 
+:::info 
+NOTE- Topline Alerts are in beta and are currently only available on Statsig Cloud. Support for Warehouse Native is coming soon. 
+:::
 
-## Topline Metric Alerts
 
-
-
-===========================
 ## Rollout Alerts
 On Statsig Cloud, Rollout Alerts are hourly for the first 24 hours post experiment/gate rollout (this includes new gate rules/rollouts), and then daily thereafter. This is to help provide more real-time visibility during the most critical phase of a rollout; in those first 24 hours post-going live. Alerts only trigger if the metric delta is statistically significant lower/higher than your threshold, which helps reduce alert noisiness. 
 
@@ -76,6 +75,11 @@ To view alert history, go to **Metrics** tab —> **Metrics Catalog** and select
 <img width="1474" alt="Screen Shot 2022-12-06 at 9 47 06 AM" src="https://user-images.githubusercontent.com/101903926/205984564-216fdf30-185b-4b05-9047-b64769c844ec.png"/>
 
 <img width="1054" alt="Screen Shot 2022-12-06 at 9 47 24 AM" src="https://user-images.githubusercontent.com/101903926/205984591-cf528cab-c6bd-43a5-8aa1-c80704d4e137.png"/>
+
+
+==============================
+## Topline Metric Alerts
+Available on Statsig Cloud, Topline Metric Alerts are currently in Beta as part of Statsig's Product Analytics suite. Topline Alerts are threshold based (anomaly detection coming soon) and are evaluated every 5 minutes. 
 
 
 
