@@ -115,11 +115,13 @@ When crafting your alert message, if you want to include dynamic content from th
 
 ## Viewing Alert History 
 To view alert history, head to the **Diagnostics** tab of the alert page, where you can see a history of the alert. 
+
 <img width="1436" alt="Screen Shot 2025-03-01 at 9 30 03 AM" src="https://github.com/user-attachments/assets/8d6e786f-09c1-4617-8230-4f11fb665ecc" />
 
 
 ## Alert Resolution
 When an alert fires, it will show up as active at the top of the alert page. At this point, you can explore Samples of the event or explore the topline trend via Metrics Explorer. 
+
 <img width="1439" alt="Screen Shot 2025-03-01 at 9 27 24 AM" src="https://github.com/user-attachments/assets/fba30475-c902-4878-911c-31108c7a7bc4" />
 
 
