@@ -1,62 +1,51 @@
 ## StatsigOptions Class
 
-The `statsig.initialize()` method takes an optional parameter `options` to customize the Statsig client. Below is the structure of the `StatsigOptions` class, including available parameters and their descriptions:
-
 ### Parameters
 
-- **`specs_url`**: `Optional[str]`  
-  Custom URL for fetching feature specifications.
+  - **`environment:`**: 
+    The envrionment you're operating in (e.g., Production)
 
-- **`specs_sync_interval_ms`**: `Optional[int]`  
-  How often the SDK updates specifications from Statsig servers (in milliseconds).
+  - **`output_log_level:`**: 
+    The type of logs you'd like exposed. (e.g., Debug)
 
-- **`init_timeout_ms`**: `Optional[int]`  
-  Sets the maximum timeout for initialization requests (in milliseconds).
+  - **`init_timeout_ms:`**: 
+    How long it should take for initialization to time out.
 
-- **`log_event_url`**: `Optional[str]`  
-  Custom URL for logging events.
+  - **`event_logging_flush_interval_ms:`**: 
+    How often events should flush to the Statsig servers.
 
-- **`disable_all_logging`**: `Optional[bool]`  
-  When `true`, disables all event logging.
+  - **`event_logging_max_queue_size:`**: 
+    How many events should be buffered before flushing to the Statsig servers.
 
-- **`event_logging_flush_interval_ms`**: `Optional[int]`  
-  How often events are flushed to Statsig servers (in milliseconds).
+  - **`log_event_url:`**: 
+    The URL events should be logged to
 
-- **`event_logging_max_queue_size`**: `Optional[int]`  
-  Maximum number of events to queue before forcing a flush.
+  - **`specs_sync_interval_ms:`**: 
+    How often specs should sync from the Statsig servers
 
-- **`enable_id_lists`**: `Optional[bool]`  
-  Enable/disable ID list functionality.
+  - **`specs_url:`**: 
+    The URL Statsig should download specs from
 
-- **`id_lists_url`**: `Optional[str]`  
-  Custom URL for fetching ID lists.
+  - **`enable_id_lists:`**: 
+    If ID list download should be enabled
 
-- **`id_lists_sync_interval_ms`**: `Optional[int]`  
-  How often the SDK updates ID lists from Statsig servers (in milliseconds).
+  - **`id_lists_url:`**: 
+    The URL ID lists should be downloaded from
 
-- **`fallback_to_statsig_api`**: `Optional[bool]`  
-  Whether to fallback to the Statsig API if custom endpoints fail.
-
-- **`environment`**: `Optional[str]`  
-  Environment parameter for evaluation.
-
-- **`output_log_level`**: `Optional[str]`  
-  Controls the verbosity of SDK logs.
+  - **`id_lists_sync_interval_ms:`**: 
+    How often ID lists should be synced. 
 
 ---
 
 ### Example Usage
 
-```python
-from statsig_python_core import StatsigOptions
-
+```elixir
 # Initialize StatsigOptions with custom parameters
-options = StatsigOptions()
-options.environment = "development"
-options.init_timeout_ms = 3000
-options.disable_all_logging = False
+statsig_options = %StatsigOptions{
+  enable_id_lists: true
+}
 
 # Pass the options object into statsig.initialize()
-statsig = Statsig("secret-key", options)
-statsig.initialize().wait()
+{:ok, _} = Statsig.start_link(sdk_key, statsig_options)
+Statsig.initialize()
 ```

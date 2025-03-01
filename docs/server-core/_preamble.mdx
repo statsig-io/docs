@@ -6,7 +6,7 @@ Statsig Server Core is currently in beta - we encourage you to try it out and gi
 
 Statsig Server Core is a performance-focused rewrite of Statsig server SDKs with a shared core Rust library, that we're rolling out as an option for each Server Environment we currently support with SDKs. 
 
-Server Core brings Rust's natural speed and performance optimizations to each language, as we develop them in one, shared library. Initial benchmarking suggests Server Core can evaluate **5-10x** as fast as existing SDKs. Beside evaluation performance improvement, we introduced new compression mechanism, which should **reduce outbound (egress) network payload significantly**.
+Server Core brings Rust's natural speed and performance optimizations to each language, as we develop them in one, shared library. Initial benchmarking suggests Server Core can evaluate **5-10x** as fast as existing SDKs. Alongside evaluation performance improvement, we introduced new compression mechanism, which should **reduce outbound (egress) network payload significantly**.
 
 :::warning
 Server Core does not currently resolve User Agents or Countries. Expect this addition in the near future.
