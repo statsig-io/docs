@@ -28,7 +28,7 @@ Finally, all stats methodologies you've enabled for your experiment/gate rollout
 NOTE: Rollout Alerts do not alert at the **topline metric value** level, but rather at **the experiment/feature gate level**. This means that even if you have an experiment allocated to 10% of your users, but the metric change within that 10% allocation breaches the set threshold, you will be alerted. All alerts you receive will be in the context of a specific experiment or feature gate and to debug/resolve the alert you will be directed to the offending experiment or gate in question.
 :::
 
-## Configuring a Rollout Alert
+### Configuring a Rollout Alert
 To set up a Rollout Alert, go to the **Metrics** tab  —>  **Metrics Catalog** and search for the desired metric. 
 
 <img width="1508" alt="Screen Shot 2022-12-06 at 9 37 23 AM" src="https://user-images.githubusercontent.com/101903926/205982663-f5eabaf6-733b-410f-bba1-63268f3af31a.png"/>
@@ -43,7 +43,7 @@ Once in the Metric Detail View, go to the **Alerts** tab, and tap **+ Create Ale
 
 Once a Rollout Alert has been configured for a given metric, you will see an “alert” alarm bell icon next to the metric inline in the Metrics Catalog. You can also filter for metrics with alerts set on them via the standard metrics filtering affordance next to the search bar.
 
-## Determining the Right Threshold 
+### Determining the Right Threshold 
 To help you configure the right threshold for your Rollout Alert, there is a preview of how much the metric has moved in the context of any feature gates or experiments containing that metric in the Scorecard. 
 
 ![Screen Shot 2024-03-20 at 2 24 48 PM](https://github.com/statsig-io/docs/assets/101903926/2a0434fe-e708-497d-b5bd-53c7b609cd47)
@@ -54,7 +54,7 @@ To see how a given metric has trended over a longer period of time, hover over t
 
 ![Screen Shot 2024-03-20 at 2 28 50 PM](https://github.com/statsig-io/docs/assets/101903926/f4b0e8a2-c5aa-4bb3-b57d-36930e906e5d)
 
-## Alert UX 
+### Alert UX 
 If a Rollout Alert is triggered, all subscribers and the relevant gate/experiment creator(s) will receive a notification via email, in the Statsig Console, and via Slack for users who have configured Slack notifications for their Statsig accounts. 
 
 <img width="609" alt="Screen Shot 2022-12-06 at 9 42 11 AM" src="https://user-images.githubusercontent.com/101903926/205983664-14d2715d-924b-429e-b4a3-40365c4a26af.png"/>
@@ -69,7 +69,7 @@ Once in the Diagnostics section, scroll to the **Rollout Alerts** section and se
 
 <img width="1473" alt="Screen Shot 2022-12-06 at 9 46 19 AM" src="https://user-images.githubusercontent.com/101903926/205984434-f60e7d21-8356-499d-95e8-0c551f82a74d.png"/>
 
-## Viewing Alert History 
+### Viewing Alert History 
 To view alert history, go to **Metrics** tab —> **Metrics Catalog** and select the metric you want to view alert history for. Then go to **Alerts** —> **…** menu in the **Experiment and Gate Alerts** section, and select **View Alert History**. You will be able to see all instances of the alert firing, being resolved, or being snoozed, as well as reason provided for resolution, who resolved the alert, and at what time. 
 
 <img width="1474" alt="Screen Shot 2022-12-06 at 9 47 06 AM" src="https://user-images.githubusercontent.com/101903926/205984564-216fdf30-185b-4b05-9047-b64769c844ec.png"/>
@@ -77,11 +77,10 @@ To view alert history, go to **Metrics** tab —> **Metrics Catalog** and select
 <img width="1054" alt="Screen Shot 2022-12-06 at 9 47 24 AM" src="https://user-images.githubusercontent.com/101903926/205984591-cf528cab-c6bd-43a5-8aa1-c80704d4e137.png"/>
 
 
-==============================
 ## Topline Metric Alerts
 Available on Statsig Cloud, Topline Metric Alerts are currently in Beta as part of Statsig's Product Analytics suite. Topline Alerts are threshold based (anomaly detection coming soon) and are evaluated every 5 minutes. 
 
-## Configuring a Topline Alert
+### Configuring a Topline Alert
 To configure a Topline Alert, head to **Analytics** -> **Topline Alerts** tab where you can find all your Topline Alerts and configure new ones. Tap **+Create** and name your new alert. 
 
 Under alert configuration, there are a few settings- 
@@ -113,13 +112,13 @@ When crafting your alert message, if you want to include dynamic content from th
 
 <img width="1055" alt="Screen Shot 2025-03-01 at 9 19 22 AM" src="https://github.com/user-attachments/assets/d0204bfe-df63-4da9-a328-0f43b448191f" />
 
-## Viewing Alert History 
+### Viewing Alert History 
 To view alert history, head to the **Diagnostics** tab of the alert page, where you can see a history of the alert. 
 
 <img width="1436" alt="Screen Shot 2025-03-01 at 9 30 03 AM" src="https://github.com/user-attachments/assets/8d6e786f-09c1-4617-8230-4f11fb665ecc" />
 
 
-## Alert Resolution
+### Alert Resolution
 When an alert fires, it will show up as active at the top of the alert page. At this point, you can explore Samples of the event or explore the topline trend via Metrics Explorer. 
 
 <img width="1439" alt="Screen Shot 2025-03-01 at 9 27 24 AM" src="https://github.com/user-attachments/assets/fba30475-c902-4878-911c-31108c7a7bc4" />
