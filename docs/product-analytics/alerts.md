@@ -28,7 +28,7 @@ Finally, all stats methodologies you've enabled for your experiment/gate rollout
 NOTE: Rollout Alerts do not alert at the **topline metric value** level, but rather at **the experiment/feature gate level**. This means that even if you have an experiment allocated to 10% of your users, but the metric change within that 10% allocation breaches the set threshold, you will be alerted. All alerts you receive will be in the context of a specific experiment or feature gate and to debug/resolve the alert you will be directed to the offending experiment or gate in question.
 :::
 
-## Setting up a Rollout Alert
+## Configuring a Rollout Alert
 To set up a Rollout Alert, go to the **Metrics** tab  —>  **Metrics Catalog** and search for the desired metric. 
 
 <img width="1508" alt="Screen Shot 2022-12-06 at 9 37 23 AM" src="https://user-images.githubusercontent.com/101903926/205982663-f5eabaf6-733b-410f-bba1-63268f3af31a.png"/>
@@ -81,7 +81,14 @@ To view alert history, go to **Metrics** tab —> **Metrics Catalog** and select
 ## Topline Metric Alerts
 Available on Statsig Cloud, Topline Metric Alerts are currently in Beta as part of Statsig's Product Analytics suite. Topline Alerts are threshold based (anomaly detection coming soon) and are evaluated every 5 minutes. 
 
+## Configuring a Topline Alert
+To configure a Topline Alert, head to **Analytics** -> **Topline Alerts** tab where you can find all your Topline Alerts and configure new ones. 
+
+## Determining the Right Threshold 
 
 
+## Alert UX 
 
+
+## Viewing Alert History 
 
