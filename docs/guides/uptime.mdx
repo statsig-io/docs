@@ -13,7 +13,7 @@ Collected here are a set of best practices that help maximize your uptime - acro
 
 3. Use Statsig's support for **pre-production environments** (e.g. Dev, Staging) as part of your validation process. Pre-production environments can remove change approval requirements, allowing swifter iteration.
  
-4. **Start small**, validate and then ramp. With feature gates we recommend rolling out to 2% (check for crashes/obvious bugs) before ramping up to 10%, 50% and then 100% while watching metrics you measure. You can also have [Statsig fire Metric Alerts](/metrics/metric-alerts) when thresholds are violated.
+4. **Start small**, validate and then ramp. With feature gates we recommend rolling out to 2% (check for crashes/obvious bugs) before ramping up to 10%, 50% and then 100% while watching metrics you measure. You can also have [Statsig fire Rollout Alerts](/metrics/rollout-alerts) when thresholds are violated.
 
 5. **Clean up** your code and remove features you've finished launching. This ties back to items #1 and #2; you don't want to leave potential code paths you're not testing/monitoring that can be triggered.
 
