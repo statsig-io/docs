@@ -86,7 +86,12 @@ To configure a Topline Alert, head to **Analytics** -> **Topline Alerts** tab wh
 
 Under alert configuration, there are a few settings- 
 
-**Event Configuration**- Set the event you want to alert on, then choose the aggregation for this event. In this example, we're going to set an alert on P90 latency of a Metrics Explorer (MEX query). 
+**Event Configuration**- Set the event you want to alert on, then choose the aggregation for this event. 
+
+<img width="1052" alt="Screen Shot 2025-03-01 at 8 32 31 AM" src="https://github.com/user-attachments/assets/1a8be658-ec02-4ed2-994c-ad39d8df4a5d" />
+
+
+In this example, we're going to set an alert on P90 latency of a Metrics Explorer (MEX query). 
 
 Our event name is "mex_query" and we log latency as a dimension of this event, so we will select the event, choose "P90" aggregation of the "latency" event dimension. 
 
