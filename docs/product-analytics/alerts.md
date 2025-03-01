@@ -86,7 +86,8 @@ To configure a Topline Alert, head to **Analytics** -> **Topline Alerts** tab wh
 
 Under alert configuration, there are a few settings- 
 
-**Event Configuration**- Set the event you want to alert on, then choose the aggregation for this event. In this example, we're going to set an alert on P90 latency of a Metrics Explorer (MEX query). 
+**Event Configuration**
+Set the event you want to alert on, then choose the aggregation for this event. In this example, we're going to set an alert on P90 latency of a Metrics Explorer (MEX query). 
 
 Our event name is "mex_query" and we log latency as a dimension of this event, so we will select the event, choose "P90" aggregation of the "latency" event dimension. 
 
@@ -99,8 +100,16 @@ We'll see a preview of the event values in the **Alert Preview** section above e
 
 <img width="1138" alt="Screen Shot 2025-03-01 at 8 33 44 AM" src="https://github.com/user-attachments/assets/5f8fda64-71f2-4254-aa4a-e299d46007e5" />
 
-**Alert Conditions**-
-**Notification**- 
+**Alert Conditions**
+The next step in configuring your alert is setting your alert conditions. Set the alert threshold, directionality, and an "Alert" and "Warning" value. Finally, choose the time window over which you want to evaluate the alert. 
+
+In my example, I'm setting a 500ms (5 second) alert threshold. And because I want to be evaluated quickly if anyone on the platform is having a poor query performance experience, I'll set the notification to evaluate and notify on all queries in the last 5 minutes. 
+
+<img width="1053" alt="Screen Shot 2025-03-01 at 8 46 24 AM" src="https://github.com/user-attachments/assets/f7175682-e777-4eb7-a9d4-f748263871f1" />
+
+
+**Notification**
+xxx
 
 ## Determining the Right Threshold 
 
