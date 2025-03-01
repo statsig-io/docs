@@ -89,7 +89,7 @@ Under alert configuration, there are a few settings-
 **Event Configuration**
 Set the event you want to alert on, then choose the aggregation for this event. In this example, we're going to set an alert on P90 latency of a Metrics Explorer (MEX query). 
 
-Our event name is "mex_query" and we log latency as a dimension of this event, so we will select the event, choose "P90" aggregation of the "latency" event dimension. 
+Our event name is "mex_query" and we log latency as a dimension of this event, so we will select the event, choose "P90" aggregation of the "latency" event dimension. You can also apply a filter to the event, for example I could filter out any Statsig internal employee queries. 
 
 We'll see a preview of the event values in the **Alert Preview** section above event configuration. 
 
@@ -97,8 +97,7 @@ We'll see a preview of the event values in the **Alert Preview** section above e
 
 <img width="1053" alt="Screen Shot 2025-03-01 at 8 42 59 AM" src="https://github.com/user-attachments/assets/a002eb84-107d-404e-a898-71cd1c633c5b" />
 
-
-<img width="1138" alt="Screen Shot 2025-03-01 at 8 33 44 AM" src="https://github.com/user-attachments/assets/5f8fda64-71f2-4254-aa4a-e299d46007e5" />
+<img width="1141" alt="Screen Shot 2025-03-01 at 8 55 51 AM" src="https://github.com/user-attachments/assets/399884de-2ea5-4314-b3aa-4c94d5c2d510" />
 
 **Alert Conditions**
 The next step in configuring your alert is setting your alert conditions. Set the alert threshold, directionality, and an "Alert" and "Warning" value. Finally, choose the time window over which you want to evaluate the alert. 
@@ -107,9 +106,8 @@ In my example, I'm setting a 500ms (5 second) alert threshold. And because I wan
 
 <img width="1053" alt="Screen Shot 2025-03-01 at 8 46 24 AM" src="https://github.com/user-attachments/assets/f7175682-e777-4eb7-a9d4-f748263871f1" />
 
-
 **Notification**
-xxx
+The final step in alert configuration is to set the list of who should be notified when the alert fires. 
 
 ## Determining the Right Threshold 
 
