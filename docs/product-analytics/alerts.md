@@ -1,7 +1,7 @@
 ---
 title: Alerts
 sidebar_label: Alerts
-slug: /metrics/alerts
+slug: /product-analytics/alerts
 ---
 
 # Alerts 
