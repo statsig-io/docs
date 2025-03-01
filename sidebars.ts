@@ -737,13 +737,13 @@ const sidebars: SidebarsConfig = {
               ],
             },
             "product-analytics/dashboards",
+            "product-analytics/alerts",  
             {
               type: "category",
               label: "Users",
               className: "users-icon sidebar-icon",
               items: ["users/introduction", "users/user-profiles"],
             },
-            "product-analytics/alerts",  
           ],
         },
         {
