@@ -82,7 +82,20 @@ To view alert history, go to **Metrics** tab —> **Metrics Catalog** and select
 Available on Statsig Cloud, Topline Metric Alerts are currently in Beta as part of Statsig's Product Analytics suite. Topline Alerts are threshold based (anomaly detection coming soon) and are evaluated every 5 minutes. 
 
 ## Configuring a Topline Alert
-To configure a Topline Alert, head to **Analytics** -> **Topline Alerts** tab where you can find all your Topline Alerts and configure new ones. 
+To configure a Topline Alert, head to **Analytics** -> **Topline Alerts** tab where you can find all your Topline Alerts and configure new ones. Tap **+Create** and name your new alert. 
+
+Under alert configuration, there are a few settings- 
+
+**Event Configuration**- Set the event you want to alert on, then choose the aggregation for this event. In this example, we're going to set an alert on P90 latency of a Metrics Explorer (MEX query). 
+
+Our event name is "mex_query" and we log latency as a dimension of this event, so we will select the event, choose "P90" aggregation of the "latency" event dimension. 
+
+We'll see a preview of the event values in the **Alert Preview** section above event configuration. 
+
+
+
+**Alert Conditions**-
+**Notification**- 
 
 ## Determining the Right Threshold 
 
