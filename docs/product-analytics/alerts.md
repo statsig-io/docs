@@ -107,13 +107,19 @@ In my example, I'm setting a 500ms (5 second) alert threshold. And because I wan
 <img width="1053" alt="Screen Shot 2025-03-01 at 8 46 24 AM" src="https://github.com/user-attachments/assets/f7175682-e777-4eb7-a9d4-f748263871f1" />
 
 **Notification**
-The final step in alert configuration is to set the list of who should be notified when the alert fires. 
+The final step in alert configuration is to configure your alert message and set the list of who should be notified when the alert fires. All alert subscribers will receive a notification via email, in the Statsig Console, and via Slack for users who have configured Slack notifications for their Statsig accounts. 
 
-## Determining the Right Threshold 
+When crafting your alert message, if you want to include dynamic content from the event itself, leverage the **Code** feature. In my example below, I'm including the impacted company name so I can quickly hop in and diagnose their slow query. 
 
-
-## Alert UX 
-
+<img width="1055" alt="Screen Shot 2025-03-01 at 9 19 22 AM" src="https://github.com/user-attachments/assets/d0204bfe-df63-4da9-a328-0f43b448191f" />
 
 ## Viewing Alert History 
+To view alert history, head to the **Diagnostics** tab of the alert page, where you can see a history of the alert. 
+<img width="1436" alt="Screen Shot 2025-03-01 at 9 30 03 AM" src="https://github.com/user-attachments/assets/8d6e786f-09c1-4617-8230-4f11fb665ecc" />
+
+
+## Alert Resolution
+When an alert fires, it will show up as active at the top of the alert page. At this point, you can explore Samples of the event or explore the topline trend via Metrics Explorer. 
+<img width="1439" alt="Screen Shot 2025-03-01 at 9 27 24 AM" src="https://github.com/user-attachments/assets/fba30475-c902-4878-911c-31108c7a7bc4" />
+
 
