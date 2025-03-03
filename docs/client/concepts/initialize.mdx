@@ -92,9 +92,9 @@ This architecture requires running a server SDK that supports the `getClientInit
 Your server SDK will maintain a fresh configuration in memory and when a request hits your route handler, you should call `getClientInitializeResponse(<user>)`, passing in a StatsigUser Object to generate the configuration object that gets passed to the client SDK for synchronous initialization.
 
 #### Implementation Notes:
-* You should pass the same user object on both the server and client side - take care that these stay in sync. This can become particularly hairy in the case of keeping stableID in sync, as it'll re-generate when it doesn't exist. See [here](https://docs.statsig.com/client/javascript-sdk#keeping-stableid-consistent-across-client--server).
+* Bootstrapping requires a user object both on the client and server side, and it's important that they're kept in sync. This may seem redundant, but is important for other SDK operations, and provides a layer of safeguarding should you accidentally attempt to perform checks on a user object different than the one you created values for (if you do, the SDK will throw warnings). Client SDKs also generate their own StableID for the user when one is not provided, which can sometimes result in out-of-sync user objects. See [keeping StableID consistent across client and server](https://docs.statsig.com/client/javascript-sdk#keeping-stableid-consistent-across-client--server).
 * The `initializeValues` option should be an Object - except in our js SDK, where its expected to be a string. Calling .stringify() on the object should work.
-* If you're using Statsig's new JS SDK, ensure that set the hashing algorithm as DJB2 when calling getClientInitializeResponse(), as the new JS SDK uses DJB2 by default.
+* If you're using Statsig's new javascript SDK (@statsig/js-client), ensure that you set the hashing algorithm as DJB2 when calling getClientInitializeResponse(), as the new SDK uses DJB2 by default.
 
 Example:
 
