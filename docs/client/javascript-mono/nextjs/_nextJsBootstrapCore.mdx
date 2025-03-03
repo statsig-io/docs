@@ -6,6 +6,7 @@ import TabItem from "@theme/TabItem";
 Bootstrapping is a method of keeping updated values on your server (in the case of Next, your node webserver), and sending them down with the frontend code when a request is made. This has the advantage of preventing an additional network request before your content is displayed, improving your site's responsiveness. This also enables Statsig usage on server-rendered components. 
 While the performance gains are appealing, bootstrapping requires some additional setup effort, and you must be mindful of which code you are running server side and client side.
 
+For more info, see our page on choosing a [Bootstrap Initialization Strategy](/client/concepts/initialize#2-bootstrap-initialization).
 
 #### Install `@statsig/statsig-node-core`
 
@@ -19,8 +20,6 @@ To generate the required values, we can use the Statsig server SDK (`@statsig/st
     {label: 'Yarn', value: 'yarn'},
     {label: 'PNPM', value: 'pnpm'},
   ]}>
-
-
 
 
 <TabItem value="npm">
@@ -46,8 +45,14 @@ pnpm add @statsig/statsig-node-core
 </Tabs>
 
 
+#### Add @statsig/statsig-node-core to serverExternalPackages
 
-
+As node core is a wrapper around a Rust library, Next.js can't package it to be run on the client side, and the compiler will throw errors if we let it try. To prevent this, designate @statsig/statsig-node-core as a serverExternalPackage in your next.config.js file:
+```jsx
+const nextConfig = {
+  serverExternalPackages: ['@statsig/statsig-node-core'],
+}
+```
 
 
 Next, add a Server key to your `.env` file. Note that this one is private and does not start with `NEXT_PUBLIC_`. 
@@ -251,10 +256,6 @@ export default function MyStatsig({
 
 If you load the app now, you should see the same values as your previous implementation, this time without any additional network requests.
 
-#### Managing StableIDs
-
-Statsig generates [StableIDs](/client/javascript-sdk/stable-id/) as a pseudo-ID for logged-out experiments and user management. StableIDs are generated client-side, but when boostrapping, values are generated on the server, creating undesirable side-effects like stableIDs regenerating more than logical for any one device/user. A simple cookie can solve this problem, with an implementation pattern suggested [here](/client/javascript-sdk#keeping-stableid-consistent-across-client--server).
-
     </TabItem>
 
 
@@ -345,3 +346,9 @@ export default function App({ Component, pageProps }: AppProps) {
     </TabItem>
 
 </Tabs>
+
+
+#### Managing StableIDs
+
+Statsig generates [StableIDs](/client/javascript-sdk/stable-id/) as a pseudo-ID for logged-out experiments and user management. StableIDs are generated client-side, but when boostrapping, values are generated on the server, creating undesirable side-effects like stableIDs regenerating more than logical for any one device/user. A simple cookie can solve this problem, with an implementation pattern suggested [here](/client/javascript-sdk#keeping-stableid-consistent-across-client--server).
+ 

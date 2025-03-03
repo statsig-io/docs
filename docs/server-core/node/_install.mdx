@@ -20,3 +20,12 @@ dependencies {
 }
 ```
 
+#### Using node-core with Next.js
+
+Node-core works well with Next, but can't be packaged with webpack, and the compiler will throw errors if we let it try. To prevent this, designate @statsig/statsig-node-core as a serverExternalPackage in your next.config.js file:
+```jsx
+const nextConfig = {
+  serverExternalPackages: ['@statsig/statsig-node-core'],
+}
+```
+
