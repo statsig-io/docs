@@ -3,6 +3,6 @@ user = %StatsigUser{
     user_id: "test_user_123"
 }
 
-check_gate = Statsig.check_gate("test_public", user)
+{:ok, check_gate} = Statsig.check_gate("test_public", user)
 # check_gate will be a boolean
 ```
