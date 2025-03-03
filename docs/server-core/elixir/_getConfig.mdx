@@ -3,7 +3,7 @@
 user = %StatsigUser{
     user_id: "test_user_123"
 }
-config = Statsig.get_config("a_config", user)
+{:ok, config} = Statsig.get_config("a_config", user)
 
 # Access the values in the dynamic config:
 
