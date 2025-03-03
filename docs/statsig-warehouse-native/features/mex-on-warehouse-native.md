@@ -31,7 +31,7 @@ Analyze user retention reports to understand how effectively your product or ser
 
 ### [Distribution Chart](/product-analytics/drilldown#distribution)
 
-View distribution charts to help you visualize the range of user expereinces across your product. 
+View distribution charts to help you visualize the range of user experiences across your product. 
 
 ### Save, Share, and View SQL
 
