@@ -11,7 +11,7 @@ dependencies {
 }
 ```
 
-SDKs are pre-built, compiled according to different os and cpu architectures, for most of cases you don't need to worry about which version to use. But if your service is locking you dependency with package-lock.json (e.g. using pnpm-lock.yml). You need to be aware that you are installing all packages (architectures and system specific versions). For example, you need to run the service locally (macOS) and deployed service to linux, then you need to include both packages.
+SDKs are pre-built and compiled according to different os and cpu architectures. In most cases, your package manager will automatically resolve the correct version, but if your service has locked dependencies with package-lock.json (e.g. using pnpm-lock.yml). You'll need to be aware that you are installing all packages (architectures and system specific versions). For example, if you need to run the service locally on macOS, and deploy to linux, then you'll need to include both packages:
 ```
 // For example
 dependencies {
