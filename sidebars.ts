@@ -522,6 +522,7 @@ const sidebars: SidebarsConfig = {
             "metrics/create-metric-tags",
             "metrics/rollout-alerts",
             "metrics/user",
+            "metrics/directionality",
 
             // 301
             "metrics/create-user-funnels",
