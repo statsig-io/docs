@@ -3,6 +3,10 @@ title: Funnel++
 sidebar_label: Funnel++
 ---
 
+::info
+Funnel++ is a Statsig Warehouse Native feature.
+:::
+
 ## Summary
 
 Funnel metrics measure user journeys through a series of steps. There's additional guidance [here](/statsig-warehouse-native/features/funnel-metrics) on how to configure and use funnel metrics.
