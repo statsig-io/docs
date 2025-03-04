@@ -27,7 +27,7 @@ To define a funnel, select a series of a events that represent different parts o
 To do so:
 
 1. Go to **Metrics Explorer** under **Analytics** in the Navigation Bar, and switch over to the Funnel Charts view.
-2. Add steps to your funnel using the “**+**” icon. **Optionally add filters** to funnel steps to target specific event or user properties.
+2. Add steps to your funnel using the “**+**” icon. **Optionally add filters** to funnel steps to target specific event or user properties. For WHN, you would add steps directly from your **Metric Source**. For Statsig Cloud, you can leverage events or metrics for the steps. 
 
 **Combining Multiple Events into one step[](/product-analytics/funnels#combining-multiple-events-into-one-step)**
 

@@ -3,6 +3,7 @@
 In the new javascript SDKs, we provide an OverrideAdapter interface that you can customize, plus a ready-to-use version called LocalOverrideAdapter that should work for most use cases. Add it to your instance at initialization time, and it should behave intuitively, allowing you to override any config. 
 
 ```jsx
+import { LocalOverrideAdapter } from '@statsig/js-local-overrides';
 const overrideAdapter = new LocalOverrideAdapter(); // <-- instantiate here 
 overrideAdapter.overrideGate('gate_a', false);
 overrideAdapter.overrideGate('gate_b', true);
