@@ -442,9 +442,10 @@ const sidebars: SidebarsConfig = {
             },
             {
               "Email & CMS Systems": [
-                "guides/sendgrid-email-abtest",
-                "guides/customer-io-email-abtest",
                 "guides/email-campaign-test",
+                "guides/contentful",
+                "guides/customer-io-email-abtest",
+                "guides/sendgrid-email-abtest",
                 "guides/cms-integrations",
               ],
             },

@@ -1,18 +1,18 @@
 ---
-sidebar_label: CMS Integrations
-title: Guide to CMS Integrations like Contentful
+sidebar_label: General CMS Integrations
+title: Guide to General CMS Integrations
 ---
 
 ### Using Statsig with a CMS
 
-One fairly common question we get is around how to use Statsig with an existing CMS.  While we also offer a no-code solution - [Sidecar](/guides/sidecar-experiments/introduction),
+One fairly common question we get is around how to use Statsig with an existing CMS. While we also offer a no-code solution - [Sidecar](/guides/sidecar-experiments/introduction),
 there are clever ways you can set up your code to integrate your CMS and Statsig so you can write code once, and then run experiments on
 arbitrary combinations of parameters in the future.
 
 We recommend using [Layers](/layers) to wire this up, so take some time to read up before continuing.
 
 :::info
-Layers are a unit of mutual exclusion between experiments in Statsig.  Every user participates in only one experiment in a layer at any given time.
+Layers are a unit of mutual exclusion between experiments in Statsig. Every user participates in only one experiment in a layer at any given time.
 As such, we recommend you set up a layer for each surface you will be experimenting on with the help of your CMS
 :::
 
@@ -22,7 +22,7 @@ For the sake of example, let's assume we are parameterizing the Statsig landing 
 
 ![Screen Shot 2022-08-29 at 8 26 09 PM](https://user-images.githubusercontent.com/74584483/187345904-90ade71e-adc7-4205-85c7-751633a864da.png)
 
-First, lets create a layer.  Navigate to "Experiments" in the left hand column, and then "Layers" in the title bar:
+First, lets create a layer. Navigate to "Experiments" in the left hand column, and then "Layers" in the title bar:
 
 ![Screen Shot 2022-08-29 at 8 21 39 PM](https://user-images.githubusercontent.com/74584483/187341751-7c5861a7-90cd-494d-b84d-75c9ea54f923.png)
 
@@ -30,7 +30,7 @@ Here, we'll create one for all content or parameters we want to experiment with 
 
 ![Screen Shot 2022-08-29 at 9 01 56 PM](https://user-images.githubusercontent.com/74584483/187346608-3314ca52-4c99-4442-b056-7081369d2b8f.png)
 
-Next, lets create some parameters.  One for the title, subtitle, and primary CTA.  For the value, we will use the actual ID of the content in the CMS
+Next, lets create some parameters. One for the title, subtitle, and primary CTA. For the value, we will use the actual ID of the content in the CMS
 
 ![Screen Shot 2022-08-29 at 9 02 35 PM](https://user-images.githubusercontent.com/74584483/187346653-1be62abe-e6b9-4ed6-9bf6-b95e7b04e040.png)
 
@@ -38,7 +38,7 @@ It should look like this when you are done:
 
 ![Screen Shot 2022-08-29 at 9 03 04 PM](https://user-images.githubusercontent.com/74584483/187346571-85013f61-6ca6-42f5-9c41-b4631931f93e.png)
 
-Note that each layer parameter has a default value.  If the user is not in any experiments in that layer, that's the default they will get, which will be backed by the cms.
+Note that each layer parameter has a default value. If the user is not in any experiments in that layer, that's the default they will get, which will be backed by the cms.
 
 Now, in code, your integration will look something like this:
 
@@ -51,10 +51,10 @@ const titleID = landingPageCmsIds.get("title", "<default_cms_title_id>"); // not
 cmsClient.getEntry(titleID);
 ```
 
-If you repeat this for the subtitle, CTA, and all the other parameters on your landing page, they all become dynamic! 
+If you repeat this for the subtitle, CTA, and all the other parameters on your landing page, they all become dynamic!
 When you put a new CMS ID into statsig, your code will pull the updated content for that section.
 
-Now, you can create new content in your CMS, and create an experiment in Statsig to try out that new variant.  After creating the content, come back
+Now, you can create new content in your CMS, and create an experiment in Statsig to try out that new variant. After creating the content, come back
 to your layer and hit "Create Experiment in Layer":
 
 ![Screen Shot 2022-08-29 at 9 08 49 PM](https://user-images.githubusercontent.com/74584483/187347191-ac9a27bb-3ea3-4338-8680-c94b6d1e753b.png)
@@ -63,8 +63,8 @@ Fill out the resulting form:
 
 ![Screen Shot 2022-08-29 at 9 09 39 PM](https://user-images.githubusercontent.com/74584483/187347290-fc3ebc84-1cf0-4f3a-8256-d6cc5a4b21b3.png)
 
-And you have created an experiment!  Now, we just need to set up the test and control groups for the experiment, and say which content will be used for each
-of the parameters we have set up.  In the Groups and parameters section, select "Add Parameter" and then choose one of your existing parameters, like title:
+And you have created an experiment! Now, we just need to set up the test and control groups for the experiment, and say which content will be used for each
+of the parameters we have set up. In the Groups and parameters section, select "Add Parameter" and then choose one of your existing parameters, like title:
 
 ![Screen Shot 2022-08-29 at 9 10 14 PM](https://user-images.githubusercontent.com/74584483/187347358-f336195a-0fa5-42d0-9896-ea0e0cf85875.png)
 
@@ -80,4 +80,3 @@ no code changes are required for all those parameters you already created, stats
 The experimentation flow is the same as all other experiments on Statsig at this point, the value just ties to your CMS.
 
 If you need more help setting up and running experiments, see [Experiments](/experiments-plus)
-
