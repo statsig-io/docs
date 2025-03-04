@@ -4,7 +4,11 @@ sidebar_label: Export
 slug: /pulse/export
 ---
 
-## How to Export Pulse Data
+## How to Export Pulse Data - Cloud Projects
+
+:::tip
+These options apply for Statsig Cloud projects. If your project is a Warehouse Native (WHN) project, see the corresponding section below.
+:::
 
 ![Finding Export Report](https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/CbjKvuo40oMU45psWLvG/a2d68701-6828-47d2-8fde-b44a5cea4abb.png)
 
@@ -12,9 +16,17 @@ You can export your Pulse Results for Feature Gates and Experiments. Simply navi
 
 ![Export Pulse Report Menu](https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/CbjKvuo40oMU45psWLvG/5af19e59-f2b7-492b-9dc2-9439e447dbcc.png)
 
-## How to Export Pulse Data - For Warehouse Native
+## How to Access Pulse Data - For Warehouse Native
 
-Experiment results export feature in WHN lets you access metric results across all experiments directly in your warehouse through SQL View or in your Statsig project through your metric source. With the SQL View, you have access to values that include experiment metadata like experiment team, experiment tags, target duration, and experiment settings like CUPED and Sequential testing, then each metric’s metadata like metric tags, and all of the metric lifts-same set of results you see on the Console copy. If you want to start using this feature, simply enable it in your project setting Project Settings > Data Connection > Export. Once you have this enabled, we will automatically handle the setup of SQL view in your warehouse as well as the metric source in your Statsig project. We will then automatically export scorecard metric results to your data warehouse each time an experiment is loaded.
+:::tip
+These options apply for Statsig WHN projects. If your project is a Cloud project, see the corresponding section above.
+:::
+
+WHN lets you access exposures and metric results across all experiments directly in your warehouse through SQL Views defined in your Statsig project through a metric source.
+
+Exposures are automatically written to your warehouse to the table configured in your project setup. You can find the table's location by going to Settings > Data Connection. The table should be located at the `{Database Name}.{Schema Name}.{Exposures Forwarding Table Name}`, e.g. `experimentation.statsig.exposures`.
+
+With a SQL View, you have access to values that include experiment metadata like experiment team, experiment tags, target duration, and experiment settings like CUPED and Sequential testing, then each metric’s metadata like metric tags, and all of the metric lifts-same set of results you see on the Console copy. If you want to start using this feature, simply enable it in your project setting Project Settings > Data Connection > Export. Once you have this enabled, we will automatically handle the setup of SQL view in your warehouse as well as the metric source in your Statsig project. We will then automatically export scorecard metric results to your data warehouse each time an experiment is loaded.
 
 
 ## Schema of the Pulse Data Export Table
