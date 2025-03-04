@@ -669,6 +669,7 @@ const sidebars: SidebarsConfig = {
                 "guides/sidecar-experiments/setup",
                 "guides/sidecar-experiments/creating-experiments",
                 "guides/sidecar-experiments/measuring-experiments",
+                "guides/sidecar-experiments/advanced-configurations",
                 "guides/sidecar-experiments/publishing-experiments",
                 "guides/sidecar-experiments/integrating-gtm",
                 "guides/aa-sidecar",
