@@ -9,7 +9,7 @@ Sidecar now officially supports integration within Single Page Apps.
 This includes new Sidecar configuration tools and SDK methods that you can use to configure your own customer trigger points, giving you full flexibility to control when an experiment should run.
 * **Disable Auto Run** - When selected, Sidecar will not automatically attempt to run the test on page-load. 
 * **Custom activation** using `StatsigSidecar.activateExperiment("<experiment_id>")` to activate an experiment manually.
-* **Prerun Script** - This is a script that will run on _any page_ where Sidecar is loaded (regardless of URL filters). You should use this to bind any listeners or evaluate any custom logic you need to control when to trigger the experiment using `activateExperiment`.
+* **Prerun Script** - This is a script that will run only once after Sidecar initialization (only if experiment URL filters pass). You should use this to bind any listeners or evaluate any custom logic you need to control when to trigger the experiment using `activateExperiment`.
 
 ![Spa configuration](/img/sidecar-spa.png)
 
