@@ -45,7 +45,7 @@ To configure **Targeting** criteria, click to edit the **Targeting** section. Yo
 
 ![image](https://github.com/user-attachments/assets/6f20dfbc-725f-4384-bd06-1fe23c15fcf6)
 
-- If your targeting is straightforward, creating it inline works well.
+- If your targeting is straightforward, creating it through Inline Targeting works well. (Click "Criteria: Everyone" to get started.)
 - For more advanced targeting (e.g., progressive rollouts) or if you want to maintain targeting criteria when you launch your experiment, it’s better to reference an existing **Feature Gate**.
 
 By default, no targeting criteria are set, so your experiment will include all allocated users within the defined **Layer** or exposed user base.
