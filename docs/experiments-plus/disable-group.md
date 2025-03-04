@@ -26,7 +26,7 @@ The group will continue to show up in diagnostics charts, exposures stream, and 
 
 ## Reenable a Group
 
-If you've previously disabled a group but want to revert this change, you can reenable a group by using the *...** menu and selecting **Disable or Enable A Group**.
+If you've previously disabled a group but want to revert this change, you can reenable a group by using the **...** menu and selecting **Disable or Enable A Group**.
 
 ![Screenshot 2025-03-03 at 5 27 17 PM](https://github.com/user-attachments/assets/2fa3cb71-9a46-46f1-bb11-b8e7f07df9c6)
 ![Screenshot 2025-03-03 at 5 26 42 PM](https://github.com/user-attachments/assets/a56e7f14-53e9-4d41-8266-d70de1ec3ebf)
