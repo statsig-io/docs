@@ -643,7 +643,8 @@
     "Laravel",
     "evaldetails",
     "psuedo-ID",
-    "psuedo"
+    "psuedo",
+    "Prerun"
   ],
   "ignorePaths": [
     "node_modules/**",
