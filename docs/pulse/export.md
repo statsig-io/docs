@@ -34,6 +34,7 @@ With a SQL View, you have access to values that include experiment metadata like
 
 
 ### Schema of the Results Data Export Table
+The default table name used is statsig_daily_results. When exports are enabled, Statsig also autocreates a metric source with this name in your Statsig project.
 
 | Column | Type | Description |
 |-|-|-|
