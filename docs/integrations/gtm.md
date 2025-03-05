@@ -2,7 +2,7 @@
 title: Google Tag Manager (GTM) 
 ---
 
-## Overview
+## Inbound Integration (Events flow from GTM dataLayer to Statsig)
 
 This integration will allow customers using Statsig on the web to leverage their existing Google Tag manager configuration to track events to Statsig. This saves customers from having to retag their web properties with calls specific to Statsig's SDK. This integration uses a global listener to consume all GTM triggers and dispatch a corresponding event back to Statsig.
 
@@ -130,3 +130,26 @@ window.StatsigLogger = (function () {
 })();  
 </script>
 ```
+
+## Outbound Integration (GTM Data is enriched with Statsig test assignments)
+
+This pattern will allow you to enrich your GTM `dataLayer` with experiment assignment information. 
+
+![gtm datalayer outbound](/img/gtm-outbound.png)
+
+Prior to your Statsig `initialize` call, you should bind an EventEmitter listener that captures the assigned experiment name and test group, and push it into the `dataLayer` as follows. Note that the argument passed to the callback contains rich context about the assignment. Please modify the GTM `dataLayer` properties to your liking. 
+
+```js
+// use event emitter to listen for experiment assignments
+statsigClient.on("experiment_evaluation", function(evt) {
+  window.dataLayer.push({
+    'event': 'experiment_viewed',
+    'experiment_name': evt.experiment.name, 
+    'variant_name': evt.experiment.groupName
+  })
+});
+
+await statsigClient.initializeAsync(); 
+```
+
+
