@@ -21,7 +21,7 @@ The most common case for this is teams that use tools like Optimizely for experi
 It is also a way to quickly get a sense for what your experimental data will look like on Statsig in a few minutes. 
 
 ### I don't have real data to upload. Can I get some sample data?
-Yes. The Statsig Lite website has some sample data you can start with. Tools like ChatGPT also make it easy to create a sample dataset using english language prompts like [this](https://chatgpt.com/share/67bf3105-b984-800c-99b4-02935deb5f5b). 
+Yes. The Statsig Lite website has some sample data you can start with. Tools like ChatGPT also make it easy to create a sample dataset using English language prompts like [this](https://chatgpt.com/share/67bf3105-b984-800c-99b4-02935deb5f5b). 
 
 ### Is Statsig Lite missing features? 
-Statsig Lite is meant to be a quick preview. Sign up for a Statsig account to get access to featues including SDKs, diagnostics, health checks, self serve experiment deep dives and reporting and workflow capabilties.
+Statsig Lite is meant to be a quick preview. Sign up for a Statsig account to get access to features including automated health checks (balanced exposures, pre-experimental bias, outlier detection), advanced out-of-the-box statistical methodologies (stratified sampling, differential impact detection, sequential testing) and the ability to quickly dive deeper into results with custom queries.
