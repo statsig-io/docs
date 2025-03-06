@@ -145,6 +145,10 @@ const config: Config = {
       {
         redirects: [
           {
+            from: "/metrics/metric-alerts",
+            to: "/product-analytics/alerts/",
+          },
+          {
             from: "/statsig-warehouse-native/guides/assignment-sources/",
             to: "/statsig-warehouse-native/configuration/assignment-sources",
           },
