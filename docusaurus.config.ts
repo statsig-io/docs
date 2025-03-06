@@ -145,6 +145,10 @@ const config: Config = {
       {
         redirects: [
           {
+            from: "/dynamic-config/implement/",
+            to: "/dynamic-config/working-with",
+          },
+          {
             from: "/metrics/metric-alerts",
             to: "/product-analytics/alerts/",
           },
