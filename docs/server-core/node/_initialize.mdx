@@ -4,8 +4,7 @@ const statsig = new Statsig("secret-key");
 await statsig.initialize();
 
 // or with StatsigOptions
-const options = new StatsigOptions();
-options.environment = "staging";
+const options: StatsigOptions = { environment: "staging" };
 
 const statsigWithOptions = new Statsig("secret-key", options);
 await statsigWithOptions.initialize();
