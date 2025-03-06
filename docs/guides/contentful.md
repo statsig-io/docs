@@ -26,6 +26,24 @@ Our Contentful Marketplace App is publicly available. You can find it [here](htt
 
 - Once your API Key is entered, hit 'Install to selected environments'. Your app should now be configured. Note that returning to this page later will only show the _obfuscated_ API Key.
 
+### Setting up Statsig Variant Container
+
+Once configured, a new Content model should have been added to your space called 'Statsig variant container'. We can check to make sure this is setup properly:
+
+- Navigate to the 'Content model' tab in Contentful, and select the 'Statsig variant container'.
+
+  ![image.png](https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/qQgXOng6fMO38nDCoRsE/6010f051-2f05-462f-ace1-9f3194f73941.png)
+
+- You should see a list of 4 fields: Statsig Experiment Id, Entry Name, Default Variation (control), Treatment Variations.
+
+  ![image.png](https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/qQgXOng6fMO38nDCoRsE/486955a9-f31c-4870-8369-df956606bfb3.png)
+
+- If your 'Statsig Experiment Id' field shows `Excluded from api response` next to it, we will need to update this field to be fetchable in API calls. We can do this by clicking the three dots on the right of the field, and click 'Include in API response'. Then click 'Save'.
+
+  ![image.png](https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/qQgXOng6fMO38nDCoRsE/ae81d2b5-7f3d-4aaa-bb7e-316ba28898fe.png)
+
+Your 'Statsig variant container' is now setup and ready to associate with other Content types.
+
 ### Setting up Experiments in Content Types
 
 You can configure your existing content types to run Statsig experiments in, automatically serving different variants of this content type to your users. The steps below walk through how to add a 'Statsig experiment' field to your target content type.
