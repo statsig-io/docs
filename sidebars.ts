@@ -52,7 +52,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
-          label: "SDKs & Frameworks",
+          label: "SDKs & APIs",
           className: "doc-icon sidebar-icon",
           items: [
             "sdks/getting-started",
@@ -224,8 +224,7 @@ const sidebars: SidebarsConfig = {
                   type: "doc",
                   id: "server/rustSDK",
                 },
-              ],
-            },
+
             {
               type: "category",
               label: "Legacy Server SDKs",
@@ -256,20 +255,6 @@ const sidebars: SidebarsConfig = {
                 },
               ],
             },
-            {
-              type: "category",
-              label: "Azure AI",
-              link: {
-                type: "doc",
-                id: "azureai/introduction",
-              },
-              items: [
-                "azureai/getting-started",
-                "azureai/model-client",
-                "azureai/completions",
-                "azureai/embeddings",
-                "azureai/capturing-metrics",
-                "azureai/running-experiments",
               ],
             },
             {
@@ -291,16 +276,9 @@ const sidebars: SidebarsConfig = {
                 "server/concepts/persistent_assignment",
                 "server/concepts/data_store",
                 "sdk-keys/target-apps",
+                "server/deprecation-notices",
               ],
             },
-            "server/deprecation-notices",
-          ],
-        },
-        {
-          type: "category",
-          label: "APIs",
-          className: "key-icon sidebar-icon",
-          items: [
             "http-api",
             {
               type: "category",
@@ -480,6 +458,23 @@ const sidebars: SidebarsConfig = {
                   },
                   items: ["integrations/triggers/datadog"],
                 },
+              ],
+            },
+
+            {
+              type: "category",
+              label: "Azure AI",
+              link: {
+                type: "doc",
+                id: "azureai/introduction",
+              },
+              items: [
+                "azureai/getting-started",
+                "azureai/model-client",
+                "azureai/completions",
+                "azureai/embeddings",
+                "azureai/capturing-metrics",
+                "azureai/running-experiments",
               ],
             },
           ],
