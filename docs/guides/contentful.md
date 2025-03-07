@@ -76,7 +76,7 @@ To run an experiment on your content, you can link a Statsig Experiment to it. H
 
   ![image.png](https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/qQgXOng6fMO38nDCoRsE/77688f35-b775-4c84-885d-67ee111d67e4.png)
 
-- Under the Statsig tab, enter the name of your experiment under the 'Entry Name' field. Add your control and treatment variations.
+- Under the Statsig tab, enter the name of your experiment under the 'Entry Name' field. Add your control and treatment variations. In this example, we will add `component - Rich image` variations to experiment with.
 
 - When your experiment setup is finalized, hit 'Publish' on the new Statsig variant container entry. NOTE: ensure your experiment setup is finalized before publishing, as this will create your experiment inside of Statsig.
 
@@ -92,6 +92,4 @@ Your experiment is now live!
 
 ### Integrating Statsig Experiments in your Codebase
 
-**These docs are coming soon**
-
-We will provide an example Github Repository of a web app that integrates experiments using your new Statsig variant container and enabled Content types.
+We have provided an [example repository](https://github.com/statsig-io/contentful-blog-webapp-nextjs-example/tree/main) that outlines how you can integrate your Statsig experiments created from Contentful into your codebase. The `README` walks through the setup process, including pulling experiment fields from Contentful, calling a Statsig SDK, and matching assigned users to their respective variant.
