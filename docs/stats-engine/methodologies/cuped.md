@@ -45,10 +45,10 @@ The CUPED-adjusted group means are inferred based on the control group.
 
 $$
 \LARGE
-\frac{Y_{cv}}{N_{cv}}=\frac{Y}{N}-\theta \frac{X}{M} + \theta \mathbb{E}[X]
+\frac{Y_{cv}}{N_{cv}}=\frac{Y}{N}-\theta \frac{X}{M} + \theta \mathbb{E}[R]
 $$
 
-While $\mathbb{E}[X]$ is hard to deduct, we recognized that
+While $\mathbb{E}[R]$ is hard to deduct, we recognized that
 
 $$
 \LARGE
@@ -57,7 +57,9 @@ $$
 
 $$
 \LARGE
-\frac{Y_{cv}(test)}{N_{cv}(test)}=\frac{Y(control)}{N(control)} -\theta \frac{X(control)}{M(control)} +\theta \frac{X(test)}{M(test)}
+\frac{Y_{cv}(test)}{N_{cv}(test)} \\
+=\frac{Y(control)}{N(control)} - (\frac{Y(control)}{N(control)} - \theta \frac{X(control)}{M(control)}) + (\frac{Y(test)}{N(test)} - \theta\frac{X(test)}{M(test)}) \\
+=\frac{Y(test)}{N(test)} - \theta\frac{X(test)}{M(test)} + \theta \frac{X(control)}{M(control)}
 $$
 
 Using the optimal $\theta$, we are hoping to reduce group-level variance by plugging the parameter back in to calculate the adjustment. Please note that across-group $\theta$ does not necessarily reduce variance for one group, or the sum of variances of all groups, but in most cases it does. Our simulation shows that 98.3% of metrics saw a decrease by CUPED.
