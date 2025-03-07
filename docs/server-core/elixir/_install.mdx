@@ -3,3 +3,9 @@ To use the SDK, add the following to your mix.exs:
 ```python
 {:statsig_elixir, "~> 0.0.6-beta.7"},
 ```
+
+SDK is written using rustler_precompiled, which will download precompiled binary by default. But there is also an option to build Rust code within your project by
+```python
+# set the environment variable 
+FORCE_STATSIG_NATIVE_BUILD="true"
+```
