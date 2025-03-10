@@ -28,6 +28,7 @@ import GetConfig from "./python/_getConfig.mdx";
 import GetExperiment from "./python/_getExperiment.mdx";
 import GetFeatureGate from "./python/_getFeatureGate.mdx";
 import LogEvent from "./python/_logEvent.mdx";
+import UserSnippet from "./python/_statsigUser.mdx";
 import MoreFAQs from "./python/_faqs.mdx";
 import Options from "./python/_options.mdx";
 import ShutdownSnippet from "./python/_shutdown.mdx";
@@ -61,7 +62,7 @@ export const Builder = SDKDocsBuilder({
         getFeatureGate: <GetFeatureGate />,
       },
     ],
-    [StatsigUser, {}],
+    [StatsigUser, { statsigUser: <UserSnippet /> }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
