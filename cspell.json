@@ -645,7 +645,13 @@
     "evaldetails",
     "psuedo-ID",
     "psuedo",
-    "Prerun"
+    "Prerun",
+    "autocorrelated",
+    "covariate",
+    "covariates",
+    "demeaned",
+    "Covariates",
+    "CUPAC"
   ],
   "ignorePaths": [
     "node_modules/**",

@@ -225,36 +225,36 @@ const sidebars: SidebarsConfig = {
                   id: "server/rustSDK",
                 },
 
-            {
-              type: "category",
-              label: "Legacy Server SDKs",
-              link: {
-                type: "doc",
-                id: "server-core/legacy-sdks",
-              },
-              items: [
                 {
-                  className: "node-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server/nodejsServerSDK",
+                  type: "category",
+                  label: "Legacy Server SDKs",
+                  link: {
+                    type: "doc",
+                    id: "server-core/legacy-sdks",
+                  },
+                  items: [
+                    {
+                      className: "node-icon sidebar-icon sdk-sidebar-icon",
+                      type: "doc",
+                      id: "server/nodejsServerSDK",
+                    },
+                    {
+                      className: "python-icon sidebar-icon sdk-sidebar-icon",
+                      type: "doc",
+                      id: "server/pythonSDK",
+                    },
+                    {
+                      className: "elixir-icon sidebar-icon sdk-sidebar-icon",
+                      type: "doc",
+                      id: "server/erlangSDK",
+                    },
+                    {
+                      className: "java-icon sidebar-icon sdk-sidebar-icon",
+                      type: "doc",
+                      id: "server/javaSdk",
+                    },
+                  ],
                 },
-                {
-                  className: "python-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server/pythonSDK",
-                },
-                {
-                  className: "elixir-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server/erlangSDK",
-                },
-                {
-                  className: "java-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server/javaSdk",
-                },
-              ],
-            },
               ],
             },
             {
@@ -942,6 +942,7 @@ const sidebars: SidebarsConfig = {
             "statsig-warehouse-native/features/mex-on-warehouse-native",
             "statsig-warehouse-native/features/other-useful-features",
             "statsig-warehouse-native/native-vs-cloud",
+            "statsig-warehouse-native/cure",
           ],
         },
       ],
