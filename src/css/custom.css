@@ -279,9 +279,20 @@ span.math.math-inline {
   padding-top: 0; /* Adjust padding if necessary */
 }
 
+.theme-doc-sidebar-item-category-level-2 .menu__list {
+  margin-left: 24px;
+}
+
 .menu__link {
   font-weight: 600;
-  margin-left: 25px;
+}
+
+.sidebar-icon > .menu__link {
+  padding-left: calc(25px + var(--ifm-menu-link-padding-horizontal));
+}
+
+.sidebar-icon > .menu__list-item-collapsible {
+  padding-left: 25px;
 }
 
 .sidebar-icon {
@@ -564,10 +575,6 @@ span.math.math-inline {
 
 .template-icon:has(.menu__link--active)::before {
   background-image: url("/img/icons/sidebar/template-active.svg");
-}
-
-.sdk-sidebar-icon {
-  padding-left: 24px;
 }
 
 [data-theme="dark"] .sidebar-icon:not(.sdk-sidebar-icon)::before {
