@@ -39,8 +39,7 @@ You can also combine multiple events into a single step. This is especially usef
 
 Repeat these steps as needed. You can define a step as a combination of up to 5 events.
 
-![image](https://github.com/user-attachments/assets/59e030ba-5e99-499a-b917-2e54a3a15b72)
-
+![image](https://github.com/user-attachments/assets/2e0d34ba-cff9-4a19-9fe5-ea6ef19b1cfb)
 
 
 **Filtering to the first time a user performed an event[](/product-analytics/funnels#filtering-to-the-first-time-a-user-performed-an-event)**
@@ -48,10 +47,9 @@ Repeat these steps as needed. You can define a step as a combination of up to 5 
 It is sometimes useful to understand the first-time user experience, which may have a significant impact on things such as long term retention or may meaningfully differ from general flows through the product. To help analyze first-time experience, you can filter the events in a funnel to the first time ever a user (or other unit ID) performed an event. To do so:
 
 1. Click “…” next to the event in question.
-2. Select the “**Apply First-time Filter**”.
+2. Select the “**Filter to First Time**”.
 
-![image](https://github.com/user-attachments/assets/ace0f8cd-986a-4ac3-97df-68c206161091)
-
+![image](https://github.com/user-attachments/assets/aa72701f-b9c2-47ae-81e8-514a1c1d971b)
 
 **Renaming Steps[](/product-analytics/funnels#renaming-steps)**
 
@@ -125,11 +123,11 @@ Under each funnel step, you’ll see a quick summary that helps demystify your f
 
 Next, in the conversion table, you’ll find the percentage and number of units that have converted relative to the first step of the funnel and relative to the previous step. Again, this feature is particularly useful when grouping by a certain property in which you want to compare conversions between user groups. 
 
-![image](https://github.com/user-attachments/assets/52e661ee-0b54-43aa-98a5-c832d14b83d8)
+![image](https://github.com/user-attachments/assets/073f9f20-f26f-4af4-a4e9-65d65474b97f)
 
 ### User Exploration
 
 Finally, by clicking any bar in the funnel, you have the option to download all users in that segment who dropped off or converted as a CSV file. You also have the option to view session streams to get a granular, event-by-event understanding of a user’s experience before and after the data point in question.
 
-![image](https://github.com/user-attachments/assets/d699ddcf-acd7-4910-aff8-204a6c30b308)
+![image](https://github.com/user-attachments/assets/2c140de9-bce8-4813-91b1-8f2d8d1e9a66)
 
