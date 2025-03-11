@@ -269,6 +269,11 @@ span.math.math-inline {
   margin-left: 8px;
 }
 
+.theme-doc-sidebar-item-category-level-1
+  > .menu__list-item-collapsible {
+  background: none;
+}
+
 .menu__list > .menu__list-item:first-child .menu__list-item-collapsible {
   border-top: none; /* Remove border-top for the first element */
   padding-top: 0; /* Adjust padding if necessary */
