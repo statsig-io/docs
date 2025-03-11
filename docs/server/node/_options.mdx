@@ -9,8 +9,11 @@ import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
   - An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
   - The most common usage is to set the environment tier ('production', 'staging' or 'development'), e.g. `{ tier: 'staging' }`, and have feature gates pass/fail for specific environments. Since v6.0.0 default environment tier is production
 
+
 - **bootstrapValues**: string, default null
-  - A string that represents all rules for all feature gates, dynamic configs and experiments. It can be provided to bootstrap the Statsig server SDK at initialization in case your server runs into network issue or Statsig server is down temporarily.
+  - A string that represents all rules for all feature gates, dynamic configs and experiments. It can be provided to bootstrap the Statsig server SDK at initialization in case your server runs into network issue or Statsig server is down temporarily. 
+  - You can download the bootstrap payload (aka config spec) at the following URL: https://api.statsigcdn.com/v1/download_config_specs/SERVER_SDK_KEY.json
+
 - **rulesUpdatedCallback**: function, default null
 
   - A callback function that's called whenever we have an update for the rules; it's called with a JSON string (used as is for `bootstrapValues` mentioned above) and a timestamp, like below:
