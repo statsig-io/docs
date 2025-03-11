@@ -274,6 +274,10 @@ span.math.math-inline {
   padding-top: 0; /* Adjust padding if necessary */
 }
 
+.theme-doc-sidebar-item-category-level-2 .menu__list {
+  margin-left: 24px;
+}
+
 .menu__link {
   font-weight: 600;
 }
@@ -281,6 +285,7 @@ span.math.math-inline {
 .sidebar-icon > .menu__link {
   padding-left: calc(25px + var(--ifm-menu-link-padding-horizontal));
 }
+
 .sidebar-icon > .menu__list-item-collapsible {
   padding-left: 25px;
 }
@@ -288,10 +293,6 @@ span.math.math-inline {
 .sidebar-icon {
   align-items: center;
   position: relative;
-}
-
-.theme-doc-sidebar-item-category-level-2 .menu__list {
-  margin-left: 24px;
 }
 
 .sidebar-icon::before {
