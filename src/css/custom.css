@@ -269,14 +269,35 @@ span.math.math-inline {
   margin-left: 8px;
 }
 
-/* Prevent hover highlighting on non-clickable category headers */
-.theme-doc-sidebar-item-category-level-1
-  > .menu__list-item-collapsible
-  > .menu__link:hover,
-.theme-doc-sidebar-item-category-level-1
-  > .menu__list-item-collapsible
-  > .menu__link:focus {
-  background-color: transparent;
+/* First disable all hover effects */
+.menu__caret:hover, 
+.menu__link:hover, 
+.menu__list-item-collapsible--active, 
+.menu__list-item-collapsible:hover {
+  background: none !important;
+}
+
+/* Then re-enable hover highlighting only for items with sublist class */
+.menu__link--sublist:hover,
+.menu__link--sublist-caret:hover {
+  background: var(--ifm-menu-color-background-hover) !important;
+}
+
+/* Also ensure the container of collapsible items gets highlighted */
+.menu__list-item-collapsible:hover .menu__link--sublist,
+.menu__list-item-collapsible:hover .menu__link--sublist-caret {
+  background: var(--ifm-menu-color-background-hover) !important;
+}
+
+/* Target non-clickable headers specifically - these are the ones without the sublist class */
+.menu__list-item-collapsible > .menu__link:not(.menu__link--sublist):hover {
+  background: transparent !important;
+  cursor: default !important;
+}
+
+/* Ensure non-clickable headers stay gray and don't highlight */
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link:not(.menu__link--sublist):hover {
+  background: transparent !important;
   color: gray;
   cursor: default;
 }
