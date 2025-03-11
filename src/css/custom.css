@@ -269,6 +269,18 @@ span.math.math-inline {
   margin-left: 8px;
 }
 
+/* Prevent hover highlighting on non-clickable category headers */
+.theme-doc-sidebar-item-category-level-1
+  > .menu__list-item-collapsible
+  > .menu__link:hover,
+.theme-doc-sidebar-item-category-level-1
+  > .menu__list-item-collapsible
+  > .menu__link:focus {
+  background-color: transparent;
+  color: gray;
+  cursor: default;
+}
+
 .menu__list > .menu__list-item:first-child .menu__list-item-collapsible {
   border-top: none; /* Remove border-top for the first element */
   padding-top: 0; /* Adjust padding if necessary */
