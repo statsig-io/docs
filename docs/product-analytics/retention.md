@@ -14,7 +14,7 @@ Retention charts in Metrics Explorer help you understand how effectively your pr
 
 By analyzing user retention patterns, you can identify whether your product or certain features are resonating with your audience, and which areas might need improvement. This insight is invaluable for making strategic decisions aimed at enhancing user experience and boosting long-term engagement.
 
-<img width="1665" alt="r1" src="https://github.com/user-attachments/assets/13a46b84-f1cc-4226-9876-5b314641927b" />
+![image](https://github.com/user-attachments/assets/13a46b84-f1cc-4226-9876-5b314641927b)
 
 ### Use Cases
 
