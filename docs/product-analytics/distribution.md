@@ -10,7 +10,8 @@ slug: /product-analytics/distribution
 
 ## Overview
 
-Distribution charts in Metric Explorer help you visualize the range of user experiences across your product. These charts are a great way to generalize central tendencies, evaluate product health, and identify outlying behavior.<img width="1666" alt="distribution1" src="https://github.com/user-attachments/assets/b3b1507a-4a30-4a74-bc5c-8b3d08a1e64f" />
+Distribution charts in Metric Explorer help you visualize the range of user experiences across your product. These charts are a great way to generalize central tendencies, evaluate product health, and identify outlying behavior.
+![image](https://github.com/user-attachments/assets/b3b1507a-4a30-4a74-bc5c-8b3d08a1e64f)
 
 
 ### Use Cases
