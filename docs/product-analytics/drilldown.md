@@ -38,26 +38,25 @@ When selecting an event, the total number of times the event occurred (Count) on
 - **Count**: Plot the number of times the event occurred within the given time range per data point.
 - **Unique**: Plot the number of unique ids (generally UserIDs) that performed the event in the given time range per data point.
     
-    ![image](https://github.com/statsig-io/docs/assets/3464964/6f450da6-0e1c-44a9-91f2-8e51e1225e77)
+    ![image](https://github.com/user-attachments/assets/7e4740c5-88e6-4d1c-a49c-dd29dca30714)
+
     
     - When viewing data on uniques (e.g. unique users) at daily granularity, you can choose to have the value of each daily data point represent the number of unique weekly users (unique users over previous 7 days). This enables you to get a sense of how weekly usage is changing day over day.
         
-        ![image](https://github.com/statsig-io/docs/assets/3464964/ff68249f-940c-47f4-997f-5410644e8f08)
-
+        ![image](https://github.com/user-attachments/assets/2cec3257-b8a5-4efc-9bcd-be4d7f871c7a)
         
 - **Average**: Plot the average of a selected event property value within the given time range per data point. Note this only works for properties that have numerical values.
     
-    ![image](https://github.com/statsig-io/docs/assets/3464964/0e283f82-a06b-49d3-910f-66fffcf25fb1)
+    ![image](https://github.com/user-attachments/assets/f7ea5919-5288-42f0-8949-d711e17ffec7)
 
     
 - **Sum**: Plot the sum of a selected event property value within the given time range per data point. Note this only works for properties that have numerical values.
     
-    ![image](https://github.com/statsig-io/docs/assets/3464964/d0bf3d0c-f37e-4e46-bf1d-751eac554e84)
+    ![image](https://github.com/user-attachments/assets/20ed372c-e1cb-4c2e-bdac-ed6dd2ba7c4e)
 
-    
 - **Percentiles**: Plot the value of a selected event property value at the selected percentile within the given time range per data point.
     
-    ![image](https://github.com/statsig-io/docs/assets/3464964/9933b80e-e24f-467b-9f56-b502c9522b36)
+    ![image](https://github.com/user-attachments/assets/112d74ec-7a52-4621-8969-af79e8599714)
 
     
 
@@ -107,7 +106,6 @@ A metric can be grouped-by event properties, user profile properties, experiment
 Group-By limits can be added by first adding a group-by, clicking the "..." button, and then selecting "Add Group-By Limit". You can use this to further drill down on your top X categories (up to 50). This feature is available for line charts, stacked-line charts, bar charts, and stacked-bar charts.
 
 When you have a Group-By applied, you can view the results as raw numbers, or as a percentage. 
-![image](https://github.com/user-attachments/assets/b2375dfa-2203-4f93-be34-ed77ca309d83)
 
 **Feature Gate  and Experiment Groups**
 
