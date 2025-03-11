@@ -585,6 +585,25 @@ span.math.math-inline {
 /* Add highlighting for non-expandable sidebar items with icons */
 .theme-doc-sidebar-item-link.menu__list-item.sidebar-icon:hover {
   background: var(--ifm-menu-color-background-hover);
+  border-radius: .25rem;
+  transition: background var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+}
+
+/* Prevent highlighting of the <a> element under the <li> for non-expandable items */
+.theme-doc-sidebar-item-link.menu__list-item.sidebar-icon:hover > .menu__link {
+  background: transparent;
+}
+
+/* Add highlighting for active non-expandable sidebar items */
+.theme-doc-sidebar-item-link.menu__list-item.sidebar-icon:has(.menu__link--active) {
+  background: var(--ifm-menu-color-background-active);
+  border-radius: .25rem;
+  transition: background var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+}
+
+/* Add highlighting for non-expandable sidebar items with icons */
+.theme-doc-sidebar-item-link.menu__list-item.sidebar-icon:hover {
+  background: var(--ifm-menu-color-background-hover);
 }
 
 /* Prevent highlighting of the <a> element under the <li> for non-expandable items */
