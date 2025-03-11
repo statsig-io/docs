@@ -103,7 +103,7 @@ Leveraging a Group-By makes it easy to disaggregate plotted metrics and events b
 
 A metric can be grouped-by event properties, user profile properties, experiment group, or feature gate group. 
 
-Group-By limits can be added by first adding a group-by, then moving to the summary table below the charts, and clicking the "Top X series" dropdowm button. From there you can select how many groups you want to see at once. You can use this to further drill down on your top X categories (up to 50). This feature is available for line charts, stacked-line charts, bar charts, and stacked-bar charts.
+Group-By limits can be added by first adding a group-by, then moving to the summary table below the charts, and clicking the "Top X series" dropdown button. From there you can select how many groups you want to see at once. You can use this to further drill down on your top X categories (up to 50). This feature is available for line charts, stacked-line charts, bar charts, and stacked-bar charts.
 
  ![image](https://github.com/user-attachments/assets/e61fedbe-2633-4469-8120-9959968c484a)
  
