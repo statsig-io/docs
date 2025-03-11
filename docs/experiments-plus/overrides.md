@@ -14,6 +14,7 @@ Overrides can be added based on Feature Gates and Segments, and will allow you t
 - For Experiments that are in a Layer, the overrides must be set at the Layer level. A user can only be overridden into one Experiment within that Layer (since layers always make experiments within them mutually exclusive).
 - It is best to add overrides to your experiment before it starts or at least before a user's first exposure. Users whose first exposures are controlled by overrides are excluded from Pulse results. Since these users are not randomized, we purposely exclude them from experimental results. Adding a large number of users to the override can affect the reliability of your experimental results.
   - Warning: if you add overrides after a user has already been exposed in an experiment, that user will not be excluded from Pulse results. That user's events and metrics will continue to be attributed to the group they were first assigned to. However, the override will be applied and honored once you define it. This can cause your experiment results to be diluted or polluted since the user's actions may be attributed to one group while they were actually exposed to a different group. The overall impact from this issue will depend on how many users fall into this category.
+- ID Overrides are evaluated first, then conditional overrides (from top to bottom).
 :::
 
 ![overrides modal](/img/overrides-modal.png)
