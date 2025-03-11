@@ -317,7 +317,8 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/rocket.svg");
 }
 
-.rocket-icon:has(.menu__link--active)::before {
+.rocket-icon:has(.menu__link--active)::before,
+.rocket-icon > a.menu__link--active::before {
   background-image: url("/img/icons/sidebar/rocket-active.svg");
 }
 
@@ -325,7 +326,8 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/doc.svg");
 }
 
-.doc-icon:has(.menu__link--active)::before {
+.doc-icon:has(.menu__link--active)::before,
+.doc-icon > a.menu__link--active::before {
   background-image: url("/img/icons/sidebar/doc-active.svg");
 }
 
@@ -333,7 +335,8 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/key.svg");
 }
 
-.key-icon:has(.menu__link--active)::before {
+.key-icon:has(.menu__link--active)::before,
+.key-icon > a.menu__link--active::before {
   background-image: url("/img/icons/sidebar/key-active.svg");
 }
 
@@ -341,7 +344,8 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/integrations.svg");
 }
 
-.integrations-icon:has(.menu__link--active)::before {
+.integrations-icon:has(.menu__link--active)::before,
+.integrations-icon > a.menu__link--active::before {
   background-image: url("/img/icons/sidebar/integrations-active.svg");
 }
 
@@ -349,7 +353,8 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/xp.svg");
 }
 
-.xp-icon:has(.menu__link--active)::before {
+.xp-icon:has(.menu__link--active)::before,
+.xp-icon > a.menu__link--active::before {
   background-image: url("/img/icons/sidebar/xp-active.svg");
 }
 
@@ -357,7 +362,8 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/feature.svg");
 }
 
-.feature-icon:has(.menu__link--active)::before {
+.feature-icon:has(.menu__link--active)::before,
+.feature-icon > a.menu__link--active::before {
   background-image: url("/img/icons/sidebar/feature-active.svg");
 }
 
@@ -369,7 +375,8 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/users.svg");
 }
 
-.chart-icon:has(.menu__link--active)::before {
+.chart-icon:has(.menu__link--active)::before,
+.chart-icon > a.menu__link--active::before {
   background-image: url("/img/icons/sidebar/chart-active.svg");
 }
 
@@ -377,7 +384,8 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/play.svg");
 }
 
-.play-icon:has(.menu__link--active)::before {
+.play-icon:has(.menu__link--active)::before,
+.play-icon > a.menu__link--active::before {
   background-image: url("/img/icons/sidebar/play-active.svg");
 }
 
@@ -385,7 +393,8 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/web.svg");
 }
 
-.web-icon:has(.menu__link--active)::before {
+.web-icon:has(.menu__link--active)::before,
+.web-icon > a.menu__link--active::before {
   background-image: url("/img/icons/sidebar/web-active.svg");
 }
 
@@ -393,7 +402,8 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/data.svg");
 }
 
-.data-icon:has(.menu__link--active)::before {
+.data-icon:has(.menu__link--active)::before,
+.data-icon > a.menu__link--active::before {
   background-image: url("/img/icons/sidebar/data-active.svg");
 }
 
@@ -401,7 +411,8 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/help.svg");
 }
 
-.help-icon:has(.menu__link--active)::before {
+.help-icon:has(.menu__link--active)::before,
+.help-icon > a.menu__link--active::before {
   background-image: url("/img/icons/sidebar/help-active.svg");
 }
 
@@ -409,7 +420,8 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/help.svg");
 }
 
-.question-icon:has(.menu__link--active)::before {
+.question-icon:has(.menu__link--active)::before,
+.question-icon > a.menu__link--active::before {
   background-image: url("/img/icons/sidebar/help-active.svg");
 }
 
@@ -417,7 +429,8 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/concept.svg");
 }
 
-.lightbulb-icon:has(.menu__link--active)::before {
+.lightbulb-icon:has(.menu__link--active)::before,
+.lightbulb-icon > a.menu__link--active::before {
   background-image: url("/img/icons/sidebar/concept-active.svg");
 }
 
@@ -425,7 +438,8 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/ai.svg");
 }
 
-.ai-icon:has(.menu__link--active)::before {
+.ai-icon:has(.menu__link--active)::before,
+.ai-icon > a.menu__link--active::before {
   background-image: url("/img/icons/sidebar/ai-active.svg");
 }
 
@@ -433,7 +447,8 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/whn.svg");
 }
 
-.whn-icon:has(.menu__link--active)::before {
+.whn-icon:has(.menu__link--active)::before,
+.whn-icon > a.menu__link--active::before {
   background-image: url("/img/icons/sidebar/whn-active.svg");
 }
 
@@ -441,7 +456,8 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/team.svg");
 }
 
-.team-icon:has(.menu__link--active)::before {
+.team-icon:has(.menu__link--active)::before,
+.team-icon > a.menu__link--active::before {
   background-image: url("/img/icons/sidebar/team-active.svg");
 }
 
@@ -449,7 +465,8 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/infra.svg");
 }
 
-.infra-icon:has(.menu__link--active)::before {
+.infra-icon:has(.menu__link--active)::before,
+.infra-icon > a.menu__link--active::before {
   background-image: url("/img/icons/sidebar/infra-active.svg");
 }
 
@@ -457,7 +474,8 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/admin.svg");
 }
 
-.admin-icon:has(.menu__link--active)::before {
+.admin-icon:has(.menu__link--active)::before,
+.admin-icon > a.menu__link--active::before {
   background-image: url("/img/icons/sidebar/admin-active.svg");
 }
 
@@ -557,7 +575,8 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/template.svg");
 }
 
-.template-icon:has(.menu__link--active)::before {
+.template-icon:has(.menu__link--active)::before,
+.template-icon > a.menu__link--active::before {
   background-image: url("/img/icons/sidebar/template-active.svg");
 }
 
