@@ -4,25 +4,13 @@ sidebar_label: Bayesian
 slug: /experiments-plus/bayesian
 ---
 
-### Why Bayesian
-
-Bayesian A/B testing leverages a different statistical framework for A/B testing than the more widely used Frequentist-based statistics. It’s often selected for its simplicity and intuitiveness. Practitioners do not have to deal with the complexities of p-values, null hypotheses, nor unintuitive confidence intervals. Instead, you can make statements like:
-
-> _We expect a lift in our metric by 10% +/- 5%. Overall,_ t*here is a 80% chance that the test variant beats the control variant and if we roll it out, there is risk that we degrade our metric by an expected amount of 0.5.*
-
-In contrast, communicating Frequentist AB testing results in a statistically-valid manner is comically quite challenging, and can invoke a double negative statement like:
-
-> _Because the probability of observing the data under the null hypothesis is lower than 5%, which is unlikely, we can reject null hypothesis and accept the alternative hypothesis that the test variant improves the metric._
-
-Bayesian methods can also make use of prior information to build a probability model for the observed data. Unfortunately, building a useful and robust prior model depends on a lot of factors including the amount of information you have, experimental context, and assumptions you’ve made. This is quite challenging to construct and is often criticized for introducing bias to your experimental results. In many cases, priors are often carefully constructed for single metrics under specific contexts where there is a rich history of prior experimental data (eg. >200 experiments). To deploy Bayesian methods across Statsig’s diverse customer-base and their wide range of metrics, we’ve avoided this by implementing a naive prior model that assumes nothing. This means that even though the results capture the same data, they may end up with the same statistical power as frequentist methods. Yet interpretation is much clearer.
-
 ### Bayesian Testing in Statsig
 
-Using Bayesian Testing is simple. You can set up the experiment as you would for ordinary AB testing. Then select the Bayesian option under the Advanced Settings of Experiment Setup.
+Experiments are frequentist by default. To switch to Bayesian mode, go to Advanced Settings.
 
 ![Image](https://github.com/statsig-io/docs/assets/132317445/c9c01a57-fe13-47a9-b734-20d6e8d715a4)
 
-And you are done. Your Pulse results should now be recalculated with new visualizations around Bayesian Testing specific statistics.
+The experiment type cannot be modified once the experiment starts.
 
 ![Image](https://github.com/statsig-io/docs/assets/132317445/be912632-6200-4408-977c-92f48dfdd7bc)
 
@@ -30,55 +18,43 @@ Deep dive analysis should also reflect Bayesian statistics
 
 ![Image](https://github.com/statsig-io/docs/assets/132317445/c9214142-d11f-48c8-92a4-53581bbc498c)
 
-**What is supported?** Today, we are only supporting normal-normal Bayesian testing setups given its robustness and usage safety. We have plans to increase the set of distribution pairs available on our platform over time.
+### Informed Bayesian
 
-**How we handle priors?** To ensure that there is minimal amount of distortion from prior definitions, all our priors are initialized with infinite prior variance. Thus, given observed data,
+Bayesian experiments allow you to specify a prior belief on the relative average treatment effect. Statsig will combine the prior distribution with the observed data to display the prior-adjusted results.
 
-$\mu_{\text{posterior}} \sim N\left(\ \hat{\mu}\ \ , \ \ \frac{\hat{\sigma}^2}{n}\ \ \right)$
+### Implementation Details
 
-You may notice that this is effectively the same as a frequentist AB experiment with a t-test. God does not play dice and this elegant reduction is not a coincidence. We currently do not allow our customers to specify their own prior parameters, given the complications described above.
+Denote $\mathcal{N}(ATE_{prior}, STE_{prior}^2)$ as the prior distribution, where $ATE_{prior}$ is the average treatment effect and $STE_{prior}$ is the standard error. Similarly, $\mathcal{N}(ATE_{observed}, STE_{observed}^2)$ as the observed distribution.
 
-**Feedback?** We are focused on supporting your success. Let us know how we can improve our product here.
+The posterior distribution is then calculated as
 
-### Bayesian with Proper Priors
+$$
+\LARGE
+\text{ATE}_{\text{post}} =
+\frac{
+\left(\frac{\text{ATE}_{\text{prior}}}{\text{STE}_{\text{prior}}^2} +
+\frac{\text{ATE}_{\text{observed}}}{\text{STE}_{\text{observed}}^2}\right)
+}{
+\left(\frac{1}{\text{STE}_{\text{prior}}^2} +
+\frac{1}{\text{STE}_{\text{observed}}^2}\right)
+}
+$$
 
-Statsig now offers the option to provide proper priors for Bayesian experiments.
+$$
+\LARGE
+\text{STE}_{\text{post}} =
+\frac{1}{
+\left(\frac{1}{\text{STE}_{\text{prior}}^2} +
+\frac{1}{\text{STE}_{\text{observed}}^2}\right)
+}
+$$
 
-### Bayesian A/B Testing Explained
+If the prior is not specified, the $\mathcal{N}(ATE_{prior}, STE_{prior}^2)$ is represented as $\mathcal{N}(0, \infty)$.
 
-Bayesian A/B Testing leverages a different statistical framework for hypothesis testing than the more widely used (Frequentist) A/B Testing. Even though they capture the same data and in many cases, the same statistical power, the interpretation of the results differ in important ways and require deep understanding to avoid unwittingly falling into traps. To dive into Bayesian testing, we first briefly recap Bayesian statistics.
+### Bayesian Statistics
 
-Imagine you have an unfair coin and your job is to find what is the probability $p$ that this coin lands on its head. The coin is thus a random variable following a Bernoulli distribution over two possible states, $\{0,1\}$, ie. $X_{\text{coin}} \sim \text{Bern}(p)$. In Bayesian terminology, this is the _likelihood_.
+Bayesian A/B tests have a glossary that are different from the frequentist framework and often believed to be more intuitive in communication to non-technical audience.
 
-The frequentist approach of estimating $p$ is fairly obvious — you start with no assumptions, flip it a lot of times (say $n$ times), and take a ratio between the number of heads and the number of flips. This sample average, $\hat{p} = \frac{\text{num of heads}}{\text{num of flips}}$, is thus an _estimator_ of the true value of $p$.
-
-The Bayesian approach however allows you to start with some preconceived notion of what $p$ is, and since you don’t have perfect information about what it is, we allow it to be a probability distribution, $p_{\text{prior}} \sim B_\theta$, parameterized by $\theta$ (for eg. a beta distribution with the parameters $\theta = (\alpha, \beta)$). When you flip the coin $n$ times again, you have new information on the coin and thus can _update your beliefs_ of what $p$ is. The way we do this leverages the Bayes Rule:
-
-$P(\ p = p_k \ |\ \hat{p}\ ) = \frac{P(\ p_k\ \cap\ \hat{p}\ ) }{P(\hat{p}\ ) } = \frac{P(\ p_k\  \ \cap\ \hat{p}\ ) }{\sum_{\forall p_i} P(\ \hat{p}\ \cap\ p_i\ )} = \frac{P(\ \hat{p} \ | \ p_k)\ \cdot\ P(p_k) }{\sum_{\forall p_i} P(\ \hat{p} \ |\ p = p_i\ ) \ \cdot \ P(\ p = p_i\ ) }$
-
-In other words, given the new observations in the sample, $\hat{p}$, we can calculate the updated probability of the true value of $p$ being $p_k$, ie. the _posterior probability distribution_ It is the probability of the event that both $p=p_k$ and $\hat{p}$ being observed, divided by the probability of $\hat{p}$ being observed across all possible values of $p$. Statisticians often visualize this rule using the area in a Venn Diagram.
-
-![Image](https://github.com/statsig-io/docs/assets/132317445/6e446d4b-d45f-4db8-9f8c-063c95d8e164)
-
-The denominator in the equation is the _marginal probability_ of $\hat{p}$. Unfortunately, this can be devilishly hard to compute depending on how the likelihood and the prior distribution (in this case, the $\text{Bern}(p)$ and $B_\theta$ distributions) interact. Since the distribution of the event depends on the real-world effects, the common practice to choose convenient distributions, also known as _conjugate priors_, to model your _prior_ beliefs. There is a full list of such priors — and we’ve sneakily used one above, since the beta distribution is the conjugate of a Bernoulli random variable. An especially powerful setup is the _Normal-Normal_ conjugate pair with known variance $\sigma$, where the likelihood is defined $X \sim N(\mu, \sigma)$ and the prior distribution is $\mu_{\text{prior}} \sim N(\mu_0, \sigma_0)$. This adequately models most real world phenomenons due to the central limit theorem, and allows us a quick and intuitive way for us to update our view for new observations:
-
-$\text{Given observed sample mean } \hat{\mu} = \frac{1}{n} \sum X_i \ \ , \ \ \mu_{\text{posterior}} \sim N\left(\ \ \frac{1}{\frac{1}{\sigma_0^2} + \frac{n}{\sigma^2}}\left(\frac{\mu_0}{\sigma_0^2} + \frac{n\hat{\mu}}{\sigma^2}\right) \ \ , \ \ \frac{1}{\frac{1}{\sigma_0^2} + \frac{n}{\sigma^2}}\ \ \right)$
-
-In essence, the new posterior mean is a scaled sum of the prior mean and the observed mean, with scaling factors being the prior variance, the (known) likelihood variance and the number of samples taken. The standard deviation terms $\sigma_0$ and $\sigma$ signify the relative level of “conviction” between your prior belief and the data you’ve observed. A quick note here: even though we philosophically assume that we know the likelihood’s variance term $\sigma$, we don’t in real life and simply approximate it using the sample variance, ie. $\sigma^2 \approx \hat{\sigma}^2\ := \frac{1}{n} \sum_i (x_i - \hat{\mu})^2$.
-
-So that’s Bayesian statistics. How does this apply to AB testing? We simply start with a prior, then collect data across the variants, updating a posterior for each variant. For instance, with 2 variants, Test and Control, we calculate the posterior distributions, $T$ and $C$. We can then calculating the Bayesian testing statistics as follows. Define $\Delta = T-C$ random variable of the difference between $T$ and $C$, which is also a normally distributed random variable.
-
-- Treatment Lift $:= \frac{\mu_t - \mu_c}{\mu_c}$
-- 95% Credible Interval $:= \left[\frac{\alpha}{\mu_c},\frac{\beta}{\mu_c}\right]$ where $\alpha, \beta \in \mathbb{R}: P(\ \alpha < \Delta < \beta\ ) >  95\%$
-- Expected Loss $:= \text{Exp}[\ \Delta\ |\ \Delta < 0 \ ] \cdot P(\Delta < 0)$
-- Chance to Beat $:= P(\Delta > 0)$
-
-At first glance, Bayesian testing seems simple and intuitive. However, the simplicity is deceptive. We’ve actually swept an enormous amount of complexity under the rug — the entire method is extremely sensitive to the choice of priors. What is the correct prior distribution to use? Given the choice of prior distributions, how do you model the prior distribution parameters (in this case, $\mu_0, \sigma_0$)? These assumptions can dramatically affect the results. In fact, the leading scientific publication, Nature, recently published guidelines on what is required when using Bayesian testing, in which they warned:
-
-> Because the posterior distribution can sometimes depend strongly on the choice of prior distribution, a key part of reporting priors is justifying the choice. That is, it is not sufficient merely to state what prior was used, there must be a rationale for the prior. Two further steps are involved in justifying a prior: a prior predictive check and a sensitivity analysis.
-
-A widely used method to satisfy this standard is Markov Chain Monte Carlo simulations, via techniques such as Metropolis-Hasting or Gibbs Sampling. More details can be found in this awesome blog post [here](https://towardsdatascience.com/bayesian-inference-problem-mcmc-and-variational-inference-25a8aa9bce29). But for practical use, this can be too much unnecessary complexity for most companies and is generally only employed at the largest scales by companies like Meta, Amazon and others.
-
-With this in mind, we’ve designed Statsig’s Bayesian Testing functionality to as useful as possible without unwittingly leading customers to dangerous waters.
-
-Related: Try our new [Bayesian A/B testing calculator](https://www.statsig.com/bayesianCalculator).
+- 95% Credible Interval: there is 95% probability the parameter is in the interval
+- Chance to Beat: the probability that the test is better than control
+- Expected Loss: the average potential risk if you ship test

@@ -617,6 +617,7 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/ending-experiment",
                 "experiments-plus/disable-group",
                 "experiments-plus/bayesian",
+                "experiments-plus/bayesian-deprecated",
                 "experiments-plus/switchback-tests",
                 "experiments-plus/reconciling-experiment-results",
                 "experiments-plus/bots",
