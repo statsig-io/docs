@@ -29,25 +29,26 @@ Denote $\mathcal{N}(ATE_{prior}, STE_{prior}^2)$ as the prior distribution, wher
 The posterior distribution is then calculated as
 
 $$
-\LARGE
-\text{ATE}_{\text{post}} =
+\LARGE 
+ATE_{post} = 
 \frac{
-\left\frac{\text{ATE}_{\text{prior}}}{\text{STE}_{\text{prior}}^2} +
-\frac{\text{ATE}_{\text{observed}}}{\text{STE}_{\text{observed}}^2}\right
+\frac{ATE_{prior}}{STE_{prior}^2} + 
+\frac{ATE_{observed}}{STE_{observed}^2}
 }{
-\left\frac{1}{\text{STE}_{\text{prior}}^2} +
-\frac{1}{\text{STE}_{\text{observed}}^2}\right
+\frac{1}{STE_{prior}^2} + 
+\frac{1}{STE_{observed}^2}
 }
 $$
 
 $$
-\LARGE
-\text{STE}_{\text{post}} =
+\LARGE 
+STE_{post} = 
 \frac{1}{
-\left\frac{1}{\text{STE}_{\text{prior}}^2} +
-\frac{1}{\text{STE}_{\text{observed}}^2}\right
+\frac{1}{STE_{prior}^2} + 
+\frac{1}{STE_{observed}^2}
 }
 $$
+
 
 If the prior is not specified, the $\mathcal{N}(ATE_{prior}, STE_{prior}^2)$ is represented as $\mathcal{N}(0, \infty)$.
 
