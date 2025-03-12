@@ -20,7 +20,7 @@ Deep dive analysis should also reflect Bayesian statistics
 
 ### Informed Bayesian
 
-Bayesian experiments allow you to specify a prior belief on the relative average treatment effect. Statsig will combine the prior distribution with the observed data to display the prior-adjusted results.
+Bayesian experiments allow you to specify a prior belief on the relative average treatment effect. Statsig will combine the prior distribution with the observed data to display the prior-adjusted results. You can enable this by selecting the option to "use proper priors".
 
 ### Implementation Details
 
@@ -55,6 +55,6 @@ If the prior is not specified, the $\mathcal{N}(ATE_{prior}, STE_{prior}^2)$ is 
 
 Bayesian A/B tests have a glossary that are different from the frequentist framework and often believed to be more intuitive in communication to non-technical audience.
 
-- 95% Credible Interval: there is 95% probability the parameter is in the interval
+- Credible Interval: the interval which we believe contains the true parameter at the given probability
 - Chance to Beat: the probability that the test is better than control
 - Expected Loss: the average potential risk if you ship test
