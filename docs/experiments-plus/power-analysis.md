@@ -6,34 +6,41 @@ slug: /experiments-plus/power-analysis
 
 The power analysis tool leverages the known mean and variance of a metric and the observed traffic volume to estimate the relationship between three variables:
 * **Minimum detectable effect (MDE)**: The smallest change in the metric that the experiment can reliably detect. For example: An MDE of 1% with Power set to 80% means that if there's a true effect of 1% on our metric, we expect the experiment will have an 80% chance to produce a statistically significant result. If the magnitude of the true effect is smaller than 1%, it will be less likely to produce a statistically significant result (though it can still occur).
+
 * **Number of days or exposures**: How long the experiment is active and the number of users enrolled in it.  Longer running experiments typically have more observations, leading to tighter confidence intervals and smaller MDE.  We use historical data to estimate the number of new users that would be eligible for the experiment each day.
+
 * **Allocation**: The percentage of traffic that participates in the experiment.  Larger allocation leads to smaller MDE, so it's often desirable to allocate as many users as possible to get faster or more sensitive results.  When there's a risk of negative impact or a need for mutually exclusive experiments however, it's useful to know the smallest allocation that can achieve the desired MDE. 
 
 ## Using the Tool
 
-It can be accessed from the tools menu. It's also available on the experiment setup page.
+Power Analysis Calculator can be accessed from the tools menu. It's also linked on the experiment setup page, underneath the Experiment Duration field.
 
-   ![image](https://user-images.githubusercontent.com/31516123/236296790-d7768b1a-13ca-4e55-9877-bdad607d6da4.png)
+<img width="506" alt="Power Analysis Navigation" src="https://github.com/user-attachments/assets/976b1ef3-b192-4af7-a63e-43e9256d435a" />
    
 1. Select the population used to determine the metric mean and variance and to estimate the number of exposures over time.
     - **Everyone**: Analysis is based on the entire user base.  
     - **Targeting gate**: Analysis is scoped to the set of users who pass the selected feature gate, which must have been active for at least 7 days.  Choose this option when you plan to use a targeting gate for the experiment.  
     - **Past experiment**: Analysis is based on data collected from in a previous experiment.  Use this option when the new experiment will impact a similar user base or part of the product as the previous one.
-    - **Qualifying event**: Analysis is scoped to the set of users who logged the event specified. 
+    - **Qualifying event**: Analysis is scoped to the set of users who logged the event specified.
+  
 2. Select a metric of interest (or multiple metrics for a targeting gate analysis)
-3. Select the type of analysis to perform:
-    - Fixed Allocation: You know the available allocation, the tool tells you the expected MDE for each duration
-    - Fixed MDE: You know the effect size you want to measure, the tool tells you the allocation and duration needed
-4. Click on **Start Calculation** to see the results
+   
+3. Click on **Run Power Analysis** to calculate results
 
-   ![image](https://user-images.githubusercontent.com/90343952/145108695-097fc8f3-1008-4cf9-866e-5e3b7d2dc85c.png)
+<img width="860" alt="Screenshot 2025-03-12 at 7 59 22 AM" src="https://github.com/user-attachments/assets/a74f2b80-cdab-4804-a8cc-ebaa2530ed5d" />
+
+Your past power analysis calculations will be available to view in the "Past Analyses" tab.
+
+<img width="1200" alt="Screenshot 2025-03-12 at 8 04 31 AM" src="https://github.com/user-attachments/assets/82a91aa4-dd3a-4d09-aca4-2de8b43f49e8" />
 
 ## Population Types
 
 The population selected directly impacts the inputs of the analysis (mean, variance, number of users).  To obtain reliable power analysis estimates, the metric values of the selected population should roughly match those of the users you'll be targeting in the experiment.  
 
 ### Example
+
 Say we want to test a change in the checkout flow and we want to know our expected MDE for total_purchases.  Let's assume that only ~10% of our daily users reach the checkout page.  If we use the *Everyone* population for our analysis, we're likely to:
+
 * Overestimate the number of users that the experiment will get.
 * Underestimate the mean value of the total_purchases metric.  The 90% of user that don't reach the checkout page have a value of zero, but in practice they won't be in our experiment and won't contribute to the metric.
 * Incorrectly estimate the variance in the total_purchases metric.  The distribution of metric values is different if we include the 90% of users that have 0 purchases because they never reached the checkout page.
@@ -43,6 +50,7 @@ Thus, in cases when the experiment only includes a biased subset of users, it's 
 One way to address this is to use data from a past experiment to estimate the power of a new, similar experiment (coming soon!).  In our example, if we had a prior experiment that was also targeting the checkout page, we could use it to get better estimates of traffic volumes and metrics for this part of the product.
 
 ### Inputs by Population Type
+
 This is how the various inputs for the power analysis are obtained from the different population types:
 
 | Population       | Mean and Variance Calculation       | Total Exposures by Week Estimate         |
@@ -55,15 +63,19 @@ This is how the various inputs for the power analysis are obtained from the diff
 
 ## Analysis Types
 
+When looking at the results, you can modify certain inputs like "# of Groups", "Control Group %", and Analysis Types to update your power analysis results based on your updated inputs.
+
+<img width="1200" alt="Screenshot 2025-03-12 at 8 07 59 AM" src="https://github.com/user-attachments/assets/110ee88a-6bf7-4be8-b419-1626ee562fe5" />
+      
 ### Fixed Allocation Analysis
 
-Choose this option to understand how the length of the experiment impacts the MDE.  The example below shows how the MDE for a page load metric shrinks over time in an experiment with 100% allocation.  After 1 week we expect 5200 users per group and an MDE of 21.6%, by week 4 the number of users per group should increase to ~48k and the MDE is reduced to 7%
+If you already know the available allocation, fixed allocation allows you to understand how the length of the experiment impacts the MDE. The example below shows how the MDE for a page load metric shrinks over time in an experiment with 100% allocation.  After 1 week we expect 5200 users per group and an MDE of 21.6%, by week 4 the number of users per group should increase to ~48k and the MDE is reduced to 7%.
 
    ![image](https://github.com/statsig-io/docs/assets/90343952/c3b5e22c-951e-4ef1-84a9-0b935a2e18e8)
 
 ### Fixed MDE Analysis
 
-Choose this option if the smallest effect size that the experiment should detect is known.  Enter the desired MDE as a percentage of the current metric value.  For example: If a website currently gets 1,000 page loads per day, an MDE of 10% means we can detect a change of 100 or more page loads per day.  
+If you already know the effect size you want to measure, fixed MDE analysis allows you to understand the allocation and duration needed for desired MDE. Enter the desired MDE as a percentage of the current metric value.  For example: If a website currently gets 1,000 page loads per day, an MDE of 10% means we can detect a change of 100 or more page loads per day.  
 
 The results show the minimum number of weeks needed to reach this MDE for different allocation percentages.  In the example below, the experiment should run for at least 2 weeks with 65% allocation or 4 weeks with 50% allocation.  There's no way achieve the desired MDE in 1 week, as this would require more than 100% allocation (more users than we expect to see in one week).
 
