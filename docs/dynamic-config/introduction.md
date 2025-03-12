@@ -14,7 +14,7 @@ Many technology companies use tools such as dynamic config to make their server-
 
 ### Examples of Use Cases:
 - **Feature Toggles**: Dynamically enable or disable features without code changes.
-- **A/B Testing**: Vary configurations across user segments to measure impact.
+- **Gradual Rollouts**: Vary configurations across user segments to rollout more safely.
 - **Real-Time Updates**: Instantly adjust app properties like UI elements or service thresholds.
 
 ## Next Steps
