@@ -10,11 +10,11 @@ A/B Testing an email campaign and getting experiment results on downstream produ
 Two common patterns used on Statsig are 
 
 #### 1. Do assignments in the marketing automation tool, do analysis in Statsig (requires Statsig WHN)
-Motivation : The marketing automation tools only measures email open/click through rates; but what is useful to measure is impact on product usage.
-Solution : Use the email automation tool to bucket users into Control/Test. Write these assignments into a table in your warehouse. Statsig Warehouse Native can use this table as the list of assignments for the experiment and can analyze experiment impact using the full catalog of business/product metrics configured on Statsig.
+Use Case: The marketing automation tools only measures email open/click through rates; but what is useful to measure is impact on product usage.\
+Solution: Use the email automation tool to bucket users into Control/Test. Write these assignments into a table in your warehouse. Statsig Warehouse Native can use this table as the list of assignments for the experiment and can analyze experiment impact using the full catalog of business/product metrics configured on Statsig.
 
 #### 2. Do assignments and analysis using Statsig
-Motivation : Want email campaigns to be coordinated with in-app messaging/promotions (like access to a certain promotion).
-Solution : Call the Statsig SDK to assign each user into Control/Test and use that in the email marketing system (e.g. Salesforce Marketing Cloud lets you create a custom extension to do this). You can either perform a bulk evaluation for a list of email addresses selected for a campaign (using a Python script + Statsig Python SDK) or call the SDK one by one. This works both on Statsig Warehouse Native and Statsig Cloud.
+Use Case: Want email campaigns to be coordinated with in-app messaging/promotions (like access to a certain promotion).\
+Solution: Call the Statsig SDK to assign each user into Control/Test and use that in the email marketing system (e.g. Salesforce Marketing Cloud lets you create a custom extension to do this). You can either perform a bulk evaluation for a list of email addresses selected for a campaign (using a Python script + Statsig Python SDK) or call the SDK one by one. This works both on Statsig Warehouse Native and Statsig Cloud.
 
 If you're using a script to call the Python SDK, this is very performant. Remember to either `flush()` or `shutdown()` the SDK before exiting the script so the exposures get logged to Statsig. You can verify these were flushed on the Diagnostics page of your experiment.
