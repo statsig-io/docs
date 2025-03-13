@@ -12,7 +12,7 @@ Example script to use -
 SELECT
     user_id,
     timestamp,
-    'AA_Test_1' AS experiment_name,
+    'AA_Test_1' AS experiment_name, --CAST('AA_Test_1' as varchar) AS experiment_name for Redshift warehouse
     CASE
         WHEN <random_logic> THEN 'Control'
         ELSE 'Test'
