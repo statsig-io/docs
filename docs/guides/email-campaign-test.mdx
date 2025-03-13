@@ -3,16 +3,18 @@ sidebar_label: A/B Test Email Campaigns
 title: A/B Test Email Campaigns
 ---
 
-A/B Testing an email campaign and getting experiment results on downstream product metrics (in addition to top level email interaction metrics), is a common use case for Statsig customers.
 
-The general flow looks like this:
 
-1. Create an Experiment in Statsig for this email campaign.
-2. Check that experiment for each user you are sending the email to using a server SDK (very performant for large volumes).  Record the variant of the email to send.  If you are writing a script to do this, make sure to send the exposure events to Statsig (either `flush()` or `shutdown()` the SDK before exiting the script). If you are unsure, check the Diagnostics page of your experiment and make sure the exposure checks are recorded for each of the users.
-3. Using the list you have of users for each variant, send the corresponding email
-4. Downstream events you log on your client or server application must use the same ID and ID type as the experiment check in step (2).
+A/B Testing an email campaign and getting experiment results on downstream product metrics (in addition to top level email interaction metrics), is a common use case for Statsig customers. Email marketing tools often have  native A/B testing capabilities, but are limited to measuring email open rates or link click rates. 
 
-:::warning
-#4 is the biggest gotcha.  When you check the experiment for each of the users you need to pass a user object to Statsig.  If your experiment is on the userID id type, you need to make sure each of those checks sets the userID on the user object.
-Any metrics and events you have instrumented in your app/website/server must pass that same userID in order for Statsig to join product metrics with experiment variant assignment.
-:::
+Two common patterns used on Statsig are 
+
+#### 1. Do assignments in the marketing automation tool, do analysis in Statsig (requires Statsig WHN)
+Motivation : The marketing automation tools only measures email open/click through rates; but what is useful to measure is impact on product usage.
+Solution : Use the email automation tool to bucket users into Control/Test. Write these assignments into a table in your warehouse. Statsig Warehouse Native can use this table as the list of assignments for the experiment and can analyze experiment impact using the full catalog of business/product metrics configured on Statsig.
+
+#### 2. Do assignments and analysis using Statsig
+Motivation : Want email campaigns to be coordinated with in-app messaging/promotions (like access to a certain promotion).
+Solve : Call the Statsig SDK to assign each user into Control/Test and use that in the email marketing system (e.g. Salesforce Marketing Cloud lets you create a custom extension to do this). You can either perform a bulk evaluation for a list of email addresses selected for a campaign (using a Python script + Statsig Python SDK) or call the SDK one by one. This works both on Statsig Warehouse Native and Statsig Cloud.
+
+If you're using a script to call the Python SDK, this is very performant. Remember to either `flush()` or `shutdown()` the SDK before exiting the script so the exposures get logged to Statsig. You can verify these were flushed on the  Diagnostics page of your experiment.
