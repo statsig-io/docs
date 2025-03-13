@@ -20,7 +20,7 @@ Deep dive analysis should also reflect Bayesian statistics
 
 ### Informed Bayesian
 
-Bayesian experiments allow you to specify a prior belief on the relative average treatment effect. Statsig will combine the prior distribution with the observed data to display the prior-adjusted results.
+Bayesian experiments allow you to specify a prior belief on the relative average treatment effect. Statsig will combine the prior distribution with the observed data to display the prior-adjusted results. You can enable this by selecting the option to "use proper priors".
 
 ### Implementation Details
 
@@ -29,25 +29,26 @@ Denote $\mathcal{N}(ATE_{prior}, STE_{prior}^2)$ as the prior distribution, wher
 The posterior distribution is then calculated as
 
 $$
-\LARGE
-\text{ATE}_{\text{post}} =
+\LARGE 
+ATE_{post} = 
 \frac{
-\left(\frac{\text{ATE}_{\text{prior}}}{\text{STE}_{\text{prior}}^2} +
-\frac{\text{ATE}_{\text{observed}}}{\text{STE}_{\text{observed}}^2}\right)
+\frac{ATE_{prior}}{STE_{prior}^2} + 
+\frac{ATE_{observed}}{STE_{observed}^2}
 }{
-\left(\frac{1}{\text{STE}_{\text{prior}}^2} +
-\frac{1}{\text{STE}_{\text{observed}}^2}\right)
+\frac{1}{STE_{prior}^2} + 
+\frac{1}{STE_{observed}^2}
 }
 $$
 
 $$
-\LARGE
-\text{STE}_{\text{post}} =
+\LARGE 
+STE_{post} = 
 \frac{1}{
-\left(\frac{1}{\text{STE}_{\text{prior}}^2} +
-\frac{1}{\text{STE}_{\text{observed}}^2}\right)
+\frac{1}{STE_{prior}^2} + 
+\frac{1}{STE_{observed}^2}
 }
 $$
+
 
 If the prior is not specified, the $\mathcal{N}(ATE_{prior}, STE_{prior}^2)$ is represented as $\mathcal{N}(0, \infty)$.
 
@@ -55,6 +56,6 @@ If the prior is not specified, the $\mathcal{N}(ATE_{prior}, STE_{prior}^2)$ is 
 
 Bayesian A/B tests have a glossary that are different from the frequentist framework and often believed to be more intuitive in communication to non-technical audience.
 
-- 95% Credible Interval: there is 95% probability the parameter is in the interval
+- Credible Interval: the interval which we believe contains the true parameter at the given probability
 - Chance to Beat: the probability that the test is better than control
 - Expected Loss: the average potential risk if you ship test
