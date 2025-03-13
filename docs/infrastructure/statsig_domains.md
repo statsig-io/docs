@@ -29,7 +29,7 @@ And these as well:
 - `beyondwickedmapping.org`
 
 :::info Why such odd names?
-We constantly and dynamically update these domains to prevent overzealous blocking from browser ad blockers. These are updated whenever they pick up these
+We constantly and dynamically update these domains to prevent overzealous blocking from browser ad blockers. These are updated whenever they pick up the existing ones.
 :::
 
 ## Statsig User Segment Storage API
