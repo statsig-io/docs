@@ -35,28 +35,4 @@ WHERE dt BETWEEN DATE('2023-09-01') AND DATE('2023-09-03')
 
 This is a powerful tool since you can inject filters into queries with joins or CTEs and be confident that the initial scan will be pruned.
 
-You can also use date macros in **Entity Property**. A quick note: our system automatically adjusts the start date by *moving it back 7 days* to ensure you receive the cleanest possible entity property data, free from experiment-induced bias. 
-
-In the same example, for any entity property rely on the `{statsig_start_date}`, this query:
-
-```
-SELECT
-    user_id,
-    user_property,
-    ts,
-    dt
-FROM user_property
-WHERE dt between (`{statsig_start_date}` - INTERVAL '3 days') and (`{statsig_start_date}` - INTERVAL '1 day')
-```
-
-resolves to
-
-```
-SELECT
-    user_id,
-    user_property,
-    ts,
-    dt
-FROM user_property
-WHERE dt between DATE('2023-08-29') and DATE('2023-08-31')
-```
+We will adjust the range as necessary in some cases. For example, in entity properties we will add some pre-experiment buffer to allow for late-landing property data. We then choose the most recent value as of each unit's exposure. For CUPED, we will adjust the range to include the pre-experiment window for CUPED calculations.
