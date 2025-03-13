@@ -17,4 +17,4 @@ Solution : Use the email automation tool to bucket users into Control/Test. Writ
 Motivation : Want email campaigns to be coordinated with in-app messaging/promotions (like access to a certain promotion).
 Solve : Call the Statsig SDK to assign each user into Control/Test and use that in the email marketing system (e.g. Salesforce Marketing Cloud lets you create a custom extension to do this). You can either perform a bulk evaluation for a list of email addresses selected for a campaign (using a Python script + Statsig Python SDK) or call the SDK one by one. This works both on Statsig Warehouse Native and Statsig Cloud.
 
-If you're using a script to call the Python SDK, this is very performant. Remember to either `flush()` or `shutdown()` the SDK before exiting the script so the exposures get logged to Statsig. You can verify these were flushed on the  Diagnostics page of your experiment.
+If you're using a script to call the Python SDK, this is very performant. Remember to either `flush()` or `shutdown()` the SDK before exiting the script so the exposures get logged to Statsig. You can verify these were flushed on the Diagnostics page of your experiment.
