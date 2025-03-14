@@ -1,6 +1,6 @@
 ---
-title: Multi Armed Bandit
-sidebar_label: Multi Armed Bandit
+title: Methodology
+sidebar_label: Methodology
 slug: /multi-armed-bandit
 ---
 
