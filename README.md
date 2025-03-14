@@ -8,6 +8,8 @@ If this is your jam, check out: [Getting Started](docs/getting-started.mdx) to s
 
 ## Local Development
 
+<mark> Please make sure to use **npm** instead of **pnpm** to start and build docs </mark>
+
 ```bash
 npm install
 npm run dev
