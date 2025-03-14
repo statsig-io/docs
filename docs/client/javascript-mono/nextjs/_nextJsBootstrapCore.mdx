@@ -287,6 +287,7 @@ export const getServerSideProps = async () => {
 
 export default function Home() {
   // No Change
+  // Render either client or server-rendered components here
 }
 ```
 
@@ -333,15 +334,21 @@ export default function App({ Component, pageProps }: AppProps) {
   if (client) {
     return (
       <StatsigProvider client={client}>
-        <Component {...pageProps} />
+        <Component {...pageProps} /> 
       </StatsigProvider>
     );
   }
+
+  #### Boostrapping client-rendered content
+  Both client and server rendered content can be added to the children of the Home component we defined above. The getServerSideProps call passes the necessary props to the root _app.tsx file, which provides Statsig context to any child element.
+
 
   return <Component {...pageProps} />;
 }
 
 ```
+
+
 
     </TabItem>
 
