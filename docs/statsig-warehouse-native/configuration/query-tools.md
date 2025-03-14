@@ -43,7 +43,7 @@ Int versions of the above for use with number based partitioning - e.g. '2025-03
 - `{statsig_start_date_int}`
 - `{statsig_end_date_int}`
 
-Only available for metric sources and entity property sources; this will resolve to the start date of the experiment. In non-experiment contexts, it resolves to unixtime (1970-01-01). This is useful for generating entity properties such as "30d revenue before the experiment started".
+Only available for metric sources and entity property sources; this will resolve to the start date of the experiment. In non-experiment contexts, it resolves to `DATE('1970-01-01')`. This is useful for generating entity properties such as "30d revenue before the experiment started".
 - `{statsig_experiment_start_timestamp}`
 
 
