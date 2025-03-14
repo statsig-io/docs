@@ -12,4 +12,4 @@ user = %StatsigUser{
 {:ok, experiment} = Statsig.get_experiment("user_promo_experiment", user)
 title_exp = Experiment.get_param_value(experiment, "new_user_promo_title")
 ```
-Note if you are using layer to get value -- get param value. It will return primitive types: boolean, string, and numberes, for more complex type, SDK will return json serialized values. 
+Note if you are using layer to get value -- get param value. It will return primitive types: boolean, string, and numbers, for more complex type, SDK will return json serialized values. 
