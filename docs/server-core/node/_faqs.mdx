@@ -1,0 +1,7 @@
+### Common Problems while installing
+1. Seeing SSL Error 
+Right now the binary files will look at certain versions of SSL. 
+```
+// Try run this
+apt-get update && apt-get install libcurl4-openssl-dev -y && rm -rf /var/lib/apt/lists/*
+```
