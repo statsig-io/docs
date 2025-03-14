@@ -36,3 +36,14 @@ WHERE dt BETWEEN DATE('2023-09-01') AND DATE('2023-09-03')
 This is a powerful tool since you can inject filters into queries with joins or CTEs and be confident that the initial scan will be pruned.
 
 We will adjust the range as necessary in some cases. For example, in entity properties we will add some pre-experiment buffer to allow for late-landing property data. We then choose the most recent value as of each unit's exposure. For CUPED, we will adjust the range to include the pre-experiment window for CUPED calculations.
+
+## Advanced Macros
+
+Int versions of the above for use with number based partitioning - e.g. '2025-03-01' => 20250301
+- `{statsig_start_date_int}`
+- `{statsig_end_date_int}`
+
+Only available for metric sources and entity property sources; this will resolve to the start date of the experiment. In non-experiment contexts, it resolves to unixtime (1970-01-01). This is useful for generating entity properties such as "30d revenue before the experiment started".
+- `{statsig_experiment_start_timestamp}`
+
+
