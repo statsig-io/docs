@@ -1,7 +1,7 @@
 ---
 title: Get Started with Autotune AI
 sidebar_label: Getting Started
-slug: /getting-started
+slug: /autotune/contextual/getting-started
 ---
 
 Getting started with Autotune AI can be done very quickly.
@@ -92,7 +92,7 @@ cfg = statsig.get_experiment(user, autotune_name)
 Now you have your cfg and can apply it!
 
 ```
-color = cfg.get_string("color", "efault color")
+color = cfg.get_string("color", "default color")
 print(f"Going to use {color} for my color now")
 ```
 
