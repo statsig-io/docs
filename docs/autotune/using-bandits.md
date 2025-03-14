@@ -1,6 +1,6 @@
 ---
-title: Using an Autotune Bandit
-sidebar_label: Using an Autotune Bandit
+title: Advanced Usage
+sidebar_label: Advanced Usage
 slug: /using-bandits
 ---
 

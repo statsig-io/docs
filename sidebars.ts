@@ -676,16 +676,37 @@ const sidebars: SidebarsConfig = {
             "ai-ml/ai-prompt-experiment",
             {
               type: "category",
-              label: "Autotune (Bandits)",
+              label: "Bandits",
               link: {
                 type: "doc",
-                id: "autotune/introduction",
+                id: "autotune/bandit-introduction",
               },
               items: [
-                "autotune/contextual-bandit",
-                "autotune/multi-armed-bandit",
-                "autotune/setup",
-                "autotune/monitoring",
+                {
+                  type: "category",
+                  label: "Contextual (CMAB)",
+                  link: {
+                    type: "doc",
+                    id: "autotune/contextual/introduction",
+                  },
+                  items: [
+                    "autotune/contextual/getting-started",
+                    "autotune/contextual/monitoring",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Autotune (MAB)",
+                  link: {
+                    type: "doc",
+                    id: "autotune/introduction",
+                  },
+                  items: [
+                    "autotune/setup",
+                    "autotune/monitoring",
+                    "autotune/multi-armed-bandit",
+                  ],
+                },
                 "autotune/using-bandits",
               ],
             },
