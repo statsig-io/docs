@@ -18,9 +18,19 @@ Holdouts measure the aggregate impact of multiple features. A "holdout" is a gro
 
 
 ## How to read Holdouts
-The Metric Lifts section shows the comparison of *Not in Holdout* vs. *In Holdout*.  In other words, it represents the cumulative impact of launched and active experiments and gates relative to the Holdout group, which doesn't see any of these changes.  In the example below, the new features are having an overall negative effect on many metrics.
+Holdouts on Statsig use the [same "equal variant" methodology](https://docs.statsig.com/feature-flags/view-exposures#gate-exposures) as Feature Gate and Experiment rollouts, whereby metric lifts are computed by equal sized groups to calculate holdout lift. You can read more about the advantages of this methodology in "A/B Testing Intuition Busters: Common Misunderstandings in Online Controlled Experiments” by Ron Kohavi, Alex Deng, & Lukas Vermeer.
 
-![image](https://github.com/user-attachments/assets/97a5e7b3-512c-4440-beb9-fe99773dae55)
+Accordingly, the Cumulative Exposures panel for a given Holdout shows total exposures of the Holdout, broken down into three groups-
+
+- Units that were included in the Holdout, and were used for analysis
+- Units that were not included in the Holdout, and were used for analysis vs. the holdout group 
+- Units that were not included in the Holdout, and were **not** used for analysis vs. the holdout group 
+
+Holdout metric lifts represent the cumulative impact of launched and active experiments on the Holdout group vs. the same % of the rest of the population who were subject to the included rollouts and experiments.  
+
+In the example below, the 1% Holdout is comparing the metric values of the 1% Holdout vs. 1% of the rest of the population. The launched features are having an overall negative effect on the "Add to Cart" metric. 
+
+<img width="1254" alt="Screen Shot 2025-03-15 at 3 49 19 PM" src="https://github.com/user-attachments/assets/b6c3724d-784d-45e3-ad6e-230bd9d82214" />
 
 
 ## Best Practices
