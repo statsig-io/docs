@@ -99,4 +99,4 @@ The [best practices](./best-practices.md) cover most situations that lead to hig
 
 - Cluster or Partition source tables
 - Use statsig date macros to guarantee filter push-down
-- Use Statsig's unique turbo
+- Use Statsig's turbo mode to reduce redundant compute, especially for large or long experiments
