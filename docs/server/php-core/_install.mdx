@@ -6,7 +6,7 @@ This SDK is in Beta, and some instructions here may change over time. **This gui
 You can install the new PHP Core SDK using composer:
 
 ```shell
-composer require statsig/statsig-core-php
+composer require statsig/statsig-php-core
 ```
 
 ### 2. Add Scripts & Cron Job
@@ -15,10 +15,10 @@ Add post-install and post-update scripts in composer.json:
 
 ```json
 "post-install-cmd": [
-  "cd vendor/statsig/statsig-core-php && php post-install.php"
+  "cd vendor/statsig/statsig-php-core && php post-install.php"
 ],
 "post-update-cmd": [
-  "cd vendor/statsig/statsig-core-php && php post-install.php"
+  "cd vendor/statsig/statsig-php-core && php post-install.php"
 ]
 ```
 
