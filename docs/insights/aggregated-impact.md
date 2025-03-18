@@ -1,22 +1,26 @@
 ---
-title: Aggregated Impact Estimate
+title: Aggregated Impact and Metric Insights
 sidebar_label: Aggregated Impact
 slug: /aggregated-impact
 ---
-The aggregated impact estimate is a powerful tool to understand the overall impacts from multiple experiments on a given metric.
 
-## When it is useful
-There are two typical use cases for this feature:
-- When you want to understand how much impact you or your team have made. This feature will answer questions like "how much revenue increase my team has driven in the past quarter".
-- When you want to set a reasonable goal for your team/company. this feature will answer questions like "what should be the goal for my team for next quarter?" by looking at historical impacts that previous experiments have driven.
+Statsig's Insights page provides a clear view of how active experiments and feature gates impact a specific metric of interest. It not only helps answer key questions such as "How much impact have I driven?", but also serves as a powerful tool for diagnosing unexpected changes in metrics.  
 
-## Where it can be found
-The aggregated impact estimate can be found in [meta-analysis](https://docs.statsig.com/experimentation/meta-analysis), as well as in the insight tab for each metric.
+Insights presents a reverse perspective of the [Pulse](/pulse) view. While Pulse measures the impact of a new feature on all your metrics, Insights allows you to focus on a single metric and identify which tests are impacting it the most. This makes it particularly useful for assessing your or your team's impact, as well as setting realistic goals for your team or company.
+
+## How to read Insights
+1.	Navigate to the Insights section on the Statsig console: https://console.statsig.com/ . It is also available in the insight tab for each metric.
+2.	Select a metric that you want to observe from the selector drop down at the top of the page. 
+3.	Select the ID type, time window and other filters that you want to observe.
+4.	Based on the filters you choose, you can see the relative impact, topline impact and projected launch impact for any experiment/gate which has this metric.
+5.	We also sum up the projected launch impacts, adjust based on false positive risk ('winner's curse') and show as the 'Aggregated Impact Estimate'.
 
 <img width="1003" alt="Screen Shot 2025-02-27 at 11 20 05 PM" src="https://github.com/user-attachments/assets/430563dc-4794-4d69-a314-36c76a6fcf74" />
 
 ## How the math works
-We sum up projected launch impact and adjust it based on false positive risk ("winner's curse"). To estimate false positive risk, we use the methodology in this [paper](https://dl.acm.org/doi/10.1145/3534678.3539160) which is widely adopted across the industry. Specifically:
+Check how the topline and projected launch impact are calculated in this [doc](https://docs.statsig.com/stats-engine/topline-impact/#computing-projected-launch-impact).
+
+To estimate false positive risk and calculate Aggregated Impact, we use the methodology in this [paper](https://dl.acm.org/doi/10.1145/3534678.3539160) which is widely adopted across the industry. Specifically:
 
 $$
 Aggregated Impact=\sum_{i}{(1 - FPR_i) \times Projected Launch Impact_i}
