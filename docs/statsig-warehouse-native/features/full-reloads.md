@@ -8,7 +8,7 @@ Full reloads will completely wipe the Staging/Results Datasets Statsig has used 
 
 Generally, this is used for
 
-- initial or historical pulse loads
-- cases where data has been lost or dropped on the customer side, meaning incremental reloads have lost state
-- cases where data changes frequently, e.g. a DBT full reload changes historical data due to chargebacks, model changes, or other reasons
-- there's complex data dependencies, and a team wants to ensure that the gap between Statsig and Internal Systems doesn't cause inconsistencies
+- Initial or historical pulse loads.
+- Cases where data has been lost or dropped on the customer side, meaning incremental reloads have lost state.
+- Cases where data changes frequently, e.g. a DBT full reload changes historical data due to chargebacks, model changes, or other reasons.
+- There's complex data dependencies, and a team wants to ensure that the gap between Statsig and Internal Systems doesn't cause inconsistencies.

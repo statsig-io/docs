@@ -3,7 +3,7 @@ title: Funnel++
 sidebar_label: Funnel++
 ---
 
-::info
+:::info
 Funnel++ is a Statsig Warehouse Native feature.
 :::
 
