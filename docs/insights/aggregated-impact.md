@@ -1,5 +1,5 @@
 ---
-title: Aggregated Impact and Metric Insights
+title: Metric Insights and Aggregated Impact
 sidebar_label: Aggregated Impact
 slug: /aggregated-impact
 ---
