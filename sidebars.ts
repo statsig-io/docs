@@ -828,6 +828,7 @@ const sidebars: SidebarsConfig = {
                 },
                 "statsig-warehouse-native/connecting-your-warehouse/forwarded-data",
                 "statsig-warehouse-native/analysis-tools/data-privacy",
+                "statsig-warehouse-native/guides/costs",
                 "statsig-warehouse-native/guides/best-practices",
               ],
             },

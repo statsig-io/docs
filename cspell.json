@@ -651,7 +651,8 @@
     "covariates",
     "demeaned",
     "Covariates",
-    "CUPAC"
+    "CUPAC",
+    "Drilldowns"
   ],
   "ignorePaths": [
     "node_modules/**",
