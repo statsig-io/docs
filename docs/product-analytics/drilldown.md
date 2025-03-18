@@ -167,6 +167,7 @@ Metrics Drilldown offers many ways to visualize your data, including:
 - **Line:** Useful when plotting one or or metrics.
 - **Stacked Line:** Useful when comparing groups to understand the relative proportion a certain group has of a metric or event.
 - **Bar:** Useful when comparing the total value of two metrics over the entire date range.
+- **Donut:** Useful for visualizing the proportional breakdown of a whole into distinct categories at a single point in time.
 
 ### Zooming in
 
