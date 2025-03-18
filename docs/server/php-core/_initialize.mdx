@@ -30,3 +30,9 @@ Statsig::class => function (ContainerInterface $c) {
     return $statsig;
 },
 ```
+
+
+:::caution
+`StatsigLocalFile` Adapters rely on cron jobs and files. If you are seeing errors around file access, ensure your cron job has run at least one time before using Statsig.
+See [Add Scripts & Cron Job](#2-add-scripts--cron-job)
+:::
