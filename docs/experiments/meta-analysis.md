@@ -47,7 +47,7 @@ In this hypothetical example - "Checkouts" is the metric you want to move, but i
 
 
 ## Metric Insights
-This view lets you pick a metric and see all experiments and feature rollouts that impact this metric. [Learn more](/insights).
+This view lets you pick a metric and see all experiments and feature rollouts that impact this metric. [Learn more](/aggregated-impact).
 
 <img width="1003" alt="417923655-430563dc-4794-4d69-a314-36c76a6fcf74" src="https://github.com/user-attachments/assets/8d61ada1-bf1f-41cf-b52b-f01d24052568" />
 
