@@ -324,163 +324,6 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
-          label: "Integrations",
-          className: "integrations-icon sidebar-icon",
-          items: [
-            "integrations/introduction",
-            {
-              "Data Into Statsig": [
-                {
-                  "Data Connectors": [
-                    "integrations/data-connectors/amplitude",
-                    "integrations/data-connectors/census",
-                    "integrations/data-connectors/fivetran",
-                    "integrations/data-connectors/google-analytics",
-                    "integrations/data-connectors/heap",
-                    "integrations/data-connectors/hightouch",
-                    "integrations/data-connectors/mixpanel",
-                    "integrations/data-connectors/mparticle",
-                    "integrations/data-connectors/revenuecat",
-                    "integrations/data-connectors/rudderstack",
-                    "integrations/data-connectors/segment",
-                    "integrations/data-connectors/stitch",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Warehouse Ingestion",
-                  link: {
-                    type: "doc",
-                    id: "data-warehouse-ingestion/introduction",
-                  },
-                  items: [
-                    {
-                      "Connection Set Up": [
-                        "data-warehouse-ingestion/bigquery",
-                        "data-warehouse-ingestion/redshift",
-                        "data-warehouse-ingestion/snowflake",
-                        "data-warehouse-ingestion/databricks",
-                        "data-warehouse-ingestion/synapse",
-                        "data-warehouse-ingestion/s3",
-                        "data-warehouse-ingestion/athena",
-                        "data-warehouse-ingestion/faq",
-                      ],
-                    },
-                    "data-warehouse-ingestion/data_mapping",
-                  ],
-                },
-                "integrations/gtm",
-                "integrations/event_filtering",
-                "integrations/event_webhook",
-                "integrations/openai",
-                "experiments/statsiglite",
-                "guides/statsig-id-resolver",
-                {
-                  type: "category",
-                  label: "Migrate from LaunchDarkly",
-                  link: {
-                    type: "doc",
-                    id: "guides/migrate-from-launchdarkly",
-                  },
-                  items: ["guides/open-source-script", "guides/ui-based-tool"],
-                },
-
-                {
-                  "Data Imports (Deprecated)": [
-                    "integrations/data-imports/overview-deprecated",
-                    "integrations/data-imports/bigquery-deprecated",
-                    "integrations/data-imports/redshift-deprecated",
-                    "integrations/data-imports/snowflake-deprecated",
-                    "integrations/data-imports/azure_upload-deprecated",
-                  ],
-                },
-              ],
-            },
-
-            {
-              "Data Exports": ["integrations/data-exports/overview"],
-            },
-            {
-              "Serverless & Edge": [
-                "guides/serverless",
-                "guides/cdn-edge-testing",
-                "integrations/vercel",
-                "integrations/cloudflare",
-                "integrations/fastly",
-                "integrations/akamai",
-              ],
-            },
-            {
-              "Slack, VS Code & Productivity": [
-                "integrations/github_code_references",
-                "integrations/slack",
-                "integrations/jira",
-                "integrations/vscode",
-              ],
-            },
-            {
-              "Email & CMS Systems": [
-                "guides/email-campaign-test",
-                "guides/contentful",
-                "guides/customer-io-email-abtest",
-                "guides/sendgrid-email-abtest",
-                "guides/cms-integrations",
-              ],
-            },
-            {
-              "No-Code Editors": [
-                "guides/shopify-ab-test",
-                "guides/framer-analytics",
-                "guides/webflow-sidecar-ab-test",
-              ],
-            },
-            {
-              "Observability & Infra": [
-                "integrations/datadog",
-                {
-                  type: "category",
-                  label: "Terraform",
-                  link: {
-                    type: "doc",
-                    id: "integrations/terraform/introduction",
-                  },
-                  items: [
-                    "integrations/terraform/terraform_gate",
-                    "integrations/terraform/terraform_experiment",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Datadog Triggers",
-                  link: {
-                    type: "doc",
-                    id: "integrations/triggers/introduction",
-                  },
-                  items: ["integrations/triggers/datadog"],
-                },
-              ],
-            },
-
-            {
-              type: "category",
-              label: "Azure AI",
-              link: {
-                type: "doc",
-                id: "azureai/introduction",
-              },
-              items: [
-                "azureai/getting-started",
-                "azureai/model-client",
-                "azureai/completions",
-                "azureai/embeddings",
-                "azureai/capturing-metrics",
-                "azureai/running-experiments",
-              ],
-            },
-          ],
-        },
-        {
-          type: "category",
           label: "Data & Metrics",
           className: "data-icon sidebar-icon",
           items: [
@@ -761,7 +604,6 @@ const sidebars: SidebarsConfig = {
             {
               type: "category",
               label: "Users",
-              className: "users-icon sidebar-icon",
               items: ["users/introduction", "users/user-profiles"],
             },
           ],
@@ -1022,6 +864,163 @@ const sidebars: SidebarsConfig = {
                     "access-management/scim/scim-endpoints",
                   ],
                 },
+              ],
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "Integrations",
+          className: "integrations-icon sidebar-icon",
+          items: [
+            "integrations/introduction",
+            {
+              "Data Into Statsig": [
+                {
+                  "Data Connectors": [
+                    "integrations/data-connectors/amplitude",
+                    "integrations/data-connectors/census",
+                    "integrations/data-connectors/fivetran",
+                    "integrations/data-connectors/google-analytics",
+                    "integrations/data-connectors/heap",
+                    "integrations/data-connectors/hightouch",
+                    "integrations/data-connectors/mixpanel",
+                    "integrations/data-connectors/mparticle",
+                    "integrations/data-connectors/revenuecat",
+                    "integrations/data-connectors/rudderstack",
+                    "integrations/data-connectors/segment",
+                    "integrations/data-connectors/stitch",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Warehouse Ingestion",
+                  link: {
+                    type: "doc",
+                    id: "data-warehouse-ingestion/introduction",
+                  },
+                  items: [
+                    {
+                      "Connection Set Up": [
+                        "data-warehouse-ingestion/bigquery",
+                        "data-warehouse-ingestion/redshift",
+                        "data-warehouse-ingestion/snowflake",
+                        "data-warehouse-ingestion/databricks",
+                        "data-warehouse-ingestion/synapse",
+                        "data-warehouse-ingestion/s3",
+                        "data-warehouse-ingestion/athena",
+                        "data-warehouse-ingestion/faq",
+                      ],
+                    },
+                    "data-warehouse-ingestion/data_mapping",
+                  ],
+                },
+                "integrations/gtm",
+                "integrations/event_filtering",
+                "integrations/event_webhook",
+                "integrations/openai",
+                "experiments/statsiglite",
+                "guides/statsig-id-resolver",
+                {
+                  type: "category",
+                  label: "Migrate from LaunchDarkly",
+                  link: {
+                    type: "doc",
+                    id: "guides/migrate-from-launchdarkly",
+                  },
+                  items: ["guides/open-source-script", "guides/ui-based-tool"],
+                },
+
+                {
+                  "Data Imports (Deprecated)": [
+                    "integrations/data-imports/overview-deprecated",
+                    "integrations/data-imports/bigquery-deprecated",
+                    "integrations/data-imports/redshift-deprecated",
+                    "integrations/data-imports/snowflake-deprecated",
+                    "integrations/data-imports/azure_upload-deprecated",
+                  ],
+                },
+              ],
+            },
+
+            {
+              "Data Exports": ["integrations/data-exports/overview"],
+            },
+            {
+              "Serverless & Edge": [
+                "guides/serverless",
+                "guides/cdn-edge-testing",
+                "integrations/vercel",
+                "integrations/cloudflare",
+                "integrations/fastly",
+                "integrations/akamai",
+              ],
+            },
+            {
+              "Slack, VS Code & Productivity": [
+                "integrations/github_code_references",
+                "integrations/slack",
+                "integrations/jira",
+                "integrations/vscode",
+              ],
+            },
+            {
+              "Email & CMS Systems": [
+                "guides/email-campaign-test",
+                "guides/contentful",
+                "guides/customer-io-email-abtest",
+                "guides/sendgrid-email-abtest",
+                "guides/cms-integrations",
+              ],
+            },
+            {
+              "No-Code Editors": [
+                "guides/shopify-ab-test",
+                "guides/framer-analytics",
+                "guides/webflow-sidecar-ab-test",
+              ],
+            },
+            {
+              "Observability & Infra": [
+                "integrations/datadog",
+                {
+                  type: "category",
+                  label: "Terraform",
+                  link: {
+                    type: "doc",
+                    id: "integrations/terraform/introduction",
+                  },
+                  items: [
+                    "integrations/terraform/terraform_gate",
+                    "integrations/terraform/terraform_experiment",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Datadog Triggers",
+                  link: {
+                    type: "doc",
+                    id: "integrations/triggers/introduction",
+                  },
+                  items: ["integrations/triggers/datadog"],
+                },
+              ],
+            },
+
+            {
+              type: "category",
+              label: "Azure AI",
+              link: {
+                type: "doc",
+                id: "azureai/introduction",
+              },
+              items: [
+                "azureai/getting-started",
+                "azureai/model-client",
+                "azureai/completions",
+                "azureai/embeddings",
+                "azureai/capturing-metrics",
+                "azureai/running-experiments",
               ],
             },
           ],
