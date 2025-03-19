@@ -23,3 +23,6 @@ yarn-error.log*
 
 # included for cursor context
 sdk_folders/
+
+# Debug tools
+static/page_views.csv

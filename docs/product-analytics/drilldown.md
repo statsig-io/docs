@@ -109,7 +109,7 @@ Group-By limits can be added by first adding a group-by, then moving to the summ
  
 When you have a Group-By applied, you can view the results as raw numbers, or as a percentage. 
 
-**Feature Gate  and Experiment Groups**
+**Feature Gate and Experiment Groups**
 
 At Statsig we believe in the power of experimentation. To that end, you can also select one of your Feature Gate or Experiments in order to split out a metric by the different groups in the selected test. 
 
@@ -139,7 +139,7 @@ You can also save cohorts to be able to easily reuse them.
 
 ## Exploring a Metric Drilldown Chart
 
-### Selecting chart Granularity
+### Selecting chart granularity
 
 The Metric Drilldown chart gives the flexibility to view data at the granularity you need. You can view data at the daily, hourly, 30 minutes, 5 minute, or 1 minute granularity. This granularity corresponds with the interval between x-axis values. Viewing data at granularities less than hourly limits the analysis time window to 1 day. 
 
@@ -147,11 +147,11 @@ The default chart granularity is daily. You can change this by selecting the “
 
 Note that when viewing data on uniques (e.g. unique users) at daily granularity, you can choose to have the value of each daily data point represent the number of unique weekly users (unique users over previous 7 days). This enables you to get a sense of how weekly usage is changing day over day.  
 
-### Setting the Date Range
+### Setting the date range
 
 The default date range of a chart is 14 days. To select the date range of a chart click on the “Last 14 days” dropdown and select one of the quick date ranges, or select a custom range you prefer. 
 
-### Smoothing out the data with Rollups
+### Smoothing out the data with rollups
 
 Metrics like daily usage often have seasonality effects which can make longer-term trends harder to see at a glance. To help with this, techniques such as modifying each data point on a daily chart to represent a 7 day rolling average is useful. 
 
@@ -159,6 +159,7 @@ We support the following rollups to smooth out data, each of which can be rolled
 
 - Rolling average: Replaces each data point with the average of the preceding number of selected data points.
 - Rolling sum: Replaces each data point with the sum of the preceding number of selected data points.
+- Cumulative Sum: Replaces each data point with the sum of all preceding data points, including itself. This results in a continuously increasing total, where each value represents the accumulated sum of all previous values in the dataset.
 
 ### Selecting the chart visualization
 
@@ -167,6 +168,7 @@ Metrics Drilldown offers many ways to visualize your data, including:
 - **Line:** Useful when plotting one or or metrics.
 - **Stacked Line:** Useful when comparing groups to understand the relative proportion a certain group has of a metric or event.
 - **Bar:** Useful when comparing the total value of two metrics over the entire date range.
+- **Donut:** Useful for visualizing the proportional breakdown of a whole into distinct categories at a single point in time.
 
 ### Zooming in
 

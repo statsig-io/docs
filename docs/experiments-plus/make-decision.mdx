@@ -37,12 +37,14 @@ On the other hand, if you decide to ship the **Test** group, **a_param** will ta
 <img width="454" alt="image" src="https://user-images.githubusercontent.com/1315028/162631111-daf31f6f-156b-481e-aa01-f29743f7e20a.png" />
 
 
-## Experiment With a Targeting Gate
-When you decide ship a group in an experiment configured with a targeting gate, you can decide whether to continue targeting after shipping.
+## Experiment With a Targeting Gate / Targeting Rules
+When you decide to ship a group in an experiment configured with a targeting gate or targeting rules, you can decide whether to continue targeting after shipping.
 - If you decide to _discontinue_ targeting, the parameter values from the shipped group will become the default values for all your users going forward. If the experiment happens to use parameters from a layer, the layer's parameters will now take on the shipped group's parameter values as their defaults. These are the values that your users will see going forward.
-- If you decide to _continue_ targeting, this will add an override to the experiment layer so that: 
+- If you decide to _continue_ targeting with a **targeting gate**, this will add an override to the experiment layer so that: 
    - all users who **pass** the targeting gate will see shipped group's parameter values
    - all users who **fail** the targeting gate will see the default value (layer-level parameter defaults or the defaults you set for the parameter in your code)
+- If you decide to _continue_ targeting with **targeting rules**, the experiment will only be shipped to users who pass the inline targeting rules as set in the experiment setup.
+
 
 :::info **Shipping with Targeting On**
 Note that if you decide to continue targeting, shipping a group will not update the default value of any layer parameters.

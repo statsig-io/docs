@@ -11,7 +11,7 @@ options = StatsigOptions()
 options.environment = "development"
 
 statsig = Statsig("secret-key", options)
-statsig.initialize()
+statsig.initialize().wait()
 
 # Don't forget to shutdown when done
 statsig.shutdown().wait()
