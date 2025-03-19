@@ -19,7 +19,7 @@ Statsig offers a number of ways to reload data:
 - [Incremental Reloads](./incremental-reloads) catch your data up from where it was the last load to where it is today. Running daily incremental reloads is the recommended way to keep your data current without using unnecessary compute resources to recalculate data that hasn't changed.
 - [Metric Reloads](./metric-reloads) are a useful feature for when you want to add a metric to an analysis, or when a metric definition has changed. This does an efficient spot replacement of the data for a single metric or set of metrics.
 
-Full and incremental loads can be [scheduled](./scheduled-reloads) so that you have fresh results each day.
+Full and incremental loads can be [scheduled](https://docs.statsig.com/statsig-warehouse-native/connecting-your-warehouse/scheduled-reloads/) so that you have fresh results each day.
 
 ### Transparency
 
