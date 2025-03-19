@@ -58,7 +58,7 @@ Statsig tries to be as transparent as possible about costs. Numerous tools throu
 
 In every loaded experiment/gate, you can quickly see the cost of each load. This is an easy inline way to understand the rough cost of a load. The metrics shown will be relevant to your warehouse - e.g. slot hours or bytes scanned for bigquery, uptime for snowflake, etc.
 
-<img width="1209" alt="Pipeline History" src="https://github.com/user-attachments/assets/0854661d-f24b-4894-ae8c-55c691d24704" />
+<img width="1209" alt="Pipeline History" src="https://github.com/user-attachments/assets/d2009b64-bbf6-49bf-a3a0-df04b0b89619" />
 
 ### Pipeline Overview Dashboard
 
