@@ -159,6 +159,7 @@ We support the following rollups to smooth out data, each of which can be rolled
 
 - Rolling average: Replaces each data point with the average of the preceding number of selected data points.
 - Rolling sum: Replaces each data point with the sum of the preceding number of selected data points.
+- Cumulative Sum: Replaces each data point with the sum of all preceding data points, including itself. This results in a continuously increasing total, where each value represents the accumulated sum of all previous values in the dataset.
 
 ### Selecting the chart visualization
 
