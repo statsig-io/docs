@@ -6,20 +6,13 @@ slug: /autotune
 
 Autotune and Autotune AI are Multi-Armed Bandit solutions that automatically find the best variant among a group of candidates, while dynamically allocating traffic to optimize for a single target metric.
 
-[Autotune](./multi-armed-bandit.md) (the Multi-Armed Bandit solution) allocates traffic towards high-performing variants and can eventually identify a winning variant.
-
-[Autotune AI](./contextual-bandit.md) (the Contextual Bandit solution) is a personalization tool that serves users the best variant determined by a machine learning model trained on previous observations.
+Autotune, the Multi-Armed Bandit solution, allocates traffic towards high-performing variants and can eventually identify a winning variant.
 
 ## How Autotune works
 
-Autotune is Statsig's [Bayesian Multi-Armed Bandit](./multi-armed-bandit.md), and Autotune AI is Statsig's [Contextual Bandit](./contextual-bandit.md).
+Autotune is Statsig's [Bayesian Multi-Armed Bandit](./multi-armed-bandit.md). It test and measure different variations and their effect on a target outcome. The multi-armed bandit continuously adjusts traffic towards the best performing variations until it can confidently pick the best variation. The winning variation will then receive 100% of traffic.
 
-Both Autotune products will test and measure different variations and their effect on a target metric.
-
-- The multi-armed bandit continuously adjusts traffic towards the best performing variations until it can confidently pick the best variation. The winning variation will then receive 100% of traffic.
-- The contextual bandit personalizes what variant a user sees based on "context" - or provided user/interaction attributes - to serve each user the variation predicted to be best (i.e. personalization).
-
-Contextual Bandits are a subset of Multi-Armed Bandits; both seek to balance the "explore"/"exploit" problem - balancing between "exploiting" the current best known solution versus "exploring" to get more information about other solutions.
+Bandits seek to balance the "explore"/"exploit" problem - balancing between "exploiting" the current best known solution versus "exploring" to get more information about other solutions.
 
 Our blog posts on [Multi-Armed Bandits](/autotune) and [Contextual Bandits](https://www.statsig.com/blog/statsig-autotune-contextual-bandits-personalization) go into depth on use cases and considerations.
 
