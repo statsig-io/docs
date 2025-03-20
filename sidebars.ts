@@ -702,6 +702,7 @@ const sidebars: SidebarsConfig = {
                     "statsig-warehouse-native/metrics/max-min",
                   ],
                 },
+                "statsig-warehouse-native/configuration/metric-examples",
                 "statsig-warehouse-native/configuration/dimensional-analysis",
                 "statsig-warehouse-native/configuration/assignment-sources",
                 "statsig-warehouse-native/configuration/entity-properties",
