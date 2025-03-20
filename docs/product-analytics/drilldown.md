@@ -4,6 +4,8 @@ tags:
 - Statsig Cloud 
 sidebar_label: Metric Drilldown
 slug: /product-analytics/drilldown
+keywords:
+  - owner:akin
 ---
 
 # Metric Drilldown

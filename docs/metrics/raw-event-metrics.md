@@ -2,6 +2,8 @@
 title: Auto-generated Metrics
 sidebar_label: Auto-generated Metrics
 slug: /metrics/metrics-from-events
+keywords:
+  - owner:shubham
 ---
 
 # Auto-generated Metrics

@@ -3,6 +3,8 @@ title: Dimension Analysis
 slug: /statsig-warehouse-native/configuration/dimensional-analysis
 sidebar_label: Dimension Analysis
 description: Break down Metrics by Dimensions
+keywords:
+  - owner:vm
 ---
 
 # Dimension Analysis

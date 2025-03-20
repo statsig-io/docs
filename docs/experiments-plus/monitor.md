@@ -2,6 +2,8 @@
 title: Monitor an experiment
 sidebar_label: Monitor
 slug: /experiments-plus/monitor
+keywords:
+  - owner:vm
 ---
 
 Once you turn on your experiment, you can monitor the health of your experiment and view the exposures for the control and variants groups.

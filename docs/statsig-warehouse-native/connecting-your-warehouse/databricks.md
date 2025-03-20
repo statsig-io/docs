@@ -2,6 +2,8 @@
 title: Databricks Connection
 slug: /statsig-warehouse-native/connecting-your-warehouse/databricks
 sidebar_label: Databricks
+keywords:
+  - owner:vm
 ---
 
 ## Overview

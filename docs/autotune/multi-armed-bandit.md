@@ -2,6 +2,8 @@
 title: Methodology
 sidebar_label: Methodology
 slug: /multi-armed-bandit
+keywords:
+  - owner:vm
 ---
 
 ## Model

@@ -1,5 +1,7 @@
 ---
 title: HTTP API
+keywords:
+  - owner:brock
 ---
 
 > **⚠️ Important:** While this HTTP API is available for direct use, we strongly recommend using one of our official SDKs for your programming language whenever possible. SDKs offer better performance, automatic error handling, and type safety. They also provide a more idiomatic integration with your codebase. Only use this HTTP API directly if there isn't an SDK available for your language or if you have a specific use case that requires direct API access.

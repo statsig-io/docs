@@ -1,6 +1,8 @@
 ---
 sidebar_label: Environments
 title: Using Environments for Conditional Evaluation outside of Production
+keywords:
+  - owner:brock
 ---
 
 Statsig SDKs allow you to set the environment tier for your app during initialization. This helps you evaluate feature gates, dynamic configs, and experiments differently in non-production environments like development or staging. All you need to do is configure the appropriate environment in your code and adjust feature rules in the Statsig Console.

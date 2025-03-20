@@ -2,6 +2,8 @@
 title: How to Read Pulse
 sidebar_label: Read Results
 slug: /pulse/read-pulse
+keywords:
+  - owner:vm
 ---
 
 ## How to read Pulse

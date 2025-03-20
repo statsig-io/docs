@@ -1,6 +1,8 @@
 ---
 title: First or Latest Value Metrics
 sidebar_label: First/Latest Value
+keywords:
+  - owner:vm
 ---
 
 ## Summary

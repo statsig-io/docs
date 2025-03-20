@@ -2,6 +2,8 @@
 title: Bigquery Connection
 slug: /statsig-warehouse-native/connecting-your-warehouse/bigquery
 sidebar_label: BigQuery
+keywords:
+  - owner:vm
 ---
 
 ## Overview

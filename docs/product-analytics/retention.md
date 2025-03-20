@@ -4,6 +4,8 @@ tags:
   - Statsig Cloud
 sidebar_label: Retention
 slug: /product-analytics/retention
+keywords:
+  - owner:akin
 ---
 
 # Retention Chart

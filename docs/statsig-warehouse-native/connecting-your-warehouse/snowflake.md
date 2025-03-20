@@ -2,6 +2,8 @@
 title: Snowflake Connection
 slug: /statsig-warehouse-native/connecting-your-warehouse/snowflake
 sidebar_label: Snowflake
+keywords:
+  - owner:vm
 ---
 
 ## Overview

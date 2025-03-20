@@ -2,6 +2,8 @@
 title: Permanent and Stale Gates
 sidebar_label: Permanent and Stale Gates
 slug: /feature-flags/permanent-and-stale-gates
+keywords:
+  - owner:shubham
 ---
 
 :::note

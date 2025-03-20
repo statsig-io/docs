@@ -2,6 +2,8 @@
 title: Create a segment
 sidebar_label: Create
 slug: /segments/create-new
+keywords:
+  - owner:shubham
 ---
 
 To create a segment, 

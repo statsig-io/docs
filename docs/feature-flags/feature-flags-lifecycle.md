@@ -2,6 +2,8 @@
 title: Managing the Lifecycle of Feature Flags
 sidebar_label: Managing Lifecycle
 slug: /feature-flags/feature-flags-lifecycle
+keywords:
+  - owner:shubham
 ---
 
 :::note

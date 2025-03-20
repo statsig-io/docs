@@ -2,6 +2,8 @@
 title: Feature Flag Best Practices
 sidebar_label: Best Practices
 slug: /feature-flags/best-practices
+keywords:
+  - owner:shubham
 ---
 
 :::note

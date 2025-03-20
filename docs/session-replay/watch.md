@@ -2,6 +2,8 @@
 title: Watch Session Replays
 sidebar_label: Watch
 slug: /session-replay/watch
+keywords:
+  - owner:akin
 ---
 # Watch Replays
 

@@ -2,6 +2,8 @@
 title: Assignment Sources
 slug: /statsig-warehouse-native/configuration/assignment-sources
 sidebar_label: Assignment Sources
+keywords:
+  - owner:vm
 ---
 
 Assignment Sources are how you schematize your assignment data for Statsig, and they serve as the input data for determining who is in an experiment, and which treatment they got.

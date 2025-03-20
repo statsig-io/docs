@@ -2,6 +2,8 @@
 title: Scheduled Reloads
 slug: /statsig-warehouse-native/connecting-your-warehouse/scheduled-reloads
 sidebar_label: Scheduled Reloads
+keywords:
+  - owner:vm
 ---
 
 ## Overview

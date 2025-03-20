@@ -3,6 +3,8 @@ title: Pipeline Overview
 slug: /statsig-warehouse-native/pipeline-overview
 sidebar_label: Pipeline Overview
 description: Understand what we're running on your warehouse
+keywords:
+  - owner:vm
 ---
 
 This page is intended to give you a high level overview of the pipeline Statsig Warehouse Native will run on your warehouse.

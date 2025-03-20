@@ -2,6 +2,8 @@
 title: SRM Checks
 sidebar_label: SRM Checks
 slug: /stats-engine/methodologies/srm-checks
+keywords:
+  - owner:vm
 ---
 
 ## SRM - Sample Ratio Mismatch

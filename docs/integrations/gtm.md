@@ -1,5 +1,7 @@
 ---
 title: Google Tag Manager (GTM) 
+keywords:
+  - owner:brock
 ---
 
 ## Inbound Integration (Events flow from GTM dataLayer to Statsig)

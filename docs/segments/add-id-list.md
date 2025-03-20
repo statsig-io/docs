@@ -2,6 +2,8 @@
 title: Adding ID Lists
 sidebar_label: Add ID List
 slug: /segments/add-id-list
+keywords:
+  - owner:shubham
 ---
 
 ## Create an ID list for a segment

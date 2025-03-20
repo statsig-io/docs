@@ -2,6 +2,8 @@
 title: Other Features
 slug: /statsig-warehouse-native/features/other-features
 sidebar_label: Other Features
+keywords:
+  - owner:vm
 ---
 
 Many features are not listed within the Warehouse Native section since they function near-identically between Cloud and Warehouse Native. These are worth exploring as you integrate with Statsig:

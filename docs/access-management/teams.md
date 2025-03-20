@@ -1,6 +1,8 @@
 ---
 sidebar_label: Teams
 title: Teams
+keywords:
+  - owner:mseger
 ---
 :::info 
 Note- Teams are an Enterprise-only feature. If you are on the Developer or Pro tiers, this guide will not apply to you. To upgrade to Enterprise, feel free to reach out to our team [here](https://www.statsig.com/contact/demo).

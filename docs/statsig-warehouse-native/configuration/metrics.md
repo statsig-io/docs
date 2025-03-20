@@ -2,6 +2,8 @@
 title: Metrics
 slug: /statsig-warehouse-native/configuration/metrics
 sidebar_label: Overview
+keywords:
+  - owner:vm
 ---
 
 ## Metrics

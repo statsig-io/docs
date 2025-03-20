@@ -2,6 +2,8 @@
 title: Entity Properties
 slug: /statsig-warehouse-native/configuration/entity-properties
 sidebar_label: Entity Properties
+keywords:
+  - owner:vm
 ---
 
 ## Entity Properties

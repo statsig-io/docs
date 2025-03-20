@@ -2,6 +2,8 @@
 title: Contextual Bandit
 sidebar_label: Contextual Bandit
 slug: /contextual-bandit
+keywords:
+  - owner:vm
 ---
 
 ## Model

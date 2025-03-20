@@ -2,6 +2,8 @@
 title: Normalized Metrics (aka Clustered Experiments)
 slug: /statsig-warehouse-native/metrics/normalized-metrics
 sidebar_label: Normalized Metrics
+keywords:
+  - owner:vm
 ---
 
 # Normalized Metrics

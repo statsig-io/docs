@@ -2,6 +2,8 @@
 title: Create a dynamic config
 sidebar_label: Create
 slug: /dynamic-config/create-new
+keywords:
+  - owner:shubham
 ---
 
 To create a dynamic config, 

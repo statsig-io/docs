@@ -2,6 +2,8 @@
 title: Monitoring your Contextual MAB
 sidebar_label: Monitoring
 slug: /autotune/contextual/monitoring
+keywords:
+  - owner:vm
 ---
 
 There are three primary ways we recommend you monitor autotune performance.

@@ -2,6 +2,8 @@
 title: Variance Reduction
 sidebar_label: Variance Reduction
 slug: /stats-engine/variance_reduction
+keywords:
+  - owner:vm
 ---
 
 ## Variance Reduction

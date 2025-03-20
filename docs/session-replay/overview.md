@@ -2,6 +2,8 @@
 title: Session Replay Overview
 sidebar_label: Overview
 slug: /session-replay/overview
+keywords:
+  - owner:akin
 ---
 # Session Replay Overview
 

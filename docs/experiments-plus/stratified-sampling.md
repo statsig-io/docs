@@ -2,6 +2,8 @@
 title: Stratified Sampling
 sidebar_label: Stratified Sampling
 slug: /experiments-plus/stratified-sampling
+keywords:
+  - owner:vm
 ---
 
 ## What is Stratified Sampling

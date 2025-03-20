@@ -2,6 +2,8 @@
 title: Experiment Quality Score
 sidebar_label: Quality Score
 slug: /experimentation/quality-score
+keywords:
+  - owner:vm
 ---
 
 ## The Concept

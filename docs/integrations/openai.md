@@ -1,5 +1,7 @@
 ---
 title: OpenAI 
+keywords:
+  - owner:brock
 ---
 
 ## Context

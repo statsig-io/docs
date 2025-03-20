@@ -2,6 +2,8 @@
 title: Metric Directionality
 sidebar_label: Metric Directionality
 slug: /metrics/directionality
+keywords:
+  - owner:shubham
 ---
 
 # Setting Metric Directionality

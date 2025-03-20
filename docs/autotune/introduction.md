@@ -2,6 +2,8 @@
 title: Autotune (Bandits)
 sidebar_label: Introduction
 slug: /autotune
+keywords:
+  - owner:vm
 ---
 
 Autotune and Autotune AI are Multi-Armed Bandit solutions that automatically find the best variant among a group of candidates, while dynamically allocating traffic to optimize for a single target metric.

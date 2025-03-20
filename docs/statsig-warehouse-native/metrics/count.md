@@ -1,6 +1,8 @@
 ---
 title: Count Metrics
 sidebar_label: Count
+keywords:
+  - owner:vm
 ---
 
 ## Summary

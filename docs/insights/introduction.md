@@ -2,6 +2,8 @@
 title: Insights
 sidebar_label: Insights
 slug: /insights
+keywords:
+  - owner:vm
 ---
 
 Insights shows the impact that active experiments and feature gates are having on a metric of interest.  This is a powerful tool for root causing unexpected changes in a metric.  

@@ -2,6 +2,8 @@
 title: Power Analysis
 sidebar_label: Power Analysis
 slug: /experiments-plus/power-analysis
+keywords:
+  - owner:vm
 ---
 
 The power analysis tool leverages the known mean and variance of a metric and the observed traffic volume to estimate the relationship between three variables:
