@@ -210,6 +210,11 @@ const sidebars: SidebarsConfig = {
                   id: "server-core/elixir-core",
                 },
                 {
+                  className: "rust-icon sidebar-icon sdk-sidebar-icon",
+                  type: "doc",
+                  id: "server-core/rust-core",
+                },
+                {
                   className: "php-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "server/phpSDK",
@@ -218,11 +223,6 @@ const sidebars: SidebarsConfig = {
                   className: "ruby-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
                   id: "server/rubySDK",
-                },
-                {
-                  className: "rust-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server/rustSDK",
                 },
 
                 {
@@ -252,6 +252,11 @@ const sidebars: SidebarsConfig = {
                       className: "java-icon sidebar-icon sdk-sidebar-icon",
                       type: "doc",
                       id: "server/javaSdk",
+                    },
+                    {
+                      className: "rust-icon sidebar-icon sdk-sidebar-icon",
+                      type: "doc",
+                      id: "server/rustSDK",
                     },
                   ],
                 },
