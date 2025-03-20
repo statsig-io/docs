@@ -1,0 +1,110 @@
+## StatsigOptions Struct in Rust
+
+The Statsig::new() method takes an optional parameter options to customize the Statsig client. Here's the accurate structure of the StatsigOptions struct based on the source code:
+
+### Parameters
+
+- **`data_store`**: Option\<Arc\<dyn DataStoreTrait\>\>
+External data store for Statsig values.
+
+- **`disable_all_logging`**: Option\<bool\>
+  When true, disables all event logging.
+
+- **`enable_id_lists`**: Option\<bool\>
+  Enable/disable ID list functionality.
+
+- **`enable_user_agent_parsing`**: Option\<bool\>
+  Enable/disable user agent parsing.
+
+- **`enable_country_lookup`**: Option\<bool\>
+  Enable/disable country lookup functionality.
+
+- **`environment`**: Option\<String\>
+  Environment parameter for evaluation.
+
+- **`event_logging_adapter`**: Option\<Arc\<dyn EventLoggingAdapter\>\>
+  Custom adapter for event logging.
+
+- **`event_logging_flush_interval_ms`**: Option\<u32\>
+  How often events are flushed to Statsig servers (in milliseconds).
+
+- **`event_logging_max_queue_size`**: Option\<u32\>
+  Maximum number of events to queue before forcing a flush.
+
+- **`fallback_to_statsig_api`**: Option\<bool\>
+  Whether to fallback to the Statsig API if custom endpoints fail.
+
+- **`id_lists_adapter`**: Option\<Arc\<dyn IdListsAdapter\>\>
+  Custom adapter for ID lists.
+
+- **`id_lists_sync_interval_ms`**: Option\<u32\>
+  How often the SDK updates ID lists from Statsig servers (in milliseconds).
+
+- **`id_lists_url`**: Option\<String\>
+  Custom URL for fetching ID lists.
+
+- **`init_timeout_ms`**: Option\<u64\>
+  Sets the maximum timeout for initialization requests (in milliseconds).
+
+- **`log_event_url`**: Option\<String\>
+  Custom URL for logging events.
+
+- **`observability_client`**: Option\<Weak\<dyn ObservabilityClient\>\>
+  Client for collecting observability data.
+
+- **`output_log_level`**: Option\<LogLevel\>
+  Controls the verbosity of SDK logs.
+
+- **`override_adapter`**: Option\<Arc\<dyn OverrideAdapter\>\>
+  Custom adapter for overrides.
+
+- **`spec_adapters_config`**: Option\<Vec\<SpecAdapterConfig\>\>
+  Configuration for specification adapters.
+
+- **`specs_adapter`**: Option\<Arc\<dyn SpecsAdapter\>\>
+  Custom adapter for specifications.
+
+- **`specs_sync_interval_ms`**: Option\<u32\>
+  How often the SDK updates specifications from Statsig servers (in milliseconds).
+
+- **`specs_url`**: Option\<String\>
+  Custom URL for fetching feature specifications.
+
+- **`service_name`**: Option\<String\>
+  Name of the service using Statsig.
+
+- **`global_custom_fields`**: Option\<HashMap\<String, DynamicValue\>\>
+  Global custom fields to include with all evaluations.
+
+
+### Example Usage
+
+```rust
+use statsig_rust::{Statsig, StatsigOptions};
+use std::sync::Arc;
+
+// Initialize StatsigOptions with custom parameters
+let mut options = StatsigOptions::default();
+options.environment = Some("development".to_string());
+options.init_timeout_ms = Some(3000);
+options.disable_all_logging = Some(false);
+options.enable_id_lists = Some(true);
+options.output_log_level = Some(LogLevel::Info); // LogLevel enum, not a string
+
+// Pass the options object into Statsig::new()
+let statsig = Statsig::new("server-secret-key", Some(Arc::new(options)));
+statsig.initialize().await?;
+
+// Or, use the builder pattern for a more fluent interface
+let options = StatsigOptions::builder()
+    .environment(Some("development".to_string()))
+    .init_timeout_ms(Some(3000))
+    .disable_all_logging(Some(false))
+    .enable_id_lists(Some(true))
+    .specs_sync_interval_ms(Some(30000))
+    .build();
+
+// Pass the options object into Statsig::new()
+let statsig = Statsig::new("server-secret-key", Some(Arc::new(options)));
+statsig.initialize().await?;
+```

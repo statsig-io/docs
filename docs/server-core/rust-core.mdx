@@ -1,0 +1,77 @@
+---
+sidebar_label: Rust Core
+title: Rust Core Server SDK
+keywords:
+  - owner:brock
+---
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigOptions,
+  StatsigUser,
+  ManualExposures,
+  Shutdown,
+} from "./Templates/index.mdx";
+
+
+import Preamble from "./_preamble.mdx";
+import Install from "./rust/_install.mdx";
+import Initialize from "./rust/_initialize.mdx";
+import CheckGate from "./rust/_checkGate.mdx";
+import GetConfig from "./rust/_getConfig.mdx";
+import GetExperiment from "./rust/_getExperiment.mdx";
+import GetFeatureGate from "./rust/_getFeatureGate.mdx";
+import LogEvent from "./rust/_logEvent.mdx";
+import MoreFAQs from "./rust/_faqs.mdx";
+import Options from "./rust/_options.mdx";
+import UserSnippet from "./rust/_statsigUser.mdx";
+import ShutdownSnippet from "./rust/_shutdown.mdx";
+
+
+export const Builder = SDKDocsBuilder({
+  sections: [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/private-statsig-server-core/tree/main/statsig-rust",
+      },
+    ],
+    [
+      GettingStarted,
+      {
+        sdkType: "rust",
+        install: <Install />,
+        preamble: <Preamble />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+        hideAsyncDisclaimer: true,
+        getFeatureGate: <GetFeatureGate />,
+      },
+    ],
+    [StatsigUser, { statsigUser: <UserSnippet /> }],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [FAQ, { faqs: <MoreFAQs /> }],
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+
