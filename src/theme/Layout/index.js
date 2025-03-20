@@ -8,6 +8,7 @@ import { useDoc } from '@docusaurus/theme-common/internal';
 export default function CustomLayout(props) {
   const location = useLocation();
   const [pageViews, setPageViews] = useState(null);
+  const [pageOwner, setPageOwner] = useState('');
   
   const isNodeEnvDevelopment = process.env.NODE_ENV === 'development';
   const [isLocalHost, setIsLocalHost] = useState(false);
@@ -20,6 +21,31 @@ export default function CustomLayout(props) {
   }, []);
   
   const isDevelopment = isNodeEnvDevelopment && isLocalHost;
+
+  // Extract page owner from meta tags
+  useEffect(() => {
+    // Add a small delay to ensure meta tags are updated after navigation
+    const timeoutId = setTimeout(() => {
+      const metaKeywords = document.querySelector('meta[name="keywords"]');
+      if (metaKeywords) {
+        const content = metaKeywords.getAttribute('content');
+        if (content) {
+          const ownerMatch = content.match(/owner:([^\s,]+)/);
+          if (ownerMatch && ownerMatch[1]) {
+            setPageOwner(ownerMatch[1]);
+          } else {
+            setPageOwner('');
+          }
+        } else {
+          setPageOwner('');
+        }
+      } else {
+        setPageOwner('');
+      }
+    }, 100); // Small delay to ensure DOM is updated
+
+    return () => clearTimeout(timeoutId); // Clean up timeout on unmount or re-run
+  }, [location]);
 
   useEffect(() => {
 
@@ -87,7 +113,8 @@ export default function CustomLayout(props) {
           zIndex: 9999,
         }}>
           DEBUG MODE - Current Path: {location.pathname} | 
-          Page Views: {pageViews !== null ? pageViews.toLocaleString() : 'Loading...'}
+          Page Views: {pageViews !== null ? pageViews.toLocaleString() : 'Loading...'} |
+          Page Owner: {pageOwner || 'Unknown'}
         </div>
       )}
       <Layout {...props} />
