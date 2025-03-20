@@ -1,6 +1,8 @@
 ---
 title: Ratio Metrics
 sidebar_label: Ratio
+keywords:
+  - owner:vm
 ---
 
 ## Summary

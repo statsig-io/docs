@@ -1,6 +1,8 @@
 ---
 sidebar_label: Tags 
 title: Tags in Statsig
+keywords:
+  - owner:mseger
 ---
 
 ## Tags for organization

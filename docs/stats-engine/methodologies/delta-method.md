@@ -2,6 +2,8 @@
 title: Delta Method
 sidebar_label: Delta Method
 slug: /stats-engine/methodologies/delta-method
+keywords:
+  - owner:vm
 ---
 
 ## Delta Method

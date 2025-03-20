@@ -1,6 +1,8 @@
 ---
 title: User Data Deletion Requests API
 slug: /compliance/user_data_deletion_requests
+keywords:
+  - owner:tim
 ---
 
 :::info

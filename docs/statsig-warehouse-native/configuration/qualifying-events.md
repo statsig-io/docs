@@ -2,6 +2,8 @@
 title: Qualifying Events
 slug: /statsig-warehouse-native/configuration/qualifying-events
 sidebar_label: Qualifying Events
+keywords:
+  - owner:vm
 ---
 
 ## Using Qualifying Events

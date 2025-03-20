@@ -4,6 +4,8 @@ tags:
 - Statsig Cloud 
 sidebar_label: Overview
 slug: /product-analytics/overview
+keywords:
+  - owner:akin
 ---
 
 # Product Analytics Overview

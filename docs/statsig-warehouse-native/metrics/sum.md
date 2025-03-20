@@ -1,6 +1,8 @@
 ---
 title: Sum Metrics
 sidebar_label: Sum
+keywords:
+  - owner:vm
 ---
 
 ## Summary

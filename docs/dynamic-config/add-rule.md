@@ -2,6 +2,8 @@
 title: Adding Rules
 sidebar_label: Add rule
 slug: /dynamic-config/add-rule
+keywords:
+  - owner:shubham
 ---
 
 ## Add a rule to a dynamic config

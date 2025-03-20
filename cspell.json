@@ -652,7 +652,13 @@
     "demeaned",
     "Covariates",
     "CUPAC",
-    "Drilldowns"
+    "Drilldowns",
+    "mseger",
+    "shubham",
+    "akin",
+    "vineeth",
+    "vijaye",
+    "brock"
   ],
   "ignorePaths": [
     "node_modules/**",

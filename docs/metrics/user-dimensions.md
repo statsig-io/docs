@@ -2,6 +2,8 @@
 title: User Property
 sidebar_label: User Property
 slug: /metrics/user-property
+keywords:
+  - owner:shubham
 ---
 
 It is  helpful to be able to break down Pulse results by user properties like Free vs Paid, or OS type. Setting User Property lets you slice data by properties like this. 

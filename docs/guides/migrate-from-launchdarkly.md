@@ -1,6 +1,8 @@
 ---
 sidebar_label: Migrate from LaunchDarkly
 title: Migrate your feature flags from LaunchDarkly
+keywords:
+  - owner:oliver
 ---
 
 Migrating from LaunchDarkly to Statsig is a strategic move that can lead to more efficient feature flag management and a stronger experimentation culture. By following this guide, you'll be well equipped to make the transition with confidence.

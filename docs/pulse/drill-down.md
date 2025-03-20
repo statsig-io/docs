@@ -2,6 +2,8 @@
 title: Pulse
 sidebar_label: Metric Drill-Down
 slug: /pulse/drill-down
+keywords:
+  - owner:vm
 ---
 
 ## Tooltip Overview

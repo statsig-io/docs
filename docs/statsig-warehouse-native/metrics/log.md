@@ -1,6 +1,8 @@
 ---
 title: Log Metrics
 sidebar_label: Log
+keywords:
+  - owner:vm
 ---
 
 ## Summary

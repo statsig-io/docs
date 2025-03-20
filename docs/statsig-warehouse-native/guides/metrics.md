@@ -3,6 +3,8 @@ title: Metrics
 slug: /statsig-warehouse-native/guides/metrics
 sidebar_label: Metrics
 displayed_sidebar: cloud
+keywords:
+  - owner:vm
 ---
 
 # Deprecation Notice

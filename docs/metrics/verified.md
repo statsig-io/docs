@@ -2,6 +2,8 @@
 title: Verified Metrics
 sidebar_label: Verified Metrics
 slug: /metrics/verified
+keywords:
+  - owner:shubham
 ---
 
 Verified metrics are a way to identify metrics that are curated by your company and known to be trustworthy. When users set up experiments and search for metrics, they'll see a verified icon next to verified metrics.

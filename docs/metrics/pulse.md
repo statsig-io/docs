@@ -2,6 +2,8 @@
 title: Pulse Metrics
 sidebar_label: Pulse Metrics
 slug: /metrics/pulse
+keywords:
+  - owner:shubham
 ---
 
 # Pulse Metrics

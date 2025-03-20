@@ -2,6 +2,8 @@
 title: Adding Rules
 sidebar_label: Add rule
 slug: /feature-flags/add-rule
+keywords:
+  - owner:shubham
 ---
 ## Create a rule for a feature flag
 

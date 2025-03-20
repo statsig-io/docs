@@ -1,6 +1,8 @@
 ---
 sidebar_label: SSO with Okta
 title: Single Sign-On With Okta
+keywords:
+  - owner:shubham
 ---
 
 ## Requirements

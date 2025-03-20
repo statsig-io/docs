@@ -2,6 +2,8 @@
 title: User Accounting Metrics (DAU/WAU/etc.)
 sidebar_label: User Accounting Metrics
 slug: /metrics/user
+keywords:
+  - owner:shubham
 ---
 
 ## DAU (Daily Active User) Definition

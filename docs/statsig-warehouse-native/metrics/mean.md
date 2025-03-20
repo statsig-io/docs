@@ -1,6 +1,8 @@
 ---
 title: Mean Metrics
 sidebar_label: Mean
+keywords:
+  - owner:vm
 ---
 
 ## Summary

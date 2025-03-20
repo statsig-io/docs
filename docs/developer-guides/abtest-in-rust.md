@@ -3,6 +3,8 @@ title: How to run an AB Test in Rust
 sidebar_label: First AB Test in Rust
 slug: /developer-guides/abtest-in-rust
 displayed_sidebar: cloud
+keywords:
+  - owner:brock
 ---
 
 Running a simple A/B experiment in a web page with Rust and the Statsig SDK only takes a couple steps, including setting up your Rust environment, integrating with Statsig for A/B testing, and configuring the experiment via the Statsig console. See below a 5-minute guide:

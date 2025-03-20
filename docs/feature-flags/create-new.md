@@ -2,6 +2,8 @@
 title: Create a feature flag
 sidebar_label: Create
 slug: /feature-flags/create-new
+keywords:
+  - owner:shubham
 ---
 
 :::note

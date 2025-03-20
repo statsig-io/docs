@@ -2,6 +2,8 @@
 title: Autotune (Bandits)
 sidebar_label: Introduction
 slug: /bandit-introduction
+keywords:
+  - owner:vm
 ---
 
 Multi-Armed Bandits are solutions that automatically find the best variant among a group of candidates, balancing between "exploring" options and "exploiting" the best option by dynamically allocating traffic. On Statsig, Bandits are used to pick the best user experience to drive a target metric or action.

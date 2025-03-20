@@ -2,6 +2,8 @@
 title: Unit Count (Window) Metrics
 slug: /statsig-warehouse-native/metrics/unit-count-window
 sidebar_label: Unit Count (Window)
+keywords:
+  - owner:vm
 ---
 
 ## Summary

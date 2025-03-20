@@ -2,6 +2,8 @@
 title: Redshift Connection
 slug: /statsig-warehouse-native/connecting-your-warehouse/redshift
 sidebar_label: Redshift
+keywords:
+  - owner:vm
 ---
 
 ## Overview

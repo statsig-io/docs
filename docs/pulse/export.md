@@ -2,6 +2,8 @@
 title: Exporting Pulse Reports
 sidebar_label: Export
 slug: /pulse/export
+keywords:
+  - owner:vm
 ---
 
 ## How to Export Pulse Data - Cloud Projects

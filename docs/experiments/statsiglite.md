@@ -2,6 +2,8 @@
 title: Statsig Lite
 sidebar_label: Statsig Lite
 slug: /experimentation/statsig-lite
+keywords:
+  - owner:vm
 ---
 
 ## What it is

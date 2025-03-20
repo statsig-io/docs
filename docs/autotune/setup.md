@@ -2,6 +2,8 @@
 title: Get Started With Autotune
 sidebar_label: Getting Started
 slug: /autotune/setup
+keywords:
+  - owner:vm
 ---
 
 ## How to set up Autotune

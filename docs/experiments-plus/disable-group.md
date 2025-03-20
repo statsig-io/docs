@@ -2,6 +2,8 @@
 title: Disable a Group
 sidebar_label: Disable a Group
 slug: /experiments-plus/disable-group
+keywords:
+  - owner:vm
 ---
 
 ## Disabling a Group in an Experiment

@@ -1,6 +1,8 @@
 ---
 sidebar_label: Bootstrapping Your Experimentation Program
 title: Bootstrapping Your Experimentation Program
+keywords:
+  - owner:vm
 ---
 
 In this guide, we'll outline a straightforward and successful approach to starting an experimentation program using Statsig at your company. Best of all, you can get started completely free with Statsig’s free tier, which includes up to 5M events per month and no limit on the number of team members.

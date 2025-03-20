@@ -2,6 +2,8 @@
 title: Creating Metric Tags
 sidebar_label: Creating Metric Tags
 slug: /metrics/create-metric-tags
+keywords:
+  - owner:shubham
 ---
 
 # Tagging Metrics 

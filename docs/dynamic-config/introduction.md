@@ -2,6 +2,8 @@
 title: Dynamic Config
 sidebar_label: Overview
 slug: /dynamic-config
+keywords:
+  - owner:shubham
 ---
 
 ## What is a Dynamic Config?

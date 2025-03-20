@@ -2,6 +2,8 @@
 title: Configure Statsig Session Replay
 sidebar_label: Configure
 slug: /session-replay/configure
+keywords:
+  - owner:akin
 ---
 # Configuration and Limits
 

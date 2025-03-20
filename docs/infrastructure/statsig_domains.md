@@ -1,5 +1,7 @@
 ---
 title: Statsig Domains
+keywords:
+  - owner:eric
 ---
 
 Statsig uses the following domain names for its services. If you have a network policy set up inside your systems, you should allowlist

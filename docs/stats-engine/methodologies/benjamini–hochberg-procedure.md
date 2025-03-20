@@ -2,6 +2,8 @@
 title: Benjamini–Hochberg Procedure
 sidebar_label: Benjamini–Hochberg
 slug: /stats-engine/methodologies/benjamini–hochberg-procedure
+keywords:
+  - owner:vm
 ---
 
 ## What it is

@@ -1,6 +1,8 @@
 ---
 title:  Feature Gates Policy
 slug: /org-admin/gates_policy
+keywords:
+  - owner:mseger
 ---
 
 :::info

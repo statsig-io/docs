@@ -2,6 +2,8 @@
 title: Using a segment
 sidebar_label: Usage
 slug: /segments/implement
+keywords:
+  - owner:shubham
 ---
 
 You can use a segment to target a set of users in a feature gate or a dynamic config as follows:

@@ -2,6 +2,8 @@
 title: Warehouse Native Debugging Guide
 slug: /statsig-warehouse-native/guides/debugging
 sidebar_label: Debugging
+keywords:
+  - owner:vm
 ---
 
 ## Debugging

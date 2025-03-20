@@ -2,6 +2,8 @@
 title: One-Sided Test
 sidebar_label: One-Sided Tests
 slug: /stats-engine/methodologies/one-sided-test
+keywords:
+  - owner:vm
 ---
 
 ## One-Sided Tests (aka One-Tailed Test)
