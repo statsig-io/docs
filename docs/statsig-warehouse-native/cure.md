@@ -3,17 +3,21 @@ title: CURE
 sidebar_label: CURE (CUPED)
 slug: /experiments-plus/cure
 keywords:
-  - owner:vm
+  - owner:craig
 ---
 
 # CURE
 
 CURE (variance Control Using Regression Estimates) is Statsig's extension of [CUPED](../stats-engine/methodologies/cuped), a technique which uses pre-experiment data for each experimental unit to control some of the data observed in an online experiment. CUPED can reduce variance moderately to significantly, and can correct for some amount of pre-existing differences between experiment groups at the time of the experiment.
 
-CUPED is a powerful technique that provides additional statistical power for "free". However, it has one major limitation: it relies on using pre-experiment data for a given metric to reduce the same metric's variance. This means that:
+CUPED is a powerful technique that provides additional statistical power without needing additional users or time to run an experiment. However, it has one major limitation: it relies on using pre-experiment data for a given metric to reduce the same metric's variance. This means that:
 
-- new user experiments cannot leverage the technique
-- metrics which are not autocorrelated do not see significant variance reduction
+- New user experiments cannot leverage the technique
+- Metrics which are not autocorrelated do not see significant variance reduction
+
+## What is CUPED?
+
+Please refer to our documentation [here](../stats-engine/methodologies/cuped), or our longer-form explanation
 
 ## How CURE Improves CUPED
 
@@ -25,7 +29,7 @@ This can reduce experiment runtimes far more than CUPED in isolation, and when c
 
 This technique is similar to standard regression estimate used across other experimentation tools, but stands out in several ways:
 
-- CURE is applied on all major experimental surfaces that Statsig offers; instead of showing mismatching results between scorecards and explore queries due to incomplete variance reduction implementations, Statsig offers CURE across experiment scorecards, drill-down explore queries, filtered queries, and even power analysis
+- CURE is applied on all major experimental surfaces that Statsig offers; this solves a common pain point of of results not matching between scorecards and explore queries due to incomplete CUPED implementations. Statsig offers CURE across experiment scorecards, drill-down explore queries, filtered queries, and even power analysis
 - Multivariate regressions allow you to experiment with reduced variance on new users or users without pre-experiment data
 - CURE manages feature selection, preventing observed overfitting issues seen in similar multivariate approaches, and making the regression adjustments significantly more transparent and less of a vendor black-box
 
@@ -61,6 +65,10 @@ CURE can be managed in two places:
 # Datasets
 
 Statsig will surface information on CURE in experiment diagnostics, giving details on coefficients used and relevant covariate for any given metric. You can also see the adjustments used under the Regression Adjustment job, and check the coefficients table to run your own analysis on the regression model.
+
+#Outputs
+
+You can view the DAG history to see the exact coefficients used and the table they are stored within. Additionally, Statsig will render an explanation in-console of which variables contributed to reducing variance, and how much variance was reduce -- which has been helpful for users deciding which features to use.
 
 # Notes
 
