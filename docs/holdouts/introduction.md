@@ -6,7 +6,7 @@ keywords:
   - owner:vm
 ---
 
-Holdouts measure the aggregate impact of multiple features. A "holdout" is a group of users that are held back from a set of features to measure the aggregate impact of this feature set. While each A/B test or experiment you run compares control and test groups for that feature, a holdout compares a ‘global’ control group with users who have been exposed to a subset of the features. 
+Holdouts measure the aggregate impact of multiple features. It involves a "holdout" group of users that are held back from a set of features for measurement. While each A/B test or experiment you run compares control and test groups for that feature, a holdout compares the "holdout" group (Control) against users who have been exposed to multiple features and experiments. 
 
 ## How to use Holdouts
 1.	To create a new holdout, navigate to the Holdouts section on the Statsig console (it is a specialized kind of experiment): https://console.statsig.com/holdouts
@@ -20,13 +20,15 @@ Holdouts measure the aggregate impact of multiple features. A "holdout" is a gro
 
 
 ## How to read Holdouts
-Holdouts on Statsig use the [same "equal variant" methodology](https://docs.statsig.com/feature-flags/view-exposures#gate-exposures) as Feature Gate and Experiment rollouts, whereby metric lifts are computed by equal sized groups to calculate holdout lift. You can read more about the advantages of this methodology in "A/B Testing Intuition Busters: Common Misunderstandings in Online Controlled Experiments” by Ron Kohavi, Alex Deng, & Lukas Vermeer.
+Holdouts on Statsig use the [same "equal variant" methodology](https://docs.statsig.com/feature-flags/view-exposures#gate-exposures) as Feature Gate rollouts, whereby metric lifts are computed by equal sized groups to calculate holdout lift. You can read more about the advantages of this methodology in "A/B Testing Intuition Busters: Common Misunderstandings in Online Controlled Experiments” by Ron Kohavi, Alex Deng, & Lukas Vermeer.
 
 Accordingly, the Cumulative Exposures panel for a given Holdout shows total exposures of the Holdout, broken down into three groups-
 
-- Units that were included in the Holdout, and were used for analysis
+- (1) Units that were included in the Holdout, and were used for analysis
 - Units that were not included in the Holdout, and were used for analysis vs. the holdout group 
-- Units that were not included in the Holdout, and were **not** used for analysis vs. the holdout group 
+- Units that were not included in the Holdout, and were **not** used for analysis
+
+For users not in the Holdout, we generate two groups (used for analysis and not used for analysis).  This is a randomly chosen group that is meant to balance the comparison.
 
 Holdout metric lifts represent the cumulative impact of launched and active experiments on the Holdout group vs. the same % of the rest of the population who were subject to the included rollouts and experiments.  
 
