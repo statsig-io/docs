@@ -2,7 +2,7 @@
 title:  Experiment Policy
 slug: /org-admin/experiment_policy
 keywords:
-  - owner:vm
+  - owner:mseger
 ---
 
 :::info

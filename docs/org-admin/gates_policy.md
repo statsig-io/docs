@@ -2,7 +2,7 @@
 title:  Feature Gates Policy
 slug: /org-admin/gates_policy
 keywords:
-  - owner:shubham
+  - owner:mseger
 ---
 
 :::info
