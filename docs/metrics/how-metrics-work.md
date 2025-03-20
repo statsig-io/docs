@@ -2,6 +2,8 @@
 title: How Metrics Work on Statsig
 sidebar_label: How Metrics Work
 slug: /metrics/how-metrics-work
+keywords:
+  - owner:shubham
 ---
 
 # How Metrics Work on Statsig

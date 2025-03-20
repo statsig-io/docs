@@ -2,6 +2,8 @@
 title: Custom "Explore" Queries
 sidebar_label: Custom "Explore" Queries
 slug: /pulse/custom-queries
+keywords:
+  - owner:vm
 ---
 [balanced gates methodology](/feature-flags/view-exposures#gate-exposures)
 ## Custom "Explore" Queries

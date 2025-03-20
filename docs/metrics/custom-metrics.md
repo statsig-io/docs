@@ -2,6 +2,8 @@
 title: Custom Metrics
 sidebar_label: Custom Metrics
 slug: /metrics/custom-metrics
+keywords:
+  - owner:shubham
 ---
 
 # Custom Metrics

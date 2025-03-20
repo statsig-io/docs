@@ -1,6 +1,8 @@
 ---
 sidebar_label: Organizations
 title: Organization Settings & Administration
+keywords:
+  - owner:shubham
 ---
 
 :::info

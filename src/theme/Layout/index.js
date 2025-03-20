@@ -2,17 +2,16 @@ import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Layout from '@theme-original/Layout';
 import FloatingThumbs from '../../components/FloatingThumbs/FloatingThumbs';
+import { useDoc } from '@docusaurus/theme-common/internal';
 
 
 export default function CustomLayout(props) {
   const location = useLocation();
   const [pageViews, setPageViews] = useState(null);
   
-  // Check for development environment using both methods
   const isNodeEnvDevelopment = process.env.NODE_ENV === 'development';
   const [isLocalHost, setIsLocalHost] = useState(false);
   
-  // Check localhost in useEffect since window isn't available during server rendering
   useEffect(() => {
     setIsLocalHost(
       window.location.hostname === 'localhost' || 
@@ -20,26 +19,17 @@ export default function CustomLayout(props) {
     );
   }, []);
   
-  // Consider it development if either condition is true
   const isDevelopment = isNodeEnvDevelopment && isLocalHost;
 
   useEffect(() => {
-    console.log('Page loaded!');
-    console.log('NODE_ENV development?', isNodeEnvDevelopment);
-    console.log('Is localhost?', isLocalHost);
-    console.log('Is development?', isDevelopment);
 
-    // Only fetch page views in development mode
     if (isDevelopment) {
-      // Fetch and parse the CSV file
       fetch('/page_views.csv')
         .then(response => response.text())
         .then(csvContent => {
-          // Parse CSV content
           const lines = csvContent.split('\n');
           const viewsData = {};
           
-          // Skip header row and parse each line
           for (let i = 1; i < lines.length; i++) {
             const line = lines[i].trim();
             if (line) {
@@ -48,9 +38,7 @@ export default function CustomLayout(props) {
             }
           }
           
-          // Format current URL to match CSV format
           let currentUrl = 'docs.statsig.com' + location.pathname;
-          // Remove trailing slash if it exists (except for homepage)
           if (currentUrl !== 'docs.statsig.com/' && currentUrl.endsWith('/')) {
             currentUrl = currentUrl.slice(0, -1);
           }

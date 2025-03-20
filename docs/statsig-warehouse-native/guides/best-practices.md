@@ -3,6 +3,8 @@ title: Data Best Practices
 slug: /statsig-warehouse-native/guides/best-practices
 sidebar_label: Best Practices
 description: Best Practices for using Statsig in your warehouse
+keywords:
+  - owner:vm
 ---
 
 ## Cost Management

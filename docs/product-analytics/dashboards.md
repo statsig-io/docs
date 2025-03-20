@@ -4,6 +4,8 @@ tags:
 - Statsig Cloud 
 sidebar_label: Dashboards
 slug: /product-analytics/dashboards
+keywords:
+  - owner:akin
 ---
 
 # Dashboards

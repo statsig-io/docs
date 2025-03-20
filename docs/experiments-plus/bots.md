@@ -2,6 +2,8 @@
 title: Bots
 sidebar_label: Bots
 slug: /feature-flags/bots
+keywords:
+  - owner:vm
 ---
 
 :::note

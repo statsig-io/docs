@@ -2,6 +2,8 @@
 title: Practical Use Cases
 slug: /statsig-warehouse-native/features/use-case
 sidebar_label: Practical Use Cases
+keywords:
+  - owner:vm
 ---
 
 ## How can I define and filter results to 'new users' only?

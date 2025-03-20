@@ -2,6 +2,8 @@
 title: Deprecating Event_dau Metric
 sidebar_label: Deprecating Event_dau
 slug: /metrics/deprecate-event-dau
+keywords:
+  - owner:shubham
 ---
 
 ### Deprecation Details

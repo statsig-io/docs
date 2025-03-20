@@ -1,6 +1,8 @@
 ---
 title: Retention Metrics
 sidebar_label: Retention
+keywords:
+  - owner:vm
 ---
 
 ## Summary

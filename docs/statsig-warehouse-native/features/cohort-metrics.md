@@ -4,6 +4,8 @@ slug: /statsig-warehouse-native/features/cohort-metrics
 sidebar_label: Cohort/Window Metrics
 description: Analyze Cohorts with Statsig
 displayed_sidebar: cloud
+keywords:
+  - owner:vm
 ---
 
 # Cohort Metrics

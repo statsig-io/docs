@@ -2,6 +2,8 @@
 title: Feature flags (feature gates) - what are they?
 sidebar_label: Overview
 slug: /feature-flags/working-with
+keywords:
+  - owner:shubham
 ---
 
 A feature flag is a mechanism for teams to configure what system behavior is visible to users without changing application code. You might also hear them called flippers, toggles, or (at Statsig), gates.

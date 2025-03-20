@@ -2,6 +2,8 @@
 title: CURE
 sidebar_label: CURE (CUPED)
 slug: /experiments-plus/cure
+keywords:
+  - owner:vm
 ---
 
 # CURE

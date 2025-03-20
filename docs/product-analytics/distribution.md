@@ -4,6 +4,8 @@ tags:
 - Statsig Cloud 
 sidebar_label: Distribution
 slug: /product-analytics/distribution
+keywords:
+  - owner:akin
 ---
 
 # Distribution Charts

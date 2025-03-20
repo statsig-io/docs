@@ -2,6 +2,8 @@
 title: Bonferroni Correction
 sidebar_label: Bonferroni Correction
 slug: /stats-engine/methodologies/bonferroni-correction
+keywords:
+  - owner:vm
 ---
 
 ## What is Bonferroni Correction?

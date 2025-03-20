@@ -2,6 +2,8 @@
 title: Alerts
 sidebar_label: Alerts
 slug: /product-analytics/alerts
+keywords:
+  - owner:shubham
 ---
 
 # Alerts 

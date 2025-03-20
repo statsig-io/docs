@@ -1,6 +1,8 @@
 ---
 title: Count Distinct Metrics
 sidebar_label: Count Distinct
+keywords:
+  - owner:vm
 ---
 
 ## Summary

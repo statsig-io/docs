@@ -1,5 +1,7 @@
 ---
 title: Slack
+keywords:
+  - owner:brock
 ---
 
 ## Overview

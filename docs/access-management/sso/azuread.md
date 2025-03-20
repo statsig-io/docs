@@ -1,6 +1,8 @@
 ---
 sidebar_label: SSO with Azure AD/O365
 title: Single Sign-On With Azure AD/Office 365
+keywords:
+  - owner:shubham
 ---
 ## Requirements
 

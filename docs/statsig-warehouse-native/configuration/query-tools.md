@@ -2,6 +2,8 @@
 title: Macros
 slug: /statsig-warehouse-native/configuration/query-tools
 sidebar_label: Macros
+keywords:
+  - owner:vm
 ---
 
 In **Metric** and **Assignment sources**, you can use Statsig Macros to directly inject a DATE() type which will be relative to the experiment period being loaded.

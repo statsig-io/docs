@@ -4,6 +4,8 @@ tags:
 - Statsig Cloud 
 sidebar_label: User Journeys
 slug: /product-analytics/user-journeys
+keywords:
+  - owner:akin
 ---
 
 # User Journeys

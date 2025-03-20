@@ -2,6 +2,8 @@
 title: Raw Events
 sidebar_label: Raw Events
 slug: /metrics/raw-events
+keywords:
+  - owner:brock
 ---
 
 # Raw Events

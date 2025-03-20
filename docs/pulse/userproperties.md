@@ -2,6 +2,8 @@
 title: Slicing by User Properties
 sidebar_label: User Properties
 slug: /pulse/user_properties
+keywords:
+  - owner:vm
 ---
 
 Statsig let's you slice results by user properties. Common examples of doing this include breaking down results by user's home country, subscription status or engagement level. 

@@ -3,6 +3,8 @@ title: How to set up Feature Flags in iOS (Swift)
 sidebar_label: Feature Flags in iOS (Swift)
 slug: /developer-guides/feature-flags-in-swift
 displayed_sidebar: cloud
+keywords:
+  - owner:brock
 ---
 
 Integrating feature flags into an iOS application using the Statsig Swift SDK involves several steps, starting with creating a basic iOS "Hello World" application in Xcode. Following that, you'll integrate the Statsig SDK to manage feature flags. 

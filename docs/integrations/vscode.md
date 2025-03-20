@@ -1,5 +1,7 @@
 ---
 title: Visual Studio Code
+keywords:
+  - owner:brock
 ---
 
 ## Overview

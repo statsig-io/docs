@@ -2,6 +2,8 @@
 title: Precomputed Metrics
 sidebar_label: Precomputed Metrics
 slug: /metrics/precomputed-metrics
+keywords:
+  - owner:shubham
 ---
 
 ## Importing Precomputed Metrics

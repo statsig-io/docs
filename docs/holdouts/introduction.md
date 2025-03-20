@@ -2,6 +2,8 @@
 title: Holdouts
 sidebar_label: Holdouts
 slug: /holdouts
+keywords:
+  - owner:vm
 ---
 
 Holdouts measure the aggregate impact of multiple features. A "holdout" is a group of users that are held back from a set of features to measure the aggregate impact of this feature set. While each A/B test or experiment you run compares control and test groups for that feature, a holdout compares a ‘global’ control group with users who have been exposed to a subset of the features. 

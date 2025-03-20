@@ -2,6 +2,8 @@
 title: Filter Exposures
 slug: /statsig-warehouse-native/features/filtering-exposures
 sidebar_label: Filter Exposures
+keywords:
+  - owner:vm
 ---
 
 You can use Qualifying Events to filter exposures to units who did or did not trigger an event after being exposed. This is a powerful tool, especially for analysis-only experiments where the assignment tool may have over-exposed units (e.g. assigning units on page load when the intervention was only triggered when a button was clicked).

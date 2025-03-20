@@ -2,6 +2,8 @@
 title: Get Started with Autotune AI
 sidebar_label: Getting Started
 slug: /autotune/contextual/getting-started
+keywords:
+  - owner:vm
 ---
 
 Getting started with Autotune AI can be done very quickly.

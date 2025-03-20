@@ -2,6 +2,8 @@
 title: Custom DAU Metric Creation Guide
 sidebar_label: Custom DAU Metric Creation
 slug: /metrics/custom-dau
+keywords:
+  - owner:shubham
 ---
 
 # Custom DAU Metric Creation Guide

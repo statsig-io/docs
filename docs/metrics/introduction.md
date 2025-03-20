@@ -2,6 +2,8 @@
 title: Metrics
 sidebar_label: Introduction
 slug: /metrics
+keywords:
+  - owner:shubham
 ---
 
 # Metrics User Guide

@@ -1,6 +1,8 @@
 ---
 title: Max/Min Metrics
 sidebar_label: Max/Min
+keywords:
+  - owner:vm
 ---
 
 ## Summary

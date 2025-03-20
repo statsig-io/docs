@@ -3,6 +3,8 @@ title: Advanced ID Resolution
 slug: /statsig-warehouse-native/features/id-resolution
 sidebar_label: Advanced ID Resolution
 description: Map cross-platform IDs in experiment analysis and analyze anonymous user experiments
+keywords:
+  - owner:vm
 ---
 
 Statsig warehouse native natively supports resolving multiple IDs to one identified user, allowing you to easily expose an experiment on one identifier and analyze data coming from one to many mapped identities associated with that experimental unit.

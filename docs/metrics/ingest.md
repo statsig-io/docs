@@ -2,6 +2,8 @@
 title: Ingesting Metrics
 sidebar_label: Ingesting Metrics
 slug: /metrics/ingest
+keywords:
+  - owner:shubham
 ---
 ## Ingesting Precomputed [Metrics](/metrics)
 

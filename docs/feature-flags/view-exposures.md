@@ -2,6 +2,8 @@
 title: Exposures
 sidebar_label: Exposures
 slug: /feature-flags/view-exposures
+keywords:
+  - owner:shubham
 ---
 
 :::note

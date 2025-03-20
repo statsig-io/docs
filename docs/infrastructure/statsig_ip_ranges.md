@@ -1,5 +1,7 @@
 ---
 title: Statsig IP Ranges
+keywords:
+  - owner:eric
 ---
 
 Statsig reserves the following IP addresses and ranges for use by its services. If you have a network policy set up inside your systems, you should allowlist

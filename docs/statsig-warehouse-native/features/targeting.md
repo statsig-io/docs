@@ -2,6 +2,8 @@
 title: Targeting
 slug: /statsig-warehouse-native/features/targeting
 sidebar_label: Targeting
+keywords:
+  - owner:vm
 ---
 
 ## How to Target Experiments

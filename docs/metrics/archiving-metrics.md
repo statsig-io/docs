@@ -2,6 +2,8 @@
 title: Archiving and Deleting Metrics
 sidebar_label: Archiving and Deleting Metrics
 slug: /metrics/archiving-metrics
+keywords:
+  - owner:tim
 ---
 
 Statsig offers two ways to manage the end-of-life for your metrics. 

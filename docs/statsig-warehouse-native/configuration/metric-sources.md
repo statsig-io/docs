@@ -2,6 +2,8 @@
 title: Metric Sources
 slug: /statsig-warehouse-native/configuration/metric-sources
 sidebar_label: Metric Sources
+keywords:
+  - owner:vm
 ---
 
 Metric Sources are how you schematize your warehouse data for Statsig, and they serve as the input data for metrics.

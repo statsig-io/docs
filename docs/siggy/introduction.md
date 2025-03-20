@@ -2,6 +2,8 @@
 title: Statsig CLI ("Siggy")
 sidebar_label: Overview
 slug: /statsigcli
+keywords:
+  - owner:vijaye
 ---
 
 ## Overview

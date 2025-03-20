@@ -4,6 +4,8 @@ tags:
 - Statsig Cloud 
 sidebar_label: Funnels
 slug: /product-analytics/funnels
+keywords:
+  - owner:akin
 ---
 # Funnels
 
