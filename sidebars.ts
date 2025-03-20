@@ -549,6 +549,7 @@ const sidebars: SidebarsConfig = {
                     "autotune/multi-armed-bandit",
                   ],
                 },
+                "autotune/bandit-faq",
                 "autotune/using-bandits",
               ],
             },
