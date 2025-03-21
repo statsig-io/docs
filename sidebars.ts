@@ -574,17 +574,6 @@ const sidebars: SidebarsConfig = {
                 "pulse/faq",
               ],
             },
-            {
-              type: "category",
-              label: "Landing Page Experiments (deprecated)",
-              items: [
-                "guides/landing-page-experiments/introduction",
-                "guides/landing-page-experiments/setup",
-                "guides/landing-page-experiments/interpreting",
-                "guides/landing-page-experiments/layers",
-                "guides/landing-page-experiments/webflow",
-              ],
-            },
           ],
         },
         {
