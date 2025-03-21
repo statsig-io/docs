@@ -4,7 +4,8 @@ sidebar_label: Working with
 slug: /dynamic-config/working-with
 keywords:
   - owner:shubham
-last_update: 2025-03-06
+last_update:
+  date: 2025-03-06
 ---
 A dynamic config allows you to use configuration parameters to control the behavior of your application in near real-time. 
 

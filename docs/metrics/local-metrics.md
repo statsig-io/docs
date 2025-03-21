@@ -4,7 +4,8 @@ sidebar_label: Local Metrics
 slug: /metrics/local-metrics
 keywords:
   - owner:shubham
-last_update: 2024-11-07
+last_update:
+  date: 2024-11-07
 ---
 
 # Local Metrics

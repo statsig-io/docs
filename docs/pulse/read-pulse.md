@@ -4,7 +4,8 @@ sidebar_label: Read Results
 slug: /pulse/read-pulse
 keywords:
   - owner:vm
-last_update: 2024-11-01
+last_update:
+  date: 2024-11-01
 ---
 
 ## How to read Pulse

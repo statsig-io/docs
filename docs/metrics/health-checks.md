@@ -4,7 +4,8 @@ sidebar_label: Health
 slug: /metrics/health-checks
 keywords:
   - owner:shubham
-last_update: 2023-07-07
+last_update:
+  date: 2023-07-07
 ---
 
 ### Monitoring Data Health

@@ -4,7 +4,8 @@ sidebar_label: FAQ
 slug: /autotune/bandit-faq
 keywords:
   - owner:craig
-last_update: 2025-03-20
+last_update:
+  date: 2025-03-20
 ---
 
 ### When should I see data show up in a bandit?

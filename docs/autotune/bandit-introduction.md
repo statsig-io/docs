@@ -4,7 +4,8 @@ sidebar_label: Introduction
 slug: /bandit-introduction
 keywords:
   - owner:vm
-last_update: 2025-03-14
+last_update:
+  date: 2025-03-14
 ---
 
 Multi-Armed Bandits are solutions that automatically find the best variant among a group of candidates, balancing between "exploring" options and "exploiting" the best option by dynamically allocating traffic. On Statsig, Bandits are used to pick the best user experience to drive a target metric or action.

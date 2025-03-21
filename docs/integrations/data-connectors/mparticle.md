@@ -2,7 +2,8 @@
 title: mParticle
 keywords:
   - owner:brock
-last_update: 2022-02-23
+last_update:
+  date: 2022-02-23
 ---
 
 ## Overview

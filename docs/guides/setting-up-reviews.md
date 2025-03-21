@@ -3,7 +3,8 @@ sidebar_label: Setting up Reviews
 title: Setting up Reviews for Team Workflows  
 keywords:
   - owner:shubham
-last_update: 2025-02-07
+last_update:
+  date: 2025-02-07
 ---
 
 You can enable reviews for all Statsig resources such as feature gates, dynamic configs, segments, and experiments that you'll likely deploy to a production environment. 

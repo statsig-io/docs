@@ -5,7 +5,8 @@ slug: /developer-guides/abtest-in-javascript
 displayed_sidebar: cloud
 keywords:
   - owner:brock
-last_update: 2024-12-13
+last_update:
+  date: 2024-12-13
 ---
 
 To run a simple A/B test on a webpage using JavaScript and the Statsig SDK, focusing on showing text with a blue or red background based on the variant assigned, follow these steps. This guide includes creating a basic "Hello World" web application, integrating Statsig for A/B testing, and using the `get` method to determine the variant.

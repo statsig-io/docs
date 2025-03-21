@@ -3,7 +3,8 @@ title: Imports Overview (Deprecated)
 slug: overview
 keywords:
   - owner:tim
-last_update: 2022-09-07
+last_update:
+  date: 2022-09-07
 ---
 
 **Note: this solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out the [Data Warehouse Ingestion](../../data-warehouse-ingestion/introduction.md) solution instead.**

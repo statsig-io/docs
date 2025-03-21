@@ -3,7 +3,8 @@ sidebar_label: Choosing Flags or Experiments
 title: When to use Feature Flags vs. Experiments?
 keywords:
   - owner:vm
-last_update: 2024-10-02
+last_update:
+  date: 2024-10-02
 ---
 
 With Statsig, you can create control and test groups and compare them using A/B testing via either **feature gates** or **experiments**. This guide helps clarify when to use a feature gate versus an experiment, depending on your needs.

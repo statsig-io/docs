@@ -4,7 +4,8 @@ slug: /statsig-warehouse-native/guides/sdks
 sidebar_label: Working With the SDK
 keywords:
   - owner:vm
-last_update: 2024-06-12
+last_update:
+  date: 2024-06-12
 ---
 
 Warehouse Native Works with any of Statsig's SDKs for logging events and getting feature flags or experiment assignments.

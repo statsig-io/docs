@@ -3,7 +3,8 @@ sidebar_label: Organizations
 title: Organization Settings & Administration
 keywords:
   - owner:mseger
-last_update: 2025-03-20
+last_update:
+  date: 2025-03-20
 ---
 
 :::info

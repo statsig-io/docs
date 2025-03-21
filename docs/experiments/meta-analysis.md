@@ -4,7 +4,8 @@ sidebar_label: Meta-Analysis
 slug: /experimentation/meta-analysis
 keywords:
   - owner:vm
-last_update: 2025-03-17
+last_update:
+  date: 2025-03-17
 ---
 
 ## The Concept

@@ -4,7 +4,8 @@ sidebar_label: Implement
 slug: /experiments-plus/implement
 keywords:
   - owner:vm
-last_update: 2024-10-31
+last_update:
+  date: 2024-10-31
 ---
 
 To deploy your experiment, you'll need to:

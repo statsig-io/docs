@@ -3,7 +3,8 @@ sidebar_label: Discussions
 title: Discussions in Statsig
 keywords:
   - owner:mseger
-last_update: 2024-09-25
+last_update:
+  date: 2024-09-25
 ---
 
 ## Discussions

@@ -4,7 +4,8 @@ slug: /statsig-warehouse-native/guides/dummy_evaluation
 sidebar_label: Playground Evaluation
 keywords:
   - owner:vm
-last_update: 2024-11-25
+last_update:
+  date: 2024-11-25
 ---
 
 :::info

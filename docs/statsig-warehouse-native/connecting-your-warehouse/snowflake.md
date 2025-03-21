@@ -4,7 +4,8 @@ slug: /statsig-warehouse-native/connecting-your-warehouse/snowflake
 sidebar_label: Snowflake
 keywords:
   - owner:vm
-last_update: 2024-12-13
+last_update:
+  date: 2024-12-13
 ---
 
 ## Overview

@@ -5,7 +5,8 @@ sidebar_label: Data Sources
 description: Inputs to experimental analysis
 keywords:
   - owner:vm
-last_update: 2024-06-12
+last_update:
+  date: 2024-06-12
 ---
 
 # Deprecated

@@ -10,7 +10,8 @@ DEBUG = True
 
 IGNORED_COMMITS = [
     'b9132ef396ac5b8f088d7ea6555e13549c5e85b5',
-    'a915fe6215b5844508ea920e2c02e6da460480f9'
+    'a915fe6215b5844508ea920e2c02e6da460480f9',
+    'bce6952c5227c51852bbb3b77df1bc3b38dd4972'
 ]
 
 
@@ -95,19 +96,49 @@ def update_frontmatter(filepath, last_update):
         print(f"File {filepath} does not have a closing frontmatter delimiter. Skipping update.", file=sys.stderr)
         return
 
-    # Look for an existing last_update line within the frontmatter
-    last_update_line_index = None
+    # Look for an existing last_update line or block within the frontmatter
+    last_update_start_index = None
+    last_update_end_index = None
+    in_last_update_block = False
+    
     for i in range(1, frontmatter_end):
-        if lines[i].strip().startswith('last_update:'):
-            last_update_line_index = i
+        line = lines[i].strip()
+        if line.startswith('last_update:'):
+            # Found the start of a last_update entry
+            last_update_start_index = i
+            
+            # Check if it's a simple key-value or the start of a block
+            if line == 'last_update:' or line.endswith(':'):
+                in_last_update_block = True
+                # Find the end of the block (next line with same or less indentation)
+                indent_level = len(lines[i]) - len(lines[i].lstrip())
+                for j in range(i + 1, frontmatter_end):
+                    if not lines[j].strip() or lines[j].strip().startswith('#'):
+                        continue  # Skip empty lines or comments
+                    if len(lines[j]) - len(lines[j].lstrip()) <= indent_level:
+                        last_update_end_index = j - 1
+                        break
+                if last_update_end_index is None:
+                    last_update_end_index = frontmatter_end - 1
+            else:
+                # It's a simple key-value, not a block
+                last_update_end_index = i
             break
 
-    new_line = f"last_update: {last_update}\n"
-    if last_update_line_index is not None:
-        lines[last_update_line_index] = new_line
+    # Format the new last_update block
+    new_last_update_lines = [
+        "last_update:\n",
+        f"  date: {last_update}\n"
+    ]
+
+    if last_update_start_index is not None:
+        # Replace existing last_update entry
+        lines[last_update_start_index:last_update_end_index + 1] = new_last_update_lines
     else:
         # Insert before the closing '---'
-        lines.insert(frontmatter_end, new_line)
+        lines.insert(frontmatter_end, "\n")  # Add a blank line for readability
+        for line in reversed(new_last_update_lines):
+            lines.insert(frontmatter_end, line)
 
     try:
         with open(filepath, 'w', encoding='utf-8') as f:

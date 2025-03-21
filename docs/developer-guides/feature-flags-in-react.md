@@ -5,7 +5,8 @@ slug: /developer-guides/feature-flags-in-react
 displayed_sidebar: cloud
 keywords:
   - owner:brock
-last_update: 2024-10-07
+last_update:
+  date: 2024-10-07
 ---
 
 Integrating feature flags into a React web application using the Statsig React SDK involves a few key steps. First, you'll start by setting up a basic React application. Then, you'll integrate Statsig to manage feature flags.

@@ -4,7 +4,8 @@ slug: /statsig-warehouse-native/guides/checklist
 sidebar_label: Setup Checklist
 keywords:
   - owner:vm
-last_update: 2024-10-02
+last_update:
+  date: 2024-10-02
 ---
 
 After you've connected your warehouse and set up both metrics and assignment sources, you can ensure your setup is complete and correct by checking the following items:

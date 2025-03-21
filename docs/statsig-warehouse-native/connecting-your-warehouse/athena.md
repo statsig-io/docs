@@ -4,7 +4,8 @@ slug: /statsig-warehouse-native/connecting-your-warehouse/athena
 sidebar_label: Athena (β)
 keywords:
   - owner:vm
-last_update: 2025-01-15
+last_update:
+  date: 2025-01-15
 ---
 
 :::info

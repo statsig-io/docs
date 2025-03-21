@@ -4,7 +4,8 @@ sidebar_label: Overview
 slug: /dynamic-config
 keywords:
   - owner:shubham
-last_update: 2025-03-12
+last_update:
+  date: 2025-03-12
 ---
 
 ## What is a Dynamic Config?

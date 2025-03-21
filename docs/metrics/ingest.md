@@ -4,7 +4,8 @@ sidebar_label: Ingesting Metrics
 slug: /metrics/ingest
 keywords:
   - owner:shubham
-last_update: 2024-10-05
+last_update:
+  date: 2024-10-05
 ---
 ## Ingesting Precomputed [Metrics](/metrics)
 

@@ -6,7 +6,8 @@ sidebar_label: Distribution
 slug: /product-analytics/distribution
 keywords:
   - owner:akin
-last_update: 2025-03-11
+last_update:
+  date: 2025-03-11
 ---
 
 # Distribution Charts

@@ -4,7 +4,8 @@ sidebar_label: Introduction
 slug: /autotune/contextual/introduction
 keywords:
   - owner:vm
-last_update: 2025-03-14
+last_update:
+  date: 2025-03-14
 ---
 
 Contextual Multi-Armed Bandits are a subset of Multi-Armed-Bandits which use context about a user to personalize their experience. This is generally achieved by predicting outcomes from among the variants, and picking the best outcome while factoring for uncertainty. Specifically, they will tend to prefer a slightly worse prediction that has a lot of uncertainty, thereby exploring that variant.

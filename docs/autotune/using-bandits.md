@@ -4,7 +4,8 @@ sidebar_label: Advanced Usage
 slug: /using-bandits
 keywords:
   - owner:vm
-last_update: 2025-03-14
+last_update:
+  date: 2025-03-14
 ---
 
 Both contextual and non-contextual bandits are managed on Statsig's console, or through Statsig's [console API](../console-api/autotunes.mdx) for programmatic creation. Both bandit types use a common, streamlined API, making it easy to explore either use case without significant changes from using experiments.

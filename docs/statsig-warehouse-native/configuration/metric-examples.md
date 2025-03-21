@@ -4,7 +4,8 @@ slug: /statsig-warehouse-native/configuration/metric-examples
 sidebar_label: Metric Examples
 keywords:
   - owner:craig
-last_update: 2025-03-20
+last_update:
+  date: 2025-03-20
 ---
 
 For customers transitioning from other Warehouse Native Vendors, the format of metrics should be similar and generally customers have been able to use APIs to fetch remote configurations, translate them, and post them to Statsig without issue.

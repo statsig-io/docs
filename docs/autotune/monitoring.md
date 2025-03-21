@@ -4,7 +4,8 @@ sidebar_label: Monitoring
 slug: /autotune/monitoring
 keywords:
   - owner:vm
-last_update: 2022-01-18
+last_update:
+  date: 2022-01-18
 ---
 
 ## How to monitor your Autotune Test

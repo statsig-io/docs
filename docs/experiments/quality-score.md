@@ -4,7 +4,8 @@ sidebar_label: Quality Score
 slug: /experimentation/quality-score
 keywords:
   - owner:vm
-last_update: 2025-02-14
+last_update:
+  date: 2025-02-14
 ---
 
 ## The Concept

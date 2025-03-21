@@ -3,7 +3,8 @@ title: Unit Count (One-Time Event) Metrics
 sidebar_label: Unit Count (One-Time Event)
 keywords:
   - owner:vm
-last_update: 2024-06-12
+last_update:
+  date: 2024-06-12
 ---
 
 ## Summary

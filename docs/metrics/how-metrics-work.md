@@ -4,7 +4,8 @@ sidebar_label: How Metrics Work
 slug: /metrics/how-metrics-work
 keywords:
   - owner:shubham
-last_update: 2024-10-31
+last_update:
+  date: 2024-10-31
 ---
 
 # How Metrics Work on Statsig

@@ -4,7 +4,8 @@ sidebar_label: Custom DAU Metric Creation
 slug: /metrics/custom-dau
 keywords:
   - owner:shubham
-last_update: 2024-10-01
+last_update:
+  date: 2024-10-01
 ---
 
 # Custom DAU Metric Creation Guide

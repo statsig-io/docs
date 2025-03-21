@@ -4,7 +4,8 @@ slug: /statsig-warehouse-native/guides/connect
 sidebar_label: Overview
 keywords:
   - owner:vm
-last_update: 2024-10-04
+last_update:
+  date: 2024-10-04
 ---
 
 To run analysis on your warehouse, Statsig needs to connect to your warehouse via a service user. You control the access this user gets to your warehouse. In general, Statsig will require:

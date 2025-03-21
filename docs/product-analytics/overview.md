@@ -6,7 +6,8 @@ sidebar_label: Overview
 slug: /product-analytics/overview
 keywords:
   - owner:akin
-last_update: 2025-01-17
+last_update:
+  date: 2025-01-17
 ---
 
 # Product Analytics Overview

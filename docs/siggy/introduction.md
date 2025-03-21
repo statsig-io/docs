@@ -4,7 +4,8 @@ sidebar_label: Overview
 slug: /statsigcli
 keywords:
   - owner:vijaye
-last_update: 2024-10-04
+last_update:
+  date: 2024-10-04
 ---
 
 ## Overview

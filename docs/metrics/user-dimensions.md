@@ -4,7 +4,8 @@ sidebar_label: User Property
 slug: /metrics/user-property
 keywords:
   - owner:shubham
-last_update: 2023-12-15
+last_update:
+  date: 2023-12-15
 ---
 
 It is  helpful to be able to break down Pulse results by user properties like Free vs Paid, or OS type. Setting User Property lets you slice data by properties like this. 

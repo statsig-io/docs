@@ -3,7 +3,8 @@ sidebar_label: Custom ID Types
 title: Experiment on custom Unit ID types
 keywords:
   - owner:vm
-last_update: 2024-10-02
+last_update:
+  date: 2024-10-02
 ---
 
 In certain cases, you may want to randomize experiment bucketing using a custom Unit ID instead of the default `userID` or Statsig-generated Stable ID. For instance, if you're running a task management tool for companies and want to experiment on company-wide behaviors, you might use `companyID` as the Unit ID. This ensures all users from the same company get the same experience, allowing you to measure overall productivity impacts at a company level.

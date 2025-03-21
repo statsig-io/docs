@@ -4,7 +4,8 @@ sidebar_label: Create
 slug: /feature-flags/create-new
 keywords:
   - owner:shubham
-last_update: 2025-02-06
+last_update:
+  date: 2025-02-06
 ---
 
 :::note

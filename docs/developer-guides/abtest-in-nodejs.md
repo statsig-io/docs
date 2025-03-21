@@ -5,7 +5,8 @@ slug: /developer-guides/abtest-in-nodejs
 displayed_sidebar: cloud
 keywords:
   - owner:brock
-last_update: 2024-09-25
+last_update:
+  date: 2024-09-25
 ---
 
 To run a simple A/B experiment in a webpage with Node.js using the Statsig SDK, you'll go through a few essential steps. This will involve setting up a simple Node.js server, integrating with the Statsig SDK for A/B testing, and configuring your experiment in the Statsig console.

@@ -3,7 +3,8 @@ title: Retention Metrics
 sidebar_label: Retention
 keywords:
   - owner:vm
-last_update: 2025-01-22
+last_update:
+  date: 2025-01-22
 ---
 
 ## Summary

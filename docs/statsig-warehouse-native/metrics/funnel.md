@@ -3,7 +3,8 @@ title: Funnel++
 sidebar_label: Funnel++
 keywords:
   - owner:vm
-last_update: 2025-03-18
+last_update:
+  date: 2025-03-18
 ---
 
 :::info

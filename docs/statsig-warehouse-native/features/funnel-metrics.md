@@ -6,7 +6,8 @@ description: Use funnel metrics to understand user journeys
 displayed_sidebar: cloud
 keywords:
   - owner:vm
-last_update: 2024-08-05
+last_update:
+  date: 2024-08-05
 ---
 
 Funnel metrics are highly customizable Statsig Warehouse Native. You can easily set up a user journey and understand how your changes influence each step - at the user level, or at the session level.

@@ -4,7 +4,8 @@ sidebar_label: Methodology
 slug: /multi-armed-bandit
 keywords:
   - owner:vm
-last_update: 2025-03-14
+last_update:
+  date: 2025-03-14
 ---
 
 ## Model

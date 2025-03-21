@@ -4,7 +4,8 @@ sidebar_label: Stop Assignments
 slug: /experiments-plus/stop-assignments
 keywords:
   - owner:vm
-last_update: 2024-12-04
+last_update:
+  date: 2024-12-04
 ---
 
 

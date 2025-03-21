@@ -5,7 +5,8 @@ sidebar_label: Best Practices
 description: Best Practices for using Statsig in your warehouse
 keywords:
   - owner:vm
-last_update: 2024-11-12
+last_update:
+  date: 2024-11-12
 ---
 
 ## Cost Management

@@ -4,7 +4,8 @@ sidebar_label: Pulse Metrics
 slug: /metrics/pulse
 keywords:
   - owner:shubham
-last_update: 2024-10-25
+last_update:
+  date: 2024-10-25
 ---
 
 # Pulse Metrics

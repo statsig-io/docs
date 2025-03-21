@@ -2,7 +2,8 @@
 title: Event Filtering
 keywords:
   - owner:brock
-last_update: 2022-05-31
+last_update:
+  date: 2022-05-31
 ---
 
 Once you've enabled an integration, you can select specific events that you want to send and/or receive by clicking on the **Event Filtering** button.

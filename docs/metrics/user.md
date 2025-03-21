@@ -4,7 +4,8 @@ sidebar_label: User Accounting Metrics
 slug: /metrics/user
 keywords:
   - owner:shubham
-last_update: 2025-01-29
+last_update:
+  date: 2025-01-29
 ---
 
 ## DAU (Daily Active User) Definition

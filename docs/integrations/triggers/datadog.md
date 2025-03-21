@@ -2,7 +2,8 @@
 title: Datadog
 keywords:
   - owner:brock
-last_update: 2024-07-09
+last_update:
+  date: 2024-07-09
 ---
 
 ### Overview

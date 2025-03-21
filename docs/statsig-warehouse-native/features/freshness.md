@@ -6,7 +6,8 @@ description: Data Freshness
 displayed_sidebar: cloud
 keywords:
   - owner:vm
-last_update: 2024-08-05
+last_update:
+  date: 2024-08-05
 ---
 
 ## Exposures from Statsig SDKs

@@ -2,7 +2,8 @@
 title: Census
 keywords:
   - owner:brock
-last_update: 2023-09-22
+last_update:
+  date: 2023-09-22
 ---
 
 ## Overview

@@ -4,7 +4,8 @@ sidebar_label: Creating Custom Metrics
 slug: /metrics/create
 keywords:
   - owner:shubham
-last_update: 2025-01-07
+last_update:
+  date: 2025-01-07
 ---
 
 Custom metrics are computed by Statsig from your raw events. To create custom metrics, navigate to **Metrics** from the left-hand navigation panel, then to the **Metrics Catalog** tab. Tap on the **Create** button.
