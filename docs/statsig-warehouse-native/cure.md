@@ -68,7 +68,7 @@ Statsig will surface information on CURE in experiment diagnostics, giving detai
 
 # Outputs
 
-You can view the DAG history to see the exact coefficients used and the table they are stored within. Additionally, Statsig will render an explanation in-console of which variables contributed to reducing variance, and how much variance was reduce -- which has been helpful for users deciding which features to use.
+ You can view the DAG history to see the exact coefficients used and the table they are stored within. Additionally, Statsig will render an explanation in-console of which variables contributed to reducing variance, and how much variance was reduced -- which has been helpful for users deciding which features to use.
 
 # Notes
 
