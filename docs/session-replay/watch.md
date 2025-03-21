@@ -4,6 +4,8 @@ sidebar_label: Watch
 slug: /session-replay/watch
 keywords:
   - owner:akin
+last_update:
+  date: 2024-04-22
 ---
 # Watch Replays
 

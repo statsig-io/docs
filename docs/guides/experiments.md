@@ -3,6 +3,8 @@ sidebar_label: Experiment Types
 title: Experiment Types on Statsig
 keywords:
   - owner:vm
+last_update:
+  date: 2024-10-02
 ---
 
 This guide provides a quick overview of  experiment types we've seen people run on Statsig. 

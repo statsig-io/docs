@@ -4,6 +4,8 @@ sidebar_label: Quick Start
 slug: /statsig-warehouse-native/guides/quick-start
 keywords:
   - owner:vm
+last_update:
+  date: 2024-07-11
 ---
 
 You can get experiment results in record time with Statsig Warehouse native. This page walks you through connecting your data, configuring a metric, and getting experiment results.

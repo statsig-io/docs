@@ -4,6 +4,8 @@ sidebar_label: Introduction
 slug: /stats-engine
 keywords:
   - owner:vm
+last_update:
+  date: 2024-10-02
 ---
 
 ## Statsig Stats Engine

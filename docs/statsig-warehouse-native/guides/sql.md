@@ -4,6 +4,8 @@ slug: /statsig-warehouse-native/guides/sql
 sidebar_label: View SQL
 keywords:
   - owner:vm
+last_update:
+  date: 2024-10-02
 ---
 
 Statsig Warehouse Native runs SQL in your warehouse to generate the experiment results, and the queries are fully transparent and made visible in console. This means that you can trace any results you see on the Statsig console back to its calculation, artifacts, and raw events.

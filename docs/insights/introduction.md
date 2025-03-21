@@ -4,6 +4,8 @@ sidebar_label: Insights
 slug: /insights
 keywords:
   - owner:vm
+last_update:
+  date: 2025-02-27
 ---
 
 Insights shows the impact that active experiments and feature gates are having on a metric of interest.  This is a powerful tool for root causing unexpected changes in a metric.  

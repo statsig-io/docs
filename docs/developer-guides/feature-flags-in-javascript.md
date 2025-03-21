@@ -5,6 +5,8 @@ slug: /developer-guides/feature-flags-in-javascript
 displayed_sidebar: cloud
 keywords:
   - owner:brock
+last_update:
+  date: 2024-10-01
 ---
 
 To use feature flags in a web page with the Statsig JavaScript SDK, you'll start by creating a basic "Hello World" HTML page, then integrate Statsig to manage feature flags.

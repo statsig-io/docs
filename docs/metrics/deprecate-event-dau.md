@@ -4,6 +4,8 @@ sidebar_label: Deprecating Event_dau
 slug: /metrics/deprecate-event-dau
 keywords:
   - owner:shubham
+last_update:
+  date: 2024-10-03
 ---
 
 ### Deprecation Details

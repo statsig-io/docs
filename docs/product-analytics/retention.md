@@ -6,6 +6,8 @@ sidebar_label: Retention
 slug: /product-analytics/retention
 keywords:
   - owner:akin
+last_update:
+  date: 2025-03-11
 ---
 
 # Retention Chart

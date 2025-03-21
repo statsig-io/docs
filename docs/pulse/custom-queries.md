@@ -4,6 +4,8 @@ sidebar_label: Custom "Explore" Queries
 slug: /pulse/custom-queries
 keywords:
   - owner:vm
+last_update:
+  date: 2025-02-28
 ---
 [balanced gates methodology](/feature-flags/view-exposures#gate-exposures)
 ## Custom "Explore" Queries

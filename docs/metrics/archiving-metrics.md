@@ -4,6 +4,8 @@ sidebar_label: Archiving and Deleting Metrics
 slug: /metrics/archiving-metrics
 keywords:
   - owner:tim
+last_update:
+  date: 2023-07-20
 ---
 
 Statsig offers two ways to manage the end-of-life for your metrics. 

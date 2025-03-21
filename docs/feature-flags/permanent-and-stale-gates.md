@@ -4,6 +4,8 @@ sidebar_label: Permanent and Stale Gates
 slug: /feature-flags/permanent-and-stale-gates
 keywords:
   - owner:shubham
+last_update:
+  date: 2025-01-31
 ---
 
 :::note

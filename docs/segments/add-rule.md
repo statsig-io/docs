@@ -4,6 +4,8 @@ sidebar_label: Add rule
 slug: /segments/add-rule
 keywords:
   - owner:shubham
+last_update:
+  date: 2021-08-16
 ---
 ## Create a rule for a segment
 

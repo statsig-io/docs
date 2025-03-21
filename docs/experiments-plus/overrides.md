@@ -4,6 +4,8 @@ sidebar_label: Overrides
 slug: /experiments-plus/overrides
 keywords:
   - owner:vm
+last_update:
+  date: 2025-03-10
 ---
 
 ## Override group allocation for an Experiment

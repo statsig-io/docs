@@ -4,6 +4,8 @@ sidebar_label: Bots
 slug: /feature-flags/bots
 keywords:
   - owner:vm
+last_update:
+  date: 2025-02-11
 ---
 
 :::note

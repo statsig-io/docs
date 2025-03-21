@@ -4,6 +4,8 @@ sidebar_label: Variance Reduction
 slug: /stats-engine/variance_reduction
 keywords:
   - owner:vm
+last_update:
+  date: 2025-02-13
 ---
 
 ## Variance Reduction

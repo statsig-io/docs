@@ -6,6 +6,8 @@ sidebar_label: Dashboards
 slug: /product-analytics/dashboards
 keywords:
   - owner:akin
+last_update:
+  date: 2024-12-12
 ---
 
 # Dashboards

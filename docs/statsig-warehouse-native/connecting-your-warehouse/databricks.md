@@ -4,6 +4,8 @@ slug: /statsig-warehouse-native/connecting-your-warehouse/databricks
 sidebar_label: Databricks
 keywords:
   - owner:vm
+last_update:
+  date: 2024-10-08
 ---
 
 ## Overview

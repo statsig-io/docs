@@ -3,6 +3,8 @@ title: Custom Proxy for Statsig API
 slug: /custom_proxy
 keywords:
   - owner:eric
+last_update:
+  date: 2024-11-21
 ---
 
 ## Overview

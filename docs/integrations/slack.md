@@ -2,6 +2,8 @@
 title: Slack
 keywords:
   - owner:brock
+last_update:
+  date: 2024-10-02
 ---
 
 ## Overview

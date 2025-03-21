@@ -2,6 +2,8 @@
 title: Visual Studio Code
 keywords:
   - owner:brock
+last_update:
+  date: 2023-01-18
 ---
 
 ## Overview

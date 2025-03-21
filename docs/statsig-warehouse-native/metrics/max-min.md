@@ -3,6 +3,8 @@ title: Max/Min Metrics
 sidebar_label: Max/Min
 keywords:
   - owner:vm
+last_update:
+  date: 2025-02-27
 ---
 
 ## Summary

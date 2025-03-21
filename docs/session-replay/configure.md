@@ -4,6 +4,8 @@ sidebar_label: Configure
 slug: /session-replay/configure
 keywords:
   - owner:akin
+last_update:
+  date: 2025-02-05
 ---
 # Configuration and Limits
 

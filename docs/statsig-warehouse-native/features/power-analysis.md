@@ -5,6 +5,8 @@ sidebar_label: Power Analysis
 description: Determine your experiment duration with confidence
 keywords:
   - owner:vm
+last_update:
+  date: 2024-10-25
 ---
 
 In general it is a good practice to establish a run-time for an experiment

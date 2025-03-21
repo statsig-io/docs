@@ -6,6 +6,8 @@ sidebar_label: Funnels
 slug: /product-analytics/funnels
 keywords:
   - owner:akin
+last_update:
+  date: 2025-03-10
 ---
 # Funnels
 

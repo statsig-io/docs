@@ -4,6 +4,8 @@ slug: /statsig-warehouse-native/features/reports
 sidebar_label: Reports
 keywords:
   - owner:vm
+last_update:
+  date: 2024-06-12
 ---
 
 ## Report Summary

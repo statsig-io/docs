@@ -6,6 +6,8 @@ description: Provide additional details about given entity
 displayed_sidebar: cloud
 keywords:
   - owner:vm
+last_update:
+  date: 2024-08-05
 ---
 
 # Entity Properties

@@ -4,6 +4,8 @@ sidebar_label: SRM Checks
 slug: /stats-engine/methodologies/srm-checks
 keywords:
   - owner:vm
+last_update:
+  date: 2024-04-17
 ---
 
 ## SRM - Sample Ratio Mismatch

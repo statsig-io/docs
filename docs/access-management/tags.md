@@ -3,6 +3,8 @@ sidebar_label: Tags
 title: Tags in Statsig
 keywords:
   - owner:mseger
+last_update:
+  date: 2024-09-25
 ---
 
 ## Tags for organization

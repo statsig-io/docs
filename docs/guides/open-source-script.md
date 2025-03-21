@@ -3,6 +3,8 @@ sidebar_label: Open Source Script
 title: Open-Source Script
 keywords:
   - owner:oliver
+last_update:
+  date: 2024-10-02
 ---
 [This script](https://github.com/statsig-io/launchDarkly_migration_script_template) is designed to help automate some of the migration of feature flags from LaunchDarkly to Statsig. It fetches feature flags from LaunchDarkly, translates them into Statsig's format, and creates corresponding feature gates in Statsig. Additionally, it tracks the migration status and details in a CSV file.
 

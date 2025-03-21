@@ -4,6 +4,8 @@ sidebar_label: Stratified Sampling
 slug: /experiments-plus/stratified-sampling
 keywords:
   - owner:vm
+last_update:
+  date: 2024-10-02
 ---
 
 ## What is Stratified Sampling

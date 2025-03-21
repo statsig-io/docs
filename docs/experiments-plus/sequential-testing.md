@@ -4,6 +4,8 @@ sidebar_label: Sequential Testing
 slug: /experiments-plus/sequential-testing
 keywords:
   - owner:vm
+last_update:
+  date: 2025-02-26
 ---
 
 ## What's the problem with looking early in a "standard" A/B test?

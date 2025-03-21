@@ -4,6 +4,8 @@ sidebar_label: Conclude Experiment & Defer decision
 slug: /experiments-plus/conclude-experiment-defer-decision
 keywords:
   - owner:vm
+last_update:
+  date: 2024-12-04
 ---
 ## Conclude the Experiment now and Defer Analysis for later
 

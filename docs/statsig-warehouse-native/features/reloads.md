@@ -4,6 +4,8 @@ slug: /statsig-warehouse-native/features/reloads
 sidebar_label: Loading Pulse
 keywords:
   - owner:vm
+last_update:
+  date: 2025-03-18
 ---
 
 ## The Pulse Engine

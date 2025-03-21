@@ -6,6 +6,8 @@ sidebar_label: User Journeys
 slug: /product-analytics/user-journeys
 keywords:
   - owner:akin
+last_update:
+  date: 2025-03-11
 ---
 
 # User Journeys

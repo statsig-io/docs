@@ -6,6 +6,8 @@ description: Monitor the health of experiments
 displayed_sidebar: cloud
 keywords:
   - owner:vm
+last_update:
+  date: 2024-10-02
 ---
 
 Once you turn on your experiment, you can monitor the health of your experiment and view the exposures for the control and variants groups.

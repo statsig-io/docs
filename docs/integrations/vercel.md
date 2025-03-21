@@ -2,6 +2,8 @@
 title: Vercel
 keywords:
   - owner:brock
+last_update:
+  date: 2025-02-26
 ---
 
 ## Overview

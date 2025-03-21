@@ -3,6 +3,8 @@ title:  Feature Gates Policy
 slug: /org-admin/gates_policy
 keywords:
   - owner:mseger
+last_update:
+  date: 2025-03-20
 ---
 
 :::info

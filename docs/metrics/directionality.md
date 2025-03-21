@@ -4,6 +4,8 @@ sidebar_label: Metric Directionality
 slug: /metrics/directionality
 keywords:
   - owner:shubham
+last_update:
+  date: 2025-03-04
 ---
 
 # Setting Metric Directionality

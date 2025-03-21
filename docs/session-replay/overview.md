@@ -4,6 +4,8 @@ sidebar_label: Overview
 slug: /session-replay/overview
 keywords:
   - owner:akin
+last_update:
+  date: 2025-01-15
 ---
 # Session Replay Overview
 
