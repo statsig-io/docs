@@ -66,13 +66,27 @@ CURE can be managed in two places:
 
 Statsig will surface information on CURE in experiment diagnostics, giving details on coefficients used and relevant covariate for any given metric. You can also see the adjustments used under the Regression Adjustment job, and check the coefficients table to run your own analysis on the regression model.
 
-#Outputs
+# Outputs
 
 You can view the DAG history to see the exact coefficients used and the table they are stored within. Additionally, Statsig will render an explanation in-console of which variables contributed to reducing variance, and how much variance was reduce -- which has been helpful for users deciding which features to use.
 
 # Notes
 
 Similar to CUPED, CURE can modify the point estimates of groups; though the total value across all experimental groups will sum to the same value as in the unadjusted dataset, is it expected that there may be drift in value between the groups (particularly if there's some pre-experiment differences and the correlation is high). Generally this can be seen as the algorithm adjusting for pre-existing deltas in experiment groups, but please reach out in slack if you are concerned about a concerning change.
+
+# Feature Selection
+
+We use Lasso regression to select important features, reducing the computational cost of adjusting the unit metric level and controlling the collinearity. You can view the contribution of each feature on the variance reduction card. The estimated proportion of variance reduction is achieved by
+
+$$
+\text{Variance Reduction}_{i} = \frac{{Coef_{i}}^2*Var(feature_{i})}{\sum {Coef_{i}}^2*Var(feature_{i})}
+$$
+
+by that,
+
+$$
+\sum \text{Variance Reduction}_{i} = 100\%
+$$
 
 # References
 
