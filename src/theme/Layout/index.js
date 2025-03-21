@@ -33,6 +33,9 @@ export default function CustomLayout(props) {
           const ownerMatch = content.match(/owner:([^\s,]+)/);
           if (ownerMatch && ownerMatch[1]) {
             setPageOwner(ownerMatch[1]);
+            Statsig.instance().logEvent('PageLoadOwner', window.location.href, {
+              pageOwner: ownerMatch[1],
+            });
           } else {
             setPageOwner('');
           }
@@ -85,7 +88,9 @@ export default function CustomLayout(props) {
       const hasSidebar = document.querySelector('.theme-doc-sidebar-container');
       if (!hasSidebar) {
         console.log("doesn't have sidebar")
-        Statsig.instance().logEvent('NoSidebarPageLoad', window.location.href);
+        Statsig.instance().logEvent('NoSidebarPageLoad', window.location.href, {
+          pageOwner: pageOwner,
+        });
       }
       const docsearchRankingConfig = Statsig.instance().getDynamicConfig('docsearch_ranking_manual');
       const url = window.location.href.replace(/^https?:\/\//, '').replace(/\/+$/, '');
