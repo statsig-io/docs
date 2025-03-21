@@ -76,7 +76,7 @@ Similar to CUPED, CURE can modify the point estimates of groups; though the tota
 
 # Feature Selection
 
-We use Lasso regression to select important features, reducing the computational cost of adjusting the unit metric level and controlling the multi-collinearity. You can view the contribution of each feature on the variance reduction card. The estimated proportion of variance reduction is achieved by
+We use Lasso regression to select important features, reducing the computational cost of adjusting the unit metric level and controlling the multicollinearity. You can view the contribution of each feature on the variance reduction card. The estimated proportion of variance reduction is achieved by
 
 $$
 \text{Variance Reduction}_{i} = \frac{{Coefficient_{i}}^2*Var(feature_{i})}{\sum {Coefficient_{i}}^2*Var(feature_{i})}
