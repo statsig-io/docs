@@ -2,7 +2,7 @@
 title: Data Warehouse Ingestion
 keywords:
   - owner:tim
-last_update: 2024-08-29 13:00:59 -0700
+last_update: 2024-08-29
 ---
 
 ![Slide 4_3 - 2](https://user-images.githubusercontent.com/108023879/187794828-333622ec-6db2-4936-987d-efbef4ba9a47.png)

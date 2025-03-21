@@ -3,11 +3,15 @@ import os
 import subprocess
 import re
 import sys
+from datetime import datetime
 
 # Debug flag to enable verbose logging
 DEBUG = True
 
-IGNORED_COMMIT = 'b9132ef396ac5b8f088d7ea6555e13549c5e85b5'
+IGNORED_COMMITS = [
+    'b9132ef396ac5b8f088d7ea6555e13549c5e85b5',
+    'a915fe6215b5844508ea920e2c02e6da460480f9'
+]
 
 
 def debug(message):
@@ -34,10 +38,21 @@ def get_git_last_updated_date(filepath):
             if len(parts) != 2:
                 continue
             commit_hash, commit_date = parts[0].strip(), parts[1].strip()
-            if commit_hash == IGNORED_COMMIT:
-                debug(f"Skipping ignored commit {IGNORED_COMMIT} for file {filepath}")
+            if commit_hash in IGNORED_COMMITS:
+                debug(f"Skipping ignored commit {commit_hash} for file {filepath}")
                 continue
-            return commit_date
+                
+            # Format the date as yyyy-mm-dd
+            try:
+                # Parse the git date format (typically like "2023-04-15 12:34:56 -0700")
+                dt = datetime.strptime(commit_date, "%Y-%m-%d %H:%M:%S %z")
+                # Format as yyyy-mm-dd
+                formatted_date = dt.strftime("%Y-%m-%d")
+                return formatted_date
+            except ValueError:
+                debug(f"Could not parse date '{commit_date}', returning as is")
+                return commit_date
+            
         return 'No valid commit found'
     except subprocess.CalledProcessError as e:
         print(f"Error running git log for {filepath}: {e}", file=sys.stderr)

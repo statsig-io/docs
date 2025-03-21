@@ -4,7 +4,7 @@ slug: /statsig-warehouse-native/connecting-your-warehouse/redshift
 sidebar_label: Redshift
 keywords:
   - owner:vm
-last_update: 2025-01-31 11:28:28 -0700
+last_update: 2025-01-31
 ---
 
 ## Overview

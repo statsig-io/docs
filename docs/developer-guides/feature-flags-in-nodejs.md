@@ -5,7 +5,7 @@ slug: /developer-guides/feature-flags-in-nodejs
 displayed_sidebar: cloud
 keywords:
   - owner:brock
-last_update: 2024-09-25 05:28:08 +0000
+last_update: 2024-09-25
 ---
 
 Integrating feature flags into a new Node.js application using Statsig is a straightforward process that involves setting up your Node.js environment, integrating the Statsig SDK, and managing your feature flags through the Statsig console. Here's a step-by-step guide:

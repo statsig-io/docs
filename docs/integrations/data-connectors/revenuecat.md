@@ -2,7 +2,7 @@
 title: RevenueCat
 keywords:
   - owner:brock
-last_update: 2022-01-24 13:39:26 -0800
+last_update: 2022-01-24
 ---
 
 ## Overview

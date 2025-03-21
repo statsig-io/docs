@@ -4,7 +4,7 @@ sidebar_label: Exposures
 slug: /feature-flags/view-exposures
 keywords:
   - owner:shubham
-last_update: 2025-02-11 03:13:47 +0000
+last_update: 2025-02-11
 ---
 
 :::note

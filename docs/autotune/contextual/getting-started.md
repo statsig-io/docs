@@ -4,7 +4,7 @@ sidebar_label: Getting Started
 slug: /autotune/contextual/getting-started
 keywords:
   - owner:vm
-last_update: 2025-03-14 13:33:53 -0700
+last_update: 2025-03-14
 ---
 
 Getting started with Autotune AI can be done very quickly.

@@ -4,7 +4,7 @@ sidebar_label: Working With
 slug: /experiments-plus/working-with
 keywords:
   - owner:vm
-last_update: 2022-07-07 10:37:31 -0700
+last_update: 2022-07-07
 ---
 
 Similar to A/B tests, Experiments provides the following features to run and analyze experiments with ease:

@@ -4,7 +4,7 @@ sidebar_label: Raw Events
 slug: /metrics/raw-events
 keywords:
   - owner:brock
-last_update: 2024-10-05 05:40:13 +0000
+last_update: 2024-10-05
 ---
 
 # Raw Events

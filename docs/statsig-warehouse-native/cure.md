@@ -4,7 +4,7 @@ sidebar_label: CURE (CUPED)
 slug: /experiments-plus/cure
 keywords:
   - owner:craig
-last_update: 2025-03-21 14:02:08 -0700
+last_update: 2025-03-21
 ---
 
 # CURE

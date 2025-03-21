@@ -4,7 +4,7 @@ sidebar_label: Scaling Warehouses β
 slug: /statsig-warehouse-native/guides/scaling
 keywords:
   - owner:vm
-last_update: 2024-11-15 17:23:50 -0800
+last_update: 2024-11-15
 ---
 
 

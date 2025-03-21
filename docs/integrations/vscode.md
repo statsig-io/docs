@@ -2,7 +2,7 @@
 title: Visual Studio Code
 keywords:
   - owner:brock
-last_update: 2023-01-18 18:33:08 -0800
+last_update: 2023-01-18
 ---
 
 ## Overview

@@ -4,7 +4,7 @@ sidebar_label: Auto-generated Metrics
 slug: /metrics/metrics-from-events
 keywords:
   - owner:shubham
-last_update: 2025-01-08 11:15:36 -0800
+last_update: 2025-01-08
 ---
 
 # Auto-generated Metrics

@@ -4,7 +4,7 @@ sidebar_label: Differential Impact
 slug: /experiments-plus/differential-impact-detection
 keywords:
   - owner:vm
-last_update: 2025-01-30 09:49:25 -0800
+last_update: 2025-01-30
 ---
 
 ## What is Differential Impact Detection?

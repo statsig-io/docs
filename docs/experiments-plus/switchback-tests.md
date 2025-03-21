@@ -4,7 +4,7 @@ sidebar_label: Switchback Tests
 slug: /experiments-plus/switchback-tests
 keywords:
   - owner:vm
-last_update: 2024-05-09 09:14:35 -0700
+last_update: 2024-05-09
 ---
 
 # What is Switchback Testing? 

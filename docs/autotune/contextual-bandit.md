@@ -4,7 +4,7 @@ sidebar_label: Contextual Bandit
 slug: /contextual-bandit
 keywords:
   - owner:vm
-last_update: 2024-09-18 19:16:53 -0700
+last_update: 2024-09-18
 ---
 
 ## Model

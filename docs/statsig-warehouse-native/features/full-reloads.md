@@ -4,7 +4,7 @@ slug: /statsig-warehouse-native/features/full-reloads
 sidebar: Full Reloads
 keywords:
   - owner:vm
-last_update: 2025-03-18 18:10:01 -0700
+last_update: 2025-03-18
 ---
 
 Full reloads will completely wipe the Staging/Results Datasets Statsig has used for previous pulse calculations, and Statsig will recalculate results from scratch.

@@ -5,7 +5,7 @@ sidebar_label: Fundamentals
 slug: /experiments-plus
 keywords:
   - owner:vm
-last_update: 2025-01-24 01:51:52 +0000
+last_update: 2025-01-24
 ---
 
 Experimentation is a powerful tool for making data-driven decisions that improve product outcomes and customer experiences. In this guide, you'll learn how to set up, run, and analyze controlled experiments using Statsig's experimentation platform. We'll cover key concepts such as control variables, randomization units, and statistical significance, helping you understand the science behind A/B testing and multivariate experiments.

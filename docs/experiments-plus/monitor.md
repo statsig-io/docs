@@ -4,7 +4,7 @@ sidebar_label: Monitor
 slug: /experiments-plus/monitor
 keywords:
   - owner:vm
-last_update: 2024-10-02 00:20:38 -0700
+last_update: 2024-10-02
 ---
 
 Once you turn on your experiment, you can monitor the health of your experiment and view the exposures for the control and variants groups.

@@ -4,7 +4,7 @@ slug: /statsig-warehouse-native/metrics/unit-count-window
 sidebar_label: Unit Count (Window)
 keywords:
   - owner:vm
-last_update: 2024-06-12 16:50:04 -0700
+last_update: 2024-06-12
 ---
 
 ## Summary

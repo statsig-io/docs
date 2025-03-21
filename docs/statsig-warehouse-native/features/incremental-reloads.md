@@ -4,7 +4,7 @@ slug: /statsig-warehouse-native/features/incremental-reloads
 sidebar: Incremental Reloads
 keywords:
   - owner:vm
-last_update: 2024-06-12 14:53:52 -0700
+last_update: 2024-06-12
 ---
 
 Full reloads save state from the last load, and load from the latest data read with a small buffer to ensure completeness. This job wipes data since the last load, plus that buffer, and then appends all new data to the staging datasets before calculating results for changed days.

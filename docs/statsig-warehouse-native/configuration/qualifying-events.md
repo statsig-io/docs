@@ -4,7 +4,7 @@ slug: /statsig-warehouse-native/configuration/qualifying-events
 sidebar_label: Qualifying Events
 keywords:
   - owner:vm
-last_update: 2024-06-12 14:53:52 -0700
+last_update: 2024-06-12
 ---
 
 ## Using Qualifying Events

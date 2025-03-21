@@ -4,7 +4,7 @@ slug: /statsig-warehouse-native/configuration/metrics
 sidebar_label: Overview
 keywords:
   - owner:vm
-last_update: 2025-02-27 23:18:46 -0800
+last_update: 2025-02-27
 ---
 
 ## Metrics

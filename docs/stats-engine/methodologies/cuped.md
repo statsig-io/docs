@@ -4,7 +4,7 @@ sidebar_label: CUPED
 slug: /stats-engine/methodologies/cuped
 keywords:
   - owner:vm
-last_update: 2025-03-07 17:36:50 +0000
+last_update: 2025-03-07
 ---
 
 ## CUPED - Controlled-experiment Using Pre-Existing Data

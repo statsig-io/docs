@@ -2,7 +2,7 @@
 title: OpenAI 
 keywords:
   - owner:brock
-last_update: 2025-01-11 02:29:45 +0000
+last_update: 2025-01-11
 ---
 
 ## Context

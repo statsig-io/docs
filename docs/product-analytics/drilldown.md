@@ -6,7 +6,7 @@ sidebar_label: Metric Drilldown
 slug: /product-analytics/drilldown
 keywords:
   - owner:akin
-last_update: 2025-03-19 17:44:26 +0000
+last_update: 2025-03-19
 ---
 
 # Metric Drilldown

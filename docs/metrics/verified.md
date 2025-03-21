@@ -4,7 +4,7 @@ sidebar_label: Verified Metrics
 slug: /metrics/verified
 keywords:
   - owner:shubham
-last_update: 2024-05-01 09:52:42 -0700
+last_update: 2024-05-01
 ---
 
 Verified metrics are a way to identify metrics that are curated by your company and known to be trustworthy. When users set up experiments and search for metrics, they'll see a verified icon next to verified metrics.

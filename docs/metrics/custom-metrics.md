@@ -4,7 +4,7 @@ sidebar_label: Custom Metrics
 slug: /metrics/custom-metrics
 keywords:
   - owner:shubham
-last_update: 2025-01-07 21:23:43 -0800
+last_update: 2025-01-07
 ---
 
 # Custom Metrics

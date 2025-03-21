@@ -4,7 +4,7 @@ slug: /statsig-warehouse-native/connecting-your-warehouse/scheduled-reloads
 sidebar_label: Scheduled Reloads
 keywords:
   - owner:vm
-last_update: 2025-02-27 21:15:15 -0800
+last_update: 2025-02-27
 ---
 
 ## Overview

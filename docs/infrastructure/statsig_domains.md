@@ -2,7 +2,7 @@
 title: Statsig Domains
 keywords:
   - owner:eric
-last_update: 2025-03-12 18:09:57 -0700
+last_update: 2025-03-12
 ---
 
 Statsig uses the following domain names for its services. If you have a network policy set up inside your systems, you should allowlist

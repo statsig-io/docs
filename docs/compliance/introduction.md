@@ -2,7 +2,7 @@
 title: Introduction
 keywords:
   - owner:brock
-last_update: 2022-07-21 15:39:28 -0700
+last_update: 2022-07-21
 ---
 
 We know the data that you send to Statsig can be sensitive - both for your business, as well as your users. This section documents the tools we have for handling sensitive data.

@@ -4,7 +4,7 @@ slug: /statsig-warehouse-native/guides/debugging
 sidebar_label: Debugging
 keywords:
   - owner:vm
-last_update: 2025-01-15 23:14:00 +0000
+last_update: 2025-01-15
 ---
 
 ## Debugging

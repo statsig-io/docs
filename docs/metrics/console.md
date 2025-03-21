@@ -4,7 +4,7 @@ sidebar_label: Metrics Dashboard
 slug: /metrics/console
 keywords:
   - owner:tim
-last_update: 2024-12-22 20:46:35 -0800
+last_update: 2024-12-22
 ---
 
 Metrics are available for all unit types enabled in the project.  User ID and Stable ID are provided by default and others can be added following [these steps](/guides/experiment-on-custom-id-types#step-1---add-companyid-as-a-new-id-type-in-your-project-settings).  Make a selection from the drop down to view event DAU and user accounting metrics calculated based on the desired unit type.

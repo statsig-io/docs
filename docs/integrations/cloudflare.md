@@ -2,7 +2,7 @@
 title: Cloudflare KV
 keywords:
   - owner:brock
-last_update: 2024-11-01 13:10:02 -0700
+last_update: 2024-11-01
 ---
 
 ## Overview

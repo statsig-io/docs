@@ -4,7 +4,7 @@ sidebar_label: Best Practices
 slug: /feature-flags/best-practices
 keywords:
   - owner:shubham
-last_update: 2024-06-12 14:53:52 -0700
+last_update: 2024-06-12
 ---
 
 :::note

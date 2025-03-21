@@ -3,7 +3,7 @@ title: Log Metrics
 sidebar_label: Log
 keywords:
   - owner:vm
-last_update: 2024-10-22 13:39:48 -0700
+last_update: 2024-10-22
 ---
 
 ## Summary

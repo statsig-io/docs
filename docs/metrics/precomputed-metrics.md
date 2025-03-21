@@ -4,7 +4,7 @@ sidebar_label: Precomputed Metrics
 slug: /metrics/precomputed-metrics
 keywords:
   - owner:shubham
-last_update: 2024-10-14 05:31:39 +0000
+last_update: 2024-10-14
 ---
 
 ## Importing Precomputed Metrics

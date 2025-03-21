@@ -4,7 +4,7 @@ sidebar_label: Test
 slug: /feature-flags/test-gate
 keywords:
   - owner:shubham
-last_update: 2024-03-27 16:06:19 -0700
+last_update: 2024-03-27
 ---
 
 :::note

@@ -5,7 +5,7 @@ slug: /developer-guides/feature-flags-in-rust
 displayed_sidebar: cloud
 keywords:
   - owner:brock
-last_update: 2024-09-25 05:28:08 +0000
+last_update: 2024-09-25
 ---
 
 To integrate feature flags into a Rust application with the Statsig SDK, you'll start by setting up a simple Rust "Hello World" app, then integrate Statsig to manage your feature flags. 

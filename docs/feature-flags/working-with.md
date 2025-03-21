@@ -4,7 +4,7 @@ sidebar_label: Overview
 slug: /feature-flags/working-with
 keywords:
   - owner:shubham
-last_update: 2025-01-15 23:14:00 +0000
+last_update: 2025-01-15
 ---
 
 A feature flag is a mechanism for teams to configure what system behavior is visible to users without changing application code. You might also hear them called flippers, toggles, or (at Statsig), gates.

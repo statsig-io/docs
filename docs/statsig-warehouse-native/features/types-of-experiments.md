@@ -4,7 +4,7 @@ slug: /statsig-warehouse-native/features/types-of-experiments
 sidebar_label: Types of Experiments
 keywords:
   - owner:vm
-last_update: 2024-10-02 00:20:38 -0700
+last_update: 2024-10-02
 ---
 
 Statsig offers many forms of Experiment Analysis, detailed below:

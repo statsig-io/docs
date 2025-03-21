@@ -5,7 +5,7 @@ slug: /developer-guides/abtest-in-python
 displayed_sidebar: cloud
 keywords:
   - owner:brock
-last_update: 2024-09-25 05:28:08 +0000
+last_update: 2024-09-25
 ---
 
 Running a simple A/B experiment in a web page with Python and the Statsig SDK involves a few distinct steps, including creating a basic web server, integrating with Statsig for A/B testing, and configuring the experiment via the Statsig console. Below is a step-by-step guide.

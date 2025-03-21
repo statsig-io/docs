@@ -4,7 +4,7 @@ sidebar_label: Disable a Group
 slug: /experiments-plus/disable-group
 keywords:
   - owner:vm
-last_update: 2025-03-04 01:34:46 +0000
+last_update: 2025-03-04
 ---
 
 ## Disabling a Group in an Experiment

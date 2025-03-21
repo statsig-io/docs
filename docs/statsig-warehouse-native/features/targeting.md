@@ -4,7 +4,7 @@ slug: /statsig-warehouse-native/features/targeting
 sidebar_label: Targeting
 keywords:
   - owner:vm
-last_update: 2024-06-12 14:53:52 -0700
+last_update: 2024-06-12
 ---
 
 ## How to Target Experiments

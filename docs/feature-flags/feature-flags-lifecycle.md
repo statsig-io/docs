@@ -4,7 +4,7 @@ sidebar_label: Managing Lifecycle
 slug: /feature-flags/feature-flags-lifecycle
 keywords:
   - owner:shubham
-last_update: 2024-10-11 10:36:53 -0700
+last_update: 2024-10-11
 ---
 
 :::note

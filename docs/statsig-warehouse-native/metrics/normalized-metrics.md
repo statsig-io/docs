@@ -4,7 +4,7 @@ slug: /statsig-warehouse-native/metrics/normalized-metrics
 sidebar_label: Normalized Metrics
 keywords:
   - owner:vm
-last_update: 2024-12-25 07:52:03 -0800
+last_update: 2024-12-25
 ---
 
 # Normalized Metrics

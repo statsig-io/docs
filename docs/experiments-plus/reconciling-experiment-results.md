@@ -4,7 +4,7 @@ sidebar_label: Reconciling Experiment Results
 slug: /experiments-plus/reconciling-experiment-results
 keywords:
   - owner:vm
-last_update: 2024-11-05 14:08:39 -0800
+last_update: 2024-11-05
 ---
 ## Motivation
 The same data can yield very different interpretations in experiment results due to the wide variety of analysis methodology available. One of the advantages of modern experimentation platforms is ensuring consistency and transparency in experimental analysis within your organization. This paper is a brief guide to common gaps between platforms, as well as how to identify and resolve them.

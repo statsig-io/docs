@@ -4,7 +4,7 @@ sidebar_label: Delta Method
 slug: /stats-engine/methodologies/delta-method
 keywords:
   - owner:vm
-last_update: 2022-10-27 14:20:58 -0700
+last_update: 2022-10-27
 ---
 
 ## Delta Method

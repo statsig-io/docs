@@ -4,7 +4,7 @@ sidebar_label: Monitoring
 slug: /autotune/contextual/monitoring
 keywords:
   - owner:vm
-last_update: 2025-03-14 11:37:34 -0700
+last_update: 2025-03-14
 ---
 
 There are three primary ways we recommend you monitor autotune performance.

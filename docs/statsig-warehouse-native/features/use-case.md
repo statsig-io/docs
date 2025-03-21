@@ -4,7 +4,7 @@ slug: /statsig-warehouse-native/features/use-case
 sidebar_label: Practical Use Cases
 keywords:
   - owner:vm
-last_update: 2025-01-28 11:07:50 -0800
+last_update: 2025-01-28
 ---
 
 ## How can I define and filter results to 'new users' only?

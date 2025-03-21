@@ -3,7 +3,7 @@ title: Templates
 slug: /templates/templates
 keywords:
   - owner:mseger
-last_update: 2025-02-06 22:32:25 -0800
+last_update: 2025-02-06
 ---
 
 # Templates
