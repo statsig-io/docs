@@ -74,7 +74,7 @@ Statsig will surface information on CURE in experiment diagnostics, giving detai
 
 Similar to CUPED, CURE can modify the point estimates of groups; though the total value across all experimental groups will sum to the same value as in the unadjusted dataset, is it expected that there may be drift in value between the groups (particularly if there's some pre-experiment differences and the correlation is high). Generally this can be seen as the algorithm adjusting for pre-existing deltas in experiment groups, but please reach out in slack if you are concerned about a concerning change.
 
-# Feature Selection
+## Feature Selection
 
 We use Lasso regression to select important features, reducing the computational cost of adjusting the unit metric level and controlling the multicollinearity. You can view the contribution of each feature on the variance reduction card. The estimated proportion of variance reduction is achieved by
 
