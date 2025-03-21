@@ -4,6 +4,7 @@ sidebar_label: Funnel Metrics
 slug: /metrics/create-user-funnels
 keywords:
   - owner:shubham
+last_update: 2022-08-09 17:54:22 -0700
 ---
 
 

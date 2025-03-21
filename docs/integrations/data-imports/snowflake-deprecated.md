@@ -3,6 +3,7 @@ title: Snowflake (Deprecated)
 slug: snowflake
 keywords:
   - owner:tim
+last_update: 2023-04-12 12:16:18 -0700
 ---
 
 **Note: this solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out the [Data Warehouse Ingestion](../../data-warehouse-ingestion/introduction.md) solution instead.**

@@ -5,6 +5,7 @@ slug: /developer-guides/feature-flags-in-java
 displayed_sidebar: cloud
 keywords:
   - owner:brock
+last_update: 2024-09-25 05:28:08 +0000
 ---
 
 Integrating feature flags into a Java application using the Statsig SDK involves several steps, starting with creating a basic "Hello World" Java application. Then, you will integrate the Statsig SDK to manage feature flags within your application. Lastly, I will guide you through the process of creating and managing feature flags in the Statsig console.

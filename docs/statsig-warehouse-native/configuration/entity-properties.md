@@ -4,6 +4,7 @@ slug: /statsig-warehouse-native/configuration/entity-properties
 sidebar_label: Entity Properties
 keywords:
   - owner:vm
+last_update: 2024-10-20 16:46:12 -0700
 ---
 
 ## Entity Properties

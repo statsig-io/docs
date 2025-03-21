@@ -4,6 +4,7 @@ slug: /statsig-warehouse-native/configuration/tags-and-teams
 sidebar_label: Tags & Teams
 keywords:
   - owner:vm
+last_update: 2024-06-12 14:53:52 -0700
 ---
 
 Statsig offers tools to enrich data sources, metrics, and entities with team ownership as well as arbitrary tags. These provide a powerful way to organize your data configuration, and also feed into advanced analytics tools like [meta-analysis](/experiments/meta-analysis.md).

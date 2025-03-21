@@ -4,6 +4,7 @@ sidebar_label: Pulse
 slug: /pulse
 keywords:
   - owner:vm
+last_update: 2022-06-03 10:25:20 -0700
 ---
 
 Pulse is Statsig's powerful visualization that shows an experiment's impact across a wide range of metrics. It allows you to quickly assess which metrics you need to pay attention to, while finding trends across metrics, allowing you to validate existing hypotheses or devise alternative explanations. Pulse is currently available on partially rolled out feature gates and Experiments+.

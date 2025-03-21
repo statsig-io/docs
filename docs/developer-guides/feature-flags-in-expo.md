@@ -5,6 +5,7 @@ slug: /developer-guides/feature-flags-in-expo
 displayed_sidebar: cloud
 keywords:
   - owner:brock
+last_update: 2024-10-07 16:23:35 -0700
 ---
 
 Integrating feature flags into a React Native app using Expo and the Statsig SDK is a powerful way to control and experiment with features dynamically. Here's a step-by-step guide, including creating a basic "Hello World" React Native app with Expo, integrating Statsig, and managing feature flags in the Statsig console.

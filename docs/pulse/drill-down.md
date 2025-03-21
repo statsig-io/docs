@@ -4,6 +4,7 @@ sidebar_label: Metric Drill-Down
 slug: /pulse/drill-down
 keywords:
   - owner:vm
+last_update: 2025-02-06 18:42:16 -0800
 ---
 
 ## Tooltip Overview

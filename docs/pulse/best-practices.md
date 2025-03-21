@@ -4,6 +4,7 @@ sidebar_label: Best Practices
 slug: /pulse/best-practices
 keywords:
   - owner:vm
+last_update: 2022-12-20 17:08:46 -0800
 ---
 
 We have some suggestions on how to interpret Pulse in a scientifically-sound way:

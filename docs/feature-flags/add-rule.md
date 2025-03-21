@@ -4,6 +4,7 @@ sidebar_label: Add rule
 slug: /feature-flags/add-rule
 keywords:
   - owner:shubham
+last_update: 2025-03-20 02:28:49 +0000
 ---
 ## Create a rule for a feature flag
 

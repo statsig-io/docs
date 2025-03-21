@@ -4,6 +4,7 @@ sidebar_label: Create
 slug: /dynamic-config/create-new
 keywords:
   - owner:shubham
+last_update: 2024-08-14 12:52:43 -0700
 ---
 
 To create a dynamic config, 

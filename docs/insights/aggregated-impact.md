@@ -4,6 +4,7 @@ sidebar_label: Aggregated Impact
 slug: /aggregated-impact
 keywords:
   - owner:vm
+last_update: 2025-03-18 00:02:53 -0700
 ---
 
 Statsig's Insights page provides a clear view of how active experiments and feature gates impact a specific metric of interest. It not only helps answer key questions such as "How much impact have I driven?", but also serves as a powerful tool for diagnosing unexpected changes in metrics.  

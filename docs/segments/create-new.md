@@ -4,6 +4,7 @@ sidebar_label: Create
 slug: /segments/create-new
 keywords:
   - owner:shubham
+last_update: 2024-10-02 00:20:38 -0700
 ---
 
 To create a segment, 

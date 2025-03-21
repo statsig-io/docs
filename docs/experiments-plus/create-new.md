@@ -4,6 +4,7 @@ sidebar_label: Create
 slug: /experiments-plus/create-new
 keywords:
   - owner:vm
+last_update: 2025-03-04 01:12:45 +0000
 ---
 
 This guide walks you through the steps to create and configure a new experiment in Statsig. Whether you're running a simple A/B test or a more complex multi-variant experiment, these instructions will help you set up your experiment correctly.

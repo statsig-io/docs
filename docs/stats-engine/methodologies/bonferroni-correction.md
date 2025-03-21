@@ -4,6 +4,7 @@ sidebar_label: Bonferroni Correction
 slug: /stats-engine/methodologies/bonferroni-correction
 keywords:
   - owner:vm
+last_update: 2024-01-31 17:13:00 -0800
 ---
 
 ## What is Bonferroni Correction?

@@ -4,6 +4,7 @@ slug: /statsig-warehouse-native/configuration/semantic-layer-sync
 sidebar_label: Semantic Layer Sync
 keywords:
   - owner:vm
+last_update: 2024-10-02 00:20:38 -0700
 ---
 
 If you have centrally defined metrics, Statsig offers the ability to sync its data sources and metrics as part of your data version management workflow. Using Statsig's [Console API](/console-api/metrics) you can automatically sync changes you make to the matching definitions on Statsig, and you can optionally make the metrics read-only in the Statsig console.

@@ -4,6 +4,7 @@ sidebar_label: One-Sided Tests
 slug: /stats-engine/methodologies/one-sided-test
 keywords:
   - owner:vm
+last_update: 2024-12-17 11:55:49 -0800
 ---
 
 ## One-Sided Tests (aka One-Tailed Test)

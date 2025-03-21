@@ -4,6 +4,7 @@ sidebar_label: Export
 slug: /pulse/export
 keywords:
   - owner:vm
+last_update: 2025-03-05 15:16:00 -0800
 ---
 
 ## How to Export Pulse Data - Cloud Projects

@@ -3,6 +3,7 @@ title: First or Latest Value Metrics
 sidebar_label: First/Latest Value
 keywords:
   - owner:vm
+last_update: 2025-02-27 11:06:45 -0800
 ---
 
 ## Summary

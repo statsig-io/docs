@@ -4,6 +4,7 @@ sidebar_label: FAQ
 slug: /pulse/best-faq
 keywords:
   - owner:vm
+last_update: 2024-10-02 00:20:38 -0700
 ---
 
 Interpreting statistical results can be tricky, and often people will have similar questions as we ramp up. Here's some answers!

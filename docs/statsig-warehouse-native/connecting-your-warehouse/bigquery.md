@@ -4,6 +4,7 @@ slug: /statsig-warehouse-native/connecting-your-warehouse/bigquery
 sidebar_label: BigQuery
 keywords:
   - owner:vm
+last_update: 2024-10-02 00:20:38 -0700
 ---
 
 ## Overview

@@ -6,6 +6,7 @@ description: Analyze Cohorts with Statsig
 displayed_sidebar: cloud
 keywords:
   - owner:vm
+last_update: 2024-08-05 16:16:41 -0400
 ---
 
 # Cohort Metrics

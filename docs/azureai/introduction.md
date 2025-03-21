@@ -2,6 +2,7 @@
 title: Azure AI
 keywords:
   - owner:vijaye
+last_update: 2024-11-19 04:47:21 +0000
 ---
 
 Statsig offers SDKs for integrating Azure AI models into server applications. These SDKs simplify the implementation of features like completions and embeddings in your server application. They provide easy-to-use APIs and automatically track metrics such as latency, token length, and model details, which you can use for optimization and experimentation. Use cases include:

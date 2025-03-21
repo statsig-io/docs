@@ -4,6 +4,7 @@ sidebar_label: Add ID List
 slug: /segments/add-id-list
 keywords:
   - owner:shubham
+last_update: 2024-10-09 14:39:50 -0700
 ---
 
 ## Create an ID list for a segment
