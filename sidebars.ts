@@ -801,7 +801,15 @@ const sidebars: SidebarsConfig = {
             "statsig-warehouse-native/features/mex-on-warehouse-native",
             "statsig-warehouse-native/features/other-useful-features",
             "statsig-warehouse-native/native-vs-cloud",
-            "statsig-warehouse-native/cure",
+            {
+              type: "category",
+              label: "CURE",
+              link: {
+                type: "doc",
+                id: "statsig-warehouse-native/cure/introduction",
+              },
+              items: ["statsig-warehouse-native/cure/cure-setup"],
+            },
           ],
         },
       ],
