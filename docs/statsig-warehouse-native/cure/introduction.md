@@ -10,7 +10,7 @@ last_update:
 
 # CURE
 
-CURE (variance Control Using Regression Estimates) is Statsig's extension of [CUPED](../stats-engine/methodologies/cuped), a technique which uses pre-experiment data for each experimental unit to control some of the data observed in an online experiment. CUPED can reduce variance moderately to significantly, and can correct for some amount of pre-existing differences between experiment groups at the time of the experiment.
+CURE (variance Control Using Regression Estimates) is Statsig's extended implementation of [CUPED](../stats-engine/methodologies/cuped), a technique which uses pre-experiment data for each experimental unit to control some of the data observed in an online experiment. CUPED can reduce variance moderately to significantly, and can correct for some amount of pre-existing differences between experiment groups at the time of the experiment.
 
 CUPED is a powerful technique that provides additional statistical power without needing additional users or time to run an experiment. However, it has one major limitation: it relies on using pre-experiment data for a given metric to reduce the same metric's variance. This means that:
 
@@ -19,13 +19,13 @@ CUPED is a powerful technique that provides additional statistical power without
 
 ## What is CUPED?
 
-Please refer to our documentation [here](../stats-engine/methodologies/cuped), or our longer-form explanation
+Please refer to our documentation [here](../stats-engine/methodologies/cuped), or our longer-form blog [here](https://www.statsig.com/blog/cuped).
 
-## How CURE Improves CUPED
+## How CURE Improves On CUPED
 
-CURE solves the covariate problem by allowing users to specify additional covariates, which are used in a lasso regression. The predictions from this regression are used to generate an unbiased set of estimators with reduced variance.
+CURE solves the no-covariate problem by allowing practitioners to specify additional covariates, which are used in the CUPED regression. The predictions from this regression are used to generate an estimator set that is unbiased, but has lower variance than the original estimator.
 
-This can reduce experiment runtimes far more than CUPED in isolation, and when combined with Statsig's entity property sources allows end users to trivially plug in existing feature stores to this variance reduction technique.
+This can reduce experiment runtimes more than CUPED in isolation and, when combined with Statsig's Entity Properties, allows practitioners to trivially plug in existing feature stores to this variance reduction technique.
 
 ## How it's different
 
