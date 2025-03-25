@@ -49,7 +49,7 @@ WITH denominator AS (
 ),
 
 -- Numerator Candidates - 1/0 flag for success activity on a day
--- Note by default this is equivalen tot the denominator CTE
+-- Note by default this is equivalent to the denominator CTE
 numerator_candidates AS (
     SELECT
         unit_id,
