@@ -677,8 +677,11 @@ const sidebars: SidebarsConfig = {
                 {
                   type: "category",
                   label: "Metrics",
+                  link: {
+                    type: "doc",
+                    id: "statsig-warehouse-native/configuration/metrics",
+                  },
                   items: [
-                    "statsig-warehouse-native/configuration/metrics",
                     "statsig-warehouse-native/metrics/sum",
                     "statsig-warehouse-native/metrics/count",
                     "statsig-warehouse-native/metrics/count-distinct",

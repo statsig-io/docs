@@ -153,3 +153,45 @@ For example, the sql filter `(weight_lb)/pow(height_inches, 2) > 25` would be ad
   FROM <source_table>
   WHERE <other_filters> AND ((weight_lb)/pow(height_inches, 2) > 25)
 ```
+
+## Settings
+
+Each metric type's page has specific information on settings relevant to that metric. This section is a brief introduction to common settings on metrics.
+
+### Breakdowns
+
+Most aggregation-type metrics (sum, count, count distinct, unit count, means, ratios, percentiles, first/latest, min, max) allow you to generate a breakdown view of any column automatically. You can specify this column in the metric set up, and you will be able to click into the experiment result to see the breakdown.
+
+### Cohorts
+
+Cohort settings allow you to specify a window for data collection after a unit's exposure. For example, a 4-6 day cohort window would only count actions from days 4, 5, and 6 after a unit was exposed to an experiment.
+
+Only include units with a completed window can be selected to remove units out of pulse analysis for this metric until the cohort window has completed. On experiment settings, you can choose to enable post-experiment data collection to allow these cohorts to mature in the case that you believe the intervention effect will still apply even if the user gets the control/shipped experiment (e.g. NUX experiments).
+
+### Baking
+
+Many metric types support baking. Statsig will wait to calculate baked metrics, and use "old" data for baked metrics. This is appropriate for cases like credit card chargebacks, where you may adjust your payments dataset to account for chargebacks in a "net revenue" metric.
+
+Statsig will:
+
+- Not calculate baked metrics until the bake period has elapsed since the user's enrollment
+- On a given load, Statsig will pull historical data that "just baked" as of that day
+- Calculate will only calculate results for users whose bake window has elapsed to avoid diluting metrics
+
+This way incomplete data is not shown in pulse (either incomplete in the warehouse, or incomplete because of the late-landing data)
+
+### Thresholding
+
+Thresholding functionally converts a sum, count, count-distinct, max/min, or first/latest metric into a 1/0 unit metric by converting the user's total value to a specified threshold. For example, you might want to measure the count of users who spent at least $100 in their first week on the platform. You'd specify this as a 0-6 day cohort metric, summing revenue, with a threshold of $100.
+
+### CUPED
+
+You can enable/disable CUPED per metric, and also specify the lookback window for which users' pre-exposure data will be pulled and used as an input to the CUPED regression.
+
+### Winsorization
+
+See [winsorization](/docs/stats-engine/methodologies/winsorization.mdx). Winsorization is applicable to aggregate metrics and allows you to specify an upper/lower, percentile-based threshold which data above/below will be clamped to. This reduces the incidence of inflated variance or skewed means from outlier data or buggy logging.
+
+### Capping
+
+Capping is an alternate outlier-control method that allows specifying a unit-day cap (specifiable per unit type) that values will be clamped to. For example, you might clamp "total purchase count" to 100 to avoid resellers skewing your metrics on an auction platform, if 100 is a reasonable upper bound for typical users.
