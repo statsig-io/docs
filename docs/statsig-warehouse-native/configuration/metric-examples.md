@@ -60,7 +60,8 @@ First, at unit level, Statsig calculates each day's latest non-null value within
 
 Then, Statsig will calculate the mean unit-level value per experiment group on each day, imputing 0s for all exposed users with no value.
 
-Statsig provides a description of this in-product for any user who wants to learn more:
+Statsig provides a description of this in-product for any user who wants to learn more: 
+![Screenshot 2025-03-27 at 11 33 31 AM](https://github.com/user-attachments/assets/7fe6af8f-02a9-45f4-ae3f-5c682757e571)
 
 
 
@@ -97,3 +98,31 @@ Then, at the group level, the mean is calculated as the SUM of the unit-level fl
 
 Statsig provides documentation of this for any user who wants to learn more: https://docs.statsig.com/statsig-warehouse-native/metrics/unit-count-window 
 
+
+## User Funnel Metric
+
+A common analysis in experimentation is understanding how a new feature impacts dropoff rates at each step of a user funnel.
+
+To create a funnel metric in Statsig, you need an event table that records each step of the events you want to track. The setup for your metric source follows the same process as described earlier.
+
+When you navigate to the metric catalog, select 'Funnel' as your metric type. Choose the unit level for your funnel steps – this can be a distinct count of users or sessions based on what you want to measure.
+![Screenshot 2025-03-27 at 11 39 01 AM](https://github.com/user-attachments/assets/76c815a1-14a6-4d8c-853e-10460f38d4a6)
+
+Then, you cam define your funnel steps, specifying the sequence of events users go through.
+
+![Screenshot 2025-03-27 at 11 41 16 AM](https://github.com/user-attachments/assets/91d50945-ba23-47d0-b0e4-85308a0e404c)
+
+In the Advanced Settings, you can further customize your funnel metric to fit different use cases. Options include specify calculation window, measure time to convert, treat exposure as initial funnel event, etc.
+
+These settings provide full flexibility, allowing you to tailor the funnel metric based on your specific analysis needs.
+![Screenshot 2025-03-27 at 11 42 15 AM](https://github.com/user-attachments/assets/a6de4690-83ad-49ed-af9a-4eef9c6a9700)
+
+
+### How it works in experiments
+
+First, at unit level, Statsig for each step of the funnel, if the unit completed that step some time after all previous steps were completed in order. This creates a series of step flags.
+
+Then, at the group level, the stepwise mean is calculated as the units for the next step divided by the units for the current step. The overall mean is calculated as the units/sessions that completed the funnel divided by the unit/sessions that started the funnel.
+
+Statsig provides a description of this in-product for any user who wants to learn more: 
+![Screenshot 2025-03-27 at 11 45 42 AM](https://github.com/user-attachments/assets/84c22973-af41-495d-a943-f0f7436050ee)
