@@ -21,13 +21,13 @@ First, enter the table path and optionally a partition column to use for date pa
 ![configuration](/img/metric_examples_configuration.png)
 
 Then, configure your timestamp field and ID types. Add any custom SQL aliases for other users, e.g. dividing revenue by 100 to convert from cents to dollars.
-![initials](/static/img/metric_examples_initials.png)
+![initials](/img/metric_examples_initials.png)
 
 Go to the metrics tab, press create, configure your name/source, and then configure a sum metric on the column with the revenue value.
 
-![create_revenue](/static/img/metric_examples_create_revenue.png)
+![create_revenue](/img/metric_examples_create_revenue.png)
 
-![configure_revenue](/static/img/metric_examples_configure_revenue.png)
+![configure_revenue](/img/metric_examples_configure_revenue.png)
 
 ### How it works in experiments
 
@@ -46,17 +46,17 @@ On your end, you'll just need a table or query that tracks users' account values
 
 First, enter the table path and optionally a partition column to use for date partitioning:
 
-![configuration](/static/img/metric_examples_configuration.png)
+![configuration](/img/metric_examples_configuration.png)
 
 Then, configure your timestamp field and ID types. Add any custom SQL aliases for other users, e.g. dividing revenue by 100 to convert from cents to dollars.
 
-![initials](/static/img/metric_examples_initials.png)
+![initials](/img/metric_examples_initials.png)
 
 Go to the metrics tab, press create, configure your name/source, and then configure a latest value metric on the column with the account value.
 
-![create_account](/static/img/metric_examples_create_account.png)
+![create_account](/img/metric_examples_create_account.png)
 
-![configure_account](/static/img/metric_examples_configure_account.png)
+![configure_account](/img/metric_examples_configure_account.png)
 
 ### How it works in experiments
 
@@ -66,4 +66,4 @@ day from being set to 0.
 Then, Statsig will calculate the mean unit-level value per experiment group on each day, imputing 0s for all exposed users with no value.
 
 Statsig provides a description of this in-product for any user who wants to learn more:
-![latest_description](/static/img/metric_examples_latest_description.png)
+![latest_description](/img/metric_examples_latest_description.png)
