@@ -57,7 +57,7 @@ Go to the metrics tab, press create, configure your metric name & source, and th
 
 ### How it works in experiments
 
-First, at unit level, Statsig calculate each day's latest non-null value within any cohort bounds and take the latest value from the latest day available. 
+First, at unit level, Statsig calculates each day's latest non-null value within any cohort bounds and takes the latest value from the latest day available. 
 
 Then, Statsig will calculate the mean unit-level value per experiment group on each day, imputing 0s for all exposed users with no value.
 
