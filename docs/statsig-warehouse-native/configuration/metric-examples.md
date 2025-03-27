@@ -18,16 +18,16 @@ In many cases, companies will have a primary source-of-truth table about user en
 
 First, enter the table path and optionally a partition column to use for date partitioning:
 
-<img width="1536" alt="Configuration" src="https://github.com/user-attachments/assets/98a75031-abfa-44ae-9574-013f0b879c38" />
+![configuration](/static/img/metric_examples_configuration.png)
 
 Then, configure your timestamp field and ID types. Add any custom SQL aliases for other users, e.g. dividing revenue by 100 to convert from cents to dollars.
-<img width="1512" alt="Initial" src="https://github.com/user-attachments/assets/586b847c-c390-4610-bd3d-d322ee9d4715" />
+![initials](/static/img/metric_examples_initials.png)
 
 Go to the metrics tab, press create, configure your name/source, and then configure a sum metric on the column with the revenue value.
 
-<img width="502" alt="Create Revenue" src="https://github.com/user-attachments/assets/4bb4e616-78c5-4137-97d0-a4d0ed90ec56" />
+![create_revenue](/static/img/metric_examples_create_revenue.png)
 
-<img width="859" alt="Configure Revenue" src="https://github.com/user-attachments/assets/e9769f90-4150-4187-bd1e-0496a07579e4" />
+![configure_revenue](/static/img/metric_examples_configure_revenue.png)
 
 ### How it works in experiments
 
@@ -36,7 +36,7 @@ First, Statsig aggregates each unit-level record across the days they are enroll
 Then, Statsig will calculate the mean unit-level revenue per experiment group, imputing 0s for all exposed users with no revenue.
 
 Statsig provides a description of this in-product for any user who wants to learn more:
-<img width="651" alt="Aggregation description" src="https://github.com/user-attachments/assets/fceee0b7-8c86-47ae-98a1-b43361bb407d" />
+![aggregation_description](/static/img/metric_examples_aggregation_description.png)
 
 ## Current Account Value
 
@@ -45,16 +45,18 @@ Often, you will want to understand if your experiment has altered the "state" of
 On your end, you'll just need a table or query that tracks users' account values each day. Then, set up a metric source pointing to that table or query.
 
 First, enter the table path and optionally a partition column to use for date partitioning:
-<img width="1536" alt="Configuration" src="https://github.com/user-attachments/assets/98a75031-abfa-44ae-9574-013f0b879c38" />
+
+![configuration](/static/img/metric_examples_configuration.png)
 
 Then, configure your timestamp field and ID types. Add any custom SQL aliases for other users, e.g. dividing revenue by 100 to convert from cents to dollars.
 
-<img width="1512" alt="Initial" src="https://github.com/user-attachments/assets/586b847c-c390-4610-bd3d-d322ee9d4715" />
+![initials](/static/img/metric_examples_initials.png)
 
 Go to the metrics tab, press create, configure your name/source, and then configure a latest value metric on the column with the account value.
 
-<img width="504" alt="Create Account Value" src="https://github.com/user-attachments/assets/2eccb731-6dc7-4a30-863a-fc6d0b984d9b" />
-<img width="1541" alt="Configure Account Value" src="https://github.com/user-attachments/assets/6ca8eabc-759e-45ca-babd-ce950c5def58" />
+![create_account](/static/img/metric_examples_create_account.png)
+
+![configure_account](/static/img/metric_examples_configure_account.png)
 
 ### How it works in experiments
 
@@ -64,4 +66,4 @@ day from being set to 0.
 Then, Statsig will calculate the mean unit-level value per experiment group on each day, imputing 0s for all exposed users with no value.
 
 Statsig provides a description of this in-product for any user who wants to learn more:
-<img width="658" alt="Latest Description" src="https://github.com/user-attachments/assets/1bf53269-57b7-40af-8004-399e9b6cad52" />
+![latest_description](/static/img/metric_examples_latest_description.png)
