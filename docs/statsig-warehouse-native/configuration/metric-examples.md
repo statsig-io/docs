@@ -86,7 +86,7 @@ When defining the metric, you can choose from several rollup modes:
 
 ![Screenshot 2025-03-27 at 10 40 08 AM](https://github.com/user-attachments/assets/959c5dbd-eecf-4797-bc87-7970ccda4947)
 
-In our example, we want to measure the user participation within 7 days. So you can pick 'Custom Attribution Window' as your rollup mode and set start = 0 end = 6 to define a 7-day window. Otion to enable 'Only include units with a completed window' to exclude users who haven’t reached the full 7-day period from your analysis. 
+In our example, we want to measure the user participation within 7 days. So you can pick 'Custom Attribution Window' as your rollup mode and set start = 0 end = 6 to define a 7-day window. Option to enable 'Only include units with a completed window' to exclude users who haven't reached the full 7-day period from your analysis. 
 ![Screenshot 2025-03-27 at 10 47 02 AM](https://github.com/user-attachments/assets/0632de2f-dc8c-44c0-85c1-39e8a6a6f070)
 
 
