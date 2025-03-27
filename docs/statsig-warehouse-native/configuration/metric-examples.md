@@ -96,5 +96,5 @@ First, at unit level, Statsig will create a 0/1 flag if the event is triggered d
 
 Then, at the group level, the mean is calculated as the SUM of the unit-level flags, divided by the count of UNIQUE UNITS exposed to the experiment.
 
-Statsig provides a documentation of this for any user who wants to learn more: https://docs.statsig.com/statsig-warehouse-native/metrics/unit-count-window 
+Statsig provides documentation of this for any user who wants to learn more: https://docs.statsig.com/statsig-warehouse-native/metrics/unit-count-window 
 
