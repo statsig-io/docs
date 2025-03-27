@@ -38,21 +38,17 @@ Then, Statsig will calculate the mean unit-level revenue per experiment group, i
 Statsig provides a description of this in-product for any user who wants to learn more:
 ![aggregation_description](/img/metric_examples_configuration.png)
 
+
+
 ## Current Account Value
 
 Often, you will want to understand if your experiment has altered the "state" of users. Let's say you care about the current account value today on users in test vs. control of your experiment - have you helped users grow their account?
 
 On your end, you'll just need a table or query that tracks users' account values each day. Then, set up a metric source pointing to that table or query.
 
-First, enter the table path and optionally a partition column to use for date partitioning:
 
-![configuration](/img/metric_examples_configuration.png)
 
-Then, configure your timestamp field and ID types. Add any custom SQL aliases for other users, e.g. dividing revenue by 100 to convert from cents to dollars.
-
-![initials](/img/metric_examples_initials.png)
-
-Go to the metrics tab, press create, configure your name/source, and then configure a latest value metric on the column with the account value.
+Go to the metrics tab, press create, configure your metric name & source, and then configure a latest value metric on the column with the account value.
 
 ![create_account](/img/metric_examples_create_account.png)
 
@@ -60,10 +56,8 @@ Go to the metrics tab, press create, configure your name/source, and then config
 
 ### How it works in experiments
 
-First, Statsig aggregates each unit-level's latest value on each day of the experiment, carrying forward for null days to prevent the latest
-day from being set to 0.
+First, at unit level, Statsig calculates each day's latest non-null value within any cohort bounds and takes the latest value from the latest day available. 
 
 Then, Statsig will calculate the mean unit-level value per experiment group on each day, imputing 0s for all exposed users with no value.
 
 Statsig provides a description of this in-product for any user who wants to learn more:
-![latest_description](/img/metric_examples_latest_description.png)
