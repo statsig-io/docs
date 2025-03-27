@@ -126,3 +126,34 @@ Then, at the group level, the stepwise mean is calculated as the units for the n
 
 Statsig provides a description of this in-product for any user who wants to learn more: 
 ![Screenshot 2025-03-27 at 11 45 42 AM](https://github.com/user-attachments/assets/84c22973-af41-495d-a943-f0f7436050ee)
+
+
+
+## User Retention Rate
+
+A retention metric is a great way to measure changes in user stickiness and product growth with the new feature you've built.
+
+To create a retention metric in Statsig, you'll need an event table that captures the key activities indicating user retention.  The setup for your metric source follows the same process as described earlier.
+
+When you navigate to the metric catalog, select 'Retention' as your metric type. Configure the retention period and look back window. For example, if you set your 'Retention Period End' to be 14 and retention lookback window to be 7, retention is measured as whether the user have triggered the retention event between day 8 and day 14. 
+![Screenshot 2025-03-27 at 2 40 05 PM](https://github.com/user-attachments/assets/e418815e-505c-4356-9922-d706bebb053c)
+
+You also have the option to "Use a different start and completion event for retention calculations" if you don’t want to use exposure as the starting event or if you want to define a specific subset of events as your retention event.
+For example, based on the setup shown in the screenshots, we will be measuring the week 2 retention rate of users who made a purchase in week 1.
+![Screenshot 2025-03-27 at 2 43 41 PM](https://github.com/user-attachments/assets/d3e12922-3767-4a05-987b-e16df126ea41)
+
+In the Advanced Settings, you can configure what's the ID type for your retention metric. 
+![Screenshot 2025-03-27 at 2 48 21 PM](https://github.com/user-attachments/assets/cdf184a4-cd3a-4622-8669-0d029b1e76dc)
+
+
+### How it works in experiments
+
+First, for each unit per day, Statsig checks if the retention start event is triggered and assigns a 0/1 flag, which serves as the denominator of the calculation.
+
+Next, Statsig checks if the retention completion event occurs within the specified time window and assigns a 0/1 flag, which serves as the numerator of the calculation.
+
+Finally, at the group level, retention is calculated as sum(numerator) / sum(denominator) to determine the overall retention rate.
+
+Statsig provides a description of this in-product for any user who wants to learn more:
+![Screenshot 2025-03-27 at 2 48 43 PM](https://github.com/user-attachments/assets/94843265-ed43-4bce-954f-3f64ec2d380f)
+
