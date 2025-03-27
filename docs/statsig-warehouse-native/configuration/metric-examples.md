@@ -61,3 +61,39 @@ First, at unit level, Statsig calculates each day's latest non-null value within
 Then, Statsig will calculate the mean unit-level value per experiment group on each day, imputing 0s for all exposed users with no value.
 
 Statsig provides a description of this in-product for any user who wants to learn more:
+
+
+
+
+## Users D7 Participation
+
+A common metric in experimentation is measuring whether exposed users take specific actions within a defined time window.
+
+On your end, you will just need to provide an event table that records user action with essential columns such as user_id, timestamp and event type. Similarly as above, configure your timestamp field and ID types. 
+![Screenshot 2025-03-27 at 10 37 49 AM](https://github.com/user-attachments/assets/148469b7-df7b-4f39-af87-1ee9dd5ee431)
+![Screenshot 2025-03-27 at 10 39 14 AM](https://github.com/user-attachments/assets/5bd9fcc7-54e1-4a15-a8c4-8d9950631d24)
+
+Then you can navigate to the metric catalog and create a unit count metric using the defined metric source. You could leverage the 'Add Filter' option to focus on specific events relevant to your designed metric. 
+
+![Screenshot 2025-03-27 at 10 43 05 AM](https://github.com/user-attachments/assets/04712a16-8dac-4c1f-a327-1854fd15d2aa) 
+
+When defining the metric, you can choose from several rollup modes:
+- Daily Participation Rate -> it measures the days a unit was active after being exposed to the experiment divided by its total days in the experiments
+- On-Time Event -> it measures if a unit performed an action any time after being exposed to the experiment
+- Latest Value -> it measures if a unit passed metric filters on their last observed record
+- Custom Attribution Window -> to include data for each unit in a specified time window after being exposed to the experiment
+
+![Screenshot 2025-03-27 at 10 40 08 AM](https://github.com/user-attachments/assets/959c5dbd-eecf-4797-bc87-7970ccda4947)
+
+In our example, we want to measure the user participation within 7 days. So you can pick 'Custom Attribution Window' as your rollup mode and set start = 0 end = 6 to define a 7-day window. Option to enable 'Only include units with a completed window' to exclude users who haven't reached the full 7-day period from your analysis. 
+![Screenshot 2025-03-27 at 10 47 02 AM](https://github.com/user-attachments/assets/0632de2f-dc8c-44c0-85c1-39e8a6a6f070)
+
+
+### How it works in experiments
+
+First, at unit level, Statsig will create a 0/1 flag if the event is triggered during the specified time window. 
+
+Then, at the group level, the mean is calculated as the SUM of the unit-level flags, divided by the count of UNIQUE UNITS exposed to the experiment.
+
+Statsig provides documentation of this for any user who wants to learn more: https://docs.statsig.com/statsig-warehouse-native/metrics/unit-count-window 
+
