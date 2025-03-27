@@ -12,18 +12,23 @@ Sidecar comes loaded with an event collection tool that will autocapture various
 
 #### Autocapture tracks the following events and properties automatically:
 
-**`auto_capture::click`**
-
+**Captured across all events**
 
 |Property|description|example value (strings)|
 |--------|----------|-------------|
-|value|Tag name of clicked element|button|
-|metadata.content|`innerText` value of the clicked element|Add to Cart|
-|metadata.page_url|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
+|value|Url of the current page|https://www.example.com/utm=FALL_2024|
+|tagName|Tag name of the target element|button|
 
+**`auto_capture::click`**
+
+|Property|description|example value (strings)|
+|--------|----------|-------------|
+|metadata.content|`innerText` value of the clicked element|Add to Cart|
+|metadata.page_url|Current URL with path and parameters|https://www.example.com/?utm=FALL_2024|
+|metadata.href|Link to url if tag is <a>|https://www.target-url.com/|
+|metadata.[dataset keys]|Data set values expanded|metadata.attributionKey=demoLink|
 
 **`auto_capture::page_view`**
-
 
 |Property|description|example value (strings)|
 |--------|----------|-------------|
@@ -32,6 +37,11 @@ Sidecar comes loaded with an event collection tool that will autocapture various
 |metadata.queryParams|A json representation of query string params| `{\"utm\":\"FALL_2024\"}`|
 |metadata.referrer|URL of the prior page|https://www.google.com|
 |metadata.title|Title of the current webpage from `<title>`|Homepage|
+|metadata.screen_width|Width of the current screen in pixels|3440|
+|metadata.screen_height|Height of the current screen in pixels|1440|
+|metadata.viewport_width|Width of the browser window in pixels|960|
+|metadata.viewport_height|Height of the browser window in pixels|600|
+
 
 
 **`auto_capture::page_view_end`**
@@ -40,7 +50,7 @@ Sidecar comes loaded with an event collection tool that will autocapture various
 |Property|description|example value (strings)|
 |--------|----------|-------------|
 |value|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
-|metadata.pageViewLength|total number of milliseconds spent on the page|6137|
+|metadata.pageViewLength|total number of milliseconds spent on the page|61370|
 |metadata.page_url|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
 |metadata.scrollDepth|percentage of page scrolled (integer 0-100)|47|
 
