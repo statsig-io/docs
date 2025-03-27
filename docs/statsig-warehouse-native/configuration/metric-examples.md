@@ -135,7 +135,7 @@ A retention metric is a great way to measure changes in user stickiness and prod
 
 To create a retention metric in Statsig, you'll need an event table that captures the key activities indicating user retention.  The setup for your metric source follows the same process as described earlier.
 
-When you navigate to the metric catalog, select 'Retention' as your metric type. Configure the retention period and look back window. For example, if you set your 'Retention Period End' to be 14 and retention lookback window to be 7, retention is measured as whether the user have triggered the retention event between day 8 and day 14. 
+When you navigate to the metric catalog, select 'Retention' as your metric type. Configure the retention period and look back window. For example, if you set your 'Retention Period End' to be 14 and retention lookback window to be 7, retention is measured as whether the user has triggered the retention event between day 8 and day 14. 
 ![Screenshot 2025-03-27 at 2 40 05 PM](https://github.com/user-attachments/assets/e418815e-505c-4356-9922-d706bebb053c)
 
 You also have the option to "Use a different start and completion event for retention calculations" if you don’t want to use exposure as the starting event or if you want to define a specific subset of events as your retention event.
