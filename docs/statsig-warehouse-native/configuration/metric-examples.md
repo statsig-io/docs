@@ -126,3 +126,19 @@ Then, at the group level, the stepwise mean is calculated as the units for the n
 
 Statsig provides a description of this in-product for any user who wants to learn more: 
 ![Screenshot 2025-03-27 at 11 45 42 AM](https://github.com/user-attachments/assets/84c22973-af41-495d-a943-f0f7436050ee)
+
+
+## User Retention Metric
+
+### How it works in experiments
+
+First, for each unit per day, Statsig checks if the retention start event is triggered and assigns a 0/1 flag, which serves as the denominator of the calculation.
+
+Next, Statsig checks if the retention completion event occurs within the specified time window and assigns a 0/1 flag, which serves as the numerator of the calculation.
+
+Finally, at the group level, retention is calculated as sum(numerator) / sum(denominator) to determine the overall retention rate.
+
+Statsig provides a description of this in-product for any user who wants to learn more:
+![Screenshot 2025-03-27 at 2 48 43 PM](https://github.com/user-attachments/assets/94843265-ed43-4bce-954f-3f64ec2d380f)
+
+
