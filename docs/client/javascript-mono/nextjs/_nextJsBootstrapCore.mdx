@@ -339,10 +339,6 @@ export default function App({ Component, pageProps }: AppProps) {
     );
   }
 
-  #### Boostrapping client-rendered content
-  Both client and server rendered content can be added to the children of the Home component we defined above. The getServerSideProps call passes the necessary props to the root _app.tsx file, which provides Statsig context to any child element.
-
-
   return <Component {...pageProps} />;
 }
 
