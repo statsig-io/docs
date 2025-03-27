@@ -36,7 +36,7 @@ First, Statsig aggregates each unit-level record across the days they are enroll
 Then, Statsig will calculate the mean unit-level revenue per experiment group, imputing 0s for all exposed users with no revenue.
 
 Statsig provides a description of this in-product for any user who wants to learn more:
-![aggregation_description](/static/img/metric_examples_aggregation_description.png)
+![aggregation_description](/static/img/metric_examples_configuration.png)
 
 ## Current Account Value
 
