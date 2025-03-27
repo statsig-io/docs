@@ -71,9 +71,68 @@ In this case, the default value of **targeted_layer_param** in **Demo Layer** wi
 
 <img width="454" alt="image" src="https://user-images.githubusercontent.com/1315028/162634627-ae327d9e-81a9-42f9-8171-836808cb6ffb.png" />
 
+## Rolling Out an Experiment Group
+Rolling out an experiment group is an option available when you have decided the winning variant, but want to avoid a sudden, large shift of traffic into the winning variant group. You can use automated rollouts to schedule gradual rollout phases, which will increase your shipped group size to the desired percentage by reallocating users from all other groups proportionally.
+
+### Setting up Rollouts
+To set up rollouts, open the make decision form and select the winning group. Here you will be able to either use automated rollouts, or ship with rollout.
+
+![image](https://github.com/user-attachments/assets/549864e9-0509-4b44-a588-fd10ace1e365)
+
+The ship with rollout option allows you to immediately update the shipped group size. Manual rollouts will clear any automated rollout phases.
+
+![image](https://github.com/user-attachments/assets/f200b795-0442-49ed-8c13-e220b3a77a81)
+
+Alternatively, you can set up automated rollouts, which will open the following dialog that you can populate with the rollout phases: 
+
+![image](https://github.com/user-attachments/assets/6fab7c0e-2566-4d14-bdb6-b94102fb08ac)
+
+From here, you can configure each phase of your Scheduled Rollout. To add phases to your rollout, click **Add Phase** and configure as many phases as you want. 
+
+Each scheduled rollout phase includes- 
+- Rollout date
+- Rollout time*
+- Pass percentage
+
+*Please note that rollout times are available in 15 minute increments. Additionally, each configured phase represents a discrete increase to the next rollout percentage, not a gradual rollout amortized over the course of the entire phase. 
+
+Upon saving, you will be able to see a preview of the rollout and commit the schedule:
+![image](https://github.com/user-attachments/assets/f1fd04b3-e6a0-4e32-91a8-fb24279ab923)
+
+### Resizing Logic
+During each phase, the rollout group is resized to the desired percentage, and all other groups are scaled proportionally in the following way:
+
+You have *n* groups with sizes:
+
+G₁, G₂, ..., Gₙ
+
+Their total sum is:
+
+100 = G₁ + G₂ + ... + Gₙ.
+
+Now, suppose you **set one group** (say the k-th group) to a **new size** Gₖ′. Let
+
+Delta = Gₖ′ − Gₖ.
+
+Because the **grand total** must remain 100, you need to **adjust the remaining groups** proportionally. Let
+
+T = 100 - Gₖ
+
+Then, for each group i ≠ k,
+
+Gᵢ′ = Gᵢ − (Delta × Gᵢ / T).
+
+In other words, each group other than k is decreased (or increased, if Delta < 0) by its fraction of T.
+
+### A few notes
+1. Experiment results will be frozen to a snapshot of when the rollout decision is made.
+2. Rolling out a group to 100% does not fully ship the experiment, meaning configurations such as experiment/layer allocation, targeting, overrides, and so on will not change. To fully ship the experiment go through the usual flow without specifying any rollouts.
+3. Groups can be rolled out and back, but the rollout % cannot be lower than the group's original size.
+
 ## Shipping with a Holdback
 
 Shipping with holdback lets you release an experiment variant (the “shipped” group) to most of your users while keeping a percentage in the control group for ongoing comparisons. Here’s how it works:
+
 
 1. Make a decision and select a group to ship: From the Make Decision dropdown, choose which variant you want to ship.
 2. Turn on the Ship with holdback option and specify the percentage of users you want to remain in the control (holdback) group.
