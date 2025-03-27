@@ -11,7 +11,7 @@ const config: Config = {
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/2025_Statsig_Symbol_Black.svg",
+  favicon: "img/favicon.svg",
   organizationName: "statsig", // Usually your GitHub org/user name.
   projectName: "statsig-io/docs", // Usually your repo name.
 

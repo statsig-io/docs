@@ -4,7 +4,7 @@ title: Experiment on custom Unit ID types
 keywords:
   - owner:vm
 last_update:
-  date: 2024-10-02
+  date: 2025-03-26
 ---
 
 In certain cases, you may want to randomize experiment bucketing using a custom Unit ID instead of the default `userID` or Statsig-generated Stable ID. For instance, if you're running a task management tool for companies and want to experiment on company-wide behaviors, you might use `companyID` as the Unit ID. This ensures all users from the same company get the same experience, allowing you to measure overall productivity impacts at a company level.
@@ -26,9 +26,9 @@ Follow these three simple steps to set up an experiment with a custom Unit ID. I
 
 1. **Log into the Statsig Console**: Head over to [Statsig Console](https://console.statsig.com/) and navigate to **Project Settings**.
    
-2. **Find Custom Unit IDs**: Under the **Basic Settings** tab, look for the **Custom Unit IDs** section.
-
-    ![Custom Unit ID Settings](https://user-images.githubusercontent.com/74584483/175827590-147ff9c8-ca02-4298-bca5-96583904aec5.png)
+2. **Find Custom Unit IDs**: Under **Manage Account** > **Info**, look for the **Custom Unit IDs** section.
+    
+    ![Custom Unit ID Settings](https://github.com/user-attachments/assets/e37648c5-471e-47b4-9d95-16c39ecca477)
 
 3. **Add a New Custom Unit ID**:
     - Click the **Edit** button.
