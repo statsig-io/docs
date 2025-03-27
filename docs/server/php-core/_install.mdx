@@ -14,12 +14,20 @@ composer require statsig/statsig-php-core
 Add post-install and post-update scripts in composer.json: 
 
 ```json
-"post-install-cmd": [
-  "cd vendor/statsig/statsig-php-core && php post-install.php"
-],
-"post-update-cmd": [
-  "cd vendor/statsig/statsig-php-core && php post-install.php"
-]
+// composer.json
+{
+  "name": "awesome-php-project",
+  ...
+  "scripts": {
+    ...
+    "post-install-cmd": [
+      "cd vendor/statsig/statsig-php-core && php post-install.php"
+    ],
+    "post-update-cmd": [
+      "cd vendor/statsig/statsig-php-core && php post-install.php"
+    ]
+  }
+}
 ```
 
 Next, you'll want to add a script to sync your Statsig configs and flush your events, see example files on Statsig's Github [here](https://github.com/daniel-statsig/statsig-php-core-slim-example/tree/main/bin)
