@@ -18,7 +18,7 @@ In many cases, companies will have a primary source-of-truth table about user en
 
 First, enter the table path and optionally a partition column to use for date partitioning:
 
-![configuration](/static/img/metric_examples_configuration.png)
+![configuration](/img/metric_examples_configuration.png)
 
 Then, configure your timestamp field and ID types. Add any custom SQL aliases for other users, e.g. dividing revenue by 100 to convert from cents to dollars.
 ![initials](/static/img/metric_examples_initials.png)
@@ -36,7 +36,7 @@ First, Statsig aggregates each unit-level record across the days they are enroll
 Then, Statsig will calculate the mean unit-level revenue per experiment group, imputing 0s for all exposed users with no revenue.
 
 Statsig provides a description of this in-product for any user who wants to learn more:
-![aggregation_description](/static/img/metric_examples_configuration.png)
+![aggregation_description](/img/metric_examples_configuration.png)
 
 ## Current Account Value
 
