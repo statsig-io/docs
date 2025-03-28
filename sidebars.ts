@@ -439,121 +439,117 @@ const sidebars: SidebarsConfig = {
           label: "Experimentation",
           className: "xp-icon sidebar-icon",
           items: [
+            "experiments-plus/introduction",
             {
               type: "category",
-              label: "Experiments",
+              label: "Create & Implement",
               items: [
-                "experiments-plus/introduction",
-                {
-                  type: "category",
-                  label: "Create & Implement",
-                  items: [
-                    "experiments-plus/create-new",
-                    "experiments-plus/power-analysis",
-                    "experiments-plus/implement",
-                    "experiments-plus/overrides",
-                    "experiments-plus/getting-group",
-                    "experiments-plus/monitor",
-                    "experiments/quality-score",
-                  ]
-                },
-                {
-                  type: "category",
-                  label: "Configure your stats",
-                  items: [
-                    "experiments-plus/sequential-testing",
-                    "experiments-plus/switchback-tests",
-                    "experiments-plus/stratified-sampling",
-                    "experiments-plus/bayesian",
-                    "stats-engine/methodologies/one-sided-test",
-                    "ai-ml/ai-prompt-experiment",
-                    "guides/aa-test",
-                  ]
-                },
-                {
-                  type: "category",
-                  label: "Our Stats Methods",
-                  items: [
-                    "experiments-plus/bots",
-                    {
-                      type: "category",
-                      label: "Reducing False Positives",
-                      items: [
-                        "stats-engine/methodologies/bonferroni-correction",
-                        "stats-engine/methodologies/benjamini–hochberg-procedure",
-                      ]
-                    },
-                    {
-                      type: "category",
-                      label: "Health Checks",
-                      items: [
-                        "stats-engine/methodologies/srm-checks",
-                        "stats-engine/pre-experiment-bias",
-                      ]
-                    },
-                    {
-                      type: "category",
-                      label: "Variance Reduction",
-                      items: [
-                        "stats-engine/variance-reduction",
-                        "stats-engine/methodologies/cuped",
-                        "stats-engine/methodologies/winsorization",
-                      ]
-                    },
-                    {
-                      type: "category",
-                      label: "How we Calculate:",
-                      items: [
-                        "stats-engine/confidence-intervals",
-                        "stats-engine/p-value",
-                        "stats-engine/metric-deltas",
-                        "stats-engine/variance",
-                        "stats-engine/methodologies/delta-method",
-                      ]
-                    },
-                  ]
-                },
-                {
-                  type: "category",
-                  label: "Reading your Results",
-                  items: [
-                    "experiments-plus/read-results",
-                    "pulse/introduction",
-                    "pulse/read-pulse",
-                    "pulse/userproperties",
-                    "pulse/drill-down",
-                    "pulse/export",
-                    "pulse/best-practices",
-                    "pulse/faq",
-                  ]
-                },
-                {
-                  type: "category",
-                  label: "Deeper Analysis",
-                  items: [
-                    "pulse/custom-queries",
-                    "insights/aggregated-impact",
-                    "stats-engine/topline-impact",
-                    "experiments/meta-analysis",
-                    "experiments-plus/differential-impact-detection",
-                    "experiments-plus/interaction-detection",
-                    "experiments-plus/reconciling-experiment-results",
-                  ]
-                },
-                {
-                  type: "category",
-                  label: "Ending an Experiment",
-                  items: [
-                    "experiments-plus/ending-experiment",
-                    "experiments-plus/make-decision",
-                    "experiments-plus/stop-assignments",
-                    "experiments-plus/conclude-experiment-defer-decision",
-                    "experiments-plus/abandon",
-                    "experiments-plus/disable-group",
-                  ]
-                },
-              ],
+                "experiments-plus/create-new",
+                "experiments-plus/power-analysis",
+                "experiments-plus/implement",
+                "experiments-plus/overrides",
+                "experiments-plus/getting-group",
+                "experiments-plus/monitor",
+                "experiments/quality-score",
+              ]
             },
+            {
+              type: "category",
+              label: "Configure Your Stats",
+              items: [
+                "experiments-plus/sequential-testing",
+                "experiments-plus/switchback-tests",
+                "experiments-plus/stratified-sampling",
+                "experiments-plus/bayesian",
+                "stats-engine/methodologies/one-sided-test",
+                "ai-ml/ai-prompt-experiment",
+                "guides/aa-test",
+              ]
+            },
+            {
+              type: "category",
+              label: "Our Stats Methods",
+              items: [
+                "experiments-plus/bots",
+                {
+                  type: "category",
+                  label: "Reducing False Positives",
+                  items: [
+                    "stats-engine/methodologies/bonferroni-correction",
+                    "stats-engine/methodologies/benjamini–hochberg-procedure",
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Health Checks",
+                  items: [
+                    "stats-engine/methodologies/srm-checks",
+                    "stats-engine/pre-experiment-bias",
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Variance Reduction",
+                  items: [
+                    "stats-engine/variance-reduction",
+                    "stats-engine/methodologies/cuped",
+                    "stats-engine/methodologies/winsorization",
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "How we Calculate:",
+                  items: [
+                    "stats-engine/confidence-intervals",
+                    "stats-engine/p-value",
+                    "stats-engine/metric-deltas",
+                    "stats-engine/variance",
+                    "stats-engine/methodologies/delta-method",
+                  ]
+                },
+              ]
+            },
+            {
+              type: "category",
+              label: "Reading Your Results",
+              items: [
+                "experiments-plus/read-results",
+                "pulse/introduction",
+                "pulse/read-pulse",
+                "pulse/userproperties",
+                "pulse/drill-down",
+                "pulse/export",
+                "pulse/best-practices",
+                "pulse/faq",
+              ]
+            },
+            {
+              type: "category",
+              label: "Deeper Analysis",
+              items: [
+                "pulse/custom-queries",
+                "insights/aggregated-impact",
+                "stats-engine/topline-impact",
+                "experiments/meta-analysis",
+                "experiments-plus/differential-impact-detection",
+                "experiments-plus/interaction-detection",
+                "experiments-plus/reconciling-experiment-results",
+              ]
+            },
+            {
+              type: "category",
+              label: "Ending An Experiment",
+              items: [
+                "experiments-plus/ending-experiment",
+                "experiments-plus/make-decision",
+                "experiments-plus/stop-assignments",
+                "experiments-plus/conclude-experiment-defer-decision",
+                "experiments-plus/abandon",
+                "experiments-plus/disable-group",
+              ]
+            },
+            "layers/introduction",
+            "holdouts/introduction",
             {
               type: "category",
               label: "Bandit Experiments",
@@ -591,8 +587,6 @@ const sidebars: SidebarsConfig = {
                 "autotune/using-bandits",
               ],
             },
-            "layers/introduction",
-            "holdouts/introduction",
           ],
         },
         {

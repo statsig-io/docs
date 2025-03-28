@@ -1,7 +1,7 @@
 ---
 title: Experiments Overview
 
-sidebar_label: Overview
+sidebar_label: Experiments Overview
 slug: /experiments-plus
 keywords:
   - owner:vm
