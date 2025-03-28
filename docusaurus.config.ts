@@ -145,6 +145,10 @@ const config: Config = {
       {
         redirects: [
           {
+            from: "/insights/",
+            to: "/aggregated-impact",
+          },
+          {
             from: "/dynamic-config/implement/",
             to: "/dynamic-config/working-with",
           },
