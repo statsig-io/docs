@@ -14,7 +14,7 @@ When using a pre-trained large language model, several inputs influence user exp
 
 The included Python code offers an example of the simple but powerful interaction between OpenAI's GPT and Statsig to experiment with model inputs and log user events. This example uses OpenAI's ChatCompletion feature to answer questions, plus a Statsig integration to experiment with model versions and log user feedback to the changes.
 
-This example assumes you have a funded OpenAI account, plus a Statsig experiment that varies the model selected between "gpt-3.5-turbo" and "gpt-4". For more info on setting up a Statsig experiment, see the [experiments](/experiments-plus/working-with) page.
+This example assumes you have a funded OpenAI account, plus a Statsig experiment that varies the model selected between "gpt-3.5-turbo" and "gpt-4". For more info on setting up a Statsig experiment, see the [experiments](/experiments-plus) page.
 
 ## Code Breakdown
 
