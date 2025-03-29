@@ -455,22 +455,19 @@ const sidebars: SidebarsConfig = {
             },
             {
               type: "category",
-              label: "Configure Your Stats",
+              label: "Configure Stats Methods",
               items: [
-                "experiments-plus/sequential-testing",
-                "experiments-plus/switchback-tests",
-                "experiments-plus/stratified-sampling",
-                "experiments-plus/bayesian",
-                "stats-engine/methodologies/one-sided-test",
-                "ai-ml/ai-prompt-experiment",
-                "guides/aa-test",
-              ]
-            },
-            {
-              type: "category",
-              label: "Our Stats Methods",
-              items: [
-                "experiments-plus/bots",
+                {
+                  type: "category",
+                  label: "Experiment Types",
+                  items: [
+                    "experiments-plus/sequential-testing",
+                    "experiments-plus/switchback-tests",
+                    "stats-engine/methodologies/one-sided-test",
+                    "ai-ml/ai-prompt-experiment",
+                    "guides/aa-test",
+                  ]
+                },
                 {
                   type: "category",
                   label: "Reducing False Positives",
@@ -505,27 +502,29 @@ const sidebars: SidebarsConfig = {
                     "stats-engine/metric-deltas",
                     "stats-engine/variance",
                     "stats-engine/methodologies/delta-method",
+                    "experiments-plus/bots",
                   ]
                 },
+                "experiments-plus/stratified-sampling",
+                "experiments-plus/bayesian",
               ]
             },
             {
               type: "category",
-              label: "Reading Your Results",
+              label: "Reading Experiment Results",
               items: [
-                "experiments-plus/read-results",
-                "pulse/introduction",
                 "pulse/read-pulse",
                 "pulse/userproperties",
                 "pulse/drill-down",
                 "pulse/export",
                 "pulse/best-practices",
+                "experiments-plus/reconciling-experiment-results",
                 "pulse/faq",
               ]
             },
             {
               type: "category",
-              label: "Deeper Analysis",
+              label: "Further Analysis",
               items: [
                 "pulse/custom-queries",
                 "insights/aggregated-impact",
@@ -533,7 +532,6 @@ const sidebars: SidebarsConfig = {
                 "experiments/meta-analysis",
                 "experiments-plus/differential-impact-detection",
                 "experiments-plus/interaction-detection",
-                "experiments-plus/reconciling-experiment-results",
               ]
             },
             {
