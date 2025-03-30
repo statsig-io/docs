@@ -65,7 +65,7 @@ If cost is a high concern, being judicious about which results you schedule vs. 
 
 ### Leverage Statsig's Advanced Options
 
-By default, Statsig runs a thorough analysis including historical timeseries and context on your results. 
+By default, Statsig runs a thorough analysis including historical timeseries and context on your results.
 
 ### Utilize Metric Level Reloads
 
@@ -131,14 +131,15 @@ If a pulse load fails, you can find all of the SQL queries and associated error 
 - A table not existing - usually due to the Statsig user not having permission on a new table
 
 ## Turbo Mode
-Turbo Mode  skips some enrichment calculations (in particular some time series rollups) in order to very cheaply compute the latest snapshot of your data. With this, customers have run experiments on 150+ million users in less than 5 minutes on a snowflake S cluster. 
+
+[Turbo Mode](../features/turbo) skips some enrichment calculations (in particular some time series rollups) in order to very cheaply compute the latest snapshot of your data. With this, customers have run experiments on 150+ million users in less than 5 minutes on a snowflake S cluster.
 
 ### Ask!
 
 Statsig's support is very responsive, and will be happy to help you fix your issue and build tools to prevent it in the future - whether it's due to system or user error.
 
-
 ## Compute Cost Transparency
+
 Statsig Warehouse Native now lets you get a birds eye view across the compute time experiment analysis incurs in your warehouse. Break this down by experiment, metric source or type of query to find what to optimize.
 Common customers we've designed the dashboard to be able to address include
 What Metric Sources take the most compute time (useful to focus optimization effort here; see tips here)
@@ -152,21 +153,21 @@ This is built using Statsig Product Analytics - you can customize any of these c
 
 At the end of every Pulse load / DAG, we'll upload a single row to the `pipeline_overview` table for each job executed as part of that run. This table has the following schema:
 
-|Column | Type | Description|
-|-|-|-|
-| ts | timestamp | Timestamp at which the DAG was created. |
-| job_type | string | Job type (see [Pipeline Overview](https://docs.statsig.com/statsig-warehouse-native/pipeline-overview/)) |
-| metric_source_id | string | Only applicable for 'Unit-Day Calculations' jobs - the ID of the metric source |
-| assignment_source_id | string | The Assignment Source ID of the experiment for which Pulse was loaded. |
-| job_status | string | The final state of the job (`fail` or `success`) |
-| metrics | string | Metrics processed by the job |
-| dag_state | string | Final state of the DAG (`success`, `partial_failure`, or `failure`) |
-| dag_type | string | Type of DAG (`full`, `incremental`, `metric`, `power`, `custom_query`, `autotune`, `assignment_source`, `stratified_sampling`)|
-| experiment_id | string | ID of the experiment for which Pulse was loaded, if applicable |
-| dag_start_ds | string | Start of the date range being loaded |
-| dag_end_ds | string | End of the date range being loaded |
-| wall_time | number | Total time elapsed between DAG start and finish, in milliseconds |
-| turbo_mode | boolean | Whether the DAG was run in Turbo Mode |
-| dag_id | string | Internal identifier for the DAG |
-| dag_duration | number | Number of days in the date range being loaded |
-| is_scheduled | boolean | Whether the DAG was triggered by a scheduled run |
+| Column               | Type      | Description                                                                                                                    |
+| -------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| ts                   | timestamp | Timestamp at which the DAG was created.                                                                                        |
+| job_type             | string    | Job type (see [Pipeline Overview](https://docs.statsig.com/statsig-warehouse-native/pipeline-overview/))                       |
+| metric_source_id     | string    | Only applicable for 'Unit-Day Calculations' jobs - the ID of the metric source                                                 |
+| assignment_source_id | string    | The Assignment Source ID of the experiment for which Pulse was loaded.                                                         |
+| job_status           | string    | The final state of the job (`fail` or `success`)                                                                               |
+| metrics              | string    | Metrics processed by the job                                                                                                   |
+| dag_state            | string    | Final state of the DAG (`success`, `partial_failure`, or `failure`)                                                            |
+| dag_type             | string    | Type of DAG (`full`, `incremental`, `metric`, `power`, `custom_query`, `autotune`, `assignment_source`, `stratified_sampling`) |
+| experiment_id        | string    | ID of the experiment for which Pulse was loaded, if applicable                                                                 |
+| dag_start_ds         | string    | Start of the date range being loaded                                                                                           |
+| dag_end_ds           | string    | End of the date range being loaded                                                                                             |
+| wall_time            | number    | Total time elapsed between DAG start and finish, in milliseconds                                                               |
+| turbo_mode           | boolean   | Whether the DAG was run in Turbo Mode                                                                                          |
+| dag_id               | string    | Internal identifier for the DAG                                                                                                |
+| dag_duration         | number    | Number of days in the date range being loaded                                                                                  |
+| is_scheduled         | boolean   | Whether the DAG was triggered by a scheduled run                                                                               |
