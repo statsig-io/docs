@@ -746,6 +746,7 @@ const sidebars: SidebarsConfig = {
                     id: "statsig-warehouse-native/features/reloads",
                   },
                   items: [
+                    "statsig-warehouse-native/features/turbo",
                     "statsig-warehouse-native/features/full-reloads",
                     "statsig-warehouse-native/features/incremental-reloads",
                     "statsig-warehouse-native/features/metric-reloads",
