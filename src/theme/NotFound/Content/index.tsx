@@ -17,6 +17,15 @@ export default function NotFoundContent({className}: Props): JSX.Element {
     } catch (error) {
     }
   }, []);
+
+  // TODO(joe/ian): Remove this eventually
+  if (window.location.pathname === '/server-core/rust-core//') {
+    void window.location.replace('/server-core/rust-core');
+  }
+  if (window.location.pathname === '/server-core/elixir-core//') {
+    void window.location.replace('/server-core/elixir-core');
+  }
+
   return (
     <main className={clsx('container margin-vert--xl', className)}>
       <div className="row">
