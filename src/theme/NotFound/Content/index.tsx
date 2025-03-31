@@ -19,13 +19,13 @@ export default function NotFoundContent({ className }: Props): JSX.Element {
 
   // TODO(joe/ian): Remove this eventually
   if (
-    typeof window !== null &&
+    typeof window !== "undefined" &&
     window.location.pathname === "/server-core/rust-core//"
   ) {
     void window.location.replace("/server-core/rust-core");
   }
   if (
-    typeof window !== null &&
+    typeof window !== "undefined" &&
     window.location.pathname === "/server-core/elixir-core//"
   ) {
     void window.location.replace("/server-core/elixir-core");
