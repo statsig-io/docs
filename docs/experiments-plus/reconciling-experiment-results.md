@@ -1,6 +1,6 @@
 ---
-title: Reconciling Experiment Results
-sidebar_label: Reconciling Experiment Results
+title: Reconciling Results
+sidebar_label: Reconciling Results
 slug: /experiments-plus/reconciling-experiment-results
 keywords:
   - owner:vm

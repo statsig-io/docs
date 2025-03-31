@@ -68,3 +68,20 @@ If you were trying to check group names, you would have to go back and add condi
 ```
 
 As you can see, using parameters directly when you are coding is much simpler and more flexible.  It makes your code dynamic and offloads experimentation setup to the Statsig console.  The group names you configure to describe each set of parameters will make it easy to compare one group against the other when it's time to analyze the results of your experiment.
+
+## Rules
+
+The diagnostics stream is meant to be used for debugging your integration, and understanding which groups a user is being bucketed into.  The following defines the different Rules you will see, and what they mean.
+
+
+| **Rule**                      | **Meaning**                                                                                             |
+|-------------------------------|---------------------------------------------------------------------------------------------------------|
+| Not started                   | The experiment has not been started, so the allocation groups are not determined yet                    |
+| Holdout                       | The user is in a holdout that this experiment references, so they are not in the experiment             |
+| Layer Assignment              | The user is not allocated to this experiment because they are bucketed to a different part of the Layer |
+| Targeting Gate                | The user does not meet the requirements for the targeting gate                                          |
+| Not Allocated                 | The user is not allocated to this experiment because they do not meet the rollout %                     |
+| `{group name}{override name}`   | The user was forcefully bucketed into a given group by an experiment override                           |
+| `{group name}`                  | The user was bucketed into this experiment group                                                        |
+| Abandoned                     | "Make Decision" selected the control group. This experiment has been abandoned.                        |
+| `{group name}` (Launched)       | "Make Decision" selected this group as the launch group, so the user is seeing the launched experience. |

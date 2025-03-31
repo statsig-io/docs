@@ -1,7 +1,7 @@
 ---
-title: Experimentation Fundamentals
+title: Experiments Overview
 
-sidebar_label: Fundamentals
+sidebar_label: Experiments Overview
 slug: /experiments-plus
 keywords:
   - owner:vm
@@ -22,7 +22,7 @@ Experiments are ideal when you want to:
 - Run mutually exclusive experiments in parallel.
 - Measure the direct impact of changes on product and business metrics.
 
-For a deeper understanding of using experiments in Statsig, see "[Working with Experiments](/experiments-plus/working-with)" section.
+For a deeper understanding of using experiments in Statsig, see "[Experiments Overview](/experiments-plus)" section.
 
 ---
 
@@ -74,7 +74,7 @@ For more detailed information on designing, monitoring, and analyzing experiment
 
 ## Choosing the Right Randomization Unit
 
-When designing an experiment, selecting the appropriate **randomization unit** is crucial for ensuring accurate results and consistent user experiences. Below are some common units of randomization and when to use them.
+The Randomization Unit is the variable you choose that determines how users will be distributed across your groups (e.g., test and control). When you set a variable as the Randomization Unit, any value for that variable will *always* see the same experience. This Unit is also the unit of reference for your metrics. If you choose userID as your Randomization Unit, the userID will deterministically bucket each user, and will be the basis of measurement - your analysis might look at Revenue per userID. Below are some common units of randomization and when to use them.
 
 ### 1. User Identifiers
 
@@ -129,3 +129,10 @@ Use exploratory experiments to discover entirely new directions. These experimen
 - Test multiple related hypotheses to explore a broader business strategy.
 
 ---
+
+## Tutorials
+- [Your first A/B test](/guides/abn-tests)
+- [Create an experiment using a userID](/experiments-plus/create-new)
+- [Create an experiment using a customID](/guides/experiment-on-custom-id-types)
+- [Use a language specific Statsig SDK to implement an experiment in your application](/experiments-plus/implement)
+- [Monitor an experiment](/experiments-plus/monitor)

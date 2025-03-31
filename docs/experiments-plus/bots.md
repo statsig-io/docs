@@ -1,6 +1,6 @@
 ---
 title: Bots
-sidebar_label: Bots
+sidebar_label: Bot Traffic
 slug: /feature-flags/bots
 keywords:
   - owner:vm

@@ -24,7 +24,7 @@ than the control group in the week before exposure for this metric
 
 ![image](https://user-images.githubusercontent.com/102695539/246545035-22ff2db6-9c08-4227-a53d-8faa8feb5e92.png)
 
-Statsig detects this bias by running the standard [pulse](../pulse) calculation on the pre-experiment term (looking back one week in cloud, and your configured CUPED lookback window in Warehouse Native), and calculating the p-value for the null hypothesis that the groups are identical.
+Statsig detects this bias by running the standard [pulse](/pulse/read-pulse) calculation on the pre-experiment term (looking back one week in cloud, and your configured CUPED lookback window in Warehouse Native), and calculating the p-value for the null hypothesis that the groups are identical.
 Relevant results will be flagged according to logic which balances awareness and false positives stemming from high numbers of scorecard metrics or groups.
 
 ### What to Do

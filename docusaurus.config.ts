@@ -145,6 +145,26 @@ const config: Config = {
       {
         redirects: [
           {
+            from: "/stats-engine/offlineaa",
+            to: "/guides/aa-test#offline-aa-tests",
+          },
+          {
+            from: "/pulse",
+            to: "/pulse/read-pulse",
+          },
+          {
+            from: "/experiments-plus/read-results",
+            to: "/pulse/read-pulse",
+          },
+          {
+            from: "/experiments-plus/rules",
+            to: "/experiments-plus/getting-group#rules",
+          },
+          {
+            from: "/experiments-plus/working-with",
+            to: "/experiments-plus",
+          },
+          {
             from: "/insights/",
             to: "/aggregated-impact",
           },

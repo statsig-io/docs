@@ -401,6 +401,14 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/web-active.svg");
 }
 
+.layer-icon::before {
+  background-image: url("/img/icons/sidebar/ai.svg");
+}
+
+.layer-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/ai-active.svg");
+}
+
 .data-icon::before {
   background-image: url("/img/icons/sidebar/data.svg");
 }

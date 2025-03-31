@@ -8,15 +8,17 @@ last_update:
   date: 2024-10-31
 ---
 
-To deploy your experiment, you'll need to:
+To deploy an experiment, you'll need to:
 1. Pull the experiment configurations in your application
 2. Log the events you'll want in your experiment results
 3. Test your experiment in development or a lower environment
 4. Click "Start"!
 
+Every experiment needs to expose users into more than one bucket (#1) and log metrics on their behavior after exposure (#2, called "log events"). Statsig automates many of the annoying parts of setting up an experiment, like writing the code you can use to assign buckets, and conducting analysis on the exposures and log events. The experimenter's job is to devise the experiments - and use our SDKs to accomplish #1 and #2. 
+
 ## Pulling experiment configurations from Statsig
 
-In the code snippets below, we illustrate experimenting on a product demo flow, where you might experiment to improve conversion through the funnel to demo completion. For more examples, see this guide on [your first a/b test](/guides/abn-tests), or check out the SDK documentation for the languages you'll be using.
+In the code snippets below, we illustrate experimenting on a product demo flow, where you might experiment to improve conversion through the funnel to demo completion. For full implementation details, check out the [SDK documentation](/sdks/getting-started) for the language you'll be using, or walkthrough our example guide for [your first a/b test](/guides/abn-tests).
 
 ```js
 const user = { userID: loggedInUserID };
