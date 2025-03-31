@@ -22,13 +22,17 @@ export default function NotFoundContent({ className }: Props): JSX.Element {
     typeof window !== "undefined" &&
     window.location.pathname === "/server-core/rust-core//"
   ) {
-    void window.location.replace("/server-core/rust-core");
+    void window.location.replace(
+      "/server-core/rust-core" + window.location.search
+    );
   }
   if (
     typeof window !== "undefined" &&
     window.location.pathname === "/server-core/elixir-core//"
   ) {
-    void window.location.replace("/server-core/elixir-core");
+    void window.location.replace(
+      "/server-core/elixir-core" + window.location.search
+    );
   }
 
   return (
