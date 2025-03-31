@@ -1,2 +1,4 @@
-/server-core/elixir-core// /server-core/elixir-core/
-/server-core/rust-core// /server-core/rust-core/
+/server-core/elixir-core// /server-core/elixir-core 200
+/server-core/rust-core// /server-core/rust-core 200
+/server-core/elixir-core/ /server-core/elixir-core 200
+/server-core/rust-core/ /server-core/rust-core 200
