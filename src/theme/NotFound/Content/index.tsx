@@ -40,7 +40,7 @@ export default function NotFoundContent({ className }: Props): JSX.Element {
               id="theme.NotFound.title"
               description="The title of the 404 page"
             >
-              Page Not Found!
+              Page Not Found
             </Translate>
           </Heading>
           <p>
