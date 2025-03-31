@@ -4,6 +4,319 @@ import { themes as prismThemes } from "prism-react-renderer";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 
+// Helper function to normalize URL paths (excluding protocol slashes)
+const normalizePath = (path) => {
+  if (!path) return path;
+  // Don't replace protocol double slashes (http://, https://, etc.)
+  return path.replace(/([^:])\/+/g, '$1/');
+};
+
+// Process all redirects to normalize their paths
+const normalizeRedirects = (redirects) => {
+  return redirects.map(redirect => {
+    if (typeof redirect.from === 'string' && typeof redirect.to === 'string') {
+      return {
+        from: normalizePath(redirect.from),
+        to: normalizePath(redirect.to)
+      };
+    } else if (Array.isArray(redirect.from) && typeof redirect.to === 'string') {
+      return {
+        from: redirect.from.map(path => normalizePath(path)),
+        to: normalizePath(redirect.to)
+      };
+    }
+    return redirect;
+  });
+};
+
+// Original redirects configuration
+const redirectsConfig = [
+  {
+    from: "/stats-engine/offlineaa",
+    to: "/guides/aa-test#offline-aa-tests",
+  },
+  {
+    from: "/pulse",
+    to: "/pulse/read-pulse",
+  },
+  {
+    from: "/experiments-plus/read-results",
+    to: "/pulse/read-pulse",
+  },
+  {
+    from: "/experiments-plus/rules",
+    to: "/experiments-plus/getting-group#rules",
+  },
+  {
+    from: "/experiments-plus/working-with",
+    to: "/experiments-plus",
+  },
+  {
+    from: "/insights/",
+    to: "/aggregated-impact",
+  },
+  {
+    from: "/dynamic-config/implement/",
+    to: "/dynamic-config/working-with",
+  },
+  {
+    from: "/metrics/metric-alerts",
+    to: "/product-analytics/alerts/",
+  },
+  {
+    from: "/statsig-warehouse-native/guides/assignment-sources/",
+    to: "/statsig-warehouse-native/configuration/assignment-sources",
+  },
+  {
+    from: "/guides/experiment-analysis/",
+    to: "/statsig-warehouse-native/introduction",
+  },
+  {
+    from: "/sdks/sdks-overview",
+    to: "/sdks/getting-started",
+  },
+  {
+    from: "/statsig-warehouse-native",
+    to: "/statsig-warehouse-native/introduction",
+  },
+  {
+    from: "/debugging",
+    to: "/sdk/debugging",
+  },
+  {
+    from: "/messages/serverRequiredUserID/",
+    to: "/concepts/user#why-is-an-id-always-required-for-server-sdks",
+  },
+  {
+    from: "/client/introduction/javascript-sdk",
+    to: "/client/javascript-sdk",
+  },
+  {
+    from: "/guides/landing-page-experiments",
+    to: "/guides/sidecar-experiments/introduction",
+  },
+  {
+    from: "/events-explorer",
+    to: "/product-analytics/drilldown",
+  },
+  {
+    from: "/server/concepts/user/",
+    to: "/concepts/user",
+  },
+  {
+    from: "/client/concepts/user/",
+    to: "/concepts/user",
+  },
+  {
+    from: "/client/javascript-sdk/react/init-strategies",
+    to: "/client/concepts/initialize",
+  },
+  {
+    from: "/client/concepts/bootstrapping",
+    to: "/client/concepts/initialize",
+  },
+  {
+    from: "/experiments-plus/experimentation/why-experiment",
+    to: "/experiments-plus#why-experiment",
+  },
+  {
+    from: "/experiments-plus/experimentation/scenarios",
+    to: "/experiments-plus#scenarios-for-experimentation",
+  },
+  {
+    from: "/experiments-plus/experimentation/common-terms",
+    to: "/experiments-plus#key-concepts-in-experimentation",
+  },
+  {
+    from: "/experiments-plus/experimentation/choosing-randomization-unit",
+    to: "/experiments-plus#choosing-the-right-randomization-unit",
+  },
+  {
+    from: "/js-migration",
+    to: "/client/javascript-sdk/migrating-from-statsig-js",
+  },
+  {
+    from: "/js-migration-rn",
+    to: "/client/javascript-sdk/migrating-from-statsig-js",
+  },
+  {
+    from: "/js-migration-expo",
+    to: "/client/javascript-sdk/migrating-from-statsig-js",
+  },
+  {
+    from: "/js-migration-react",
+    to: "/client/javascript-sdk/migrating-from-statsig-react",
+  },
+  {
+    from: "/layers/js-tutorial",
+    to: "/client/javascript-sdk#layers",
+  },
+  {
+    from: "/feature-flags/implement",
+    to: "/",
+  },
+  {
+    from: "/feature-flags/implement/client",
+    to: "/",
+  },
+  {
+    from: "/feature-flags/implement/server",
+    to: "/",
+  },
+  {
+    from: "/feature-flags/implement/http-api",
+    to: "/",
+  },
+  {
+    from: "/client/jsClientSDK",
+    to: "/client/javascript-sdk",
+  },
+  {
+    from: "/client/reactSDK",
+    to: "/client/javascript-sdk/react",
+  },
+  {
+    from: "/client/reactNative",
+    to: "/client/javascript-sdk/react-native",
+  },
+  {
+    from: "/client/reactNativeSDK",
+    to: "/client/javascript-sdk/react-native",
+  },
+  {
+    from: "/client/reactNativeExpoSDK",
+    to: "/client/javascript-sdk/expo",
+  },
+  {
+    to: "/",
+    from: "/category/walkthrough-guides",
+  },
+  {
+    to: "/client/javascript-sdk/next-js",
+    from: "/guides/nextjs-feature-flags",
+  },
+  {
+    to: "/client/javascript-sdk/next-js",
+    from: "/guides/nextjs-page-router-feature-flags",
+  },
+  {
+    to: "/client/javascript-sdk/next-js",
+    from: "/client/javascript-sdk/next-js-app-router",
+  },
+  {
+    to: "/client/javascript-sdk/next-js",
+    from: "/client/javascript-sdk/next-js-pages-router",
+  },
+  {
+    to: "/product-analytics/drilldown",
+    from: "/mex/drilldown",
+  },
+  {
+    to: "/product-analytics/dashboards",
+    from: "/mex/dashboards",
+  },
+  {
+    to: "/product-analytics/funnels",
+    from: "/mex/funnels",
+  },
+  {
+    to: "/product-analytics/retention",
+    from: "/mex/retention",
+  },
+  {
+    to: "/product-analytics/overview",
+    from: "/mex/overview",
+  },
+  {
+    to: "/product-analytics/overview",
+    from: "/product-analytics",
+  },
+  {
+    to: "/product-analytics/overview",
+    from: "/mex",
+  },
+  {
+    to: "/integrations/terraform/introduction",
+    from: "/integrations/terraform",
+  },
+  {
+    to: "/feature-flags/working-with",
+    from: "/feature-gates/working-with",
+  },
+  {
+    to: "/feature-flags/create-new",
+    from: "/feature-gates/create-new",
+  },
+  {
+    to: "/feature-flags/working-with",
+    from: ["/feature-gates", "/feature-flags"],
+  },
+  {
+    to: "/feature-flags/add-rule",
+    from: "/feature-gates/add-rule",
+  },
+  {
+    to: "/feature-flags/test-gate",
+    from: "/feature-gates/test-gate",
+  },
+  {
+    to: "/feature-flags/overrides",
+    from: "/feature-gates/overrides",
+  },
+  {
+    to: "/feature-flags/scheduled-rollouts",
+    from: "/feature-gates/scheduled-rollouts",
+  },
+  {
+    to: "/feature-flags/conditions",
+    from: "/feature-gates/conditions",
+  },
+  {
+    to: "/feature-flags/view-exposures",
+    from: "/feature-gates/view-exposures",
+  },
+  {
+    to: "/feature-flags/feature-flags-lifecycle",
+    from: "/feature-gates/feature-gates-lifecycle",
+  },
+  {
+    to: "/feature-flags/permanent-and-stale-gates",
+    from: "/feature-gates/permanent-and-stale-gates",
+  },
+  {
+    to: "/feature-flags/best-practices",
+    from: "/feature-gates/best-practices",
+  },
+  {
+    to: "/",
+    from: "/feature-gates/implement",
+  },
+  {
+    to: "/",
+    from: "/feature-gates/implement/client",
+  },
+  {
+    to: "/",
+    from: "/feature-gates/implement/server",
+  },
+  {
+    to: "/",
+    from: "/feature-gates/implement/http-api",
+  },
+  {
+    to: "/product-analytics/overview",
+    from: "/metrics/events-explorer",
+  },
+  {
+    to: "/experiments-plus/stop-assignments",
+    from: "/experiments-plus/pause-assignment",
+  },
+  {
+    to: "/console-api/all-endpoints-generated",
+    from: "/console-api/all-endpoints",
+  },
+];
+
 const config: Config = {
   title: "Statsig Docs",
   tagline: "Ship faster!",
@@ -40,6 +353,26 @@ const config: Config = {
   ],
 
   plugins: [
+    // Server-side path normalization plugin
+    function normalizeServerPaths() {
+      return {
+        name: "docusaurus-plugin-normalize-server-paths",
+        // Used for server-side URL normalization
+        configureServer(app) {
+          app.use((req, res, next) => {
+            if (req.url && req.url.includes('//')) {
+              req.url = normalizePath(req.url);
+            }
+            next();
+          });
+        },
+        // Transform URLs on page generation (server-side)
+        async loadContent() {
+          // This runs on the server when Docusaurus is building the site
+          return {}; // No content to return
+        },
+      };
+    },
     function statsig() {
       const isProd = process.env.NODE_ENV === "production";
       const tier = isProd ? "production" : "development";
@@ -143,292 +476,20 @@ const config: Config = {
     [
       "@docusaurus/plugin-client-redirects",
       {
-        redirects: [
-          {
-            from: "/stats-engine/offlineaa",
-            to: "/guides/aa-test#offline-aa-tests",
-          },
-          {
-            from: "/pulse",
-            to: "/pulse/read-pulse",
-          },
-          {
-            from: "/experiments-plus/read-results",
-            to: "/pulse/read-pulse",
-          },
-          {
-            from: "/experiments-plus/rules",
-            to: "/experiments-plus/getting-group#rules",
-          },
-          {
-            from: "/experiments-plus/working-with",
-            to: "/experiments-plus",
-          },
-          {
-            from: "/insights/",
-            to: "/aggregated-impact",
-          },
-          {
-            from: "/dynamic-config/implement/",
-            to: "/dynamic-config/working-with",
-          },
-          {
-            from: "/metrics/metric-alerts",
-            to: "/product-analytics/alerts/",
-          },
-          {
-            from: "/statsig-warehouse-native/guides/assignment-sources/",
-            to: "/statsig-warehouse-native/configuration/assignment-sources",
-          },
-          {
-            from: "/guides/experiment-analysis/",
-            to: "/statsig-warehouse-native/introduction",
-          },
-          {
-            from: "/sdks/sdks-overview",
-            to: "/sdks/getting-started",
-          },
-          {
-            from: "/statsig-warehouse-native",
-            to: "/statsig-warehouse-native/introduction",
-          },
-          {
-            from: "/debugging",
-            to: "/sdk/debugging",
-          },
-          {
-            from: "/messages/serverRequiredUserID/",
-            to: "/concepts/user#why-is-an-id-always-required-for-server-sdks",
-          },
-          {
-            from: "/client/introduction/javascript-sdk",
-            to: "/client/javascript-sdk",
-          },
-          {
-            from: "/guides/landing-page-experiments",
-            to: "/guides/sidecar-experiments/introduction",
-          },
-          {
-            from: "/events-explorer",
-            to: "/product-analytics/drilldown",
-          },
-          {
-            from: "/server/concepts/user/",
-            to: "/concepts/user",
-          },
-          {
-            from: "/client/concepts/user/",
-            to: "/concepts/user",
-          },
-          {
-            from: "/client/javascript-sdk/react/init-strategies",
-            to: "/client/concepts/initialize",
-          },
-          {
-            from: "/client/concepts/bootstrapping",
-            to: "/client/concepts/initialize",
-          },
-          {
-            from: "/experiments-plus/experimentation/why-experiment",
-            to: "/experiments-plus#why-experiment",
-          },
-          {
-            from: "/experiments-plus/experimentation/scenarios",
-            to: "/experiments-plus#scenarios-for-experimentation",
-          },
-          {
-            from: "/experiments-plus/experimentation/common-terms",
-            to: "/experiments-plus#key-concepts-in-experimentation",
-          },
-          {
-            from: "/experiments-plus/experimentation/choosing-randomization-unit",
-            to: "/experiments-plus#choosing-the-right-randomization-unit",
-          },
-          {
-            from: "/js-migration",
-            to: "/client/javascript-sdk/migrating-from-statsig-js",
-          },
-          {
-            from: "/js-migration-rn",
-            to: "/client/javascript-sdk/migrating-from-statsig-js",
-          },
-          {
-            from: "/js-migration-expo",
-            to: "/client/javascript-sdk/migrating-from-statsig-js",
-          },
-          {
-            from: "/js-migration-react",
-            to: "/client/javascript-sdk/migrating-from-statsig-react",
-          },
-          {
-            from: "/layers/js-tutorial",
-            to: "/client/javascript-sdk#layers",
-          },
-          {
-            from: "/feature-flags/implement",
-            to: "/",
-          },
-          {
-            from: "/feature-flags/implement/client",
-            to: "/",
-          },
-          {
-            from: "/feature-flags/implement/server",
-            to: "/",
-          },
-          {
-            from: "/feature-flags/implement/http-api",
-            to: "/",
-          },
-          {
-            from: "/client/jsClientSDK",
-            to: "/client/javascript-sdk",
-          },
-          {
-            from: "/client/reactSDK",
-            to: "/client/javascript-sdk/react",
-          },
-          {
-            from: "/client/reactNative",
-            to: "/client/javascript-sdk/react-native",
-          },
-          {
-            from: "/client/reactNativeSDK",
-            to: "/client/javascript-sdk/react-native",
-          },
-          {
-            from: "/client/reactNativeExpoSDK",
-            to: "/client/javascript-sdk/expo",
-          },
-          {
-            to: "/",
-            from: "/category/walkthrough-guides",
-          },
-          {
-            to: "/client/javascript-sdk/next-js",
-            from: "/guides/nextjs-feature-flags",
-          },
-          {
-            to: "/client/javascript-sdk/next-js",
-            from: "/guides/nextjs-page-router-feature-flags",
-          },
-          {
-            to: "/client/javascript-sdk/next-js",
-            from: "/client/javascript-sdk/next-js-app-router",
-          },
-          {
-            to: "/client/javascript-sdk/next-js",
-            from: "/client/javascript-sdk/next-js-pages-router",
-          },
-          {
-            to: "/product-analytics/drilldown",
-            from: "/mex/drilldown",
-          },
-          {
-            to: "/product-analytics/dashboards",
-            from: "/mex/dashboards",
-          },
-          {
-            to: "/product-analytics/funnels",
-            from: "/mex/funnels",
-          },
-          {
-            to: "/product-analytics/retention",
-            from: "/mex/retention",
-          },
-          {
-            to: "/product-analytics/overview",
-            from: "/mex/overview",
-          },
-          {
-            to: "/product-analytics/overview",
-            from: "/product-analytics",
-          },
-          {
-            to: "/product-analytics/overview",
-            from: "/mex",
-          },
-          {
-            to: "/integrations/terraform/introduction",
-            from: "/integrations/terraform",
-          },
-          {
-            to: "/feature-flags/working-with",
-            from: "/feature-gates/working-with",
-          },
-          {
-            to: "/feature-flags/create-new",
-            from: "/feature-gates/create-new",
-          },
-          {
-            to: "/feature-flags/working-with",
-            from: ["/feature-gates", "/feature-flags"],
-          },
-          {
-            to: "/feature-flags/add-rule",
-            from: "/feature-gates/add-rule",
-          },
-          {
-            to: "/feature-flags/test-gate",
-            from: "/feature-gates/test-gate",
-          },
-          {
-            to: "/feature-flags/overrides",
-            from: "/feature-gates/overrides",
-          },
-          {
-            to: "/feature-flags/scheduled-rollouts",
-            from: "/feature-gates/scheduled-rollouts",
-          },
-          {
-            to: "/feature-flags/conditions",
-            from: "/feature-gates/conditions",
-          },
-          {
-            to: "/feature-flags/view-exposures",
-            from: "/feature-gates/view-exposures",
-          },
-          {
-            to: "/feature-flags/feature-flags-lifecycle",
-            from: "/feature-gates/feature-gates-lifecycle",
-          },
-          {
-            to: "/feature-flags/permanent-and-stale-gates",
-            from: "/feature-gates/permanent-and-stale-gates",
-          },
-          {
-            to: "/feature-flags/best-practices",
-            from: "/feature-gates/best-practices",
-          },
-          {
-            to: "/",
-            from: "/feature-gates/implement",
-          },
-          {
-            to: "/",
-            from: "/feature-gates/implement/client",
-          },
-          {
-            to: "/",
-            from: "/feature-gates/implement/server",
-          },
-          {
-            to: "/",
-            from: "/feature-gates/implement/http-api",
-          },
-          {
-            to: "/product-analytics/overview",
-            from: "/metrics/events-explorer",
-          },
-          {
-            to: "/experiments-plus/stop-assignments",
-            from: "/experiments-plus/pause-assignment",
-          },
-          {
-            to: "/console-api/all-endpoints-generated",
-            from: "/console-api/all-endpoints",
-          },
-        ],
+        // Use our helper to normalize all redirect paths
+        redirects: normalizeRedirects(redirectsConfig),
+        // Also handle creating redirects for paths with double slashes
+        createRedirects(existingPath) {
+          // Normalize the existing path
+          const normalizedPath = normalizePath(existingPath);
+          
+          // If the path was normalized, redirect the original path to the normalized one
+          if (normalizedPath !== existingPath && existingPath.includes('//')) {
+            return [existingPath];
+          }
+          
+          return undefined; // No additional redirects
+        },
       },
     ],
   ],
