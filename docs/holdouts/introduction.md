@@ -57,4 +57,5 @@ By default, holdouts are based on User ID.  To use a different ID type, select i
 
 ### Experiments
 * For users in holdout, if the experiment _is not in a Layer_, calls to get experiment parameters will always return the "default value" passed in code.
-* For users in holdout, if the experiment _is in a Layer_, calls to get experiment parameters will return the values defined in the Layer defaults in the Statsig console.
+* For users in holdout, if the experiment _is in a Layer_, calls to get experiment parameters will return the values defined in the Layer defaults in the Statsig console. Note that when you ship an experiment in a layer - this would normally update the layer defaults, however, users in the holdout will *not* see those defaults, with the layer instead having a new set of default parameters just for held-out users:
+![Layer Holdout Params](/img/layer_holout_params.png)
