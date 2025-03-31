@@ -74,7 +74,7 @@ For more detailed information on designing, monitoring, and analyzing experiment
 
 ## Choosing the Right Randomization Unit
 
-When designing an experiment, selecting the appropriate **randomization unit** is crucial for ensuring accurate results and consistent user experiences. Below are some common units of randomization and when to use them.
+The Randomization Unit is the variable you choose that determines how users will be distributed across your groups (e.g., test and control). When you set a variable as the Randomization Unit, any value for that variable will *always* see the same experience. This Unit is also the unit of reference for your metrics. If you choose userID as your Randomization Unit, the userID will deterministically bucket each user, and will be the basis of measurement - your analysis might look at Revenue per userID. Below are some common units of randomization and when to use them.
 
 ### 1. User Identifiers
 

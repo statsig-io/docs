@@ -461,7 +461,6 @@ const sidebars: SidebarsConfig = {
                   type: "category",
                   label: "Experiment Types",
                   items: [
-                    "experiments-plus/sequential-testing",
                     "experiments-plus/switchback-tests",
                     "stats-engine/methodologies/one-sided-test",
                     "ai-ml/ai-prompt-experiment",
@@ -506,6 +505,7 @@ const sidebars: SidebarsConfig = {
                   ]
                 },
                 "experiments-plus/stratified-sampling",
+                "experiments-plus/sequential-testing",
                 "experiments-plus/bayesian",
               ]
             },
@@ -589,6 +589,21 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
+          label: "Low-Code Experiments",
+          className: "layer-icon sidebar-icon",
+          items: [
+            "guides/sidecar-experiments/introduction",
+            "guides/sidecar-experiments/setup",
+            "guides/sidecar-experiments/creating-experiments",
+            "guides/sidecar-experiments/measuring-experiments",
+            "guides/sidecar-experiments/advanced-configurations",
+            "guides/sidecar-experiments/publishing-experiments",
+            "guides/sidecar-experiments/integrating-gtm",
+            "guides/aa-sidecar",
+          ],
+        },
+        {
+          type: "category",
           label: "Product Analytics",
           className: "chart-icon sidebar-icon",
           items: [
@@ -618,20 +633,6 @@ const sidebars: SidebarsConfig = {
           label: "Web Analytics",
           className: "web-icon sidebar-icon",
           items: ["webanalytics/overview"],
-        },
-        {
-          type: "category",
-          label: "No-code Experiments",
-          items: [
-            "guides/sidecar-experiments/introduction",
-            "guides/sidecar-experiments/setup",
-            "guides/sidecar-experiments/creating-experiments",
-            "guides/sidecar-experiments/measuring-experiments",
-            "guides/sidecar-experiments/advanced-configurations",
-            "guides/sidecar-experiments/publishing-experiments",
-            "guides/sidecar-experiments/integrating-gtm",
-            "guides/aa-sidecar",
-          ],
         },
         {
           type: "category",

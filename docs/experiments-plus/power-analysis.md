@@ -8,12 +8,16 @@ last_update:
   date: 2025-03-13
 ---
 
-The power analysis tool leverages the known mean and variance of a metric and the observed traffic volume to estimate the relationship between three variables:
+### What is Power Analysis?
+The Statsig Power Analysis Calculator helps pre-determine the experiment parameters needed to reach a statistically significant result. Often, the variable you're optimizing for is duration - how long your experiment runs - but Statsig's power calculator is flexible to other variables. Using the known mean and variance of a metric, and the observed traffic volume, the Power Analysis Calculator estimates the relationship between three variables:
+
 * **Minimum detectable effect (MDE)**: The smallest change in the metric that the experiment can reliably detect. For example: An MDE of 1% with Power set to 80% means that if there's a true effect of 1% on our metric, we expect the experiment will have an 80% chance to produce a statistically significant result. If the magnitude of the true effect is smaller than 1%, it will be less likely to produce a statistically significant result (though it can still occur).
 
 * **Number of days or exposures**: How long the experiment is active and the number of users enrolled in it.  Longer running experiments typically have more observations, leading to tighter confidence intervals and smaller MDE.  We use historical data to estimate the number of new users that would be eligible for the experiment each day.
 
 * **Allocation**: The percentage of traffic that participates in the experiment.  Larger allocation leads to smaller MDE, so it's often desirable to allocate as many users as possible to get faster or more sensitive results.  When there's a risk of negative impact or a need for mutually exclusive experiments however, it's useful to know the smallest allocation that can achieve the desired MDE. 
+
+Many experimentation practitioners use the Power Analysis calculator during setup of every experiment they run.
 
 ## Using the Tool
 

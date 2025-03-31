@@ -10,7 +10,7 @@ last_update:
 
 ## Read Experiment Results
 
-To read the results of your experiment, go to the **Results** tab, where you will see your experiment **exposures**, and **Scorecard**. **Scorecard** shows the metric lifts for all Primary and Secondary metrics you set up at experiment creation as part of the Scorecard. 
+To read the results of your experiment, go to the **Results** tab, where you will see your experiment **exposures**, and **Scorecard**. **Scorecard** shows the metric lifts for all Primary and Secondary metrics you set up at experiment creation.
 
 ### Exposures
 

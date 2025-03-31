@@ -100,7 +100,7 @@ By default, Pulse results display with 95% confidence intervals and without Bonf
 
 ### Target Duration
 
-Setting a target duration is optional, but it helps ensure that you wait long enough for the experiment to reach full power. You can set the target as either a specific number of days or a number of exposures, and use the **Power Analysis Calculator** to determine what target works best for your metrics.
+Setting a target duration is optional, but it helps ensure that you wait long enough for the experiment to reach full power. You can set the target as either a specific number of days or a number of exposures, and use the [**Power Analysis Calculator**](/experiments-plus/power-analysis) to determine what target works best for your metrics.
 
 💡 **Target durations longer than 90 days:** By default, Statsig computes Pulse results for the first 90 days, though the experiment itself can run longer. Before setting a duration beyond 90 days, ask yourself if results past that period will still be relevant, and if earlier data might already provide the insights you need.
 
