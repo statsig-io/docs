@@ -1,5 +1,5 @@
 ---
-title: How to Read Pulse
+title: How to Read Pulse (Experiment Results)
 sidebar_label: Read Results
 slug: /pulse/read-pulse
 keywords:
@@ -8,7 +8,9 @@ last_update:
   date: 2024-11-01
 ---
 
-## How to read Pulse
+## Read Experiment Results
+
+To read the results of your experiment, go to the **Results** tab, where you will see your experiment **exposures**, and **Scorecard**. **Scorecard** shows the metric lifts for all Primary and Secondary metrics you set up at experiment creation as part of the Scorecard. 
 
 ### Exposures
 
@@ -16,11 +18,11 @@ last_update:
 
 At the top of Pulse is the Exposures Chart. Exposures are the unique experimental units enrolled in the experiment. This is typically the number of unique users, and for device-level experimentation, this is the number of devices. The timeline shows you when the experiment was started, and how many exposures were enrolled on any given day. You can see the rate at which users were added into each group of the experiment, how many total users were exposed, and confirm the target ratio matches what you configured in experiment setup.
 
-### Metric Lifts
+### "Scorecard"
 
 #### Immediately Post-experiment Start 
 
-For up to the first 24 hours after starting your experiment (before our daily Pulse run), the **Metric Lifts** section, a.k.a. Pulse, is calculated in near real-time (this only applies to Statsig Cloud, for WHN projects you will need to reload pulse on demand or set up a daily schedule). This more real-time Pulse is designed to enable you to confirm that exposures and metrics are being calculated as expected and debug your experiment or gate setup if needed. 
+For up to the first 24 hours after starting your experiment (before our daily Pulse run), the **Scorecard** section, a.k.a. Pulse, is calculated in near real-time (this only applies to Statsig Cloud, for WHN projects you will need to reload pulse on demand or set up a daily schedule). This more real-time Pulse is designed to enable you to confirm that exposures and metrics are being calculated as expected and debug your experiment or gate setup if needed. 
 
 Please note that you should **not** make any experiment decisions based on more real-time Pulse data in this first 24 hour window after experiment start. Experiments should only be called once the experiment has hit target duration, as set by your primary metric(s) hitting experimental power. Read more about target duration [here](/experiments-plus/create-new#target-duration). 
 
@@ -40,7 +42,7 @@ Given data during this early post-experiment start window is designed for diagno
 
 All of these are available in daily Pulse results, which will start showing in the next daily Pulse run. 
 
-#### Post-first Day Metric Lifts  
+#### Post-first Day Scorecard
 
 <img width="1194" alt="Screen Shot 2023-09-20 at 11 35 05 AM" src="https://github.com/statsig-io/docs/assets/101903926/85fdc847-8d70-4215-a6ad-5a1f2d49c5e7"/>
 
@@ -62,6 +64,8 @@ Delta(%) = (Test - Control) / Control
 Confidence intervals are reported at the selected significance level (95% by default). In a typical two-sided Z-test, we show the confidence interval as +/- 1.96 \* standard error. 
 
 99.9% winsorization is automatically applied to event_count, event_count_custom, and sum metrics. This caps extreme outlier values to reduce their impact on experiment results. For metrics added to the **Scorecard** or **Monitoring Metrics** sections of your experiment or gate, you can also apply other optional statistical treatments, such as CUPED (pre-experiment bias reduction) and sequential testing adapted confidence intervals. Read more [here](/stats-engine). 
+
+* **Experiment results are computed for the first 90 days**: By default, Statsig will compute Pulse Results for your experiment for only the first 90 days of your experiment. You will be notified via e-mail as you approach the 90 days cap, at which point will be able to extend this compute window for another 30 days at a time. New users will stop enrolling into the experiment but existing user assignment will continue to run as expected even if the compute window is not extended, until you make a decision on the experiment.
 
 ### Pulse Views 
 There are a few different views to see your Pulse metric lifts, namely: 

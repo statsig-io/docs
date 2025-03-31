@@ -31,7 +31,7 @@ When running an experiment, it’s common to test a specific hypothesis using a 
 
 Configuring the Scorecard is a required step when creating an experiment. It provides your team with clear context on what is being tested and how success is measured. You must enter your hypothesis and select at least one primary metric. Metrics added to the Scorecard are computed daily and eligible for advanced treatments like [CUPED](/stats-engine/methodologies/cuped) and [Sequential Testing](/experiments-plus/sequential-testing#what-is-sequential-testing).
 
-For best practices on configuring your Scorecard, read more [here](/experiments-plus/read-results#reading-experiment-results).
+For best practices on configuring your Scorecard, read more [here](/pulse/read-pulse).
 
 <img width="1086" alt="Screenshot 2025-02-06 at 6 34 00 PM" src="https://github.com/user-attachments/assets/cf3e3be7-61d5-4079-bb0f-6b6685f72f01" />
 

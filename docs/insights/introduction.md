@@ -10,7 +10,7 @@ last_update:
 
 Insights shows the impact that active experiments and feature gates are having on a metric of interest.  This is a powerful tool for root causing unexpected changes in a metric.  
 
-Insights presents a reverse perspective of the [Pulse](/pulse) view. While Pulse measures the impact of a new feature on all your metrics, Insights allows you to focus on a single metric and identify which tests are impacting it the most. 
+Insights presents a reverse perspective of the [Pulse](/pulse/read-pulse) view. While Pulse measures the impact of a new feature on all your metrics, Insights allows you to focus on a single metric and identify which tests are impacting it the most. 
 
 
 ## How lifts are calculated (for Cloud)
