@@ -36,7 +36,7 @@ To view details about a metric, you can navigate to the Metrics page where you c
 
 ![Screenshot 2024-06-12 at 11 33 11 AM](https://github.com/statsig-io/docs/assets/102695539/88b163e0-608e-4349-bc4f-28ac30528506)
 
-In the [insights tab](/insights/introduction.md) and in [meta-analysis](/experiments/meta-analysis.md), you can perform more detailed analysis of how experiments have impacted a metric, and how the metric relates to other metrics in your catalog.
+In the [insights tab](/aggregated-impact/) and in [meta-analysis](/experiments/meta-analysis.md), you can perform more detailed analysis of how experiments have impacted a metric, and how the metric relates to other metrics in your catalog.
 
 ![Screenshot 2024-06-12 at 11 33 20 AM](https://github.com/statsig-io/docs/assets/102695539/97fce3be-56c2-47da-af7d-4ed5e06566fb)
 

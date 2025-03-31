@@ -53,7 +53,7 @@ To validate your feature gate using a live log stream,
 
 ![image](https://user-images.githubusercontent.com/1315028/138149819-5082d7e5-f7ee-42e8-b1ac-f57d9732e68f.png)
 
-- In the the **Event Count by Group panel** as shown below, you can also validate that your application is recording events as expected for users who are exposed to the new feature (or not). Specifically, if you've started to record a new event type to test the impact of a new feature, you can also validate that these events are starting to show as more users are exposed to the new feature.  
+- In the **Event Count by Group panel** as shown below, you can also validate that your application is recording events as expected for users who are exposed to the new feature (or not). Specifically, if you've started to record a new event type to test the impact of a new feature, you can also validate that these events are starting to show as more users are exposed to the new feature.  
 
 ![image](https://user-images.githubusercontent.com/1315028/141017409-f750c1c6-4c54-4140-bc4d-a3b83f1568fc.png)
 
