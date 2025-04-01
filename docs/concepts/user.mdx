@@ -4,7 +4,7 @@ sidebar_label: Passing a User to SDKs
 keywords:
   - owner:brock
 last_update:
-  date: 2025-01-16
+  date: 2025-04-01
 ---
 
 import Tabs from "@theme/Tabs";
@@ -16,7 +16,9 @@ The user object ("StatsigUser" in our SDKs) is the sole input you provide Statsi
 
 ### I passed that attribute before - why do I need to pass it again?
 
-It's important to understand that Statsig evaluates gates and experiment buckets experiments based **only on the information you provide when you check something.** Statsig's promise of evaluating every gate or experiment in milliseconds is dependent on having all information available at request time, rather than searching through previous data.
+You cannot use a user's historical attributes for targeting or gate/experiment evaluation at runtime.  Statsig evaluates gates and experiment buckets experiments based **only on the information you provide when you check something.** Statsig's promise of evaluating every gate or experiment in milliseconds is dependent on having all information available at request time, rather than querying previous data, or storing massive amounts of historical data in memory.
+
+However, if you want to see a specific user's historical attributes for analytics purposes, you can see that in the statsig console via [User Profiles](/users/profiles)
 
 ## User Attributes
 
