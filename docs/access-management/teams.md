@@ -17,11 +17,11 @@ Once teams are configured and a user is assigned to a team, any config (gates/ e
 
 ## Creating Teams 
 
-To create a team, navigate to **Settings** -> **Members** and toggle to the **Teams** tab. Create a new team via the **+Create** button, where you'll be asked to name the team and add members. You can add/ remove members from a team at any time, not just at initial team creation. 
+To create a team, navigate to **Settings** -> **People** -> **Teams**. Create a new team via the **+Create** button, where you'll be asked to name the team and add members. You can add/ remove members from a team at any time, not just at initial team creation. 
 
-Each team has a **Members** and **Settings** tab. Within **Members** you can see all members of the team, including whether a member is a Team Admin or Project Admin (Project Admins have "Super Admin" powers and can modify any team). 
+Each team has a **Members** page and a **Settings** page. Within **Members** you can see all members of the team, including the team members project role and team role (which can be member or admin). Team members can be promoted or removed.
 
-<img width="1279" alt="Screen Shot 2024-02-17 at 4 05 18 PM" src="https://github.com/statsig-io/docs/assets/101903926/2e82dc9a-72d2-4c22-aa18-2e6231cf82d1"/>
+![img](/img/team_create_1.png)
 
 ## Configuring Team Settings 
 
