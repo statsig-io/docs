@@ -82,7 +82,7 @@ To view alert history, go to **Metrics** tab —> **Metrics Catalog** and select
 
 
 ## Topline Metric Alerts
-Available on Statsig Cloud, Topline Metric Alerts are currently in Beta as part of Statsig's Product Analytics suite. Topline Alerts are threshold based (anomaly detection coming soon) and are evaluated every 5 minutes. 
+Available on Statsig Cloud, Topline Metric Alerts are currently in Beta as part of Statsig's Product Analytics suite. Topline Alerts are threshold based (anomaly detection coming soon) and are evaluated every minute for small evaluation windows. 
 
 ### Configuring a Topline Alert
 To configure a Topline Alert, head to **Analytics** -> **Topline Alerts** tab where you can find all your Topline Alerts and configure new ones. Tap **+Create** and name your new alert. 
@@ -105,25 +105,21 @@ We'll see a preview of the event values in the **Alert Preview** section above e
 **Alert Conditions**
 The next step in configuring your alert is setting your alert conditions. Set the alert threshold, directionality, and an "Alert" and "Warning" value. Finally, choose the time window over which you want to evaluate the alert. 
 
-In my example, I'm setting a 500ms (5 second) alert threshold. And because I want to be evaluated quickly if anyone on the platform is having a poor query performance experience, I'll set the notification to evaluate and notify on all queries in the last 5 minutes. 
+In my example, I'm setting a 500ms (5 second) alert threshold. And because I want to be alerted quickly if anyone on the platform is having a poor query performance experience, I'll set the notification to evaluate and notify on all queries in the last 5 minutes. 
 
 <img width="1053" alt="Screen Shot 2025-03-01 at 8 46 24 AM" src="https://github.com/user-attachments/assets/f7175682-e777-4eb7-a9d4-f748263871f1" />
 
 **Notification**
-The final step in alert configuration is to configure your alert message and set the list of who should be notified when the alert fires. All alert subscribers will receive a notification via email, in the Statsig Console, and via Slack for users who have configured Slack notifications for their Statsig accounts. 
-
-When crafting your alert message, if you want to include dynamic content from the event itself, leverage the **Code** feature. In my example below, I'm including the impacted company name so I can quickly hop in and diagnose their slow query. 
-
-<img width="1055" alt="Screen Shot 2025-03-01 at 9 19 22 AM" src="https://github.com/user-attachments/assets/d0204bfe-df63-4da9-a328-0f43b448191f" />
+The final step in alert configuration is to configure your alert message and set the list of who should be notified when the alert fires. All alert subscribers will receive a notification via email, in the Statsig Console, and via Slack for users who have configured Slack notifications for their Statsig accounts. You can enable company-wide notification settings (such as routing all alerts to a Slack channel) in your project Integration settings.
 
 ### Viewing Alert History 
-To view alert history, head to the **Diagnostics** tab of the alert page, where you can see a history of the alert. 
+To view alert history, head to the **Diagnostics** tab of the alert page, where you can see a history of when the alert has triggered. 
 
 <img width="1436" alt="Screen Shot 2025-03-01 at 9 30 03 AM" src="https://github.com/user-attachments/assets/8d6e786f-09c1-4617-8230-4f11fb665ecc" />
 
 
 ### Alert Resolution
-When an alert fires, it will show up as active at the top of the alert page. At this point, you can explore Samples of the event or explore the topline trend via Metrics Explorer. 
+When an alert fires, it will show up as active at the top of the alert page. At this point, you can explore Samples of the event or explore the topline trend via Metrics Explorer. You can mute an alert for a period of time while you work on resolving any issues to avoid notification spam.
 
 <img width="1439" alt="Screen Shot 2025-03-01 at 9 27 24 AM" src="https://github.com/user-attachments/assets/fba30475-c902-4878-911c-31108c7a7bc4" />
 
