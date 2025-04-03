@@ -1,0 +1,14 @@
+import { VersionBadge } from "../../sdks/_VersionBadge.mdx";
+
+## Local Overrides <VersionBadge version={props.addedInVersion} /> {#local-overrides}
+
+To override the return value of a gate/config/experiment/layer locally, we expose a set of override APIs. Coupling this with [StatsigOptions.disable_network](#statsig-options) can be helpful when writing unit tests.
+
+<>{props.snippet}</>
+
+:::note
+
+1. These only apply locally - they do not update definitions in the Statsig console or elsewhere.
+2. The local override API is not designed to be a full mock. They are only a convenient way to override the value of the gate/config/etc.
+
+:::

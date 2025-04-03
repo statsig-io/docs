@@ -1,20 +1,7 @@
 ## Statsig Server Core
 
-:::info
-Statsig Server Core is currently in beta - we encourage you to try it out and give us feedback in the [Statsig Slack](https://statsig.com/slack).
-:::
+Statsig Server Core is a performance-focused rewrite of our server SDKs with a shared, core Rust library. With extensive optimization and Rust's inherent speed, Core SDKs can evaluate **5-10x** as fast as our native SDKs.
 
-Statsig Server Core is a performance-focused rewrite of Statsig server SDKs with a shared core Rust library, that we're rolling out as an option for each Server Environment we currently support with SDKs. 
+Server Core also introduces new features, like [Parameter Stores](https://docs.statsig.com/client/concepts/parameter-stores/), the [SDK Observability Interface](https://docs.statsig.com/sdk_monitoring/#metric-interface-methods), and streaming flag/experiment changes (from the [Statsig Forward Proxy](/server/concepts/forward_proxy/))
 
-Server Core brings Rust's natural speed and performance optimizations to each language, as we develop them in one, shared library. Initial benchmarking suggests Server Core can evaluate **5-10x** as fast as existing SDKs. Alongside evaluation performance improvement, we introduced new compression mechanism, which should **reduce outbound (egress) network payload significantly**.
-
-:::warning
-Server Core does not currently resolve User Agents or Countries. Expect this addition in the near future.
-:::
-
-Server Core also introduces many new features: 
- - [Parameter Stores](https://docs.statsig.com/client/concepts/parameter-stores/), including the ability to Bootstrap client SDKs with parameter stores
- - [SDK Observability Interface](https://docs.statsig.com/sdk_monitoring/#metric-interface-methods)
- - Streaming flag/experiment changes (with the [Statsig Forward Proxy](/server/concepts/forward_proxy/))
-
-Server Core is currently available for Java, Node, Elixir, Rust and Python. Need another language? Let us know in the [Statsig Slack](https://statsig.com/slack) and we'll prioritize it.
+Server Core is currently available for Java, Node, Elixir, Rust and Python. Need another language, or run into any issues? Let us know in the [Statsig Slack](https://statsig.com/slack) and we'll prioritize it.
