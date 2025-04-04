@@ -28,6 +28,12 @@ To see the number of users who are being exposed to a feature gate,
 
 <img width="1417" alt="Screen Shot 2024-02-19 at 2 36 22 PM" src="https://github.com/statsig-io/docs/assets/101903926/9b115b7b-026c-4364-aac9-24a2e0007b5d"/>
 
+## Balanced Gates
+
+Statsig balances gates and holdouts by default in Cloud, and as an opt-out option in Warehouse Native. This reduces false positives, trading that off for losing sample size. Generally, this is considered a best practice and Statsig lands on the side of preferring a balanced analysis. See section 7 of [AB Testing Intuition Busters](https://drive.google.com/file/d/1oK2HpKKXeQLX6gQeQpfEaCGZtNr2kR76/view) for more discussion.
+
+This sampling is achieved during analysis by downsampling the larger arm proportionally to match the smaller group - e.g. a `(100 - large_group_pct)/(large_group_pct)` sampling rate is applied to the larger group using an unbiased hashing approach, keeping the user pool consistent. The hash salt is rotated across different gates and holdouts.
+
 ## Metric Lifts
 The **Metrics Lifts** panel shows how your feature is performing based on lifts in any business metrics added to the list of **Monitoring Metrics** for your gate. 
 
