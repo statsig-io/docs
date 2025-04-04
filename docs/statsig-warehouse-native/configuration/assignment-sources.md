@@ -12,7 +12,7 @@ Assignment Sources are how you schematize your assignment data for Statsig, and 
 
 ## Creating an Assignment Source
 
-To create an assignment source, go to the experiments tab in Statsig and go to the Assignment Sources pane.
+To create an assignment source, go to the data tab in Statsig and go to the Assignment Sources pane.
 
 An Assignment Source is defined as a SQL query and a mapping of the output columns to specific fields
 Statsig requires (user identifiers, a `timestamp`, an experiment identifier, and a group identifier).
