@@ -17,7 +17,7 @@ Statsig offers two types of alerts on the platform today:
 Topline Alerts are useful for keeping tabs on topline trends and ensuring you know if key product and business metrics are trending in a concerning direction. Rollout Alerts are helpful to confirm no key metrics are regressing when you start rolling out a new feature or experiment.  
 
 :::info 
-NOTE- Topline Alerts are in beta and are currently only available on Statsig Cloud. Support for Warehouse Native is coming soon. 
+NOTE- Topline Alerts are in a limited beta. Please reach out if you would like these enabled for your Project. 
 :::
 
 
