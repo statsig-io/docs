@@ -21,7 +21,7 @@ export default App;
 
 ### Adding a user object
 
-At this point, if you run your app, you will get a type error related to the `user` prop. To fix this, you can add the user object that sets user properties like so:
+At this point, if you run your app, you will get a type error related to the `user` prop. The `user` prop is a collection of properties that you want to target in for feature gates and experiments, or metadata to slice your experiment results and event logging.  See the [User (StatsigUser)](/concepts/user) doc for more information. To fix this, you can add the user object that sets user properties like so:
 
 ```tsx
 import { StatsigProvider } from "@statsig/react-bindings";
