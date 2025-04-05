@@ -145,6 +145,14 @@ const config: Config = {
       {
         redirects: [
           {
+            from: "/server-core/rust-core//",
+            to: "/server-core/rust-core",
+          },
+          {
+            from: "/server-core/elixir-core//",
+            to: "/server-core/elixir-core",
+          },
+          {
             from: "/stats-engine/offlineaa",
             to: "/guides/aa-test#offline-aa-tests",
           },
