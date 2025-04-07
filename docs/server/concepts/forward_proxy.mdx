@@ -20,9 +20,37 @@ The expected benefits of using the proxy are:
 4. Improved consistency of configurations, as the forward proxy becomes an articulation point for serving configs
 5. Support for cool features such as a streaming API through GRPC
 
-If you're interested in deploying the proxy, you can find more details in the public repository [here](https://github.com/statsig-io/statsig-forward-proxy).
-
 If you have any questions about how to deploy, or need assistance, feel free to reach out to us on our slack channel or create a new github issue.
+
+### Installation
+
+#### Helm Installation
+
+The recommended way to install Statsig Forward Proxy in a Kubernetes environment is using the official Helm chart. Follow these steps to deploy:
+
+```bash
+# Add the Statsig Helm repository
+helm repo add statsig https://statsig-helm.storage.googleapis.com
+helm repo update
+
+# Install the chart
+helm install statsig-forward-proxy statsig/statsig-forward-proxy --set sfp.environment.STATSIG_SERVER_SDK_KEY=your-sdk-key
+```
+
+For security considerations, you can also create a Kubernetes secret with your SDK key and reference it:
+
+```bash
+kubectl create secret generic statsig-secrets --from-literal=STATSIG_SERVER_SDK_KEY=your-sdk-key
+helm install statsig-forward-proxy statsig/statsig-forward-proxy --set sfp.envFromSecret=statsig-secrets
+```
+
+The Helm chart provides extensive configuration options for customizing your deployment. For detailed configuration options, refer to the [Statsig Forward Proxy Helm chart documentation](https://github.com/statsig-io/statsig-forward-proxy/blob/main/chart/README.MD).
+
+#### Manual Deployment
+
+For environments where Helm is not available or for more customized deployments, Statsig Forward Proxy can be deployed manually. The proxy is available as a pre-built Docker image, and you can also build your own binary from source.
+
+For detailed instructions on manual deployment options and available configuration parameters, refer to the [Manual Deployment section in the GitHub repository](https://github.com/statsig-io/statsig-forward-proxy/tree/main?tab=readme-ov-file#manual-deployment).
 
 ### How Forward Proxy works
 
@@ -124,7 +152,7 @@ def shutdown(self):
   self.cache.shutdown()
 ```
 
-#### Deployment
+#### Deployment Notes
 
 Given that every use case for the proxy is different, we don't have strict recommendations. However, we do have general recommendations:
 1. Understand what your general QPS to Statsig is. If you need help understanding this, feel free to reach out.
