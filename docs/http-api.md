@@ -41,6 +41,29 @@ Our API is built on top of HTTPS, and you can authenticate via the `statsig-api-
 Statsig automatically logs **exposure events** whenever you call the APIs. These exposure events help attribute downstream events to experiments or feature gates, which are used to calculate metrics like analytics lift.
 
 ---
+#### StatsigUser Schema
+Whether you are checking a gate, an experiment, a dynamic config, a layer, or logging an event, you will need to provide the set of properties for that check or event. We call that set of properties the User object (or StatsigUser).
+
+The schema is as follows:
+
+```
+// StatsigUser - object
+{
+  userID: string; // Required
+  email?: string; // Optional user email
+  ip?: string; // Optional user IP address
+  userAgent?: string; // Optional user agent string for device info
+  country?: string; // Optional country code for location-based targeting
+  locale?: string; // Optional language/locale info
+  appVersion?: string; // Optional app version
+  custom?: Record<string, string | number | boolean | Array<string> | undefined>; // Optional custom user attributes
+  privateAttributes?: Record<string, string | number | boolean | Array<string> | undefined>; // Optional private user attributes
+  customIDs?: Record<string, string>; // Optional custom identifiers
+  statsigEnvironment?: { tier: string }; // Defines the environment (dev, staging, production)
+};
+```
+
+---
 
 ### Log an Event
 
@@ -69,24 +92,9 @@ curl \
   eventName: string;
   value: number | string;
   time: string; // unix timestamp
-  user: StatsigUser;
+  user: StatsigUser; // see schema above
   metadata: Record<string, string>;
 }
-
-// StatsigUser - object
-{
-  userID: string; // Required
-  email?: string; // Optional user email
-  ip?: string; // Optional user IP address
-  userAgent?: string; // Optional user agent string for device info
-  country?: string; // Optional country code for location-based targeting
-  locale?: string; // Optional language/locale info
-  appVersion?: string; // Optional app version
-  custom?: Record<string, string | number | boolean | Array<string> | undefined>; // Optional custom user attributes
-  privateAttributes?: Record<string, string | number | boolean | Array<string> | undefined>; // Optional private user attributes
-  customIDs?: Record<string, string>; // Optional custom identifiers
-  statsigEnvironment?: { tier: string }; // Defines the environment (dev, staging, production)
-};
 ```
 
 Response:
