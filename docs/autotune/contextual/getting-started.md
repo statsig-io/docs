@@ -10,7 +10,7 @@ last_update:
 
 Getting started with Autotune AI can be done very quickly.
 
-:::warn
+:::warning
 Statsig supports contextual autotune in all Client SDKs, but only in the following server SDKs:
 
 - [Node](/server-core/node-core)
