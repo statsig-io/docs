@@ -10,6 +10,16 @@ last_update:
 
 Getting started with Autotune AI can be done very quickly.
 
+:::warn
+Statsig supports contextual autotune in all Client SDKs, but only in the following server SDKs:
+
+- [Node](/server-core/node-core)
+- [Python](/server-core/python-core)
+- [Java](/server-core/java-core)
+- [Elixir](/server-core/elixir-core)
+- [Rust](/server-core/rust-core)
+:::
+
 # Set Up Your Contextual Autotune
 
 The first thing you will do is configure your contextual autotune in the Statsig console. This can also be configured programmatically via the Statsig console API.
@@ -68,7 +78,11 @@ Set up your variants. These are configurations that you will fetch in code. For 
 
 # Use the Contextual Autotune in Code
 
-Statsig supports contextual autotune in Client SDKs and Server Core SDKs. We'll use the python server core SDK in our examples below.
+
+
+
+
+We'll use the python server core SDK in our examples below.
 
 We assume you have your server secret key for the following code. Before running python, you'll need the SDK:
 
