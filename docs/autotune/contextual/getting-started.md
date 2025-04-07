@@ -76,13 +76,7 @@ Set up your variants. These are configurations that you will fetch in code. For 
 ![Screenshot 2025-03-14 at 10 49 57 AM](https://github.com/user-attachments/assets/591c0b49-2a40-4bb9-9bef-311bd1d64651)
 ![Screenshot 2025-03-14 at 10 49 51 AM](https://github.com/user-attachments/assets/10b13396-9bb5-4045-b514-45b0861885cb)
 
-# Use the Contextual Autotune in Code
-
-
-
-
-
-We'll use the python server core SDK in our examples below.
+# Use the Contextual Autotune in Code (python example)
 
 We assume you have your server secret key for the following code. Before running python, you'll need the SDK:
 
