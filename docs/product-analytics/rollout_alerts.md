@@ -1,6 +1,6 @@
 ---
 title: Rollout Alerts
-sidebar_label: Alerts
+sidebar_label: Rollout Alerts
 slug: /product-analytics/alerts/rollout_alerts
 keywords:
   - owner:shubham
