@@ -629,7 +629,6 @@ const sidebars: SidebarsConfig = {
               type: "category",
               label: "Alerts",
               items: [
-                "product-analytics/alerts_overview",
                 "product-analytics/rollout_alerts",
                 "product-analytics/topline_alerts", 
               ],
