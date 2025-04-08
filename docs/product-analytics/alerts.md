@@ -1,6 +1,6 @@
 ---
-title: Alerts
-sidebar_label: Alerts
+title: Alerts Overview
+sidebar_label: Alerts Overview
 slug: /product-analytics/alerts
 keywords:
   - owner:shubham
