@@ -625,14 +625,7 @@ const sidebars: SidebarsConfig = {
               label: "Users",
               items: ["users/introduction", "users/user-profiles"],
             },
-            {
-              type: "category",
-              label: "Alerts",
-              items: [
-                "product-analytics/alerts",
-                "product-analytics/alerts/rollout_alerts",
-              ],
-            },
+             "product-analytics/alerts",
           ],
         },
         {
