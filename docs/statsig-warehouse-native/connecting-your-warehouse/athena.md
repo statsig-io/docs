@@ -8,10 +8,6 @@ last_update:
   date: 2025-01-15
 ---
 
-:::info
-Statsig Warehouse Native on Athena is in Beta. Some features available elsewhere (Metrics Explorer) are not available for this warehouse just yet but are coming soon.  
-:::
-
 ## Athena Warehouse Native Overview
 
 To set up connection with Athena, Statsig needs the following
@@ -97,6 +93,7 @@ You need to grant some permissions for Statsig from your AWS console in order fo
                "athena:StartQueryExecution",
                "athena:GetQueryResults",
                "athena:GetQueryExecution",
+               "athena:StopQueryExecution",
                "glue:GetTable",
                "glue:CreateTable",
                "glue:UpdateTable",
