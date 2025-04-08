@@ -1,7 +1,7 @@
 ---
 title: Alerts Overview
 sidebar_label: Overview
-slug: /product-analytics/alerts_overview
+slug: /product-analytics/alerts/alerts_overview
 keywords:
   - owner:shubham
 last_update:
