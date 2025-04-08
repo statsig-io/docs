@@ -1,8 +1,12 @@
-
-
-
-
-
+---
+title: Rollout Alerts
+sidebar_label: Alerts
+slug: /product-analytics/alerts/rollout_alerts
+keywords:
+  - owner:shubham
+last_update:
+  date: 2025-04-08
+---
 
 ## Rollout Alerts
 On Statsig Cloud, Rollout Alerts are hourly for the first 24 hours post experiment/gate rollout (this includes new gate rules/rollouts), and then daily thereafter. This is to help provide more real-time visibility during the most critical phase of a rollout; in those first 24 hours post-going live. Alerts only trigger if the metric delta is statistically significant lower/higher than your threshold, which helps reduce alert noisiness. 
