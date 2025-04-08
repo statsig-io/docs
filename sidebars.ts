@@ -630,7 +630,7 @@ const sidebars: SidebarsConfig = {
               label: "Alerts",
               items: [
                 "product-analytics/alerts",
-                "product-analytics/alerts/rollout_alerts",
+                "product-analytics/rollout_alerts",
               ],
             },
           ],
