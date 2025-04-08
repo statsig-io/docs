@@ -620,12 +620,12 @@ const sidebars: SidebarsConfig = {
               ],
             },
             "product-analytics/dashboards",
-            "product-analytics/alerts",
             {
               type: "category",
               label: "Users",
               items: ["users/introduction", "users/user-profiles"],
             },
+             "product-analytics/alerts",
           ],
         },
         {
