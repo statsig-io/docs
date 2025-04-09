@@ -1,0 +1,37 @@
+You'll want to add your client secret key to the environment, by adding to a .env file, or directly on the command line: 
+
+```shell
+export STATSIG_SECRET_KEY=secret-123456789
+```
+
+
+```java
+// At the top of your file
+use Statsig\Statsig;
+use Statsig\StatsigOptions;
+use Statsig\StatsigLocalFileEventLoggingAdapter;
+use Statsig\StatsigLocalFileSpecsAdapter;
+
+//In the case of slim framework, in container builder definitions:
+
+Statsig::class => function (ContainerInterface $c) {
+    $sdk_key = getenv("STATSIG_SECRET_KEY");
+
+    $options = new StatsigOptions(
+        null,
+        null,
+        new StatsigLocalFileSpecsAdapter($sdk_key, "/tmp"),
+        new StatsigLocalFileEventLoggingAdapter($sdk_key, "/tmp")
+    );
+
+    $statsig = new Statsig($sdk_key, $options);
+    $statsig->initialize();
+    return $statsig;
+},
+```
+
+
+:::caution
+`StatsigLocalFile` Adapters rely on cron jobs and files. If you are seeing errors around file access, ensure your cron job has run at least one time before using Statsig.
+See [Add Scripts & Cron Job](#2-add-scripts--cron-job)
+:::

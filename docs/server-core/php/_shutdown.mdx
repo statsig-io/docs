@@ -1,0 +1,12 @@
+```php
+// Method signature
+public function shutdown(): void
+
+// example usage
+try {
+    $statsig->shutdown();
+    echo "Statsig instance has been successfully shutdown.\n";
+} catch (Exception $e) {
+    error_log($e->getMessage());
+}
+```
