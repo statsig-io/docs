@@ -10,7 +10,7 @@ last_update:
 
 # Geotests
 
-TBD
+Geotests are specialized experiments that allow you to target users based on their geographic location. They enable you to test features, content, or experiences across different regions, countries, or specific geographic areas to understand how location impacts user behavior and preferences. Geotests are particularly valuable for businesses with global audiences who need to optimize their product for regional differences in user needs, preferences, or regulatory requirements.
 
 ## How it's different
 
