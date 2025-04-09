@@ -1,0 +1,69 @@
+## StatsigOptions Class
+
+The `StatsigOptions` class is used to specify optional parameters when initializing the Statsig client.
+
+### Parameters
+
+- **`specs_url`**: 
+  Custom URL for fetching feature specifications.
+
+- **`log_event_url`**:
+  Custom URL for logging events.
+
+- **`specs_adapter`**: 
+  An adapter with custom storage behavior for config specs. 
+  
+  For example, use `StatsigLocalFileSpecsAdapter` to store configs in the local filesystem.
+
+- **`event_logging_adapter`**:
+  An adapter with custom event logging behavior.
+  
+  For example, use `StatsigLocalFileEventLoggingAdapter` to store events in the local filesystem.
+
+- **`environment`**: 
+  Environment parameter for evaluation.
+
+- **`event_logging_flush_interval_ms`**: 
+  How often events are flushed to Statsig servers (in milliseconds).
+
+- **`event_logging_max_queue_size`**:
+  Maximum number of events to queue before forcing a flush.
+
+- **`specs_sync_interval_ms`**:
+  How often the SDK updates specifications from Statsig servers (in milliseconds).
+
+- **`output_log_level`**: 
+  Controls the verbosity of SDK logs.
+
+---
+
+### Example Usage
+
+```php
+use Statsig\Statsig;
+use Statsig\StatsigOptions;
+use Statsig\StatsigLocalFileSpecsAdapter;
+use Statsig\StatsigLocalFileEventLoggingAdapter;
+
+// Initialize StatsigOptions with custom parameters
+$options = new StatsigOptions(
+    null, // specs_url
+    null, // log_event_url
+    new StatsigLocalFileSpecsAdapter($sdk_key, "/tmp"), // specs_adapter
+    new StatsigLocalFileEventLoggingAdapter($sdk_key, "/tmp"), // event_logging_adapter
+    "development", // environment
+    60000, // event_logging_flush_interval_ms
+    1000, // event_logging_max_queue_size
+    600000, // specs_sync_interval_ms
+    "INFO" // output_log_level
+);
+
+// Pass the options object into Statsig constructor
+$statsig = new Statsig($sdk_key, $options);
+$statsig->initialize();
+```
+
+:::caution
+When using `StatsigLocalFile` Adapters, ensure your cron job has run at least one time before using Statsig.
+See [Add Scripts & Cron Job](#2-add-scripts--cron-job)
+:::
