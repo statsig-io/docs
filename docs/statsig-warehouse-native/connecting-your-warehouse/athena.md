@@ -79,8 +79,8 @@ You need to grant some permissions for Statsig from your AWS console in order fo
                "glue:GetPartitions"
             ],
             "Resource": [
-               "arn:aws:glue:__REGION__:__ACCOUNT_ID__:database/__YOUR_READONLY_DATABASE__",
-               "arn:aws:glue:__REGION__:__ACCOUNT_ID__:table/__YOUR_READONLY_DATABASE__/*"
+               "arn:aws:glue:__REGION__:__YOUR_AWS_ACCOUNT_ID__:database/__YOUR_READONLY_DATABASE__",
+               "arn:aws:glue:__REGION__:__YOUR_AWS_ACCOUNT_ID__:table/__YOUR_READONLY_DATABASE__/*"
             ]
          },
          // Allow Statsig to read/write/use data and tables in an isolated staging S3 subfolder
@@ -111,10 +111,10 @@ You need to grant some permissions for Statsig from your AWS console in order fo
             "Resource": [
                "arn:aws:s3:::__S3_BUCKET__/__PATH_TO_S3_QUERY_RESULTS_FOLDER__/*",
                "arn:aws:s3:::__S3_BUCKET__/__STATSIG_S3_FOLDER__/*",
-               "arn:aws:athena:__REGION__:__ACCOUNT_ID__:workgroup/*",
-               "arn:aws:glue:__REGION__:__ACCOUNT_ID__:catalog",
-               "arn:aws:glue:__REGION__:__ACCOUNT_ID__:database/__GLUE_STAGING_DATABASE__",
-               "arn:aws:glue:__REGION__:__ACCOUNT_ID__:table/__GLUE_STAGING_DATABASE__/*"
+               "arn:aws:athena:__REGION__:__YOUR_AWS_ACCOUNT_ID__:workgroup/*",
+               "arn:aws:glue:__REGION__:__YOUR_AWS_ACCOUNT_ID__:catalog",
+               "arn:aws:glue:__REGION__:__YOUR_AWS_ACCOUNT_ID__:database/__GLUE_STAGING_DATABASE__",
+               "arn:aws:glue:__REGION__:__YOUR_AWS_ACCOUNT_ID__:table/__GLUE_STAGING_DATABASE__/*"
             ]
          }
       ]
@@ -183,8 +183,8 @@ You need to grant some permissions for Statsig from your AWS console in order fo
          "glue:GetPartitions"
       ],
       "Resource": [
-         "arn:aws:glue:__REGION__:__ACCOUNT_ID__:database/__YOUR_READONLY_DATABASE__",
-         "arn:aws:glue:__REGION__:__ACCOUNT_ID__:table/__YOUR_READONLY_DATABASE__/*"
+         "arn:aws:glue:__REGION__:__YOUR_AWS_ACCOUNT_ID__:database/__YOUR_READONLY_DATABASE__",
+         "arn:aws:glue:__REGION__:__YOUR_AWS_ACCOUNT_ID__:table/__YOUR_READONLY_DATABASE__/*"
       ]
    }
    ```
