@@ -12,6 +12,10 @@ last_update:
 
 Qualifying events are used to simulate exposures for power analysis, and to filter exposures to users who triggered a specific event. Setting up a Qualifying Event is identical to setting up an Assignment Source, except they do not require experimental information.
 
+:::info
+Please note that the qualifying event must occur after the exposure as indicated by their respective timestamps.
+:::
+
 Context columns can be used to filter the qualifying event for power analysis - for example you might have a Qualifying Event for page load, and filter to different page identifiers for power analyses of experiments on different surfaces.
 
 ## Example Data
