@@ -1,0 +1,119 @@
+---
+sidebar_label: SDK Quickstart
+title: SDK Quickstart
+keywords:
+  - owner:jinayoon
+last_update:
+  date: 2025-04-07
+---
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
+
+import * as _ReactInstall from "../client/javascript-mono/react/_reactInstall.mdx";
+import * as _ReactSetup from "../client/javascript-mono/react/_reactSetup.mdx";
+export const ReactSetup = _ReactSetup;
+
+import * as _reactGatesAndConfigs from "../client/javascript-mono/react/_reactGatesAndConfigs.mdx";
+export const ReactGatesAndConfigs = _reactGatesAndConfigs;
+export const ReactInstall = _ReactInstall;
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+
+export const Builder = SDKDocsBuilder({
+  sections: [
+  ],
+});
+
+export const toc = Builder.toc
+
+
+<Tabs
+  defaultValue="react"
+  groupId="install-language"
+  values={[
+    {label: 'React', value: 'react'},
+    {label: 'JavaScript', value: 'js'},
+    {label: 'Python', value: 'python'},
+    {label: 'Node', value: 'node'},
+    {label: '14 more', value: 'more'},
+  ]}>
+
+  <TabItem value="react">
+    ## 1. Install Statsig packages
+
+    First, install `@statsig/react-bindings` and `@statsig/web-analytics` with the package manager of your choice:
+
+    <Tabs
+      defaultValue="npm"
+      groupId="package-manager-choice"
+      values={[
+        {label: 'NPM', value: 'npm'},
+        {label: 'Yarn', value: 'yarn'},
+        {label: 'PNPM', value: 'pnpm'},
+      ]}>
+
+
+
+    <TabItem value="npm">
+    ```bash
+    npm install @statsig/react-bindings @statsig/web-analytics
+    ```
+    </TabItem>
+
+    <TabItem value="yarn">
+    ```bash
+    yarn add @statsig/react-bindings @statsig/web-analytics
+    ```
+    </TabItem>
+
+    <TabItem value="pnpm">
+    ```bash
+    pnpm add @statsig/react-bindings @statsig/web-analytics
+    ```
+    </TabItem>
+</Tabs>
+
+  ## 2. Import the StatsigProvider
+  In your App Router, import the StatsigProvider:
+
+  ```tsx
+  import StatsigProvider from "@statsig/react-bindings";
+  ```
+
+  ## 3. Wrap child components
+  Next, update your App Router's default function so that the StatsigProvider wraps around all child components, like so:
+
+  ```tsx
+  export default function RootLayout({ children }: { children: React.ReactNode }) {
+    return (
+      <StatsigProvider 
+        sdkKey={process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!}
+        user={{ userID: "quickstart-user" }}
+        }}>
+        {children}
+      </StatsigProvider>
+    );
+  }
+  ```
+  
+  ## 4. Add client key
+  Create a client API key in the [Statsig console Settings](https://console.statsig.com/api_keys). Then, copy and paste it to replace `<REPLACE_WITH_YOUR_CLIENT_KEY>` in the code snippet from the previous step.
+  
+  ## 5. Next steps
+  Congratulations! You've set up the Statsig SDK. Continue on to the tutorials, or jump in to the full [Next.js](/client/javascript-sdk/next-js) or [React](/client/javascript-sdk/react) SDK libraries.
+  </TabItem>
+
+  <TabItem value="js">
+  </TabItem>
+  <TabItem value="python">
+  </TabItem>
+  <TabItem value="node">
+  </TabItem>
+  <TabItem value="more">
+  </TabItem>
+
+</Tabs>
