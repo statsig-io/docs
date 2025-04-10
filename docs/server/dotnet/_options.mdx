@@ -6,12 +6,24 @@ import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
   - Allows you to override the API url base path, enabling custom/internal proxy forwarding.
 - **environment**: StatsigEnvironment, default null
   - An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
-  - The most common usage is to set the environment tier (EnvironmentTier), e.g. `new StatsigEnvironment(EnvironmentTier.Staging)`, and have feature gates pass/fail for specific environments.
+  - The most common usage is to set the environment tier (EnvironmentTier), e.g. `new StatsigEnvironment(EnvironmentTier.Staging)`, or `new StatsigEnvironment(customTier: "US1")`
+    and have feature gates pass/fail for specific environments.
 - **RulesetsSyncInterval**: double, default 10
   - Use this to override how often you want the SDK to poll Statsig backend for changes on the rulesets.
 - **IDListsSyncInterval**: double, default 60
-  - Use this to override how often you want the SDK to poll Statsig backend for changes on the ID Lists.
+  - Use this to overri  de how often you want the SDK to poll Statsig backend for changes on the ID Lists.
 - **LocalMode**: bool, default false
   - <LocalModeSnippet type="server" />
 - [**DataStore**](#data-store): IDataStore, default null
   - A class that extends IDataStore. Can be used to provide values from a common data store (like Redis) to initialize the Statsig SDK.
+
+**Example usage:**
+
+```
+await StatsigServer.Initialize(
+    "secret-key",
+    new StatsigOptions(
+        environment: new StatsigEnvironment(customTier: "US1")
+    )
+);
+```
