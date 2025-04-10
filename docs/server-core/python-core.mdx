@@ -1,6 +1,6 @@
 ---
-sidebar_label: Python Core
-title: Python Core Server SDK
+sidebar_label: Python
+title: Python Server SDK
 keywords:
   - owner:brock
 last_update:
@@ -21,6 +21,8 @@ import {
   StatsigUser,
   ManualExposures,
   Shutdown,
+  LocalOverrides,
+  ServerCore
 } from "./Templates/index.mdx";
 
 
@@ -36,6 +38,8 @@ import UserSnippet from "./python/_statsigUser.mdx";
 import MoreFAQs from "./python/_faqs.mdx";
 import Options from "./python/_options.mdx";
 import ShutdownSnippet from "./python/_shutdown.mdx";
+import OverridesSnippet from "./python/_localOverrides.mdx";
+
 
 
 export const Builder = SDKDocsBuilder({
@@ -69,6 +73,13 @@ export const Builder = SDKDocsBuilder({
     [StatsigUser, { statsigUser: <UserSnippet /> }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [
+      LocalOverrides,
+      {
+        snippet: <OverridesSnippet />,
+      },
+    ],
+    [ServerCore, { snippet: <Preamble /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]
 })

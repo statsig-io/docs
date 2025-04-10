@@ -217,7 +217,7 @@ const sidebars: SidebarsConfig = {
                 {
                   className: "php-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/phpSDK",
+                  id: "server-core/php-core",
                 },
                 {
                   className: "ruby-icon sidebar-icon sdk-sidebar-icon",
@@ -257,6 +257,11 @@ const sidebars: SidebarsConfig = {
                       className: "rust-icon sidebar-icon sdk-sidebar-icon",
                       type: "doc",
                       id: "server/rustSDK",
+                    },
+                    {
+                      className: "php-icon sidebar-icon sdk-sidebar-icon",
+                      type: "doc",
+                      id: "server/phpSDK",
                     },
                   ],
                 },
@@ -620,11 +625,19 @@ const sidebars: SidebarsConfig = {
               ],
             },
             "product-analytics/dashboards",
-            "product-analytics/alerts",
             {
               type: "category",
               label: "Users",
               items: ["users/introduction", "users/user-profiles"],
+            },
+            {
+              type: "category",
+              label: "Alerts",
+              items: [
+                "product-analytics/alerts",
+                "product-analytics/rollout_alerts",
+                "product-analytics/topline_alerts", 
+              ],
             },
           ],
         },

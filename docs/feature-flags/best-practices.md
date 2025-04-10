@@ -25,7 +25,7 @@ Statsig classifies the best practices for using feature gates into four categori
 ## Development
 
 1. **Speed up development** – Shipping new functionality behind a feature gate ensures that the code path is not activated until you’re ready to integrate with your dependencies. This enables you to ship service components faster without being blocked by any dependencies.
-2. **Always be testing** - Use feature gates to ensure that in-development features remain inactive in production while continuing to test new functionality in staging or pre-prod environments.
+2. **Always be testing** - Use feature gates to ensure that in-development features remain inactive in production while continuing to test new functionality in staging or pre-production environments.
 3. **Progressive delivery** – Ship code for in-development features early and often. Shipping code as part of the main branch that can be deployed to production at any time avoids painful merging of long-lived branches at a later point.
 4. **Validate functionality with trusted users** – Use features gates to only expose new functionality to trusted and friendly users such as teammates, company employees, and beta customers before launching publicly. Verify that the new functionality is working as expected.
 5. **Set up a phased canary release** – Use feature gates to progressively expose new functionality to a small percentage of users, validate user experience, and monitor production system health before launching broadly. In the initial stages, scale up slowly. We recommend the following rollout strategy, which increases by the same multiplier each time, increasing the bucket of new users exposed to the experiment by a larger margin each time: 0% -> 2% -> 10% -> 50% -> 100%

@@ -70,3 +70,19 @@ Users without a value will be treated as 0s; note that if there is an existing v
     - **Only include units with a completed window** can be selected to remove units out of pulse analysis for this metric until the cohort window has completed
 - CUPED
   - Specify if you want to calculate CUPED, and the lookback window for CUPED's pre-experiment data inputs
+
+### Special Case: Surrogate Metrics
+
+You can use latest value metrics to implement surrogate metrics. Surrogate metrics (aka proxy metrics or predictive metrics) are a prediction of some long term metric that's impractical to measure over the duration of an experiment, and have some inherent prediction error associated with the model used to derive the metric values.
+
+Under advanced settings in latest value metrics, you can indicate a metric as a surrogate metric with a mean squared error (MSE). This means that the prediction accuracy can be accounted for in calculating variance and thus adjusts p-values and confidence intervals accordingly.
+
+Consider the variable X to be the true north metric which is being predicted by the surrogate metric S. The surrogate metric S is assumed to be an unbiased estimator with an error term $\epsilon$.
+
+$$
+E[\mu_{X} ] = E[\mu_{S}]
+$$
+
+$$
+Var(X) = Var(S + \epsilon) = Var(S) + MSE
+$$

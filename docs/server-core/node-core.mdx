@@ -1,6 +1,6 @@
 ---
-sidebar_label: Node Core
-title: Node Core Server SDK
+sidebar_label: Node
+title: Node Server SDK
 ---
 
 import {
@@ -17,6 +17,7 @@ import {
   StatsigUser,
   ManualExposures,
   Shutdown,
+  LocalOverrides,
 } from "./Templates/index.mdx";
 
 import Preamble from "./_preamble.mdx";
@@ -24,12 +25,15 @@ import Install from "./node/_install.mdx";
 import Initialize from "./node/_initialize.mdx";
 import CheckGate from "./node/_checkGate.mdx";
 import GetConfig from "./node/_getConfig.mdx";
+import GetFeatureGate from "./node/_getFeatureGate.mdx";
 import GetExperiment from "./node/_getExperiment.mdx";
 import LogEvent from "./node/_logEvent.mdx";
 import MoreFAQs from "./node/_faqs.mdx";
 import Options from "./node/_options.mdx";
 import ShutdownSnippet from "./node/_shutdown.mdx";
 import { Snippets as ManualExposureSnippets } from "./node/_manualExposures.mdx";
+import OverridesSnippet from "./python/_localOverrides.mdx";
+
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -56,12 +60,19 @@ export const Builder = SDKDocsBuilder({
         getExperiment: <GetExperiment />,
         logEvent: <LogEvent />,
         hideAsyncDisclaimer: true,
+        getFeatureGate: <GetFeatureGate />,
       },
     ],
     [ManualExposures, { ...ManualExposureSnippets }],
     [StatsigUser, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [
+      LocalOverrides,
+      {
+        snippet: <OverridesSnippet />,
+      },
+    ],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]
 })

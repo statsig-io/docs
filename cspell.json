@@ -659,7 +659,11 @@
     "akin",
     "vineeth",
     "vijaye",
-    "brock"
+    "brock",
+    "makris",
+    "geotest",
+    "geotests",
+    "geotesting"
   ],
   "ignorePaths": [
     "node_modules/**",
