@@ -1,10 +1,12 @@
-To use the Statsig Server Core SDK, install the `@statsig/statsig-node-core` package.
-
 ```shell
 npm i @statsig/statsig-node-core
 ```
 
-SDKs are pre-built and compiled for different OSs & CPU architectures. Package managers will resolve the correct version, but if your service has locked dependencies with package-lock.json or pnpm-lock.yml, you'll need to include all versions you need. For example, if you develop locally on macOS, and deploy to linux, then you should include:
+The node SDK is pre-built and compiled for different OSs & CPU architectures. Package managers will resolve the correct version automatically.
+
+#### Frozen lockfile/locked dependencies
+If your service has locked dependencies with package-lock.json or pnpm-lock.yml, you'll need to include all versions you need. For example, if you develop locally on macOS, and deploy to linux, then you have to include:
+
 ```
 dependencies {
     "statsig/statsig-node-core-darwin-arm64": "0.1.0" // for macOS
@@ -14,7 +16,7 @@ dependencies {
 
 #### Using statsig-node-core with Next.js
 
-Node-core works well with Next, but can't be packaged with webpack. To prevent errors, designate @statsig/statsig-node-core as a serverExternalPackage in your next.config.js file:
+statsig-node-core works well with Next, but can't be packaged with webpack. To prevent errors, designate @statsig/statsig-node-core as a serverExternalPackage in your next.config.js file:
 ```jsx
 const nextConfig = {
   serverExternalPackages: ['@statsig/statsig-node-core'],
