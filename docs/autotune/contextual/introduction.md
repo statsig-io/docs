@@ -54,3 +54,12 @@ Training pipelines are run hourly.
 For Warehouse Native customers, data is processed in your warehouse, and an anonymized feature set is used to train the models. Exposures will be exported on-demand for each load up to the first million, and in daily batches thereafter. Log events sent to statsig are exported hourly if you are using statsig to log outcomes, or you can plug into metric sources from your warehouse for outcome tracking.
 
 For cloud customers, the data is processed and trained entirely in Statsig's servers.
+
+## SDK Support
+Statsig supports contextual autotune in all Client SDKs, but only in the following server SDKs:
+
+- [Node](/server-core/node-core)
+- [Python](/server-core/python-core)
+- [Java](/server-core/java-core)
+- [Elixir](/server-core/elixir-core)
+- [Rust](/server-core/rust-core)

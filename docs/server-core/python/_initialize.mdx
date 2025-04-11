@@ -1,18 +1,12 @@
 ```python
-from statsig_python_core import Statsig, StatsigOptions #note, import statement has underscores while install has dashes
+from statsig_python_core import Statsig, StatsigOptions # note, import statement has underscores while install has dashes
 
-
-# Simple initialization
-statsig = Statsig("secret-key")
-statsig.initialize().wait()
-
-# Or with StatsigOptions
 options = StatsigOptions()
 options.environment = "development"
 
 statsig = Statsig("secret-key", options)
 statsig.initialize().wait()
 
-# Don't forget to shutdown when done
+# If you're running this in a script, be sure to wait for shutdown at the end to flush event logs to statsig
 statsig.shutdown().wait()
 ```

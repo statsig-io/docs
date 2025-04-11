@@ -28,6 +28,10 @@ Bayesian experiments allow you to specify a prior belief on the relative average
 ![Image](https://github.com/user-attachments/assets/0aa0a52c-4f97-42af-82dd-4d26dd1de7c0)
 
 
+### Drawing the Correct Prior Distribution From Historical Data
+If you are using the Bayesian with informative priors, the assumption is that you have a clear understanding of what power the priors have over your experimental results, and your organization has established a reliable prior based on the domain knowledge. With that said, here are some patterns people follow to derive their priors:
+1. You can use the $AVG(\text{average treatment effect})$ of past experiments with a similar setup and population as your prior mean. You can use the standard deviation, or a multiple of it, as the prior standard error.
+2. You can also use the $AVG(\text{observed standard error})$ as your prior standard error.
 
 ### Implementation Details
 

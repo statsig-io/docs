@@ -60,7 +60,12 @@ export default function Rapidoc(props) {
     const rapidoc = document.getElementById(id);
 
     if (entity === "all-endpoints-generated") {
-      rapidoc.loadSpec(specUrl);
+      fetch(specUrl)
+        .then((response) => response.json())
+        .then(removeNonFeatureTags)
+        .then((data) => {
+          rapidoc.loadSpec(data);
+        });
       return;
     }
 
@@ -70,6 +75,7 @@ export default function Rapidoc(props) {
     // Fetch and filter the spec by tag
     fetch(specUrl)
       .then((response) => response.json())
+      .then(removeNonFeatureTags)
       .then((data) => {
         if (tag) {
           // Filter paths by tag
@@ -160,6 +166,31 @@ export default function Rapidoc(props) {
       </Alert>
     </rapi-doc>
   );
+}
+
+const NON_FEATURE_TAGS = ['MCP'];
+
+function removeNonFeatureTags(spec) {
+  const paths = {};
+  Object.keys(spec.paths).forEach((pathKey) => {
+    const pathItem = spec.paths[pathKey];
+    const methods = Object.keys(pathItem);
+
+    methods.forEach((method) => {
+      if (!paths[pathKey]) {
+        paths[pathKey] = {};
+      }
+      paths[pathKey][method] = {
+        ...pathItem[method],
+        tags: pathItem[method].tags.filter((tag) => !NON_FEATURE_TAGS.includes(tag)),
+      };
+    });
+  });
+
+  return {
+    ...spec,
+    paths,
+  };
 }
 
 function filterPathsByTag(spec, tags) {

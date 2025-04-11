@@ -25,6 +25,7 @@ import Install from "./node/_install.mdx";
 import Initialize from "./node/_initialize.mdx";
 import CheckGate from "./node/_checkGate.mdx";
 import GetConfig from "./node/_getConfig.mdx";
+import GetFeatureGate from "./node/_getFeatureGate.mdx";
 import GetExperiment from "./node/_getExperiment.mdx";
 import LogEvent from "./node/_logEvent.mdx";
 import MoreFAQs from "./node/_faqs.mdx";
@@ -59,6 +60,7 @@ export const Builder = SDKDocsBuilder({
         getExperiment: <GetExperiment />,
         logEvent: <LogEvent />,
         hideAsyncDisclaimer: true,
+        getFeatureGate: <GetFeatureGate />,
       },
     ],
     [ManualExposures, { ...ManualExposureSnippets }],
