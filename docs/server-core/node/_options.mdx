@@ -26,10 +26,10 @@ The `StatsigOptions` class is used to specify optional parameters when initializ
   Default off. You need to turn this on if you are using legacy Big ID Lists.
 
 - **`enableUserAgentParsing`** `Optional<bool>`
-  Default off. When enabled, the SDK will attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion.
+  Default off. When enabled, the SDK will attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion at evaluation time, when needed for evaluation.
 
 - **`enableCountryLookup`**  `Optional<bool>`
-  Default off. When enabled, the SDK will attempt to parse IP addressed (attached to the user object) into Country codes.
+  Default off. When enabled, the SDK will attempt to parse IP addresses (attached to the user object) into Country codes at evaluation time, when needed for evaluation.
 
 - **`eventLoggingFlushIntervalMs`**: `Optional<number>`  
   How often events are flushed to Statsig servers (in milliseconds).
