@@ -12,6 +12,10 @@ last_update:
 
 Statsig automatically creates a standard set of user accounting metrics to track common product-wide engagement metrics like daily active users (DAU), new users, and retention.  We also track more sophisticated metrics like L-ness, retention and stickiness metrics.  All of these rely on a company-wide definition of a daily active user.  By default, any Statsig SDK event/request (check_gate, get_config, log_event) associated with a user will automatically designate that user as being active for that day.  You can customize this set of events.
 
+::: important
+Auto-generated user accounting metrics are only created for customers using Statsig on cloud. Warehouse Native companies (WHN) most often have multiple datasets that could affect how they compute active users, and they generally opt to define their versions of user accounting metrics.
+:::
+
 ### Notation and Conventions
 
 - It's common to denote the first day a (new) user was active as Day Zero (D0), and the subsequent days as D1, D2, D3...etc.
