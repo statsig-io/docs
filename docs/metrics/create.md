@@ -51,7 +51,7 @@ The example below creates a metric to count the **number of unique users** who v
 Two time window options are available for user count metrics
 
 - Daily Participation Rate: It counts the total number of days that a user has the selected event, divided by the number of days the user is in the experiment. The result is a metric value between 0 and 1, which represents the probably of a user having the event on a daily basis. It works best for events that are expected to occur repeatedly for a given user.
-- One Time Event: This checks if a user has the selected event at least once during their time in the experiment. The result is a binary metric with value 0 or 1 for each user. This is ideal for events that are only expected once per user, such as sign up events.
+- One Time Event: This checks if a user has the selected event at least once during their time in the experiment. The result is a binary metric with value 0 or 1 for each user. This is ideal for events that are only expected once per user, such as sign up events. **Note: When viewing this metric in the experiment results UI, it will still show "daily_participation" as the aggregation type. This is because all unit count metrics use the same aggregation mechanism but are differentiated by their rollup property (for One-Time Events, the rollup is set to "max").**
 - Custom Attribution Window: Allows you to define a custom window after exposure to count an event towards a metric calculation.
 
 ### 3. Aggregation Metrics
