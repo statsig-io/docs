@@ -51,6 +51,11 @@ You can use this to validate that a new feature does not regress existing metric
 
 ![image](https://user-images.githubusercontent.com/1315028/157497615-331662fe-44ad-42d9-b339-c360c44df173.png)
 
+### User Object Fields
+Evaluation uses the set of properties defined in the [StatsigUser object](/concepts/user).  There are a set of reserved top-level fields, but these keywords are reserved and recognized in the `custom` and `privateAttributes` maps as well.
+
+For example, if you set `user.country`, `user.custom.country` OR `user.privateAttributes.country`, it will be used to evaluated a country condition in any of those places (and in that order! top level > custom > privateAttributes), case insensitively. So if user.country is not defined, but user.custom.COUNTRY is, that will be used to evaluate a country condition.
+
 ## Supported Conditions
 
 ### User ID {#userid}
