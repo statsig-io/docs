@@ -38,3 +38,21 @@ To add to this, Statsig offers turbo mode, which skips some enrichment calculati
 ### Cleaning Up Storage
 
 Statsig will automatically clean up after itself for explore datasets, power analyses, and stratification artifacts. Once you make a decision on an experiment, you can choose whether or not to delete the staging datasets and/or the result datasets; you can always come back to the experiment to clean up from the experiment menu as well.
+
+### Handling Metrics with Different Processing Times
+
+In many data environments, some metrics become available earlier than others. For example, simple event-based metrics might be processed by 9 AM, while complex aggregations or "core" metrics might not be ready until 2 PM.
+
+This can create challenges when you want to process experiment results incrementally, as all metrics must be available for the experiment analysis logic to run. 
+
+#### Potential Approaches
+
+1. **Wait for all metrics**: The standard approach is to wait until all metrics are available before running an incremental load. This ensures data consistency but may delay analysis.
+
+2. **Separate processing for core metrics**: For metrics that consistently lag behind, you could:
+   - Run one incremental load for the main set of metrics
+   - Use a targeted metric reload for just the core metrics that finish later
+   
+   This approach needs to be used carefully, as having metrics at different processing stages can potentially lead to confusing analysis states.
+
+Statsig currently doesn't support incremental reloads for individual metrics to avoid complex data sync issues, but this is a potential future enhancement.
