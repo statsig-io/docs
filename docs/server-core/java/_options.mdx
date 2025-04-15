@@ -28,6 +28,12 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
 - **`enable_id_lists`**: `Optional[bool]`  
   Enable/disable ID list functionality.
 
+- **`enable_user_agent_parsing`** `Optional[bool]`
+  Default off. When enabled, the SDK will attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion at evaluation time, when needed for evaluation.
+
+- **`enable_country_lookup`**  `Optional[bool]`
+  Default off. When enabled, the SDK will attempt to parse IP addresses (attached to the user object at user.ip) into Country codes at evaluation time, when needed for evaluation.
+
 - **`id_lists_url`**: `Optional[str]`  
   Custom URL for fetching ID lists.
 

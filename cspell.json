@@ -643,6 +643,8 @@
     "stating",
     "edgeconfig",
     "Laravel",
+    "Cohorting",
+    "cohorting",
     "evaldetails",
     "psuedo-ID",
     "psuedo",
@@ -659,7 +661,11 @@
     "akin",
     "vineeth",
     "vijaye",
-    "brock"
+    "brock",
+    "makris",
+    "geotest",
+    "geotests",
+    "geotesting"
   ],
   "ignorePaths": [
     "node_modules/**",

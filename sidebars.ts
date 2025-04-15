@@ -217,7 +217,7 @@ const sidebars: SidebarsConfig = {
                 {
                   className: "php-icon sidebar-icon sdk-sidebar-icon",
                   type: "doc",
-                  id: "server/phpSDK",
+                  id: "server-core/php-core",
                 },
                 {
                   className: "ruby-icon sidebar-icon sdk-sidebar-icon",
@@ -257,6 +257,11 @@ const sidebars: SidebarsConfig = {
                       className: "rust-icon sidebar-icon sdk-sidebar-icon",
                       type: "doc",
                       id: "server/rustSDK",
+                    },
+                    {
+                      className: "php-icon sidebar-icon sdk-sidebar-icon",
+                      type: "doc",
+                      id: "server/phpSDK",
                     },
                   ],
                 },
@@ -451,7 +456,7 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/getting-group",
                 "experiments-plus/monitor",
                 "experiments/quality-score",
-              ]
+              ],
             },
             {
               type: "category",
@@ -465,7 +470,7 @@ const sidebars: SidebarsConfig = {
                     "stats-engine/methodologies/one-sided-test",
                     "ai-ml/ai-prompt-experiment",
                     "guides/aa-test",
-                  ]
+                  ],
                 },
                 {
                   type: "category",
@@ -473,7 +478,7 @@ const sidebars: SidebarsConfig = {
                   items: [
                     "stats-engine/methodologies/bonferroni-correction",
                     "stats-engine/methodologies/benjamini–hochberg-procedure",
-                  ]
+                  ],
                 },
                 {
                   type: "category",
@@ -481,7 +486,7 @@ const sidebars: SidebarsConfig = {
                   items: [
                     "stats-engine/methodologies/srm-checks",
                     "stats-engine/pre-experiment-bias",
-                  ]
+                  ],
                 },
                 {
                   type: "category",
@@ -490,7 +495,7 @@ const sidebars: SidebarsConfig = {
                     "stats-engine/variance-reduction",
                     "stats-engine/methodologies/cuped",
                     "stats-engine/methodologies/winsorization",
-                  ]
+                  ],
                 },
                 {
                   type: "category",
@@ -502,12 +507,12 @@ const sidebars: SidebarsConfig = {
                     "stats-engine/variance",
                     "stats-engine/methodologies/delta-method",
                     "experiments-plus/bots",
-                  ]
+                  ],
                 },
                 "experiments-plus/stratified-sampling",
                 "experiments-plus/sequential-testing",
                 "experiments-plus/bayesian",
-              ]
+              ],
             },
             {
               type: "category",
@@ -520,7 +525,7 @@ const sidebars: SidebarsConfig = {
                 "pulse/best-practices",
                 "experiments-plus/reconciling-experiment-results",
                 "pulse/faq",
-              ]
+              ],
             },
             {
               type: "category",
@@ -532,7 +537,7 @@ const sidebars: SidebarsConfig = {
                 "experiments/meta-analysis",
                 "experiments-plus/differential-impact-detection",
                 "experiments-plus/interaction-detection",
-              ]
+              ],
             },
             {
               type: "category",
@@ -544,7 +549,7 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/conclude-experiment-defer-decision",
                 "experiments-plus/abandon",
                 "experiments-plus/disable-group",
-              ]
+              ],
             },
             "layers/introduction",
             "holdouts/introduction",
@@ -631,7 +636,7 @@ const sidebars: SidebarsConfig = {
               items: [
                 "product-analytics/alerts",
                 "product-analytics/rollout_alerts",
-                "product-analytics/topline_alerts", 
+                "product-analytics/topline_alerts",
               ],
             },
           ],
@@ -756,6 +761,7 @@ const sidebars: SidebarsConfig = {
               type: "category",
               label: "Experiment Analysis",
               items: [
+                "statsig-warehouse-native/features/experiment-options",
                 {
                   type: "category",
                   label: "Setup",

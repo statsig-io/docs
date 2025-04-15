@@ -34,17 +34,10 @@ helm repo add statsig https://statsig-helm.storage.googleapis.com
 helm repo update
 
 # Install the chart
-helm install statsig-forward-proxy statsig/statsig-forward-proxy --set sfp.environment.STATSIG_SERVER_SDK_KEY=your-sdk-key
+helm install statsig-forward-proxy statsig/statsig-forward-proxy
 ```
 
-For security considerations, you can also create a Kubernetes secret with your SDK key and reference it:
-
-```bash
-kubectl create secret generic statsig-secrets --from-literal=STATSIG_SERVER_SDK_KEY=your-sdk-key
-helm install statsig-forward-proxy statsig/statsig-forward-proxy --set sfp.envFromSecret=statsig-secrets
-```
-
-The Helm chart provides extensive configuration options for customizing your deployment. For detailed configuration options, refer to the [Statsig Forward Proxy Helm chart documentation](https://github.com/statsig-io/statsig-forward-proxy/blob/main/chart/README.MD).
+The Helm chart provides extensive configuration options for customizing your deployment. For detailed configuration options, refer to the [Statsig Forward Proxy Helm chart documentation](https://github.com/statsig-io/statsig-forward-proxy/blob/main/chart/README.md).
 
 #### Manual Deployment
 

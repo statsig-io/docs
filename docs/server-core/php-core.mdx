@@ -1,10 +1,10 @@
 ---
-sidebar_label: Legacy PHP
-title: Legacy PHP Server SDK
+sidebar_label: PHP
+title: PHP Server SDK
 keywords:
   - owner:brock
 last_update:
-  date: 2024-11-01
+  date: 2025-01-31
 ---
 
 import {
@@ -19,64 +19,54 @@ import {
   WorkingWith,
   StatsigOptions,
   StatsigUser,
+  ManualExposures,
   Shutdown,
   Reference,
-  ManualExposures,
 } from "./Templates/index.mdx";
 
+import Preamble from "./_preamble.mdx";
 import Install from "./php/_install.mdx";
 import Initialize from "./php/_initialize.mdx";
 import CheckGate from "./php/_checkGate.mdx";
-import GetConfig from "./php/_getConfig.mdx";
 import GetExperiment from "./php/_getExperiment.mdx";
+import GetFeatureGate from "./php/_getFeatureGate.mdx";
+import GetConfig from "./php/_getConfig.mdx";
 import LogEvent from "./php/_logEvent.mdx";
-import MoreFAQs from "./php/_faqs.mdx";
 import Options from "./php/_options.mdx";
-import { Snippets as ManualExposureSnippets } from "./php/_manualExposures.mdx";
-import * as _ShutdownSnippet from "./php/_shutdown.mdx";
-export const ShutdownSnippet = _ShutdownSnippet;
-
+import ShutdownSnippet from "./php/_shutdown.mdx";
 import Flush from "./php/_flush.mdx";
-import * as RefSnippets from "./php/_reference.mdx";
-
-import * as _CronJobs from "./php/_CronJobs.mdx";
-export const CronJobs = _CronJobs;
 
 export const Builder = SDKDocsBuilder({
   sections: [
     [
       Repository,
       {
-        repo: "https://github.com/statsig-io/php-sdk",
+        repo: "https://github.com/statsig-io/private-statsig-server-core/tree/main/statsig-php",
       },
     ],
     [
       GettingStarted,
       {
-        sdkType: "PHP",
+        sdkType: "php",
         install: <Install />,
-        skipStatsigOptionsDescription: true,
+        preamble: <Preamble />,
         initialize: <Initialize />,
-        skipInitializeDescription: true,
       },
     ],
     [
       WorkingWith,
       {
         checkGate: <CheckGate />,
-        getConfig: <GetConfig />,
         getExperiment: <GetExperiment />,
+        getFeatureGate: <GetFeatureGate />,
+        getConfig: <GetConfig />,
         logEvent: <LogEvent />,
         hideAsyncDisclaimer: true,
       },
     ],
-    [ManualExposures, { addedInVersion: "3.4.0", ...ManualExposureSnippets }],
-    [CronJobs, {}],
-    [StatsigUser, {}],
+    [StatsigUser, { }],
     [StatsigOptions, { options: <Options /> }],
-    [ShutdownSnippet, {}],
-    [FAQ, { faqs: <MoreFAQs /> }],
-    [Reference, { snippets: <RefSnippets.default /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
   ]
 })
 
