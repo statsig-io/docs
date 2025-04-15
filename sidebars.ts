@@ -52,288 +52,6 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
-          label: "SDKs & APIs",
-          className: "doc-icon sidebar-icon",
-          items: [
-            "sdks/getting-started",
-            "sdks/client-vs-server",
-            "concepts/user",
-            "client/concepts/initialize",
-            "sdks/debugging",
-            {
-              className: "html-icon sidebar-icon sdk-sidebar-icon",
-              type: "doc",
-              id: "client/html-snippet",
-            },
-            {
-              className: "js-icon sidebar-icon sdk-sidebar-icon",
-              type: "doc",
-              id: "client/javascript-sdk",
-            },
-            {
-              className: "react-icon sidebar-icon sdk-sidebar-icon",
-              type: "doc",
-              id: "client/javascript-mono/ReactUsage",
-            },
-            {
-              className: "next-icon sidebar-icon sdk-sidebar-icon",
-              type: "doc",
-              id: "client/javascript-mono/nextjs/NextJsUsage",
-            },
-            {
-              className: "android-icon sidebar-icon sdk-sidebar-icon",
-              type: "doc",
-              id: "client/androidClientSDK",
-            },
-            {
-              className: "ios-icon sidebar-icon sdk-sidebar-icon",
-              type: "doc",
-              id: "client/iosClientSDK",
-            },
-            {
-              className: "node-icon sidebar-icon sdk-sidebar-icon",
-              type: "doc",
-              id: "server-core/node-core",
-            },
-            {
-              type: "category",
-              label: "More Client SDKs",
-              items: [
-                {
-                  className: "cpp-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "client/cpp-client-sdk",
-                },
-                {
-                  className: "flutter-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "client/dartSDK",
-                },
-                {
-                  className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "client/dotnetSDK",
-                },
-                {
-                  className: "expo-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "client/javascript-mono/ExpoUsage",
-                },
-                {
-                  className: "react-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "client/javascript-mono/ReactNativeUsage",
-                },
-                {
-                  className: "angular-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "client/javascript-mono/AngularUsage",
-                },
-                {
-                  className: "roku-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "client/rokuSDK",
-                },
-                {
-                  className: "unity-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "client/unitySDK",
-                },
-                {
-                  type: "category",
-                  label: "On Device Client SDKs",
-                  items: [
-                    {
-                      type: "category",
-                      label: "JavaScript",
-                      link: {
-                        type: "doc",
-                        id: "client/js-on-device-eval-client",
-                      },
-                      items: [
-                        "client/js-device-eval-mono/MigrationFromOldSDK",
-                        "client/js-device-eval-mono/UsingSpecsDataAdapter",
-                        "client/js-device-eval-mono/ReactNativeUsage",
-                      ],
-                    },
-                    "client/swiftOnDeviceEvaluationSDK",
-                    "client/androidOnDeviceEvaluationSDK",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "JavaScript - Maintainance Mode",
-                  items: [
-                    "client/deprecated/jsClientSDK",
-                    "client/deprecated/reactSDK",
-                    "client/deprecated/reactNativeSDK",
-                    "client/deprecated/reactNativeExpoSDK",
-                    "client/jsLocalEvaluationSDK",
-                    "client/javascript-mono/MigrationFromOldJsClient",
-                    "client/javascript-mono/MigrationFromOldReact",
-                  ],
-                },
-              ],
-            },
-            {
-              type: "category",
-              label: "More Server SDKs",
-              items: [
-                {
-                  className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server/dotnetSDK",
-                },
-                {
-                  className: "cpp-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server/cppSDK",
-                },
-                {
-                  className: "golang-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server/golangSDK",
-                },
-                {
-                  className: "java-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server-core/java-core",
-                },
-                {
-                  className: "python-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server-core/python-core",
-                },
-                {
-                  className: "elixir-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server-core/elixir-core",
-                },
-                {
-                  className: "rust-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server-core/rust-core",
-                },
-                {
-                  className: "php-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server-core/php-core",
-                },
-                {
-                  className: "ruby-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server/rubySDK",
-                },
-
-                {
-                  type: "category",
-                  label: "Legacy Server SDKs",
-                  link: {
-                    type: "doc",
-                    id: "server-core/legacy-sdks",
-                  },
-                  items: [
-                    {
-                      className: "node-icon sidebar-icon sdk-sidebar-icon",
-                      type: "doc",
-                      id: "server/nodejsServerSDK",
-                    },
-                    {
-                      className: "python-icon sidebar-icon sdk-sidebar-icon",
-                      type: "doc",
-                      id: "server/pythonSDK",
-                    },
-                    {
-                      className: "elixir-icon sidebar-icon sdk-sidebar-icon",
-                      type: "doc",
-                      id: "server/erlangSDK",
-                    },
-                    {
-                      className: "java-icon sidebar-icon sdk-sidebar-icon",
-                      type: "doc",
-                      id: "server/javaSdk",
-                    },
-                    {
-                      className: "rust-icon sidebar-icon sdk-sidebar-icon",
-                      type: "doc",
-                      id: "server/rustSDK",
-                    },
-                    {
-                      className: "php-icon sidebar-icon sdk-sidebar-icon",
-                      type: "doc",
-                      id: "server/phpSDK",
-                    },
-                  ],
-                },
-              ],
-            },
-            {
-              type: "category",
-              label: "Advanced SDK Methods",
-              items: [
-                {
-                  type: "category",
-                  label: "Other Frameworks",
-                  items: [
-                    "guides/node-express-feature-flags",
-                    "guides/node-express-abtests",
-                    "guides/python-flask-feature-flags",
-                    "guides/python-flask-abtests",
-                  ],
-                },
-                "client/concepts/persistent_assignment",
-                "client/concepts/local-eval-adapter",
-                "server/concepts/persistent_assignment",
-                "server/concepts/data_store",
-                "sdk-keys/target-apps",
-                "server/deprecation-notices",
-              ],
-            },
-            "http-api",
-            {
-              type: "category",
-              label: "Console API",
-              items: [
-                "console-api/introduction",
-                "console-api/autogenerated",
-                "console-api/gates",
-                "console-api/segments",
-                "console-api/dynamic-configs",
-                "console-api/experiments",
-                "console-api/holdouts",
-                "console-api/layers",
-                "console-api/users",
-                "console-api/metrics",
-                "console-api/audit-logs",
-                "console-api/exposure-count",
-                "console-api/autotunes",
-                "console-api/target-apps",
-                "console-api/ingestions",
-                "console-api/tags",
-                "console-api/keys",
-                {
-                  Reports: [
-                    "console-api/daily-reports",
-                    "console-api/daily-reports-deprecated",
-                  ],
-                },
-                "console-api/usage-billing",
-                "console-api/rules",
-              ],
-            },
-            {
-              type: "category",
-              label: "Statsig CLI",
-              items: [
-                "siggy/introduction",
-                "siggy/commands",
-                "siggy/gate-management",
-              ],
-            },
-          ],
-        },
-        {
-          type: "category",
           label: "Data & Metrics",
           className: "data-icon sidebar-icon",
           items: [
@@ -1160,6 +878,283 @@ const sidebars: SidebarsConfig = {
             },
           ],
         },
+      ],
+    },
+  ],
+  api: [
+    "sdks/getting-started",
+    "sdks/client-vs-server",
+    "concepts/user",
+    "client/concepts/initialize",
+    "sdks/debugging",
+    {
+      className: "html-icon sidebar-icon sdk-sidebar-icon",
+      type: "doc",
+      id: "client/html-snippet",
+    },
+    {
+      className: "js-icon sidebar-icon sdk-sidebar-icon",
+      type: "doc",
+      id: "client/javascript-sdk",
+    },
+    {
+      className: "react-icon sidebar-icon sdk-sidebar-icon",
+      type: "doc",
+      id: "client/javascript-mono/ReactUsage",
+    },
+    {
+      className: "next-icon sidebar-icon sdk-sidebar-icon",
+      type: "doc",
+      id: "client/javascript-mono/nextjs/NextJsUsage",
+    },
+    {
+      className: "android-icon sidebar-icon sdk-sidebar-icon",
+      type: "doc",
+      id: "client/androidClientSDK",
+    },
+    {
+      className: "ios-icon sidebar-icon sdk-sidebar-icon",
+      type: "doc",
+      id: "client/iosClientSDK",
+    },
+    {
+      className: "node-icon sidebar-icon sdk-sidebar-icon",
+      type: "doc",
+      id: "server-core/node-core",
+    },
+    {
+      type: "category",
+      label: "More Client SDKs",
+      items: [
+        {
+          className: "cpp-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "client/cpp-client-sdk",
+        },
+        {
+          className: "flutter-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "client/dartSDK",
+        },
+        {
+          className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "client/dotnetSDK",
+        },
+        {
+          className: "expo-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "client/javascript-mono/ExpoUsage",
+        },
+        {
+          className: "react-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "client/javascript-mono/ReactNativeUsage",
+        },
+        {
+          className: "angular-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "client/javascript-mono/AngularUsage",
+        },
+        {
+          className: "roku-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "client/rokuSDK",
+        },
+        {
+          className: "unity-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "client/unitySDK",
+        },
+        {
+          type: "category",
+          label: "On Device Client SDKs",
+          items: [
+            {
+              type: "category",
+              label: "JavaScript",
+              link: {
+                type: "doc",
+                id: "client/js-on-device-eval-client",
+              },
+              items: [
+                "client/js-device-eval-mono/MigrationFromOldSDK",
+                "client/js-device-eval-mono/UsingSpecsDataAdapter",
+                "client/js-device-eval-mono/ReactNativeUsage",
+              ],
+            },
+            "client/swiftOnDeviceEvaluationSDK",
+            "client/androidOnDeviceEvaluationSDK",
+          ],
+        },
+        {
+          type: "category",
+          label: "JavaScript - Maintainance Mode",
+          items: [
+            "client/deprecated/jsClientSDK",
+            "client/deprecated/reactSDK",
+            "client/deprecated/reactNativeSDK",
+            "client/deprecated/reactNativeExpoSDK",
+            "client/jsLocalEvaluationSDK",
+            "client/javascript-mono/MigrationFromOldJsClient",
+            "client/javascript-mono/MigrationFromOldReact",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "More Server SDKs",
+      items: [
+        {
+          className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "server/dotnetSDK",
+        },
+        {
+          className: "cpp-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "server/cppSDK",
+        },
+        {
+          className: "golang-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "server/golangSDK",
+        },
+        {
+          className: "java-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "server-core/java-core",
+        },
+        {
+          className: "python-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "server-core/python-core",
+        },
+        {
+          className: "elixir-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "server-core/elixir-core",
+        },
+        {
+          className: "rust-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "server-core/rust-core",
+        },
+        {
+          className: "php-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "server-core/php-core",
+        },
+        {
+          className: "ruby-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "server/rubySDK",
+        },
+
+        {
+          type: "category",
+          label: "Legacy Server SDKs",
+          link: {
+            type: "doc",
+            id: "server-core/legacy-sdks",
+          },
+          items: [
+            {
+              className: "node-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server/nodejsServerSDK",
+            },
+            {
+              className: "python-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server/pythonSDK",
+            },
+            {
+              className: "elixir-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server/erlangSDK",
+            },
+            {
+              className: "java-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server/javaSdk",
+            },
+            {
+              className: "rust-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server/rustSDK",
+            },
+            {
+              className: "php-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server/phpSDK",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Advanced SDK Methods",
+      items: [
+        {
+          type: "category",
+          label: "Other Frameworks",
+          items: [
+            "guides/node-express-feature-flags",
+            "guides/node-express-abtests",
+            "guides/python-flask-feature-flags",
+            "guides/python-flask-abtests",
+          ],
+        },
+        "client/concepts/persistent_assignment",
+        "client/concepts/local-eval-adapter",
+        "server/concepts/persistent_assignment",
+        "server/concepts/data_store",
+        "sdk-keys/target-apps",
+        "server/deprecation-notices",
+      ],
+    },
+    "http-api",
+    {
+      type: "category",
+      label: "Console API",
+      items: [
+        "console-api/introduction",
+        "console-api/autogenerated",
+        "console-api/gates",
+        "console-api/segments",
+        "console-api/dynamic-configs",
+        "console-api/experiments",
+        "console-api/holdouts",
+        "console-api/layers",
+        "console-api/users",
+        "console-api/metrics",
+        "console-api/audit-logs",
+        "console-api/exposure-count",
+        "console-api/autotunes",
+        "console-api/target-apps",
+        "console-api/ingestions",
+        "console-api/tags",
+        "console-api/keys",
+        {
+          Reports: [
+            "console-api/daily-reports",
+            "console-api/daily-reports-deprecated",
+          ],
+        },
+        "console-api/usage-billing",
+        "console-api/rules",
+      ],
+    },
+    {
+      type: "category",
+      label: "Statsig CLI",
+      items: [
+        "siggy/introduction",
+        "siggy/commands",
+        "siggy/gate-management",
       ],
     },
   ],
