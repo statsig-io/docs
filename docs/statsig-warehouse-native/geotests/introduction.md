@@ -12,6 +12,12 @@ last_update:
 
 Geotests are specialized experiments that allow you to target users based on their geographic location. They enable you to test features, content, or experiences across different regions, countries, or specific geographic areas to understand how location impacts user behavior and preferences. Geotests are particularly valuable for businesses with global audiences who need to optimize their product for regional differences in user needs, preferences, or regulatory requirements.
 
+:::info
+
+Geotests is currently in Alpha release. Statsig is actively interested in working with customers to understand your use-case and make improvements. Please reach out if you're interested in using Geotesting capabilities.
+
+:::
+
 ## How it's different
 
 Standard A/B testing relies on a few core assumptions:
