@@ -57,9 +57,9 @@ When you're happy with your initial settings, click "Use Experiment Designer" to
 ![Image](/img/geotests/StartDesigner.png)
 
 Here you can control:
-- Alowed Geo IDS: Apply a global filter for any geos allowed for control or treatment. Leave blank to use all geos found in your data source.
-- (Test) Inclusion List: Force some geos to be in your treatment cell. Leave blank to allow GeoLift to searce for the most optimal set of geos without limits.
-- (Test) Exclusion List: Block some geos from being in your control cell. Leave blank to allow GeoLift to searce for the most optimal set of geos without limits.
+- Allowed Geo IDS: Apply a global filter for any geos allowed for control or treatment. Leave blank to use all geos found in your data source.
+- (Test) Inclusion List: Force some geos to be in your treatment cell. Leave blank to allow GeoLift to search for the most optimal set of geos without limits.
+- (Test) Exclusion List: Block some geos from being in your control cell. Leave blank to allow GeoLift to search for the most optimal set of geos without limits.
 
 ![Image](/img/geotests/LimitGeos.png)
 
@@ -67,7 +67,7 @@ When ready, click "Run Analysis" to generate a new Design Option Set based on yo
 
 ## Evaluate Design Options
 
-Once a Design Option Set has been created (usually takes a few minutes), it will be shown in your Experiment Designer tab. All design option sets generated are shown here, enabling you to look through prior desing iterations as needed.
+Once a Design Option Set has been created (usually takes a few minutes), it will be shown in your Experiment Designer tab. All design option sets generated are shown here, enabling you to look through prior design iterations as needed.
 
 ![Image](/img/geotests/DesignerOptions.png)
 
