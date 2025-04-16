@@ -854,6 +854,15 @@ const sidebars: SidebarsConfig = {
               },
               items: ["statsig-warehouse-native/cure/cure-setup"],
             },
+            {
+              type: "category",
+              label: "Geotests",
+              link: {
+                type: "doc",
+                id: "statsig-warehouse-native/geotests/introduction",
+              },
+              items: ["statsig-warehouse-native/geotests/geotests-setup"],
+            },
           ],
         },
       ],
