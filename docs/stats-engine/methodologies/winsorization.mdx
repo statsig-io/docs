@@ -25,12 +25,6 @@ Statsig computes the Px value using all non-zero and non-null values of the metr
   warehouse={<Warehouse />}
 />
 
-::: note
-
-Some limited metric types are not eligible for Winsorization, including **count_distinct** metrics.
-
-:::
-
 ## Metric Capping
 This is a very simple, but  effective technique to handle outliers. With this capability, you can define max values for a metric for whatever unit type(s) are configured for this metric. Any value surpassing the set cap will automatically be adjusted downward to match it.
 
