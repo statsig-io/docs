@@ -253,7 +253,7 @@ For more sdk specific questions, check out the FAQs on the respective SDK pages.
 
     The SDK batches and flushes events in the background to our server. When the volume of incoming events exceeds the SDK's flushing capacity, some events may be dropped after a certain number of retries. To reduce the chances of event loss, you can adjust several settings in the Statsig options:
     - Event Queue Size: Determines how many events are sent in a single batch.
-    - Increasing the event queue size allows more events to be flushed at once, but it will consume more memory. It's recommended not to exceed 1800 events per batch, as larger payloads may result in failed requests.
+    - Increasing the event queue size allows more events to be flushed at once, but it will consume more memory. It's recommended not to exceed 3000 events per batch, as larger payloads may result in failed requests.
     - Retry Queue Size: Specifies how many batches of events the SDK will hold and retry.
     - By default, the SDK keeps 10 batches in the retry queue. Increasing this limit allows more batches to be retried, but also increases memory usage.
     Tuning these options can help manage event volume more effectively and minimize the risk of event drops.
