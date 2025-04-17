@@ -22,6 +22,7 @@ import {
   ManualExposures,
   Shutdown,
   Reference,
+  LocalOverrides,
 } from "./Templates/index.mdx";
 
 import Preamble from "./_preamble.mdx";
@@ -38,6 +39,7 @@ import ShutdownSnippet from "./java/_shutdown.mdx";
 import Flush from "./java/_flush.mdx";
 import UserSnippet from "./java/_statsigUser.mdx";
 import * as ReferenceSnippets from "./java/_reference.mdx";
+import OverridesSnippet from "./java/_localOverrides.mdx";
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -70,6 +72,7 @@ export const Builder = SDKDocsBuilder({
     [StatsigUser, { statsigUser: <UserSnippet /> }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
+    [LocalOverrides, { snippet: <OverridesSnippet />,},],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
   ]

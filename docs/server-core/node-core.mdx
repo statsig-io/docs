@@ -32,7 +32,7 @@ import MoreFAQs from "./node/_faqs.mdx";
 import Options from "./node/_options.mdx";
 import ShutdownSnippet from "./node/_shutdown.mdx";
 import { Snippets as ManualExposureSnippets } from "./node/_manualExposures.mdx";
-import OverridesSnippet from "./python/_localOverrides.mdx";
+import OverridesSnippet from "./node/_localOverrides.mdx";
 
 
 export const Builder = SDKDocsBuilder({
@@ -67,12 +67,7 @@ export const Builder = SDKDocsBuilder({
     [StatsigUser, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
-    [
-      LocalOverrides,
-      {
-        snippet: <OverridesSnippet />,
-      },
-    ],
+    [LocalOverrides, { snippet: <OverridesSnippet />,},],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]
 })

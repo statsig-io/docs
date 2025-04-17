@@ -1,16 +1,16 @@
-```jsx
+```java
 // Overrides the given gate to the specified value
-Statsig.overrideGate("a_gate_name", true);
+statsig.overrideGate("a_gate_name", true);
 	
 // Overrides the given dynamic config to the provided value
-Statsig.overrideDynamicConfig("a_config_name", { key: "value" });
+statsig.overrideDynamicConfig("a_config_name", { key: "value" });
 
 // Overrides the given experiment to the provided value
-Statsig.overrideExperiment("an_experiment_name", { key: "value" });
+statsig.overrideExperiment("an_experiment_name", { key: "value" });
 	
 // Overrides the given layer to the provided value
-Statsig.overrideLayer("a_layer_name", { key: "value" });
+statsig.overrideLayer("a_layer_name", { key: "value" });
 
 // Overrides the given experiment to a particular groupname, available for experiments only:
-Statsig.overrideExperimentByGroupName("an_experiment_name", "a_group_name");
+statsig.overrideExperimentByGroupName("an_experiment_name", "a_group_name")
 ```
