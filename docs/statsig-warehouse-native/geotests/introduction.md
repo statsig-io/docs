@@ -28,7 +28,7 @@ Geotests is currently in Alpha release. Statsig is actively interested in workin
 
 Statsig's Geotesting is designed to combine the flexibility and statistical rigor of statsig with your own data sources in your warehouse.
 
-Geoesting:
+Geotesting:
 
 1. Includes an automated Experiment Designer to help you select where and when to run your campaign.
 2. Help export your campaign definition to your campaign platform, making setup faster and less error-prone.
