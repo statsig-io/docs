@@ -1,0 +1,32 @@
+import CodeBlock from "@theme/CodeBlock";
+
+## Method Options
+
+When using methods like `checkGate`, `getDynamicConfig`, `getExperiment`, and `getLayer`, you can pass an options object as the second parameter to customize the behavior:
+
+### **disableExposureLog** `boolean`
+> Prevents an exposure log being created for this check. Use this when you want to check a value without recording that the user was exposed to it.
+>
+> default: `false`
+
+```javascript
+// Check a gate without logging an exposure
+const result = myStatsigClient.checkGate('a_gate_name', { disableExposureLog: true });
+
+// Get an experiment without logging an exposure
+const experiment = myStatsigClient.getExperiment('an_experiment_name', { disableExposureLog: true });
+```
+
+### **userPersistedValues** `object`
+> Provide a map of values to be used for persistent experiment assignments. This requires the `@statsig/js-user-persisted-storage` package.
+>
+> Only available for `getExperiment` method.
+
+```javascript
+// Get an experiment with persistent assignment
+const experiment = myStatsigClient.getExperiment('an_experiment_name', { 
+  userPersistedValues: persistedValues 
+});
+```
+
+For more information on persistent assignments, see the [Persistent Assignment documentation](https://docs.statsig.com/client/concepts/persistent_assignment#example-usage).
