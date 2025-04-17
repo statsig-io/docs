@@ -665,7 +665,10 @@
     "makris",
     "geotest",
     "geotests",
-    "geotesting"
+    "geotesting",
+    "incrementality",
+    "Geolift",
+    "geospatial"
   ],
   "ignorePaths": [
     "node_modules/**",

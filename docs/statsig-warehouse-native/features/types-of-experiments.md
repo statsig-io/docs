@@ -5,7 +5,7 @@ sidebar_label: Types of Experiments
 keywords:
   - owner:vm
 last_update:
-  date: 2024-10-02
+  date: 2025-04-16
 ---
 
 Statsig offers many forms of Experiment Analysis, detailed below:
