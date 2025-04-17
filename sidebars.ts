@@ -861,7 +861,10 @@ const sidebars: SidebarsConfig = {
                 type: "doc",
                 id: "statsig-warehouse-native/geotests/introduction",
               },
-              items: ["statsig-warehouse-native/geotests/geotests-setup"],
+              items: [
+                "statsig-warehouse-native/geotests/geotests-setup",
+                "statsig-warehouse-native/geotests/methodology",
+              ],
             },
           ],
         },

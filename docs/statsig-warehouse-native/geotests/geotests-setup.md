@@ -5,7 +5,7 @@ slug: /experiments-plus/geotests-setup
 keywords:
   - owner:makris
 last_update:
-  date: 2025-04-09
+  date: 2025-04-16
 ---
 
 # Get Started with Geotests
@@ -15,7 +15,7 @@ This guide walks you through creating a Geotest experiment using Statsig. The st
 2. Evaluate Design Options
 3. Run Analysis
 
-:::info
+:::tip
 
 Geotests is currently in Alpha release. Statsig is actively interested in working with customers to understand your use-case and make improvements. Please reach out if you're interested in using Geotesting capabilities.
 
