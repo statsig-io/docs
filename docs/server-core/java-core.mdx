@@ -40,6 +40,8 @@ import Flush from "./java/_flush.mdx";
 import UserSnippet from "./java/_statsigUser.mdx";
 import * as ReferenceSnippets from "./java/_reference.mdx";
 import OverridesSnippet from "./java/_localOverrides.mdx";
+import { Snippets as ManualExposureSnippets } from "./java/_manualExposures.mdx";
+
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -69,6 +71,7 @@ export const Builder = SDKDocsBuilder({
         hideAsyncDisclaimer: true,
       },
     ],
+    [ManualExposures, { ...ManualExposureSnippets }],
     [StatsigUser, { statsigUser: <UserSnippet /> }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
