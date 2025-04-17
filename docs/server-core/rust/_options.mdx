@@ -16,11 +16,21 @@ External data store for Statsig values.
 - **`enable_id_lists`**: Option\<bool\>
   Enable/disable ID list functionality.
 
-- **`enable_user_agent_parsing`**: Option\<bool\>
-  Enable/disable user agent parsing.
+- **`disable_user_agent_parsing`** `Optional[bool]`
+  Default off. When enabled, the SDK will NOT attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion at evaluation time, when needed for evaluation.
 
-- **`enable_country_lookup`**: Option\<bool\>
-  Enable/disable country lookup functionality.
+- **`wait_for_user_agent_init`** `Optional[bool]`
+  Default: false
+
+  When set to true, the SDK will wait until user agent parsing data is fully loaded during initialization. This may slow down startup but ensures that parsing of the user’s userAgent string into fields like browserName, browserVersion, systemName, systemVersion, and appVersion is ready before any evaluations.
+
+- **`disable_user_country_lookup`**  `Optional[bool]`
+  Default off. When enabled, the SDK will NOT attempt to parse IP addresses (attached to the user object at user.ip) into Country codes at evaluation time, when needed for evaluation.
+
+- **`wait_for_country_lookup_init`**  `Optional[bool]`
+  Default: false
+
+  When set to true, the SDK will wait for country lookup data (e.g., GeoIP or YAML files) to fully load during initialization. This may slow down startup but ensures that IP-to-country parsing is ready at evaluation time
 
 - **`environment`**: Option\<String\>
   Environment parameter for evaluation.
