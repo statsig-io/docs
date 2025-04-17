@@ -22,7 +22,7 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPEN_AI_KEY }}
         run: |
-          codex "$(cat tasks/auto_doc.md)"
+          codex --approval-mode auto-edit "$(cat tasks/auto_doc.md)"
 
       - name: Commit and push if changed
         run: |
