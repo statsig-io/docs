@@ -15,19 +15,30 @@ jobs:
       - name: Install Codex CLI
         run: npm install -g @openai/codex
 
-      - name: Clone Java SDK repo
-        run: git clone https://github.com/statsig-io/java-server-sdk sdk-repo
+      - name: Clone Java SDK repo outside working directory
+        run: git clone https://github.com/statsig-io/java-server-sdk ../sdk-repo
 
       - name: Run Codex to update docs
         env:
           OPENAI_API_KEY: ${{ secrets.OPEN_AI_KEY }}
         run: |
-          codex --approval-mode auto-edit --quiet "$(cat tasks/auto_doc.md)"
+          codex --approval-mode auto-edit --quiet --write-summary codex_summary.md "$(cat tasks/auto_doc.md)"
 
-      - name: Commit and push if changed
+      - name: Show Codex summary for PR review
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "Codex summary:"
+          cat codex_summary.md
+
+      - name: Commit and push if changed (skipped for PRs)
+        if: github.event_name != 'pull_request'
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@users.noreply.github.com"
           git add -A
-          git diff --cached --quiet || git commit -m "auto: update sdk documentation"
-          git push
+
+          if ! git diff --cached --quiet; then
+            SUMMARY=$(head -n 10 codex_summary.md | sed 's/^/> /')
+            git commit -m "auto: update sdk documentation" -m "${SUMMARY}"
+            git push
+          fi
