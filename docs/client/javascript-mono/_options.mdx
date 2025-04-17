@@ -3,7 +3,7 @@ import NetworkConfig from "./_networkConfig.mdx";
 #### **disableLogging** `boolean` 
 > Prevents collecting and sending any events over the network. This is useful for secure deployments where you want to completely disable analytics tracking.
 >
-> When used with `networkConfig.preventAllNetworkTraffic: true`, this option also prevents the "Failed to flush events" warnings that would otherwise appear in the console, since no events are collected in the first place.
+> default: `false`
 
 #### **disableStableID** `boolean`
 > Prevents the SDK from generating and using a stable device ID. Use this when you want to disable any device-level identification.
