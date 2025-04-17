@@ -1,13 +1,16 @@
 ```py
 // Overrides the given gate to the specified value
-statsig.override_gate("a_gate_name", true);
+statsig.override_gate("a_gate_name", true)
 	
 // Overrides the given dynamic config to the provided value
-statsig.override_dynamic_config("a_config_name", { "key": "value" });
+statsig.override_dynamic_config("a_config_name", { "key": "value" })
 
 // Overrides the given experiment to the provided value
-statsig.override_experiment("an_experiment_name", { "key": "value" });
+statsig.override_experiment("an_experiment_name", { "key": "value" })
 	
 // Overrides the given layer to the provided value
-statsig.override_layer("a_layer_name", { "key": "value" });
+statsig.override_layer("a_layer_name", { "key": "value" })
+
+// Overrides the given experiment to a particular groupname, available for experiments only:
+statsig.override_experiment_by_group_name("an_experiment_name", "a_group_name")
 ```
