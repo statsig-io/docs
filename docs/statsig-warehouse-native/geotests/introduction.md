@@ -14,7 +14,7 @@ Sometimes you just can't run an A/B test. That's where Geotests come into the pi
 
 One of the most common use cases are in marketing; you can't A/B test on 3rd party ad platforms, but geo-testing lets you evaluate the incrementality of your program.
 
-Geotests are specialized experiments that allow you to target users based on their geographic location. They enable you to test features, content, or experiences across of any type of geographic area. By splitting your campaign up amongst DMAs or postal codes, for example, you can measure its incrementality even when an ads platform doesn't support it.
+Geotests are specialized experiments that allow you to target users based on their geographic location. They enable you to test features, content, or experiences across any type of geographic area. By splitting your campaign up amongst DMAs or postal codes, for example, you can measure its incrementality even when an ads platform doesn't support it.
 
 Geotests are particularly valuable for businesses with global audiences who need to optimize their product for regional differences in user needs, preferences, or regulatory requirements.
 
@@ -26,7 +26,7 @@ Geotests is currently in Alpha release. Statsig is actively interested in workin
 
 # Why use Geotests
 
-Statsig's Geotesting is designed to combine the flexability and statitical rigor of statsig with your own data sources in your warehouse.
+Statsig's Geotesting is designed to combine the flexibility and statistical rigor of statsig with your own data sources in your warehouse.
 
 Geoesting:
 

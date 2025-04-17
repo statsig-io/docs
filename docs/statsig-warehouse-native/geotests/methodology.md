@@ -71,7 +71,7 @@ But what happens when we run a campaign or make some change in just some of thes
 
 ![A marketing campaign that starts on day 91 (black dotted line) could have affected the treatment cities of Chicago and Portland. But how can you tell any real effect from all the noise?](/img/geotests/GeosTest.png)
 
-A marketing campaign that starts on day 91 (black dotted line) could have affected the treatment cities of Chicago and Portland. But how do can you tell any real effect from all the noise?
+A marketing campaign that starts on day 91 (black dotted line) could have affected the treatment cities of Chicago and Portland. But how do you distinguish any real effect from all the noise?
 
 We turn to causal inference modeling to answer this question. Thankfully, a variety of powerful models and methods have been developed to answer this question. The basic steps are the following:
 
