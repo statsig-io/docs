@@ -4,50 +4,63 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
 
 ### Parameters
 
-- **`specs_url`**: `Optional[str]`  
+- **`specsUrl`**: `Optional[str]`  
   Custom URL for fetching feature specifications.
 
-- **`specs_sync_interval_ms`**: `Optional[int]`  
+- **`specsSyncIntervalMs`**: `Optional[int]`  
   How often the SDK updates specifications from Statsig servers (in milliseconds).
 
-- **`init_timeout_ms`**: `Optional[int]`  
+- **`initTimeoutMs`**: `Optional[int]`  
   Sets the maximum timeout for initialization requests (in milliseconds).
 
-- **`log_event_url`**: `Optional[str]`  
+- **`logEventUrl`**: `Optional[str]`  
   Custom URL for logging events.
 
-- **`disable_all_logging`**: `Optional[bool]`  
+- **`disableNetwork`**: `Optional[bool]`
+When `true`, disables all network functions: event & exposure logging, spec downloads, and ID List downloads. Formerly called "localMode".
+
+- **`disableAllLogging`**: `Optional[bool]`  
   When `true`, disables all event logging.
 
-- **`event_logging_flush_interval_ms`**: `Optional[int]`  
+- **`eventLoggingFlushIntervalMs`**: `Optional[int]`  
   How often events are flushed to Statsig servers (in milliseconds).
 
-- **`event_logging_max_queue_size`**: `Optional[int]`  
+- **`eventLoggingMaxQueueSize`**: `Optional[int]`  
   Maximum number of events to queue before forcing a flush.
 
-- **`enable_id_lists`**: `Optional[bool]`  
+- **`enableIDLists`**: `Optional[bool]`  
   Enable/disable ID list functionality.
 
-- **`enable_user_agent_parsing`** `Optional[bool]`
-  Default off. When enabled, the SDK will attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion at evaluation time, when needed for evaluation.
+- **`disableUserAgentParsing`** `Optional[bool]`
+  Default false. If set to true, the SDK will NOT attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion at evaluation time, when needed for evaluation.
 
-- **`enable_country_lookup`**  `Optional[bool]`
-  Default off. When enabled, the SDK will attempt to parse IP addresses (attached to the user object at user.ip) into Country codes at evaluation time, when needed for evaluation.
+- **`waitForUserAgentInit`** `Optional[bool]`
+  Default: false
 
-- **`id_lists_url`**: `Optional[str]`  
+  When set to true, the SDK will wait until user agent parsing data is fully loaded during initialization. This may slow down by ~1 second startup but ensures that parsing of the user’s userAgent string into fields like browserName, browserVersion, systemName, systemVersion, and appVersion is ready before any evaluations.
+
+- **`disableUserCountryLookup`**  `Optional[bool]`
+  Default false. If set to true, the SDK will NOT attempt to parse IP addresses (attached to the user object at user.ip) into Country codes at evaluation time, when needed for evaluation.
+
+- **`waitForCountryLookupInit`**  `Optional[bool]`
+  Default: false
+
+  When set to true, the SDK will wait for country lookup data (e.g., GeoIP or YAML files) to fully load during initialization. This may slow down by ~1 second startup but ensures that IP-to-country parsing is ready at evaluation time
+
+- **`idListsUrl`**: `Optional[str]`  
   Custom URL for fetching ID lists.
 
-- **`id_lists_sync_interval_ms`**: `Optional[int]`  
+- **`idListsSyncIntervalMs`**: `Optional[int]`  
   How often the SDK updates ID lists from Statsig servers (in milliseconds).
-
-- **`fallback_to_statsig_api`**: `Optional[bool]`  
-  Whether to fallback to the Statsig API if custom endpoints fail.
 
 - **`environment`**: `Optional[str]`  
   Environment parameter for evaluation.
 
-- **`output_log_level`**: `Optional[str]`  
+- **`outputLoggerLevel`**: `Optional[OutputLogger.LogLevel]`  
   Controls the verbosity of SDK logs.
+
+- **`observabilityClient`**: `Optional<ObservabilityClient>`  
+  Interface for you to integrate observability metrics exposed by SDK, including, config propagation delay, initialization time spent. See [details](https://docs.statsig.com/sdk_monitoring/)
 
 ---
 
