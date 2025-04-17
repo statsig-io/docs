@@ -15,19 +15,312 @@
  * @property custom - Map<string, string> - any additional custom user attributes for custom conditions in the console
  * @property privateAttributes - Map<string, Object> - any user attributes that should be used in evaluation only and removed in any logs.
  * @property customIDs - Map<string, string> - Map of ID name to ID value for custom identifiers
+ * @property statsigEnvironment - Map<string, string> - Environment parameters for the user
  */
 data class StatsigUser
+```
+
+### StatsigServer
+
+```kotlin
+sealed class StatsigServer {
+    // Factory method to create a new StatsigServer instance
+    companion object {
+        @JvmStatic
+        @JvmOverloads
+        fun create(): StatsigServer
+    }
+
+    // Initialize the SDK with the given server secret and options
+    fun initializeAsync(
+        serverSecret: String,
+        options: StatsigOptions,
+    ): CompletableFuture<InitializationDetails?>
+
+    // Check if the SDK has been initialized
+    fun isInitialized(): Boolean
+
+    // Check if a feature gate is enabled for a user
+    fun checkGateSync(user: StatsigUser, gateName: String): Boolean
+    
+    // Check if a feature gate is enabled for a user with options
+    fun checkGateSync(user: StatsigUser, gateName: String, option: CheckGateOptions?): Boolean
+    
+    // Check if a feature gate is enabled for a user asynchronously
+    fun checkGateAsync(user: StatsigUser, gateName: String): CompletableFuture<Boolean>
+    
+    // Get a feature gate with detailed information
+    fun getFeatureGate(user: StatsigUser, gateName: String): APIFeatureGate
+    
+    // Get a feature gate with detailed information and options
+    fun getFeatureGate(user: StatsigUser, gateName: String, option: GetFeatureGateOptions?): APIFeatureGate
+    
+    // Check a gate without logging the exposure
+    fun checkGateWithExposureLoggingDisabledAsync(
+        user: StatsigUser,
+        gateName: String,
+    ): CompletableFuture<Boolean>
+
+    // Get a dynamic config for a user
+    fun getConfigSync(
+        user: StatsigUser,
+        dynamicConfigName: String,
+    ): DynamicConfig
+    
+    // Get a dynamic config for a user with options
+    fun getConfigSync(
+        user: StatsigUser,
+        dynamicConfigName: String,
+        option: GetConfigOptions?,
+    ): DynamicConfig
+    
+    // Get a dynamic config for a user asynchronously
+    fun getConfigAsync(
+        user: StatsigUser,
+        dynamicConfigName: String,
+    ): CompletableFuture<DynamicConfig>
+    
+    // Get a dynamic config without logging the exposure
+    fun getConfigWithExposureLoggingDisabledAsync(
+        user: StatsigUser,
+        dynamicConfigName: String,
+    ): CompletableFuture<DynamicConfig>
+
+    // Get an experiment for a user
+    fun getExperimentSync(
+        user: StatsigUser,
+        experimentName: String,
+    ): DynamicConfig
+    
+    // Get an experiment for a user with options
+    fun getExperimentSync(
+        user: StatsigUser,
+        experimentName: String,
+        option: GetExperimentOptions?,
+    ): DynamicConfig
+    
+    // Get an experiment for a user asynchronously
+    fun getExperimentAsync(
+        user: StatsigUser,
+        experimentName: String,
+    ): CompletableFuture<DynamicConfig>
+    
+    // Get an experiment without logging the exposure
+    fun getExperimentWithExposureLoggingDisabledAsync(
+        user: StatsigUser,
+        experimentName: String,
+    ): CompletableFuture<DynamicConfig>
+
+    // Get an experiment in a layer for a user
+    fun getExperimentInLayerForUserAsync(
+        user: StatsigUser,
+        layerName: String,
+        disableExposure: Boolean = false,
+    ): CompletableFuture<DynamicConfig>
+
+    // Get a layer for a user
+    fun getLayerSync(
+        user: StatsigUser,
+        layerName: String,
+    ): Layer
+    
+    // Get a layer for a user with options
+    fun getLayerSync(
+        user: StatsigUser,
+        layerName: String,
+        option: GetLayerOptions?,
+    ): Layer
+    
+    // Get a layer for a user asynchronously
+    fun getLayerAsync(
+        user: StatsigUser,
+        layerName: String,
+    ): CompletableFuture<Layer>
+    
+    // Get a layer without logging the exposure
+    fun getLayerWithExposureLoggingDisabledAsync(
+        user: StatsigUser,
+        layerName: String,
+    ): CompletableFuture<Layer>
+
+    // Override a gate value for testing
+    fun overrideGate(gateName: String, gateValue: Boolean)
+    
+    // Override a gate value for a specific user ID
+    fun overrideGate(gateName: String, gateValue: Boolean, forID: String?)
+    
+    // Remove a gate override
+    fun removeGateOverride(gateName: String)
+    
+    // Remove a gate override for a specific user ID
+    fun removeGateOverride(gateName: String, forID: String?)
+
+    // Override a config value for testing
+    fun overrideConfig(configName: String, configValue: Map<String, Any>)
+    
+    // Override a config value for a specific user ID
+    fun overrideConfig(configName: String, configValue: Map<String, Any>, forID: String?)
+    
+    // Remove a config override
+    fun removeConfigOverride(configName: String)
+    
+    // Remove a config override for a specific user ID
+    fun removeConfigOverride(configName: String, forID: String?)
+
+    // Override a layer value for testing
+    fun overrideLayer(layerName: String, value: Map<String, Any>)
+    
+    // Override a layer value for a specific user ID
+    fun overrideLayer(layerName: String, value: Map<String, Any>, forID: String?)
+    
+    // Remove a layer override
+    fun removeLayerOverride(layerName: String)
+    
+    // Remove a layer override for a specific user ID
+    fun removeLayerOverride(layerName: String, forID: String?)
+
+    // Log an event with a string value
+    fun logEvent(
+        user: StatsigUser?,
+        eventName: String,
+        value: String? = null,
+        metadata: Map<String, String>? = null,
+    )
+    
+    // Log an event with a numeric value
+    fun logEvent(
+        user: StatsigUser?,
+        eventName: String,
+        value: Double,
+        metadata: Map<String, String>? = null,
+    )
+
+    // Manually log a gate exposure
+    fun manuallyLogGateExposureAsync(user: StatsigUser, gateName: String): CompletableFuture<Void>
+    
+    // Manually log a config exposure
+    fun manuallyLogConfigExposureAsync(user: StatsigUser, configName: String): CompletableFuture<Void>
+    
+    // Manually log an experiment exposure
+    fun manuallyLogExperimentExposureAsync(user: StatsigUser, experimentName: String): CompletableFuture<Void>
+    
+    // Manually log a layer parameter exposure
+    fun manuallyLogLayerParameterExposureAsync(
+        user: StatsigUser,
+        layerName: String,
+        paramName: String,
+    ): CompletableFuture<Void>
+
+    // Get client initialize response for client SDKs
+    fun getClientInitializeResponse(
+        user: StatsigUser,
+        hash: HashAlgo = HashAlgo.SHA256,
+        clientSDKKey: String? = null,
+    ): Map<String, Any>
+    
+    // Get on-device evaluation initialize response
+    fun getOnDeviceEvalInitializeResponse(
+        clientSDKKey: String? = null,
+    ): Map<String, Any>
+    
+    // Get evaluations for a user
+    fun getEvaluationsForUser(
+        user: StatsigUser,
+        hash: HashAlgo = HashAlgo.SHA256,
+        clientSDKKey: String? = null,
+    ): Map<String, Any>
+
+    // Sync config specs manually
+    fun syncConfigSpecs(): CompletableFuture<ConfigSyncDetails>
+
+    // Shutdown the SDK
+    fun shutdown()
+}
+```
+
+### DynamicConfig
+
+```kotlin
+class DynamicConfig(
+    val name: String,
+    private val value: Map<String, Any>,
+    val ruleID: String?,
+    val groupName: String?,
+    val secondaryExposures: ArrayList<Map<String, String>>,
+    val evaluationDetails: EvaluationDetails?,
+    val isActive: Boolean = true,
+    val idType: String? = null,
+) {
+    // Get a value from the config with a default
+    fun <T> getValue(key: String, default: T): T
+    
+    // Get a value from the config with a default and type
+    fun <T> getValue(key: String, default: T, type: Class<T>): T
+    
+    // Get the entire config value as a map
+    fun getValue(): Map<String, Any>
+    
+    // Check if the config contains a key
+    fun has(key: String): Boolean
+    
+    companion object {
+        // Create an empty config
+        fun empty(configName: String = ""): DynamicConfig
+    }
+}
+```
+
+### Layer
+
+```kotlin
+class Layer(
+    val name: String,
+    val ruleID: String?,
+    val groupName: String?,
+    private val value: Map<String, Any>,
+    val secondaryExposures: ArrayList<Map<String, String>>,
+    val configDelegate: String? = null,
+    val evaluationDetails: EvaluationDetails? = null,
+    val isActive: Boolean = true,
+) {
+    // Get a value from the layer with a default
+    fun <T> getValue(key: String, default: T): T
+    
+    // Get a value from the layer with a default and type
+    fun <T> getValue(key: String, default: T, type: Class<T>): T
+    
+    // Get the entire layer value as a map
+    fun getValue(): Map<String, Any>
+    
+    // Check if the layer contains a key
+    fun has(key: String): Boolean
+    
+    companion object {
+        // Create an empty layer
+        fun empty(layerName: String = ""): Layer
+    }
+}
 ```
 
 ### StatsigOptions and StatsigEnvironment
 
 ```kotlin
-private const val TIER_KEY: String = "tier"
-private const val DEFAULT_API_URL_BASE: String = "https://statsigapi.net/v1"
-private const val DEFAULT_INIT_TIME_OUT_MS: Long = 3000L
-private const val CONFIG_SYNC_INTERVAL_MS: Long = 10 * 1000
-private const val ID_LISTS_SYNC_INTERVAL_MS: Long = 60 * 1000
+enum class LogLevel(val value: Int) {
+    NONE(0),
+    DEBUG(1),
+    INFO(2),
+    WARN(3),
+    ERROR(4),
+}
 
+// Logger Interface
+interface LoggerInterface {
+    fun error(message: String)
+    fun warn(message: String)
+    fun info(message: String)
+    fun debug(message: String)
+    fun setLogLevel(level: LogLevel)
+}
 
 /**
  * A SAM for Java compatibility
@@ -37,27 +330,171 @@ fun interface RulesUpdatedCallback {
     fun accept(rules: String)
 }
 
-enum class Tier {
-    PRODUCTION,
-    STAGING,
-    DEVELOPMENT,
+enum class DataSource {
+    NETWORK,
+    STATSIG_NETWORK,
+    DATA_STORE,
+    BOOTSTRAP,
 }
 
+enum class NetworkEndpoint {
+    DOWNLOAD_CONFIG_SPECS,
+    GET_ID_LISTS,
+    LOG_EVENT,
+    ALL_ENDPOINTS,
+}
+
+enum class NetworkProtocol {
+    HTTP,
+    GRPC,
+    GRPC_WEBSOCKET,
+}
+
+enum class AuthenticationMode {
+    DISABLED,
+    TLS,
+    MTLS,
+}
+
+/**
+ * An object of properties for initializing the sdk with advanced options
+ * @property api the api endpoint to use for initialization and logging
+ * @property initTimeoutMs the amount of time to wait for an initialize() response from the server
+ * @property apiForDownloadConfigSpecs the api endpoint to use for initialization and logging
+ * @property apiForGetIdlists the api endpoint to use for ID lists
+ * @property bootstrapValues bootstrap values for initialization
+ * @property rulesUpdatedCallback callback for when rules are updated
+ * @property localMode whether to run in local mode
+ * @property disableDiagnostics whether to disable diagnostics
+ * @property rulesetsSyncIntervalMs interval for syncing rulesets
+ * @property idListsSyncIntervalMs interval for syncing ID lists
+ * @property dataStore custom data store implementation
+ * @property customLogger custom logger implementation
+ * @property disableAllLogging whether to disable all logging
+ * @property proxyConfig proxy configuration
+ * @property endpointProxyConfigs endpoint-specific proxy configurations
+ * @property initializeSources sources to use for initialization
+ * @property configSyncSources sources to use for config sync
+ * @property fallbackToStatsigAPI whether to fall back to Statsig API
+ * @property disableIPResolution whether to disable IP resolution
+ * @property userPersistentStorage custom user persistent storage implementation
+ * @property logLevel log level
+ */
 class StatsigOptions(
-    var api: String = DEFAULT_API_URL_BASE,
-    var initTimeoutMs: Long? = DEFAULT_INIT_TIME_OUT_MS,
+    var api: String? = null,
+    var initTimeoutMs: Long = DEFAULT_INIT_TIME_OUT_MS,
+    var apiForDownloadConfigSpecs: String? = null,
+    var apiForGetIdlists: String? = null,
     var bootstrapValues: String? = null,
     var rulesUpdatedCallback: RulesUpdatedCallback? = null,
     var localMode: Boolean = false,
+    var disableDiagnostics: Boolean = false,
     var rulesetsSyncIntervalMs: Long = CONFIG_SYNC_INTERVAL_MS,
     var idListsSyncIntervalMs: Long = ID_LISTS_SYNC_INTERVAL_MS,
     var dataStore: IDataStore? = null,
     var customLogger: LoggerInterface = defaultLogger,
     var disableAllLogging: Boolean = false,
+    var proxyConfig: ProxyConfig? = null,
+    var endpointProxyConfigs: Map<NetworkEndpoint, ForwardProxyConfig> = mapOf(),
+    var initializeSources: List<DataSource>? = null,
+    var configSyncSources: List<DataSource>? = null,
+    var fallbackToStatsigAPI: Boolean = false,
+    var disableIPResolution: Boolean = false,
+    var userPersistentStorage: IUserPersistentStorage? = null,
+    var logLevel: LogLevel? = null,
 ) {
+    // Set the environment tier
+    fun setTier(tier: String)
+    
+    // Set an environment parameter
+    fun setEnvironmentParameter(key: String, value: String)
+    
+    // Get the environment
+    fun getEnvironment(): MutableMap<String, String>?
+}
 
-    // to set the environment tier
-    fun setTier(tier : Tier);
+// Forward Proxy Configuration
+data class ForwardProxyConfig(
+    var proxyAddress: String,
+    val proxyProtocol: NetworkProtocol,
+    val maxRetryAttempt: Int? = null,
+    val retryBackoffMultiplier: Int? = null,
+    val retryBackoffBaseMs: Long? = null,
+    val pushWorkerFailoverThreshold: Int? = null,
+    var authenticationMode: AuthenticationMode = AuthenticationMode.DISABLED,
+    var tlsCertChain: InputStream? = null,
+    var tlsPrivateKey: InputStream? = null,
+    var tlsPrivateKeyPassword: InputStream? = null,
+)
+
+// Proxy Configuration
+data class ProxyConfig @JvmOverloads constructor(
+    var proxyHost: String,
+    var proxyPort: Int,
+    var proxyAuth: String? = null,
+    val proxySchema: String = "https",
+)
+```
+
+### Option Classes
+
+```kotlin
+// Options for getFeatureGate
+data class GetFeatureGateOptions(var disableExposureLogging: Boolean = false)
+
+// Options for checkGate
+data class CheckGateOptions(var disableExposureLogging: Boolean = false)
+
+// Options for getConfig
+data class GetConfigOptions(var disableExposureLogging: Boolean = false)
+
+// Options for persistent assignment
+data class PersistentAssignmentOptions(
+    var enforceTargeting: Boolean = false,
+    var enforceOverrides: Boolean = false,
+)
+
+// Options for getLayer
+data class GetLayerOptions(
+    var disableExposureLogging: Boolean = false,
+    var userPersistedValues: PersistedValues? = null,
+    var persistentAssignmentOptions: PersistentAssignmentOptions? = null,
+)
+
+// Options for getExperiment
+data class GetExperimentOptions(
+    var disableExposureLogging: Boolean = false,
+    var userPersistedValues: PersistedValues? = null,
+    var persistentAssignmentOptions: PersistentAssignmentOptions? = null,
+)
+```
+
+### EvaluationDetails and EvaluationReason
+
+```kotlin
+// Details about an evaluation
+class EvaluationDetails(
+    var configSyncTime: Long,
+    var initTime: Long,
+    var reason: EvaluationReason,
+) {
+    var serverTime: Long
+    
+    // Convert to a map
+    fun toMap(): Map<String, String>
+}
+
+// Reason for an evaluation
+enum class EvaluationReason(val reason: String) {
+    NETWORK("Network"),
+    LOCAL_OVERRIDE("LocalOverride"),
+    UNRECOGNIZED("Unrecognized"),
+    UNINITIALIZED("Uninitialized"),
+    BOOTSTRAP("Bootstrap"),
+    DATA_ADAPTER("DataAdapter"),
+    UNSUPPORTED("Unsupported"),
+    DEFAULT("Default"),
+    PERSISTED("Persisted"),
 }
 ```
 
@@ -71,22 +508,79 @@ abstract class IDataStore {
 }
 ```
 
-### LoggerInterface
+### User Persistent Storage
 
 ```kotlin
-interface LoggerInterface {
-    fun warning(message: String)
-    fun info(message: String)
+// Interface for persistent storage
+interface IUserPersistentStorage {
+    // Get persisted values for a user
+    suspend fun getPersistedValues(user: StatsigUser, idType: String): PersistedValues
+    
+    // Get filtered persisted values for a user
+    suspend fun getFilteredPersistedValues(user: StatsigUser, names: List<String>): PersistedValues
+    
+    // Set a persisted value for a user
+    suspend fun setPersistedValue(
+        user: StatsigUser,
+        name: String,
+        value: String,
+        idType: String,
+    )
 }
 
-val defaultLogger = object : LoggerInterface {
+// Type alias for persisted values
+typealias PersistedValues = Map<String, String>
+```
 
-    override fun warning(message: String) {
-        println(message)
-    }
+### APIFeatureGate
 
-    override fun info(message: String) {
-        println(message)
-    }
+```kotlin
+// Feature gate with detailed information
+data class APIFeatureGate(
+    val name: String,
+    val value: Boolean,
+    val ruleID: String?,
+    val secondaryExposures: ArrayList<Map<String, String>> = arrayListOf(),
+    val reason: EvaluationReason?,
+    val evaluationDetails: EvaluationDetails?,
+    val idType: String?,
+)
+```
+
+### InitializationDetails
+
+```kotlin
+// Details about initialization
+class InitializationDetails(
+    val duration: Long,
+    val isSDKReady: Boolean,
+    val configSpecReady: Boolean,
+    val failureDetails: FailureDetails? = null,
+)
+
+// Details about a failure
+data class FailureDetails(
+    val reason: FailureReason,
+    val message: String? = null,
+)
+
+// Reason for a failure
+enum class FailureReason {
+    INVALID_SDK_KEY,
+    NETWORK_ERROR,
+    INTERNAL_ERROR,
+    TIMEOUT,
 }
+```
+
+### ConfigSyncDetails
+
+```kotlin
+// Details about a config sync
+data class ConfigSyncDetails(
+    val duration: Long,
+    val configSpecReady: Boolean,
+    val failureDetails: FailureDetails? = null,
+    val lcut: Long,
+)
 ```
