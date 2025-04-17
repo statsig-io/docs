@@ -15,7 +15,7 @@ The persistent storage adapter allows you to plug in your own storage solution t
 The storage interface consists of just a `load` and `save` API for read/write operations.
 
 :::info
-Currently only supported in `Go`, `Ruby`, `Node`, `Kotlin`, `.Net`
+Currently only supported in `Go`, `Ruby`, `Node`, `Kotlin`, `.Net`, `Python (Python core)`
 :::
 
 ### Persistent Storage Logic
@@ -66,6 +66,7 @@ const options: GetExperimentOptions = {
   groupId="server-sdk-lang-choice"
   defaultValue="ruby"
   values={[
+    {label: 'Python (Python Core)', value: 'python-core'},
     {label: 'Node JS', value: 'node'},
     {label: 'Kotlin', value: 'kotlin'},
     {label: 'Ruby', value: 'ruby'},
@@ -100,6 +101,18 @@ puts exp.group_name # 'Control'
 ````
 
   </TabItem>
+  <TabItem value="python-core">
+```python
+from statsig_python_core import Statsig, StatsigUser, StatsigOptions, ExperimentEvaluationOptions, PersistentStorage
+
+options = StatsigOptions(persistent_storage = MyPersistentStorage())
+statsig = Statsig.initialize(options).wait
+user = StatsigUser("a-user")
+exp = statsig.get_experiment(StatsigUser("a-user"), ExperimentEvaluationOptions(user_persisted_values= PersistentStorage.get_user_persisted_value(user, "user_id")))
+print(f"{exp.group_name}") # control
+````
+  </TabItem>
+  
   <TabItem value="kotlin">
 ```kotlin
 runBlocking {
