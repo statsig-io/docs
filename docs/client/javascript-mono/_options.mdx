@@ -2,6 +2,28 @@ import NetworkConfig from "./_networkConfig.mdx";
 
 #### **disableLogging** `boolean` 
 > Prevents collecting and sending any events over the network. This is useful for secure deployments where you want to completely disable analytics tracking.
+>
+> When used with `networkConfig.preventAllNetworkTraffic: true`, this option also prevents the "Failed to flush events" warnings that would otherwise appear in the console, since no events are collected in the first place.
+
+#### **disableStableID** `boolean`
+> Prevents the SDK from generating and using a stable device ID. Use this when you want to disable any device-level identification.
+>
+> default: `false`
+
+#### **disableEvaluationMemoization** `boolean`
+> Disables caching of evaluation results. When enabled, each call to checkGate, getConfig, etc. will re-evaluate the condition rather than using a cached result.
+>
+> default: `false`
+
+#### **initialSessionID** `string`
+> Overrides the initial session ID used by the SDK. By default, the SDK generates a random session ID.
+>
+> Note: Sessions still expire and will be replaced with an auto-generated SessionID.
+
+#### **enableCookies** `boolean`
+> Enables the use of cookies for storing the stable ID. This is useful for cross-domain tracking.
+>
+> default: `false`
 
 #### **disableStorage** `boolean`
 > Prevents writing anything to storage. 
