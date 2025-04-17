@@ -21,12 +21,7 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPEN_AI_KEY }}
         run: |
-          codex --approval-mode auto-edit --quiet --write-summary codex_summary.md "$(cat tasks/auto_doc.md)"
-
-      - name: Show Codex summary for review
-        run: |
-          echo "Codex summary:"
-          cat codex_summary.md
+          codex --approval-mode auto-edit --quiet "$(cat tasks/auto_doc.md)"
 
       - name: Create a new branch for changes
         run: |
@@ -38,7 +33,6 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@users.noreply.github.com"
           if ! git diff --cached --quiet; then
-            SUMMARY=$(head -n 10 codex_summary.md | sed 's/^/> /')
-            git commit -m "auto: update sdk documentation" -m "${SUMMARY}"
+            git commit -m "auto: update sdk documentation"
             git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
           fi
