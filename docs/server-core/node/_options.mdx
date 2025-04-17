@@ -26,20 +26,20 @@ The `StatsigOptions` class is used to specify optional parameters when initializ
   Default off. You need to turn this on if you are using legacy Big ID Lists.
 
 - **`disableUserAgentParsing`** `Optional[bool]`
-  Default off. When enabled, the SDK will NOT attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion at evaluation time, when needed for evaluation.
+  Default false. If set to true, the SDK will NOT attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion at evaluation time, when needed for evaluation.
 
 - **`waitForUserAgentInit`** `Optional[bool]`
   Default: false
 
-  When set to true, the SDK will wait until user agent parsing data is fully loaded during initialization. This may slow down startup but ensures that parsing of the user’s userAgent string into fields like browserName, browserVersion, systemName, systemVersion, and appVersion is ready before any evaluations.
+  When set to true, the SDK will wait until user agent parsing data is fully loaded during initialization. This may slow down by ~1 second startup but ensures that parsing of the user’s userAgent string into fields like browserName, browserVersion, systemName, systemVersion, and appVersion is ready before any evaluations.
 
 - **`disableUserCountryLookup`**  `Optional[bool]`
-  Default off. When enabled, the SDK will NOT attempt to parse IP addresses (attached to the user object at user.ip) into Country codes at evaluation time, when needed for evaluation.
+  Default false. If set to true, the SDK will NOT attempt to parse IP addresses (attached to the user object at user.ip) into Country codes at evaluation time, when needed for evaluation.
 
 - **`waitForCountryLookupInit`**  `Optional[bool]`
   Default: false
 
-  When set to true, the SDK will wait for country lookup data (e.g., GeoIP or YAML files) to fully load during initialization. This may slow down startup but ensures that IP-to-country parsing is ready at evaluation time
+  When set to true, the SDK will wait for country lookup data (e.g., GeoIP or YAML files) to fully load during initialization. This may slow down by ~1 second startup but ensures that IP-to-country parsing is ready at evaluation time
 
 - **`eventLoggingFlushIntervalMs`**: `Optional<number>`  
   How often events are flushed to Statsig servers (in milliseconds).
