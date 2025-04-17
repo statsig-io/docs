@@ -2,7 +2,6 @@ name: Update Java SDK Docs with Codex
 
 on:
   workflow_dispatch:
-  pull_request:
 
 jobs:
   update-java-docs:
@@ -24,8 +23,7 @@ jobs:
         run: |
           codex --approval-mode auto-edit --quiet --write-summary codex_summary.md "$(cat tasks/auto_doc.md)"
 
-      - name: Show Codex summary for PR review
-        if: github.event_name == 'pull_request'
+      - name: Show Codex summary for review
         run: |
           echo "Codex summary:"
           cat codex_summary.md
@@ -35,22 +33,12 @@ jobs:
           git checkout -b update-sdk-docs-$(date +'%Y-%m-%d-%H-%M-%S')
           git add -A
 
-      - name: Commit changes locally
+      - name: Commit and push changes
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@users.noreply.github.com"
           if ! git diff --cached --quiet; then
             SUMMARY=$(head -n 10 codex_summary.md | sed 's/^/> /')
             git commit -m "auto: update sdk documentation" -m "${SUMMARY}"
+            git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
           fi
-
-      - name: Push changes and create PR (for pull request event)
-        if: github.event_name == 'pull_request'
-        run: |
-          git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
-          gh pr create --title "Auto-update Java SDK Docs" --body "$(cat codex_summary.md)" --base main --head $(git rev-parse --abbrev-ref HEAD) --label "auto-doc-update"
-
-      - name: Push changes (for non-PR event)
-        if: github.event_name != 'pull_request'
-        run: |
-          git push
