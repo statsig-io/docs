@@ -14,8 +14,10 @@ jobs:
       - name: Install Codex CLI
         run: npm install -g @openai/codex
 
-      - name: Clone Java SDK repo outside working directory
-        run: git clone https://github.com/statsig-io/java-server-sdk ../sdk-repo
+      - name: Clone Java SDK repo into workspace (ignored)
+        run: |
+          git clone https://github.com/statsig-io/java-server-sdk sdk-repo
+          echo "sdk-repo/" >> .git/info/exclude
 
       - name: Run Codex to update docs
         env:
@@ -23,16 +25,10 @@ jobs:
         run: |
           codex --approval-mode auto-edit --quiet "$(cat tasks/auto_doc.md)"
 
-      - name: Create a new branch for changes
-        run: |
-          git checkout -b update-sdk-docs-$(date +'%Y-%m-%d-%H-%M-%S')
-          git add -A
-
-      - name: Commit and push changes
+      - name: Commit and push if changed
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@users.noreply.github.com"
-          if ! git diff --cached --quiet; then
-            git commit -m "auto: update sdk documentation"
-            git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
-          fi
+          git add -A
+          git diff --cached --quiet || git commit -m "auto: update sdk documentation"
+          git push
