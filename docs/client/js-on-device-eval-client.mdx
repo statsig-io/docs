@@ -21,7 +21,7 @@ import {
   StatsigOptions,
   Shutdown,
   CodeExamples,
-  ManualExposures,
+  EvaluationOptions,
 } from "./Templates/index.mdx";
 
 import OnDeviceEvalProsAndCons from "./Templates/_OnDeviceEvalProsAndCons.mdx";
@@ -91,7 +91,16 @@ export const Builder = SDKDocsBuilder({
     [StatsigUser, {}],
     [ClientEventEmitting, {}],
     [StatsigOptions, { options: <Options /> }],
-    [ManualExposures, { ...ManualExposureSnippets }],
+    [EvaluationOptions, { 
+      gateSnippet: ManualExposureSnippets.gateSnippet,
+      gateExposureSnippet: ManualExposureSnippets.gateExposureSnippet,
+      configSnippet: ManualExposureSnippets.configSnippet,
+      configExposureSnippet: ManualExposureSnippets.configExposureSnippet,
+      experimentSnippet: ManualExposureSnippets.experimentSnippet,
+      experimentExposureSnippet: ManualExposureSnippets.experimentExposureSnippet,
+      layerSnippet: ManualExposureSnippets.layerSnippet,
+      layerExposureSnippet: ManualExposureSnippets.layerExposureSnippet
+    }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [DataAdapter, {}],
     [FAQ, { faqs: <MoreFAQs /> }],

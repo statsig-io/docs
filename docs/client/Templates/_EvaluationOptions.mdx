@@ -1,0 +1,88 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import { VersionBadge } from "../../sdks/_VersionBadge.mdx";
+
+## Method Options <VersionBadge version={props.addedInVersion}/>
+
+When using methods like `checkGate`, `getDynamicConfig`, `getExperiment`, and `getLayer`, you can pass an options object as the second parameter to customize the behavior:
+
+### disableExposureLog `boolean`
+> Prevents an exposure log being created for this check. Use this when you want to check a value without recording that the user was exposed to it.
+>
+> default: `false`
+
+:::warning
+Manually logging exposures can be tricky and may lead to an imbalance in exposure events. For example, only triggering exposures for users in the Test group of an experiment will imbalance the experiment, making it useless.
+:::
+
+<Tabs
+  defaultValue="gate"
+  values={[
+    {label: 'Check Gate', value: 'gate'},
+    {label: 'Get Config', value: 'config'},
+    {label: 'Get Experiment', value: 'experiment'},
+    {label: 'Get Layer', value: 'layer'},
+  ]}>
+
+<TabItem value="gate">
+
+To check a gate without an exposure being logged, call the following:
+
+<div>{props.gateSnippet}</div>
+
+Later, if you would like to expose this gate, you can call the following:
+
+<div>{props.gateExposureSnippet}</div>
+
+</TabItem>
+
+<TabItem value="config">
+
+To get a dynamic config without an exposure being logged, call the following:
+
+<div>{props.configSnippet}</div>
+
+Later, if you would like to expose the dynamic config, you can call the following:
+
+<div>{props.configExposureSnippet}</div>
+
+</TabItem>
+
+<TabItem value="experiment">
+
+To get an experiment without an exposure being logged, call the following:
+
+<div>{props.experimentSnippet}</div>
+
+Later, if you would like to expose the experiment, you can call the following:
+
+<div>{props.experimentExposureSnippet}</div>
+
+</TabItem>
+
+<TabItem value="layer">
+
+To get a layer parameter without an exposure being logged, call the following:
+
+<div>{props.layerSnippet}</div>
+
+Later, if you would like to expose the layer parameter, you can call the following:
+
+<div>{props.layerExposureSnippet}</div>
+
+</TabItem>
+
+</Tabs>
+
+{props.userPersistedValues && (
+  <>
+    ### userPersistedValues `object`
+    > Provide a map of values to be used for persistent experiment assignments. This requires a user persistent storage adapter.
+    >
+    > Only available for `getExperiment` method.
+
+    <div>{props.userPersistedValuesSnippet}</div>
+
+    For more information on persistent assignments, see the [Persistent Assignment documentation](/client/concepts/persistent_assignment#example-usage).
+  </>
+)}
