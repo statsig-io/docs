@@ -22,8 +22,6 @@ When a phase in your Release Pipeline requires manual approval:
 4. Click the **Approve** button to allow the release to continue to the next phase
 5. Confirm your decision in the dialog that appears
 
-**Note:** Only users with appropriate permissions in your organization can approve phase transitions.
-
 ![Approving a phase transition](/img/release-pipeline/approve.png)
 
 ## Aborting a Release
