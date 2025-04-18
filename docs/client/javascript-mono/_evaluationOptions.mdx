@@ -1,4 +1,6 @@
 import CodeBlock from "@theme/CodeBlock";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 ## Method Options
 
@@ -9,13 +11,86 @@ When using methods like `checkGate`, `getDynamicConfig`, `getExperiment`, and `g
 >
 > default: `false`
 
-```javascript
-// Check a gate without logging an exposure
-const result = myStatsigClient.checkGate('a_gate_name', { disableExposureLog: true });
+:::warning
+Manually logging exposures can be tricky and may lead to an imbalance in exposure events. For example, only triggering exposures for users in the Test group of an experiment will imbalance the experiment, making it useless.
+:::
 
-// Get an experiment without logging an exposure
+<Tabs
+  defaultValue="gate"
+  values={[
+    {label: 'Check Gate', value: 'gate'},
+    {label: 'Get Config', value: 'config'},
+    {label: 'Get Experiment', value: 'experiment'},
+    {label: 'Get Layer', value: 'layer'},
+  ]}>
+
+<TabItem value="gate">
+
+To check a gate without an exposure being logged, call the following:
+
+```javascript
+const result = myStatsigClient.checkGate('a_gate_name', { disableExposureLog: true });
+```
+
+Later, if you would like to expose this gate, you can call the following:
+
+```javascript
+myStatsigClient.checkGate('a_gate_name');
+```
+
+</TabItem>
+
+<TabItem value="config">
+
+To get a dynamic config without an exposure being logged, call the following:
+
+```javascript
+const config = myStatsigClient.getConfig('a_dynamic_config_name', { disableExposureLog: true });
+```
+
+Later, if you would like to expose the dynamic config, you can call the following:
+
+```javascript
+myStatsigClient.getConfig('a_dynamic_config_name');
+```
+
+</TabItem>
+
+<TabItem value="experiment">
+
+To get an experiment without an exposure being logged, call the following:
+
+```javascript
 const experiment = myStatsigClient.getExperiment('an_experiment_name', { disableExposureLog: true });
 ```
+
+Later, if you would like to expose the experiment, you can call the following:
+
+```javascript
+myStatsigClient.getExperiment('an_experiment_name');
+```
+
+</TabItem>
+
+<TabItem value="layer">
+
+To get a layer parameter without an exposure being logged, call the following:
+
+```javascript
+const layer = myStatsigClient.getLayer('a_layer_name', { disableExposureLog: true });
+const paramValue = layer.get('a_param_name', 'fallback_value');
+```
+
+Later, if you would like to expose the layer parameter, you can call the following:
+
+```javascript
+const layer = myStatsigClient.getLayer('a_layer_name');
+const paramValue = layer.get('a_param_name', 'fallback_value');
+```
+
+</TabItem>
+
+</Tabs>
 
 ### **userPersistedValues** `object`
 > Provide a map of values to be used for persistent experiment assignments. This requires the `@statsig/js-user-persisted-storage` package.
