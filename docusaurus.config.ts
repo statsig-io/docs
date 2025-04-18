@@ -483,6 +483,25 @@ const config: Config = {
       },
       items: [
         {
+          type: 'doc',
+          position: 'left',
+          docId: 'getting-started',
+          sidebarId: 'cloud',
+          label: 'Docs',
+        },
+        {
+          type: 'docSidebar',
+          position: 'left',
+          sidebarId: 'api',
+          label: 'SDKs and APIs',
+        },
+        {
+          type: 'docSidebar',
+          position: 'left',
+          sidebarId: 'warehouse',
+          label: 'Warehouse Native',
+        },
+        {
           type: "search",
         },
         // {
