@@ -15,7 +15,7 @@ import {
   WorkingWith,
   StatsigOptions,
   StatsigUser,
-  ManualExposures,
+  EvaluationOptions,
   Shutdown,
   LocalOverrides,
 } from "./Templates/index.mdx";
@@ -63,7 +63,7 @@ export const Builder = SDKDocsBuilder({
         getFeatureGate: <GetFeatureGate />,
       },
     ],
-    [ManualExposures, { ...ManualExposureSnippets }],
+    [EvaluationOptions, { ...ManualExposureSnippets }],
     [StatsigUser, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],

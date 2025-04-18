@@ -19,7 +19,7 @@ import {
   WorkingWith,
   StatsigOptions,
   StatsigUser,
-  ManualExposures,
+  EvaluationOptions,
   Shutdown,
   ClientInitResponse,
   LocalOverrides,
@@ -95,7 +95,7 @@ export const Builder = SDKDocsBuilder({
       LocalOverrides,
       { addedInVersion: "4.8.0", snippet: <OverridesSnippet /> },
     ],
-    [ManualExposures, { addedInVersion: "5.0.0", ...ManualExposureSnippets }],
+    [EvaluationOptions, { addedInVersion: "5.0.0", ...ManualExposureSnippets }],
     [EnvironmentSpecific, { cloudflare: <CloudflareSetup /> }],
     [
       UserPersistentStorage,

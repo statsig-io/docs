@@ -22,7 +22,7 @@ import {
   StatsigUser,
   StatsigOptions,
   PrefetchUsers,
-  ManualExposures,
+  EvaluationOptions,
   Shutdown,
   LocalOverrides,
   StableID,
@@ -81,7 +81,7 @@ export const Builder = SDKDocsBuilder({
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [LocalOverrides, { localOverrides: <LocalOverridesSnippet /> }],
-    [ManualExposures, { addedInVersion: "1.16.0", ...ManualExposureSnippets }],
+    [EvaluationOptions, { addedInVersion: "1.16.0", ...ManualExposureSnippets }],
     [
       StableID,
       { getSnippet: <GetStableID />, overrideSnippet: <OverrideStableID /> },
