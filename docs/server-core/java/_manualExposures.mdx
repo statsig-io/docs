@@ -4,46 +4,46 @@ export const Snippets = {
   // Gates
   gateSnippet: (
     <CodeBlock language="jsx">
-      {`boolean result = Statsig.checkGate(aUser, 'a_gate_name', new CheckGateOptions(true));`}
+      {`boolean result = statsig.checkGate(aUser, 'a_gate_name', new CheckGateOptions(true));`}
     </CodeBlock>
   ),
   gateExposureSnippet: (
     <CodeBlock language="jsx">
-      {`Statsig.manuallyLogGateExposure(aUser, 'a_gate_name');`}
+      {`statsig.manuallyLogGateExposure(aUser, 'a_gate_name');`}
     </CodeBlock>
   ),
   // Configs
   configSnippet: (
     <CodeBlock language="jsx">
-      {`DynamicConfig config = Statsig.getDynamicConfig(aUser, 'a_dynamic_config_name',  new CheckGateOptions(true));`}
+      {`DynamicConfig config = statsig.getDynamicConfig(aUser, 'a_dynamic_config_name',  new CheckGateOptions(true));`}
     </CodeBlock>
   ),
   configExposureSnippet: (
     <CodeBlock language="jsx">
-      {`Statsig.manuallyLogDynamicConfigExposure(aUser, 'a_dynamic_config_name');`}
+      {`statsig.manuallyLogDynamicConfigExposure(aUser, 'a_dynamic_config_name');`}
     </CodeBlock>
   ),
   // Experiment
   experimentSnippet: (
     <CodeBlock language="jsx">
-      {`Experiment experiment = Statsig.getExperiment(aUser, 'an_experiment_name',  new CheckGateOptions(true));`}
+      {`Experiment experiment = statsig.getExperiment(aUser, 'an_experiment_name',  new CheckGateOptions(true));`}
     </CodeBlock>
   ),
   experimentExposureSnippet: (
     <CodeBlock language="jsx">
-      {`Statsig.manuallyLogExperimentExposure(aUser, 'an_experiment_name');`}
+      {`statsig.manuallyLogExperimentExposure(aUser, 'an_experiment_name');`}
     </CodeBlock>
   ),
   // Layer
   layerSnippet: (
     <CodeBlock language="jsx">
-      {`Layer layer = Statsig.getLayer(aUser, 'a_layer_name',  new CheckGateOptions(true));
+      {`Layer layer = statsig.getLayer(aUser, 'a_layer_name',  new CheckGateOptions(true));
 const paramValue = layer.get('a_param_name', 'fallback_value');`}
     </CodeBlock>
   ),
   layerExposureSnippet: (
     <CodeBlock language="jsx">
-      {`Statsig.manuallyLogLayerParamExposure(aUser, 'a_layer_name', 'a_param_name');`}
+      {`statsig.manuallyLogLayerParamExposure(aUser, 'a_layer_name', 'a_param_name');`}
     </CodeBlock>
   ),
 };
