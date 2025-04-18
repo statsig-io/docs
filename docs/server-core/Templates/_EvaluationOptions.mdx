@@ -4,12 +4,11 @@ import { VersionBadge } from "../../sdks/_VersionBadge.mdx";
 
 ## Method Options <VersionBadge version={props.addedInVersion}/>
 
-When using methods like `checkGate`, `getDynamicConfig`, `getExperiment`, and `getLayer`, you can pass an options object as the second parameter to customize the behavior:
+When using methods like `checkGate`, `getConfig`, `getExperiment`, and `getLayer`, you can customize the behavior:
 
-### disableExposureLog `boolean`
-> Prevents an exposure log being created for this check. Use this when you want to check a value without recording that the user was exposed to it.
->
-> default: `false`
+### Disabling Exposure Logging
+
+You can check values without recording that the user was exposed to them:
 
 :::warning
 Manually logging exposures can be tricky and may lead to an imbalance in exposure events. For example, only triggering exposures for users in the Test group of an experiment will imbalance the experiment, making it useless.
@@ -76,11 +75,12 @@ Later, if you would like to expose the layer parameter, you can call the followi
 
 {props.userPersistedValues && (
   <>
-    ### userPersistedValues `object`
-    {"> Provide a map of values to be used for persistent experiment assignments. This requires a user persistent storage adapter.\n>\n> Only available for `getExperiment` method."}
+    ### Persistent Assignment
+
+    {"You can provide a map of values to be used for persistent experiment assignments:"}
 
     <div>{props.userPersistedValuesSnippet}</div>
 
-    {"For more information on persistent assignments, see the [Persistent Assignment documentation](/client/concepts/persistent_assignment#example-usage)."}
+    {"For more information on persistent assignments, see the [Persistent Assignment documentation](/server/concepts/persistent_assignment)."}
   </>
 )}
