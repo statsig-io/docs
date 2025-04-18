@@ -19,7 +19,7 @@ import {
   WorkingWith,
   StatsigOptions,
   StatsigUser,
-  ManualExposures,
+  EvaluationOptions,
   Shutdown,
   ClientInitResponse,
   UserPersistentStorage,
@@ -96,7 +96,7 @@ export const Builder = SDKDocsBuilder({
         snippet: <OverridesSnippet />,
       },
     ],
-    [ManualExposures, { addedInVersion: "0.11.0", ...ManualExposureSnippets }],
+    [EvaluationOptions, { addedInVersion: "0.11.0", ...ManualExposureSnippets }],
     [
       UserPersistentStorage,
       { interface: <PersistentStorageInterface />, example: <PersistentStorageExample /> },

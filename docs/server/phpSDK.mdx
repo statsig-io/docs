@@ -21,7 +21,7 @@ import {
   StatsigUser,
   Shutdown,
   Reference,
-  ManualExposures,
+  EvaluationOptions,
 } from "./Templates/index.mdx";
 
 import Install from "./php/_install.mdx";
@@ -70,7 +70,7 @@ export const Builder = SDKDocsBuilder({
         hideAsyncDisclaimer: true,
       },
     ],
-    [ManualExposures, { addedInVersion: "3.4.0", ...ManualExposureSnippets }],
+    [EvaluationOptions, { addedInVersion: "3.4.0", ...ManualExposureSnippets }],
     [CronJobs, {}],
     [StatsigUser, {}],
     [StatsigOptions, { options: <Options /> }],
