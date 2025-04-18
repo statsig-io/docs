@@ -39,17 +39,3 @@ If you detect issues or concerns during the release process:
 **Important:** Aborting a release is an irreversible action. Once aborted, you will need to trigger a new release to restart the process with any modifications.
 
 ![Aborting an active release](/img/release-pipeline/abort.png)
-
-## Best Practices for Managing Releases
-
-When working with Release Pipelines, consider these recommendations:
-
-- Always thoroughly test changes in early phases before approving progression
-- Monitor relevant metrics during each phase to detect any unexpected behavior
-- Document the reason for any abort actions to help improve future releases
-- Coordinate with team members when managing critical releases
-- Set up appropriate notifications to alert the team when approval is required
-
-## Viewing Release History
-
-All release actions are recorded in the history of the feature gate or dynamic config for future reference and auditing purposes.
