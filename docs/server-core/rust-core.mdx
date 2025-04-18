@@ -32,6 +32,7 @@ import CheckGate from "./rust/_checkGate.mdx";
 import GetConfig from "./rust/_getConfig.mdx";
 import GetExperiment from "./rust/_getExperiment.mdx";
 import GetFeatureGate from "./rust/_getFeatureGate.mdx";
+import ParamStores from "./rust/_paramStores.mdx";
 import LogEvent from "./rust/_logEvent.mdx";
 import MoreFAQs from "./rust/_faqs.mdx";
 import Options from "./rust/_options.mdx";
@@ -66,6 +67,7 @@ export const Builder = SDKDocsBuilder({
         logEvent: <LogEvent />,
         hideAsyncDisclaimer: true,
         getFeatureGate: <GetFeatureGate />,
+        paramStores: <ParamStores />,
       },
     ],
     [StatsigUser, { statsigUser: <UserSnippet /> }],
