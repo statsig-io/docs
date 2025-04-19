@@ -94,6 +94,10 @@ Ratio metrics are computed only for users that have a non-zero value in the deno
 
 **3. What is the difference in metrics between One-Time Event vs Daily Participation Rate?**
 
-The distinction between these in only relevant in the context of an experiment.
+The distinction between these is only relevant in the context of an experiment.
 Daily participation rate counts the number of _days_ a user has that event, divided by the number of _days_ the user has been in the experiment.
 One time event is a binary metric that checks whether the user has that event _at least once_ during their time in the experiment.
+
+**4. Why does my One-Time Event metric show as "daily_participation" in the experiment review UI?**
+
+All unit count metrics in Statsig use the same aggregation mechanism (daily_participation) in the UI but are differentiated by their rollup property. For One-Time Event metrics, the rollup property is set to "max", which ensures the metric checks if a user performed an action at least once during the experiment. This is why One-Time Event metrics will display "daily_participation" in the UI despite being configured as one-time events during setup.
