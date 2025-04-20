@@ -73,3 +73,23 @@ To see which feature gates and dynamic configs are currently using a specific Re
 This will show all features and configs that are currently attached to this pipeline.
 
 ![Reference](/img/release-pipeline/reference.png)
+
+## Opting Out Environments from Release Pipelines
+
+By default, all environments will trigger Release Pipelines when changes are made. However, you can configure specific environments to be exempt from this behavior.
+
+When an environment is opted out from Release Pipelines:
+- Changes made exclusively to that environment will not trigger a Release Pipeline
+- This allows for quick environment-specific adjustments without initiating the full release process
+
+### How to Opt Out an Environment
+
+To exclude an environment from triggering Release Pipelines:
+
+1. Navigate to **Settings** in the Statsig console
+2. Under **Keys & Environments**, select **Environments**
+3. Click on the environment you wish to opt out
+4. Unselect the **Pipeline-required Environment** option
+5. Click **Save** to apply your changes
+
+![Environment opt-out setting](/img/release-pipeline/environment-opt-out.png)
