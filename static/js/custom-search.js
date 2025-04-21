@@ -5,7 +5,6 @@
  * to scope search results based on the current navigation section.
  */
 (function() {
-  
   function getCurrentSection() {
     const path = window.location.pathname;
     console.log('[Statsig Search] Current path:', path);
@@ -24,8 +23,6 @@
   }
 
   function addSectionIndicator(section) {
-    console.log('[Statsig Search] Adding section indicator for', section);
-    
     const checkForSearchForm = setInterval(() => {
       const searchForm = document.querySelector('.DocSearch-Form');
       if (!searchForm) return;
@@ -60,129 +57,74 @@
         indicator.style.backgroundColor = '#f0f0f0';
         indicator.style.color = '#666666';
       }
-      
-      console.log('[Statsig Search] Section indicator added');
     }, 100);
   }
 
-  function filterSearchResults(section) {
-    console.log('[Statsig Search] Filtering results for section:', section);
-    
-    const checkForResults = setInterval(() => {
-      const hits = document.querySelectorAll('.DocSearch-Hit');
-      if (hits.length === 0) return;
+  function patchAlgoliaSearch() {
+    const checkForDocSearch = setInterval(() => {
+      if (!window.docsearch) return;
       
-      console.log('[Statsig Search] Found', hits.length, 'results');
-      clearInterval(checkForResults);
+      clearInterval(checkForDocSearch);
+      console.log('[Statsig Search] Found DocSearch, patching...');
       
-      let hiddenCount = 0;
+      const originalDocSearch = window.docsearch;
       
-      hits.forEach(hit => {
-        const path = hit.querySelector('.DocSearch-Hit-path');
-        if (!path) return;
+      window.docsearch = function(...args) {
+        const [options] = args;
         
-        const pathText = path.textContent || '';
-        console.log('[Statsig Search] Result path:', pathText);
+        const newOptions = { ...options };
         
-        let shouldShow = true;
+        const originalTransformSearchParams = newOptions.transformSearchParams || (params => params);
         
-        if (section === 'api') {
-          shouldShow = pathText.includes('Client SDK') || 
-                       pathText.includes('Server SDK') || 
-                       pathText.includes('Console API') || 
-                       pathText.includes('HTTP API');
-        } else if (section === 'warehouse') {
-          shouldShow = pathText.includes('Warehouse Native');
-        }
-        
-        console.log('[Statsig Search] Should show:', shouldShow);
-        
-        if (shouldShow) {
-          hit.style.display = '';
-        } else {
-          hit.style.display = 'none';
-          hiddenCount++;
-        }
-      });
-      
-      console.log('[Statsig Search] Hidden', hiddenCount, 'results');
-      
-      if (hiddenCount === hits.length) {
-        const resultsContainer = document.querySelector('.DocSearch-Dropdown-Container');
-        if (resultsContainer) {
-          const noResults = document.createElement('div');
-          noResults.className = 'DocSearch-NoResults';
-          noResults.innerHTML = '<div class="DocSearch-Screen-Icon"></div><p>No results in current section</p>';
+        newOptions.transformSearchParams = (params) => {
+          const section = getCurrentSection();
+          console.log('[Statsig Search] Transforming search params for section:', section);
           
-          resultsContainer.innerHTML = '';
-          resultsContainer.appendChild(noResults);
+          let newParams = originalTransformSearchParams(params);
           
-          console.log('[Statsig Search] Added "no results" message');
-        }
-      }
+          if (section === 'api') {
+            console.log('[Statsig Search] Adding API facet filters');
+            newParams.facetFilters = [
+              ['tags:client', 'tags:server', 'tags:console-api', 'tags:http-api']
+            ];
+          } else if (section === 'warehouse') {
+            console.log('[Statsig Search] Adding Warehouse facet filters');
+            newParams.facetFilters = [
+              ['tags:warehouse-native']
+            ];
+          }
+          
+          console.log('[Statsig Search] Final search params:', newParams);
+          return newParams;
+        };
+        
+        const instance = originalDocSearch(newOptions);
+        
+        const originalOpen = instance.open;
+        
+        instance.open = function(...openArgs) {
+          console.log('[Statsig Search] DocSearch open called');
+          
+          addSectionIndicator(getCurrentSection());
+          
+          return originalOpen.apply(this, openArgs);
+        };
+        
+        return instance;
+      };
+      
+      console.log('[Statsig Search] DocSearch patched successfully');
     }, 100);
-  }
-
-  function handleSearch() {
-    const section = getCurrentSection();
-    console.log('[Statsig Search] Handling search for section:', section);
-    
-    addSectionIndicator(section);
-    
-    filterSearchResults(section);
-  }
-
-  function setupSearchListeners() {
-    console.log('[Statsig Search] Setting up search listeners');
-    
-    document.addEventListener('click', (event) => {
-      if (event.target.closest('.DocSearch-Button')) {
-        console.log('[Statsig Search] Search button clicked');
-        handleSearch();
-      }
-    }, true);
-    
-    document.addEventListener('keydown', (event) => {
-      if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
-        console.log('[Statsig Search] Search keyboard shortcut detected');
-        handleSearch();
-      }
-    });
-    
-    document.addEventListener('input', (event) => {
-      if (event.target.classList.contains('DocSearch-Input')) {
-        console.log('[Statsig Search] Search input detected');
-        setTimeout(() => {
-          filterSearchResults(getCurrentSection());
-        }, 300);
-      }
-    }, true);
-    
-    document.addEventListener('click', (event) => {
-      if (event.target.closest('.DocSearch-Hit-source')) {
-        console.log('[Statsig Search] Search result clicked');
-        setTimeout(() => {
-          filterSearchResults(getCurrentSection());
-        }, 100);
-      }
-    }, true);
   }
 
   function initialize() {
     console.log('[Statsig Search] Initializing search customization');
-    setupSearchListeners();
+    
+    patchAlgoliaSearch();
     
     window.addEventListener('popstate', () => {
       console.log('[Statsig Search] Navigation detected');
-      if (document.querySelector('.DocSearch-Modal')) {
-        handleSearch();
-      }
     });
-    
-    window.statsigFilterSearch = function() {
-      console.log('[Statsig Search] Manual filter trigger');
-      handleSearch();
-    };
     
     console.log('[Statsig Search] Search customization initialized');
   }
