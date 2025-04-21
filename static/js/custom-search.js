@@ -1,3 +1,9 @@
+/**
+ * Statsig Search Customization
+ * 
+ * This script customizes the Algolia search functionality in the Statsig docs site
+ * to scope search results based on the current navigation section.
+ */
 (function() {
   const DEBUG = true;
   
@@ -10,29 +16,81 @@
   log('Script loaded');
 
   let isInitialized = false;
-
-  function waitForAlgolia() {
-    log('Checking for Algolia...');
+  let isObserverInitialized = false;
+  let searchInitialized = false;
+  
+  function detectCurrentSection() {
+    const currentPath = window.location.pathname;
+    log('Current path:', currentPath);
     
-    if (window.__DOCUSAURUS && 
-        window.__DOCUSAURUS.search && 
-        window.__DOCUSAURUS.search.algoliaSearchClient) {
-      
-      log('Algolia found!');
-      
-      if (!isInitialized) {
-        setupSearchFilters();
-        isInitialized = true;
-      } else {
-        log('Already initialized, skipping setup');
-      }
+    if (currentPath.startsWith('/sdks/') || 
+        currentPath.startsWith('/client/') || 
+        currentPath.startsWith('/server/') || 
+        currentPath.startsWith('/console-api/') ||
+        currentPath.startsWith('/http-api') ||
+        currentPath.startsWith('/server-core/')) {
+      return 'api';
+    } else if (currentPath.startsWith('/statsig-warehouse-native/')) {
+      return 'warehouse';
     } else {
-      log('Algolia not found yet, retrying in 100ms');
-      setTimeout(waitForAlgolia, 100);
+      return 'docs'; // Default section
+    }
+  }
+
+  function isAlgoliaLoaded() {
+    return window.__DOCUSAURUS && 
+           window.__DOCUSAURUS.search && 
+           window.__DOCUSAURUS.search.algoliaSearchClient;
+  }
+
+  function initializeSearchModal() {
+    if (isObserverInitialized) {
+      return;
+    }
+    
+    log('Setting up search modal observer');
+    
+    try {
+      if (document && document.body) {
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.addedNodes && mutation.addedNodes.length > 0) {
+              for (let i = 0; i < mutation.addedNodes.length; i++) {
+                const node = mutation.addedNodes[i];
+                if (node.classList && 
+                    (node.classList.contains('DocSearch-Modal') || 
+                     node.classList.contains('DocSearch-Container'))) {
+                  log('Search modal detected in DOM');
+                  initializeSearch();
+                  break;
+                }
+              }
+            }
+          });
+        });
+        
+        observer.observe(document.body, { childList: true, subtree: true });
+        isObserverInitialized = true;
+        log('Search modal observer initialized');
+      } else {
+        log('Document body not available for observer');
+      }
+    } catch (error) {
+      log('Error setting up search modal observer:', error);
     }
   }
 
   function setupSearchFilters() {
+    if (!isAlgoliaLoaded()) {
+      log('Algolia not loaded yet, cannot setup filters');
+      return false;
+    }
+    
+    if (isInitialized) {
+      log('Search filters already initialized');
+      return true;
+    }
+    
     log('Setting up search filters');
     
     try {
@@ -40,27 +98,11 @@
       
       window.__DOCUSAURUS.search.algoliaSearchClient.search = function(requests) {
         try {
-          const currentPath = window.location.pathname;
-          
-          let currentSection = 'docs'; // Default section
-          
-          log('Current path:', currentPath);
-          
-          if (currentPath.startsWith('/sdks/') || 
-              currentPath.startsWith('/client/') || 
-              currentPath.startsWith('/server/') || 
-              currentPath.startsWith('/console-api/') ||
-              currentPath.startsWith('/http-api') ||
-              currentPath.startsWith('/server-core/')) {
-            currentSection = 'api';
-          } else if (currentPath.startsWith('/statsig-warehouse-native/')) {
-            currentSection = 'warehouse';
-          }
-          
+          const currentSection = detectCurrentSection();
           log('Detected section:', currentSection);
           
           requests.forEach(request => {
-            log('Original request:', JSON.stringify(request));
+            log('Original request params:', request.params);
             
             if (!request.params) {
               request.params = {};
@@ -73,8 +115,6 @@
             if (!Array.isArray(request.params.facetFilters)) {
               request.params.facetFilters = [request.params.facetFilters];
             }
-            
-            log('Original facetFilters:', JSON.stringify(request.params.facetFilters));
             
             const filteredFacets = [];
             for (const filter of request.params.facetFilters) {
@@ -89,11 +129,8 @@
               }
             }
             
-            request.params.facetFilters = filteredFacets;
-            log('Filtered facetFilters:', JSON.stringify(request.params.facetFilters));
-            
             if (currentSection === 'api') {
-              request.params.facetFilters.push([
+              filteredFacets.push([
                 'hierarchy.lvl0:Client SDKs',
                 'hierarchy.lvl0:Server SDKs',
                 'hierarchy.lvl0:Console API',
@@ -101,12 +138,13 @@
               ]);
               log('Applied API section filters');
             } else if (currentSection === 'warehouse') {
-              request.params.facetFilters.push(['hierarchy.lvl0:Warehouse Native']);
+              filteredFacets.push(['hierarchy.lvl0:Warehouse Native']);
               log('Applied Warehouse Native section filters');
             } else {
               log('Using default docs section (no filters applied)');
             }
             
+            request.params.facetFilters = filteredFacets;
             log('Final facetFilters:', JSON.stringify(request.params.facetFilters));
           });
           
@@ -118,77 +156,107 @@
         }
       };
       
+      isInitialized = true;
       log('Search filters initialized successfully');
+      return true;
     } catch (error) {
       log('Error setting up search filters:', error);
+      return false;
     }
   }
 
-  
-  log('Adding DOMContentLoaded listener');
-  document.addEventListener('DOMContentLoaded', function() {
-    log('DOMContentLoaded fired');
-    waitForAlgolia();
-  });
-  
-  log('Adding keydown listener');
-  document.addEventListener('keydown', function(e) {
-    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-      log('Search keyboard shortcut detected');
-      setTimeout(waitForAlgolia, 100);
+  function initializeSearch() {
+    if (searchInitialized) {
+      return;
     }
-  });
-  
-  log('Adding popstate listener');
-  window.addEventListener('popstate', function() {
-    log('Navigation detected');
-    setTimeout(waitForAlgolia, 100);
-  });
-  
-  log('Adding click listener');
-  document.addEventListener('click', function(e) {
-    const target = e.target;
-    if (target && 
-        (target.classList.contains('DocSearch') || 
-         target.classList.contains('DocSearch-Button') ||
-         (target.parentElement && 
-          (target.parentElement.classList.contains('DocSearch') || 
-           target.parentElement.classList.contains('DocSearch-Button'))))) {
-      log('Search element clicked');
-      setTimeout(waitForAlgolia, 100);
+    
+    log('Initializing search customization');
+    
+    if (setupSearchFilters()) {
+      searchInitialized = true;
+      log('Search customization initialized successfully');
+      return;
     }
-  });
-  
-  log('Adding mutation observer');
-  const observer = new MutationObserver(function(mutations) {
-    mutations.forEach(function(mutation) {
-      if (mutation.addedNodes && mutation.addedNodes.length > 0) {
-        for (let i = 0; i < mutation.addedNodes.length; i++) {
-          const node = mutation.addedNodes[i];
-          if (node.classList && 
-              (node.classList.contains('DocSearch-Modal') || 
-               node.classList.contains('DocSearch-Container'))) {
-            log('Search modal detected in DOM');
-            setTimeout(waitForAlgolia, 100);
-            break;
-          }
-        }
+    
+    let attempts = 0;
+    const maxAttempts = 20;
+    const pollInterval = 250; // ms
+    
+    function pollForAlgolia() {
+      attempts++;
+      log(`Polling for Algolia (attempt ${attempts}/${maxAttempts})`);
+      
+      if (isAlgoliaLoaded()) {
+        setupSearchFilters();
+        searchInitialized = true;
+        log('Algolia found and search customization initialized');
+      } else if (attempts < maxAttempts) {
+        setTimeout(pollForAlgolia, pollInterval);
+      } else {
+        log('Max polling attempts reached, will try again when search is used');
+      }
+    }
+    
+    pollForAlgolia();
+  }
+
+  function setupEventListeners() {
+    log('Setting up event listeners');
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        log('DOMContentLoaded fired');
+        initializeSearch();
+        initializeSearchModal();
+      });
+    } else {
+      log('Document already loaded');
+      initializeSearch();
+      initializeSearchModal();
+    }
+    
+    document.addEventListener('keydown', function(e) {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        log('Search keyboard shortcut detected');
+        initializeSearch();
       }
     });
-  });
-  
-  observer.observe(document.body, { childList: true, subtree: true });
-  
-  log('Initializing immediately');
-  waitForAlgolia();
-  
-  setTimeout(waitForAlgolia, 1000);
-  
+    
+    window.addEventListener('popstate', function() {
+      log('Navigation detected');
+      initializeSearch();
+    });
+    
+    document.addEventListener('click', function(e) {
+      const target = e.target;
+      const isSearchButton = target && 
+          (target.classList.contains('DocSearch') || 
+           target.classList.contains('DocSearch-Button') ||
+           (target.parentElement && 
+            (target.parentElement.classList.contains('DocSearch') || 
+             target.parentElement.classList.contains('DocSearch-Button'))));
+      
+      if (isSearchButton) {
+        log('Search element clicked');
+        initializeSearch();
+      }
+    });
+    
+    log('Event listeners initialized');
+  }
+
+  // Provide a global method to manually trigger initialization
   window.statsigInitSearch = function() {
     log('Manual initialization triggered');
-    isInitialized = false; // Reset to force reinitialization
-    waitForAlgolia();
+    isInitialized = false;
+    searchInitialized = false;
+    initializeSearch();
   };
+  
+  // Start initialization
+  setupEventListeners();
+  
+  setTimeout(initializeSearch, 1000);
   
   log('Script initialization complete');
 })();
