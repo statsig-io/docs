@@ -1,5 +1,4 @@
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
-import Admonition from '@theme/Admonition';
 
 ## React Native + React Specific Setup
 
@@ -38,8 +37,6 @@ function App() {
 }
 ```
 
-<Admonition type="caution">
-  <p><strong>iOS 18.4 Simulator Network Bug</strong></p>
-  <p>There is a known network bug in iOS 18.4 Simulator that may affect network requests in React Native apps. If you encounter network issues, please use iOS 18.2 or lower on your simulator.</p>
-  <p>For more information, see <a href="https://developer.apple.com/forums/thread/777999" target="_blank">this thread on Apple's forums</a>.</p>
-</Admonition>
+:::caution
+**Avoid iOS 18.4 on Simulator**: Apple introduced a networking bug on iOS 18.4 on Simulator that causes network requests to fail. Please use iOS 18.2 or lower on your Simulator. For more information, see [this thread on Apple's forums](https://developer.apple.com/forums/thread/777999).
+:::

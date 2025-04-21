@@ -1,6 +1,5 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-import Admonition from '@theme/Admonition';
 
 <Tabs
   groupId="ios-sdk-lang-choice"
@@ -46,8 +45,6 @@ The completion block is called after the network request to fetch the latest fea
 If you try to get any value before the completion block is called, you could get either the cached value from the previous session,
 or the default value. If you need the latest value, please wait for the completion block to be called first.
 
-<Admonition type="caution">
-  <p><strong>iOS 18.4 Simulator Network Bug</strong></p>
-  <p>There is a known network bug in iOS 18.4 Simulator that may affect network requests. If you encounter network issues, please use iOS 18.2 or lower on your simulator.</p>
-  <p>For more information, see <a href="https://developer.apple.com/forums/thread/777999" target="_blank">this thread on Apple's forums</a>.</p>
-</Admonition>
+:::caution
+**Avoid iOS 18.4 on Simulator**: Apple introduced a networking bug on iOS 18.4 on Simulator that causes network requests to fail. Please use iOS 18.2 or lower on your Simulator. For more information, see [this thread on Apple's forums](https://developer.apple.com/forums/thread/777999).
+:::
