@@ -15,6 +15,8 @@
 
   log('Script loaded');
 
+  let currentSection = null;
+
   function getCurrentSection() {
     const path = window.location.pathname;
     log('Current path:', path);
@@ -32,156 +34,146 @@
     }
   }
 
-  function handleSearchOpen() {
-    log('Search modal opened');
-    
-    const section = getCurrentSection();
-    log('Current section:', section);
-    
+  function updateCurrentSection() {
+    currentSection = getCurrentSection();
+    log('Current section updated:', currentSection);
+    return currentSection;
+  }
+
+  function addSectionIndicator(section) {
     const searchForm = document.querySelector('.DocSearch-Form');
-    if (searchForm) {
-      let indicator = document.querySelector('#statsig-section-indicator');
-      if (!indicator) {
-        indicator = document.createElement('div');
-        indicator.id = 'statsig-section-indicator';
-        indicator.style.position = 'absolute';
-        indicator.style.right = '50px';
-        indicator.style.top = '12px';
-        indicator.style.fontSize = '12px';
-        indicator.style.color = '#666';
-        indicator.style.zIndex = '100';
-        searchForm.appendChild(indicator);
-      }
-      
-      if (section === 'api') {
-        indicator.textContent = 'Searching in: SDKs and APIs';
-      } else if (section === 'warehouse') {
-        indicator.textContent = 'Searching in: Warehouse Native';
-      } else {
-        indicator.textContent = 'Searching in: All Docs';
-      }
+    if (!searchForm) return;
+    
+    let indicator = document.querySelector('#statsig-section-indicator');
+    if (!indicator) {
+      indicator = document.createElement('div');
+      indicator.id = 'statsig-section-indicator';
+      indicator.style.position = 'absolute';
+      indicator.style.right = '50px';
+      indicator.style.top = '12px';
+      indicator.style.fontSize = '12px';
+      indicator.style.fontWeight = 'bold';
+      indicator.style.zIndex = '100';
+      indicator.style.padding = '2px 6px';
+      indicator.style.borderRadius = '4px';
+      searchForm.appendChild(indicator);
     }
     
-    function filterSearchResults() {
-      log('Filtering search results for section:', section);
-      
-      const hits = document.querySelectorAll('.DocSearch-Hit');
-      log('Found', hits.length, 'search results');
-      
-      if (hits.length === 0) {
-        return;
-      }
-      
-      let hiddenCount = 0;
-      
-      hits.forEach(hit => {
-        const path = hit.querySelector('.DocSearch-Hit-path');
-        if (!path) return;
-        
-        const pathText = path.textContent || '';
-        let shouldShow = true;
-        
-        if (section === 'api') {
-          shouldShow = pathText.includes('Client SDK') || 
-                       pathText.includes('Server SDK') || 
-                       pathText.includes('Console API') || 
-                       pathText.includes('HTTP API');
-        } else if (section === 'warehouse') {
-          shouldShow = pathText.includes('Warehouse Native');
-        }
-        
-        if (shouldShow) {
-          hit.style.display = '';
-        } else {
-          hit.style.display = 'none';
-          hiddenCount++;
-        }
-      });
-      
-      log('Hidden', hiddenCount, 'results that don\'t match current section');
-      
-      if (hiddenCount === hits.length) {
-        const noResults = document.querySelector('.DocSearch-NoResults');
-        if (noResults) {
-          const heading = noResults.querySelector('p');
-          if (heading) {
-            heading.textContent = 'No results in current section';
-          }
-        }
-      }
-    }
-    
-    const resultsObserver = new MutationObserver(mutations => {
-      for (const mutation of mutations) {
-        if (mutation.addedNodes.length > 0) {
-          setTimeout(filterSearchResults, 100);
-          break;
-        }
-      }
-    });
-    
-    const resultsContainer = document.querySelector('.DocSearch-Dropdown-Container');
-    if (resultsContainer) {
-      resultsObserver.observe(resultsContainer, { childList: true, subtree: true });
-      log('Observing search results container');
-      
-      setTimeout(filterSearchResults, 100);
-    }
-    
-    const searchInput = document.querySelector('.DocSearch-Input');
-    if (searchInput) {
-      searchInput.addEventListener('input', () => {
-        setTimeout(filterSearchResults, 300);
-      });
-      log('Added input listener to search box');
+    if (section === 'api') {
+      indicator.textContent = 'Searching in: SDKs and APIs';
+      indicator.style.backgroundColor = '#e6f7ff';
+      indicator.style.color = '#0066cc';
+    } else if (section === 'warehouse') {
+      indicator.textContent = 'Searching in: Warehouse Native';
+      indicator.style.backgroundColor = '#e6ffe6';
+      indicator.style.color = '#006600';
+    } else {
+      indicator.textContent = 'Searching in: All Docs';
+      indicator.style.backgroundColor = '#f0f0f0';
+      indicator.style.color = '#666666';
     }
   }
 
-  function setupSearchObservers() {
-    log('Setting up search observers');
+  function getFacetFilters(section) {
+    if (section === 'api') {
+      return [['hierarchy.lvl0:Client SDK', 'hierarchy.lvl0:Server SDK', 'hierarchy.lvl0:Console API', 'hierarchy.lvl0:HTTP API']];
+    } else if (section === 'warehouse') {
+      return [['hierarchy.lvl0:Warehouse Native']];
+    }
+    return [];
+  }
+
+  function patchAlgoliaSearch() {
+    log('Patching Algolia DocSearch');
     
-    const bodyObserver = new MutationObserver(mutations => {
-      for (const mutation of mutations) {
-        if (mutation.addedNodes.length > 0) {
-          for (const node of mutation.addedNodes) {
-            if (node.classList && node.classList.contains('DocSearch-Modal')) {
-              handleSearchOpen();
-              return;
+    const checkInterval = setInterval(() => {
+      if (window.docsearch) {
+        clearInterval(checkInterval);
+        log('DocSearch found, patching...');
+        
+        const originalDocSearch = window.docsearch;
+        
+        window.docsearch = function(...args) {
+          log('DocSearch called with args:', args[0]);
+          
+          updateCurrentSection();
+          
+          if (args[0] && args[0].searchParameters) {
+            const facetFilters = getFacetFilters(currentSection);
+            if (facetFilters.length > 0) {
+              args[0].searchParameters.facetFilters = facetFilters;
+              log('Added facet filters:', facetFilters);
             }
           }
-        }
+          
+          const instance = originalDocSearch.apply(this, args);
+          
+          if (instance && instance.autocomplete) {
+            const originalAutocomplete = instance.autocomplete;
+            
+            instance.autocomplete = function(...autocompleteArgs) {
+              log('Autocomplete called');
+              
+              const autocompleteInstance = originalAutocomplete.apply(this, autocompleteArgs);
+              
+              if (autocompleteInstance && autocompleteInstance.on) {
+                autocompleteInstance.on('render', () => {
+                  log('Autocomplete render event fired');
+                  setTimeout(() => {
+                    addSectionIndicator(currentSection);
+                  }, 0);
+                });
+              }
+              
+              return autocompleteInstance;
+            };
+          }
+          
+          return instance;
+        };
+        
+        log('DocSearch patched successfully');
       }
-    });
+    }, 100);
     
-    bodyObserver.observe(document.body, { childList: true });
-    log('Observing body for search modal');
-    
-    const searchButton = document.querySelector('.DocSearch-Button');
-    if (searchButton) {
-      searchButton.addEventListener('click', () => {
-        log('Search button clicked');
-        setTimeout(handleSearchOpen, 100);
-      });
-      log('Added click listener to search button');
-    }
-    
-    document.addEventListener('keydown', e => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-        log('Search keyboard shortcut detected');
-        setTimeout(handleSearchOpen, 100);
-      }
-    });
-    log('Added keyboard shortcut listener');
+    setTimeout(() => {
+      clearInterval(checkInterval);
+      log('Gave up waiting for DocSearch');
+    }, 10000);
   }
-  
+
   function initialize() {
     log('Initializing search customization');
-    setupSearchObservers();
+    
+    updateCurrentSection();
+    
+    patchAlgoliaSearch();
     
     window.addEventListener('popstate', () => {
       log('Navigation detected, updating search filtering');
-      setTimeout(handleSearchOpen, 100);
+      updateCurrentSection();
     });
+    
+    window.addEventListener('load', () => {
+      log('Page loaded, updating current section');
+      updateCurrentSection();
+    });
+    
+    // Add CSS for search customization
+    const style = document.createElement('style');
+    style.textContent = `
+      .DocSearch-Hit[data-section="${currentSection}"] {
+        border-left: 3px solid #0066cc;
+        padding-left: 10px;
+      }
+      
+      .DocSearch-Hit[data-section="${currentSection}"] a {
+        font-weight: bold;
+      }
+    `;
+    document.head.appendChild(style);
+    
+    log('Search customization initialized');
   }
   
   if (document.readyState === 'loading') {
@@ -189,8 +181,6 @@
   } else {
     initialize();
   }
-  
-  window.statsigFilterSearch = handleSearchOpen;
   
   log('Search customization script initialized');
 })();
