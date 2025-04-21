@@ -31,7 +31,7 @@ import LogEvent from "./node/_logEvent.mdx";
 import MoreFAQs from "./node/_faqs.mdx";
 import Options from "./node/_options.mdx";
 import ShutdownSnippet from "./node/_shutdown.mdx";
-import { Snippets as ManualExposureSnippets } from "./node/_manualExposures.mdx";
+// EvaluationOptions now replaces manual exposures
 import OverridesSnippet from "./node/_localOverrides.mdx";
 
 
@@ -63,7 +63,7 @@ export const Builder = SDKDocsBuilder({
         getFeatureGate: <GetFeatureGate />,
       },
     ],
-    [EvaluationOptions, { ...ManualExposureSnippets }],
+    [EvaluationOptions, {}],
     [StatsigUser, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
