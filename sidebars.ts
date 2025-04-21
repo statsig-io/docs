@@ -776,6 +776,7 @@ const sidebars: SidebarsConfig = {
                   type: "category",
                   label: "Setup",
                   items: [
+                    "statsig-warehouse-native/features/understanding-experiments",
                     "statsig-warehouse-native/features/configure-an-experiment",
                     "statsig-warehouse-native/features/types-of-experiments",
                     "statsig-warehouse-native/features/power-analysis",
