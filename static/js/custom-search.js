@@ -17,10 +17,12 @@
       
       console.log('Current path:', currentPath);
       
-      if (currentPath.startsWith('/client/') || 
+      if (currentPath.startsWith('/sdks/') || 
+          currentPath.startsWith('/client/') || 
           currentPath.startsWith('/server/') || 
           currentPath.startsWith('/console-api/') ||
-          currentPath.startsWith('/http-api')) {
+          currentPath.startsWith('/http-api') ||
+          currentPath.startsWith('/server-core/')) {
         currentSection = 'api';
       } else if (currentPath.startsWith('/statsig-warehouse-native/')) {
         currentSection = 'warehouse';
@@ -41,6 +43,13 @@
           request.params.facetFilters = [request.params.facetFilters];
         }
         
+        request.params.facetFilters = request.params.facetFilters.filter(filter => {
+          if (Array.isArray(filter)) {
+            return !filter.some(f => f.startsWith('hierarchy.lvl0:'));
+          }
+          return !filter.startsWith('hierarchy.lvl0:');
+        });
+        
         if (currentSection === 'api') {
           request.params.facetFilters.push([
             'hierarchy.lvl0:Client SDKs',
@@ -52,7 +61,7 @@
           request.params.facetFilters.push(['hierarchy.lvl0:Warehouse Native']);
         }
         
-        console.log('Search request with filters for section:', currentSection, request.params.facetFilters);
+        console.log('Search request with filters for section:', currentSection, JSON.stringify(request.params.facetFilters));
       });
       
       return originalSearch.call(this, requests);
@@ -62,4 +71,14 @@
   }
 
   document.addEventListener('DOMContentLoaded', waitForAlgolia);
+  
+  document.addEventListener('keydown', function(e) {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      setTimeout(waitForAlgolia, 100);
+    }
+  });
+  
+  window.addEventListener('popstate', waitForAlgolia);
+  
+  waitForAlgolia();
 })();
