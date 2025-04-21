@@ -1,0 +1,81 @@
+## Proxy Configuration
+
+The Javacore SDK uses the Rust reqwest library for HTTP requests, which supports proxy configuration through environment variables. To configure the SDK to use an HTTPS proxy server for outbound connections, you can use one of the following methods:
+
+### Method 1: Setting Environment Variables
+
+Set the following environment variables before starting your Java application:
+
+```bash
+# For HTTPS connections
+export HTTPS_PROXY=https://proxy-server:port
+
+# For HTTP connections
+export HTTP_PROXY=http://proxy-server:port
+
+# For connections that should bypass the proxy
+export NO_PROXY=localhost,127.0.0.1
+```
+
+### Method 2: Setting Java System Properties
+
+You can set Java system properties programmatically in your application:
+
+```java
+// For HTTPS connections
+System.setProperty("https.proxyHost", "proxy-server");
+System.setProperty("https.proxyPort", "port");
+
+// For HTTP connections
+System.setProperty("http.proxyHost", "proxy-server");
+System.setProperty("http.proxyPort", "port");
+
+// For connections that should bypass the proxy
+System.setProperty("http.nonProxyHosts", "localhost|127.0.0.1");
+
+// Enable system proxies
+System.setProperty("java.net.useSystemProxies", "true");
+
+// Initialize Statsig after setting proxy properties
+StatsigOptions options = new StatsigOptions.Builder()
+        .setSpecsSyncIntervalMs(5000)
+        .build();
+
+Statsig statsig = new Statsig("secret-key", options);
+statsig.initialize().get();
+```
+
+### Method 3: Using JVM Arguments
+
+You can also set proxy configuration using JVM arguments when starting your application:
+
+```bash
+java -Dhttps.proxyHost=proxy-server -Dhttps.proxyPort=port -Dhttp.proxyHost=proxy-server -Dhttp.proxyPort=port -Dhttp.nonProxyHosts="localhost|127.0.0.1" -Djava.net.useSystemProxies=true -jar your-application.jar
+```
+
+### Proxy Authentication
+
+If your proxy requires authentication, you can include credentials in the environment variables:
+
+```bash
+export HTTPS_PROXY=https://username:password@proxy-server:port
+```
+
+Or using Java system properties:
+
+```java
+System.setProperty("https.proxyUser", "username");
+System.setProperty("https.proxyPassword", "password");
+```
+
+### Verifying Proxy Configuration
+
+To verify that your proxy configuration is working correctly, you can enable debug logging:
+
+```java
+StatsigOptions options = new StatsigOptions.Builder()
+        .setOutputLoggerLevel(OutputLogger.LogLevel.DEBUG)
+        .build();
+```
+
+This will output detailed logs about network requests, which can help you confirm that requests are being routed through your proxy.
