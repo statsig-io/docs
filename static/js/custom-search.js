@@ -99,6 +99,11 @@
       if (!path) return;
       
       const pathText = path.textContent || '';
+      const hitTitle = hit.querySelector('.DocSearch-Hit-title')?.textContent || '';
+      const hitContent = hit.querySelector('.DocSearch-Hit-content')?.textContent || '';
+      
+      log('Result:', { pathText, hitTitle, hitContent });
+      
       let shouldShow = true;
       
       if (currentSection === 'api') {
@@ -110,9 +115,10 @@
         shouldShow = pathText.includes('Warehouse Native');
       }
       
+      log('Should show:', shouldShow);
+      
       if (shouldShow) {
         hit.style.display = '';
-        hit.dataset.relevantForSection = 'true';
       } else {
         hit.style.display = 'none';
         hiddenCount++;
@@ -134,46 +140,6 @@
     }
   }
 
-  function patchAlgoliaSearch() {
-    log('Setting up Algolia search patch');
-    
-    const originalFetch = window.fetch;
-    
-    window.fetch = function(url, options) {
-      if (url && typeof url === 'string' && url.includes('algolia.net/1/indexes')) {
-        log('Intercepted Algolia API call:', url);
-        
-        try {
-          if (options && options.method === 'POST' && options.body) {
-            const body = JSON.parse(options.body);
-            log('Original request body:', body);
-            
-            if (currentSection === 'api') {
-              body.facetFilters = [
-                ['lvl0:Client SDK', 'lvl0:Server SDK', 'lvl0:Console API', 'lvl0:HTTP API']
-              ];
-              log('Added API facet filters');
-            } else if (currentSection === 'warehouse') {
-              body.facetFilters = [
-                ['lvl0:Warehouse Native']
-              ];
-              log('Added Warehouse Native facet filters');
-            }
-            
-            options.body = JSON.stringify(body);
-            log('Modified request body:', body);
-          }
-        } catch (error) {
-          log('Error modifying Algolia request:', error);
-        }
-      }
-      
-      return originalFetch.apply(this, arguments);
-    };
-    
-    log('Algolia search patch set up');
-  }
-
   function setupResultsObserver() {
     log('Setting up results observer');
     
@@ -185,11 +151,6 @@
             log('Search results detected, filtering...');
             
             filterSearchResults();
-            
-            const resultsContainer = document.querySelector('.DocSearch-Dropdown-Container');
-            if (resultsContainer) {
-              observer.observe(resultsContainer, { childList: true, subtree: true });
-            }
           }
         }
       }
@@ -212,7 +173,22 @@
             
             addSectionIndicator();
             
-            observer.disconnect();
+            const resultsContainer = document.querySelector('.DocSearch-Dropdown-Container');
+            if (resultsContainer) {
+              const resultsObserver = new MutationObserver(() => {
+                log('Results container changed, filtering...');
+                filterSearchResults();
+              });
+              
+              resultsObserver.observe(resultsContainer, { 
+                childList: true, 
+                subtree: true,
+                attributes: true,
+                characterData: true
+              });
+              
+              log('Results container observer set up');
+            }
           }
         }
       }
@@ -271,21 +247,71 @@
     log('Keyboard shortcut handler set up');
   }
 
+  function setupDirectDOMManipulation() {
+    log('Setting up direct DOM manipulation');
+    
+    const style = document.createElement('style');
+    style.textContent = `
+      /* Hide search results that don't match the current section */
+      body[data-statsig-section="api"] .DocSearch-Hit:not([data-section="api"]) {
+        display: none !important;
+      }
+      
+      body[data-statsig-section="warehouse"] .DocSearch-Hit:not([data-section="warehouse"]) {
+        display: none !important;
+      }
+    `;
+    document.head.appendChild(style);
+    
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.addedNodes.length > 0) {
+          const hits = document.querySelectorAll('.DocSearch-Hit');
+          hits.forEach(hit => {
+            if (hit.hasAttribute('data-section')) return;
+            
+            const path = hit.querySelector('.DocSearch-Hit-path');
+            if (!path) return;
+            
+            const pathText = path.textContent || '';
+            
+            if (pathText.includes('Client SDK') || 
+                pathText.includes('Server SDK') || 
+                pathText.includes('Console API') || 
+                pathText.includes('HTTP API')) {
+              hit.setAttribute('data-section', 'api');
+            } else if (pathText.includes('Warehouse Native')) {
+              hit.setAttribute('data-section', 'warehouse');
+            } else {
+              hit.setAttribute('data-section', 'docs');
+            }
+          });
+          
+          document.body.setAttribute('data-statsig-section', currentSection);
+        }
+      }
+    });
+    
+    observer.observe(document.body, { childList: true, subtree: true });
+    
+    log('Direct DOM manipulation set up');
+  }
+
   function initialize() {
     log('Initializing search customization');
     
     updateCurrentSection();
     
-    patchAlgoliaSearch();
-    
     setupSearchButtonHandler();
     setupKeyboardShortcut();
     setupSearchInputHandler();
     setupResultsObserver();
+    setupDirectDOMManipulation();
     
     window.addEventListener('popstate', () => {
       log('Navigation detected');
       updateCurrentSection();
+      document.body.setAttribute('data-statsig-section', currentSection);
     });
     
     window.statsigFilterSearch = function() {
@@ -293,6 +319,8 @@
       updateCurrentSection();
       filterSearchResults();
     };
+    
+    document.body.setAttribute('data-statsig-section', currentSection);
     
     log('Search customization initialized');
   }
