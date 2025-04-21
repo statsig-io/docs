@@ -7,14 +7,14 @@ import CardFooter from '@site/src/components/Card/CardFooter';
 import CardHeader from '@site/src/components/Card/CardHeader';
 import CardImage from '@site/src/components/Card/CardImage';
 import Columns from '@site/src/components/Columns';
-import Column from '@site/src/components/Column';
+import Column from '@site/src/components/Columns/Column';
 export default {
   // Reusing the default mapping
   ...MDXComponents,
-  Card, 
-  CardHeader, 
-  CardBody, 
-  CardFooter, 
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
   CardImage,
   Columns,
   Column
