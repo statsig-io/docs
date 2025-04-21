@@ -44,7 +44,7 @@ import ShutdownSnippet from "./java/_shutdown.mdx";
 import OverridesSnippet from "./java/_localOverrides.mdx";
 import * as ReferenceSnippets from "./java/_reference.mdx";
 import ClientInitResponseSnippet from "./java/_clientInitResponse.mdx";
-import { Snippets as ManualExposureSnippets } from "./java/_manualExposures.mdx";
+// EvaluationOptions now replaces manual exposures
 import ForwardProxyExample from "./java/_forwardProxyExample.mdx";
 import MultiInstanceExample from "./java/_multiInstanceExample.mdx";
 import PersistentStorageInterface from "./java/_persistentStorageInterface.mdx";
@@ -96,7 +96,7 @@ export const Builder = SDKDocsBuilder({
         snippet: <OverridesSnippet />,
       },
     ],
-    [EvaluationOptions, { addedInVersion: "0.11.0", ...ManualExposureSnippets }],
+    [EvaluationOptions, { addedInVersion: "0.11.0" }],
     [
       UserPersistentStorage,
       { interface: <PersistentStorageInterface />, example: <PersistentStorageExample /> },

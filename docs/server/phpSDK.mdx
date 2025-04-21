@@ -32,7 +32,7 @@ import GetExperiment from "./php/_getExperiment.mdx";
 import LogEvent from "./php/_logEvent.mdx";
 import MoreFAQs from "./php/_faqs.mdx";
 import Options from "./php/_options.mdx";
-import { Snippets as ManualExposureSnippets } from "./php/_manualExposures.mdx";
+// EvaluationOptions now replaces manual exposures
 import * as _ShutdownSnippet from "./php/_shutdown.mdx";
 export const ShutdownSnippet = _ShutdownSnippet;
 
@@ -70,7 +70,7 @@ export const Builder = SDKDocsBuilder({
         hideAsyncDisclaimer: true,
       },
     ],
-    [EvaluationOptions, { addedInVersion: "3.4.0", ...ManualExposureSnippets }],
+    [EvaluationOptions, { addedInVersion: "3.4.0" }],
     [CronJobs, {}],
     [StatsigUser, {}],
     [StatsigOptions, { options: <Options /> }],
