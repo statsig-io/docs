@@ -3,12 +3,6 @@ import Admonition from '@theme/Admonition';
 
 ## Expo + React Specific Setup
 
-<Admonition type="caution">
-  <p><strong>iOS 18.4 Simulator Network Bug</strong></p>
-  <p>There is a known network bug in iOS 18.4 Simulator that may affect network requests in Expo apps. If you encounter network issues, please use iOS 18.2 or lower on your simulator.</p>
-  <p>For more information, see <a href="https://developer.apple.com/forums/thread/777999" target="_blank">this thread on Apple's forums</a>.</p>
-</Admonition>
-
 The setup for an Expo environment is very similar to a plain [React environment](/client/javascript-sdk/react). 
 The only difference is that you need to use the Expo specific `StatsigProviderExpo`. 
 This automatically switches out the storage layer used by the SDK, utilizing [AsyncStorage](https://github.com/react-native-async-storage) instead of LocalStorage (which isn't available in RN environments).
@@ -38,3 +32,9 @@ function App() {
   );
 }
 ```
+
+<Admonition type="caution">
+  <p><strong>iOS 18.4 Simulator Network Bug</strong></p>
+  <p>There is a known network bug in iOS 18.4 Simulator that may affect network requests in Expo apps. If you encounter network issues, please use iOS 18.2 or lower on your simulator.</p>
+  <p>For more information, see <a href="https://developer.apple.com/forums/thread/777999" target="_blank">this thread on Apple's forums</a>.</p>
+</Admonition>
