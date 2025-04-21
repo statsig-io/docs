@@ -13,7 +13,7 @@ last_update:
 Release Pipelines enable sophisticated, multi-stage rollout strategies that respect your infrastructure boundaries, providing greater control over feature deployments.
 
 :::info Note
-Release Pipeline is currently in Beta. Statsig team is working on adding more features around it. Please reach out to us if you have questions.
+Release Pipeline is currently in Beta. Statsig team is working on adding more features around it. Please see the [Current Limitations section](#current-limitations) below for current limitations. Please reach out to us if you have questions.
 :::
 
 ## When to Use Release Pipelines
@@ -54,3 +54,9 @@ Follow these tutorials to begin implementing Release Pipelines:
 - [Create and Manage Release Pipelines](/release-pipeline/create-and-manage)
 - [Trigger a Release Pipeline](/release-pipeline/trigger)
 - [Manage an Ongoing Release Pipeline](/release-pipeline/actions)
+
+## Current Limitations
+
+- Experiments are not supported in release pipeline
+- Resalt/Disable/Delete/Archive/Launch actions won’t trigger a release pipeline
+- [Scheduled rollouts](/feature-flags/scheduled-rollouts) are not supported to work in conjunction with release pipeline
