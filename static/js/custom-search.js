@@ -67,97 +67,114 @@
       }, 100);
     }
     
-    function patchAlgoliaDocSearch() {
-      console.log('[Statsig Search] Looking for DocSearch initialization');
-      
-      const searchButton = document.querySelector('.DocSearch-Button');
-      if (!searchButton) {
-        console.log('[Statsig Search] Search button not found, will try again later');
-        setTimeout(patchAlgoliaDocSearch, 1000);
-        return;
+    function patchAlgoliaSearch() {
+      if (!window.originalDocSearchFunction && window.docsearch) {
+        console.log('[Statsig Search] Storing original docsearch function');
+        window.originalDocSearchFunction = window.docsearch;
       }
       
-      console.log('[Statsig Search] Search button found, patching DocSearch');
-      
-      const originalClickHandler = searchButton.onclick;
-      
-      searchButton.onclick = function(event) {
-        console.log('[Statsig Search] Search button clicked, intercepting');
+      window.docsearch = function(options) {
+        console.log('[Statsig Search] Intercepted docsearch call with options:', options);
         
         const section = getCurrentSection();
         console.log('[Statsig Search] Current section:', section);
         
-        addSectionIndicator(section);
+        const newOptions = { ...options };
         
-        if (window.docsearch) {
-          console.log('[Statsig Search] Found DocSearch, patching');
-          
-          const originalDocSearch = window.docsearch;
-          
-          window.docsearch = function(options) {
-            console.log('[Statsig Search] DocSearch called with options:', options);
-            
-            const newOptions = { ...options };
-            
-            const originalTransformSearchParams = newOptions.transformSearchParams || (params => params);
-            
-            newOptions.transformSearchParams = function(params) {
-              console.log('[Statsig Search] Transforming search params:', params);
-              
-              let newParams = originalTransformSearchParams(params);
-              
-              if (section === 'api') {
-                console.log('[Statsig Search] Adding API facet filters');
-                newParams.facetFilters = [
-                  ['docusaurus_tag:default'],
-                  ['tags:client', 'tags:server', 'tags:console-api', 'tags:http-api']
-                ];
-              } else if (section === 'warehouse') {
-                console.log('[Statsig Search] Adding Warehouse facet filters');
-                newParams.facetFilters = [
-                  ['docusaurus_tag:default'],
-                  ['tags:warehouse-native']
-                ];
-              }
-              
-              console.log('[Statsig Search] Final search params:', newParams);
-              return newParams;
-            };
-            
-            return originalDocSearch(newOptions);
-          };
-          
-          console.log('[Statsig Search] DocSearch patched successfully');
-        }
+        const originalTransformSearchParams = newOptions.transformSearchParams || (params => params);
         
-        if (originalClickHandler) {
-          originalClickHandler.call(this, event);
-        }
+        newOptions.transformSearchParams = function(params) {
+          console.log('[Statsig Search] Original search params:', params);
+          
+          let newParams = originalTransformSearchParams(params);
+          
+          if (section === 'api') {
+            console.log('[Statsig Search] Adding API facet filters');
+            newParams.facetFilters = [
+              ['docusaurus_tag:default'],
+              ['tags:client', 'tags:server', 'tags:console-api', 'tags:http-api']
+            ];
+          } else if (section === 'warehouse') {
+            console.log('[Statsig Search] Adding Warehouse facet filters');
+            newParams.facetFilters = [
+              ['docusaurus_tag:default'],
+              ['tags:warehouse-native']
+            ];
+          }
+          
+          console.log('[Statsig Search] Final search params:', newParams);
+          return newParams;
+        };
+        
+        const originalOnOpen = newOptions.onOpen || (() => {});
+        
+        newOptions.onOpen = function(...args) {
+          console.log('[Statsig Search] DocSearch onOpen called');
+          
+          addSectionIndicator(section);
+          
+          return originalOnOpen.apply(this, args);
+        };
+        
+        console.log('[Statsig Search] Calling original docsearch with modified options');
+        return window.originalDocSearchFunction(newOptions);
       };
+      
+      console.log('[Statsig Search] Algolia search patched successfully');
+    }
+    
+    function initialize() {
+      console.log('[Statsig Search] Initializing search customization');
+      
+      if (window.docsearch) {
+        console.log('[Statsig Search] DocSearch already available, patching immediately');
+        patchAlgoliaSearch();
+      } else {
+        console.log('[Statsig Search] DocSearch not available yet, waiting...');
+        const checkInterval = setInterval(() => {
+          if (window.docsearch) {
+            console.log('[Statsig Search] DocSearch now available, patching');
+            clearInterval(checkInterval);
+            patchAlgoliaSearch();
+          }
+        }, 100);
+      }
+      
+      document.addEventListener('click', function(event) {
+        if (event.target.closest('.DocSearch-Button')) {
+          console.log('[Statsig Search] Search button clicked');
+          
+          if (window.docsearch && !window.originalDocSearchFunction) {
+            console.log('[Statsig Search] Patching docsearch on button click');
+            patchAlgoliaSearch();
+          }
+          
+          addSectionIndicator(getCurrentSection());
+        }
+      }, true);
       
       document.addEventListener('keydown', function(event) {
         if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
           console.log('[Statsig Search] Keyboard shortcut detected');
           
-          const section = getCurrentSection();
-          console.log('[Statsig Search] Current section:', section);
+          if (window.docsearch && !window.originalDocSearchFunction) {
+            console.log('[Statsig Search] Patching docsearch on keyboard shortcut');
+            patchAlgoliaSearch();
+          }
           
-          addSectionIndicator(section);
-          
+          addSectionIndicator(getCurrentSection());
         }
       });
       
-      console.log('[Statsig Search] Search button patched successfully');
+      window.addEventListener('popstate', function() {
+        console.log('[Statsig Search] Navigation detected');
+        
+      });
+      
+      console.log('[Statsig Search] Search customization initialized');
     }
     
-    patchAlgoliaDocSearch();
-    
-    window.addEventListener('popstate', function() {
-      console.log('[Statsig Search] Navigation detected');
-      
-    });
-    
-    console.log('[Statsig Search] Search customization initialized');
+    initialize();
   });
   
   console.log('[Statsig Search] Script loaded');
