@@ -48,7 +48,7 @@
           request.params.facetFilters.push(['hierarchy.lvl0:Warehouse Native']);
         }
         
-        console.log('Search request with filters:', request.params.facetFilters);
+        console.log('Search request with filters for section:', currentSection, request.params.facetFilters);
       });
       
       return originalSearch.call(this, requests);
