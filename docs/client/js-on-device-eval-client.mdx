@@ -45,7 +45,7 @@ import LogEvent from "./js-device-eval-mono/_logEvent.mdx";
 import MoreFAQs from "./js-device-eval-mono/_faqs.mdx";
 import Options from "./js-device-eval-mono/_options.mdx";
 import ShutdownSnippet from "./js-device-eval-mono/_shutdown.mdx";
-import { Snippets as EvaluationOptionsSnippets } from "./js-device-eval-mono/_manualExposures.mdx";
+// Import removed - using empty EvaluationOptions object instead
 
 
 export const Builder = SDKDocsBuilder({
@@ -91,16 +91,7 @@ export const Builder = SDKDocsBuilder({
     [StatsigUser, {}],
     [ClientEventEmitting, {}],
     [StatsigOptions, { options: <Options /> }],
-    [EvaluationOptions, { 
-      gateSnippet: EvaluationOptionsSnippets.gateSnippet,
-      gateExposureSnippet: EvaluationOptionsSnippets.gateExposureSnippet,
-      configSnippet: EvaluationOptionsSnippets.configSnippet,
-      configExposureSnippet: EvaluationOptionsSnippets.configExposureSnippet,
-      experimentSnippet: EvaluationOptionsSnippets.experimentSnippet,
-      experimentExposureSnippet: EvaluationOptionsSnippets.experimentExposureSnippet,
-      layerSnippet: EvaluationOptionsSnippets.layerSnippet,
-      layerExposureSnippet: EvaluationOptionsSnippets.layerExposureSnippet
-    }],
+    [EvaluationOptions, {}],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [DataAdapter, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
