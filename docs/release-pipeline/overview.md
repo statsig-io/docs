@@ -12,6 +12,10 @@ last_update:
 
 Release Pipelines enable sophisticated, multi-stage rollout strategies that respect your infrastructure boundaries, providing greater control over feature deployments.
 
+:::info Note
+Release Pipeline is currently in Beta. Statsig team is working on adding more features around it. Please reach out to us if you have questions.
+:::
+
 ## When to Use Release Pipelines
 
 Consider implementing Release Pipelines when you need to:

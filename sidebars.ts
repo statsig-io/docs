@@ -439,7 +439,7 @@ const sidebars: SidebarsConfig = {
             },
             {
               type: "category",
-              label: "Release Pipeline",
+              label: "Release Pipeline (Beta)",
               items: [
                 "release-pipeline/overview",
                 "release-pipeline/create-and-manage",
