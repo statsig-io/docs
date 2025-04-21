@@ -15,145 +15,182 @@
 
   log('Script loaded');
 
-  let currentSection = null;
-
-  function detectCurrentSection() {
+  function getCurrentSection() {
     const path = window.location.pathname;
     log('Current path:', path);
     
-    if (path.startsWith('/sdks/') || 
-        path.startsWith('/client/') || 
-        path.startsWith('/server/') || 
-        path.startsWith('/console-api/') ||
-        path.startsWith('/http-api') ||
-        path.startsWith('/server-core/')) {
+    if (path.includes('/sdks/') || 
+        path.includes('/client/') || 
+        path.includes('/server/') || 
+        path.includes('/console-api/') ||
+        path.includes('/http-api')) {
       return 'api';
-    } else if (path.startsWith('/statsig-warehouse-native/')) {
+    } else if (path.includes('/statsig-warehouse-native/')) {
       return 'warehouse';
     } else {
-      return 'docs'; // Default section
+      return 'docs';
     }
   }
 
-  function updateCurrentSection() {
-    currentSection = detectCurrentSection();
-    log('Section updated:', currentSection);
-  }
-
-  // Intercept DocSearch initialization
-  function interceptDocSearch() {
-    log('Setting up DocSearch interception');
+  function handleSearchOpen() {
+    log('Search modal opened');
     
-    const originalDocSearchFunction = window.docsearch;
+    const section = getCurrentSection();
+    log('Current section:', section);
     
-    if (!originalDocSearchFunction) {
-      log('DocSearch not found yet, will try again later');
-      setTimeout(interceptDocSearch, 500);
-      return;
-    }
-    
-    log('DocSearch found, intercepting');
-    
-    window.docsearch = function(...args) {
-      log('DocSearch called with args:', args[0]);
-      
-      if (args.length > 0 && typeof args[0] === 'object') {
-        const options = args[0];
-        
-        const originalTransformItems = options.transformItems || (items => items);
-        
-        options.transformItems = function(items) {
-          log('Transforming items, count:', items.length);
-          updateCurrentSection();
-          
-          let filteredItems = items;
-          
-          if (currentSection === 'api') {
-            log('Filtering for API section');
-            filteredItems = items.filter(item => {
-              const hierarchy = item.hierarchy || {};
-              const lvl0 = hierarchy.lvl0 || '';
-              return lvl0.includes('Client SDKs') || 
-                     lvl0.includes('Server SDKs') || 
-                     lvl0.includes('Console API') || 
-                     lvl0.includes('HTTP API');
-            });
-          } else if (currentSection === 'warehouse') {
-            log('Filtering for Warehouse Native section');
-            filteredItems = items.filter(item => {
-              const hierarchy = item.hierarchy || {};
-              const lvl0 = hierarchy.lvl0 || '';
-              return lvl0.includes('Warehouse Native');
-            });
-          }
-          
-          log('Filtered items count:', filteredItems.length);
-          return originalTransformItems(filteredItems);
-        };
-        
-        const originalOnStateChange = options.onStateChange;
-        options.onStateChange = function(state) {
-          updateCurrentSection();
-          if (originalOnStateChange) {
-            originalOnStateChange(state);
-          }
-        };
+    const searchForm = document.querySelector('.DocSearch-Form');
+    if (searchForm) {
+      let indicator = document.querySelector('#statsig-section-indicator');
+      if (!indicator) {
+        indicator = document.createElement('div');
+        indicator.id = 'statsig-section-indicator';
+        indicator.style.position = 'absolute';
+        indicator.style.right = '50px';
+        indicator.style.top = '12px';
+        indicator.style.fontSize = '12px';
+        indicator.style.color = '#666';
+        indicator.style.zIndex = '100';
+        searchForm.appendChild(indicator);
       }
       
-      return originalDocSearchFunction.apply(this, args);
-    };
-    
-    log('DocSearch interception complete');
-  }
-
-  function initialize() {
-    log('Initializing');
-    updateCurrentSection();
-    interceptDocSearch();
-  }
-  
-  function setupEventListeners() {
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initialize);
-    } else {
-      initialize();
+      if (section === 'api') {
+        indicator.textContent = 'Searching in: SDKs and APIs';
+      } else if (section === 'warehouse') {
+        indicator.textContent = 'Searching in: Warehouse Native';
+      } else {
+        indicator.textContent = 'Searching in: All Docs';
+      }
     }
     
-    window.addEventListener('popstate', updateCurrentSection);
-    
-    document.addEventListener('click', function(e) {
-      const target = e.target;
-      const isSearchButton = target && 
-          (target.classList.contains('DocSearch-Button') || 
-           (target.parentElement && target.parentElement.classList.contains('DocSearch-Button')));
+    function filterSearchResults() {
+      log('Filtering search results for section:', section);
       
-      if (isSearchButton) {
-        log('Search button clicked');
-        updateCurrentSection();
-        interceptDocSearch();
+      const hits = document.querySelectorAll('.DocSearch-Hit');
+      log('Found', hits.length, 'search results');
+      
+      if (hits.length === 0) {
+        return;
+      }
+      
+      let hiddenCount = 0;
+      
+      hits.forEach(hit => {
+        const path = hit.querySelector('.DocSearch-Hit-path');
+        if (!path) return;
+        
+        const pathText = path.textContent || '';
+        let shouldShow = true;
+        
+        if (section === 'api') {
+          shouldShow = pathText.includes('Client SDK') || 
+                       pathText.includes('Server SDK') || 
+                       pathText.includes('Console API') || 
+                       pathText.includes('HTTP API');
+        } else if (section === 'warehouse') {
+          shouldShow = pathText.includes('Warehouse Native');
+        }
+        
+        if (shouldShow) {
+          hit.style.display = '';
+        } else {
+          hit.style.display = 'none';
+          hiddenCount++;
+        }
+      });
+      
+      log('Hidden', hiddenCount, 'results that don\'t match current section');
+      
+      if (hiddenCount === hits.length) {
+        const noResults = document.querySelector('.DocSearch-NoResults');
+        if (noResults) {
+          const heading = noResults.querySelector('p');
+          if (heading) {
+            heading.textContent = 'No results in current section';
+          }
+        }
+      }
+    }
+    
+    const resultsObserver = new MutationObserver(mutations => {
+      for (const mutation of mutations) {
+        if (mutation.addedNodes.length > 0) {
+          setTimeout(filterSearchResults, 100);
+          break;
+        }
       }
     });
     
-    document.addEventListener('keydown', function(e) {
+    const resultsContainer = document.querySelector('.DocSearch-Dropdown-Container');
+    if (resultsContainer) {
+      resultsObserver.observe(resultsContainer, { childList: true, subtree: true });
+      log('Observing search results container');
+      
+      setTimeout(filterSearchResults, 100);
+    }
+    
+    const searchInput = document.querySelector('.DocSearch-Input');
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        setTimeout(filterSearchResults, 300);
+      });
+      log('Added input listener to search box');
+    }
+  }
+
+  function setupSearchObservers() {
+    log('Setting up search observers');
+    
+    const bodyObserver = new MutationObserver(mutations => {
+      for (const mutation of mutations) {
+        if (mutation.addedNodes.length > 0) {
+          for (const node of mutation.addedNodes) {
+            if (node.classList && node.classList.contains('DocSearch-Modal')) {
+              handleSearchOpen();
+              return;
+            }
+          }
+        }
+      }
+    });
+    
+    bodyObserver.observe(document.body, { childList: true });
+    log('Observing body for search modal');
+    
+    const searchButton = document.querySelector('.DocSearch-Button');
+    if (searchButton) {
+      searchButton.addEventListener('click', () => {
+        log('Search button clicked');
+        setTimeout(handleSearchOpen, 100);
+      });
+      log('Added click listener to search button');
+    }
+    
+    document.addEventListener('keydown', e => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         log('Search keyboard shortcut detected');
-        updateCurrentSection();
-        interceptDocSearch();
+        setTimeout(handleSearchOpen, 100);
       }
+    });
+    log('Added keyboard shortcut listener');
+  }
+  
+  function initialize() {
+    log('Initializing search customization');
+    setupSearchObservers();
+    
+    window.addEventListener('popstate', () => {
+      log('Navigation detected, updating search filtering');
+      setTimeout(handleSearchOpen, 100);
     });
   }
   
-  // Provide a global method to manually trigger initialization
-  window.statsigInitSearch = function() {
-    log('Manual initialization triggered');
-    updateCurrentSection();
-    interceptDocSearch();
-  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize);
+  } else {
+    initialize();
+  }
   
-  // Start initialization
-  setupEventListeners();
+  window.statsigFilterSearch = handleSearchOpen;
   
-  setTimeout(initialize, 500);
-  
-  log('Script initialization complete');
+  log('Search customization script initialized');
 })();
