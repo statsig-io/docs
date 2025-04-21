@@ -74,72 +74,143 @@
     }
   }
 
-  function getFacetFilters(section) {
-    if (section === 'api') {
-      return [['hierarchy.lvl0:Client SDK', 'hierarchy.lvl0:Server SDK', 'hierarchy.lvl0:Console API', 'hierarchy.lvl0:HTTP API']];
-    } else if (section === 'warehouse') {
-      return [['hierarchy.lvl0:Warehouse Native']];
-    }
-    return [];
-  }
-
-  function patchAlgoliaSearch() {
-    log('Patching Algolia DocSearch');
+  function filterSearchResults() {
+    log('Filtering search results for section:', currentSection);
     
-    const checkInterval = setInterval(() => {
-      if (window.docsearch) {
-        clearInterval(checkInterval);
-        log('DocSearch found, patching...');
+    const checkResults = setInterval(() => {
+      const hits = document.querySelectorAll('.DocSearch-Hit');
+      if (hits.length > 0) {
+        clearInterval(checkResults);
+        log('Found', hits.length, 'search results');
         
-        const originalDocSearch = window.docsearch;
+        let hiddenCount = 0;
         
-        window.docsearch = function(...args) {
-          log('DocSearch called with args:', args[0]);
+        hits.forEach(hit => {
+          const path = hit.querySelector('.DocSearch-Hit-path');
+          if (!path) return;
           
-          updateCurrentSection();
+          const pathText = path.textContent || '';
+          let shouldShow = true;
           
-          if (args[0] && args[0].searchParameters) {
-            const facetFilters = getFacetFilters(currentSection);
-            if (facetFilters.length > 0) {
-              args[0].searchParameters.facetFilters = facetFilters;
-              log('Added facet filters:', facetFilters);
-            }
+          if (currentSection === 'api') {
+            shouldShow = pathText.includes('Client SDK') || 
+                         pathText.includes('Server SDK') || 
+                         pathText.includes('Console API') || 
+                         pathText.includes('HTTP API');
+          } else if (currentSection === 'warehouse') {
+            shouldShow = pathText.includes('Warehouse Native');
           }
           
-          const instance = originalDocSearch.apply(this, args);
-          
-          if (instance && instance.autocomplete) {
-            const originalAutocomplete = instance.autocomplete;
+          if (shouldShow) {
+            hit.style.display = '';
+            hit.dataset.relevantForSection = 'true';
+          } else {
+            hit.style.display = 'none';
+            hiddenCount++;
+          }
+        });
+        
+        log('Hidden', hiddenCount, 'results that don\'t match current section');
+        
+        if (hiddenCount === hits.length) {
+          const resultsContainer = document.querySelector('.DocSearch-Dropdown-Container');
+          if (resultsContainer) {
+            const noResults = document.createElement('div');
+            noResults.className = 'DocSearch-NoResults';
+            noResults.innerHTML = '<div class="DocSearch-Screen-Icon"></div><p>No results in current section</p>';
             
-            instance.autocomplete = function(...autocompleteArgs) {
-              log('Autocomplete called');
-              
-              const autocompleteInstance = originalAutocomplete.apply(this, autocompleteArgs);
-              
-              if (autocompleteInstance && autocompleteInstance.on) {
-                autocompleteInstance.on('render', () => {
-                  log('Autocomplete render event fired');
-                  setTimeout(() => {
-                    addSectionIndicator(currentSection);
-                  }, 0);
-                });
-              }
-              
-              return autocompleteInstance;
-            };
+            resultsContainer.innerHTML = '';
+            resultsContainer.appendChild(noResults);
           }
-          
-          return instance;
-        };
-        
-        log('DocSearch patched successfully');
+        }
       }
     }, 100);
     
     setTimeout(() => {
-      clearInterval(checkInterval);
-      log('Gave up waiting for DocSearch');
-    }, 10000);
+      clearInterval(checkResults);
+    }, 3000);
+  }
+
+  function setupSearchObserver() {
+    log('Setting up search observer');
+    
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.addedNodes.length > 0) {
+          const searchModal = document.querySelector('.DocSearch-Modal');
+          if (searchModal) {
+            addSectionIndicator(currentSection);
+            
+            filterSearchResults();
+            
+            const resultsContainer = document.querySelector('.DocSearch-Dropdown-Container');
+            if (resultsContainer) {
+              const resultsObserver = new MutationObserver(() => {
+                filterSearchResults();
+              });
+              
+              resultsObserver.observe(resultsContainer, { childList: true, subtree: true });
+            }
+          }
+        }
+      }
+    });
+    
+    observer.observe(document.body, { childList: true, subtree: true });
+    
+    log('Search observer set up');
+  }
+
+  function setupSearchInputHandler() {
+    log('Setting up search input handler');
+    
+    document.addEventListener('input', (event) => {
+      if (event.target.classList.contains('DocSearch-Input')) {
+        log('Search input detected');
+        
+        setTimeout(() => {
+          filterSearchResults();
+        }, 100);
+      }
+    }, true);
+    
+    log('Search input handler set up');
+  }
+
+  function setupKeyboardShortcut() {
+    log('Setting up keyboard shortcut handler');
+    
+    document.addEventListener('keydown', (event) => {
+      if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
+        log('Search keyboard shortcut detected');
+        
+        updateCurrentSection();
+        
+        setTimeout(() => {
+          addSectionIndicator(currentSection);
+        }, 100);
+      }
+    });
+    
+    log('Keyboard shortcut handler set up');
+  }
+
+  function setupSearchButtonHandler() {
+    log('Setting up search button handler');
+    
+    document.addEventListener('click', (event) => {
+      if (event.target.closest('.DocSearch-Button')) {
+        log('Search button clicked');
+        
+        updateCurrentSection();
+        
+        setTimeout(() => {
+          addSectionIndicator(currentSection);
+        }, 100);
+      }
+    }, true);
+    
+    log('Search button handler set up');
   }
 
   function initialize() {
@@ -147,7 +218,10 @@
     
     updateCurrentSection();
     
-    patchAlgoliaSearch();
+    setupSearchObserver();
+    setupSearchInputHandler();
+    setupKeyboardShortcut();
+    setupSearchButtonHandler();
     
     window.addEventListener('popstate', () => {
       log('Navigation detected, updating search filtering');
@@ -159,19 +233,11 @@
       updateCurrentSection();
     });
     
-    // Add CSS for search customization
-    const style = document.createElement('style');
-    style.textContent = `
-      .DocSearch-Hit[data-section="${currentSection}"] {
-        border-left: 3px solid #0066cc;
-        padding-left: 10px;
-      }
-      
-      .DocSearch-Hit[data-section="${currentSection}"] a {
-        font-weight: bold;
-      }
-    `;
-    document.head.appendChild(style);
+    window.statsigFilterSearch = () => {
+      log('Manual filter trigger');
+      updateCurrentSection();
+      filterSearchResults();
+    };
     
     log('Search customization initialized');
   }
