@@ -15,6 +15,8 @@
       
       let currentSection = 'docs'; // Default section
       
+      console.log('Current path:', currentPath);
+      
       if (currentPath.startsWith('/client/') || 
           currentPath.startsWith('/server/') || 
           currentPath.startsWith('/console-api/') ||
@@ -23,6 +25,8 @@
       } else if (currentPath.startsWith('/statsig-warehouse-native/')) {
         currentSection = 'warehouse';
       }
+      
+      console.log('Detected section:', currentSection);
       
       requests.forEach(request => {
         if (!request.params) {
