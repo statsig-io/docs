@@ -39,7 +39,7 @@ import LogEvent from "./iOS/_logEvent.mdx";
 import UpdateUser from "./iOS/_updateUser.mdx";
 import MoreFAQs from "./iOS/_faqs.mdx";
 import Options from "./iOS/_options.mdx";
-import { Snippets as ManualExposureSnippets } from "./iOS/_manualExposures.mdx";
+// EvaluationOptions now replaces manual exposures
 import ShutdownSnippet from "./iOS/_shutdown.mdx";
 import LocalOverridesSnippet from "./iOS/_localOverrides.mdx";
 import * as StatsigListening from "./iOS/_statsigListening.mdx";
@@ -81,7 +81,7 @@ export const Builder = SDKDocsBuilder({
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [LocalOverrides, { localOverrides: <LocalOverridesSnippet /> }],
-    [EvaluationOptions, { addedInVersion: "1.16.0", ...ManualExposureSnippets }],
+    [EvaluationOptions, { addedInVersion: "1.16.0" }],
     [
       StableID,
       { getSnippet: <GetStableID />, overrideSnippet: <OverrideStableID /> },
