@@ -35,6 +35,15 @@ window.statsigUser = {
 ## Accessing the Statsig js client
 For accessing the underlying Statsig js client instance, you can call `StatsigSidecar.getStatsigInstance()`.
 
+## Configuring Runtime Options
+This allows you to handle Consent Management, GDPR compliance and more. All of the [StatsigOptions](https://docs.statsig.com/client/javascript-sdk/#statsig-options) provided by the JavaScript SDK are also fully-supported with Sidecar. These can be passed to Sidecar via:
+```js
+window.statsigOptions = {
+  // example of disabling logging for 
+  disableLogging: true
+}
+```
+
 ## Persisting stableID across subdomains
 Statsig uses `localStorage` as the preferred mechanism for storing the user's stableID. Localstorage keys do not persist across any origin boundaries including across subdomains. For example, a user visiting `https://example.com`, `https://show.example.com` and `https://account.example.com` would be issued three distinct stableIDs. 
 
