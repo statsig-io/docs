@@ -3,3 +3,145 @@ ParameterStore parameterStore = statsig.getParameterStore(user, "my_parameters")
 Boolean value = parameterStore.getBoolean("my_parameter_value", false);
 System.out.println("Parameter Store value is " + value);
 ```
+
+## Parameter Store
+
+Parameter Store is a feature that allows you to define a collection of parameters that can be accessed by your application. It provides a type-safe way to access string, boolean, numeric, map, and array values with fallback to default values when parameters do not exist.
+
+### Getting a Parameter Store
+
+To retrieve a Parameter Store, use the `getParameterStore` method:
+
+```java
+// Get a Parameter Store by name
+ParameterStore parameterStore = statsig.getParameterStore(user, "my_parameter_store");
+```
+
+### Retrieving Parameter Values
+
+Parameter Store provides methods for retrieving values of different types. Each method takes a parameter name and a default value that will be returned if the parameter doesn't exist or is of an incompatible type.
+
+#### String Parameters
+
+```java
+// Get a string parameter with a default value
+String stringValue = statsig.getStringFromParameterStore(user, "my_parameter_store", "string_param", "default_value");
+
+// Or using the Parameter Store instance
+String stringValue = parameterStore.getString("string_param", "default_value");
+```
+
+#### Boolean Parameters
+
+```java
+// Get a boolean parameter with a default value
+boolean boolValue = statsig.getBooleanFromParameterStore(user, "my_parameter_store", "bool_param", false);
+
+// Or using the Parameter Store instance
+boolean boolValue = parameterStore.getBoolean("bool_param", false);
+```
+
+#### Numeric Parameters
+
+```java
+// Get a double parameter with a default value
+double doubleValue = statsig.getDoubleFromParameterStore(user, "my_parameter_store", "double_param", 0.0);
+
+// Or using the Parameter Store instance
+double doubleValue = parameterStore.getDouble("double_param", 0.0);
+
+// Get an integer parameter with a default value
+int intValue = statsig.getIntFromParameterStore(user, "my_parameter_store", "int_param", 0);
+
+// Or using the Parameter Store instance
+int intValue = parameterStore.getInt("int_param", 0);
+
+// Get a long parameter with a default value
+long longValue = statsig.getLongFromParameterStore(user, "my_parameter_store", "long_param", 0L);
+
+// Or using the Parameter Store instance
+long longValue = parameterStore.getLong("long_param", 0L);
+```
+
+#### Complex Parameters
+
+```java
+// Get a map parameter with a default value
+Map<String, Object> defaultMap = new HashMap<>();
+defaultMap.put("key", "value");
+Map<String, Object> mapValue = statsig.getMapFromParameterStore(
+    user, "my_parameter_store", "map_param", defaultMap);
+
+// Or using the Parameter Store instance
+Map<String, Object> mapValue = parameterStore.getMap("map_param", defaultMap);
+
+// Get an array parameter with a default value
+Object[] defaultArray = new Object[]{"item1", "item2"};
+Object[] arrayValue = statsig.getArrayFromParameterStore(
+    user, "my_parameter_store", "array_param", defaultArray);
+
+// Or using the Parameter Store instance
+Object[] arrayValue = parameterStore.getArray("array_param", defaultArray);
+```
+
+### Complete Example
+
+Here's a complete example showing how to use Parameter Store:
+
+```java
+import com.statsig.Statsig;
+import com.statsig.StatsigOptions;
+import com.statsig.StatsigUser;
+import com.statsig.ParameterStore;
+import java.util.HashMap;
+import java.util.Map;
+
+public class ParameterStoreExample {
+    public static void main(String[] args) {
+        // Initialize Statsig
+        Statsig statsig = new Statsig("server-secret-key");
+        statsig.initialize();
+
+        // Create a user
+        StatsigUser user = new StatsigUser("user-id");
+        user.setEmail("user@example.com");
+        user.setCountry("US");
+
+        // Get a Parameter Store
+        ParameterStore parameterStore = statsig.getParameterStore(user, "app_configuration");
+        
+        // Get different types of parameters with default values
+        String appName = parameterStore.getString("app_name", "My App");
+        boolean isDebugMode = parameterStore.getBoolean("debug_mode", false);
+        int maxRetries = parameterStore.getInt("max_retries", 3);
+        double timeout = parameterStore.getDouble("timeout_seconds", 30.0);
+        
+        // Get complex parameters
+        Map<String, Object> defaultFeatures = new HashMap<>();
+        defaultFeatures.put("feature_a", true);
+        defaultFeatures.put("feature_b", false);
+        
+        Map<String, Object> features = parameterStore.getMap("enabled_features", defaultFeatures);
+        
+        // Use the parameters in your application
+        System.out.println("App name: " + appName);
+        System.out.println("Debug mode: " + isDebugMode);
+        System.out.println("Max retries: " + maxRetries);
+        System.out.println("Timeout: " + timeout + " seconds");
+        System.out.println("Features: " + features);
+        
+        // Shutdown Statsig when done
+        statsig.shutdown();
+    }
+}
+```
+
+### Best Practices
+
+1. **Provide Sensible Defaults**: Always provide default values that make sense for your application to ensure it can function even if the parameter doesn't exist.
+
+2. **Type Safety**: Use the appropriate getter method for the expected parameter type to ensure type safety.
+
+3. **Error Handling**: Parameter Store methods handle type mismatches by returning the default value, so you don't need to add extra error handling.
+
+4. **Caching**: Parameter Store values are cached locally after retrieval, so repeated calls to get the same parameter are efficient.
