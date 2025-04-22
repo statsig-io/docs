@@ -437,6 +437,16 @@ const sidebars: SidebarsConfig = {
                 "segments/use-segment",
               ],
             },
+            {
+              type: "category",
+              label: "Release Pipeline (Beta)",
+              items: [
+                "release-pipeline/overview",
+                "release-pipeline/create-and-manage",
+                "release-pipeline/trigger",
+                "release-pipeline/actions",
+              ],
+            },
           ],
         },
         {
