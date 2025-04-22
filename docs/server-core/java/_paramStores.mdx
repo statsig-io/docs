@@ -6,11 +6,9 @@ System.out.println("Parameter Store value is " + value);
 
 ## Parameter Store
 
-Parameter Store is a feature that allows you to define a collection of parameters that can be accessed by your application. It provides a type-safe way to access string, boolean, numeric, map, and array values with fallback to default values when parameters do not exist.
+Parameter Store allows you to access configuration parameters with type-safe methods and fallback values.
 
 ### Getting a Parameter Store
-
-To retrieve a Parameter Store, use the `getParameterStore` method:
 
 ```java
 // Get a Parameter Store by name
@@ -19,78 +17,41 @@ ParameterStore parameterStore = statsig.getParameterStore(user, "my_parameter_st
 
 ### Retrieving Parameter Values
 
-Parameter Store provides methods for retrieving values of different types. Each method takes a parameter name and a default value that will be returned if the parameter doesn't exist or is of an incompatible type.
-
-#### String Parameters
+Parameter Store provides methods for retrieving values of different types with fallback defaults.
 
 ```java
-// Get a string parameter with a default value
-String stringValue = statsig.getStringFromParameterStore(user, "my_parameter_store", "string_param", "default_value");
-
-// Or using the Parameter Store instance
+// String parameters
 String stringValue = parameterStore.getString("string_param", "default_value");
-```
 
-#### Boolean Parameters
-
-```java
-// Get a boolean parameter with a default value
-boolean boolValue = statsig.getBooleanFromParameterStore(user, "my_parameter_store", "bool_param", false);
-
-// Or using the Parameter Store instance
+// Boolean parameters
 boolean boolValue = parameterStore.getBoolean("bool_param", false);
-```
 
-#### Numeric Parameters
-
-```java
-// Get a double parameter with a default value
-double doubleValue = statsig.getDoubleFromParameterStore(user, "my_parameter_store", "double_param", 0.0);
-
-// Or using the Parameter Store instance
+// Numeric parameters
 double doubleValue = parameterStore.getDouble("double_param", 0.0);
-
-// Get an integer parameter with a default value
-int intValue = statsig.getIntFromParameterStore(user, "my_parameter_store", "int_param", 0);
-
-// Or using the Parameter Store instance
 int intValue = parameterStore.getInt("int_param", 0);
-
-// Get a long parameter with a default value
-long longValue = statsig.getLongFromParameterStore(user, "my_parameter_store", "long_param", 0L);
-
-// Or using the Parameter Store instance
 long longValue = parameterStore.getLong("long_param", 0L);
-```
 
-#### Complex Parameters
-
-```java
-// Get a map parameter with a default value
+// Complex parameters
 Map<String, Object> defaultMap = new HashMap<>();
 defaultMap.put("key", "value");
-Map<String, Object> mapValue = statsig.getMapFromParameterStore(
-    user, "my_parameter_store", "map_param", defaultMap);
-
-// Or using the Parameter Store instance
 Map<String, Object> mapValue = parameterStore.getMap("map_param", defaultMap);
 
-// Get an array parameter with a default value
 Object[] defaultArray = new Object[]{"item1", "item2"};
-Object[] arrayValue = statsig.getArrayFromParameterStore(
-    user, "my_parameter_store", "array_param", defaultArray);
-
-// Or using the Parameter Store instance
 Object[] arrayValue = parameterStore.getArray("array_param", defaultArray);
 ```
 
-### Complete Example
+You can also use the Statsig instance directly:
+
+```java
+String stringValue = statsig.getStringFromParameterStore(user, "my_parameter_store", "string_param", "default_value");
+```
+
+### Working with Statsig
 
 Here's a complete example showing how to use Parameter Store:
 
 ```java
 import com.statsig.Statsig;
-import com.statsig.StatsigOptions;
 import com.statsig.StatsigUser;
 import com.statsig.ParameterStore;
 import java.util.HashMap;
@@ -138,10 +99,10 @@ public class ParameterStoreExample {
 
 ### Best Practices
 
-1. **Provide Sensible Defaults**: Always provide default values that make sense for your application to ensure it can function even if the parameter doesn't exist.
+1. **Provide Sensible Defaults**: Always provide default values that make sense for your application.
 
-2. **Type Safety**: Use the appropriate getter method for the expected parameter type to ensure type safety.
+2. **Type Safety**: Use the appropriate getter method for the expected parameter type.
 
-3. **Error Handling**: Parameter Store methods handle type mismatches by returning the default value, so you don't need to add extra error handling.
+3. **Error Handling**: Parameter Store methods handle type mismatches by returning the default value.
 
-4. **Caching**: Parameter Store values are cached locally after retrieval, so repeated calls to get the same parameter are efficient.
+4. **Caching**: Parameter Store values are cached locally after retrieval.
