@@ -1,5 +1,41 @@
+## Parameter Store
+
+Parameter Store allows you to access configuration parameters with type-safe methods and fallback values.
+
+### Getting a Parameter Store
+
 ```java
-ParameterStore parameterStore = statsig.getParameterStore(user, "my_parameters");
-Boolean value = parameterStore.getBoolean("my_parameter_value", false);
-System.out.println("Parameter Store value is " + value);
+// Get a Parameter Store by name
+ParameterStore parameterStore = statsig.getParameterStore(user, "my_parameter_store");
+```
+
+### Retrieving Parameter Values
+
+Parameter Store provides methods for retrieving values of different types with fallback defaults.
+
+```java
+// String parameters
+String stringValue = parameterStore.getString("string_param", "default_value");
+
+// Boolean parameters
+boolean boolValue = parameterStore.getBoolean("bool_param", false);
+
+// Numeric parameters
+double doubleValue = parameterStore.getDouble("double_param", 0.0);
+int intValue = parameterStore.getInt("int_param", 0);
+long longValue = parameterStore.getLong("long_param", 0L);
+
+// Complex parameters
+Map<String, Object> defaultMap = new HashMap<>();
+defaultMap.put("key", "value");
+Map<String, Object> mapValue = parameterStore.getMap("map_param", defaultMap);
+
+Object[] defaultArray = new Object[]{"item1", "item2"};
+Object[] arrayValue = parameterStore.getArray("array_param", defaultArray);
+```
+
+You can also use the Statsig instance directly:
+
+```java
+String stringValue = statsig.getStringFromParameterStore(user, "my_parameter_store", "string_param", "default_value");
 ```
