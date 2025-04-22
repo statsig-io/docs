@@ -16,6 +16,10 @@ Release Pipelines enable sophisticated, multi-stage rollout strategies that resp
 Release Pipeline is currently in Beta. Statsig team is working on adding more features around it. Please see the [Current Limitations section](#current-limitations) below for current limitations. Please reach out to us if you have questions.
 :::
 
+:::info
+Release Pipelines is an Enterprise feature.  Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you need to enable Enterprise features as you try out Statsig.
+:::
+
 ## When to Use Release Pipelines
 
 Consider implementing Release Pipelines when you need to:
