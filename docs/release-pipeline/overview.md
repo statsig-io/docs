@@ -12,12 +12,12 @@ last_update:
 
 Release Pipelines enable sophisticated, multi-stage rollout strategies that respect your infrastructure boundaries, providing greater control over feature deployments.
 
-:::info Note
+:::info
 Release Pipeline is currently in Beta. Statsig team is working on adding more features around it. Please see the [Current Limitations section](#current-limitations) below for current limitations. Please reach out to us if you have questions.
 :::
 
 :::info
-Release Pipelines is an Enterprise feature.  Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you need to enable Enterprise features as you try out Statsig.
+Release Pipeline is an Enterprise feature.  Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you need to enable Enterprise features as you try out Statsig.
 :::
 
 ## When to Use Release Pipelines
@@ -50,7 +50,7 @@ Consider implementing Release Pipelines when you need to:
 ## Getting Started
 
 :::note
-Release Pipelines are currently only supported in Statsig's [Server Core SDKs](https://www.statsig.com/blog/introducing-statsig-server-core-v0-1-0). Legacy SDKs will continue to work but will not get the full features of release pipelines.
+Release Pipeline is currently only supported in Statsig's [Server Core SDKs](https://www.statsig.com/blog/introducing-statsig-server-core-v0-1-0). Legacy SDKs will continue to work but will not get the full features of release pipelines.
 :::
 
 Follow these tutorials to begin implementing Release Pipelines:
