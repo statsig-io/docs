@@ -643,6 +643,8 @@
     "stating",
     "edgeconfig",
     "Laravel",
+    "Cohorting",
+    "cohorting",
     "evaldetails",
     "psuedo-ID",
     "psuedo",
@@ -663,7 +665,10 @@
     "makris",
     "geotest",
     "geotests",
-    "geotesting"
+    "geotesting",
+    "incrementality",
+    "Geolift",
+    "geospatial"
   ],
   "ignorePaths": [
     "node_modules/**",

@@ -5,7 +5,7 @@ sidebar_label: Types of Experiments
 keywords:
   - owner:vm
 last_update:
-  date: 2024-10-02
+  date: 2025-04-16
 ---
 
 Statsig offers many forms of Experiment Analysis, detailed below:
@@ -35,9 +35,9 @@ Switchback test are configurable in Statsig's console, and use time periods (as 
 
 ### Geo Testing [Alpha]
 
-Statsig is finalizing initial tests on integrating with Geo-testing platforms to create test segments and run causal inference analysis on marketing campaigns run through vendors like Google or Facebook Ads.
+Statsig has launched [Geotesting](/experiments-plus/geotests) [Alpha version] to support marketing and product causal inference. Geotesting treats geographic units (e.g. postal codes and DMAs) as your unit of assignment and analysis, and unlocks new experimental methodologies like rigorous testing of paid marketing and/or search on platforms like Google and Facebook Ads.
 
-Please out to our [support team](mailto:support@statsig.com), or in slack, if you're interested in exploring this method of testing.
+Please out to our [support team](mailto:support@statsig.com), or reach out to us directly in slack, if you're interested in exploring this method of testing.
 
 ### MABs
 

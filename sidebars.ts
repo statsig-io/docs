@@ -437,6 +437,16 @@ const sidebars: SidebarsConfig = {
                 "segments/use-segment",
               ],
             },
+            {
+              type: "category",
+              label: "Release Pipeline (Beta)",
+              items: [
+                "release-pipeline/overview",
+                "release-pipeline/create-and-manage",
+                "release-pipeline/trigger",
+                "release-pipeline/actions",
+              ],
+            },
           ],
         },
         {
@@ -761,6 +771,7 @@ const sidebars: SidebarsConfig = {
               type: "category",
               label: "Experiment Analysis",
               items: [
+                "statsig-warehouse-native/features/experiment-options",
                 {
                   type: "category",
                   label: "Setup",
@@ -853,6 +864,18 @@ const sidebars: SidebarsConfig = {
                 id: "statsig-warehouse-native/cure/introduction",
               },
               items: ["statsig-warehouse-native/cure/cure-setup"],
+            },
+            {
+              type: "category",
+              label: "Geotests",
+              link: {
+                type: "doc",
+                id: "statsig-warehouse-native/geotests/introduction",
+              },
+              items: [
+                "statsig-warehouse-native/geotests/geotests-setup",
+                "statsig-warehouse-native/geotests/methodology",
+              ],
             },
           ],
         },

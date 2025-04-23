@@ -80,9 +80,13 @@ Under advanced settings in latest value metrics, you can indicate a metric as a 
 Consider the variable X to be the true north metric which is being predicted by the surrogate metric S. The surrogate metric S is assumed to be an unbiased estimator with an error term $\epsilon$.
 
 $$
-E[\mu_{X} ] = E[\mu_{S}]
+\mu_{X} = \mu_{S} = \overline{S}
 $$
 
 $$
 Var(X) = Var(S + \epsilon) = Var(S) + MSE
+$$
+
+$$
+Var(\overline{X}) = \frac{Var(X)}{n} = \frac{Var(S) + MSE}{n}
 $$

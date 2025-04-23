@@ -21,6 +21,7 @@ import {
   StatsigUser,
   ManualExposures,
   Shutdown,
+  LocalOverrides,
 } from "./Templates/index.mdx";
 
 
@@ -31,11 +32,15 @@ import CheckGate from "./rust/_checkGate.mdx";
 import GetConfig from "./rust/_getConfig.mdx";
 import GetExperiment from "./rust/_getExperiment.mdx";
 import GetFeatureGate from "./rust/_getFeatureGate.mdx";
+import ParamStores from "./rust/_paramStores.mdx";
 import LogEvent from "./rust/_logEvent.mdx";
 import MoreFAQs from "./rust/_faqs.mdx";
 import Options from "./rust/_options.mdx";
 import UserSnippet from "./rust/_statsigUser.mdx";
 import ShutdownSnippet from "./rust/_shutdown.mdx";
+import OverridesSnippet from "./rust/_localOverrides.mdx";
+import { Snippets as ManualExposureSnippets } from "./java/_manualExposures.mdx";
+
 
 
 export const Builder = SDKDocsBuilder({
@@ -64,8 +69,10 @@ export const Builder = SDKDocsBuilder({
         logEvent: <LogEvent />,
         hideAsyncDisclaimer: true,
         getFeatureGate: <GetFeatureGate />,
+        paramStores: <ParamStores />,
       },
     ],
+    [ManualExposures, { ...ManualExposureSnippets }],
     [StatsigUser, { statsigUser: <UserSnippet /> }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],

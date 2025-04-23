@@ -1,0 +1,5 @@
+```jsx
+let param_store = statsig.get_parameter_store("my_parameters");
+let param_store_value = param_store.get(&user, "my_parameter_value", false); //false is fallback value
+println!("param_store_value: {}", param_store_value);
+```

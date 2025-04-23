@@ -93,7 +93,7 @@ import { runStatsigAutoCapture } from '@statsig/web-analytics';
 
 const client = new StatsigClient(sdkKey,
 	{ userID: "some_user_id" },
-  { environment: { tier: "production" } } // optional, pass options here if needed. Session replays are only recorded and stored if the environment is production.
+  { environment: { tier: "production" } } // optional, pass options here if needed
 );
 runStatsigSessionReplay(client);
 runStatsigAutoCapture(client);

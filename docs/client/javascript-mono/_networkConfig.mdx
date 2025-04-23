@@ -8,13 +8,20 @@
 >
 > default: `https://prodregistryv2.org/v1/rgstr`
 
+#### **logEventFallbackUrls** string[]
+> A list of URLs to try if the primary logEventUrl fails. This provides fallback options for event logging in case the primary endpoint is unavailable.
+>
+> default: `[]`
+
 #### **networkTimeoutMs** number
 > The maximum amount of time (in milliseconds) that any network request can take before timing out. 
 >
 > default: `10,000 ms` (10 seconds)
 
 #### **preventAllNetworkTraffic** boolean
-> Intended for testing purposes. Prevents any network requests being made.
+> Prevents any network requests being made. Useful for secure deployments where the browser is not allowed to send requests to external domains.
+>
+> Note: When using this option, you may see "Failed to flush events" warnings in the console. To prevent these warnings, also set `disableLogging: true` in your StatsigOptions.
 
 #### **networkOverrideFunc** function
 > Overrides the default networking layer used by the Statsig client. 

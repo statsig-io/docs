@@ -15,6 +15,12 @@ You can pass in an optional parameter `options` in addition to `sdkKey` and `use
   - if you always want to wait for the latest values fetched from Statsig server, you should set this to 0 so we do not timeout the network request.
   - unit is milliseconds.
 
+- **enableAutoValueUpdate**: `Boolean`, default `false`
+  - By default, feature values for a user are fetched once during Statsig.start and don't change throughout the session. Setting this value to true will make Statsig periodically fetch updated values for the current user.
+
+- **autoValueUpdateIntervalMinutes**: `Double`, default `1.0`
+  - Only applies if enableAutoValueUpdate is true. Controls how frequently calls to refresh the current users values are made. Time is in minutes and defaults to 1 minute. Minimum value is 1 minute.
+
 - **overrideStableID**: `String?`, default `null`
   - overrides the `stableID` in the SDK that is set for the user
 

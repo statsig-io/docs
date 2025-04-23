@@ -31,6 +31,22 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
 - **`enable_id_lists`**: `Optional[bool]`  
   Enable/disable ID list functionality.
 
+- **`disable_user_agent_parsing`** `Optional[bool]`
+  Default false. If set to true, the SDK will NOT attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion at evaluation time, when needed for evaluation.
+
+- **`wait_for_user_agent_init`** `Optional[bool]`
+  Default: false
+
+  When set to true, the SDK will wait until user agent parsing data is fully loaded during initialization. This may slow down by ~1 second startup but ensures that parsing of the user’s userAgent string into fields like browserName, browserVersion, systemName, systemVersion, and appVersion is ready before any evaluations.
+
+- **`disable_user_country_lookup`**  `Optional[bool]`
+  Default false. If set to true, the SDK will NOT attempt to parse IP addresses (attached to the user object at user.ip) into Country codes at evaluation time, when needed for evaluation.
+
+- **`wait_for_country_lookup_init`**  `Optional[bool]`
+  Default: false
+
+  When set to true, the SDK will wait for country lookup data (e.g., GeoIP or YAML files) to fully load during initialization. This may slow down by ~1 second startup but ensures that IP-to-country parsing is ready at evaluation time
+
 - **`id_lists_url`**: `Optional[str]`  
   Custom URL for fetching ID lists.
 
@@ -46,6 +62,8 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
 - **`output_log_level`**: `Optional[str]`  
   Controls the verbosity of SDK logs.
 
+- **`persistent_storage`**: `Optional[PersistentStorageBaseClass]`  
+  Adapter / Interface to use persistent assignment within SDK. [More details](https://docs.statsig.com/server/concepts/persistent_assignment/)
 ---
 
 ### Example Usage
