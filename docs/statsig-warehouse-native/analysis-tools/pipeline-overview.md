@@ -82,7 +82,7 @@ Statsig dedupes and records each user's first exposure to an experiment into a t
 | ----------------------- | --------- | --------------------------------------------------------------------------------------------- |
 | experiment_id           | string    | The identifier for the gate/experiment                                                        |
 | group_id				        | string    | groupID for experiments; ruleID+Pass/Fail for gates                                           |
-| group_name  		        | string    | Name of the experiment group (e.g. Control vs Test) (Coming soon, ETA April 15                |
+| group_name  		        | string    | Name of the experiment group (e.g. Control vs Test)                                           |
 | user_id                 | string    | The ID passed in as the Statsig userID                                                        |
 | stable_id               | string    | Statsig Client SDK managed stable device identifier                                           |
 | \[your custom ids]       | string    | One column for every custom unitID you use on Statsig                                        |
