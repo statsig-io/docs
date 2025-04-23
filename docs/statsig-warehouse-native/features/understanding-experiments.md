@@ -48,7 +48,7 @@ It is also possible, under the advanced tab, to:
 
 ### Selecting Dates
 
-When not using [turbo mode](./turbo.md), or when using [turbo mode](./turbo.md) with incremental reloads, the datepicker next to pulse can be used to view pulse "as of" a certain date. This is useful for understanding historical discussion of an experiment, or for understanding how results have evolved over time. This data can also be viewed through the lens of the time series views in Statsig.
+When not using [turbo mode](./turbo.md), or when using [turbo mode](./turbo.md) with incremental reloads, the date picker next to pulse can be used to view pulse "as of" a certain date. This is useful for understanding historical discussion of an experiment, or for understanding how results have evolved over time. This data can also be viewed through the lens of the time series views in Statsig.
 
 As a reminder, this ability should not be used as a way to cherry-pick dates with desirable results!
 
