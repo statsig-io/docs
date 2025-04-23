@@ -5,7 +5,7 @@ slug: /integrations/introduction
 keywords:
   - owner:brock
 last_update:
-  date: 2024-10-04
+  date: 2025-04-22
 ---
 
 _For Warehouse Integrations, go to this [page](/data-warehouse-ingestion/introduction)._
@@ -13,7 +13,9 @@ _For Warehouse Integrations, go to this [page](/data-warehouse-ingestion/introdu
 The following data connectors are available for use now, and we're adding more every week:
 
 ### Events
+
 Forward any events logged via Statsig APIs or SDKs to the following providers:
+
 - Segment
 - Snowflake
 - Amplitude
@@ -27,9 +29,12 @@ Forward any events logged via Statsig APIs or SDKs to the following providers:
 - RudderStack
 - Webhook
 - Google Tag Manager (GTM)
+- Braze
 
 ### Changelog
+
 Update the following places when Feature Gates/Experiments/Dynamic Configs change:
+
 - Datadog
 - Discord
 - LogDNA
@@ -37,5 +42,6 @@ Update the following places when Feature Gates/Experiments/Dynamic Configs chang
 - Slack
 
 ### Other
+
 - Jira: track Statsig gate rollout status and A/B test results from Jira issues
 - Visual Studio Code: bring Statsig gates and experiments into your VSCode development environment

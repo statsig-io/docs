@@ -949,6 +949,7 @@ const sidebars: SidebarsConfig = {
                 {
                   "Data Connectors": [
                     "integrations/data-connectors/amplitude",
+                    "integrations/data-connectors/braze",
                     "integrations/data-connectors/census",
                     "integrations/data-connectors/fivetran",
                     "integrations/data-connectors/google-analytics",
