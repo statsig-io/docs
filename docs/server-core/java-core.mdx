@@ -76,30 +76,22 @@ export const Builder = SDKDocsBuilder({
         paramStores: <ParamStores />,
       },
     ],
-    [
-      // Custom section for core vs legacy comparison
-      {
-        title: "Java Core vs Legacy Java SDK",
-        id: "core-vs-legacy",
-      },
-      { content: <CoreVsLegacy /> }
-    ],
-    [
-      // Custom section for supported combinations
-      {
-        title: "Supported OS and Architecture Combinations",
-        id: "supported-combinations",
-      },
-      { content: <SupportedCombinations /> }
-    ],
-    [
-      // Custom section for example program
-      {
-        title: "Example Program",
-        id: "example-program",
-      },
-      { content: <ExampleProgram /> }
-    ],
+    [ManualExposures, { ...ManualExposureSnippets }],
+    [StatsigUser, { statsigUser: <UserSnippet /> }],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
+    [LocalOverrides, { snippet: <OverridesSnippet />,},],
+    [FAQ, { 
+      faqs: <>
+        <MoreFAQs />
+        <h2 id="core-vs-legacy">Java Core vs Legacy Java SDK</h2>
+        <CoreVsLegacy />
+        <h2 id="supported-combinations">Supported OS and Architecture Combinations</h2>
+        <SupportedCombinations />
+        <h2 id="example-program">Example Program</h2>
+        <ExampleProgram />
+      </> 
+    }],
     [ManualExposures, { ...ManualExposureSnippets }],
     [StatsigUser, { statsigUser: <UserSnippet /> }],
     [StatsigOptions, { options: <Options /> }],
