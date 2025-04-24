@@ -67,7 +67,7 @@ You can find the latest version on [Maven Central](https://central.sonatype.com/
 You need to add the appropriate OS/architecture-specific dependency. Choose one of the following methods:
 
 <details>
-<summary>Method 1: Automatic Detection (Recommended)</summary>
+<summary>Method 1: Automatic Detection</summary>
 
 Run the following code to detect your system and get the appropriate dependency:
 
@@ -75,10 +75,7 @@ Run the following code to detect your system and get the appropriate dependency:
 import com.statsig.*;
 
 // All StatsigOptions are optional, feel free to adjust them as needed
-StatsigOptions options = new StatsigOptions.Builder()
-                    .setSpecsSyncIntervalMs(10)
-                    .setEventLoggingFlushIntervalMs(10)
-                    .build(); 
+StatsigOptions options = new StatsigOptions.Builder().build(); 
 					                    
 Statsig statsig = new Statsig("your-secret-key", options);
 ```
@@ -143,3 +140,12 @@ Add the appropriate dependency to your `pom.xml` file based on your system:
 Replace `YOUR-OS-ARCHITECTURE` with one of the supported combinations from the [Supported OS and Architecture Combinations](#supported-os-and-architecture-combinations) section.
 
 </details>
+
+## Next Steps
+
+Now that you've installed the SDK, check out our sample applications to see how to use the SDK in practice:
+
+- [Java Sample App](https://github.com/statsig-io/java-sdk/tree/main/samples) - A complete example showing how to use the SDK in a Java application
+- [Spring Boot Sample App](https://github.com/statsig-io/java-sdk/tree/main/samples/spring-boot) - An example of integrating the SDK with a Spring Boot application
+
+These samples demonstrate common use cases and best practices for using the Statsig Java SDK.
