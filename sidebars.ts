@@ -1367,7 +1367,7 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "Interpreting Results",
           items: [
-            "pulse/read-pulse",
+            "statsig-warehouse-native/read-pulse-whn",
             "pulse/drill-down",
             "pulse/custom-queries",
             "pulse/export",
