@@ -84,20 +84,14 @@ export const Builder = SDKDocsBuilder({
     [FAQ, { 
       faqs: <>
         <MoreFAQs />
-        <h2 id="core-vs-legacy">Java Core vs Legacy Java SDK</h2>
+        <h2 id="java-core-vs-legacy-java-sdk">Java Core vs Legacy Java SDK</h2>
         <CoreVsLegacy />
-        <h2 id="supported-combinations">Supported OS and Architecture Combinations</h2>
+        <h2 id="supported-os-and-architecture-combinations">Supported OS and Architecture Combinations</h2>
         <SupportedCombinations />
         <h2 id="example-program">Example Program</h2>
         <ExampleProgram />
       </> 
     }],
-    [ManualExposures, { ...ManualExposureSnippets }],
-    [StatsigUser, { statsigUser: <UserSnippet /> }],
-    [StatsigOptions, { options: <Options /> }],
-    [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
-    [LocalOverrides, { snippet: <OverridesSnippet />,},],
-    [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
   ]
 })
