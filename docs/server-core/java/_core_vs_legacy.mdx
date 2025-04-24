@@ -3,7 +3,9 @@
 Statsig offers two Java SDKs:
 
 1. **Java Core (Recommended)** - A newer, performance-focused SDK with a shared Rust core library
-2. **Legacy Java/Kotlin Server SDK** - The original Java SDK
+2. **Legacy Java/Kotlin Server SDK** - The original Java SDK (maintenance mode only)
+
+> **Important:** Moving forward, Statsig is focusing development efforts exclusively on the Java Core SDK. The Legacy Java SDK is in maintenance mode and will only receive critical bug fixes. All new features and improvements will only be available in the Java Core SDK.
 
 ### Key Differences
 
@@ -14,18 +16,19 @@ Statsig offers two Java SDKs:
 | **New Features** | Supports Parameter Stores, SDK Observability, streaming flag changes | Limited to basic features |
 | **Implementation** | Rust-based with Java bindings | Pure Java |
 | **Repository** | [statsig-server-core](https://github.com/statsig-io/statsig-server-core/tree/main/statsig-ffi/bindings/java) | [java-server-sdk](https://github.com/statsig-io/java-server-sdk) |
+| **Support Status** | Active development | Maintenance mode only |
 
 ### When to Use Each SDK
 
 **Choose Java Core if:**
+- You are starting a new implementation (recommended for all new projects)
 - Performance is a priority for your application
 - You need the latest features like Parameter Stores
-- You're starting a new implementation
+- You want access to future features and improvements
 
 **Choose Legacy Java SDK if:**
-- You have an existing implementation using the Legacy SDK
-- You prefer a pure Java implementation without native dependencies
-- You need specific features only available in the Legacy SDK
+- You have an existing implementation using the Legacy SDK and haven't migrated yet
+- You have specific compatibility requirements that prevent migration
 
 ### Migration
 
