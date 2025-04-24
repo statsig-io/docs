@@ -51,14 +51,14 @@ import ExampleProgramContent from "./java/_example.mdx";
 
 const sections = [
   {
-    component: Repository,
-    props: {
+    type: "repository",
+    data: {
       repo: "https://github.com/statsig-io/statsig-server-core/tree/main/statsig-ffi/bindings/java"
     }
   },
   {
-    component: GettingStarted,
-    props: {
+    type: "getting-started",
+    data: {
       sdkType: "java",
       install: Install,
       preamble: Preamble,
@@ -66,8 +66,8 @@ const sections = [
     }
   },
   {
-    component: WorkingWith,
-    props: {
+    type: "working-with",
+    data: {
       checkGate: CheckGate,
       getExperiment: GetExperiment,
       getFeatureGate: GetFeatureGate,
@@ -77,38 +77,36 @@ const sections = [
     }
   },
   {
-    component: ParameterStore,
-    props: { content: ParamStores }
+    type: "parameter-store",
+    data: { content: ParamStores }
   },
   {
-    component: ManualExposures,
-    props: ManualExposureSnippets
+    type: "manual-exposures",
+    data: ManualExposureSnippets
   },
   {
-    component: StatsigUser,
-    props: { statsigUser: UserSnippet }
+    type: "statsig-user",
+    data: { statsigUser: UserSnippet }
   },
   {
-    component: StatsigOptions,
-    props: { options: Options }
+    type: "statsig-options",
+    data: { options: Options }
   },
   {
-    component: Shutdown,
-    props: { shutdown: ShutdownSnippet, flush: Flush }
+    type: "shutdown",
+    data: { shutdown: ShutdownSnippet, flush: Flush }
   },
   {
-    component: LocalOverrides,
-    props: { snippet: OverridesSnippet }
+    type: "local-overrides",
+    data: { snippet: OverridesSnippet }
   },
   {
-    component: FAQ,
-    props: { 
-      faqs: MoreFAQs
-    }
+    type: "faq",
+    data: { content: MoreFAQs }
   },
   {
-    component: Reference,
-    props: { snippets: ReferenceSnippets.default }
+    type: "reference",
+    data: { snippets: ReferenceSnippets.default }
   }
 ];
 
