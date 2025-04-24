@@ -492,8 +492,8 @@ const config: Config = {
           type: 'doc',
           position: 'left',
           docId: 'getting-started',
-          sidebarId: 'cloud',
-          label: 'Cloud',
+          sidebarId: 'product-docs',
+          label: 'Product Docs',
         },
         {
           type: 'docSidebar',
