@@ -1,0 +1,133 @@
+This sample shows a simple Java application using the Statsig Java Core SDK to check a feature flag.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+### Project Setup
+
+<Tabs
+  groupId="java-build-tools"
+  defaultValue="gradle"
+  values={[
+    {label: 'Gradle', value: 'gradle'},
+    {label: 'Maven', value: 'maven'},
+  ]}>
+  <TabItem value="gradle">
+
+Create a `build.gradle` file with:
+
+```groovy
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.statsig:javacore:X.X.X'  // Replace with latest version
+    implementation 'com.statsig:javacore:X.X.X:YOUR-OS-ARCHITECTURE'  // Replace with your OS/architecture
+}
+
+application {
+    mainClass = 'ExampleApp'
+}
+```
+
+  </TabItem>
+  <TabItem value="maven">
+
+Create a `pom.xml` file with:
+
+```xml
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId>
+    <artifactId>statsig-example</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <exec.mainClass>ExampleApp</exec.mainClass>
+    </properties>
+    
+    <dependencies>
+        <dependency>
+            <groupId>com.statsig</groupId>
+            <artifactId>javacore</artifactId>
+            <version>X.X.X</version>
+        </dependency>
+        <dependency>
+            <groupId>com.statsig</groupId>
+            <artifactId>javacore</artifactId>
+            <version>X.X.X</version>
+            <classifier>YOUR-OS-ARCHITECTURE</classifier>
+        </dependency>
+    </dependencies>
+</project>
+```
+
+  </TabItem>
+</Tabs>
+
+### Create Java Application
+
+Create a file named `ExampleApp.java`:
+
+```java
+import com.statsig.*;
+
+public class ExampleApp {
+    public static void main(String[] args) throws Exception {
+        // Initialize Statsig
+        StatsigOptions options = new StatsigOptions.Builder().build();
+        Statsig statsig = new Statsig("YOUR_SERVER_SECRET_KEY", options);
+        statsig.initialize().get();
+        
+        try {
+            // Check a feature gate
+            boolean isEnabled = statsig.checkGate("my_feature_gate", "user123");
+            System.out.println("Feature gate is " + (isEnabled ? "enabled" : "disabled"));
+            
+            // Get a config
+            Config config = statsig.getConfig("my_config", "user123");
+            System.out.println("Config value: " + config.getValue("some_parameter", "default_value"));
+        } finally {
+            // Always shutdown Statsig when done
+            statsig.shutdown();
+        }
+    }
+}
+```
+
+Replace `YOUR_SERVER_SECRET_KEY` with your actual server secret key from the [Statsig Console](https://console.statsig.com/api_keys).
+
+### Run the Application
+
+<Tabs
+  groupId="java-build-tools"
+  defaultValue="gradle"
+  values={[
+    {label: 'Gradle', value: 'gradle'},
+    {label: 'Maven', value: 'maven'},
+  ]}>
+  <TabItem value="gradle">
+
+```bash
+./gradlew run
+```
+
+  </TabItem>
+  <TabItem value="maven">
+
+```bash
+mvn compile exec:java
+```
+
+  </TabItem>
+</Tabs>
+
+If everything is set up correctly, you should see output related to your feature gate and configuration.
