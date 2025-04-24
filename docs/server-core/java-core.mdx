@@ -42,6 +42,9 @@ import UserSnippet from "./java/_statsigUser.mdx";
 import * as ReferenceSnippets from "./java/_reference.mdx";
 import OverridesSnippet from "./java/_localOverrides.mdx";
 import { Snippets as ManualExposureSnippets } from "./java/_manualExposures.mdx";
+import SupportedCombinations from "./java/_supported_combinations.mdx";
+import ExampleProgram from "./java/_example.mdx";
+import CoreVsLegacy from "./java/_core_vs_legacy.mdx";
 
 
 export const Builder = SDKDocsBuilder({
@@ -72,6 +75,30 @@ export const Builder = SDKDocsBuilder({
         hideAsyncDisclaimer: true,
         paramStores: <ParamStores />,
       },
+    ],
+    [
+      // Custom section for core vs legacy comparison
+      {
+        title: "Java Core vs Legacy Java SDK",
+        id: "core-vs-legacy",
+      },
+      { content: <CoreVsLegacy /> }
+    ],
+    [
+      // Custom section for supported combinations
+      {
+        title: "Supported OS and Architecture Combinations",
+        id: "supported-combinations",
+      },
+      { content: <SupportedCombinations /> }
+    ],
+    [
+      // Custom section for example program
+      {
+        title: "Example Program",
+        id: "example-program",
+      },
+      { content: <ExampleProgram /> }
     ],
     [ManualExposures, { ...ManualExposureSnippets }],
     [StatsigUser, { statsigUser: <UserSnippet /> }],
