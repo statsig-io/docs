@@ -23,6 +23,9 @@ import {
   Shutdown,
   Reference,
   LocalOverrides,
+  JavaCoreVsLegacy,
+  SupportedCombinations,
+  ExampleProgram,
 } from "./Templates/index.mdx";
 
 import Preamble from "./_preamble.mdx";
@@ -42,9 +45,9 @@ import UserSnippet from "./java/_statsigUser.mdx";
 import * as ReferenceSnippets from "./java/_reference.mdx";
 import OverridesSnippet from "./java/_localOverrides.mdx";
 import { Snippets as ManualExposureSnippets } from "./java/_manualExposures.mdx";
-import SupportedCombinations from "./java/_supported_combinations.mdx";
-import ExampleProgram from "./java/_example.mdx";
-import CoreVsLegacy from "./java/_core_vs_legacy.mdx";
+import CoreVsLegacyContent from "./java/_core_vs_legacy.mdx";
+import SupportedCombinationsContent from "./java/_supported_combinations.mdx";
+import ExampleProgramContent from "./java/_example.mdx";
 
 
 export const Builder = SDKDocsBuilder({
@@ -82,27 +85,9 @@ export const Builder = SDKDocsBuilder({
     [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
     [LocalOverrides, { snippet: <OverridesSnippet />,},],
     [FAQ, { faqs: <MoreFAQs /> }],
-    [
-      {
-        title: "Java Core vs Legacy Java SDK",
-        id: "java-core-vs-legacy-java-sdk",
-      },
-      { content: <CoreVsLegacy /> }
-    ],
-    [
-      {
-        title: "Supported OS and Architecture Combinations",
-        id: "supported-os-and-architecture-combinations",
-      },
-      { content: <SupportedCombinations /> }
-    ],
-    [
-      {
-        title: "Example Program",
-        id: "example-program",
-      },
-      { content: <ExampleProgram /> }
-    ],
+    [JavaCoreVsLegacy, { content: <CoreVsLegacyContent /> }],
+    [SupportedCombinations, { content: <SupportedCombinationsContent /> }],
+    [ExampleProgram, { content: <ExampleProgramContent /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
   ]
 })
