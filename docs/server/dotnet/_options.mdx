@@ -16,6 +16,8 @@ import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
   - <LocalModeSnippet type="server" />
 - [**DataStore**](#data-store): IDataStore, default null
   - A class that extends IDataStore. Can be used to provide values from a common data store (like Redis) to initialize the Statsig SDK.
+- **HttpClient**: HttpClient, default null
+  - An instance of HttpClient that the sdk will use for network requests. You should set AutomaticDecompression = DecompressionMethods.GZip on the HttpClientHandler used by the HttpClient.
 
 **Example usage:**
 
