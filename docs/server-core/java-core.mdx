@@ -9,7 +9,6 @@ last_update:
 
 import {
   SDKDocsBuilder,
-  HOOK__SDKDocUpdate,
 } from "../sdks/_SDKDocsBuilder.mdx";
 
 import {
@@ -51,24 +50,24 @@ import SupportedCombinationsContent from "./java/_supported_combinations.mdx";
 import ExampleProgramContent from "./java/_example.mdx";
 
 const sections = [
-  [
-    Repository,
-    {
+  {
+    component: Repository,
+    props: {
       repo: "https://github.com/statsig-io/statsig-server-core/tree/main/statsig-ffi/bindings/java",
     },
-  ],
-  [
-    GettingStarted,
-    {
+  },
+  {
+    component: GettingStarted,
+    props: {
       sdkType: "java",
       install: <Install />,
       preamble: <Preamble />,
       initialize: <Initialize />,
     },
-  ],
-  [
-    WorkingWith,
-    {
+  },
+  {
+    component: WorkingWith,
+    props: {
       checkGate: <CheckGate />,
       getExperiment: <GetExperiment />,
       getFeatureGate: <GetFeatureGate />,
@@ -76,29 +75,52 @@ const sections = [
       logEvent: <LogEvent />,
       hideAsyncDisclaimer: true,
     },
-  ],
-  [ParameterStore, { content: <ParamStores /> }],
-  [ManualExposures, { ...ManualExposureSnippets }],
-  [StatsigUser, { statsigUser: <UserSnippet /> }],
-  [StatsigOptions, { options: <Options /> }],
-  [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
-  [LocalOverrides, { snippet: <OverridesSnippet /> }],
-  [FAQ, { 
-    faqs: <>
-      <MoreFAQs />
-      <h2 id="java-core-vs-legacy-java-sdk">Java Core vs Legacy Java SDK</h2>
-      <CoreVsLegacyContent />
-      <h2 id="supported-os-and-architecture-combinations">Supported OS and Architecture Combinations</h2>
-      <SupportedCombinationsContent />
-      <h2 id="example-program">Sample App</h2>
-      <ExampleProgramContent />
-    </> 
-  }],
-  [Reference, { snippets: <ReferenceSnippets.default /> }],
+  },
+  {
+    component: ParameterStore,
+    props: { content: <ParamStores /> },
+  },
+  {
+    component: ManualExposures,
+    props: { ...ManualExposureSnippets },
+  },
+  {
+    component: StatsigUser,
+    props: { statsigUser: <UserSnippet /> },
+  },
+  {
+    component: StatsigOptions,
+    props: { options: <Options /> },
+  },
+  {
+    component: Shutdown,
+    props: { shutdown: <ShutdownSnippet />, flush: <Flush /> },
+  },
+  {
+    component: LocalOverrides,
+    props: { snippet: <OverridesSnippet /> },
+  },
+  {
+    component: FAQ,
+    props: { 
+      faqs: <>
+        <MoreFAQs />
+        <h2 id="java-core-vs-legacy-java-sdk">Java Core vs Legacy Java SDK</h2>
+        <CoreVsLegacyContent />
+        <h2 id="supported-os-and-architecture-combinations">Supported OS and Architecture Combinations</h2>
+        <SupportedCombinationsContent />
+        <h2 id="example-program">Sample App</h2>
+        <ExampleProgramContent />
+      </> 
+    },
+  },
+  {
+    component: Reference,
+    props: { snippets: <ReferenceSnippets.default /> },
+  },
 ];
 
-const Builder = SDKDocsBuilder({ sections });
-const { toc, result } = Builder;
+const { toc, result } = SDKDocsBuilder({ sections });
 
 export { toc };
 export default result;
