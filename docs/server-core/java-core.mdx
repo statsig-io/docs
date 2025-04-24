@@ -23,6 +23,9 @@ import {
   Shutdown,
   Reference,
   LocalOverrides,
+  JavaCoreVsLegacy,
+  SupportedCombinations,
+  ExampleProgram,
 } from "./Templates/index.mdx";
 
 import Preamble from "./_preamble.mdx";
@@ -42,6 +45,9 @@ import UserSnippet from "./java/_statsigUser.mdx";
 import * as ReferenceSnippets from "./java/_reference.mdx";
 import OverridesSnippet from "./java/_localOverrides.mdx";
 import { Snippets as ManualExposureSnippets } from "./java/_manualExposures.mdx";
+import CoreVsLegacyContent from "./java/_core_vs_legacy.mdx";
+import SupportedCombinationsContent from "./java/_supported_combinations.mdx";
+import ExampleProgramContent from "./java/_example.mdx";
 
 
 export const Builder = SDKDocsBuilder({
@@ -78,7 +84,17 @@ export const Builder = SDKDocsBuilder({
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
     [LocalOverrides, { snippet: <OverridesSnippet />,},],
-    [FAQ, { faqs: <MoreFAQs /> }],
+    [FAQ, { 
+      faqs: <>
+        <MoreFAQs />
+        <h2 id="java-core-vs-legacy-java-sdk">Java Core vs Legacy Java SDK</h2>
+        <CoreVsLegacyContent />
+        <h2 id="supported-os-and-architecture-combinations">Supported OS and Architecture Combinations</h2>
+        <SupportedCombinationsContent />
+        <h2 id="example-program">Sample App</h2>
+        <ExampleProgramContent />
+      </> 
+    }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
   ]
 })
