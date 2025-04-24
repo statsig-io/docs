@@ -36,18 +36,7 @@ const sidebars: SidebarsConfig = {
           items: [
             "understanding-platform",
             "client/concepts/parameter-stores",
-            "guides/first-device-level-experiment",
-            "guides/experiment-on-custom-id-types",
-            "guides/using-environments",
-            "guides/testing",
             "guides/featureflags-or-experiments",
-            {
-              "Enterprise Concepts": [
-                "guides/experimentation-program",
-                "guides/running-a-poc",
-                "guides/production",
-              ],
-            },
           ],
         },
         {
@@ -772,16 +761,6 @@ const sidebars: SidebarsConfig = {
                 "experiments/statsiglite",
                 "guides/statsig-id-resolver",
                 {
-                  type: "category",
-                  label: "Migrate from LaunchDarkly",
-                  link: {
-                    type: "doc",
-                    id: "guides/migrate-from-launchdarkly",
-                  },
-                  items: ["guides/open-source-script", "guides/ui-based-tool"],
-                },
-
-                {
                   "Data Imports (Deprecated)": [
                     "integrations/data-imports/overview-deprecated",
                     "integrations/data-imports/bigquery-deprecated",
@@ -1452,6 +1431,49 @@ const sidebars: SidebarsConfig = {
       items: [
         "statsig-warehouse-native/geotests/geotests-setup",
         "statsig-warehouse-native/geotests/methodology",
+      ],
+    },
+  ],
+  tutorials: [
+    {
+      type: "category",
+      label: "Experiments",
+      collapsed: false,
+      collapsible: false,
+      items: [
+        "guides/first-device-level-experiment",
+        "guides/experiment-on-custom-id-types",
+      ],
+    },
+    {
+      type: "category",
+      label: "Feature Management",
+      collapsed: false,
+      collapsible: false,
+      items: [
+        "guides/using-environments",
+        "guides/testing",
+      ],
+    },
+    {
+      type: "category",
+      label: "Enterprise Topics",
+      collapsed: false,
+      collapsible: false,
+      items: [
+        "guides/experimentation-program",
+        "guides/running-a-poc",
+        "guides/production",
+      ],
+    },
+    {
+      type: "category",
+      label: "Migration Guides",
+      collapsed: false,
+      collapsible: false,
+      items: [
+        "guides/open-source-script", 
+        "guides/ui-based-tool"
       ],
     },
   ],

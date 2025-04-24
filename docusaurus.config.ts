@@ -493,13 +493,7 @@ const config: Config = {
           position: 'left',
           docId: 'getting-started',
           sidebarId: 'cloud',
-          label: 'Docs',
-        },
-        {
-          type: 'docSidebar',
-          position: 'left',
-          sidebarId: 'api',
-          label: 'SDKs and APIs',
+          label: 'Cloud',
         },
         {
           type: 'docSidebar',
@@ -508,13 +502,20 @@ const config: Config = {
           label: 'Warehouse Native',
         },
         {
+          type: 'docSidebar',
+          position: 'left',
+          sidebarId: 'api',
+          label: 'SDKs & APIs',
+        },
+        {
+          type: "docSidebar",
+          position: "left",
+          sidebarId: "tutorials",
+          label: "Tutorials",
+        },
+        {
           type: "search",
         },
-        // {
-        //   type: "html",
-        //   value:
-        //     "<button class=\"loginCTA CTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus();\">Log In</button>",
-        // },
         {
           type: "html",
           value:
