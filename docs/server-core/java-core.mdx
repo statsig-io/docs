@@ -53,71 +53,73 @@ const sections = [
   {
     component: Repository,
     props: {
-      repo: "https://github.com/statsig-io/statsig-server-core/tree/main/statsig-ffi/bindings/java",
-    },
+      repo: "https://github.com/statsig-io/statsig-server-core/tree/main/statsig-ffi/bindings/java"
+    }
   },
   {
     component: GettingStarted,
     props: {
       sdkType: "java",
-      install: <Install />,
-      preamble: <Preamble />,
-      initialize: <Initialize />,
-    },
+      install: Install,
+      preamble: Preamble,
+      initialize: Initialize
+    }
   },
   {
     component: WorkingWith,
     props: {
-      checkGate: <CheckGate />,
-      getExperiment: <GetExperiment />,
-      getFeatureGate: <GetFeatureGate />,
-      getConfig: <GetConfig />,
-      logEvent: <LogEvent />,
-      hideAsyncDisclaimer: true,
-    },
+      checkGate: CheckGate,
+      getExperiment: GetExperiment,
+      getFeatureGate: GetFeatureGate,
+      getConfig: GetConfig,
+      logEvent: LogEvent,
+      hideAsyncDisclaimer: true
+    }
   },
   {
     component: ParameterStore,
-    props: { content: <ParamStores /> },
+    props: { content: ParamStores }
   },
   {
     component: ManualExposures,
-    props: { ...ManualExposureSnippets },
+    props: ManualExposureSnippets
   },
   {
     component: StatsigUser,
-    props: { statsigUser: <UserSnippet /> },
+    props: { statsigUser: UserSnippet }
   },
   {
     component: StatsigOptions,
-    props: { options: <Options /> },
+    props: { options: Options }
   },
   {
     component: Shutdown,
-    props: { shutdown: <ShutdownSnippet />, flush: <Flush /> },
+    props: { shutdown: ShutdownSnippet, flush: Flush }
   },
   {
     component: LocalOverrides,
-    props: { snippet: <OverridesSnippet /> },
+    props: { snippet: OverridesSnippet }
   },
   {
     component: FAQ,
     props: { 
-      faqs: <>
-        <MoreFAQs />
-        <h2 id="java-core-vs-legacy-java-sdk">Java Core vs Legacy Java SDK</h2>
-        <CoreVsLegacyContent />
-        <h2 id="supported-os-and-architecture-combinations">Supported OS and Architecture Combinations</h2>
-        <SupportedCombinationsContent />
-        <h2 id="example-program">Sample App</h2>
-        <ExampleProgramContent />
-      </> 
-    },
+      faqs: (
+        <>
+          <MoreFAQs />
+          <h2 id="java-core-vs-legacy-java-sdk">Java Core vs Legacy Java SDK</h2>
+          <CoreVsLegacyContent />
+          <h2 id="supported-os-and-architecture-combinations">Supported OS and Architecture Combinations</h2>
+          <SupportedCombinationsContent />
+          <h2 id="example-program">Sample App</h2>
+          <ExampleProgramContent />
+        </>
+      )
+    }
   },
   {
     component: Reference,
-    props: { snippets: <ReferenceSnippets.default /> },
-  },
+    props: { snippets: ReferenceSnippets.default }
+  }
 ];
 
 const { toc, result } = SDKDocsBuilder({ sections });
