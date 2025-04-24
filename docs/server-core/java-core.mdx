@@ -26,6 +26,7 @@ import {
   JavaCoreVsLegacy,
   SupportedCombinations,
   ExampleProgram,
+  ParameterStore,
 } from "./Templates/index.mdx";
 
 import Preamble from "./_preamble.mdx";
@@ -48,7 +49,6 @@ import { Snippets as ManualExposureSnippets } from "./java/_manualExposures.mdx"
 import CoreVsLegacyContent from "./java/_core_vs_legacy.mdx";
 import SupportedCombinationsContent from "./java/_supported_combinations.mdx";
 import ExampleProgramContent from "./java/_example.mdx";
-
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -76,14 +76,14 @@ export const Builder = SDKDocsBuilder({
         getConfig: <GetConfig />,
         logEvent: <LogEvent />,
         hideAsyncDisclaimer: true,
-        paramStores: <ParamStores />,
       },
     ],
+    [ParameterStore, { content: <ParamStores /> }],
     [ManualExposures, { ...ManualExposureSnippets }],
     [StatsigUser, { statsigUser: <UserSnippet /> }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
-    [LocalOverrides, { snippet: <OverridesSnippet />,},],
+    [LocalOverrides, { snippet: <OverridesSnippet /> }],
     [FAQ, { 
       faqs: <>
         <MoreFAQs />

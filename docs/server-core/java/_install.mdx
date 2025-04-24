@@ -12,6 +12,17 @@ The Statsig Java SDK consists of two parts that must be installed:
 1. The platform-independent core library (required for all installations)
 2. An OS/architecture-specific native library (required for your specific platform)
 
+## Quick Start
+
+Want to get started quickly? Follow these steps:
+
+1. Install the core library (see [Step 1: Install Core Library](#step-1-install-core-library))
+2. Add the platform-specific dependency using either:
+   - [Automatic Detection](#method-1-automatic-detection) (recommended for most users)
+   - [Manual Configuration](#method-2-manual-configuration) (if you know your exact platform requirements)
+
+For detailed usage examples and API reference, check out our [Java SDK Documentation](../java).
+
 ## Installation Steps
 
 ### Step 1: Install Core Library
@@ -140,12 +151,3 @@ Add the appropriate dependency to your `pom.xml` file based on your system:
 Replace `YOUR-OS-ARCHITECTURE` with one of the supported combinations from the [Supported OS and Architecture Combinations](#supported-os-and-architecture-combinations) section.
 
 </details>
-
-## Next Steps
-
-Now that you've installed the SDK, check out our sample applications to see how to use the SDK in practice:
-
-- [Java Sample App](https://github.com/statsig-io/java-sdk/tree/main/samples) - A complete example showing how to use the SDK in a Java application
-- [Spring Boot Sample App](https://github.com/statsig-io/java-sdk/tree/main/samples/spring-boot) - An example of integrating the SDK with a Spring Boot application
-
-These samples demonstrate common use cases and best practices for using the Statsig Java SDK.
