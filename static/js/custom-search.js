@@ -99,20 +99,20 @@
             
             if (section === 'api') {
               data.facetFilters = [
-                ['docusaurus_tag:default'],
-                ['lvl0:SDKs & APIs', 'url:/client/', 'url:/server/', 'url:/console-api/', 'url:/http-api/', 'url:/sdks/', 'url:/sdk/']
+                'docusaurus_tag:default',
+                ['url:/client/', 'url:/server/', 'url:/console-api/', 'url:/http-api/', 'url:/sdks/', 'url:/sdk/']
               ];
               delete data.filters;
             } else if (section === 'warehouse') {
               data.facetFilters = [
-                ['docusaurus_tag:default'],
-                ['lvl0:Warehouse Native', 'url:/statsig-warehouse-native/']
+                'docusaurus_tag:default',
+                'url:/statsig-warehouse-native/'
               ];
               delete data.filters;
             } else {
               data.facetFilters = [
-                ['docusaurus_tag:default'],
-                ['-lvl0:SDKs & APIs', '-lvl0:Warehouse Native', '-url:/statsig-warehouse-native/', '-url:/client/', '-url:/server/', '-url:/console-api/', '-url:/http-api/', '-url:/sdks/', '-url:/sdk/']
+                'docusaurus_tag:default',
+                'NOT url:/client/ AND NOT url:/server/ AND NOT url:/console-api/ AND NOT url:/http-api/ AND NOT url:/sdks/ AND NOT url:/sdk/ AND NOT url:/statsig-warehouse-native/'
               ];
               delete data.filters;
             }
@@ -150,20 +150,20 @@
             
             if (section === 'api') {
               data.facetFilters = [
-                ['docusaurus_tag:default'],
-                ['lvl0:SDKs & APIs', 'url:/client/', 'url:/server/', 'url:/console-api/', 'url:/http-api/', 'url:/sdks/', 'url:/sdk/']
+                'docusaurus_tag:default',
+                ['url:/client/', 'url:/server/', 'url:/console-api/', 'url:/http-api/', 'url:/sdks/', 'url:/sdk/']
               ];
               delete data.filters;
             } else if (section === 'warehouse') {
               data.facetFilters = [
-                ['docusaurus_tag:default'],
-                ['lvl0:Warehouse Native', 'url:/statsig-warehouse-native/']
+                'docusaurus_tag:default',
+                'url:/statsig-warehouse-native/'
               ];
               delete data.filters;
             } else {
               data.facetFilters = [
-                ['docusaurus_tag:default'],
-                ['-lvl0:SDKs & APIs', '-lvl0:Warehouse Native', '-url:/statsig-warehouse-native/', '-url:/client/', '-url:/server/', '-url:/console-api/', '-url:/http-api/', '-url:/sdks/', '-url:/sdk/']
+                'docusaurus_tag:default',
+                'NOT url:/client/ AND NOT url:/server/ AND NOT url:/console-api/ AND NOT url:/http-api/ AND NOT url:/sdks/ AND NOT url:/sdk/ AND NOT url:/statsig-warehouse-native/'
               ];
               delete data.filters;
             }
