@@ -95,7 +95,7 @@
             ];
             newParams.advancedSyntax = true;
             newParams.advancedSyntaxFeatures = ['exactPhrase'];
-            newParams.filters = 'url:/client/ OR url:/server/ OR url:/console-api/ OR url:/http-api/ OR url:/sdks/ OR url:/sdk/';
+            newParams.filters = '(url:/client/ OR url:/server/ OR url:/console-api/ OR url:/http-api/ OR url:/sdks/ OR url:/sdk/) AND NOT url:/statsig-warehouse-native/';
           } else if (section === 'warehouse') {
             console.log('[Statsig Search] Adding Warehouse facet filters');
             newParams.facetFilters = [
