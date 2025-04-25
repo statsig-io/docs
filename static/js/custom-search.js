@@ -7,7 +7,10 @@
 (function() {
   console.log('[Statsig Search] Script loaded');
 
+  const originalXHR = window.XMLHttpRequest;
   const originalFetch = window.fetch;
+  
+  let isSearchRequest = false;
 
   function getCurrentSection() {
     const path = window.location.pathname;
@@ -76,6 +79,81 @@
     }, 100);
   }
 
+  window.XMLHttpRequest = function() {
+    const xhr = new originalXHR();
+    const originalOpen = xhr.open;
+    const originalSend = xhr.send;
+    
+    xhr.open = function() {
+      const method = arguments[0];
+      const url = arguments[1];
+      
+      if (url && typeof url === 'string' && url.includes('algolia.net')) {
+        isSearchRequest = true;
+        console.log('[Statsig Search] Detected Algolia XHR request:', url);
+      }
+      
+      return originalOpen.apply(this, arguments);
+    };
+    
+    xhr.send = function(body) {
+      if (isSearchRequest && body) {
+        try {
+          const section = getCurrentSection();
+          const data = JSON.parse(body);
+          
+          console.log('[Statsig Search] Original Algolia XHR request:', data);
+          
+          if (Array.isArray(data.requests)) {
+            data.requests.forEach(request => {
+              if (!request.params) {
+                request.params = {};
+              }
+              
+              const params = new URLSearchParams(request.params);
+              const existingFacetFilters = params.get('facetFilters');
+              let facetFilters = existingFacetFilters ? JSON.parse(existingFacetFilters) : [];
+              
+              if (!Array.isArray(facetFilters)) {
+                facetFilters = [facetFilters];
+              }
+              
+              if (section === 'api') {
+                params.set('facetFilters', JSON.stringify([
+                  'docusaurus_tag:default',
+                  ['lvl0:SDKs & APIs', 'lvl1:Client SDKs', 'lvl1:Server SDKs', 'lvl1:Console API', 'lvl1:HTTP API']
+                ]));
+              } else if (section === 'warehouse') {
+                params.set('facetFilters', JSON.stringify([
+                  'docusaurus_tag:default',
+                  ['lvl0:Warehouse Native']
+                ]));
+              } else {
+                params.set('facetFilters', JSON.stringify([
+                  'docusaurus_tag:default',
+                  ['NOT lvl0:SDKs & APIs', 'NOT lvl0:Warehouse Native']
+                ]));
+              }
+              
+              request.params = params.toString();
+            });
+          }
+          
+          console.log('[Statsig Search] Modified Algolia XHR request:', data);
+          body = JSON.stringify(data);
+        } catch (e) {
+          console.error('[Statsig Search] Error modifying Algolia XHR request:', e);
+        }
+        
+        isSearchRequest = false;
+      }
+      
+      return originalSend.call(this, body);
+    };
+    
+    return xhr;
+  };
+
   window.fetch = function(resource, init) {
     if (resource && typeof resource === 'string' && resource.includes('algolia.net')) {
       try {
@@ -83,30 +161,42 @@
         
         if (init && init.body) {
           const data = JSON.parse(init.body);
-          console.log('[Statsig Search] Original Algolia request:', data);
+          console.log('[Statsig Search] Original Algolia fetch request:', data);
           
-          if (section === 'api') {
-            data.facetFilters = [
-              'docusaurus_tag:default',
-              ['lvl0:SDKs & APIs', 'lvl1:Client SDKs', 'lvl1:Server SDKs', 'lvl1:Console API', 'lvl1:HTTP API']
-            ];
-          } else if (section === 'warehouse') {
-            data.facetFilters = [
-              'docusaurus_tag:default',
-              ['lvl0:Warehouse Native']
-            ];
-          } else {
-            data.facetFilters = [
-              'docusaurus_tag:default',
-              ['NOT lvl0:SDKs & APIs', 'NOT lvl0:Warehouse Native']
-            ];
+          if (Array.isArray(data.requests)) {
+            data.requests.forEach(request => {
+              if (!request.params) {
+                request.params = {};
+              }
+              
+              const params = new URLSearchParams(request.params);
+              
+              if (section === 'api') {
+                params.set('facetFilters', JSON.stringify([
+                  'docusaurus_tag:default',
+                  ['lvl0:SDKs & APIs', 'lvl1:Client SDKs', 'lvl1:Server SDKs', 'lvl1:Console API', 'lvl1:HTTP API']
+                ]));
+              } else if (section === 'warehouse') {
+                params.set('facetFilters', JSON.stringify([
+                  'docusaurus_tag:default',
+                  ['lvl0:Warehouse Native']
+                ]));
+              } else {
+                params.set('facetFilters', JSON.stringify([
+                  'docusaurus_tag:default',
+                  ['NOT lvl0:SDKs & APIs', 'NOT lvl0:Warehouse Native']
+                ]));
+              }
+              
+              request.params = params.toString();
+            });
           }
           
-          console.log('[Statsig Search] Modified Algolia request:', data);
+          console.log('[Statsig Search] Modified Algolia fetch request:', data);
           init.body = JSON.stringify(data);
         }
       } catch (e) {
-        console.error('[Statsig Search] Error intercepting Algolia request:', e);
+        console.error('[Statsig Search] Error intercepting Algolia fetch request:', e);
       }
     }
     
