@@ -7,7 +7,7 @@
 (function() {
   console.log('[Statsig Search] Script loaded');
 
-  let originalDocSearchFunction = null;
+  const originalFetch = window.fetch;
 
   function getCurrentSection() {
     const path = window.location.pathname;
@@ -76,87 +76,50 @@
     }, 100);
   }
 
-  function patchDocSearch() {
-    const checkInterval = setInterval(() => {
-      if (window.__DOCUSAURUS_LUNR_SEARCH_OPTIONS) {
-        clearInterval(checkInterval);
-        console.log('[Statsig Search] Detected Lunr search, not Algolia');
-        return;
-      }
-      
-      if (window.docsearch) {
-        clearInterval(checkInterval);
-        console.log('[Statsig Search] DocSearch found, patching...');
+  window.fetch = function(resource, init) {
+    if (resource && typeof resource === 'string' && resource.includes('algolia.net')) {
+      try {
+        const section = getCurrentSection();
         
-        originalDocSearchFunction = window.docsearch;
-        
-        window.docsearch = function(options) {
-          console.log('[Statsig Search] Custom docsearch called with options:', options);
-          
-          const section = getCurrentSection();
-          console.log('[Statsig Search] Current section:', section);
-          
-          const newOptions = { ...options };
-          
-          newOptions.searchParameters = newOptions.searchParameters || {};
+        if (init && init.body) {
+          const data = JSON.parse(init.body);
+          console.log('[Statsig Search] Original Algolia request:', data);
           
           if (section === 'api') {
-            console.log('[Statsig Search] Setting API section filters');
-            newOptions.searchParameters.facetFilters = [
+            data.facetFilters = [
               'docusaurus_tag:default',
               ['lvl0:SDKs & APIs', 'lvl1:Client SDKs', 'lvl1:Server SDKs', 'lvl1:Console API', 'lvl1:HTTP API']
             ];
           } else if (section === 'warehouse') {
-            console.log('[Statsig Search] Setting Warehouse section filters');
-            newOptions.searchParameters.facetFilters = [
+            data.facetFilters = [
               'docusaurus_tag:default',
               ['lvl0:Warehouse Native']
             ];
           } else {
-            console.log('[Statsig Search] Setting Product Docs section filters');
-            newOptions.searchParameters.facetFilters = [
+            data.facetFilters = [
               'docusaurus_tag:default',
-              'NOT lvl0:SDKs & APIs',
-              'NOT lvl0:Warehouse Native'
+              ['NOT lvl0:SDKs & APIs', 'NOT lvl0:Warehouse Native']
             ];
           }
           
-          const originalInit = newOptions.init || (() => {});
-          newOptions.init = function(instance) {
-            console.log('[Statsig Search] DocSearch init called');
-            
-            instance.on('render', () => {
-              console.log('[Statsig Search] DocSearch render event');
-              addSectionIndicator(section);
-            });
-            
-            return originalInit.call(this, instance);
-          };
-          
-          console.log('[Statsig Search] Calling original docsearch with modified options:', newOptions);
-          return originalDocSearchFunction(newOptions);
-        };
-        
-        console.log('[Statsig Search] DocSearch patched successfully');
+          console.log('[Statsig Search] Modified Algolia request:', data);
+          init.body = JSON.stringify(data);
+        }
+      } catch (e) {
+        console.error('[Statsig Search] Error intercepting Algolia request:', e);
       }
-    }, 100);
-  }
+    }
+    
+    return originalFetch.call(window, resource, init);
+  };
 
   // Initialize the search customization
   function initialize() {
     console.log('[Statsig Search] Initializing search customization');
     
-    patchDocSearch();
-    
     document.addEventListener('click', function(event) {
       if (event.target.closest('.DocSearch-Button')) {
         console.log('[Statsig Search] Search button clicked');
-        
-        if (window.docsearch && !originalDocSearchFunction) {
-          console.log('[Statsig Search] Late patching of docsearch on button click');
-          patchDocSearch();
-        }
-        
         addSectionIndicator(getCurrentSection());
       }
     }, true);
@@ -164,12 +127,6 @@
     document.addEventListener('keydown', function(event) {
       if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
         console.log('[Statsig Search] Keyboard shortcut detected');
-        
-        if (window.docsearch && !originalDocSearchFunction) {
-          console.log('[Statsig Search] Late patching of docsearch on keyboard shortcut');
-          patchDocSearch();
-        }
-        
         addSectionIndicator(getCurrentSection());
       }
     });
