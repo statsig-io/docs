@@ -7,6 +7,8 @@
 (function() {
   console.log('[Statsig Search] Script loaded');
 
+  let originalDocSearchFunction = null;
+
   function getCurrentSection() {
     const path = window.location.pathname;
     console.log('[Statsig Search] Current path:', path);
@@ -74,102 +76,87 @@
     }, 100);
   }
 
-  function patchXMLHttpRequest() {
-    console.log('[Statsig Search] Patching XMLHttpRequest');
-    
-    const originalOpen = XMLHttpRequest.prototype.open;
-    const originalSend = XMLHttpRequest.prototype.send;
-    
-    XMLHttpRequest.prototype.open = function(method, url, ...args) {
-      this._statsigUrl = url;
-      return originalOpen.call(this, method, url, ...args);
-    };
-    
-    XMLHttpRequest.prototype.send = function(body) {
-      if (this._statsigUrl && this._statsigUrl.includes('algolia.net/1/indexes/')) {
-        try {
-          const section = getCurrentSection();
-          console.log('[Statsig Search] Intercepted Algolia request for section:', section);
-          
-          if (body) {
-            const data = JSON.parse(body);
-            console.log('[Statsig Search] Original request data:', data);
-            
-            if (section === 'api') {
-              data.facetFilters = ['docusaurus_tag:default'];
-              data.filters = 'path:/client/ OR path:/server/ OR path:/console-api/ OR path:/http-api/ OR path:/sdks/ OR path:/sdk/';
-            } else if (section === 'warehouse') {
-              data.facetFilters = ['docusaurus_tag:default'];
-              data.filters = 'path:/statsig-warehouse-native/';
-            } else {
-              data.facetFilters = ['docusaurus_tag:default'];
-              data.filters = 'NOT path:/client/ AND NOT path:/server/ AND NOT path:/console-api/ AND NOT path:/http-api/ AND NOT path:/sdks/ AND NOT path:/sdk/ AND NOT path:/statsig-warehouse-native/';
-            }
-            
-            console.log('[Statsig Search] Modified request data:', data);
-            body = JSON.stringify(data);
-          }
-        } catch (e) {
-          console.error('[Statsig Search] Error modifying Algolia request:', e);
-        }
+  function patchDocSearch() {
+    const checkInterval = setInterval(() => {
+      if (window.__DOCUSAURUS_LUNR_SEARCH_OPTIONS) {
+        clearInterval(checkInterval);
+        console.log('[Statsig Search] Detected Lunr search, not Algolia');
+        return;
       }
       
-      return originalSend.call(this, body);
-    };
-    
-    console.log('[Statsig Search] XMLHttpRequest patched successfully');
-  }
-
-  function patchFetch() {
-    console.log('[Statsig Search] Patching fetch API');
-    
-    const originalFetch = window.fetch;
-    
-    window.fetch = function(resource, init) {
-      if (resource && typeof resource === 'string' && resource.includes('algolia.net/1/indexes/')) {
-        try {
-          const section = getCurrentSection();
-          console.log('[Statsig Search] Intercepted Algolia fetch request for section:', section);
+      if (window.docsearch) {
+        clearInterval(checkInterval);
+        console.log('[Statsig Search] DocSearch found, patching...');
+        
+        originalDocSearchFunction = window.docsearch;
+        
+        window.docsearch = function(options) {
+          console.log('[Statsig Search] Custom docsearch called with options:', options);
           
-          if (init && init.body) {
-            const data = JSON.parse(init.body);
-            console.log('[Statsig Search] Original fetch request data:', data);
-            
-            if (section === 'api') {
-              data.facetFilters = ['docusaurus_tag:default'];
-              data.filters = 'path:/client/ OR path:/server/ OR path:/console-api/ OR path:/http-api/ OR path:/sdks/ OR path:/sdk/';
-            } else if (section === 'warehouse') {
-              data.facetFilters = ['docusaurus_tag:default'];
-              data.filters = 'path:/statsig-warehouse-native/';
-            } else {
-              data.facetFilters = ['docusaurus_tag:default'];
-              data.filters = 'NOT path:/client/ AND NOT path:/server/ AND NOT path:/console-api/ AND NOT path:/http-api/ AND NOT path:/sdks/ AND NOT path:/sdk/ AND NOT path:/statsig-warehouse-native/';
-            }
-            
-            console.log('[Statsig Search] Modified fetch request data:', data);
-            init.body = JSON.stringify(data);
+          const section = getCurrentSection();
+          console.log('[Statsig Search] Current section:', section);
+          
+          const newOptions = { ...options };
+          
+          newOptions.searchParameters = newOptions.searchParameters || {};
+          
+          if (section === 'api') {
+            console.log('[Statsig Search] Setting API section filters');
+            newOptions.searchParameters.facetFilters = [
+              'docusaurus_tag:default',
+              ['lvl0:SDKs & APIs', 'lvl1:Client SDKs', 'lvl1:Server SDKs', 'lvl1:Console API', 'lvl1:HTTP API']
+            ];
+          } else if (section === 'warehouse') {
+            console.log('[Statsig Search] Setting Warehouse section filters');
+            newOptions.searchParameters.facetFilters = [
+              'docusaurus_tag:default',
+              ['lvl0:Warehouse Native']
+            ];
+          } else {
+            console.log('[Statsig Search] Setting Product Docs section filters');
+            newOptions.searchParameters.facetFilters = [
+              'docusaurus_tag:default',
+              'NOT lvl0:SDKs & APIs',
+              'NOT lvl0:Warehouse Native'
+            ];
           }
-        } catch (e) {
-          console.error('[Statsig Search] Error modifying Algolia fetch request:', e);
-        }
+          
+          const originalInit = newOptions.init || (() => {});
+          newOptions.init = function(instance) {
+            console.log('[Statsig Search] DocSearch init called');
+            
+            instance.on('render', () => {
+              console.log('[Statsig Search] DocSearch render event');
+              addSectionIndicator(section);
+            });
+            
+            return originalInit.call(this, instance);
+          };
+          
+          console.log('[Statsig Search] Calling original docsearch with modified options:', newOptions);
+          return originalDocSearchFunction(newOptions);
+        };
+        
+        console.log('[Statsig Search] DocSearch patched successfully');
       }
-      
-      return originalFetch.call(window, resource, init);
-    };
-    
-    console.log('[Statsig Search] fetch API patched successfully');
+    }, 100);
   }
 
   // Initialize the search customization
   function initialize() {
     console.log('[Statsig Search] Initializing search customization');
     
-    patchXMLHttpRequest();
-    patchFetch();
+    patchDocSearch();
     
     document.addEventListener('click', function(event) {
       if (event.target.closest('.DocSearch-Button')) {
         console.log('[Statsig Search] Search button clicked');
+        
+        if (window.docsearch && !originalDocSearchFunction) {
+          console.log('[Statsig Search] Late patching of docsearch on button click');
+          patchDocSearch();
+        }
+        
         addSectionIndicator(getCurrentSection());
       }
     }, true);
@@ -177,12 +164,14 @@
     document.addEventListener('keydown', function(event) {
       if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
         console.log('[Statsig Search] Keyboard shortcut detected');
+        
+        if (window.docsearch && !originalDocSearchFunction) {
+          console.log('[Statsig Search] Late patching of docsearch on keyboard shortcut');
+          patchDocSearch();
+        }
+        
         addSectionIndicator(getCurrentSection());
       }
-    });
-    
-    window.addEventListener('popstate', function() {
-      console.log('[Statsig Search] Navigation detected');
     });
     
     console.log('[Statsig Search] Search customization initialized');
