@@ -91,15 +91,15 @@
           if (section === 'api') {
             console.log('[Statsig Search] Adding API facet filters');
             newParams.facetFilters = [
-              'docusaurus_tag:default',
-              'tags:client OR tags:server OR tags:console-api OR tags:http-api'
+              'docusaurus_tag:default'
             ];
+            newParams.filters = '(url:/client/ OR url:/server/ OR url:/console-api/ OR url:/http-api/ OR url:/sdks/)';
           } else if (section === 'warehouse') {
             console.log('[Statsig Search] Adding Warehouse facet filters');
             newParams.facetFilters = [
-              'docusaurus_tag:default',
-              'tags:warehouse-native'
+              'docusaurus_tag:default'
             ];
+            newParams.filters = 'url:/statsig-warehouse-native/';
           }
           
           console.log('[Statsig Search] Final search params:', newParams);
