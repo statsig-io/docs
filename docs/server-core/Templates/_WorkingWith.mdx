@@ -1,5 +1,3 @@
-import AsyncDisclaimer from "./_AsyncDisclaimer.mdx";
-
 ## Working with the SDK
 
 ### Checking a Feature Flag/Gate
@@ -22,16 +20,19 @@ Then we have **Layers/Experiments**, which you can use to run A/B/n experiments.
 
 <div>{props.getExperiment}</div>
 
-<>{props.hideAsyncDisclaimer !== true && <AsyncDisclaimer />}</>
+### Parameter Stores
 
-{props.paramStores && (
-  <div>
-    <h2>Parameter Stores</h2>
+{props.paramStores ? (
+  <>
     <p>
-      Sometimes - you don't know exactly what kind of Statsig config (Gate/Experiment/Layer/Dynamic Config) you want behind a particular value - you might want on-the-fly control of that, outside of your deployment cycle. <a href="/client/concepts/parameter-stores/">Parameter Stores</a> enable this by letting you define a "Parameter" - that can be static, or changed into a gate, experiment, etc. in the Statsig console. Parameter Stores are optional - but parameterizing your application can prove very useful, even allowing non-technical Statsig users to turn parameters into experiments.
+      Sometimes - you don't know exactly what kind of Statsig config (Gate/Experiment/Layer/Dynamic Config) you want behind a particular value – you might want on-the-fly control of that, outside of your deployment cycle.
+      <a href="/client/concepts/parameter-stores/">Parameter Stores</a> enable this by letting you define a "Parameter" that can be static, or changed into a gate, experiment, etc. in the Statsig console.
+      Parameter Stores are optional – but parameterizing your application can prove very useful, even allowing non-technical Statsig users to turn parameters into experiments.
     </p>
     <div>{props.paramStores}</div>
-  </div>
+  </>
+) : (
+  <p><em>Parameter stores are not yet available for this sdk.  Need it now? Let us know in <a href="https://statsig.com/slack">Slack</a>.</em></p>
 )}
 
 ### Logging an Event
