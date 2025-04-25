@@ -1,15 +1,4 @@
----
-sidebar_label: Java
-title: Java Server SDK
-keywords:
-  - owner:brock
-last_update:
-  date: 2025-01-31
----
-
-import {
-  SDKDocsBuilder,
-} from "../sdks/_SDKDocsBuilder.mdx";
+import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
 
 import {
   Repository,
@@ -25,7 +14,7 @@ import {
   JavaCoreVsLegacy,
   SupportedCombinations,
   ExampleProgram,
-  ParameterStore,
+  ParameterStore
 } from "./Templates/index.mdx";
 
 import Preamble from "./_preamble.mdx";
@@ -94,7 +83,10 @@ const sections = [
   },
   {
     type: "shutdown",
-    data: { shutdown: ShutdownSnippet, flush: Flush }
+    data: {
+      shutdown: ShutdownSnippet,
+      flush: Flush
+    }
   },
   {
     type: "local-overrides",
@@ -114,4 +106,3 @@ const { toc, result } = SDKDocsBuilder({ sections });
 
 export { toc };
 export default result;
-
