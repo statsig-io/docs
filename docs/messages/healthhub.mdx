@@ -17,13 +17,13 @@ Initialization is the step in SDK setup where your SDK downloads the values for 
 
 Initialization success is the percent of initialization attempts that the SDK is making that are successfully returning values from the Statsig servers. 
 
-*How to solve:* Common issues on client SDKs include adblockers, poor network conditions, or attempts to initialize/updateUser happening without a network connection (common with backgrounded Android apps, for example). If you suspect adblockers, conider setting up a [proxy](/custom_proxy/). Poor network conditions are difficult to resolve. Server issues are less common - but may include improper networking restrictions in your cluster, or unsuccessful use of a custom initialization approach, like an improperly configured data adapter. Inspecting specific error logs where your Server SDK is running is likely to yield more information on the issue.
+*How to solve:* Common issues on client SDKs include adblockers, poor network conditions, or attempts to initialize/updateUser happening without a network connection (common with backgrounded Android apps, for example). If you suspect adblockers, consider setting up a [proxy](/custom_proxy/). Poor network conditions are difficult to resolve. Server issues are less common - but may include improper networking restrictions in your cluster, or unsuccessful use of a custom initialization approach, like an improperly configured data adapter. Inspecting specific error logs where your Server SDK is running is likely to yield more information on the issue.
 
 ### Initialization Size
 
 As you add more gates, experiments, and dynamic configs to your project - the size of your initialize() payload will grow. On client SDKs, the initialize payload is "evaluated", meaning it'll have only the results for a single user in the payload, but on Server SDKs - this'll contain the set of rules defining the results for all users.
 
-*How to solve:* Archiving stale gates and experiments, and limiting the size of any dynamic configs you use is the first line of defense for a fast initialize. While we provide a great degree of freedom in how you use Statsig, storing large amounts of data in Dynamic Configs isn't recommended. [Target Apps](/sdk-keys/target-apps/) are another solution that limits the configs that any one client/server key can retreive (usually, limiting them to only those which are needed). 
+*How to solve:* Archiving stale gates and experiments, and limiting the size of any dynamic configs you use is the first line of defense for a fast initialize. While we provide a great degree of freedom in how you use Statsig, storing large amounts of data in Dynamic Configs isn't recommended. [Target Apps](/sdk-keys/target-apps/) are another solution that limits the configs that any one client/server key can retrieve (usually, limiting them to only those which are needed). 
 
 ### Initialization Time
 
@@ -45,19 +45,19 @@ Every config (gate, experiment, or Dynamic Config) in Statsig has an ID type tha
 
 ### Healthy Evaluation Reasons
 
-When you check a Statsig gate/experiment/dynamic config - the SDK will always provide a value, to ensure your customer experience is unaffected even if something goes wrong. Instead of panicing when something hasn't worked quite right - the SDKs expose "Evaluation Reason" as a key source of information for if the SDK is in a healthy state when you make checks. Reasons are discussed in detail in our [debugging docs](/sdk/debugging#evaluation-reason).
+When you check a Statsig gate/experiment/dynamic config - the SDK will always provide a value, to ensure your customer experience is unaffected even if something goes wrong. Instead of panicking when something hasn't worked quite right - the SDKs expose "Evaluation Reason" as a key source of information for if the SDK is in a healthy state when you make checks. Reasons are discussed in detail in our [debugging docs](/sdk/debugging#evaluation-reason).
 
 *How to solve:* 
- - If your evalation reason looks like: `uninitialized`,  `unrecognized`,  `novalues`, `loading`, review your [Initialization Strategy](/client/concepts/initialize). With uninitialized, its common that you've forgotten to call initialize at all. Loading and Novalues often mean that you're checking a config before initialization returns, or that a successful initialization doesn't have values for the user object that you're using (e.g., you called updateUserSync(), which changes the user without getting new values for them.)
+ - If your evaluation reason looks like: `uninitialized`,  `unrecognized`,  `novalues`, `loading`, review your [Initialization Strategy](/client/concepts/initialize). With uninitialized, its common that you've forgotten to call initialize at all. Loading and Novalues often mean that you're checking a config before initialization returns, or that a successful initialization doesn't have values for the user object that you're using (e.g., you called updateUserSync(), which changes the user without getting new values for them.)
  - If your evaluation reason look like: `error` or `unsupported`, you likely need to update your SDK version, as you're attempting to use a rule type that your SDK doesn't support.
- - If your evalation reason looks like: `bootstrapstableidmismatch` or `invalidbootstrap`, see our [debugging guides](/sdk/debugging#faqs) for these issues.
+ - If your evaluation reason looks like: `bootstrapstableidmismatch` or `invalidbootstrap`, see our [debugging guides](/sdk/debugging#faqs) for these issues.
  - If your evaluation reason looks like `noclient`, then you might be trying to check a config outside of the \<StatsigProvider\> in React.
 
 ### Detecting Events
 
 In Statsig, you can use the .logEvent() method in any SDK to create metrics that support your experiments. Without events - Statsig's functionality is limited, and we won't be able to perform experiment analysis, or use Metrics Explorer. If you're using Statsig Warehouse Native, this section might appear empty.
 
-*How to solve:* If you already have a source of events you'd like to use, you can import them with one of our [Integrations](/integrations/introduction), or a data import from your [warehouse](/data-warehouse-ingestion/introduction). Otherwise, start tracking your events with .logEvent() in your code. Sometimes, log events can not make it to the Statsig platform if you have a misconfigures StatsigOption (like disableAllLogging), or if you're not calling .flush or .shutdown before your process exits (most common in serverless applications).
+*How to solve:* If you already have a source of events you'd like to use, you can import them with one of our [Integrations](/integrations/introduction), or a data import from your [warehouse](/data-warehouse-ingestion/introduction). Otherwise, start tracking your events with .logEvent() in your code. Sometimes, log events can not make it to the Statsig platform if you have a misconfigured StatsigOption (like disableAllLogging), or if you're not calling .flush or .shutdown before your process exits (most common in serverless applications).
 
 ### Event ID Presence
 
@@ -73,7 +73,7 @@ We're constantly updating Statsig's SDKs with performance, security and function
 
 ### Client Bootstrapping
 
-[Client Bootstrapping](/client/concepts/initialize#2-bootstrap-initialization) is a method to use Server SDKs to provide initialization values to client SDKs. Along with performance benefits (this request can be parallelized with other requests your client makes, reducing load times), client bootstrapping improves resilience in the case of a Statsig outage, as Server SDKs have continual, uninteruppted access to rulesets. 
+[Client Bootstrapping](/client/concepts/initialize#2-bootstrap-initialization) is a method to use Server SDKs to provide initialization values to client SDKs. Along with performance benefits (this request can be parallelized with other requests your client makes, reducing load times), client bootstrapping improves resilience in the case of a Statsig outage, as Server SDKs have continual, uninterrupted access to rulesets. 
 
 *How to solve:* visit our [guides on client bootstrapping](/client/concepts/initialize#2-bootstrap-initialization) to assess if its the right initialization strategy for you.
 
