@@ -90,6 +90,10 @@ curl \
   "https://api.statsig.com/v1/mark_data_ready_dwh"
 ```
 
+Parameters:
+- datestamps: Refers to the date of the data being triggered.
+- type: `metrics` or `events`
+
 Note that this is rate limited to once every two hours, and there may be a few minutes delay after triggering before status updates while compute resources are created.
 
 ### Frequently Asked Questions
