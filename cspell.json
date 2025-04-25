@@ -669,7 +669,11 @@
     "geotesting",
     "incrementality",
     "Geolift",
-    "geospatial"
+    "geospatial",
+    "backgrounded",
+    "adblockers",
+    "Novalues",
+    "misconfiguring"
   ],
   "ignorePaths": [
     "node_modules/**",
