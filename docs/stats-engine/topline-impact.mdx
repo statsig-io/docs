@@ -8,7 +8,7 @@ last_update:
   date: 2024-10-03
 ---
 
-The **topline impact** is the measured effect that an active experiment has on the overall topline metric over the rollup windows.  This is the real impact that results from running the experiment with its current allocation.  The **projected launch impact** is an estimate of the topline impact we expect to see if a decision is made and the test group is launched to all users. This impact is computed relative to the expected baseline value of the topline metric if the experiment wasn't running at all.
+The **topline impact** is the measured effect that an active experiment has on the overall topline metric over the rollup windows.  This is the real impact that results from running the experiment with its historical weighted allocation.  The **projected launch impact** is an estimate of the topline impact we expect to see if a decision is made and the test group is launched to all users. This impact is computed relative to the expected baseline value of the topline metric if the experiment wasn't running at all.
 
 Topline Impact and Projected Launch Impact currently do not use CUPED when measuring any impact induced by your experiment.
 
@@ -66,7 +66,7 @@ Note that the targeting gate isn't factored in.  The projected impact calculatio
 
 ### Count and Sum Metrics (event_count, event_dau, sum)
 
-For count and sum metrics, the projected absolute impact is simply the current topline impact scaled by a factor of *m*.  For example: Consider an experiment running with 50% layers allocation and 50/50 test/control split, so that 25% of all users are in the test group.  If the topline impact is currently +10 events per day, then launching the experiment would lead to +40 events per day. 
+For count and sum metrics, the projected absolute impact is simply the current topline impact scaled by a factor of *m*.  For example: Consider an experiment running with 50% layers allocation and 50/50 test/control split, so that 25% of all users are in the test group. If the allocation has been changing during this experiment, we will use a weighted average based on historical allocations. If the topline impact is currently +10 events per day, then launching the experiment would lead to +40 events per day. 
 
 $$
 Projected_{abs}=Impact_{abs} \times m
