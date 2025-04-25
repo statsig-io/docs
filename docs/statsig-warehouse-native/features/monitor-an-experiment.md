@@ -3,7 +3,6 @@ title: Experiment Diagnostics
 slug: /statsig-warehouse-native/features/monitor-an-experiment
 sidebar_label: Diagnostics
 description: Monitor the health of experiments
-displayed_sidebar: cloud
 keywords:
   - owner:vm
 last_update:

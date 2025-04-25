@@ -9,6 +9,10 @@ last_update:
   date: 2025-01-24
 ---
 
+:::tip[Warehouse Native users]
+You're viewing the Cloud docs for this page. Metrics and experiments behave differently in Warehouse Native. Read about [Configuring Experiments in Warehouse Native](/statsig-warehouse-native/features/experiment-options).
+:::
+
 Experimentation is a powerful tool for making data-driven decisions that improve product outcomes and customer experiences. In this guide, you'll learn how to set up, run, and analyze controlled experiments using Statsig's experimentation platform. We'll cover key concepts such as control variables, randomization units, and statistical significance, helping you understand the science behind A/B testing and multivariate experiments.
 
 By the end of this guide, you'll know how to use experiments to validate product changes, discover new opportunities, and drive business impact. Whether you're optimizing existing features or exploring new ideas, these fundamentals will equip you to run effective experiments and iterate faster with confidence.
