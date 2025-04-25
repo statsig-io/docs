@@ -7,7 +7,10 @@ last_update:
   date: 2025-01-31
 ---
 
-import { SDKDocsBuilder } from "../sdks/_SDKDocsBuilder.mdx";
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
 
 import {
   Repository,
@@ -23,7 +26,6 @@ import {
   JavaCoreVsLegacy,
   SupportedCombinations,
   ExampleProgram,
-  ParameterStore
 } from "./Templates/index.mdx";
 
 import Preamble from "./_preamble.mdx";
@@ -47,71 +49,56 @@ import CoreVsLegacyContent from "./java/_core_vs_legacy.mdx";
 import SupportedCombinationsContent from "./java/_supported_combinations.mdx";
 import ExampleProgramContent from "./java/_example.mdx";
 
-const sections = [
-  {
-    type: "repository",
-    data: {
-      repo: "https://github.com/statsig-io/statsig-server-core/tree/main/statsig-ffi/bindings/java"
-    }
-  },
-  {
-    type: "getting-started",
-    data: {
-      sdkType: "java",
-      install: Install,
-      preamble: Preamble,
-      initialize: Initialize
-    }
-  },
-  {
-    type: "working-with",
-    data: {
-      checkGate: CheckGate,
-      getExperiment: GetExperiment,
-      getFeatureGate: GetFeatureGate,
-      getConfig: GetConfig,
-      logEvent: LogEvent,
-      hideAsyncDisclaimer: true
-    }
-  },
-  {
-    type: "parameter-store",
-    data: { content: ParamStores }
-  },
-  {
-    type: "manual-exposures",
-    data: ManualExposureSnippets
-  },
-  {
-    type: "statsig-user",
-    data: { statsigUser: UserSnippet }
-  },
-  {
-    type: "statsig-options",
-    data: { options: Options }
-  },
-  {
-    type: "shutdown",
-    data: {
-      shutdown: ShutdownSnippet,
-      flush: Flush
-    }
-  },
-  {
-    type: "local-overrides",
-    data: { snippet: OverridesSnippet }
-  },
-  {
-    type: "faq",
-    data: { content: MoreFAQs }
-  },
-  {
-    type: "reference",
-    data: { snippets: ReferenceSnippets.default }
-  }
-];
 
-const { toc, result } = SDKDocsBuilder({ sections });
+export const Builder = SDKDocsBuilder({
+  sections: [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/statsig-server-core/tree/main/statsig-ffi/bindings/java",
+      },
+    ],
+    [
+      GettingStarted,
+      {
+        sdkType: "java",
+        install: <Install />,
+        preamble: <Preamble />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getExperiment: <GetExperiment />,
+        getFeatureGate: <GetFeatureGate />,
+        getConfig: <GetConfig />,
+        logEvent: <LogEvent />,
+        hideAsyncDisclaimer: true,
+        paramStores: <ParamStores />,
+      },
+    ],
+    [ManualExposures, { ...ManualExposureSnippets }],
+    [StatsigUser, { statsigUser: <UserSnippet /> }],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
+    [LocalOverrides, { snippet: <OverridesSnippet />,},],
+    [FAQ, { 
+      faqs: <>
+        <MoreFAQs />
+        <h2 id="java-core-vs-legacy-java-sdk">Java Core vs Legacy Java SDK</h2>
+        <CoreVsLegacyContent />
+        <h2 id="supported-os-and-architecture-combinations">Supported OS and Architecture Combinations</h2>
+        <SupportedCombinationsContent />
+        <h2 id="example-program">Sample App</h2>
+        <ExampleProgramContent />
+      </> 
+    }],
+    [Reference, { snippets: <ReferenceSnippets.default /> }],
+  ]
+})
 
-export { toc };
-export default result;
+export const toc = Builder.toc
+
+<>{Builder.result}</>
