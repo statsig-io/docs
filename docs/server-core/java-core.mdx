@@ -75,8 +75,8 @@ export const Builder = SDKDocsBuilder({
         getFeatureGate: <GetFeatureGate />,
         getConfig: <GetConfig />,
         logEvent: <LogEvent />,
-        hideAsyncDisclaimer: true,
         paramStores: <ParamStores />,
+        hideAsyncDisclaimer: true,
       },
     ],
     [ManualExposures, { ...ManualExposureSnippets }],
@@ -87,11 +87,11 @@ export const Builder = SDKDocsBuilder({
     [FAQ, { 
       faqs: <>
         <MoreFAQs />
-        <h2 id="java-core-vs-legacy-java-sdk">Java Core vs Legacy Java SDK</h2>
+        <h3 id="java-core-vs-legacy-java-sdk">Java Core vs Legacy Java SDK</h3>
         <CoreVsLegacyContent />
-        <h2 id="supported-os-and-architecture-combinations">Supported OS and Architecture Combinations</h2>
+        <h3 id="supported-os-and-architecture-combinations">Supported OS and Architecture Combinations</h3>
         <SupportedCombinationsContent />
-        <h2 id="example-program">Sample App</h2>
+        <h3 id="example-program">Sample App</h3>
         <ExampleProgramContent />
       </> 
     }],
@@ -102,4 +102,3 @@ export const Builder = SDKDocsBuilder({
 export const toc = Builder.toc
 
 <>{Builder.result}</>
-

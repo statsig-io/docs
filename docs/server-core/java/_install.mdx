@@ -1,5 +1,3 @@
-### Installing the Java SDK
-
 ## Requirements
 
 - Java 8 or higher
@@ -10,13 +8,13 @@
 
 ## Overview
 
-The Statsig Java SDK consists of two parts:
-1. The platform-independent core library
-2. An OS/architecture-specific native library
+The Statsig Java SDK consists of two parts that must be installed:
+1. The platform-independent core library (required for all installations)
+2. An OS/architecture-specific native library (required for your specific platform)
 
-Both components are required for the SDK to function properly.
+## Installation Steps
 
-## Installation Options
+### Step 1: Install Core Library
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
@@ -29,8 +27,6 @@ import TabItem from "@theme/TabItem";
     {label: 'Maven', value: 'maven'},
   ]}>
   <TabItem value="gradle">
-
-### Gradle Installation
 
 Add the following to your `build.gradle` file:
 
@@ -49,8 +45,6 @@ You can find the latest version on [Maven Central](https://central.sonatype.com/
   </TabItem>
   <TabItem value="maven">
 
-### Maven Installation
-
 Add the following to your `pom.xml` file:
 
 ```xml
@@ -68,11 +62,12 @@ You can find the latest version on [Maven Central](https://central.sonatype.com/
   </TabItem>
 </Tabs>
 
-## Adding OS/Architecture-Specific Dependencies
+### Step 2: Install Platform-Specific Library
 
-After installing the core library, you need to add the appropriate OS/architecture-specific dependency. The SDK will automatically detect your system and provide guidance.
+You need to add the appropriate OS/architecture-specific dependency. Choose one of the following methods:
 
-### Automatic Detection
+<details>
+<summary>Method 1: Automatic Detection</summary>
 
 Run the following code to detect your system and get the appropriate dependency:
 
@@ -80,10 +75,7 @@ Run the following code to detect your system and get the appropriate dependency:
 import com.statsig.*;
 
 // All StatsigOptions are optional, feel free to adjust them as needed
-StatsigOptions options = new StatsigOptions.Builder()
-                    .setSpecsSyncIntervalMs(10)
-                    .setEventLoggingFlushIntervalMs(10)
-                    .build(); 
+StatsigOptions options = new StatsigOptions.Builder().build(); 
 					                    
 Statsig statsig = new Statsig("your-secret-key", options);
 ```
@@ -98,7 +90,10 @@ For Linux with x86_64 architecture, add the following to build.gradle:
   implementation 'com.statsig:javacore:<version>:amazonlinux2023-x86_64'
 ```
 
-### Manual Configuration
+</details>
+
+<details>
+<summary>Method 2: Manual Configuration</summary>
 
 <Tabs
   groupId="java-build-tools"
@@ -113,7 +108,7 @@ Add the appropriate dependency to your `build.gradle` file based on your system:
 
 ```groovy
 dependencies {
-    implementation 'com.statsig:javacore:X.X.X'  // Core SDK
+    implementation 'com.statsig:javacore:X.X.X'  // Core SDK (from Step 1)
     implementation 'com.statsig:javacore:X.X.X:YOUR-OS-ARCHITECTURE' // OS/architecture-specific dependency
 }
 ```
@@ -143,3 +138,5 @@ Add the appropriate dependency to your `pom.xml` file based on your system:
 </Tabs>
 
 Replace `YOUR-OS-ARCHITECTURE` with one of the supported combinations from the [Supported OS and Architecture Combinations](#supported-os-and-architecture-combinations) section.
+
+</details>
