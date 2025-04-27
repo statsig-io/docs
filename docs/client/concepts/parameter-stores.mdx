@@ -8,7 +8,7 @@ last_update:
   date: 2025-01-15
 ---
 
-Parameter Stores provide a new way to organize and manage parameters in your web or mobile app via the Statsig console. Now available for JS, React, React Native, Android, iOS, and Dart SDKs with Server SDKs coming soon - let us know in [Slack](https://statsig.com/slack) if you'd like support in a certain language soon.
+Parameter Stores provide a new way to organize and manage parameters in your web or mobile app via the Statsig console. Now available for JS, React, React Native, Android, iOS, and Dart SDKs on the client side and java, node, and rust on the server side.  Let us know in [Slack](https://statsig.com/slack) if you'd like support in a certain language soon.
 
 ## **What is a Parameter Store?**
 
@@ -41,8 +41,8 @@ Here’s a suggested workflow:
 1. **Create a Parameter Store**: 
    Set up a Parameter Store for your team or project. Parameter Stores are designed to hold related parameters in one object.
 
-2. **Identify Server-Side Variables**:
-   Consider which variables you want to control server-side rather than hardcoding them in your app. These could include:
+2. **Identify Configuration Variables**:
+   Consider which variables you want to decouple from your app and control via Statsig rather than hardcoding them in your app. These could include:
    
    - A boolean parameter to control access to a new feature. Even if you're used to using Feature Gates for boolean feature management, start with a boolean parameter instead.
    - A string parameter for text resources that you may want to swap or experiment with.
@@ -77,8 +77,11 @@ Parameter Stores are available in the following SDKs:
 - **iOS SDK** v1.45.0+
 - **@statsig/js-client**, **@statsig/react-bindings**, **@statsig/react-native-bindings**, **@statsig/expo-bindings** v1.4.0+
 - **Dart SDK** v1.2.1+
-- **Statsig Server Core SDKs** are gradually adding support, available in Java & Rust Core 0.0.6-beta.9 and higher.
+- **Statsig Server Core SDKs** are gradually adding support, available in:
+  - **com.statsig:javacore** 0.1.0+
+  - **statsig-rust** 0.1.0+
+  - **@statsig/statsig-node-core** 0.1.0+
 
-As of early 2025, Parameter Stores are *Not* available in server SDKs, nor available when Bootstrapping a client SDK. Need support in a language soon? Let us know in [Slack](https://statsig.com/slack).
+Parameter Stores will *Not* be available in non server-core server SDKs, nor available when Bootstrapping a client SDK from one of those sdks. Need support in a language soon? Let us know in [Slack](https://statsig.com/slack).
 
 ---
