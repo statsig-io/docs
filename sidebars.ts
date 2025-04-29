@@ -224,6 +224,11 @@ const sidebars: SidebarsConfig = {
                   type: "doc",
                   id: "server/rubySDK",
                 },
+                {
+                  type: "doc",
+                  id: "server-core/index",
+                  label: "Server Core Overview",
+                },
 
                 {
                   type: "category",
