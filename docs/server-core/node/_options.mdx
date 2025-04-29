@@ -61,6 +61,13 @@ The `StatsigOptions` class is used to specify optional parameters when initializ
 - **`observabilityClient`**: `Optional<ObservabilityClient>`  
   Interface for you to integrate observability metrics exposed by SDK, including, config propagation delay, initialization time spent. See [details](https://docs.statsig.com/sdk_monitoring/)
 
+- **`proxyConfig`**: `Optional<ProxyConfig>`  
+  Configuration for connecting through a proxy server. The `ProxyConfig` object has the following properties:
+  - `proxyHost`: Optional string specifying the proxy server host
+  - `proxyPort`: Optional number specifying the proxy server port
+  - `proxyAuth`: Optional string for proxy authentication (format: "username:password")
+  - `proxyProtocol`: Optional string specifying the protocol (e.g., "http", "https")
+
 ---
 
 ```typescript
@@ -68,6 +75,12 @@ The `StatsigOptions` class is used to specify optional parameters when initializ
 const options = new StatsigOptions();
 options.environment = "staging";
 options.initTimeoutMs = 3000;
+options.proxyConfig = {
+  proxyHost: "proxy.example.com",
+  proxyPort: 8080,
+  // proxyAuth can be set if authentication is required
+  proxyProtocol: "https"
+};
 
 const statsig = new Statsig("secret-key", options);
 await statsig.initialize();
