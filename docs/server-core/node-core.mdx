@@ -35,6 +35,7 @@ import Options from "./node/_options.mdx";
 import ShutdownSnippet from "./node/_shutdown.mdx";
 import { Snippets as ManualExposureSnippets } from "./node/_manualExposures.mdx";
 import OverridesSnippet from "./node/_localOverrides.mdx";
+import SharedInstanceSnippet from "./node/_sharedInstance.mdx";
 
 
 export const Builder = SDKDocsBuilder({
@@ -64,7 +65,7 @@ export const Builder = SDKDocsBuilder({
         hideAsyncDisclaimer: true,
         getFeatureGate: <GetFeatureGate />,
         paramStores: <ParamStores />,
-        sharedInstance: <SharedInstance />,
+        sharedInstance: <SharedInstanceSnippet />,
       },
     ],
     [ManualExposures, { ...ManualExposureSnippets }],
