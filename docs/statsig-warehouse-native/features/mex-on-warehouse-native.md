@@ -1,7 +1,7 @@
 ---
 title: MEX on Warehouse Native [Beta]
 slug: /statsig-warehouse-native/features/mex-on-warehouse-native
-sidebar_label: MEX on Warehouse Native
+sidebar_label: Metrics Explorer on WHN
 keywords:
   - owner:vm
 last_update:

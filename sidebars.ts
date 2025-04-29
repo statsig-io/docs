@@ -17,29 +17,28 @@ const sidebars: SidebarsConfig = {
           label: "Overview",
           className: "doc-icon sidebar-icon",
         },
+
         {
           type: "category",
-          label: "Quickstart Guides",
-          collapsed: true,
-          className: "rocket-icon sidebar-icon",
-          items: [
-            "guides/first-feature",
-            "guides/logging-events",
-            "guides/abn-tests",
-          ],
-        },
-        {
-          type: "category",
-          label: "Core Concepts & Setup",
+          label: "Core Concepts",
           collapsed: true,
           className: "lightbulb-icon sidebar-icon",
           items: [
             "understanding-platform",
-            "client/concepts/parameter-stores",
             "guides/featureflags-or-experiments",
+
+            {
+              type: "category",
+              label: "Enterprise Topics",
+              collapsed: true,
+              items: [
+                "guides/experimentation-program",
+                "guides/running-a-poc",
+                "guides/production",
+              ]
+            },
           ],
         },
-
         {
           type: "category",
           label: "Data & Metrics",
@@ -675,132 +674,190 @@ const sidebars: SidebarsConfig = {
     },
   ],
   api: [
-    "sdks/getting-started",
-    "sdks/client-vs-server",
-    "concepts/user",
-    "client/concepts/initialize",
-    "sdks/debugging",
     {
-      className: "html-icon sidebar-icon sdk-sidebar-icon",
-      type: "doc",
-      id: "client/html-snippet",
-    },
-    {
-      className: "js-icon sidebar-icon sdk-sidebar-icon",
-      type: "doc",
-      id: "client/javascript-sdk",
-    },
-    {
-      className: "react-icon sidebar-icon sdk-sidebar-icon",
-      type: "doc",
-      id: "client/javascript-mono/ReactUsage",
-    },
-    {
-      className: "next-icon sidebar-icon sdk-sidebar-icon",
-      type: "doc",
-      id: "client/javascript-mono/nextjs/NextJsUsage",
-    },
-    {
-      className: "android-icon sidebar-icon sdk-sidebar-icon",
-      type: "doc",
-      id: "client/androidClientSDK",
-    },
-    {
-      className: "ios-icon sidebar-icon sdk-sidebar-icon",
-      type: "doc",
-      id: "client/iosClientSDK",
-    },
-    {
-      className: "node-icon sidebar-icon sdk-sidebar-icon",
-      type: "doc",
-      id: "server-core/node-core",
+      type: "category",
+      label: "Get Started",
+      collapsed: false,
+      collapsible: false,
+      items: [
+        "sdks/quickstart",
+        "guides/first-feature",
+        "guides/logging-events",
+        "guides/abn-tests",
+      ],
     },
     {
       type: "category",
-      label: "More Client SDKs",
+      label: "Dev Concepts",
       collapsed: false,
+      collapsible: false,
       items: [
+        "sdks/getting-started",
+        "sdks/client-vs-server",
+        "concepts/user",
+        "client/concepts/initialize",
+        "sdks/debugging",
+      ]
+    },
+    {
+      type: "category",
+      label: "Tutorials",
+      collapsed: true,
+      items: [
+        "client/concepts/parameter-stores",
+        "guides/first-device-level-experiment",
+        "guides/experiment-on-custom-id-types",
         {
-          className: "cpp-icon sidebar-icon sdk-sidebar-icon",
-          type: "doc",
-          id: "client/cpp-client-sdk",
-        },
-        {
-          className: "flutter-icon sidebar-icon sdk-sidebar-icon",
-          type: "doc",
-          id: "client/dartSDK",
-        },
-        {
-          className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
-          type: "doc",
-          id: "client/dotnetSDK",
-        },
-        {
-          className: "expo-icon sidebar-icon sdk-sidebar-icon",
-          type: "doc",
-          id: "client/javascript-mono/ExpoUsage",
-        },
-        {
-          className: "react-icon sidebar-icon sdk-sidebar-icon",
-          type: "doc",
-          id: "client/javascript-mono/ReactNativeUsage",
-        },
-        {
-          className: "angular-icon sidebar-icon sdk-sidebar-icon",
-          type: "doc",
-          id: "client/javascript-mono/AngularUsage",
-        },
-        {
-          className: "roku-icon sidebar-icon sdk-sidebar-icon",
-          type: "doc",
-          id: "client/rokuSDK",
-        },
-        {
-          className: "unity-icon sidebar-icon sdk-sidebar-icon",
-          type: "doc",
-          id: "client/unitySDK",
+          type: "category",
+          label: "Developer Staging",
+          collapsed: true,
+          items: [
+            "guides/using-environments",
+            "guides/testing",
+          ]
         },
         {
           type: "category",
-          label: "On Device Client SDKs",
+          label: "Migration Guides",
+          collapsed: true,
           items: [
-            {
-              type: "category",
-              label: "JavaScript",
-              link: {
-                type: "doc",
-                id: "client/js-on-device-eval-client",
-              },
-              items: [
-                "client/js-device-eval-mono/MigrationFromOldSDK",
-                "client/js-device-eval-mono/UsingSpecsDataAdapter",
-                "client/js-device-eval-mono/ReactNativeUsage",
-              ],
-            },
-            "client/swiftOnDeviceEvaluationSDK",
-            "client/androidOnDeviceEvaluationSDK",
-          ],
-        },
-        {
-          type: "category",
-          label: "JavaScript - Maintainance Mode",
-          items: [
-            "client/deprecated/jsClientSDK",
-            "client/deprecated/reactSDK",
-            "client/deprecated/reactNativeSDK",
-            "client/deprecated/reactNativeExpoSDK",
-            "client/jsLocalEvaluationSDK",
-            "client/javascript-mono/MigrationFromOldJsClient",
-            "client/javascript-mono/MigrationFromOldReact",
+            "guides/open-source-script",
+            "guides/ui-based-tool"
           ],
         },
       ],
     },
     {
       type: "category",
-      label: "More Server SDKs",
+      label: "Client SDKs",
+      collapsed: false,
+      collapsible: true,
+      items: [
+        {
+          className: "html-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "client/html-snippet",
+        },
+        {
+          className: "js-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "client/javascript-sdk",
+        },
+        {
+          className: "react-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "client/javascript-mono/ReactUsage",
+        },
+        {
+          className: "next-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "client/javascript-mono/nextjs/NextJsUsage",
+        },
+        {
+          className: "android-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "client/androidClientSDK",
+        },
+        {
+          className: "ios-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "client/iosClientSDK",
+        },
+        {
+          type: "category",
+          label: "More Client SDKs",
+          collapsed: true,
+          items: [
+            {
+              className: "cpp-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "client/cpp-client-sdk",
+            },
+            {
+              className: "flutter-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "client/dartSDK",
+            },
+            {
+              className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "client/dotnetSDK",
+            },
+            {
+              className: "expo-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "client/javascript-mono/ExpoUsage",
+            },
+            {
+              className: "react-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "client/javascript-mono/ReactNativeUsage",
+            },
+            {
+              className: "angular-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "client/javascript-mono/AngularUsage",
+            },
+            {
+              className: "roku-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "client/rokuSDK",
+            },
+            {
+              className: "unity-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "client/unitySDK",
+            },
+            {
+              type: "category",
+              label: "On Device Client SDKs",
+              items: [
+                {
+                  type: "category",
+                  label: "JavaScript",
+                  link: {
+                    type: "doc",
+                    id: "client/js-on-device-eval-client",
+                  },
+                  items: [
+                    "client/js-device-eval-mono/MigrationFromOldSDK",
+                    "client/js-device-eval-mono/UsingSpecsDataAdapter",
+                    "client/js-device-eval-mono/ReactNativeUsage",
+                  ],
+                },
+                "client/swiftOnDeviceEvaluationSDK",
+                "client/androidOnDeviceEvaluationSDK",
+              ],
+            },
+            {
+              type: "category",
+              label: "JavaScript - Maintainance Mode",
+              items: [
+                "client/deprecated/jsClientSDK",
+                "client/deprecated/reactSDK",
+                "client/deprecated/reactNativeSDK",
+                "client/deprecated/reactNativeExpoSDK",
+                "client/jsLocalEvaluationSDK",
+                "client/javascript-mono/MigrationFromOldJsClient",
+                "client/javascript-mono/MigrationFromOldReact",
+              ],
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      type: "category",
+      label: "Server SDKs",
       collapsed: false,
       items: [
+
+        {
+          className: "node-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "server-core/node-core",
+        },
         {
           className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
           type: "doc",
@@ -891,9 +948,11 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Advanced SDK Methods",
-      collapsed: false,
+      label: "Advanced Methods",
+      collapsed: true,
       items: [
+        "http-api",
+
         {
           type: "category",
           label: "Other Frameworks",
@@ -912,11 +971,10 @@ const sidebars: SidebarsConfig = {
         "server/deprecation-notices",
       ],
     },
-    "http-api",
     {
       type: "category",
       label: "Console API",
-      collapsed: false,
+      collapsed: true,
       items: [
         "console-api/introduction",
         "console-api/autogenerated",
@@ -948,7 +1006,7 @@ const sidebars: SidebarsConfig = {
     {
       type: "category",
       label: "Statsig CLI",
-      collapsed: false,
+      collapsed: true,
       items: [
         "siggy/introduction",
         "siggy/commands",
@@ -957,18 +1015,50 @@ const sidebars: SidebarsConfig = {
     },
   ],
   warehouse: [
-    "statsig-warehouse-native/introduction",
+    {
+      type: "category",
+      label: "Introduction",
+      collapsed: false,
+      collapsible: false,
+      items: [
+        {
+          type: "doc",
+          id: "statsig-warehouse-native/introduction",
+          label: "About Warehouse Native",
+        },
+        "statsig-warehouse-native/guides/quick-start",
+        "statsig-warehouse-native/native-vs-cloud",
+      ]
+    },
+    {
+      type: "category",
+      label: "Common Topics",
+      collapsed: false,
+      collapsible: false,
+      items: [
+        "statsig-warehouse-native/analysis-tools/data-privacy",
+        "statsig-warehouse-native/guides/costs",
+        "statsig-warehouse-native/guides/best-practices",
+      ]
+    },
     {
       type: "category",
       label: "Guides",
       collapsed: false,
+      collapsible: false,
       items: [
-        "statsig-warehouse-native/guides/quick-start",
-        "statsig-warehouse-native/guides/running_a_poc",
-        "statsig-warehouse-native/guides/playground_eval",
-        "statsig-warehouse-native/guides/sdks",
-        "statsig-warehouse-native/guides/aatest",
-        "metrics/different-id",
+        {
+          type: "category",
+          label: "POCs & Evaluations",
+          collapsed: true,
+          items: [
+            "statsig-warehouse-native/guides/running_a_poc",
+            "statsig-warehouse-native/guides/playground_eval",
+            "statsig-warehouse-native/guides/sdks",
+            "statsig-warehouse-native/guides/aatest",
+            "metrics/different-id",
+          ],
+        },
         {
           type: "category",
           label: "Debugging",
@@ -978,35 +1068,27 @@ const sidebars: SidebarsConfig = {
             "statsig-warehouse-native/guides/sql",
           ],
         },
+
+        "statsig-warehouse-native/connecting-your-warehouse/forwarded-data",
       ],
     },
     {
       type: "category",
-      label: "Warehouse Integration",
+      label: "Warehouse Integrations",
       collapsed: false,
       items: [
-        {
-          type: "category",
-          label: "Connect Your Warehouse",
-          items: [
-            "statsig-warehouse-native/guides/connect",
-            "statsig-warehouse-native/connecting-your-warehouse/athena",
-            "statsig-warehouse-native/connecting-your-warehouse/bigquery",
-            "statsig-warehouse-native/connecting-your-warehouse/databricks",
-            "statsig-warehouse-native/connecting-your-warehouse/redshift",
-            "statsig-warehouse-native/connecting-your-warehouse/snowflake",
-          ],
-        },
-        "statsig-warehouse-native/connecting-your-warehouse/forwarded-data",
-        "statsig-warehouse-native/analysis-tools/data-privacy",
-        "statsig-warehouse-native/guides/costs",
-        "statsig-warehouse-native/guides/best-practices",
+        "statsig-warehouse-native/guides/connect",
+        "statsig-warehouse-native/connecting-your-warehouse/snowflake",
+        "statsig-warehouse-native/connecting-your-warehouse/athena",
+        "statsig-warehouse-native/connecting-your-warehouse/bigquery",
+        "statsig-warehouse-native/connecting-your-warehouse/databricks",
+        "statsig-warehouse-native/connecting-your-warehouse/redshift",
       ],
     },
     {
       type: "category",
       label: "Data & Semantic Layer",
-      collapsed: false,
+      collapsed: true,
       items: [
         "statsig-warehouse-native/configuration/data-and-semantic-layer",
         "statsig-warehouse-native/configuration/metric-sources",
@@ -1057,7 +1139,7 @@ const sidebars: SidebarsConfig = {
     {
       type: "category",
       label: "Experiment Analysis",
-      collapsed: false,
+      collapsed: true,
       items: [
         "statsig-warehouse-native/features/experiment-options",
         {
@@ -1138,74 +1220,32 @@ const sidebars: SidebarsConfig = {
         "statsig-warehouse-native/features/use-case",
       ],
     },
-    "statsig-warehouse-native/features/mex-on-warehouse-native",
-    "statsig-warehouse-native/features/other-useful-features",
-    "statsig-warehouse-native/native-vs-cloud",
     {
       type: "category",
-      label: "CURE",
-      link: {
-        type: "doc",
-        id: "statsig-warehouse-native/cure/introduction",
-      },
-      items: ["statsig-warehouse-native/cure/cure-setup"],
-    },
-    {
-      type: "category",
-      label: "Geotests",
-      link: {
-        type: "doc",
-        id: "statsig-warehouse-native/geotests/introduction",
-      },
+      label: "Other Features",
+      collapsed: true,
       items: [
-        "statsig-warehouse-native/geotests/geotests-setup",
-        "statsig-warehouse-native/geotests/methodology",
+        "statsig-warehouse-native/features/mex-on-warehouse-native",
+        {
+          type: "category",
+          label: "CURE",
+          items: [
+            "statsig-warehouse-native/cure/introduction",
+            "statsig-warehouse-native/cure/cure-setup"],
+        },
+        {
+          type: "category",
+          label: "Geotests",
+          items: [
+            "statsig-warehouse-native/geotests/introduction",
+            "statsig-warehouse-native/geotests/geotests-setup",
+            "statsig-warehouse-native/geotests/methodology",
+          ],
+        },
+        "statsig-warehouse-native/features/other-useful-features",
       ],
     },
-  ],
-  tutorials: [
-    {
-      type: "category",
-      label: "Experiments",
-      collapsed: false,
-      collapsible: false,
-      items: [
-        "guides/first-device-level-experiment",
-        "guides/experiment-on-custom-id-types",
-      ],
-    },
-    {
-      type: "category",
-      label: "Feature Management",
-      collapsed: false,
-      collapsible: false,
-      items: [
-        "guides/using-environments",
-        "guides/testing",
-      ],
-    },
-    {
-      type: "category",
-      label: "Enterprise Topics",
-      collapsed: false,
-      collapsible: false,
-      items: [
-        "guides/experimentation-program",
-        "guides/running-a-poc",
-        "guides/production",
-      ],
-    },
-    {
-      type: "category",
-      label: "Migration Guides",
-      collapsed: false,
-      collapsible: false,
-      items: [
-        "guides/open-source-script",
-        "guides/ui-based-tool"
-      ],
-    },
-  ],
+  ]
 };
 
 export default sidebars;

@@ -474,27 +474,27 @@ const config: Config = {
       searchParameters: {
         facetFilters: []
       },
-      
+
       transformSearchClient: (searchClient) => {
         const originalSearch = searchClient.search;
-        
-        searchClient.search = function(requests) {
+
+        searchClient.search = function (requests) {
           const path = window.location.pathname;
           let section = 'docs';
-          
+
           if (path.match(/\/(sdks|client|server|console-api|http-api|sdk)\//)) {
             section = 'api';
           } else if (path.match(/\/statsig-warehouse-native\//)) {
             section = 'warehouse';
           }
-          
+
           const modifiedRequests = requests.map(request => {
             const modifiedRequest = { ...request };
-            
+
             if (!modifiedRequest.params) {
               modifiedRequest.params = {};
             }
-            
+
             if (section === 'api') {
               modifiedRequest.params.filters = 'hierarchy.lvl0:SDKs\\ \\&\\ APIs OR path:/client/ OR path:/server/ OR path:/console-api/ OR path:/http-api/ OR path:/sdks/ OR path:/sdk/';
             } else if (section === 'warehouse') {
@@ -502,18 +502,18 @@ const config: Config = {
             } else {
               modifiedRequest.params.filters = 'NOT hierarchy.lvl0:SDKs\\ \\&\\ APIs AND NOT hierarchy.lvl0:Warehouse\\ Native AND NOT path:/client/ AND NOT path:/server/ AND NOT path:/console-api/ AND NOT path:/http-api/ AND NOT path:/sdks/ AND NOT path:/sdk/ AND NOT path:/statsig-warehouse-native/';
             }
-            
+
             return modifiedRequest;
           });
-          
+
           return originalSearch.call(searchClient, modifiedRequests);
         };
-        
+
         return searchClient;
       },
-      
+
       initialSearchFormProps: {
-        onSelect: ({document}) => {
+        onSelect: ({ document }) => {
           window.location.href = document.url;
         },
       },
@@ -551,12 +551,6 @@ const config: Config = {
           position: 'left',
           sidebarId: 'api',
           label: 'SDKs & APIs',
-        },
-        {
-          type: "docSidebar",
-          position: "left",
-          sidebarId: "tutorials",
-          label: "Tutorials",
         },
         {
           type: "search",

@@ -1,7 +1,7 @@
 ---
 title: Comparing Warehouse Native and Cloud
 slug: /statsig-warehouse-native/native-vs-cloud
-sidebar_label: Native vs Cloud
+sidebar_label: WHN vs Cloud
 description: Understand the different Statsig products
 keywords:
   - owner:vm
