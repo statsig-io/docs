@@ -40,6 +40,7 @@ import UserSnippet from "./rust/_statsigUser.mdx";
 import ShutdownSnippet from "./rust/_shutdown.mdx";
 import OverridesSnippet from "./rust/_localOverrides.mdx";
 import { Snippets as ManualExposureSnippets } from "./java/_manualExposures.mdx";
+import SharedInstanceSnippet from "./rust/_sharedInstance.mdx";
 
 
 
@@ -70,6 +71,7 @@ export const Builder = SDKDocsBuilder({
         hideAsyncDisclaimer: true,
         getFeatureGate: <GetFeatureGate />,
         paramStores: <ParamStores />,
+        sharedInstance: <SharedInstanceSnippet />,
       },
     ],
     [ManualExposures, { ...ManualExposureSnippets }],

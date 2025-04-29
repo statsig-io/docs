@@ -64,3 +64,4 @@ Follow these tutorials to begin implementing Release Pipelines:
 - Experiments are not supported in release pipeline
 - Resalt/Disable/Delete/Archive/Launch actions won’t trigger a release pipeline
 - [Scheduled rollouts](/feature-flags/scheduled-rollouts) are not supported to work in conjunction with release pipeline
+- Changes on Gates, Dynamic Configs with Release Pipeline attached through CAPI won't trigger a release pipeline

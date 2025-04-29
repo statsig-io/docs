@@ -46,7 +46,6 @@ const sidebars: SidebarsConfig = {
           collapsed: true,
           className: "rocket-icon sidebar-icon",
           items: [
-
             "guides/feature-gates-walkthrough",
             "guides/logging-events",
             "guides/abn-tests",
@@ -908,6 +907,11 @@ const sidebars: SidebarsConfig = {
           className: "ruby-icon sidebar-icon sdk-sidebar-icon",
           type: "doc",
           id: "server/rubySDK",
+        },
+        {
+          type: "doc",
+          id: "server-core/index",
+          label: "Server Core Overview",
         },
 
         {

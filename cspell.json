@@ -81,6 +81,7 @@
     "IdP",
     "Ipsum",
     "IPs",
+    "javacore",
     "JS",
     "JSON",
     "Javascript",
@@ -669,7 +670,12 @@
     "geotesting",
     "incrementality",
     "Geolift",
-    "geospatial"
+    "geospatial",
+    "backgrounded",
+    "adblockers",
+    "Novalues",
+    "misconfiguring",
+    "lockfiles"
   ],
   "ignorePaths": [
     "node_modules/**",

@@ -40,6 +40,7 @@ import Options from "./python/_options.mdx";
 import ShutdownSnippet from "./python/_shutdown.mdx";
 import OverridesSnippet from "./python/_localOverrides.mdx";
 import { Snippets as ManualExposureSnippets } from "./python/_manualExposures.mdx";
+import SharedInstanceSnippet from "./python/_sharedInstance.mdx";
 
 
 
@@ -70,6 +71,7 @@ export const Builder = SDKDocsBuilder({
         logEvent: <LogEvent />,
         hideAsyncDisclaimer: true,
         getFeatureGate: <GetFeatureGate />,
+        sharedInstance: <SharedInstanceSnippet />,
       },
     ],
     [ManualExposures, { ...ManualExposureSnippets }],
