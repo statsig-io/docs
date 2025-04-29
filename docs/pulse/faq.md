@@ -1,6 +1,6 @@
 ---
 title: Frequently Asked Questions on Using Pulse
-sidebar_label: FAQ
+sidebar_label: Pulse FAQs
 slug: /pulse/best-faq
 keywords:
   - owner:vm

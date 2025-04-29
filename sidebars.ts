@@ -39,6 +39,40 @@ const sidebars: SidebarsConfig = {
             },
           ],
         },
+
+        {
+          type: "category",
+          label: "Tutorials",
+          collapsed: true,
+          className: "rocket-icon sidebar-icon",
+          items: [
+
+            "guides/feature-gates-walkthrough",
+            "guides/logging-events",
+            "guides/abn-tests",
+            "client/concepts/parameter-stores",
+            "guides/first-device-level-experiment",
+            "guides/experiment-on-custom-id-types",
+            {
+              type: "category",
+              label: "Developer Staging",
+              collapsed: true,
+              items: [
+                "guides/using-environments",
+                "guides/testing",
+              ]
+            },
+            {
+              type: "category",
+              label: "Migration Guides",
+              collapsed: true,
+              items: [
+                "guides/open-source-script",
+                "guides/ui-based-tool"
+              ],
+            },
+          ],
+        },
         {
           type: "category",
           label: "Data & Metrics",
@@ -698,34 +732,6 @@ const sidebars: SidebarsConfig = {
         "client/concepts/initialize",
         "sdks/debugging",
       ]
-    },
-    {
-      type: "category",
-      label: "Tutorials",
-      collapsed: true,
-      items: [
-        "client/concepts/parameter-stores",
-        "guides/first-device-level-experiment",
-        "guides/experiment-on-custom-id-types",
-        {
-          type: "category",
-          label: "Developer Staging",
-          collapsed: true,
-          items: [
-            "guides/using-environments",
-            "guides/testing",
-          ]
-        },
-        {
-          type: "category",
-          label: "Migration Guides",
-          collapsed: true,
-          items: [
-            "guides/open-source-script",
-            "guides/ui-based-tool"
-          ],
-        },
-      ],
     },
     {
       type: "category",
