@@ -1,15 +1,15 @@
 .resourceContainer {
     display: flex;
-    flex-direction: column;
-    gap: 16px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
     padding: 16px;
+    flex-wrap: wrap;
 }
 
 .resourceLink {
     text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 20px;
 }
 
 .resourceLink:hover {
@@ -28,7 +28,6 @@
     padding: 12px;
     background-color: white;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    flex-shrink: 0;
 }
 
 .resourceCard:hover {
@@ -52,10 +51,4 @@
     color: black;
     max-width: 100%;
     margin-top: 10px;
-}
-
-.resourceDescription {
-    font-size: 0.9rem;
-    color: #4a5568;
-    line-height: 1.5;
 }
