@@ -18,6 +18,7 @@ import CardBody from '@site/src/components/Card/CardBody';
 import CardFooter from '@site/src/components/Card/CardFooter';
 import Columns from '@site/src/components/Columns';
 import Column from '@site/src/components//Columns/Column';
+import Link from '@docusaurus/Link';
 
 <Styles />
 # Welcome to Statsig Documentation
@@ -27,12 +28,14 @@ Statsig is the complete platform for product growth, empowering your team to bui
   <Column className="padding--sm">
     <Card className="welcome-card" shadow="tl">
       <CardHeader>
-        <img src="/img/icons/reset.svg" alt="Reset Icon" className="icon" style= {{ width: '36px' }}/>
+        <img src="/img/icons/flash.svg" alt="Flash Icon" className="icon" style= {{ width: '36px' }}/>
         <h3>SDK Quickstart</h3>
         Learn how to use the Statsig SDK and get started in minutes.
       </CardHeader>
       <CardFooter>
-        <button className="button button--secondary button--block">Install the SDK</button>
+        <Link to="/sdks/quickstart">
+          <button className="button button--secondary button--block">Install the SDK</button>
+        </Link>
       </CardFooter>
     </Card>
   </Column>
@@ -45,7 +48,10 @@ Statsig is the complete platform for product growth, empowering your team to bui
         Read about how to use Statsig with your data warehouse.
       </CardHeader>
       <CardFooter>
+        <Link to="/statsig-warehouse-native/introduction">
+
         <button className="button button--secondary button--block" link="/statsig-warehouse-native/introduction">Read guides</button>
+        </Link>
       </CardFooter>
     </Card>
   </Column>
@@ -55,11 +61,13 @@ Statsig is the complete platform for product growth, empowering your team to bui
     <Card className="welcome-card" shadow="tl">
       <CardHeader>
         <img src="/img/icons/description.svg" alt="Description Icon" className="icon" style= {{ width: '36px' }}/>
-        <h3>Tutorial Library</h3>
-        Find full guides, walkthroughs, and more for your scenarios.
+        <h3>Intro to Statsig</h3>
+        Learn more about core concepts and features of Statsig.
       </CardHeader>
       <CardFooter>
+        <Link to="/understanding-platform">
         <button className="button button--secondary button--block" link="guides/first-device-level-experiment">View tutorials</button>
+        </Link>
       </CardFooter>
     </Card>
   </Column>
@@ -70,15 +78,6 @@ Statsig is the complete platform for product growth, empowering your team to bui
 
 # Key Features 
 <LandingResources />
-
----
-
-# Available SDKs
-Statsig offers SDKs and integrations for a wide variety of platforms including JavaScript, Python, iOS, Android, Node, and more. Select the SDK that fits your project and follow the installation guide:
-
-<SDKAndFrameworks />
-
-If you don't see the SDK or framework you need, feel free to reach out directly in our [Slack Community](https://statsig.com/slack).
 
 ---
 

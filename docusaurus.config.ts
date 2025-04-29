@@ -446,7 +446,7 @@ const config: Config = {
     image: "img/docs_meta_q3_2023.png",
     docs: {
       sidebar: {
-        autoCollapseCategories: true,
+        autoCollapseCategories: false,
       },
     },
     algolia: {

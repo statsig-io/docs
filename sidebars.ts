@@ -676,7 +676,7 @@ const sidebars: SidebarsConfig = {
   api: [
     {
       type: "category",
-      label: "Get Started",
+      label: "SDK Quickstarts",
       collapsed: false,
       collapsible: false,
       items: [
