@@ -31,8 +31,8 @@ Server Core SDKs are available on an opt-in basis, with native SDKs still avaial
 
 ### Technical differences
 
-**Build process:** Statsig Server Core uses a core library written in Rust, with bindings written to other languages. In the vast majority of cases, this results in an unchanged development experience with superior performance, but given that the Rust code must compile into a binary usable in your development and deployment envirionments, some development snafus exist:
- - **Choosing the right build:** In most cases, the SDK's package manager will automatically install the versions you need. The notable exception is in Java - where our SDK will print out the right build for you, if its not included at runtime. 
+**Build process:** Statsig Server Core uses a core library written in Rust, with bindings written to other languages. In the vast majority of cases, this results in an unchanged development experience with superior performance, but given that the Rust code must compile into a binary usable in your development and deployment environments, some development snafus exist:
+ - **Choosing the right build:** In most cases, the SDK's package manager will automatically install the versions you need. The notable exception is in Java - where our SDK will print out the right build for you, if it's not included at runtime. 
  - **Managing lockfiles:** If your deployment and development environments require different builds (as is common), you'll want to include both versions in a lockfile like package-lock.json.
  - **Untested environments:** Certain environments, like the edge, aren't friendly to this new build process - and for now, we recommend using our [native SDKs](/server-core/legacy-sdks) for the time being.
 
