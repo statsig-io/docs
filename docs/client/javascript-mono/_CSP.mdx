@@ -1,0 +1,72 @@
+## Content Security Policy
+
+If your web application uses Content Security Policy (CSP), you'll need to add Statsig domains to your policy to ensure the JavaScript SDK works correctly.
+
+### Recommended CSP Configuration
+
+```javascript
+// Sample CSP configuration for Statsig JavaScript SDK
+const cspConfig = {
+  directives: {
+    'connect-src': [
+      // Statsig API Services
+      'api.statsig.com',
+      'featuregates.org',
+      'statsigapi.net',
+      'events.statsigapi.net',
+      'api.statsigcdn.com',
+      'featureassets.org',
+      'assetsconfigcdn.org',
+      'prodregistryv2.org',
+      'cloudflare-dns.com',
+      'beyondwickedmapping.org',
+      
+      // Statsig User Segment Storage API (for server SDKs)
+      'idliststorage.blob.core.windows.net'
+    ],
+    'script-src': [
+      // Statsig Console
+      'console.statsig.com',
+      'cdn.console.statsig.com',
+      'console.statsigcdn.com'
+    ]
+  }
+};
+```
+
+### Implementation Example
+
+Here's an example of implementing this CSP in an Express.js app using Helmet:
+
+```javascript
+const helmet = require('helmet');
+const express = require('express');
+const app = express();
+
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      connectSrc: [
+        "'self'",
+        // Statsig API Services
+        'api.statsig.com',
+        'featuregates.org',
+        'statsigapi.net',
+        'events.statsigapi.net',
+        'api.statsigcdn.com',
+        'featureassets.org',
+        'assetsconfigcdn.org',
+        'prodregistryv2.org',
+        'cloudflare-dns.com',
+        'beyondwickedmapping.org'
+      ],
+      scriptSrc: ["'self'", "'unsafe-inline'", 'console.statsig.com', 'cdn.console.statsig.com', 'console.statsigcdn.com']
+    }
+  })
+);
+```
+
+### Important Note
+
+Statsig occasionally updates domains to prevent overzealous blocking from browser ad blockers. Check the [Statsig domains documentation](https://docs.statsig.com/infrastructure/statsig_domains/) for the most up-to-date list of domains to include in your CSP. 
