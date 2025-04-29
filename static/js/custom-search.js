@@ -171,7 +171,11 @@
   };
 
   window.fetch = function(resource, init) {
-    if (resource && typeof resource === 'string' && resource.includes('algolia.net')) {
+    const isAlgoliaRequest = 
+      (typeof resource === 'string' && resource.includes('algolia.net')) ||
+      (resource instanceof Request && resource.url.includes('algolia.net'));
+    
+    if (isAlgoliaRequest) {
       try {
         const section = getCurrentSection();
         
