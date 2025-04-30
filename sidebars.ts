@@ -736,7 +736,7 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "Client SDKs",
       collapsed: false,
-      collapsible: true,
+      collapsible: false,
       items: [
         {
           className: "html-icon sidebar-icon sdk-sidebar-icon",
@@ -856,6 +856,7 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "Server SDKs",
       collapsed: false,
+      collapsible: false,
       items: [
 
         {
@@ -864,14 +865,9 @@ const sidebars: SidebarsConfig = {
           id: "server-core/node-core",
         },
         {
-          className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
+          className: "python-icon sidebar-icon sdk-sidebar-icon",
           type: "doc",
-          id: "server/dotnetSDK",
-        },
-        {
-          className: "cpp-icon sidebar-icon sdk-sidebar-icon",
-          type: "doc",
-          id: "server/cppSDK",
+          id: "server-core/python-core",
         },
         {
           className: "golang-icon sidebar-icon sdk-sidebar-icon",
@@ -884,26 +880,6 @@ const sidebars: SidebarsConfig = {
           id: "server-core/java-core",
         },
         {
-          className: "python-icon sidebar-icon sdk-sidebar-icon",
-          type: "doc",
-          id: "server-core/python-core",
-        },
-        {
-          className: "elixir-icon sidebar-icon sdk-sidebar-icon",
-          type: "doc",
-          id: "server-core/elixir-core",
-        },
-        {
-          className: "rust-icon sidebar-icon sdk-sidebar-icon",
-          type: "doc",
-          id: "server-core/rust-core",
-        },
-        {
-          className: "php-icon sidebar-icon sdk-sidebar-icon",
-          type: "doc",
-          id: "server-core/php-core",
-        },
-        {
           className: "ruby-icon sidebar-icon sdk-sidebar-icon",
           type: "doc",
           id: "server/rubySDK",
@@ -912,6 +888,37 @@ const sidebars: SidebarsConfig = {
           type: "doc",
           id: "server-core/index",
           label: "Server Core Overview",
+        },
+        {
+          type: "category",
+          label: "More Server SDKs",
+          items: [
+            {
+              className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server/dotnetSDK",
+            },
+            {
+              className: "cpp-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server/cppSDK",
+            },
+            {
+              className: "elixir-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server-core/elixir-core",
+            },
+            {
+              className: "rust-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server-core/rust-core",
+            },
+            {
+              className: "php-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server-core/php-core",
+            },
+          ]
         },
 
         {
@@ -958,14 +965,17 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Advanced Methods",
+      label: "More SDK Methods",
       collapsed: true,
       items: [
-        "http-api",
-
+        "client/concepts/persistent_assignment",
+        "server/concepts/persistent_assignment",
+        "client/concepts/local-eval-adapter",
+        "server/concepts/data_store",
+        "sdk-keys/target-apps",
         {
           type: "category",
-          label: "Other Frameworks",
+          label: "Other Framework Guides",
           items: [
             "guides/node-express-feature-flags",
             "guides/node-express-abtests",
@@ -973,12 +983,8 @@ const sidebars: SidebarsConfig = {
             "guides/python-flask-abtests",
           ],
         },
-        "client/concepts/persistent_assignment",
-        "client/concepts/local-eval-adapter",
-        "server/concepts/persistent_assignment",
-        "server/concepts/data_store",
-        "sdk-keys/target-apps",
         "server/deprecation-notices",
+        "http-api",
       ],
     },
     {
