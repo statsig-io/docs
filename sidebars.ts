@@ -1042,17 +1042,6 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Common Topics",
-      collapsed: false,
-      collapsible: false,
-      items: [
-        "statsig-warehouse-native/analysis-tools/data-privacy",
-        "statsig-warehouse-native/guides/costs",
-        "statsig-warehouse-native/guides/best-practices",
-      ]
-    },
-    {
-      type: "category",
       label: "Guides",
       collapsed: false,
       collapsible: false,
@@ -1086,6 +1075,7 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "Warehouse Integrations",
       collapsed: false,
+      collapsible: false,
       items: [
         "statsig-warehouse-native/guides/connect",
         "statsig-warehouse-native/connecting-your-warehouse/snowflake",
@@ -1099,6 +1089,7 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "Data & Semantic Layer",
       collapsed: true,
+      collapsible: false,
       items: [
         "statsig-warehouse-native/configuration/data-and-semantic-layer",
         "statsig-warehouse-native/configuration/metric-sources",
@@ -1132,9 +1123,16 @@ const sidebars: SidebarsConfig = {
         "statsig-warehouse-native/configuration/assignment-sources",
         "statsig-warehouse-native/configuration/entity-properties",
         "statsig-warehouse-native/configuration/qualifying-events",
-        "statsig-warehouse-native/configuration/tags-and-teams",
-        "metrics/verified",
-        "statsig-warehouse-native/configuration/query-tools",
+        {
+          type: "category",
+          label: "Metric Management",
+          items: [
+            "statsig-warehouse-native/configuration/tags-and-teams",
+            "statsig-warehouse-native/features/roles-and-access",
+            "metrics/verified",
+            "statsig-warehouse-native/configuration/query-tools",
+          ]
+        },
         {
           type: "category",
           label: "Programmatic Management",
@@ -1143,13 +1141,13 @@ const sidebars: SidebarsConfig = {
             "statsig-warehouse-native/configuration/semantic-layer-sync",
           ],
         },
-        "statsig-warehouse-native/features/roles-and-access",
       ],
     },
     {
       type: "category",
       label: "Experiment Analysis",
-      collapsed: true,
+      collapsed: false,
+      collapsible: false,
       items: [
         "statsig-warehouse-native/features/experiment-options",
         {
@@ -1165,6 +1163,7 @@ const sidebars: SidebarsConfig = {
             "statsig-warehouse-native/features/id-resolution",
             "statsig-warehouse-native/features/filtering-exposures",
             "statsig-warehouse-native/metrics/normalized-metrics",
+            "experiments/quality-score-whn",
           ],
         },
         {
@@ -1195,6 +1194,8 @@ const sidebars: SidebarsConfig = {
             "pulse/best-practices-whn",
             "pulse/faq-whn",
             "statsig-warehouse-native/features/monitor-an-experiment",
+            "statsig-warehouse-native/features/reports",
+            "insights/aggregated-impact-whn",
           ],
         },
         {
@@ -1222,20 +1223,6 @@ const sidebars: SidebarsConfig = {
             },
           ],
         },
-        "experiments/meta-analysis-whn",
-        "insights/aggregated-impact-whn",
-        "experiments/quality-score-whn",
-        "statsig-warehouse-native/features/reports",
-        "statsig-warehouse-native/features/autotune",
-        "statsig-warehouse-native/features/use-case",
-      ],
-    },
-    {
-      type: "category",
-      label: "Other Features",
-      collapsed: true,
-      items: [
-        "statsig-warehouse-native/features/mex-on-warehouse-native",
         {
           type: "category",
           label: "CURE",
@@ -1243,6 +1230,28 @@ const sidebars: SidebarsConfig = {
             "statsig-warehouse-native/cure/introduction",
             "statsig-warehouse-native/cure/cure-setup"],
         },
+        "experiments/meta-analysis-whn",
+        "statsig-warehouse-native/features/autotune",
+        "statsig-warehouse-native/features/use-case",
+      ],
+    },
+    {
+      type: "category",
+      label: "Warehouse Management",
+      collapsed: true,
+      collapsible: false,
+      items: [
+        "statsig-warehouse-native/analysis-tools/data-privacy",
+        "statsig-warehouse-native/guides/costs",
+        "statsig-warehouse-native/guides/best-practices",
+      ]
+    },
+    {
+      type: "category",
+      label: "Other Features",
+      collapsed: true,
+      items: [
+        "statsig-warehouse-native/features/mex-on-warehouse-native",
         {
           type: "category",
           label: "Geotests",
