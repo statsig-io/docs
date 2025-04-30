@@ -14,7 +14,7 @@ Instead of sending API requests directly to Statsig, you can set up your own env
 There are many ways to set up custom proxies. We are showing instructions for a few common service providers here.
 
 :::warning
-Regardless of implementation, we your proxy should just passthrough and not try to deserialize the payload. This will improve robustness by reducing risk of integration issues from Server SDK -> Proxy -> Client SDK, as well as, improve efficiency of the proxy.  For example, client SDKs may change encoding to compress payloads, which would break if your proxy does not accept the new format (e.g. gzip)
+Regardless of implementation, your proxy should just passthrough and not try to deserialize the payload. This will improve robustness by reducing risk of integration issues from Server SDK -> Proxy -> Client SDK, as well as, improve efficiency of the proxy. For example, client SDKs may change encoding to compress payloads, which would break if your proxy does not accept the new format (e.g. gzip)
 :::
 
 :::info
