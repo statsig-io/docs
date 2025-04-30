@@ -59,9 +59,20 @@ import * as _Instances from "./_Instances.mdx"
 export const Instances = _Instances;
 
 import React from 'react';
-export const PersistentAssignment = (props) => (
-  <div id="persistent-assignment">
-    <h2>Persistent Assignment</h2>
-    {React.lazy(() => import("./_PersistentAssignment.mdx")).default(props)}
-  </div>
-);
+import * as _PersistentAssignment from "./_PersistentAssignment.mdx";
+
+export const PersistentAssignment = {
+  default: (props) => (
+    <div id="persistent-assignment">
+      <h2>Persistent Assignment</h2>
+      {props.persistentAssignment}
+    </div>
+  ),
+  toc: [
+    {
+      value: "Persistent Assignment",
+      id: "persistent-assignment",
+      level: 2,
+    },
+  ],
+};
