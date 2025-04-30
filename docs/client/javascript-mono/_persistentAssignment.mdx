@@ -1,0 +1,55 @@
+### Persistent Assignment
+
+Persistent assignment allows you to ensure that a user's variant stays consistent while an experiment is running, regardless of changes to allocation or targeting.
+
+The JavaScript SDK provides a dedicated implementation through the `@statsig/js-user-persisted-storage` package.
+
+#### Basic Implementation
+
+```typescript
+import { StatsigOnDeviceEvalClient } from '@statsig/js-on-device-eval-client';
+import { UserPersistentOverrideAdapter } from '@statsig/js-user-persisted-storage';
+
+// Implement a custom storage adapter or use the included one
+class CustomStorageAdapter {
+  delete(key, experiment) {
+    // Delete from your storage
+  }
+  
+  load(key) {
+    // Load from your storage
+    return {}; // Return persisted values
+  }
+  
+  save(key, experiment, data) {
+    // Save to your storage
+  }
+  
+  async loadAsync(key) {
+    return this.load(key);
+  }
+}
+
+// Create adapter and client
+const storage = new CustomStorageAdapter();
+const adapter = new UserPersistentOverrideAdapter(storage);
+const client = new StatsigOnDeviceEvalClient('client-key', { overrideAdapter: adapter });
+
+// Initialize client
+await client.initializeAsync();
+
+// Load persisted values for user
+const user = { userID: "user-123" };
+const userPersistedValues = adapter.loadUserPersistedValues(user, 'userID');
+
+// Get experiment with persistent assignment
+const experiment = client.getExperiment('active_experiment', user, { userPersistedValues });
+```
+
+#### How It Works
+
+1. When a user first encounters an experiment, their assignment is saved to the storage adapter
+2. On subsequent evaluations, the stored assignment is returned instead of re-evaluating the experiment
+3. If the experiment is no longer active, the stored assignment is deleted
+
+For more details on persistent assignment, see the [Client Persistent Assignment](/client/concepts/persistent_assignment) documentation.

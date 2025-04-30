@@ -57,3 +57,11 @@ export const ParameterStore = _ParameterStore;
 
 import * as _Instances from "./_Instances.mdx"
 export const Instances = _Instances;
+
+import React from 'react';
+export const PersistentAssignment = (props) => (
+  <div id="persistent-assignment">
+    <h2>Persistent Assignment</h2>
+    {React.lazy(() => import("./_PersistentAssignment.mdx")).default(props)}
+  </div>
+);

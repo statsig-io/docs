@@ -1,0 +1,17 @@
+### Persistent Assignment
+
+For experiments and layers, you can ensure that a user consistently receives the same variant throughout the duration of the experiment or layer, even if targeting rules or allocation changes.
+
+This is accomplished using the `keepDeviceValue` parameter when calling `getExperiment()` or `getLayer()`.
+
+```swift
+// Ensure user stays in the same experiment group
+let experiment = Statsig.getExperiment("new_user_promo", keepDeviceValue: true)
+
+// Ensure user stays in the same layer group
+let layer = Statsig.getLayer("user_promo_experiments", keepDeviceValue: true)
+```
+
+When `keepDeviceValue` is set to `true`, the variant a user receives is stored locally on the device. In subsequent evaluations, the SDK will return the stored variant rather than re-evaluating the experiment, ensuring user experience consistency.
+
+For more details on persistent assignment, see the [Client Persistent Assignment](/client/concepts/persistent_assignment) documentation.

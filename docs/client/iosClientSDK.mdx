@@ -28,6 +28,7 @@ import {
   StableID,
   ParameterStore,
   Instances,
+  PersistentAssignment,
 } from "./Templates/index.mdx";
 
 import Install from "./iOS/_install.mdx";
@@ -47,6 +48,7 @@ import { GetStableID, OverrideStableID } from "./iOS/_stableID.mdx";
 import GetParameterStore from "./iOS/_getParameterStore.mdx";
 import GetParameter from "./iOS/_getParameter.mdx";
 import MultiInstance from "./iOS/_multiInstance.mdx";
+import PersistentAssignmentSnippet from "./iOS/_persistentAssignment.mdx";
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -91,6 +93,7 @@ export const Builder = SDKDocsBuilder({
       Instances,
       { example: <MultiInstance /> }
     ],
+    [PersistentAssignment, { persistentAssignment: <PersistentAssignmentSnippet /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]
 })

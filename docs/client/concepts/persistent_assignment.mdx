@@ -38,6 +38,8 @@ Currently only supported in `Javascript`, `iOS` and `Android` On Device Evaluati
   values={[
     {label: 'Javascript', value: 'js-mono'},
     {label: 'Javascript (legacy)', value: 'js'},
+    {label: 'Android', value: 'android'},
+    {label: 'iOS', value: 'ios'},
   ]}>
   <TabItem value="js-mono">
 ```typescript
@@ -76,6 +78,34 @@ console.log(experiment.getGroupName()) // 'Control'
 
 experiment = statsig.getExperiment(userInUnknown, 'active_experiment', { userPersistedValues });
 console.log(experiment.getGroupName()) // 'Control'
+```
+  </TabItem>
+  <TabItem value="android">
+```kotlin
+// Persistent assignment in Android is implemented using the keepDeviceValue parameter
+// This ensures users consistently receive the same variant throughout an experiment
+
+// Example using experiment
+val experiment = Statsig.getExperiment("new_user_promo", keepDeviceValue = true)
+val promoTitle = experiment.getString("title", "Default Title")
+
+// Example using layer
+val layer = Statsig.getLayer("user_promo_experiments", keepDeviceValue = true)
+val discount = layer.getDouble("discount", 0.1)
+```
+  </TabItem>
+  <TabItem value="ios">
+```swift
+// Persistent assignment in iOS is implemented using the keepDeviceValue parameter
+// This ensures users consistently receive the same variant throughout an experiment
+
+// Example using experiment
+let experiment = Statsig.getExperiment("new_user_promo", keepDeviceValue: true)
+let promoTitle = experiment.getValue(forKey: "title", defaultValue: "Default Title")
+
+// Example using layer
+let layer = Statsig.getLayer("user_promo_experiments", keepDeviceValue: true)
+let discount = layer.getValue(forKey: "discount", defaultValue: 0.1)
 ```
   </TabItem>
 </Tabs>

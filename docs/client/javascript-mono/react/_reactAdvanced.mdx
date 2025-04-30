@@ -1,0 +1,53 @@
+## Advanced
+
+### Persistent Assignment
+
+Persistent assignment allows you to ensure that a user's variant stays consistent while an experiment is running, regardless of changes to allocation or targeting.
+
+The JavaScript SDK provides a dedicated implementation through the `@statsig/js-user-persisted-storage` package.
+
+```typescript
+import { StatsigClient } from '@statsig/js-client';
+import { UserPersistentOverrideAdapter } from '@statsig/js-user-persisted-storage';
+
+// Implement a custom storage adapter
+class CustomStorageAdapter {
+  delete(key, experiment) {
+    // Delete from your storage
+  }
+  
+  load(key) {
+    // Load from your storage
+    return {}; // Return persisted values
+  }
+  
+  save(key, experiment, data) {
+    // Save to your storage
+  }
+  
+  async loadAsync(key) {
+    return this.load(key);
+  }
+}
+
+// Create adapter and client
+const storage = new CustomStorageAdapter();
+const adapter = new UserPersistentOverrideAdapter(storage);
+const client = new StatsigClient(
+  YOUR_CLIENT_KEY, 
+  { userID: "a-user" },
+  { overrideAdapter: adapter }
+);
+
+// Initialize client
+await client.initializeAsync();
+
+// Load persisted values for user
+const user = { userID: "user-123" };
+const userPersistedValues = adapter.loadUserPersistedValues(user, 'userID');
+
+// Get experiment with persistent assignment
+const experiment = client.getExperiment('active_experiment', user, { userPersistedValues });
+```
+
+For more details on persistent assignment, see the [Client Persistent Assignment](/client/concepts/persistent_assignment) documentation.
