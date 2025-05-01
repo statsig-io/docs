@@ -29,7 +29,7 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
   Maximum number of events to queue before forcing a flush.
 
 - **`enable_id_lists`**: `Optional[bool]`  
-  Enable/disable ID list functionality.
+  Enable/disable BIG ID list functionality (IDList > 1000) 
 
 - **`disable_user_agent_parsing`** `Optional[bool]`
   Default false. If set to true, the SDK will NOT attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion at evaluation time, when needed for evaluation.
@@ -64,6 +64,10 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
 
 - **`persistent_storage`**: `Optional[PersistentStorageBaseClass]`  
   Adapter / Interface to use persistent assignment within SDK. [More details](https://docs.statsig.com/server/concepts/persistent_assignment/)
+
+- **`observability_client`**: `Optional[ObservabilityClientBaseClass]`  
+  Adapter to listen monitor the health of SDK. See [details](https://docs.statsig.com/sdk_monitoring/)
+
 ---
 
 ### Example Usage
