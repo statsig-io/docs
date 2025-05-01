@@ -11,7 +11,7 @@ import NetworkConfig from "./_networkConfig.mdx";
 #### **disableLogging** `boolean` **(deprecated)**
 > Prevents collecting and sending any events over the network. This is useful for secure deployments where you want to completely disable analytics tracking.
 >
-> **Deprecated:** Use `loggingEnabled: 'disabled'` instead.
+> **Deprecated:** Use `loggingEnabled: LoggingEnabledOption.disabled` instead.
 >
 > default: `false`
 
@@ -91,7 +91,7 @@ import NetworkConfig from "./_networkConfig.mdx";
 #### **disableCompression** `boolean` **(deprecated)**
 > Whether or not Statsig should compress JSON bodies for network requests where possible. 
 >
-> **Deprecated:** Use `logEventCompressionMode: 'd'` instead.
+> **Deprecated:** Use `logEventCompressionMode: LogEventCompressionMode.Disabled` instead.
 >
 > default: `false`
 
