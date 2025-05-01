@@ -42,13 +42,13 @@ options.setTier("staging")
     * @property proxyPort The port number of the proxy server.
     * @property proxyAuth Optional: Authentication credentials for the proxy server. 
     *                     Pass in `Credentials.basic("username", "password")`.
-    * @property proxySchema The protocol scheme used by the proxy server. Defaults to "https".
+    * @property proxyProtocol The protocol scheme used by the proxy server. Defaults to "https".
     */
     data class ProxyConfig @JvmOverloads constructor(
         var proxyHost: String,
         var proxyPort: Int,
         var proxyAuth: String? = null,
-        val proxySchema: String = "https"
+        val proxyProtocol: String = "https"
     )
   
   ```
@@ -60,13 +60,18 @@ options.setTier("staging")
     import okhttp3.Credentials;
 
     // Create a ProxyConfig object With Auth
-    ProxyConfig proxyConfigWithAuth = new ProxyConfig("localhost", 8080, Credentials.basic("username", "password"), "https");
+    ProxyConfig proxyConfigWithAuth = new ProxyConfig();
+    proxyConfigWithAuth.setProxyHost("localhost");
+    proxyConfigWithAuth.setProxyPort(8080);
+    proxyConfigWithAuth.setProxyAuth(Credentials.basic("username", "password"));
+    proxyConfigWithAuth.setProxyProtocol("https");
 
     // Create a ProxyConfig object Without Auth
-    ProxyConfig proxyConfig = new ProxyConfig("localhost", 8080);
+    ProxyConfig proxyConfig = new ProxyConfig();
+    proxyConfig.setProxyHost("localhost");
+    proxyConfig.setProxyPort(8080);
 
-    StatsigOptions options = new StatsigOptions();
-    options.setProxyConfig(proxyConfig);
+    StatsigOptions options = new StatsigOptions.Builder().setProxyConfig(proxyConfig).build();
     Future initFuture = Statsig.initializeAsync(apiKey, options);
     initFuture.get();
   
