@@ -1,12 +1,12 @@
 import NetworkConfig from "./_networkConfig.mdx";
 
-#### **loggingEnabled** `string` 
+#### **loggingEnabled** `LoggingEnabledOption` 
 > Controls whether logging is enabled and in which environments. Options are:
-> - 'browser-only' - Only logs events in browser environments (default behavior)
-> - 'disabled' - Prevents collecting and sending any events over the network
-> - 'always' - Enables logging in all environments (browser and non-browser like VSCode extensions, Chrome extensions, CLIs, etc.)
+> - `LoggingEnabledOption.browserOnly` - Only logs events in browser environments (default behavior)
+> - `LoggingEnabledOption.disabled` - Prevents collecting and sending any events over the network
+> - `LoggingEnabledOption.always` - Enables logging in all environments (browser and non-browser like VSCode extensions, Chrome extensions, CLIs, etc.)
 >
-> default: `'browser-only'`
+> default: `LoggingEnabledOption.browserOnly`
 
 #### **disableLogging** `boolean` **(deprecated)**
 > Prevents collecting and sending any events over the network. This is useful for secure deployments where you want to completely disable analytics tracking.
@@ -80,13 +80,13 @@ import NetworkConfig from "./_networkConfig.mdx";
 >
 > default: `false`
 
-#### **logEventCompressionMode** `string`
+#### **logEventCompressionMode** `LogEventCompressionMode`
 > Controls whether Statsig should compress JSON bodies for network requests. Options are:
-> - 'e' - Enabled (default behavior)
-> - 'd' - Disabled
-> - 'f' - Forced (compresses even when specifying an API override/proxy)
+> - `LogEventCompressionMode.Enabled` - Compress request bodies unless a network proxy is configured (default behavior)
+> - `LogEventCompressionMode.Disabled` - Do not compress request bodies
+> - `LogEventCompressionMode.Forced` - Always compress request bodies, even when a proxy is configured
 >
-> default: `'e'`
+> default: `LogEventCompressionMode.Enabled`
 
 #### **disableCompression** `boolean` **(deprecated)**
 > Whether or not Statsig should compress JSON bodies for network requests where possible. 
