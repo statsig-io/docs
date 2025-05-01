@@ -62,19 +62,38 @@ When `true`, disables all network functions: event & exposure logging, spec down
 - **`observabilityClient`**: `Optional<ObservabilityClient>`  
   Interface for you to integrate observability metrics exposed by SDK, including, config propagation delay, initialization time spent. See [details](https://docs.statsig.com/sdk_monitoring/)
 
+- **`proxyConfig`**: `Optional<ProxyConfig>`  
+  Configuration for connecting through a proxy server. The `ProxyConfig` object has the following properties:
+  - `proxyHost`: String specifying the proxy server host
+  - `proxyPort`: Integer specifying the proxy server port
+  - `proxyAuth`: Optional string for proxy authentication (e.g., Basic authentication credentials)
+  - `proxyProtocol`: Optional string specifying the protocol (e.g., "http", "https")
+
 ---
 
 ### Example Usage
 
-```python
-from statsig import StatsigOptions
+```java
+import com.statsig.StatsigOptions;
+import com.statsig.ProxyConfig;
 
-# Initialize StatsigOptions with custom parameters
-options = StatsigOptions()
-options.environment = "development"
-options.init_timeout_ms = 3000
-options.disable_all_logging = False
+// Initialize StatsigOptions with custom parameters
+StatsigOptions.Builder optionsBuilder = new StatsigOptions.Builder()
+    .setEnvironment("development")
+    .setInitTimeoutMs(3000)
+    .setDisableAllLogging(false);
 
-# Pass the options object into statsig.initialize()
-statsig.initialize("secret-key", options)
+// Configure proxy settings if needed
+ProxyConfig proxyConfig = new ProxyConfig();
+proxyConfig.setProxyHost("proxy.example.com");
+proxyConfig.setProxyPort(8080);
+proxyConfig.setProxyProtocol("https");
+// Optional: Set proxy authentication
+// proxyConfig.setProxyAuth("Basic base64encodedcredentials");
+
+optionsBuilder.setProxyConfig(proxyConfig);
+StatsigOptions options = optionsBuilder.build();
+
+// Pass the options object into statsig.initialize()
+Statsig.initialize("secret-key", options);
 ```
