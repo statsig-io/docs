@@ -47,7 +47,7 @@ Gate evaluations are stable for a given gate, percentage rollout, and user ID.  
 ### Partial Rollouts
 While 0% or 100% rollouts for gates are simply "on for users matching this rule"/"off for users matching this rule", each rule allows you to specify a percentage of qualifying users who should pass (see the new feature).
 If you want to gather [Metric Impact](/pulse/read-pulse) (metric movements caused by a feature), simply specifying a number between 0% and 100% will create a random allocation of users in Pass/Fail or "test"/"control" groups for a simple A/B test.
-You can use this to validate that a new feature does not regress existing metrics as you roll it out to everyone.  Statsig suggests a 2% -> 10% -> 50% -> 100% roll out strategy. Each progressive roll out will generate its own Metrtic Impact as shown below.
+You can use this to validate that a new feature does not regress existing metrics as you roll it out to everyone.  Statsig suggests a 2% -> 10% -> 50% -> 100% roll out strategy. Each progressive roll out will generate its own Metric Impact as shown below.
 
 ![Metric Lifts](https://github.com/user-attachments/assets/85caad73-2efc-427c-8933-b77f8740551b)
 
