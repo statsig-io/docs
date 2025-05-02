@@ -24,7 +24,7 @@ The rules that you create are evaluated in the order they're listed. For each ru
 
 Suppose you set up your rules as shown below, the following flow chart illustrates how Statsig evaluates these rules. 
 
-![image](https://user-images.githubusercontent.com/1315028/154173697-e7c648b3-58f2-4b16-ba64-7222d152647e.png)
+![Example Rules Gate](https://github.com/user-attachments/assets/1f24b03a-dc3f-4112-9f09-cf55b191b1c7)
 
 ![image](https://user-images.githubusercontent.com/1315028/154177120-2f4db628-9899-4435-879c-9b1a4783024e.png)
 
@@ -42,14 +42,14 @@ Evaluations at a given percentage are *stable* with respect to the unitID.  For 
 ### Resalting
 Gate evaluations are stable for a given gate, percentage rollout, and user ID.  This is made possible by the salt associated with a feature gate. If you want to reset a gate, triggering a reshuffle of users, you can "resalt" a gate from the dropdown menu in the top right of the feature gate details page.
 
-![Resalt UI](https://user-images.githubusercontent.com/74584483/137390888-3dd5795a-fa33-4e91-ae5b-738ef5e2197d.png)
+![Resalt UI](https://github.com/user-attachments/assets/028c0af4-fad9-4d8e-91e0-b3f8aada4c18)
 
 ### Partial Rollouts
 While 0% or 100% rollouts for gates are simply "on for users matching this rule"/"off for users matching this rule", each rule allows you to specify a percentage of qualifying users who should pass (see the new feature).
-If you want to get [Pulse Results](/pulse/read-pulse) (metric movements caused by a feature), simply specifying a number between 0% and 100% will create a random allocation of users in Pass/Fail or "test"/"control" groups for a simple A/B test.
-You can use this to validate that a new feature does not regress existing metrics as you roll it out to everyone.  Statsig suggests a 2% -> 10% -> 50% -> 100% roll out strategy. Each progressive roll out will generate its own Pulse Results as shown below.
+If you want to gather [Metric Impact](/pulse/read-pulse) (metric movements caused by a feature), simply specifying a number between 0% and 100% will create a random allocation of users in Pass/Fail or "test"/"control" groups for a simple A/B test.
+You can use this to validate that a new feature does not regress existing metrics as you roll it out to everyone.  Statsig suggests a 2% -> 10% -> 50% -> 100% roll out strategy. Each progressive roll out will generate its own Metrtic Impact as shown below.
 
-![image](https://user-images.githubusercontent.com/1315028/157497615-331662fe-44ad-42d9-b339-c360c44df173.png)
+![Metric Lifts](https://github.com/user-attachments/assets/85caad73-2efc-427c-8933-b77f8740551b)
 
 ### User Object Fields
 Evaluation uses the set of properties defined in the [StatsigUser object](/concepts/user).  There are a set of reserved top-level fields, but these keywords are reserved and recognized in the `custom` and `privateAttributes` maps as well.
@@ -65,7 +65,7 @@ Supported Operators: `Any of, none of`
 
 Example usage: Add yourself (or a small group like your team) when you just start building a new feature.  Or exclude your designer until it's ready for their eyes.
 
-![Small user id allowlist example](https://user-images.githubusercontent.com/74584483/137389819-d2f20bb5-235b-4d86-b2f4-a73f515909d9.png)
+![user id condition example](https://github.com/user-attachments/assets/96996a73-3af0-4383-838e-2be9908a26f8)
 
 ### Email {#email}
 Usage: Target based on the email of the user
@@ -74,7 +74,7 @@ Supported Operators: `any of, none of, contains any of, contains none of`
 
 Example: Show new feature to people in the Statsig company with an authenticated @statsig.com email address
 
-![Email condition example](https://user-images.githubusercontent.com/74584483/137401967-333d51a4-d358-4ac5-8055-a50dc108864a.png)
+![Email condition example](https://github.com/user-attachments/assets/2698240f-16d5-4c32-93b8-2b5f6f8b2425)
 
 ### Everyone {#everyone}
 Usage: Percentage rollout on the remainder of users that reach this condition.  Think of it as "everybody else" - there could be a dozen other rules/conditions above it, but for everyone else, what percentage do you want to pass?
@@ -83,7 +83,7 @@ Supported Operators: `None. Percentage based only.`
 
 Example usage: 50/50 rollout to A/B test a new feature.  Or 0% to hide the feature for all people not matching a set of rules. Or 100% to show the feature to the remaining users who did not meet a condition above.
 
-![Everyone 50/50 condition example](https://user-images.githubusercontent.com/74584483/137390172-a73fd908-e23c-489e-8c2e-92f01e3b43a5.png)
+![Everyone 50/50 condition example](https://github.com/user-attachments/assets/98f29d16-9bc8-4b2d-90c4-c2acb64a2c75)
 
 ### App Version {#app-version}
 Usage: User's on a particular version of your app/website will pass.  Particularly useful for mobile app development, where a feature may not be fully ready (or maybe be broken) in a particular app version.
@@ -92,7 +92,7 @@ Supported Operators: `>=, >, <, <=, any of, none of`
 
 Example: Turn off a feature for all users on app versions 3.0.0 through 3.1.0 as it was broken.
 
-![App version Example](https://user-images.githubusercontent.com/74584483/137393710-f93b4fda-d7ae-40d8-bd5d-4703d9b136d1.png)
+![Disable broken versions example](https://github.com/user-attachments/assets/fbf2de3e-1973-4e95-bbdd-bfa56c204200)
 
 ### Browser Version {#browser-version}
 Usage: A particular version of a browser, parsed from the user agent.  Should likely be combined with the browser name condition.
@@ -101,7 +101,7 @@ Supported Operators: `>=, >, <, <=, any of, none of`
 
 Example: Turn off a feature for old versions of chrome which don't support a certain API
 
-![Browser Name and Version example](https://user-images.githubusercontent.com/74584483/137394148-cb84ce40-0478-4f1b-a40e-bec5af8c5e08.png)
+![Browser Name and Version Example](https://github.com/user-attachments/assets/faf8cdad-f58d-4f04-8b7b-6a76e1f84df3)
 
 ### Browser Name {#browser}
 Usage: A particular browser, parsed from the user agent:
@@ -125,7 +125,7 @@ Example: Turn off a feature for old versions of chrome which don't support a cer
 
 To test: The Browser Name is inferred from the `userAgent`, but if you need to set it explicitly, you can set `browserName` in the user object.
 
-![Browser Name and Version example](https://user-images.githubusercontent.com/74584483/137394148-cb84ce40-0478-4f1b-a40e-bec5af8c5e08.png)
+![Browser Name and Version Example](https://github.com/user-attachments/assets/faf8cdad-f58d-4f04-8b7b-6a76e1f84df3)
 
 ### OS Version {#os-version}
 Usage: A particular os version the user is on, parsed from the user agent.  Should likely be combined with the Operating System condition.
@@ -134,7 +134,7 @@ Supported Operators: `>=, >, <, <=, any of, none of`
 
 Example: Turn off a feature for versions of macOS which don't support a certain API
 
-![Operating System example](https://user-images.githubusercontent.com/74584483/137398532-bac9b55b-07f1-48b2-a0c9-edcaec55d528.png)
+![OS name and version example](https://github.com/user-attachments/assets/5ff8648b-a408-48ce-a655-61086e219870)
 
 ### Operating System {#os}
 Usage: A particular operating system, parsed from the user agent:
@@ -147,7 +147,7 @@ Example: Turn off a feature for versions of macOS which don't support a certain 
 
 To test: The OS is inferred from the `userAgent`, but if you need to set it explicitly, you can set `deviceOS` in the user object.
 
-![Operating System example](https://user-images.githubusercontent.com/74584483/137398532-bac9b55b-07f1-48b2-a0c9-edcaec55d528.png)
+![OS name and version example](https://github.com/user-attachments/assets/5ff8648b-a408-48ce-a655-61086e219870)
 
 ### Device Model {#device-model}
 Usage: The device model of the mobile device the user is on.
@@ -158,7 +158,7 @@ Example: Turn off a feature for older device models that your app does not suppo
 
 To test: The Device Model is automatically inferred by the SDK, but if you need to set it explicitly, you can set `deviceModel` in the user object.
 
-![Device Model example](https://github.com/statsig-io/docs/assets/111380336/7602869a-be9c-43ea-ac05-5fcf0c30c871)
+![Device Model Example](https://github.com/user-attachments/assets/7552d83f-5542-481c-a958-354252b33566)
 
 ### Country  {#country}
 Usage: A 2 letter country code, either passed as the user's country or determined by the IP address.
@@ -167,7 +167,7 @@ Supported Operators: `any of, none of`
 
 Example: Show a cookie consent banner for users accessing your service from the EU.
 
-![EU Countries example](https://user-images.githubusercontent.com/74584483/137398748-59fead56-324f-42c2-9673-046f56ed8cfd.png)
+![Country example](https://github.com/user-attachments/assets/13d52e00-8df5-41f9-9d49-93818f0190ab)
 
 ### IP address  {#ip}
 Usage: An IP address string
@@ -176,16 +176,16 @@ Supported Operators: `any of, none of`
 
 Example: Show a different about us page on www.statsig.com to people in a certain IP address range
 
-![Matching IP Addresses example](https://user-images.githubusercontent.com/74584483/137399001-e856f867-1d5e-4791-9e22-bd113e647a42.png)
+![Matching IP Addresses example](https://github.com/user-attachments/assets/66f1b047-8066-432f-a33f-8fd0dd60dec4)
 
 ### Passes Target gate {#gate}
 Usage: The condition passes if the referenced gate passes for the given user
 
 Supported Operators: `gate_id`
 
-Example: Only show feature X to people who also see feature Y: Only show a toggle to turn off ranking to people who also pass the new ranking algorithm gate.
+Example: Only show feature X to people who also see feature Y: Only show a toggle to turn off ranking to people who also pass the new mobile registration gate
 
-![Passes target gate example](https://user-images.githubusercontent.com/74584483/137400867-d5b33c55-2f1e-4799-9ce9-80432cb38dae.png)
+![Passes Target Gate](https://github.com/user-attachments/assets/4119c45c-320c-4101-a681-be132fdb9519)
 
 ### Fails Target gate
 Usage: Inverse of passes target gate: the condition passes if the referenced gate returns false for the given user
@@ -194,25 +194,25 @@ Supported Operators: `gate_id`
 
 Example: Only show a new UI element to people who are not using the redesigned UI.
 
-![Fails target gate example](https://user-images.githubusercontent.com/74584483/137401064-31ce8a70-d2d1-4ba5-b152-f442fe914740.png)
+![Fails Target Gate](https://github.com/user-attachments/assets/e56c66e9-563b-4fb0-abfa-b9e6b932dfa4)
 
 ### User in Segment {#segment}
 Usage: The condition passes if the user passes the rules defining the referenced segment. See the [segments guide](/guides/using-environments) for more information on segments.
 
 Supported Operators: `segment_id`
 
-Example: Only show a new UI element to people who are not using the redesigned UI.
+Example: Only show a new UI element to people who are employees
 
-![In segment example](https://user-images.githubusercontent.com/74584483/137401647-c5464109-390c-46ba-b593-cde8baffe409.png)
+![In Segment](https://github.com/user-attachments/assets/806f1f61-32b6-4a9a-87cc-7f21f9740f1a)
 
 ### User not in Segment
 Usage: The condition passes if the user fails the rules defining the referenced segment. See the [segments guide](/guides/using-environments) for more information on segments.
 
 Supported Operators: `segment_id`
 
-Example: Only show a feature to people who are not in the premium/paid tier.
+Example: Only show a feature to people who are not employees
 
-![Not in segment example](https://user-images.githubusercontent.com/74584483/137401792-2f518d45-0b9d-40cc-9b50-f01424462ca6.png)
+![Not In Segment](https://github.com/user-attachments/assets/4dfafe47-2f18-405b-bb5f-5a866d912b21)
 
 ### Environment Tier {#environment}
 Usage: The condition passes if the evaluation is happening in the given environment tier (development/staging/production). See the [environments guide](/guides/using-environments) for more information on environments.
@@ -221,7 +221,11 @@ Supported Operators: `development/staging/production/(other)`
 
 Example: Only show a feature on development builds
 
-![Environment tier example](https://user-images.githubusercontent.com/74584483/137402331-c9f9eb46-de8b-49b6-8abc-f480d9334c95.png)
+![Development Environment Condition](https://github.com/user-attachments/assets/81d837a2-da13-4e2a-b544-e4709fc623c4)
+
+Alternatively, because this is such a common use-case, you can specify an environment for any of the other coniditions inline.  Here it is with an everyone condition, filtered to development environment.
+
+![Rule Environment Filter](https://github.com/user-attachments/assets/5bf2d0dc-706f-482d-ae10-31b383b3f3ae)
 
 ### Custom Field {#custom}
 
@@ -235,7 +239,7 @@ Supported Operators:
 
 Example: Only show a feature to user's who have turned on dark mode, as marked by the custom object having "darkmode": true.
 
-![Custom example](https://user-images.githubusercontent.com/74584483/137402870-092830df-96a3-4842-bb5a-bd36e416b8cb.png)
+![Custom Field](https://github.com/user-attachments/assets/e7cb9401-8441-430d-8dfc-5619913b15d0)
 
 ### Unit ID {#unit-id}
 
@@ -243,9 +247,9 @@ Usage: Select custom ids to explicitly target or exclude from a gate.
 
 Supported Operators: `any of, none of, is null, is not null, contains any of, contains none of, regex`
 
-Example: Add yourself (or a small group like your team) when you just start building a new feature.
+Example: Add yourself (or a small group like your team) when you just start building a new feature, as identified by their logged out stableID generated by a client sdk
 
-![Unit id example](https://user-images.githubusercontent.com/26360698/234152123-c77fb946-f74c-4be4-80c7-e5513ecbb90f.png)
+![Unit id example](https://github.com/user-attachments/assets/fcc85f27-225a-4ff9-80b7-9704f35a2432)
 
 ### Time
 
@@ -257,7 +261,7 @@ Value: time (displayed and input on Console in your browser's local time, but co
 
 Example: Show the labor day sale banner on labor day
 
-![Time example](https://github.com/user-attachments/assets/65097c87-c2c4-440a-920f-b029b9f104f2)
+![Time condition](https://github.com/user-attachments/assets/01732bfe-acd3-4204-b911-a46d3e055a1f)
 
 ### Private Attributes
 Usage: Any user field conditions, or custom field conditions, can be used via a private attribute.  If you are targeting an email, but don't want it to be logged, 
@@ -266,9 +270,9 @@ Remember that privateAttributes are used for evaluation only, and are not stored
 
 Supported Operators: dependent on the condition
 
-Example: Only show a feature to 20 somethings, as marked by the privateAttributes object having "age": "20-29".
+Example: Only show a feature to 20 somethings, as marked by the privateAttributes object having "age": between 20 and 29.
 
-![Private attributes example](https://user-images.githubusercontent.com/74584483/137403635-33b46da3-5508-432e-b3b4-4ed9990edf0f.png)
+![Private attributes](https://github.com/user-attachments/assets/75555b80-83cf-46f4-b3a3-34b7974dc204)
 
 ## FAQs
 **1. Could users switch between control (fail) and test (pass) groups?** 
