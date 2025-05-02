@@ -169,8 +169,15 @@
   margin: 1.5rem 0;
 }
 
+/* Style code blocks */
+.javaCore .prism-code {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
 /* Style lists in Java Core */
-.javaCore ul {
+.javaCore > div > ul,
+.javaCore > div > div > ul {
   background-color: #f8fafc;
   padding: 1rem 1rem 1rem 2.5rem;
   border-radius: 8px;
@@ -199,16 +206,48 @@
   padding: 1rem;
 }
 
+/* Style the overview section */
+.javaCore > div > div > div:has(> h2:contains("Overview")) + div {
+  border-left: 4px solid var(--ifm-color-primary);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Style the installation steps section */
+.javaCore > div > div > div:has(> h2:contains("Installation Steps")) {
+  margin-top: 2rem;
+}
+
+/* Style step headers */
+.javaCore > div > div > div:has(> h3:contains("Step")) {
+  margin-top: 1.5rem;
+}
+
+/* Style inline code */
+.javaCore code:not(.prism-code) {
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  padding: 0.2rem 0.4rem;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
 /* Dark mode adjustments */
 [data-theme='dark'] .javaCore h2 {
   border-bottom-color: #333;
 }
 
-[data-theme='dark'] .javaCore pre {
+[data-theme='dark'] .javaCore pre,
+[data-theme='dark'] .javaCore .prism-code {
   border-color: #333;
 }
 
-[data-theme='dark'] .javaCore ul {
+[data-theme='dark'] .javaCore > div > ul,
+[data-theme='dark'] .javaCore > div > div > ul,
+[data-theme='dark'] .javaCore > div > div > div:has(> h2:contains("Overview")) + div {
   background-color: #2d333b;
 }
 
@@ -218,4 +257,8 @@
 
 [data-theme='dark'] .javaCore .tabs {
   border-color: #333;
+}
+
+[data-theme='dark'] .javaCore code:not(.prism-code) {
+  background-color: #2d333b;
 }
