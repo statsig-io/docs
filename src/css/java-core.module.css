@@ -143,4 +143,31 @@
 /* Java Core wrapper */
 .javaCore {
   max-width: 100%;
+  display: block;
+}
+
+/* Apply styles to all headings within Java Core */
+.javaCore h2 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #f0f0f0;
+  color: var(--ifm-color-primary);
+}
+
+/* Apply styles to all code blocks within Java Core */
+.javaCore pre {
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin: 1.5rem 0;
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .javaCore h2 {
+  border-bottom-color: #333;
+}
+
+[data-theme='dark'] .javaCore pre {
+  border-color: #333;
 }
