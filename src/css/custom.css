@@ -158,6 +158,8 @@ html[data-theme="dark"] {
 .prism-code {
   border: 1px solid #ddd;
   font-size: 0.85rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .sdk-toc-header {

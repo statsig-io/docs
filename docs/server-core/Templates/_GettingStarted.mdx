@@ -1,18 +1,20 @@
 import Gap from "./_Gap.mdx";
 
-## Installation
+import { StyledHeading, ImportantNote } from '@site/src/components/JavaCoreStyles';
+
+<StyledHeading level={2}>Installation</StyledHeading>
 
 <div>{props.install}</div>
 
 <Gap />
 
-## Initialize the SDK
+<StyledHeading level={2}>Initialize the SDK</StyledHeading>
 
 After installation, you will need to initialize the SDK using a [Server Secret Key from the statsig console](https://console.statsig.com/api_keys).
 
-:::info
+<ImportantNote>
 Do NOT embed your Server Secret Key in client-side applications, or expose it in any external-facing documents. However, if you accidentally expose it, you can create a new one in the Statsig console.
-:::
+</ImportantNote>
 
 <>
   {props.skipStatsigOptionsDescription || (

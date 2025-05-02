@@ -1,16 +1,22 @@
-## Requirements
+import { RequirementsList, StyledHeading, InstallStep } from '@site/src/components/JavaCoreStyles';
 
+<StyledHeading level={2}>Requirements</StyledHeading>
+
+<RequirementsList>
 - Java 8 or higher
 - Compatible with all platforms listed in the [Supported OS and Architecture Combinations](#supported-os-and-architecture-combinations) section, including:
   - macOS (x86_64, arm64)
   - Windows (x86_64, arm64, i686)
   - Amazon Linux 2 and 2023 (x86_64, arm64)
+</RequirementsList>
 
-## Overview
+<StyledHeading level={2}>Overview</StyledHeading>
 
+<InstallStep>
 The Statsig Java SDK consists of two parts that must be installed:
 1. The platform-independent core library (required for all installations)
 2. An OS/architecture-specific native library (required for your specific platform)
+</InstallStep>
 
 ## Installation Steps
 

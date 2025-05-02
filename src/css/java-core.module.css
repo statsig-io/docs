@@ -1,0 +1,146 @@
+/* Java Core Documentation Styling */
+
+/* Enhanced section headings */
+.sectionHeading {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #f0f0f0;
+  color: var(--ifm-color-primary);
+}
+
+/* Improved code blocks */
+.codeBlock {
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin: 1.5rem 0;
+}
+
+/* Installation steps styling */
+.installStep {
+  background-color: #f8f9fa;
+  border-left: 4px solid var(--ifm-color-primary);
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Requirements list styling */
+.requirementsList {
+  background-color: #f8fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+/* Tab styling for installation options */
+.installTabs {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1.5rem 0;
+}
+
+/* Method description styling */
+.methodDescription {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+/* Parameter styling */
+.parameter {
+  font-weight: 600;
+  color: var(--ifm-color-primary-dark);
+}
+
+/* Example code output styling */
+.codeOutput {
+  background-color: #f0f0f0;
+  border-left: 4px solid #aaa;
+  padding: 0.75rem;
+  margin: 1rem 0;
+  font-family: monospace;
+  font-size: 0.9rem;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Important notes styling */
+.importantNote {
+  background-color: rgba(33, 150, 243, 0.1);
+  border-left: 4px solid var(--ifm-color-primary);
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .installStep {
+  background-color: #2d333b;
+  border-left: 4px solid var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .requirementsList,
+[data-theme='dark'] .methodDescription {
+  background-color: #2d333b;
+}
+
+[data-theme='dark'] .codeOutput {
+  background-color: #1c2128;
+  border-left: 4px solid #555;
+}
+
+[data-theme='dark'] .importantNote {
+  background-color: rgba(33, 150, 243, 0.05);
+}
+
+/* Enhanced table styling */
+.apiTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.apiTable th {
+  background-color: #f5f5f5;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.apiTable td {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+[data-theme='dark'] .apiTable th {
+  background-color: #2d333b;
+}
+
+[data-theme='dark'] .apiTable td {
+  border-top: 1px solid #444;
+}
+
+/* Improved inline code styling */
+.inlineCode {
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  padding: 0.2rem 0.4rem;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+[data-theme='dark'] .inlineCode {
+  background-color: #2d333b;
+}
+
+/* Java Core wrapper */
+.javaCore {
+  max-width: 100%;
+}

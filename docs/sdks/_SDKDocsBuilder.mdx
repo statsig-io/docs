@@ -27,8 +27,11 @@ export const SDKDocsBuilder = (props) => {
     </React.Fragment>
   });
 
+  // Import the JavaCoreWrapper component
+  const JavaCoreWrapper = require("@site/src/components/JavaCoreWrapper").default;
+  
   return {
-    result: [<SDKDocTOCHeader key="header" />, ...result],
+    result: [<SDKDocTOCHeader key="header" />, <JavaCoreWrapper>{result}</JavaCoreWrapper>],
     toc
   }
 };
