@@ -152,7 +152,16 @@ def process_file(file_path):
 
 def main():
     print('Searching for documentation files with image references...')
-    doc_files = find_doc_files('./docs')
+    if os.path.exists('../docs'):
+        docs_path = '../docs'
+    elif os.path.exists('./docs'):
+        docs_path = './docs'
+    else:
+        print("Error: Could not find docs directory. Make sure you're running this script from the repository root or tasks directory.")
+        return
+    
+    print(f"Using docs path: {docs_path}")
+    doc_files = find_doc_files(docs_path)
     results = []
     
     with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
