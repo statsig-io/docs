@@ -1,6 +1,6 @@
 /* Java Core Documentation Styling */
 
-/* Enhanced section headings */
+/* Component-specific styles */
 .sectionHeading {
   margin-top: 2rem;
   margin-bottom: 1rem;
@@ -9,7 +9,6 @@
   color: var(--ifm-color-primary);
 }
 
-/* Improved code blocks */
 .codeBlock {
   border-radius: 8px;
   border: 1px solid #e0e0e0;
@@ -17,7 +16,6 @@
   margin: 1.5rem 0;
 }
 
-/* Installation steps styling */
 .installStep {
   background-color: #f8f9fa;
   border-left: 4px solid var(--ifm-color-primary);
@@ -26,7 +24,6 @@
   border-radius: 0 8px 8px 0;
 }
 
-/* Requirements list styling */
 .requirementsList {
   background-color: #f8fafc;
   padding: 1rem;
@@ -34,7 +31,6 @@
   margin-bottom: 1.5rem;
 }
 
-/* Tab styling for installation options */
 .installTabs {
   border: 1px solid #e0e0e0;
   border-radius: 8px;
@@ -42,7 +38,6 @@
   margin: 1.5rem 0;
 }
 
-/* Method description styling */
 .methodDescription {
   background-color: #f8f9fa;
   padding: 1rem;
@@ -50,13 +45,11 @@
   margin: 1rem 0;
 }
 
-/* Parameter styling */
 .parameter {
   font-weight: 600;
   color: var(--ifm-color-primary-dark);
 }
 
-/* Example code output styling */
 .codeOutput {
   background-color: #f0f0f0;
   border-left: 4px solid #aaa;
@@ -67,7 +60,6 @@
   border-radius: 0 4px 4px 0;
 }
 
-/* Important notes styling */
 .importantNote {
   background-color: rgba(33, 150, 243, 0.1);
   border-left: 4px solid var(--ifm-color-primary);
@@ -76,27 +68,6 @@
   border-radius: 0 8px 8px 0;
 }
 
-/* Dark mode adjustments */
-[data-theme='dark'] .installStep {
-  background-color: #2d333b;
-  border-left: 4px solid var(--ifm-color-primary);
-}
-
-[data-theme='dark'] .requirementsList,
-[data-theme='dark'] .methodDescription {
-  background-color: #2d333b;
-}
-
-[data-theme='dark'] .codeOutput {
-  background-color: #1c2128;
-  border-left: 4px solid #555;
-}
-
-[data-theme='dark'] .importantNote {
-  background-color: rgba(33, 150, 243, 0.05);
-}
-
-/* Enhanced table styling */
 .apiTable {
   width: 100%;
   border-collapse: separate;
@@ -119,15 +90,6 @@
   border-top: 1px solid #e0e0e0;
 }
 
-[data-theme='dark'] .apiTable th {
-  background-color: #2d333b;
-}
-
-[data-theme='dark'] .apiTable td {
-  border-top: 1px solid #444;
-}
-
-/* Improved inline code styling */
 .inlineCode {
   background-color: #f0f0f0;
   border-radius: 4px;
@@ -136,17 +98,45 @@
   font-size: 0.9em;
 }
 
+/* Dark mode for component-specific styles */
+[data-theme='dark'] .sectionHeading {
+  border-bottom-color: #333;
+}
+
+[data-theme='dark'] .installStep,
+[data-theme='dark'] .requirementsList,
+[data-theme='dark'] .methodDescription {
+  background-color: #2d333b;
+}
+
+[data-theme='dark'] .codeOutput {
+  background-color: #1c2128;
+  border-left: 4px solid #555;
+}
+
+[data-theme='dark'] .importantNote {
+  background-color: rgba(33, 150, 243, 0.05);
+}
+
+[data-theme='dark'] .apiTable th {
+  background-color: #2d333b;
+}
+
+[data-theme='dark'] .apiTable td {
+  border-top: 1px solid #444;
+}
+
 [data-theme='dark'] .inlineCode {
   background-color: #2d333b;
 }
 
-/* Java Core wrapper */
+/* Java Core wrapper - Global styling */
 .javaCore {
   max-width: 100%;
   display: block;
 }
 
-/* Apply styles to all headings within Java Core */
+/* Headings */
 .javaCore h2 {
   margin-top: 2rem;
   margin-bottom: 1rem;
@@ -161,7 +151,13 @@
   color: var(--ifm-color-primary-darker);
 }
 
-/* Apply styles to all code blocks within Java Core */
+.javaCore h4 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--ifm-color-primary-darker);
+}
+
+/* Code blocks */
 .javaCore pre {
   border-radius: 8px;
   border: 1px solid #e0e0e0;
@@ -169,22 +165,28 @@
   margin: 1.5rem 0;
 }
 
-/* Style code blocks */
 .javaCore .prism-code {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* Style lists in Java Core */
-.javaCore > div > ul,
-.javaCore > div > div > ul {
+/* Lists */
+.javaCore ul {
   background-color: #f8fafc;
   padding: 1rem 1rem 1rem 2.5rem;
   border-radius: 8px;
   margin-bottom: 1.5rem;
 }
 
-/* Style blockquotes for important notes */
+/* Nested lists should not have background */
+.javaCore ul ul {
+  background-color: transparent;
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+/* Blockquotes */
 .javaCore blockquote {
   background-color: rgba(33, 150, 243, 0.1);
   border-left: 4px solid var(--ifm-color-primary);
@@ -193,7 +195,7 @@
   border-radius: 0 8px 8px 0;
 }
 
-/* Style tabs container */
+/* Tabs */
 .javaCore .tabs {
   border: 1px solid #e0e0e0;
   border-radius: 8px;
@@ -201,38 +203,54 @@
   margin: 1.5rem 0;
 }
 
-/* Style installation steps */
 .javaCore .tabs-container {
   padding: 1rem;
 }
 
-/* Style the overview section */
-.javaCore > div > div > div:has(> h2:contains("Overview")) + div {
-  border-left: 4px solid var(--ifm-color-primary);
-  padding-left: 1rem;
+/* Tables */
+.javaCore table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
   margin: 1.5rem 0;
-  background-color: #f8f9fa;
-  padding: 1rem;
-  border-radius: 0 8px 8px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* Style the installation steps section */
-.javaCore > div > div > div:has(> h2:contains("Installation Steps")) {
-  margin-top: 2rem;
+.javaCore table th {
+  background-color: #f5f5f5;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
 }
 
-/* Style step headers */
-.javaCore > div > div > div:has(> h3:contains("Step")) {
-  margin-top: 1.5rem;
+.javaCore table td {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #e0e0e0;
 }
 
-/* Style inline code */
+/* Inline code */
 .javaCore code:not(.prism-code) {
   background-color: #f0f0f0;
   border-radius: 4px;
   padding: 0.2rem 0.4rem;
   font-family: monospace;
   font-size: 0.9em;
+}
+
+/* Details/Summary */
+.javaCore details {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin: 1rem 0;
+  padding: 0.5rem;
+}
+
+.javaCore summary {
+  cursor: pointer;
+  padding: 0.5rem;
+  font-weight: 500;
 }
 
 /* Dark mode adjustments */
@@ -245,18 +263,29 @@
   border-color: #333;
 }
 
-[data-theme='dark'] .javaCore > div > ul,
-[data-theme='dark'] .javaCore > div > div > ul,
-[data-theme='dark'] .javaCore > div > div > div:has(> h2:contains("Overview")) + div {
+[data-theme='dark'] .javaCore ul {
   background-color: #2d333b;
+}
+
+[data-theme='dark'] .javaCore ul ul {
+  background-color: transparent;
 }
 
 [data-theme='dark'] .javaCore blockquote {
   background-color: rgba(33, 150, 243, 0.05);
 }
 
-[data-theme='dark'] .javaCore .tabs {
+[data-theme='dark'] .javaCore .tabs,
+[data-theme='dark'] .javaCore details {
   border-color: #333;
+}
+
+[data-theme='dark'] .javaCore table th {
+  background-color: #2d333b;
+}
+
+[data-theme='dark'] .javaCore table td {
+  border-top: 1px solid #444;
 }
 
 [data-theme='dark'] .javaCore code:not(.prism-code) {
