@@ -30,8 +30,13 @@ export const SDKDocsBuilder = (props) => {
   // Import the JavaCoreWrapper component
   const JavaCoreWrapper = require("@site/src/components/JavaCoreWrapper").default;
   
+  // Add keys to each element in the result array
+  const resultWithKeys = result.map((element, index) => 
+    React.cloneElement(element, { key: `content-${index}` })
+  );
+  
   return {
-    result: [<SDKDocTOCHeader key="header" />, <JavaCoreWrapper>{result}</JavaCoreWrapper>],
+    result: [<SDKDocTOCHeader key="header" />, <JavaCoreWrapper key="wrapper">{resultWithKeys}</JavaCoreWrapper>],
     toc
   }
 };
