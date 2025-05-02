@@ -155,6 +155,12 @@
   color: var(--ifm-color-primary);
 }
 
+.javaCore h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--ifm-color-primary-darker);
+}
+
 /* Apply styles to all code blocks within Java Core */
 .javaCore pre {
   border-radius: 8px;
@@ -163,11 +169,53 @@
   margin: 1.5rem 0;
 }
 
+/* Style lists in Java Core */
+.javaCore ul {
+  background-color: #f8fafc;
+  padding: 1rem 1rem 1rem 2.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+/* Style blockquotes for important notes */
+.javaCore blockquote {
+  background-color: rgba(33, 150, 243, 0.1);
+  border-left: 4px solid var(--ifm-color-primary);
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Style tabs container */
+.javaCore .tabs {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1.5rem 0;
+}
+
+/* Style installation steps */
+.javaCore .tabs-container {
+  padding: 1rem;
+}
+
 /* Dark mode adjustments */
 [data-theme='dark'] .javaCore h2 {
   border-bottom-color: #333;
 }
 
 [data-theme='dark'] .javaCore pre {
+  border-color: #333;
+}
+
+[data-theme='dark'] .javaCore ul {
+  background-color: #2d333b;
+}
+
+[data-theme='dark'] .javaCore blockquote {
+  background-color: rgba(33, 150, 243, 0.05);
+}
+
+[data-theme='dark'] .javaCore .tabs {
   border-color: #333;
 }
