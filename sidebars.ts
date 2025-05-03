@@ -55,6 +55,7 @@ const sidebars: SidebarsConfig = {
           label: "SDKs & APIs",
           className: "doc-icon sidebar-icon",
           items: [
+            "sdks/quickstart",
             "sdks/getting-started",
             "sdks/client-vs-server",
             "concepts/user",
