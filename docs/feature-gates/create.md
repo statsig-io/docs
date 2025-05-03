@@ -62,7 +62,7 @@ You can also target users in a defined user [Segment](/segments).
 
 
 ### Parent/Child Flags
-You can target users based on their eligibility of other Feature Gates, enabling powerful chaining, hierarchy, and dependencies of flags. [Flag lifecycle management](/feature-flags/lifecycle) makes it easy to manage, deprecate, and maintain dependent flags.
+You can target users based on their eligibility of other Feature Gates, enabling powerful chaining, hierarchy, and dependencies of flags. [Flag lifecycle management](/feature-flags/feature-flags-lifecycle) makes it easy to manage, deprecate, and maintain dependent flags.
 
 ![image](https://user-images.githubusercontent.com/1315028/129112612-d881981c-4fc6-4e95-a9c5-18319c02d6f2.png)
 
