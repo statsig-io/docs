@@ -10,41 +10,50 @@ last_update:
 
 ## DAU (Daily Active User) Definition
 
-Statsig automatically creates a standard set of user accounting metrics to track common product-wide engagement metrics like daily active users (DAU), new users, and retention.  We also track more sophisticated metrics like L-ness, retention and stickiness metrics.  All of these rely on a company-wide definition of a daily active user.  By default, any Statsig SDK event/request (check_gate, get_config, log_event) associated with a user will automatically designate that user as being active for that day.  You can customize this set of events.
+Statsig automatically creates a standard set of user accounting metrics to track common product-wide engagement metrics like daily active users (DAU), new users, and retention.  We also track more sophisticated metrics like L-ness, retention, and stickiness. 
 
-::: important
-Auto-generated user accounting metrics are only created for customers using Statsig on cloud. Warehouse Native companies (WHN) most often have multiple datasets that could affect how they compute active users, and they generally opt to define their versions of user accounting metrics.
+All of these Standard User Accounting Metrics rely on a company-wide definition of a daily active user, which is defined by default in Statsig as [users that the Statsig SDK has logged](/concepts/user) any event or request (e.g., check_gate, get_config, log_event) for. You can always [customize your company's definition of a DAU](#customizing-the-dau-definition).
+
+
+:::tip[Warehouse Native Users]
+You're currently viewing a feature designed for Statsig Cloud users. Warehouse Native customers typically have multiple datasets that uniquely affect how they define active users. Read about [Retention metrics in Warehouse Native](/statsig-warehouse-native/metrics/retention).
 :::
 
-### Notation and Conventions
-
-- It's common to denote the first day a (new) user was active as Day Zero (D0), and the subsequent days as D1, D2, D3...etc.
+## Notation and Conventions
+- It's common to denote the first day a (new) user was active as Day Zero (D0), and the subsequent days as D1, D2, D3... etc.
 - A weekly active user is someone who has been active within the last 7 days (0-6 days).  This includes users who were active on each of the 7 days, and users who have only been active on a single day.  The same definition applies to a monthly active user.
 - A user with a single session that spans midnight with qualifying events at 11:59p and 12:01a will qualify a user as being a daily active user on both days.
 
-# Statsig's Standard User Accounting Metrics
+## Default User Accounting Metrics in Statsig
 
-| Metric Name            | Type       | Description                    |
-|------------------------|------------|--------------------------------|
-| daily active user      | Count      | Count of daily active users, or users who were active for a given day. |
-| weekly_active_user     | Count      | Count of users who have been active within the last 7 days (0-6 days from a given date). |
-| monthly_active_user    | Count      | Count of users who have been active within the last 28 days (0-28 days from a given date). |
-| new_dau                | Count      | Count of users who are a daily active user for the first time on a given date. |
-| new_wau                | Count      | Count of users who became a daily active user within the last 7 days. |
-| new_mau_28d            | Count      | Count of users who became a daily active user within the last 28 days. |
-| daily_user_stickiness  | Stickiness | Fraction of the previous day's users who are active on the next day. |
-| weekly_user_stickiness | Stickiness | Fraction of the previous week's users who have been active within the last 7 days. |
-| monthly_user_stickiness | Stickiness | Fraction of the previous month's users who have been active within the last 28 days. |
-| D1_retention_rate      | Retention  | Fraction of the previous day's (D0) new users who are active the following day (D1). |
-| WAU @ D14 Retention Rate | Retention  | Fraction of new users from 13 days ago that have been active in the previous 7 days. |
-| MAU @ D56 Retention Rate | Retention  | Fraction of new users from 56 days ago that have been active in the previous 28 days. |
-| L7       | L-ness  | Average number of days a user was active in the last 7 days.  Each user can have a value of 0-7. |
-| L14      | L-ness  | Average number of days a user was active in the last 14 days.  Each user can have a value of 0-14. |
-| L28      | L-ness  | Average number of days a user was active in the last 28 days.  Each user can have a value of 0-28. |
+### General User Metrics
 
-These user metrics can be very useful in understanding the long-term behavior of your users.  However several of these metrics do not behave well as daily experimentation metrics.  This is because metrics like L7 are highly correlated across days.  For example, a user who is L7 = 7 on a given day can either be L7 = 6 or L7 = 7 the following day.  This is not a true daily independent variable.  Metrics like this can be more likely to trigger false positive and false negative results.  This generally applies to stickiness and L-ness metrics.
+| **Metric Name**              | **Type**           | **Description** |
+|-----------------------------|--------------------|-------------------------------|
+| `daily_active_user`         | Count              | Users who were active on a given calendar day (DAU). |
+| `weekly_active_user`        | Count              | Users who were active at least once in the past 7 days (WAU). |
+| `monthly_active_user`       | Count              | Users who were active at least once in the past 28 days (MAU). |
+| `L7`                        | Lness         | Average number of days a user was active in the last 7 days (value range: 0–7). |
+| `L14`                       | Lness         | Average number of days a user was active in the last 14 days (value range: 0–14). |
+| `L28`                       | Lness         | Average number of days a user was active in the last 28 days (value range: 0–28). |
+| `daily_user_stickiness`     | Repeat Engagement   | % of users active yesterday who returned today. Rolling day-to-day repeat rate (**not** DAU/MAU or DAU/WAU). |
+| `weekly_user_stickiness`    | Repeat Engagement   | % of users active last week who were active again this week. Rolling week-over-week repeat rate (**not** WAU/MAU). |
+| `monthly_user_stickiness`   | Repeat Engagement   | % of users active last month who were active again this month. Rolling month-over-month repeat rate. |
 
-# Customizing the DAU Definition
+### New User Metrics
+| **Metric Name**              | **Type**           | **Description** |
+|-----------------------------|--------------------|-------------------------------|
+| `new_dau`                   | Count              | Users who became active for the first time on a specific day. |
+| `new_wau`                   | Count              | Users who became active for the first time within the last 7 days. |
+| `new_mau_28d`               | Count              | Users who became active for the first time within the last 28 days. |
+| `d1_retention_rate`         | Retention (Rolling)| % of _new_ users from 1 day ago who were active at least once today (rolling 1-day window retention at Day 1).
+| `WAU @ D14 Retention Rate`  | Retention (Rolling)| % of _new_ users from 13 days ago who were active at least once in days 8–14 (rolling 7-day window retention at Day 14). |
+| `MAU @ D56 Retention Rate`  | Retention (Rolling) | % of _new_ users from 56 days ago who were active at least once during days 29–56 (rolling 28-day window retention at Day 56). |
+
+
+These user metrics can be very useful in understanding the long-term behavior of your users.  However, several of these metrics do not behave well as daily experimentation metrics.  This is because metrics like L7 are highly correlated across days.  For example, a user who is L7 = 7 on a given day can either be L7 = 6 or L7 = 7 the following day.  This is not a true daily independent variable.  Metrics like this can be more likely to trigger false positive and false negative results.  This generally applies to stickiness and L-ness metrics.
+
+## Customizing the DAU Definition
 
 You can customize the definition of DAU within the Statsig Console and specify or exclude a set of Statsig and custom events.  You can find this in the Project Settings. If you have privileges, you can edit this.
 
