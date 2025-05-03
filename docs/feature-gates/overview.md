@@ -45,7 +45,7 @@ You can run simple A/B tests without additional setup. In practice, this means t
 Dynamic Configs are key-value configs that let you return structured data (not just true/false) based on targeting rules. They're more for customizing behavior, tuning parameters, or supporting complex logic _beyond booleans_. Feature Gates are simpler on/off switches for gating access to a feature. Technically, you can set up a Dynamic Config as a Feature Flag.
   
 #### **When should I use Feature Gates instead of Experiments (and vice versa)?**
-We have a full guide on [Choosing Feature Flags vs. Experiments]( /guides/featureflags-or-experiments). (TL;DR—Use Feature Gates when you just want to measure the general impact of a feature rollout, and use Experiments when you have a more specific hypothesis or "test" in mind.)
+We have a full guide on [Choosing Feature Flags vs. Experiments](/guides/featureflags-or-experiments). (TL;DR—Use Feature Gates when you just want to measure the general impact of a feature rollout, and use Experiments when you have a more specific hypothesis or "test" in mind.)
 
 ## Related Tutorials
 - [Set up dev environments with Feature Gates](/guides/using-environments)
