@@ -399,14 +399,14 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: "category",
-          label: "Feature Management",
+          label: "Feature Flags",
           className: "feature-icon sidebar-icon",
           items: [
             {
               type: "category",
               label: "Feature Gates",
               items: [
-                "feature-gates/feature-gates-overview",
+                "feature-gates/overview",
                 "feature-flags/create-new",
                 "feature-flags/add-rule",
                 "feature-flags/test-gate",
