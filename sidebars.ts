@@ -408,10 +408,10 @@ const sidebars: SidebarsConfig = {
               items: [
                 "feature-gates/overview",
                 "feature-gates/create",
+                "feature-flags/conditions",
                 "feature-flags/test-gate",
                 "feature-flags/overrides",
                 "feature-flags/scheduled-rollouts",
-                "feature-flags/conditions",
                 "feature-flags/view-exposures",
                 "feature-flags/feature-flags-lifecycle",
                 "feature-flags/permanent-and-stale-gates",

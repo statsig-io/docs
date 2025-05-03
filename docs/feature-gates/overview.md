@@ -40,7 +40,7 @@ You can run simple A/B tests without additional setup. In practice, this means t
 5. Once your Feature Gate is live, you can [view Feature Gate exposures](/feature-flags/view-exposures) in the Statsig console to monitor who is encountering your gate.
 6. You can easily set up deprecation rules and clean up old flags by [managing Feature Gate lifecycles](/feature-flags/feature-flags-lifecycle).
 
-## Feature Gates FAQs
+## FAQs
 #### **How are Feature Gates different from Dynamic Configs?**
 Dynamic Configs are key-value configs that let you return structured data (not just true/false) based on targeting rules. They're more for customizing behavior, tuning parameters, or supporting complex logic _beyond booleans_. Feature Gates are simpler on/off switches for gating access to a feature. Technically, you can set up a Dynamic Config as a Feature Flag.
   

@@ -1,20 +1,12 @@
 ---
-title: Managing the Lifecycle of Feature Flags
-sidebar_label: Managing Lifecycle
+title: Managing Feature Gate lifecycles
+sidebar_label: Feature Gate lifecycles
 slug: /feature-flags/feature-flags-lifecycle
 keywords:
   - owner:shubham
 last_update:
   date: 2024-10-11
 ---
-
-:::note
-
-Usually referred to online as _feature flags_, the Statsig UI and SDKs call them _feature gates_.
-
-:::
-
-# Background
 
 A feature can go through different phases throughout its lifecycle - maybe it’s still being tested out by a few users, or only recently fully rolled out to the world, or maybe it’s been tried and true and you no longer need the feature behind a toggle. 
 
@@ -24,7 +16,7 @@ Whatever phase the feature may be in, its gate should clearly reflect that, for 
 - **Maintain healthy codebase**: messy code base with dead references to flags mean that your team has more volume of code to navigate on a daily basis, and it can even slow down new developers onboarding.
 - **Reduce mental load**: mental tracking of all your features is no longer necessary because you will be able to see easily what next steps you need to take for the product (e.g. launch or kill a feature), as well as not having to worry about old features that are no longer relevant.
 
-# Managing the lifecycle of your feature gates on Statsig
+## Managing Feature Gate lifecycles
 
 Statsig makes it easy for your feature gates to reflect the phase your feature is in by using **status**. A gate can be in one of four statuses:
 
@@ -39,7 +31,7 @@ Statsig makes it easy for your feature gates to reflect the phase your feature i
 |   Archived    | this feature is no longer referenced in code or checked; history on the gate is preserved | This gate has been receiving 0 checks for the last 7 days, and no checks will be sent this gate anymore |
 
 
-### When/How to update the lifecycle
+## When to update Feature Gate lifecycles
 
 There are 3 points throughout the gate's lifecycle when you'd want to take action, either on Console or in your codebase: 
 
@@ -93,7 +85,7 @@ Confirm that the gate has been set to either **Launched** or **Disabled** (i.e. 
       ![image](https://user-images.githubusercontent.com/120431069/216166665-b9ad6655-4c6e-4b66-8a65-8e94e98e3485.png)
       
       
-# FAQs
+## Feature Gate lifecycles FAQs
 
 **What is the best practice for our team to do a feature gate cleanup?**
 - We recommend having a quarterly “feature gate cleanup party”, where the team blocks out a chunk of time to identify all gates that need to be cleaned up (step #2) and remove the references from their codebase. One person can then follow up after 7 days to make sure all those gates are now receiving 0 checks on Statsig and can mark them as “Archived”. Overtime, your team should see more **Archived** gates than **Launched/Disabled/In Progress** gates.

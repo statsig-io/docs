@@ -18,6 +18,7 @@ This guide walks through how to create a Feature Gate in the Statsig console, ho
 4. Enter the name and the description of the Feature Gate you want to create. It's best to name your gate based on what you are rolling out, such as "Zippy Home Page" for a new homepage.
 
 ![image](https://github.com/user-attachments/assets/a14bc4f3-b768-4e6c-a84a-7bae449b2c7c)
+
 5. Click **Create** to complete creating your Feature Gate.
 6. At this point, you've successfully created a new Feature Gate without any evaluation rules or conditions set up yet.
 <img width="1183" alt="Screenshot 2025-02-06 at 6 44 30 PM" src="https://github.com/user-attachments/assets/64a7bc9a-bd3e-4d98-a853-4f91f16ef82e" />
@@ -29,10 +30,12 @@ By default, a Feature Gate will return `false` when there are no rules configure
 3. Click the **+ Add New Rule** button.
 
 ![Image](/img/feature-gates/add-rule.png)
+
 4. Name your rule with something descriptive that other teammates will understand, such as "Mobile Users Only".
+
 5. Configure your Feature Gate with the following options:
   * **Environment(s)** - The [staging environment(s)](/guides/using-environments) you want your gate to apply to
-  * [**Criteria**](#rule-criteria) - Specific evaluation conditions for the rule 
+  * [**Criteria**](#rule-criteria-available-in-statsig) - Specific evaluation conditions for the rule. Read more details about criteria and condition evaluation [here](/feature-flags/conditions).
   * **Split %** - The percentage of users who meet the criteria that you want to pass or fail the gate check. The Fail % is automatically calculated based on the Pass % you set
   * [**Overrides**](/feature-flags/overrides) - A list of users you want to always bypass your gate (i.e., a "whitelist")
 6. Changes to Feature Gates and targeting rules are NOT auto-saved. Make sure to save your changes by clicking the "Save" button at the bottom right when you are ready for your changes to take effect.
@@ -68,7 +71,7 @@ You can target users based on their eligibility of other Feature Gates, enabling
 
 
 ## Rule criteria available in Statsig
-This table provides a comprehensive overview of all available targeting properties in Statsig Feature Gates.
+This table provides a comprehensive overview of all available targeting properties in Statsig Feature Gates. For full details on all rule criteria and how conditions are evaluated, read about [Feature Gate rule criteria](/feature-flags/conditions).
 
 | Category | Property | Description |
 |----------|----------|-------------|

@@ -1,18 +1,12 @@
 ---
-title: Exposures
-sidebar_label: Exposures
+title: Viewing Feature Gate exposures
+sidebar_label: Monitor your Feature Gate
 slug: /feature-flags/view-exposures
 keywords:
   - owner:shubham
 last_update:
   date: 2025-02-11
 ---
-
-:::note
-
-Usually referred to online as _feature flags_, the Statsig UI and SDKs call them _feature gates_.
-
-:::
 
 ## Gate Exposures
 
