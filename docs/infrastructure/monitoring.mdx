@@ -37,6 +37,9 @@ Below is a list of the primary metrics currently available in the SDK:
 | `config_no_update`            | counter        | `source`, `source_api`                            | Tracks occurrences of no configuration updates. |
 | `events_successfully_sent_count`              | counter        | N/A                           | Tracks number of events sent successfully to the Statsig server. |
 | `sdk_exceptions_count`        | counter | N/A | Tracks occurrences of unexpected exceptions caught. |
+| `grpc_received_message`       | counter | N/A | GRPC Streaming received a new message |
+| `grpc_reconnected`       | counter | N/A | GRPC streaming reconnected |
+| `grpc_streaming_failed_with_retry_ct`       | distribution | N/A | Streaming failed and how many retry we are on (to estimate how long the client has been disconnected) |
 
 **Note**: 
 - All metrics are prefixed by `statsig.sdk.`, for example, the full initialization metric name in your integration will be `statsig.sdk.initialization`.

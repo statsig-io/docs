@@ -120,9 +120,9 @@ These settings provide full flexibility, allowing you to tailor the funnel metri
 
 ### How it works in experiments
 
-First, at unit level, Statsig for each step of the funnel, if the unit completed that step some time after all previous steps were completed in order. This creates a series of step flags.
+First, at unit level, a 1/0 (or session-count number for session funnels) metric is constructed for each step of the funnel. This flag is 1 if the unit completed that step some time after all previous steps were completed in order. If using a session-level funnel, it's the number of sessions where that is true, e.g. all previous steps were completed in order for that session key.
 
-Then, at the group level, the stepwise mean is calculated as the units for the next step divided by the units for the current step. The overall mean is calculated as the units/sessions that completed the funnel divided by the unit/sessions that started the funnel.
+Then, at the group level, the stepwise mean is calculated as the total of each step's metric divided by the total metric from the previous step. The overall mean is calculated as the units/sessions that completed the funnel divided by the unit/sessions that started the funnel.
 
 Statsig provides a description of this in-product for any user who wants to learn more: 
 ![Screenshot 2025-03-27 at 11 45 42 AM](https://github.com/user-attachments/assets/84c22973-af41-495d-a943-f0f7436050ee)
