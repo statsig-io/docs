@@ -10,7 +10,7 @@ This requires javascript code to capture the cookie or the UTM from the browser 
 const user = {
   custom: {
     isLoggedIn: cookieLib.get('isLoggedIn'),
-    utm: new URL(window.location.href).searchParams.get("utm");
+    utm: new URL(window.location.href).searchParams.get("utm")
   }
 }
 const myStatsigClient = new StatsigClient(YOUR_SDK_KEY, user, options);
