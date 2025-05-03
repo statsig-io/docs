@@ -1,6 +1,6 @@
 ---
 title: Viewing Feature Gate exposures
-sidebar_label: Monitor your Feature Gate
+sidebar_label: Monitor feature impact
 slug: /feature-flags/view-exposures
 keywords:
   - owner:shubham

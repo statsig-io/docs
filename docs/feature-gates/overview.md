@@ -14,13 +14,25 @@ last_update:
 
 
 ## When to Use
-#### ✅ Use when you need to...
-- Change the user experience based on context like user ID, client device, browser type, app version, and other environment attributes
+#### Use when you need to...
+- Schedule gradual feature rollouts to safely deploy new code
+- Set up dev staging environments before code hits production, like dogfooding
 - Have a just-in-case "kill switch" that lets you immediately turn off a particular code branch for users in production
+- Modify the user experience based on attributes like username, email, or other identifiers 
+- Change app behavior based on context like device, browser type, version, and other environment attributes
 
-#### 🚫 Not recommended if...
-- You need to return structured or multi-value data—use a [Dynamic Config](/dynamic-config)
-- You want to run more complex experiments—set up an [Experiment](/experiments-plus) instead
+#### Not recommended if...
+- You need to return structured or multi-value data based on targeting rules and conditions—use a [Dynamic Config](/dynamic-config)
+- You want to test complex hypotheses beyond simple A/B tests and launch impact—set up an [Experiment](/experiments-plus) instead
+
+
+## How It Works
+1. First, [create a Feature Gate](/feature-gates/create) with [targeting rules](/feature-flags/conditions) in the Statsig console. 
+2. For the Feature Gate to actually impact users, you'll need to integrate the [Statsig SDK](/sdks/getting-started) into your product code. The SDK will query the gate value during runtime and return a true/false result based on user attributes, environment data, and other conditions you define.  
+3. You can [test a Feature Gate](/feature-flags/test-gate) to make sure it's behaving as expected before you actually roll it out.
+4. For finer targeting control, you can also set up [Feature Gate overrides](/feature-flags/overrides), which are like "bypass lists" or "whitelists" for the gate.
+5. Once your Feature Gate is live, you can [view Feature Gate exposures](/feature-flags/view-exposures) in the Statsig console to monitor who is encountering your gate.
+6. You can easily set up deprecation rules and clean up old flags by [managing Feature Gate lifecycles](/feature-flags/feature-flags-lifecycle).
 
 ## Key Capabilities
 ### Scheduled Rollouts
@@ -30,15 +42,10 @@ Implement Feature Gates with [Overrides](/feature-flags/overrides) to allow a sp
 ### Chained Flag Dependencies
 Chain Feature Gates together in parent-child or other dependent relationships so a top-level gate can enable or disable all its dependent flags in one go, perfect for global kill switches guarding sub-features.
 ### Built-in A/B Tests
-You can run simple A/B tests without additional setup. In practice, this means treating the users who see the new feature as the "treatment" group, and the users who are gated (and therefore do not see the new feature yet) as the "control".
+You can run simple A/B tests without additional setup using [Pulse](/feature-flags/view-exposures). In practice, this means treating the users who see the new feature as the "treatment" group, and the users who are gated (and therefore do not see the new feature yet) as the "control".
+### Gate Testing
+[Test your Feature Gates](/feature-flags/test-gate) with Statsig's built-in tools to check whether your Feature Gate is configured to target the right people.
 
-## How It Works
-1. First, [create a Feature Gate](/feature-flags/create-new) with [targeting rules](/feature-flags/add-rule) in the Statsig console. 
-2. For the Feature Gate to actually impact users, you'll need to integrate the [Statsig SDK](/sdks/getting-started) into your product code. The SDK will query the gate value during runtime and return a true/false result based on user attributes, environment data, and other conditions you define.  
-3. You can [test a Feature Gate](/feature-flags/test-gate) to make sure it's behaving as expected before you actually roll it out.
-4. For finer targeting control, you can also set up [Feature Gate overrides](/feature-flags/overrides), which are like "bypass lists" or "whitelists" for the gate.
-5. Once your Feature Gate is live, you can [view Feature Gate exposures](/feature-flags/view-exposures) in the Statsig console to monitor who is encountering your gate.
-6. You can easily set up deprecation rules and clean up old flags by [managing Feature Gate lifecycles](/feature-flags/feature-flags-lifecycle).
 
 ## FAQs
 #### **How are Feature Gates different from Dynamic Configs?**

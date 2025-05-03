@@ -1,6 +1,6 @@
 ---
 title: Permanent and Stale Gates
-sidebar_label: Permanent and stale Feature Gates
+sidebar_label: Permanent and stale gates
 slug: /feature-flags/permanent-and-stale-gates
 keywords:
   - owner:shubham
