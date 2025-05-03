@@ -1,5 +1,5 @@
 ---
-title: Feature Gates Overview
+title: Feature Gates
 sidebar_label: Overview
 slug: /feature-gates/overview
 keywords:

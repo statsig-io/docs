@@ -407,8 +407,7 @@ const sidebars: SidebarsConfig = {
               label: "Feature Gates",
               items: [
                 "feature-gates/overview",
-                "feature-flags/create-new",
-                "feature-flags/add-rule",
+                "feature-gates/create",
                 "feature-flags/test-gate",
                 "feature-flags/overrides",
                 "feature-flags/scheduled-rollouts",
