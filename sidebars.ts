@@ -49,15 +49,8 @@ const sidebars: SidebarsConfig = {
             "client/concepts/parameter-stores",
             "guides/first-device-level-experiment",
             "guides/experiment-on-custom-id-types",
-            {
-              type: "category",
-              label: "Developer Staging",
-              collapsed: true,
-              items: [
-                "guides/using-environments",
-                "guides/testing",
-              ]
-            },
+            "guides/using-environments",
+            "guides/testing",
             {
               type: "category",
               label: "Migration Guides",
