@@ -3,7 +3,7 @@ sidebar_label: Create your first Feature Gate
 title: Create your first Feature Gate
 slug: guides/feature-gates
 keywords:
-  - owner:jina
+  - owner:jinayoon
 last_update:
   date: 2025-04-28
 ---
