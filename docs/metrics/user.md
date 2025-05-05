@@ -38,7 +38,7 @@ You're currently viewing a feature designed for Statsig Cloud users. Warehouse N
 | `new_mau_28d`               | Count              | Users who became active for the first time within the last 28 days. |
 | `daily_user_stickiness`     | Stickiness (Rolling) | Fraction of the previous day's users who are active on the next day. Rolling day-to-day repeat engagement (**not** DAU/MAU or DAU/WAU). |
 | `weekly_user_stickiness`    | Stickiness (Rolling) | Fraction of the previous week's users who have been active within the last 7 days. Rolling week-over-week repeat engagement (**not** WAU/MAU). |
-| `monthly_user_stickiness`   | Stickiness (Rolling) | Fraction of the previous month's users who have been active within the last 28 days. Rolling month-over-month repeat engagement. |
+| `monthly_user_stickiness`   | Stickiness (Rolling) | Fraction of the previous month's users who have been active within the last 28 days. Rolling month-over-month repeat engagement (**not** DAU/MAU). |
 | `d1_retention_rate`         | Retention (Rolling)| % of new users from 1 day ago who were active at least once today (rolling Day 2 window retention).
 | `WAU @ D14 Retention Rate`  | Retention (Rolling)| % of new users from 13 days ago who were active at least once in days 8–14. Rolling Week 2 window retention. |
 | `MAU @ D56 Retention Rate`  | Retention (Rolling) | % of new users from 56 days ago who were active at least once during days 29–56. Rolling Month 2 retention. |
