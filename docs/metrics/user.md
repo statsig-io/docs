@@ -36,9 +36,9 @@ You're currently viewing a feature designed for Statsig Cloud users. Warehouse N
 | `L7`                        | Lness         | Average number of days a user was active in the last 7 days (value range: 0–7). |
 | `L14`                       | Lness         | Average number of days a user was active in the last 14 days (value range: 0–14). |
 | `L28`                       | Lness         | Average number of days a user was active in the last 28 days (value range: 0–28). |
-| `daily_user_stickiness`     | Repeat Engagement   | % of users active yesterday who returned today. Rolling day-to-day repeat rate (**not** DAU/MAU or DAU/WAU). |
-| `weekly_user_stickiness`    | Repeat Engagement   | % of users active last week who were active again this week. Rolling week-over-week repeat rate (**not** WAU/MAU). |
-| `monthly_user_stickiness`   | Repeat Engagement   | % of users active last month who were active again this month. Rolling month-over-month repeat rate. |
+| `daily_user_stickiness`     | Engagement (Rolling)  | % of users active yesterday who returned today. Rolling day-to-day repeat engagement rate (**not** DAU/MAU or DAU/WAU). |
+| `weekly_user_stickiness`    | Engagement (Rolling)  | % of users active last week who were active again this week (last 7 days). Rolling week-over-week repeat engagement rate (**not** WAU/MAU). |
+| `monthly_user_stickiness`   | Engagement (Rolling)  | % of users active last month who were active again this month (last 28 days). Rolling month-over-month repeat engagement rate. |
 
 ### New User Metrics
 | **Metric Name**              | **Type**           | **Description** |
@@ -46,9 +46,9 @@ You're currently viewing a feature designed for Statsig Cloud users. Warehouse N
 | `new_dau`                   | Count              | Users who became active for the first time on a specific day. |
 | `new_wau`                   | Count              | Users who became active for the first time within the last 7 days. |
 | `new_mau_28d`               | Count              | Users who became active for the first time within the last 28 days. |
-| `d1_retention_rate`         | Retention (Rolling)| % of _new_ users from 1 day ago who were active at least once today (rolling 1-day window retention at Day 1).
-| `WAU @ D14 Retention Rate`  | Retention (Rolling)| % of _new_ users from 13 days ago who were active at least once in days 8–14 (rolling 7-day window retention at Day 14). |
-| `MAU @ D56 Retention Rate`  | Retention (Rolling) | % of _new_ users from 56 days ago who were active at least once during days 29–56 (rolling 28-day window retention at Day 56). |
+| `d1_retention_rate`         | Retention (Rolling)| % of _new_ users from 1 day ago who were active at least once today (rolling Day 2 window retention rate).
+| `WAU @ D14 Retention Rate`  | Retention (Rolling)| % of _new_ users from 13 days ago who were active at least once in days 8–14 (rolling Week 2 window retention rate). |
+| `MAU @ D56 Retention Rate`  | Retention (Rolling) | % of _new_ users from 56 days ago who were active at least once during days 29–56 (rolling Month 2 retention rate). |
 
 
 These user metrics can be very useful in understanding the long-term behavior of your users.  However, several of these metrics do not behave well as daily experimentation metrics.  This is because metrics like L7 are highly correlated across days.  For example, a user who is L7 = 7 on a given day can either be L7 = 6 or L7 = 7 the following day.  This is not a true daily independent variable.  Metrics like this can be more likely to trigger false positive and false negative results.  This generally applies to stickiness and L-ness metrics.
