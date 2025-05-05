@@ -89,6 +89,13 @@ External data store for Statsig values.
 - **`global_custom_fields`**: Option\<HashMap\<String, DynamicValue\>\>
   Global custom fields to include with all evaluations.
 
+- **`proxy_config`**: Option\<ProxyConfig\>
+  Configuration for connecting through a proxy server. The `ProxyConfig` struct has the following properties:
+  - `proxy_host`: Option\<String\> - Specifies the proxy server host
+  - `proxy_port`: Option\<u16\> - Specifies the proxy server port
+  - `proxy_auth`: Option\<String\> - For proxy authentication (format: `"username:password"`)
+  - `proxy_protocol`: Option\<String\> - Specifies the protocol (e.g., `"http"`, `"https"`)
+
 
 ### Example Usage
 
@@ -115,6 +122,13 @@ let options = StatsigOptions::builder()
     .disable_all_logging(Some(false))
     .enable_id_lists(Some(true))
     .specs_sync_interval_ms(Some(30000))
+    // Configure proxy settings
+    .proxy_config(Some(ProxyConfig {
+        proxy_host: Some("proxy.example.com".to_string()),
+        proxy_port: Some(8080),
+        proxy_protocol: Some("https".to_string()),
+        proxy_auth: None, // Use Some("username:password".to_string()) if authentication is required
+    }))
     .build();
 
 // Pass the options object into Statsig::new()
