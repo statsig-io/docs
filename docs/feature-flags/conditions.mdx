@@ -1,6 +1,6 @@
 ---
-title: Feature Flag Conditions
-sidebar_label: Conditions
+title: Feature Gate rule criteria
+sidebar_label: Targeting rules and conditions
 slug: /feature-flags/conditions
 keywords:
   - owner:shubham
@@ -8,17 +8,10 @@ last_update:
   date: 2024-10-16
 ---
 
-:::note
-
-Usually referred to online as _feature flags_, the Statsig UI and SDKs call them _feature gates_.
-
-:::
-
-## Introduction
 
 Statsig feature gates contain a list of rules that are evaluated in order from top to bottom. The page describes in more detail how these rules are evaluated and lists all currently supported conditions.
 
-### Rule Evaluation
+## Rule Evaluation
 
 The rules that you create are evaluated in the order they're listed. For each rule, the **criteria** or **conditions** determine which users _qualify_ for the Pass/Fail treatments. The Pass percentage further determines the percentage of _qualifying_ users that will be exposed to the new feature. The remaining _qualifying_ users will see the feature disabled.
 

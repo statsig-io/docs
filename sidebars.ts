@@ -404,15 +404,14 @@ const sidebars: SidebarsConfig = {
           items: [
             {
               type: "category",
-              label: "Feature Flags",
+              label: "Feature Gates",
               items: [
-                "feature-flags/working-with",
-                "feature-flags/create-new",
-                "feature-flags/add-rule",
-                "feature-flags/test-gate",
-                "feature-flags/overrides",
-                "feature-flags/scheduled-rollouts",
+                "feature-gates/overview",
+                "feature-gates/create",
                 "feature-flags/conditions",
+                "feature-flags/scheduled-rollouts",
+                "feature-flags/overrides",
+                "feature-flags/test-gate",
                 "feature-flags/view-exposures",
                 "feature-flags/feature-flags-lifecycle",
                 "feature-flags/permanent-and-stale-gates",
