@@ -60,7 +60,7 @@ You can now test this feature gate by configuring the User object in the "Test G
 ## Part 3: Create a Client API Key
 Now that you've set up the Feature Gate from the console, it's time to integrate it into your product with the Statsig SDK. We'll first need to create a new Client API key to use in our product.
 
-1. Navigate to [**Keys & Environments**](https://console.statsig.com/api_keys) in the Statsig console. You can also find this by going to by going to **Settings** at the bottom left of the Statsig console.
+1. Navigate to [**Keys & Environments**](https://console.statsig.com/api_keys) in the Statsig console. You can also find this by going to **Settings** at the bottom left of the Statsig console.
 
 2. Scroll down to **API Keys**. Click on **Generate New Key**.
 
