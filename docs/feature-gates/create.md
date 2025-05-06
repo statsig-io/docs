@@ -8,9 +8,11 @@ last_update:
   date: 2025-05-03
 ---
 
-This guide walks through how to create a Feature Gate in the Statsig console, how to add an evaluation rule to a Feature Gate, examples of common Feature Gate setups, and a list of all Feature Gate targeting conditions available in Statsig.
+This guide walks through how to create a Feature Gate in the Statsig console, how to add an evaluation rule to a Feature Gate, how to implement the Feature Gate in your code, examples of common Feature Gate setups, and a list of all Feature Gate targeting conditions available in Statsig.
 
-## Create a Feature Gate in the Statsig console
+## In the Statsig console
+
+### Create a new Feature Gate
  
 1. Log into the Statsig console at https://console.statsig.com.
 2. On the left-hand navigation panel, under **Feature Management**, select **Feature Gates**.
@@ -23,7 +25,7 @@ This guide walks through how to create a Feature Gate in the Statsig console, ho
 6. At this point, you've successfully created a new Feature Gate without any evaluation rules or conditions set up yet.
 <img width="1183" alt="Screenshot 2025-02-06 at 6 44 30 PM" src="https://github.com/user-attachments/assets/64a7bc9a-bd3e-4d98-a853-4f91f16ef82e" />
  
-## Add a rule to your Feature Gate
+### Add a rule to your Feature Gate 
 By default, a Feature Gate will return `false` when there are no rules configured to target the gate to a set of users. In other words, all users are "gated" by default from seeing the feature until you've set rules for who gets to "pass". Next, we'll walk through steps for adding evaluation rules or conditions for a Feature Gate.
 1. In Statsig console, under **Feature Management**, select **Feature Gates**.
 2. Select the feature gate where you want to add a targeting rule
@@ -40,7 +42,28 @@ By default, a Feature Gate will return `false` when there are no rules configure
   * [**Overrides**](/feature-flags/overrides) - A list of users you want to always bypass your gate (i.e., a "whitelist")
 6. Changes to Feature Gates and targeting rules are NOT auto-saved. Make sure to save your changes by clicking the "Save" button at the bottom right when you are ready for your changes to take effect.
 
-## Common Feature Gate setups
+## In your code
+So far in this doc, we've walked through the set up of Feature Gates in the web console. For these gates to _actually_ impact the behavior of your application and your users' experiences, you have to update your product code. It's sort of like setting policies; it's not enough to just list the new rules you'd like to enforce. You need to also set up the infrastructure to make sure those new policies actually take effect in realtime, and that's where the Statsig SDK comes in.
+
+### Initialize the Statsig SDK
+If you haven't already initialized the Statsig SDK, follow the [Installation Steps](/client/javascript-sdk/react#installation) in the language of your choice.
+
+### Check a Feature Gate
+Use the `checkGate` function in the Statsig SDK in the language of your choice. Here's an example in [React](/client/javascript-sdk/react#basics-check-gate):
+
+```tsx
+const { client } = useStatsigClient();
+return (
+  <div>Gate is {client.checkGate('example_gate') ? 'passing' : 'failing'}.</div>
+);
+```
+In the code snippet example above, the Statsig SDK is checking from a client app whether you've set any rules named "Example Gate". It will render the text "Gate is passing" for users who pass your gate based on conditions you set, and "Gate is failing" for users who fail the gate conditions.
+
+:::tip
+Statsig offers over 20 client and server-side SDKs. Check out the full list of [SDKs](/sdks/client-vs-server#available-sdks) to find the one that best fits your needs.
+:::
+
+## Common Feature Gates
 
 ### Kill Switches
 You can set up a simple "kill switch" by first setting an `Everyone` criteria's Pass percentage to 100%. Then, if you need to completely disable the feature for all users at some point after code deployment, you can set the Pass percentage to 0%, effectively killing the feature for all users.
