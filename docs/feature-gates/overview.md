@@ -3,7 +3,7 @@ title: Feature Gates
 sidebar_label: Overview
 slug: /feature-gates/overview
 keywords:
-  - owner:jina
+  - owner:jinayoon
 last_update:
   date: 2025-05-01
 ---
