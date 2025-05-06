@@ -23,6 +23,7 @@ If there's any confusion, or if a feature is critical for your evaluation, we're
 |                                     | Gate lifecycle management                 | Identical                                          |
 | E2E Experiments (w/ SDK)            | Pulse                                     | WHN offers on-demand reloads                       |
 | Pulse (Scorecards)                  | CUPED                                     | Identical                                          |
+|                                     | CURE                                      | WHN only for now                                   |
 |                                     | Topline Impact                            | Identical                                          |
 |                                     | Daily Time Series                         | Identical                                          |
 |                                     | Frequentist vs Bayesian                   | Identical                                          |
