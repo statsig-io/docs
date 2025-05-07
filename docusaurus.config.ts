@@ -450,78 +450,18 @@ const config: Config = {
       },
     },
     algolia: {
-      // The application ID provided by Algolia
       appId: "JOWHDNMZRN",
 
-      // Public API key: it is safe to commit it
       apiKey: "2a538120ca7db3411698786731f3c2f6",
 
       indexName: "statsig",
 
-      // Optional: see doc section below
-      contextualSearch: false,
+      contextualSearch: true,
 
-      // // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-      // externalUrlRegex: 'external\\.com|domain\\.com',
-
-      // // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
-      // replaceSearchResultPathname: {
-      //   from: '/docs/', // or as RegExp: /\/docs\//
-      //   to: '/',
-      // },
-
-      // Optional: Algolia search parameters
       searchParameters: {
         facetFilters: []
       },
 
-      transformSearchClient: (searchClient) => {
-        const originalSearch = searchClient.search;
-
-        searchClient.search = function (requests) {
-          const path = window.location.pathname;
-          let section = 'docs';
-
-          if (path.match(/\/(sdks|client|server|console-api|http-api|sdk)\//)) {
-            section = 'api';
-          } else if (path.match(/\/statsig-warehouse-native\//)) {
-            section = 'warehouse';
-          }
-
-          const modifiedRequests = requests.map(request => {
-            const modifiedRequest = { ...request };
-
-            if (!modifiedRequest.params) {
-              modifiedRequest.params = {};
-            }
-
-            if (section === 'api') {
-              modifiedRequest.params.filters = 'hierarchy.lvl0:SDKs\\ \\&\\ APIs OR path:/client/ OR path:/server/ OR path:/console-api/ OR path:/http-api/ OR path:/sdks/ OR path:/sdk/';
-            } else if (section === 'warehouse') {
-              modifiedRequest.params.filters = 'hierarchy.lvl0:Warehouse\\ Native OR path:/statsig-warehouse-native/';
-            } else {
-              modifiedRequest.params.filters = 'NOT hierarchy.lvl0:SDKs\\ \\&\\ APIs AND NOT hierarchy.lvl0:Warehouse\\ Native AND NOT path:/client/ AND NOT path:/server/ AND NOT path:/console-api/ AND NOT path:/http-api/ AND NOT path:/sdks/ AND NOT path:/sdk/ AND NOT path:/statsig-warehouse-native/';
-            }
-
-            return modifiedRequest;
-          });
-
-          return originalSearch.call(searchClient, modifiedRequests);
-        };
-
-        return searchClient;
-      },
-
-      initialSearchFormProps: {
-        onSelect: ({ document }) => {
-          window.location.href = document.url;
-        },
-      },
-
-      // // Optional: path for search page that enabled by default (`false` to disable it)
-      // searchPagePath: 'search',
-
-      // // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
       insights: true,
     },
     navbar: {

@@ -660,7 +660,21 @@ html[data-theme='dark'] .welcome-card {
 
 .navbar__item {
   white-space: nowrap;
-  font-size: 0.9rem;
+  /* font-size: 0.9rem; */
+}
+
+.navbar__link--active {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--ifm-navbar-item-padding-horizontal);
+    right: var(--ifm-navbar-item-padding-horizontal);
+    height: 2px;
+    background-color: var(--ifm-color-primary);
+  }
 }
 
 .navbar__logo {
@@ -702,26 +716,5 @@ html[data-theme='dark'] .welcome-card {
 
   .navbar__logo {
     height: 22px;
-  }
-}
-
-/* Ensure search bar container is flexible */
-.navbar__items>div:has(.DocSearch) {
-  flex: 1;
-  min-width: 0;
-  margin-left: auto;
-  margin-right: 1rem;
-}
-
-/* Make the Get Started button more compact on smaller screens */
-.navbar__item .button--primary {
-  padding: 0.4rem 0.8rem;
-  font-size: 0.9rem;
-}
-
-@media (max-width: 996px) {
-  .navbar__item .button--primary {
-    padding: 0.3rem 0.6rem;
-    font-size: 0.85rem;
   }
 }
