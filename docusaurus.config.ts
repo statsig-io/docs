@@ -539,18 +539,21 @@ const config: Config = {
           docId: 'getting-started',
           sidebarId: 'product-docs',
           label: 'Product Docs',
+          id: 'product-docs', //don't edit this without rerunning algolia scraper
         },
         {
           type: 'docSidebar',
           position: 'left',
           sidebarId: 'warehouse',
           label: 'Warehouse Native',
+          id: 'warehouse', //don't edit this without rerunning algolia scraper
         },
         {
           type: 'docSidebar',
           position: 'left',
           sidebarId: 'api',
           label: 'SDKs & APIs',
+          id: 'sdk-api', //don't edit this without rerunning algolia scraper
         },
         {
           type: "search",

@@ -11,38 +11,11 @@
   const originalFetch = window.fetch;
   
   let isSearchRequest = false;
-  let currentSection = null;
 
   function getCurrentSection() {
-    if (currentSection) return currentSection;
-    
-    const path = window.location.pathname;
-    console.log('[Statsig Search] Current path:', path);
-    
-    if (path.match(/\/(sdks|client|server|console-api|http-api|sdk)\//)) {
-      currentSection = 'api';
-      return currentSection;
-    } else if (path.match(/\/statsig-warehouse-native\//)) {
-      currentSection = 'warehouse';
-      return currentSection;
-    }
-    
-    const navItems = document.querySelectorAll('.navbar__item');
-    for (const item of navItems) {
-      if (item.classList.contains('navbar__item--active')) {
-        const label = item.textContent.trim();
-        if (label.includes('SDKs') || label.includes('APIs')) {
-          currentSection = 'api';
-          return currentSection;
-        } else if (label.includes('Warehouse')) {
-          currentSection = 'warehouse';
-          return currentSection;
-        }
-      }
-    }
-    
-    currentSection = 'docs';
-    return currentSection;
+    const currentPageLink = document.querySelector('nav a[aria-current="page"]').id || "docs";
+    console.log('[Statsig Search] Current section:', currentPageLink);
+    return currentPageLink;
   }
   
   function addSectionIndicator(section) {
@@ -87,42 +60,10 @@
     }, 100);
   }
 
-  function getSectionFilters(section) {
-    if (section === 'api') {
-      return {
-        filters: 'path:/client/ OR path:/server/ OR path:/console-api/ OR path:/http-api/ OR path:/sdks/ OR path:/sdk/'
-      };
-    } else if (section === 'warehouse') {
-      return {
-        filters: 'path:/statsig-warehouse-native/'
-      };
-    } else {
-      return {
-        filters: 'NOT path:/client/ AND NOT path:/server/ AND NOT path:/console-api/ AND NOT path:/http-api/ AND NOT path:/sdks/ AND NOT path:/sdk/ AND NOT path:/statsig-warehouse-native/'
-      };
-    }
-  }
-
   function applyFiltersToRequest(request, section) {
-    if (!request.params) {
-      request.params = {};
-    }
-    
-    let params;
-    try {
-      params = new URLSearchParams(request.params);
-    } catch (e) {
-      params = new URLSearchParams();
-    }
-    
-    const sectionFilters = getSectionFilters(section);
-    
-    for (const [key, value] of Object.entries(sectionFilters)) {
-      params.set(key, value);
-    }
-    
-    request.params = params.toString();
-    
+    // Apply filter as a top-level property in the request object
+    // instead of encoding it in the params string
+    request.filters = `section:${section}`;
     return request;
   }
 
@@ -132,12 +73,11 @@
     const originalSend = xhr.send;
     
     xhr.open = function() {
-      const method = arguments[0];
       const url = arguments[1];
       
       if (url && typeof url === 'string' && url.includes('algolia.net')) {
         isSearchRequest = true;
-        console.log('[Statsig Search] Detected Algolia XHR request:', url);
+        console.log('[Statsig Search] Detected Algolia XHR request');
       }
       
       return originalOpen.apply(this, arguments);
@@ -149,13 +89,10 @@
           const section = getCurrentSection();
           const data = JSON.parse(body);
           
-          console.log('[Statsig Search] Original Algolia XHR request:', data);
-          
           if (Array.isArray(data.requests)) {
             data.requests = data.requests.map(request => applyFiltersToRequest(request, section));
           }
           
-          console.log('[Statsig Search] Modified Algolia XHR request:', data);
           body = JSON.stringify(data);
         } catch (e) {
           console.error('[Statsig Search] Error modifying Algolia XHR request:', e);
@@ -175,21 +112,16 @@
       (typeof resource === 'string' && resource.includes('algolia.net')) ||
       (resource instanceof Request && resource.url.includes('algolia.net'));
     
-    if (isAlgoliaRequest) {
+    if (isAlgoliaRequest && init && init.body) {
       try {
         const section = getCurrentSection();
+        const data = JSON.parse(init.body);
         
-        if (init && init.body) {
-          const data = JSON.parse(init.body);
-          console.log('[Statsig Search] Original Algolia fetch request:', data);
-          
-          if (Array.isArray(data.requests)) {
-            data.requests = data.requests.map(request => applyFiltersToRequest(request, section));
-          }
-          
-          console.log('[Statsig Search] Modified Algolia fetch request:', data);
-          init.body = JSON.stringify(data);
+        if (Array.isArray(data.requests)) {
+          data.requests = data.requests.map(request => applyFiltersToRequest(request, section));
         }
+        
+        init.body = JSON.stringify(data);
       } catch (e) {
         console.error('[Statsig Search] Error intercepting Algolia fetch request:', e);
       }
@@ -198,11 +130,6 @@
     return originalFetch.call(window, resource, init);
   };
 
-  function resetCurrentSection() {
-    currentSection = null;
-    console.log('[Statsig Search] Reset current section');
-  }
-
   // Initialize the search customization
   function initialize() {
     console.log('[Statsig Search] Initializing search customization');
@@ -210,7 +137,6 @@
     document.addEventListener('click', function(event) {
       if (event.target.closest('.DocSearch-Button')) {
         console.log('[Statsig Search] Search button clicked');
-        resetCurrentSection();
         addSectionIndicator(getCurrentSection());
       }
     }, true);
@@ -218,18 +144,9 @@
     document.addEventListener('keydown', function(event) {
       if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
         console.log('[Statsig Search] Keyboard shortcut detected');
-        resetCurrentSection();
         addSectionIndicator(getCurrentSection());
       }
     });
-    
-    window.addEventListener('popstate', resetCurrentSection);
-    
-    const originalPushState = window.history.pushState;
-    window.history.pushState = function() {
-      resetCurrentSection();
-      return originalPushState.apply(this, arguments);
-    };
     
     console.log('[Statsig Search] Search customization initialized');
   }
