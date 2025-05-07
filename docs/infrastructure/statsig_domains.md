@@ -32,6 +32,8 @@ These domains are used by our SDKs to communicate with our backend for feature g
 And these as well:
 - `beyondwickedmapping.org`
 
+Note that Statsig's SDKs may switch between these domains on-the-fly as part of our DNS resolution logic.
+
 :::info Why such odd names?
 We constantly and dynamically update these domains to prevent overzealous blocking from browser ad blockers. These are updated whenever they pick up the existing ones.
 :::

@@ -1,0 +1,57 @@
+---
+sidebar_label: Python Migration Guide
+title: Python Core Migration Guide
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-04-30
+---
+
+## Overview
+
+This guide summarizes the changes needed to migrate from the old ["statsig"](https://pypi.org/project/statsig/) Python package to the new [statsig-python-core](https://pypi.org/project/statsig/) package. For more information on the Core Server SDKs - see our [Server Core Overview](./index.mdx). Changes include a new mapping of StatsigOptions, minor core API changes, changes to the operation of ID list/ Country lookups, amongst other, smaller changes. 
+
+### StatsigOptions Changes
+
+| Old name | New name | Description |
+| --- | --- | --- |
+| api | deprecated | |
+| api_for_download_config_specs | specs_url | Need to complete URL with endpoint |
+| api_for_get_id_lists | id_lists_url | Need to complete URL with endpoint |
+| api_for_log_event | log_event_url | Need to complete URL with endpoint |
+| tier | environment | |
+| init_timeout | init_timeout_ms | New init_timeout_ms applies to overall initialization instead of just network fetching. Consider increasing by 1000ms |
+| timeout | deprecated | Previously only used to time network requests |
+| rulesets_sync_interval | specs_sync_interval_ms | Unit change |
+| idlists_sync_interval | id_lists_sync_interval_ms | Unit change |
+| local_mode | disable_network | |
+| bootstrap_values | not currently supported | |
+| rules_updated_callback | coming soon | |
+| event_queue_size | event_logging_max_queue_size | |
+| data_store | data_store | New interface type |
+| idlists_thread_limit | deprecated | |
+| logging_interval | deprecated | |
+| disable_diagnostics | deprecated | |
+| custom_logger | coming soon | |
+| enable_debug_logs | deprecated | |
+| disable_all_logging | disable_all_logging | |
+| evaluation_callback | coming soon | |
+| retry_queue_size | event_logging_max_pending_batch_queue_size | |
+| proxy_configs | coming soon | |
+| fallback_to_statsig_api | fallback_to_statsig_api | |
+| out_of_sync_threshold_in_s | coming soon | Signature will likely change |
+| initialize_sources | probably deprecated | |
+| config_sync_sources | probably deprecated | |
+| output_logger_level | output_log_level | |
+| overall_init_timeout | init_timeout_ms | |
+| observability_client | observability_client | New interface |
+| sdk_error_callback | now in observability_client interface | |
+| events_flushed_callback | deprecated | |
+| (only in new SDK) | enable_id_lists | ID lists disabled by default, set to true to enable |
+| (only in new SDK) | wait_for_user_agent_init | |
+| (only in new SDK) | wait_for_country_lookup_init | |
+| (only in new SDK) | disable_user_agent_parsing | |
+| (only in new SDK) | disable_country_lookup | |
+| (only in new SDK) | global_custom_fields | |
+| (only in new SDK) | persistent_storage | |
+

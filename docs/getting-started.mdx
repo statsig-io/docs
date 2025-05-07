@@ -17,24 +17,24 @@ import CardHeader from '@site/src/components/Card/CardHeader';
 import CardBody from '@site/src/components/Card/CardBody';
 import CardFooter from '@site/src/components/Card/CardFooter';
 import Columns from '@site/src/components/Columns';
-import Column from '@site/src/components//Columns/Column';
+import Column from '@site/src/components/Columns/Column';
 import Link from '@docusaurus/Link';
 
 <Styles />
 # Welcome to Statsig Documentation
 Statsig is the complete platform for product growth, empowering your team to build and innovate like the best tech companies in the world. 
 
-<div className="welcome-card-container padding--lg" style={{ display: 'flex', flexWrap: 'wrap' }}>
+<div className="welcome-card-container padding--lg">
   <Column className="padding--sm">
     <Card className="welcome-card" shadow="tl">
       <CardHeader>
-        <img src="/img/icons/flash.svg" alt="Flash Icon" className="icon" style= {{ width: '36px' }}/>
+        <img src="/img/icons/flash.svg" alt="Flash Icon" className="icon" style={{ width: '36px' }}/>
         <h3>SDK Quickstart</h3>
-        Learn how to use the Statsig SDK and get started in minutes.
+        <p>Install the Statsig SDK and get started in minutes.</p>
       </CardHeader>
       <CardFooter>
         <Link to="/sdks/quickstart">
-          <button className="button button--secondary button--block">Install the SDK</button>
+          <button className="button button--secondary button--block">Get started</button>
         </Link>
       </CardFooter>
     </Card>
@@ -43,35 +43,32 @@ Statsig is the complete platform for product growth, empowering your team to bui
   <Column className="padding--sm">
     <Card className="welcome-card" shadow="tl">
       <CardHeader>
-        <img src="/img/icons/organization.svg" alt="Organization Icon" className="icon" style= {{ width: '36px' }}/>
+        <img src="/img/icons/organization.svg" alt="Organization Icon" className="icon" style={{ width: '36px' }}/>
         <h3>Warehouse Native</h3>
-        Read about how to use Statsig with your data warehouse.
+        <p>Read about how to use Statsig with your data warehouse.</p>
       </CardHeader>
       <CardFooter>
         <Link to="/statsig-warehouse-native/introduction">
-
-        <button className="button button--secondary button--block" link="/statsig-warehouse-native/introduction">Read guides</button>
+          <button className="button button--secondary button--block">Read guides</button>
         </Link>
       </CardFooter>
     </Card>
   </Column>
-
 
   <Column className="padding--sm">
     <Card className="welcome-card" shadow="tl">
       <CardHeader>
-        <img src="/img/icons/description.svg" alt="Description Icon" className="icon" style= {{ width: '36px' }}/>
+        <img src="/img/icons/description.svg" alt="Description Icon" className="icon" style={{ width: '36px' }}/>
         <h3>Intro to Statsig</h3>
-        Learn more about core concepts and features of Statsig.
+        <p>Learn more about core concepts and features of Statsig.</p>
       </CardHeader>
       <CardFooter>
         <Link to="/understanding-platform">
-        <button className="button button--secondary button--block" link="guides/first-device-level-experiment">View tutorials</button>
+          <button className="button button--secondary button--block">Learn more</button>
         </Link>
       </CardFooter>
     </Card>
   </Column>
-
 </div>
 ---
 
@@ -80,7 +77,7 @@ Statsig is the complete platform for product growth, empowering your team to bui
 
 <LandingResources />
 
-You can use Statsig’s products directly with your own data warehouse through [Warehouse Native](/statsig-warehouse-native/introduction). This allows you to leverage Statsig’s features while keeping data in your existing infrastructure.
+You can use Statsig's products directly with your own data warehouse through [Warehouse Native](/statsig-warehouse-native/introduction). This allows you to leverage Statsig's features while keeping data in your existing infrastructure.
 
 ---
 
@@ -90,7 +87,7 @@ For greater control, Statsig offers SDKs for a wide variety of platforms, includ
 
 <SDKAndFrameworks />
 
-If you don’t see the SDK or framework you need, feel free to reach out directly in our [Slack Community](https://statsig.com/slack).
+If you don't see the SDK or framework you need, feel free to reach out directly in our [Slack Community](https://statsig.com/slack).
 
 ---
 # Learning Resources

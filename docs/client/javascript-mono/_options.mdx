@@ -1,7 +1,17 @@
 import NetworkConfig from "./_networkConfig.mdx";
 
-#### **disableLogging** `boolean` 
+#### **loggingEnabled** `LoggingEnabledOption` 
+> Controls whether logging is enabled and in which environments. Options are:
+> - `LoggingEnabledOption.browserOnly` - Only logs events in browser environments (default behavior)
+> - `LoggingEnabledOption.disabled` - Prevents collecting and sending any events over the network
+> - `LoggingEnabledOption.always` - Enables logging in all environments (browser and non-browser like VSCode extensions, Chrome extensions, CLIs, etc.)
+>
+> default: `LoggingEnabledOption.browserOnly`
+
+#### **disableLogging** `boolean` **(deprecated)**
 > Prevents collecting and sending any events over the network. This is useful for secure deployments where you want to completely disable analytics tracking.
+>
+> **Deprecated:** Use `loggingEnabled: LoggingEnabledOption.disabled` instead.
 >
 > default: `false`
 
@@ -70,8 +80,18 @@ import NetworkConfig from "./_networkConfig.mdx";
 >
 > default: `false`
 
-#### **disableCompression** `boolean`
+#### **logEventCompressionMode** `LogEventCompressionMode`
+> Controls whether Statsig should compress JSON bodies for network requests. Options are:
+> - `LogEventCompressionMode.Enabled` - Compress request bodies unless a network proxy is configured (default behavior)
+> - `LogEventCompressionMode.Disabled` - Do not compress request bodies
+> - `LogEventCompressionMode.Forced` - Always compress request bodies, even when a proxy is configured
+>
+> default: `LogEventCompressionMode.Enabled`
+
+#### **disableCompression** `boolean` **(deprecated)**
 > Whether or not Statsig should compress JSON bodies for network requests where possible. 
+>
+> **Deprecated:** Use `logEventCompressionMode: LogEventCompressionMode.Disabled` instead.
 >
 > default: `false`
 

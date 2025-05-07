@@ -1,7 +1,7 @@
 ---
-title: Athena (β)
+title: Athena
 slug: /statsig-warehouse-native/connecting-your-warehouse/athena
-sidebar_label: Athena (β)
+sidebar_label: Athena
 keywords:
   - owner:vm
 last_update:

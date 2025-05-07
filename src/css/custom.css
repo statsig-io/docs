@@ -608,20 +608,120 @@ span.math.math-inline {
 
 .welcome-card-container {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 20px;
+  justify-content: flex-start;
 }
 
 .welcome-card {
-  flex: 1;
+  flex: 1 1 300px;
+  min-width: 0;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
-  background: #fff;
+  background: var(--ifm-card-background-color);
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
 }
 
 .welcome-card>* {
   flex-grow: 1;
+  min-width: 0;
+}
+
+.welcome-card .icon {
+  filter: var(--ifm-icon-filter);
+}
+
+.welcome-card h3 {
+  color: var(--ifm-heading-color);
+  margin-top: 12px;
+  margin-bottom: 8px;
+  word-wrap: break-word;
+}
+
+.welcome-card p {
+  color: var(--ifm-color-content);
+  margin-bottom: 16px;
+  word-wrap: break-word;
+}
+
+html[data-theme='dark'] .welcome-card {
+  background: var(--ifm-background-color);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Navbar responsive styles */
+.navbar__items {
+  gap: 1rem;
+}
+
+.navbar__item {
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
+
+.navbar__logo {
+  height: 25px;
+  margin-right: 0.5rem;
+}
+
+.DocSearch-Button {
+  min-width: 200px;
+  max-width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .navbar__items {
+    gap: 0.5rem;
+  }
+
+  .navbar__item {
+    font-size: 0.85rem;
+  }
+
+  .DocSearch-Button {
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 996px) {
+  .navbar__items {
+    gap: 0.25rem;
+  }
+
+  .navbar__item {
+    font-size: 0.8rem;
+  }
+
+  .DocSearch-Button {
+    min-width: 150px;
+  }
+
+  .navbar__logo {
+    height: 22px;
+  }
+}
+
+/* Ensure search bar container is flexible */
+.navbar__items>div:has(.DocSearch) {
+  flex: 1;
+  min-width: 0;
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+/* Make the Get Started button more compact on smaller screens */
+.navbar__item .button--primary {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 996px) {
+  .navbar__item .button--primary {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.85rem;
+  }
 }

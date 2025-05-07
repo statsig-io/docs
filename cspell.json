@@ -675,7 +675,8 @@
     "adblockers",
     "Novalues",
     "misconfiguring",
-    "lockfiles"
+    "lockfiles",
+    "jinayoon"
   ],
   "ignorePaths": [
     "node_modules/**",

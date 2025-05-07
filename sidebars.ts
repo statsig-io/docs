@@ -46,21 +46,11 @@ const sidebars: SidebarsConfig = {
           collapsed: true,
           className: "rocket-icon sidebar-icon",
           items: [
-            "guides/feature-gates-walkthrough",
-            "guides/logging-events",
-            "guides/abn-tests",
             "client/concepts/parameter-stores",
             "guides/first-device-level-experiment",
             "guides/experiment-on-custom-id-types",
-            {
-              type: "category",
-              label: "Developer Staging",
-              collapsed: true,
-              items: [
-                "guides/using-environments",
-                "guides/testing",
-              ]
-            },
+            "guides/using-environments",
+            "guides/testing",
             {
               type: "category",
               label: "Migration Guides",
