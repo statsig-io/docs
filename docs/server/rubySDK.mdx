@@ -72,20 +72,7 @@ export const Builder = SDKDocsBuilder({
     ],
     [StatsigUser, {}],
     [StatsigOptions, { options: <Options /> }],
-    [
-      ManualExposures,
-      {
-        addedInVersion: "1.30.0",
-        gateSnippet: <ManualExposureSnippets.gateSnippet />,
-        gateExposureSnippet: <ManualExposureSnippets.gateExposureSnippet />,
-        configSnippet: <ManualExposureSnippets.configSnippet />,
-        configExposureSnippet: <ManualExposureSnippets.configExposureSnippet />,
-        experimentSnippet: <ManualExposureSnippets.experimentSnippet />,
-        experimentExposureSnippet: <ManualExposureSnippets.experimentExposureSnippet />,
-        layerSnippet: <ManualExposureSnippets.layerSnippet />,
-        layerExposureSnippet: <ManualExposureSnippets.layerExposureSnippet />,
-      },
-    ],
+    [ManualExposures, { addedInVersion: "1.30.0", ...ManualExposureSnippets }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [
       ClientInitResponse,
