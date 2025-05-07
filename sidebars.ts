@@ -46,6 +46,7 @@ const sidebars: SidebarsConfig = {
           collapsed: true,
           className: "rocket-icon sidebar-icon",
           items: [
+            "guides/first-feature",
             "client/concepts/parameter-stores",
             "guides/first-device-level-experiment",
             "guides/experiment-on-custom-id-types",
