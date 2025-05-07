@@ -43,6 +43,7 @@ import PersistentStorageExample from "./ruby/_persistentStorageExample.mdx";
 import * as ReferenceSnippets from "./ruby/_reference.mdx";
 import ClientInitResponseSnippet from "./ruby/_clientInitResponse.mdx";
 import MultiInstanceExample from "./ruby/_multiInstanceExample.mdx";
+import { Snippets as ManualExposureSnippets } from "./ruby/_manualExposures.mdx";
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -71,6 +72,20 @@ export const Builder = SDKDocsBuilder({
     ],
     [StatsigUser, {}],
     [StatsigOptions, { options: <Options /> }],
+    [
+      ManualExposures,
+      {
+        addedInVersion: "1.30.0",
+        gateSnippet: <ManualExposureSnippets.gateSnippet />,
+        gateExposureSnippet: <ManualExposureSnippets.gateExposureSnippet />,
+        configSnippet: <ManualExposureSnippets.configSnippet />,
+        configExposureSnippet: <ManualExposureSnippets.configExposureSnippet />,
+        experimentSnippet: <ManualExposureSnippets.experimentSnippet />,
+        experimentExposureSnippet: <ManualExposureSnippets.experimentExposureSnippet />,
+        layerSnippet: <ManualExposureSnippets.layerSnippet />,
+        layerExposureSnippet: <ManualExposureSnippets.layerExposureSnippet />,
+      },
+    ],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [
       ClientInitResponse,
