@@ -22,7 +22,7 @@ ID resolution is a common need in experimentation; generally the responsibility 
 
 A common problem in experimentation is trying to connect different user identifiers before or after some event boundary, most frequently signups.
 
-In these scenarios, the experimenter will have a logged-out identifier (e.g. a cookie or a Statsig stableID) as well as - for those who do sign up - a userID generated after the user signs up.Because business metrics are generally calculated at the grain of userID, it's common to want to run an experiment where the unit of analysis is a logged out identifier, but the evaluation criteria for the experiment is a logged-in metric (e.g. purchase revenue, or estimated Lifetime Value).
+In these scenarios, the experimenter will have a logged-out identifier (e.g. a cookie or a Statsig stableID) as well as - for those who do sign up - a userID generated after the user signs up. Because business metrics are generally calculated at the grain of userID, it's common to want to run an experiment where the unit of analysis is a logged out identifier, but the evaluation criteria for the experiment is a logged-in metric (e.g. purchase revenue, or estimated Lifetime Value).
 
 Many platforms handle this in an ad-hoc way, which requires the user to do pre-processing to join and deduplicate exposures, or tagging userID metrics with an associated logged-out identifier. This is tractable, but leads to you having to manage and debug fairly complex queries resolving identifiers across timestamps and joining mapping tables to your source-of-truth fact tables..
 
@@ -37,11 +37,9 @@ When using Advanced ID resolution, you can choose between modes:
 - Strict 1:1 mapping enforces that identities have a singular mapping. If you have a mapping between two IDs that are always 1:1, this mode enforces that the mapping is singular and warns you if there's data where that's to the case. Users with a single identity can use downstream metrics from the secondary identity, and multi-mapped users are considered corrupted and discarded from the analysis
 - First-touch mapping is for cases where units might have multiple mappings, in either direction. For example, a single user may have multiple "profiles", or someone may have logged into the same account from several devices or web sessions. In this case, units will use the experiment group of their first exposure for analysis, and aggregate metrics from all of their associated secondary IDs.
 
-| Strict 1:1 Mapping                                                             | First Touch Mapping                                                                |
-|--------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| ![Enforced1to1Mapping](/img/Docs_IDresolution_Enforced1to1Mapping_111324.gif)  | ![FirstTouchAttribution](/img/Docs_IDresolution_FirstTouchAttribution_111324.gif)  |
-
-
+| Strict 1:1 Mapping                                                            | First Touch Mapping                                                               |
+| ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| ![Enforced1to1Mapping](/img/Docs_IDresolution_Enforced1to1Mapping_111324.gif) | ![FirstTouchAttribution](/img/Docs_IDresolution_FirstTouchAttribution_111324.gif) |
 
 ### Strict 1:1 Mapping
 
