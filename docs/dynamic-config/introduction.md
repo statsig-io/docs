@@ -21,6 +21,10 @@ Many technology companies use tools such as dynamic config to make their server-
 - **Gradual Rollouts**: Vary configurations across user segments to rollout more safely.
 - **Real-Time Updates**: Instantly adjust app properties like UI elements or service thresholds.
 
+### Limitations
+
+- There's a 100kb limit on the JSON payload within a dynamic config.
+
 ## Next Steps
 
 - To get started, follow the guide on creating your [first dynamic config](/guides/first-dynamic-config).
