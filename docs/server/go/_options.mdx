@@ -66,9 +66,10 @@ type GCIROptions struct {
   - Common values include "djb2" (default if not specified) and "sha256".
   - This should match the hashing algorithm used by the client SDK.
 
-- **IncludeConfigType**: default false
+- **IncludeConfigType**: default false (deprecated)
   - When set to true, the type of each configuration will be included in the response.
   - This allows clients to differentiate between different types of configurations (e.g., feature gates, dynamic configs, experiments).
+  - Note: This option is deprecated and may be removed in future versions.
 
 - **ConfigTypesToInclude**: default empty array
   - An array of configuration types to include in the response.
