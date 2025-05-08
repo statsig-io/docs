@@ -21,7 +21,7 @@ To validate your feature gate using the built-in Test Gate tool,
 - Select the feature gate that you want to validate
 - At the bottom of the page, the **Test Gate** window that lists all properties available in the rules you have created as shown below.
 
-![image](https://user-images.githubusercontent.com/1315028/129104501-9e7349ae-31fe-47ea-97da-0520fd3d7e1b.png)
+![test gate fail](../../static/img/feature-gates/test-gate-fail.png)
 
 - Click in the window and edit the value of the Email property to include the users that you want to target. For example, type jdoe@example.com as shown below. When email domain matches “@example.com”, the feature gate check succeeds and the window shows a PASS. Otherwise, it fails and the window shows a FAIL.
 
