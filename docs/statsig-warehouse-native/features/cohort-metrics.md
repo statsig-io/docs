@@ -44,7 +44,7 @@ By default, cohort metrics can have a mix of maturation in the experimental popu
 In the examples below, one metric forces cohorts to complete. It has **less units** in the analysis, since many units do not have a complete window, a **lower total** because of the small unit count, but a **higher mean** since the units it does have have completed their window and have a longer data collection period on average.
 
 ![Metric that did not wait to mature](/img/whn/basic_cohort_metric.png)
-![MEtric that waited to Mature](/img/whn/wait_to_mature_metric.png)
+![Metric that waited to Mature](/img/whn/wait_to_mature_metric.png)
 
 This can cause confusion since it leads to different populations between metrics, and also filters out the last few days of an experiment's data in the daily timeseries since new cohorts' data is not including. A metric's cohort settings can be seen quickly by hovering over the name of the metric in the experiment scorecard.
 
