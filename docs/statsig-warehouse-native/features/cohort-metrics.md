@@ -16,7 +16,7 @@ Cohort metrics are a way to analyze the impact of an experiment in a certain tim
 This is useful for many reasons. Common use cases are:
 
 - By ensuring all users have equal periods for data collection, there is an "apples to apples" comparison across user enrolled early/late in the experiment (which often corresponds to power/occasional users), and across different "time periods" that may have extrinsic factors like holidays
-- If analyzing an unbounded periods, experimental units' variance in the population can increase over time - leading to scenario where error bars don't actually converge towards 0 as the experiment is run for longer!
+- If analyzing an unbounded period, experimental units' variance in the population can increase over time - leading to scenario where error bars don't actually converge towards 0 as the experiment is run for longer!
 - This allows one to skip noisy early metrics, or focus on outcomes after users might churn - e.g. capturing "week-2 engagement" if a product have a 1-week trial period
 - This can also be used to capture "one-shot retention". [Retention metrics](../metrics/retention.md) are used to capture rolling, ongoing retention. A user metric with a window from day X to day Y is a good way to check if an experiment is causing more users to retain at least X days
 
