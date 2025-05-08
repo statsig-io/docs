@@ -15,6 +15,11 @@ If you want to change the name of the table that are used for forwarded data, in
 
 Note: If you've already had data exported and change the table name, future data will be written to the new table. 
 
+:::info Note
+Non-production exposures or log events are not forwarded to external warehouses
+:::
+
+
 ## Exposures
 
 Logging exposures with Statsig means you'll get real-time diagnostics on the Statsig console, as well as real-time aggregations like exposures by hour.
