@@ -29,3 +29,24 @@ type Options struct {
   - The callback that gets invoked whenever the rulesets are updated. It's called with a JSON string that represents the rulesets, and a timestamp for when the rules were updated.
 - **UserPersistentStorage**: IUserPersistentStorage default nil
   - A persistent storage adapter for running sticky experiments.
+
+## Client Initialize Response Options
+
+When using `getClientInitializeResponse()`, you can specify additional options through the `GCIROptions` struct:
+
+```go
+type GCIROptions struct {
+	IncludeLocalOverrides bool
+	ClientKey             string
+	TargetAppID           string
+	HashAlgorithm         string
+	IncludeConfigType     bool
+	ConfigTypesToInclude  []ConfigType
+}
+```
+
+- **TargetAppID**: default empty string
+  - Specifies a target application ID to filter configurations (feature gates, dynamic configs, experiments, and layers).
+  - When specified, the SDK will only return configurations that are targeted to this application ID.
+  - This is useful in multi-tenant or multi-application environments where you want to ensure that only configurations relevant to a specific application are evaluated and returned.
+  - If not specified, the SDK will attempt to determine the target app ID from the provided client key.
