@@ -35,7 +35,7 @@ const sidebars: SidebarsConfig = {
                 "guides/experimentation-program",
                 "guides/running-a-poc",
                 "guides/production",
-              ]
+              ],
             },
           ],
         },
@@ -55,10 +55,7 @@ const sidebars: SidebarsConfig = {
               type: "category",
               label: "Migration Guides",
               collapsed: true,
-              items: [
-                "guides/open-source-script",
-                "guides/ui-based-tool"
-              ],
+              items: ["guides/open-source-script", "guides/ui-based-tool"],
             },
           ],
         },
@@ -396,7 +393,7 @@ const sidebars: SidebarsConfig = {
             "session-replay/configure",
             "session-replay/watch",
           ],
-        }
+        },
       ],
     },
     {
@@ -719,7 +716,7 @@ const sidebars: SidebarsConfig = {
         "concepts/user",
         "client/concepts/initialize",
         "sdks/debugging",
-      ]
+      ],
     },
     {
       type: "category",
@@ -847,7 +844,6 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       collapsible: false,
       items: [
-
         {
           className: "node-icon sidebar-icon sdk-sidebar-icon",
           type: "doc",
@@ -907,7 +903,7 @@ const sidebars: SidebarsConfig = {
               type: "doc",
               id: "server-core/php-core",
             },
-          ]
+          ],
         },
 
         {
@@ -1012,11 +1008,7 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "Statsig CLI",
       collapsed: true,
-      items: [
-        "siggy/introduction",
-        "siggy/commands",
-        "siggy/gate-management",
-      ],
+      items: ["siggy/introduction", "siggy/commands", "siggy/gate-management"],
     },
   ],
   warehouse: [
@@ -1033,7 +1025,7 @@ const sidebars: SidebarsConfig = {
         },
         "statsig-warehouse-native/guides/quick-start",
         "statsig-warehouse-native/native-vs-cloud",
-      ]
+      ],
     },
     {
       type: "category",
@@ -1114,6 +1106,7 @@ const sidebars: SidebarsConfig = {
           ],
         },
         "statsig-warehouse-native/configuration/metric-examples",
+        "statsig-warehouse-native/features/cohort-metrics",
         "statsig-warehouse-native/configuration/dimensional-analysis",
         "statsig-warehouse-native/configuration/assignment-sources",
         "statsig-warehouse-native/configuration/entity-properties",
@@ -1126,7 +1119,7 @@ const sidebars: SidebarsConfig = {
             "statsig-warehouse-native/features/roles-and-access",
             "metrics/verified",
             "statsig-warehouse-native/configuration/query-tools",
-          ]
+          ],
         },
         {
           type: "category",
@@ -1223,7 +1216,8 @@ const sidebars: SidebarsConfig = {
           label: "CURE",
           items: [
             "statsig-warehouse-native/cure/introduction",
-            "statsig-warehouse-native/cure/cure-setup"],
+            "statsig-warehouse-native/cure/cure-setup",
+          ],
         },
         "experiments/meta-analysis-whn",
         "statsig-warehouse-native/features/autotune",
@@ -1239,7 +1233,7 @@ const sidebars: SidebarsConfig = {
         "statsig-warehouse-native/analysis-tools/data-privacy",
         "statsig-warehouse-native/guides/costs",
         "statsig-warehouse-native/guides/best-practices",
-      ]
+      ],
     },
     {
       type: "category",
@@ -1259,7 +1253,7 @@ const sidebars: SidebarsConfig = {
         "statsig-warehouse-native/features/other-useful-features",
       ],
     },
-  ]
+  ],
 };
 
 export default sidebars;

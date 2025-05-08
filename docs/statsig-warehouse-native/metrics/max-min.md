@@ -9,12 +9,12 @@ last_update:
 
 ## Summary
 
-Max metrics calculate the maximum of a column from the metric source at the unit level. 
-Min Metrics calculate the minimum of a column from the metric source at the unit level. 
+Max metrics calculate the maximum of a column from the metric source at the unit level.
+Min Metrics calculate the minimum of a column from the metric source at the unit level.
 
 ### Use Cases
 
-Max/min metrics allow you to easily track users' extremes during an experiment.  
+Max/min metrics allow you to easily track users' extremes during an experiment.
 
 Common examples are:
 
@@ -100,8 +100,8 @@ Max/min metrics are simple and there are many advanced options you can apply.
   - Specify if you want to calculate CUPED, and the lookback window for CUPED's pre-experiment data inputs
 - Thresholding
   - Turn this metric into a 1/0 unit count metric counting if the unit's max/min equals to or surpasses (>=) a given threshold
-- Cohort Windows
+- [Cohort Windows](../features/cohort-metrics.md)
   - You can specify a window for data collection after a unit's exposure. For example, a 0-1 day cohort window would only count actions from days 0 and 1 after a unit was exposed to an experiment
     - **Only include units with a completed window** can be selected to remove units out of pulse analysis for this metric until the cohort window has completed
-- Baked Metrics
-  - Baked metrics allow you to specify how long a metric needs to mature. This is common in situations like chargebacks or cancellations. Statsig will delay loading the data until the window has elapsed, and only calculate pulse results for that metric if a unit's metric has matured.
+- [Baked Metrics](../features/cohort-metrics.md)
+  - [Baked Metrics](../features/cohort-metrics.md) allow you to specify how long a metric needs to mature. This is common in situations like chargebacks or cancellations. Statsig will delay loading the data until the window has elapsed, and only calculate pulse results for that metric if a unit's metric has matured.

@@ -166,11 +166,11 @@ Most aggregation-type metrics (sum, count, count distinct, unit count, means, ra
 
 Cohort settings allow you to specify a window for data collection after a unit's exposure. For example, a 4-6 day cohort window would only count actions from days 4, 5, and 6 after a unit was exposed to an experiment.
 
-Only include units with a completed window can be selected to remove units out of pulse analysis for this metric until the cohort window has completed. On experiment settings, you can choose to enable post-experiment data collection to allow these cohorts to mature in the case that you believe the intervention effect will still apply even if the user gets the control/shipped experiment (e.g. NUX experiments).
+Please refer to the full documentation on cohorts [here](../features/cohort-metrics.md).
 
 ### Baking
 
-Many metric types support baking. Statsig will wait to calculate baked metrics, and use "old" data for baked metrics. This is appropriate for cases like credit card chargebacks, where you may adjust your payments dataset to account for chargebacks in a "net revenue" metric.
+Many metric types support baking. Statsig will wait to calculate baked metrics, and use "old" data for baked metrics. This is appropriate for cases like credit card chargebacks, where you may adjust your payments dataset to account for chargebacks in a "net revenue" metric. See additional information in the [cohort documentation](../features/cohort-metrics.md).
 
 Statsig will:
 

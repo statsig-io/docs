@@ -74,6 +74,6 @@ In the metrics page view, we use APPROX_COUNT_DISTINCT (or equivalent) to avoid 
   - Specify if you want to calculate CUPED, and the lookback window for CUPED's pre-experiment data inputs
 - Thresholding
   - Turn this metric into a 1/0 unit count metric counting if the unit's total count equals to or surpasses (>=) a given threshold
-- Cohort Windows
+- [Cohort Windows](../features/cohort-metrics.md)
   - You can specify a window for data collection after a unit's exposure. For example, a 0-1 day cohort window would only count actions from days 0 and 1 after a unit was exposed to an experiment
     - **Only include units with a completed window** can be selected to remove units out of pulse analysis for this metric until the cohort window has completed
