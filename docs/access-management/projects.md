@@ -38,4 +38,4 @@ To enable this feature:
 2. Click on the `Edit Project Settings` button.
 3. Toggle the checkbox labeled `Anyone who signs up with the same email domain can join` and choose the role that users will be assigned to.
 
-![image](https://user-images.githubusercontent.com/75151332/128581866-b5856f1d-9ac6-462d-a57e-22320a093457.png)
+![Automatic Project Invitations](../../static/img/access-management/edit-project-settings.png)
