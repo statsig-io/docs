@@ -65,7 +65,7 @@ Users without a value will be treated as 0s; note that if there is an existing v
 
 - Metric Breakdowns
   - You can configure Metadata Columns to group results by, getting easy access to dimensional views in pulse results
-- Cohort Windows
+- [Cohort Windows](../features/cohort-metrics.md)
   - You can specify a window for data collection after a unit's exposure. For example, a 0-1 day cohort window would only count actions from days 0 and 1 after a unit was exposed to an experiment
     - **Only include units with a completed window** can be selected to remove units out of pulse analysis for this metric until the cohort window has completed
 - CUPED
