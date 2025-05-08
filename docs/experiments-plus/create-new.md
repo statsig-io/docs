@@ -8,6 +8,11 @@ last_update:
   date: 2025-03-04
 ---
 
+
+:::tip[Warehouse Native users]
+You're viewing the Cloud docs for this page. Metrics and experiments behave differently in Warehouse Native. Read about [Configuring Experiments in Warehouse Native](/statsig-warehouse-native/features/experiment-options).
+:::
+
 This guide walks you through the steps to create and configure a new experiment in Statsig. Whether you're running a simple A/B test or a more complex multi-variant experiment, these instructions will help you set up your experiment correctly.
 
 ### User-level Experiments

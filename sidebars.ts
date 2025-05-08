@@ -17,322 +17,47 @@ const sidebars: SidebarsConfig = {
           label: "Overview",
           className: "doc-icon sidebar-icon",
         },
+
         {
           type: "category",
-          label: "Quickstart Guides",
-          collapsed: true,
-          className: "rocket-icon sidebar-icon",
-          items: [
-            "guides/first-feature",
-            "guides/logging-events",
-            "guides/abn-tests",
-          ],
-        },
-        {
-          type: "category",
-          label: "Core Concepts & Setup",
+          label: "Core Concepts",
           collapsed: true,
           className: "lightbulb-icon sidebar-icon",
           items: [
             "understanding-platform",
+            "guides/featureflags-or-experiments",
+
+            {
+              type: "category",
+              label: "Enterprise Topics",
+              collapsed: true,
+              items: [
+                "guides/experimentation-program",
+                "guides/running-a-poc",
+                "guides/production",
+              ]
+            },
+          ],
+        },
+
+        {
+          type: "category",
+          label: "Tutorials",
+          collapsed: true,
+          className: "rocket-icon sidebar-icon",
+          items: [
             "client/concepts/parameter-stores",
             "guides/first-device-level-experiment",
             "guides/experiment-on-custom-id-types",
             "guides/using-environments",
             "guides/testing",
-            "guides/featureflags-or-experiments",
-            {
-              "Enterprise Concepts": [
-                "guides/experimentation-program",
-                "guides/running-a-poc",
-                "guides/production",
-              ],
-            },
-          ],
-        },
-        {
-          type: "category",
-          label: "SDKs & APIs",
-          className: "doc-icon sidebar-icon",
-          items: [
-            "sdks/getting-started",
-            "sdks/client-vs-server",
-            "concepts/user",
-            "client/concepts/initialize",
-            "sdks/debugging",
-            {
-              className: "html-icon sidebar-icon sdk-sidebar-icon",
-              type: "doc",
-              id: "client/html-snippet",
-            },
-            {
-              className: "js-icon sidebar-icon sdk-sidebar-icon",
-              type: "doc",
-              id: "client/javascript-sdk",
-            },
-            {
-              className: "react-icon sidebar-icon sdk-sidebar-icon",
-              type: "doc",
-              id: "client/javascript-mono/ReactUsage",
-            },
-            {
-              className: "next-icon sidebar-icon sdk-sidebar-icon",
-              type: "doc",
-              id: "client/javascript-mono/nextjs/NextJsUsage",
-            },
-            {
-              className: "android-icon sidebar-icon sdk-sidebar-icon",
-              type: "doc",
-              id: "client/androidClientSDK",
-            },
-            {
-              className: "ios-icon sidebar-icon sdk-sidebar-icon",
-              type: "doc",
-              id: "client/iosClientSDK",
-            },
-            {
-              className: "node-icon sidebar-icon sdk-sidebar-icon",
-              type: "doc",
-              id: "server-core/node-core",
-            },
             {
               type: "category",
-              label: "More Client SDKs",
+              label: "Migration Guides",
+              collapsed: true,
               items: [
-                {
-                  className: "cpp-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "client/cpp-client-sdk",
-                },
-                {
-                  className: "flutter-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "client/dartSDK",
-                },
-                {
-                  className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "client/dotnetSDK",
-                },
-                {
-                  className: "expo-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "client/javascript-mono/ExpoUsage",
-                },
-                {
-                  className: "react-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "client/javascript-mono/ReactNativeUsage",
-                },
-                {
-                  className: "angular-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "client/javascript-mono/AngularUsage",
-                },
-                {
-                  className: "roku-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "client/rokuSDK",
-                },
-                {
-                  className: "unity-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "client/unitySDK",
-                },
-                {
-                  type: "category",
-                  label: "On Device Client SDKs",
-                  items: [
-                    {
-                      type: "category",
-                      label: "JavaScript",
-                      link: {
-                        type: "doc",
-                        id: "client/js-on-device-eval-client",
-                      },
-                      items: [
-                        "client/js-device-eval-mono/MigrationFromOldSDK",
-                        "client/js-device-eval-mono/UsingSpecsDataAdapter",
-                        "client/js-device-eval-mono/ReactNativeUsage",
-                      ],
-                    },
-                    "client/swiftOnDeviceEvaluationSDK",
-                    "client/androidOnDeviceEvaluationSDK",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "JavaScript - Maintainance Mode",
-                  items: [
-                    "client/deprecated/jsClientSDK",
-                    "client/deprecated/reactSDK",
-                    "client/deprecated/reactNativeSDK",
-                    "client/deprecated/reactNativeExpoSDK",
-                    "client/jsLocalEvaluationSDK",
-                    "client/javascript-mono/MigrationFromOldJsClient",
-                    "client/javascript-mono/MigrationFromOldReact",
-                  ],
-                },
-              ],
-            },
-            {
-              type: "category",
-              label: "More Server SDKs",
-              items: [
-                {
-                  className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server/dotnetSDK",
-                },
-                {
-                  className: "cpp-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server/cppSDK",
-                },
-                {
-                  className: "golang-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server/golangSDK",
-                },
-                {
-                  className: "java-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server-core/java-core",
-                },
-                {
-                  className: "python-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server-core/python-core",
-                },
-                {
-                  className: "elixir-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server-core/elixir-core",
-                },
-                {
-                  className: "rust-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server-core/rust-core",
-                },
-                {
-                  className: "php-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server-core/php-core",
-                },
-                {
-                  className: "ruby-icon sidebar-icon sdk-sidebar-icon",
-                  type: "doc",
-                  id: "server/rubySDK",
-                },
-                {
-                  type: "doc",
-                  id: "server-core/index",
-                  label: "Server Core Overview",
-                },
-
-                {
-                  type: "category",
-                  label: "Legacy Server SDKs",
-                  link: {
-                    type: "doc",
-                    id: "server-core/legacy-sdks",
-                  },
-                  items: [
-                    {
-                      className: "node-icon sidebar-icon sdk-sidebar-icon",
-                      type: "doc",
-                      id: "server/nodejsServerSDK",
-                    },
-                    {
-                      className: "python-icon sidebar-icon sdk-sidebar-icon",
-                      type: "doc",
-                      id: "server/pythonSDK",
-                    },
-                    {
-                      className: "elixir-icon sidebar-icon sdk-sidebar-icon",
-                      type: "doc",
-                      id: "server/erlangSDK",
-                    },
-                    {
-                      className: "java-icon sidebar-icon sdk-sidebar-icon",
-                      type: "doc",
-                      id: "server/javaSdk",
-                    },
-                    {
-                      className: "rust-icon sidebar-icon sdk-sidebar-icon",
-                      type: "doc",
-                      id: "server/rustSDK",
-                    },
-                    {
-                      className: "php-icon sidebar-icon sdk-sidebar-icon",
-                      type: "doc",
-                      id: "server/phpSDK",
-                    },
-                  ],
-                },
-              ],
-            },
-            {
-              type: "category",
-              label: "Advanced SDK Methods",
-              items: [
-                {
-                  type: "category",
-                  label: "Other Frameworks",
-                  items: [
-                    "guides/node-express-feature-flags",
-                    "guides/node-express-abtests",
-                    "guides/python-flask-feature-flags",
-                    "guides/python-flask-abtests",
-                  ],
-                },
-                "client/concepts/persistent_assignment",
-                "client/concepts/local-eval-adapter",
-                "server/concepts/persistent_assignment",
-                "server/concepts/data_store",
-                "sdk-keys/target-apps",
-                "server/deprecation-notices",
-              ],
-            },
-            "http-api",
-            {
-              type: "category",
-              label: "Console API",
-              items: [
-                "console-api/introduction",
-                "console-api/autogenerated",
-                "console-api/gates",
-                "console-api/segments",
-                "console-api/dynamic-configs",
-                "console-api/experiments",
-                "console-api/holdouts",
-                "console-api/layers",
-                "console-api/users",
-                "console-api/metrics",
-                "console-api/audit-logs",
-                "console-api/exposure-count",
-                "console-api/autotunes",
-                "console-api/target-apps",
-                "console-api/ingestions",
-                "console-api/tags",
-                "console-api/keys",
-                {
-                  Reports: [
-                    "console-api/daily-reports",
-                    "console-api/daily-reports-deprecated",
-                  ],
-                },
-                "console-api/usage-billing",
-                "console-api/rules",
-              ],
-            },
-            {
-              type: "category",
-              label: "Statsig CLI",
-              items: [
-                "siggy/introduction",
-                "siggy/commands",
-                "siggy/gate-management",
+                "guides/open-source-script",
+                "guides/ui-based-tool"
               ],
             },
           ],
@@ -671,218 +396,7 @@ const sidebars: SidebarsConfig = {
             "session-replay/configure",
             "session-replay/watch",
           ],
-        },
-        {
-          type: "category",
-          label: "Warehouse Native",
-          className: "whn-icon sidebar-icon",
-          items: [
-            "statsig-warehouse-native/introduction",
-            {
-              type: "category",
-              label: "Guides",
-              items: [
-                "statsig-warehouse-native/guides/quick-start",
-                "statsig-warehouse-native/guides/running_a_poc",
-                "statsig-warehouse-native/guides/playground_eval",
-                "statsig-warehouse-native/guides/sdks",
-                "statsig-warehouse-native/guides/aatest",
-                "metrics/different-id",
-                {
-                  type: "category",
-                  label: "Debugging",
-                  items: [
-                    "statsig-warehouse-native/guides/checklist",
-                    "statsig-warehouse-native/guides/debugging",
-                    "statsig-warehouse-native/guides/sql",
-                  ],
-                },
-              ],
-            },
-            {
-              type: "category",
-              label: "Warehouse Integration",
-              items: [
-                {
-                  type: "category",
-                  label: "Connect Your Warehouse",
-                  items: [
-                    "statsig-warehouse-native/guides/connect",
-                    "statsig-warehouse-native/connecting-your-warehouse/athena",
-                    "statsig-warehouse-native/connecting-your-warehouse/bigquery",
-                    "statsig-warehouse-native/connecting-your-warehouse/databricks",
-                    "statsig-warehouse-native/connecting-your-warehouse/redshift",
-                    "statsig-warehouse-native/connecting-your-warehouse/snowflake",
-                  ],
-                },
-                "statsig-warehouse-native/connecting-your-warehouse/forwarded-data",
-                "statsig-warehouse-native/analysis-tools/data-privacy",
-                "statsig-warehouse-native/guides/costs",
-                "statsig-warehouse-native/guides/best-practices",
-              ],
-            },
-            {
-              type: "category",
-              label: "Data & Semantic Layer",
-              items: [
-                "statsig-warehouse-native/configuration/data-and-semantic-layer",
-                "statsig-warehouse-native/configuration/metric-sources",
-                {
-                  type: "category",
-                  label: "Metrics",
-                  link: {
-                    type: "doc",
-                    id: "statsig-warehouse-native/configuration/metrics",
-                  },
-                  items: [
-                    "statsig-warehouse-native/metrics/sum",
-                    "statsig-warehouse-native/metrics/count",
-                    "statsig-warehouse-native/metrics/count-distinct",
-                    "statsig-warehouse-native/metrics/unit-count-once",
-                    "statsig-warehouse-native/metrics/unit-count-window",
-                    "statsig-warehouse-native/metrics/unit-count-latest",
-                    "statsig-warehouse-native/metrics/unit-count-rate",
-                    "statsig-warehouse-native/metrics/mean",
-                    "statsig-warehouse-native/metrics/ratio",
-                    "statsig-warehouse-native/metrics/funnel",
-                    "statsig-warehouse-native/metrics/percentile",
-                    "statsig-warehouse-native/metrics/log",
-                    "statsig-warehouse-native/metrics/latest-value",
-                    "statsig-warehouse-native/metrics/retention",
-                    "statsig-warehouse-native/metrics/max-min",
-                  ],
-                },
-                "statsig-warehouse-native/configuration/metric-examples",
-                "statsig-warehouse-native/configuration/dimensional-analysis",
-                "statsig-warehouse-native/configuration/assignment-sources",
-                "statsig-warehouse-native/configuration/entity-properties",
-                "statsig-warehouse-native/configuration/qualifying-events",
-                "statsig-warehouse-native/configuration/tags-and-teams",
-                "metrics/verified",
-                "statsig-warehouse-native/configuration/query-tools",
-                {
-                  type: "category",
-                  label: "Programmatic Management",
-                  items: [
-                    "statsig-warehouse-native/configuration/console-api",
-                    "statsig-warehouse-native/configuration/semantic-layer-sync",
-                  ],
-                },
-                "statsig-warehouse-native/features/roles-and-access",
-              ],
-            },
-            {
-              type: "category",
-              label: "Experiment Analysis",
-              items: [
-                "statsig-warehouse-native/features/experiment-options",
-                {
-                  type: "category",
-                  label: "Setup",
-                  items: [
-                    "statsig-warehouse-native/features/understanding-experiments",
-                    "statsig-warehouse-native/features/configure-an-experiment",
-                    "statsig-warehouse-native/features/types-of-experiments",
-                    "statsig-warehouse-native/features/power-analysis",
-                    // "holdouts/introduction",
-                    "experiments-plus/stratified-sampling",
-                    "experiments-plus/differential-impact-detection",
-                    "statsig-warehouse-native/features/targeting",
-                    "statsig-warehouse-native/features/id-resolution",
-                    "statsig-warehouse-native/features/filtering-exposures",
-                    "statsig-warehouse-native/metrics/normalized-metrics",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Loading Results",
-                  link: {
-                    type: "doc",
-                    id: "statsig-warehouse-native/features/reloads",
-                  },
-                  items: [
-                    "statsig-warehouse-native/features/turbo",
-                    "statsig-warehouse-native/features/full-reloads",
-                    "statsig-warehouse-native/features/incremental-reloads",
-                    "statsig-warehouse-native/features/metric-reloads",
-                    "statsig-warehouse-native/connecting-your-warehouse/scheduled-reloads",
-                    "statsig-warehouse-native/analysis-tools/pipeline-overview",
-                    "statsig-warehouse-native/features/freshness",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Interpreting Results",
-                  items: [
-                    "pulse/read-pulse",
-                    "pulse/drill-down",
-                    "pulse/custom-queries",
-                    "pulse/export",
-                    "pulse/best-practices",
-                    "pulse/faq",
-                    "statsig-warehouse-native/features/monitor-an-experiment",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Statistics",
-                  items: [
-                    "statsig-warehouse-native/features/statistics",
-                    "stats-engine/metric-deltas",
-                    "stats-engine/variance",
-                    "stats-engine/confidence-intervals",
-                    "stats-engine/p-value",
-                    "stats-engine/topline-impact",
-                    "stats-engine/variance-reduction",
-                    // "stats-engine/offlineaa",
-                    "stats-engine/pre-experiment-bias",
-                    {
-                      "Methodologies Used": [
-                        "stats-engine/methodologies/bonferroni-correction",
-                        "stats-engine/methodologies/benjamini–hochberg-procedure",
-                        "stats-engine/methodologies/cuped",
-                        "stats-engine/methodologies/delta-method",
-                        "stats-engine/methodologies/srm-checks",
-                        "stats-engine/methodologies/winsorization",
-                        "stats-engine/methodologies/one-sided-test",
-                      ],
-                    },
-                  ],
-                },
-                "experiments/meta-analysis",
-                "insights/aggregated-impact",
-                "experiments/quality-score",
-                "statsig-warehouse-native/features/reports",
-                "statsig-warehouse-native/features/autotune",
-                "statsig-warehouse-native/features/use-case",
-              ],
-            },
-            "statsig-warehouse-native/features/mex-on-warehouse-native",
-            "statsig-warehouse-native/features/other-useful-features",
-            "statsig-warehouse-native/native-vs-cloud",
-            {
-              type: "category",
-              label: "CURE",
-              link: {
-                type: "doc",
-                id: "statsig-warehouse-native/cure/introduction",
-              },
-              items: ["statsig-warehouse-native/cure/cure-setup"],
-            },
-            {
-              type: "category",
-              label: "Geotests",
-              link: {
-                type: "doc",
-                id: "statsig-warehouse-native/geotests/introduction",
-              },
-              items: [
-                "statsig-warehouse-native/geotests/geotests-setup",
-                "statsig-warehouse-native/geotests/methodology",
-              ],
-            },
-          ],
-        },
+        }
       ],
     },
     {
@@ -996,16 +510,6 @@ const sidebars: SidebarsConfig = {
                 "integrations/openai",
                 "experiments/statsiglite",
                 "guides/statsig-id-resolver",
-                {
-                  type: "category",
-                  label: "Migrate from LaunchDarkly",
-                  link: {
-                    type: "doc",
-                    id: "guides/migrate-from-launchdarkly",
-                  },
-                  items: ["guides/open-source-script", "guides/ui-based-tool"],
-                },
-
                 {
                   "Data Imports (Deprecated)": [
                     "integrations/data-imports/overview-deprecated",
@@ -1191,6 +695,571 @@ const sidebars: SidebarsConfig = {
       ],
     },
   ],
+  api: [
+    {
+      type: "category",
+      label: "SDK Quickstarts",
+      collapsed: false,
+      collapsible: false,
+      items: [
+        "sdks/quickstart",
+        "guides/feature-gates-walkthrough",
+        "guides/logging-events",
+        "guides/abn-tests",
+      ],
+    },
+    {
+      type: "category",
+      label: "Dev Concepts",
+      collapsed: false,
+      collapsible: false,
+      items: [
+        "sdks/getting-started",
+        "sdks/client-vs-server",
+        "concepts/user",
+        "client/concepts/initialize",
+        "sdks/debugging",
+      ]
+    },
+    {
+      type: "category",
+      label: "Client SDKs",
+      collapsed: false,
+      collapsible: false,
+      items: [
+        {
+          className: "html-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "client/html-snippet",
+        },
+        {
+          className: "js-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "client/javascript-sdk",
+        },
+        {
+          className: "react-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "client/javascript-mono/ReactUsage",
+        },
+        {
+          className: "next-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "client/javascript-mono/nextjs/NextJsUsage",
+        },
+        {
+          className: "android-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "client/androidClientSDK",
+        },
+        {
+          className: "ios-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "client/iosClientSDK",
+        },
+        {
+          type: "category",
+          label: "More Client SDKs",
+          collapsed: true,
+          items: [
+            {
+              className: "cpp-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "client/cpp-client-sdk",
+            },
+            {
+              className: "flutter-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "client/dartSDK",
+            },
+            {
+              className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "client/dotnetSDK",
+            },
+            {
+              className: "expo-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "client/javascript-mono/ExpoUsage",
+            },
+            {
+              className: "react-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "client/javascript-mono/ReactNativeUsage",
+            },
+            {
+              className: "angular-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "client/javascript-mono/AngularUsage",
+            },
+            {
+              className: "roku-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "client/rokuSDK",
+            },
+            {
+              className: "unity-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "client/unitySDK",
+            },
+            {
+              type: "category",
+              label: "On Device Client SDKs",
+              items: [
+                {
+                  type: "category",
+                  label: "JavaScript",
+                  link: {
+                    type: "doc",
+                    id: "client/js-on-device-eval-client",
+                  },
+                  items: [
+                    "client/js-device-eval-mono/MigrationFromOldSDK",
+                    "client/js-device-eval-mono/UsingSpecsDataAdapter",
+                    "client/js-device-eval-mono/ReactNativeUsage",
+                  ],
+                },
+                "client/swiftOnDeviceEvaluationSDK",
+                "client/androidOnDeviceEvaluationSDK",
+              ],
+            },
+            {
+              type: "category",
+              label: "JavaScript - Maintainance Mode",
+              items: [
+                "client/deprecated/jsClientSDK",
+                "client/deprecated/reactSDK",
+                "client/deprecated/reactNativeSDK",
+                "client/deprecated/reactNativeExpoSDK",
+                "client/jsLocalEvaluationSDK",
+                "client/javascript-mono/MigrationFromOldJsClient",
+                "client/javascript-mono/MigrationFromOldReact",
+              ],
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      type: "category",
+      label: "Server SDKs",
+      collapsed: false,
+      collapsible: false,
+      items: [
+
+        {
+          className: "node-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "server-core/node-core",
+        },
+        {
+          className: "python-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "server-core/python-core",
+        },
+        {
+          className: "golang-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "server/golangSDK",
+        },
+        {
+          className: "java-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "server-core/java-core",
+        },
+        {
+          className: "ruby-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "server/rubySDK",
+        },
+        {
+          type: "doc",
+          id: "server-core/index",
+          label: "Server Core Overview",
+        },
+        {
+          type: "category",
+          label: "More Server SDKs",
+          items: [
+            {
+              className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server/dotnetSDK",
+            },
+            {
+              className: "cpp-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server/cppSDK",
+            },
+            {
+              className: "elixir-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server-core/elixir-core",
+            },
+            {
+              className: "rust-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server-core/rust-core",
+            },
+            {
+              className: "php-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server-core/php-core",
+            },
+          ]
+        },
+
+        {
+          type: "category",
+          label: "Legacy Server SDKs",
+          link: {
+            type: "doc",
+            id: "server-core/legacy-sdks",
+          },
+          items: [
+            {
+              className: "node-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server/nodejsServerSDK",
+            },
+            {
+              className: "python-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server/pythonSDK",
+            },
+            {
+              className: "elixir-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server/erlangSDK",
+            },
+            {
+              className: "java-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server/javaSdk",
+            },
+            {
+              className: "rust-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server/rustSDK",
+            },
+            {
+              className: "php-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server/phpSDK",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "More SDK Methods",
+      collapsed: true,
+      items: [
+        "client/concepts/persistent_assignment",
+        "server/concepts/persistent_assignment",
+        "client/concepts/local-eval-adapter",
+        "server/concepts/data_store",
+        "sdk-keys/target-apps",
+        {
+          type: "category",
+          label: "Other Framework Guides",
+          items: [
+            "guides/node-express-feature-flags",
+            "guides/node-express-abtests",
+            "guides/python-flask-feature-flags",
+            "guides/python-flask-abtests",
+          ],
+        },
+        "server/deprecation-notices",
+        "http-api",
+      ],
+    },
+    {
+      type: "category",
+      label: "Console API",
+      collapsed: true,
+      items: [
+        "console-api/introduction",
+        "console-api/autogenerated",
+        "console-api/gates",
+        "console-api/segments",
+        "console-api/dynamic-configs",
+        "console-api/experiments",
+        "console-api/holdouts",
+        "console-api/layers",
+        "console-api/users",
+        "console-api/metrics",
+        "console-api/audit-logs",
+        "console-api/exposure-count",
+        "console-api/autotunes",
+        "console-api/target-apps",
+        "console-api/ingestions",
+        "console-api/tags",
+        "console-api/keys",
+        {
+          Reports: [
+            "console-api/daily-reports",
+            "console-api/daily-reports-deprecated",
+          ],
+        },
+        "console-api/usage-billing",
+        "console-api/rules",
+      ],
+    },
+    {
+      type: "category",
+      label: "Statsig CLI",
+      collapsed: true,
+      items: [
+        "siggy/introduction",
+        "siggy/commands",
+        "siggy/gate-management",
+      ],
+    },
+  ],
+  warehouse: [
+    {
+      type: "category",
+      label: "Introduction",
+      collapsed: false,
+      collapsible: false,
+      items: [
+        {
+          type: "doc",
+          id: "statsig-warehouse-native/introduction",
+          label: "About Warehouse Native",
+        },
+        "statsig-warehouse-native/guides/quick-start",
+        "statsig-warehouse-native/native-vs-cloud",
+      ]
+    },
+    {
+      type: "category",
+      label: "Guides",
+      collapsed: false,
+      collapsible: false,
+      items: [
+        {
+          type: "category",
+          label: "POCs & Evaluations",
+          collapsed: true,
+          items: [
+            "statsig-warehouse-native/guides/running_a_poc",
+            "statsig-warehouse-native/guides/playground_eval",
+            "statsig-warehouse-native/guides/sdks",
+            "statsig-warehouse-native/guides/aatest",
+            "metrics/different-id",
+          ],
+        },
+        {
+          type: "category",
+          label: "Debugging",
+          items: [
+            "statsig-warehouse-native/guides/checklist",
+            "statsig-warehouse-native/guides/debugging",
+            "statsig-warehouse-native/guides/sql",
+          ],
+        },
+
+        "statsig-warehouse-native/connecting-your-warehouse/forwarded-data",
+      ],
+    },
+    {
+      type: "category",
+      label: "Warehouse Integrations",
+      collapsed: false,
+      collapsible: false,
+      items: [
+        "statsig-warehouse-native/guides/connect",
+        "statsig-warehouse-native/connecting-your-warehouse/snowflake",
+        "statsig-warehouse-native/connecting-your-warehouse/athena",
+        "statsig-warehouse-native/connecting-your-warehouse/bigquery",
+        "statsig-warehouse-native/connecting-your-warehouse/databricks",
+        "statsig-warehouse-native/connecting-your-warehouse/redshift",
+      ],
+    },
+    {
+      type: "category",
+      label: "Data & Semantic Layer",
+      collapsed: true,
+      collapsible: false,
+      items: [
+        "statsig-warehouse-native/configuration/data-and-semantic-layer",
+        "statsig-warehouse-native/configuration/metric-sources",
+        {
+          type: "category",
+          label: "Metrics",
+          link: {
+            type: "doc",
+            id: "statsig-warehouse-native/configuration/metrics",
+          },
+          items: [
+            "statsig-warehouse-native/metrics/sum",
+            "statsig-warehouse-native/metrics/count",
+            "statsig-warehouse-native/metrics/count-distinct",
+            "statsig-warehouse-native/metrics/unit-count-once",
+            "statsig-warehouse-native/metrics/unit-count-window",
+            "statsig-warehouse-native/metrics/unit-count-latest",
+            "statsig-warehouse-native/metrics/unit-count-rate",
+            "statsig-warehouse-native/metrics/mean",
+            "statsig-warehouse-native/metrics/ratio",
+            "statsig-warehouse-native/metrics/funnel",
+            "statsig-warehouse-native/metrics/percentile",
+            "statsig-warehouse-native/metrics/log",
+            "statsig-warehouse-native/metrics/latest-value",
+            "statsig-warehouse-native/metrics/retention",
+            "statsig-warehouse-native/metrics/max-min",
+          ],
+        },
+        "statsig-warehouse-native/configuration/metric-examples",
+        "statsig-warehouse-native/configuration/dimensional-analysis",
+        "statsig-warehouse-native/configuration/assignment-sources",
+        "statsig-warehouse-native/configuration/entity-properties",
+        "statsig-warehouse-native/configuration/qualifying-events",
+        {
+          type: "category",
+          label: "Metric Management",
+          items: [
+            "statsig-warehouse-native/configuration/tags-and-teams",
+            "statsig-warehouse-native/features/roles-and-access",
+            "metrics/verified",
+            "statsig-warehouse-native/configuration/query-tools",
+          ]
+        },
+        {
+          type: "category",
+          label: "Programmatic Management",
+          items: [
+            "statsig-warehouse-native/configuration/console-api",
+            "statsig-warehouse-native/configuration/semantic-layer-sync",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Experiment Analysis",
+      collapsed: false,
+      collapsible: false,
+      items: [
+        "statsig-warehouse-native/features/experiment-options",
+        {
+          type: "category",
+          label: "Setup",
+          items: [
+            "statsig-warehouse-native/features/configure-an-experiment",
+            "statsig-warehouse-native/features/types-of-experiments",
+            "statsig-warehouse-native/features/power-analysis",
+            "experiments-plus/stratified-sampling-whn",
+            "experiments-plus/differential-impact-detection-whn",
+            "statsig-warehouse-native/features/targeting",
+            "statsig-warehouse-native/features/id-resolution",
+            "statsig-warehouse-native/features/filtering-exposures",
+            "statsig-warehouse-native/metrics/normalized-metrics",
+            "experiments/quality-score-whn",
+          ],
+        },
+        {
+          type: "category",
+          label: "Loading Results",
+          link: {
+            type: "doc",
+            id: "statsig-warehouse-native/features/reloads",
+          },
+          items: [
+            "statsig-warehouse-native/features/turbo",
+            "statsig-warehouse-native/features/full-reloads",
+            "statsig-warehouse-native/features/incremental-reloads",
+            "statsig-warehouse-native/features/metric-reloads",
+            "statsig-warehouse-native/connecting-your-warehouse/scheduled-reloads",
+            "statsig-warehouse-native/analysis-tools/pipeline-overview",
+            "statsig-warehouse-native/features/freshness",
+          ],
+        },
+        {
+          type: "category",
+          label: "Interpreting Results",
+          items: [
+            "statsig-warehouse-native/read-pulse-whn",
+            "pulse/drill-down-whn",
+            "pulse/custom-queries-whn",
+            "pulse/access-whn",
+            "pulse/best-practices-whn",
+            "pulse/faq-whn",
+            "statsig-warehouse-native/features/monitor-an-experiment",
+            "statsig-warehouse-native/features/reports",
+            "insights/aggregated-impact-whn",
+          ],
+        },
+        {
+          type: "category",
+          label: "Statistics",
+          items: [
+            "statsig-warehouse-native/features/statistics",
+            "stats-engine/metric-deltas-whn",
+            "stats-engine/variance-whn",
+            "stats-engine/confidence-intervals-whn",
+            "stats-engine/p-value-whn",
+            "stats-engine/topline-impact-whn",
+            "stats-engine/variance-reduction-whn",
+            "stats-engine/pre-experiment-bias-whn",
+            {
+              "Methodologies Used": [
+                "stats-engine/methodologies/bonferroni-correction-whn",
+                "stats-engine/methodologies/benjamini–hochberg-procedure-whn",
+                "stats-engine/methodologies/cuped-whn",
+                "stats-engine/methodologies/delta-method-whn",
+                "stats-engine/methodologies/srm-checks-whn",
+                "stats-engine/methodologies/winsorization-whn",
+                "stats-engine/methodologies/one-sided-test-whn",
+              ],
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "CURE",
+          items: [
+            "statsig-warehouse-native/cure/introduction",
+            "statsig-warehouse-native/cure/cure-setup"],
+        },
+        "experiments/meta-analysis-whn",
+        "statsig-warehouse-native/features/autotune",
+        "statsig-warehouse-native/features/use-case",
+      ],
+    },
+    {
+      type: "category",
+      label: "Warehouse Management",
+      collapsed: true,
+      collapsible: false,
+      items: [
+        "statsig-warehouse-native/analysis-tools/data-privacy",
+        "statsig-warehouse-native/guides/costs",
+        "statsig-warehouse-native/guides/best-practices",
+      ]
+    },
+    {
+      type: "category",
+      label: "Other Features",
+      collapsed: true,
+      items: [
+        "statsig-warehouse-native/features/mex-on-warehouse-native",
+        {
+          type: "category",
+          label: "Geotests",
+          items: [
+            "statsig-warehouse-native/geotests/introduction",
+            "statsig-warehouse-native/geotests/geotests-setup",
+            "statsig-warehouse-native/geotests/methodology",
+          ],
+        },
+        "statsig-warehouse-native/features/other-useful-features",
+      ],
+    },
+  ]
 };
 
 export default sidebars;

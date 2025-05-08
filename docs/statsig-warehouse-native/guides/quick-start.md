@@ -1,6 +1,6 @@
 ---
-title: Quick Start
-sidebar_label: Quick Start
+title: Warehouse Native Quickstart
+sidebar_label: WHN Quickstart
 slug: /statsig-warehouse-native/guides/quick-start
 keywords:
   - owner:vm
@@ -8,21 +8,21 @@ last_update:
   date: 2024-07-11
 ---
 
-You can get experiment results in record time with Statsig Warehouse native. This page walks you through connecting your data, configuring a metric, and getting experiment results.
+You can get experiment results in record time with Statsig Warehouse Native. This page walks you through connecting your data, configuring a metric, and getting experiment results.
 
 All you'll need is a table in your warehouse that has metric or event logging data.
 
-# Step 1.) Connecting Your Warehouse
+## Step 1: Connect Your Warehouse
 
-Statsig will use your warehouse to store and analyze your experiment data - you have total control and visibility. To connect your warehouse, visit your warehouse's setup page.
+Statsig will use your warehouse to store and analyze your experiment data; you have total control and visibility over the data itself. To connect your warehouse, visit your warehouse's setup page.
 
-- [Bigquery](../connecting-your-warehouse/bigquery.md)
+- [BigQuery](../connecting-your-warehouse/bigquery.md)
 - [Databricks](../connecting-your-warehouse/databricks.md)
 - [Redshift](../connecting-your-warehouse/redshift.md)
 - [Snowflake](../connecting-your-warehouse/snowflake.md)
 - [Athena](../connecting-your-warehouse/athena.md)
 
-# Step 2.) Connect to Data
+## Step 2: Connect to Data
 
 To connect your event or metric, data, you'll create a [Metric Source](/statsig-warehouse-native/configuration/metric-sources.md). Navigate to the Metric Sources page and click Create to make a new Metric Source.
 
@@ -36,7 +36,7 @@ Press analyze to generate samples from your table, and then map required columns
 
 Save your changes, and you've connected to your data!
 
-# Step 3.) Make a Metric
+## Step 3: Make a Metric
 
 Now that you've connected to data, you can build metrics on top of this. Later, this can be configured programmatically, but for now navigate to your Metrics Catalog and click Create to make a new Metric.
 
@@ -48,7 +48,7 @@ To get started, we recommend just making a [count metric](/statsig-warehouse-nat
 
 Select "Count" and save - or, feel free to pause here and explore the options here.
 
-# Step 4.) Connect an Experiment
+## Step 4: Connect an Experiment
 
 Next, you'll connect to experiment data. If you have a table with exposures you've already logged, feel free to use that. You'll just need to make sure that you've logged the same identifier there as you used in your metric source.
 
@@ -66,7 +66,7 @@ Pressing save and scan will save your new source and detect experiments that exi
 
 ![Screenshot 2024-06-11 at 1 36 18 PM](https://github.com/statsig-io/docs/assets/102695539/8be2f079-4440-4742-9727-08e25b65c84b)
 
-# Step 5.) Analyze Your Experiment
+## Step 5: Analyze Your Experiment
 
 Press Create on your experiment of interest to start creating your experiment.
 
@@ -80,7 +80,7 @@ Statsig will automatically detect the group split, but if the detected split is 
 
 Press Save and Analyze, and Statsig will start calculating Pulse Results. You can track the progress in the loading bar at the bottom of the experiment's results page.
 
-# Step 6.) Reading Results
+## Step 6: Read Results
 
 If everything worked, you should see:
 

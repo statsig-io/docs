@@ -11,30 +11,75 @@ import SDKAndFrameworks from '../src/components/getting-started/SDKAndFrameworks
 import ImportantConcepts from '../src/components/getting-started/ImportantConcepts';
 import Styles from '../src/components/getting-started/Styles';
 import LandingResources from '../src/components/getting-started/Resources';
+import React from 'react';
+import Card from '@site/src/components/Card';
+import CardHeader from '@site/src/components/Card/CardHeader';
+import CardBody from '@site/src/components/Card/CardBody';
+import CardFooter from '@site/src/components/Card/CardFooter';
+import Columns from '@site/src/components/Columns';
+import Column from '@site/src/components/Columns/Column';
+import Link from '@docusaurus/Link';
 
 <Styles />
 # Welcome to Statsig Documentation
-Statsig is the complete platform for product growth, empowering your team to build and innovate like the best tech companies in the world. 
+Statsig empowers you to ship, measure, and learn from your releases using the same tools as the best tech companies in the world. With Statsig, you can run thousands of A/B tests, safely rollout features, and dive deep on core business metrics and user behavior—all on a single, unified platform.
+
+<div className="welcome-card-container padding--lg">
+  <Column className="padding--sm">
+    <Card className="welcome-card" shadow="tl">
+      <CardHeader>
+        <img src="/img/icons/flash.svg" alt="Flash Icon" className="icon" style={{ width: '36px' }}/>
+        <h3>SDK Quickstart</h3>
+        <p>Install the Statsig SDK and get started in minutes.</p>
+      </CardHeader>
+      <CardFooter>
+        <Link to="/sdks/quickstart">
+          <button className="button button--secondary button--block">Get started</button>
+        </Link>
+      </CardFooter>
+    </Card>
+  </Column>
+
+  <Column className="padding--sm">
+    <Card className="welcome-card" shadow="tl">
+      <CardHeader>
+        <img src="/img/icons/organization.svg" alt="Organization Icon" className="icon" style={{ width: '36px' }}/>
+        <h3>Warehouse Native</h3>
+        <p>Read about how to use Statsig with your data warehouse.</p>
+      </CardHeader>
+      <CardFooter>
+        <Link to="/statsig-warehouse-native/introduction">
+          <button className="button button--secondary button--block">Read guides</button>
+        </Link>
+      </CardFooter>
+    </Card>
+  </Column>
+
+  <Column className="padding--sm">
+    <Card className="welcome-card" shadow="tl">
+      <CardHeader>
+        <img src="/img/icons/description.svg" alt="Description Icon" className="icon" style={{ width: '36px' }}/>
+        <h3>Intro to Statsig</h3>
+        <p>Learn more about core concepts and features of Statsig.</p>
+      </CardHeader>
+      <CardFooter>
+        <Link to="/understanding-platform">
+          <button className="button button--secondary button--block">Learn more</button>
+        </Link>
+      </CardFooter>
+    </Card>
+  </Column>
+</div>
+---
+
+
+## Key Features 
 
 <LandingResources />
-You can use Statsig’s products directly with your own data warehouse through [Warehouse Native](/statsig-warehouse-native/introduction). This allows you to leverage Statsig’s features while keeping data in your existing infrastructure.
 
-## Getting Started with Statsig
-Statsig supports over **30 SDKs and frameworks**, allowing you to quickly integrate with your application, whether you’re building for the web, mobile, or server environments. Follow these simple steps to get started in minutes:
-## Add Statsig to Your Website (JavaScript Snippet)
+You can use Statsig's products directly with your own data warehouse through [Warehouse Native](/statsig-warehouse-native/introduction). This allows you to leverage Statsig's features while keeping data in your existing infrastructure.
 
-The easiest way to get up and running is by adding the Statsig JavaScript snippet to your website. This setup takes just a few seconds:
-
-Paste the following code into the `<head>` section of your website, replacing `"YOUR_CLIENT_KEY"` with your project’s **Client API Key**, which you can find in the [Statsig Console](https://console.statsig.com/api_keys).
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=[YOUR_CLIENT_KEY]"></script>
-```
-
-Once installed, you’ll be able to:
-- Start **recording events**.
-- Use **session replays**.
-- Leverage Statsig’s **experiments** and **feature flags** right away.
+---
 
 ## Explore SDKs 
 
@@ -42,14 +87,11 @@ For greater control, Statsig offers SDKs for a wide variety of platforms, includ
 
 <SDKAndFrameworks />
 
-- If you don’t see the SDK or framework you need, feel free to reach out directly in our [Slack Community](https://statsig.com/slack).
+If you don't see the SDK or framework you need, feel free to reach out directly in our [Slack Community](https://statsig.com/slack).
 
 ---
-
-## Learn More and Get Help
-
-Resources to help you make the most of Statsig:
-
+# Learning Resources
+- **Videos**: Check out our full library of [Statsig Onboarding Training Videos](https://www.youtube.com/playlist?list=PLNJ9pKAaib3J0fYyCYRX3JhtSpwtiEL0Q) on Youtube.
 - **Community**: Join our [Slack Community](https://statsig.com/slack) to connect with other users and get help from the Statsig team.
 - **Blog**: Stay updated with the latest developments in product experimentation and feature management on our [Blog](https://statsig.com/blog).
 
