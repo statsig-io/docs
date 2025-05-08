@@ -102,7 +102,7 @@ Controls whether [sequential testing](/experiments-plus/sequential-testing) is a
 
 **Bonferroni/Benjamini-Hochberg [Frequentist Only]**
 
-Configures multiple-comparisons corrections - either controlling the false positive rate or false discovery rate. Refer to the more detailed documentation for [Bonferroni][Benjamini-Hochberg](/stats-engine/methodologies/bonferroni-correction.md) and [Benjamini-Hochberg](/stats-engine/methodologies/benjamini–hochberg-procedure).
+Configures multiple-comparisons corrections - either controlling the false positive rate or false discovery rate. Refer to the more detailed documentation for [Bonferroni](/stats-engine/methodologies/bonferroni-correction.md) and [Benjamini-Hochberg](/stats-engine/methodologies/benjamini–hochberg-procedure).
 
 **Default Confidence Interval/Chance to Beat Threshold**
 
