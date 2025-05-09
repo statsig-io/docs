@@ -700,7 +700,7 @@ const sidebars: SidebarsConfig = {
       collapsible: false,
       items: [
         "sdks/quickstart",
-        "guides/feature-gates-walkthrough",
+        "guides/feature-gates",
         "guides/logging-events",
         "guides/abn-tests",
       ],
