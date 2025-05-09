@@ -1,7 +1,7 @@
 ---
 sidebar_label: Create your first Feature Gate
 title: Create your first Feature Gate
-slug: guides/feature-gates
+slug: /guides/feature-gates
 keywords:
   - owner:jinayoon
 last_update:
