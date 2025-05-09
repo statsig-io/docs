@@ -627,7 +627,7 @@ const sidebars: SidebarsConfig = {
                   label: "Templates",
                   link: {
                     type: "doc",
-                    id: "templates/templates",
+                    id: "exp-templates/templates",
                   },
                   items: [],
                 },
