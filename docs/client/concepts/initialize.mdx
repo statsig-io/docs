@@ -228,11 +228,5 @@ Server SDKs require only a secret key to initialize. As most servers are expecte
 
 DataAdapters provide a layer of resilience, and ensure your server is ready to server requests as soon as it startups rather than waiting for a network roundtrip, which can be especially valuable if you have short-lived or serverless instances. While only recommended for advanced setups, Statsig also offers a [Forward Proxy](/server/concepts/forward_proxy/) that can add an extra layer of resilience to your server setup.
 
-## Server Initialization
-
-Server SDKs have a simpler initialization process that focuses on reliability and performance for multi-user environments. The initialization process automatically handles polling for updates and can be configured with data adapters for additional resilience.
-
-Server SDKs handle initialization differently and don't require the detailed response schema shown for client SDKs. They maintain their own configuration state and update it periodically.
-
 </TabItem>
 </Tabs>
