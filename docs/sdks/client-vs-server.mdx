@@ -4,15 +4,32 @@ slug: /sdks/client-vs-server
 
 ---
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 Statsig offers both client and server SDKs to enable experimentation and feature management across different parts of your application. This document outlines the key differences and use cases for each type of SDK.
 
 ## Overview
 
-### Client SDKs
+<Tabs
+  groupId="sdk-type"
+  defaultValue="client"
+  values={[
+    {label: 'Client SDKs', value: 'client'},
+    {label: 'Server SDKs', value: 'server'},
+  ]}
+>
+<TabItem value="client">
+
 Client SDKs are designed for applications running on end-user devices, including web, mobile, television, gaming, and other consumer electronics apps.
 
-### Server SDKs
+</TabItem>
+<TabItem value="server">
+
 Server SDKs are used for server-side applications, APIs, algorithms, and infrastructure improvements.
+
+</TabItem>
+</Tabs>
 
 ## Implementation Phases
 
@@ -37,33 +54,69 @@ At a high level, here are some of the key differences between the two types of S
 
 ### 1. Initialization
 
-**Client SDKs:**
+<Tabs
+  groupId="sdk-type"
+  defaultValue="client"
+  values={[
+    {label: 'Client SDKs', value: 'client'},
+    {label: 'Server SDKs', value: 'server'},
+  ]}
+>
+<TabItem value="client">
+
 - Use a **client SDK key**
 - Take a [StatsigUser](/concepts/user) object
 - Check for cached values in local storage
 - Fetch precomputed configuration parameters for the specified user
 
-**Server SDKs:**
+</TabItem>
+<TabItem value="server">
+
 - Use a **server SDK key**
 - Fetch all configuration definitions (rule sets) for local evaluation
 
+</TabItem>
+</Tabs>
+
 ### 2. Checking an Experiment
 
-**Client SDKs:**
+<Tabs
+  groupId="sdk-type"
+  defaultValue="client"
+  values={[
+    {label: 'Client SDKs', value: 'client'},
+    {label: 'Server SDKs', value: 'server'},
+  ]}
+>
+<TabItem value="client">
+
 - Synchronously return variants based on cached values
 - Generate a device identifier (stableID) for experiments without user sign-in
 - Automatically flush exposure checks every 10 seconds
 
-**Server SDKs:**
+</TabItem>
+<TabItem value="server">
+
 - Evaluate rules locally for each user
 - Require a [StatsigUser](/concepts/user) object with a userID for checks
 - Automatically flush exposure checks every 60 seconds
 
+</TabItem>
+</Tabs>
+
 ### 3. Logging Custom Events
 
-**Client SDKs:**
-- Automatically flush logged events every 10 seconds
+<Tabs
+  groupId="sdk-type"
+  defaultValue="client"
+  values={[
+    {label: 'Client SDKs', value: 'client'},
+    {label: 'Server SDKs', value: 'server'},
+  ]}
+>
+<TabItem value="client">
 
+- Automatically flush logged events every 10 seconds
 
 :::info Avoid custom event logging being blocked by third-party plugins
 
@@ -71,22 +124,41 @@ Custom event logging can sometimes be blocked by third-party plugins. As a worka
 
 :::
 
-**Server SDKs:**
+</TabItem>
+<TabItem value="server">
+
 - Automatically flush logged events every 60 seconds
+
+</TabItem>
+</Tabs>
 
 ## Updating Experiment Configuration
 
-**Client SDKs:**
+<Tabs
+  groupId="sdk-type"
+  defaultValue="client"
+  values={[
+    {label: 'Client SDKs', value: 'client'},
+    {label: 'Server SDKs', value: 'server'},
+  ]}
+>
+<TabItem value="client">
+
 - Configuration persists until next `initialize` or `updateUser` call
 - Recommended to call `initialize` at the start of each user session
 
 ![Client SDKs](https://user-images.githubusercontent.com/1315028/169555378-a1ba4c22-1d13-46c5-956e-ba87abe9b549.png)
 
-**Server SDKs:**
+</TabItem>
+<TabItem value="server">
+
 - Poll Statsig servers for updates every 10 seconds by default (configurable)
 - Some SDKs support grpc streaming updates via connecting to the [Statsig Forward Proxy](/server/concepts/forward_proxy)
 
 ![Server SDKs](https://user-images.githubusercontent.com/1315028/169563936-121cb75e-37e5-491f-8bb1-2d853c2e04b8.png)
+
+</TabItem>
+</Tabs>
 
 ## Best Practices
 
@@ -96,7 +168,16 @@ Custom event logging can sometimes be blocked by third-party plugins. As a worka
 
 ## Available SDKs
 
-### Client SDKs
+<Tabs
+  groupId="sdk-type"
+  defaultValue="client"
+  values={[
+    {label: 'Client SDKs', value: 'client'},
+    {label: 'Server SDKs', value: 'server'},
+  ]}
+>
+<TabItem value="client">
+
 - [Javascript](/client/javascript-sdk)
 - [React](/client/javascript-sdk/react)
 - [React Native](/client/javascript-sdk/react-native)
@@ -109,7 +190,9 @@ Custom event logging can sometimes be blocked by third-party plugins. As a worka
 - [C++](/client/cpp-client-sdk)
 - [Dart/flutter](/client/dartSDK)
 
-### Server SDKs
+</TabItem>
+<TabItem value="server">
+
 - [Node.js](/server/nodejsServerSDK)
 - [Java](/server/javaSdk)
 - [Python](/server/pythonSDK)
@@ -119,6 +202,9 @@ Custom event logging can sometimes be blocked by third-party plugins. As a worka
 - [PHP](/server/phpSDK)
 - [C++](/server/cppSDK)
 - [Rust](/server/rustSDK)
+
+</TabItem>
+</Tabs>
 
 For more detailed information on each SDK, please refer to their respective documentation pages.
 
