@@ -14,8 +14,6 @@ import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
 One of the first steps in using a Statsig client SDK is to call the asynchronous `initialize()` method in the SDK language of your choice. This retrieves the values you need to evaluate flags or experiments and send events: in client SDKs, only the events for your defined user are provided, while Server SDKs fetch your entire ruleset.
 
-## General Initialization Flow
-
 <Tabs
   groupId="user-object"
   defaultValue="client"
@@ -25,6 +23,9 @@ One of the first steps in using a Statsig client SDK is to call the asynchronous
   ]}
 >
 <TabItem value="client">
+
+## General Initialization Flow
+
 `initialize` will take an SDK key and `StatsigUser` object, as well as a set of options to parameterize the SDK.  The sdk will then do a few things:
 1. Check local storage for cached values.  The SDK caches the previous evaluations locally so they are available on the next session without a successful network call
 2. Create a `STATSIG_STABLE_ID` - an ID that stays consistent per-device, which can often be helpful for logged-out experiments. 
@@ -33,30 +34,6 @@ One of the first steps in using a Statsig client SDK is to call the asynchronous
 5. Resolve the asynchronous `initialize` call.  If the request to the server failed, the SDK will have the cached values or return defaults for this session.
 
 Depending on when you check a gate or experiment after initializing, its possible that you may not have retrieved fresh values yet. Awaiting the return of the initialize function is one easy way to do this, but has speed disadvantages, discussed below.
-
-</TabItem>
-
-<TabItem value="server">
-
-Server SDKs require only a secret key to initialize. As most servers are expected to deal with many users - server SDKs download all rules and configurations you have in your project and evaluate them in realtime for each user that is encountered. The process for Server SDK initialization looks something like this:
-1. Your server checks if you have locally cached values (which you can set up with a [DataAdapter](/server/concepts/data_store/))
-2. If your server found values on the last call, it'll be ready for checks with the reason "DataAdapter". Whether it found local data or not, it'll next go to the network to find updated values. 
-3. The Server retrieves updated rules from the server, and is now ready for checks even if it didn't find values in step 1.
-4. Going forward, the server will retrieve new values every 10 seconds from the server, updating the locally cached values each time.
-
-DataAdapters provide a layer of resilience, and ensure your server is ready to server requests as soon as it startups rather than waiting for a network roundtrip, which can be especially valuable if you have short-lived or serverless instances. While only recommended for advanced setups, Statsig also offers a [Forward Proxy](/server/concepts/forward_proxy/) that can add an extra layer of resilience to your server setup.
-</TabItem>
-</Tabs>
-
-<Tabs
-  groupId="user-object"
-  defaultValue="client"
-  values={[
-    {label: 'Client SDKs', value: 'client'},
-    {label: 'Server SDKs', value: 'server'},
-  ]}
->
-<TabItem value="client">
 
 ## Client Initialization Strategies
 
@@ -241,11 +218,19 @@ hash_used: string;
 </TabItem>
 <TabItem value="server">
 
+## General Initialization Flow
+
+Server SDKs require only a secret key to initialize. As most servers are expected to deal with many users - server SDKs download all rules and configurations you have in your project and evaluate them in realtime for each user that is encountered. The process for Server SDK initialization looks something like this:
+1. Your server checks if you have locally cached values (which you can set up with a [DataAdapter](/server/concepts/data_store/))
+2. If your server found values on the last call, it'll be ready for checks with the reason "DataAdapter". Whether it found local data or not, it'll next go to the network to find updated values. 
+3. The Server retrieves updated rules from the server, and is now ready for checks even if it didn't find values in step 1.
+4. Going forward, the server will retrieve new values every 10 seconds from the server, updating the locally cached values each time.
+
+DataAdapters provide a layer of resilience, and ensure your server is ready to server requests as soon as it startups rather than waiting for a network roundtrip, which can be especially valuable if you have short-lived or serverless instances. While only recommended for advanced setups, Statsig also offers a [Forward Proxy](/server/concepts/forward_proxy/) that can add an extra layer of resilience to your server setup.
+
 ## Server Initialization
 
 Server SDKs have a simpler initialization process that focuses on reliability and performance for multi-user environments. The initialization process automatically handles polling for updates and can be configured with data adapters for additional resilience.
-
-Server SDKs provide a more straightforward initialization approach focused on reliability and performance in multi-user environments. They automatically handle polling for updates and can be configured with data adapters for additional resilience.
 
 Server SDKs handle initialization differently and don't require the detailed response schema shown for client SDKs. They maintain their own configuration state and update it periodically.
 
