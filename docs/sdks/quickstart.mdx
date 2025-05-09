@@ -1,0 +1,176 @@
+---
+sidebar_label: Get Started
+title: Get Started with the Statsig SDKs
+keywords:
+  - owner:jinayoon
+last_update:
+  date: 2025-04-07
+---
+
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+import JSSnippets from "@site/src/components/JSSnippets";
+import { useState } from 'react';
+import CodeBlock from "@theme/CodeBlock";
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
+
+import * as _ReactInstall from "../client/javascript-mono/react/_reactInstall.mdx";
+import * as _ReactSetup from "../client/javascript-mono/react/_reactSetup.mdx";
+export const ReactSetup = _ReactSetup;
+
+import * as _reactGatesAndConfigs from "../client/javascript-mono/react/_reactGatesAndConfigs.mdx";
+export const ReactGatesAndConfigs = _reactGatesAndConfigs;
+export const ReactInstall = _ReactInstall;
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import SDKAndFrameworks from '../../src/components/getting-started/SDKAndFrameworks';
+import Styles from '../../src/components/getting-started/Styles';
+
+<Styles />
+
+export const Builder = SDKDocsBuilder({
+  sections: [
+  ],
+});
+
+export const toc = Builder.toc
+
+
+This quickstart will guide you through quickly installing the Statsig SDK in a client app. If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/getting-started) or read about choosing between [client vs. server SDKs](/sdks/client-vs-server).
+<Tabs
+  defaultValue="react"
+  groupId="install-language"
+  values={[
+    {label: <span><img src='/img/sdk/sdk_react.png' alt="React" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />React</span>, value: 'react'},
+    {label: <span><img src='/img/sdk/sdk_js.png' alt="JavaScript" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />JS snippet</span>, value: 'js'},
+    {label: <span><img src='/img/sdk/sdk_python.png' alt="Python" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />Python</span>, value: 'python'},
+    {label: <span><img src='/img/sdk/sdk_node.png' alt="Node" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />Node</span>, value: 'node'},
+    {label: <span>
+      <img src='/img/sdk/sdk_swift.png' alt="iOS" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />
+      <img src='/img/sdk/sdk_android.png' alt="Android" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />
+      <img src='/img/sdk/sdk_flutter.svg' alt="Flutter" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />
+      <img src='/img/sdk/sdk_rust.svg' alt="Rust" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />
+      <img src='/img/sdk/sdk_ruby.png' alt="Ruby" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />
+      ... +24 more
+    </span>, value: 'more'},
+  ]}>
+
+  <TabItem value="react">
+    ### 1. Install Statsig packages
+
+    ```bash
+    npm install @statsig/react-bindings
+    ```
+
+  ### 2. Import the StatsigProvider
+  In your App Router, import the StatsigProvider.
+
+  ```tsx
+  import StatsigProvider from "@statsig/react-bindings";
+  ```
+
+  ### 3. Wrap child components
+  Next, update your app's default function so that the StatsigProvider wraps around all child components.
+
+  ```tsx
+  export default function RootLayout({ children }: { children: React.ReactNode }) {
+    return (
+      <StatsigProvider 
+        sdkKey={process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!}
+        user={{ userID: "quickstart-user" }}
+        }}>
+        {children}
+      </StatsigProvider>
+    );
+  }
+  ```
+
+  ### 4. Add client key
+  Create a client API key in the [Statsig console Settings](https://console.statsig.com/api_keys). Copy and paste it to replace `<REPLACE_WITH_YOUR_CLIENT_KEY>` in the code snippet from the previous step.
+
+  ### 5. Next steps
+  Congratulations! You've successfully set up the Statsig SDK in React. Continue on to the tutorials, or jump in to the full [Next.js](/client/javascript-sdk/next-js) or [React](/client/javascript-sdk/react) SDK libraries.
+  </TabItem>
+
+  <TabItem value="js">
+    
+    The easiest way to get up and running is by adding the Statsig JavaScript snippet to your website. 
+    
+    ### 1. Paste the code snippet
+    In the `<head>` section of your website, paste the following code snippet.
+
+    ```html
+    <script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=<REPLACE_WITH_YOUR_CLIENT_KEY>"></script>
+    ```
+
+  ### 2. Add client key
+  Create a client API key in the [Statsig console Settings](https://console.statsig.com/api_keys). Copy and paste it to replace `<REPLACE_WITH_YOUR_CLIENT_KEY>` in the code snippet from the previous step.
+
+   ### 3. Next steps
+   Congratulations! You've set up the Statsig JavaScript snippet. Once installed, you'll be able to:
+    - Start [recording events](/webanalytics/overview).
+    - Watch [session replays](/session-replay/overview).
+    - Run [experiments](/experiments-plus).
+    - Use [feature flags](/feature-flags/working-with).
+  </TabItem>
+  <TabItem value="python">
+  ### 1. Install Statsig packages
+  ```shell
+pip install statsig-python-core
+```
+
+### 2. Initialize the Statsig SDK
+
+```python
+from statsig_python_core import Statsig, StatsigOptions
+
+options = StatsigOptions()
+options.environment = "development"
+
+statsig = Statsig("<REPLACE_WITH_YOUR_SERVER_SECRET_KEY>", options)
+statsig.initialize().wait()
+
+statsig.shutdown().wait()
+```
+
+### 3. Add server secret key
+Create a server secret key in the [Statsig console Settings](https://console.statsig.com/api_keys). Copy and paste it to replace `<REPLACE_WITH_YOUR_SERVER_SECRET_KEY>` in the code snippet from the previous step.
+
+### 4. Next steps
+Congratulations! You've successfully set up the Statsig SDK in Python. Continue on to the tutorials, or jump in to the full [Python](/server-core/python-core) SDK library.
+
+  </TabItem>
+  <TabItem value="node">
+  ### 1. Install Statsig packages
+  
+```bash
+npm i @statsig/statsig-node-core
+```
+
+### 2. Initialize the Statsig SDK
+```jsx
+// Basic initialization
+const statsig = new Statsig("<REPLACE_WITH_YOUR_SERVER_SECRET_KEY>");
+await statsig.initialize();
+
+// or with StatsigOptions
+const options: StatsigOptions = { environment: "staging" };
+
+const statsigWithOptions = new Statsig("secret-key", options);
+await statsigWithOptions.initialize();
+```
+
+### 3. Add server secret key
+Create a server secret key in the [Statsig console Settings](https://console.statsig.com/api_keys). Copy and paste it to replace `<REPLACE_WITH_YOUR_SERVER_SECRET_KEY>` in the code snippet from the previous step.
+
+### 4. Next steps
+Congratulations! You've successfully set up the Statsig SDK in Node.js. Continue on to the tutorials, or jump in to the full [Node.js](/server-core/node-core) SDK library.
+</TabItem>
+  <TabItem value="more">
+  <SDKAndFrameworks />
+  </TabItem>
+
+</Tabs>

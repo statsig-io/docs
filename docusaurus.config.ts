@@ -135,6 +135,12 @@ const config: Config = {
                   src: "/js/koala.js",
                 },
               },
+              {
+                tagName: "script",
+                attributes: {
+                  src: "/js/custom-search.js",
+                },
+              },
             ],
           };
         },
@@ -144,6 +150,14 @@ const config: Config = {
       "@docusaurus/plugin-client-redirects",
       {
         redirects: [
+          {
+            from: "/feature-flags/create-new",
+            to: "/feature-gates/create",
+          },
+          {
+            from: "/feature-flags/add-rule",
+            to: "/feature-gates/create#add-a-rule-to-your-feature-gate",
+          },
           {
             from: "/stats-engine/offlineaa",
             to: "/guides/aa-test#offline-aa-tests",
@@ -440,37 +454,22 @@ const config: Config = {
     image: "img/docs_meta_q3_2023.png",
     docs: {
       sidebar: {
-        autoCollapseCategories: true,
+        autoCollapseCategories: false,
       },
     },
     algolia: {
-      // The application ID provided by Algolia
       appId: "JOWHDNMZRN",
 
-      // Public API key: it is safe to commit it
       apiKey: "2a538120ca7db3411698786731f3c2f6",
 
       indexName: "statsig",
 
-      // Optional: see doc section below
-      // contextualSearch: true,
+      contextualSearch: true,
 
-      // // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-      // externalUrlRegex: 'external\\.com|domain\\.com',
+      searchParameters: {
+        facetFilters: []
+      },
 
-      // // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
-      // replaceSearchResultPathname: {
-      //   from: '/docs/', // or as RegExp: /\/docs\//
-      //   to: '/',
-      // },
-
-      // // Optional: Algolia search parameters
-      // searchParameters: {},
-
-      // // Optional: path for search page that enabled by default (`false` to disable it)
-      // searchPagePath: 'search',
-
-      // // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
       insights: true,
     },
     navbar: {
@@ -483,13 +482,30 @@ const config: Config = {
       },
       items: [
         {
+          type: 'doc',
+          position: 'left',
+          docId: 'getting-started',
+          sidebarId: 'product-docs',
+          label: 'Product Docs',
+          id: 'product-docs', //don't edit this without rerunning algolia scraper
+        },
+        {
+          type: 'docSidebar',
+          position: 'left',
+          sidebarId: 'warehouse',
+          label: 'Warehouse Native',
+          id: 'warehouse', //don't edit this without rerunning algolia scraper
+        },
+        {
+          type: 'docSidebar',
+          position: 'left',
+          sidebarId: 'api',
+          label: 'SDKs & APIs',
+          id: 'sdk-api', //don't edit this without rerunning algolia scraper
+        },
+        {
           type: "search",
         },
-        // {
-        //   type: "html",
-        //   value:
-        //     "<button class=\"loginCTA CTA\" onclick=\"window.open('https://console.statsig.com', '_blank').focus();\">Log In</button>",
-        // },
         {
           type: "html",
           value:

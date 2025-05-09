@@ -49,7 +49,7 @@ For more in-depth breakdown of auto capture event data, refer to [Using Autocapt
 
 For single page apps, or for more complex scenarios, look up how to [log events using Javascript](/client/javascript-sdk#event-logging).
 
-You can also disable a subset of these events from the Statsig console under Project Settings > Auto Capture
+You can also disable a subset of these events from the Statsig console under Project Settings > Analytics & Session Replay
 
 ![screenshot_2024-09-16_at_8 05 21___am](https://github.com/user-attachments/assets/1cba9cbc-9fbe-4024-9a7f-43184efc37b9)
 
@@ -68,3 +68,26 @@ You can see some example autocapture event details [here](/guides/sidecar-experi
 If you need to add additional configurations, metadata about the user, or want to access the full `StatsigClient` to check feature gates and experiments or log events, you can used the advanced setup.  The script tag above will automatically initialize the SDK, but if you remove your SDK key you can manually configure your integration.
 
 <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-session-replay-html.tsx" />
+
+## Event Filtering
+
+If you need to filter out specific auto capture events, you can use the `eventFilterFunc` option in the `StatsigAutoCapturePlugin`. This allows you to selectively disable certain events based on their properties.
+
+For example, to disable page view events while keeping all other auto capture events:
+
+```ts
+const client = new StatsigClient(
+  'client-key',
+  { userID: 'a-user' },
+  {
+    plugins: [
+      new StatsigAutoCapturePlugin({
+        eventFilterFunc: (event) =>
+          event.eventName !== AutoCaptureEventName.PAGE_VIEW,
+      }),
+    ],
+  },
+);
+```
+
+The `eventFilterFunc` receives the `AutoCaptureEvent` object and should return `true` to keep the event or `false` to filter it out. You can filter based on `eventName`, `value`, or any property in the `metadata`.

@@ -1,7 +1,7 @@
 ---
 title: Comparing Warehouse Native and Cloud
 slug: /statsig-warehouse-native/native-vs-cloud
-sidebar_label: Native vs Cloud
+sidebar_label: WHN vs Cloud
 description: Understand the different Statsig products
 keywords:
   - owner:vm
@@ -23,6 +23,7 @@ If there's any confusion, or if a feature is critical for your evaluation, we're
 |                                     | Gate lifecycle management                 | Identical                                          |
 | E2E Experiments (w/ SDK)            | Pulse                                     | WHN offers on-demand reloads                       |
 | Pulse (Scorecards)                  | CUPED                                     | Identical                                          |
+|                                     | CURE                                      | WHN only for now                                   |
 |                                     | Topline Impact                            | Identical                                          |
 |                                     | Daily Time Series                         | Identical                                          |
 |                                     | Frequentist vs Bayesian                   | Identical                                          |

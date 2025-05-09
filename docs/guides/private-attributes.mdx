@@ -19,7 +19,7 @@ For example, let's say you want to use an email condition:
 2. Pass `email: email@domain.com` in `privateAttributes` rather than in the top level `email` field
 3. Test it out in the `Test Gate` console after saving changes
 
-![Example email condition with privateAttributes](https://user-images.githubusercontent.com/74584483/137523844-41720c7a-b006-48ab-a5b2-53c833c3de80.png)
+![Private attributes](/img/conditions/private-attributes.png)
 
 When evaluating rules and conditions, Statsig first checks for fields at the top level, then in the custom attributes, and finally, in the private attributes.  By simply not passing email at the top level, the evaluator will keep looking in other possible places before evaluating the condition (`custom`, and then `privateAttributes`).
 So if you want to keep the ip address and user agent private, but still use browser or IP checks in the console, simply put them in the `privateAttributes` dictionary instead of at the top level of the user.  The same goes for country, locale, custom fields, and so on.

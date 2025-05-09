@@ -7,8 +7,24 @@ last_update:
   date: 2024-12-26
 ---
 
+## What do I use Statsig for? 
 
-Statsig offers two flexible ways to leverage its core products based on your needs: Statsig Cloud (where we host your data) and Statsig Warehouse Native (where you host your data in your own warehouse).
+Statsig's goal is to be the single platform to ship, measure, and learn from the products you build. The most popular features of Statsig are:
+ - [Feature Flags](/feature-flags/working-with/): Expose new features to select user groups, roll them out (and roll them back, when things go wrong), and measure the impact they have. 
+ - [Experiments](/experiments-plus/): Run randomized, controlled experiments on different variations of your product, and measure the exact impact on your users. Customers use Statsig to run thousands of experiments each year, and iterate in the right direction.
+ - [Product Analytics](/product-analytics/overview/): Understand the trends of your core business metrics, user behavior, and more. 
+While these three are some of our most popular, Statsig offers other tools like [Session Replay](/session-replay/overview), [Web Analytics](/webanalytics/overview/) and all of these features together are greater than the sum of the parts.
+
+---
+
+## How do I setup Statsig?
+
+While Statsig is flexible to many setups models, the most common setup approach is to integrate [Statsig's SDKs](sdks/quickstart/) which let you integrate flags/experiments, and track your core business metrics. While SDK installation is most common, you might want to bring existing data to Statsig. If so, you have a few options:
+ - **I'd like to bring existing data from my Data Warehouse:** You'll likely want to use [Statsig Warehouse Native](/statsig-warehouse-native/introduction), a zero-ETL model for running experiments and product analytics on top of your existing data. Alternatively, you can import warehouse data into Statsig Cloud with our [warehouse ingestions](https://docs.statsig.com/data-warehouse-ingestion/introduction/).
+ - **I'd like to bring existing data from my Segment, Rudderstack, Amplitude, or another platform:** Consider one of Statsig's [integrations](/integrations/introduction), which can port your events straight into Statsig Cloud.
+ - **I'd like to import my existing experiment assignment data, and use Statsig for Analysis:** You'll need to use [Statsig Warehouse Native](/statsig-warehouse-native/introduction).
+
+Statsig has two models to leverage its core products based on your needs: Statsig Cloud (where we host your data) and Statsig Warehouse Native (where you host your data in your own warehouse) a little more on each of these:
 
 ---
 
@@ -16,8 +32,8 @@ Statsig offers two flexible ways to leverage its core products based on your nee
 
 With Statsig Cloud, setting up is simple. Install the Statsig SDK and configure event logging—we handle everything else.
 
-- You get feature flags and 1 million metered events for free.
-- Enjoy powerful analytics tools such as the Dashboard, Metrics Explorer, and Insights.
+- You get feature flags and 2 million metered events for free.
+- Enjoy powerful analytics tools such as Dashboards, Metrics Explorer, and Insights.
 - For more details on the pricing, check [our pricing page](https://www.statsig.com/pricing).
 
 Statsig Cloud is a great choice for those who want to get started quickly without needing to manage infrastructure or data warehousing.
@@ -35,8 +51,9 @@ If your events and metrics already reside in your own data warehouse and you hav
 
 The first method helps you scale analysis, while the second can 10x your experimentation velocity.
 
-> Note: WHN is available only with Enterprise contracts. If you’re interested in this option, check [this link](/statsig-warehouse-native/introduction) or [schedule a demo](https://www.statsig.com/contact/demo) with our Sales team.
-> 
+:::note
+WHN is available only with Enterprise contracts. If you’re interested in this option, check [this link](/statsig-warehouse-native/introduction) or [schedule a demo](https://www.statsig.com/contact/demo) with our Sales team.
+:::
 
 ---
 

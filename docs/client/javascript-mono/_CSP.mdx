@@ -1,0 +1,29 @@
+## Content Security Policy
+
+If your web application uses Content Security Policy (CSP), you'll need to add Statsig domains to your policy.
+
+### Recommended CSP Configuration
+
+```javascript
+// Sample CSP configuration for Statsig JavaScript SDK
+const cspConfig = {
+  directives: {
+    'connect-src': [
+      // Statsig API Services
+      'api.statsig.com',
+      'featuregates.org',
+      'statsigapi.net',
+      'events.statsigapi.net',
+      'api.statsigcdn.com',
+      'featureassets.org',
+      'assetsconfigcdn.org',
+      'prodregistryv2.org',
+      'cloudflare-dns.com',
+      'beyondwickedmapping.org',
+    ]
+  }
+};
+```
+### Important Note
+
+Statsig occasionally updates domains. We'll communicate when we plan this, but check the [Statsig domains documentation](https://docs.statsig.com/infrastructure/statsig_domains/) for the most up-to-date list of domains to include in your CSP. 

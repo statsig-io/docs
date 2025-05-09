@@ -1,18 +1,12 @@
 ---
-title: Feature Flag Best Practices
-sidebar_label: Best Practices
+title: Best practices for Feature Gates
+sidebar_label: Best practices
 slug: /feature-flags/best-practices
 keywords:
   - owner:shubham
 last_update:
   date: 2024-06-12
 ---
-
-:::note
-
-Usually referred to online as _feature flags_, the Statsig UI and SDKs call them _feature gates_.
-
-:::
 
 Statsig classifies the best practices for using feature gates into four categories: implementation, development, collaboration, and governance.
 

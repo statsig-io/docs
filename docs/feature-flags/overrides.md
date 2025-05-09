@@ -1,18 +1,12 @@
 ---
-title: Feature Flag Overrides
-sidebar_label: Overrides
+title: Feature Gate overrides
+sidebar_label: Overrides and bypass lists
 slug: /feature-flags/overrides
 keywords:
   - owner:shubham
 last_update:
   date: 2024-03-27
 ---
-
-:::note
-
-Usually referred to online as _feature flags_, the Statsig UI and SDKs call them _feature gates_.
-
-:::
 
 ## Override results of a feature gate
 

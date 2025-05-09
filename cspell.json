@@ -349,6 +349,9 @@
     "xAU",
     "yyyy",
     "nd",
+    "lossier",
+    "cohorted",
+    "Cohorted",
     "winsorized",
     "onboarded",
     "misconfigured",
@@ -674,7 +677,9 @@
     "backgrounded",
     "adblockers",
     "Novalues",
-    "misconfiguring"
+    "misconfiguring",
+    "lockfiles",
+    "jinayoon"
   ],
   "ignorePaths": [
     "node_modules/**",

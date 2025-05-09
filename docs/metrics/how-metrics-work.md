@@ -10,6 +10,10 @@ last_update:
 
 # How Metrics Work on Statsig
 
+:::tip[Warehouse Native users]
+You're viewing the Cloud docs for this page. Metrics and experiments behave differently in Warehouse Native. Read more in [Data & Semantic Layer in Warehouse Native](/statsig-warehouse-native/configuration/data-and-semantic-layer).
+:::
+
 A metric in Statsig is a numeric value for each user on a given day. This value can be aggregated across the entire user base or a subset, such as the test or control group of an experiment. 
 
 For example, say one user made two purchases on September 1st, and another made only one. These values can be aggregated across multiple users to calculate the total number of purchases across all users on September 1st.

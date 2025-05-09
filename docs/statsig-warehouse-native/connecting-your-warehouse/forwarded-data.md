@@ -15,6 +15,11 @@ If you want to change the name of the table that are used for forwarded data, in
 
 Note: If you've already had data exported and change the table name, future data will be written to the new table. 
 
+:::info Note
+Non-production exposures or log events are not forwarded to external warehouses
+:::
+
+
 ## Exposures
 
 Logging exposures with Statsig means you'll get real-time diagnostics on the Statsig console, as well as real-time aggregations like exposures by hour.
@@ -26,6 +31,10 @@ Under the covers, we perform a just-in-time update of exposures in your warehous
 These fast-forwarded exposures are not deduplicated, and will have some fields (`user_dimensions` in particular) missing. These fields will be provided in the subsequent daily load.
 
 Each day, a deduplicated digest will be exported to your warehouse to ensure consistency. This will be deduplicated with the above as part of the standard Pulse Pipeline.
+
+:::info Note
+For gates with 0% or 100% rollout, by default we don't forward exposure to your warehouse. If you need them, please contact our support team.
+:::
 
 ## Events
 

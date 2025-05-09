@@ -63,12 +63,12 @@ By default, Statsig only includes numerators from metrics with non-null, non-zer
 
 ## Options
 
-- Cohort Windows (Numerator and Denominator)
+- [Cohort Windows](../features/cohort-metrics.md) (Numerator and Denominator)
   - You can specify a window for data collection after a unit's exposure. For example, a 0-1 day cohort window would only count actions from days 0 and 1 after a unit was exposed to an experiment
     - **Only include units with a completed window** can be selected to remove units out of pulse analysis for this metric until the cohort window has completed
 - Winsorization
   - Specify a lower and/or upper percentile bound to winsorize at. Winsorization and its thresholds can be specified for both the numerator and denominator of the ratio metric independently. All values below the lower threshold, or above the upper threshold, will be clamped to that threshold to reduce the outsized impact of outliers on your analysis
 - Include units which do not have a denominator
   - Control whether you want to include numerators from units which don't have a denominator value
-- Baked Metrics
-  - Baked metrics allow you to specify how long a metric needs to mature. This is common in situations like chargebacks or cancellations. Statsig will delay loading the data until the window has elapsed, and only calculate pulse results for that metric if a unit's metric has matured.
+- [Baked Metrics](../features/cohort-metrics.md)
+  - [Baked Metrics](../features/cohort-metrics.md) allow you to specify how long a metric needs to mature. This is common in situations like chargebacks or cancellations. Statsig will delay loading the data until the window has elapsed, and only calculate pulse results for that metric if a unit's metric has matured.
