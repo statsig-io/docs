@@ -865,6 +865,11 @@ const sidebars: SidebarsConfig = {
           id: "server-core/java-core",
         },
         {
+          type: "doc",
+          id: "server-core/java/migration",
+          label: "Java Core Migration Guide",
+        },
+        {
           className: "ruby-icon sidebar-icon sdk-sidebar-icon",
           type: "doc",
           id: "server/rubySDK",
