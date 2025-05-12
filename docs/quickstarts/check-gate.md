@@ -108,7 +108,7 @@ export default App;
 4. Make sure to also replace `client-KEY` with the Client API Key you copied in Step 3.
 
 ### Check your Feature Gate
-Finally, you can now evaluate a Feature Gate in your product code by getting the client with the `useStatsigClient` hook, and then calling `checkGate`. If you're not sure yet about where and how you want to place your flag yet, check out our doc on [Best Practices for feature flags](/feature-flags/best-practices).
+Finally, you can now evaluate a Feature Gate in your product code by getting the client with the `useStatsigClient` hook, and then calling `checkGate`. If you're not sure yet about where and how you want to place your flag, check out our doc on [Best Practices for feature flags](/feature-flags/best-practices).
 
 1. Add the following code to your `App.js` file. In this snippet, the `example_gate` is the name of the Feature Gate you created in Step 1.
 
