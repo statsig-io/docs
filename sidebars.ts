@@ -861,13 +861,20 @@ const sidebars: SidebarsConfig = {
         },
         {
           className: "java-icon sidebar-icon sdk-sidebar-icon",
-          type: "doc",
-          id: "server-core/java-core",
-        },
-        {
-          type: "doc",
-          id: "server-core/java/migration",
-          label: "Java Core Migration Guide",
+          type: "category",
+          label: "Java",
+          items: [
+            {
+              type: "doc",
+              id: "server-core/java-core",
+              label: "Java Core SDK",
+            },
+            {
+              type: "doc",
+              id: "server-core/java/migration",
+              label: "Migration Guide",
+            },
+          ],
         },
         {
           className: "ruby-icon sidebar-icon sdk-sidebar-icon",
