@@ -151,6 +151,10 @@ const config: Config = {
       {
         redirects: [
           {
+            from: "/guides/guides/feature-gates",
+            to: "/guides/feature-gates"
+          },
+          {
             from: "/feature-flags/create-new",
             to: "/feature-gates/create",
           },
