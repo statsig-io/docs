@@ -40,7 +40,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.statsig:java-server-sdk:X.X.X'
+    implementation 'com.statsig:serversdk:X.X.X'
 }
 ```
 
@@ -51,7 +51,7 @@ dependencies {
 <dependencies>
     <dependency>
         <groupId>com.statsig</groupId>
-        <artifactId>java-server-sdk</artifactId>
+        <artifactId>serversdk</artifactId>
         <version>X.X.X</version>
     </dependency>
 </dependencies>
@@ -382,7 +382,8 @@ StatsigOptions options = new StatsigOptions.Builder()
 
 3. **Update Initialization**
    - Change from static methods to instance methods
-   - Use the builder pattern for options
+   - Use the builder pattern for options and StatsigUser
+   - Replace `new StatsigUser("user_id")` with `new StatsigUser.Builder().setUserId("user_id").build()`
    - Initialize with `new Statsig(key, options)` and call `initialize()`
 
 4. **Update User Creation**
