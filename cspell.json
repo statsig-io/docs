@@ -679,7 +679,9 @@
     "Novalues",
     "misconfiguring",
     "lockfiles",
-    "jinayoon"
+    "jinayoon",
+    "quickstart",
+    "quickstarts"
   ],
   "ignorePaths": [
     "node_modules/**",
