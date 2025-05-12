@@ -981,8 +981,16 @@ const sidebars: SidebarsConfig = {
           ],
         },
         "server/deprecation-notices",
-        "http-api",
+        "sdks/support",
       ],
+    },
+    {
+      type: "category",
+      label: "HTTP API",
+      collapsed: true,
+      items: [
+        "http-api",
+      ]
     },
     {
       type: "category",
