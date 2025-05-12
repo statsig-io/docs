@@ -119,5 +119,7 @@ return (
 );
 ```
 
-2. Run your app and see the result! The app should render the text "Gate is passing" since we configured a rule in Part 1 that targets all users with the ``statsig.com`` email domain, and we are using that same email domain in this client's User object.
+2. Run your app and see the result! The app should render the text "Gate is passing" since we already [Created a targeting rule](#create-a-targeting-rule) that targets all users with the ``statsig.com`` email domain, and we are using that same email domain in this client's User object.
+
+3. Once you've set up your gate, you can easily [monitor the impact of your new feature rollout](/feature-flags/view-exposures) or [manage flag lifecycles](/feature-flags/feature-flags-lifecycle).
 
