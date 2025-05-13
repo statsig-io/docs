@@ -490,11 +490,11 @@ StatsigOptions options = new StatsigOptions.Builder()
 3. **Update Initialization**
    - Change from static methods to instance methods
    - Use the builder pattern for options and StatsigUser
-   - Replace `new StatsigUser("user_id")` with `new StatsigUser.Builder().setUserId("user_id").build()`
+   - Replace `new StatsigUser("user_id")` with `new StatsigUser.Builder().setUserID("user_id").build()`
    - Initialize with `new Statsig(key, options)` and call `initialize()`
 
 4. **Update User Creation**
-   - Use the builder pattern: `new StatsigUser.Builder().setUserId("user_id").build()`
+   - Use the builder pattern: `new StatsigUser.Builder().setUserID("user_id").build()`
 
 5. **Update Method Calls**
    - Replace static methods with instance methods
