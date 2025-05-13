@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useColorMode } from '@docusaurus/theme-common/internal';
 
 import Alert from "@mui/material/Alert";
 
@@ -36,7 +37,8 @@ const SELECTED_API_VERSION_STORAGE_KEY = 'statsig_api_version';
 
 export default function Rapidoc(props) {
   const { id, entity } = props;
-  const isDarkTheme = false;
+  const { colorMode } = useColorMode();
+  const isDarkTheme = colorMode === 'dark';
   const [apiVersion, setApiVersion] = useState(null);
   const specUrl = apiVersion ? getSpecUrlForApiVersion(apiVersion) : null;
 
