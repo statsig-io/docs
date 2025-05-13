@@ -63,59 +63,20 @@ In the code snippet example above, the Statsig SDK is checking from a client app
 Statsig offers over 20 client and server-side SDKs. Check out the full list of [SDKs](/sdks/client-vs-server#available-sdks) to find the one that best fits your needs.
 :::
 
-## Common Feature Gates
 
-### Kill Switches
+## Common Feature Gate setups
+
+### Kill switches
 You can set up a simple "kill switch" by first setting an `Everyone` criteria's Pass percentage to 100%. Then, if you need to completely disable the feature for all users at some point after code deployment, you can set the Pass percentage to 0%, effectively killing the feature for all users.
 
-![Image](/img/feature-gates/kill-switch.png)
+### OS-based flags 
+You can target users based on common application properties such as the operating system that the application is running on. For example, to target iOS users only, you can create a rule with the "Operating System" criteria, the "Any of" operator, and then listing "iOS" in the text field.
 
-### OS-Based Flags 
-You can target users based on common application properties such as the operating system that the application is running on.
+### Internal employees only
+You can target users based on known user attributes. For example, you can use the user's **Email** attribute and the **Contains any of** operator, then enter the email domain of your company to target only internal employees.
 
-![image](https://user-images.githubusercontent.com/1315028/129112226-51978083-d007-4697-88b5-f3a080eabf48.png)
-
-### Internal Employees Only
-You can target users based on their attributes. For example, you can use the user's **Email** attribute and the **Contains any of** operator, then enter the email domain of your company to target only internal employees.
-
-![image](https://user-images.githubusercontent.com/1315028/129113738-ec99c4f0-dbdd-4d14-a88a-b3343d4d12da.png)
-
-
-### Defined User Segments
+### Defined user segments
 You can also target users in a defined user [Segment](/segments).
 
-![image](https://user-images.githubusercontent.com/1315028/129112427-27351aaf-074e-4997-91d8-6e1e7941b991.png)
-
-
-### Parent/Child Flags
+### Parent/child flags
 You can target users based on their eligibility of other Feature Gates, enabling powerful chaining, hierarchy, and dependencies of flags. [Flag lifecycle management](/feature-flags/feature-flags-lifecycle) makes it easy to manage, deprecate, and maintain dependent flags.
-
-![image](https://user-images.githubusercontent.com/1315028/129112612-d881981c-4fc6-4e95-a9c5-18319c02d6f2.png)
-
-
-## Rule criteria available in Statsig
-This table provides a comprehensive overview of all available targeting properties in Statsig Feature Gates. For full details on all rule criteria and how conditions are evaluated, read about [Feature Gate rule criteria](/feature-flags/conditions).
-
-| Category | Property | Description |
-|----------|----------|-------------|
-| **General** | Everyone | Applies the rule to all users |
-| | Time | Schedule-based targeting for specific time periods |
-| **Initialization** | App Version | Target users based on their app version |
-| | Environment Tier | Target based on environment (e.g., dev, staging, prod) |
-| **Device & OS** | Browser Name | Target specific web browsers |
-| | Browser Version | Target specific browser versions |
-| | Device Model | Target specific device models |
-| | IP Address | Target based on user's IP address |
-| | Operating System | Target specific operating systems |
-| | OS Version | Target specific OS versions |
-| **User Properties** | Country | Target users based on their country |
-| | Custom Field | Target using custom user properties |
-| | Customer Unit ID | Target specific customer units |
-| | Email | Target specific email addresses |
-| | Locale | Target based on user's language/locale |
-| | User ID | Target specific user IDs |
-| **Segments & Gates** | Fails Target Gate | Target users who fail a specific gate |
-| | Passes Target Gate | Target users who pass a specific gate |
-| | User is in Segment | Target users belonging to a specific segment |
-| | User is not in Segment | Target users not in a specific segment |
-
