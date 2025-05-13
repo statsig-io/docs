@@ -1,5 +1,29 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="ios-sdk-lang-choice"
+  defaultValue="swift"
+  values={[
+    {label: 'Swift', value: 'swift'},
+    {label: 'Objective-C', value: 'objectivec'},
+  ]}>
+  <TabItem value="swift">
+
 ```swift
 let title = homepageStore.getValue(forKey: "title", defaultValue: "Welcome")
 
 let shouldShowUpsell = homepageStore.getValue(forKey: "upsell_upgrade_now", defaultValue: false)
 ```
+
+  </TabItem>
+  <TabItem value="objectivec">
+
+```swift
+NSString *title = [homepageStore getStringForKey:@"title" defaultValue:@"Welcome"];
+
+BOOL shouldShowUpsell = [homepageStore getBoolForKey:@"upsell_upgrade_now" defaultValue:NO];
+```
+
+  </TabItem>
+</Tabs>
