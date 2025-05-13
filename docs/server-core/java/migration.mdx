@@ -441,13 +441,8 @@ options.setDisableAllLogging(false);
 
 ```kotlin
 val options = StatsigOptions().apply {
-    setInitTimeoutMs(3000)
-    setTier("staging")
-    setLocalMode(false)
-    setApi("https://api.statsig.com/v1")
-    setRulesetsSyncIntervalMs(10 * 1000)
-    setIdListsSyncIntervalMs(60 * 1000)
-    setDisableAllLogging(false)
+    initTimeoutMs(3000)
+    disableAllLogging(false)
 }
 ```
 
