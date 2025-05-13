@@ -13,11 +13,10 @@
    - useful for redirecting logs to your own logging system, suppressing unnecessary console output, or debugging issues with the SDK.
    
    ```swift
-   let options = StatsigOptions()
-   options.printHandler = { message in
+   let options = StatsigOptions(printHandler: { message in
        // Handle log message (e.g., redirect to your logging system)
        MyLogger.log(message)
-   }
+   })
    Statsig.initialize(sdkKey: "client-key", options: options)
    ```
 
