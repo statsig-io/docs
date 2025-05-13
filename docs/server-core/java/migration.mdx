@@ -235,7 +235,7 @@ if (featureOn) {
   <TabItem value="core">
 
 ```java
-StatsigUser user = new StatsigUser.Builder().setUserId("user_id").build();
+StatsigUser user = new StatsigUser.Builder().setUserID("user_id").build();
 boolean isFeatureOn = statsig.checkGate(user, "use_new_feature");
 
 if (isFeatureOn) {
@@ -490,11 +490,11 @@ StatsigOptions options = new StatsigOptions.Builder()
 3. **Update Initialization**
    - Change from static methods to instance methods
    - Use the builder pattern for options and StatsigUser
-   - Replace `new StatsigUser("user_id")` with `new StatsigUser.Builder().setUserId("user_id").build()`
+   - Replace `new StatsigUser("user_id")` with `new StatsigUser.Builder().setUserID("user_id").build()`
    - Initialize with `new Statsig(key, options)` and call `initialize()`
 
 4. **Update User Creation**
-   - Use the builder pattern: `new StatsigUser.Builder().setUserId("user_id").build()`
+   - Use the builder pattern: `new StatsigUser.Builder().setUserID("user_id").build()`
 
 5. **Update Method Calls**
    - Replace static methods with instance methods
@@ -518,11 +518,11 @@ StatsigOptions options = new StatsigOptions.Builder()
 3. **Update Initialization**
    - Change from static methods to instance methods
    - Replace `.apply {}` blocks with the builder pattern
-   - Replace `val user = StatsigUser("user_id")` with `val user = StatsigUser.Builder().setUserId("user_id").build()`
+   - Replace `val user = StatsigUser("user_id")` with `val user = StatsigUser.Builder().setUserID("user_id").build()`
    - Initialize with `val statsig = Statsig("key", options)` and call `initialize()`
 
 4. **Update User Creation**
-   - Use the builder pattern: `val user = StatsigUser.Builder().setUserId("user_id").build()`
+   - Use the builder pattern: `val user = StatsigUser.Builder().setUserID("user_id").build()`
 
 5. **Update Method Calls**
    - Replace static methods with instance methods
