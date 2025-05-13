@@ -12,13 +12,13 @@
    - the handler receives the message string that would otherwise be printed to the console.
    - useful for redirecting logs to your own logging system, suppressing unnecessary console output, or debugging issues with the SDK.
    
-   ```swift
-   let options = StatsigOptions(printHandler: { message in
-       // Handle log message (e.g., redirect to your logging system)
-       MyLogger.log(message)
-   })
-   Statsig.initialize(sdkKey: "client-key", options: options)
-   ```
+     ```swift
+     let options = StatsigOptions(printHandler: { message in
+         // Handle log message (e.g., redirect to your logging system)
+         MyLogger.log(message)
+     })
+     Statsig.initialize(sdkKey: "client-key", options: options)
+     ```
 
 -  **environment**: StatsigEnvironment, default `nil`
    - StatsigEnvironment is a class for you to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
