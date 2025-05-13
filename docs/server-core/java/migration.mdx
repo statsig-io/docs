@@ -1,5 +1,5 @@
 ---
-title: Migrating from Legacy Java SDK to Java Core
+title: Migrating from Legacy Java/Kotlin SDK to Java Core
 sidebar_label: Migration Guide
 keywords:
   - owner:brock
@@ -23,7 +23,7 @@ This guide will help you migrate from the legacy Java/Kotlin Server SDK to the n
 
 ## Installation Differences
 
-### Legacy Java SDK
+### Legacy Java/Kotlin SDK
 
 <Tabs
   groupId="java-build-tools"
@@ -143,12 +143,13 @@ This will output the appropriate dependency for your system.
 
 <Tabs
   groupId="sdk-comparison"
-  defaultValue="legacy"
+  defaultValue="legacy-java"
   values={[
-    {label: 'Legacy Java SDK', value: 'legacy'},
+    {label: 'Legacy Java SDK', value: 'legacy-java'},
+    {label: 'Legacy Kotlin SDK', value: 'legacy-kotlin'},
     {label: 'Java Core SDK', value: 'core'},
   ]}>
-  <TabItem value="legacy">
+  <TabItem value="legacy-java">
 
 ```java
 import com.statsig.sdk.Statsig;
@@ -158,6 +159,19 @@ StatsigOptions options = new StatsigOptions();
 // options.initTimeoutMs = 9999;
 Future initFuture = Statsig.initializeAsync("server-secret-key", options);
 initFuture.get();
+```
+
+  </TabItem>
+  <TabItem value="legacy-kotlin">
+
+```kotlin
+import com.statsig.sdk.Statsig
+
+val options = StatsigOptions().apply {
+    // Customize options as needed
+    initTimeoutMs = 9999
+}
+async { Statsig.initialize("server-secret-key", options) }.await()
 ```
 
   </TabItem>
@@ -184,18 +198,33 @@ statsig.initialize().get();
 
 <Tabs
   groupId="sdk-comparison"
-  defaultValue="legacy"
+  defaultValue="legacy-java"
   values={[
-    {label: 'Legacy Java SDK', value: 'legacy'},
+    {label: 'Legacy Java SDK', value: 'legacy-java'},
+    {label: 'Legacy Kotlin SDK', value: 'legacy-kotlin'},
     {label: 'Java Core SDK', value: 'core'},
   ]}>
-  <TabItem value="legacy">
+  <TabItem value="legacy-java">
 
 ```java
 StatsigUser user = new StatsigUser("user_id");
 Boolean isFeatureOn = Statsig.checkGateSync(user, "use_new_feature");
 
 if (isFeatureOn) {
+  // Gate is on, use new feature
+} else {
+  // Gate is off
+}
+```
+
+  </TabItem>
+  <TabItem value="legacy-kotlin">
+
+```kotlin
+val user = StatsigUser("user_id")
+val featureOn = Statsig.checkGateSync(user, "use_new_feature")
+
+if (featureOn) {
   // Gate is on, use new feature
 } else {
   // Gate is off
@@ -223,12 +252,13 @@ if (isFeatureOn) {
 
 <Tabs
   groupId="sdk-comparison"
-  defaultValue="legacy"
+  defaultValue="legacy-java"
   values={[
-    {label: 'Legacy Java SDK', value: 'legacy'},
+    {label: 'Legacy Java SDK', value: 'legacy-java'},
+    {label: 'Legacy Kotlin SDK', value: 'legacy-kotlin'},
     {label: 'Java Core SDK', value: 'core'},
   ]}>
-  <TabItem value="legacy">
+  <TabItem value="legacy-java">
 
 ```java
 DynamicConfig config = Statsig.getConfigSync(user, "awesome_product_details");
@@ -236,6 +266,17 @@ DynamicConfig config = Statsig.getConfigSync(user, "awesome_product_details");
 String itemName = config.getString("product_name", "Awesome Product v1");
 Double price = config.getDouble("price", 10.0);
 Boolean shouldDiscount = config.getBoolean("discount", false);
+```
+
+  </TabItem>
+  <TabItem value="legacy-kotlin">
+
+```kotlin
+val config = Statsig.getConfigSync(user, "awesome_product_details")
+
+val itemName = config.getString("product_name", "Awesome Product v1")
+val price = config.getDouble("price", 10.0)
+val shouldDiscount = config.getBoolean("discount", false)
 ```
 
   </TabItem>
@@ -256,18 +297,29 @@ Boolean shouldDiscount = config.getBoolean("discount", false);
 
 <Tabs
   groupId="sdk-comparison"
-  defaultValue="legacy"
+  defaultValue="legacy-java"
   values={[
-    {label: 'Legacy Java SDK', value: 'legacy'},
+    {label: 'Legacy Java SDK', value: 'legacy-java'},
+    {label: 'Legacy Kotlin SDK', value: 'legacy-kotlin'},
     {label: 'Java Core SDK', value: 'core'},
   ]}>
-  <TabItem value="legacy">
+  <TabItem value="legacy-java">
 
 ```java
 DynamicConfig experiment = Statsig.getExperimentSync(user, "new_user_promo_title");
 
 String promoTitle = experiment.getString("title", "Welcome to Statsig!");
 Double discount = experiment.getDouble("discount", 0.1);
+```
+
+  </TabItem>
+  <TabItem value="legacy-kotlin">
+
+```kotlin
+val experiment = Statsig.getExperimentSync(user, "new_user_promo_title")
+
+val promoTitle = experiment.getString("title", "Welcome to Statsig!")
+val discount = experiment.getDouble("discount", 0.1)
 ```
 
   </TabItem>
@@ -287,18 +339,29 @@ Double discount = experiment.getDouble("discount", 0.1);
 
 <Tabs
   groupId="sdk-comparison"
-  defaultValue="legacy"
+  defaultValue="legacy-java"
   values={[
-    {label: 'Legacy Java SDK', value: 'legacy'},
+    {label: 'Legacy Java SDK', value: 'legacy-java'},
+    {label: 'Legacy Kotlin SDK', value: 'legacy-kotlin'},
     {label: 'Java Core SDK', value: 'core'},
   ]}>
-  <TabItem value="legacy">
+  <TabItem value="legacy-java">
 
 ```java
 Layer layer = Statsig.getLayerSync(user, "user_promo_experiments");
 
 String promoTitle = layer.getString("title", "Welcome to Statsig!");
 Double discount = layer.getDouble("discount", 0.1);
+```
+
+  </TabItem>
+  <TabItem value="legacy-kotlin">
+
+```kotlin
+val layer = Statsig.getLayerSync(user, "user_promo_experiments")
+
+val promoTitle = layer.getString("title", "Welcome to Statsig!")
+val discount = layer.getDouble("discount", 0.1)
 ```
 
   </TabItem>
@@ -318,15 +381,23 @@ Double discount = layer.getDouble("discount", 0.1);
 
 <Tabs
   groupId="sdk-comparison"
-  defaultValue="legacy"
+  defaultValue="legacy-java"
   values={[
-    {label: 'Legacy Java SDK', value: 'legacy'},
+    {label: 'Legacy Java SDK', value: 'legacy-java'},
+    {label: 'Legacy Kotlin SDK', value: 'legacy-kotlin'},
     {label: 'Java Core SDK', value: 'core'},
   ]}>
-  <TabItem value="legacy">
+  <TabItem value="legacy-java">
 
 ```java
 Statsig.logEvent(user, "purchase", 2.99, Map.of("item_name", "remove_ads"));
+```
+
+  </TabItem>
+  <TabItem value="legacy-kotlin">
+
+```kotlin
+Statsig.logEvent(user, "purchase", 2.99, mapOf("item_name" to "remove_ads"))
 ```
 
   </TabItem>
@@ -344,7 +415,15 @@ statsig.logEvent(user, "purchase", "2.99", metadata);
 
 ## Configuration Options Differences
 
-### Legacy Java SDK Options
+<Tabs
+  groupId="sdk-comparison"
+  defaultValue="legacy-java"
+  values={[
+    {label: 'Legacy Java SDK', value: 'legacy-java'},
+    {label: 'Legacy Kotlin SDK', value: 'legacy-kotlin'},
+    {label: 'Java Core SDK', value: 'core'},
+  ]}>
+  <TabItem value="legacy-java">
 
 ```java
 StatsigOptions options = new StatsigOptions();
@@ -357,7 +436,23 @@ options.idListsSyncIntervalMs = 60 * 1000;
 options.disableAllLogging = false;
 ```
 
-### Java Core SDK Options
+  </TabItem>
+  <TabItem value="legacy-kotlin">
+
+```kotlin
+val options = StatsigOptions().apply {
+    initTimeoutMs = 3000
+    setTier("staging")
+    localMode = false
+    api = "https://api.statsig.com/v1"
+    rulesetsSyncIntervalMs = 10 * 1000
+    idListsSyncIntervalMs = 60 * 1000
+    disableAllLogging = false
+}
+```
+
+  </TabItem>
+  <TabItem value="core">
 
 ```java
 StatsigOptions options = new StatsigOptions.Builder()
@@ -371,7 +466,19 @@ StatsigOptions options = new StatsigOptions.Builder()
     .build();
 ```
 
+  </TabItem>
+</Tabs>
+
 ## Migration Steps
+
+<Tabs
+  groupId="sdk-comparison"
+  defaultValue="java"
+  values={[
+    {label: 'Java Migration', value: 'java'},
+    {label: 'Kotlin Migration', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
 
 1. **Update Dependencies**
    - Replace `com.statsig:serversdk` with `com.statsig:javacore`
@@ -397,6 +504,38 @@ StatsigOptions options = new StatsigOptions.Builder()
 6. **Test Thoroughly**
    - Verify all feature gates, experiments, and configs work as expected
    - Check that event logging is functioning correctly
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+1. **Update Dependencies**
+   - Replace `com.statsig:serversdk` with `com.statsig:javacore`
+   - Add the platform-specific dependency
+
+2. **Update Imports**
+   - Replace `import com.statsig.sdk.*` with `import com.statsig.*`
+
+3. **Update Initialization**
+   - Change from static methods to instance methods
+   - Replace `.apply {}` blocks with the builder pattern
+   - Replace `val user = StatsigUser("user_id")` with `val user = StatsigUser.Builder().setUserId("user_id").build()`
+   - Initialize with `val statsig = Statsig("key", options)` and call `initialize()`
+
+4. **Update User Creation**
+   - Use the builder pattern: `val user = StatsigUser.Builder().setUserId("user_id").build()`
+
+5. **Update Method Calls**
+   - Replace static methods with instance methods
+   - Remove `Sync` suffix from method names
+   - Update method signatures as needed
+   - Replace `mapOf("key" to "value")` with appropriate map creation methods
+
+6. **Test Thoroughly**
+   - Verify all feature gates, experiments, and configs work as expected
+   - Check that event logging is functioning correctly
+
+  </TabItem>
+</Tabs>
 
 ## New Features in Java Core
 
