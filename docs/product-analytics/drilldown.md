@@ -155,6 +155,10 @@ Note that when viewing data on uniques (e.g. unique users) at daily granularity,
 
 The default date range of a chart is 14 days. To select the date range of a chart click on the “Last 14 days” dropdown and select one of the quick date ranges, or select a custom range you prefer. 
 
+### Changing your unit type
+
+The default formatting / unit type is numbers. To see your data as a percentage, time value, or measurement of space (bytes, bits, etc.), click on the settings cog in the top right corner of your chart, and then select format unit type. 
+
 ### Smoothing out the data with rollups
 
 Metrics like daily usage often have seasonality effects which can make longer-term trends harder to see at a glance. To help with this, techniques such as modifying each data point on a daily chart to represent a 7 day rolling average is useful. 
