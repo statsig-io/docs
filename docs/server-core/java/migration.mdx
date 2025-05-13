@@ -427,13 +427,13 @@ statsig.logEvent(user, "purchase", "2.99", metadata);
 
 ```java
 StatsigOptions options = new StatsigOptions();
-options.initTimeoutMs = 3000;
+options.setInitTimeoutMs(3000);
 options.setTier("staging");
-options.localMode = false;
-options.api = "https://api.statsig.com/v1";
-options.rulesetsSyncIntervalMs = 10 * 1000;
-options.idListsSyncIntervalMs = 60 * 1000;
-options.disableAllLogging = false;
+options.setLocalMode(false);
+options.setApi("https://api.statsig.com/v1");
+options.setRulesetsSyncIntervalMs(10 * 1000);
+options.setIdListsSyncIntervalMs(60 * 1000);
+options.setDisableAllLogging(false);
 ```
 
   </TabItem>
@@ -441,13 +441,13 @@ options.disableAllLogging = false;
 
 ```kotlin
 val options = StatsigOptions().apply {
-    initTimeoutMs = 3000
+    setInitTimeoutMs(3000)
     setTier("staging")
-    localMode = false
-    api = "https://api.statsig.com/v1"
-    rulesetsSyncIntervalMs = 10 * 1000
-    idListsSyncIntervalMs = 60 * 1000
-    disableAllLogging = false
+    setLocalMode(false)
+    setApi("https://api.statsig.com/v1")
+    setRulesetsSyncIntervalMs(10 * 1000)
+    setIdListsSyncIntervalMs(60 * 1000)
+    setDisableAllLogging(false)
 }
 ```
 
