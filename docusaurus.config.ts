@@ -135,12 +135,6 @@ const config: Config = {
                   src: "/js/koala.js",
                 },
               },
-              {
-                tagName: "script",
-                attributes: {
-                  src: "/js/custom-search.js",
-                },
-              },
             ],
           };
         },
