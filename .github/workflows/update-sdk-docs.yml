@@ -2,6 +2,7 @@ name: Update Java SDK Docs with Codex
 
 on:
   workflow_dispatch:
+  push:
 
 jobs:
   update-java-docs:
@@ -25,10 +26,18 @@ jobs:
         run: |
           codex --approval-mode auto-edit --quiet "$(cat tasks/auto_doc.md)"
 
-      - name: Commit and push if changed
+      - name: Commit and push
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@users.noreply.github.com"
+          
+          BRANCH_NAME="auto/update-docs-$(date +%Y%m%d-%H%M%S)"
+          
+          git fetch origin main
+          git checkout -b "$BRANCH_NAME" origin/main
+          
           git add -A
           git diff --cached --quiet || git commit -m "auto: update sdk documentation"
-          git push
+          
+          git push --set-upstream origin "$BRANCH_NAME"
+
