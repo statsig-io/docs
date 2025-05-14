@@ -609,47 +609,57 @@ span.math.math-inline {
 .welcome-card-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  justify-content: flex-start;
+  gap: 1rem;
+  margin: 2rem 0;
 }
 
 .welcome-card {
-  flex: 1 1 300px;
-  min-width: 0;
-  max-width: 100%;
+  background-color: var(--ifm-card-background-color, #fff);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--ifm-card-border-radius);
+  box-shadow: var(--ifm-global-shadow-lw);
+  transition: all 0.3s ease;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  background: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.2s ease;
 }
 
-.welcome-card>* {
-  flex-grow: 1;
-  min-width: 0;
+.welcome-card:hover {
+  box-shadow: var(--ifm-global-shadow-md);
+  transform: translateY(-2px);
+}
+
+.welcome-card > * {
+  padding: 1rem;
 }
 
 .welcome-card .icon {
-  filter: none;
+  margin-bottom: 1rem;
 }
 
 .welcome-card h3 {
-  color: #000;
-  margin-top: 12px;
-  margin-bottom: 8px;
-  word-wrap: break-word;
+  color: var(--ifm-heading-color);
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
 }
 
 .welcome-card p {
-  color: #333;
-  margin-bottom: 16px;
-  word-wrap: break-word;
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
 }
 
 html[data-theme='dark'] .welcome-card {
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  background-color: var(--ifm-background-color);
+  border-color: var(--ifm-color-emphasis-200);
+}
+
+html[data-theme='dark'] .welcome-card h3 {
+  color: var(--ifm-color-white);
+}
+
+html[data-theme='dark'] .welcome-card p {
+  color: var(--ifm-color-emphasis-600);
 }
 
 /* Navbar responsive styles */
