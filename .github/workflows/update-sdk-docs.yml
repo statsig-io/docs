@@ -2,7 +2,6 @@ name: Update Java SDK Docs with Codex
 
 on:
   workflow_dispatch:
-  push:
 
 jobs:
   update-java-docs:
