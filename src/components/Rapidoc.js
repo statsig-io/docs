@@ -241,7 +241,7 @@ function getDescription(entity) {
       return (
         <>
           <p>
-            A <a href="../feature-flags/working-with">feature gate</a> is a
+            A <a href="../feature-flags/overview">Feature Gate</a> is a
             mechanism for teams to configure what system behavior is visible to
             users without changing application code. This page describes how
             gates can be created and modified through the Console API.

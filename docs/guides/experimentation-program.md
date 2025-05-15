@@ -18,7 +18,7 @@ Here are three common frameworks we use at Statsig, which are also popular among
 ### Generate Ideas Based on Your Business Context
 
 1. **Turn Every Upcoming Feature into an Experiment**: 
-   - This is one of the simplest and most natural methods. At Statsig, we often put every new feature behind a feature flag. Statsig’s [Feature Flags](/feature-flags/working-with) (also called "gates") automatically convert a feature rollout into an A/B test, measuring the impact on your key metrics as the rollout progresses. If your engineering team already uses feature flags for releases, this is the easiest path to your first A/B test.
+   - This is one of the simplest and most natural methods. At Statsig, we often put every new feature behind a feature flag. Statsig’s [Feature Flags](/feature-flags/overview) (also called "gates") automatically convert a feature rollout into an A/B test, measuring the impact on your key metrics as the rollout progresses. If your engineering team already uses feature flags for releases, this is the easiest path to your first A/B test.
 
 2. **Work Backwards from Company Goals**:
    - Many of our customers begin by aligning experiments with strategic company goals. For example, if the goal is to drive adoption growth, break down the goal into actionable metrics (e.g., total revenue, monthly active users) and run experiments that can move those metrics incrementally. Instead of targeting broad goals like revenue, focus on specific, actionable metrics like checkout completions or user onboarding time.
