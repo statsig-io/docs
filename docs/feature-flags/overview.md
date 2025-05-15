@@ -29,7 +29,7 @@ Devs often use them to turn on certain features for a small percentage of the to
 
 
 ## How it works
-1. First, [create a Feature Gate](/feature-gates/create) with [targeting rules](/feature-flags/conditions) in the Statsig console. 
+1. First, [create a Feature Gate](/feature-flags/create) with [targeting rules](/feature-flags/conditions) in the Statsig console. 
 2. For the Feature Gate to actually impact users, you'll need to integrate the [Statsig SDK](/sdks/getting-started) into your product code. The SDK will query the gate value during runtime and return a true/false result based on user attributes, environment data, and other conditions you define.  
 3. You can [test a Feature Gate](/feature-flags/test-gate) to make sure it's behaving as expected before you actually roll it out.
 4. For finer targeting control, you can also set up [Feature Gate overrides](/feature-flags/overrides), which are like "bypass lists" for the gate.
