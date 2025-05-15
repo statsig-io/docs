@@ -39,7 +39,7 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
 
   When set to true, the SDK will wait until user agent parsing data is fully loaded during initialization. This may slow down by ~1 second startup but ensures that parsing of the user’s userAgent string into fields like browserName, browserVersion, systemName, systemVersion, and appVersion is ready before any evaluations.
 
-- **`disable_user_country_lookup`**  `Optional[bool]`
+- **`disable_country_lookup`**  `Optional[bool]`
   Default false. If set to true, the SDK will NOT attempt to parse IP addresses (attached to the user object at user.ip) into Country codes at evaluation time, when needed for evaluation.
 
 - **`wait_for_country_lookup_init`**  `Optional[bool]`
@@ -67,6 +67,21 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
 
 - **`observability_client`**: `Optional[ObservabilityClientBaseClass]`  
   Adapter to listen monitor the health of SDK. See [details](https://docs.statsig.com/sdk_monitoring/)
+
+- **`data_store`**: `Optional[DataStore]`  
+  Custom data store implementation for storing and retrieving configuration data. Used for advanced caching or storage strategies.
+
+- **`event_logging_max_pending_batch_queue_size`**: `Optional[int]`  
+  Maximum number of batches of events to hold in buffer to retry.
+
+- **`global_custom_fields`**: `Optional[Dict]`  
+  Custom fields to include in all events logged by the SDK.
+
+- **`config_compression_mode`**: `Optional[str]`  
+  Compression method for exposure logging. Default: "gzip". Options: "gzip", "dictionary"
+
+- **`proxy_config`**: `Optional[ProxyConfig]`  
+  Proxy configuration for network requests. Includes proxy_host, proxy_port, proxy_auth, and proxy_protocol.
 
 ---
 
