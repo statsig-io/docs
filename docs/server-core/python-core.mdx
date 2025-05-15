@@ -22,7 +22,8 @@ import {
   ManualExposures,
   Shutdown,
   LocalOverrides,
-  ServerCore
+  ServerCore,
+  DataStore
 } from "./Templates/index.mdx";
 
 
@@ -87,10 +88,7 @@ export const Builder = SDKDocsBuilder({
     ],
     [ServerCore, { snippet: <Preamble /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
-    [
-      "Data Store",
-      { content: <DataStore /> }
-    ],
+    [DataStore, { content: <DataStore /> }],
   ]
 })
 
