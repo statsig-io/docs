@@ -28,6 +28,9 @@ When `true`, disables all network functions: event & exposure logging, spec down
 - **`eventLoggingMaxQueueSize`**: `Optional[int]`  
   Maximum number of events to queue before forcing a flush.
 
+- **`eventLoggingMaxPendingBatchQueueSize`**: `Optional[int]`  
+  Maximum number of batches that can be queued before dropping events.
+
 - **`enableIDLists`**: `Optional[bool]`  
   Enable/disable ID list functionality.
 
