@@ -145,14 +145,20 @@ const config: Config = {
       {
         redirects: [
 
-          {
-            from: "/guides/feature-gates",
-            to: "/guides/feature-flags"
-          },
-          {
-            from: "/feature-gates/create",
-            to: "/feature-flags/create"
-          },
++
++          {
++            from: "/guides/feature-gates",
++            to: "/guides/feature-flags"
++          },
++          {
++            from: "/feature-gates/create",
++            to: "/feature-flags/create"
++          },
++          {
++            from: "/feature-gates/overview",
++            to: "/feature-flags/overview"
++          },
+
           {
             from: "/guides/guides/feature-gates",
             to: "/guides/feature-flags"
