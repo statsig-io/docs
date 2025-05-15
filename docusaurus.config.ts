@@ -146,15 +146,15 @@ const config: Config = {
         redirects: [
           {
             from: "/guides/guides/feature-gates",
-            to: "/guides/feature-gates"
+            to: "/guides/feature-flags"
           },
           {
             from: "/feature-flags/create-new",
-            to: "/feature-gates/create",
+            to: "/feature-flags/create",
           },
           {
             from: "/feature-flags/add-rule",
-            to: "/feature-gates/create#add-a-rule-to-your-feature-gate",
+            to: "/feature-flags/create#add-a-rule-to-your-feature-gate"
           },
           {
             from: "/stats-engine/offlineaa",
