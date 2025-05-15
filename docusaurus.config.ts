@@ -155,11 +155,11 @@ const config: Config = {
           },
           {
             from: "/guides/guides/feature-gates",
-            to: "/guides/feature-gates"
+            to: "/guides/feature-flags"
           },
           {
             from: "/feature-flags/create-new",
-            to: "/feature-gates/create",
+            to: "/feature-flags/create",
           },
           {
             from: "/feature-flags/add-rule",
