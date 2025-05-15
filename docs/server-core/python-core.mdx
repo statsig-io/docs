@@ -87,7 +87,10 @@ export const Builder = SDKDocsBuilder({
     ],
     [ServerCore, { snippet: <Preamble /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
-    { title: "Data Store", content: <DataStore /> },
+    [
+      { title: "Data Store" },
+      { content: <DataStore /> }
+    ],
   ]
 })
 
