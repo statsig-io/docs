@@ -2,7 +2,7 @@ import NetworkConfig from "./_networkConfig.mdx";
 
 #### **loggingEnabled** `LoggingEnabledOption` 
 > Controls whether logging is enabled and in which environments. Options are:
-> - `LoggingEnabledOption.browserOnly` (`"browser-only"`) - Only logs events in browser environments (default behavior)
+> - `LoggingEnabledOption.browserOnly` (`"browser-only"`) - This is the default behavior. Log events in browser environments, skipping it when running on a server. Useful for server-side rendering.
 > - `LoggingEnabledOption.disabled` (`"disabled"`) - Prevents collecting and sending any events over the network
 > - `LoggingEnabledOption.always` (`"always"`) -Enables logging in all environments (browser and non-browser like VSCode extensions, Chrome extensions, CLIs, etc.)
 >
