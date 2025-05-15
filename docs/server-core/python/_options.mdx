@@ -72,7 +72,7 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
   Custom data store implementation for storing and retrieving configuration data. Used for advanced caching or storage strategies.
 
 - **`event_logging_max_pending_batch_queue_size`**: `Optional[int]`  
-  Maximum number of batches in the pending queue before dropping older batches.
+  Maximum number of batches of events to hold in buffer to retry.
 
 - **`global_custom_fields`**: `Optional[Dict]`  
   Custom fields to include in all events logged by the SDK.
