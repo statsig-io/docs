@@ -45,7 +45,7 @@ External data store for Statsig values.
   Maximum number of events to queue before forcing a flush.
 
 - **`event_logging_max_pending_batch_queue_size`**: Option\<u32\>
-  Maximum number of batches that can be queued before dropping events.
+  Maximum number of batches of events to hold in buffer to retry.
 
 - **`fallback_to_statsig_api`**: Option\<bool\>
   Whether to fallback to the Statsig API if custom endpoints fail.
