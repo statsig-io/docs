@@ -68,7 +68,7 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
 - **`observability_client`**: `Optional[ObservabilityClientBaseClass]`  
   Adapter to listen monitor the health of SDK. See [details](https://docs.statsig.com/sdk_monitoring/)
 
-- **`data_store`**: `Optional[DataStoreBaseClass]`  
+- **`data_store`**: `Optional[DataStore]`  
   Custom data store implementation for storing and retrieving configuration data. Used for advanced caching or storage strategies.
 
 - **`event_logging_max_pending_batch_queue_size`**: `Optional[int]`  
@@ -78,7 +78,7 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
   Custom fields to include in all events logged by the SDK.
 
 - **`config_compression_mode`**: `Optional[str]`  
-  Compression mode for configuration data. Possible values: "gzip", "dictionary".
+  Compression method for exposure logging. Default: "gzip".
 
 - **`proxy_config`**: `Optional[ProxyConfig]`  
   Proxy configuration for network requests. Includes proxy_host, proxy_port, proxy_auth, and proxy_protocol.
@@ -99,23 +99,4 @@ options.disable_all_logging = False
 # Pass the options object into statsig.initialize()
 statsig = Statsig("secret-key", options)
 statsig.initialize().wait()
-```
-
-### ProxyConfig Class
-
-The `ProxyConfig` class is used to configure proxy settings for network requests:
-
-```python
-from statsig_python_core import ProxyConfig, StatsigOptions
-
-# Initialize ProxyConfig with custom parameters
-proxy_config = ProxyConfig(
-    proxy_host="proxy.example.com",
-    proxy_port=8080,
-    proxy_auth="username:password",
-    proxy_protocol="http"
-)
-
-options = StatsigOptions()
-options.proxy_config = proxy_config
 ```
