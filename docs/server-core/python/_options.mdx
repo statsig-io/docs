@@ -68,6 +68,9 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
 - **`observability_client`**: `Optional[ObservabilityClientBaseClass]`  
   Adapter to listen monitor the health of SDK. See [details](https://docs.statsig.com/sdk_monitoring/)
 
+- **`data_store`**: `Optional[DataStoreBase]`  
+  Interface to implement custom caching logic for Statsig configurations. For details, see the [Data Store Interface](https://docs.statsig.com/server/concepts/data_store) documentation.
+
 ---
 
 ### Example Usage
