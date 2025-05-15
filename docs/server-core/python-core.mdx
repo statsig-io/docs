@@ -22,8 +22,7 @@ import {
   ManualExposures,
   Shutdown,
   LocalOverrides,
-  ServerCore,
-  DataStore
+  ServerCore
 } from "./Templates/index.mdx";
 
 
@@ -42,7 +41,6 @@ import ShutdownSnippet from "./python/_shutdown.mdx";
 import OverridesSnippet from "./python/_localOverrides.mdx";
 import { Snippets as ManualExposureSnippets } from "./python/_manualExposures.mdx";
 import SharedInstanceSnippet from "./python/_sharedInstance.mdx";
-import DataStore from "./python/_dataStore.mdx";
 
 
 
@@ -88,7 +86,6 @@ export const Builder = SDKDocsBuilder({
     ],
     [ServerCore, { snippet: <Preamble /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
-    [DataStore, { content: <DataStore /> }],
   ]
 })
 
