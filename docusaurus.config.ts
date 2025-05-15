@@ -144,6 +144,15 @@ const config: Config = {
       "@docusaurus/plugin-client-redirects",
       {
         redirects: [
+
+          {
+            from: "/guides/feature-gates",
+            to: "/guides/feature-flags"
+          },
+          {
+            from: "/feature-gates/create",
+            to: "/feature-flags/create"
+          },
           {
             from: "/guides/guides/feature-gates",
             to: "/guides/feature-gates"
@@ -154,7 +163,7 @@ const config: Config = {
           },
           {
             from: "/feature-flags/add-rule",
-            to: "/feature-gates/create#add-a-rule-to-your-feature-gate",
+            to: "/feature-flags/create#add-a-rule-to-your-feature-gate"
           },
           {
             from: "/stats-engine/offlineaa",
