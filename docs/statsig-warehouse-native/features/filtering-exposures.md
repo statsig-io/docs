@@ -24,7 +24,7 @@ There are a few settings:
 ## Filter Assignment Source
 You can also filter exposures to units based on the columns in assignment source. You can directly use certain columns, as well as apply filters on top of that.
 
-Similar as filtering by qualifying event, we recommend using this tool carefully because it can artificially introduce bias to the experiment results.
+Similar to filtering by qualifying event, we recommend using this tool carefully because it can artificially introduce bias to the experiment results.
 
 <img width="1169" alt="Screen Shot 2025-05-15 at 9 43 36 PM" src="https://github.com/user-attachments/assets/36ddb74f-d9e9-4e25-8349-61077f77b863" />
 
