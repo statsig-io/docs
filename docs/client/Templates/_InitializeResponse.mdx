@@ -1,6 +1,6 @@
 ## Initialize Response {#initialize-response}
 
-The Statsig SDK provides a method to access the raw values that are used internally to provide gate, config, and layer results. This can be useful for debugging or for advanced use cases where you need to access the underlying data.
+The Statsig SDK provides a method to access the raw values that are used internally to provide gate, config, and layer results. This can be useful for debugging or for advanced use cases where you need to access the underlying data.  For example, you may want to use a statsig javascript sdk in the in app browser, and want it to use the same set of values from your native sdk. You can use this method to bootstrap the javascript sdk and have it share values with its native host app.
 
 <div>{props.getInitializeResponseJson}</div>
 
@@ -8,7 +8,3 @@ The `getInitializeResponseJson` method returns an `ExternalInitializeResponse` o
 
 1. A JSON string representation of the initialize response values
 2. Evaluation details that provide metadata about how the values were obtained (network, cache, etc.)
-
-This method is available in SDK version:
-- Android: All versions
-- iOS: All versions
