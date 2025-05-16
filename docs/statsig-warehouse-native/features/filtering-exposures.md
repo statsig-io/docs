@@ -22,7 +22,7 @@ There are a few settings:
 - Filter events by time window: restrict the qualifying event matching to events that happened within X days/minutes of the unit's exposure event
 
 ## Filter Assignment Source
-You can also filter exposures to units based on the columns in assignment source. You can directly use certain columns, as well as applly filters on top of that.
+You can also filter exposures to units based on the columns in assignment source. You can directly use certain columns, as well as apply filters on top of that.
 
 Similar as filtering by qualifying event, we recommend using this tool carefully because it can artificially introduce bias to the experiment results.
 
