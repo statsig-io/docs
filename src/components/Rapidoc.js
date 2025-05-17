@@ -55,6 +55,15 @@ export default function Rapidoc(props) {
   }, [apiVersion]);
 
   useEffect(() => {
+    const rapidoc = document.getElementById(id);
+    if (rapidoc) {
+      rapidoc.setAttribute('theme', isDarkTheme ? 'dark' : 'light');
+      rapidoc.setAttribute('primary-color', isDarkTheme ? '#2196f3' : '#194b7d');
+      rapidoc.setAttribute('bg-color', isDarkTheme ? '#1b1b1d' : '#ffffff');
+    }
+  }, [id, isDarkTheme]);
+
+  useEffect(() => {
     if (!specUrl) {
       return;
     }
