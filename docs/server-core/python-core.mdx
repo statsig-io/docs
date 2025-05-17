@@ -22,11 +22,13 @@ import {
   ManualExposures,
   Shutdown,
   LocalOverrides,
-  ServerCore
+  ServerCore,
+  Migrating
 } from "./Templates/index.mdx";
 
 
 import Preamble from "./_preamble.mdx";
+import MigratingLink from "./python/_migrating.mdx";
 import Install from "./python/_install.mdx";
 import Initialize from "./python/_initialize.mdx";
 import CheckGate from "./python/_checkGate.mdx";
@@ -74,6 +76,7 @@ export const Builder = SDKDocsBuilder({
         sharedInstance: <SharedInstanceSnippet />,
       },
     ],
+    [Migrating, {migratingLink: <MigratingLink/>}],
     [ManualExposures, { ...ManualExposureSnippets }],
     [StatsigUser, { statsigUser: <UserSnippet /> }],
     [StatsigOptions, { options: <Options /> }],
