@@ -21,7 +21,7 @@ To add new user targeting rules to a dynamic config,
 
   - You can target users based on common attributes such as their operating system as shown below
 
-  ![image](https://user-images.githubusercontent.com/1315028/129112226-51978083-d007-4697-88b5-f3a080eabf48.png)
+  ![add new rule to dynamic config](../../static/img/dynamic-config/add-new-rule-dynamic.png)
 
   - You can target users in a defined [segment](/segments) as shown below
 
