@@ -16,7 +16,7 @@ A rule defines the criteria for which users are included in a segment. To add a 
 - Click the **Add New Rule** button 
 - Select the criteria to target a set of users. For example, select Email and the Contains any of operator, and enter the email domain of your company to target only internal employees
 
-![image](https://user-images.githubusercontent.com/1315028/129094975-a78b8caf-ac0d-4b14-96f7-adba2fe73f1f.png)
+![Add new rule](../../static/img/segments/add-new-rule.png)
 
 - Click the **Add Rule** button
 - Click the **Save Changes** button at the top right of the **Rules** section
