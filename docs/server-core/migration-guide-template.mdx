@@ -1,0 +1,156 @@
+---
+sidebar_label: Migration Guide Template
+title: Server Core Migration Guide Template
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-05-13
+---
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  MigrationGuide
+} from "./Templates/index.mdx";
+
+import Preamble from "./_preamble.mdx";
+
+export const MigrationGuideContent = () => (
+  <div>
+    <h2>Migration Guide Template</h2>
+    <p>
+      This template provides a standardized structure for creating migration guides for Statsig Server Core SDKs.
+      It includes sections for core concept changes that are common across all SDKs, as well as language-specific
+      sections for API changes, StatsigOptions changes, and migration steps.
+    </p>
+
+    <h3>Core Concept Changes</h3>
+    <p>
+      This section covers changes that are common across all Server Core SDKs:
+    </p>
+
+    <h4>Initialization and Shutdown Changes</h4>
+    <p>
+      Server Core SDKs often have different initialization and shutdown patterns compared to legacy SDKs.
+      Common changes include:
+    </p>
+    <ul>
+      <li>Async initialization and shutdown processes</li>
+      <li>Different return types from initialization methods</li>
+      <li>New initialization options and parameters</li>
+    </ul>
+
+    <h4>API and Singleton Pattern Changes</h4>
+    <p>
+      Server Core SDKs typically use different API patterns:
+    </p>
+    <ul>
+      <li>Updated singleton patterns (e.g., using Statsig.shared() instead of static methods)</li>
+      <li>Separation of dynamic config and experiment functions into different classes</li>
+      <li>New typed getter functions</li>
+      <li>Option objects for settings like disable_exposure</li>
+    </ul>
+
+    <h4>Proxy Considerations</h4>
+    <p>
+      If using proxies with Server Core SDKs:
+    </p>
+    <ul>
+      <li>Server Core SDKs may use different endpoints (e.g., v1 → v2)</li>
+      <li>Custom proxies may need updates to support new endpoints</li>
+      <li>Memory usage considerations for proxies supporting both old and new SDKs</li>
+    </ul>
+
+    <h4>Behavioral Changes</h4>
+    <p>
+      Server Core SDKs may have behavioral differences:
+    </p>
+    <ul>
+      <li>Different User-Agent parsing</li>
+      <li>Changes to country lookup functionality</li>
+      <li>Different default settings for features like ID Lists</li>
+      <li>Changes to evaluation details format</li>
+    </ul>
+
+    <h3>Language-Specific Changes</h3>
+    <p>
+      Each language implementation will have specific changes:
+    </p>
+
+    <h4>API Changes</h4>
+    <p>
+      Document changes to method names, signatures, and return types specific to the language.
+    </p>
+
+    <h4>StatsigOptions Changes</h4>
+    <p>
+      Provide a mapping table showing old option names to new ones, with notes on changes.
+    </p>
+
+    <h3>New Features</h3>
+    <p>
+      Highlight new capabilities available in Server Core SDKs:
+    </p>
+    <ul>
+      <li>New StatsigOptions fields</li>
+      <li>Observability improvements</li>
+      <li>Persistent storage support</li>
+      <li>Data store/adapter changes</li>
+      <li>Pipeline support</li>
+      <li>Parameter stores (if available)</li>
+      <li>Contextual Multi-Armed Bandit (CMAB) support (if available)</li>
+    </ul>
+
+    <h3>Migration Steps</h3>
+    <p>
+      Provide a step-by-step guide for migrating from legacy to Server Core SDK:
+    </p>
+    <ol>
+      <li>Update dependencies</li>
+      <li>Update imports</li>
+      <li>Update initialization code</li>
+      <li>Update user creation</li>
+      <li>Update method calls</li>
+      <li>Test thoroughly</li>
+    </ol>
+
+    <h3>Troubleshooting</h3>
+    <p>
+      Common issues and solutions when migrating:
+    </p>
+    <ul>
+      <li>Missing dependencies</li>
+      <li>Incompatible method calls</li>
+      <li>Configuration differences</li>
+    </ul>
+
+    <h3>References</h3>
+    <p>
+      Links to additional resources:
+    </p>
+    <ul>
+      <li>Documentation</li>
+      <li>Package repositories</li>
+      <li>Migration helpers</li>
+      <li>Support channels</li>
+    </ul>
+  </div>
+);
+
+export const Builder = SDKDocsBuilder({
+  sections: [
+    [
+      MigrationGuide,
+      {
+        content: <MigrationGuideContent />,
+      },
+    ],
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
