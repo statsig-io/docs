@@ -26,7 +26,8 @@ import {
   PersistentStorage,
   DataStore,
   OutputLogger,
-  ObservabilityClient
+  ObservabilityClient,
+  MigrationGuide
 } from "./Templates/index.mdx";
 
 
@@ -49,7 +50,7 @@ import PersistentStorageContent from "./python/_persistent_storage.mdx";
 import DataStoreContent from "./python/_data_store.mdx";
 import OutputLoggerContent from "./python/_output_logger.mdx";
 import ObservabilityClientContent from "./python/_observability_client.mdx";
-// import migration guide 
+import MigrationGuideContent from "./python/_migrationGuide.mdx";
 
 
 
@@ -62,12 +63,12 @@ export const Builder = SDKDocsBuilder({
         repo: "https://github.com/statsig-io/statsig-server-core/tree/main/statsig-pyo3",
       },
     ],
-    // [
-    //   MigrationGuide,
-    //   {
-    //     migrationGuide: <MigrationGuide />,
-    //   },
-    // ],
+    [
+      MigrationGuide,
+      {
+        migrationGuide: <MigrationGuideContent />,
+      },
+    ],
     [
       GettingStarted,
       {
