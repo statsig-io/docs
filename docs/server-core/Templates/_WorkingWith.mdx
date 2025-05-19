@@ -2,7 +2,7 @@
 
 ### Checking a Feature Flag/Gate
 
-Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-flags/working-with). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
+Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-flags/overview). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
 
 From this point on, all APIs will require you to specify the user (see [Statsig user](#statsig-user)) associated with the request. For example, check a gate for a certain user like this:
 
@@ -25,9 +25,8 @@ Then we have **Layers/Experiments**, which you can use to run A/B/n experiments.
 {props.paramStores ? (
   <>
     <p>
-      Sometimes - you don't know exactly what kind of Statsig config (Gate/Experiment/Layer/Dynamic Config) you want behind a particular value – you might want on-the-fly control of that, outside of your deployment cycle.
-      <a href="/client/concepts/parameter-stores/">Parameter Stores</a> enable this by letting you define a "Parameter" that can be static, or changed into a gate, experiment, etc. in the Statsig console.
-      Parameter Stores are optional – but parameterizing your application can prove very useful, even allowing non-technical Statsig users to turn parameters into experiments.
+      Sometimes you don't know whether you want a value to be a Feature Gate, Experiment, or Dynamic Config yet. If you want on-the-fly control of that outside of your deployment cycle,
+      you can use <a href="/client/concepts/parameter-stores/">Parameter Stores</a> to define a parameter that can be changed into at any point in the Statsig console. Parameter Stores are optional, but parameterizing your application can prove very useful for future flexibility and can even allow non-technical Statsig users to turn parameters into experiments.
     </p>
     <div>{props.paramStores}</div>
   </>
@@ -37,7 +36,7 @@ Then we have **Layers/Experiments**, which you can use to run A/B/n experiments.
 
 ### Logging an Event
 
-Now that you have a Feature Gate or an Experiment set up, you may want to track some custom events and see how your new features or different experiment groups affect these events. This is super easy with Statsig - simply call the Log Event API and specify the user and event name to log; you additionally provide some value and/or an object of metadata to be logged together with the event:
+Now that you have a Feature Gate or an Experiment set up, you may want to track some custom events and see how your new features or different experiment groups affect these events. This is super easy with Statsig—simply call the Log Event API and specify the user and event name to log; you additionally provide some value and/or an object of metadata to be logged together with the event:
 
 <div>{props.logEvent}</div>
 

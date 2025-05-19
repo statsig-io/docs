@@ -12,7 +12,7 @@ last_update:
 As teams run a number of experiments, it is possible to glean learning across these experiments. This is meta-analysis. Examples of learning people seek to derive include
 - How hard is a metric to move
 - Are there more sensitive proxies for the metric we care about?
-- How are teams doing relative to each other)?
+- How are teams doing relative to each other?
 
 We've worked with multiple companies to get them to thousands of trustworthy experiments a year. Our inspiration here was looking at what they were trying to learn across these tests. We've built this to be useful whether you're running 50 experiments a year or 5000. Feel free to reach out to help influence our roadmap in [Slack](https://statsig.com/slack).
 

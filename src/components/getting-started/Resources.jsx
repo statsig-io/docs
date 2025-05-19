@@ -11,7 +11,7 @@ export function LandingResources() {
     {
       resourceText: "Feature Flags",
       icon: <GatesResourceIcon className={styles.resourceIcon} />,
-      url: "/feature-flags/working-with",
+      url: "/feature-flags/overview",
     },
     {
       resourceText: "Experimentation",
