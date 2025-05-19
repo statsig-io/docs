@@ -43,6 +43,7 @@ const config: Config = {
     function statsig() {
       const isProd = process.env.NODE_ENV === "production";
       const tier = isProd ? "production" : "development";
+      const devinApiKey = process.env.DEVIN_API_KEY || "";
       return {
         name: "docusaurus-plugin-statsig",
         getClientModules() {
@@ -101,7 +102,7 @@ const config: Config = {
               },
               {
                 tagName: "script",
-                innerHTML: `window.statsigTier="${tier}"`,
+                innerHTML: `window.statsigTier="${tier}"; window.devinApiKey="${devinApiKey}"`,
               },
               {
                 tagName: "link",
