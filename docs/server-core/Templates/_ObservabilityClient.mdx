@@ -5,7 +5,11 @@ The Observability Client interface allows you to monitor the health of the SDK b
 {props.content ? (
   <div>{props.content}</div>
 ) : (
-  <div className="alert alert--info">
-    <strong>Note:</strong> Coming soon
-  </div>
+  <>
+    import Admonition from '@theme/Admonition';
+
+    <Admonition type="note" title="Note">
+      Coming soon
+    </Admonition>
+  </>
 )}

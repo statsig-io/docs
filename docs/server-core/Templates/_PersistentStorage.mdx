@@ -5,7 +5,11 @@ The Persistent Storage interface allows you to implement custom storage for expe
 {props.content ? (
   <div>{props.content}</div>
 ) : (
-  <div className="alert alert--info">
-    <strong>Note:</strong> Coming soon
-  </div>
+  <>
+    import Admonition from '@theme/Admonition';
+
+    <Admonition type="note" title="Note">
+      Coming soon
+    </Admonition>
+  </>
 )}
