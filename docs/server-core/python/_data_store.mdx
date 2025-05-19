@@ -1,13 +1,5 @@
 ```python
 class DataStore(DataStoreBase):
-    def __init__(self):
-        super().__init__()
-        self.initialize_fn = self.initialize
-        self.shutdown_fn = self.shutdown
-        self.get_fn = self.get
-        self.set_fn = self.set
-        self.support_polling_updates_for_fn = self.support_polling_updates_for
-
     def initialize(self):
         """
         Initialize the data store. Called when the Statsig client initializes.

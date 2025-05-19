@@ -1,14 +1,5 @@
 ```python
 class OutputLoggerProvider(OutputLoggerProviderBase):
-    def __init__(self):
-        super().__init__()
-        self.init_fn = self.init
-        self.debug_fn = self.debug
-        self.info_fn = self.info
-        self.warn_fn = self.warn
-        self.error_fn = self.error
-        self.shutdown_fn = self.shutdown
-
     def init(self):
         """
         Initialize the logger. Called when the Statsig client initializes.
