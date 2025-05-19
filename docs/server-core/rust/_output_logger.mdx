@@ -1,0 +1,29 @@
+## Custom Output Logger
+
+The `OutputLogger` trait allows you to customize how the SDK logs messages, enabling integration with your own logging system.
+
+### Log Levels
+
+```rust
+pub enum LogLevel {
+    None = 0,
+    Error = 1,
+    Warn = 2,
+    Info = 3,
+    Debug = 4,
+}
+```
+
+### Usage
+
+```rust
+use statsig_rust::{Statsig, StatsigOptions, LogLevel};
+
+// Configure log level in StatsigOptions
+let options = StatsigOptions::builder()
+    .output_log_level(Some(LogLevel::Debug))
+    .build();
+
+// Initialize Statsig with options
+let statsig = Statsig::new("server-secret-key", Some(Arc::new(options)));
+```
