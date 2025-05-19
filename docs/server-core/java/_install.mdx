@@ -8,9 +8,14 @@
 
 ## Overview
 
-The Statsig Java SDK consists of two parts that must be installed:
+The Statsig Java SDK can be installed in two ways:
+
+**Option 1: Two-part installation** (traditional approach)
 1. The platform-independent core library (required for all installations)
 2. An OS/architecture-specific native library (required for your specific platform)
+
+**Option 2: Single JAR installation** (since version 0.4.0)
+- Use the "uber" JAR which contains both the core library and all platform-specific native libraries in a single package
 
 ## Installation Steps
 
@@ -95,7 +100,7 @@ For Linux with x86_64 architecture, add the following to build.gradle:
 <details>
 <summary>Method 3: Using the Uber JAR (includes all platforms)</summary>
 
-Since version 0.4.0, Statsig provides an "uber" JAR that includes native libraries for all supported platforms. This simplifies dependency management, especially for applications that need to run on multiple platforms.
+Since version 0.4.0, Statsig provides an "uber" JAR that contains both the core library and native libraries for all supported platforms in a single package. This simplifies dependency management, especially for applications that need to run on multiple platforms. When using the uber JAR, you don't need any other dependencies.
 
 <Tabs
   groupId="java-build-tools"
