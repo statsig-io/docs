@@ -112,6 +112,46 @@ dependencies {
   </TabItem>
 </Tabs>
 
+Since version 0.4.0, Java Core also supports Java 8, which makes it compatible with a broader range of applications. Additionally, you can use the new "uber" JAR that includes native libraries for all supported platforms:
+
+<Tabs
+  groupId="java-build-tools"
+  defaultValue="gradle"
+  values={[
+    {label: 'Gradle', value: 'gradle'},
+    {label: 'Maven', value: 'maven'},
+  ]}>
+  <TabItem value="gradle">
+
+```groovy
+dependencies {
+    implementation 'com.statsig:javacore:X.X.X'  // Core library
+    implementation 'com.statsig:javacore:X.X.X:uber'  // Uber JAR with all native libraries
+}
+```
+
+  </TabItem>
+  <TabItem value="maven">
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>com.statsig</groupId>
+        <artifactId>javacore</artifactId>
+        <version>X.X.X</version>
+    </dependency>
+    <dependency>
+        <groupId>com.statsig</groupId>
+        <artifactId>javacore</artifactId>
+        <version>X.X.X</version>
+        <classifier>uber</classifier>
+    </dependency>
+</dependencies>
+```
+
+  </TabItem>
+</Tabs>
+
 To determine the correct platform-specific dependency, you can run this code:
 
 ```java
