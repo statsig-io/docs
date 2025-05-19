@@ -10,14 +10,14 @@ last_update:
 ## Overview
 
 The first step towards building better products is tracking events.  As the saying goes, "If you can't measure something, you can't understand it. If you can't understand it, you can't control it. If you can't control it, you can't improve it."
-Regardless of if you plan to use Statsig for web or product analytics, or for experimentation, defining the key events and metrics for your product is the best place to start.  Event data is consumable in [metrics explorer](/product-analytics/overview), can be turned into [custom metrics](/metrics/how-metrics-work), visualized in [dashboards](/product-analytics/dashboards), and used in [experiment results](/metrics/pulse) to show the impact of your experiments on the metrics you care about.
+Regardless of if you plan to use Statsig for web or product analytics, or for experimentation, defining the key events and metrics for your product is the best place to start.  Event data is consumable in [Metrics Explorer](/product-analytics/overview), can be turned into [custom metrics](/metrics/how-metrics-work), visualized in [dashboards](/product-analytics/dashboards), and used in [experiment results](/metrics/pulse) to show the impact of your experiments on the metrics you care about.
 
 We try to make this easy in a few ways:
 1. Our web SDKs offer [autocaptured web analytics](/webanalytics/overview) to automatically log common events like pageviews, clicks, and more.
-2. We offer [integrations](https://docs.statsig.com/integrations/introduction) to connect your existing event data in Segment, mParticle, and other sources
+2. We offer [integrations](https://docs.statsig.com/integrations/introduction) to connect your existing event data in Segment, mParticle, and other sources.
 3. All of our client and server SDKs provide a simple `logEvent` API to instrument your own events in your app or webserver.
 
-For general guidance on event logging and core concepts, read on, or jump to the [logging events via SDKs](#log-via-sdk) section.
+For general guidance on event logging and core concepts, read on or jump to the [logging events via SDKs](#log-via-sdk) section.
 
 ## Identifying Users and the "StatsigUser" object {#identifying-users}
 Many analytics platforms have a concept of "identifying" a user.  In Statsig, this is the StatsigUser object that is set a initialization time in client SDKs, or with each event in Server SDKs.
@@ -68,7 +68,7 @@ You can also use metrics explorer to slice and dice metrics at the company level
 
 To set up a new "group" or "customID":
 
-1. Go to your [project settings] (https://console.statsig.com/settings)
+1. Go to your [project settings](https://console.statsig.com/settings)
 2. Locate the "Custom IDs" section and hit "edit"
 
 ![CustomIDs in project settings](https://github.com/user-attachments/assets/e26cc341-13c2-4b78-898f-02d56bfc2474)

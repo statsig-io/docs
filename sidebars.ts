@@ -121,15 +121,15 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: "category",
-          label: "Feature Flags",
+          label: "Feature Management",
           className: "feature-icon sidebar-icon",
           items: [
             {
               type: "category",
-              label: "Feature Gates",
+              label: "Feature Flags",
               items: [
-                "feature-gates/overview",
-                "feature-gates/create",
+                "feature-flags/overview",
+                "feature-flags/create",
                 "feature-flags/conditions",
                 "feature-flags/scheduled-rollouts",
                 "feature-flags/overrides",
@@ -700,7 +700,7 @@ const sidebars: SidebarsConfig = {
       collapsible: false,
       items: [
         "sdks/quickstart",
-        "guides/feature-gates",
+        "quickstarts/check-gate",
         "guides/logging-events",
         "guides/abn-tests",
       ],
@@ -861,8 +861,20 @@ const sidebars: SidebarsConfig = {
         },
         {
           className: "java-icon sidebar-icon sdk-sidebar-icon",
-          type: "doc",
-          id: "server-core/java-core",
+          type: "category",
+          label: "Java",
+          items: [
+            {
+              type: "doc",
+              id: "server-core/java-core",
+              label: "Java Core SDK",
+            },
+            {
+              type: "doc",
+              id: "server-core/java/migration",
+              label: "Migration Guide",
+            },
+          ],
         },
         {
           className: "ruby-icon sidebar-icon sdk-sidebar-icon",
