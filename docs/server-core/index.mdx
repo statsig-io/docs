@@ -38,6 +38,48 @@ Server Core SDKs are available on an opt-in basis, with native SDKs still availa
 
 **New Configuration Spec:** Server Core uses a smaller "ruleset", or configuration spec. If you use the spec directly, your logic and parsing will have to change.
 
+**Event Logging**
+Server core SDKs, starting in v0.4.0+, have a new event logging architecture.  This is designed to stream events freely to statsig servers during normal operation, and throttle/drop events SDK side during outages on the event logging endpoint to enable the service to spin up healthy before processing steady-state qps.  We expose the following parameters to tune this implementation
+
+```
+- event_logging_max_queue_size: Controls batch size (default 2000).  Note that exceeding the backend request size limit (10MB) will drop requests
+- event_logging_max_pending_batch_queue_size: Controls max pending batches (default: 20).  The tradeoff here is increased memory usage to buffer events when requests fail if you increase it, and losing additional events if you decrease it
+- disable_all_logging: Completely disables event logging
+```
+
+```
++----------------+     +----------------+     +----------------+
+| Event Sources  |     | Event Queue    |     | Flush Triggers |
+|----------------|     |----------------|     |----------------|
+| - Gate Checks  |---->| - Pending      |     | - Scheduled    |
+| - Config Reads |     |   Events       |     |   (Time-based) |
+| - Custom Events|     | - Batches      |<----| - Manual       |
++----------------+     +----------------+     | - Shutdown     |
+                             |                +----------------+
+                             v
+                      +----------------+
+                      | Flush Process  |
+                      |----------------|
+                      | - Batch Events |
+                      | - Send to API  |
+                      | - Process      |
+                      |   Response     |
+                      +----------------+
+                           /   \
+                          /     \
+                         v       v
++---------------------------+---------------------------+
+|      On Request Failure   |     On Request Success    |
+|---------------------------|---------------------------|
+| - Double interval         | - Halve interval          |
+|   (max: 60000ms)          |   (min: 1000ms)           |
+| - Retry non-retryable     | - No specific limit       |
+|   errors up to 5 times    |   flush mechanism         |
+| - No specific retry       |                           |
+|   buffer management       |                           |
++---------------------------+---------------------------+
+```
+
 ### Support
 
 If you have trouble with a Server Core SDK - we'd love to hear your feedback. Reach out in our [Slack](https://statsig.com/slack) and we'll do our best to improve your experience!
