@@ -1,9 +1,3 @@
-## Observability Client Interface
-
-The `ObservabilityClient` trait allows you to monitor the health of the SDK by integrating with your own observability systems.
-
-### Interface Methods
-
 ```rust
 pub trait ObservabilityClient: Send + Sync {
     fn init(&self);

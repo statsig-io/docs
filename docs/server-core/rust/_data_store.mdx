@@ -1,9 +1,3 @@
-## Data Store Interface
-
-The `DataStoreTrait` allows you to implement custom storage for Statsig configurations, enabling advanced caching strategies.
-
-### Interface Methods
-
 ```rust
 pub trait DataStoreTrait: Send + Sync {
     fn initialize(&self) -> Result<(), DataStoreErrorEnum>;
