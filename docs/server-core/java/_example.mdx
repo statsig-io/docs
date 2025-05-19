@@ -32,8 +32,8 @@ dependencies {
     // Option 1: Platform-specific dependency
     implementation 'com.statsig:javacore:X.X.X:YOUR-OS-ARCHITECTURE'  // Replace with your OS/architecture
     
-    // Option 2: Uber JAR (includes all platforms, available since version 0.4.0)
-    // implementation 'com.statsig:javacore:X.X.X:uber'
+    // Option 2: Self-contained Uber JAR (includes all platforms, available since version 0.4.0)
+    // implementation 'com.statsig:javacore:X.X.X:uber'  // No need for the core dependency when using uber JAR
 }
 
 application {

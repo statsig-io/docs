@@ -125,8 +125,7 @@ Since version 0.4.0, Java Core also supports Java 8, which makes it compatible w
 
 ```groovy
 dependencies {
-    implementation 'com.statsig:javacore:X.X.X'  // Core library
-    implementation 'com.statsig:javacore:X.X.X:uber'  // Uber JAR with all native libraries
+    implementation 'com.statsig:javacore:X.X.X:uber'  // Self-contained uber JAR with core library and all native libraries
 }
 ```
 
@@ -135,11 +134,6 @@ dependencies {
 
 ```xml
 <dependencies>
-    <dependency>
-        <groupId>com.statsig</groupId>
-        <artifactId>javacore</artifactId>
-        <version>X.X.X</version>
-    </dependency>
     <dependency>
         <groupId>com.statsig</groupId>
         <artifactId>javacore</artifactId>
