@@ -39,10 +39,7 @@ import LogEvent from "./elixir/_logEvent.mdx";
 import MoreFAQs from "./elixir/_faqs.mdx";
 import Options from "./elixir/_options.mdx";
 import ShutdownSnippet from "./elixir/_shutdown.mdx";
-import PersistentStorageContent from "./elixir/_persistent_storage.mdx";
-import DataStoreContent from "./elixir/_data_store.mdx";
-import OutputLoggerContent from "./elixir/_output_logger.mdx";
-import ObservabilityClientContent from "./elixir/_observability_client.mdx";
+// Files removed - templates will show "Coming soon"
 
 
 export const Builder = SDKDocsBuilder({
@@ -76,10 +73,10 @@ export const Builder = SDKDocsBuilder({
     [StatsigUser, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
-    [PersistentStorage, { content: <PersistentStorageContent /> }],
-    [DataStore, { content: <DataStoreContent /> }],
-    [OutputLogger, { content: <OutputLoggerContent /> }],
-    [ObservabilityClient, { content: <ObservabilityClientContent /> }],
+    [PersistentStorage, { }],
+    [DataStore, { }],
+    [OutputLogger, { }],
+    [ObservabilityClient, { }],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]
 })

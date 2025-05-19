@@ -45,10 +45,7 @@ import ShutdownSnippet from "./rust/_shutdown.mdx";
 import OverridesSnippet from "./rust/_localOverrides.mdx";
 import { Snippets as ManualExposureSnippets } from "./java/_manualExposures.mdx";
 import SharedInstanceSnippet from "./rust/_sharedInstance.mdx";
-import PersistentStorageContent from "./rust/_persistent_storage.mdx";
-import DataStoreContent from "./rust/_data_store.mdx";
-import OutputLoggerContent from "./rust/_output_logger.mdx";
-import ObservabilityClientContent from "./rust/_observability_client.mdx";
+// Files removed - templates will show "Coming soon"
 
 
 
@@ -86,10 +83,10 @@ export const Builder = SDKDocsBuilder({
     [StatsigUser, { statsigUser: <UserSnippet /> }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
-    [PersistentStorage, { content: <PersistentStorageContent /> }],
-    [DataStore, { content: <DataStoreContent /> }],
-    [OutputLogger, { content: <OutputLoggerContent /> }],
-    [ObservabilityClient, { content: <ObservabilityClientContent /> }],
+    [PersistentStorage, { }],
+    [DataStore, { }],
+    [OutputLogger, { }],
+    [ObservabilityClient, { }],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]
 })

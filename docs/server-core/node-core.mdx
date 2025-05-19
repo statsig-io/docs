@@ -39,10 +39,7 @@ import ShutdownSnippet from "./node/_shutdown.mdx";
 import { Snippets as ManualExposureSnippets } from "./node/_manualExposures.mdx";
 import OverridesSnippet from "./node/_localOverrides.mdx";
 import SharedInstanceSnippet from "./node/_sharedInstance.mdx";
-import PersistentStorageContent from "./node/_persistent_storage.mdx";
-import DataStoreContent from "./node/_data_store.mdx";
-import OutputLoggerContent from "./node/_output_logger.mdx";
-import ObservabilityClientContent from "./node/_observability_client.mdx";
+// Files removed - templates will show "Coming soon"
 
 
 export const Builder = SDKDocsBuilder({
@@ -80,10 +77,10 @@ export const Builder = SDKDocsBuilder({
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [LocalOverrides, { snippet: <OverridesSnippet />,},],
-    [PersistentStorage, { content: <PersistentStorageContent /> }],
-    [DataStore, { content: <DataStoreContent /> }],
-    [OutputLogger, { content: <OutputLoggerContent /> }],
-    [ObservabilityClient, { content: <ObservabilityClientContent /> }],
+    [PersistentStorage, { }],
+    [DataStore, { }],
+    [OutputLogger, { }],
+    [ObservabilityClient, { }],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]
 })

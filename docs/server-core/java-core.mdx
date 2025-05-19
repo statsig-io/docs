@@ -52,10 +52,7 @@ import { Snippets as ManualExposureSnippets } from "./java/_manualExposures.mdx"
 import CoreVsLegacyContent from "./java/_core_vs_legacy.mdx";
 import SupportedCombinationsContent from "./java/_supported_combinations.mdx";
 import ExampleProgramContent from "./java/_example.mdx";
-import PersistentStorageContent from "./java/_persistent_storage.mdx";
-import DataStoreContent from "./java/_data_store.mdx";
-import OutputLoggerContent from "./java/_output_logger.mdx";
-import ObservabilityClientContent from "./java/_observability_client.mdx";
+// Files removed - templates will show "Coming soon"
 
 
 export const Builder = SDKDocsBuilder({
@@ -92,9 +89,9 @@ export const Builder = SDKDocsBuilder({
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
     [LocalOverrides, { snippet: <OverridesSnippet />,},],
-    [PersistentStorage, { content: <PersistentStorageContent /> }],
-    [DataStore, { content: <DataStoreContent /> }],
-    [OutputLogger, { content: <OutputLoggerContent /> }],
+    [PersistentStorage, { }],
+    [DataStore, { }],
+    [OutputLogger, { }],
     [ObservabilityClient, { content: <ObservabilityClientContent /> }],
     [FAQ, { 
       faqs: <>
