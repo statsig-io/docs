@@ -48,6 +48,7 @@ import SharedInstanceSnippet from "./rust/_sharedInstance.mdx";
 import DataStoreContent from "./rust/_data_store.mdx";
 import OutputLoggerContent from "./rust/_output_logger.mdx";
 import ObservabilityClientContent from "./rust/_observability_client.mdx";
+import PersistentStorageContent from "./rust/_persistent_storage.mdx";
 
 
 
@@ -85,10 +86,10 @@ export const Builder = SDKDocsBuilder({
     [StatsigUser, { statsigUser: <UserSnippet /> }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
-    [PersistentStorage, { }],
-    [DataStore, { snippet: <DataStoreContent /> }],
-    [OutputLogger, { snippet: <OutputLoggerContent /> }],
-    [ObservabilityClient, { snippet: <ObservabilityClientContent /> }],
+    [PersistentStorage, { content: <PersistentStorageContent /> }],
+    [DataStore, { content: <DataStoreContent /> }],
+    [OutputLogger, { content: <OutputLoggerContent /> }],
+    [ObservabilityClient, { content: <ObservabilityClientContent /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]
 })

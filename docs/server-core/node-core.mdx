@@ -39,6 +39,9 @@ import ShutdownSnippet from "./node/_shutdown.mdx";
 import { Snippets as ManualExposureSnippets } from "./node/_manualExposures.mdx";
 import OverridesSnippet from "./node/_localOverrides.mdx";
 import SharedInstanceSnippet from "./node/_sharedInstance.mdx";
+import DataStoreContent from "./node/_data_store.mdx";
+import ObservabilityClientContent from "./node/_observability_client.mdx";
+import PersistentStorageContent from "./node/_persistent_storage.mdx";
 
 
 export const Builder = SDKDocsBuilder({
@@ -77,9 +80,9 @@ export const Builder = SDKDocsBuilder({
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [LocalOverrides, { snippet: <OverridesSnippet />,},],
     [PersistentStorage, { }],
-    [DataStore, { }],
+    [DataStore, { content: <DataStoreContent /> }],
     [OutputLogger, { }],
-    [ObservabilityClient, { }],
+    [ObservabilityClient, { content: <ObservabilityClientContent /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]
 })
