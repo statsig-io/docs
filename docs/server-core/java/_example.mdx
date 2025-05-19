@@ -27,13 +27,12 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.statsig:javacore:X.X.X'  // Replace with latest version
+    // Recommended: Self-contained Uber JAR (includes all platforms, available since version 0.4.0)
+    implementation 'com.statsig:javacore:X.X.X:uber'  // Replace with latest version
     
-    // Option 1: Platform-specific dependency
-    implementation 'com.statsig:javacore:X.X.X:YOUR-OS-ARCHITECTURE'  // Replace with your OS/architecture
-    
-    // Option 2: Self-contained Uber JAR (includes all platforms, available since version 0.4.0)
-    // implementation 'com.statsig:javacore:X.X.X:uber'  // No need for the core dependency when using uber JAR
+    // Advanced: Platform-specific dependencies (if you need to minimize JAR size)
+    // implementation 'com.statsig:javacore:X.X.X'  // Core library
+    // implementation 'com.statsig:javacore:X.X.X:YOUR-OS-ARCHITECTURE'  // Platform-specific library
 }
 
 application {
@@ -60,6 +59,15 @@ Create a `pom.xml` file with:
     </properties>
     
     <dependencies>
+        <!-- Recommended: Self-contained Uber JAR (includes all platforms, available since version 0.4.0) -->
+        <dependency>
+            <groupId>com.statsig</groupId>
+            <artifactId>javacore</artifactId>
+            <version>X.X.X</version>
+            <classifier>uber</classifier>
+        </dependency>
+        
+        <!-- Advanced: Platform-specific dependencies (if you need to minimize JAR size)
         <dependency>
             <groupId>com.statsig</groupId>
             <artifactId>javacore</artifactId>
@@ -71,6 +79,7 @@ Create a `pom.xml` file with:
             <version>X.X.X</version>
             <classifier>YOUR-OS-ARCHITECTURE</classifier>
         </dependency>
+        -->
     </dependencies>
 </project>
 ```
