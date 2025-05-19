@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { useLocation } from '@docusaurus/router';
+import { useColorMode } from '@docusaurus/theme-common/internal';
 import { Button } from './ui/button';
 import copy from 'copy-text-to-clipboard';
 
@@ -9,8 +9,9 @@ export default function AskAIAboutSDK({ sdkType = 'unknown' }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [performanceMetrics, setPerformanceMetrics] = useState(null);
-  const location = useLocation();
   const responseRef = useRef('');
+  const { colorMode } = useColorMode();
+  const isDarkTheme = colorMode === 'dark';
 
   const getSDKInfo = () => {
     return {
@@ -116,84 +117,115 @@ export default function AskAIAboutSDK({ sdkType = 'unknown' }) {
     }
   };
 
+  const containerStyle = {
+    backgroundColor: isDarkTheme ? '#1e1e1e' : '#ffffff',
+    border: isDarkTheme ? '1px solid #333' : '1px solid #ddd',
+    borderRadius: '12px',
+    padding: '24px',
+    marginBottom: '32px',
+    boxShadow: isDarkTheme ? '0 2px 8px rgba(0,0,0,0.6)' : '0 2px 12px rgba(0,0,0,0.08)',
+    transition: 'all 0.3s ease',
+  };
+
+  const inputStyle = {
+    backgroundColor: isDarkTheme ? '#2c2c2c' : '#f9f9f9',
+    color: isDarkTheme ? '#fff' : '#000',
+    width: '100%',
+    padding: '12px',
+    borderRadius: '8px',
+    border: isDarkTheme ? '1px solid #555' : '1px solid #ccc',
+    fontSize: '1rem',
+  };
+
+  const messageBubble = (isBot = false) => ({
+    backgroundColor: isBot
+      ? (isDarkTheme ? '#333' : '#f0f0f0')
+      : (isDarkTheme ? '#007bff' : '#e0f0ff'),
+    color: isBot ? (isDarkTheme ? '#eee' : '#333') : '#000',
+    alignSelf: isBot ? 'flex-start' : 'flex-end',
+    padding: '12px 16px',
+    borderRadius: '16px',
+    maxWidth: '75%',
+    marginBottom: '12px',
+    whiteSpace: 'pre-wrap',
+  });
+
   return (
-    <div className="ask-ai-container" style={{
-      border: '1px solid var(--ifm-color-emphasis-300)',
-      borderRadius: '8px',
-      padding: '16px',
-      marginBottom: '20px'
-    }}>
-      <h3>Ask AI About this SDK</h3>
-      
+    <div className="ask-ai-container" style={containerStyle}>
+      <h3 style={{ marginBottom: '16px' }}>💬 Ask AI About this SDK</h3>
+
       <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: '12px' }}>
-          <textarea
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Ask a question about this SDK..."
-            rows={3}
-            style={{
-              width: '100%',
-              padding: '8px',
-              borderRadius: '4px',
-              border: '1px solid var(--ifm-color-emphasis-300)'
-            }}
-          />
+        <textarea
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Ask a question about this SDK..."
+          rows={3}
+          style={inputStyle}
+        />
+        <div style={{ marginTop: '12px' }}>
+          <Button type="submit" disabled={!query.trim() || isLoading}>
+            {isLoading ? 'Thinking...' : 'Ask AI'}
+          </Button>
         </div>
-        
-        <Button 
-          type="submit" 
-          disabled={!query.trim() || isLoading}
-        >
-          {isLoading ? 'Thinking...' : 'Ask AI'}
-        </Button>
       </form>
-      
-      {isLoading && (
-        <div style={{ textAlign: 'center', margin: '20px 0' }}>
-          <div className="loading-spinner"></div>
-          <p>Generating response...</p>
-        </div>
-      )}
-      
-      {error && (
-        <div style={{ 
-          padding: '10px', 
-          marginTop: '15px', 
-          backgroundColor: 'rgba(255, 0, 0, 0.1)', 
-          borderRadius: '4px',
-          color: 'rgb(220, 38, 38)'
-        }}>
-          {error}
-        </div>
-      )}
-      
-      {response && (
-        <div style={{ marginTop: '20px' }}>
-          <div style={{ 
-            backgroundColor: 'var(--ifm-color-emphasis-100)', 
-            padding: '16px', 
-            borderRadius: '4px',
-            marginBottom: '12px' 
+
+      <div style={{ display: 'flex', flexDirection: 'column', marginTop: '24px' }}>
+        {query && !isLoading && (
+          <div style={messageBubble(false)}>
+            <strong>You:</strong> {query}
+          </div>
+        )}
+
+        {isLoading && (
+          <div style={{ marginTop: '16px', textAlign: 'center' }}>
+            <div className="loading-spinner" />
+            <p style={{ marginTop: '8px' }}>Generating response...</p>
+          </div>
+        )}
+
+        {response && (
+          <div style={messageBubble(true)}>
+            <strong>AI:</strong> <div dangerouslySetInnerHTML={{ __html: response }} />
+          </div>
+        )}
+
+        {error && (
+          <div style={{
+            marginTop: '12px',
+            padding: '12px',
+            borderRadius: '8px',
+            backgroundColor: isDarkTheme ? '#4a1f1f' : '#ffe5e5',
+            color: isDarkTheme ? '#ffaaaa' : '#cc0000',
           }}>
-            <div dangerouslySetInnerHTML={{ __html: response }} />
+            {error}
           </div>
-          
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Button 
-              variant="outline" 
-              onClick={copyToSlack}
-            >
-              <img src="/img/slack.webp" style={{ height: 15, width: 15, marginRight: '8px' }} />
-              Get more help in Slack
-            </Button>
-            
-            {performanceMetrics && (
-              <div style={{ fontSize: '12px', color: 'var(--ifm-color-emphasis-600)' }}>
-                Response time: {Math.round(performanceMetrics.responseTime)}ms
-              </div>
-            )}
-          </div>
+        )}
+      </div>
+
+      {response && (
+        <div style={{
+          marginTop: '24px',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}>
+          <Button variant="outline" onClick={copyToSlack}>
+            <img
+              src="/img/slack.webp"
+              alt="Slack"
+              style={{ height: 16, width: 16, marginRight: '8px' }}
+            />
+            Get more help in Slack
+          </Button>
+
+          {performanceMetrics && (
+            <div style={{
+              fontSize: '0.8rem',
+              color: isDarkTheme ? '#aaa' : '#666'
+            }}>
+              Response time: {Math.round(performanceMetrics.responseTime)}ms
+            </div>
+          )}
         </div>
       )}
     </div>
