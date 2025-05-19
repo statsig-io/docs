@@ -1,20 +1,10 @@
 ```rust
-pub enum LogLevel {
-    None = 0,
-    Error = 1,
-    Warn = 2,
-    Info = 3,
-    Debug = 4,
+pub trait OutputLogProvider: Send + Sync {
+    fn initialize(&self);
+    fn debug(&self, tag: &str, msg: String);
+    fn info(&self, tag: &str, msg: String);
+    fn warn(&self, tag: &str, msg: String);
+    fn error(&self, tag: &str, msg: String);
+    fn shutdown(&self);
 }
-
-// Usage example
-use statsig_rust::{Statsig, StatsigOptions, LogLevel};
-
-// Configure log level in StatsigOptions
-let options = StatsigOptions::builder()
-    .output_log_level(Some(LogLevel::Debug))
-    .build();
-
-// Initialize Statsig with options
-let statsig = Statsig::new("server-secret-key", Some(Arc::new(options)));
 ```

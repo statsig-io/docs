@@ -45,6 +45,9 @@ import ShutdownSnippet from "./rust/_shutdown.mdx";
 import OverridesSnippet from "./rust/_localOverrides.mdx";
 import { Snippets as ManualExposureSnippets } from "./java/_manualExposures.mdx";
 import SharedInstanceSnippet from "./rust/_sharedInstance.mdx";
+import DataStoreContent from "./rust/_data_store.mdx";
+import OutputLoggerContent from "./rust/_output_logger.mdx";
+import ObservabilityClientContent from "./rust/_observability_client.mdx";
 
 
 
@@ -83,9 +86,9 @@ export const Builder = SDKDocsBuilder({
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [PersistentStorage, { }],
-    [DataStore, { }],
-    [OutputLogger, { }],
-    [ObservabilityClient, { }],
+    [DataStore, { snippet: <DataStoreContent /> }],
+    [OutputLogger, { snippet: <OutputLoggerContent /> }],
+    [ObservabilityClient, { snippet: <ObservabilityClientContent /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]
 })
