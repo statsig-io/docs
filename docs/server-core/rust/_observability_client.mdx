@@ -1,0 +1,9 @@
+```rust
+pub trait ObservabilityClient: Send + Sync {
+    fn init(&self);
+    fn increment(&self, metric_name: &str, value: f64, tags: &HashMap<String, String>);
+    fn gauge(&self, metric_name: &str, value: f64, tags: &HashMap<String, String>);
+    fn dist(&self, metric_name: &str, value: f64, tags: &HashMap<String, String>);
+    fn error(&self, tag: &str, error: &str);
+}
+```

@@ -26,6 +26,10 @@ import {
   JavaCoreVsLegacy,
   SupportedCombinations,
   ExampleProgram,
+  PersistentStorage,
+  DataStore,
+  OutputLogger,
+  ObservabilityClient
 } from "./Templates/index.mdx";
 
 import Preamble from "./_preamble.mdx";
@@ -48,6 +52,7 @@ import { Snippets as ManualExposureSnippets } from "./java/_manualExposures.mdx"
 import CoreVsLegacyContent from "./java/_core_vs_legacy.mdx";
 import SupportedCombinationsContent from "./java/_supported_combinations.mdx";
 import ExampleProgramContent from "./java/_example.mdx";
+import ObservabilityClientContent from "./java/_observability_client.mdx";
 
 
 export const Builder = SDKDocsBuilder({
@@ -84,6 +89,10 @@ export const Builder = SDKDocsBuilder({
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
     [LocalOverrides, { snippet: <OverridesSnippet />,},],
+    [PersistentStorage, { }],
+    [DataStore, { }],
+    [OutputLogger, { }],
+    [ObservabilityClient, { content: <ObservabilityClientContent /> }],
     [FAQ, { 
       faqs: <>
         <MoreFAQs />
