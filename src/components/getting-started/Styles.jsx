@@ -19,11 +19,12 @@ const Styles = () => (
 
       .card {
         padding: 16px;
-        background-color: #ffffff;
+        background-color: var(--ifm-card-background-color, #ffffff);
         border-radius: 8px;
         text-decoration: none;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--ifm-global-shadow-lw);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
+        border: 1px solid var(--ifm-color-emphasis-200);
       }
 
       .sdk-item {
@@ -33,7 +34,7 @@ const Styles = () => (
         display: flex; 
         flex-direction: row;
         align-items: center;
-        color: #333;
+        color: var(--ifm-color-emphasis-900);
       }
 
       .sdk-icon {
@@ -65,7 +66,20 @@ const Styles = () => (
 
       .card:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        box-shadow: var(--ifm-global-shadow-md);
+      }
+
+      html[data-theme='dark'] .card {
+        background-color: var(--ifm-background-color);
+        border-color: var(--ifm-color-emphasis-200);
+      }
+
+      html[data-theme='dark'] .sdk-item {
+        color: var(--ifm-color-white);
+      }
+
+      html[data-theme='dark'] .card:hover {
+        background-color: var(--ifm-color-emphasis-200);
       }
     `}
   </style>

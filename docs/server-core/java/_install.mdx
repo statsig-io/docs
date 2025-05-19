@@ -1,6 +1,6 @@
 ## Requirements
 
-- Java 8 or higher
+- Java 8 or higher (Java 8 support added in version 0.4.0)
 - Compatible with all platforms listed in the [Supported OS and Architecture Combinations](#supported-os-and-architecture-combinations) section, including:
   - macOS (x86_64, arm64)
   - Windows (x86_64, arm64, i686)
@@ -8,16 +8,81 @@
 
 ## Overview
 
-The Statsig Java SDK consists of two parts that must be installed:
-1. The platform-independent core library (required for all installations)
-2. An OS/architecture-specific native library (required for your specific platform)
+The Statsig Java SDK can be installed in two ways:
+
+**Recommended: Single JAR installation** (since version 0.4.0)
+- Use the "uber" JAR which contains both the core library and all platform-specific native libraries in a single package
+- Simplifies dependency management and deployment across different environments
+
+**Advanced: Two-part installation**
+1. The platform-independent core library
+2. An OS/architecture-specific native library for your specific platform
 
 ## Installation Steps
 
-### Step 1: Install Core Library
+### Recommended: Using the Uber JAR (All-in-One)
+
+Since version 0.4.0, Statsig provides an "uber" JAR that contains both the core library and native libraries for all supported platforms in a single package. This is the recommended approach for most users.
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="java-build-tools"
+  defaultValue="gradle"
+  values={[
+    {label: 'Gradle', value: 'gradle'},
+    {label: 'Maven', value: 'maven'},
+  ]}>
+  <TabItem value="gradle">
+
+Add the following to your `build.gradle` file:
+
+```groovy
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.statsig:javacore:X.X.X:uber' // Uber JAR with all native libraries
+}
+```
+
+You can find the latest version on [Maven Central](https://central.sonatype.com/artifact/com.statsig/javacore/overview).
+
+  </TabItem>
+  <TabItem value="maven">
+
+Add the following to your `pom.xml` file:
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>com.statsig</groupId>
+        <artifactId>javacore</artifactId>
+        <version>X.X.X</version>
+        <classifier>uber</classifier>
+    </dependency>
+</dependencies>
+```
+
+You can find the latest version on [Maven Central](https://central.sonatype.com/artifact/com.statsig/javacore/overview).
+
+  </TabItem>
+</Tabs>
+
+The uber JAR includes native libraries for:
+- Linux (x86_64, arm64)
+- macOS (x86_64, arm64)
+- Windows (x86_64)
+
+This approach eliminates the need to specify the exact platform and simplifies deployment across different environments.
+
+### Advanced: Platform-Specific Installation
+
+If you need more control over dependencies or want to minimize the JAR size for a specific platform, you can use the platform-specific installation approach.
+
+#### Step 1: Install Core Library
 
 <Tabs
   groupId="java-build-tools"
@@ -62,7 +127,7 @@ You can find the latest version on [Maven Central](https://central.sonatype.com/
   </TabItem>
 </Tabs>
 
-### Step 2: Install Platform-Specific Library
+#### Step 2: Install Platform-Specific Library
 
 You need to add the appropriate OS/architecture-specific dependency. Choose one of the following methods:
 

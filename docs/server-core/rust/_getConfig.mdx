@@ -1,9 +1,9 @@
 ```rust
-use statsig_rust::{Statsig, StatsigUser, DynamicConfigEvaluationOptions};
+use statsig_rust::{Statsig, StatsigUserBuilder, DynamicConfigEvaluationOptions};
 use std::sync::Arc;
 
 // Get a dynamic config for a specific user
-let user = StatsigUser::with_user_id("my_user".to_string());
+let user = StatsigUserBuilder::new_with_user_id("my_user".to_string()).build();
 let config = statsig.get_dynamic_config(&user, "a_config");
 
 // Access config values with type-safe getters and fallback values
