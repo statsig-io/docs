@@ -1,14 +1,14 @@
 ---
-sidebar_label: Create your first Feature Gate
-title: Create your first Feature Gate
-slug: /guides/feature-gates
+sidebar_label: Create your first feature flag
+title: Create your first feature flag
+slug: /guides/feature-flags
 keywords:
   - owner:jinayoon
 last_update:
-  date: 2025-04-28
+  date: 2025-05-15
 ---
 
-This tutorial walks you through how to create your first Feature Gate in Statsig from end to end. Feature Gates, also known as feature flags, are a way to safely control the rollout of new features to your users without deploying additional code. Common examples for using Feature Gates include shipping new UI elements, API endpoints, or product features. 
+This tutorial walks you through how to create your first feature flag in Statsig from end to end. Feature flags are a way to safely control the rollout of new features to your users without deploying additional code. Common examples for using feature flags include shipping new UI elements, API endpoints, or product features. In Statsig, we refer to feature flags as [Feature Gates](/feature-flags/overview) to distinguish them from other flagging and feature management tools in the product.
 
 By the end of this tutorial, you will have set up:
 * A **Feature Gate** in the Statsig console
@@ -25,8 +25,6 @@ For the purposes of this tutorial, we will pretend we are adding a Feature Gate 
 
 1. Navigate to [Feature Gates](https://console.statsig.com/gates) in the Statsig console.
 
-![Feature Gates Page](https://github.com/user-attachments/assets/00331234-34b7-48ef-98a9-9a094e44af1b)
-
 2. Then, click on **Get Started** if you don't have any Feature Gates set up yet, or **Create** to create a new one.
 
 3. Name your gate "Example Gate". This name will also be used to identify the Feature Gate later using the SDK.
@@ -40,8 +38,6 @@ In Statsig, when you create a Feature Gate, they are enabled by default. In othe
 This means that in order to actually turn on this feature, you will need to add rules to target this Feature Gate to a specific set of folks. Let's walk through doing this in the console.
 
 1. In the console, on the page for the Feature Gate you just created, click on **Add New Rule**.
-
-![Adding a new rule](https://github.com/user-attachments/assets/f4717e74-c1a7-4e3e-b894-13622f230f71)
 
 2. Give this rule a **Name**, such as "Statsig Users Only". 
 
@@ -72,7 +68,7 @@ Now that you've set up the Feature Gate from the console, it's time to integrate
 Now that we have our Client API Key, we can go ahead and integrate the Statsig Client SDK into our product. For the purposes of this tutorial, we will use the React SDK, but you can follow along with a different SDK if you prefer. 
 
 :::tip
-Statsig offers over 20 client and server-side SDKs. Check out the full list of [SDKs](/sdks/client-vs-server#available-sdks) to find the one that best fits your needs.
+Statsig offers over 20 client and server-side SDKs. Check out the full list of [SDKs](/sdks/quickstart#all-sdks) to find the one that best fits your needs.
 :::
 
 1. Install the Statsig React SDK using your preferred package manager. For this tutorial, we will use npm.

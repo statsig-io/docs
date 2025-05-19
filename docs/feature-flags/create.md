@@ -1,7 +1,7 @@
 ---
 title: Create a Feature Gate
 sidebar_label: Create a Feature Gate
-slug: /feature-gates/create
+slug: /feature-flags/create
 keywords:
   - owner:shubham
 last_update:
@@ -60,7 +60,7 @@ return (
 In the code snippet example above, the Statsig SDK is checking from a client app whether you've set any rules named "Example Gate". It will render the text "Gate is passing" for users who pass your gate based on conditions you set, and "Gate is failing" for users who fail the gate conditions.
 
 :::tip
-Statsig offers over 20 client and server-side SDKs. Check out the full list of [SDKs](/sdks/client-vs-server#available-sdks) to find the one that best fits your needs.
+Statsig offers over 20 client and server-side SDKs. Check out the full list of [SDKs](/sdks/quickstart#all-sdks) to find the one that best fits your needs.
 :::
 
 

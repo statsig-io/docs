@@ -121,15 +121,15 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: "category",
-          label: "Feature Flags",
+          label: "Feature Management",
           className: "feature-icon sidebar-icon",
           items: [
             {
               type: "category",
-              label: "Feature Gates",
+              label: "Feature Flags",
               items: [
-                "feature-gates/overview",
-                "feature-gates/create",
+                "feature-flags/overview",
+                "feature-flags/create",
                 "feature-flags/conditions",
                 "feature-flags/scheduled-rollouts",
                 "feature-flags/overrides",
