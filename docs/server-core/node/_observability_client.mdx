@@ -1,0 +1,71 @@
+## Observability Client Interface
+
+The `ObservabilityClient` interface allows you to monitor the health of the SDK by integrating with your own observability systems.
+
+### Interface Methods
+
+```typescript
+export interface ObservabilityClient {
+  initialize?: () => void;
+  increment?: (metricName: string, value: number, tags: Record<string, string>) => void;
+  gauge?: (metricName: string, value: number, tags: Record<string, string>) => void;
+  dist?: (metricName: string, value: number, tags: Record<string, string>) => void;
+  error?: (tag: string, error: string) => void;
+}
+```
+
+### Example Implementation
+
+```typescript
+import { ObservabilityClient } from '@statsig/statsig-node-core';
+import { StatsD } from 'hot-shots';
+
+class StatsdObservabilityClient implements ObservabilityClient {
+  private client: StatsD;
+  
+  constructor(options?: any) {
+    this.client = new StatsD({
+      prefix: 'statsig.',
+      ...options
+    });
+  }
+  
+  initialize() {
+    this.client.increment('client.initialized');
+  }
+  
+  increment(metricName: string, value: number, tags: Record<string, string>) {
+    this.client.increment(metricName, value, tags);
+  }
+  
+  gauge(metricName: string, value: number, tags: Record<string, string>) {
+    this.client.gauge(metricName, value, tags);
+  }
+  
+  dist(metricName: string, value: number, tags: Record<string, string>) {
+    this.client.timing(metricName, value, tags);
+  }
+  
+  error(tag: string, error: string) {
+    this.client.increment(`errors.${tag}`);
+    console.error(`[${tag}] ${error}`);
+  }
+}
+```
+
+To use a custom observability client:
+
+```typescript
+import { Statsig, StatsigOptions } from '@statsig/statsig-node-core';
+
+// Create your custom observability client
+const obsClient = new StatsdObservabilityClient();
+
+// Pass it to StatsigOptions
+const options = new StatsigOptions();
+options.observabilityClient = obsClient;
+
+// Initialize Statsig with options
+const statsig = new Statsig("secret-key", options);
+await statsig.initialize();
+```

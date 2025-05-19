@@ -1,0 +1,32 @@
+## Custom Output Logger
+
+The `OutputLogger` class provides logging capabilities for the Statsig SDK. You can control the verbosity of logs using the `LogLevel` enum.
+
+### LogLevel Enum
+
+```java
+public enum LogLevel {
+    NONE(0),
+    ERROR(1),
+    WARN(2),
+    INFO(3),
+    DEBUG(4);
+}
+```
+
+### Usage
+
+```java
+import com.statsig.StatsigOptions;
+import com.statsig.OutputLogger;
+
+// Configure log level in StatsigOptions
+StatsigOptions options = new StatsigOptions.Builder()
+    .setOutputLoggerLevel(OutputLogger.LogLevel.DEBUG)
+    .build();
+
+// Initialize Statsig with options
+Statsig.initialize("secret-key", options);
+```
+
+You cannot currently provide a custom implementation of the OutputLogger, but you can control the log level through StatsigOptions.

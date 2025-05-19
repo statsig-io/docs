@@ -22,7 +22,11 @@ import {
   ManualExposures,
   Shutdown,
   LocalOverrides,
-  ServerCore
+  ServerCore,
+  PersistentStorage,
+  DataStore,
+  OutputLogger,
+  ObservabilityClient
 } from "./Templates/index.mdx";
 
 
@@ -41,6 +45,10 @@ import ShutdownSnippet from "./python/_shutdown.mdx";
 import OverridesSnippet from "./python/_localOverrides.mdx";
 import { Snippets as ManualExposureSnippets } from "./python/_manualExposures.mdx";
 import SharedInstanceSnippet from "./python/_sharedInstance.mdx";
+import PersistentStorageContent from "./python/_persistent_storage.mdx";
+import DataStoreContent from "./python/_data_store.mdx";
+import OutputLoggerContent from "./python/_output_logger.mdx";
+import ObservabilityClientContent from "./python/_observability_client.mdx";
 
 
 
@@ -85,6 +93,10 @@ export const Builder = SDKDocsBuilder({
       },
     ],
     [ServerCore, { snippet: <Preamble /> }],
+    [PersistentStorage, { content: <PersistentStorageContent /> }],
+    [DataStore, { content: <DataStoreContent /> }],
+    [OutputLogger, { content: <OutputLoggerContent /> }],
+    [ObservabilityClient, { content: <ObservabilityClientContent /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]
 })

@@ -1,0 +1,126 @@
+## Custom Output Logger
+
+The `OutputLoggerProvider` class allows you to customize how the SDK logs messages, enabling integration with your own logging system.
+
+### Interface Methods
+
+```python
+class OutputLoggerProvider(OutputLoggerProviderBase):
+    def __init__(self):
+        super().__init__()
+        self.init_fn = self.init
+        self.debug_fn = self.debug
+        self.info_fn = self.info
+        self.warn_fn = self.warn
+        self.error_fn = self.error
+        self.shutdown_fn = self.shutdown
+
+    def init(self):
+        """
+        Initialize the logger. Called when the Statsig client initializes.
+        """
+        pass
+
+    def debug(self, tag: str, msg: str):
+        """
+        Log a debug message.
+        
+        Args:
+            tag: Category/component tag for the message
+            msg: The message to log
+        """
+        pass
+
+    def info(self, tag: str, msg: str):
+        """
+        Log an info message.
+        
+        Args:
+            tag: Category/component tag for the message
+            msg: The message to log
+        """
+        pass
+
+    def warn(self, tag: str, msg: str):
+        """
+        Log a warning message.
+        
+        Args:
+            tag: Category/component tag for the message
+            msg: The message to log
+        """
+        pass
+
+    def error(self, tag: str, msg: str):
+        """
+        Log an error message.
+        
+        Args:
+            tag: Category/component tag for the message
+            msg: The message to log
+        """
+        pass
+
+    def shutdown(self):
+        """
+        Clean up resources when the Statsig client shuts down.
+        """
+        pass
+```
+
+### Example Implementation
+
+```python
+import logging
+from statsig_python_core import OutputLoggerProvider
+
+class CustomLogger(OutputLoggerProvider):
+    def __init__(self):
+        super().__init__()
+        # Configure Python's logging module
+        logging.basicConfig(
+            level=logging.INFO,
+            format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+            filename='statsig.log'
+        )
+        self.logger = logging.getLogger('statsig')
+        
+    def init(self):
+        self.logger.info("Statsig logger initialized")
+        
+    def debug(self, tag: str, msg: str):
+        self.logger.debug(f"[{tag}] {msg}")
+        
+    def info(self, tag: str, msg: str):
+        self.logger.info(f"[{tag}] {msg}")
+        
+    def warn(self, tag: str, msg: str):
+        self.logger.warning(f"[{tag}] {msg}")
+        
+    def error(self, tag: str, msg: str):
+        self.logger.error(f"[{tag}] {msg}")
+        
+    def shutdown(self):
+        self.logger.info("Statsig logger shutdown")
+        # Clean up handlers if needed
+        for handler in self.logger.handlers:
+            handler.close()
+```
+
+To use a custom output logger:
+
+```python
+from statsig_python_core import Statsig, StatsigOptions
+
+# Create your custom logger
+logger = CustomLogger()
+
+# Pass it to StatsigOptions
+options = StatsigOptions()
+options.output_logger_provider = logger
+options.output_log_level = "debug"  # Set log level
+
+# Initialize Statsig with options
+statsig = Statsig("secret-key", options)
+statsig.initialize().wait()
+```

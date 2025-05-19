@@ -1,0 +1,100 @@
+## Persistent Storage Interface
+
+The `PersistentStorage` class allows you to implement custom persistent storage for experiment assignments. This ensures consistent user experiences across sessions.
+
+### Interface Methods
+
+```python
+class PersistentStorage(PersistentStorageBaseClass):
+    def __init__(self):
+        super().__init__()
+        self.load_fn = self.load
+        self.save_fn = self.save
+        self.delete_fn = self.delete
+
+    def load(self, key: str) -> Optional[UserPersistedValues]:
+        """
+        Load persisted values for a user from storage
+        
+        Args:
+            key: A string key that uniquely identifies a user
+
+        Returns:
+            Dictionary mapping config names to their persisted values
+        """
+        pass
+
+    def save(self, key: str, config_name: str, data: StickyValues):
+        """
+        Save a persistent value for a user
+        
+        Args:
+            key: A string key that uniquely identifies a user
+            config_name: The name of the config/experiment
+            data: The values to persist
+        """
+        pass
+
+    def delete(self, key: str, config_name: str):
+        """
+        Delete a persistent value for a user
+        
+        Args:
+            key: A string key that uniquely identifies a user
+            config_name: The name of the config/experiment to delete
+        """
+        pass
+```
+
+### Example Implementation
+
+```python
+from statsig_python_core import PersistentStorage, StatsigUser, StickyValues
+from typing import Optional, Dict
+import json
+
+class FilePersistentStorage(PersistentStorage):
+    def __init__(self, file_path="./statsig_storage.json"):
+        super().__init__()
+        self.file_path = file_path
+        self.storage = {}
+        try:
+            with open(self.file_path, 'r') as f:
+                self.storage = json.load(f)
+        except:
+            # File doesn't exist or can't be read
+            pass
+
+    def load(self, key: str) -> Optional[Dict]:
+        return self.storage.get(key)
+
+    def save(self, key: str, config_name: str, data: StickyValues):
+        if key not in self.storage:
+            self.storage[key] = {}
+        self.storage[key][config_name] = data
+        with open(self.file_path, 'w') as f:
+            json.dump(self.storage, f)
+
+    def delete(self, key: str, config_name: str):
+        if key in self.storage and config_name in self.storage[key]:
+            del self.storage[key][config_name]
+            with open(self.file_path, 'w') as f:
+                json.dump(self.storage, f)
+```
+
+To use custom persistent storage:
+
+```python
+from statsig_python_core import Statsig, StatsigOptions
+
+# Create your custom persistent storage implementation
+storage = FilePersistentStorage()
+
+# Pass it to StatsigOptions
+options = StatsigOptions()
+options.persistent_storage = storage
+
+# Initialize Statsig with options
+statsig = Statsig("secret-key", options)
+statsig.initialize().wait()
+```

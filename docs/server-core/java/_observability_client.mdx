@@ -1,0 +1,76 @@
+## Observability Client Interface
+
+The `ObservabilityClient` interface allows you to monitor the health of the SDK by integrating with your own observability systems.
+
+### Interface Methods
+
+```java
+public interface ObservabilityClient {
+  void init();
+
+  void increment(String metricName, double value, Map<String, String> tags);
+
+  void gauge(String metricName, double value, Map<String, String> tags);
+
+  void dist(String metricName, double value, Map<String, String> tags);
+
+  void error(String tag, String errorMessage);
+}
+```
+
+### Example Implementation
+
+```java
+import com.statsig.ObservabilityClient;
+import java.util.Map;
+
+public class CustomObservabilityClient implements ObservabilityClient {
+    private final MetricsReporter reporter;
+    
+    public CustomObservabilityClient() {
+        this.reporter = new MetricsReporter(); // Your metrics system
+    }
+    
+    @Override
+    public void init() {
+        reporter.recordEvent("statsig_initialized");
+    }
+    
+    @Override
+    public void increment(String metricName, double value, Map<String, String> tags) {
+        reporter.incrementCounter(metricName, value, tags);
+    }
+    
+    @Override
+    public void gauge(String metricName, double value, Map<String, String> tags) {
+        reporter.recordGauge(metricName, value, tags);
+    }
+    
+    @Override
+    public void dist(String metricName, double value, Map<String, String> tags) {
+        reporter.recordDistribution(metricName, value, tags);
+    }
+    
+    @Override
+    public void error(String tag, String errorMessage) {
+        reporter.recordError(tag, errorMessage);
+    }
+}
+```
+
+To use a custom observability client:
+
+```java
+import com.statsig.StatsigOptions;
+
+// Create your custom observability client
+ObservabilityClient obsClient = new CustomObservabilityClient();
+
+// Pass it to StatsigOptions
+StatsigOptions options = new StatsigOptions.Builder()
+    .setObservabilityClient(obsClient)
+    .build();
+
+// Initialize Statsig with options
+Statsig.initialize("secret-key", options);
+```
