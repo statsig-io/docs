@@ -3,7 +3,7 @@ import { useLocation } from '@docusaurus/router';
 import { Button } from './ui/button';
 import copy from 'copy-text-to-clipboard';
 
-export default function AskAIAboutSDK() {
+export default function AskAIAboutSDK({ sdkType = 'unknown' }) {
   const [query, setQuery] = useState('');
   const [response, setResponse] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -13,19 +13,6 @@ export default function AskAIAboutSDK() {
   const responseRef = useRef('');
 
   const getSDKInfo = () => {
-    const path = location.pathname;
-    let sdkType = 'unknown';
-    
-    if (path.includes('/client/javascript-sdk')) {
-      sdkType = 'javascript';
-    } else if (path.includes('/client/react')) {
-      sdkType = 'react';
-    } else if (path.includes('/client/react-native')) {
-      sdkType = 'react-native';
-    } else if (path.includes('/client/expo')) {
-      sdkType = 'expo';
-    }
-    
     return {
       sdkType,
       url: window.location.href
