@@ -45,6 +45,65 @@ val fieldsNeeded = Statsig.getFieldsNeededForLayer("layer_name")
 
 These methods return a list of strings representing the user fields that are referenced in the targeting rules or conditions of the specified feature. This can be useful for understanding which user properties influence a particular feature's behavior.
 
+#### Field Mapping
+
+The fields returned by these methods correspond to the following user properties:
+
+<Tabs
+  groupId="java-server-sdk-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
+// Field mapping between user properties and internal field names
+Map<String, String> fieldMapping = Map.of(
+  "userID", "u",
+  "email", "e",
+  "ip", "i",
+  "userAgent", "ua",
+  "country", "c",
+  "locale", "l",
+  "appVersion", "a",
+  "time", "t",
+  "stableID", "s",
+  "environment", "en",
+  "targetApp", "ta"
+);
+
+// Custom fields are prefixed with "cf:"
+// Example: fields.add("cf:" + field);
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+// Field mapping between user properties and internal field names
+val fieldMapping = mapOf(
+  "userID" to "u",
+  "email" to "e",
+  "ip" to "i",
+  "userAgent" to "ua",
+  "country" to "c",
+  "locale" to "l",
+  "appVersion" to "a",
+  "time" to "t",
+  "stableID" to "s",
+  "environment" to "en",
+  "targetApp" to "ta"
+)
+
+// Custom fields are prefixed with "cf:"
+// Example: fields.add("cf:" + field)
+```
+
+  </TabItem>
+</Tabs>
+
 #### Example
 
 <Tabs
