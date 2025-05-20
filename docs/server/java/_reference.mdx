@@ -509,3 +509,19 @@ data class ConfigSyncDetails(
     val lcut: Long,
 )
 ```
+
+### Fields Needed Methods (Enterprise Only)
+
+```kotlin
+// Get user fields needed for a gate evaluation
+fun getFieldsNeededForGate(gateName: String): List<String>
+
+// Get user fields needed for a dynamic config evaluation
+fun getFieldsNeededForDynamicConfig(configName: String): List<String>
+
+// Get user fields needed for an experiment evaluation
+fun getFieldsNeededForExperiment(experimentName: String): List<String>
+
+// Get user fields needed for a layer evaluation
+fun getFieldsNeededForLayer(layerName: String): List<String>
+```

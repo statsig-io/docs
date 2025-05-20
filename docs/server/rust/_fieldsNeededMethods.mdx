@@ -1,0 +1,28 @@
+### Fields Needed Methods (Enterprise Only)
+
+```rust
+// Get fields needed for a gate
+let fields_needed: Vec<String> = statsig.get_fields_needed_for_gate("gate_name");
+
+// Get fields needed for a dynamic config
+let fields_needed: Vec<String> = statsig.get_fields_needed_for_dynamic_config("config_name");
+
+// Get fields needed for an experiment
+let fields_needed: Vec<String> = statsig.get_fields_needed_for_experiment("experiment_name");
+
+// Get fields needed for a layer
+let fields_needed: Vec<String> = statsig.get_fields_needed_for_layer("layer_name");
+```
+
+These methods return a vector of strings representing the user fields that are referenced in the targeting rules or conditions of the specified feature. This can be useful for understanding which user properties influence a particular feature's behavior.
+
+#### Example
+
+```rust
+// Get fields needed for the "new_homepage" gate
+let fields_needed = statsig.get_fields_needed_for_gate("new_homepage");
+println!("{:?}", fields_needed);
+// Example output: ["country", "email", "custom.subscription_tier"]
+```
+
+> Note: These methods are enterprise-only features. Please contact Statsig if you're interested in using them.

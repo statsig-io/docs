@@ -1,0 +1,79 @@
+### Fields Needed Methods (Enterprise Only)
+
+<Tabs
+  groupId="java-server-sdk-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
+// Get fields needed for a gate
+List<String> fieldsNeeded = Statsig.getFieldsNeededForGate("gate_name");
+
+// Get fields needed for a dynamic config
+List<String> fieldsNeeded = Statsig.getFieldsNeededForDynamicConfig("config_name");
+
+// Get fields needed for an experiment
+List<String> fieldsNeeded = Statsig.getFieldsNeededForExperiment("experiment_name");
+
+// Get fields needed for a layer
+List<String> fieldsNeeded = Statsig.getFieldsNeededForLayer("layer_name");
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+// Get fields needed for a gate
+val fieldsNeeded = Statsig.getFieldsNeededForGate("gate_name")
+
+// Get fields needed for a dynamic config
+val fieldsNeeded = Statsig.getFieldsNeededForDynamicConfig("config_name")
+
+// Get fields needed for an experiment
+val fieldsNeeded = Statsig.getFieldsNeededForExperiment("experiment_name")
+
+// Get fields needed for a layer
+val fieldsNeeded = Statsig.getFieldsNeededForLayer("layer_name")
+```
+
+  </TabItem>
+</Tabs>
+
+These methods return a list of strings representing the user fields that are referenced in the targeting rules or conditions of the specified feature. This can be useful for understanding which user properties influence a particular feature's behavior.
+
+#### Example
+
+<Tabs
+  groupId="java-server-sdk-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
+// Get fields needed for the "new_homepage" gate
+List<String> fieldsNeeded = Statsig.getFieldsNeededForGate("new_homepage");
+System.out.println(fieldsNeeded);
+// Example output: [country, email, custom.subscription_tier]
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+// Get fields needed for the "new_homepage" gate
+val fieldsNeeded = Statsig.getFieldsNeededForGate("new_homepage")
+println(fieldsNeeded)
+// Example output: [country, email, custom.subscription_tier]
+```
+
+  </TabItem>
+</Tabs>
+
+> Note: These methods are enterprise-only features. Please contact Statsig if you're interested in using them.
