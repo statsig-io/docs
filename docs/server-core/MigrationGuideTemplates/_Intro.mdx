@@ -1,5 +1,19 @@
-## Migrating from Legacy SDK to Core SDK
+export default function(props) {
+  return (
+    <div>
+      <h2>Migrating from Legacy {props.language} SDK to {props.language} Core</h2>
+      
+      <p>This guide will help you migrate from the legacy {props.language} Server SDK to the new {props.language} Core SDK. The {props.language} Core SDK offers significant performance improvements and new features, as it's built on a shared Rust core library.</p>
+      
+      <div>{props.introContent}</div>
+    </div>
+  );
+}
 
-This guide will help you migrate from the legacy {props.language} Server SDK to the new {props.language} Core SDK. The {props.language} Core SDK offers significant performance improvements and new features, as it's built on a shared Rust core library.
-
-<div>{props.introContent}</div>
+export const toc = [
+  {
+    value: "Migrating from Legacy SDK to Core SDK",
+    id: "migrating-from-legacy-sdk-to-core-sdk",
+    level: 2,
+  },
+];
