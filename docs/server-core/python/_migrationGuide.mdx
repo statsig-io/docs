@@ -1,17 +1,21 @@
 import MigrationInstallation from "./migration-guide/_installation.mdx";
 import MigrationUserCreation from "./migration-guide/_user_creation.mdx";
 import MigrationAPIChanges from "./migration-guide/_api_changes.mdx";
+import { Intro } from "../MigrationGuideTemplates/index.mdx";
 
-# Migrating from Legacy Python SDK to Python Core
+<Intro 
+  language="Python"
+  introContent={
+    <>
+      ## Why Migrate?
 
-This guide will help you migrate from the legacy Python Server SDK to the new Python Core SDK. The Python Core SDK offers significant performance improvements and new features, as it's built on a shared Rust core library.
-
-## Why Migrate?
-
-- **Performance**: Python Core evaluates significantly faster than the legacy SDK
-- **New Features**: Access to new features and improvements
-- **Future Support**: All new features and improvements will only be available in Python Core
-- **Maintenance**: The legacy Python SDK is in maintenance mode and will only receive critical bug fixes
+      - **Performance**: Python Core evaluates significantly faster than the legacy SDK
+      - **New Features**: Access to new features and improvements
+      - **Future Support**: All new features and improvements will only be available in Python Core
+      - **Maintenance**: The legacy Python SDK is in maintenance mode and will only receive critical bug fixes
+    </>
+  }
+/>
 
 <MigrationInstallation />
 
