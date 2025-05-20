@@ -17,6 +17,7 @@ import {
     UserCreation,
     NeedHelp,
     Troubleshooting,
+    Intro,
 } from "../../MigrationGuideTemplates/index.mdx";
 
 import PyAPIChanges from "./_api_changes.mdx";
@@ -25,6 +26,12 @@ import PyStatsigOptions from "./_statsig_options.mdx";
 
 export const Builder = SDKDocsBuilder({
   sections: [
+    [
+      Intro,
+      {
+        sdkType: "Python",
+      },
+    ],
     [
       GlobalChanges,
       {
