@@ -20,8 +20,6 @@ import {
 } from "../../MigrationGuideTemplates/index.mdx";
 
 import PyAPIChanges from "./_api_changes.mdx";
-import PyInstallation from "./_installation.mdx";
-
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -39,21 +37,14 @@ export const Builder = SDKDocsBuilder({
       Installation,
       {
         legacyInstall: <CodeBlock>pip install statsig</CodeBlock>,
-        install: <CodeBlock>pip install statsig-server-core</CodeBlock>,
+        install: <CodeBlock>pip install statsig-python-core</CodeBlock>,
       },
     ],
     [
       APIChanges,
       {
-        legacyCheckGate: `"statsig.check_gate()"`,
-        checkGate: "statsig.check_gate()",
-        legacyGetExperiment: "statsig.get_experiment()",
-        getExperiment: "statsig.get_experiment()",
-        legacyGetConfig: "statsig.get_config()",
-        getConfig: "statsig.get_config()",
-        legacyLogEvent: "statsig.log_event()",
-        logEvent: "statsig.log_event",
-      },
+        apiChanges: <PyAPIChanges />
+      }
     ]
   ]
 })
