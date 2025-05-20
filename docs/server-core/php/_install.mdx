@@ -6,7 +6,12 @@ You can install the new PHP Core SDK using composer:
 composer require statsig/statsig-php-core
 ```
 
-### 2. Add Scripts & Cron Job
+### 2. PHP Configuration Requirements
+The PHP Core SDK uses the FFI extension to interface with the Rust core. You must enable FFI in your PHP configuration by setting `ffi.enable=true` in your php.ini file.
+
+For more information about this setting, see the [PHP manual for ffi.enable](https://www.php.net/manual/en/ffi.configuration.php#ini.ffi.enable).
+
+### 3. Add Scripts & Cron Job
 
 Add post-install and post-update scripts in composer.json: 
 
@@ -36,4 +41,4 @@ You'll also want to setup cron jobs to run these scripts periodically:
 */1 * * * * /usr/bin/php /var/www/example.com/bin/StatsigFlushEvents.php 1>> /dev/null 2>&1
 ```
 
-Also, be sure to run the StatsigSyncConfig.php cron job at least once before proceeding. 
+Also, be sure to run the StatsigSyncConfig.php cron job at least once before proceeding.    
