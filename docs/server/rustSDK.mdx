@@ -24,6 +24,7 @@ import {
   ClientInitResponse,
   LocalOverrides,
   Reference,
+  FieldsNeededMethods,
 } from "./Templates/index.mdx";
 
 import Install from "./rust/_install.mdx";
@@ -69,6 +70,7 @@ export const Builder = SDKDocsBuilder({
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
+    [FieldsNeededMethods, {}],
   ]
 })
 
