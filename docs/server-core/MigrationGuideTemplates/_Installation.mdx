@@ -1,7 +1,14 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+
 ## Installation
 
-//some installation instructions
-
-<div>{props.legacyInstall}</div>
-
-<div>{props.install}</div>
+<Tabs>
+  <TabItem value="new" label="New Installation" default>
+      {props.install}
+  </TabItem>
+  <TabItem value="legacy" label="Legacy Installation">
+      {props.legacyInstall}
+  </TabItem>
+</Tabs>

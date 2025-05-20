@@ -3,6 +3,7 @@ title: Python Core SDK Migration Guide
 displayed_sidebar: api
 ---
 
+import CodeBlock from '@theme/CodeBlock';
 import {
   SDKDocsBuilder,
 } from "../../../sdks/_SDKDocsBuilder.mdx";
@@ -19,15 +20,41 @@ import {
 } from "../../MigrationGuideTemplates/index.mdx";
 
 import PyAPIChanges from "./_api_changes.mdx";
+import PyInstallation from "./_installation.mdx";
+
 
 export const Builder = SDKDocsBuilder({
   sections: [
     [
-      APIChanges,
+      GlobalChanges,
       {
-        apiChanges: <PyAPIChanges />,
+        waitForUserAgentInit: "wait_for_user_agent_init",
+        waitForCountryLookupInit: "wait_for_country_lookup_init",
+        disableUserAgentParsing: "disable_user_agent_parsing",
+        disableCountryLookup: "disable_country_lookup",
+        enableIdLists: "enable_id_lists"
       },
     ],
+    [
+      Installation,
+      {
+        legacyInstall: <CodeBlock>pip install statsig</CodeBlock>,
+        install: <CodeBlock>pip install statsig-server-core</CodeBlock>,
+      },
+    ],
+    [
+      APIChanges,
+      {
+        legacyCheckGate: `"statsig.check_gate()"`,
+        checkGate: "statsig.check_gate()",
+        legacyGetExperiment: "statsig.get_experiment()",
+        getExperiment: "statsig.get_experiment()",
+        legacyGetConfig: "statsig.get_config()",
+        getConfig: "statsig.get_config()",
+        legacyLogEvent: "statsig.log_event()",
+        logEvent: "statsig.log_event",
+      },
+    ]
   ]
 })
 
