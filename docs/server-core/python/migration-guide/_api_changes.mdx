@@ -1,147 +1,20 @@
-## API Differences
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 ### Key Package and Class Changes
 
-| Feature | Legacy Python SDK | Python Core SDK |
-|---------|----------------|---------------|
-| Package | `statsig` | `statsig_python_core` |
-| Import | `import statsig` | `from statsig import Statsig` |
-| Main Class | `statsig` (module with functions) | `Statsig` (class with instance methods) |
+| Feature | Python Core SDK | Legacy Python SDK |
+|---------|---------------|----------------|
+| Package | `statsig_python_core` | `statsig` |
+| Import | `from statsig_python_core import *` | `from statsig import Statsig` |
 | Options | `StatsigOptions` | `StatsigOptions` |
-| User | `statsig_user.StatsigUser` | `StatsigUser` |
+| User | `StatsigUser` | `StatsigUser` |
+| Initialize | `statsig.initialize().wait()` | `statsig.initialize()` |
 | Check Gate | `statsig.check_gate()` | `statsig.check_gate()` |
-| Get Config | `statsig.get_config()` | `statsig.get_dynamic_config()` |
+| Get Config | `statsig.get_dynamic_config()` | `statsig.get_config()` |
 | Get Experiment | `statsig.get_experiment()` | `statsig.get_experiment()` |
 | Get Layer | `statsig.get_layer()` | `statsig.get_layer()` |
 | Log Event | `statsig.log_event()` | `statsig.log_event()` |
+| Shutdown | `statsig.shutdown().wait()` | `statsig.shutdown()` |
 
-### Initialization
-
-#### Legacy Python SDK
-
-```python
-import statsig
-
-statsig.initialize("server-secret-key")
-```
-
-#### Python Core SDK
-
-```python
-from statsig import Statsig, StatsigOptions
-
-# All StatsigOptions are optional
-options = StatsigOptions(
-    specs_url="https://api.statsig.com/v1",
-    specs_sync_interval_ms=10000,
-    event_logging_flush_interval_ms=10000,
-    environment="production"  # replaces 'tier' from legacy SDK
-)
-
-statsig = Statsig("server-secret-key", options)
-statsig.initialize()
-```
-
-### Checking Gates
-
-#### Legacy Python SDK
-
-```python
-import statsig
-from statsig import statsig_user
-
-user = statsig_user.StatsigUser("user_id")
-is_feature_on = statsig.check_gate(user, "use_new_feature")
-
-if is_feature_on:
-    # Gate is on, use new feature
-else:
-    # Gate is off
-```
-
-#### Python Core SDK
-
-```python
-from statsig import Statsig, StatsigUser
-
-statsig = Statsig("server-secret-key")
-statsig.initialize()
-
-user = StatsigUser(user_id="user_id")
-is_feature_on = statsig.check_gate(user, "use_new_feature")
-
-if is_feature_on:
-    # Gate is on, use new feature
-else:
-    # Gate is off
-```
-
-### Getting Configs
-
-#### Legacy Python SDK
-
-```python
-config = statsig.get_config(user, "awesome_product_details")
-
-item_name = config.get("product_name", "Awesome Product v1")
-price = config.get("price", 10.0)
-should_discount = config.get("discount", False)
-```
-
-#### Python Core SDK
-
-```python
-config = statsig.get_dynamic_config(user, "awesome_product_details")
-
-item_name = config.get("product_name", "Awesome Product v1")
-price = config.get("price", 10.0)
-should_discount = config.get("discount", False)
-```
-
-### Getting Experiments
-
-#### Legacy Python SDK
-
-```python
-experiment = statsig.get_experiment(user, "new_user_promo_title")
-
-promo_title = experiment.get("title", "Welcome to Statsig!")
-discount = experiment.get("discount", 0.1)
-```
-
-#### Python Core SDK
-
-```python
-experiment = statsig.get_experiment(user, "new_user_promo_title")
-
-promo_title = experiment.get("title", "Welcome to Statsig!")
-discount = experiment.get("discount", 0.1)
-```
-
-### Logging Events
-
-#### Legacy Python SDK
-
-```python
-statsig.log_event(user, "purchase", 2.99, {"item_name": "remove_ads"})
-```
-
-#### Python Core SDK
-
-```python
-statsig.log_event(user, "purchase", "2.99", {"item_name": "remove_ads"})
-```
-
-### Shutdown
-
-#### Legacy Python SDK
-
-```python
-statsig.shutdown()
-```
-
-#### Python Core SDK
-
-```python
-statsig.shutdown()
-```
+For more details on the new API, see [Python Core SDK documentation](/server-core/python-core).

@@ -12,14 +12,16 @@ import {
     APIChanges,
     GlobalChanges,
     Installation,
-    MigrationHelper,
-    ServerCoreOverview,
+    MigrationHelp,
     StatsigOptions,
     UserCreation,
-    Intro
+    NeedHelp,
+    Troubleshooting,
 } from "../../MigrationGuideTemplates/index.mdx";
 
 import PyAPIChanges from "./_api_changes.mdx";
+import PyUserCreation from "./_user_creation.mdx";
+import PyStatsigOptions from "./_statsig_options.mdx";
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -41,11 +43,58 @@ export const Builder = SDKDocsBuilder({
       },
     ],
     [
+      UserCreation,
+      {
+        newUserCreation: <CodeBlock language="python">
+{`from statsig_python_core import *
+
+user = StatsigUser(
+    user_id="user_123",
+    email="user@example.com",
+    ip="192.168.0.1",
+    user_agent="Mozilla/5.0",
+    country="US",
+    custom={
+        "subscription_level": "premium"
+    }
+)`}</CodeBlock>,
+        legacyUserCreation: <CodeBlock language="python">
+{`from statsig import StatsigUser
+
+user = StatsigUser(
+    user_id="user_123",
+    email="user@example.com",
+    ip="192.168.0.1",
+    user_agent="Mozilla/5.0",
+    country="US",
+    custom={
+        "subscription_level": "premium"
+    }
+)`}</CodeBlock>,
+      }
+    ],
+    [
       APIChanges,
       {
         apiChanges: <PyAPIChanges />
       }
-    ]
+    ], 
+    [
+      StatsigOptions,
+      {
+        optionsMapping: <PyStatsigOptions />
+      }
+    ],
+    [
+      MigrationHelp,
+      {
+        migrationAdapterLink: "https://gist.github.com/kat-statsig/35d5765acfc5f3ce6444881b83fb161d"
+      }
+    ],
+    [
+      NeedHelp,
+      {}
+    ],
   ]
 })
 

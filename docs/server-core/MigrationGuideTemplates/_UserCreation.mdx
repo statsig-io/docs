@@ -1,8 +1,14 @@
-## Creating a StatsigUser
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-//create a statsiguser
+## StatsigUser
 
-<div>{props.legacyStatsigUser}</div>
-
-<div>{props.statsigUser}</div>
+<Tabs>
+  <TabItem value="new" label="New User Creation" default>
+    {props.newUserCreation}
+  </TabItem>
+  <TabItem value="legacy" label="Legacy User Creation">
+    {props.legacyUserCreation}
+  </TabItem>
+</Tabs>
 

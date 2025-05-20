@@ -1,0 +1,45 @@
+## SDK Migration Guide
+
+1. Update Dependencies
+
+- Remove the old SDK package/module from your project.
+- Add the new SDK package/module.
+- Include any required platform-specific dependencies for your environment.
+
+2. Update Imports / Requires
+
+- Update import or require statements to reference the new SDK namespace or module.
+- Remove any references to the old SDK's namespace or structure.
+
+3. Update Initialization
+
+- Global instance signitures have changed or not yet supported. Update the signiture or replace global initialization with instance-based initialization.
+- If needed, use the appropriate builder or configuration pattern for setting options and creating user objects.
+
+4. Update User Creation
+
+- Migrate to the new format for creating user objects.
+- If needed, use the builder pattern or updated constructor to set user properties.
+
+5. Update Method Calls
+
+- Replace static/global method calls with instance methods on the new SDK object, or update the global instance signiture (if supported).
+- Update any suffixes or prefixes from method names.
+- Update method signatures and usage according to the new API.
+
+6. Test Thoroughly
+
+- Verify that feature gates, experiments, and dynamic configs return expected values.
+- Ensure that event logging and exposure tracking are functioning correctly.
+- Confirm proper SDK initialization and error handling.
+
+<>
+    <ol start="7">
+        <li>Optional: Gradual Migration Using Adapter {props.migrationAdapterLink ? "" : "(Not supported yet)"}</li>
+    </ol>
+    <ul>
+        <li>Use a migration adapter to wrap the new SDK with the old interface.</li>
+        <li>This allows for incremental migration without updating all call sites at once.</li>
+        {props.migrationAdapterLink && <li><a href={props.migrationAdapterLink}>{props.migrationAdapterLink}</a></li>}
+    </ul>
+</>

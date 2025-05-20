@@ -1,35 +1,39 @@
-## Creating a StatsigUser
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-### Legacy Python SDK
+User creation is still the same in the new python core SDK.
 
-```python
-from statsig import statsig_user
+<Tabs>
+  <TabItem value="new" label="New User Creation" default>
+    ```python
+    from statsig_python_core import *
 
-user = statsig_user.StatsigUser(
-    user_id="user_123",
-    email="user@example.com",
-    ip="192.168.0.1",
-    user_agent="Mozilla/5.0",
-    country="US",
-    custom={
-        "subscription_level": "premium"
-    }
-)
-```
+    user = StatsigUser(
+        user_id="user_123",
+        email="user@example.com",
+        ip="192.168.0.1",
+        user_agent="Mozilla/5.0",
+        country="US",
+        custom={
+            "subscription_level": "premium"
+        }
+    )
+    ```
+  </TabItem>
+  <TabItem value="legacy" label="Legacy User Creation">
+    ```python
+    from statsig import StatsigUser
 
-### Python Core SDK
-
-```python
-from statsig import StatsigUser
-
-user = StatsigUser(
-    user_id="user_123",
-    email="user@example.com",
-    ip="192.168.0.1",
-    user_agent="Mozilla/5.0",
-    country="US",
-    custom={
-        "subscription_level": "premium"
-    }
-)
-```
+    user = StatsigUser(
+        user_id="user_123",
+        email="user@example.com",
+        ip="192.168.0.1",
+        user_agent="Mozilla/5.0",
+        country="US",
+        custom={
+            "subscription_level": "premium"
+        }
+    )
+    ```
+  </TabItem>
+</Tabs>
