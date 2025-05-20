@@ -4,9 +4,10 @@
 
 | Feature | Legacy Python SDK | Python Core SDK |
 |---------|----------------|---------------|
-| Package | `statsig` | `statsig-python-core` |
+| Package | `statsig` | `statsig_python_core` |
+| Import | `import statsig` | `from statsig import Statsig` |
 | Main Class | `statsig` (module with functions) | `Statsig` (class with instance methods) |
-| Options | `statsig_options` | `StatsigOptions` |
+| Options | `StatsigOptions` | `StatsigOptions` |
 | User | `statsig_user.StatsigUser` | `StatsigUser` |
 | Check Gate | `statsig.check_gate()` | `statsig.check_gate()` |
 | Get Config | `statsig.get_config()` | `statsig.get_dynamic_config()` |
@@ -31,9 +32,10 @@ from statsig import Statsig, StatsigOptions
 
 # All StatsigOptions are optional
 options = StatsigOptions(
-    api_url="https://api.statsig.com/v1",
+    specs_url="https://api.statsig.com/v1",
     specs_sync_interval_ms=10000,
-    event_logging_flush_interval_ms=10000
+    event_logging_flush_interval_ms=10000,
+    environment="production"  # replaces 'tier' from legacy SDK
 )
 
 statsig = Statsig("server-secret-key", options)
