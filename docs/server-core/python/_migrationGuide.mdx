@@ -1,30 +1,3 @@
-import MigrationInstallation from "./migration-guide/_installation.mdx";
-import MigrationUserCreation from "./migration-guide/_user_creation.mdx";
-import MigrationAPIChanges from "./migration-guide/_api_changes.mdx";
-import { default as Intro } from "../MigrationGuideTemplates/_Intro.mdx";
+import Link from '@docusaurus/Link';
 
-<Intro 
-  language="Python"
-  introContent={
-    <>
-      ## Why Migrate?
-
-      - **Performance**: Python Core evaluates significantly faster than the legacy SDK
-      - **New Features**: Access to new features and improvements
-      - **Future Support**: All new features and improvements will only be available in Python Core
-      - **Maintenance**: The legacy Python SDK is in maintenance mode and will only receive critical bug fixes
-    </>
-  }
-/>
-
-<MigrationInstallation />
-
-<MigrationUserCreation />
-
-<MigrationAPIChanges />
-
-## Need Help?
-
-If you encounter any issues during migration, please reach out to us:
-- [Statsig Slack Community](https://statsig.com/slack)
-- [GitHub Issues](https://github.com/statsig-io/statsig-server-core/issues)    
+<Link to="/server-core/python/migration-guide">View the Python Core SDK Migration Guide</Link>

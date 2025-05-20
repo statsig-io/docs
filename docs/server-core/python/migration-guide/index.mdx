@@ -1,31 +1,37 @@
 ---
-title: Python Core Migration Guide
-sidebar_label: Migration Guide
+title: Python Core SDK Migration Guide
+displayed_sidebar: api
 ---
 
-import MigrationInstallation from "./_installation.mdx";
-import MigrationUserCreation from "./_user_creation.mdx";
-import MigrationAPIChanges from "./_api_changes.mdx";
+import {
+  SDKDocsBuilder,
+} from "../../../sdks/_SDKDocsBuilder.mdx";
 
-# Migrating from Legacy Python SDK to Python Core
+import {
+    APIChanges,
+    GlobalChanges,
+    Installation,
+    MigrationHelper,
+    ServerCoreOverview,
+    StatsigOptions,
+    UserCreation,
+    Intro
+} from "../../MigrationGuideTemplates/index.mdx";
 
-This guide will help you migrate from the legacy Python Server SDK to the new Python Core SDK. The Python Core SDK offers significant performance improvements and new features, as it's built on a shared Rust core library.
+import PyAPIChanges from "./_api_changes.mdx";
 
-## Why Migrate?
+export const Builder = SDKDocsBuilder({
+  sections: [
+    [
+      APIChanges,
+      {
+        apiChanges: <PyAPIChanges />,
+      },
+    ],
+  ]
+})
 
-- **Performance**: Python Core evaluates significantly faster than the legacy SDK
-- **New Features**: Access to new features and improvements
-- **Future Support**: All new features and improvements will only be available in Python Core
-- **Maintenance**: The legacy Python SDK is in maintenance mode and will only receive critical bug fixes
+export const toc = Builder.toc
 
-<MigrationInstallation />
+<>{Builder.result}</>
 
-<MigrationUserCreation />
-
-<MigrationAPIChanges />
-
-## Need Help?
-
-If you encounter any issues during migration, please reach out to us:
-- [Statsig Slack Community](https://statsig.com/slack)
-- [GitHub Issues](https://github.com/statsig-io/statsig-server-core/issues)
