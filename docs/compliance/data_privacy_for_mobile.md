@@ -93,7 +93,9 @@ Both iOS and Android SDKs provide the `optOutNonSdkMetadata` option to limit the
 
 **iOS SDK:**
 ```swift
-let user = StatsigUser(userID: "user-123", optOutNonSdkMetadata: true)
+let options = StatsigOptions()
+options.optOutNonSdkMetadata = true
+Statsig.start(sdkKey: "client-sdk-key", options: options)
 ```
 
 **Android SDK:**
@@ -107,7 +109,7 @@ When `optOutNonSdkMetadata` is enabled, only the following core SDK metadata is 
 - sessionID: A randomly generated UUID for the current session
 - stableID: A persistent device identifier
 
-All device-specific information (appIdentifier, appVersion, deviceModel, deviceOS, locale, language, systemVersion, systemName) is excluded from logs.
+All device-specific information (appIdentifier, appVersion, deviceModel, deviceOS, locale, language, systemVersion, systemName) is excluded from logs and targeting.
 
 ### How does StableID work?
 
