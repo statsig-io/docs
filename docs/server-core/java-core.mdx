@@ -29,7 +29,8 @@ import {
   PersistentStorage,
   DataStore,
   OutputLogger,
-  ObservabilityClient
+  ObservabilityClient,
+  FieldsNeededMethods
 } from "./Templates/index.mdx";
 
 import Preamble from "./_preamble.mdx";
@@ -105,6 +106,7 @@ export const Builder = SDKDocsBuilder({
       </> 
     }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
+    [FieldsNeededMethods, {}],
   ]
 })
 
