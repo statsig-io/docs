@@ -929,7 +929,8 @@ const sidebars: SidebarsConfig = {
             {
               className: "node-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
-              id: "server/nodejsServerSDK",
+              id: "server-core/node-core",
+              label: "Node.js (Legacy)",
             },
             {
               className: "python-icon sidebar-icon sdk-sidebar-icon",
@@ -944,12 +945,14 @@ const sidebars: SidebarsConfig = {
             {
               className: "java-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
-              id: "server/javaSdk",
+              id: "server-core/java-core",
+              label: "Java (Legacy)",
             },
             {
               className: "rust-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
-              id: "server/rustSDK",
+              id: "server-core/rust-core",
+              label: "Rust (Legacy)",
             },
             {
               className: "php-icon sidebar-icon sdk-sidebar-icon",
