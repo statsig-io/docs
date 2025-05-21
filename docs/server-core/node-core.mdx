@@ -21,7 +21,9 @@ import {
   PersistentStorage,
   DataStore,
   OutputLogger,
-  ObservabilityClient
+  ObservabilityClient,
+  Reference,
+  FieldsNeededMethods
 } from "./Templates/index.mdx";
 
 import Preamble from "./_preamble.mdx";
@@ -42,6 +44,7 @@ import SharedInstanceSnippet from "./node/_sharedInstance.mdx";
 import DataStoreContent from "./node/_data_store.mdx";
 import ObservabilityClientContent from "./node/_observability_client.mdx";
 import PersistentStorageContent from "./node/_persistent_storage.mdx";
+import * as ReferenceSnippets from "./node/_reference.mdx";
 
 
 export const Builder = SDKDocsBuilder({
@@ -84,6 +87,8 @@ export const Builder = SDKDocsBuilder({
     [OutputLogger, { }],
     [ObservabilityClient, { content: <ObservabilityClientContent /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
+    [Reference, { snippets: <ReferenceSnippets.default /> }],
+    [FieldsNeededMethods, {}],
   ]
 })
 
