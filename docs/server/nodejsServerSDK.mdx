@@ -1,0 +1,120 @@
+---
+sidebar_label: Legacy Node.js
+title: Legacy Node.js Server SDK
+keywords:
+  - owner:brock
+last_update:
+  date: 2024-11-18
+---
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigOptions,
+  StatsigUser,
+  ManualExposures,
+  Shutdown,
+  ClientInitResponse,
+  LocalOverrides,
+  Reference,
+  EnvironmentSpecific,
+  UserPersistentStorage,
+  ProxyConfigs,
+  Instances,
+  BreakingChangesSection,
+  FieldsNeededMethods
+} from "./Templates/index.mdx";
+
+import Install from "./node/_install.mdx";
+import InstallBeta from "./node/_installBeta.mdx";
+import Initialize from "./node/_initialize.mdx";
+import CheckGate from "./node/_checkGate.mdx";
+import GetFeatureGate from "./node/_getFeatureGate.mdx";
+import GetConfig from "./node/_getConfig.mdx";
+import GetExperiment from "./node/_getExperiment.mdx";
+import LogEvent from "./node/_logEvent.mdx";
+import MoreFAQs from "./node/_faqs.mdx";
+import Options from "./node/_options.mdx";
+import ShutdownSnippet from "./node/_shutdown.mdx";
+import Flush from "./node/_flush.mdx";
+import ClientInitResponseSnippet from "./node/_clientInitResponse.mdx";
+import { Snippets as ManualExposureSnippets } from "./node/_manualExposures.mdx";
+import OverridesSnippet from "./node/_localOverrides.mdx";
+import * as RefSnippets from "./node/_reference.mdx";
+import CloudflareSetup from "./node/_cloudflareSetup.mdx";
+import ForwardProxyExample from "./node/_forwardProxyExample.mdx";
+import MultiInstanceExample from "./node/_multiInstanceExample.mdx";
+import PersistentStorageInterface from "./node/_persistentStorageInterface.mdx";
+import PersistentStorageExample from "./node/_persistentStorageExample.mdx";
+
+export const Builder = SDKDocsBuilder({
+  sections: [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/node-js-server-sdk",
+      },
+    ],
+    [
+      GettingStarted,
+      {
+        sdkType: "Node.js",
+        install: <Install />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getFeatureGate: <GetFeatureGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+      },
+    ],
+    [StatsigUser, {}],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
+    [
+      ClientInitResponse,
+      {
+        sdkName: "Node",
+        addedInVersion: "4.13.0",
+        snippet: <ClientInitResponseSnippet />,
+        signature: () => <code>getClientInitializeResponse</code>,
+      },
+    ],
+    [
+      LocalOverrides,
+      { addedInVersion: "4.8.0", snippet: <OverridesSnippet /> },
+    ],
+    [ManualExposures, { addedInVersion: "5.0.0", ...ManualExposureSnippets }],
+    [EnvironmentSpecific, { cloudflare: <CloudflareSetup /> }],
+    [
+      UserPersistentStorage,
+      { interface: <PersistentStorageInterface />, example: <PersistentStorageExample /> },
+    ],
+    [Instances, { constructor: <MultiInstanceExample /> }],
+    [ProxyConfigs, {
+      addedInVersion: "5.21.1-beta.2z", installation: <InstallBeta />, code:
+        <ForwardProxyExample />
+    }],
+    [FAQ, { faqs: <MoreFAQs /> }],
+    [Reference, { snippets: <RefSnippets.default /> }],
+    [FieldsNeededMethods, {}],
+    [BreakingChangesSection, {items: [{title:"V5.x.x to V6.x.x", link:"/server/nodejsServerSDK/upgrade_guide/v5ToV6" }]}]
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+
