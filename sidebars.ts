@@ -716,6 +716,7 @@ const sidebars: SidebarsConfig = {
         "concepts/user",
         "client/concepts/initialize",
         "sdks/debugging",
+        "compliance/data_privacy_for_mobile",
       ],
     },
     {

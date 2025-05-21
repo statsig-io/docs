@@ -148,6 +148,6 @@ val user = StatsigUser("user-123")
 user.privateAttributes = mapOf("email" to "user@example.com")
 ```
 
-These attributes are only used for evaluation and are removed before sending logs to Statsig servers.
+These attributes are sent to Statsig servers during initialization for feature flag and experiment evaluation, but are removed before sending any event logs to Statsig servers. This means the attributes can be used for targeting users with specific features or experiments, but won't appear in your analytics data.
 
 For more comprehensive privacy controls, consider using [Client Bootstrapping](https://docs.statsig.com/client/concepts/initialize#bootstrapping-overview) to generate all assignments locally on your server, eliminating the need to send any user attributes from the client device to Statsig.
