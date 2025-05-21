@@ -440,18 +440,6 @@ const config: Config = {
             to: "/console-api/all-endpoints-generated",
             from: "/console-api/all-endpoints",
           },
-          {
-            to: "/server-core/node-core",
-            from: "/server/nodejsServerSDK",
-          },
-          {
-            to: "/server-core/java-core",
-            from: "/server/javaSdk",
-          },
-          {
-            to: "/server-core/rust-core",
-            from: "/server/rustSDK",
-          },
         ],
       },
     ],
