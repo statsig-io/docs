@@ -631,6 +631,15 @@ const sidebars: SidebarsConfig = {
                   },
                   items: [],
                 },
+                {
+                  type: "category",
+                  label: "Decision Framework",
+                  link: {
+                    type: "doc",
+                    id: "exp-templates/decision-framework",
+                  },
+                  items: [],
+                },
               ],
             },
             "access-management/discussions",
@@ -716,6 +725,7 @@ const sidebars: SidebarsConfig = {
         "concepts/user",
         "client/concepts/initialize",
         "sdks/debugging",
+        "compliance/data_privacy_for_mobile",
       ],
     },
     {

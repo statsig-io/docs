@@ -38,8 +38,17 @@ Note that Statsig's SDKs may switch between these domains on-the-fly as part of 
 We constantly and dynamically update these domains to prevent overzealous blocking from browser ad blockers. These are updated whenever they pick up the existing ones.
 :::
 
-## Statsig User Segment Storage API
+### Server-side APIs
+If you're just looking for a list of apis used by our backend/server sdks, you need to allow:
 
-The domain is used by our server SDKs to download the segment list for your project.
+- `api.statsig.com`
+- `statsigapi.net`
+- `api.statsigcdn.com`
+- `prodregistryv2.org`
+- `idliststorage.blob.core.windows.net` (see below)
+
+### Statsig User Segment Storage API
+
+The domain is used by our server SDKs to download the segment list for your project.  If you do not use big id lists, you wont need this one.
 
 - `idliststorage.blob.core.windows.net`
