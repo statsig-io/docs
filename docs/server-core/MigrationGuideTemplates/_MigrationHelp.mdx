@@ -1,20 +1,15 @@
-## SDK Migration Checklist
+## Recommended Migration Path
 
-1. Update Dependencies
+1. Add the new Dependencies
 
-- Remove the old SDK package/module from your project.
-- Add the new SDK package/module.
-- Include any required platform-specific dependencies for your environment.
-
-2. Update Imports / Requires
-
+- Add the new SDK package/module and any required platform-specific dependencies for your environment.
 - Update import or require statements to reference the new SDK namespace or module.
-- Remove any references to the old SDK's namespace or structure.
+- For now - keep the old package in-place, it can be helpful to have both running in parallel momentarily during local testing for your upgrade. If needed (language dependent), you may want to alias the new package.
 
 3. Update Initialization
 
-- Global instance signatures have changed or not yet supported. Update the signature or replace global initialization with instance-based initialization.
-- If needed, use the appropriate builder or configuration pattern for setting options and creating user objects.
+- Switch to the new initialization syntax. New SDK keys aren't needed - if you choose to update them, ensure they have the same target apps.
+- If needed, use the appropriate builder or configuration pattern for setting options, and ensure you migrate the StatsigOptions you use, as some were renamed.
 
 4. Update User Creation
 
@@ -23,15 +18,19 @@
 
 5. Update Method Calls
 
-- Replace static/global method calls with instance methods on the new SDK object, or update the global instance signature (if supported).
-- Update any suffixes or prefixes from method names.
-- Update method signatures and usage according to the new API.
+- Starting with a few calls, switch your config checks from the new to old SDK, replacing oldStatsig.getExperiment() with newStatsig.getExperiment()
+- As you change the package usage, conduct some testing of your service locally or with existing test patterns, to build confidence in the new SDK's operation.
+- As you migrate additional calls, update method names if they've changed (notably, get_config() to get_dynamic_config)
+- Once comfortable with the operation of the new SDK from call-by-call migration, consider the use of refactoring tools to migrate the bulk of your remaining calls. 
 
 6. Test Thoroughly
 
-- Verify that feature gates, experiments, and dynamic configs return expected values.
-- Ensure that event logging and exposure tracking are functioning correctly.
-- Confirm proper SDK initialization and error handling.
+- Verify that all of your configs are successfully migrated - run your test suites end-to-end.
+
+7. Remove old SDK
+
+- Remove references to the old SDK, and clean up old initialization and import logic.
+
 
 <>
     <ol start="7">
