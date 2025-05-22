@@ -16,11 +16,11 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.7.0",
-    "@docusaurus/plugin-client-redirects": "^3.7.0",
-    "@docusaurus/preset-classic": "^3.7.0",
+    "@docusaurus/core": "^3.5.2",
+    "@docusaurus/plugin-client-redirects": "^3.5.2",
+    "@docusaurus/preset-classic": "^3.5.2",
     "@docusaurus/theme-common": "^3.7.0",
-    "@docusaurus/theme-search-algolia": "^3.7.0",
+    "@docusaurus/theme-search-algolia": "^3.5.2",
     "@easyops-cn/docusaurus-search-local": "^0.44.5",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
