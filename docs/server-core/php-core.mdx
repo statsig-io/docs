@@ -22,6 +22,10 @@ import {
   ManualExposures,
   Shutdown,
   Reference,
+  PersistentStorage,
+  DataStore,
+  OutputLogger,
+  ObservabilityClient
 } from "./Templates/index.mdx";
 
 import Preamble from "./_preamble.mdx";
@@ -67,6 +71,11 @@ export const Builder = SDKDocsBuilder({
     [StatsigUser, { }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
+    [PersistentStorage, { }],
+    [DataStore, { }],
+    [OutputLogger, { }],
+    [ObservabilityClient, { }],
+    [FAQ, { }],
   ]
 })
 

@@ -55,6 +55,15 @@ export default function Rapidoc(props) {
   }, [apiVersion]);
 
   useEffect(() => {
+    const rapidoc = document.getElementById(id);
+    if (rapidoc) {
+      rapidoc.setAttribute('theme', isDarkTheme ? 'dark' : 'light');
+      rapidoc.setAttribute('primary-color', isDarkTheme ? '#2196f3' : '#194b7d');
+      rapidoc.setAttribute('bg-color', isDarkTheme ? '#1b1b1d' : '#ffffff');
+    }
+  }, [id, isDarkTheme]);
+
+  useEffect(() => {
     if (!specUrl) {
       return;
     }
@@ -241,7 +250,7 @@ function getDescription(entity) {
       return (
         <>
           <p>
-            A <a href="../feature-flags/working-with">feature gate</a> is a
+            A <a href="../feature-flags/overview">Feature Gate</a> is a
             mechanism for teams to configure what system behavior is visible to
             users without changing application code. This page describes how
             gates can be created and modified through the Console API.

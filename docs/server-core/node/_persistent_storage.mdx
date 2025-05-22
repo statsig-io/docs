@@ -1,0 +1,15 @@
+```typescript
+export interface PersistentStorage {
+  load?: (key: string) => Promise<Record<string, StickyValues>>;
+  save?: (key: string, configName: string, data: StickyValues) => Promise<void>;
+  delete?: (key: string, configName: string) => Promise<void>;
+}
+
+export interface StickyValues {
+  value: any;
+  ruleID: string;
+  groupName?: string;
+  secondaryExposures?: Array<Record<string, string>>;
+  undelegatedSecondaryExposures?: Array<Record<string, string>>;
+}
+```

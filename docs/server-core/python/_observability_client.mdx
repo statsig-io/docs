@@ -1,0 +1,63 @@
+```python
+class ObservabilityClient(ObservabilityClientBase):
+    def init(self):
+        """
+        Initialize the observability client. Called when the Statsig client initializes.
+        """
+        pass
+
+    def increment(self, metric_name: str, value: float, tags: Optional[Dict[str, str]] = None):
+        """
+        Report a counter metric.
+        
+        Args:
+            metric_name: The name of the metric
+            value: The amount to increment by
+            tags: Optional tags to associate with the metric
+        """
+        pass
+
+    def gauge(self, metric_name: str, value: float, tags: Optional[Dict[str, str]] = None):
+        """
+        Report a gauge metric.
+        
+        Args:
+            metric_name: The name of the metric
+            value: The current value
+            tags: Optional tags to associate with the metric
+        """
+        pass
+
+    def dist(self, metric_name: str, value: float, tags: Optional[Dict[str, str]] = None):
+        """
+        Report a distribution metric.
+        
+        Args:
+            metric_name: The name of the metric
+            value: The value to record
+            tags: Optional tags to associate with the metric
+        """
+        pass
+
+    def error(self, tag: str, error: str):
+        """
+        Report an error.
+        
+        Args:
+            tag: Category/component tag for the error
+            error: The error message
+        """
+        pass
+
+    def should_enable_high_cardinality_for_this_tag(self, tag: str) -> bool:
+        """
+        Determine if high cardinality should be enabled for a tag.
+        
+        Args:
+            tag: The tag to check
+            
+        Returns:
+            True if high cardinality should be enabled, False otherwise
+        """
+        pass
+```

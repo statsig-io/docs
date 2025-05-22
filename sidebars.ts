@@ -121,15 +121,15 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: "category",
-          label: "Feature Flags",
+          label: "Feature Management",
           className: "feature-icon sidebar-icon",
           items: [
             {
               type: "category",
-              label: "Feature Gates",
+              label: "Feature Flags",
               items: [
-                "feature-gates/overview",
-                "feature-gates/create",
+                "feature-flags/overview",
+                "feature-flags/create",
                 "feature-flags/conditions",
                 "feature-flags/scheduled-rollouts",
                 "feature-flags/overrides",
@@ -631,6 +631,15 @@ const sidebars: SidebarsConfig = {
                   },
                   items: [],
                 },
+                {
+                  type: "category",
+                  label: "Decision Framework",
+                  link: {
+                    type: "doc",
+                    id: "exp-templates/decision-framework",
+                  },
+                  items: [],
+                },
               ],
             },
             "access-management/discussions",
@@ -716,6 +725,7 @@ const sidebars: SidebarsConfig = {
         "concepts/user",
         "client/concepts/initialize",
         "sdks/debugging",
+        "compliance/data_privacy_for_mobile",
       ],
     },
     {
