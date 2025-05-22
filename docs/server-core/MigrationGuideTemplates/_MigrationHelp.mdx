@@ -1,0 +1,44 @@
+## Recommended Migration Path
+
+1. Add the new Dependencies
+
+- Add the new SDK package/module and any required platform-specific dependencies for your environment.
+- Update import or require statements to reference the new SDK namespace or module.
+- For now - keep the old package in-place, it can be helpful to have both running in parallel momentarily during local testing for your upgrade. If needed (language dependent), you may want to alias the new package.
+
+3. Update Initialization
+
+- Switch to the new initialization syntax. New SDK keys aren't needed - if you choose to update them, ensure they have the same target apps.
+- If needed, use the appropriate builder or configuration pattern for setting options, and ensure you migrate the StatsigOptions you use, as some were renamed.
+
+4. Update User Creation
+
+- Migrate to the new format for creating user objects.
+- If needed, use the builder pattern or updated constructor to set user properties.
+
+5. Update Method Calls
+
+- Starting with a few calls, switch your config checks from the new to old SDK, replacing oldStatsig.getExperiment() with newStatsig.getExperiment()
+- As you change the package usage, conduct some testing of your service locally or with existing test patterns, to build confidence in the new SDK's operation.
+- As you migrate additional calls, update method names if they've changed (notably, get_config() to get_dynamic_config)
+- Once comfortable with the operation of the new SDK from call-by-call migration, consider the use of refactoring tools to migrate the bulk of your remaining calls. 
+
+6. Test Thoroughly
+
+- Verify that all of your configs are successfully migrated - run your test suites end-to-end.
+
+7. Remove old SDK
+
+- Remove references to the old SDK, and clean up old initialization and import logic.
+
+
+<>
+    <ol start="7">
+        <li>Optional: Gradual Migration Using Adapter {props.migrationAdapterLink ? "" : "(Not supported yet)"}</li>
+    </ol>
+    <ul>
+        <li>Use a migration adapter to wrap the new SDK with the old interface.</li>
+        <li>This allows for incremental migration without updating all call sites at once.</li>
+        {props.migrationAdapterLink && <li><a href={props.migrationAdapterLink}>{props.migrationAdapterLink}</a></li>}
+    </ul>
+</>
