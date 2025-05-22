@@ -1,11 +1,4 @@
 ## Behavioral Changes
-**Endpoint Changes (v1 → v2)**
-
-- The core SDK now fetches configuration specs from a new endpoint:
-  - **Old**: `v1/download_config_specs`
-  - **New**: `v2/download_config_specs`
-- If you are hosting your own **pass-through proxy**, ensure it supports and correctly routes the `v2` endpoint.
-- If you are using the **Statsig Forward Proxy (SFP)**, this endpoint migration is handled automatically.
 
 **User-Agent Parsing**
 
@@ -37,3 +30,11 @@
 - The ID List functionality is **disabled by default**.
 - To enable it, set the following in your `StatsigOptions`:
   - <code>{props.enableIdLists || 'enable_id_lists'}</code>
+
+**Endpoint Changes (v1 → v2)**
+
+- The core SDK now fetches configuration specs from a new endpoint:
+  - **Old**: `v1/download_config_specs`
+  - **New**: `v2/download_config_specs`
+- If you are hosting your own **pass-through proxy**, ensure it supports and correctly routes the `v2` endpoint.
+- If you are using the **Statsig Forward Proxy (SFP)**, this endpoint migration is handled automatically.
