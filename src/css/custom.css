@@ -633,7 +633,7 @@ span.math.math-inline {
   transform: translateY(-2px);
 }
 
-.welcome-card > * {
+.welcome-card>* {
   padding: 1rem;
 }
 
@@ -729,5 +729,26 @@ html[data-theme='dark'] .welcome-card p {
 
   .navbar__logo {
     height: 22px;
+  }
+}
+
+/* Mobile/Desktop display classes */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: inline !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none !important;
+  }
+
+  .desktop-only {
+    display: inline !important;
   }
 }
