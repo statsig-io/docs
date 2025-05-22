@@ -26,9 +26,13 @@ To monitor the status of your experiment,
     - **p-value between 0.001 and 0.01**: Warning (yellow) for possible imbalance. The p-value is not low enough to confidently say that there is a real imbalance. In this case the recommendation is to wait and check again the next day.
     - **p-value < 0.01 and group size differs from expected size by less than 0.1% absolute**: Warning (yellow) indicating that an imbalance is possible, but the impact to the experiment is expected to be small. This scenario typically occurs in large web experiments (1M+ users) where small variations in performance across groups can cause a small fraction of exposures to be dropped for certain groups more than others.
     - **p-value < 0.001 and more than 0.1% absolute deviation from expected group size**: Alert (red) meaning there is likely a problem with the experiment exposures and experiment results may not be trustworthy.
-  - **Crossover users** monitors the percentage of units which are exposed to more than one experiment group for a given experiment. Statsig discards crossover users from the experiment analysis, which may reduce your sample size and statistical power. The following thresholds are used for displaying crossover users alerts:
-    - **Crossover user percentage between 0.1% and 10%**: Warning (yellow) meaning that the presence of a number of crossover users has been detected, but the impact on the experiment is expected to be relatively small.
-     - **Crossover user percentage over 10%**: Alert (red) indicating that there are a substantial number of crossover users, which can indicate a problem with your experiment setup.
+  - **Crossover users** monitors the percentage of units which are exposed to more than one experiment group for a given experiment. Statsig discards crossover users from the experiment analysis, which may reduce your sample size and statistical power. The following alerts are displayed for crossover users based on the threshold for that experiment type:
+    - **Warning (yellow)**: The presence of a number of crossover users has been detected, but the impact on the experiment is expected to be relatively small.
+      - Assign & Analyze: **0.1% to 1%**
+      - Analyze Only: **1% to 10%**
+    - **Alert (red)**: There are a substantial number of crossover users, which can indicate a problem with your experiment setup.
+      - Assign & Analyze: **Over 1%**
+      - Analyze Only: **Over 10%**
   - **User metrics were computed** confirms that we were able to join exposure data to metric data and produce experiment results.
   - **Metrics Available for Topline Impact** checks whether there is sufficient metric data to calculate topline impacts for each metric. Click [here](/stats-engine/topline-impact) to learn more information about topline impact.
   - **Differential Impact Detection completed** checks whether the differential impact detection has finished and flags if extreme differential impacts are detected for any sub-population per your configuration. Click [here](/experiments-plus/differential-impact-detection) to learn more about differential impact detection.
