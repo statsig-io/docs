@@ -1,3 +1,4 @@
+
 # Welcome to Statsig docs
 
 ![og_image_q2_2021](https://user-images.githubusercontent.com/74588208/128574199-8da0ad26-c052-433a-88a3-a8fa987c9bf8.png)
