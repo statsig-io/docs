@@ -32,16 +32,7 @@ export const Builder = SDKDocsBuilder({
         sdkType: "Python",
       },
     ],
-    [
-      GlobalChanges,
-      {
-        waitForUserAgentInit: "wait_for_user_agent_init",
-        waitForCountryLookupInit: "wait_for_country_lookup_init",
-        disableUserAgentParsing: "disable_user_agent_parsing",
-        disableCountryLookup: "disable_country_lookup",
-        enableIdLists: "enable_id_lists"
-      },
-    ],
+    
     [
       Installation,
       {
@@ -86,6 +77,16 @@ user = StatsigUser(
         apiChanges: <PyAPIChanges />
       }
     ], 
+    [
+      GlobalChanges,
+      {
+        waitForUserAgentInit: "wait_for_user_agent_init",
+        waitForCountryLookupInit: "wait_for_country_lookup_init",
+        disableUserAgentParsing: "disable_user_agent_parsing",
+        disableCountryLookup: "disable_country_lookup",
+        enableIdLists: "enable_id_lists"
+      },
+    ],
     [
       StatsigOptions,
       {
