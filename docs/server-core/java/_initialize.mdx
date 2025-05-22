@@ -14,7 +14,7 @@ StatsigOptions options = new StatsigOptions.Builder()
                     .build();
 
 Statsig myStasigServer = new Statsig(SECRET_KEY, options);
-statsig.initialize().get();
+myStasigServer.initialize().get();
 ```
 
 You can also initialize the Statsig client using the method <code>initialize_with_details</code>. This method initializes the client and returns a <code>StatsigInitializeDetails</code> struct, which includes metadata such as the success status, initialization source, and any failure details. The key difference between <code>initialize_with_details</code> and <code>initialize</code> is that this method provides additional debugging information. If initialization fails, the <code>init_success</code> field will be <code>false</code> and the <code>failure_details</code> field may be populated.
