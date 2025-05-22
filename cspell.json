@@ -682,7 +682,8 @@
     "lockfiles",
     "jinayoon",
     "quickstart",
-    "quickstarts"
+    "quickstarts",
+    "kaz"
   ],
   "ignorePaths": [
     "node_modules/**",

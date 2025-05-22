@@ -631,6 +631,15 @@ const sidebars: SidebarsConfig = {
                   },
                   items: [],
                 },
+                {
+                  type: "category",
+                  label: "Decision Framework",
+                  link: {
+                    type: "doc",
+                    id: "exp-templates/decision-framework",
+                  },
+                  items: [],
+                },
               ],
             },
             "access-management/discussions",
