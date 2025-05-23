@@ -74,7 +74,7 @@ See deprecation notice above.
 
 Like **event_count**, Statsig formerly created an **event_dau** metric that measures the number of unique users who trigger a specific event on a given day. Each user can have a value of 1 or 0 corresponding to active or inactive, based on whether they trigger an event or not, on a given day. This metric counts the number of users who are marked as active ("1") or not ("0").
 
-It's important to note that an **event_dau** metrics produces a value per user per day. When the metric is is aggregated for users across the duration of an experiment, it is known as the "Event Participation Rate" as this can be interpreted as the probability a unit is DAU for that event. As such, **event_dau** metrics are always between 0 and 1 for a user, since they are computed as "# Days with the Event" / "# Days Being Considered".
+It's important to note that an **event_dau** metric produces a single value per user per day. When the metric is is aggregated for users across the duration of an experiment, it is known as the "Event Participation Rate" as this can be interpreted as the probability a unit is DAU for that event. As such, **event_dau** metrics are always between 0 and 1 for a user, since they are computed as "# Days with the Event" / "# Days Being Considered".
 
 :::tip
 Sometimes you might want a metric similar to **event_dau** but not normalized by a number of days.
