@@ -20,7 +20,7 @@ For example, say one user made two purchases on September 1st, and another made 
 
 ::: note
 
-Statsig only computes metrics from logged raw events when they're logged in a production environment. Logs from other environments are not used in metric computations, and they won't auto-genereate new metrics.
+Statsig only computes metrics from logged raw events when they're logged in a production environment. Logs from other environments are not used in metric computations, and they won't auto-generate new metrics.
 
 :::
 
