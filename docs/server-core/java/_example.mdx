@@ -150,7 +150,7 @@ fun main() {
         println("Config value: ${config.getValue("some_parameter", "default_value")}")
     } finally {
         // Always shutdown Statsig when done
-        statsig.shutdown()
+        statsig.shutdown().get()
     }
 }
 ```
