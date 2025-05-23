@@ -1,8 +1,34 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="java-core-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
 ```java
 Layer layer = statsig.getLayer(user, "layer_name");
 ```
 
 ```java
-Experiment experiment = statsig.getExperiment(user, "sample_exp")
+Experiment experiment = statsig.getExperiment(user, "sample_exp");
 ```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+val layer = statsig.getLayer(user, "layer_name")
+```
+
+```kotlin
+val experiment = statsig.getExperiment(user, "sample_exp")
+```
+
+  </TabItem>
+</Tabs>
 

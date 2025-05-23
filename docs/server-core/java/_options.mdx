@@ -79,6 +79,18 @@ When `true`, disables all network functions: event & exposure logging, spec down
 
 ### Example Usage
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="java-core-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
 ```java
 import com.statsig.StatsigOptions;
 import com.statsig.ProxyConfig;
@@ -103,3 +115,35 @@ StatsigOptions options = optionsBuilder.build();
 // Pass the options object into statsig.initialize()
 Statsig.initialize("secret-key", options);
 ```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+import com.statsig.StatsigOptions
+import com.statsig.ProxyConfig
+
+// Initialize StatsigOptions with custom parameters
+val optionsBuilder = StatsigOptions.Builder()
+    .setEnvironment("development")
+    .setInitTimeoutMs(3000)
+    .setDisableAllLogging(false)
+
+// Configure proxy settings if needed
+val proxyConfig = ProxyConfig().apply {
+    proxyHost = "proxy.example.com"
+    proxyPort = 8080
+    proxyProtocol = "https"
+    // Optional: Set proxy authentication
+    // proxyAuth = "Basic base64encodedcredentials"
+}
+
+optionsBuilder.setProxyConfig(proxyConfig)
+val options = optionsBuilder.build()
+
+// Pass the options object into statsig.initialize()
+Statsig("secret-key", options)
+```
+
+  </TabItem>
+</Tabs>
