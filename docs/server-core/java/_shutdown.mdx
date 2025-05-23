@@ -33,7 +33,7 @@ fun shutdown(): CompletableFuture<Void>
 // example usage
 try {
     statsig.shutdown().get()
-    println("Statsig instance have been successfully shutdown.")
+    println("Statsig instance has been successfully shutdown.")
 } catch (e: Exception) {
     System.err.println(e.message)
 }
