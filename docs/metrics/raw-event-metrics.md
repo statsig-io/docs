@@ -11,7 +11,7 @@ last_update:
 # Auto-generated Metrics
 Metrics are critical for monitoring the health and usage of your product as well as the impact of new features and experiments. 
 
-Statsig automatically generates an event_count metric for each uniquely named **custom event** that you log. This happens daily and any newly logged custom event should have an event_count metric created within 24 hours of logging their first events.
+Statsig automatically generates an "event_count" metric for each uniquely named **custom event** that you log. This happens daily and any newly logged custom event should have an event_count metric created within 24 hours of logging their first events.
 
 This auto-generated metric consists of three elements:
 
@@ -19,17 +19,7 @@ This auto-generated metric consists of three elements:
 2. **Unit Identifier** - While you can record custom events with and without a unique user identifier, Statsig requires a unit identifier (usually a user_id) to track a user across multiple events and sessions to support Experiments, Pulse (experiment results), and Autotune. If you don't have access to a user_id when logging a custom event, create a temporary identifier to track users at a session or device-level. 
 3. **Metric Value** - Statsig automatically computes values for **event_count**, which measures the number of times an event is triggered. 
 
-:::note
-
-As of October 16, 2024, Statsig stopped auto-creating event_dau metrics for all custom events. Existing event_dau metrics will continue to function will continue to be documented here.
-
-Users should create an event_user [custom metric](/metrics/custom-dau) with Rollup Mode set to Daily Participation Rate to replicate the prior event_dau behavior for any new custom event.
-
-Please see the [deprecation details](/metrics/deprecate-event-dau) for more information.
-
-:::
-
-Up until October 16, 2024, Statsig also auto-computed values for an  **event_dau** metric that measures the number of unique users that triggered the event. While Statsig no longer auto-compute an **event_dau** metric for every logged event, you can create your own metrics that function like **event_dau** via [Custom Metrics](/metrics/custom-dau).
+Up until October 16, 2024, Statsig also auto-computed values for an  **event_dau** metric that measures the number of unique users that triggered the event. While Statsig no longer auto-compute an **event_dau** metric for every logged event, you can create your own metrics that function like **event_dau** via [Custom Metrics](/metrics/custom-dau). Please see the [event_dau deprecation details](/metrics/deprecate-event-dau) for more information.
 
 
 | Metric      | Automatic | Dimensions | Possible Values            | Description                                                                |   Example                      |
