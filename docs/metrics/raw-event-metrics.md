@@ -50,6 +50,30 @@ You will find an **event_count** metric for each event type that you record in t
 ![Screenshot 2024-11-13 at 8 37 30 AM](https://github.com/user-attachments/assets/4b7b30d6-d14d-4430-81a5-4fc467d466d2)
 
 
+## User Accounting Metrics
+Statsig automatically derives a number of **User Accounting** metrics based on any exposure or custom event triggered by a user on a given day.
+
+**User Accounting** metrics start with a definition of a daily active user (DAU). By default, Statsig considers a user as a DAU if they've trigger any event, gate check, or experiment check on a given day. A DAU is a binary designation that's assigned to every user. A user can be either a DAU for a given day, or not (i.e. inactive). You can customize this definition of DAU to exclude or include specific exposure and custom events from your application.
+
+| Metric      | Automatic | Dimensions | Possible Values            | Description                                                                |   Example                      |
+| ----------- | --------- | ---------- | -------------------------- | -------------------------------------------------------------------------- | ------------------------------ |
+| user        | Yes       | No         | Depends on specific metric | Counts users that trigger any exposure or custom event on a given day         | Daily Active Users             |
+
+
+Like the **event_dau** metric (Deprecated as of October 16, 2024), Statsig computes **User Accounting Metrics** for each unit ID that you define in your Statsig Project. For example, given User IDs, DAU counts the number of distinct users that triggered the event. Given Stable IDs, DAU counts the number of distinct devices running your application.
+
+See [User Accounting Metrics](/metrics/user) for the full list of user accounting metrics and learn how to customize the definition of a DAU. 
+
+Note that Statsig's default day starts at GMT-8 (Pacific Standard Time), and does not follow daylight savings time. 
+
+Note: Auto-generated **User Accounting Metrics** are not supported today for data warehouse ingestions. 
+
+## Metrics Catalog
+
+The **Metrics Catalog** tab allows you to quickly search and tag your metrics. Tags enable you organize your metrics and create collections of metrics that are associated in some way. For example, you could tag a set of metrics focused on a product area, business function, business objective, and so on. You can also create a loose collection of guardrail metrics that teams check in every experiment to ensure there are causing no unexpected effects in other parts of the business. Once you create a tagged collection of metrics, you can easily pull up this set of metrics when viewing your experiment results and zoom into the context that you want to focus on. 
+
+![Screenshot 2024-11-13 at 8 36 05 AM](https://github.com/user-attachments/assets/d22ff8d2-5aea-42b4-86e0-126c25678e15)
+
 ## Event DAU Metric (Legacy Support Only)
 
 :::warning
@@ -76,29 +100,3 @@ Statsig computes the **event_dau** for each unit ID that you define in your Stat
 You will find an **event_dau** metric for each event type that you record with Statsig. The name of the metric matches the name of the raw event and its metric type is marked as **event_dau**. 
 
 ![Screenshot 2024-11-13 at 8 37 18 AM](https://github.com/user-attachments/assets/008034e9-cce8-4e6f-bce1-84a789ac4a19)
-
-
-## User Accounting Metrics
-Statsig automatically derives a number of **User Accounting** metrics based on any exposure or custom event triggered by a user on a given day.
-
-**User Accounting** metrics start with a definition of a daily active user (DAU). By default, Statsig considers a user as a DAU if they've trigger any event, gate check, or experiment check on a given day. A DAU is a binary designation that's assigned to every user. A user can be either a DAU for a given day, or not (i.e. inactive). You can customize this definition of DAU to exclude or include specific exposure and custom events from your application.
-
-| Metric      | Automatic | Dimensions | Possible Values            | Description                                                                |   Example                      |
-| ----------- | --------- | ---------- | -------------------------- | -------------------------------------------------------------------------- | ------------------------------ |
-| user        | Yes       | No         | Depends on specific metric | Counts users that trigger any exposure or custom event on a given day         | Daily Active Users             |
-
-
-Like the **event_dau** metric (Deprecated as of October 16, 2024), Statsig computes **User Accounting Metrics** for each unit ID that you define in your Statsig Project. For example, given User IDs, DAU counts the number of distinct users that triggered the event. Given Stable IDs, DAU counts the number of distinct devices running your application.
-
-See [User Accounting Metrics](/metrics/user) for the full list of user accounting metrics and learn how to customize the definition of a DAU. 
-
-Note that Statsig's default day starts at GMT-8 (Pacific Standard Time), and does not follow daylight savings time. 
-
-Note: Auto-generated **User Accounting Metrics** are not supported today for data warehouse ingestions. 
-
-## Metrics Catalog
-
-The **Metrics Catalog** tab allows you to quickly search and tag your metrics. Tags enable you organize your metrics and create collections of metrics that are associated in some way. For example, you could tag a set of metrics focused on a product area, business function, business objective, and so on. You can also create a loose collection of guardrail metrics that teams check in every experiment to ensure there are causing no unexpected effects in other parts of the business. Once you create a tagged collection of metrics, you can easily pull up this set of metrics when viewing your experiment results and zoom into the context that you want to focus on. 
-
-![Screenshot 2024-11-13 at 8 36 05 AM](https://github.com/user-attachments/assets/d22ff8d2-5aea-42b4-86e0-126c25678e15)
-
