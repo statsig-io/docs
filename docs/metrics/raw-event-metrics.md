@@ -53,7 +53,7 @@ You will find an **event_count** metric for each event type that you record in t
 ## User Accounting Metrics
 Statsig automatically derives a number of **User Accounting** metrics based on any exposure or custom event triggered by a user on a given day.
 
-**User Accounting** metrics start with a definition of a daily active user (DAU). By default, Statsig considers a user as a DAU if they've trigger any event, gate check, or experiment check on a given day. A DAU is a binary designation that's assigned to every user. A user can be either a DAU for a given day, or not (i.e. inactive). You can customize this definition of DAU to exclude or include specific exposure and custom events from your application.
+**User Accounting** metrics start with a definition of a daily active user (DAU). By default, Statsig considers a user as a DAU if they trigger any event, gate check, or experiment check on a given day. A DAU is a binary designation that's assigned to every user. A user can be either a DAU for a given day, or not (i.e. inactive). You can customize this definition of DAU to exclude or include specific exposure and custom events from your application.
 
 | Metric      | Automatic | Dimensions | Possible Values            | Description                                                                |   Example                      |
 | ----------- | --------- | ---------- | -------------------------- | -------------------------------------------------------------------------- | ------------------------------ |
