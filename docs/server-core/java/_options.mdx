@@ -107,7 +107,7 @@ proxyConfig.setProxyHost("proxy.example.com");
 proxyConfig.setProxyPort(8080);
 proxyConfig.setProxyProtocol("https");
 // Optional: Set proxy authentication
-// proxyConfig.setProxyAuth("Basic base64encodedcredentials");
+// proxyConfig.setProxyAuth("username:password");
 
 optionsBuilder.setProxyConfig(proxyConfig);
 StatsigOptions options = optionsBuilder.build();
@@ -135,7 +135,7 @@ val proxyConfig = ProxyConfig().apply {
     proxyPort = 8080
     proxyProtocol = "https"
     // Optional: Set proxy authentication
-    // proxyAuth = "Basic base64encodedcredentials"
+    // proxyAuth = "username:password"
 }
 
 optionsBuilder.setProxyConfig(proxyConfig)
