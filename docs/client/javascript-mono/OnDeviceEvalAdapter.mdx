@@ -1,0 +1,222 @@
+---
+title: Using OnDeviceEvalAdapter
+sidebar_label: OnDeviceEvalAdapter
+slug: /client/javascript-sdk/on-device-eval-adapter
+displayed_sidebar: cloud
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-05-28
+---
+
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+## OnDeviceEvalAdapter
+
+The `OnDeviceEvalAdapter` is an implementation of the `OverrideAdapter` interface that enables client-side feature flag evaluation without network requests. This adapter allows you to ship your experiment configurations inline with your application, meaning you can run experiments before initialization completes.
+
+### Installation
+
+```bash
+npm install @statsig/js-on-device-eval-adapter
+```
+
+### Usage
+
+The `OnDeviceEvalAdapter` can be used with the Statsig client by passing it as an `overrideAdapter` in the `StatsigOptions` object during initialization:
+
+```jsx
+import { OnDeviceEvalAdapter } from '@statsig/js-on-device-eval-adapter';
+import { StatsigClient } from '@statsig/js-client';
+
+// Create the adapter
+const adapter = new OnDeviceEvalAdapter(null);
+
+// Set the data (ruleset payload)
+adapter.setData(specsData); // specsData is a string containing the ruleset payload
+
+// Initialize the Statsig client with the adapter
+const client = new StatsigClient(
+  'client-sdk-key',
+  { userID: 'a-user' },
+  {
+    overrideAdapter: adapter,
+    networkConfig: {
+      // Optional: Prevent network traffic for a fully local experience
+      preventAllNetworkTraffic: true,
+    },
+  },
+);
+
+// Now you can use the client to check gates, get configs, etc.
+const gateValue = client.getFeatureGate('a_gate');
+```
+
+### Complete Example
+
+Here's a complete example using the OnDeviceEvalAdapter with React:
+
+```jsx
+import * as React from 'react';
+import { useContext } from 'react';
+
+import { OnDeviceEvalAdapter } from '@statsig/js-on-device-eval-adapter';
+import {
+  StatsigContext,
+  StatsigProvider,
+  useClientAsyncInit,
+  useFeatureGate,
+} from '@statsig/react-bindings';
+
+function Content() {
+  const { value, details } = useFeatureGate('a_gate');
+  const { renderVersion } = useContext(StatsigContext);
+
+  return (
+    <div style={{ padding: 16 }}>
+      <div>Render Version: {renderVersion}</div>
+      <div>
+        a_gate: {value ? 'Passing' : 'Failing'} ({details.reason})
+      </div>
+    </div>
+  );
+}
+
+export default function OnDeviceEvalAdapterExample({
+  specs,
+}: {
+  specs: string | null;
+}): React.ReactElement {
+  const adapter = React.useMemo(() => {
+    const adapter = new OnDeviceEvalAdapter(null);
+    if (specs) {
+      adapter.setData(specs);
+    }
+    return adapter;
+  }, [specs]);
+
+  const { client } = useClientAsyncInit(
+    'client-sdk-key',
+    {
+      userID: 'a-user',
+    },
+    {
+      networkConfig: {
+        preventAllNetworkTraffic: true,
+      },
+      overrideAdapter: adapter,
+    },
+  );
+
+  return (
+    <StatsigProvider client={client}>
+      <Content />
+    </StatsigProvider>
+  );
+}
+```
+
+### API Reference
+
+#### Constructor
+
+```typescript
+constructor(data: string | null)
+```
+
+Creates a new instance of the OnDeviceEvalAdapter. You can optionally provide the ruleset payload as a string during initialization.
+
+#### Methods
+
+##### setData
+
+```typescript
+setData(data: string): void
+```
+
+Sets the ruleset payload data for the adapter. This method should be called before using the adapter if you didn't provide the data in the constructor.
+
+##### getGateOverride
+
+```typescript
+getGateOverride(
+  current: FeatureGate,
+  user: StatsigUserInternal,
+  options?: FeatureGateEvaluationOptions
+): FeatureGate | null
+```
+
+Evaluates a feature gate for the given user using the local ruleset.
+
+##### getDynamicConfigOverride
+
+```typescript
+getDynamicConfigOverride(
+  current: DynamicConfig,
+  user: StatsigUserInternal,
+  options?: DynamicConfigEvaluationOptions
+): DynamicConfig | null
+```
+
+Evaluates a dynamic config for the given user using the local ruleset.
+
+##### getExperimentOverride
+
+```typescript
+getExperimentOverride(
+  current: Experiment,
+  user: StatsigUserInternal,
+  options?: ExperimentEvaluationOptions
+): Experiment | null
+```
+
+Evaluates an experiment for the given user using the local ruleset.
+
+##### getLayerOverride
+
+```typescript
+getLayerOverride(
+  current: Layer,
+  user: StatsigUserInternal,
+  options?: LayerEvaluationOptions
+): Layer | null
+```
+
+Evaluates a layer for the given user using the local ruleset.
+
+##### getParamStoreOverride
+
+```typescript
+getParamStoreOverride(
+  current: ParameterStore,
+  options?: ParameterStoreEvaluationOptions
+): { config: ParamStoreConfig; details: EvaluationDetails } | null
+```
+
+Gets parameter store configuration using the local ruleset.
+
+### Obtaining the Ruleset Payload
+
+The ruleset payload is a JSON string that contains your feature gates, dynamic configs, and experiments. You can obtain this payload from the Statsig API or from your backend server.
+
+:::info
+The local evaluation adapter is for Enterprise and Pro Tier companies only. If you are trying to follow these instructions but do not meet that criteria, some of the setup steps may not work.
+:::
+
+### Benefits and Limitations
+
+#### Benefits
+
+- No need for network requests to evaluate feature flags
+- Can evaluate feature flags before initialization completes
+- Lower latency for feature flag evaluations
+
+#### Limitations
+
+- Ruleset payload must be kept up to date
+- Shipping with a ruleset presents security concerns
+- Ruleset payload increases the size of your application
+
+For more information on the benefits and limitations of on-device evaluation, see the [Local Eval Adapter](/client/concepts/local-eval-adapter) documentation.
