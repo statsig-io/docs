@@ -17,6 +17,8 @@ import TabItem from "@theme/TabItem";
 
 The `OnDeviceEvalAdapter` is an implementation of the `OverrideAdapter` interface that enables client-side feature flag evaluation without network requests. This adapter allows you to ship your experiment configurations inline with your application, meaning you can run experiments before initialization completes.
 
+This is particularly valuable for SSG (Static Site Generation) or static pages, where gate/config/experiment definitions can be inlined in the payload. While the definitions will be publicly visible, you can synchronously evaluate for an arbitrary set of user properties without requiring additional network requests.
+
 ### Installation
 
 ```bash
@@ -212,6 +214,7 @@ The local evaluation adapter is for Enterprise and Pro Tier companies only. If y
 - No need for network requests to evaluate feature flags
 - Can evaluate feature flags before initialization completes
 - Lower latency for feature flag evaluations
+- Ideal for SSG/static pages where synchronous evaluation is critical
 
 #### Limitations
 
