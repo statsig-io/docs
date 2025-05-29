@@ -15,7 +15,7 @@ The `getClientInitializeResponse` method accepts an optional `options` parameter
 
 ```typescript
 export interface ClientInitializeResponseOptions {
-  hashAlgorithm?: string;        // Algorithm used for hashing gate/experiment names (default: 'sha256')
+  hashAlgorithm?: string;        // Algorithm used for hashing gate/experiment names (default: 'djb2')
   clientSdkKey?: string;         // Client SDK key to use for initialization
   includeLocalOverrides?: boolean; // Whether to include local overrides in the response
   featureGateFilter?: Set<string>; // Filter to only include specific feature gates
@@ -28,7 +28,7 @@ export interface ClientInitializeResponseOptions {
 
 #### Hash Algorithm
 
-The `hashAlgorithm` option specifies which algorithm to use for hashing gate and experiment names in the client initialize response. The default is `'sha256'`, but you can also use `'djb2'` for better performance and smaller payload size.
+The `hashAlgorithm` option specifies which algorithm to use for hashing gate and experiment names in the client initialize response. The default is `'djb2'` for better performance and smaller payload size.
 
 ```typescript
 // Use djb2 hashing algorithm for better performance
