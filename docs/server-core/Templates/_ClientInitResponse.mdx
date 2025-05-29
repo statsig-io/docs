@@ -1,0 +1,20 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+
+export const contentTitle = "Client Initialize Response";
+
+export const Snippets = {
+  signature: ({ signature }) => signature(),
+  sdkName: ({ sdkName }) => sdkName,
+  addedInVersion: ({ addedInVersion }) => addedInVersion,
+  snippet: ({ snippet }) => snippet,
+};
+
+# Client Initialize Response
+
+The {Snippets.sdkName()} Core SDK provides a method to generate a client initialize response that can be used to bootstrap client SDKs without requiring network requests.
+
+{Snippets.snippet()}
+
+This method allows you to generate a response that can be passed to a client SDK to initialize without making a network request. This is useful for reducing latency and improving performance in your application.
