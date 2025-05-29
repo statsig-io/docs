@@ -20,7 +20,7 @@ Standard practice is to wrap the autotune in a experiment with a binary paramete
 
 ```
 experiment_value = statsig.get_experiment('wrapping_experiment').get('flag')
-default_param = '..."
+default_param = '...'
 if(flag):
   param = statsig.get_experiment('autotune').get('param_name')
 else:
