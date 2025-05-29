@@ -1,0 +1,112 @@
+---
+title: Python Core SDK Migration Guide
+displayed_sidebar: api
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import {
+  SDKDocsBuilder,
+} from "../../../sdks/_SDKDocsBuilder.mdx";
+
+import {
+    APIChanges,
+    GlobalChanges,
+    Installation,
+    MigrationHelp,
+    StatsigOptions,
+    UserCreation,
+    NeedHelp,
+    Troubleshooting,
+    Intro,
+} from "../../MigrationGuideTemplates/index.mdx";
+
+import PyAPIChanges from "./_api_changes.mdx";
+import PyUserCreation from "./_user_creation.mdx";
+import PyStatsigOptions from "./_statsig_options.mdx";
+
+export const Builder = SDKDocsBuilder({
+  sections: [
+    [
+      Intro,
+      {
+        sdkType: "Python",
+      },
+    ],
+    
+    [
+      Installation,
+      {
+        legacyInstall: <CodeBlock>pip install statsig</CodeBlock>,
+        install: <CodeBlock>pip install statsig-python-core</CodeBlock>,
+      },
+    ],
+    [
+      UserCreation,
+      {
+        newUserCreation: <CodeBlock language="python">
+{`from statsig_python_core import *
+
+user = StatsigUser(
+    user_id="user_123",
+    email="user@example.com",
+    ip="192.168.0.1",
+    user_agent="Mozilla/5.0",
+    country="US",
+    custom={
+        "subscription_level": "premium"
+    }
+)`}</CodeBlock>,
+        legacyUserCreation: <CodeBlock language="python">
+{`from statsig import StatsigUser
+
+user = StatsigUser(
+    user_id="user_123",
+    email="user@example.com",
+    ip="192.168.0.1",
+    user_agent="Mozilla/5.0",
+    country="US",
+    custom={
+        "subscription_level": "premium"
+    }
+)`}</CodeBlock>,
+      }
+    ],
+    [
+      APIChanges,
+      {
+        apiChanges: <PyAPIChanges />
+      }
+    ], 
+    [
+      GlobalChanges,
+      {
+        waitForUserAgentInit: "wait_for_user_agent_init",
+        waitForCountryLookupInit: "wait_for_country_lookup_init",
+        disableUserAgentParsing: "disable_user_agent_parsing",
+        disableCountryLookup: "disable_country_lookup",
+        enableIdLists: "enable_id_lists"
+      },
+    ],
+    [
+      StatsigOptions,
+      {
+        optionsMapping: <PyStatsigOptions />
+      }
+    ],
+    [
+      MigrationHelp,
+      {
+        migrationAdapterLink: "https://github.com/statsig-io/statsig-server-core-migration-adapters/blob/main/python_core_migration_adapter.py"
+      }
+    ],
+    [
+      NeedHelp,
+      {}
+    ],
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

@@ -2,8 +2,8 @@ import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
 ### Updating Users
 
-At some point, you will probably need to change the StatsigUser being used by the Statsig client. To do this you can call `updateUserSync` or `updateUserAsync`.
-
-In advanced use cases, you may want to Prefetch or Bootstrap (Provide) values for the updating of a user. See [Using EvaluationsDataAdapter](/client/javascript-sdk/using-evaluations-data-adapter) to learn how this can be achieved.
+At some point, you will probably need to change the StatsigUser being used by the Statsig client. To do this you need to call `await updateUserAsync` which will fetch the new values for the updated user.
 
 <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-update-user.tsx" />
+
+In advanced use cases, you may want to Prefetch or Bootstrap (provide) values for a different set of user properties. See [Using EvaluationsDataAdapter](/client/javascript-sdk/using-evaluations-data-adapter) to learn more.

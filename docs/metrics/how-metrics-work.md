@@ -18,6 +18,8 @@ A metric in Statsig is a numeric value for each user on a given day. This value 
 
 For example, say one user made two purchases on September 1st, and another made only one. These values can be aggregated across multiple users to calculate the total number of purchases across all users on September 1st.
 
+Statsig only computes metrics from logged raw events when they're logged in a production environment. Logs from other environments are not used in metric computations, and they won't auto-generate new metrics.
+
 
 ## Two Sources of Statsig Metrics 
 

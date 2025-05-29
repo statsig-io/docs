@@ -1,0 +1,21 @@
+| Old Option                                              | New / Notes                                                                                     |
+|---------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| `api`                                                   | Deprecated                                                                                       |
+| `idlists_thread_limit`, `logging_interval`, `enable_debug_logs`, `events_flushed_callback` | Deprecated                                                                                       |
+| `timeout`                                               | Deprecated (was only for network)                                                                |
+| `api_for_download_config_specs`                         | `specs_url` – must complete with endpoint                                                        |
+| `api_for_get_id_lists`                                  | `id_lists_url` – must complete with endpoint                                                     |
+| `api_for_log_event`                                     | `log_event_url` – must complete with endpoint                                                    |
+| `tier`                                                  | `environment`                                                                                    |
+| `init_timeout`                                          | `init_timeout_ms` – applies to overall initialization (suggest adding +1000 ms if enabling UA)   |
+| `rulesets_sync_interval`                                | `specs_sync_interval_ms` (unit: milliseconds)                                                    |
+| `idlists_sync_interval`                                 | `id_lists_sync_interval_ms` (unit: milliseconds)                                                 |
+| `local_mode`                                            | `disable_network`                                                                                |
+| `event_queue_size`                                      | `event_logging_max_queue_size`                                                                  |
+| `data_store`                                            | Still supported but interface changed                                                            |
+| `fallback_to_statsig_api`                               | Still supported                                                                                  |
+| `output_logger_level`                                   | Now `output_log_level`                                                                          |
+| `overall_init_timeout`                                  | Replaced by `init_timeout_ms`                                                                   |
+| `observability_client`, `sdk_error_callback`            | Now within `observability_client` interface                                                     |
+| `custom_logger`                                         | Now `OutputLoggerProvider` interface                                                                             |
+| `bootstrap_values`, `evaluation_callback`, `proxy_configs`, `out_of_sync_threshold_in_s`, `rules_updated_callback` | Not yet supported                                                                                |

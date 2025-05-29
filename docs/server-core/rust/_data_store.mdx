@@ -1,0 +1,14 @@
+```rust
+pub trait DataStoreTrait: Send + Sync {
+    fn initialize(&self) -> Result<(), DataStoreErrorEnum>;
+    fn shutdown(&self) -> Result<(), DataStoreErrorEnum>;
+    fn get(&self, key: &str) -> Result<Option<DataStoreResponse>, DataStoreErrorEnum>;
+    fn set(&self, key: &str, value: &str, time: Option<u64>) -> Result<(), DataStoreErrorEnum>;
+    fn support_polling_updates_for(&self, key: &str) -> Result<bool, DataStoreErrorEnum>;
+}
+
+pub struct DataStoreResponse {
+    pub result: String,
+    pub time: Option<u64>,
+}
+```

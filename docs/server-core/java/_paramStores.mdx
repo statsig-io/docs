@@ -1,13 +1,45 @@
 ### Getting a Parameter Store
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="java-core-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
 ```java
 // Get a Parameter Store by name
 ParameterStore parameterStore = statsig.getParameterStore(user, "my_parameter_store");
 ```
 
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+// Get a Parameter Store by name
+val parameterStore = statsig.getParameterStore(user, "my_parameter_store")
+```
+
+  </TabItem>
+</Tabs>
+
 ### Retrieving Parameter Values
 
 Parameter Store provides methods for retrieving values of different types with fallback defaults.
+
+<Tabs
+  groupId="java-core-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
 
 ```java
 // String parameters
@@ -30,8 +62,55 @@ Object[] defaultArray = new Object[]{"item1", "item2"};
 Object[] arrayValue = parameterStore.getArray("array_param", defaultArray);
 ```
 
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+// String parameters
+val stringValue = parameterStore.getString("string_param", "default_value")
+
+// Boolean parameters
+val boolValue = parameterStore.getBoolean("bool_param", false)
+
+// Numeric parameters
+val doubleValue = parameterStore.getDouble("double_param", 0.0)
+val intValue = parameterStore.getInt("int_param", 0)
+val longValue = parameterStore.getLong("long_param", 0L)
+
+// Complex parameters
+val defaultMap = mutableMapOf<String, Any>().apply {
+    put("key", "value")
+}
+val mapValue = parameterStore.getMap("map_param", defaultMap)
+
+val defaultArray = arrayOf<Any>("item1", "item2")
+val arrayValue = parameterStore.getArray("array_param", defaultArray)
+```
+
+  </TabItem>
+</Tabs>
+
 You can also use the Statsig instance directly:
+
+<Tabs
+  groupId="java-core-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
 
 ```java
 String stringValue = statsig.getStringFromParameterStore(user, "my_parameter_store", "string_param", "default_value");
 ```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+val stringValue = statsig.getStringFromParameterStore(user, "my_parameter_store", "string_param", "default_value")
+```
+
+  </TabItem>
+</Tabs>

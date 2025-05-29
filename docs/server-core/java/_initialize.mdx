@@ -1,7 +1,19 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 
 ### **Initialize the SDK**
 
 After installation, you will need to initialize the SDK with a customized configuration using a [**Server Secret Key from the Statsig console**](https://console.statsig.com/api_keys).
+
+<Tabs
+  groupId="java-core-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
 
 ```java
 import com.statsig.*;
@@ -13,6 +25,28 @@ StatsigOptions options = new StatsigOptions.Builder()
                     .setOutputLoggerLevel(OutputLogger.LogLevel.INFO)
                     .build();
 
-Statsig myStasigServer = new Statsig(SECRET_KEY, options);
-statsig.initialize().get();
+Statsig myStatsigServer = new Statsig(SECRET_KEY, options);
+myStatsigServer.initialize().get();
 ```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+import com.statsig.*
+
+// All StatsigOptions are optional, feel free to adjust them as needed
+val options = StatsigOptions.Builder()
+    .setSpecsSyncIntervalMs(10000)
+    .setEventLoggingFlushIntervalMs(10000)
+    .setOutputLoggerLevel(OutputLogger.LogLevel.INFO)
+    .build()
+
+val myStatsigServer = Statsig(SECRET_KEY, options)
+myStatsigServer.initialize().get()
+```
+
+  </TabItem>
+</Tabs>
+
+You can also initialize the Statsig client using the method <code>initialize_with_details</code>. This method initializes the client and returns a <code>StatsigInitializeDetails</code> struct, which includes metadata such as the success status, initialization source, and any failure details. The key difference between <code>initialize_with_details</code> and <code>initialize</code> is that this method provides additional debugging information. If initialization fails, the <code>init_success</code> field will be <code>false</code> and the <code>failure_details</code> field may be populated.
