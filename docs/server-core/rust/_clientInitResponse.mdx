@@ -1,0 +1,60 @@
+## Client Initialize Response Options
+
+When using `get_client_init_response_with_options()`, you can specify additional options through the `ClientInitResponseOptions` struct:
+
+```rust
+use statsig_rust::ClientInitResponseOptions;
+use std::collections::HashSet;
+
+// Create options for client initialization response
+let mut options = ClientInitResponseOptions::default();
+
+// Set client SDK key for target app ID lookup
+options.client_sdk_key = Some("client-YOUR_CLIENT_KEY".to_string());
+
+// Filter specific feature gates, experiments, configs, or layers
+options.feature_gate_filter = Some(HashSet::from(["gate_name_1".to_string(), "gate_name_2".to_string()]));
+options.experiment_filter = Some(HashSet::from(["exp_name".to_string()]));
+options.dynamic_config_filter = Some(HashSet::from(["config_name".to_string()]));
+options.layer_filter = Some(HashSet::from(["layer_name".to_string()]));
+options.param_store_filter = Some(HashSet::from(["param_store_name".to_string()]));
+
+// Include local overrides in the response
+options.include_local_overrides = Some(true);
+
+// Set hash algorithm and response format
+options.hash_algorithm = Some(HashAlgorithm::Djb2);
+options.response_format = Some(GCIRResponseFormat::Initialize);
+
+// Get client initialize response with options
+let response = statsig.get_client_init_response_with_options(&user, &options);
+```
+
+### Parameters
+
+- **`client_sdk_key`**: Option\<String\>
+  The client SDK key to use for target app ID lookup.
+
+- **`feature_gate_filter`**: Option\<HashSet\<String\>\>
+  Filter to only include specific feature gates in the response.
+
+- **`experiment_filter`**: Option\<HashSet\<String\>\>
+  Filter to only include specific experiments in the response.
+
+- **`dynamic_config_filter`**: Option\<HashSet\<String\>\>
+  Filter to only include specific dynamic configs in the response.
+
+- **`layer_filter`**: Option\<HashSet\<String\>\>
+  Filter to only include specific layers in the response.
+
+- **`param_store_filter`**: Option\<HashSet\<String\>\>
+  Filter to only include specific parameter stores in the response.
+
+- **`include_local_overrides`**: Option\<bool\>
+  When true, includes local overrides in the response.
+
+- **`hash_algorithm`**: Option\<HashAlgorithm\>
+  The hash algorithm to use. Options include `HashAlgorithm::Djb2`, `HashAlgorithm::Sha256`, and `HashAlgorithm::None`.
+
+- **`response_format`**: Option\<GCIRResponseFormat\>
+  The format of the response. Options include `GCIRResponseFormat::Initialize` and `GCIRResponseFormat::InitializeWithSecondaryExposureMapping`.
