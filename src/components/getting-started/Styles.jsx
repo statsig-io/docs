@@ -78,9 +78,6 @@ const Styles = () => (
         color: var(--ifm-color-white);
       }
 
-      html[data-theme='dark'] .card:hover {
-        background-color: var(--ifm-color-emphasis-200);
-      }
     `}
   </style>
 );
