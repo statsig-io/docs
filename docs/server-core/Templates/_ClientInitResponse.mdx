@@ -4,41 +4,22 @@ import { VersionBadge } from "../../sdks/_VersionBadge.mdx";
 
 <div style={{ marginBottom: 20 }}>
   The {props.sdkName} server SDK supports generating the{" "}
-  <code>initializeValues</code> needed to bootstrap a Statsig Client SDK
-  preventing a round trip to Statsig servers. This can also be used with web [
-  <code>@statsig/js-client</code>, <code>@statsig/react-bindings</code>] SDKs to perform server
-  side rendering (SSR).
+  <code>initializeValues</code> needed to initialize a Statsig Client SDK, letting you pair your client-side initialize() calls with other requests to your server, effectively enabling zero-latency client SDK startup.
 </div>
 
 <>{props.snippet}</>
 
 ### Working with IP or UserAgent Values
 
-This will not automatically use the `ip`, or `userAgent` for gate evaluation as
-Statsig servers would, since there is no request from the client SDK specifying these values.
-If you want to use conditions like IP, or conditions which are inferred from the IP/UA like:
-Browser Name or Version, OS Name or Version, Country, you must manually set the `ip` and `userAgent`
-field on the user object when calling <props.signature />.
+The server SDK will not automatically use the `ip`, or `userAgent` for gate evaluation as
+Statsig servers would, since we don't have access to the request headers. If you'd like to use the attributes we derive from these properties, like Browser Name/Version, OS Name/Version & Country, you must manually set the `ip` and `userAgent`
+fields on the user object when calling <props.signature />.
 
-### Working with stableID
+### Working with IDs
 
-There is no auto-generated `stableID` for device based experimentation,
-since the server generates the initialize response without any information from the client SDK.
-If you wish to run a device based experiment while using the server to generate the initialize response,
-we recommend you:
+To ensure that the server SDK evaluates each config accurately, they need access to all user attributes that the client SDK leverages. We recommend passing all of these attributes to the server SDK - using tools like Cookies if needed to ensure they're attached on first requests. If the user objects on the client and server aren't identical, modern SDKs will throw an [InvalidBootstrap](/sdk/debugging/#invalid-bootstrap) warning. 
 
-1. Create a customID in the Statsig console.
-   See [experimenting on custom IDs](/guides/experiment-on-custom-id-types) for more information.
-2. Generate an ID on the server, and set it in a cookie to be used on the client side as well.
-3. Set that ID as the customID on the `StatsigUser` object when generating the initialize response from the SDK.
-4. Get that ID from the cookie, and set it as the customID on the `StatsigUser` object when using the client SDK,
-   so all event data and exposure checks tie back to the same user.
-
-Alternatively, if you wish to use the `stableID` field rather than a custom ID, you still need to do step (2) above. Then:
-
-- Override the `stableID` in the client SDK by getting the value from the cookie and setting the `overrideStableID`
-  parameter in `StatsigOptions`
-- Set the `stableID` field on the `StatsigUser` object in the `customIDs` map when generating the initialize response from the SDK
+Client SDKs also auto-generate a StableID, and its important to manage the lifecycle of this ID to be sure that it is consistent on client and server side. Managing this with a cookie is often easiest, see [Keeping StableID Consistent](/client/javascript-sdk#keeping-stableid-consistent-across-client--server). If StableID differs between Client and Server, you'll see a [BootstrapStableIDMismatch](https://docs.statsig.com/sdk/debugging/#bootstrapstableidmismatch) warning, and checks with this warning won't contribute to your experiment analyses.
 
 ### getClientInitializeResponse and the legacy JS SDK
 
