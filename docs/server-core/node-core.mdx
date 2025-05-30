@@ -23,7 +23,8 @@ import {
   OutputLogger,
   ObservabilityClient,
   Reference,
-  FieldsNeededMethods
+  FieldsNeededMethods,
+  ClientInitResponse
 } from "./Templates/index.mdx";
 
 import Preamble from "./_preamble.mdx";
@@ -45,6 +46,7 @@ import DataStoreContent from "./node/_data_store.mdx";
 import ObservabilityClientContent from "./node/_observability_client.mdx";
 import PersistentStorageContent from "./node/_persistent_storage.mdx";
 import * as ReferenceSnippets from "./node/_reference.mdx";
+import ClientInitResponseSnippet from "./node/_clientInitResponse.mdx";
 
 
 export const Builder = SDKDocsBuilder({
@@ -81,6 +83,11 @@ export const Builder = SDKDocsBuilder({
     [StatsigUser, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [ClientInitResponse, {
+      sdkName: "Node Core",
+      snippet: <ClientInitResponseSnippet />,
+      signature: () => <code>getClientInitializeResponse</code>,
+    }],
     [LocalOverrides, { snippet: <OverridesSnippet />,},],
     [PersistentStorage, { content: <PersistentStorageContent /> }],
     [DataStore, { content: <DataStoreContent /> }],
