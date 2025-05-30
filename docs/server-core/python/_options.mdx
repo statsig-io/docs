@@ -95,7 +95,7 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
 ```python
 from statsig_python_core import StatsigOptions
 
-# Define proxy configuration
+# Define proxy configuration if needed
 proxy_config = {
     "proxy_host": "proxy.example.com",
     "proxy_port": 8080,
@@ -103,7 +103,7 @@ proxy_config = {
     "proxy_protocol": "http"
 }
 
-# Create options and assign proxy config
+# Initialize StatsigOptions with custom parameters
 options = StatsigOptions()
 options.environment = "development"
 options.init_timeout_ms = 3000
