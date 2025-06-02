@@ -119,3 +119,6 @@ return (
 
 3. Once you've set up your gate, you can easily [monitor the impact of your new feature rollout](/feature-flags/view-exposures) or [manage flag lifecycles](/feature-flags/feature-flags-lifecycle).
 
+
+## Next steps
+In this tutorial, we configured a simple feature flag. You can monitor basic metric impacts with this, but if you want to do more complex feature rollouts or metric analysis, continue to the next tutorial to run your first A/B test in Statsig.
