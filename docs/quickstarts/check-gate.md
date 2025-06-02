@@ -1,6 +1,6 @@
 ---
-sidebar_label: Create your first Feature Gate
-title: Create your first Feature Gate
+sidebar_label: Create your first feature flag
+title: Create your first feature flag
 slug: /quickstarts/feature-gates
 keywords:
   - owner:jinayoon
@@ -10,17 +10,17 @@ last_update:
 
 This tutorial walks you through how to check your first Feature Gate in Statsig from end to end. Feature Gates, also known as feature flags, are a way to safely control the rollout of new features to your users without deploying additional code. Common examples for using Feature Gates include shipping new UI elements, API endpoints, or product features. 
 
-By the end of this tutorial, you will have set up:
-* A **Feature Gate** in the Statsig console
-* A **targeting rule** to enable the feature for a segment of Users
-* A **client-side integration** using the Statsig Client SDK 
+By the end of this tutorial, you will have:
+* Created a **Feature Gate** in the Statsig console, with  **targeting rules** to enable the feature for a segment of Users
+* Initialized a **Statsig Client SDK**
+* Checked a single **feature gate** in your code using the `checkGate` function
 
 
 ## Prerequisites
 1. A [Statsig account](https://console.statsig.com/sign_up)
 2. An existing application you can integrate the Statsig Client SDK into
 
-## In the Statsig console
+## Step 1: In the Statsig console
 ### Create a Feature Gate
 For the purposes of this tutorial, we will pretend we are adding a Feature Gate to deploy a new UI element to a user with the "statsig.com" email domain. You can follow along with a specific feature if you have your own scenario in mind.
 
@@ -64,7 +64,7 @@ Now that you've set up the Feature Gate from the console, it's time to integrate
 
 4. Copy the Client API Key you just created to your clipboard.
 
-## In your code
+## Step 2: In your code
 ### Initialize the Statsig SDK
 Now that we have our Client API Key, we can go ahead and integrate the Statsig Client SDK into our product. For the purposes of this tutorial, we will use the React SDK, but you can follow along with a different SDK if you prefer. 
 

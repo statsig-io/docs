@@ -186,6 +186,16 @@ const sidebars: SidebarsConfig = {
           items: [
             {
               type: "category",
+              label: "Set up an experiment",
+              items: [
+                "experiments-plus/create-new",
+                "experiments-plus/power-analysis",
+                "experiments-plus/overrides",
+                "experiments/quality-score",
+              ],
+            },
+            {
+              type: "category",
               label: "Types of experiments",
               items: [
                 "experiments-plus/switchback-tests",
@@ -229,16 +239,6 @@ const sidebars: SidebarsConfig = {
                 },
                 "autotune/bandit-faq",
                 "autotune/using-bandits",
-              ],
-            },
-            {
-              type: "category",
-              label: "Setting up an experiment",
-              items: [
-                "experiments-plus/create-new",
-                "experiments-plus/power-analysis",
-                "experiments-plus/overrides",
-                "experiments/quality-score",
               ],
             },
             "layers/introduction",
@@ -709,7 +709,7 @@ const sidebars: SidebarsConfig = {
                 "infrastructure/reliability-faq",
                 "guides/uptime",
                 "infrastructure/monitoring",
-              ],
+              ]
             },
           ],
         },
@@ -725,8 +725,8 @@ const sidebars: SidebarsConfig = {
       items: [
         "sdks/quickstart",
         "quickstarts/check-gate",
-        "guides/logging-events",
         "guides/abn-tests",
+        "guides/logging-events",
       ],
     },
     {
