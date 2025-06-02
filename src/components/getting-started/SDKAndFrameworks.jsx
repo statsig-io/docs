@@ -1,4 +1,3 @@
-import React from 'react';
 
 const sdkGroups = [
   {
@@ -29,8 +28,8 @@ const sdkGroups = [
       { name: 'Go', img: '/img/sdk/sdk_golang.png', link: '/server/golangSDK' },
       { name: 'Ruby', img: '/img/sdk/sdk_ruby.png', link: '/server/rubySDK' },
       { name: '.NET Server', img: '/img/sdk/sdk_dotnet.png', link: '/server/dotnetSDK' },
-      { name: 'PHP', img: '/img/sdk/sdk_php.svg', link: '/server/phpSDK' },
-      { name: 'Rust', img: '/img/sdk/sdk_rust.svg', link: '/server/rustSDK' },
+      { name: 'PHP', img: '/img/sdk/sdk_php.svg', link: '/server-core/php-core' },
+      { name: 'Rust', img: '/img/sdk/sdk_rust.svg', link: '/server-core/rust-core' },
       { name: 'C++ Server', img: '/img/sdk/sdk_cpp.png', link: '/server/cppSDK' }
     ]
   },
