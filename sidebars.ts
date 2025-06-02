@@ -189,9 +189,17 @@ const sidebars: SidebarsConfig = {
               label: "Set up an experiment",
               items: [
                 "experiments-plus/create-new",
-                "experiments-plus/power-analysis",
                 "experiments-plus/overrides",
                 "experiments/quality-score",
+              ],
+            },
+            {
+              type: "category",
+              label: "Implementing experiments",
+              items: [
+                "experiments-plus/implement",
+                "experiments-plus/getting-group",
+                "experiments-plus/disable-group",
               ],
             },
             {
@@ -241,6 +249,7 @@ const sidebars: SidebarsConfig = {
                 "autotune/using-bandits",
               ],
             },
+            "experiments-plus/power-analysis",
             "layers/introduction",
             "holdouts/introduction",
 
@@ -283,15 +292,6 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/stratified-sampling",
                 "stats-engine/methodologies/bonferroni-correction",
                 "stats-engine/methodologies/benjamini–hochberg-procedure",
-              ],
-            },
-            {
-              type: "category",
-              label: "Implementing experiments",
-              items: [
-                "experiments-plus/implement",
-                "experiments-plus/getting-group",
-                "experiments-plus/disable-group",
               ],
             },
             {
