@@ -55,7 +55,7 @@ Next, we'll use a Statsig Client SDK to check a user's assigned experiment group
 const quickstartExperiment = myStatsigClient.getExperiment(user, "quickstart_experiment");
 
 // the second parameter is the default fallback value if the experiment is not found
-if (quickstartExperiment.get("enable_banner", false) {
+if (quickstartExperiment.get("enable_banner", false)) {
   showBanner(); 
 }
 ```
