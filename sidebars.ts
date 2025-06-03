@@ -186,6 +186,24 @@ const sidebars: SidebarsConfig = {
           items: [
             {
               type: "category",
+              label: "Set up an experiment",
+              items: [
+                "experiments-plus/create-new",
+                "experiments-plus/overrides",
+                "experiments/quality-score",
+              ],
+            },
+            {
+              type: "category",
+              label: "Implementing experiments",
+              items: [
+                "experiments-plus/implement",
+                "experiments-plus/getting-group",
+                "experiments-plus/disable-group",
+              ],
+            },
+            {
+              type: "category",
               label: "Types of experiments",
               items: [
                 "experiments-plus/switchback-tests",
@@ -231,16 +249,7 @@ const sidebars: SidebarsConfig = {
                 "autotune/using-bandits",
               ],
             },
-            {
-              type: "category",
-              label: "Setting up an experiment",
-              items: [
-                "experiments-plus/create-new",
-                "experiments-plus/power-analysis",
-                "experiments-plus/overrides",
-                "experiments/quality-score",
-              ],
-            },
+            "experiments-plus/power-analysis",
             "layers/introduction",
             "holdouts/introduction",
 
@@ -283,15 +292,6 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/stratified-sampling",
                 "stats-engine/methodologies/bonferroni-correction",
                 "stats-engine/methodologies/benjamini–hochberg-procedure",
-              ],
-            },
-            {
-              type: "category",
-              label: "Implementing experiments",
-              items: [
-                "experiments-plus/implement",
-                "experiments-plus/getting-group",
-                "experiments-plus/disable-group",
               ],
             },
             {
@@ -709,7 +709,7 @@ const sidebars: SidebarsConfig = {
                 "infrastructure/reliability-faq",
                 "guides/uptime",
                 "infrastructure/monitoring",
-              ],
+              ]
             },
           ],
         },
@@ -725,8 +725,8 @@ const sidebars: SidebarsConfig = {
       items: [
         "sdks/quickstart",
         "quickstarts/check-gate",
-        "guides/logging-events",
         "guides/abn-tests",
+        "guides/logging-events",
       ],
     },
     {
@@ -1006,8 +1006,16 @@ const sidebars: SidebarsConfig = {
           ],
         },
         "server/deprecation-notices",
-        "http-api",
+        "sdks/support",
       ],
+    },
+    {
+      type: "category",
+      label: "HTTP API",
+      collapsed: true,
+      items: [
+        "http-api",
+      ]
     },
     {
       type: "category",

@@ -29,3 +29,25 @@ There are several charts provided:
 2. Cumulative Success Rate - Shows the overall success rate (exposure -> success) to date.
 3. Daily Success Rate - Shows the success rate for each variation per day.
 4. Traffic Allocation - Shows the daily number of exposures allocated to each variation on a given day.
+
+
+### Linked Experiments
+
+The best way to evaluate if a bandit is working is seeing if it drives more of the targeted behavior via baseline experience. You can easily set up and link an a/b test in Statsig to evaluate this, and this will also let you monitor other user behaviors and guardrail metrics.
+
+This is the gold standard of measurement and is highly encouraged.
+
+Standard practice is to wrap the autotune in a experiment with a binary parameter, either as 50/50 or a 90/10 holdback.  You can link the experiment to the autotune to get the results on the autotune page. In code, this might look like:
+
+```
+experiment_value = statsig.get_experiment('wrapping_experiment').get('flag')
+default_param = '..."
+if(experiment_value):
+  param = statsig.get_experiment('autotune').get('param_name')
+else:
+  param = default_param
+
+# use param in code
+```
+
+You would start this experiment at the same time that you launch your autotune.

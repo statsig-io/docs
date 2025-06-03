@@ -12,7 +12,7 @@ last_update:
 
 Devs often use them to turn on certain features for a small percentage of the total user base. This allows for safer, gradual software releases because you can monitor the impact of system behavior. Feature Gates also enable you to limit application behavior for a specific set of users, like dogfooding [environments](/guides/using-environments).
 
-![Feature Gates banner image](/img/featuregates.png)
+![Feature Gates hero image](/img/featuregates.png)
 
 
 ## When to use
