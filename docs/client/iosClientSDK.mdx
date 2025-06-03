@@ -28,6 +28,7 @@ import {
   StableID,
   ParameterStore,
   Instances,
+  InitializeResponse,
 } from "./Templates/index.mdx";
 
 import Install from "./iOS/_install.mdx";
@@ -47,13 +48,14 @@ import { GetStableID, OverrideStableID } from "./iOS/_stableID.mdx";
 import GetParameterStore from "./iOS/_getParameterStore.mdx";
 import GetParameter from "./iOS/_getParameter.mdx";
 import MultiInstance from "./iOS/_multiInstance.mdx";
+import GetInitializeResponseJson from "./iOS/_getInitializeResponseJson.mdx";
 
 export const Builder = SDKDocsBuilder({
   sections: [
     [
       Repository,
       {
-        repo: "https://github.com/statsig-io/ios-sdk",
+        repo: "https://github.com/statsig-io/statsig-kit",
       },
     ],
     [
@@ -90,6 +92,10 @@ export const Builder = SDKDocsBuilder({
     [
       Instances,
       { example: <MultiInstance /> }
+    ],
+    [
+      InitializeResponse,
+      { getInitializeResponseJson: <GetInitializeResponseJson /> }
     ],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]

@@ -114,7 +114,7 @@ Depending on which bucketing method you've chosen, the **Schedule** section of e
 
 Burn-in/ burn-out periods enable you to define periods at both the beginning and end of your switchback windows to discard exposures from analysis. This is typically leveraged when there are risks of “bleed over effect” from the previous treatment while a population is switching between test and control.
 
-# Reading Results 
+## Reading Results 
 
 Both Diagnostics and Pulse metric lifts results for Switchback tests will look and feel like Statsig’s traditional A/B tests, with a few modifications- 
 

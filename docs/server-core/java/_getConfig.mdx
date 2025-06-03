@@ -6,6 +6,28 @@ While both `Experiment` and `DynamicConfig` classes share similar functionalitie
 
 ### Config/Experiment Usage
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="java-core-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
 ```java
 DynamicConfig config = statsig.getDynamicConfig(user, "awesome_product_details");
 ```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+val config = statsig.getDynamicConfig(user, "awesome_product_details")
+```
+
+  </TabItem>
+</Tabs>

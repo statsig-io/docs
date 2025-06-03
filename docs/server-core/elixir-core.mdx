@@ -21,6 +21,10 @@ import {
   StatsigUser,
   ManualExposures,
   Shutdown,
+  PersistentStorage,
+  DataStore,
+  OutputLogger,
+  ObservabilityClient
 } from "./Templates/index.mdx";
 
 
@@ -68,6 +72,10 @@ export const Builder = SDKDocsBuilder({
     [StatsigUser, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [PersistentStorage, { }],
+    [DataStore, { }],
+    [OutputLogger, { }],
+    [ObservabilityClient, { }],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]
 })

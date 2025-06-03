@@ -1,0 +1,56 @@
+### Fields Needed Methods (Enterprise Only)
+
+The following methods allow you to retrieve a list of user fields that are used in the targeting rules for gates, configs, experiments, and layers. These are enterprise-only features and require contacting Statsig to enable them for your account.
+
+```typescript
+// Get fields needed for a gate
+Statsig.getFieldsNeededForGate(gateName: string): Array<string>
+
+// Get fields needed for a dynamic config
+Statsig.getFieldsNeededForDynamicConfig(configName: string): Array<string>
+
+// Get fields needed for an experiment
+Statsig.getFieldsNeededForExperiment(experimentName: string): Array<string>
+
+// Get fields needed for a layer
+Statsig.getFieldsNeededForLayer(layerName: string): Array<string>
+```
+
+#### Description
+
+These methods return an array of strings representing the user fields that are referenced in the targeting rules or conditions of the specified feature. This can be useful for understanding which user properties influence a particular feature's behavior.
+
+#### Field Mapping
+
+The fields returned by these methods correspond to the following user properties:
+
+```typescript
+// Field mapping between user properties and internal field names
+const fieldMapping = {
+  userID: 'u',
+  email: 'e',
+  ip: 'i',
+  userAgent: 'ua',
+  country: 'c',
+  locale: 'l',
+  appVersion: 'a',
+  time: 't',
+  stableID: 's',
+  environment: 'en',
+  targetApp: 'ta',
+};
+
+// Custom fields are prefixed with "cf:"
+// Example: fields.add('cf:' + field);
+```
+
+#### Example
+
+```typescript
+// Get fields needed for the "new_homepage" gate
+const fieldsNeeded = Statsig.getFieldsNeededForGate("new_homepage");
+console.log(fieldsNeeded); 
+// Example output: ["country", "email", "custom.subscription_tier"]
+```
+
+> Note: These methods are enterprise-only features. Please contact Statsig if you're interested in using them.

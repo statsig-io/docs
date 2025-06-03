@@ -1,3 +1,15 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="java-core-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
 ```java
 // Method signature
 public CompletableFuture<Void> flushEvents()
@@ -10,3 +22,22 @@ try {
     System.err.println("Failed to flush events: " + e.getMessage());
 }
 ```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+// Method signature
+fun flushEvents(): CompletableFuture<Void>
+
+// example usage
+try {
+    statsig.flushEvents().get()
+    println("All events have been successfully flushed.")
+} catch (e: Exception) {
+    System.err.println("Failed to flush events: ${e.message}")
+}
+```
+
+  </TabItem>
+</Tabs>

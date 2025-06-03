@@ -1,6 +1,6 @@
 ---
-sidebar_label: Create your first Feature Gate
-title: Create your first Feature Gate
+sidebar_label: Create your first feature flag
+title: Create your first feature flag
 slug: /quickstarts/feature-gates
 keywords:
   - owner:jinayoon
@@ -10,23 +10,21 @@ last_update:
 
 This tutorial walks you through how to check your first Feature Gate in Statsig from end to end. Feature Gates, also known as feature flags, are a way to safely control the rollout of new features to your users without deploying additional code. Common examples for using Feature Gates include shipping new UI elements, API endpoints, or product features. 
 
-By the end of this tutorial, you will have set up:
-* A **Feature Gate** in the Statsig console
-* A **targeting rule** to enable the feature for a segment of Users
-* A **client-side integration** using the Statsig Client SDK 
+By the end of this tutorial, you will have:
+* Created a **Feature Gate** in the Statsig console, with  **targeting rules** to enable the feature for a segment of Users
+* Initialized a **Statsig Client SDK**
+* Checked a single **feature gate** in your code using the `checkGate` function
 
 
 ## Prerequisites
 1. A [Statsig account](https://console.statsig.com/sign_up)
 2. An existing application you can integrate the Statsig Client SDK into
 
-## In the Statsig console
+## Step 1: In the Statsig console
 ### Create a Feature Gate
 For the purposes of this tutorial, we will pretend we are adding a Feature Gate to deploy a new UI element to a user with the "statsig.com" email domain. You can follow along with a specific feature if you have your own scenario in mind.
 
 1. Navigate to [Feature Gates](https://console.statsig.com/gates) in the Statsig console.
-
-![Feature Gates Page](https://github.com/user-attachments/assets/00331234-34b7-48ef-98a9-9a094e44af1b)
 
 2. Then, click on **Get Started** if you don't have any Feature Gates set up yet, or **Create** to create a new one.
 
@@ -40,8 +38,6 @@ In Statsig, when you create a Feature Gate, they are enabled by default. In othe
 This means that in order to actually turn on this feature, you will need to add rules to target this Feature Gate to a specific set of folks. Let's walk through doing this in the console.
 
 1. In the console, on the page for the Feature Gate you just created, click on **Add New Rule**.
-
-![Adding a new rule](https://github.com/user-attachments/assets/f4717e74-c1a7-4e3e-b894-13622f230f71)
 
 2. Give this rule a **Name**, such as "Statsig Users Only". 
 
@@ -68,12 +64,12 @@ Now that you've set up the Feature Gate from the console, it's time to integrate
 
 4. Copy the Client API Key you just created to your clipboard.
 
-## In your code
+## Step 2: In your code
 ### Initialize the Statsig SDK
 Now that we have our Client API Key, we can go ahead and integrate the Statsig Client SDK into our product. For the purposes of this tutorial, we will use the React SDK, but you can follow along with a different SDK if you prefer. 
 
 :::tip
-Statsig offers over 20 client and server-side SDKs. Check out the full list of [SDKs](/sdks/client-vs-server#available-sdks) to find the one that best fits your needs.
+Statsig offers over 20 client and server-side SDKs. Check out the full list of [SDKs](/sdks/quickstart#all-sdks) to find the one that best fits your needs.
 :::
 
 1. Install the Statsig React SDK using your preferred package manager. For this tutorial, we will use npm.
@@ -123,3 +119,6 @@ return (
 
 3. Once you've set up your gate, you can easily [monitor the impact of your new feature rollout](/feature-flags/view-exposures) or [manage flag lifecycles](/feature-flags/feature-flags-lifecycle).
 
+
+## Next steps
+In this tutorial, we configured a simple feature flag. You can monitor basic metric impacts with this, but if you want to do more complex feature rollouts or metric analysis, continue to the next tutorial to run your first A/B test in Statsig.

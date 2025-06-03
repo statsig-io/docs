@@ -28,6 +28,9 @@ When `true`, disables all network functions: event & exposure logging, spec down
 - **`eventLoggingMaxQueueSize`**: `Optional[int]`  
   Maximum number of events to queue before forcing a flush.
 
+- **`eventLoggingMaxPendingBatchQueueSize`**: `Optional[int]`  
+  Maximum number of batches of events to hold in buffer to retry.
+
 - **`enableIDLists`**: `Optional[bool]`  
   Enable/disable ID list functionality.
 
@@ -69,9 +72,24 @@ When `true`, disables all network functions: event & exposure logging, spec down
   - `proxyAuth`: Optional string for proxy authentication (format: `"username:password"`)
   - `proxyProtocol`: Optional string specifying the protocol (e.g., `"http"`, `"https"`). Default: `"http"`
 
+- **`fallbackToStatsigApi`**: `Optional<Boolean>`  
+  When `true`, the SDK will fallback to using the Statsig API if custom endpoints (specified via `specsUrl`, `logEventUrl`, etc.) fail.
+
 ---
 
 ### Example Usage
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="java-core-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
 
 ```java
 import com.statsig.StatsigOptions;
@@ -89,7 +107,7 @@ proxyConfig.setProxyHost("proxy.example.com");
 proxyConfig.setProxyPort(8080);
 proxyConfig.setProxyProtocol("https");
 // Optional: Set proxy authentication
-// proxyConfig.setProxyAuth("Basic base64encodedcredentials");
+// proxyConfig.setProxyAuth("username:password");
 
 optionsBuilder.setProxyConfig(proxyConfig);
 StatsigOptions options = optionsBuilder.build();
@@ -97,3 +115,35 @@ StatsigOptions options = optionsBuilder.build();
 // Pass the options object into statsig.initialize()
 Statsig.initialize("secret-key", options);
 ```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+import com.statsig.StatsigOptions
+import com.statsig.ProxyConfig
+
+// Initialize StatsigOptions with custom parameters
+val optionsBuilder = StatsigOptions.Builder()
+    .setEnvironment("development")
+    .setInitTimeoutMs(3000)
+    .setDisableAllLogging(false)
+
+// Configure proxy settings if needed
+val proxyConfig = ProxyConfig().apply {
+    proxyHost = "proxy.example.com"
+    proxyPort = 8080
+    proxyProtocol = "https"
+    // Optional: Set proxy authentication
+    // proxyAuth = "username:password"
+}
+
+optionsBuilder.setProxyConfig(proxyConfig)
+val options = optionsBuilder.build()
+
+// Pass the options object into statsig.initialize()
+Statsig("secret-key", options)
+```
+
+  </TabItem>
+</Tabs>

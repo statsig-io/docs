@@ -19,11 +19,11 @@ Statsig Server Core is our second generation of Server SDKs: a full rewrite with
 
 Server Core SDKs are available on an opt-in basis, with native SDKs still available and supported in all languages. If you're just getting started with Statsig, we recommend choosing a Server Core SDK if its convenient for you, but we continue to support bug fixes in our [Legacy SDKs](/server-core/legacy-sdks), and will until we set end-of-support dates for these SDKs. At that time - we'll also provide guidance to make migration as easy as possible. 
 
-- **[Node](./node-core)**: Stable
-- **[Python](./python-core)**: Stable
-- **[Java](./java-core)**: Stable
-- **[PHP](./php-core)**: Stable
-- **[Rust](./rust-core)**: Stable
+- **[Node](./node-core)**: Stable, [npm](https://www.npmjs.com/package/@statsig/statsig-node-core)
+- **[Python](./python-core)**: Stable, [PyPI](https://pypi.org/project/statsig-python-core/)
+- **[Java](./java-core)**: Stable, [Maven Central](https://central.sonatype.com/artifact/com.statsig/javacore/overview)
+- **[PHP](./php-core)**: Stable, [Packagist](https://packagist.org/packages/statsig/statsigsdk)
+- **[Rust](./rust-core)**: Stable, [Crates.io](https://crates.io/crates/statsig-rust)
 - **[Elixir](./elixir-core)**: Stable
 - **Ruby**: In Development, planned for Summer 2025
 - **Go**: In Development, planned for Summer 2025
@@ -37,6 +37,48 @@ Server Core SDKs are available on an opt-in basis, with native SDKs still availa
  - **Untested environments:** Certain environments, like the edge, aren't friendly to this new build process - and for now, we recommend using our [native SDKs](/server-core/legacy-sdks) for the time being.
 
 **New Configuration Spec:** Server Core uses a smaller "ruleset", or configuration spec. If you use the spec directly, your logic and parsing will have to change.
+
+**Event Logging**
+Server core SDKs, starting in v0.4.0+, have a new event logging architecture.  This is designed to stream events freely to statsig servers during normal operation, and throttle/drop events SDK side during outages on the event logging endpoint to enable the service to spin up healthy before processing steady-state qps.  We expose the following parameters to tune this implementation
+
+```
+- event_logging_max_queue_size: Controls batch size (default 2000).  Note that exceeding the backend request size limit (10MB) will drop requests
+- event_logging_max_pending_batch_queue_size: Controls max pending batches (default: 20).  The tradeoff here is increased memory usage to buffer events when requests fail if you increase it, and losing additional events if you decrease it
+- disable_all_logging: Completely disables event logging
+```
+
+```
++----------------+     +----------------+     +----------------+
+| Event Sources  |     | Event Queue    |     | Flush Triggers |
+|----------------|     |----------------|     |----------------|
+| - Gate Checks  |---->| - Pending      |     | - Scheduled    |
+| - Config Reads |     |   Events       |     |   (Time-based) |
+| - Custom Events|     | - Batches      |<----| - Manual       |
++----------------+     +----------------+     | - Shutdown     |
+                             |                +----------------+
+                             v
+                      +----------------+
+                      | Flush Process  |
+                      |----------------|
+                      | - Batch Events |
+                      | - Send to API  |
+                      | - Process      |
+                      |   Response     |
+                      +----------------+
+                           /   \
+                          /     \
+                         v       v
++---------------------------+---------------------------+
+|      On Request Failure   |     On Request Success    |
+|---------------------------|---------------------------|
+| - Double interval         | - Halve interval          |
+|   (max: 60000ms)          |   (min: 1000ms)           |
+| - Retry non-retryable     | - No specific limit       |
+|   errors up to 5 times    |   flush mechanism         |
+| - No specific retry       |                           |
+|   buffer management       |                           |
++---------------------------+---------------------------+
+```
 
 ### Support
 

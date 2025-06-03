@@ -113,6 +113,10 @@ We have added support for ISO timestamps to some server SDKs.
 - The `go` sdk, as of `v1.12.1` supports [DateTime fields in the format of `RFC3339`](https://pkg.go.dev/time#pkg-constants)
 - The `python` sdk supports the usage of epoch time in seconds. using `time.time()` may include sub-second components so you should use round the value to an integer
 
+We have added support for ISO timestamps to server SDKs supported by server core (Java, Python, PHP, Rust, Node). 
+- [DateTime fields in the format of `ISO_INSTANT`](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#ISO_INSTANT)
+- [DateTime fields in the format of `RFC3339`](https://pkg.go.dev/time#pkg-constants)
+
 ### Why is an ID always required for server SDKs?
 
 In Server SDKs, a StatsigUser with a userID (or customID) is required for checkGate, getConfig, and getExperiment. In short, its *always* better to pass the user ID if it's available: users will get a stable experience, and any events will be attributed to the correct users so you can accurately measure downstream metrics.

@@ -78,6 +78,7 @@
     "GTM",
     "IAM",
     "IDSync",
+    "IDFA",
     "IdP",
     "Ipsum",
     "IPs",
@@ -681,7 +682,8 @@
     "lockfiles",
     "jinayoon",
     "quickstart",
-    "quickstarts"
+    "quickstarts",
+    "kaz"
   ],
   "ignorePaths": [
     "node_modules/**",

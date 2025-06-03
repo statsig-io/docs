@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useColorMode } from '@docusaurus/theme-common/internal';
 
 import Alert from "@mui/material/Alert";
 
@@ -36,7 +37,8 @@ const SELECTED_API_VERSION_STORAGE_KEY = 'statsig_api_version';
 
 export default function Rapidoc(props) {
   const { id, entity } = props;
-  const isDarkTheme = false;
+  const { colorMode } = useColorMode();
+  const isDarkTheme = colorMode === 'dark';
   const [apiVersion, setApiVersion] = useState(null);
   const specUrl = apiVersion ? getSpecUrlForApiVersion(apiVersion) : null;
 
@@ -51,6 +53,15 @@ export default function Rapidoc(props) {
       setApiVersion(localStorage.getItem(SELECTED_API_VERSION_STORAGE_KEY) ?? apiVersions[0]);
     }
   }, [apiVersion]);
+
+  useEffect(() => {
+    const rapidoc = document.getElementById(id);
+    if (rapidoc) {
+      rapidoc.setAttribute('theme', isDarkTheme ? 'dark' : 'light');
+      rapidoc.setAttribute('primary-color', isDarkTheme ? '#2196f3' : '#194b7d');
+      rapidoc.setAttribute('bg-color', isDarkTheme ? '#1b1b1d' : '#ffffff');
+    }
+  }, [id, isDarkTheme]);
 
   useEffect(() => {
     if (!specUrl) {
@@ -239,7 +250,7 @@ function getDescription(entity) {
       return (
         <>
           <p>
-            A <a href="../feature-flags/working-with">feature gate</a> is a
+            A <a href="../feature-flags/overview">Feature Gate</a> is a
             mechanism for teams to configure what system behavior is visible to
             users without changing application code. This page describes how
             gates can be created and modified through the Console API.

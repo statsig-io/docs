@@ -16,6 +16,21 @@ The best way to evaluate if a bandit is working is seeing if it drives more of t
 
 This is the gold standard of measurement and is highly encouraged.
 
+Standard practice is to wrap the autotune in a experiment with a binary parameter, either as 50/50 or a 90/10 holdback.  You can link the experiment to the autotune to get the results on the autotune page. In code, this might look like:
+
+```
+experiment_value = statsig.get_experiment('wrapping_experiment').get('flag')
+default_param = '..."
+if(experiment_value):
+  param = statsig.get_experiment('autotune').get('param_name')
+else:
+  param = default_param
+
+# use param in code
+```
+
+You would start this experiment at the same time that you launch your autotune.
+
 # Success Rate
 
 Statsig will track the cumulative and daily success rate of your variants over time. This can be tricky to interpret. It may be the case that variant A has lower CTR, but the users being served variant A _would have had_ even lower CTR on other variants. We generally recommend using this for tracking and for understanding, and seeing if there are good or bad outliers in your variants.

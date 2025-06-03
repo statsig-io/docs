@@ -1,3 +1,25 @@
-```kotlin
-val homepageStore = Statsig.getParameterStore("homepage")
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="ios-sdk-lang-choice"
+  defaultValue="swift"
+  values={[
+    {label: 'Swift', value: 'swift'},
+    {label: 'Objective-C', value: 'objectivec'},
+  ]}>
+  <TabItem value="swift">
+
+```swift
+let homepageStore = Statsig.getParameterStore("homepage")
 ```
+
+  </TabItem>
+  <TabItem value="objectivec">
+
+```objectivec
+ParameterStore *homepageStore = [Statsig getParameterStoreForName:@"homepage"];
+```
+
+  </TabItem>
+</Tabs>

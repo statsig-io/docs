@@ -55,4 +55,4 @@ Autotune should be avoided in the following scenarios:
 1. When you have a complex ecosystem and want to understand secondary effects, tradeoffs between variants, and user behavior.
 2. When you are optimizing for complex metrics or delayed effects.
 
-For these cases, we recommend A/B testing with [Experiments\*](/experiments-plus). In general, it is also a best practice to run Autotune within an experiment with a small (1-10%) holdout group to measure the impact of the Autotune.
+For these cases, we recommend A/B testing with [Experiments\*](/experiments-plus). In general, it is also a best practice to run Autotune within an experiment with a small group of users that doesn't get the Autotune to measure the impact of the Autotune.

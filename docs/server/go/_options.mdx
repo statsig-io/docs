@@ -29,6 +29,8 @@ type Options struct {
   - The callback that gets invoked whenever the rulesets are updated. It's called with a JSON string that represents the rulesets, and a timestamp for when the rules were updated.
 - **UserPersistentStorage**: IUserPersistentStorage default nil
   - A persistent storage adapter for running sticky experiments.
+- **DisableIdList**: default false
+  - A flag to disable fetching the id list during initialization and background polling for both network and data adapter.
 
 ## Client Initialize Response Options
 

@@ -27,8 +27,12 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.statsig:javacore:X.X.X'  // Replace with latest version
-    implementation 'com.statsig:javacore:X.X.X:YOUR-OS-ARCHITECTURE'  // Replace with your OS/architecture
+    // Recommended: Self-contained Uber JAR (includes all platforms, available since version 0.4.0)
+    implementation 'com.statsig:javacore:X.X.X:uber'  // Replace with latest version
+    
+    // Advanced: Platform-specific dependencies (if you need to minimize JAR size)
+    // implementation 'com.statsig:javacore:X.X.X'  // Core library
+    // implementation 'com.statsig:javacore:X.X.X:YOUR-OS-ARCHITECTURE'  // Platform-specific library
 }
 
 application {
@@ -55,6 +59,15 @@ Create a `pom.xml` file with:
     </properties>
     
     <dependencies>
+        <!-- Recommended: Self-contained Uber JAR (includes all platforms, available since version 0.4.0) -->
+        <dependency>
+            <groupId>com.statsig</groupId>
+            <artifactId>javacore</artifactId>
+            <version>X.X.X</version>
+            <classifier>uber</classifier>
+        </dependency>
+        
+        <!-- Advanced: Platform-specific dependencies (if you need to minimize JAR size)
         <dependency>
             <groupId>com.statsig</groupId>
             <artifactId>javacore</artifactId>
@@ -66,6 +79,7 @@ Create a `pom.xml` file with:
             <version>X.X.X</version>
             <classifier>YOUR-OS-ARCHITECTURE</classifier>
         </dependency>
+        -->
     </dependencies>
 </project>
 ```
@@ -73,7 +87,16 @@ Create a `pom.xml` file with:
   </TabItem>
 </Tabs>
 
-### Create Java Application
+### Create Application
+
+<Tabs
+  groupId="java-core-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
 
 Create a file named `ExampleApp.java`:
 
@@ -102,6 +125,38 @@ public class ExampleApp {
     }
 }
 ```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+Create a file named `ExampleApp.kt`:
+
+```kotlin
+import com.statsig.*
+
+fun main() {
+    // Initialize Statsig
+    val options = StatsigOptions.Builder().build()
+    val statsig = Statsig("YOUR_SERVER_SECRET_KEY", options)
+    statsig.initialize().get()
+    
+    try {
+        // Check a feature gate
+        val isEnabled = statsig.checkGate("my_feature_gate", "user123")
+        println("Feature gate is ${if (isEnabled) "enabled" else "disabled"}")
+        
+        // Get a config
+        val config = statsig.getConfig("my_config", "user123")
+        println("Config value: ${config.getValue("some_parameter", "default_value")}")
+    } finally {
+        // Always shutdown Statsig when done
+        statsig.shutdown().get()
+    }
+}
+```
+
+  </TabItem>
+</Tabs>
 
 Replace `YOUR_SERVER_SECRET_KEY` with your actual server secret key from the [Statsig Console](https://console.statsig.com/api_keys).
 

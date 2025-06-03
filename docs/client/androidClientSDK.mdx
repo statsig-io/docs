@@ -28,6 +28,7 @@ import {
   StableID,
   ParameterStore,
   Instances,
+  InitializeResponse,
 } from "./Templates/index.mdx";
 
 import Install from "./Android/_install.mdx";
@@ -46,6 +47,7 @@ import { Snippets as ManualExposureSnippets } from "./Android/_manualExposures.m
 import GetParameterStore from "./Android/_getParameterStore.mdx";
 import GetParameter from "./Android/_getParameter.mdx";
 import MultiInstance from "./Android/_multiInstance.mdx";
+import GetInitializeResponseJson from "./Android/_getInitializeResponseJson.mdx";
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -88,6 +90,10 @@ export const Builder = SDKDocsBuilder({
     [
       Instances,
       { example: <MultiInstance /> }
+    ],
+    [
+      InitializeResponse,
+      { getInitializeResponseJson: <GetInitializeResponseJson /> }
     ],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]
