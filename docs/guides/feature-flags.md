@@ -20,7 +20,7 @@ By the end of this tutorial, you will have set up:
 1. A [Statsig account](https://console.statsig.com/sign_up)
 2. An existing application you can integrate the Statsig Client SDK into
 
-## Part 1: Create a Feature Gate in the console
+## Step 1: Create a Feature Gate in the console
 For the purposes of this tutorial, we will pretend we are adding a Feature Gate to deploy a new UI element to a user with the "statsig.com" email domain. You can follow along with a specific feature if you have your own scenario in mind.
 
 1. Navigate to [Feature Gates](https://console.statsig.com/gates) in the Statsig console.
@@ -32,7 +32,7 @@ For the purposes of this tutorial, we will pretend we are adding a Feature Gate 
 4. Enter a description for your Feature Gate. It's good practice to describe it in a way that other teammates can easily understand. For example: "This Feature Gate is for launching an example feature for Statsig employees only."
 
 
-## Part 2: Configure targeting rules
+## Step 2: Configure targeting rules
 In Statsig, when you create a Feature Gate, they are enabled by default. In other words, all users will be excluded from the feature until you add a rule that lets users "pass" the gate.
 
 This means that in order to actually turn on this feature, you will need to add rules to target this Feature Gate to a specific set of folks. Let's walk through doing this in the console.
@@ -53,7 +53,7 @@ This means that in order to actually turn on this feature, you will need to add 
 
 You can now test this feature gate by configuring the User object in the "Test Gate" section.
 
-## Part 3: Create a Client API Key
+## Step 3: Create a Client API Key
 Now that you've set up the Feature Gate from the console, it's time to integrate it into your product with the Statsig SDK. We'll first need to create a new Client API key to use in our product.
 
 1. Navigate to [**Keys & Environments**](https://console.statsig.com/api_keys) in the Statsig console. You can also find this by going to **Settings** at the bottom left of the Statsig console.
@@ -64,7 +64,7 @@ Now that you've set up the Feature Gate from the console, it's time to integrate
 
 4. Copy the Client API Key you just created to your clipboard.
 
-## Part 4: Integrate the Statsig SDK
+## Step 4: Integrate the Statsig SDK
 Now that we have our Client API Key, we can go ahead and integrate the Statsig Client SDK into our product. For the purposes of this tutorial, we will use the React SDK, but you can follow along with a different SDK if you prefer. 
 
 :::tip
