@@ -19,11 +19,11 @@ Controls for reloads are available on the pulse results page:
 
 Statsig offers a number of ways to reload data:
 
-- [Full Reloads](./full-reloads) completely restate your experiment data. This can be useful if your underlying data changes a lot (e.g. a full DBT reload) day-to-day, and you want to ensure your analysis matches your raw data
-- [Incremental Reloads](./incremental-reloads) catch your data up from where it was the last load to where it is today. Running daily incremental reloads is the recommended way to keep your data current without using unnecessary compute resources to recalculate data that hasn't changed.
-- [Metric Reloads](./metric-reloads) are a useful feature for when you want to add a metric to an analysis, or when a metric definition has changed. This does an efficient spot replacement of the data for a single metric or set of metrics.
+- [Full Reloads](/statsig-warehouse-native/features/full-reloads) completely restate your experiment data. This can be useful if your underlying data changes a lot (e.g. a full DBT reload) day-to-day, and you want to ensure your analysis matches your raw data
+- [Incremental Reloads](/statsig-warehouse-native/features/incremental-reloads) catch your data up from where it was the last load to where it is today. Running daily incremental reloads is the recommended way to keep your data current without using unnecessary compute resources to recalculate data that hasn't changed.
+- [Metric Reloads](/statsig-warehouse-native/features/metric-reloads) are a useful feature for when you want to add a metric to an analysis, or when a metric definition has changed. This does an efficient spot replacement of the data for a single metric or set of metrics. 
 
-Full and incremental loads can be [scheduled](https://docs.statsig.com/statsig-warehouse-native/connecting-your-warehouse/scheduled-reloads/) so that you have fresh results each day.
+Full and incremental loads can be [scheduled](/statsig-warehouse-native/connecting-your-warehouse/scheduled-reloads/) so that you have fresh results each day.
 
 ### Transparency
 
