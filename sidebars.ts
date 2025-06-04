@@ -230,6 +230,7 @@ const sidebars: SidebarsConfig = {
                   items: [
                     "autotune/contextual/getting-started",
                     "autotune/contextual/monitoring",
+                    "autotune/contextual/methodology",
                   ],
                 },
                 {

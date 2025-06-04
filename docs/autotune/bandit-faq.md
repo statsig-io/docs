@@ -23,3 +23,7 @@ The variants return this JSON as a config, just like dynamic configs or experime
 ### Why use a linked experiment?
 
 Bandits optimize for a single target metric or event. This doesn't give a super-rich analysis of how the bandit is impacting your users on its own. Wrapping a bandit in an experiment where the control group gets a default experience and the variant group gets served an experience by the bandit gives you the ability to get deeper insights on how it is impacting your end users. This step is highly recommended!
+
+### Where is my Autotune data available?
+
+Autotune data is downloaded hourly into the `statsig_first_exposures` metric source. Click into the history modal on the autotune itself to see the SQL and tables generated for an individual autotune.
