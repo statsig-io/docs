@@ -257,7 +257,6 @@ const sidebars: SidebarsConfig = {
               type: "category",
               label: "Statistical methods",
               items: [
-
                 {
                   type: "category",
                   label: "How we calculate",
@@ -340,7 +339,6 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/abandon",
               ],
             },
-
           ],
         },
         {
@@ -614,6 +612,7 @@ const sidebars: SidebarsConfig = {
                 "azureai/running-experiments",
               ],
             },
+            "integrations/mcp",
           ],
         },
         {
@@ -709,7 +708,7 @@ const sidebars: SidebarsConfig = {
                 "infrastructure/reliability-faq",
                 "guides/uptime",
                 "infrastructure/monitoring",
-              ]
+              ],
             },
           ],
         },
@@ -1013,9 +1012,7 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "HTTP API",
       collapsed: true,
-      items: [
-        "http-api",
-      ]
+      items: ["http-api"],
     },
     {
       type: "category",
