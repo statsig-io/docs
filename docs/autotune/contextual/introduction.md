@@ -1,6 +1,6 @@
 ---
-title: Autotune AI (Contextual MAB or CMAB)
-sidebar_label: Introduction
+title: Contextual Bandit (Autotune AI)
+sidebar_label: Contextual Bandit
 slug: /autotune/contextual/introduction
 keywords:
   - owner:vm
@@ -31,6 +31,8 @@ Note that there is support for specifying features up front in Statsig's console
 
 Algorithmically, we will choose the best model (e.g. Ridge, Logistic regressions) under the hood based on your data types and performance, and generate a model from your data. The estimated standard error of the model is used to generate a prediction confidence interval. During evaluation, user context is used to predict an outcome for each Variant, and the corresponding confidence interval is applied to that prediction. The best variant is chosen as the one with the highest upper end of a 95% confidence interval. This interval size can be tuned by modifying the exploration parameter in the Autotune setup page.
 
+For deeper discussion, please view the [Methodology](./methodology.md) page.
+
 Note that you can also fetch a ranked list from Statsig and then manually expose those you show to the user, for use cases where you have client-side filtering or want to show multiple options; see [Advanced Usage](../using-bandits.md)
 
 ## Drawbacks
@@ -56,6 +58,7 @@ For Warehouse Native customers, data is processed in your warehouse, and an anon
 For cloud customers, the data is processed and trained entirely in Statsig's servers.
 
 ## SDK Support
+
 Statsig supports contextual autotune in all Client SDKs, but only in the following server SDKs:
 
 - [Node](/server-core/node-core)
