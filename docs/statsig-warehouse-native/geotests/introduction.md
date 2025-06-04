@@ -18,11 +18,6 @@ Geotests are specialized experiments that allow you to target users based on the
 
 Geotests are particularly valuable for businesses with global audiences who need to optimize their product for regional differences in user needs, preferences, or regulatory requirements.
 
-:::tip
-
-Geotests is currently in Alpha release. Statsig is actively interested in working with customers to understand your use-case and make improvements. Please reach out if you're interested in using Geotesting capabilities.
-
-:::
 
 # Why use Geotests
 
