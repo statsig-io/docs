@@ -50,6 +50,7 @@ const sidebars: SidebarsConfig = {
             "guides/first-device-level-experiment",
             "guides/experiment-on-custom-id-types",
             "guides/using-environments",
+            "server/concepts/open_telemetry",
             "guides/testing",
             {
               type: "category",
@@ -685,6 +686,11 @@ const sidebars: SidebarsConfig = {
             id: "infrastructure/introduction",
           },
           items: [
+            {
+              "Open Telemetry": [
+                "server/concepts/open_telemetry",
+              ],
+            },
             {
               "Domains & IP": [
                 "infrastructure/statsig_ip_ranges",
