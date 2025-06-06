@@ -585,6 +585,15 @@ const sidebars: SidebarsConfig = {
                 "integrations/datadog",
                 {
                   type: "category",
+                  label: "Datadog Triggers",
+                  link: {
+                    type: "doc",
+                    id: "integrations/triggers/introduction",
+                  },
+                  items: ["integrations/triggers/datadog"],
+                },
+                {
+                  type: "category",
                   label: "Terraform",
                   link: {
                     type: "doc",
@@ -595,15 +604,7 @@ const sidebars: SidebarsConfig = {
                     "integrations/terraform/terraform_experiment",
                   ],
                 },
-                {
-                  type: "category",
-                  label: "Datadog Triggers",
-                  link: {
-                    type: "doc",
-                    id: "integrations/triggers/introduction",
-                  },
-                  items: ["integrations/triggers/datadog"],
-                },
+                "integrations/pulumi"
               ],
             },
 
