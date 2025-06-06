@@ -11,7 +11,7 @@ last_update:
 Safeguards help you ship with confidence by continuously monitoring critical metrics and automatically intervening in your Feature Gate rollouts when risk thresholds are exceeded. This ensures faster recovery from issues, eliminates the need for constant manual checks, and protects your users from unintended impact.
 
 :::info
-Safeuards is currently in open beta and is available on our Pro and Enterprise billing tiers. Please reach out to us if you have questions or feedback.
+Safeguards is currently in open beta and is available on our Pro and Enterprise billing tiers. Please reach out to us if you have questions or feedback.
 :::
 
 :::info
