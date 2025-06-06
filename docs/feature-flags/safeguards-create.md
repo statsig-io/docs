@@ -34,7 +34,7 @@ You can create a Safeguard on one or multiple targeting rules within a Feature G
     
     ![Set evaluation period](/img/safeguards/evaluation-period.png)
      
-    <b>Recommended:</b> Ideally you want to monitor topline alerts for crashes, errors, latency, etc. *for a few days* a Feature Gate rollout to make sure things are stable. We recommend starting with a 14-day evaluation period.
+    <b>Recommended:</b> Ideally you want to monitor topline alerts for crashes, errors, latency, etc. *for a few days* after a Feature Gate rollout to make sure things are stable. We recommend starting with a 14-day evaluation period.
 
 6. Select one or more alerts to monitor:
 
