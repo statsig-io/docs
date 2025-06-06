@@ -687,7 +687,9 @@
     "jinayoon",
     "quickstart",
     "quickstarts",
-    "kaz"
+    "kaz",
+    "pulumi",
+    "Pulumi"
   ],
   "ignorePaths": [
     "node_modules/**",
