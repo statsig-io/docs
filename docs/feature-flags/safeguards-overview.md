@@ -15,7 +15,7 @@ Safeguards is currently in open beta and is available on our Pro and Enterprise 
 :::
 
 :::info
-Safeguards is only available on Cloud right now. We are actively working on the WHN version will be announcing it the next few weeks! Reach out to us over Slack if you'll be interested in the WHN version!
+Safeguards is only available on Cloud right now. We are actively working on the WHN version and will be announcing it in the next few weeks! Reach out to us over Slack if you'll be interested in the WHN version!
 :::
 
 ## When to use Safeguards
