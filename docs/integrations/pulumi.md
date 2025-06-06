@@ -1,5 +1,5 @@
 ---
-title: Statsig Pulumi Provider
+title: Pulumi
 keywords:
   - owner:jason
 last_update:
