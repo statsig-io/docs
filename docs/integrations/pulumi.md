@@ -81,8 +81,6 @@ func main() {
 ### C#
 
 ```csharp
-using System.Collections.Generic;
-using System.Linq;
 using Pulumi;
 using Statsig = Statsig.Pulumi;
 
