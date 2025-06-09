@@ -44,23 +44,19 @@ Custom Query fields:
 User groups in experiment results are based off of first-touch attribution. The filters and grouping applied will be based on the user attributes collected at the time of first exposure in the gate/experiment/layer check.
 :::
 
-![Screen Shot 2023-12-01 at 5 46 04 PM](https://github.com/statsig-io/docs/assets/101903926/6f65f611-44ba-4d97-ad19-f73ba3c3b8d8)
-
-![Screen Shot 2023-12-01 at 5 48 17 PM](https://github.com/statsig-io/docs/assets/101903926/2b1a7528-8361-41b0-8163-43af950b1055)
-
+<img width="1378" alt="Screenshot 2025-06-08 at 10 33 05 PM" src="https://github.com/user-attachments/assets/85264260-2f65-4bfd-b4e1-477bd043b87d" />
 
 ### Viewing a Custom Query in Explore
 
 These queries take a few minutes to run (don't worry, we'll send you an email once your results are ready in case you want to hop to another task), but once complete the results will be visible in the **Query History** section of the **Explore** interface. All historical queries (across your team) will be stored here. You can also give your query a display name inline for easier future identification. 
 
-<img width="1345" alt="Screenshot 2025-02-06 at 6 52 42 PM" src="https://github.com/user-attachments/assets/76d8f99a-668f-4218-95b4-91c0814f254b" />
-
+<img width="1374" alt="Screenshot 2025-06-08 at 10 34 38 PM" src="https://github.com/user-attachments/assets/46574581-604e-4d29-b231-fa51876c813d" />
 
 ### Scheduling a Custom Query
 
 If you want a daily refresh of a given Custom Query, you can schedule your Custom Query directly from the **Explore** tab. To do this, author the Custom Query you wish to schedule, then tap the "..." menu, then **Schedule**. This Custom Query will now run daily and live in the **Scheduled** tab of your Metric Lifts. 
 
-<img width="1347" alt="Screenshot 2025-02-06 at 6 53 16 PM" src="https://github.com/user-attachments/assets/9ecb39c0-0cd0-478f-8ef6-ff9150cbb11b" />
+<img width="1378" alt="Screenshot 2025-06-08 at 10 35 21 PM" src="https://github.com/user-attachments/assets/56d11b46-f2de-4569-89f7-b0a439910964" />
 
 <img width="505" alt="Screenshot 2025-02-06 at 6 53 33 PM" src="https://github.com/user-attachments/assets/fad0c8ce-3f9c-46be-a09c-52263e124259" />
 
