@@ -51,13 +51,15 @@ The direction of first-touch mapping will be based on the experiment; all second
 
 Data is attributed to the group of the first associated primary ID seen in the exposure. If a secondary ID has multiple associated primary IDs, the group of the first primary ID will be used. Note that this means users that cross groups are not discarded from analysis but instead are assigned based on the the first experience they had.
 
+Primary ID records that are associated with another Primary ID, but are not the first observed records, are dropped from the analysis. If a user is exposed twice on different primary IDs that resolve to the same secondary IDs, only the primary ID metrics from the first-exposed user will be kept in the analysis.
+
 ### Last Touch Mapping (beta)
 
 Same as first touch but data is attributed to the most recent primary ID.
 
-Multiple secondary IDs attached to one primary ID still count as "one" experimental primary ID; the metric values will be merged across records from the different secondary IDs - e.g. added in a sum metric or counted in a count metric.
 
-Primary ID records that are associated with another Primary ID, but are not the first observed records, are dropped from the analysis. If a user is exposed twice on different primary IDs that resolve to the same secondary IDs, only the primary ID metrics from the first-exposed user will be kept in the analysis.
+### Note on ID stitching
+Multiple secondary IDs attached to one primary ID still count as "one" experimental primary ID; the metric values will be merged across records from the different secondary IDs - e.g. added in a sum metric or counted in a count metric.
 
 :::info
 We are interested in supporting more complex 1-to-many relationships of identities and are eager to partner with customers to develop these capabilities if a more advanced use-case is required.
