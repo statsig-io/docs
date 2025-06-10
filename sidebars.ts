@@ -604,7 +604,7 @@ const sidebars: SidebarsConfig = {
                     "integrations/terraform/terraform_experiment",
                   ],
                 },
-                "integrations/pulumi"
+                "integrations/pulumi",
               ],
             },
 
@@ -697,9 +697,7 @@ const sidebars: SidebarsConfig = {
           },
           items: [
             {
-              "Open Telemetry": [
-                "server/concepts/open_telemetry",
-              ],
+              "Open Telemetry": ["server/concepts/open_telemetry"],
             },
             {
               "Domains & IP": [
@@ -1133,6 +1131,18 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "Warehouse Management",
+      collapsed: true,
+      collapsible: false,
+      items: [
+        "statsig-warehouse-native/analysis-tools/data-privacy",
+        "statsig-warehouse-native/warehouse-management/storage",
+        "statsig-warehouse-native/guides/costs",
+        "statsig-warehouse-native/guides/best-practices",
+      ],
+    },
+    {
+      type: "category",
       label: "Data & Semantic Layer",
       collapsed: true,
       collapsible: false,
@@ -1283,17 +1293,7 @@ const sidebars: SidebarsConfig = {
         "statsig-warehouse-native/features/use-case",
       ],
     },
-    {
-      type: "category",
-      label: "Warehouse Management",
-      collapsed: true,
-      collapsible: false,
-      items: [
-        "statsig-warehouse-native/analysis-tools/data-privacy",
-        "statsig-warehouse-native/guides/costs",
-        "statsig-warehouse-native/guides/best-practices",
-      ],
-    },
+
     {
       type: "category",
       label: "Other Features",
