@@ -310,6 +310,7 @@ const sidebars: SidebarsConfig = {
               items: [
                 "experiments-plus/monitor",
                 "stats-engine/methodologies/srm-checks",
+                "guides/srm",
                 "stats-engine/pre-experiment-bias",
                 "experiments-plus/bots",
               ],
