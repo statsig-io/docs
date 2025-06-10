@@ -63,16 +63,26 @@ To modify an existing pipeline:
 
 **Important:** Pipelines with active rollouts currently in progress cannot be modified until those rollouts complete or are aborted.
 
-### Viewing References
+### Viewing Pipeline References
 
-To see which feature gates and dynamic configs are currently using a specific Release Pipeline:
+There are two ways to see which feature gates and dynamic configs are currently using a pipeline:
 
-1. Locate the pipeline in the list view
-2. Click on the number displayed in the **References** column
+1. Project Settings
+    -  Navigate to Project Settings
+    -  Click on the Feature Management menu in the left-rail
+    -  Navigate to Release Pipelines section
+    -  Click on the **References** column against each Release Pipeline
+    -  This will show all feature gates and dynamic configs that are currently attached to a specific pipeline
 
-This will show all features and configs that are currently attached to this pipeline.
+    ![Reference](/img/release-pipeline/reference.png)
 
-![Reference](/img/release-pipeline/reference.png)
+3. Feature Gates / Dynamic Configs Page
+
+   - Navigate to Feature Gates / Dynamic Config list view
+   - Filter by 'Release Pipeline' current status
+   - This will show all feature gates and dynamic configs with an ongoing release pipeline
+
+    <img src="https://github.com/user-attachments/assets/23a3199f-4710-40ed-9bd3-14d2ae5edb49" />
 
 ## Opting Out Environments from Release Pipelines
 

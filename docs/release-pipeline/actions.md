@@ -10,30 +10,64 @@ last_update:
 
 # Managing Release Actions
 
-Once a Release Pipeline is triggered, you can control its progression through the available actions. These actions allow you to manage how and when changes move through your defined pipeline phases.
+Once a Release Pipeline is triggered, you can control its progression using the following actions. These controls allow you to safely test, pause, fast-track, or halt propagation of feature gate and config changes across pipeline phases.
 
-## Approving a Phase
+<img src="https://github.com/user-attachments/assets/519ecada-cce9-4b70-9492-62d21190a85a" />
 
-When a phase in your Release Pipeline requires manual approval:
+### Approve
+**What it does:**
+Kick off a phase that requires a manual approval before rollout begins. This is useful when human verification is required before changes move forward.
 
-1. The pipeline will automatically pause at the transition point
-2. A notification will appear in the status banner at the top of the page
-3. Navigate to the release details view
-4. Click the **Approve** button to allow the release to continue to the next phase
-5. Confirm your decision in the dialog that appears
+**How to use it:**
+1. The pipeline will automatically pause at the last completed phase awaiting approval
+2. You will receive a notification prompting you to take action
+3. Go to the Release Pipeline status page
+4. Click the ⋯ menu and select 'Approve'
+5. Confirm the action — the next phase will begin rolling out
 
-![Approving a phase transition](/img/release-pipeline/approve.png)
+### Pause
+**What it does:**
+Stops the bake timer between two phases. Useful if you want to delay rolling out the next phase in order to investigate the current phase. Note: Pause does not stop the current phase — only the timer to move to the next phase.
 
-## Aborting a Release
+**How to use it:**
+1. Go to the Release Pipeline status page
+2. Click the ⋯ menu and select 'Pause'
+3. Confirm to pause the bake timer
 
-If you detect issues or concerns during the release process:
+### Unpause
+**What it does:**
+Resumes a previously paused bake timer, allowing the pipeline to move to the next phase after the remaining wait time.
 
-1. Navigate to the release details view for the active pipeline
-2. Click the **Abort** button
-3. Confirm your decision in the dialog that appears
-4. The system will immediately halt the release process and revert all changes
-5. The feature gate or dynamic config will return to its previous state
+**How to use it:**
+1. Go to the Release Pipeline status page
+2. Click the ⋯ menu and select 'Unpause'
+3. Confirm to resume the bake timer
+
+### Skip
+**What it does:**
+Immediately skips the current phase and moves rollout to the next defined phase. Useful for fast-tracking safe changes.
+
+**How to use it:**
+1. Go to the Release Pipeline status page
+2. Click the ⋯ menu and select 'Skip'
+3. Confirm to resume the bake timer
+
+### Abort
+**What it does:**
+Halts the release process. The feature gate or dynamic config will revert to its pre-release state, and no further changes will propagate.
 
 **Important:** Aborting a release is an irreversible action. Once aborted, you will need to trigger a new release to restart the process with any modifications.
 
-![Aborting an active release](/img/release-pipeline/abort.png)
+**How to use it:**
+1. Go to the Release Pipeline status page
+2. Click the ⋯ menu and select 'Abort'
+3. Confirm to resume the bake timer
+
+### Full Roll Out
+**What it does:**
+Skips all intermediate phases and releases the latest version across all environments and custom attributes once.
+
+**How to use it:**
+1. Go to the Release Pipeline status page
+2. Click the ⋯ menu and select 'Full Roll Out'
+3. Confirm to resume the bake timer
