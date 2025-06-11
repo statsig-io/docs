@@ -18,6 +18,15 @@ Custom queries are experimental analyses just like in the main Results tab, and 
 Be careful when drawing your inferences of Custom Queries, especially when grouping by a dimension with lots of options. This can increase your chance of seeing a false-positive statistically significant result.
 :::
 
+### Dimension Loading Timing
+
+When running custom queries that include dimensional analysis, be aware that dimensions are loaded through separate asynchronous explore queries. This means:
+
+- The main experiment results will appear first
+- Dimensions will continue loading in the background and become available within a few minutes
+- This timing gap is most noticeable immediately after the first reload of the day
+- If you see "No dimensions available for this time range", wait a few minutes and refresh to see if dimensions have completed loading
+
 ### Running a Custom Query
 
 To run a Custom Query, navigate to the **Explore** tab within your experiment.

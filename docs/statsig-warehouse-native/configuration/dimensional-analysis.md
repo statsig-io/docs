@@ -41,3 +41,7 @@ By default, dimensional analysis:
 - chooses the top 10 dimensions by total value, and puts all others into an "OTHER" bucket.
 
 This is to avoid extreme results and cases where assumptions of centrality do not hold due to low sample on a specific dimension, and to avoid excessive multiple-comparisons on the tail-end of dimensional breakdown. This is configurable, but controlled due to the potential for error - reach out to Statsig support to see if your use case makes sense.
+
+## Loading Timing
+
+Dimension data is processed asynchronously and may take a few minutes to become available after the main experiment results load. You may temporarily see "No dimensions available for this time range" messages while the data is being processed, especially after the first reload of the day. This is expected behavior - simply wait a few minutes and refresh the page to see the dimensional breakdowns.
