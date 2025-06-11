@@ -26,7 +26,7 @@ To set up connection with Trino, we need the following:
 
 ## Grant Permissions to Statsig's Service Account
 
-You need to grant some permissions for Statsig from your cloud provider's console in order for us to access your Athena data. Statsig requires
+You need to grant some permissions for Statsig from your cloud provider's console in order for us to access your Trino data. Statsig requires
 
 - READ on any tables and data you are using for experimentation
 - USAGE/WRITE on a Statsig-specific schema we'll use to materialize temp tables and results. This enables us to cache data and perform incremental loads. For example, AWS users will specify which Glue Database and S3 Bucket to use, and we will create a Statsig S3 Subfolder to do our staging operations
