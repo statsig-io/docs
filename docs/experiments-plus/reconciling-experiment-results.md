@@ -50,6 +50,9 @@ SELECT
 FROM joined_data
 GROUP BY group_id;
 ```
+
+It's also worth noting that timezones can influence this. Timestamps for statsig's exposures are always in UTC; if metric data is in another timezone it will need to be adjusted to avoid filtering on the wrong comparison.
+
 ### Exposure Duplication
 Exposure data must be de-duplicated before joining to ensure a single record per user. Many vendors further manage crossover users (users present in more than one experiment group), removing them from analysis and/or alerting if this occurs with high frequency.
 ```
