@@ -22,7 +22,7 @@ To set up connection with Trino, we need the following:
 - The catalog and schema containing the relevant data for analysis data
 - A user that will be used to run queries. This requires read permissions on source data, and read/write access to a statsig schema
 - The region of your trino cluster
-- Relevant IAM/Permission data (e.g. access keys, ARNs, and Role External IDs)ts
+- Relevant IAM/Permission data (e.g. access keys, ARNs, and Role External IDs)
 
 ## Grant Permissions to Statsig's Service Account
 
