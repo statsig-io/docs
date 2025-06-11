@@ -1128,6 +1128,8 @@ const sidebars: SidebarsConfig = {
         "statsig-warehouse-native/connecting-your-warehouse/bigquery",
         "statsig-warehouse-native/connecting-your-warehouse/databricks",
         "statsig-warehouse-native/connecting-your-warehouse/redshift",
+        "statsig-warehouse-native/connecting-your-warehouse/trino",
+        "statsig-warehouse-native/connecting-your-warehouse/other",
       ],
     },
     {
