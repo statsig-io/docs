@@ -692,7 +692,11 @@
     "quickstarts",
     "kaz",
     "pulumi",
-    "Pulumi"
+    "Pulumi",
+    "fieller",
+    "Fieller",
+    "Fieller's",
+    "fieller's"
   ],
   "ignorePaths": [
     "node_modules/**",
