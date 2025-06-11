@@ -277,6 +277,7 @@ const sidebars: SidebarsConfig = {
                     "stats-engine/metric-deltas",
                     "stats-engine/variance",
                     "stats-engine/methodologies/delta-method",
+                    "stats-engine/methodologies/fieller-intervals",
                   ],
                 },
                 {
@@ -1276,6 +1277,7 @@ const sidebars: SidebarsConfig = {
                 "stats-engine/methodologies/benjamini–hochberg-procedure-whn",
                 "stats-engine/methodologies/cuped-whn",
                 "stats-engine/methodologies/delta-method-whn",
+                "stats-engine/methodologies/fieller-intervals-whn",
                 "stats-engine/methodologies/srm-checks-whn",
                 "stats-engine/methodologies/winsorization-whn",
                 "stats-engine/methodologies/one-sided-test-whn",
