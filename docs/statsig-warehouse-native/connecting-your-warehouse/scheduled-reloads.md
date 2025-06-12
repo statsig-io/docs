@@ -15,9 +15,9 @@ You can control daily reload settings for Metrics and Experiments. While these c
 
 ![Screenshot 2025-02-27 at 9 12 23 PM](https://github.com/user-attachments/assets/efc232e7-4189-4ee7-b35a-5b1530041c70)
 
-## Feature Gate Pulse Scheduling (Statsig Cloud)
+## Feature Gate Pulse Scheduling
 
-For feature gates in Statsig Cloud, individual Pulse scheduling is available separately from these project-level Warehouse Native settings. You can schedule daily Pulse metric reloads for individual feature gates.
+For feature gates in Warehouse Native deployments, individual Pulse scheduling is available separately from these project-level settings. You can schedule daily Pulse metric reloads for individual feature gates.
 
 To access this feature:
 1. Navigate to your feature gate in the Statsig Console
