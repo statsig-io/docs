@@ -29,4 +29,4 @@ The scheduling allows you to:
 - Choose between Full and Incremental reload types
 - Save, edit, or cancel scheduled reloads
 
-For feature gates, feature requires feature gates with partial rollout rules and overrides the project-level settings.
+This feature requires gates with partial rollout rules and overrides any project-level settings.
