@@ -98,6 +98,10 @@ This works natively across Metric Sources, so you can easily set up funnel or ra
 
 Analysis is done using the primary ID - this process associates metric values that are on an associated secondary ID.
 
+### Mapping Changes
+
+If a change is made to the entity property source or assignment source's definition or underlying data, that will be reflected on the next reload. This is **why** a full reload is required, since otherwise historical changes to the mapping can lead to inconsistent data on incremental reloads or explore queries.
+
 ### Best Practices
 
 We strongly recommend using an [Entity Property Source](/statsig-warehouse-native/configuration/entity-properties) to provide a cleaned unit mapping from your warehouse. However, you can also provide mappings on your exposure source by logging multiple identifiers in the exposure data - Statsig will greedily use this to match across identifiers.
