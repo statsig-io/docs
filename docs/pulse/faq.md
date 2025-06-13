@@ -62,19 +62,3 @@ You may see this error when trying to view precomputed user dimensions, particul
 - Typically, dimensions will become available within a few minutes after the main scorecard loads
 
 If you encounter this error, wait a few minutes and refresh the page to see if the dimensions have completed loading.
-
-## Do vacuum jobs affect explorer query tables?
-
-No, vacuum jobs do not affect the tables used by explorer queries. Explorer queries rely on permanent staging tables and covariate tables that are separate from the data affected by vacuum operations.
-
-## What happens to explorer query dependencies after an experiment ends?
-
-Explorer query dependencies remain the same after an experiment ends. The permanent staging tables and covariate tables required for explorer queries continue to be available according to your configured TTL settings, regardless of the experiment's active status.
-
-## What's required to restore missing explorer query tables?
-
-If explorer query tables are missing (typically indicated by `TABLE_OR_VIEW_NOT_FOUND` errors), a full reload is required to restore them. Incremental reloads are not sufficient to recreate missing covariate tables or other permanent staging tables needed for explorer query functionality.
-
-## Why do explorer queries fail when other experiment results work fine?
-
-Explorer queries have different table dependencies than standard experiment results. While results tables are cached locally on Statsig servers, explorer queries require permanent staging tables to exist in your warehouse. If these permanent staging tables are missing due to TTL expiration or manual deletion, explorer queries will fail even when standard results are available.
