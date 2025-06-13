@@ -33,18 +33,17 @@ To monitor the status of your experiment,
 
   - **Crossover units detected** monitors users exposed to multiple variants in the same experiment. When users are exposed to both test and control groups (sometimes called "crossover users" or "double-exposed users"):
 
-    - **Statsig Cloud behavior**: Monitors these occurrences but keeps the user data in both groups. This approach is appropriate because crossover rates with Statsig's SDK are typically minimal.
+    - **Statsig Cloud behavior**: Statsig monitors these occurrences internally, but keeps the user data in both groups since crossover rates with Statsig's SDK are typically minimal.
     - **Impact on results**: The inclusion of these users has minimal impact on experiment validity but may cause slight result dilution.
     - **When to contact support**: If you observe crossover rates exceeding 1%, please contact Statsig support as this may indicate an implementation issue.
-    - **Warehouse Native behavior**: For comparison, [Warehouse Native drops these users](/statsig-warehouse-native/features/monitor-an-experiment#crossover-users) since it often uses exposures from other assignment services with higher crossover rates.
+    - **Warehouse Native behavior**: For comparison, [Warehouse Native drops these users](/statsig-warehouse-native/features/monitor-an-experiment) since it often uses exposures from other assignment services with higher crossover rates.
 
-    This check appears when crossover rates exceed 0.1% and shows the following alerts:
-
-    Potential reasons that caused crossover units:
+    Potential causes of crossover units:
 
     1. if any exposure in the log stream shows up with reason `BootstrapStableIDMismatch`, that means you have generated the values for a different stable id.
+    2. network delays on server/client SDKs if exposing the same user on both and updating a gate or experiment
 
-  If you cannot root cause it, you can reach out to us on slack.
+  If you observe a high rate of crossover users and cannot root cause it, you can reach out to us on slack.
 
   - **Default value type mismatch** detects if an experiment's fallback default value type has differed from the set parameter type.
   - **Group assignment healthy** verifies that your SDKs are configured correctly and surfaces if there are a high percentage of checks with assignment reasons like "Uninitialized" or "InvalidBootstrap" which might indicate experiment assignment is not configured correctly. You can view an hourly breakdown of assignment reason via the **View Assignment Reasons** CTA. To better understand what each assignment reason means, see our breakdown [here](/sdk/debugging).
