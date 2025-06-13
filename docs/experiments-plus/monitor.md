@@ -31,7 +31,7 @@ To monitor the status of your experiment,
 
     Read [more](/stats-engine/methodologies/srm-checks) on our SRM methodology and Statsig's debugging tool.
 
-  - **Crossover units detected** checks for a high percentage (over 0.1%) of units that were exposed to more than one variant.
+  - **Crossover units detected** checks for a high percentage (over 0.1%) of units that were exposed to more than one variant. These users cannot be reliably attributed to a single variant in an experiment or gate.
     - **Statsig Cloud behavior**: Statsig monitors these occurrences, but keeps the user data in both groups since crossover rates with Statsig's SDK are typically minimal. If crossover users are detected, a health check warning will appear in your scorecard results.
     - **Warehouse Native behavior**: For comparison, [Warehouse Native drops these users](/statsig-warehouse-native/features/monitor-an-experiment) since it often uses exposures from other assignment services with higher crossover rates.
     - **Impact on results**: The inclusion of these users has minimal impact on experiment validity but may cause slight result dilution.
