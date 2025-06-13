@@ -81,6 +81,16 @@ By default, experiments randomize users based on **User ID**. If you need to use
 
 Afterward, continue with the same steps described above to finish configuring the experiment.
 
+## ID Mapping Capabilities
+
+When running experiments, you may want to start with one ID type (like stableID for device-level targeting) but analyze results using events from another ID type (like userID for logged-in user metrics).
+
+**Warehouse Native**: Supports ID mapping between different identifier types (e.g., stableID to userID) through Entity Property Source configuration.
+
+**Cloud**: Currently does not support mapping between different ID types. Experiments started with stableID will only analyze events with stableID, and experiments started with userID will only analyze events with userID.
+
+For advanced ID mapping requirements, consider using Statsig Warehouse Native.
+
 ### Isolated Experiments
 
 If you want to create an experiment that excludes users exposed to other experiments, follow steps 1–4 from the "User-level Experiments" section. Then:

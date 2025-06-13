@@ -5,6 +5,10 @@ the first time the SDK is initialized and is stored locally for all future sessi
 Unless storage is wiped (or app deleted), the stableID will not change.
 This allows us to run device level experiments and experiments when other user identifiable information is unavailable (Logged out users).
 
+:::note ID Mapping Limitations
+When using stableID for experiments, note that Cloud deployments cannot map between stableID and other ID types (like userID) for analysis. For advanced ID mapping capabilities, see [ID Mapping Capabilities](/experiments-plus/create-new#id-mapping-capabilities) or consider Statsig Warehouse Native.
+:::
+
 You can get the stableID for the current device with:
 
 <div>{props.getSnippet}</div>
