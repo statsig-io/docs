@@ -92,6 +92,7 @@ If there's any confusion, or if a feature is critical for your evaluation, we're
 | Autocreate metric from SDK Events         | Cloud only for now   |
 | User Accounting Metrics (DAU, Stickiness) | Cloud only for now   |
 | Automated A/A Tests                       | Cloud only for now   |
+| Entity Property Source ID mapping         | WHN only             |
 
 ## Organization & Settings
 
