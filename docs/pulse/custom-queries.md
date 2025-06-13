@@ -85,6 +85,44 @@ Since custom queries are computed as a snapshot in time, sequential testing adju
 
 ![Screenshot 2025-02-26 at 8 43 10 AM](https://github.com/user-attachments/assets/df7c4087-82c3-41fb-8f5d-124094ec4526)
 
+## Troubleshooting Explorer Queries
+
+### TABLE_OR_VIEW_NOT_FOUND Errors
+
+Explorer queries may encounter `TABLE_OR_VIEW_NOT_FOUND` errors when the required data tables are missing from your warehouse. This typically occurs when:
+
+- **Permanent staging tables have been dropped**: Explorer queries rely specifically on permanent staging tables, not results or transient staging tables
+- **TTL settings have expired tables**: Tables with configured time-to-live (TTL) settings may be automatically cleaned up
+- **Incomplete data loads**: Initial experiment setup or data pipeline issues may prevent table creation
+
+#### Common Error Message Format
+```
+Error: TABLE_OR_VIEW_NOT_FOUND: Table 'your_project.statsig_sandbox.raw_covariates_experiment_12345' was not found
+```
+
+#### Resolution Steps
+
+**For Missing Covariate Tables:**
+1. **Full reload required**: Missing covariate tables (like `raw_covariates_<experiment_id>`) require a full reload, not an incremental reload
+2. Navigate to your experiment's data management section
+3. Trigger a full reload of the experiment data
+4. Wait for the reload to complete before running explorer queries
+
+**For General Missing Tables:**
+1. Check your warehouse's TTL settings in the data connection configuration
+2. Verify that permanent staging tables exist in your configured sandbox schema
+3. If tables were manually dropped, trigger a full data reload
+4. Contact support if tables continue to be missing after reload
+
+#### Understanding Table Dependencies
+
+Explorer queries depend on several types of tables:
+- **Permanent staging tables**: Required for all explorer query functionality
+- **Covariate tables**: Needed for CUPED/CURE variance reduction in analysis
+- **Results tables**: Cached locally on Statsig servers (except historical dimensions)
+
+Note: Vacuum jobs do not affect explorer query tables, and experiment dependencies remain the same after an experiment ends.
+
 
 
 

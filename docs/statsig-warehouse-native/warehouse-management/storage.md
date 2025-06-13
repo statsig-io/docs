@@ -44,4 +44,8 @@ Transient tables have a short ttl - usually 1-2 days - and will be automatically
 
 Other tables are permanent by default, and can be cleaned up from the experiment in statsig's console or as part of launching an experiment. Additionally, TTLs can be configured for tables by "mode" (e.g. results, permanent staging, and transient staging) in the data connection section of a project's settings.
 
+**Explorer Query Dependencies**: Explorer queries rely specifically on permanent staging tables for functionality. These tables include covariate tables (like `raw_covariates_<experiment_id>`) that are critical for custom analysis and CUPED variance reduction. Unlike results tables which are cached locally on Statsig servers, permanent staging tables must be maintained in your warehouse for explorer queries to function properly.
+
+**TTL Impact on Explorer Queries**: When TTL settings are configured for permanent staging tables, expired tables will cause `TABLE_OR_VIEW_NOT_FOUND` errors in explorer queries. If explorer queries fail due to missing tables, a full reload (not incremental) is required to restore the necessary permanent staging tables.
+
 It may also make sense to manage storage programmatically via your own warehouse tools, e.g. cleaning up entities which have not been accessed or modified in the last month. Generally this is not necessary given TTLs, but in some cases failures can occur and Statsig's internal tracking can consider a table dropped when it still has a storage footprint.
