@@ -46,7 +46,7 @@ Other tables are permanent by default, and can be cleaned up from the experiment
 
 It may also make sense to manage storage programmatically via your own warehouse tools, e.g. cleaning up entities which have not been accessed or modified in the last month. Generally this is not necessary given TTLs, but in some cases failures can occur and Statsig's internal tracking can consider a table dropped when it still has a storage footprint.
 
-**Explorer Query Dependencies**: Explorer queries rely specifically on permanent staging tables for functionality. These tables are critical for custom analysis and CUPED variance reduction. Unlike results tables which are cached locally on Statsig servers, permanent staging tables must be maintained in your warehouse for explorer queries to function properly.
+**Explore Query Dependencies**: Explore queries rely specifically on permanent staging tables for functionality. These tables are used to reduce the need to re-compute data for analysis that was already performed by the scorecard run. Unlike results tables which are cached locally on Statsig servers, permanent staging tables must be maintained in your warehouse for explorer queries to function properly; this is to avoid regressing large volumes of data that may contain PII or other sensitive information.
 
 ## Troubleshooting Storage Issues
 
@@ -54,7 +54,7 @@ It may also make sense to manage storage programmatically via your own warehouse
 
 Warehouse Native users may encounter `TABLE_OR_VIEW_NOT_FOUND` errors, or similar, when required data tables are missing from your warehouse. This typically occurs when:
 
-- **Permanent staging tables have been dropped**: Explorer queries and advanced analysis rely specifically on permanent staging tables, not results or transient staging tables
+- **Permanent staging tables have been dropped**: Explore queries and advanced analysis rely specifically on permanent staging tables, not results or transient staging tables
 - **TTL settings have expired tables**: Tables with configured time-to-live (TTL) settings may be automatically cleaned up
 - **Incomplete data loads**: Initial experiment setup or data pipeline issues may prevent table creation
 
@@ -73,7 +73,7 @@ Missing permanent staging tables require a full reload to recreate the staging d
 #### Understanding Storage Dependencies
 
 Warehouse Native uses several types of tables with different storage patterns:
-- **Permanent staging tables**: Required for explorer queries and advanced analysis functionality
+- **Permanent staging tables**: Required for explore queries and advanced analysis functionality
 - **Transient staging tables**: Short-lived intermediate tables with a mix of automatic cleanup (1-2 days TTL) and permanent storage (small tables that are useful for ad-hoc analysis like regression coefficients).
 - **Results tables**: Output statistics from the pipeline, which are copied and cached locally on Statsig servers
 
