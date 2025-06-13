@@ -45,3 +45,37 @@ Transient tables have a short ttl - usually 1-2 days - and will be automatically
 Other tables are permanent by default, and can be cleaned up from the experiment in statsig's console or as part of launching an experiment. Additionally, TTLs can be configured for tables by "mode" (e.g. results, permanent staging, and transient staging) in the data connection section of a project's settings.
 
 It may also make sense to manage storage programmatically via your own warehouse tools, e.g. cleaning up entities which have not been accessed or modified in the last month. Generally this is not necessary given TTLs, but in some cases failures can occur and Statsig's internal tracking can consider a table dropped when it still has a storage footprint.
+
+**Explore Query Dependencies**: Explore queries rely specifically on permanent staging tables for functionality. These tables are used to reduce the need to re-compute data for analysis that was already performed by the scorecard run. Unlike results tables which are cached locally on Statsig servers, permanent staging tables must be maintained in your warehouse for explorer queries to function properly; this is to avoid regressing large volumes of data that may contain PII or other sensitive information.
+
+## Troubleshooting Storage Issues
+
+### Missing Data Errors
+
+Warehouse Native users may encounter `TABLE_OR_VIEW_NOT_FOUND` errors, or similar, when required data tables are missing from your warehouse. This typically occurs when:
+
+- **Permanent staging tables have been dropped**: Explore queries and advanced analysis rely specifically on permanent staging tables, not results or transient staging tables
+- **TTL settings have expired tables**: Tables with configured time-to-live (TTL) settings may be automatically cleaned up
+- **Incomplete data loads**: Initial experiment setup or data pipeline issues may prevent table creation
+
+#### Resolution Steps
+
+**For Missing Staging Tables:**
+Missing permanent staging tables require a full reload to recreate the staging dataset.
+
+
+**For General Missing Tables:**
+1. Check your warehouse's TTL settings in the data connection configuration
+2. Verify that permanent staging tables exist in your configured sandbox schema
+3. If tables were manually dropped, trigger a full data reload
+4. Contact support if tables continue to be missing after reload, or if you didn't drop them
+
+#### Understanding Storage Dependencies
+
+Warehouse Native uses several types of tables with different storage patterns:
+- **Permanent staging tables**: Required for explore queries and advanced analysis functionality
+- **Transient staging tables**: Short-lived intermediate tables with a mix of automatic cleanup (1-2 days TTL) and permanent storage (small tables that are useful for ad-hoc analysis like regression coefficients).
+- **Results tables**: Output statistics from the pipeline, which are copied and cached locally on Statsig servers
+
+Note: Vacuum jobs do not affect staging tables used by Statsig
+
