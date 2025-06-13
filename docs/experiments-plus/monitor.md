@@ -31,7 +31,14 @@ To monitor the status of your experiment,
 
     Read [more](/stats-engine/methodologies/srm-checks) on our SRM methodology and Statsig's debugging tool.
 
-  - **Crossover units detected** checks for a high percentage (over 0.1%) of units that were exposed to more than one variant. These units are considered invalid for pulse metric calculation since their responses cannot be reliably attributed to a single group. We include them in the group-level statistics as they don't introduce bias generally, assuming the behavior of crossing over happens across the board. This check is ephemeral, only appearing when the alert is triggered.
+  - **Crossover units detected** monitors users exposed to multiple variants in the same experiment. When users are exposed to both test and control groups (sometimes called "crossover users" or "double-exposed users"):
+
+    - **Statsig Cloud behavior**: Monitors these occurrences but keeps the user data in both groups. This approach is appropriate because crossover rates with Statsig's SDK are typically minimal.
+    - **Impact on results**: The inclusion of these users has minimal impact on experiment validity but may cause slight result dilution.
+    - **When to contact support**: If you observe crossover rates exceeding 1%, please contact Statsig support as this may indicate an implementation issue.
+    - **Warehouse Native behavior**: For comparison, [Warehouse Native drops these users](/statsig-warehouse-native/features/monitor-an-experiment#crossover-users) since it often uses exposures from other assignment services with higher crossover rates.
+
+    This check appears when crossover rates exceed 0.1% and shows the following alerts:
 
     Potential reasons that caused crossover units:
 
