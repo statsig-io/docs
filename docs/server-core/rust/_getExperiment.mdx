@@ -13,9 +13,4 @@ let price_exp = statsig.get_experiment(&user, "new_user_promo_price");
 
 let title = title_exp.get_string("title", "Welcome to Statsig!");
 let discount = price_exp.get_double("discount", 0.1);
-
-// Via get_experiment_by_group_name - get experiment configured for specific group
-let group_exp = statsig.get_experiment_by_group_name("pricing_experiment", "premium_group");
-let premium_price = group_exp.get_double("price", 9.99);
-let premium_features = group_exp.get_bool("advanced_features", false);
 ```
