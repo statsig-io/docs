@@ -1,3 +1,13 @@
+### Experiment Methods
+
+```rust
+// Get experiment evaluation for a user
+pub fn get_experiment(&self, user: &StatsigUser, experiment_name: &str) -> Experiment
+
+// Get experiment configured for a specific group name
+pub fn get_experiment_by_group_name(&self, user: &StatsigUser, experiment_name: &str, group_name: &str) -> Experiment
+```
+
 ### Fields Needed Methods (Enterprise Only)
 
 ```rust

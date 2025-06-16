@@ -1,3 +1,13 @@
+### Experiment Methods
+
+```typescript
+// Get experiment evaluation for a user
+getExperiment(user: StatsigUser, experimentName: string): Experiment
+
+// Get experiment configured for a specific group name
+getExperimentByGroupName(user: StatsigUser, experimentName: string, groupName: string): Experiment
+```
+
 ### Fields Needed Methods (Enterprise Only)
 
 ```typescript
