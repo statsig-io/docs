@@ -134,13 +134,15 @@ Once you are logged into Cloudflare. You can follow these steps:
 
 ## Using Your Proxy
 
-Once you have a proxy setup, you will need to take its URL and apply it to the SDK. To do this, you can use `StatsigOptions.api`. You can visit [Statsig Options](/client/javascript-sdk#statsig-options) to read about the Javascript specific StatsigOptions, but all SDKs have the ability to override the api via `StatsigOptions.api`.
+Once you have a proxy setup, you will need to take its URL and apply it to the SDK. To do this, you can use `StatsigOptions.networkConfig.api`. You can visit [Statsig Options](/client/javascript-sdk#statsig-options) to read about the Javascript specific StatsigOptions, but all SDKs have the ability to override the api via `StatsigOptions.networkConfig.api`.
 
 The following is pseudo code of what initializing with a proxy looks like:
 
 ```typescript
 Statsig.initialize(mySdkKey, myUser, {
-  api: "https://my-statsig-proxy.com/v1",
+  networkConfig: {
+    api: "https://my-statsig-proxy.com/v1",
+  },
 });
 ```
 

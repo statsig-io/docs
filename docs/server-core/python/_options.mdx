@@ -29,7 +29,7 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
   Maximum number of events to queue before forcing a flush.
 
 - **`enable_id_lists`**: `Optional[bool]`  
-  Enable/disable BIG ID list functionality (IDList > 1000) 
+  Enable/disable ID list functionality. **Required to be `true` when using segments with more than 1000 IDs.** See [ID List segments](/segments/add-id-list) for more details.
 
 - **`disable_user_agent_parsing`** `Optional[bool]`
   Default false. If set to true, the SDK will NOT attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion at evaluation time, when needed for evaluation.

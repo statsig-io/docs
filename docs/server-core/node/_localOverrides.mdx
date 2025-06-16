@@ -13,4 +13,8 @@ Statsig.overrideLayer("a_layer_name", { key: "value" });
 
 // Overrides the given experiment to a particular groupname, available for experiments only:
 Statsig.overrideExperimentByGroupName("an_experiment_name", "a_group_name");
+
+//Alternatively, get the Experiment object for a given groupName
+const groupExp = statsig.getExperimentByGroupName("pricing_experiment", "premium_group");
+const premiumPrice = groupExp.getValue("price", 9.99);
 ```
