@@ -10,9 +10,4 @@ const experimentDiscount = priceExp.getValue("discount", 0.1);
 const layer = statsig.getLayer(user, "user_promo_experiments");
 const title = layer.getValue("title", "Welcome to Statsig!");
 const discount = layer.getValue("discount", 0.1);
-
-// Get experiment configured for specific group
-const groupExp = statsig.getExperimentByGroupName("pricing_experiment", "premium_group");
-const premiumPrice = groupExp.getValue("price", 9.99);
-const premiumFeatures = groupExp.getValue("advanced_features", false);
 ```
