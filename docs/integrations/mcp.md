@@ -40,8 +40,7 @@ Click to see MCP Json
 ```
 </details>
 
-
-Replace `console-YOUR-API-KEY` with your actual Statsig Console API key, which you can retrieve [here](https://console.statsig.com/api_keys)
+Replace `console-YOUR-API-KEY` with your actual Statsig Console API key, which you can retrieve [here](https://console.statsig.com/api_keys). Ensure your API key has the right permissions — read-only keys can view data, while write keys can make changes to your project!
 
 Once you've added and saved the configuration file, restart Cursor or Claude Desktop to apply the changes. After restarting, you should see the MCP server listed and active under the Developer settings.
 
@@ -58,20 +57,21 @@ The configuration file is located at:
 
 ## Use Cases
 
-We've found the Statsig MCP Server to be particularly useful for:
-- Repetitive, simple work - like cleaning up stale gates
+The Statsig MCP server now supports both `GET` and `POST` requests. This means tools can not only read data (like stale gates) but also make updates, if your API key has write permissions. We've found the Statsig MCP server especially useful for:
+
+- Repetitive tasks like cleaning up stale gates
 - Summarizing console information in your IDE workflows
+- Bulk creating or deleting gates, and making the necessary changes in your code
 
 ### Example prompt for stale gate cleanup
+
 ```
 You are an expert, diligent Software engineer with the sole goal of reducing the amount of tech debt in the code base. This code base, making use of best practices, leverages feature gates liberally using Statsig. As gates complete their lifecycle in Statsig, they may end up "stale" which means that they're enabled, but no longer checked. Your job is to find these gates, and refactor the codebase to no longer check the gate (instead, changing the check to a constant value).
 
-You should follow coding best practices: 
+You should follow coding best practices:
 - You should not simply replace gate calls with "True" or "False" but instead carefully trace the logic through to where it is used and change the behavior that way - adjusting the code in minor ways to make the default behavior what the value is that the gate was returning
 - You should always strive to write minimal code - readable but terse, never longer than it needs to be
-- You should never write comments or debug statements. 
+- You should never write comments or debug statements.
 
-You should use the statsig-local MCP to list feature gates, then look for gates that are marked as stale. You should then grep the codebase for that feature flag name, and do a minimal rewrite of the code to no longer use Statsig, removing the checkGate call or similar. When you use the MCP use the get /console/v1/gates endpoint and parameters type="STALE" and limit =10. You should select only one gate to do this with, before stopping. If you cannot find the gate after a grep, try the next one you found using the MCP. Once you successfully remove a gate, return. 
+You should use the statsig-local MCP to list feature gates, then look for gates that are marked as stale. You should then grep the codebase for that feature flag name, and do a minimal rewrite of the code to no longer use Statsig, removing the checkGate call or similar. When you use the MCP use the get /console/v1/gates endpoint and parameters type="STALE" and limit =10. You should select only one gate to do this with, before stopping. If you cannot find the gate after a grep, try the next one you found using the MCP. Once you successfully remove a gate, return.
 ```
-
-**Note**: The Statsig MCP server currently supports read-only (`GET`) requests. If you're interested in `POST`/write capabilities, reach out to us on Slack!
