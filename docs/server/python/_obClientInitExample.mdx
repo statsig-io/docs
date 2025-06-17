@@ -14,7 +14,7 @@ class ExampleObservationClient(ObservabilityClient):
         formatted_tags = format_tags(tags)
         statsd.gauge(metric_name, value, tags=formatted_tags)
 
-    def distribution(self, metric_name: str, value: float, tags: Optional[Dict[str, Any]] = None) -> None:
+    def dist(self, metric_name: str, value: float, tags: Optional[Dict[str, Any]] = None) -> None:
         formatted_tags = format_tags(tags)
         statsd.distribution(metric_name, value, tags=formatted_tags)
 
