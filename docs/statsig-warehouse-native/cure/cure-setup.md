@@ -28,7 +28,7 @@ Per-experiment, specify additional covariates or remove covariates specific to y
 
 ![Experiment Settings](/img/cure/experiment_setting.png)
 
-Like with the experiment settings, this list is sourced from the experiment assignment source columns as well as relevatn Entity Property Sources.
+Like with the experiment settings, this list is sourced from the experiment assignment source columns as well as relevant Entity Property Sources.
 
 ## Metric:Metric
 
