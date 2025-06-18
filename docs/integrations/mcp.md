@@ -73,5 +73,3 @@ You should follow coding best practices:
 
 You should use the statsig-local MCP to list feature gates, then look for gates that are marked as stale. You should then grep the codebase for that feature flag name, and do a minimal rewrite of the code to no longer use Statsig, removing the checkGate call or similar. When you use the MCP use the get /console/v1/gates endpoint and parameters type="STALE" and limit =10. You should select only one gate to do this with, before stopping. If you cannot find the gate after a grep, try the next one you found using the MCP. Once you successfully remove a gate, return. 
 ```
-
-**Note**: The Statsig MCP server currently supports read-only (`GET`) requests. If you're interested in `POST`/write capabilities, reach out to us on Slack!

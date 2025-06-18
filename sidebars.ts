@@ -357,7 +357,7 @@ const sidebars: SidebarsConfig = {
         {
           type: "category",
           label: "Low-Code Experiments",
-          className: "layer-icon sidebar-icon",
+          className: "sidecar-icon sidebar-icon",
           items: [
             "guides/sidecar-experiments/introduction",
             "guides/sidecar-experiments/setup",
@@ -419,6 +419,11 @@ const sidebars: SidebarsConfig = {
             "session-replay/configure",
             "session-replay/watch",
           ],
+        },
+        {
+          type: "doc",
+          id: "integrations/mcp",
+          className: "ai-icon sidebar-icon",
         },
       ],
     },
@@ -625,8 +630,7 @@ const sidebars: SidebarsConfig = {
                 "azureai/capturing-metrics",
                 "azureai/running-experiments",
               ],
-            },
-            "integrations/mcp",
+            }
           ],
         },
         {
