@@ -28,12 +28,13 @@ The Metric Drilldown chart in Metrics Explorer is a versatile tool for understan
 - **Flexible Visualization Options**: Choose from a range of visualization formats, like line charts, bar charts, horizontal bar charts, and stacked bar charts, to best represent your data. The right visualization can make complex data more understandable and actionable.
 - **Event Samples for Debugging**: Quickly access and analyze a metric’s underlying sample events, and the granular user-level information attached to the event. This feature is particularly useful for troubleshooting and understanding the root causes of trends or anomalies in your data.
 - **Detailed Data Control**: Adjust the granularity of your data analysis, from high-level overviews to detailed breakdowns. Use features like rolling averages to smooth data for more accurate trend analysis and decision-making.
+- **Debug Experiments**: Breakdown your experiment's first exposures to understand how certain properties or groups (feature gates, experiments, holdouts) affect your experiment.
 
 # Using the Metric Drilldown Chart
 
 ## Selecting Metrics and Events
 
-In Metrics Explorer you can choose events, custom-metrics, or auto-generated metrics to explore. You can add several metrics and events to plot on a single chart. 
+In Metrics Explorer you can choose events, custom-metrics, auto-generated metrics, or experiment exposures to explore. You can add several metrics and events or experiments to plot on a single chart. 
 
 ### Events
 
@@ -62,7 +63,9 @@ When selecting an event, the total number of times the event occurred (Count) on
     
     ![image](https://github.com/user-attachments/assets/112d74ec-7a52-4621-8969-af79e8599714)
 
-    
+### Exposures
+
+Selecting an experiment exposure plots the experiment's first exposures over your selected date-range.
 
 ### Metrics
 
@@ -72,7 +75,7 @@ Selecting a custom Metric or auto-generated  Metric plots the value of that metr
 
 You can easily view the definition of the metric directly below the metric name.  You can also modify your metric plot on the fly by making ad-hoc edits to the event based definition shown. This allows you to plot new metrics on the fly, based on metrics you have already defined.  
 
-### Comparing Multiple Metrics or Events
+### Comparing Multiple Metrics, Events, or Exposures
 
 You can compare multiple metrics or events by plotting them on the same chart. To add multiple metrics click the “+” icon and select “Metric”. Then select the metric of interest. 
 
