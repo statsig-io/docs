@@ -34,7 +34,7 @@ The Metric Drilldown chart in Metrics Explorer is a versatile tool for understan
 
 ## Selecting Metrics and Events
 
-In Metrics Explorer you can choose events, custom-metrics, auto-generated metrics, or experiment exposures to explore. You can add several metrics and events or experiments to plot on a single chart. 
+In Metrics Explorer you can choose events, custom-metrics, auto-generated metrics, or experiment exposures to explore. You can add several metrics and events or exposures to plot on a single chart.
 
 ### Events
 
