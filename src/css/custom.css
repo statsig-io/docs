@@ -366,6 +366,14 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/integrations-active.svg");
 }
 
+.sidecar-icon::before {
+  background-image: url("/img/icons/sidebar/sidecar.svg");
+}
+
+.sidecar-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/sidecar-active.svg");
+}
+
 .xp-icon::before {
   background-image: url("/img/icons/sidebar/xp.svg");
 }
