@@ -18,13 +18,17 @@ In project settings under Experimentation, specify default covariates for your c
 
 ![Project Settings](/img/cure/project_setting.png)
 
-Properties with an EPS name attached come from a property source and will always be included. Properties without an EPS come from an assignment source, and will be used if the column exists on the assignment source of a given experiment.
+Covariates can be sourced from the assignment source for the experiment, or from Entity Property Sources.
+
+Properties with an Entity Property Source name attached come from a property source and will always be included on the experiment. Properties without an EPS come from an assignment source, and will be used if the column exists on the assignment source of a given experiment.
 
 ## Experiment Settings
 
 Per-experiment, specify additional covariates or remove covariates specific to your analysis:
 
 ![Experiment Settings](/img/cure/experiment_setting.png)
+
+Like with the experiment settings, this list is sourced from the experiment assignment source columns as well as relevant Entity Property Sources.
 
 ## Metric:Metric
 
