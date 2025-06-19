@@ -18,7 +18,7 @@ In project settings under Experimentation, specify default covariates for your c
 
 ![Project Settings](/img/cure/project_setting.png)
 
-Covariates can be sourced from an assignment sources for the experiment, or from Entity Property Sources.
+Covariates can be sourced from the assignment source for the experiment, or from Entity Property Sources.
 
 Properties with an Entity Property Source name attached come from a property source and will always be included on the experiment. Properties without an EPS come from an assignment source, and will be used if the column exists on the assignment source of a given experiment.
 
