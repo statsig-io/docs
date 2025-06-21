@@ -21,7 +21,7 @@ By default, a feature gate check returns **false** when there are no rules confi
 - Select the feature gate where you want to add a targeting rule
 - Click the **Add New Rule** button 
 
-![image](https://user-images.githubusercontent.com/1315028/129073615-5450677f-7722-49f5-827b-d21b5711c3e5.png)
+![adding rules](../../static/img/feature-flags/rules.png)
 
 - You can select the criteria for identifying your target users in several ways:
   - You can target users based on common application properties such as the operating system that the application is running on as shown below 
