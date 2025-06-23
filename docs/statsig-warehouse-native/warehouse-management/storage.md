@@ -42,9 +42,21 @@ This can lead to a large number of artifacts; customers running 300+ experiments
 
 Transient tables have a short ttl - usually 1-2 days - and will be automatically cleaned up.
 
-Other tables are permanent by default, and can be cleaned up from the experiment in statsig's console or as part of launching an experiment. Additionally, TTLs can be configured for tables by "mode" (e.g. results, permanent staging, and transient staging) in the data connection section of a project's settings.
+Other tables are permanent by default, and can be cleaned up from the experiment in statsig's console or as part of launching an experiment. Additionally, TTLs can be configured for tables by type in the data connection section of a project's settings.
 
 It may also make sense to manage storage programmatically via your own warehouse tools, e.g. cleaning up entities which have not been accessed or modified in the last month. Generally this is not necessary given TTLs, but in some cases failures can occur and Statsig's internal tracking can consider a table dropped when it still has a storage footprint.
+
+**How TTLs work**
+When Statsig creates or modified a table it manages, it will use the current TTL setting to schedule a cleanup of that table at the current time + the TTL. For example, if a Result table is being written on 6/1, and Result tables are configured with a 14-day TTL, a deletion will be scheduled for 6/15. 
+
+If that table were modified on 6/7 (e.g. through a scorecard reload), the deletion request would be set to 6/21, overwriting the existing one. In this way, incremental updates on long-running experiments keep their staging data until the experiment stops. 
+
+This does mean that changing TTLs will not retroactively impact existing tables' deletion requests until a scorecard load is run for the relevant experiment.
+
+**Types of Tables for TTL**
+- `Result Datasets` are the final tables Statsig creates at the end of an experiment or gate reload that contain the aggregated group-metric level data. These are generally pretty small (1 row per metric/day/group/dimension) and useful for post-hoc analysis
+- `Intermediate Tables` are all the other tables Statsig writes to throughout the course of an experiment reload; these can be large since they can contain user-level data. These are re-used for incremental and metric reloads.
+- `Transient Datasets` refer to tables created for one-off queries (most commonly Explore queries and Power Analyses), or temporary datasets used while creating `Intermediate Tables` as a performance optimization. By default, these are dropped after 2-3 days (unless overridden with the setting above)
 
 **Explore Query Dependencies**: Explore queries rely specifically on permanent staging tables for functionality. These tables are used to reduce the need to re-compute data for analysis that was already performed by the scorecard run. Unlike results tables which are cached locally on Statsig servers, permanent staging tables must be maintained in your warehouse for explorer queries to function properly; this is to avoid regressing large volumes of data that may contain PII or other sensitive information.
 
