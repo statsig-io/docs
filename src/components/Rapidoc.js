@@ -155,6 +155,10 @@ export default function Rapidoc(props) {
           header.<br />
           The value should be a Console API Key which can be created in{" "}
           <code>'Project Settings' {">"} 'API Keys' tab</code>. <br />
+          You can{" "}
+          <a href="https://console.statsig.com/api_keys" target="_blank" rel="noopener noreferrer">
+            create or manage your keys here
+          </a>.
           To use the 'try it' section on this page, enter your Console API into
           the box below.
         </p>
