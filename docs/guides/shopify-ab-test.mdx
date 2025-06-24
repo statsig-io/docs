@@ -92,7 +92,7 @@ analytics.subscribe("product_viewed", (event) => {
 ```
 
 For tracking behaviors in the main storefront experience, you can also leverage the following:
-- [Autocapture](/guides/sidecar-experiments/measuring-experiments#using-autocapture) loads by default with Sidecar, and will automatically collect various user behaviors.
+- [Autocapture](/webanalytics/events) loads by default with Sidecar, and will automatically collect various user behaviors.
 - [Instrumenting custom event logging](/guides/sidecar-experiments/measuring-experiments#using-the-tracking-api) to track behaviors using code. 
 
 ## Using Shopify Headless + Statsig SDKs for deeper experimentation
@@ -104,4 +104,4 @@ Whether you're using Shopify's [Hydrogen app](https://shopify.dev/docs/storefron
 #### Integrating data sources for experiment metrics
 Along with the measuring simple click stream and point-of-sale behavior as [outlined here](http://localhost:3004/guides/first-shopify-abtest#configure-event-tracking-and-metrics), commerce businesses performing deeper experimentation often want to integrate offline data systems and measure experiments using existing metrics that the broader business uses. 
 
-Commonly, the Data Warehouse is the source of truth for user purchase data and other categories of offline data. This affords customers the ability to define more [bespoke metrics](/statsig-warehouse-native/configuration/metrics#metric-types) using filtering, aggregations and incorporating other datasets in the warehouse for segmenting experiment results.   
+Commonly, the Data Warehouse is the source of truth for user purchase data and other categories of offline data. This affords customers the ability to define more [bespoke metrics](/statsig-warehouse-native/configuration/metrics#metric-types) using filtering, aggregations and incorporating other datasets in the warehouse for segmenting experiment results.      
