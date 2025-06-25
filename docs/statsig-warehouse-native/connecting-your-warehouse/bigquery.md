@@ -68,3 +68,5 @@ C01d5f80s
 ![BQ 1st party service account](/img/1stprtybq3.png)
 
 4. Copy/paste the contents of that file into the Service Account Private Key field in the Statsig Console and save the connection
+
+   
