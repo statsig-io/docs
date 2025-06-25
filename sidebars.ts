@@ -135,6 +135,7 @@ const sidebars: SidebarsConfig = {
                 "feature-flags/overrides",
                 "feature-flags/test-gate",
                 "feature-flags/view-exposures",
+                "feature-flags/multiple-rollout-stages",
                 "feature-flags/scheduled-rollouts",
                 {
                   type: "category",
@@ -630,7 +631,7 @@ const sidebars: SidebarsConfig = {
                 "azureai/capturing-metrics",
                 "azureai/running-experiments",
               ],
-            }
+            },
           ],
         },
         {
