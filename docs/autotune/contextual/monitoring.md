@@ -41,6 +41,7 @@ Traffic allocation shows you where Statsig is sending users who see your Autotun
 
 # Model Features
 
-(In Beta)
-
 Statsig tracks and surfaces coefficients and feature importance; this can be very useful for understanding which features might be worth further study, or which populations may have unmet needs in your product.
+
+- Importance is an estimate of the influence of a feature on the outcome; in Layman's terms, this is "how important" the feature is to the prediction
+- A positive coefficient means that feature leads to an outcome being more likely (or for continuous outcome spaces is associated with a higher outcome. A negative coefficient means the outcome is less likely, or is associated with a lower continuous outcome.
