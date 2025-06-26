@@ -26,7 +26,7 @@ export default RootPage;
 ```
 
 ## Deferring Initialization until user information is available
-If your user information (identity, properties) become available on the webpage asyncronously after Statsig has loaded, you should consider defering initialization rather than initializating with an empty user object and calling updateUser later on.
+If your user information (identity, properties) become available on the webpage asyncronously after Statsig has loaded, you should consider defering initialization rather than initializing with an empty user object and calling updateUser later on.
 
 You can implement a modified StatsigProvider that implements a useEffect hook that automatically handles user state mutations. 
 This example will defer initialization until user object is defined, and then will automatically reinitialize Statsig and propogate gate/experiment state changes to child components any time the user object is updated.
