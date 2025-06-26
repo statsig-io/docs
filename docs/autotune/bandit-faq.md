@@ -27,3 +27,13 @@ Bandits optimize for a single target metric or event. This doesn't give a super-
 ### Where is my Autotune data available?
 
 Autotune data is downloaded hourly into the `statsig_first_exposures` metric source. Click into the history modal on the autotune itself to see the SQL and tables generated for an individual autotune.
+
+### Why was a "losing" variant chosen?
+
+Autotune makes the assumption that a metric is consistent across time; in other words, if a metric has strong seasonality (e.g. a metric which tanks on the weekends) it is not a good candidate for usage in an Autotune experiment. With seasonality, this case is possible:
+
+- One variant which consistently performs worse than other variants gets less and less traffic, until it has essentially zero traffic
+- Other variants, which are still receiving traffic, see their metric tank when the season effects kick in
+- The variant with zero traffic doesn't see that metric tank (because no traffic is being allocated to it), which causes it to be chosen as the winning variant
+
+This may sometimes cause a "losing" variant to be chosen as the winner.
