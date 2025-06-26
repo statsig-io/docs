@@ -24,3 +24,48 @@ function RootPage() {
 
 export default RootPage;
 ```
+
+## Deferring Initialization until user information is available
+If your user information (identity, properties) become available on the webpage asyncronously after Statsig has loaded, you should consider defering initialization rather than initializating with an empty user object and calling updateUser later on.
+
+You can implement a modified StatsigProvider that implements a useEffect hook that automatically handles user state mutations. 
+This example will defer initialization until user object is defined, and then will automatically reinitialize Statsig and propogate gate/experiment state changes to child components any time the user object is updated.
+
+```js
+import React, { useEffect, useState } from "react"
+import { Provider } from "statsig-react"
+import { StatsigClient } from "statsig-js"
+
+export const StatsigProvider = ({ children, value }) => {
+  const [client, setClient] = useState<StatsigClient | null>(null)
+
+  useEffect(() => {
+    const user = {
+      userID: value?.user?.id,
+      custom: {
+        isLoggedIn: value?.user ? "true" : "false",
+      },
+    }
+
+    const newClient = new StatsigClient(
+      process.env.STATSIG_CLIENT_SDK_KEY,
+      user,
+      {
+        environment: { tier: process.env.RUNTIME_ENV }
+      }
+    )
+
+    // Kick off async initialization, but don't wait
+    newClient.initializeAsync().catch(console.error)
+
+    // Set the client right away
+    setClient(newClient)
+  }, [value?.user])
+
+  if (!client) {
+    return null // or a loading UI if needed
+  }
+
+  return <Provider client={client}>{children}</Provider>
+}
+```
