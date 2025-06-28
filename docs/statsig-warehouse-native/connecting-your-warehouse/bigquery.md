@@ -55,3 +55,18 @@ C01d5f80s
 ### What IP addresses will Statsig access data warehouses from?
 
 [See FAQ](/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from)
+
+## Using a First Party Service Account
+1. Speak with your Statsig technical point of contact and request enabling 1st party service account connectivity for Big Query
+
+2. On the BQ service accounts page, click 'Manage Keys' for the service account you want to use
+
+![BQ 1st party service account](/img/1stprtybq.png)
+
+3. Create a new JSON key (which will download a JSON file)
+![BQ 1st party service account](/img/1stprtybq2.png)
+![BQ 1st party service account](/img/1stprtybq3.png)
+
+4. Copy/paste the contents of that file into the Service Account Private Key field in the Statsig Console and save the connection
+
+   
