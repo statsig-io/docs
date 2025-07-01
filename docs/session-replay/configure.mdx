@@ -59,11 +59,11 @@ Example Scenario:
 
 1. A US user starts a session. They do not pass the 25% Global Sampling Rate, so their session is not recorded from the beginning.
 2. Later, a `purchase_event` occurs with value `book`. This event is set up as a conditional trigger with a 50% sampling rate. If this session fails the sampling rate check, recording does not start.
-3. A minute later, the user is exposed to the `cool_new_feature` gate, and the recording begins
+3. A minute later, the user is exposed to the `cool_new_feature` gate, and the recording begins.
 
 Note: A trigger’s sampling rate is consistent for the entire session based on session_id. So if `purchase_event` fails the sampling rate once, future occurrences of the same event in that session will also fail.
 
-### Initalization - StatsigTriggeredSessionReplay
+### Initialization - StatsigTriggeredSessionReplay
 
 <Tabs
   groupId="session-replay-js-framework"
