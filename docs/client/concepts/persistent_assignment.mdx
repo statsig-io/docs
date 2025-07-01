@@ -41,9 +41,8 @@ Currently only supported in `Javascript`, `iOS` and `Android` On Device Evaluati
   ]}>
   <TabItem value="js-mono">
 ```typescript
-const storage = new CustomStorageAdapter(); // Need to implement
 const adapter = new UserPersistentOverrideAdapter(storage);
-const client = new StatsigOnDeviceEvalClient(
+const client = new StatsigClient(
   'client-key', 
   { overrideAdapter: adapter }
 );
