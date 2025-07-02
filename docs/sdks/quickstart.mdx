@@ -83,8 +83,7 @@ This quickstart will guide you through quickly installing the Statsig SDK in a c
     return (
       <StatsigProvider 
         sdkKey={process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!}
-        user={{ userID: "quickstart-user" }}
-        }}>
+        user={{ userID: "quickstart-user" }}>
         {children}
       </StatsigProvider>
     );
