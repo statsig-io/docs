@@ -133,7 +133,11 @@ Beyond experiments, the logging mechanism demonstrated above provides valuable i
 
 #### How to view Model Analytics in Statsig
 
-By consistently logging these metrics, you can create custom dashboards in Statsig Pulse to monitor the health and effectiveness of your AI models in real-time. This allows you to identify performance bottlenecks, cost inefficiencies, and areas for improvement.
+By consistently logging these metrics, you can create custom dashboards in Statsig to monitor the health and effectiveness of your AI models in real-time. This allows you to identify performance bottlenecks, cost inefficiencies, and areas for improvement.
+
+For example, within minutes of adding this logging to your function, you can start to see the breakdown of latency per model with a query like this:
+
+![metrics explorer](https://github.com/user-attachments/assets/c18ffb62-ff91-4fec-b5e4-64eaab63d528)
 
 ### Example Use Cases enabled by this Integration
 
