@@ -26,6 +26,8 @@ This integration empowers developers to:
 
 ### Use Case 1: Prompt and/or Model Experiments
 
+This use case demonstrates how to use Statsig experiments to test different prompts and AI models within your Cloudflare Worker.  For the sake of this example, we have 4 groups in our experiment.  A control, with our default prompt and llama model, and then each possible variant switching to a different prompt and/or model (deepseek, in this case).
+
 This use case demonstrates how to use Statsig experiments to test different prompts and AI models within your Cloudflare Worker.  For the sake of this example, we have 4 groups in our experiment.  A control, with our default prompt and llama model, and then each posible variant switching to a different prompt and/or model (deepseek, in this case).
 
 #### Sample Experiment Setup in Statsig Console
