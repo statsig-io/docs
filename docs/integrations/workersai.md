@@ -1,5 +1,6 @@
 ---
 title: Cloudflare Workers AI
+sidebar_label: Cloudflare Workers AI
 keywords:
   - owner:tore
 last_update:
