@@ -25,19 +25,11 @@ This integration empowers developers to:
 
 ### Use Case 1: Prompt and/or Model Experiments
 
-This use case demonstrates how to use Statsig experiments to test different prompts and AI models within your Cloudflare Worker.
+This use case demonstrates how to use Statsig experiments to test different prompts and AI models within your Cloudflare Worker.  For the sake of this example, we have 4 groups in our experiment.  A control, with our default prompt and llama model, and then each posible variant switching to a different prompt and/or model (deepseek, in this case).
 
 #### Sample Experiment Setup in Statsig Console
 
-**(You will add screenshots here illustrating an experiment setup in the Statsig Console. This would show an experiment named "workers\_ai\_prompt" with two "Layers" or "Groups". Each group would have different values for "prompt" and "model" parameters.)**
-
-For example, you might have:
-
-  * **Control Group:** `prompt: "What is the origin of the phrase Hello, World?"`, `model: "@cf/meta/llama-3.1-8b-instruct"`
-  * **Test deepseek Group:** `prompt: "What is the origin of the phrase Hello, World?"`, `model: "@cf/deepseek-r1-distill-qwen-32b"`
-  * **Test prompt group:** `prompt: "Give a concise origin of the phrase Hello World"`, `model: "@cf/meta/llama-3.1-8b-instruct"`
-  * **Test prompt and deepseek Group:** `prompt: "Give a concise origin of the phrase Hello World"`, `model: "@cf/deepseek-r1-distill-qwen-32b"`
-
+![prompt and model experiment](https://github.com/user-attachments/assets/79661a95-6c1f-4900-b083-b4c27186df66)
 
 #### Worker Code for Prompt/Model Experimentation
 
@@ -56,7 +48,6 @@ export default {
         userID: rayID,
     };
 
-    // Get experiment parameters from Statsig
     const promptExp = Statsig.getExperimentSync(
         user,
         "workers_ai_experiment", // Name of your experiment in Statsig Console
@@ -140,8 +131,6 @@ Beyond experiments, the logging mechanism demonstrated above provides valuable i
       * **Downstream Metrics:** Track how the AI's output influences key business metrics (e.g., conversion rates if the AI is generating product descriptions, or user engagement if it's a chatbot).
 
 #### How to view Model Analytics in Statsig
-
-**(You will add screenshots here illustrating the Statsig Pulse or Metrics dashboard showing graphs for `ai_inference_ms`, `prompt_tokens`, `completion_tokens`, or custom events like 'thumbs\_up\_feedback'.)**
 
 By consistently logging these metrics, you can create custom dashboards in Statsig Pulse to monitor the health and effectiveness of your AI models in real-time. This allows you to identify performance bottlenecks, cost inefficiencies, and areas for improvement.
 
