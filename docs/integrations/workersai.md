@@ -1,4 +1,10 @@
-This document outlines how to integrate Statsig with Cloudflare Workers AI for advanced experimentation and analytics on your AI models.
+---
+title: Cloudflare Workers AI
+keywords:
+  - owner:tore
+last_update:
+  date: 2025-07-03
+---
 
 ## Statsig Cloudflare Workers AI Integration
 
