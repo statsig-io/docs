@@ -115,7 +115,7 @@ async function initStatsig(env: Env) {
 2.  **`Statsig.getExperimentSync(...)`**: This is the core of the experimentation. It retrieves the assigned experiment variant for the current user (based on `rayID`) for the `workers_ai_experiment` experiment. The `get()` method then safely retrieves the `prompt` and `model` parameters defined in your Statsig experiment, falling back to default values if the experiment or parameter is not found.
 3.  **`env.AI.run(model, { prompt })`**: This executes the AI model provided by Cloudflare Workers AI with the dynamically chosen `model` and `prompt`.
 4.  **Latency Measurement**: `performance.now()` is used to capture the start and end times of the AI inference, allowing you to track the `ai_inference_ms` metric.
-5.  **`logUsageToStatsig(...)`**: This function logs a custom event (`cf_ai`) to Statsig. It includes the `model` used as the event value and attaches metadata such as `ai_inference_ms` and any `usage` information (e.g., token counts) returned by the AI model. This data is crucial for analyzing model performance and cost.
+5.  **`logUsageToStatsig(...)`**: This function logs a custom event (`cloudflare_ai`) to Statsig. It includes the `model` used as the event value and attaches metadata such as `ai_inference_ms` and any `usage` information (e.g., token counts) returned by the AI model. This data is crucial for analyzing model performance and cost.
 6.  **`ctx.waitUntil(Statsig.flush(1000))`**: This ensures that all logged events are asynchronously sent to Statsig before the Worker's execution context is terminated, without blocking the response to the user.
 
 ### Use Case 2: Model Analytics
