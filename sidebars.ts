@@ -560,6 +560,7 @@ const sidebars: SidebarsConfig = {
                 "guides/cdn-edge-testing",
                 "integrations/vercel",
                 "integrations/cloudflare",
+                "integrations/workersai",
                 "integrations/fastly",
                 "integrations/akamai",
               ],
