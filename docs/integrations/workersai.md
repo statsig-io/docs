@@ -28,8 +28,6 @@ This integration empowers developers to:
 
 This use case demonstrates how to use Statsig experiments to test different prompts and AI models within your Cloudflare Worker.  For the sake of this example, we have 4 groups in our experiment.  A control, with our default prompt and llama model, and then each possible variant switching to a different prompt and/or model (deepseek, in this case).
 
-This use case demonstrates how to use Statsig experiments to test different prompts and AI models within your Cloudflare Worker.  For the sake of this example, we have 4 groups in our experiment.  A control, with our default prompt and llama model, and then each posible variant switching to a different prompt and/or model (deepseek, in this case).
-
 #### Sample Experiment Setup in Statsig Console
 
 ![prompt and model experiment](https://github.com/user-attachments/assets/e5ed3e92-60af-4dc6-95a6-0f99eeae5152)
@@ -86,7 +84,7 @@ function logUsageToStatsig(user: StatsigUser, model: string, response: any, aiIn
     ai_inference_ms: aiInferenceMs,
   };
   
-  Statsig.logEvent(user, "cf_ai", model, metadata);
+  Statsig.logEvent(user, "cloudflare_ai", model, metadata);
 }
 
 /**
