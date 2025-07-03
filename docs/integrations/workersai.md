@@ -36,7 +36,7 @@ See the sample code below for the experiment implementation in a Cloudflare Work
 
 ### Use Case 2: Model Analytics
 
-Beyond experiments, the logging mechanism demonstrated above provides valuable insights into your AI model's performance and usage patterns.  You could keep the default parameters above and still get insights from the metadata you log to Statsig.
+Beyond experiments, the logging mechanism illustrated below provides valuable insights into your AI model's performance and usage patterns.  You could keep the default parameters for models and prompts and still get insights from the metadata you log to Statsig.
 
 #### What to track for Model Analytics:
 
