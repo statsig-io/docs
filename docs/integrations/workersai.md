@@ -32,7 +32,31 @@ This use case demonstrates how to use Statsig experiments to test different prom
 
 ![prompt and model experiment](https://github.com/user-attachments/assets/e5ed3e92-60af-4dc6-95a6-0f99eeae5152)
 
-#### Worker Code for Prompt/Model Experimentation
+See the sample code below for the experiment implementation in a Cloudflare Worker with AI.
+
+### Use Case 2: Model Analytics
+
+Beyond experiments, the logging mechanism demonstrated above provides valuable insights into your AI model's performance and usage patterns.  You could keep the default parameters above and still get insights from the metadata you log to Statsig.
+
+#### What to track for Model Analytics:
+
+  * **Latency (`ai_inference_ms`):** Crucial for understanding user experience. You can monitor average, P90, P99 latencies in Statsig.
+  * **Model Usage (e.g., `prompt_tokens`, `completion_tokens`):** If your AI provider returns token counts, logging these allows you to track cost and efficiency.
+  * **Error Rates:** Log events when the AI model returns an error or an unexpected response.
+  * **Output Quality (via custom events):**
+      * **User Feedback:** If your application allows users to rate the AI's response (e.g., thumbs up/down), log these as Statsig events.
+      * **Downstream Metrics:** Track how the AI's output influences key business metrics (e.g., conversion rates if the AI is generating product descriptions, or user engagement if it's a chatbot).
+
+#### How to view Model Analytics in Statsig
+
+By consistently logging these metrics, you can create custom dashboards in Statsig to monitor the health and effectiveness of your AI models in real-time. This allows you to identify performance bottlenecks, cost inefficiencies, and areas for improvement.
+
+For instance, within minutes of adding the logging from the example below to your function, you can start to see the breakdown of latency per model with a query like this:
+
+![metrics explorer](https://github.com/user-attachments/assets/c18ffb62-ff91-4fec-b5e4-64eaab63d528)
+
+
+#### Example Worker Code for Prompt/Model Experimentation and Analytics
 
 ```typescript
 import { CloudflareKVDataAdapter } from 'statsig-node-cloudflare-kv';
@@ -118,28 +142,7 @@ async function initStatsig(env: Env) {
 5.  **`logUsageToStatsig(...)`**: This function logs a custom event (`cloudflare_ai`) to Statsig. It includes the `model` used as the event value and attaches metadata such as `ai_inference_ms` and any `usage` information (e.g., token counts) returned by the AI model. This data is crucial for analyzing model performance and cost.
 6.  **`ctx.waitUntil(Statsig.flush(1000))`**: This ensures that all logged events are asynchronously sent to Statsig before the Worker's execution context is terminated, without blocking the response to the user.
 
-### Use Case 2: Model Analytics
-
-Beyond experiments, the logging mechanism demonstrated above provides valuable insights into your AI model's performance and usage patterns.  You could keep the default parameters above and still get insights from the metadata you log to Statsig.
-
-#### What to track for Model Analytics:
-
-  * **Latency (`ai_inference_ms`):** Crucial for understanding user experience. You can monitor average, P90, P99 latencies in Statsig.
-  * **Model Usage (e.g., `prompt_tokens`, `completion_tokens`):** If your AI provider returns token counts, logging these allows you to track cost and efficiency.
-  * **Error Rates:** Log events when the AI model returns an error or an unexpected response.
-  * **Output Quality (via custom events):**
-      * **User Feedback:** If your application allows users to rate the AI's response (e.g., thumbs up/down), log these as Statsig events.
-      * **Downstream Metrics:** Track how the AI's output influences key business metrics (e.g., conversion rates if the AI is generating product descriptions, or user engagement if it's a chatbot).
-
-#### How to view Model Analytics in Statsig
-
-By consistently logging these metrics, you can create custom dashboards in Statsig to monitor the health and effectiveness of your AI models in real-time. This allows you to identify performance bottlenecks, cost inefficiencies, and areas for improvement.
-
-For example, within minutes of adding this logging to your function, you can start to see the breakdown of latency per model with a query like this:
-
-![metrics explorer](https://github.com/user-attachments/assets/c18ffb62-ff91-4fec-b5e4-64eaab63d528)
-
-### Example Use Cases enabled by this Integration
+### Other Use Cases enabled by this Integration
 
   * **Prompt Tuning:** An e-commerce app running on Workers AI tries two different prompt styles for product descriptions. Statsig tracks cart conversion and time on site, revealing which prompt yields higher sales.
   * **Model Selection:** A developer tests GPT-3.5 vs. GPT-4 within Cloudflare Workers AI. Statsig shows which model, combined with specific temperature or frequency penalty values, generates more accurate or user-satisfying results.
