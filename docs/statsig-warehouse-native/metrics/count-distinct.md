@@ -77,3 +77,6 @@ In the metrics page view, we use APPROX_COUNT_DISTINCT (or equivalent) to avoid 
 - [Cohort Windows](../features/cohort-metrics.md)
   - You can specify a window for data collection after a unit's exposure. For example, a 0-1 day cohort window would only count actions from days 0 and 1 after a unit was exposed to an experiment
     - **Only include units with a completed window** can be selected to remove units out of pulse analysis for this metric until the cohort window has completed
+
+## Limits
+Count distinct metrics are available in most experiments, except for Switchbacks.
