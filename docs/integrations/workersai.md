@@ -30,7 +30,7 @@ This use case demonstrates how to use Statsig experiments to test different prom
 
 #### Sample Experiment Setup in Statsig Console
 
-![prompt and model experiment](https://github.com/user-attachments/assets/79661a95-6c1f-4900-b083-b4c27186df66)
+![prompt and model experiment](https://github.com/user-attachments/assets/e5ed3e92-60af-4dc6-95a6-0f99eeae5152)
 
 #### Worker Code for Prompt/Model Experimentation
 
