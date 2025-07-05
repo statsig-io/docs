@@ -131,7 +131,7 @@ Dashboard templates are a great way to reduce the time to insights. Statsig comp
 - B2B SaaS Topline Metrics
     - Input a key feature event and user subscription events to monitor product usage, user retention and subscription conversion rates over time
 - Web Analytics
-    - Available with Autocapture, track essential web metrics like page views, clicks, and sessions duration. See more on Autocapture [here](/guides/sidecar-experiments/measuring-experiments#using-autocapture)
+    - Available with Autocapture, track essential web metrics like page views, clicks, and sessions duration. See more on Autocapture [here](/webanalytics/events)
 - Create from Gate or Experiment
     - Input your Gate or Experiment of interest to generate a focused dashboard with related monitoring metrics
 - Create from Tag
