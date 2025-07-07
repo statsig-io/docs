@@ -28,8 +28,6 @@ These domains are used by our SDKs to communicate with our backend for feature g
 - `assetsconfigcdn.org`
 - `prodregistryv2.org`
 - `cloudflare-dns.com`
-
-And these as well:
 - `beyondwickedmapping.org`
 
 Note that Statsig's SDKs may switch between these domains on-the-fly as part of our DNS resolution logic.
@@ -37,6 +35,18 @@ Note that Statsig's SDKs may switch between these domains on-the-fly as part of 
 :::info Why such odd names?
 We constantly and dynamically update these domains to prevent overzealous blocking from browser ad blockers. These are updated whenever they pick up the existing ones.
 :::
+
+### Don't care about ad-blockers?
+Use the following approach to minimize the number of Statsig domains you need to whitelist. The [networkConfig](https://docs.statsig.com/client/javascript-sdk/#networkconfig-object) initialization option allows you to specify a single domain for both the initialization server and the log event server.
+
+```js
+new Statsig.StatsigClient('client-YOUR_KEY', {/* CONTEXT */}, {
+  networkConfig: {
+    initializeUrl: 'https://featureassets.org/v1/initialize',
+    logEventUrl: 'https://prodregistryv2.org/v1/rgstr'
+  }
+});
+```
 
 ### Server-side APIs
 If you're just looking for a list of apis used by our backend/server sdks, you need to allow:
