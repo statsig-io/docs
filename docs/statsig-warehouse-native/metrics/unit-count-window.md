@@ -18,7 +18,7 @@ This is an extremely common metric type, used to measure participation rates ear
 
 ## Calculation
 
-At the unit level, unit count metrics create a 1/0 flag for if they participated during the time window. The time window is defined relative to the unit's first expsoure. Subsequent exposures are not considered.
+At the unit level, unit count metrics create a 1/0 flag for if they participated during the time window. The time window is defined relative to the unit's first exposure. Subsequent exposures are not considered.
 
 At the group level, the mean is calculated as the SUM of the unit-level flags, divided by the count of UNIQUE UNITS exposed to the experiment.
 
