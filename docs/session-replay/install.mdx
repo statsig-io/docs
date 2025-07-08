@@ -7,6 +7,7 @@ keywords:
 last_update:
   date: 2025-06-30
 ---
+
 # Install Session Replay and Record Sessions
 
 import Tabs from "@theme/Tabs";
@@ -16,13 +17,14 @@ import GitHubEmbed from "@site/src/components/GitHubEmbed";
 Session Replay is supported on the Javascript or React SDKs for both desktop and mobile web users on your web application. See the instructions below to install our SDK and record user sessions.
 
 ## Option 1 - No code - Add Javascript Snippet to your website
+
 ```
 <script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=[YOUR_CLIENT_KEY]"></script>
 ```
 
 Get YOUR_CLIENT_KEY from Project Settings -> Keys & Environments. Reveal the Client API Key, copy, and paste it over the [YOUR-API-KEY] in the snippet above.
 
-And you're done!  This will auto initialize the sdk and start recording sessions, no code required.
+And you're done! This will auto initialize the sdk and start recording sessions, no code required.
 
 :::info
 If you'd like to use your existing Statsig integration, or customize the integration further, see option 2 below. If you still want to use the script tag but also customize the integration, remove your key from the script url and initialize using the javascript code below.
@@ -83,37 +85,41 @@ Next, following the [instructions for the Statsig Javascript SDK](/client/javasc
   <TabItem value="js">
 
 ```jsx
-import { StatsigClient } from '@statsig/js-client';
-import { runStatsigSessionReplay } from '@statsig/session-replay';
-import { runStatsigAutoCapture } from '@statsig/web-analytics';
+import { StatsigClient } from "@statsig/js-client";
+import { runStatsigSessionReplay } from "@statsig/session-replay";
+import { runStatsigAutoCapture } from "@statsig/web-analytics";
 
-const client = new StatsigClient(sdkKey,
-	{ userID: "some_user_id" },
+const client = new StatsigClient(
+  sdkKey,
+  { userID: "some_user_id" },
   { environment: { tier: "production" } } // optional, pass options here if needed
 );
 runStatsigSessionReplay(client);
 runStatsigAutoCapture(client);
 await client.initializeAsync();
-
 ```
 
   </TabItem>
   <TabItem value="react">
 
 ```jsx
-import { StatsigProvider, useClientAsyncInit } from '@statsig/react-bindings';
-import { StatsigSessionReplayPlugin } from '@statsig/session-replay';
-import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
+import { StatsigProvider, useClientAsyncInit } from "@statsig/react-bindings";
+import { StatsigSessionReplayPlugin } from "@statsig/session-replay";
+import { StatsigAutoCapturePlugin } from "@statsig/web-analytics";
 
 function App() {
   return (
     <StatsigProvider
       sdkKey={YOUR_CLIENT_KEY}
-      user={{ userID: 'a-user' }}
+      user={{ userID: "a-user" }}
       loadingComponent={<div>Loading...</div>}
       options={{
-        plugins: [ new StatsigSessionReplayPlugin(), new StatsigAutoCapturePlugin() ]
-      }}>
+        plugins: [
+          new StatsigSessionReplayPlugin(),
+          new StatsigAutoCapturePlugin(),
+        ],
+      }}
+    >
       <Content />
     </StatsigProvider>
   );
@@ -123,5 +129,8 @@ function App() {
   </TabItem>
 </Tabs>
 
+:::info
+If you'd like to use Conditional Triggers you must use StatsigTriggeredSessionReplay. See Configure (Next page) for more information
+:::
 
-That's it! Continue reading Configure to learn more about controlling who, what, and when you record sessions. 
+That's it! Continue reading Configure to learn more about controlling who, what, and when you record sessions.
