@@ -34,6 +34,9 @@ const title = demoConfiguration.get("title", "Start Demo");
 banner.setTitle(title);
 ```
 
+You can also look at a code snippet for your particular experiment by clicking into the code snippet button on the experiment page and selecting the right SDK
+![experiment code snippet button](https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/CbjKvuo40oMU45psWLvG/c0f22d41-46e9-4be8-87b0-99bcf1f9a5c5.png)
+
 ## Logging events for your scorecard
 
 In order to get experiment results for the events and metrics you care about, you should instrument the experience with the proper event logging (or set up an event integration/data warehouse import to send events to Statsig experimentation stats engine). If you'd like to use our SDKs, your code might look like this:
