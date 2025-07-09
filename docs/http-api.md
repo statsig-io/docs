@@ -49,7 +49,7 @@ The schema is as follows:
 ```
 // StatsigUser - object
 {
-  userID: string; // Required
+  userID: string; // Not required, but you should send at least 1 ID
   email?: string; // Optional user email
   ip?: string; // Optional user IP address
   userAgent?: string; // Optional user agent string for device info
