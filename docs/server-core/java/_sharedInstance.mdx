@@ -7,6 +7,7 @@ statsig.initialize().get();
 
 // Access the shared instance from anywhere in your code
 Statsig sharedStatsig = Statsig.shared();
+StatsigUser user = new StatsigUser.Builder().setUserID("user-123").build();
 boolean isFeatureEnabled = sharedStatsig.checkGate(user, "feature_name");
 
 // Check if a shared instance exists
