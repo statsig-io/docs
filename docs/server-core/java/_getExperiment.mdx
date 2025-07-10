@@ -11,10 +11,12 @@ import TabItem from "@theme/TabItem";
   <TabItem value="java">
 
 ```java
+StatsigUser user = new StatsigUser.Builder().setUserID("user-123").build();
 Layer layer = statsig.getLayer(user, "layer_name");
 ```
 
 ```java
+StatsigUser user = new StatsigUser.Builder().setUserID("user-123").build();
 Experiment experiment = statsig.getExperiment(user, "sample_exp");
 ```
 
@@ -22,10 +24,12 @@ Experiment experiment = statsig.getExperiment(user, "sample_exp");
   <TabItem value="kotlin">
 
 ```kotlin
+val user = StatsigUser.Builder().setUserID("user-123").build()
 val layer = statsig.getLayer(user, "layer_name")
 ```
 
 ```kotlin
+val user = StatsigUser.Builder().setUserID("user-123").build()
 val experiment = statsig.getExperiment(user, "sample_exp")
 ```
 

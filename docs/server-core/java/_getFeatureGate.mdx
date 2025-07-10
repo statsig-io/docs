@@ -11,13 +11,15 @@ import TabItem from "@theme/TabItem";
   <TabItem value="java">
 
 ```java
- FeatureGate gate = statsig.getFeatureGate(user, "example_gate");
+StatsigUser user = new StatsigUser.Builder().setUserID("user-123").build();
+FeatureGate gate = statsig.getFeatureGate(user, "example_gate");
 ```
 
   </TabItem>
   <TabItem value="kotlin">
 
 ```kotlin
+val user = StatsigUser.Builder().setUserID("user-123").build()
 val gate = statsig.getFeatureGate(user, "example_gate")
 ```
 

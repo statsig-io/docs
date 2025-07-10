@@ -14,6 +14,7 @@ import TabItem from "@theme/TabItem";
 
 ```java
 // Get a Parameter Store by name
+StatsigUser user = new StatsigUser.Builder().setUserID("user-123").build();
 ParameterStore parameterStore = statsig.getParameterStore(user, "my_parameter_store");
 ```
 
@@ -22,6 +23,7 @@ ParameterStore parameterStore = statsig.getParameterStore(user, "my_parameter_st
 
 ```kotlin
 // Get a Parameter Store by name
+val user = StatsigUser.Builder().setUserID("user-123").build()
 val parameterStore = statsig.getParameterStore(user, "my_parameter_store")
 ```
 
@@ -102,6 +104,7 @@ You can also use the Statsig instance directly:
   <TabItem value="java">
 
 ```java
+StatsigUser user = new StatsigUser.Builder().setUserID("user-123").build();
 String stringValue = statsig.getStringFromParameterStore(user, "my_parameter_store", "string_param", "default_value");
 ```
 
@@ -109,6 +112,7 @@ String stringValue = statsig.getStringFromParameterStore(user, "my_parameter_sto
   <TabItem value="kotlin">
 
 ```kotlin
+val user = StatsigUser.Builder().setUserID("user-123").build()
 val stringValue = statsig.getStringFromParameterStore(user, "my_parameter_store", "string_param", "default_value")
 ```
 
