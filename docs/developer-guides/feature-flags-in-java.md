@@ -54,17 +54,16 @@ Integrating feature flags into a Java application using the Statsig SDK involves
     - Modify your `HelloWorld` class to initialize Statsig and check a feature flag:
         ```java
         import com.statsig.sdk.Statsig;
-        import com.statsig.sdk.StatsigUser;
         import com.statsig.sdk.StatsigOptions;
+        import com.statsig.sdk.StatsigServer;
 
         public class HelloWorld {
 
             public static void main(String[] args) {
+                StatsigServer statsigServer = new StatsigServer("your-server-secret-key", new StatsigOptions());
+
                 try {
-                    Statsig.initialize("your-server-secret-key", new StatsigOptions());
-                    
-                    StatsigUser user = new StatsigUser("user_id");
-                    boolean featureEnabled = Statsig.checkGateSync(user, "example_feature_flag");
+                    boolean featureEnabled = statsigServer.checkGate("example_feature_flag", "user_id");
                     
                     if (featureEnabled) {
                         System.out.println("Feature Flag is enabled!");
@@ -72,7 +71,7 @@ Integrating feature flags into a Java application using the Statsig SDK involves
                         System.out.println("Hello, World!");
                     }
                 } finally {
-                    Statsig.shutdown();
+                    statsigServer.shutdown();
                 }
             }
         }

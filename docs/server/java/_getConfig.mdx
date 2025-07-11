@@ -12,7 +12,6 @@ import TabItem from "@theme/TabItem";
 
 ```java
 
-StatsigUser user = new StatsigUser("user-123");
 DynamicConfig config = Statsig.getConfigSync(user, "awesome_product_details");
 
 // The 2nd parameter is the default value to be used in case the given parameter name does not exist on
@@ -29,7 +28,6 @@ Boolean shouldDiscount = config.getBoolean("discount", false);
 
 ```kotlin
 
-val user = StatsigUser("user-123")
 val config = Statsig.getConfigSync(user, "awesome_product_details")
 
 // The 2nd parameter is the default value to be used in case the given parameter name does not exist on
