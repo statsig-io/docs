@@ -6,7 +6,8 @@ export const Snippets = {
   // Gates
   gateSnippet: (
     <CodeBlock language="java">
-      {`val passed_or_failed = Statsig.checkGateWithExposureLoggingDisabled(user, "a_gate");`}
+      {`StatsigUser user = new StatsigUser("user-123");
+val passed_or_failed = Statsig.checkGateWithExposureLoggingDisabled(user, "a_gate");`}
     </CodeBlock>
   ),
   gateExposureSnippet: (
@@ -17,7 +18,8 @@ export const Snippets = {
   // Configs
   configSnippet: (
     <CodeBlock language="java">
-      {`val config = Statsig.getConfigWithExposureLoggingDisabled(user, "awesome_product_details")`}
+      {`StatsigUser user = new StatsigUser("user-123");
+val config = Statsig.getConfigWithExposureLoggingDisabled(user, "awesome_product_details")`}
     </CodeBlock>
   ),
   configExposureSnippet: (
@@ -28,7 +30,8 @@ export const Snippets = {
   // Experiment
   experimentSnippet: (
     <CodeBlock language="java">
-      {`val titleExperiment = Statsig.getExperimentWithExposureLoggingDisabled(user, "new_user_promo_title")`}
+      {`StatsigUser user = new StatsigUser("user-123");
+val titleExperiment = Statsig.getExperimentWithExposureLoggingDisabled(user, "new_user_promo_title")`}
     </CodeBlock>
   ),
   experimentExposureSnippet: (
@@ -39,7 +42,8 @@ export const Snippets = {
   // Layer
   layerSnippet: (
     <CodeBlock language="java">
-      {`val layer = Statsig.getLayerWithExposureLoggingDisabled(user, "user_promo_experiments")
+      {`StatsigUser user = new StatsigUser("user-123");
+val layer = Statsig.getLayerWithExposureLoggingDisabled(user, "user_promo_experiments")
 val promoTitle = layer.getString("title", "Welcome to Statsig!")`}
     </CodeBlock>
   ),
