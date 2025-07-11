@@ -63,6 +63,10 @@ When selecting an event, the total number of times the event occurred (Count) on
     
     ![image](https://github.com/user-attachments/assets/112d74ec-7a52-4621-8969-af79e8599714)
 
+- **Unique Values**: Plot the count of distinct values for any property across events or users within the given time range per data point. This aggregation helps answer questions like "How many different referrers drove traffic last week?" or "How many SKUs were added to carts today?" by counting unique property values rather than event occurrences.
+
+- **Count per User**: Plot the frequency distribution of how often users perform a specific event, showing statistics like average, median, or percentile values per user within the given time range per data point. This aggregation helps analyze user engagement patterns by measuring how many times each user performed an event, then applying summary statistics across those users.
+
 ### Exposures
 
 Selecting an experiment exposure plots the experiment's first exposures over your selected date-range.
