@@ -112,7 +112,7 @@ These settings can be adjusted at any time to view Scorecard results with differ
 
 If your experiment has stopped computing results, you can resume updates by clicking the Restart button. There are some important facts to be aware of:
 
-* A Restart is not a [Reset](https://docs.statsig.com/experiments-plus/ending-experiment/#stopping-an-experiment) of your experiment. A Restart will not re-salt (i.e. re-randomize) units in your experiment, and all users will continue to recieve the same group assignments.
+* A Restart is not a [Reset](https://docs.statsig.com/experiments-plus/ending-experiment/#stopping-an-experiment) of your experiment. A Restart will not re-salt (i.e. re-randomize) units in your experiment, and all users will continue to receive the same group assignments.
 * Statsig will begin computing experiment results anew from the restart point, so your metric results will start over. Old results may still be available in timesries and explore query views, but they will not be carried forward or updated.
 * Your Cumulative Exposures chart will update based on new exposures, but the duration of the pause in computations will affect if the chart starts over from zero or your exposure count includes past exposures.
 
