@@ -1,0 +1,105 @@
+---
+sidebar_label: .NET
+title: .NET Server SDK
+keywords:
+  - owner:weihao-statsig
+last_update:
+  date: 2025-01-11
+---
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigOptions,
+  StatsigUser,
+  ManualExposures,
+  Shutdown,
+  Reference,
+  LocalOverrides,
+  PersistentStorage,
+  DataStore,
+  OutputLogger,
+  ObservabilityClient,
+  FieldsNeededMethods,
+  ClientInitResponse
+} from "./Templates/index.mdx";
+
+import Preamble from "./_preamble.mdx";
+import Install from "./dotnet/_install.mdx";
+import Initialize from "./dotnet/_initialize.mdx";
+import CheckGate from "./dotnet/_checkGate.mdx";
+import GetExperiment from "./dotnet/_getExperiment.mdx";
+import GetFeatureGate from "./dotnet/_getFeatureGate.mdx";
+import ParamStores from "./dotnet/_paramStores.mdx";
+import GetConfig from "./dotnet/_getConfig.mdx";
+import LogEvent from "./dotnet/_logEvent.mdx";
+import MoreFAQs from "./dotnet/_faqs.mdx";
+import Options from "./dotnet/_options.mdx";
+import ShutdownSnippet from "./dotnet/_shutdown.mdx";
+import UserSnippet from "./dotnet/_statsigUser.mdx";
+import * as ReferenceSnippets from "./dotnet/_reference.mdx";
+import OverridesSnippet from "./dotnet/_localOverrides.mdx";
+import { Snippets as ManualExposureSnippets } from "./dotnet/_manualExposures.mdx";
+import SharedInstanceSnippet from "./dotnet/_sharedInstance.mdx";
+import ClientInitResponseSnippet from "./dotnet/_clientInitResponse.mdx";
+
+export const Builder = SDKDocsBuilder({
+  sections: [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/statsig-server-core/tree/main/statsig-dotnet",
+      },
+    ],
+    [
+      GettingStarted,
+      {
+        sdkType: ".NET",
+        install: <Install />,
+        preamble: <Preamble />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getExperiment: <GetExperiment />,
+        getFeatureGate: <GetFeatureGate />,
+        getConfig: <GetConfig />,
+        logEvent: <LogEvent />,
+        paramStores: <ParamStores />,
+        sharedInstance: <SharedInstanceSnippet />,
+        hideAsyncDisclaimer: true,
+      },
+    ],
+    [ManualExposures, { ...ManualExposureSnippets }],
+    [StatsigUser, { statsigUser: <UserSnippet /> }],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [ClientInitResponse, {
+      sdkName: ".NET Core",
+      snippet: <ClientInitResponseSnippet />,
+      signature: () => <code>GetClientInitializeResponse</code>,
+    }],
+    [LocalOverrides, { snippet: <OverridesSnippet />,},],
+    [PersistentStorage, { }],
+    [DataStore, { }],
+    [OutputLogger, { }],
+    [ObservabilityClient, { }],
+    [FAQ, { faqs: <MoreFAQs /> }],
+    [Reference, { snippets: <ReferenceSnippets.default /> }],
+    [FieldsNeededMethods, {}],
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>

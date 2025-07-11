@@ -1,0 +1,19 @@
+### **Initialize the SDK**
+
+After installation, you will need to initialize the SDK with a customized configuration using a [**Server Secret Key from the Statsig console**](https://console.statsig.com/api_keys).
+
+```csharp
+using Statsig;
+
+// All StatsigOptions are optional, feel free to adjust them as needed
+var options = new StatsigOptions.Builder()
+    .SetSpecsSyncIntervalMs(10000)
+    .SetEventLoggingFlushIntervalMs(10000)
+    .SetOutputLoggerLevel(OutputLogger.LogLevel.Info)
+    .Build();
+
+var statsig = new Statsig(secretKey, options);
+await statsig.Initialize();
+```
+
+You can also initialize the Statsig client using the method `InitializeWithDetails`. This method initializes the client and returns initialization details, which include metadata such as the success status, initialization source, and any failure details. The key difference between `InitializeWithDetails` and `Initialize` is that this method provides additional debugging information. If initialization fails, the `InitSuccess` field will be `false` and the `FailureDetails` field may be populated.

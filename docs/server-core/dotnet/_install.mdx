@@ -1,0 +1,35 @@
+## Requirements
+
+- .NET 6.0 or higher
+- Compatible with all platforms supported by .NET, including:
+  - Windows (x86_64, arm64)
+  - macOS (x86_64, arm64)
+  - Linux (x86_64, arm64)
+
+## Installation
+
+The Statsig .NET Core SDK is available as a NuGet package.
+
+### Using Package Manager Console
+
+```powershell
+Install-Package Statsig.ServerCore
+```
+
+### Using .NET CLI
+
+```bash
+dotnet add package Statsig.ServerCore
+```
+
+### Using PackageReference
+
+Add the following to your `.csproj` file:
+
+```xml
+<PackageReference Include="Statsig.ServerCore" Version="X.X.X" />
+```
+
+You can find the latest version on [NuGet](https://www.nuget.org/packages/Statsig.ServerCore/).
+
+The .NET Core SDK is pre-built and includes native libraries for all supported platforms. The package manager will automatically resolve the correct version for your target platform.

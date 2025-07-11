@@ -1,0 +1,104 @@
+## Class Reference
+
+### Statsig
+
+The main SDK class for server-side feature flagging and experimentation.
+
+#### Constructor
+```csharp
+public Statsig(string sdkKey, StatsigOptions options)
+```
+
+#### Methods
+
+**Initialize**
+```csharp
+public Task Initialize()
+```
+
+**CheckGate**
+```csharp
+public bool CheckGate(StatsigUser user, string gateName, EvaluationOptions? options = null)
+```
+
+**GetFeatureGate**
+```csharp
+public FeatureGate GetFeatureGate(StatsigUser user, string gateName, EvaluationOptions? options = null)
+```
+
+**GetExperiment**
+```csharp
+public Experiment GetExperiment(StatsigUser user, string experimentName, EvaluationOptions? options = null)
+```
+
+**GetConfig**
+```csharp
+public DynamicConfig GetConfig(StatsigUser user, string configName, EvaluationOptions? options = null)
+```
+
+**GetLayer**
+```csharp
+public Layer GetLayer(StatsigUser user, string layerName, EvaluationOptions? options = null)
+```
+
+**GetParameterStore**
+```csharp
+public ParameterStore GetParameterStore(StatsigUser user, string storeName, EvaluationOptions? options = null)
+```
+
+**LogEvent**
+```csharp
+public void LogEvent(StatsigUser user, string eventName, string? value = null, IReadOnlyDictionary<string, string>? metadata = null)
+public void LogEvent(StatsigUser user, string eventName, int value, IReadOnlyDictionary<string, string>? metadata = null)
+public void LogEvent(StatsigUser user, string eventName, double value, IReadOnlyDictionary<string, string>? metadata = null)
+```
+
+**GetClientInitializeResponse**
+```csharp
+public string GetClientInitializeResponse(StatsigUser user, ClientInitResponseOptions? options = null)
+```
+
+**FlushEvents**
+```csharp
+public Task FlushEvents()
+```
+
+**Shutdown**
+```csharp
+public void Shutdown()
+```
+
+### StatsigUser
+
+Represents a user for feature evaluation and event logging.
+
+#### Constructor
+```csharp
+public StatsigUser(string userId)
+```
+
+#### Properties
+```csharp
+public string UserId { get; set; }
+public string? Email { get; set; }
+public string? Country { get; set; }
+public Dictionary<string, string>? CustomIds { get; set; }
+public Dictionary<string, object>? CustomAttributes { get; set; }
+```
+
+### StatsigOptions
+
+Configuration options for the Statsig SDK.
+
+#### Builder Pattern
+```csharp
+var options = new StatsigOptions.Builder()
+    .SetSpecsSyncIntervalMs(30000)
+    .SetEventLoggingFlushIntervalMs(5000)
+    .SetOutputLoggerLevel(OutputLogger.LogLevel.Info)
+    .Build();
+```
+
+export default function Reference() {
+  return null;
+}
