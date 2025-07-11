@@ -99,7 +99,7 @@ To ensure your dashboard data is up to date, you can refresh dashboard widgets i
 
 ![image](https://github.com/user-attachments/assets/2799df0e-2a71-454b-8fee-df0420cdf68b)
 
-**Automatic Dashboard Refreshes (Warehouse Native)**: For Warehouse Native customers, dashboards can be automatically refreshed on a schedule with results cached for faster loading and a snappier experience.
+**Automatic Dashboard Refreshes**: Dashboards can now be automatically refreshed on a schedule with results cached for faster loading and a snappier experience.
 
 You can configure a refresh frequency for each dashboard (e.g. hourly, daily) and automatically cache results in the background. Once set, queries for that dashboard will run on the specified schedule and store the results. When someone opens the dashboard, they'll see the most recent cached data instantly, instead of triggering fresh queries.
 
@@ -108,7 +108,7 @@ To configure automatic dashboard refreshes:
 2. Scroll to "Schedule Dashboard Refresh" and set the interval
 3. Click Save
 
-This feature is only available for customers using Warehouse Native, where queries run directly against your warehouse.
+This feature helps dashboards load faster and stay up to date without manual effort, especially helpful for shared dashboards or recurring check-ins where you want fresh data ready without delay.
 
 
 ### Organize your Dashboard
