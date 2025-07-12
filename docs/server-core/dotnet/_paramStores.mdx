@@ -1,0 +1,40 @@
+Parameter Store provides a convenient way to fetch parameters from Dynamic Configs, Experiments, and Layers.
+
+```csharp
+var user = new StatsigUser("user-id");
+var store = statsig.GetParameterStore(user, "product_config");
+
+// Get parameters with fallback defaults
+var welcomeMessage = store.GetString("welcome_message", "Hello!");
+var maxItems = store.GetInt("max_items", 10);
+var enableNewUI = store.GetBool("enable_new_ui", false);
+var priceMultiplier = store.GetDouble("price_multiplier", 1.0);
+```
+
+Parameter Store provides methods for retrieving values of different types with fallback defaults.
+
+```csharp
+// Available parameter retrieval methods
+string stringValue = store.GetString("param_name", "default_value");
+int intValue = store.GetInt("param_name", 0);
+bool boolValue = store.GetBool("param_name", false);
+double doubleValue = store.GetDouble("param_name", 0.0);
+```
+
+You can also use the Statsig instance directly:
+
+```csharp
+var user = new StatsigUser("user-id");
+
+// Get from Dynamic Config
+var config = statsig.GetConfig(user, "app_config");
+var value = config.GetString("parameter_name", "default");
+
+// Get from Experiment
+var experiment = statsig.GetExperiment(user, "button_test");
+var buttonColor = experiment.GetString("color", "blue");
+
+// Get from Layer
+var layer = statsig.GetLayer(user, "user_prefs");
+var theme = layer.GetString("theme", "light");
+```

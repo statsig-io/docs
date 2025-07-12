@@ -1,0 +1,34 @@
+```csharp
+// Override a feature gate
+statsig.OverrideGate("new_feature", true);
+
+// Override a dynamic config
+var configOverride = new Dictionary<string, object>
+{
+    ["welcome_message"] = "Hello from override!",
+    ["max_items"] = 20
+};
+statsig.OverrideDynamicConfig("app_config", configOverride);
+
+// Override an experiment
+var experimentOverride = new Dictionary<string, object>
+{
+    ["button_color"] = "red",
+    ["button_size"] = "large"
+};
+statsig.OverrideExperiment("button_test", experimentOverride);
+
+// Override an experiment by group name
+statsig.OverrideExperimentByGroupName("button_test", "control");
+
+// Override a layer
+var layerOverride = new Dictionary<string, object>
+{
+    ["theme"] = "dark",
+    ["font_size"] = 14
+};
+statsig.OverrideLayer("user_preferences", layerOverride);
+
+// Override with specific user ID
+statsig.OverrideGate("premium_feature", true, "user-123");
+```

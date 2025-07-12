@@ -1,0 +1,10 @@
+```csharp
+var user = new StatsigUser("user-id");
+bool gateValue = statsig.CheckGate(user, "new_feature_gate");
+
+if (gateValue) {
+    // Show new feature
+} else {
+    // Show existing experience
+}
+```

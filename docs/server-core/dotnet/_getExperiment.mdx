@@ -1,0 +1,7 @@
+```csharp
+var user = new StatsigUser("user-id");
+var experiment = statsig.GetExperiment(user, "button_color_experiment");
+
+var buttonColor = experiment.GetString("color", "blue");
+var buttonSize = experiment.GetInt("size", 12);
+```

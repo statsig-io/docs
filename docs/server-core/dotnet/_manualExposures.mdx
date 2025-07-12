@@ -1,0 +1,33 @@
+```csharp
+var user = new StatsigUser("user-id");
+
+// Manually log gate exposure
+statsig.ManuallyLogGateExposure(user, "new_feature_gate");
+
+// Manually log config exposure
+statsig.ManuallyLogConfigExposure(user, "app_config");
+
+// Manually log experiment exposure
+statsig.ManuallyLogExperimentExposure(user, "button_test");
+
+// Manually log layer parameter exposure
+statsig.ManuallyLogLayerParameterExposure(user, "user_preferences", "theme");
+```
+
+export const Snippets = {
+  manualExposures: `
+var user = new StatsigUser("user-id");
+
+// Manually log gate exposure
+statsig.ManuallyLogGateExposure(user, "new_feature_gate");
+
+// Manually log config exposure
+statsig.ManuallyLogConfigExposure(user, "app_config");
+
+// Manually log experiment exposure
+statsig.ManuallyLogExperimentExposure(user, "button_test");
+
+// Manually log layer parameter exposure
+statsig.ManuallyLogLayerParameterExposure(user, "user_preferences", "theme");
+  `
+};

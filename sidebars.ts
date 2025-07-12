@@ -924,6 +924,11 @@ const sidebars: SidebarsConfig = {
           ],
         },
         {
+          className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "server-core/dotnet-core",
+        },
+        {
           className: "ruby-icon sidebar-icon sdk-sidebar-icon",
           type: "doc",
           id: "server/rubySDK",

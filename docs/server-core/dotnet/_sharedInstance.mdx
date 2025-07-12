@@ -1,0 +1,19 @@
+The .NET Core SDK supports creating multiple Statsig instances, each with their own configuration and SDK key. This is useful for multi-tenant applications or when you need different configurations for different parts of your application.
+
+```csharp
+// Create multiple instances with different configurations
+var primaryStatsig = new Statsig(primarySdkKey, primaryOptions);
+var secondaryStatsig = new Statsig(secondarySdkKey, secondaryOptions);
+
+await primaryStatsig.Initialize();
+await secondaryStatsig.Initialize();
+
+// Use instances independently
+var user = new StatsigUser("user-123");
+bool primaryFeature = primaryStatsig.CheckGate(user, "primary_feature");
+bool secondaryFeature = secondaryStatsig.CheckGate(user, "secondary_feature");
+
+// Remember to dispose of instances when done
+primaryStatsig.Dispose();
+secondaryStatsig.Dispose();
+```
