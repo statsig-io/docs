@@ -408,7 +408,7 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "Web Analytics",
           className: "web-icon sidebar-icon",
-          items: ["webanalytics/overview"],
+          items: ["webanalytics/overview", "webanalytics/events"],
         },
         {
           type: "category",
