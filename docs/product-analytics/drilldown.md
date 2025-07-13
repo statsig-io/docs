@@ -183,8 +183,11 @@ Metrics Drilldown offers many ways to visualize your data, including:
 - **Line:** Useful when plotting one or more metrics over time.
 - **Stacked Line:** Useful when comparing groups to understand the relative proportion a certain group has of a metric or event.
 - **Bar:** Useful when comparing the total value of two metrics over the entire date range.
+- **Horizontal Bar:** Ideal for grouped data comparisons, especially when you have longer label names. Makes it easy to identify top and bottom performers across any business dimension like user types, locations, or platforms.
 - **Donut:** Useful for visualizing the proportional breakdown of a whole into distinct categories at a single point in time. Perfect for showing how different segments (like countries, user types, or feature groups) contribute to your total metric value. Apply a Group-By to any metric to see the breakdown as a donut chart.
 - **World Map:** Visualize your metrics geographically by country when using a country-based Group-By. This view makes it easy to spot geographic trends and understand how your product performs across different regions.
+- **Single Value:** Display key metrics at a glance for quick summaries. Perfect when you need to highlight a single important number or KPI without the complexity of a full chart.
+- **Data Table:** Compare multiple metrics across groups in a structured table format. Ideal for detailed analysis when you need to examine exact values and perform side-by-side comparisons of different segments.
 
 Both donut charts and world maps work with any metric when you apply a Group-By. Simply select your metric, add a Group-By for the property you want to analyze (such as country for geographic analysis), and choose your preferred visualization from the chart type selector.
 
