@@ -146,7 +146,7 @@ const config: Config = {
         redirects: [
           {
             from: "/guides/guides/feature-gates",
-            to: "/guides/feature-flags"
+            to: "/guides/feature-flags",
           },
           {
             from: "/feature-flags/create-new",
@@ -154,7 +154,7 @@ const config: Config = {
           },
           {
             from: "/feature-flags/add-rule",
-            to: "/feature-flags/create#add-a-rule-to-your-feature-gate"
+            to: "/feature-flags/create#add-a-rule-to-your-feature-gate",
           },
           {
             from: "/stats-engine/offlineaa",
@@ -369,6 +369,10 @@ const config: Config = {
             from: "/feature-gates/working-with",
           },
           {
+            to: "/feature-flags/overview",
+            from: "/feature-gates/overview",
+          },
+          {
             to: "/feature-flags/create-new",
             from: "/feature-gates/create-new",
           },
@@ -465,7 +469,7 @@ const config: Config = {
       contextualSearch: true,
 
       searchParameters: {
-        facetFilters: []
+        facetFilters: [],
       },
 
       insights: true,
@@ -480,26 +484,26 @@ const config: Config = {
       },
       items: [
         {
-          type: 'doc',
-          position: 'left',
-          docId: 'getting-started',
-          sidebarId: 'product-docs',
-          label: 'Product Docs',
-          id: 'product-docs', //don't edit this without rerunning algolia scraper
+          type: "doc",
+          position: "left",
+          docId: "getting-started",
+          sidebarId: "product-docs",
+          label: "Product Docs",
+          id: "product-docs", //don't edit this without rerunning algolia scraper
         },
         {
-          type: 'docSidebar',
-          position: 'left',
-          sidebarId: 'warehouse',
-          label: 'Warehouse Native',
-          id: 'warehouse', //don't edit this without rerunning algolia scraper
+          type: "docSidebar",
+          position: "left",
+          sidebarId: "warehouse",
+          label: "Warehouse Native",
+          id: "warehouse", //don't edit this without rerunning algolia scraper
         },
         {
-          type: 'docSidebar',
-          position: 'left',
-          sidebarId: 'api',
-          label: 'SDKs & APIs',
-          id: 'sdk-api', //don't edit this without rerunning algolia scraper
+          type: "docSidebar",
+          position: "left",
+          sidebarId: "api",
+          label: "SDKs & APIs",
+          id: "sdk-api", //don't edit this without rerunning algolia scraper
         },
         {
           type: "search",
