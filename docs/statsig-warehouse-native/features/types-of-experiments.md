@@ -33,11 +33,11 @@ Statsig offers [Switchback](/experiments-plus/switchback-tests) tests, which are
 
 Switchback test are configurable in Statsig's console, and use time periods (as well as optional buckets, like, city or country) to change experiments, and run a bootstrapping analysis to estimate test statistics. This includes advanced options like burn-in/burn-out periods, allocation windows, and configurable window lengths.
 
-### Geo Testing [Alpha]
+### Geo Testing
 
-Statsig has launched [Geotesting](/experiments-plus/geotests) [Alpha version] to support marketing and product causal inference. Geotesting treats geographic units (e.g. postal codes and DMAs) as your unit of assignment and analysis, and unlocks new experimental methodologies like rigorous testing of paid marketing and/or search on platforms like Google and Facebook Ads.
+Statsig has launched [Geotesting](/experiments-plus/geotests) to support marketing and product causal inference techniques where you can't run a traditional A/B test. Geotesting treats geographic units (e.g. postal codes and DMAs) as your unit of analysis, and unlocks new experimental methodologies like rigorous testing of paid marketing and/or search on platforms like Google and Facebook Ads.
 
-Please out to our [support team](mailto:support@statsig.com), or reach out to us directly in slack, if you're interested in exploring this method of testing.
+Geotesting relies on Synthetic Control methodologies built using the best-in-class open source package GeoLift from Meta, combined with the ease and simplicity of the Statsig platform. All your existing metrics and metric sources are available to use with the addition of some geographical labels.
 
 ### MABs
 
