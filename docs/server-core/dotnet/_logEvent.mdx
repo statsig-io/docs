@@ -1,0 +1,20 @@
+```csharp
+var user = new StatsigUser("user-id");
+
+// Log a simple event
+statsig.LogEvent(user, "button_clicked");
+
+// Log an event with a string value
+statsig.LogEvent(user, "page_viewed", "homepage");
+
+// Log an event with a numeric value
+statsig.LogEvent(user, "purchase_made", 29.99);
+
+// Log an event with metadata
+var metadata = new Dictionary<string, string>
+{
+    ["source"] = "mobile_app",
+    ["version"] = "1.2.3"
+};
+statsig.LogEvent(user, "app_opened", null, metadata);
+```

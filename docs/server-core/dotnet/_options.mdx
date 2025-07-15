@@ -1,0 +1,10 @@
+```csharp
+var options = new StatsigOptions.Builder()
+    .SetSpecsSyncIntervalMs(30000)           // Sync interval for feature definitions
+    .SetEventLoggingFlushIntervalMs(5000)    // Event batching flush interval
+    .SetOutputLoggerLevel(OutputLogger.LogLevel.Info)  // Logging level
+    .SetDisableDiagnostics(false)            // Enable/disable diagnostics
+    .Build();
+
+var statsig = new Statsig(secretKey, options);
+```

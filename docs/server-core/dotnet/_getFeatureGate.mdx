@@ -1,0 +1,7 @@
+```csharp
+var user = new StatsigUser("user-id");
+var gate = statsig.GetFeatureGate(user, "new_feature_gate");
+
+bool isEnabled = gate.Value;
+string ruleId = gate.RuleId;
+```

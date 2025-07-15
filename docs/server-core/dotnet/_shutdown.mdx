@@ -1,0 +1,11 @@
+```csharp
+// Flush any pending events and shutdown
+statsig.Shutdown();
+
+// Or dispose (which also shuts down)
+statsig.Dispose();
+
+// For async scenarios, you can flush events first
+await statsig.FlushEvents();
+statsig.Shutdown();
+```

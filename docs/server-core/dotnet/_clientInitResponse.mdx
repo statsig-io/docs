@@ -1,0 +1,13 @@
+```csharp
+var user = new StatsigUser("user-123");
+
+// Get client initialization response
+var clientInitResponse = statsig.GetClientInitializeResponse(user);
+
+// With options
+var options = new ClientInitResponseOptions
+{
+    // Configure client init response options as needed
+};
+var clientInitResponseWithOptions = statsig.GetClientInitializeResponse(user, options);
+```

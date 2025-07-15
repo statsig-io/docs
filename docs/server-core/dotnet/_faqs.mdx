@@ -1,0 +1,65 @@
+### How do I handle async/await patterns?
+
+The .NET Core SDK uses async/await for initialization and event flushing:
+
+```csharp
+// Initialize asynchronously
+await statsig.Initialize();
+
+// Flush events asynchronously
+await statsig.FlushEvents();
+```
+
+### Can I use dependency injection?
+
+Yes, you can register Statsig as a service in your DI container:
+
+```csharp
+// In Startup.cs or Program.cs
+services.AddSingleton<Statsig>(provider => 
+{
+    var options = new StatsigOptions.Builder().Build();
+    var statsig = new Statsig(secretKey, options);
+    statsig.Initialize().Wait(); // Note: Consider using async factory pattern
+    return statsig;
+});
+```
+
+### How do I handle errors during initialization?
+
+Wrap initialization in a try-catch block:
+
+```csharp
+try 
+{
+    await statsig.Initialize();
+    Console.WriteLine("Statsig initialized successfully");
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"Failed to initialize Statsig: {ex.Message}");
+    // Handle initialization failure
+}
+```
+
+### What .NET versions are supported?
+
+The .NET Core SDK supports .NET 6.0 and higher, including:
+- .NET 6.0
+- .NET 7.0  
+- .NET 8.0
+- .NET 9.0
+
+### How do I dispose of the Statsig instance properly?
+
+The Statsig class implements `IDisposable`:
+
+```csharp
+using var statsig = new Statsig(secretKey, options);
+await statsig.Initialize();
+// Use statsig...
+// Automatically disposed when leaving using block
+
+// Or manually:
+statsig.Dispose();
+```

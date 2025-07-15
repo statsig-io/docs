@@ -1,0 +1,27 @@
+```csharp
+// Basic user
+var user = new StatsigUser("user-123");
+
+// User with custom attributes
+var userWithAttributes = new StatsigUser("user-123")
+{
+    Email = "user@example.com",
+    Country = "US",
+    CustomAttributes = new Dictionary<string, object>
+    {
+        ["subscription_tier"] = "premium",
+        ["signup_date"] = "2023-01-15",
+        ["is_beta_user"] = true
+    }
+};
+
+// User with custom IDs for group-level experiments
+var userWithCustomIds = new StatsigUser("user-123")
+{
+    CustomIds = new Dictionary<string, string>
+    {
+        ["companyId"] = "company-456",
+        ["teamId"] = "team-789"
+    }
+};
+```
