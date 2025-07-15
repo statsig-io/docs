@@ -29,6 +29,8 @@ To monitor the status of your experiment,
     - **p-value < 0.01 and group size differs from expected size by less than 0.1% absolute**: Warning (yellow) indicating that an imbalance is possible, but the impact to the experiment is expected to be small. This scenario typically occurs in large web experiments (1M+ users) where small variations in performance across groups can cause a small fraction of exposures to be dropped for certain groups more than others.
     - **p-value < 0.001 and more than 0.1% absolute deviation from expected group size**: Alert (red) meaning there is likely a problem with the experiment exposures and experiment results may not be trustworthy.
 
+    **For continuous gates**: The balance check verifies that pass and fail exposures maintain an approximately equal 50/50 split, rather than comparing against the configured pass percentage from the rule. This approach accounts for continuous rollouts where percentages are ramping up to the configured pass percentage since the configured percentage is inappropriate for validation during this ramp-up time. The balance check will return to default check once configured pass percentage is ≥ 50%.
+
     Read [more](/stats-engine/methodologies/srm-checks) on our SRM methodology and Statsig's debugging tool.
 
   - **Crossover units detected** checks for a high percentage (over 0.1%) of units that were exposed to more than one variant. These users cannot be reliably attributed to a single variant in an experiment or gate.
