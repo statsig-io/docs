@@ -9,7 +9,6 @@ import HomeBreadcrumbItem from '@theme/DocBreadcrumbs/Items/Home';
 
 import styles from './styles.module.css';
 
-// TODO move to design system folder
 function BreadcrumbsItemLink({
   children,
   href,
@@ -32,16 +31,10 @@ function BreadcrumbsItemLink({
       <span itemProp="name">{children}</span>
     </Link>
   ) : (
-    // TODO Google search console doesn't like breadcrumb items without href.
-    // The schema doesn't seem to require `id` for each `item`, although Google
-    // insist to infer one, even if it's invalid. Removing `itemProp="item
-    // name"` for now, since I don't know how to properly fix it.
-    // See https://github.com/facebook/docusaurus/issues/7241
-    <span className={className}>{children}</span>
+    <span className={className} itemProp="name">{children}</span>
   );
 }
 
-// TODO move to design system folder
 function BreadcrumbsItem({
   children,
   active,
@@ -141,7 +134,7 @@ export default function DocBreadcrumbs(): JSX.Element | null {
               key={idx}
               active={isLast}
               index={idx}
-              addMicrodata={!!href}>
+              addMicrodata={true}>
               <BreadcrumbsItemLink href={href} isLast={isLast}>
                 {item.label}
               </BreadcrumbsItemLink>
