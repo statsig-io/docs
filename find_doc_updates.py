@@ -133,7 +133,8 @@ def update_frontmatter(filepath, last_update):
 
     if last_update_start_index is not None:
         # Replace existing last_update entry
-        lines[last_update_start_index:last_update_end_index + 1] = new_last_update_lines
+        end_index = last_update_end_index + 1 if last_update_end_index is not None else last_update_start_index + 1
+        lines[last_update_start_index:end_index] = new_last_update_lines
     else:
         # Insert before the closing '---'
         lines.insert(frontmatter_end, "\n")  # Add a blank line for readability
@@ -185,4 +186,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main() 
+    main()  

@@ -57,9 +57,9 @@ When you're happy with your initial settings, click "Use Experiment Designer" to
 ![Image](/img/geotests/StartDesigner.png)
 
 Here you can control:
-- Allowed Geo IDS: Apply a global filter for any geos allowed for control or treatment. Leave blank to use all geos found in your data source.
-- (Test) Inclusion List: Force some geos to be in your treatment cell. Leave blank to allow GeoLift to search for the most optimal set of geos without limits.
-- (Test) Exclusion List: Block some geos from being in your control cell. Leave blank to allow GeoLift to search for the most optimal set of geos without limits.
+- Allowed Geo IDS: Apply a global filter for any geographies allowed for control or treatment. Leave blank to use all geographies found in your data source.
+- (Test) Inclusion List: Force some geographies to be in your treatment cell. Leave blank to allow GeoLift to search for the most optimal set of geographies without limits.
+- (Test) Exclusion List: Block some geographies from being in your control cell. Leave blank to allow GeoLift to search for the most optimal set of geographies without limits.
 
 ![Image](/img/geotests/LimitGeos.png)
 
