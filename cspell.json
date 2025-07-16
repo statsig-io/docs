@@ -698,7 +698,10 @@
     "fieller",
     "Fieller",
     "Fieller's",
-    "fieller's"
+    "fieller's",
+    "SPRT",
+    "SPRTs",
+    "sprt"
   ],
   "ignorePaths": [
     "node_modules/**",

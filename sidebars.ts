@@ -301,6 +301,7 @@ const sidebars: SidebarsConfig = {
               items: [
                 "experiments-plus/sequential-testing",
                 "experiments-plus/bayesian",
+                "experiments-plus/sprt",
                 "experiments-plus/stratified-sampling",
                 "stats-engine/methodologies/bonferroni-correction",
                 "stats-engine/methodologies/benjamini–hochberg-procedure",
