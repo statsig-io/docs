@@ -57,7 +57,11 @@ function BreadcrumbsItem({
         'breadcrumbs__item--active': active,
       })}>
       {children}
-      <meta itemProp="position" content={String(index + 1)} />
+      {addMicrodata && (
+        <>
+          <meta itemProp="position" content={String(index + 1)} />
+        </>
+      )}
     </li>
   );
 }
