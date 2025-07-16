@@ -118,7 +118,7 @@ Setting a target duration is optional, but it helps ensure that you wait long en
 
 💡 **Target durations longer than 90 days:** By default, Statsig computes Pulse results for the first 90 days, though the experiment itself can run longer. Before setting a duration beyond 90 days, ask yourself if results past that period will still be relevant, and if earlier data might already provide the insights you need.
 
-<img width="991" alt="Screenshot 2025-02-06 at 6 35 03 PM" src="https://github.com/user-attachments/assets/371f7de7-f428-41d5-ad0e-8fdf9d223982" />
+<alt="Hypothesis Advisor Screenshot" src="https://github.com/user-attachments/assets/371f7de7-f428-41d5-ad0e-8fdf9d223982" />
 
 Once set, you can track progress against the target duration/exposures in the experiment header. You’ll also receive notifications via email and Slack (if integrated) when the target is reached.
 
