@@ -20,12 +20,13 @@ Analysis-only A/B/n tests run analysis on top of Assignment and Metric data from
 
 ### A/B/n
 
-The most common Assign-and-Analyze experiments are A/B/n tests that integrate warehouse data with Statsig's live SDK. In these experiments, Statsig operates as an assignment tool, a real-time diagnostics tool, and as a statistics engine. Assignment related features supported include
-#### [Stratified Sampling](/experiments-plus/stratified-sampling)
-Dividing your population into homogeneous groups (based on a metric or classification).
+The most common Assign-and-Analyze experiments are A/B/n tests that integrate warehouse data with Statsig's live SDK. In these experiments, Statsig operates as an assignment tool, a real-time diagnostics tool, and as a statistics engine. Assignment related features supported include:
 
-#### Configurable Allocation Duration
-You can enroll users for a subset of an experiment's duration. If you are experimenting on a one-time experience (e.g. signup flows), this just works. If it is not a one-time experience (enrolled users need to keep being assigned), you will need to configure your SDKs to use Persistent Assignment (you provide a store to save user's enrollment states; the SDK manages this state). Learn more about Persistent Assignment on  [Client](/client/concepts/persistent_assignment) and [Server](/server/concepts/persistent_assignment) SDKs.
+> #### [Stratified Sampling](/experiments-plus/stratified-sampling)
+> Dividing your population into homogeneous groups (based on a metric or classification).
+
+> #### Configurable Allocation Duration
+> You can enroll users for a subset of an experiment's duration. If you are experimenting on a one-time experience (e.g. signup flows), this just works. If it is not a one-time experience (enrolled users need to keep being assigned), you will need to configure your SDKs to use Persistent Assignment (you provide a store to save user's enrollment states; the SDK manages this state). Learn more about Persistent Assignment on  [Client](/client/concepts/persistent_assignment) and [Server](/server/concepts/persistent_assignment) SDKs.
 
 ### Switchback Experiments
 
