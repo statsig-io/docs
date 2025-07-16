@@ -24,7 +24,7 @@ One of the nice things about SPRT is that this Likelihood Ratio largely correspo
 - **Definitive Outcomes:** SPRT enables you to confidently accept either the null or alternative hypothesis, rather than just “rejecting the null.”
 - **Data-Informed:** Statsig’s implementation uses your past data and power analysis to inform the likelihood calculations and decision thresholds.
 
-## How SPRT Works
+## Key Points
 
 - **Likelihood Ratio:** Measures how much more likely your observed data is under the alternative hypothesis compared to the null.
 - **Sequential Analysis:** Data is continuously evaluated as it is collected, allowing for early stopping when sufficient evidence is reached. There's no penalty for "peeking" in SPRT experiments.
@@ -32,14 +32,13 @@ One of the nice things about SPRT is that this Likelihood Ratio largely correspo
 
 ## How to Use SPRT in Statsig
 
-- **Enabling SPRT:** Select SPRT as your analysis method when setting up an AB test in the Statsig console.
-- **Interpreting Results:** The experiment Results tab shows the latest likelihood ratio for each metric in your experiment and indicates when a decision boundary has been reached, allowing you to accept the null or alternative hypothesis with confidence.
+**Enabling SPRT:** Select SPRT as your analysis method when setting up an AB test in the Statsig console.
 
-## SPRT vs. SPRT
+![image](/img/sprt/sprt_power_analysis.png)
 
-SPRT is **not** a version or expansion of mSPRT (our Sequential Testing method for peeking at frequentist results). SPRT is a completely separate experimental procedure and decision framework.
-- **mSPRT**: Allows for peeking at p-values in frequentist tests, controlling for Type I error.
-- **SPRT**: Uses likelihood ratios and a sequential decision process, with different statistical guarantees and interpretations.
+**Interpreting Results:** The experiment Results tab shows the latest likelihood ratio for each metric in your experiment and indicates when a decision boundary has been reached, allowing you to accept the null or alternative hypothesis with confidence.
+
+![image](/img/sprt/sprt_results_readout.png)
 
 ## References
 
@@ -55,3 +54,6 @@ SPRT can reduce experiment duration, especially when there is strong evidence fo
 
 **What are the limitations?**  
 SPRT requires careful setup of thresholds and assumptions. It is not a drop-in replacement for all frequentist methods, and may not be suitable for all experiment types. 
+
+**Is SPRT the same as Sequential Testing?**
+SPRT is different from our Sequential Testing option. [Sequential Testing](/experiments-plus/sequential-testing) adjusts your Frequentist analysis method to allow repeated looks (i.e. "peeking"). SPRT is a completely separate experimental procedure and decision framework. They both allow for continuous "sequential" looking at experiment results, but otherwise they are separate methods for designing and running an A/B test.
