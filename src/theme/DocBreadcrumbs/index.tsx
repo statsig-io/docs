@@ -73,7 +73,11 @@ function getCategoryHref(item: any): string | undefined {
     const categoryMappings: Record<string, string> = {
       'products': '/',
       'experiments': '/experiments-plus',
-      'feature flags': '/feature-flags/overview',
+      'feature flags': '/feature-gates/overview',
+      'feature gates': '/feature-gates/overview',
+      'dynamic config': '/dynamic-config',
+      'segments': '/segments',
+      'release pipeline (beta)': '/release-pipeline',
       'analytics': '/',
       'product analytics': '/product-analytics/overview',
       'management & admin': '/',

@@ -1,7 +1,7 @@
 ---
 title: Bots
 sidebar_label: Bot Traffic
-slug: /feature-flags/bots
+slug: /feature-gates/bots
 keywords:
   - owner:vm
 last_update:

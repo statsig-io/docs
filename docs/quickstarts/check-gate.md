@@ -104,7 +104,7 @@ export default App;
 4. Make sure to also replace `client-KEY` with the Client API Key you copied in Step 3.
 
 ### Check your Feature Gate
-Finally, you can now evaluate a Feature Gate in your product code by getting the client with the `useStatsigClient` hook, and then calling `checkGate`. If you're not sure yet about where and how you want to place your flag, check out our doc on [Best Practices for feature flags](/feature-flags/best-practices).
+Finally, you can now evaluate a Feature Gate in your product code by getting the client with the `useStatsigClient` hook, and then calling `checkGate`. If you're not sure yet about where and how you want to place your flag, check out our doc on [Best Practices for feature flags](/feature-gates/best-practices).
 
 1. Add the following code to your `App.js` file. In this snippet, the `example_gate` is the name of the Feature Gate you created in Step 1.
 
@@ -117,7 +117,7 @@ return (
 
 2. Run your app and see the result! The app should render the text "Gate is passing" since we already [Created a targeting rule](#create-a-targeting-rule) that targets all users with the ``statsig.com`` email domain, and we are using that same email domain in this client's User object.
 
-3. Once you've set up your gate, you can easily [monitor the impact of your new feature rollout](/feature-flags/view-exposures) or [manage flag lifecycles](/feature-flags/feature-flags-lifecycle).
+3. Once you've set up your gate, you can easily [monitor the impact of your new feature rollout](/feature-gates/view-exposures) or [manage flag lifecycles](/feature-gates/feature-flags-lifecycle).
 
 
 ## Next steps

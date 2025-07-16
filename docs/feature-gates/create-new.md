@@ -1,7 +1,7 @@
 ---
 title: Create a feature flag
 sidebar_label: Create
-slug: /feature-flags/create-new
+slug: /feature-gates/create-new
 keywords:
   - owner:shubham
 last_update:
@@ -29,4 +29,4 @@ Calls to check this feature gate for a user evaluate the rules that you define f
 
 You can also Launch (pass 100%) or Disable (fail 100%) the gate using the More Options menu (...).
 
-When you need more than a Boolean value returned for different groups of users, say to customize the user experience, set up a [dynamic config](/dynamic-config). 
+When you need more than a Boolean value returned for different groups of users, say to customize the user experience, set up a [dynamic config](/dynamic-config).  

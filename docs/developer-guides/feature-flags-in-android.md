@@ -105,8 +105,8 @@ To implement feature flags in an Android app using the Statsig SDK, follow these
 2. **Create a New Project**:
    - In the Statsig console, create a new project for your application.
 
-3. **Navigate to Feature Flags**:
-   - Access the "Feature Flags" section from the dashboard.
+3. **Navigate to Feature Gates**:
+   - Access the "Feature Gates" section from the dashboard.
 
 4. **Create a New Feature Flag**:
    - Click "Create Feature Flag".

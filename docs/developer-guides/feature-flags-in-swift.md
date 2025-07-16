@@ -134,8 +134,8 @@ Integrating feature flags into an iOS application using the Statsig Swift SDK in
 
  - In the Statsig console, create a new project for your application.
 
-3. **Navigate to Feature Flags**:
-   - Go to the "Feature Flags" section in the Statsig console dashboard.
+3. **Navigate to Feature Gates**:
+   - Go to the "Feature Gates" section in the Statsig console dashboard.
 
 4. **Create a New Feature Flag**:
    - Click on "Create Feature Flag".

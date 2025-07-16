@@ -1,7 +1,7 @@
 ---
 title: Feature Gate overrides
 sidebar_label: Overrides and bypass lists
-slug: /feature-flags/overrides
+slug: /feature-gates/overrides
 keywords:
   - owner:shubham
 last_update:

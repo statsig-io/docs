@@ -1,7 +1,7 @@
 ---
 title: Managing Feature Gate lifecycles
 sidebar_label: Feature Gate lifecycles
-slug: /feature-flags/feature-flags-lifecycle
+slug: /feature-gates/feature-flags-lifecycle
 keywords:
   - owner:shubham
 last_update:
@@ -103,6 +103,6 @@ Confirm that the gate has been set to either **Launched** or **Disabled** (i.e. 
 - We recommend that you use Delete only for mistakes. Deletion removes the gate and its history from Statsig, and having your Feature Gate Catalog retain history of your gates will help you see valuable information like velocity of your team’s feature releases, # of launches decisions made, etc.
 
 **What if I want to re-use a feature gate that has been archived already?**
-- Archival of a gate implies that any reference to the gate has been completely and permanently removed from your code. Therefore, as best practice, we recommend that you clone an archived gate, essentially creating a new gate with the same rules, instead of reusing a previously archived gate. 
+- Archival of a gate implies that any reference to the gate has been completely and permanently removed from your code. Therefore, as best practice, we recommend that you clone an archived gate, essentially creating a new gate with the same rules, instead of reusing a previously archived gate.  
 
 

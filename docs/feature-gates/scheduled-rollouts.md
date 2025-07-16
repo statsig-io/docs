@@ -1,7 +1,7 @@
 ---
 title: Scheduled Rollouts
 sidebar_label: Scheduled Rollouts
-slug: /feature-flags/scheduled-rollouts
+slug: /feature-gates/scheduled-rollouts
 keywords:
   - owner:shubham
 last_update:

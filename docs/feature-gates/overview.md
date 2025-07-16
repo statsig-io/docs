@@ -1,7 +1,7 @@
 ---
 title: Feature Flags
 sidebar_label: Overview
-slug: /feature-flags/overview
+slug: /feature-gates/overview
 keywords:
   - owner:jinayoon
 last_update:
@@ -29,24 +29,24 @@ Devs often use them to turn on certain features for a small percentage of the to
 
 
 ## How it works
-1. First, [create a Feature Gate](/feature-flags/create) with [targeting rules](/feature-flags/conditions) in the Statsig console. 
+1. First, [create a Feature Gate](/feature-gates/create) with [targeting rules](/feature-gates/conditions) in the Statsig console. 
 2. For the Feature Gate to actually impact users, you'll need to integrate the [Statsig SDK](/sdks/getting-started) into your product code. The SDK will query the gate value during runtime and return a true/false result based on user attributes, environment data, and other conditions you define.  
-3. You can [test a Feature Gate](/feature-flags/test-gate) to make sure it's behaving as expected before you actually roll it out.
-4. For finer targeting control, you can also set up [Feature Gate overrides](/feature-flags/overrides), which are like "bypass lists" for the gate.
-5. Once your Feature Gate is live, you can [view Feature Gate exposures](/feature-flags/view-exposures) in the Statsig console to monitor who is encountering your gate.
-6. You can easily set up deprecation rules and clean up old flags by [managing Feature Gate lifecycles](/feature-flags/feature-flags-lifecycle).
+3. You can [test a Feature Gate](/feature-gates/test-gate) to make sure it's behaving as expected before you actually roll it out.
+4. For finer targeting control, you can also set up [Feature Gate overrides](/feature-gates/overrides), which are like "bypass lists" for the gate.
+5. Once your Feature Gate is live, you can [view Feature Gate exposures](/feature-gates/view-exposures) in the Statsig console to monitor who is encountering your gate.
+6. You can easily set up deprecation rules and clean up old flags by [managing Feature Gate lifecycles](/feature-gates/feature-flags-lifecycle).
 
 ## Key capabilities
 ### Scheduled Rollouts
-Gradually deploy a feature over time by setting up a Feature Gate as a [Scheduled Rollout](/feature-flags/scheduled-rollouts).
+Gradually deploy a feature over time by setting up a Feature Gate as a [Scheduled Rollout](/feature-gates/scheduled-rollouts).
 ### Overrides and bypass lists
-Implement Feature Gates with [Overrides](/feature-flags/overrides) to allow a specific list of users to bypass your gate.
+Implement Feature Gates with [Overrides](/feature-gates/overrides) to allow a specific list of users to bypass your gate.
 ### Chained flag dependencies
 Chain Feature Gates together in parent-child or other dependent relationships so a top-level gate can enable or disable all its dependent flags in one go, perfect for global kill switches guarding sub-features.
 ### Built-in A/B tests
-You can run simple A/B tests without additional setup using [Pulse](/feature-flags/view-exposures). In practice, this means treating the users who see the new feature as the "treatment" group, and the users who are gated (and therefore do not see the new feature yet) as the "control".
+You can run simple A/B tests without additional setup using [Pulse](/feature-gates/view-exposures). In practice, this means treating the users who see the new feature as the "treatment" group, and the users who are gated (and therefore do not see the new feature yet) as the "control".
 ### Feature Gate testing
-[Test your Feature Gates](/feature-flags/test-gate) with Statsig's built-in tools to check whether your Feature Gate is configured to target the right people.
+[Test your Feature Gates](/feature-gates/test-gate) with Statsig's built-in tools to check whether your Feature Gate is configured to target the right people.
 
 
 ## FAQs
@@ -60,4 +60,4 @@ We have a full guide on [Choosing Feature Flags vs. Experiments](/guides/feature
 - [Set up dev environments with Feature Gates](/guides/using-environments)
 - [Customize dev environments with Feature Gates](/guides/testing)
 - [Choosing Feature Flags vs. Experiments](/guides/featureflags-or-experiments)
-- [Best Practices for Feature Gates](/feature-flags/best-practices)
+- [Best Practices for Feature Gates](/feature-gates/best-practices)

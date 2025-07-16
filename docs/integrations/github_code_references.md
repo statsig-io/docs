@@ -8,7 +8,7 @@ last_update:
 
 ## Overview
 
-The Statsig Github Integration allows you to find [Feature Gate](/feature-flags/overview) and [Dynamic Config](/dynamic-config) references within your codebase on the Statsig Console. The integration leverages the Github API to access only references to the Feature Gate or Dynamic Config without storing any sensitive information.
+The Statsig Github Integration allows you to find [Feature Gate](/feature-gates/overview) and [Dynamic Config](/dynamic-config) references within your codebase on the Statsig Console. The integration leverages the Github API to access only references to the Feature Gate or Dynamic Config without storing any sensitive information.
 
 ## Configuration
 
@@ -34,4 +34,4 @@ Code References will appear based on the feature gate or dynamic config page you
 
 ### Github Code References Action
 
-We also have a [Github Action](https://github.com/statsig-io/github-code-references) that can scan your repositories for gates and dynamic configs, then create a PR replacing [Stale Gates](/feature-flags/permanent-and-stale-gates.md).
+We also have a [Github Action](https://github.com/statsig-io/github-code-references) that can scan your repositories for gates and dynamic configs, then create a PR replacing [Stale Gates](/feature-gates/permanent-and-stale-gates.md).

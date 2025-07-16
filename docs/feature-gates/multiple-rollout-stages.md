@@ -1,7 +1,7 @@
 ---
 title: Measuring multiple rollout stages
 sidebar_label: Multi-stage rollouts
-slug: /feature-flags/multiple-rollout-stages
+slug: /feature-gates/multiple-rollout-stages
 keywords:
   - owner:liz
 last_update:
@@ -30,7 +30,7 @@ When a rollout is no longer valid for continuous analysis, the new rollout step 
 
 ### Balanced Gates
 
-Gate rules that have multiple rollout stages are also [balanced](https://docs.statsig.com/feature-flags/view-exposures#balanced-gates) using downsampling.
+Gate rules that have multiple rollout stages are also [balanced](https://docs.statsig.com/feature-gates/view-exposures#balanced-gates) using downsampling.
 
 In cases where pass percentage ≤ 50% we use the same hashing as the pass/fail and take an equal percentage of the other group.
 

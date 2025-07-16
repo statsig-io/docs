@@ -149,14 +149,6 @@ const config: Config = {
             to: "/guides/feature-flags",
           },
           {
-            from: "/feature-flags/create-new",
-            to: "/feature-flags/create",
-          },
-          {
-            from: "/feature-flags/add-rule",
-            to: "/feature-flags/create#add-a-rule-to-your-feature-gate",
-          },
-          {
             from: "/stats-engine/offlineaa",
             to: "/guides/aa-test#offline-aa-tests",
           },
@@ -277,22 +269,6 @@ const config: Config = {
             to: "/client/javascript-sdk#layers",
           },
           {
-            from: "/feature-flags/implement",
-            to: "/",
-          },
-          {
-            from: "/feature-flags/implement/client",
-            to: "/",
-          },
-          {
-            from: "/feature-flags/implement/server",
-            to: "/",
-          },
-          {
-            from: "/feature-flags/implement/http-api",
-            to: "/",
-          },
-          {
             from: "/client/jsClientSDK",
             to: "/client/javascript-sdk",
           },
@@ -365,56 +341,56 @@ const config: Config = {
             from: "/integrations/terraform",
           },
           {
-            to: "/feature-flags/working-with",
-            from: "/feature-gates/working-with",
+            to: "/feature-gates/working-with",
+            from: "/feature-flags/working-with",
           },
           {
-            to: "/feature-flags/overview",
-            from: "/feature-gates/overview",
+            to: "/feature-gates/overview",
+            from: "/feature-flags/overview",
           },
           {
-            to: "/feature-flags/create-new",
-            from: "/feature-gates/create-new",
+            to: "/feature-gates/create-new",
+            from: "/feature-flags/create-new",
           },
           {
-            to: "/feature-flags/working-with",
-            from: ["/feature-gates", "/feature-flags"],
+            to: "/feature-gates/working-with",
+            from: ["/feature-flags", "/feature-gates"],
           },
           {
-            to: "/feature-flags/add-rule",
-            from: "/feature-gates/add-rule",
+            to: "/feature-gates/add-rule",
+            from: "/feature-flags/add-rule",
           },
           {
-            to: "/feature-flags/test-gate",
-            from: "/feature-gates/test-gate",
+            to: "/feature-gates/test-gate",
+            from: "/feature-flags/test-gate",
           },
           {
-            to: "/feature-flags/overrides",
-            from: "/feature-gates/overrides",
+            to: "/feature-gates/overrides",
+            from: "/feature-flags/overrides",
           },
           {
-            to: "/feature-flags/scheduled-rollouts",
-            from: "/feature-gates/scheduled-rollouts",
+            to: "/feature-gates/scheduled-rollouts",
+            from: "/feature-flags/scheduled-rollouts",
           },
           {
-            to: "/feature-flags/conditions",
-            from: "/feature-gates/conditions",
+            to: "/feature-gates/conditions",
+            from: "/feature-flags/conditions",
           },
           {
-            to: "/feature-flags/view-exposures",
-            from: "/feature-gates/view-exposures",
+            to: "/feature-gates/view-exposures",
+            from: "/feature-flags/view-exposures",
           },
           {
-            to: "/feature-flags/feature-flags-lifecycle",
-            from: "/feature-gates/feature-gates-lifecycle",
+            to: "/feature-gates/feature-flags-lifecycle",
+            from: "/feature-flags/feature-flags-lifecycle",
           },
           {
-            to: "/feature-flags/permanent-and-stale-gates",
-            from: "/feature-gates/permanent-and-stale-gates",
+            to: "/feature-gates/permanent-and-stale-gates",
+            from: "/feature-flags/permanent-and-stale-gates",
           },
           {
-            to: "/feature-flags/best-practices",
-            from: "/feature-gates/best-practices",
+            to: "/feature-gates/best-practices",
+            from: "/feature-flags/best-practices",
           },
           {
             to: "/",
