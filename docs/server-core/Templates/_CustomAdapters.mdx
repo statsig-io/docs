@@ -23,16 +23,16 @@ To create a custom specs adapter, extend the `SpecsAdapterBase` class and implem
 use Statsig\SpecsAdapterBase;
 use Statsig\SpecsUpdateListener;
 
-class DatabaseSpecsAdapter extends SpecsAdapterBase
+class RedisSpecsAdapter extends SpecsAdapterBase
 {
-    private $database;
+    private $redis;
     private $listener;
     private $isRunning = false;
 
-    public function __construct($databaseConnection)
+    public function __construct($redisConnection)
     {
         parent::__construct();
-        $this->database = $databaseConnection;
+        $this->redis = $redisConnection;
     }
 
     public function setup(SpecsUpdateListener $listener)
@@ -44,11 +44,11 @@ class DatabaseSpecsAdapter extends SpecsAdapterBase
     {
         $this->isRunning = true;
         
-        // Fetch initial specs from database
-        $specs = $this->fetchSpecsFromDatabase();
+        // Fetch initial specs from Redis
+        $specs = $this->fetchSpecsFromRedis();
         if ($specs) {
             $timestamp = intval(microtime(true) * 1000);
-            $this->listener->didReceiveSpecsUpdate($specs, "Database", $timestamp);
+            $this->listener->didReceiveSpecsUpdate($specs, "Redis", $timestamp);
         }
     }
 
@@ -63,31 +63,28 @@ class DatabaseSpecsAdapter extends SpecsAdapterBase
             return;
         }
 
-        // Schedule periodic updates from database
+        // Schedule periodic updates from Redis
         // This could trigger a background job or set up a timer
-        $this->refreshSpecsFromDatabase();
+        $this->refreshSpecsFromRedis();
     }
 
-    private function fetchSpecsFromDatabase()
+    private function fetchSpecsFromRedis()
     {
         try {
-            $stmt = $this->database->prepare("SELECT specs_json FROM statsig_configs WHERE active = 1 ORDER BY updated_at DESC LIMIT 1");
-            $stmt->execute();
-            $result = $stmt->fetch();
-            
-            return $result ? $result['specs_json'] : null;
+            $specs = $this->redis->get('statsig_config_specs');
+            return $specs ?: null;
         } catch (Exception $e) {
-            error_log("Failed to fetch specs from database: " . $e->getMessage());
+            error_log("Failed to fetch specs from Redis: " . $e->getMessage());
             return null;
         }
     }
 
-    private function refreshSpecsFromDatabase()
+    private function refreshSpecsFromRedis()
     {
-        $specs = $this->fetchSpecsFromDatabase();
+        $specs = $this->fetchSpecsFromRedis();
         if ($specs && $this->listener) {
             $timestamp = intval(microtime(true) * 1000);
-            $this->listener->didReceiveSpecsUpdate($specs, "Database", $timestamp);
+            $this->listener->didReceiveSpecsUpdate($specs, "Redis", $timestamp);
         }
     }
 }
@@ -99,8 +96,9 @@ class DatabaseSpecsAdapter extends SpecsAdapterBase
 use Statsig\Statsig;
 use Statsig\StatsigOptions;
 
-$database = new PDO('mysql:host=localhost;dbname=myapp', $username, $password);
-$specsAdapter = new DatabaseSpecsAdapter($database);
+$redis = new Redis();
+$redis->connect('127.0.0.1', 6379);
+$specsAdapter = new RedisSpecsAdapter($redis);
 
 $options = new StatsigOptions(
     specs_adapter: $specsAdapter
