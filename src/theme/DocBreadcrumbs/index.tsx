@@ -74,6 +74,9 @@ function getCategoryHref(item: any): string | undefined {
       'products': '/',
       'experiments': '/experiments-plus',
       'feature flags': '/feature-flags/overview',
+      'dynamic config': '/dynamic-config',
+      'segments': '/segments',
+      'release pipeline (beta)': '/release-pipeline',
       'analytics': '/',
       'product analytics': '/product-analytics/overview',
       'management & admin': '/',
@@ -86,7 +89,26 @@ function getCategoryHref(item: any): string | undefined {
       'new to statsig?': '/',
       'low-code experiments': '/guides/sidecar-experiments/introduction',
       'web analytics': '/webanalytics/overview',
-      'session replay': '/session-replay/overview'
+      'session replay': '/session-replay/overview',
+      'users': '/users',
+      'alerts': '/product-analytics/alerts',
+      'metric explorer': '/product-analytics/drilldown',
+      'templates': '/templates/templates',
+      'decision framework': '/exp-templates/decision-framework',
+      'organization policies': '/org-admin/organization_policies',
+      'terraform': '/integrations/terraform/introduction',
+      'azure ai': '/azureai/introduction',
+      'datadog triggers': '/integrations/triggers/introduction',
+      'api proxies': '/infrastructure/api_proxy/introduction',
+      'warehouse ingestion': '/data-warehouse-ingestion/introduction',
+      'privacy': '/compliance/introduction',
+      'infrastructure operations': '/infrastructure/introduction',
+      'workspace management': '/access-management/introduction',
+      'access management': '/access-management/introduction',
+      'scim user provisioning': '/access-management/scim/overview',
+      'okta guide': '/access-management/scim/okta_scim_setup',
+      'collaboration': '/access-management/discussions',
+      'templates & policies': '/org-admin/organization_policies'
     };
     
     if (categoryMappings[label]) {
