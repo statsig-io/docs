@@ -29,7 +29,7 @@ Here are a few important considerations when deciding between a feature gate or 
 1. **Number of Variants**:
    - **Feature Gate**: Provides only two variants (feature on vs. feature off).
    - **Experiment**: Can handle multiple variants for more complex A/B testing.
-   - **Important Note**: When viewing feature gate exposures, you'll see three groups: "Pass," "Fail," and "Fail-Not in Analysis." While all users are bucketed into "Pass" or "Fail," only a balanced portion of the "Fail" group is used for metric analysis. You can read more about this in our [balanced gates methodology](/feature-gates/view-exposures#gate-exposures).
+   - **Important Note**: When viewing feature gate exposures, you'll see three groups: "Pass," "Fail," and "Fail-Not in Analysis." While all users are bucketed into "Pass" or "Fail," only a balanced portion of the "Fail" group is used for metric analysis. You can read more about this in our [balanced gates methodology](/feature-flags/view-exposures#gate-exposures).
 
 2. **Exposure Results**:
    - **Feature Gate**: Returns a boolean (`true` or `false`) to assign users to the control (off) or test (on) group.

@@ -1,7 +1,7 @@
 ---
 title: Best practices for Feature Gates
 sidebar_label: Best practices
-slug: /feature-gates/best-practices
+slug: /feature-flags/best-practices
 keywords:
   - owner:shubham
 last_update:

@@ -1,7 +1,7 @@
 ---
 title: Feature flags (feature gates) - what are they?
 sidebar_label: Overview
-slug: /feature-gates/working-with
+slug: /feature-flags/working-with
 keywords:
   - owner:shubham
 last_update:
@@ -31,9 +31,9 @@ Statsig offers several built-in capabilities with feature flags:
 
 The following tutorials show how you can perform common tasks with feature gates.
 
-- [Create a feature flag](/feature-gates/create-new)
-- [Create a rules for a feature flag](/feature-gates/add-rule)
+- [Create a feature flag](/feature-flags/create-new)
+- [Create a rules for a feature flag](/feature-flags/add-rule)
 - [Use a language-specific Statsig SDK to implement a feature gate in your application](/sdks/getting-started)
-- [Test a feature flag](/feature-gates/test-gate)
-- [Override a feature flag](/feature-gates/overrides)
-- [View feature flag exposures](/feature-gates/view-exposures)
+- [Test a feature flag](/feature-flags/test-gate)
+- [Override a feature flag](/feature-flags/overrides)
+- [View feature flag exposures](/feature-flags/view-exposures)

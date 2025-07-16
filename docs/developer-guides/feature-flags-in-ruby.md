@@ -75,8 +75,8 @@ To integrate feature flags into a Ruby application using the Statsig SDK, you'll
 2. **Create a New Project**:
    - In the Statsig console, create a new project for your application.
 
-3. **Navigate to Feature Gates**:
-   - Access the "Feature Gates" section from the dashboard.
+3. **Navigate to Feature Flags**:
+   - Access the "Feature Flags" section from the dashboard.
 
 4. **Create a New Feature Flag**:
    - Click "Create Feature Flag".

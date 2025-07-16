@@ -22,7 +22,7 @@ Holdouts measure the aggregate impact of multiple features. It involves a "holdo
 
 
 ## How to read Holdouts
-Holdouts on Statsig use the [same "equal variant" methodology](https://docs.statsig.com/feature-gates/view-exposures#gate-exposures) as Feature Gate rollouts, whereby metric lifts are computed by equal sized groups to calculate holdout lift. You can read more about the advantages of this methodology in "A/B Testing Intuition Busters: Common Misunderstandings in Online Controlled Experiments" by Ron Kohavi, Alex Deng, & Lukas Vermeer.r.
+Holdouts on Statsig use the [same "equal variant" methodology](https://docs.statsig.com/feature-flags/view-exposures#gate-exposures) as Feature Gate rollouts, whereby metric lifts are computed by equal sized groups to calculate holdout lift. You can read more about the advantages of this methodology in "A/B Testing Intuition Busters: Common Misunderstandings in Online Controlled Experiments” by Ron Kohavi, Alex Deng, & Lukas Vermeer.
 
 Accordingly, the Cumulative Exposures panel for a given Holdout shows total exposures of the Holdout, broken down into three groups-
 

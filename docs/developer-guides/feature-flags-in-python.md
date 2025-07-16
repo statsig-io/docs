@@ -81,8 +81,8 @@ To create and manage your feature flags:
 2. **Create a New Project** (if you haven't already):
    - In the Statsig dashboard, create a new project for your application.
 
-3. **Navigate to the Feature Gates Section**:
-   - Inside your project, go to the "Feature Gates" section from the sidebar.
+3. **Navigate to the Feature Flags Section**:
+   - Inside your project, go to the "Feature Flags" section from the sidebar.
 
 4. **Create a New Feature Flag**:
    - Click on "Create Feature Flag".

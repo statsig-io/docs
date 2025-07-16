@@ -62,7 +62,7 @@ async fn main() {
 
 2. **Create a New Project**: Create a new project for your application in the Statsig dashboard.
 
-3. **Navigate to Feature Flags**: Access the "Feature Gates" section from the dashboard.
+3. **Navigate to Feature Flags**: Access the "Feature Flags" section from the dashboard.
 
 4. **Create a New Feature Flag**: Click on "Create Feature Flag".
 

@@ -3,7 +3,7 @@ import TabItem from "@theme/TabItem";
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
 ## Common Targeting Use-Cases
-To target based on a cookie (for logged in users, for example) or based on a UTM parameter (or any query string parameter), you can do so by config a [Custom Field Targeting Rule](https://docs.statsig.com/feature-gates/conditions/#custom) in Statsig Console. This can be configured directly as an _inline experiment targeting rule_ on an experiment — or — as a feature flag condition.
+To target based on a cookie (for logged in users, for example) or based on a UTM parameter (or any query string parameter), you can do so by config a [Custom Field Targeting Rule](https://docs.statsig.com/feature-flags/conditions/#custom) in Statsig Console. This can be configured directly as an _inline experiment targeting rule_ on an experiment — or — as a feature flag condition.
 
 This requires javascript code to capture the cookie or the UTM from the browser and pass it to Statsig SDK in the user object during initialization. The below code shows a simplified example of how you can achieve this. Please make sure to modify as desired and test your implementation thoroughly. 
 ```js

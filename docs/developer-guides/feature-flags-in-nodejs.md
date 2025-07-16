@@ -88,11 +88,11 @@ Integrating feature flags into a new Node.js application using Statsig is a stra
 2. **Create a New Project** (if needed):
    - In the Statsig console, create a new project for your application.
 
-3. **Navigate to Feature Gates**:
-   - Go to the "Feature Gates" section in the Statsig console dashboard.
+3. **Navigate to Feature Flags**:
+   - Go to the "Feature Flags" section in the Statsig console dashboard.
 
-4. **Create a New Feature Gate**:
-   - Click on "Create Feature Gate".
+4. **Create a New Feature Flag**:
+   - Click on "Create Feature Flag".
    - Enter a name for your feature flag (e.g., `example_feature_flag`).
    - Optionally, configure targeting rules based on user properties or environments.
    - Save your feature flag.

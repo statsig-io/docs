@@ -1,7 +1,7 @@
 ---
 title: Test your Feature Gate
 sidebar_label: Test your Feature Gate
-slug: /feature-gates/test-gate
+slug: /feature-flags/test-gate
 keywords:
   - owner:shubham
 last_update:

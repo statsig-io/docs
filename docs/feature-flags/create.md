@@ -1,7 +1,7 @@
 ---
 title: Create a Feature Gate
 sidebar_label: Create a Feature Gate
-slug: /feature-gates/create
+slug: /feature-flags/create
 keywords:
   - owner:shubham
 last_update:
@@ -40,9 +40,9 @@ By default, a Feature Gate will return `false` when there are no rules configure
 5. Configure your Feature Gate with the following options:
 
 - **Environment(s)** - The [staging environment(s)](/guides/using-environments) you want your gate to apply to
-- [**Criteria**](#rule-criteria-available-in-statsig) - Specific evaluation conditions for the rule. Read more details about criteria and condition evaluation [here](/feature-gates/conditions).
+- [**Criteria**](#rule-criteria-available-in-statsig) - Specific evaluation conditions for the rule. Read more details about criteria and condition evaluation [here](/feature-flags/conditions).
 - **Split %** - The percentage of users who meet the criteria that you want to pass or fail the gate check. The Fail % is automatically calculated based on the Pass % you set
-- [**Overrides**](/feature-gates/overrides) - A list of users you want to always bypass your gate (i.e., a "whitelist")
+- [**Overrides**](/feature-flags/overrides) - A list of users you want to always bypass your gate (i.e., a "whitelist")
 
 6. Changes to Feature Gates and targeting rules are NOT auto-saved. Make sure to save your changes by clicking the "Save" button at the bottom right when you are ready for your changes to take effect.
 
@@ -94,4 +94,4 @@ You can also target users in a defined user [Segment](/segments).
 
 ### Parent/child flags
 
-You can target users based on their eligibility of other Feature Gates, enabling powerful chaining, hierarchy, and dependencies of flags. [Flag lifecycle management](/feature-gates/feature-flags-lifecycle) makes it easy to manage, deprecate, and maintain dependent flags.
+You can target users based on their eligibility of other Feature Gates, enabling powerful chaining, hierarchy, and dependencies of flags. [Flag lifecycle management](/feature-flags/feature-flags-lifecycle) makes it easy to manage, deprecate, and maintain dependent flags.

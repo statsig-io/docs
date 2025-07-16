@@ -9,9 +9,9 @@ import styles from './ResourceCard.module.css';
 export function LandingResources() {
   const data = [
     {
-      resourceText: "Feature Gates",
+      resourceText: "Feature Flags",
       icon: <GatesResourceIcon className={styles.resourceIcon} />,
-      url: "/feature-gates/overview",
+      url: "/feature-flags/overview",
     },
     {
       resourceText: "Experimentation",

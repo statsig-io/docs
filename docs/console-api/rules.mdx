@@ -53,7 +53,7 @@ Can not be used in conditional segments
 - type: **public**
 - operator: **null**
 - targetValue: **null**
-- [Learn more](/feature-gates/conditions#everyone) at Feature Gates > Conditions > Everyone
+- [Learn more](/feature-flags/conditions#everyone) at Feature Flags > Conditions > Everyone
 
 ```json
 {
@@ -66,7 +66,7 @@ Can not be used in conditional segments
 - type: **user_id**
 - operator: **any** | **none**
 - targetValue: **string** | **number** | **string[]** | **number[]**
-- [Learn more](/feature-gates/conditions#userid) at Feature Gates > Conditions > User ID
+- [Learn more](/feature-flags/conditions#userid) at Feature Flags > Conditions > User ID
 
 ```json
 {
@@ -81,7 +81,7 @@ Can not be used in conditional segments
 - type: **email**
 - operator: **any** | **none** | **str_contains_any** | **str_contains_none**
 - targetValue: **string** | **string[]**
-- [Learn more](/feature-gates/conditions#email) at Feature Gates > Conditions > Email
+- [Learn more](/feature-flags/conditions#email) at Feature Flags > Conditions > Email
 
 ```json
 {
@@ -101,7 +101,7 @@ Can not be used in conditional segments
   - date: **before** | **after** | **on**
 - targetValue: **string** | **number** | **string[]** | **number[]**
 - field: **field_name**
-- [Learn more](/feature-gates/conditions#custom) at Feature Gates > Conditions > Custom
+- [Learn more](/feature-flags/conditions#custom) at Feature Flags > Conditions > Custom
 
 ```json
 {
@@ -120,7 +120,7 @@ Can not be used in conditional segments
   - Any: **any** | **none** | **is_null** | **is_not_null**
 - targetValue: **string** | **number** | **string[]** | **number[]**
 - field: **field_name**
-- [Learn more](/feature-gates/conditions#unit-id) at Feature Gates > Conditions > Unit ID
+- [Learn more](/feature-flags/conditions#unit-id) at Feature Flags > Conditions > Unit ID
 
 ```json
 {
@@ -136,7 +136,7 @@ Can not be used in conditional segments
 - type: **app_version**
 - operator: **any** | **none** | **version_lt** | **version_gt** | **version_lte** | **version_gte**
 - targetValue: **string** | **number** | **string[]** | **number[]**
-- [Learn more](/feature-gates/conditions#app-version) at Feature Gates > Conditions > App Version
+- [Learn more](/feature-flags/conditions#app-version) at Feature Flags > Conditions > App Version
 
 ```json
 {
@@ -151,7 +151,7 @@ Can not be used in conditional segments
 - type: **browser_name**
 - operator: **any** | **none**
 - targetValue: **Android** | **Chrome** | **Chrome Mobile** | **Edge** | **Edge Mobile** | **IE** | **IE Mobile** | **Opera** | **Opera Mobile** | **Firefox** | **Firefox Mobile** | **Mobile Safari** | **Safari**
-- [Learn more](/feature-gates/conditions#browser) at Feature Gates > Conditions > Browser
+- [Learn more](/feature-flags/conditions#browser) at Feature Flags > Conditions > Browser
 
 ```json
 {
@@ -166,7 +166,7 @@ Can not be used in conditional segments
 - type: **browser_version**
 - operator: **any** | **none** | **version_lt** | **version_gt** | **version_lte** | **version_gte**
 - targetValue: **string** | **number** | **string[]** | **number[]**
-- [Learn more](/feature-gates/conditions#browser-version) at Feature Gates > Conditions > Browser Version
+- [Learn more](/feature-flags/conditions#browser-version) at Feature Flags > Conditions > Browser Version
 
 ```json
 {
@@ -181,7 +181,7 @@ Can not be used in conditional segments
 - type: **os_name**
 - operator: **any** | **none**
 - targetValue: **Android** | **iOS** | **Linux** | **Mac OS X** | **Windows**
-- [Learn more](/feature-gates/conditions#os) at Feature Gates > Conditions > Operating System
+- [Learn more](/feature-flags/conditions#os) at Feature Flags > Conditions > Operating System
 
 ```json
 {
@@ -196,7 +196,7 @@ Can not be used in conditional segments
 - type: **os_version**
 - operator: **any** | **none** | **version_lt** | **version_gt** | **version_lte** | **version_gte**
 - targetValue: **string** | **number** | **string[]** | **number[]**
-- [Learn more](/feature-gates/conditions#os-version) at Feature Gates > Conditions > OS Version
+- [Learn more](/feature-flags/conditions#os-version) at Feature Flags > Conditions > OS Version
 
 ```json
 {
@@ -211,7 +211,7 @@ Can not be used in conditional segments
 - type: **country**
 - operator: **any** | **none**
 - targetValue: **2 Letter Country Code**
-- [Learn more](/feature-gates/conditions#country) at Feature Gates > Conditions > Country
+- [Learn more](/feature-flags/conditions#country) at Feature Flags > Conditions > Country
 
 ```json
 {
@@ -227,7 +227,7 @@ Can not be used in conditional segments
 - type: **passes_gate**
 - operator: **null**
 - targetValue: **gate_id**
-- [Learn more](/feature-gates/conditions#gate) at Feature Gates > Conditions > Passes Target gate
+- [Learn more](/feature-flags/conditions#gate) at Feature Flags > Conditions > Passes Target gate
 
 ```json
 {
@@ -242,7 +242,7 @@ Can not be used in conditional segments
 - type: **fails_gate**
 - operator: **null**
 - targetValue: **gate_id**
-- [Learn more](/feature-gates/conditions#fails-target-gate) at Feature Gates > Conditions > Fails Target gate
+- [Learn more](/feature-flags/conditions#fails-target-gate) at Feature Flags > Conditions > Fails Target gate
 
 ```json
 {
@@ -257,7 +257,7 @@ Can not be used in conditional segments
 - type: **time**
 - operator: **any** | **none** | **lt** | **gt**
 - targetValue: **string** | **number** | **string[]** | **number[]**
-- [Learn more](/feature-gates/conditions#time) at Feature Gates > Conditions > Time
+- [Learn more](/feature-flags/conditions#time) at Feature Flags > Conditions > Time
 
 ```json
 {
@@ -272,7 +272,7 @@ Can not be used in conditional segments
 - type: **environment_tier**
 - operator: **any** | **none**
 - targetValue: **development** | **staging** | **production**
-- [Learn more](/feature-gates/conditions#environment) at Feature Gates > Conditions > Environment Tier
+- [Learn more](/feature-flags/conditions#environment) at Feature Flags > Conditions > Environment Tier
 
 ```json
 {
@@ -286,7 +286,7 @@ Can not be used in conditional segments
 - type: **passes_segment**
 - operator: **null**
 - targetValue: **segment_id**
-- [Learn more](/feature-gates/conditions#segment) at Feature Gates > Conditions > User in Segment
+- [Learn more](/feature-flags/conditions#segment) at Feature Flags > Conditions > User in Segment
 
 ```json
 {
@@ -300,7 +300,7 @@ Can not be used in conditional segments
 - type: **fails_segment**
 - operator: **null**
 - targetValue: **segment_id**
-- [Learn more](/feature-gates/conditions#user-not-in-segment) at Feature Gates > Conditions > User not in Segment
+- [Learn more](/feature-flags/conditions#user-not-in-segment) at Feature Flags > Conditions > User not in Segment
 
 ```json
 {
@@ -314,7 +314,7 @@ Can not be used in conditional segments
 - type: **ip_address**
 - operator: **any** | **none**
 - targetValue: **string** | **string[]**
-- [Learn more](/feature-gates/conditions#ip) at Feature Gates > Conditions > IP address
+- [Learn more](/feature-flags/conditions#ip) at Feature Flags > Conditions > IP address
 
 ```json
 {

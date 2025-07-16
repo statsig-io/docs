@@ -1,14 +1,14 @@
 ---
 title: Permanent and Stale Gates
 sidebar_label: Permanent and stale gates
-slug: /feature-gates/permanent-and-stale-gates
+slug: /feature-flags/permanent-and-stale-gates
 keywords:
   - owner:shubham
 last_update:
   date: 2025-01-31
 ---
 
-It is important for your codebase and team to bring feature gates to a final state (i.e. flags now permanently part of your codebase or completely removed) when they have served their purpose, as described [here](/feature-gates/feature-flags-lifecycle). On Statsig, you can use feature gate **Types** to easily keep track of your flags that might be ready to brought to their final state.
+It is important for your codebase and team to bring feature gates to a final state (i.e. flags now permanently part of your codebase or completely removed) when they have served their purpose, as described [here](/feature-flags/feature-flags-lifecycle). On Statsig, you can use feature gate **Types** to easily keep track of your flags that might be ready to brought to their final state.
 
 ## Types
 
@@ -57,4 +57,4 @@ Using the **Stale** type discussed above, Statsig provides both in-console and e
 
 - **In-console:** See the reminder at the top of the individual feature gate page
     ![image](https://user-images.githubusercontent.com/120431069/224457644-16844256-e7f8-4490-b07e-74f0d85eb6ee.png)
-- **Email/Slack:** We will proactively reach out to you with an email/ Slack reminder (if you've enabled the Slack integration) to clean up or mark permanent any stale gates you own. We will send this reminder nudge monthly until the gates are either cleaned up or marked as permanent.  
+- **Email/Slack:** We will proactively reach out to you with an email/ Slack reminder (if you've enabled the Slack integration) to clean up or mark permanent any stale gates you own. We will send this reminder nudge monthly until the gates are either cleaned up or marked as permanent. 

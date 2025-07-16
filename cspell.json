@@ -702,7 +702,7 @@
   ],
   "ignorePaths": [
     "node_modules/**",
-    "docs/feature-gates/**",
+    "docs/feature-flags/**",
     "docs/developer-guides/**"
   ],
   "ignoreRegExpList": [

@@ -88,8 +88,8 @@ Integrating feature flags into a Java application using the Statsig SDK involves
 2. **Create a New Project**:
     - In the Statsig dashboard, create a new project for your application.
 
-3. **Navigate to Feature Gates**:
-    - Go to the "Feature Gates" section in the Statsig console dashboard.
+3. **Navigate to Feature Flags**:
+    - Go to the "Feature Flags" section in the Statsig console dashboard.
 
 4. **Create a New Feature Flag**:
     - Click on "Create Feature Flag".
