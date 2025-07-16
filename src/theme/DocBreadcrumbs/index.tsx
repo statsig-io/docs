@@ -98,8 +98,6 @@ function getCategoryHref(item: any): string | undefined {
     
     return '/';
   }
-  
-  return item.href;
 }
 
 export default function DocBreadcrumbs(): JSX.Element | null {
