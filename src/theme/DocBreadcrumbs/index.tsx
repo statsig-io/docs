@@ -75,7 +75,7 @@ function getCategoryHref(item: any): string | undefined {
       'experiments': '/experiments-plus',
       'feature flags': '/feature-flags/overview',
       'analytics': '/',
-      'product analytics': '/',
+      'product analytics': '/product-analytics/overview',
       'management & admin': '/',
       'integrations': '/integrations/introduction',
       'guides': '/',
@@ -83,7 +83,10 @@ function getCategoryHref(item: any): string | undefined {
       'sdk': '/',
       'sdk quickstarts': '/',
       'getting started': '/',
-      'new to statsig?': '/'
+      'new to statsig?': '/',
+      'low-code experiments': '/guides/sidecar-experiments/introduction',
+      'web analytics': '/webanalytics/overview',
+      'session replay': '/session-replay/overview'
     };
     
     if (categoryMappings[label]) {
