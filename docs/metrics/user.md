@@ -5,7 +5,7 @@ slug: /metrics/user
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-01-29
+  date: 2025-05-05
 ---
 
 ## DAU (Daily Active User) Definition

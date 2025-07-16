@@ -4,7 +4,7 @@ title: Teams
 keywords:
   - owner:mseger
 last_update:
-  date: 2025-02-05
+  date: 2025-04-02
 ---
 :::info 
 Note- Teams are an Enterprise-only feature. If you are on the Developer or Pro tiers, this guide will not apply to you. To upgrade to Enterprise, feel free to reach out to our team [here](https://www.statsig.com/contact/demo).

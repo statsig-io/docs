@@ -5,7 +5,7 @@ slug: /feature-flags/add-rule
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-03-20
+  date: 2025-03-21
 ---
 ## Create a rule for a feature flag
 

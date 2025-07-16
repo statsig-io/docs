@@ -3,7 +3,7 @@ title: Fastly
 keywords:
   - owner:brock
 last_update:
-  date: 2024-11-01
+  date: 2025-03-21
 ---
 
 ## Overview

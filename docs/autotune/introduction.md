@@ -5,7 +5,7 @@ slug: /autotune
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-19
+  date: 2025-05-30
 ---
 
 Autotune and Autotune AI are Multi-Armed Bandit solutions that automatically find the best variant among a group of candidates, while dynamically allocating traffic to optimize for a single target metric.

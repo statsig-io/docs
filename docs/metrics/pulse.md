@@ -5,7 +5,7 @@ slug: /metrics/pulse
 keywords:
   - owner:shubham
 last_update:
-  date: 2024-10-25
+  date: 2025-03-21
 ---
 
 # Pulse Metrics

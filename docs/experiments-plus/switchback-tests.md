@@ -5,7 +5,7 @@ slug: /experiments-plus/switchback-tests
 keywords:
   - owner:vm
 last_update:
-  date: 2024-05-09
+  date: 2025-06-23
 ---
 
 # What is Switchback Testing? 

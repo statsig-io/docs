@@ -3,6 +3,8 @@ sidebar_label: Configuration
 title: Configuring Experiments
 keywords:
   - owner:craig
+last_update:
+  date: 2025-05-07
 ---
 
 # Configuration

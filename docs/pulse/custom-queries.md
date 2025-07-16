@@ -5,7 +5,7 @@ slug: /pulse/custom-queries
 keywords:
   - owner:vm
 last_update:
-  date: 2025-02-28
+  date: 2025-06-12
 ---
 
 ## Custom "Explore" Queries

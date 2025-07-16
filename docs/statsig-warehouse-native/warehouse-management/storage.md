@@ -5,7 +5,7 @@ sidebar_label: Warehouse Storage
 keywords:
   - owner:craig
 last_update:
-  date: 2025-06-10
+  date: 2025-06-23
 ---
 
 ## Introduction

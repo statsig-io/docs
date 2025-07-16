@@ -5,7 +5,7 @@ slug: /metrics/custom-metrics
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-01-07
+  date: 2025-03-21
 ---
 
 # Custom Metrics
