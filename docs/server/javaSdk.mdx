@@ -27,6 +27,7 @@ import {
   Reference,
   ProxyConfigs,
   Instances,
+  SystemRequirements,
 } from "./Templates/index.mdx";
 
 import Preamble from "./java/_preamble.mdx";
@@ -59,6 +60,7 @@ export const Builder = SDKDocsBuilder({
         repo: "https://github.com/statsig-io/java-server-sdk",
       },
     ],
+    [SystemRequirements, {}],
     [
       GettingStarted,
       {
