@@ -23,12 +23,13 @@ def debug(message):
 
 def get_git_last_updated_date(filepath):
     """
-    Runs git log on the given file and returns the date of the most recent commit that is not the ignored commit.
+    Runs git log on the given file and returns the date of the most recent commit that is not the ignored commit
+    or an automation commit. This ensures we get the original content commit date.
     """
     try:
-        # Run git log for the file, with commit hash and commit date separated by ';'
+        # Run git log for the file, with commit hash, commit message, and commit date separated by ';'
         result = subprocess.run(
-            ['git', 'log', '--format=%H;%ci', '--', filepath],
+            ['git', 'log', '--format=%H;%s;%ci', '--', filepath],
             capture_output=True, text=True, check=True
         )
         lines = result.stdout.strip().splitlines()
@@ -36,12 +37,17 @@ def get_git_last_updated_date(filepath):
         for line in lines:
             if not line.strip():
                 continue
-            parts = line.split(';', 1)
-            if len(parts) != 2:
+            parts = line.split(';', 2)
+            if len(parts) != 3:
                 continue
-            commit_hash, commit_date = parts[0].strip(), parts[1].strip()
+            commit_hash, commit_message, commit_date = parts[0].strip(), parts[1].strip(), parts[2].strip()
+            
             if commit_hash in IGNORED_COMMITS:
                 debug(f"Skipping ignored commit {commit_hash} for file {filepath}")
+                continue
+            
+            if "Automate last_update field" in commit_message:
+                debug(f"Skipping automation commit {commit_hash} for file {filepath}")
                 continue
                 
             # Format the date as yyyy-mm-dd
@@ -190,4 +196,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()  
+    main()    

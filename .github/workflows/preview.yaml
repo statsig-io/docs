@@ -15,7 +15,7 @@ jobs:
       - run: |
           npm install
       - run: |
-          BUILD_MODE=true python3 find_doc_updates.py
+          BUILD_MODE=true DEBUG_DOC_UPDATES=false python3 find_doc_updates.py
           npm run build
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
