@@ -232,18 +232,3 @@ The `LogEventRequest` contains:
 The `LogEventPayload` contains:
 - **`events`**: Array of event objects with user data, event names, and metadata
 - **`statsig_metadata`**: SDK metadata including version and environment information
-
-### Best Practices
-
-1. **Error Handling**: Always implement proper error handling and logging in your adapters
-2. **Performance**: Consider the performance impact of your custom logic, especially for event logging
-3. **Reliability**: Implement retry logic and fallback mechanisms for critical operations
-4. **Resource Management**: Properly clean up resources in the `shutdown()` methods
-5. **Testing**: Test your adapters thoroughly, including error scenarios and edge cases
-
-### Troubleshooting
-
-- **Specs not loading**: Check that your `SpecsAdapterBase` implementation calls `didReceiveSpecsUpdate()` with valid JSON
-- **Events not being sent**: Verify that your `EventLoggingAdapterBase` returns `true` from `logEvents()` on success
-- **Memory leaks**: Ensure proper cleanup in `shutdown()` methods and avoid circular references
-- **Performance issues**: Consider implementing batching and async processing for high-volume event logging
