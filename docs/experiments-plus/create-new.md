@@ -123,3 +123,9 @@ Setting a target duration is optional, but it helps ensure that you wait long en
 Once set, you can track progress against the target duration/exposures in the experiment header. You’ll also receive notifications via email and Slack (if integrated) when the target is reached.
 
 ---
+
+### Hypothesis Advisor
+Writing good experiment hypotheses is key to a strong experimentation culture. Statsig now gives instant feedback on experiment hypotheses—flagging what’s missing. Admins can set custom requirements, which Statsig uses to guide experimenters toward stronger, more complete hypotheses. 
+
+This feature has to be enabled for your project. Do this from Settings -> Experiment -> Project -> Hypothesis Advisor. This is also where you configure any custom requirements you want to configure (e.g. 
+"Strongly recommend that a validation plan be mentioned")
