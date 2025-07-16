@@ -78,15 +78,17 @@ function getCategoryHref(item: any): string | undefined {
     const label = item.label.toLowerCase();
     
     const categoryMappings: Record<string, string> = {
-      'products': '/',  // Products category should link to home since it's a container
+      'products': '/',
       'experiments': '/experiments-plus',
-      'feature flags': '/feature-flags',
-      'analytics': '/analytics',
-      'management & admin': '/management',
-      'integrations': '/integrations',
-      'guides': '/guides',
-      'api': '/api',
-      'sdk': '/sdk',
+      'feature flags': '/feature-flags/overview',
+      'analytics': '/',
+      'product analytics': '/',
+      'management & admin': '/',
+      'integrations': '/integrations/introduction',
+      'guides': '/',
+      'api': '/',
+      'sdk': '/',
+      'sdk quickstarts': '/',
       'getting started': '/',
       'new to statsig?': '/'
     };
