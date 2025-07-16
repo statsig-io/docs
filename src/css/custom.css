@@ -590,6 +590,10 @@ span.math.math-inline {
   background-image: url("/img/sdk/sdk_unity.png");
 }
 
+.roblox-icon::before {
+  background-image: url("/img/sdk/sdk_roblox.png");
+}
+
 .template-icon::before {
   background-image: url("/img/icons/sidebar/template.svg");
 }

@@ -1,0 +1,19 @@
+```lua
+-- Values via GetLayer
+
+local layer = Statsig:GetLayer("user_promo_experiments")
+local promoTitle = layer:get("title", "Welcome to Statsig!")
+local discount = layer:get("discount", 0.1)
+
+-- or, via GetExperiment
+
+local titleExperiment = Statsig:GetExperiment("new_user_promo_title")
+local priceExperiment = Statsig:GetExperiment("new_user_promo_price")
+
+local promoTitle = titleExperiment:get("title", "Welcome to Statsig!")
+local discount = priceExperiment:get("discount", 0.1)
+
+...
+
+local price = msrp * (1 - discount)
+```

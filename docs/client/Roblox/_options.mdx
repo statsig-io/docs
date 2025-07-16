@@ -1,0 +1,45 @@
+`StatsigClient.initialize()` takes an optional parameter `options` in addition to `clientKey` that you can provide to customize the Statsig client. Here are the current options and we are always adding more to the list:
+
+#### **loggingEnabled** `boolean`
+
+> Controls whether logging is enabled.
+>
+> default: `true`
+
+#### **loggingIntervalMs** `number`
+
+> How often (in milliseconds) to flush logs to Statsig.
+>
+> default: `60,000 ms` (1 minute)
+
+#### **autocapture** `boolean`
+
+> Determines if autocaptured events are enabled.
+>
+> If enabled, events will be logged for players joining/leaving your game, purchasing gamepasses or developer products in-game, and clicking on `TextButton`s or `ImageButton`s. To reduce the number of events logged, autocaptured click events will only be logged for 1% of users by default (see **perEventSamplingRate** for more information).
+>
+> default: `false`
+
+#### **samplingRate** `SamplingRateProvider`
+
+> Determines what proportion of users will have events logged. This can be bypassed using `StatsigClient:LogEventUnsampled()` if desired. The sampling rate can also be overriden on a per-event-name basis using the **perEventSamplingRate** option.
+>
+> The sampling rate can either be a number, or a function that takes the event name, value, and metadata, and returns the sampling rate for the given event as a number.
+>
+> default: `1`
+
+#### **perEventSamplingRate** `{ [string]: SamplingRateProvider }`
+
+> Overrides the sampling rate on a per-event-name basis. If you provide a value for this option, it will be merged with the default value; use the literal `"default"` to make an event take on the global sampling rate.
+>
+> default:
+>
+> ```lua
+> {
+>   ["auto_capture::player_join"] = "default",
+>   ["auto_capture::player_leave"] = "default",
+>   ["auto_capture::product_purchase"] = 1,
+>   ["auto_capture::gamepass_purchase"] = 1,
+>   ["auto_capture::click"] = 0.01,
+> }
+> ```

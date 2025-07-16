@@ -14,6 +14,7 @@ const sdkGroups = [
       { name: '.NET Client', img: '/img/sdk/sdk_dotnet.png', link: '/client/dotnetSDK' },
       { name: 'Roku', img: '/img/sdk/sdk_roku.png', link: '/client/rokuSDK' },
       { name: 'Unity', img: '/img/sdk/sdk_unity.png', link: '/client/unitySDK' },
+      { name: 'Roblox', img: '/img/sdk/sdk_roblox.png', link: '/client/robloxSDK' },
       { name: 'Dart/Flutter', img: '/img/sdk/sdk_flutter.svg', link: '/client/dartSDK' },
       { name: 'C++ Client', img: '/img/sdk/sdk_cpp.png', link: '/client/cpp-client-sdk' }
     ]

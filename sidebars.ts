@@ -847,6 +847,11 @@ const sidebars: SidebarsConfig = {
               id: "client/unitySDK",
             },
             {
+              className: "roblox-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "client/robloxSDK",
+            },
+            {
               type: "category",
               label: "On Device Client SDKs",
               items: [

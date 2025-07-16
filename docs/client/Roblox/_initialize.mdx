@@ -1,0 +1,18 @@
+Initialize the SDK from a server script when the game starts (see [Statsig Options](#statsig-options) for more detail on available options):
+
+```lua
+--!strict
+local StatsigClient = require(game.ReplicatedStorage:WaitForChild("Statsig"))
+StatsigClient.initialize("client-sdk-key", {
+  loggingIntervalMs = 60e3, -- default: 60000 (1 minute)
+  samplingRate = 0.05, -- default: 1
+})
+```
+
+To use the SDK (either server-side or client-side), require the module and get a reference to a `StatsigClient` instance:
+
+```lua
+--!strict
+local StatsigClient = require(game.ReplicatedStorage:WaitForChild("Statsig"))
+local Statsig = StatsigClient.instance(game.Players.JohnDoe) -- omit player argument client-side
+```

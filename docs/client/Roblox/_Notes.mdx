@@ -1,0 +1,3 @@
+## Notes
+
+- Every time a player joins the game, 2 HTTP requests will be made to initialize the SDK; after that, 2 HTTP requests will be made every time the SDK flushes (defaults to every 1 minute, starting from when the SDK for a player is initialized). Ensure that using the Statsig SDK will not put you over the HTTP request budget (500 requests per minute). If necessary, you can increase the logging interval to reduce the number of requests used per minute.
