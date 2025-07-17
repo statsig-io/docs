@@ -118,8 +118,15 @@ Setting a target duration is optional, but it helps ensure that you wait long en
 
 💡 **Target durations longer than 90 days:** By default, Statsig computes Pulse results for the first 90 days, though the experiment itself can run longer. Before setting a duration beyond 90 days, ask yourself if results past that period will still be relevant, and if earlier data might already provide the insights you need.
 
-<img width="991" alt="Screenshot 2025-02-06 at 6 35 03 PM" src="https://github.com/user-attachments/assets/371f7de7-f428-41d5-ad0e-8fdf9d223982" />
+<img alt="Hypothesis Advisor Screenshot" src="https://github.com/user-attachments/assets/371f7de7-f428-41d5-ad0e-8fdf9d223982" />
 
 Once set, you can track progress against the target duration/exposures in the experiment header. You’ll also receive notifications via email and Slack (if integrated) when the target is reached.
 
 ---
+
+### Hypothesis Advisor
+Writing good experiment hypotheses is key to a strong experimentation culture. Statsig now gives instant feedback on experiment hypotheses—flagging what’s missing. Admins can set custom requirements, which Statsig uses to guide experimenters toward stronger, more complete hypotheses. 
+
+This feature has to be enabled for your project. Do this from Settings -> Experiment -> Project -> Statsig AI. This is also where you configure any custom requirements you want to configure (e.g. 
+"Strongly recommend that a validation plan be mentioned")
+<img alt="image" src="https://github.com/user-attachments/assets/10c50836-5f76-42e2-9adc-fc7efb54a12f" />
