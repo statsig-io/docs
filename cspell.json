@@ -701,7 +701,8 @@
     "fieller's",
     "SPRT",
     "SPRTs",
-    "sprt"
+    "sprt",
+    "JDBC"
   ],
   "ignorePaths": [
     "node_modules/**",
