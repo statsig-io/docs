@@ -15,11 +15,15 @@ Persistent assignment allows you to ensure that a user's variant stays consisten
 
 ## Persistent Storage
 
-The persistent storage adapter allows you to plug in your own storage solution that Statsig SDK uses to persist user assignments.
+Persistent storage takes an "adapter" approach, allowing you to plug in a storage solution of your choice to store assignments, which can then be referenced later to ensure a user stays in the same bucket. You can implement an adapter that uses Local Storage, or one that uses remote storage, to enable persistence across multiple devices.
 The user persistent storage interface consists of just a `load`/`loadAsync`, `save`, `delete` API for read/write operations.
 
 :::info
-Currently only supported in `Javascript`, `iOS` and `Android` On Device Evaluation SDKs
+Persistent Storage is currently supported on:
+ - The modern [`Javascript,`](/client/javascript-sdk) [`React`](/client/javascript-sdk/react), and [`React Native`](/client/javascript-sdk/react-native) SDKs, including on-device evaluation
+ - [`Android, on-device evaluation`](/client/androidOnDeviceEvaluationSDK) only
+ - [`iOS, on-device evaluation`](/client/swiftOnDeviceEvaluationSDK) only
+ - See [below](#support-in-ios-and-android-sdks) for more information on Android and iOS Support
 :::
 
 ### Persistent Storage Logic
@@ -37,9 +41,129 @@ Currently only supported in `Javascript`, `iOS` and `Android` On Device Evaluati
   defaultValue="js-mono"
   values={[
     {label: 'Javascript', value: 'js-mono'},
-    {label: 'Javascript (legacy)', value: 'js'},
+    {label: 'React', value: 'react'},
+    {label: 'Javascript On-Device Eval', value: 'js-mono-on-device'},
+    {label: 'Javascript (legacy)', value: 'old-js'},
+    {label: 'Android On-Device Eval', value: 'androidOnDeviceEvaluationSDK'},
   ]}>
-  <TabItem value="js-mono">
+  <TabItem value ="js-mono">
+```typescript
+import { StatsigClient } from '@statsig/js-client';
+import { UserPersistentOverrideAdapter } from '@statsig/js-user-persisted-storage';
+
+// Custom storage implementation using localStorage
+class LocalStorageUserPersistedStorage {
+  load(key) {
+    return JSON.parse(localStorage.getItem(key) ?? '{}');
+  }
+
+  save(key, experiment, data) {
+    const values = JSON.parse(localStorage.getItem(key) ?? '{}');
+    values[experiment] = JSON.parse(data);
+    localStorage.setItem(key, JSON.stringify(values));
+  }
+
+  delete(key, experiment) {
+    const data = JSON.parse(localStorage.getItem(key) ?? '{}');
+    delete data[experiment];
+    localStorage.setItem(key, JSON.stringify(data));
+  }
+}
+
+const storage = new LocalStorageUserPersistedStorage();
+const adapter = new UserPersistentOverrideAdapter(storage);
+const client = new StatsigClient('client-key', { overrideAdapter: adapter });
+
+await client.initializeAsync({ userID: "123" });
+
+const user = { userID: "123" };
+const userPersistedValues = adapter.loadUserPersistedValues(user, 'userID');
+
+const experiment = client.getExperiment('active_experiment', { userPersistedValues });
+console.log(experiment.getGroupName()); // 'Control'
+
+// Switch to different user - will maintain same experiment group due to persistence
+const newUser = { userID: "456" };
+const newExperiment = client.getExperiment('active_experiment', { userPersistedValues });
+console.log(newExperiment.getGroupName()); // Still 'Control'
+```
+  </TabItem> 
+  <TabItem value="react">
+    The Syntax for react matches vanilla Javascript - for a full implementation example, you can refer to our [Persistent Storage Example](https://github.com/statsig-io/js-client-monorepo/tree/main/samples/next-js/src/app/persisted-user-storage-example) in Next.js.
+  </TabItem>
+
+  <TabItem value ="androidOnDeviceEvaluationSDK">
+
+    #### Synchronous Persistent Evaluations
+    The `UserPersistentStorageInterface` exposes two methods for synchronous persistent storage, which will be called by default when evaluating an experiment.
+
+    ```
+    interface UserPersistentStorageInterface {
+        suspend fun load(key: String): PersistedValues
+        fun save(key: String, experimentName: String, data: String)
+        fun delete(key: String, experiment: String)
+        ...
+    }
+    ```
+
+    The `key` string is a combination of ID and ID Type: e.g. "123:userID" or "abc:stableID" which the SDK will construct and call `get` and `set` on by default
+
+    You can use this interface to persist evaluations synchronously to local storage.  If you need an async interface, read on.
+
+    #### Asynchronous Persistent Evaluations
+    The `UserPersistentStorageInterface` exposes two methods for asynchronous persistent evaluations. Because the `getExperiment` call is synchronous, you must load the value first, and pass it in as `userPersistedValues`
+
+    ```kotlin
+    interface UserPersistentStorageInterface {
+        fun loadAsync(key: String, callback: IPersistentStorageCallback)
+        fun save(key: String, experimentName: String, data: String)
+        fun delete(key: String, experiment: String)
+        ...
+    }
+    interface IPersistentStorageCallback {
+        fun onLoaded(values: PersistedValues)
+    }
+    ```
+
+    For your convenience, we've created a top level method to load the value for a given user and ID Type:
+
+    ```kotlin
+    // Asynchronous load values
+    val userPersistedValues = Statsig.client.loadUserPersistedValuesAsync(
+      user: StatsigUser,
+      idType: string, // userID, stableID, customIDxyz, etc
+      callback: IPersistentStorageCallback
+    );
+
+    // Synchronous load values 
+    val userPersistedvalues = Statsig.client.loadUserPersistedValues(
+        user: StatsigUser,
+      idType: string, // userID, stableID, customIDxyz, etc
+    )
+    ```
+
+    Putting it all together, assuming you have implemented the `UserPersistentStorageInterface` and set it on `StatsigOptions`, your call site will look like this:
+    ```kotlin 
+    // Asynchronous 
+    val callback = object: IPersistentStorageCallback {
+        @override
+        fun onLoaded(values: PersistedValues) {
+            Statsig.getExperiment(user, "sample_experiment", GetExperimentOptions(userPersistedValues = values))
+        }
+    }
+    val userValues = Statsig.client.loadUserPersistedValuesAsync(user, "userID", callback)
+
+    // Synchronous
+    val user = StatsigUser(userID = "user123")
+    val userValues = Statsig.client.loadUserPersistedValues(user, 'userID');
+    const experiment = statsig.getExperiment({userID: "123"}, 'the_allocated_experiment', { userPersistedValues: userValues });
+    ```
+    If you are using java, you can only override loadAsync function and ignore load function as empty. 
+
+  </TabItem>
+
+
+  <TabItem value="js-mono-on-device">
 ```typescript
 const storage = new CustomStorageAdapter(); // Need to implement
 const adapter = new UserPersistentOverrideAdapter(storage);
@@ -59,8 +183,11 @@ console.log(experiment.getGroupName()) // 'Control'
 experiment = client.getExperiment('active_experiment', userInUnknown, { userPersistedValues });
 console.log(experiment.getGroupName()) // 'Control'
 ```
+
+  For a full implementation example, you can refer to our [Persistent Storage On-Device Eval Example](https://github.com/statsig-io/js-client-monorepo/tree/main/samples/next-js/src/app/persisted-user-storage-example-on-device) in Next.js.
+
   </TabItem>
-  <TabItem value="js">
+  <TabItem value="legacy-js">
 ```typescript
 await statsig.initialize(
   'client-key',
@@ -77,5 +204,74 @@ console.log(experiment.getGroupName()) // 'Control'
 experiment = statsig.getExperiment(userInUnknown, 'active_experiment', { userPersistedValues });
 console.log(experiment.getGroupName()) // 'Control'
 ```
+  </TabItem>
+</Tabs>
+
+
+## Support in iOS and Android SDKs
+
+Android and iOS SDKs offer a simplified version of Persistent Storage called `keepDeviceValues` that relies on on-device storage. While this is less flexible its simple to leverage - with a simple boolean flag. When enabled, the SDK (under the hood in the getExperiment/getLayer call) will check for previous stored value, and use those instead, even if allocation or targeting has changed. When the experiment ends - the SDK will stop persisting values.
+
+<Tabs
+  defaultValue="ios"
+  values={[
+    {label: 'iOS', value: 'ios'},
+    {label: 'Android', value: 'android'},
+  ]}>
+  <TabItem value="ios">
+
+  #### Swift:
+  ```swift
+  // With an Experiment:
+  let titleExperiment = Statsig.getExperiment("new_user_promo_title", true) // <-- "true" flag sets keep device values
+  // Use the experiment like normal:
+  let promoTitle = titleExperiment.getValue(forKey: "title", defaultValue: "Welcome to Statsig!")
+
+  // Or a Layer:
+  let layer = Statsig.getLayer("user_promo_experiments", true) // <-- "true" flag sets keep device values
+  // Use the layer like normal:
+  let promoTitle = layer.getValue(forKey: "title", defaultValue: "Welcome to Statsig!")
+  ```
+
+  #### Objective C:
+  ```objc
+  // With an Experiment:
+  DynamicConfig *expConfig = [Statsig getExperimentForName:@"new_user_promo_title" true]; // <-- "true" flag sets keep device values
+  // Use the experiment like normal:
+  NSString *promoTitle = [expConfig getStringForKey:@"title" defaultValue:@"Welcome to Statsig! Use discount code WELCOME10OFF for 10% off your first purchase!"];
+  double discount = [expConfig getDoubleForKey:@"discount" defaultValue:0.1];
+
+  double price = msrp * (1 - discount);
+  ```
+
+  </TabItem>
+
+  <TabItem value="android" >
+  #### Java:
+  ```Java
+  // With an Experiment:
+  DynamicConfig titleExperiment = Statsig.getExperiment("new_user_promo_title", true); // <-- "true" flag sets keep device values
+  // Use the experiment like normal:
+  String promoTitle = titleExperiment.getString("title", "Welcome to Statsig!");
+
+  // Or a Layer:
+  Layer layer = Statsig.getLayer("user_promo_experiments", true) // <-- "true" flag sets keep device values
+  // Use the layer like normal:
+  String promoTitle = layer.getString("title", "Welcome to Statsig!");
+  ```
+
+  #### Kotlin:
+  ```kotlin
+  // With an Experiment:
+  val titleExperiment = Statsig.getExperiment("new_user_promo_title", true) // <-- "true" flag sets keep device values
+  // Use the experiment like normal:
+  val promoTitle = titleExperiment.getString("title", "Welcome to Statsig!")
+
+  // Or a Layer:
+  val layer = Statsig.getLayer("user_promo_experiments", true) // <-- "true" flag sets keep device values
+  // Use the layer like normal:
+  val promoTitle = layer.getString("title", "Welcome to Statsig!")
+
+  ```  
   </TabItem>
 </Tabs>
