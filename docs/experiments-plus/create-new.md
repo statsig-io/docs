@@ -129,4 +129,5 @@ Writing good experiment hypotheses is key to a strong experimentation culture. S
 
 This feature has to be enabled for your project. Do this from Settings -> Experiment -> Project -> Statsig AI. This is also where you configure any custom requirements you want to configure (e.g. 
 "Strongly recommend that a validation plan be mentioned")
-<img alt="image" src="https://github.com/user-attachments/assets/10c50836-5f76-42e2-9adc-fc7efb54a12f" />
+<img width="1631" height="543" alt="image" src="https://github.com/user-attachments/assets/ef70cbf1-db6b-4c15-81fd-ebabbda12e83" />
+
