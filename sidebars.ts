@@ -122,7 +122,7 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: "category",
-          label: "Feature Flags",
+          label: "Feature Experimentation",
           className: "feature-icon sidebar-icon",
           items: [
             {
