@@ -239,14 +239,6 @@ class MyDataStore : DataStore {
   </TabItem>
 </Tabs>
 
-## Best Practices
-
-- **Thread Safety**: All DataStore implementations must be thread-safe as they may be accessed concurrently
-- **Error Handling**: Handle exceptions gracefully to avoid breaking the SDK
-- **Performance**: Consider caching frequently accessed data in memory
-- **Cleanup**: Implement proper cleanup in the shutdown() method
-- **Testing**: Test your DataStore implementation thoroughly, especially concurrent access
-
 ## Testing Your Implementation
 
 ```java
