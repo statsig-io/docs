@@ -87,6 +87,6 @@ user.email = signUpEmail;
 await client.updateUserAsync(user);
 ```
 
-> **Note**: Updating the user with a `userID` will only impact user-level experiments and feature gates. Device-level experiment evaluations will remain based on the stable ID.
+> **Note**: Updating the user with a `userID` will only impact user-level experiments and feature gates. Device-level experiment evaluations will remain based on the stable ID, and metrics logged post log in would only attribute to the device-level experiment if the same stableID is still present on the user object. Statsig does not link stableIDs to userIDs. If you use the [Warehouse Native](https://docs.statsig.com/statsig-warehouse-native/introduction) product, you can refer to the [ID resolution](https://docs.statsig.com/statsig-warehouse-native/features/id-resolution/) feature to see how to associate userIDs with stableIDs for experiment analysis purposes.
 
 ---
