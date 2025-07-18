@@ -152,11 +152,9 @@ val statsig = Statsig("your-sdk-key", options)
   </TabItem>
 </Tabs>
 
-## Implementation Examples
+## Implementation Example
 
-### In-Memory DataStore
-
-A simple in-memory implementation suitable for testing:
+Here's a simple generic implementation:
 
 <Tabs
   groupId="java-core-lang-choice"
@@ -172,155 +170,17 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 
-public class InMemoryDataStore implements DataStore {
+public class MyDataStore implements DataStore {
     private final Map<String, DataStoreResponse> cache = new ConcurrentHashMap<>();
-    private volatile boolean initialized = false;
 
     @Override
     public CompletableFuture<Void> initialize() {
-        return CompletableFuture.runAsync(() -> {
-            initialized = true;
-            System.out.println("InMemoryDataStore initialized");
-        });
+        return CompletableFuture.completedFuture(null);
     }
 
     @Override
     public CompletableFuture<Void> shutdown() {
-        return CompletableFuture.runAsync(() -> {
-            cache.clear();
-            initialized = false;
-            System.out.println("InMemoryDataStore shutdown");
-        });
-    }
-
-    @Override
-    public CompletableFuture<DataStoreResponse> get(String key) {
-        return CompletableFuture.supplyAsync(() -> {
-            if (!initialized) {
-                throw new IllegalStateException("DataStore not initialized");
-            }
-            return cache.get(key);
-        });
-    }
-
-    @Override
-    public CompletableFuture<Void> set(String key, String value, Long time) {
-        return CompletableFuture.runAsync(() -> {
-            if (!initialized) {
-                throw new IllegalStateException("DataStore not initialized");
-            }
-            cache.put(key, new DataStoreResponse(value, time != null ? time : System.currentTimeMillis()));
-        });
-    }
-
-    @Override
-    public CompletableFuture<Boolean> supportPollingUpdatesFor(String path) {
-        return CompletableFuture.completedFuture(true);
-    }
-}
-```
-
-  </TabItem>
-  <TabItem value="kotlin">
-
-```kotlin
-import java.util.concurrent.CompletableFuture
-import java.util.concurrent.ConcurrentHashMap
-
-class InMemoryDataStore : DataStore {
-    private val cache = ConcurrentHashMap<String, DataStoreResponse>()
-    @Volatile
-    private var initialized = false
-
-    override fun initialize(): CompletableFuture<Void> {
-        return CompletableFuture.runAsync {
-            initialized = true
-            println("InMemoryDataStore initialized")
-        }
-    }
-
-    override fun shutdown(): CompletableFuture<Void> {
-        return CompletableFuture.runAsync {
-            cache.clear()
-            initialized = false
-            println("InMemoryDataStore shutdown")
-        }
-    }
-
-    override fun get(key: String): CompletableFuture<DataStoreResponse?> {
-        return CompletableFuture.supplyAsync {
-            if (!initialized) {
-                throw IllegalStateException("DataStore not initialized")
-            }
-            cache[key]
-        }
-    }
-
-    override fun set(key: String, value: String, time: Long?): CompletableFuture<Void> {
-        return CompletableFuture.runAsync {
-            if (!initialized) {
-                throw IllegalStateException("DataStore not initialized")
-            }
-            cache[key] = DataStoreResponse(value, time ?: System.currentTimeMillis())
-        }
-    }
-
-    override fun supportPollingUpdatesFor(path: String): CompletableFuture<Boolean> {
-        return CompletableFuture.completedFuture(true)
-    }
-}
-```
-
-  </TabItem>
-</Tabs>
-
-### File-Based DataStore
-
-A file-based implementation that persists data to the local filesystem:
-
-<Tabs
-  groupId="java-core-lang-choice"
-  defaultValue="java"
-  values={[
-    {label: 'Java', value: 'java'},
-    {label: 'Kotlin', value: 'kotlin'},
-  ]}>
-  <TabItem value="java">
-
-```java
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.*;
-import java.nio.file.*;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.Map;
-
-public class FileDataStore implements DataStore {
-    private final Path baseDirectory;
-    private final Map<String, DataStoreResponse> cache = new ConcurrentHashMap<>();
-    private final ObjectMapper objectMapper = new ObjectMapper();
-    
-    public FileDataStore(String baseDirectory) {
-        this.baseDirectory = Paths.get(baseDirectory);
-    }
-
-    @Override
-    public CompletableFuture<Void> initialize() {
-        return CompletableFuture.runAsync(() -> {
-            try {
-                Files.createDirectories(baseDirectory);
-                loadExistingData();
-            } catch (IOException e) {
-                throw new RuntimeException("Failed to initialize FileDataStore", e);
-            }
-        });
-    }
-
-    @Override
-    public CompletableFuture<Void> shutdown() {
-        return CompletableFuture.runAsync(() -> {
-            cache.clear();
-        });
+        return CompletableFuture.runAsync(() -> cache.clear());
     }
 
     @Override
@@ -331,245 +191,7 @@ public class FileDataStore implements DataStore {
     @Override
     public CompletableFuture<Void> set(String key, String value, Long time) {
         return CompletableFuture.runAsync(() -> {
-            try {
-                DataStoreResponse response = new DataStoreResponse(value, time);
-                cache.put(key, response);
-                
-                String fileName = sanitizeFileName(key) + ".json";
-                Path filePath = baseDirectory.resolve(fileName);
-                
-                Map<String, Object> data = Map.of(
-                    "result", value,
-                    "time", time != null ? time : System.currentTimeMillis()
-                );
-                
-                objectMapper.writeValue(filePath.toFile(), data);
-            } catch (IOException e) {
-                throw new RuntimeException("Failed to persist data", e);
-            }
-        });
-    }
-
-    @Override
-    public CompletableFuture<Boolean> supportPollingUpdatesFor(String path) {
-        return CompletableFuture.completedFuture(true);
-    }
-
-    private void loadExistingData() throws IOException {
-        if (!Files.exists(baseDirectory)) {
-            return;
-        }
-        
-        try (DirectoryStream<Path> stream = Files.newDirectoryStream(baseDirectory, "*.json")) {
-            for (Path file : stream) {
-                try {
-                    Map<String, Object> data = objectMapper.readValue(file.toFile(), Map.class);
-                    String result = (String) data.get("result");
-                    Long time = data.get("time") instanceof Number ? 
-                        ((Number) data.get("time")).longValue() : null;
-                    
-                    String key = file.getFileName().toString().replace(".json", "");
-                    cache.put(key, new DataStoreResponse(result, time));
-                } catch (IOException e) {
-                    System.err.println("Failed to load file: " + file + ", error: " + e.getMessage());
-                }
-            }
-        }
-    }
-
-    private String sanitizeFileName(String key) {
-        return key.replaceAll("[^a-zA-Z0-9._-]", "_");
-    }
-}
-```
-
-  </TabItem>
-  <TabItem value="kotlin">
-
-```kotlin
-import com.fasterxml.jackson.databind.ObjectMapper
-import java.io.IOException
-import java.nio.file.*
-import java.util.concurrent.CompletableFuture
-import java.util.concurrent.ConcurrentHashMap
-
-class FileDataStore(baseDirectory: String) : DataStore {
-    private val baseDirectory: Path = Paths.get(baseDirectory)
-    private val cache = ConcurrentHashMap<String, DataStoreResponse>()
-    private val objectMapper = ObjectMapper()
-
-    override fun initialize(): CompletableFuture<Void> {
-        return CompletableFuture.runAsync {
-            try {
-                Files.createDirectories(baseDirectory)
-                loadExistingData()
-            } catch (e: IOException) {
-                throw RuntimeException("Failed to initialize FileDataStore", e)
-            }
-        }
-    }
-
-    override fun shutdown(): CompletableFuture<Void> {
-        return CompletableFuture.runAsync {
-            cache.clear()
-        }
-    }
-
-    override fun get(key: String): CompletableFuture<DataStoreResponse?> {
-        return CompletableFuture.supplyAsync { cache[key] }
-    }
-
-    override fun set(key: String, value: String, time: Long?): CompletableFuture<Void> {
-        return CompletableFuture.runAsync {
-            try {
-                val response = DataStoreResponse(value, time)
-                cache[key] = response
-                
-                val fileName = sanitizeFileName(key) + ".json"
-                val filePath = baseDirectory.resolve(fileName)
-                
-                val data = mapOf(
-                    "result" to value,
-                    "time" to (time ?: System.currentTimeMillis())
-                )
-                
-                objectMapper.writeValue(filePath.toFile(), data)
-            } catch (e: IOException) {
-                throw RuntimeException("Failed to persist data", e)
-            }
-        }
-    }
-
-    override fun supportPollingUpdatesFor(path: String): CompletableFuture<Boolean> {
-        return CompletableFuture.completedFuture(true)
-    }
-
-    private fun loadExistingData() {
-        if (!Files.exists(baseDirectory)) {
-            return
-        }
-        
-        Files.newDirectoryStream(baseDirectory, "*.json").use { stream ->
-            for (file in stream) {
-                try {
-                    val data = objectMapper.readValue(file.toFile(), Map::class.java)
-                    val result = data["result"] as? String
-                    val time = (data["time"] as? Number)?.toLong()
-                    
-                    val key = file.fileName.toString().replace(".json", "")
-                    cache[key] = DataStoreResponse(result, time)
-                } catch (e: IOException) {
-                    System.err.println("Failed to load file: $file, error: ${e.message}")
-                }
-            }
-        }
-    }
-
-    private fun sanitizeFileName(key: String): String {
-        return key.replace(Regex("[^a-zA-Z0-9._-]"), "_")
-    }
-}
-```
-
-  </TabItem>
-</Tabs>
-
-### Database DataStore (JDBC)
-
-A database-backed implementation using JDBC:
-
-<Tabs
-  groupId="java-core-lang-choice"
-  defaultValue="java"
-  values={[
-    {label: 'Java', value: 'java'},
-    {label: 'Kotlin', value: 'kotlin'},
-  ]}>
-  <TabItem value="java">
-
-```java
-import javax.sql.DataSource;
-import java.sql.*;
-import java.util.concurrent.CompletableFuture;
-
-public class DatabaseDataStore implements DataStore {
-    private final DataSource dataSource;
-    private static final String CREATE_TABLE_SQL = """
-        CREATE TABLE IF NOT EXISTS statsig_cache (
-            cache_key VARCHAR(255) PRIMARY KEY,
-            cache_value TEXT,
-            cache_time BIGINT
-        )
-        """;
-    
-    public DatabaseDataStore(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
-
-    @Override
-    public CompletableFuture<Void> initialize() {
-        return CompletableFuture.runAsync(() -> {
-            try (Connection conn = dataSource.getConnection();
-                 Statement stmt = conn.createStatement()) {
-                stmt.execute(CREATE_TABLE_SQL);
-            } catch (SQLException e) {
-                throw new RuntimeException("Failed to initialize database", e);
-            }
-        });
-    }
-
-    @Override
-    public CompletableFuture<Void> shutdown() {
-        return CompletableFuture.completedFuture(null);
-    }
-
-    @Override
-    public CompletableFuture<DataStoreResponse> get(String key) {
-        return CompletableFuture.supplyAsync(() -> {
-            String sql = "SELECT cache_value, cache_time FROM statsig_cache WHERE cache_key = ?";
-            try (Connection conn = dataSource.getConnection();
-                 PreparedStatement stmt = conn.prepareStatement(sql)) {
-                
-                stmt.setString(1, key);
-                try (ResultSet rs = stmt.executeQuery()) {
-                    if (rs.next()) {
-                        String value = rs.getString("cache_value");
-                        Long time = rs.getLong("cache_time");
-                        if (rs.wasNull()) {
-                            time = null;
-                        }
-                        return new DataStoreResponse(value, time);
-                    }
-                }
-                return null;
-            } catch (SQLException e) {
-                throw new RuntimeException("Failed to get data", e);
-            }
-        });
-    }
-
-    @Override
-    public CompletableFuture<Void> set(String key, String value, Long time) {
-        return CompletableFuture.runAsync(() -> {
-            String sql = """
-                INSERT INTO statsig_cache (cache_key, cache_value, cache_time) 
-                VALUES (?, ?, ?) 
-                ON DUPLICATE KEY UPDATE cache_value = ?, cache_time = ?
-                """;
-            try (Connection conn = dataSource.getConnection();
-                 PreparedStatement stmt = conn.prepareStatement(sql)) {
-                
-                Long timestamp = time != null ? time : System.currentTimeMillis();
-                stmt.setString(1, key);
-                stmt.setString(2, value);
-                stmt.setLong(3, timestamp);
-                stmt.setString(4, value);
-                stmt.setLong(5, timestamp);
-                
-                stmt.executeUpdate();
-            } catch (SQLException e) {
-                throw new RuntimeException("Failed to set data", e);
-            }
+            cache.put(key, new DataStoreResponse(value, time));
         });
     }
 
@@ -584,86 +206,27 @@ public class DatabaseDataStore implements DataStore {
   <TabItem value="kotlin">
 
 ```kotlin
-import javax.sql.DataSource
-import java.sql.SQLException
 import java.util.concurrent.CompletableFuture
+import java.util.concurrent.ConcurrentHashMap
 
-class DatabaseDataStore(private val dataSource: DataSource) : DataStore {
-    companion object {
-        private const val CREATE_TABLE_SQL = """
-            CREATE TABLE IF NOT EXISTS statsig_cache (
-                cache_key VARCHAR(255) PRIMARY KEY,
-                cache_value TEXT,
-                cache_time BIGINT
-            )
-        """
-    }
+class MyDataStore : DataStore {
+    private val cache = ConcurrentHashMap<String, DataStoreResponse>()
 
     override fun initialize(): CompletableFuture<Void> {
-        return CompletableFuture.runAsync {
-            try {
-                dataSource.connection.use { conn ->
-                    conn.createStatement().use { stmt ->
-                        stmt.execute(CREATE_TABLE_SQL)
-                    }
-                }
-            } catch (e: SQLException) {
-                throw RuntimeException("Failed to initialize database", e)
-            }
-        }
-    }
-
-    override fun shutdown(): CompletableFuture<Void> {
         return CompletableFuture.completedFuture(null)
     }
 
+    override fun shutdown(): CompletableFuture<Void> {
+        return CompletableFuture.runAsync { cache.clear() }
+    }
+
     override fun get(key: String): CompletableFuture<DataStoreResponse?> {
-        return CompletableFuture.supplyAsync {
-            val sql = "SELECT cache_value, cache_time FROM statsig_cache WHERE cache_key = ?"
-            try {
-                dataSource.connection.use { conn ->
-                    conn.prepareStatement(sql).use { stmt ->
-                        stmt.setString(1, key)
-                        stmt.executeQuery().use { rs ->
-                            if (rs.next()) {
-                                val value = rs.getString("cache_value")
-                                val time = rs.getLong("cache_time").takeUnless { rs.wasNull() }
-                                DataStoreResponse(value, time)
-                            } else {
-                                null
-                            }
-                        }
-                    }
-                }
-            } catch (e: SQLException) {
-                throw RuntimeException("Failed to get data", e)
-            }
-        }
+        return CompletableFuture.supplyAsync { cache[key] }
     }
 
     override fun set(key: String, value: String, time: Long?): CompletableFuture<Void> {
         return CompletableFuture.runAsync {
-            val sql = """
-                INSERT INTO statsig_cache (cache_key, cache_value, cache_time) 
-                VALUES (?, ?, ?) 
-                ON DUPLICATE KEY UPDATE cache_value = ?, cache_time = ?
-            """
-            try {
-                dataSource.connection.use { conn ->
-                    conn.prepareStatement(sql).use { stmt ->
-                        val timestamp = time ?: System.currentTimeMillis()
-                        stmt.setString(1, key)
-                        stmt.setString(2, value)
-                        stmt.setLong(3, timestamp)
-                        stmt.setString(4, value)
-                        stmt.setLong(5, timestamp)
-                        
-                        stmt.executeUpdate()
-                    }
-                }
-            } catch (e: SQLException) {
-                throw RuntimeException("Failed to set data", e)
-            }
+            cache[key] = DataStoreResponse(value, time)
         }
     }
 
@@ -678,99 +241,30 @@ class DatabaseDataStore(private val dataSource: DataSource) : DataStore {
 
 ## Best Practices
 
-1. **Thread Safety**: All DataStore implementations must be thread-safe as they may be accessed concurrently.
+- **Thread Safety**: All DataStore implementations must be thread-safe as they may be accessed concurrently
+- **Error Handling**: Handle exceptions gracefully to avoid breaking the SDK
+- **Performance**: Consider caching frequently accessed data in memory
+- **Cleanup**: Implement proper cleanup in the shutdown() method
+- **Testing**: Test your DataStore implementation thoroughly, especially concurrent access
 
-2. **Error Handling**: Wrap exceptions in RuntimeException or handle them gracefully to avoid breaking the SDK.
-
-3. **Performance**: Consider caching frequently accessed data in memory for better performance.
-
-4. **Cleanup**: Always implement proper cleanup in the shutdown() method to avoid resource leaks.
-
-5. **Testing**: Test your DataStore implementation thoroughly, especially error conditions and concurrent access.
-
-6. **Monitoring**: Consider adding logging or metrics to monitor DataStore performance and errors.
-
-## Testing Your DataStore
-
-<Tabs
-  groupId="java-core-lang-choice"
-  defaultValue="java"
-  values={[
-    {label: 'Java', value: 'java'},
-    {label: 'Kotlin', value: 'kotlin'},
-  ]}>
-  <TabItem value="java">
+## Testing Your Implementation
 
 ```java
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
-public class DataStoreTest {
-    @Test
-    public void testDataStoreOperations() throws Exception {
-        DataStore dataStore = new InMemoryDataStore();
-        
-        // Initialize
-        dataStore.initialize().get();
-        
-        // Test set and get
-        String key = "test_key";
-        String value = "test_value";
-        Long time = System.currentTimeMillis();
-        
-        dataStore.set(key, value, time).get();
-        
-        DataStoreResponse response = dataStore.get(key).get();
-        assertNotNull(response);
-        assertEquals(value, response.result);
-        assertEquals(time, response.time);
-        
-        // Test non-existent key
-        DataStoreResponse missing = dataStore.get("missing_key").get();
-        assertNull(missing);
-        
-        // Cleanup
-        dataStore.shutdown().get();
-    }
+@Test
+public void testDataStore() throws Exception {
+    DataStore dataStore = new MyDataStore();
+    dataStore.initialize().get();
+    
+    String key = "test_key";
+    String value = "test_value";
+    Long time = System.currentTimeMillis();
+    
+    dataStore.set(key, value, time).get();
+    DataStoreResponse response = dataStore.get(key).get();
+    
+    assertEquals(value, response.result);
+    assertEquals(time, response.time);
+    
+    dataStore.shutdown().get();
 }
 ```
-
-  </TabItem>
-  <TabItem value="kotlin">
-
-```kotlin
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.Assertions.*
-
-class DataStoreTest {
-    @Test
-    fun testDataStoreOperations() {
-        val dataStore = InMemoryDataStore()
-        
-        // Initialize
-        dataStore.initialize().get()
-        
-        // Test set and get
-        val key = "test_key"
-        val value = "test_value"
-        val time = System.currentTimeMillis()
-        
-        dataStore.set(key, value, time).get()
-        
-        val response = dataStore.get(key).get()
-        assertNotNull(response)
-        assertEquals(value, response?.result)
-        assertEquals(time, response?.time)
-        
-        // Test non-existent key
-        val missing = dataStore.get("missing_key").get()
-        assertNull(missing)
-        
-        // Cleanup
-        dataStore.shutdown().get()
-    }
-}
-```
-
-  </TabItem>
-</Tabs>
