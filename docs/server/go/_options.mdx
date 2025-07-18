@@ -44,6 +44,7 @@ type GCIROptions struct {
 	HashAlgorithm         string
 	IncludeConfigType     bool
 	ConfigTypesToInclude  []ConfigType
+	Overrides             *Override
 }
 ```
 
@@ -78,3 +79,10 @@ type GCIROptions struct {
   - If specified, only configurations of the specified types will be included.
   - Possible values include FeatureGateType, DynamicConfigType, ExperimentType, and LayerType.
   - If empty, all configuration types will be included (subject to other filtering options).
+
+- **Overrides**: default null
+  - A pointer to values to override in the response.
+  - When specified, the SDK will return the overriden values of Feature Gates, Dynamic Configs, and Layers.
+  - Possible values include FeatureGate, DynamicConfigs, and Layers.
+  - If not specified, the SDK will return the normal values of feature gates, layers, and dynamic configs without overrides.
+
