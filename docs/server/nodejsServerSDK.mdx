@@ -29,6 +29,7 @@ import {
   ProxyConfigs,
   Instances,
   BreakingChangesSection,
+  SystemRequirements,
 } from "./Templates/index.mdx";
 
 import Install from "./node/_install.mdx";
@@ -61,6 +62,7 @@ export const Builder = SDKDocsBuilder({
         repo: "https://github.com/statsig-io/node-js-server-sdk",
       },
     ],
+    [SystemRequirements, {}],
     [
       GettingStarted,
       {
