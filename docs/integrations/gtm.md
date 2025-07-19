@@ -3,7 +3,7 @@ title: Google Tag Manager (GTM)
 keywords:
   - owner:brock
 last_update:
-  date: 2025-03-05
+  date: 2025-03-21
 ---
 
 ## Inbound Integration (Events flow from GTM dataLayer to Statsig)

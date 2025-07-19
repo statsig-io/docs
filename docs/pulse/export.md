@@ -5,7 +5,7 @@ slug: /pulse/export
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-05
+  date: 2025-05-07
 ---
 
 ## How to Export Pulse Data in Statsig Cloud

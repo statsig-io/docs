@@ -6,7 +6,8 @@ import sys
 from datetime import datetime
 
 # Debug flag to enable verbose logging
-DEBUG = True
+DEBUG = os.environ.get('DEBUG_DOC_UPDATES', 'false').lower() == 'true'
+BUILD_MODE = os.environ.get('BUILD_MODE', 'false').lower() == 'true'
 
 IGNORED_COMMITS = [
     'b9132ef396ac5b8f088d7ea6555e13549c5e85b5',
@@ -133,7 +134,8 @@ def update_frontmatter(filepath, last_update):
 
     if last_update_start_index is not None:
         # Replace existing last_update entry
-        lines[last_update_start_index:last_update_end_index + 1] = new_last_update_lines
+        end_index = last_update_end_index + 1 if last_update_end_index is not None else last_update_start_index + 1
+        lines[last_update_start_index:end_index] = new_last_update_lines
     else:
         # Insert before the closing '---'
         lines.insert(frontmatter_end, "\n")  # Add a blank line for readability
@@ -149,7 +151,8 @@ def update_frontmatter(filepath, last_update):
 
 
 def main():
-    print('Searching for documentation files with an owner keyword...')
+    if not BUILD_MODE:
+        print('Searching for documentation files with an owner keyword...')
     doc_files = find_doc_files('.')
     owner_pattern = re.compile(r'owner:\s*([^\s]+)', re.IGNORECASE)
     results = []
@@ -167,22 +170,24 @@ def main():
                     owner = owner.title()
                     last_updated = get_git_last_updated_date(file)
                     results.append((file, owner, last_updated))
-                    print(f"File: {file}\n  Owner: {owner}\n  Last Updated: {last_updated}\n")
+                    if not BUILD_MODE:
+                        print(f"File: {file}\n  Owner: {owner}\n  Last Updated: {last_updated}\n")
                     update_frontmatter(file, last_updated)
         except Exception as e:
             print(f"Error processing {file}: {e}", file=sys.stderr)
 
-    print('Done processing files.')
+    if not BUILD_MODE:
+        print('Done processing files.')
 
-    # Save results to CSV using pandas
-    try:
-        import pandas as pd
-        df = pd.DataFrame(results, columns=['file', 'owner', 'last_updated'])
-        df.to_csv('doc_updates.csv', index=False)
-        print('CSV saved to doc_updates.csv')
-    except ImportError as e:
-        print('Pandas is not installed. CSV file not saved.', file=sys.stderr)
+        # Save results to CSV using pandas (only in non-build mode)
+        try:
+            import pandas as pd
+            df = pd.DataFrame(results, columns=['file', 'owner', 'last_updated'])
+            df.to_csv('doc_updates.csv', index=False)
+            print('CSV saved to doc_updates.csv')
+        except ImportError as e:
+            print('Pandas is not installed. CSV file not saved.', file=sys.stderr)
 
 
 if __name__ == '__main__':
-    main() 
+    main()  

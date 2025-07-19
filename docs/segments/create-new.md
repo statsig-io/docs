@@ -5,7 +5,7 @@ slug: /segments/create-new
 keywords:
   - owner:shubham
 last_update:
-  date: 2024-10-02
+  date: 2025-03-21
 ---
 
 To create a segment, 

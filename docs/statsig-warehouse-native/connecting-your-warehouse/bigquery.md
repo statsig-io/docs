@@ -5,7 +5,7 @@ sidebar_label: BigQuery
 keywords:
   - owner:vm
 last_update:
-  date: 2024-10-02
+  date: 2025-07-01
 ---
 
 ## Overview

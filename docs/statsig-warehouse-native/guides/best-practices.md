@@ -6,7 +6,7 @@ description: Best Practices for using Statsig in your warehouse
 keywords:
   - owner:vm
 last_update:
-  date: 2024-11-12
+  date: 2025-03-30
 ---
 
 ## Cost Management

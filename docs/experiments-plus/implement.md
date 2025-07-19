@@ -5,7 +5,7 @@ slug: /experiments-plus/implement
 keywords:
   - owner:vm
 last_update:
-  date: 2024-10-31
+  date: 2025-07-08
 ---
 
 To deploy an experiment, you'll need to:

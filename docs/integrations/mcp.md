@@ -5,7 +5,7 @@ slug: /integrations/mcp
 keywords:
   - owner:alisha
 last_update:
-  date: 2025-06-03
+  date: 2025-06-19
 ---
 
 # Statsig MCP Server Setup

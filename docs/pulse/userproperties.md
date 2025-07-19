@@ -5,7 +5,7 @@ slug: /pulse/user_properties
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-19
+  date: 2025-03-21
 ---
 
 Statsig let's you slice results by user properties. Common examples of doing this include breaking down results by user's home country, subscription status or engagement level. 

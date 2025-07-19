@@ -5,7 +5,7 @@ slug: /metrics/raw-events
 keywords:
   - owner:brock
 last_update:
-  date: 2024-10-05
+  date: 2025-03-21
 ---
 
 # Raw Events

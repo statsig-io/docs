@@ -6,7 +6,7 @@ description: Analyzing Cohorts with Statsig
 keywords:
   - owner:craig
 last_update:
-  date: 2025-05-07
+  date: 2025-05-08
 ---
 
 # Cohort Metrics

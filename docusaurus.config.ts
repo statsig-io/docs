@@ -28,6 +28,7 @@ const config: Config = {
           sidebarPath: "./sidebars.ts",
           editUrl: "https://github.com/statsig-io/docs/edit/main/",
           showLastUpdateTime: true,
+          showLastUpdateAuthor: false,
           routeBasePath: "/",
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],

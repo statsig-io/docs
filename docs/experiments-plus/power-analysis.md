@@ -5,7 +5,7 @@ slug: /experiments-plus/power-analysis
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-13
+  date: 2025-03-31
 ---
 
 ### What is Power Analysis?

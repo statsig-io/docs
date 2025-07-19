@@ -5,7 +5,7 @@ slug: /release-pipeline/trigger
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-04-18
+  date: 2025-04-22
 ---
 
 # Triggering Release Pipelines

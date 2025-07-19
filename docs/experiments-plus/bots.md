@@ -5,7 +5,7 @@ slug: /feature-flags/bots
 keywords:
   - owner:vm
 last_update:
-  date: 2025-02-11
+  date: 2025-06-04
 ---
 
 :::note

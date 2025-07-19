@@ -3,7 +3,7 @@ title: Data Warehouse Ingestion
 keywords:
   - owner:tim
 last_update:
-  date: 2024-08-29
+  date: 2025-07-16
 ---
 
 ![Slide 4_3 - 2](https://user-images.githubusercontent.com/108023879/187794828-333622ec-6db2-4936-987d-efbef4ba9a47.png)

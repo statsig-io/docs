@@ -5,7 +5,7 @@ slug: /experiments-plus/bayesian
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-12
+  date: 2025-04-08
 ---
 
 ### Bayesian Testing in Statsig

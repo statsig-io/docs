@@ -5,7 +5,7 @@ sidebar_label: Entity Properties
 keywords:
   - owner:vm
 last_update:
-  date: 2024-10-20
+  date: 2025-03-21
 ---
 
 ## Entity Properties

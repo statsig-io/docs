@@ -5,7 +5,7 @@ slug: /contextual-bandit
 keywords:
   - owner:vm
 last_update:
-  date: 2024-09-18
+  date: 2025-06-04
 ---
 
 ## Model

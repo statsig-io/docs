@@ -4,7 +4,7 @@ title: Single Sign-On With OIDC
 keywords:
   - owner:shubham
 last_update:
-  date: 2024-11-29
+  date: 2025-03-21
 ---
 
 :::info

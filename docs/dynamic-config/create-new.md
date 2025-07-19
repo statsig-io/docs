@@ -5,7 +5,7 @@ slug: /dynamic-config/create-new
 keywords:
   - owner:shubham
 last_update:
-  date: 2024-08-14
+  date: 2025-03-21
 ---
 
 To create a dynamic config, 

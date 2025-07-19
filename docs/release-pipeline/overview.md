@@ -5,7 +5,7 @@ slug: /release-pipeline
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-04-18
+  date: 2025-04-24
 ---
 
 # Release Pipelines

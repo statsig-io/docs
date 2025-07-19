@@ -5,7 +5,7 @@ sidebar_label: Configuring Experiments
 keywords:
   - owner:vm
 last_update:
-  date: 2024-10-02
+  date: 2025-05-31
 ---
 
 Setting up an experiment is a core flow in Statsig. In Warehouse Native, there's two modes to setting up an experiment. In one, you'll connect to existing assignment data from your warehouse. In the other, you'll configure the experiment in Statsig, use the Statsig SDK, and then analyze the resulting exposures in your warehouse.

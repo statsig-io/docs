@@ -6,7 +6,7 @@ displayed_sidebar: cloud
 keywords:
   - owner:brock
 last_update:
-  date: 2024-09-25
+  date: 2025-03-21
 ---
 
 Using feature flags in a Python application with Statsig involves a few steps, starting from setting up a simple Python app to integrating Statsig and using its SDK to manage feature flags. Here's how to go about it:

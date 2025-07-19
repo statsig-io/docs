@@ -5,7 +5,7 @@ slug: /metrics/custom-dau
 keywords:
   - owner:shubham
 last_update:
-  date: 2024-10-01
+  date: 2025-03-21
 ---
 
 # Custom DAU Metric Creation Guide

@@ -5,7 +5,7 @@ slug: /autotune/contextual/monitoring
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-14
+  date: 2025-06-26
 ---
 
 There are three primary ways we recommend you monitor autotune performance.
