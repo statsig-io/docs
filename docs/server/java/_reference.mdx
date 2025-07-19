@@ -197,24 +197,26 @@ sealed class StatsigServer {
 ```kotlin
 class DynamicConfig(
     val name: String,
-    private val value: Map<String, Any>,
-    val ruleID: String?,
-    val groupName: String?,
-    val secondaryExposures: ArrayList<Map<String, String>>,
-    val evaluationDetails: EvaluationDetails?,
-    val isActive: Boolean = true,
+    val value: Map<String, Any>,
+    val ruleID: String? = null,
+    val groupName: String? = null,
+    val secondaryExposures: ArrayList<Map<String, String>> = arrayListOf(),
+    val evaluationDetails: EvaluationDetails? = null,
+    val isActive: Boolean = false,
     val idType: String? = null,
 ) {
-    fun <T> getValue(key: String, default: T): T
-    
-    fun <T> getValue(key: String, default: T, type: Class<T>): T
-    
-    fun getValue(): Map<String, Any>
-    
-    fun has(key: String): Boolean
-    
+    fun getString(key: String, default: String?): String?
+    fun getBoolean(key: String, default: Boolean): Boolean
+    fun getDouble(key: String, default: Double): Double
+    fun getInt(key: String, default: Int): Int
+    fun getLong(key: String, default: Long): Long
+    fun getArray(key: String, default: Array<*>?): Array<*>?
+    fun getDictionary(key: String, default: Map<String, Any>?): Map<String, Any>?
+    fun getConfig(key: String): DynamicConfig?
+    fun getExposureMetadata(): String
+
     companion object {
-        fun empty(configName: String = ""): DynamicConfig
+        fun empty(name: String = ""): DynamicConfig
     }
 }
 ```
@@ -224,24 +226,26 @@ class DynamicConfig(
 ```kotlin
 class Layer(
     val name: String,
-    val ruleID: String?,
-    val groupName: String?,
-    private val value: Map<String, Any>,
-    val secondaryExposures: ArrayList<Map<String, String>>,
-    val configDelegate: String? = null,
+    val ruleID: String? = null,
+    val groupName: String? = null,
+    val value: Map<String, Any>,
+    val secondaryExposures: ArrayList<Map<String, String>> = arrayListOf(),
+    val allocatedExperiment: String? = null,
     val evaluationDetails: EvaluationDetails? = null,
-    val isActive: Boolean = true,
+    val isExperimentActive: Boolean = false,
 ) {
-    fun <T> getValue(key: String, default: T): T
-    
-    fun <T> getValue(key: String, default: T, type: Class<T>): T
-    
-    fun getValue(): Map<String, Any>
-    
-    fun has(key: String): Boolean
-    
+    fun getString(key: String, default: String?): String?
+    fun getBoolean(key: String, default: Boolean): Boolean
+    fun getDouble(key: String, default: Double): Double
+    fun getInt(key: String, default: Int): Int
+    fun getLong(key: String, default: Long): Long
+    fun getArray(key: String, default: Array<*>?): Array<*>?
+    fun getDictionary(key: String, default: Map<String, Any>?): Map<String, Any>?
+    fun getConfig(key: String): DynamicConfig?
+    fun getLegacyExposureMetadata(): String
+
     companion object {
-        fun empty(layerName: String = ""): Layer
+        fun empty(name: String): Layer
     }
 }
 ```
@@ -479,7 +483,7 @@ data class APIFeatureGate(
 ### InitializationDetails
 
 ```kotlin
-class InitializationDetails(
+data class InitializationDetails(
     val duration: Long,
     val isSDKReady: Boolean,
     val configSpecReady: Boolean,
@@ -488,14 +492,15 @@ class InitializationDetails(
 
 data class FailureDetails(
     val reason: FailureReason,
-    val message: String? = null,
+    val exception: Exception? = null,
+    val statusCode: Int? = null,
 )
 
 enum class FailureReason {
-    INVALID_SDK_KEY,
-    NETWORK_ERROR,
+    CONFIG_SPECS_NETWORK_ERROR,
+    EMPTY_SPEC,
     INTERNAL_ERROR,
-    TIMEOUT,
+    PARSE_RESPONSE_ERROR,
 }
 ```
 
@@ -506,6 +511,6 @@ data class ConfigSyncDetails(
     val duration: Long,
     val configSpecReady: Boolean,
     val failureDetails: FailureDetails? = null,
-    val lcut: Long,
+    val lcut: Long? = null,
 )
 ```
