@@ -1048,6 +1048,7 @@ const sidebars: SidebarsConfig = {
         "console-api/gates",
         "console-api/segments",
         "console-api/dynamic-configs",
+        "console-api/param-store",
         "console-api/experiments",
         "console-api/holdouts",
         "console-api/layers",
