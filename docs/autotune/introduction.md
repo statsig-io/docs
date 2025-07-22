@@ -8,7 +8,7 @@ last_update:
   date: 2025-03-19
 ---
 
-Autotune and Autotune AI are Multi-Armed Bandit solutions that automatically find the best variant among a group of candidates, while dynamically allocating traffic to optimize for a single target metric.
+Autotune and Autotune AI are Statsig's Multi-Armed Bandit solutions that automatically find the best variant among a group of candidates, while dynamically allocating traffic to optimize for a single target metric.
 
 Autotune, the Multi-Armed Bandit solution, allocates traffic towards high-performing variants and can eventually identify a winning variant.
 
