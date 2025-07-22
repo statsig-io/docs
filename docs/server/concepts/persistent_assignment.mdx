@@ -130,7 +130,7 @@ print(f"{exp.group_name}") # control
   </TabItem>
   <TabItem value="node-core">
 ```typescript
-import { Statsig, StatsigUser, StatsigOptions, PersistentStorage, StickyValues, UserPersistedValues } from '@statsig/statsig-node-core';
+import { PersistentStorage, StickyValues, UserPersistedValues } from '@statsig/statsig-node-core';
 
 class MyPersistentStorage implements PersistentStorage {
   private storage = new Map<string, UserPersistedValues>();
@@ -153,30 +153,6 @@ class MyPersistentStorage implements PersistentStorage {
     }
   }
 }
-
-const options: StatsigOptions = {
-  persistentStorage: new MyPersistentStorage()
-};
-await Statsig.initialize('secret-key', options);
-
-const persistedUser: StatsigUser = { userID: 'test-123' };
-let exp = Statsig.getExperiment(
-  persistedUser,
-  'active_experiment',
-  { 
-    userPersistedValues: Statsig.getUserPersistedValues(persistedUser, 'userID')
-  }
-);
-console.log(exp.getGroupName()); // 'Control'
-
-exp = Statsig.getExperiment(
-  { userID: 'unknown' },
-  'active_experiment',
-  { 
-    userPersistedValues: Statsig.getUserPersistedValues(persistedUser, 'userID')
-  }
-);
-console.log(exp.getGroupName()); // 'Control'
 ```
   </TabItem>
   
