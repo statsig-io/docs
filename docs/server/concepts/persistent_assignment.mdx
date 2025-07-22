@@ -39,7 +39,6 @@ Currently only supported in `Go`, `Ruby`, `Legacy Node`, `Node Core`, `Node`, `K
   defaultValue="node"
   values={[
     {label: 'Node JS', value: 'node'},
-    {label: 'Node Core', value: 'node-core'},
     {label: 'Kotlin', value: 'kotlin'},
   ]}>
   <TabItem value="kotlin">
@@ -62,16 +61,6 @@ const options: GetExperimentOptions = {
 }
 
 ````
-  </TabItem>
-  <TabItem value="node-core">
-```ts
-const options: GetExperimentOptions = {
-  ...
-  persistentAssignmentOptions: {
-    enforceTargeting: true,
-  }
-}
-```
   </TabItem>
 </Tabs>
 
