@@ -19,7 +19,7 @@ The persistent storage adapter allows you to plug in your own storage solution t
 The storage interface consists of just a `load` and `save` API for read/write operations.
 
 :::info
-Currently only supported in `Go`, `Ruby`, `Legacy Node`, `Node`, `Kotlin`, `.Net`, `Python`
+Currently only supported in `Go`, `Ruby`, `Legacy Node`, `NODE CORE`, `Node`, `Kotlin`, `.Net`, `Python`
 :::
 
 ### Persistent Storage Logic
@@ -39,6 +39,7 @@ Currently only supported in `Go`, `Ruby`, `Legacy Node`, `Node`, `Kotlin`, `.Net
   defaultValue="node"
   values={[
     {label: 'Node JS', value: 'node'},
+    {label: 'NODE CORE', value: 'node-core'},
     {label: 'Kotlin', value: 'kotlin'},
   ]}>
   <TabItem value="kotlin">
@@ -62,6 +63,16 @@ const options: GetExperimentOptions = {
 
 ````
   </TabItem>
+  <TabItem value="node-core">
+```ts
+const options: GetExperimentOptions = {
+  ...
+  persistentAssignmentOptions: {
+    enforceTargeting: true,
+  }
+}
+```
+  </TabItem>
 </Tabs>
 
 ### Example usage
@@ -71,6 +82,7 @@ const options: GetExperimentOptions = {
   defaultValue="ruby"
   values={[
     {label: 'Python (Python Core)', value: 'python-core'},
+    {label: 'NODE CORE', value: 'node-core'},
     {label: 'Node JS', value: 'node'},
     {label: 'Kotlin', value: 'kotlin'},
     {label: 'Ruby', value: 'ruby'},
@@ -115,6 +127,57 @@ user = StatsigUser("a-user")
 exp = statsig.get_experiment(StatsigUser("a-user"), ExperimentEvaluationOptions(user_persisted_values= PersistentStorage.get_user_persisted_value(user, "user_id")))
 print(f"{exp.group_name}") # control
 ````
+  </TabItem>
+  <TabItem value="node-core">
+```typescript
+import { Statsig, StatsigUser, StatsigOptions, PersistentStorage, StickyValues, UserPersistedValues } from '@statsig/statsig-node-core';
+
+class MyPersistentStorage implements PersistentStorage {
+  private storage = new Map<string, UserPersistedValues>();
+
+  load(key: string): UserPersistedValues | null {
+    return this.storage.get(key) || null;
+  }
+
+  save(key: string, config_name: string, data: StickyValues): void {
+    const existing = this.storage.get(key) || {};
+    existing[config_name] = data;
+    this.storage.set(key, existing);
+  }
+
+  delete(key: string, config_name: string): void {
+    const existing = this.storage.get(key);
+    if (existing) {
+      delete existing[config_name];
+      this.storage.set(key, existing);
+    }
+  }
+}
+
+const options: StatsigOptions = {
+  persistentStorage: new MyPersistentStorage()
+};
+await Statsig.initialize('secret-key', options);
+
+const persistedUser: StatsigUser = { userID: 'test-123' };
+let exp = Statsig.getExperiment(
+  persistedUser,
+  'active_experiment',
+  { 
+    userPersistedValues: Statsig.getUserPersistedValues(persistedUser, 'userID')
+  }
+);
+console.log(exp.getGroupName()); // 'Control'
+
+exp = Statsig.getExperiment(
+  { userID: 'unknown' },
+  'active_experiment',
+  { 
+    userPersistedValues: Statsig.getUserPersistedValues(persistedUser, 'userID')
+  }
+);
+console.log(exp.getGroupName()); // 'Control'
+```
   </TabItem>
   
   <TabItem value="kotlin">
