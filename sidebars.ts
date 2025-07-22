@@ -233,19 +233,6 @@ const sidebars: SidebarsConfig = {
               items: [
                 {
                   type: "category",
-                  label: "Contextual (CMAB)",
-                  link: {
-                    type: "doc",
-                    id: "autotune/contextual/introduction",
-                  },
-                  items: [
-                    "autotune/contextual/getting-started",
-                    "autotune/contextual/monitoring",
-                    "autotune/contextual/methodology",
-                  ],
-                },
-                {
-                  type: "category",
                   label: "Autotune (MAB)",
                   link: {
                     type: "doc",
@@ -255,6 +242,19 @@ const sidebars: SidebarsConfig = {
                     "autotune/setup",
                     "autotune/monitoring",
                     "autotune/multi-armed-bandit",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Contextual (CMAB)",
+                  link: {
+                    type: "doc",
+                    id: "autotune/contextual/introduction",
+                  },
+                  items: [
+                    "autotune/contextual/getting-started",
+                    "autotune/contextual/monitoring",
+                    "autotune/contextual/methodology",
                   ],
                 },
                 "autotune/bandit-faq",
