@@ -5,7 +5,7 @@ slug: /release-pipeline/create-and-manage
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-04-18
+  date: 2025-06-10
 ---
 
 # Creating and Managing Release Pipelines

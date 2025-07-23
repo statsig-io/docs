@@ -5,7 +5,7 @@ slug: /pulse/best-faq
 keywords:
   - owner:vm
 last_update:
-  date: 2024-10-02
+  date: 2025-06-12
 ---
 
 Interpreting statistical results can be tricky, and often people will have similar questions as we ramp up. Here's some answers!

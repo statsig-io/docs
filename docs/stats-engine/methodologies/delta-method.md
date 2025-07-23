@@ -5,7 +5,7 @@ slug: /stats-engine/methodologies/delta-method
 keywords:
   - owner:vm
 last_update:
-  date: 2022-10-27
+  date: 2025-03-21
 ---
 
 ## Delta Method

@@ -5,7 +5,7 @@ slug: /feature-flags/feature-flags-lifecycle
 keywords:
   - owner:shubham
 last_update:
-  date: 2024-10-11
+  date: 2025-05-05
 ---
 
 A feature can go through different phases throughout its lifecycle - maybe it’s still being tested out by a few users, or only recently fully rolled out to the world, or maybe it’s been tried and true and you no longer need the feature behind a toggle. 

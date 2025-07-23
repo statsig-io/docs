@@ -5,7 +5,7 @@ slug: /session-replay/watch
 keywords:
   - owner:akin
 last_update:
-  date: 2024-04-22
+  date: 2025-03-21
 ---
 # Watch Replays
 

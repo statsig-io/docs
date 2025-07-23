@@ -5,7 +5,7 @@ slug: /stats-engine/methodologies/one-sided-test
 keywords:
   - owner:vm
 last_update:
-  date: 2024-12-17
+  date: 2025-04-02
 ---
 
 ## One-Sided Tests (aka One-Tailed Test, Non-Inferiority Test)

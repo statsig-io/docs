@@ -5,7 +5,7 @@ sidebar_label: Athena
 keywords:
   - owner:vm
 last_update:
-  date: 2025-01-15
+  date: 2025-05-01
 ---
 
 ## Athena Warehouse Native Overview

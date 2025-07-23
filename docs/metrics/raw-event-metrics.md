@@ -5,7 +5,7 @@ slug: /metrics/metrics-from-events
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-01-08
+  date: 2025-05-23
 ---
 
 # Auto-generated Metrics

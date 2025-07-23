@@ -5,7 +5,7 @@ slug: /experiments-plus/sequential-testing
 keywords:
   - owner:vm
 last_update:
-  date: 2025-02-26
+  date: 2025-03-21
 ---
 
 ## What's the problem with looking early in a "standard" A/B test?
