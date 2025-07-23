@@ -55,6 +55,7 @@ import SupportedCombinationsContent from "./java/_supported_combinations.mdx";
 import ExampleProgramContent from "./java/_example.mdx";
 import ObservabilityClientContent from "./java/_observability_client.mdx";
 import SharedInstanceSnippet from "./java/_sharedInstance.mdx";
+import DataStoreContent from "./java/_data_store.mdx";
 
 
 export const Builder = SDKDocsBuilder({
@@ -93,7 +94,7 @@ export const Builder = SDKDocsBuilder({
     [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
     [LocalOverrides, { snippet: <OverridesSnippet />,},],
     [PersistentStorage, { }],
-    [DataStore, { }],
+    [DataStore, { content: <DataStoreContent /> }],
     [OutputLogger, { }],
     [ObservabilityClient, { content: <ObservabilityClientContent /> }],
     [FAQ, { 

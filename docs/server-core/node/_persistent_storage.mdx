@@ -1,15 +1,58 @@
 ```typescript
 export interface PersistentStorage {
-  load?: (key: string) => Promise<Record<string, StickyValues>>;
-  save?: (key: string, configName: string, data: StickyValues) => Promise<void>;
-  delete?: (key: string, configName: string) => Promise<void>;
+  load: (key: string) => UserPersistedValues | null;
+  save: (key: string, config_name: string, data: StickyValues) => void;
+  delete: (key: string, config_name: string) => void;
 }
 
 export interface StickyValues {
-  value: any;
-  ruleID: string;
-  groupName?: string;
-  secondaryExposures?: Array<Record<string, string>>;
-  undelegatedSecondaryExposures?: Array<Record<string, string>>;
+  value: boolean;
+  json_value: Record<string, unknown>;
+  rule_id: string;
+  group_name: string | null;
+  secondary_exposures: SecondaryExposure[];
+  undelegated_secondary_exposures: SecondaryExposure[];
+  config_delegate: string | null;
+  explicit_parameters: string[] | null;
+  time: number;
+  configVersion?: number | undefined;
+}
+
+export type UserPersistedValues = Record<string, StickyValues>;
+
+export interface SecondaryExposure {
+  gate: string;
+  gateValue: string;
+  ruleId: string;
 }
 ```
+
+## Usage Example
+
+```typescript
+import { PersistentStorage, StickyValues, UserPersistedValues } from '@statsig/statsig-node-core';
+
+class MyPersistentStorage implements PersistentStorage {
+  private storage = new Map<string, UserPersistedValues>();
+
+  load(key: string): UserPersistedValues | null {
+    return this.storage.get(key) || null;
+  }
+
+  save(key: string, config_name: string, data: StickyValues): void {
+    const existing = this.storage.get(key) || {};
+    existing[config_name] = data;
+    this.storage.set(key, existing);
+  }
+
+  delete(key: string, config_name: string): void {
+    const existing = this.storage.get(key);
+    if (existing) {
+      delete existing[config_name];
+      this.storage.set(key, existing);
+    }
+  }
+}
+```
+
+> **Note:** Persistent storage support was added in version 0.6.1 of the Node.js SDK.

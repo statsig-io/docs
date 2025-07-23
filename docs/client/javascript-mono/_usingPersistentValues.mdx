@@ -1,0 +1,46 @@
+## Using Persistent Evaluations
+
+If you want to ensure that a user's variant stays consistent while an experiment is running, regardless of changes to allocation or targeting, you can use persistent storage. 
+
+```typescript
+import { StatsigClient } from '@statsig/js-client';
+import { UserPersistentOverrideAdapter } from '@statsig/js-user-persisted-storage';
+
+// Custom storage implementation using localStorage
+class LocalStorageUserPersistedStorage {
+  load(key) {
+    return JSON.parse(localStorage.getItem(key) ?? '{}');
+  }
+
+  save(key, experiment, data) {
+    const values = JSON.parse(localStorage.getItem(key) ?? '{}');
+    values[experiment] = JSON.parse(data);
+    localStorage.setItem(key, JSON.stringify(values));
+  }
+
+  delete(key, experiment) {
+    const data = JSON.parse(localStorage.getItem(key) ?? '{}');
+    delete data[experiment];
+    localStorage.setItem(key, JSON.stringify(data));
+  }
+}
+
+const storage = new LocalStorageUserPersistedStorage();
+const adapter = new UserPersistentOverrideAdapter(storage);
+const client = new StatsigClient('client-key', { overrideAdapter: adapter });
+
+await client.initializeAsync({ userID: "123" });
+
+const user = { userID: "123" };
+const userPersistedValues = adapter.loadUserPersistedValues(user, 'userID');
+
+const experiment = client.getExperiment('active_experiment', { userPersistedValues });
+console.log(experiment.getGroupName()); // 'Control'
+
+// Switch to different user - will maintain same experiment group due to persistence
+const newUser = { userID: "456" };
+const newExperiment = client.getExperiment('active_experiment', { userPersistedValues });
+console.log(newExperiment.getGroupName()); // Still 'Control'
+```
+
+Refer to the [Client Persistent Assignment](/client/concepts/persistent_assignment) docs for full usage examples.

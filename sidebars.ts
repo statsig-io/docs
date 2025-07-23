@@ -56,7 +56,11 @@ const sidebars: SidebarsConfig = {
               type: "category",
               label: "Migration Guides",
               collapsed: true,
-              items: ["guides/open-source-script", "guides/ui-based-tool"],
+              items: [
+                "guides/migrate-from-launchdarkly",
+                "guides/open-source-script", 
+                "guides/ui-based-tool"
+              ],
             },
           ],
         },
@@ -122,7 +126,7 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: "category",
-          label: "Feature Flags",
+          label: "Feature Experimentation",
           className: "feature-icon sidebar-icon",
           items: [
             {
@@ -233,19 +237,6 @@ const sidebars: SidebarsConfig = {
               items: [
                 {
                   type: "category",
-                  label: "Contextual (CMAB)",
-                  link: {
-                    type: "doc",
-                    id: "autotune/contextual/introduction",
-                  },
-                  items: [
-                    "autotune/contextual/getting-started",
-                    "autotune/contextual/monitoring",
-                    "autotune/contextual/methodology",
-                  ],
-                },
-                {
-                  type: "category",
                   label: "Autotune (MAB)",
                   link: {
                     type: "doc",
@@ -255,6 +246,19 @@ const sidebars: SidebarsConfig = {
                     "autotune/setup",
                     "autotune/monitoring",
                     "autotune/multi-armed-bandit",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Contextual (CMAB)",
+                  link: {
+                    type: "doc",
+                    id: "autotune/contextual/introduction",
+                  },
+                  items: [
+                    "autotune/contextual/getting-started",
+                    "autotune/contextual/monitoring",
+                    "autotune/contextual/methodology",
                   ],
                 },
                 "autotune/bandit-faq",
@@ -1048,6 +1052,7 @@ const sidebars: SidebarsConfig = {
         "console-api/gates",
         "console-api/segments",
         "console-api/dynamic-configs",
+        "console-api/param-store",
         "console-api/experiments",
         "console-api/holdouts",
         "console-api/layers",

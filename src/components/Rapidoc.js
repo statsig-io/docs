@@ -23,6 +23,7 @@ const entityToTagMap = {
   ingestions: "Ingestions",
   tags: "Tags",
   keys: "Keys",
+  "param-store": "Param Store",
 };
 
 export const apiVersions = [

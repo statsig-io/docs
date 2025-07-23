@@ -21,6 +21,7 @@ Funnel Charts in Metrics Explorer provide a granular understanding of what porti
 - **Identifying Drop-off Points**: Pinpoint where users drop-off of a process, allowing targeting improvements at these points.
 - **Comparing User Segments**: Observe how different user segments move through the funnel, highlighting variations in behavior based on demographics, user types, or other criteria.
 - **Product Optimization**: Determine which features or steps effectively move users to the next stage, and which require improvements.
+- **Experiment Analysis**: Understand the conversion rates before and after first exposure to an experiment.
 
 ## Defining a User Funnel
 
@@ -82,6 +83,8 @@ However, some interesting funnels may involve several people in an organization 
 To this end, Statsig allows you to perform individual or group analytics. This enables you to analyze the success of your funnel at the user level, or the success of your funnel for whole groups such as organizations or companies.
 
 You can choose any of the ID types defined in your Statsig project to create a funnel over.
+
+If you have an experiment exposure selected, make sure that the ID type selected matches that of the experiment.
 
 ***Group analytics is not a paid add-on at Statsig and is included at no-extra cost for all tiers.***
 
