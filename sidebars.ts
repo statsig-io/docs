@@ -758,7 +758,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Dev Concepts",
+      label: "SDK Concepts",
       collapsed: false,
       collapsible: false,
       items: [
