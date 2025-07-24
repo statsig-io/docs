@@ -58,8 +58,8 @@ const sidebars: SidebarsConfig = {
               collapsed: true,
               items: [
                 "guides/migrate-from-launchdarkly",
-                "guides/open-source-script", 
-                "guides/ui-based-tool"
+                "guides/open-source-script",
+                "guides/ui-based-tool",
               ],
             },
           ],
@@ -430,7 +430,7 @@ const sidebars: SidebarsConfig = {
           type: "doc",
           id: "session-replay/cli-session-replay",
           label: "CLI Session Replay",
-          className: "terminal-icon sidebar-icon",
+          className: "cli-session-replay-icon sidebar-icon",
         },
         {
           type: "doc",
