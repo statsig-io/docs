@@ -40,7 +40,7 @@ Note: after initialization, both Client and Server SDKs evaluate experiments/gat
 |Checking an Experiment| Requires a user object which is evaluated locally (without a network request) against a ruleset persisted in memory | Does not require a user object, uses a dictionary lookup for values fetched during initialize() |
 |User Identifiers| Pass any and all useful user identifiers | Pass any useful identifiers, the SDK also generates a "StableID", Statsig's anonymous ID you can use to experiment on a user per-device|
 |Logging Events| Requires a user object | Does not require a user object. Note, there is some risk of adblocking log events on client SDKs, which can be minimized by setting up a [Custom Proxy](../custom_proxy)|
-|Flushing Event| Batched and flushed by the SDK every 60 seconds | Batched and flushed by the SDK every 10 seconds
+|Flushing Events| Batched and flushed by the SDK every 60 seconds | Batched and flushed by the SDK every 10 seconds|
 |Updating Configurations| Poll Statsig servers for updates every 10 seconds by default (configurable), Streaming possible with some Server SDKs and the [Statsig Forward Proxy](/server/concepts/forward_proxy) | Configuration persists until next `initialize` or `updateUser` call, recommended to call `initialize` at the start of each user session|
 
 ## Available SDKs
