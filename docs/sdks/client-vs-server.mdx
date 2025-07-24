@@ -28,7 +28,7 @@ Note: after initialization, both Client and Server SDKs evaluate experiments/gat
 ||Server| Client |
 |--|--|--|
 |Privacy | Your servers are presumed to be a secure, multi-user environment, so Server SDKs have access to the definition of all configurations in your project|All evaluations are precomputed on Statsig servers and sent down to you client applications. Names are obfuscated, but a savvy user may be able to glean information from the raw response|
-|Evaluation Performance | Evaluations are done real-time, without a network request. Very complex configurations can take longer to compute, but in pratice, this is rarely an issue.|As all evaluation is precomputed, gate and experiment checks are effectively a dictionary lookup with some computation used for creating and flushing exposure events|
+|Evaluation Performance | Evaluations are done real-time, without a network request. Very complex configurations can take longer to compute, but in practice, this is rarely an issue.|As all evaluation is precomputed, gate and experiment checks are effectively a dictionary lookup with some computation used for creating and flushing exposure events|
 |Initialization Performance | The SDK will make an upfront request for configuration files, then continually poll for any changes to your configurations, updating its internal state when a change is detected| Client SDKs download configurations when you initialize, before which, the SDK may not have usable values. The values aren't updated mid-session unless you explicitly call updateUser. Additional options are available for performant initialization, see [Initializing](/client/concepts/initialize)|
 |Users|Server SDKs are designed to run against multiple users, and all SDK methods require a user object for evaluation/logging |Client SDKs are designed to be run with one user at a time. All evaluations are loaded once up front during initialization, and every event logged uses that user object|
 |Infrastructure | Server SDKs require you to host your own backend services| Client SDKs run entirely on the client and utilize Statsig's servers|
@@ -37,11 +37,11 @@ Note: after initialization, both Client and Server SDKs evaluate experiments/gat
 ||Server| Client |
 |--|--|--|
 |Initializing| Requires only a secret key, downloads the entire ruleset and syncs it in the background | Requires a client key and a user object. Before/during initialization, the SDK will attempt to fallback to cached values.|
-|Checking an Experiment| Requires a user object which is evaluated locally (without a network request) against a ruleset persisted in memory | Does not require a user object, uses a dictionary lookup for values fetched during intialize() |
+|Checking an Experiment| Requires a user object which is evaluated locally (without a network request) against a ruleset persisted in memory | Does not require a user object, uses a dictionary lookup for values fetched during initialize() |
 |User Identifiers| Pass any and all useful user identifiers | Pass any useful identifiers, the SDK also generates a "StableID", Statsig's anonymous ID you can use to experiment on a user per-device|
-|Logging Events| Requires a user object | Does not require a user object. Note, there is some risk of adblocking log events on client SDKs, which can be minmized by setting up a [Custom Proxy](../custom_proxy)|
+|Logging Events| Requires a user object | Does not require a user object. Note, there is some risk of adblocking log events on client SDKs, which can be minimized by setting up a [Custom Proxy](../custom_proxy)|
 |Flushing Event| Batched and flushed by the SDK every 60 seconds | Batched and flushed by the SDK every 10 seconds
-|Updating Configuarations| Poll Statsig servers for updates every 10 seconds by default (configurable), Streaming possible with some Server SDKs and the [Statsig Forward Proxy](/server/concepts/forward_proxy) | Configuration persists until next `initialize` or `updateUser` call, recommended to call `initialize` at the start of each user session|
+|Updating Configurations| Poll Statsig servers for updates every 10 seconds by default (configurable), Streaming possible with some Server SDKs and the [Statsig Forward Proxy](/server/concepts/forward_proxy) | Configuration persists until next `initialize` or `updateUser` call, recommended to call `initialize` at the start of each user session|
 
 ## Available SDKs
 
