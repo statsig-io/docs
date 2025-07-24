@@ -429,7 +429,7 @@ const sidebars: SidebarsConfig = {
         {
           type: "doc",
           id: "session-replay/cli-session-replay",
-          label: "Cli Session Replay",
+          label: "CLI Session Replay",
           className: "terminal-icon sidebar-icon",
         },
         {
