@@ -1,0 +1,152 @@
+---
+title: CLI Session Replay
+sidebar_label: CLI Session Replay
+slug: /session-replay/cli-session-replay
+keywords:
+  - cli
+  - terminal
+  - session replay
+  - asciicast
+  - command line
+last_update:
+  date: 2025-07-24
+---
+
+# CLI Session Replay
+
+CLI Session Replay allows you to record terminal sessions in your Node.js CLI applications and replay them in the Statsig Console. This enables you to understand how users interact with your command-line tools, diagnose issues, and improve the user experience.
+
+CLI sessions are recorded using the [Asciicast v2 format](https://docs.asciinema.org/manual/asciicast/v2/), which captures terminal output, input, resize events, and other interactions in a space-efficient format that can be replayed like a video.
+
+## Installation
+
+Install the CLI session replay package for Node.js:
+
+**npm**
+```bash
+npm install @statsig/js-client @statsig/cli-session-replay-node
+```
+
+**yarn**
+```bash
+yarn add @statsig/js-client @statsig/cli-session-replay-node
+```
+
+**pnpm**
+```bash
+pnpm add @statsig/js-client @statsig/cli-session-replay-node
+```
+
+## Basic Usage
+
+```javascript
+import { StatsigClient } from '@statsig/js-client';
+import { StatsigCliSessionReplayPlugin } from '@statsig/cli-session-replay-node';
+
+const client = new StatsigClient(
+  'your-client-key',
+  { userID: 'user-123' },
+  {
+    plugins: [new StatsigCliSessionReplayPlugin()],
+  }
+);
+
+await client.initializeAsync();
+
+// Your CLI application logic here
+console.log('Hello from CLI!');
+
+// Recording will automatically stop when the process exits
+// or after 4 hours, whichever comes first
+```
+
+## Configuration Options
+
+The `StatsigCliSessionReplayPlugin` accepts optional configuration:
+
+```javascript
+import { StatsigCliSessionReplayPlugin } from '@statsig/cli-session-replay-node';
+
+const plugin = new StatsigCliSessionReplayPlugin({
+  // Override the start timestamp (in milliseconds)
+  startTimestamp: Date.now(),
+  
+  // Custom Asciicast header properties
+  asciicastHeader: {
+    title: 'My CLI App Session',
+    command: 'my-cli-tool --verbose',
+    env: {
+      TERM: 'xterm-256color',
+      SHELL: '/bin/bash'
+    },
+    theme: {
+      fg: '#ffffff',
+      bg: '#000000'
+    }
+  }
+});
+```
+
+### Configuration Properties
+
+- **`startTimestamp`** (optional): Override the recording start time in milliseconds. Defaults to `Date.now()`.
+- **`asciicastHeader`** (optional): Custom properties for the Asciicast header:
+  - `title`: Human-readable title for the recording
+  - `command`: The command that was executed
+  - `env`: Environment variables relevant to the session
+  - `theme`: Terminal color theme with foreground (`fg`) and background (`bg`) colors
+
+## How It Works
+
+The CLI Session Replay plugin:
+
+1. **Captures terminal events** including output, input, and resize events using the Asciicast v2 format
+2. **Records automatically** when your CLI application starts and the plugin is initialized
+3. **Respects session limits** with a 4-hour maximum duration and 1MB size limit
+4. **Logs to Statsig** as a `statsig::session_recording` event when the session ends
+5. **Handles cleanup** automatically on process shutdown or session expiration
+
+## Recording Limits
+
+- **Duration**: Sessions automatically end after 4 hours
+- **Size**: Recording stops if the session data exceeds 1MB
+- **Session tracking**: Recordings are tied to Statsig session IDs and will end if the session expires
+
+## Viewing Recordings
+
+CLI session recordings appear in the Statsig Console alongside web session replays. The recordings can be played back to see exactly what happened in the terminal, including:
+
+- All terminal output and user input
+- Terminal resize events
+- Timing information for each interaction
+- Session metadata and environment details
+
+## Advanced Usage
+
+### Manual Recording Control
+
+You can access the recording instance for manual control:
+
+```javascript
+import { CliRecording } from '@statsig/cli-session-replay-node';
+
+// Check if currently recording
+if (CliRecording.isRecording()) {
+  console.log('Session is being recorded');
+}
+
+// Get current recording instance
+const recording = CliRecording.currentRecording;
+
+// Manually finish recording
+CliRecording.finish();
+```
+
+## Platform Support
+
+CLI Session Replay is currently supported on:
+- Node.js applications
+- Linux, macOS, and Windows terminals
+- Any terminal that supports standard input/output streams
+
+Future support may include other JavaScript runtimes like Deno and Bun.
