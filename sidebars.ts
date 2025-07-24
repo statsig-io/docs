@@ -763,10 +763,11 @@ const sidebars: SidebarsConfig = {
       collapsible: false,
       items: [
         "sdks/getting-started",
-        "sdks/client-vs-server",
         "concepts/user",
         "client/concepts/initialize",
+        "sdks/how-evaluation-works",
         "sdks/debugging",
+        "sdks/client-vs-server",
         "compliance/data_privacy_for_mobile",
       ],
     },

@@ -10,20 +10,8 @@ last_update:
 
 ## SDKs and APIs
 
-### How does bucketing within the Statsig SDKs work?
-Bucketing in Statsig is deterministic. Given the same user object and the same state of the experiment or feature gate, Statsig always returns the same result, even when evaluated on different platforms (client or server). Here's how it works:
-1. **Salt Creation**: Each experiment or feature gate rule generates a unique salt.
-2. **Hashing**: The user identifier (e.g., userId, organizationId) is passed through a SHA256 hashing function, combined with the salt, which produces a large integer.
-3. **Bucket Assignment**: The large integer is then subjected to a modulus operation with 10000 (or 1000 for layers), assigning the user to a bucket.
-4. **Bucket Determination**: The result defines the specific bucket out of 10000 (or 1000 for layers) where the user is placed.
-
-This process ensures a randomized but deterministic bucketing of users across different experiments or feature gates. The unique salt per-experiment or feature gate rule ensures that the same user can be assigned to different buckets in different experiments. This also means that if you rollout a feature gate rule to 50% - then back to 0% - then back to 50%, the same 50% of users will be re-exposed, **so long as you reuse the same rule** - and not create a new one. See [here](/faq/#when-i-change-the-rollout-percentage-of-a-rule-on-a-feature-gate-will-users-who-passed-continue-to-pass).
-
-A lot of times people assume that we keep track of a list of all ids and what group they were assigned to for experiments, or which IDs passed a certain feature gate.  While our data pipelines keep track of which users were exposed to which experiment variant in order to generate experiment results, we do not cache previous evaluations and maintain distributed evaluation state across client and server sdks.  That model doesn't scale - we've even talked to customers who were using an implementation like that in the past, and were paying more for a Redis instance to maintain that state than they ended up paying to use Statsig instead.
-
-For more details, check our open-source SDKs [here](https://github.com/statsig-io/node-js-server-sdk/blob/main/src/Evaluator.ts).
-
-This is not generally recommended, but for advanced use cases - e.g. a series of related experiments that needs to reuse the control and test buckets, we now expose the ability to copy and set the salts used for deterministic hashing. This is meant to be used with care and is only available to Project Administrators. It is available in the Overflow (...) menu in Experiments.
+### How does bucketing in the Statsig SDKs work?
+See [How Evaluation Works](/sdks/how-evaluation-works)
 
 ---
 

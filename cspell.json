@@ -702,7 +702,8 @@
     "SPRT",
     "SPRTs",
     "sprt",
-    "JDBC"
+    "JDBC",
+    "adblocking"
   ],
   "ignorePaths": [
     "node_modules/**",
