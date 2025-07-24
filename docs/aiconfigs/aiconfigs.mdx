@@ -1,0 +1,21 @@
+---
+title: AI Configs Overview
+
+sidebar_label: AI Configs
+slug: /aiconfigs
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-07-24
+---
+
+
+What is an AI Config?
+An AI Config is a way to represent an LLM prompt or a task in Statsig. AI Configs are similar to Dynamic Configs, and allow you to evaluate and roll out prompts in production without deploying code. 
+
+With AI Configs, you can 
+- Manage your prompt configuration outside of your application code. You can update model, configuration or prompt at runtime. 
+- Team mates who have access to Statsig can collaborate and iterate on prompts, while benefitting from Statsig's production change control processes and versioning. 
+- Add configuration for a new model, model provider and progressively shift production traffic to this while comparing costs, user satisfaction or any metric of interest. 
+
+AI Configs also allow you evaluate your prompt offline (via Offline Evals) or online (via Experiments).
