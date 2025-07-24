@@ -12,7 +12,15 @@ import TabItem from "@theme/TabItem";
 
 ## Introduction to the StatsigUser object
 
-The user object ("StatsigUser" in our SDKs) is the sole input you provide Statsig to target gates and assign users to experiment variants. Every additional field you add to your StatsigUser is one you can target on, or filter your metrics by - so **we recommend providing as much info as possible**. Statsig can also infer some information about each UserObject based on other traits (for example, we resolve IP Addresses into countries), read on for more details.
+The user(StatsigUser) object is the sole input you provide to SDKs to target gates and assign users to experiments. If you'd like to target on an attribute, you'll need to add it to your user object, so assembling the data is an important part of SDK setup. **We recommend providing as much info as practical,** as every additional field can enrich your analyses and expand targetin possibilities. Statsig also infers some information about each user based on other traits (for example, we resolve IP Addresses into countries), read on for more details.
+
+## Usage Example in Node:
+```jsx
+//Create a user object
+const user = new StatsigUser({ userID: "12345", email: "vincent@statsig.com"});
+//Use it in getExperiment()
+const my_experiment = statsig.getExperiment(user, "my_experiment_name") //<- any attribute you pass, you can target on
+```
 
 ### I passed that attribute before - why do I need to pass it again?
 
