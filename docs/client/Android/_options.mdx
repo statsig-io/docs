@@ -28,7 +28,7 @@ You can pass in an optional parameter `options` in addition to `sdkKey` and `use
   - Whether or not the SDK should block on loading saved values from disk.
 
 - **initializeValues**: `Map<String, Any>?`, default `null`
-  - Provide the `initialize response` values directly to the Android SDK to synchronously initialize the client. You can generate these values from a Statsig Server SDK like the [NodeJS Server SDK](/server/nodejsServerSDK#bootstrap)
+  - Provide the `initialize response` values directly to the Android SDK to synchronously initialize the client or "Bootstrap". You can generate these values from a Statsig Server SDK like the [NodeJS Server SDK](/server/nodejsServerSDK#bootstrap) and pass them in to the SDK when initializing. For more info, see [Bootstraping.](/client/concepts/initialize/#2-bootstrap-initialization) 
 
 - **disableHashing**: `Boolean?`, default `false`
   - When disabled, the SDK will not hash gate/config/experiment names, instead they will be readable as plain text.

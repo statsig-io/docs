@@ -75,7 +75,7 @@ object that conforms to the `StorageProvider` protocol.
 
 -  **initializeValues**: [String: Any], default `nil`
    - Provide a Dictionary representing the "initialize response" required  to synchronously initialize the SDK.
-     This value can be obtained from a Statsig server SDK.
+     This value can be obtained from a Statsig server SDK and used to [Bootstrap](/client/concepts/initialize/#2-bootstrap-initialization) the SDK when initializing.
 
 -  **disableDiagnostics**: Bool, default `false`
    - Prevent the SDK from sending useful debug information to Statsig.
