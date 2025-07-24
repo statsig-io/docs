@@ -7,7 +7,6 @@ last_update:
   date: 2025-05-09
 ---
 
-
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
@@ -128,7 +127,9 @@ Example:
       this.application,
       "my_client_sdk_key",
       StatsigUser("user_id"),
-      StatsigOptions().apply { initializeValues = bootstrapValues }
+      StatsigOptions(
+        initializeValues = bootstrapValues,
+    )
   )
   ```
   </TabItem>
