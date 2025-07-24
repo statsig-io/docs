@@ -11,15 +11,13 @@ Why do I have to wait for initialization to complete?
 When do you decide each users’ bucket?
 
 ## How Evaluation Works
-Bucketing in Statsig is deterministic. Given the same user object and the same state of the experiment or feature gate, Statsig always returns the same result, even when evaluated on different platforms (client or server). Here's how it works:
+Evaluation in Statsig is deterministic. Given the same user object and the same state of the experiment or feature gate, Statsig always returns the same result, even when evaluated on different platforms (client or server). Here's how it works:
 1. **Salt Creation**: Each experiment or feature gate rule generates a unique salt.
 2. **Hashing**: The user identifier (e.g., userId, organizationId) is passed through a SHA256 hashing function, combined with the salt, which produces a large integer.
 3. **Bucket Assignment**: The large integer is then subjected to a modulus operation with 10000 (or 1000 for layers), assigning the user to a bucket.
 4. **Bucket Determination**: The result defines the specific bucket out of 10000 (or 1000 for layers) where the user is placed.
 
 This process ensures a randomized but deterministic bucketing of users across different experiments or feature gates. The unique salt per-experiment or feature gate rule ensures that the same user can be assigned to different buckets in different experiments. This also means that if you rollout a feature gate rule to 50% - then back to 0% - then back to 50%, the same 50% of users will be re-exposed, **so long as you reuse the same rule** - and not create a new one. See [here](/faq/#when-i-change-the-rollout-percentage-of-a-rule-on-a-feature-gate-will-users-who-passed-continue-to-pass).
-
-A lot of times people assume that we keep track of a list of all ids and what group they were assigned to for experiments, or which IDs passed a certain feature gate.  While our data pipelines keep track of which users were exposed to which experiment variant in order to generate experiment results, we do not cache previous evaluations and maintain distributed evaluation state across client and server sdks.  That model doesn't scale - we've even talked to customers who were using an implementation like that in the past, and were paying more for a Redis instance to maintain that state than they ended up paying to use Statsig instead.
 
 For more details, check our open-source SDKs [here](https://github.com/statsig-io/node-js-server-sdk/blob/main/src/Evaluator.ts).
 
@@ -33,7 +31,8 @@ All of the above logic holds true for both SDKs. In both, the user’s assignmen
 
 
 ## What this means:
-Performant Evaluation: no evaluations require a network request, and we focus on evaluation performance, meaning that checks take \<1ms after evaluation.
-The SDKs don’t “remember” user attributes, or previous evaluations: we rely on you to pass all of the necessary user attributes consistently - and we promise if you do, we’ll provide the same value. We don’t “remember” a users’ previous attributes or evaluations, as this would require the SDK doing “lookups” of previous exposures - which would not be possible within our performance promises. 
-Server SDKs can handle multiple users: because they hold the ruleset in memory, Server SDKs can evaluate any user. Without a network request. This means you’ll have to pass a user object into the getExperiment method on Server SDKs, whereas on client SDKs you pass it into initialize(). 
-We ensure each user receives the same bucket: our ID-based hashing assignment guarantees consistency. If you make a change in console that could affect user bucketing on an experiment, we’ll provide warning. 
+* **Performant Evaluation:** no evaluations require a network request, and we focus on evaluation performance, meaning that checks take \<1ms after evaluation.
+* **The SDKs don’t “remember” user attributes, or previous evaluations:** we rely on you to pass all of the necessary user attributes consistently - and we promise if you do, we’ll provide the same value. 
+A common assumption is that Statsig tracks of a list of all ids and what group they were assigned to for experiments/gates. While our data pipelines track users exposed to each variant to compute experiment results, we do not cache previous evaluations and maintain distributed evaluation state across client and server SDKs. That won't scale - we've even talked to customers doing this in the past, and were paying more for Redis to maintain that state than they ended up paying for Statsig.
+* **Server SDKs can handle multiple users:** because they hold the ruleset in memory, Server SDKs can evaluate any user. Without a network request. This means you’ll have to pass a user object into the getExperiment method on Server SDKs, whereas on client SDKs you pass it into initialize(). 
+* **We ensure each user receives the same bucket:** our ID-based hashing assignment guarantees consistency. If you make a change in console that could affect user bucketing on an experiment, we’ll provide warning. 
