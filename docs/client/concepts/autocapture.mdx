@@ -100,26 +100,3 @@ Metadata on the events tab will be
   "tagName": "a"
 }
 ```
-
-## Event Filtering
-
-If you need to filter out specific auto capture events, you can use the `eventFilterFunc` option in the `StatsigAutoCapturePlugin`. This allows you to selectively disable certain events based on their properties.
-
-For example, to disable page view events while keeping all other auto capture events:
-
-```ts
-const client = new StatsigClient(
-  'client-key',
-  { userID: 'a-user' },
-  {
-    plugins: [
-      new StatsigAutoCapturePlugin({
-        eventFilterFunc: (event) =>
-          event.eventName !== AutoCaptureEventName.PAGE_VIEW,
-      }),
-    ],
-  },
-);
-```
-
-The `eventFilterFunc` receives the `AutoCaptureEvent` object and should return `true` to keep the event or `false` to filter it out. You can filter based on `eventName`, `value`, or any property in the `metadata`.
