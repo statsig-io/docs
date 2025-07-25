@@ -21,7 +21,11 @@ You can then filter exposed users into a Segment in Braze. Custom Attributes wil
 
 ## Setup in Statsig
 
-This integration is only available for Statsig Enterprise customers. Please reach out to our support team to get this enabled for your project. Then, you will be able to find 'Braze' as an option in your Statsig project's [list of integrations](https://console.statsig.com/integrations) from within Statsig console.
+:::info
+This is available for Enterprise contracts. Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you want this enabled.
+:::
+
+After it has been enabled, you will be able to find 'Braze' as an option in your Statsig project's [list of integrations](https://console.statsig.com/integrations) from within Statsig console.
 
 1. Open your [Braze dashboard](https://dashboard.braze.com/). Navigate to Settings > APIs and Identifiers, then open the API Keys tab.
 2. Create or select an existing API key that has the 'users.track' permission. Enter the API Key Identifier in the Braze Integration Setup dialog in your Statsig project.
