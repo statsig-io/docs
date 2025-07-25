@@ -466,6 +466,14 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/ai-active.svg");
 }
 
+.cli-session-replay-icon::before {
+  background-image: url("/img/icons/sidebar/cli-session-replay.svg");
+}
+
+.cli-session-replay-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/cli-session-replay-active.svg");
+}
+
 .whn-icon::before {
   background-image: url("/img/icons/sidebar/whn.svg");
 }
