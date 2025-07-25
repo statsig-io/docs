@@ -34,7 +34,6 @@ You can select a replay to watch by selecting it from the list of replays on the
 
 To more narrowly scope the set of replays to watch, you can add filters. Filters allow you to scope to replays that contain a specific event, user, Feature Gate exposure (pass or fail), or Experiment group exposure. As a reminder, session replay is currently in beta - we will be adding more powerful filtering functionality in the coming weeks.
 
-
 # Playlists
 
 Playlists allow you to organize and group related session recordings for easier analysis and collaboration. Instead of searching through individual sessions, you can create curated collections of recordings that focus on specific user behaviors, issues, or research questions.
