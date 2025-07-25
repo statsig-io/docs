@@ -144,6 +144,18 @@ const config: Config = {
       "@docusaurus/plugin-client-redirects",
       {
         redirects: [
+          { 
+            from: "/ai-config",
+            to: "/ai-configs",
+          },
+          {
+            from: "/aiconfig",
+            to: "/ai-configs",
+          },
+          {
+            from: "/aiconfigs",
+            to: "/ai-configs",
+          },
           {
             from: "/sdks/sdks-overview",
             to: "/sdks/getting-started",
