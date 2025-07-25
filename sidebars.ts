@@ -440,7 +440,7 @@ const sidebars: SidebarsConfig = {
         {
           type: "doc",
           id: "aiconfigs/ai-configs",
-          className: "ai-icon sidebar-icon",
+          className: "ai-icon-2 sidebar-icon",
         },
       ],
     },
