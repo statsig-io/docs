@@ -2,6 +2,10 @@
 title: Statsig CLI ("Siggy")
 sidebar_label: Overview
 slug: /statsigcli
+keywords:
+  - owner:vijaye
+last_update:
+  date: 2025-03-21
 ---
 
 ## Overview

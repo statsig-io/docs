@@ -15,6 +15,12 @@ You can pass in an optional parameter `options` in addition to `sdkKey` and `use
   - if you always want to wait for the latest values fetched from Statsig server, you should set this to 0 so we do not timeout the network request.
   - unit is milliseconds.
 
+- **enableAutoValueUpdate**: `Boolean`, default `false`
+  - By default, feature values for a user are fetched once during Statsig.start and don't change throughout the session. Setting this value to true will make Statsig periodically fetch updated values for the current user.
+
+- **autoValueUpdateIntervalMinutes**: `Double`, default `1.0`
+  - Only applies if enableAutoValueUpdate is true. Controls how frequently calls to refresh the current users values are made. Time is in minutes and defaults to 1 minute. Minimum value is 1 minute.
+
 - **overrideStableID**: `String?`, default `null`
   - overrides the `stableID` in the SDK that is set for the user
 
@@ -22,7 +28,7 @@ You can pass in an optional parameter `options` in addition to `sdkKey` and `use
   - Whether or not the SDK should block on loading saved values from disk.
 
 - **initializeValues**: `Map<String, Any>?`, default `null`
-  - Provide the `initialize response` values directly to the Android SDK to synchronously initialize the client. You can generate these values from a Statsig Server SDK like the [NodeJS Server SDK](/server/nodejsServerSDK#bootstrap)
+  - Provide the `initialize response` values directly to the Android SDK to synchronously initialize the client or "Bootstrap". You can generate these values from a Statsig Server SDK like the [NodeJS Server SDK](/server/nodejsServerSDK#bootstrap) and pass them in to the SDK when initializing. For more info, see [Bootstraping.](/client/concepts/initialize/#2-bootstrap-initialization) 
 
 - **disableHashing**: `Boolean?`, default `false`
   - When disabled, the SDK will not hash gate/config/experiment names, instead they will be readable as plain text.

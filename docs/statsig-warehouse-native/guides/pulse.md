@@ -3,6 +3,10 @@ title: Pulse
 slug: /statsig-warehouse-native/guides/pulse
 sidebar_label: Pulse
 displayed_sidebar: cloud
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-03-21
 ---
 
 Pulse is Statsig's visualization of how an experiment impacted target metrics. This page walks through the tool and how to use it to evaluate your experiment.

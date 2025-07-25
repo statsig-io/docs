@@ -1,7 +1,11 @@
 ---
 title: MEX on Warehouse Native [Beta]
 slug: /statsig-warehouse-native/features/mex-on-warehouse-native
-sidebar_label: MEX on Warehouse Native
+sidebar_label: Metrics Explorer on WHN
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-05-07
 ---
 
 [Metrics Explorer](/product-analytics/overview) (or MEX) is Statsig's Analytics solution. With Warehouse Native, this integrates directly on top of your tables to provide easy analysis on the same datasets you're using for experimentation.
@@ -19,11 +23,19 @@ Filter and group by fields to calculate measures as timeseries, bar-charts, and 
 
 ### [Funnel Analysis](/product-analytics/funnels)
 
-Run powerful and complete funnel analysis to understand how users are moving to your product
+Run powerful and complete funnel analysis to understand how users are moving to your product.
 
 ### [Group By Experiment](/product-analytics/drilldown#drilling-down)
 
 View arbitrary timeseries and rollups grouped by experiment membership, allowing more observational analysis of what happened during your experiment.
+
+### [Retention Chart](/product-analytics/drilldown#retention)
+
+Analyze user retention reports to understand how effectively your product or service maintains user interest/engagement over time. 
+
+### [Distribution Chart](/product-analytics/drilldown#distribution)
+
+View distribution charts to help you visualize the range of user experiences across your product. 
 
 ### Save, Share, and View SQL
 

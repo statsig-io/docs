@@ -2,6 +2,10 @@
 title: Conclude Experiment & Defer Decision
 sidebar_label: Conclude Experiment & Defer decision
 slug: /experiments-plus/conclude-experiment-defer-decision
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-03-21
 ---
 ## Conclude the Experiment now and Defer Analysis for later
 

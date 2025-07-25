@@ -1,6 +1,10 @@
 ---
 title: Retention Metrics
 sidebar_label: Retention
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-06-18
 ---
 
 ## Summary
@@ -27,6 +31,8 @@ This is a rolling calculation. Each day a user triggers the start event, they ge
 
 Only days with completed windows will be included in pulse. For example if the duration is 7, the last week of data is excluded from pulse to avoid diluting the metric since an L3D7 metric would always have a numerator of 0 for those days.
 
+Using the `allow cohort metrics to mature after experiment end` setting in advanced experiment settings allows for post-experiment data to complete the analysis, meaning units exposed later in the analysis can be included. This is appropriate in cases where the treatment is one-time and doesn't need to be re-applied in order to impact users. 
+
 ![Retention Explanation](https://github.com/user-attachments/assets/2a9d8731-1c28-4c59-a0fe-3c1e7586c129)
 
 ## Calculation
@@ -45,7 +51,7 @@ WITH denominator AS (
 ),
 
 -- Numerator Candidates - 1/0 flag for success activity on a day
--- Note by default this is equivalen tot the denominator CTE
+-- Note by default this is equivalent to the denominator CTE
 numerator_candidates AS (
     SELECT
         unit_id,

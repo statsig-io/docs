@@ -1,0 +1,32 @@
+In some applications, you may want to create a single Statsig instance that can be accessed globally throughout your codebase. The shared instance functionality provides a singleton pattern for this purpose:
+
+```java
+// Create a shared instance that can be accessed globally
+Statsig statsig = Statsig.newShared("secret-key");
+statsig.initialize().get();
+
+// Access the shared instance from anywhere in your code
+Statsig sharedStatsig = Statsig.shared();
+StatsigUser user = new StatsigUser.Builder().setUserID("user-123").build();
+boolean isFeatureEnabled = sharedStatsig.checkGate(user, "feature_name");
+
+// Check if a shared instance exists
+if (Statsig.hasShared()) {
+    // Use the shared instance
+}
+
+// Remove the shared instance when no longer needed
+Statsig.removeSharedInstance();
+```
+
+The shared instance functionality provides a singleton pattern where a single Statsig instance can be created and accessed globally throughout your application. This is useful for applications that need to access Statsig functionality from multiple parts of the codebase without having to pass around a Statsig instance.
+
+- `Statsig.newShared(sdkKey)`: Creates a new shared instance of Statsig that can be accessed globally
+- `Statsig.newShared(sdkKey, options)`: Creates a new shared instance with custom StatsigOptions
+- `Statsig.shared()`: Returns the shared instance
+- `Statsig.hasShared()`: Checks if a shared instance exists (useful when you aren't sure if the shared instance is ready yet)
+- `Statsig.removeSharedInstance()`: Removes the shared instance (useful when you want to switch to a new shared instance)
+
+Note that `hasShared()` and `removeSharedInstance()` are helpful in specific scenarios but aren't required in most use cases where the shared instance is set up near the top of your application.
+
+Also note that only one shared instance can exist at a time. Attempting to create a second shared instance will result in an error.

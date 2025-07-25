@@ -1,7 +1,11 @@
 ---
-title: Reconciling Experiment Results
-sidebar_label: Reconciling Experiment Results
+title: Reconciling Results
+sidebar_label: Reconciling Results
 slug: /experiments-plus/reconciling-experiment-results
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-06-11
 ---
 ## Motivation
 The same data can yield very different interpretations in experiment results due to the wide variety of analysis methodology available. One of the advantages of modern experimentation platforms is ensuring consistency and transparency in experimental analysis within your organization. This paper is a brief guide to common gaps between platforms, as well as how to identify and resolve them.
@@ -46,6 +50,9 @@ SELECT
 FROM joined_data
 GROUP BY group_id;
 ```
+
+It's also worth noting that timezones can influence this. Timestamps for Statsig's exposures are always in UTC; if metric data is in another timezone it will need to be adjusted to avoid filtering on the wrong comparison.
+
 ### Exposure Duplication
 Exposure data must be de-duplicated before joining to ensure a single record per user. Many vendors further manage crossover users (users present in more than one experiment group), removing them from analysis and/or alerting if this occurs with high frequency.
 ```

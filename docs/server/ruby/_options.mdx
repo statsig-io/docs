@@ -3,25 +3,45 @@ You can specify optional parameters with `options` when initializing.
 - **environment**: Hash, default `nil`
   - a Hash you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
   - The most common usage is to set the "tier" (string), and have feature gates pass/fail for specific environments. The accepted values are "production", "staging" and "development", e.g. `StatsigOptions.New({ 'tier' => 'staging' })`.
-- **api_url_base** string, default `"https://statsigapi.net/v1"`
-  - The base url to use for network requests from the SDK
+- **download_config_specs_url**: String, default `"https://api.statsigcdn.com/v2/download_config_specs/"`
+  - The url used specifically to call download_config_specs
+- **log_event_url**: String, default `"https://statsigapi.net/v1/log_event"`
+  - The url used specifically to call log_event
+- **get_id_lists_url**: String, default `"https://statsigapi.net/v1/get_id_lists"`
+  - The url used specifically to call get_id_lists
 - **rulesets_sync_interval**: Number, default `10`
-  - The interval to poll for changes to your gate and config definition changes
+  - The interval (in seconds) to poll for changes to your Statsig configuration
 - **idlists_sync_interval**: Number, default `60`
-  - The interval to poll for changes to id lists
+  - The interval (in seconds) to poll for changes to id lists
+- **disable_rulesets_sync**: Boolean, default `false`
+  - Disable background syncing for rulesets
+- **disable_idlists_sync**: Boolean, default `false`
+  - Disable background syncing for id lists
 - **logging_interval_seconds**: Number, default `60`
-  - The default interval to flush logs to Statsig servers
+  - How often to flush logs to Statsig
 - **logging_max_buffer_size**: Number, default `1000`, can be set lower but anything over 1000 will be dropped on the server
   - The maximum number of events to batch before flushing logs to the server
 - **local_mode**: Boolean, default `false`
-  - An option to restrict the sdk to not issue any network requests and only respond with default values (or local overrides)
-- **bootstrap_values**: String, default nil
-  - a string that represents all rules for all feature gates, dynamic configs and experiments. It can be provided to bootstrap the Statsig server SDK at initialization in case your server runs into network issue or Statsig server is down temporarily.
-- **rules_updated_callback**: function, default nil
-  - a callback function that's called whenever we have an update for the rules; it's called with a logical timestamp and a JSON string (used as is for bootstrapValues mentioned above). Note that as of v0.6.0, this will be called from a background thread that the SDK uses to update config values.
-- **data_store**: IDataStore, default nil
-  - A data store with custom storage behavior for config specs. Can be used to bootstrap Statsig server (takes priority over `bootstrap_values`). Can also be used to continuously fetch updates in place of the Statsig network. See [Data Stores](/server/concepts/data_store).
-- **user_persistent_storage**: IUserPersistentStorage default nil
-  - A persistent storage adapter for running sticky experiments.
-- **network_timeout**: Number, default nil
-  - Maximum number of seconds to wait for a network call before timing out.
+  - Restricts the SDK to not issue any network requests and only respond with default values (or local overrides)
+- **bootstrap_values**: String, default `nil`
+  - A string that represents all rules for all feature gates, dynamic configs and experiments. It can be provided to bootstrap the Statsig server SDK at initialization in case your server runs into network issue or Statsig server is down temporarily.
+- **rules_updated_callback**: function, default `nil`
+  - A callback function that will be called anytime the rulesets are updated
+- **data_store**: IDataStore, default `nil`
+  - A class that extends IDataStore. Can be used to provide values from a common data store (like Redis) to initialize the Statsig SDK.
+- **idlist_threadpool_size**: Number, default `3`
+  - The number of threads allocated to syncing IDLists
+- **logger_threadpool_size**: Number, default `3`
+  - The number of threads allocated to posting event logs
+- **disable_diagnostics_logging**: Boolean, default `false`
+  - Should diagnostics be logged. These include performance metrics for initialize
+- **disable_sorbet_logging_handlers**: Boolean, default `false`
+  - Statsig utilizes Sorbet (https://sorbet.org) to ensure type safety of the SDK. This includes logging to console when errors are detected. You can disable this logging by setting this flag to true.
+- **network_timeout**: Number, default `nil`
+  - Maximum number of seconds to wait for a network call before timing out
+- **post_logs_retry_limit**: Number, default `3`
+  - Number of times to retry sending a batch of failed log events
+- **post_logs_retry_backoff**: Number/Function, default `nil`
+  - The number of seconds, or a function that returns the number of seconds based on the number of retries remaining which overrides the default backoff time between retries
+- **user_persistent_storage**: IUserPersistentStorage, default `nil`
+  - A storage adapter for persisted values. Can be used for sticky bucketing users in experiments. Implements Statsig::Interfaces::IUserPersistentStorage.

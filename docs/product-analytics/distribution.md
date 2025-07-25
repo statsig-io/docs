@@ -4,6 +4,10 @@ tags:
 - Statsig Cloud 
 sidebar_label: Distribution
 slug: /product-analytics/distribution
+keywords:
+  - owner:akin
+last_update:
+  date: 2025-03-21
 ---
 
 # Distribution Charts
@@ -11,6 +15,8 @@ slug: /product-analytics/distribution
 ## Overview
 
 Distribution charts in Metric Explorer help you visualize the range of user experiences across your product. These charts are a great way to generalize central tendencies, evaluate product health, and identify outlying behavior.
+![image](https://github.com/user-attachments/assets/b3b1507a-4a30-4a74-bc5c-8b3d08a1e64f)
+
 
 ### Use Cases
 

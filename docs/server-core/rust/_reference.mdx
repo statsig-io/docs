@@ -1,0 +1,15 @@
+### Fields Needed Methods (Enterprise Only)
+
+```rust
+// Get user fields needed for a gate evaluation
+pub fn get_fields_needed_for_gate(&self, gate_name: &str) -> Vec<String>
+
+// Get user fields needed for a dynamic config evaluation
+pub fn get_fields_needed_for_dynamic_config(&self, config_name: &str) -> Vec<String>
+
+// Get user fields needed for an experiment evaluation
+pub fn get_fields_needed_for_experiment(&self, experiment_name: &str) -> Vec<String>
+
+// Get user fields needed for a layer evaluation
+pub fn get_fields_needed_for_layer(&self, layer_name: &str) -> Vec<String>
+```

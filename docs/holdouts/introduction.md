@@ -2,14 +2,18 @@
 title: Holdouts
 sidebar_label: Holdouts
 slug: /holdouts
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-03-31
 ---
 
-Holdouts measure the aggregate impact of multiple features. A "holdout" is a group of users that are held back from a set of features to measure the aggregate impact of this feature set. While each A/B test or experiment you run compares control and test groups for that feature, a holdout compares a ‘global’ control group with users who have been exposed to a subset of the features. 
+Holdouts measure the aggregate impact of multiple features. It involves a "holdout" group of users that are held back from a set of features for measurement. While each A/B test or experiment you run compares control and test groups for that feature, a holdout compares the "holdout" group (Control) against users who have been exposed to multiple features and experiments. 
 
 ## How to use Holdouts
 1.	To create a new holdout, navigate to the Holdouts section on the Statsig console (it is a specialized kind of experiment): https://console.statsig.com/holdouts
-2.	Click the Create New button and enter the name and description of the holdout that you want to create. 
-3.	You can choose to either create a global or a selected holdout. A global holdout captures the aggregate impact of all features developed after the holdout began. A selected holdout captures the aggregate impact of a specific selection of features that you want to hold off. 
+2.	Click the Create New button and enter the name, description and unit type of the holdout that you want to create. 
+3.	You can choose to either create a global or a selected holdout. A global holdout is automatically added to any new feature with the same unit type, and is meant to capture the aggregate impact of all features developed after the holdout began (individual features may be opted out as needed). A selected holdout captures the aggregate impact of a specific selection of features that you want to hold off. 
 4.	By default Holdouts apply to a % of all users (Population = Everyone). You can optionally target the Holdout at a subset of users by applying a Targeting Gate (Population = Targeting Gate). e.g. If you wanted an iOS users only Holdout, you could apply a Targeting Gate that only passes iOS users.    
 5.	You must set the percentage of users to be held-out between 1% to 10%. Statsig recommends a small holdout percentage to limit the number of customers who don’t see new features. 
 
@@ -18,9 +22,21 @@ Holdouts measure the aggregate impact of multiple features. A "holdout" is a gro
 
 
 ## How to read Holdouts
-The Metric Lifts section shows the comparison of *Not in Holdout* vs. *In Holdout*.  In other words, it represents the cumulative impact of launched and active experiments and gates relative to the Holdout group, which doesn't see any of these changes.  In the example below, the new features are having an overall negative effect on many metrics.
+Holdouts on Statsig use the [same "equal variant" methodology](https://docs.statsig.com/feature-flags/view-exposures#gate-exposures) as Feature Gate rollouts, whereby metric lifts are computed by equal sized groups to calculate holdout lift. You can read more about the advantages of this methodology in "A/B Testing Intuition Busters: Common Misunderstandings in Online Controlled Experiments” by Ron Kohavi, Alex Deng, & Lukas Vermeer.
 
-![image](https://github.com/user-attachments/assets/97a5e7b3-512c-4440-beb9-fe99773dae55)
+Accordingly, the Cumulative Exposures panel for a given Holdout shows total exposures of the Holdout, broken down into three groups-
+
+- (1) Units that were included in the Holdout, and were used for analysis
+- Units that were not included in the Holdout, and were used for analysis vs. the holdout group 
+- Units that were not included in the Holdout, and were **not** used for analysis
+
+For users not in the Holdout, we generate two groups (used for analysis and not used for analysis).  This is a randomly chosen group that is meant to balance the comparison.
+
+Holdout metric lifts represent the cumulative impact of launched and active experiments on the Holdout group vs. the same % of the rest of the population who were subject to the included rollouts and experiments.  
+
+In the example below, the 1% Holdout is comparing the metric values of the 1% Holdout vs. 1% of the rest of the population. The launched features are having an overall negative effect on the "Add to Cart" metric. 
+
+<img width="1254" alt="Screen Shot 2025-03-15 at 3 49 19 PM" src="https://github.com/user-attachments/assets/b6c3724d-784d-45e3-ad6e-230bd9d82214" />
 
 
 ## Best Practices
@@ -41,4 +57,5 @@ By default, holdouts are based on User ID.  To use a different ID type, select i
 
 ### Experiments
 * For users in holdout, if the experiment _is not in a Layer_, calls to get experiment parameters will always return the "default value" passed in code.
-* For users in holdout, if the experiment _is in a Layer_, calls to get experiment parameters will return the values defined in the Layer defaults in the Statsig console.
+* For users in holdout, if the experiment _is in a Layer_, calls to get experiment parameters will return the values defined in the Layer defaults in the Statsig console. Note that when you ship an experiment in a layer - this would normally update the layer defaults, however, users in the holdout will *not* see those defaults, with the layer instead having a new set of default parameters just for held-out users:
+![Layer Holdout Params](/img/layer_holout_params.png)

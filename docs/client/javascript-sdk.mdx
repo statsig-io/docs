@@ -1,6 +1,10 @@
 ---
-sidebar_label: JavaScript
-title: JavaScript Client SDK
+sidebar_label: JavaScript (Web)
+title: JavaScript Client SDK (Web)
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-04-29
 ---
 
 import {
@@ -52,6 +56,9 @@ export const Testing = _testing;
 import * as _sessionReplayAutoCapture from "./javascript-mono/_sessionReplayAutoCapture.mdx";
 export const SessionReplayAutoCapture = _sessionReplayAutoCapture;
 
+import * as _csp from "./javascript-mono/_CSP.mdx";
+export const Csp = _csp;
+
 import CheckGate from "./javascript-mono/_checkGate.mdx";
 import GetConfig from "./javascript-mono/_getConfig.mdx";
 import GetExperiment from "./javascript-mono/_getExperiment.mdx";
@@ -60,12 +67,14 @@ import LogEvent from "./javascript-mono/_logEvent.mdx";
 import MoreFAQs from "./javascript-mono/_faqs.mdx";
 import Options from "./javascript-mono/_options.mdx";
 import ShutdownSnippet from "./javascript-mono/_shutdown.mdx";
+import * as UsingPersistentValues from "./javascript-mono/_usingPersistentValues.mdx";
 import * as _typedGetters from "./javascript-mono/_typedGetters.mdx";
 import GetParameterStore from "./javascript-mono/_getParameterStore.mdx";
 import GetParameter from "./javascript-mono/_getParameter.mdx";
 import { Snippets as ManualExposureSnippets } from "./javascript-mono/_manualExposures.mdx";
 
 import * as StableID from './javascript-mono/StableID.mdx'
+import * as OverrideAdapter from './javascript-mono/_overrideAdapter.mdx'
 import * as Debugging from './javascript-mono/_debugging.mdx'
 
 export const TypedGetters = _typedGetters;
@@ -108,8 +117,11 @@ export const Builder = SDKDocsBuilder({
     [ManualExposures, { ...ManualExposureSnippets }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
     [StableID, {}],
+    [OverrideAdapter, {}],
+    [UsingPersistentValues, {}],
     [Testing, {}],
     [SessionReplayAutoCapture, {}],
+    [Csp, {}],
     [AsyncTimeouts, {}],
     [DataAdapter, {}],
     [ClientEventEmitting, {}],

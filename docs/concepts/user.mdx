@@ -1,6 +1,10 @@
 ---
 title: User (StatsigUser) Object
 sidebar_label: Passing a User to SDKs
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-07-08
 ---
 
 import Tabs from "@theme/Tabs";
@@ -8,11 +12,21 @@ import TabItem from "@theme/TabItem";
 
 ## Introduction to the StatsigUser object
 
-The user object ("StatsigUser" in our SDKs) is the sole input you provide Statsig to target gates and assign users to experiment variants. Every additional field you add to your StatsigUser is one you can target on, or filter your metrics by - so **we recommend providing as much info as possible**. Statsig can also infer some information about each UserObject based on other traits (for example, we resolve IP Addresses into countries), read on for more details.
+The user(StatsigUser) object is the sole input you provide to SDKs to target gates and assign users to experiments. If you'd like to target on an attribute, you'll need to add it to your user object, so assembling the data is an important part of SDK setup. **We recommend providing as much info as practical,** as every additional field can enrich your analyses and expand targeting possibilities. Statsig also infers some information about each user based on other traits (for example, we resolve IP Addresses into countries), read on for more details.
+
+## Usage Example in Node:
+```jsx
+//Create a user object
+const user = new StatsigUser({ userID: "12345", email: "vincent@statsig.com"});
+//Use it in getExperiment()
+const my_experiment = statsig.getExperiment(user, "my_experiment_name") //<- any attribute you pass, you can target on
+```
 
 ### I passed that attribute before - why do I need to pass it again?
 
-It's important to understand that Statsig evaluates gates and experiment buckets experiments based **only on the information you provide when you check something.** Statsig's promise of evaluating every gate or experiment in milliseconds is dependent on having all information available at request time, rather than searching through previous data.
+If you want to see a specific user's historical attributes for analytics purposes, you can see that in the statsig console via [User Profiles](/users/profiles).
+
+However, you cannot use a user's historical attributes for targeting or gate/experiment evaluation at runtime.  Statsig evaluates gates and experiment buckets based **only on the information you provide when you check something.** Statsig's promise of evaluating every gate or experiment in milliseconds is dependent on having all information available at request time, rather than querying previous data, or storing massive amounts of historical data in memory.
 
 ## User Attributes
 
@@ -34,7 +48,7 @@ All user attributes can be explicitly supplied, and some can be inferred from a 
 | `email`             | Email of the user.                                                                                                                                                                                                                                                                           | `marcos@statsig.com`                                                                                                       | All                |            |
 | `userAgent`         | User agent of the browser. This will be decoded to determine the Browser and Operating System of the user's context. Will be inferred if not provided.                                                                                                                                       | `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.40 Safari/537.36` | Web                | ✔          |
 | `ip`                | IP address of the user. Inferred from the request to /initialize if not provided                                                                                                                                         | `192.168.1.101`                                                                                                            | All                | ✔          |
-| `country`           | 2-letter country code of the user. This can be supplied or inferred, and we can target based on the country code in both cases.                                                                                                                                                              | `US`                                                                                                                       | All                | ✔          |
+| `country`           | 2-letter country code of the user. This can be supplied or inferred, and we can target based on the country code in both cases. When inferred, the country code follows ISO-3166.                                                                                                            | `US`                                                                                                                       | All                | ✔          |
 | `locale`            | Locale of the user. When using the Android or iOS SDK, this will be inferred if not provided.                                                                                                                                                                                                | `en_US`                                                                                                                    | Mobile             | ✔          |
 | `appVersion`        | Version of the app the user is using. When using the Android or iOS SDK, this will be inferred if not provided.                                                                                                                                                                              | `1.0.1`                                                                                                                    | Mobile             | ✔          |
 | `systemName`        | When using our Android/iOS SDKs, this will be automatically assigned, but you can also provide an explicit operating system to override.                                                                                                                                                     | `Android`                                                                                                                  | All                | ✔          |
@@ -106,6 +120,10 @@ We have added support for ISO timestamps to some server SDKs.
 - The `java-server` sdk, as of `v1.6.0` supports [DateTime fields in the format of `ISO_INSTANT`](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#ISO_INSTANT)
 - The `go` sdk, as of `v1.12.1` supports [DateTime fields in the format of `RFC3339`](https://pkg.go.dev/time#pkg-constants)
 - The `python` sdk supports the usage of epoch time in seconds. using `time.time()` may include sub-second components so you should use round the value to an integer
+
+We have added support for ISO timestamps to server SDKs supported by server core (Java, Python, PHP, Rust, Node). 
+- [DateTime fields in the format of `ISO_INSTANT`](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#ISO_INSTANT)
+- [DateTime fields in the format of `RFC3339`](https://pkg.go.dev/time#pkg-constants)
 
 ### Why is an ID always required for server SDKs?
 

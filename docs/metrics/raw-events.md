@@ -2,6 +2,10 @@
 title: Raw Events
 sidebar_label: Raw Events
 slug: /metrics/raw-events
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-03-21
 ---
 
 # Raw Events

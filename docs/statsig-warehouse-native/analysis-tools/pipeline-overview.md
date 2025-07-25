@@ -3,6 +3,10 @@ title: Pipeline Overview
 slug: /statsig-warehouse-native/pipeline-overview
 sidebar_label: Pipeline Overview
 description: Understand what we're running on your warehouse
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-04-23
 ---
 
 This page is intended to give you a high level overview of the pipeline Statsig Warehouse Native will run on your warehouse.
@@ -40,7 +44,8 @@ This is not an exhaustive list, but includes most of the core result/staging tab
 | `unit_day_metrics_<experiment_id>`                              | User-day level metric aggregations table                                                                                        | Useful for ad-hoc analysis                                 |
 | `unit_covariate_metrics_<experiment_id>`                        | User-level pre-experiment aggregations for regression adjustment/CUPED                                                          |                                                            |
 | `funnel_events_<experiment_id>`                                | Staging table for running funnel analysis                                                                                       |                                                            |
-| `percentile_values_<experiment_id>`                                | Staging table for running funnel analysis                                                                                       |                                                            |
+| `percentile_values_<experiment_id>`                                | Staging table for running percentile analysis                                                                               |                                                            |
+| `distinct_values_<experiment_id>`                               |Staging table for running count distinct analysis                                                                               |                                                            |
 | `windowed_metrics_<experiment_id>`                              | Staging table for generating running totals when restating Pulse                                                                |                                                            |
 | `ratio_aggregations_<experiment_id>`                              | Staging table for generating running totals when restating Pulse                                                                |                                                            |
 | `results_<rollup>_<experiment_id>`                            | Outputs of Statistical Analysis for different rollups (e.g. daily, days-since-exposure, cumulative, 7-day). Exported to Statsig | Pulse inputs - useful for replicating Statistical analysis |
@@ -77,7 +82,7 @@ Statsig dedupes and records each user's first exposure to an experiment into a t
 | ----------------------- | --------- | --------------------------------------------------------------------------------------------- |
 | experiment_id           | string    | The identifier for the gate/experiment                                                        |
 | group_id				        | string    | groupID for experiments; ruleID+Pass/Fail for gates                                           |
-| group_name  		        | string    | Name of the experiment group (e.g. Control vs Test) (Coming soon, ETA April 15                |
+| group_name  		        | string    | Name of the experiment group (e.g. Control vs Test)                                           |
 | user_id                 | string    | The ID passed in as the Statsig userID                                                        |
 | stable_id               | string    | Statsig Client SDK managed stable device identifier                                           |
 | \[your custom ids]       | string    | One column for every custom unitID you use on Statsig                                        |

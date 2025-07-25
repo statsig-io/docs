@@ -1,24 +1,15 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-export const Badge = ({ version }) => {
-  return (
-    <span>
-      v{version}+
-    </span>
-  );
-};
-
-## Manual Exposures <Badge version={props.addedInVersion}/>
+## Manual Exposures 
 
 :::warning
 Manually logging exposures can be tricky and may lead to an imbalance in exposure events. For example, only triggering exposures for users in the Test group of an experiment will imbalance the experiment, making it useless.
 :::
 
 <>
-  Added in version {props.addedInVersion}, you can now query your
-  gates/experiments without triggering an exposure as well as manually logging
-  your exposures.
+  Manual exposures give you the option to query your
+  gates/experiments without triggering an exposure, and optionally, manually log the exposure after the fact.
 </>
 
 <Tabs

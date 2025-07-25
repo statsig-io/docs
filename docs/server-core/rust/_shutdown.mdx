@@ -1,0 +1,10 @@
+```rust
+statsig.shutdown().await?;
+```
+
+Alternatively, you can manually flush events without shutting down: 
+
+```rust
+// Manually flush events to the server
+statsig.flush_events().await;
+```

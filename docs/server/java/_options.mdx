@@ -28,10 +28,11 @@ options.setTier("staging")
 - **idListsSyncIntervalMs** - Long, default 60 * 1000
 - **dataStore**
   - [Data Store/Adapter Concept](/server/concepts/data_store)
-- **userPersistentStorage**: IUserPersistentStorage default nil
+- **userPersistentStorage**: IUserPersistentStorage default null
   - A persistent storage adapter for running sticky experiments. See [Persistent Assignment](/server/concepts/persistent_assignment)
 - **customLogger** - LoggerInterface
 - **disableAllLogging** - Boolean, default false
+- **fallbackToStatsigAPI** - Boolean, default false
 - **proxyConfig** - ProxyConfig
   ```kotlin
     /**

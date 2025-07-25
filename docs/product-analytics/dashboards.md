@@ -4,6 +4,10 @@ tags:
 - Statsig Cloud 
 sidebar_label: Dashboards
 slug: /product-analytics/dashboards
+keywords:
+  - owner:akin
+last_update:
+  date: 2025-07-11
 ---
 
 # Dashboards
@@ -89,9 +93,22 @@ You can click on the filters button below the dashboard name to add a global fil
 
 ### Refreshing your Dashboard Widgets
 
-To ensure your dashboard data is up to date, simply click the refresh button shown in the image below to refresh all dashboard widgets at once.
+To ensure your dashboard data is up to date, you can refresh dashboard widgets in several ways:
+
+**Manual Refresh**: Simply click the refresh button shown in the image below to refresh all dashboard widgets at once.
 
 ![image](https://github.com/user-attachments/assets/2799df0e-2a71-454b-8fee-df0420cdf68b)
+
+**Automatic Dashboard Refreshes**: Dashboards can now be automatically refreshed on a schedule with results cached for faster loading and a snappier experience.
+
+You can configure a refresh frequency for each dashboard (e.g. hourly, daily) and automatically cache results in the background. Once set, queries for that dashboard will run on the specified schedule and store the results. When someone opens the dashboard, they'll see the most recent cached data instantly, instead of triggering fresh queries.
+
+To configure automatic dashboard refreshes:
+1. Navigate to your dashboard and click the settings cog ⚙️
+2. Scroll to "Schedule Dashboard Refresh" and set the interval
+3. Click Save
+
+This feature helps dashboards load faster and stay up to date without manual effort, especially helpful for shared dashboards or recurring check-ins where you want fresh data ready without delay.
 
 
 ### Organize your Dashboard

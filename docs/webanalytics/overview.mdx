@@ -4,6 +4,10 @@ tags:
 - Statsig Cloud 
 sidebar_label: Overview
 slug: /webanalytics/overview
+keywords:
+  - owner:skin
+last_update:
+  date: 2025-05-07
 ---
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
@@ -38,15 +42,14 @@ Once your changes are live, you'll start to see the events flowing in your metri
 Out of the box, autocapture includes:
 * Click events with click target info, current page url `auto_capture::click`
 * Page View Events with page url and query string values `auto_capture::page_view`
-* Page view duration, page scroll depth `auto_capture::page_view_end`
 * Form Submission Events `auto_capture::form_submit`
 * Page Performance data `auto_capture::performance`
 
-For more in-depth breakdown of auto capture event data, refer to [Using Autocapture](https://docs.statsig.com/guides/sidecar-experiments/measuring-experiments/#using-autocapture)
+For more in-depth breakdown of auto capture event data, refer to [Autocapture on the Web](/client/concepts/autocapture)
 
 For single page apps, or for more complex scenarios, look up how to [log events using Javascript](/client/javascript-sdk#event-logging).
 
-You can also disable a subset of these events from the Statsig console under Project Settings > Auto Capture
+You can also disable a subset of these events from the Statsig console under Project Settings > Analytics & Session Replay
 
 ![screenshot_2024-09-16_at_8 05 21___am](https://github.com/user-attachments/assets/1cba9cbc-9fbe-4024-9a7f-43184efc37b9)
 
@@ -58,7 +61,7 @@ More information on using Metrics Explorer like [Funnels and Retention is here](
 
 ![image](https://github.com/statsig-io/js-client/assets/74588208/f4ed6f2c-79ce-4e47-ba6d-8dbe69978cc0)
 
-You can see some example autocapture event details [here](/guides/sidecar-experiments/measuring-experiments).
+You can see some example autocapture event details [here](/client/concepts/autocapture).
 
 # Advanced Setup
 

@@ -1,0 +1,21 @@
+```rust
+use statsig_rust::{Statsig, StatsigUserBuilder};
+use std::collections::HashMap;
+use crate::evaluation::dynamic_value::DynamicValue;
+
+// Create a user
+let user = StatsigUserBuilder::new_with_user_id("user_id".to_string()).build();
+
+// Create metadata hashmap
+let mut metadata = HashMap::new();
+metadata.insert("price".to_string(), "9.99".into());
+metadata.insert("item_name".to_string(), "diet_coke_48_pack".into());
+
+// Log the event
+statsig.log_event(
+    &user,
+    "add_to_cart",
+    Some("SKU_12345".into()),  // value as DynamicValue
+    Some(metadata)
+);
+```

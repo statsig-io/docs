@@ -1,6 +1,10 @@
 ---
 title: Log Metrics
 sidebar_label: Log
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-03-21
 ---
 
 ## Summary

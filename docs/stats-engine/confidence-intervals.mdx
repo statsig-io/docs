@@ -2,6 +2,10 @@
 title: Confidence Intervals
 sidebar_label: Confidence Intervals
 slug: /stats-engine/confidence-intervals
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-03-24
 ---
 
 Confidence intervals are an intuitive way to quantify the uncertainty in the observed metric deltas. A 95% confidence interval should contain the true effect 95% of the time. This means that if we ran an experiment 100 times, the true value of the metric delta should be inside the confidence intervals 95 times.
@@ -34,12 +38,20 @@ Similarly, the confidence interval for the **relative metric delta** is:
 $$\Large
 CI(\Delta \overline X\%)
 = \Delta \overline X\% \pm Z_{\alpha/2} \cdot\sqrt{{var(\Delta \overline X\%)}}
-= \Delta \overline X\% \pm Z_{\alpha/2} \cdot\frac{\sqrt{{var\left(\Delta \overline X\right)}}}{\overline X_c} \cdot 100\% 
+= \frac{\Delta \overline X}{\overline X_c} \pm Z_{\alpha/2} \cdot\sqrt{(\frac{\overline X_t}{\overline X_c})^{2} \cdot (\frac{var(X_c)}{n_c \cdot \overline X_c^2} + \frac{var(X_t)}{n_t \cdot \overline X_t^2})} \cdot 100\% 
+$$
+
+If the control mean is not significantly away from zero, then
+
+$$\Large
+CI(\Delta \overline X\%)
+= \Delta \overline X\% \pm Z_{\alpha/2} \cdot\sqrt{{var(\Delta \overline X\%)}}
+= \frac{\Delta \overline X}{\overline X_c} \pm Z_{\alpha/2} \cdot \frac{\sqrt{{var\left(\Delta \overline X\right)}}}{\overline X_c} \cdot 100\% 
 $$
 
 ### One-Sided Tests
 
-When running one-sided tests, the form of of the confidence interval calculation changes slightly to account for a redistribution of desired false positive rate when looking for increases or decreases in the metric:
+When running one-sided tests, the form of the confidence interval calculation changes slightly to account for a redistribution of desired false positive rate when looking for increases or decreases in the metric:
 
 $$\Large
 CI(\Delta \overline{X}) = \begin{cases}

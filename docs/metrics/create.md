@@ -2,6 +2,10 @@
 title: Creating Custom Metrics
 sidebar_label: Creating Custom Metrics
 slug: /metrics/create
+keywords:
+  - owner:shubham
+last_update:
+  date: 2025-07-08
 ---
 
 Custom metrics are computed by Statsig from your raw events. To create custom metrics, navigate to **Metrics** from the left-hand navigation panel, then to the **Metrics Catalog** tab. Tap on the **Create** button.
@@ -83,6 +87,10 @@ In experimentation, ratio metrics are a frequent source of misleading informatio
 You can create a custom funnel metric, from either the Custom Metrics Creation wizard in the Metrics Catalog or via the **Charts** tab.
 
 ![Screen Shot 2023-09-12 at 1 33 10 PM](https://github.com/statsig-io/docs/assets/101903926/86914826-b8ce-4b4b-9514-39f31d05687a)
+
+:::info Important Note
+Statsig handles funnel metrics differently between our Cloud and Warehouse Native platforms. Funnel metrics using our Cloud platform are *always* unordered, meaning that funnel steps can be completed in any order, and they have a time window of *one day*. This means that for the metric to record a completion, all steps must be triggered by a user within 24 hours. In contrast, funnel metrics on Warehouse Native have the option to be set with strict ordering and custom time windows.
+:::
 
 ### Components of Funnel Metrics
 

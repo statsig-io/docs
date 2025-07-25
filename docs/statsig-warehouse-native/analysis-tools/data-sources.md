@@ -3,6 +3,10 @@ title: Data Sources
 slug: /statsig-warehouse-native/data-sources
 sidebar_label: Data Sources
 description: Inputs to experimental analysis
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-03-21
 ---
 
 # Deprecated

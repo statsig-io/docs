@@ -19,6 +19,9 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
 - **`disable_all_logging`**: `Optional[bool]`  
   When `true`, disables all event logging.
 
+- **`disable_network`**: `Optional[bool]`
+  When `true`, disables all network functions: event & exposure logging, spec downloads, and ID List downloads. Formerly called "localMode".
+
 - **`event_logging_flush_interval_ms`**: `Optional[int]`  
   How often events are flushed to Statsig servers (in milliseconds).
 
@@ -26,7 +29,23 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
   Maximum number of events to queue before forcing a flush.
 
 - **`enable_id_lists`**: `Optional[bool]`  
-  Enable/disable ID list functionality.
+  Enable/disable ID list functionality. **Required to be `true` when using segments with more than 1000 IDs.** See [ID List segments](/segments/add-id-list) for more details.
+
+- **`disable_user_agent_parsing`** `Optional[bool]`
+  Default false. If set to true, the SDK will NOT attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion at evaluation time, when needed for evaluation.
+
+- **`wait_for_user_agent_init`** `Optional[bool]`
+  Default: false
+
+  When set to true, the SDK will wait until user agent parsing data is fully loaded during initialization. This may slow down by ~1 second startup but ensures that parsing of the user’s userAgent string into fields like browserName, browserVersion, systemName, systemVersion, and appVersion is ready before any evaluations.
+
+- **`disable_country_lookup`**  `Optional[bool]`
+  Default false. If set to true, the SDK will NOT attempt to parse IP addresses (attached to the user object at user.ip) into Country codes at evaluation time, when needed for evaluation.
+
+- **`wait_for_country_lookup_init`**  `Optional[bool]`
+  Default: false
+
+  When set to true, the SDK will wait for country lookup data (e.g., GeoIP or YAML files) to fully load during initialization. This may slow down by ~1 second startup but ensures that IP-to-country parsing is ready at evaluation time
 
 - **`id_lists_url`**: `Optional[str]`  
   Custom URL for fetching ID lists.
@@ -43,19 +62,55 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
 - **`output_log_level`**: `Optional[str]`  
   Controls the verbosity of SDK logs.
 
+- **`persistent_storage`**: `Optional[PersistentStorageBaseClass]`  
+  Adapter / Interface to use persistent assignment within SDK. [More details](https://docs.statsig.com/server/concepts/persistent_assignment/)
+
+- **`observability_client`**: `Optional[ObservabilityClientBaseClass]`  
+  Adapter to listen monitor the health of SDK. See [details](https://docs.statsig.com/sdk_monitoring/)
+
+- **`data_store`**: `Optional[DataStore]`  
+  Custom data store implementation for storing and retrieving configuration data. Used for advanced caching or storage strategies.
+
+- **`event_logging_max_pending_batch_queue_size`**: `Optional[int]`  
+  Maximum number of batches of events to hold in buffer to retry.
+
+- **`global_custom_fields`**: `Optional[Dict]`  
+  Custom fields to include in all events logged by the SDK.
+
+- **`config_compression_mode`**: `Optional[str]`  
+  Compression method for exposure logging. Default: "gzip". Options: "gzip", "dictionary"
+
+- **`proxy_config`**: `Optional[ProxyConfig]`  
+  Configuration for connecting through a proxy server. The `ProxyConfig` object has the following properties:
+  - `proxy_host`: Optional string specifying the proxy server host
+  - `proxy_port`: Optional number specifying the proxy server port
+  - `proxy_auth`: Optional string for proxy authentication (format: "username:password")
+  - `proxy_protocol`: Optional string specifying the protocol (e.g., "http", "https")
+
+
 ---
 
 ### Example Usage
 
 ```python
-from statsig import StatsigOptions
+from statsig_python_core import StatsigOptions
+
+# Define proxy configuration if needed
+proxy_config = {
+    "proxy_host": "proxy.example.com",
+    "proxy_port": 8080,
+    # "proxy_auth": "username:password",  # Uncomment if authentication is needed
+    "proxy_protocol": "http"
+}
 
 # Initialize StatsigOptions with custom parameters
 options = StatsigOptions()
 options.environment = "development"
 options.init_timeout_ms = 3000
 options.disable_all_logging = False
+options.proxy_config = proxy_config
 
 # Pass the options object into statsig.initialize()
-statsig.initialize("secret-key", options)
+statsig = Statsig("secret-key", options)
+statsig.initialize().wait()
 ```

@@ -20,3 +20,10 @@ pnpm-lock.yaml
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# included for cursor context
+sdk_folders/
+
+# Debug tools
+static/page_views.csv
+doc_updates.csv

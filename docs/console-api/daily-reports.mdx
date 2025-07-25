@@ -5,6 +5,10 @@ slug: /console-api/daily-reports
 description: Download daily reports
 hide_table_of_contents: true
 custom_edit_url: null
+keywords:
+  - owner:oliver
+last_update:
+  date: 2025-04-14
 ---
 
 ## Authorization
@@ -114,8 +118,8 @@ CREATE OR REPLACE TABLE <DATABASE>.<SCHEMA>.<TABLE> (
 | mean                | DOUBLE, the average value of this metric across units (or participating units when applicable)     |
 | total               | DOUBLE, the sum of this metric across units                                                        |
 | stddev              | DOUBLE, the standard deviation of this metric across units                                         |
-| stderr              | DOUBLE, the standard error of this metric across units                                             |
 | varpop              | DOUBLE, the varpop of this metric                                                                  |
+| stderr              | DOUBLE, the standard error of this metric across units                                             |
 
 - New columns may be added in the future.
 - Exposures on the day when a decision is made are excluded from the report, as they are not part of the experiment.

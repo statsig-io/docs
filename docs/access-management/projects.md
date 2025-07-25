@@ -1,6 +1,10 @@
 ---
 sidebar_label: Projects
 title: Project Access Management
+keywords:
+  - owner:shubham
+last_update:
+  date: 2025-03-21
 ---
 :::info 
 Note- This guide applies only to our on-demand customers. If you are an organization who has set up SSO, this guide will not apply to you. Please see our [SSO Guides](/access-management/sso/overview) for more information about how to manage access permissions through SSO. 

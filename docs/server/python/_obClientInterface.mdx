@@ -34,7 +34,7 @@ class ObservabilityClient:
         :param tags: Optional dictionary of tags for metric dimensions.
         """
 
-    def distribution(self, metric_name: str, value: float, tags: Optional[Dict[str, Any]] = None) -> None:
+    def dist(self, metric_name: str, value: float, tags: Optional[Dict[str, Any]] = None) -> None:
         """
         Record a distribution metric for tracking statistical data.
 

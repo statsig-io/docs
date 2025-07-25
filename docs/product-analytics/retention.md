@@ -4,6 +4,10 @@ tags:
   - Statsig Cloud
 sidebar_label: Retention
 slug: /product-analytics/retention
+keywords:
+  - owner:akin
+last_update:
+  date: 2025-03-21
 ---
 
 # Retention Chart
@@ -13,6 +17,8 @@ slug: /product-analytics/retention
 Retention charts in Metrics Explorer help you understand how effectively your product or service maintains user interest and engagement over time. It’s a great way to measure product-market fit and critical for overall product growth.
 
 By analyzing user retention patterns, you can identify whether your product or certain features are resonating with your audience, and which areas might need improvement. This insight is invaluable for making strategic decisions aimed at enhancing user experience and boosting long-term engagement.
+
+![image](https://github.com/user-attachments/assets/13a46b84-f1cc-4226-9876-5b314641927b)
 
 ### Use Cases
 

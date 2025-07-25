@@ -2,6 +2,10 @@
 title: Create a segment
 sidebar_label: Create
 slug: /segments/create-new
+keywords:
+  - owner:shubham
+last_update:
+  date: 2025-03-21
 ---
 
 To create a segment, 

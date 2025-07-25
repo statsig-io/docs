@@ -4,6 +4,10 @@ tags:
 - Statsig Cloud 
 sidebar_label: Overview
 slug: /product-analytics/overview
+keywords:
+  - owner:akin
+last_update:
+  date: 2025-03-21
 ---
 
 # Product Analytics Overview

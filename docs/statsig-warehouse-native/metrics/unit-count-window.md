@@ -2,11 +2,15 @@
 title: Unit Count (Window) Metrics
 slug: /statsig-warehouse-native/metrics/unit-count-window
 sidebar_label: Unit Count (Window)
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-07-08
 ---
 
 ## Summary
 
-Unit count metrics with the windowed event rollup type measure if a unit performed an action in a specific period of time after being exposed to the experiment.
+Unit count metrics with the windowed event rollup type measure if a unit performed an action in a specific period of time after first being exposed to the experiment.
 
 ### Use Cases
 
@@ -14,7 +18,7 @@ This is an extremely common metric type, used to measure participation rates ear
 
 ## Calculation
 
-At the unit level, unit count metrics create a 1/0 flag for if they participated during the time window.
+At the unit level, unit count metrics create a 1/0 flag for if they participated during the time window. The time window is defined relative to the unit's first exposure. Subsequent exposures are not considered.
 
 At the group level, the mean is calculated as the SUM of the unit-level flags, divided by the count of UNIQUE UNITS exposed to the experiment.
 

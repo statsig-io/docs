@@ -1,4 +1,3 @@
-import React from 'react';
 
 const sdkGroups = [
   {
@@ -23,14 +22,14 @@ const sdkGroups = [
     label: 'Server Side SDKs',
     value: 'server-sdks',
     items: [
-      { name: 'Node.js', img: '/img/sdk/sdk_node.png', link: '/server/nodejsServerSDK' },
-      { name: 'Java/Kotlin', img: '/img/sdk/sdk_java.png', link: '/server/javaSdk' },
-      { name: 'Python', img: '/img/sdk/sdk_python.png', link: '/server/pythonSDK' },
+      { name: 'Node', img: '/img/sdk/sdk_node.png', link: '/server-core/node-core' },
+      { name: 'Java', img: '/img/sdk/sdk_java.png', link: '/server-core/java-core' },
+      { name: 'Python', img: '/img/sdk/sdk_python.png', link: '/server-core/python-core' },
       { name: 'Go', img: '/img/sdk/sdk_golang.png', link: '/server/golangSDK' },
       { name: 'Ruby', img: '/img/sdk/sdk_ruby.png', link: '/server/rubySDK' },
       { name: '.NET Server', img: '/img/sdk/sdk_dotnet.png', link: '/server/dotnetSDK' },
-      { name: 'PHP', img: '/img/sdk/sdk_php.svg', link: '/server/phpSDK' },
-      { name: 'Rust', img: '/img/sdk/sdk_rust.svg', link: '/server/rustSDK' },
+      { name: 'PHP', img: '/img/sdk/sdk_php.svg', link: '/server-core/php-core' },
+      { name: 'Rust', img: '/img/sdk/sdk_rust.svg', link: '/server-core/rust-core' },
       { name: 'C++ Server', img: '/img/sdk/sdk_cpp.png', link: '/server/cppSDK' }
     ]
   },

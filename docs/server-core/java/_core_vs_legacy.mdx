@@ -1,0 +1,15 @@
+Statsig offers two Java SDKs:
+
+1. **Java Core (Recommended)** - A newer, performance-focused SDK with a shared Rust core library
+2. **Legacy Java/Kotlin Server SDK** - The original Java SDK (maintenance mode only)
+
+> **Important:** Moving forward, Statsig is focusing development efforts exclusively on the Java Core SDK. The Legacy Java SDK is in maintenance mode and will only receive critical bug fixes. All new features and improvements will only be available in the Java Core SDK.
+
+### Migration
+
+If you're currently using the Legacy Java SDK and want to migrate to Java Core, follow these steps:
+
+1. Update your dependencies to use the Java Core library
+2. Replace imports from `com.statsig.sdk.*` to `com.statsig.*`
+3. Update initialization code to use the new format
+4. Test your application thoroughly to ensure compatibility

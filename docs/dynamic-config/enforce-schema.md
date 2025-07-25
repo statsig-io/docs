@@ -2,6 +2,10 @@
 title: Using a schema
 sidebar_label: Using a Schema
 slug: /dynamic-config/enforce-schema
+keywords:
+  - owner:shubham
+last_update:
+  date: 2025-03-21
 ---
 
 Dynamic configs support schemas using [JSON Schema](https://json-schema.org/learn/getting-started-step-by-step) syntax to enforce a common convention between the return values for each rule you'll set.

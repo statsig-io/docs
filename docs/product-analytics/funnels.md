@@ -4,6 +4,10 @@ tags:
 - Statsig Cloud 
 sidebar_label: Funnels
 slug: /product-analytics/funnels
+keywords:
+  - owner:akin
+last_update:
+  date: 2025-03-21
 ---
 # Funnels
 
@@ -17,6 +21,7 @@ Funnel Charts in Metrics Explorer provide a granular understanding of what porti
 - **Identifying Drop-off Points**: Pinpoint where users drop-off of a process, allowing targeting improvements at these points.
 - **Comparing User Segments**: Observe how different user segments move through the funnel, highlighting variations in behavior based on demographics, user types, or other criteria.
 - **Product Optimization**: Determine which features or steps effectively move users to the next stage, and which require improvements.
+- **Experiment Analysis**: Understand the conversion rates before and after first exposure to an experiment.
 
 ## Defining a User Funnel
 
@@ -27,7 +32,7 @@ To define a funnel, select a series of a events that represent different parts o
 To do so:
 
 1. Go to **Metrics Explorer** under **Analytics** in the Navigation Bar, and switch over to the Funnel Charts view.
-2. Add steps to your funnel using the “**+**” icon. **Optionally add filters** to funnel steps to target specific event or user properties.
+2. Add steps to your funnel using the “**+**” icon. **Optionally add filters** to funnel steps to target specific event or user properties. For WHN, you would add steps directly from your **Metric Source**. For Statsig Cloud, you can leverage events or metrics for the steps. 
 
 **Combining Multiple Events into one step[](/product-analytics/funnels#combining-multiple-events-into-one-step)**
 
@@ -39,8 +44,7 @@ You can also combine multiple events into a single step. This is especially usef
 
 Repeat these steps as needed. You can define a step as a combination of up to 5 events.
 
-![image](https://github.com/user-attachments/assets/59e030ba-5e99-499a-b917-2e54a3a15b72)
-
+![image](https://github.com/user-attachments/assets/2e0d34ba-cff9-4a19-9fe5-ea6ef19b1cfb)
 
 
 **Filtering to the first time a user performed an event[](/product-analytics/funnels#filtering-to-the-first-time-a-user-performed-an-event)**
@@ -48,10 +52,9 @@ Repeat these steps as needed. You can define a step as a combination of up to 5 
 It is sometimes useful to understand the first-time user experience, which may have a significant impact on things such as long term retention or may meaningfully differ from general flows through the product. To help analyze first-time experience, you can filter the events in a funnel to the first time ever a user (or other unit ID) performed an event. To do so:
 
 1. Click “…” next to the event in question.
-2. Select the “**Apply First-time Filter**”.
+2. Select the “**Filter to First Time**”.
 
-![image](https://github.com/user-attachments/assets/ace0f8cd-986a-4ac3-97df-68c206161091)
-
+![image](https://github.com/user-attachments/assets/aa72701f-b9c2-47ae-81e8-514a1c1d971b)
 
 **Renaming Steps[](/product-analytics/funnels#renaming-steps)**
 
@@ -80,6 +83,8 @@ However, some interesting funnels may involve several people in an organization 
 To this end, Statsig allows you to perform individual or group analytics. This enables you to analyze the success of your funnel at the user level, or the success of your funnel for whole groups such as organizations or companies.
 
 You can choose any of the ID types defined in your Statsig project to create a funnel over.
+
+If you have an experiment exposure selected, make sure that the ID type selected matches that of the experiment.
 
 ***Group analytics is not a paid add-on at Statsig and is included at no-extra cost for all tiers.***
 
@@ -125,11 +130,11 @@ Under each funnel step, you’ll see a quick summary that helps demystify your f
 
 Next, in the conversion table, you’ll find the percentage and number of units that have converted relative to the first step of the funnel and relative to the previous step. Again, this feature is particularly useful when grouping by a certain property in which you want to compare conversions between user groups. 
 
-![image](https://github.com/user-attachments/assets/52e661ee-0b54-43aa-98a5-c832d14b83d8)
+![image](https://github.com/user-attachments/assets/073f9f20-f26f-4af4-a4e9-65d65474b97f)
 
 ### User Exploration
 
 Finally, by clicking any bar in the funnel, you have the option to download all users in that segment who dropped off or converted as a CSV file. You also have the option to view session streams to get a granular, event-by-event understanding of a user’s experience before and after the data point in question.
 
-![image](https://github.com/user-attachments/assets/d699ddcf-acd7-4910-aff8-204a6c30b308)
+![image](https://github.com/user-attachments/assets/2c140de9-bce8-4813-91b1-8f2d8d1e9a66)
 

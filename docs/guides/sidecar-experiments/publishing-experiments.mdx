@@ -1,6 +1,10 @@
 ---
 sidebar_label: Launching Experiments
 title: Taking your experiments to production
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-07-02
 ---
 
 With the experiment configuration out of the way, we need to take this to production.  Sidecar makes this easy with just a few clicks.
@@ -58,6 +62,8 @@ The image below depicts where you can find the experiment ID and each variation 
 `https://www.DOMAIN.com/?overrideuser=name_color_test_1`
 
 ![statsig banner](/img/sidecarqa.png)
+
+Note, this works best with the default test/control group names - if you change one of your group names, you'll also have to modify it in the Statsig Console by clicking "Manage Overrides".
 
 
 ### Step 4: Start the experiment

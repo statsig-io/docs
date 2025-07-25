@@ -3,6 +3,10 @@ title: User Flows
 sidebar_label: User Flows
 slug: /metrics/create-user-flows
 displayed_sidebar: cloud
+keywords:
+  - owner:shubham
+last_update:
+  date: 2025-03-21
 ---
 
 Statsig's **User Flows** enable you to visualize customer journeys through your application. 

@@ -1,12 +1,16 @@
 ---
 title: mParticle
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-03-31
 ---
 
 ## Overview
 
 Enabling the [mParticle](https://www.mparticle.com/) integration for Statsig allows Statsig to receive events from mParticle.
 
-You can find all events that Statsig receives from mParticle in the [Metrics](/metrics) tab in the Statsig console. Statsig will automatically include these events in [Pulse](/pulse) and [Experiment](/experiments-plus/monitor) results for your feature gates and experiments respectively.
+You can find all events that Statsig receives from mParticle in the [Metrics](/metrics) tab in the Statsig console. Statsig will automatically include these events in [Pulse](/pulse/read-pulse) and [Experiment](/experiments-plus/monitor) results for your feature gates and experiments respectively.
 
 ## Configuring Incoming Events
 

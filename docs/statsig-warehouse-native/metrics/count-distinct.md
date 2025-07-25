@@ -1,6 +1,10 @@
 ---
 title: Count Distinct Metrics
 sidebar_label: Count Distinct
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-07-03
 ---
 
 ## Summary
@@ -58,7 +62,7 @@ GROUP BY group_id;
 
 ### Methodology Notes
 
-After enough data size, the methodology switches to using APPROX_COUNT_DISTINCT (or equivalent) to avoid massive compute jobs on analytical count distinct, and because the approximate error becomes acceptably small.
+In the metrics page view, we use APPROX_COUNT_DISTINCT (or equivalent) to avoid massive compute jobs on analytical count distinct, and because the approximate error becomes acceptably small for the topline estimate. For experiment result loads, the calculation is analytical and exact to avoid jitter or bias from approximation error.
 
 ## Options
 
@@ -68,6 +72,11 @@ After enough data size, the methodology switches to using APPROX_COUNT_DISTINCT 
   - Specify a lower and/or upper percentile bound to winsorize at. All values below the lower threshold, or above the upper threshold, will be clamped to that threshold to reduce the outsized impact of outliers on your analysis
 - CUPED
   - Specify if you want to calculate CUPED, and the lookback window for CUPED's pre-experiment data inputs
-- Cohort Windows
+- Thresholding
+  - Turn this metric into a 1/0 unit count metric counting if the unit's total count equals to or surpasses (>=) a given threshold
+- [Cohort Windows](../features/cohort-metrics.md)
   - You can specify a window for data collection after a unit's exposure. For example, a 0-1 day cohort window would only count actions from days 0 and 1 after a unit was exposed to an experiment
     - **Only include units with a completed window** can be selected to remove units out of pulse analysis for this metric until the cohort window has completed
+
+## Limits
+Count distinct metrics are available in most experiments, except for Switchbacks.

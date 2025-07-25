@@ -3,6 +3,10 @@ title: Egress, Privacy, & Storage
 slug: /statsig-warehouse-native/data-privacy
 sidebar_label: Egress, Privacy, & Storage
 description: Understand how Statsig uses your warehouse
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-03-21
 ---
 
 One advantage of using Statsig Warehouse Native is that user-level data comes directly from your source of truth without needing to be copied or leave your warehouse. This page walks through how Statsig interacts with your warehouse.

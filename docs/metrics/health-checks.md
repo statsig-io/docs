@@ -2,6 +2,10 @@
 title: Data Health Checks
 sidebar_label: Health
 slug: /metrics/health-checks
+keywords:
+  - owner:shubham
+last_update:
+  date: 2025-03-21
 ---
 
 ### Monitoring Data Health

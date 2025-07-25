@@ -1,0 +1,17 @@
+```Rust
+// Overrides the given gate to the specified value
+statsig.override_gate("test_gate", true, None);
+	
+// Overrides the given dynamic config to the provided value
+statsig.override_dynamic_config("test_1", my_map.clone(), None); //my_map is HashMap<String, Value>
+
+// Overrides the given experiment to the provided value
+statsig.override_experiment("test_xp_1", my_map.clone(), None); //my_map is HashMap<String, Value>
+	
+// Overrides the given layer to the provided value
+statsig.override_layer("user_promo_experiments", my_map.clone(), None); //my_map is HashMap<String, Value>
+
+//Alternatively, get the Experiment object for a given groupName
+let group_exp = statsig.get_experiment_by_group_name("pricing_experiment", "premium_group");
+let premium_price = group_exp.get_double("price", 9.99);
+```

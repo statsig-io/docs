@@ -1,6 +1,10 @@
 ---
 sidebar_label: Overview
 title: Single Sign-On With OIDC
+keywords:
+  - owner:shubham
+last_update:
+  date: 2025-03-21
 ---
 
 :::info

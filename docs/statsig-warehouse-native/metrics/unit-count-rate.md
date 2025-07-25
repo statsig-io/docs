@@ -1,6 +1,10 @@
 ---
 title: Unit Count (Daily Participation) Metrics
 sidebar_label: Unit Count (Daily Participation)
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-03-21
 ---
 
 ## Summary

@@ -2,6 +2,10 @@
 title: Scaling Warehouses (β)
 sidebar_label: Scaling Warehouses β
 slug: /statsig-warehouse-native/guides/scaling
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-03-21
 ---
 
 

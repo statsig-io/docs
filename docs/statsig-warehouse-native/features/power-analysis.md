@@ -3,6 +3,10 @@ title: Power Analysis
 slug: /statsig-warehouse-native/features/power-analysis
 sidebar_label: Power Analysis
 description: Determine your experiment duration with confidence
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-03-21
 ---
 
 In general it is a good practice to establish a run-time for an experiment

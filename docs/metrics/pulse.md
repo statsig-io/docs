@@ -2,6 +2,10 @@
 title: Pulse Metrics
 sidebar_label: Pulse Metrics
 slug: /metrics/pulse
+keywords:
+  - owner:shubham
+last_update:
+  date: 2025-03-21
 ---
 
 # Pulse Metrics

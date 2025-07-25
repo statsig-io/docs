@@ -2,6 +2,10 @@
 title: Snowflake Connection
 slug: /statsig-warehouse-native/connecting-your-warehouse/snowflake
 sidebar_label: Snowflake
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-03-21
 ---
 
 ## Overview

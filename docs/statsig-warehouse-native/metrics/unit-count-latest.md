@@ -1,6 +1,10 @@
 ---
 title: Unit Count (Latest Value) Metrics
 sidebar_label: Unit Count (Latest Value)
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-03-21
 ---
 
 ## Summary

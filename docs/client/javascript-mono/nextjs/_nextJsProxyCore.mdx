@@ -1,0 +1,338 @@
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+### Proxying Network Traffic (Optional)
+
+If you want to harden your integration and protect your feature gating/experimentation values/event logging from being blocked by ad blockers, you can set up a network proxy.
+
+It is possible to route all Statsig network traffic through your Next.js server. 
+There are a few reasons why you might want to set this up.
+
+- Avoid ad blockers
+- Keep network traffic within your own cluster
+- Maintain your own event filtering/de-duplication logic
+
+
+
+<Tabs
+  defaultValue="app-router"
+  groupId="router-choice"
+  values={[
+    {label: 'App Router', value: 'app-router'},
+    {label: 'Page Router', value: 'page-router'},
+  ]}>
+
+
+
+
+{/* App Router */}
+
+
+<TabItem value="app-router">
+
+The Statsig client uses two main endpoints. `/initialize` and `/log_event`. 
+We will need to setup Next.js [`Route Handlers`](https://nextjs.org/docs/app/building-your-application/routing/route-handlers) for these. 
+For the sake of this demo, we will house them under `app/statsig-proxy`.
+
+
+
+</TabItem>
+
+
+
+
+{/* Page Router */}
+
+<TabItem value="page-router">
+
+The Statsig client uses two main endpoints. `/initialize` and `/log_event`. 
+We will need to setup Next.js [`API Routes`](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) for these. For the sake of this demo, we will house them under `api/statsig-proxy`.
+
+</TabItem>
+
+
+</Tabs>
+
+
+
+
+
+#### Add Route `/initialize`
+
+
+
+
+
+<Tabs
+  defaultValue="app-router"
+  groupId="router-choice"
+  values={[
+    {label: 'App Router', value: 'app-router'},
+    {label: 'Page Router', value: 'page-router'},
+  ]}>
+
+
+<TabItem value="app-router">
+
+
+```ts
+// app/statsig-proxy/initialize/route.ts
+
+import { StatsigUser } from '@statsig/statsig-node-core';
+
+
+import { generateBootstrapValues } from "./statsig-backend";
+
+export async function POST(request: Request): Promise<Response> {
+  const json = await request.json();
+
+  if (!json || typeof json !== "object") {
+    return new Response(null, { status: 400 });
+  }
+
+  const data = await generateBootstrapValues();
+  return new Response(data);
+}
+```
+
+</TabItem>
+
+
+
+<TabItem value="page-router">
+
+```ts
+// pages/api/statsig-proxy/initialize.ts
+
+import { getStatsigValues } from "@/pages/statsig-backend";
+import type { NextApiRequest, NextApiResponse } from "next";
+import { StatsigUser } from "statsig-node";  //Note, recommended page-router implementations still use our legacy SDK.
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<string>
+) {
+  if (req.method !== "POST") {
+    res.status(400).send("/initialize only supports POST");
+    return;
+  }
+
+  const { user } = JSON.parse(req.body) as { user: StatsigUser };
+  const values = await getStatsigValues(user);
+  res.status(200).send(values);
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+
+
+
+
+
+
+
+
+
+#### Add Route `/log_event`
+
+<Tabs
+  defaultValue="app-router"
+  groupId="router-choice"
+  values={[
+    {label: 'App Router', value: 'app-router'},
+    {label: 'Page Router', value: 'page-router'},
+  ]}>
+
+
+
+<TabItem value="app-router">
+
+```ts
+// app/statsig-proxy/log_event/route.ts
+
+import { logEvents } from "@/app/statsig-backend";
+
+export type LogEventObject = {
+  eventName: string;
+  user: StatsigUser;
+  value?: string | number | null;
+  metadata?: Record<string, unknown> | null;
+};
+
+type LogEventBody = {
+  events: LogEventObject[];
+};
+
+export async function POST(request: Request): Promise<Response> {
+  const json = await request.json();
+
+  if (!json || typeof json !== "object" || !Array.isArray(json.events)) {
+    return new Response(null, { status: 400 });
+  }
+
+  json.events.forEach((event: any) => {
+    // Assemble the StatsigUser object manually
+    const user = new StatsigUser({
+      userID: event.user.userID, // Assuming 'id' is the property for user ID
+      customIDs: event.user.customIDs,
+    });
+
+    // Update the event object to include the user
+    event.user = user;
+  });
+
+  const body = json as LogEventBody;
+
+  await logEvents(body.events);
+
+  return new Response(JSON.stringify({ success: true }));
+}
+```
+
+You'll also need to make a small change to add the LogEvents function in the backend:
+
+```ts
+// statsig-backend.ts
+export async function logEvents(events: LogEventObject[]): Promise<void> {
+  await initialize;
+  events.forEach((event) => {
+    statsig.logEvent(
+      event.user,
+      event.eventName,
+      event.value,
+
+    );
+  });
+}
+```
+
+
+</TabItem>
+
+
+
+
+<TabItem value="page-router">
+
+
+```ts
+// pages/api/statsig-proxy/log_event.ts
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { LogEventObject } from 'statsig-node'; //Note, recommended page-router implementations still use our legacy SDK.
+
+import { logEvents } from '../../../lib/statsig-backend';
+
+type LogEventBody = {
+  events: LogEventObject[];
+};
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<string>
+) {
+  if (req.method !== 'POST') {
+    res.status(400).send('/log_event only supports POST');
+    return;
+  }
+
+  const body: unknown = req.body;
+  if (!body || typeof body !== 'string') {
+    res.status(400).send('Request body is required');
+    return;
+  }
+
+  const { events } = JSON.parse(body) as LogEventBody;
+
+  await logEvents(events);
+
+  res.status(202).send('{"success": true}');
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+
+
+#### Assign Urls
+
+Now that we have endpoints for handling `/initialize` and `/log_event`, 
+we need to configure that Statsig client to use them.
+
+
+
+
+<Tabs
+  defaultValue="app-router"
+  groupId="router-choice"
+  values={[
+    {label: 'App Router', value: 'app-router'},
+    {label: 'Page Router', value: 'page-router'},
+  ]}>
+
+
+
+<TabItem value="app-router">
+
+In our `app/my-statsig.tsx` file, where we created our StatsigClient, we can pass in some extra StatsigOptions. 
+
+```ts
+const inst = new StatsigClient(
+  clientSdkKey,
+  user,
+  { 
+    networkConfig: {
+      logEventUrl: "/statsig-proxy/log_event",
+      initializeUrl: "/statsig-proxy/initialize",
+    },
+    disableCompression: true,
+    disableStatsigEncoding: true,
+
+    // Optional - Prints debug logs to the console
+    logLevel: LogLevel.Debug 
+  }
+);
+```
+
+</TabItem>
+
+
+
+
+<TabItem value="page-router">
+
+In our `pages/_app.tsx` file, where we created our StatsigClient, we can pass in some extra StatsigOptions. 
+
+
+```ts
+const inst = new StatsigClient(
+  clientSdkKey,
+  user,
+  { 
+    networkConfig: {
+      logEventUrl: "/statsig-proxy/log_event",
+      initializeUrl: "/statsig-proxy/initialize",
+    },
+    disableCompression: true,
+    disableStatsigEncoding: true,
+
+    // Optional - Prints debug logs to the console
+    logLevel: LogLevel.Debug 
+  }
+);
+```
+
+</TabItem>
+
+</Tabs>
+
+
+
+
+
+

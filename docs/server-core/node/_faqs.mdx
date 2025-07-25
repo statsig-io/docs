@@ -1,0 +1,24 @@
+### Common Problems while installing
+1. Seeing SSL Error 
+Right now the binary files will look at certain versions of SSL. 
+```
+// Try run this
+apt-get update && apt-get install libcurl4-openssl-dev -y && rm -rf /var/lib/apt/lists/*
+```
+
+2. Docker build failing with platform-specific dependencies
+When building in Docker (Linux environment), the build may fail if your local `package-lock.json` or `yarn.lock` contains platform-specific dependencies for macOS. This happens because `npm install` locally on Mac pulls down Apple-specific variants, but Docker tries to use those same locked dependencies on Linux.
+
+**Solution:** Either install the Linux-specific variant during your Docker build step:
+```dockerfile
+RUN npm install @statsig/statsig-node-core-linux-x64-gnu
+```
+
+Or add both platform variants as dependencies in your `package.json`:
+```json
+"dependencies": {
+  "@statsig/statsig-node-core": "X.Y.Z", // Common (Required)
+  "@statsig/statsig-node-core-darwin-arm64": "X.Y.Z", // Mac Specific
+  "@statsig/statsig-node-core-linux-x64-gnu": "X.Y.Z" // Linux Specific
+}
+```

@@ -2,6 +2,10 @@
 title: Feature flags (feature gates) - what are they?
 sidebar_label: Overview
 slug: /feature-flags/working-with
+keywords:
+  - owner:shubham
+last_update:
+  date: 2025-05-05
 ---
 
 A feature flag is a mechanism for teams to configure what system behavior is visible to users without changing application code. You might also hear them called flippers, toggles, or (at Statsig), gates.
@@ -19,7 +23,7 @@ Feature flags are commonly used as on/off switches to turn a certain system beha
 Statsig offers several built-in capabilities with feature flags:
 
 - A feature flag can be a simple _kill switch_ that you can use to turn off a particular code branch for all your users
-- You can use a feature flag to target newly coded system behavior to a specific set of users to implement _whitelisting_
+- You can use a feature flag to target newly coded system behavior to a specific set of users to implement _allowlisting_
 - You can create user targeting _rules_ based on Statsig-derived _environment attributes_ such as location, client device, browser type, and client app version
 - You can create user targeting _rules_ based on _user attributes_ such as email and user ID that you provide
 - Each feature flag offers built-in _A/B testing_ with no additional effort so you can automatically see how your feature is performing in production compared to the default or control

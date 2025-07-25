@@ -1,11 +1,18 @@
 ---
 title: Console API Overview
 slug: /console-api/introduction
+keywords:
+  - owner:oliver
+last_update:
+  date: 2025-06-23
 ---
 
 The "Console API" is the CRUD API for performing the actions offered on console.statsig.com without needing to go through the web UI.
 
 If you have any feature requests, drop on in to our [slack channel](https://www.statsig.com/slack) and let us know.
+
+## Base URL
+`https://statsigapi.net`
 
 ## Authorization
 
@@ -13,7 +20,7 @@ All requests must include the **STATSIG-API-KEY** field in the header. The value
 
 ## Rate Limiting
 
-Mutation requests (POST/PATCH/PUT/DELETE) to the Console API are limited to ~ 100 requests / 10 seconds and ~ 900 requests / 15 minutes.
+Mutation requests (POST/PATCH/PUT/DELETE) to the Console API are limited to ~ 100 requests / 10 seconds and ~ 900 requests / 15 minutes, per project.
 
 ## API Version
 

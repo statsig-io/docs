@@ -1,11 +1,15 @@
 ---
 title: First or Latest Value Metrics
 sidebar_label: First/Latest Value
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-05-08
 ---
 
 ## Summary
 
-First (or Latest( Value metrics calculate the first/latest value of a metric source for each unit, and then average it over the experiment population.
+First (or Latest) Value metrics calculate the first/latest value of a metric source for each unit, and then average it over the experiment population.
 
 ### Use Cases
 
@@ -61,8 +65,28 @@ Users without a value will be treated as 0s; note that if there is an existing v
 
 - Metric Breakdowns
   - You can configure Metadata Columns to group results by, getting easy access to dimensional views in pulse results
-- Cohort Windows
+- [Cohort Windows](../features/cohort-metrics.md)
   - You can specify a window for data collection after a unit's exposure. For example, a 0-1 day cohort window would only count actions from days 0 and 1 after a unit was exposed to an experiment
     - **Only include units with a completed window** can be selected to remove units out of pulse analysis for this metric until the cohort window has completed
 - CUPED
   - Specify if you want to calculate CUPED, and the lookback window for CUPED's pre-experiment data inputs
+
+### Special Case: Surrogate Metrics
+
+You can use latest value metrics to implement surrogate metrics. Surrogate metrics (aka proxy metrics or predictive metrics) are a prediction of some long term metric that's impractical to measure over the duration of an experiment, and have some inherent prediction error associated with the model used to derive the metric values.
+
+Under advanced settings in latest value metrics, you can indicate a metric as a surrogate metric with a mean squared error (MSE). This means that the prediction accuracy can be accounted for in calculating variance and thus adjusts p-values and confidence intervals accordingly.
+
+Consider the variable X to be the true north metric which is being predicted by the surrogate metric S. The surrogate metric S is assumed to be an unbiased estimator with an error term $\epsilon$.
+
+$$
+\mu_{X} = \mu_{S} = \overline{S}
+$$
+
+$$
+Var(X) = Var(S + \epsilon) = Var(S) + MSE
+$$
+
+$$
+Var(\overline{X}) = \frac{Var(X)}{n} = \frac{Var(S) + MSE}{n}
+$$

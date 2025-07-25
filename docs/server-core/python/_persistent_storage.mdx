@@ -1,0 +1,35 @@
+```python
+class PersistentStorage(PersistentStorageBaseClass):
+    def load(self, key: str) -> Optional[UserPersistedValues]:
+        """
+        Load persisted values for a user from storage
+        
+        Args:
+            key: A string key that uniquely identifies a user
+
+        Returns:
+            Dictionary mapping config names to their persisted values
+        """
+        pass
+
+    def save(self, key: str, config_name: str, data: StickyValues):
+        """
+        Save a persistent value for a user
+        
+        Args:
+            key: A string key that uniquely identifies a user
+            config_name: The name of the config/experiment
+            data: The values to persist
+        """
+        pass
+
+    def delete(self, key: str, config_name: str):
+        """
+        Delete a persistent value for a user
+        
+        Args:
+            key: A string key that uniquely identifies a user
+            config_name: The name of the config/experiment to delete
+        """
+        pass
+```

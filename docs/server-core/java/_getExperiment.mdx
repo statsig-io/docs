@@ -1,20 +1,38 @@
-### Getting a Layer
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="java-core-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
 
 ```java
+StatsigUser user = new StatsigUser.Builder().setUserID("user-123").build();
 Layer layer = statsig.getLayer(user, "layer_name");
 ```
 
-
-### Experiment & DynamicConfig class
-
-In this SDK, we now have two classes: **Experiment** and **DynamicConfig**, both of which help you manage feature flags and configurations for your users. These classes are similar to the ones in the Kotlin SDK, but are tailored for use in Java.
-
-While both `Experiment` and `DynamicConfig` classes share similar functionalities (i.e., retrieving configuration values), their underlying structures and intended use cases differ slightly:
-
-### Config/Experiment Usage
-
 ```java
-DynamicConfig config = statsig.getDynamicConfig(user, "awesome_product_details");
-
-Experiment experiment = statsig.getExperiment(user, "sample_exp")
+StatsigUser user = new StatsigUser.Builder().setUserID("user-123").build();
+Experiment experiment = statsig.getExperiment(user, "sample_exp");
 ```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+val user = StatsigUser.Builder().setUserID("user-123").build()
+val layer = statsig.getLayer(user, "layer_name")
+```
+
+```kotlin
+val user = StatsigUser.Builder().setUserID("user-123").build()
+val experiment = statsig.getExperiment(user, "sample_exp")
+```
+
+  </TabItem>
+</Tabs>
+

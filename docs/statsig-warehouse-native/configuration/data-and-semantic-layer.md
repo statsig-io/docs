@@ -2,6 +2,10 @@
 title: Data & Semantic Layer
 slug: /statsig-warehouse-native/configuration/data-and-semantic-layer
 sidebar_label: Overview
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-03-21
 ---
 
 When using Statsig Warehouse Native, you configure metrics, experiments, and other schematized data objects that allow Statsig to perform analysis on top of your warehouse.

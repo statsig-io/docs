@@ -2,6 +2,10 @@
 title: Statsig in Expo
 sidebar_label: Expo
 slug: /client/javascript-sdk/expo
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-03-21
 ---
 
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
@@ -46,6 +50,9 @@ export const ExpoAdvanced = _ExpoAdvanced;
 import * as _ExpoDebugging from "./_expoDebugging.mdx";
 export const ExpoDebugging = _ExpoDebugging;
 
+import * as _expoLoadingState from "./_expoLoadingState.mdx";
+export const ExpoLoadingState = _expoLoadingState;
+
 import * as _reactGatesAndConfigs from "./react/_reactGatesAndConfigs.mdx";
 export const ReactGatesAndConfigs = _reactGatesAndConfigs;
 
@@ -60,6 +67,7 @@ export const Builder = SDKDocsBuilder({
     [ExpoInstall, {}],
     [ExpoSetup, {}],
     [ReactGatesAndConfigs, { packageName: "react-native-expo" }],
+    [ExpoLoadingState, {}],
     [ExpoAdvanced, {}],
     [ExpoDebugging, {}],
   ]

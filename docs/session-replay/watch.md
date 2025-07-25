@@ -2,6 +2,10 @@
 title: Watch Session Replays
 sidebar_label: Watch
 slug: /session-replay/watch
+keywords:
+  - owner:akin
+last_update:
+  date: 2025-03-21
 ---
 # Watch Replays
 

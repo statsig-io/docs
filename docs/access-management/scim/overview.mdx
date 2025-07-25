@@ -1,6 +1,10 @@
 ---
 sidebar_label: Overview
 title: SCIM User Provisioning
+keywords:
+  - owner:shubham
+last_update:
+  date: 2025-03-25
 ---
 
 import Alert from "@mui/material/Alert";
@@ -11,7 +15,7 @@ import AlertTitle from "@mui/material/AlertTitle";
 ## Introduction
 
 SCIM (System for Cross-domain Identity Management) is a standardized protocol that simplifies the automation of user provisioning and management across multiple platforms.
-By integrating SCIM with your preferred Identity Provider (IdP), such as Okta or Microsoft Entra,
+By integrating SCIM with your preferred Identity Provider (IdP), such as Okta,
 you can securely and efficiently manage user creation, updates, and de-provisioning within Statsig.
 We currently only offer an Okta SCIM integration.
 
@@ -43,12 +47,7 @@ We are actively developing SCIM functionality and have rolled out the following 
 - Statsig Org User Imports: Import existing users on Statsig to Idp
 - Okta Org Role management: Users' organization roles can be managed in Okta
 - Okta Project Role management: Users' project roles can be managed in Okta
-
-## Features Currently Not Available
-
-The following features are under development and will be released in future updates
-
-- Statsig Team level provisioning: Users can be assigned to teams and roles in Statsig
+- Okta Team x Role Management: Users can be assigned to teams and roles in Statsig via Okta SCIM
 
 ## Changelog
 
@@ -59,3 +58,4 @@ The following features are under development and will be released in future upda
 | 10/16/24 | Project x Role                   | - Role at each Project level of Statsig synced with Okta Group Role                                      |
 | 10/23/24 | Self-serve SCIM UI               | - Clients can generate and manage SCIM auth key on Console UI                                            |
 | 10/24/24 | Okta Org Role management         | - Users' organization roles can be managed in Okta                                                       |
+| 2/27/25  | Okta Team x Role Management      | - Users can be assigned to teams and roles in Statsig via Okta SCIM                                      |

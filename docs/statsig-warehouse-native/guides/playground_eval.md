@@ -2,6 +2,10 @@
 title: How to Run a Playground Evaluation
 slug: /statsig-warehouse-native/guides/dummy_evaluation
 sidebar_label: Playground Evaluation
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-03-21
 ---
 
 :::info

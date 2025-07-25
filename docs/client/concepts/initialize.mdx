@@ -1,16 +1,19 @@
 ---
 title: Initializing SDKs
-sidebar_label: Initializing
+sidebar_label: Initializing the SDK
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-05-09
 ---
-
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
-One of the first steps in using a Statsig client SDK is to call the asynchronous `initialize()` method in the SDK language of your choice. This retrieves the values you need to evaluate flags or experiments and send events: in client SDKs, only the events for your defined user are provided, while Server SDKs fetch your entire ruleset.
+The first step in using a Statsig SDK is calling `initialize()`, which retrieves the values you need to evaluate experiments & send events. Before initialization, Statsig SDKs won't have latest values in-memory, and therefore may return stale values or none at all. 
 
-## General Initialization Flow
+Unlike Server SDK initialization, which happens at Server startup, Client SDK initialization happens when a screen is rendered - meaning initialization can have more impact on user experience. Statsig offers several client initialization methods to tune performance to your needs.
 
 <Tabs
   groupId="user-object"
@@ -21,42 +24,36 @@ One of the first steps in using a Statsig client SDK is to call the asynchronous
   ]}
 >
 <TabItem value="client">
-`initialize` will take an SDK key and `StatsigUser` object, as well as a set of options to parameterize the SDK.  The sdk will then do a few things:
-1. Check local storage for cached values.  The SDK caches the previous evaluations locally so they are available on the next session without a successful network call
+
+## General Initialization Flow
+
+`initialize` will take an SDK key and `StatsigUser` object. The SDK will then:
+1. Check local storage for cached values. The SDK caches the previous evaluations locally so they are available on the next session if there isn't a successful network call
 2. Create a `STATSIG_STABLE_ID` - an ID that stays consistent per-device, which can often be helpful for logged-out experiments. 
 3. Set the SDK as initialized so checks won't throw errors - they will either return cached values or defaults.
 4. Issue a network request to Statsig to get the latest values for all gates/experiments/configs/layers/autotunes for the given user.  If the project definition does not change from the most recent cached values, this request may succeed without returning new data.
 5. Resolve the asynchronous `initialize` call.  If the request to the server failed, the SDK will have the cached values or return defaults for this session.
 
-Depending on when you check a gate or experiment after initializing, its possible that you may not have retrieved fresh values yet. Awaiting the return of the initialize function is one easy way to do this, but has speed disadvantages, discussed below.
-
-</TabItem>
-
-<TabItem value="server">
-
-Server SDKs require only a secret key to initialize. As most servers are expected to deal with many users - server SDKs download all rules and configurations you have in your project and evaluate them in realtime for each user that is encountered. The process for Server SDK initialization looks something like this:
-1. Your server checks if you have locally cached values (which you can set up with a [DataAdapter](/server/concepts/data_store/))
-2. If your server found values on the last call, it'll be ready for checks with the reason "DataAdapter". Whether it found local data or not, it'll next go to the network to find updated values. 
-3. The Server retrieves updated rules from the server, and is now ready for checks even if it didn't find values in step 1.
-4. Going forward, the server will retrieve new values every 10 seconds from the server, updating the locally cached values each time.
-
-DataAdapters provide a layer of resilience, and ensure your server is ready to server requests as soon as it startups rather than waiting for a network roundtrip, which can be especially valuable if you have short-lived or serverless instances. While only recommended for advanced setups, Statsig also offers a [Forward Proxy](/server/concepts/forward_proxy/) that can add an extra layer of resilience to your server setup.
-</TabItem>
-
-
-</Tabs>
+Depending on when you check a gate or experiment after initializing, its possible that you may not have retrieved fresh values yet. Awaiting initialization solves this, with some performance downsides (discussed below).
 
 ## Client Initialization Strategies
 
-We now offer several strategies for initializing `StatsigClient` — allowing customers to fine-tune and minimize latency. The various strategies carry some tradeoffs, and should be carefully considered based on your performance requirements and experimentation needs.
-
 Below are the various strategies summarized at a high level, ordered from most common to least common: 
 
-- [**Asynchronous Initialization (Awaited)**](#1-asynchronous-initialization---awaited): Ensures user assignments are available after initialization but adds latency due to awaiting fresh assignments being fetched over the network from Statsig servers.
-- [**Bootstrap Initialization**](#2-bootstrap-initialization): Best of both worlds for latency and availability of fresh assignments, but requires additional engineering effort. Pass up-to-date Statsig values down with other server responses, minimizing latency.
-- [**Asynchronous Initialization (Not Awaited)**](#3-asynchronous-initialization---not-awaited): This ensures immediate rendering, but in a state that reflects stale assignments or no assignments available (resulting in default values being used). 
+- [**Asynchronous Initialization (Awaited)**](#1-asynchronous-initialization---awaited): Wait for the initialization network call to finish before rendering content.
+- [**Bootstrap Initialization**](#2-bootstrap-initialization): Generate the assignment values on your own server, and pass them down with other request, resulting in zero-latency rendering. Best of both worlds for latency and availability of fresh assignments, but requires additional engineering effort.
+- [**Asynchronous Initialization (Not Awaited)**](#3-asynchronous-initialization---not-awaited): Do not await the return of the initialization network call. This ensures immediate rendering, but in a state that reflects stale assignments or no assignments available.
   - After initialization, the client will then fetch fresh assignments over the network from Statsig. Subsequent calls to check assignments may result in different assignments than the initial state and therefore render a different treatment (_this is referred to as "flicker"_). This mimics the old behavior of `StatsigProvider.waitForInitialization=false`.
-- [**Synchronous Initialization**](#4-synchronous-initialization): Ensures immediate rendering but with stale or no assignments available. First-visit users will never be assigned to gates and experiments. These users will only see updated assignments after they do a hard-refresh of the website. Effectively, all assignment information is 1 page load stale.
+- [**Synchronous Initialization**](#4-synchronous-initialization): Renders immediately, but with stale or no assignments available. First-visit users will never be assigned to gates and experiments. These users will only see updated assignments after they do a hard-refresh of the website. Effectively, all assignment information is 1 page-load out-of-date..
+
+| Method | Speed-to-render? | Render consistency? | Latest content? | Engineering Complexity? |
+|-------------------------|---------------------|-----------------|-----------------|------------------|
+| **Explanation** | When I visit the webpage, how fast does the content appear? | Does the content ever change/flicker? | Does the user ever see an out-of-date config value? | How easy is this to implement? |
+| Await InitializeAsync() | ❌ Slow | ✅ Good | ✅ Yes | ✅ Easy |
+| InitializeAsync() | ✅ Fast | ❌ Poor | ✅ Yes | ✅ Easy |
+| InitializeSync() | ✅ Fast | ✅ Good | ❌ No | ✅ Easy |
+| BootstrapInit | ✅ Fast | ✅ Good | ✅ Yes | ❌ Extra Effort |
+
 
 ### 1. Asynchronous Initialization - Awaited
 > Ensures latest assignments but requires a loading state
@@ -80,8 +77,6 @@ Example:
   </TabItem>
 </Tabs>
 
-
-
 ### 2. Bootstrap Initialization
 > Ensures both latest assignments with no rendering latency
 
@@ -92,8 +87,9 @@ This architecture requires running a server SDK that supports the `getClientInit
 Your server SDK will maintain a fresh configuration in memory and when a request hits your route handler, you should call `getClientInitializeResponse(<user>)`, passing in a StatsigUser Object to generate the configuration object that gets passed to the client SDK for synchronous initialization.
 
 #### Implementation Notes:
-* You should pass the same user object on both the server and client side - take care that these stay in sync. This can become particularly hairy in the case of keeping stableID in sync, as it'll re-generate when it doesn't exist. See [here](https://docs.statsig.com/client/javascript-sdk#keeping-stableid-consistent-across-client--server).
+* Bootstrapping requires a user object both on the client and server side, and it's important that they're kept in sync. This may seem redundant, but is important for other SDK operations, and provides a layer of safeguarding should you accidentally attempt to perform checks on a user object different than the one you created values for (if you do, the SDK will throw warnings). Client SDKs also generate their own StableID for the user when one is not provided, which can sometimes result in out-of-sync user objects. See [keeping StableID consistent across client and server](https://docs.statsig.com/client/javascript-sdk#keeping-stableid-consistent-across-client--server).
 * The `initializeValues` option should be an Object - except in our js SDK, where its expected to be a string. Calling .stringify() on the object should work.
+* If you're using Statsig's new javascript SDK (@statsig/js-client), ensure that you set the hashing algorithm as DJB2 when calling getClientInitializeResponse(), as the new SDK uses DJB2 by default.
 
 Example:
 
@@ -103,12 +99,46 @@ Example:
   values={[
     {label: 'React', value: 'react'},
     {label: 'Javascript', value: 'js'},
+    {label: 'iOS', value: 'ios'},
+    {label: 'Android (Kotlin)', value: 'kotlin-android'},
   ]}>
   <TabItem value="react">
     <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-init-strat-bootstrap.tsx" />
   </TabItem>
   <TabItem value="js">
     <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-bootstrap.tsx" />
+  </TabItem>
+  <TabItem value="ios">
+  ```swift
+  //Fetch your bootstrapping values, generated by the Server SDK
+  let precomputedInitializeValues = getStatsigValuesFromServerSDK(userID: "my_user_id", environment: "staging")
+  
+  Statsig.initialize(
+      sdkKey: "my_client_sdk_key",
+      user: StatsigUser(userID: "my_user_id"),
+      options: StatsigOptions(
+          environment: StatsigEnvironment(tier: .Staging),
+          initializeValues: precomputedInitializeValues
+      )
+  ) { error in
+    // Initialization has completed, with the values you provided
+    // You can also check error.message and error.code for any debugging information.
+  }
+  ```
+  </TabItem>
+  <TabItem value="kotlin-android">
+  ```kotlin
+  //Fetch your bootstrapping values, generated by the Server SDK
+  val bootstrapValues = getInitializationValuesFromServer()
+  Statsig.initialize(
+      this.application,
+      "my_client_sdk_key",
+      StatsigUser("user_id"),
+      StatsigOptions(
+        initializeValues = bootstrapValues,
+    )
+  )
+  ```
   </TabItem>
 </Tabs>
 
@@ -138,7 +168,6 @@ Example:
 <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-init-strat-cache.tsx" />
 
 These strategies help you balance the need for the latest gate / experiment assignment information with the need for immediate application rendering based on your specific requirements.
-
 
 ### /Initialize Response Schema
 
@@ -225,3 +254,19 @@ evaluated_keys: {
 /** The hashing algorithm used */
 hash_used: string; 
 ```
+
+</TabItem>
+<TabItem value="server">
+
+## General Initialization Flow
+
+Server SDKs require only a secret key to initialize. As most servers are expected to deal with many users - server SDKs download all rules and configurations you have in your project and evaluate them in realtime for each user that is encountered. The process for Server SDK initialization looks something like this:
+1. Your server checks if you have locally cached values (which you can set up with a [DataAdapter](/server/concepts/data_store/))
+2. If your server found values on the last call, it'll be ready for checks with the reason "DataAdapter". Whether it found local data or not, it'll next go to the network to find updated values. 
+3. The Server retrieves updated rules from the server, and is now ready for checks even if it didn't find values in step 1.
+4. Going forward, the server will retrieve new values every 10 seconds from the server, updating the locally cached values each time.
+
+DataAdapters provide a layer of resilience, and ensure your server is ready to server requests as soon as it startups rather than waiting for a network roundtrip, which can be especially valuable if you have short-lived or serverless instances. While only recommended for advanced setups, Statsig also offers a [Forward Proxy](/server/concepts/forward_proxy/) that can add an extra layer of resilience to your server setup.
+
+</TabItem>
+</Tabs>

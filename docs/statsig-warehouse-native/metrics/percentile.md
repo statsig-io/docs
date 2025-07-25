@@ -1,6 +1,10 @@
 ---
 title: Percentile Metrics
 sidebar_label: Percentile
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-03-21
 ---
 
 ## Summary

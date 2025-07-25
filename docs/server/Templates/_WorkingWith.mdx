@@ -4,7 +4,7 @@ import AsyncDisclaimer from "./_AsyncDisclaimer.mdx";
 
 ### Checking a Feature Flag/Gate
 
-Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-flags/working-with). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
+Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-flags/overview). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
 
 From this point on, all APIs will require you to specify the user (see [Statsig user](#statsig-user)) associated with the request. For example, check a gate for a certain user like this:
 
@@ -34,6 +34,6 @@ Learn more about identifying users, group analytics, and best practices for logg
 
 ### Retrieving Feature Gate Metadata
 
-In certain scenarios, you may need more information about a gate evaluation than just a boolean value.  For additional metadata about the evaluation, use the Get Feature Gate API, which returns a FeatureGate object
+In certain scenarios, you may need more information about a gate evaluation than just a boolean value.  For additional metadata about the evaluation, use the Get Feature Gate API, which returns a FeatureGate object:
 
 <div>{props.getFeatureGate}</div>

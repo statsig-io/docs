@@ -2,6 +2,10 @@
 title: Local Metrics 
 sidebar_label: Local Metrics 
 slug: /metrics/local-metrics
+keywords:
+  - owner:shubham
+last_update:
+  date: 2025-03-21
 ---
 
 # Local Metrics

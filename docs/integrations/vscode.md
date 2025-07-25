@@ -1,5 +1,9 @@
 ---
 title: Visual Studio Code
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-03-21
 ---
 
 ## Overview

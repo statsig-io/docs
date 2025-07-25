@@ -1,0 +1,9 @@
+```swift
+user := statsig.User{UserID: "some_user_id"}
+options := statsig.GCIROptions{}
+options.ClientKey = "client-YOUR_CLIENT_KEY"
+
+result := statsig.GetClientInitializeResponseWithOptions(user, &options)
+
+// You can then pass 'result' into a Statsig Client SDK
+```

@@ -44,3 +44,7 @@ StatsigUser *user = [[StatsigUser alloc] initWithUserID:@"my_user_id"];
 The completion block is called after the network request to fetch the latest feature gate and experiment values for your user.
 If you try to get any value before the completion block is called, you could get either the cached value from the previous session,
 or the default value. If you need the latest value, please wait for the completion block to be called first.
+
+:::caution
+**Avoid iOS 18.4 on Simulator**: Apple introduced a networking bug in iOS 18.4 that causes requests to fail when running in the Simulator. Please use iOS 18.2 or earlier instead. For more details, see [this thread on Apple's forums](https://developer.apple.com/forums/thread/777999).
+:::
