@@ -50,6 +50,8 @@ GROUP BY group_id;
 
 ### Methodology Notes
 
+Note that daily/DX views for user-day metrics are calculated per-day. That is, if a user is active on all 14 days of an experiment, they would contribute 1 to the overall cumulative numerator, but 1 to each day of the daily view; that is, they are not deduped in that view. This generally yields a more intuitive interpretation, and leads to less sparse timeseries data on long experiments. However, this can lead to mix-shift effects where the daily trendline goes in the opposite direction of the cumulative timeseries since the daily returning users have already been seen and do not contribute additional metric value to the cumulative view.
+
 Unit count metrics are simple, and will use the sql SUM aggregation. However, there are many advanced options you can apply.
 
 ## Options
