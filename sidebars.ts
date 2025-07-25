@@ -437,6 +437,11 @@ const sidebars: SidebarsConfig = {
           id: "integrations/mcp",
           className: "ai-icon sidebar-icon",
         },
+        {
+          type: "doc",
+          id: "ai-configs",
+          className: "ai-icon sidebar-icon",
+        },
       ],
     },
     {
