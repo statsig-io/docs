@@ -30,11 +30,20 @@ This would look like the SQL below:
 ```
 -- Denominator (Checkouts)
 SELECT
-  unit_id,
-  group_id,
+  source_data.unit_id,
+  exposure_data.group_id,
   COUNT(1) as denominator
 FROM source_data
-GROUP BY unit_id, group_id;
+JOIN exposure_data
+ON
+  -- Only include users who saw the experiment
+  source_data.unit_id = exposure_data.unit_id
+  -- Only include data from after the user saw the experiment
+  -- In this case exposure_data is already deduped to the "first exposure"
+  AND source_data.timestamp >= exposure_data.timestamp
+GROUP BY
+  source_data.unit_id,
+  exposure_data.group_id;
 
 -- Numerator (Revenue)
 SELECT
