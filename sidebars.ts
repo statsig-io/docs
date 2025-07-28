@@ -784,7 +784,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Client SDKs",
+      label: "Client SDK Reference",
       collapsed: false,
       collapsible: false,
       items: [
@@ -904,7 +904,7 @@ const sidebars: SidebarsConfig = {
 
     {
       type: "category",
-      label: "Server SDKs",
+      label: "Server SDK Reference",
       collapsed: false,
       collapsible: false,
       items: [
