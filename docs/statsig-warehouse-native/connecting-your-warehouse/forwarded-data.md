@@ -33,7 +33,7 @@ These fast-forwarded exposures are not deduplicated, and will have some fields (
 Each day, a deduplicated digest will be exported to your warehouse to ensure consistency. This will be deduplicated with the above as part of the standard Pulse Pipeline.
 
 :::info Note
-For gates with 0% or 100% rollout, by default we don't forward exposure to your warehouse. If you need them, please contact our support team.
+For gates with 0% or 100% rollout, by default we don't forward exposure to your warehouse. If you need them, please contact our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel.
 :::
 
 ## Events
