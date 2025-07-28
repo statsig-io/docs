@@ -8,12 +8,12 @@ last_update:
 ---
 
 :::info
-SSO is an Enterprise feature.  Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you need to enable Enterprise features as you try out Statsig.
+SSO is an Enterprise feature. Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you need to enable Enterprise features as you try out Statsig.
 :::
 
 *This documentation assumes that you already have an OIDC Provider up and running.*
 
-SSO with OIDC can be configured for your Statsig Organization to continue using your company's identity store with Statsig and simplify the process for inviting your team to your Projects. New users will be automatically provisioned, once authenticated by your Identity Provider. Organizations are an Enterprise Tier feature. If your SSO requires multi-factor authentication (MFA), it is automatically required when your users sign into Statsig with SSO enabled.
+Single Sign-On (SSO) with OIDC can be configured for your Statsig Organization to continue using your company's identity store with Statsig and simplify the process for inviting your team to your Projects. New users will be automatically provisioned, once authenticated by your Identity Provider. Organizations are an Enterprise Tier feature. If your SSO requires multi-factor authentication (MFA), it is automatically required when your users sign into Statsig with SSO enabled.
 
 ## Configuration
 
