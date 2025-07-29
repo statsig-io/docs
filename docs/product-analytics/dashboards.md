@@ -7,7 +7,7 @@ slug: /product-analytics/dashboards
 keywords:
   - owner:akin
 last_update:
-  date: 2025-07-11
+  date: 2025-07-23
 ---
 
 # Dashboards

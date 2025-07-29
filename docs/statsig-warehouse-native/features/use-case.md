@@ -5,7 +5,7 @@ sidebar_label: Practical Use Cases
 keywords:
   - owner:vm
 last_update:
-  date: 2025-04-08
+  date: 2025-07-23
 ---
 
 ## How can I define and filter results to 'new users' only?
