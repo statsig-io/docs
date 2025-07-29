@@ -26,10 +26,17 @@ This would look like the SQL below:
 ```
 -- Group Level
 SELECT
-  group_id,
-  PERCENTILE(value, percentile_level) as value,
-  COUNT(distinct user_id) as population
+  exposures_data.group_id,
+  PERCENTILE(user_data.value, percentile_level) as value,
+  COUNT(distinct user_data.user_id) as population
 FROM user_data
+JOIN exposure_data
+ON
+  -- Only include users who saw the experiment
+  source_data.unit_id = exposure_data.unit_id
+  -- Only include data from after the user saw the experiment
+  -- In this case exposure_data is already deduped to the "first exposure"
+  AND source_data.timestamp >= exposure_data.timestamp
 WHERE value IS NOT NULL
 GROUP BY group_id;
 ```
