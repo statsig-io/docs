@@ -5,7 +5,7 @@ sidebar_label: Warehouse Storage
 keywords:
   - owner:craig
 last_update:
-  date: 2025-06-23
+  date: 2025-07-23
 ---
 
 ## Introduction
@@ -89,5 +89,7 @@ Warehouse Native uses several types of tables with different storage patterns:
 - **Transient staging tables**: Short-lived intermediate tables with a mix of automatic cleanup (1-2 days TTL) and permanent storage (small tables that are useful for ad-hoc analysis like regression coefficients).
 - **Results tables**: Output statistics from the pipeline, which are copied and cached locally on Statsig servers
 
-Note: Vacuum jobs do not affect staging tables used by Statsig
+:::note
+Vacuum jobs do not affect staging tables used by Statsig.
+:::
 

@@ -5,7 +5,7 @@ slug: /release-pipeline/create-and-manage
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-06-10
+  date: 2025-07-23
 ---
 
 # Creating and Managing Release Pipelines
@@ -47,7 +47,9 @@ Control how your phases progress with these transition options:
 | **Require Review** | Requires manual approval from an authorized user before starting the phase |
 | **Time Interval** | Automatically proceeds to the next phase after a specified duration (in minutes) |
 
-**Note:** You can combine both options in a single phase. When both are used, the time interval will only begin counting down after the required approval is given.
+:::note
+You can combine both options in a single phase. When both are used, the time interval will only begin counting down after the required approval is given.
+:::
 
 ![Phase transition conditions](/img/release-pipeline/condition.png)
 

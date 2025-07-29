@@ -4,7 +4,7 @@ title: Log your first custom event
 keywords:
   - owner:brock
 last_update:
-  date: 2025-06-03
+  date: 2025-07-23
 ---
 
 ## Overview
@@ -76,7 +76,9 @@ To set up a new "group" or "customID":
 3. Name the new customID and give it a description so other people in your project know what it means
 4. Start logging events with that customID in the `customIDs` field of the StatsigUser object
 
-NOTE: you must provide the set of all IDs on each StatsigUser object.  Statsig does not 
+:::note
+You must provide the set of all IDs on each StatsigUser object.
+::: 
 
 ## Best practices
 
@@ -144,7 +146,7 @@ StatsigClient.LogEvent(
 ```
 
 :::info Size limits on event payload
-Note that there are limits to how large each event field can be.
+There are limits to how large each event field can be.
 Object fields have an overall limit of 4096 on its stringified length.
 String fields have a limit of 64 on its length.
 :::

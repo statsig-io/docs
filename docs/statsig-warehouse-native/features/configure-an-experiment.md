@@ -5,7 +5,7 @@ sidebar_label: Configuring Experiments
 keywords:
   - owner:vm
 last_update:
-  date: 2025-05-31
+  date: 2025-07-23
 ---
 
 Setting up an experiment is a core flow in Statsig. In Warehouse Native, there's two modes to setting up an experiment. In one, you'll connect to existing assignment data from your warehouse. In the other, you'll configure the experiment in Statsig, use the Statsig SDK, and then analyze the resulting exposures in your warehouse.
@@ -55,12 +55,18 @@ Statsig has many settings you can configure in your experiment. Defaults for the
 - Whether to apply [Sequential Testing](/experiments-plus/sequential-testing) adjustments
 - Allocation Duration
   - You can choose to stop enrolling new users into the experiment after X days
-  - Note that you need to set up [Persistent Assignment](/client/concepts/persistent_assignment) to retain already-enrolled users to stay in the same group
+  
+:::note
+You need to set up [Persistent Assignment](/client/concepts/persistent_assignment) to retain already-enrolled users to stay in the same group
+:::
 - Cohort Duration
   - You can choose to specify a timeline for collecting metric data
   - You can choose to only include units with a completed duration, so units with incomplete data will not be included in pulse
 - Whether to allow cohort metrics to mature after experiment end
-  - Note that once you configure this value, it will overwrite the choice for `only include units with a completed duration` (see above)
+  
+:::note
+Once you configure this value, it will overwrite the choice for `only include units with a completed duration` (see above)
+:::
 - [ID stitching](/statsig-warehouse-native/features/id-resolution)
 - Whether and how to apply [Bonferroni Correction](/stats-engine/methodologies/bonferroni-correction)
 - Default Confidence Intervals

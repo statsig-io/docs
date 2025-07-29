@@ -5,7 +5,7 @@ slug: /session-replay/configure
 keywords:
   - owner:akin
 last_update:
-  date: 2025-07-07
+  date: 2025-07-23
 ---
 
 # Configuration and Limits
@@ -61,7 +61,9 @@ Example Scenario:
 2. Later, a `purchase_event` occurs with value `book`. This event is set up as a conditional trigger with a 50% sampling rate. If this session fails the sampling rate check, recording does not start.
 3. A minute later, the user is exposed to the `cool_new_feature` gate, and the recording begins
 
-Note: A trigger’s sampling rate is consistent for the entire session based on session_id. So if `purchase_event` fails the sampling rate once, future occurrences of the same event in that session will also fail.
+:::note
+A trigger's sampling rate is consistent for the entire session based on session_id. So if `purchase_event` fails the sampling rate once, future occurrences of the same event in that session will also fail.
+:::l.
 
 ### Initialization - StatsigTriggeredSessionReplay
 

@@ -4,7 +4,7 @@ sidebar_label: Funnel++
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-21
+  date: 2025-07-28
 ---
 
 :::info
@@ -37,7 +37,9 @@ If using session funnels, those step flags are instead counts of unique sessions
 
 At the group level, the stepwise mean is calculated as the units for the next step divided by the units for the current step. The overall mean is calculated as the units/sessions that completed the funnel divided by the unit/sessions that started the funnel.
 
-Note that for each step, the _first_ occurrence after the previous step is treated as the canonical trigger and timestamp for that event going forward for subsequent timestamp comparisons.
+:::note
+For each step, the _first_ occurrence after the previous step is treated as the canonical trigger and timestamp for that event going forward for subsequent timestamp comparisons.
+:::
 
 This would look like the SQL below:
 
