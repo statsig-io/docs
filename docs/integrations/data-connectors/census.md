@@ -3,7 +3,7 @@ title: Census
 keywords:
   - owner:brock
 last_update:
-  date: 2025-03-31
+  date: 2025-07-23
 ---
 
 ## Overview
@@ -42,6 +42,8 @@ All other fields will be included in the `metadata` section of the mapped Statsi
 
 The Census integration allows the mapping of arbitrary fields to Statsig Custom IDs. To do this, visit the Census panel on the Statsig [Integrations](https://console.statsig.com/integrations) page and look for the "Map Identifier" section. Here you can choose fields you would like mapped to a Custom ID.
 
-Note: The input Event Field must match the exact spelling as in the original Census event.
+:::note
+The input Event Field must match the exact spelling as in the original Census event.
+:::
 
 ![](https://user-images.githubusercontent.com/95646168/213269548-e6457527-c938-44fd-9360-1f3fd7af2fac.png)

@@ -4,7 +4,7 @@ title: Get started with the Statsig SDK
 keywords:
   - owner:jinayoon
 last_update:
-  date: 2025-07-08
+  date: 2025-07-28
 ---
 
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
@@ -146,14 +146,20 @@ This quickstart will guide you through quickly installing the Statsig SDK in a c
     ```jsx
     window.Statsig.instance().checkGate("my_feature_gate_name");
     ```
-    Note: you'll want to wait for the SDK to initialize before checking a gate to ensure it has fresh values, one way to accomplish this is waiting for the ["values_updated"](/client/javascript-sdk#client-event-emitter) event.
+    
+    :::note
+    You'll want to wait for the SDK to initialize before checking a gate to ensure it has fresh values, one way to accomplish this is waiting for the ["values_updated"](/client/javascript-sdk#client-event-emitter) event.
+    :::
     </TabItem>
     <TabItem value="Get an Experiment Value">
     First, create an Experiment on the [Experiments page](https://console.statsig.com/experiments) in console
     ```jsx
     window.Statsig.instance().getExperiment("my_experiment_name").get('my_experiment_parameter_name');
     ```
-    Note: you'll want to wait for the SDK to initialize before getting an experiment to ensure it has fresh values, one way to accomplish this is waiting for the ["values_updated"](/client/javascript-sdk#client-event-emitter) event.
+    
+    :::note
+    You'll want to wait for the SDK to initialize before getting an experiment to ensure it has fresh values, one way to accomplish this is waiting for the ["values_updated"](/client/javascript-sdk#client-event-emitter) event.
+    :::
     </TabItem>
     <TabItem value="Log an Event">
     You can use Events to power metrics in your experiment or gates. Events don't need to be set up in console first, just add to your code:

@@ -5,7 +5,7 @@ slug: /pulse/custom-queries
 keywords:
   - owner:vm
 last_update:
-  date: 2025-06-12
+  date: 2025-07-23
 ---
 
 ## Custom "Explore" Queries
@@ -27,7 +27,9 @@ When viewing results for precomputed user dimensions (which are configured and r
 - This timing gap is most noticeable immediately after the first reload of the day
 - If you see "No dimensions available for this time range" for precomputed dimensions, wait a few minutes and refresh to see if dimensions have completed loading
 
-Note: This timing behavior only affects precomputed user dimensions that run on a schedule. User-triggered custom queries do not experience this asynchronous loading delay.
+:::note
+This timing behavior only affects precomputed user dimensions that run on a schedule. User-triggered custom queries do not experience this asynchronous loading delay.
+:::
 
 ### Running a Custom Query
 

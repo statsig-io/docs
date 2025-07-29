@@ -5,7 +5,7 @@ sidebar_label: Overview
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-21
+  date: 2025-07-23
 ---
 
 To run analysis on your warehouse, Statsig needs to connect to your warehouse via a service user. You control the access this user gets to your warehouse. In general, Statsig will require:
@@ -24,4 +24,6 @@ The following warehouses/tools are currently supported in Statsig Warehouse Nati
 - [Snowflake](../connecting-your-warehouse/snowflake.md)
 - [Athena](../connecting-your-warehouse/athena.md) (β - limited functionality)
 
-Note that Databricks is also an easy connector to use for generically connecting to existing datalakes.
+:::note
+Databricks is also an easy connector to use for generically connecting to existing datalakes.
+:::

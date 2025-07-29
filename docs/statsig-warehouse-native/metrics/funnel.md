@@ -4,7 +4,7 @@ sidebar_label: Funnel++
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-21
+  date: 2025-07-28
 ---
 
 :::info
@@ -37,7 +37,9 @@ If using session funnels, those step flags are instead counts of unique sessions
 
 At the group level, the stepwise mean is calculated as the units for the next step divided by the units for the current step. The overall mean is calculated as the units/sessions that completed the funnel divided by the unit/sessions that started the funnel.
 
-Note that for each step, the _first_ occurrence after the previous step is treated as the canonical trigger and timestamp for that event going forward for subsequent timestamp comparisons.
+:::note
+For each step, the _first_ occurrence after the previous step is treated as the canonical trigger and timestamp for that event going forward for subsequent timestamp comparisons.
+:::
 
 This would look like the SQL below:
 
@@ -89,7 +91,11 @@ Funnels in experiment-analysis order strictly. For example, in the funnel A->B->
 - Calculation window (optional)
   - How long a unit has to complete the funnel, once started, and if the funnel starts when the unit is exposed to the experiment or when they trigger the first event in the funnel
 - Treat Exposure as Initial Funnel Event
-  - With this setting enabled, the first step of the funnel is the exposure event of the experiment. This makes it easy to measure the conversion rate to the first event, and additionally normalizes the final outcome per experiment-user. Note that this is incompatible with session-based funnels.
+  - With this setting enabled, the first step of the funnel is the exposure event of the experiment. This makes it easy to measure the conversion rate to the first event, and additionally normalizes the final outcome per experiment-user.
+  
+:::note
+This is incompatible with session-based funnels.
+:::
 - Measure time to complete
   - Switches the funnel mode into measuring the average time for users to complete a funnel. This will create a ratio metric, where the numerator is the sum of funnel seconds-to-complete, and the denominator is the number of completed funnels. This can be useful in isolation, or when paired with a conversion measurement to understand the change to both completion rate and time to complete.
 

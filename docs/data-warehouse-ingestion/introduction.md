@@ -3,7 +3,7 @@ title: Data Warehouse Ingestion
 keywords:
   - owner:tim
 last_update:
-  date: 2025-07-16
+  date: 2025-07-23
 ---
 
 ![Slide 4_3 - 2](https://user-images.githubusercontent.com/108023879/187794828-333622ec-6db2-4936-987d-efbef4ba9a47.png)
@@ -73,7 +73,9 @@ We also support a user-triggered backfill. This could be useful if a specific me
 
 Reloading data and backfilling metrics and events is billed as any other [custom event](/metrics/raw-events#billing)
 
-Note: Auto-generated **User Accounting Metrics** are not supported today for data warehouse ingestions.
+:::note
+Auto-generated **User Accounting Metrics** are not supported today for data warehouse ingestions.
+:::
 
 ### API Triggered Ingestion (mark_data_ready)
 
@@ -94,7 +96,9 @@ Parameters:
 - datestamps: Refers to the date of the data being triggered.
 - type: `metrics` or `events`
 
-Note that this is rate limited to once every two hours, and there may be a few minutes delay after triggering before status updates while compute resources are created.
+:::note
+This is rate limited to once every two hours, and there may be a few minutes delay after triggering before status updates while compute resources are created.
+:::
 
 ### Frequently Asked Questions
 

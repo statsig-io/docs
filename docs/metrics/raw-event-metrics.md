@@ -5,7 +5,7 @@ slug: /metrics/metrics-from-events
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-05-23
+  date: 2025-07-23
 ---
 
 # Auto-generated Metrics
@@ -56,7 +56,9 @@ See [User Accounting Metrics](/metrics/user) for the full list of user accountin
 
 Note that Statsig's default day starts at GMT-8 (Pacific Standard Time), and does not follow daylight savings time. 
 
-Note: Auto-generated **User Accounting Metrics** are not supported today for data warehouse ingestions. 
+:::note
+Auto-generated **User Accounting Metrics** are not supported today for data warehouse ingestions.
+::: 
 
 ## Metrics Catalog
 
