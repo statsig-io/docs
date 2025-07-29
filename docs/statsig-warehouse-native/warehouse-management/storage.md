@@ -90,6 +90,6 @@ Warehouse Native uses several types of tables with different storage patterns:
 - **Results tables**: Output statistics from the pipeline, which are copied and cached locally on Statsig servers
 
 :::note
-Vacuum jobs do not affect staging tables used by Statsig
+Vacuum jobs do not affect staging tables used by Statsig.
 :::
 
