@@ -67,7 +67,7 @@ The other settings can use defaults, but you may want to tune them as well:
 - Attribution window: how long, after a user sees your variant, to count outcome events for. If set to 1 hour, a user has 1 hour to click after seeing our experience in the example above
 - Exploration rate: controls how much the bandit favors explore vs. exploit. 0 would not use confidence intervals at all and would just use the best prediction. 1 would use close to the 99.9% CI instead of the 95% CI for exploration
 - Long-term exploration allocation %: how much traffic will always get randomly assigned? Use higher values if you plan to run this contextual autotune for a long time to help avoid drift
-- Feature list: provide the list of features Statsig will use to train the model. This can also be fetched in code to understand what features a given contextual autotune requires for evaluation if you're fetching them on-demand
+- Feature list: provide a list of features Statsig should use to train the model. This is just a mask/filter, and if not set Statsig will read every custom attribute. The main use case is fetching this via CAPI to understand which features a given contextual autotune requires for evaluation when they're fetched on-demand (e.g. introducing latency)
 
 ![Setup](https://github.com/user-attachments/assets/8c87e142-247d-42b3-8baa-04f8967ae400)
 
