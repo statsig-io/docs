@@ -28,7 +28,7 @@ Our Contentful Marketplace App is publicly available. You can find it [here](htt
 
   ![image.png](https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/qQgXOng6fMO38nDCoRsE/80a564ad-22db-45aa-8caa-246512aad0ee.png)
 
-- Once your API Key is entered, hit 'Install to selected environments'. Your app should now be configured. Note that returning to this page later will only show the _obfuscated_ API Key.
+- Once your API Key is entered, hit 'Install to selected environments'. Your app should now be configured. Returning to this page later will only show the _obfuscated_ API Key.
 
 ### Setting up Statsig Variant Container
 
@@ -82,7 +82,10 @@ To run an experiment on your content, you can link a Statsig Experiment to it. H
 
 - Under the Statsig tab, enter the name of your experiment under the 'Entry Name' field. Add your control and treatment variations. In this example, we will add `component - Rich image` variations to experiment with.
 
-- When your experiment setup is finalized, hit 'Publish' on the new Statsig variant container entry. NOTE: ensure your experiment setup is finalized before publishing, as this will create your experiment inside of Statsig.
+- When your experiment setup is finalized, hit 'Publish' on the new Statsig variant container entry.
+  :::note
+  Ensure your experiment setup is finalized before publishing, as this will create your experiment inside of Statsig.
+  :::
 
   ![image.png](https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/qQgXOng6fMO38nDCoRsE/872643fb-9782-4728-96ca-362375323cfa.png)
 
