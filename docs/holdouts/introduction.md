@@ -48,7 +48,8 @@ In the example below, the 1% Holdout is comparing the metric values of the 1% Ho
 By default, holdouts are based on User ID.  To use a different ID type, select it from the drop down menu during the holdout creation.  
 
 :::note
-Holdouts can only be applied to Experiments and Feature Gates that use the same randomization unit.  If a team plans to run experiments on both User ID and Stable ID, two separate holdouts are required to evaluate the cumulative impact of each type of experiment.
+Holdouts can only be applied to Experiments and Feature Gates that use the same randomization unit. 
+If a team plans to run experiments on both User ID and Stable ID, two separate holdouts are required to evaluate the cumulative impact of each type of experiment.
 :::
 
 ![image](https://github.com/user-attachments/assets/cb2125f0-7fe2-4fbe-b6a3-3405dc300715)
