@@ -7,7 +7,7 @@ slug: /product-analytics/drilldown
 keywords:
   - owner:akin
 last_update:
-  date: 2025-07-13
+  date: 2025-07-23
 ---
 
 # Metric Drilldown

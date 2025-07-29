@@ -5,7 +5,7 @@ slug: /release-pipeline/actions
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-06-10
+  date: 2025-07-23
 ---
 
 # Managing Release Actions

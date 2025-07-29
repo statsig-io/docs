@@ -5,7 +5,7 @@ slug: /stats-engine/methodologies/one-sided-test-whn
 keywords:
   - owner:vm
 last_update:
-  date: 2025-05-07
+  date: 2025-07-23
 ---
 
 

@@ -5,7 +5,7 @@ slug: /safeguards/overview
 keywords:
   - owner:Shubham
 last_update:
-  date: 2025-06-06
+  date: 2025-07-29
 ---
 
 Safeguards help you ship with confidence by continuously monitoring critical metrics and automatically intervening in your Feature Gate rollouts when risk thresholds are exceeded. This ensures faster recovery from issues, eliminates the need for constant manual checks, and protects your users from unintended impact.

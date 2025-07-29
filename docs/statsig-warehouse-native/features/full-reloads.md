@@ -5,7 +5,7 @@ sidebar: Full Reloads
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-21
+  date: 2025-07-23
 ---
 
 Full reloads will completely wipe the Staging/Results Datasets Statsig has used for previous pulse calculations, and Statsig will recalculate results from scratch.

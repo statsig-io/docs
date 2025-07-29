@@ -6,7 +6,7 @@ description: Data Freshness
 keywords:
   - owner:vm
 last_update:
-  date: 2025-05-07
+  date: 2025-07-23
 ---
 
 ## Exposures from Statsig SDKs
