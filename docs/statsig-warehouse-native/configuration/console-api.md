@@ -5,7 +5,7 @@ sidebar_label: WHN Console API
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-21
+  date: 2025-07-23
 ---
 
 Statsig's console API allows you to programmatically perform CRUD operations on all of the configuration objects above. This means you can do bulk, programmatic edits, or use the API to sync your definitions into Statsig as a triggered or scheduled job.

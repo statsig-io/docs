@@ -27,6 +27,8 @@ The shared instance functionality provides a singleton pattern where a single St
 - `Statsig.hasShared()`: Checks if a shared instance exists (useful when you aren't sure if the shared instance is ready yet)
 - `Statsig.removeSharedInstance()`: Removes the shared instance (useful when you want to switch to a new shared instance)
 
-Note that `hasShared()` and `removeSharedInstance()` are helpful in specific scenarios but aren't required in most use cases where the shared instance is set up near the top of your application.
+:::note
+`hasShared()` and `removeSharedInstance()` are helpful in specific scenarios but aren't required in most use cases where the shared instance is set up near the top of your application.
 
-Also note that only one shared instance can exist at a time. Attempting to create a second shared instance will result in an error.
+Only one shared instance can exist at a time. Attempting to create a second shared instance will result in an error.
+:::

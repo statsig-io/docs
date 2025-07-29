@@ -18,7 +18,9 @@ There are three different ways to check a gate using hooks:
 - `useGateValue` is a convenience hook that returns the boolean value and is the most basic way to check if a gate is enabled.
 - `useFeatureGate` returns the `FeatureGate` object, if you need to check more information about the gate.
 
-Note: `useGateValue` and `useFeatureGate` will log an exposure on render. `useStatsigClient.checkGate` will log an exposure when the function is called.
+:::note
+`useGateValue` and `useFeatureGate` will log an exposure on render. `useStatsigClient.checkGate` will log an exposure when the function is called.
+:::
 
 <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-precomp-gate-hooks.tsx" />
 
@@ -28,7 +30,9 @@ Note: `useGateValue` and `useFeatureGate` will log an exposure on render. `useSt
 - (recommended): `useStatsigClient.getDynamicConfig` will trigger an exposure only when called
 - `useDynamicConfig` returns a DynamicConfig object and logs an exposure on render
 
-Note: `useDynamicConfig` will log an exposure on render. `useStatsigClient.getDynamicConfig` will log an exposure when the function is called.
+:::note
+`useDynamicConfig` will log an exposure on render. `useStatsigClient.getDynamicConfig` will log an exposure when the function is called.
+:::
 
 <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-precomp-dc-hooks.tsx" />
 
@@ -91,5 +95,7 @@ To make setup easier, there are a few different hooks provided. These should be 
 - `useClientBootstrapInit` - Returns a client loaded with the values provided to through the hook. 
 Values can be generated through the use of a Statsig server SDK.
 
-**Note**: You do not need to use the provided hooks to initialize a `StatsigClient`, and instead can opt to write you own initialization logic. See [Initialization Strategies](/client/javascript-sdk/init-strategies/).
+:::note
+You do not need to use the provided hooks to initialize a `StatsigClient`, and instead can opt to write you own initialization logic. See [Initialization Strategies](/client/javascript-sdk/init-strategies/).
+:::
 

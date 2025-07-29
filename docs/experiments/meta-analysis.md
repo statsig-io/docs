@@ -5,7 +5,7 @@ slug: /experimentation/meta-analysis
 keywords:
   - owner:vm
 last_update:
-  date: 2025-05-15
+  date: 2025-07-23
 ---
 
 ## The Concept

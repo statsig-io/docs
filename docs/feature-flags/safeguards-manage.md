@@ -5,7 +5,7 @@ slug: /safeguards/manage
 keywords:
   - owner:Shubham
 last_update:
-  date: 2025-06-06
+  date: 2025-07-23
 ---
 
 ## View a Safeguard

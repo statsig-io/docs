@@ -6,7 +6,7 @@ displayed_sidebar: cloud
 keywords:
   - owner:brock
 last_update:
-  date: 2025-03-21
+  date: 2025-07-23
 ---
 
 To implement feature flags in an Android app using the Statsig SDK, follow these steps, including creating a basic "Hello World" Android app, integrating Statsig, and managing feature flags in the Statsig console.

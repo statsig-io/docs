@@ -5,7 +5,7 @@ slug: /stats-engine/metric-deltas
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-21
+  date: 2025-07-23
 ---
 
 ## Computing Metric Deltas
@@ -51,7 +51,9 @@ where:
 - $n_i$ is the number of days during the analysis period that user $i$ was the experiment
 - $X_{i,d}$ is the metric value for user $i$ on day $d$  
 
-Note that only user metrics recorded after a user has been exposed to the experiment are included in the group mean.
+:::note
+Only user metrics recorded after a user has been exposed to the experiment are included in the group mean.
+:::
 
 ###  User Accounting and Event User Metrics (and legacy Event DAU)
 
@@ -106,4 +108,4 @@ $$
 where:
 
 - $N$ is the number of users in the group
-- $X_{i}$ takes value 0 or 1 depending on if user $i$ has the event at any point after entering the experiment 
+- $X_{i}$ takes value 0 or 1 depending on if user $i$ has the event at any point after entering the experiment  
