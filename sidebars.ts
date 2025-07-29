@@ -126,7 +126,7 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: "category",
-          label: "Feature Experimentation",
+          label: "Feature Management",
           className: "feature-icon sidebar-icon",
           items: [
             {
