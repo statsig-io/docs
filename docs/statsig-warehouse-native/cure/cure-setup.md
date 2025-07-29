@@ -5,7 +5,7 @@ slug: /experiments-plus/cure-setup
 keywords:
   - owner:craig
 last_update:
-  date: 2025-06-19
+  date: 2025-07-23
 ---
 
 ## Defaults

@@ -5,7 +5,7 @@ slug: /stats-engine/methodologies/srm-checks
 keywords:
   - owner:vm
 last_update:
-  date: 2025-05-09
+  date: 2025-07-23
 ---
 
 ## SRM - Sample Ratio Mismatch

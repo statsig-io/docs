@@ -4,7 +4,7 @@ slug: /compliance/user_data_deletion_requests
 keywords:
   - owner:tim
 last_update:
-  date: 2025-03-21
+  date: 2025-07-23
 ---
 
 :::info

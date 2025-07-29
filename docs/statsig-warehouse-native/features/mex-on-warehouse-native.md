@@ -5,7 +5,7 @@ sidebar_label: Metrics Explorer on WHN
 keywords:
   - owner:vm
 last_update:
-  date: 2025-05-07
+  date: 2025-07-23
 ---
 
 [Metrics Explorer](/product-analytics/overview) (or MEX) is Statsig's Analytics solution. With Warehouse Native, this integrates directly on top of your tables to provide easy analysis on the same datasets you're using for experimentation.

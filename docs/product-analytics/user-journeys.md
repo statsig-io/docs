@@ -7,7 +7,7 @@ slug: /product-analytics/user-journeys
 keywords:
   - owner:akin
 last_update:
-  date: 2025-03-21
+  date: 2025-07-23
 ---
 
 # User Journeys

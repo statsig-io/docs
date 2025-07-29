@@ -5,7 +5,7 @@ slug: /experiments-plus/overrides
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-21
+  date: 2025-07-23
 ---
 
 ## Override group allocation for an Experiment

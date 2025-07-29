@@ -5,7 +5,7 @@ slug: /dynamic-config
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-05-08
+  date: 2025-07-23
 ---
 
 ## What is a Dynamic Config?

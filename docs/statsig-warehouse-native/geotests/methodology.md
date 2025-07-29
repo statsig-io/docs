@@ -5,7 +5,7 @@ slug: /experiments-plus/geotests/methodology
 keywords:
   - owner:makris
 last_update:
-  date: 2025-04-17
+  date: 2025-07-23
 ---
 
 # Geotesting Methodology

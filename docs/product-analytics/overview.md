@@ -7,7 +7,7 @@ slug: /product-analytics/overview
 keywords:
   - owner:akin
 last_update:
-  date: 2025-03-21
+  date: 2025-07-23
 ---
 
 # Product Analytics Overview

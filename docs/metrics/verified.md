@@ -5,7 +5,7 @@ slug: /metrics/verified
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-03-21
+  date: 2025-07-23
 ---
 
 Verified metrics are a way to identify metrics that are curated by your company and known to be trustworthy. When users set up experiments and search for metrics, they'll see a verified icon next to verified metrics.
