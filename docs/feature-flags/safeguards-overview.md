@@ -14,10 +14,6 @@ Safeguards help you ship with confidence by continuously monitoring critical met
 Safeguards is currently in open beta and is available on our Pro and Enterprise billing tiers. Please reach out to us if you have questions or feedback.
 :::
 
-:::info
-Safeguards is only available on Cloud right now. We are actively working on the WHN version and will be announcing it in the next few weeks! Reach out to us over Slack if you'll be interested in the WHN version!
-:::
-
 ## When to use Safeguards
 Use Safeguards when you want to:
 - Limit the impact of a feature on a critical business or performance metrics
