@@ -960,6 +960,11 @@ const sidebars: SidebarsConfig = {
               id: "server/dotnetSDK",
             },
             {
+              className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server/dotnetCoreSDK",
+            },
+            {
               className: "cpp-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
               id: "server/cppSDK",

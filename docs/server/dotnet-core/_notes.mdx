@@ -1,0 +1,80 @@
+## Performance Benefits
+
+The .NET Core SDK leverages Statsig's high-performance Rust evaluation engine through FFI bindings, providing:
+
+- **Sub-millisecond evaluation times** for feature gates and experiments
+- **Memory-efficient** configuration caching and user context handling
+- **Concurrent evaluation** support for high-throughput applications
+- **Optimized network communication** with automatic retry logic and compression
+
+## FFI Architecture
+
+The SDK uses Foreign Function Interface (FFI) to communicate with the Rust core:
+
+- Native Rust evaluation engine handles all rule processing
+- .NET wrapper provides familiar C# APIs and type safety
+- Automatic memory management between .NET and Rust boundaries
+- Thread-safe operations across the FFI boundary
+
+## Async/Await Support
+
+All network operations are fully async:
+
+```csharp
+await statsig.Initialize();
+await statsig.FlushEvents();
+await statsig.Shutdown();
+```
+
+Evaluation methods are synchronous for optimal performance:
+
+```csharp
+var result = statsig.CheckGate(user, "gate_name");
+```
+
+## Resource Management
+
+The SDK implements `IDisposable` for proper resource cleanup:
+
+```csharp
+using var statsig = new Statsig("server-secret-key");
+await statsig.Initialize();
+```
+
+Always dispose of Statsig instances to free native resources.
+
+## Thread Safety
+
+The Statsig instance is thread-safe and can be used concurrently across multiple threads. Consider using the shared instance pattern for application-wide usage:
+
+```csharp
+var sharedStatsig = Statsig.NewShared("server-secret-key");
+await sharedStatsig.Initialize();
+
+var statsig = Statsig.Shared();
+```
+
+## Error Handling
+
+The SDK handles network errors gracefully:
+
+- Automatic retries with exponential backoff
+- Fallback to cached configurations during network issues
+- Default values returned when evaluations fail
+- Comprehensive logging for debugging
+
+## Migration from Legacy .NET SDK
+
+Key differences from the legacy .NET SDK:
+
+- **Instance-based API** instead of static methods (`new Statsig()` vs `StatsigServer.Initialize()`)
+- **Builder pattern** for user creation (`StatsigUserBuilder` vs direct object construction)
+- **Enhanced type safety** with generic `Get<T>()` methods
+- **Additional data types** like `ParameterStore` and `Layer`
+- **Performance improvements** through Rust core integration
+
+## Requirements
+
+- **.NET 6.0** or later
+- **Windows, macOS, or Linux** (x64 and ARM64 supported)
+- **Network access** to Statsig APIs (configurable endpoints)
