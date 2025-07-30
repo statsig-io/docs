@@ -982,6 +982,11 @@ const sidebars: SidebarsConfig = {
               id: "server-core/php-core",
             },
             {
+              className: "golang-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server-core/go-core",
+            },
+            {
               className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
               id: "server/dotnetSDK",
