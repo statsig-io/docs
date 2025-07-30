@@ -1,0 +1,21 @@
+```go
+import (
+    statsig "github.com/statsig-io/private-statsig-server-core/statsig-go"
+)
+			
+
+s, err := statsig.NewStatsig("secret-key", options)
+options = *statsig.NewStatsig().WithOutputLogLevel("DEBUG").Build()
+
+s.Initialize()
+
+
+// Or if you want to initialize with more details
+
+s, err := statsig.NewStatsig("secret-key", options)
+options = *statsig.NewStatsig().WithOutputLogLevel("DEBUG").Build()
+
+details, err := s.InitializeWithDetails()
+
+
+```
