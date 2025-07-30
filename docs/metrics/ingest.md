@@ -9,7 +9,7 @@ last_update:
 ---
 ## Ingesting Precomputed [Metrics](/metrics)
 
-Statsig can ingest your precomputed product and business metrics using our data warehouse connector (Metrics Imports).  Integrations like [Snowflake](/integrations/data-imports/snowflake), [BigQuery](/integrations/data-imports/bigquery) and [Redshift](/integrations/data-imports/redshift) are supported.
+Statsig can ingest your precomputed product and business metrics using our data warehouse connector (Metrics Imports).  Integrations like [Snowflake](data-warehouse-ingestion/snowflake), [BigQuery](/data-warehouse-ingestion/bigquery/) and [Redshift](/data-warehouse-ingestion/redshift/) and [more](/data-warehouse-ingestion/introduction) are supported.
 
 Statsig does not automatically process these metrics until you mark them as ready, as it's possible you might land data out of order. Once you are finished loading data for a period, you mark the data as ready by hitting the `mark_data_ready` API:
 
