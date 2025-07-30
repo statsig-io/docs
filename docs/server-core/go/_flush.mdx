@@ -3,10 +3,6 @@
 func (s *Statsig) FlushEvents() {}
 
 // example usage
-import (
-    statsig "github.com/statsig-io/private-statsig-server-core/statsig-go"
-)
-
 s, err := statsig.NewStatsig("secret-key", nil)
 s.FlushEvents()
 ```

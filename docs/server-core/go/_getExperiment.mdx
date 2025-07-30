@@ -1,13 +1,8 @@
 ```go
-import (
-    statsig "github.com/statsig-io/private-statsig-server-core/statsig-go/src"
-)
-
 user := statsig.NewStatsigUserBuilder().WithUserID("a-user").Build()
 
 experimentOptions := &statsig.GetExperimentOptions{DisableExposureLogging: false}
 
 experimentName := "a_test_experiment"
 experiment := s.GetExperiment(*user, experimentName, experimentOptions)
-
 ```

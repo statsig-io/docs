@@ -1,8 +1,4 @@
 ```go
-import (
-    statsig "github.com/statsig-io/private-statsig-server-core/statsig-go/src"
-)
-
 user := statsig.NewStatsigUserBuilder().WithUserID("a-user").Build()
 
 dynamicConfigOptions := &statsig.GetDynamicConfigOptions{DisableExposureLogging: false}
