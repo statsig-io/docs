@@ -1,0 +1,16 @@
+```go 
+import (
+    statsig "github.com/statsig-io/private-statsig-server-core/statsig-go/src"
+)
+
+s, err := statsig.NewStatsig("secret-key", options)
+options = *statsig.NewStatsig().WithOutputLogLevel("DEBUG").Build()
+
+user := statsig.User{UserID: "some_user_id"}
+
+
+s.ManuallyLogGateExposure(*user, "gate_name")
+s.ManuallyLogDynamicConfigExposure(*user, "config_name")
+s.ManuallyLogExperimentExposure(*user, "experiment_name")
+s.ManuallyLogLayerParameterExposure(*user, "layer_name", "parameter_name")
+```

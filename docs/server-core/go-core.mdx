@@ -22,11 +22,11 @@ import {
   ManualExposures,
   Shutdown,
   Reference,
+  LocalOverrides,
   PersistentStorage,
   DataStore,
   OutputLogger,
   ObservabilityClient,
-  CustomAdapters
 } from "./Templates/index.mdx";
 
 import Preamble from "./_preamble.mdx";
@@ -71,10 +71,11 @@ export const Builder = SDKDocsBuilder({
         paramStores: <ParamStores />,
       },
     ],
+    [ManualExposures, { }],
     [StatsigUser, { }],
     [StatsigOptions, { options: <Options /> }],
-    [CustomAdapters, { }],
     [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
+    [LocalOverrides, { }],
     [PersistentStorage, { }],
     [DataStore, { }],
     [OutputLogger, { }],
