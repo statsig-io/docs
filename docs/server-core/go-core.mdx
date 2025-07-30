@@ -41,8 +41,8 @@ import LogEvent from "./go/_logEvent.mdx";
 import Options from "./go/_options.mdx";
 import ShutdownSnippet from "./go/_shutdown.mdx";
 import Flush from "./go/_flush.mdx";
-import LocalOverrides from "./go/_localOverrides.mdx";
-import ManualExposures from "./go/_manualExposures.mdx";
+import LocalOverridesSnippet from "./go/_localOverrides.mdx";
+import ManualExposuresSnippet from "./go/_manualExposures.mdx";
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -73,11 +73,11 @@ export const Builder = SDKDocsBuilder({
         paramStores: <ParamStores />,
       },
     ],
-    [ManualExposures, { manualExposures: <ManualExposures /> }],
+    [ManualExposures, { manualExposures: <ManualExposureSnippet /> }],
     [StatsigUser, { }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
-    [LocalOverrides, { localOverrides: <LocalOverrides /> }],
+    [LocalOverrides, { localOverrides: <LocalOverridesSnippet /> }],
     [PersistentStorage, { }],
     [DataStore, { }],
     [OutputLogger, { }],
