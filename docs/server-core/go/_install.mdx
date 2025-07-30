@@ -1,7 +1,7 @@
 via the `go get` CLI:
 
 ```
-go get github.com/statsig-io/private-statsig-server-core/statsig-go@latest
+go get github.com/statsig-io/statsig-server-core/statsig-go@latest
 ```
 
 Or, add a dependency on the most recent version of the SDK in go.mod:
@@ -17,7 +17,26 @@ See the [Releases tab in GitHub](https://github.com/statsig-io/go-sdk/releases) 
 Run the following commands to install the necessary binaries and set environment variables:
 
 ```
-go run github.com/statsig-io/private-statsig-server-core/statsig-go
-source /Users/REPLACE THIS WITH HOME DIR INSTRUCTIONS/.statsig_env
+go install github.com/statsig-io/statsig-server-core/statsig-go/cmd/post-install@latest
+post-install
 ```
+
+:::note 
+You may run into an error with running post-install. Run the following commands so the shell is able to find the post-install excecutable: 
+
+```
+export PATH="$PATH:$(go env GOPATH)/bin"
+source ~/.zshrc
+```
+
+And then try running post-install again.
+
+The system should prompt you to set the environment variables using a statsig.env file that was generated during the post-install script.
+Follow the instructions to set the environment variables.
+
+```
+source /Users/home-dir/.statsig_env
+```
+
+
 
