@@ -1,0 +1,9 @@
+```go
+user := statsig.NewStatsigUserBuilder().WithUserID("a-user").Build()
+
+experimentOptions := &statsig.GetExperimentOptions{DisableExposureLogging: false}
+
+experimentName := "a_test_experiment"
+experiment := s.GetExperiment(*user, experimentName, experimentOptions)
+
+```
