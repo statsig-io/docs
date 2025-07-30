@@ -13,7 +13,7 @@ statsig.shutdown().wait()
 
 ### ⚠️ Warning: Process Forking and WSGI Servers
 
-**Important:** Never fork processes after calling `statsig.initialize()`. Doing so will put Statsig in a weird state and may cause deadlocks.
+**Important:** Never fork processes after calling `statsig.initialize()`. Doing so will put Statsig in an undefined state and may cause deadlock.
 
 The Python Core SDK uses internal threading and async runtime components that do not work correctly when copied across process boundaries. When a process forks after initialization, these components can become corrupted, leading to:
 
@@ -71,9 +71,9 @@ processes = 4
 def post_fork(server, worker):
     # Initialize Statsig after worker process is forked
     from app import init_statsig
-    init_statsig()
+    init_statsig() # as defined above
 
-# app.py - same as uWSGI example above
+# ...app.py
 ```
 
 ```bash
