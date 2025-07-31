@@ -13,7 +13,7 @@ last_update:
 Sometimes you just can't run an A/B test at a per-user level. Some common causes are:
 
 - You don't have per-user control over who sees what, e.g. a third-party marketing platform like Meta or Google Ads.
-- You can't attribute metrics to individuals, e.g. total store foot traffic can't be tied to which users recieved your email campaign.
+- You can't attribute metrics to individuals, e.g. total store foot traffic can't be tied to which users received your email campaign.
 
 Geotests help solve these problems. One of the most common use cases is marketing; you can't A/B test on 3rd party ad platforms, but geo-testing lets you evaluate the incrementality of your program.
 
