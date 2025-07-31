@@ -126,7 +126,7 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: "category",
-          label: "Feature Experimentation",
+          label: "Feature Management",
           className: "feature-icon sidebar-icon",
           items: [
             {
@@ -439,7 +439,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "aiconfigs/ai-configs",
+          id: "prompts/prompts",
           className: "ai-icon-2 sidebar-icon",
         },
       ],
