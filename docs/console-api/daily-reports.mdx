@@ -30,7 +30,7 @@ import Rapidoc from "../../src/components/Rapidoc";
 | unit_type               | string    | Refers to the unit type used in the experiment                                                |
 | exposure_type           | string    | Statsig Product used: "check_gate" for Feature Gates, and "get_experiment" for experiments    |
 | name                    | string    | The name of the gate/experiment                                                               |
-| rule                    | string    | rule id for gates; 'experiment' for experiments                                          |
+| rule                    | string    | rule id for gates; 'experiment' for experiments                                               |
 | experiment_group        | string    | The group the user was assigned to                                                            |
 | first_exposure_utc      | timestamp | The UTC timestamp when the user was first assigned to the experiment                          |
 | first_exposure_pst_date | date      | The date in PST when the user was first assigned to the experiment                            |
@@ -143,7 +143,7 @@ CREATE OR REPLACE TABLE <DATABASE>.<SCHEMA>.<TABLE> (
 | control_group       | STRING, baseline comparison group                                                                  |
 | metric_name         | STRING, the name of the metric                                                                     |
 | metric_type         | STRING, the type of the metric, e.g. ratio                                                         |
-| total_calculation   | STRING, 'SUM' or 'RATIO' depens on the aggregation type of the backedn topline impact calculation  |
+| total_calculation   | STRING, 'SUM' or 'RATIO' depens on the aggregation type of the backend topline impact calculation  |
 | lift_abs            | DOUBLE, the absolute lift of the topline impact                                                    |
 | lift_var_abs        | DOUBLE, the variance of the absolute lift of topline impact                                        |
 | lift_rel            | DOUBLE, the relative lift of the topline impact                                                    |
