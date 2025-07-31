@@ -11,15 +11,25 @@ last_update:
 # Get Started with Geotests
 
 This guide walks you through creating a Geotest experiment using Statsig. The steps include:
-1. Create and Configure
-2. Evaluate Design Options
-3. Run Analysis
+1. Define your Geo Types
+2. Configure your Metric Source
+3. Create and Configure
+4. Evaluate Design Options
+5. Run Analysis
 
-:::tip
+## Define your Geo Types
 
-Geotests is currently in Alpha release. Statsig is actively interested in working with customers to understand your use-case and make improvements. Please reach out if you're interested in using Geotesting capabilities.
+First decide on one more geo types relevant to your business. Some of the most common are Postal Codes and DMAs (Designated Market Areas), but Statsig allows you to define any arbitrary geo type you'd like.
 
-:::
+<img width="1081" height="518" alt="Screenshot 2025-07-31 at 11 44 48 AM" src="https://github.com/user-attachments/assets/c2e199ba-a8be-45f4-aa36-60156bb8b0a1" />
+
+
+## Configure your Metric Source
+
+Assuming you've already added a [metric source](/statsig-warehouse-native/configuration/metric-sources/) to Statsig, you can next indicate which column(s) represent the geo type(s) you've created.
+
+<img width="857" height="162" alt="Screenshot 2025-07-31 at 11 45 08 AM" src="https://github.com/user-attachments/assets/fee92492-fffa-4e63-a181-e59e4fd69c8d" />
+
 
 ## Create and Configure
 
