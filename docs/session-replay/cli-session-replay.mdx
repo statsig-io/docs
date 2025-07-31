@@ -68,6 +68,7 @@ const client = new StatsigClient(
   'your-client-key',
   { userID: 'user-123' },
   {
+    loggingEnabled: 'always', // Required for CLI environments
     plugins: [new StatsigCliSessionReplayPlugin()],
   }
 );
@@ -80,6 +81,10 @@ await client.initializeAsync();
 // Your CLI application logic here
 console.log('Continue');
 ```
+
+:::note CLI Logging Requirement
+CLI applications must set `loggingEnabled: 'always'` when initializing the StatsigClient. By default, Statsig only enables logging in browser environments, but CLI session replay requires logging to be enabled in all environments to capture and send session data.
+:::
 
 ## Configuration Options
 
