@@ -68,7 +68,7 @@ const client = new StatsigClient(
   'your-client-key',
   { userID: 'user-123' },
   {
-    loggingEnabled: 'always', // Required for CLI environments to enable session replay logging
+    loggingEnabled: 'always', // Required for CLI environments
     plugins: [new StatsigCliSessionReplayPlugin()],
   }
 );
