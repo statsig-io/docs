@@ -78,7 +78,11 @@ Statsig offers over 20 client and server-side SDKs. Check out the full list of [
 
 ### Kill switches
 
-You can set up a simple "kill switch" by first setting an `Everyone` criteria's Pass percentage to 100%. Then, if you need to completely disable the feature for all users at some point after code deployment, you can set the Pass percentage to 0%, effectively killing the feature for all users.
+You can set up kill switches in two ways:
+
+**Manual kill switch**: Set an `Everyone` criteria's Pass percentage to 100%. Then, if you need to completely disable the feature for all users at some point after code deployment, you can manually set the Pass percentage to 0%, effectively killing the feature for all users.
+
+**Automated kill switch with Safeguards**: Use [Safeguards](/safeguards/overview) to automatically roll back your feature gate to 0% when critical metrics breach thresholds. This provides faster recovery from issues without requiring manual intervention. See [Create a Safeguard](/safeguards/create) for setup instructions.
 
 ### OS-based flags
 

@@ -19,6 +19,7 @@ Use Safeguards when you want to:
 - Limit the impact of a feature on a critical business or performance metrics
 - Automate rollout progression to more users based on how your metrics are performing
 - Maintain system stability by automatically responding to API errors, latency spikes, or infrastructure issues
+- Create automated [kill switches](/feature-flags/create/#kill-switches) that respond faster than manual intervention
 
 ## How Safeguards work
 Safeguards work by listening to different types of alerts, such as Rollout Alerts and Topline Alerts, that you have created in your project. When any alert fires due to metric regressions, Safeguards automatically pause your rollout, rolls it back, or finish a rollout based on your settings.
