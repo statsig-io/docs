@@ -5,7 +5,7 @@ slug: /release-pipeline/actions
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-07-23
+  date: 2025-07-29
 ---
 
 # Managing Release Actions
@@ -24,6 +24,11 @@ Kick off a phase that requires a manual approval before rollout begins. This is 
 3. Go to the Release Pipeline status page
 4. Click the ⋯ menu and select 'Approve'
 5. Confirm the action — the next phase will begin rolling out
+
+**Permission Requirements:**
+To approve a release pipeline phase, users must have the "Approve Required Review Release Pipeline Phase" permission. This permission can be configured in **Settings** > **Roles** > **Role settings**.
+
+![Permission settings for release pipeline approval](/img/release-pipeline/permission-settings.png)
 
 ### Pause
 **What it does:**
