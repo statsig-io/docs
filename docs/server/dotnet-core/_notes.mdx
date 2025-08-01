@@ -32,17 +32,6 @@ Evaluation methods are synchronous for optimal performance:
 var result = statsig.CheckGate(user, "gate_name");
 ```
 
-## Resource Management
-
-The SDK implements `IDisposable` for proper resource cleanup:
-
-```csharp
-using var statsig = new Statsig("server-secret-key");
-await statsig.Initialize();
-```
-
-Always dispose of Statsig instances to free native resources.
-
 ## Thread Safety
 
 The Statsig instance is thread-safe and can be used concurrently across multiple threads. Consider using the shared instance pattern for application-wide usage:
