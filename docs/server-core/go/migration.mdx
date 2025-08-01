@@ -4,7 +4,7 @@ sidebar_label: Migration Guide
 keywords:
   - owner:brock
 last_update:
-  date: 2025-07-31
+  date: 2025-08-01
 ---
 
 import Tabs from "@theme/Tabs";
@@ -91,6 +91,7 @@ source /Users/home-dir/.statsig_env
 | Main Package | `statsig` | `statsig` |
 | Initialization | Static `statsig.Initialize()` | Instance-based `statsig.Initialize()` |
 | Options | `&Options{}` | `statsig.NewStatsigOptionsBuilder().With*().Build()` |
+| User Creation | `statsig.User{}` | `statsig.NewStatsigUserBuilder().With*().Build()` |
 
 ### Initialization
 
@@ -181,10 +182,10 @@ import (
     statsig "github.com/statsig-io/statsig-server-core/statsig-go/src"
 )
 
-user := statsig.StatsigUser{
-    UserID: "123",
-    Email: "test@example.com",
-}
+user := statsig.NewStatsigUserBuilder().
+    WithUserID("123").
+    WithEmail("test@example.com").
+    Build()
 
 // Check if a gate is enabled
 enabled := s.CheckGate(user, "my_gate")
@@ -227,14 +228,13 @@ import (
     statsig "github.com/statsig-io/statsig-server-core/statsig-go/src"
 )
 
-user := statsig.StatsigUser{
-    UserID: "123",
-    Email: "test@example.com",
-}
+user := statsig.NewStatsigUserBuilder().
+    WithUserID("123").
+    WithEmail("test@example.com").
+    Build()
 
 // Get a dynamic config
 config := s.GetDynamicConfig(user, "my_config")
-value := config.Get("key", "default_value")
 ```
 
   </TabItem>
@@ -263,7 +263,6 @@ user := statsig.User{
 
 // Get an experiment
 experiment := statsig.GetExperiment(user, "my_experiment")
-value := experiment.Get("key", "default_value")
 ```
 
   </TabItem>
@@ -274,14 +273,13 @@ import (
     statsig "github.com/statsig-io/statsig-server-core/statsig-go/src"
 )
 
-user := statsig.StatsigUser{
-    UserID: "123",
-    Email: "test@example.com",
-}
+user := statsig.NewStatsigUserBuilder().
+    WithUserID("123").
+    WithEmail("test@example.com").
+    Build()
 
 // Get an experiment
 experiment := s.GetExperiment(user, "my_experiment")
-value := experiment.Get("key", "default_value")
 ```
 
   </TabItem>
@@ -320,10 +318,10 @@ import (
     statsig "github.com/statsig-io/statsig-server-core/statsig-go/src"
 )
 
-user := statsig.StatsigUser{
-    UserID: "123",
-    Email: "test@example.com",
-}
+user := statsig.NewStatsigUserBuilder().
+    WithUserID("123").
+    WithEmail("test@example.com").
+    Build()
 
 // Log an event
 s.LogEvent(user, "button_clicked", "button_id", "submit")
@@ -336,25 +334,22 @@ s.LogEvent(user, "button_clicked", "button_id", "submit")
 
 1. **Update Dependencies**: Change from `github.com/statsig-io/go-sdk` to `github.com/statsig-io/statsig-server-core/statsig-go`
 
-2. **Run Post-Install**: Execute the post-install script to set up environment variables
+2. **Run Post-Install**: Execute the post-install script to set up environment variables and pull down the latest version of the Rust core library.
 
-3. **Update Imports**: Change your import statement to use the new package
+3. **Update Initialization**:
+   - `statsig.Initialize()` → `statsig.NewStatsig().Initialize()`
+   - Use the builder pattern to create user and options
+   - Replace statsig.User{} with statsig.NewStatsigUserBuilder().With*().Build()
+   - Initialize with statsig.NewStatsig() and call Initialize()
 
-4. **Convert to Instance-Based API**: Replace static method calls with instance method calls
+4. **Test Thoroughly**: 
+   - Verify all feature gates, experiments, and configs work as expected
+   - Check that event logging is functioning correctly
 
-5. **Update User Type**: Change from `statsig.User` to `statsig.StatsigUser`
-
-6. **Update Method Names**: 
-   - `statsig.CheckGate()` → `s.CheckGate()`
-   - `statsig.GetConfig()` → `s.GetDynamicConfig()`
-   - `statsig.GetExperiment()` → `s.GetExperiment()`
-   - `statsig.LogEvent()` → `s.LogEvent()`
 
 ## New Features Available in Go Core
 
 - **Parameter Stores**: Access to dynamic parameter management
-- **CMAB (Contextual Multi-Armed Bandits)**: Advanced experimentation capabilities
-- **Observability Client**: Enhanced monitoring and debugging
 - **Improved Performance**: 5-10x faster evaluation times
 - **Better Error Handling**: More robust error management
 
