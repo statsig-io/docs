@@ -957,11 +957,6 @@ const sidebars: SidebarsConfig = {
             {
               className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
-              id: "server/dotnetSDK",
-            },
-            {
-              className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
-              type: "doc",
               id: "server/dotnetCoreSDK",
             },
             {
@@ -1004,6 +999,11 @@ const sidebars: SidebarsConfig = {
               className: "python-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
               id: "server/pythonSDK",
+            },
+            {
+              className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server/dotnetSDK",
             },
             {
               className: "elixir-icon sidebar-icon sdk-sidebar-icon",
