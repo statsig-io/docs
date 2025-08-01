@@ -18,6 +18,8 @@ Statsig supports contextual autotune in all Client SDKs, but only in the followi
 - [Java](/server-core/java-core)
 - [Elixir](/server-core/elixir-core)
 - [Rust](/server-core/rust-core)
+- [Php](/server-core/php-core)
+- [Ruby](/server/rubySDK)
 :::
 
 # Set Up Your Contextual Autotune
