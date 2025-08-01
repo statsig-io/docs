@@ -1,0 +1,27 @@
+```csharp
+var user = new StatsigUserBuilder()
+    .SetUserID("user_123")
+    .Build();
+
+statsig.LogEvent(user, "button_clicked");
+
+statsig.LogEvent(user, "purchase_completed", 29.99);
+
+statsig.LogEvent(user, "page_view", "homepage", new Dictionary<string, string>
+{
+    ["referrer"] = "google",
+    ["campaign"] = "summer_sale"
+});
+
+statsig.LogEvent(user, "video_watched", 120, new Dictionary<string, string>
+{
+    ["video_id"] = "abc123",
+    ["quality"] = "1080p"
+});
+```
+
+The `LogEvent` method supports multiple overloads:
+- `LogEvent(user, eventName)`
+- `LogEvent(user, eventName, stringValue, metadata)`
+- `LogEvent(user, eventName, intValue, metadata)`
+- `LogEvent(user, eventName, doubleValue, metadata)`

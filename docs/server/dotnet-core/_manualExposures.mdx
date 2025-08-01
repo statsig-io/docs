@@ -1,0 +1,28 @@
+```csharp
+var user = new StatsigUserBuilder()
+    .SetUserID("user_123")
+    .Build();
+
+statsig.ManuallyLogGateExposure(user, "feature_gate");
+
+statsig.ManuallyLogDynamicConfigExposure(user, "product_config");
+
+statsig.ManuallyLogExperimentExposure(user, "button_test");
+
+statsig.ManuallyLogLayerParameterExposure(user, "user_prefs_layer", "theme");
+```
+
+Manual exposure logging is useful when:
+- You need to log exposures for gates/configs that were evaluated with `EvaluationOptions(disableExposureLogging: true)`
+- You're implementing custom caching and need to log exposures at specific times
+- You want to log exposures for analytics purposes without re-evaluating the feature flag
+- You're using server-side rendering and need to ensure client-side exposures are logged
+
+## Methods
+
+- **ManuallyLogGateExposure(user, gateName)**: Log exposure for a feature gate
+- **ManuallyLogDynamicConfigExposure(user, configName)**: Log exposure for a dynamic config
+- **ManuallyLogExperimentExposure(user, experimentName)**: Log exposure for an experiment
+- **ManuallyLogLayerParameterExposure(user, layerName, parameterName)**: Log exposure for a specific layer parameter
+
+These methods ensure proper attribution in Statsig analytics and experiment results.
