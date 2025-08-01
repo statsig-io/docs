@@ -942,6 +942,12 @@ const sidebars: SidebarsConfig = {
           ],
         },
         {
+          className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "server-core/dotnetCoreSDK",
+          label: ".NET (Beta)",
+        },
+        {
           className: "ruby-icon sidebar-icon sdk-sidebar-icon",
           type: "doc",
           id: "server/rubySDK",
@@ -955,12 +961,6 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "More Server SDKs",
           items: [
-            {
-              className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
-              type: "doc",
-              id: "server-core/dotnetCoreSDK",
-              label: ".NET (Beta)",
-            },
             {
               className: "cpp-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
