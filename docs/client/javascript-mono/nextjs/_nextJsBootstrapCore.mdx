@@ -100,7 +100,7 @@ const statsig = new Statsig(
 // Initialize statsig with options
 const initialize = statsig.initialize();
 
-export async function generateBootstrapValues(): Promise<string> {
+export async function generateBootstrapValues(user: StatsigUser): Promise<string> {
   const user = new StatsigUser({ userID: 'userid-123', customIDs: {} }); // Insert your real userID here to be passed 
   await initialize;
   const values = statsig.getClientInitializeResponse(user, {
@@ -210,6 +210,7 @@ We now need to refactor our Root `layout.tsx` to call the `generateBootstrapValu
 
 // ...
 import { generateBootstrapValues } from "./statsig-backend";
+import { StatsigUser as StatsigUserCore } from '@statsig/statsig-node-core';
 // ...
 
 export default async function RootLayout({
@@ -217,12 +218,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const statsigUserObject = {userID: "userID-123"} //add in your real userID here
+  const UserObject = {userID: "userID-123"} //add in your real userID here
+  const statsigUserObject = StatsigUserCore(user)
   const bootstrapValues = await generateBootstrapValues(statsigUserObject);
 
   return (
     <html lang="en">
-      <MyStatsig values={bootstrapValues}>
+      <MyStatsig user={UserObject} values={bootstrapValues}> //add the user object now to these props
         <body>
           {children}
         </body>
@@ -250,15 +252,17 @@ import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
 
 export default function MyStatsig({
   children,
+  user, //add the user object here
   values,
 }: {
-  values: string;
   children: React.ReactNode;
+  user: StatsigUser,
+  values: string;
 }) {
   // Update to using useClientBootstrapInit instead of auto initializing in the provider
   const client = useClientBootstrapInit(
     process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!,
-    { userID: "a-user" },
+    user,
     values,
     {
       logLevel: LogLevel.Debug,
