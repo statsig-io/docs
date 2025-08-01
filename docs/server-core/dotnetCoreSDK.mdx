@@ -12,9 +12,6 @@ import {
   HOOK__SDKDocUpdate,
 } from "../sdks/_SDKDocsBuilder.mdx";
 
-import * as _ServerCore from "../server/_server_core_dotnet.mdx";
-export const ServerCore = _ServerCore;
-
 import * as _Notes from "./dotnet-core/_notes.mdx";
 export const Notes = _Notes;
 
@@ -55,7 +52,6 @@ export const Builder = SDKDocsBuilder({
         repo: "https://github.com/statsig-io/private-statsig-server-core",
       },
     ],
-    [ServerCore, {}],
     [
       GettingStarted,
       {
