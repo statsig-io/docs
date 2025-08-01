@@ -139,6 +139,7 @@ const sidebars: SidebarsConfig = {
                 "feature-flags/overrides",
                 "feature-flags/test-gate",
                 "feature-flags/view-exposures",
+                "feature-flags/pre-post-results",
                 "feature-flags/multiple-rollout-stages",
                 "feature-flags/scheduled-rollouts",
                 {
