@@ -25,8 +25,17 @@ post-install
 You may run into an error with running post-install. Run the following commands so the shell is able to find the post-install executable: 
 
 ```
+macOS:
 export PATH="$PATH:$(go env GOPATH)/bin"
 source ~/.zshrc
+
+Linux:
+export PATH="$PATH:$(go env GOPATH)/bin"
+source ~/.bashrc
+
+Windows:
+set PATH=%PATH%;%USERPROFILE%\.statsig\bin
+
 ```
 
 
@@ -34,10 +43,18 @@ And then try running post-install again.
 :::
 
 :::note
-If you are operating on a macOS device, you may run need to set the following additional environment variables:
+You may run need to set the following additional environment variables depending on your operating system:
 
 ```
+macOS:
 export DYLD_LIBRARY_PATH="$STATSIG_LIB_DIR"
+
+Linux:
+export LD_LIBRARY_PATH="$STATSIG_LIB_DIR"
+
+Windows:
+set STATSIG_LIB_DIR=%USERPROFILE%\.statsig\lib
+set PATH=%PATH%;%USERPROFILE%\.statsig\bin
 ```
 :::
 
