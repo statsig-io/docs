@@ -1004,7 +1004,7 @@ const sidebars: SidebarsConfig = {
             {
               className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
-              id: "server-core/dotnetSDK",
+              id: "server/dotnetSDK",
             },
             {
               className: "elixir-icon sidebar-icon sdk-sidebar-icon",
