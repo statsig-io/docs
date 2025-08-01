@@ -31,7 +31,6 @@ import ClientInitResponse from "./dotnet-core/_clientInitResponse.mdx";
 import LocalOverrides from "./dotnet-core/_localOverrides.mdx";
 import ManualExposures from "./dotnet-core/_manualExposures.mdx";
 import EvaluationOptions from "./dotnet-core/_evaluationOptions.mdx";
-import Preamble from "./dotnet-core/_preamble.mdx";
 
 import {
   Repository,
@@ -43,7 +42,6 @@ import {
   ClientInitResponse as ClientInitResponseSection,
   LocalOverrides as LocalOverridesSection,
   ManualExposures as ManualExposuresSection,
-  ServerCore,
 } from "./Templates/index.mdx";
 
 export const Builder = SDKDocsBuilder({
@@ -54,7 +52,6 @@ export const Builder = SDKDocsBuilder({
         repo: "https://github.com/statsig-io/private-statsig-server-core",
       },
     ],
-    [ServerCore, { snippet: <Preamble /> }],
     [
       GettingStarted,
       {
