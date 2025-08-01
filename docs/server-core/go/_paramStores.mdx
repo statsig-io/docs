@@ -15,7 +15,7 @@ Parameter Store provides methods for retrieving values of different types with f
 
 ```go
 # String parameters
-stringVal := paramStore.GetStringFromParameterStore("string_gated_value_param", "default_value")
+stringVal := paramStore.GetStringFromParameterStore("str_param", "default_value")
 
 # Boolean parameters
 boolVal := paramStore.GetBoolean("boolean_gated_value_param", false)
@@ -31,10 +31,10 @@ objectParam := map[string]interface{}{
     "value2": 1,
     "value3": 1.0,
 }
-objectVal := paramStore.GetMap("object_gated_value_param", objectParam)
+objectVal := paramStore.GetMap("obj_param", objectParam)
 
 arrayParam := []interface{}{"val1", "val2", "val3"}
-arrayVal := paramStore.GetInterface("array_gated_value_param", arrayParam)
+arrayVal := paramStore.GetInterface("array_param", arrayParam)
 
 ```
 

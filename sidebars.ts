@@ -983,8 +983,20 @@ const sidebars: SidebarsConfig = {
             },
             {
               className: "golang-icon sidebar-icon sdk-sidebar-icon",
-              type: "doc",
-              id: "server-core/go-core",
+              type: "category",
+              label: "Go",
+              items: [
+                {
+                  type: "doc",
+                  id: "server-core/go-core",
+                  label: "Go Core SDK",
+                },
+                {
+                  type: "doc",
+                  id: "server-core/go/migration",
+                  label: "Migration Guide",
+                },
+              ],
             },
             {
               className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
