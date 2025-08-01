@@ -3,7 +3,7 @@ import (
     statsig "github.com/statsig-io/private-statsig-server-core/statsig-go/src"
 )
 			
-options = *statsig.NewStatsig().WithOutputLogLevel("DEBUG").Build()
+options = *statsig.NewStatsigOptionsBuilder().WithOutputLogLevel("DEBUG").Build()
 s, err := statsig.NewStatsig("secret-key", options)
 
 // Initialize the SDK with the secret key and options

@@ -29,8 +29,18 @@ export PATH="$PATH:$(go env GOPATH)/bin"
 source ~/.zshrc
 ```
 
+
 And then try running post-install again.
 :::
+
+:::note
+If you are operating on a macOS device, you may run need to set the following additional environment variables:
+
+```
+export DYLD_LIBRARY_PATH="$STATSIG_LIB_DIR"
+```
+:::
+
 
 The system should prompt you to set the environment variables using a statsig.env file that was generated during the post-install script.
 Follow the instructions to set the environment variables.
