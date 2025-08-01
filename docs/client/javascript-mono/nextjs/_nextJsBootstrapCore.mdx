@@ -93,7 +93,6 @@ This file will contain the logic to initialize our Statsig server SDK and genera
 
 import { Statsig, StatsigUser } from '@statsig/statsig-node-core';
 
-const specs: string | null = null;
 const statsig = new Statsig(
   process.env.STATSIG_SERVER_KEY!,
 );
@@ -102,11 +101,11 @@ const statsig = new Statsig(
 const initialize = statsig.initialize();
 
 export async function generateBootstrapValues(): Promise<string> {
-  const user = new StatsigUser({ userID: 'a-user', customIDs: {} });
+  const user = new StatsigUser({ userID: 'userid-123', customIDs: {} }); // Insert your real userID here to be passed 
   await initialize;
   const values = statsig.getClientInitializeResponse(user, {
     hashAlgorithm: 'djb2',
-  }) as string;
+  });
   return values;
 }
 ```
@@ -218,7 +217,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const bootstrapValues = await generateBootstrapValues();
+  const statsigUserObject = {userID: "userID-123"} //add in your real userID here
+  const bootstrapValues = await generateBootstrapValues(statsigUserObject);
 
   return (
     <html lang="en">
@@ -315,7 +315,6 @@ We do this conditionally, so that Statsig only runs on pages that call `getStats
 import {
   LogLevel,
   StatsigProvider,
-  StatsigUser,
 } from "@statsig/react-bindings";
 import { runStatsigAutoCapture } from '@statsig/web-analytics';
 
