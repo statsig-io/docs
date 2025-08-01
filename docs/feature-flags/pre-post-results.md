@@ -55,7 +55,7 @@ This method ensures we're comparing the same users before and after the feature 
 | Mean | ✅ Yes |
 | Funnel | ❌ No |
 | Ratio | ❌ No |
-| Participating Unit | ❌ No |
+| Participation Rate | ❌ No |
 
 ## Best Practices
 
