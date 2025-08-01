@@ -101,7 +101,6 @@ const statsig = new Statsig(
 const initialize = statsig.initialize();
 
 export async function generateBootstrapValues(user: StatsigUser): Promise<string> {
-  const user = new StatsigUser({ userID: 'userid-123', customIDs: {} }); // Insert your real userID here to be passed 
   await initialize;
   const values = statsig.getClientInitializeResponse(user, {
     hashAlgorithm: 'djb2',
@@ -218,13 +217,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const UserObject = {userID: "userID-123"} //add in your real userID here
-  const statsigUserObject = StatsigUserCore(user)
+  const userObject = {userID: "userID-123"} //add in your real userID here
+  const statsigUserObject = StatsigUserCore(userObject) // The server-side Statsig SDK requires a constructor for StatsigUser
   const bootstrapValues = await generateBootstrapValues(statsigUserObject);
 
   return (
     <html lang="en">
-      <MyStatsig user={UserObject} values={bootstrapValues}> //add the user object now to these props
+      <MyStatsig user={userObject} values={bootstrapValues}> // add the JSON user object here
         <body>
           {children}
         </body>
@@ -245,14 +244,14 @@ swapping out useClientAsyncInit for useClientBootstrapInit.
 import {
   LogLevel,
   StatsigProvider,
-  StatsigUser,
+  StatsigUser, // <- Add this
   useClientBootstrapInit, // <- Add this
 } from "@statsig/react-bindings";
 import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
 
 export default function MyStatsig({
   children,
-  user, //add the user object here
+  user, //add the user object and values
   values,
 }: {
   children: React.ReactNode;
