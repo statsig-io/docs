@@ -1,0 +1,7 @@
+## Motivation & Background
+
+.NET Core is a new server SDK leveraging [Statsig's Server Core](https://github.com/statsig-io/private-statsig-server-core), a performance-focused evaluation & logging library written in Rust. Early benchmarking suggests Server Core can evaluate Gates and Experiments in a small fraction of the time native SDKs are capable of.
+
+The .NET Core SDK uses FFI (Foreign Function Interface) bindings to communicate with the high-performance Rust evaluation engine, providing sub-millisecond feature flag evaluation while maintaining the familiar .NET development experience.
+
+We plan to offer Server Core across multiple languages in the near future. Want another language sooner? Reach out in our [Slack Channel](https://statsig.com/slack).
