@@ -15,10 +15,8 @@ var layer = statsig.GetLayer(user, "user_prefs_layer", options);
 
 ## Use Cases
 
-- **Prefetching**: Evaluate flags for caching without logging exposures
 - **Internal Tools**: Check flag values for debugging without affecting user metrics
 - **Conditional Logic**: Evaluate flags as part of complex logic where exposure should be logged manually later
-- **Performance**: Reduce event logging overhead for high-frequency evaluations
 
 When exposure logging is disabled, you can manually log exposures later using the manual exposure methods:
 
