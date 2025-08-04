@@ -53,6 +53,9 @@ require (
 )
 ```
 
+See the [Releases tab in GitHub](https://github.com/statsig-io/statsig-server-core/releases) for the latest versions.
+
+
 **Additional Setup Required:**
 
 Run the following commands to install the necessary binaries and set environment variables:
@@ -66,20 +69,51 @@ post-install
 You may run into an error with running post-install. Run the following commands so the shell is able to find the post-install executable: 
 
 ```bash
+macOS:
 export PATH="$PATH:$(go env GOPATH)/bin"
 source ~/.zshrc
+
+Linux:
+export PATH="$PATH:$(go env GOPATH)/bin"
+source ~/.bashrc
+
+Windows:
+set PATH=%PATH%;%USERPROFILE%\.statsig\bin
 ```
 
 And then try running post-install again.
 :::
 
+:::note
+You may run need to set the following additional environment variables depending on your operating system if you run into linker errors:
+
+```
+macOS:
+export DYLD_LIBRARY_PATH="$STATSIG_LIB_DIR"
+
+Linux:
+export LD_LIBRARY_PATH="$STATSIG_LIB_DIR"
+
+Windows:
+set STATSIG_LIB_DIR=%USERPROFILE%\.statsig\lib
+set PATH=%PATH%;%USERPROFILE%\.statsig\bin
+```
+:::
+
+
 The system should prompt you to set the environment variables using a statsig.env file that was generated during the post-install script.
 Follow the instructions to set the environment variables.
 
-```bash
-# E.g. - the script will look something like this:
-source /Users/home-dir/.statsig_env
 ```
+// E.g. - the command will look something like this:
+macOS: 
+source /Users/Your-User-Name/.statsig_env
+
+Windows: 
+. "C:\Users\Your-User-Name\.statsig_env.ps1"
+```
+
+Users can also add in the variables to their .bashrc, .zshrc, or .ps1 file to load them automatically.
 
 ## API Differences
 
