@@ -1,7 +1,7 @@
 ```csharp
 using Statsig;
 
-var statsig = new Statsig("server-secret-key");
+var statsig = new Statsig.Statsig("server-secret-key");
 await statsig.Initialize();
 ```
 
@@ -9,7 +9,6 @@ You can also provide custom options:
 
 ```csharp
 var options = new StatsigOptionsBuilder()
-    .SetEnvironment("production")
     .SetSpecsSyncIntervalMs(10000)
     .SetDisableAllLogging(false)
     .Build();
