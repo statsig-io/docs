@@ -43,7 +43,8 @@ const config: Config = {
   plugins: [
     function statsig() {
       const isProd = process.env.NODE_ENV === "production";
-      const tier = isProd ? "production" : "development";
+      const isNetlifyPreview = process.env.CONTEXT === "deploy-preview" || process.env.CONTEXT === "branch-deploy";
+      const tier = isProd && !isNetlifyPreview ? "production" : "development";
       return {
         name: "docusaurus-plugin-statsig",
         getClientModules() {
