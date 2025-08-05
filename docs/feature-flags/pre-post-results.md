@@ -10,6 +10,10 @@ last_update:
 
 # Pre-Post Results
 
+:::note Beta Feature
+This feature is currently in beta. If you have feedback or questions, please reach out to your Statsig contact.
+:::
+
 ## What are Pre-Post Results in Statsig?
 
 Pre-Post Results is an analysis mode for Feature Gates in Statsig that allows you to measure the impact of feature rollouts when a traditional A/B comparison isn't possible. By comparing key metrics before and after a feature gate is rolled out to 100% of users, you can identify the directional impact of your features in production.
