@@ -3,27 +3,6 @@ import { useColorMode } from '@docusaurus/theme-common/internal';
 
 import Alert from "@mui/material/Alert";
 
-let _client;
-function getClient() {
-  if (_client) {
-    return _client;
-  }
-
-  const sdkDemoKey = "client-rfLvYGag3eyU0jYW5zcIJTQip7GXxSrhOFN69IGMjvq";
-  const { StatsigClient, runStatsigAutoCapture, runStatsigSessionReplay } =
-    window.Statsig;
-
-  _client = new StatsigClient(sdkDemoKey, {
-    userID: "",
-  });
-
-  runStatsigAutoCapture(_client);
-  runStatsigSessionReplay(_client);
-
-  _client.initializeAsync().catch((err) => console.error(err));
-
-  return _client;
-}
 
 // Map entities to their corresponding OpenAPI tags
 const entityToTagMap = {
@@ -100,13 +79,9 @@ export default function Rapidoc(props) {
         .then((data) => {
           rapidoc.loadSpec(data);
           try {
-            getClient().logEvent({
-              eventName: 'openapi_spec_fetch_success',
-              value: specUrl,
-              metadata: {
-                entity: 'all-endpoints-generated',
-                specUrl: specUrl
-              }
+            window.Statsig.instance().logEvent('openapi_spec_fetch_success', specUrl, {
+              entity: 'all-endpoints-generated',
+              specUrl: specUrl
             });
           } catch (error) {
             // noop
@@ -115,14 +90,10 @@ export default function Rapidoc(props) {
         .catch((error) => {
           console.log('Rapidoc: Fetch failed for all-endpoints-generated:', error.message);
           try {
-            getClient().logEvent({
-              eventName: 'openapi_spec_fetch_failure',
-              value: specUrl,
-              metadata: {
-                entity: 'all-endpoints-generated',
-                specUrl: specUrl,
-                error: error.message
-              }
+            window.Statsig.instance().logEvent('openapi_spec_fetch_failure', specUrl, {
+              entity: 'all-endpoints-generated',
+              specUrl: specUrl,
+              error: error.message
             });
             console.log('Rapidoc: Failure event logged successfully');
           } catch (logError) {
@@ -152,14 +123,10 @@ export default function Rapidoc(props) {
           rapidoc.loadSpec(data);
         }
         try {
-          getClient().logEvent({
-            eventName: 'openapi_spec_fetch_success',
-            value: specUrl,
-            metadata: {
-              entity: entity,
-              specUrl: specUrl,
-              tag: tag
-            }
+          window.Statsig.instance().logEvent('openapi_spec_fetch_success', specUrl, {
+            entity: entity,
+            specUrl: specUrl,
+            tag: tag
           });
         } catch (error) {
           // noop
@@ -168,15 +135,11 @@ export default function Rapidoc(props) {
       .catch((error) => {
         console.log('Rapidoc: Fetch failed for entity:', entity, 'error:', error.message);
         try {
-          getClient().logEvent({
-            eventName: 'openapi_spec_fetch_failure',
-            value: specUrl,
-            metadata: {
-              entity: entity,
-              specUrl: specUrl,
-              tag: tag,
-              error: error.message
-            }
+          window.Statsig.instance().logEvent('openapi_spec_fetch_failure', specUrl, {
+            entity: entity,
+            specUrl: specUrl,
+            tag: tag,
+            error: error.message
           });
           console.log('Rapidoc: Failure event logged successfully for entity:', entity);
         } catch (logError) {
