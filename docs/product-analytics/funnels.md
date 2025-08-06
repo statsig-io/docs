@@ -114,6 +114,54 @@ You can choose whether your funnel analysis is defined by the total number of co
 
 When toggled on, this calculates funnel conversions per calendar day. A given unit with funnel conversions on multiple days is counted as multiple conversions. This is toggled on by default.
 
+### Conversion Drivers[](/product-analytics/funnels#conversion-drivers)
+
+Conversion Drivers identify statistically significant factors that correlate with funnel conversion or drop-off at each step. This analysis surfaces event properties, user properties, and intermediary events that influence user progression through your funnel.
+
+To access Conversion Drivers:
+
+1. Click on any funnel step
+2. Select **"View Drop-Off & Conversion Drivers"**
+3. Configure the analysis scope using the dropdown filters
+
+![Conversion Drivers Interface](/img/conversion-drivers-funnels.png)
+
+#### Analysis Configuration[](/product-analytics/funnels#analysis-configuration)
+
+You can configure which data types to include in the analysis:
+
+- **Event properties**: Attributes attached to events (e.g., platform, plan_type, referral_code)
+- **User properties**: User-level attributes (e.g., country, account_age, signup_method)
+- **Intermediary events**: Events that occurred between the selected funnel steps
+
+#### Driver Metrics[](/product-analytics/funnels#driver-metrics)
+
+Each identified driver displays:
+
+- **Conversion likelihood**: Expressed as a multiplier (e.g., users with platform=Android are 1.2x as likely to convert)
+- **Conversion rate**: Percentage of users with this factor who converted
+- **Participant share**: Percentage of total funnel participants who had this factor
+
+#### Detailed Analysis[](/product-analytics/funnels#detailed-analysis)
+
+Click on any driver to access the drilldown view, which provides:
+
+- **Conversion matrix**: Side-by-side comparison of conversion outcomes for users with and without the factor
+- **Correlation coefficient**: Statistical measure of the factor's association with funnel completion
+
+You can group your funnel by any identified driver by clicking the group option. This reconfigures the funnel chart to show conversion performance segmented by the selected property.
+
+#### Use Cases[](/product-analytics/funnels#use-cases)
+
+Conversion Drivers are useful for:
+
+- Exploratory analysis when investigating funnel performance without predefined hypotheses
+- Root cause analysis of conversion drop-offs
+- Validating assumptions about user segment behavior
+- Monitoring funnel performance changes over time
+
+**Availability**: Conversion Drivers require a Pro plan subscription or Enterprise plan with the Advanced Analytics package.
+
 ## Interpreting your User Funnel
 
 ### Conversion rate vs. Number of Conversions
