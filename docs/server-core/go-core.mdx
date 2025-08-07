@@ -42,7 +42,8 @@ import Options from "./go/_options.mdx";
 import ShutdownSnippet from "./go/_shutdown.mdx";
 import Flush from "./go/_flush.mdx";
 import LocalOverridesSnippet from "./go/_localOverrides.mdx";
-import ManualExposuresSnippet from "./go/_manualExposures.mdx";
+import { Snippets as ManualExposureSnippets } from "./go/_manualExposures.mdx";
+import MoreFAQs from "./go/_faqs.mdx";
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -73,7 +74,7 @@ export const Builder = SDKDocsBuilder({
         paramStores: <ParamStores />,
       },
     ],
-    [ManualExposures, { ...ManualExposuresSnippet }],
+    [ManualExposures, { ...ManualExposureSnippets }],
     [StatsigUser, { }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
@@ -83,7 +84,6 @@ export const Builder = SDKDocsBuilder({
     [OutputLogger, { }],
     [ObservabilityClient, { }],
     [FAQ, { faqs: <MoreFAQs /> }],
-    [Troubleshooting, { }],
   ]
 })
 
