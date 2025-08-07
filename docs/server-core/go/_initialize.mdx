@@ -1,14 +1,17 @@
 ```go
 import (
-    statsig "github.com/statsig-io/private-statsig-server-core/statsig-go/src"
+    statsig "github.com/statsig-io/statsig-server-core/statsig-go/src"
 )
 			
-options = *statsig.NewStatsigOptionsBuilder().WithOutputLogLevel("DEBUG").Build()
+options := *statsig.NewStatsigOptionsBuilder().WithOutputLogLevel("DEBUG").Build()
 s, err := statsig.NewStatsig("secret-key", options)
 
-// Initialize the SDK with the secret key and options
-s.Initialize()
+if err != nil {
+    // Initialize the SDK with the secret key and options
+    s.Initialize()
+}
 
 // Or if you want to initialize the Statsig client with more details
 details, err := s.InitializeWithDetails()
+fmt.Println("Initialize With Details:", details)
 ```

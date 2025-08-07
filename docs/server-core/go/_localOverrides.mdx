@@ -1,10 +1,10 @@
 ```go
 import (
-    statsig "github.com/statsig-io/private-statsig-server-core/statsig-go/src"
+    statsig "github.com/statsig-io/statsig-server-core/statsig-go/src"
 )
 
-s, err := statsig.NewStatsig("secret-key", options)
-options = *statsig.NewStatsig().WithOutputLogLevel("DEBUG").Build()
+options := statsig.NewStatsigOptionsBuilder().WithOutputLogLevel("DEBUG").Build()
+s, _ := statsig.NewStatsig("secret-key", *options)
 
 s.OverrideLayer("layer_name", map[string]interface{}{"key": "value"}, "test-user-id")
 s.OverrideGate("gate_name", true, "test-user-id")

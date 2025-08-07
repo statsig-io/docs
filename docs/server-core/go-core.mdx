@@ -73,7 +73,7 @@ export const Builder = SDKDocsBuilder({
         paramStores: <ParamStores />,
       },
     ],
-    [ManualExposures, { manualExposures: <ManualExposuresSnippet /> }],
+    [ManualExposures, { ...ManualExposureSnippets }],
     [StatsigUser, { }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
@@ -82,7 +82,8 @@ export const Builder = SDKDocsBuilder({
     [DataStore, { }],
     [OutputLogger, { }],
     [ObservabilityClient, { }],
-    [FAQ, { }],
+    [FAQ, { faqs: <MoreFAQs /> }],
+    [Troubleshooting, { }],
   ]
 })
 
