@@ -10,11 +10,6 @@ The `StatsigOptions` class is used to specify optional parameters when initializ
 - **`log_event_url`**:
   Custom URL for logging events.
 
-- **`specs_adapter`**: 
-  An adapter with custom storage behavior for config specs. 
-  
-  For example, use `StatsigLocalFileSpecsAdapter` to store configs in the local filesystem.
-
 - **`environment`**: 
   Environment parameter for evaluation.
 
@@ -58,7 +53,7 @@ The `StatsigOptions` class is used to specify optional parameters when initializ
 
 ```go
 import (
-  statsig "github.com/statsig-io/private-statsig-server-core/statsig-go"
+    statsig "github.com/statsig-io/statsig-server-core/statsig-go/src"
 )
 
 // Initialize StatsigOptions with custom parameters
@@ -76,6 +71,6 @@ options := statsig.NewStatsigOptionsBuilder().
 		Build()
 
 // Pass the options object when initializing the Statsig client
-s, err := statsig.NewStatsig("secret-key", options)
+s, err := statsig.NewStatsig("secret-key", *options)
 s.Initialize()
 ```

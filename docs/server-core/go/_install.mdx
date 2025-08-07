@@ -1,14 +1,20 @@
 via the `go get` CLI:
 
+You can install the latest version of the SDK:
 ```
 go get github.com/statsig-io/statsig-server-core/statsig-go@latest
 ```
 
-Or, add a dependency on the most recent version of the SDK in go.mod:
+or a specific version of the SDK:
+```
+go get github.com/statsig-io/statsig-server-core/statsig-go@v0.7.2
+```
 
+
+Or, add a dependency on the most recent version of the SDK in go.mod:
 ```
 require (
-  github.com/statsig-io/statsig-server-core/statsig-go v1.37.0
+  github.com/statsig-io/statsig-server-core/statsig-go v0.7.2
 )
 ```
 
@@ -21,45 +27,7 @@ go install github.com/statsig-io/statsig-server-core/statsig-go/cmd/post-install
 post-install
 ```
 
-:::note 
-You may run into an error with running post-install. Run the following commands so the shell is able to find the post-install executable: 
-
-```
-macOS:
-export PATH="$PATH:$(go env GOPATH)/bin"
-source ~/.zshrc
-
-Linux:
-export PATH="$PATH:$(go env GOPATH)/bin"
-source ~/.bashrc
-
-Windows:
-set PATH=%PATH%;%USERPROFILE%\.statsig\bin
-
-```
-
-
-And then try running post-install again.
-:::
-
-:::note
-You may run need to set the following additional environment variables depending on your operating system if you run into linker errors:
-
-```
-macOS:
-export DYLD_LIBRARY_PATH="$STATSIG_LIB_DIR"
-
-Linux:
-export LD_LIBRARY_PATH="$STATSIG_LIB_DIR"
-
-Windows:
-set STATSIG_LIB_DIR=%USERPROFILE%\.statsig\lib
-set PATH=%PATH%;%USERPROFILE%\.statsig\bin
-```
-:::
-
-
-The system should prompt you to set the environment variables using a statsig.env file that was generated during the post-install script.
+The system should prompt you to set the environment variables using a statsig.env or statsig.env.ps1 file that was generated during the post-install script.
 Follow the instructions to set the environment variables.
 
 ```
@@ -68,11 +36,20 @@ Follow the instructions to set the environment variables.
 macOS: 
 source /Users/Your-User-Name/.statsig_env
 
-Windows: 
+Windows (PowerShell): 
 . "C:\Users\Your-User-Name\.statsig_env.ps1"
 ```
 
 Users can also add in the variables to their .bashrc, .zshrc, or .ps1 file to load them automatically.
+
+:::note
+You may need to have gcc installed on your system in order to run the SDK on Windows. 
+
+See [FAQ](/server-core/go-core#faq) if you run into any issues with installation.
+
+
+
+
 
 
 
