@@ -131,7 +131,7 @@ import (
 )
 
 // Create options (all optional)
-options := statsig.NewStatsig().
+options := statsig.NewStatsigOptionsBuilder().
     WithOutputLogLevel("DEBUG").
     WithSpecsSyncIntervalMs(10000).
     WithEventLoggingFlushIntervalMs(10000).
@@ -189,6 +189,8 @@ import (
     statsig "github.com/statsig-io/statsig-server-core/statsig-go/src"
 )
 
+s, err := statsig.NewStatsig("server-secret-key", statsig.StatsigOptions{})
+
 user := statsig.NewStatsigUserBuilder().
     WithUserID("123").
     WithEmail("test@example.com").
@@ -235,6 +237,8 @@ import (
     statsig "github.com/statsig-io/statsig-server-core/statsig-go/src"
 )
 
+s, err := statsig.NewStatsig("server-secret-key", statsig.StatsigOptions{})
+
 user := statsig.NewStatsigUserBuilder().
     WithUserID("123").
     WithEmail("test@example.com").
@@ -280,6 +284,8 @@ import (
     statsig "github.com/statsig-io/statsig-server-core/statsig-go/src"
 )
 
+s, err := statsig.NewStatsig("server-secret-key", statsig.StatsigOptions{})
+
 user := statsig.NewStatsigUserBuilder().
     WithUserID("123").
     WithEmail("test@example.com").
@@ -314,7 +320,12 @@ user := statsig.User{
 }
 
 // Log an event
-statsig.LogEvent(user, "button_clicked", "button_id", "submit")
+statsig.LogEvent(Event{
+		User: user,
+		EventName: "add_to_cart",
+                Value: "SKU_12345",
+		Metadata: map[string]string{"price": "9.99","item_name": "diet_coke_48_pack"},
+	})
 ```
 
   </TabItem>
@@ -325,13 +336,23 @@ import (
     statsig "github.com/statsig-io/statsig-server-core/statsig-go/src"
 )
 
+s, err := statsig.NewStatsig("server-secret-key", statsig.StatsigOptions{})
+
 user := statsig.NewStatsigUserBuilder().
     WithUserID("123").
     WithEmail("test@example.com").
     Build()
 
+event := map[string]interface{}{
+		"name":  "sample event",
+		"value": "event",
+		"metadata": map[string]string{
+			"val_1": "log val 1",
+		},
+	}
+
 // Log an event
-s.LogEvent(user, "button_clicked", "button_id", "submit")
+s.LogEvent(*user, event)
 ```
 
   </TabItem>
@@ -339,12 +360,11 @@ s.LogEvent(user, "button_clicked", "button_id", "submit")
 
 ## Key Migration Steps
 
-1. **Update Dependencies**: Change from `github.com/statsig-io/go-sdk` to `github.com/statsig-io/statsig-server-core/statsig-go`
+1. **Update Dependencies**: Change from `github.com/statsig-io/go-sdk` to `github.com/statsig-io/statsig-server-core/statsig-go/src`
 
 2. **Run Post-Install**: Execute the post-install script to set up environment variables and pull down the latest version of the Rust core library.
 
 3. **Update Initialization**:
-   - `statsig.Initialize()` → `statsig.NewStatsig().Initialize()`
    - Use the builder pattern to create user and options
    - Replace statsig.User{} with statsig.NewStatsigUserBuilder().With*().Build()
    - Initialize with statsig.NewStatsig() and call Initialize()
