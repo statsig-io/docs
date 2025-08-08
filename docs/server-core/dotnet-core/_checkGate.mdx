@@ -1,0 +1,23 @@
+```csharp
+var user = new StatsigUserBuilder()
+    .SetUserID("user_123")
+    .SetEmail("user@example.com")
+    .Build();
+
+var gateValue = statsig.CheckGate(user, "new_feature_gate");
+if (gateValue)
+{
+    // Gate is on, enable new feature
+}
+else
+{
+    // Gate is off
+}
+```
+
+You can also disable exposure logging for this evaluation:
+
+```csharp
+var options = new EvaluationOptions(disableExposureLogging: true);
+var gateValue = statsig.CheckGate(user, "new_feature_gate", options);
+```

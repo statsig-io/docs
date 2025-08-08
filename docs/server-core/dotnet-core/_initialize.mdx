@@ -1,0 +1,27 @@
+```csharp
+using Statsig;
+
+var statsig = new Statsig.Statsig("server-secret-key");
+await statsig.Initialize();
+```
+
+You can also provide custom options:
+
+```csharp
+var options = new StatsigOptionsBuilder()
+    .SetSpecsSyncIntervalMs(10000)
+    .SetDisableAllLogging(false)
+    .Build();
+
+var statsig = new Statsig("server-secret-key", options);
+await statsig.Initialize();
+```
+
+For shared instance usage:
+
+```csharp
+var sharedStatsig = Statsig.NewShared("server-secret-key", options);
+await sharedStatsig.Initialize();
+
+var statsig = Statsig.Shared();
+```

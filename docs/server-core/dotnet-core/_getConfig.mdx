@@ -1,0 +1,16 @@
+```csharp
+var user = new StatsigUserBuilder()
+    .SetUserID("user_123")
+    .Build();
+
+var config = statsig.GetDynamicConfig(user, "product_config");
+
+var productName = config.Get<string>("product_name", "Default Product");
+var price = config.Get<double>("price", 9.99);
+var isEnabled = config.Get<bool>("enabled", false);
+var features = config.Get<List<string>>("features", new List<string>());
+
+Console.WriteLine($"Config Name: {config.Name}");
+Console.WriteLine($"Group Name: {config.GroupName}");
+Console.WriteLine($"Rule ID: {config.RuleID}");
+```
