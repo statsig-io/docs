@@ -29,6 +29,19 @@ Run the following commands to install the necessary binaries and set environment
 
 ```
 go install github.com/statsig-io/statsig-server-core/statsig-go/cmd/post-install@latest
+
+// Run the following commands based on your OS:
+// macOS:
+export PATH="$PATH:$(go env GOPATH)/bin"
+source ~/.zshrc
+
+// Linux:
+export PATH="$PATH:$(go env GOPATH)/bin"
+source ~/.bashrc
+
+// Windows (PowerShell):
+$env:PATH += ";$env:USERPROFILE\.statsig\bin"
+
 post-install
 ```
 
