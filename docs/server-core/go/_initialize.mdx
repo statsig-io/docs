@@ -13,5 +13,19 @@ if err != nil {
 
 // Or if you want to initialize the Statsig client with more details
 details, err := s.InitializeWithDetails()
-fmt.Println("Initialize With Details:", details)
+
+json, err := json.MarshalIndent(details, "", " ")
+fmt.Println("Initialize With Details:", string(json))
+
+/*
+*** Sample Output ***
+Initialize With Details: {
+ "duration": 95,
+ "init_success": true,
+ "is_config_spec_ready": true,
+ "is_id_list_ready": null,
+ "source": "Network",
+ "failure_details": null
+}
+*/
 ```
