@@ -27,7 +27,7 @@ const sdkGroups = [
       { name: 'Python', img: '/img/sdk/sdk_python.png', link: '/server-core/python-core' },
       { name: 'Go', img: '/img/sdk/sdk_golang.png', link: '/server/golangSDK' },
       { name: 'Ruby', img: '/img/sdk/sdk_ruby.png', link: '/server/rubySDK' },
-      { name: '.NET Server', img: '/img/sdk/sdk_dotnet.png', link: '/server/dotnetSDK' },
+      { name: '.NET Server', img: '/img/sdk/sdk_dotnet.png', link: '/server-core/dotnetCoreSDK' },
       { name: 'PHP', img: '/img/sdk/sdk_php.svg', link: '/server-core/php-core' },
       { name: 'Rust', img: '/img/sdk/sdk_rust.svg', link: '/server-core/rust-core' },
       { name: 'C++ Server', img: '/img/sdk/sdk_cpp.png', link: '/server/cppSDK' }

@@ -3,6 +3,7 @@ import { useColorMode } from '@docusaurus/theme-common/internal';
 
 import Alert from "@mui/material/Alert";
 
+
 // Map entities to their corresponding OpenAPI tags
 const entityToTagMap = {
   gates: "Gates",
@@ -77,6 +78,27 @@ export default function Rapidoc(props) {
         .then(removeNonFeatureTags)
         .then((data) => {
           rapidoc.loadSpec(data);
+          try {
+            window.Statsig.instance().logEvent('openapi_spec_fetch_success', specUrl, {
+              entity: 'all-endpoints-generated',
+              specUrl: specUrl
+            });
+          } catch (error) {
+            // noop
+          }
+        })
+        .catch((error) => {
+          console.log('Rapidoc: Fetch failed for all-endpoints-generated:', error.message);
+          try {
+            window.Statsig.instance().logEvent('openapi_spec_fetch_failure', specUrl, {
+              entity: 'all-endpoints-generated',
+              specUrl: specUrl,
+              error: error.message
+            });
+            console.log('Rapidoc: Failure event logged successfully');
+          } catch (logError) {
+            console.error('Rapidoc: Failed to log failure event:', logError);
+          }
         });
       return;
     }
@@ -99,6 +121,29 @@ export default function Rapidoc(props) {
         } else {
           // If tag is not found, load the full spec
           rapidoc.loadSpec(data);
+        }
+        try {
+          window.Statsig.instance().logEvent('openapi_spec_fetch_success', specUrl, {
+            entity: entity,
+            specUrl: specUrl,
+            tag: tag
+          });
+        } catch (error) {
+          // noop
+        }
+      })
+      .catch((error) => {
+        console.log('Rapidoc: Fetch failed for entity:', entity, 'error:', error.message);
+        try {
+          window.Statsig.instance().logEvent('openapi_spec_fetch_failure', specUrl, {
+            entity: entity,
+            specUrl: specUrl,
+            tag: tag,
+            error: error.message
+          });
+          console.log('Rapidoc: Failure event logged successfully for entity:', entity);
+        } catch (logError) {
+          console.error('Rapidoc: Failed to log failure event for entity:', entity, logError);
         }
       });
   }, [specUrl, entity]);

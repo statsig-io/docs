@@ -37,12 +37,11 @@ When you select a qualifying rule in the Metrics Impact tab, Statsig automatical
 Pre-Post Results uses a straightforward approach to measure feature impact:
 
 1. **Identify the participating units** - Find all users who were exposed to the feature after the 100% rollout
-2. **Collect pre-rollout data** - Gather metric values for these users from the period before the feature was rolled out
-3. **Collect post-rollout data** - Gather metric values for these users from the period after the feature rollout
-4. **Calculate the difference** - Compute the mean metric values for both pre and post periods, then calculate the delta (difference) between them
-5. **Statistical analysis** - Generate confidence intervals around this delta to determine if the change is statistically significant
+2. **Collect pre/post-rollout data** - Gather metric values for these users from the periods before and after the rule change
+3. **Bucket metric data into discreet periods** - Statsig automatically groups metric data into buckets of a consistent duration
+4. **Calculate the difference** - Compute the mean metric values for both pre and post periods, treating each bucket as a unique observation, then calculate the delta (difference) between them
 
-This method ensures we're comparing the same users before and after the feature rollout, helping to isolate the feature's impact from other factors like user acquisition or seasonal changes.
+This method ensures we're comparing the same users before and after the feature rollout.
 
 ## Supported Metric Types
 
@@ -55,13 +54,13 @@ This method ensures we're comparing the same users before and after the feature 
 | Mean | ✅ Yes |
 | Funnel | ❌ No |
 | Ratio | ❌ No |
-| Participating Unit | ❌ No |
+| Participation Rate | ❌ No |
 
 ## Best Practices
 
 When using Pre-Post Results, consider these guidelines:
 
-- Focus on metrics that are directly related to your feature's intended impact and have sufficient volume for rigorous analysis
+- Focus on metrics that are directly related to your feature's intended impact and have sufficient volume
 - Remember that correlation doesn't equal causation. Consider other changes, seasonal effects, or external events that might influence your metrics during the analysis period
 - Validate with domain knowledge. Use Pre-Post Results as one data point alongside qualitative feedback, user research, and business context to make informed decisions
 - Look at A/B results when possible. If you have the chance to partially roll out a feature to less than 100% of users, it's highly recommended since this way you can measure the metric impact for users seeing the feature vs. not seeing the feature and arrive at true causation.
