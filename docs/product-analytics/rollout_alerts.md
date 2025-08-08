@@ -9,11 +9,11 @@ last_update:
 ---
 
 ## Rollout Alerts
-On Statsig Cloud, Rollout Alerts are hourly for the first 24 hours post experiment/gate rollout (this includes new gate rules/rollouts), and then daily thereafter. This is to help provide more real-time visibility during the most critical phase of a rollout; in those first 24 hours post-going live. Alerts only trigger if the metric delta is statistically significant lower/higher than your threshold, which helps reduce alert noisiness. 
+On Statsig Cloud, Rollout Alerts kick in after 24 hours of an experiment or gate rollout (this includes new gate rules/rollouts) and run on a daily frequency thereafter. Alerts only trigger if the metric delta is statistically significant lower/higher than your threshold, which helps reduce alert noisiness. 
 
 On Statsig Warehouse Native, Rollout Alerts are evaluated every time Pulse is loaded. Loading Pulse on the first day of a rollout will help provide more real-time visibility during this window. Alerts only trigger if the metric delta is statistically significant lower/higher than your threshold, which helps reduce alert noisiness. 
 
-Finally, all stats methodologies you've enabled for your experiment/gate rollout (CUPED, Sequential Testing, etc.) will be applied to alert calculations post-the first 24 hours (once the alert becomes daily). 
+Finally, all stats methodologies you've enabled for your experiment/gate rollout (CUPED, Sequential Testing, etc.) will be applied to alert calculations post-the first 24 hours. 
 
 :::note
 Rollout Alerts do not alert at the **topline metric value** level, but rather at **the experiment/feature gate level**. 
