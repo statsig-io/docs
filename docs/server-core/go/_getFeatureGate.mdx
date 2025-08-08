@@ -1,0 +1,6 @@
+```go
+user := statsig.NewStatsigUserBuilder().WithUserID("a-user").Build()
+
+checkGateOptions := &statsig.CheckGateOptions{DisableExposureLogging: false}
+featureGate := s.GetFeatureGate(*user, "a gate", checkGateOptions)
+```

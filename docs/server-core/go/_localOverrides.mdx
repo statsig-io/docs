@@ -1,0 +1,14 @@
+```go
+import (
+    statsig "github.com/statsig-io/statsig-server-core/statsig-go/src"
+)
+
+options := statsig.NewStatsigOptionsBuilder().WithOutputLogLevel("DEBUG").Build()
+s, _ := statsig.NewStatsig("secret-key", *options)
+
+s.OverrideLayer("layer_name", map[string]interface{}{"key": "value"}, "test-user-id")
+s.OverrideGate("gate_name", true, "test-user-id")
+s.OverrideDynamicConfig("config_name", map[string]interface{}{"key": "value"}, "test-user-id")
+s.OverrideExperiment("experiment_name", map[string]interface{}{"key": "value"}, "test-user-id")
+s.OverrideExperimentByGroupName("experiment_name", "group_name", "test-user-id")
+```

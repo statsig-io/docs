@@ -1,0 +1,49 @@
+import CodeBlock from "@theme/CodeBlock";
+
+export const Snippets = {
+  // Gates
+  gateSnippet: (
+    <CodeBlock language="jsx">
+      {`result = statsig.CheckGate(aUser, "a_gate_name", statsig.CheckGateOptions{DisableExposureLogging: true})`}
+    </CodeBlock>
+  ),
+  gateExposureSnippet: (
+    <CodeBlock language="jsx">
+      {`statsig.ManuallyLogGateExposure(aUser, "gate_name")`}
+    </CodeBlock>
+  ),
+  // Configs
+  configSnippet: (
+    <CodeBlock language="jsx">
+      {`config = statsig.GetDynamicConfig(aUser, "config_name", statsig.GetDynamicConfigOptions{DisableExposureLogging: true})`}
+    </CodeBlock>
+  ),
+  configExposureSnippet: (
+    <CodeBlock language="jsx">
+      {`statsig.ManuallyLogDynamicConfigExposure(aUser, "config_name")`}
+    </CodeBlock>
+  ),
+  // Experiment
+  experimentSnippet: (
+    <CodeBlock language="jsx">
+      {`experiment = statsig.GetExperiment(aUser, "experiment_name", statsig.GetExperimentOptions{DisableExposureLogging: true})`}
+    </CodeBlock>
+  ),
+  experimentExposureSnippet: (
+    <CodeBlock language="jsx">
+      {`statsig.ManuallyLogExperimentExposure(aUser, "experiment_name")`}
+    </CodeBlock>
+  ),
+  // Layer
+  layerSnippet: (
+    <CodeBlock language="jsx">
+      {`layer = statsig.GetLayer(aUser, "layer_name", statsig.GetLayerOptions{DisableExposureLogging: true})
+paramValue = layer.Get(aUser, "param_name")`}
+    </CodeBlock>
+  ),
+  layerExposureSnippet: (
+    <CodeBlock language="jsx">
+      {`statsig.ManuallyLogLayerParameterExposure(aUser, "layer_name", "param_name")`}
+    </CodeBlock>
+  ),
+};
