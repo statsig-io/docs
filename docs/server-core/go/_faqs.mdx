@@ -1,25 +1,5 @@
 ##### Installation FAQs #####
 
-#### How do I fix the error `'post-install' is not recognized as a command`?
-
-You may run into an error when running `post-install`, such as `'post-install' is not recognized as a command`. This happens when your shell can't find the binary because it’s not in your `PATH`. Run the following command to fix it:
-
-```
-macOS:
-export PATH="$PATH:$(go env GOPATH)/bin"
-source ~/.zshrc
-
-Linux:
-export PATH="$PATH:$(go env GOPATH)/bin"
-source ~/.bashrc
-
-Windows (PowerShell):
-$env:PATH += ";$env:USERPROFILE\.statsig\bin"
-```
-
-And then try running post-install again.
-
-
 #### How do I fix undefined symbol errors/linker errors?
 
 You may need to reset your environment variables to those found in the statsig.env or statsig.env.ps1 file which was generated during the post-install script. Running the command sets the environment variables for the current terminal session. Users may need to add in the variables to their .bashrc, .zshrc, or .ps1 file to load them automatically.
