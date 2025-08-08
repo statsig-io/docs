@@ -984,7 +984,7 @@ const sidebars: SidebarsConfig = {
             {
               className: "golang-icon sidebar-icon sdk-sidebar-icon",
               type: "category",
-              label: "Go",
+              label: "Go Core (Beta)",
               items: [
                 {
                   type: "doc",
