@@ -9,9 +9,7 @@ last_update:
 ---
 
 :::note
-
 Usually referred to online as _feature flags_, the Statsig UI and SDKs call them _feature gates_.
-
 :::
 
 To create a new feature gate, 
