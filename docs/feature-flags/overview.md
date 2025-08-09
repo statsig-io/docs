@@ -19,7 +19,7 @@ Devs often use them to turn on certain features for a small percentage of the to
 #### Use when you need to...
 - Schedule gradual feature rollouts to safely deploy new code
 - Set up dev staging environments before code hits production, like dogfooding
-- Have a just-in-case "kill switch" that lets you immediately turn off a particular code branch for users in production
+- Have a just-in-case "kill switch" that lets you immediately turn off a particular code branch for users in production, or use [Safeguards](/safeguards/overview) to automate this process based on metric thresholds
 - Modify the user experience based on attributes like username, email, or other identifiers 
 - Change app behavior based on context like device, browser type, version, and other environment attributes
 
