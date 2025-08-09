@@ -27,6 +27,7 @@ import {
   ProxyConfigs,
   Instances,
   SDKMonitoring,
+  SystemRequirements,
 } from "./Templates/index.mdx";
 
 import Install from "./python/_install.mdx";
@@ -58,6 +59,7 @@ export const Builder = SDKDocsBuilder({
         repo: "https://github.com/statsig-io/python-sdk",
       },
     ],
+    [SystemRequirements, {}],
     [
       GettingStarted,
       {
