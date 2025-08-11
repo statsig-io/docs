@@ -708,7 +708,11 @@
     "sprt",
     "JDBC",
     "adblocking",
-    "TTFB"
+    "TTFB",
+    "Mbps",
+    "Klaviyo",
+    "Mailchimp",
+    "Quora"
   ],
   "ignorePaths": [
     "node_modules/**",
