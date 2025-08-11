@@ -14,9 +14,6 @@ There are four key use-cases to the Datadog integration:
 3. [Datadog RUM integration](#datadog-rum-integration) - This allows you to enrich DataDog RUM data with flag/experiment assignment info, allowing customer to correlate product feature changes with their impact on system/performance metrics.
 4. [DataDog triggers](https://docs.statsig.com/integrations/triggers/datadog) - When an alarm goes off in DataDog, it kills a Statsig feature gate.
 
-forwarding event counts and change config changes. The goal of this integration is to allow monitoring of Statsig usage for billing purposes and alerts for config changes.
-We also offer a [Datadog trigger](/integrations/triggers/datadog) integration.
-
 ### Connecting to Datadog
 
 1. To create a Datadog API key, navigate to **Organization Settings** > **API Keys**. If you have the permission to create API keys, click **New Key**.
