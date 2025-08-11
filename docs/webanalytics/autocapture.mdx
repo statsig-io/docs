@@ -1,6 +1,6 @@
 ---
 title: Autocapture on the Web
-sidebar_label: Autocapture
+sidebar_label: Events and Metadata
 slug: /webanalytics/autocapture
 ---
 
@@ -64,39 +64,84 @@ You can filter autocapture events programmatically using the `eventFilterFunc` o
 
 The `eventFilterFunc` receives the `AutoCaptureEvent` object and should return `true` to keep the event or `false` to filter it out. You can filter based on `eventName`, `value`, or any property in the `metadata`.
 
-# Metadata Collection
+## Common Metadata Captured
 
-Statsig Web Analytics automatically collects comprehensive metadata with each event to provide rich context for analysis:
+Statsig automatically captures comprehensive metadata with each autocapture event to provide rich context for analysis:
 
-## Page and Environment Metadata
-- **Page Information**: `title`, `current_url`, `hostname`, `pathname`
-- **User Environment**: `user_agent`, `locale`, `timezone`, `timezone_offset`
-- **Screen Data**: `screen_width`, `screen_height`, `viewport_width`, `viewport_height`
-- **Timestamps**: `timestamp` (event time)
+#### Page and Environment Metadata:
 
-## Network Information
-- **Connection Type**: `effective_connection_type` (4g, 3g, 2g, slow-2g)
-- **Network Performance**: `rtt_ms` (round-trip time), `downlink_mbps` (download speed)
-- **Data Saving**: `save_data` (indicates if user has data saver enabled)
+| Property | Description | Example Value |
+| --- | --- | --- |
+| `metadata.title` | Page title from `<title>` tag | "Homepage - My Website" |
+| `metadata.current_url` | Full current URL | "https://example.com/page?utm_source=google" |
+| `metadata.hostname` | Domain name of the current page | "example.com" |
+| `metadata.pathname` | Path portion of the URL | "/products/shoes" |
+| `metadata.user_agent` | Browser user agent string (truncated to 200 chars) | "Mozilla/5.0 (Windows NT 10.0; Win64; x64)..." |
+| `metadata.locale` | Browser language setting | "en-US" |
+| `metadata.timezone` | User's timezone | "America/New_York" |
+| `metadata.timezone_offset` | Timezone offset in minutes | -300 |
+| `metadata.timestamp` | Event timestamp in milliseconds | 1692123456789 |
 
-## Referrer and Traffic Source Data
-- **Referrer Information**: `referrer`, `referrer_domain`, `referrer_path`
-- **Search Engine Data**: `searchEngine`, `searchQuery` (when coming from search engines like Google, Bing, Yahoo, DuckDuckGo, Baidu)
+#### Screen and Viewport Data:
 
-## Campaign and Marketing Attribution
+| Property | Description | Example Value |
+| --- | --- | --- |
+| `metadata.screen_width` | Screen width in pixels | 1920 |
+| `metadata.screen_height` | Screen height in pixels | 1080 |
+| `metadata.viewport_width` | Browser viewport width in pixels | 1200 |
+| `metadata.viewport_height` | Browser viewport height in pixels | 800 |
+
+#### Network Information:
+
+| Property | Description | Example Value |
+| --- | --- | --- |
+| `metadata.effective_connection_type` | Connection speed estimate | "4g" |
+| `metadata.rtt_ms` | Round-trip time in milliseconds | 50 |
+| `metadata.downlink_mbps` | Download speed in Mbps | 10.5 |
+| `metadata.save_data` | Whether user has data saver enabled | true |
+
+#### Referrer and Traffic Source Data:
+
+| Property | Description | Example Value |
+| --- | --- | --- |
+| `metadata.referrer` | Full referrer URL | "https://google.com/search?q=example" |
+| `metadata.referrer_domain` | Domain of the referrer | "google.com" |
+| `metadata.referrer_path` | Path of the referrer URL | "/search" |
+| `metadata.searchEngine` | Detected search engine | "google" |
+| `metadata.searchQuery` | Search query from referrer | "example search term" |
+
+#### Campaign and Marketing Attribution:
+
 Statsig automatically captures 25+ marketing attribution parameters including:
-- **UTM Parameters**: `utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content`, `utm_id`
-- **Platform-Specific IDs**: 
-  - Google: `gclid`, `gclsrc`, `wbraid`, `gad_source`
-  - Facebook: `fbclid`
-  - Microsoft Bing: `msclkid`
-  - LinkedIn: `li_fat_id`
-  - TikTok: `ttclid`, `ttc_id`
-  - Twitter: `twclid`
-  - Pinterest: `epik`
-  - Snapchat: `sccid`
-  - And many more...
 
-## Performance Metrics
-- **Load Performance**: `load_time_ms`, `dom_interactive_time_ms`, `first_contentful_paint_time_ms`
-- **Network Transfer**: `transfer_bytes`, `redirect_count`
+| Property | Description | Example Value |
+| --- | --- | --- |
+| `metadata.utm_source` | UTM source parameter | "google" |
+| `metadata.utm_medium` | UTM medium parameter | "cpc" |
+| `metadata.utm_campaign` | UTM campaign parameter | "summer_sale_2024" |
+| `metadata.utm_term` | UTM term parameter | "running shoes" |
+| `metadata.utm_content` | UTM content parameter | "banner_ad" |
+| `metadata.utm_id` | UTM ID parameter | "12345" |
+| `metadata.gclid` | Google Click ID | "TeSter-123" |
+| `metadata.fbclid` | Facebook Click ID | "IwAR123..." |
+| `metadata.msclkid` | Microsoft Bing Click ID | "123abc..." |
+| `metadata.ttclid` | TikTok Click ID | "tt123..." |
+| `metadata.li_fat_id` | LinkedIn Click ID | "li123..." |
+| `metadata.epik` | Pinterest Click ID | "dj123..." |
+
+**Additional Platform IDs Captured:**
+- `gclsrc`, `wbraid`, `gad_source` (Google)
+- `dclid` (DoubleClick)
+- `irclid` (Impact)
+- `igshid` (Instagram)
+- `_kx` (Klaviyo)
+- `mc_cid`, `mc_eid` (Mailchimp)
+- `qclid` (Quora)
+- `rdt_cid` (Reddit)
+- `sccid` (Snapchat)
+- `ttc`, `ttc_id` (TikTok)
+- `twclid` (Twitter)
+
+#### Query Parameters:
+
+All URL query parameters are automatically captured as individual metadata fields with their parameter names as keys.
