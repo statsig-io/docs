@@ -11,7 +11,7 @@ Note- This guide applies only to our on-demand customers. If you are an organiza
 
 :::
 
-In the [Basic Settings page](https://console.statsig.com/24vDD6KOtLJqjrw1Y6oj4C/settings) you are able to configure who has access to your project. Each person invited to a project is assigned a Role that specifies their level of access. 
+In the [Basic Settings page](https://console.statsig.com/settings) you are able to configure who has access to your project. Each person invited to a project is assigned a Role that specifies their level of access. 
 
 ## Roles 
 
@@ -34,7 +34,7 @@ To simplify sending invitations for a Project, you can allow users creating a ne
 
 To enable this feature:
 
-1. Go to your [Project Basic Settings page](https://console.statsig.com/24vDD6KOtLJqjrw1Y6oj4C/settings).
+1. Go to your [Project Basic Settings page](https://console.statsig.com/settings).
 2. Click on the `Edit Project Settings` button.
 3. Toggle the checkbox labeled `Anyone who signs up with the same email domain can join` and choose the role that users will be assigned to.
 
