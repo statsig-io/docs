@@ -57,9 +57,9 @@ For more control over initialization and configuration, you can manually initial
 </script>
 ```
 
-## Option 3: JavaScript Client SDK (React)
+## Option 3: JavaScript Client SDK (React Bindings)
 
-For React applications, you can use the React bindings with the web analytics plugin:
+For React applications, you can use the React bindings with the autocapture plugin:
 
 ```javascript
 import * as React from 'react';
@@ -131,11 +131,12 @@ const client = new StatsigClient(
   { plugins: [
     new StatsigAutoCapturePlugin({
       eventFilterFunc: (event) => {
-        // Return false to prevent logging this event
-        if (event.metadata.pageUrl === 'https://example.com/admin') {
-          return false; // Don't send events from admin pages
+        // Filter out events from admin pages
+        if (event.metadata.pageUrl && 
+            event.metadata.pageUrl.includes('/admin/')) {
+          return false;
         }
-        return true; // Allow all other events
+        return true;
       }
     })
   ]}
@@ -153,9 +154,8 @@ const client = new StatsigClient(
   { plugins: [
     new StatsigAutoCapturePlugin({
       consoleLogAutoCaptureSettings: {
-        enabled: true,                    // Enable console log capture
-        logLevel: 'info',                // Minimum log level: 'trace', 'debug', 'log', 'info', 'warn', 'error'
-        sampleRate: 0.1                  // Optional: capture 10% of logs (0.0 to 1.0)
+        enabled: true,
+        logLevel: 'warn'
       }
     })
   ]}
