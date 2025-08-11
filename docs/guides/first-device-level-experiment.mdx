@@ -75,8 +75,7 @@ await client.initializeAsync();
 ```
 
 **Key points**:
-- **User ID**: Prefer using your own cookie or logged-out ID as the `userID` when available.
-- **Fallback to Stable ID**: If you don't have any identifier, Statsig will automatically generate a stable ID.
+- **Fallback to Stable ID**: If you don't have your own device identifier, Statsig client sdks will automatically generate a stable ID.
 - **User attributes**: You can pass additional attributes like `ip`, `appVersion`, and `custom` properties for experiment targeting.
 
 > **Tip**: If your app collects other relevant attributes (e.g., device type, region), pass them in the `user` object to improve experiment precision.
