@@ -7,7 +7,7 @@ slug: /webanalytics/overview
 keywords:
   - owner:skin
 last_update:
-  date: 2025-07-24
+  date: 2025-07-29
 ---
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
@@ -23,35 +23,192 @@ With Web Analytics and Statsig Dashboards you can easily gather insights such as
 
 Follow these simple steps to get started with Web Analytics.
 
-## Install Statsig script on your website
+## Option 1: HTML Script Installation (Recommended)
 
-```
+The simplest way to get started is by adding a single script tag to your website:
+
+```html
 <script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=[YOUR_CLIENT_KEY]"></script>
 ```
 
-Get YOUR_CLIENT_KEY from Project Settings -> Keys & Environments. Reveal the Client API Key, copy, and paste it over the [YOUR-API-KEY] in the snippet above
+Get YOUR_CLIENT_KEY from Project Settings -> Keys & Environments. Reveal the Client API Key, copy, and paste it over the [YOUR_CLIENT_KEY] in the snippet above.
 
 ![image](https://github.com/statsig-io/js-client/assets/74588208/0180a38a-2b3d-43c6-aa8e-4ea04c8ac751)
+
+## Option 2: JavaScript Client Installation
+
+For more control over initialization and configuration, you can manually initialize the Statsig client:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js"></script>
+<script>
+  const { StatsigClient, StatsigAutoCapturePlugin, StatsigSessionReplayPlugin } = window.Statsig;
+
+  const client = new StatsigClient(
+    'YOUR_CLIENT_KEY',       // put your client sdk key here - "client-XXXX"
+    { userID: 'optional' },  // set a userID here if you have one
+    { plugins: [
+      new StatsigAutoCapturePlugin(),
+      new StatsigSessionReplayPlugin()
+    ]}
+  ); 
+
+  client.initializeAsync().catch((err) => console.error(err));
+</script>
+```
 
 ## Release your changes
 
 Once your changes are live, you'll start to see the events flowing in your metrics page: https://console.statsig.com/metrics/events
 
-# Event Capture
+# Autocaptured Events
 
-Out of the box, autocapture includes:
-* Click events with click target info, current page url `auto_capture::click`
-* Page View Events with page url and query string values `auto_capture::page_view`
-* Form Submission Events `auto_capture::form_submit`
-* Page Performance data `auto_capture::performance`
+Statsig Web Analytics automatically captures the following events without any additional code:
+
+## Page Navigation Events
+- **`auto_capture::page_view`** - Triggered when a user navigates to a new page. Includes page URL, query parameters, referrer information, and metadata.
+- **`auto_capture::page_view_end`** - Triggered when a user leaves a page. Includes engagement metrics like scroll depth, time on page, and whether the exit was due to inactivity.
+
+## User Interaction Events  
+- **`auto_capture::click`** - Captures all click events with target element information, coordinates, and page context.
+- **`auto_capture::rage_click`** - Detects rapid repeated clicks in the same area, often indicating user frustration.
+- **`auto_capture::dead_click`** - Identifies clicks that don't result in any page changes or navigation, potentially indicating broken functionality.
+- **`auto_capture::form_submit`** - Captures form submission events with form metadata.
+- **`auto_capture::copy`** - Tracks when users copy text from your page, including the selected text content.
+
+## Technical Performance Events
+- **`auto_capture::error`** - Automatically captures JavaScript errors with stack traces, error messages, and context.
+- **`auto_capture::performance`** - Collects page load performance metrics including load times, DOM interactive time, and network transfer data.
+- **`auto_capture::web_vitals`** - Captures Core Web Vitals metrics (see Web Vitals section below).
+
+## Session Events
+- **`auto_capture::session_start`** - Marks the beginning of a new user session.
+
+## Console Logging (Disabled by Default)
+- **`statsig::log_line`** - Captures console log output when explicitly enabled. This event is disabled by default and must be configured to activate.
 
 For more in-depth breakdown of auto capture event data, refer to [Autocapture on the Web](/client/concepts/autocapture)
 
-For single page apps, or for more complex scenarios, look up how to [log events using Javascript](/client/javascript-sdk#event-logging).
+# Event Filtering and Console Configuration
 
-You can also disable a subset of these events from the Statsig console under Project Settings > Analytics & Session Replay
+## Disabling Events via Console
+
+You can disable specific autocapture events from the Statsig console under Project Settings > Analytics & Session Replay:
 
 ![screenshot_2024-09-16_at_8 05 21___am](https://github.com/user-attachments/assets/1cba9cbc-9fbe-4024-9a7f-43184efc37b9)
+
+## Programmatic Event Filtering
+
+For more granular control, you can filter events programmatically using a custom filter function:
+
+```javascript
+const client = new StatsigClient(
+  'YOUR_CLIENT_KEY',
+  { userID: 'optional' },
+  { plugins: [
+    new StatsigAutoCapturePlugin({
+      eventFilterFunc: (event) => {
+        // Return false to prevent logging this event
+        if (event.eventName === 'auto_capture::click') {
+          return false; // Disable all click events
+        }
+        return true; // Allow all other events
+      }
+    })
+  ]}
+);
+```
+
+## Console Log Capture Configuration
+
+Console log capture is disabled by default but can be enabled with the following configuration:
+
+```javascript
+const client = new StatsigClient(
+  'YOUR_CLIENT_KEY',
+  { userID: 'optional' },
+  { plugins: [
+    new StatsigAutoCapturePlugin({
+      consoleLogAutoCaptureSettings: {
+        enabled: true,                    // Enable console log capture
+        logLevel: 'info',                // Minimum log level: 'trace', 'debug', 'log', 'info', 'warn', 'error'
+        service: 'my-web-app',           // Optional service identifier
+        version: '1.0.0',                // Optional version identifier
+        sampleRate: 0.1,                 // Optional: capture 10% of logs (0.0 to 1.0)
+        resourceMetadata: {              // Optional: additional metadata
+          environment: 'production',
+          region: 'us-west-2'
+        }
+      }
+    })
+  ]}
+);
+```
+
+# Metadata Collection
+
+Statsig Web Analytics automatically collects comprehensive metadata with each event to provide rich context for analysis:
+
+## Page and Environment Metadata
+- **Page Information**: `title`, `current_url`, `hostname`, `pathname`
+- **User Environment**: `user_agent`, `locale`, `timezone`, `timezone_offset`
+- **Screen Data**: `screen_width`, `screen_height`, `viewport_width`, `viewport_height`
+- **Timestamps**: `timestamp` (event time)
+
+## Network Information
+- **Connection Type**: `effective_connection_type` (4g, 3g, 2g, slow-2g)
+- **Network Performance**: `rtt_ms` (round-trip time), `downlink_mbps` (download speed)
+- **Data Saving**: `save_data` (indicates if user has data saver enabled)
+
+## Referrer and Traffic Source Data
+- **Referrer Information**: `referrer`, `referrer_domain`, `referrer_path`
+- **Search Engine Data**: `searchEngine`, `searchQuery` (when coming from search engines like Google, Bing, Yahoo, DuckDuckGo, Baidu)
+
+## Campaign and Marketing Attribution
+Statsig automatically captures 25+ marketing attribution parameters including:
+- **UTM Parameters**: `utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content`, `utm_id`
+- **Platform-Specific IDs**: 
+  - Google: `gclid`, `gclsrc`, `wbraid`, `gad_source`
+  - Facebook: `fbclid`
+  - Microsoft Bing: `msclkid`
+  - LinkedIn: `li_fat_id`
+  - TikTok: `ttclid`, `ttc_id`
+  - Twitter: `twclid`
+  - Pinterest: `epik`
+  - Snapchat: `sccid`
+  - And many more...
+
+## Performance Metrics
+- **Load Performance**: `load_time_ms`, `dom_interactive_time_ms`, `first_contentful_paint_time_ms`
+- **Network Transfer**: `transfer_bytes`, `redirect_count`
+
+# Web Vitals Events
+
+Statsig automatically captures Core Web Vitals metrics that are essential for measuring user experience and SEO performance:
+
+## The Four Core Web Vitals
+
+- **CLS (Cumulative Layout Shift)** - Measures visual stability by tracking unexpected layout shifts during page load. Lower scores indicate better user experience.
+
+- **FCP (First Contentful Paint)** - Measures loading performance by tracking when the first text or image is painted on the screen. Faster FCP times indicate better perceived performance.
+
+- **LCP (Largest Contentful Paint)** - Measures loading performance by tracking when the largest content element becomes visible. This metric correlates strongly with user-perceived load times.
+
+- **TTFB (Time to First Byte)** - Measures server response time by tracking how long it takes to receive the first byte of response from the server. This indicates server and network performance.
+
+These metrics are automatically collected and sent as `auto_capture::web_vitals` events, providing insights into your website's performance and user experience quality.
+
+# Single Page Application (SPA) Support
+
+Statsig Web Analytics automatically supports single page applications without any additional configuration. The system intelligently detects route changes through:
+
+## Automatic Route Change Detection
+
+- **Browser Navigation**: Listens for `popstate` events to detect when users use browser back/forward buttons
+- **Programmatic Navigation**: Automatically proxies `history.pushState` calls to detect when your application programmatically navigates to new routes
+- **Automatic Page Views**: Triggers new `auto_capture::page_view` events whenever route changes are detected
+
+This means that modern SPA frameworks like React Router, Vue Router, Angular Router, and others work seamlessly with Statsig Web Analytics without requiring manual page view tracking.
 
 # Exploring using Metrics Explorer
 
