@@ -35,7 +35,7 @@ Get YOUR_CLIENT_KEY from Project Settings -> Keys & Environments. Reveal the Cli
 
 ![image](https://github.com/statsig-io/js-client/assets/74588208/0180a38a-2b3d-43c6-aa8e-4ea04c8ac751)
 
-## Option 2: JavaScript Client Installation
+## Option 2: HTML Script with Advanced Control
 
 For more control over initialization and configuration, you can manually initialize the Statsig client:
 
@@ -55,6 +55,29 @@ For more control over initialization and configuration, you can manually initial
 
   client.initializeAsync().catch((err) => console.error(err));
 </script>
+```
+
+## Option 3: JavaScript Client SDK (React)
+
+For React applications, you can use the React bindings with the web analytics plugin:
+
+```javascript
+import * as React from 'react';
+
+import { StatsigProvider } from '@statsig/react-bindings';
+import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
+
+  return (
+    <StatsigProvider
+      sdkKey={YOUR_CLIENT_KEY}
+      user={{ userID: 'a-user' }}
+      loadingComponent={
+        <div style={{ height: 100, width: 300, padding: 16 }}>Loading...</div>
+      }
+      options={{ plugins: [ new StatsigAutoCapturePlugin() ] }}>
+      <div>Hello</div>
+    </StatsigProvider>
+  );
 ```
 
 ## Release your changes
@@ -87,7 +110,7 @@ Statsig Web Analytics automatically captures the following events without any ad
 ## Console Logging (Disabled by Default)
 - **`statsig::log_line`** - Captures console log output when explicitly enabled. This event is disabled by default and must be configured to activate.
 
-For more in-depth breakdown of auto capture event data, refer to [Autocapture on the Web](/client/concepts/autocapture)
+For more in-depth breakdown of auto capture event data, refer to [Autocapture on the Web](/webanalytics/autocapture)
 
 # Event Filtering and Console Configuration
 
@@ -109,8 +132,8 @@ const client = new StatsigClient(
     new StatsigAutoCapturePlugin({
       eventFilterFunc: (event) => {
         // Return false to prevent logging this event
-        if (event.eventName === 'auto_capture::click') {
-          return false; // Disable all click events
+        if (event.metadata.pageUrl === 'https://example.com/admin') {
+          return false; // Don't send events from admin pages
         }
         return true; // Allow all other events
       }
@@ -132,55 +155,13 @@ const client = new StatsigClient(
       consoleLogAutoCaptureSettings: {
         enabled: true,                    // Enable console log capture
         logLevel: 'info',                // Minimum log level: 'trace', 'debug', 'log', 'info', 'warn', 'error'
-        service: 'my-web-app',           // Optional service identifier
-        version: '1.0.0',                // Optional version identifier
-        sampleRate: 0.1,                 // Optional: capture 10% of logs (0.0 to 1.0)
-        resourceMetadata: {              // Optional: additional metadata
-          environment: 'production',
-          region: 'us-west-2'
-        }
+        sampleRate: 0.1                  // Optional: capture 10% of logs (0.0 to 1.0)
       }
     })
   ]}
 );
 ```
 
-# Metadata Collection
-
-Statsig Web Analytics automatically collects comprehensive metadata with each event to provide rich context for analysis:
-
-## Page and Environment Metadata
-- **Page Information**: `title`, `current_url`, `hostname`, `pathname`
-- **User Environment**: `user_agent`, `locale`, `timezone`, `timezone_offset`
-- **Screen Data**: `screen_width`, `screen_height`, `viewport_width`, `viewport_height`
-- **Timestamps**: `timestamp` (event time)
-
-## Network Information
-- **Connection Type**: `effective_connection_type` (4g, 3g, 2g, slow-2g)
-- **Network Performance**: `rtt_ms` (round-trip time), `downlink_mbps` (download speed)
-- **Data Saving**: `save_data` (indicates if user has data saver enabled)
-
-## Referrer and Traffic Source Data
-- **Referrer Information**: `referrer`, `referrer_domain`, `referrer_path`
-- **Search Engine Data**: `searchEngine`, `searchQuery` (when coming from search engines like Google, Bing, Yahoo, DuckDuckGo, Baidu)
-
-## Campaign and Marketing Attribution
-Statsig automatically captures 25+ marketing attribution parameters including:
-- **UTM Parameters**: `utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content`, `utm_id`
-- **Platform-Specific IDs**: 
-  - Google: `gclid`, `gclsrc`, `wbraid`, `gad_source`
-  - Facebook: `fbclid`
-  - Microsoft Bing: `msclkid`
-  - LinkedIn: `li_fat_id`
-  - TikTok: `ttclid`, `ttc_id`
-  - Twitter: `twclid`
-  - Pinterest: `epik`
-  - Snapchat: `sccid`
-  - And many more...
-
-## Performance Metrics
-- **Load Performance**: `load_time_ms`, `dom_interactive_time_ms`, `first_contentful_paint_time_ms`
-- **Network Transfer**: `transfer_bytes`, `redirect_count`
 
 # Web Vitals Events
 
@@ -218,7 +199,7 @@ More information on using Metrics Explorer like [Funnels and Retention is here](
 
 ![image](https://github.com/statsig-io/js-client/assets/74588208/f4ed6f2c-79ce-4e47-ba6d-8dbe69978cc0)
 
-You can see some example autocapture event details [here](/client/concepts/autocapture).
+You can see some example autocapture event details [here](/webanalytics/autocapture).
 
 # Advanced Setup
 

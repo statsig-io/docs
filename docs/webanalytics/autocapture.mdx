@@ -1,0 +1,102 @@
+---
+title: Autocapture on the Web
+sidebar_label: Autocapture
+slug: /webanalytics/autocapture
+---
+
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+# Autocapture on the Web
+
+The JavaScript, React, and Angular SDKs support autocapture, which automatically captures events and their attributes without requiring you to manually instrument your code.
+
+## Attributes Captured
+
+### Click Events
+
+| Property | Description |
+| --- | --- |
+| `click_target_tag` | The HTML tag of the clicked element |
+| `click_target_id` | The ID attribute of the clicked element |
+| `click_target_class` | The class attribute of the clicked element |
+| `click_target_text` | The text content of the clicked element |
+| `click_target_href` | The href attribute if the clicked element is a link |
+| `click_x` | The x-coordinate of the click |
+| `click_y` | The y-coordinate of the click |
+
+### Page View Events
+
+| Property | Description |
+| --- | --- |
+| `page_url` | The current page URL |
+| `page_title` | The page title |
+| `referrer` | The referrer URL |
+| `utm_source` | UTM source parameter |
+| `utm_medium` | UTM medium parameter |
+| `utm_campaign` | UTM campaign parameter |
+| `utm_term` | UTM term parameter |
+| `utm_content` | UTM content parameter |
+
+### Form Submission Events
+
+| Property | Description |
+| --- | --- |
+| `form_id` | The ID of the submitted form |
+| `form_class` | The class of the submitted form |
+| `form_action` | The action URL of the form |
+| `form_method` | The HTTP method of the form (GET/POST) |
+
+### Performance Events
+
+| Property | Description |
+| --- | --- |
+| `load_time` | Page load time in milliseconds |
+| `dom_interactive_time` | Time until DOM is interactive |
+| `first_contentful_paint_time` | Time to first contentful paint |
+| `largest_contentful_paint_time` | Time to largest contentful paint |
+| `cumulative_layout_shift` | Cumulative layout shift score |
+
+## Event Filtering
+
+You can filter autocapture events programmatically using the `eventFilterFunc` option in the `StatsigAutoCapturePlugin`:
+
+<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-auto-capture-filter.tsx" />
+
+The `eventFilterFunc` receives the `AutoCaptureEvent` object and should return `true` to keep the event or `false` to filter it out. You can filter based on `eventName`, `value`, or any property in the `metadata`.
+
+# Metadata Collection
+
+Statsig Web Analytics automatically collects comprehensive metadata with each event to provide rich context for analysis:
+
+## Page and Environment Metadata
+- **Page Information**: `title`, `current_url`, `hostname`, `pathname`
+- **User Environment**: `user_agent`, `locale`, `timezone`, `timezone_offset`
+- **Screen Data**: `screen_width`, `screen_height`, `viewport_width`, `viewport_height`
+- **Timestamps**: `timestamp` (event time)
+
+## Network Information
+- **Connection Type**: `effective_connection_type` (4g, 3g, 2g, slow-2g)
+- **Network Performance**: `rtt_ms` (round-trip time), `downlink_mbps` (download speed)
+- **Data Saving**: `save_data` (indicates if user has data saver enabled)
+
+## Referrer and Traffic Source Data
+- **Referrer Information**: `referrer`, `referrer_domain`, `referrer_path`
+- **Search Engine Data**: `searchEngine`, `searchQuery` (when coming from search engines like Google, Bing, Yahoo, DuckDuckGo, Baidu)
+
+## Campaign and Marketing Attribution
+Statsig automatically captures 25+ marketing attribution parameters including:
+- **UTM Parameters**: `utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content`, `utm_id`
+- **Platform-Specific IDs**: 
+  - Google: `gclid`, `gclsrc`, `wbraid`, `gad_source`
+  - Facebook: `fbclid`
+  - Microsoft Bing: `msclkid`
+  - LinkedIn: `li_fat_id`
+  - TikTok: `ttclid`, `ttc_id`
+  - Twitter: `twclid`
+  - Pinterest: `epik`
+  - Snapchat: `sccid`
+  - And many more...
+
+## Performance Metrics
+- **Load Performance**: `load_time_ms`, `dom_interactive_time_ms`, `first_contentful_paint_time_ms`
+- **Network Transfer**: `transfer_bytes`, `redirect_count`
