@@ -99,8 +99,8 @@ Statsig Web Analytics automatically captures the following events without any ad
 
 ### Technical Performance Events
 - **`auto_capture::error`** - Automatically captures JavaScript errors with stack traces, error messages, and context.
-- **`auto_capture::performance`** - Collects page load performance metrics including load times, DOM interactive time, and network transfer data.
 - **`auto_capture::web_vitals`** - Captures Core Web Vitals metrics (see the [Web Vitals Events](#web-vitals-events) section below).
+- **`auto_capture::performance`** - Collects page load performance metrics including load times, DOM interactive time, and network transfer data. (deprecated, use `auto_capture::web_vitals` instead)
 
 ### Session Events
 - **`auto_capture::session_start`** - Marks the beginning of a new user session.
@@ -213,7 +213,4 @@ The autocapture plugin or manual setup can take an optional `options` parameter 
 **eventFilterFunc**:
 - **`event`**: `AutoCaptureEvent` - The event object that is being captured.
 - **`return`**: `bool` - A boolean to return true to capture the event or false to ignore it.
-
-
-
 
