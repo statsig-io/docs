@@ -84,7 +84,7 @@ To reduce the impact of outliers, Statsig caps _event_count_ and _sum_ metric ty
 
 The winsorization 99.9th percentile is computed using all non-zero and non-null values of the metric, and then all values of exceeding this limit are replaced with it.
 
-Warehouse-Native (WHN) allows for more customization of winsorization by metric and by percentile.
+Warehouse Native (WHN) allows for more customization of winsorization by metric and by percentile.
 
 ## Frequently Asked Questions
 
