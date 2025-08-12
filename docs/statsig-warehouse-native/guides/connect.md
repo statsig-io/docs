@@ -18,8 +18,9 @@ To run analysis on your warehouse, Statsig needs to connect to your warehouse vi
 
 The following warehouses/tools are currently supported in Statsig Warehouse Native:
 
+- [Snowflake](../connecting-your-warehouse/snowflake.md)
+- [Athena](../connecting-your-warehouse/athena.md)
 - [Bigquery](../connecting-your-warehouse/bigquery.md)
 - [Databricks](../connecting-your-warehouse/databricks.md)
 - [Redshift](../connecting-your-warehouse/redshift.md)
-- [Snowflake](../connecting-your-warehouse/snowflake.md)
-- [Athena](../connecting-your-warehouse/athena.md) (β - limited functionality)
+- [Trino](../connecting-your-warehouse/trino.md)
