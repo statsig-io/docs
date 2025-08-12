@@ -10,7 +10,7 @@ last_update:
 
 ## Introduction
 
-Statsig can directly ingest data from your Data Warehouse. This lets you send raw events and pre-computed metrics for tracking and experimental measurement.
+Statsig Cloud can directly ingest data from your Data Warehouse. This lets you send raw events and pre-computed metrics for tracking and experimental measurement.
 We currently support ingestion from the following providers:
 
 1. [BigQuery](bigquery.mdx)
@@ -20,6 +20,10 @@ We currently support ingestion from the following providers:
 5. [Synapse](synapse.mdx)
 6. [S3](s3.mdx)
 7. [Athena](athena.mdx)
+
+:::tip[Warehouse Native users]
+You're viewing the Cloud docs for this page. If your project is configured as [Statsig Warehouse Native](/statsig-warehouse-native/introduction/), your data should already be available if you completed the [quickstart](../statsig-warehouse-native/guides/quick-start/).
+:::
 
 ### How it works
 
