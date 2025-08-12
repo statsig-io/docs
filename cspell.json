@@ -85,6 +85,7 @@
     "GTM",
     "Gunicorn",
     "hoa",
+    "hoa-statsig",
     "IAM",
     "IDSync",
     "IDFA",
