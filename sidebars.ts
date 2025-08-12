@@ -414,7 +414,10 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "Web Analytics",
           className: "web-icon sidebar-icon",
-          items: ["webanalytics/overview"],
+          items: [
+            "webanalytics/overview",
+            "webanalytics/autocapture"
+          ],
         },
         {
           type: "category",
@@ -1053,7 +1056,6 @@ const sidebars: SidebarsConfig = {
       label: "More SDK Methods",
       collapsed: true,
       items: [
-        "client/concepts/autocapture",
         "client/concepts/persistent_assignment",
         "server/concepts/persistent_assignment",
         "client/concepts/local-eval-adapter",

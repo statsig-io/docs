@@ -707,7 +707,12 @@
     "SPRTs",
     "sprt",
     "JDBC",
-    "adblocking"
+    "adblocking",
+    "TTFB",
+    "Mbps",
+    "Klaviyo",
+    "Mailchimp",
+    "Quora"
   ],
   "ignorePaths": [
     "node_modules/**",
