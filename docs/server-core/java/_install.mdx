@@ -208,3 +208,12 @@ Add the appropriate dependency to your `pom.xml` file based on your system:
 Replace `YOUR-OS-ARCHITECTURE` with one of the supported combinations from the [Supported OS and Architecture Combinations](#supported-os-and-architecture-combinations) section.
 
 </details>
+:::note Docker Considerations for Alpine Linux
+When using Alpine Linux or other musl-based Docker containers, you need to install additional compatibility packages for the native libraries to work properly. Add the following to your Dockerfile:
+
+```dockerfile
+RUN apk add --no-cache libgcc gcompat
+```
+
+The Statsig Java Core SDK automatically detects musl-based systems and will use the appropriate musl-compatible native libraries (e.g., `x86_64-unknown-linux-musl`, `aarch64-unknown-linux-musl`).
+:::

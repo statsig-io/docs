@@ -414,7 +414,10 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "Web Analytics",
           className: "web-icon sidebar-icon",
-          items: ["webanalytics/overview"],
+          items: [
+            "webanalytics/overview",
+            "webanalytics/autocapture"
+          ],
         },
         {
           type: "category",
@@ -982,6 +985,23 @@ const sidebars: SidebarsConfig = {
               id: "server-core/php-core",
             },
             {
+              className: "golang-icon sidebar-icon sdk-sidebar-icon",
+              type: "category",
+              label: "Go Core (Beta)",
+              items: [
+                {
+                  type: "doc",
+                  id: "server-core/go-core",
+                  label: "Go Core SDK",
+                },
+                {
+                  type: "doc",
+                  id: "server-core/go/migration",
+                  label: "Migration Guide",
+                },
+              ],
+            },
+            {
               className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
               id: "server/dotnetSDK",
@@ -1036,7 +1056,6 @@ const sidebars: SidebarsConfig = {
       label: "More SDK Methods",
       collapsed: true,
       items: [
-        "client/concepts/autocapture",
         "client/concepts/persistent_assignment",
         "server/concepts/persistent_assignment",
         "client/concepts/local-eval-adapter",

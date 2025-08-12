@@ -1,0 +1,73 @@
+via the `go get` CLI:
+
+You can install the latest version of the SDK:
+```
+go get github.com/statsig-io/statsig-server-core/statsig-go@latest
+```
+
+or a specific version of the SDK:
+```
+go get github.com/statsig-io/statsig-server-core/statsig-go@v0.7.2
+```
+
+Or, add a dependency on the most recent version of the SDK in go.mod:
+```
+require (
+  github.com/statsig-io/statsig-server-core/statsig-go v0.7.2
+)
+```
+
+See the [Releases tab in GitHub](https://github.com/statsig-io/statsig-server-core/releases) for the latest versions.
+
+:::note
+Running `go get` will only work if you're working inside a module project with a go.mod file. If working outside of a module project, you can clone the repo here: https://github.com/statsig-io/statsig-server-core/tree/main/statsig-go instead.
+:::
+
+
+
+Run the following commands to install the necessary binaries and set environment variables:
+
+```
+go install github.com/statsig-io/statsig-server-core/statsig-go/cmd/post-install@latest
+
+// Run the following commands based on your OS:
+// macOS:
+export PATH="$PATH:$(go env GOPATH)/bin"
+source ~/.zshrc
+
+// Linux:
+export PATH="$PATH:$(go env GOPATH)/bin"
+source ~/.bashrc
+
+// Windows (PowerShell):
+$env:PATH += ";$env:USERPROFILE\.statsig\bin"
+
+post-install
+```
+
+The system should prompt you to set the environment variables using a statsig.env or statsig.env.ps1 file that was generated during the post-install script.
+Follow the instructions to set the environment variables.
+
+```
+// E.g. - the command will look something like this:
+
+macOS: 
+source /Users/Your-User-Name/.statsig_env
+
+Windows (PowerShell): 
+. "C:\Users\Your-User-Name\.statsig_env.ps1"
+```
+
+Users can also add in the variables to their .bashrc, .zshrc, or .ps1 file to load them automatically.
+
+:::note
+You may need to have gcc installed on your system in order to run the SDK on Windows. 
+
+See [FAQ](/server-core/go-core#faq) if you run into any issues with installation.
+
+
+
+
+
+
+

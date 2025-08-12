@@ -8,8 +8,11 @@ last_update:
 
 ### Overview
 
-There are two aspects to the Datadog integration, forwarding event counts and change config changes. The goal of this integration is to allow monitoring of Statsig usage for billing purposes and alerts for config changes.
-We also offer a [Datadog trigger](/integrations/triggers/datadog) integration.
+There are four key use-cases to the Datadog integration:
+1. [Config Changes](#config-changes) - Streaming changes made in Statsig into Datadog, so you can see what feature was turned on that may have caused a CPU usage spike or some other degradation of performance (most widely-used integration).
+2. [Event Forwarding](#events) - Statsig will forward event-count totals to DataDog, purely for the purpose of monitoring your Statsig usage volumes. 
+3. [Datadog RUM integration](#datadog-rum-integration) - This allows you to enrich DataDog RUM data with flag/experiment assignment info, allowing customer to correlate product feature changes with their impact on system/performance metrics.
+4. [DataDog triggers](https://docs.statsig.com/integrations/triggers/datadog) - When an alarm goes off in DataDog, it kills a Statsig feature gate.
 
 ### Connecting to Datadog
 
@@ -21,14 +24,23 @@ We also offer a [Datadog trigger](/integrations/triggers/datadog) integration.
 
 If the above is out of date, refer to the [Datadog documentation](https://docs.datadoghq.com/account_management/api-app-keys/#add-an-api-key-or-client-token) on how to setup API Keys
 
-### Events
+### Config Changes
+
+This integration will send Datadog Events of your choice when your
+project&apos;s settings change. For instance, we will send an Event when
+someone edits a Feature Gate.
+
+These events can be found in the Datadog Events Explorer.
+
+![image](https://user-images.githubusercontent.com/26360698/232636042-ee5cf1d0-e9e7-4158-903b-5a447ab14575.png)
+
+### Event Totals Forwarding
 
 This integration will forward the <i>number</i> of Statsig SDK Events
 reported to Datadog. This is meant for monitoring your project's Statsig
 usage. This integration also has the option to allow non-production events
 to be forwarded to Datadog.
 
-<br />
 Statsig events are mapped to Datadog metrics with listed tags as follows:
 
 - statsig::gate_exposure -> statsig.check_gate.count
@@ -61,12 +73,5 @@ Statsig events are mapped to Datadog metrics with listed tags as follows:
 
 ![image](https://user-images.githubusercontent.com/26360698/232629870-e1776bd6-c63d-438d-863e-2d7a3a347eab.png)
 
-### Config Changes
-
-This integration will send Datadog Events of your choice when your
-project&apos;s settings change. For instance, we will send an Event when
-someone edits a Feature Gate.
-
-These events can be found in the Datadog Events Explorer.
-
-![image](https://user-images.githubusercontent.com/26360698/232636042-ee5cf1d0-e9e7-4158-903b-5a447ab14575.png)
+### Datadog RUM integration
+This integration requires a client-side setup as outlined [here in DataDog documentation](https://docs.datadoghq.com/integrations/statsig-rum/). 
