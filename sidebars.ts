@@ -414,10 +414,7 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "Web Analytics",
           className: "web-icon sidebar-icon",
-          items: [
-            "webanalytics/overview",
-            "webanalytics/autocapture"
-          ],
+          items: ["webanalytics/overview", "webanalytics/autocapture"],
         },
         {
           type: "category",
@@ -726,6 +723,7 @@ const sidebars: SidebarsConfig = {
           items: [
             {
               "Open Telemetry": ["server/concepts/open_telemetry"],
+              Cloudflare: ["server/concepts/cloudflare"],
             },
             {
               "Domains & IP": [
