@@ -74,10 +74,8 @@ Server core SDKs, starting in v0.4.0+, have a new event logging architecture.  T
 |---------------------------|---------------------------|
 | - Double interval         | - Halve interval          |
 |   (max: 60000ms)          |   (min: 1000ms)           |
-| - Retry non-retryable     | - No specific limit       |
-|   errors up to 5 times    |   flush mechanism         |
-| - No specific retry       |                           |
-|   buffer management       |                           |
+| - Retry errors            | - No specific limit       |
+|   up to 5 times           |   flush mechanism         |
 +---------------------------+---------------------------+
 ```
 
