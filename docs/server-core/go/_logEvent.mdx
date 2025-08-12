@@ -1,0 +1,13 @@
+```go
+event := map[string]interface{}{
+		"name":  "sample event",
+		"value": "event",
+		"metadata": map[string]string{
+			"val_1": "log val 1",
+		},
+	}
+
+
+user := statsig.NewStatsigUserBuilder().WithUserID("a-user").Build()
+s.LogEvent(*user, event)
+```

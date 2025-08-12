@@ -1,0 +1,18 @@
+```go
+user := statsig.NewStatsigUserBuilder().WithUserID("a-user").Build()
+
+// Getting values with GetExperiment
+experimentOptions := &statsig.GetExperimentOptions{DisableExposureLogging: false}
+
+experiment := s.GetExperiment(*user, "a_test_experiment", experimentOptions)
+str_val := experiment.GetString("str_val", "default_str_val") // returns String
+int_val := experiment.GetNumber("number_val", 100) // returns float64
+
+// Getting values with GetLayer
+layerOptions := &statsig.GetLayerOptions{DisableExposureLogging: false}
+
+layer := s.GetLayer(user, "a_test_experiment", layerOptions)
+str_val := layer.GetString("str_val", "default_str_val") // returns String
+int_val := layer.GetNumber("number_val", 100) // returns float64
+
+```
