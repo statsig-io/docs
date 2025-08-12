@@ -1,0 +1,46 @@
+---
+title: Ingesting Cloudflare Logs and Metrics into Statsig
+sidebar_label: Cloudflare Logs and Metrics
+slug: /server/concepts/cloudflare
+keywords:
+  - owner: hoa-statsig
+last_update:
+  - date: 2025-08/12
+---
+
+# Ingesting Cloudflare Logs and Metrics into Statsig
+
+## Overview
+
+This guide walks you through setting up the Cloudflare Logpush worker in your Cloudflare account and configuring it to send logs and metrics to Statsig using the HTTP destination
+
+---
+
+## ✅ Prerequisites
+
+- Cloudflare Paid Plan
+- [Statsig Server SDK Key](https://docs.statsig.com/server-core/)
+
+---
+
+## Configuring Logpush Worker
+
+- Go to 'Settings' tab of your worker page
+- Enable 'Logpush' option
+- Select 'Configure Logpush jobs' option
+- Select 'Create a Logpush job'
+- Select 'HTTP Destination'
+- Enter the URL like following, replace `REDACTED` with your Statsig Server SDK Key, and select 'Continue'
+`https://api.statsig.com/v1/log_event/cf_log_drain?header_statsig-api-key=REDACTED&header_Content-Type=application%2Fjson`
+- Select the dataset you would like to Statsig to ingest
+- Configure the logpush job and select 'Submit'
+
+## Verify Logs on Statsig Console
+
+Explore your Logs and Metrics at [console.statsig.com](http://console.statsig.com) with the Logs Explorer and Metrics Explorer products under Analytics on the sidebar menu 🙂
+
+---
+
+## 🔗 Resources
+
+- [Cloudflare Enable HTTP Destination](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/http/)
