@@ -57,3 +57,16 @@ By default if you have turned on "Reviews Required" for your Project, reviews wi
 ![Screen Shot 2023-04-11 at 9 47 12 AM](https://user-images.githubusercontent.com/101903926/231233087-5b87310d-b33b-456e-b1a7-7a73555c8100.png)
 
 ![Screen Shot 2023-04-11 at 9 48 02 AM](https://user-images.githubusercontent.com/101903926/231233356-967c9785-5a89-4cac-a04a-e3f11cb7bb12.png)
+
+### Configuring Custom Approval Workflows (Pre-commit Webhooks)
+If you prefer to leverage an internal approvals workflow or, for example, want to run proposed config changes through a suite of automated tests before they go live, you can leverage **Pre-commit Webhooks**. Pre-commit Webhooks enable you to listen for config changes on the Statsig side, route those changes through internal approval processes, test suites, etc. and then leverage Console API to send back either a review approval or rejection before final changes can be committed. 
+
+To set up the webhook itself, navigate to **Settings** -> **Integrations** -> **Webhook**. 
+<img width="1590" height="1179" alt="Screen Shot 2025-08-12 at 4 28 12 PM" src="https://github.com/user-attachments/assets/fe50bc53-9a91-44f8-94c6-adca738ee88d" />
+
+To configure the Pre-commit Webhook experience for Statsig Console users, navigate to **Settings** -> **General**, where you will be able to configure the "Pending State" banner text, URL, and a Pre-commit Webhook key for verification purposes. 
+
+Now, when a change is made in the Statsig Console, Statsig hits the customer’s configured webhook with the proposed changes. The change in Statsig will be pending until the customer approves the review via Console API (after their internal checks are complete). Statsig exposes an option for Project Admins (only) to bypass this process and commit the changes directly. 
+
+
+
