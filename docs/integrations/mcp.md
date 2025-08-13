@@ -44,6 +44,28 @@ Replace `console-YOUR-API-KEY` with your actual Statsig Console API key, which y
 
 Once you've added and saved the configuration file, restart Cursor or Claude Desktop to apply the changes. After restarting, you should see the MCP server listed and active under the Developer settings. On Cursor, this can be found under Settings > Cursor Settings > Tools & Integrations.
 
+## Current MCP capabilities
+
+### Experiments (A/B Tests)
+- **Get_List_of_Experiments**: List all experiments in the project with optional status filtering
+- **Get_Experiment_Details_by_ID**: Get experiment details including groups and parameters
+- **Create_Experiment**: Create new experiments with groups, hypothesis, etc.
+- **Update_Experiment_Entirely**: Replace entire experiment configuration (any excluded data will be removed - the MCP will understand this.)
+
+### Gates (Feature Flags)
+- **Get_List_of_Gates**: List all gates/flags with optional type filtering (e.g., STALE, PERMANENT)
+- **Get_Gate_Details_by_ID**: Get complete gate configuration details (rules, ID type, etc.)
+- **Create_Gate**: Create new gate/flag with targeting rules and settings
+- **Update_Gate_Entirely**: Replace entire gate setup with new rules and settings (any excluded data will be removed - the MCP will understand this.)
+
+### Dynamic Configs
+- **Get_List_of_Dynamic_Configs**: List all dynamic config objects in the project
+- **Get_Dynamic_Config_Details_by_ID**: Retrieve detailed config including targeting rules, return values
+- **Create_Dynamic_Config**: Create new config with rules, return values, etc.
+- **Update_Dynamic_Config_Entirely**: Replace entire dynamic config with new targeting and values (any excluded data will be removed - the MCP will understand this.)
+
+
+
 ## **Setting up in Cursor**
 
 [Click Here](cursor://anysphere.cursor-deeplink/mcp/install?name=statsig-local&config=eyJjb21tYW5kIjoibnB4IG1jcC1yZW1vdGUgaHR0cHM6Ly9hcGkuc3RhdHNpZy5jb20vdjEvbWNwIC0taGVhZGVyIHN0YXRzaWctYXBpLWtleToke0FVVEhfVE9LRU59IiwiZW52Ijp7IkFVVEhfVE9LRU4iOiJjb25zb2xlLWtleSJ9fQ==) to add the Statsig MCP to Cursor, or copy the json to: `~/.cursor/mcp.json`
