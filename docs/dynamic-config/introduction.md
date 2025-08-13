@@ -1,33 +1,33 @@
----
-title: Dynamic Config
-sidebar_label: Overview
-slug: /dynamic-config
-keywords:
-  - owner:shubham
-last_update:
-  date: 2025-07-23
----
+-
+ชื่อเรื่อง: การกำหนดค่าแบบไดนามิก
+sidebar_label: ภาพรวม
+Slug: /dynamic-config
+คำสำคัญ: 
+- เจ้าของ: Shubham
+last_update: 
+วันที่: 2025-07-23
+-
 
-## What is a Dynamic Config?
+## การกำหนดค่าแบบไดนามิกคืออะไร?
 
-Dynamic configs replace hard-coded values in your application with JSON defined on the server. Statsig users leverage Dynamic Configs to avoid hard-coding configuration values of any kind in their code - and change it dynamically near real-time. You can also *target* Dynamic Configs, providing different experiences based on user attributes. These configuration parameters can include any property across your client-side or server-side application code, from button colors to ranking configurations.
+การกำหนดค่าแบบไดนามิกแทนที่ค่าฮาร์ดรหัสในแอปพลิเคชันของคุณด้วย JSON ที่กำหนดไว้บนเซิร์ฟเวอร์ ผู้ใช้ STATSIG ใช้ประโยชน์จากการกำหนดค่าแบบไดนามิกเพื่อหลีกเลี่ยงค่าการกำหนดค่าการเข้ารหัสแบบฮาร์ดการเข้ารหัสทุกชนิดในรหัสของพวกเขา-และเปลี่ยนแบบไดนามิกใกล้เคียงแบบเรียลไทม์ นอกจากนี้คุณยังสามารถ * Target * Dynamic Configs ให้ประสบการณ์ที่แตกต่างกันตามแอตทริบิวต์ของผู้ใช้ พารามิเตอร์การกำหนดค่าเหล่านี้สามารถรวมคุณสมบัติใด ๆ ในรหัสแอปพลิเคชันฝั่งไคลเอ็นต์หรือฝั่งเซิร์ฟเวอร์ของคุณตั้งแต่สีปุ่มไปจนถึงการจัดอันดับการกำหนดค่า
 
-## When to Use a Dynamic Config
+## เมื่อใดควรใช้การกำหนดค่าแบบไดนามิก
 
-Many technology companies use tools such as dynamic config to make their server-side code the source of truth for configurable application properties. For example, Spotify uses [Remote Configuration](https://engineering.atspotify.com/2020/10/29/spotifys-new-experimentation-platform-part-1/) to dynamically update properties of their clients or backend services.
+บริษัท เทคโนโลยีหลายแห่งใช้เครื่องมือเช่นการกำหนดค่าแบบไดนามิกเพื่อให้รหัสฝั่งเซิร์ฟเวอร์เป็นแหล่งที่มาของความจริงสำหรับคุณสมบัติแอปพลิเคชันที่กำหนดค่าได้ ตัวอย่างเช่น Spotify ใช้ [การกำหนดค่าระยะไกล] (https://engineering.atspotify.com/2020/10/29/spotifys-new-experimentation-platform-part-1/) เพื่ออัปเดตคุณสมบัติของลูกค้าหรือบริการแบ็คเอนด์แบบไดนามิก
 
-### Examples of Use Cases:
-- **Feature Toggles**: Dynamically enable or disable features without code changes.
-- **Gradual Rollouts**: Vary configurations across user segments to rollout more safely.
-- **Real-Time Updates**: Instantly adjust app properties like UI elements or service thresholds.
+### ตัวอย่างกรณีการใช้งาน:
+- ** คุณสมบัติการสลับ **: เปิดใช้งานหรือปิดการใช้งานคุณสมบัติแบบไดนามิกโดยไม่ต้องเปลี่ยนรหัส
+- ** ค่อยเป็นค่อยไป Rollout **: การกำหนดค่าที่แตกต่างกันในกลุ่มผู้ใช้เพื่อเปิดตัวอย่างปลอดภัยยิ่งขึ้น
+- ** การอัปเดตแบบเรียลไทม์ **: ปรับคุณสมบัติแอปทันทีเช่นองค์ประกอบ UI หรือเกณฑ์บริการ
 
-### Limitations
+### ข้อ จำกัด
 
-- There's a 100kb limit on the JSON payload within a dynamic config.
+- มีขีด จำกัด 100KB สำหรับ Payload JSON ภายในการกำหนดค่าแบบไดนามิก
 
-## Next Steps
+## ขั้นตอนถัดไป
 
-- To get started, follow the guide on creating your [first dynamic config](/guides/first-dynamic-config).
-- For a deeper dive into how you can work with dynamic config, refer to the detailed tutorial on [working with dynamic config](/dynamic-config/working-with).
+-หากต้องการเริ่มต้นให้ทำตามคำแนะนำเกี่ยวกับการสร้าง [การกำหนดค่าไดนามิกครั้งแรกของคุณ] (/คู่มือ/First-Dynamic-config)
+-สำหรับการดำน้ำลึกลงไปในวิธีที่คุณสามารถทำงานกับการกำหนดค่าแบบไดนามิกให้ดูที่การสอนโดยละเอียดเกี่ยวกับ [การทำงานกับการกำหนดค่าแบบไดนามิก] (/dynamic-config/working-with)
 
----
+-
