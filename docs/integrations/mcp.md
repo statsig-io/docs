@@ -64,7 +64,7 @@ Once you've added and saved the configuration file, restart Cursor or Claude Des
 - **Create_Dynamic_Config**: Create new config with rules, return values, etc.
 - **Update_Dynamic_Config_Entirely**: Replace entire dynamic config with new targeting and values (any excluded data will be removed - the MCP will understand this.)
 
-
+Need other functions? We're happy to consider additions by request, reach out in Slack.
 
 ## **Setting up in Cursor**
 
