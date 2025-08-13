@@ -25,6 +25,8 @@ const entityToTagMap = {
   tags: "Tags",
   keys: "Keys",
   "param-store": "Param Store",
+  "warehouse-connections": "Warehouse Connections",
+  "change-validation": "Change Validation",
 };
 
 export const apiVersions = [
