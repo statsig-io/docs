@@ -312,19 +312,7 @@ const config: Config = {
           },
           {
             to: "/client/javascript-sdk/next-js",
-            from: "/guides/nextjs-feature-flags",
-          },
-          {
-            to: "/client/javascript-sdk/next-js",
-            from: "/guides/nextjs-page-router-feature-flags",
-          },
-          {
-            to: "/client/javascript-sdk/next-js",
-            from: "/client/javascript-sdk/next-js-app-router",
-          },
-          {
-            to: "/client/javascript-sdk/next-js",
-            from: "/client/javascript-sdk/next-js-pages-router",
+            from: ["/guides/nextjs-feature-flags", "/client/javascript-sdk/next-js-pages-router", "/guides/nextjs-page-router-feature-flags", "/client/javascript-sdk/next-js-app-router"],
           },
           {
             to: "/product-analytics/drilldown",
@@ -348,35 +336,23 @@ const config: Config = {
           },
           {
             to: "/product-analytics/overview",
-            from: "/product-analytics",
-          },
-          {
-            to: "/product-analytics/overview",
-            from: "/mex",
+            from: ["/product-analytics", "/mex"],
           },
           {
             to: "/integrations/terraform/introduction",
             from: "/integrations/terraform",
           },
           {
-            to: "/feature-flags/overview",
-            from: "/feature-gates/working-with",
-          },
-          {
-            to: "/feature-flags/overview",
-            from: "/feature-gates/overview",
-          },
-          {
             to: "/feature-flags/create",
-            from: "/feature-gates/create-new",
+            from: ["/feature-gates/create-new", "/feature-flags/create-new"],
           },
           {
             to: "/feature-flags/overview",
-            from: ["/feature-gates", "/feature-flags"],
+            from: ["/feature-gates/overview", "/feature-gates", "/feature-flags", "/feature-gates/working-with", "/feature-flags/working-with"],
           },
           {
             to: "/feature-flags/create#add-a-rule-to-your-feature-gate",
-            from: "/feature-gates/add-rule",
+            from: ["/feature-gates/add-rule", "/feature-flags/add-rule"],
           },
           {
             to: "/feature-flags/test-gate",
@@ -411,20 +387,8 @@ const config: Config = {
             from: "/feature-gates/best-practices",
           },
           {
-            to: "/",
-            from: "/feature-gates/implement",
-          },
-          {
-            to: "/",
-            from: "/feature-gates/implement/client",
-          },
-          {
-            to: "/",
-            from: "/feature-gates/implement/server",
-          },
-          {
-            to: "/",
-            from: "/feature-gates/implement/http-api",
+            to: "/feature-flags/overview",
+            from: ["/feature-gates/implement", "/feature-gates/implement/client", "/feature-gates/implement/server", "/feature-gates/implement/http-api"],
           },
           {
             to: "/product-analytics/overview",
