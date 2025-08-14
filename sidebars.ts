@@ -414,10 +414,7 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "Web Analytics",
           className: "web-icon sidebar-icon",
-          items: [
-            "webanalytics/overview",
-            "webanalytics/autocapture"
-          ],
+          items: ["webanalytics/overview", "webanalytics/autocapture"],
         },
         {
           type: "category",
@@ -1112,6 +1109,8 @@ const sidebars: SidebarsConfig = {
         },
         "console-api/usage-billing",
         "console-api/rules",
+        "console-api/warehouse-connections",
+        "console-api/change-validation",
       ],
     },
     {
