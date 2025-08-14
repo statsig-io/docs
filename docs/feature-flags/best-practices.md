@@ -5,7 +5,7 @@ slug: /feature-flags/best-practices
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-07-23
+  date: 2025-07-29
 ---
 
 Statsig classifies the best practices for using feature gates into four categories: implementation, development, collaboration, and governance.

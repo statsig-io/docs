@@ -151,14 +151,6 @@ const config: Config = {
             to: "/guides/feature-flags",
           },
           {
-            from: "/feature-flags/create-new",
-            to: "/feature-flags/create",
-          },
-          {
-            from: "/feature-flags/add-rule",
-            to: "/feature-flags/create#add-a-rule-to-your-feature-gate",
-          },
-          {
             from: "/stats-engine/offlineaa",
             to: "/guides/aa-test#offline-aa-tests",
           },
@@ -367,7 +359,7 @@ const config: Config = {
             from: "/integrations/terraform",
           },
           {
-            to: "/feature-flags/working-with",
+            to: "/feature-flags/overview",
             from: "/feature-gates/working-with",
           },
           {
@@ -375,15 +367,15 @@ const config: Config = {
             from: "/feature-gates/overview",
           },
           {
-            to: "/feature-flags/create-new",
+            to: "/feature-flags/create",
             from: "/feature-gates/create-new",
           },
           {
-            to: "/feature-flags/working-with",
+            to: "/feature-flags/overview",
             from: ["/feature-gates", "/feature-flags"],
           },
           {
-            to: "/feature-flags/add-rule",
+            to: "/feature-flags/create#add-a-rule-to-your-feature-gate",
             from: "/feature-gates/add-rule",
           },
           {

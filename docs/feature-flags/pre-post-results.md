@@ -5,7 +5,7 @@ slug: /feature-flags/pre-post-results
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-08-01
+  date: 2025-08-02
 ---
 
 # Pre-Post Results
