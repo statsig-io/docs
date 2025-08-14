@@ -195,25 +195,12 @@ const config: Config = {
             from: "/feature-gates/best-practices",
           },
           {
-            from: "/feature-flags/implement",
             to: "/",
+            from: ["/feature-flags/implement", "/feature-flags/implement/client", "/feature-flags/implement/server", "/feature-flags/implement/http-api", "/category/walkthrough-guides"],
           },
           {
-            from: "/feature-flags/implement/client",
-            to: "/",
-          },
-          {
-            from: "/feature-flags/implement/server",
-            to: "/",
-          },
-          {
-            from: "/feature-flags/implement/http-api",
-            to: "/",
-          },
-
-          {
-            from: "/experiments-plus/read-results",
             to: "/pulse/read-pulse",
+            from: ["/experiments-plus/read-results", "/pulse"],
           },
           {
             from: "/experiments-plus/rules",
@@ -243,7 +230,6 @@ const config: Config = {
             to: "/experiments-plus/stop-assignments",
             from: "/experiments-plus/pause-assignment",
           },
-
           {
             to: "/product-analytics/overview",
             from: ["/product-analytics", "/mex", "/mex/overview", "/metrics/events-explorer"],
@@ -268,26 +254,17 @@ const config: Config = {
             from: "/metrics/metric-alerts",
             to: "/product-analytics/alerts/",
           },
-
           {
-            from: "/client/introduction/javascript-sdk",
             to: "/client/javascript-sdk",
+            from: ["/client/introduction/javascript-sdk","/client/jsClientSDK"],
           },
           {
-            from: "/client/jsClientSDK",
-            to: "/client/javascript-sdk",
-          },
-          {
-            from: "/client/reactSDK",
             to: "/client/javascript-sdk/react",
+            from: "/client/reactSDK",
           },
           {
-            from: "/client/reactNative",
             to: "/client/javascript-sdk/react-native",
-          },
-          {
-            from: "/client/reactNativeSDK",
-            to: "/client/javascript-sdk/react-native",
+            from: ["/client/reactNative", "/client/reactNativeSDK"],
           },
           {
             from: "/client/reactNativeExpoSDK",
@@ -317,7 +294,6 @@ const config: Config = {
             to: "/concepts/user",
             from: ["/server/concepts/user/", "/client/concepts/user/"],
           },
-
           {
             from: "/statsig-warehouse-native/guides/assignment-sources/",
             to: "/statsig-warehouse-native/configuration/assignment-sources",
@@ -330,21 +306,14 @@ const config: Config = {
             from: "/statsig-warehouse-native",
             to: "/statsig-warehouse-native/introduction",
           },
-
           {
             from: "/stats-engine/offlineaa",
             to: "/guides/aa-test#offline-aa-tests",
           },
           {
-            from: "/pulse",
-            to: "/pulse/read-pulse",
-          },
-
-          {
             to: "/console-api/all-endpoints-generated",
             from: "/console-api/all-endpoints",
           },
-
           {
             from: "/insights/",
             to: "/aggregated-impact",
@@ -374,8 +343,8 @@ const config: Config = {
             from: "/integrations/terraform",
           },
           {
-            to: "/",
-            from: "/category/walkthrough-guides",
+            to: "/prompts",
+            from: "/ai-configs",
           },
         ],
       },
