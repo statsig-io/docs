@@ -344,7 +344,7 @@ const config: Config = {
           },
           {
             to: "/ai-configs",
-            from: "/prompts,
+            from: "/prompts",
           },
         ],
       },
