@@ -343,8 +343,8 @@ const config: Config = {
             from: "/integrations/terraform",
           },
           {
-            to: "/ai-configs",
-            from: "/prompts",
+            to: "/prompts",
+            from: "/ai-configs",
           },
         ],
       },
