@@ -151,204 +151,12 @@ const config: Config = {
             to: "/guides/feature-flags",
           },
           {
-            from: "/stats-engine/offlineaa",
-            to: "/guides/aa-test#offline-aa-tests",
-          },
-          {
-            from: "/pulse",
-            to: "/pulse/read-pulse",
-          },
-          {
-            from: "/experiments-plus/read-results",
-            to: "/pulse/read-pulse",
-          },
-          {
-            from: "/experiments-plus/rules",
-            to: "/experiments-plus/getting-group#rules",
-          },
-          {
-            from: "/experiments-plus/working-with",
-            to: "/experiments-plus",
-          },
-          {
-            from: "/insights/",
-            to: "/aggregated-impact",
-          },
-          {
-            from: "/dynamic-config/implement/",
-            to: "/dynamic-config/working-with",
-          },
-          {
-            from: "/metrics/metric-alerts",
-            to: "/product-analytics/alerts/",
-          },
-          {
-            from: "/statsig-warehouse-native/guides/assignment-sources/",
-            to: "/statsig-warehouse-native/configuration/assignment-sources",
-          },
-          {
-            from: "/guides/experiment-analysis/",
-            to: "/statsig-warehouse-native/introduction",
-          },
-          {
-            from: "/sdks/sdks-overview",
-            to: "/sdks/getting-started",
-          },
-          {
-            from: "/statsig-warehouse-native",
-            to: "/statsig-warehouse-native/introduction",
-          },
-          {
-            from: "/debugging",
-            to: "/sdk/debugging",
-          },
-          {
-            from: "/messages/serverRequiredUserID/",
-            to: "/concepts/user#why-is-an-id-always-required-for-server-sdks",
-          },
-          {
-            from: "/client/introduction/javascript-sdk",
-            to: "/client/javascript-sdk",
-          },
-          {
-            from: "/guides/landing-page-experiments",
-            to: "/guides/sidecar-experiments/introduction",
-          },
-          {
-            from: "/events-explorer",
-            to: "/product-analytics/drilldown",
-          },
-          {
-            from: "/server/concepts/user/",
-            to: "/concepts/user",
-          },
-          {
-            from: "/client/concepts/user/",
-            to: "/concepts/user",
-          },
-          {
-            from: "/client/javascript-sdk/react/init-strategies",
-            to: "/client/concepts/initialize",
-          },
-          {
-            from: "/client/concepts/bootstrapping",
-            to: "/client/concepts/initialize",
-          },
-          {
-            from: "/experiments-plus/experimentation/why-experiment",
-            to: "/experiments-plus#why-experiment",
-          },
-          {
-            from: "/experiments-plus/experimentation/scenarios",
-            to: "/experiments-plus#scenarios-for-experimentation",
-          },
-          {
-            from: "/experiments-plus/experimentation/common-terms",
-            to: "/experiments-plus#key-concepts-in-experimentation",
-          },
-          {
-            from: "/experiments-plus/experimentation/choosing-randomization-unit",
-            to: "/experiments-plus#choosing-the-right-randomization-unit",
-          },
-          {
-            from: "/js-migration",
-            to: "/client/javascript-sdk/migrating-from-statsig-js",
-          },
-          {
-            from: "/js-migration-rn",
-            to: "/client/javascript-sdk/migrating-from-statsig-js",
-          },
-          {
-            from: "/js-migration-expo",
-            to: "/client/javascript-sdk/migrating-from-statsig-js",
-          },
-          {
-            from: "/js-migration-react",
-            to: "/client/javascript-sdk/migrating-from-statsig-react",
-          },
-          {
-            from: "/layers/js-tutorial",
-            to: "/client/javascript-sdk#layers",
-          },
-          {
-            from: "/feature-flags/implement",
-            to: "/",
-          },
-          {
-            from: "/feature-flags/implement/client",
-            to: "/",
-          },
-          {
-            from: "/feature-flags/implement/server",
-            to: "/",
-          },
-          {
-            from: "/feature-flags/implement/http-api",
-            to: "/",
-          },
-          {
-            from: "/client/jsClientSDK",
-            to: "/client/javascript-sdk",
-          },
-          {
-            from: "/client/reactSDK",
-            to: "/client/javascript-sdk/react",
-          },
-          {
-            from: "/client/reactNative",
-            to: "/client/javascript-sdk/react-native",
-          },
-          {
-            from: "/client/reactNativeSDK",
-            to: "/client/javascript-sdk/react-native",
-          },
-          {
-            from: "/client/reactNativeExpoSDK",
-            to: "/client/javascript-sdk/expo",
-          },
-          {
-            to: "/",
-            from: "/category/walkthrough-guides",
-          },
-          {
-            to: "/client/javascript-sdk/next-js",
-            from: ["/guides/nextjs-feature-flags", "/client/javascript-sdk/next-js-pages-router", "/guides/nextjs-page-router-feature-flags", "/client/javascript-sdk/next-js-app-router"],
-          },
-          {
-            to: "/product-analytics/drilldown",
-            from: "/mex/drilldown",
-          },
-          {
-            to: "/product-analytics/dashboards",
-            from: "/mex/dashboards",
-          },
-          {
-            to: "/product-analytics/funnels",
-            from: "/mex/funnels",
-          },
-          {
-            to: "/product-analytics/retention",
-            from: "/mex/retention",
-          },
-          {
-            to: "/product-analytics/overview",
-            from: "/mex/overview",
-          },
-          {
-            to: "/product-analytics/overview",
-            from: ["/product-analytics", "/mex"],
-          },
-          {
-            to: "/integrations/terraform/introduction",
-            from: "/integrations/terraform",
+            to: "/feature-flags/overview",
+            from: ["/feature-gates/overview", "/feature-gates", "/feature-flags", "/feature-gates/working-with", "/feature-flags/working-with", "/feature-gates/implement", "/feature-gates/implement/client", "/feature-gates/implement/server", "/feature-gates/implement/http-api"],
           },
           {
             to: "/feature-flags/create",
             from: ["/feature-gates/create-new", "/feature-flags/create-new"],
-          },
-          {
-            to: "/feature-flags/overview",
-            from: ["/feature-gates/overview", "/feature-gates", "/feature-flags", "/feature-gates/working-with", "/feature-flags/working-with"],
           },
           {
             to: "/feature-flags/create#add-a-rule-to-your-feature-gate",
@@ -387,20 +195,187 @@ const config: Config = {
             from: "/feature-gates/best-practices",
           },
           {
-            to: "/feature-flags/overview",
-            from: ["/feature-gates/implement", "/feature-gates/implement/client", "/feature-gates/implement/server", "/feature-gates/implement/http-api"],
+            from: "/feature-flags/implement",
+            to: "/",
           },
           {
-            to: "/product-analytics/overview",
-            from: "/metrics/events-explorer",
+            from: "/feature-flags/implement/client",
+            to: "/",
+          },
+          {
+            from: "/feature-flags/implement/server",
+            to: "/",
+          },
+          {
+            from: "/feature-flags/implement/http-api",
+            to: "/",
+          },
+
+          {
+            from: "/experiments-plus/read-results",
+            to: "/pulse/read-pulse",
+          },
+          {
+            from: "/experiments-plus/rules",
+            to: "/experiments-plus/getting-group#rules",
+          },
+          {
+            from: "/experiments-plus/working-with",
+            to: "/experiments-plus",
+          },
+          {
+            from: "/experiments-plus/experimentation/why-experiment",
+            to: "/experiments-plus#why-experiment",
+          },
+          {
+            from: "/experiments-plus/experimentation/scenarios",
+            to: "/experiments-plus#scenarios-for-experimentation",
+          },
+          {
+            from: "/experiments-plus/experimentation/common-terms",
+            to: "/experiments-plus#key-concepts-in-experimentation",
+          },
+          {
+            from: "/experiments-plus/experimentation/choosing-randomization-unit",
+            to: "/experiments-plus#choosing-the-right-randomization-unit",
           },
           {
             to: "/experiments-plus/stop-assignments",
             from: "/experiments-plus/pause-assignment",
           },
+
+          {
+            to: "/product-analytics/overview",
+            from: ["/product-analytics", "/mex", "/mex/overview", "/metrics/events-explorer"],
+          },
+          {
+            to: "/product-analytics/drilldown",
+            from: ["/mex/drilldown", "/events-explorer"],
+          },
+          {
+            to: "/product-analytics/dashboards",
+            from: "/mex/dashboards",
+          },
+          {
+            to: "/product-analytics/funnels",
+            from: "/mex/funnels",
+          },
+          {
+            to: "/product-analytics/retention",
+            from: "/mex/retention",
+          },
+          {
+            from: "/metrics/metric-alerts",
+            to: "/product-analytics/alerts/",
+          },
+
+          {
+            from: "/client/introduction/javascript-sdk",
+            to: "/client/javascript-sdk",
+          },
+          {
+            from: "/client/jsClientSDK",
+            to: "/client/javascript-sdk",
+          },
+          {
+            from: "/client/reactSDK",
+            to: "/client/javascript-sdk/react",
+          },
+          {
+            from: "/client/reactNative",
+            to: "/client/javascript-sdk/react-native",
+          },
+          {
+            from: "/client/reactNativeSDK",
+            to: "/client/javascript-sdk/react-native",
+          },
+          {
+            from: "/client/reactNativeExpoSDK",
+            to: "/client/javascript-sdk/expo",
+          },
+          {
+            to: "/client/javascript-sdk/next-js",
+            from: ["/guides/nextjs-feature-flags", "/client/javascript-sdk/next-js-pages-router", "/guides/nextjs-page-router-feature-flags", "/client/javascript-sdk/next-js-app-router"],
+          },
+          {
+            to: "/client/javascript-sdk/migrating-from-statsig-js",
+            from: ["/js-migration", "/js-migration-rn", "/js-migration-expo"],
+          },
+          {
+            from: "/js-migration-react",
+            to: "/client/javascript-sdk/migrating-from-statsig-react",
+          },
+          {
+            from: "/layers/js-tutorial",
+            to: "/client/javascript-sdk#layers",
+          },
+          {
+            to: "/client/concepts/initialize",
+            from: ["/client/javascript-sdk/react/init-strategies", "/client/concepts/bootstrapping"],
+          },
+          {
+            to: "/concepts/user",
+            from: ["/server/concepts/user/", "/client/concepts/user/"],
+          },
+
+          {
+            from: "/statsig-warehouse-native/guides/assignment-sources/",
+            to: "/statsig-warehouse-native/configuration/assignment-sources",
+          },
+          {
+            from: "/guides/experiment-analysis/",
+            to: "/statsig-warehouse-native/introduction",
+          },
+          {
+            from: "/statsig-warehouse-native",
+            to: "/statsig-warehouse-native/introduction",
+          },
+
+          {
+            from: "/stats-engine/offlineaa",
+            to: "/guides/aa-test#offline-aa-tests",
+          },
+          {
+            from: "/pulse",
+            to: "/pulse/read-pulse",
+          },
+
           {
             to: "/console-api/all-endpoints-generated",
             from: "/console-api/all-endpoints",
+          },
+
+          {
+            from: "/insights/",
+            to: "/aggregated-impact",
+          },
+          {
+            from: "/dynamic-config/implement/",
+            to: "/dynamic-config/working-with",
+          },
+          {
+            from: "/sdks/sdks-overview",
+            to: "/sdks/getting-started",
+          },
+          {
+            from: "/debugging",
+            to: "/sdk/debugging",
+          },
+          {
+            from: "/messages/serverRequiredUserID/",
+            to: "/concepts/user#why-is-an-id-always-required-for-server-sdks",
+          },
+          {
+            from: "/guides/landing-page-experiments",
+            to: "/guides/sidecar-experiments/introduction",
+          },
+          {
+            to: "/integrations/terraform/introduction",
+            from: "/integrations/terraform",
+          },
+          {
+            to: "/",
+            from: "/category/walkthrough-guides",
           },
         ],
       },
