@@ -1,0 +1,102 @@
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    statsig "github.com/statsig-io/statsig-server-core/statsig-go/src"
+)
+
+// Example implementation of the IObservabilityClient interface
+type MyObservabilityClient struct {
+    // Your observability system integration here
+}
+
+func (c *MyObservabilityClient) Init(ctx context.Context) error {
+    // Initialize your observability client
+    fmt.Println("Observability client initialized")
+    return nil
+}
+
+func (c *MyObservabilityClient) Increment(metricName string, value int, tags map[string]interface{}) error {
+    // Report counter metrics to your system
+    fmt.Printf("Increment: %s = %d, tags: %v\n", metricName, value, tags)
+    return nil
+}
+
+func (c *MyObservabilityClient) Gauge(metricName string, value float64, tags map[string]interface{}) error {
+    // Report gauge metrics to your system
+    fmt.Printf("Gauge: %s = %f, tags: %v\n", metricName, value, tags)
+    return nil
+}
+
+func (c *MyObservabilityClient) Distribution(metricName string, value float64, tags map[string]interface{}) error {
+    // Report distribution metrics to your system
+    fmt.Printf("Distribution: %s = %f, tags: %v\n", metricName, value, tags)
+    return nil
+}
+
+func (c *MyObservabilityClient) ShouldEnableHighCardinalityForThisTag(tag string) bool {
+    // Return true to enable high cardinality for this tag
+    // High cardinality tags can create many unique metric combinations
+    return false // Default to false for performance
+}
+
+func (c *MyObservabilityClient) Shutdown(ctx context.Context) error {
+    // Clean up your observability client
+    fmt.Println("Observability client shutdown")
+    return nil
+}
+
+// Usage example
+func main() {
+    // Create your observability client
+    obsClient := &MyObservabilityClient{}
+    
+    // Configure Statsig options with the observability client
+    options := &statsig.Options{
+        ObservabilityClient: obsClient,
+        // ... other options
+    }
+    
+    // Initialize Statsig with the observability client
+    statsig.InitializeWithOptions("your-server-secret-key", options)
+    
+    // The SDK will now automatically report metrics to your observability client
+    // Metrics are prefixed with "statsig.sdk." (e.g., "statsig.sdk.initialize")
+}
+```
+
+### Interface Definition
+
+The `IObservabilityClient` interface allows you to integrate with your own monitoring and observability systems:
+
+```go
+type IObservabilityClient interface {
+    // Initialize the observability client
+    Init(ctx context.Context) error
+    
+    // Report counter metrics (e.g., number of feature gate checks)
+    Increment(metricName string, value int, tags map[string]interface{}) error
+    
+    // Report gauge metrics (e.g., current number of active users)
+    Gauge(metricName string, value float64, tags map[string]interface{}) error
+    
+    // Report distribution metrics (e.g., response times, payload sizes)
+    Distribution(metricName string, value float64, tags map[string]interface{}) error
+    
+    // Control high cardinality tag filtering for performance
+    ShouldEnableHighCardinalityForThisTag(tag string) bool
+    
+    // Clean up resources when shutting down
+    Shutdown(ctx context.Context) error
+}
+```
+
+### Key Features
+
+- **Automatic Metric Prefixing**: All metrics are automatically prefixed with `statsig.sdk.`
+- **Error Recovery**: The SDK handles panics and errors from your observability client gracefully
+- **High Cardinality Filtering**: Control which tags are included to manage metric cardinality
+- **Context Support**: All initialization and shutdown methods support Go context for timeout control
+- **Thread Safety**: The SDK handles concurrent access to your observability client safely

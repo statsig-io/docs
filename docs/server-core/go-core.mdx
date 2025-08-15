@@ -4,7 +4,7 @@ title: Go Server SDK
 keywords:
   - owner:brock
 last_update:
-  date: 2025-07-31
+  date: 2025-08-12
 ---
 
 import {
@@ -44,6 +44,7 @@ import Flush from "./go/_flush.mdx";
 import LocalOverridesSnippet from "./go/_localOverrides.mdx";
 import { Snippets as ManualExposureSnippets } from "./go/_manualExposures.mdx";
 import MoreFAQs from "./go/_faqs.mdx";
+import ObservabilityClientContent from "./go/_observability_client.mdx";
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -82,7 +83,7 @@ export const Builder = SDKDocsBuilder({
     [PersistentStorage, { }],
     [DataStore, { }],
     [OutputLogger, { }],
-    [ObservabilityClient, { }],
+    [ObservabilityClient, { content: <ObservabilityClientContent /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]
 })
