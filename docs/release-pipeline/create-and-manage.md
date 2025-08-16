@@ -5,7 +5,7 @@ slug: /release-pipeline/create-and-manage
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-07-23
+  date: 2025-07-29
 ---
 
 # Creating and Managing Release Pipelines
@@ -64,6 +64,10 @@ To modify an existing pipeline:
 3. Click **Save** to apply your changes
 
 **Important:** Pipelines with active rollouts currently in progress cannot be modified until those rollouts complete or are aborted.
+
+### Email Notifications
+
+When a release pipeline finishes on a feature gate, an email notification will be automatically sent to the gate owner to inform them of the completion.
 
 ### Viewing Pipeline References
 
