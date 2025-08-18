@@ -440,7 +440,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "prompts/prompts",
+          id: "ai-evals/ai-evals",
           className: "ai-icon-2 sidebar-icon",
         },
       ],
