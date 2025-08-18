@@ -439,10 +439,12 @@ const sidebars: SidebarsConfig = {
           className: "ai-icon sidebar-icon",
         },
         {
-          type: "doc",
+          type: "category",
+          label: "A I Evals"
           id: "ai-evals/ai-evals",
           className: "ai-icon-2 sidebar-icon",
           items: [
+            "ai-evals/ai-evals",
             "ai-evals/prompts",
             "ai-evals/offline-evals",
             "ai-evals/online-evals",
