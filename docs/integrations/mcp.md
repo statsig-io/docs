@@ -77,6 +77,15 @@ The configuration file is located at:
 - **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
 - **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
 
+## **Setting up in Claude Code**
+
+On Claude Code, we recommend using the http transport directly, run this command on the command line anywhere you use Claude Code:
+
+```bash 
+claude mcp add --transport http statsig-local https://api.statsig.com/v1/mcp \
+  --header "statsig-api-key: console-YOUR-CONSOLE-API-KEY"
+```
+
 ## Use Cases
 
 The Statsig MCP server now supports both `GET` and `POST` requests. This means tools can not only read data (like stale gates) but also make updates, if your API key has write permissions. We've found the Statsig MCP server especially useful for:
