@@ -442,8 +442,11 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "AI Evals",
           className: "ai-icon-2 sidebar-icon",
+          link: {
+            type: "doc",
+            id: "ai-evals/overview",
+          },
           items: [
-            "ai-evals/overview",
             "ai-evals/prompts",
             "ai-evals/offline-evals",
             "ai-evals/online-evals",
