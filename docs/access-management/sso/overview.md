@@ -31,17 +31,17 @@ To enable SSO on Statsig, you will need the following from your OIDC Provider:
 
 Once you have obtained all of the information mentioned above:
 
-1. Navigate to your Organization's [`Basic Settings` page](https://console.statsig.com/organization) and click the `Enable` button for Single Sign-on.
+1. Navigate to your Organization's [`Basic Settings` page](https://console.statsig.com/settings?tab=organization) and click the `Enable` button for Single Sign-on.
 
-![image](https://user-images.githubusercontent.com/31516123/166059008-f8607e0c-54a9-402f-8515-a4170233ceb6.png)
+![image](https://github.com/user-attachments/assets/a31ba14d-9476-4897-afc6-5c39c2f932c9)
 
 2. Provide the information acquired from your OIDC Provider into the fields in the dialog and click `Enable`.
 
-![image](https://user-images.githubusercontent.com/75151332/129312057-c6330f5d-7d8a-4d01-b8df-78500cdabf66.png)
+![image](https://github.com/user-attachments/assets/d2143c48-f144-4544-a77b-af2e2d486cc8)
 
 3. After clicking `Enable`, an SSO link will be shown that can be sent to your team to allow them to login to Statsig through your OIDC Provider.
 
-![image](https://user-images.githubusercontent.com/75151332/128761399-0cd83086-2f7b-4861-a463-da596c327f17.png)
+![image](https://github.com/user-attachments/assets/e3743107-2e26-4944-b2fb-f90536163b6f)
 
 Users that sign in through an SSO link will automatically join any Projects that have SSO enabled with the same OIDC Provider, and have access only to those Projects. Users that sign in through an SSO link will also not be able to edit or view any of their personal account settings. By default, users who are provisioned via SSO will be assigned the "Member" Role. 
 
