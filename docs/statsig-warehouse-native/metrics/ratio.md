@@ -4,7 +4,7 @@ sidebar_label: Ratio
 keywords:
   - owner:vm
 last_update:
-  date: 2025-02-27
+  date: 2025-07-28
 ---
 
 ## Summary
@@ -23,18 +23,29 @@ At the unit level, ratio metrics will calculate both component metric's unit lev
 
 At the group level, the mean is calculated as the total group calculation of the first metric, divided by the total group value of the second metric.
 
-Note that the denominator is **not** the number of units in the experiment; the normalization is by the denominator metric.
+:::note
+The denominator is **not** the number of units in the experiment; the normalization is by the denominator metric.
+:::
 
 This would look like the SQL below:
 
 ```
 -- Denominator (Checkouts)
 SELECT
-  unit_id,
-  group_id,
+  source_data.unit_id,
+  exposure_data.group_id,
   COUNT(1) as denominator
 FROM source_data
-GROUP BY unit_id, group_id;
+JOIN exposure_data
+ON
+  -- Only include users who saw the experiment
+  source_data.unit_id = exposure_data.unit_id
+  -- Only include data from after the user saw the experiment
+  -- In this case exposure_data is already deduped to the "first exposure"
+  AND source_data.timestamp >= exposure_data.timestamp
+GROUP BY
+  source_data.unit_id,
+  exposure_data.group_id;
 
 -- Numerator (Revenue)
 SELECT

@@ -4,7 +4,7 @@ title: iOS/tvOS/macOS Client SDK
 keywords:
   - owner:brock
 last_update:
-  date: 2024-09-25
+  date: 2025-07-23
 ---
 
 import {
@@ -42,6 +42,7 @@ import MoreFAQs from "./iOS/_faqs.mdx";
 import Options from "./iOS/_options.mdx";
 import { Snippets as ManualExposureSnippets } from "./iOS/_manualExposures.mdx";
 import ShutdownSnippet from "./iOS/_shutdown.mdx";
+import * as UsingPersistentValues from "./iOS/_usingPersistentValues.mdx";
 import LocalOverridesSnippet from "./iOS/_localOverrides.mdx";
 import * as StatsigListening from "./iOS/_statsigListening.mdx";
 import { GetStableID, OverrideStableID } from "./iOS/_stableID.mdx";
@@ -82,6 +83,7 @@ export const Builder = SDKDocsBuilder({
     [StatsigUser, { updateUser: <UpdateUser /> }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [UsingPersistentValues, {}],
     [LocalOverrides, { localOverrides: <LocalOverridesSnippet /> }],
     [ManualExposures, { addedInVersion: "1.16.0", ...ManualExposureSnippets }],
     [

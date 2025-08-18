@@ -5,7 +5,7 @@ slug: /experiments-plus/monitor
 keywords:
   - owner:vm
 last_update:
-  date: 2024-10-02
+  date: 2025-07-23
 ---
 
 Once you turn on your experiment, you can monitor the health of your experiment and view the exposures for the control and variants groups.
@@ -28,8 +28,6 @@ To monitor the status of your experiment,
     - **p-value between 0.001 and 0.01**: Warning (yellow) for possible imbalance. The p-value is not low enough to confidently say that there is a real imbalance. In this case the recommendation is to wait and check again the next day.
     - **p-value < 0.01 and group size differs from expected size by less than 0.1% absolute**: Warning (yellow) indicating that an imbalance is possible, but the impact to the experiment is expected to be small. This scenario typically occurs in large web experiments (1M+ users) where small variations in performance across groups can cause a small fraction of exposures to be dropped for certain groups more than others.
     - **p-value < 0.001 and more than 0.1% absolute deviation from expected group size**: Alert (red) meaning there is likely a problem with the experiment exposures and experiment results may not be trustworthy.
-
-    **For continuous gates**: When users are moving from the non-analytic group to the analytic group during a rollout stage, the balance check compares pass exposure count against fail exposure count. This approach prevents false health check failures that would occur if the standard balance check were used during continuous rollouts. The balance check reverts to the standard approach once no users are actively moving between groups.
 
     Read [more](/stats-engine/methodologies/srm-checks) on our SRM methodology and Statsig's debugging tool.
 

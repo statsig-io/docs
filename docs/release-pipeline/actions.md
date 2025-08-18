@@ -5,7 +5,7 @@ slug: /release-pipeline/actions
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-04-18
+  date: 2025-07-23
 ---
 
 # Managing Release Actions
@@ -27,7 +27,10 @@ Kick off a phase that requires a manual approval before rollout begins. This is 
 
 ### Pause
 **What it does:**
-Stops the bake timer between two phases. Useful if you want to delay rolling out the next phase in order to investigate the current phase. Note: Pause does not stop the current phase — only the timer to move to the next phase.
+Stops the bake timer between two phases. Useful if you want to delay rolling out the next phase in order to investigate the current phase. 
+:::note
+Pause does not stop the current phase — only the timer to move to the next phase.
+:::
 
 **How to use it:**
 1. Go to the Release Pipeline status page

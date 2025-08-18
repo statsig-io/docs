@@ -5,7 +5,7 @@ slug: /pulse/best-practices-whn
 keywords:
   - owner:vm
 last_update:
-  date: 2022-12-20
+  date: 2025-07-23
 ---
 
 import PulseBestPractices from '@site/docs/pulse/best-practices.md';

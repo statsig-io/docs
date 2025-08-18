@@ -56,7 +56,11 @@ const sidebars: SidebarsConfig = {
               type: "category",
               label: "Migration Guides",
               collapsed: true,
-              items: ["guides/open-source-script", "guides/ui-based-tool"],
+              items: [
+                "guides/migrate-from-launchdarkly",
+                "guides/open-source-script",
+                "guides/ui-based-tool",
+              ],
             },
           ],
         },
@@ -122,7 +126,7 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: "category",
-          label: "Feature Flags",
+          label: "Feature Management",
           className: "feature-icon sidebar-icon",
           items: [
             {
@@ -135,6 +139,7 @@ const sidebars: SidebarsConfig = {
                 "feature-flags/overrides",
                 "feature-flags/test-gate",
                 "feature-flags/view-exposures",
+                "feature-flags/pre-post-results",
                 "feature-flags/multiple-rollout-stages",
                 "feature-flags/scheduled-rollouts",
                 {
@@ -233,19 +238,6 @@ const sidebars: SidebarsConfig = {
               items: [
                 {
                   type: "category",
-                  label: "Contextual (CMAB)",
-                  link: {
-                    type: "doc",
-                    id: "autotune/contextual/introduction",
-                  },
-                  items: [
-                    "autotune/contextual/getting-started",
-                    "autotune/contextual/monitoring",
-                    "autotune/contextual/methodology",
-                  ],
-                },
-                {
-                  type: "category",
                   label: "Autotune (MAB)",
                   link: {
                     type: "doc",
@@ -255,6 +247,19 @@ const sidebars: SidebarsConfig = {
                     "autotune/setup",
                     "autotune/monitoring",
                     "autotune/multi-armed-bandit",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Contextual (CMAB)",
+                  link: {
+                    type: "doc",
+                    id: "autotune/contextual/introduction",
+                  },
+                  items: [
+                    "autotune/contextual/getting-started",
+                    "autotune/contextual/monitoring",
+                    "autotune/contextual/methodology",
                   ],
                 },
                 "autotune/bandit-faq",
@@ -409,7 +414,7 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "Web Analytics",
           className: "web-icon sidebar-icon",
-          items: ["webanalytics/overview"],
+          items: ["webanalytics/overview", "webanalytics/autocapture"],
         },
         {
           type: "category",
@@ -424,8 +429,19 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "session-replay/cli-session-replay",
+          label: "CLI Session Replay",
+          className: "cli-session-replay-icon sidebar-icon",
+        },
+        {
+          type: "doc",
           id: "integrations/mcp",
           className: "ai-icon sidebar-icon",
+        },
+        {
+          type: "doc",
+          id: "prompts/prompts",
+          className: "ai-icon-2 sidebar-icon",
         },
       ],
     },
@@ -754,21 +770,22 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Dev Concepts",
+      label: "SDK Concepts",
       collapsed: false,
       collapsible: false,
       items: [
         "sdks/getting-started",
-        "sdks/client-vs-server",
         "concepts/user",
         "client/concepts/initialize",
+        "sdks/how-evaluation-works",
         "sdks/debugging",
+        "sdks/client-vs-server",
         "compliance/data_privacy_for_mobile",
       ],
     },
     {
       type: "category",
-      label: "Client SDKs",
+      label: "Client SDK Reference",
       collapsed: false,
       collapsible: false,
       items: [
@@ -888,7 +905,7 @@ const sidebars: SidebarsConfig = {
 
     {
       type: "category",
-      label: "Server SDKs",
+      label: "Server SDK Reference",
       collapsed: false,
       collapsible: false,
       items: [
@@ -925,6 +942,12 @@ const sidebars: SidebarsConfig = {
           ],
         },
         {
+          className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
+          type: "doc",
+          id: "server-core/dotnetCoreSDK",
+          label: ".NET (Beta)",
+        },
+        {
           className: "ruby-icon sidebar-icon sdk-sidebar-icon",
           type: "doc",
           id: "server/rubySDK",
@@ -938,11 +961,6 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "More Server SDKs",
           items: [
-            {
-              className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
-              type: "doc",
-              id: "server/dotnetSDK",
-            },
             {
               className: "cpp-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
@@ -962,6 +980,28 @@ const sidebars: SidebarsConfig = {
               className: "php-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
               id: "server-core/php-core",
+            },
+            {
+              className: "golang-icon sidebar-icon sdk-sidebar-icon",
+              type: "category",
+              label: "Go Core (Beta)",
+              items: [
+                {
+                  type: "doc",
+                  id: "server-core/go-core",
+                  label: "Go Core SDK",
+                },
+                {
+                  type: "doc",
+                  id: "server-core/go/migration",
+                  label: "Migration Guide",
+                },
+              ],
+            },
+            {
+              className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server/dotnetSDK",
             },
           ],
         },
@@ -1048,6 +1088,7 @@ const sidebars: SidebarsConfig = {
         "console-api/gates",
         "console-api/segments",
         "console-api/dynamic-configs",
+        "console-api/param-store",
         "console-api/experiments",
         "console-api/holdouts",
         "console-api/layers",
@@ -1068,6 +1109,8 @@ const sidebars: SidebarsConfig = {
         },
         "console-api/usage-billing",
         "console-api/rules",
+        "console-api/warehouse-connections",
+        "console-api/change-validation",
       ],
     },
     {

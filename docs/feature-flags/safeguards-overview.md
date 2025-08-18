@@ -5,17 +5,13 @@ slug: /safeguards/overview
 keywords:
   - owner:Shubham
 last_update:
-  date: 2025-06-05
+  date: 2025-07-29
 ---
 
 Safeguards help you ship with confidence by continuously monitoring critical metrics and automatically intervening in your Feature Gate rollouts when risk thresholds are exceeded. This ensures faster recovery from issues, eliminates the need for constant manual checks, and protects your users from unintended impact.
 
 :::info
 Safeguards is currently in open beta and is available on our Pro and Enterprise billing tiers. Please reach out to us if you have questions or feedback.
-:::
-
-:::info
-Safeguards is only available on Cloud right now. We are actively working on the WHN version and will be announcing it in the next few weeks! Reach out to us over Slack if you'll be interested in the WHN version!
 :::
 
 ## When to use Safeguards

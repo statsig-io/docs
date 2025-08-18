@@ -4,7 +4,7 @@ title: Single Sign-On With Azure AD/Office 365
 keywords:
   - owner:shubham
 last_update:
-  date: 2024-11-01
+  date: 2025-07-23
 ---
 ## Requirements
 

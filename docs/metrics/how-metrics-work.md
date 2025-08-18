@@ -5,7 +5,7 @@ slug: /metrics/how-metrics-work
 keywords:
   - owner:shubham
 last_update:
-  date: 2024-10-31
+  date: 2025-07-23
 ---
 
 # How Metrics Work on Statsig

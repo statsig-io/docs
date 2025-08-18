@@ -4,7 +4,7 @@ sidebar_label: Percentile
 keywords:
   - owner:vm
 last_update:
-  date: 2024-11-13
+  date: 2025-07-28
 ---
 
 ## Summary
@@ -26,10 +26,17 @@ This would look like the SQL below:
 ```
 -- Group Level
 SELECT
-  group_id,
-  PERCENTILE(value, percentile_level) as value,
-  COUNT(distinct user_id) as population
+  exposures_data.group_id,
+  PERCENTILE(user_data.value, percentile_level) as value,
+  COUNT(distinct user_data.user_id) as population
 FROM user_data
+JOIN exposure_data
+ON
+  -- Only include users who saw the experiment
+  source_data.unit_id = exposure_data.unit_id
+  -- Only include data from after the user saw the experiment
+  -- In this case exposure_data is already deduped to the "first exposure"
+  AND source_data.timestamp >= exposure_data.timestamp
 WHERE value IS NOT NULL
 GROUP BY group_id;
 ```

@@ -24,7 +24,8 @@ import {
   ObservabilityClient,
   Reference,
   FieldsNeededMethods,
-  ClientInitResponse
+  ClientInitResponse,
+  EventSubscriptions
 } from "./Templates/index.mdx";
 
 import Preamble from "./_preamble.mdx";
@@ -47,6 +48,7 @@ import ObservabilityClientContent from "./node/_observability_client.mdx";
 import PersistentStorageContent from "./node/_persistent_storage.mdx";
 import * as ReferenceSnippets from "./node/_reference.mdx";
 import ClientInitResponseSnippet from "./node/_clientInitResponse.mdx";
+import EventSubscriptionsSnippet from "./node/_eventSubscriptions.mdx";
 
 
 export const Builder = SDKDocsBuilder({
@@ -88,6 +90,7 @@ export const Builder = SDKDocsBuilder({
       snippet: <ClientInitResponseSnippet />,
       signature: () => <code>getClientInitializeResponse</code>,
     }],
+    [EventSubscriptions, { snippet: <EventSubscriptionsSnippet /> }],
     [LocalOverrides, { snippet: <OverridesSnippet />,},],
     [PersistentStorage, { content: <PersistentStorageContent /> }],
     [DataStore, { content: <DataStoreContent /> }],

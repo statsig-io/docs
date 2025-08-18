@@ -5,7 +5,7 @@ slug: /experiments-plus/switchback-tests
 keywords:
   - owner:vm
 last_update:
-  date: 2024-05-09
+  date: 2025-07-23
 ---
 
 # What is Switchback Testing? 
@@ -99,6 +99,10 @@ There are a few different ways to define targeting, namely-
 
 
 **ID Type** lets you specify an ID type to randomize across, e.g. choosing a custom ID such as CityID will automatically randomize different CityIDs across Treatment/ Control over the course of the different switchback windows. This is useful if you have a very large or dynamic number of experiment units you want to randomize across over the course of the experiment. 
+
+:::info
+Randomized bucketing is an advanced feature, please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you want this enabled.
+:::
 
 ![Screen Shot 2023-10-04 at 11 44 44 AM](https://github.com/statsig-io/docs/assets/101903926/3c79d1c1-8b15-401c-9635-6b3d4b08d416)
 

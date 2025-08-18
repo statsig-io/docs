@@ -5,7 +5,7 @@ slug: /multi-armed-bandit
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-14
+  date: 2025-07-23
 ---
 
 ## Model

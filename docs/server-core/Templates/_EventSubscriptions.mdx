@@ -1,0 +1,39 @@
+## SDK Event Subscriptions
+
+The Statsig SDK provides an event subscription system that allows you to listen for evaluation events in real-time. This feature is useful for debugging, analytics, custom logging, and integrating with external systems.
+
+### Supported Events
+
+The SDK supports subscribing to the following evaluation events:
+
+- **`gate_evaluated`** - Fired when a feature gate is evaluated for a user
+- **`dynamic_config_evaluated`** - Fired when a dynamic config is retrieved for a user  
+- **`experiment_evaluated`** - Fired when an experiment is evaluated for a user
+- **`layer_evaluated`** - Fired when a layer is evaluated for a user
+- **`"*"`** - Subscribe to all evaluation events
+
+### SDK Event Data
+
+Each event includes relevant context about the evaluation:
+
+- **Gate Evaluated Events** include: `gate_name`, `value` (boolean), `rule_id`, `reason`
+- **Dynamic Config Events** include: the full `dynamic_config` object with values and metadata
+- **Experiment Events** include: the full `experiment` object with variant assignment and parameters
+- **Layer Events** include: the full `layer` object with allocated experiment and parameters
+
+### Use Cases
+
+Event subscriptions are particularly useful for:
+
+- **Debugging**: Monitor which features are being evaluated and their results
+- **Analytics**: Track feature usage patterns and user segments
+- **Custom Logging**: Send evaluation data to your own logging systems
+- **Integration**: Forward events to external analytics or monitoring tools
+- **Testing**: Verify that features are being evaluated as expected
+
+### Best Practices
+
+- **Clean up subscriptions**: Always unsubscribe when you no longer need to listen for events to prevent memory leaks
+- **Handle event data carefully**: Event objects may contain sensitive user information depending on your configuration
+- **Use specific event types**: Subscribe to specific events rather than "*" when possible for better performance
+- **Avoid heavy processing**: Keep event handlers lightweight to avoid impacting SDK performance

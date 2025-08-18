@@ -5,7 +5,7 @@ slug: /layers
 keywords:
   - owner:vm
 last_update:
-  date: 2024-12-11
+  date: 2025-07-23
 ---
 
 ## What are Layers?

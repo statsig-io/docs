@@ -3,7 +3,7 @@ title: Pulumi
 keywords:
   - owner:jason
 last_update:
-  date: 2025-06-06
+  date: 2025-07-23
 ---
 
 The [Statsig Pulumi Provider](https://www.pulumi.com/registry/packages/statsig/) allows you to configure your gates and experiments using Pulumi Infrastructure as Code. The provider synchronizes with Statsig via the Console API. If there is something you need to perform that isn't supported by the Pulumi Provider, checkout the [Console API](/console-api/introduction).
@@ -103,4 +103,4 @@ Coming Soon:
 - Dynamic Configs
 - Segments
 
-If you need more from our Pulumi Provider, please feel free to ask in [Slack support](https://statsigcommunity.slack.com/archives/C01RAKM10TD). This will help us prioritize what to work on.
+If you need more from our Pulumi Provider, please feel free to ask in the [Statsig Slack channel](https://statsig.com/slack).

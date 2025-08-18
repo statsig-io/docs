@@ -7,7 +7,7 @@ slug: /webanalytics/overview
 keywords:
   - owner:skin
 last_update:
-  date: 2025-01-29
+  date: 2025-07-29
 ---
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
@@ -17,43 +17,178 @@ import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
 With Web Analytics and Statsig Dashboards you can easily gather insights such as number of visitors, views, sessions, how long sessions last, error rates, usage journey, and more.
 
+You can see the events flowing in your metrics page once you add web analytics to your application: https://console.statsig.com/metrics/events
+
 ![image](https://github.com/statsig-io/js-client/assets/74588208/9b581024-3739-402d-a62d-c91f76adc784)
 
-# Getting Started
+## Getting Started
 
 Follow these simple steps to get started with Web Analytics.
 
-## Install Statsig script on your website
+### Option 1: HTML Script Installation
 
-```
+The simplest way to get started is by adding a single script tag to your website:
+
+```html
 <script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=[YOUR_CLIENT_KEY]"></script>
 ```
 
-Get YOUR_CLIENT_KEY from Project Settings -> Keys & Environments. Reveal the Client API Key, copy, and paste it over the [YOUR-API-KEY] in the snippet above
+Get YOUR_CLIENT_KEY from Project Settings -> Keys & Environments. Reveal the Client API Key, copy, and paste it over the [YOUR_CLIENT_KEY] in the snippet above.
 
 ![image](https://github.com/statsig-io/js-client/assets/74588208/0180a38a-2b3d-43c6-aa8e-4ea04c8ac751)
 
-## Release your changes
+### Option 2: HTML Script with Advanced Control
 
-Once your changes are live, you'll start to see the events flowing in your metrics page: https://console.statsig.com/metrics/events
+For more control over initialization and configuration, you can manually initialize the Statsig client:
 
-# Event Capture
+```html
+<script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js"></script>
+<script>
+  const { StatsigClient, StatsigAutoCapturePlugin, StatsigSessionReplayPlugin } = window.Statsig;
 
-Out of the box, autocapture includes:
-* Click events with click target info, current page url `auto_capture::click`
-* Page View Events with page url and query string values `auto_capture::page_view`
-* Form Submission Events `auto_capture::form_submit`
-* Page Performance data `auto_capture::performance`
+  const client = new StatsigClient(
+    'YOUR_CLIENT_KEY',       // put your client sdk key here - "client-XXXX"
+    { userID: 'optional' },  // set a userID here if you have one
+    { plugins: [
+      new StatsigAutoCapturePlugin(),
+      new StatsigSessionReplayPlugin()
+    ]}
+  ); 
 
-For more in-depth breakdown of auto capture event data, refer to [Using Autocapture](https://docs.statsig.com/guides/sidecar-experiments/measuring-experiments/#using-autocapture)
+  client.initializeAsync().catch((err) => console.error(err));
+</script>
+```
 
-For single page apps, or for more complex scenarios, look up how to [log events using Javascript](/client/javascript-sdk#event-logging).
+### Option 3: JavaScript Client SDK (React Bindings)
 
-You can also disable a subset of these events from the Statsig console under Project Settings > Analytics & Session Replay
+If using javascript client SDK or other frameworks, you can use the the corresponding SDK with the autocapture plugin (JS, React, Angular, etc.):
+
+```javascript
+import * as React from 'react';
+
+import { StatsigProvider } from '@statsig/react-bindings';
+import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
+
+  return (
+    <StatsigProvider
+      sdkKey={YOUR_CLIENT_KEY}
+      user={{ userID: 'a-user' }}
+      loadingComponent={
+        <div>Loading...</div>
+      }
+      options={{ plugins: [ new StatsigAutoCapturePlugin() ] }}>
+      <div>Hello</div>
+    </StatsigProvider>
+  );
+```
+
+## Autocaptured Events
+
+Statsig Web Analytics automatically captures the following events without any additional code:
+
+### Page Navigation Events
+- **`auto_capture::page_view`** - Triggered when a user navigates to a new page. Includes page URL, query parameters, referrer information, and metadata.
+- **`auto_capture::page_view_end`** - Triggered when a user leaves a page. Includes engagement metrics like scroll depth, time on page, and whether the exit was due to inactivity.
+
+### User Interaction Events  
+- **`auto_capture::click`** - Captures all click events with target element information, coordinates, and page context.
+- **`auto_capture::rage_click`** - Detects rapid repeated clicks in the same area, often indicating user frustration.
+- **`auto_capture::dead_click`** - Identifies clicks that don't result in any page changes or navigation, potentially indicating broken functionality.
+- **`auto_capture::form_submit`** - Captures form submission events with form metadata.
+- **`auto_capture::copy`** - Tracks when users copy text from your page, including the selected text content.
+
+### Technical Performance Events
+- **`auto_capture::error`** - Automatically captures JavaScript errors with stack traces, error messages, and context.
+- **`auto_capture::web_vitals`** - Captures Core Web Vitals metrics (see the [Web Vitals Events](#web-vitals-events) section below).
+- **`auto_capture::performance`** - Collects page load performance metrics including load times, DOM interactive time, and network transfer data. (deprecated, use `auto_capture::web_vitals` instead)
+
+### Session Events
+- **`auto_capture::session_start`** - Marks the beginning of a new user session.
+
+### Console Logging (Disabled by Default)
+- **`statsig::log_line`** - Captures console log output when explicitly enabled. This event is disabled by default and must be configured to activate.
+
+For details on how to enable console log autocapture, see [Console Log Capture Configuration](#console-log-capture-configuration).
+
+## Event Filtering and Console Configuration
+
+### Disabling Events via Console
+
+You can disable specific autocapture events from the Statsig console under Project Settings > Analytics & Session Replay:
 
 ![screenshot_2024-09-16_at_8 05 21___am](https://github.com/user-attachments/assets/1cba9cbc-9fbe-4024-9a7f-43184efc37b9)
 
-# Exploring using Metrics Explorer
+### Programmatic Event Filtering
+
+For more granular control, you can filter events programmatically using a custom filter function:
+
+```javascript
+const client = new StatsigClient(
+  'YOUR_CLIENT_KEY',
+  { userID: 'optional' },
+  { plugins: [
+    new StatsigAutoCapturePlugin({
+      eventFilterFunc: (event) => {
+        // Filter out events from admin pages
+        if (event.metadata.pageUrl && 
+            event.metadata.pageUrl.includes('/admin/')) {
+          return false;
+        }
+        return true;
+      }
+    })
+  ]}
+);
+```
+
+### Console Log Capture Configuration
+
+Console log capture is disabled by default but can be enabled with the following configuration:
+
+```javascript
+const client = new StatsigClient(
+  'YOUR_CLIENT_KEY',
+  { userID: 'optional' },
+  { plugins: [
+    new StatsigAutoCapturePlugin({
+      consoleLogAutoCaptureSettings: {
+        enabled: true,
+        logLevel: 'warn'
+      }
+    })
+  ]}
+);
+```
+
+## Web Vitals Events
+
+Statsig automatically captures Core Web Vitals metrics that are essential for measuring user experience and SEO performance:
+
+### The Four Core Web Vitals
+
+- **CLS (Cumulative Layout Shift)** - Measures visual stability by tracking unexpected layout shifts during page load. Lower scores indicate better user experience.
+
+- **FCP (First Contentful Paint)** - Measures loading performance by tracking when the first text or image is painted on the screen. Faster FCP times indicate better perceived performance.
+
+- **LCP (Largest Contentful Paint)** - Measures loading performance by tracking when the largest content element becomes visible. This metric correlates strongly with user-perceived load times.
+
+- **TTFB (Time to First Byte)** - Measures server response time by tracking how long it takes to receive the first byte of response from the server. This indicates server and network performance.
+
+These metrics are automatically collected and sent as `auto_capture::web_vitals` events, providing insights into your website's performance and user experience quality.
+
+## Single Page Application (SPA) Support
+
+Statsig Web Analytics automatically supports single page applications without any additional configuration. The system intelligently detects route changes through:
+
+### Automatic Route Change Detection
+
+- **Browser Navigation**: Listens for `popstate` events to detect when users use browser back/forward buttons
+- **Programmatic Navigation**: Automatically proxies `history.pushState` calls to detect when your application programmatically navigates to new routes
+- **Automatic Page Views**: Triggers new `auto_capture::page_view` events whenever route changes are detected
+
+This means that modern SPA frameworks like React Router, Vue Router, Angular Router, and others work seamlessly with Statsig Web Analytics without requiring manual page view tracking.
+
+## Exploring using Metrics Explorer
 
 In [Metrics Explorer](https://console.statsig.com/metrics/explore), you can dig deeper and explore your events by using complex filters and dimensions.  You can then explore your analysis to your dashboard.
 
@@ -61,33 +196,21 @@ More information on using Metrics Explorer like [Funnels and Retention is here](
 
 ![image](https://github.com/statsig-io/js-client/assets/74588208/f4ed6f2c-79ce-4e47-ba6d-8dbe69978cc0)
 
-You can see some example autocapture event details [here](/guides/sidecar-experiments/measuring-experiments).
+You can see some example autocapture event details [here](/webanalytics/autocapture).
 
-# Advanced Setup
+## Autocapture Settings
 
-If you need to add additional configurations, metadata about the user, or want to access the full `StatsigClient` to check feature gates and experiments or log events, you can used the advanced setup.  The script tag above will automatically initialize the SDK, but if you remove your SDK key you can manually configure your integration.
+The autocapture plugin or manual setup can take an optional `options` parameter to customize the autocapture settings.
 
-<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-session-replay-html.tsx" />
+- **`eventFilterFunc`**: `Optional[Callable[[AutoCaptureEvent], bool]]` - A function to filter events based on their metadata.
+- **`consoleLogAutoCaptureSettings`**: `Optional[ConsoleLogAutoCaptureSettings]` - An object to configure console log capture.
 
-## Event Filtering
+**consoleLogAutoCaptureSettings**: 
+- **`enabled`**: `Optional[bool]` - A boolean to enable or disable console log capture.
+- **`logLevel`**: `Optional[str]` - A string to set the minimum log level for console log capture.
+- **`sampleRate`**: `Optional[float]` - A number to set the sample rate for console log capture. (0-1)
 
-If you need to filter out specific auto capture events, you can use the `eventFilterFunc` option in the `StatsigAutoCapturePlugin`. This allows you to selectively disable certain events based on their properties.
+**eventFilterFunc**:
+- **`event`**: `AutoCaptureEvent` - The event object that is being captured.
+- **`return`**: `bool` - A boolean to return true to capture the event or false to ignore it.
 
-For example, to disable page view events while keeping all other auto capture events:
-
-```ts
-const client = new StatsigClient(
-  'client-key',
-  { userID: 'a-user' },
-  {
-    plugins: [
-      new StatsigAutoCapturePlugin({
-        eventFilterFunc: (event) =>
-          event.eventName !== AutoCaptureEventName.PAGE_VIEW,
-      }),
-    ],
-  },
-);
-```
-
-The `eventFilterFunc` receives the `AutoCaptureEvent` object and should return `true` to keep the event or `false` to filter it out. You can filter based on `eventName`, `value`, or any property in the `metadata`.

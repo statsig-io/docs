@@ -5,7 +5,7 @@ slug: /metrics/create-metric-tags
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-02-28
+  date: 2025-07-23
 ---
 
 # Tagging Metrics 

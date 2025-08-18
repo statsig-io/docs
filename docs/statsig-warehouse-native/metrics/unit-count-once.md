@@ -4,7 +4,7 @@ sidebar_label: Unit Count (One-Time Event)
 keywords:
   - owner:vm
 last_update:
-  date: 2024-06-12
+  date: 2025-07-28
 ---
 
 ## Summary
@@ -26,10 +26,18 @@ This would look like the SQL below:
 ```
 -- Unit Level
 SELECT distinct
-  unit_id,
-  group_id,
+  source_data.unit_id,
+  exposure_data.group_id,
   1 as value
-FROM source_data;
+FROM source_data
+JOIN exposure_data
+ON
+  -- Only include users who saw the experiment
+  source_data.unit_id = exposure_data.unit_id
+  -- Only include data from after the user saw the experiment
+  -- In this case exposure_data is already deduped to the "first exposure"
+  AND source_data.timestamp >= exposure_data.timestamp
+;
 
 -- Experiment
 SELECT
@@ -49,6 +57,8 @@ GROUP BY group_id;
 ```
 
 ### Methodology Notes
+
+Note that daily/days-since-exposure views for user-day metrics are calculated per-day. That is, if a user is active on all 14 days of an experiment, they would contribute 1 to the overall cumulative numerator, but 1 to each day of the daily view; that is, they are not deduped in that view. This generally yields a more intuitive interpretation, and leads to less sparse timeseries data on long experiments. However, this can lead to mix-shift effects where the daily trend goes in the opposite direction of the cumulative timeseries since the daily returning users have already been seen and do not contribute additional metric value to the cumulative view.
 
 Unit count metrics are simple, and will use the sql SUM aggregation. However, there are many advanced options you can apply.
 

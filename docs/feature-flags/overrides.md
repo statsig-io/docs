@@ -5,7 +5,7 @@ slug: /feature-flags/overrides
 keywords:
   - owner:shubham
 last_update:
-  date: 2024-03-27
+  date: 2025-07-29
 ---
 
 ## Override results of a feature gate

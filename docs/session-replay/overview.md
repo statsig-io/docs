@@ -5,7 +5,7 @@ slug: /session-replay/overview
 keywords:
   - owner:akin
 last_update:
-  date: 2025-06-30
+  date: 2025-07-25
 ---
 
 # Session Replay Overview

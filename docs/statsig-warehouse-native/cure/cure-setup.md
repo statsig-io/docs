@@ -4,6 +4,8 @@ sidebar_label: Getting Started
 slug: /experiments-plus/cure-setup
 keywords:
   - owner:craig
+last_update:
+  date: 2025-07-23
 ---
 
 ## Defaults

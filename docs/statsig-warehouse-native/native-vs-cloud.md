@@ -6,12 +6,12 @@ description: Understand the different Statsig products
 keywords:
   - owner:vm
 last_update:
-  date: 2025-01-15
+  date: 2025-07-28
 ---
 
 Statsig Warehouse Native and Statsig Cloud share many capabilities, but there are some differences between the platforms. This page is intended to make those differences clear, and to help you make the right choice for your experimentation needs.
 
-If there's any confusion, or if a feature is critical for your evaluation, we're always open to prioritizing requests. Don't hesitate to reach out in Slack or to our [support team](mailto:support@statsig.com)
+If there's any confusion, or if a feature is critical for your evaluation, we're always open to prioritizing requests. Don't hesitate to reach out to our [support team](mailto:support@statsig.com), your sales contact, or in our [Slack community](https://statsig.com/slack).
 
 ## Feature Gates
 

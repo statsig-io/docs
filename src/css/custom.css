@@ -466,6 +466,22 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/ai-active.svg");
 }
 
+.ai-icon-2::before {
+  background-image: url("/img/icons/sidebar/ai-2.svg");
+}
+
+.ai-icon-2:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/ai-active-2.svg");
+}
+
+.cli-session-replay-icon::before {
+  background-image: url("/img/icons/sidebar/cli-session-replay.svg");
+}
+
+.cli-session-replay-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/cli-session-replay-active.svg");
+}
+
 .whn-icon::before {
   background-image: url("/img/icons/sidebar/whn.svg");
 }

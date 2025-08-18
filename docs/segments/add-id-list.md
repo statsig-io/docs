@@ -5,7 +5,7 @@ slug: /segments/add-id-list
 keywords:
   - owner:shubham
 last_update:
-  date: 2024-10-09
+  date: 2025-07-23
 ---
 
 ## Create an ID list for a segment
@@ -28,5 +28,5 @@ When an ID List is small (no more than 1000 IDs), it is synchronized in the same
 
 We recommend always keeping your ID Lists to be no more than 1000 IDs in each, unless you are okay with the caveats mentioned above.
 
-### Very Large ID Lists(!)
+### (deprecated) Large ID Lists(!)
 Statsig's support for very large ID lists has been deprecated. To target hundreds of thousands of users (or billions), the preferred pattern is to set an attribute on the User object passed to the Statsig SDK. e.g. pass in user_type:Paid or user_type:Trial in the User object, instead of having ID Lists that enumerate the Paid and Trial users. This does require your app to have this information when calling the Statsig SDK, but you're better able to control how/where to cache this information.

@@ -4,7 +4,7 @@ title: Server Core Overview
 keywords:
   - owner:brock
 last_update:
-  date: 2025-04-28
+  date: 2025-08-01
 ---
 
 ## Statsig Server Core
@@ -25,8 +25,9 @@ Server Core SDKs are available on an opt-in basis, with native SDKs still availa
 - **[PHP](./php-core)**: Stable, [Packagist](https://packagist.org/packages/statsig/statsigsdk)
 - **[Rust](./rust-core)**: Stable, [Crates.io](https://crates.io/crates/statsig-rust)
 - **[Elixir](./elixir-core)**: Stable
+- **[.NET](./dotnetCoreSDK)**: Beta
 - **Ruby**: In Development, planned for Summer 2025
-- **Go**: In Development, planned for Summer 2025
+- **[Go](./go-core)**: Beta
 - **C#**: In Development, planned for Summer 2025
 
 ### Technical differences
@@ -73,10 +74,8 @@ Server core SDKs, starting in v0.4.0+, have a new event logging architecture.  T
 |---------------------------|---------------------------|
 | - Double interval         | - Halve interval          |
 |   (max: 60000ms)          |   (min: 1000ms)           |
-| - Retry non-retryable     | - No specific limit       |
-|   errors up to 5 times    |   flush mechanism         |
-| - No specific retry       |                           |
-|   buffer management       |                           |
+| - Retry errors            | - No specific limit       |
+|   up to 5 times           |   flush mechanism         |
 +---------------------------+---------------------------+
 ```
 

@@ -1,0 +1,50 @@
+```rust
+use statsig_rust::{Statsig, StatsigUserBuilder, sdk_event_emitter::SdkEvent};
+
+let statsig = Statsig::new("server-secret-key", None)?;
+statsig.initialize().await?;
+
+// Subscribe to gate evaluation events
+let gate_sub_id = statsig.subscribe(SdkEvent::GATE_EVALUATED, |event| {
+    if let SdkEvent::GateEvaluated { gate_name, value, rule_id, reason } = event {
+        println!("Gate evaluated: {} = {}, rule: {}, reason: {}", 
+                 gate_name, value, rule_id, reason);
+    }
+});
+
+// Subscribe to dynamic config evaluation events
+let config_sub_id = statsig.subscribe(SdkEvent::DYNAMIC_CONFIG_EVALUATED, |event| {
+    if let SdkEvent::DynamicConfigEvaluated { dynamic_config } = event {
+        println!("Config evaluated: {}", dynamic_config.name);
+    }
+});
+
+// Subscribe to experiment evaluation events
+let experiment_sub_id = statsig.subscribe(SdkEvent::EXPERIMENT_EVALUATED, |event| {
+    if let SdkEvent::ExperimentEvaluated { experiment } = event {
+        println!("Experiment evaluated: {} -> {}", 
+                 experiment.name, experiment.group_name);
+    }
+});
+
+// Subscribe to layer evaluation events
+let layer_sub_id = statsig.subscribe(SdkEvent::LAYER_EVALUATED, |event| {
+    if let SdkEvent::LayerEvaluated { layer } = event {
+        println!("Layer evaluated: {}", layer.name);
+    }
+});
+
+// Subscribe to all events
+let all_events_sub_id = statsig.subscribe(SdkEvent::ALL, |event| {
+    println!("Event received: {}", event.get_name());
+});
+
+// Unsubscribe from specific event types
+statsig.unsubscribe(SdkEvent::GATE_EVALUATED);
+
+// Unsubscribe using subscription ID
+statsig.unsubscribe_by_id(&config_sub_id);
+
+// Unsubscribe from all events
+statsig.unsubscribe_all();
+```

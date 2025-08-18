@@ -6,7 +6,7 @@ description: Break down Metrics by Dimensions
 keywords:
   - owner:vm
 last_update:
-  date: 2024-08-21
+  date: 2025-07-23
 ---
 
 # Dimension Analysis
@@ -46,4 +46,6 @@ This is to avoid extreme results and cases where assumptions of centrality do no
 
 For precomputed user dimensions that are configured and run on a schedule, dimension data is processed asynchronously and may take a few minutes to become available after the main experiment results load. You may temporarily see "No dimensions available for this time range" messages while the data is being processed, especially after the first reload of the day. This is expected behavior - simply wait a few minutes and refresh the page to see the dimensional breakdowns.
 
-Note: This timing behavior only affects precomputed user dimensions. User-triggered dimensional analysis does not experience this delay.
+:::note
+This timing behavior only affects precomputed user dimensions. User-triggered dimensional analysis does not experience this delay.
+:::

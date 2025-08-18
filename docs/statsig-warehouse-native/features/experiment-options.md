@@ -3,6 +3,8 @@ sidebar_label: Configuration
 title: Configuring Experiments
 keywords:
   - owner:craig
+last_update:
+  date: 2025-07-23
 ---
 
 # Configuration
@@ -29,7 +31,9 @@ There is project-level configuration of the maximum number of primary/secondary 
 
 In experiment setup there are fields for _Experiment Measured In_ and _Target_. This allows configuration of how long your experiment should be run for, influencing sequential testing as well as notifications/timeline alerts.
 
-Note that Statsig's [power analysis tools](./power-analysis.md) are the best way to determine what the target duration should be. A power analysis can be attached to an experiment to add context on the duration.
+:::note
+Statsig's [power analysis tools](./power-analysis.md) are the best way to determine what the target duration should be. A power analysis can be attached to an experiment to add context on the duration.
+:::
 
 ### Experiment Configuration
 

@@ -28,11 +28,13 @@ You can pass in an optional parameter `options` in addition to `sdkKey` and `use
   - Whether or not the SDK should block on loading saved values from disk.
 
 - **initializeValues**: `Map<String, Any>?`, default `null`
-  - Provide the `initialize response` values directly to the Android SDK to synchronously initialize the client. You can generate these values from a Statsig Server SDK like the [NodeJS Server SDK](/server/nodejsServerSDK#bootstrap)
+  - Provide the `initialize response` values directly to the Android SDK to synchronously initialize the client or "Bootstrap". You can generate these values from a Statsig Server SDK like the [NodeJS Server SDK](/server/nodejsServerSDK#bootstrap) and pass them in to the SDK when initializing. For more info, see [Bootstraping.](/client/concepts/initialize/#2-bootstrap-initialization) 
 
 - **disableHashing**: `Boolean?`, default `false`
   - When disabled, the SDK will not hash gate/config/experiment names, instead they will be readable as plain text.
-  - Note: This requires special authorization from Statsig. Reach out to us if you are interested in this feature.
+   :::note
+   This requires special authorization from Statsig. Reach out to our support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you want this enabled.
+   :::
 
 - **customCacheKey**: `((sdkKey: String, user: StatsigUser) -> String)`, default: `{ sdkKey, user -> "${user.getCacheKey()}:$sdkKey" },` v4.26.0+
   - By default, client SDKs define a "user" for caching as the set of all IDs (the UserID and CustomIDs) and the sdkKey (so multiple instances don't collide)
@@ -42,12 +44,9 @@ You can pass in an optional parameter `options` in addition to `sdkKey` and `use
 - **evaluationCallback**: `((config: BaseConfig) -> Unit)`, v4.24.0+
   - A function that can be supplied to the sdk that will be called whenever a gate, config, experiment or layer is checked. The function takes a BaseConfig, which will be one of FeatureGate, DynamicConfig, or Layer, as the only parameter which is the result of the check made.
 
-
 #### Methods
 
 - **setTier | setEnvironmentParameter | getEnvironment**
    - used to signal the environment tier the user is currently in. 
    - `setTier` can be PRODUCTION, STAGING or DEVELOPMENT. e.g. passing in a value of `Tier.STAGING` will allow your users to pass any condition that pass for the staging environment tier, and fail any condition that only passes for other environment tiers.
    - `setEnvironmentParameter` can be used for custom tiers, eg `options.setEnvironmentParameter("tier", "test")`
-
-

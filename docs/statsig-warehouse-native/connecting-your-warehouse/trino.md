@@ -5,7 +5,7 @@ sidebar_label: Trino [Beta]
 keywords:
   - owner:vm
 last_update:
-  date: 2024-10-02
+  date: 2025-07-23
 ---
 
 :::warning

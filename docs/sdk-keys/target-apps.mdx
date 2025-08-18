@@ -4,11 +4,11 @@ sidebar_label: Target Apps
 keywords:
   - owner:brock
 last_update:
-  date: 2025-02-05
+  date: 2025-07-23
 ---
 
 :::info
-NOTE: Target Apps are an Enterprise-only feature. To upgrade to Enterprise, reach out to our Sales team [here](https://statsig.com/contact/demo). 
+Target Apps are an Enterprise-only feature. Reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you want this enabled.
 :::
 
 ## Motivation
@@ -65,7 +65,7 @@ Then select the target app(s) to apply to that key.
 
 ![Screen Shot 2023-07-26 at 5 23 21 PM](https://github.com/statsig-io/docs/assets/74584483/e9559312-71af-4d70-85b4-a618e76c0008)
 
-:::info
+:::note
 When [bootstrapping](/client/concepts/initialize#2-bootstrap-initialization) a Client SDK from a Server SDK, you'll need the server SDK to have access to all of the gates/experiments/configs needed both for server and client. If you have separate target apps for client and server SDKs, you should apply both target apps to the server key you're using. 
 
 Then, to filter the boostrapping response to a specific target app, add a client key with that target app applied to the getClientInitializeResponse call.

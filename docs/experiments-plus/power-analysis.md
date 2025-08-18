@@ -5,7 +5,7 @@ slug: /experiments-plus/power-analysis
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-13
+  date: 2025-07-23
 ---
 
 ### What is Power Analysis?
@@ -40,6 +40,10 @@ Power Analysis Calculator can be accessed from the tools menu. It's also linked 
 Your past power analysis calculations will be available to view in the "Past Analyses" tab.
 
 <img width="1200" alt="Screenshot 2025-03-12 at 8 04 31 AM" src="https://github.com/user-attachments/assets/82a91aa4-dd3a-4d09-aca4-2de8b43f49e8" />
+
+If you want to attach an existing power analysis to an experiment, that option is available via the dropdown menu on an existing power analysis.
+
+![image](/img/attach_power_analysis_to_experiment.png)
 
 ## Population Types
 
@@ -115,4 +119,7 @@ The relative percentage MDE for a given metric *X* is computed using the followi
 * *Z<sub>1-&beta;</sub>* is the standard Z-score for the selected power.  Typically *1-&beta; = 0.8* and *Z<sub>1-&beta;</sub> = 0.84*
 * *Z<sub>1-&alpha;/2</sub>* is the standard Z-score for the selected significance level in a 2-sided test.  Typically *&alpha; = 0.05* and *Z<sub>1-&alpha;/2</sub> = 1.96*
 
-**Note:** This calculation relies on statistics computed across the entire user base of the project.  It does not account for the fact that experiments targeting only a subset of users may have different summary statistics for their key metrics.  For example, the metric mean and variance can be different in an experiment that targets only Android users or one that exposes users at the lower part of an acquisition funnel. 
+:::note
+This calculation relies on statistics computed across the entire user base of the project.  It does not account for the fact that experiments targeting only a subset of users may have different summary statistics for their key metrics.
+For example, the metric mean and variance can be different in an experiment that targets only Android users or one that exposes users at the lower part of an acquisition funnel.
+:::

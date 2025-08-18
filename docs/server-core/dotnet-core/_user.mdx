@@ -1,0 +1,70 @@
+`StatsigUser` represents the user context for feature flag evaluation. Use `StatsigUserBuilder` to create user instances:
+
+```csharp
+var user = new StatsigUserBuilder()
+    .SetUserID("user_123")
+    .SetEmail("user@example.com")
+    .SetIP("192.168.1.1")
+    .SetUserAgent("Mozilla/5.0...")
+    .SetCountry("US")
+    .SetLocale("en-US")
+    .SetAppVersion("1.2.3")
+    .SetCustomIDs(new Dictionary<string, string>
+    {
+        ["employee_id"] = "emp_456",
+        ["team_id"] = "team_789"
+    })
+    .AddCustomID("department_id", "dept_123")
+    .SetCustomProperties(new Dictionary<string, object>
+    {
+        ["subscription_tier"] = "premium",
+        ["account_age_days"] = 365,
+        ["is_beta_user"] = true
+    })
+    .AddCustomProperty("last_login", DateTime.UtcNow)
+    .SetPrivateAttributes(new Dictionary<string, object>
+    {
+        ["internal_user_score"] = 0.85,
+        ["risk_level"] = "low"
+    })
+    .AddPrivateAttribute("pii_hash", "abc123def456")
+    .Build();
+```
+
+## User Properties
+
+- **UserID**: Primary user identifier
+- **Email**: User's email address
+- **IP**: User's IP address for geo-targeting
+- **UserAgent**: Browser user agent string
+- **Country**: ISO country code (e.g., "US", "CA")
+- **Locale**: Locale string (e.g., "en-US", "fr-CA")
+- **AppVersion**: Application version string
+- **CustomIDs**: Additional user identifiers for targeting
+- **CustomProperties**: Public user attributes used in targeting rules
+- **PrivateAttributes**: Private user data not used in targeting (for logging only)
+
+## Builder Methods
+
+- **SetUserID(string)**: Set the primary user ID
+- **SetEmail(string)**: Set user email
+- **SetIP(string)**: Set user IP address
+- **SetUserAgent(string)**: Set browser user agent
+- **SetCountry(string)**: Set user country
+- **SetLocale(string)**: Set user locale
+- **SetAppVersion(string)**: Set app version
+- **SetCustomIDs(Dictionary\<string, string\>)**: Set all custom IDs
+- **AddCustomID(string, string)**: Add a single custom ID
+- **SetCustomProperties(Dictionary\<string, object\>)**: Set all custom properties
+- **AddCustomProperty(string, object)**: Add a single custom property
+- **SetPrivateAttributes(Dictionary\<string, object\>)**: Set all private attributes
+- **AddPrivateAttribute(string, object)**: Add a single private attribute
+- **Build()**: Create the StatsigUser instance
+
+Remember to dispose of StatsigUser instances when done:
+
+```csharp
+using var user = new StatsigUserBuilder()
+    .SetUserID("user_123")
+    .Build();
+```

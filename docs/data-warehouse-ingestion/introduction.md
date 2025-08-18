@@ -3,14 +3,14 @@ title: Data Warehouse Ingestion
 keywords:
   - owner:tim
 last_update:
-  date: 2024-08-29
+  date: 2025-07-23
 ---
 
 ![Slide 4_3 - 2](https://user-images.githubusercontent.com/108023879/187794828-333622ec-6db2-4936-987d-efbef4ba9a47.png)
 
 ## Introduction
 
-Statsig can directly ingest data from your Data Warehouse. This lets you send raw events and pre-computed metrics for tracking and experimental measurement.
+Statsig Cloud can directly ingest data from your Data Warehouse. This lets you send raw events and pre-computed metrics for tracking and experimental measurement.
 We currently support ingestion from the following providers:
 
 1. [BigQuery](bigquery.mdx)
@@ -20,6 +20,10 @@ We currently support ingestion from the following providers:
 5. [Synapse](synapse.mdx)
 6. [S3](s3.mdx)
 7. [Athena](athena.mdx)
+
+:::tip[Warehouse Native users]
+You're viewing the Cloud docs for this page. If your project is configured as [Statsig Warehouse Native](/statsig-warehouse-native/introduction/), your data should already be available if you completed the [quickstart](../statsig-warehouse-native/guides/quick-start/).
+:::
 
 ### How it works
 
@@ -73,7 +77,9 @@ We also support a user-triggered backfill. This could be useful if a specific me
 
 Reloading data and backfilling metrics and events is billed as any other [custom event](/metrics/raw-events#billing)
 
-Note: Auto-generated **User Accounting Metrics** are not supported today for data warehouse ingestions.
+:::note
+Auto-generated **User Accounting Metrics** are not supported today for data warehouse ingestions.
+:::
 
 ### API Triggered Ingestion (mark_data_ready)
 
@@ -94,7 +100,9 @@ Parameters:
 - datestamps: Refers to the date of the data being triggered.
 - type: `metrics` or `events`
 
-Note that this is rate limited to once every two hours, and there may be a few minutes delay after triggering before status updates while compute resources are created.
+:::note
+This is rate limited to once every two hours, and there may be a few minutes delay after triggering before status updates while compute resources are created.
+:::
 
 ### Frequently Asked Questions
 

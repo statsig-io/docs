@@ -5,7 +5,7 @@ slug: /stats-engine
 keywords:
   - owner:vm
 last_update:
-  date: 2024-10-02
+  date: 2025-07-23
 ---
 
 ## Statsig Stats Engine

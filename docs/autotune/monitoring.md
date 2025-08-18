@@ -5,7 +5,7 @@ slug: /autotune/monitoring
 keywords:
   - owner:vm
 last_update:
-  date: 2022-01-18
+  date: 2025-07-23
 ---
 
 ## How to monitor your Autotune Test

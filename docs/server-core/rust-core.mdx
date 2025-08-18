@@ -4,7 +4,7 @@ title: Rust Server SDK
 keywords:
   - owner:brock
 last_update:
-  date: 2025-03-21
+  date: 2025-07-23
 ---
 
 import {
@@ -27,7 +27,8 @@ import {
   OutputLogger,
   ObservabilityClient,
   Reference,
-  FieldsNeededMethods
+  FieldsNeededMethods,
+  EventSubscriptions
 } from "./Templates/index.mdx";
 
 
@@ -52,6 +53,7 @@ import OutputLoggerContent from "./rust/_output_logger.mdx";
 import ObservabilityClientContent from "./rust/_observability_client.mdx";
 import PersistentStorageContent from "./rust/_persistent_storage.mdx";
 import * as ReferenceSnippets from "./rust/_reference.mdx";
+import EventSubscriptionsSnippet from "./rust/_eventSubscriptions.mdx";
 
 
 
@@ -89,6 +91,7 @@ export const Builder = SDKDocsBuilder({
     [StatsigUser, { statsigUser: <UserSnippet /> }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [EventSubscriptions, { snippet: <EventSubscriptionsSnippet /> }],
     [PersistentStorage, { content: <PersistentStorageContent /> }],
     [DataStore, { content: <DataStoreContent /> }],
     [OutputLogger, { content: <OutputLoggerContent /> }],
