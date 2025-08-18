@@ -440,8 +440,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
-          label: "AI Evals"
-          id: "ai-evals/ai-evals",
+          label: "AI Evals",
           className: "ai-icon-2 sidebar-icon",
           items: [
             "ai-evals/overview",
