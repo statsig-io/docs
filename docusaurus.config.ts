@@ -343,16 +343,20 @@ const config: Config = {
             from: "/integrations/terraform",
           },
           {
-            to: "/ai-evals",
+            to: "/ai-evals/overview",
             from: "/ai-configs",
           },
           {
-            to: "/ai-evals",
+            to: "/ai-evals/overview",
             from: "/prompts",
           },
           {
-            to: "/ai-evals",
+            to: "/ai-evals/overview",
             from: "/aievals",
+          },
+          {
+            to: "/ai-evals/overview",
+            from: "/ai-evals",
           },
 
           
