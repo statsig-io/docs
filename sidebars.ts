@@ -442,6 +442,11 @@ const sidebars: SidebarsConfig = {
           type: "doc",
           id: "ai-evals/ai-evals",
           className: "ai-icon-2 sidebar-icon",
+          items: [
+            "ai-evals/prompts",
+            "ai-evals/offline-evals",
+            "ai-evals/online-evals",
+          ],
         },
       ],
     },
