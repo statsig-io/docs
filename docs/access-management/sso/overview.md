@@ -15,6 +15,9 @@ SSO is an Enterprise feature. Please reach out to our [support team](mailto:supp
 
 Single Sign-On (SSO) with OIDC can be configured for your Statsig Organization to continue using your company's identity store with Statsig and simplify the process for inviting your team to your Projects. New users will be automatically provisioned, once authenticated by your Identity Provider. Organizations are an Enterprise Tier feature. If your SSO requires multi-factor authentication (MFA), it is automatically required when your users sign into Statsig with SSO enabled.
 
+## Supported Providers
+We support any providers that implement the OIDC protocol for SSO. Known supported IDPs include Okta, EntraID (Azure AD), Google.
+
 ## Configuration
 
 An `Admin` of an organization can configure SSO on Statsig. On your OIDC Provider you will need to specify the following for your Statsig Project:
