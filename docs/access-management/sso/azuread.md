@@ -1,5 +1,5 @@
 ---
-sidebar_label: SSO with Microsoft Entra ID/Azure AD/O365
+sidebar_label: SSO with Entra ID/Azure AD/O365
 title: Single Sign-On With Entra ID/Azure AD/Office 365
 keywords:
   - owner:shubham
