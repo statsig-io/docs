@@ -176,6 +176,45 @@ Returns `LayerResult`:
 - `isLoading: boolean;` - the loading/initializing state of the SDK
 - `layer: Layer` - the backing `Layer` (see the [statsig-js sdk docs](/client/deprecated/jsClientSDK) for more information)
 
+### `useParameterStore`
+
+A react hook to get a Statsig Parameter Store.
+
+Parameters:
+
+- `storeName: string` - the name of the parameter store to get
+- `options?: useParameterStoreOptions` - optional evaluation options
+
+Returns `ParameterStore`:
+
+- `name: string` - the name of the parameter store
+- `details: EvaluationDetails` - evaluation details including reason and time
+- `get: <T>(key: string, fallback?: T) => T` - method to retrieve parameter values with type safety
+
+**Example Usage:**
+
+```tsx
+import { useParameterStore } from '@statsig/react-bindings';
+
+function MyComponent() {
+  const store = useParameterStore('my_parameter_store');
+  
+  // Get parameters with fallback values
+  const title = store.get('page_title', 'Default Title');
+  const maxItems = store.get('max_items', 10);
+  const isEnabled = store.get('feature_enabled', false);
+  
+  // Disable exposure logging if needed
+  const storeNoExposure = useParameterStore('my_parameter_store', {
+    disableExposureLog: true
+  });
+  
+  return <div>{title}</div>;
+}
+```
+
+For more information about Parameter Stores, see [Parameter Stores Concepts](/client/concepts/parameter-stores).
+
 ### `useStatsigLogEffect`
 
 A react hook to simplify top level logEvents into an effect which will only log and event once the SDK is ready
