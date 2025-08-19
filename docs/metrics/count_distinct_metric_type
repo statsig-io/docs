@@ -8,7 +8,7 @@ last_update:
   date: 2025-08-12
 ---
 :::warning
-Sketch-based count distinct metrics are not live yet.
+Sketch-based count distinct metrics are in beta. Please reach out to learn more and join our beta testing!
 :::
 
 # Count Distinct Metric Type
