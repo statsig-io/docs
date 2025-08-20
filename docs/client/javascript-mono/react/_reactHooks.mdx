@@ -52,6 +52,35 @@ There are three different ways to check a gate using hooks:
 <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/react-precomp/sample-react-precomp-layer-hooks.tsx" />
 
 
+### Parameter Store Hooks {#parameter-stores}
+
+- (recommended): `useStatsigClient.getParameterStore` will trigger an exposure only when calling `.get()` on a parameter
+- `useParameterStore` is a convenience hook that returns the parameter store.  It will will trigger an exposure only when calling `.get()` on a parameter
+
+**Example Usage:**
+
+```tsx
+import { useParameterStore } from '@statsig/react-bindings';
+
+function MyComponent() {
+  const store = useParameterStore('my_parameter_store');
+  
+  // Get parameters with fallback values - exposure logged here
+  const title = store.get('page_title', 'Default Title');
+  const maxItems = store.get('max_items', 10);
+  const isEnabled = store.get('feature_enabled', false);
+  
+  // Disable exposure logging if needed
+  const storeNoExposure = useParameterStore('my_parameter_store', {
+    disableExposureLog: true
+  });
+  
+  return <div>{title}</div>;
+}
+```
+
+For more information about Parameter Stores, see [Parameter Stores Concepts](/client/concepts/parameter-stores).
+
 ### Log Event {#event-logging}
 
 Using the `useStatsigClient` hook, it is possible to get hold of the `logEvent` function.
