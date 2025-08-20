@@ -712,7 +712,8 @@
     "Mbps",
     "Klaviyo",
     "Mailchimp",
-    "Quora"
+    "Quora",
+    "useparameterstore"
   ],
   "ignorePaths": [
     "node_modules/**",
