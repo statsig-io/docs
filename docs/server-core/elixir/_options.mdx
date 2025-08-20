@@ -33,8 +33,25 @@
     The URL ID lists should be downloaded from
 
   - **`id_lists_sync_interval_ms:`**: 
-    How often ID lists should be synced. 
+    How often ID lists should be synced.
 
+  - **`wait_for_country_lookup_init:`**: 
+    Block initialization call until country lookup is initialized  
+
+  - **`wait_for_user_agent_init:`**: 
+    To user_agent initialization until user_agent is initialized 
+
+  - **`disable_all_logging:`**: 
+    When `true`, disables all event logging. Default false
+
+  - **`disable_country_lookup:`**: 
+    To improve memory usage, disable using country lookup. Default off
+
+  - **`disable_network:`**: 
+    Turn off all network requests including get_dcs and log_events
+
+  - **`disable_user_agent_parsing:`**: 
+    To improve memory usage, disable using country lookup. Default off
 ---
 
 ### Example Usage
