@@ -55,11 +55,7 @@ There are three different ways to check a gate using hooks:
 ### Parameter Store Hooks {#parameter-stores}
 
 - (recommended): `useStatsigClient.getParameterStore` will trigger an exposure only when calling `.get()` on a parameter
-- `useParameterStore` is a convenience hook that returns the parameter store
-
-:::note
-Both approaches only log exposures when calling `.get()` on a parameter, not when the hook is called.
-:::
+- `useParameterStore` is a convenience hook that returns the parameter store.  It will will trigger an exposure only when calling `.get()` on a parameter
 
 **Example Usage:**
 
