@@ -136,18 +136,6 @@ export async function POST(request: Request): Promise<Response> {
 }
 ```
 
-You'll also need to make a small change to add the LogEvents function in the backend:
-
-```ts
-// statsig-backend.ts
-export async function logEvents(events: LogEventObject[]): Promise<void> {
-  await initialize;
-  events.forEach((event) => {
-    statsig.logEvent(event.user, event.eventName, event.value);
-  });
-}
-```
-
 </TabItem>
 
 <TabItem value="page-router">
