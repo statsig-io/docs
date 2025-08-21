@@ -51,22 +51,11 @@ export const Builder = SDKDocsBuilder({
     [ReactRouterInstall, {}],
     [ReactRouterSetup, {}],
     [ReactRouterPageViews, {}],
-    [ReactRouterHooks, {}],
   ],
 });
 
 export const toc = Builder.toc
 
-<FeaturePillList
-    features={[
-      { name: "Feature Gates", link: "#feature-gates" },
-      { name: "Experiments", link: "#experiments" },
-      { name: "Dynamic Configs", link: "#dynamic-configs" },
-      { name: "Layers", link: "#layers" },
-      { name: "Parameter Stores", link: "#parameter-stores" },
-      { name: "Event Logging", link: "#event-logging" },
-      { name: "Auto Page Views", link: "#auto-page-views" },
-    ]
-  }
-/>
+This guide shows you how to integrate Statsig with React Router. For comprehensive documentation on using Statsig's React hooks and features, see the [React SDK documentation](/client/javascript-sdk/react).
+
 <>{Builder.result}</>
