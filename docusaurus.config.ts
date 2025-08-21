@@ -464,6 +464,10 @@ const config: Config = {
               label: "Code",
               href: "https://github.com/statsig-io",
             },
+            {
+              label: "Statsig University",
+              href: "https://learn.statsig.com/certifications",
+            },
           ],
         },
       ],
