@@ -107,11 +107,11 @@ This is the core HyperLogLog "raw" estimator for the number of distinct elements
 
 ## Best Practices and Limitations
 
-- Choose precision *p* based on the maximum cardinality weexpect and the error tolerance.
+- Choose precision *p* based on the maximum cardinality weexpect and the error tolerance. (This will be done for you so you don't have to worry about it)
 - Once a sketch is created with precision *p*, we cannot increase its precision later. We can only merge or downsample to lower precision.
 - Long keys or complex objects increase CPU and memory in sparse mode but do not affect dense mode size.
 - Plan for a noise floor equal to the sketch’s relative error when designing experiments or setting thresholds.
-
+- Please reach out if you believe you require higher precision. 
 ## Conclusion and Recommendations
 
 HLL++ sketches provide efficient, bounded- error approximations for `count_distinct` queries. They trade a small, predictable error for large savings in memory and compute.
