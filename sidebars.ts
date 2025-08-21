@@ -870,6 +870,11 @@ const sidebars: SidebarsConfig = {
               id: "client/javascript-mono/AngularUsage",
             },
             {
+              className: "astro-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "client/javascript-mono/AstroUsage",
+            },
+            {
               className: "roku-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
               id: "client/rokuSDK",

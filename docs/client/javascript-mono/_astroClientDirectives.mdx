@@ -1,0 +1,70 @@
+## Client Directives
+
+Astro's [client directives](https://docs.astro.build/en/reference/directives-reference/#client-directives) allow you to control when and how components are hydrated. This is particularly useful for Statsig integration.
+
+### Using client:load
+
+For components that need immediate access to Statsig:
+
+```astro
+---
+// src/components/ImmediateFeature.astro
+---
+
+<div id="immediate-feature">
+  <script>
+    // This runs immediately when the component loads
+    if (window.statsig) {
+      const enabled = window.statsig.checkGate('immediate_feature');
+      if (enabled) {
+        document.getElementById('immediate-feature').style.display = 'block';
+      }
+    }
+  </script>
+  <p>This feature loads immediately if enabled</p>
+</div>
+```
+
+### Using client:idle
+
+For non-critical features that can wait:
+
+```astro
+---
+// src/components/IdleFeature.astro
+---
+
+<div client:idle>
+  <script>
+    function initIdleFeature() {
+      if (window.statsig) {
+        const config = window.statsig.getConfig('idle_feature_config');
+        // Initialize feature when browser is idle
+      }
+    }
+    
+    // Wait for idle time to initialize
+    requestIdleCallback(initIdleFeature);
+  </script>
+</div>
+```
+
+### Using client:visible
+
+For features that should only load when visible:
+
+```astro
+---
+// src/components/VisibleFeature.astro
+---
+
+<div client:visible>
+  <script>
+    // This runs when the component becomes visible
+    if (window.statsig) {
+      window.statsig.logEvent('feature_viewed', { feature: 'visible_feature' });
+    }
+  </script>
+  <p>This logs an event when it becomes visible</p>
+</div>
+```

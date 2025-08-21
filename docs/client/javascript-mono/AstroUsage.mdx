@@ -1,0 +1,85 @@
+---
+title: Astro in Statsig
+sidebar_label: Astro
+slug: /client/javascript-sdk/astro
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-08-21
+---
+
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+import { FeaturePillList } from '@site/src/components/FeaturePillList';
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  Shutdown,
+  CodeExamples,
+} from "../Templates/index.mdx";
+
+import CheckGate from "./_checkGate.mdx";
+import GetConfig from "./_getConfig.mdx";
+import GetExperiment from "./_getExperiment.mdx";
+import Initialize from "./_initialize.mdx";
+import Install from "./_install.mdx";
+import LogEvent from "./_logEvent.mdx";
+import MoreFAQs from "./_faqs.mdx";
+import Options from "./_options.mdx";
+import ShutdownSnippet from "./_shutdown.mdx";
+
+import * as _AstroInstall from "./_astroInstall.mdx";
+export const AstroInstall = _AstroInstall;
+
+import * as _AstroSetup from "./_astroSetup.mdx";
+export const AstroSetup = _AstroSetup;
+
+import * as _AstroGatesAndConfigs from "./_astroGatesAndConfigs.mdx";
+export const AstroGatesAndConfigs = _AstroGatesAndConfigs;
+
+import * as _AstroClientDirectives from "./_astroClientDirectives.mdx";
+export const AstroClientDirectives = _AstroClientDirectives;
+
+import * as _AstroSSR from "./_astroSSR.mdx";
+export const AstroSSR = _AstroSSR;
+
+export const Builder = SDKDocsBuilder({
+  sections: [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/js-client-monorepo",
+      },
+    ],
+    [AstroInstall, {}],
+    [AstroSetup, {}],
+    [AstroGatesAndConfigs, {}],
+    [AstroClientDirectives, {}],
+    [AstroSSR, {}],
+  ],
+});
+
+export const toc = Builder.toc
+
+<FeaturePillList
+    features={[
+      { name: "Feature Gates", link: "#feature-gates" },
+      { name: "Experiments", link: "#experiments" },
+      { name: "Dynamic Configs", link: "#dynamic-configs" },
+      { name: "Layers", link: "#layers" },
+      { name: "Parameter Stores", link: "#parameter-stores" },
+      { name: "Event Logging", link: "#event-logging" },
+    ]
+  }
+/>
+<>{Builder.result}</>

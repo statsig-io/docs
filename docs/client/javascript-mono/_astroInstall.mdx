@@ -1,0 +1,54 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+:::info
+If you are starting from scratch, please refer to [Astro's Getting Started guide](https://docs.astro.build/en/getting-started/) to get a simple Astro app up and running.
+:::
+
+## AI-powered Setup (beta)
+
+Our AI agent can set up Statsig on your codebase with this command:
+
+```shell
+npx @statsig/wizard@latest
+```
+
+This is an experimental feature. If you have any feedback, please reach out on our [Slack community](https://statsig.com/slack).
+
+For manual setup, continue reading
+
+## Installation
+
+You can install the Statsig SDK via npm, yarn, or pnpm:
+
+<Tabs
+  defaultValue="npm"
+  groupId="js-install-choice"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+    {label: 'pnpm', value: 'pnpm'},
+  ]}>
+
+  <TabItem value="npm">
+
+```shell
+npm install @statsig/js-client
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```shell
+yarn add @statsig/js-client
+```
+
+  </TabItem>
+  <TabItem value="pnpm">
+
+```shell
+pnpm add @statsig/js-client
+```
+
+  </TabItem>
+</Tabs>
