@@ -116,6 +116,12 @@ const sidebars: SidebarsConfig = {
           id: "faq",
           className: "question-icon sidebar-icon",
         },
+        {
+          type: "link",
+          href: "https://learn.statsig.com/certifications",
+          label: "Statsig University",
+          className: "university-icon sidebar-icon",
+        },
       ],
     },
     {
