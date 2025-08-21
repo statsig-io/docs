@@ -11,7 +11,7 @@ last_update:
 Sketch-based count distinct metrics are in beta. Please reach out to learn more and join our beta testing!
 :::
 
-# Count Distinct Metric Type
+# Count Distinct Metric Type - (For Statsig Cloud)
 
 ## Purpose of count_distinct
 
