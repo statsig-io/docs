@@ -1,0 +1,72 @@
+---
+title: React Router in Statsig
+sidebar_label: React Router
+slug: /client/javascript-sdk/react-router
+keywords:
+  - react-router
+  - spa
+  - single-page-application
+last_update:
+  date: 2025-01-21
+---
+
+import { FeaturePillList } from '@site/src/components/FeaturePillList';
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  Shutdown,
+  CodeExamples,
+} from "../Templates/index.mdx";
+
+import * as _ReactRouterInstall from "./react-router/_reactRouterInstall.mdx";
+export const ReactRouterInstall = _ReactRouterInstall;
+
+import * as _ReactRouterSetup from "./react-router/_reactRouterSetup.mdx";
+export const ReactRouterSetup = _ReactRouterSetup;
+
+import * as _ReactRouterPageViews from "./react-router/_reactRouterPageViews.mdx";
+export const ReactRouterPageViews = _ReactRouterPageViews;
+
+import * as _ReactRouterHooks from "./react-router/_reactRouterHooks.mdx";
+export const ReactRouterHooks = _ReactRouterHooks;
+
+export const Builder = SDKDocsBuilder({
+  sections: [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/js-client-monorepo",
+      },
+    ],
+    [ReactRouterInstall, {}],
+    [ReactRouterSetup, {}],
+    [ReactRouterPageViews, {}],
+    [ReactRouterHooks, {}],
+  ],
+});
+
+export const toc = Builder.toc
+
+<FeaturePillList
+    features={[
+      { name: "Feature Gates", link: "#feature-gates" },
+      { name: "Experiments", link: "#experiments" },
+      { name: "Dynamic Configs", link: "#dynamic-configs" },
+      { name: "Layers", link: "#layers" },
+      { name: "Parameter Stores", link: "#parameter-stores" },
+      { name: "Event Logging", link: "#event-logging" },
+      { name: "Auto Page Views", link: "#auto-page-views" },
+    ]
+  }
+/>
+<>{Builder.result}</>

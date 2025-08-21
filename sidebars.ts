@@ -870,6 +870,12 @@ const sidebars: SidebarsConfig = {
               id: "client/javascript-mono/AngularUsage",
             },
             {
+              className: "react-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "client/javascript-mono/ReactRouterUsage",
+              label: "React Router",
+            },
+            {
               className: "roku-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
               id: "client/rokuSDK",

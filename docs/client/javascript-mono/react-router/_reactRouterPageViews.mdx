@@ -1,0 +1,56 @@
+## Automatic Page View Tracking
+
+Statsig automatically captures page views when you navigate between routes in your React Router application. This works out of the box with no additional configuration needed.
+
+### How It Works
+
+When you use `StatsigProvider` with React Router, Statsig's auto-capture functionality automatically:
+
+1. **Logs initial page views** when your app loads
+2. **Tracks route changes** when users navigate using `Link`, `useNavigate`, or direct URL changes
+3. **Captures page metadata** including pathname, search params, and referrer
+
+### Example Navigation
+
+```tsx
+import { Link } from 'react-router-dom';
+import { useFeatureGate } from '@statsig/react-bindings';
+
+function Navigation() {
+  const showNewFeature = useFeatureGate('new_navigation_feature');
+  
+  return (
+    <nav>
+      <Link to="/">Home</Link>
+      <Link to="/about">About</Link>
+      {showNewFeature && <Link to="/beta">Beta Feature</Link>}
+    </nav>
+  );
+}
+```
+
+Each click on these links will automatically log a `auto_capture::page_view` event with metadata like:
+
+```json
+{
+  "eventName": "auto_capture::page_view",
+  "metadata": {
+    "pathname": "/about",
+    "search": "",
+    "referrer": "/"
+  }
+}
+```
+
+### Disabling Auto-Capture
+
+If you want to disable automatic page view tracking, you can do so in the StatsigProvider options:
+
+```tsx
+<StatsigProvider 
+  sdkKey="client-KEY" 
+  user={user}
+  options={{ disableAutoCapture: true }}>
+  <RouterProvider router={router} />
+</StatsigProvider>
+```

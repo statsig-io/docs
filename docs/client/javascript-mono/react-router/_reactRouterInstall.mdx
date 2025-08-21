@@ -1,0 +1,50 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+:::info
+If you are starting from scratch, please refer to [React Router Tutorial](https://reactrouter.com/en/main/start/tutorial) to get a React Router app up and running.
+:::
+
+## AI-powered Setup (beta)
+
+Our AI agent can set up Statsig on your codebase with this command:
+
+```shell
+npx @statsig/wizard@latest
+```
+
+This is an experimental feature. If you have any feedback, please reach out on our [Slack community](https://statsig.com/slack).
+
+For manual setup, continue reading
+
+## Installation
+
+You can install the Statsig React bindings and React Router via npm or yarn:
+
+<Tabs
+  defaultValue="npm"
+  groupId="js-install-choice"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+  ]}>
+
+  <TabItem value="npm">
+
+```shell
+npm install @statsig/react-bindings react-router-dom
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```shell
+yarn add @statsig/react-bindings react-router-dom
+```
+
+  </TabItem>
+</Tabs>
+
+:::note
+This guide assumes you're using React Router v6. For other versions, the API may differ slightly.
+:::
