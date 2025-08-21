@@ -116,6 +116,12 @@ const sidebars: SidebarsConfig = {
           id: "faq",
           className: "question-icon sidebar-icon",
         },
+        {
+          type: "link",
+          href: "https://learn.statsig.com/certifications",
+          label: "Statsig University",
+          className: "university-icon sidebar-icon",
+        },
       ],
     },
     {
@@ -414,7 +420,7 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "Web Analytics",
           className: "web-icon sidebar-icon",
-          items: ["webanalytics/overview"],
+          items: ["webanalytics/overview", "webanalytics/autocapture"],
         },
         {
           type: "category",
@@ -439,9 +445,18 @@ const sidebars: SidebarsConfig = {
           className: "ai-icon sidebar-icon",
         },
         {
-          type: "doc",
-          id: "prompts/prompts",
+          type: "category",
+          label: "AI Evals",
           className: "ai-icon-2 sidebar-icon",
+          link: {
+            type: "doc",
+            id: "ai-evals/overview",
+          },
+          items: [
+            "ai-evals/prompts",
+            "ai-evals/offline-evals",
+            "ai-evals/online-evals",
+          ],
         },
       ],
     },
@@ -1053,7 +1068,6 @@ const sidebars: SidebarsConfig = {
       label: "More SDK Methods",
       collapsed: true,
       items: [
-        "client/concepts/autocapture",
         "client/concepts/persistent_assignment",
         "server/concepts/persistent_assignment",
         "client/concepts/local-eval-adapter",
@@ -1110,6 +1124,8 @@ const sidebars: SidebarsConfig = {
         },
         "console-api/usage-billing",
         "console-api/rules",
+        "console-api/warehouse-connections",
+        "console-api/change-validation",
       ],
     },
     {

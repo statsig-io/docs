@@ -5,7 +5,7 @@ slug: /feature-flags/view-exposures
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-07-23
+  date: 2025-07-29
 ---
 
 ## Gate Exposures

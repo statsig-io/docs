@@ -22,4 +22,4 @@ Coming Soon:
 - Dynamic Configs
 - Segments
 
-If you need more from our Terraform Provider, please feel free to ask in [Slack support](https://statsigcommunity.slack.com/archives/C01RAKM10TD). This will help us prioritize what to work on.
+If you need more from our Terraform Provider, please feel free to ask in the [Statsig Slack channel](https://statsig.com/slack).
