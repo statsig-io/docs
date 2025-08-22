@@ -2,6 +2,7 @@
   "version": "0.2",
   "language": "en",
   "words": [
+    "Aamodit",
     "AATest",
     "allowlist",
     "APIs",
@@ -714,7 +715,10 @@
     "Mailchimp",
     "Quora",
     "useparameterstore",
-    "cutover"
+    "cutover",
+    "downsample",
+    "multiset",
+    "sublinear"
   ],
   "ignorePaths": [
     "node_modules/**",
