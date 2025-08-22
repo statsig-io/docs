@@ -22,17 +22,44 @@ Statsig supports both [Page Router](https://nextjs.org/docs/pages) & [App Router
   <TabItem value="app-router">
 First, add the keys to your .env.local file:
 ```bash
-# .env.local, the NEXT_PUBLIC_ prefix is required for this to be available on the client side
+# .env.local
+
+# the NEXT_PUBLIC_ prefix is required for this to be available on the client side
 NEXT_PUBLIC_STATSIG_CLIENT_KEY=client-<REPLACE_WITH_YOUR_CLIENT_KEY>
 STATSIG_SERVER_KEY=secret-<REPLACE_WITH_YOUR_SERVER_KEY>
 ```
 
 For App Router, install the @statsig/next package:
+
+<Tabs
+  defaultValue="npm"
+  groupId="package-manager-choice"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+    {label: 'PNPM', value: 'pnpm'},
+  ]}>
+
+
+<TabItem value="npm">
 ```bash
-npm install @statsig/next //OR
-yarn add @statsig/next //OR
+npm i @statsig/next
+```
+</TabItem>
+
+<TabItem value="yarn">
+```bash
+yarn add @statsig/next
+```
+</TabItem>
+
+<TabItem value="pnpm">
+```bash
 pnpm add @statsig/next
 ```
+</TabItem>
+
+</Tabs>
 
 The \<StatsigBootstrapProvider\> creates a Statsig client instance under the hood, without making a blocking network request this will keep your app speedy and is recommended for most users. If you need more control over your setup, our [Bootstrapping](#client-bootstrapping-recommended) and [React](/client/javascript-sdk/react) docs can provide more guidance.
 
@@ -55,7 +82,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <StatsigBootstrapProvider user={user} clientKey={process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY} serverKey={process.env.STATSIG_SERVER_KEY}>
+        <StatsigBootstrapProvider
+          user={user}
+          clientKey={process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY}
+          serverKey={process.env.STATSIG_SERVER_KEY}
+        >
           {children}
         </StatsigBootstrapProvider>
       </body>
@@ -78,16 +109,43 @@ export default function RootLayout({
 
 First, add the keys to your .env.local file:
 ```bash
-# .env.local, the NEXT_PUBLIC_ prefix is required for this to be available on the client side
+# .env.local
+
+# the NEXT_PUBLIC_ prefix is required for this to be available on the client side
 NEXT_PUBLIC_STATSIG_CLIENT_KEY=client-<REPLACE_WITH_YOUR_CLIENT_KEY>
 ```
 
 Next, for Page Router, install the @statsig/react-bindings package:
+
+<Tabs
+  defaultValue="npm"
+  groupId="package-manager-choice"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+    {label: 'PNPM', value: 'pnpm'},
+  ]}>
+
+
+<TabItem value="npm">
 ```bash
-npm install @statsig/react-bindings @statsig/web-analytics //OR 
-yarn add @statsig/react-bindings @statsig/web-analytics //OR
+npm i @statsig/react-bindings @statsig/web-analytics
+```
+</TabItem>
+
+<TabItem value="yarn">
+```bash
+yarn add @statsig/react-bindings @statsig/web-analytics
+```
+</TabItem>
+
+<TabItem value="pnpm">
+```bash
 pnpm add @statsig/react-bindings @statsig/web-analytics
 ```
+</TabItem>
+
+</Tabs>
 
 To integrate Statsig into your Page Router app you can add the `StatsigProvider` to your `_app.tsx` file. 
 
