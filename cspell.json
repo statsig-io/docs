@@ -713,7 +713,8 @@
     "Klaviyo",
     "Mailchimp",
     "Quora",
-    "useparameterstore"
+    "useparameterstore",
+    "cutover"
   ],
   "ignorePaths": [
     "node_modules/**",
