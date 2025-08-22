@@ -714,7 +714,10 @@
     "Mailchimp",
     "Quora",
     "useparameterstore",
-    "cutover"
+    "cutover",
+    "downsample",
+    "multiset",
+    "sublinear"
   ],
   "ignorePaths": [
     "node_modules/**",
