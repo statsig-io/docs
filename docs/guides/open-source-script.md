@@ -50,6 +50,18 @@ The script will perform the following actions:
 3. Create feature gates in Statsig.
 4. Write the migration status and details to a CSV file named `flag_migration_tracker.csv`
 
+## Example Translations
+
+The following examples show how LaunchDarkly feature flags are translated into Statsig feature gates:
+
+**Example 1:** LaunchDarkly flag with email and name targeting conditions
+
+![Example 1 - LaunchDarkly to Statsig translation](/img/example-translation-1.png)
+
+**Example 2:** LaunchDarkly flag with country-based targeting (off flag)
+
+![Example 2 - LaunchDarkly to Statsig translation](/img/example-translation-2.png)
+
 ## Troubleshooting
 
 If you encounter issues during the migration, check the following:
