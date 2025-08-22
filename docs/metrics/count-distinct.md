@@ -153,11 +153,10 @@ When you know the maximum number of unique items (cardinality) ahead of time, pi
     3. Verify memory footprint (*m* bytes) fits your budget
     4. Confirm relative error (0.83/√m) meets your accuracy target
 
-**If cardinality is uncertain**, add a safety margin (e.g., 20–50 %) when choosing *p*. For example, if you expect up to 80,000 uniques but want headroom to 100,000, choose *p* = 15 rather than 13. This avoids falling into the bias ramp unexpectedly.
+## Conclusion
 
-**Dynamic Scenarios**
+count_distinct gives you a simple, consistent way to measure breadth at scale. Define once, use everywhere, and merge across time and partitions with stable behavior. You get decision-ready answers to “How many unique X?” without custom ETL or one-off SQL.
 
-- For ad‑hoc queries with unknown peaks, default to a mid‑range precision (e.g., *p* = 13) to balance 1 % error against ~8 KB per sketch.
-- In streaming or multi‑tenant systems, consider parameterizing *p* per stream or customer based on their historical cardinality distribution.
+## Defaults at Statsig
 
-Selecting *p* this way guarantees that once your data surpasses the steady‑state threshold, the sketch's error remains at the advertised bound and does not grow further.
+By default, we set precision p = 12 for count_distinct. This works well for most use cases and keeps results stable and responsive. If you expect much higher cardinalities or need tighter bounds, please reach out and we’ll help you choose the right setting.
