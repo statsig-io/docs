@@ -784,31 +784,3 @@ html[data-theme='dark'] .welcome-card p {
     display: inline !important;
   }
 }
-
-/* Hide the default Docusaurus external link icon */
-.iconExternalLink_node_modules-@docusaurus-theme-classic-lib-theme-Icon-ExternalLink-styles-module {
-  display: none !important;
-}
-
-/* Alternative selector in case the class name changes */
-svg[class*="iconExternalLink"] {
-  display: none !important;
-}
-
-/* Replace external link icon with custom icon */
-.menu__link[href^="http"]::after,
-.menu__link[href^="https://"]::after {
-  content: "" !important;
-  background-image: url("/img/icons/sidebar/external-link.svg") !important;
-  background-size: 14px 14px !important;
-  width: 14px !important;
-  height: 14px !important;
-  margin-left: 6px !important;
-  opacity: 0.7 !important;
-}
-
-/* Dark theme support for custom external link icon */
-[data-theme="dark"] .menu__link[href^="http"]::after,
-[data-theme="dark"] .menu__link[href^="https://"]::after {
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(0%) !important;
-}
