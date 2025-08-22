@@ -7,6 +7,8 @@ last_update:
   date: 2025-08-22
 ---
 
+## Overview
+
 Migrating from LaunchDarkly to Statsig is a strategic move. It can lead to efficient feature flag management and a stronger experimentation culture. By following this guide, you'll be well equipped to make the transition with confidence.
 
 We will cover the following topics in this guide:
@@ -26,7 +28,7 @@ It is important to understand a few fundamental differences in how LaunchDarkly 
 
 **Targeting**: LaunchDarkly relies on Contexts to evaluate flags. Statsig evaluates based on what we call a StatsigUser object.
 
-### Side by side comparison
+#### Side by side comparison
 
 | LaunchDarkly concept | Can we migrate? | Statsig notes |
 |---------------------|-----------------|---------------|
@@ -40,7 +42,7 @@ It is important to understand a few fundamental differences in how LaunchDarkly 
 | Context attribute | ✅ Yes | Convert to Custom Fields in Statsig |
 | Flag owner, tags, teams, and history | ❌ No | Statsig does not preserve any metadata or historical versions of a flag during migration |
 
-### User Context mapping example
+#### User Context mapping example
 
 LaunchDarkly supports multi-kind, structured user contexts. Statsig requires a user object to achieve this. In Statsig, User ID or Custom ID is equivalent to LD's key. Known top-level fields in Statsig include userID, email, ip, userAgent, and custom. All other fields go under the custom object.
 
@@ -112,23 +114,13 @@ Before you begin migrating flags from LaunchDarkly to Statsig, take this opportu
 
 Utilize filters such as 'Lifecycle' and 'Type' in LaunchDarkly to determine which flags are worth importing into Statsig.
 
+![LaunchDarkly Filters](/img/launchdarkly-filters.png)
+
 Below is a decision framework you can use to decide which flags to import into Statsig. Our migration script follows this framework by default but you can alter it if you need.
 
-### Migration Decision Framework
+#### Migration Decision Framework
 
-**Migrate these flags:**
-- Active feature flags currently in use
-- Boolean flags (direct conversion to Feature Gates)
-- Multivariate flags with business value (convert to Dynamic Configs)
-- Flags with active targeting rules
-- Flags marked as "permanent" or "temporary" in lifecycle
-
-**Don't migrate these flags:**
-- Deprecated or archived flags
-- Flags that haven't been evaluated in 90+ days
-- Legacy kill switches no longer needed
-- Experimental flags that have concluded
-- Flags with complex segments that can't be easily converted
+![Migration Decision Framework](/img/migration-decision-framework.png)
 
 ## Importing flags into Statsig
 
@@ -136,9 +128,9 @@ To import feature flags from LaunchDarkly to Statsig, you can use our official i
 
 There are two ways to invoke this tool:
 
-1. **[Statsig console](/guides/ui-based-tool)** - UI-based wizard to help you import LaunchDarkly feature flags and segments into Statsig. It will tell you which gates and segments were migrated and which weren't. It only imports the "production" environment at the moment.
+1. **[Open source script](/guides/open-source-script) (Recommended)** - This is a good option if you want to customize the integration logic. It will also spit out a CSV of all of your LaunchDarkly flags, along with migration status and relevant URLs to the flag in LaunchDarkly and the gate in Statsig. This imports all of your environments.
 
-2. **[Open source script](/guides/open-source-script)** - This is a good option if you want to customize the integration logic. It will also spit out a CSV of all of your LaunchDarkly flags, along with migration status and relevant URLs to the flag in LaunchDarkly and the gate in Statsig. This imports all of your environments.
+2. **[Statsig console](/guides/ui-based-tool)** - UI-based wizard to help you import LaunchDarkly feature flags and segments into Statsig. It will tell you which gates and segments were migrated and which weren't. It only imports the "production" environment at the moment.
 
 > 👉 If you are migrating from a different system, you will need to recreate flags manually in Statsig. Ideally you have done the cleaning in the previous step, so you will migrate a small number of flags. If you need assistance, please reach out over email or slack.
 
@@ -152,7 +144,7 @@ The wrapper approach provides several key benefits:
 - **Easy rollback**: Quickly revert to LaunchDarkly if issues arise
 - **Consistent interface**: Maintain existing application code structure
 
-### Implementation Guide
+#### Implementation Guide
 
 **1. Before migration: LaunchDarkly Evaluation**
 
