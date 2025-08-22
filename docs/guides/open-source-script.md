@@ -7,15 +7,13 @@ last_update:
   date: 2025-08-22
 ---
 
-This package is designed to help automate migration of feature flags from LaunchDarkly to Statsig. It fetches feature flags from LaunchDarkly, translates them into Statsig's format, and creates corresponding feature gates in Statsig.
+[This package](https://github.com/statsig-io/migrations) is designed to help automate migration of feature flags from LaunchDarkly to Statsig. It fetches feature flags from LaunchDarkly, translates them into Statsig's format, and creates corresponding feature gates in Statsig.
 
 ## Considerations
 
 This script should work out of the box. It's recommended you start with a test environment of 5-10 flags. However, before running the script on a large scale, consider the following:
 
-:::info
-**IMPORTANT**: If you don't need to customize this import script, you can just use Statsig's built in LaunchDarkly migration tool
-:::
+- **IMPORTANT**: If you don't need to customize this import script, you can just use [Statsig's in-console tool](/guides/ui-based-tool)
 
 - The script uses a tag `Imported from LaunchDarkly` to identify migrated flags in Statsig. Ensure this tag is unique and recognizable.
 - The script includes a function to delete all Statsig feature gates with a specific tag. Use this with caution to clean up after a test or failed migration.

@@ -114,11 +114,7 @@ Before you begin migrating flags from LaunchDarkly to Statsig, take this opportu
 
 Utilize filters such as 'Lifecycle' and 'Type' in LaunchDarkly to determine which flags are worth importing into Statsig.
 
-![LaunchDarkly Filters](/img/launchdarkly-filters.png)
-
 Below is a decision framework you can use to decide which flags to import into Statsig. Our migration script follows this framework by default but you can alter it if you need.
-
-#### Migration Decision Framework
 
 ![Migration Decision Framework](/img/migration-decision-framework.png)
 
