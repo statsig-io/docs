@@ -1,21 +1,23 @@
 ---
-title: Count Distinct Metric Type
-sidebar_label: Count Distinct Metric Type
+title: Count Distinct Metrics
+sidebar_label: Count Distinct Metrics
 slug: /metrics/count_distinct_metric_type
 keywords:
   - owner:Aamodit 
 last_update:
-  date: No valid commit found
----
-:::warning
-Sketch-based count distinct metrics are in beta. Please reach out to learn more and join our beta testing! 
-:::
+  date: 2025-08-22
 
-# Count Distinct Metric Type - (For Statsig Cloud)
+---
+
+# Count Distinct Metrics
 
 ## Purpose of count_distinct
 
 The `count_distinct` metric reports the number of unique values in a dataset. Computing exact distinct counts at large scale requires storing all values or all hashes, which can be expensive in terms of memory and processing time. HyperLogLog++ (HLL++) sketches offer a probabilistic alternative that uses fixed or sublinear space to produce approximate distinct counts with a tight bound on relative error.
+
+:::warning
+Sketch-based count distinct metrics are in beta. Please reach out to learn more and join our beta testing! 
+:::
 
 ## For context, what are sketches?
 
