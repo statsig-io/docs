@@ -61,7 +61,7 @@ pnpm add @statsig/next
 
 </Tabs>
 
-The \<StatsigBootstrapProvider\> creates a Statsig client instance under the hood, without making a blocking network request this will keep your app speedy and is recommended for most users. If you need more control over your setup, our [Bootstrapping](#client-bootstrapping-recommended) and [React](/client/javascript-sdk/react) docs can provide more guidance.
+The \<StatsigBootstrapProvider\> creates both a Statsig Client and Server instance under the hood, and ["bootstraps"](/client/concepts/initialize#2-bootstrap-initialization) the client so it can render each page without a blocking network request. this will keep your app speedy and is recommended for most users. If you need more control over your setup, our [Bootstrapping](#client-bootstrapping-recommended) and [React](/client/javascript-sdk/react) docs can provide more guidance.
 
 Add this component around the content in your root `layout.tsx` file:
 
