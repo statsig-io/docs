@@ -450,6 +450,14 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/help-active.svg");
 }
 
+.university-icon::before {
+  background-image: url("/img/icons/sidebar/school.svg");
+}
+
+.university-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/school-active.svg");
+}
+
 .lightbulb-icon::before {
   background-image: url("/img/icons/sidebar/concept.svg");
 }

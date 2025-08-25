@@ -1,7 +1,7 @@
 ---
 title: Slicing by User Properties
 sidebar_label: User Properties
-slug: /pulse/user_properties
+slug: /pulse/user-properties
 keywords:
   - owner:vm
 last_update:
