@@ -514,12 +514,12 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/infra-active.svg");
 }
 
-.infraanalytics-icon::before {
-  background-image: url("/img/icons/sidebar/infraanalytics.svg");
+.infra-analytics-icon::before {
+  background-image: url("/img/icons/sidebar/infra-analytics.svg");
 }
 
-.infraanalytics-icon:has(.menu__link--active)::before {
-  background-image: url("/img/icons/sidebar/infraanalytics-active.svg");
+.infra-analytics-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/infra-analytics-active.svg");
 }
 .admin-icon::before {
   background-image: url("/img/icons/sidebar/admin.svg");

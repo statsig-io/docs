@@ -420,9 +420,9 @@ const sidebars: SidebarsConfig = {
         {
           type: "category",
           label: "Infra Analytics",
-          className: "infraanalytics-icon sidebar-icon",
+          className: "infra-analytics-icon sidebar-icon",
           items: [
-            "infraanalytics/overview"
+            "infra-analytics/overview"
           ]
         },
         {
