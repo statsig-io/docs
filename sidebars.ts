@@ -114,7 +114,7 @@ const sidebars: SidebarsConfig = {
         {
           type: "doc",
           id: "guides/sample-apps",
-          className: "apps-icon sidebar-icon",
+          className: "sampleapps-icon sidebar-icon",
         },
         {
           type: "doc",

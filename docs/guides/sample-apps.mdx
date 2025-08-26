@@ -3,7 +3,7 @@ sidebar_label: Sample Apps
 title: Sample Apps
 ---
 
-import OutlinedCard from "@site/src/components/OutlinedCard";
+import SampleappCard from "@site/src/components/SampleappCard";
 
 ## Sample Applications
 
@@ -11,44 +11,48 @@ Explore sample applications built with Statsig to see how feature flags, experim
 
 <div
   style={{
-    display: "flex",
-    flexWrap: "wrap",
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))"
   }}
 >
-  <OutlinedCard
-    title="React Web App"
-    icon="web"
-    description="Coming soon - A complete React application showcasing feature flags and A/B testing."
-    link="#"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Mobile App"
-    icon="phone_android"
-    description="Coming soon - Native mobile app example with device-level experiments."
-    link="#"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Node.js Backend"
-    icon="dns"
-    description="Coming soon - Server-side implementation with feature gates and metrics."
-    link="#"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="E-commerce Demo"
-    icon="shopping_cart"
-    description="Coming soon - Full e-commerce application with advanced experimentation."
-    link="#"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Analytics Dashboard"
-    icon="dashboard"
-    description="Coming soon - Dashboard application demonstrating Pulse and custom metrics."
-    link="#"
-  ></OutlinedCard>
-  <OutlinedCard
-    title="Multi-platform App"
-    icon="devices"
-    description="Coming soon - Cross-platform application with unified experimentation."
-    link="#"
-  ></OutlinedCard>
+  <SampleappCard
+    title="TaskMaster Pro A/B Testing"
+    link="https://statsig.sampleapp.ai/share/zBrBQANriSlxaDy1VU-3j"
+    image="/img/sampleapps/taskmaster.png"
+  ></SampleappCard>
+  <SampleappCard
+    title="Marketing Tips Blog A/B Testing"
+    link="https://statsig.sampleapp.ai/share/RYOtIEcwyiC0eisSiDqZR"
+    image="/img/sampleapps/marketing-tips.png"
+  ></SampleappCard>
+  <SampleappCard
+    title="Ecommerce Application"
+    link="https://statsig.sampleapp.ai/share/St0bryK_ih8NvCbNVxfm4"
+    image="/img/sampleapps/tech-e-comm.png"
+  ></SampleappCard>
+  <SampleappCard
+    title="Content Recommendation Optimization"
+    link="https://statsig.sampleapp.ai/share/W7b27kGUNeyqU80g85uDE"
+    image="/img/sampleapps/social-stream.png"
+  ></SampleappCard>
+  <SampleappCard
+    title="Banking Dashboard Analytics"
+    link="https://statsig.sampleapp.ai/share/ZDjbSTm5WIqXMfqck536u"
+    image="/img/sampleapps/banking.png"
+  ></SampleappCard>
+  <SampleappCard
+    title="Patient-Provider Appointment Portal"
+    link="https://statsig.sampleapp.ai/share/6xJNjOhdibsLL2J35X7xL"
+    image="/img/sampleapps/healthcare.png"
+  ></SampleappCard>
+  <SampleappCard
+    title="Snake Game"
+    link="https://statsig.sampleapp.ai/share/ZMpNCj-5c2v3MCOgV99H0"
+    image="/img/sampleapps/snake.png"
+  ></SampleappCard>
+  <SampleappCard
+    title="E-commerce A/B Testing"
+    link="https://statsig.sampleapp.ai/share/9uXb7yq2eJM4KWRkiuHj1"
+    image="/img/sampleapps/buy-now-experiment.png"
+  ></SampleappCard>
 </div>
