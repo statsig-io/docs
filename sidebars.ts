@@ -419,6 +419,14 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
+          label: "Infra Analytics",
+          className: "infra-analytics-icon sidebar-icon",
+          items: [
+            "infra-analytics/overview"
+          ]
+        },
+        {
+          type: "category",
           label: "Web Analytics",
           className: "web-icon sidebar-icon",
           items: ["webanalytics/overview", "webanalytics/autocapture"],
