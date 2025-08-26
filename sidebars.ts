@@ -427,8 +427,25 @@ const sidebars: SidebarsConfig = {
           label: "Infra Analytics",
           className: "infra-analytics-icon sidebar-icon",
           items: [
-            "infra-analytics/overview"
-          ]
+            "infra-analytics/overview",
+            "infra-analytics/logs-explorer",
+            {
+              type: "link",
+              href: "/product-analytics/alerts/topline_alerts",
+              label: "Topline Alerts"
+            },
+            {
+              type: "link",
+              href: "/product-analytics/drilldown",
+              label: "Metrics Explorer"
+            }
+          ],
+          
+        },
+        {
+          type: "doc",
+          id: "integrations/mcp",
+          className: "ai-icon sidebar-icon",
         },
         {
           type: "category",
