@@ -291,8 +291,8 @@ const sidebars: SidebarsConfig = {
                   items: [
                     "stats-engine/confidence-intervals",
                     "stats-engine/p-value",
-                    "stats-engine/one-sided-test",
-                    "stats-engine/one-sample-test",
+                    "stats-engine/methodologies/one-sided-test",
+                    "stats-engine/methodologies/one-sample-test",
                     "stats-engine/metric-deltas",
                     "stats-engine/variance",
                     "stats-engine/methodologies/delta-method",
