@@ -23,7 +23,23 @@ The `StatsigOptions` class is used to specify optional parameters when initializ
   Default off. If turned on, SDK will not collect any loggings within the sessions, including custom events and config check exposure events.
 
 - **`enableIDLists`**: `Optional<bool>`  
-  By default off. You need to turn this on if you are using legacy Big ID Lists.
+  Default off. **Required to be `true` when using segments with more than 1000 IDs.** See [ID List segments](/segments/add-id-list) for more details.
+
+- **`disableUserAgentParsing`** `Optional[bool]`
+  Default false. If set to true, the SDK will NOT attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion at evaluation time, when needed for evaluation.
+
+- **`waitForUserAgentInit`** `Optional[bool]`
+  Default: false
+
+  When set to true, the SDK will wait until user agent parsing data is fully loaded during initialization. This may slow down by ~1 second startup but ensures that parsing of the user’s userAgent string into fields like browserName, browserVersion, systemName, systemVersion, and appVersion is ready before any evaluations.
+
+- **`disableUserCountryLookup`**  `Optional[bool]`
+  Default false. If set to true, the SDK will NOT attempt to parse IP addresses (attached to the user object at user.ip) into Country codes at evaluation time, when needed for evaluation.
+
+- **`waitForCountryLookupInit`**  `Optional[bool]`
+  Default: false
+
+  When set to true, the SDK will wait for country lookup data (e.g., GeoIP or YAML files) to fully load during initialization. This may slow down by ~1 second startup but ensures that IP-to-country parsing is ready at evaluation time
 
 - **`eventLoggingFlushIntervalMs`**: `Optional<number>`  
   How often events are flushed to Statsig servers (in milliseconds).
@@ -45,6 +61,13 @@ The `StatsigOptions` class is used to specify optional parameters when initializ
 - **`observabilityClient`**: `Optional<ObservabilityClient>`  
   Interface for you to integrate observability metrics exposed by SDK, including, config propagation delay, initialization time spent. See [details](https://docs.statsig.com/sdk_monitoring/)
 
+- **`proxyConfig`**: `Optional<ProxyConfig>`  
+  Configuration for connecting through a proxy server. The `ProxyConfig` object has the following properties:
+  - `proxyHost`: Optional string specifying the proxy server host
+  - `proxyPort`: Optional number specifying the proxy server port
+  - `proxyAuth`: Optional string for proxy authentication (format: "username:password")
+  - `proxyProtocol`: Optional string specifying the protocol (e.g., "http", "https")
+
 ---
 
 ```typescript
@@ -52,6 +75,12 @@ The `StatsigOptions` class is used to specify optional parameters when initializ
 const options = new StatsigOptions();
 options.environment = "staging";
 options.initTimeoutMs = 3000;
+options.proxyConfig = {
+  proxyHost: "proxy.example.com",
+  proxyPort: 8080,
+  // proxyAuth can be set if authentication is required
+  proxyProtocol: "https"
+};
 
 const statsig = new Statsig("secret-key", options);
 await statsig.initialize();

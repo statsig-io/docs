@@ -3,10 +3,12 @@ sidebar_label: Organizations
 title: Organization Settings & Administration
 keywords:
   - owner:mseger
+last_update:
+  date: 2025-07-23
 ---
 
 :::info
-Organizations and their related features are for Enterprise contracts only. Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you need to enable Enterprise features as you use Statsig.
+Organizations and their related features are for Enterprise contracts only. Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our Slack channel if you need to enable Enterprise features as you use Statsig.
 :::
 
 ## Creating an Organization

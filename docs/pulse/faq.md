@@ -1,9 +1,11 @@
 ---
 title: Frequently Asked Questions on Using Pulse
-sidebar_label: FAQ
+sidebar_label: Pulse FAQs
 slug: /pulse/best-faq
 keywords:
   - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
 Interpreting statistical results can be tricky, and often people will have similar questions as we ramp up. Here's some answers!
@@ -50,3 +52,13 @@ Exposures on the last day (the day you made a decision) are not counted as expos
 ## We log categorical metadata for a custom event, but Pulse doesn't show these breakouts. What's wrong?
 
 Pulse is only able to show experimental results for various sub-groups of your metric (e.g. iOS vs. Android) when you've configured your metadata as a Dimension. [Value Dimensions](/pulse/read-pulse#value-dimensions) are the most common dimension type as their metadata get logged directly with your custom events. However, value dimensions must be defined in your [custom event setup](/metrics/metric-dimensions).
+
+## Why do I see "No dimensions available for this time range"?
+
+You may see this error when trying to view precomputed user dimensions, particularly after the first reload of the day. This happens because:
+
+- Dimensions load asynchronously in separate explore queries after the main scorecard results load
+- The main experiment results will appear first, while dimensions continue loading in the background
+- Typically, dimensions will become available within a few minutes after the main scorecard loads
+
+If you encounter this error, wait a few minutes and refresh the page to see if the dimensions have completed loading.

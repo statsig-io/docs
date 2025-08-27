@@ -1,0 +1,50 @@
+### Getting a Parameter Store
+
+```go
+// Get a Parameter Store by name
+
+s, _ := statsig.NewStatsig("secret-key", options)
+
+user := statsig.NewStatsigUserBuilder().WithUserID("a-user").Build()
+options := statsig.ParameterStoreOptions{DisableExposureLogging: false}
+
+paramStore := s.GetParameterStore(*user, "paramStore", &options)
+```
+
+### Retrieving Parameter Values
+
+Parameter Store provides methods for retrieving values of different types with fallback defaults.
+
+```go
+//String parameters
+stringVal := paramStore.GetString("str_param", "default_value")
+
+//Boolean parameters
+boolVal := paramStore.GetBoolean("bool_param", false)
+
+//Numeric parameters
+intVal := paramStore.GetInt("int_param", 0)
+int64Val := paramStore.GetInt64("int64_param", 0)
+float64Val := paramStore.GetFloat64("float64_param", 0.0)
+
+//Complex parameters
+objectParam := map[string]interface{}{
+    "value1": "string",
+    "value2": 1,
+    "value3": 1.0,
+}
+objectVal := paramStore.GetMap("obj_param", objectParam)
+
+arrayParam := []interface{}{"val1", "val2", "val3"}
+arrayVal := paramStore.GetInterface("array_param", arrayParam)
+
+```
+
+### Evaluation Options
+
+You can disable exposure logging when retrieving a parameter store:
+
+```go
+options := statsig.ParameterStoreOptions{DisableExposureLogging: false}
+paramStore := s.GetParameterStore(*user, "param_store", &options)
+```

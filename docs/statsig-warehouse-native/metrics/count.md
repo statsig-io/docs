@@ -3,6 +3,8 @@ title: Count Metrics
 sidebar_label: Count
 keywords:
   - owner:vm
+last_update:
+  date: 2025-07-28
 ---
 
 ## Summary
@@ -27,11 +29,20 @@ This would look like the SQL below:
 ```
 -- Unit Level
 SELECT
-  unit_id,
-  group_id,
+  source_data.unit_id,
+  exposure_data.group_id,
   COUNT(1) as value
 FROM source_data
-GROUP BY unit_id, group_id;
+JOIN exposure_data
+ON
+  -- Only include users who saw the experiment
+  source_data.unit_id = exposure_data.unit_id
+  -- Only include data from after the user saw the experiment
+  -- In this case exposure_data is already deduped to the "first exposure"
+  AND source_data.timestamp >= exposure_data.timestamp
+GROUP BY
+  source_data.unit_id,
+  exposure_data.group_id;
 
 -- Experiment
 SELECT
@@ -67,9 +78,9 @@ Count metrics are simple, and will use the sql COUNT aggregation. However, there
 - CUPED
   - Specify if you want to calculate CUPED, and the lookback window for CUPED's pre-experiment data inputs
 - Thresholding
-  - Turn this metric into a 1/0 unit count metric counting if the unit's total count surpassed a given threshold
-- Cohort Windows
+  - Turn this metric into a 1/0 unit count metric counting if the unit's total count equals to or surpasses (>=) a given threshold
+- [Cohort Windows](../features/cohort-metrics.md)
   - You can specify a window for data collection after a unit's exposure. For example, a 0-1 day cohort window would only count actions from days 0 and 1 after a unit was exposed to an experiment
     - **Only include units with a completed window** can be selected to remove units out of pulse analysis for this metric until the cohort window has completed
-- Baked Metrics
-  - Baked metrics allow you to specify how long a metric needs to mature. This is common in situations like chargebacks or cancellations. Statsig will delay loading the data until the window has elapsed, and only calculate pulse results for that metric if a unit's metric has matured.
+- [Baked Metrics](../features/cohort-metrics.md)
+  - [Baked Metrics](../features/cohort-metrics.md) allow you to specify how long a metric needs to mature. This is common in situations like chargebacks or cancellations. Statsig will delay loading the data until the window has elapsed, and only calculate pulse results for that metric if a unit's metric has matured.

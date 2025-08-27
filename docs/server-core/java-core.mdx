@@ -1,8 +1,10 @@
 ---
-sidebar_label: Java Core
-title: Java Core Server SDK
+sidebar_label: Java
+title: Java Server SDK
 keywords:
   - owner:brock
+last_update:
+  date: 2025-07-23
 ---
 
 import {
@@ -20,6 +22,15 @@ import {
   ManualExposures,
   Shutdown,
   Reference,
+  LocalOverrides,
+  JavaCoreVsLegacy,
+  SupportedCombinations,
+  ExampleProgram,
+  PersistentStorage,
+  DataStore,
+  OutputLogger,
+  ObservabilityClient,
+  FieldsNeededMethods
 } from "./Templates/index.mdx";
 
 import Preamble from "./_preamble.mdx";
@@ -28,6 +39,7 @@ import Initialize from "./java/_initialize.mdx";
 import CheckGate from "./java/_checkGate.mdx";
 import GetExperiment from "./java/_getExperiment.mdx";
 import GetFeatureGate from "./java/_getFeatureGate.mdx";
+import ParamStores from "./java/_paramStores.mdx";
 import GetConfig from "./java/_getConfig.mdx";
 import LogEvent from "./java/_logEvent.mdx";
 import MoreFAQs from "./java/_faqs.mdx";
@@ -36,6 +48,15 @@ import ShutdownSnippet from "./java/_shutdown.mdx";
 import Flush from "./java/_flush.mdx";
 import UserSnippet from "./java/_statsigUser.mdx";
 import * as ReferenceSnippets from "./java/_reference.mdx";
+import OverridesSnippet from "./java/_localOverrides.mdx";
+import { Snippets as ManualExposureSnippets } from "./java/_manualExposures.mdx";
+import CoreVsLegacyContent from "./java/_core_vs_legacy.mdx";
+import SupportedCombinationsContent from "./java/_supported_combinations.mdx";
+import ExampleProgramContent from "./java/_example.mdx";
+import ObservabilityClientContent from "./java/_observability_client.mdx";
+import SharedInstanceSnippet from "./java/_sharedInstance.mdx";
+import DataStoreContent from "./java/_data_store.mdx";
+
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -62,18 +83,36 @@ export const Builder = SDKDocsBuilder({
         getFeatureGate: <GetFeatureGate />,
         getConfig: <GetConfig />,
         logEvent: <LogEvent />,
+        paramStores: <ParamStores />,
+        sharedInstance: <SharedInstanceSnippet />,
         hideAsyncDisclaimer: true,
       },
     ],
+    [ManualExposures, { ...ManualExposureSnippets }],
     [StatsigUser, { statsigUser: <UserSnippet /> }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
-    [FAQ, { faqs: <MoreFAQs /> }],
+    [LocalOverrides, { snippet: <OverridesSnippet />,},],
+    [PersistentStorage, { }],
+    [DataStore, { content: <DataStoreContent /> }],
+    [OutputLogger, { }],
+    [ObservabilityClient, { content: <ObservabilityClientContent /> }],
+    [FAQ, { 
+      faqs: <>
+        <MoreFAQs />
+        <h3 id="java-core-vs-legacy-java-sdk">Java Core vs Legacy Java SDK</h3>
+        <CoreVsLegacyContent />
+        <h3 id="supported-os-and-architecture-combinations">Supported OS and Architecture Combinations</h3>
+        <SupportedCombinationsContent />
+        <h3 id="example-program">Sample App</h3>
+        <ExampleProgramContent />
+      </> 
+    }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
+    [FieldsNeededMethods, {}],
   ]
 })
 
 export const toc = Builder.toc
 
 <>{Builder.result}</>
-

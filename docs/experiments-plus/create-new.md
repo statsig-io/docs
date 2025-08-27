@@ -4,9 +4,15 @@ sidebar_label: Create
 slug: /experiments-plus/create-new
 keywords:
   - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
-This guide walks you through the steps to create and configure a new experiment in Statsig. Whether you're running a simple A/B test or a more complex multi-variant experiment, these instructions will help you set up your experiment correctly.
+:::tip[Warehouse Native users]
+You're viewing the Cloud docs for this page. Metrics and experiments behave differently in Warehouse Native. Read about [Configuring Experiments in Warehouse Native](/statsig-warehouse-native/features/experiment-options).
+:::
+
+This doc walks through the steps of creating a new experiment in the Statsig console. If you're looking for an end-to-end guide that includes integrating the Statsig SDK, see [Run your first experiment](/guides/abn-tests).
 
 ### User-level Experiments
 To create a user-level experiment, follow these steps:
@@ -29,7 +35,7 @@ When running an experiment, it’s common to test a specific hypothesis using a 
 
 Configuring the Scorecard is a required step when creating an experiment. It provides your team with clear context on what is being tested and how success is measured. You must enter your hypothesis and select at least one primary metric. Metrics added to the Scorecard are computed daily and eligible for advanced treatments like [CUPED](/stats-engine/methodologies/cuped) and [Sequential Testing](/experiments-plus/sequential-testing#what-is-sequential-testing).
 
-For best practices on configuring your Scorecard, read more [here](/experiments-plus/read-results#reading-experiment-results).
+For best practices on configuring your Scorecard, read more [here](/pulse/read-pulse).
 
 <img width="1086" alt="Screenshot 2025-02-06 at 6 34 00 PM" src="https://github.com/user-attachments/assets/cf3e3be7-61d5-4079-bb0f-6b6685f72f01" />
 
@@ -75,6 +81,16 @@ By default, experiments randomize users based on **User ID**. If you need to use
 
 Afterward, continue with the same steps described above to finish configuring the experiment.
 
+## ID Mapping Capabilities
+
+When running experiments, you may want to start with one ID type (like stableID for device-level targeting) but analyze results using events from another ID type (like userID for logged-in user metrics).
+
+**Warehouse Native**: Supports ID mapping between different identifier types (e.g., stableID to userID) through Entity Property Source configuration.
+
+**Cloud**: Currently does not support mapping between different ID types. Experiments started with stableID will only analyze events with stableID, and experiments started with userID will only analyze events with userID.
+
+For advanced ID mapping requirements, consider using Statsig Warehouse Native.
+
 ### Isolated Experiments
 
 If you want to create an experiment that excludes users exposed to other experiments, follow steps 1–4 from the "User-level Experiments" section. Then:
@@ -98,12 +114,20 @@ By default, Pulse results display with 95% confidence intervals and without Bonf
 
 ### Target Duration
 
-Setting a target duration is optional, but it helps ensure that you wait long enough for the experiment to reach full power. You can set the target as either a specific number of days or a number of exposures, and use the **Power Analysis Calculator** to determine what target works best for your metrics.
+Setting a target duration is optional, but it helps ensure that you wait long enough for the experiment to reach full power. You can set the target as either a specific number of days or a number of exposures, and use the [**Power Analysis Calculator**](/experiments-plus/power-analysis) to determine what target works best for your metrics.
 
 💡 **Target durations longer than 90 days:** By default, Statsig computes Pulse results for the first 90 days, though the experiment itself can run longer. Before setting a duration beyond 90 days, ask yourself if results past that period will still be relevant, and if earlier data might already provide the insights you need.
 
-<img width="991" alt="Screenshot 2025-02-06 at 6 35 03 PM" src="https://github.com/user-attachments/assets/371f7de7-f428-41d5-ad0e-8fdf9d223982" />
+<img alt="Hypothesis Advisor Screenshot" src="https://github.com/user-attachments/assets/371f7de7-f428-41d5-ad0e-8fdf9d223982" />
 
 Once set, you can track progress against the target duration/exposures in the experiment header. You’ll also receive notifications via email and Slack (if integrated) when the target is reached.
 
 ---
+
+### Hypothesis Advisor
+Writing good experiment hypotheses is key to a strong experimentation culture. Statsig now gives instant feedback on experiment hypotheses—flagging what’s missing. Admins can set custom requirements, which Statsig uses to guide experimenters toward stronger, more complete hypotheses. 
+
+This feature has to be enabled for your project. Do this from Settings -> Experiment -> Project -> Statsig AI. This is also where you configure any custom requirements you want to configure (e.g. 
+"Strongly recommend that a validation plan be mentioned")
+<img alt="Screenshot showing the Hypothesis Advisor" src="https://github.com/user-attachments/assets/ef70cbf1-db6b-4c15-81fd-ebabbda12e83" />
+

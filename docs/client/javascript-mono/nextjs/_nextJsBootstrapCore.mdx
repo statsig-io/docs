@@ -93,7 +93,6 @@ This file will contain the logic to initialize our Statsig server SDK and genera
 
 import { Statsig, StatsigUser } from '@statsig/statsig-node-core';
 
-const specs: string | null = null;
 const statsig = new Statsig(
   process.env.STATSIG_SERVER_KEY!,
 );
@@ -101,12 +100,11 @@ const statsig = new Statsig(
 // Initialize statsig with options
 const initialize = statsig.initialize();
 
-export async function generateBootstrapValues(): Promise<string> {
-  const user = new StatsigUser({ userID: 'a-user', customIDs: {} });
+export async function generateBootstrapValues(user: StatsigUser): Promise<string> {
   await initialize;
   const values = statsig.getClientInitializeResponse(user, {
     hashAlgorithm: 'djb2',
-  }) as string;
+  });
   return values;
 }
 ```
@@ -128,36 +126,52 @@ This file will contain the logic to initialize our Statsig server SDK and genera
 ```ts
 // pages/statsig-backend.ts
 
-import Statsig, { StatsigUser } from "statsig-node"; //Note, recommended page-router implementations still use our legacy SDK.
+import { GetServerSidePropsContext } from 'next';
+import { Statsig, StatsigUser } from "@statsig/statsig-node-core";
+import { getUUID } from '@statsig/client-core';
 
-export const isStatsigReady = Statsig.initialize(
-  process.env.STATSIG_SERVER_KEY!,
-  {
-    environment: { tier: "development" },
-  }
+const statsig = new Statsig(
+  process.env.STATSIG_SERVER_KEY!
 );
 
+export const isStatsigReady = statsig.initialize();
+
 export type StatsigServerProps = {
-  user: StatsigUser;
+  jsonUser: object;
   data: string;
   key: string;
+  host: string | null;
 };
 
-export async function getStatsigServerProps(): Promise<StatsigServerProps> {
+export async function getStatsigServerProps(context: GetServerSidePropsContext): Promise<StatsigServerProps> {
   await isStatsigReady;
 
-  const user = { userID: "a-user" };
+  const hostname = context.req?.headers.host;
+  let host = null;
+  if (hostname) {
+    host = hostname.includes('localhost') ? `http://${hostname}` : `https://${hostname}`;
+  }
+
+  //Its important that your server SDK has access to stableIDs consistent with the client, see https://docs.statsig.com/client/javascript-sdk#keeping-stableid-consistent-across-client--server 
+  //You may choose to implement this mechanism differently
+  let stableID = context.req.cookies['custom-statsig-stable-id'];
+  if (!stableID) {
+    stableID = getUUID();
+    context.res.setHeader('Set-Cookie', 'custom-statsig-stable-id=' + stableID);
+  }
+
   const key = process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!;
+  const jsonUser = { userID: "a-user", customIDs: { stableID } };
+  const user = new StatsigUser(jsonUser);
+  const data = await getStatsigValues(user);
 
-  const values = Statsig.getClientInitializeResponse(user, key, {
-    hash: "djb2", //🔥 'djb2' is required. By default this would be 'sha256'.
-  });
+  return { jsonUser, data, key, host };
+}
 
-  return {
-    data: JSON.stringify(values),
-    user,
-    key,
-  };
+export async function getStatsigValues(user: StatsigUser): Promise<string> {
+  await isStatsigReady;
+  const values = statsig.getClientInitializeResponse(user, { hashAlgorithm: 'djb2' }) as string;
+  return values;
 }
 ```
 
@@ -195,6 +209,7 @@ We now need to refactor our Root `layout.tsx` to call the `generateBootstrapValu
 
 // ...
 import { generateBootstrapValues } from "./statsig-backend";
+import { StatsigUser as StatsigUserCore } from '@statsig/statsig-node-core';
 // ...
 
 export default async function RootLayout({
@@ -202,11 +217,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const bootstrapValues = await generateBootstrapValues();
+  const userObject = {userID: "userID-123"} //add in your real userID here
+  const statsigUserObject = StatsigUserCore(userObject) // The server-side Statsig SDK requires a constructor for StatsigUser
+  const bootstrapValues = await generateBootstrapValues(statsigUserObject);
 
   return (
     <html lang="en">
-      <MyStatsig values={bootstrapValues}>
+      <MyStatsig user={userObject} values={bootstrapValues}> // add the JSON user object here
         <body>
           {children}
         </body>
@@ -227,22 +244,24 @@ swapping out useClientAsyncInit for useClientBootstrapInit.
 import {
   LogLevel,
   StatsigProvider,
-  StatsigUser,
+  StatsigUser, // <- Add this
   useClientBootstrapInit, // <- Add this
 } from "@statsig/react-bindings";
 import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
 
 export default function MyStatsig({
   children,
+  user, //add the user object and values
   values,
 }: {
-  values: string;
   children: React.ReactNode;
+  user: StatsigUser,
+  values: string;
 }) {
   // Update to using useClientBootstrapInit instead of auto initializing in the provider
   const client = useClientBootstrapInit(
     process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!,
-    { userID: "a-user" },
+    user,
     values,
     {
       logLevel: LogLevel.Debug,
@@ -279,9 +298,8 @@ Here is an example of using it in our Home page:
 
 import { getStatsigServerProps } from "./statsig-backend";
 
-export const getServerSideProps = async () => {
-  const statsigProps = await getStatsigServerProps();
-
+export const getServerSideProps = async (context) => {
+  const statsigProps = await getStatsigServerProps(context);
   return { props: { statsigProps } };
 };
 
@@ -300,7 +318,6 @@ We do this conditionally, so that Statsig only runs on pages that call `getStats
 import {
   LogLevel,
   StatsigProvider,
-  StatsigUser,
 } from "@statsig/react-bindings";
 import { runStatsigAutoCapture } from '@statsig/web-analytics';
 
@@ -316,12 +333,13 @@ export default function App({ Component, pageProps }: AppProps) {
       return clientRef.current;
     }
 
-    const { key, user, data } = pageProps.statsigProps;
+    const { key, jsonUser, data } = pageProps.statsigProps;
     const inst = new StatsigClient(
       key,
-      user,
-      { logLevel: LogLevel.Debug } // Optional - Prints debug logs to the console
+      jsonUser,
+      { logLevel: LogLevel.Debug }
     );
+
     clientRef.current = inst;
 
     inst.dataAdapter.setData(data);
@@ -338,10 +356,6 @@ export default function App({ Component, pageProps }: AppProps) {
       </StatsigProvider>
     );
   }
-
-  #### Boostrapping client-rendered content
-  Both client and server rendered content can be added to the children of the Home component we defined above. The getServerSideProps call passes the necessary props to the root _app.tsx file, which provides Statsig context to any child element.
-
 
   return <Component {...pageProps} />;
 }

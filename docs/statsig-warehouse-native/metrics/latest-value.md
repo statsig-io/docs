@@ -3,6 +3,8 @@ title: First or Latest Value Metrics
 sidebar_label: First/Latest Value
 keywords:
   - owner:vm
+last_update:
+  date: 2025-07-28
 ---
 
 ## Summary
@@ -30,13 +32,22 @@ This would look like the SQL below:
 ```
 -- Unit Level
 SELECT
-  unit_id,
-  group_id,
-  LATEST_VALUE(value_field) as value
+  source_data.unit_id,
+  exposure_data.group_id,
+  LATEST_VALUE(source_data.value_field) as value
   -- or FIRST_VALUE
 FROM source_data
+JOIN exposure_data
+ON
+  -- Only include users who saw the experiment
+  source_data.unit_id = exposure_data.unit_id
+  -- Only include data from after the user saw the experiment
+  -- In this case exposure_data is already deduped to the "first exposure"
+  AND source_data.timestamp >= exposure_data.timestamp
 WHERE value_field IS NOT NULL
-GROUP BY unit_id, group_id;
+GROUP BY
+  source_data.unit_id,
+  exposure_data.group_id;
 
 -- Experiment
 SELECT
@@ -63,8 +74,28 @@ Users without a value will be treated as 0s; note that if there is an existing v
 
 - Metric Breakdowns
   - You can configure Metadata Columns to group results by, getting easy access to dimensional views in pulse results
-- Cohort Windows
+- [Cohort Windows](../features/cohort-metrics.md)
   - You can specify a window for data collection after a unit's exposure. For example, a 0-1 day cohort window would only count actions from days 0 and 1 after a unit was exposed to an experiment
     - **Only include units with a completed window** can be selected to remove units out of pulse analysis for this metric until the cohort window has completed
 - CUPED
   - Specify if you want to calculate CUPED, and the lookback window for CUPED's pre-experiment data inputs
+
+### Special Case: Surrogate Metrics
+
+You can use latest value metrics to implement surrogate metrics. Surrogate metrics (aka proxy metrics or predictive metrics) are a prediction of some long term metric that's impractical to measure over the duration of an experiment, and have some inherent prediction error associated with the model used to derive the metric values.
+
+Under advanced settings in latest value metrics, you can indicate a metric as a surrogate metric with a mean squared error (MSE). This means that the prediction accuracy can be accounted for in calculating variance and thus adjusts p-values and confidence intervals accordingly.
+
+Consider the variable X to be the true north metric which is being predicted by the surrogate metric S. The surrogate metric S is assumed to be an unbiased estimator with an error term $\epsilon$.
+
+$$
+\mu_{X} = \mu_{S} = \overline{S}
+$$
+
+$$
+Var(X) = Var(S + \epsilon) = Var(S) + MSE
+$$
+
+$$
+Var(\overline{X}) = \frac{Var(X)}{n} = \frac{Var(S) + MSE}{n}
+$$

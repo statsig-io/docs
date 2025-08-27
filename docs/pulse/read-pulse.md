@@ -1,48 +1,50 @@
 ---
-title: How to Read Pulse
+title: How to Read Experiment Results (Formerly "Pulse")
 sidebar_label: Read Results
 slug: /pulse/read-pulse
 keywords:
   - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
-## How to read Pulse
+## Read Experiment Results
+
+To read the results of your experiment, go to the **Results** tab, where you will see your experiment hypothesis, **exposures**, and **Scorecard**.
 
 ### Exposures
 
-![Exposures Chart](https://user-images.githubusercontent.com/77478319/137816780-c0af4967-3903-45bf-88d9-ff3d3236632e.png)
+![Exposures Chart](https://github.com/user-attachments/assets/7a80e74e-140d-4c36-a78e-c9b626e1fee5)
 
-At the top of Pulse is the Exposures Chart. Exposures are the unique experimental units enrolled in the experiment. This is typically the number of unique users, and for device-level experimentation, this is the number of devices. The timeline shows you when the experiment was started, and how many exposures were enrolled on any given day. You can see the rate at which users were added into each group of the experiment, how many total users were exposed, and confirm the target ratio matches what you configured in experiment setup.
+At the top of the Results page is the Exposures Chart. Exposures are the unique experimental units enrolled in the experiment. This is typically the number of unique users, and for device-level experimentation, this is the number of devices. The timeline shows you when the experiment was started, and how many exposures were enrolled on any given day. You can see the rate at which users were added into each group of the experiment, how many total users were exposed, and confirm the target ratio matches what you configured in experiment setup.
 
-### Metric Lifts
+### Scorecard
+
+The experiment **Scorecard** shows the metric lifts for all Primary and Secondary metrics you set up at experiment creation.
 
 #### Immediately Post-experiment Start 
 
-For up to the first 24 hours after starting your experiment (before our daily Pulse run), the **Metric Lifts** section, a.k.a. Pulse, is calculated in near real-time (this only applies to Statsig Cloud, for WHN projects you will need to reload pulse on demand or set up a daily schedule). This more real-time Pulse is designed to enable you to confirm that exposures and metrics are being calculated as expected and debug your experiment or gate setup if needed. 
+For up to the first 24 hours after starting your experiment (before our daily metric results run), the **Scorecard** section is calculated hourly (this only applies to Statsig Cloud, for WHN projects you will need to reload results on demand or set up a daily schedule). This more real-time scorecard is designed to enable you to confirm that exposures and metrics are being calculated as expected and debug your experiment or gate setup if needed. 
 
-Please note that you should **not** make any experiment decisions based on more real-time Pulse data in this first 24 hour window after experiment start. Experiments should only be called once the experiment has hit target duration, as set by your primary metric(s) hitting experimental power. Read more about target duration [here](/experiments-plus/create-new#target-duration). 
+:::note
+You should **not** make any experiment decisions based on real-time results data in this first 24 hour window after experiment start. Experiments should only be called once the experiment has hit target duration, as set by your primary metric(s) hitting experimental power. 
+Read more about target duration [here](/experiments-plus/create-new#target-duration). 
+:::
 
-<img width="1205" alt="Screen Shot 2023-06-19 at 3 29 13 PM" src="https://github.com/statsig-io/docs/assets/101903926/c148deb6-b20d-4f36-af1a-83836d23371b"/>
-
-
-Given data during this early post-experiment start window is designed for diagnostic, not decision-making purposes, you will notice a few key differences between this Pulse view and the Pulse results that will start showing after daily runs have initiated: 
+Given data during this early post-experiment start window is designed for diagnostic, not decision-making purposes, you will notice a few key differences between this real-time view and the results that will start showing after daily runs have initiated: 
 
 - Metric lifts do not have confidence intervals
 - No time-series view of metric trends
 - No projected topline impact analysis
 - No option to apply more advanced statistical tactics, such as CUPED or Sequential Testing 
 
-<img width="992" alt="Screen Shot 2023-06-19 at 3 32 13 PM" src="https://github.com/statsig-io/docs/assets/101903926/c34d4358-c92d-488f-ae49-d073904065d0"/>
+All of these are available in daily Results, which will start showing in the next daily run. 
 
+#### Post-first Day Scorecard
 
+![Scorecard](https://github.com/user-attachments/assets/8b855f5c-d26f-4185-ac31-5108fbebe18e)
 
-All of these are available in daily Pulse results, which will start showing in the next daily Pulse run. 
-
-#### Post-first Day Metric Lifts  
-
-<img width="1194" alt="Screen Shot 2023-09-20 at 11 35 05 AM" src="https://github.com/statsig-io/docs/assets/101903926/85fdc847-8d70-4215-a6ad-5a1f2d49c5e7"/>
-
-The Pulse daily run calculates the difference between the comparable randomization groups (eg. test and control) across your company's suite of metrics, and applies a statistical test to the results. You can read more about Statsig's stats engine [here](/stats-engine). 
+The experiment Results daily run calculates the difference between the comparable randomization groups (eg. test and control) across your company's suite of metrics, and applies a statistical test to the results. You can read more about Statsig's stats engine [here](/stats-engine). 
 
 For every metric, we will show you:
 
@@ -61,38 +63,62 @@ Confidence intervals are reported at the selected significance level (95% by def
 
 99.9% winsorization is automatically applied to event_count, event_count_custom, and sum metrics. This caps extreme outlier values to reduce their impact on experiment results. For metrics added to the **Scorecard** or **Monitoring Metrics** sections of your experiment or gate, you can also apply other optional statistical treatments, such as CUPED (pre-experiment bias reduction) and sequential testing adapted confidence intervals. Read more [here](/stats-engine). 
 
-### Pulse Views 
-There are a few different views to see your Pulse metric lifts, namely: 
+* **Experiment results are computed for the first 90 days**: By default, Statsig will compute experiment Results for your experiment for only the first 90 days of your experiment. You will be notified via e-mail as you approach the 90 days cap, at which point will be able to extend this compute window for another 30 days at a time. If the experiment runs beyond the compute window, new users will stop getting added into the experiment's result, but analysis for existing users who have been exposed to the experiment will continue to run even if the compute window is not extended, until you make a decision on the experiment. Note that this only affects whether a user is included in the experiment's analysis, and does not affect the treatment each user would receive, i.e. new users would still receive the experience for the group they get randomized into.
+
+### Experiment Results Views 
+There are a few different views to see your Scorecard metric lifts, namely: 
 
 - Cumulative results (default view)
 - Daily results
 - Days since exposure
 
-Cumulative results includes a detailed view on hover, where you can additionally view the raw statistics used in the Pulse metric lift calculations, as well as topline impact.
-
-<img width="1282" alt="Screen Shot 2023-09-20 at 11 35 16 AM" src="https://github.com/statsig-io/docs/assets/101903926/1509479e-b5c6-416f-8d2a-ac0672165dd1"/>
-
-
-<img width="1194" alt="Screen Shot 2023-09-20 at 11 35 35 AM" src="https://github.com/statsig-io/docs/assets/101903926/9cdb7294-c979-4e0d-b26c-e20c86794d2b"/>
-
+Cumulative results includes a detailed view on hover, where you can additionally view the raw statistics used in the metric lift calculations, as well as topline impact.
+![Screenshot 2025-05-01 at 4 36 34 PM](https://github.com/user-attachments/assets/856c7750-df56-45d9-b253-6b63f336cac7)
 
 ### Dimensions
 
-There are two ways in which we can breakdown a given Pulse metric - one is by a **User Dimension**, the other is by an **Event Dimension**.
+There are two ways in which we can breakdown a given Scorecard metric - one is by a **User Dimension**, the other is by an **Event Dimension**.
 
 #### User Dimensions
 
 User Dimensions refer to user level attributes that are either part of the user object you log, or additional metadata that Statsig extracts. Examples of these user attributes could be operating system, country, and region.
 
-You can create [custom queries](/pulse/custom-queries) to create queries that _filter on_ or _group by_ available user dimensions. For example, you could "See results for users in the US", or "See results for users using iOS, grouped by their country".
+You can create [custom "explore" queries](/pulse/custom-queries) to _filter on_ or _group by_ available user dimensions. For example, you could "See results for users in the US", or "See results for users using iOS, grouped by their country". Go to the "explore" tab to draft a custom query
+
+![custom queries](https://github.com/user-attachments/assets/e3afb526-8f9d-465e-af33-ea9575ac69e7)
+
 
 #### Event dimensions
 
-Events Dimensions refer to the value or metadata logged as part of a custom event that is used to define the metric. If you want to see Pulse results for a metric broken down by categories that are specific to that metric, [specify the dimension](/metrics/metric-dimensions) you want to break down by in the **value** or **metadata** attributes when you log the source event. For example, when you log a "click" event on your web or mobile application, you may also log the target category using the **value** attribute as shown below. Pulse will automatically generate results for each category in addition to the top level metric. 
+Events Dimensions refer to the value or metadata logged as part of a custom event that is used to define the metric. If you want to see results for a metric broken down by categories that are specific to that metric, [specify the dimension](/metrics/metric-dimensions) you want to break down by in the **value** or **metadata** attributes when you log the source event. For example, when you log a "click" event on your web or mobile application, you may also log the target category using the **value** attribute as shown below. Statsig will automatically generate results for each category in addition to the top level metric. 
 
-To see the Pulse result breakdowns for all categories within a metric, click on the (+) sign next to the metric.
+To see breakdowns for all categories within a metric, click on the (+) sign next to the metric.
+![dimension button](https://github.com/user-attachments/assets/65cbe2a0-d269-4385-a606-c825ff2e8e05)
 
-![!image](/img/dimension_button.png)
+![dimension results view](https://github.com/user-attachments/assets/f557dac6-e29f-4cb5-bd6a-19fc2b226193)
 
-![image](https://user-images.githubusercontent.com/88338316/158864531-be7f4527-6f83-4f9c-9b9d-2de4f34ec77f.png)
-![image](https://user-images.githubusercontent.com/1315028/134992035-1bfa67f2-73a0-4b88-ac1d-688fa6ef0b33.png)
+### Significance Level Settings
+
+These settings can be adjusted at any time to view Scorecard results with different significance levels. 
+
+* **Apply Benjamini-Hochberg Procedure per Variant**: Select this option to apply the procedure to reduce the probability of false positives by adjusting the significance level for multiple comparisons - [read more here](/stats-engine/methodologies/benjamini–hochberg-procedure).
+* **Confidence Interval**: Changes the confidence interval displayed with the metric deltas.  Choose lower confidence intervals (e.g.: 80%) when there's higher tolerance for false positives and fast iteration with directional results is preferred over longer/larger experiments with increased certainty.
+* **CUPED**: Toggle CUPED on/ off via the inline settings above the metric lifts. Note that this setting can only be toggled for **Scorecard** metrics, as CUPED is not applied to non-Scorecard metrics. 
+* **Sequential Testing**: Applies a correction to the calculate p-values and confidence intervals to reduce false positive rates when evaluating results before the target completion date of the experiment. This helps mitigate the increased false positive rate associated with the "peeking problem". Toggle Sequential Testing on/ off via the inline settings above the metric lifts. Note that this setting is available only for experiments with a set target duration.
+* 
+![analysis settings](https://github.com/user-attachments/assets/d2d7405a-9e86-4317-8f32-51b369c66699)  
+
+
+### Restarting Results
+
+<img width="1062" height="80" alt="Screenshot 2025-07-11 at 9 29 30 AM" src="https://github.com/user-attachments/assets/201ab314-9304-43f1-bc11-58dcf9394aa2" />
+
+If your experiment has stopped computing results, you can resume updates by clicking the Restart button. There are some important facts to be aware of:
+
+* A Restart is not a [Reset](https://docs.statsig.com/experiments-plus/ending-experiment/#stopping-an-experiment) of your experiment. A Restart will not re-salt (i.e. re-randomize) units in your experiment, and all users will continue to receive the same group assignments.
+
+* Statsig will begin computing experiment results anew from the restart point, so your metric results will start over. Old results may still be available in timeseries and explore query views, but they will not be carried forward or updated.
+
+* Your Cumulative Exposures chart will update based on new exposures, but the duration of the pause in computations will affect if the chart starts over from zero or your exposure count includes past exposures.
+
+It's best to avoid having to Restart Results by actively extending experiments while they're running. Be sure to look out for email alerts from Statsig and check in your experiments regularly.

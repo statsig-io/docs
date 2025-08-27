@@ -4,6 +4,8 @@ sidebar_label: Statsig Lite
 slug: /experimentation/statsig-lite
 keywords:
   - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
 ## What it is

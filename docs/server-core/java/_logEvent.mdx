@@ -1,6 +1,18 @@
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="java-core-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
 ```java
-StatsigUser user = new StatsigUser("user123");
+StatsigUser user = new StatsigUser.Builder().setUserID("user123").build();
 String eventName = "purchase";
 String value = "100";
 Map<String, String> metadata = new HashMap<>();
@@ -9,3 +21,21 @@ metadata.put("category", "electronics");
 
 statsig.logEvent(user, eventName, value, metadata);
 ```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+val user = StatsigUser.Builder().setUserID("user123").build()
+val eventName = "purchase"
+val value = "100"
+val metadata = mutableMapOf(
+    "item_id" to "12345",
+    "category" to "electronics"
+)
+
+statsig.logEvent(user, eventName, value, metadata)
+```
+
+  </TabItem>
+</Tabs>

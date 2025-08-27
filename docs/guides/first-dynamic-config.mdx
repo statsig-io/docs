@@ -1,15 +1,17 @@
 ---
-sidebar_label: Guided Tutorial 
+sidebar_label: Guided Tutorial
 title: Making Your Code More Flexible with Dynamic Config
 keywords:
   - owner:shubham
+last_update:
+  date: 2025-07-23
 ---
 
 Now that you have created your Statsig account, and perhaps even your [first feature](/guides/first-feature), this guide will help you make your app a bit more flexible with Dynamic Config.
+Whether it be for server-side rendered UI, rate limiting configurations, ranking systems, algorithms, etc. Dynamic Config can help you update configurations on the fly.
 
 :::info
-NOTE: This guide focuses on a client-side example, as it is easier to illustrate how Dynamic Configs work and can be used. You can and still should use
-Dynamic Config on the server side as well. Whether it be for server-side rendered UI, rate limiting configurations, ranking systems, algorithms, etc. Dynamic Config can help you update configuration on the fly.
+This guide focuses on a client-side example, as it is easier to illustrate how Dynamic Configs work and can be used. You can and still should use Dynamic Config on the server side as well.
 :::
 
 In this guide, we will be building a front page banner - something that may show up on an ecommerce site to advertise an upcoming sale, for instance.
@@ -31,7 +33,7 @@ Great! We have created an (empty) Dynamic Config. It returns the default value (
 
 ### Step 2 - Create Targeting Rule(s) and Conditions
 
-First, let's add the Window's rule.  Select "Add Targeting", and then "Add new Rule":
+First, let's add the Window's rule. Select "Add Targeting", and then "Add new Rule":
 
 ![Add Rule](https://github.com/user-attachments/assets/9011708a-24e0-43c9-8e4d-468d57476413)
 
@@ -51,7 +53,7 @@ This is the rough schema we want to return:
 }
 ```
 
-Let's edit the return value for the windows rule, and fill it in.  Under "Return" on the right hand side, hit "edit". Then paste the following:
+Let's edit the return value for the windows rule, and fill it in. Under "Return" on the right hand side, hit "edit". Then paste the following:
 
 ```js
 {
@@ -87,6 +89,10 @@ Once again, don't forget to click "Save" to apply these new rules to your config
 ![Dynamic Config with two rules](https://github.com/user-attachments/assets/a04575a8-6afb-4380-8cb6-77052a2d5943)
 
 ### Step 4 - Call getDynamicConfig In Your App
+
+This is a specific guide for creating a Dynamic Config using the Statsig Javascript SDK - for more guides to calling the statsig SDKs in code, use the Statsig SDK [quickstart guides](https://docs.statsig.com/sdks/quickstart) where you can select which SDK you'll be using!
+You can also reference the code snippet you'll want to use for a particular dynamic config by clicking into the code snippet button on the dynamic config page and selecting the desired SDK
+![dynamic config code snippet button](https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/CbjKvuo40oMU45psWLvG/8211d6ea-db5f-448b-9589-e112de3ac4b2.png)
 
 Now let's use this Dynamic Config to create a different landing page experience for different sets of developers. Check out this [codepen](https://codepen.io/tore-statsig/pen/mdWEajo) to follow along. If you fork the code and put in the API Key from your Statsig project, you should be able to see the banner for your platform.
 
@@ -128,6 +134,5 @@ And that's it! With just a handful of javascript, we integrated with the Statsig
 Here's what it looks like for me, viewing this webpage in chrome on a Mac:
 
 ![ui for mac users](https://github.com/user-attachments/assets/b82e808a-99b5-4922-90f7-727d9e5d942a)
-
 
 We hope this inspires some ideas of what you could do with your app/website/backend service, and we can't wait to see what you build.

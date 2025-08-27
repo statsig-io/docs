@@ -4,6 +4,8 @@ sidebar_label: Add rule
 slug: /dynamic-config/add-rule
 keywords:
   - owner:shubham
+last_update:
+  date: 2025-07-23
 ---
 
 ## Add a rule to a dynamic config

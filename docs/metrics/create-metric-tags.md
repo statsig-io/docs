@@ -4,6 +4,8 @@ sidebar_label: Creating Metric Tags
 slug: /metrics/create-metric-tags
 keywords:
   - owner:shubham
+last_update:
+  date: 2025-07-23
 ---
 
 # Tagging Metrics 

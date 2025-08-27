@@ -5,6 +5,8 @@ sidebar_label: Metrics
 displayed_sidebar: cloud
 keywords:
   - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
 # Deprecation Notice

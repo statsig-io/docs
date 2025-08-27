@@ -4,11 +4,13 @@ sidebar_label: Aggregated Impact
 slug: /aggregated-impact
 keywords:
   - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
-Statsig's Insights page provides a clear view of how active experiments and feature gates impact a specific metric of interest. It not only helps answer key questions such as "How much impact have I driven?", but also serves as a powerful tool for diagnosing unexpected changes in metrics.  
+Statsig's Insights page provides a clear view of how experiments and feature gates impact a specific metric of interest. It not only helps answer key questions such as "How much impact have I driven?", but also serves as a powerful tool for diagnosing unexpected changes in metrics.  
 
-Insights presents a reverse perspective of the [Pulse](/pulse) view. While Pulse measures the impact of a new feature on all your metrics, Insights allows you to focus on a single metric and identify which tests are impacting it the most. This makes it particularly useful for assessing your or your team's impact, as well as setting realistic goals for your team or company.
+Insights presents a reverse perspective of the [Pulse](/pulse/read-pulse) view. While Pulse measures the impact of a new feature on all your metrics, Insights allows you to focus on a single metric and identify which tests are impacting it the most. This makes it particularly useful for assessing your or your team's impact, as well as setting realistic goals for your team or company.
 
 ## How to read Insights
 1.	Navigate to the Insights section on the Statsig console: https://console.statsig.com/ . It is also available in the insight tab for each metric.
@@ -34,4 +36,4 @@ $$
 FPR_i = \frac{\alpha_i \times \pi}{\alpha_i \times \pi + (1 - \beta_i) \times (1 - \pi)}
 $$
 
-In this formula, $$\alpha_i$$ is the significance level for experiment i, $$\beta_i$$ is the power, and $$\pi$$ is the prior success rate based on historical experiment results.
+In this formula, $$\alpha_i$$ is the significance level for experiment i, $$\beta_i$$ is the type II error, and 1 - $$\pi$$ is the prior success rate based on historical experiment results.

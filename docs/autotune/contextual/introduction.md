@@ -1,9 +1,11 @@
 ---
-title: Autotune AI (Contextual MAB or CMAB)
-sidebar_label: Introduction
+title: Contextual Bandit (Autotune AI)
+sidebar_label: Contextual Bandit
 slug: /autotune/contextual/introduction
 keywords:
   - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
 Contextual Multi-Armed Bandits are a subset of Multi-Armed-Bandits which use context about a user to personalize their experience. This is generally achieved by predicting outcomes from among the variants, and picking the best outcome while factoring for uncertainty. Specifically, they will tend to prefer a slightly worse prediction that has a lot of uncertainty, thereby exploring that variant.
@@ -25,11 +27,17 @@ Statsig's autotune AI uses a LinUCB based approach. We think this paper is a goo
 
 Autotune AI works with categorical and numerical features. Whatever key-value pairs attached to the custom object on the Statsig user will be converted into categorical/numerical features based on their data type. Categorical features will be one-hot-encoded. You should not need to build complex training pipelines, though many customers will pass pre-evaluated user attributes or predictions as context objects.
 
-Note that there is support for specifying features up front in Statsig's console. This can be helpful for you to know what features you need to fetch for the bandit in cases that there's an expensive/live lookup. For warehouse native customers, there is planned work around allowing you to join entity properties during the analysis phase so that you can plug in your own feature store to autotune AI analysis, similar to our approach with [CURE](/experiments-plus/cure).
+:::note
+There is support for specifying features up front in Statsig's console. This can be helpful for you to know what features you need to fetch for the bandit in cases that there's an expensive/live lookup. For warehouse native customers, there is planned work around allowing you to join entity properties during the analysis phase so that you can plug in your own feature store to autotune AI analysis, similar to our approach with [CURE](/experiments-plus/cure).
+:::
 
 Algorithmically, we will choose the best model (e.g. Ridge, Logistic regressions) under the hood based on your data types and performance, and generate a model from your data. The estimated standard error of the model is used to generate a prediction confidence interval. During evaluation, user context is used to predict an outcome for each Variant, and the corresponding confidence interval is applied to that prediction. The best variant is chosen as the one with the highest upper end of a 95% confidence interval. This interval size can be tuned by modifying the exploration parameter in the Autotune setup page.
 
-Note that you can also fetch a ranked list from Statsig and then manually expose those you show to the user, for use cases where you have client-side filtering or want to show multiple options; see [Advanced Usage](../using-bandits.md)
+For deeper discussion, please view the [Methodology](./methodology.md) page.
+
+:::note
+You can also fetch a ranked list from Statsig and then manually expose those you show to the user, for use cases where you have client-side filtering or want to show multiple options; see [Advanced Usage](../using-bandits.md)
+:::
 
 ## Drawbacks
 
@@ -52,3 +60,15 @@ Training pipelines are run hourly.
 For Warehouse Native customers, data is processed in your warehouse, and an anonymized feature set is used to train the models. Exposures will be exported on-demand for each load up to the first million, and in daily batches thereafter. Log events sent to statsig are exported hourly if you are using statsig to log outcomes, or you can plug into metric sources from your warehouse for outcome tracking.
 
 For cloud customers, the data is processed and trained entirely in Statsig's servers.
+
+## SDK Support
+
+Statsig supports contextual autotune in all Client SDKs, but only in the following server SDKs:
+
+- [Node](/server-core/node-core)
+- [Python](/server-core/python-core)
+- [Java](/server-core/java-core)
+- [Elixir](/server-core/elixir-core)
+- [Rust](/server-core/rust-core)
+- [Go](/server/golangSDK) v1.39.0+
+- [Ruby](/server/rubySDK) v2.4.0+

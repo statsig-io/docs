@@ -1,17 +1,93 @@
 import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
 
-`Initialize()` takes an optional parameter `options` in addition to `sdkKey` and `user` that you can provide to customize the Statsig client. Here are the current options and we are always adding more to the list:
+`Initialize()` takes an optional parameter `options` in addition to `sdkKey` that you can provide to customize the Statsig client. The .NET SDK uses an inheritance hierarchy with `StatsigOptions` as the base class, and `StatsigServerOptions` and `StatsigClientOptions` extending it for server-side and client-side specific configurations.
 
-- **apiUrlBase**: string, default null
+## StatsigOptions (Base Class)
+
+These options are available for both server and client SDKs:
+
+- **ApiUrlBase**: string, default "https://statsigapi.net"
   - Allows you to override the API url base path, enabling custom/internal proxy forwarding.
-- **environment**: StatsigEnvironment, default null
+- **ApiUrlForDownloadConfigSpecs**: string, default null
+  - Allows you to override the URL specifically for downloading config specs, separate from other API endpoints. If not set, falls back to ApiUrlBase or the default CDN URL.
+- **StatsigEnvironment**: StatsigEnvironment, default new StatsigEnvironment()
   - An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
-  - The most common usage is to set the environment tier (EnvironmentTier), e.g. `new StatsigEnvironment(EnvironmentTier.Staging)`, and have feature gates pass/fail for specific environments.
+  - The most common usage is to set the environment tier (EnvironmentTier), e.g. `new StatsigEnvironment(EnvironmentTier.Staging)`, or `new StatsigEnvironment(customTier: "US1")`
+    and have feature gates pass/fail for specific environments.
 - **RulesetsSyncInterval**: double, default 10
   - Use this to override how often you want the SDK to poll Statsig backend for changes on the rulesets.
 - **IDListsSyncInterval**: double, default 60
   - Use this to override how often you want the SDK to poll Statsig backend for changes on the ID Lists.
+- **PersistentStorageFolder**: string, default null
+  - Folder path for persistent storage of configuration data.
+- **ClientRequestTimeoutMs**: int, default 0
+  - Timeout in milliseconds for HTTP requests. 0 means no timeout.
+- **Proxy**: WebProxy, default null
+  - Web proxy configuration for network requests.
+
+### Methods
+
+- **AddRequestHeader(string key, string value)**: void
+  - Adds a custom header to all HTTP requests made by the SDK.
+
+## StatsigServerOptions
+
+Server-specific options that extend StatsigOptions:
+
 - **LocalMode**: bool, default false
   - <LocalModeSnippet type="server" />
 - [**DataStore**](#data-store): IDataStore, default null
   - A class that extends IDataStore. Can be used to provide values from a common data store (like Redis) to initialize the Statsig SDK.
+- **LoggingBufferMaxSize**: int, default 1000
+  - The maximum number of events to batch before flushing logs to the server.
+- **LoggingIntervalSeconds**: int, default 60
+  - How often to flush logs to Statsig in seconds.
+- **UserPersistentStorage**: IUserPersistentStorage, default null
+  - A class that extends IUserPersistentStorage. Can be used to save and load values for users to ensure they get consistent experiment assignments across sessions.
+- **CustomEnvironment**: string, default null
+  - Allows setting environment to a custom value. Will take precedence over the StatsigEnvironment value.
+
+## StatsigClientOptions
+
+Client-specific options that extend StatsigOptions:
+
+- **LoggingBufferMaxSize**: int, default 100
+  - The maximum number of events to batch before flushing logs to the server.
+- **LoggingIntervalSeconds**: int, default 10
+  - How often to flush logs to Statsig in seconds.
+
+## Example Usage
+
+**Server SDK:**
+
+```csharp
+await StatsigServer.Initialize(
+    "secret-key",
+    new StatsigServerOptions(
+        apiUrlBase: "https://custom-api.example.com",
+        environment: new StatsigEnvironment(customTier: "US1")
+    )
+    {
+        ApiUrlForDownloadConfigSpecs = "https://custom-cdn.example.com",
+        CustomEnvironment = "production",
+        LoggingIntervalSeconds = 30,
+        LocalMode = false
+    }
+);
+```
+
+**Client SDK:**
+
+```csharp
+await StatsigClient.Initialize(
+    "client-key",
+    user,
+    new StatsigClientOptions(
+        apiUrlBase: "https://custom-api.example.com"
+    )
+    {
+        LoggingBufferMaxSize = 50,
+        LoggingIntervalSeconds = 5
+    }
+);
+```

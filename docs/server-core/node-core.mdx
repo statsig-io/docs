@@ -1,6 +1,6 @@
 ---
-sidebar_label: Node Core
-title: Node Core Server SDK
+sidebar_label: Node
+title: Node Server SDK
 ---
 
 import {
@@ -17,6 +17,15 @@ import {
   StatsigUser,
   ManualExposures,
   Shutdown,
+  LocalOverrides,
+  PersistentStorage,
+  DataStore,
+  OutputLogger,
+  ObservabilityClient,
+  Reference,
+  FieldsNeededMethods,
+  ClientInitResponse,
+  EventSubscriptions
 } from "./Templates/index.mdx";
 
 import Preamble from "./_preamble.mdx";
@@ -24,12 +33,23 @@ import Install from "./node/_install.mdx";
 import Initialize from "./node/_initialize.mdx";
 import CheckGate from "./node/_checkGate.mdx";
 import GetConfig from "./node/_getConfig.mdx";
+import GetFeatureGate from "./node/_getFeatureGate.mdx";
+import ParamStores from "./node/_paramStores.mdx";
 import GetExperiment from "./node/_getExperiment.mdx";
 import LogEvent from "./node/_logEvent.mdx";
 import MoreFAQs from "./node/_faqs.mdx";
 import Options from "./node/_options.mdx";
 import ShutdownSnippet from "./node/_shutdown.mdx";
 import { Snippets as ManualExposureSnippets } from "./node/_manualExposures.mdx";
+import OverridesSnippet from "./node/_localOverrides.mdx";
+import SharedInstanceSnippet from "./node/_sharedInstance.mdx";
+import DataStoreContent from "./node/_data_store.mdx";
+import ObservabilityClientContent from "./node/_observability_client.mdx";
+import PersistentStorageContent from "./node/_persistent_storage.mdx";
+import * as ReferenceSnippets from "./node/_reference.mdx";
+import ClientInitResponseSnippet from "./node/_clientInitResponse.mdx";
+import EventSubscriptionsSnippet from "./node/_eventSubscriptions.mdx";
+
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -56,13 +76,29 @@ export const Builder = SDKDocsBuilder({
         getExperiment: <GetExperiment />,
         logEvent: <LogEvent />,
         hideAsyncDisclaimer: true,
+        getFeatureGate: <GetFeatureGate />,
+        paramStores: <ParamStores />,
+        sharedInstance: <SharedInstanceSnippet />,
       },
     ],
     [ManualExposures, { ...ManualExposureSnippets }],
     [StatsigUser, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [ClientInitResponse, {
+      sdkName: "Node Core",
+      snippet: <ClientInitResponseSnippet />,
+      signature: () => <code>getClientInitializeResponse</code>,
+    }],
+    [EventSubscriptions, { snippet: <EventSubscriptionsSnippet /> }],
+    [LocalOverrides, { snippet: <OverridesSnippet />,},],
+    [PersistentStorage, { content: <PersistentStorageContent /> }],
+    [DataStore, { content: <DataStoreContent /> }],
+    [OutputLogger, { }],
+    [ObservabilityClient, { content: <ObservabilityClientContent /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
+    [Reference, { snippets: <ReferenceSnippets.default /> }],
+    [FieldsNeededMethods, {}],
   ]
 })
 

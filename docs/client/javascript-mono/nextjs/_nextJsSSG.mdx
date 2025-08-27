@@ -1,0 +1,26 @@
+## Statsig Site Generation (SSG)
+
+Vercel's [Static Site Generation](https://vercel.com/blog/nextjs-server-side-rendering-vs-static-generation) renders the HTML for your site at build time (rather than request time), optimizing the performance of HTML delivery. Static pre-rendered content can't be responsive, so its difficult to run experiments on, or flag your features. We recommend two approaches to experimenting on Static-Generated Content:
+ - **1. Use Vercel's Edge Middleware:** With the Edge Middleware and tools like [Statsig's Edge Config Adapter](https://docs.statsig.com/integrations/vercel/#using-the-statsig-sdk), you can experiment on the entirety of your static generated content with zero-latency redirect tests.
+ - **2. Isolate Statsig Usage to Hydrated Elements:** Often SSG'd pages are "hydrated" with addition client-rendered content that is more responsive and dynamic. Statsig usage can be isolated to these elements, supporting SSG's first-render speeds, and loading in experimented content after the fact. 
+
+ Typically, approach #2 is executed by installing the \<StatsigProvider> only around content that will be client-side rendered. In some cases, you might have multiple client-rendered components without a common parent - in those cases you'll need multiple StatsigProviders, while having them share a single client instance. Do this by initializing a StatsigClient using the regular javascript syntax: 
+
+ ```jsx
+ const myStatsigClient = new StatsigClient(YOUR_SDK_KEY, user, options);
+ await myStatsigClient.initializeAsync();
+ ```
+
+ And then plug this client object into the providers as needed, managing the client object as a singleton if needed.
+
+ ```jsx
+<StatsigProvider client={myStatsigClient}>
+        <YourComponent />
+</StatsigProvider>
+
+<StatsigProvider client={myStatsigClient}>
+        <YourComponent />
+</StatsigProvider>
+ ```
+
+

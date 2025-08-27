@@ -2,6 +2,8 @@
 title: OpenAI 
 keywords:
   - owner:brock
+last_update:
+  date: 2025-07-23
 ---
 
 ## Context
@@ -12,7 +14,7 @@ When using a pre-trained large language model, several inputs influence user exp
 
 The included Python code offers an example of the simple but powerful interaction between OpenAI's GPT and Statsig to experiment with model inputs and log user events. This example uses OpenAI's ChatCompletion feature to answer questions, plus a Statsig integration to experiment with model versions and log user feedback to the changes.
 
-This example assumes you have a funded OpenAI account, plus a Statsig experiment that varies the model selected between "gpt-3.5-turbo" and "gpt-4". For more info on setting up a Statsig experiment, see the [experiments](/experiments-plus/working-with) page.
+This example assumes you have a funded OpenAI account, plus a Statsig experiment that varies the model selected between "gpt-3.5-turbo" and "gpt-4". For more info on setting up a Statsig experiment, see the [experiments](/experiments-plus) page.
 
 ## Code Breakdown
 
@@ -108,7 +110,9 @@ if __name__ == "__main__":
 2. Log Useful Data: Consider logging other interesting user interactions or feedback.
 3. Analyze and Iterate: After collecting enough data, analyze the results on the Statsig dashboard.
 4. User Identification: Consider integrating a mechanism to uniquely identify each user/session.
-Note: Always ensure you're in compliance with user privacy regulations and that you have user consent where necessary.
+:::note
+Always ensure you're in compliance with user privacy regulations and that you have user consent where necessary.
+:::
 
 ### Useful Links 
 - [OpenAI Documentation](https://platform.openai.com/docs/api-reference/chat/create)

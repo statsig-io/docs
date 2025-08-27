@@ -1,0 +1,19 @@
+```csharp
+var user = new StatsigUserBuilder()
+    .SetUserID("user_123")
+    .Build();
+
+var gate = statsig.GetFeatureGate(user, "new_feature_gate");
+
+Console.WriteLine($"Gate Name: {gate.Name}");
+Console.WriteLine($"Gate Value: {gate.Value}");
+Console.WriteLine($"Rule ID: {gate.RuleID}");
+Console.WriteLine($"ID Type: {gate.IDType}");
+
+if (gate.EvaluationDetails != null)
+{
+    Console.WriteLine($"Config Sync Time: {gate.EvaluationDetails.ConfigSyncTime}");
+    Console.WriteLine($"Init Time: {gate.EvaluationDetails.InitTime}");
+    Console.WriteLine($"Reason: {gate.EvaluationDetails.Reason}");
+}
+```

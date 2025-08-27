@@ -4,6 +4,8 @@ sidebar_label: Next.js
 slug: /client/javascript-sdk/next-js
 keywords:
   - owner:brock
+last_update:
+  date: 2025-07-23
 ---
 
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
@@ -26,7 +28,6 @@ import {
 } from "../../Templates/index.mdx";
 
 import * as Install from "./_nextJsInstall.mdx";
-import * as Keys from "./_nextJsKeys.mdx";
 import * as PageVsAppRouter from "./_nextJSPageVsAppRouter.mdx";
 import * as Bootstrap from "./_nextJsBootstrapCore.mdx";
 import * as CheckGate from "./_nextJsCheckGate.mdx";
@@ -38,6 +39,7 @@ import * as LogEvent from "./_nextJsLogEvent.mdx";
 import * as SrAndAc from "../_sessionReplayAutoCapture.mdx";
 import * as Advanced from "./_nextJsAdvanced.mdx";
 import * as FlagsSDK from "./_nextJsFlagsSdk.mdx";
+import * as SSG from "./_nextJsSSG.mdx"
 
 export const Builder = SDKDocsBuilder({
     sections: [
@@ -48,7 +50,6 @@ export const Builder = SDKDocsBuilder({
             },
         ],
         [Install, {}],
-        [Keys, {}],
         [PageVsAppRouter, {}],
         [CheckGate, {}],
         [GetDynamicConfig, {}],
@@ -59,6 +60,7 @@ export const Builder = SDKDocsBuilder({
         [Advanced, {}],
         [Bootstrap, {}],
         [Proxy, {}],
+        [SSG, {}],
         [FlagsSDK, {}],
     ]
 })

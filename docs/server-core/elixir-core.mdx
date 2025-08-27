@@ -1,8 +1,10 @@
 ---
-sidebar_label: Elixir Core
-title: Elixir Core Server SDK
+sidebar_label: Elixir
+title: Elixir Server SDK
 keywords:
   - owner:brock
+last_update:
+  date: 2025-07-23
 ---
 
 import {
@@ -19,6 +21,10 @@ import {
   StatsigUser,
   ManualExposures,
   Shutdown,
+  PersistentStorage,
+  DataStore,
+  OutputLogger,
+  ObservabilityClient
 } from "./Templates/index.mdx";
 
 
@@ -66,6 +72,10 @@ export const Builder = SDKDocsBuilder({
     [StatsigUser, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [PersistentStorage, { }],
+    [DataStore, { }],
+    [OutputLogger, { }],
+    [ObservabilityClient, { }],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]
 })

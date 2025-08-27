@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { useColorMode } from '@docusaurus/theme-common/internal';
 
 import Alert from "@mui/material/Alert";
+
 
 // Map entities to their corresponding OpenAPI tags
 const entityToTagMap = {
@@ -22,6 +24,9 @@ const entityToTagMap = {
   ingestions: "Ingestions",
   tags: "Tags",
   keys: "Keys",
+  "param-store": "Param Store",
+  "warehouse-connections": "Warehouse Connections",
+  "change-validation": "Change Validation",
 };
 
 export const apiVersions = [
@@ -36,7 +41,8 @@ const SELECTED_API_VERSION_STORAGE_KEY = 'statsig_api_version';
 
 export default function Rapidoc(props) {
   const { id, entity } = props;
-  const isDarkTheme = false;
+  const { colorMode } = useColorMode();
+  const isDarkTheme = colorMode === 'dark';
   const [apiVersion, setApiVersion] = useState(null);
   const specUrl = apiVersion ? getSpecUrlForApiVersion(apiVersion) : null;
 
@@ -53,6 +59,15 @@ export default function Rapidoc(props) {
   }, [apiVersion]);
 
   useEffect(() => {
+    const rapidoc = document.getElementById(id);
+    if (rapidoc) {
+      rapidoc.setAttribute('theme', isDarkTheme ? 'dark' : 'light');
+      rapidoc.setAttribute('primary-color', isDarkTheme ? '#2196f3' : '#194b7d');
+      rapidoc.setAttribute('bg-color', isDarkTheme ? '#1b1b1d' : '#ffffff');
+    }
+  }, [id, isDarkTheme]);
+
+  useEffect(() => {
     if (!specUrl) {
       return;
     }
@@ -60,7 +75,33 @@ export default function Rapidoc(props) {
     const rapidoc = document.getElementById(id);
 
     if (entity === "all-endpoints-generated") {
-      rapidoc.loadSpec(specUrl);
+      fetch(specUrl)
+        .then((response) => response.json())
+        .then(removeNonFeatureTags)
+        .then((data) => {
+          rapidoc.loadSpec(data);
+          try {
+            window.Statsig.instance().logEvent('openapi_spec_fetch_success', specUrl, {
+              entity: 'all-endpoints-generated',
+              specUrl: specUrl
+            });
+          } catch (error) {
+            // noop
+          }
+        })
+        .catch((error) => {
+          console.log('Rapidoc: Fetch failed for all-endpoints-generated:', error.message);
+          try {
+            window.Statsig.instance().logEvent('openapi_spec_fetch_failure', specUrl, {
+              entity: 'all-endpoints-generated',
+              specUrl: specUrl,
+              error: error.message
+            });
+            console.log('Rapidoc: Failure event logged successfully');
+          } catch (logError) {
+            console.error('Rapidoc: Failed to log failure event:', logError);
+          }
+        });
       return;
     }
 
@@ -70,6 +111,7 @@ export default function Rapidoc(props) {
     // Fetch and filter the spec by tag
     fetch(specUrl)
       .then((response) => response.json())
+      .then(removeNonFeatureTags)
       .then((data) => {
         if (tag) {
           // Filter paths by tag
@@ -81,6 +123,29 @@ export default function Rapidoc(props) {
         } else {
           // If tag is not found, load the full spec
           rapidoc.loadSpec(data);
+        }
+        try {
+          window.Statsig.instance().logEvent('openapi_spec_fetch_success', specUrl, {
+            entity: entity,
+            specUrl: specUrl,
+            tag: tag
+          });
+        } catch (error) {
+          // noop
+        }
+      })
+      .catch((error) => {
+        console.log('Rapidoc: Fetch failed for entity:', entity, 'error:', error.message);
+        try {
+          window.Statsig.instance().logEvent('openapi_spec_fetch_failure', specUrl, {
+            entity: entity,
+            specUrl: specUrl,
+            tag: tag,
+            error: error.message
+          });
+          console.log('Rapidoc: Failure event logged successfully for entity:', entity);
+        } catch (logError) {
+          console.error('Rapidoc: Failed to log failure event for entity:', entity, logError);
         }
       });
   }, [specUrl, entity]);
@@ -138,6 +203,10 @@ export default function Rapidoc(props) {
           header.<br />
           The value should be a Console API Key which can be created in{" "}
           <code>'Project Settings' {">"} 'API Keys' tab</code>. <br />
+          You can{" "}
+          <a href="https://console.statsig.com/api_keys" target="_blank" rel="noopener noreferrer">
+            create or manage your keys here
+          </a>.
           To use the 'try it' section on this page, enter your Console API into
           the box below.
         </p>
@@ -160,6 +229,31 @@ export default function Rapidoc(props) {
       </Alert>
     </rapi-doc>
   );
+}
+
+const NON_FEATURE_TAGS = ['MCP'];
+
+function removeNonFeatureTags(spec) {
+  const paths = {};
+  Object.keys(spec.paths).forEach((pathKey) => {
+    const pathItem = spec.paths[pathKey];
+    const methods = Object.keys(pathItem);
+
+    methods.forEach((method) => {
+      if (!paths[pathKey]) {
+        paths[pathKey] = {};
+      }
+      paths[pathKey][method] = {
+        ...pathItem[method],
+        tags: pathItem[method].tags.filter((tag) => !NON_FEATURE_TAGS.includes(tag)),
+      };
+    });
+  });
+
+  return {
+    ...spec,
+    paths,
+  };
 }
 
 function filterPathsByTag(spec, tags) {
@@ -208,7 +302,7 @@ function getDescription(entity) {
       return (
         <>
           <p>
-            A <a href="../feature-flags/working-with">feature gate</a> is a
+            A <a href="../feature-flags/overview">Feature Gate</a> is a
             mechanism for teams to configure what system behavior is visible to
             users without changing application code. This page describes how
             gates can be created and modified through the Console API.

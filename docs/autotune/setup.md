@@ -4,6 +4,8 @@ sidebar_label: Getting Started
 slug: /autotune/setup
 keywords:
   - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
 ## How to set up Autotune

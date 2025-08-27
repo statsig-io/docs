@@ -4,14 +4,20 @@ sidebar_label: Power Analysis
 slug: /experiments-plus/power-analysis
 keywords:
   - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
-The power analysis tool leverages the known mean and variance of a metric and the observed traffic volume to estimate the relationship between three variables:
+### What is Power Analysis?
+The Statsig Power Analysis Calculator helps pre-determine the experiment parameters needed to reach a statistically significant result. Often, the variable you're optimizing for is duration - how long your experiment runs - but Statsig's power calculator is flexible to other variables. Using the known mean and variance of a metric, and the observed traffic volume, the Power Analysis Calculator estimates the relationship between three variables:
+
 * **Minimum detectable effect (MDE)**: The smallest change in the metric that the experiment can reliably detect. For example: An MDE of 1% with Power set to 80% means that if there's a true effect of 1% on our metric, we expect the experiment will have an 80% chance to produce a statistically significant result. If the magnitude of the true effect is smaller than 1%, it will be less likely to produce a statistically significant result (though it can still occur).
 
 * **Number of days or exposures**: How long the experiment is active and the number of users enrolled in it.  Longer running experiments typically have more observations, leading to tighter confidence intervals and smaller MDE.  We use historical data to estimate the number of new users that would be eligible for the experiment each day.
 
 * **Allocation**: The percentage of traffic that participates in the experiment.  Larger allocation leads to smaller MDE, so it's often desirable to allocate as many users as possible to get faster or more sensitive results.  When there's a risk of negative impact or a need for mutually exclusive experiments however, it's useful to know the smallest allocation that can achieve the desired MDE. 
+
+Many experimentation practitioners use the Power Analysis calculator during setup of every experiment they run.
 
 ## Using the Tool
 
@@ -34,6 +40,10 @@ Power Analysis Calculator can be accessed from the tools menu. It's also linked 
 Your past power analysis calculations will be available to view in the "Past Analyses" tab.
 
 <img width="1200" alt="Screenshot 2025-03-12 at 8 04 31 AM" src="https://github.com/user-attachments/assets/82a91aa4-dd3a-4d09-aca4-2de8b43f49e8" />
+
+If you want to attach an existing power analysis to an experiment, that option is available via the dropdown menu on an existing power analysis.
+
+![image](/img/attach_power_analysis_to_experiment.png)
 
 ## Population Types
 
@@ -109,4 +119,7 @@ The relative percentage MDE for a given metric *X* is computed using the followi
 * *Z<sub>1-&beta;</sub>* is the standard Z-score for the selected power.  Typically *1-&beta; = 0.8* and *Z<sub>1-&beta;</sub> = 0.84*
 * *Z<sub>1-&alpha;/2</sub>* is the standard Z-score for the selected significance level in a 2-sided test.  Typically *&alpha; = 0.05* and *Z<sub>1-&alpha;/2</sub> = 1.96*
 
-**Note:** This calculation relies on statistics computed across the entire user base of the project.  It does not account for the fact that experiments targeting only a subset of users may have different summary statistics for their key metrics.  For example, the metric mean and variance can be different in an experiment that targets only Android users or one that exposes users at the lower part of an acquisition funnel. 
+:::note
+This calculation relies on statistics computed across the entire user base of the project.  It does not account for the fact that experiments targeting only a subset of users may have different summary statistics for their key metrics.
+For example, the metric mean and variance can be different in an experiment that targets only Android users or one that exposes users at the lower part of an acquisition funnel.
+:::

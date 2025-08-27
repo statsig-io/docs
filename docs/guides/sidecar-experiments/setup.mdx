@@ -3,6 +3,8 @@ sidebar_label: Sidecar Setup
 title: Setting up Sidecar
 keywords:
   - owner:brock
+last_update:
+  date: 2025-07-23
 ---
 
 :::info
@@ -10,7 +12,9 @@ keywords:
 * You will need to use Google Chrome web browser for this exercise.
 :::
 
-### Step 1: Install Sidecar Chrome Extension
+## Setup Sidecar Chrome Extension
+
+### Step 1: Install Chrome Extension
 
 If you don't already have the Sidecar extension, visit the [Chrome store](https://chromewebstore.google.com/detail/statsig-sidecar/blkgemeefnlkmicphlkodgdkhceibgcb) and click on the "Add to Chrome" button
 
@@ -39,6 +43,33 @@ Once you're there, select the "Keys & Environments" panel and copy both the Cons
 ![image](https://github.com/statsig-io/.github/assets/74588208/754cc245-1821-4f75-a87d-08b536422587)
 
 Hit "OK" to commit the API Keys.  
+
+## Install Sidecar on your website
+
+Add a single script tag within the `<head>` portion of your website, replacing with your own [Client SDK Key](https://docs.statsig.com/sdk-keys/api-keys/) as shown below.
+
+```
+<script src="https://cdn.jsdelivr.net/npm/statsig-sidecar/dist/index.min.js?apikey=REPLACE_WITH_YOUR_CLIENT_SDK_KEY"></script>
+```
+
+:::info
+Installing Sidecar JS via a Tag Manager can potentially lead to flickering and other unpredictable behavior. We strongly encourage installing Sidecar as a synchronous script tag.
+:::
+
+### Additional Options
+Add these query string parameters to the Sidecar script URL for additional controls over Sidecar client behavior
+- `&reduceflicker=0` will disable the brief hiding of the `<body>` tag while the client initializes
+- `&autocapture=0` will disable event autocapture
+
+Most website builders also support the ability to add script tags on your website.  Here are some common website builder examples:
+[Webflow](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags?topics=site-settings)
+, [Wordpress](https://wordpress.com/go/website-building/how-to-properly-add-javascript-to-wordpress-3-top-methods/)
+, [Wix](https://support.wix.com/en/article/embedding-custom-code-on-your-site)
+, [Squarespace](https://support.squarespace.com/hc/en-us/articles/205815928-Adding-custom-code-to-your-site)
+, [Weebly](https://weeblytutorials.com/embed-javascript-weebly).
+
+You can copy the script code from within the Sidecar Chrome extension 
+![statsig banner](/img/sidecargetscript.png)
 
 #### You are now all set to create your first experiment 
 

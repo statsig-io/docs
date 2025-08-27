@@ -4,77 +4,48 @@ slug: /sdks/client-vs-server
 
 ---
 
-Statsig offers both client and server SDKs to enable experimentation and feature management across different parts of your application. This document outlines the key differences and use cases for each type of SDK.
+Statsig offers client and server SDKs to enable experimentation and feature management across different parts of your application. This document outlines when you should choose each.
 
 ## Overview
 
-### Client SDKs
-Client SDKs are designed for applications running on end-user devices, including web, mobile, television, gaming, and other consumer electronics apps.
+**Client SDKs** run in code that executes on end-user devices, like a website, mobile app, video game, or smart TV app.
+**Server SDKs** run on your servers (typically in the cloud), like a web server or API server.
 
-### Server SDKs
-Server SDKs are used for server-side applications, APIs, algorithms, and infrastructure improvements.
+Many customers **deploy both Server and Client SDKs**, letting them gate features on both the client- and server-side for the most control. While this is common, you can get value from Statsig by starting with just one.
 
-## Implementation Phases
+## Usage
 
-Both client and server SDKs follow three main phases:
+Client and Server SDKs follow a similar pattern of setup and usage in-code: 
+1. **Initialize:** Setup the SDK and download the latest values
+2. **Check an experiment/gate:** Reference those values to assign an experiment or flag a feature
+3. **Logging custom events:** log important app metrics to power your analyses
 
-1. Initialization
-2. Checking an Experiment
-3. Logging Custom Events
+:::note
+After initialization, both Client and Server SDKs evaluate experiments/gates *without a network request*, and typically in less than 1ms. Checks in the Statsig SDKs are designed to be very efficient.
+:::
 
-At a high level, here are some of the key differences between the two types of SDKs:
+## Conceptual Differences:
+* Data Privacy: The *Server* SDK is presumed to be a secure, multi-user environment, so Server SDKs have access to the full ruleset describing each experiment and gate. Client SDKs fetch only the value for a single user, avoiding exposing the definition of your configurations.
 
 ||Server| Client |
 |--|--|--|
-|Purpose | A Statsig Server SDK is used on the server-side of your application or service. It is responsible for managing feature gates, configurations, and experiments at the backend| A Statsig Client SDK is used on the client-side of your application, which could be in a mobile, web, or any other client-facing part of your product. It allows you to communicate with the Statsig servers (or a Statsig Server SDK) and make runtime decisions based on feature gates and experiments|
-|Privacy | All evaluation is done on your own server, meaning users will only see what you send back to them in the response|All evaluations are precomputed on Statsig servers and sent down to you client applications. Names are obfuscated, but a savvy user may be able to glean information from the raw response|
-|Performance | Evaluations are done real-time, this means that performance is directly tied to the size of your configurations. In practice however, this is rarely an issue and we strive to make our SDKs as performant as possible|As all evaluation is precomputed, gate and experiment checks are mostly a dictionary lookup with some computation used for creating and flushing exposure events|
-|Propagation | The SDK will continually poll for any changes to your configurations, updating its internal state when a change is detected| Client SDKs only pull changes once during initialization. In practice, this means changes will not be observed until after an updateUser call or session restart (re-initialize)|
-|Users|Server SDKs are designed to run against multiple users, and all SDK methods require a user object up front to work|Client SDKs are designed to be run with one user at a time. All evaluations are loaded once up front during initialization|
+|Privacy | Your servers are presumed to be a secure, multi-user environment, so Server SDKs have access to the definition of all configurations in your project|All evaluations are precomputed on Statsig servers and sent down to you client applications. Names are obfuscated, but a savvy user may be able to glean information from the raw response|
+|Evaluation Performance | Evaluations are done real-time, without a network request. Very complex configurations can take longer to compute, but in practice, this is rarely an issue.|As all evaluation is precomputed, gate and experiment checks are effectively a dictionary lookup with some computation used for creating and flushing exposure events|
+|Initialization Performance | The SDK will make an upfront request for configuration files, then continually poll for any changes to your configurations, updating its internal state when a change is detected| Client SDKs download configurations when you initialize, before which, the SDK may not have usable values. The values aren't updated mid-session unless you explicitly call updateUser. Additional options are available for performant initialization, see [Initializing](/client/concepts/initialize)|
+|Users|Server SDKs are designed to run against multiple users, and all SDK methods require a user object for evaluation/logging |Client SDKs are designed to be run with one user at a time. All evaluations are loaded once up front during initialization, and every event logged uses that user object|
 |Infrastructure | Server SDKs require you to host your own backend services| Client SDKs run entirely on the client and utilize Statsig's servers|
 
-## Key Differences
+## Usage Differences: 
+||Server| Client |
+|--|--|--|
+|Initializing| Requires only a secret key, downloads the entire ruleset and syncs it in the background | Requires a client key and a user object. Before/during initialization, the SDK will attempt to fallback to cached values.|
+|Checking an Experiment| Requires a user object which is evaluated locally (without a network request) against a ruleset persisted in memory | Does not require a user object, uses a dictionary lookup for values fetched during initialize() |
+|User Identifiers| Pass any and all useful user identifiers | Pass any useful identifiers, the SDK also generates a "StableID", Statsig's anonymous ID you can use to experiment on a user per-device|
+|Logging Events| Requires a user object | Does not require a user object. Note, there is some risk of adblocking log events on client SDKs, which can be minimized by setting up a [Custom Proxy](../custom_proxy)|
+|Flushing Events| Batched and flushed by the SDK every 60 seconds | Batched and flushed by the SDK every 10 seconds|
+|Updating Configurations| Poll Statsig servers for updates every 10 seconds by default (configurable), Streaming possible with some Server SDKs and the [Statsig Forward Proxy](/server/concepts/forward_proxy) | Configuration persists until next `initialize` or `updateUser` call, recommended to call `initialize` at the start of each user session|
 
-### 1. Initialization
-
-**Client SDKs:**
-- Use a **client SDK key**
-- Take a [StatsigUser](/concepts/user) object
-- Check for cached values in local storage
-- Fetch precomputed configuration parameters for the specified user
-
-**Server SDKs:**
-- Use a **server SDK key**
-- Fetch all configuration definitions (rule sets) for local evaluation
-
-### 2. Checking an Experiment
-
-**Client SDKs:**
-- Synchronously return variants based on cached values
-- Generate a device identifier (stableID) for experiments without user sign-in
-- Automatically flush exposure checks every 10 seconds
-
-**Server SDKs:**
-- Evaluate rules locally for each user
-- Require a [StatsigUser](/concepts/user) object with a userID for checks
-- Automatically flush exposure checks every 60 seconds
-
-### 3. Logging Custom Events
-
-**Client SDKs:**
-- Automatically flush logged events every 10 seconds
-
-
-:::info Avoid custom event logging being blocked by third-party plugins
-
-Custom event logging can sometimes be blocked by third-party plugins. As a workaround, you can set up a custom proxy using your domain for log event API calls. For more information, refer to [Custom Proxy for Statsig API](../custom_proxy).
-
-:::
-
-**Server SDKs:**
-- Automatically flush logged events every 60 seconds
-
-## Updating Experiment Configuration
+## Difference in initialize/update logic:
 
 **Client SDKs:**
 - Configuration persists until next `initialize` or `updateUser` call
@@ -87,12 +58,6 @@ Custom event logging can sometimes be blocked by third-party plugins. As a worka
 - Some SDKs support grpc streaming updates via connecting to the [Statsig Forward Proxy](/server/concepts/forward_proxy)
 
 ![Server SDKs](https://user-images.githubusercontent.com/1315028/169563936-121cb75e-37e5-491f-8bb1-2d853c2e04b8.png)
-
-## Best Practices
-
-- Set default parameter values when fetching config values
-- Use environment tiers for testing in development or staging
-- Implement proper shutdown procedures to ensure all data is flushed
 
 ## Available SDKs
 
@@ -115,7 +80,7 @@ Custom event logging can sometimes be blocked by third-party plugins. As a worka
 - [Python](/server/pythonSDK)
 - [Go](/server/golangSDK)
 - [Ruby](/server/rubySDK)
-- [.NET](/server/dotnetSDK)
+- [.NET Core](/server-core/dotnetCoreSDK)
 - [PHP](/server/phpSDK)
 - [C++](/server/cppSDK)
 - [Rust](/server/rustSDK)

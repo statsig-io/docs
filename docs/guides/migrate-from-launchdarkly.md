@@ -3,55 +3,255 @@ sidebar_label: Migrate from LaunchDarkly
 title: Migrate your feature flags from LaunchDarkly
 keywords:
   - owner:oliver
+last_update:
+  date: 2025-08-22
 ---
 
-Migrating from LaunchDarkly to Statsig is a strategic move that can lead to more efficient feature flag management and a stronger experimentation culture. By following this guide, you'll be well equipped to make the transition with confidence.
+## Overview
 
-Statsig has **two migration tools** to automate recreating feature flags you already have in LaunchDarkly:
+Migrating from LaunchDarkly to Statsig is a strategic move. It can lead to efficient feature flag management and a stronger experimentation culture. By following this guide, you'll be well equipped to make the transition with confidence.
 
-[1. UI-based wizard to help you import LaunchDarkly feature flags and segments into Statsig](/guides/ui-based-tool) - It will tell you which gates and segments were migrated and which weren’t. It only imports the "production" environment at the moment.
+We will cover the following topics in this guide:
+1. Conceptual differences between LaunchDarkly and Statsig
+2. Deciding what to migrate vs. not
+3. Importing flags into Statsig
+4. Flipping evaluation from LaunchDarkly to Statsig
+5. How to run the migration process
 
-[2. Open-source script template that migrates feature flags from LaunchDarkly to Statsig](/guides/open-source-script) - This is a good option if you want to customize the integration logic. It will also spit out a CSV of all of your LaunchDarkly flags, along with migration status and relevant URLs to the flag in LaunchDarkly and the gate in Statsig. This imports all of your environments.
+## Conceptual differences between LaunchDarkly and Statsig
 
-## Conceptual considerations before migration
-### The distinction between experiments and feature flags
-Statsig deliberately distinguishes between feature flags (for immediate action) and experiments (for deeper inquiry). They can be used together or separately. 
+It is important to understand a few fundamental differences in how LaunchDarkly and Statsig structure their feature management data models:
 
-- **On LaunchDarkly, everything is a feature flag**, and feature flags may have variants and return different types.
-- **On Statsig, feature gates are purely boolean.** When deciding to ship a feature, this becomes a matter of flipping a switch. There are no variables within the feature that must be altered or replaced.
+**Environment**: LaunchDarkly treats environments as top level concept where flags and segments must be duplicated and managed separately across environments. In Statsig, we have a centralized model where flags/configs handle environment-specific logic in their targeting rules.
 
-In relation to multi-type flags on LaunchDarkly, Statsig supports two important a structures:
+**Flag types**: LaunchDarkly uses a mix of boolean, multivariate, and JSON flags. Statsig distinguishes between Feature Gates (boolean) and Dynamic Configs (typed multivariate configs with JSON values).
 
-- [Dynamic Configurations](/dynamic-config) for pure configurations or entitlements types of use cases. Supports multi-type return values.
-- [Experiments](/experiments-plus) for measuring performance between different variations. Supports multi-type return values.
+**Targeting**: LaunchDarkly relies on Contexts to evaluate flags. Statsig evaluates based on what we call a StatsigUser object.
 
-In comparison to boolean flags, multi-type flags offered by LaunchDarkly introduce a layer of complexity that can obscure the path to full implementation.
+#### Side by side comparison
 
-When the time comes to transition to full deployment and remove the flag, references to those multi-type configurations need to be replaced, introducing potential points of failure and delaying the shipping process. This necessitates extra diligence and refactoring that could have been avoided with a simple boolean check. And, as we all know, teams may already be slow in cleaning up feature gates. More than a matter of convenience, this is a strategic approach that enhances decision-making clarity, accelerates the release process, and helps cultivate true experiment culture without slowing down development speed.
+| LaunchDarkly concept | Can we migrate? | Statsig notes |
+|---------------------|-----------------|---------------|
+| Project | ✅ Yes | Convert to Project |
+| Environment | ✅ Yes | Convert to Environment (mark critical as production in Statsig) |
+| Boolean Flags | ✅ Yes | Convert to Feature Gates |
+| String, Number, and JSON Flags | ✅ Yes | Convert to Dynamic Configs |
+| Segments | ✅ Yes | Convert to Segments (Big ID list segments won't be imported) |
+| Targeting Rules | ✅ Yes | Convert to Rules |
+| Context kind | ✅ Yes | Convert to Custom Unit ID in Statsig |
+| Context attribute | ✅ Yes | Convert to Custom Fields in Statsig |
+| Flag owner, tags, teams, and history | ❌ No | Statsig does not preserve any metadata or historical versions of a flag during migration |
 
-### Environments
-In Statsig, the hierarchy is designed with **a single project that contains multiple environments**, such as development, staging, and production. This structure allows for centralized management of feature flags and experiments across different stages within the same project, thus simplifying governance. Here's an example of a flag which is only on in development, which was imported using our [open source migration script](/guides/open-source-script) from LaunchDarkly:
+#### User Context mapping example
 
-![image](https://github.com/statsig-io/docs/assets/173515951/76489c32-3c65-4096-9d07-de55f4332faf)
+LaunchDarkly supports multi-kind, structured user contexts. Statsig requires a user object to achieve this. In Statsig, User ID or Custom ID is equivalent to LD's key. Known top-level fields in Statsig include userID, email, ip, userAgent, and custom. All other fields go under the custom object.
 
-Within the same workspace and feature flag, you can then filter the rules based on environment:
+**Example 1: LD User context to Statsig User object conversion**
 
-![image](https://github.com/statsig-io/docs/assets/173515951/b129a979-763f-4ccb-9f07-d16e2d92ad40)
+```javascript
+// 1 - LD User context
+{
+  "kind": "user",
+  "key": "user-key-123abc",
+  "name": "Anna",
+  "email": "anna@globalhealthexample.com",
+  "organization": "Global Health Services",
+  "jobFunction": "doctor",
+  "device": "iPad"
+}
 
-Conversely, **LaunchDarkly adopts an Environment > Project hierarchy**, where each environment can be considered a separate workspace.
+// 1 - Statsig User object
+{
+  "userID": "user-key-123abc",
+  "email": "anna@globalhealthexample.com",
+  "custom": {
+    "name": "Anna",
+    "organization": "Global Health Services",
+    "jobFunction": "doctor",
+    "device": "iPad"
+  }
+}
+```
 
-The key difference lies in the centralization versus separation of environments: Statsig centralizes environments within a project for streamlined management, while LaunchDarkly treats each environment as a distinct workspace.
+**Example 2: LD Multi context kind to Statsig User object conversion**
 
-### Defaults
-Currently, `false` is the global default option for feature flags in Statsig's SDKs. If you want the default to be true, you may consider inverting the gate check logic. For Experiments in Statsig, defaults are provided in code.
+```javascript
+// 2 - LD Multi context kind
+{
+  "kind": "multi",
+  "user": {
+    "key": "user_abc",
+    "name": "Anna",
+    "email": "abc@company.com",
+    "region": "us-east"
+  },
+  "org": {
+    "key": "org_xyz",
+    "tier": "enterprise"
+  }
+}
 
-### Authentication
-Are you using SSO? Are you assigning custom roles via SSO? If so, read on.
+// 2 - Statsig user object
+{
+  "userID": "user_abc",
+  "email": "abc@company.com",
+  "customIDs": {
+    "org_id": "org_xyz"
+  },
+  "custom": {
+    "user_name": "Anna",
+    "user_region": "us-east",
+    "org_tier": "enterprise"
+  }
+}
+```
 
-Currently, [we haven’t hooked role definition into auto provisioning yet.](https://docs.LaunchDarkly.com/home/account/okta#assigning-custom-roles-in-okta) For automatic provisioning with SSO, new users authenticated by Okta can be automatically provisioned into a Statsig **organization**.
+In Statsig, email is a top-level reserved field for the user object, so it should be placed directly as email (not user_email). Statsig expects fields like userID, email, ip, and userAgent at the top level for user targeting and analytics.
 
-If your **project** within the **organization** is set to open, users will default to having access. For private projects, they must request access.
+## Deciding what to migrate vs. not
 
-Each JIT-provisioned user would have member access. You will need to [update their roles manually](/access-management/projects)/via API. It’s a similar pattern with teams and roles right now.
+Before you begin migrating flags from LaunchDarkly to Statsig, take this opportunity to audit your flags in the current system and do a cleanup. Many organizations accumulate flag debt over time - from stale flags, dead experiments, deprecated toggles, and legacy kill switches. Migration is a chance to start fresh with only what's valuable and active.
 
-This is on our roadmap!
+Utilize filters such as 'Lifecycle' and 'Type' in LaunchDarkly to determine which flags are worth importing into Statsig.
+
+Below is a decision framework you can use to decide which flags to import into Statsig. Our migration script follows this framework by default but you can alter it if you need.
+
+![Migration Decision Framework](/img/migration-decision-framework.png)
+
+## Importing flags into Statsig
+
+To import feature flags from LaunchDarkly to Statsig, you can use our official import tool which is designed for this specific purpose. The import tool fetches flags from LaunchDarkly, translates them into Statsig's format, and creates corresponding feature gates in Statsig. Additionally, it tracks the migration status and details in a CSV file.
+
+There are two ways to invoke this tool:
+
+1. **[Open source script](/guides/open-source-script) (Recommended)** - This is a good option if you want to customize the integration logic. It will also spit out a CSV of all of your LaunchDarkly flags, along with migration status and relevant URLs to the flag in LaunchDarkly and the gate in Statsig. This imports all of your environments.
+
+2. **[Statsig console](/guides/ui-based-tool)** - UI-based wizard to help you import LaunchDarkly feature flags and segments into Statsig. It will tell you which gates and segments were migrated and which weren't. It only imports the "production" environment at the moment.
+
+> 👉 If you are migrating from a different system, you will need to recreate flags manually in Statsig. Ideally you have done the cleaning in the previous step, so you will migrate a small number of flags. If you need assistance, please reach out over email or slack.
+
+## Flipping evaluation from LaunchDarkly to Statsig
+
+Once your flags have been imported into Statsig, the next step is to flip evaluation logic in your application. Instead of replacing every LaunchDarkly flag evaluation with Statsig calls, we recommend introducing a wrapper with gradual migration capabilities. This allows you to run both systems in parallel, compare outputs, and gradually switch over with minimal risk.
+
+The wrapper approach provides several key benefits:
+- **Parallel execution**: Run both systems simultaneously to validate behavior
+- **Gradual rollout**: Migrate flags one at a time or by percentage
+- **Easy rollback**: Quickly revert to LaunchDarkly if issues arise
+- **Consistent interface**: Maintain existing application code structure
+
+#### Implementation Guide
+
+**1. Before migration: LaunchDarkly Evaluation**
+
+Here's what a typical LaunchDarkly setup might look like:
+
+```javascript
+import { LDClient } from 'launchdarkly-js-client-sdk';
+
+const ldClient = LDClient.initialize('client-key', {
+  key: 'user_abc',
+  custom: { plan: 'pro' }
+});
+
+ldClient.on('ready', () => {
+  const isNewHomepageEnabled = ldClient.variation('new_homepage_flag', false);
+  const buttonColor = ldClient.variation('button_config', 'gray');
+});
+```
+
+**2. Create the Migration Wrapper**
+
+Create a comprehensive wrapper (`featureWrapper.js`) that handles both systems. The wrapper should check Statsig first, and if unavailable, fallback to LaunchDarkly:
+
+```javascript
+import { getLDClient } from './launchdarklyService';
+import { getStatsigClient } from './statsigService';
+
+export const wrapperFlags = {
+  // For boolean flags
+  wrapperGetFlag(flagKey, defaultValue = false) {
+    const statsigClient = getStatsigClient();
+    if (statsigClient) {
+      return statsigClient.checkGate(flagKey);
+    }
+    
+    const ldClient = getLDClient();
+    if (ldClient) {
+      return ldClient.variation(flagKey, defaultValue);
+    }
+    
+    return defaultValue;
+  },
+
+  // For dynamic configs (string, number, or json flags)
+  wrapperGetConfig(user, configKey) {
+    const statsigClient = getStatsigClient();
+    if (statsigClient) {
+      const config = statsigClient.getConfig(user, configKey);
+      return {
+        get: (paramKey, defaultValue) => config.get(paramKey, defaultValue)
+      };
+    }
+    
+    const ldClient = getLDClient();
+    if (ldClient) {
+      return {
+        get: (paramKey, defaultValue) => {
+          const ldKey = `${configKey}.${paramKey}`;
+          return ldClient.variation(ldKey, defaultValue);
+        }
+      };
+    }
+    
+    return {
+      get: (_key, defaultValue) => defaultValue
+    };
+  }
+};
+```
+
+**3. Refactor application code to use the Wrapper**
+
+Once the wrapper is in place, you'll want to route all flag checks through it. The application logic itself doesn't change, only the mechanism by which flags are retrieved.
+
+```javascript
+import { wrapperFlags } from './featureWrapper';
+
+const user = {
+  userID: 'user_abc',
+  custom: { plan: 'pro' }
+};
+
+// Boolean gate
+if (wrapperFlags.wrapperGetFlag('new_homepage_flag', user)) {
+  showNewHomepage();
+}
+
+// Multivariate config
+const buttonConfig = wrapperFlags.wrapperGetConfig('button_config', user);
+const buttonColor = buttonConfig.get('color', 'gray');
+```
+
+**4. Validate and gradually cut over**
+
+Once you've validated that Statsig is working as expected and that your migrated flags are returning correct values, you can begin migrating more flags. We recommend that you repeat the above steps for 2-3 engineering teams to instill confidence that different use cases are covered.
+
+After you've maintained flags in both systems long enough to ensure things are working as expected, phase out LaunchDarkly.
+
+1. **Remove LaunchDarkly fallback from the wrapper** - Update the wrapper functions to rely solely on Statsig. This simplifies the logic and ensures LaunchDarkly is no longer queried in production.
+
+2. **Delete LD initialization logic and SDK imports** - Any references to `LDClient.initialize` or `ldClient.variation` can now be safely removed.
+
+## How to run the migration process
+
+To ensure a safe and manageable transition to Statsig, we recommend a phased rollout that each team can adopt independently. This approach allows for gradual migration, scoped validation, and shared learnings across the org.
+
+| Phase | Description | Who | Duration |
+|-------|-------------|-----|----------|
+| 1. Auditing existing flags in LaunchDarkly | Each team reviews their LaunchDarkly flags and identifies which flags are worth migrating | Individual Teams | Ongoing (2-3 days per team) |
+| 2. Start creating all new flags in Statsig | Starting immediately, all new flags to be created in Statsig to avoid using legacy system out of habit | Org-wide | 1 week |
+| 3. Pilot migration with one team | Select one team to migrate a small set of LaunchDarkly flags to Statsig using the wrapper. Validate that migrated flags work as expected | Pilot team | 1–2 weeks |
+| 4. Org-Wide migration and cutover | Repeat migration for more teams in waves. Create training docs and guides for org wide adoption. Once Statsig is stable and adopted org-wide, remove LaunchDarkly fallback from wrapper | All teams + central guidance | 3–4 weeks (rolling) |
+
+We hope this guide helped you better understand how to approach LaunchDarkly to Statsig feature flag migration. If you need any further assistance or just want to talk through your specific case, please talk to us and we'll happy to work with you.

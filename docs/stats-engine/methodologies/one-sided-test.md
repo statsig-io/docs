@@ -4,9 +4,11 @@ sidebar_label: One-Sided Tests
 slug: /stats-engine/one-sided-test
 keywords:
   - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
-## One-Sided Tests (aka One-Tailed Test)
+## One-Sided Tests (aka One-Tailed Test, Non-Inferiority Test)
 
 A one-sided test lets you test for a metric moving in only one direction which you specify in advance. This trade off gives you additional sensitivity (or power). It differs from the standard Pulse results which show two-sided results by default.
 
@@ -19,7 +21,10 @@ One-sided tests completely disregard the possibility of detecting the metric mov
 ## How to enable this
 
 When setting up an experiment and identifying metrics to measure, the default setting is to run a two-sided test. If you want to modify this, simply click on the metric name on the experiment setup screen. This will open a popup where you can modify the test type and indicate a desired direction you seek to measure.
-Note that our V1 doesn't support Bayesian testing yet.
+
+:::note
+Our V1 doesn't support Bayesian testing yet.
+:::
 
 ![image](https://github.com/user-attachments/assets/23044f21-6249-4fc1-9895-22111bb16010)
 

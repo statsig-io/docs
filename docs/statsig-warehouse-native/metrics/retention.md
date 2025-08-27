@@ -3,6 +3,8 @@ title: Retention Metrics
 sidebar_label: Retention
 keywords:
   - owner:vm
+last_update:
+  date: 2025-07-28
 ---
 
 ## Summary
@@ -29,6 +31,8 @@ This is a rolling calculation. Each day a user triggers the start event, they ge
 
 Only days with completed windows will be included in pulse. For example if the duration is 7, the last week of data is excluded from pulse to avoid diluting the metric since an L3D7 metric would always have a numerator of 0 for those days.
 
+Using the `allow cohort metrics to mature after experiment end` setting in advanced experiment settings allows for post-experiment data to complete the analysis, meaning units exposed later in the analysis can be included. This is appropriate in cases where the treatment is one-time and doesn't need to be re-applied in order to impact users.
+
 ![Retention Explanation](https://github.com/user-attachments/assets/2a9d8731-1c28-4c59-a0fe-3c1e7586c129)
 
 ## Calculation
@@ -37,24 +41,38 @@ Only days with completed windows will be included in pulse. For example if the d
 -- Denominator - 1/0 flag for activity on a day
 WITH denominator AS (
     SELECT
-        unit_id,
-        date,
-        group_id,
+        source_data.unit_id,
+        source_data.date,
+        exposure_data.group_id,
         MAX(1) as denominator
     FROM source_data
+    JOIN exposure_data
+    ON
+      -- Only include users who saw the experiment
+      source_data.unit_id = exposure_data.unit_id
+      -- Only include data from after the user saw the experiment
+      -- In this case exposure_data is already deduped to the "first exposure"
+      AND source_data.timestamp >= exposure_data.timestamp
     WHERE <start_filter>
     GROUP BY ALL;
 ),
 
 -- Numerator Candidates - 1/0 flag for success activity on a day
--- Note by default this is equivalen tot the denominator CTE
+-- Note by default this is equivalent to the denominator CTE
 numerator_candidates AS (
     SELECT
-        unit_id,
-        date,
-        group_id,
+        source_data.unit_id,
+        source_data.date,
+        exposure_data.group_id,
         MAX(1) as denominator
     FROM source_data
+    JOIN exposure_data
+    ON
+      -- Only include users who saw the experiment
+      source_data.unit_id = exposure_data.unit_id
+      -- Only include data from after the user saw the experiment
+      -- In this case exposure_data is already deduped to the "first exposure"
+      AND source_data.timestamp >= exposure_data.timestamp
     WHERE <success_filter>
     GROUP BY ALL
 ),
@@ -92,6 +110,7 @@ GROUP BY ALL
 Retention metrics are [ratio metrics](./ratio.md) for the purposes of pulse calculations; the only distinction is that the metric date is attributed to the denominator date.
 
 The ratio components for retention metrics reflect the rolling metric definition:
+
 - the denominator is the average number of days per user where the "retention start" event was triggered
 - the numerator is the average number of days per user where a "retention start" event had a corresponding "retention end" event in its retention period.
 

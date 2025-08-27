@@ -4,6 +4,8 @@ slug: /statsig-warehouse-native/guides/dummy_evaluation
 sidebar_label: Playground Evaluation
 keywords:
   - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
 :::info
@@ -29,7 +31,9 @@ Playground projects come with some boilerplate connections hooked up:
 - An assignment source with a handful of experiments
 - A handful of pre-loaded metrics and experiments
 
-Note that playground projects do not come with any assign-and-analyze experiments, so some features that require SDK usage (e.g. Stratified Sampling) won't be available. A normal demo project can be used with an SDK on a local script to generate data for those use cases.
+:::note
+Playground projects do not come with any assign-and-analyze experiments, so some features that require SDK usage (e.g. Stratified Sampling) won't be available. A normal demo project can be used with an SDK on a local script to generate data for those use cases.
+:::
 
 ## Evaluation
 

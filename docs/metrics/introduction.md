@@ -4,6 +4,8 @@ sidebar_label: Introduction
 slug: /metrics
 keywords:
   - owner:shubham
+last_update:
+  date: 2025-07-23
 ---
 
 # Metrics User Guide

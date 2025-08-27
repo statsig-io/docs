@@ -10,14 +10,27 @@ External data store for Statsig values.
 - **`disable_all_logging`**: Option\<bool\>
   When true, disables all event logging.
 
+- **`disable_network`**: Option\<bool\>
+  When `true`, disables all network functions: event & exposure logging, spec downloads, and ID List downloads. Formerly called "localMode".
+
 - **`enable_id_lists`**: Option\<bool\>
-  Enable/disable ID list functionality.
+  Enable/disable ID list functionality. **Required to be `true` when using segments with more than 1000 IDs.** See [ID List segments](/segments/add-id-list) for more details.
 
-- **`enable_user_agent_parsing`**: Option\<bool\>
-  Enable/disable user agent parsing.
+- **`disable_user_agent_parsing`** `Optional[bool]`
+  Default false. If set to true, the SDK will NOT attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion at evaluation time, when needed for evaluation.
 
-- **`enable_country_lookup`**: Option\<bool\>
-  Enable/disable country lookup functionality.
+- **`wait_for_user_agent_init`** `Optional[bool]`
+  Default: false
+
+  When set to true, the SDK will wait until user agent parsing data is fully loaded during initialization. This may slow down by ~1 second startup but ensures that parsing of the user’s userAgent string into fields like browserName, browserVersion, systemName, systemVersion, and appVersion is ready before any evaluations.
+
+- **`disable_user_country_lookup`**  `Optional[bool]`
+  Default false. If set to true, the SDK will NOT attempt to parse IP addresses (attached to the user object at user.ip) into Country codes at evaluation time, when needed for evaluation.
+
+- **`wait_for_country_lookup_init`**  `Optional[bool]`
+  Default: false
+
+  When set to true, the SDK will wait for country lookup data (e.g., GeoIP or YAML files) to fully load during initialization. This may slow down by ~1 second startup but ensures that IP-to-country parsing is ready at evaluation time
 
 - **`environment`**: Option\<String\>
   Environment parameter for evaluation.
@@ -30,6 +43,9 @@ External data store for Statsig values.
 
 - **`event_logging_max_queue_size`**: Option\<u32\>
   Maximum number of events to queue before forcing a flush.
+
+- **`event_logging_max_pending_batch_queue_size`**: Option\<u32\>
+  Maximum number of batches of events to hold in buffer to retry.
 
 - **`fallback_to_statsig_api`**: Option\<bool\>
   Whether to fallback to the Statsig API if custom endpoints fail.
@@ -70,11 +86,15 @@ External data store for Statsig values.
 - **`specs_url`**: Option\<String\>
   Custom URL for fetching feature specifications.
 
-- **`service_name`**: Option\<String\>
-  Name of the service using Statsig.
-
 - **`global_custom_fields`**: Option\<HashMap\<String, DynamicValue\>\>
   Global custom fields to include with all evaluations.
+
+- **`proxy_config`**: Option\<ProxyConfig\>
+  Configuration for connecting through a proxy server. The `ProxyConfig` struct has the following properties:
+  - `proxy_host`: Option\<String\> - Specifies the proxy server host
+  - `proxy_port`: Option\<u16\> - Specifies the proxy server port
+  - `proxy_auth`: Option\<String\> - For proxy authentication (format: `"username:password"`)
+  - `proxy_protocol`: Option\<String\> - Specifies the protocol (e.g., `"http"`, `"https"`)
 
 
 ### Example Usage
@@ -102,6 +122,13 @@ let options = StatsigOptions::builder()
     .disable_all_logging(Some(false))
     .enable_id_lists(Some(true))
     .specs_sync_interval_ms(Some(30000))
+    // Configure proxy settings
+    .proxy_config(Some(ProxyConfig {
+        proxy_host: Some("proxy.example.com".to_string()),
+        proxy_port: Some(8080),
+        proxy_protocol: Some("https".to_string()),
+        proxy_auth: None, // Use Some("username:password".to_string()) if authentication is required
+    }))
     .build();
 
 // Pass the options object into Statsig::new()

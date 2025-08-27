@@ -3,105 +3,15 @@ sidebar_label: Measuring Experiments
 title: Measuring Experiments
 keywords:
   - owner:brock
+last_update:
+  date: 2025-07-29
 ---
 
 ## Using Autocapture
 Sidecar comes loaded with an event collection tool that will autocapture various web activities, allowing you to create both simple and complex Metrics within Statsig console without writing a line of code.
 
-#### Autocapture tracks the following events and properties automatically:
+See [Autocapture on the Web](/webanalytics/autocapture)
 
-**`auto_capture::click`**
-
-
-|Property|description|example value (strings)|
-|--------|----------|-------------|
-|value|Tag name of clicked element|button|
-|metadata.content|`innerText` value of the clicked element|Add to Cart|
-|metadata.page_url|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
-
-
-**`auto_capture::page_view`**
-
-
-|Property|description|example value (strings)|
-|--------|----------|-------------|
-|value|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
-|metadata.page_url|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
-|metadata.queryParams|A json representation of query string params| `{\"utm\":\"FALL_2024\"}`|
-|metadata.referrer|URL of the prior page|https://www.google.com|
-|metadata.title|Title of the current webpage from `<title>`|Homepage|
-
-
-**`auto_capture::page_view_end`**
-
-
-|Property|description|example value (strings)|
-|--------|----------|-------------|
-|value|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
-|metadata.pageViewLength|total number of milliseconds spent on the page|6137|
-|metadata.page_url|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
-|metadata.scrollDepth|percentage of page scrolled (integer 0-100)|47|
-
-
-**`auto_capture::form_submit`**
-
-
-|Property|description|example value (strings)|
-|----|----|----|
-|value|Fixed string|"form"|
-|metadata.action|`action` attribute on the form element|/submit.php|
-|metadata.formId|`id` attribute on the form element|user-info|
-|metadata.formName|`name` attribute on the form element|user-info|
-|metadata.method|Http method on the form element|POST|
-|metadata.page_url|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
-
-
-**`auto_capture::performance`**
-
-
-|Property|description|example value (strings)|
-|----|----|----|
-|value|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
-|metadata.dom_interactive_time_ms|Time until DOM is qualified as interactive as implemented by [browser performanceTiming API](https://developer.mozilla.org/en-US/docs/Web/Performance/Navigation_and_resource_timings)|1807.90|
-|metadata.first_contentful_paint_time_ms|First contentful paint metric as implemented by [browser performanceTiming API](https://developer.mozilla.org/en-US/docs/Web/Performance/Navigation_and_resource_timings)|1523.90|
-|metadata.load_time_ms|Total load time as implemented by [browser performanceTiming API](https://developer.mozilla.org/en-US/docs/Web/Performance/Navigation_and_resource_timings)|2766.90|
-|metadata.page_url|Current URL with path and parameters|https://www.FULL-URL.com/?utm=FALL_2024|
-|metadata.transfer_bytes|Total number of bytes transferred in document body as implemented by [browser performanceTiming API](https://developer.mozilla.org/en-US/docs/Web/Performance/Navigation_and_resource_timings)|48360|
-
-#### Disabling All Logging
-To disable all logging to statsig (both autocapture events and logging who has seen your experiments) append the following query string parameter to the Sidecar script URL: `&autostart=0`. This may be useful if you're dealing with GDPR compliance, and you can later re-enable events with `client.updateRuntimeOptions({disableLogging: false})`
-
-## Auto Capturing Data Attributes
-
-Data attribute tags will automatically be added to the event metadata object. Note that this is available for `click` events only for now!
-
-The metadata will be in the format of data-(camelCasedAttributeName). For example:
-  
-```html
-<button data-button-attribute="important button attribute">Add to Cart</button>
-<a href="/checkout" data-a-tag-attribute="important a tag attribute">Checkout</a>
-```
-
-Metadata on the events tab will be 
-```
-{
-  "content": "Add to Cart",
-  "data-buttonAttribute": "important button attribute",
-  "page_url": "http://localhost:4200/",
-  "sessionID": "7ccb4e03-3599-443e-8d41-4b89f7168728",
-  "tagName": "button"
-}
-```
-```
-{
-  "content": "Checkout",
-  "data-aTagAttribute": "important a tag attribute",
-  "href": "/checkout",
-  "page_url": "http://localhost:4200/",
-  "sessionID": "7ccb4e03-3599-443e-8d41-4b89f7168728",
-  "tagName": "a"
-}
-```
 
 ## Using the tracking API
 
@@ -140,3 +50,7 @@ window.postExperimentCallback = function(statsigClient, experimentIds) {
    */
 }
 ```
+
+#### Disabling All Logging
+To disable all logging to statsig (both autocapture events and logging who has seen your experiments) append the following query string parameter to the Sidecar script URL: `&autostart=0`. This may be useful if you're dealing with GDPR compliance, and you can later re-enable events with `client.updateRuntimeOptions({disableLogging: false})`
+

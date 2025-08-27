@@ -7,6 +7,8 @@ hide_table_of_contents: true
 custom_edit_url: null
 keywords:
   - owner:oliver
+last_update:
+  date: 2025-07-23
 ---
 
 ## Authorization
@@ -28,7 +30,7 @@ import Rapidoc from "../../src/components/Rapidoc";
 | unit_type               | string    | Refers to the unit type used in the experiment                                                |
 | exposure_type           | string    | Statsig Product used: "check_gate" for Feature Gates, and "get_experiment" for experiments    |
 | name                    | string    | The name of the gate/experiment                                                               |
-| rule                    | string    | rule id for both gates; 'experiment' for experiments                                          |
+| rule                    | string    | rule id for gates; 'experiment' for experiments                                               |
 | experiment_group        | string    | The group the user was assigned to                                                            |
 | first_exposure_utc      | timestamp | The UTC timestamp when the user was first assigned to the experiment                          |
 | first_exposure_pst_date | date      | The date in PST when the user was first assigned to the experiment                            |
@@ -104,20 +106,20 @@ CREATE OR REPLACE TABLE <DATABASE>.<SCHEMA>.<TABLE> (
 | ------------------- | -------------------------------------------------------------------------------------------------- |
 | company_id          | STRING, the id of the company                                                                      |
 | name                | STRING, the name of the gate/experiment                                                            |
-| rule                | rule id for both gates; 'experiment' for experiments                                               |
+| rule                | rule id for gates; 'experiment' for experiments                                               |
 | rule_name           | rule name for gates; 'experiment' for experiments                                                  |
 | experiment_group    | STRING, the group the user was assigned to                                                         |
 | pst_date            | DATE, the 24hr window the the data refers to. All dates are anchored from 12:00a -> 11:59p PST.    |
 | metric_type         | STRING, the type of the metric, e.g. ratio                                                         |
 | metric_name         | STRING, the name of the metric                                                                     |
 | metric_dimension    | STRING, the name of the metric dimension. '!statsig_topline' is the overall metric with no slicing |
-| units               | BIGINT, the number of users included in this metric                                                |
-| participating_units | BIGINT, the number of users participated in this metric                                            |
+| units               | INTEGER, the number of users included in this metric                                                |
+| participating_units | INTEGER, the number of users participated in this metric                                            |
 | mean                | DOUBLE, the average value of this metric across units (or participating units when applicable)     |
 | total               | DOUBLE, the sum of this metric across units                                                        |
 | stddev              | DOUBLE, the standard deviation of this metric across units                                         |
-| stderr              | DOUBLE, the standard error of this metric across units                                             |
 | varpop              | DOUBLE, the varpop of this metric                                                                  |
+| stderr              | DOUBLE, the standard error of this metric across units                                             |
 
 - New columns may be added in the future.
 - Exposures on the day when a decision is made are excluded from the report, as they are not part of the experiment.
@@ -125,3 +127,32 @@ CREATE OR REPLACE TABLE <DATABASE>.<SCHEMA>.<TABLE> (
 - After the feature is turned on for you, it will be ready when our pipeline runs. Generally, you can expect it around the time you see pulse results.
 
 **Please note that the previous get_daily_reports endpoint has been deprecated. If you were using this endpoint, please migrate to the new version. However, you can find old docs [here](/console-api/daily-reports-deprecated)**
+
+## Report Schema - type = topline_impact_daily
+
+| Column Name         | Description                                                                                        |
+| ------------------- | -------------------------------------------------------------------------------------------------- |
+| company_id          | STRING, the id of the company                                                                      |
+| unit_type           | STRING, refers to the unit type used in the experiment                                             |
+| experiment_name     | STRING, the name of the gate/experiment                                                            |
+| rollup_days         | INTEGER, 0: "cumulative", 1: '1 day rollup', 7: '7 day rollup', 28: : '28 day rollup'              |
+| calculation_days    | STRING, total days of data used for topline impact calculation                                     |
+| exposure_type       | STRING, 'config_exposure' for experiment, 'gate_exposure' for gate                                 |
+| rule_id             | STRING, rule id for gates; 'experiment' for experiments                                            |
+| test_group          | STRING, the group that we are measuring impact relative to control_group                           |
+| control_group       | STRING, baseline comparison group                                                                  |
+| metric_name         | STRING, the name of the metric                                                                     |
+| metric_type         | STRING, the type of the metric, e.g. ratio                                                         |
+| total_calculation   | STRING, 'SUM' or 'RATIO' depends on the aggregation type of the backend topline impact calculation |
+| lift_abs            | DOUBLE, the absolute lift of the topline impact                                                    |
+| lift_var_abs        | DOUBLE, the variance of the absolute lift of topline impact                                        |
+| lift_rel            | DOUBLE, the relative lift of the topline impact                                                    |
+| lift_var_rel        | DOUBLE, the variance of the relative lift of the topline impact                                    |
+| proj_lift_abs       | DOUBLE, the absolute lift of projected launch impact                                               |
+| proj_lift_var_abs   | DOUBLE, the variance of the absolute lift of projected launch impact                               |
+| proj_lift_rel       | DOUBLE, the relative lift of projected launch impact                                               |
+| proj_lift_var_rel   | DOUBLE, the variance of the relative lift of projected launch impact                               |
+| topline_impact_id   | STRING, the id of the topline impact                                                               |
+
+- The test_group and control_group columns indicate the comparison setup for analysis, not fixed group assignments. Either column may contain the name of the test or control group—the key distinction is that control_group always represents the baseline group used for comparison, and test_group is the group being compared against it. 
+- The granularity of the table is per experiment + metric + rollup + comparison set

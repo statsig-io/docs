@@ -4,6 +4,8 @@ sidebar_label: Benjamini–Hochberg
 slug: /stats-engine/methodologies/benjamini–hochberg-procedure
 keywords:
   - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
 ## What it is
