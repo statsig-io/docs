@@ -442,6 +442,14 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/help-active.svg");
 }
 
+.sampleapps-icon::before {
+  background-image: url("/img/icons/sidebar/sampleapps.svg");
+}
+
+.sampleapps-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/sampleapps-active.svg");
+}
+
 .question-icon::before {
   background-image: url("/img/icons/sidebar/help.svg");
 }
