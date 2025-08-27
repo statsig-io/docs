@@ -24,7 +24,10 @@ One-sample tests provide a way to make statistical inferences about whether your
 ## How to Enable the Feature
 
 1. Go to the setup page of an experiment
+<img width="1167" height="562" alt="image" src="https://github.com/user-attachments/assets/742634e0-0db9-44f9-b849-0a205f604a76" />
 
 2. Click the metric name
+<img width="226" height="73" alt="image" src="https://github.com/user-attachments/assets/3a645771-4771-480e-a263-15a6af951284" />
 
 3. Select Use Fixed Baseline as Control
+<img width="507" height="503" alt="image" src="https://github.com/user-attachments/assets/9c7e85d6-e0b0-40bb-a22c-a96d7084d3e7" />
