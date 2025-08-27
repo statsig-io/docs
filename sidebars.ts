@@ -235,7 +235,6 @@ const sidebars: SidebarsConfig = {
               label: "Types of experiments",
               items: [
                 "experiments-plus/switchback-tests",
-                "stats-engine/methodologies/one-sided-test",
                 "ai-ml/ai-prompt-experiment",
                 "guides/aa-test",
               ],
@@ -292,6 +291,8 @@ const sidebars: SidebarsConfig = {
                   items: [
                     "stats-engine/confidence-intervals",
                     "stats-engine/p-value",
+                    "stats-engine/one-sided-test",
+                    "stats-engine/one-sample-test",
                     "stats-engine/metric-deltas",
                     "stats-engine/variance",
                     "stats-engine/methodologies/delta-method",
