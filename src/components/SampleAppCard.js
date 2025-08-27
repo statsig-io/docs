@@ -3,7 +3,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import React from "react";
 
-export default function SampleappCard({ title, link, image }) {
+export default function SampleAppCard({ title, link, image }) {
   return (
     <a
       href={link}
