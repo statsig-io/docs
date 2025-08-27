@@ -1,0 +1,9 @@
+```go
+user := statsig.NewStatsigUserBuilder().WithUserID("a-user").Build()
+
+if s.CheckGate(*user, "a_gate", nil) {
+    // Gate is on, enable new feature
+} else {
+    // Gate is off
+}
+```

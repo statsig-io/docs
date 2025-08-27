@@ -1,11 +1,13 @@
 ---
-sidebar_label: SSO with Azure AD/O365
-title: Single Sign-On With Azure AD/Office 365
+sidebar_label: SSO with Entra ID/Azure AD/O365
+title: Single Sign-On With Entra ID/Azure AD/Office 365
 keywords:
   - owner:shubham
 last_update:
   date: 2025-07-23
 ---
+Microsoft Entra ID, formerly known as Azure AD, is a supported IdP for SSO into Statsig.
+
 ## Requirements
 
 - You will need to be the `Admin` of the Statsig Project you intend to add SSO with Azure AD to.
@@ -29,4 +31,3 @@ You will need to enter three items in the Statsig SSO configuration -
 3. Get the client secret value for when you saved this after creating a new client secret. 
 
 Once these steps have been completed, the prep on Azure AD is complete. Following this, you will need to follow the steps [here to enable configuration of SSO on your Statsig Project](/access-management/sso/overview#configuration).
-

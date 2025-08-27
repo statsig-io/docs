@@ -36,4 +36,4 @@ $$
 FPR_i = \frac{\alpha_i \times \pi}{\alpha_i \times \pi + (1 - \beta_i) \times (1 - \pi)}
 $$
 
-In this formula, $$\alpha_i$$ is the significance level for experiment i, $$\beta_i$$ is the power, and $$\pi$$ is the prior success rate based on historical experiment results.
+In this formula, $$\alpha_i$$ is the significance level for experiment i, $$\beta_i$$ is the type II error, and 1 - $$\pi$$ is the prior success rate based on historical experiment results.

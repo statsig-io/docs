@@ -10,7 +10,7 @@ last_update:
 
 ## Introduction
 
-Statsig can directly ingest data from your Data Warehouse. This lets you send raw events and pre-computed metrics for tracking and experimental measurement.
+Statsig Cloud can directly ingest data from your Data Warehouse. This lets you send raw events and pre-computed metrics for tracking and experimental measurement.
 We currently support ingestion from the following providers:
 
 1. [BigQuery](bigquery.mdx)
@@ -20,6 +20,10 @@ We currently support ingestion from the following providers:
 5. [Synapse](synapse.mdx)
 6. [S3](s3.mdx)
 7. [Athena](athena.mdx)
+
+:::tip[Warehouse Native users]
+You're viewing the Cloud docs for this page. If your project is configured as [Statsig Warehouse Native](/statsig-warehouse-native/introduction/), your data should already be available if you completed the [quickstart](../statsig-warehouse-native/guides/quick-start/).
+:::
 
 ### How it works
 
@@ -88,13 +92,14 @@ curl \
   --header "statsig-api-key: <YOUR-SDK-KEY>" \
   --header "Content-Type: application/json" \
   --request POST \
-  --data '{"datestamps": "2023-02-20", "type": "events"}' \
+  --data '{"datestamps": "2023-02-20", "type": "events", "sources":["source1", "source2]}' \
   "https://api.statsig.com/v1/mark_data_ready_dwh"
 ```
 
 Parameters:
 - datestamps: Refers to the date of the data being triggered.
 - type: `metrics` or `events`
+- sources (only for multi-source ingestions): Array of strings representing the sources to trigger
 
 :::note
 This is rate limited to once every two hours, and there may be a few minutes delay after triggering before status updates while compute resources are created.

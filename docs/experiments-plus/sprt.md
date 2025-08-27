@@ -42,7 +42,7 @@ One of the nice things about SPRT is that this Likelihood Ratio largely correspo
 
 ## References
 
-- [Original SPRT Paper (Wald, 1945)](https://drive.google.com/file/d/1CgyJVd4SZJT1i5TzlnBGmzs94Rbu6uTQ/view)
+- [Original SPRT Paper (Wald, 1945)](https://projecteuclid.org/journals/annals-of-mathematical-statistics/volume-16/issue-2/Sequential-Tests-of-Statistical-Hypotheses/10.1214/aoms/1177731118.full)
 
 ## FAQ
 

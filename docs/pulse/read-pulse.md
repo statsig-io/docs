@@ -26,7 +26,10 @@ The experiment **Scorecard** shows the metric lifts for all Primary and Secondar
 
 For up to the first 24 hours after starting your experiment (before our daily metric results run), the **Scorecard** section is calculated hourly (this only applies to Statsig Cloud, for WHN projects you will need to reload results on demand or set up a daily schedule). This more real-time scorecard is designed to enable you to confirm that exposures and metrics are being calculated as expected and debug your experiment or gate setup if needed. 
 
-Please note that you should **not** make any experiment decisions based on real-time results data in this first 24 hour window after experiment start. Experiments should only be called once the experiment has hit target duration, as set by your primary metric(s) hitting experimental power. Read more about target duration [here](/experiments-plus/create-new#target-duration). 
+:::note
+You should **not** make any experiment decisions based on real-time results data in this first 24 hour window after experiment start. Experiments should only be called once the experiment has hit target duration, as set by your primary metric(s) hitting experimental power. 
+Read more about target duration [here](/experiments-plus/create-new#target-duration). 
+:::
 
 Given data during this early post-experiment start window is designed for diagnostic, not decision-making purposes, you will notice a few key differences between this real-time view and the results that will start showing after daily runs have initiated: 
 
@@ -100,8 +103,8 @@ These settings can be adjusted at any time to view Scorecard results with differ
 
 * **Apply Benjamini-Hochberg Procedure per Variant**: Select this option to apply the procedure to reduce the probability of false positives by adjusting the significance level for multiple comparisons - [read more here](/stats-engine/methodologies/benjamini–hochberg-procedure).
 * **Confidence Interval**: Changes the confidence interval displayed with the metric deltas.  Choose lower confidence intervals (e.g.: 80%) when there's higher tolerance for false positives and fast iteration with directional results is preferred over longer/larger experiments with increased certainty.
-* **CUPED**: Toggle CUPED on/ off via the inline settings above the metric lifts. NOTE- this setting can only be toggled for **Scorecard** metrics, as CUPED is not applied to non-Scorecard metrics. 
-* **Sequential Testing**: Applies a correction to the calculate p-values and confidence intervals to reduce false positive rates when evaluating results before the target completion date of the experiment.  This helps mitigate the increased false positive rate associated with the "peeking problem". Toggle Sequential Testing on/ off via the inline settings above the metric lifts.  NOTE- this setting is available only for experiments with a set target duration.
+* **CUPED**: Toggle CUPED on/ off via the inline settings above the metric lifts. Note that this setting can only be toggled for **Scorecard** metrics, as CUPED is not applied to non-Scorecard metrics. 
+* **Sequential Testing**: Applies a correction to the calculate p-values and confidence intervals to reduce false positive rates when evaluating results before the target completion date of the experiment. This helps mitigate the increased false positive rate associated with the "peeking problem". Toggle Sequential Testing on/ off via the inline settings above the metric lifts. Note that this setting is available only for experiments with a set target duration.
 * 
 ![analysis settings](https://github.com/user-attachments/assets/d2d7405a-9e86-4317-8f32-51b369c66699)  
 

@@ -2,6 +2,7 @@
   "version": "0.2",
   "language": "en",
   "words": [
+    "Aamodit",
     "AATest",
     "allowlist",
     "APIs",
@@ -707,7 +708,17 @@
     "SPRTs",
     "sprt",
     "JDBC",
-    "adblocking"
+    "adblocking",
+    "TTFB",
+    "Mbps",
+    "Klaviyo",
+    "Mailchimp",
+    "Quora",
+    "useparameterstore",
+    "cutover",
+    "downsample",
+    "multiset",
+    "sublinear"
   ],
   "ignorePaths": [
     "node_modules/**",

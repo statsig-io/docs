@@ -5,10 +5,14 @@ slug: /feature-flags/pre-post-results
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-08-01
+  date: 2025-08-02
 ---
 
 # Pre-Post Results
+
+:::info Cloud Only Feature
+This feature is currently available only on Statsig Cloud.
+:::
 
 ## What are Pre-Post Results in Statsig?
 

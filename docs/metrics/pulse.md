@@ -16,6 +16,9 @@ Most metric types are aggregated across all users in the group; however, some me
 
 ## Pulse Statistics by Metric Type
 
+:::warning
+Sketch-based count distinct metrics are not live yet.
+:::
 
 | Metric Type                           | Total                                                                    | Mean                                                                                                                                                                    | Units               |
 | ------------------------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
@@ -23,13 +26,14 @@ Most metric types are aggregated across all users in the group; however, some me
 | event_dau                             | Sum of event DAU (distinct user-day pairs)                               | Average event_dau value per user per day. Note that we call this "Event Participation Rate" as this can be interpreted as the probability a user is DAU for that event. | All users           |
 | sum                                   | Total sum of values (99.9% winsorization)                                | Average value per user (99.9% winsorization)                                                                                                                            | All users           |
 | mean                                  | Overall mean value                                                       | Overall mean value                                                                                                                                                      | Participating users |
-| event_user                            | Count of distinct users that have had the event.                         | Average metric value per user per day. Depending on Rollup Mode, can be a one-time event or daily participation rate.                                           | All users           |
+| event_user                            | Count of distinct users that have had the event.                         | Average metric value per user per day. Depending on Rollup Mode, can be a one-time event or daily participation rate.                                                   | All users           |
 | ratio                                 | Not shown                                                                | Overall ratio: sum(numerator values)/sum(denominator values)                                                                                                            | Participating users |
 | funnel                                | Not shown                                                                | Overall ratio: sum(numerator values)/sum(denominator values)                                                                                                            | Participating users |
 | user: dau, wau, mau_28day             | Not shown                                                                | Average metric value per user per day. The probability that a user is xAU                                                                                               | All users           |
 | user: new_dau, new_wau, new_mau_28day | Count of distinct users that are new xAU at some point in the experiment | Fraction of users that are new xAU                                                                                                                                      | All users           |
 | user: retention metrics               | Overall average retention rate                                           | Overall average retention rate                                                                                                                                          | Participating users |
 | user: L7, L14, L28                    | Not shown                                                                | Average L-ness value per user per day                                                                                                                                   | All users           |
+| count_distinct                        | Total number of unique values                                            | Average number of unique values per user                                                                                                                                | All users           |
 
 **Some example metric breakdowns in Pulse:**
 
@@ -80,7 +84,7 @@ To reduce the impact of outliers, Statsig caps _event_count_ and _sum_ metric ty
 
 The winsorization 99.9th percentile is computed using all non-zero and non-null values of the metric, and then all values of exceeding this limit are replaced with it.
 
-Warehouse-Native (WHN) allows for more customization of winsorization by metric and by percentile.
+Warehouse Native (WHN) allows for more customization of winsorization by metric and by percentile.
 
 ## Frequently Asked Questions
 

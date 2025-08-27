@@ -22,6 +22,11 @@ Statsig supports five types of custom metrics:
 | Aggregation | **Sum or Average** of the _Value_, _Metadata_, or _User_ property of an event type                                         | **Total Revenue**                                    |
 | Ratio       | **Rates** (e.g. cart conversion rate, purchase rate), **Normalized Values** (e.g. sessions per user, items per cart)       | **Cart Conversion Rate**, **Sessions per User**           |
 | Funnel      | **Funnels**- funnel of multiple events with conversion tracking                                                            | **Sign-up Funnel**, **Checkout Funnel**                       |
+| Count Distinct | **Count Distinct**- Number of unique values for a given field, often approximated with sketches                         | **Unique Songs** listened per user                          |
+
+:::warning
+Sketch-based count distinct metrics are in beta. Please reach out to learn more and join our beta testing!
+:::
 
 It's worth noting that the "average" in aggregation is the average of event value (average revenue per purchase per user), instead of the average of exposed units (average revenue per user). The latter is defined by sum.
 

@@ -3,9 +3,16 @@
 user = %StatsigUser{
     user_id: "test_user_123"
 }
-{:ok, config} = Statsig.get_config("a_config", user)
+{:ok, config} = Statsig.get_dynamic_config("a_config", user)
 
 # Access the values in the dynamic config:
 
 param_value = DynamicConfig.get_param_value(config, "header_text")
+
+# Disable exposure
+options = %Statsig.DynamicConfigEvaluationOptions{
+    disable_exposure_logging = true
+}
+{:ok, config} = Statsig.get_dynamic_config("a_config", user, options)
+
 ```
