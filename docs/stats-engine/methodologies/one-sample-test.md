@@ -21,6 +21,10 @@ One-sample tests are useful for comparing a single group against a known value:
 
 One-sample tests provide a way to make statistical inferences about whether your observed data differs significantly from a hypothesized value. The test helps determine if any observed difference is due to random variation or represents a true change in the underlying process.
 
-:::info
-One-sample tests are particularly valuable when you have a clear benchmark or target value and want to determine if your current performance meets or exceeds that standard. They're often used in quality assurance, performance monitoring, and goal-setting contexts.
-:::
+## How to Enable the Feature
+
+1. Go to the setup page of an experiment
+
+2. Click the metric name
+
+3. Select Use Fixed Baseline as Control
