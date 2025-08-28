@@ -21,6 +21,8 @@ We have custom documentation for the following OIDC providers:
 - [Okta](okta_sso.md)
 - [Microsoft Entra ID (AzureAD)](azuread.md)
 - [Google](google.md)
+- Ping Identity
+- OneLogin
 
 ## Configuration
 
