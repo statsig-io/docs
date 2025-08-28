@@ -1,5 +1,5 @@
 ---
-title: Reconciling Results
+title: Reconciling Results Between Experimentation Platforms
 sidebar_label: Reconciling Results
 slug: /experiments-plus/reconciling-experiment-results
 keywords:
@@ -25,7 +25,44 @@ This means that the exposures logged using the binary ID would *not* be able to 
 ID Resolution can be used to bridge ID type gaps, but is not intended to solve for this scenario; ID Resolution helps you connect identifiers across logged-out/logged-in sessions, or other scenarios where users will commingle their identifiers because of switching identifiers during the experiment.
 
 ### Timestamps
-It is important to analyze metric data only after a user has been exposed to the experiment. Pre-experiment data should have no average treatment effect, and therefore its inclusion dilutes results. Statsig employs a timestamp-based join for this purpose, with an option for a date-based join for daily data. This should look like the SQL snippet below:
+It is important to analyze metric data only after a user has been exposed to the experiment. Pre-experiment data should have no average treatment effect, and therefore its inclusion dilutes results.
+
+#### Statsig Cloud
+
+Statsig Cloud uses a date-based join between exposures and metric data. Experiments will include metric data from the whole of the first exposure date for each experimental unit. While some pre-experiment metric data can be included, the average treatment effect of this dilution should be null. This looks like the SQL snippet below:
+
+```
+WITH 
+metrics as (...),
+exposures as (...),
+joined_data as (
+    SELECT 
+        exposures.unit_id,
+        exposures.experiment_id,
+        exposures.group_id,
+        metrics.timestamp,
+        metrics.value
+    FROM exposures
+    JOIN metrics
+    ON (
+        exposures.unit_id = metrics.unit_id
+        AND metrics.date_id >= exposures.first_date_id
+    )
+)
+SELECT 
+    group_id,
+    SUM(value) as value
+FROM joined_data
+GROUP BY group_id;
+```
+
+Statsig's exposures are always in UTC; if metric data is in another timezone it will need to be adjusted to avoid filtering on the wrong comparison.
+
+Statsig does support timestamp-based joins for some Enterprise Cloud customers. Please reach out to Statsig if you would like to learn more.
+
+#### Statsig Warehouse Native
+
+Statsig WHN employs a timestamp-based join for this purpose, with an option for a date-based joins for daily data if preferred. This should look like the SQL snippet below:
 ```
 WITH 
 metrics as (...),
