@@ -6,7 +6,6 @@ keywords:
 last_update:
   date: 2025-08-29
 ---
-
 # SEO Experimentation with Statsig
 
 In late 2017, Airbnb's growth team faced a deceptively simple question:  
@@ -44,11 +43,11 @@ Register these with Statsig’s **metric catalog**. Because the same pipeline po
 
 ### Example Metrics
 
-| Layer            | Metric Source                                 | Why it Matters                                  |
-|------------------|-----------------------------------------------|-------------------------------------------------|
-| Indexing lag     | Impressions, average position (Search Console) | Early signal during re-crawling                 |
-| Primary KPI      | Organic sessions keyed by `page_url` (Statsig Events) | Measures traffic that actually lands             |
-| Quality guardrail| Conversion, bounce, read-depth, revenue        | Ensures traffic is useful                        |
+| Layer            | Metric Source                                   | Why it Matters                                  |
+|------------------|--------------------------------------------------|-------------------------------------------------|
+| Indexing lag     | Impressions, average position (Search Console)   | Early signal during re-crawling                 |
+| Primary KPI      | Organic sessions keyed by `page_url` (Statsig Events) | Measures traffic that actually lands            |
+| Quality guardrail| Conversion, bounce, read-depth, revenue          | Ensures traffic is useful                       |
 
 ---
 
@@ -63,45 +62,45 @@ Register these with Statsig’s **metric catalog**. Because the same pipeline po
 ## 4. Ship, Monitor, Decide
 
 - Use **Power Analysis** to determine how long your experiment should run based on traffic volume.  
-- Expect first signals in 2-7 days; wait for re-indexing to plateau before things stabilize.  
+- Expect first signals in 2–7 days; wait for re-indexing to plateau before things stabilize.  
 - Merge the winner into your template and archive the test; experiment summaries remain searchable forever.  
 
 ### SEO-Specific Guardrails
 
-| Guardrail           | What to Watch                   | Why it Protects You |
-|---------------------|---------------------------------|---------------------|
-| Indexation Δ        | `indexed_pages` vs baseline     | A template tweak that blocks crawl (robots, canonicals, noindex) will show a sharp drop long before traffic falls |
-| Cannibalization ratio | Avg. URLs served per query    | Multiple pages newly ranking for the same query dilute CTR and can tank combined traffic |
-| HTTP response mix   | % 410 vs 301 vs 200             | A bulk 410 (gone) or mis-configured 301 can wipe out long-tail pages |
-| Core Web Vitals drift | LCP & CLS p75                 | Page-speed regressions may hurt rankings silently |
-| Crawl budget        | Avg. TTFB + bytes/page          | Slow/bloated pages decrease crawl rate |
+| Guardrail            | What to Watch                 | Why it Protects You |
+|----------------------|-------------------------------|---------------------|
+| Indexation Δ         | `indexed_pages` vs baseline   | A template tweak that blocks crawl (robots, canonicals, noindex) will show a sharp drop long before traffic falls |
+| Cannibalization ratio| Avg. URLs served per query    | Multiple pages newly ranking for the same query dilute CTR and can tank combined traffic |
+| HTTP response mix    | % 410 vs 301 vs 200           | A bulk 410 (gone) or mis-configured 301 can wipe out long-tail pages |
+| Core Web Vitals drift| LCP & CLS p75                 | Page-speed regressions may hurt rankings silently |
+| Crawl budget         | Avg. TTFB + bytes/page        | Slow/bloated pages decrease crawl rate |
 
 ---
 
 ## 5. Concrete Page-Level Changes Worth A/B Testing
 
-| Theme              | Why It Might Move Organic Traffic  | Typical Implementation Knob |
-|--------------------|------------------------------------|-----------------------------|
-| Title & meta variants | Query-matching, CTR uplift       | Add/remove brand suffix, noun → verb phrasing, insert dynamic price |
-| Structured data     | Rich-result eligibility            | Inject FAQ, HowTo, Breadcrumb, or Product schema blocks |
-| Internal-link blocks| Crawl priority & PageRank flow     | Swap “related articles” widget ordering; test link count caps |
-| Content snippets    | Relevance & long-tail keywords     | Auto-generate 50-word intro vs. none; expand FAQ length |
-| Canonical/hreflang tags | Duplicate-content handling     | Toggle self-canonical vs. cluster canonical; add hreflang="x-default" |
-| Media handling      | CLS/LCP scores influence rankings | Defer off-screen images; inline critical hero image; switch to AVIF |
-| Pagination model    | Crawl depth & index coverage       | Classic ?page= URLs vs. rel="next/prev" vs. load-more buttons |
-| Performance budgets | Core Web Vitals ranking factor     | 200ms JS chunk split vs. baseline; CSS purge + inline critical-CSS |
-| Ad layout           | CLS penalties, user engagement     | Reserve fixed ad slots vs. dynamic; lazy-load below first viewport |
-| Schema position     | Parser friendliness                | Move JSON-LD block to `<head>` vs. end of `<body>` |
+| Theme                 | Why It Might Move Organic Traffic | Typical Implementation Knob |
+|-----------------------|-----------------------------------|-----------------------------|
+| Title & meta variants | Query-matching, CTR uplift        | Add/remove brand suffix, noun → verb phrasing, insert dynamic price |
+| Structured data       | Rich-result eligibility           | Inject FAQ, HowTo, Breadcrumb, or Product schema blocks |
+| Internal-link blocks  | Crawl priority & PageRank flow    | Swap “related articles” widget ordering; test link count caps |
+| Content snippets      | Relevance & long-tail keywords    | Auto-generate 50-word intro vs. none; expand FAQ length |
+| Canonical/hreflang tags | Duplicate-content handling      | Toggle self-canonical vs. cluster canonical; add `hreflang="x-default"` |
+| Media handling        | CLS/LCP scores influence rankings | Defer off-screen images; inline critical hero image; switch to AVIF |
+| Pagination model      | Crawl depth & index coverage      | Classic `?page=` URLs vs. `rel="next/prev"` vs. load-more buttons |
+| Performance budgets   | Core Web Vitals ranking factor    | 200 ms JS chunk split vs. baseline; CSS purge + inline critical-CSS |
+| Ad layout             | CLS penalties, user engagement    | Reserve fixed ad slots vs. dynamic; lazy-load below first viewport |
+| Schema position       | Parser friendliness               | Move JSON-LD block to `&lt;head&gt;` vs. end of `&lt;body&gt;` |
 
 ---
 
 ## 6. Is SEO Experimentation Right for You?
 
-| Great Fit                                              | Maybe Not Yet                                      |
-|--------------------------------------------------------|----------------------------------------------------|
-| Large page surface (10k+ URLs): marketplaces, docs, publishers | Marketing sites with <1k pages or sporadic organic traffic |
-| Teams already shipping **weekly** and want proof before rollouts | Heavy paid-ads model where SEO <5% of acquisition |
-| Companies with engineering bandwidth to template page changes | Sites on locked-down CMSs that forbid code/tag edits |
+| Great Fit                                                                 | Maybe Not Yet                                                |
+|---------------------------------------------------------------------------|--------------------------------------------------------------|
+| Large page surface (10k+ URLs): marketplaces, docs, publishers            | Marketing sites with &lt;1k pages or sporadic organic traffic |
+| Teams already shipping **weekly** and want proof before rollouts          | Heavy paid-ads model where SEO is &lt;5% of acquisition       |
+| Companies with engineering bandwidth to template page changes             | Sites on locked-down CMSs that forbid code/tag edits         |
 
 ---
 
