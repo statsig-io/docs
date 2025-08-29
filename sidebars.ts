@@ -237,6 +237,7 @@ const sidebars: SidebarsConfig = {
                 "experiments-plus/switchback-tests",
                 "ai-ml/ai-prompt-experiment",
                 "guides/aa-test",
+                "guides/seo-testing",
               ],
             },
             {
