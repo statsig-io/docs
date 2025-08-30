@@ -754,6 +754,7 @@ const sidebars: SidebarsConfig = {
           items: [
             {
               "Open Telemetry": ["server/concepts/open_telemetry"],
+              Cloudflare: ["server/concepts/cloudflare"],
             },
             {
               "Domains & IP": [
