@@ -11,7 +11,7 @@ last_update:
 # Pre-Post Results
 
 :::info Cloud Only Feature
-This feature is currently available only on Statsig Cloud.
+This feature is currently available only on Statsig Cloud and is not yet supported on Warehouse Native.
 :::
 
 ## What are Pre-Post Results in Statsig?
