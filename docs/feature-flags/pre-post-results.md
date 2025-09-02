@@ -16,16 +16,16 @@ This feature is currently available only on Statsig Cloud. As we work on a WHN s
 
 ## What are Pre-Post Results in Statsig?
 
-Pre-Post Results is an analysis mode for Feature Gates in Statsig that allows you to measure the impact of feature rollouts when a traditional A/B comparison isn't possible. By comparing key metrics before and after a feature gate is rolled out to 100% of users, you can identify the directional impact of your features in production.
+Pre-Post Results is an analysis mode for Feature Gates in Statsig that allows you to measure the impact of feature rollouts when a traditional A/B comparison isn't possible. By comparing key metrics before and after a feature gate is rolled out from 0% to 100% of users, you can identify the directional impact of your features in production.
 
 ![Pre-Post Results Interface](/img/pre-post-results.png)
 
-This is particularly valuable for:
+Pre-Post is particularly valuable for:
 
 - **Emergency rollouts** - Features that needed to be shipped immediately without time for slow rollout
-- **Infrastructure changes** - Backend improvements or technical features that affect all users by nature
+- **Infrastructure changes** - Backend improvements or technical features that affect all units/pods/users and cannot be partially rolled out
 - **Retroactive analysis** - Understanding the impact of features that were already rolled out without experiments
-- **Regulatory or ethical features** - Changes that can't ethically be withheld from a control group
+- **Regulatory or ethical features** - Changes that can't be withheld from a control group
 
 ## When does Statsig calculate Pre-Post Results?
 
