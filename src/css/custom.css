@@ -442,6 +442,14 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/help-active.svg");
 }
 
+.sampleapps-icon::before {
+  background-image: url("/img/icons/sidebar/sampleapps.svg");
+}
+
+.sampleapps-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/sampleapps-active.svg");
+}
+
 .question-icon::before {
   background-image: url("/img/icons/sidebar/help.svg");
 }
@@ -514,6 +522,13 @@ span.math.math-inline {
   background-image: url("/img/icons/sidebar/infra-active.svg");
 }
 
+.infra-analytics-icon::before {
+  background-image: url("/img/icons/sidebar/infra-analytics.svg");
+}
+
+.infra-analytics-icon:has(.menu__link--active)::before {
+  background-image: url("/img/icons/sidebar/infra-analytics-active.svg");
+}
 .admin-icon::before {
   background-image: url("/img/icons/sidebar/admin.svg");
 }

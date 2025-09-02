@@ -114,6 +114,11 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "guides/sample-apps",
+          className: "sampleapps-icon sidebar-icon",
+        },
+        {
+          type: "doc",
           id: "faq",
           className: "question-icon sidebar-icon",
         },
@@ -230,9 +235,9 @@ const sidebars: SidebarsConfig = {
               label: "Types of experiments",
               items: [
                 "experiments-plus/switchback-tests",
-                "stats-engine/methodologies/one-sided-test",
                 "ai-ml/ai-prompt-experiment",
                 "guides/aa-test",
+                "guides/seo-testing",
               ],
             },
             {
@@ -287,6 +292,8 @@ const sidebars: SidebarsConfig = {
                   items: [
                     "stats-engine/confidence-intervals",
                     "stats-engine/p-value",
+                    "stats-engine/methodologies/one-sided-test",
+                    "stats-engine/methodologies/one-sample-test",
                     "stats-engine/metric-deltas",
                     "stats-engine/variance",
                     "stats-engine/methodologies/delta-method",
@@ -416,6 +423,14 @@ const sidebars: SidebarsConfig = {
               ],
             },
           ],
+        },
+        {
+          type: "category",
+          label: "Infra Analytics",
+          className: "infra-analytics-icon sidebar-icon",
+          items: [
+            "infra-analytics/overview"
+          ]
         },
         {
           type: "category",

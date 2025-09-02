@@ -1,7 +1,7 @@
 ---
 title: One-Sided Test
 sidebar_label: One-Sided Tests
-slug: /stats-engine/methodologies/one-sided-test
+slug: /stats-engine/one-sided-test
 keywords:
   - owner:vm
 last_update:
@@ -27,7 +27,6 @@ Our V1 doesn't support Bayesian testing yet.
 :::
 
 ![image](https://github.com/user-attachments/assets/23044f21-6249-4fc1-9895-22111bb16010)
-
 
 ## How to read this
 
