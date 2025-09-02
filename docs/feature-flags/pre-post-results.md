@@ -27,6 +27,12 @@ Pre-Post is particularly valuable for:
 - **Retroactive analysis** - Understanding the impact of features that were already rolled out without experiments
 - **Regulatory or ethical features** - Changes that can't be withheld from a control group
 
+## Pre-Post Results are not Experiments
+
+Pre-Post analysis is an approximate way of measuring the change in a metric around a specific point in time, amongst a specific set of exposed units. However, it does not live up to the stringent requirements of running a propper AB test or feature gate partial rollout. Pre-Post analyses are better thought of as snapshot measurements around the time you launched your feature; however, because so many other things could be happening around the same time, there's no gaurantee that your results are due to your feature launch. Remember, correlation does not equal causation.
+
+Experiments remain the gold standard for measuring your feature's impact, and Statsig still highly recommends running your launches as an Experiment or partial Feature Gate rollout when accuracy, validity, and exstensibility are key.
+
 ## When does Statsig calculate Pre-Post Results?
 
 Pre-Post Results are available for targeting rules that meet specific rollout conditions:
