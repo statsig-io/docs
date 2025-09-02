@@ -11,7 +11,7 @@ last_update:
 # Pre-Post Results
 
 :::info Cloud Only Feature
-This feature is currently available only on Statsig Cloud.
+This feature is currently available only on Statsig Cloud. As we work on a WHN solution, please reach out to Statsig if you're intereseted in being an early customer.
 :::
 
 ## What are Pre-Post Results in Statsig?
