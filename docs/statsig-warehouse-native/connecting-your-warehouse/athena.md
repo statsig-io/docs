@@ -95,6 +95,7 @@ You need to grant some permissions for Statsig from your AWS console in order fo
                "athena:GetQueryExecution",
                "athena:StopQueryExecution",
                "glue:GetTable",
+               "glue:GetTables",
                "glue:CreateTable",
                "glue:UpdateTable",
                "glue:DeleteTable",
