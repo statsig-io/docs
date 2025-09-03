@@ -31,7 +31,8 @@ There are two fundamental sources of metrics in Statsig:
 
 Statsig's Stats Engine joins these metrics with your exposure events from feature gates and experiments to compute experiment results and analytics.
 
-![image](https://user-images.githubusercontent.com/1315028/196443554-591d7547-d4c3-4cd3-8725-ea8730278a55.png)
+<img width="3571" height="943" alt="Data Flow" src="https://github.com/user-attachments/assets/4a013b42-1437-44ce-a915-d21b359d43f1" />
+
 
 :::info How are events and metrics billed?
 Each event (or a row when importing from your data warehouse) is billed once, regardless of how many experiments the event is used in.
