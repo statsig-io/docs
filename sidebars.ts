@@ -794,9 +794,16 @@ const sidebars: SidebarsConfig = {
       collapsible: false,
       items: [
         "sdks/quickstart",
-        "quickstarts/check-gate",
-        "guides/abn-tests",
-        "guides/logging-events",
+        "quickstarts/log-events",
+        "quickstarts/identify-users",
+        {
+          type: "category",
+          label: "Next steps",
+          items: [
+            "quickstarts/check-gate",
+            "guides/abn-tests",
+          ],
+        },
       ],
     },
     {

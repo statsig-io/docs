@@ -16,7 +16,7 @@ last_update:
 
 ![image](https://user-images.githubusercontent.com/1315028/131385189-5f0c1d93-ba87-4159-8995-3c30991587a0.png)
 
-4. Select the success event to optimize for as shown below. You can further specify an optional [event value](/guides/logging-events).
+4. Select the success event to optimize for as shown below. You can further specify an optional [event value](/quickstarts/log-events).
 
 ![image](https://user-images.githubusercontent.com/1315028/131385239-5a76d253-022b-457e-a370-f9ee7ce566a1.png)
 

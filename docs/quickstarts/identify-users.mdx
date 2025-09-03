@@ -1,0 +1,124 @@
+---
+sidebar_label: Identify users
+title: Identify users
+slug: /quickstarts/identify-users
+keywords:
+  - users
+  - identification
+  - targeting
+last_update:
+  date: 2025-09-03
+---
+
+# Identify users
+
+## Overview
+
+There are two reasons you will want to identify your users on Statsig:
+
+First, link every event to a user so you see their full journey across sessions/devices, and you can calculate real metrics like conversions, retention, and revenue per user.
+
+Second, control product experience based on user attributes like device, browser, new vs. repeat, free vs. premium, etc.
+
+Many analytics platforms have a concept of making an "identify" call to track a user. In Statsig, this is done by passing a StatsigUser object into our SDKs. For client SDKs, this is done at the initialization, and for server SDKs, this is done with each event.
+
+The StatsigUser object consists of following properties that describe the user:
+
+```js
+const user = {
+  userID: '',
+  customIDs: {},
+  email: '',
+  ip: '',
+  userAgent: '',
+  country: '',
+  locale: '',
+  appVersion: '',
+  custom: {},
+  privateAttributes: {},
+};
+
+// initializing the client with above user object
+const client = new statsig.StatsigClient('client-sdk-key', user);
+```
+
+## How it works
+
+`userID` is a unique identifier that you set (usually the user's id in your database or email)
+
+Once SDK is initialized with this user object, it helps with two things:
+- every downstream event can be related to this user
+- every feature gate or experiment can target this user and control their product experience
+
+**Note:** On Client SDKs, Statsig auto-generates an identifier named stableID for all the users based on their device. This is useful to identify anonymous users across multiple sessions on the same device or logged out users when userID is not available.
+
+## Set custom user properties
+
+Many times you would want to analyze data or run experiments for users with certain attributes, such as "email ends with @xyz.com", "chrome users", "premium users", etc.
+
+You can set these properties in the StatsigUser object to make them available for targeting and analysis downstream.
+
+Statsig infers a set of default user properties automatically from a user's device or connection such as IP, userAgent, locale, country, and appVersion.
+
+You can define your own custom properties in the custom field inside the user object. For example:
+
+```js
+custom: {
+  plan: 'premium',
+  role: 'admin',
+  age: 30
+}
+```
+
+As you ramp up, we recommend passing as much info as possible in user properties, as every additional field can enrich your analyses and expand targeting possibilities.
+
+## Custom Unit Identifier (advanced)
+
+Statsig allows you to target units that are not your end users. For example, a B2B company wants to run experiments on their accounts, or a mobility tech company wants to release a software update to vehicles.
+
+This can be achieved by setting customIDs in the user object. Example:
+
+```js
+const user = {
+  userID: 'u_123',
+  customIDs: {
+    accountID: 'c_456',
+    vehicleID: 'asmr-123'
+  },
+};
+```
+
+Once you pass a customID in the user object, Statsig automatically does two things:
+- Statsig will track events and compute metrics at userID and at each customID level
+- You can roll out features or run experiments at the customID level (everyone in the same account gets the same experience).
+
+Statsig computes all metrics at the user level, but also for each custom identifier. This means you can run experiments at a company level, where all users in a company will get the same experience, and compare the impact of company level metrics.
+
+## Best practices
+
+### Set all known IDs on each StatsigUser object
+
+In order to generate metrics for each unit (userID or customID), Statsig needs to know the set of all IDs on each StatsigUser object. Whether this is at client SDK initialization time, or when calling a server SDK, you need to pass each identifier for the user for it to contribute to those metrics.
+
+### Set and update StatsigUser object
+
+Update (or set) the StatsigUser as soon as you know the person logs in, logs out, or if their details change (plan, role, locale, company). Do this before you check gates, check experiments, or log events so targeting and analytics use the right identity.
+
+```js
+// initialize the SDK
+const client = new statsig.StatsigClient('client-KEY');
+await client.initializeAsync();
+
+// the user logs in
+async function login() { return 'u_123'; }
+async function fetchProfile(id) { return { plan: 'plan', role: 'role' }; }
+
+const userId = await login();
+const profile = await fetchProfile(userId);
+
+// update the user object after user logs in
+await client.updateUserAsync({
+  userID: userId,
+  custom: { plan: profile.plan, country: profile.role },
+});
+```
