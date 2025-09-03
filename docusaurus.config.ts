@@ -362,6 +362,10 @@ const config: Config = {
             from: "/client/concepts/autocapture/",
             to: "/webanalytics/autocapture/",
           },
+          {
+            from: "/guides/logging-events",
+            to: "/quickstarts/log-events",
+          },
 
           
         ],
