@@ -31,7 +31,7 @@ There are two fundamental sources of metrics in Statsig:
 
 Statsig's Stats Engine joins these metrics with your exposure events from feature gates and experiments to compute experiment results and analytics.
 
-<img width="3571" height="943" alt="Data Flow" src="https://github.com/user-attachments/assets/4a013b42-1437-44ce-a915-d21b359d43f1" />
+<img alt="Data Flow" src="https://github.com/user-attachments/assets/4a013b42-1437-44ce-a915-d21b359d43f1" />
 
 
 :::info How are events and metrics billed?
