@@ -46,4 +46,10 @@ paramValue = layer.get('a_param_name', 'fallback_value')`}
       {`statsig.manually_log_layer_parameter_exposure(&user, 'a_layer_name', 'a_param_name')`}
     </CodeBlock>
   ),
+  parameterStoreSnippet: (
+    <CodeBlock language="jsx">
+      {`param_store = statsig.get_parameter_store_with_options(&user, "a_parameter_store_name", ParameterStoreEvaluationOptions {disable_exposure_logging: true})
+value = param_store.get_string("a_parameter_name", "default_value")`}
+    </CodeBlock>
+  ),
 };

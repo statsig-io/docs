@@ -48,4 +48,10 @@ const paramValue = layer.get('a_param_name', 'fallback_value');`}
       {`Statsig.manuallyLogLayerParameterExposure(aUser, 'a_layer_name', 'a_param_name');`}
     </CodeBlock>
   ),
+  parameterStoreSnippet: (
+    <CodeBlock language="jsx">
+      {`const parameterStore = Statsig.getParameterStore(aUser, 'a_parameter_store_name');
+const value = parameterStore.getValue('a_parameter_name', 'default_value');`}
+    </CodeBlock>
+  ),
 };
