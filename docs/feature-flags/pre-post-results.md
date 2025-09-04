@@ -11,21 +11,27 @@ last_update:
 # Pre-Post Results
 
 :::info Cloud Only Feature
-This feature is currently available only on Statsig Cloud.
+This feature is currently available only on Statsig Cloud. As we work on a WHN solution, please reach out to Statsig if you're intereseted in being an early customer.
 :::
 
 ## What are Pre-Post Results in Statsig?
 
-Pre-Post Results is an analysis mode for Feature Gates in Statsig that allows you to measure the impact of feature rollouts when a traditional A/B comparison isn't possible. By comparing key metrics before and after a feature gate is rolled out to 100% of users, you can identify the directional impact of your features in production.
+Pre-Post Results is an analysis mode for Feature Gates in Statsig that allows you to roughly estimate the impact of feature rollouts when a traditional A/B testing isn't possible. By comparing key metrics before and after a feature gate is rolled out from 0% to 100% of users, you can identify the directional impact of your features in production.
 
 ![Pre-Post Results Interface](/img/pre-post-results.png)
 
-This is particularly valuable for:
+Pre-Post is particularly valuable for:
 
 - **Emergency rollouts** - Features that needed to be shipped immediately without time for slow rollout
-- **Infrastructure changes** - Backend improvements or technical features that affect all users by nature
-- **Retroactive analysis** - Understanding the impact of features that were already rolled out without experiments
-- **Regulatory or ethical features** - Changes that can't ethically be withheld from a control group
+- **Infrastructure changes** - Backend improvements or technical features that affect all units/pods/users and cannot be partially rolled out
+- **Retroactive analysis** - Understanding the rough impact of features that were already rolled out without experiments
+- **Regulatory or ethical features** - Changes that can't be withheld from a control group
+
+## Pre-Post Results are not Experiments
+
+Pre-Post analysis is an approximate way of measuring the change in a metric around a specific point in time, amongst a specific set of exposed units. However, it does not live up to the stringent requirements of running a propper AB test or feature gate partial rollout. Pre-Post analyses are better thought of as snapshot measurements around the time you launched your feature; however, because so many other things could be happening around the same time, there's no gaurantee that your results are due to your feature launch. Remember, correlation does not equal causation.
+
+Experiments remain the gold standard for measuring your feature's impact, and Statsig still highly recommends running your launches as an Experiment or partial Feature Gate rollout when accuracy, validity, and exstensibility are key.
 
 ## When does Statsig calculate Pre-Post Results?
 
@@ -38,7 +44,7 @@ When you select a qualifying rule in the Metrics Impact tab, Statsig automatical
 
 ## How does Pre-Post Results work?
 
-Pre-Post Results uses a straightforward approach to measure feature impact:
+Pre-Post Results uses a straightforward approach to estimate feature impact:
 
 1. **Identify the participating units** - Find all users who were exposed to the feature after the 100% rollout
 2. **Collect pre/post-rollout data** - Gather metric values for these users from the periods before and after the rule change
@@ -64,10 +70,10 @@ This method ensures we're comparing the same users before and after the feature 
 
 When using Pre-Post Results, consider these guidelines:
 
-- Focus on metrics that are directly related to your feature's intended impact and have sufficient volume
-- Remember that correlation doesn't equal causation. Consider other changes, seasonal effects, or external events that might influence your metrics during the analysis period
-- Validate with domain knowledge. Use Pre-Post Results as one data point alongside qualitative feedback, user research, and business context to make informed decisions
-- Look at A/B results when possible. If you have the chance to partially roll out a feature to less than 100% of users, it's highly recommended since this way you can measure the metric impact for users seeing the feature vs. not seeing the feature and arrive at true causation.
+- Focus on metrics that are directly related to your feature's intended impact and have sufficient volume. The more directly a metric responds to the feature launch, the easier it will be to see a sudden spike/drop.
+- Remember that correlation doesn't equal causation. Consider other changes, seasonal effects, or external events that might influence your metrics during the analysis period.
+- Validate with domain knowledge. Use Pre-Post Results as one data point alongside qualitative feedback, user research, and business context to make informed decisions.
+- Aim for A/B results when possible. If you have the chance to partially roll out a feature to less than 100% of users, we highly recommended you do so. This way you can measure the metric impact for users seeing the feature vs. not seeing the feature and arrive at true causation.
 
 ## Limitations
 

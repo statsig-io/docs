@@ -345,6 +345,7 @@ const sidebars: SidebarsConfig = {
                 "pulse/read-pulse",
                 "pulse/userproperties",
                 "pulse/drill-down",
+                "pulse/participating-units",
                 "pulse/export",
                 "experiments-plus/reconciling-experiment-results",
                 "pulse/faq",
@@ -1291,6 +1292,7 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       collapsible: false,
       items: [
+        "statsig-warehouse-native/features/understanding-experiments",
         "statsig-warehouse-native/features/experiment-options",
         {
           type: "category",
@@ -1333,6 +1335,7 @@ const sidebars: SidebarsConfig = {
             "pulse/drill-down-whn",
             "pulse/custom-queries-whn",
             "pulse/access-whn",
+            "pulse/participating-units-whn",
             "pulse/best-practices-whn",
             "pulse/faq-whn",
             "statsig-warehouse-native/features/monitor-an-experiment",
