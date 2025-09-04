@@ -16,13 +16,14 @@ Please reach out to support for assistance getting started with Clickhouse on St
 
 ## Overview
 
-To set up connection with Trino, we need the following:
+To set up connection with Clickhouse, we need the following:
 
-- The URL to connect to, e.g. https://<ID>.us-east1.gcp.clickhouse.cloud:8443'
-  - You can find this by going to the service you want to connect to and clicking "Connect" in the left rail
-- The database in your service where statsig will have full CRUD access for writing logged data and intermediate tables
-  - We recommend that this is be a separate databse from your production data
-- A username/password for a Statsig database user. We recommend making a new, standalone user for audit purposes
+- The URL to connect to, e.g. https://\<ID\>.us-east1.gcp.clickhouse.cloud:8443
+  - This can be found by going to the service that needs to be connect to, and clicking "Connect" in the left rail
+- A database in the service where Statsig will have full CRUD access for writing logged data and intermediate tables
+  - Statsig recommends that this is a new database, separate from production data
+- A username/password for a Statsig database user
+  - Statsig recommends making a new, standalone user for audit purposes
 - An exposures table to export exposures data logged to Statsig
 - An events table to export events data logged to Statsig
 
@@ -34,15 +35,15 @@ To create a user, the easiest way is to run:
 create user <username> IDENTIFIED WITH sha256_password BY '<password>';
 ```
 
-But the correct approach will depend on your DB administrator.
+But the correct approach will depend on the best practicies specified by your database administrator.
 
-## Grant Permissions to Statsig's Service Account
+## Grant Permissions to Statsig's Account
 
-You need to grant some permissions for Statsig in order to access your data and run workflows.
+The database user created for Statsig will need database permissions in order to access data and run workflows.
 
 Statsig requires two levels of permission:
 
-- Read-only access to any production data (outside of the data logged to Statsig) you will analyze in analytics or experimentation
+- Read-only access to any production data (outside of the data logged to Statsig) that will be analyzed in analytics or experimentation
 - Full CRUD access within the staging database (specified above) where Statsig will write data artifacts to store results for long-running experiments
 
 This can be granted to the Statsig user in SQL by an account with sufficient permissions.
