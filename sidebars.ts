@@ -235,9 +235,9 @@ const sidebars: SidebarsConfig = {
               label: "Types of experiments",
               items: [
                 "experiments-plus/switchback-tests",
-                "stats-engine/methodologies/one-sided-test",
                 "ai-ml/ai-prompt-experiment",
                 "guides/aa-test",
+                "guides/seo-testing",
               ],
             },
             {
@@ -292,6 +292,8 @@ const sidebars: SidebarsConfig = {
                   items: [
                     "stats-engine/confidence-intervals",
                     "stats-engine/p-value",
+                    "stats-engine/methodologies/one-sided-test",
+                    "stats-engine/methodologies/one-sample-test",
                     "stats-engine/metric-deltas",
                     "stats-engine/variance",
                     "stats-engine/methodologies/delta-method",
@@ -343,6 +345,7 @@ const sidebars: SidebarsConfig = {
                 "pulse/read-pulse",
                 "pulse/userproperties",
                 "pulse/drill-down",
+                "pulse/participating-units",
                 "pulse/export",
                 "experiments-plus/reconciling-experiment-results",
                 "pulse/faq",
@@ -1331,6 +1334,7 @@ const sidebars: SidebarsConfig = {
             "pulse/drill-down-whn",
             "pulse/custom-queries-whn",
             "pulse/access-whn",
+            "pulse/participating-units-whn",
             "pulse/best-practices-whn",
             "pulse/faq-whn",
             "statsig-warehouse-native/features/monitor-an-experiment",

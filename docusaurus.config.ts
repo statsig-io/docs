@@ -358,6 +358,10 @@ const config: Config = {
             to: "/ai-evals/overview",
             from: "/ai-evals",
           },
+          {
+            from: "/client/concepts/autocapture/",
+            to: "/webanalytics/autocapture/",
+          },
 
           
         ],
