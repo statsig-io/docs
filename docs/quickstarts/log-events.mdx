@@ -1,0 +1,96 @@
+---
+sidebar_label: Log events
+title: Log events
+slug: /quickstarts/log-events
+keywords:
+  - events
+  - logging
+  - analytics
+last_update:
+  date: 2025-09-03
+---
+
+# Log events
+
+The first step towards building better products is tracking events. Events are the moments that matter in your product - "user signed up", "added to cart", "purchased", etc.
+
+As the saying goes, "If you can't measure something, you can't improve it."
+
+Regardless of whether you plan to use Statsig for feature flags, analytics, or experiments, tracking events is key. Once you track events, you can analyze them in Metrics Explorer, create Custom Metrics out of them, and use those metrics in experiments.
+
+There are three ways to send events into Statsig:
+
+1. Use autocapture script to log common events for your web app such as pageviews, clicks, and more (quickest)
+2. Instrument your own custom events using our logEvent method in your app or web server (available on both Client and Server SDKs)
+3. Send existing data from Segment, mParticle, Rudderstack, and other sources via Integrations.
+
+## Set up Autocapture
+
+Add autocapture script in your HTML website or initialize with autocapture plugin to automatically start tracking user events.
+
+**What gets captured automatically:**
+- Page views and page view ends (URL, referrer, UTM parameters, and more)
+- Clicks, form submits, and input changes on common elements: `a`, `button`, `form`, `input`, `select`, `textarea`, `label`
+
+## Log Custom Events
+
+All our SDKs provide logEvent method which allow you to track custom events. First argument is the name of your event.
+
+Let's see what an add_to_cart event will look like:
+
+```js
+statsig.logEvent('add_to_cart');
+```
+
+### (Optional) Pass event's value
+
+Events in Statsig can optionally take a value. You can use this field to store a key information about your event. This could be price of the product that was added to cart:
+
+```js
+statsig.logEvent('add_to_cart', 19.99); // amount in dollars
+```
+
+or it could be name of the button that was clicked:
+
+```js
+statsig.logEvent('button_click', 'checkout'); // button name
+```
+
+### (Optional) Send custom properties on an event
+
+As you're tracking events, you might want to store additional metadata about the event. You can do that by passing event properties.
+
+For example, in our add_to_cart example, you might want to track item's category and the total basket size.
+
+```js
+statsig.logEvent('add_to_cart', 19.99, {
+  category: 'dairy',
+  basket_size: 3
+});
+```
+
+Later, we can use these properties to filter events for a particular category, or to calculate the average basket when an item is added.
+
+We always recommend to include as many properties as possible since you never know when a property might be useful for a future analysis.
+
+## Naming your custom events
+
+The best advice is to pick a convention and stick with it. Your events and metrics catalog can quickly become difficult to navigate if there are similar events with different conventions. Few rules here:
+
+- Special characters cannot be used in event names. Statsig drops events that match this regex/contain this character set: `"\\[\]{}<>#=;&$%|\u0000\n\r"`
+- We recommend you to user lowercase and underscores - eg. `page_view`
+- We recommend to follow a "object + verb" structure. Name should read like "what just happened" - eg. `payment_failed`, `invite_sent`
+
+## Best practices
+
+In general, our guidance when tracking custom events is to follow these rules of thumb:
+
+1. **Keep event names broad and put specifics in properties.** Otherwise lot of different names lead to high cardinality, which make the experiment data too sparse.
+   - **Do:** `product_page_viewed` with "product id = sku_42" in the event property
+   - **Don't:** `product_page_viewed_sku_42`
+
+2. **If your funnel is clear, make each step its own event**
+   - `signed_up` → `checkout_started` → `checkout_completed`
+
+3. **If the journey is messy, use a generic event name + value/properties**
+   - Track "page_view" and add more details to either the value field (such as URL name), or other metadata.
