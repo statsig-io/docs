@@ -1,18 +1,18 @@
 ---
 title: Ingesting Cloudflare Logs and Metrics into Statsig
-sidebar_label: Cloudflare Logs and Metrics
+sidebar_label: Cloudflare Logs
 slug: /server/concepts/cloudflare
 keywords:
   - owner:hoa
 last_update:
-  - date: 2025-08/12
+  - date: 2025-09-04
 ---
 
-# Ingesting Cloudflare Logs and Metrics into Statsig
+# Ingesting Cloudflare Logs into Statsig
 
 ## Overview
 
-This guide walks you through setting up the Cloudflare Logpush worker in your Cloudflare account and configuring it to send logs and metrics to Statsig using the HTTP destination
+This guide walks you through setting up the Cloudflare Logpush worker in your Cloudflare account and configuring it to send logs and metrics to Statsig using cURL and the Logpush API
 
 ---
 
@@ -25,15 +25,34 @@ This guide walks you through setting up the Cloudflare Logpush worker in your Cl
 
 ## Configuring Logpush Worker
 
-- Go to 'Settings' tab of your worker page
-- Enable 'Logpush' option
-- Select 'Configure Logpush jobs' option
-- Select 'Create a Logpush job'
-- Select 'HTTP Destination'
-- Enter the URL like following, replace `REDACTED` with your Statsig Server SDK Key, and select 'Continue'
-`https://api.statsig.com/v1/log_event/cf_log_drain?header_statsig-api-key=REDACTED&header_Content-Type=application%2Fjson`
-- Select the dataset you would like to Statsig to ingest
-- Configure the logpush job and select 'Submit'
+- [Create api token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/)
+- Make sure token has logs edit permissions at the account level
+- [Locate cloudflare account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/)
+- Run the following command and get the job id
+
+```
+ACCOUNT_ID=<my account id>
+CLOUDFLARE_API_TOKEN=<cloudflare token>
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logpush/jobs" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "statsig-logpush-job",
+    "destination_conf": "https://api.statsig.com/v1/log_event/cf_log_drain?header_statsig-api-key=<statsig-secret-key>&header_Content-Type=application%2Fjson",
+    "dataset": "workers_trace_events",
+    "output_options": {
+      "field_names": [],
+      "output_type": "ndjson",
+      "batch_prefix": "{\"events\":[",
+      "batch_suffix": "\n]}\n",
+      "record_prefix": "\n  {\"info\":{",
+      "record_suffix": "}}",
+      "record_delimiter": ",",
+      "timestamp_format": "rfc3339"
+    }
+  }'
+```
+- In Cloudflare dashboard, navigate to "Analytics & Logs" -> "Logpush", and enable the logpush job
 
 ## Verify Logs on Statsig Console
 
@@ -43,4 +62,6 @@ Explore your Logs and Metrics at [console.statsig.com](http://console.statsig.co
 
 ## 🔗 Resources
 
-- [Cloudflare Enable HTTP Destination](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/http/)
+- [Manage Logpush with cURL](https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/)
+- [Logpush output types](https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/#output-types)
+- [Create logpush API docs](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/methods/create/)
