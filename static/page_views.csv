@@ -604,7 +604,6 @@ views,clean_url
 112,docs.statsig.com/pulse/best-practices/
 112,docs.statsig.com/experiments-plus/reconciling-experiment-results
 111,docs.statsig.com/data-warehouse-ingestion/data_mapping
-111,docs.statsig.com/integrations/vscode/
 110,docs.statsig.com/access-management/scim/scim-endpoints/
 109,docs.statsig.com/infrastructure/api_proxy/introduction/
 108,docs.statsig.com/client/concepts/user/
@@ -713,7 +712,6 @@ views,clean_url
 79,docs.statsig.com/integrations/data-connectors/google-analytics
 78,docs.statsig.com/access-management/organizations
 77,docs.statsig.com/console/accessManagement/sso/okta_sso/
-77,docs.statsig.com/integrations/vscode
 77,docs.statsig.com/azureai/embeddings/
 77,docs.statsig.com/org-admin/organization_policies/
 76,docs.statsig.com/metrics/301/
