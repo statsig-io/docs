@@ -1292,6 +1292,7 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       collapsible: false,
       items: [
+        "statsig-warehouse-native/features/understanding-experiments",
         "statsig-warehouse-native/features/experiment-options",
         {
           type: "category",
