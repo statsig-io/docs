@@ -6,29 +6,41 @@ keywords:
   - owner:makris
   - sequential
 last_update:
-  date: 2025-07-16
+  date: 2025-09-04
 ---
 
 ## What is SPRT?
 
-The Sequential Probability Ratio Test (SPRT) is an advanced method for analyzing AB tests, differing from the traditional Null Hypothesis Significance Test (labeled "Frequentist" on Statsig). SPRT can meaningfully improve time to decision for your experiments and help you detect regressions faster.
+The Sequential Probability Ratio Test (SPRT) is an advanced methodology for running AB tests, differing from the traditional Null Hypothesis Significance Test (labeled "Frequentist" on Statsig). SPRT can meaningfully improve time to decision for your experiments, including detecting unwanted metric regressions much faster. It also tends to be much easier to share results to stakeholders who aren't super familiar with P-values and Significance levels. Lastly, SPRT has no penalties for peeking; there's no need for sequential testing plans, Alpha spending, or CI-penalties as SPRT is built to be a sequential test methodology from the start.
 
-SPRT introduces a few key concepts that differ from standard tests. At its core, SPRT relies on the Likelihood Ratio (LR) which estimates the relative likelihood that what you observe is due to one of two alternatives, a fixed null hypothesis and an alternative hypothesis you set. A Likelihood Ratio of 10.0, for example, indicates that the probability of observing what you measured is 10x under the alternative hypothesis as compared to under the null hypothesis.
+### Concepts
 
-One of the nice things about SPRT is that this Likelihood Ratio largely corresponds to how humans like to think. You can now report a result like "With an LR of 10.0, it's 10 times more likely that the feature improved our primary metric than left it unchanged."
+SPRT introduces a few key concepts that differ from standard Frequentist tests. At its core, SPRT relies on the **Likelihood Ratio (LR)** and Upper and Lower decision boundaires, **A** and **B**.
+
+The Likelihood Ratio estimates the relative difference in the likelihood of two outcomes:
+- **Numerator**: What you observe is due to an alternative hypothesis (you set) being correct.
+- **Denominator**:  What you observe is due to the null hypothesis being correct.
+
+The Upper and Lower decision boundaries are determined by your tolerance for Type I and Type II errors.
+- **A**: If LR exceeds this upper threshold, you should accept the Alternative Hypothesis.
+- **B**: If LR is less than this lower threshold, you should accept the Null Hypothesis.
+- When LR falls into the range between these thresholds, no decision can be made and you should continue collecting data.
+
+An LR of 5.0, for example, indicates that the what you observed is 5x more likely under the alternative hypothesis as compared to the null hypothesis.
+
+One of the nice things about SPRT is that this Likelihood Ratio is similar to how most people think about comparing options. Rather than reporting P-values and Significance levels, you can now report a result like "_With an LR of 3.5, it's 3.5x more likely that the feature worked_."
 
 ## Why SPRT?
 
 - **Faster Decisions:** SPRT allows you to reach conclusions more quickly, potentially reducing experiment run time.
-- **Intuitive Results:** Instead of p-values, SPRT uses the likelihood ratio — a more intuitive measure of evidence for or against your hypotheses.
-- **Definitive Outcomes:** SPRT enables you to confidently accept either the null or alternative hypothesis, rather than just “rejecting the null.”
+- **Intuitive Results:** Instead of p-values, SPRT uses the Likelihood Ratio, a more intuitive measure of evidence for or against your hypotheses.
+- **Sequential Analysis:** Data is continuously evaluated as it is collected, allowing for early stopping when sufficient evidence is reached. There's no penalty for "peeking" in SPRT experiments.
+- **Clear Outcomes:** SPRT enables you to confidently accept either the Null or Alternative hypothesis, rather than just “rejecting the null.”
 - **Data-Informed:** Statsig’s implementation uses your past data and power analysis to inform the likelihood calculations and decision thresholds.
 
-## Key Points
+## Comparing SPRT to other analysis methods
 
-- **Likelihood Ratio:** Measures how much more likely your observed data is under the alternative hypothesis compared to the null.
-- **Sequential Analysis:** Data is continuously evaluated as it is collected, allowing for early stopping when sufficient evidence is reached. There's no penalty for "peeking" in SPRT experiments.
-- **No p-values:** Decisions are based on likelihood ratios, not traditional p-values.
+
 
 ## How to Use SPRT in Statsig
 
