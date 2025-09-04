@@ -1,5 +1,5 @@
 ---
-title: Sequential Probability Ratio Test (SPRT) for AB Testing
+title: Sequential Probability Ratio Tests
 sidebar_label: SPRT
 slug: /experiments-plus/sprt
 keywords:
@@ -11,7 +11,7 @@ last_update:
 
 ## What is SPRT?
 
-The Sequential Probability Ratio Test (SPRT) is an advanced methodology for running AB tests, differing from the traditional Null Hypothesis Significance Test (labeled "Frequentist" on Statsig). SPRT can meaningfully improve time to decision for your experiments, including detecting unwanted metric regressions much faster. It also tends to be much easier to share results to stakeholders who aren't super familiar with P-values and Significance levels. Lastly, SPRT has no penalties for peeking; there's no need for sequential testing plans, Alpha spending, or CI-penalties as SPRT is built to be a sequential test methodology from the start.
+The **Sequential Probability Ratio Test** (SPRT) is another, advanced methodology for running AB tests, differing from the traditional Null Hypothesis Significance Test (commonly called [Frequentist](/stats-engine/p-value) analysis). SPRT can meaningfully improve time to decision for your experiments, including detecting unwanted metric regressions much faster. It also tends to be much easier to share results to stakeholders who aren't super familiar with P-values and Significance levels. Lastly, SPRT has no penalties for peeking; there's no need for sequential testing plans, Alpha spending, or CI-penalties as SPRT is built to be a sequential test methodology from the start.
 
 ![Image](/img/sprt/sprt_scorecard.png)
 
@@ -24,7 +24,7 @@ The Likelihood Ratio estimates the relative difference in the likelihood of two 
 - **Numerator**: What you observe is due to an alternative hypothesis (you set) being correct.
 - **Denominator**: What you observe is due to the null hypothesis being correct.
 
-The Upper and Lower decision boundaries are determined by your tolerance for Type I and Type II errors.
+The Upper and Lower decision boundaries are determined by your joint tolerances for Type I and Type II errors.
 
 - **A**: If LR exceeds this upper threshold, you should accept the Alternative Hypothesis.
 - **B**: If LR is less than this lower threshold, you should accept the Null Hypothesis.
@@ -67,9 +67,102 @@ One of the nice things about SPRT is that this Likelihood Ratio is similar to ho
 
 ![image](/img/sprt/sprt_results_readout.png)
 
+## Computing SPRT Results
+
+Statsig uses an updated version of Hajnal's two-sample t test, as modified by Derek Ho of Atlassian (ref TBD), in our SPRT calculations.
+
+On each day, compute the following for a comparison between any two groups A and B for a specific metric:
+
+$$
+\LARGE
+{LR} =
+\frac
+{\phi(|z_{m}|; \theta, 1)}
+{\phi(|z_{m}|; 0, 1)}
+$$
+
+where:
+
+- $\Large \phi(x; \theta, 1)$ is the PDF of a normal distribution of shape $\Large \mathcal{N}(\theta, 1)$ evaluated at $\Large x$
+- $\Large z$ is the observed Z-statistic between the groups
+  $$
+  \Large
+  z = \frac
+  {\Delta \bar{X}}
+  {\sigma_{\Delta\bar{X}}}
+  = \frac
+  {\bar{X}_B - \bar{X}_A}
+  {\sigma_{\Delta\bar{X}}}
+  $$
+
+$$
+\Large
+\sigma_{\Delta\bar{X}}=\sqrt{\frac{var(X_A)}{N_A}+\frac{var(X_B)}{N_B}}
+$$
+
+- $\Large \theta$ is derived from **Cohen's d** set prior to the experiment for the particular metric being considered
+
+$$
+\Large
+\theta = \frac
+{\delta}
+{\sqrt{
+\frac{1}{N_A} + \frac{1}{N_B}
+}}
+$$
+
+- $\Large N_{A}$ and $\Large N_{B}$ are the number of observed units for each group
+
+### Power Analysis & Setting Cohen's d
+
+SPRT requires that a value of [**Cohen's d**](https://en.wikiversity.org/wiki/Cohen%27s_d) be set prior to the start of the experiment for each metric being evaluated. Setting the parameter requires three components:
+
+- **MDE**: An Minimum Detectable Effect desired to be measured, in units of percent
+- **Mean**: A baseline average value for the metric, $\Large \overline{X}$
+- **Standard Deviation**: A baseline standard deviation for the metric, $\Large \sigma_{X}$
+
+With them, it's easy to compute Cohen's d parameter for each metric:
+
+$$
+\Large
+\delta = \frac{\text{MDE\%} \cdot \overline{X}}{100 \cdot \sigma_{X}}
+$$
+
+This process can be automated using Statsig's built-in query tooling. If you have a past experiment that ran on a similar set of units expected in the upcoming experiment, this can be configured as a **Baseline Experiment** and a query will automatically pull the relevant metric parameters for your metrics. Users can also input all 3 parameters by hand if desired.
+
+### Estimating the decision sample size
+
+While Cohen's d is used to compute your experimental results after the experiment starts, it can also be used to estimate the duration of an experiment in advance. Given SPRT allows users to look at results as often as desired, this is not the same as a "required sample size" in traditional frequentist testing. The **Decision Sample Size** is an estimate of the number of samples that will be sufficient for SPRT result for a metric to exceed either threshold and accept one of the hypotheses.
+
+Given:
+
+$$
+\Large
+A=ln\left(\frac{1-\beta}{\alpha}\right)
+$$
+
+$$
+\Large
+k=\frac{n_{ec}}{n_{et}}=\frac{\text{units expected in control}}{\text{units expected in treatment}}=\frac{\text{\% units expected in control}}{\text{\% units expected in treatment}}
+$$
+
+$$
+\Large
+n_{et} = \frac{A}{\frac{1}{2}\left(\frac{k}{1+k}\right)\delta^2}
+$$
+
+Then, the total number of expected units at decision time is:
+
+$$
+\Large
+n_e=n_{et}+n_{ec}=n_{et}(1+k)
+$$
+
 ## References
 
 - [Original SPRT Paper (Wald, 1945)](https://projecteuclid.org/journals/annals-of-mathematical-statistics/volume-16/issue-2/Sequential-Tests-of-Statistical-Hypotheses/10.1214/aoms/1177731118.full)
+- [The Sequential Probability Ratio t Test (Schnuerch & Erdfelder, 2020)](https://martinschnuerch.com/wp-content/uploads/2020/08/Schnuerch_Erdfelder_2020.pdf)
+- [A two-sample sequential t-test (Hajnal, 1961)](https://www.jstor.org/stable/2333131)
 
 ## FAQ
 
