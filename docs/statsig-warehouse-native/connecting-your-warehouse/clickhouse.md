@@ -35,7 +35,7 @@ To create a user, the easiest way is to run:
 create user <username> IDENTIFIED WITH sha256_password BY '<password>';
 ```
 
-But the correct approach will depend on the best practicies specified by your database administrator.
+But the correct approach will depend on the best practices specified by your database administrator.
 
 ## Grant Permissions to Statsig's Account
 
