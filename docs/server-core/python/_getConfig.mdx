@@ -5,7 +5,7 @@ config = statsig.get_dynamic_config(StatsigUser("my_user"), "a_config")
 # Access config values with type-safe getters and fallback values
 product_name = config.get_string("product_name", "Awesome Product v1")  # returns String
 price = config.get_float("price", 10.0)  # returns float
-should_discount = config.get_boolean("discount", False)  # returns bool
+should_discount = config.get_bool("discount", False)  # returns bool
 quantity = config.get_integer("quantity", 1)  # returns int64
 
 # Advanced Usage:
