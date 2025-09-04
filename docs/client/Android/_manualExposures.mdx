@@ -87,4 +87,19 @@ Statsig.manuallyLogLayerParameterExposure("a_layer_name", "a_parameter_name", fa
 `}
     </CodeBlock>
   ),
+  // Parameter Store
+  parameterStoreSnippet: (
+    <CodeBlock language="kotlin">
+      {`// Kotlin
+val options = ParameterStoreEvaluationOptions(disableExposureLog = true)
+val parameterStore = Statsig.getParameterStore("a_parameter_store_name", options)
+val value = parameterStore.getString("a_parameter_name", "default_value")
+\t
+// Java
+ParameterStoreEvaluationOptions options = new ParameterStoreEvaluationOptions(true);
+ParameterStore parameterStore = Statsig.getParameterStore("a_parameter_store_name", options);
+String value = parameterStore.getString("a_parameter_name", "default_value");
+`}
+    </CodeBlock>
+  ),
 };

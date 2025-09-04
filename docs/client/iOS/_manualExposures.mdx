@@ -87,4 +87,17 @@ Statsig.manuallyLogLayerParameterExposure("a_layer_name", "a_parameter_name")
 `}
     </CodeBlock>
   ),
+  // Parameter Store
+  parameterStoreSnippet: (
+    <CodeBlock language="swift">
+      {`// Swift
+let parameterStore = Statsig.getParameterStoreWithExposureLoggingDisabled("a_parameter_store_name")
+let value = parameterStore.getString("a_parameter_name", fallback: "default_value")
+\t
+// Objective C
+ParameterStore *parameterStore = [Statsig getParameterStoreWithExposureLoggingDisabled:@"a_parameter_store_name"];
+NSString *value = [parameterStore getStringForKey:@"a_parameter_name" defaultValue:@"default_value"];
+`}
+    </CodeBlock>
+  ),
 };
