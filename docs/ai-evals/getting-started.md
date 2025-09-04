@@ -21,12 +21,19 @@ This captures the instruction you provide to an LLM to accomplish your task. You
 
 **2. Eval Step 1: Create a dataset you can use to evaluate LLM completions for your prompt**
 For the example above, this might be a list of words, along side known good translations in French. Small lists can be entered (or upload a CSV).
-| Input | Desired Output |
+| Input | Reference Output |
 |---------|--------|
 | people  | gens   |
 | little  | petit  |
 | before  | avant  |
 | number  | nombre |
 | public  | public |
+<img width="1491" height="861" alt="image" src="https://github.com/user-attachments/assets/a46ad9c6-ed28-4587-89af-3eda91a1f256" />
+
 
 **3. Eval Step 2: Create a grader that will grade LLM completions for your prompt**
+Configure a grader that compares the LLM completion text with the reference output. You can use one of the out of box string evaluators, or even configure an LLM-as-a-Judge evaluator that mimics a human's grading rubric.
+<img width="1487" height="762" alt="image" src="https://github.com/user-attachments/assets/8936a77d-885b-4fd6-bcab-d141bd397ec7" />
+<img width="1489" height="796" alt="image" src="https://github.com/user-attachments/assets/ce3f0951-2313-47a4-ba77-65c7fb877fc4" />
+
+**3. Eval Step 3: Run evaluation**
