@@ -49,7 +49,7 @@ new Statsig.StatsigClient('client-YOUR_KEY', {/* CONTEXT */}, {
 ```
 
 ### Server-side APIs
-If you're just looking for a list of apis used by our backend/server sdks, you need to allow:
+If you're just looking for a list of apis used by our backend/server SDKs, you need to allow:
 
 - `api.statsig.com`
 - `statsigapi.net`
