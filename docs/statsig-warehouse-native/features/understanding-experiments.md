@@ -2,6 +2,7 @@
 title: Understanding Experiments
 slug: /statsig-warehouse-native/features/understanding-experiments
 sidebar_label: Understanding Experiments
+displayed_sidebar: whn
 keywords:
   - owner:craig
 last_update:
