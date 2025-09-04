@@ -619,7 +619,6 @@ const sidebars: SidebarsConfig = {
                 "integrations/github_code_references",
                 "integrations/slack",
                 "integrations/jira",
-                "integrations/vscode",
               ],
             },
             {
