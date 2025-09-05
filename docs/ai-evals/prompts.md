@@ -12,7 +12,7 @@ last_update:
 
 
 ## What is a Prompt in Statsig?
-A Prompt is a way to represent an LLM prompt or a task in Statsig, with it's config. Prompts are similar to Dynamic Configs, and allow you to evaluate and roll out prompts in production without deploying code. 
+A Prompt is a way to represent an LLM prompt or a task in Statsig, with it's config. Prompts are similar to Dynamic Configs, and allow you to evaluate and roll out prompts in production without deploying code. You can use the Statsig [Node](/server-core/node-core#getting-a-prompt) or [Python](/server-core/python-core/#getting-a-prompt) Server Core SDKs to retrieve this prompt within your app at runtime and use it. 
 
 With Prompts, you can 
 - Manage your prompt configuration outside of your application code. You can update model, configuration or prompt at runtime. 
@@ -21,3 +21,5 @@ With Prompts, you can
 - Support advanced use cases such as
    - retrieval-augmented generation (RAG) and
    - evaluation in production.
+   - 
+<img alt="image" src="https://github.com/user-attachments/assets/77256d12-0d3f-4caa-8fa7-3719517af4eb" />
