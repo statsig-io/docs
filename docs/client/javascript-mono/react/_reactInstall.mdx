@@ -1,23 +1,73 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import ExpandableSection from './ExpandableSection';
 
 :::info
-If you are starting from scratch, please refer to [New React App](https://react.dev/learn/build-a-react-app-from-scratch) to get a simple React app up and running.
+If you are starting from scratch, please refer to [New React App](https://react.dev/learn/build-a-react-app-from-scratch) to get a simple React app up and running. If you're looking for Next.JS, then check our Next guides [here](/client/javascript-sdk/next-js).
 :::
 
-:::note
-Using Next.JS? Check out our Next guides [here](/client/javascript-sdk/next-js).
-:::
+## AI-powered Setup
 
-## AI-powered Setup (beta)
+Setup Statsig in 90 seconds by using one of these two options:
 
-Our AI agent can set up Statsig on your codebase with this command:
+<ExpandableSection title="1. Wizard" defaultExpanded={true}>
+
+Run this wizard command in your terminal
 
 ```shell
 npx @statsig/wizard@latest
 ```
 
-This is an experimental feature. If you have any feedback, please reach out on our [Slack community](https://statsig.com/slack).
+</ExpandableSection>
+
+<ExpandableSection title="2. AI Prompt">
+
+Copy this pre-built prompt in your IDE
+
+<div style={{maxHeight: '5em', overflowY: 'auto', border: '1px solid #E1E4E8', borderRadius: '6px', padding: '0'}}>
+
+```text
+You are a frontend engineer integrating the Statsig SDK into a React app. Follow these instructions carefully:
+1. Install the required Statsig packages:
+     npm install @statsig/react-bindings @statsig/session-replay @statsig/web-analytics
+
+2. In the main component file (`App.jsx` or `App.tsx`):
+   - Import `StatsigProvider` and `useClientAsyncInit` from `@statsig/react-bindings`
+   - Import `StatsigAutoCapturePlugin` from `@statsig/web-analytics` and `StatsigSessionReplayPlugin` from `@statsig/session-replay`
+        - Initialize the SDK using your client key: 'YOUR-CLIENT-API-KEY'
+   - Use `userID` from an existing variable if it's already declared in the file; otherwise, default to `'a-user'`
+   - Wrap the existing app content inside `<StatsigProvider>`, using `<div>Loading...</div>` as the `loadingComponent`
+
+3. DO NOT remove any existing JSX content from the component. Just wrap it.
+
+4. Here is what the final file structure should look like:
+    
+    import { StatsigProvider, useClientAsyncInit } from '@statsig/react-bindings';
+    import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
+    import { StatsigSessionReplayPlugin } from '@statsig/session-replay';
+    import YourApp from './YourApp'; // or keep any existing JSX content
+    
+    function App() {
+      const id = typeof userID !== 'undefined' ? userID : 'a-user';
+      const { client } = useClientAsyncInit(
+        'YOUR-CLIENT-API-KEY',
+        { userID: id },
+           { plugins: [new StatsigAutoCapturePlugin(), new StatsigSessionReplayPlugin()] } 
+      );
+      
+     return (
+         <StatsigProvider client={client} loadingComponent={<div>Loading...</div>}>
+           <YourApp /> {/* Replace or preserve existing JSX */}
+       </StatsigProvider>
+     );
+    }
+5. You should ask the user to provide their CLIENT-API_KEY and use their input to plug in the key for installation.
+```
+
+</div>
+
+</ExpandableSection>
+
 ## Installation
 
 You can install the Statsig SDK via npm or yarn:
