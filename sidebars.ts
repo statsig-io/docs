@@ -470,6 +470,7 @@ const sidebars: SidebarsConfig = {
             id: "ai-evals/overview",
           },
           items: [
+            "ai-evals/getting-started",
             "ai-evals/prompts",
             "ai-evals/offline-evals",
             "ai-evals/online-evals",
