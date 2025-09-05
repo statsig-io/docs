@@ -40,6 +40,10 @@ Run an evaluation on a version of the prompt. You should see results in a few mi
 
 <img alt="image" src="https://github.com/user-attachments/assets/c450f277-b2ba-4657-b747-440b43859f20" />
 
+You can categorize your dataset, and break scores out by category.
+
+<img alt="image" src="https://github.com/user-attachments/assets/3c0de7c4-6721-4a45-9a61-04a63db68913" />
+
 If you have scores for multiple versions, you can compare them to see what changed between versions.
 
 <img alt="image" src="https://github.com/user-attachments/assets/fd593e52-ddec-4826-bf4b-c2ca1d43e4f0" />
