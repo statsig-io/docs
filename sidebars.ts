@@ -429,9 +429,7 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "Infra Analytics",
           className: "infra-analytics-icon sidebar-icon",
-          items: [
-            "infra-analytics/overview"
-          ]
+          items: ["infra-analytics/overview"],
         },
         {
           type: "category",
@@ -1212,6 +1210,7 @@ const sidebars: SidebarsConfig = {
         "statsig-warehouse-native/connecting-your-warehouse/databricks",
         "statsig-warehouse-native/connecting-your-warehouse/redshift",
         "statsig-warehouse-native/connecting-your-warehouse/trino",
+        "statsig-warehouse-native/connecting-your-warehouse/clickhouse",
         "statsig-warehouse-native/connecting-your-warehouse/other",
       ],
     },
