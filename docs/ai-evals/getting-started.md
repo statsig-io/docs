@@ -21,13 +21,7 @@ This captures the instruction you provide to an LLM to accomplish your task. You
 
 **2. Eval Step 1: Create a dataset you can use to evaluate LLM completions for your prompt**
 For the example above, this might be a list of words, along side known good translations in French. Small lists can be entered (or upload a CSV).
-| Input | Reference Output |
-|---------|--------|
-| people  | gens   |
-| little  | petit  |
-| before  | avant  |
-| number  | nombre |
-| public  | public |
+
 <img width="1491" height="861" alt="image" src="https://github.com/user-attachments/assets/a46ad9c6-ed28-4587-89af-3eda91a1f256" />
 
 
