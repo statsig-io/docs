@@ -362,6 +362,10 @@ const config: Config = {
             from: "/client/concepts/autocapture/",
             to: "/webanalytics/autocapture/",
           },
+          {
+            from: "/integrations/vscode",
+            to: "/integrations/introduction",
+          },
 
           
         ],
