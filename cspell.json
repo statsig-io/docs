@@ -721,7 +721,11 @@
     "cutover",
     "downsample",
     "multiset",
-    "sublinear"
+    "sublinear",
+    "Hajnal",
+    "Hajnal's",
+    "Cohen",
+    "Cohen's"
   ],
   "ignorePaths": [
     "node_modules/**",
